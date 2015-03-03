@@ -30,6 +30,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <WebKit/WebKit.h>
 
 /*
 	This protocol should be implemented by the delegate that will listen to javascript
@@ -48,13 +49,16 @@
 	JSBridgeWebView class is responsible for identifying javascript notifications. Its delegate must 
 	comply with the JSBridgeWebViewDelegate.
  */
-@interface JSBridgeWebView : UIWebView <UIWebViewDelegate> {
+@interface JSBridgeWebView : WKWebView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler> {
 }
 
 @property(nonatomic) BOOL isLoaded;
 @property(nonatomic, strong) NSMutableArray * pending_commands;
-@property(nonatomic, strong) NSObject<JSBridgeWebViewDelegate, UIWebViewDelegate> * JSDelegate;
+@property(nonatomic, strong) NSObject<JSBridgeWebViewDelegate, WKUIDelegate, WKNavigationDelegate> * JSDelegate;
 @property(nonatomic, strong) NSMutableSet * usedIDs;
+
+
+- (id) initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration;
 
 -(void)reset;
 

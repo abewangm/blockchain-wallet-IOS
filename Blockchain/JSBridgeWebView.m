@@ -62,10 +62,48 @@
 
 @implementation JSBridgeWebView
 
+
+/*
+	Init the JSBridgeWebView object. It sets the regular UIWebview delegate to self,
+	since the object will be listening to JS notifications.
+ */
+- (id)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration
+{
+    [configuration.userContentController addScriptMessageHandler:self name:@"interOp"];
+    
+    if ([super initWithFrame:frame configuration:configuration])
+    {
+        self.pending_commands = [NSMutableArray array];
+        [self setUIDelegate:self];
+        [self setNavigationDelegate:self];
+        //        [self setDelegate:self];
+        self.usedIDs = [NSMutableSet set];
+    }
+    
+    return self;
+}
+
+- (WKNavigation *)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL {
+    self.isLoaded = false;
+    
+    self.pending_commands = [NSMutableArray array];
+    self.usedIDs = [NSMutableSet set];
+    
+    [super loadHTMLString:string baseURL:baseURL];
+    
+    return nil;
+}
+
+-(void)reset {
+    self.usedIDs = [NSMutableSet set];
+}
+
 -(void)dealloc {
 
     [self stopLoading];
-    self.delegate = nil;
+    // self.delegate = nil;
+    self.UIDelegate = nil;
+    self.navigationDelegate = nil;
 }
 
 -(void)executeJSWithCallback:(void (^)(NSString * result))callback command:(NSString*)formatString,  ...
@@ -76,10 +114,18 @@
     va_end(args);
     
     if (self.isLoaded) {
-        NSString * result = [self stringByEvaluatingJavaScriptFromString:contents];
+        // NSString * result = [self stringByEvaluatingJavaScriptFromString:contents];
         
-        if (callback != NULL)
-            callback(result);
+        void (^myCallback)(id, NSError *) = ^(id result, NSError *err) {
+            // TODO check for error and availability of result
+            // TODO also, this can return certain Obj C Objects, that we should convert back to Strings, just so the dependent code doesn't have to know about WKWebView vs. UIWebView
+            callback((NSString *)result);
+        };
+        
+        [self evaluateJavaScript:contents completionHandler:myCallback];
+        
+//        if (callback != NULL)
+//            callback(result);
     } else {
         JSCommandObject * object = [[JSCommandObject alloc] init];
         
@@ -90,8 +136,8 @@
     }
 }
 
--(NSString*)executeJSSynchronous:(NSString*)formatString,  ... {
-    
+-(NSString*)executeJSSynchronous:(NSString*)formatString,  ...
+{
     va_list args;
     va_start(args, formatString);
     NSString * contents = [[NSString alloc] initWithFormat:formatString arguments:args];
@@ -101,8 +147,76 @@
         @throw [NSException exceptionWithName:@"JSBridgeWebView Exception" reason:[NSString stringWithFormat:@"Cannot Call Synchronous Method With Webview not fully loaded %@", formatString] userInfo:nil];
     }
     
-    return [self stringByEvaluatingJavaScriptFromString:contents];
+//    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+//    __block id returnValue;
+//    [self evaluateJavaScript:contents completionHandler:^(id _returnValue, NSError *error) {
+//        returnValue = _returnValue;
+//        dispatch_semaphore_signal(sema);
+//    }];
+//    
+//    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    
+//    __block NSCondition *condition = [[NSCondition alloc] init];
+//    __block Boolean isDone = false;
+//    __block id returnValue;
+//    [self evaluateJavaScript:contents completionHandler:^(id _returnValue, NSError *error) {
+//        [condition lock];
+//        returnValue = _returnValue;
+//        isDone = true;
+//        [condition signal];
+//        [condition unlock];
+//    }];
+//    
+//    [condition lock];
+//    while (!isDone)
+//        [condition wait];
+    
+    __block NSString *resultString = nil;
+    
+    [self evaluateJavaScript:contents completionHandler:^(id result, NSError *error) {
+        if (error == nil) {
+            if (result != nil) {
+                resultString = [NSString stringWithFormat:@"%@", result];
+            }
+        } else {
+            NSLog(@"evaluateJavaScript error : %@", error.localizedDescription);
+        }
+    }];
+    
+    while (resultString == nil)
+    {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+    }
+    
+    
+//    __block NSString *resultString = nil;
+//    
+//    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+//    
+//    void (^callback) (id, NSError *) = ^void(id result, NSError *error) {
+//        if (error == nil) {
+//            if (result != nil) {
+//                resultString = [NSString stringWithFormat:@"%@", result];
+//                dispatch_semaphore_signal(sema);
+//            }
+//        } else {
+//            NSLog(@"evaluateJavaScript error : %@", error.localizedDescription);
+//        }
+//    };
+//    NSDictionary *paramatersDictionary = @{ @"contents": contents, @"callback": callback };
+//    [self performSelectorInBackground:@selector(evalJS:) withObject:paramatersDictionary];
+//    
+//    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    
+    return resultString;
 }
+
+//- (void)evalJS:(NSDictionary *)params
+//{
+//    NSString *content = [params objectForKey:@"contents"];
+//    void (^callback) (id, NSError *) = [params objectForKey:@"callback"];
+//    [self evaluateJavaScript:content completionHandler:callback];
+//}
 
 -(void)executeJS:(NSString*)formatString,  ...
 {
@@ -112,7 +226,7 @@
     va_end(args);
     
     if (self.isLoaded) {
-        [self stringByEvaluatingJavaScriptFromString:contents];
+        [self evaluateJavaScript:contents completionHandler:nil];
     } else {
         
         JSCommandObject * object = [[JSCommandObject alloc] init];
@@ -123,60 +237,6 @@
         [self.pending_commands addObject:object];
     }
 }
-
-/*
-	Init the JSBridgeWebView object. It sets the regular UIWebview delegate to self,
-	since the object will be listening to JS notifications.
-*/
--(id) initWithFrame:(CGRect)frame
-{
-	if ([super initWithFrame:frame])
-	{
-        self.pending_commands = [NSMutableArray array];
-        [self setDelegate:self];
-        self.usedIDs = [NSMutableSet set];
-	}
-	
-	return self;
-}
-
-- (void)awakeFromNib
-{
-    self.pending_commands = [NSMutableArray array];
-    [self setDelegate:self];
-    self.usedIDs = [NSMutableSet set];
-}
-
-- (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL {
-    self.isLoaded = false;
-    
-    self.pending_commands = [NSMutableArray array];
-    self.usedIDs = [NSMutableSet set];
-    
-    [super loadHTMLString:string baseURL:baseURL];
-}
-
-
-/*
-	Init the JSBridgeWebView object. It sets the regular UIWebview delegate to self,
-	since the object will be listening to JS notifications.
- */
--(id) init
-{
-	if ([super init]) 
-	{
-        self.pending_commands = [NSMutableArray array];
-        [self setDelegate:self];
-        self.usedIDs = [NSMutableSet set];
-	}
-	
-	return self;
-}
-
--(void)reset {
-    self.usedIDs = [NSMutableSet set];
-}
-
 
 /*
 	Verifies if the JS is trying to communicate. This verification is done
@@ -312,117 +372,205 @@
         container.success(nil);
     }
 }
-/*
-	Listen to any try of page loading. This method checks, by the URL to be loaded, if
-	it is a JS notification.
- */
-- (BOOL)webView:(UIWebView *)p_WebView  shouldStartLoadWithRequest:(NSURLRequest *)request  navigationType:(UIWebViewNavigationType)navigationType {
-{
-   //DLog(@"JSBridgeView shouldStartLoadWithRequest:%@", [request mainDocumentURL]);
-    
-	// Checks if it is a JS notification. It returns the ID ob the JSON object in the JS code. Returns nil if it is not.
-	NSArray * IDArray = [self getJSNotificationIds:[request URL]];
-    
-	if([IDArray count] > 0)
-	{
-            for (NSString * jsNotId in IDArray) {
-                if (![self.usedIDs containsObject:jsNotId]) {
-                    [self.usedIDs addObject:jsNotId];
-                    
-                    // Reads the JSON object to be communicated.
-                    NSString* jsonStr = [self stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"JSBridge_getJsonStringForObjectWithId(%@)", jsNotId]];
-                                        
-                    NSDictionary * jsonDic = [jsonStr getJSONObject];
-                    
-                    NSDictionary* dicTranslated = [self translateDictionary:jsonDic];
-                    
-                    // Calls the delegate method with the notified object.
-                    if(self.JSDelegate)
-                    {
-                        
-                        SuccessErrorCallbackContainer * container = [SuccessErrorCallbackContainer new];
 
-                        container.success = ^(id success) {
-                            if (!self.isLoaded)
-                                return;
-                            
-                            //On success
-                            if (success != nil) {
-                                [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, \"%@\", true);", jsNotId, [success escapeStringForJS]];
-                            } else {
-                                [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, null, true);", jsNotId];
-                            }
-                            
-                            //Delibertly reference container here
-                            //So it is strongly retained
-                            container.success = nil;
-                            container.error = nil;
-                        };
-                        
-                        container.error = ^(id error) {
-                            //On Error
-                            if (error != nil) {
-                                [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, \"%@\", false);", jsNotId, [error escapeStringForJS]];
-                            } else {
-                                [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, null, false);", jsNotId];
-                            }
-                            
-                            //Delibertly reference container here
-                            //So it is strongly retained
-                            container.success = nil;
-                            container.error = nil;
-                        };
-                        
-                        [self webView:self didReceiveJSNotificationWithDictionary: dicTranslated successErrorContainer:container];
-                    }
-                }
-            }
-        
-            return FALSE;
-        } else {
-            if ([self.JSDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
-                if ([self.JSDelegate webView:self shouldStartLoadWithRequest:request navigationType:navigationType]) {
-                    [self.usedIDs removeAllObjects];
-                    return TRUE;
-                } else {
-                    return FALSE;
-                }
-            } else {
-                [self.usedIDs removeAllObjects];
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
+{
+    NSDictionary *sentData = (NSDictionary*)message.body;
+    NSString *ids = [sentData objectForKey:@"body"];
+    
+    // Checks if it is a JS notification. It returns the ID ob the JSON object in the JS code. Returns nil if it is not.
+    NSArray * IDArray = [ids componentsSeparatedByString:@","];
+    
+    if([IDArray count] > 0)
+    {
+        for (NSString * jsNotId in IDArray) {
+            if (![self.usedIDs containsObject:jsNotId]) {
+                [self.usedIDs addObject:jsNotId];
                 
-                return TRUE;
+                // Reads the JSON object to be communicated.
+                NSString* jsonStr = [self executeJSSynchronous:[NSString stringWithFormat:@"JSBridge_getJsonStringForObjectWithId(%@)", jsNotId]];
+                
+                NSDictionary * jsonDic = [jsonStr getJSONObject];
+                
+                NSDictionary* dicTranslated = [self translateDictionary:jsonDic];
+                
+                // Calls the delegate method with the notified object.
+                if(self.JSDelegate)
+                {
+                    
+                    SuccessErrorCallbackContainer * container = [SuccessErrorCallbackContainer new];
+                    
+                    container.success = ^(id success) {
+                        if (!self.isLoaded)
+                            return;
+                        
+                        //On success
+                        if (success != nil) {
+                            [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, \"%@\", true);", jsNotId, [success escapeStringForJS]];
+                        } else {
+                            [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, null, true);", jsNotId];
+                        }
+                        
+                        //Delibertly reference container here
+                        //So it is strongly retained
+                        container.success = nil;
+                        container.error = nil;
+                    };
+                    
+                    container.error = ^(id error) {
+                        //On Error
+                        if (error != nil) {
+                            [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, \"%@\", false);", jsNotId, [error escapeStringForJS]];
+                        } else {
+                            [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, null, false);", jsNotId];
+                        }
+                        
+                        //Delibertly reference container here
+                        //So it is strongly retained
+                        container.success = nil;
+                        container.error = nil;
+                    };
+                    
+                    [self webView:self didReceiveJSNotificationWithDictionary: dicTranslated successErrorContainer:container];
+                }
             }
         }
+        
+        return;
     }
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    DLog(@"JSBridgeWebView Did Load");
+///*
+//	Listen to any try of page loading. This method checks, by the URL to be loaded, if
+//	it is a JS notification.
+// */
+//- (BOOL)webView:(UIWebView *)p_WebView  shouldStartLoadWithRequest:(NSURLRequest *)request  navigationType:(UIWebViewNavigationType)navigationType {
+//{
+//   //DLog(@"JSBridgeView shouldStartLoadWithRequest:%@", [request mainDocumentURL]);
+//    
+//	// Checks if it is a JS notification. It returns the ID ob the JSON object in the JS code. Returns nil if it is not.
+//	NSArray * IDArray = [self getJSNotificationIds:[request URL]];
+//    
+//	if([IDArray count] > 0)
+//	{
+//            for (NSString * jsNotId in IDArray) {
+//                if (![self.usedIDs containsObject:jsNotId]) {
+//                    [self.usedIDs addObject:jsNotId];
+//                    
+//                    // Reads the JSON object to be communicated.
+//                    NSString* jsonStr = [self stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"JSBridge_getJsonStringForObjectWithId(%@)", jsNotId]];
+//                                        
+//                    NSDictionary * jsonDic = [jsonStr getJSONObject];
+//                    
+//                    NSDictionary* dicTranslated = [self translateDictionary:jsonDic];
+//                    
+//                    // Calls the delegate method with the notified object.
+//                    if(self.JSDelegate)
+//                    {
+//                        
+//                        SuccessErrorCallbackContainer * container = [SuccessErrorCallbackContainer new];
+//
+//                        container.success = ^(id success) {
+//                            if (!self.isLoaded)
+//                                return;
+//                            
+//                            //On success
+//                            if (success != nil) {
+//                                [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, \"%@\", true);", jsNotId, [success escapeStringForJS]];
+//                            } else {
+//                                [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, null, true);", jsNotId];
+//                            }
+//                            
+//                            //Delibertly reference container here
+//                            //So it is strongly retained
+//                            container.success = nil;
+//                            container.error = nil;
+//                        };
+//                        
+//                        container.error = ^(id error) {
+//                            //On Error
+//                            if (error != nil) {
+//                                [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, \"%@\", false);", jsNotId, [error escapeStringForJS]];
+//                            } else {
+//                                [self executeJSSynchronous:@"JSBridge_setResponseWithId(%@, null, false);", jsNotId];
+//                            }
+//                            
+//                            //Delibertly reference container here
+//                            //So it is strongly retained
+//                            container.success = nil;
+//                            container.error = nil;
+//                        };
+//                        
+//                        [self webView:self didReceiveJSNotificationWithDictionary: dicTranslated successErrorContainer:container];
+//                    }
+//                }
+//            }
+//        
+//            return FALSE;
+//        } else {
+//            if ([self.JSDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
+//                if ([self.JSDelegate webView:self shouldStartLoadWithRequest:request navigationType:navigationType]) {
+//                    [self.usedIDs removeAllObjects];
+//                    return TRUE;
+//                } else {
+//                    return FALSE;
+//                }
+//            } else {
+//                [self.usedIDs removeAllObjects];
+//                
+//                return TRUE;
+//            }
+//        }
+//    }
+//}
 
+#warning replace somehow
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    DLog(@"JSBridgeWebView Did Load");
+    
     for (JSCommandObject * command in self.pending_commands) {
-        NSString * result = [self stringByEvaluatingJavaScriptFromString:command.command];
-        
-        if (command.callback != NULL)
-            command.callback(result);
+        [self evaluateJavaScript:command.command completionHandler:nil];
     }
     
     [self.pending_commands removeAllObjects];
     
     self.isLoaded = true;
     
-    if ([self.JSDelegate respondsToSelector:@selector(webViewDidFinishLoad:)])
-        [self.JSDelegate webViewDidFinishLoad:webView];
+    [self.JSDelegate webView:webView didFinishNavigation:navigation];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    DLog(@"JSBridgeWebView Did fail %@", error);
-    
-    if ([self.JSDelegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
-        [self.JSDelegate webView:webView didFailLoadWithError:error];
-}
+//- (void)webViewDidFinishLoad:(UIWebView *)webView {
+//    DLog(@"JSBridgeWebView Did Load");
+//
+//    for (JSCommandObject * command in self.pending_commands) {
+//        
+//        void (^myCallback)(id, NSError *) = ^(id result, NSError *err) {
+//            callback((NSString *)result);
+//        };
+//        
+//        [self evaluateJavaScript:command.command completionHandler:myCallback];
+//    }
+//    
+//    [self.pending_commands removeAllObjects];
+//    
+//    self.isLoaded = true;
+//    
+//    if ([self.JSDelegate respondsToSelector:@selector(webViewDidFinishLoad:)])
+//        [self.JSDelegate webViewDidFinishLoad:webView];
+//}
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    if ([self.JSDelegate respondsToSelector:@selector(webViewDidStartLoad:)])
-        [self.JSDelegate webViewDidStartLoad:webView];
-}
+//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+//    DLog(@"JSBridgeWebView Did fail %@", error);
+//    
+//    if ([self.JSDelegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
+//        [self.JSDelegate webView:webView didFailLoadWithError:error];
+//}
+//
+//- (void)webViewDidStartLoad:(UIWebView *)webView {
+//    if ([self.JSDelegate respondsToSelector:@selector(webViewDidStartLoad:)])
+//        [self.JSDelegate webViewDidStartLoad:webView];
+//}
+
 @end

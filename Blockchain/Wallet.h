@@ -64,7 +64,7 @@
 - (void)didGetPinSuccess:(NSDictionary *)dictionary;
 @end
 
-@interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
+@interface Wallet : NSObject <WKUIDelegate, WKNavigationDelegate, JSBridgeWebViewDelegate, UIWebViewDelegate> {
 }
 
 // Core Wallet Init Properties

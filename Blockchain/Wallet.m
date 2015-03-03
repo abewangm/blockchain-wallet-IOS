@@ -17,6 +17,7 @@
 #import "crypto_scrypt.h"
 #import "NSData+Hex.h"
 #import "TransactionsViewController.h"
+#import <WebKit/WebKit.h>
 
 @implementation transactionProgressListeners
 @end
@@ -55,7 +56,11 @@ Boolean isHdWalletInitialized;
     
     if (self) {
         _transactionProgressListeners = [NSMutableDictionary dictionary];
-        webView = [[JSBridgeWebView alloc] initWithFrame:CGRectZero];
+        
+        WKWebViewConfiguration *theConfiguration = [[WKWebViewConfiguration alloc] init];
+        
+        webView = [[JSBridgeWebView alloc] initWithFrame:CGRectZero configuration:theConfiguration];
+        
         webView.JSDelegate = self;
     }
     
@@ -100,10 +105,33 @@ Boolean isHdWalletInitialized;
     NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];
     
     [webView loadHTMLString:walletHTML baseURL:baseURL];
+
+    // Manually continue w/ login etc, because we are no longer using UIWebviewDelegate methods
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.webView webViewDidFinishLoad:nil];
+//        [webView webViewDidFinishLoad:nil];
+//    });
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    if ([delegate respondsToSelector:@selector(walletJSReady)])
+        [delegate walletJSReady];
+    
+    if ([delegate respondsToSelector:@selector(walletDidLoad)])
+        [delegate walletDidLoad];
+    
+    if (self.guid && self.password) {
+        DLog(@"Fetch Wallet");
+        
+        [self.webView executeJS:@"MyWalletPhone.fetchWalletJson(\"%@\", \"%@\", false, \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS]];
+    }
 }
 
 #pragma mark - WebView handlers
 
+#warning these uiwebview delegates need to be replaced somehow
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
     DLog(@"webViewDidStartLoad:");

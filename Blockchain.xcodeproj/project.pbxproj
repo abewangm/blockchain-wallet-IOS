@@ -155,6 +155,7 @@
 		67EEE76F1A8E547200288753 /* PEPin-off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67EEE76D1A8E547200288753 /* PEPin-off@3x.png */; };
 		67EEE7721A8E547900288753 /* PEPin-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67EEE7701A8E547900288753 /* PEPin-on@2x.png */; };
 		67EEE7731A8E547900288753 /* PEPin-on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67EEE7711A8E547900288753 /* PEPin-on@3x.png */; };
+		67F050671A97A03200A1247D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F050661A97A03200A1247D /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		844BC7AE1949BB620024160B /* JSBridgeWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BC7AD1949BB620024160B /* JSBridgeWebView.m */; };
 		844BC7B01949BD830024160B /* bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 844BC7AF1949BD710024160B /* bridge.js */; };
 		84AEEC661987C49A000E8DC8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AEEC651987C49A000E8DC8 /* CoreLocation.framework */; };
@@ -585,6 +586,7 @@
 		67EEE76D1A8E547200288753 /* PEPin-off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-off@3x.png"; sourceTree = "<group>"; };
 		67EEE7701A8E547900288753 /* PEPin-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-on@2x.png"; sourceTree = "<group>"; };
 		67EEE7711A8E547900288753 /* PEPin-on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-on@3x.png"; sourceTree = "<group>"; };
+		67F050661A97A03200A1247D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		844BC7AC1949BB620024160B /* JSBridgeWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBridgeWebView.h; sourceTree = "<group>"; };
 		844BC7AD1949BB620024160B /* JSBridgeWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBridgeWebView.m; sourceTree = "<group>"; };
 		844BC7AF1949BD710024160B /* bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = bridge.js; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F050671A97A03200A1247D /* WebKit.framework in Frameworks */,
 				67812A7D1A4A0E6800B04EBF /* CoreImage.framework in Frameworks */,
 				67812A791A4A0E1800B04EBF /* QuartzCore.framework in Frameworks */,
 				67812A771A4A0DDA00B04EBF /* CoreGraphics.framework in Frameworks */,
@@ -1011,6 +1014,7 @@
 		9FB3637414B60128004BEA02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67F050661A97A03200A1247D /* WebKit.framework */,
 				67812A7C1A4A0E6800B04EBF /* CoreImage.framework */,
 				67812A781A4A0E1800B04EBF /* QuartzCore.framework */,
 				67812A761A4A0DDA00B04EBF /* CoreGraphics.framework */,
