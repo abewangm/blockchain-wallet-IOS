@@ -1,3 +1,11 @@
+var MyWallet = Blockchain.MyWallet;
+var WalletStore = Blockchain.WalletStore;
+var WalletCrypto = Blockchain.WalletCrypto;
+var Spender = Blockchain.Spender;
+var BlockchainAPI = Blockchain.BlockchainAPI;
+var ImportExport = Blockchain.ImportExport;
+
+
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
 API_CODE = '35e77459-723f-48b0-8c9e-6e9e8f54fbd3';
