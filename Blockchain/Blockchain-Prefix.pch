@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-#define DISABLE_MULTIPLE_ACCOUNTS 1
+#define ENABLE_MULTIPLE_ACCOUNTS 1 // comment this line out to disable support for multiple accounts
 
 #define ANIMATION_DURATION .2f
 

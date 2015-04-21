@@ -854,7 +854,7 @@ UIActionSheet *popupAddressArchive;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-#ifdef DISABLE_MULTIPLE_ACCOUNTS
+#ifndef ENABLE_MULTIPLE_ACCOUNTS
     if (section == 0) {
         return 12;
     }
@@ -867,7 +867,7 @@ UIActionSheet *popupAddressArchive;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
     view.backgroundColor = [UIColor whiteColor];
     
-#ifdef DISABLE_MULTIPLE_ACCOUNTS
+#ifndef ENABLE_MULTIPLE_ACCOUNTS
     if (section == 0) {
         return view;
     }

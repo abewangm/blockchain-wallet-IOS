@@ -112,7 +112,7 @@ int accountEntries = 0;
     
     // Resize table view
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT);
-#ifdef DISABLE_MULTIPLE_ACCOUNTS
+#ifndef ENABLE_MULTIPLE_ACCOUNTS
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries);
 #endif
     
@@ -172,7 +172,7 @@ int accountEntries = 0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#ifndef DISABLE_MULTIPLE_ACCOUNTS
+#ifdef ENABLE_MULTIPLE_ACCOUNTS
     if (indexPath.section != 2) {
         return;
     }
@@ -222,7 +222,7 @@ int accountEntries = 0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#ifdef DISABLE_MULTIPLE_ACCOUNTS
+#ifndef ENABLE_MULTIPLE_ACCOUNTS
     return MENU_ENTRY_HEIGHT;
 #endif
     if (indexPath.section != 2) {
@@ -233,7 +233,7 @@ int accountEntries = 0;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#ifdef DISABLE_MULTIPLE_ACCOUNTS
+#ifndef ENABLE_MULTIPLE_ACCOUNTS
     return 1;
 #endif
     return 3;
@@ -286,7 +286,7 @@ int accountEntries = 0;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-#ifdef DISABLE_MULTIPLE_ACCOUNTS
+#ifndef ENABLE_MULTIPLE_ACCOUNTS
     return menuEntries;
 #endif
     if (sectionIndex == 0) {
@@ -303,10 +303,10 @@ int accountEntries = 0;
 {
     static NSString *cellIdentifier;
     
-#ifdef DISABLE_MULTIPLE_ACCOUNTS
+#ifndef ENABLE_MULTIPLE_ACCOUNTS
     if (indexPath.section == 0) {
 #endif
-#ifndef DISABLE_MULTIPLE_ACCOUNTS
+#ifdef ENABLE_MULTIPLE_ACCOUNTS
     if (indexPath.section == 2) {
 #endif
         cellIdentifier = @"CellMenu";

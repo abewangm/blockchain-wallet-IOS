@@ -93,7 +93,7 @@ uint64_t availableAmount = 0.0;
         return;
     }
     
-#ifdef DISABLE_MULTIPLE_ACCOUNTS
+#ifndef ENABLE_MULTIPLE_ACCOUNTS
     // If we only have one account and no legacy addresses -> can't change from address
     if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses] && [app.wallet addressBook].count == 0) {
         [addressBookButton setHidden:YES];
@@ -588,7 +588,7 @@ uint64_t availableAmount = 0.0;
     [toField resignFirstResponder];
     [amountField resignFirstResponder];
     
-#ifdef DISABLE_MULTIPLE_ACCOUNTS
+#ifndef ENABLE_MULTIPLE_ACCOUNTS
     // If we only have one account and no legacy addresses -> can't change from address
     if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]) {
         return;
