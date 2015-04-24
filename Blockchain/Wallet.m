@@ -245,7 +245,7 @@ Boolean isHdWalletInitialized;
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"precisionToSatoshiBN(\"%@\").toString()", input] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWallet.precisionToSatoshiBN(\"%@\").toString()", input] longLongValue];
 }
 
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
