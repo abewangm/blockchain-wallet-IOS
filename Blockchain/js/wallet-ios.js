@@ -236,8 +236,9 @@ MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
     var fee = MyWallet.recommendedTransactionFeeForAddress(from, value);
     var note = null;
 
-    var spender = new Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error));
-    spender.prepareFromAddress(from, value, fee, function(from) { from.toAddress(to) });
+    Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
+        .fromAddress(from, value, fee)
+        .toAddress(to);
 
     return id;
 };
@@ -275,8 +276,9 @@ MyWalletPhone.quickSendFromAddressToAccount = function(from, to, valueString) {
     var fee = MyWallet.recommendedTransactionFeeForAddress(from, value);
     var note = null;
 
-    var spender = new Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error));
-    spender.prepareFromAddress(from, value, fee, function(fromAddress) { fromAddress.toAccount(to) });
+    Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
+        .fromAddress(from, value, fee)
+        .toAccount(to);
 
     return id;
 };
@@ -314,8 +316,9 @@ MyWalletPhone.quickSendFromAccountToAddress = function(from, to, valueString) {
     var fee = MyWallet.recommendedTransactionFeeForAccount(from, value);
     var note = null;
 
-    var spender = new Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error));
-    spender.prepareFromAccount(from, value, fee, function(fromAccount) { fromAccount.toAddress(to) });
+    Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
+        .fromAccount(from, value, fee)
+        .toAddress(to);
 
     return id;
 };
@@ -353,8 +356,9 @@ MyWalletPhone.quickSendFromAccountToAccount = function(from, to, valueString) {
     var fee = MyWallet.recommendedTransactionFeeForAccount(from, value);
     var note = null;
 
-    var spender = new Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error));
-    spender.prepareFromAccount(from, value, fee, function(fromAccount) { fromAccount.toAccount(to) });
+    Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
+        .fromAccount(from, value, fee)
+        .toAccount(to);
 
     return id;
 };
