@@ -3,12 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "marker_drink.png"
+      "filename" : "marker_atm.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "marker_drink@2x.png"
+      "filename" : "marker_atm@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

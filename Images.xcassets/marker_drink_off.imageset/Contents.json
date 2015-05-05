@@ -3,12 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "marker_eat_off.png"
+      "filename" : "marker_drink_off.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "marker_eat_off@2x.png"
+      "filename" : "marker_drink_off@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
