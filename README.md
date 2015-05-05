@@ -23,6 +23,21 @@ _ssh pub key has to be registered with Github for this to work_
 
     cmd-r
 
+## PSD and Asset Catalog
+
+Images.xcassets contains all images the app needs and they are all included in the repository.
+
+You can optionally generate the PNG files from the PSD sources in /Artwork. This requires ImageMagick and Grunt. If the PSD files change then this step is required. The resulting new PNG files should be commited to Git to make life easier for other developers.
+
+Once:
+
+    npm install -g grunt-cli
+    cd Artwork
+    npm install    
+  
+For each change:
+  
+    grunt
 
 ## License
 
