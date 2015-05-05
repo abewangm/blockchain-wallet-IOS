@@ -501,8 +501,8 @@ http://blockchain.info/wallet</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blockchain_logo" id="226">
-                                <rect key="frame" x="44" y="33" width="118" height="13"/>
+                            <imageView userInteractionEnabled="NO" contentMode="left" image="blockchain_logo" id="226">
+                                <rect key="frame" x="44" y="33" width="118" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -625,7 +625,7 @@ http://blockchain.info/wallet</string>
         </viewController>
     </objects>
     <resources>
-        <image name="blockchain_logo" width="118" height="13"/>
+        <image name="blockchain_logo" width="119" height="13"/>
         <image name="home_icon.png" width="25" height="24"/>
         <image name="home_icon_hi.png" width="25" height="24"/>
         <image name="menu_icon.png" width="28" height="28"/>
