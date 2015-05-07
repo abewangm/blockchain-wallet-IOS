@@ -3,20 +3,26 @@
 
 # Building
 
-## Setup git submodules
+## Add external dependencies
 
 _ssh pub key has to be registered with Github for this to work_
 
-    git submodule update --init
-    cd Submodules/My-Wallet-HD
+    git clone git@github.com:blockchain/My-Wallet-HD.git External/My-Wallet
+    git clone git@github.com:x2on/OpenSSL-for-iPhone.git External/OpenSSL
+
+Prepare the MyWallet Javascript:
+
+    cd External/My-Wallet
     npm install
     grunt build
-    cd ../OpenSSL-for-iPhone  
+
+Prepare OpenSSL:
+
+    cd External/OpenSSL
     ./build-libssl.sh
 
 ## Open the project in Xcode
 
-    cd ../../
     open Blockchain.xcodeproj
 
 ## Build the project
