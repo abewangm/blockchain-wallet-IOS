@@ -506,7 +506,7 @@ http://blockchain.info/wallet</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="left" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="693" userLabel="Merchant Directory Button">
-                                <rect key="frame" x="238" y="28" width="25" height="25"/>
+                                <rect key="frame" x="238" y="31" width="25" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="map">
@@ -628,7 +628,7 @@ http://blockchain.info/wallet</string>
         <image name="blockchain_logo" width="137" height="15"/>
         <image name="home_icon.png" width="25" height="24"/>
         <image name="home_icon_hi.png" width="25" height="24"/>
-        <image name="map" width="17" height="25"/>
+        <image name="map" width="14" height="20"/>
         <image name="menu_icon" width="28" height="28"/>
         <image name="qrscanner_icon" width="23" height="18"/>
         <image name="receive_icon.png" width="29" height="24"/>

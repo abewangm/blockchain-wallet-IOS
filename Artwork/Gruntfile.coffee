@@ -12,5 +12,5 @@ module.exports = (grunt) ->
     
   grunt.registerTask "default", [
     "shell:convert:blockchain_logo:15"
-    "shell:convert:map:25"
+    "shell:convert:map:20"
   ]
