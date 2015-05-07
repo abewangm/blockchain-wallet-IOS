@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "merchant_directory_icon.png"
+      "filename" : "map.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "merchant_directory_icon@2x.png"
+      "filename" : "map@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "merchant_directory_icon@3x.png"
+      "filename" : "map@3x.png"
     }
   ],
   "info" : {

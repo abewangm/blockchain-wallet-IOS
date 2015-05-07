@@ -442,7 +442,6 @@
 		9FCA4D151514949500ECDFBE /* ReceiveCoinsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiveCoinsViewController.m; sourceTree = "<group>"; };
 		9FCA4D19151494BF00ECDFBE /* SendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendViewController.h; sourceTree = "<group>"; };
 		9FCA4D1A151494BF00ECDFBE /* SendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendViewController.m; sourceTree = "<group>"; };
-		A27C0D021AF8CAE4007A4384 /* blockchain_logo.psd */ = {isa = PBXFileReference; lastKnownFileType = file; name = blockchain_logo.psd; path = ../Artwork/blockchain_logo.psd; sourceTree = "<group>"; };
 		C9BE91671945D8F600FD516D /* PENumpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PENumpadView.h; sourceTree = "<group>"; };
 		C9BE91681945D8F600FD516D /* PENumpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PENumpadView.m; sourceTree = "<group>"; };
 		C9BE91691945D8F600FD516D /* PEPinEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPinEntryController.h; sourceTree = "<group>"; };
@@ -765,14 +764,6 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		A27C0D011AF8CAB2007A4384 /* Vector Images */ = {
-			isa = PBXGroup;
-			children = (
-				A27C0D021AF8CAE4007A4384 /* blockchain_logo.psd */,
-			);
-			name = "Vector Images";
-			sourceTree = "<group>";
-		};
 		C9B32CF9194F3F5800BDF3A0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,7 +848,6 @@
 			isa = PBXGroup;
 			children = (
 				C9BE918B1945F5FC00FD516D /* Images.xcassets */,
-				A27C0D011AF8CAB2007A4384 /* Vector Images */,
 				C9D4B2B0193E024700EDA9EA /* Sounds */,
 				C9D4B2B1193E026500EDA9EA /* Xibs */,
 			);
