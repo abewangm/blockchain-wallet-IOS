@@ -35,7 +35,7 @@
             dateLabel.text = NSLocalizedString(@"1 minute ago", nil);
         } else if (secondsAgo < 60 * 60) {  // 1 to 59 minutes
             dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld minutes ago", nil), secondsAgo / 60];
-        } else if (secondsAgo / 60 / 60 / 24 == 1) { // 1 hour ago
+        } else if (secondsAgo / 60 / 60 == 1) { // 1 hour ago
             dateLabel.text = NSLocalizedString(@"1 hour ago", nil);
         } else if (secondsAgo < 60 * 60 * 24 && [[NSCalendar currentCalendar] isDateInToday:date]) { // 1 to 23 hours ago, but only if today
             dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld hours ago", nil), secondsAgo / 60 / 60];
