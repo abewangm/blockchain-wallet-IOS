@@ -14,4 +14,6 @@ module.exports = (grunt) ->
     "shell:convert:blockchain_logo:15"
     "shell:convert:map:20"
     "shell:convert:transaction_pending:11"
+    "shell:convert:sidebar:18"
+    "shell:convert:qrscanner:18"
   ]
