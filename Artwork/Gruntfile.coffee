@@ -13,5 +13,5 @@ module.exports = (grunt) ->
   grunt.registerTask "default", [
     "shell:convert:blockchain_logo:15"
     "shell:convert:map:20"
-    "shell:convert:transaction_pending:16"
+    "shell:convert:transaction_pending:11"
   ]
