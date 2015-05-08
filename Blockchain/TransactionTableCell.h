@@ -24,19 +24,19 @@
 
 @interface TransactionTableCell : UITableViewCell {
     Transaction * transaction;
-    IBOutlet UIButton * dateButton;
+    IBOutlet UILabel * dateLabel;
     IBOutlet UIButton * btcButton;
-    IBOutlet UILabel *confirmationsLabel;
     
-    NSMutableArray * labels;
+    IBOutlet UIImageView *pendingIcon;
+    IBOutlet UILabel *pendingText;
+    
+    IBOutlet UILabel *actionLabel;    
 }
 
 -(IBAction)transactionClicked:(UIButton *)button;
 -(IBAction)btcbuttonclicked:(id)sender;
 
 @property(nonatomic, strong)  Transaction * transaction;
-
--(void)seLatestBlock:(LatestBlock*)block;
 
 -(void)reload;
 

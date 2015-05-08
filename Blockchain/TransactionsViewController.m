@@ -38,9 +38,7 @@ int lastNumberTransactions = INT_MAX;
     }
     
     cell.transaction = transaction;
-    
-    [cell seLatestBlock:self.latestBlock];
-    
+        
     [cell reload];
     
     // Selected cell color
@@ -71,7 +69,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 97.0f;
+    return 65;
 }
 
 - (UITableView*)tableView

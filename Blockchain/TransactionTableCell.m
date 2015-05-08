@@ -15,135 +15,76 @@
 
 @synthesize transaction;
 
-- (void)awakeFromNib
-{
-    labels = [[NSMutableArray alloc] initWithCapacity:5];
-}
-
 - (void)reload
 {
     if (transaction == NULL)
         return;
     
     if (transaction.time > 0)  {
-        [dateButton setHidden:FALSE];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterLongStyle];
-        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        dateLabel.hidden = NO;
         
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.time];
         
-        [dateButton setTitle:[dateFormatter stringFromDate:date] forState:UIControlStateNormal];
-    } else {
-        [dateButton setHidden:TRUE];
-    }
-    
-    [btcButton setTitle:[app formatMoney:transaction.result] forState:UIControlStateNormal];
-    [btcButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
-    [btcButton.titleLabel setMinimumScaleFactor:.5f];
-    
-    for (UILabel * label in labels) {
-        [label removeFromSuperview];
-    }
-    
-    // Payment Received
-    if (transaction.result >= 0) {
-        NSString *labelString;
+        long long secondsAgo  = -round([date timeIntervalSinceNow]);
         
-        if (transaction.intraWallet) {
-            [btcButton setBackgroundColor:COLOR_BUTTON_LIGHT_BLUE];
+        if (secondsAgo == 1) { // 1 second
+            dateLabel.text = NSLocalizedString(@"1 second ago", nil);
+        } else if (secondsAgo < 60) { // 0 - 59 seconds
+            dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld seconds ago", nil), secondsAgo];
+        } else if (secondsAgo / 60 == 1) { // 1 minute
+            dateLabel.text = NSLocalizedString(@"1 minute ago", nil);
+        } else if (secondsAgo < 60 * 60) {  // 1 to 59 minutes
+            dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld minutes ago", nil), secondsAgo / 60];
+        } else if (secondsAgo / 60 / 60 / 24 == 1) { // 1 hour ago
+            dateLabel.text = NSLocalizedString(@"1 hour ago", nil);
+        } else if (secondsAgo < 60 * 60 * 24 && [[NSCalendar currentCalendar] isDateInToday:date]) { // 1 to 23 hours ago, but only if today
+            dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld hours ago", nil), secondsAgo / 60 / 60];
+        } else if([[NSCalendar currentCalendar] isDateInYesterday:date]) { // yesterday
+            dateLabel.text = NSLocalizedString(@"Yesterday", nil);
+        } else if([[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] year] == [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate date]] year]) { // month + day (this year)
+            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+            NSString *longFormatWithoutYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM d" options:0 locale:[NSLocale currentLocale]];
+            [dateFormatter setDateFormat:longFormatWithoutYear];
             
-            labelString = @"You transferred bitcoin between accounts";
-        } else {
-            [btcButton setBackgroundColor:COLOR_BUTTON_GREEN];
+            dateLabel.text = [dateFormatter stringFromDate:date];
+        } else { // month + year (last year or earlier)
+            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+            NSString *longFormatWithoutYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM y" options:0 locale:[NSLocale currentLocale]];
+            [dateFormatter setDateFormat:longFormatWithoutYear];
             
-            InOut *from = transaction.from;
-            
-            NSString *labelForAddressString = [app.wallet labelForLegacyAddress:from.externalAddresses.address];
-            
-            if (labelForAddressString && labelForAddressString.length > 0) {
-                labelString = [NSString stringWithFormat:@"You received bitcoin from %@", labelForAddressString];
-            }
-            else {
-                labelString = [NSString stringWithFormat:@"You received bitcoin from %@", @"a bitcoin address"];
-            }
+            dateLabel.text = [dateFormatter stringFromDate:date];
         }
-        
-        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, 280, 20)];
-        [label setFont:[UIFont systemFontOfSize:13]];
-        [label setTextColor:[UIColor darkGrayColor]];
-        label.adjustsFontSizeToFitWidth = YES;
-        
-        [label setText:labelString];
-        
-        [labels addObject:label];
-        [self addSubview:label];
-    }
-    // Payment sent
-    else if (transaction.result < 0) {
-        NSString *labelString;
-        
-        if (transaction.intraWallet) {
-            [btcButton setBackgroundColor:COLOR_BUTTON_LIGHT_BLUE];
-            
-            labelString = @"You transferred bitcoin between accounts";
-        }
-        else {
-            [btcButton setBackgroundColor:COLOR_BUTTON_RED];
-            
-            InOut *to = transaction.to;
-            
-            NSString *labelForAddressString = [app.wallet labelForLegacyAddress:to.externalAddresses.address];
-            
-            if (labelForAddressString && labelForAddressString.length > 0) {
-                labelString = [NSString stringWithFormat:@"You sent bitcoin to %@", labelForAddressString];
-            }
-            else {
-                labelString = [NSString stringWithFormat:@"You sent bitcoin to %@", @"a bitcoin address"];
-            }
-        }
-        
-        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, 280, 20)];
-        [label setFont:[UIFont systemFontOfSize:13]];
-        [label setTextColor:[UIColor darkGrayColor]];
-        label.adjustsFontSizeToFitWidth = YES;
-        
-        [label setText:labelString];
-        
-        [labels addObject:label];
-        [self addSubview:label];
-    }
-    
-    // Move down the btc button and the confirmations label according to the number of inouts from above
-    [btcButton setFrame:CGRectMake(btcButton.frame.origin.x, 57, btcButton.frame.size.width, btcButton.frame.size.height)];
-    
-    [confirmationsLabel setFrame:CGRectMake(confirmationsLabel.frame.origin.x, 46, confirmationsLabel.frame.size.width, confirmationsLabel.frame.size.height)];
-}
 
-- (void)seLatestBlock:(LatestBlock*)block
-{
-    // Hide confirmations if we're offline
-    if (!block) {
-        [confirmationsLabel setHidden:TRUE];
-        return;
+    } else {
+        dateLabel.hidden = YES;
+    }
+
+    [btcButton setTitle:[app formatMoney:ABS(transaction.result)] forState:UIControlStateNormal];
+    
+    if(transaction.intraWallet) {
+        [btcButton setBackgroundColor:COLOR_TRANSACTION_TRANSFERRED];
+        actionLabel.text = NSLocalizedString(@"TRANSFERRED", nil);
+        actionLabel.textColor = COLOR_TRANSACTION_TRANSFERRED;
+    } else if (transaction.result >= 0) {
+        [btcButton setBackgroundColor:COLOR_TRANSACTION_RECEIVED];
+        actionLabel.text = NSLocalizedString(@"RECEIVED", nil);
+        actionLabel.textColor = COLOR_TRANSACTION_RECEIVED;
+    } else {
+        [btcButton setBackgroundColor:COLOR_TRANSACTION_SPENT];
+        actionLabel.text = NSLocalizedString(@"SPENT", nil);
+        actionLabel.textColor = COLOR_TRANSACTION_SPENT;
     }
     
-    int confirmations = block.height - transaction.block_height + 1;
-    
-    if (confirmations <= 0 || transaction.block_height == 0) {
-        [confirmationsLabel setHidden:FALSE];
-        
-        confirmationsLabel.textColor = [UIColor redColor];
-        confirmationsLabel.text = BC_STRING_UNCONFIRMED;
-    }
-    else if (confirmations < 100) {
-        [confirmationsLabel setHidden:FALSE];
-        
-        confirmationsLabel.textColor = [UIColor darkGrayColor];
-        confirmationsLabel.text = [NSString stringWithFormat:BC_STRING_COUNT_CONFIRMATIONS, confirmations];
-    }
-    else {
-        [confirmationsLabel setHidden:YES];
+    if (transaction.confirmations >= kConfirmationThreshold) {
+        pendingText.hidden = YES;
+        pendingIcon.hidden = YES;
+        btcButton.alpha = 1;
+        actionLabel.alpha = 1;
+    } else {
+        pendingText.hidden = NO;
+        pendingIcon.hidden = NO;
+        btcButton.alpha = 0.5;
+        actionLabel.alpha = 0.5;
     }
 }
 

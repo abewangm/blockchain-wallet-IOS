@@ -1539,19 +1539,9 @@ SideMenuViewController *sideMenuViewController;
 - (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal {
     if (fsymbolLocal && latestResponse.symbol_local.conversion) {
         @try {
-            BOOL negative = false;
-            
             NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)latestResponse.symbol_local.conversion]];
             
-            if ([number compare:[NSNumber numberWithInt:0]] < 0) {
-                number = [number decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"-1"]];
-                negative = TRUE;
-            }
-            
-            if (negative)
-                return [@"-" stringByAppendingString:[latestResponse.symbol_local.symbol stringByAppendingString:[self.localCurrencyFormatter stringFromNumber:number]]];
-            else
-                return [latestResponse.symbol_local.symbol stringByAppendingString:[self.localCurrencyFormatter stringFromNumber:number]];
+            return [latestResponse.symbol_local.symbol stringByAppendingString:[self.localCurrencyFormatter stringFromNumber:number]];
             
         } @catch (NSException * e) {
             DLog(@"Exception: %@", e);
