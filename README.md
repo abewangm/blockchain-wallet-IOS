@@ -7,7 +7,7 @@
 
 _ssh pub key has to be registered with Github for this to work_
 
-    git clone git@github.com:blockchain/My-Wallet-HD.git External/My-Wallet
+    git clone git@github.com:blockchain/My-Wallet-HD.git External/My-Wallet-HD
     git clone git@github.com:x2on/OpenSSL-for-iPhone.git External/OpenSSL
 
 Prepare the MyWallet Javascript:
