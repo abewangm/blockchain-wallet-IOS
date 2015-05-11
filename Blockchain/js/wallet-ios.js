@@ -504,11 +504,7 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
 
                     // Pairing code PBKDF2 iterations is set to 10 in My Wallet
                     var pairing_code_pbkdf2_iterations = 10;
-                    var decrypted = WalletCrypto.decrypt(encrypted_data, encryption_phrase, pairing_code_pbkdf2_iterations, function (decrypted) {
-                        return decrypted != null;
-                    }, function () {
-                        error('Decryption Error');
-                    });
+                    var decrypted = WalletCrypto.decrypt(encrypted_data, encryption_phrase, pairing_code_pbkdf2_iterations);
 
                     if (decrypted != null) {
                         var components2 = decrypted.split("|");
