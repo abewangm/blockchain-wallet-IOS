@@ -139,6 +139,7 @@ uint64_t availableAmount = 0.0;
     
     [self updateBTCAmountField];
     [self updateFiatAmountField];
+    fiatField.clearsOnBeginEditing = YES;
 }
 
 - (void)reset
@@ -146,10 +147,22 @@ uint64_t availableAmount = 0.0;
     [sendPaymentButton setEnabled:YES];
 }
 
+-(void)dismissConfirmationScreen {
+    [fadeView removeFromSuperview];
+    [confirmSendView removeFromSuperview];
+
+}
+
 #pragma mark - Payment
 
-- (void)reallyDoPayment
+- (IBAction)cancel:(id)sender {
+    [self dismissConfirmationScreen];
+}
+
+- (IBAction)reallyDoPayment:(id)sender
 {
+    [self dismissConfirmationScreen];
+    
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
     
     listener.on_begin_signing = ^() {
@@ -267,24 +280,28 @@ uint64_t availableAmount = 0.0;
 
 - (void)confirmPayment
 {
-    NSString *amountBTCString   = [app formatMoney:amountInSatoshi localCurrency:FALSE];
-    NSString *amountLocalString = [app formatMoney:amountInSatoshi localCurrency:TRUE];
+    [toField resignFirstResponder];
+    [amountField resignFirstResponder];
+    [fiatField resignFirstResponder];
     
-    NSMutableString *messageString = [NSMutableString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, amountBTCString, amountLocalString, self.toAddress];
+    UIView *applicationView = self.view.superview.superview; // A bit brittle
     
-    BCAlertView *alert = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_PAYMENT
-                                                    message:messageString
-                                                   delegate:self
-                                          cancelButtonTitle:BC_STRING_NO
-                                          otherButtonTitles:BC_STRING_YES, nil];
+    fadeView = [[UIView alloc] initWithFrame:applicationView.frame];
+    fadeView.backgroundColor = [UIColor blackColor];
+    fadeView.alpha = 0.7;
     
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (buttonIndex == 1) {
-            [self reallyDoPayment];
-        }
-    };
+    toLabel.text = toField.text;
     
-    [alert show];
+    feeLabel.text = [app formatMoney:[self getRecommendedFeeForAmount:amountInSatoshi] localCurrency:NO];
+    fiatFeeLabel.text = [app formatMoney:[self getRecommendedFeeForAmount:amountInSatoshi] localCurrency:YES];
+    
+    amountLabel.text = [app formatMoney:amountInSatoshi + [self getRecommendedFeeForAmount:amountInSatoshi] localCurrency:NO];
+    fiatAmountLabel.text = [app formatMoney:amountInSatoshi + [self getRecommendedFeeForAmount:amountInSatoshi] localCurrency:YES];
+
+    [applicationView addSubview:fadeView];
+    [applicationView addSubview:confirmSendView];
+    
+    confirmSendView.center = applicationView.center;
 }
 
 #pragma mark - UI Helpers
