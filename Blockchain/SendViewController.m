@@ -48,16 +48,7 @@ uint64_t availableAmount = 0.0;
 {
     [super viewDidLoad];
     
-    CGRect frame = containerView.frame;
-    containerOffset = (app.window.frame.size.height - frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT)/3;
-    frame.origin.y = containerOffset;
-    containerView.frame = frame;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
-    [toFieldContainerField setShouldBegindEditingBlock:^BOOL(UITextField * field) {
-        return FALSE;
-    }];
     
     self.fromAddress = @"";
     if ([app.wallet didUpgradeToHd]) {
@@ -76,13 +67,18 @@ uint64_t availableAmount = 0.0;
     
     amountKeyboardAccessoryView.layer.borderWidth = 1.0f / [UIScreen mainScreen].scale;
     amountKeyboardAccessoryView.layer.borderColor = [[UIColor colorWithRed:181.0f/255.0f green:185.0f/255.0f blue:189.0f/255.0f alpha:1.0f] CGColor];
-    
     amountField.inputAccessoryView = amountKeyboardAccessoryView;
+    
+    fiatField.inputAccessoryView = amountKeyboardAccessoryView;
     
     [toField setReturnKeyType:UIReturnKeyDone];
     
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
+    
+    availableAmount = [app.wallet getBalanceForAccount:0]; // Default account
+    
+    [self updateAvailableAmountFieldAndCheckMax];
     
     [self reload];
 }
@@ -138,14 +134,11 @@ uint64_t availableAmount = 0.0;
     }
     
     if (app->symbolLocal && app.latestResponse.symbol_local && app.latestResponse.symbol_local.conversion > 0) {
-        [btcCodeButton setTitle:app.latestResponse.symbol_local.code forState:UIControlStateNormal];
-        displayingLocalSymbol = TRUE;
-    } else if (app.latestResponse.symbol_btc) {
-        [btcCodeButton setTitle:app.latestResponse.symbol_btc.symbol forState:UIControlStateNormal];
-        displayingLocalSymbol = FALSE;
+        fiatSymbolLabel.text = app.latestResponse.symbol_local.code;
     }
     
-    [self updateAmountField];
+    [self updateBTCAmountField];
+    [self updateFiatAmountField];
 }
 
 - (void)reset
@@ -158,14 +151,6 @@ uint64_t availableAmount = 0.0;
 - (void)reallyDoPayment
 {
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
-    
-    listener.on_start = ^() {
-//        app.disableBusyView = TRUE;
-//        
-//        sendProgressModalText.text = BC_STRING_PLEASE_WAIT;
-//        
-//        [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone];
-    };
     
     listener.on_begin_signing = ^() {
         sendProgressModalText.text = BC_STRING_SIGNING_INPUTS;
@@ -214,7 +199,7 @@ uint64_t availableAmount = 0.0;
         amountField.text = nil;
         self.toAddress = @"";
         amountInSatoshi = 0.0;
-        [self doCurrencyConversion];
+        [self updateAvailableAmountFieldAndCheckMax];
         
         // Close transaction modal, go to transactions view, scroll to top and animate new transaction
         [app closeModalWithTransition:kCATransitionFade];
@@ -280,17 +265,6 @@ uint64_t availableAmount = 0.0;
     }
 }
 
-- (uint64_t)getInputAmountInSatoshi
-{
-    NSString *amountString = [amountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    
-    if (displayingLocalSymbol) {
-        return app.latestResponse.symbol_local.conversion * [amountString doubleValue];
-    } else {
-        return [app.wallet parseBitcoinValue:amountString];
-    }
-}
-
 - (void)confirmPayment
 {
     NSString *amountBTCString   = [app formatMoney:amountInSatoshi localCurrency:FALSE];
@@ -315,50 +289,29 @@ uint64_t availableAmount = 0.0;
 
 #pragma mark - UI Helpers
 
-- (void)updateAmountField
+- (void)updateBTCAmountField
 {
-    if (amountInSatoshi == 0) {
-        amountField.text = nil;
+    @try {
+        NSDecimalNumber *number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:amountInSatoshi] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:app.latestResponse.symbol_btc.conversion]]; // From Satoshi to BTC
+
+        app.localCurrencyFormatter.usesGroupingSeparator = NO;
+        amountField.text = [app.btcFormatter stringFromNumber:number];
+        app.btcFormatter.usesGroupingSeparator = YES;
+    } @catch (NSException * e) {
+        DLog(@"Exception: %@", e);
     }
-    else if (displayingLocalSymbol) {
-        @try {
-            NSDecimalNumber *number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:amountInSatoshi] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)app.latestResponse.symbol_local.conversion]];
-            
-            app.localCurrencyFormatter.usesGroupingSeparator = NO;
-            amountField.text = [app.localCurrencyFormatter stringFromNumber:number];
-            app.localCurrencyFormatter.usesGroupingSeparator = YES;
-        } @catch (NSException * e) {
-            DLog(@"Exception: %@", e);
-        }
-    } else {
-        @try {
-            NSDecimalNumber *number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:amountInSatoshi] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:app.latestResponse.symbol_btc.conversion]];
-            
-            app.btcFormatter.usesGroupingSeparator = NO;
-            amountField.text = [app.btcFormatter stringFromNumber:number];
-            app.btcFormatter.usesGroupingSeparator = YES;
-        } @catch (NSException * e) {
-            DLog(@"Exception: %@", e);
-        }
-    }
-    
-    [self doCurrencyConversion];
 }
 
-- (void)doCurrencyConversion
+- (void)updateFiatAmountField
 {
-    // If the amount entered exceeds amount available + fee, change the color of the amount text
-    if (amountInSatoshi + [self getRecommendedFeeForAmount:amountInSatoshi] > availableAmount) {
-        amountField.textColor = [UIColor redColor];
-    }
-    else {
-        amountField.textColor = COLOR_BLOCKCHAIN_BLUE;
-    }
-    
-    if (displayingLocalSymbol) {
-        convertedAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:FALSE];
-    } else {
-        convertedAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:TRUE];
+    @try {
+        NSDecimalNumber *number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:amountInSatoshi] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)app.latestResponse.symbol_local.conversion]];
+
+        app.btcFormatter.usesGroupingSeparator = NO;
+        fiatField.text = [app.localCurrencyFormatter stringFromNumber:number];
+        app.localCurrencyFormatter.usesGroupingSeparator = YES;
+    } @catch (NSException * e) {
+        DLog(@"Exception: %@", e);
     }
 }
 
@@ -408,6 +361,12 @@ uint64_t availableAmount = 0.0;
 
 #pragma mark - Textfield Delegates
 
+-(BOOL)textFieldShouldClear:(UITextField *)textField {
+    self.toAccount = 0; // Ambiguous?
+    self.toAddress = nil;
+    return YES;
+}
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (textField == selectAddressTextField) {
@@ -426,12 +385,8 @@ uint64_t availableAmount = 0.0;
         [self.view addGestureRecognizer:self.tapGesture];
     }
     
-    // Move view content up when showing keyboard
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        CGRect frame = containerView.frame;
-        frame.origin.y = 0;
-        containerView.frame = frame;
-    }];
+    toField.clearsOnBeginEditing = NO;
+    toField.clearButtonMode = UITextFieldViewModeAlways;
 }
 
 - (void)keyboardWillHide:(NSNotification *)note
@@ -446,7 +401,7 @@ uint64_t availableAmount = 0.0;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == amountField) {
+    if (textField == amountField || textField == fiatField) {
         
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
@@ -464,7 +419,7 @@ uint64_t availableAmount = 0.0;
         }
         
         // When entering amount in BTC, max 8 decimal places
-        if (!displayingLocalSymbol) {
+        if (textField == amountField) {
             // Max number of decimal places depends on bitcoin unit
             NSUInteger maxlength = [@(SATOSHI) stringValue].length - [@(SATOSHI / app.latestResponse.symbol_btc.conversion) stringValue].length;
             
@@ -480,10 +435,9 @@ uint64_t availableAmount = 0.0;
                     return NO;
                 }
             }
-        }
-        
+
         // Fiat currencies have a max of 3 decimal places, most of them actually only 2. For now we will use 2.
-        else {
+        } else {
             if (points.count == 2) {
                 NSString *decimalString = points[1];
                 if (decimalString.length > 2) {
@@ -500,14 +454,24 @@ uint64_t availableAmount = 0.0;
         
         // Convert input amount to internal value
         NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        if (displayingLocalSymbol) {
-            amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
-        }
-        else {
+        if (textField == amountField) {
             amountInSatoshi = [app.wallet parseBitcoinValue:amountString];
+            [self performSelector:@selector(updateFiatAmountField) withObject:nil afterDelay:0.1f];
+        } else {
+            amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
+            [self performSelector:@selector(updateBTCAmountField) withObject:nil afterDelay:0.1f];
         }
         
-        [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+        [self performSelector:@selector(updateAvailableAmountFieldAndCheckMax) withObject:nil afterDelay:0.1f];
+        
+        // The other text field should reset if the user switches to it:
+        if(textField == amountField) {
+            amountField.clearsOnBeginEditing = NO;
+            fiatField.clearsOnBeginEditing = YES;
+        } else {
+            amountField.clearsOnBeginEditing = YES;
+            fiatField.clearsOnBeginEditing = NO;
+        }
         
         return YES;
     } else if (textField == toField) {
@@ -547,7 +511,9 @@ uint64_t availableAmount = 0.0;
     self.fromAddress = address;
     DLog(@"fromAddress: %@", address);
     
-    [self doCurrencyConversion];
+    [self updateAvailableAmountFieldAndCheckMax];
+
+    
 }
 
 - (void)didSelectToAddress:(NSString *)address
@@ -557,6 +523,10 @@ uint64_t availableAmount = 0.0;
     toField.text = [self labelForLegacyAddress:address];
     self.toAddress = address;
     DLog(@"toAddress: %@", address);
+    
+    // Wipe To field when user starts editing, because it's a label, not a valid address:
+    toField.clearsOnBeginEditing = YES;
+    toField.clearButtonMode = UITextFieldViewModeAlways;
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -569,7 +539,30 @@ uint64_t availableAmount = 0.0;
     self.fromAccount = account;
     DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
     
-    [self doCurrencyConversion];
+    [self updateAvailableAmountFieldAndCheckMax];
+}
+
+- (void)updateAvailableAmountFieldAndCheckMax {
+    uint64_t availableWithoutFee;
+    if (availableAmount == 0 || availableAmount < [self getRecommendedFeeForAmount:availableAmount]) {
+        availableWithoutFee = 0;
+    } else {
+        availableWithoutFee = availableAmount - [self getRecommendedFeeForAmount:availableAmount];
+    }
+    
+    NSString *amount = [app formatMoney:availableWithoutFee localCurrency:FALSE];
+    
+    availableToSend.text = [NSString stringWithFormat:NSLocalizedString(@"%@ available to send", nil), amount];
+    
+    // If the amount entered exceeds amount available + fee, change the color of the amount text
+    if (amountInSatoshi + [self getRecommendedFeeForAmount:amountInSatoshi] > availableAmount) {
+        amountField.textColor = [UIColor redColor];
+        fiatField.textColor = [UIColor redColor];
+    }
+    else {
+        amountField.textColor = COLOR_BLOCKCHAIN_BLUE;
+        fiatField.textColor =  COLOR_BLOCKCHAIN_BLUE;
+    }
 }
 
 - (void)didSelectToAccount:(int)account
@@ -579,6 +572,10 @@ uint64_t availableAmount = 0.0;
     toField.text = [app.wallet getLabelForAccount:account];
     self.toAccount = account;
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
+    
+    // Wipe To field when user starts editing, because it's a label, not a valid address:
+    toField.clearsOnBeginEditing = YES;
+    toField.clearButtonMode = UITextFieldViewModeAlways;
 }
 
 #pragma mark - Actions
@@ -587,6 +584,7 @@ uint64_t availableAmount = 0.0;
 {
     [toField resignFirstResponder];
     [amountField resignFirstResponder];
+    
     
 #ifndef ENABLE_MULTIPLE_ACCOUNTS
     // If we only have one account and no legacy addresses -> can't change from address
@@ -697,7 +695,8 @@ uint64_t availableAmount = 0.0;
                     [amountField becomeFirstResponder];
                 }
                 
-                [self updateAmountField];
+                [self updateBTCAmountField];
+                [self updateFiatAmountField];
             });
         }
     }
@@ -711,6 +710,7 @@ uint64_t availableAmount = 0.0;
 - (IBAction)closeKeyboardClicked:(id)sender
 {
     [amountField resignFirstResponder];
+    [fiatField resignFirstResponder];
 }
 
 - (IBAction)labelAddressClicked:(id)sender
@@ -724,17 +724,17 @@ uint64_t availableAmount = 0.0;
     [self confirmPayment];
 }
 
-- (IBAction)useAllClicked:(id)sender
-{
-    if (availableAmount == 0 || availableAmount < [self getRecommendedFeeForAmount:availableAmount]) {
-        return;
-    }
-    
-    uint64_t availableWithoutFee = availableAmount - [self getRecommendedFeeForAmount:availableAmount];
-    amountInSatoshi = availableWithoutFee;
-    
-    [self updateAmountField];
-}
+//- (IBAction)useAllClicked:(id)sender
+//{
+//    if (availableAmount == 0 || availableAmount < [self getRecommendedFeeForAmount:availableAmount]) {
+//        return;
+//    }
+//    
+//    uint64_t availableWithoutFee = availableAmount - [self getRecommendedFeeForAmount:availableAmount];
+//    amountInSatoshi = availableWithoutFee;
+//    
+//    [self updateAmountField];
+//}
 
 - (IBAction)btcCodeClicked:(id)sender
 {
@@ -778,32 +778,6 @@ uint64_t availableAmount = 0.0;
     
     [self confirmPayment];
 
-//    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK
-//                                                        message:[NSString stringWithFormat:BC_STRING_ASK_TO_ADD_TO_ADDRESS_BOOK, self.toAddress]
-//                                                       delegate:nil
-//                                              cancelButtonTitle:BC_STRING_NO
-//                                              otherButtonTitles:BC_STRING_YES, nil];
-//        
-//        alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-//            // do nothing & proceed
-//            if (buttonIndex == 0) {
-//                [self confirmPayment];
-//            }
-//            // let user save address in addressbook
-//            else if (buttonIndex == 1) {
-//                labelAddressLabel.text = toField.text;
-//                
-//                [app showModal:labelAddressView isClosable:TRUE];
-//                
-//                [labelAddressTextField becomeFirstResponder];
-//            }
-//        };
-//        
-//        [alert show];
-//    } else {
-//        [self confirmPayment];
-//    }
 }
 
 @end

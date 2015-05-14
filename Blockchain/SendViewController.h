@@ -28,10 +28,10 @@
 @interface SendViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, AddressSelectionDelegate> {
     IBOutlet UIView *containerView;
     
-    IBOutlet UITextField *toFieldContainerField;
     IBOutlet UITextField *toField;
     IBOutlet UITextField *amountField;
-    IBOutlet UILabel *convertedAmountLabel;
+    IBOutlet UILabel *fiatSymbolLabel;
+    IBOutlet UITextField *fiatField;
     
     IBOutlet UIView *amountKeyboardAccessoryView;
     
@@ -47,10 +47,8 @@
     IBOutlet UIView *sendProgressModal;
     IBOutlet UILabel *sendProgressModalText;
     IBOutlet UIActivityIndicatorView *sendProgressActivityIndicator;
-    
-    IBOutlet UIButton *btcCodeButton;
-
-    BOOL displayingLocalSymbol;
+        
+    IBOutlet UILabel *availableToSend;
 }
 
 @property(nonatomic, strong) NSString *initialToAddressString;
@@ -76,7 +74,7 @@
 
 - (IBAction)sendPaymentClicked:(id)sender;
 - (IBAction)labelAddressClicked:(id)sender;
-- (IBAction)useAllClicked:(id)sender;
+//- (IBAction)useAllClicked:(id)sender;
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
 
