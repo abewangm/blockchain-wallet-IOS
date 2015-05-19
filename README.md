@@ -25,6 +25,10 @@ Prepare OpenSSL:
 
 Images.xcassets contains all images the app needs, but they must be generated first from the PSD sources in /Artwork. This requires ImageMagick and Grunt.
 
+Install ImageMagic, e.g. with [Homebrew](http://brew.sh):
+
+    brew install imagemagick
+
 Once:
 
     npm install -g grunt-cli
