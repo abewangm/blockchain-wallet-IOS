@@ -937,6 +937,14 @@ SideMenuViewController *sideMenuViewController;
     [_tabViewController presentViewController:_bcWebViewController animated:YES completion:nil];
 }
 
+- (void)showBackup
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Backup" bundle: nil];
+    UINavigationController *vc = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
+    
+    [_tabViewController presentViewController:vc animated:NO completion:nil];
+}
+
 - (void)showSendCoins
 {
     if (!_sendViewController) {
@@ -1088,6 +1096,11 @@ SideMenuViewController *sideMenuViewController;
 - (IBAction)accountSettingsClicked:(id)sender
 {
     [app showAccountSettings];
+}
+
+- (IBAction)backupClicked:(id)sender
+{
+    [app showBackup];
 }
 
 - (IBAction)changePINClicked:(id)sender

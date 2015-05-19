@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MerchantMapDetailViewController">
@@ -34,7 +34,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="251" horizontalCompressionResistancePriority="520" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ru-T7-Y2x">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="251" horizontalCompressionResistancePriority="520" misplaced="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ru-T7-Y2x">
                             <rect key="frame" x="20" y="217" width="97" height="22.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="87" id="Wuh-Jp-4nV"/>
@@ -48,12 +48,12 @@
                                 </mask>
                             </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-12-oNo">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-12-oNo">
                             <rect key="frame" x="20" y="290" width="128.5" height="22.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="410" horizontalCompressionResistancePriority="520" verticalCompressionResistancePriority="420" text="Address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSv-mT-4wP">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="410" horizontalCompressionResistancePriority="520" verticalCompressionResistancePriority="420" misplaced="YES" text="Address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSv-mT-4wP">
                             <rect key="frame" x="20" y="151" width="335" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="59" id="q2o-Tj-SlQ"/>
@@ -68,7 +68,7 @@
                                 </mask>
                             </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="251" horizontalCompressionResistancePriority="520" text="City" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyC-eF-isP">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="251" horizontalCompressionResistancePriority="520" misplaced="YES" text="City" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyC-eF-isP">
                             <rect key="frame" x="20" y="173" width="335" height="17.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="26" id="WlU-i6-hbK"/>
@@ -82,7 +82,7 @@
                                 </mask>
                             </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="620" verticalHuggingPriority="620" horizontalCompressionResistancePriority="610" verticalCompressionResistancePriority="610" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNA-h2-cqv">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="620" verticalHuggingPriority="620" horizontalCompressionResistancePriority="610" verticalCompressionResistancePriority="610" misplaced="YES" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNA-h2-cqv">
                             <rect key="frame" x="20" y="245" width="280" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="600" constant="19" id="ag2-JO-Yvn"/>
@@ -107,7 +107,7 @@
                                 </mask>
                             </variation>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="510" horizontalCompressionResistancePriority="520" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBu-gH-5aF">
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="510" horizontalCompressionResistancePriority="520" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBu-gH-5aF">
                             <rect key="frame" x="20" y="318" width="108" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="108" id="kcQ-F7-Qe5"/>
@@ -120,12 +120,12 @@
                                 <action selector="phoneNumberAction:" destination="-1" eventType="touchUpInside" id="lcI-Yv-Aq9"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-se-iNk">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Website" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-se-iNk">
                             <rect key="frame" x="20" y="375" width="68" height="22.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tN-2r-qiD" customClass="UIControl">
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0tN-2r-qiD" customClass="UIControl">
                             <rect key="frame" x="20" y="151" width="335" height="39"/>
                             <connections>
                                 <action selector="openAddressAction:" destination="-1" eventType="touchUpInside" id="EWZ-rI-H5a"/>
@@ -138,7 +138,7 @@
                                 <constraint firstAttribute="height" constant="4" id="K7V-ZC-DaJ"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="510" verticalHuggingPriority="700" horizontalCompressionResistancePriority="520" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXA-tB-ej9">
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="510" verticalHuggingPriority="700" horizontalCompressionResistancePriority="520" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXA-tB-ej9">
                             <rect key="frame" x="20" y="403" width="335" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="400" constant="31" id="17w-Dd-jb5"/>

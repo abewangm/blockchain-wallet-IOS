@@ -29,4 +29,8 @@ Images.xcassets/qrscanner.imageset/*.png
 Images.xcassets/blockchain_logo.imageset/*.png
 Images.xcassets/sidebar.imageset/*.png
 Images.xcassets/transaction_pending.imageset/*.png
-
+Images.xcassets/backup_blue_circle.imageset/*.png
+Images.xcassets/backup_exclamation_mark.imageset/*.png
+Images.xcassets/backup_green_circle.imageset/*.png
+Images.xcassets/icon_backup_complete.imageset/*.png
+Images.xcassets/icon_backup_incomplete.imageset/*.png

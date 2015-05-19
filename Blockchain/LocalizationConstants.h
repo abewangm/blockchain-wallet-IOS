@@ -101,6 +101,7 @@
 #define BC_STRING_USER_DECLINED NSLocalizedString(@"User Declined", nil)
 #define BC_STRING_CHANGE_PIN NSLocalizedString(@"Change PIN", nil)
 #define BC_STRING_SETTINGS NSLocalizedString(@"Settings", nil)
+#define BC_STRING_BACKUP NSLocalizedString(@"Backup", nil)
 #define BC_STRING_ADD_EMAIL NSLocalizedString(@"Please add an email address", nil)
 #define BC_STRING_NEWS_PRICE_CHARTS NSLocalizedString(@"News, Price & Charts", nil)
 #define BC_STRING_LOGOUT NSLocalizedString(@"Logout", nil)

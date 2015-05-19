@@ -183,14 +183,19 @@ int accountEntries = 0;
     NSInteger row = indexPath.row;
     
     const int settings = 0;
-    const int news = 1;
-    const int changePin = 2;
-    const int logout = 3;
-    const int upgradeToHD = 4;
+    const int backup = 1;
+    const int news = 2;
+    const int changePin = 3;
+    const int logout = 4;
+    const int upgradeToHD = 5;
     
     switch (row) {
         case settings:
             [app accountSettingsClicked:nil];
+            break;
+            
+        case backup:
+            [app backupClicked:nil];
             break;
             
         case news:
@@ -327,8 +332,8 @@ int accountEntries = 0;
         
         NSMutableArray *titles;
         NSMutableArray *images;
-        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
-        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"news_icon.png", @"lock_icon", @"logout_icon"]];
+        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_BACKUP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
+        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_backup_incomplete", @"news_icon.png", @"lock_icon", @"logout_icon"]];
         
         if ([app.wallet getAccountsCount] == 0 ) {
             [titles addObject:BC_STRING_UPGRADE_TO_HD];

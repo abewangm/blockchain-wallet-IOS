@@ -167,6 +167,7 @@
 
 - (IBAction)newsClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
+- (IBAction)backupClicked:(id)sender;
 - (IBAction)changePINClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 
