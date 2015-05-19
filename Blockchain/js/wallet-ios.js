@@ -1,10 +1,12 @@
+var $ = Blockchain.$;
+var CryptoJS = Blockchain.CryptoJS;
+
 var MyWallet = Blockchain.MyWallet;
 var WalletStore = Blockchain.WalletStore;
 var WalletCrypto = Blockchain.WalletCrypto;
 var Spender = Blockchain.Spender;
 var BlockchainAPI = Blockchain.BlockchainAPI;
 var ImportExport = Blockchain.ImportExport;
-
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
