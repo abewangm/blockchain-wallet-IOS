@@ -22,3 +22,11 @@ Podfile.lock
 Blockchain/APIDefines.h
 Artwork/node_modules
 External/*
+
+Images.xcassets/blockchain_logo.imageset/*.png
+Images.xcassets/map.imageset/*.png
+Images.xcassets/qrscanner.imageset/*.png
+Images.xcassets/blockchain_logo.imageset/*.png
+Images.xcassets/sidebar.imageset/*.png
+Images.xcassets/transaction_pending.imageset/*.png
+
