@@ -21,6 +21,22 @@ Prepare OpenSSL:
     cd External/OpenSSL
     ./build-libssl.sh
 
+## PSD and Asset Catalog
+
+Images.xcassets contains all images the app needs, but they must be generated first from the PSD sources in /Artwork. This requires ImageMagick and Grunt.
+
+Once:
+
+    npm install -g grunt-cli
+    cd Artwork
+    npm install    
+ 
+Whenever you change a PSD file, run: 
+  
+    grunt
+
+The reason that the PNG files are not in the repository - even though it woud make life easier for other developers - is that the resuling PNG files are not determistic. This causes git to mark all images as changed every time you run Grunt. 
+
 ## Open the project in Xcode
 
     open Blockchain.xcodeproj
@@ -29,21 +45,6 @@ Prepare OpenSSL:
 
     cmd-r
 
-## PSD and Asset Catalog
-
-Images.xcassets contains all images the app needs and they are all included in the repository.
-
-You can optionally generate the PNG files from the PSD sources in /Artwork. This requires ImageMagick and Grunt. If the PSD files change then this step is required. The resulting new PNG files should be commited to Git to make life easier for other developers.
-
-Once:
-
-    npm install -g grunt-cli
-    cd Artwork
-    npm install    
-  
-For each change:
-  
-    grunt
 
 ## License
 
