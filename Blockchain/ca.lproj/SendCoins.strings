@@ -17,7 +17,7 @@
 "61.text" = "Etiqueta:";
 
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
-"63.normalTitle" = "Guardar";
+"63.normalTitle" = "Desa";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "64"; */
 "64.text" = "Adreça";
@@ -26,10 +26,10 @@
 "65.text" = "Adreça:";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Etiqueta Adreça";
+"67.text" = "Etiqueta adreça";
 
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
-"6zi-8R-Tmt.normalTitle" = "BTC";
+"6zi-8R-Tmt.normalTitle" = "CTb";
 
 /* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
 "7ho-GV-ikp.text" = "Quantitat";
@@ -38,10 +38,10 @@
 "8LN-Tc-WVh.normalTitle" = "Fet";
 
 /* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Si Us Plau, Espereu";
+"Zgn-Wx-Uwx.text" = "Si us plau esperi";
 
 /* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Enviament De Pagament";
+"aKC-Q2-phD.text" = "Enviament de pagament";
 
 /* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Qualsevol adreça";

@@ -2,22 +2,22 @@
 "48.normalTitle" = "Salvar";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
-"56.text" = "Etiqueta De Endereço";
+"56.text" = "Etiqueta de endereço";
 
 /* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Endereço:";
+"57.text" = "Endereço";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Rótulo:";
+"58.text" = "Rótulo";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "Endereço";
 
 /* Class = "IBUILabel"; text = "No Addresses"; ObjectID = "68"; */
-"68.text" = "Não Endereços";
+"68.text" = "Não há endereços";
 
 /* Class = "IBUILabel"; text = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen."; ObjectID = "69"; */
-"69.text" = "Sua conta provavelmente não emparelhados corretamente. Clique no botão na parte superior esquerda da tela e siga as instruções na tela.";
+"69.text" = "Sua conta é provavelmente não emparelhada corretamente. Clique no botão no canto superior esquerdo da tela e siga as instruções na tela.";
 
 /* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
 "80.normalTitle" = "ENDEREÇO DE ARQUIVO";
@@ -32,7 +32,7 @@
 "90.text" = "Endereço Bitcoin ";
 
 /* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
-"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5uh";
+"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
 /* Class = "IBUIButton"; normalTitle = "Copy Address"; ObjectID = "92"; */
 "92.normalTitle" = "COPIE O ENDEREÇO";
@@ -50,5 +50,5 @@
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "Verificação De Chave Privada";
+"i1j-pG-caF.normalTitle" = "Varredura de chave privada";
 

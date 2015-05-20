@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "驗證您記下備份的短語";
+
+/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+"6zt-Xf-txg.text" = "按下並按住要揭示這個詞";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
+"9A7-TT-PzN.title" = "備份的錢包";
+
+/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "你有沒有備份你的錢包";
+
+/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
+"EQM-OM-jK8.normalTitle" = "驗證";
+
+/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+"9hR-tm-aq5.placeholder" = "第一個單詞";
+
+/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
+"kcC-2S-PfL.placeholder" = "第三個單詞";
+
+/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+"Fda-Z4-3e7.placeholder" = "第六個單詞";
+
+/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+"NaV-Bk-o1b.text" = "如何還原你的錢包";
+
+/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+"T4p-mz-siC.normalTitle" = "驗證備份";
+
+/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "把單詞寫在一張紙在它們出現的確切順序";
+
+/* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
+"dkQ-nj-Pkf.normalTitle" = "下一個單詞";
+
+/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "備份你的錢包很容易，可以確保你不會失去訪問到您的資金，即使我們的服務變得不可用。";
+

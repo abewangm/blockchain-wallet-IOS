@@ -26,7 +26,7 @@
 "65.text" = "Διεύθυνση:";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Ετικέτα Διεύθυνση";
+"67.text" = "Διεύθυνση ετικέτα";
 
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -38,10 +38,10 @@
 "8LN-Tc-WVh.normalTitle" = "Γίνει";
 
 /* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Παρακαλώ Περιμένετε";
+"Zgn-Wx-Uwx.text" = "Παρακαλώ περίμενε";
 
 /* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Αποστολή Πληρωμής";
+"aKC-Q2-phD.text" = "Αποστολή της πληρωμής";
 
 /* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Οποιαδήποτε διεύθυνση";

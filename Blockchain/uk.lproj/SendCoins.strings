@@ -11,10 +11,10 @@
 "52.text" = "0.00";
 
 /* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 BTC = $10";
+"57.text" = "5 БТД = $10";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "Теги:";
+"61.text" = "Позначка:";
 
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
 "63.normalTitle" = "Зберегти";
@@ -26,10 +26,10 @@
 "65.text" = "Адреса:";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Адреси Мітки";
+"67.text" = "Адресна мітка";
 
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
-"6zi-8R-Tmt.normalTitle" = "BTC";
+"6zi-8R-Tmt.normalTitle" = "БТД";
 
 /* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
 "7ho-GV-ikp.text" = "Сума";
@@ -38,10 +38,10 @@
 "8LN-Tc-WVh.normalTitle" = "Зроблено";
 
 /* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Будь Ласка, Зачекайте";
+"Zgn-Wx-Uwx.text" = "Будь ласка, зачекай";
 
 /* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Відправка Платіжних";
+"aKC-Q2-phD.text" = "Відправлення платежу";
 
 /* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Будь-яку адресу";

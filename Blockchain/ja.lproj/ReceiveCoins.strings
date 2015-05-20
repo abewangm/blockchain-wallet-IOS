@@ -1,17 +1,17 @@
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "48"; */
-"48.normalTitle" = "保存";
+"48.normalTitle" = "Save";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
 "56.text" = "ラベル アドレス";
 
 /* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "住所：";
+"57.text" = "Address";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "ラベル:";
+"58.text" = "ラベル";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
-"60.text" = "アドレス";
+"60.text" = "Address";
 
 /* Class = "IBUILabel"; text = "No Addresses"; ObjectID = "68"; */
 "68.text" = "アドレスがないです。";
@@ -50,5 +50,5 @@
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "秘密キーをスキャンします。";
+"i1j-pG-caF.normalTitle" = "Scan Private Key";
 

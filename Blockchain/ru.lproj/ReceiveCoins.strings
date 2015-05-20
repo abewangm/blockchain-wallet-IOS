@@ -5,10 +5,10 @@
 "56.text" = "Пометить адрес";
 
 /* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Адрес:";
+"57.text" = "Адрес";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Метка:";
+"58.text" = "Метка";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "Адрес";
@@ -20,16 +20,16 @@
 "69.text" = "Возможно, привязка вашей учетной записи осуществлена неверно. Нажмите на кнопку в левом верхнем углу экрана и следуйте инструкциям.";
 
 /* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
-"80.normalTitle" = "Переместить адрес в архив";
+"80.normalTitle" = "АДРЕС АРХИВА";
 
 /* Class = "IBUIButton"; normalTitle = "Set Label"; ObjectID = "81"; */
-"81.normalTitle" = "ПОМЕТИТЬ АДРЕС";
+"81.normalTitle" = "АДРЕС ЭТИКЕТКИ";
 
 /* Class = "IBUIButton"; normalTitle = "Request Payment"; ObjectID = "88"; */
 "88.normalTitle" = "ЗАПРОСИТЬ ПЛАТЕЖ";
 
 /* Class = "IBUILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Биткоин-адрес ";
+"90.text" = "Bitcoin адрес ";
 
 /* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
@@ -50,5 +50,5 @@
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "Отсканировать закрытый ключ";
+"i1j-pG-caF.normalTitle" = "Проверка закрытого ключа";
 

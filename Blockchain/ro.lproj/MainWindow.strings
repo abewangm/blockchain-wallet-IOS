@@ -2,10 +2,10 @@
 "257.text" = "0 BTC";
 
 /* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "download";
+"263.text" = "încărcare";
 
 /* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "Asocierea Automată";
+"353.text" = "Asocierea automată";
 
 /* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
 "358.text" = "Creaţi un portofel nou";
@@ -14,40 +14,40 @@
 "360.text" = "1";
 
 /* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Login to your Blockchain wallet, prin intermediul PC-ul sau Mac pe http://blockchain.info/wallet";
+"361.text" = "Login la portofel Blockchain prin intermediul PC sau Mac la http://blockchain.info/wallet";
 
 /* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
 /* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Apăsați [setări cont]. Apoi, faceți clic pe fila [device].";
+"364.text" = "Faceţi clic pe butonul profil, apoi alegeţi Mobile.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Faceți clic pe \" Arată cod pentru a deschide QR-de cod (un pătrat alb-negru de coduri de bare). Scanați codul cu aparatul de fotografiat.";
+"369.text" = "Faceţi clic pe Arată asocierea de cod pentru a descoperi un cod QR - un pătrat alb-negru de coduri de bare. Scanaţi codul cu aparatul de fotografiat.";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "Pentru A Scana Codul De";
+"370.normalTitle" = "Scanaţi codul de asociere";
 
 /* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
-"376.normalTitle" = "Butonul 2";
+"376.normalTitle" = "Buton 2";
 
 /* Class = "IBUIButton"; normalTitle = "Button 1"; ObjectID = "377"; */
-"377.normalTitle" = "Butonul 1";
+"377.normalTitle" = "Buton 1";
 
 /* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "Dacă aveți deja un Blockchain geanta, alege o pereche de aparat; în caz contrar, selectați \" creați un portofel. Este gratuit! Nu de e-mail este necesară.";
+"378.text" = "Dacă aveţi deja un portofel Blockchain, alege perechea dispozitiv; în caz contrar, selectaţi creaţi portofel.    Este gratuit! Nici un e-mail necesare.";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "Bine ati venit la Blockchain portofel";
+"380.text" = "Bine ati venit la portofel Blockchain";
 
 /* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
-"2je-u4-PB2.text" = "TRANZACŢII";
+"2je-u4-PB2.text" = "Tranzacţii";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Bine ati venit la Blockchain portofel. Acest ecran conține oferte. Dacă sunteți deja au încheiat tranzacțiile cu acest portofel, acolo, probabil, au fost greșeli, de a contacta serverul nostru. Vă rugăm să asigurați-vă că contul dvs. este corectă setări și aveți o conexiune activă la internet.";
+"387.text" = "Nici tranzacţiilor încă";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
 "394.text" = "Parola:";
@@ -56,13 +56,13 @@
 "396.text" = "Confirmare:";
 
 /* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "Crea Un Portofel";
+"398.normalTitle" = "Crea portofel";
 
 /* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "O Parolă Este Necesară";
+"465.text" = "Parola necesare";
 
 /* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "Solicitare Parolă Descriere";
+"467.text" = "Descriere de solicitare parola";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
 "468.text" = "Parola:";
@@ -71,19 +71,19 @@
 "471.normalTitle" = "Continua";
 
 /* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
-"586.text" = "Portofel Id:";
+"586.text" = "Portofel identificator:";
 
 /* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "Ați ales pentru a asocia manual sau automat asocierea nu sunt acceptate de aparatul dvs.). Vă rugăm să introduceți detaliile mai jos.";
+"588.text" = "Aţi ales să împerechezi manual (sau asocierea automată nu este acceptată cu aparatul). Vă rugăm să introduceţi datele de conectare de mai jos.";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
 "591.text" = "Parola:";
 
 /* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "Trebuie să aibă două-факторной de autentificare pentru persoane cu handicap cupluri manual!";
+"602.text" = "Trebuie să aveţi două-autentificare dezactivat la pereche manual.";
 
 /* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "Ai ieșit, sau a apărut o eroare decriptare portofel de fișier. Introduceți mai jos parola pentru a vă loga.";
+"624.text" = "Te-ai autentificat sau eroare la decriptarea fişierul de portofel. Introduceţi parola de mai jos pentru a va loga.";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
 "625.normalTitle" = "Continua";
@@ -95,10 +95,10 @@
 "630.text" = "Login";
 
 /* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "Uita De Poseta";
+"5gL-FG-Zcc.normalTitle" = "Uita de portofel";
 
 /* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "Dacă doriți pentru a uita acest portofel și să reluați, faceți clic pe \" uita portofelul\".";
+"C0R-wB-wF1.text" = "Dacă doriţi să uite acest portofel şi începe peste, apăsaţi \"Uita portofelul\".";
 
 /* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
 "OKS-md-gDQ.normalTitle" = "Butonul 3";
@@ -110,14 +110,14 @@
 "VcH-wh-BEs.text" = "E-mail:";
 
 /* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
-"jUZ-5W-4qw.text" = "* este necesar pentru Portofel de rezervă";
+"jUZ-5W-4qw.text" = "* Cere";
 
 /* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
-"kK3-Xs-d3Q.text" = "0 oferte";
+"kK3-Xs-d3Q.text" = "0 tranzacţii";
 
 /* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
-"qIf-DM-Gtq.text" = "Manual De Utilizare Pentru Conectarea";
+"qIf-DM-Gtq.text" = "Asocierea manuală";
 
 /* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
-"wvh-x7-hB8.text" = "* minim 10 caractere";
+"wvh-x7-hB8.text" = "* Minim 10 caractere";
 

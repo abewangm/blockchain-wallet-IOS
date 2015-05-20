@@ -2,13 +2,13 @@
 "48.normalTitle" = "שמור";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
-"56.text" = "תווית כתובת";
+"56.text" = "תוויות כתובת";
 
 /* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "כתובת:";
+"57.text" = "כתובת";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Label:";
+"58.text" = "תווית";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "כתובת";
@@ -17,7 +17,7 @@
 "68.text" = "אין כתובות";
 
 /* Class = "IBUILabel"; text = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen."; ObjectID = "69"; */
-"69.text" = "החשבון שלך כנראה לא כל זוג נכון. לחץ על הכפתור בחלק העליון השמאלי של המסך ולעקוב אחר ההוראות על המסך.";
+"69.text" = "החשבון שלך כנראה לא מזווג כראוי. לחץ הכפתור העליון השמאלי של המסך, בצע את ההוראות שעל המסך.";
 
 /* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
 "80.normalTitle" = "ארכיון כתובת";
@@ -29,19 +29,19 @@
 "88.normalTitle" = "בקש תשלום";
 
 /* Class = "IBUILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Bitcoin כתובת ";
+"90.text" = "ביטקוין כתובת ";
 
 /* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
-"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5uh";
+"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
 /* Class = "IBUIButton"; normalTitle = "Copy Address"; ObjectID = "92"; */
 "92.normalTitle" = "העתק כתובת";
 
 /* Class = "IBUILabel"; text = "Amount:"; ObjectID = "100"; */
-"100.text" = "כמות:";
+"100.text" = "סכום:";
 
 /* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "120"; */
-"120.text" = "5 BTC = $10";
+"120.text" = "5 BTC = 10 דולר";
 
 /* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "1sL-eb-Qgc"; */
 "1sL-eb-Qgc.normalTitle" = "סגור";
@@ -50,5 +50,5 @@
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "לסרוק מפתח פרטי";
+"i1j-pG-caF.normalTitle" = "סרוק מפתח פרטי";
 

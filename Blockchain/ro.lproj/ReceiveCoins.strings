@@ -1,23 +1,23 @@
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "48"; */
-"48.normalTitle" = "Salvare";
+"48.normalTitle" = "Salvaţi";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
-"56.text" = "Adresa Tag-Uri";
+"56.text" = "Eticheta adresa";
 
 /* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Adresa:";
+"57.text" = "Adresa";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Tag-uri:";
+"58.text" = "Eticheta";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "Adresa";
 
 /* Class = "IBUILabel"; text = "No Addresses"; ObjectID = "68"; */
-"68.text" = "Nu Există Nici O Adresa";
+"68.text" = "Nicio adresă";
 
 /* Class = "IBUILabel"; text = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen."; ObjectID = "69"; */
-"69.text" = "Contul dvs., probabil, nu este asociat în mod corespunzător. Faceți clic pe butonul din colțul din dreapta sus al ecranului, apoi urmați instrucțiunile de pe ecran.";
+"69.text" = "Contul dvs., probabil, nu este împerecheat corect. Faceţi clic pe butonul din partea de sus din stânga a ecranului şi urmaţi instrucţiunile de pe ecran.";
 
 /* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
 "80.normalTitle" = "ARHIVA ADRESA";
@@ -29,10 +29,10 @@
 "88.normalTitle" = "CEREREA DE PLATĂ";
 
 /* Class = "IBUILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Bitcoin-Adresa ";
+"90.text" = "Bitcoin adresa ";
 
 /* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
-"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5uh";
+"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
 /* Class = "IBUIButton"; normalTitle = "Copy Address"; ObjectID = "92"; */
 "92.normalTitle" = "COPIAŢI ADRESA";
@@ -41,7 +41,7 @@
 "100.text" = "Suma:";
 
 /* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "120"; */
-"120.text" = "5 BTC = $10";
+"120.text" = "5 BTC = 10 DOLARI";
 
 /* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "1sL-eb-Qgc"; */
 "1sL-eb-Qgc.normalTitle" = "Închide";
@@ -50,5 +50,5 @@
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "Scanare A Cheii Private";
+"i1j-pG-caF.normalTitle" = "Scanare cheie privată";
 

@@ -1,11 +1,11 @@
 /* Class = "IBUIButton"; normalTitle = "Send Payment"; ObjectID = "4"; */
-"4.normalTitle" = "보내기";
+"4.normalTitle" = "전송";
 
 /* Class = "IBUILabel"; text = "From:"; ObjectID = "7"; */
-"7.text" = "보낸 사람";
+"7.text" = "From";
 
 /* Class = "IBUILabel"; text = "To:"; ObjectID = "13"; */
-"13.text" = "받는 사람";
+"13.text" = "To";
 
 /* Class = "IBUITextField"; text = "0.00"; ObjectID = "52"; */
 "52.text" = "0.00";
@@ -14,7 +14,7 @@
 "57.text" = "5 BTC = $10";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "레이블:";
+"61.text" = "이름:";
 
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
 "63.normalTitle" = "저장";
@@ -26,7 +26,7 @@
 "65.text" = "주소:";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "라벨 주소";
+"67.text" = "주소 이름 지정";
 
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -38,10 +38,10 @@
 "8LN-Tc-WVh.normalTitle" = "완료";
 
 /* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "잠시만 기다려 주십시오";
+"Zgn-Wx-Uwx.text" = "기다려주세요";
 
 /* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "지불 보내기";
+"aKC-Q2-phD.text" = "결제 전송";
 
 /* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "모든 주소";

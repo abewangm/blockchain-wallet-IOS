@@ -11,7 +11,7 @@
 "52.text" = "0.00";
 
 /* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 BTC = $10";
+"57.text" = "BTC 5 = $10";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
 "61.text" = "Etiqueta:";
@@ -26,22 +26,22 @@
 "65.text" = "Dirección:";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Dirección De La Etiqueta";
+"67.text" = "Etiquetar dirección";
 
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
 "6zi-8R-Tmt.normalTitle" = "BTC";
 
 /* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
-"7ho-GV-ikp.text" = "Cantidad";
+"7ho-GV-ikp.text" = "Monto";
 
 /* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "8LN-Tc-WVh"; */
 "8LN-Tc-WVh.normalTitle" = "Hecho";
 
 /* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Por Favor Espere";
+"Zgn-Wx-Uwx.text" = "Espera";
 
 /* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "El Envío De Pago";
+"aKC-Q2-phD.text" = "Enviar pago";
 
 /* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Cualquier dirección";

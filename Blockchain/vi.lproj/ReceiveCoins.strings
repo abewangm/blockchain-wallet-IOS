@@ -5,10 +5,10 @@
 "56.text" = "Nhãn địa chỉ";
 
 /* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Địa chỉ:";
+"57.text" = "Địa chỉ";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Nhãn:";
+"58.text" = "Nhãn";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "Địa chỉ";

@@ -11,13 +11,13 @@
 "52.text" = "0.00";
 
 /* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 BTC = $10";
+"57.text" = "5 BTC = 10 DOLARI";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "Tag-uri:";
+"61.text" = "Etichetă:";
 
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
-"63.normalTitle" = "Salvare";
+"63.normalTitle" = "Salvaţi";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "64"; */
 "64.text" = "Adresa";
@@ -26,7 +26,7 @@
 "65.text" = "Adresa:";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Adresa Tag-Uri";
+"67.text" = "Eticheta adresa";
 
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -38,10 +38,10 @@
 "8LN-Tc-WVh.normalTitle" = "Făcut";
 
 /* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Vă Rugăm Să Așteptați";
+"Zgn-Wx-Uwx.text" = "te rog să aştepţi";
 
 /* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Trimiterea De Plată";
+"aKC-Q2-phD.text" = "Trimiterea de plată";
 
 /* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Orice adresă";

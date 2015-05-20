@@ -2,10 +2,10 @@
 "257.text" = "0 BTC";
 
 /* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "lisäys";
+"263.text" = "lastaus";
 
 /* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "Automaattinen Liittäminen";
+"353.text" = "Automaattinen pariliitoksen";
 
 /* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
 "358.text" = "Luo uusi lompakko";
@@ -14,40 +14,40 @@
 "360.text" = "1";
 
 /* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Kirjaudu Blockchain Lompakon kautta PC-tai Mac-osoitteesta http://blockchain.info/wallet";
+"361.text" = "Kirjaudu Blockchain lompakko kautta PC- tai Mac http://blockchain.info/wallet";
 
 /* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
 /* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Napsauta [Tilin Asetukset] - painiketta. Valitse sitten [Laitteet] - välilehti.";
+"364.text" = "Klikkaa profiilia-painiketta ja valitse Mobile.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Napsauta 'Näytä Pairing Code' paljastaa QR-Koodi (neliö, musta & valkoinen viivakoodi). Skannaa koodi, kameran.";
+"369.text" = "Valitsemalla Näytä pariliitoksen koodi paljastaa QR Code - neliö musta ja valkoinen viivakoodi. Skannaa koodi kameran kanssa.";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "Scan Pairing Code";
+"370.normalTitle" = "Skannaa laiteparikoodi";
 
 /* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
-"376.normalTitle" = "Painike 2";
+"376.normalTitle" = "Nappi 2";
 
 /* Class = "IBUIButton"; normalTitle = "Button 1"; ObjectID = "377"; */
 "377.normalTitle" = "Painike 1";
 
 /* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "Jos sinulla on jo Blockchain Lompakko, valitse Pari Laitetta; muussa tapauksessa valitse Luo Lompakon. Se on Ilmainen! Ei sähköpostiosoitetta tarvitaan.";
+"378.text" = "Jos sinulla on jo Blockchain lompakko, valitse pariliitos; Muussa tapauksessa valita luo lompakko.    Se on ilmainen! Ei sähköposti vaaditaan.";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "Tervetuloa Blockchain Lompakko";
+"380.text" = "Tervetuloa Blockchain lompakko";
 
 /* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
-"2je-u4-PB2.text" = "TAPAHTUMAT";
+"2je-u4-PB2.text" = "Tapahtumat";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Tervetuloa Blockchain Lompakko. Tämä näyttö ilmoittaa tapahtumistasi. Jos olet jo tehnyt tapahtumat tämän lompakon, on ehkä ollut virhe yhteyttä palvelimelle. Ole hyvä ja varmista, että tilisi on oikein asennus ja sinulla on toimiva internet-yhteys.";
+"387.text" = "Tapahtumia ei vielä";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
 "394.text" = "Salasana:";
@@ -56,13 +56,13 @@
 "396.text" = "Vahvista:";
 
 /* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "Luo Lompakon";
+"398.normalTitle" = "Luo lompakko";
 
 /* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "Salasana Vaaditaan -";
+"465.text" = "Salasana vaaditaan";
 
 /* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "Salasanan Kysely Kuvaus";
+"467.text" = "Salasana palvelupyynnön kuvaus";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
 "468.text" = "Salasana:";
@@ -71,19 +71,19 @@
 "471.normalTitle" = "Jatka";
 
 /* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
-"586.text" = "Lompakko Tunniste:";
+"586.text" = "Lompakko tunnus:";
 
 /* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "Olet valinnut pari manuaalisesti (tai automaattinen liittäminen ei ole yhteensopiva laitteen kanssa). Ole hyvä ja kirjoita sisäänkirjautumistietosi alla.";
+"588.text" = "Olet valinnut pari käsin tai automaattinen pariliitoksen tueta laitteen kanssa. Kirjoita tunnuksesi alla.";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
 "591.text" = "Salasana:";
 
 /* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "Sinun täytyy olla kaksiosainen todennus ei käytössä pari käsin!";
+"602.text" = "Sinulla on kaksivaiheinen todennus pois pari käsin.";
 
 /* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "Olet kirjautunut ulos tai oli virhe salauksen lompakon tiedosto. Kirjoita salasanasi alla voit kirjautua sisään.";
+"624.text" = "Olet kirjautunut ulos tai salauksen lompakko tiedosto virhe. Kirjoita salasana alla jotta johdonmukaisuus.";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
 "625.normalTitle" = "Jatka";
@@ -92,13 +92,13 @@
 "627.text" = "Salasana:";
 
 /* Class = "IBUILabel"; text = "Login"; ObjectID = "630"; */
-"630.text" = "Kirjautuminen";
+"630.text" = "Kirjaudu sisään";
 
 /* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "Unohda Lompakko";
+"5gL-FG-Zcc.normalTitle" = "Unohda lompakko";
 
 /* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "Jos haluat unohda tämä lompakko ja aloittaa alusta, paina \" Unohda Lompakko'.";
+"C0R-wB-wF1.text" = "Jos haluat unohtaa tämä lompakko ja aloittaa alusta, paina unohtaa lompakon.";
 
 /* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
 "OKS-md-gDQ.normalTitle" = "Painike 3";
@@ -110,14 +110,14 @@
 "VcH-wh-BEs.text" = "Sähköposti:";
 
 /* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
-"jUZ-5W-4qw.text" = "* tarvitaan lompakko varmuuskopiot";
+"jUZ-5W-4qw.text" = "* Pakollinen";
 
 /* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
-"kK3-Xs-d3Q.text" = "0 Liiketoimet";
+"kK3-Xs-d3Q.text" = "0 tapahtumat";
 
 /* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
-"qIf-DM-Gtq.text" = "Manuaalinen Pariliitoksen";
+"qIf-DM-Gtq.text" = "Manuaalinen pariliitoksen";
 
 /* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
-"wvh-x7-hB8.text" = "* vähintään 10 merkkiä pitkä";
+"wvh-x7-hB8.text" = "* Vähintään 10 merkkiä";
 

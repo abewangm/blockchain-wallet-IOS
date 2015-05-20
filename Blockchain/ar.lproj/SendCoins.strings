@@ -11,7 +11,7 @@
 "52.text" = "0.00";
 
 /* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 BTC = $10";
+"57.text" = "5 BTC = 10 دولار";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
 "61.text" = "التسمية:";
@@ -20,13 +20,13 @@
 "63.normalTitle" = "حفظ";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "64"; */
-"64.text" = "العنوان";
+"64.text" = "عنوان";
 
 /* Class = "IBUILabel"; text = "Address:"; ObjectID = "65"; */
 "65.text" = "العنوان:";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "تسمية العنوان";
+"67.text" = "عنوان التسمية";
 
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -38,7 +38,7 @@
 "8LN-Tc-WVh.normalTitle" = "عمله";
 
 /* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "يرجى الانتظار";
+"Zgn-Wx-Uwx.text" = "الرجاء الانتظار";
 
 /* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
 "aKC-Q2-phD.text" = "إرسال الدفع";

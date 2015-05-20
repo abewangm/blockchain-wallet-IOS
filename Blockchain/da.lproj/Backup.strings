@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Kontroller, at du skrev ned backup sætningen";
+
+/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+"6zt-Xf-txg.text" = "Tryk og hold for at afsløre ordet";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
+"9A7-TT-PzN.title" = "Backup tegnebog";
+
+/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Du har endnu ikke sikkerhedskopieret din tegnebog";
+
+/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
+"EQM-OM-jK8.normalTitle" = "KONTROLLER";
+
+/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+"9hR-tm-aq5.placeholder" = "første ord";
+
+/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
+"kcC-2S-PfL.placeholder" = "tredje ord";
+
+/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+"Fda-Z4-3e7.placeholder" = "sjette ord";
+
+/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+"NaV-Bk-o1b.text" = "Sådan gendannes din tegnebog";
+
+/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+"T4p-mz-siC.normalTitle" = "KONTROLLERE BACKUP";
+
+/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Skrive ord på et ark papir i den nøjagtige rækkefølge ";
+
+/* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
+"dkQ-nj-Pkf.normalTitle" = "NÆSTE ORD";
+
+/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Sikkerhedskopiering af din tegnebog er let og sikrer du ikke mister adgang til dine midler, selv om vores service bliver utilgængelig.";
+

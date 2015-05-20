@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Vérifiez que vous avez notés à l'expression de sauvegarde";
+
+/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+"6zt-Xf-txg.text" = "Appuyez et maintenez pour révéler le mot";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
+"9A7-TT-PzN.title" = "Sauvegarde Wallet";
+
+/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Vous n'avez pas sauvegardé votre portefeuille encore";
+
+/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
+"EQM-OM-jK8.normalTitle" = "VÉRIFIER";
+
+/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+"9hR-tm-aq5.placeholder" = "premier mot";
+
+/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
+"kcC-2S-PfL.placeholder" = "troisième mot";
+
+/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+"Fda-Z4-3e7.placeholder" = "sixième mot";
+
+/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+"NaV-Bk-o1b.text" = "Comment restaurer votre portefeuille";
+
+/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+"T4p-mz-siC.normalTitle" = "VÉRIFIER LA SAUVEGARDE";
+
+/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Écrire les mots sur une feuille de papier dans l'ordre qu'ils apparaissent ";
+
+/* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
+"dkQ-nj-Pkf.normalTitle" = "MOT SUIVANT";
+
+/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Sauvegarde de votre portefeuille est facile et assure que vous ne perdrez pas d'accès à vos fonds, même si notre service n'est plus disponible.";
+

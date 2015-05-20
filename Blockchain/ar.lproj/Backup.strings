@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "تأكد من أن قمت بكتابته عبارة النسخ الاحتياطي";
+
+/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+"6zt-Xf-txg.text" = "اضغط باستمرار لتكشف عن كلمة";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
+"9A7-TT-PzN.title" = "محفظة احتياطية";
+
+/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "أنت قد لا احتياطياً المحفظة الخاصة بك حتى الآن";
+
+/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
+"EQM-OM-jK8.normalTitle" = "التحقق";
+
+/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+"9hR-tm-aq5.placeholder" = "الكلمة الأولى";
+
+/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
+"kcC-2S-PfL.placeholder" = "الكلمة الثالثة";
+
+/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+"Fda-Z4-3e7.placeholder" = "الكلمة السادسة";
+
+/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+"NaV-Bk-o1b.text" = "كيفية استعادة المحفظة الخاصة بك";
+
+/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+"T4p-mz-siC.normalTitle" = "التحقق من النسخ الاحتياطي";
+
+/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "كتابة العبارة على ورقة في الترتيب الدقيق الذي تظهر به ";
+
+/* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
+"dkQ-nj-Pkf.normalTitle" = "الكلمة التالية";
+
+/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "النسخ الاحتياطي للمحفظة الخاصة بك من السهل ويضمن لن تفقد الوصول إلى الأموال الخاصة بك، حتى لو كان لدينا خدمة يصبح غير متوفر.";
+

@@ -8,13 +8,13 @@
 "13.text" = "Do";
 
 /* Class = "IBUITextField"; text = "0.00"; ObjectID = "52"; */
-"52.text" = "0.00";
+"52.text" = "0,00";
 
 /* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 BTC = $10";
+"57.text" = "5 BTC = 10 DOLARŮ";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "Označení:";
+"61.text" = "Popisek:";
 
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
 "63.normalTitle" = "Uložit";
@@ -26,7 +26,7 @@
 "65.text" = "Adresa:";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Label Adresa";
+"67.text" = "Popisek adresy";
 
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -38,10 +38,10 @@
 "8LN-Tc-WVh.normalTitle" = "Hotovo";
 
 /* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Prosím Čekejte";
+"Zgn-Wx-Uwx.text" = "Počkejte prosím";
 
 /* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Zasílání Platebních";
+"aKC-Q2-phD.text" = "Odesílání platby";
 
 /* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Libovolná adresa";

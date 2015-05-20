@@ -1,11 +1,11 @@
 /* Class = "IBUILabel"; text = "0 BTC"; ObjectID = "257"; */
-"257.text" = "0 BTC";
+"257.text" = "BTC 0";
 
 /* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
 "263.text" = "carga";
 
 /* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "Emparejamiento Automático";
+"353.text" = "Sincronización automática";
 
 /* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
 "358.text" = "Crear una nueva carpeta";
@@ -14,22 +14,22 @@
 "360.text" = "1";
 
 /* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Inicio de sesión de su Blockchain Cartera a través de su PC o Mac en http://blockchain.info/wallet";
+"361.text" = "Ingresa a tu billetera Blockchain través de su PC o Mac en http://blockchain.info/wallet";
 
 /* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
 /* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Haga clic en [Configuración de la Cuenta]. A continuación, elija la [Dispositivos] ficha.";
+"364.text" = "Haz clic en el botón de perfil, luego elija móvil.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Haga clic en \" Mostrar Código de Emparejamiento' para revelar un Código QR (un cuadrado en blanco y negro de código de barras). Escanea el código con la cámara.";
+"369.text" = "Haga clic en Mostrar el código de emparejamiento para revelar un código QR - un código de barras cuadradas blanco y negro. Escanear el código con tu cámara.";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "Escaneo De Código De Emparejamiento";
+"370.normalTitle" = "Escáner de código de emparejamiento";
 
 /* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
 "376.normalTitle" = "Botón 2";
@@ -38,16 +38,16 @@
 "377.normalTitle" = "Botón 1";
 
 /* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "Si usted ya tiene una Blockchain Monedero, seleccione el Par de Dispositivo; de lo contrario, seleccione Crear Carpeta. Es Gratis! Correo electrónico No es necesario.";
+"378.text" = "Si usted ya tiene una cartera de Blockchain, elegir dispositivo par; en caso contrario, elija crear cartera.    ¡ Es gratis! Ningún email requerido.";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "Bienvenido a Blockchain Cartera";
+"380.text" = "¡ Bienvenido a cartera Blockchain";
 
 /* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
-"2je-u4-PB2.text" = "TRANSACCIONES";
+"2je-u4-PB2.text" = "Transacciones";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Bienvenido a Blockchain Cartera. Esta pantalla muestra sus transacciones. Si ya ha realizado transacciones con esta cartera, puede haber sido un error de ponerse en contacto con nuestro servidor. Por favor, asegúrese de que su cuenta está correctamente configurado y de tener una conexión activa a internet.";
+"387.text" = "Aún no hay transacciones";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
 "394.text" = "Contraseña:";
@@ -56,13 +56,13 @@
 "396.text" = "Confirmar:";
 
 /* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "Crear Cartera";
+"398.normalTitle" = "Crear cartera";
 
 /* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "Requiere Contraseña";
+"465.text" = "Requerida contraseña";
 
 /* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "Solicitud De Contraseña Descripción";
+"467.text" = "Descripción de solicitud de contraseña";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
 "468.text" = "Contraseña:";
@@ -71,19 +71,19 @@
 "471.normalTitle" = "Continuar";
 
 /* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
-"586.text" = "Cartera Identificador:";
+"586.text" = "Identificador de cartera:";
 
 /* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "Usted ha elegido para vincular manualmente (o el emparejamiento automático no es compatible con su dispositivo). Por favor, introduzca sus detalles de inicio de sesión a continuación.";
+"588.text" = "Ha decidido asociar manualmente (o sincronización automática no es compatible con su dispositivo). Por favor ingrese sus datos de inicio de sesión más abajo.";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
 "591.text" = "Contraseña:";
 
 /* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "Usted debe tener la autenticación de dos factores movilidad a la par manualmente!";
+"602.text" = "Debe tener deshabilitada manualmente a la par de autenticación de dos factores.";
 
 /* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "Se desconectan o hubo un error al descifrar su cartera de archivo. Introduzca su contraseña de inicio de sesión.";
+"624.text" = "Que se haya registrado hacia fuera o hubo un error descifrar tu archivo de cartera. Ingrese su contraseña abajo para iniciar la sesión.";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
 "625.normalTitle" = "Continuar";
@@ -95,10 +95,10 @@
 "630.text" = "Inicio de sesión";
 
 /* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "Te Olvides La Cartera";
+"5gL-FG-Zcc.normalTitle" = "Olvídate de cartera";
 
 /* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "Si desea olvidarse de esta cartera y volver a empezar, pulse \" Olvide la Cartera'.";
+"C0R-wB-wF1.text" = "Si desea olvidarse de esta cartera y empezar de nuevo, pulse 'Olvida billetera'.";
 
 /* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
 "OKS-md-gDQ.normalTitle" = "Botón 3";
@@ -110,14 +110,14 @@
 "VcH-wh-BEs.text" = "Correo electrónico:";
 
 /* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
-"jUZ-5W-4qw.text" = "* es necesario para la cartera de copias de seguridad";
+"jUZ-5W-4qw.text" = "* Requerido";
 
 /* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
-"kK3-Xs-d3Q.text" = "0 Transacciones";
+"kK3-Xs-d3Q.text" = "0 transacciones";
 
 /* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
-"qIf-DM-Gtq.text" = "Manual De Emparejamiento";
+"qIf-DM-Gtq.text" = "Sincronización manual";
 
 /* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
-"wvh-x7-hB8.text" = "* mínimo 10 caracteres";
+"wvh-x7-hB8.text" = "* Mínimo 10 caracteres";
 

@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Verifiëren dat u de back-up zin opschreef";
+
+/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+"6zt-Xf-txg.text" = "Houd ingedrukt om te onthullen het woord";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
+"9A7-TT-PzN.title" = "Back-portemonnee";
+
+/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "U hebt niet gesteund uw portemonnee nog";
+
+/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
+"EQM-OM-jK8.normalTitle" = "CONTROLEER OF";
+
+/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+"9hR-tm-aq5.placeholder" = "eerste woord";
+
+/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
+"kcC-2S-PfL.placeholder" = "derde woord";
+
+/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+"Fda-Z4-3e7.placeholder" = "zesde woord";
+
+/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+"NaV-Bk-o1b.text" = "Hoe om te herstellen van uw portemonnee";
+
+/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+"T4p-mz-siC.normalTitle" = "BACK-UPS VERIFIËREN";
+
+/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Schrijf de woorden op een vel papier in de exacte volgorde ";
+
+/* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
+"dkQ-nj-Pkf.normalTitle" = "VOLGENDE WOORD";
+
+/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Back-up van uw portemonnee is eenvoudig en zorgt ervoor dat verliest u geen toegang tot uw geld, zelfs als onze service niet meer beschikbaar is.";
+

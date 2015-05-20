@@ -2,10 +2,10 @@
 "257.text" = "0 BTC";
 
 /* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "loading";
+"263.text" = "טעינה";
 
 /* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "התאמה אוטומטית";
+"353.text" = "זיווג אוטומטי";
 
 /* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
 "358.text" = "ליצור ארנק חדש";
@@ -14,55 +14,55 @@
 "360.text" = "1";
 
 /* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "התחבר שלך Blockchain הארנק שלך דרך PC או ב-Mac http://blockchain.info/wallet";
+"361.text" = "ההתחברות שלך לארנק Blockchain דרך PC או Mac שלך ב- http://blockchain.info/wallet";
 
 /* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
 /* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "לחץ על [Account Settings] כפתור. לאחר מכן בחר [ההתקנים] הכרטיסייה.";
+"364.text" = "לחץ על לחצן פרופיל ולאחר מכן בחר ניידים.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "לחץ על 'הצג זיווג קוד' כדי לחשוף קוד QR (ריבוע שחור & לבן ברקוד). סרוק את קוד עם המצלמה שלך.";
+"369.text" = "לחץ על הצג קוד השיוך לחשוף קוד QR - ברקוד מרובע בשחור-לבן. לסרוק את הקוד עם המצלמה שלך.";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "סריקה זיווג קוד";
+"370.normalTitle" = "לסרוק קוד התאמה";
 
 /* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
-"376.normalTitle" = "כפתור 2";
+"376.normalTitle" = "לחצן 2";
 
 /* Class = "IBUIButton"; normalTitle = "Button 1"; ObjectID = "377"; */
-"377.normalTitle" = "כפתור 1";
+"377.normalTitle" = "לחצן 1";
 
 /* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "אם כבר יש לך Blockchain הארנק, לבחור זוג התקן; אחרת, לבחור ליצור את הארנק. זה בחינם! אין הדוא \" ל נדרשים.";
+"378.text" = "אם כבר יש לך ארנק Blockchain, בחר התקן זוג; אחרת, בחר ליצור את הארנק.    זה בחינם! אין דוא ל חובה.";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "ברוכים הבאים Blockchain הארנק";
+"380.text" = "ברוכים הבאים Blockchain את הארנק";
 
 /* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
 "2je-u4-PB2.text" = "תנועות";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "ברוכים הבאים Blockchain הארנק. מסך זה מציג העסקאות שלך. אם יש לך כבר נעשה עסקאות עם זה בארנק, יש עשוי להיות שגיאה יצירת קשר עם השרת שלנו. נא לוודא את החשבון שלך בצורה נכונה את תוכנית ההתקנה יש לך חיבור אינטרנט פעיל.";
+"387.text" = "אין תנועות עדיין";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
 "394.text" = "סיסמה:";
 
 /* Class = "IBUILabel"; text = "Confirm:"; ObjectID = "396"; */
-"396.text" = "לאשר:";
+"396.text" = "אשר:";
 
 /* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "ליצור ארנק";
+"398.normalTitle" = "ליצור את הארנק";
 
 /* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "הסיסמה הנדרשת";
+"465.text" = "דרושה סיסמה";
 
 /* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "בקשת סיסמא תיאור";
+"467.text" = "תיאור הבקשה סיסמה";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
 "468.text" = "סיסמה:";
@@ -71,19 +71,19 @@
 "471.normalTitle" = "המשך";
 
 /* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
-"586.text" = "הארנק כללי:";
+"586.text" = "מזהה את הארנק:";
 
 /* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "אתה בחרת צמד באופן ידני (או אוטומטי זיווג לא נתמך עם המכשיר). נא להזין את פרטי ההתחברות שלך להלן.";
+"588.text" = "בחרת זוג ידנית (או שיוך אוטומטי אינו נתמך עם המכשיר). הזינו את פרטי ההתחברות שלך למטה.";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
 "591.text" = "סיסמה:";
 
 /* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "אתה חייב להיות שני-גורם אימות מושבת זוג באופן ידני!";
+"602.text" = "יש אימות דו-גורמי זמין על זוג באופן ידני.";
 
 /* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "יש לך מתנתק או הייתה שגיאה decrypting את הארנק קובץ. הזן את הסיסמה שלך למטה על מנת להתחבר.";
+"624.text" = "התחברת או אירעה שגיאה בעת פענוח קובץ הארנק שלך. הזן את הסיסמה שלך מתחת כניסה.";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
 "625.normalTitle" = "המשך";
@@ -95,28 +95,28 @@
 "630.text" = "כניסה";
 
 /* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "לשכוח את הארנק";
+"5gL-FG-Zcc.normalTitle" = ". שכח את הארנק";
 
 /* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "אם אתה רוצה לשכוח את הארנק ולהתחיל מחדש, לחץ על 'לשכוח את הארנק'.";
+"C0R-wB-wF1.text" = "אם תרצה לשכוח את הארנק הזה ולהתחיל מחדש, הקש \"שכח את הארנק\".";
 
 /* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
-"OKS-md-gDQ.normalTitle" = "כפתור 3";
+"OKS-md-gDQ.normalTitle" = "לחצן 3";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "TzC-Tw-04r"; */
 "TzC-Tw-04r.normalTitle" = "המשך";
 
 /* Class = "IBUILabel"; text = "Email:"; ObjectID = "VcH-wh-BEs"; */
-"VcH-wh-BEs.text" = "דוא \" ל:";
+"VcH-wh-BEs.text" = "דוא:";
 
 /* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
-"jUZ-5W-4qw.text" = "* נדרשת עבור הארנק גיבויים";
+"jUZ-5W-4qw.text" = "* חובה";
 
 /* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
-"kK3-Xs-d3Q.text" = "0 עסקאות";
+"kK3-Xs-d3Q.text" = "תנועות 0";
 
 /* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
-"qIf-DM-Gtq.text" = "ידנית של זיווג";
+"qIf-DM-Gtq.text" = "זיווג ידני";
 
 /* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
 "wvh-x7-hB8.text" = "* מינימום 10 תווים";

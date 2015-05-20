@@ -1,23 +1,23 @@
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "48"; */
-"48.normalTitle" = "Spar";
+"48.normalTitle" = "Gem";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
-"56.text" = "Label-Adresse";
+"56.text" = "Label adresse";
 
 /* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Adresse:";
+"57.text" = "Adresse";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Mærke:";
+"58.text" = "Etiket";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "Adresse";
 
 /* Class = "IBUILabel"; text = "No Addresses"; ObjectID = "68"; */
-"68.text" = "Ingen Adresser";
+"68.text" = "Ingen adresser";
 
 /* Class = "IBUILabel"; text = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen."; ObjectID = "69"; */
-"69.text" = "Din konto er sandsynligvis ikke forbundet korrekt. Klik på knappen i det øverste venstre side af skærmen, og følg vejledningen på skærmen.";
+"69.text" = "Din konto sandsynligvis ikke er parret korrekt. Klik på knappen i øverste venstre hjørne af skærmen og følg vejledningen på skærmen.";
 
 /* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
 "80.normalTitle" = "ARKIV ADRESSE";
@@ -29,10 +29,10 @@
 "88.normalTitle" = "ANMODNING OM BETALING";
 
 /* Class = "IBUILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Bitcoin Adresse ";
+"90.text" = "Bitcoin adresse ";
 
 /* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
-"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5uh";
+"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
 /* Class = "IBUIButton"; normalTitle = "Copy Address"; ObjectID = "92"; */
 "92.normalTitle" = "KOPIERE ADRESSEN";
@@ -50,5 +50,5 @@
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "Scan Private Nøgle";
+"i1j-pG-caF.normalTitle" = "Skan Private nøgle";
 

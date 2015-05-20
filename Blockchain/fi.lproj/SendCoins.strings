@@ -8,13 +8,13 @@
 "13.text" = "Jotta";
 
 /* Class = "IBUITextField"; text = "0.00"; ObjectID = "52"; */
-"52.text" = "0.00";
+"52.text" = "0,00";
 
 /* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 BTC = $10";
+"57.text" = "5 BTC = 10 DOLLARIA";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "Etiketti:";
+"61.text" = "Label:";
 
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
 "63.normalTitle" = "Tallenna";
@@ -26,7 +26,7 @@
 "65.text" = "Osoite:";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Label-Osoite";
+"67.text" = "Osoitetarra";
 
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -38,10 +38,10 @@
 "8LN-Tc-WVh.normalTitle" = "Tehnyt";
 
 /* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Ole Hyvä Ja Odota";
+"Zgn-Wx-Uwx.text" = "Ole hyvä ja odota";
 
 /* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Lähetetään Maksu";
+"aKC-Q2-phD.text" = "Lähetät maksun";
 
 /* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Osoite";

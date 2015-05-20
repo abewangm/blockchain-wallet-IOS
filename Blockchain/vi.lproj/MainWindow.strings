@@ -20,13 +20,13 @@
 "363.text" = "2";
 
 /* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Nhấp vào nút [cài đặt tài khoản]. Sau đó chọn tab [thiết bị].";
+"364.text" = "Nhấp vào nút hồ sơ, sau đó chọn điện thoại di động.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Nhấp vào 'Hiển thị mã số kết nối' để lộ một mã QR (một mã vạch vuông đen & trắng). Quét mã với máy ảnh của bạn.";
+"369.text" = "Nhấp vào Hiển thị mã ghép nối để lộ một mã QR - mã vạch vuông màu đen và trắng. Quét mã với máy ảnh của bạn.";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
 "370.normalTitle" = "Quét ghép mã";
@@ -44,10 +44,10 @@
 "380.text" = "Chào mừng đến với Blockchain ví";
 
 /* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
-"2je-u4-PB2.text" = "GIAO DỊCH";
+"2je-u4-PB2.text" = "Giao dịch";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Chào mừng đến với Blockchain ví. Màn hình này cho thấy giao dịch của bạn. Nếu bạn đã thực hiện các giao dịch với chi tiêu này, có thể đã có một lỗi liên hệ với máy chủ của chúng tôi. Hãy chắc chắn rằng tài khoản của bạn một cách chính xác là thiết lập và bạn có kết nối internet hoạt động.";
+"387.text" = "Giao dịch không được";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
 "394.text" = "Mật khẩu:";
@@ -80,7 +80,7 @@
 "591.text" = "Mật khẩu:";
 
 /* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "Bạn phải xác thực 2 yếu tố vô hiệu hóa cặp bằng tay!";
+"602.text" = "Bạn phải xác thực 2 yếu tố vô hiệu hóa cặp theo cách thủ công.";
 
 /* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
 "624.text" = "Bạn đã đăng nhập hoặc đã có một lỗi giải mã tập tin ví của bạn. Nhập mật khẩu của bạn dưới đây để đăng nhập.";
@@ -110,7 +110,7 @@
 "VcH-wh-BEs.text" = "Thư điện tử:";
 
 /* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
-"jUZ-5W-4qw.text" = "* cần thiết để sao lưu ví";
+"jUZ-5W-4qw.text" = "* Bắt buộc";
 
 /* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
 "kK3-Xs-d3Q.text" = "Giao dịch 0";
@@ -119,5 +119,5 @@
 "qIf-DM-Gtq.text" = "Hướng dẫn sử dụng kết nối";
 
 /* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
-"wvh-x7-hB8.text" = "* tối thiểu 10 ký tự";
+"wvh-x7-hB8.text" = "Tối thiểu 10 ký tự";
 

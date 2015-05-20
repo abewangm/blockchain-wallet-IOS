@@ -2,10 +2,10 @@
 "257.text" = "0 BTC";
 
 /* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "yükleme";
+"263.text" = "Yükleme";
 
 /* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "Otomatik Eşleştirme";
+"353.text" = "Otomatik eþleþtirme";
 
 /* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
 "358.text" = "Yeni bir cüzdan oluşturun";
@@ -14,110 +14,110 @@
 "360.text" = "1";
 
 /* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Http://blockchain.info/PC veya Mac üzerinden Blockchain Cüzdan giriş wallet";
+"361.text" = "Blockchain cüzdan yolu ile PC veya Mac için giriş yapınız http://blockchain.info/wallet";
 
 /* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
 /* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Tıklayın [Ayarlar] düğmesine Hesabı. Sonra [Devices] sekmesini seçin.";
+"364.text" = "Profil düğmesini tıklatın, ardından cep seçin.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "'Eşleştirme Kodu' QR Kod, kare siyah-beyaz barkod)ortaya koyuyor. Senin kodu kamera ile tarayın.";
+"369.text" = "Bir QR kodu - kare siyah beyaz barkod ortaya çıkarmak için eşleştirme kodu göster'i tıklatın. Kod kamera ile tarayın.";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "Tarama Eşleştirme Kodu";
+"370.normalTitle" = "Eşleştirme kodu tarama";
 
 /* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
-"376.normalTitle" = "Düğmesi 2";
+"376.normalTitle" = "Düğmesine 2";
 
 /* Class = "IBUIButton"; normalTitle = "Button 1"; ObjectID = "377"; */
-"377.normalTitle" = "Düğme 1";
+"377.normalTitle" = "Düğmesini 1";
 
 /* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "Zaten Blockchain bir Cüzdan, Çift Aygıt seçin; aksi halde, Cüzdan Oluştur'u seçin. Ücretsiz! No e-posta adresi gereklidir.";
+"378.text" = "Blockchain cüzdan zaten varsa, çift aygıtı seçin; Aksi takdirde, cüzdan oluşturmak seçin.    O ücretsizdir! Hiçbir e-posta gerekli.";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "Blockchain hoşgeldiniz Cüzdan";
+"380.text" = "Blockchain m-cüzdan'a hoş geldiniz";
 
 /* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
-"2je-u4-PB2.text" = "HAREKETLERİ";
+"2je-u4-PB2.text" = "Hareketleri";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Cüzdan Blockchain hoş geldiniz. Bu ekran işlemlerinizi gösterir. Zaten bu cüzdan ile yapılan işlemler varsa, orada bir hata bizim server temas olmuş olabilir. Lütfen hesabınızı doğru şekilde kurulduğundan emin olun ve etkin bir internet bağlantısı gerekir.";
+"387.text" = "Henüz hiçbir hareket";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
 "394.text" = "Şifre:";
 
 /* Class = "IBUILabel"; text = "Confirm:"; ObjectID = "396"; */
-"396.text" = "Onaylamak:";
+"396.text" = "Onayla:";
 
 /* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "Cüzdan Oluşturmak ";
+"398.normalTitle" = "M-cüzdan oluşturun";
 
 /* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "Parola Gerekli";
+"465.text" = "Parola gerekli";
 
 /* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "Şifre İsteği ";
+"467.text" = "Parola isteği açıklaması";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
 "468.text" = "Şifre:";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "471"; */
-"471.normalTitle" = "Devam";
+"471.normalTitle" = "Devam etmek";
 
 /* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
-"586.text" = "Cüzdan Tanımlayıcı:";
+"586.text" = "M-cüzdan tanımlayıcısı:";
 
 /* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "El ile veya otomatik eşleştirme cihazınız ile desteklenen değildir)çifti için seçtiniz. Oturum açma bilgilerinizi aşağıya girin lütfen.";
+"588.text" = "El ile eşleştirmek seçtiğiniz (veya aygıtınızla otomatik eşleştirme desteklenmez). Lütfen oturum açma bilgilerinizi aşağıya girin.";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
 "591.text" = "Şifre:";
 
 /* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "İki faktörlü kimlik doğrulama el ile çift devre dışı olması gerekir!";
+"602.text" = "İki faktörlü kimlik doğrulamasını çifti için el ile devre dışı olmalıdır.";
 
 /* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "Siteden çıkış varsa veya bir hata cüzdan dosya şifresini çözmek oldu. Aşağıdaki oturum açma parolanızı girin.";
+"624.text" = "Oturumunuz veya cüzdan dosyanın şifresini çözmek üzere bir hata oluştu. Giriş parolanızı aşağıya girin.";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
-"625.normalTitle" = "Devam";
+"625.normalTitle" = "Devam etmek";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "627"; */
 "627.text" = "Şifre:";
 
 /* Class = "IBUILabel"; text = "Login"; ObjectID = "630"; */
-"630.text" = "Giriş";
+"630.text" = "Oturum açma";
 
 /* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "Cüzdan Unutmak ";
+"5gL-FG-Zcc.normalTitle" = "M-cüzdan unut";
 
 /* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "Bu cüzdan unutmak ve yeniden başlamak istiyorum, Cüzdan Unutmak 'tuşuna basın.";
+"C0R-wB-wF1.text" = "Bu cüzdanı unutmak ve baştan başlamak 'Unutmak cüzdan' düğmesine basın.";
 
 /* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
-"OKS-md-gDQ.normalTitle" = "Düğmesi 3";
+"OKS-md-gDQ.normalTitle" = "Düğmesine 3";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "TzC-Tw-04r"; */
-"TzC-Tw-04r.normalTitle" = "Devam";
+"TzC-Tw-04r.normalTitle" = "Devam etmek";
 
 /* Class = "IBUILabel"; text = "Email:"; ObjectID = "VcH-wh-BEs"; */
 "VcH-wh-BEs.text" = "E-posta:";
 
 /* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
-"jUZ-5W-4qw.text" = "* cüzdan yedekleme için gerekli ";
+"jUZ-5W-4qw.text" = "* Gerekli";
 
 /* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
-"kK3-Xs-d3Q.text" = "0 Hareketleri";
+"kK3-Xs-d3Q.text" = "0 hareketleri";
 
 /* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
-"qIf-DM-Gtq.text" = "Manuel Eşleştirme";
+"qIf-DM-Gtq.text" = "El ile eşleştirme";
 
 /* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
-"wvh-x7-hB8.text" = "* minimum 10 karakter";
+"wvh-x7-hB8.text" = "* En az 10 karakter";
 

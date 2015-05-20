@@ -2,22 +2,22 @@
 "48.normalTitle" = "Zapisz";
 
 /* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
-"56.text" = "Adresy Etykiety";
+"56.text" = "Etykiety adresowej";
 
 /* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Adres:";
+"57.text" = "Adres";
 
 /* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Tagi:";
+"58.text" = "Etykieta";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "Adres";
 
 /* Class = "IBUILabel"; text = "No Addresses"; ObjectID = "68"; */
-"68.text" = "Nie Ma Adresu";
+"68.text" = "Nie adresów";
 
 /* Class = "IBUILabel"; text = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen."; ObjectID = "69"; */
-"69.text" = "Twój wynik, to chyba nie w parze prawidłowo. Kliknij przycisk w prawym górnym rogu ekranu i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.";
+"69.text" = "Konto prawdopodobnie nie jest poprawnie połączony. Kliknij przycisk w górę po lewej stronie ekranu i postępuj zgodnie z instrukcjami na ekranie.";
 
 /* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
 "80.normalTitle" = "ADRES ARCHIWUM";
@@ -29,10 +29,10 @@
 "88.normalTitle" = "ZŁÓŻ WNIOSEK O PŁATNOŚĆ";
 
 /* Class = "IBUILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Bitcoin-Adres ";
+"90.text" = "Adres Bitcoin ";
 
 /* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
-"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5uh";
+"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
 /* Class = "IBUIButton"; normalTitle = "Copy Address"; ObjectID = "92"; */
 "92.normalTitle" = "SKOPIUJ ADRES";
@@ -50,5 +50,5 @@
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "Skan Klucza Prywatnego";
+"i1j-pG-caF.normalTitle" = "Zeskanuj klucza prywatnego";
 

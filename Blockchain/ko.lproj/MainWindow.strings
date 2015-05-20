@@ -2,10 +2,10 @@
 "257.text" = "0 BTC";
 
 /* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "로드";
+"263.text" = "로딩중...";
 
 /* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "자동 페어링";
+"353.text" = "자동 연결";
 
 /* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
 "358.text" = "새 지갑 만들기";
@@ -20,104 +20,104 @@
 "363.text" = "2";
 
 /* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "[계정 설정] 버튼을 클릭 합니다. [장치] 탭을 선택 하십시오.";
+"364.text" = "프로필 단추 클릭 한 다음 이동을 선택 하십시오.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "' 쇼 페어링 코드 클릭 ' QR 코드 (사각형 검정 & 흰색 바코드)를 공개 합니다. 카메라와 함께 코드를 스캔 합니다.";
+"369.text" = "공개 QR 코드-사각 흑백 바코드를 페어링 코드 표시를 클릭 합니다. 카메라와 함께 코드를 스캔 합니다.";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
 "370.normalTitle" = "스캔 코드를 페어링";
 
 /* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
-"376.normalTitle" = "단추 2";
+"376.normalTitle" = "버튼 2";
 
 /* Class = "IBUIButton"; normalTitle = "Button 1"; ObjectID = "377"; */
 "377.normalTitle" = "버튼 1";
 
 /* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "Blockchain 지갑 이미 선택 쌍 장치; 그렇지 않으면, 지갑 만들기를 선택 합니다.    그것은 무료입니다! 필요한 없음 이메일입니다.";
+"378.text" = "이미 블록체인 지갑을 보유하고 있다면 '장치 연결'을 선택하여 주십시오. 그렇지 않으면 '지갑 생성'을 선택하여 지금 바로 새 지갑을 만들 수 있습니다! 지갑 생성은 무료이며 이메일이 요구되지 않습니다.";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "오신 것을 환영 합니다 Blockchain 지갑";
+"380.text" = "블록체인 지갑에 오신 것을 환영 합니다";
 
 /* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
 "2je-u4-PB2.text" = "거래";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "오신 것을 환영 합니다 Blockchain 지갑. 이 화면 표시 귀하의 거래. 이 지갑과의 거래를 이미 만든 경우 되었을 수도 있습니다 우리의 서버 오류. 귀하의 계정을 제대로 설치 되어 있고 인터넷 연결이 활성화 되어 있는지 확인 하십시오.";
+"387.text" = "아직 아무 거래";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
-"394.text" = "비밀 번호:";
+"394.text" = "비밀번호:";
 
 /* Class = "IBUILabel"; text = "Confirm:"; ObjectID = "396"; */
 "396.text" = "확인:";
 
 /* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "지갑 만들기";
+"398.normalTitle" = "지갑 생성";
 
 /* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "암호 필요";
+"465.text" = "비밀번호가 필요합니다";
 
 /* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
 "467.text" = "암호 요청 설명";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
-"468.text" = "비밀 번호:";
+"468.text" = "비밀번호:";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "471"; */
-"471.normalTitle" = "계속 해 서";
+"471.normalTitle" = "계속 진행";
 
 /* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
 "586.text" = "지갑 식별자:";
 
 /* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "수동으로 쌍을 선택 (또는 자동 페어링 장치와 함께 지원 되지 않습니다). 아래에 귀하의 로그인 정보를 입력 해 주시기 바랍니다.";
+"588.text" = "수동으로 장치 연결을 선택하였습니다(또는 자동 연결이 지원되지 않는 장치입니다). 아래에 로그인 세부 정보를 입력해 주시기 바랍니다.";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
-"591.text" = "비밀 번호:";
+"591.text" = "비밀번호:";
 
 /* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "2 단계 인증 쌍을 수동으로 비활성화 해야 합니다!";
+"602.text" = "2 단계 인증 쌍을 수동으로 비활성화 해야 합니다.";
 
 /* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "로그인 또는 지갑 파일의 암호 해독 오류가 발생 했습니다. 로그인 아래 비밀 번호를 입력 합니다.";
+"624.text" = "사용자가 로그아웃 상태이거나 지갑 파일 해독 중에 오류가 발생했습니다. 로그인을 위해 아래에 비밀번호를 입력해주십시오.";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
-"625.normalTitle" = "계속 해 서";
+"625.normalTitle" = "계속 진행";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "627"; */
-"627.text" = "비밀 번호:";
+"627.text" = "비밀번호:";
 
 /* Class = "IBUILabel"; text = "Login"; ObjectID = "630"; */
 "630.text" = "로그인";
 
 /* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "지갑 잊어";
+"5gL-FG-Zcc.normalTitle" = "지갑 폐기";
 
 /* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "이 지갑 잊지 하 고 다시 시작 하 고 싶습니다, ' 잊지 지갑 '을 누릅니다.";
+"C0R-wB-wF1.text" = "이 지갑을 취소하고 다시 시작하려면 '지갑 폐기' 를 선택하십시오.";
 
 /* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
-"OKS-md-gDQ.normalTitle" = "단추 3";
+"OKS-md-gDQ.normalTitle" = "버튼 3";
 
 /* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "TzC-Tw-04r"; */
-"TzC-Tw-04r.normalTitle" = "계속 해 서";
+"TzC-Tw-04r.normalTitle" = "계속 진행";
 
 /* Class = "IBUILabel"; text = "Email:"; ObjectID = "VcH-wh-BEs"; */
-"VcH-wh-BEs.text" = "메일 주소:";
+"VcH-wh-BEs.text" = "이메일 주소:";
 
 /* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
-"jUZ-5W-4qw.text" = "* 지갑 백업에 필요한";
+"jUZ-5W-4qw.text" = "* 필수";
 
 /* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
-"kK3-Xs-d3Q.text" = "0 트랜잭션";
+"kK3-Xs-d3Q.text" = "0 거래";
 
 /* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
 "qIf-DM-Gtq.text" = "수동 페어링";
 
 /* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
-"wvh-x7-hB8.text" = "* 최소 10 자";
+"wvh-x7-hB8.text" = "* 최소 10 문자";
 
