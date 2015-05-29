@@ -236,7 +236,6 @@ UIActionSheet *popupAddressArchive;
 
 - (uint64_t)getInputAmountInSatoshi
 {
-#warning this broken in locales that use , for .?
     NSString *requestedAmountString = [requestAmountTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
     
     if (displayingLocalSymbol) {

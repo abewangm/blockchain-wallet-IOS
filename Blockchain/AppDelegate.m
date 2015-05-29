@@ -1242,7 +1242,7 @@ SideMenuViewController *sideMenuViewController;
     }
     
     NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"pinKey"];
-    NSString * pin = [NSString stringWithFormat:@"%d", _pin];
+    NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)_pin];
     
     [self.pinEntryViewController setActivityIndicatorAnimated:TRUE];
     
@@ -1461,7 +1461,7 @@ SideMenuViewController *sideMenuViewController;
         return;
     }
     
-    NSString * pin = [NSString stringWithFormat:@"%d", _pin];
+    NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)_pin];
     
     [self.pinEntryViewController setActivityIndicatorAnimated:TRUE];
     

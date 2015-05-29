@@ -243,7 +243,7 @@
     BOOL successArg = [[dictionary objectForKey:@"success"] isEqualToString:@"TRUE"];
     BOOL errorArg = [[dictionary objectForKey:@"error"] isEqualToString:@"TRUE"];
     
-    int componentsCount = [[function componentsSeparatedByString:@":"] count]-1;
+    int componentsCount = [[function componentsSeparatedByString:@":"] count] - 1.0;
     
     if (successArg) {
         if ([function characterAtIndex:[function length]-1] == ':')
@@ -340,7 +340,8 @@
                     if(self.JSDelegate)
                     {
                         
-                        SuccessErrorCallbackContainer * container = [SuccessErrorCallbackContainer new];
+                        SuccessErrorCallbackContainer * _container = [SuccessErrorCallbackContainer new];
+                        __weak SuccessErrorCallbackContainer *container = _container;
 
                         container.success = ^(id success) {
                             if (!self.isLoaded)
