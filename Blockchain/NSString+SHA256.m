@@ -16,7 +16,7 @@
 -(NSString*)SHA256:(int)rounds {
     unsigned char hash[32];
     
-    CC_SHA256([self UTF8String], [self lengthOfBytesUsingEncoding:NSUTF8StringEncoding], hash);
+    CC_SHA256([self UTF8String], (CC_LONG)[self lengthOfBytesUsingEncoding:NSUTF8StringEncoding], hash);
 
     for (int ii = 1; ii < rounds; ++ii) {
         CC_SHA256(hash, 32, hash);
@@ -30,7 +30,7 @@
 -(NSString*)SHA256 {
     unsigned char result[32];
     
-    CC_SHA256([self UTF8String], [self lengthOfBytesUsingEncoding:NSUTF8StringEncoding], result);
+    CC_SHA256([self UTF8String], (CC_LONG)[self lengthOfBytesUsingEncoding:NSUTF8StringEncoding], result);
     
     NSData * data = [NSData dataWithBytes:result length:32];
     
