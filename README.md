@@ -12,7 +12,7 @@ _ssh pub key has to be registered with Github for this to work_
 
 Prepare the MyWallet Javascript:
 
-    cd External/My-Wallet
+    cd External/My-Wallet-HD
     npm install
     grunt build
 
