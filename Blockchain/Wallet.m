@@ -288,7 +288,7 @@ Boolean isHdWalletInitialized;
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
-    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], NSLocalizedString(@"My Bitcoin Wallet", nil)];
 }
 
 - (BOOL)validateSecondPassword:(NSString*)secondPassword
@@ -890,7 +890,7 @@ Boolean isHdWalletInitialized;
 - (void)upgradeToHDWallet
 {
     DLog(@"Creating HD Wallet");
-    [self.webView executeJS:@"MyWalletPhone.upgradeToHDWallet();"];
+    [self.webView executeJS:@"MyWalletPhone.upgradeToHDWallet(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
 }
 
 - (Boolean)didUpgradeToHd

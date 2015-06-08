@@ -93,7 +93,7 @@ MyWalletPhone.cancelTxSigning = function() {
     }
 }
 
-MyWalletPhone.upgradeToHDWallet = function() {
+MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
     var success = function () {
         console.log('Upgraded legacy wallet to HD wallet');
 
@@ -108,7 +108,7 @@ MyWalletPhone.upgradeToHDWallet = function() {
 
     device.execute('loading_start_upgrade_to_hd');
 
-    MyWallet.upgradeToHDWallet(MyWalletPhone.getSecondPassword(success, error), success, error);
+    MyWallet.upgradeToHDWallet(firstAccountName, MyWalletPhone.getSecondPassword(success, error), success, error);
 };
 
 MyWalletPhone.createAccount = function(label) {
@@ -443,7 +443,7 @@ MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
     });
 };
 
-MyWalletPhone.newAccount = function(password, email) {
+MyWalletPhone.newAccount = function(password, email, firstAccountName) {
     var success = function(guid, sharedKey, password) {
         device.execute('loading_stop');
 
@@ -458,7 +458,7 @@ MyWalletPhone.newAccount = function(password, email) {
 
     device.execute('loading_start_new_account');
 
-    MyWallet.createNewWallet(email, password, null, null, success, error);
+    MyWallet.createNewWallet(email, password, firstAccountName, null, null, success, error);
 };
 
 MyWalletPhone.parsePairingCode = function (raw_code) {
