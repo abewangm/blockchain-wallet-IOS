@@ -31,7 +31,7 @@ ECSlidingViewController *sideMenu;
 
 UITapGestureRecognizer *tapToCloseGestureRecognizer;
 
-int menuEntries = 4;
+int menuEntries = 5;
 int balanceEntries = 0;
 int accountEntries = 0;
 
@@ -108,7 +108,7 @@ int accountEntries = 0;
     balanceEntries = numberOfAccounts + ([app.wallet hasLegacyAddresses] ? 1 : 0);
     accountEntries = numberOfAccounts;
     
-    menuEntries = numberOfAccounts > 0 ? 4 : 5;
+    menuEntries = numberOfAccounts > 0 ? 5 : 6;
     
     // Resize table view
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT);
