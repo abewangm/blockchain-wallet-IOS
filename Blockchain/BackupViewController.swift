@@ -15,7 +15,7 @@ class BackupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
         
         let closeButton = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: "close:")
