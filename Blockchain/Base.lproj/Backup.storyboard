@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="fU5-Zh-AHZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="fU5-Zh-AHZ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Backup Navigation View Controller-->
         <scene sceneID="DBS-Jw-oFV">
             <objects>
-                <navigationController storyboardIdentifier="BackupNavigation" id="fU5-Zh-AHZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BackupNavigation" id="fU5-Zh-AHZ" customClass="BackupNavigationViewController" customModule="Blockchain" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WKy-zl-69R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -28,7 +28,7 @@
         <!--Backup Wallet-->
         <scene sceneID="58d-KQ-Ddy">
             <objects>
-                <viewController id="g04-JJ-JLu" customClass="BackupViewController" sceneMemberID="viewController">
+                <viewController id="g04-JJ-JLu" customClass="BackupViewController" customModule="Blockchain" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6mg-8H-yZs">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

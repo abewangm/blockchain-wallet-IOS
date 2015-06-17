@@ -168,6 +168,9 @@ SideMenuViewController *sideMenuViewController;
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sharedKey"];
     }
     
+    // Listen for notification to close backup screen (explained in BackupViewController.swift):
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeBackup) name:@"CloseBackupScreen" object:nil];
+    
     return TRUE;
 }
 
@@ -940,9 +943,18 @@ SideMenuViewController *sideMenuViewController;
 - (void)showBackup
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Backup" bundle: nil];
-    UINavigationController *vc = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
+    self.backupNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
     
-    [_tabViewController presentViewController:vc animated:NO completion:nil];
+    [_tabViewController presentViewController:self.backupNavigationController animated:NO completion:nil];
+}
+
+- (void)closeBackup
+{
+    __weak AppDelegate *weakSelf = self;
+    [self.backupNavigationController dismissViewControllerAnimated:true completion:^{
+        weakSelf.backupNavigationController = nil;
+    }];
+
 }
 
 - (void)showSendCoins

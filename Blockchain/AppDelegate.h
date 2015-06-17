@@ -94,6 +94,8 @@
 @property (nonatomic, copy) void (^pinViewControllerCallback)(BOOL);
 @property (nonatomic, assign) NSUInteger lastEnteredPIN;
 
+@property (nonatomic, strong) UIViewController *backupNavigationController;
+
 @property(nonatomic, strong) NSNumberFormatter *btcFormatter;
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;
 
@@ -170,6 +172,8 @@
 - (IBAction)backupClicked:(id)sender;
 - (IBAction)changePINClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
+
+- (void)closeBackup;
 
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;
