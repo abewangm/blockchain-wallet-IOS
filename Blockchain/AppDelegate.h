@@ -26,6 +26,7 @@
 #import "PEPinEntryController.h"
 #import "BCModalView.h"
 #import "ECSlidingViewController.h"
+#import "Blockchain-Swift.h"
 
 #define SATOSHI 100000000
 #define LOADING_TEXT_NOTIFICATION_KEY @"SetLoadingText"
@@ -94,7 +95,7 @@
 @property (nonatomic, copy) void (^pinViewControllerCallback)(BOOL);
 @property (nonatomic, assign) NSUInteger lastEnteredPIN;
 
-@property (nonatomic, strong) UIViewController *backupNavigationController;
+@property (nonatomic, strong) BackupNavigationViewController *backupNavigationController;
 
 @property(nonatomic, strong) NSNumberFormatter *btcFormatter;
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;

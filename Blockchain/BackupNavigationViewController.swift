@@ -8,30 +8,24 @@
 
 import UIKit
 
-class BackupNavigationViewController: UINavigationController {
+@objc class BackupNavigationViewController: UINavigationController {
 
+    var wallet : Wallet?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // No seperator:
         UINavigationBar.appearance().setBackgroundImage(UIImage.new(), forBarMetrics: UIBarMetrics.Default)
         UINavigationBar.appearance().shadowImage = UIImage.new()
+        
+        let backupViewController = self.viewControllers.first as! BackupViewController
+        backupViewController.wallet = self.wallet
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

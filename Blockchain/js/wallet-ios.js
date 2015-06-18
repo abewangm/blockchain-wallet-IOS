@@ -629,6 +629,21 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
     MyWallet.importPrivateKey(privateKeyString, MyWalletPhone.getSecondPassword(success, error), MyWalletPhone.getPrivateKeyPassword, success, alreadyImportedCallback, error);
 };
 
+MyWalletPhone.getRecoveryPhrase = function(secondPassword) {
+    var success = function(phrase) {
+        console.log('Get recovery phrase success');
+        
+        device.execute('on_success_get_recovery_phrase:', [phrase]);
+    };
+    var error = function(e) {
+        console.log('Get recovery phrase Error');
+        
+        device.execute('on_error_get_recovery_phrase:', [''+e]);
+    };
+    
+    MyWallet.getHDWalletPassphraseString(function(callback) { callback(secondPassword, function(){}, function(){}) }, success, error);
+};
+
 // Shared functions
 
 function simpleWebSocketConnect() {

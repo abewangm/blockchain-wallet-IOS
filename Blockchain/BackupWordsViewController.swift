@@ -8,29 +8,71 @@
 
 import UIKit
 
-class BackupWordsViewController: UIViewController {
+class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
+    
+    @IBOutlet weak var wordsLabel: UILabel?
 
+    var wallet : Wallet?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
+        
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        if let theWallet = wallet {
 
-        // Do any additional setup after loading the view.
+            if theWallet.needsSecondPassword(){
+                self.performSegueWithIdentifier("secondPasswordForBackup", sender: self)
+            } else {
+                theWallet.getRecoveryPhrase(nil)
+            }
+        } else {
+            NSLog("Panic!")
+        }
+        
+        wordsLabel!.text = ""
+
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "secondPasswordForBackup" {
+            let vc = segue.destinationViewController as! SecondPasswordViewController
+            vc.delegate = self
+        }
     }
-    */
+    
+    func didGetSecondPassword(password: String) {
+        wallet!.getRecoveryPhrase(password)
+    }
+    
+    @IBAction func unwindSecondPassword(segue: UIStoryboardSegue) {
+        NSLog("Unwind...")
+    }
 
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject: AnyObject], context: UnsafeMutablePointer<Void>) {
+        
+        if let theWallet = wallet {
+            wordsLabel!.text = theWallet.recoveryPhrase.stringByReplacingOccurrencesOfString(" ", withString: "\n")
+        }
+    }
+    
+    deinit {
+        wallet!.removeObserver(self, forKeyPath: "recoveryPhrase", context: nil)
+    }
 }

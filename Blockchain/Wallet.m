@@ -291,6 +291,14 @@ Boolean isHdWalletInitialized;
     [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], NSLocalizedString(@"My Bitcoin Wallet", nil)];
 }
 
+- (BOOL)needsSecondPassword {
+    if (![self.webView isLoaded]) {
+        return FALSE;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"WalletStore.getDoubleEncryption()"] boolValue];
+}
+
 - (BOOL)validateSecondPassword:(NSString*)secondPassword
 {
     if (![self.webView isLoaded]) {
@@ -901,6 +909,20 @@ Boolean isHdWalletInitialized;
     
     return [[self.webView executeJSSynchronous:@"WalletStore.didUpgradeToHd()"] boolValue];
 }
+
+- (void)getRecoveryPhrase:(NSString *)secondPassword;
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJSSynchronous:@"MyWalletPhone.getRecoveryPhrase(\"%@\")", secondPassword];
+}
+
+-(void)on_success_get_recovery_phrase:(NSString*)phrase {
+    self.recoveryPhrase = phrase;
+}
+
 
 - (int)getAccountsCount
 {

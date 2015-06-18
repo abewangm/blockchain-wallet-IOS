@@ -85,6 +85,9 @@
 
 @property(nonatomic, strong) NSMutableDictionary *transactionProgressListeners;
 
+// HD properties:
+@property NSString *recoveryPhrase;
+
 - (id)init;
 
 - (void)loadWalletWithGuid:(NSString *)_guid sharedKey:(NSString *)_sharedKey password:(NSString *)_password;
@@ -126,6 +129,7 @@
 - (BOOL)isInitialized;
 - (BOOL)hasEncryptedWalletData;
 
+- (BOOL)needsSecondPassword;
 - (BOOL)validateSecondPassword:(NSString *)secondPassword;
 
 - (void)getHistory;
@@ -154,6 +158,7 @@
 // HD Wallet
 - (void)upgradeToHDWallet;
 - (Boolean)didUpgradeToHd;
+- (void)getRecoveryPhrase:(NSString *)secondPassword;
 - (int)getDefaultAccountIndex;
 - (int)getAccountsCount;
 - (BOOL)hasLegacyAddresses;

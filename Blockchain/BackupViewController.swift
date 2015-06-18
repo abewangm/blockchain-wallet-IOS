@@ -10,8 +10,7 @@ import UIKit
 
 class BackupViewController: UIViewController {
     
-    //    @IBOutlet  weak var someButton: UIButton?
-    
+    var wallet : Wallet?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +21,17 @@ class BackupViewController: UIViewController {
         closeButton.tintColor = UIColor.whiteColor()
         
         self.navigationItem.setRightBarButtonItem(closeButton, animated: false)
+    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = segue.destinationViewController as! BackupWordsViewController
+        vc.wallet = wallet
     }
     
     @IBAction func close(sender: UIBarButtonItem) {
