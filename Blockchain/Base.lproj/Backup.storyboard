@@ -276,16 +276,6 @@ niet</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fh2-P3-lD2">
-                                <rect key="frame" x="242" y="185" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Continue">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="done:" destination="o3I-9v-bZo" eventType="touchUpInside" id="dw6-kJ-SuX"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" id="cdd-N4-3oh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -303,7 +293,7 @@ niet</string>
                                         <barButtonItem key="rightBarButtonItem" title="Close" id="OJg-MB-UId">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <segue destination="S9C-qi-BxE" kind="unwind" identifier="unwindSecondPassword" unwindAction="unwindSecondPassword:" id="tqs-18-NRq"/>
+                                                <action selector="close:" destination="o3I-9v-bZo" id="asY-7s-V1F"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -313,8 +303,28 @@ niet</string>
                                 <rect key="frame" x="16" y="138" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="o3I-9v-bZo" id="8vO-nM-qMh"/>
+                                </connections>
                             </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ssn-aY-vR0">
+                                <rect key="frame" x="16" y="176" width="146" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.52205141129999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fh2-P3-lD2">
+                                <rect key="frame" x="242" y="169" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="done:" destination="o3I-9v-bZo" eventType="touchUpInside" id="dw6-kJ-SuX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -322,6 +332,9 @@ niet</string>
                     <connections>
                         <outlet property="navigationBar" destination="J4J-Gw-Zau" id="z3K-7A-TJh"/>
                         <outlet property="password" destination="CBl-1W-VP8" id="VTt-HH-4gG"/>
+                        <outlet property="wrongPassword" destination="Ssn-aY-vR0" id="uGE-Nv-IRe"/>
+                        <segue destination="S9C-qi-BxE" kind="unwind" identifier="unwindSecondPasswordCancel" unwindAction="unwindSecondPasswordCancel:" id="Tjm-dE-brW"/>
+                        <segue destination="S9C-qi-BxE" kind="unwind" identifier="unwindSecondPasswordSuccess" unwindAction="unwindSecondPasswordSuccess:" id="Jgp-u0-HkE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9a-NX-V4E" userLabel="First Responder" sceneMemberID="firstResponder"/>

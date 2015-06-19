@@ -12,10 +12,13 @@ protocol SecondPasswordDelegate {
     func didGetSecondPassword(String)
 }
 
-class SecondPasswordViewController: UIViewController {
+class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var navigationBar: UINavigationBar?
     @IBOutlet weak var password: UITextField?
+    @IBOutlet weak var wrongPassword: UILabel?
+    
+    var wallet : Wallet?
 
     
     var delegate : SecondPasswordDelegate?
@@ -24,7 +27,6 @@ class SecondPasswordViewController: UIViewController {
         super.viewDidLoad()
 
         navigationBar!.backgroundColor = UIColor.blueColor()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,12 +35,32 @@ class SecondPasswordViewController: UIViewController {
     }
 
     @IBAction func done(sender: UIButton) {
-        if let theDelegate = delegate {
-            theDelegate.didGetSecondPassword(password!.text)
+        checkSecondPassword()
+    }
+    
+    @IBAction func close(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("unwindSecondPasswordCancel", sender: self)
+    }
+    
+    func checkSecondPassword() {
+        let secondPassword = password!.text
+        if wallet!.validateSecondPassword(secondPassword) {
+            delegate?.didGetSecondPassword(secondPassword)
+            self.performSegueWithIdentifier("unwindSecondPasswordSuccess", sender: self)
+        } else {
+            wrongPassword?.hidden = false
         }
         
-        self.performSegueWithIdentifier("unwindSecondPassword", sender: self)
     }
-
-
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        wrongPassword?.hidden = true
+        return true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        checkSecondPassword()
+        return true
+    }
+    
 }

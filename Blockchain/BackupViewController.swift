@@ -34,6 +34,9 @@ class BackupViewController: UIViewController {
         vc.wallet = wallet
     }
     
+    @IBAction func unwindSecondPasswordCancel(segue: UIStoryboardSegue) {
+    }
+    
     @IBAction func close(sender: UIBarButtonItem) {
         // Using a notification until more of the app is written in Swift.
         NSNotificationCenter.defaultCenter().postNotificationName("CloseBackupScreen", object: nil)

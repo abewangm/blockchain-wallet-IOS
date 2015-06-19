@@ -35,8 +35,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
         wordsLabel!.text = ""
 
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,6 +52,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
         if segue.identifier == "secondPasswordForBackup" {
             let vc = segue.destinationViewController as! SecondPasswordViewController
             vc.delegate = self
+            vc.wallet = wallet
         }
     }
     
@@ -61,10 +60,9 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
         wallet!.getRecoveryPhrase(password)
     }
     
-    @IBAction func unwindSecondPassword(segue: UIStoryboardSegue) {
-        NSLog("Unwind...")
+    @IBAction func unwindSecondPasswordSuccess(segue: UIStoryboardSegue) {
     }
-
+    
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject: AnyObject], context: UnsafeMutablePointer<Void>) {
         
         if let theWallet = wallet {
