@@ -41,6 +41,8 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         
         wordLabel!.text = ""
         
+        updateCurrentPageLabel(0)
+        
         wordsScrollView!.contentSize = CGSizeMake(12 * wordsScrollView!.frame.width, wordsScrollView!.frame.height)
 
         wordLabels = [UILabel]()
@@ -68,6 +70,10 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         super.viewDidAppear(animated)
     }
     
+    func updateCurrentPageLabel(page: Int) {
+        wordsProgressLabel!.text = NSLocalizedString(NSString(format: "Word %@ of %@", String(page + 1), String(12)) as String, comment: "")
+    }
+    
     // MARK: - Words Scrollview
     func scrollViewDidScroll(scrollView: UIScrollView) {
         // Determine page number:
@@ -76,6 +82,9 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         let page: Int = lroundf(fractionalPage)
         
         wordsPageControl!.currentPage = page
+        
+        updateCurrentPageLabel(page)
+        
     
     }
 
