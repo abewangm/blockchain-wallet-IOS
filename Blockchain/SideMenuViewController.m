@@ -108,7 +108,7 @@ int accountEntries = 0;
     balanceEntries = numberOfAccounts + ([app.wallet hasLegacyAddresses] ? 1 : 0);
     accountEntries = numberOfAccounts;
     
-    menuEntries = numberOfAccounts > 0 ? 5 : 6;
+    menuEntries = 5;
     
     // Resize table view
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT);
@@ -180,42 +180,21 @@ int accountEntries = 0;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSInteger row = indexPath.row;
+    NSInteger row = indexPath.row;    
+    BOOL didUpgradeToHD = app.wallet.didUpgradeToHd;
     
-    const int settings = 0;
-    const int backup = 1;
-    const int news = 2;
-    const int changePin = 3;
-    const int logout = 4;
-    const int upgradeToHD = 5;
-    
-    switch (row) {
-        case settings:
-            [app accountSettingsClicked:nil];
-            break;
-            
-        case backup:
-            [app backupClicked:nil];
-            break;
-            
-        case news:
-            [app newsClicked:nil];
-            break;
-            
-        case changePin:
-            [app changePINClicked:nil];
-            break;
-            
-        case logout:
-            [app logoutClicked:nil];
-            break;
-        
-        case upgradeToHD:
-            [app showHdUpgrade];
-            break;
-            
-        default:
-            break;
+    if(row == 0) {
+        [app accountSettingsClicked:nil];
+    } else if (didUpgradeToHD && row == 1){
+        [app backupClicked:nil];
+    } else if ((didUpgradeToHD && row == 2) || row == 1) {
+        [app newsClicked:nil];
+    } else if ((didUpgradeToHD && row == 3) || row == 2) {
+        [app changePINClicked:nil];
+    } else if ((didUpgradeToHD && row == 4) || row == 3) {
+        [app logoutClicked:nil];
+    } else if (row == 4) {
+        [app showHdUpgrade];
     }
     
     [self resetSideMenuGestures];
@@ -238,6 +217,10 @@ int accountEntries = 0;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    // Empty table if not logged in:
+    if (!app.wallet.guid) {
+        return 0;
+    }
 #ifndef ENABLE_MULTIPLE_ACCOUNTS
     return 1;
 #endif
@@ -332,7 +315,7 @@ int accountEntries = 0;
         
         NSMutableArray *titles;
         NSMutableArray *images;
-        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_BACKUP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
         
         NSString *backupIconImageName;
         
@@ -347,6 +330,8 @@ int accountEntries = 0;
         if ([app.wallet getAccountsCount] == 0 ) {
             [titles addObject:BC_STRING_UPGRADE_TO_HD];
             [images addObject:@"settings_icon"];
+        } else {
+            [titles insertObject:BC_STRING_BACKUP atIndex:1];
         }
         
         cell.textLabel.text = titles[indexPath.row];
