@@ -8,12 +8,17 @@
 
 import UIKit
 
-class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
+class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScrollViewDelegate {
     
-    @IBOutlet weak var wordsLabel: UILabel?
+    @IBOutlet weak var wordsScrollView: UIScrollView?
+    @IBOutlet weak var wordsPageControl: UIPageControl?
+    @IBOutlet weak var wordsProgressLabel: UILabel?
+    @IBOutlet weak var wordLabel: UILabel?
+    
     @IBOutlet weak var verifyButton: UIButton?
 
     var wallet : Wallet?
+    var wordLabels: [UILabel]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +39,24 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
         }
 
         
-        wordsLabel!.text = ""
+        wordLabel!.text = ""
+        
+        wordsScrollView!.contentSize = CGSizeMake(12 * wordsScrollView!.frame.width, wordsScrollView!.frame.height)
 
+        wordLabels = [UILabel]()
+        wordLabels?.insert(wordLabel!, atIndex: 0)
+        var i: CGFloat = 0
+        for i in 1 ..< 12 {
+            let offset: CGFloat = CGFloat(i) * wordsScrollView!.frame.width
+            let x: CGFloat = wordLabel!.frame.origin.x + offset
+            let label = UILabel(frame: CGRectMake(x, wordLabel!.frame.origin.y, wordLabel!.frame.size.width, wordLabel!.frame.size.height))
+            label.font = wordLabel!.font
+            label.textColor = wordLabel!.textColor
+            label.textAlignment = wordLabel!.textAlignment
+
+            wordLabel!.superview?.addSubview(label)
+            wordLabels?.append(label)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +68,16 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
         super.viewDidAppear(animated)
     }
     
+    // MARK: - Words Scrollview
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Determine page number:
+        let pageWidth = scrollView.frame.size.width
+        let fractionalPage = Float(scrollView.contentOffset.x / pageWidth)
+        let page: Int = lroundf(fractionalPage)
+        
+        wordsPageControl!.currentPage = page
+    
+    }
 
     // MARK: - Navigation
 
@@ -69,10 +100,11 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
     }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject: AnyObject], context: UnsafeMutablePointer<Void>) {
-        
-        if let theWallet = wallet {
-            wordsLabel!.text = theWallet.recoveryPhrase.stringByReplacingOccurrencesOfString(" ", withString: "\n")
+        let words = wallet!.recoveryPhrase.componentsSeparatedByString(" ")
+        for i in 0 ..< 12 {
+            wordLabels![i].text = words[i]
         }
+
     }
     
     deinit {

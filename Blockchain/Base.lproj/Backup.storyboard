@@ -196,48 +196,6 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <view contentMode="scaleToFill" id="F2J-Qd-Vj9">
-                                        <rect key="frame" x="40" y="77" width="241" height="308"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VV5-Fg-jcW">
-                                                <rect key="frame" x="48" y="0.0" width="144" height="308"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">liesje
-leerde
-lotje
-lopen
-langs
-de
-lange
-lindelaan
-maar
-toen
-lotje
-niet</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold to reveal the word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6zt-Xf-txg">
-                                                <rect key="frame" x="8" y="143" width="225" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.054901960780000002" green="0.31372549020000001" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word 5 of 12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mUc-u7-Zcj">
-                                        <rect key="frame" x="111" y="57" width="99" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EQM-OM-jK8">
                                         <rect key="frame" x="200" y="393" width="134" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -250,6 +208,42 @@ niet</string>
                                             <segue destination="CSo-hh-wVx" kind="push" identifier="backupVerify" id="S74-9K-FTc"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word 5 of 12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mUc-u7-Zcj">
+                                        <rect key="frame" x="111" y="71" width="99" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="12" id="TyO-zN-EB7">
+                                        <rect key="frame" x="40" y="201" width="241" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </pageControl>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" id="Jfk-Gx-wg2">
+                                        <rect key="frame" x="40" y="100" width="241" height="93"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="F2J-Qd-Vj9">
+                                                <rect key="frame" x="0.0" y="0.0" width="241" height="93"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unicorn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Okr-VE-yvm">
+                                                        <rect key="frame" x="8" y="27" width="225" height="40"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.054901960780000002" green="0.31372549020000001" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.054901960780000002" green="0.31372549020000001" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="jOl-Wq-Cg3" id="xWu-5a-zjb"/>
+                                        </connections>
+                                    </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -259,7 +253,10 @@ niet</string>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="mYR-MQ-mS2"/>
                     <connections>
                         <outlet property="verifyButton" destination="EQM-OM-jK8" id="SJN-jF-NBO"/>
-                        <outlet property="wordsLabel" destination="VV5-Fg-jcW" id="CWv-s0-F8d"/>
+                        <outlet property="wordLabel" destination="Okr-VE-yvm" id="ynm-yh-sZO"/>
+                        <outlet property="wordsPageControl" destination="TyO-zN-EB7" id="wlk-9H-Djg"/>
+                        <outlet property="wordsProgressLabel" destination="mUc-u7-Zcj" id="0W4-SQ-gkf"/>
+                        <outlet property="wordsScrollView" destination="Jfk-Gx-wg2" id="d98-dQ-J8b"/>
                         <segue destination="o3I-9v-bZo" kind="modal" identifier="secondPasswordForBackup" id="dla-jc-Bti"/>
                     </connections>
                 </viewController>
