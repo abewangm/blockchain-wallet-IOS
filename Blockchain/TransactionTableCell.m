@@ -37,9 +37,9 @@
             dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld minutes ago", nil), secondsAgo / 60];
         } else if (secondsAgo / 60 / 60 == 1) { // 1 hour ago
             dateLabel.text = NSLocalizedString(@"1 hour ago", nil);
-        } else if (secondsAgo < 60 * 60 * 24 && [[NSCalendar currentCalendar] isDateInToday:date]) { // 1 to 23 hours ago, but only if today
+        } else if ([[NSCalendar currentCalendar] respondsToSelector:@selector(isDateInToday:)] && secondsAgo < 60 * 60 * 24 && [[NSCalendar currentCalendar] isDateInToday:date]) { // 1 to 23 hours ago, but only if today
             dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld hours ago", nil), secondsAgo / 60 / 60];
-        } else if([[NSCalendar currentCalendar] isDateInYesterday:date]) { // yesterday
+        } else if([[NSCalendar currentCalendar] respondsToSelector:@selector(isDateInYesterday:)] && [[NSCalendar currentCalendar] isDateInYesterday:date]) { // yesterday
             dateLabel.text = NSLocalizedString(@"Yesterday", nil);
         } else if([[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] year] == [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate date]] year]) { // month + day (this year)
             NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
