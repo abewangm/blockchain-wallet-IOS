@@ -170,6 +170,9 @@ SideMenuViewController *sideMenuViewController;
     
     // Listen for notification to close backup screen (explained in BackupViewController.swift):
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeBackup) name:@"CloseBackupScreen" object:nil];
+    // Listen for notification (from Swift code) to reload:
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:@"AppDelegateReload" object:nil];
+
     
     return TRUE;
 }

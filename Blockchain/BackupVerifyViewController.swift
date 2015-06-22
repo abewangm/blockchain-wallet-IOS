@@ -60,6 +60,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
         
         if valid {
             wallet!.markRecoveryPhraseVerified()
+            NSNotificationCenter.defaultCenter().postNotificationName("AppDelegateReload", object: nil)
             self.performSegueWithIdentifier("unwindVerifyWords", sender: self)
         }
     }

@@ -333,7 +333,16 @@ int accountEntries = 0;
         NSMutableArray *titles;
         NSMutableArray *images;
         titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_BACKUP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
-        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_backup_incomplete", @"news_icon.png", @"lock_icon", @"logout_icon"]];
+        
+        NSString *backupIconImageName;
+        
+        if(app.wallet.isRecoveryPhraseVerified) {
+            backupIconImageName = @"icon_backup_complete";
+        } else {
+            backupIconImageName = @"icon_backup_incomplete";
+        }
+        
+        images = [NSMutableArray arrayWithArray:@[@"settings_icon", backupIconImageName, @"news_icon.png", @"lock_icon", @"logout_icon"]];
         
         if ([app.wallet getAccountsCount] == 0 ) {
             [titles addObject:BC_STRING_UPGRADE_TO_HD];
