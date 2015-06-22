@@ -158,6 +158,11 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="xmf-pK-R3X"/>
+                    <connections>
+                        <outlet property="explanation" destination="eyR-AW-SMc" id="MmV-cO-nmS"/>
+                        <outlet property="statusIcon" destination="hJA-z1-hXN" id="ST6-Z8-aBx"/>
+                        <outlet property="summaryLabel" destination="9Hu-uO-gJl" id="WkH-em-VkX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wNj-lK-f7E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -253,6 +258,7 @@ niet</string>
                     </view>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="mYR-MQ-mS2"/>
                     <connections>
+                        <outlet property="verifyButton" destination="EQM-OM-jK8" id="SJN-jF-NBO"/>
                         <outlet property="wordsLabel" destination="VV5-Fg-jcW" id="CWv-s0-F8d"/>
                         <segue destination="o3I-9v-bZo" kind="modal" identifier="secondPasswordForBackup" id="dla-jc-Bti"/>
                     </connections>
@@ -365,23 +371,32 @@ niet</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first word" minimumFontSize="17" id="9hR-tm-aq5">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first word" minimumFontSize="17" id="9hR-tm-aq5">
                                                 <rect key="frame" x="40" y="58" width="241" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="CSo-hh-wVx" id="tgj-Rp-qiP"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="third word" minimumFontSize="17" id="kcC-2S-PfL">
-                                                <rect key="frame" x="40" y="121" width="241" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="third word" minimumFontSize="17" id="kcC-2S-PfL">
+                                                <rect key="frame" x="40" y="125" width="241" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="CSo-hh-wVx" id="taY-bk-vIg"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="sixth word" minimumFontSize="17" id="Fda-Z4-3e7">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="sixth word" minimumFontSize="17" id="Fda-Z4-3e7">
                                                 <rect key="frame" x="40" y="192" width="241" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="CSo-hh-wVx" id="eYj-Rt-26E"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T4p-mz-siC">
                                                 <rect key="frame" x="101" y="252" width="119" height="30"/>
@@ -390,7 +405,34 @@ niet</string>
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="done:" destination="CSo-hh-wVx" eventType="touchUpInside" id="h7O-yc-qDN"/>
+                                                </connections>
                                             </button>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="enw-A7-9if">
+                                                <rect key="frame" x="45" y="89" width="230" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.52205141129999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QbH-lb-dzf">
+                                                <rect key="frame" x="45" y="156" width="230" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.52205141129999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3kJ-3U-lFe">
+                                                <rect key="frame" x="45" y="223" width="230" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.52205141129999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -401,10 +443,20 @@ niet</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="9A7-TT-PzN"/>
+                    <connections>
+                        <outlet property="word1" destination="9hR-tm-aq5" id="YVJ-E7-KJC"/>
+                        <outlet property="word2" destination="kcC-2S-PfL" id="hCD-OZ-8tt"/>
+                        <outlet property="word3" destination="Fda-Z4-3e7" id="Bv0-3F-bgR"/>
+                        <outlet property="wrongWord1" destination="enw-A7-9if" id="oZi-qa-7jg"/>
+                        <outlet property="wrongWord2" destination="QbH-lb-dzf" id="LrL-f2-y5g"/>
+                        <outlet property="wrongWord3" destination="3kJ-3U-lFe" id="Ycg-DQ-zcC"/>
+                        <segue destination="gVk-8u-UGP" kind="unwind" identifier="unwindVerifyWords" unwindAction="unwindVerifyWords:" id="Bo1-i8-IDS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qH1-lt-aBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gVk-8u-UGP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1207.4666666666667" y="454.39999999999998"/>
+            <point key="canvasLocation" x="1207" y="454"/>
         </scene>
     </scenes>
     <resources>

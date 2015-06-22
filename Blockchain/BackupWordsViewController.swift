@@ -11,6 +11,7 @@ import UIKit
 class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
     
     @IBOutlet weak var wordsLabel: UILabel?
+    @IBOutlet weak var verifyButton: UIButton?
 
     var wallet : Wallet?
     
@@ -21,16 +22,17 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        if let theWallet = wallet {
 
-            if theWallet.needsSecondPassword(){
-                self.performSegueWithIdentifier("secondPasswordForBackup", sender: self)
-            } else {
-                theWallet.getRecoveryPhrase(nil)
-            }
+        if wallet!.needsSecondPassword(){
+            self.performSegueWithIdentifier("secondPasswordForBackup", sender: self)
         } else {
-            NSLog("Panic!")
+            wallet!.getRecoveryPhrase(nil)
         }
+        
+        if wallet!.isRecoveryPhraseVerified() {
+            verifyButton?.hidden = true
+        }
+
         
         wordsLabel!.text = ""
 
@@ -52,6 +54,9 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate {
         if segue.identifier == "secondPasswordForBackup" {
             let vc = segue.destinationViewController as! SecondPasswordViewController
             vc.delegate = self
+            vc.wallet = wallet
+        } else if segue.identifier == "backupVerify" {
+            let vc = segue.destinationViewController as! BackupVerifyViewController
             vc.wallet = wallet
         }
     }

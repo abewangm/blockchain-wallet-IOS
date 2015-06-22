@@ -159,6 +159,8 @@
 - (void)upgradeToHDWallet;
 - (Boolean)didUpgradeToHd;
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
+- (BOOL)isRecoveryPhraseVerified;
+- (void)markRecoveryPhraseVerified;
 - (int)getDefaultAccountIndex;
 - (int)getAccountsCount;
 - (BOOL)hasLegacyAddresses;

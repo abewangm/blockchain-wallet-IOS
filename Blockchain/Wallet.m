@@ -919,6 +919,24 @@ Boolean isHdWalletInitialized;
     [self.webView executeJSSynchronous:@"MyWalletPhone.getRecoveryPhrase(\"%@\")", secondPassword];
 }
 
+- (BOOL)isRecoveryPhraseVerified {
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"WalletStore.isMnemonicVerified()"] boolValue];
+
+}
+
+- (void)markRecoveryPhraseVerified
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJSSynchronous:@"WalletStore.didVerifyMnemonic()"];
+}
+
 -(void)on_success_get_recovery_phrase:(NSString*)phrase {
     self.recoveryPhrase = phrase;
 }
