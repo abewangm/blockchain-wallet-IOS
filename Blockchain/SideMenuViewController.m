@@ -377,6 +377,8 @@ int accountEntries = 0;
             cell.amountLabel.text = [app formatMoney:accountBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = [app.wallet getLabelForAccount:accountIdx];
             cell.accountIdx = accountIdx;
+            // TODO editing accounts is not possible on mobile for now
+            cell.editButton.hidden = YES;
         }
         // Total legacy balance
         else {
