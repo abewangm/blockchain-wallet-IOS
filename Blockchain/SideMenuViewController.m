@@ -257,11 +257,12 @@ int accountEntries = 0;
         headerLabel.font = [UIFont boldSystemFontOfSize:17.0];
         [view addSubview:headerLabel];
 
-        // TODO for now account creation is not possible on mobile
-//        UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
-//        [addButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
-//        [addButton addTarget:self action:@selector(addAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
-//        [view addSubview:addButton];
+#ifndef DISABLE_EDITING_ACCOUNTS
+        UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
+        [addButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
+        [addButton addTarget:self action:@selector(addAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:addButton];
+#endif
         
         BCLine *bottomSeparator = [[BCLine alloc] initWithFrame:CGRectMake(56, SECTION_HEADER_HEIGHT, self.tableView.frame.size.width, 1.0/[UIScreen mainScreen].scale)];
         bottomSeparator.backgroundColor = [self.tableView separatorColor];
@@ -377,8 +378,9 @@ int accountEntries = 0;
             cell.amountLabel.text = [app formatMoney:accountBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = [app.wallet getLabelForAccount:accountIdx];
             cell.accountIdx = accountIdx;
-            // TODO editing accounts is not possible on mobile for now
+#ifdef DISABLE_EDITING_ACCOUNTS
             cell.editButton.hidden = YES;
+#endif
         }
         // Total legacy balance
         else {
