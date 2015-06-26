@@ -200,8 +200,6 @@ int lastNumberTransactions = INT_MAX;
     [balanceBigButton.titleLabel setMinimumScaleFactor:.5f];
     [balanceBigButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
     
-    // Hide small balance button (will be removed if succesful)
-    balanceSmallButton.hidden = YES;
     [balanceSmallButton.titleLabel setMinimumScaleFactor:.5f];
     [balanceSmallButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
     
