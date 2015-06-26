@@ -34,11 +34,6 @@
     
     passwordTextField.textColor = [UIColor grayColor];
     password2TextField.textColor = [UIColor grayColor];
-    
-    // iOS 7+ only changes color of border when width is set
-    passwordTextField.layer.cornerRadius = 5.0;
-    passwordTextField.layer.borderWidth = 1.0/[UIScreen mainScreen].scale;
-    passwordTextField.layer.borderColor = COLOR_TEXT_FIELD_BORDER_GRAY.CGColor;
 }
 
 - (void)prepareForModalPresentation
