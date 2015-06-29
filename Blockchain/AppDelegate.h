@@ -27,6 +27,7 @@
 #import "BCModalView.h"
 #import "ECSlidingViewController.h"
 #import "Blockchain-Swift.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
 #define SATOSHI 100000000
 #define LOADING_TEXT_NOTIFICATION_KEY @"SetLoadingText"
@@ -43,7 +44,7 @@
 
 @class TransactionsViewController, Wallet, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate> {
     Wallet *wallet;
     
     SystemSoundID alertSoundID;
@@ -171,6 +172,7 @@
 - (IBAction)newsClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
 - (IBAction)backupClicked:(id)sender;
+- (IBAction)supportClicked:(id)sender;
 - (IBAction)changePINClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 

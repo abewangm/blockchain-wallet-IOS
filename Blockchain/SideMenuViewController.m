@@ -188,8 +188,7 @@ int accountEntries = 0;
     } else if (row == 2) {
         [app newsClicked:nil];
     } else if (row == 3) {
-        // XXX Support
-        // [app supportClicked:nil];
+         [app supportClicked:nil];
     } else if (row == 4) {
         if (didUpgradeToHD) {
             [app backupClicked:nil];

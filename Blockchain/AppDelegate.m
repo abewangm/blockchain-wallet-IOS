@@ -954,6 +954,25 @@ SideMenuViewController *sideMenuViewController;
     [_tabViewController presentViewController:self.backupNavigationController animated:NO completion:nil];
 }
 
+- (void)showSupport
+{
+    // Send email using the Message UI Framework: http://stackoverflow.com/a/1513433/2076094
+    // If the user has not email account set up, he should get a notification saying he can't send emails (tested on iOS 7.1.1)
+    MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+    controller.mailComposeDelegate = self;
+    controller.navigationBar.tintColor = COLOR_BLOCKCHAIN_BLUE;
+    [controller setToRecipients:@[@"support@blockchain.info"]];
+    [controller setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
+    
+    NSString *message = [NSString stringWithFormat:@"\n\n--\nApp: %@\nSystem: %@ %@\n",
+                          [UncaughtExceptionHandler appNameAndVersionNumberDisplayString],
+                          [[UIDevice currentDevice] systemName],
+                          [[UIDevice currentDevice] systemVersion]];
+    [controller setMessageBody:message isHTML:NO];
+    
+    [self.tabViewController presentViewController:controller animated:YES completion:nil];
+}
+
 - (void)closeBackup
 {
     __weak AppDelegate *weakSelf = self;
@@ -1119,6 +1138,11 @@ SideMenuViewController *sideMenuViewController;
 - (IBAction)backupClicked:(id)sender
 {
     [app showBackup];
+}
+
+- (IBAction)supportClicked:(id)sender
+{
+    [app showSupport];
 }
 
 - (IBAction)changePINClicked:(id)sender
@@ -1603,6 +1627,13 @@ SideMenuViewController *sideMenuViewController;
 
 - (NSString*)formatMoney:(uint64_t)value {
     return [self formatMoney:value localCurrency:symbolLocal];
+}
+
+#pragma mark - mail compose delegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -199,3 +199,5 @@
 #define BC_STRING_UPGRADE_TEXT NSLocalizedString(@"We've designed a whole new\nwallet experience for you", nil)
 #define BC_STRING_UPGRADE_NOW NSLocalizedString(@"Upgrade Now", nil)
 #define BC_STRING_DONT_UPGRADE NSLocalizedString(@"or Continue", nil)
+
+#define BC_STRING_SUPPORT_EMAIL_SUBJECT NSLocalizedString(@"iOS Support Request", nil)

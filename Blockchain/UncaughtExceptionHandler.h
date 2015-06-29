@@ -20,6 +20,7 @@
 }
 
 + (void)logException:(NSException*)exception walletIsLoaded:(BOOL)walletIsLoaded walletIsInitialized:(BOOL)walletIsInitialized;
++ (NSString *)appNameAndVersionNumberDisplayString;
 @end
 
 void SignalHandler(int signal);
