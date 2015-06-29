@@ -171,6 +171,8 @@
 #define BC_STRING_MERCHANT_MAP NSLocalizedString(@"Merchant Map", nil)
 #define BC_STRING_MERCHANT NSLocalizedString(@"Merchant", nil)
 
+#define BC_STRING_SUPPORT NSLocalizedString(@"Support", nil)
+
 #define BC_STRING_TERMS_OF_SERVICE NSLocalizedString(@"Terms of Service", nil)
 #define BC_STRING_TRANSACTION NSLocalizedString(@"Transaction", nil)
 #define BC_STRING_AUTOMATIC_PAIRING NSLocalizedString(@"Automatic Pairing", nil)

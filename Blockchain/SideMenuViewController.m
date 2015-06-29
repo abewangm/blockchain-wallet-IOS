@@ -31,7 +31,7 @@ ECSlidingViewController *sideMenu;
 
 UITapGestureRecognizer *tapToCloseGestureRecognizer;
 
-int menuEntries = 5;
+const int menuEntries = 7;
 int balanceEntries = 0;
 int accountEntries = 0;
 
@@ -108,8 +108,6 @@ int accountEntries = 0;
     balanceEntries = numberOfAccounts + ([app.wallet hasLegacyAddresses] ? 1 : 0);
     accountEntries = numberOfAccounts;
     
-    menuEntries = 5;
-    
     // Resize table view
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT);
 #ifndef ENABLE_MULTIPLE_ACCOUNTS
@@ -185,16 +183,24 @@ int accountEntries = 0;
     
     if(row == 0) {
         [app accountSettingsClicked:nil];
-    } else if (didUpgradeToHD && row == 1){
-        [app backupClicked:nil];
-    } else if ((didUpgradeToHD && row == 2) || row == 1) {
+    } else if (row == 1){
+        [app merchantClicked:nil];
+    } else if (row == 2) {
         [app newsClicked:nil];
-    } else if ((didUpgradeToHD && row == 3) || row == 2) {
-        [app changePINClicked:nil];
-    } else if ((didUpgradeToHD && row == 4) || row == 3) {
-        [app logoutClicked:nil];
+    } else if (row == 3) {
+        // XXX Support
+        // [app supportClicked:nil];
     } else if (row == 4) {
-        [app showHdUpgrade];
+        if (didUpgradeToHD) {
+            [app backupClicked:nil];
+        }
+        else {
+            [app showHdUpgrade];
+        }
+    } else if (row == 5) {
+        [app changePINClicked:nil];
+    } else if (row == 6) {
+        [app logoutClicked:nil];
     }
     
     [self resetSideMenuGestures];
@@ -315,26 +321,33 @@ int accountEntries = 0;
             cell.selectedBackgroundView = v;
         }
         
+        NSString *upgradeOrBackupTitle;
+        if (!app.wallet.didUpgradeToHd) {
+            upgradeOrBackupTitle = BC_STRING_UPGRADE_TO_HD;
+        }
+        else {
+            upgradeOrBackupTitle = BC_STRING_BACKUP;
+        }
+        
         NSMutableArray *titles;
+        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, upgradeOrBackupTitle, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
+        
+        NSString *upgradeOrBackupImage;
+        if (!app.wallet.didUpgradeToHd) {
+            // XXX upgrade icon
+            upgradeOrBackupImage = @"settings_icon";
+        }
+        else {
+            if (app.wallet.isRecoveryPhraseVerified) {
+                upgradeOrBackupImage = @"icon_backup_complete";
+            } else {
+                upgradeOrBackupImage = @"icon_backup_incomplete";
+            }
+        }
+        
+        // XXX support icon
         NSMutableArray *images;
-        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
-        
-        NSString *backupIconImageName;
-        
-        if(app.wallet.isRecoveryPhraseVerified) {
-            backupIconImageName = @"icon_backup_complete";
-        } else {
-            backupIconImageName = @"icon_backup_incomplete";
-        }
-        
-        images = [NSMutableArray arrayWithArray:@[@"settings_icon", backupIconImageName, @"news_icon.png", @"lock_icon", @"logout_icon"]];
-        
-        if ([app.wallet getAccountsCount] == 0 ) {
-            [titles addObject:BC_STRING_UPGRADE_TO_HD];
-            [images addObject:@"settings_icon"];
-        } else {
-            [titles insertObject:BC_STRING_BACKUP atIndex:1];
-        }
+        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"map", @"news_icon.png", @"settings_icon", upgradeOrBackupImage, @"lock_icon", @"logout_icon"]];
         
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
