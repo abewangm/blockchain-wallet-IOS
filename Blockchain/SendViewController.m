@@ -267,16 +267,22 @@ uint64_t availableAmount = 0.0;
 
 - (void)confirmPayment
 {
-    NSString *amountBTCString   = [app formatMoney:amountInSatoshi localCurrency:FALSE];
-    NSString *amountLocalString = [app formatMoney:amountInSatoshi localCurrency:TRUE];
+    uint64_t amount = amountInSatoshi;
+    uint64_t fee = [self getRecommendedFeeForAmount:amount];
+    uint64_t amountTotal = amount + fee;
     
-    NSMutableString *messageString = [NSMutableString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, amountBTCString, amountLocalString, self.toAddress];
+    NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
+    NSString *feeBTCString = [app formatMoney:fee localCurrency:FALSE];
+    NSString *amountTotalLocalString = [app formatMoney:amountTotal localCurrency:TRUE];
+
+    
+    NSMutableString *messageString = [NSMutableString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, self.toAddress, amountTotalBTCString, feeBTCString, amountTotalLocalString];
     
     BCAlertView *alert = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_PAYMENT
                                                     message:messageString
                                                    delegate:self
-                                          cancelButtonTitle:BC_STRING_NO
-                                          otherButtonTitles:BC_STRING_YES, nil];
+                                          cancelButtonTitle:BC_STRING_CANCEL
+                                          otherButtonTitles:BC_STRING_SEND, nil];
     
     alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
         if (buttonIndex == 1) {
