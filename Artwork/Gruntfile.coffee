@@ -20,12 +20,14 @@ module.exports = (grunt) ->
     
   grunt.registerTask "default", [
     "shell:psd:blockchain_logo:15"
-    "shell:psd:map:20"
     "shell:psd:transaction_pending:11"
     "shell:psd:sidebar:18"
     "shell:psd:qrscanner:18"
     "shell:psd:icon_backup_complete:26"
     "shell:psd:icon_backup_incomplete:26"
+    "shell:psd:icon_merchant:26"
+    "shell:psd:icon_support:26"
+    "shell:psd:icon_upgrade:26"
     "shell:svg:backup_green_circle:40"
     "shell:svg:backup_blue_circle:40"
     "shell:svg:backup_exclamation_mark:40"

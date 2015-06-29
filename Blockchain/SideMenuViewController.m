@@ -334,7 +334,7 @@ int accountEntries = 0;
         NSString *upgradeOrBackupImage;
         if (!app.wallet.didUpgradeToHd) {
             // XXX upgrade icon
-            upgradeOrBackupImage = @"settings_icon";
+            upgradeOrBackupImage = @"icon_upgrade";
         }
         else {
             if (app.wallet.isRecoveryPhraseVerified) {
@@ -344,9 +344,8 @@ int accountEntries = 0;
             }
         }
         
-        // XXX support icon
         NSMutableArray *images;
-        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"map", @"news_icon.png", @"settings_icon", upgradeOrBackupImage, @"lock_icon", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", upgradeOrBackupImage, @"lock_icon", @"logout_icon"]];
         
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
