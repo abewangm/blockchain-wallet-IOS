@@ -249,7 +249,7 @@ int legacyAddressesSectionNumber;
         
         // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
         cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
-        cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
+        cell.balanceButton.frame = CGRectMake(217, 11, 120, 21);
         
         [cell.watchLabel setHidden:TRUE];
     }
@@ -284,24 +284,24 @@ int legacyAddressesSectionNumber;
         else if (section == legacyAddressesSectionNumber) {
             balance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];
         }
-        cell.balanceLabel.text = [app formatMoney:balance];
+        [cell.balanceButton setTitle:[app formatMoney:balance] forState:UIControlStateNormal];
         
         // Cells with empty balance can't be clicked and are dimmed
         if (balance == 0) {
             cell.userInteractionEnabled = NO;
-            cell.balanceLabel.enabled = NO;
+            cell.balanceButton.enabled = NO;
             cell.labelLabel.alpha = 0.5;
             cell.addressLabel.alpha = 0.5;
         }
         else {
             cell.userInteractionEnabled = YES;
-            cell.balanceLabel.enabled = YES;
+            cell.balanceButton.enabled = YES;
             cell.labelLabel.alpha = 1.0;
             cell.addressLabel.alpha = 1.0;
         }
     }
     else {
-        cell.balanceLabel.text = nil;
+        [cell.balanceButton setTitle:nil forState:UIControlStateNormal];
     }
     
     // Selected cell color

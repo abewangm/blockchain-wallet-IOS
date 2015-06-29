@@ -25,7 +25,7 @@
 
 
 @property(nonatomic, strong) IBOutlet UILabel * labelLabel;
-@property(nonatomic, strong) IBOutlet UILabel * balanceLabel;
+@property(nonatomic, strong) IBOutlet UIButton *balanceButton;
 @property(nonatomic, strong) IBOutlet UILabel * addressLabel;
 @property(nonatomic, strong) IBOutlet UILabel * watchLabel;
 

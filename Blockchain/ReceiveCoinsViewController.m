@@ -933,7 +933,7 @@ UIActionSheet *popupAddressArchive;
         
             // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
             cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
-            cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
+            cell.balanceButton.frame = CGRectMake(217, 11, 120, 21);
             [cell.watchLabel setHidden:TRUE];
         }
         
@@ -947,7 +947,11 @@ UIActionSheet *popupAddressArchive;
         [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
         [cell setSelectedBackgroundView:v];
         
-        cell.balanceLabel.text = [app formatMoney:balance];
+        [cell.balanceButton setTitle:[app formatMoney:balance] forState:UIControlStateNormal];
+        cell.balanceButton.titleLabel.minimumScaleFactor = 0.75f;
+        [cell.balanceButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
+        
+        [cell.balanceButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
     }
@@ -972,7 +976,7 @@ UIActionSheet *popupAddressArchive;
             // Show the watch only tag and resize the label and balance labels so there is enough space
             cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);
             
-            cell.balanceLabel.frame = CGRectMake(254, 11, 83, 21);
+            cell.balanceButton.frame = CGRectMake(254, 11, 83, 21);
             
             [cell.watchLabel setHidden:FALSE];
         }
@@ -980,7 +984,7 @@ UIActionSheet *popupAddressArchive;
             // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
             cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
             
-            cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
+            cell.balanceButton.frame = CGRectMake(217, 11, 120, 21);
             
             [cell.watchLabel setHidden:TRUE];
         }
@@ -1002,7 +1006,11 @@ UIActionSheet *popupAddressArchive;
     [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
     [cell setSelectedBackgroundView:v];
     
-    cell.balanceLabel.text = [app formatMoney:balance];
+    [cell.balanceButton setTitle:[app formatMoney:balance] forState:UIControlStateNormal];
+    cell.balanceButton.titleLabel.minimumScaleFactor = 0.75f;
+    [cell.balanceButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
+    
+    [cell.balanceButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
