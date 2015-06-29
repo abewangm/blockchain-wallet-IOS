@@ -49,17 +49,6 @@
     IBOutlet UIActivityIndicatorView *sendProgressActivityIndicator;
         
     IBOutlet UILabel *availableToSend;
-    
-    // Confirmation screen
-    IBOutlet UIView *confirmSendView;
-    IBOutlet UILabel *toLabel;
-    IBOutlet UILabel *feeLabel;
-    IBOutlet UILabel *fiatFeeLabel;
-    IBOutlet UILabel *amountLabel;
-    IBOutlet UILabel *fiatAmountLabel;
-    IBOutlet UIButton *confirmButton;
-    IBOutlet UIButton *cancelButton;
-    UIView *fadeView;
 }
 
 @property(nonatomic, strong) NSString *initialToAddressString;
