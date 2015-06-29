@@ -34,3 +34,6 @@ Images.xcassets/backup_exclamation_mark.imageset/*.png
 Images.xcassets/backup_green_circle.imageset/*.png
 Images.xcassets/icon_backup_complete.imageset/*.png
 Images.xcassets/icon_backup_incomplete.imageset/*.png
+Images.xcassets/icon_merchant.imageset/*.png
+Images.xcassets/icon_support.imageset/*.png
+Images.xcassets/icon_upgrade.imageset/*.png
