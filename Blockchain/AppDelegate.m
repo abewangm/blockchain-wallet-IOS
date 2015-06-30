@@ -951,6 +951,7 @@ SideMenuViewController *sideMenuViewController;
     // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
     self.backupNavigationController.wallet = self.wallet;
     
+    self.backupNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [_tabViewController presentViewController:self.backupNavigationController animated:NO completion:nil];
 }
 
@@ -970,6 +971,7 @@ SideMenuViewController *sideMenuViewController;
                           [[UIDevice currentDevice] systemVersion]];
     [controller setMessageBody:message isHTML:NO];
     
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.tabViewController presentViewController:controller animated:YES completion:nil];
 }
 
@@ -1080,6 +1082,7 @@ SideMenuViewController *sideMenuViewController;
     BCHdUpgradeView *hdUpgradeView = [[BCHdUpgradeView alloc] init];
     [hdUpgradeView.upgradeButton addTarget:self action:@selector(continueUpgrade) forControlEvents:UIControlEventTouchUpInside];
     [hdUpgradeView.cancelButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventTouchUpInside];
+    
     [app showModalWithContent:hdUpgradeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
