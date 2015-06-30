@@ -68,7 +68,7 @@
         textColor = UIColorFromRGB(0x0f79fb);
     } else {
         textValue = infoNotAvailable;
-        textColor = [UIColor blackColor];
+        textColor = [UIColor darkGrayColor];
     }
     self.addressLbl.text = textValue;
     self.addressLbl.textColor = textColor;
@@ -78,14 +78,14 @@
         textColor = UIColorFromRGB(0x0f79fb);
     } else {
         textValue = infoNotAvailable;
-        textColor = [UIColor blackColor];
+        textColor = [UIColor darkGrayColor];
     }
     self.cityLbl.text = textValue;
     self.cityLbl.textColor = textColor;
     
     self.addressControl.userInteractionEnabled = [_merchant.city length] > 0 || [_merchant.address length] > 0;
     
-    textColor = [UIColor blackColor];
+    textColor = [UIColor darkGrayColor];
     if ([_merchant.merchantDescription length] > 0) {
         textValue = _merchant.merchantDescription;
     } else {
