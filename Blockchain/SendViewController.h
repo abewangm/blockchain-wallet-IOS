@@ -28,17 +28,21 @@
 @interface SendViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, AddressSelectionDelegate> {
     IBOutlet UIView *containerView;
     
-    IBOutlet UITextField *toFieldContainerField;
-    IBOutlet UITextField *toField;
-    IBOutlet UITextField *amountField;
-    IBOutlet UILabel *convertedAmountLabel;
-    
-    IBOutlet UIView *amountKeyboardAccessoryView;
-    
     IBOutlet UILabel *fromLabel;
     IBOutlet UITextField *selectAddressTextField;
+    IBOutlet UILabel *fundsAvailableLabel;
+    
+    IBOutlet UITextField *toField;
     IBOutlet UIButton *addressBookButton;
+
+    IBOutlet UILabel *btcLabel;
+    IBOutlet UITextField *btcAmountField;
+    IBOutlet UILabel *fiatLabel;
+    IBOutlet UITextField *fiatAmountField;
+    
     IBOutlet UIButton *sendPaymentButton;
+    
+    IBOutlet UIView *amountKeyboardAccessoryView;
     
     IBOutlet UIView *labelAddressView;
     IBOutlet UILabel *labelAddressLabel;
@@ -47,8 +51,6 @@
     IBOutlet UIView *sendProgressModal;
     IBOutlet UILabel *sendProgressModalText;
     IBOutlet UIActivityIndicatorView *sendProgressActivityIndicator;
-    
-    IBOutlet UIButton *btcCodeButton;
 
     BOOL displayingLocalSymbol;
 }
@@ -67,7 +69,6 @@
 - (IBAction)selectFromAddressClicked:(id)sender;
 - (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)addressBookClicked:(id)sender;
-- (IBAction)closeKeyboardClicked:(id)sender;
 
 - (void)didSelectFromAddress:(NSString *)address;
 - (void)didSelectToAddress:(NSString *)address;

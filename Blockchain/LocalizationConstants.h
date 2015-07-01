@@ -24,6 +24,7 @@
 #define BC_STRING_YES NSLocalizedString(@"Yes", nil)
 #define BC_STRING_SEND NSLocalizedString(@"Send", nil)
 #define BC_STRING_SENDING_TRANSACTION NSLocalizedString(@"Sending Transaction", nil)
+#define BC_STRING_FUNDS_AVAILABLE NSLocalizedString(@"%@ available", nil)
 
 #define BC_STRING_SUCCESS NSLocalizedString(@"Success", nil)
 #define BC_STRING_PAYMENT_SENT NSLocalizedString(@"Payment Sent!", nil)
