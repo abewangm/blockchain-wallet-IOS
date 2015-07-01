@@ -48,13 +48,6 @@ uint64_t availableAmount = 0.0;
 {
     [super viewDidLoad];
     
-    CGRect frame = containerView.frame;
-    containerOffset = (app.window.frame.size.height - frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT)/3;
-    frame.origin.y = containerOffset;
-    containerView.frame = frame;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
     [toFieldContainerField setShouldBegindEditingBlock:^BOOL(UITextField * field) {
         return FALSE;
     }];
@@ -78,6 +71,7 @@ uint64_t availableAmount = 0.0;
     amountKeyboardAccessoryView.layer.borderColor = [[UIColor colorWithRed:181.0f/255.0f green:185.0f/255.0f blue:189.0f/255.0f alpha:1.0f] CGColor];
     
     amountField.inputAccessoryView = amountKeyboardAccessoryView;
+    toField.inputAccessoryView = amountKeyboardAccessoryView;
     
     [toField setReturnKeyType:UIReturnKeyDone];
     
@@ -358,7 +352,7 @@ uint64_t availableAmount = 0.0;
         amountField.textColor = [UIColor redColor];
     }
     else {
-        amountField.textColor = COLOR_BLOCKCHAIN_BLUE;
+        amountField.textColor = [UIColor blackColor];
     }
     
     if (displayingLocalSymbol) {
@@ -431,23 +425,6 @@ uint64_t availableAmount = 0.0;
         
         [self.view addGestureRecognizer:self.tapGesture];
     }
-    
-    // Move view content up when showing keyboard
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        CGRect frame = containerView.frame;
-        frame.origin.y = 0;
-        containerView.frame = frame;
-    }];
-}
-
-- (void)keyboardWillHide:(NSNotification *)note
-{
-    // Move view content back down when hiding keyboard
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        CGRect frame = containerView.frame;
-        frame.origin.y = containerOffset;
-        containerView.frame = frame;
-    }];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

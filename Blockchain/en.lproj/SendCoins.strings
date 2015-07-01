@@ -33,7 +33,7 @@
 "6zi-8R-Tmt.normalTitle" = "BTC";
 
 /* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
-"7ho-GV-ikp.text" = "Amount";
+"7ho-GV-ikp.text" = "BTC";
 
 /* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "8LN-Tc-WVh"; */
 "8LN-Tc-WVh.normalTitle" = "Done";
