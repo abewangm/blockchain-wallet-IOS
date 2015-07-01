@@ -379,6 +379,9 @@ BOOL displayingLocalSymbolSend;
     }
     
     uint64_t availableAmountMinusFee = availableAmount - [self getRecommendedFeeForAmount:availableAmount];
+    if (availableAmount < [self getRecommendedFeeForAmount:availableAmount]) {
+        availableAmountMinusFee = 0;
+    }
     fundsAvailableLabel.text = [NSString stringWithFormat:BC_STRING_FUNDS_AVAILABLE,
                                 [app formatMoney:availableAmountMinusFee localCurrency:displayingLocalSymbolSend]];
 }
