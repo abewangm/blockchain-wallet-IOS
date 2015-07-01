@@ -41,6 +41,7 @@
     IBOutlet UITextField *fiatAmountField;
     
     IBOutlet UIButton *sendPaymentButton;
+    IBOutlet UIButton *sendPaymentAccessoryButton;
     
     IBOutlet UIView *amountKeyboardAccessoryView;
     

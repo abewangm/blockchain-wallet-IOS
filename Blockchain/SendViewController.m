@@ -146,6 +146,7 @@ BOOL displayingLocalSymbolSend;
 - (void)reset
 {
     [sendPaymentButton setEnabled:YES];
+    [sendPaymentAccessoryButton setEnabled:YES];
 }
 
 #pragma mark - Payment
@@ -182,7 +183,8 @@ BOOL displayingLocalSymbolSend;
         
         [sendProgressActivityIndicator stopAnimating];
         
-        [sendPaymentButton setEnabled:TRUE];
+        [sendPaymentButton setEnabled:YES];
+        [sendPaymentAccessoryButton setEnabled:YES];
         
         // Reset fields
         self.fromAddress = @"";
@@ -231,12 +233,14 @@ BOOL displayingLocalSymbolSend;
         
         [sendProgressActivityIndicator stopAnimating];
         
-        [sendPaymentButton setEnabled:TRUE];
+        [sendPaymentButton setEnabled:YES];
+        [sendPaymentAccessoryButton setEnabled:YES];
         
         [app closeModalWithTransition:kCATransitionFade];
     };
     
-    [sendPaymentButton setEnabled:FALSE];
+    [sendPaymentButton setEnabled:NO];
+    [sendPaymentAccessoryButton setEnabled:NO];
     
     [sendProgressActivityIndicator startAnimating];
     

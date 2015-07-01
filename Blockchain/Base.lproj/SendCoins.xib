@@ -20,6 +20,7 @@
                 <outlet property="labelAddressTextField" destination="62" id="71"/>
                 <outlet property="labelAddressView" destination="60" id="72"/>
                 <outlet property="selectAddressTextField" destination="zyc-E3-FOM" id="TU8-Uu-bf4"/>
+                <outlet property="sendPaymentAccessoryButton" destination="pPu-bJ-k6p" id="Dbs-mr-7dS"/>
                 <outlet property="sendPaymentButton" destination="4" id="EeO-PQ-oub"/>
                 <outlet property="sendProgressActivityIndicator" destination="tKj-lu-8bc" id="yLg-rV-y7v"/>
                 <outlet property="sendProgressModal" destination="XyZ-hO-KXJ" id="Nyn-qU-b1D"/>
