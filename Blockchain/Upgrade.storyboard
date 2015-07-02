@@ -58,6 +58,9 @@
                                     <color key="titleColor" red="0.070588235294117646" green="0.45490196078431372" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="upgradeWalletButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="BYV-PO-LRT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.86666666670000003" green="0.90196078430000004" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,7 +70,7 @@
                         <outlet property="captionLabel" destination="g2G-dE-WKh" id="f6E-aB-5gs"/>
                         <outlet property="pageControl" destination="dip-XJ-oo9" id="5iw-tV-Rt0"/>
                         <outlet property="scrollView" destination="Pqx-zq-JJu" id="w8a-HO-MIN"/>
-                        <outlet property="upgradeWalletButton" destination="cZ9-x2-KGM" id="sCc-pf-OES"/>
+                        <outlet property="upgradeWalletButton" destination="cZ9-x2-KGM" id="JPA-UW-jOL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPw-Gt-jqP" userLabel="First Responder" sceneMemberID="firstResponder"/>

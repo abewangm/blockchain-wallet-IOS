@@ -8,15 +8,54 @@
 
 #import "UpgradeViewController.h"
 
-@interface UpgradeViewController ()
+// Need to be localized
+
+#define UPGRADE_FEATURE_ONE @"Create personalized accounts to help keep your wallet organized"
+#define UPGRADE_FEATURE_TWO @"Easy one time wallet backup keeps you in control of your funds"
+#define UPGRADE_FEATURE_THREE @"Anything you need to store, spend and receive your bitcoin"
+
+#define UPGRADE_ALERTVIEW_TITLE @"Upgrade Wallet"
+#define UPGRADE_ALERTVIEW_MESSAGE @"We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet"
+#define UPGRADE_ALERTVIEW_CANCEL_TITLE @"Not now"
+#define UPGRADE_ALERTVIEW_UPDATE_TITLE @"Update"
+
+@interface UpgradeViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *upgradeWalletButton;
+
 @property (nonatomic) NSMutableArray *pageViewsMutableArray;
 
 @end
 
 @implementation UpgradeViewController
+
+- (IBAction)upgradeWalletButtonTapped:(UIButton *)sender
+{
+    [self alertUserToConfirmUpgrade];
+}
+
+- (void)alertUserToConfirmUpgrade
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:UPGRADE_ALERTVIEW_TITLE message:UPGRADE_ALERTVIEW_MESSAGE delegate:self cancelButtonTitle:UPGRADE_ALERTVIEW_CANCEL_TITLE otherButtonTitles:UPGRADE_ALERTVIEW_UPDATE_TITLE, nil];
+    alertView.tag = 1;
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1) {
+        switch (buttonIndex) {
+            case 0: NSLog(@"cancel");
+                break;
+            case 1: NSLog(@"update");
+                // Crash if no block - must set this block to upgrade
+                self.continueUpgradeBlock();
+                break;
+        }
+    }
+}
 
 - (IBAction)cancelButtonTapped:(UIButton *)sender
 {
@@ -32,9 +71,9 @@
 {
     switch (index) {
         case 0:
-            return [self createBlueAttributedStringWithWideLineSpacingFromString:@"Create personalized accounts to help keep your wallet organized"];
-        case 1: return [self createBlueAttributedStringWithWideLineSpacingFromString:@"Easy one time wallet backup keeps you in control of your funds"];
-        case 2: return [self createBlueAttributedStringWithWideLineSpacingFromString:@"Anything you need to store, spend and receive your bitcoin"];
+            return [self createBlueAttributedStringWithWideLineSpacingFromString:UPGRADE_FEATURE_ONE];
+        case 1: return [self createBlueAttributedStringWithWideLineSpacingFromString:UPGRADE_FEATURE_TWO];
+        case 2: return [self createBlueAttributedStringWithWideLineSpacingFromString:UPGRADE_FEATURE_THREE];
         default: return nil;
     }
 }

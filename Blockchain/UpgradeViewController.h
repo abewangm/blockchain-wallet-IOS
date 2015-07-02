@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^ContinueUpgradeBlock)();
+
 @interface UpgradeViewController : UIViewController <UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UIButton *upgradeWalletButton;
+
+// Must set this block to execute actual upgrade
+@property (nonatomic, copy) ContinueUpgradeBlock continueUpgradeBlock;
 
 @end

@@ -1087,7 +1087,9 @@ SideMenuViewController *sideMenuViewController;
     upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
     
-    [upgradeViewController.upgradeWalletButton addTarget:self action:@selector(continueUpgrade) forControlEvents:UIControlEventTouchUpInside];
+    [upgradeViewController setContinueUpgradeBlock:^{
+        [self continueUpgrade];
+    }];
 }
 
 - (void)continueUpgrade
