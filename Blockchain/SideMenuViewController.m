@@ -190,12 +190,13 @@ int accountEntries = 0;
     } else if (row == 3) {
          [app supportClicked:nil];
     } else if (row == 4) {
-        if (didUpgradeToHD) {
-            [app backupClicked:nil];
-        }
-        else {
-            [app showHdUpgrade];
-        }
+        [app showHdUpgrade];
+//        if (didUpgradeToHD) {
+//            [app backupClicked:nil];
+//        }
+//        else {
+//            [app showHdUpgrade];
+//        }
     } else if (row == 5) {
         [app changePINClicked:nil];
     } else if (row == 6) {

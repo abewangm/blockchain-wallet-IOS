@@ -356,11 +356,7 @@ SideMenuViewController *sideMenuViewController;
     if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenUpgradeToHdScreen"]) {
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasSeenUpgradeToHdScreen"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        [self showHdUpgrade];
     }
-    
-    [self showHdUpgrade];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
