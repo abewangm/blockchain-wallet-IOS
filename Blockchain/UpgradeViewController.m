@@ -28,9 +28,26 @@
     return @[@"home_icon_hi", @"home_icon", @"lock_icon"];
 }
 
-- (NSArray *)captionLabelTextsArray
+- (NSMutableAttributedString *)captionLabelTextAtPageIndex:(NSInteger)index
 {
-    return @[@"Create personalized accounts to help keep your wallet organized", @"Easy one time wallet backup keeps you in control of your funds", @"Anything you need to store, spend and receive your bitcoin"];
+    switch (index) {
+        case 0:
+            return [self createBlueAttributedStringWithWideLineSpacingFromString:@"Create personalized accounts to help keep your wallet organized"];
+        case 1: return [self createBlueAttributedStringWithWideLineSpacingFromString:@"Easy one time wallet backup keeps you in control of your funds"];
+        case 2: return [self createBlueAttributedStringWithWideLineSpacingFromString:@"Anything you need to store, spend and receive your bitcoin"];
+        default: return nil;
+    }
+}
+
+- (NSMutableAttributedString *)createBlueAttributedStringWithWideLineSpacingFromString:(NSString *)string
+{
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineHeightMultiple = 1.3;
+    style.alignment = NSTextAlignmentCenter;
+    NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjects:@[COLOR_BLOCKCHAIN_BLUE, style] forKeys:@[NSForegroundColorAttributeName, NSParagraphStyleAttributeName]];
+    
+    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:string attributes:attributesDictionary];
+    return mutableAttributedString;
 }
 
 - (void)loadPage:(NSInteger)page
@@ -91,12 +108,13 @@
         [self purgePage:i];
     }
     
-    self.captionLabel.text = [[self captionLabelTextsArray] objectAtIndex:self.pageControl.currentPage];
+    self.captionLabel.attributedText = [self captionLabelTextAtPageIndex:self.pageControl.currentPage];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = [[self imageNamesArray] count];
     

@@ -13,17 +13,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create personalized accounts to help keep your wallet organized" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g2G-dE-WKh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g2G-dE-WKh">
                                 <rect key="frame" x="70" y="40" width="180" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Create personalized accounts to help keep your wallet organized">
+                                        <attributes>
+                                            <color key="NSColor" red="0.098039215690000001" green="0.45882352939999999" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HuT-V7-syg">
                                 <rect key="frame" x="115" y="518" width="91" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Ask Me Later">
+                                    <color key="titleColor" red="0.070588235294117646" green="0.45098039215686275" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -47,6 +55,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="UPGRADE YOUR WALLET">
+                                    <color key="titleColor" red="0.070588235294117646" green="0.45490196078431372" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -55,7 +64,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0ie-rM-WF9"/>
                     <connections>
-                        <outlet property="captionLabel" destination="g2G-dE-WKh" id="4Qc-ui-taL"/>
+                        <outlet property="captionLabel" destination="g2G-dE-WKh" id="f6E-aB-5gs"/>
                         <outlet property="pageControl" destination="dip-XJ-oo9" id="5iw-tV-Rt0"/>
                         <outlet property="scrollView" destination="Pqx-zq-JJu" id="w8a-HO-MIN"/>
                         <outlet property="upgradeWalletButton" destination="cZ9-x2-KGM" id="sCc-pf-OES"/>
