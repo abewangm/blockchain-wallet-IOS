@@ -20,7 +20,7 @@
 
 - (NSArray *)imageNamesArray
 {
-    return @[@"home_icon_hi", @"home_icon", @"LaunchImage"];
+    return @[@"home_icon_hi", @"home_icon", @"lock_icon"];
 }
 
 - (NSArray *)captionLabelTextsArray
@@ -107,6 +107,8 @@
     
     CGSize pagesScrollViewSize = self.scrollView.frame.size;
     self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * [self pageViewsMutableArray].count, pagesScrollViewSize.height);
+    self.upgradeWalletButton.clipsToBounds = YES;
+    self.upgradeWalletButton.layer.cornerRadius = 20;
     
     [self loadVisiblePages];
 }
