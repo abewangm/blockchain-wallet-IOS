@@ -22,6 +22,11 @@
     return @[@"image1", @"image2", @"image3"];
 }
 
+- (NSArray *)captionLabelTextsArray
+{
+    return @[@"Create personalized accounts to help keep your wallet organized", @"Easy one time wallet backup keeps you in control of your funds", @"anything you need to store, spend and receive your bitcoin"];
+}
+
 - (void)setupImages
 {
     NSArray *imageNamesArray = [self imageNamesArray];
@@ -51,5 +56,10 @@
     self.pageControl.currentPage = page;
 }
 
+- (void)setPageControl:(UIPageControl *)pageControl
+{
+    _pageControl = pageControl;
+    self.captionLabel.text = [[self captionLabelTextsArray] objectAtIndex:pageControl.currentPage];
+}
 
 @end
