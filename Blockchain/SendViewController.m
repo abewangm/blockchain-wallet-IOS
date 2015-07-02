@@ -424,6 +424,7 @@ BOOL displayingLocalSymbolSend;
 - (void)dismissKeyboard
 {
     [btcAmountField resignFirstResponder];
+    [fiatAmountField resignFirstResponder];
     [toField resignFirstResponder];
     
     [self.view removeGestureRecognizer:self.tapGesture];
