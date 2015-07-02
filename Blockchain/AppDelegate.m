@@ -34,6 +34,7 @@
 #import "BCHdUpgradeView.h"
 #import "BCWebViewController.h"
 #import "KeychainItemWrapper.h"
+#import "UpgradeViewController.h"
 
 #define CURTAIN_IMAGE_TAG 123
 
@@ -358,6 +359,8 @@ SideMenuViewController *sideMenuViewController;
         
         [self showHdUpgrade];
     }
+    
+    [self showHdUpgrade];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
@@ -1079,11 +1082,17 @@ SideMenuViewController *sideMenuViewController;
 
 - (void)showHdUpgrade
 {
-    BCHdUpgradeView *hdUpgradeView = [[BCHdUpgradeView alloc] init];
-    [hdUpgradeView.upgradeButton addTarget:self action:@selector(continueUpgrade) forControlEvents:UIControlEventTouchUpInside];
-    [hdUpgradeView.cancelButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventTouchUpInside];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Upgrade" bundle: nil];
+    UpgradeViewController *upgradeWalletViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeNavigation"];
     
-    [app showModalWithContent:hdUpgradeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
+    upgradeWalletViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [_tabViewController presentViewController:upgradeWalletViewController animated:NO completion:nil];
+    
+//    BCHdUpgradeView *hdUpgradeView = [[BCHdUpgradeView alloc] init];
+//    [hdUpgradeView.upgradeButton addTarget:self action:@selector(continueUpgrade) forControlEvents:UIControlEventTouchUpInside];
+//    [hdUpgradeView.cancelButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [app showModalWithContent:hdUpgradeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
 - (void)continueUpgrade
