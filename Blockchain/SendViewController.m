@@ -723,6 +723,13 @@ BOOL displayingLocalSymbolSend;
     [self startReadingQRCode];
 }
 
+- (IBAction)closeKeyboardClicked:(id)sender
+{
+    [btcAmountField resignFirstResponder];
+    [fiatAmountField resignFirstResponder];
+    [toField resignFirstResponder];
+}
+
 - (IBAction)labelAddressClicked:(id)sender
 {
     [app.wallet addToAddressBook:toField.text label:labelAddressTextField.text];

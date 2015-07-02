@@ -70,6 +70,7 @@
 - (IBAction)selectFromAddressClicked:(id)sender;
 - (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)addressBookClicked:(id)sender;
+- (IBAction)closeKeyboardClicked:(id)sender;
 
 - (void)didSelectFromAddress:(NSString *)address;
 - (void)didSelectToAddress:(NSString *)address;

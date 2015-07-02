@@ -28,6 +28,7 @@ module.exports = (grunt) ->
     "shell:psd:icon_merchant:26"
     "shell:psd:icon_support:26"
     "shell:psd:icon_upgrade:26"
+    "shell:psd:cancel:15"
     "shell:svg:backup_green_circle:40"
     "shell:svg:backup_blue_circle:40"
     "shell:svg:backup_exclamation_mark:40"
