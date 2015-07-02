@@ -58,7 +58,10 @@
     } else {
         dateLabel.hidden = YES;
     }
-
+    
+    btcButton.titleLabel.minimumScaleFactor =  0.75f;
+    [btcButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
+    
     [btcButton setTitle:[app formatMoney:ABS(transaction.result)] forState:UIControlStateNormal];
     
     if(transaction.intraWallet) {
