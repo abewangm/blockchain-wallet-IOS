@@ -18,6 +18,12 @@
 
 @implementation UpgradeViewController
 
+- (IBAction)cancelButtonTapped:(UIButton *)sender
+{
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasDelayedHDUpgrade"];
+}
+
 - (NSArray *)imageNamesArray
 {
     return @[@"home_icon_hi", @"home_icon", @"lock_icon"];

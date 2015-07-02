@@ -8,7 +8,7 @@
         <!--Upgrade View Controller-->
         <scene sceneID="PfE-Iq-Wbz">
             <objects>
-                <viewController storyboardIdentifier="u" id="5EP-fa-fRb" customClass="UpgradeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpgradeViewController" id="5EP-fa-fRb" customClass="UpgradeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jcn-ds-OUG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,6 +26,9 @@
                                 <state key="normal" title="Ask Me Later">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="RP9-LZ-mxS"/>
+                                </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="dip-XJ-oo9">
                                 <rect key="frame" x="141" y="392" width="39" height="37"/>
@@ -52,7 +55,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="0ie-rM-WF9"/>
                     <connections>
-                        <outlet property="cancelButton" destination="HuT-V7-syg" id="azo-ck-I2c"/>
                         <outlet property="captionLabel" destination="g2G-dE-WKh" id="4Qc-ui-taL"/>
                         <outlet property="pageControl" destination="dip-XJ-oo9" id="5iw-tV-Rt0"/>
                         <outlet property="scrollView" destination="Pqx-zq-JJu" id="w8a-HO-MIN"/>

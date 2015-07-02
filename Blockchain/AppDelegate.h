@@ -98,7 +98,6 @@
 @property (nonatomic, assign) NSUInteger lastEnteredPIN;
 
 @property (nonatomic, strong) BackupNavigationViewController *backupNavigationController;
-@property (nonatomic, strong) UpgradeViewController *upgradeViewController;
 
 @property(nonatomic, strong) NSNumberFormatter *btcFormatter;
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;

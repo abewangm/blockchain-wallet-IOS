@@ -10,6 +10,5 @@
 
 @interface UpgradeViewController : UIViewController <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *upgradeWalletButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
