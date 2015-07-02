@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (nonatomic) NSMutableArray *pageViewsMutableArray;
 
 @end
 
@@ -19,47 +20,102 @@
 
 - (NSArray *)imageNamesArray
 {
-    return @[@"image1", @"image2", @"image3"];
+    return @[@"home_icon_hi", @"home_icon", @"LaunchImage"];
 }
 
 - (NSArray *)captionLabelTextsArray
 {
-    return @[@"Create personalized accounts to help keep your wallet organized", @"Easy one time wallet backup keeps you in control of your funds", @"anything you need to store, spend and receive your bitcoin"];
+    return @[@"Create personalized accounts to help keep your wallet organized", @"Easy one time wallet backup keeps you in control of your funds", @"Anything you need to store, spend and receive your bitcoin"];
 }
 
-- (void)setupImages
+- (void)loadPage:(NSInteger)page
 {
-    NSArray *imageNamesArray = [self imageNamesArray];
-    for (int i = 0; i < [imageNamesArray count]; i++) {
+    if (page < 0 || page >= [self imageNamesArray].count) {
+        return;
+    }
+    
+    UIView *pageView = [self.pageViewsMutableArray objectAtIndex:page];
+    
+    if ((NSNull*)pageView == [NSNull null]) {
+        CGRect frame = self.scrollView.bounds;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0.0f;
         
-        CGFloat scrollViewFrameWidth = self.scrollView.frame.size.width;
-        
-        CGRect frame = CGRectMake(scrollViewFrameWidth + scrollViewFrameWidth * i, self.scrollView.frame.origin.y, scrollViewFrameWidth, self.scrollView.frame.size.height);
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-        imageView.image = [UIImage imageNamed:imageNamesArray[i]];
-        [self.scrollView addSubview:imageView];
+        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
+        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
+        newPageView.contentMode = UIViewContentModeScaleAspectFit;
+        newPageView.frame = frame;
+        [self.scrollView addSubview:newPageView];
+        [self.pageViewsMutableArray replaceObjectAtIndex:page withObject:newPageView];
     }
 }
-            
-- (void)viewDidLoad {
+
+- (void)purgePage:(NSInteger)page {
+    
+    if (page < 0 || page >= [self imageNamesArray].count) {
+        return;
+    }
+    
+    UIView *pageView = [self.pageViewsMutableArray objectAtIndex:page];
+    
+    if ((NSNull*)pageView != [NSNull null]) {
+        [pageView removeFromSuperview];
+        [self.pageViewsMutableArray replaceObjectAtIndex:page withObject:[NSNull null]];
+    }
+}
+
+- (void)loadVisiblePages
+{
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    
+    self.pageControl.currentPage = page;
+    
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
+    
+    for (NSInteger i = 0; i < firstPage; i++) {
+        [self purgePage:i];
+    }
+    
+    for (NSInteger i = firstPage; i <= lastPage; i++) {
+        [self loadPage:i];
+    }
+    
+    for (NSInteger i = lastPage+1; i < [self pageViewsMutableArray].count; i++) {
+        [self purgePage:i];
+    }
+    
+    self.captionLabel.text = [[self captionLabelTextsArray] objectAtIndex:self.pageControl.currentPage];
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.pageControl.currentPage = 0;
+    self.pageControl.numberOfPages = [[self imageNamesArray] count];
+    
+    self.pageViewsMutableArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [[self imageNamesArray] count]; i++) {
+        [self.pageViewsMutableArray addObject:[NSNull null]];
+    }
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    CGSize pagesScrollViewSize = self.scrollView.frame.size;
+    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * [self pageViewsMutableArray].count, pagesScrollViewSize.height);
+    
+    [self loadVisiblePages];
 }
 
 #pragma mark UIScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    int page = floor((self.scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
-    self.pageControl.currentPage = page;
-}
-
-- (void)setPageControl:(UIPageControl *)pageControl
-{
-    _pageControl = pageControl;
-    self.captionLabel.text = [[self captionLabelTextsArray] objectAtIndex:pageControl.currentPage];
+    [self loadVisiblePages];
 }
 
 @end

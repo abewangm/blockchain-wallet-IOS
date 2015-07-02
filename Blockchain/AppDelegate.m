@@ -357,6 +357,8 @@ SideMenuViewController *sideMenuViewController;
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasSeenUpgradeToHdScreen"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
+    [self showHdUpgrade];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
