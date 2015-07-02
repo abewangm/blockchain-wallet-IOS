@@ -50,6 +50,7 @@ int accountEntries = 0;
         tableView.backgroundView = nil;
         tableView;
     });
+
     
     [self.view addSubview:self.tableView];
     
@@ -190,13 +191,12 @@ int accountEntries = 0;
     } else if (row == 3) {
          [app supportClicked:nil];
     } else if (row == 4) {
-        [app showHdUpgrade];
-//        if (didUpgradeToHD) {
-//            [app backupClicked:nil];
-//        }
-//        else {
-//            [app showHdUpgrade];
-//        }
+        if (didUpgradeToHD) {
+            [app backupClicked:nil];
+        }
+        else {
+            [app showHdUpgrade];
+        }
     } else if (row == 5) {
         [app changePINClicked:nil];
     } else if (row == 6) {

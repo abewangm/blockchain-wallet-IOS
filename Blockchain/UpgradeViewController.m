@@ -21,7 +21,6 @@
 - (IBAction)cancelButtonTapped:(UIButton *)sender
 {
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-    [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasDelayedHDUpgrade"];
 }
 
 - (NSArray *)imageNamesArray

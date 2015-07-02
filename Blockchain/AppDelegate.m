@@ -356,8 +356,10 @@ SideMenuViewController *sideMenuViewController;
     if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenUpgradeToHdScreen"]) {
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasSeenUpgradeToHdScreen"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        [self showHdUpgrade];
     }
     
+    // TODO:remove for production; testing only
     [self showHdUpgrade];
 }
 
@@ -1083,7 +1085,7 @@ SideMenuViewController *sideMenuViewController;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Upgrade" bundle: nil];
     UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeViewController"];
     upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [_tabViewController presentViewController:upgradeViewController animated:NO completion:nil];
+    [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
     
     [upgradeViewController.upgradeWalletButton addTarget:self action:@selector(continueUpgrade) forControlEvents:UIControlEventTouchUpInside];
 }
