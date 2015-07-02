@@ -1,30 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Bb7-rX-8c0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5EP-fa-fRb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="gEC-XE-5dQ">
-            <objects>
-                <navigationController storyboardIdentifier="UpgradeNavigation" id="Bb7-rX-8c0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GxC-HL-pPi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="5EP-fa-fRb" kind="relationship" relationship="rootViewController" id="fdf-8d-Gap"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A90-58-Oei" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-481" y="391"/>
-        </scene>
         <!--Upgrade View Controller-->
         <scene sceneID="PfE-Iq-Wbz">
             <objects>
-                <viewController id="5EP-fa-fRb" customClass="UpgradeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="u" id="5EP-fa-fRb" customClass="UpgradeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jcn-ds-OUG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,6 +52,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0ie-rM-WF9"/>
                     <connections>
+                        <outlet property="captionLabel" destination="g2G-dE-WKh" id="4Qc-ui-taL"/>
                         <outlet property="pageControl" destination="dip-XJ-oo9" id="5iw-tV-Rt0"/>
                         <outlet property="scrollView" destination="Pqx-zq-JJu" id="w8a-HO-MIN"/>
                     </connections>

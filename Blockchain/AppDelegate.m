@@ -1083,16 +1083,10 @@ SideMenuViewController *sideMenuViewController;
 - (void)showHdUpgrade
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Upgrade" bundle: nil];
-    UpgradeViewController *upgradeWalletViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeNavigation"];
+    self.upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:@"u"];
+    self.upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [_tabViewController presentViewController:self.upgradeViewController animated:NO completion:nil];
     
-    upgradeWalletViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [_tabViewController presentViewController:upgradeWalletViewController animated:NO completion:nil];
-    
-//    BCHdUpgradeView *hdUpgradeView = [[BCHdUpgradeView alloc] init];
-//    [hdUpgradeView.upgradeButton addTarget:self action:@selector(continueUpgrade) forControlEvents:UIControlEventTouchUpInside];
-//    [hdUpgradeView.cancelButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [app showModalWithContent:hdUpgradeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
 - (void)continueUpgrade

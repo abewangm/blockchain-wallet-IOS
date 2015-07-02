@@ -11,6 +11,7 @@
 @interface UpgradeViewController ()
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 
 @end
 
@@ -49,5 +50,6 @@
     int page = floor((self.scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
     self.pageControl.currentPage = page;
 }
+
 
 @end
