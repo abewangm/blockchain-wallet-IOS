@@ -147,7 +147,10 @@
         [self purgePage:i];
     }
     
-    self.captionLabel.attributedText = [self captionLabelTextAtPageIndex:self.pageControl.currentPage];
+    [UIView transitionWithView:self.captionLabel duration:0.5f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        self.captionLabel.attributedText = [self captionLabelTextAtPageIndex:self.pageControl.currentPage];
+    } completion:nil];
+    
 }
 
 - (void)viewDidLoad
