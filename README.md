@@ -56,3 +56,10 @@ The reason that the PNG files are not in the repository - even though it woud ma
 Source Code License: LGPL v3
 
 Artwork & images remain Copyright Ben Reeves - Qkos Services Ltd 2012-2014
+
+## Security
+
+Security issues can be reported to us in the following venues:
+* Email: security@blockchain.info
+* Bug Bounty: https://www.crowdcurity.com/blockchain-info
+
