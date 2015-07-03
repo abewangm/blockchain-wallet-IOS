@@ -590,6 +590,11 @@ Boolean isHdWalletInitialized;
     [app hideBusyView];
 }
 
+- (void)upgrade_success
+{
+    [app showHdUpgradeSuccess];
+}
+
 #pragma mark - Callbacks from JS to Obj-C
 
 - (void)log:(NSString*)message

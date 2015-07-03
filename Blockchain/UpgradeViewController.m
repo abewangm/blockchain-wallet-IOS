@@ -83,7 +83,10 @@
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.lineHeightMultiple = 1.3;
     style.alignment = NSTextAlignmentCenter;
-    NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjects:@[COLOR_BLOCKCHAIN_BLUE, style] forKeys:@[NSForegroundColorAttributeName, NSParagraphStyleAttributeName]];
+    
+    UIFont *font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    
+    NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjects:@[COLOR_BLOCKCHAIN_BLUE, style, font] forKeys:@[NSForegroundColorAttributeName, NSParagraphStyleAttributeName, NSFontAttributeName]];
     
     NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:string attributes:attributesDictionary];
     return mutableAttributedString;

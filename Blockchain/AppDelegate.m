@@ -1100,6 +1100,15 @@ SideMenuViewController *sideMenuViewController;
     });
 }
 
+- (void)showHdUpgradeSuccess
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"You are now running our most secure Bitcoin wallet" delegate:nil cancelButtonTitle:nil otherButtonTitles: @"",nil];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"image"]];
+    [alertView setValue:imageView forKey:@"accessoryView"];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [alertView show];
+}
+
 - (void)showCreateWallet:(id)sender
 {
     [app showModalWithContent:newAccountView closeType:ModalCloseTypeBack headerText:BC_STRING_CREATE_NEW_WALLET];

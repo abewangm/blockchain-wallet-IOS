@@ -183,5 +183,6 @@
 - (void)loading_start_get_history;
 - (void)loading_start_import_private_key;
 - (void)loading_stop;
+- (void)upgrade_success;
 
 @end
