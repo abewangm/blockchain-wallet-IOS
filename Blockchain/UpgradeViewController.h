@@ -12,7 +12,4 @@ typedef void (^ContinueUpgradeBlock)();
 
 @interface UpgradeViewController : UIViewController <UIScrollViewDelegate>
 
-// Must set this block to execute actual upgrade
-@property (nonatomic, copy) ContinueUpgradeBlock continueUpgradeBlock;
-
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "UpgradeViewController.h"
+#import "AppDelegate.h"
 
 // Need to be localized
 
@@ -50,8 +51,11 @@
             case 0: NSLog(@"cancel");
                 break;
             case 1: NSLog(@"update");
-                // Crash if no block - must set this block to upgrade
-                self.continueUpgradeBlock();
+                // TODO call objc completion function first
+                [app.wallet loading_start_upgrade_to_hd];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [app.wallet upgradeToHDWallet];
+                });
                 break;
         }
     }

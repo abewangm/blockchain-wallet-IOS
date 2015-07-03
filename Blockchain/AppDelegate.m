@@ -1086,27 +1086,47 @@ SideMenuViewController *sideMenuViewController;
     UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeViewController"];
     upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
-    
-    [upgradeViewController setContinueUpgradeBlock:^{
-        [self continueUpgrade];
-    }];
-}
-
-- (void)continueUpgrade
-{
-    [self closeAllModals];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [wallet upgradeToHDWallet];
-    });
 }
 
 - (void)showHdUpgradeSuccess
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"You are now running our most secure Bitcoin wallet" delegate:nil cancelButtonTitle:nil otherButtonTitles: @" ",nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"You are now running our most secure Bitcoin wallet" delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lock_icon"]];
     [alertView setValue:imageView forKey:@"accessoryView"];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [alertView show];
+    
+    // To animate dismissal of alertView, must pass parameters through performSelector
+    
+    SEL aSelector = NSSelectorFromString(@"dismissWithClickedButtonIndex:animated:");
+    NSInteger index = 0;
+    BOOL animated = YES;
+    
+    if([alertView respondsToSelector:aSelector]) {
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[alertView methodSignatureForSelector:aSelector]];
+        [invocation setSelector:aSelector];
+        [invocation setTarget:alertView];
+        
+        [invocation setArgument:&(index) atIndex:2];
+        [invocation setArgument:&(animated) atIndex:3];
+        
+        CGRect frame = _window.rootViewController.view.frame;
+        UIView *emptyView = [[UIView alloc] initWithFrame:frame];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foo)];
+        [_window addSubview:emptyView];
+        [_window bringSubviewToFront:emptyView];
+        [emptyView addGestureRecognizer:tapGesture];
+    }
+}
+
+- (void)foo
+{
+    NSLog(@"foo");
+}
+
+- (void)dismissUpgradeSuccessAndRemoveTapView:(UIView *)view withInvocation:(NSInvocation *)invocation
+{
+    
 }
 
 - (void)showCreateWallet:(id)sender
