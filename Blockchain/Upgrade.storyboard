@@ -22,11 +22,10 @@
                                 <rect key="frame" x="281" y="465" width="39" height="37"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqx-zq-JJu">
-                                <rect key="frame" x="158" y="121" width="285" height="332"/>
+                                <rect key="frame" x="186" y="121" width="229" height="332"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Pqx-zq-JJu" secondAttribute="height" multiplier="196:228" id="5W5-HE-ha7"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="196" id="BhP-Z7-VcN"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="228" id="am4-uC-0JK"/>
+                                    <constraint firstAttribute="width" secondItem="Pqx-zq-JJu" secondAttribute="height" multiplier="69:100" id="5W5-HE-ha7"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="BhP-Z7-VcN"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="5EP-fa-fRb" id="f71-T0-vVP"/>

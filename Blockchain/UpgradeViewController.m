@@ -118,12 +118,12 @@
         frame.origin.y = 0.0f;
         
 //    TODOUpgrade: Uncomment for production
-        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
-        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
+//        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
+//        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
         
         // These two lines are for testing borders only
-//        UIView *newPageView = [[UIView alloc] init];
-//        newPageView.backgroundColor = [UIColor greenColor];
+        UIView *newPageView = [[UIView alloc] init];
+        newPageView.backgroundColor = [UIColor greenColor];
 
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
