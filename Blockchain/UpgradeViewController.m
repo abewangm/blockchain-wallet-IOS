@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *upgradeButtonToPageControlConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *askLaterButtonToBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewToPageControlConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *captionLabelToTopConstraint;
 
 @end
 
@@ -55,14 +56,19 @@
                 break;
             case 1: NSLog(@"Upgrading wallet");
                 [app.wallet loading_start_upgrade_to_hd];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [app.wallet performSelector:@selector(upgradeToHDWallet) withObject:nil afterDelay:0.1f];
-                });
+                // [self performSelector:@selector(performUpgrade) withObject:nil afterDelay:0.1f];
                 break;
         }
     } else {
         [self dismissSelf];
     }
+}
+
+- (void)performUpgrade
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [app.wallet performSelector:@selector(upgradeToHDWallet) withObject:nil afterDelay:0.1f];
+    });
 }
 
 - (void)dismissSelf
@@ -207,6 +213,7 @@
             self.upgradeButtonToPageControlConstraint.constant = 30;
             self.askLaterButtonToBottomConstraint.constant = 15;
             self.scrollViewToPageControlConstraint.constant = 8;
+            self.captionLabelToTopConstraint.constant = 12;
             [self.view layoutIfNeeded];
         }
     }
@@ -225,7 +232,7 @@
         self.captionLabel.attributedText = self.captionLabelAttributedStringsArray[self.pageControl.currentPage];
     } completion:nil];
     
-    self.captionLabel.minimumScaleFactor = 3./self.captionLabel.font.pointSize;
+    self.captionLabel.minimumScaleFactor = 10./self.captionLabel.font.pointSize;
     self.captionLabel.adjustsFontSizeToFitWidth = YES;
 }
 

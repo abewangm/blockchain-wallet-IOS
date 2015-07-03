@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dip-XJ-oo9">
-                                <rect key="frame" x="281" y="465" width="39" height="37"/>
+                                <rect key="frame" x="281" y="469" width="39" height="37"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqx-zq-JJu">
-                                <rect key="frame" x="186" y="121" width="229" height="332"/>
+                                <rect key="frame" x="181" y="113" width="238" height="344"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Pqx-zq-JJu" secondAttribute="height" multiplier="69:100" id="5W5-HE-ha7"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="BhP-Z7-VcN"/>
@@ -32,7 +32,7 @@
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-V7-syg">
-                                <rect key="frame" x="186" y="552" width="228" height="40"/>
+                                <rect key="frame" x="186" y="556" width="228" height="40"/>
                                 <state key="normal" title="Ask Me Later">
                                     <color key="titleColor" red="0.070588235294117646" green="0.45098039215686275" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-x2-KGM">
-                                <rect key="frame" x="186" y="510" width="228" height="40"/>
+                                <rect key="frame" x="186" y="514" width="228" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OJo-92-rmD"/>
@@ -58,10 +58,10 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2G-dE-WKh">
-                                <rect key="frame" x="200" y="28" width="200" height="85"/>
+                                <rect key="frame" x="190" y="20" width="220" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="gvv-cH-dBl"/>
-                                    <constraint firstAttribute="width" constant="200" id="jA8-i4-zSw"/>
+                                    <constraint firstAttribute="width" constant="220" id="jA8-i4-zSw"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Create personalized accounts to help keep your wallet organized">
@@ -85,8 +85,8 @@
                             <constraint firstAttribute="centerX" secondItem="g2G-dE-WKh" secondAttribute="centerX" id="PdC-qc-DF0"/>
                             <constraint firstItem="Pqx-zq-JJu" firstAttribute="top" secondItem="g2G-dE-WKh" secondAttribute="bottom" constant="8" symbolic="YES" id="XCm-pS-jv6"/>
                             <constraint firstItem="HuT-V7-syg" firstAttribute="height" secondItem="cZ9-x2-KGM" secondAttribute="height" id="Z59-nP-dfl"/>
-                            <constraint firstItem="g2G-dE-WKh" firstAttribute="top" secondItem="VJu-ki-Z6D" secondAttribute="bottom" constant="8" symbolic="YES" id="by4-UR-DWM"/>
-                            <constraint firstItem="5be-tC-zXl" firstAttribute="top" secondItem="HuT-V7-syg" secondAttribute="bottom" constant="8" id="fzT-lJ-2Ur"/>
+                            <constraint firstItem="g2G-dE-WKh" firstAttribute="top" secondItem="VJu-ki-Z6D" secondAttribute="bottom" id="by4-UR-DWM"/>
+                            <constraint firstItem="5be-tC-zXl" firstAttribute="top" secondItem="HuT-V7-syg" secondAttribute="bottom" constant="4" id="fzT-lJ-2Ur"/>
                             <constraint firstAttribute="centerX" secondItem="Pqx-zq-JJu" secondAttribute="centerX" id="ms4-Wx-oLb"/>
                             <constraint firstItem="Pqx-zq-JJu" firstAttribute="centerX" secondItem="dip-XJ-oo9" secondAttribute="centerX" id="pRp-Hj-57j"/>
                             <constraint firstAttribute="centerX" secondItem="HuT-V7-syg" secondAttribute="centerX" id="pgc-rU-IDc"/>
@@ -97,6 +97,7 @@
                         <outlet property="askLaterButtonToBottomConstraint" destination="fzT-lJ-2Ur" id="LQm-OU-Blw"/>
                         <outlet property="askMeLaterButton" destination="HuT-V7-syg" id="Ehk-8h-ja1"/>
                         <outlet property="captionLabel" destination="g2G-dE-WKh" id="f6E-aB-5gs"/>
+                        <outlet property="captionLabelToTopConstraint" destination="by4-UR-DWM" id="xtR-pK-ZNP"/>
                         <outlet property="pageControl" destination="dip-XJ-oo9" id="5iw-tV-Rt0"/>
                         <outlet property="scrollView" destination="Pqx-zq-JJu" id="w8a-HO-MIN"/>
                         <outlet property="scrollViewToPageControlConstraint" destination="Ih4-ar-rpC" id="J7F-M4-75z"/>
