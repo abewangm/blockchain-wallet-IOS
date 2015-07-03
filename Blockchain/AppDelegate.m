@@ -1083,9 +1083,14 @@ SideMenuViewController *sideMenuViewController;
 - (void)showHdUpgrade
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Upgrade" bundle: nil];
-    UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeViewController"];
-    upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
+    self.upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeViewController"];
+    self.upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [_tabViewController presentViewController:self.upgradeViewController animated:YES completion:nil];
+}
+
+- (void)showUpgradeSuccess
+{
+    [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE delegate:self.upgradeViewController];
 }
 
 - (void)showCreateWallet:(id)sender

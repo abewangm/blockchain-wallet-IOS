@@ -80,6 +80,8 @@
 @property (strong, nonatomic) IBOutlet MerchantMapViewController *merchantViewController;
 @property (strong, nonatomic) IBOutlet BCWebViewController *bcWebViewController;
 
+@property (strong, nonatomic) UpgradeViewController *upgradeViewController;
+
 @property (nonatomic) BOOL showEmailWarning;
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;
@@ -157,6 +159,7 @@
 - (void)showSendCoins;
 
 - (void)showHdUpgrade;
+- (void)showUpgradeSuccess;
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender;
 - (IBAction)transactionsClicked:(UIButton *)sender;

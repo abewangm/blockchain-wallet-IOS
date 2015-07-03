@@ -592,7 +592,7 @@ Boolean isHdWalletInitialized;
 
 - (void)upgrade_success
 {
-    [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE delegate:nil];
+    [app showUpgradeSuccess];
 }
 
 #pragma mark - Callbacks from JS to Obj-C

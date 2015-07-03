@@ -48,16 +48,19 @@
 {
     if (alertView.tag == 1) {
         switch (buttonIndex) {
-            case 0: NSLog(@"cancel");
+            case 0: NSLog(@"Cancelled upgrade");
+                // TODO: determine whether appropriate to dismiss
+                [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
                 break;
-            case 1: NSLog(@"update");
-                // TODO call objc completion function first
+            case 1: NSLog(@"Upgrading wallet");
                 [app.wallet loading_start_upgrade_to_hd];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [app.wallet upgradeToHDWallet];
                 });
                 break;
         }
+    } else {
+        [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
