@@ -149,11 +149,6 @@
     for (NSInteger i = lastPage+1; i < [self pageViewsMutableArray].count; i++) {
         [self purgePage:i];
     }
-    
-    [UIView transitionWithView:self.captionLabel duration:0.5f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        self.captionLabel.attributedText = [self captionLabelTextAtPageIndex:self.pageControl.currentPage];
-    } completion:nil];
-    
 }
 
 - (void)viewDidLoad
@@ -167,6 +162,8 @@
     for (int i = 0; i < [[self imageNamesArray] count]; i++) {
         [self.pageViewsMutableArray addObject:[NSNull null]];
     }
+    
+    [self setTextForCaptionLabel];
 }
 
 - (void)viewDidLayoutSubviews
@@ -181,11 +178,23 @@
     [self loadVisiblePages];
 }
 
+- (void)setTextForCaptionLabel
+{
+    [UIView transitionWithView:self.captionLabel duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        self.captionLabel.attributedText = [self captionLabelTextAtPageIndex:self.pageControl.currentPage];
+    } completion:nil];
+}
+
 #pragma mark UIScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self loadVisiblePages];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self setTextForCaptionLabel];
 }
 
 @end
