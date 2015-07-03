@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *askMeLaterButton;
 
 @property (nonatomic) NSMutableArray *pageViewsMutableArray;
+@property (nonatomic) NSArray *captionLabelAttributedStringsArray;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *upgradeButtonToPageControlConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *askLaterButtonToBottomConstraint;
@@ -79,15 +80,9 @@
     return @[@"home_icon_hi", @"home_icon", @"lock_icon"];
 }
 
-- (NSMutableAttributedString *)captionLabelTextAtPageIndex:(NSInteger)index
+- (NSArray *)captionLabelStringsArray
 {
-    switch (index) {
-        case 0:
-            return [self createBlueAttributedStringWithWideLineSpacingFromString:BC_STRING_UPGRADE_FEATURE_ONE];
-        case 1: return [self createBlueAttributedStringWithWideLineSpacingFromString:BC_STRING_UPGRADE_FEATURE_TWO];
-        case 2: return [self createBlueAttributedStringWithWideLineSpacingFromString:BC_STRING_UPGRADE_FEATURE_THREE];
-        default: return nil;
-    }
+    return @[BC_STRING_UPGRADE_FEATURE_ONE, BC_STRING_UPGRADE_FEATURE_TWO, BC_STRING_UPGRADE_FEATURE_THREE];
 }
 
 - (NSMutableAttributedString *)createBlueAttributedStringWithWideLineSpacingFromString:(NSString *)string
@@ -173,6 +168,8 @@
 {
     [super viewDidLoad];
     
+    [self setupCaptionLabels];
+    
     self.upgradeWalletButton.titleLabel.text = BC_STRING_UPGRADE_BUTTON_TITLE;
     self.askMeLaterButton.titleLabel.text = BC_STRING_UPGRADE_ASKLATER_TITLE;
     
@@ -185,6 +182,17 @@
     }
     
     [self setTextForCaptionLabel];
+}
+
+- (void)setupCaptionLabels
+{
+    NSMutableArray *temporaryMutableArray = [[NSMutableArray alloc] init];
+    
+    for (NSString *captionString in [self captionLabelStringsArray]) {
+        [temporaryMutableArray addObject:[self createBlueAttributedStringWithWideLineSpacingFromString:captionString]];
+    }
+    
+    self.captionLabelAttributedStringsArray = [[NSArray alloc] initWithArray:temporaryMutableArray];
 }
 
 - (void)viewDidLayoutSubviews
@@ -214,8 +222,11 @@
 - (void)setTextForCaptionLabel
 {
     [UIView transitionWithView:self.captionLabel duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        self.captionLabel.attributedText = [self captionLabelTextAtPageIndex:self.pageControl.currentPage];
+        self.captionLabel.attributedText = self.captionLabelAttributedStringsArray[self.pageControl.currentPage];
     } completion:nil];
+    
+    self.captionLabel.minimumScaleFactor = 3./self.captionLabel.font.pointSize;
+    self.captionLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 #pragma mark UIScrollView Delegate
