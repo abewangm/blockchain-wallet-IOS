@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *askLaterButtonToBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewToPageControlConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *captionLabelToTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewToCaptionLabelConstraint;
 
 @end
 
@@ -210,10 +211,11 @@
         if ([[UIScreen mainScreen] bounds].size.height >= 568)
         {
             // Not iphone 4s
-            self.upgradeButtonToPageControlConstraint.constant = 30;
+            self.upgradeButtonToPageControlConstraint.constant = 35;
             self.askLaterButtonToBottomConstraint.constant = 15;
             self.scrollViewToPageControlConstraint.constant = 8;
             self.captionLabelToTopConstraint.constant = 12;
+            self.scrollViewToCaptionLabelConstraint.constant = 16;
             [self.view layoutIfNeeded];
         }
     }
