@@ -318,41 +318,6 @@ BOOL displayingLocalSymbolSend;
     [alert show];
 }
 
-#pragma mark - Conversion Helpers
-
-- (NSString *)formatAmount:(uint64_t)amount localCurrency:(BOOL)localCurrency
-{
-    if (amount == 0) {
-        return nil;
-    }
-    
-    NSString *returnValue;
-    
-    if (localCurrency) {
-        @try {
-            NSDecimalNumber *number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:amount] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)app.latestResponse.symbol_local.conversion]];
-            
-            app.localCurrencyFormatter.usesGroupingSeparator = NO;
-            returnValue = [app.localCurrencyFormatter stringFromNumber:number];
-            app.localCurrencyFormatter.usesGroupingSeparator = YES;
-        } @catch (NSException * e) {
-            DLog(@"Exception: %@", e);
-        }
-    } else {
-        @try {
-            NSDecimalNumber *number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:amount] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:app.latestResponse.symbol_btc.conversion]];
-            
-            app.btcFormatter.usesGroupingSeparator = NO;
-            returnValue = [app.btcFormatter stringFromNumber:number];
-            app.btcFormatter.usesGroupingSeparator = YES;
-        } @catch (NSException * e) {
-            DLog(@"Exception: %@", e);
-        }
-    }
-    
-    return returnValue;
-}
-
 #pragma mark - UI Helpers
 
 - (void)doCurrencyConversion
@@ -368,14 +333,14 @@ BOOL displayingLocalSymbolSend;
     }
     
     if ([btcAmountField isFirstResponder]) {
-        fiatAmountField.text = [self formatAmount:amountInSatoshi localCurrency:YES];
+        fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
     }
     else if ([fiatAmountField isFirstResponder]) {
-        btcAmountField.text = [self formatAmount:amountInSatoshi localCurrency:NO];
+        btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
     }
     else {
-        fiatAmountField.text = [self formatAmount:amountInSatoshi localCurrency:YES];
-        btcAmountField.text = [self formatAmount:amountInSatoshi localCurrency:NO];
+        fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
+        btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
     }
     
     uint64_t availableAmountMinusFee = availableAmount - [self getRecommendedFeeForAmount:availableAmount];

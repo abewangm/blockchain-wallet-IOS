@@ -1594,6 +1594,7 @@ SideMenuViewController *sideMenuViewController;
 
 #pragma mark - Format helpers
 
+// Format amount in satoshi as NSString (with symbol)
 - (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal {
     if (fsymbolLocal && latestResponse.symbol_local.conversion) {
         @try {
@@ -1630,6 +1631,40 @@ SideMenuViewController *sideMenuViewController;
 
 - (NSString*)formatMoney:(uint64_t)value {
     return [self formatMoney:value localCurrency:symbolLocal];
+}
+
+// Format amount in satoshi as NSString (without symbol)
+- (NSString *)formatAmount:(uint64_t)amount localCurrency:(BOOL)localCurrency
+{
+    if (amount == 0) {
+        return nil;
+    }
+    
+    NSString *returnValue;
+    
+    if (localCurrency) {
+        @try {
+            NSDecimalNumber *number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:amount] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)app.latestResponse.symbol_local.conversion]];
+            
+            app.localCurrencyFormatter.usesGroupingSeparator = NO;
+            returnValue = [app.localCurrencyFormatter stringFromNumber:number];
+            app.localCurrencyFormatter.usesGroupingSeparator = YES;
+        } @catch (NSException * e) {
+            DLog(@"Exception: %@", e);
+        }
+    } else {
+        @try {
+            NSDecimalNumber *number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:amount] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:app.latestResponse.symbol_btc.conversion]];
+            
+            app.btcFormatter.usesGroupingSeparator = NO;
+            returnValue = [app.btcFormatter stringFromNumber:number];
+            app.btcFormatter.usesGroupingSeparator = YES;
+        } @catch (NSException * e) {
+            DLog(@"Exception: %@", e);
+        }
+    }
+    
+    return returnValue;
 }
 
 #pragma mark - mail compose delegate
