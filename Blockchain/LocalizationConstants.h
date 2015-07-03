@@ -200,6 +200,7 @@
 
 #define BC_STRING_UPGRADE_TEXT NSLocalizedString(@"We've designed a whole new\nwallet experience for you", nil)
 #define BC_STRING_UPGRADE_NOW NSLocalizedString(@"Upgrade Now", nil)
+#define BC_STRING_UPGRADE_SUCCESS_TITLE NSLocalizedString(@"Success!", nil)
 #define BC_STRING_UPGRADE_SUCCESS NSLocalizedString(@"You are now running our most secure Bitcoin wallet", nil)
 #define BC_STRING_UPGRADE_FEATURE_ONE NSLocalizedString(@"Create personalized accounts to help keep your wallet organized", nil)
 #define BC_STRING_UPGRADE_FEATURE_TWO NSLocalizedString(@"Easy one time wallet backup keeps you in control of your funds", nil)

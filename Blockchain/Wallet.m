@@ -592,7 +592,7 @@ Boolean isHdWalletInitialized;
 
 - (void)upgrade_success
 {
-    [app standardNotify:@"You are now running our most secure Bitcoin wallet" title:@"Success!" delegate:nil];
+    [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE delegate:nil];
 }
 
 #pragma mark - Callbacks from JS to Obj-C
