@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5EP-fa-fRb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5EP-fa-fRb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -9,13 +9,59 @@
         <scene sceneID="PfE-Iq-Wbz">
             <objects>
                 <viewController storyboardIdentifier="UpgradeViewController" id="5EP-fa-fRb" customClass="UpgradeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VJu-ki-Z6D"/>
+                        <viewControllerLayoutGuide type="bottom" id="5be-tC-zXl"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jcn-ds-OUG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g2G-dE-WKh">
-                                <rect key="frame" x="70" y="20" width="180" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dip-XJ-oo9">
+                                <rect key="frame" x="281" y="405" width="39" height="37"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqx-zq-JJu">
+                                <rect key="frame" x="186" y="132" width="228" height="265"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="228" id="T9s-ZA-cpr"/>
+                                    <constraint firstAttribute="height" constant="265" id="am4-uC-0JK"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="5EP-fa-fRb" id="f71-T0-vVP"/>
+                                </connections>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-V7-syg">
+                                <rect key="frame" x="186" y="545" width="228" height="40"/>
+                                <state key="normal" title="Ask Me Later">
+                                    <color key="titleColor" red="0.070588235294117646" green="0.45098039215686275" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="RP9-LZ-mxS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-x2-KGM">
+                                <rect key="frame" x="186" y="503" width="228" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OJo-92-rmD"/>
+                                    <constraint firstAttribute="width" constant="228" id="scu-Xe-9bf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="UPGRADE YOUR WALLET">
+                                    <color key="titleColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="upgradeWalletButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="BYV-PO-LRT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2G-dE-WKh">
+                                <rect key="frame" x="200" y="32" width="200" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="gvv-cH-dBl"/>
+                                    <constraint firstAttribute="width" constant="200" id="jA8-i4-zSw"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Create personalized accounts to help keep your wallet organized">
                                         <attributes>
@@ -27,43 +73,31 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="dip-XJ-oo9">
-                                <rect key="frame" x="141" y="346" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </pageControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" id="Pqx-zq-JJu">
-                                <rect key="frame" x="46" y="110" width="228" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="5EP-fa-fRb" id="f71-T0-vVP"/>
-                                </connections>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HuT-V7-syg">
-                                <rect key="frame" x="115" y="437" width="91" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Ask Me Later">
-                                    <color key="titleColor" red="0.070588235294117646" green="0.45098039215686275" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="RP9-LZ-mxS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cZ9-x2-KGM">
-                                <rect key="frame" x="46" y="391" width="228" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="UPGRADE YOUR WALLET">
-                                    <color key="titleColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="upgradeWalletButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="BYV-PO-LRT"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.86666666670000003" green="0.90196078430000004" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HuT-V7-syg" firstAttribute="top" secondItem="cZ9-x2-KGM" secondAttribute="bottom" constant="2" id="6u2-0a-xgC"/>
+                            <constraint firstItem="cZ9-x2-KGM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dip-XJ-oo9" secondAttribute="bottom" constant="8" symbolic="YES" id="COa-Ur-5vF"/>
+                            <constraint firstAttribute="centerX" secondItem="cZ9-x2-KGM" secondAttribute="centerX" id="Gk4-re-TgC"/>
+                            <constraint firstItem="dip-XJ-oo9" firstAttribute="top" secondItem="Pqx-zq-JJu" secondAttribute="bottom" constant="8" id="Ih4-ar-rpC"/>
+                            <constraint firstItem="g2G-dE-WKh" firstAttribute="width" secondItem="Pqx-zq-JJu" secondAttribute="width" id="Mrm-6Q-fhU"/>
+                            <constraint firstItem="HuT-V7-syg" firstAttribute="width" secondItem="cZ9-x2-KGM" secondAttribute="width" id="Ncj-PV-DjX"/>
+                            <constraint firstAttribute="centerX" secondItem="g2G-dE-WKh" secondAttribute="centerX" id="PdC-qc-DF0"/>
+                            <constraint firstItem="Pqx-zq-JJu" firstAttribute="top" secondItem="g2G-dE-WKh" secondAttribute="bottom" constant="15" id="XCm-pS-jv6"/>
+                            <constraint firstItem="HuT-V7-syg" firstAttribute="centerX" secondItem="cZ9-x2-KGM" secondAttribute="centerX" id="XP1-rW-2DP"/>
+                            <constraint firstItem="HuT-V7-syg" firstAttribute="height" secondItem="cZ9-x2-KGM" secondAttribute="height" id="Z59-nP-dfl"/>
+                            <constraint firstItem="g2G-dE-WKh" firstAttribute="top" secondItem="VJu-ki-Z6D" secondAttribute="bottom" constant="12" id="by4-UR-DWM"/>
+                            <constraint firstItem="5be-tC-zXl" firstAttribute="top" secondItem="HuT-V7-syg" secondAttribute="bottom" constant="15" id="fzT-lJ-2Ur"/>
+                            <constraint firstItem="Pqx-zq-JJu" firstAttribute="top" secondItem="g2G-dE-WKh" secondAttribute="bottom" constant="8" id="jof-7H-q6t"/>
+                            <constraint firstAttribute="centerX" secondItem="Pqx-zq-JJu" secondAttribute="centerX" id="ms4-Wx-oLb"/>
+                            <constraint firstItem="Pqx-zq-JJu" firstAttribute="centerX" secondItem="dip-XJ-oo9" secondAttribute="centerX" id="pRp-Hj-57j"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Mrm-6Q-fhU"/>
+                                <exclude reference="jof-7H-q6t"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="0ie-rM-WF9"/>
                     <connections>
@@ -75,12 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPw-Gt-jqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-69" y="391"/>
+            <point key="canvasLocation" x="-130" y="413"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

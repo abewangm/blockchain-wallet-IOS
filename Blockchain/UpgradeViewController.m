@@ -109,8 +109,14 @@
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0.0f;
         
-        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
-        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
+//    TODO: Uncomment for production
+//        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
+//        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
+        
+        // These two lines are for testing borders only
+        UIView *newPageView = [[UIView alloc] init];
+        newPageView.backgroundColor = [UIColor greenColor];
+
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
         [self.scrollView addSubview:newPageView];
