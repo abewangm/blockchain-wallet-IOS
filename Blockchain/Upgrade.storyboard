@@ -95,9 +95,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="0ie-rM-WF9"/>
                     <connections>
+                        <outlet property="askLaterButtonToBottomConstraint" destination="fzT-lJ-2Ur" id="LQm-OU-Blw"/>
                         <outlet property="captionLabel" destination="g2G-dE-WKh" id="f6E-aB-5gs"/>
                         <outlet property="pageControl" destination="dip-XJ-oo9" id="5iw-tV-Rt0"/>
                         <outlet property="scrollView" destination="Pqx-zq-JJu" id="w8a-HO-MIN"/>
+                        <outlet property="scrollViewToPageControlConstraint" destination="Ih4-ar-rpC" id="J7F-M4-75z"/>
+                        <outlet property="upgradeButtonToPageControlConstraint" destination="COa-Ur-5vF" id="TSj-JG-eiH"/>
                         <outlet property="upgradeWalletButton" destination="cZ9-x2-KGM" id="JPA-UW-jOL"/>
                     </connections>
                 </viewController>

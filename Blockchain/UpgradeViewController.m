@@ -9,6 +9,8 @@
 #import "UpgradeViewController.h"
 #import "AppDelegate.h"
 
+
+
 // Need to be localized
 
 #define UPGRADE_FEATURE_ONE @"Create personalized accounts to help keep your wallet organized"
@@ -27,6 +29,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *upgradeWalletButton;
 
 @property (nonatomic) NSMutableArray *pageViewsMutableArray;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *upgradeButtonToPageControlConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *askLaterButtonToBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewToPageControlConstraint;
 
 @end
 
@@ -179,6 +185,18 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
+    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone)
+    {
+        if ([[UIScreen mainScreen] bounds].size.height >= 568)
+        {
+            // Not iphone 3.5 inch screen iphone 3g,4s
+            self.upgradeButtonToPageControlConstraint.constant = 30;
+            self.askLaterButtonToBottomConstraint.constant = 15;
+            self.scrollViewToPageControlConstraint.constant = 8;
+            [self.view layoutIfNeeded];
+        }
+    }
     
     CGSize pagesScrollViewSize = self.scrollView.frame.size;
     self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * [self pageViewsMutableArray].count, pagesScrollViewSize.height);
