@@ -8,25 +8,19 @@
 
 #import "UpgradeViewController.h"
 #import "AppDelegate.h"
-
+#import "LocalizationConstants.h"
 
 
 // Need to be localized
 
-#define UPGRADE_FEATURE_ONE @"Create personalized accounts to help keep your wallet organized"
-#define UPGRADE_FEATURE_TWO @"Easy one time wallet backup keeps you in control of your funds"
-#define UPGRADE_FEATURE_THREE @"Anything you need to store, spend and receive your bitcoin"
 
-#define UPGRADE_ALERTVIEW_TITLE @"Upgrade Wallet"
-#define UPGRADE_ALERTVIEW_MESSAGE @"We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet"
-#define UPGRADE_ALERTVIEW_CANCEL_TITLE @"Not now"
-#define UPGRADE_ALERTVIEW_UPDATE_TITLE @"Update"
 
 @interface UpgradeViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *upgradeWalletButton;
+@property (weak, nonatomic) IBOutlet UIButton *askMeLaterButton;
 
 @property (nonatomic) NSMutableArray *pageViewsMutableArray;
 
@@ -45,7 +39,7 @@
 
 - (void)alertUserToConfirmUpgrade
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:UPGRADE_ALERTVIEW_TITLE message:UPGRADE_ALERTVIEW_MESSAGE delegate:self cancelButtonTitle:UPGRADE_ALERTVIEW_CANCEL_TITLE otherButtonTitles:UPGRADE_ALERTVIEW_UPDATE_TITLE, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_UPGRADE_ALERTVIEW_TITLE message:BC_STRING_UPGRADE_ALERTVIEW_MESSAGE delegate:self cancelButtonTitle:BC_STRING_UPGRADE_ALERTVIEW_CANCEL_TITLE otherButtonTitles:BC_STRING_UPGRADE_ALERTVIEW_UPDATE_TITLE, nil];
     alertView.tag = 1;
     [alertView show];
 }
@@ -81,9 +75,9 @@
 {
     switch (index) {
         case 0:
-            return [self createBlueAttributedStringWithWideLineSpacingFromString:UPGRADE_FEATURE_ONE];
-        case 1: return [self createBlueAttributedStringWithWideLineSpacingFromString:UPGRADE_FEATURE_TWO];
-        case 2: return [self createBlueAttributedStringWithWideLineSpacingFromString:UPGRADE_FEATURE_THREE];
+            return [self createBlueAttributedStringWithWideLineSpacingFromString:BC_STRING_UPGRADE_FEATURE_ONE];
+        case 1: return [self createBlueAttributedStringWithWideLineSpacingFromString:BC_STRING_UPGRADE_FEATURE_TWO];
+        case 2: return [self createBlueAttributedStringWithWideLineSpacingFromString:BC_STRING_UPGRADE_FEATURE_THREE];
         default: return nil;
     }
 }
@@ -170,6 +164,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.upgradeWalletButton.titleLabel.text = BC_STRING_UPGRADE_BUTTON_TITLE;
+    self.askMeLaterButton.titleLabel.text = BC_STRING_UPGRADE_ASKLATER_TITLE;
     
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = [[self imageNamesArray] count];

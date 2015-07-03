@@ -157,7 +157,6 @@
 - (void)showSendCoins;
 
 - (void)showHdUpgrade;
-- (void)showHdUpgradeSuccess;
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender;
 - (IBAction)transactionsClicked:(UIButton *)sender;

@@ -1088,47 +1088,6 @@ SideMenuViewController *sideMenuViewController;
     [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
 }
 
-- (void)showHdUpgradeSuccess
-{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"You are now running our most secure Bitcoin wallet" delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lock_icon"]];
-    [alertView setValue:imageView forKey:@"accessoryView"];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [alertView show];
-    
-    // To animate dismissal of alertView, must pass parameters through performSelector
-    
-    SEL aSelector = NSSelectorFromString(@"dismissWithClickedButtonIndex:animated:");
-    NSInteger index = 0;
-    BOOL animated = YES;
-    
-    if([alertView respondsToSelector:aSelector]) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[alertView methodSignatureForSelector:aSelector]];
-        [invocation setSelector:aSelector];
-        [invocation setTarget:alertView];
-        
-        [invocation setArgument:&(index) atIndex:2];
-        [invocation setArgument:&(animated) atIndex:3];
-        
-        CGRect frame = _window.rootViewController.view.frame;
-        UIView *emptyView = [[UIView alloc] initWithFrame:frame];
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foo)];
-        [_window addSubview:emptyView];
-        [_window bringSubviewToFront:emptyView];
-        [emptyView addGestureRecognizer:tapGesture];
-    }
-}
-
-- (void)foo
-{
-    NSLog(@"foo");
-}
-
-- (void)dismissUpgradeSuccessAndRemoveTapView:(UIView *)view withInvocation:(NSInvocation *)invocation
-{
-    
-}
-
 - (void)showCreateWallet:(id)sender
 {
     [app showModalWithContent:newAccountView closeType:ModalCloseTypeBack headerText:BC_STRING_CREATE_NEW_WALLET];

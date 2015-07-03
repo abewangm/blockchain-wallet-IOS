@@ -96,6 +96,7 @@
                     <navigationItem key="navigationItem" id="0ie-rM-WF9"/>
                     <connections>
                         <outlet property="askLaterButtonToBottomConstraint" destination="fzT-lJ-2Ur" id="LQm-OU-Blw"/>
+                        <outlet property="askMeLaterButton" destination="HuT-V7-syg" id="Ehk-8h-ja1"/>
                         <outlet property="captionLabel" destination="g2G-dE-WKh" id="f6E-aB-5gs"/>
                         <outlet property="pageControl" destination="dip-XJ-oo9" id="5iw-tV-Rt0"/>
                         <outlet property="scrollView" destination="Pqx-zq-JJu" id="w8a-HO-MIN"/>
