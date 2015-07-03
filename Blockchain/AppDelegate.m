@@ -1102,8 +1102,8 @@ SideMenuViewController *sideMenuViewController;
 
 - (void)showHdUpgradeSuccess
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"You are now running our most secure Bitcoin wallet" delegate:nil cancelButtonTitle:nil otherButtonTitles: @"",nil];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"image"]];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"You are now running our most secure Bitcoin wallet" delegate:nil cancelButtonTitle:nil otherButtonTitles: @" ",nil];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lock_icon"]];
     [alertView setValue:imageView forKey:@"accessoryView"];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [alertView show];
