@@ -85,12 +85,12 @@
                             <constraint firstItem="HuT-V7-syg" firstAttribute="width" secondItem="cZ9-x2-KGM" secondAttribute="width" id="Ncj-PV-DjX"/>
                             <constraint firstAttribute="centerX" secondItem="g2G-dE-WKh" secondAttribute="centerX" id="PdC-qc-DF0"/>
                             <constraint firstItem="Pqx-zq-JJu" firstAttribute="top" secondItem="g2G-dE-WKh" secondAttribute="bottom" constant="8" symbolic="YES" id="XCm-pS-jv6"/>
-                            <constraint firstItem="HuT-V7-syg" firstAttribute="centerX" secondItem="cZ9-x2-KGM" secondAttribute="centerX" id="XP1-rW-2DP"/>
                             <constraint firstItem="HuT-V7-syg" firstAttribute="height" secondItem="cZ9-x2-KGM" secondAttribute="height" id="Z59-nP-dfl"/>
                             <constraint firstItem="g2G-dE-WKh" firstAttribute="top" secondItem="VJu-ki-Z6D" secondAttribute="bottom" constant="8" symbolic="YES" id="by4-UR-DWM"/>
                             <constraint firstItem="5be-tC-zXl" firstAttribute="top" secondItem="HuT-V7-syg" secondAttribute="bottom" constant="8" id="fzT-lJ-2Ur"/>
                             <constraint firstAttribute="centerX" secondItem="Pqx-zq-JJu" secondAttribute="centerX" id="ms4-Wx-oLb"/>
                             <constraint firstItem="Pqx-zq-JJu" firstAttribute="centerX" secondItem="dip-XJ-oo9" secondAttribute="centerX" id="pRp-Hj-57j"/>
+                            <constraint firstAttribute="centerX" secondItem="HuT-V7-syg" secondAttribute="centerX" id="pgc-rU-IDc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0ie-rM-WF9"/>

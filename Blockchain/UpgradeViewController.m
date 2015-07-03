@@ -118,12 +118,12 @@
         frame.origin.y = 0.0f;
         
 //    TODOUpgrade: Uncomment for production
-//        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
-//        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
+        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
+        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
         
         // These two lines are for testing borders only
-        UIView *newPageView = [[UIView alloc] init];
-        newPageView.backgroundColor = [UIColor greenColor];
+//        UIView *newPageView = [[UIView alloc] init];
+//        newPageView.backgroundColor = [UIColor greenColor];
 
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
@@ -195,7 +195,7 @@
     {
         if ([[UIScreen mainScreen] bounds].size.height >= 568)
         {
-            // Not iphone 3.5 inch screen iphone 3g,4s
+            // Not iphone 4s
             self.upgradeButtonToPageControlConstraint.constant = 30;
             self.askLaterButtonToBottomConstraint.constant = 15;
             self.scrollViewToPageControlConstraint.constant = 8;
