@@ -359,7 +359,7 @@ SideMenuViewController *sideMenuViewController;
         [self showHdUpgrade];
     }
     
-    // TODO:remove for production; testing only
+    // TODOUpgrade:remove for production; testing only
     [self showHdUpgrade];
 }
 

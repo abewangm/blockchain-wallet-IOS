@@ -49,24 +49,29 @@
     if (alertView.tag == 1) {
         switch (buttonIndex) {
             case 0: NSLog(@"Cancelled upgrade");
-                // TODO: determine whether appropriate to dismiss
-                [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+                // TODOUpgrade: determine whether appropriate to dismiss
+                [self dismissSelf];
                 break;
             case 1: NSLog(@"Upgrading wallet");
                 [app.wallet loading_start_upgrade_to_hd];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [app.wallet upgradeToHDWallet];
+                    [app.wallet performSelector:@selector(upgradeToHDWallet) withObject:nil afterDelay:0.1f];
                 });
                 break;
         }
     } else {
-        [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+        [self dismissSelf];
     }
+}
+
+- (void)dismissSelf
+{
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)cancelButtonTapped:(UIButton *)sender
 {
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    [self dismissSelf];
 }
 
 - (NSArray *)imageNamesArray
@@ -112,7 +117,7 @@
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0.0f;
         
-//    TODO: Uncomment for production
+//    TODOUpgrade: Uncomment for production
 //        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
 //        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
         
