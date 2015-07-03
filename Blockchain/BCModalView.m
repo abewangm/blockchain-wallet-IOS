@@ -86,6 +86,7 @@
             [app closeModalWithTransition:kCATransitionFromLeft];
         }
         else {
+            [self endEditing:YES];
             [app closeModalWithTransition:kCATransitionFade];
         }
     }

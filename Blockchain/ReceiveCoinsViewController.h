@@ -36,14 +36,14 @@
     IBOutlet UILabel *optionsTitleLabel;
     
     // Amount buttons and field
-    IBOutlet UITextField *requestAmountTextField;
-    IBOutlet UIButton *btcButton;
-    IBOutlet UIButton *fiatButton;
+    IBOutlet UITextField *entryField;
+    IBOutlet UILabel *btcLabel;
+    IBOutlet UITextField *btcAmountField;
+    IBOutlet UILabel *fiatLabel;
+    IBOutlet UITextField *fiatAmountField;
     
     // Keyboard accessory view
     IBOutlet UIView *amountKeyboardAccessoryView;
-    
-    BOOL displayingLocalSymbol;
 }
 
 @property(nonatomic, strong) NSArray *activeKeys;
@@ -61,7 +61,6 @@
 - (IBAction)shareByFacebook:(id)sender;
 - (IBAction)shareByEmailClicked:(id)sender;
 - (IBAction)shareByMessageClicked:(id)sender;
-- (IBAction)btcCodeClicked:(id)sender;
 
 - (void)reload;
 

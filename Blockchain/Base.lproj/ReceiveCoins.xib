@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -8,15 +8,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReceiveCoinsViewController">
             <connections>
                 <outlet property="amountKeyboardAccessoryView" destination="118" id="Gp1-NE-vqg"/>
-                <outlet property="btcButton" destination="GwZ-6f-89z" id="peW-Wu-ERz"/>
-                <outlet property="fiatButton" destination="n25-jc-jvj" id="GMk-j8-TPQ"/>
+                <outlet property="btcAmountField" destination="E60-hZ-tDl" id="7q3-Oy-yfD"/>
+                <outlet property="btcLabel" destination="jRM-0A-Zuo" id="1vB-k3-pcz"/>
+                <outlet property="entryField" destination="OFk-NR-2Sp" id="vfS-cp-qmr"/>
+                <outlet property="fiatAmountField" destination="a9y-3I-Drw" id="Ypl-yg-OL1"/>
+                <outlet property="fiatLabel" destination="wDT-32-lDe" id="Q9n-gR-MEv"/>
                 <outlet property="labelAddressLabel" destination="60" id="62"/>
                 <outlet property="labelAddressView" destination="47" id="64"/>
                 <outlet property="labelTextField" destination="59" id="63"/>
                 <outlet property="moreActionsButton" destination="VtA-nv-23i" id="Byl-Fd-Iy7"/>
                 <outlet property="optionsTitleLabel" destination="90" id="95"/>
                 <outlet property="qrCodePaymentImageView" destination="23" id="gO6-uE-LwH"/>
-                <outlet property="requestAmountTextField" destination="103" id="106"/>
                 <outlet property="requestCoinsView" destination="21" id="86"/>
                 <outlet property="tableView" destination="10" id="11"/>
                 <outlet property="view" destination="2" id="12"/>
@@ -24,7 +26,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="2" userLabel="Master View">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="452"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="1" id="10">
@@ -40,7 +42,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="494" y="-347"/>
+            <point key="canvasLocation" x="533" y="-342"/>
         </view>
         <view contentMode="scaleToFill" id="21" userLabel="Request Payment">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -50,16 +52,6 @@
                     <rect key="frame" x="69" y="8" width="180" height="180"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" id="103">
-                    <rect key="frame" x="84" y="376" width="151" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="0.44998607475408248" blue="0.55497217368285923" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="104"/>
-                    </connections>
-                </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bitcoin Address " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="90">
                     <rect key="frame" x="20" y="191" width="280" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -76,6 +68,14 @@
                         <action selector="moreActionsClicked:" destination="-1" eventType="touchUpInside" id="pOH-gc-Avi"/>
                     </connections>
                 </button>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Only to control keyboard" borderStyle="line" textAlignment="center" minimumFontSize="17" id="OFk-NR-2Sp" userLabel="Amount No Border Style Text Field - 0.00">
+                    <rect key="frame" x="53" y="343" width="214" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.93182870370370374" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -83,7 +83,7 @@
             <point key="canvasLocation" x="926" y="-342"/>
         </view>
         <view contentMode="scaleToFill" id="47" userLabel="Label Address Modal View">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="376"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="60">
@@ -106,46 +106,63 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1312" y="-385"/>
+            <point key="canvasLocation" x="1318" y="-342"/>
         </view>
         <view opaque="NO" contentMode="scaleToFill" id="118" userLabel="n BTC = $m keyboard accessory view">
             <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="clip" id="n25-jc-jvj" userLabel="Fiat Button">
-                    <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="BTC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jRM-0A-Zuo">
+                    <rect key="frame" x="15" y="9" width="40" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="Fiat">
-                        <color key="titleColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.000" minimumFontSize="17" id="E60-hZ-tDl" userLabel="Amount No Border Style Text Field - 0.00">
+                    <rect key="frame" x="60" y="6" width="117" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                     <connections>
-                        <action selector="btcCodeClicked:" destination="-1" eventType="touchUpInside" id="Ce1-h7-8VS"/>
+                        <outlet property="delegate" destination="-1" id="1ja-cg-daj"/>
                     </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="clip" id="GwZ-6f-89z" userLabel="BTC Button">
-                    <rect key="frame" x="160" y="0.0" width="160" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="BTC">
-                        <color key="titleColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
+                </textField>
+                <view contentMode="scaleToFill" id="hBc-4O-1Po" customClass="BCLine">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" id="wxl-NE-O3d" customClass="BCLine">
+                    <rect key="frame" x="0.0" y="40" width="320" height="1"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" minimumFontSize="17" id="a9y-3I-Drw">
+                    <rect key="frame" x="227" y="5" width="81" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                     <connections>
-                        <action selector="btcCodeClicked:" destination="-1" eventType="touchUpInside" id="73l-BU-wwc"/>
+                        <outlet property="delegate" destination="-1" id="vBf-9J-MEF"/>
                     </connections>
-                </button>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wDT-32-lDe">
+                    <rect key="frame" x="182" y="9" width="40" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="935" y="-30"/>
+            <point key="canvasLocation" x="926" y="-17"/>
         </view>
     </objects>
     <resources>
-        <image name="menu_more.png" width="5" height="18"/>
+        <image name="menu_more.png" width="11" height="17"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

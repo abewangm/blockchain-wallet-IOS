@@ -138,15 +138,9 @@ UIActionSheet *popupAddressArchive;
     self.activeKeys = [app.wallet activeLegacyAddresses];
     self.archivedKeys = [app.wallet archivedLegacyAddresses];
     
-    // Reset the requested amount when switching currencies
-    requestAmountTextField.text = nil;
-    
-    if (app->symbolLocal && app.latestResponse.symbol_local && app.latestResponse.symbol_local.conversion > 0) {
-        [btcButton setTitle:app.latestResponse.symbol_local.code forState:UIControlStateNormal];
-        displayingLocalSymbol = TRUE;
-    } else if (app.latestResponse.symbol_btc) {
-        [btcButton setTitle:app.latestResponse.symbol_btc.symbol forState:UIControlStateNormal];
-        displayingLocalSymbol = FALSE;
+    if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
+        fiatLabel.text = app.latestResponse.symbol_local.code;
+        btcLabel.text = app.latestResponse.symbol_btc.symbol;
     }
     
     // Show table header with the QR code of an address from the default account
@@ -236,42 +230,27 @@ UIActionSheet *popupAddressArchive;
 
 - (uint64_t)getInputAmountInSatoshi
 {
-    NSString *requestedAmountString = [requestAmountTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    
-    if (displayingLocalSymbol) {
-        return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
-    } else {
+    if ([btcAmountField isFirstResponder]) {
+        NSString *requestedAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
         return [app.wallet parseBitcoinValue:requestedAmountString];
     }
+    else if ([fiatAmountField isFirstResponder]) {
+        NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
+    }
+    
+    return 0;
 }
 
 - (void)doCurrencyConversion
 {
     uint64_t amount = [self getInputAmountInSatoshi];
     
-    [btcButton setBackgroundColor:COLOR_TEXT_FIELD_GRAY];
-    [fiatButton setBackgroundColor:COLOR_TEXT_FIELD_GRAY];
-    
-    if (displayingLocalSymbol) {
-        [btcButton setBackgroundImage:nil forState:UIControlStateNormal];
-        [btcButton setTitleColor:COLOR_FOREGROUND_GRAY forState:UIControlStateNormal];
-        [btcButton setTitle:[app formatMoney:amount localCurrency:FALSE] forState:UIControlStateNormal];
-        
-        // Highlight
-        [fiatButton setBackgroundImage:[UIImage imageNamed: @"tab_left"] forState:UIControlStateNormal];
-        [fiatButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
-        NSString *amountFormatted = [app.latestResponse.symbol_local.symbol stringByAppendingString:requestAmountTextField.text];
-        [fiatButton setTitle:amountFormatted forState:UIControlStateNormal];
-    } else {
-        // Highlight
-        [btcButton setBackgroundImage:[UIImage imageNamed:@"tab_right"] forState:UIControlStateNormal];
-        [btcButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
-        NSString *amountFormatted = [requestAmountTextField.text stringByAppendingFormat:@" %@", app.latestResponse.symbol_btc.symbol];
-        [btcButton setTitle:amountFormatted forState:UIControlStateNormal];
-        
-        [fiatButton setBackgroundImage:nil forState:UIControlStateNormal];
-        [fiatButton setTitleColor:COLOR_FOREGROUND_GRAY forState:UIControlStateNormal];
-        [fiatButton setTitle:[app formatMoney:amount localCurrency:TRUE] forState:UIControlStateNormal];
+    if ([btcAmountField isFirstResponder]) {
+        fiatAmountField.text = [app formatAmount:amount localCurrency:YES];
+    }
+    else if ([fiatAmountField isFirstResponder]) {
+        btcAmountField.text = [app formatAmount:amount localCurrency:NO];
     }
 }
 
@@ -391,7 +370,7 @@ UIActionSheet *popupAddressArchive;
     
     [controller dismissViewControllerAnimated:YES completion:nil];
     
-    [self toggleKeyboard];
+    [self showKeyboard];
 }
 
 # pragma mark - MFMessageComposeViewControllerDelegate delegates
@@ -418,7 +397,7 @@ UIActionSheet *popupAddressArchive;
     
     [controller dismissViewControllerAnimated:YES completion:nil];
     
-    [self toggleKeyboard];
+    [self showKeyboard];
 }
 
 #pragma mark - Actions
@@ -436,18 +415,6 @@ UIActionSheet *popupAddressArchive;
             [popupAddressArchive showInView:[UIApplication sharedApplication].keyWindow];
         }
     }
-}
-
-- (IBAction)btcCodeClicked:(id)sender
-{
-    // Ignore click when already selected
-    if ((sender == fiatButton && displayingLocalSymbol) ||
-        (sender == btcButton && !displayingLocalSymbol)) {
-        return;
-    }
-    
-    [app toggleSymbol];
-    [self setQRPayment];
 }
 
 - (IBAction)scanKeyClicked:(id)sender
@@ -543,7 +510,7 @@ UIActionSheet *popupAddressArchive;
     [self presentViewController:composeController animated:YES completion:nil];
     
     composeController.completionHandler = ^(SLComposeViewControllerResult result) {
-        [self toggleKeyboard];
+        [self showKeyboard];
     };
 }
 
@@ -557,7 +524,7 @@ UIActionSheet *popupAddressArchive;
     [self presentViewController:composeController animated:YES completion:nil];
     
     composeController.completionHandler = ^(SLComposeViewControllerResult result) {
-        [self toggleKeyboard];
+        [self showKeyboard];
     };
 }
 
@@ -579,7 +546,6 @@ UIActionSheet *popupAddressArchive;
         [messageController setSubject:BC_STRING_PAYMENT_REQUEST_TITLE];
         [messageController setBody:[self formatPaymentRequest:[self uriURL]]];
         
-        [self toggleKeyboard];
         [app.tabViewController presentViewController:messageController animated:YES completion:nil];
     }
     else {
@@ -598,7 +564,6 @@ UIActionSheet *popupAddressArchive;
         [mailController setSubject:BC_STRING_PAYMENT_REQUEST_TITLE];
         [mailController setMessageBody:[self formatPaymentRequestHTML:[self uriURL]] isHTML:YES];
         
-        [self toggleKeyboard];
         [app.tabViewController presentViewController:mailController animated:YES completion:nil];
     }
     else {
@@ -667,13 +632,9 @@ UIActionSheet *popupAddressArchive;
 }
 
 
-- (void)toggleKeyboard
+- (void)showKeyboard
 {
-    if ([requestAmountTextField isFirstResponder]) {
-        [requestAmountTextField resignFirstResponder];
-    } else {
-        [requestAmountTextField becomeFirstResponder];
-    }
+        [entryField becomeFirstResponder];
 }
 
 # pragma mark - UIActionSheet delegate
@@ -713,14 +674,6 @@ UIActionSheet *popupAddressArchive;
 
 # pragma mark - UITextField delegates
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    if ([[UIScreen mainScreen] bounds].size.height < 568) {
-        self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleKeyboard)];
-        [app.modalView addGestureRecognizer:self.tapGesture];
-    }
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
     if (textField == labelTextField) {
@@ -750,7 +703,7 @@ UIActionSheet *popupAddressArchive;
     }
     
     // When entering amount in BTC, max 8 decimal places
-    if (!displayingLocalSymbol) {
+    if ([btcAmountField isFirstResponder]) {
         // Max number of decimal places depends on bitcoin unit
         NSUInteger maxlength = [@(SATOSHI) stringValue].length - [@(SATOSHI / app.latestResponse.symbol_btc.conversion) stringValue].length;
         
@@ -769,7 +722,7 @@ UIActionSheet *popupAddressArchive;
     }
     
     // Fiat currencies have a max of 3 decimal places, most of them actually only 2. For now we will use 2.
-    else {
+    else if ([fiatAmountField isFirstResponder]) {
         if (points.count == 2) {
             NSString *decimalString = points[1];
             if (decimalString.length > 2) {
@@ -823,7 +776,8 @@ UIActionSheet *popupAddressArchive;
         moreActionsButton.alpha = 0.0f;
     } onResume:^() {
         // Reset the requested amount when showing the request screen
-        requestAmountTextField.text = nil;
+        btcAmountField.text = nil;
+        fiatAmountField.text = nil;
         
         // Show an extra menu item (more actions)
         [app.modalView addSubview:moreActionsButton];
@@ -833,11 +787,10 @@ UIActionSheet *popupAddressArchive;
     }];
     
     [self setQRPayment];
-
-    requestAmountTextField.inputAccessoryView = amountKeyboardAccessoryView;
     
-    requestAmountTextField.hidden = YES;
-    [requestAmountTextField becomeFirstResponder];
+    entryField.inputAccessoryView = amountKeyboardAccessoryView;
+    
+    [entryField becomeFirstResponder];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
