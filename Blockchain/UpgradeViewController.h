@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^ContinueUpgradeBlock)();
-
 @interface UpgradeViewController : UIViewController <UIScrollViewDelegate>
 
 @end

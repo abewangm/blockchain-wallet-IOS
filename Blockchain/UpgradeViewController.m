@@ -9,11 +9,7 @@
 #import "UpgradeViewController.h"
 #import "AppDelegate.h"
 #import "LocalizationConstants.h"
-
-
-// Need to be localized
-
-
+#import "UILabel+MultiLineAutoSize.h"
 
 @interface UpgradeViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
@@ -86,7 +82,7 @@
     return @[BC_STRING_UPGRADE_FEATURE_ONE, BC_STRING_UPGRADE_FEATURE_TWO, BC_STRING_UPGRADE_FEATURE_THREE];
 }
 
-- (NSMutableAttributedString *)createBlueAttributedStringWithWideLineSpacingFromString:(NSString *)string
+- (NSAttributedString *)createBlueAttributedStringWithWideLineSpacingFromString:(NSString *)string
 {
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.lineHeightMultiple = 1.3;
@@ -96,8 +92,8 @@
     
     NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjects:@[COLOR_BLOCKCHAIN_BLUE, style, font] forKeys:@[NSForegroundColorAttributeName, NSParagraphStyleAttributeName, NSFontAttributeName]];
     
-    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:string attributes:attributesDictionary];
-    return mutableAttributedString;
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributesDictionary];
+    return attributedString;
 }
 
 - (void)loadPage:(NSInteger)page
@@ -228,8 +224,7 @@
         self.captionLabel.attributedText = self.captionLabelAttributedStringsArray[self.pageControl.currentPage];
     } completion:nil];
     
-    self.captionLabel.minimumScaleFactor = 10./self.captionLabel.font.pointSize;
-    self.captionLabel.adjustsFontSizeToFitWidth = YES;
+    [self.captionLabel adjustFontSizeToFit];
 }
 
 #pragma mark UIScrollView Delegate
