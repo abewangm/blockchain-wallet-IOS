@@ -34,18 +34,15 @@ import UIKit
         backButton.titleLabel?.font = UIFont.systemFontOfSize(15)
         backButton.setImage(UIImage(named:"back_chevron_icon"), forState: .Normal);
         backButton.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
-//        backButton.addTarget(self, action:@selector(backButtonClicked:), forControlEvents: .TouchUpInside);
-//        [backButton setHidden:YES];
+        backButton.addTarget(self, action:"backButtonClicked", forControlEvents: UIControlEvents.TouchUpInside);
         topBar.addSubview(backButton);
-
         
         let backupViewController = self.viewControllers.first as! BackupViewController
         backupViewController.wallet = self.wallet
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func backButtonClicked() {
+        NSNotificationCenter.defaultCenter().postNotificationName("CloseBackupScreen", object: nil)
     }
 
 }

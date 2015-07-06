@@ -67,9 +67,4 @@ class BackupViewController: UIViewController {
     
     @IBAction func unwindVerifyWords(segue: UIStoryboardSegue) {
     }
-    
-    @IBAction func close(sender: UIBarButtonItem) {
-        // Using a notification until more of the app is written in Swift.
-        NSNotificationCenter.defaultCenter().postNotificationName("CloseBackupScreen", object: nil)
-    }
 }
