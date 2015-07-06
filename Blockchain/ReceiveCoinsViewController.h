@@ -18,10 +18,9 @@
  * MA 02110-1301  USA
  */
 
-#import <MessageUI/MessageUI.h>
 #import "Wallet.h"
 
-@interface ReceiveCoinsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate> {
+@interface ReceiveCoinsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate> {
     IBOutlet UITableView *tableView;
     IBOutlet UIImageView *qrCodeMainImageView;
     IBOutlet UIImageView *qrCodePaymentImageView;
@@ -52,15 +51,12 @@
 
 @property(nonatomic, strong) NSString *clickedAddress;
 
+- (IBAction)shareClicked:(id)sender;
 - (IBAction)moreActionsClicked:(id)sender;
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)archiveAddressClicked:(id)sender;
 - (IBAction)copyAddressClicked:(id)sender;
 - (IBAction)labelSaveClicked:(id)sender;
-- (IBAction)shareByTwitter:(id)sender;
-- (IBAction)shareByFacebook:(id)sender;
-- (IBAction)shareByEmailClicked:(id)sender;
-- (IBAction)shareByMessageClicked:(id)sender;
 
 - (void)reload;
 

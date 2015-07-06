@@ -135,9 +135,6 @@
 #define BC_STRING_PIN_ENCRYPTED_STRING_IS_NIL NSLocalizedString(@"PIN Encrypted String is nil", nil)
 #define BC_STRING_PIN_SAVED_SUCCESSFULLY NSLocalizedString(@"PIN Saved Successfully", nil)
 
-#define BC_STRING_PAYMENT_REQUEST_TITLE NSLocalizedString(@"Payment Request", nil)
-#define BC_STRING_DEVICE_NO_SMS NSLocalizedString(@"This device does not support SMS.", nil)
-#define BC_STRING_DEVICE_NO_EMAIL NSLocalizedString(@"This device does not support email.", nil)
 #define BC_STRING_PAYMENT_REQUEST NSLocalizedString(@"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@", nil)
 #define BC_STRING_PAYMENT_REQUEST_HTML NSLocalizedString(@"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@", nil)
 #define BC_STRING_CLOSE NSLocalizedString(@"Close", nil)
@@ -188,10 +185,6 @@
 
 #define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my wallet", nil)
 
-#define BC_STRING_SHARE_ON_TWITTER NSLocalizedString(@"Share on Twitter", nil)
-#define BC_STRING_SHARE_ON_FACEBOOK NSLocalizedString(@"Share on Facebook", nil)
-#define BC_STRING_SHARE_VIA_EMAIL NSLocalizedString(@"Share via E-mail", nil)
-#define BC_STRING_SHARE_VIA_SMS NSLocalizedString(@"Share via SMS", nil)
 #define BC_STRING_COPY_ADDRESS NSLocalizedString(@"Copy Address", nil)
 #define BC_STRING_ARCHIVE_ADDRESS NSLocalizedString(@"Archive Address", nil)
 #define BC_STRING_UNARCHIVE_ADDRESS NSLocalizedString(@"Unarchive Address", nil)
