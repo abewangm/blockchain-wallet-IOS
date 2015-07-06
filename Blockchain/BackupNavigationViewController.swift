@@ -14,10 +14,30 @@ import UIKit
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var topBar = UIView(frame:CGRectMake(0, 0, self.view.frame.size.width, Constants.Measurements.DefaultHeaderHeight));
+        topBar.backgroundColor = Constants.Colors.BlockchainBlue
+        self.view.addSubview(topBar);
+        
+        var headerLabel = UILabel(frame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40));
+        headerLabel.font = UIFont.systemFontOfSize(22.0)
+        headerLabel.textColor = UIColor.whiteColor()
+        headerLabel.textAlignment = .Center;
+        headerLabel.adjustsFontSizeToFitWidth = true;
+        headerLabel.text = NSLocalizedString("Backup Wallet", comment: "");
+        topBar.addSubview(headerLabel);
+        
+        var backButton : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        backButton.frame = CGRectMake(0, 12, 85, 51);
+        backButton.contentHorizontalAlignment = .Left;
+        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+        backButton.titleLabel?.font = UIFont.systemFontOfSize(15)
+        backButton.setImage(UIImage(named:"back_chevron_icon"), forState: .Normal);
+        backButton.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
+//        backButton.addTarget(self, action:@selector(backButtonClicked:), forControlEvents: .TouchUpInside);
+//        [backButton setHidden:YES];
+        topBar.addSubview(backButton);
 
-        // No seperator:
-        UINavigationBar.appearance().setBackgroundImage(UIImage.new(), forBarMetrics: UIBarMetrics.Default)
-        UINavigationBar.appearance().shadowImage = UIImage.new()
         
         let backupViewController = self.viewControllers.first as! BackupViewController
         backupViewController.wallet = self.wallet

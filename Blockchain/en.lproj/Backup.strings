@@ -38,3 +38,8 @@
 /* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
 "eyR-AW-SMc.text" = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable.";
 
+/* Class = "UILabel"; text = "Don't take a screenshot!\nYou can jepoardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "Don't take a screenshot!\nYou can jepoardize your wallet's security";
+
+/* Class = "UIButton"; normalTitle = "BACKUP WALLET"; ObjectID = "fT1-je-Orp"; */
+"fT1-je-Orp.normalTitle" = "BACKUP WALLET";
