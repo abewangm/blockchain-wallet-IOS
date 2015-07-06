@@ -48,7 +48,6 @@
     if (alertView.tag == 1) {
         switch (buttonIndex) {
             case 0: NSLog(@"Cancelled upgrade");
-                // TODOUpgrade: determine whether appropriate to dismiss
                 [self dismissSelf];
                 break;
             case 1: NSLog(@"Upgrading wallet");

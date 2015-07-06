@@ -58,10 +58,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2G-dE-WKh">
-                                <rect key="frame" x="190" y="8" width="220" height="85"/>
+                                <rect key="frame" x="186" y="8" width="228" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="gvv-cH-dBl"/>
-                                    <constraint firstAttribute="width" constant="220" id="jA8-i4-zSw"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Create personalized accounts to help keep your wallet organized">
@@ -90,6 +89,7 @@
                             <constraint firstAttribute="centerX" secondItem="Pqx-zq-JJu" secondAttribute="centerX" id="ms4-Wx-oLb"/>
                             <constraint firstItem="Pqx-zq-JJu" firstAttribute="centerX" secondItem="dip-XJ-oo9" secondAttribute="centerX" id="pRp-Hj-57j"/>
                             <constraint firstAttribute="centerX" secondItem="HuT-V7-syg" secondAttribute="centerX" id="pgc-rU-IDc"/>
+                            <constraint firstItem="cZ9-x2-KGM" firstAttribute="width" secondItem="g2G-dE-WKh" secondAttribute="width" id="rc3-Fn-F4o"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0ie-rM-WF9"/>

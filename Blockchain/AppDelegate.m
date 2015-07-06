@@ -358,9 +358,6 @@ SideMenuViewController *sideMenuViewController;
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self showHdUpgrade];
     }
-    
-    // TODOUpgrade:remove for production; testing only
-    [self showHdUpgrade];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
