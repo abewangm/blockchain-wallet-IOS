@@ -28,6 +28,7 @@
 #import "ECSlidingViewController.h"
 #import "Blockchain-Swift.h"
 #import <MessageUI/MFMailComposeViewController.h>
+#import "UpgradeViewController.h"
 
 #define SATOSHI 100000000
 #define LOADING_TEXT_NOTIFICATION_KEY @"SetLoadingText"

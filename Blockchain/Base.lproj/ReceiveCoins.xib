@@ -59,13 +59,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VtA-nv-23i">
-                    <rect key="frame" x="20" y="10" width="45" height="45"/>
+                    <rect key="frame" x="20" y="10" width="40" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="menu_more.png">
+                    <state key="normal" image="icon_share">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="moreActionsClicked:" destination="-1" eventType="touchUpInside" id="pOH-gc-Avi"/>
+                        <action selector="shareClicked:" destination="-1" eventType="touchUpInside" id="O6X-m3-Rf7"/>
                     </connections>
                 </button>
                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Only to control keyboard" borderStyle="line" textAlignment="center" minimumFontSize="17" id="OFk-NR-2Sp" userLabel="Amount No Border Style Text Field - 0.00">
@@ -162,7 +162,7 @@
         </view>
     </objects>
     <resources>
-        <image name="menu_more.png" width="11" height="17"/>
+        <image name="icon_share" width="18" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
