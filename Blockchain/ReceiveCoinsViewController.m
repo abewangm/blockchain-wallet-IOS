@@ -11,8 +11,6 @@
 #import "ReceiveTableCell.h"
 #import "Address.h"
 #import "PrivateKeyReader.h"
-#import <Social/Social.h>
-#import <Twitter/Twitter.h>
 
 @implementation ReceiveCoinsViewController
 
@@ -57,7 +55,7 @@ UIActionSheet *popupAddressArchive;
     // The more actions button will be added to the top menu bar
     [moreActionsButton removeFromSuperview];
     moreActionsButton.alpha = 0.0f;
-    moreActionsButton.frame = CGRectMake(0, 14, moreActionsButton.frame.size.width, moreActionsButton.frame.size.height);
+    moreActionsButton.frame = CGRectMake(0, 16, moreActionsButton.frame.size.width, moreActionsButton.frame.size.height);
     
     // iPhone4/4S
     if ([[UIScreen mainScreen] bounds].size.height < 568) {
@@ -84,7 +82,7 @@ UIActionSheet *popupAddressArchive;
                                               qrCodeMainImageView.frame.size.width,
                                               qrCodeMainImageView.frame.size.height);
     
-    UITapGestureRecognizer *tapDetailQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(copyAddressClicked:)];
+    UITapGestureRecognizer *tapDetailQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreActionsClicked:)];
     [qrCodePaymentImageView addGestureRecognizer:tapDetailQRGestureRecognizer];
     qrCodePaymentImageView.userInteractionEnabled = YES;
     
@@ -103,28 +101,16 @@ UIActionSheet *popupAddressArchive;
                                          optionsTitleLabel.frame.size.height);
     
     popupAccount = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
-                    BC_STRING_SHARE_ON_TWITTER,
-                    BC_STRING_SHARE_ON_FACEBOOK,
-                    BC_STRING_SHARE_VIA_EMAIL,
-                    BC_STRING_SHARE_VIA_SMS,
                     BC_STRING_COPY_ADDRESS,
                     nil];
     
     popupAddressArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
-                           BC_STRING_SHARE_ON_TWITTER,
-                           BC_STRING_SHARE_ON_FACEBOOK,
-                           BC_STRING_SHARE_VIA_EMAIL,
-                           BC_STRING_SHARE_VIA_SMS,
                            BC_STRING_COPY_ADDRESS,
                            BC_STRING_LABEL_ADDRESS,
                            BC_STRING_ARCHIVE_ADDRESS,
                            nil];
     
     popupAddressUnArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
-                             BC_STRING_SHARE_ON_TWITTER,
-                             BC_STRING_SHARE_ON_FACEBOOK,
-                             BC_STRING_SHARE_VIA_EMAIL,
-                             BC_STRING_SHARE_VIA_SMS,
                              BC_STRING_COPY_ADDRESS,
                              BC_STRING_LABEL_ADDRESS,
                              BC_STRING_UNARCHIVE_ADDRESS,
@@ -343,63 +329,6 @@ UIActionSheet *popupAddressArchive;
     [self doCurrencyConversion];
 }
 
-# pragma mark - MFMailComposeViewControllerDelegate delegates
-
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
-{
-    switch (result) {
-        case MFMailComposeResultCancelled:
-            break;
-            
-        case MFMailComposeResultFailed:
-        {
-            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send email!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [warningAlert show];
-            break;
-        }
-            
-        case MFMailComposeResultSent:
-            break;
-            
-        case MFMailComposeResultSaved:
-            break;
-            
-        default:
-            break;
-    }
-    
-    [controller dismissViewControllerAnimated:YES completion:nil];
-    
-    [self showKeyboard];
-}
-
-# pragma mark - MFMessageComposeViewControllerDelegate delegates
-
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
-{
-    switch (result) {
-        case MessageComposeResultCancelled:
-            break;
-            
-        case MessageComposeResultFailed:
-        {
-            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [warningAlert show];
-            break;
-        }
-            
-        case MessageComposeResultSent:
-            break;
-            
-        default:
-            break;
-    }
-    
-    [controller dismissViewControllerAnimated:YES completion:nil];
-    
-    [self showKeyboard];
-}
-
 #pragma mark - Actions
 
 - (IBAction)moreActionsClicked:(id)sender
@@ -415,6 +344,31 @@ UIActionSheet *popupAddressArchive;
             [popupAddressArchive showInView:[UIApplication sharedApplication].keyWindow];
         }
     }
+}
+
+- (IBAction)shareClicked:(id)sender
+{
+    NSString *message = [self formatPaymentRequest:@""];
+    UIImage *image = qrCodePaymentImageView.image;
+    NSURL *url = [NSURL URLWithString:[self uriURL]];
+    NSArray *activityItems = @[message, image, url];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    
+    activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList];
+    
+    // Keyboard is behaving a little strangely because of UITextFields in the Keyboard Accessory View
+    // This makes it work correctly - resign first Responder for UITextFields inside the Accessory View...
+    [btcAmountField resignFirstResponder];
+    [fiatAmountField resignFirstResponder];
+    
+    [self presentViewController:activityViewController animated:YES completion:nil];
+    
+    [activityViewController setCompletionHandler:^(NSString *activityType, BOOL completed) {
+        // ... and resign the hidden UITextField that controls the keyboard
+        [entryField resignFirstResponder];
+        [self showKeyboard];
+    }];
 }
 
 - (IBAction)scanKeyClicked:(id)sender
@@ -500,34 +454,6 @@ UIActionSheet *popupAddressArchive;
     }];
 }
 
-- (IBAction)shareByTwitter:(id)sender
-{
-    SLComposeViewController *composeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    
-    [composeController setInitialText:[self formatPaymentRequest:@""]];
-    [composeController addURL: [NSURL URLWithString:[self uriURL]]];
-    
-    [self presentViewController:composeController animated:YES completion:nil];
-    
-    composeController.completionHandler = ^(SLComposeViewControllerResult result) {
-        [self showKeyboard];
-    };
-}
-
-- (IBAction)shareByFacebook:(id)sender
-{
-    SLComposeViewController *composeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-    
-    [composeController setInitialText:[self formatPaymentRequest:@""]];
-    [composeController addURL: [NSURL URLWithString:[self uriURL]]];
-    
-    [self presentViewController:composeController animated:YES completion:nil];
-    
-    composeController.completionHandler = ^(SLComposeViewControllerResult result) {
-        [self showKeyboard];
-    };
-}
-
 - (NSString*)formatPaymentRequest:(NSString*)url
 {
     return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST, url];
@@ -536,40 +462,6 @@ UIActionSheet *popupAddressArchive;
 - (NSString*)formatPaymentRequestHTML:(NSString*)url
 {
     return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_HTML, url];
-}
-
-- (IBAction)shareByMessageClicked:(id)sender
-{
-    if([MFMessageComposeViewController canSendText]) {
-        MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
-        [messageController setMessageComposeDelegate:self];
-        [messageController setSubject:BC_STRING_PAYMENT_REQUEST_TITLE];
-        [messageController setBody:[self formatPaymentRequest:[self uriURL]]];
-        
-        [app.tabViewController presentViewController:messageController animated:YES completion:nil];
-    }
-    else {
-        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:BC_STRING_ERROR message:BC_STRING_DEVICE_NO_SMS delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
-        [warningAlert show];
-    }
-}
-
-- (IBAction)shareByEmailClicked:(id)sender
-{
-    if([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
-        [mailController setMailComposeDelegate:self];
-        NSData *jpegData = UIImageJPEGRepresentation(qrCodePaymentImageView.image, 1);
-        [mailController addAttachmentData:jpegData mimeType:@"image/jpeg" fileName:@"QR code image"];
-        [mailController setSubject:BC_STRING_PAYMENT_REQUEST_TITLE];
-        [mailController setMessageBody:[self formatPaymentRequestHTML:[self uriURL]] isHTML:YES];
-        
-        [app.tabViewController presentViewController:mailController animated:YES completion:nil];
-    }
-    else {
-        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:BC_STRING_ERROR message:BC_STRING_DEVICE_NO_EMAIL delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
-        [warningAlert show];
-    }
 }
 
 - (IBAction)labelAddressClicked:(id)sender
@@ -634,7 +526,7 @@ UIActionSheet *popupAddressArchive;
 
 - (void)showKeyboard
 {
-        [entryField becomeFirstResponder];
+    [entryField becomeFirstResponder];
 }
 
 # pragma mark - UIActionSheet delegate
@@ -647,26 +539,15 @@ UIActionSheet *popupAddressArchive;
     
     switch (buttonIndex) {
         case 0:
-            [self shareByTwitter:nil];
-            break;
-        case 1:
-            [self shareByFacebook:nil];
-            break;
-        case 2:
-            [self shareByEmailClicked:nil];
-            break;
-        case 3:
-            [self shareByMessageClicked:nil];
-            break;
-        case 4:
             [self copyAddressClicked:nil];
             break;
-        case 5:
+        case 1:
             [self labelAddressClicked:nil];
             break;
-        case 6:
+        case 2:
             [self archiveAddressClicked:nil];
             break;
+
         default:
             break;
     }
