@@ -13,6 +13,7 @@ class BackupViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel?
     @IBOutlet weak var explanation: UILabel?
     @IBOutlet weak var statusIcon: UIImageView?
+    @IBOutlet weak var backupWalletButton: UIButton?
 
     
     var wallet : Wallet?
@@ -27,6 +28,9 @@ class BackupViewController: UIViewController {
         
         self.navigationItem.setRightBarButtonItem(closeButton, animated: false)
     
+        backupWalletButton?.titleLabel?.text = NSLocalizedString(NSString(format:"%@", String("BACKUP WALLET")) as String, comment: "")
+        backupWalletButton?.clipsToBounds = true
+        backupWalletButton?.layer.cornerRadius = 15
     }
     
     override func viewWillAppear(animated: Bool) {

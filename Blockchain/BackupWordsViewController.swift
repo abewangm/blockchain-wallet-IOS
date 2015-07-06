@@ -10,6 +10,7 @@ import UIKit
 
 class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScrollViewDelegate {
     
+    @IBOutlet weak var screenShotWarningLabel: UILabel!
     @IBOutlet weak var wordsScrollView: UIScrollView?
     @IBOutlet weak var wordsPageControl: UIPageControl?
     @IBOutlet weak var wordsProgressLabel: UILabel?
@@ -59,6 +60,10 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
             wordLabel!.superview?.addSubview(label)
             wordLabels?.append(label)
         }
+        
+        screenShotWarningLabel!.text = NSLocalizedString(NSString(format:"%@", String("Don't take a screenshot!\nYou may jeopardize your wallet's security")) as String, comment: "")
+
+        
     }
 
     override func didReceiveMemoryWarning() {

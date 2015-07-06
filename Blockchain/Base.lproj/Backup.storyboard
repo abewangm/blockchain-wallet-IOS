@@ -57,11 +57,12 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fT1-je-Orp">
-                                        <rect key="frame" x="93" y="86" width="134" height="30"/>
+                                        <rect key="frame" x="80" y="98" width="160" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="BACKUP WALLET">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -159,6 +160,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="xmf-pK-R3X"/>
                     <connections>
+                        <outlet property="backupWalletButton" destination="fT1-je-Orp" id="niQ-vk-Apt"/>
                         <outlet property="explanation" destination="eyR-AW-SMc" id="MmV-cO-nmS"/>
                         <outlet property="statusIcon" destination="hJA-z1-hXN" id="ST6-Z8-aBx"/>
                         <outlet property="summaryLabel" destination="9Hu-uO-gJl" id="WkH-em-VkX"/>
@@ -244,6 +246,13 @@
                                             <outlet property="delegate" destination="jOl-Wq-Cg3" id="xWu-5a-zjb"/>
                                         </connections>
                                     </scrollView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't take a screenshot! You can jepoardize your wallet's security" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FDO-ui-cGo">
+                                        <rect key="frame" x="68" y="254" width="184" height="59"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -252,6 +261,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="mYR-MQ-mS2"/>
                     <connections>
+                        <outlet property="screenShotWarningLabel" destination="FDO-ui-cGo" id="2zw-i9-ywk"/>
                         <outlet property="verifyButton" destination="EQM-OM-jK8" id="SJN-jF-NBO"/>
                         <outlet property="wordLabel" destination="Okr-VE-yvm" id="ynm-yh-sZO"/>
                         <outlet property="wordsPageControl" destination="TyO-zN-EB7" id="wlk-9H-Djg"/>
