@@ -14,6 +14,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     @IBOutlet weak var wordsPageControl: UIPageControl?
     @IBOutlet weak var wordsProgressLabel: UILabel?
     @IBOutlet weak var wordLabel: UILabel?
+    @IBOutlet weak var screenShotWarningLabel: UILabel?
     
     @IBOutlet weak var verifyButton: UIButton?
 
