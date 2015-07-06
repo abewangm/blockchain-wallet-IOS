@@ -200,6 +200,17 @@
 
 #define BC_STRING_UPGRADE_TEXT NSLocalizedString(@"We've designed a whole new\nwallet experience for you", nil)
 #define BC_STRING_UPGRADE_NOW NSLocalizedString(@"Upgrade Now", nil)
+#define BC_STRING_UPGRADE_SUCCESS_TITLE NSLocalizedString(@"Success!", nil)
+#define BC_STRING_UPGRADE_SUCCESS NSLocalizedString(@"You are now running our most secure Bitcoin wallet", nil)
+#define BC_STRING_UPGRADE_FEATURE_ONE NSLocalizedString(@"Create personalized accounts to help keep your wallet organized", nil)
+#define BC_STRING_UPGRADE_FEATURE_TWO NSLocalizedString(@"Easy one time wallet backup keeps you in control of your funds", nil)
+#define BC_STRING_UPGRADE_FEATURE_THREE NSLocalizedString(@"Anything you need to store, spend and receive your bitcoin", nil)
+#define BC_STRING_UPGRADE_ALERTVIEW_TITLE NSLocalizedString(@"Upgrade Wallet", nil)
+#define BC_STRING_UPGRADE_ALERTVIEW_MESSAGE NSLocalizedString(@"We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet", nil)
+#define BC_STRING_UPGRADE_ALERTVIEW_CANCEL_TITLE NSLocalizedString(@"Not now", nil)
+#define BC_STRING_UPGRADE_ALERTVIEW_UPDATE_TITLE NSLocalizedString(@"Update", nil)
 #define BC_STRING_DONT_UPGRADE NSLocalizedString(@"or Continue", nil)
+#define BC_STRING_UPGRADE_BUTTON_TITLE NSLocalizedString(@"UPGRADE YOUR WALLET", nil)
+#define BC_STRING_UPGRADE_ASKLATER_TITLE NSLocalizedString(@"Ask Me Later", nil)
 
 #define BC_STRING_SUPPORT_EMAIL_SUBJECT NSLocalizedString(@"iOS Support Request", nil)

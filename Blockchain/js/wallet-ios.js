@@ -99,6 +99,7 @@ MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
 
         MyWallet.getHistoryAndParseMultiAddressJSON();
         device.execute('loading_stop');
+        device.execute('upgrade_success');
     };
 
     var error = function (e) {

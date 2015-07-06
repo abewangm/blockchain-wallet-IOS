@@ -34,6 +34,7 @@
 #import "BCHdUpgradeView.h"
 #import "BCWebViewController.h"
 #import "KeychainItemWrapper.h"
+#import "UpgradeViewController.h"
 
 #define CURTAIN_IMAGE_TAG 123
 
@@ -355,7 +356,6 @@ SideMenuViewController *sideMenuViewController;
     if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenUpgradeToHdScreen"]) {
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasSeenUpgradeToHdScreen"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
         [self showHdUpgrade];
     }
 }
@@ -1079,19 +1079,10 @@ SideMenuViewController *sideMenuViewController;
 
 - (void)showHdUpgrade
 {
-    BCHdUpgradeView *hdUpgradeView = [[BCHdUpgradeView alloc] init];
-    [hdUpgradeView.upgradeButton addTarget:self action:@selector(continueUpgrade) forControlEvents:UIControlEventTouchUpInside];
-    [hdUpgradeView.cancelButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventTouchUpInside];
-    
-    [app showModalWithContent:hdUpgradeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
-}
-
-- (void)continueUpgrade
-{
-    [self closeAllModals];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [wallet upgradeToHDWallet];
-    });
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Upgrade" bundle: nil];
+    UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeViewController"];
+    upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
 }
 
 - (void)showCreateWallet:(id)sender

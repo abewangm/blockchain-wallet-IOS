@@ -50,6 +50,7 @@ int accountEntries = 0;
         tableView.backgroundView = nil;
         tableView;
     });
+
     
     [self.view addSubview:self.tableView];
     
