@@ -20,6 +20,7 @@
                 <outlet property="labelAddressTextField" destination="62" id="71"/>
                 <outlet property="labelAddressView" destination="60" id="72"/>
                 <outlet property="selectAddressTextField" destination="zyc-E3-FOM" id="TU8-Uu-bf4"/>
+                <outlet property="selectFromButton" destination="BRT-me-wxI" id="qT9-fg-Tm7"/>
                 <outlet property="sendPaymentAccessoryButton" destination="pPu-bJ-k6p" id="Dbs-mr-7dS"/>
                 <outlet property="sendPaymentButton" destination="4" id="EeO-PQ-oub"/>
                 <outlet property="sendProgressActivityIndicator" destination="tKj-lu-8bc" id="yLg-rV-y7v"/>
@@ -294,7 +295,7 @@
         </view>
     </objects>
     <resources>
-        <image name="cancel" width="15" height="15"/>
+        <image name="cancel" width="11" height="11"/>
         <image name="disclosure" width="11" height="17"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

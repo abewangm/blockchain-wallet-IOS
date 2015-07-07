@@ -30,6 +30,7 @@
     
     IBOutlet UILabel *fromLabel;
     IBOutlet UITextField *selectAddressTextField;
+    IBOutlet UIButton *selectFromButton;
     IBOutlet UILabel *fundsAvailableLabel;
     
     IBOutlet UITextField *toField;

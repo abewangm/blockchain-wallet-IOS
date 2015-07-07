@@ -83,15 +83,23 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-#ifndef ENABLE_MULTIPLE_ACCOUNTS
     // If we only have one account and no legacy addresses -> can't change from address
-    if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses] && [app.wallet addressBook].count == 0) {
+    if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]
+        && [app.wallet getAccountsCount] == 1) {
+        [selectFromButton setHidden:YES];
+    }
+    else {
+        [selectFromButton setHidden:NO];
+    }
+    
+    // If we only have one account and no legacy addresses and no address book entrie-> can't change to address
+    if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]
+        && [app.wallet addressBook].count == 0 && [app.wallet getAccountsCount] == 1) {
         [addressBookButton setHidden:YES];
     }
     else {
         [addressBookButton setHidden:NO];
     }
-#endif
     
     // Populate address field from URL handler if available.
     if (self.initialToAddressString && toField != nil) {
@@ -408,7 +416,11 @@ BOOL displayingLocalSymbolSend;
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (textField == selectAddressTextField) {
-        [self selectFromAddressClicked:textField];
+        // If we only have one account and no legacy addresses -> can't change from address
+        if (!([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]
+              && [app.wallet getAccountsCount] == 1)) {
+            [self selectFromAddressClicked:textField];
+        }
         return NO;  // Hide both keyboard and blinking cursor.
     }
     
