@@ -16,20 +16,18 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var word2: UITextField?
     @IBOutlet weak var word3: UITextField?
     
-    @IBOutlet weak var wrongWord1: UILabel?
-    @IBOutlet weak var wrongWord2: UILabel?
-    @IBOutlet weak var wrongWord3: UILabel?
+    @IBOutlet weak var wrongWord: UILabel?
+    
+    @IBOutlet weak var verifyButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        word1?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
+        word2?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
+        word3?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        verifyButton.clipsToBounds = true
+        verifyButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
     }
     
     @IBAction func done(sender: UIButton) {
@@ -45,15 +43,15 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
             valid = false
         } else { // Don't mark words as invalid until the user has entered all three
             if word1!.text != words[0] {
-                wrongWord1?.hidden = false
+                wrongWord?.hidden = false
                 valid = false
             }
             if word2!.text != words[2] {
-                wrongWord2?.hidden = false
+                wrongWord?.hidden = false
                 valid = false
             }
             if word3!.text != words[5] {
-                wrongWord3?.hidden = false
+                wrongWord?.hidden = false
                 valid = false
             }
         }
@@ -66,10 +64,20 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        wrongWord1?.hidden = true
-        wrongWord2?.hidden = true
-        wrongWord3?.hidden = true
+        wrongWord?.hidden = true
         return true
+    }
+    
+    func textFieldDidChange() {
+        if !word1!.text.isEmpty && !word2!.text.isEmpty && !word3!.text.isEmpty {
+            verifyButton.backgroundColor = Constants.Colors.BlockchainBlue
+            verifyButton.enabled = true
+            verifyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        } else if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
+            verifyButton.backgroundColor = Constants.Colors.SecondaryGray
+            verifyButton.enabled = false
+            verifyButton.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

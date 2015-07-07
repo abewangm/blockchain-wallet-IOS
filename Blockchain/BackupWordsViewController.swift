@@ -14,6 +14,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     @IBOutlet weak var wordsPageControl: UIPageControl?
     @IBOutlet weak var wordsProgressLabel: UILabel?
     @IBOutlet weak var wordLabel: UILabel?
+    @IBOutlet weak var screenShotWarningLabel: UILabel?
     
     @IBOutlet weak var verifyButton: UIButton?
 
@@ -22,6 +23,9 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        verifyButton?.clipsToBounds = true
+        verifyButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
         
@@ -33,11 +37,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         } else {
             wallet!.getRecoveryPhrase(nil)
         }
-        
-        if wallet!.isRecoveryPhraseVerified() {
-            verifyButton?.hidden = true
-        }
-
         
         wordLabel!.text = ""
         
@@ -72,6 +71,13 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     
     func updateCurrentPageLabel(page: Int) {
         wordsProgressLabel!.text = NSLocalizedString(NSString(format: "Word %@ of %@", String(page + 1), String(12)) as String, comment: "")
+        if let count = wordLabels?.count {
+            if wordsPageControl!.currentPage == count-1 {
+                verifyButton?.enabled = true;
+                verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
+                verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            }
+        }
     }
     
     // MARK: - Words Scrollview

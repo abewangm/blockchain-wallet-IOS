@@ -11,8 +11,8 @@
 /* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
 "9Hu-uO-gJl.text" = "You have not backed up your wallet yet";
 
-/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
-"EQM-OM-jK8.normalTitle" = "VERIFY";
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "EQM-OM-jK8"; */
+"EQM-OM-jK8.normalTitle" = "Done";
 
 /* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
 "9hR-tm-aq5.placeholder" = "first word";
@@ -38,3 +38,20 @@
 /* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
 "eyR-AW-SMc.text" = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable.";
 
+/* Class = "UILabel"; text = "Don't take a screenshot!\nYou can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "Don't take a screenshot!\nYou can jeopardize your wallet's security";
+
+/* Class = "UIButton"; normalTitle = "BACKUP WALLET"; ObjectID = "fT1-je-Orp"; */
+"fT1-je-Orp.normalTitle" = "BACKUP WALLET";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "3kJ-3U-lFe"; */
+"3kJ-3U-lFe.text" = "Please try again";"
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
+"CBl-1W-VP8.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = 9WK-My-5CL; */
+"9WK-My-5CL.text" = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue.";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "07q-RX-CeI"; */
+"07q-RX-CeI.text" = "Please try again";
