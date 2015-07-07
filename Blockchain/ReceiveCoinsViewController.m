@@ -660,6 +660,11 @@ UIActionSheet *popupAddressArchive;
         btcAmountField.text = nil;
         fiatAmountField.text = nil;
         
+        // Select the entry field
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [fiatAmountField becomeFirstResponder];
+        });
+        
         // Show an extra menu item (more actions)
         [app.modalView addSubview:moreActionsButton];
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
