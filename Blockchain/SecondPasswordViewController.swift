@@ -66,6 +66,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
         alertView.message = message;
         alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
         alertView.tag = 2;
+        alertView.delegate = self
         alertView.show()
     }
     
