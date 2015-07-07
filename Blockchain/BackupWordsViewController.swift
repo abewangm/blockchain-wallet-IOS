@@ -24,6 +24,9 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        verifyButton?.clipsToBounds = true
+        verifyButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
+        
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()

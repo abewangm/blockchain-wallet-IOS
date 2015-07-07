@@ -15,6 +15,7 @@ struct Constants {
     }
     struct Measurements {
         static let DefaultHeaderHeight : CGFloat = 65
+        static let BackupButtonCornerRadius : CGFloat = 10
     }
 }
 

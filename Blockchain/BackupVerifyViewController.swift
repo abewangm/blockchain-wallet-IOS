@@ -20,10 +20,13 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var wrongWord2: UILabel?
     @IBOutlet weak var wrongWord3: UILabel?
     
+    @IBOutlet weak var verifyButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-
+        verifyButton.clipsToBounds = true
+        verifyButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         // Do any additional setup after loading the view.
     }
 

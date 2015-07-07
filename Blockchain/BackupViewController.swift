@@ -13,6 +13,7 @@ class BackupViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel?
     @IBOutlet weak var backupWalletButton: UIButton?
     @IBOutlet weak var explanation: UILabel?
+    @IBOutlet weak var backupIconImageView: UIImageView!
     
     var wallet : Wallet?
 
@@ -25,7 +26,7 @@ class BackupViewController: UIViewController {
         self.navigationItem.setRightBarButtonItem(closeButton, animated: false)
     
         backupWalletButton?.clipsToBounds = true
-        backupWalletButton?.layer.cornerRadius = 15
+        backupWalletButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -34,6 +35,7 @@ class BackupViewController: UIViewController {
         if wallet!.isRecoveryPhraseVerified() {
             summaryLabel!.text = "You backed up your wallet."
             explanation!.text = "You only need to backup your wallet once."
+            backupIconImageView!.image = UIImage(named: "icon_backup_complete")
         }
     }
     

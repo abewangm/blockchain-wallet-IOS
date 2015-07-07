@@ -68,6 +68,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="xmf-pK-R3X"/>
                     <connections>
+                        <outlet property="backupIconImageView" destination="yp5-t8-iIg" id="Ame-DW-zKt"/>
                         <outlet property="backupWalletButton" destination="fT1-je-Orp" id="niQ-vk-Apt"/>
                         <outlet property="explanation" destination="eyR-AW-SMc" id="T8a-ay-FOc"/>
                         <outlet property="summaryLabel" destination="9Hu-uO-gJl" id="WkH-em-VkX"/>
@@ -357,6 +358,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="9A7-TT-PzN"/>
                     <connections>
+                        <outlet property="verifyButton" destination="T4p-mz-siC" id="X12-j4-WDH"/>
                         <outlet property="word1" destination="9hR-tm-aq5" id="YVJ-E7-KJC"/>
                         <outlet property="word2" destination="kcC-2S-PfL" id="hCD-OZ-8tt"/>
                         <outlet property="word3" destination="Fda-Z4-3e7" id="Bv0-3F-bgR"/>
