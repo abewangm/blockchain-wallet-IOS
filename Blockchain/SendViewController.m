@@ -294,30 +294,35 @@ BOOL displayingLocalSymbolSend;
 
 - (void)confirmPayment
 {
-    uint64_t amount = amountInSatoshi;
-    uint64_t fee = [self getRecommendedFeeForAmount:amount];
-    uint64_t amountTotal = amount + fee;
+    [self dismissKeyboard];
     
-    NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
-    NSString *feeBTCString = [app formatMoney:fee localCurrency:FALSE];
-    NSString *amountTotalLocalString = [app formatMoney:amountTotal localCurrency:TRUE];
-
-    
-    NSMutableString *messageString = [NSMutableString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, self.toAddress, amountTotalBTCString, feeBTCString, amountTotalLocalString];
-    
-    BCAlertView *alert = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_PAYMENT
-                                                    message:messageString
-                                                   delegate:self
-                                          cancelButtonTitle:BC_STRING_CANCEL
-                                          otherButtonTitles:BC_STRING_SEND, nil];
-    
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (buttonIndex == 1) {
-            [self reallyDoPayment];
-        }
-    };
-    
-    [alert show];
+    // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        uint64_t amount = amountInSatoshi;
+        uint64_t fee = [self getRecommendedFeeForAmount:amount];
+        uint64_t amountTotal = amount + fee;
+        
+        NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
+        NSString *feeBTCString = [app formatMoney:fee localCurrency:FALSE];
+        NSString *amountTotalLocalString = [app formatMoney:amountTotal localCurrency:TRUE];
+        
+        
+        NSMutableString *messageString = [NSMutableString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, self.toAddress, amountTotalBTCString, feeBTCString, amountTotalLocalString];
+        
+        BCAlertView *alert = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_PAYMENT
+                                                        message:messageString
+                                                       delegate:self
+                                              cancelButtonTitle:BC_STRING_CANCEL
+                                              otherButtonTitles:BC_STRING_SEND, nil];
+        
+        alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [self reallyDoPayment];
+            }
+        };
+        
+        [alert show];
+    });
 }
 
 #pragma mark - UI Helpers
