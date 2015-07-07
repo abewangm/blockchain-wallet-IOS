@@ -12,7 +12,7 @@ protocol SecondPasswordDelegate {
     func didGetSecondPassword(String)
 }
 
-class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
+class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
 
     @IBOutlet weak var navigationBar: UINavigationBar?
     @IBOutlet weak var password: UITextField?
@@ -54,11 +54,18 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if alertView.tag == 2 {
+            password?.text = ""
+        }
+    }
+    
     func alertUserWithErrorMessage(message : String) {
         var alertView = UIAlertView()
         alertView.title = NSLocalizedString("Error", comment:"")
         alertView.message = message;
         alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
+        alertView.tag = 2;
         alertView.show()
     }
     
