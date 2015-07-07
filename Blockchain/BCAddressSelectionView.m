@@ -304,6 +304,9 @@ int legacyAddressesSectionNumber;
         [cell.balanceButton setTitle:nil forState:UIControlStateNormal];
     }
     
+    // Disable user interaction on the balance button so the hit area is the full width of the table entry
+    [cell.balanceButton setUserInteractionEnabled:NO];
+    
     // Selected cell color
     UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
     [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
