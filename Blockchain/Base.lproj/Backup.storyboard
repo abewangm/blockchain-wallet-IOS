@@ -235,13 +235,6 @@
                                     <outlet property="delegate" destination="o3I-9v-bZo" id="8vO-nM-qMh"/>
                                 </connections>
                             </textField>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ssn-aY-vR0">
-                                <rect key="frame" x="115" y="176" width="106" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.52205141129999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fh2-P3-lD2">
                                 <rect key="frame" x="48" y="264" width="240" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -268,7 +261,6 @@
                     <connections>
                         <outlet property="navigationBar" destination="J4J-Gw-Zau" id="z3K-7A-TJh"/>
                         <outlet property="password" destination="CBl-1W-VP8" id="VTt-HH-4gG"/>
-                        <outlet property="wrongPassword" destination="Ssn-aY-vR0" id="uGE-Nv-IRe"/>
                         <segue destination="S9C-qi-BxE" kind="unwind" identifier="unwindSecondPasswordCancel" unwindAction="unwindSecondPasswordCancel:" id="Tjm-dE-brW"/>
                         <segue destination="S9C-qi-BxE" kind="unwind" identifier="unwindSecondPasswordSuccess" unwindAction="unwindSecondPasswordSuccess:" id="Jgp-u0-HkE"/>
                     </connections>

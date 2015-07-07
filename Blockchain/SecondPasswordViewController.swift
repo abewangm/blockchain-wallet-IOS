@@ -16,7 +16,6 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var navigationBar: UINavigationBar?
     @IBOutlet weak var password: UITextField?
-    @IBOutlet weak var wrongPassword: UILabel?
     
     var wallet : Wallet?
 
@@ -44,18 +43,23 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
     
     func checkSecondPassword() {
         let secondPassword = password!.text
-        if wallet!.validateSecondPassword(secondPassword) {
+        if secondPassword.isEmpty {
+            alertUserWithErrorMessage((NSLocalizedString("No Password Entered", comment: "")))
+        }
+        else if wallet!.validateSecondPassword(secondPassword) {
             delegate?.didGetSecondPassword(secondPassword)
             self.performSegueWithIdentifier("unwindSecondPasswordSuccess", sender: self)
         } else {
-            wrongPassword?.hidden = false
+            alertUserWithErrorMessage((NSLocalizedString("Second Password Incorrect", comment: "")))
         }
-        
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        wrongPassword?.hidden = true
-        return true
+    func alertUserWithErrorMessage(message : String) {
+        var alertView = UIAlertView()
+        alertView.title = NSLocalizedString("Error", comment:"")
+        alertView.message = message;
+        alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
+        alertView.show()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
