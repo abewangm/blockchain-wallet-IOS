@@ -35,9 +35,27 @@ class BackupViewController: UIViewController {
         }
     }
     
+    @IBAction func backupWalletButtonTapped(sender: UIButton) {
+        if wallet!.isRecoveryPhraseVerified() {
+            performSegueWithIdentifier("verifyBackup", sender: nil)
+        } else {
+            performSegueWithIdentifier("backupWords", sender: nil)
+        }
+    }
+    
+    @IBAction func backupWalletAgainButtonTapped(sender: UIButton) {
+        performSegueWithIdentifier("backupWords", sender: nil)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as! BackupWordsViewController
-        vc.wallet = wallet
+        if segue.identifier == "backupWords" {
+            let vc = segue.destinationViewController as! BackupWordsViewController
+            vc.wallet = wallet
+        }
+        else if segue.identifier == "verifyBackup" {
+            let vc = segue.destinationViewController as! BackupVerifyViewController
+            vc.wallet = wallet
+        }
     }
     
     @IBAction func unwindSecondPasswordCancel(segue: UIStoryboardSegue) {

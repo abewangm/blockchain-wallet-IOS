@@ -12,6 +12,7 @@ import UIKit
 
     var wallet : Wallet?
     
+    // TODOBackup: Use native back button
     var isTransitioning : Bool = false {
         didSet {
             if isTransitioning == true {

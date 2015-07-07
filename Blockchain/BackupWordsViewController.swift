@@ -38,11 +38,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
             wallet!.getRecoveryPhrase(nil)
         }
         
-        if wallet!.isRecoveryPhraseVerified() {
-            verifyButton?.hidden = true
-        }
-
-        
         wordLabel!.text = ""
         
         updateCurrentPageLabel(0)
