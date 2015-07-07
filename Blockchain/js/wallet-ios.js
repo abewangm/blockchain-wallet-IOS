@@ -185,7 +185,7 @@ MyWalletPhone.setLabelForAccount = function(num, label) {
 };
 
 MyWalletPhone.getReceivingAddressForAccount = function(num) {
-    MyWallet.getReceivingAddressForAccount(MyWalletPhone.getIndexOfActiveAccount(num));
+    return MyWallet.getReceivingAddressForAccount(MyWalletPhone.getIndexOfActiveAccount(num));
 };
 
 MyWalletPhone.recommendedTransactionFeeForAccount = function(num, amount) {
