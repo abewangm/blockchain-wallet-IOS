@@ -83,18 +83,12 @@ int lastNumberTransactions = INT_MAX;
     if (!self.data) {
         [noTransactionsView removeFromSuperview];
         
-        [headerLabel setHidden:YES];
-        [headerSeparator setHidden:YES];
-        
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
         [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
     }
     // Data loaded, but no transactions yet
     else if (self.data.transactions.count == 0) {
-        [self.view addSubview:noTransactionsView];
-        
-        [headerLabel setHidden:NO];
-        [headerSeparator setHidden:NO];
+        [tableView.tableHeaderView addSubview:noTransactionsView];
         
         // Balance
         [balanceBigButton setTitle:[app formatMoney:data.final_balance localCurrency:app->symbolLocal] forState:UIControlStateNormal];
@@ -103,9 +97,6 @@ int lastNumberTransactions = INT_MAX;
     // Data loaded and we have a balance - display the balance and transactions
     else {
         [noTransactionsView removeFromSuperview];
-        
-        [headerLabel setHidden:NO];
-        [headerSeparator setHidden:NO];
         
         // Balance
         [balanceBigButton setTitle:[app formatMoney:data.final_balance localCurrency:app->symbolLocal] forState:UIControlStateNormal];
