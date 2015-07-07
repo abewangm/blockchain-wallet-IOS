@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dip-XJ-oo9">
-                                <rect key="frame" x="280" y="479" width="39" height="37"/>
+                                <rect key="frame" x="281" y="475" width="39" height="37"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqx-zq-JJu">
-                                <rect key="frame" x="168" y="93" width="264" height="382"/>
+                                <rect key="frame" x="170" y="93" width="261" height="378"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Pqx-zq-JJu" secondAttribute="height" multiplier="69:100" id="5W5-HE-ha7"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="175" id="BhP-Z7-VcN"/>
@@ -32,7 +32,7 @@
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-V7-syg">
-                                <rect key="frame" x="186" y="558" width="228" height="38"/>
+                                <rect key="frame" x="180" y="556" width="240" height="40"/>
                                 <state key="normal" title="Ask Me Later">
                                     <color key="titleColor" red="0.070588235294117646" green="0.45098039215686275" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,11 +42,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-x2-KGM">
-                                <rect key="frame" x="186" y="520" width="228" height="38"/>
+                                <rect key="frame" x="180" y="516" width="240" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="OJo-92-rmD"/>
-                                    <constraint firstAttribute="width" constant="228" id="scu-Xe-9bf"/>
+                                    <constraint firstAttribute="height" constant="40" id="OJo-92-rmD"/>
+                                    <constraint firstAttribute="width" constant="240" id="scu-Xe-9bf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="UPGRADE YOUR WALLET">
@@ -57,8 +57,8 @@
                                     <action selector="upgradeWalletButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="BYV-PO-LRT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2G-dE-WKh">
-                                <rect key="frame" x="186" y="8" width="228" height="85"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="228" translatesAutoresizingMaskIntoConstraints="NO" id="g2G-dE-WKh">
+                                <rect key="frame" x="180" y="8" width="240" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="gvv-cH-dBl"/>
                                 </constraints>

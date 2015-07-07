@@ -130,6 +130,68 @@ MyWalletPhone.createAccount = function(label) {
     MyWallet.createAccount(label, MyWalletPhone.getSecondPassword(success, error), success, error);
 };
 
+MyWalletPhone.getActiveAccounts = function() {
+    var accounts = MyWallet.getAccounts();
+    
+    var activeAccounts = accounts.filter(function(account) { return account.archived === false; });
+    
+    return activeAccounts;
+};
+
+MyWalletPhone.getIndexOfActiveAccount = function(num) {
+    var activeAccounts = MyWalletPhone.getActiveAccounts();
+
+    var realNum = activeAccounts[num].index;
+
+    return realNum;
+};
+
+MyWalletPhone.getDefaultAccountIndex = function() {
+    var index = WalletStore.getDefaultAccountIndex();
+
+    var activeAccounts = MyWalletPhone.getActiveAccounts();
+
+    var defaultAccountIndex = null;
+    for (var i = 0; i < activeAccounts.length; i++) {
+        var account = activeAccounts[i];
+        if (account.index === index) {
+            defaultAccount = i;
+        }
+    }
+
+    if (defaultAccountIndex) {
+        return defaultAccountIndex;
+    }
+
+    return 0;
+}
+
+MyWalletPhone.getAccountsCount = function() {
+    var activeAccounts = MyWalletPhone.getActiveAccounts();
+
+    return activeAccounts.length;
+};
+
+MyWalletPhone.getBalanceForAccount = function(num) {
+    return MyWallet.getBalanceForAccount(MyWalletPhone.getIndexOfActiveAccount(num));
+};
+
+MyWalletPhone.getLabelForAccount = function(num) {
+    return MyWallet.getLabelForAccount(MyWalletPhone.getIndexOfActiveAccount(num));
+};
+
+MyWalletPhone.setLabelForAccount = function(num, label) {
+    MyWallet.setLabelForAccount(MyWalletPhone.getIndexOfActiveAccount(num), label);
+};
+
+MyWalletPhone.getReceivingAddressForAccount = function(num) {
+    return MyWallet.getReceivingAddressForAccount(MyWalletPhone.getIndexOfActiveAccount(num));
+};
+
+MyWalletPhone.recommendedTransactionFeeForAccount = function(num, amount) {
+    return MyWallet.recommendedTransactionFeeForAccount(MyWalletPhone.getIndexOfActiveAccount(num), amount);
+};
+
 MyWalletPhone.setPbkdf2Iterations = function(iterations) {
     var success = function () {
         console.log('Updated PBKDF2 iterations');
@@ -281,7 +343,7 @@ MyWalletPhone.quickSendFromAddressToAccount = function(from, to, valueString) {
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
         .fromAddress(from, value, fee)
-        .toAccount(to);
+        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
 
     return id;
 };
@@ -316,11 +378,11 @@ MyWalletPhone.quickSendFromAccountToAddress = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAccount(from, value);
+    var fee = MyWallet.recommendedTransactionFeeForAccount(MyWalletPhone.getIndexOfActiveAccount(from), value);
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
-        .fromAccount(from, value, fee)
+        .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
         .toAddress(to);
 
     return id;
@@ -356,12 +418,12 @@ MyWalletPhone.quickSendFromAccountToAccount = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAccount(from, value);
+    var fee = MyWallet.recommendedTransactionFeeForAccount(MyWalletPhone.getIndexOfActiveAccount(from), value);
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
-        .fromAccount(from, value, fee)
-        .toAccount(to);
+        .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
+        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
 
     return id;
 };

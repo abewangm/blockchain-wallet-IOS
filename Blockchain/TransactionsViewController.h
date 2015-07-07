@@ -18,28 +18,24 @@
  * MA 02110-1301  USA
  */
 
-#import <UIKit/UIKit.h>
 @class MultiAddressResponse;
 @class LatestBlock;
 
 @interface TransactionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-    IBOutlet UITableView * tableView;
-
+    IBOutlet UITableView *tableView;
+    
     IBOutlet UIButton *balanceBigButton;
     IBOutlet UIButton *balanceSmallButton;
     
     IBOutlet UIView *noTransactionsView;
     
-    IBOutlet UILabel *headerLabel;
-    IBOutlet UIView *headerSeparator;
-    
-    MultiAddressResponse * data;
-    LatestBlock * latestBlock;
+    MultiAddressResponse *data;
+    LatestBlock *latestBlock;
 }
 
-@property(nonatomic, strong) MultiAddressResponse * data;
-@property(nonatomic, strong) LatestBlock * latestBlock;
+@property(nonatomic, strong) MultiAddressResponse *data;
+@property(nonatomic, strong) LatestBlock *latestBlock;
 
 - (void)reload;
 - (void)animateNextCellAfterReload;
