@@ -8,6 +8,8 @@
 
 import UIKit
 
+let BC_ALERTVIEW_SECOND_PASSWORD_ERROR_TAG = 2
+
 protocol SecondPasswordDelegate {
     func didGetSecondPassword(String)
 }
@@ -18,7 +20,6 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     @IBOutlet weak var password: UITextField?
     
     var wallet : Wallet?
-
     
     var delegate : SecondPasswordDelegate?
     
@@ -55,7 +56,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     }
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if alertView.tag == 2 {
+        if alertView.tag == BC_ALERTVIEW_SECOND_PASSWORD_ERROR_TAG {
             password?.text = ""
         }
     }
@@ -65,7 +66,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
         alertView.title = NSLocalizedString("Error", comment:"")
         alertView.message = message;
         alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
-        alertView.tag = 2;
+        alertView.tag = BC_ALERTVIEW_SECOND_PASSWORD_ERROR_TAG;
         alertView.delegate = self
         alertView.show()
     }

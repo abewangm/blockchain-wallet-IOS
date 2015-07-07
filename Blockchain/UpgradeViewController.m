@@ -11,6 +11,8 @@
 #import "LocalizationConstants.h"
 #import "UILabel+MultiLineAutoSize.h"
 
+static const int BC_ALERTVIEW_UPGRADE_TAG = 1;
+
 @interface UpgradeViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -39,13 +41,13 @@
 - (void)alertUserToConfirmUpgrade
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_UPGRADE_ALERTVIEW_TITLE message:BC_STRING_UPGRADE_ALERTVIEW_MESSAGE delegate:self cancelButtonTitle:BC_STRING_UPGRADE_ALERTVIEW_CANCEL_TITLE otherButtonTitles:BC_STRING_UPGRADE_ALERTVIEW_UPDATE_TITLE, nil];
-    alertView.tag = 1;
+    alertView.tag = BC_ALERTVIEW_UPGRADE_TAG;
     [alertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView.tag == 1) {
+    if (alertView.tag == BC_ALERTVIEW_UPGRADE_TAG) {
         switch (buttonIndex) {
             case 0: NSLog(@"Cancelled upgrade");
                 [self dismissSelf];
