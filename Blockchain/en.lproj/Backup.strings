@@ -11,8 +11,8 @@
 /* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
 "9Hu-uO-gJl.text" = "You have not backed up your wallet yet";
 
-/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
-"EQM-OM-jK8.normalTitle" = "VERIFY";
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "EQM-OM-jK8"; */
+"EQM-OM-jK8.normalTitle" = "Done";
 
 /* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
 "9hR-tm-aq5.placeholder" = "first word";
