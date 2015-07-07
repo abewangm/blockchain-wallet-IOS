@@ -42,7 +42,12 @@ import UIKit
     }
     
     func backButtonClicked() {
-        NSNotificationCenter.defaultCenter().postNotificationName("CloseBackupScreen", object: nil)
+        if let currentViewController = self.visibleViewController {
+            if (currentViewController.isEqual(viewControllers.first)) {
+                NSNotificationCenter.defaultCenter().postNotificationName("CloseBackupScreen", object: nil)
+            } else {
+                popViewControllerAnimated(true);
+            }
+        }
     }
-
 }
