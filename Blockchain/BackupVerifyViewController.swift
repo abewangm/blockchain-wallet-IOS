@@ -22,6 +22,9 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        word1?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
+        word2?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
+        word3?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         verifyButton.clipsToBounds = true
         verifyButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
@@ -63,6 +66,18 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         wrongWord?.hidden = true
         return true
+    }
+    
+    func textFieldDidChange() {
+        if !word1!.text.isEmpty && !word2!.text.isEmpty && !word3!.text.isEmpty {
+            verifyButton.backgroundColor = Constants.Colors.BlockchainBlue
+            verifyButton.enabled = true
+            verifyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        } else if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
+            verifyButton.backgroundColor = Constants.Colors.SecondaryGray
+            verifyButton.enabled = false
+            verifyButton.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

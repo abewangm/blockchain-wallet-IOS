@@ -12,6 +12,9 @@ struct Constants {
     struct Colors {
         static let TextFieldBorderGray = UIColorFromRGB(0xcdcdcd)
         static let BlockchainBlue = UIColorFromRGB(0x1b8ac7)
+        static let BlockchainLightBlue = UIColorFromRGB(0x62b5db)
+        static let BlockchainLightestBlue = UIColorFromRGB(0xa0d7ec)
+        static let SecondaryGray = UIColorFromRGB(0xebebeb)
     }
     struct Measurements {
         static let DefaultHeaderHeight : CGFloat = 65
