@@ -534,6 +534,13 @@ UIActionSheet *popupAddressArchive;
     });
 }
 
+- (void)hideKeyboard
+{
+    [fiatAmountField resignFirstResponder];
+    [btcAmountField resignFirstResponder];
+    [entryField resignFirstResponder];
+}
+
 # pragma mark - UIActionSheet delegate
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -547,9 +554,11 @@ UIActionSheet *popupAddressArchive;
             [self copyAddressClicked:nil];
             break;
         case 1:
+            [self hideKeyboard];
             [self labelAddressClicked:nil];
             break;
         case 2:
+            [self hideKeyboard];
             [self archiveAddressClicked:nil];
             break;
 
