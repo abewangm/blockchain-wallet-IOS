@@ -1249,9 +1249,15 @@ SideMenuViewController *sideMenuViewController;
 
 - (IBAction)mainPasswordClicked:(id)sender
 {
+    NSString *password = [mainPasswordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if (password.length == 0) {
+        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        return;
+    }
+    
     [mainPasswordTextField performSelectorOnMainThread:@selector(resignFirstResponder) withObject:nil waitUntilDone:NO];
     
-    NSString *password = [mainPasswordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *guid = [self guid];
     NSString *sharedKey = [self sharedKey];
     

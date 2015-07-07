@@ -533,7 +533,7 @@ UIActionSheet *popupAddressArchive;
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (popup == popupAccount && buttonIndex > 4) {
+    if (popup == popupAccount && buttonIndex > 0) {
         return;
     }
     

@@ -239,6 +239,8 @@ BOOL displayingLocalSymbolSend;
         [app closeModalWithTransition:kCATransitionFade];
     };
     
+    [self dismissKeyboard];
+    
     [sendPaymentButton setEnabled:NO];
     [sendPaymentAccessoryButton setEnabled:NO];
     
@@ -565,9 +567,6 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)selectFromAddressClicked:(id)sender
 {
-    [toField resignFirstResponder];
-    [btcAmountField resignFirstResponder];
-    
 #ifndef ENABLE_MULTIPLE_ACCOUNTS
     // If we only have one account and no legacy addresses -> can't change from address
     if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]) {
@@ -583,9 +582,6 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)addressBookClicked:(id)sender
 {
-    [toField resignFirstResponder];
-    [btcAmountField resignFirstResponder];
-    
     BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO];
     addressSelectionView.delegate = self;
     
