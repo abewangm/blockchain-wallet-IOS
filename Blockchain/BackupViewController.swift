@@ -13,7 +13,7 @@ class BackupViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel?
     @IBOutlet weak var backupWalletButton: UIButton?
     @IBOutlet weak var explanation: UILabel?
-    @IBOutlet weak var backupIconImageView: UIImageView!
+    @IBOutlet weak var backupIconImageView: UIImageView?
     
     var wallet : Wallet?
 
@@ -31,6 +31,7 @@ class BackupViewController: UIViewController {
             summaryLabel!.text = NSLocalizedString("You backed up your wallet.", comment: "");
             explanation!.text = NSLocalizedString("You only need to backup your wallet once.", comment: "")
             backupIconImageView!.image = UIImage(named: "icon_backup_complete")
+            backupWalletButton?.titleLabel?.text = NSLocalizedString("VERIFY BACKUP", comment: "");
         }
     }
     
