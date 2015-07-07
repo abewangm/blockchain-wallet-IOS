@@ -29,10 +29,10 @@ class BackupViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if wallet!.isRecoveryPhraseVerified() {
-            summaryLabel!.text = NSLocalizedString("You backed up your wallet.", comment: "");
-            explanation!.text = NSLocalizedString("You only need to backup your wallet once.", comment: "")
+            summaryLabel!.text = NSLocalizedString("You already backed up your wallet.", comment: "");
+            explanation!.text = NSLocalizedString("You only need to backup your wallet once, but it is a good idea to occasionally verify that your backup is valid.", comment: "")
             backupIconImageView!.image = UIImage(named: "icon_backup_complete")
-            backupWalletButton?.titleLabel?.text = NSLocalizedString("VERIFY BACKUP", comment: "");
+            backupWalletButton?.titleLabel?.text = NSLocalizedString("Verify Backup", comment: "");
             backupWalletAgainButton?.hidden = false
         }
     }
