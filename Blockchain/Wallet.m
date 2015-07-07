@@ -953,7 +953,7 @@ Boolean isHdWalletInitialized;
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.getAccountsCount()"] intValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAccountsCount()"] intValue];
 }
 
 - (int)getDefaultAccountIndex
@@ -962,7 +962,7 @@ Boolean isHdWalletInitialized;
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"WalletStore.getDefaultAccountIndex()"] intValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getDefaultAccountIndex()"] intValue];
 }
 
 - (BOOL)hasLegacyAddresses
@@ -989,7 +989,7 @@ Boolean isHdWalletInitialized;
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.getBalanceForAccount(%d)", account] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getBalanceForAccount(%d)", account] longLongValue];
 }
 
 - (NSString *)getLabelForAccount:(int)account
@@ -998,13 +998,13 @@ Boolean isHdWalletInitialized;
         return nil;
     }
     
-    return [self.webView executeJSSynchronous:@"MyWallet.getLabelForAccount(%d)", account];
+    return [self.webView executeJSSynchronous:@"MyWalletPhone.getLabelForAccount(%d)", account];
 }
 
 - (void)setLabelForAccount:(int)account label:(NSString *)label
 {
     if ([self isInitialized]) {
-        [self.webView executeJSSynchronous:@"MyWallet.setLabelForAccount(%d, \"%@\")", account, label];
+        [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, label];
     }
 }
 
@@ -1027,7 +1027,7 @@ Boolean isHdWalletInitialized;
         return nil;
     }
     
-    return [self.webView executeJSSynchronous:@"MyWallet.getReceivingAddressForAccount(%d)", account];
+    return [self.webView executeJSSynchronous:@"MyWalletPhone.getReceivingAddressForAccount(%d)", account];
 }
 
 - (void)setPbkdf2Iterations:(int)iterations
@@ -1046,7 +1046,7 @@ Boolean isHdWalletInitialized;
 - (uint64_t)recommendedTransactionFeeForAccount:(int)account amount:(uint64_t)amount
 {
     NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
-    return [[self.webView executeJSSynchronous:@"MyWallet.recommendedTransactionFeeForAccount(%d, \"%@\")", account, [amountString escapeStringForJS]] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFeeForAccount(%d, \"%@\")", account, [amountString escapeStringForJS]] longLongValue];
 }
 
 #pragma mark - Callbacks from JS to Obj-C for HD wallet
