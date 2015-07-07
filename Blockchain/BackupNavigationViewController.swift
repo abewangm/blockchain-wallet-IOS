@@ -12,9 +12,20 @@ import UIKit
 
     var wallet : Wallet?
     
+    var isTransitioning : Bool = false {
+        didSet {
+            if isTransitioning == true {
+                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "finishTransitioning", userInfo: nil, repeats: false)
+            }
+        }
+    }
+    
+    func finishTransitioning() {
+       isTransitioning = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         var topBar = UIView(frame:CGRectMake(0, 0, self.view.frame.size.width, Constants.Measurements.DefaultHeaderHeight));
         topBar.backgroundColor = Constants.Colors.BlockchainBlue
         self.view.addSubview(topBar);
@@ -43,10 +54,13 @@ import UIKit
     
     func backButtonClicked() {
         if let currentViewController = self.visibleViewController {
-            if (currentViewController.isEqual(viewControllers.first)) {
-                NSNotificationCenter.defaultCenter().postNotificationName("CloseBackupScreen", object: nil)
-            } else {
-                popViewControllerAnimated(true);
+            if (!isTransitioning) {
+                if (currentViewController.isMemberOfClass(BackupViewController)) {
+                    NSNotificationCenter.defaultCenter().postNotificationName("CloseBackupScreen", object: nil)
+                } else {
+                    popViewControllerAnimated(true);
+                }
+                isTransitioning = true
             }
         }
     }
