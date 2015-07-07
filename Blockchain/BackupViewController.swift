@@ -19,11 +19,6 @@ class BackupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let closeButton = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: "close:")
-        closeButton.tintColor = UIColor.whiteColor()
-        
-        self.navigationItem.setRightBarButtonItem(closeButton, animated: false)
     
         backupWalletButton?.clipsToBounds = true
         backupWalletButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
@@ -33,8 +28,8 @@ class BackupViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if wallet!.isRecoveryPhraseVerified() {
-            summaryLabel!.text = "You backed up your wallet."
-            explanation!.text = "You only need to backup your wallet once."
+            summaryLabel!.text = NSLocalizedString("You backed up your wallet.", comment: "");
+            explanation!.text = NSLocalizedString("You only need to backup your wallet once.", comment: "")
             backupIconImageView!.image = UIImage(named: "icon_backup_complete")
         }
     }

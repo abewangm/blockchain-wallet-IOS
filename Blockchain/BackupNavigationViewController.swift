@@ -26,6 +26,7 @@ import UIKit
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         var topBar = UIView(frame:CGRectMake(0, 0, self.view.frame.size.width, Constants.Measurements.DefaultHeaderHeight));
         topBar.backgroundColor = Constants.Colors.BlockchainBlue
         self.view.addSubview(topBar);
