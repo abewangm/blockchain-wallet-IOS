@@ -16,9 +16,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var word2: UITextField?
     @IBOutlet weak var word3: UITextField?
     
-    @IBOutlet weak var wrongWord1: UILabel?
-    @IBOutlet weak var wrongWord2: UILabel?
-    @IBOutlet weak var wrongWord3: UILabel?
+    @IBOutlet weak var wrongWord: UILabel?
     
     @IBOutlet weak var verifyButton: UIButton!
     
@@ -42,15 +40,15 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
             valid = false
         } else { // Don't mark words as invalid until the user has entered all three
             if word1!.text != words[0] {
-                wrongWord1?.hidden = false
+                wrongWord?.hidden = false
                 valid = false
             }
             if word2!.text != words[2] {
-                wrongWord2?.hidden = false
+                wrongWord?.hidden = false
                 valid = false
             }
             if word3!.text != words[5] {
-                wrongWord3?.hidden = false
+                wrongWord?.hidden = false
                 valid = false
             }
         }
@@ -63,9 +61,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        wrongWord1?.hidden = true
-        wrongWord2?.hidden = true
-        wrongWord3?.hidden = true
+        wrongWord?.hidden = true
         return true
     }
     
