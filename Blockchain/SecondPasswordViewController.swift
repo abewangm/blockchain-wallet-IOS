@@ -57,6 +57,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
             alertUserWithErrorMessage((NSLocalizedString("No Password Entered", comment: "")))
         }
         else if wallet!.validateSecondPassword(secondPassword) {
+            password?.resignFirstResponder()
             delegate?.didGetSecondPassword(secondPassword)
             if (delegate!.isVerifying) {
                 // if we are verifying backup, unwind to verify words view controller

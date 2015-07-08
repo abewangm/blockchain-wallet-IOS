@@ -76,15 +76,15 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         } else { // Don't mark words as invalid until the user has entered all three
             if word1!.text != words[0] {
                 pleaseTryAgain()
-                valid = false
+                return
             }
             if word2!.text != words[2] {
                 pleaseTryAgain()
-                valid = false
+                return
             }
             if word3!.text != words[5] {
                 pleaseTryAgain()
-                valid = false
+                return
             }
         }
         
@@ -104,10 +104,11 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func pleaseTryAgain() {
-        verifyButton?.backgroundColor = Constants.Colors.SentRed
-        verifyButton?.enabled = false
-        verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
-        verifyButton?.setTitle(NSLocalizedString("Please try again", comment:""), forState: .Disabled)
+        var alertView = UIAlertView()
+        alertView.title = NSLocalizedString("Error", comment:"")
+        alertView.message = NSLocalizedString("Please try again", comment:"")
+        alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
+        alertView.show()
     }
     
     func textFieldDidChange() {
@@ -115,12 +116,10 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
             verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
             verifyButton?.enabled = true
             verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            verifyButton?.setTitle(NSLocalizedString("Verify Backup", comment:""), forState: .Normal)
         } else if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
             verifyButton?.enabled = false
             verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
-            verifyButton?.setTitle(NSLocalizedString("Verify Backup", comment:""), forState: .Disabled)
         }
     }
     
