@@ -8,9 +8,10 @@
 
 import UIKit
 
-class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
+class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondPasswordDelegate {
     
     var wallet : Wallet?
+    var isVerifying = false
     
     @IBOutlet weak var word1: UITextField?
     @IBOutlet weak var word2: UITextField?
@@ -22,12 +23,17 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+            
         word1?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
         word2?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
         word3?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         verifyButton.clipsToBounds = true
         verifyButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
+        
+        if wallet!.needsSecondPassword() && isVerifying {
+            self.performSegueWithIdentifier("verifyBackupWithSecondPassword", sender: self)
+        }
     }
     
     @IBAction func done(sender: UIButton) {
@@ -84,5 +90,19 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate {
         checkWords()
         return true
     }
-
+    
+    @IBAction func unwindFromSecondPasswordToVerify(segue: UIStoryboardSegue) {
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "verifyBackupWithSecondPassword" {
+            let vc = segue.destinationViewController as! SecondPasswordViewController
+            vc.delegate = self
+            vc.wallet = wallet
+        }
+    }
+    
+    func didGetSecondPassword(password: String) {
+            wallet!.getRecoveryPhrase(password)
+        }
 }

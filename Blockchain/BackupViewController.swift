@@ -57,9 +57,10 @@ class BackupViewController: UIViewController {
         else if segue.identifier == "verifyBackup" {
             let vc = segue.destinationViewController as! BackupVerifyViewController
             vc.wallet = wallet
+            vc.isVerifying = true
         }
     }
-    
+        
     @IBAction func unwindSecondPasswordCancel(segue: UIStoryboardSegue) {
     }
     

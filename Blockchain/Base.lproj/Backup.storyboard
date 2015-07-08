@@ -265,6 +265,7 @@
                         <outlet property="password" destination="CBl-1W-VP8" id="VTt-HH-4gG"/>
                         <segue destination="S9C-qi-BxE" kind="unwind" identifier="unwindSecondPasswordCancel" unwindAction="unwindSecondPasswordCancel:" id="Tjm-dE-brW"/>
                         <segue destination="S9C-qi-BxE" kind="unwind" identifier="unwindSecondPasswordSuccess" unwindAction="unwindSecondPasswordSuccess:" id="Jgp-u0-HkE"/>
+                        <segue destination="gVk-8u-UGP" kind="unwind" identifier="unwindSecondPasswordToVerify" unwindAction="unwindFromSecondPasswordToVerify:" id="J8L-pK-s6z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9a-NX-V4E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -359,6 +360,7 @@
                         <outlet property="word3" destination="Fda-Z4-3e7" id="Bv0-3F-bgR"/>
                         <outlet property="wrongWord" destination="T3S-Dk-HAh" id="DLw-Sp-3nw"/>
                         <segue destination="gVk-8u-UGP" kind="unwind" identifier="unwindVerifyWords" unwindAction="unwindVerifyWords:" id="Bo1-i8-IDS"/>
+                        <segue destination="o3I-9v-bZo" kind="modal" identifier="verifyBackupWithSecondPassword" id="5tF-1v-zva"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qH1-lt-aBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,6 +378,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="S74-9K-FTc"/>
+        <segue reference="5tF-1v-zva"/>
+        <segue reference="U0S-3m-R5I"/>
     </inferredMetricsTieBreakers>
 </document>

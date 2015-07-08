@@ -12,6 +12,7 @@ let BC_ALERTVIEW_SECOND_PASSWORD_ERROR_TAG = 2
 
 protocol SecondPasswordDelegate {
     func didGetSecondPassword(String)
+    var isVerifying : Bool {get set}
 }
 
 class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
@@ -49,7 +50,12 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
         }
         else if wallet!.validateSecondPassword(secondPassword) {
             delegate?.didGetSecondPassword(secondPassword)
-            self.performSegueWithIdentifier("unwindSecondPasswordSuccess", sender: self)
+            if (delegate!.isVerifying) {
+                // if we are verifying backup, unwind to verify words view controller
+                self.performSegueWithIdentifier("unwindSecondPasswordToVerify", sender: self)
+            } else {
+                self.performSegueWithIdentifier("unwindSecondPasswordSuccess", sender: self)
+            }
         } else {
             alertUserWithErrorMessage((NSLocalizedString("Second Password Incorrect", comment: "")))
         }

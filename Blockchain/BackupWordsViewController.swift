@@ -20,6 +20,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
 
     var wallet : Wallet?
     var wordLabels: [UILabel]?
+    var isVerifying = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
 
         if wallet!.needsSecondPassword(){
             self.performSegueWithIdentifier("secondPasswordForBackup", sender: self)
