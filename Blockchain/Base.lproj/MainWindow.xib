@@ -394,15 +394,15 @@ http://blockchain.info/wallet</string>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="255" userLabel="Header View">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="ccf-kU-dko">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6sh-r5-yAx" userLabel="Balance Small Button">
-                                            <rect key="frame" x="20" y="53" width="280" height="27"/>
+                                            <rect key="frame" x="20" y="42" width="280" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal" title="1.12345 BTC">
@@ -411,7 +411,7 @@ http://blockchain.info/wallet</string>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bzM-Ub-MUU" userLabel="Balance Big Button">
-                                            <rect key="frame" x="20" y="14" width="280" height="42"/>
+                                            <rect key="frame" x="20" y="4" width="280" height="42"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                             <state key="normal" title="345.68 USD">
@@ -459,11 +459,11 @@ http://blockchain.info/wallet</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="left" image="blockchain_logo" id="226">
-                                <rect key="frame" x="35" y="39" width="149" height="15"/>
+                                <rect key="frame" x="35" y="34" width="149" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wjv-R8-p0e" userLabel="Merchant Directory Button">
-                                <rect key="frame" x="280" y="29" width="40" height="35"/>
+                                <rect key="frame" x="280" y="24" width="40" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="qrscanner">
@@ -478,7 +478,7 @@ http://blockchain.info/wallet</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="left" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="581" userLabel="Menu Button">
-                                <rect key="frame" x="0.0" y="29" width="35" height="35"/>
+                                <rect key="frame" x="0.0" y="24" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="sidebar">
