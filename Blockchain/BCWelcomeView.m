@@ -59,9 +59,9 @@ Boolean shouldShowAnimation;
         self.existingWalletButton.alpha = 0.0;
         
         // Version
-        UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.frame.size.height - 40, self.frame.size.width - 30, 20)];
+        UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.frame.size.height - 30, self.frame.size.width - 30, 20)];
         versionLabel.font = [UIFont systemFontOfSize:12];
-        versionLabel.textAlignment = NSTextAlignmentCenter;
+        versionLabel.textAlignment = NSTextAlignmentRight;
         versionLabel.textColor = [UIColor whiteColor];
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *version = infoDictionary[@"CFBundleShortVersionString"];
