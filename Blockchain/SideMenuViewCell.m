@@ -16,6 +16,7 @@
     self.imageView.contentMode = UIViewContentModeCenter;
     
     self.textLabel.frame = CGRectMake(55, 15, 200, 26);
+    self.detailTextLabel.frame = CGRectOffset(self.textLabel.frame, 0, 16);
     
     self.backgroundColor = [UIColor clearColor];
     self.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
