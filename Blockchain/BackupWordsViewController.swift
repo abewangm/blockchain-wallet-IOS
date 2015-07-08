@@ -104,6 +104,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         } else if segue.identifier == "backupVerify" {
             let vc = segue.destinationViewController as! BackupVerifyViewController
             vc.wallet = wallet
+            vc.isVerifying = false
         }
     }
     

@@ -31,7 +31,20 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         verifyButton.clipsToBounds = true
         verifyButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
-        if wallet!.needsSecondPassword() && isVerifying {
+        
+        if (!wallet!.needsSecondPassword() && isVerifying) {
+            
+            // if you don't need a second password but you are verifying, get recovery phrase
+            
+            wallet!.getRecoveryPhrase(nil)
+        } else if wallet!.needsSecondPassword() && !isVerifying {
+            
+            // do not segue since words vc already asks for second password and gets recovery phrase
+            
+        } else if wallet!.needsSecondPassword() {
+            
+            // if you need a second password, the second password delegate takes care of getting the recovery phrase
+            
             self.performSegueWithIdentifier("verifyBackupWithSecondPassword", sender: self)
         }
     }
