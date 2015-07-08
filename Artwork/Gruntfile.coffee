@@ -33,8 +33,8 @@ module.exports = (grunt) ->
     "shell:psd:icon_upgrade:26"
     "shell:psd:icon_share:25"
     "shell:psd:cancel:11"
+    "shell:psd:thumbs:26"
     "shell:svg:backup_green_circle:40"
     "shell:svg:backup_blue_circle:40"
     "shell:svg:backup_exclamation_mark:40"
-    "shell:psd:thumbs:26"
   ]
