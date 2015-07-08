@@ -58,7 +58,7 @@ import UIKit
         if let currentViewController = self.visibleViewController {
             if (!isTransitioning) {
                 if (currentViewController.isMemberOfClass(BackupViewController)) {
-                    NSNotificationCenter.defaultCenter().postNotificationName("CloseBackupScreen", object: nil)
+                    dismissViewControllerAnimated(true, completion: nil)
                 } else {
                     popViewControllerAnimated(true);
                 }
