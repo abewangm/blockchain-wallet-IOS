@@ -34,4 +34,5 @@ module.exports = (grunt) ->
     "shell:svg:backup_green_circle:40"
     "shell:svg:backup_blue_circle:40"
     "shell:svg:backup_exclamation_mark:40"
+    "shell:psd:thumbs:26"
   ]
