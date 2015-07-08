@@ -20,7 +20,6 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     @IBOutlet weak var navigationBar: UINavigationBar?
     @IBOutlet weak var password: UITextField?
     
-    var tapGesture : UITapGestureRecognizer?
     var wallet : Wallet?
     
     var delegate : SecondPasswordDelegate?
@@ -30,17 +29,25 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
 
         navigationBar!.backgroundColor = UIColor.blueColor()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(animated: Bool) {
+        var continueButton = UIButton(frame: CGRectMake(0, 0, view.frame.size.width, 46))
+        continueButton.backgroundColor = Constants.Colors.BlockchainBlue;
+        continueButton.setTitle(NSLocalizedString("Continue", comment:""), forState: .Normal)
+        continueButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        continueButton.titleLabel!.font = UIFont.systemFontOfSize(17)
+        continueButton.enabled = true
+        continueButton.addTarget(self, action: "done", forControlEvents: .TouchUpInside)
+        password?.inputAccessoryView = continueButton
+        password?.becomeFirstResponder()
     }
 
-    @IBAction func done(sender: UIButton) {
+    func done() {
         checkSecondPassword()
     }
     
     @IBAction func close(sender: UIBarButtonItem) {
+        password?.resignFirstResponder()
         self.performSegueWithIdentifier("unwindSecondPasswordCancel", sender: self)
     }
     
@@ -81,19 +88,6 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         checkSecondPassword()
         return true
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if tapGesture == nil {
-            tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-            view.addGestureRecognizer(tapGesture!)
-        }
-    }
-    
-    func dismissKeyboard() {
-        password?.resignFirstResponder()
-        view.removeGestureRecognizer(tapGesture!)
-        tapGesture = nil
     }
     
 }
