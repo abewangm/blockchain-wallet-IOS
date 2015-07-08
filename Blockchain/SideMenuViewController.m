@@ -12,6 +12,7 @@
 #import "BCCreateAccountView.h"
 #import "BCEditAccountView.h"
 #import "AccountTableCell.h"
+#import "SideMenuViewCell.h"
 #import "BCLine.h"
 
 #define SECTION_HEADER_HEIGHT 44
@@ -307,14 +308,10 @@ int accountEntries = 0;
 #endif
         cellIdentifier = @"CellMenu";
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        SideMenuViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-            cell.backgroundColor = [UIColor clearColor];
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
-            cell.textLabel.textColor = [UIColor lightGrayColor];
-            cell.textLabel.highlightedTextColor = [UIColor whiteColor];
+            cell = [[SideMenuViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
             
             UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
             [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];

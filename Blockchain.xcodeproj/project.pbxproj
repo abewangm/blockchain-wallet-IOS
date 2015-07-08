@@ -26,6 +26,7 @@
 		673107F219F6D49F00BE6899 /* PrivateKeyReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 673107F119F6D49F00BE6899 /* PrivateKeyReader.m */; };
 		674709EC19D1D14300757D46 /* BCWelcomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 674709EB19D1D14300757D46 /* BCWelcomeView.m */; };
 		67470A0819D43AFE00757D46 /* BCManualPairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67470A0719D43AFE00757D46 /* BCManualPairView.m */; };
+		6750389B1B4D832F00F7B488 /* SideMenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6750389A1B4D832F00F7B488 /* SideMenuViewCell.m */; };
 		6762507D1A2CC5800052B63F /* BCEditAccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6762507C1A2CC5800052B63F /* BCEditAccountView.m */; };
 		676250821A2DDF360052B63F /* AccountTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 676250811A2DDF360052B63F /* AccountTableCell.m */; };
 		6775569919E752A00054699B /* BCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6775569819E752A00054699B /* BCWebViewController.m */; };
@@ -335,6 +336,8 @@
 		67470A0519D438E000757D46 /* LocalizationConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalizationConstants.h; sourceTree = "<group>"; };
 		67470A0619D43AFE00757D46 /* BCManualPairView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCManualPairView.h; sourceTree = "<group>"; };
 		67470A0719D43AFE00757D46 /* BCManualPairView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCManualPairView.m; sourceTree = "<group>"; };
+		675038991B4D832F00F7B488 /* SideMenuViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewCell.h; sourceTree = "<group>"; };
+		6750389A1B4D832F00F7B488 /* SideMenuViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewCell.m; sourceTree = "<group>"; };
 		6762507B1A2CC5800052B63F /* BCEditAccountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCEditAccountView.h; sourceTree = "<group>"; };
 		6762507C1A2CC5800052B63F /* BCEditAccountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCEditAccountView.m; sourceTree = "<group>"; };
 		676250801A2DDF360052B63F /* AccountTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTableCell.h; sourceTree = "<group>"; };
@@ -969,6 +972,8 @@
 				6710DA0C1A8E82D80089DDED /* BCLine.h */,
 				6710DA0D1A8E82D80089DDED /* BCLine.m */,
 				67D95A251B3DD86B0012EBB1 /* BCTextField.swift */,
+				675038991B4D832F00F7B488 /* SideMenuViewCell.h */,
+				6750389A1B4D832F00F7B488 /* SideMenuViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1175,6 +1180,7 @@
 				6780DB981A40BDF40048EED2 /* AccountInOut.m in Sources */,
 				9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */,
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,
+				6750389B1B4D832F00F7B488 /* SideMenuViewCell.m in Sources */,
 				9F1831EE151744EB00FB3D52 /* ReceiveTableCell.m in Sources */,
 				67EE1DCB19E3325900DBBFC9 /* ECSlidingAnimationController.m in Sources */,
 				67470A0819D43AFE00757D46 /* BCManualPairView.m in Sources */,
