@@ -17,22 +17,19 @@ class BackupViewController: UIViewController {
     @IBOutlet weak var backupWalletAgainButton: UIButton?
     
     var wallet : Wallet?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        backupWalletButton?.clipsToBounds = true
-        backupWalletButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
-    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        backupWalletButton?.setTitle(NSLocalizedString("Backup Wallet", comment: ""), forState: .Normal)
+        backupWalletButton?.clipsToBounds = true
+        backupWalletButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
         if wallet!.isRecoveryPhraseVerified() {
             summaryLabel!.text = NSLocalizedString("You already backed up your wallet.", comment: "");
             explanation!.text = NSLocalizedString("You only need to backup your wallet once, but it is a good idea to occasionally verify that your backup is valid.", comment: "")
             backupIconImageView!.image = UIImage(named: "thumbs")
-            backupWalletButton!.titleLabel!.text = NSLocalizedString("Verify Backup", comment: "");
+            backupWalletButton?.setTitle(NSLocalizedString("Verify Backup", comment: ""), forState: .Normal)
             backupWalletAgainButton?.hidden = false
         }
     }

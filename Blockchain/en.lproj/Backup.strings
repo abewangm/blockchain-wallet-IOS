@@ -41,9 +41,6 @@
 /* Class = "UILabel"; text = "Don't take a screenshot!\nYou can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Don't take a screenshot!\nYou can jeopardize your wallet's security";
 
-/* Class = "UIButton"; normalTitle = "BACKUP WALLET"; ObjectID = "fT1-je-Orp"; */
-"fT1-je-Orp.normalTitle" = "BACKUP WALLET";
-
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "3kJ-3U-lFe"; */
 "3kJ-3U-lFe.text" = "Please try again";"
 
