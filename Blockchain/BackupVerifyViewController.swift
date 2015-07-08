@@ -12,15 +12,13 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     var wallet : Wallet?
     var isVerifying = false
-    var tapGesture : UITapGestureRecognizer?
+    var verifyButton : UIButton?
     
     @IBOutlet weak var word1: UITextField?
     @IBOutlet weak var word2: UITextField?
     @IBOutlet weak var word3: UITextField?
     
     @IBOutlet weak var wrongWord: UILabel?
-    
-    @IBOutlet weak var verifyButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +27,6 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         word2?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
         word3?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        verifyButton.clipsToBounds = true
-        verifyButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
         
         if (!wallet!.needsSecondPassword() && isVerifying) {
@@ -50,7 +46,23 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         }
     }
     
-    @IBAction func done(sender: UIButton) {
+    override func viewDidAppear(animated: Bool) {
+        verifyButton = UIButton(frame: CGRectMake(0, 0, view.frame.size.width, 46))
+        verifyButton?.setTitle(NSLocalizedString("Verify Backup", comment:""), forState: .Normal)
+        verifyButton?.setTitle(NSLocalizedString("Verify Backup", comment:""), forState: .Disabled)
+        verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
+        verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+        verifyButton?.titleLabel!.font = UIFont.systemFontOfSize(17)
+        verifyButton?.enabled = true
+        verifyButton?.addTarget(self, action: "done", forControlEvents: .TouchUpInside)
+        verifyButton?.enabled = false
+        word1?.inputAccessoryView = verifyButton
+        word2?.inputAccessoryView = verifyButton
+        word3?.inputAccessoryView = verifyButton
+        word1?.becomeFirstResponder()
+    }
+    
+    func done() {
         checkWords()
     }
     
@@ -77,6 +89,9 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         }
         
         if valid {
+            word1?.resignFirstResponder()
+            word2?.resignFirstResponder()
+            word3?.resignFirstResponder()
             wallet!.markRecoveryPhraseVerified()
             NSNotificationCenter.defaultCenter().postNotificationName("AppDelegateReload", object: nil)
             self.performSegueWithIdentifier("unwindVerifyWords", sender: self)
@@ -90,13 +105,13 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     func textFieldDidChange() {
         if !word1!.text.isEmpty && !word2!.text.isEmpty && !word3!.text.isEmpty {
-            verifyButton.backgroundColor = Constants.Colors.BlockchainBlue
-            verifyButton.enabled = true
-            verifyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
+            verifyButton?.enabled = true
+            verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         } else if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
-            verifyButton.backgroundColor = Constants.Colors.SecondaryGray
-            verifyButton.enabled = false
-            verifyButton.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+            verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
+            verifyButton?.enabled = false
+            verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
         }
     }
     
@@ -119,19 +134,4 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     func didGetSecondPassword(password: String) {
             wallet!.getRecoveryPhrase(password)
         }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if tapGesture == nil {
-            tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-            view.addGestureRecognizer(tapGesture!)
-        }
-    }
-    
-    func dismissKeyboard() {
-        word1?.resignFirstResponder()
-        word2?.resignFirstResponder()
-        word3?.resignFirstResponder()
-        view.removeGestureRecognizer(tapGesture!)
-        tapGesture = nil
-    }
 }

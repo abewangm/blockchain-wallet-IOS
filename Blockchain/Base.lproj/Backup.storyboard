@@ -300,19 +300,6 @@
                                                     <outlet property="delegate" destination="CSo-hh-wVx" id="eYj-Rt-26E"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T4p-mz-siC">
-                                                <rect key="frame" x="40" y="264" width="240" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Verify Backup">
-                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="done:" destination="CSo-hh-wVx" eventType="touchUpInside" id="h7O-yc-qDN"/>
-                                                </connections>
-                                            </button>
                                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="third word" minimumFontSize="17" id="kcC-2S-PfL" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="89" width="290" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -341,7 +328,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="9A7-TT-PzN"/>
                     <connections>
-                        <outlet property="verifyButton" destination="T4p-mz-siC" id="X12-j4-WDH"/>
                         <outlet property="word1" destination="9hR-tm-aq5" id="YVJ-E7-KJC"/>
                         <outlet property="word2" destination="kcC-2S-PfL" id="hCD-OZ-8tt"/>
                         <outlet property="word3" destination="Fda-Z4-3e7" id="Bv0-3F-bgR"/>
