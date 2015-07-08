@@ -59,15 +59,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
             wordLabels?.append(label)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
     
     func updateCurrentPageLabel(page: Int) {
         wordsProgressLabel!.text = NSLocalizedString(NSString(format: "Word %@ of %@", String(page + 1), String(12)) as String, comment: "")

@@ -943,13 +943,13 @@ SideMenuViewController *sideMenuViewController;
 - (void)showBackup
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Backup" bundle: nil];
-    self.backupNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
+    BackupNavigationViewController *backupNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
     
     // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
-    self.backupNavigationController.wallet = self.wallet;
+    backupNavigationController.wallet = self.wallet;
     
-    self.backupNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [_tabViewController presentViewController:self.backupNavigationController animated:NO completion:nil];
+    backupNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [_tabViewController presentViewController:backupNavigationController animated:NO completion:nil];
 }
 
 - (void)showSupport
