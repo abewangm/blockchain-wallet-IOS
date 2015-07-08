@@ -178,8 +178,6 @@
 - (IBAction)changePINClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 
-- (void)closeBackup;
-
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;
 - (BOOL)isPINSet;

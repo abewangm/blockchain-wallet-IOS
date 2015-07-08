@@ -169,11 +169,8 @@ SideMenuViewController *sideMenuViewController;
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sharedKey"];
     }
     
-    // Listen for notification to close backup screen (explained in BackupViewController.swift):
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeBackup) name:@"CloseBackupScreen" object:nil];
     // Listen for notification (from Swift code) to reload:
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:@"AppDelegateReload" object:nil];
-
     
     return TRUE;
 }
@@ -973,15 +970,6 @@ SideMenuViewController *sideMenuViewController;
     
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.tabViewController presentViewController:controller animated:YES completion:nil];
-}
-
-- (void)closeBackup
-{
-    __weak AppDelegate *weakSelf = self;
-    [self.backupNavigationController dismissViewControllerAnimated:true completion:^{
-        weakSelf.backupNavigationController = nil;
-    }];
-
 }
 
 - (void)showSendCoins
