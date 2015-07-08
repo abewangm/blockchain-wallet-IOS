@@ -15,6 +15,7 @@ struct Constants {
         static let BlockchainLightBlue = UIColorFromRGB(0x62b5db)
         static let BlockchainLightestBlue = UIColorFromRGB(0xa0d7ec)
         static let SecondaryGray = UIColorFromRGB(0xebebeb)
+        static let SentRed = UIColorFromRGB(0xff8889)
     }
     struct Measurements {
         static let DefaultHeaderHeight : CGFloat = 65

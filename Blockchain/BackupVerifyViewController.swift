@@ -75,15 +75,15 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
             valid = false
         } else { // Don't mark words as invalid until the user has entered all three
             if word1!.text != words[0] {
-                wrongWord?.hidden = false
+                pleaseTryAgain()
                 valid = false
             }
             if word2!.text != words[2] {
-                wrongWord?.hidden = false
+                pleaseTryAgain()
                 valid = false
             }
             if word3!.text != words[5] {
-                wrongWord?.hidden = false
+                pleaseTryAgain()
                 valid = false
             }
         }
@@ -103,20 +103,37 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         return true
     }
     
+    func pleaseTryAgain() {
+        verifyButton?.backgroundColor = Constants.Colors.SentRed
+        verifyButton?.enabled = false
+        verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
+        verifyButton?.setTitle(NSLocalizedString("Please try again", comment:""), forState: .Disabled)
+    }
+    
     func textFieldDidChange() {
         if !word1!.text.isEmpty && !word2!.text.isEmpty && !word3!.text.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
             verifyButton?.enabled = true
             verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            verifyButton?.setTitle(NSLocalizedString("Verify Backup", comment:""), forState: .Normal)
         } else if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
             verifyButton?.enabled = false
             verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+            verifyButton?.setTitle(NSLocalizedString("Verify Backup", comment:""), forState: .Disabled)
         }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        checkWords()
+        if (word1!.isFirstResponder()) {
+            textField.resignFirstResponder()
+            word2?.becomeFirstResponder()
+        } else if (word2!.isFirstResponder()) {
+            textField.resignFirstResponder()
+            word3?.becomeFirstResponder()
+        } else if (word3!.isFirstResponder()) {
+            checkWords()
+        }
         return true
     }
     
