@@ -77,7 +77,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                             <state key="normal" title="Send all funds">
-                                <color key="titleColor" red="0.54117647058823526" green="0.71764705882352942" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
