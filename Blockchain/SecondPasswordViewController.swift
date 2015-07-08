@@ -20,6 +20,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     @IBOutlet weak var navigationBar: UINavigationBar?
     @IBOutlet weak var password: UITextField?
     
+    var tapGesture : UITapGestureRecognizer?
     var wallet : Wallet?
     
     var delegate : SecondPasswordDelegate?
@@ -80,6 +81,19 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         checkSecondPassword()
         return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if tapGesture == nil {
+            tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+            view.addGestureRecognizer(tapGesture!)
+        }
+    }
+    
+    func dismissKeyboard() {
+        password?.resignFirstResponder()
+        view.removeGestureRecognizer(tapGesture!)
+        tapGesture = nil
     }
     
 }

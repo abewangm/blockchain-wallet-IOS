@@ -12,6 +12,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     var wallet : Wallet?
     var isVerifying = false
+    var tapGesture : UITapGestureRecognizer?
     
     @IBOutlet weak var word1: UITextField?
     @IBOutlet weak var word2: UITextField?
@@ -118,4 +119,19 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     func didGetSecondPassword(password: String) {
             wallet!.getRecoveryPhrase(password)
         }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if tapGesture == nil {
+            tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+            view.addGestureRecognizer(tapGesture!)
+        }
+    }
+    
+    func dismissKeyboard() {
+        word1?.resignFirstResponder()
+        word2?.resignFirstResponder()
+        word3?.resignFirstResponder()
+        view.removeGestureRecognizer(tapGesture!)
+        tapGesture = nil
+    }
 }
