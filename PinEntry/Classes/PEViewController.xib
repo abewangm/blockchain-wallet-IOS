@@ -55,7 +55,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blockchain_b" id="OPk-OR-rQR">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blockchain_b" id="OPk-OR-rQR">
                     <rect key="frame" x="138" y="51" width="45" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -92,8 +92,8 @@
     </objects>
     <resources>
         <image name="PEPin-off.png" width="49" height="49"/>
-        <image name="blockchain_b" width="51" height="65"/>
-        <image name="blockchain_logo_small" width="119" height="13"/>
+        <image name="blockchain_b" width="37" height="45"/>
+        <image name="blockchain_logo_small" width="102" height="11"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
