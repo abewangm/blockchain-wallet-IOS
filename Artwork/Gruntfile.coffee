@@ -20,6 +20,7 @@ module.exports = (grunt) ->
     
   grunt.registerTask "default", [
     "shell:psd:blockchain_logo:15"
+    "shell:psd:blockchain_logo_small:11"
     "shell:psd:transaction_pending:11"
     "shell:psd:sidebar:18"
     "shell:psd:qrscanner:18"

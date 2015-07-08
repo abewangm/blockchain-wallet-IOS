@@ -24,6 +24,7 @@ Artwork/node_modules
 External/*
 
 Images.xcassets/blockchain_logo.imageset/*.png
+Images.xcassets/blockchain_logo_small.imageset/*.png
 Images.xcassets/map.imageset/*.png
 Images.xcassets/qrscanner.imageset/*.png
 Images.xcassets/blockchain_logo.imageset/*.png
