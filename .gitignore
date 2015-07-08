@@ -23,6 +23,8 @@ Blockchain/APIDefines.h
 Artwork/node_modules
 External/*
 
+Images.xcassets/blockchain_b.imageset/*.png
+Images.xcassets/welcome_logo.imageset/*.png
 Images.xcassets/blockchain_logo.imageset/*.png
 Images.xcassets/blockchain_logo_small.imageset/*.png
 Images.xcassets/map.imageset/*.png
