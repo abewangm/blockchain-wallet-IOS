@@ -32,13 +32,13 @@ class BackupViewController: UIViewController {
             summaryLabel!.text = NSLocalizedString("You already backed up your wallet.", comment: "");
             explanation!.text = NSLocalizedString("You only need to backup your wallet once, but it is a good idea to occasionally verify that your backup is valid.", comment: "")
             backupIconImageView!.image = UIImage(named: "icon_backup_complete")
-            backupWalletButton?.titleLabel?.text = NSLocalizedString("Verify Backup", comment: "");
+            backupWalletButton!.titleLabel!.text = NSLocalizedString("Verify Backup", comment: "");
             backupWalletAgainButton?.hidden = false
         }
     }
     
     @IBAction func backupWalletButtonTapped(sender: UIButton) {
-        if wallet!.isRecoveryPhraseVerified() {
+        if (backupWalletButton!.titleLabel!.text == NSLocalizedString("Verify Backup", comment: "")) {
             performSegueWithIdentifier("verifyBackup", sender: nil)
         } else {
             performSegueWithIdentifier("backupWords", sender: nil)
