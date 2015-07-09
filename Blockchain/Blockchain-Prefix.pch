@@ -28,7 +28,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BLOCKCHAIN_LIGHTEST_BLUE UIColorFromRGB(0xa0d7ec)
 
 #define COLOR_TRANSACTION_RECEIVED UIColorFromRGB(0x85b45b)
-#define COLOR_TRANSACTION_SPENT UIColorFromRGB(0xe27e82)
+#define COLOR_TRANSACTION_SENT UIColorFromRGB(0xe27e82)
 #define COLOR_TRANSACTION_TRANSFERRED UIColorFromRGB(0x5bacd0)
 
 #define COLOR_BUTTON_LIGHT_BLUE UIColorFromRGB(0x5cb2d6)

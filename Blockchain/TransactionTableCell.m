@@ -66,16 +66,16 @@
     
     if(transaction.intraWallet) {
         [btcButton setBackgroundColor:COLOR_TRANSACTION_TRANSFERRED];
-        actionLabel.text = NSLocalizedString(@"TRANSFERRED", nil);
+        actionLabel.text = [BC_STRING_TRANSFERRED uppercaseString];
         actionLabel.textColor = COLOR_TRANSACTION_TRANSFERRED;
     } else if (transaction.result >= 0) {
         [btcButton setBackgroundColor:COLOR_TRANSACTION_RECEIVED];
-        actionLabel.text = NSLocalizedString(@"RECEIVED", nil);
+        actionLabel.text = [BC_STRING_RECEIVED uppercaseString];
         actionLabel.textColor = COLOR_TRANSACTION_RECEIVED;
     } else {
-        [btcButton setBackgroundColor:COLOR_TRANSACTION_SPENT];
-        actionLabel.text = NSLocalizedString(@"SPENT", nil);
-        actionLabel.textColor = COLOR_TRANSACTION_SPENT;
+        [btcButton setBackgroundColor:COLOR_TRANSACTION_SENT];
+        actionLabel.text = [BC_STRING_SENT uppercaseString];
+        actionLabel.textColor = COLOR_TRANSACTION_SENT;
     }
     
     if (transaction.confirmations >= kConfirmationThreshold) {

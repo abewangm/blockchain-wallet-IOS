@@ -60,6 +60,10 @@
 #define BC_STRING_UNCONFIRMED NSLocalizedString(@"Unconfirmed", nil)
 #define BC_STRING_COUNT_CONFIRMATIONS NSLocalizedString(@"%d Confirmations", nil)
 
+#define BC_STRING_TRANSFERRED NSLocalizedString(@"Transferred", nil)
+#define BC_STRING_RECEIVED NSLocalizedString(@"Received", nil)
+#define BC_STRING_SENT NSLocalizedString(@"Sent", nil)
+
 #define BC_STRING_ERROR NSLocalizedString(@"Error", nil)
 
 #define BC_STRING_INFORMATION NSLocalizedString(@"Information", nil)
