@@ -442,6 +442,8 @@ BOOL displayingLocalSymbolSend;
     else if (textField == fiatAmountField) {
         displayingLocalSymbolSend = YES;
     }
+    
+    [self doCurrencyConversion];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
