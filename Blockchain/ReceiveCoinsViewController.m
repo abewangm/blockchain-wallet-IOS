@@ -699,6 +699,10 @@ UIActionSheet *popupAddressArchive;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if ([app.wallet getAccountsCount] <= 1 && section == 0) {
+        return 12.0f;
+    }
+    
     return 45.0f;
 }
 
@@ -706,6 +710,10 @@ UIActionSheet *popupAddressArchive;
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
     view.backgroundColor = [UIColor whiteColor];
+    
+    if ([app.wallet getAccountsCount] <= 1 && section == 0) {
+        return view;
+    }
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
     label.textColor = COLOR_FOREGROUND_GRAY;
