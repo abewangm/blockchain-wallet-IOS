@@ -63,10 +63,15 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        wordsScrollView?.clipsToBounds = false
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         // This is needed to prevent seeing some of the words on the previous view
-        wordsScrollView?.removeFromSuperview()
+        wordsScrollView?.clipsToBounds = true
     }
     
     func updateCurrentPageLabel(page: Int) {
