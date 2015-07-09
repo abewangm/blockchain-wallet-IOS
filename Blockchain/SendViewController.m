@@ -92,7 +92,7 @@ BOOL displayingLocalSymbolSend;
         [selectFromButton setHidden:NO];
     }
     
-    // If we only have one account and no legacy addresses and no address book entrie-> can't change to address
+    // If we only have one account and no legacy addresses and no address book entries -> can't change to address
     if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]
         && [app.wallet addressBook].count == 0 && [app.wallet getAccountsCount] == 1) {
         [addressBookButton setHidden:YES];
@@ -587,13 +587,6 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)selectFromAddressClicked:(id)sender
 {
-#ifndef ENABLE_MULTIPLE_ACCOUNTS
-    // If we only have one account and no legacy addresses -> can't change from address
-    if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]) {
-        return;
-    }
-#endif
-    
     BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES];
     addressSelectionView.delegate = self;
     

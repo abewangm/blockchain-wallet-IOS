@@ -112,9 +112,9 @@ int accountEntries = 0;
     
     // Resize table view
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT);
-#ifndef ENABLE_MULTIPLE_ACCOUNTS
-    self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries);
-#endif
+    if (![self showBalances]) {
+        self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries);
+    }
     
     // If the tableView is bigger than the screen, enable scrolling and resize table view to screen size
     if (self.tableView.frame.size.height > self.view.frame.size.height ) {
@@ -130,6 +130,12 @@ int accountEntries = 0;
     }
     
     [self.tableView reloadData];
+}
+
+- (Boolean)showBalances
+{
+    // Return true if the user has upgraded and either legacy adresses or multiple accounts
+    return [app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getAccountsCount] > 1);
 }
 
 #pragma mark - SlidingViewController Delegate
@@ -172,11 +178,11 @@ int accountEntries = 0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#ifdef ENABLE_MULTIPLE_ACCOUNTS
-    if (indexPath.section != 2) {
-        return;
+    if ([self showBalances]) {
+        if (indexPath.section != 2) {
+            return;
+        }
     }
-#endif
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -213,9 +219,9 @@ int accountEntries = 0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#ifndef ENABLE_MULTIPLE_ACCOUNTS
-    return MENU_ENTRY_HEIGHT;
-#endif
+    if (![self showBalances]) {
+        return MENU_ENTRY_HEIGHT;
+    }
     if (indexPath.section != 2) {
         return BALANCE_ENTRY_HEIGHT;
     }
@@ -228,15 +234,17 @@ int accountEntries = 0;
     if (!app.wallet.guid) {
         return 0;
     }
-#ifndef ENABLE_MULTIPLE_ACCOUNTS
-    return 1;
-#endif
+    
+    if (![self showBalances]) {
+        return 1;
+    }
+    
     return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 1 && accountEntries > 0) {
+    if (section == 1 && accountEntries > 1) {
         return SECTION_HEADER_HEIGHT;
     }
     
@@ -246,7 +254,7 @@ int accountEntries = 0;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     // My Accounts
-    if (section == 1 && accountEntries > 0) {
+    if (section == 1 && accountEntries > 1) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, SECTION_HEADER_HEIGHT)];
         view.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
         
@@ -283,9 +291,9 @@ int accountEntries = 0;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-#ifndef ENABLE_MULTIPLE_ACCOUNTS
-    return menuEntries;
-#endif
+    if (![self showBalances]) {
+        return menuEntries;
+    }
     if (sectionIndex == 0) {
         return 1;
     }
@@ -300,12 +308,9 @@ int accountEntries = 0;
 {
     static NSString *cellIdentifier;
     
-#ifndef ENABLE_MULTIPLE_ACCOUNTS
-    if (indexPath.section == 0) {
-#endif
-#ifdef ENABLE_MULTIPLE_ACCOUNTS
-    if (indexPath.section == 2) {
-#endif
+    if ((![self showBalances] && indexPath.section == 0) ||
+        ([self showBalances] && indexPath.section == 2)) {
+
         cellIdentifier = @"CellMenu";
         
         SideMenuViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
