@@ -903,8 +903,10 @@ SideMenuViewController *sideMenuViewController;
     self.latestResponse = nil;
     
     _transactionsViewController.data = nil;
-    
-    [self reload];
+
+    [_transactionsViewController reload];
+    _sendViewController = nil;
+    _receiveViewController = nil;
 }
 
 - (void)forgetWallet
