@@ -679,7 +679,14 @@ BOOL displayingLocalSymbolSend;
                 self.sendToAddress = true;
                 DLog(@"toAddress: %@", self.toAddress);
                 
-                NSString *amountString = [dict objectForKey:@"amount"];
+                NSString *amountString;
+                NSString *amountStringFromDictionary = [dict objectForKey:@"amount"];
+                if (amountStringFromDictionary != nil) {
+                    amountString = amountStringFromDictionary;
+                } else {
+                    amountString = btcAmountField.text;
+                }
+                
                 if (app.latestResponse.symbol_btc) {
                     amountInSatoshi = ([amountString doubleValue] * SATOSHI);
                 }
