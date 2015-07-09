@@ -31,7 +31,7 @@
     IBOutlet UILabel *fromLabel;
     IBOutlet UITextField *selectAddressTextField;
     IBOutlet UIButton *selectFromButton;
-    IBOutlet UILabel *fundsAvailableLabel;
+    IBOutlet UIButton *fundsAvailableButton;
     
     IBOutlet UITextField *toField;
     IBOutlet UIButton *addressBookButton;
