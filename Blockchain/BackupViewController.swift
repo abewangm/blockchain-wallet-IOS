@@ -21,7 +21,7 @@ class BackupViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        backupWalletButton?.setTitle(NSLocalizedString("Backup Wallet", comment: ""), forState: .Normal)
+        backupWalletButton?.setTitle(NSLocalizedString("BACKUP WALLET", comment: ""), forState: .Normal)
         backupWalletButton?.clipsToBounds = true
         backupWalletButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
@@ -29,13 +29,13 @@ class BackupViewController: UIViewController {
             summaryLabel!.text = NSLocalizedString("You already backed up your wallet.", comment: "");
             explanation!.text = NSLocalizedString("You only need to backup your wallet once, but it is a good idea to occasionally verify that your backup is valid.", comment: "")
             backupIconImageView!.image = UIImage(named: "thumbs")
-            backupWalletButton?.setTitle(NSLocalizedString("Verify Backup", comment: ""), forState: .Normal)
+            backupWalletButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), forState: .Normal)
             backupWalletAgainButton?.hidden = false
         }
     }
     
     @IBAction func backupWalletButtonTapped(sender: UIButton) {
-        if (backupWalletButton!.titleLabel!.text == NSLocalizedString("Verify Backup", comment: "")) {
+        if (backupWalletButton!.titleLabel!.text == NSLocalizedString("VERIFY BACKUP", comment: "")) {
             performSegueWithIdentifier("verifyBackup", sender: nil)
         } else {
             performSegueWithIdentifier("backupWords", sender: nil)

@@ -48,11 +48,11 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     override func viewDidAppear(animated: Bool) {
         verifyButton = UIButton(frame: CGRectMake(0, 0, view.frame.size.width, 46))
-        verifyButton?.setTitle(NSLocalizedString("Verify Backup", comment:""), forState: .Normal)
-        verifyButton?.setTitle(NSLocalizedString("Verify Backup", comment:""), forState: .Disabled)
+        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), forState: .Normal)
+        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), forState: .Disabled)
         verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
         verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
-        verifyButton?.titleLabel!.font = UIFont.systemFontOfSize(17)
+        verifyButton?.titleLabel!.font = UIFont.boldSystemFontOfSize(15)
         verifyButton?.enabled = true
         verifyButton?.addTarget(self, action: "done", forControlEvents: .TouchUpInside)
         verifyButton?.enabled = false
