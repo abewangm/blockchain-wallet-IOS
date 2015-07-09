@@ -42,20 +42,23 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         
         updateCurrentPageLabel(0)
         
-        wordsScrollView!.contentSize = CGSizeMake(12 * wordsScrollView!.frame.width, wordsScrollView!.frame.height)
+        wordsScrollView!.clipsToBounds = false
+        wordsScrollView!.contentSize = CGSizeMake(12 * wordLabel!.frame.width, wordLabel!.frame.height)
 
         wordLabels = [UILabel]()
         wordLabels?.insert(wordLabel!, atIndex: 0)
         var i: CGFloat = 0
         for i in 1 ..< 12 {
-            let offset: CGFloat = CGFloat(i) * wordsScrollView!.frame.width
+            let offset: CGFloat = CGFloat(i) * wordLabel!.frame.width
             let x: CGFloat = wordLabel!.frame.origin.x + offset
             let label = UILabel(frame: CGRectMake(x, wordLabel!.frame.origin.y, wordLabel!.frame.size.width, wordLabel!.frame.size.height))
+            label.adjustsFontSizeToFitWidth = true
             label.font = wordLabel!.font
             label.textColor = wordLabel!.textColor
             label.textAlignment = wordLabel!.textAlignment
 
             wordLabel!.superview?.addSubview(label)
+            
             wordLabels?.append(label)
         }
     }
