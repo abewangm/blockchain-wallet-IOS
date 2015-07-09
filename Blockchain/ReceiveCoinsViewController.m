@@ -362,11 +362,9 @@ UIActionSheet *popupAddressArchive;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
-    [self presentViewController:activityViewController animated:YES completion:nil];
+    [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
     
     [activityViewController setCompletionHandler:^(NSString *activityType, BOOL completed) {
-        // ... and resign the hidden UITextField that controls the keyboard
-        [entryField resignFirstResponder];
         [self showKeyboard];
     }];
 }
