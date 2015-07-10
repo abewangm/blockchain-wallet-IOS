@@ -956,7 +956,7 @@ SideMenuViewController *sideMenuViewController;
     backupNavigationController.wallet = self.wallet;
     
     backupNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [_tabViewController presentViewController:backupNavigationController animated:NO completion:nil];
+    [_tabViewController presentViewController:backupNavigationController animated:YES completion:nil];
 }
 
 - (void)showSupport
