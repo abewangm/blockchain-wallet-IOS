@@ -314,8 +314,15 @@ BOOL displayingLocalSymbolSend;
         NSString *feeBTCString = [app formatMoney:fee localCurrency:FALSE];
         NSString *amountTotalLocalString = [app formatMoney:amountTotal localCurrency:TRUE];
         
+        NSString *toAddressLabelForAlertView = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
+        NSString *toAddressStringForAlertView = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
         
-        NSMutableString *messageString = [NSMutableString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, self.toAddress, amountTotalBTCString, feeBTCString, amountTotalLocalString];
+        // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
+        if ([toAddressLabelForAlertView isEqualToString:toAddressStringForAlertView]) {
+            toAddressLabelForAlertView = @"";
+        }
+        
+        NSMutableString *messageString = [NSMutableString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, toAddressLabelForAlertView, toAddressStringForAlertView, amountTotalBTCString, feeBTCString, amountTotalLocalString];
         
         BCAlertView *alert = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_PAYMENT
                                                         message:messageString
