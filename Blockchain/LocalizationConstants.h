@@ -32,7 +32,7 @@
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
 #define BC_STRING_ASK_TO_ADD_TO_ADDRESS_BOOK NSLocalizedString(@"Would you like to add the bitcoin address %@ to your address book?", nil)
 #define BC_STRING_COPIED_TO_CLIPBOARD NSLocalizedString(@"%@ copied to clipboard", nil)
-#define BC_STRING_CONFIRM_PAYMENT_OF NSLocalizedString(@"To: %@\n%@\nTotal Amount: %@\nFee: %@\n(%@)", nil)
+#define BC_STRING_CONFIRM_PAYMENT_OF NSLocalizedString(@"To: %@\nTotal Amount: %@\nFee: %@\n(%@)", nil)
 #define BC_STRING_SEND_FROM NSLocalizedString(@"Send from...", nil)
 #define BC_STRING_SEND_TO NSLocalizedString(@"Send to...", nil)
 
