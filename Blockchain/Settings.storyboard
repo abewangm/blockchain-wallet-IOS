@@ -30,16 +30,51 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Identifier:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTi-qK-dUQ">
-                                                <rect key="frame" x="8" y="85" width="584" height="21"/>
+                                                <rect key="frame" x="8" y="88" width="584" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wallet identifier" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cke-De-nx0">
-                                                <rect key="frame" x="8" y="114" width="584" height="30"/>
+                                                <rect key="frame" x="8" y="117" width="584" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEU-rt-IPS">
+                                                <rect key="frame" x="8" y="177" width="572" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vyt-oW-cU5">
+                                                <rect key="frame" x="8" y="205" width="584" height="82"/>
+                                                <string key="text">An email is needed to help recover a lost wallet identifier and for payment notifications. Also, by default, your verified email address will be used as a second layer of verification when you log into your wallet. To enable another form of verification, such as Google Authenticator, go to Security.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="et2-2H-SN2">
+                                                <rect key="frame" x="8" y="295" width="300" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="kV7-UD-Ktu"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SrD-pm-xz3">
+                                                <rect key="frame" x="8" y="406" width="300" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="Tcd-jC-Jwy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Verification Code:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XK-C1-eg7">
+                                                <rect key="frame" x="8" y="355" width="584" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -47,12 +82,25 @@
                                             <constraint firstItem="hFH-zj-AQo" firstAttribute="top" secondItem="ykH-1U-sqe" secondAttribute="top" constant="32" id="0Cb-sB-h0T"/>
                                             <constraint firstAttribute="height" constant="1000" id="0f2-G0-8I7"/>
                                             <constraint firstItem="hFH-zj-AQo" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="7LT-Do-y9e"/>
-                                            <constraint firstItem="fTi-qK-dUQ" firstAttribute="top" secondItem="hFH-zj-AQo" secondAttribute="bottom" constant="27" id="X1x-yw-cKN"/>
+                                            <constraint firstItem="IEU-rt-IPS" firstAttribute="top" secondItem="cke-De-nx0" secondAttribute="bottom" constant="30" id="7PE-d1-48a"/>
+                                            <constraint firstItem="Vyt-oW-cU5" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="AUu-H7-VHn"/>
+                                            <constraint firstItem="0XK-C1-eg7" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="HQN-KO-hqO"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vyt-oW-cU5" secondAttribute="trailing" constant="8" id="Wfp-2R-zJv"/>
+                                            <constraint firstAttribute="trailing" secondItem="0XK-C1-eg7" secondAttribute="trailing" constant="8" id="Wx5-gX-fbw"/>
+                                            <constraint firstItem="fTi-qK-dUQ" firstAttribute="top" secondItem="hFH-zj-AQo" secondAttribute="bottom" constant="30" id="X1x-yw-cKN"/>
+                                            <constraint firstItem="0XK-C1-eg7" firstAttribute="top" secondItem="et2-2H-SN2" secondAttribute="bottom" constant="30" id="Y4G-7B-e2W"/>
                                             <constraint firstItem="cke-De-nx0" firstAttribute="top" secondItem="fTi-qK-dUQ" secondAttribute="bottom" constant="8" id="Zwb-1a-bZN"/>
                                             <constraint firstAttribute="trailing" secondItem="hFH-zj-AQo" secondAttribute="trailing" constant="8" id="cfv-gl-M4p"/>
+                                            <constraint firstItem="SrD-pm-xz3" firstAttribute="top" secondItem="0XK-C1-eg7" secondAttribute="bottom" constant="30" id="cj9-Pf-Gq5"/>
                                             <constraint firstItem="fTi-qK-dUQ" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="eSL-nU-nRM"/>
+                                            <constraint firstAttribute="trailing" secondItem="IEU-rt-IPS" secondAttribute="trailing" constant="20" symbolic="YES" id="jqT-E4-suZ"/>
+                                            <constraint firstItem="SrD-pm-xz3" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="lGt-Xd-R90"/>
+                                            <constraint firstItem="Vyt-oW-cU5" firstAttribute="top" secondItem="IEU-rt-IPS" secondAttribute="bottom" constant="8" id="oWv-6S-EH5"/>
                                             <constraint firstItem="cke-De-nx0" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="pCt-W6-FP0"/>
+                                            <constraint firstItem="et2-2H-SN2" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="rKz-jC-MSq"/>
+                                            <constraint firstItem="IEU-rt-IPS" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="sfk-aK-mIH"/>
                                             <constraint firstAttribute="trailing" secondItem="fTi-qK-dUQ" secondAttribute="trailing" constant="8" id="vmU-5e-WAm"/>
+                                            <constraint firstItem="et2-2H-SN2" firstAttribute="top" secondItem="Vyt-oW-cU5" secondAttribute="bottom" constant="8" id="wmG-ac-Ova"/>
                                         </constraints>
                                     </view>
                                 </subviews>
