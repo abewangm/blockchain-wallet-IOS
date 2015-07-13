@@ -22,9 +22,37 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykH-1U-sqe">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-zj-AQo">
+                                                <rect key="frame" x="8" y="32" width="584" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Identifier:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTi-qK-dUQ">
+                                                <rect key="frame" x="8" y="85" width="584" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wallet identifier" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cke-De-nx0">
+                                                <rect key="frame" x="8" y="114" width="584" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="cke-De-nx0" secondAttribute="trailing" constant="8" id="0AN-bN-8RZ"/>
+                                            <constraint firstItem="hFH-zj-AQo" firstAttribute="top" secondItem="ykH-1U-sqe" secondAttribute="top" constant="32" id="0Cb-sB-h0T"/>
                                             <constraint firstAttribute="height" constant="1000" id="0f2-G0-8I7"/>
+                                            <constraint firstItem="hFH-zj-AQo" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="7LT-Do-y9e"/>
+                                            <constraint firstItem="fTi-qK-dUQ" firstAttribute="top" secondItem="hFH-zj-AQo" secondAttribute="bottom" constant="27" id="X1x-yw-cKN"/>
+                                            <constraint firstItem="cke-De-nx0" firstAttribute="top" secondItem="fTi-qK-dUQ" secondAttribute="bottom" constant="8" id="Zwb-1a-bZN"/>
+                                            <constraint firstAttribute="trailing" secondItem="hFH-zj-AQo" secondAttribute="trailing" constant="8" id="cfv-gl-M4p"/>
+                                            <constraint firstItem="fTi-qK-dUQ" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="eSL-nU-nRM"/>
+                                            <constraint firstItem="cke-De-nx0" firstAttribute="leading" secondItem="ykH-1U-sqe" secondAttribute="leading" constant="8" id="pCt-W6-FP0"/>
+                                            <constraint firstAttribute="trailing" secondItem="fTi-qK-dUQ" secondAttribute="trailing" constant="8" id="vmU-5e-WAm"/>
                                         </constraints>
                                     </view>
                                 </subviews>
