@@ -35,6 +35,7 @@
 #import "BCWebViewController.h"
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
+#import "SettingsViewController.h"
 
 #define CURTAIN_IMAGE_TAG 123
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
@@ -992,10 +993,11 @@ SideMenuViewController *sideMenuViewController;
 
 - (void)showAccountSettings
 {
-    _bcWebViewController = [[BCWebViewController alloc] initWithTitle:BC_STRING_SETTINGS];
-    [_bcWebViewController loadSettings];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Settings" bundle: nil];
+    SettingsViewController *settingsViewController = [storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     
-    [_tabViewController presentViewController:_bcWebViewController animated:YES completion:nil];
+    settingsViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [_tabViewController presentViewController:settingsViewController animated:YES completion:nil];
 }
 
 - (void)showBackup
