@@ -37,6 +37,13 @@
 #import "UpgradeViewController.h"
 
 #define CURTAIN_IMAGE_TAG 123
+#define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
+#define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"
+#define UNSAFE_CHECK_PATH_BIN_BASH @"/bin/bash"
+#define UNSAFE_CHECK_PATH_USR_SBIN_SSHD @"/usr/sbin/sshd"
+#define UNSAFE_CHECK_PATH_ETC_APT @"/etc/apt"
+#define UNSAFE_CHECK_PATH_WRITE_TEST @"/private/test.txt"
+#define UNSAFE_CHECK_CYDIA_URL @"cydia://package/com.example.package"
 
 AppDelegate * app;
 
@@ -122,6 +129,10 @@ SideMenuViewController *sideMenuViewController;
     // Load settings    
     symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:@"symbolLocal"];
     
+    if ([AppDelegate isUnsafe]) {
+        [self alertUserOfCompromisedSecurity];
+    }
+    
     // If either of these is nil we are not properly paired
     if (![self guid] || ![self sharedKey]) {
         [self showWelcome];
@@ -173,6 +184,46 @@ SideMenuViewController *sideMenuViewController;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:@"AppDelegateReload" object:nil];
     
     return TRUE;
+}
+
+- (void)alertUserOfCompromisedSecurity
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_UNSAFE_DEVICE_TITLE message:BC_STRING_UNSAFE_DEVICE_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    [alertView show];
+}
+
++ (BOOL)isUnsafe
+{
+#if !(TARGET_IPHONE_SIMULATOR)
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_CYDIA]){
+        return YES;
+    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE]){
+        return YES;
+    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_BIN_BASH]){
+        return YES;
+    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_USR_SBIN_SSHD]){
+        return YES;
+    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_ETC_APT]){
+        return YES;
+    }
+    
+    NSError *error;
+    NSString *stringToBeWritten = @"TEST";
+    [stringToBeWritten writeToFile:UNSAFE_CHECK_PATH_WRITE_TEST atomically:YES
+                          encoding:NSUTF8StringEncoding error:&error];
+    if(error == nil){
+        return YES;
+    } else {
+        [[NSFileManager defaultManager] removeItemAtPath:UNSAFE_CHECK_PATH_WRITE_TEST error:nil];
+    }
+    
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:UNSAFE_CHECK_CYDIA_URL]]){
+        return YES;
+    }
+#endif
+    
+    return NO;
 }
 
 - (void)transitionToIndex:(NSInteger)newIndex
