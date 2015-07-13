@@ -219,3 +219,6 @@
 #define BC_STRING_SETTINGS_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
 #define BC_STRING_SETTINGS_EMAIL NSLocalizedString(@"Email", nil)
+#define BC_STRING_SETTINGS_DISPLAY_PREFERENCES NSLocalizedString(@"Display", nil)
+#define BC_STRING_SETTINGS_LOCAL_CURRENCY NSLocalizedString(@"Local Currency", nil)
+#define BC_STRING_SETTINGS_BTC NSLocalizedString(@"Bitcoin Units", nil)
