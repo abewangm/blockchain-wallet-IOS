@@ -222,3 +222,5 @@
 #define BC_STRING_SETTINGS_DISPLAY_PREFERENCES NSLocalizedString(@"Display", nil)
 #define BC_STRING_SETTINGS_LOCAL_CURRENCY NSLocalizedString(@"Local Currency", nil)
 #define BC_STRING_SETTINGS_BTC NSLocalizedString(@"Bitcoin Units", nil)
+#define BC_STRING_SETTINGS_NOTIFICATIONS NSLocalizedString(@"Notifications", nil)
+#define BC_STRING_SETTINGS_NOTIFICATIONS_SMS NSLocalizedString(@"SMS", nil)

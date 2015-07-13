@@ -27,6 +27,7 @@
     switch (section) {
         case 0: return 2;
         case 1: return 2;
+        case 2: return 2;
         default: return 0;
     }
 }
@@ -34,35 +35,22 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return [SettingsTableViewController headerViewForAccountDetails:tableView];
-        case 1: return [SettingsTableViewController headerViewForDisplayPreferences:tableView];
+        case 0: return [SettingsTableViewController headerView:tableView withText:BC_STRING_SETTINGS_ACCOUNT_DETAILS];
+        case 1: return [SettingsTableViewController headerView:tableView withText:BC_STRING_SETTINGS_DISPLAY_PREFERENCES];
+        case 2: return [SettingsTableViewController headerView:tableView withText:BC_STRING_SETTINGS_NOTIFICATIONS];
         default: return nil;
     }
 }
 
-+ (UIView *)headerViewForAccountDetails:(UITableView *)tableView
++ (UIView *)headerView:(UITableView *)tableView withText:(NSString *)text
 {
     // duplicate code for now but may add different descriptions
 
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 25)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 35)];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 2.5, tableView.frame.size.width, 18)];
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-    label.text = BC_STRING_SETTINGS_ACCOUNT_DETAILS;
-    [view addSubview:label];
-    [view setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-    return view;
-}
-
-+ (UIView *)headerViewForDisplayPreferences:(UITableView *)tableView
-{
-    // duplicate code for now but may add different descriptions
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 25)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 2.5, tableView.frame.size.width, 18)];
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-    label.text = BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
+    label.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    label.text = text;
     [view addSubview:label];
     [view setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
     return view;
@@ -125,10 +113,23 @@
         case 2: {
             switch (indexPath.row) {
                 case 0: {
+                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+                    
+                    cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
+                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
                     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+                    cell.accessoryView = switchView;
+                    return cell;
                 }
                 case 1: {
+                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+                    
+                    cell.textLabel.text = BC_STRING_SETTINGS_NOTIFICATIONS_SMS;
+                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+
                     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+                    cell.accessoryView = switchView;
+                    return cell;
                 }
             }
         }
