@@ -25,7 +25,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
-        case 0: return 1;
+        case 0: return 2;
         default: return 0;
     }
 }
@@ -54,13 +54,33 @@
 {
     switch (indexPath.section) {
         case 0: {
-            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"YourIdentifier"];
-            
-            cell.textLabel.text = BC_STRING_SETTINGS_IDENTIFIER;
-            cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-            cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-            cell.detailTextLabel.text = app.wallet.guid;
-            return cell;
+            switch (indexPath.row) {
+                case 0: {
+                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"YourIdentifier"];
+                    
+                    cell.textLabel.text = BC_STRING_SETTINGS_IDENTIFIER;
+                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+                    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+                    cell.detailTextLabel.text = app.wallet.guid;
+                    return cell;
+                }
+                case 1: {
+                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"YourIdentifier"];
+                    
+                    cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
+                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+                    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+                    if (app.showEmailWarning) {
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                        cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
+                    } else {
+                        cell.detailTextLabel.text = @"useremail";
+                    }
+                    return cell;
+                }
+            }   case 2: {
+                return nil;
+            }
         }
         default: return nil;
     }

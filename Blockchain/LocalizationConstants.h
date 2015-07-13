@@ -218,3 +218,4 @@
 
 #define BC_STRING_SETTINGS_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
+#define BC_STRING_SETTINGS_EMAIL NSLocalizedString(@"Email", nil)
