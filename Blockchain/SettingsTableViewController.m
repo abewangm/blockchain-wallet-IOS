@@ -7,7 +7,6 @@
 //
 
 #import "SettingsTableViewController.h"
-#import "SettingsViewController.h"
 #import "AppDelegate.h"
 
 @interface SettingsTableViewController ()
