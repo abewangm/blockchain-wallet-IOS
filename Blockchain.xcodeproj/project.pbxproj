@@ -19,6 +19,7 @@
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
 		23EA61BC1B540F020032B907 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EA61BB1B540F020032B907 /* Settings.storyboard */; };
 		23EA61BF1B540F8F0032B907 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61BE1B540F8F0032B907 /* SettingsViewController.m */; };
+		23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C41B54258D0032B907 /* SettingsTableViewController.m */; };
 		670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */; };
 		670DF94B1A43BCB200CEA1EA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 670DF94A1A43BCB200CEA1EA /* Reachability.m */; };
 		6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6710DA0D1A8E82D80089DDED /* BCLine.m */; };
@@ -325,6 +326,8 @@
 		23EA61BB1B540F020032B907 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		23EA61BD1B540F8F0032B907 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		23EA61BE1B540F8F0032B907 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		23EA61C31B54258D0032B907 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		23EA61C41B54258D0032B907 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		670595A21AB0F59D00D2D6D9 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		670DF9491A43BCB200CEA1EA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -837,6 +840,8 @@
 				A269E92D1B32D51F0052F953 /* SecondPasswordViewController.swift */,
 				232232181B44D4CB00E5DF26 /* UpgradeViewController.h */,
 				232232191B44D4CB00E5DF26 /* UpgradeViewController.m */,
+				23EA61C31B54258D0032B907 /* SettingsTableViewController.h */,
+				23EA61C41B54258D0032B907 /* SettingsTableViewController.m */,
 				23EA61BD1B540F8F0032B907 /* SettingsViewController.h */,
 				23EA61BE1B540F8F0032B907 /* SettingsViewController.m */,
 			);
@@ -1203,6 +1208,7 @@
 				C9C3998319885FAC001B3922 /* BCAlertView.m in Sources */,
 				673107F219F6D49F00BE6899 /* PrivateKeyReader.m in Sources */,
 				84FC02FE19815F1B00B97D5B /* sha256.c in Sources */,
+				23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */,
 				23EA61BF1B540F8F0032B907 /* SettingsViewController.m in Sources */,
 				84CCFAAF197D859C00DA4482 /* NSString+NSString_EscapeQuotes.m in Sources */,
 				A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */,
