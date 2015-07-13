@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykH-1U-sqe">
-                                        <rect key="frame" x="0.0" y="-500" width="600" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-zj-AQo">
                                                 <rect key="frame" x="8" y="30" width="584" height="27"/>
@@ -151,7 +151,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ykH-1U-sqe" secondAttribute="trailing" id="XLI-nA-pYp"/>
                                     <constraint firstItem="ykH-1U-sqe" firstAttribute="width" secondItem="X2L-JD-nna" secondAttribute="width" id="cBj-TA-XjZ"/>
-                                    <constraint firstItem="ykH-1U-sqe" firstAttribute="top" secondItem="X2L-JD-nna" secondAttribute="top" constant="-500" id="m2n-cm-t4y"/>
+                                    <constraint firstItem="ykH-1U-sqe" firstAttribute="top" secondItem="X2L-JD-nna" secondAttribute="top" id="m2n-cm-t4y"/>
                                     <constraint firstAttribute="centerX" secondItem="ykH-1U-sqe" secondAttribute="centerX" id="mM7-IY-1By"/>
                                     <constraint firstAttribute="bottom" secondItem="ykH-1U-sqe" secondAttribute="bottom" id="nmg-Vt-Quz"/>
                                 </constraints>

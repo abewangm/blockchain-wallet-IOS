@@ -215,3 +215,6 @@
 
 #define BC_STRING_UNSAFE_DEVICE_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_UNSAFE_DEVICE_MESSAGE NSLocalizedString(@"Your device appears to be jailbroken. The security of your wallet may be compromised.", nil)
+
+#define BC_STRING_SETTINGS_IDENTIFIER NSLocalizedString(@"Identifier", nil)
+#define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)

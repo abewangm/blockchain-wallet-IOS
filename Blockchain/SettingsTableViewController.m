@@ -8,6 +8,7 @@
 
 #import "SettingsTableViewController.h"
 #import "SettingsViewController.h"
+#import "AppDelegate.h"
 
 @interface SettingsTableViewController ()
 
@@ -29,6 +30,25 @@
     }
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0: return [SettingsTableViewController headerViewForAccountDetails:tableView];
+        default: return nil;
+    }
+}
+
++ (UIView *)headerViewForAccountDetails:(UITableView *)tableView
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 25)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 2.5, tableView.frame.size.width, 18)];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    label.text = BC_STRING_SETTINGS_ACCOUNT_DETAILS;
+    [view addSubview:label];
+    [view setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+    return view;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -36,8 +56,10 @@
         case 0: {
             UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"YourIdentifier"];
             
-            cell.textLabel.text = @"Identifier";
-            cell.detailTextLabel.text = @"Gibberish";
+            cell.textLabel.text = BC_STRING_SETTINGS_IDENTIFIER;
+            cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+            cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+            cell.detailTextLabel.text = app.wallet.guid;
             return cell;
         }
         default: return nil;
@@ -49,50 +71,5 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self performSegueWithIdentifier:@"walletID" sender:nil];
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
