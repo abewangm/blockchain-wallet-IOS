@@ -32,28 +32,14 @@
     }
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return [SettingsTableViewController headerView:tableView withText:BC_STRING_SETTINGS_ACCOUNT_DETAILS];
-        case 1: return [SettingsTableViewController headerView:tableView withText:BC_STRING_SETTINGS_DISPLAY_PREFERENCES];
-        case 2: return [SettingsTableViewController headerView:tableView withText:BC_STRING_SETTINGS_NOTIFICATIONS];
+        case 0: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
+        case 1: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
+        case 2: return BC_STRING_SETTINGS_NOTIFICATIONS;
         default: return nil;
     }
-}
-
-+ (UIView *)headerView:(UITableView *)tableView withText:(NSString *)text
-{
-    // duplicate code for now but may add different descriptions
-
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 35)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 2.5, tableView.frame.size.width, 18)];
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    label.text = text;
-    [view addSubview:label];
-    [view setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-    return view;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
