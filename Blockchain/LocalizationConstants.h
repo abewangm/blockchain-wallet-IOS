@@ -224,3 +224,5 @@
 #define BC_STRING_SETTINGS_BTC NSLocalizedString(@"Bitcoin Units", nil)
 #define BC_STRING_SETTINGS_NOTIFICATIONS NSLocalizedString(@"Notifications", nil)
 #define BC_STRING_SETTINGS_NOTIFICATIONS_SMS NSLocalizedString(@"SMS", nil)
+#define BC_STRING_SETTINGS_EMAIL_FOOTER NSLocalizedString(@"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet.", nil)
+#define BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER NSLocalizedString(@"Optionally receive notifications when a payment is sent or received from your wallet.", nil)

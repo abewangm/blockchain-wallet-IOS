@@ -15,6 +15,11 @@
 
 @implementation SettingsTableViewController
 
++ (UIFont *)fontForCell
+{
+    return [UIFont fontWithName:@"Helvetica Neue" size:15];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -42,26 +47,32 @@
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    switch (section) {
+        case 1: return BC_STRING_SETTINGS_EMAIL_FOOTER;
+        case 2: return BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER;
+        default: return nil;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+    cell.textLabel.font = [SettingsTableViewController fontForCell];
+    cell.detailTextLabel.font = [SettingsTableViewController fontForCell];
+    
     switch (indexPath.section) {
         case 0: {
             switch (indexPath.row) {
                 case 0: {
-                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-                    
                     cell.textLabel.text = BC_STRING_SETTINGS_IDENTIFIER;
-                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-                    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
                     cell.detailTextLabel.text = app.wallet.guid;
+                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     return cell;
                 }
                 case 1: {
-                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-                    
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
-                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-                    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
                     if (app.showEmailWarning) {
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
@@ -75,21 +86,13 @@
         case 1: {
             switch (indexPath.row) {
                 case 0: {
-                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-                    
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
-                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-                    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
                     cell.detailTextLabel.text = @"SETTINGSJS:localcurrency";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return cell;
                 }
                 case 1: {
-                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-                    
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
-                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-                    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
                     cell.detailTextLabel.text = @"SETTINGSJS:bitcoinunit";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;;
                     return cell;
@@ -99,20 +102,13 @@
         case 2: {
             switch (indexPath.row) {
                 case 0: {
-                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-                    
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
-                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
                     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
                     cell.accessoryView = switchView;
                     return cell;
                 }
                 case 1: {
-                    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-                    
                     cell.textLabel.text = BC_STRING_SETTINGS_NOTIFICATIONS_SMS;
-                    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-
                     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
                     cell.accessoryView = switchView;
                     return cell;
