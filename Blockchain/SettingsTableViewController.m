@@ -20,11 +20,16 @@
     return [UIFont fontWithName:@"Helvetica Neue" size:15];
 }
 
++ (UIFont *)fontForCellSubtitle
+{
+    return [UIFont fontWithName:@"Helvetica Neue" size:12];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -33,6 +38,7 @@
         case 0: return 2;
         case 1: return 2;
         case 2: return 2;
+        case 3: return 2;
         default: return 0;
     }
 }
@@ -43,6 +49,7 @@
         case 0: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
         case 1: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
         case 2: return BC_STRING_SETTINGS_NOTIFICATIONS;
+        case 3: return BC_STRING_SETTINGS_ABOUT;
         default: return nil;
     }
 }
@@ -66,10 +73,14 @@
         case 0: {
             switch (indexPath.row) {
                 case 0: {
-                    cell.textLabel.text = BC_STRING_SETTINGS_IDENTIFIER;
-                    cell.detailTextLabel.text = app.wallet.guid;
-                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-                    return cell;
+                    UITableViewCell *cellWithSubtitle = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+                    cellWithSubtitle.textLabel.font = [SettingsTableViewController fontForCell];
+                    cellWithSubtitle.textLabel.text = BC_STRING_SETTINGS_IDENTIFIER;
+                    cellWithSubtitle.detailTextLabel.text = app.wallet.guid;
+                    cellWithSubtitle.detailTextLabel.font = [SettingsTableViewController fontForCellSubtitle];
+                    cellWithSubtitle.detailTextLabel.textColor = [UIColor grayColor];
+                    cellWithSubtitle.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+                    return cellWithSubtitle;
                 }
                 case 1: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
@@ -84,17 +95,17 @@
             }
         }
         case 1: {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
                 case 0: {
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
                     cell.detailTextLabel.text = @"SETTINGSJS:localcurrency";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    
                     return cell;
                 }
                 case 1: {
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
                     cell.detailTextLabel.text = @"SETTINGSJS:bitcoinunit";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;;
                     return cell;
                 }
             }
@@ -115,7 +126,19 @@
                 }
             }
         }
-        default: return nil;
+        case 3: {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            switch (indexPath.row) {
+                case 0: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_TERMS_OF_SERVICE;
+                    return cell;
+                }
+                case 1: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_PRIVACY_POLICY;
+                    return cell;
+                }
+            }
+        }        default: return nil;
     }
 }
 
