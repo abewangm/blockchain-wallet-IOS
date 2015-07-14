@@ -7,6 +7,7 @@
 //
 
 #import "SettingsTableViewController.h"
+#import "SettingsSelectorTableViewController.h"
 #import "AppDelegate.h"
 
 @interface SettingsTableViewController ()
@@ -35,9 +36,34 @@
     return [app.wallet getBTCSymbol];
 }
 
-- (NSArray *)getAvailableCurrencies
+- (NSDictionary *)getAvailableCurrencies
 {
     return [app.wallet getAvailableCurrencies];
+}
+
+#pragma mark - Segue
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    switch (indexPath.section) {
+        case 1: {
+            switch (indexPath.row) {
+                case 0: {
+                    [self performSegueWithIdentifier:@"currency" sender:nil];
+                }
+            }
+        }
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"currency"]) {
+        SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
+        settingsSelectorTableViewController.itemsDictionary = [self getAvailableCurrencies];
+    }
 }
 
 #pragma mark - Table view data source
@@ -155,12 +181,6 @@
             }
         }        default: return nil;
     }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    [self performSegueWithIdentifier:@"display" sender:nil];
 }
 
 @end

@@ -184,7 +184,7 @@ Boolean isHdWalletInitialized;
         [self.webView executeJS:@"MyWalletPhone.get_wallet_and_history()"];
 }
 
-- (NSArray *)getAvailableCurrencies
+- (NSDictionary *)getAvailableCurrencies
 {
     if (![self.webView isLoaded]) {
         return nil;

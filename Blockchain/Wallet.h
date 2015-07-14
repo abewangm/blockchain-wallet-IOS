@@ -187,6 +187,6 @@
 - (void)upgrade_success;
 
 // Settings
-- (NSArray *)getAvailableCurrencies;
+- (NSDictionary *)getAvailableCurrencies;
 
 @end
