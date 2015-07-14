@@ -719,6 +719,8 @@ SideMenuViewController *sideMenuViewController;
 
 - (void)closeAllModals
 {
+    [modalView endEditing:YES];
+    
     [modalView removeFromSuperview];
     
     CATransition *animation = [CATransition animation];
