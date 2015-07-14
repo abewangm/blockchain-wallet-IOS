@@ -50,7 +50,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     switch (section) {
-        case 1: return BC_STRING_SETTINGS_EMAIL_FOOTER;
+        case 0: return BC_STRING_SETTINGS_EMAIL_FOOTER;
         case 2: return BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER;
         default: return nil;
     }
@@ -122,7 +122,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    [self performSegueWithIdentifier:@"walletID" sender:nil];
+    [self performSegueWithIdentifier:@"display" sender:nil];
 }
 
 @end
