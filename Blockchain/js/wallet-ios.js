@@ -255,6 +255,7 @@ MyWalletPhone.fetchWalletJson = function(user_guid, shared_key, resend_code, inp
     var other_error = function(e) {
         console.log('fetchWalletJson: other error: ' + e);
         device.execute('loading_stop');
+        device.execute('error_other_decrypting_wallet:', [e]);
     };
     
     var needs_two_factor_code = function(type) {
