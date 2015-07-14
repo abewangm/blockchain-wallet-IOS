@@ -7,6 +7,7 @@ var WalletCrypto = Blockchain.WalletCrypto;
 var Spender = Blockchain.Spender;
 var BlockchainAPI = Blockchain.BlockchainAPI;
 var ImportExport = Blockchain.ImportExport;
+var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -840,3 +841,9 @@ WalletStore.get = function(key, callback) {
 MyWallet.getNTransactionsPerPage = function() {
     return 50;
 };
+
+// Settings
+
+BlockchainSettingsAPI.get_available_currencies = function() {
+    return WalletStore.getCurrencies();
+}

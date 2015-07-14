@@ -25,6 +25,21 @@
     return [UIFont fontWithName:@"Helvetica Neue" size:12];
 }
 
+- (CurrencySymbol *)getLocalSymbol
+{
+    return [app.wallet getLocalSymbol];
+}
+
+- (CurrencySymbol *)getBtcSymbol
+{
+    return [app.wallet getBTCSymbol];
+}
+
+- (NSArray *)getAvailableCurrencies
+{
+    return [app.wallet getAvailableCurrencies];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -99,13 +114,13 @@
             switch (indexPath.row) {
                 case 0: {
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
-                    cell.detailTextLabel.text = @"SETTINGSJS:localcurrency";
-                    
+                    cell.detailTextLabel.text = [self getLocalSymbol].name;
+                    NSLog(@"currencies:%@", [self getAvailableCurrencies]);
                     return cell;
                 }
                 case 1: {
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
-                    cell.detailTextLabel.text = @"SETTINGSJS:bitcoinunit";
+                    cell.detailTextLabel.text = [self getBtcSymbol].name;
                     return cell;
                 }
             }

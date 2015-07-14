@@ -186,4 +186,7 @@
 - (void)loading_stop;
 - (void)upgrade_success;
 
+// Settings
+- (NSArray *)getAvailableCurrencies;
+
 @end

@@ -184,6 +184,17 @@ Boolean isHdWalletInitialized;
         [self.webView executeJS:@"MyWalletPhone.get_wallet_and_history()"];
 }
 
+- (NSArray *)getAvailableCurrencies
+{
+    if (![self.webView isLoaded]) {
+        return nil;
+    }
+
+    NSString *activeAddressesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(BlockchainSettingsAPI.get_available_currencies())"];
+    
+    return [activeAddressesJSON getJSONObject];
+}
+
 - (CurrencySymbol*)getLocalSymbol
 {
     if (![self.webView isLoaded]) {
