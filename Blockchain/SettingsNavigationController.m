@@ -49,6 +49,7 @@
 {
     if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
         [self dismissViewControllerAnimated:YES completion:nil];
+        [app.wallet getWalletAndHistory];
     } else {
         [self popViewControllerAnimated:YES];
     }
