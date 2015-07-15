@@ -17,7 +17,7 @@
 - (void)setItemsDictionary:(NSDictionary *)itemsDictionary
 {
     _itemsDictionary = itemsDictionary;
-    self.keysArray = [_itemsDictionary allKeys];
+    self.keysArray = [[_itemsDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
 }
 
 #pragma mark - Table view data source
