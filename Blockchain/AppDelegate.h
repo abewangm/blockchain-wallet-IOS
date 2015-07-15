@@ -32,6 +32,7 @@
 
 #define SATOSHI 100000000
 #define LOADING_TEXT_NOTIFICATION_KEY @"SetLoadingText"
+#define SHOW_PIN_NOTIFICATION_KEY @"ShowPIN"
 #define WebROOT @"https://blockchain.info/"
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
 
@@ -79,6 +80,7 @@
 @property (strong, nonatomic) IBOutlet SendViewController *sendViewController;
 @property (strong, nonatomic) IBOutlet MerchantMapViewController *merchantViewController;
 @property (strong, nonatomic) IBOutlet BCWebViewController *bcWebViewController;
+@property (strong, nonatomic) BackupNavigationViewController *backupNavigationViewController;
 
 @property (nonatomic) BOOL showEmailWarning;
 
