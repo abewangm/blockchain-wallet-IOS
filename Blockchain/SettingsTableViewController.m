@@ -42,13 +42,12 @@
 
 - (CurrencySymbol *)getLocalSymbolFromLatestResponse
 {
-    // TODO: This needs to observe the change as well
     return app.latestResponse.symbol_local;
 }
 
 - (CurrencySymbol *)getBtcSymbol
 {
-    return [app.wallet getBTCSymbol];
+    return app.latestResponse.symbol_btc;
 }
 
 #pragma mark - Segue

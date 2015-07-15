@@ -138,8 +138,6 @@
 - (uint64_t)getLegacyAddressBalance:(NSString *)address;
 - (uint64_t)parseBitcoinValue:(NSString *)input;
 
-- (CurrencySymbol *)getLocalSymbol;
-- (CurrencySymbol *)getBTCSymbol;
 - (void)changeLocalCurrency:(NSString *)currencyCode;
 
 - (void)clearLocalStorage;

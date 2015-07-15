@@ -204,24 +204,6 @@ Boolean isHdWalletInitialized;
     [self.webView executeJSSynchronous:@"BlockchainSettingsAPI.change_currency(\"%@\")", currencyCode];
 }
 
-- (CurrencySymbol*)getLocalSymbol
-{
-    if (![self.webView isLoaded]) {
-        return nil;
-    }
-    
-    return [CurrencySymbol symbolFromDict:[[webView executeJSSynchronous:@"JSON.stringify(symbol_local)"] getJSONObject]];
-}
-
-- (CurrencySymbol*)getBTCSymbol
-{
-    if (![self.webView isLoaded]) {
-        return nil;
-    }
-    
-    return [CurrencySymbol symbolFromDict:[[webView executeJSSynchronous:@"JSON.stringify(symbol_btc)"] getJSONObject]];
-}
-
 - (void)cancelTxSigning
 {
     if (![self.webView isLoaded]) {
