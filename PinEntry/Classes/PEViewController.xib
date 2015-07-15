@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PEViewController">
             <connections>
-                <outlet property="activityIndicator" destination="SJe-Du-bWI" id="2f2-W2-8FU"/>
                 <outlet property="cancelButton" destination="CMP-hL-rTn" id="yUl-cd-Bad"/>
                 <outlet property="keyboard" destination="4" id="14"/>
                 <outlet property="pin0" destination="5" id="9"/>

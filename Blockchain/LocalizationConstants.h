@@ -162,6 +162,7 @@
 
 #define BC_STRING_ADDRESS_BOOK NSLocalizedString(@"Address book", nil)
 
+#define BC_STRING_LOADING NSLocalizedString(@"Loading", nil)
 #define BC_STRING_LOADING_DOWNLOADING_WALLET NSLocalizedString(@"Downloading Wallet", nil)
 #define BC_STRING_LOADING_DECRYPTING_WALLET NSLocalizedString(@"Decrypting Wallet", nil)
 #define BC_STRING_LOADING_LOADING_TRANSACTIONS NSLocalizedString(@"Loading transactions", nil)

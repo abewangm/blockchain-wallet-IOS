@@ -105,25 +105,8 @@ static PEViewController *VerifyController()
 	return n;
 }
 
--(void)setActivityIndicatorAnimated:(BOOL)animated {
-    
-    pinController->keyboard.isEnabled = !animated;
-    
-    pinController->pin0.alpha = animated ? 0.75f : 1.0f;
-    pinController->pin1.alpha = animated ? 0.75f : 1.0f;
-    pinController->pin2.alpha = animated ? 0.75f : 1.0f;
-    pinController->pin3.alpha = animated ? 0.75f : 1.0f;
-
-    if (animated)
-        [pinController.activityIndicator startAnimating];
-    else
-        [pinController.activityIndicator stopAnimating];
-}
-
 - (void)reset
 {
-    [self setActivityIndicatorAnimated:NO];
-    
     [pinController resetPin];
 }
 
