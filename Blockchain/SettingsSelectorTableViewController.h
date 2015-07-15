@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface SettingsSelectorTableViewController : UITableViewController
+@protocol CurrencySelectorDelegate <NSObject>
+-(void)changeLocalCurrencySuccess;
+@end
 
+@interface SettingsSelectorTableViewController : UITableViewController
+@property (nonatomic) id <CurrencySelectorDelegate> delegate;
 @property (nonatomic, copy) NSDictionary *itemsDictionary;
 @end

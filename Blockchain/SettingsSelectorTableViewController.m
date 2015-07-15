@@ -26,12 +26,11 @@
     return app.latestResponse.symbol_local;
 }
 
-- (void)changeLocalCurrencySuccess
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGE_LOCAL_CURRENCY_SUCCESS_NOTIFICATION_KEY object:nil];
-    [[NSUserDefaults standardUserDefaults] setValue:self.selectedCurrencyCode forKey:@"currency"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.tableView reloadData];
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self.delegate selector:@selector(changeLocalCurrencySuccess) name:CHANGE_LOCAL_CURRENCY_SUCCESS_NOTIFICATION_KEY object:nil];
+    [self changeCurrencySymbol:self.selectedCurrencyCode];
 }
 
 - (void)changeCurrencySymbol:(NSString *)code
@@ -79,9 +78,9 @@
     
     self.selectedCurrencyCode = currencyCode;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLocalCurrencySuccess) name:CHANGE_LOCAL_CURRENCY_SUCCESS_NOTIFICATION_KEY object:nil];
-    
-    [self changeCurrencySymbol:currencyCode];
+    [[NSUserDefaults standardUserDefaults] setValue:currencyCode forKey:@"currency"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.tableView reloadData];
 }
 
 @end

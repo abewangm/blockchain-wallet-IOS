@@ -10,11 +10,25 @@
 #import "SettingsSelectorTableViewController.h"
 #import "AppDelegate.h"
 
-@interface SettingsTableViewController ()
-
+@interface SettingsTableViewController () <CurrencySelectorDelegate>
+@property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @end
 
 @implementation SettingsTableViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.availableCurrenciesDictionary = [app.wallet getAvailableCurrencies];
+}
+
+- (void)changeLocalCurrencySuccess
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGE_LOCAL_CURRENCY_SUCCESS_NOTIFICATION_KEY object:nil];
+    
+    [self.tableView reloadData];
+}
 
 + (UIFont *)fontForCell
 {
@@ -35,11 +49,6 @@
 - (CurrencySymbol *)getBtcSymbol
 {
     return [app.wallet getBTCSymbol];
-}
-
-- (NSDictionary *)getAvailableCurrencies
-{
-    return [app.wallet getAvailableCurrencies];
 }
 
 #pragma mark - Segue
@@ -63,7 +72,8 @@
 {
     if ([segue.identifier isEqualToString:@"currency"]) {
         SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
-        settingsSelectorTableViewController.itemsDictionary = [self getAvailableCurrencies];
+        settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
+        settingsSelectorTableViewController.delegate = self;
     }
 }
 
@@ -140,8 +150,11 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
                 case 0: {
+                    NSString *preferredCurrencySymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"currency"];
+                    NSString *selectedCurrencyCode = preferredCurrencySymbol == nil ? [self getLocalSymbolFromLatestResponse].code : preferredCurrencySymbol;
+                    NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
-                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)", [self getLocalSymbolFromLatestResponse].name, @""];
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)", currencyName, @""];
                     return cell;
                 }
                 case 1: {
