@@ -848,7 +848,7 @@ BlockchainSettingsAPI.get_available_currencies = function() {
     return WalletStore.getCurrencies();
 }
 
-BlockchainSettingsAPI.change_local_currency = function(code) {
+BlockchainSettingsAPI.change_currency = function(code) {
     
     var success = function () {
         console.log('Changing local currency');
@@ -860,5 +860,5 @@ BlockchainSettingsAPI.change_local_currency = function(code) {
         device.execute('loading_stop');
     };
     
-    WalletStore.change_local_currency(code, success, error);
+    BlockchainSettingsAPI.change_local_currency(code, success, error);
 }

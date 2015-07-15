@@ -201,7 +201,7 @@ Boolean isHdWalletInitialized;
         return;
     }
     
-    [self.webView executeJSSynchronous:@"BlockchainSettingsAPI.change_local_currency(\"%@\")", currencyCode];
+    [self.webView executeJSSynchronous:@"BlockchainSettingsAPI.change_currency(\"%@\")", currencyCode];
 }
 
 - (CurrencySymbol*)getLocalSymbol
@@ -921,7 +921,7 @@ Boolean isHdWalletInitialized;
 - (void)on_change_local_currency_success
 {
     DLog(@"on_change_local_currency_success");
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:CHANGE_LOCAL_CURRENCY_SUCCESS_NOTIFICATION_KEY object:nil];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

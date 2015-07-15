@@ -140,6 +140,7 @@
 
 - (CurrencySymbol *)getLocalSymbol;
 - (CurrencySymbol *)getBTCSymbol;
+- (void)changeLocalCurrency:(NSString *)currencyCode;
 
 - (void)clearLocalStorage;
 

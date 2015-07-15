@@ -28,6 +28,7 @@
 
 - (CurrencySymbol *)getLocalSymbolFromLatestResponse
 {
+    // TODO: This needs to observe the change as well
     return app.latestResponse.symbol_local;
 }
 
@@ -63,7 +64,6 @@
     if ([segue.identifier isEqualToString:@"currency"]) {
         SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
         settingsSelectorTableViewController.itemsDictionary = [self getAvailableCurrencies];
-        settingsSelectorTableViewController.currentCurrencySymbol = [self getLocalSymbolFromLatestResponse];
     }
 }
 
@@ -141,7 +141,7 @@
             switch (indexPath.row) {
                 case 0: {
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
-                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)", [self getLocalSymbolFromLatestResponse].name, [self getLocalSymbolFromLatestResponse].symbol];
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)", [self getLocalSymbolFromLatestResponse].name, @""];
                     return cell;
                 }
                 case 1: {
