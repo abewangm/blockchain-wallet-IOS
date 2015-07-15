@@ -14,6 +14,7 @@
 		220E375719A3613600E06996 /* BCAddressSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E375919A3613600E06996 /* BCAddressSelectionView.xib */; };
 		220E375D19A3614900E06996 /* SendCoins.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E375F19A3614900E06996 /* SendCoins.xib */; };
 		220E376019A3614F00E06996 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E376219A3614F00E06996 /* MainWindow.xib */; };
+		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
 		232232171B44D02B00E5DF26 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232232161B44D02B00E5DF26 /* Upgrade.storyboard */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
@@ -319,6 +320,8 @@
 		220E375819A3613600E06996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BCAddressSelectionView.xib; sourceTree = "<group>"; };
 		220E375E19A3614900E06996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendCoins.xib; sourceTree = "<group>"; };
 		220E376119A3614F00E06996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAboutViewController.h; sourceTree = "<group>"; };
+		231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAboutViewController.m; sourceTree = "<group>"; };
 		232232161B44D02B00E5DF26 /* Upgrade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Upgrade.storyboard; sourceTree = "<group>"; };
 		232232181B44D4CB00E5DF26 /* UpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeViewController.h; sourceTree = "<group>"; };
 		232232191B44D4CB00E5DF26 /* UpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeViewController.m; sourceTree = "<group>"; };
@@ -849,6 +852,8 @@
 				23EA61C71B54282D0032B907 /* SettingsNavigationController.m */,
 				23EA61C91B5591260032B907 /* SettingsSelectorTableViewController.h */,
 				23EA61CA1B5591260032B907 /* SettingsSelectorTableViewController.m */,
+				231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */,
+				231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1188,6 +1193,7 @@
 				67EE1DCC19E3325900DBBFC9 /* ECSlidingInteractiveTransition.m in Sources */,
 				6775569919E752A00054699B /* BCWebViewController.m in Sources */,
 				67EE1DCD19E3325900DBBFC9 /* ECSlidingSegue.m in Sources */,
+				231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */,
 				9F61B89E151519EF0083C57A /* BCAddressSelectionView.m in Sources */,
 				FA6323361A43373300EB3974 /* Merchant.m in Sources */,
 				9F91B607151666EC00ACB32D /* BCCreateWalletView.m in Sources */,

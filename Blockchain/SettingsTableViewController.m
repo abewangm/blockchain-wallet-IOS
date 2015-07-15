@@ -8,7 +8,11 @@
 
 #import "SettingsTableViewController.h"
 #import "SettingsSelectorTableViewController.h"
+#import "SettingsAboutViewController.h"
 #import "AppDelegate.h"
+
+#define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
+#define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
 
 @interface SettingsTableViewController () <CurrencySelectorDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
@@ -61,8 +65,23 @@
             switch (indexPath.row) {
                 case 0: {
                     [self performSegueWithIdentifier:@"currency" sender:nil];
+                    return;
                 }
             }
+            return;
+        }
+        case 3: {
+            switch (indexPath.row) {
+                case 0: {
+                    [self performSegueWithIdentifier:@"about" sender:@"termsOfService"];
+                    return;
+                }
+                case 1: {
+                    [self performSegueWithIdentifier:@"about" sender:@"privacyPolicy"];
+                    return;
+                }
+            }
+            return;
         }
     }
 }
@@ -73,6 +92,13 @@
         SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
         settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
         settingsSelectorTableViewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"about"]) {
+        SettingsAboutViewController *aboutViewController = segue.destinationViewController;
+        if ([sender isEqualToString:@"termsOfService"]) {
+            aboutViewController.urlTargetString = TERMS_OF_SERVICE_URL;
+        } else if ([sender isEqualToString:@"privacyPolicy"]) {
+            aboutViewController.urlTargetString = PRIVACY_POLICY_URL;
+        }
     }
 }
 
@@ -164,6 +190,7 @@
             }
         }
         case 2: {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             switch (indexPath.row) {
                 case 0: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
@@ -192,6 +219,14 @@
                 }
             }
         }        default: return nil;
+    }
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 2: return nil;
+        default: return indexPath;
     }
 }
 
