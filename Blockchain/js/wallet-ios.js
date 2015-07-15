@@ -847,3 +847,18 @@ MyWallet.getNTransactionsPerPage = function() {
 BlockchainSettingsAPI.get_available_currencies = function() {
     return WalletStore.getCurrencies();
 }
+
+BlockchainSettingsAPI.change_local_currency = function(code) {
+    
+    var success = function () {
+        console.log('Changing local currency');
+        device.execute('on_change_local_currency_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error changing local currency: ' + e);
+        device.execute('loading_stop');
+    };
+    
+    WalletStore.change_local_currency(code, success, error);
+}

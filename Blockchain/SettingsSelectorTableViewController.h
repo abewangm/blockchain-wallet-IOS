@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface SettingsSelectorTableViewController : UITableViewController
 
 @property (nonatomic, copy) NSDictionary *itemsDictionary;
-
+@property (nonatomic) CurrencySymbol *currentCurrencySymbol;
 @end

@@ -14,6 +14,11 @@
 
 @implementation SettingsSelectorTableViewController
 
+- (NSString *)getCurrencySymbolFromCode:(NSString *)code
+{
+    return @"";
+}
+
 - (void)setItemsDictionary:(NSDictionary *)itemsDictionary
 {
     _itemsDictionary = itemsDictionary;
@@ -30,10 +35,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-    cell.detailTextLabel.text = self.keysArray[indexPath.row];
-    cell.textLabel.text = self.itemsDictionary[cell.detailTextLabel.text];
-
+    NSString *currencyCode = self.keysArray[indexPath.row];
+    if ([currencyCode isEqualToString:self.currentCurrencySymbol.code]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)", currencyCode, [self getCurrencySymbolFromCode:currencyCode]];
+    cell.textLabel.text = self.itemsDictionary[currencyCode];
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
 }
 
 
