@@ -104,7 +104,7 @@ SideMenuViewController *sideMenuViewController;
     // White status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:LOADING_TEXT_NOTIFICATION_KEY object:nil queue:nil usingBlock:^(NSNotification * notification) {
+    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
         self.loadingText = [notification object];
     }];
     
@@ -1102,7 +1102,7 @@ SideMenuViewController *sideMenuViewController;
         [self.tabViewController presentViewController:self.pinEntryViewController animated:YES completion:nil];
     }
     
-    [self.pinEntryViewController setActivityIndicatorAnimated:FALSE];
+    [self hideBusyView];
 }
 
 - (void)toggleSideMenu
@@ -1334,7 +1334,7 @@ SideMenuViewController *sideMenuViewController;
     NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"pinKey"];
     NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)_pin];
     
-    [self.pinEntryViewController setActivityIndicatorAnimated:TRUE];
+    [self showBusyViewWithLoadingText:BC_STRING_LOADING_VERIFYING];
     
     // Check if we have an internet connection
     // This only checks if a network interface is up. All other errors (including timeouts) are handled by JavaScript callbacks in Wallet.m
@@ -1364,7 +1364,7 @@ SideMenuViewController *sideMenuViewController;
     
     alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
         // Reset the pin entry field
-        [self.pinEntryViewController setActivityIndicatorAnimated:FALSE];
+        [self hideBusyView];
         [self.pinEntryViewController reset];
     };
     
@@ -1409,7 +1409,7 @@ SideMenuViewController *sideMenuViewController;
 
 - (void)didGetPinSuccess:(NSDictionary*)dictionary
 {
-    [self.pinEntryViewController setActivityIndicatorAnimated:FALSE];
+    [self hideBusyView];
     
     NSNumber * code = [dictionary objectForKey:@"code"]; //This is a status code from the server
     NSString * error = [dictionary objectForKey:@"error"]; //This is an error string from the server or nil
@@ -1483,7 +1483,7 @@ SideMenuViewController *sideMenuViewController;
 }
 
 - (void)didFailPutPin:(NSString*)value {
-    [self.pinEntryViewController setActivityIndicatorAnimated:FALSE];
+    [self hideBusyView];
     
     // If the server returns an "Invalid Numerical Value" response it means the user entered "0000" and we show a slightly different error message
     if ([@"Invalid Numerical Value" isEqual:value]) {
@@ -1502,7 +1502,7 @@ SideMenuViewController *sideMenuViewController;
 }
 
 - (void)didPutPinSuccess:(NSDictionary*)dictionary {
-    [self.pinEntryViewController setActivityIndicatorAnimated:FALSE];
+    [self hideBusyView];
     
     if (!app.wallet.password) {
         [self didFailPutPin:BC_STRING_CANNOT_SAVE_PIN_CODE_WHILE];
@@ -1553,7 +1553,7 @@ SideMenuViewController *sideMenuViewController;
     
     NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)_pin];
     
-    [self.pinEntryViewController setActivityIndicatorAnimated:TRUE];
+    [self showBusyViewWithLoadingText:BC_STRING_LOADING_VERIFYING];
     
     [self savePIN:pin];
 }

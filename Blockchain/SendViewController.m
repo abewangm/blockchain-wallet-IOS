@@ -36,14 +36,14 @@ BOOL displayingLocalSymbolSend;
 {
     sendProgressModalText.text = nil;
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:LOADING_TEXT_NOTIFICATION_KEY object:nil queue:nil usingBlock:^(NSNotification * notification) {
+    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
         
         sendProgressModalText.text = [notification object];
     }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:LOADING_TEXT_NOTIFICATION_KEY object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
 }
 
 - (void)viewDidLoad

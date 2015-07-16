@@ -745,7 +745,7 @@ Boolean isHdWalletInitialized;
 
 - (void)setLoadingText:(NSString*)message
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:LOADING_TEXT_NOTIFICATION_KEY object:message];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_LOADING_TEXT object:message];
 }
 
 - (void)makeNotice:(NSString*)type id:(NSString*)_id message:(NSString*)message

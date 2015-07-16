@@ -51,7 +51,6 @@
 @property (nonatomic, readwrite, weak) id <PEPinEntryControllerDelegate> pinDelegate;
 @property (nonatomic, readonly) BOOL verifyOnly;
 
--(void)setActivityIndicatorAnimated:(BOOL)animated;
 -(void)reset;
 
 + (PEPinEntryController *)pinVerifyController;
