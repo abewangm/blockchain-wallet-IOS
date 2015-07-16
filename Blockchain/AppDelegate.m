@@ -104,10 +104,10 @@ SideMenuViewController *sideMenuViewController;
     // White status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:LOADING_TEXT_NOTIFICATION_KEY object:nil queue:nil usingBlock:^(NSNotification * notification) {
+    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
         self.loadingText = [notification object];
     }];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:SHOW_PIN_NOTIFICATION_KEY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:NOTIFICATION_KEY_SHOW_PIN object:nil];
     
     _window.backgroundColor = [UIColor whiteColor];
     

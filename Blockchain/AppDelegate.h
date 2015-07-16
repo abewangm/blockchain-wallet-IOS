@@ -31,8 +31,8 @@
 #import "UpgradeViewController.h"
 
 #define SATOSHI 100000000
-#define LOADING_TEXT_NOTIFICATION_KEY @"SetLoadingText"
-#define SHOW_PIN_NOTIFICATION_KEY @"ShowPIN"
+#define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
+#define NOTIFICATION_KEY_SHOW_PIN @"ShowPIN"
 #define WebROOT @"https://blockchain.info/"
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
 
