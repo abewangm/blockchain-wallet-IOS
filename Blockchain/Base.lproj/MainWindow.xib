@@ -201,7 +201,7 @@ http://blockchain.info/wallet</string>
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mk4-63-3pL">
-                    <rect key="frame" x="247" y="46" width="65" height="30"/>
+                    <rect key="frame" x="246" y="46" width="63" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -209,7 +209,7 @@ http://blockchain.info/wallet</string>
                     <nil key="highlightedColor"/>
                 </label>
                 <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.25" id="acf-bJ-kgP">
-                    <rect key="frame" x="262" y="72" width="35" height="2"/>
+                    <rect key="frame" x="260" y="71" width="35" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </progressView>

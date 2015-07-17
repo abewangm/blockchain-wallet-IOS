@@ -34,8 +34,6 @@
     
     passwordTextField.textColor = [UIColor grayColor];
     password2TextField.textColor = [UIColor grayColor];
-    
-    [passwordTextField addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)prepareForModalPresentation
@@ -174,7 +172,7 @@
     return YES;
 }
 
-- (void)textFieldDidChange
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (passwordTextField.text.length == 0) {
         passwordFeedbackLabel.hidden = YES;
