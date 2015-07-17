@@ -779,7 +779,7 @@
 {
     DLog(@"did_decrypt");
     
-    self.sharedKey = [self.webView executeJSSynchronous:@"WalletStore.getSharedKey()"];
+    self.sharedKey = [self.webView executeJSSynchronous:@"MyWallet.wallet.sharedKey"];
     self.guid = [self.webView executeJSSynchronous:@"WalletStore.getGuid()"];
 
     if ([delegate respondsToSelector:@selector(walletDidDecrypt)])
@@ -1038,14 +1038,12 @@
 
 - (uint64_t)recommendedTransactionFeeForAddress:(NSString*)address amount:(uint64_t)amount
 {
-    NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
-    return [[self.webView executeJSSynchronous:@"MyWallet.recommendedTransactionFeeForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [amountString escapeStringForJS]] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
 }
 
 - (uint64_t)recommendedTransactionFeeForAccount:(int)account amount:(uint64_t)amount
 {
-    NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFeeForAccount(%d, \"%@\")", account, [amountString escapeStringForJS]] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
 }
 
 #pragma mark - Callbacks from JS to Obj-C for HD wallet

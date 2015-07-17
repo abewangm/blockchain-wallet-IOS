@@ -189,7 +189,7 @@ MyWalletPhone.getReceivingAddressForAccount = function(num) {
 };
 
 MyWalletPhone.recommendedTransactionFeeForAccount = function(num, amount) {
-    return MyWallet.recommendedTransactionFeeForAccount(MyWalletPhone.getIndexOfActiveAccount(num), amount);
+    return MyWallet.getBaseFee();
 };
 
 MyWalletPhone.setPbkdf2Iterations = function(iterations) {
@@ -306,7 +306,7 @@ MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAddress(from, value);
+    var fee = MyWallet.getBaseFee();
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
@@ -346,7 +346,7 @@ MyWalletPhone.quickSendFromAddressToAccount = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAddress(from, value);
+    var fee = MyWallet.getBaseFee();
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
@@ -386,7 +386,7 @@ MyWalletPhone.quickSendFromAccountToAddress = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAccount(MyWalletPhone.getIndexOfActiveAccount(from), value);
+    var fee = MyWallet.getBaseFee();
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
@@ -426,7 +426,7 @@ MyWalletPhone.quickSendFromAccountToAccount = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAccount(MyWalletPhone.getIndexOfActiveAccount(from), value);
+    var fee = MyWallet.getBaseFee();
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
