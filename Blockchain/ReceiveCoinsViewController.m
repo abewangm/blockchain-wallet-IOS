@@ -498,9 +498,9 @@ UIActionSheet *popupAddressArchive;
 - (IBAction)archiveAddressClicked:(id)sender
 {
     NSString *addr = self.clickedAddress;
-    NSInteger tag = [app.wallet tagForLegacyAddress:addr];
+    Boolean isArchived = [app.wallet isArchived:addr];
     
-    if (tag == 2) {
+    if (isArchived) {
         [app.wallet unArchiveLegacyAddress:addr];
     }
     else {

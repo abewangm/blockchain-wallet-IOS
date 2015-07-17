@@ -101,7 +101,6 @@
 
 - (void)archiveLegacyAddress:(NSString *)address;
 - (void)unArchiveLegacyAddress:(NSString *)address;
-- (void)removeLegacyAddress:(NSString *)address;
 
 - (void)sendPaymentFromAddress:(NSString*)fromAddress toAddress:(NSString*)toAddress satoshiValue:(NSString*)satoshiValue listener:(transactionProgressListeners*)listener;
 - (void)sendPaymentFromAddress:(NSString*)fromAddress toAccount:(int)toAccount satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener;
@@ -109,7 +108,7 @@
 - (void)sendPaymentFromAccount:(int)fromAccount toAccount:(int)toAccount satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
-- (NSInteger)tagForLegacyAddress:(NSString *)address;
+- (Boolean)isArchived:(NSString*)address;
 
 - (void)addToAddressBook:(NSString *)address label:(NSString *)label;
 
@@ -125,7 +124,6 @@
 - (NSArray *)allLegacyAddresses;
 - (NSArray *)archivedLegacyAddresses;
 
-- (BOOL)isDoubleEncrypted;
 - (BOOL)isInitialized;
 - (BOOL)hasEncryptedWalletData;
 
