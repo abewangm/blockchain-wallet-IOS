@@ -34,6 +34,8 @@
     
     passwordTextField.textColor = [UIColor grayColor];
     password2TextField.textColor = [UIColor grayColor];
+    
+    passwordFeedbackLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)prepareForModalPresentation
