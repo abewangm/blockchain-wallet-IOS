@@ -27,6 +27,7 @@
     IBOutlet UITextField *passwordTextField;
     IBOutlet UITextField *password2TextField;
     IBOutlet UILabel *passwordFeedbackLabel;
+    IBOutlet UIProgressView *passwordStrengthMeter;
 }
 
 - (IBAction)termsOfServiceClicked:(id)sender;
