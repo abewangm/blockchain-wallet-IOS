@@ -17,7 +17,6 @@
 		232232171B44D02B00E5DF26 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232232161B44D02B00E5DF26 /* Upgrade.storyboard */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
-		23D9D5011B5930B5009560EC /* PasswordStrengthChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9D5001B5930B5009560EC /* PasswordStrengthChecker.m */; };
 		670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */; };
 		670DF94B1A43BCB200CEA1EA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 670DF94A1A43BCB200CEA1EA /* Reachability.m */; };
 		6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6710DA0D1A8E82D80089DDED /* BCLine.m */; };
@@ -321,8 +320,6 @@
 		232232191B44D4CB00E5DF26 /* UpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeViewController.m; sourceTree = "<group>"; };
 		239539811B486C7100989667 /* UILabel+MultiLineAutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MultiLineAutoSize.h"; sourceTree = "<group>"; };
 		239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MultiLineAutoSize.m"; sourceTree = "<group>"; };
-		23D9D4FF1B5930B5009560EC /* PasswordStrengthChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrengthChecker.h; sourceTree = "<group>"; };
-		23D9D5001B5930B5009560EC /* PasswordStrengthChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStrengthChecker.m; sourceTree = "<group>"; };
 		670595A21AB0F59D00D2D6D9 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		670DF9491A43BCB200CEA1EA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -785,8 +782,6 @@
 				84F4BDF9197F21D700B7BF7B /* PairingCodeParser.m */,
 				673107F019F6D49F00BE6899 /* PrivateKeyReader.h */,
 				673107F119F6D49F00BE6899 /* PrivateKeyReader.m */,
-				23D9D4FF1B5930B5009560EC /* PasswordStrengthChecker.h */,
-				23D9D5001B5930B5009560EC /* PasswordStrengthChecker.m */,
 				9F1831F315176F2200FB3D52 /* Categories */,
 				9F0CBAAB15135DF200CD945D /* JavaScript */,
 				9F765F3A14BC7C3100048EFB /* Models */,
@@ -1134,7 +1129,6 @@
 				9F7480E315140EF200BC4292 /* TabViewController.m in Sources */,
 				844BC7AE1949BB620024160B /* JSBridgeWebView.m in Sources */,
 				670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */,
-				23D9D5011B5930B5009560EC /* PasswordStrengthChecker.m in Sources */,
 				9FB3638214B60128004BEA02 /* main.m in Sources */,
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
 				C9BE917D1945D8F600FD516D /* PEViewController.m in Sources */,

@@ -37,7 +37,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="gray" id="262">
-                            <rect key="frame" x="115" y="27.5" width="20" height="20"/>
+                            <rect key="frame" x="115" y="27" width="20" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.75" contentMode="left" text="loading" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="263">
@@ -200,6 +200,19 @@ http://blockchain.info/wallet</string>
                     <color key="textColor" red="0.69803921568627447" green="0.72941176470588232" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mk4-63-3pL">
+                    <rect key="frame" x="247" y="46" width="65" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.25" id="acf-bJ-kgP">
+                    <rect key="frame" x="262" y="72" width="35" height="2"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </progressView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -207,6 +220,8 @@ http://blockchain.info/wallet</string>
             <connections>
                 <outlet property="emailTextField" destination="LsW-69-Qon" id="DDn-ad-Tlz"/>
                 <outlet property="password2TextField" destination="397" id="452"/>
+                <outlet property="passwordFeedbackLabel" destination="Mk4-63-3pL" id="Vra-AS-94J"/>
+                <outlet property="passwordStrengthMeter" destination="acf-bJ-kgP" id="ytC-Jd-waT"/>
                 <outlet property="passwordTextField" destination="395" id="451"/>
             </connections>
             <point key="canvasLocation" x="133" y="-869"/>
@@ -567,7 +582,7 @@ http://blockchain.info/wallet</string>
         </viewController>
     </objects>
     <resources>
-        <image name="blockchain_logo" width="137" height="15"/>
+        <image name="blockchain_logo" width="139" height="15"/>
         <image name="home_icon.png" width="25" height="24"/>
         <image name="home_icon_hi.png" width="25" height="24"/>
         <image name="qrscanner" width="23" height="18"/>
