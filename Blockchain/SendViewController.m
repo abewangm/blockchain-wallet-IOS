@@ -684,7 +684,9 @@ BOOL displayingLocalSymbolSend;
                 if (amountStringFromDictionary != nil) {
                     amountString = amountStringFromDictionary;
                 } else {
-                    amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:[btcAmountField.text doubleValue] * app.latestResponse.symbol_btc.conversion / SATOSHI]];
+                    if (app.latestResponse.symbol_btc) {
+                        amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:[btcAmountField.text doubleValue] * app.latestResponse.symbol_btc.conversion / SATOSHI]];
+                    }
                 }
                 
                 if (app.latestResponse.symbol_btc) {
