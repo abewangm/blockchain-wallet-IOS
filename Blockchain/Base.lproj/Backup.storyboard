@@ -78,7 +78,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Backup Wallet" id="xmf-pK-R3X"/>
+                    <navigationItem key="navigationItem" title="Backup Wallet" id="xmf-pK-R3X">
+                        <barButtonItem key="backBarButtonItem" title=" " id="ImS-i1-GQj"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="backupIconImageView" destination="yp5-t8-iIg" id="Ame-DW-zKt"/>
                         <outlet property="backupWalletAgainButton" destination="1Hq-6D-ut1" id="8mZ-X7-6yf"/>
@@ -187,7 +189,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Backup Wallet" id="mYR-MQ-mS2"/>
+                    <navigationItem key="navigationItem" title="Backup Wallet" id="mYR-MQ-mS2">
+                        <barButtonItem key="backBarButtonItem" title=" " id="IKJ-fl-XgA"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="screenShotWarningLabel" destination="FDO-ui-cGo" id="Itv-FZ-zwG"/>
                         <outlet property="verifyButton" destination="EQM-OM-jK8" id="SJN-jF-NBO"/>
@@ -332,7 +336,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Backup Wallet" id="9A7-TT-PzN"/>
+                    <navigationItem key="navigationItem" title="Backup Wallet" id="9A7-TT-PzN">
+                        <barButtonItem key="backBarButtonItem" title=" " id="4ZW-B0-SQ4"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="word1" destination="9hR-tm-aq5" id="YVJ-E7-KJC"/>
                         <outlet property="word2" destination="kcC-2S-PfL" id="hCD-OZ-8tt"/>
@@ -357,7 +363,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="U0S-3m-R5I"/>
         <segue reference="dla-jc-Bti"/>
+        <segue reference="S74-9K-FTc"/>
     </inferredMetricsTieBreakers>
 </document>

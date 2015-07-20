@@ -12,58 +12,39 @@ import UIKit
 
     var wallet : Wallet?
     
-    // TODOBackup: Use native back button
-    var isTransitioning : Bool = false {
-        didSet {
-            if isTransitioning == true {
-                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "finishTransitioning", userInfo: nil, repeats: false)
-            }
-        }
-    }
-    
-    func finishTransitioning() {
-       isTransitioning = false
-    }
+    var backButtonCreated : Bool = false
+    var closeButton : UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var topBar = UIView(frame:CGRectMake(0, 0, self.view.frame.size.width, Constants.Measurements.DefaultHeaderHeight));
-        topBar.backgroundColor = Constants.Colors.BlockchainBlue
-        self.view.addSubview(topBar);
-        
-        var headerLabel = UILabel(frame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40));
-        headerLabel.font = UIFont.systemFontOfSize(22.0)
-        headerLabel.textColor = UIColor.whiteColor()
-        headerLabel.textAlignment = .Center;
-        headerLabel.adjustsFontSizeToFitWidth = true;
-        headerLabel.text = NSLocalizedString("Backup Wallet", comment: "");
-        topBar.addSubview(headerLabel);
-        
-        var backButton : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        backButton.frame = CGRectMake(0, 12, 85, 51);
-        backButton.contentHorizontalAlignment = .Left;
-        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
-        backButton.titleLabel?.font = UIFont.systemFontOfSize(15)
-        backButton.setImage(UIImage(named:"back_chevron_icon"), forState: .Normal);
-        backButton.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
-        backButton.addTarget(self, action:"backButtonClicked", forControlEvents: UIControlEvents.TouchUpInside);
-        topBar.addSubview(backButton);
-        
+        self.navigationBar.backgroundColor = Constants.Colors.BlockchainBlue
+        self.navigationItem.title = NSLocalizedString("Backup Wallet", comment: "");
+        self.navigationBar.titleTextAttributes = [NSFontAttributeName:  UIFont.systemFontOfSize(17), NSForegroundColorAttributeName: UIColor.whiteColor()]
+     
         let backupViewController = self.viewControllers.first as! BackupViewController
         backupViewController.wallet = self.wallet
     }
     
-    func backButtonClicked() {
-        if let currentViewController = self.visibleViewController {
-            if (!isTransitioning) {
-                if (currentViewController.isMemberOfClass(BackupViewController)) {
-                    dismissViewControllerAnimated(true, completion: nil)
-                } else {
-                    popViewControllerAnimated(true);
-                }
-                isTransitioning = true
-            }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if (viewControllers.count == 1 && !backButtonCreated) {
+            closeButton = UIButton.buttonWithType(UIButtonType.Custom) as? UIButton
+            closeButton!.frame = CGRectMake(12, 0, 80, 46);
+            closeButton!.contentHorizontalAlignment = .Left;
+            closeButton!.titleLabel?.font = UIFont.boldSystemFontOfSize(15)
+            closeButton!.setTitle(NSLocalizedString("Close", comment: ""), forState: .Normal);
+            closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
+            closeButton!.addTarget(self, action:"closeButtonClicked", forControlEvents: UIControlEvents.TouchUpInside);
+            navigationBar.addSubview(closeButton!);
+            backButtonCreated = true
+        } else {
+            closeButton!.removeFromSuperview()
+            backButtonCreated = false
         }
+    }
+    
+    func closeButtonClicked() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
