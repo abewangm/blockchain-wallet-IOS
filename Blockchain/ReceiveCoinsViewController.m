@@ -119,6 +119,12 @@ UIActionSheet *popupAddressArchive;
     [self reload];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    app.mainTitleLabel.text = BC_STRING_RECEIVE;
+}
+
 - (void)reload
 {
     self.activeKeys = [app.wallet activeLegacyAddresses];
@@ -498,9 +504,9 @@ UIActionSheet *popupAddressArchive;
 - (IBAction)archiveAddressClicked:(id)sender
 {
     NSString *addr = self.clickedAddress;
-    NSInteger tag = [app.wallet tagForLegacyAddress:addr];
+    Boolean isArchived = [app.wallet isArchived:addr];
     
-    if (tag == 2) {
+    if (isArchived) {
         [app.wallet unArchiveLegacyAddress:addr];
     }
     else {

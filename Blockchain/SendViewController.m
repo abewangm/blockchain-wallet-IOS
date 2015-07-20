@@ -36,14 +36,16 @@ BOOL displayingLocalSymbolSend;
 {
     sendProgressModalText.text = nil;
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:LOADING_TEXT_NOTIFICATION_KEY object:nil queue:nil usingBlock:^(NSNotification * notification) {
+    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
         
         sendProgressModalText.text = [notification object];
     }];
+    
+    app.mainTitleLabel.text = BC_STRING_SEND;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:LOADING_TEXT_NOTIFICATION_KEY object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
 }
 
 - (void)viewDidLoad
@@ -684,7 +686,9 @@ BOOL displayingLocalSymbolSend;
                 if (amountStringFromDictionary != nil) {
                     amountString = amountStringFromDictionary;
                 } else {
-                    amountString = btcAmountField.text;
+                    if (app.latestResponse.symbol_btc) {
+                        amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:[btcAmountField.text doubleValue] * app.latestResponse.symbol_btc.conversion / SATOSHI]];
+                    }
                 }
                 
                 if (app.latestResponse.symbol_btc) {

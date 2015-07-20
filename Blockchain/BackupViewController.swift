@@ -21,7 +21,7 @@ class BackupViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        backupWalletButton?.setTitle(NSLocalizedString("BACKUP WALLET", comment: ""), forState: .Normal)
+        backupWalletButton?.setTitle(NSLocalizedString("BACKUP FUNDS", comment: ""), forState: .Normal)
         backupWalletButton?.clipsToBounds = true
         backupWalletButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         

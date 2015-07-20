@@ -23,6 +23,7 @@
 #define BC_STRING_NO NSLocalizedString(@"No", nil)
 #define BC_STRING_YES NSLocalizedString(@"Yes", nil)
 #define BC_STRING_SEND NSLocalizedString(@"Send", nil)
+#define BC_STRING_RECEIVE NSLocalizedString(@"Receive", nil)
 #define BC_STRING_SENDING_TRANSACTION NSLocalizedString(@"Sending Transaction", nil)
 #define BC_STRING_FUNDS_AVAILABLE NSLocalizedString(@"%@ available", nil)
 
@@ -162,6 +163,7 @@
 
 #define BC_STRING_ADDRESS_BOOK NSLocalizedString(@"Address book", nil)
 
+#define BC_STRING_LOADING_VERIFYING NSLocalizedString (@"Verifying", nil)
 #define BC_STRING_LOADING_DOWNLOADING_WALLET NSLocalizedString(@"Downloading Wallet", nil)
 #define BC_STRING_LOADING_DECRYPTING_WALLET NSLocalizedString(@"Decrypting Wallet", nil)
 #define BC_STRING_LOADING_LOADING_TRANSACTIONS NSLocalizedString(@"Loading transactions", nil)
@@ -229,3 +231,4 @@
 #define BC_STRING_SETTINGS_ABOUT NSLocalizedString(@"About", nil)
 #define BC_STRING_SETTINGS_PRIVACY_POLICY NSLocalizedString(@"Privacy Policy", nil)
 #define BC_STRING_SETTINGS_TERMS_OF_SERVICE NSLocalizedString(@"Terms of Service", nil)
+#define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)

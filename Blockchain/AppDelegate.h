@@ -33,6 +33,7 @@
 #define SATOSHI 100000000
 #define LOADING_TEXT_NOTIFICATION_KEY @"SetLoadingText"
 #define CHANGE_LOCAL_CURRENCY_SUCCESS_NOTIFICATION_KEY @"ChangeLocalCurrency"
+#define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
 #define WebROOT @"https://blockchain.info/"
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
 
@@ -80,6 +81,9 @@
 @property (strong, nonatomic) IBOutlet SendViewController *sendViewController;
 @property (strong, nonatomic) IBOutlet MerchantMapViewController *merchantViewController;
 @property (strong, nonatomic) IBOutlet BCWebViewController *bcWebViewController;
+
+@property (weak, nonatomic) IBOutlet UIImageView *mainLogoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *mainTitleLabel;
 
 @property (nonatomic) BOOL showEmailWarning;
 

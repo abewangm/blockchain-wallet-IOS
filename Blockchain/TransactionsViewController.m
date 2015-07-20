@@ -218,4 +218,20 @@ int lastNumberTransactions = INT_MAX;
     [self reload];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    app.mainLogoImageView.hidden = NO;
+    app.mainTitleLabel.hidden = YES;
+    app.mainTitleLabel.frame = CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40);
+    app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    app.mainLogoImageView.hidden = YES;
+    app.mainTitleLabel.hidden = NO;
+}
+
 @end

@@ -34,6 +34,8 @@
     
     passwordTextField.textColor = [UIColor grayColor];
     password2TextField.textColor = [UIColor grayColor];
+    
+    passwordFeedbackLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)prepareForModalPresentation
@@ -172,16 +174,20 @@
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (passwordTextField.text.length == 0) {
+        passwordFeedbackLabel.hidden = YES;
+        passwordStrengthMeter.hidden = YES;
+    }
+}
+
 - (void)checkPasswordStrength
 {
-    NSString *password = passwordTextField.text;
+    passwordFeedbackLabel.hidden = NO;
+    passwordStrengthMeter.hidden = NO;
     
-    if (password.length == 0) {
-        passwordTextField.layer.borderColor = COLOR_TEXT_FIELD_BORDER_GRAY.CGColor;
-        passwordFeedbackLabel.text = BC_STRING_PASSWORD_MINIMUM_10_CHARACTERS;
-        passwordFeedbackLabel.textColor = [UIColor darkGrayColor];
-        return;
-    }
+    NSString *password = passwordTextField.text;
     
     UIColor *color;
     NSString *description;
@@ -208,7 +214,8 @@
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         passwordFeedbackLabel.text = description;
         passwordFeedbackLabel.textColor = color;
-        
+        passwordStrengthMeter.progress = passwordStrength/100;
+        passwordStrengthMeter.progressTintColor = color;
         passwordTextField.layer.borderColor = color.CGColor;
     }];
 }
