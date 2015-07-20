@@ -11,7 +11,8 @@ import UIKit
 @objc class BackupNavigationViewController: UINavigationController {
 
     var wallet : Wallet?
-    
+    var topBar : UIView?
+    var closeButton : UIButton?
     // TODOBackup: Use native back button
     var isTransitioning : Bool = false {
         didSet {
@@ -28,9 +29,9 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var topBar = UIView(frame:CGRectMake(0, 0, self.view.frame.size.width, Constants.Measurements.DefaultHeaderHeight));
-        topBar.backgroundColor = Constants.Colors.BlockchainBlue
-        self.view.addSubview(topBar);
+        topBar = UIView(frame:CGRectMake(0, 0, self.view.frame.size.width, Constants.Measurements.DefaultHeaderHeight));
+        topBar!.backgroundColor = Constants.Colors.BlockchainBlue
+        self.view.addSubview(topBar!);
         
         var headerLabel = UILabel(frame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40));
         headerLabel.font = UIFont.systemFontOfSize(22.0)
@@ -38,32 +39,42 @@ import UIKit
         headerLabel.textAlignment = .Center;
         headerLabel.adjustsFontSizeToFitWidth = true;
         headerLabel.text = NSLocalizedString("Backup Wallet", comment: "");
-        topBar.addSubview(headerLabel);
+        topBar!.addSubview(headerLabel);
         
-        var backButton : UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        backButton.frame = CGRectMake(0, 12, 85, 51);
-        backButton.contentHorizontalAlignment = .Left;
-        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
-        backButton.titleLabel?.font = UIFont.systemFontOfSize(15)
-        backButton.setImage(UIImage(named:"back_chevron_icon"), forState: .Normal);
-        backButton.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
-        backButton.addTarget(self, action:"backButtonClicked", forControlEvents: UIControlEvents.TouchUpInside);
-        topBar.addSubview(backButton);
+        closeButton = UIButton.buttonWithType(UIButtonType.Custom) as? UIButton
+        closeButton!.contentHorizontalAlignment = .Left;
+        closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+        closeButton!.titleLabel?.font = UIFont.systemFontOfSize(15)
+        closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
+        closeButton!.addTarget(self, action:"backButtonClicked", forControlEvents: UIControlEvents.TouchUpInside);
+        topBar!.addSubview(closeButton!);
         
         let backupViewController = self.viewControllers.first as! BackupViewController
         backupViewController.wallet = self.wallet
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if (viewControllers.count == 1) {
+            closeButton!.frame = CGRectMake(8, 15, 85, 51);
+            closeButton!.setTitle(NSLocalizedString("Close", comment: ""), forState: .Normal)
+            closeButton!.setImage(nil, forState: .Normal)
+        } else {
+            closeButton!.frame = CGRectMake(0, 12, 85, 51);
+            closeButton!.setTitle("", forState: .Normal)
+            closeButton!.setImage(UIImage(named:"back_chevron_icon"), forState: .Normal);
+        }
+    }
+    
     func backButtonClicked() {
-        if let currentViewController = self.visibleViewController {
-            if (!isTransitioning) {
-                if (currentViewController.isMemberOfClass(BackupViewController)) {
+        if (!isTransitioning) {
+            if (viewControllers.count == 1) {
                     dismissViewControllerAnimated(true, completion: nil)
                 } else {
                     popViewControllerAnimated(true);
                 }
-                isTransitioning = true
+            isTransitioning = true
             }
         }
-    }
 }
