@@ -54,13 +54,47 @@
     return app.latestResponse.symbol_btc;
 }
 
+- (void)verifyEmail
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL message:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY , BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, nil];
+    alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    [alertView show];
+}
+
 #pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"currency"]) {
+        SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
+        settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
+        settingsSelectorTableViewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"about"]) {
+        SettingsAboutViewController *aboutViewController = segue.destinationViewController;
+        if ([sender isEqualToString:@"termsOfService"]) {
+            aboutViewController.urlTargetString = TERMS_OF_SERVICE_URL;
+        } else if ([sender isEqualToString:@"privacyPolicy"]) {
+            aboutViewController.urlTargetString = PRIVACY_POLICY_URL;
+        }
+    }
+}
+
+#pragma mark - Table view data source
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     switch (indexPath.section) {
+        case 0: {
+            switch (indexPath.row) {
+                case 1: {
+                    [self verifyEmail];
+                }
+            }
+            return;
+        }
         case 1: {
             switch (indexPath.row) {
                 case 0: {
@@ -85,24 +119,6 @@
         }
     }
 }
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"currency"]) {
-        SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
-        settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
-        settingsSelectorTableViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:@"about"]) {
-        SettingsAboutViewController *aboutViewController = segue.destinationViewController;
-        if ([sender isEqualToString:@"termsOfService"]) {
-            aboutViewController.urlTargetString = TERMS_OF_SERVICE_URL;
-        } else if ([sender isEqualToString:@"privacyPolicy"]) {
-            aboutViewController.urlTargetString = PRIVACY_POLICY_URL;
-        }
-    }
-}
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -161,6 +177,7 @@
                 }
                 case 1: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     if (app.showEmailWarning) {
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;

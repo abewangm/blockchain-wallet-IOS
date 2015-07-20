@@ -231,4 +231,7 @@
 #define BC_STRING_SETTINGS_ABOUT NSLocalizedString(@"About", nil)
 #define BC_STRING_SETTINGS_PRIVACY_POLICY NSLocalizedString(@"Privacy Policy", nil)
 #define BC_STRING_SETTINGS_TERMS_OF_SERVICE NSLocalizedString(@"Terms of Service", nil)
-#define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
+#define BC_STRING_SETTINGS_VERIFY NSLocalizedString(@"Verify", nil)
+#define BC_STRING_SETTINGS_VERIFY_EMAIL NSLocalizedString(@"Verify Email", nil)
+#define BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE NSLocalizedString(@"Enter your verification code", nil)
+#define BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND NSLocalizedString(@"Resend verification email", nil)
