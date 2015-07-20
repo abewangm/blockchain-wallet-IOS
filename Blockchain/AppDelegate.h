@@ -80,6 +80,9 @@
 @property (strong, nonatomic) IBOutlet MerchantMapViewController *merchantViewController;
 @property (strong, nonatomic) IBOutlet BCWebViewController *bcWebViewController;
 
+@property (weak, nonatomic) IBOutlet UIImageView *mainLogoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *mainTitleLabel;
+
 @property (nonatomic) BOOL showEmailWarning;
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;

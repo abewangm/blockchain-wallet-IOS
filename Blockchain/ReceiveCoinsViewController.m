@@ -119,6 +119,12 @@ UIActionSheet *popupAddressArchive;
     [self reload];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    app.mainTitleLabel.text = BC_STRING_RECEIVE;
+}
+
 - (void)reload
 {
     self.activeKeys = [app.wallet activeLegacyAddresses];

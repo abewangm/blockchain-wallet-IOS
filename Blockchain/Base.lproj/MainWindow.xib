@@ -15,8 +15,10 @@
             <connections>
                 <outlet property="busyLabel" destination="263" id="265"/>
                 <outlet property="busyView" destination="260" id="264"/>
+                <outlet property="mainLogoImageView" destination="226" id="gjc-6g-P3E"/>
                 <outlet property="mainPasswordTextField" destination="626" id="633"/>
                 <outlet property="mainPasswordView" destination="623" id="634"/>
+                <outlet property="mainTitleLabel" destination="DIx-fJ-eKX" id="Cqj-bt-tZE"/>
                 <outlet property="manualPairView" destination="585" id="z6f-l0-Z4m"/>
                 <outlet property="newAccountView" destination="355" id="hcZ-mn-DpM"/>
                 <outlet property="pairingInstructionsView" destination="351" id="374"/>
@@ -507,6 +509,13 @@ http://blockchain.info/wallet</string>
                                     <action selector="menuClicked:" destination="3" eventType="touchUpInside" id="Jw6-EJ-48e"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DIx-fJ-eKX">
+                                <rect key="frame" x="85" y="17" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                     </view>

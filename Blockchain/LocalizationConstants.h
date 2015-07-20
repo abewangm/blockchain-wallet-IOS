@@ -23,6 +23,7 @@
 #define BC_STRING_NO NSLocalizedString(@"No", nil)
 #define BC_STRING_YES NSLocalizedString(@"Yes", nil)
 #define BC_STRING_SEND NSLocalizedString(@"Send", nil)
+#define BC_STRING_RECEIVE NSLocalizedString(@"Receive", nil)
 #define BC_STRING_SENDING_TRANSACTION NSLocalizedString(@"Sending Transaction", nil)
 #define BC_STRING_FUNDS_AVAILABLE NSLocalizedString(@"%@ available", nil)
 
