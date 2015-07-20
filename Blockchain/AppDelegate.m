@@ -58,6 +58,8 @@ BOOL showSendCoins = NO;
 
 SideMenuViewController *sideMenuViewController;
 
+void (^secondPasswordSuccess)(NSString *);
+
 #pragma mark - Lifecycle
 
 - (id)init
@@ -679,13 +681,22 @@ SideMenuViewController *sideMenuViewController;
 
 - (IBAction)secondPasswordClicked:(id)sender
 {
-    NSString * password = secondPasswordTextField.text;
+    NSString *password = secondPasswordTextField.text;
     
-    if (!validateSecondPassword || [wallet validateSecondPassword:password]) {
-        [app closeModalWithTransition:kCATransitionFade];
-    } else {
+    if ([password length] == 0) {
+        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+    } else if(validateSecondPassword && ![wallet validateSecondPassword:password]) {
         [app standardNotify:BC_STRING_SECOND_PASSWORD_INCORRECT];
         secondPasswordTextField.text = nil;
+    } else {
+        if (secondPasswordSuccess) {
+            // It takes ANIMATION_DURATION to dismiss the second password view, then a little extra to make sure any wait spinners start spinning before we execute the success function.
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5*ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                secondPasswordSuccess(password);
+                secondPasswordSuccess = nil;
+            });
+        }
+        [app closeModalWithTransition:kCATransitionFade];
     }
 }
 
@@ -695,22 +706,9 @@ SideMenuViewController *sideMenuViewController;
     
     validateSecondPassword = TRUE;
     
+    secondPasswordSuccess = success;
+    
     [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeClose headerText:BC_STRING_SECOND_PASSWORD_REQUIRED onDismiss:^() {
-        NSString * password = secondPasswordTextField.text;
-        
-        if ([password length] == 0) {
-            if (error) error(BC_STRING_NO_PASSWORD_ENTERED);
-        } else if(![wallet validateSecondPassword:password]) {
-            if (error) error(BC_STRING_SECOND_PASSWORD_INCORRECT);
-        } else {
-            if (success) {
-                // It takes ANIMATION_DURATION to dismiss the second password view, then a little extra to make sure any wait spinners start spinning before we execute the success function.
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5*ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    success(password);
-                });
-            }
-        }
-        
         secondPasswordTextField.text = nil;
     } onResume:nil];
     

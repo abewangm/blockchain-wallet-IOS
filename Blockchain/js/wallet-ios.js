@@ -109,7 +109,14 @@ MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
 
     device.execute('loading_start_upgrade_to_hd');
 
-    MyWallet.upgradeToHDWallet(firstAccountName, MyWalletPhone.getSecondPassword(success, error), success, error);
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            MyWallet.upgradeToHDWallet(firstAccountName, pw, success, error);
+        });
+    }
+    else {
+        MyWallet.upgradeToHDWallet(firstAccountName, null, success, error);
+    }
 };
 
 MyWalletPhone.createAccount = function(label) {
@@ -127,7 +134,14 @@ MyWalletPhone.createAccount = function(label) {
         device.execute('loading_stop');
     };
 
-    MyWallet.createAccount(label, MyWalletPhone.getSecondPassword(success, error), success, error);
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            MyWallet.createAccount(label, pw, success, error);
+        });
+    }
+    else {
+        MyWallet.createAccount(label, null, success, error);
+    }
 };
 
 MyWalletPhone.getActiveAccounts = function() {
@@ -201,7 +215,14 @@ MyWalletPhone.setPbkdf2Iterations = function(iterations) {
         console.log('Error updating PBKDF2 iterations');
     };
 
-    MyWallet.setPbkdf2Iterations(iterations, success, error, MyWalletPhone.getSecondPassword(success, error));
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            MyWallet.setPbkdf2Iterations(iterations, success, error, pw);
+        });
+    }
+    else {
+        MyWallet.setPbkdf2Iterations(iterations, success, error, null);
+    }
 };
 
 MyWalletPhone.getLegacyArchivedAddresses = function() {
@@ -309,9 +330,18 @@ MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
     var fee = MyWallet.getBaseFee();
     var note = null;
 
-    Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
-        .fromAddress(from, value, fee)
-        .toAddress(to);
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            Spender(note, success, error, listener, pw)
+                .fromAddress(from, value, fee)
+                .toAddress(to);
+        });
+    }
+    else {
+        Spender(note, success, error, listener, null)
+            .fromAddress(from, value, fee)
+            .toAddress(to);
+    }
 
     return id;
 };
@@ -349,9 +379,18 @@ MyWalletPhone.quickSendFromAddressToAccount = function(from, to, valueString) {
     var fee = MyWallet.getBaseFee();
     var note = null;
 
-    Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
-        .fromAddress(from, value, fee)
-        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            Spender(note, success, error, listener, pw)
+                .fromAddress(from, value, fee)
+                .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+        });
+    }
+    else {
+        Spender(note, success, error, listener, null)
+            .fromAddress(from, value, fee)
+            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+    }
 
     return id;
 };
@@ -389,9 +428,18 @@ MyWalletPhone.quickSendFromAccountToAddress = function(from, to, valueString) {
     var fee = MyWallet.getBaseFee();
     var note = null;
 
-    Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
-        .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
-        .toAddress(to);
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            Spender(note, success, error, listener, pw)
+                .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
+                .toAddress(to);
+        });
+    }
+    else {
+        Spender(note, success, error, listener, null)
+            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
+            .toAddress(to);
+    }
 
     return id;
 };
@@ -429,9 +477,18 @@ MyWalletPhone.quickSendFromAccountToAccount = function(from, to, valueString) {
     var fee = MyWallet.getBaseFee();
     var note = null;
 
-    Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
-        .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
-        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            Spender(note, success, error, listener, pw)
+                .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
+                .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+        });
+    }
+    else {
+        Spender(note, success, error, listener, null)
+            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
+            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+    }
 
     return id;
 };
@@ -697,7 +754,14 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
         device.execute('on_error_adding_private_key:', ['Key already imported']);
     };
 
-    MyWallet.importPrivateKey(privateKeyString, MyWalletPhone.getSecondPassword(success, error), MyWalletPhone.getPrivateKeyPassword, success, alreadyImportedCallback, error);
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            MyWallet.importPrivateKey(privateKeyString, pw, MyWalletPhone.getPrivateKeyPassword, success, alreadyImportedCallback, error);
+        });
+    }
+    else {
+        MyWallet.importPrivateKey(privateKeyString, null, MyWalletPhone.getPrivateKeyPassword, success, alreadyImportedCallback, error);
+    }
 };
 
 MyWalletPhone.getRecoveryPhrase = function(secondPassword) {
@@ -783,24 +847,11 @@ MyWalletPhone.getPrivateKeyPassword = function(callback) {
                    }, function(msg) { console.log('Error' + msg); });
 };
 
-MyWalletPhone.getSecondPassword = function(success, error) {
-    var fun = function(callback) {
-        // Due to the way the JSBridge handles calls with success/error callbacks, we need a first argument that can be ignored
-        device.execute("getSecondPassword:", ["discard"], function(pw) {
-                       callback(pw,
-                                function () {
-                                    console.log('Second password correct');
-                                },
-                                function () {
-                                    console.log('Second password incorrect');
-                                });
-                       }, function(msg) {
-                           console.log('Error: ' + msg);
-                           error && error('');
-                       });
-    };
-    
-    return fun;
+MyWalletPhone.getSecondPassword = function(callback) {
+    // Due to the way the JSBridge handles calls with success/error callbacks, we need a first argument that can be ignored
+    device.execute("getSecondPassword:", ["discard"], function(pw) {
+        callback(pw);
+    }, function() {});
 };
 
 
