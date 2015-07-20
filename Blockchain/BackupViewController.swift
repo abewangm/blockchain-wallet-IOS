@@ -50,6 +50,9 @@ class BackupViewController: UIViewController {
         if segue.identifier == "backupWords" {
             let vc = segue.destinationViewController as! BackupWordsViewController
             vc.wallet = wallet
+            if (sender != nil) {
+                vc.hasEnteredPin = true;
+            }
         }
         else if segue.identifier == "verifyBackup" {
             let vc = segue.destinationViewController as! BackupVerifyViewController

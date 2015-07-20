@@ -44,7 +44,7 @@ $(document).ready(function() {
 // Register for JS event handlers and forward to Obj-C handlers
 
 WalletStore.addEventListener(function (event, obj) {
-    var eventsWithObjCHandlers = ["did_fail_set_guid", "did_multiaddr", "did_set_latest_block", "error_restoring_wallet", "logging_out", "on_backup_wallet_start", "on_backup_wallet_error", "on_backup_wallet_success", "on_block", "on_tx", "ws_on_close", "ws_on_open", "hd_wallet_set", "did_load_wallet"];
+    var eventsWithObjCHandlers = ["did_fail_set_guid", "did_multiaddr", "did_set_latest_block", "error_restoring_wallet", "logging_out", "on_backup_wallet_start", "on_backup_wallet_error", "on_backup_wallet_success", "on_block", "on_tx", "ws_on_close", "ws_on_open", "did_load_wallet"];
 
     if (event == 'msg') {
         if (obj.type == 'error') {
@@ -131,7 +131,7 @@ MyWalletPhone.createAccount = function(label) {
 };
 
 MyWalletPhone.getActiveAccounts = function() {
-    var accounts = MyWallet.getAccounts();
+    var accounts = MyWallet.wallet.hdwallet.accounts;
     
     var activeAccounts = accounts.filter(function(account) { return account.archived === false; });
     
@@ -147,7 +147,7 @@ MyWalletPhone.getIndexOfActiveAccount = function(num) {
 };
 
 MyWalletPhone.getDefaultAccountIndex = function() {
-    var index = WalletStore.getDefaultAccountIndex();
+    var index = MyWallet.wallet.hdwallet.defaultAccountIndex;
 
     var activeAccounts = MyWalletPhone.getActiveAccounts();
 
@@ -173,11 +173,11 @@ MyWalletPhone.getAccountsCount = function() {
 };
 
 MyWalletPhone.getBalanceForAccount = function(num) {
-    return MyWallet.getBalanceForAccount(MyWalletPhone.getIndexOfActiveAccount(num));
+    return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].balance;
 };
 
 MyWalletPhone.getLabelForAccount = function(num) {
-    return MyWallet.getLabelForAccount(MyWalletPhone.getIndexOfActiveAccount(num));
+    return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].label;
 };
 
 MyWalletPhone.setLabelForAccount = function(num, label) {
@@ -185,11 +185,11 @@ MyWalletPhone.setLabelForAccount = function(num, label) {
 };
 
 MyWalletPhone.getReceivingAddressForAccount = function(num) {
-    return MyWallet.getReceivingAddressForAccount(MyWalletPhone.getIndexOfActiveAccount(num));
+    return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].receiveAddress;
 };
 
 MyWalletPhone.recommendedTransactionFeeForAccount = function(num, amount) {
-    return MyWallet.recommendedTransactionFeeForAccount(MyWalletPhone.getIndexOfActiveAccount(num), amount);
+    return MyWallet.getBaseFee();
 };
 
 MyWalletPhone.setPbkdf2Iterations = function(iterations) {
@@ -204,7 +204,13 @@ MyWalletPhone.setPbkdf2Iterations = function(iterations) {
     MyWallet.setPbkdf2Iterations(iterations, success, error, MyWalletPhone.getSecondPassword(success, error));
 };
 
-MyWalletPhone.fetchWalletJson = function(user_guid, shared_key, resend_code, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, other_error) {
+MyWalletPhone.getLegacyArchivedAddresses = function() {
+    return MyWallet.wallet.addresses.filter(function (addr) {
+        return MyWallet.wallet.key(addr).archived === true;
+    });
+};
+
+MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, other_error) {
     // Timing
     var t0 = new Date().getTime(), t1;
     
@@ -245,7 +251,7 @@ MyWalletPhone.fetchWalletJson = function(user_guid, shared_key, resend_code, inp
         
         device.execute('did_load_wallet');
         
-        BlockchainAPI.get_balances(WalletStore.getLegacyArchivedAddresses(), function(result) {}, function(error) {});
+        BlockchainAPI.get_balances(MyWalletPhone.getLegacyArchivedAddresses(), function(result) {}, function(error) {});
     };
     
     var success = function() {
@@ -253,20 +259,21 @@ MyWalletPhone.fetchWalletJson = function(user_guid, shared_key, resend_code, inp
     };
     
     var other_error = function(e) {
-        console.log('fetchWalletJson: other error: ' + e);
+        console.log('login: other error: ' + e);
         device.execute('loading_stop');
         device.execute('error_other_decrypting_wallet:', [e]);
     };
     
     var needs_two_factor_code = function(type) {
-        console.log('fetchWalletJson: needs 2fa of type: ' + MyWallet.get2FATypeString());
+        console.log('login: needs 2fa of type: ' + MyWallet.get2FATypeString());
         device.execute('loading_stop');
         device.execute('on_fetch_needs_two_factor_code');
     };
     
     device.execute('loading_start_download_wallet');
     
-    MyWallet.fetchWalletJson(user_guid, shared_key, resend_code, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, null, other_error, fetch_success, decrypt_success, build_hd_success);
+    twoFACode = null;
+    MyWallet.login(user_guid, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, null, other_error, fetch_success, decrypt_success, build_hd_success);
 };
 
 MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
@@ -299,7 +306,7 @@ MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAddress(from, value);
+    var fee = MyWallet.getBaseFee();
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
@@ -339,7 +346,7 @@ MyWalletPhone.quickSendFromAddressToAccount = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAddress(from, value);
+    var fee = MyWallet.getBaseFee();
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
@@ -379,7 +386,7 @@ MyWalletPhone.quickSendFromAccountToAddress = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAccount(MyWalletPhone.getIndexOfActiveAccount(from), value);
+    var fee = MyWallet.getBaseFee();
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
@@ -419,7 +426,7 @@ MyWalletPhone.quickSendFromAccountToAccount = function(from, to, valueString) {
 
     var value = parseInt(valueString);
 
-    var fee = MyWallet.recommendedTransactionFeeForAccount(MyWalletPhone.getIndexOfActiveAccount(from), value);
+    var fee = MyWallet.getBaseFee();
     var note = null;
 
     Spender(note, success, error, listener, MyWalletPhone.getSecondPassword(success, error))
@@ -661,11 +668,11 @@ MyWalletPhone.getMultiAddrResponse = function() {
     var obj = {};
 
     obj.transactions = WalletStore.getTransactions();
-    obj.total_received = WalletStore.getTotalReceived();
-    obj.total_sent = WalletStore.getTotalSent();
-    obj.final_balance = WalletStore.getFinalBalance();
-    obj.n_transactions = WalletStore.getNTransactions();
-    obj.addresses = WalletStore.getAllLegacyAddresses();
+    obj.total_received = MyWallet.wallet.totalReceived;
+    obj.total_sent = MyWallet.wallet.totalSent;
+    obj.final_balance = MyWallet.wallet.finalBalance;
+    obj.n_transactions = MyWallet.wallet.numberTx;
+    obj.addresses = MyWallet.wallet.addresses;
 
     obj.symbol_local = symbol_local;
     obj.symbol_btc = symbol_btc;
@@ -694,18 +701,9 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
 };
 
 MyWalletPhone.getRecoveryPhrase = function(secondPassword) {
-    var success = function(phrase) {
-        console.log('Get recovery phrase success');
-        
-        device.execute('on_success_get_recovery_phrase:', [phrase]);
-    };
-    var error = function(e) {
-        console.log('Get recovery phrase Error');
-        
-        device.execute('on_error_get_recovery_phrase:', [''+e]);
-    };
+    var recoveryPhrase = MyWallet.wallet.getMnemonic(secondPassword);
     
-    MyWallet.getHDWalletPassphraseString(function(callback) { callback(secondPassword, function(){}, function(){}) }, success, error);
+    device.execute('on_success_get_recovery_phrase:', [recoveryPhrase]);
 };
 
 // Shared functions
