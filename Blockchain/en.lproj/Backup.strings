@@ -6,7 +6,7 @@
 "6zt-Xf-txg.text" = "Press and hold to reveal the word";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Backup Wallet";
+"9A7-TT-PzN.title" = "Backup Funds";
 
 /* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
 "9Hu-uO-gJl.text" = "You have not backed up your wallet yet";

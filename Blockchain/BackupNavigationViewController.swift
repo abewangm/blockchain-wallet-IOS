@@ -38,7 +38,7 @@ import UIKit
         headerLabel.textColor = UIColor.whiteColor()
         headerLabel.textAlignment = .Center;
         headerLabel.adjustsFontSizeToFitWidth = true;
-        headerLabel.text = NSLocalizedString("Backup Wallet", comment: "");
+        headerLabel.text = NSLocalizedString("Backup Funds", comment: "");
         topBar!.addSubview(headerLabel);
         
         closeButton = UIButton.buttonWithType(UIButtonType.Custom) as? UIButton
