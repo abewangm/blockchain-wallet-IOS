@@ -14,7 +14,7 @@
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
 
-@interface SettingsTableViewController () <CurrencySelectorDelegate>
+@interface SettingsTableViewController () <CurrencySelectorDelegate, UIAlertViewDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @end
 
@@ -59,6 +59,22 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL message:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY , BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
     [alertView show];
+}
+
+#pragma mark AlertView Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 1: {
+            NSLog(@"verify");
+            return;
+        }
+        case 2: {
+            NSLog(@"resend");
+            return;
+        }
+    }
 }
 
 #pragma mark - Segue
