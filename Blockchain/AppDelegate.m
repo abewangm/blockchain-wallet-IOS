@@ -107,7 +107,6 @@ SideMenuViewController *sideMenuViewController;
     [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
         self.loadingText = [notification object];
     }];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:NOTIFICATION_KEY_SHOW_PIN object:nil];
     
     _window.backgroundColor = [UIColor whiteColor];
     
@@ -1001,24 +1000,16 @@ SideMenuViewController *sideMenuViewController;
     [_tabViewController presentViewController:_bcWebViewController animated:YES completion:nil];
 }
 
-- (void)showBackupAfterPinEntry:(BOOL)isAfterPinEntry
+- (void)showBackup
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Backup" bundle: nil];
-    
-    self.backupNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
+    BackupNavigationViewController *backupNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
     
     // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
-    self.backupNavigationViewController.wallet = self.wallet;
+    backupNavigationController.wallet = self.wallet;
     
-    self.backupNavigationViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    __weak AppDelegate *weakSelf = self;
-    
-    [_tabViewController presentViewController:self.backupNavigationViewController animated:YES completion:^{
-        if (isAfterPinEntry) {
-            [weakSelf.backupNavigationViewController.visibleViewController performSegueWithIdentifier:@"backupWords" sender:weakSelf];
-        }
-    }];
+    backupNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [_tabViewController presentViewController:backupNavigationController animated:YES completion:nil];
 }
 
 - (void)showSupport
@@ -1080,10 +1071,6 @@ SideMenuViewController *sideMenuViewController;
     }
     else {
         [_tabViewController dismissViewControllerAnimated:animated completion:^{ }];
-    }
-    
-    if (self.backupNavigationViewController != nil) {
-        [self showBackupAfterPinEntry:YES];
     }
 }
 
@@ -1192,7 +1179,7 @@ SideMenuViewController *sideMenuViewController;
 
 - (IBAction)backupClicked:(id)sender
 {
-    [app showBackupAfterPinEntry:NO];
+    [app showBackup];
 }
 
 - (IBAction)supportClicked:(id)sender

@@ -21,7 +21,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     var wallet : Wallet?
     var wordLabels: [UILabel]?
     var isVerifying = false
-    var hasEnteredPin = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,14 +66,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         wordsScrollView?.clipsToBounds = false
-
-        if (!hasEnteredPin) {
-            dismissViewControllerAnimated(false, completion: {self.showPinEntry()} )
-        }
-    }
-    
-    func showPinEntry () {
-        NSNotificationCenter.defaultCenter().postNotificationName("ShowPIN", object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
