@@ -185,6 +185,8 @@
 
 // Settings
 - (NSDictionary *)getAvailableCurrencies;
-- (void)getUserInfo;
+- (void)getAccountInfo;
+- (void)changeEmail:(NSString *)newEmailString;
+- (void)resendVerificationEmail:(NSString *)emailString;
 
 @end

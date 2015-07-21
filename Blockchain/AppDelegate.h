@@ -31,10 +31,14 @@
 #import "UpgradeViewController.h"
 
 #define SATOSHI 100000000
-#define LOADING_TEXT_NOTIFICATION_KEY @"SetLoadingText"
+
+#define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
+
 #define NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS @"ChangeLocalCurrency"
 #define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
-#define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
+#define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
+#define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
+
 #define WebROOT @"https://blockchain.info/"
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
 

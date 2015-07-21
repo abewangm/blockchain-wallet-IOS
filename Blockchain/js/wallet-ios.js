@@ -918,6 +918,7 @@ MyWallet.getNTransactionsPerPage = function() {
 MyWalletPhone.get_user_info = function () {
     
     var success = function (data) {
+        console.log('Getting account info');
         var accountInfo = JSON.stringify(data, null, 2);
         device.execute('on_get_account_info_success:', [accountInfo]);
     }
@@ -928,6 +929,36 @@ MyWalletPhone.get_user_info = function () {
     };
     
     BlockchainSettingsAPI.get_account_info(success, error);
+}
+
+MyWalletPhone.change_email_account = function(email) {
+    
+    var success = function () {
+        console.log('Changing email');
+        device.execute('on_change_email_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error changing email: ' + e);
+        device.execute('loading_stop');
+    };
+    
+    BlockchainSettingsAPI.change_email(email, success, error);
+}
+
+MyWalletPhone.resend_verification_email = function(email) {
+    
+    var success = function () {
+        console.log('Resending verification email');
+        device.execute('on_resend_verification_email_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error resending verification email: ' + e);
+        device.execute('loading_stop');
+    };
+    
+    BlockchainSettingsAPI.resendEmailConfirmation(email, success, error);
 }
 
 MyWalletPhone.get_available_currencies = function() {

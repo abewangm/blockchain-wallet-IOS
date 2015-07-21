@@ -16,8 +16,9 @@
 
 #define ALERTVIEW_TAG_VERIFY_EMAIL 5;
 #define ALERTVIEW_TAG_ADD_EMAIL 4;
+#define TEXTFIELD_TAG_VERIFY_EMAIL 55;
 
-@interface SettingsTableViewController () <CurrencySelectorDelegate, UIAlertViewDelegate>
+@interface SettingsTableViewController () <CurrencySelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
 
@@ -33,13 +34,15 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         self.accountInfoDictionary = note.userInfo;
     }];
-    [app.wallet getUserInfo];
+    
+    [app.wallet getAccountInfo];
     self.availableCurrenciesDictionary = [app.wallet getAvailableCurrencies];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
 }
 
 - (void)setAccountInfoDictionary:(NSDictionary *)accountInfoDictionary
@@ -97,15 +100,45 @@
 
 - (void)alertViewToVerifyEmail
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL message:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY , BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL message:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.tag = TEXTFIELD_TAG_VERIFY_EMAIL;
+    textField.delegate = self;
+    textField.returnKeyType = UIReturnKeyDone;
     alertView.tag = ALERTVIEW_TAG_VERIFY_EMAIL;
     [alertView show];
 }
 
-- (void)userAddedEmail:(NSString *)emailString
+- (void)resendVerificationEmail
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resendVerificationEmailSuccess) name:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
+}
+
+- (void)resendVerificationEmailSuccess
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
+    
     [self alertViewToVerifyEmail];
+}
+
+- (void)changeEmail:(NSString *)emailString
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
+
+    [app.wallet changeEmail:emailString];
+}
+
+- (void)changeEmailSuccess
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
+    
+    [self alertViewToVerifyEmail];
+}
+
+- (void)verifyEmail
+{
+    NSLog(@"verifying email");
 }
 
 #pragma mark AlertView Delegate
@@ -116,7 +149,7 @@
         case 4: {switch (buttonIndex) {
             case 1: {
                 NSLog(@"add email");
-                [self userAddedEmail:[alertView textFieldAtIndex:0].text];
+                [self changeEmail:[alertView textFieldAtIndex:0].text];
                 return;
             }
         }
@@ -125,17 +158,28 @@
         case 5: {
             switch (buttonIndex) {
                 case 1: {
-                    NSLog(@"verify");
+                    NSLog(@"resend");
                     return;
                 }
                 case 2: {
-                    NSLog(@"resend");
+                    NSLog(@"change");
                     return;
                 }
             }
             return;
         }
     }
+}
+
+#pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField.tag == 55) {
+        [self verifyEmail];
+    }
+    
+    return YES;
 }
 
 #pragma mark - Segue

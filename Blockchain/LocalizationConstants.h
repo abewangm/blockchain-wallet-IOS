@@ -235,3 +235,4 @@
 #define BC_STRING_SETTINGS_VERIFY_EMAIL NSLocalizedString(@"Verify Email", nil)
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE NSLocalizedString(@"Enter your verification code", nil)
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND NSLocalizedString(@"Resend verification email", nil)
+#define BC_STRING_SETTINGS_CHANGE_EMAIL NSLocalizedString(@"Change email", nil)

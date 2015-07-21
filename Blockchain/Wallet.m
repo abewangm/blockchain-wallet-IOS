@@ -191,16 +191,34 @@
         return;
     }
     
-    [self.webView executeJSSynchronous:@"MyWalletPhone.change_currency(\"%@\")", currencyCode];
+    [self.webView executeJS:@"MyWalletPhone.change_currency(\"%@\")", currencyCode];
 }
 
-- (void)getUserInfo
+- (void)getAccountInfo
 {
     if (![self isInitialized]) {
         return;
     }
     
     [self.webView executeJS:@"JSON.stringify(MyWalletPhone.get_user_info())"];
+}
+
+- (void)changeEmail:(NSString *)newEmailString
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.change_email_account(\"%@\")", newEmailString];
+}
+
+- (void)resendVerificationEmail:(NSString *)emailString
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.resend_verification_email(\"%@\")", emailString];
 }
 
 - (void)cancelTxSigning
@@ -919,6 +937,17 @@
     DLog(@"on_get_account_info");
     NSDictionary *accountInfoDictionary = [accountInfo getJSONObject];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil userInfo:accountInfoDictionary];
+}
+
+- (void)on_change_email_success
+{
+    DLog(@"on_change_email_success");
+}
+
+- (void)on_resend_verification_email_success
+{
+    DLog(@"on_resend_verification_email_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
