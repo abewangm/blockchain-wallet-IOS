@@ -69,10 +69,16 @@ int accountEntries = 0;
     tapToCloseGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSideMenu)];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
+}
+
 // Reset the swipe gestures when view disappears - we have to wait until it's gone and can't do it in the delegate
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [self resetSideMenuGestures];
+    // [self resetSideMenuGestures];
 }
 
 - (void)resetSideMenuGestures
@@ -168,7 +174,7 @@ int accountEntries = 0;
     }
     // SideMenu will slide out
     else if (operation == ECSlidingViewControllerOperationResetFromRight) {
-        // Everything happens in viewDidDisappear: which is called after the slide animation is done
+        [self resetSideMenuGestures];
     }
     
     return nil;
@@ -183,6 +189,8 @@ int accountEntries = 0;
             return;
         }
     }
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -209,10 +217,6 @@ int accountEntries = 0;
     } else if (row == 6) {
         [app logoutClicked:nil];
     }
-    
-    [self resetSideMenuGestures];
-    
-    [app toggleSideMenu];
 }
 
 #pragma mark - UITableView Datasource
