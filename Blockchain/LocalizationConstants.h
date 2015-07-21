@@ -132,7 +132,6 @@
 #define BC_STRING_CONFIRM_PIN NSLocalizedString(@"Confirm your PIN", nil)
 #define BC_STRING_INCORRECT_PIN_RETRY NSLocalizedString(@"Incorrect PIN. Please retry.", nil)
 #define RETRY_VALIDATION NSLocalizedString(@"Retry Validation", nil)
-#define BC_STRING_SERVER_RETURNED_NULL_STATUS_CODE NSLocalizedString(@"Server Returned Null Status Code", nil)
 #define BC_STRING_PIN_VALIDATION_CANNOT_BE_COMPLETED NSLocalizedString(@"PIN Validation cannot be completed. Please enter your wallet password manually.", nil)
 #define BC_STRING_PIN_RESPONSE_OBJECT_SUCCESS_LENGTH_0 NSLocalizedString(@"PIN Response Object success length 0", nil)
 #define BC_STRING_DECRYPTED_PIN_PASSWORD_LENGTH_0 NSLocalizedString(@"Decrypted PIN Password length 0", nil)
