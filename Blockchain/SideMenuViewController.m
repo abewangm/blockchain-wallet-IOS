@@ -75,12 +75,6 @@ int accountEntries = 0;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
 }
 
-// Reset the swipe gestures when view disappears - we have to wait until it's gone and can't do it in the delegate
-- (void)viewDidDisappear:(BOOL)animated
-{
-    // [self resetSideMenuGestures];
-}
-
 - (void)resetSideMenuGestures
 {
     // Show status bar again
