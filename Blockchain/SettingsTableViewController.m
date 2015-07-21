@@ -14,6 +14,9 @@
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
 
+#define ALERTVIEW_TAG_VERIFY_EMAIL 5;
+#define ALERTVIEW_TAG_ADD_EMAIL 4;
+
 @interface SettingsTableViewController () <CurrencySelectorDelegate, UIAlertViewDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
@@ -79,24 +82,57 @@
     return app.latestResponse.symbol_btc;
 }
 
-- (void)verifyEmail
+- (BOOL)hasAddedEmail
+{
+    return [self.accountInfoDictionary objectForKey:@"email"] ? YES : NO;
+}
+
+- (void)alertViewToAddEmail
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_EMAIL message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alertView.tag = ALERTVIEW_TAG_ADD_EMAIL;
+    [alertView show];
+}
+
+- (void)alertViewToVerifyEmail
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL message:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY , BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    alertView.tag = ALERTVIEW_TAG_VERIFY_EMAIL;
     [alertView show];
+}
+
+- (void)userAddedEmail:(NSString *)emailString
+{
+    [self alertViewToVerifyEmail];
 }
 
 #pragma mark AlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (buttonIndex) {
-        case 1: {
-            NSLog(@"verify");
-            return;
+    switch (alertView.tag) {
+        case 4: {switch (buttonIndex) {
+            case 1: {
+                NSLog(@"add email");
+                [self userAddedEmail:[alertView textFieldAtIndex:0].text];
+                return;
+            }
         }
-        case 2: {
-            NSLog(@"resend");
+            return;
+    }
+        case 5: {
+            switch (buttonIndex) {
+                case 1: {
+                    NSLog(@"verify");
+                    return;
+                }
+                case 2: {
+                    NSLog(@"resend");
+                    return;
+                }
+            }
             return;
         }
     }
@@ -131,7 +167,7 @@
         case 0: {
             switch (indexPath.row) {
                 case 1: {
-                    [self verifyEmail];
+                    [self hasAddedEmail] ? [self alertViewToVerifyEmail] : [self alertViewToAddEmail];
                 }
             }
             return;
@@ -219,11 +255,11 @@
                 case 1: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    if (app.showEmailWarning) {
+                    if ([self hasAddedEmail]) {
+                        cell.detailTextLabel.text = self.emailString;
+                    } else {
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
-                    } else {
-                        cell.detailTextLabel.text = self.emailString;
                     }
                     return cell;
                 }
