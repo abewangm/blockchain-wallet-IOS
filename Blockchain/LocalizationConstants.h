@@ -32,7 +32,8 @@
 
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
 #define BC_STRING_ASK_TO_ADD_TO_ADDRESS_BOOK NSLocalizedString(@"Would you like to add the bitcoin address %@ to your address book?", nil)
-#define BC_STRING_COPIED_TO_CLIPBOARD NSLocalizedString(@"%@ copied to clipboard", nil)
+#define BC_STRING_ARGUMENT_COPIED_TO_CLIPBOARD NSLocalizedString(@"%@ copied to clipboard", nil)
+#define BC_STRING_COPIED_TO_CLIPBOARD NSLocalizedString(@"Copied to clipboard", nil)
 #define BC_STRING_CONFIRM_PAYMENT_OF NSLocalizedString(@"To: %@\n%@\nTotal Amount: %@\nFee: %@\n(%@)", nil)
 #define BC_STRING_SEND_FROM NSLocalizedString(@"Send from...", nil)
 #define BC_STRING_SEND_TO NSLocalizedString(@"Send to...", nil)
@@ -131,7 +132,6 @@
 #define BC_STRING_CONFIRM_PIN NSLocalizedString(@"Confirm your PIN", nil)
 #define BC_STRING_INCORRECT_PIN_RETRY NSLocalizedString(@"Incorrect PIN. Please retry.", nil)
 #define RETRY_VALIDATION NSLocalizedString(@"Retry Validation", nil)
-#define BC_STRING_SERVER_RETURNED_NULL_STATUS_CODE NSLocalizedString(@"Server Returned Null Status Code", nil)
 #define BC_STRING_PIN_VALIDATION_CANNOT_BE_COMPLETED NSLocalizedString(@"PIN Validation cannot be completed. Please enter your wallet password manually.", nil)
 #define BC_STRING_PIN_RESPONSE_OBJECT_SUCCESS_LENGTH_0 NSLocalizedString(@"PIN Response Object success length 0", nil)
 #define BC_STRING_DECRYPTED_PIN_PASSWORD_LENGTH_0 NSLocalizedString(@"Decrypted PIN Password length 0", nil)

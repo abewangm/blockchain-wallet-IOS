@@ -1418,7 +1418,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     BOOL pinSuccess = FALSE;
     if (code == nil) {
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_SERVER_RETURNED_NULL_STATUS_CODE]];
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_INCORRECT_PIN_RETRY]];
     } else if ([code intValue] == PIN_API_STATUS_CODE_DELETED) {
         [app standardNotify:BC_STRING_PIN_VALIDATION_CANNOT_BE_COMPLETED];
         

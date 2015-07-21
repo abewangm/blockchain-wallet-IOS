@@ -28,7 +28,6 @@ NSString *mainLabel;
 NSString *detailAddress;
 NSString *detailLabel;
 
-UIActionSheet *popupAccount;
 UIActionSheet *popupAddressUnArchive;
 UIActionSheet *popupAddressArchive;
 
@@ -100,9 +99,9 @@ UIActionSheet *popupAddressArchive;
                                          optionsTitleLabel.frame.size.width,
                                          optionsTitleLabel.frame.size.height);
     
-    popupAccount = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
-                    BC_STRING_COPY_ADDRESS,
-                    nil];
+    UITapGestureRecognizer *tapGestureForLegacyLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLegacyAddressOnTap)];
+    [optionsTitleLabel addGestureRecognizer:tapGestureForLegacyLabel];
+    optionsTitleLabel.userInteractionEnabled = YES;
     
     popupAddressArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
                            BC_STRING_COPY_ADDRESS,
@@ -186,6 +185,10 @@ UIActionSheet *popupAddressArchive;
         [mainAddressLabel setMinimumScaleFactor:.5f];
         [mainAddressLabel setAdjustsFontSizeToFitWidth:YES];
         [headerView addSubview:mainAddressLabel];
+        
+        UITapGestureRecognizer *tapGestureForMainLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainAddressOnTap)];
+        [mainAddressLabel addGestureRecognizer:tapGestureForMainLabel];
+        mainAddressLabel.userInteractionEnabled = YES;
     }
     
     tableView.tableHeaderView = headerView;
@@ -335,12 +338,52 @@ UIActionSheet *popupAddressArchive;
     [self doCurrencyConversion];
 }
 
+- (void)animateTextOfLabel:(UILabel *)labelToAnimate toIntermediateText:(NSString *)intermediateText toFinalText:(NSString *)finalText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
+{
+    gestureReceiver.userInteractionEnabled = NO;
+    
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        labelToAnimate.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            labelToAnimate.text = intermediateText;
+            labelToAnimate.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(speed * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                    labelToAnimate.alpha = 0.0;
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        labelToAnimate.text = finalText;
+                        labelToAnimate.alpha = 1.0;
+                        gestureReceiver.userInteractionEnabled = YES;
+                    }];
+                }];
+            });
+        }];
+    }];
+}
+
 #pragma mark - Actions
+
+- (void)showMainAddressOnTap
+{
+    [self animateTextOfLabel:mainAddressLabel toIntermediateText:mainAddress toFinalText:mainLabel speed:2 gestureReceiver:mainAddressLabel];
+}
+
+- (void)showLegacyAddressOnTap
+{
+    // If the address has no label, no need to animate
+    if (![optionsTitleLabel.text isEqualToString:detailAddress]) {
+        [self animateTextOfLabel:optionsTitleLabel toIntermediateText:detailAddress toFinalText:detailLabel speed:2 gestureReceiver:optionsTitleLabel];
+    }
+}
 
 - (IBAction)moreActionsClicked:(id)sender
 {
     if (didClickAccount) {
-        [popupAccount showInView:[UIApplication sharedApplication].keyWindow];
+        [UIPasteboard generalPasteboard].string = detailAddress;
+        [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD toFinalText:detailLabel speed:1 gestureReceiver:qrCodePaymentImageView];
     }
     else {
         if ([archivedKeys containsObject:self.clickedAddress]) {
@@ -409,53 +452,16 @@ UIActionSheet *popupAddressArchive;
 
 - (IBAction)mainQRClicked:(id)sender
 {
-    // Copy address to clipboard
     [UIPasteboard generalPasteboard].string = mainAddress;
-
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        mainAddressLabel.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            mainAddressLabel.text = mainAddress;
-            mainAddressLabel.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    mainAddressLabel.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        mainAddressLabel.text = mainLabel;
-                        mainAddressLabel.alpha = 1.0;
-                    }];
-                }];
-            });
-        }];
-    }];
+    
+    [self animateTextOfLabel:mainAddressLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD toFinalText:mainLabel speed:1 gestureReceiver:qrCodeMainImageView];
 }
 
 - (IBAction)copyAddressClicked:(id)sender
 {
     [UIPasteboard generalPasteboard].string = detailAddress;
     
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        optionsTitleLabel.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            optionsTitleLabel.text = detailAddress;
-            optionsTitleLabel.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    optionsTitleLabel.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        optionsTitleLabel.text = detailLabel;
-                        optionsTitleLabel.alpha = 1.0;
-                    }];
-                }];
-            });
-        }];
-    }];
+    [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD toFinalText:detailLabel speed:1 gestureReceiver:optionsTitleLabel];
 }
 
 - (NSString*)formatPaymentRequest:(NSString*)url
@@ -549,9 +555,6 @@ UIActionSheet *popupAddressArchive;
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (popup == popupAccount && buttonIndex > 0) {
-        return;
-    }
     
     switch (buttonIndex) {
         case 0:

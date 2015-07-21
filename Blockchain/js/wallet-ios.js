@@ -1,3 +1,4 @@
+var Buffer = Blockchain.Buffer;
 var $ = Blockchain.$;
 var CryptoJS = Blockchain.CryptoJS;
 
@@ -741,27 +742,54 @@ MyWalletPhone.getMultiAddrResponse = function() {
 MyWalletPhone.addPrivateKey = function(privateKeyString) {
     var success = function(address) {
         console.log('Add private key success');
-
-        device.execute('on_add_private_key:', [address]);
+        
+        device.execute('on_add_private_key:', [address.address]);
     };
     var error = function(e) {
         console.log('Add private key Error');
-
-        device.execute('on_error_adding_private_key:', [''+e]);
+        
+        var message = 'There was an error importing this private key';
+        
+        if (e === 'presentInWallet') {
+            message = 'Key already imported';
+        }
+        else if (e === 'needsBip38') {
+            message = 'Missing BIP38 password';
+        }
+        else if (e === 'wrongBipPass') {
+            message = 'Wrong BIP38 password';
+        }
+        
+        device.execute('on_error_adding_private_key:', [message]);
     };
-    var alreadyImportedCallback = function(e) {
-        console.log('Add private key Error: already imported');
 
-        device.execute('on_error_adding_private_key:', ['Key already imported']);
-    };
+    var needsBip38Passsword = MyWallet.detectPrivateKeyFormat(privateKeyString) === 'bip38';
 
-    if (MyWallet.wallet.isDoubleEncrypted) {
-        MyWalletPhone.getSecondPassword(function (pw) {
-            MyWallet.importPrivateKey(privateKeyString, pw, MyWalletPhone.getPrivateKeyPassword, success, alreadyImportedCallback, error);
+    if (needsBip38Passsword) {
+        MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
+            if (MyWallet.wallet.isDoubleEncrypted) {
+                MyWalletPhone.getSecondPassword(function (pw) {
+                    var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', pw, bip38Pass);
+                    promise.then(success, error);
+                });
+            }
+            else {
+                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', null, bip38Pass);
+                promise.then(success, error);
+            }
         });
     }
     else {
-        MyWallet.importPrivateKey(privateKeyString, null, MyWalletPhone.getPrivateKeyPassword, success, alreadyImportedCallback, error);
+        if (MyWallet.wallet.isDoubleEncrypted) {
+            MyWalletPhone.getSecondPassword(function (pw) {
+                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', pw, null);
+                promise.then(success, error);
+            });
+        }
+        else {
+            var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', null, null);
+            promise.then(success, error);
+        }
     }
 };
 
@@ -837,15 +865,8 @@ function webSocketDisconnect() {
 MyWalletPhone.getPrivateKeyPassword = function(callback) {
     // Due to the way the JSBridge handles calls with success/error callbacks, we need a first argument that can be ignored
     device.execute("getPrivateKeyPassword:", ["discard"], function(pw) {
-                   callback(pw,
-                            function () {
-                                console.log('BIP38 private key import: correct password');
-                            },
-                            function () {
-                                console.log('BIP38 private key import: password incorrect');
-                                device.execute('makeNotice:id:message:', ['error', '', 'Incorrect Passphrase']);
-                            });
-                   }, function(msg) { console.log('Error' + msg); });
+        callback(pw);
+    }, function() {});
 };
 
 MyWalletPhone.getSecondPassword = function(callback) {
