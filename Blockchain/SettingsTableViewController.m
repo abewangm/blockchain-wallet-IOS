@@ -96,9 +96,14 @@
     return [self.accountInfoDictionary objectForKey:@"email"] ? YES : NO;
 }
 
+- (NSString *)getUserEmail
+{
+    return [self.accountInfoDictionary objectForKey:@"email"];
+}
+
 - (void)alertViewToChangeEmail
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_EMAIL message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_EMAIL message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_SENT_TO_EMAIL, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertView.tag = ALERTVIEW_TAG_ADD_EMAIL;
     [alertView show];
@@ -106,7 +111,7 @@
 
 - (void)alertViewToVerifyEmail
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL message:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_EMAIL, [self getUserEmail]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
     UITextField *textField = [alertView textFieldAtIndex:0];
     textField.tag = TEXTFIELD_TAG_VERIFY_EMAIL;
@@ -310,7 +315,12 @@
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     if ([self hasAddedEmail]) {
-                        cell.detailTextLabel.text = self.emailString;
+                        if ([self.accountInfoDictionary[@"email_verified"] boolValue] == NO) {
+                            cell.detailTextLabel.text = BC_STRING_SETTINGS_EMAIL_UNVERIFIED;
+                            cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                        } else {
+                            cell.detailTextLabel.text = self.emailString;
+                        }
                     } else {
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
