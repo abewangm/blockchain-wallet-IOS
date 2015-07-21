@@ -180,9 +180,9 @@
         return nil;
     }
 
-    NSString *activeAddressesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(BlockchainSettingsAPI.get_available_currencies())"];
+    NSString *availableCurrenciesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWalletPhone.get_available_currencies())"];
     
-    return [activeAddressesJSON getJSONObject];
+    return [availableCurrenciesJSON getJSONObject];
 }
 
 - (void)changeLocalCurrency:(NSString *)currencyCode
@@ -191,7 +191,16 @@
         return;
     }
     
-    [self.webView executeJSSynchronous:@"BlockchainSettingsAPI.change_currency(\"%@\")", currencyCode];
+    [self.webView executeJSSynchronous:@"MyWalletPhone.change_currency(\"%@\")", currencyCode];
+}
+
+- (void)getUserInfo
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"JSON.stringify(MyWalletPhone.get_user_info())"];
 }
 
 - (void)cancelTxSigning
@@ -902,7 +911,14 @@
 - (void)on_change_local_currency_success
 {
     DLog(@"on_change_local_currency_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:CHANGE_LOCAL_CURRENCY_SUCCESS_NOTIFICATION_KEY object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
+}
+
+- (void)on_get_account_info_success:(NSString *)accountInfo
+{
+    DLog(@"on_get_account_info");
+    NSDictionary *accountInfoDictionary = [accountInfo getJSONObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil userInfo:accountInfoDictionary];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

@@ -185,5 +185,6 @@
 
 // Settings
 - (NSDictionary *)getAvailableCurrencies;
+- (void)getUserInfo;
 
 @end

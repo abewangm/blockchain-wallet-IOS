@@ -894,11 +894,26 @@ MyWallet.getNTransactionsPerPage = function() {
 
 // Settings
 
-BlockchainSettingsAPI.get_available_currencies = function() {
+MyWalletPhone.get_user_info = function () {
+    
+    var success = function (data) {
+        var accountInfo = JSON.stringify(data, null, 2);
+        device.execute('on_get_account_info_success:', [accountInfo]);
+    }
+    
+    var error = function (e) {
+        console.log('Error getting account info: ' + e);
+        device.execute('loading_stop');
+    };
+    
+    BlockchainSettingsAPI.get_account_info(success, error);
+}
+
+MyWalletPhone.get_available_currencies = function() {
     return WalletStore.getCurrencies();
 }
 
-BlockchainSettingsAPI.change_currency = function(code) {
+MyWalletPhone.change_currency = function(code) {
     
     var success = function () {
         console.log('Changing local currency');

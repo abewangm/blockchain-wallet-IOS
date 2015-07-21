@@ -16,6 +16,9 @@
 
 @interface SettingsTableViewController () <CurrencySelectorDelegate, UIAlertViewDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
+@property (nonatomic, copy) NSDictionary *accountInfoDictionary;
+
+@property (nonatomic, copy) NSString *emailString;
 @end
 
 @implementation SettingsTableViewController
@@ -24,12 +27,34 @@
 {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        self.accountInfoDictionary = note.userInfo;
+    }];
+    [app.wallet getUserInfo];
     self.availableCurrenciesDictionary = [app.wallet getAvailableCurrencies];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+}
+
+- (void)setAccountInfoDictionary:(NSDictionary *)accountInfoDictionary
+{
+    _accountInfoDictionary = accountInfoDictionary;
+    
+    if ([_accountInfoDictionary objectForKey:@"email"]) {
+        self.emailString = [_accountInfoDictionary objectForKey:@"email"];
+    } else {
+        self.emailString = BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS;
+    }
+    
+    [self.tableView reloadData];
 }
 
 - (void)changeLocalCurrencySuccess
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGE_LOCAL_CURRENCY_SUCCESS_NOTIFICATION_KEY object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
     
     [self.tableView reloadData];
 }
@@ -198,7 +223,7 @@
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
                     } else {
-                        cell.detailTextLabel.text = @"SETTINGSJS:useremail";
+                        cell.detailTextLabel.text = self.emailString;
                     }
                     return cell;
                 }
