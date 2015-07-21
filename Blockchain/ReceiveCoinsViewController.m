@@ -28,7 +28,6 @@ NSString *mainLabel;
 NSString *detailAddress;
 NSString *detailLabel;
 
-UIActionSheet *popupAccount;
 UIActionSheet *popupAddressUnArchive;
 UIActionSheet *popupAddressArchive;
 
@@ -100,9 +99,10 @@ UIActionSheet *popupAddressArchive;
                                          optionsTitleLabel.frame.size.width,
                                          optionsTitleLabel.frame.size.height);
     
-    popupAccount = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
-                    BC_STRING_COPY_ADDRESS,
-                    nil];
+    UITapGestureRecognizer *tapGestureForLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showAddressOnTap)];
+    tapGestureForLabel.numberOfTapsRequired = 1;
+    [optionsTitleLabel addGestureRecognizer:tapGestureForLabel];
+    optionsTitleLabel.userInteractionEnabled = YES;
     
     popupAddressArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
                            BC_STRING_COPY_ADDRESS,
@@ -337,10 +337,63 @@ UIActionSheet *popupAddressArchive;
 
 #pragma mark - Actions
 
+- (void)showAddressOnTap
+{
+    // If the address has no label, no need to animate
+    if (![optionsTitleLabel.text isEqualToString:detailAddress]) {
+        optionsTitleLabel.userInteractionEnabled = NO;
+        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            optionsTitleLabel.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                optionsTitleLabel.text = detailAddress;
+                optionsTitleLabel.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        optionsTitleLabel.alpha = 0.0;
+                    } completion:^(BOOL finished) {
+                        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                            optionsTitleLabel.text = detailLabel;
+                            optionsTitleLabel.alpha = 1.0;
+                            optionsTitleLabel.userInteractionEnabled = YES;
+                        }];
+                    }];
+                });
+            }];
+        }];
+    }
+}
+
 - (IBAction)moreActionsClicked:(id)sender
 {
     if (didClickAccount) {
-        [popupAccount showInView:[UIApplication sharedApplication].keyWindow];
+        
+        qrCodePaymentImageView.userInteractionEnabled = NO;
+        
+        [UIPasteboard generalPasteboard].string = detailAddress;
+        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            optionsTitleLabel.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                optionsTitleLabel.text = BC_STRING_COPIED_TO_CLIPBOARD;
+                optionsTitleLabel.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        optionsTitleLabel.alpha = 0.0;
+                    } completion:^(BOOL finished) {
+                        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                            optionsTitleLabel.text = detailLabel;
+                            optionsTitleLabel.alpha = 1.0;
+                            qrCodePaymentImageView.userInteractionEnabled = YES;
+                        }];
+                    }];
+                });
+            }];
+        }];
     }
     else {
         if ([archivedKeys containsObject:self.clickedAddress]) {
@@ -409,6 +462,7 @@ UIActionSheet *popupAddressArchive;
 
 - (IBAction)mainQRClicked:(id)sender
 {
+    qrCodeMainImageView.userInteractionEnabled = NO;
     // Copy address to clipboard
     [UIPasteboard generalPasteboard].string = mainAddress;
 
@@ -426,6 +480,7 @@ UIActionSheet *popupAddressArchive;
                     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
                         mainAddressLabel.text = mainLabel;
                         mainAddressLabel.alpha = 1.0;
+                        qrCodeMainImageView.userInteractionEnabled = YES;
                     }];
                 }];
             });
@@ -549,9 +604,6 @@ UIActionSheet *popupAddressArchive;
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (popup == popupAccount && buttonIndex > 0) {
-        return;
-    }
     
     switch (buttonIndex) {
         case 0:
