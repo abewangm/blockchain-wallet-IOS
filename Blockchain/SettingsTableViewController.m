@@ -31,11 +31,8 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
-        self.accountInfoDictionary = note.userInfo;
-    }];
+    [self getAccountInfo];
     
-    [app.wallet getAccountInfo];
     self.availableCurrenciesDictionary = [app.wallet getAvailableCurrencies];
 }
 
@@ -43,6 +40,15 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
+}
+
+- (void)getAccountInfo
+{
+    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        self.accountInfoDictionary = note.userInfo;
+    }];
+    
+    [app.wallet getAccountInfo];
 }
 
 - (void)setAccountInfoDictionary:(NSDictionary *)accountInfoDictionary
@@ -90,7 +96,7 @@
     return [self.accountInfoDictionary objectForKey:@"email"] ? YES : NO;
 }
 
-- (void)alertViewToAddEmail
+- (void)alertViewToChangeEmail
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_EMAIL message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
@@ -113,6 +119,8 @@
 - (void)resendVerificationEmail
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resendVerificationEmailSuccess) name:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
+    
+    [app.wallet resendVerificationEmail:self.accountInfoDictionary[@"email"]];
 }
 
 - (void)resendVerificationEmailSuccess
@@ -132,6 +140,8 @@
 - (void)changeEmailSuccess
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
+    
+    [self getAccountInfo];
     
     [self alertViewToVerifyEmail];
 }
@@ -158,11 +168,11 @@
         case 5: {
             switch (buttonIndex) {
                 case 1: {
-                    NSLog(@"resend");
+                    [self resendVerificationEmail];
                     return;
                 }
                 case 2: {
-                    NSLog(@"change");
+                    [self alertViewToChangeEmail];
                     return;
                 }
             }
@@ -211,7 +221,7 @@
         case 0: {
             switch (indexPath.row) {
                 case 1: {
-                    [self hasAddedEmail] ? [self alertViewToVerifyEmail] : [self alertViewToAddEmail];
+                    [self hasAddedEmail] ? [self alertViewToVerifyEmail] : [self alertViewToChangeEmail];
                 }
             }
             return;

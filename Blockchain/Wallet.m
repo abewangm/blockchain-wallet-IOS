@@ -942,6 +942,7 @@
 - (void)on_change_email_success
 {
     DLog(@"on_change_email_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
 }
 
 - (void)on_resend_verification_email_success
