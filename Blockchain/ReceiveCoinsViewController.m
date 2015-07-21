@@ -338,26 +338,25 @@ UIActionSheet *popupAddressArchive;
     [self doCurrencyConversion];
 }
 
-#pragma mark - Actions
-
-- (void)showMainAddressOnTap
+- (void)animateTextOfLabel:(UILabel *)labelToAnimate toIntermediateText:(NSString *)intermediateText toFinalText:(NSString *)finalText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
 {
-    mainAddressLabel.userInteractionEnabled = NO;
+    gestureReceiver.userInteractionEnabled = NO;
+    
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        mainAddressLabel.alpha = 0.0;
+        labelToAnimate.alpha = 0.0;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            mainAddressLabel.text = mainAddress;
-            mainAddressLabel.alpha = 1.0;
+            labelToAnimate.text = intermediateText;
+            labelToAnimate.alpha = 1.0;
         } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(speed * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    mainAddressLabel.alpha = 0.0;
+                    labelToAnimate.alpha = 0.0;
                 } completion:^(BOOL finished) {
                     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        mainAddressLabel.text = mainLabel;
-                        mainAddressLabel.alpha = 1.0;
-                        mainAddressLabel.userInteractionEnabled = YES;
+                        labelToAnimate.text = finalText;
+                        labelToAnimate.alpha = 1.0;
+                        gestureReceiver.userInteractionEnabled = YES;
                     }];
                 }];
             });
@@ -365,63 +364,26 @@ UIActionSheet *popupAddressArchive;
     }];
 }
 
+#pragma mark - Actions
+
+- (void)showMainAddressOnTap
+{
+    [self animateTextOfLabel:mainAddressLabel toIntermediateText:mainAddress toFinalText:mainLabel speed:2 gestureReceiver:mainAddressLabel];
+}
+
 - (void)showLegacyAddressOnTap
 {
     // If the address has no label, no need to animate
     if (![optionsTitleLabel.text isEqualToString:detailAddress]) {
-        optionsTitleLabel.userInteractionEnabled = NO;
-        
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            optionsTitleLabel.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                optionsTitleLabel.text = detailAddress;
-                optionsTitleLabel.alpha = 1.0;
-            } completion:^(BOOL finished) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        optionsTitleLabel.alpha = 0.0;
-                    } completion:^(BOOL finished) {
-                        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                            optionsTitleLabel.text = detailLabel;
-                            optionsTitleLabel.alpha = 1.0;
-                            optionsTitleLabel.userInteractionEnabled = YES;
-                        }];
-                    }];
-                });
-            }];
-        }];
+        [self animateTextOfLabel:optionsTitleLabel toIntermediateText:detailAddress toFinalText:detailLabel speed:2 gestureReceiver:optionsTitleLabel];
     }
 }
 
 - (IBAction)moreActionsClicked:(id)sender
 {
     if (didClickAccount) {
-        
-        qrCodePaymentImageView.userInteractionEnabled = NO;
-        
         [UIPasteboard generalPasteboard].string = detailAddress;
-        
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            optionsTitleLabel.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                optionsTitleLabel.text = BC_STRING_COPIED_TO_CLIPBOARD;
-                optionsTitleLabel.alpha = 1.0;
-            } completion:^(BOOL finished) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        optionsTitleLabel.alpha = 0.0;
-                    } completion:^(BOOL finished) {
-                        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                            optionsTitleLabel.text = detailLabel;
-                            optionsTitleLabel.alpha = 1.0;
-                            qrCodePaymentImageView.userInteractionEnabled = YES;
-                        }];
-                    }];
-                });
-            }];
-        }];
+        [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD toFinalText:detailLabel speed:1 gestureReceiver:qrCodePaymentImageView];
     }
     else {
         if ([archivedKeys containsObject:self.clickedAddress]) {
@@ -490,55 +452,16 @@ UIActionSheet *popupAddressArchive;
 
 - (IBAction)mainQRClicked:(id)sender
 {
-    qrCodeMainImageView.userInteractionEnabled = NO;
-    // Copy address to clipboard
     [UIPasteboard generalPasteboard].string = mainAddress;
     
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        mainAddressLabel.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            mainAddressLabel.text = BC_STRING_COPIED_TO_CLIPBOARD;
-            mainAddressLabel.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    mainAddressLabel.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        mainAddressLabel.text = mainLabel;
-                        mainAddressLabel.alpha = 1.0;
-                        qrCodeMainImageView.userInteractionEnabled = YES;
-                    }];
-                }];
-            });
-        }];
-    }];
+    [self animateTextOfLabel:mainAddressLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD toFinalText:mainLabel speed:1 gestureReceiver:qrCodeMainImageView];
 }
 
 - (IBAction)copyAddressClicked:(id)sender
 {
     [UIPasteboard generalPasteboard].string = detailAddress;
     
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        optionsTitleLabel.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            optionsTitleLabel.text = BC_STRING_COPIED_TO_CLIPBOARD;
-            optionsTitleLabel.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    optionsTitleLabel.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        optionsTitleLabel.text = detailLabel;
-                        optionsTitleLabel.alpha = 1.0;
-                    }];
-                }];
-            });
-        }];
-    }];
+    [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD toFinalText:detailLabel speed:1 gestureReceiver:optionsTitleLabel];
 }
 
 - (NSString*)formatPaymentRequest:(NSString*)url
