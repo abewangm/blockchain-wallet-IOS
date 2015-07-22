@@ -137,6 +137,7 @@
 - (uint64_t)parseBitcoinValue:(NSString *)input;
 
 - (void)changeLocalCurrency:(NSString *)currencyCode;
+- (void)changeBtcCurrency:(NSString *)btcCode;
 
 - (void)clearLocalStorage;
 

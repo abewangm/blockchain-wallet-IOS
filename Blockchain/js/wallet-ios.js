@@ -994,3 +994,18 @@ MyWalletPhone.verify_email = function(code) {
     
     BlockchainSettingsAPI.verifyEmail(code, success, error);
 }
+
+MyWalletPhone.change_btc_currency = function(code) {
+    
+    var success = function () {
+        console.log('Changing btc currency');
+        device.execute('on_change_local_currency_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error changing btc currency: ' + e);
+        device.execute('loading_stop');
+    };
+    
+    BlockchainSettingsAPI.change_btc_currency(code, success, error);
+}

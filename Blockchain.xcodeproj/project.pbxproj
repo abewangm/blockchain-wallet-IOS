@@ -18,6 +18,7 @@
 		232232171B44D02B00E5DF26 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232232161B44D02B00E5DF26 /* Upgrade.storyboard */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
+		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
 		23EA61BC1B540F020032B907 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EA61BB1B540F020032B907 /* Settings.storyboard */; };
 		23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C41B54258D0032B907 /* SettingsTableViewController.m */; };
 		23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C71B54282D0032B907 /* SettingsNavigationController.m */; };
@@ -327,6 +328,8 @@
 		232232191B44D4CB00E5DF26 /* UpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeViewController.m; sourceTree = "<group>"; };
 		239539811B486C7100989667 /* UILabel+MultiLineAutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MultiLineAutoSize.h"; sourceTree = "<group>"; };
 		239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MultiLineAutoSize.m"; sourceTree = "<group>"; };
+		23D9F26E1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsBitcoinUnitTableViewController.h; sourceTree = "<group>"; };
+		23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsBitcoinUnitTableViewController.m; sourceTree = "<group>"; };
 		23EA61BB1B540F020032B907 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		23EA61C31B54258D0032B907 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		23EA61C41B54258D0032B907 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
@@ -852,6 +855,8 @@
 				23EA61C71B54282D0032B907 /* SettingsNavigationController.m */,
 				23EA61C91B5591260032B907 /* SettingsSelectorTableViewController.h */,
 				23EA61CA1B5591260032B907 /* SettingsSelectorTableViewController.m */,
+				23D9F26E1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.h */,
+				23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */,
 				231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */,
 				231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */,
 			);
@@ -1156,6 +1161,7 @@
 				670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */,
 				9FB3638214B60128004BEA02 /* main.m in Sources */,
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
+				23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */,
 				C9BE917D1945D8F600FD516D /* PEViewController.m in Sources */,
 				674709EC19D1D14300757D46 /* BCWelcomeView.m in Sources */,
 				67D95A281B3DDC900012EBB1 /* Constants.swift in Sources */,

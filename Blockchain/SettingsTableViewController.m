@@ -9,6 +9,7 @@
 #import "SettingsTableViewController.h"
 #import "SettingsSelectorTableViewController.h"
 #import "SettingsAboutViewController.h"
+#import "SettingsBitcoinUnitTableViewController.h"
 #import "AppDelegate.h"
 
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
@@ -79,7 +80,7 @@
     return app.latestResponse.symbol_local;
 }
 
-- (CurrencySymbol *)getBtcSymbol
+- (CurrencySymbol *)getBtcSymbolFromLatestResponse
 {
     return app.latestResponse.symbol_btc;
 }
@@ -235,6 +236,10 @@
         } else if ([sender isEqualToString:@"privacyPolicy"]) {
             aboutViewController.urlTargetString = PRIVACY_POLICY_URL;
         }
+    } else if ([segue.identifier isEqualToString:@"btcUnit"]) {
+        SettingsBitcoinUnitTableViewController *settingsBtcUnitTableViewController = segue.destinationViewController;
+        settingsBtcUnitTableViewController.itemsDictionary = self.accountInfoDictionary[@"btc_currencies"];
+        settingsBtcUnitTableViewController.delegate = self;
     }
 }
 
@@ -258,6 +263,10 @@
             switch (indexPath.row) {
                 case 0: {
                     [self performSegueWithIdentifier:@"currency" sender:nil];
+                    return;
+                }
+                case 1: {
+                    [self performSegueWithIdentifier:@"btcUnit" sender:nil];
                     return;
                 }
             }
@@ -360,8 +369,10 @@
                     return cell;
                 }
                 case 1: {
+                    NSString *preferredBtcSymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"];
+                    NSString *selectedCurrencyCode = preferredBtcSymbol == nil ? [self getBtcSymbolFromLatestResponse].name : preferredBtcSymbol;
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
-                    cell.detailTextLabel.text = [self getBtcSymbol].name;
+                    cell.detailTextLabel.text = selectedCurrencyCode;
                     return cell;
                 }
             }

@@ -194,6 +194,15 @@
     [self.webView executeJS:@"MyWalletPhone.change_currency(\"%@\")", currencyCode];
 }
 
+- (void)changeBtcCurrency:(NSString *)btcCode
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.change_btc_currency(\"%@\")", btcCode];
+}
+
 - (void)getAccountInfo
 {
     if (![self isInitialized]) {

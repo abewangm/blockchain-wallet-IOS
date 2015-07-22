@@ -148,6 +148,7 @@
                     <connections>
                         <segue destination="goF-Hn-ysm" kind="show" identifier="currency" id="yG2-uQ-Z4Y"/>
                         <segue destination="PEl-Nc-OHV" kind="show" identifier="about" id="EnS-qO-bj5"/>
+                        <segue destination="gkh-Vd-Yx4" kind="show" identifier="btcUnit" id="GMN-m2-0Kk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKa-p2-jgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -179,6 +180,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHb-VC-g4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2651" y="182"/>
+        </scene>
+        <!--Settings Bitcoin Unit Table View Controller-->
+        <scene sceneID="xjI-rq-jJz">
+            <objects>
+                <tableViewController id="gkh-Vd-Yx4" customClass="SettingsBitcoinUnitTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6Lk-Y3-dYx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iR7-6X-pMc">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iR7-6X-pMc" id="TMZ-CJ-kzi">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gkh-Vd-Yx4" id="Y63-iP-Mxn"/>
+                            <outlet property="delegate" destination="gkh-Vd-Yx4" id="7xh-X7-npP"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NJf-Mi-aaC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3275" y="491"/>
         </scene>
         <!--Settings About View Controller-->
         <scene sceneID="WFA-Xn-AxM">
