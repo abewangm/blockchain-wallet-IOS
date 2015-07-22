@@ -112,6 +112,7 @@ MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
+            MyWallet.wallet.newHDWallet(firstAccountName, pw)
             MyWallet.upgradeToHDWallet(firstAccountName, pw, success, error);
         });
     }
@@ -182,6 +183,10 @@ MyWalletPhone.getDefaultAccountIndex = function() {
 }
 
 MyWalletPhone.getAccountsCount = function() {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        return 0;
+    }
+
     var activeAccounts = MyWalletPhone.getActiveAccounts();
 
     return activeAccounts.length;
