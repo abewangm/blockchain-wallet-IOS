@@ -103,7 +103,7 @@
 
 - (void)alertViewToChangeEmail
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_EMAIL message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_SENT_TO_EMAIL, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_EMAIL message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertView.tag = ALERTVIEW_TAG_ADD_EMAIL;
     [alertView show];
@@ -240,7 +240,7 @@
             }
             return;
         }
-        case 3: {
+        case 2: {
             switch (indexPath.row) {
                 case 0: {
                     [self performSegueWithIdentifier:@"about" sender:@"termsOfService"];
@@ -258,7 +258,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -267,7 +267,6 @@
         case 0: return 2;
         case 1: return 2;
         case 2: return 2;
-        case 3: return 2;
         default: return 0;
     }
 }
@@ -277,8 +276,7 @@
     switch (section) {
         case 0: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
         case 1: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
-        case 2: return BC_STRING_SETTINGS_NOTIFICATIONS;
-        case 3: return BC_STRING_SETTINGS_ABOUT;
+        case 2: return BC_STRING_SETTINGS_ABOUT;
         default: return nil;
     }
 }
@@ -287,7 +285,6 @@
 {
     switch (section) {
         case 0: return BC_STRING_SETTINGS_EMAIL_FOOTER;
-        case 2: return BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER;
         default: return nil;
     }
 }
@@ -348,23 +345,6 @@
             }
         }
         case 2: {
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            switch (indexPath.row) {
-                case 0: {
-                    cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
-                    UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-                    cell.accessoryView = switchView;
-                    return cell;
-                }
-                case 1: {
-                    cell.textLabel.text = BC_STRING_SETTINGS_NOTIFICATIONS_SMS;
-                    UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-                    cell.accessoryView = switchView;
-                    return cell;
-                }
-            }
-        }
-        case 3: {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
                 case 0: {
@@ -377,14 +357,6 @@
                 }
             }
         }        default: return nil;
-    }
-}
-
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.section) {
-        case 2: return nil;
-        default: return indexPath;
     }
 }
 
