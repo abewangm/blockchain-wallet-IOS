@@ -16,13 +16,15 @@
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
 
 #define ALERTVIEW_TAG_VERIFY_EMAIL 5;
-#define ALERTVIEW_TAG_ADD_EMAIL 4;
 #define TEXTFIELD_TAG_VERIFY_EMAIL 55;
+#define ALERTVIEW_TAG_CHANGE_EMAIL 4;
+#define TEXTFIELD_TAG_CHANGE_EMAIL 44;
 
 @interface SettingsTableViewController () <CurrencySelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
+@property (nonatomic) UIAlertView *changeEmailAlertView;
 @property (nonatomic, copy) NSString *enteredEmailString;
 @end
 
@@ -106,20 +108,26 @@
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alertView.tag = ALERTVIEW_TAG_ADD_EMAIL;
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.tag = TEXTFIELD_TAG_CHANGE_EMAIL;
+    textField.delegate = self;
+    textField.returnKeyType = UIReturnKeyDone;
+    alertView.tag = ALERTVIEW_TAG_CHANGE_EMAIL;
     [alertView show];
+    self.changeEmailAlertView = alertView;
 }
 
 - (void)alertViewToVerifyEmail
 {
-    self.verifyEmailAlertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_EMAIL, [[NSUserDefaults standardUserDefaults] objectForKey:@"email"]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
-    self.verifyEmailAlertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
-    UITextField *textField = [self.verifyEmailAlertView textFieldAtIndex:0];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_EMAIL, [[NSUserDefaults standardUserDefaults] objectForKey:@"email"]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
+    alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    UITextField *textField = [alertView textFieldAtIndex:0];
     textField.tag = TEXTFIELD_TAG_VERIFY_EMAIL;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
-    self.verifyEmailAlertView.tag = ALERTVIEW_TAG_VERIFY_EMAIL;
-    [self.verifyEmailAlertView show];
+    alertView.tag = ALERTVIEW_TAG_VERIFY_EMAIL;
+    [alertView show];
+    self.verifyEmailAlertView = alertView;
 }
 
 - (void)alertViewForVerifyingEmailSuccess
@@ -216,6 +224,9 @@
     if (textField.tag == 55) {
         [self verifyEmailWithCode:textField.text];
         [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
+    } else if (textField.tag == 44) {
+        [self changeEmail:textField.text];
+        [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
     }
     
     return YES;
