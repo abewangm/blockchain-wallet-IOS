@@ -23,6 +23,7 @@
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic, copy) NSString *emailString;
+@property (nonatomic, copy) NSString *enteredEmailString;
 @end
 
 @implementation SettingsTableViewController
@@ -31,19 +32,16 @@
 {
     [super viewDidLoad];
     
-    [self getAccountInfoWithCompletionBlock:nil];
+    [self getAccountInfo];
     
     self.availableCurrenciesDictionary = [app.wallet getAvailableCurrencies];
 }
 
-- (void)getAccountInfoWithCompletionBlock:(void(^)())completionBlock
+- (void)getAccountInfo;
 {
     [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
         self.accountInfoDictionary = note.userInfo;
-        if (completionBlock) {
-            completionBlock();
-        }
     }];
     
     [app.wallet getAccountInfo];
@@ -58,6 +56,8 @@
     } else {
         self.emailString = BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS;
     }
+    
+    [[NSUserDefaults standardUserDefaults] setValue:_accountInfoDictionary[@"email"] forKey:@"email"];
     
     [self.tableView reloadData];
 }
@@ -116,7 +116,7 @@
 
 - (void)alertViewToVerifyEmail
 {
-    self.verifyEmailAlertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_EMAIL, [self getUserEmail]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
+    self.verifyEmailAlertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_EMAIL, [[NSUserDefaults standardUserDefaults] objectForKey:@"email"]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
     self.verifyEmailAlertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
     UITextField *textField = [self.verifyEmailAlertView textFieldAtIndex:0];
     textField.tag = TEXTFIELD_TAG_VERIFY_EMAIL;
@@ -150,6 +150,8 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
 
+    self.enteredEmailString = emailString;
+    
     [app.wallet changeEmail:emailString];
 }
 
@@ -157,11 +159,9 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
     
-    __weak SettingsTableViewController *weakSelf = self;
+    [[NSUserDefaults standardUserDefaults] setValue:self.enteredEmailString forKey:@"email"];
     
-    [self getAccountInfoWithCompletionBlock:^{
-        [weakSelf alertViewToVerifyEmail];
-    }];
+    [self alertViewToVerifyEmail];
 }
 
 - (void)verifyEmailWithCode:(NSString *)codeString
@@ -175,7 +175,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
     
-    [self getAccountInfoWithCompletionBlock:nil];
+    [self getAccountInfo];
     
     [self alertViewForVerifyingEmailSuccess];
 }
@@ -195,6 +195,10 @@
     }
         case 5: {
             switch (buttonIndex) {
+                case 0: {
+                    [self getAccountInfo];
+                    return;
+                }
                 case 1: {
                     [self resendVerificationEmail];
                     return;
@@ -336,15 +340,17 @@
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     if ([self hasAddedEmail]) {
+                        
                         if ([self.accountInfoDictionary[@"email_verified"] boolValue] == NO) {
                             cell.detailTextLabel.text = BC_STRING_SETTINGS_EMAIL_UNVERIFIED;
                             cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                        } else {
+                        } else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"email"]) {
+                            cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"email"];
                             cell.detailTextLabel.text = self.emailString;
+                        } else {
+                            cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                            cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
                         }
-                    } else {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                        cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
                     }
                     return cell;
                 }
