@@ -63,8 +63,8 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        previousWordButton!.frame.origin = CGPointMake(0,self.view.frame.height-previousWordButton!.frame.size.height);
-        nextWordButton!.frame.origin = CGPointMake(previousWordButton!.frame.size.width + 2, self.view.frame.height-previousWordButton!.frame.size.height);
+        previousWordButton!.frame.origin = CGPointMake(0,self.view.frame.size.height-previousWordButton!.frame.size.height);
+        nextWordButton!.frame.origin = CGPointMake(self.view.frame.size.width-previousWordButton!.frame.size.width, self.view.frame.size.height-previousWordButton!.frame.size.height);
     }
 
     @IBAction func previousWordButtonTapped(sender: UIButton) {
