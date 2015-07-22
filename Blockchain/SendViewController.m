@@ -676,8 +676,15 @@ BOOL displayingLocalSymbolSend;
             dispatch_sync(dispatch_get_main_queue(), ^{
                 NSDictionary *dict = [app parseURI:[metadataObj stringValue]];
                 
-                toField.text = [self labelForLegacyAddress:[dict objectForKey:@"address"]];
-                self.toAddress = [dict objectForKey:@"address"];
+                NSString *address = [dict objectForKey:@"address"];
+                
+                if (address == nil || ![app.wallet isValidAddress:address]) {
+                    [app standardNotify:BC_STRING_INVALID_ADDRESS];
+                    return;
+                }
+                
+                toField.text = [self labelForLegacyAddress:address];
+                self.toAddress = address;
                 self.sendToAddress = true;
                 DLog(@"toAddress: %@", self.toAddress);
                 
