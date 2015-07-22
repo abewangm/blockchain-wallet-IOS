@@ -188,5 +188,6 @@
 - (void)getAccountInfo;
 - (void)changeEmail:(NSString *)newEmailString;
 - (void)resendVerificationEmail:(NSString *)emailString;
+- (void)verifyEmailWithCode:(NSString *)codeString;
 
 @end

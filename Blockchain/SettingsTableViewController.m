@@ -21,7 +21,7 @@
 @interface SettingsTableViewController () <CurrencySelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
-
+@property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic, copy) NSString *emailString;
 @end
 
@@ -31,21 +31,19 @@
 {
     [super viewDidLoad];
     
-    [self getAccountInfo];
+    [self getAccountInfoWithCompletionBlock:nil];
     
     self.availableCurrenciesDictionary = [app.wallet getAvailableCurrencies];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
-}
-
-- (void)getAccountInfo
+- (void)getAccountInfoWithCompletionBlock:(void(^)())completionBlock
 {
     [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
         self.accountInfoDictionary = note.userInfo;
+        if (completionBlock) {
+            completionBlock();
+        }
     }];
     
     [app.wallet getAccountInfo];
@@ -96,6 +94,11 @@
     return [self.accountInfoDictionary objectForKey:@"email"] ? YES : NO;
 }
 
+- (BOOL)hasVerifiedEmail
+{
+    return [[self.accountInfoDictionary objectForKey:@"email_verified"] boolValue];
+}
+
 - (NSString *)getUserEmail
 {
     return [self.accountInfoDictionary objectForKey:@"email"];
@@ -103,7 +106,9 @@
 
 - (void)alertViewToChangeEmail
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_EMAIL message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
+    NSString *alertViewTitle = [self hasAddedEmail] ? BC_STRING_SETTINGS_CHANGE_EMAIL :BC_STRING_ADD_EMAIL;
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertView.tag = ALERTVIEW_TAG_ADD_EMAIL;
     [alertView show];
@@ -111,13 +116,19 @@
 
 - (void)alertViewToVerifyEmail
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_EMAIL, [self getUserEmail]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
-    alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
-    UITextField *textField = [alertView textFieldAtIndex:0];
+    self.verifyEmailAlertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_EMAIL, [self getUserEmail]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
+    self.verifyEmailAlertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    UITextField *textField = [self.verifyEmailAlertView textFieldAtIndex:0];
     textField.tag = TEXTFIELD_TAG_VERIFY_EMAIL;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
-    alertView.tag = ALERTVIEW_TAG_VERIFY_EMAIL;
+    self.verifyEmailAlertView.tag = ALERTVIEW_TAG_VERIFY_EMAIL;
+    [self.verifyEmailAlertView show];
+}
+
+- (void)alertViewForVerifyingEmailSuccess
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_SETTINGS_EMAIL_VERIFIED delegate:self cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
     [alertView show];
 }
 
@@ -146,14 +157,27 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
     
-    [self getAccountInfo];
+    __weak SettingsTableViewController *weakSelf = self;
     
-    [self alertViewToVerifyEmail];
+    [self getAccountInfoWithCompletionBlock:^{
+        [weakSelf alertViewToVerifyEmail];
+    }];
 }
 
-- (void)verifyEmail
+- (void)verifyEmailWithCode:(NSString *)codeString
 {
-    NSLog(@"verifying email");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyEmailWithCodeSuccess) name:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
+    
+    [app.wallet verifyEmailWithCode:codeString];
+}
+
+- (void)verifyEmailWithCodeSuccess
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
+    
+    [self getAccountInfoWithCompletionBlock:nil];
+    
+    [self alertViewForVerifyingEmailSuccess];
 }
 
 #pragma mark AlertView Delegate
@@ -163,7 +187,6 @@
     switch (alertView.tag) {
         case 4: {switch (buttonIndex) {
             case 1: {
-                NSLog(@"add email");
                 [self changeEmail:[alertView textFieldAtIndex:0].text];
                 return;
             }
@@ -191,7 +214,8 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField.tag == 55) {
-        [self verifyEmail];
+        [self verifyEmailWithCode:textField.text];
+        [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
     }
     
     return YES;
@@ -226,7 +250,7 @@
         case 0: {
             switch (indexPath.row) {
                 case 1: {
-                    [self hasAddedEmail] ? [self alertViewToVerifyEmail] : [self alertViewToChangeEmail];
+                    ![self hasAddedEmail] || [self hasVerifiedEmail] ? [self alertViewToChangeEmail] : [self alertViewToVerifyEmail];
                 }
             }
             return;

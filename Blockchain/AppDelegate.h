@@ -38,6 +38,7 @@
 #define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
 #define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
+#define NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS @"VerifyEmail"
 
 #define WebROOT @"https://blockchain.info/"
 #define MULTI_ADDR_TIME 60.0f // 1 Minute

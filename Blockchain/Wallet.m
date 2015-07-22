@@ -221,6 +221,15 @@
     [self.webView executeJS:@"MyWalletPhone.resend_verification_email(\"%@\")", emailString];
 }
 
+- (void)verifyEmailWithCode:(NSString *)codeString
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.verify_email(\"%@\")", codeString];
+}
+
 - (void)cancelTxSigning
 {
     if (![self.webView isLoaded]) {
@@ -949,6 +958,12 @@
 {
     DLog(@"on_resend_verification_email_success");
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
+}
+
+- (void)on_verify_email_success
+{
+    DLog(@"on_verify_email_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
