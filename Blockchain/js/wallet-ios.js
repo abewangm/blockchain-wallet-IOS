@@ -112,12 +112,11 @@ MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            MyWallet.wallet.newHDWallet(firstAccountName, pw)
-            MyWallet.upgradeToHDWallet(firstAccountName, pw, success, error);
+            MyWallet.wallet.newHDWallet(firstAccountName, pw, success);
         });
     }
     else {
-        MyWallet.upgradeToHDWallet(firstAccountName, null, success, error);
+        MyWallet.wallet.newHDWallet(firstAccountName, null, success);
     }
 };
 
