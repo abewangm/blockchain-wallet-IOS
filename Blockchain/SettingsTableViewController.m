@@ -22,7 +22,6 @@
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
-@property (nonatomic, copy) NSString *emailString;
 @property (nonatomic, copy) NSString *enteredEmailString;
 @end
 
@@ -52,12 +51,8 @@
     _accountInfoDictionary = accountInfoDictionary;
     
     if ([_accountInfoDictionary objectForKey:@"email"]) {
-        self.emailString = [_accountInfoDictionary objectForKey:@"email"];
-    } else {
-        self.emailString = BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS;
+        [[NSUserDefaults standardUserDefaults] setValue:_accountInfoDictionary[@"email"] forKey:@"email"];
     }
-    
-    [[NSUserDefaults standardUserDefaults] setValue:_accountInfoDictionary[@"email"] forKey:@"email"];
     
     [self.tableView reloadData];
 }
@@ -339,18 +334,15 @@
                 case 1: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    if ([self hasAddedEmail]) {
-                        
-                        if ([self.accountInfoDictionary[@"email_verified"] boolValue] == NO) {
-                            cell.detailTextLabel.text = BC_STRING_SETTINGS_EMAIL_UNVERIFIED;
-                            cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                        } else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"email"]) {
-                            cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"email"];
-                            cell.detailTextLabel.text = self.emailString;
-                        } else {
-                            cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                            cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
-                        }
+                    
+                    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"email"] && [self.accountInfoDictionary[@"email_verified"] boolValue] == YES) {
+                        cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"email"];
+                    } else if ([self hasAddedEmail]) {
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_EMAIL_UNVERIFIED;
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                    } else {
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                        cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
                     }
                     return cell;
                 }
