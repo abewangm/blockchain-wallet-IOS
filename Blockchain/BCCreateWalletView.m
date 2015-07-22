@@ -89,13 +89,6 @@
     return YES;
 }
 
-#pragma mark - Wallet Delegate method
-
-- (void)walletJSReady
-{
-    [app.wallet newAccount:self.tmpPassword email:emailTextField.text];
-}
-
 // Get here from New Account and also when manually pairing
 - (IBAction)createAccountClicked:(id)sender
 {
@@ -129,10 +122,20 @@
     [passwordTextField resignFirstResponder];
     [password2TextField resignFirstResponder];
     
+    // Load the JS without a wallet
     [app.wallet loadBlankWallet];
     
     // Get callback when wallet is done loading
+    // Continue in walletJSReady callback
     app.wallet.delegate = self;
+}
+
+#pragma mark - Wallet Delegate method
+
+- (void)walletJSReady
+{
+    // JS is loaded - now create the wallet
+    [app.wallet newAccount:self.tmpPassword email:emailTextField.text];
 }
 
 - (IBAction)termsOfServiceClicked:(id)sender
@@ -147,8 +150,10 @@
     passwordTextField.text = nil;
     password2TextField.text = nil;
     
+    // Reset wallet
     [app forgetWallet];
     
+    // Load the newly created wallet
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
     
     app.wallet.delegate = app;
