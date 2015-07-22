@@ -113,11 +113,11 @@ MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            MyWallet.upgradeToHDWallet(firstAccountName, pw, success, error);
+            MyWallet.wallet.newHDWallet(firstAccountName, pw, success);
         });
     }
     else {
-        MyWallet.upgradeToHDWallet(firstAccountName, null, success, error);
+        MyWallet.wallet.newHDWallet(firstAccountName, null, success);
     }
 };
 
@@ -130,19 +130,13 @@ MyWalletPhone.createAccount = function(label) {
         device.execute('reload');
     };
 
-    var error = function () {
-        console.log('Error creating new account');
-
-        device.execute('loading_stop');
-    };
-
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            MyWallet.createAccount(label, pw, success, error);
+            MyWallet.wallet.newAccount(label, pw, null, success);
         });
     }
     else {
-        MyWallet.createAccount(label, null, success, error);
+        MyWallet.wallet.newAccount(label, null, null, success);
     }
 };
 
@@ -183,6 +177,10 @@ MyWalletPhone.getDefaultAccountIndex = function() {
 }
 
 MyWalletPhone.getAccountsCount = function() {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        return 0;
+    }
+
     var activeAccounts = MyWalletPhone.getActiveAccounts();
 
     return activeAccounts.length;
@@ -197,7 +195,7 @@ MyWalletPhone.getLabelForAccount = function(num) {
 };
 
 MyWalletPhone.setLabelForAccount = function(num, label) {
-    MyWallet.setLabelForAccount(MyWalletPhone.getIndexOfActiveAccount(num), label);
+    MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].label = label;
 };
 
 MyWalletPhone.getReceivingAddressForAccount = function(num) {

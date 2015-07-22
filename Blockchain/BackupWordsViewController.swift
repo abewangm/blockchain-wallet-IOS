@@ -15,8 +15,8 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     @IBOutlet weak var wordsProgressLabel: UILabel?
     @IBOutlet weak var wordLabel: UILabel?
     @IBOutlet weak var screenShotWarningLabel: UILabel?
-    
-    @IBOutlet weak var verifyButton: UIButton?
+    @IBOutlet weak var nextWordButton: UIButton!
+    @IBOutlet weak var previousWordButton: UIButton!
 
     var wallet : Wallet?
     var wordLabels: [UILabel]?
@@ -24,9 +24,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        verifyButton?.clipsToBounds = true
-        verifyButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
         
@@ -42,8 +39,9 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         
         updateCurrentPageLabel(0)
         
-        wordsScrollView!.clipsToBounds = false
+        wordsScrollView!.clipsToBounds = true
         wordsScrollView!.contentSize = CGSizeMake(12 * wordLabel!.frame.width, wordLabel!.frame.height)
+        wordsScrollView!.userInteractionEnabled = false
 
         wordLabels = [UILabel]()
         wordLabels?.insert(wordLabel!, atIndex: 0)
@@ -63,24 +61,45 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        wordsScrollView?.clipsToBounds = false
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView .animateWithDuration(0.3, animations: { () -> Void in
+            self.previousWordButton!.frame.origin = CGPointMake(0,self.view.frame.size.height-self.previousWordButton!.frame.size.height);
+            self.nextWordButton!.frame.origin = CGPointMake(self.view.frame.size.width-self.previousWordButton!.frame.size.width, self.view.frame.size.height-self.previousWordButton!.frame.size.height);
+        })
+    }
+
+    @IBAction func previousWordButtonTapped(sender: UIButton) {
+        if (wordsPageControl!.currentPage > 0) {
+            let pagePosition = wordLabel!.frame.width * CGFloat(wordsPageControl!.currentPage-1)
+            wordsScrollView?.setContentOffset(CGPointMake(pagePosition, wordsScrollView!.contentOffset.y), animated: true)
+        }
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        // This is needed to prevent seeing some of the words on the previous view
-        wordsScrollView?.clipsToBounds = true
+    
+    @IBAction func nextWordButtonTapped(sender: UIButton) {
+        if let count = wordLabels?.count {
+            if (wordsPageControl!.currentPage == count-1) {
+                performSegueWithIdentifier("backupVerify", sender: nil)
+            } else if wordsPageControl!.currentPage < count-1 {
+                var pagePosition = wordLabel!.frame.width * CGFloat(wordsPageControl!.currentPage+1)
+                wordsScrollView?.setContentOffset(CGPointMake(pagePosition, wordsScrollView!.contentOffset.y), animated: true)
+            }
+        }
     }
     
     func updateCurrentPageLabel(page: Int) {
         wordsProgressLabel!.text = NSLocalizedString(NSString(format: "Word %@ of %@", String(page + 1), String(12)) as String, comment: "")
         if let count = wordLabels?.count {
             if wordsPageControl!.currentPage == count-1 {
-                verifyButton?.enabled = true;
-                verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
-                verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                nextWordButton?.backgroundColor = Constants.Colors.BlockchainBlue
+                nextWordButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                nextWordButton?.setTitle(NSLocalizedString("Done", comment:""), forState: .Normal)
+            } else if wordsPageControl!.currentPage == count-2 {
+                nextWordButton?.backgroundColor = Constants.Colors.SecondaryGray
+                nextWordButton?.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+                nextWordButton?.setTitle(NSLocalizedString("Next Word", comment:""), forState: .Normal)
             }
         }
     }
@@ -95,10 +114,12 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         wordsPageControl!.currentPage = page
         
         updateCurrentPageLabel(page)
-        
-    
     }
 
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        
+    }
+    
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

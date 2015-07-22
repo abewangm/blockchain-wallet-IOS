@@ -57,12 +57,14 @@ import UIKit
         super.viewDidLayoutSubviews()
         
         if (viewControllers.count == 1) {
-            closeButton!.frame = CGRectMake(8, 15, 85, 51);
+            closeButton!.frame = CGRectMake(self.view.frame.size.width-50-12, 15, 50, 51);
+            closeButton!.contentHorizontalAlignment = .Right
             closeButton!.setTitle(NSLocalizedString("Close", comment: ""), forState: .Normal)
             closeButton!.setImage(nil, forState: .Normal)
         } else {
-            closeButton!.frame = CGRectMake(0, 12, 85, 51);
+            closeButton!.frame = CGRectMake(0, 12, 50, 51);
             closeButton!.setTitle("", forState: .Normal)
+            closeButton!.contentHorizontalAlignment = .Left
             closeButton!.setImage(UIImage(named:"back_chevron_icon"), forState: .Normal);
         }
     }
