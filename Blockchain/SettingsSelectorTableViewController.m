@@ -16,11 +16,6 @@
 
 @implementation SettingsSelectorTableViewController
 
-- (NSString *)getCurrencySymbolFromCode:(NSString *)code
-{
-    return @"";
-}
-
 - (CurrencySymbol *)getLocalSymbolFromLatestResponse
 {
     return app.latestResponse.symbol_local;

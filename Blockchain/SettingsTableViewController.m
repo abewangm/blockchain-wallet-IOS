@@ -19,6 +19,7 @@
 #define TEXTFIELD_TAG_VERIFY_EMAIL 55;
 #define ALERTVIEW_TAG_CHANGE_EMAIL 4;
 #define TEXTFIELD_TAG_CHANGE_EMAIL 44;
+#define ALERTVIEW_TAG_ERROR_LOADING 6;
 
 @interface SettingsTableViewController () <CurrencySelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
@@ -26,6 +27,7 @@
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic) UIAlertView *changeEmailAlertView;
 @property (nonatomic, copy) NSString *enteredEmailString;
+@property (nonatomic) id notificationObserver;
 @end
 
 @implementation SettingsTableViewController
@@ -34,6 +36,9 @@
 {
     [super viewDidLoad];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getAccountInfo) forControlEvents:UIControlEventValueChanged];
+
     [self getAccountInfo];
     
     self.availableCurrenciesDictionary = [app.wallet getAvailableCurrencies];
@@ -41,9 +46,12 @@
 
 - (void)getAccountInfo;
 {
-    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
-        self.accountInfoDictionary = note.userInfo;
+    __weak SettingsTableViewController *weakSelf = self;
+    
+    self.notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        weakSelf.accountInfoDictionary = note.userInfo;
+        NSLog(@"endrefresh");
+        [weakSelf.refreshControl endRefreshing];
     }];
     
     [app.wallet getAccountInfo];
@@ -51,6 +59,8 @@
 
 - (void)setAccountInfoDictionary:(NSDictionary *)accountInfoDictionary
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self.notificationObserver name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    
     _accountInfoDictionary = accountInfoDictionary;
     
     if ([_accountInfoDictionary objectForKey:@"email"]) {
@@ -100,6 +110,13 @@
 - (NSString *)getUserEmail
 {
     return [self.accountInfoDictionary objectForKey:@"email"];
+}
+
+- (void)alertViewForErrorLoadingSettings
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    alertView.tag = ALERTVIEW_TAG_ERROR_LOADING;
+    [alertView show];
 }
 
 - (void)alertViewToChangeEmail
@@ -213,6 +230,9 @@
                 }
             }
             return;
+        }
+        case 6: {
+            [self getAccountInfo];
         }
     }
 }
@@ -401,6 +421,18 @@
                 }
             }
         }        default: return nil;
+    }
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL hasLoadedSettings = self.accountInfoDictionary ? YES : NO;
+    
+    if (!hasLoadedSettings) {
+        [self alertViewForErrorLoadingSettings];
+        return nil;
+    } else {
+        return indexPath;
     }
 }
 
