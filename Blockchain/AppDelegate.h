@@ -87,6 +87,7 @@
 @property (strong, nonatomic) IBOutlet SendViewController *sendViewController;
 @property (strong, nonatomic) IBOutlet MerchantMapViewController *merchantViewController;
 @property (strong, nonatomic) IBOutlet BCWebViewController *bcWebViewController;
+@property (strong, nonatomic) IBOutlet BackupNavigationViewController *backupNavigationViewController;
 
 @property (strong, nonatomic) IBOutlet UIImageView *mainLogoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;

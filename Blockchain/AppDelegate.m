@@ -37,7 +37,6 @@
 #import "UpgradeViewController.h"
 #import "SettingsNavigationController.h"
 
-#define CURTAIN_IMAGE_TAG 123
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
 #define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"
 #define UNSAFE_CHECK_PATH_BIN_BASH @"/bin/bash"
@@ -58,6 +57,7 @@ AppDelegate * app;
 BOOL showSendCoins = NO;
 
 SideMenuViewController *sideMenuViewController;
+UIImageView *curtainImageView;
 
 void (^secondPasswordSuccess)(NSString *);
 
@@ -185,6 +185,22 @@ void (^secondPasswordSuccess)(NSString *);
     
     // Listen for notification (from Swift code) to reload:
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:@"AppDelegateReload" object:nil];
+    
+    // Curtain view setup
+    curtainImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
+    
+    // Select the correct image depending on the screen size. The names used are the default names that LaunchImage assets get after processing. See @http://stackoverflow.com/questions/19107543/xcode-5-asset-catalog-how-to-reference-the-launchimage
+    // This works for iPhone 4/4S, 5/5S, 6 and 6Plus in Portrait
+    // TODO need to add new screen sizes with new iPhones ... ugly
+    // TODO we're currently using the scaled version of the app on iPhone 6 and 6 Plus
+    //        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
+    NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-700-568h", @"414x736" : @"LaunchImage-700-568h"};
+    NSString *key = [NSString stringWithFormat:@"%dx%d", (int)[UIScreen mainScreen].bounds.size.width, (int)[UIScreen mainScreen].bounds.size.height];
+    UIImage *launchImage = [UIImage imageNamed:dict[key]];
+    
+    curtainImageView.image = launchImage;
+    
+    curtainImageView.alpha = 0;
     
     return TRUE;
 }
@@ -468,11 +484,10 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Fade out the LaunchImage
-    UIView *curtainView = [self.window viewWithTag:CURTAIN_IMAGE_TAG];
     [UIView animateWithDuration:0.25 animations:^{
-        curtainView.alpha = 0;
+        curtainImageView.alpha = 0;
     } completion:^(BOOL finished) {
-        [curtainView removeFromSuperview];
+        [curtainImageView removeFromSuperview];
     }];
 }
 
@@ -494,21 +509,7 @@ void (^secondPasswordSuccess)(NSString *);
     // Show the LaunchImage so the list of running apps does not show the user's information
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // Small delay so we don't change the view while it's zooming out
-        UIImageView *curtainImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
         
-        // Select the correct image depending on the screen size. The names used are the default names that LaunchImage assets get after processing. See @http://stackoverflow.com/questions/19107543/xcode-5-asset-catalog-how-to-reference-the-launchimage
-        // This works for iPhone 4/4S, 5/5S, 6 and 6Plus in Portrait
-        // TODO need to add new screen sizes with new iPhones ... ugly
-        // TODO we're currently using the scaled version of the app on iPhone 6 and 6 Plus
-//        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
-        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-700-568h", @"414x736" : @"LaunchImage-700-568h"};
-        NSString *key = [NSString stringWithFormat:@"%dx%d", (int)[UIScreen mainScreen].bounds.size.width, (int)[UIScreen mainScreen].bounds.size.height];
-        UIImage *launchImage = [UIImage imageNamed:dict[key]];
-        
-        curtainImageView.image = launchImage;
-        
-        curtainImageView.alpha = 0;
-        [curtainImageView setTag:CURTAIN_IMAGE_TAG];
         [self.window addSubview:curtainImageView];
         [self.window bringSubviewToFront:curtainImageView];
         
@@ -527,6 +528,12 @@ void (^secondPasswordSuccess)(NSString *);
 {
     // Close all modals
     [app closeAllModals];
+    
+    // Close screens that shouldn't be in the foreground when returning to the wallet
+    if (_backupNavigationViewController) {
+        [_backupNavigationViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+    [self closeSideMenu];
     
     // Close PIN Modal in case we are setting it (after login or when changing the PIN)
     if (self.pinEntryViewController.verifyOnly == NO) {
@@ -957,8 +964,8 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.data = nil;
 
     [_transactionsViewController reload];
-    _sendViewController = nil;
-    _receiveViewController = nil;
+    [_sendViewController reload];
+    [_receiveViewController reload];
 }
 
 - (void)forgetWallet
@@ -1002,14 +1009,16 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showBackup
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Backup" bundle: nil];
-    BackupNavigationViewController *backupNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
+    if (!_backupNavigationViewController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Backup" bundle: nil];
+        _backupNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
+    }
     
     // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
-    backupNavigationController.wallet = self.wallet;
+    _backupNavigationViewController.wallet = self.wallet;
     
-    backupNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [_tabViewController presentViewController:backupNavigationController animated:YES completion:nil];
+    _backupNavigationViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [_tabViewController presentViewController:_backupNavigationViewController animated:YES completion:nil];
 }
 
 - (void)showSupport
@@ -1113,6 +1122,14 @@ void (^secondPasswordSuccess)(NSString *);
     }
     // If the sideMenu is shown, dismiss it
     else {
+        [_slidingViewController resetTopViewAnimated:YES];
+    }
+}
+
+- (void)closeSideMenu
+{
+    // If the sideMenu is shown, dismiss it
+    if (_slidingViewController.currentTopViewPosition != ECSlidingViewControllerTopViewPositionCentered) {
         [_slidingViewController resetTopViewAnimated:YES];
     }
 }

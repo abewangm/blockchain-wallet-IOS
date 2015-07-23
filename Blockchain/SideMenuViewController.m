@@ -71,8 +71,37 @@ int accountEntries = 0;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
+    [self setSideMenuGestures];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self resetSideMenuGestures];
+}
+
+- (void)setSideMenuGestures
+{
+    // Hide status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
+    
+    // Disable all interactions on main view
+    for (UIView *view in app.tabViewController.activeViewController.view.subviews) {
+        [view setUserInteractionEnabled:NO];
+    }
+    [app.tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:NO];
+    
+    // Enable Pan gesture and tap gesture to close sideMenu
+    [app.tabViewController.activeViewController.view setUserInteractionEnabled:YES];
+    ECSlidingViewController *sideMenu = app.slidingViewController;
+    [app.tabViewController.activeViewController.view addGestureRecognizer:sideMenu.panGesture];
+    
+    [app.tabViewController.activeViewController.view addGestureRecognizer:tapToCloseGestureRecognizer];
+    
+    // Show shadow on current viewController in tabBarView
+    UIView *castsShadowView = app.slidingViewController.topViewController.view;
+    castsShadowView.layer.shadowOpacity = 0.3f;
+    castsShadowView.layer.shadowRadius = 10.0f;
+    castsShadowView.layer.shadowColor = [UIColor blackColor].CGColor;
 }
 
 - (void)resetSideMenuGestures
@@ -84,7 +113,7 @@ int accountEntries = 0;
     [app.tabViewController.activeViewController.view removeGestureRecognizer:sideMenu.panGesture];
     [app.tabViewController.activeViewController.view removeGestureRecognizer:tapToCloseGestureRecognizer];
     
-    // Enable interation on main view
+    // Enable interaction on main view
     for (UIView *view in app.tabViewController.activeViewController.view.subviews) {
         [view setUserInteractionEnabled:YES];
     }
@@ -144,31 +173,11 @@ int accountEntries = 0;
 {
     // SideMenu will slide in
     if (operation == ECSlidingViewControllerOperationAnchorRight) {
-        // Hide status bar
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
-        
-        // Disable all interactions on main view
-        for (UIView *view in app.tabViewController.activeViewController.view.subviews) {
-            [view setUserInteractionEnabled:NO];
-        }
-        [app.tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:NO];
-        
-        // Enable Pan gesture and tap gesture to close sideMenu
-        [app.tabViewController.activeViewController.view setUserInteractionEnabled:YES];
-        ECSlidingViewController *sideMenu = app.slidingViewController;
-        [app.tabViewController.activeViewController.view addGestureRecognizer:sideMenu.panGesture];
-        
-        [app.tabViewController.activeViewController.view addGestureRecognizer:tapToCloseGestureRecognizer];
-        
-        // Show shadow on current viewController in tabBarView
-        UIView *castsShadowView = app.slidingViewController.topViewController.view;
-        castsShadowView.layer.shadowOpacity = 0.3f;
-        castsShadowView.layer.shadowRadius = 10.0f;
-        castsShadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+        [self setSideMenuGestures];
     }
     // SideMenu will slide out
     else if (operation == ECSlidingViewControllerOperationResetFromRight) {
-        [self resetSideMenuGestures];
+        // Everything happens in viewDidDisappear: which is called after the slide animation is done
     }
     
     return nil;
@@ -183,8 +192,6 @@ int accountEntries = 0;
             return;
         }
     }
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     

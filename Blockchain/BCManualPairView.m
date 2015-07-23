@@ -67,18 +67,18 @@
     NSString *guid = walletIdentifierTextField.text;
     NSString *password = passwordTextField.text;
     
-    if (password.length == 0) {
-        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
-        
-        [passwordTextField becomeFirstResponder];
-        
-        return;
-    }
-    
     if ([guid length] != 36) {
         [app standardNotify:BC_STRING_ENTER_YOUR_CHARACTER_WALLET_IDENTIFIER title:BC_STRING_INVALID_IDENTIFIER delegate:nil];
         
         [walletIdentifierTextField becomeFirstResponder];
+        
+        return;
+    }
+    
+    if (password.length == 0) {
+        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        
+        [passwordTextField becomeFirstResponder];
         
         return;
     }
