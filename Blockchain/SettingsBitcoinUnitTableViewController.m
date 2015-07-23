@@ -46,9 +46,12 @@
     self.currentCurrencySymbol = [self getBtcSymbolFromLatestResponse];
     
     // Currency preference is not set until returning from settings and updating the wallet, so store temporarily in NSUserDefaults for display purposes
-    NSArray *temp = [self.itemsDictionary allKeysForObject:[[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"]];
+    
+    NSString *loadedCurrencySymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"] == nil ? [self getBtcSymbolFromLatestResponse].name : [[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"];
+    
+    NSArray *temp = [self.itemsDictionary allKeysForObject:loadedCurrencySymbol];
     NSString *preferredCurrencySymbol = [temp objectAtIndex:0];
-    self.selectedCurrencyCode = preferredCurrencySymbol == nil ? [self getBtcSymbolFromLatestResponse].code : preferredCurrencySymbol;
+    self.selectedCurrencyCode = preferredCurrencySymbol;
 }
 
 #pragma mark - Table view data source
