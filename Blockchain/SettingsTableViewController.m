@@ -32,12 +32,17 @@
 
 @implementation SettingsTableViewController
 
+// TODO: remove before merging
+- (void)testForNilNSUserDefaults
+{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"email"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"btcUnit"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currency"];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(getAccountInfo) forControlEvents:UIControlEventValueChanged];
 
     [self getAccountInfo];
     
@@ -50,7 +55,6 @@
     
     self.notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         weakSelf.accountInfoDictionary = note.userInfo;
-        NSLog(@"endrefresh");
         [weakSelf.refreshControl endRefreshing];
     }];
     
@@ -63,8 +67,10 @@
     
     _accountInfoDictionary = accountInfoDictionary;
     
-    if ([_accountInfoDictionary objectForKey:@"email"]) {
-        [[NSUserDefaults standardUserDefaults] setValue:_accountInfoDictionary[@"email"] forKey:@"email"];
+    NSString *emailString = _accountInfoDictionary[@"email"];
+    
+    if (emailString != nil) {
+        [[NSUserDefaults standardUserDefaults] setValue:emailString forKey:@"email"];
     }
     
     [self.tableView reloadData];
@@ -233,6 +239,7 @@
         }
         case 6: {
             [self getAccountInfo];
+            return;
         }
     }
 }
