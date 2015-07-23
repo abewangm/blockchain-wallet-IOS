@@ -527,6 +527,12 @@ void (^secondPasswordSuccess)(NSString *);
     // Close all modals
     [app closeAllModals];
     
+    // Close screens that shouldn't be in the foreground when returning to the wallet
+    if (_backupNavigationViewController) {
+        [_backupNavigationViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+    [self closeSideMenu];
+    
     // Close PIN Modal in case we are setting it (after login or when changing the PIN)
     if (self.pinEntryViewController.verifyOnly == NO) {
         [self closePINModal:NO];
@@ -956,8 +962,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.data = nil;
 
     [_transactionsViewController reload];
-    _sendViewController = nil;
-    _receiveViewController = nil;
 }
 
 - (void)forgetWallet
@@ -1000,14 +1004,16 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showBackup
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Backup" bundle: nil];
-    BackupNavigationViewController *backupNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
+    if (!_backupNavigationViewController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Backup" bundle: nil];
+        _backupNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
+    }
     
     // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
-    backupNavigationController.wallet = self.wallet;
+    _backupNavigationViewController.wallet = self.wallet;
     
-    backupNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [_tabViewController presentViewController:backupNavigationController animated:YES completion:nil];
+    _backupNavigationViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [_tabViewController presentViewController:_backupNavigationViewController animated:YES completion:nil];
 }
 
 - (void)showSupport
@@ -1111,6 +1117,14 @@ void (^secondPasswordSuccess)(NSString *);
     }
     // If the sideMenu is shown, dismiss it
     else {
+        [_slidingViewController resetTopViewAnimated:YES];
+    }
+}
+
+- (void)closeSideMenu
+{
+    // If the sideMenu is shown, dismiss it
+    if (_slidingViewController.currentTopViewPosition != ECSlidingViewControllerTopViewPositionCentered) {
         [_slidingViewController resetTopViewAnimated:YES];
     }
 }
