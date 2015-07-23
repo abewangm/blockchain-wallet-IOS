@@ -329,9 +329,11 @@ UIActionSheet *popupAddressArchive;
     [self doCurrencyConversion];
 }
 
-- (void)animateTextOfLabel:(UILabel *)labelToAnimate toIntermediateText:(NSString *)intermediateText toFinalText:(NSString *)finalText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
+- (void)animateTextOfLabel:(UILabel *)labelToAnimate toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
 {
     gestureReceiver.userInteractionEnabled = NO;
+    
+    NSString *originalText = labelToAnimate.text;
     
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         labelToAnimate.alpha = 0.0;
@@ -345,7 +347,7 @@ UIActionSheet *popupAddressArchive;
                     labelToAnimate.alpha = 0.0;
                 } completion:^(BOOL finished) {
                     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        labelToAnimate.text = finalText;
+                        labelToAnimate.text = originalText;
                         labelToAnimate.alpha = 1.0;
                         gestureReceiver.userInteractionEnabled = YES;
                     }];
@@ -355,18 +357,42 @@ UIActionSheet *popupAddressArchive;
     }];
 }
 
+- (void)animateTextOfLabel:(UILabel *)labelToAnimate toFinalText:(NSString *)finalText
+{
+    labelToAnimate.userInteractionEnabled = NO;
+    
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        labelToAnimate.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            labelToAnimate.text = finalText;
+            labelToAnimate.alpha = 1.0;
+            labelToAnimate.userInteractionEnabled = YES;
+        }];
+    }];
+}
+
+- (void)toggleTextOfLabel:(UILabel *)labelToAnimate betweenString:(NSString *)firstString andString:(NSString *)secondString
+{
+    if ([labelToAnimate.text isEqualToString:firstString]) {
+        [self animateTextOfLabel:labelToAnimate toFinalText:secondString];
+    } else if ([labelToAnimate.text isEqualToString:secondString]) {
+        [self animateTextOfLabel:labelToAnimate toFinalText:firstString];
+    }
+}
+
 #pragma mark - Actions
 
 - (void)showMainAddressOnTap
 {
-    [self animateTextOfLabel:mainAddressLabel toIntermediateText:mainAddress toFinalText:mainLabel speed:2 gestureReceiver:mainAddressLabel];
+    [self toggleTextOfLabel:mainAddressLabel betweenString:mainLabel andString:mainAddress];
 }
 
 - (void)showLegacyAddressOnTap
 {
     // If the address has no label, no need to animate
     if (![optionsTitleLabel.text isEqualToString:detailAddress]) {
-        [self animateTextOfLabel:optionsTitleLabel toIntermediateText:detailAddress toFinalText:detailLabel speed:2 gestureReceiver:optionsTitleLabel];
+        [self toggleTextOfLabel:optionsTitleLabel betweenString:detailAddress andString:detailLabel];
     }
 }
 
@@ -374,7 +400,7 @@ UIActionSheet *popupAddressArchive;
 {
     if (didClickAccount) {
         [UIPasteboard generalPasteboard].string = detailAddress;
-        [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD toFinalText:detailLabel speed:1 gestureReceiver:qrCodePaymentImageView];
+        [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodePaymentImageView];
     }
     else {
         if ([archivedKeys containsObject:self.clickedAddress]) {
@@ -445,14 +471,14 @@ UIActionSheet *popupAddressArchive;
 {
     [UIPasteboard generalPasteboard].string = mainAddress;
     
-    [self animateTextOfLabel:mainAddressLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD toFinalText:mainLabel speed:1 gestureReceiver:qrCodeMainImageView];
+    [self animateTextOfLabel:mainAddressLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
 }
 
 - (IBAction)copyAddressClicked:(id)sender
 {
     [UIPasteboard generalPasteboard].string = detailAddress;
     
-    [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD toFinalText:detailLabel speed:1 gestureReceiver:optionsTitleLabel];
+    [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:optionsTitleLabel];
 }
 
 - (NSString*)formatPaymentRequest:(NSString*)url
