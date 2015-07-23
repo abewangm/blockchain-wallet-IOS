@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 
 @interface SettingsNavigationController ()
-
+@property (nonatomic) UIButton *backButton;
 @end
 
 @implementation SettingsNavigationController
@@ -43,6 +43,24 @@
     [backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
     [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:backButton];
+    self.backButton = backButton;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+
+    if (self.viewControllers.count == 1) {
+        self.backButton.frame = CGRectMake(self.view.frame.size.width-50-12, 15, 50, 51);
+        self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        [self.backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
+        [self.backButton setImage:nil forState:UIControlStateNormal];
+    } else {
+        self.backButton.frame = CGRectMake(0, 12, 50, 51);
+        self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [self.backButton setTitle:@"" forState:UIControlStateNormal];
+        [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)backButtonClicked:(UIButton *)sender
