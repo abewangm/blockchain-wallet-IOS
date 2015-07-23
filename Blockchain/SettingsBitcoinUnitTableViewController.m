@@ -17,9 +17,10 @@
 
 @implementation SettingsBitcoinUnitTableViewController
 
-- (NSString *)getCurrencySymbolFromCode:(NSString *)code
+- (void)alertViewForErrorLoadingSettings
 {
-    return @"";
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    [alertView show];
 }
 
 - (CurrencySymbol *)getBtcSymbolFromLatestResponse
@@ -49,9 +50,14 @@
     
     NSString *loadedCurrencySymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"] == nil ? [self getBtcSymbolFromLatestResponse].name : [[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"];
     
-    NSArray *temp = [self.itemsDictionary allKeysForObject:loadedCurrencySymbol];
-    NSString *preferredCurrencySymbol = [temp objectAtIndex:0];
-    self.selectedCurrencyCode = preferredCurrencySymbol;
+    NSArray *temporaryArray = [self.itemsDictionary allKeysForObject:loadedCurrencySymbol];
+    NSString *preferredCurrencySymbol = [temporaryArray firstObject];
+    
+    if (preferredCurrencySymbol == nil) {
+        [self alertViewForErrorLoadingSettings];
+    } else {
+        self.selectedCurrencyCode = preferredCurrencySymbol;
+    }
 }
 
 #pragma mark - Table view data source

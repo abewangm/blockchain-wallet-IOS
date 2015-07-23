@@ -21,7 +21,7 @@
 #define TEXTFIELD_TAG_CHANGE_EMAIL 44;
 #define ALERTVIEW_TAG_ERROR_LOADING 6;
 
-@interface SettingsTableViewController () <CurrencySelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
+@interface SettingsTableViewController () <CurrencySelectorDelegate, BtcSelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
