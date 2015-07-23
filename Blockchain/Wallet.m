@@ -899,6 +899,12 @@
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
+- (void)whitelistWallet
+{
+    DLog(@"Whitelisting newly created wallet");
+    [self.webView executeJS:@"MyWallet.wallet.whitelistWallet('HvWJeR1WdybHvq0316i', 'alpha')"];
+}
+
 - (void)upgradeToHDWallet
 {
     DLog(@"Creating HD Wallet");

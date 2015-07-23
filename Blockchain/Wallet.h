@@ -154,6 +154,7 @@
 - (NSString *)decrypt:(NSString *)data password:(NSString *)password pbkdf2_iterations:(int)pbkdf2_iterations;
 
 // HD Wallet
+- (void)whitelistWallet;
 - (void)upgradeToHDWallet;
 - (Boolean)didUpgradeToHd;
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
