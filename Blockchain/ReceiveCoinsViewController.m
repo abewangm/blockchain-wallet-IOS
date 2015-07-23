@@ -65,15 +65,6 @@ UIActionSheet *popupAddressArchive;
                                                qrCodeMainImageView.frame.origin.y - 10,
                                                qrCodeMainImageView.frame.size.width - reduceImageSizeBy,
                                                qrCodeMainImageView.frame.size.height - reduceImageSizeBy);
-        
-        // Move everything up on label view
-        UIView *mainView = labelTextField.superview;
-        
-        for (UIView *view in mainView.subviews) {
-            CGRect frame = view.frame;
-            frame.origin.y -= 45;
-            view.frame = frame;
-        }
     }
     
     qrCodePaymentImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x,
