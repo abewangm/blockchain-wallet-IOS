@@ -962,6 +962,8 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.data = nil;
 
     [_transactionsViewController reload];
+    [_sendViewController reload];
+    [_receiveViewController reload];
 }
 
 - (void)forgetWallet
