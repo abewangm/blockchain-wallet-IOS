@@ -391,7 +391,7 @@ UIActionSheet *popupAddressArchive;
 - (void)showLegacyAddressOnTap
 {
     // If the address has no label, no need to animate
-    if (![optionsTitleLabel.text isEqualToString:detailAddress]) {
+    if (![detailLabel isEqualToString:detailAddress]) {
         [self toggleTextOfLabel:optionsTitleLabel betweenString:detailAddress andString:detailLabel];
     }
 }
