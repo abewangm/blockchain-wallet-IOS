@@ -594,6 +594,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _bcWebViewController = [[BCWebViewController alloc] initWithTitle:title];
     [_bcWebViewController loadURL:url];
+    _bcWebViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:_bcWebViewController animated:YES completion:nil];
 }
 
@@ -1002,6 +1003,7 @@ void (^secondPasswordSuccess)(NSString *);
     _bcWebViewController = [[BCWebViewController alloc] initWithTitle:BC_STRING_SETTINGS];
     [_bcWebViewController loadSettings];
     
+    _bcWebViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:_bcWebViewController animated:YES completion:nil];
 }
 
@@ -1015,7 +1017,7 @@ void (^secondPasswordSuccess)(NSString *);
     // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
     _backupNavigationViewController.wallet = self.wallet;
     
-    _backupNavigationViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    _backupNavigationViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:_backupNavigationViewController animated:YES completion:nil];
 }
 
@@ -1035,7 +1037,7 @@ void (^secondPasswordSuccess)(NSString *);
                           [[UIDevice currentDevice] systemVersion]];
     [controller setMessageBody:message isHTML:NO];
     
-    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.tabViewController presentViewController:controller animated:YES completion:nil];
 }
 
@@ -1218,7 +1220,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.pinEntryViewController = c;
     
-    peViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    peViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.tabViewController presentViewController:c animated:YES completion:nil];
 }
 
@@ -1298,7 +1300,7 @@ void (^secondPasswordSuccess)(NSString *);
         _merchantViewController = [[MerchantMapViewController alloc] initWithNibName:@"MerchantMapView" bundle:[NSBundle mainBundle]];
     }
     
-    _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:_merchantViewController animated:YES completion:nil];
 }
 
