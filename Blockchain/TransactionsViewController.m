@@ -210,6 +210,7 @@ int lastNumberTransactions = INT_MAX;
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = self.tableView;
     refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl setTintColor:[UIColor whiteColor]];
     [refreshControl addTarget:self
                        action:@selector(loadTransactions)
              forControlEvents:UIControlEventValueChanged];
