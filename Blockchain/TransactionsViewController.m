@@ -223,7 +223,6 @@ int lastNumberTransactions = INT_MAX;
     [super viewWillAppear:animated];
     app.mainLogoImageView.hidden = NO;
     app.mainTitleLabel.hidden = YES;
-    app.mainTitleLabel.frame = CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40);
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
 }
 
