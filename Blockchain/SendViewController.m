@@ -710,7 +710,8 @@ BOOL displayingLocalSymbolSend;
                 // If the amount is empty, open the amount field
                 if (amountInSatoshi == 0) {
                     btcAmountField.text = nil;
-                    [btcAmountField becomeFirstResponder];
+                    fiatAmountField.text = nil;
+                    [fiatAmountField becomeFirstResponder];
                 }
                 
                 [self doCurrencyConversion];
