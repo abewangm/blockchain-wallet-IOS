@@ -15,11 +15,24 @@
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
 
-#define ALERTVIEW_TAG_VERIFY_EMAIL 5;
-#define TEXTFIELD_TAG_VERIFY_EMAIL 55;
-#define ALERTVIEW_TAG_CHANGE_EMAIL 4;
-#define TEXTFIELD_TAG_CHANGE_EMAIL 44;
-#define ALERTVIEW_TAG_ERROR_LOADING 6;
+const int alertViewTagErrorLoading = 6;
+
+const int alertViewTagVerifyEmail = 5;
+const int textFieldTagVerifyEmail = 55;
+
+const int alertViewTagChangeEmail = 4;
+const int textFieldTagChangeEmail = 44;
+
+const int accountDetailsSection = 0;
+const int displaySection = 1;
+const int aboutSection = 2;
+
+const int accountDetailsIdentifier = 0;
+const int accountDetailsEmail = 1;
+const int displayLocalCurrency = 0;
+const int displayBtcUnit = 1;
+const int aboutTermsOfService = 0;
+const int aboutPrivacyPolicy = 1;
 
 @interface SettingsTableViewController () <CurrencySelectorDelegate, BtcSelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
@@ -121,7 +134,7 @@
 - (void)alertViewForErrorLoadingSettings
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    alertView.tag = ALERTVIEW_TAG_ERROR_LOADING;
+    alertView.tag = alertViewTagErrorLoading;
     [alertView show];
 }
 
@@ -132,10 +145,10 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField *textField = [alertView textFieldAtIndex:0];
-    textField.tag = TEXTFIELD_TAG_CHANGE_EMAIL;
+    textField.tag = textFieldTagChangeEmail;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
-    alertView.tag = ALERTVIEW_TAG_CHANGE_EMAIL;
+    alertView.tag = alertViewTagChangeEmail;
     [alertView show];
     self.changeEmailAlertView = alertView;
 }
@@ -145,10 +158,10 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_EMAIL, [[NSUserDefaults standardUserDefaults] objectForKey:@"email"]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
     UITextField *textField = [alertView textFieldAtIndex:0];
-    textField.tag = TEXTFIELD_TAG_VERIFY_EMAIL;
+    textField.tag = textFieldTagVerifyEmail;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
-    alertView.tag = ALERTVIEW_TAG_VERIFY_EMAIL;
+    alertView.tag = alertViewTagVerifyEmail;
     [alertView show];
     self.verifyEmailAlertView = alertView;
 }
@@ -212,7 +225,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (alertView.tag) {
-        case 4: {switch (buttonIndex) {
+        case alertViewTagChangeEmail: {switch (buttonIndex) {
             case 1: {
                 [self changeEmail:[alertView textFieldAtIndex:0].text];
                 return;
@@ -220,7 +233,7 @@
         }
             return;
     }
-        case 5: {
+        case alertViewTagVerifyEmail: {
             switch (buttonIndex) {
                 case 0: {
                     [self getAccountInfo];
@@ -237,7 +250,7 @@
             }
             return;
         }
-        case 6: {
+        case alertViewTagErrorLoading: {
             [self getAccountInfo];
             return;
         }
@@ -248,10 +261,10 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField.tag == 55) {
+    if (textField.tag == textFieldTagVerifyEmail) {
         [self verifyEmailWithCode:textField.text];
         [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    } else if (textField.tag == 44) {
+    } else if (textField.tag == textFieldTagChangeEmail) {
         [self changeEmail:textField.text];
         [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
     }
@@ -289,34 +302,34 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     switch (indexPath.section) {
-        case 0: {
+        case accountDetailsSection: {
             switch (indexPath.row) {
-                case 1: {
+                case accountDetailsEmail: {
                     ![self hasAddedEmail] || [self hasVerifiedEmail] ? [self alertViewToChangeEmail] : [self alertViewToVerifyEmail];
                 }
             }
             return;
         }
-        case 1: {
+        case displaySection: {
             switch (indexPath.row) {
-                case 0: {
+                case displayLocalCurrency: {
                     [self performSegueWithIdentifier:@"currency" sender:nil];
                     return;
                 }
-                case 1: {
+                case displayBtcUnit: {
                     [self performSegueWithIdentifier:@"btcUnit" sender:nil];
                     return;
                 }
             }
             return;
         }
-        case 2: {
+        case aboutSection: {
             switch (indexPath.row) {
-                case 0: {
+                case aboutTermsOfService: {
                     [self performSegueWithIdentifier:@"about" sender:@"termsOfService"];
                     return;
                 }
-                case 1: {
+                case aboutPrivacyPolicy: {
                     [self performSegueWithIdentifier:@"about" sender:@"privacyPolicy"];
                     return;
                 }
@@ -334,9 +347,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return 2;
-        case 1: return 2;
-        case 2: return 2;
+        case accountDetailsSection: return 2;
+        case displaySection: return 2;
+        case aboutSection: return 2;
         default: return 0;
     }
 }
@@ -344,9 +357,9 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
-        case 1: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
-        case 2: return BC_STRING_SETTINGS_ABOUT;
+        case accountDetailsSection: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
+        case displaySection: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
+        case aboutSection: return BC_STRING_SETTINGS_ABOUT;
         default: return nil;
     }
 }
@@ -354,7 +367,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return BC_STRING_SETTINGS_EMAIL_FOOTER;
+        case accountDetailsSection: return BC_STRING_SETTINGS_EMAIL_FOOTER;
         default: return nil;
     }
 }
@@ -366,9 +379,9 @@
     cell.detailTextLabel.font = [SettingsTableViewController fontForCell];
     
     switch (indexPath.section) {
-        case 0: {
+        case accountDetailsSection: {
             switch (indexPath.row) {
-                case 0: {
+                case accountDetailsIdentifier: {
                     UITableViewCell *cellWithSubtitle = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
                     cellWithSubtitle.textLabel.font = [SettingsTableViewController fontForCell];
                     cellWithSubtitle.textLabel.text = BC_STRING_SETTINGS_IDENTIFIER;
@@ -378,7 +391,7 @@
                     cellWithSubtitle.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     return cellWithSubtitle;
                 }
-                case 1: {
+                case accountDetailsEmail: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     
@@ -395,10 +408,10 @@
                 }
             }
         }
-        case 1: {
+        case displaySection: {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
-                case 0: {
+                case displayLocalCurrency: {
                     NSString *preferredCurrencySymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"currency"];
                     NSString *selectedCurrencyCode = preferredCurrencySymbol == nil ? [self getLocalSymbolFromLatestResponse].code : preferredCurrencySymbol;
                     NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
@@ -406,7 +419,7 @@
                     cell.detailTextLabel.text = currencyName;
                     return cell;
                 }
-                case 1: {
+                case displayBtcUnit: {
                     NSString *preferredBtcSymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"];
                     NSString *selectedCurrencyCode = preferredBtcSymbol == nil ? [self getBtcSymbolFromLatestResponse].name : preferredBtcSymbol;
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
@@ -415,14 +428,14 @@
                 }
             }
         }
-        case 2: {
+        case aboutSection: {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
-                case 0: {
+                case aboutTermsOfService: {
                     cell.textLabel.text = BC_STRING_SETTINGS_TERMS_OF_SERVICE;
                     return cell;
                 }
-                case 1: {
+                case aboutPrivacyPolicy: {
                     cell.textLabel.text = BC_STRING_SETTINGS_PRIVACY_POLICY;
                     return cell;
                 }
