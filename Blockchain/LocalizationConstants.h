@@ -153,7 +153,7 @@
 
 #define BC_STRING_DONE NSLocalizedString(@"Done", nil)
 #define BC_STRING_SAVE NSLocalizedString(@"Save", nil)
-#define BC_STRING_CONTINUE NSLocalizedString(@"Continue", nil)
+#define BC_STRING_CREATE_WALLET NSLocalizedString(@"Create Wallet", nil)
 
 #define BC_STRING_MY_ACCOUNTS NSLocalizedString(@"My Accounts", nil)
 #define BC_STRING_TOTAL_BALANCE NSLocalizedString(@"Total Balance", nil)

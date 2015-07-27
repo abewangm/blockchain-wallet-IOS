@@ -22,7 +22,7 @@
     UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     createButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [createButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
+    [createButton setTitle:BC_STRING_CREATE_WALLET forState:UIControlStateNormal];
     [createButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     createButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
     
