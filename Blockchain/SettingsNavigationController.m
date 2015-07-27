@@ -51,8 +51,9 @@
     [super viewDidLayoutSubviews];
 
     if (self.viewControllers.count == 1) {
-        self.backButton.frame = CGRectMake(self.view.frame.size.width-50-12, 15, 50, 51);
+        self.backButton.frame = CGRectMake(self.view.frame.size.width-60-12, 14, 60, 51);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        self.backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
         [self.backButton setImage:nil forState:UIControlStateNormal];
     } else {
