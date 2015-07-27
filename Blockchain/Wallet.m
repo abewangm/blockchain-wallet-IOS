@@ -185,6 +185,15 @@
     return [availableCurrenciesJSON getJSONObject];
 }
 
+- (void)getAllCurrencySymbols
+{
+    if (![self.webView isLoaded]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"JSON.stringify(MyWalletPhone.get_all_currency_symbols())"];
+}
+
 - (void)changeLocalCurrency:(NSString *)currencyCode
 {
     if (![self isInitialized]) {
@@ -955,6 +964,13 @@
     DLog(@"on_get_account_info");
     NSDictionary *accountInfoDictionary = [accountInfo getJSONObject];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil userInfo:accountInfoDictionary];
+}
+
+- (void)on_get_all_currency_symbols_success:(NSString *)currencies
+{
+    DLog(@"on_get_all_currency_symbols_success");
+    NSDictionary *allCurrencySymbolsDictionary = [currencies getJSONObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil userInfo:allCurrencySymbolsDictionary];
 }
 
 - (void)on_change_email_success

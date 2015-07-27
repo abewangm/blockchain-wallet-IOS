@@ -191,5 +191,6 @@
 - (void)changeEmail:(NSString *)newEmailString;
 - (void)resendVerificationEmail:(NSString *)emailString;
 - (void)verifyEmailWithCode:(NSString *)codeString;
+- (void)getAllCurrencySymbols;
 
 @end

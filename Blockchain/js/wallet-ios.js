@@ -1007,3 +1007,19 @@ MyWalletPhone.change_btc_currency = function(code) {
     
     BlockchainSettingsAPI.change_btc_currency(code, success, error);
 }
+
+MyWalletPhone.get_all_currency_symbols = function () {
+    
+    var success = function (data) {
+        console.log('Getting all currency symbols');
+        var currencySymbolData = JSON.stringify(data, null, 2);
+        device.execute('on_get_all_currency_symbols_success:', [currencySymbolData]);
+    };
+    
+    var error = function (e) {
+        console.log('Error getting all currency symbols: ' + e);
+        device.execute('loading_stop');
+    };
+    
+    BlockchainAPI.get_ticker(success, error);
+}

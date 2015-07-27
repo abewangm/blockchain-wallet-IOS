@@ -37,6 +37,7 @@ const int aboutPrivacyPolicy = 1;
 @interface SettingsTableViewController () <CurrencySelectorDelegate, BtcSelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
+@property (nonatomic, copy) NSDictionary *allCurrencySymbolsDictionary;
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic) UIAlertView *changeEmailAlertView;
 @property (nonatomic, copy) NSString *enteredEmailString;
@@ -59,7 +60,27 @@ const int aboutPrivacyPolicy = 1;
 
     [self getAccountInfo];
     
+    [self getAllCurrencySymbols];
+    
     self.availableCurrenciesDictionary = [app.wallet getAvailableCurrencies];
+}
+
+- (void)getAllCurrencySymbols
+{
+    __weak SettingsTableViewController *weakSelf = self;
+    
+    self.notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        weakSelf.allCurrencySymbolsDictionary = note.userInfo;
+    }];
+    
+    [app.wallet getAllCurrencySymbols];
+}
+
+- (void)setAllCurrencySymbolsDictionary:(NSDictionary *)allCurrencySymbolsDictionary
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self.notificationObserver name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
+
+    _allCurrencySymbolsDictionary = allCurrencySymbolsDictionary;
 }
 
 - (void)getAccountInfo;
@@ -68,7 +89,6 @@ const int aboutPrivacyPolicy = 1;
     
     self.notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         weakSelf.accountInfoDictionary = note.userInfo;
-        [weakSelf.refreshControl endRefreshing];
     }];
     
     [app.wallet getAccountInfo];
