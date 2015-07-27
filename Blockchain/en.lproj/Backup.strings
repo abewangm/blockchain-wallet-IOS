@@ -32,8 +32,8 @@
 /* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
 "UCL-i9-UDp.text" = "Write the words down on a sheet of paper in the exact order they appear ";
 
-/* Class = "UIButton"; normalTitle = "Next Word"; ObjectID = "dkQ-nj-Pkf"; */
-"EQM-OM-jK8.normalTitle" = "Next Word";
+/* Class = "UIButton"; normalTitle = "Next Word"; ObjectID = "eaO-py-9rY"; */
+"eaO-py-9rY.normalTitle" = "Next Word";
 
 /* Class = "UIButton"; normalTitle = "Previous Word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "Previous Word";

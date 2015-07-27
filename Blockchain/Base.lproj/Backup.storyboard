@@ -181,7 +181,7 @@
                                             <action selector="previousWordButtonTapped:" destination="jOl-Wq-Cg3" eventType="touchUpInside" id="W2R-8y-WGj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EQM-OM-jK8">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eaO-py-9rY">
                                         <rect key="frame" x="161" y="464" width="159" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -191,7 +191,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="nextWordButtonTapped:" destination="jOl-Wq-Cg3" eventType="touchUpInside" id="qZk-rD-f7l"/>
+                                            <action selector="nextWordButtonTapped:" destination="jOl-Wq-Cg3" eventType="touchUpInside" id="0qR-0f-O9K"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -202,7 +202,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="mYR-MQ-mS2"/>
                     <connections>
-                        <outlet property="nextWordButton" destination="EQM-OM-jK8" id="JMm-Ma-Dcv"/>
+                        <outlet property="nextWordButton" destination="eaO-py-9rY" id="j3z-ft-74D"/>
                         <outlet property="previousWordButton" destination="AFH-AI-Rgk" id="7VV-aQ-3E1"/>
                         <outlet property="screenShotWarningLabel" destination="FDO-ui-cGo" id="Itv-FZ-zwG"/>
                         <outlet property="wordLabel" destination="Okr-VE-yvm" id="ynm-yh-sZO"/>

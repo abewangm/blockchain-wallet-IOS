@@ -694,7 +694,9 @@ BOOL displayingLocalSymbolSend;
                     amountString = amountStringFromDictionary;
                 } else {
                     if (app.latestResponse.symbol_btc) {
-                        amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:[btcAmountField.text doubleValue] * app.latestResponse.symbol_btc.conversion / SATOSHI]];
+                        amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                        amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:[amountString doubleValue] * app.latestResponse.symbol_btc.conversion / SATOSHI]];
+                        amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
                     }
                 }
                 
@@ -708,7 +710,8 @@ BOOL displayingLocalSymbolSend;
                 // If the amount is empty, open the amount field
                 if (amountInSatoshi == 0) {
                     btcAmountField.text = nil;
-                    [btcAmountField becomeFirstResponder];
+                    fiatAmountField.text = nil;
+                    [fiatAmountField becomeFirstResponder];
                 }
                 
                 [self doCurrencyConversion];
