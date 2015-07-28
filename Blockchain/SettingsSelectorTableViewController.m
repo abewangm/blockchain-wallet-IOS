@@ -10,6 +10,7 @@
 
 @interface SettingsSelectorTableViewController()
 @property (nonatomic, copy) NSArray *keysArray;
+@property (nonatomic, copy) NSArray *namesArray;
 @property (nonatomic) CurrencySymbol *currentCurrencySymbol;
 @property (nonatomic) NSString *selectedCurrencyCode;
 @end
@@ -36,7 +37,9 @@
 - (void)setItemsDictionary:(NSDictionary *)itemsDictionary
 {
     _itemsDictionary = itemsDictionary;
-    self.keysArray = [[_itemsDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    self.keysArray = [_itemsDictionary allKeys];
+    self.namesArray = [[_itemsDictionary allValues] sortedArrayUsingSelector:@selector(compare:)];
+    
     self.currentCurrencySymbol = [self getLocalSymbolFromLatestResponse];
     
     self.selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
@@ -52,11 +55,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-    NSString *currencyCode = self.keysArray[indexPath.row];
+    
+    cell.textLabel.text = self.namesArray[indexPath.row];
+    
+    NSString *currencyCode = [[self.itemsDictionary allKeysForObject:cell.textLabel.text] firstObject];
     if ([currencyCode isEqualToString:self.selectedCurrencyCode]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
-    cell.textLabel.text = self.itemsDictionary[currencyCode];
     
     return cell;
 }
@@ -65,12 +70,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *currencyCode = self.keysArray[indexPath.row];
+    NSString *currencyCode = [[self.itemsDictionary allKeysForObject:self.namesArray[indexPath.row]] firstObject];
     
     self.selectedCurrencyCode = currencyCode;
     
-    [[NSUserDefaults standardUserDefaults] setValue:currencyCode forKey:@"currency"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
     [self.tableView reloadData];
 }
 
