@@ -57,6 +57,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     cell.detailTextLabel.text = cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)", currencyCode, self.allCurrencySymbolsDictionary[currencyCode][@"symbol"]];
+    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     cell.textLabel.text = self.itemsDictionary[currencyCode];
     
     return cell;
