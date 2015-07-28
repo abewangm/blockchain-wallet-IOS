@@ -960,10 +960,6 @@ MyWalletPhone.resend_verification_email = function(email) {
     BlockchainSettingsAPI.resendEmailConfirmation(email, success, error);
 }
 
-MyWalletPhone.get_available_currencies = function() {
-    return WalletStore.getCurrencies();
-}
-
 MyWalletPhone.change_currency = function(code) {
     
     var success = function () {

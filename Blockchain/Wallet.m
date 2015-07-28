@@ -174,17 +174,6 @@
         [self.webView executeJS:@"MyWalletPhone.get_wallet_and_history()"];
 }
 
-- (NSDictionary *)getAvailableCurrencies
-{
-    if (![self.webView isLoaded]) {
-        return nil;
-    }
-
-    NSString *availableCurrenciesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWalletPhone.get_available_currencies())"];
-    
-    return [availableCurrenciesJSON getJSONObject];
-}
-
 - (void)getAllCurrencySymbols
 {
     if (![self.webView isLoaded]) {

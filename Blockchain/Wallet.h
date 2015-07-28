@@ -186,7 +186,6 @@
 - (void)upgrade_success;
 
 // Settings
-- (NSDictionary *)getAvailableCurrencies;
 - (void)getAccountInfo;
 - (void)changeEmail:(NSString *)newEmailString;
 - (void)resendVerificationEmail:(NSString *)emailString;

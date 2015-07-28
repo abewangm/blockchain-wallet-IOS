@@ -52,7 +52,6 @@ const int aboutPrivacyPolicy = 1;
     
     [self getAllCurrencySymbols];
     
-    self.availableCurrenciesDictionary = [app.wallet getAvailableCurrencies];
 }
 
 - (void)getAllCurrencySymbols
@@ -71,6 +70,8 @@ const int aboutPrivacyPolicy = 1;
     [[NSNotificationCenter defaultCenter] removeObserver:self.notificationObserver name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
 
     _allCurrencySymbolsDictionary = allCurrencySymbolsDictionary;
+    
+    [self reloadTableView];
 }
 
 - (void)getAccountInfo;
@@ -90,13 +91,17 @@ const int aboutPrivacyPolicy = 1;
     
     _accountInfoDictionary = accountInfoDictionary;
     
+    if (_accountInfoDictionary[@"currencies"] != nil) {
+        self.availableCurrenciesDictionary = _accountInfoDictionary[@"currencies"];
+    }
+    
     NSString *emailString = _accountInfoDictionary[@"email"];
     
     if (emailString != nil) {
         self.emailString = emailString;
     }
     
-    [self.tableView reloadData];
+    [self reloadTableView];
 }
 
 - (void)changeLocalCurrencySuccess
@@ -434,7 +439,7 @@ const int aboutPrivacyPolicy = 1;
                     NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
                     NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
-                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)", currencyName, self.allCurrencySymbolsDictionary[selectedCurrencyCode][@"symbol"]];
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@%@", currencyName, [[NSString alloc] initWithFormat:@" (%@)", self.allCurrencySymbolsDictionary[selectedCurrencyCode][@"symbol"]]];
                     return cell;
                 }
                 case displayBtcUnit: {
