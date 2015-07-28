@@ -63,7 +63,7 @@ import UIKit
             closeButton!.setTitle(NSLocalizedString("Close", comment: ""), forState: .Normal)
             closeButton!.setImage(nil, forState: .Normal)
         } else {
-            closeButton!.frame = CGRectMake(0, 12, 50, 51);
+            closeButton!.frame = CGRectMake(0, 12, 85, 51);
             closeButton!.setTitle("", forState: .Normal)
             closeButton!.contentHorizontalAlignment = .Left
             closeButton!.setImage(UIImage(named:"back_chevron_icon"), forState: .Normal);
