@@ -57,7 +57,7 @@
         [self.backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
         [self.backButton setImage:nil forState:UIControlStateNormal];
     } else {
-        self.backButton.frame = CGRectMake(0, 12, 50, 51);
+        self.backButton.frame = CGRectMake(0, 12, 85, 51);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [self.backButton setTitle:@"" forState:UIControlStateNormal];
         [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
