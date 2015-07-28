@@ -718,7 +718,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeClose headerText:BC_STRING_SECOND_PASSWORD_REQUIRED onDismiss:^() {
         secondPasswordTextField.text = nil;
+        [self.sendViewController reset];
     } onResume:nil];
+    
+    [modalView.closeButton removeTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventAllTouchEvents];
+    
+    [modalView.closeButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventAllTouchEvents];
     
     [secondPasswordTextField becomeFirstResponder];
 }
