@@ -991,6 +991,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
 }
 
+- (void)on_get_history_success
+{
+    DLog(@"on_get_history_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)whitelistWallet

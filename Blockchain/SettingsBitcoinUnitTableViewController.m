@@ -46,9 +46,7 @@
     self.keysArray = [[_itemsDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
     self.currentCurrencySymbol = [self getBtcSymbolFromLatestResponse];
     
-    // Currency preference is not set until returning from settings and updating the wallet, so store temporarily in NSUserDefaults for display purposes
-    
-    NSString *loadedCurrencySymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"] == nil ? [self getBtcSymbolFromLatestResponse].name : [[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"];
+    NSString *loadedCurrencySymbol = [self getBtcSymbolFromLatestResponse].name;
     
     NSArray *temporaryArray = [self.itemsDictionary allKeysForObject:loadedCurrencySymbol];
     NSString *preferredCurrencySymbol = [temporaryArray firstObject];

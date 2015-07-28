@@ -113,6 +113,17 @@ const int aboutPrivacyPolicy = 1;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
     
+    [self getHistory];
+}
+
+- (void)getHistory
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
+    [app.wallet getHistory];
+}
+
+- (void)reloadTableView
+{
     [self.tableView reloadData];
 }
 
@@ -432,16 +443,14 @@ const int aboutPrivacyPolicy = 1;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
                 case displayLocalCurrency: {
-                    NSString *preferredCurrencySymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"currency"];
-                    NSString *selectedCurrencyCode = preferredCurrencySymbol == nil ? [self getLocalSymbolFromLatestResponse].code : preferredCurrencySymbol;
+                    NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
                     NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
                     cell.detailTextLabel.text = currencyName;
                     return cell;
                 }
                 case displayBtcUnit: {
-                    NSString *preferredBtcSymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"btcUnit"];
-                    NSString *selectedCurrencyCode = preferredBtcSymbol == nil ? [self getBtcSymbolFromLatestResponse].name : preferredBtcSymbol;
+                    NSString *selectedCurrencyCode = [self getBtcSymbolFromLatestResponse].name;
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
                     cell.detailTextLabel.text = selectedCurrencyCode;
                     return cell;

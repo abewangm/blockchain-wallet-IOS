@@ -39,10 +39,7 @@
     self.keysArray = [[_itemsDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
     self.currentCurrencySymbol = [self getLocalSymbolFromLatestResponse];
     
-    // Currency preference is not set until returning from settings and updating the wallet, so store temporarily in NSUserDefaults for display purposes
-    
-    NSString *preferredCurrencySymbol = [[NSUserDefaults standardUserDefaults] valueForKey:@"currency"];
-    self.selectedCurrencyCode = preferredCurrencySymbol == nil ? [self getLocalSymbolFromLatestResponse].code : preferredCurrencySymbol;
+    self.selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
 }
 
 #pragma mark - Table view data source

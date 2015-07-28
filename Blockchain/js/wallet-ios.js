@@ -691,6 +691,7 @@ MyWalletPhone.get_history = function() {
     var success = function () {
         console.log('Got wallet history');
         device.execute('loading_stop');
+        device.execute('on_get_history_success');
     };
     
     var error = function () {
