@@ -423,6 +423,8 @@ UIActionSheet *popupAddressArchive;
     
     activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList];
     
+    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_SUBJECT forKey:@"subject"];
+    
     // Keyboard is behaving a little strangely because of UITextFields in the Keyboard Accessory View
     // This makes it work correctly - resign first Responder for UITextFields inside the Accessory View...
     [btcAmountField resignFirstResponder];

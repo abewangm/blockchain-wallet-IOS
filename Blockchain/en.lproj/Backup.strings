@@ -45,12 +45,12 @@
 "FDO-ui-cGo.text" = "Don't take a screenshot!\nYou can jeopardize your wallet's security";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "3kJ-3U-lFe"; */
-"3kJ-3U-lFe.text" = "Please try again";"
+"3kJ-3U-lFe.text" = "Please try again";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
 "CBl-1W-VP8.placeholder" = "Password";
 
-/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = 9WK-My-5CL; */
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
 "9WK-My-5CL.text" = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue.";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "07q-RX-CeI"; */

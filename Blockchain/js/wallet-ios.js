@@ -294,7 +294,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     device.execute('loading_start_download_wallet');
     
     twoFACode = null;
-    MyWallet.login(user_guid, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, null, other_error, fetch_success, decrypt_success, build_hd_success);
+    MyWallet.login(user_guid, shared_key, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, null, other_error, fetch_success, decrypt_success, build_hd_success);
 };
 
 MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
