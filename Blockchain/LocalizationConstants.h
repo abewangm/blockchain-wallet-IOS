@@ -219,6 +219,8 @@
 #define BC_STRING_UNSAFE_DEVICE_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_UNSAFE_DEVICE_MESSAGE NSLocalizedString(@"Your device appears to be jailbroken. The security of your wallet may be compromised.", nil)
 
+#define BC_STRING_INVALID_ADDRESS NSLocalizedString(@"Address is not valid", nil)
+
 #define BC_STRING_SETTINGS_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
 #define BC_STRING_SETTINGS_EMAIL NSLocalizedString(@"Email", nil)
@@ -240,11 +242,7 @@
 #define BC_STRING_SETTINGS_CHANGE_EMAIL NSLocalizedString(@"Change Email", nil)
 #define BC_STRING_SETTINGS_EMAIL_VERIFIED NSLocalizedString(@"Your email has been verified.", nil)
 #define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
-#define BC_STRING_INVALID_ADDRESS NSLocalizedString(@"Address is not valid", nil)
-#define BC_STRING_INVALID_ADDRESS NSLocalizedString(@"Address is not valid", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_TITLE NSLocalizedString(@"Error loading settings", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE NSLocalizedString(@"Please try again shortly.", nil)
-#define BC_STRING_SETTINGS_INVALID_EMAIL_ADDRESS_MESSAGE NSLocalizedString(@"Invalid email address", nil)
-
 
 
