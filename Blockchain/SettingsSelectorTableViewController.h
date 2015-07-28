@@ -16,4 +16,5 @@
 @interface SettingsSelectorTableViewController : UITableViewController
 @property (nonatomic) id <CurrencySelectorDelegate> delegate;
 @property (nonatomic, copy) NSDictionary *itemsDictionary;
+@property (nonatomic, copy) NSDictionary *allCurrencySymbolsDictionary;
 @end

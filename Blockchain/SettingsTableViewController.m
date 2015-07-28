@@ -15,13 +15,9 @@
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
 
-const int alertViewTagErrorLoading = 6;
 
-const int alertViewTagVerifyEmail = 5;
-const int textFieldTagVerifyEmail = 55;
-
-const int alertViewTagChangeEmail = 4;
-const int textFieldTagChangeEmail = 44;
+const int textFieldTagVerifyEmail = 5;
+const int textFieldTagChangeEmail = 4;
 
 const int accountDetailsSection = 0;
 const int displaySection = 1;
@@ -40,19 +36,13 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic, copy) NSDictionary *allCurrencySymbolsDictionary;
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic) UIAlertView *changeEmailAlertView;
+@property (nonatomic) UIAlertView *errorLoadingAlertView;
 @property (nonatomic, copy) NSString *enteredEmailString;
+@property (nonatomic, copy) NSString *emailString;
 @property (nonatomic) id notificationObserver;
 @end
 
 @implementation SettingsTableViewController
-
-// TODO: remove before merging
-- (void)testForNilNSUserDefaults
-{
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"email"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"btcUnit"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currency"];
-}
 
 - (void)viewDidLoad
 {
@@ -103,7 +93,7 @@ const int aboutPrivacyPolicy = 1;
     NSString *emailString = _accountInfoDictionary[@"email"];
     
     if (emailString != nil) {
-        [[NSUserDefaults standardUserDefaults] setValue:emailString forKey:@"email"];
+        self.emailString = emailString;
     }
     
     [self.tableView reloadData];
@@ -165,8 +155,8 @@ const int aboutPrivacyPolicy = 1;
 - (void)alertViewForErrorLoadingSettings
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    alertView.tag = alertViewTagErrorLoading;
     [alertView show];
+    self.errorLoadingAlertView = alertView;
 }
 
 - (void)alertViewToChangeEmail
@@ -179,20 +169,18 @@ const int aboutPrivacyPolicy = 1;
     textField.tag = textFieldTagChangeEmail;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
-    alertView.tag = alertViewTagChangeEmail;
     [alertView show];
     self.changeEmailAlertView = alertView;
 }
 
 - (void)alertViewToVerifyEmail
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_EMAIL, [[NSUserDefaults standardUserDefaults] objectForKey:@"email"]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_ARGUMENT, self.emailString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
     UITextField *textField = [alertView textFieldAtIndex:0];
     textField.tag = textFieldTagVerifyEmail;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
-    alertView.tag = alertViewTagVerifyEmail;
     [alertView show];
     self.verifyEmailAlertView = alertView;
 }
@@ -230,7 +218,7 @@ const int aboutPrivacyPolicy = 1;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
     
-    [[NSUserDefaults standardUserDefaults] setValue:self.enteredEmailString forKey:@"email"];
+    self.emailString = self.enteredEmailString;
     
     [self alertViewToVerifyEmail];
 }
@@ -255,18 +243,18 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (alertView.tag) {
-        case alertViewTagChangeEmail: {switch (buttonIndex) {
-            case 1: {
-                [self changeEmail:[alertView textFieldAtIndex:0].text];
-                return;
+    if ([alertView isEqual:self.changeEmailAlertView]) {
+            switch (buttonIndex) {
+                case 1: {
+                    [self changeEmail:[alertView textFieldAtIndex:0].text];
+                    return;
+                }
             }
-        }
             return;
-    }
-        case alertViewTagVerifyEmail: {
+    } else if ([alertView isEqual:self.verifyEmailAlertView]) {
             switch (buttonIndex) {
                 case 0: {
+                    // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
                     [self getAccountInfo];
                     return;
                 }
@@ -280,11 +268,10 @@ const int aboutPrivacyPolicy = 1;
                 }
             }
             return;
-        }
-        case alertViewTagErrorLoading: {
-            [self getAccountInfo];
-            return;
-        }
+    } else if ([alertView isEqual:self.errorLoadingAlertView]) {
+        // User has tapped on cell when account info has not yet been loaded; get account info again
+        [self getAccountInfo];
+        return;
     }
 }
 
@@ -310,6 +297,7 @@ const int aboutPrivacyPolicy = 1;
     if ([segue.identifier isEqualToString:@"currency"]) {
         SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
         settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
+        settingsSelectorTableViewController.allCurrencySymbolsDictionary = self.allCurrencySymbolsDictionary;
         settingsSelectorTableViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:@"about"]) {
         SettingsAboutViewController *aboutViewController = segue.destinationViewController;
@@ -426,8 +414,8 @@ const int aboutPrivacyPolicy = 1;
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     
-                    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"email"] && [self.accountInfoDictionary[@"email_verified"] boolValue] == YES) {
-                        cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"email"];
+                    if ([self getUserEmail] != nil && [self.accountInfoDictionary[@"email_verified"] boolValue] == YES) {
+                        cell.detailTextLabel.text = [self getUserEmail];
                     } else if ([self hasAddedEmail]) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_EMAIL_UNVERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
@@ -446,7 +434,7 @@ const int aboutPrivacyPolicy = 1;
                     NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
                     NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
-                    cell.detailTextLabel.text = currencyName;
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)", currencyName, self.allCurrencySymbolsDictionary[selectedCurrencyCode][@"symbol"]];
                     return cell;
                 }
                 case displayBtcUnit: {
