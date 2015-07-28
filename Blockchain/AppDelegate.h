@@ -29,6 +29,7 @@
 #import "Blockchain-Swift.h"
 #import <MessageUI/MFMailComposeViewController.h>
 #import "UpgradeViewController.h"
+#import "SettingsNavigationController.h"
 
 #define SATOSHI 100000000
 
@@ -90,6 +91,7 @@
 @property (strong, nonatomic) IBOutlet MerchantMapViewController *merchantViewController;
 @property (strong, nonatomic) IBOutlet BCWebViewController *bcWebViewController;
 @property (strong, nonatomic) IBOutlet BackupNavigationViewController *backupNavigationViewController;
+@property (strong, nonatomic) SettingsNavigationController *settingsNavigationController;
 
 @property (strong, nonatomic) IBOutlet UIImageView *mainLogoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;

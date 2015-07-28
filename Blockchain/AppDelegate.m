@@ -35,7 +35,6 @@
 #import "BCWebViewController.h"
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
-#import "SettingsNavigationController.h"
 
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
 #define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"
@@ -533,6 +532,11 @@ void (^secondPasswordSuccess)(NSString *);
     if (_backupNavigationViewController) {
         [_backupNavigationViewController dismissViewControllerAnimated:NO completion:nil];
     }
+    
+    if (_settingsNavigationController) {
+        [_settingsNavigationController dismissViewControllerAnimated:NO completion:nil];
+    }
+    
     [self closeSideMenu];
     
     // Close PIN Modal in case we are setting it (after login or when changing the PIN)
@@ -1006,11 +1010,13 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showAccountSettings
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Settings" bundle: nil];
-    SettingsNavigationController *settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"SettingsNavigationController"];
+    if (!_settingsNavigationController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Settings" bundle: nil];
+        self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"SettingsNavigationController"];
+    }
     
-    settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [_tabViewController presentViewController:settingsNavigationController animated:YES completion:nil];
+    self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:nil];
 }
 
 - (void)showBackup
