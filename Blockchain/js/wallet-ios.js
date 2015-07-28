@@ -924,7 +924,6 @@ MyWalletPhone.get_user_info = function () {
     
     var error = function (e) {
         console.log('Error getting account info: ' + e);
-        device.execute('loading_stop');
     };
     
     BlockchainSettingsAPI.get_account_info(success, error);
@@ -939,7 +938,6 @@ MyWalletPhone.change_email_account = function(email) {
     
     var error = function (e) {
         console.log('Error changing email: ' + e);
-        device.execute('loading_stop');
     };
     
     BlockchainSettingsAPI.change_email(email, success, error);
@@ -954,7 +952,6 @@ MyWalletPhone.resend_verification_email = function(email) {
     
     var error = function (e) {
         console.log('Error resending verification email: ' + e);
-        device.execute('loading_stop');
     };
     
     BlockchainSettingsAPI.resendEmailConfirmation(email, success, error);
@@ -969,7 +966,6 @@ MyWalletPhone.change_currency = function(code) {
     
     var error = function (e) {
         console.log('Error changing local currency: ' + e);
-        device.execute('loading_stop');
     };
     
     BlockchainSettingsAPI.change_local_currency(code, success, error);
@@ -984,7 +980,6 @@ MyWalletPhone.verify_email = function(code) {
     
     var error = function (e) {
         console.log('Error verifying email: ' + e);
-        device.execute('loading_stop');
     };
     
     BlockchainSettingsAPI.verifyEmail(code, success, error);
@@ -999,7 +994,6 @@ MyWalletPhone.change_btc_currency = function(code) {
     
     var error = function (e) {
         console.log('Error changing btc currency: ' + e);
-        device.execute('loading_stop');
     };
     
     BlockchainSettingsAPI.change_btc_currency(code, success, error);
@@ -1015,7 +1009,6 @@ MyWalletPhone.get_all_currency_symbols = function () {
     
     var error = function (e) {
         console.log('Error getting all currency symbols: ' + e);
-        device.execute('loading_stop');
     };
     
     BlockchainAPI.get_ticker(success, error);

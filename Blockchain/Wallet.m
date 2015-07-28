@@ -792,6 +792,12 @@
         return;
     }
     
+    NSRange range = [message rangeOfString:@"Invalid Email" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (range.location != NSNotFound) {
+        [app standardNotify:BC_STRING_SETTINGS_INVALID_EMAIL_ADDRESS_MESSAGE title:BC_STRING_ERROR delegate:nil];
+        return;
+    }
+    
     if ([type isEqualToString:@"error"]) {
         [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
     } else if ([type isEqualToString:@"info"]) {

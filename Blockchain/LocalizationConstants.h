@@ -244,5 +244,7 @@
 #define BC_STRING_INVALID_ADDRESS NSLocalizedString(@"Address is not valid", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_TITLE NSLocalizedString(@"Error loading settings", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE NSLocalizedString(@"Please try again shortly.", nil)
+#define BC_STRING_SETTINGS_INVALID_EMAIL_ADDRESS_MESSAGE NSLocalizedString(@"Invalid email address", nil)
+
 
 
