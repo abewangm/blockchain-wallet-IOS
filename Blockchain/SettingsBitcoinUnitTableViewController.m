@@ -72,7 +72,6 @@
     if ([currencyCode isEqualToString:self.selectedCurrencyCode]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
-    cell.detailTextLabel.text = currencyCode;
     cell.textLabel.text = self.itemsDictionary[currencyCode];
     
     return cell;
