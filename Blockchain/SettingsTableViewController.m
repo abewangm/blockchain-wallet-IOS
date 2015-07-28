@@ -320,7 +320,6 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Table view data source
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -407,6 +406,7 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case accountDetailsIdentifier: {
                     UITableViewCell *cellWithSubtitle = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+                    cellWithSubtitle.selectionStyle = UITableViewCellSelectionStyleNone;
                     cellWithSubtitle.textLabel.font = [SettingsTableViewController fontForCell];
                     cellWithSubtitle.textLabel.text = BC_STRING_SETTINGS_IDENTIFIER;
                     cellWithSubtitle.detailTextLabel.text = app.wallet.guid;
@@ -428,12 +428,14 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
                     }
+                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     return cell;
                 }
             }
         }
         case displaySection: {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             switch (indexPath.row) {
                 case displayLocalCurrency: {
                     NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
