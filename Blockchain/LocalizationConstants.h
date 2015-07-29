@@ -174,6 +174,7 @@
 #define BC_STRING_LOADING_CREATING_ACCOUNT NSLocalizedString(@"Creating Account", nil)
 #define BC_STRING_LOADING_CREATING_WALLET NSLocalizedString(@"Creating new Wallet", nil)
 #define BC_STRING_LOADING_IMPORT_KEY NSLocalizedString(@"Importing key", nil)
+#define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 
 #define BC_STRING_MERCHANT_MAP NSLocalizedString(@"Merchant Map", nil)
 #define BC_STRING_MERCHANT NSLocalizedString(@"Merchant", nil)
@@ -221,7 +222,6 @@
 
 #define BC_STRING_INVALID_ADDRESS NSLocalizedString(@"Address is not valid", nil)
 
-#define BC_STRING_SETTINGS_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
 #define BC_STRING_SETTINGS_EMAIL NSLocalizedString(@"Email", nil)
 #define BC_STRING_SETTINGS_EMAIL_UNVERIFIED NSLocalizedString(@"Please verify your email", nil)
@@ -242,7 +242,7 @@
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND NSLocalizedString(@"Resend verification email", nil)
 #define BC_STRING_SETTINGS_CHANGE_EMAIL NSLocalizedString(@"Change Email", nil)
 #define BC_STRING_SETTINGS_EMAIL_VERIFIED NSLocalizedString(@"Your email has been verified.", nil)
-#define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
+#define BC_STRING_SETTINGS_WALLET_IDENTIFIER NSLocalizedString (@"Wallet Identifer", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_TITLE NSLocalizedString(@"Error loading settings", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE NSLocalizedString(@"Please try again shortly.", nil)
 
