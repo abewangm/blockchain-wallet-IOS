@@ -68,6 +68,7 @@
 - (void)modalWasDismissed {
     passwordTextField.text = nil;
     password2TextField.text = nil;
+    passwordStrengthMeter.progress = 0;
     
     passwordTextField.layer.borderColor = COLOR_TEXT_FIELD_BORDER_GRAY.CGColor;
     passwordFeedbackLabel.text = BC_STRING_PASSWORD_MINIMUM_10_CHARACTERS;
