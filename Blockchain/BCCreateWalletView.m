@@ -38,6 +38,11 @@
     passwordFeedbackLabel.adjustsFontSizeToFitWidth = YES;
 }
 
+- (void)didMoveToWindow
+{
+    [emailTextField becomeFirstResponder];
+}
+
 - (void)prepareForModalPresentation
 {
     emailTextField.delegate = self;
