@@ -196,6 +196,8 @@
 - (void)showPinModalAsView:(BOOL)asView;
 - (BOOL)isPINSet;
 
+- (BOOL)checkInternetConnection;
+
 @end
 
 extern AppDelegate *app;

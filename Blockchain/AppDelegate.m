@@ -272,6 +272,17 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (BOOL)checkInternetConnection
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    if ([reachability currentReachabilityStatus] == NotReachable) {
+        DLog(@"No Internet connection");
+        [self showPinErrorWithMessage:BC_STRING_NO_INTERNET_CONNECTION];
+        return NO;
+    }
+    return YES;
+}
+
 #pragma mark - UI State
 
 - (void)reload
@@ -1368,12 +1379,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     // Check if we have an internet connection
     // This only checks if a network interface is up. All other errors (including timeouts) are handled by JavaScript callbacks in Wallet.m
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-    if ([reachability currentReachabilityStatus] == NotReachable) {
-        DLog(@"No Internet connection");
-        
-        [self showPinErrorWithMessage:BC_STRING_NO_INTERNET_CONNECTION];
-        
+    if (![self checkInternetConnection]) {
         return;
     }
     

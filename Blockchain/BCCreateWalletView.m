@@ -119,6 +119,10 @@
         return;
     }
     
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
     [emailTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     [password2TextField resignFirstResponder];
