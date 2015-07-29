@@ -172,7 +172,11 @@
 
 - (void)errorCreatingNewAccount:(NSString*)message
 {
-    [app standardNotify:message];
+    if ([message isEqualToString:@""]) {
+        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+    } else {
+        [app standardNotify:message];
+    }
 }
 
 #pragma mark - Textfield Delegates
