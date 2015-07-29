@@ -75,7 +75,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [app.wallet getWalletAndHistory];
 }
 
 @end
