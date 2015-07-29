@@ -16,7 +16,6 @@
 @implementation BCWebViewController
 
 UIButton *backButton;
-bool isShowingSettings = NO;
 UIActivityIndicatorView *activityIndicatorView;
 NSString *titleString;
 
@@ -93,18 +92,6 @@ NSMutableArray *visitedPages;
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    if (isShowingSettings) {
-        // Reload wallet
-        [app.wallet getWalletAndHistory];
-        
-        isShowingSettings = FALSE;
-    }
-}
-
 - (void)backButtonClicked:(id)sender
 {
     [visitedPages removeLastObject];
@@ -171,19 +158,6 @@ NSMutableArray *visitedPages;
 }
 
 # pragma mark - Loading URLs
-
-- (void)loadSettings
-{
-    if ([app guid] && [app sharedKey]) {
-        isShowingSettings = YES;
-        
-        NSString *requestString = [NSString stringWithFormat:@"%@wallet/iphone-view?guid=%@&sharedKey=%@&device=iphone", WebROOT, [app guid], [app sharedKey]];
-        
-        [visitedPages addObject:requestString];
-        
-        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString]]];
-    }
-}
 
 - (void)loadURL:(NSString*)url
 {
