@@ -972,6 +972,7 @@ void (^secondPasswordSuccess)(NSString *);
     self.latestResponse = nil;
     
     _transactionsViewController.data = nil;
+    _settingsNavigationController = nil;
 
     [_transactionsViewController reload];
     [_sendViewController reload];

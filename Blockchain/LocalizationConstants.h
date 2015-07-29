@@ -225,6 +225,7 @@
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
 #define BC_STRING_SETTINGS_EMAIL NSLocalizedString(@"Email", nil)
 #define BC_STRING_SETTINGS_EMAIL_UNVERIFIED NSLocalizedString(@"Please verify your email", nil)
+#define BC_STRING_SETTINGS_PLEASE_ADD_EMAIL NSLocalizedString(@"Please add an email address", nil)
 #define BC_STRING_SETTINGS_DISPLAY_PREFERENCES NSLocalizedString(@"Display", nil)
 #define BC_STRING_SETTINGS_LOCAL_CURRENCY NSLocalizedString(@"Local Currency", nil)
 #define BC_STRING_SETTINGS_BTC NSLocalizedString(@"Bitcoin Units", nil)

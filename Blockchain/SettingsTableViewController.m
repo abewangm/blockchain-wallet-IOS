@@ -164,9 +164,9 @@ const int aboutPrivacyPolicy = 1;
     self.errorLoadingAlertView = alertView;
 }
 
-- (void)alertViewToChangeEmail
+- (void)alertViewToChangeEmail:(BOOL)hasAddedEmail
 {
-    NSString *alertViewTitle = [self hasAddedEmail] ? BC_STRING_SETTINGS_CHANGE_EMAIL :BC_STRING_ADD_EMAIL;
+    NSString *alertViewTitle = hasAddedEmail ? BC_STRING_SETTINGS_CHANGE_EMAIL :BC_STRING_ADD_EMAIL;
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
@@ -200,7 +200,7 @@ const int aboutPrivacyPolicy = 1;
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resendVerificationEmailSuccess) name:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
     
-    [app.wallet resendVerificationEmail:self.accountInfoDictionary[@"email"]];
+    [app.wallet resendVerificationEmail:self.emailString];
 }
 
 - (void)resendVerificationEmailSuccess
@@ -250,6 +250,14 @@ const int aboutPrivacyPolicy = 1;
 {
     if ([alertView isEqual:self.changeEmailAlertView]) {
             switch (buttonIndex) {
+                case 0: {
+                    // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
+                    UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]];
+                    if ([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] && [alertView.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) {
+                        [self getAccountInfo];
+                    }
+                    return;
+                }
                 case 1: {
                     [self changeEmail:[alertView textFieldAtIndex:0].text];
                     return;
@@ -260,7 +268,9 @@ const int aboutPrivacyPolicy = 1;
             switch (buttonIndex) {
                 case 0: {
                     // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
-                    [self getAccountInfo];
+                    if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL]) {
+                        [self getAccountInfo];
+                    }
                     return;
                 }
                 case 1: {
@@ -268,7 +278,7 @@ const int aboutPrivacyPolicy = 1;
                     return;
                 }
                 case 2: {
-                    [self alertViewToChangeEmail];
+                    [self alertViewToChangeEmail:YES];
                     return;
                 }
             }
@@ -328,7 +338,13 @@ const int aboutPrivacyPolicy = 1;
         case accountDetailsSection: {
             switch (indexPath.row) {
                 case accountDetailsEmail: {
-                    ![self hasAddedEmail] || [self hasVerifiedEmail] ? [self alertViewToChangeEmail] : [self alertViewToVerifyEmail];
+                    if (![self hasAddedEmail]) {
+                        [self alertViewToChangeEmail:NO];
+                    } else if ([self hasVerifiedEmail]) {
+                        [self alertViewToChangeEmail:YES];
+                    } else {
+                        [self alertViewToVerifyEmail];
+                    } return;
                 }
             }
             return;
@@ -426,7 +442,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     } else {
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                        cell.detailTextLabel.text = BC_STRING_ADD_EMAIL;
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_PLEASE_ADD_EMAIL;
                     }
                     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     return cell;
