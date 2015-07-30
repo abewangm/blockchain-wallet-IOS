@@ -1073,7 +1073,7 @@ void (^secondPasswordSuccess)(NSString *);
     MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
     controller.navigationBar.tintColor = COLOR_BLOCKCHAIN_BLUE;
-    [controller setToRecipients:@[@"support@blockchain.info"]];
+    [controller setToRecipients:@[@"support@blockchain.zendesk.com"]];
     [controller setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
     
     NSString *message = [NSString stringWithFormat:@"\n\n--\nApp: %@\nSystem: %@ %@\n",
