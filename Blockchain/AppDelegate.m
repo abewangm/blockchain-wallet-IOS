@@ -86,6 +86,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"newInstall"] && [self guid] && [self sharedKey]) {
+        [self alertUserAskingToUseOldKeychain];
+        [[NSUserDefaults standardUserDefaults] setValue:@"newInstall" forKey:@"newInstall"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     // Make sure the server session id SID is persisted for new UIWebViews
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
@@ -202,6 +208,23 @@ void (^secondPasswordSuccess)(NSString *);
     curtainImageView.alpha = 0;
     
     return TRUE;
+}
+
+- (void)alertUserAskingToUseOldKeychain
+{
+    UIAlertView *alertViewToKeepOldWallet = [[UIAlertView alloc] initWithTitle:BC_STRING_ASK_TO_USE_OLD_WALLET message:nil delegate:self cancelButtonTitle:BC_STRING_FORGET_WALLET otherButtonTitles: BC_STRING_YES, nil];
+    alertViewToKeepOldWallet.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+        switch (buttonIndex) {
+            case 0: {
+                [self forgetWalletClicked:nil];
+                return;
+            }
+            case 1: {
+                return;
+            }
+        }
+    };
+    [alertViewToKeepOldWallet show];
 }
 
 - (void)alertUserOfCompromisedSecurity

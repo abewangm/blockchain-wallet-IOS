@@ -220,6 +220,8 @@
 #define BC_STRING_UNSAFE_DEVICE_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_UNSAFE_DEVICE_MESSAGE NSLocalizedString(@"Your device appears to be jailbroken. The security of your wallet may be compromised.", nil)
 
+#define BC_STRING_ASK_TO_USE_OLD_WALLET NSLocalizedString(@"Would you like to keep the wallet you last used?", nil)
+
 #define BC_STRING_INVALID_ADDRESS NSLocalizedString(@"Address is not valid", nil)
 
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
