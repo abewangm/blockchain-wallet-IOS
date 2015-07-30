@@ -1191,7 +1191,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Upgrade" bundle: nil];
     UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeViewController"];
-    upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
 }
 
