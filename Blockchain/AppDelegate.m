@@ -999,6 +999,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)logout
 {
+    [self closeSideMenu];
+    
     [self.wallet cancelTxSigning];
     
     [self.wallet loadBlankWallet];
@@ -1008,9 +1010,7 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.data = nil;
     _settingsNavigationController = nil;
 
-    [_transactionsViewController reload];
-    [_sendViewController reload];
-    [_receiveViewController reload];
+    [self reload];
 }
 
 - (void)forgetWallet
