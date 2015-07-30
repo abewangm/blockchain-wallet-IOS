@@ -135,12 +135,6 @@ void (^secondPasswordSuccess)(NSString *);
         [self alertUserOfCompromisedSecurity];
     }
     
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"newInstall"]) {
-        [self forgetWallet];
-        [[NSUserDefaults standardUserDefaults] setValue:@"newInstall" forKey:@"newInstall"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
     // If either of these is nil we are not properly paired
     if (![self guid] || ![self sharedKey]) {
         [self showWelcome];
