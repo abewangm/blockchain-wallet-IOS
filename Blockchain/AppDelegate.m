@@ -999,8 +999,6 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)logout
 {
-    [self closeSideMenu];
-    
     [self.wallet cancelTxSigning];
     
     [self.wallet loadBlankWallet];
@@ -1284,7 +1282,7 @@ void (^secondPasswordSuccess)(NSString *);
         if (buttonIndex == 1) {
             [self clearPin];
             [self logout];
-            
+            [self closeSideMenu];
             [self showPasswordModal];
         }
     };
