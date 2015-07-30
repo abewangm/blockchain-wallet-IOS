@@ -831,7 +831,7 @@
     DLog(@"did_decrypt");
     
     self.sharedKey = [self.webView executeJSSynchronous:@"MyWallet.wallet.sharedKey"];
-    self.guid = [self.webView executeJSSynchronous:@"WalletStore.getGuid()"];
+    self.guid = [self.webView executeJSSynchronous:@"MyWallet.wallet.guid"];
 
     if ([delegate respondsToSelector:@selector(walletDidDecrypt)])
         [delegate walletDidDecrypt];
