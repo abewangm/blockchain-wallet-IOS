@@ -36,6 +36,8 @@
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
 
+#define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
+
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
 #define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"
 #define UNSAFE_CHECK_PATH_BIN_BASH @"/bin/bash"
@@ -86,9 +88,9 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"newInstall"] && [self guid] && [self sharedKey]) {
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey]) {
         [self alertUserAskingToUseOldKeychain];
-        [[NSUserDefaults standardUserDefaults] setValue:@"newInstall" forKey:@"newInstall"];
+        [[NSUserDefaults standardUserDefaults] setValue:USER_DEFAULTS_KEY_FIRST_RUN forKey:USER_DEFAULTS_KEY_FIRST_RUN];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
@@ -212,7 +214,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)alertUserAskingToUseOldKeychain
 {
-    UIAlertView *alertViewToKeepOldWallet = [[UIAlertView alloc] initWithTitle:BC_STRING_ASK_TO_USE_OLD_WALLET message:nil delegate:self cancelButtonTitle:BC_STRING_FORGET_WALLET otherButtonTitles: BC_STRING_YES, nil];
+    UIAlertView *alertViewToKeepOldWallet = [[UIAlertView alloc] initWithTitle:BC_STRING_ASK_TO_USE_OLD_WALLET_TITLE message:BC_STRING_ASK_TO_USE_OLD_WALLET_MESSAGE delegate:self cancelButtonTitle:BC_STRING_CREATE_NEW_WALLET otherButtonTitles: BC_STRING_LOGIN_EXISTING_WALLET, nil];
     alertViewToKeepOldWallet.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {
             case 0: {
