@@ -896,17 +896,6 @@ ImportExport.Crypto_scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
     });
 };
 
-WalletStore.get_old = WalletStore.get;
-WalletStore.get = function(key, callback) {
-    // Disallow fetching of the guid
-    if (key == 'guid') {
-        callback();
-        return;
-    }
-
-    WalletStore.get_old(key, callback);
-};
-
 // TODO what should this value be?
 MyWallet.getNTransactionsPerPage = function() {
     return 50;
