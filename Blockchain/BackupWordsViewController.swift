@@ -17,6 +17,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     @IBOutlet weak var screenShotWarningLabel: UILabel?
     @IBOutlet weak var previousWordButton: UIButton!
     @IBOutlet weak var nextWordButton: UIButton!
+    @IBOutlet var summaryLabel: UILabel?
 
     var wallet : Wallet?
     var wordLabels: [UILabel]?
@@ -24,6 +25,15 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let greyText = NSAttributedString(string: NSLocalizedString("(e.g., with your passport)", comment:""), attributes:
+            [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+        let blackText = NSAttributedString(string:  NSLocalizedString("Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe\n", comment:""), attributes:
+            [NSForegroundColorAttributeName: UIColor.blackColor()])
+        
+        var finalText = NSMutableAttributedString(attributedString: blackText)
+        finalText.appendAttributedString(greyText);
+        summaryLabel?.attributedText = finalText
         
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
         

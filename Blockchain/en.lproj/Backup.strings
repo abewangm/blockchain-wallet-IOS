@@ -30,7 +30,7 @@
 "T4p-mz-siC.normalTitle" = "VERIFY BACKUP";
 
 /* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Write the words down on a sheet of paper in the exact order they appear ";
+"UCL-i9-UDp.text" = "Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe\n ";
 
 /* Class = "UIButton"; normalTitle = "Next Word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Next Word";

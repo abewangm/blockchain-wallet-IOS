@@ -105,8 +105,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write the words down on a sheet of paper in the exact order they appear " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="UCL-i9-UDp">
-                                        <rect key="frame" x="40" y="7" width="240" height="85"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="UCL-i9-UDp">
+                                        <rect key="frame" x="40" y="26" width="240" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                         <nil key="highlightedColor"/>
@@ -120,38 +120,32 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't take a screenshot! You can jeopardize your wallet's security" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FDO-ui-cGo">
-                                        <rect key="frame" x="40" y="236" width="240" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="12" id="TyO-zN-EB7">
-                                        <rect key="frame" x="39" y="67" width="240" height="37"/>
+                                        <rect key="frame" x="40" y="124" width="240" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </pageControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word 5 of 12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mUc-u7-Zcj">
-                                        <rect key="frame" x="110" y="209" width="99" height="21"/>
+                                        <rect key="frame" x="111" y="246" width="99" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="eK4-jm-tVf">
-                                        <rect key="frame" x="39" y="112" width="240" height="93"/>
+                                        <rect key="frame" x="40" y="138" width="240" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="Jfk-Gx-wg2">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="93"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" id="F2J-Qd-Vj9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="93"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unicorn" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Okr-VE-yvm">
-                                                                <rect key="frame" x="0.0" y="17" width="240" height="60"/>
+                                                                <rect key="frame" x="0.0" y="20" width="240" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -194,6 +188,12 @@
                                             <action selector="nextWordButtonTapped:" destination="jOl-Wq-Cg3" eventType="touchUpInside" id="0qR-0f-O9K"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't take a screenshot! You can jeopardize your wallet's security" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FDO-ui-cGo">
+                                        <rect key="frame" x="40" y="275" width="240" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -205,6 +205,7 @@
                         <outlet property="nextWordButton" destination="eaO-py-9rY" id="j3z-ft-74D"/>
                         <outlet property="previousWordButton" destination="AFH-AI-Rgk" id="7VV-aQ-3E1"/>
                         <outlet property="screenShotWarningLabel" destination="FDO-ui-cGo" id="Itv-FZ-zwG"/>
+                        <outlet property="summaryLabel" destination="UCL-i9-UDp" id="9at-Ld-S9k"/>
                         <outlet property="wordLabel" destination="Okr-VE-yvm" id="ynm-yh-sZO"/>
                         <outlet property="wordsPageControl" destination="TyO-zN-EB7" id="wlk-9H-Djg"/>
                         <outlet property="wordsProgressLabel" destination="mUc-u7-Zcj" id="0W4-SQ-gkf"/>
