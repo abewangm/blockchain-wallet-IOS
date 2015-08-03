@@ -74,7 +74,7 @@ int accountEntries = 0;
     [self setSideMenuGestures];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [self resetSideMenuGestures];
 }

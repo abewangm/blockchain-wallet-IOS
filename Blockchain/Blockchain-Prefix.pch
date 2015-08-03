@@ -26,6 +26,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BLOCKCHAIN_BLUE UIColorFromRGB(0x1b8ac7)
 #define COLOR_BLOCKCHAIN_LIGHT_BLUE UIColorFromRGB(0x62b5db)
 #define COLOR_BLOCKCHAIN_LIGHTEST_BLUE UIColorFromRGB(0xa0d7ec)
+#define COLOR_BLOCKCHAIN_UPGRADE_BLUE UIColorFromRGB(0xdae7ed)
 
 #define COLOR_TRANSACTION_RECEIVED UIColorFromRGB(0x85b45b)
 #define COLOR_TRANSACTION_SENT UIColorFromRGB(0xe27e82)

@@ -75,7 +75,7 @@ static const int BC_ALERTVIEW_UPGRADE_TAG = 1;
 
 - (NSArray *)imageNamesArray
 {
-    return @[@"home_icon_hi", @"home_icon", @"lock_icon"];
+    return @[@"upgrade1", @"upgrade2", @"upgrade3"];
 }
 
 - (NSArray *)captionLabelStringsArray
@@ -110,13 +110,8 @@ static const int BC_ALERTVIEW_UPGRADE_TAG = 1;
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0.0f;
         
-//    TODOUpgrade: Uncomment for production
-//        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
-//        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
-        
-        // These two lines are for testing borders only
-        UIView *newPageView = [[UIView alloc] init];
-        newPageView.backgroundColor = [UIColor greenColor];
+        UIImage *image = [UIImage imageNamed:[[self imageNamesArray] objectAtIndex:page]];
+        UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
 
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
@@ -165,6 +160,8 @@ static const int BC_ALERTVIEW_UPGRADE_TAG = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = COLOR_BLOCKCHAIN_UPGRADE_BLUE;
     
     [self setupCaptionLabels];
     
