@@ -50,11 +50,23 @@
                                 <rect key="frame" x="135" y="24" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Hq-6D-ut1">
-                                <rect key="frame" x="40" y="293" width="240" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not backed up your funds yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9Hu-uO-gJl">
+                                <rect key="frame" x="16" y="90" width="288" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="eyR-AW-SMc">
+                                <rect key="frame" x="25" y="112" width="270" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                <state key="normal" title="Backup your wallet again">
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Hq-6D-ut1">
+                                <rect key="frame" x="40" y="312" width="240" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <state key="normal" title="Backup funds again">
                                     <color key="titleColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -62,16 +74,11 @@
                                     <action selector="backupWalletAgainButtonTapped:" destination="g04-JJ-JLu" eventType="touchUpInside" id="TgM-Dr-gpj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not backed up your wallet yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9Hu-uO-gJl">
-                                <rect key="frame" x="16" y="90" width="288" height="21"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost your 12 word recovery phrase?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yh8-Gm-6op">
+                                <rect key="frame" x="44" y="300" width="236" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="eyR-AW-SMc">
-                                <rect key="frame" x="25" y="112" width="270" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -84,6 +91,7 @@
                         <outlet property="backupWalletAgainButton" destination="1Hq-6D-ut1" id="8mZ-X7-6yf"/>
                         <outlet property="backupWalletButton" destination="fT1-je-Orp" id="niQ-vk-Apt"/>
                         <outlet property="explanation" destination="eyR-AW-SMc" id="T8a-ay-FOc"/>
+                        <outlet property="lostRecoveryPhraseLabel" destination="Yh8-Gm-6op" id="HFy-rW-fbn"/>
                         <outlet property="summaryLabel" destination="9Hu-uO-gJl" id="WkH-em-VkX"/>
                         <segue destination="jOl-Wq-Cg3" kind="push" identifier="backupWords" id="gRy-Rc-3ar"/>
                         <segue destination="CSo-hh-wVx" kind="push" identifier="verifyBackup" id="U0S-3m-R5I"/>
@@ -373,7 +381,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="U0S-3m-R5I"/>
         <segue reference="dla-jc-Bti"/>
-        <segue reference="o31-rh-3dv"/>
     </inferredMetricsTieBreakers>
 </document>

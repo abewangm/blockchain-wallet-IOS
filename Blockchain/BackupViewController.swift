@@ -15,6 +15,7 @@ class BackupViewController: UIViewController {
     @IBOutlet weak var explanation: UILabel?
     @IBOutlet weak var backupIconImageView: UIImageView?
     @IBOutlet weak var backupWalletAgainButton: UIButton?
+    @IBOutlet weak var lostRecoveryPhraseLabel: UILabel!
     
     var wallet : Wallet?
     
@@ -26,11 +27,12 @@ class BackupViewController: UIViewController {
         backupWalletButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
         if wallet!.isRecoveryPhraseVerified() {
-            summaryLabel!.text = NSLocalizedString("You already backed up your wallet.", comment: "");
-            explanation!.text = NSLocalizedString("You only need to backup your wallet once, but it is a good idea to occasionally verify that your backup is valid.", comment: "")
+            summaryLabel!.text = NSLocalizedString("You backed up your funds successfully", comment: "");
+            explanation!.text = NSLocalizedString("Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password", comment: "")
             backupIconImageView!.image = UIImage(named: "thumbs")
             backupWalletButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), forState: .Normal)
             backupWalletAgainButton?.hidden = false
+            lostRecoveryPhraseLabel?.hidden = false
         }
     }
     

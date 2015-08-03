@@ -8,8 +8,8 @@
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
 "9A7-TT-PzN.title" = "Backup Funds";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "You have not backed up your wallet yet";
+/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "You have not backed up your funds yet";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "EQM-OM-jK8"; */
 "EQM-OM-jK8.normalTitle" = "Done";
@@ -29,8 +29,8 @@
 /* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
 "T4p-mz-siC.normalTitle" = "VERIFY BACKUP";
 
-/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe\n ";
+/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe\n"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe\n";
 
 /* Class = "UIButton"; normalTitle = "Next Word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Next Word";
@@ -38,8 +38,8 @@
 /* Class = "UIButton"; normalTitle = "Previous Word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "Previous Word";
 
-/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable.";
+/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable.";
 
 /* Class = "UILabel"; text = "Don't take a screenshot!\nYou can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Don't take a screenshot!\nYou can jeopardize your wallet's security";
@@ -55,3 +55,9 @@
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "07q-RX-CeI"; */
 "07q-RX-CeI.text" = "Please try again";
+
+/* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
+"Yh8-Gm-6op.text" = "Lost your 12 word recovery phrase?";
+
+/* Class = "UILabel"; text = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
+"1Hq-6D-ut1.text" = "Backup funds again";
