@@ -120,7 +120,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
             } else if wordsPageControl!.currentPage == count-2 {
                 nextWordButton?.backgroundColor = Constants.Colors.SecondaryGray
                 nextWordButton?.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
-                nextWordButton?.setTitle(NSLocalizedString("Next Word", comment:""), forState: .Normal)
+                nextWordButton?.setTitle(NSLocalizedString("Next word", comment:""), forState: .Normal)
             }
             
             updatePreviousWordButton()
