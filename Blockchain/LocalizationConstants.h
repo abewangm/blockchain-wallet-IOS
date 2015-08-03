@@ -29,6 +29,7 @@
 
 #define BC_STRING_SUCCESS NSLocalizedString(@"Success", nil)
 #define BC_STRING_PAYMENT_SENT NSLocalizedString(@"Payment Sent!", nil)
+#define BC_STRING_PAYMENT_RECEIVED NSLocalizedString(@"Payment Received", nil)
 
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
 #define BC_STRING_ASK_TO_ADD_TO_ADDRESS_BOOK NSLocalizedString(@"Would you like to add the bitcoin address %@ to your address book?", nil)

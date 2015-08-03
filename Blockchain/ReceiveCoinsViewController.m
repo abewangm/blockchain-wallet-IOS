@@ -12,6 +12,11 @@
 #import "Address.h"
 #import "PrivateKeyReader.h"
 
+@interface ReceiveCoinsViewController()
+@property (nonatomic) id paymentObserver;
+@property (nonatomic) double amountRequested;
+@end
+
 @implementation ReceiveCoinsViewController
 
 @synthesize activeKeys;
@@ -113,6 +118,14 @@ UIActionSheet *popupAddressArchive;
 {
     [super viewDidAppear:animated];
     app.mainTitleLabel.text = BC_STRING_RECEIVE;
+}
+
+- (void)dealloc
+{
+    if (self.paymentObserver) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
+        self.paymentObserver = nil;
+    }
 }
 
 - (void)reload
@@ -266,6 +279,8 @@ UIActionSheet *popupAddressArchive;
     app.btcFormatter.usesGroupingSeparator = YES;
     
     amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    
+    self.amountRequested = amount;
     
     NSString *addressURL = [NSString stringWithFormat:@"bitcoin:%@?amount=%@", address, amountString];
     
@@ -570,6 +585,33 @@ UIActionSheet *popupAddressArchive;
     [entryField resignFirstResponder];
 }
 
+- (void)alertUserOfPaymentWithMessage:(NSString *)messageString
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_PAYMENT_RECEIVED message:messageString delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    [alertView show];
+}
+
+- (void)startObservingForReceivedPayment
+{
+    __weak ReceiveCoinsViewController *weakSelf = self;
+    
+    self.paymentObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil queue:nil usingBlock:^(NSNotification *note) {
+        double amountReceived = [note.userInfo[@"amount"] doubleValue];
+        NSString *amountReceivedString = [[NSString alloc] initWithFormat:@"%.8f", amountReceived];
+        double amountRequested = weakSelf.amountRequested;
+        NSString *amountRequestedString = [[NSString alloc] initWithFormat:@"%.8f", amountRequested];
+
+        if ([amountReceivedString isEqualToString:amountRequestedString]) {
+            NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
+            btcAmountString = [app formatAmount:btcAmount localCurrency:NO];
+            btcAmountString = [[NSString alloc] initWithFormat:@"%@ %@", btcAmountString, app.latestResponse.symbol_btc.symbol];
+            NSString *localCurrencyAmountString = [[NSString alloc] initWithFormat:@"(%@%@)", app.latestResponse.symbol_local.symbol, fiatAmountField.text];
+            [weakSelf alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
+        }
+    }];
+}
+
 # pragma mark - UIActionSheet delegate
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -691,10 +733,18 @@ UIActionSheet *popupAddressArchive;
     }
     optionsTitleLabel.text = detailLabel;
     
+    [self startObservingForReceivedPayment];
+    
     [app showModalWithContent:requestCoinsView closeType:ModalCloseTypeClose headerText:BC_STRING_REQUEST_AMOUNT onDismiss:^() {
         // Remove the extra menu item (more actions)
         [moreActionsButton removeFromSuperview];
         moreActionsButton.alpha = 0.0f;
+        
+        if (self.paymentObserver) {
+            [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
+            self.paymentObserver = nil;
+        }
+
     } onResume:^() {
         // Reset the requested amount when showing the request screen
         btcAmountField.text = nil;

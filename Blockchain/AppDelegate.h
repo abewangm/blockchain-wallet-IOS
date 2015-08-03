@@ -32,9 +32,8 @@
 #import "SettingsNavigationController.h"
 
 #define SATOSHI 100000000
-
+#define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
-
 #define NOTIFICATION_KEY_GET_HISTORY_SUCCESS @"GetHistory"
 #define NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS @"ChangeLocalCurrency"
 #define NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS @"GetAllCurrencySymbols"

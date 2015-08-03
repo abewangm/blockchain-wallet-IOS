@@ -156,6 +156,9 @@ int lastNumberTransactions = INT_MAX;
     if (data.transactions.count > 0 && animateNextCell) {
         [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
         animateNextCell = NO;
+        
+        // Without a delay, the notification will not get the new transaction but the one before it
+        [self performSelector:@selector(postReceivePaymentNotification) withObject:nil afterDelay:0.1f];
     }
     
     // If all the data is available, set the lastNumberTransactions - reload gets called once when wallet is loaded and once when latest block is loaded
@@ -174,6 +177,18 @@ int lastNumberTransactions = INT_MAX;
     if (refreshControl && refreshControl.isRefreshing) {
         [refreshControl endRefreshing];
     }
+}
+
+- (NSDecimalNumber *)getAmountForReceivedTransaction:(Transaction *)transaction
+{
+    NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:ABS(transaction.result)] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:SATOSHI]];
+    NSLog(@"getting amount");
+    return number;
+}
+
+- (void)postReceivePaymentNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil userInfo:[NSDictionary dictionaryWithObject:[self getAmountForReceivedTransaction:[data.transactions firstObject]] forKey:@"amount"]];
 }
 
 #pragma mark - View lifecycle
