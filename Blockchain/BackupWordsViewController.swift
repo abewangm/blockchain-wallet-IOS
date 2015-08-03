@@ -26,6 +26,8 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updatePreviousWordButton()
+        
         let greyText = NSAttributedString(string: NSLocalizedString("(e.g., with your passport)", comment:""), attributes:
             [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
         let blackText = NSAttributedString(string:  NSLocalizedString("Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe\n", comment:""), attributes:
@@ -87,6 +89,15 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         }
     }
     
+    func updatePreviousWordButton() {
+        if wordsPageControl!.currentPage == 0 {
+            previousWordButton?.enabled = false
+            previousWordButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        } else {
+            previousWordButton?.enabled = true
+            previousWordButton?.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+        }
+    }
     
     @IBAction func nextWordButtonTapped(sender: UIButton) {
         if let count = wordLabels?.count {
@@ -111,6 +122,8 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
                 nextWordButton?.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
                 nextWordButton?.setTitle(NSLocalizedString("Next Word", comment:""), forState: .Normal)
             }
+            
+            updatePreviousWordButton()
         }
     }
     
