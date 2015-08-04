@@ -298,6 +298,7 @@ const int aboutPrivacyPolicy = 1;
         [self verifyEmailWithCode:textField.text];
         [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
     } else if (textField.tag == textFieldTagChangeEmail) {
+        self.changeEmailAlertView.delegate = nil;
         [self changeEmail:textField.text];
         [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
     }
