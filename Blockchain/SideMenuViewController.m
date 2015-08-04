@@ -71,11 +71,13 @@ int accountEntries = 0;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setSideMenuGestures];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [self resetSideMenuGestures];
 }
 

@@ -52,21 +52,6 @@ BOOL displayingLocalSymbolSend;
 {
     [super viewDidLoad];
     
-    self.fromAddress = @"";
-    if ([app.wallet didUpgradeToHd]) {
-        // Default setting: send from default account
-        self.sendFromAddress = false;
-        
-        int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
-        self.fromAccount = defaultAccountIndex;
-    }
-    else {
-        // Default setting: send from any address
-        self.sendFromAddress = true;
-    }
-
-    self.sendToAddress = true;
-    
     btcAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     fiatAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
@@ -79,11 +64,31 @@ BOOL displayingLocalSymbolSend;
     [self reload];
 }
 
+- (void)resetFromAddress
+{
+    self.fromAddress = @"";
+    if ([app.wallet didUpgradeToHd]) {
+        // Default setting: send from default account
+        self.sendFromAddress = false;
+        
+        int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
+        self.fromAccount = defaultAccountIndex;
+    }
+    else {
+        // Default setting: send from any address
+        self.sendFromAddress = true;
+    }
+    
+    self.sendToAddress = true;
+}
+
 - (void)reload
 {
     if (![app.wallet isInitialized] || !app.latestResponse) {
         return;
     }
+    
+    [self resetFromAddress];
     
     // If we only have one account and no legacy addresses -> can't change from address
     if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]
@@ -166,11 +171,11 @@ BOOL displayingLocalSymbolSend;
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
     
     listener.on_start = ^() {
-//        app.disableBusyView = TRUE;
-//        
-//        sendProgressModalText.text = BC_STRING_PLEASE_WAIT;
-//        
-//        [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone];
+        //        app.disableBusyView = TRUE;
+        //
+        //        sendProgressModalText.text = BC_STRING_PLEASE_WAIT;
+        //
+        //        [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone];
     };
     
     listener.on_begin_signing = ^() {
@@ -318,7 +323,7 @@ BOOL displayingLocalSymbolSend;
         
         NSString *toAddressLabelForAlertView = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
         NSString *toAddressStringForAlertView = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
-
+        
         // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
         if ([toAddressLabelForAlertView isEqualToString:toAddressStringForAlertView]) {
             toAddressLabelForAlertView = @"";
@@ -794,33 +799,33 @@ BOOL displayingLocalSymbolSend;
     }
     
     [self confirmPayment];
-
-//    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK
-//                                                        message:[NSString stringWithFormat:BC_STRING_ASK_TO_ADD_TO_ADDRESS_BOOK, self.toAddress]
-//                                                       delegate:nil
-//                                              cancelButtonTitle:BC_STRING_NO
-//                                              otherButtonTitles:BC_STRING_YES, nil];
-//        
-//        alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-//            // do nothing & proceed
-//            if (buttonIndex == 0) {
-//                [self confirmPayment];
-//            }
-//            // let user save address in addressbook
-//            else if (buttonIndex == 1) {
-//                labelAddressLabel.text = toField.text;
-//                
-//                [app showModal:labelAddressView isClosable:TRUE];
-//                
-//                [labelAddressTextField becomeFirstResponder];
-//            }
-//        };
-//        
-//        [alert show];
-//    } else {
-//        [self confirmPayment];
-//    }
+    
+    //    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
+    //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK
+    //                                                        message:[NSString stringWithFormat:BC_STRING_ASK_TO_ADD_TO_ADDRESS_BOOK, self.toAddress]
+    //                                                       delegate:nil
+    //                                              cancelButtonTitle:BC_STRING_NO
+    //                                              otherButtonTitles:BC_STRING_YES, nil];
+    //
+    //        alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+    //            // do nothing & proceed
+    //            if (buttonIndex == 0) {
+    //                [self confirmPayment];
+    //            }
+    //            // let user save address in addressbook
+    //            else if (buttonIndex == 1) {
+    //                labelAddressLabel.text = toField.text;
+    //
+    //                [app showModal:labelAddressView isClosable:TRUE];
+    //
+    //                [labelAddressTextField becomeFirstResponder];
+    //            }
+    //        };
+    //        
+    //        [alert show];
+    //    } else {
+    //        [self confirmPayment];
+    //    }
 }
 
 @end

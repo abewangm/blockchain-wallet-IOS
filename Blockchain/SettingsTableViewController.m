@@ -457,13 +457,19 @@ const int aboutPrivacyPolicy = 1;
                     NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
                     NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
-                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@%@", currencyName, [[NSString alloc] initWithFormat:@" (%@)", self.allCurrencySymbolsDictionary[selectedCurrencyCode][@"symbol"]]];
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)", currencyName, self.allCurrencySymbolsDictionary[selectedCurrencyCode][@"symbol"]];
+                    if (currencyName == nil || self.allCurrencySymbolsDictionary[selectedCurrencyCode][@"symbol"] == nil) {
+                        cell.detailTextLabel.text = @"";
+                    }
                     return cell;
                 }
                 case displayBtcUnit: {
                     NSString *selectedCurrencyCode = [self getBtcSymbolFromLatestResponse].name;
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
                     cell.detailTextLabel.text = selectedCurrencyCode;
+                    if (selectedCurrencyCode == nil) {
+                        cell.detailTextLabel.text = @"";
+                    }
                     return cell;
                 }
             }
