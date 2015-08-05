@@ -36,6 +36,14 @@
     password2TextField.textColor = [UIColor grayColor];
     
     passwordFeedbackLabel.adjustsFontSizeToFitWidth = YES;
+    
+    // If loadBlankWallet is called without a delay, app.wallet will still be nil
+    [self performSelector:@selector(createBlankWallet) withObject:nil afterDelay:0.1f];
+}
+
+- (void)createBlankWallet
+{
+    [app.wallet loadBlankWallet];
 }
 
 - (void)didMoveToWindow
@@ -217,8 +225,8 @@
     UIColor *color;
     NSString *description;
     
-    CGFloat passwordStrength = [[BCEntropyChecker sharedInstance] entropyStrengthForWord:password];
-    
+    CGFloat passwordStrength = [app.wallet getStrengthForPassword:password];
+
     if (passwordStrength < 25) {
         color = COLOR_PASSWORD_STRENGTH_WEAK;
         description = BC_STRING_PASSWORD_STRENGTH_WEAK;

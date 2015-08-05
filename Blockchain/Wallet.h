@@ -127,6 +127,8 @@
 - (BOOL)isInitialized;
 - (BOOL)hasEncryptedWalletData;
 
+- (CGFloat)getStrengthForPassword:(NSString *)password;
+
 - (BOOL)needsSecondPassword;
 - (BOOL)validateSecondPassword:(NSString *)secondPassword;
 
@@ -152,6 +154,8 @@
 
 - (NSString *)encrypt:(NSString *)data password:(NSString *)password pbkdf2_iterations:(int)pbkdf2_iterations;
 - (NSString *)decrypt:(NSString *)data password:(NSString *)password pbkdf2_iterations:(int)pbkdf2_iterations;
+
+- (NSString *)scorePassword:(NSString *)passwordString;
 
 // HD Wallet
 - (void)whitelistWallet;

@@ -159,6 +159,15 @@
     return [self.webView executeJSSynchronous:@"WalletCrypto.decryptPasswordWithProcessedPin(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations];
 }
 
+- (CGFloat)getStrengthForPassword:(NSString *)passwordString
+{
+    if (![self.webView isLoaded]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.get_password_strength(\"%@\")", passwordString] floatValue];
+}
+
 - (void)getHistory
 {
     if ([self isInitialized])
@@ -492,6 +501,15 @@
     }
     
    return [self.webView executeJSSynchronous:@"MyWalletPhone.detectPrivateKeyFormat(\"%@\")", [privateKeyString escapeStringForJS]];
+}
+
+- (NSString *)scorePassword:(NSString *)passwordString
+{
+    if (![self.webView isLoaded]) {
+        return nil;
+    }
+    
+    return [self.webView executeJSSynchronous:@"MyWalletPhone.score_password(\"%@\")", passwordString];
 }
 
 # pragma mark - Transaction handlers

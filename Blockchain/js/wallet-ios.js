@@ -9,6 +9,7 @@ var Spender = Blockchain.Spender;
 var BlockchainAPI = Blockchain.BlockchainAPI;
 var ImportExport = Blockchain.ImportExport;
 var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
+var Helpers = Blockchain.Helpers;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1001,4 +1002,9 @@ MyWalletPhone.get_all_currency_symbols = function () {
     };
     
     BlockchainAPI.get_ticker(success, error);
+}
+
+MyWalletPhone.get_password_strength = function(password) {
+    var strength = Helpers.scorePassword(password);
+    return strength;
 }
