@@ -47,11 +47,10 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [self getAccountInfo];
     
     [self getAllCurrencySymbols];
-    
 }
 
 - (void)getAllCurrencySymbols
@@ -248,6 +247,10 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    // Not the smoothest dismissal of the keyboard but better than no animation
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    [textField resignFirstResponder];
+    
     if ([alertView isEqual:self.changeEmailAlertView]) {
             switch (buttonIndex) {
                 case 0: {
@@ -294,10 +297,14 @@ const int aboutPrivacyPolicy = 1;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    // Not the smoothest dismissal of the keyboard but better than no animation
+    [textField resignFirstResponder];
+    
     if (textField.tag == textFieldTagVerifyEmail) {
         [self verifyEmailWithCode:textField.text];
         [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
     } else if (textField.tag == textFieldTagChangeEmail) {
+        // Set delegate to nil, otherwise alertView delegate method will be called and changeEmail will be called twice
         self.changeEmailAlertView.delegate = nil;
         [self changeEmail:textField.text];
         [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
