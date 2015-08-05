@@ -9,7 +9,6 @@
 #import "BCCreateWalletView.h"
 
 #import "AppDelegate.h"
-#import "BCEntropyChecker.h"
 
 #define IS_568_SCREEN (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)568) < DBL_EPSILON)
 
