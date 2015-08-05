@@ -222,7 +222,7 @@
 #define BC_STRING_UNSAFE_DEVICE_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_UNSAFE_DEVICE_MESSAGE NSLocalizedString(@"Your device appears to be jailbroken. The security of your wallet may be compromised.", nil)
 
-#define BC_STRING_ASK_TO_USE_OLD_WALLET_TITLE NSLocalizedString(@"We’ve detected a previous installation of Blockchain Wallet your phone.", nil)
+#define BC_STRING_ASK_TO_USE_OLD_WALLET_TITLE NSLocalizedString(@"We’ve detected a previous installation of Blockchain Wallet on your phone.", nil)
 #define BC_STRING_ASK_TO_USE_OLD_WALLET_MESSAGE NSLocalizedString(@"Please choose from the options below.", nil)
 
 #define BC_STRING_INVALID_ADDRESS NSLocalizedString(@"Address is not valid", nil)
