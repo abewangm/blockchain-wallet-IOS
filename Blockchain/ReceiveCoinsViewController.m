@@ -604,9 +604,10 @@ UIActionSheet *popupAddressArchive;
         if ([amountReceivedString isEqualToString:amountRequestedString]) {
             NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
             u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
-            btcAmountString = [app formatAmount:btcAmount localCurrency:NO];
-            btcAmountString = [[NSString alloc] initWithFormat:@"%@ %@", btcAmountString, app.latestResponse.symbol_btc.symbol];
-            NSString *localCurrencyAmountString = [[NSString alloc] initWithFormat:@"(%@%@)", app.latestResponse.symbol_local.symbol, fiatAmountField.text];
+            btcAmountString = [app formatMoney:btcAmount localCurrency:NO];
+            NSString *localCurrencyAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            u_int64_t currencyAmount = [app.wallet parseBitcoinValue:localCurrencyAmountString];
+            localCurrencyAmountString = [app formatMoney:currencyAmount localCurrency:YES];
             [weakSelf alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
         }
     }];
