@@ -287,7 +287,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     };
     
     var needs_two_factor_code = function(type) {
-        console.log('login: needs 2fa of type: ' + MyWallet.get2FATypeString());
+        console.log('login: needs 2fa of type: ' + WalletStore.get2FATypeString());
         device.execute('loading_stop');
         device.execute('on_fetch_needs_two_factor_code');
     };
