@@ -88,7 +88,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey]) {
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey] && ![self isPINSet]) {
         [self alertUserAskingToUseOldKeychain];
         [[NSUserDefaults standardUserDefaults] setValue:USER_DEFAULTS_KEY_FIRST_RUN forKey:USER_DEFAULTS_KEY_FIRST_RUN];
         [[NSUserDefaults standardUserDefaults] synchronize];
