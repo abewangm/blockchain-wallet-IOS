@@ -281,7 +281,11 @@ const int aboutPrivacyPolicy = 1;
                     return;
                 }
                 case 2: {
-                    [self alertViewToChangeEmail:YES];
+                    // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
+                    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
+                    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                        [self alertViewToChangeEmail:YES];
+                    });
                     return;
                 }
             }
