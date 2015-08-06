@@ -178,17 +178,14 @@ static const int BC_ALERTVIEW_UPGRADE_TAG = 1;
     }
     
     [self setTextForCaptionLabel];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
-- (void)setupCaptionLabels
+- (void)viewDidDisappear:(BOOL)animated
 {
-    NSMutableArray *temporaryMutableArray = [[NSMutableArray alloc] init];
-    
-    for (NSString *captionString in [self captionLabelStringsArray]) {
-        [temporaryMutableArray addObject:[self createBlueAttributedStringWithWideLineSpacingFromString:captionString]];
-    }
-    
-    self.captionLabelAttributedStringsArray = [[NSArray alloc] initWithArray:temporaryMutableArray];
+    [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 - (void)viewDidLayoutSubviews
@@ -215,6 +212,17 @@ static const int BC_ALERTVIEW_UPGRADE_TAG = 1;
     self.upgradeWalletButton.layer.cornerRadius = 20;
     
     [self loadVisiblePages];
+}
+
+- (void)setupCaptionLabels
+{
+    NSMutableArray *temporaryMutableArray = [[NSMutableArray alloc] init];
+    
+    for (NSString *captionString in [self captionLabelStringsArray]) {
+        [temporaryMutableArray addObject:[self createBlueAttributedStringWithWideLineSpacingFromString:captionString]];
+    }
+    
+    self.captionLabelAttributedStringsArray = [[NSArray alloc] initWithArray:temporaryMutableArray];
 }
 
 - (void)setTextForCaptionLabel
