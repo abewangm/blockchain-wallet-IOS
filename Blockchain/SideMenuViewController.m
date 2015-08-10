@@ -305,7 +305,10 @@ int accountEntries = 0;
         return 1;
     }
     if (sectionIndex == 2) {
+#ifdef HD_ENABLED
         return menuEntries;
+#endif
+        return menuEntries - 1;
     }
     
     return balanceEntries;
@@ -329,7 +332,7 @@ int accountEntries = 0;
             [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
             cell.selectedBackgroundView = v;
         }
-        
+#ifdef HD_ENABLED
         NSString *upgradeOrBackupTitle;
         if (!app.wallet.didUpgradeToHd) {
             upgradeOrBackupTitle = BC_STRING_UPGRADE_TO_HD;
@@ -353,10 +356,15 @@ int accountEntries = 0;
                 upgradeOrBackupImage = @"icon_backup_incomplete";
             }
         }
-        
         NSMutableArray *images;
         images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", upgradeOrBackupImage, @"lock_icon", @"logout_icon"]];
+#else
+        NSMutableArray *titles;
+        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
         
+        NSMutableArray *images;
+        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"lock_icon", @"logout_icon"]];
+#endif
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         

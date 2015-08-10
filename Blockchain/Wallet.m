@@ -332,7 +332,12 @@
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
+#ifdef HD_ENABLED
     [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], NSLocalizedString(@"My Bitcoin Wallet", nil)];
+#else
+    // make a legacy wallet
+    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS]];
+#endif
 }
 
 - (BOOL)needsSecondPassword {
