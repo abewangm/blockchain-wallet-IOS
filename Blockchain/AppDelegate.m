@@ -36,8 +36,6 @@
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
 
-// #define HD_ENABLED 1
-
 #define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
 
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
