@@ -20,6 +20,14 @@
 #define MENU_ENTRY_HEIGHT 54
 #define BALANCE_ENTRY_HEIGHT 58
 
+#define MENU_CELL_INDEX_SETTINGS 0
+#define MENU_CELL_INDEX_MERCHANT 1
+#define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 2
+#define MENU_CELL_INDEX_SUPPORT 3
+#define MENU_CELL_INDEX_UPGRADE 4
+#define MENU_CELL_INDEX_CHANGE_PIN 5
+#define MENU_CELL_INDEX_LOGOUT 6
+
 @interface SideMenuViewController ()
 
 @property (strong, readwrite, nonatomic) UITableView *tableView;
@@ -197,24 +205,27 @@ int accountEntries = 0;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    SideMenuViewCell *menuItemCell = (SideMenuViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    NSString *menuItemCellText = menuItemCell.textLabel.text;
+    NSInteger row = indexPath.row;    
+    BOOL didUpgradeToHD = app.wallet.didUpgradeToHd;
     
-    if([menuItemCellText isEqualToString:BC_STRING_SETTINGS]) {
+    if(row == MENU_CELL_INDEX_SETTINGS) {
         [app accountSettingsClicked:nil];
-    } else if ([menuItemCellText isEqualToString:BC_STRING_MERCHANT_MAP]){
+    } else if (row == MENU_CELL_INDEX_MERCHANT){
         [app merchantClicked:nil];
-    } else if ([menuItemCellText isEqualToString:BC_STRING_NEWS_PRICE_CHARTS]) {
+    } else if (row == MENU_CELL_INDEX_NEWS_PRICE_CHARTS) {
         [app newsClicked:nil];
-    } else if ([menuItemCellText isEqualToString:BC_STRING_SUPPORT]) {
-        [app supportClicked:nil];
-    } else if ([menuItemCellText isEqualToString:BC_STRING_BACKUP]) {
-        [app backupClicked:nil];
-    } else if ([menuItemCellText isEqualToString:BC_STRING_UPGRADE_TO_HD]) {
-        [app showHdUpgrade];
-    } else if ([menuItemCellText isEqualToString:BC_STRING_CHANGE_PIN]) {
+    } else if (row == MENU_CELL_INDEX_SUPPORT) {
+         [app supportClicked:nil];
+    } else if (row == MENU_CELL_INDEX_UPGRADE) {
+        if (didUpgradeToHD) {
+            [app backupClicked:nil];
+        }
+        else {
+            [app showHdUpgrade];
+        }
+    } else if (row == MENU_CELL_INDEX_CHANGE_PIN) {
         [app changePINClicked:nil];
-    } else if ([menuItemCellText isEqualToString:BC_STRING_LOGOUT]) {
+    } else if (row == MENU_CELL_INDEX_LOGOUT) {
         [app logoutClicked:nil];
     }
 }
