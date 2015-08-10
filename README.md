@@ -19,7 +19,7 @@ Prepare the MyWallet Javascript:
 
 Prepare OpenSSL:
 
-    cd ../OpenSSL-for-iPhone  
+    cd ../OpenSSL  
     ./build-libssl.sh
 
 ## Open the project in Xcode
@@ -31,7 +31,6 @@ Prepare OpenSSL:
 
     cmd-r
 
->>>>>>> parent of 0c93ad2... Remove submodules.
 ## PSD and Asset Catalog
 
 Images.xcassets contains all images the app needs, but they must be generated first from the PSD sources in /Artwork. This requires ImageMagick and Grunt.
