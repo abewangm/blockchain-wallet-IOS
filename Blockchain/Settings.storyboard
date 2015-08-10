@@ -59,7 +59,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-2" id="93R-ba-6UX">
+                            <tableViewSection headerTitle="Display" id="93R-ba-6UX">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="localCurrency" textLabel="1Yb-HT-XNY" detailTextLabel="Dhe-83-NKS" style="IBUITableViewCellStyleValue1" id="gmD-3y-Al0">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -103,7 +103,25 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-3" id="qf9-Ba-1Du">
+                            <tableViewSection headerTitle="Fees" id="mID-0C-6r7">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="termsOfService" textLabel="LzQ-8Z-uoc" style="IBUITableViewCellStyleDefault" id="2cr-LB-Qlf">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2cr-LB-Qlf" id="hu5-tB-Kdc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LzQ-8Z-uoc">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="About" id="qf9-Ba-1Du">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="termsOfService" textLabel="zce-oO-5S6" style="IBUITableViewCellStyleDefault" id="Rzp-26-ajH">
                                         <autoresizingMask key="autoresizingMask"/>
