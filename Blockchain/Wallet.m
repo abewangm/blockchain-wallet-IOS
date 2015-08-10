@@ -1031,11 +1031,15 @@
 
 - (Boolean)didUpgradeToHd
 {
+#ifdef HD_ENABLED
     if (![self isInitialized]) {
         return NO;
     }
     
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.isUpgradedToHD"] boolValue];
+#else
+    return NO;
+#endif
 }
 
 - (void)getRecoveryPhrase:(NSString *)secondPassword;

@@ -296,16 +296,16 @@ int accountEntries = 0;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
     if (![self showBalances]) {
+#ifdef HD_ENABLED
         return menuEntries;
+#endif
+        return menuEntries - 1;
     }
     if (sectionIndex == 0) {
         return 1;
     }
     if (sectionIndex == 2) {
-#ifdef HD_ENABLED
         return menuEntries;
-#endif
-        return menuEntries - 1;
     }
     
     return balanceEntries;
