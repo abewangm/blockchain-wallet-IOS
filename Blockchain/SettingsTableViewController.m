@@ -185,6 +185,7 @@ const int aboutPrivacyPolicy = 1;
     textField.tag = textFieldTagVerifyEmail;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
+    textField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
     [alertView show];
     self.verifyEmailAlertView = alertView;
 }
