@@ -197,27 +197,24 @@ int accountEntries = 0;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSInteger row = indexPath.row;    
-    BOOL didUpgradeToHD = app.wallet.didUpgradeToHd;
+    SideMenuViewCell *cell = (SideMenuViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSString *text = cell.textLabel.text;
     
-    if(row == 0) {
+    if([text isEqualToString:BC_STRING_SETTINGS]) {
         [app accountSettingsClicked:nil];
-    } else if (row == 1){
+    } else if ([text isEqualToString:BC_STRING_MERCHANT_MAP]){
         [app merchantClicked:nil];
-    } else if (row == 2) {
+    } else if ([text isEqualToString:BC_STRING_NEWS_PRICE_CHARTS]) {
         [app newsClicked:nil];
-    } else if (row == 3) {
-         [app supportClicked:nil];
-    } else if (row == 4) {
-        if (didUpgradeToHD) {
-            [app backupClicked:nil];
-        }
-        else {
-            [app showHdUpgrade];
-        }
-    } else if (row == 5) {
+    } else if ([text isEqualToString:BC_STRING_SUPPORT]) {
+        [app supportClicked:nil];
+    } else if ([text isEqualToString:BC_STRING_BACKUP]) {
+        [app backupClicked:nil];
+    } else if ([text isEqualToString:BC_STRING_UPGRADE_TO_HD]) {
+        [app showHdUpgrade];
+    } else if ([text isEqualToString:BC_STRING_CHANGE_PIN]) {
         [app changePINClicked:nil];
-    } else if (row == 6) {
+    } else if ([text isEqualToString:BC_STRING_LOGOUT]) {
         [app logoutClicked:nil];
     }
 }
