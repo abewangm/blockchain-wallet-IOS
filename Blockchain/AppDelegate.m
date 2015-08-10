@@ -1200,6 +1200,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showCreateWallet:(id)sender
 {
     [app showModalWithContent:newAccountView closeType:ModalCloseTypeBack headerText:BC_STRING_CREATE_NEW_WALLET];
+    [newAccountView clearPasswordTextFields];
 }
 
 - (void)showPairWallet:(id)sender
