@@ -3,24 +3,35 @@
 
 # Building
 
-## Add external dependencies
+## Setup git submodules
 
 _ssh pub key has to be registered with Github for this to work_
 
-    git clone git@github.com:blockchain/My-Wallet-HD.git External/My-Wallet-HD
-    git clone git@github.com:x2on/OpenSSL-for-iPhone.git External/OpenSSL
+    git clone git@github.com:blockchain/My-Wallet-HD.git Submodules/My-Wallet-HD
+    git clone git@github.com:x2on/OpenSSL-for-iPhone.git Submodules/OpenSSL
 
 Prepare the MyWallet Javascript:
 
-    cd External/My-Wallet-HD
+    git submodule update --init
+    cd Submodules/My-Wallet-HD
     npm install
     grunt build
 
 Prepare OpenSSL:
 
-    cd External/OpenSSL
+    cd ../OpenSSL-for-iPhone  
     ./build-libssl.sh
 
+## Open the project in Xcode
+
+    cd ../../
+    open Blockchain.xcodeproj
+
+## Build the project
+
+    cmd-r
+
+>>>>>>> parent of 0c93ad2... Remove submodules.
 ## PSD and Asset Catalog
 
 Images.xcassets contains all images the app needs, but they must be generated first from the PSD sources in /Artwork. This requires ImageMagick and Grunt.

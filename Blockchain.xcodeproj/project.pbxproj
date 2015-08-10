@@ -353,7 +353,7 @@
 		6710DA0D1A8E82D80089DDED /* BCLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCLine.m; sourceTree = "<group>"; };
 		6710DA3F1A963F2B0089DDED /* BCHdUpgradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCHdUpgradeView.h; sourceTree = "<group>"; };
 		6710DA401A963F2B0089DDED /* BCHdUpgradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCHdUpgradeView.m; sourceTree = "<group>"; };
-		672D00461AE6BA2800B2C074 /* my-wallet.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "External/My-Wallet-HD/dist/my-wallet.js"; sourceTree = SOURCE_ROOT; };
+		672D00461AE6BA2800B2C074 /* my-wallet.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "Submodules/My-Wallet-HD/dist/my-wallet.js"; sourceTree = SOURCE_ROOT; };
 		673107F019F6D49F00BE6899 /* PrivateKeyReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateKeyReader.h; sourceTree = "<group>"; };
 		673107F119F6D49F00BE6899 /* PrivateKeyReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateKeyReader.m; sourceTree = "<group>"; };
 		674709EA19D1D14300757D46 /* BCWelcomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCWelcomeView.h; sourceTree = "<group>"; };
@@ -1570,12 +1570,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/External/OpenSSL/include",
+					"$(SRCROOT)/Submodules/OpenSSL-for-iPhone/include",
 				);
 				INFOPLIST_FILE = "Blockchain/Blockchain-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/External/OpenSSL/lib";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/OpenSSL-for-iPhone/lib";
 				PRODUCT_NAME = Blockchain;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Blockchain/Blockchain-Bridging-Header.h";
@@ -1602,12 +1602,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/External/OpenSSL/include",
+					"$(SRCROOT)/Submodules/OpenSSL-for-iPhone/include",
 				);
 				INFOPLIST_FILE = "Blockchain/Blockchain-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/External/OpenSSL/lib";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/OpenSSL-for-iPhone/lib";
 				PRODUCT_NAME = Blockchain;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Blockchain/Blockchain-Bridging-Header.h";
