@@ -197,24 +197,24 @@ int accountEntries = 0;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    SideMenuViewCell *cell = (SideMenuViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    NSString *text = cell.textLabel.text;
+    SideMenuViewCell *menuItemCell = (SideMenuViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSString *menuItemCellText = menuItemCell.textLabel.text;
     
-    if([text isEqualToString:BC_STRING_SETTINGS]) {
+    if([menuItemCellText isEqualToString:BC_STRING_SETTINGS]) {
         [app accountSettingsClicked:nil];
-    } else if ([text isEqualToString:BC_STRING_MERCHANT_MAP]){
+    } else if ([menuItemCellText isEqualToString:BC_STRING_MERCHANT_MAP]){
         [app merchantClicked:nil];
-    } else if ([text isEqualToString:BC_STRING_NEWS_PRICE_CHARTS]) {
+    } else if ([menuItemCellText isEqualToString:BC_STRING_NEWS_PRICE_CHARTS]) {
         [app newsClicked:nil];
-    } else if ([text isEqualToString:BC_STRING_SUPPORT]) {
+    } else if ([menuItemCellText isEqualToString:BC_STRING_SUPPORT]) {
         [app supportClicked:nil];
-    } else if ([text isEqualToString:BC_STRING_BACKUP]) {
+    } else if ([menuItemCellText isEqualToString:BC_STRING_BACKUP]) {
         [app backupClicked:nil];
-    } else if ([text isEqualToString:BC_STRING_UPGRADE_TO_HD]) {
+    } else if ([menuItemCellText isEqualToString:BC_STRING_UPGRADE_TO_HD]) {
         [app showHdUpgrade];
-    } else if ([text isEqualToString:BC_STRING_CHANGE_PIN]) {
+    } else if ([menuItemCellText isEqualToString:BC_STRING_CHANGE_PIN]) {
         [app changePINClicked:nil];
-    } else if ([text isEqualToString:BC_STRING_LOGOUT]) {
+    } else if ([menuItemCellText isEqualToString:BC_STRING_LOGOUT]) {
         [app logoutClicked:nil];
     }
 }
@@ -298,8 +298,9 @@ int accountEntries = 0;
     if (![self showBalances]) {
 #ifdef HD_ENABLED
         return menuEntries;
-#endif
+#else
         return menuEntries - 1;
+#endif
     }
     if (sectionIndex == 0) {
         return 1;
