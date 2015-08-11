@@ -572,7 +572,7 @@ MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
     });
 };
 
-MyWalletPhone.newAccount = function(password, email, firstAccountName) {
+MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
     var success = function(guid, sharedKey, password) {
         device.execute('loading_stop');
 
@@ -587,7 +587,9 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName) {
 
     device.execute('loading_start_new_account');
 
-    MyWallet.createNewWallet(email, password, firstAccountName, null, null, success, error);
+    var isCreatingHD = Boolean(isHD);
+        
+    MyWallet.createNewWallet(email, password, firstAccountName, null, null, success, error, isCreatingHD);
 };
 
 MyWalletPhone.parsePairingCode = function (raw_code) {

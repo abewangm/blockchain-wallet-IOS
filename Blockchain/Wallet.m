@@ -333,10 +333,10 @@
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
 #ifdef HD_ENABLED
-    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], NSLocalizedString(@"My Bitcoin Wallet", nil)];
+    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], NSLocalizedString(@"My Bitcoin Wallet", nil), nil];
 #else
     // make a legacy wallet
-    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", %i)", [__password escapeStringForJS], [__email escapeStringForJS], [@"" escapeStringForJS], 0];
 #endif
 }
 
