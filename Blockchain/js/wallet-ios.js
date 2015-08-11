@@ -388,15 +388,21 @@ MyWalletPhone.quickSendFromAddressToAccount = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            Spender(note, success, error, listener, pw)
-                .fromAddress(from, value, fee)
-                .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+            new Spender(pw, note, listener)
+            .fromAddress(from)
+            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
+            .publish()
+            .then(success)
+            .catch(error)
         });
     }
     else {
-        Spender(note, success, error, listener, null)
-            .fromAddress(from, value, fee)
-            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+        new Spender(null, note, listener)
+        .fromAddress(from)
+        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
+        .publish()
+        .then(success)
+        .catch(error)
     }
 
     return id;
