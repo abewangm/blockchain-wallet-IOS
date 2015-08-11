@@ -333,19 +333,19 @@ MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(pw, note, listener)
+            new Spender(listener)
             .fromAddress(from)
             .toAddress(to, value, fee)
-            .publish()
+            .publish(pw, note)
             .then(success)
             .catch(error)
         });
     }
     else {
-        new Spender(null, note, listener)
+        new Spender(listener)
         .fromAddress(from)
         .toAddress(to, value, fee)
-        .publish()
+        .publish(null, note)
         .then(success)
         .catch(error)
     }
@@ -388,19 +388,19 @@ MyWalletPhone.quickSendFromAddressToAccount = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(pw, note, listener)
+            new Spender(listener)
             .fromAddress(from)
             .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
-            .publish()
+            .publish(pw, note)
             .then(success)
             .catch(error)
         });
     }
     else {
-        new Spender(null, note, listener)
+        new Spender(listener)
         .fromAddress(from)
         .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
-        .publish()
+        .publish(null, note)
         .then(success)
         .catch(error)
     }
@@ -443,19 +443,19 @@ MyWalletPhone.quickSendFromAccountToAddress = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(pw, note, listener)
+            new Spender(listener)
             .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
             .toAddress(to, value, fee)
-            .publish()
+            .publish(pw, note)
             .then(success)
             .catch(error)
         });
     }
     else {
-        new Spender(null, note, listener)
+        new Spender(listener)
         .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
         .toAddress(to, value, fee)
-        .publish()
+        .publish(null, note)
         .then(success)
         .catch(error)
     }
@@ -498,19 +498,19 @@ MyWalletPhone.quickSendFromAccountToAccount = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(pw, note, listener)
+            new Spender(listener)
             .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
             .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
-            .publish()
+            .publish(pw, note)
             .then(success)
             .catch(error)
         });
     }
     else {
-        new Spender(null, note, listener)
+        new Spender(listener)
         .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
         .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
-        .publish()
+        .publish(null, note)
         .then(success)
         .catch(error)
     }
