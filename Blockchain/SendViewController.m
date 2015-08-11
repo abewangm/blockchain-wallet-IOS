@@ -82,6 +82,13 @@ BOOL displayingLocalSymbolSend;
     self.sendToAddress = true;
 }
 
+- (void)clearToAddressAndAmountFields
+{
+    self.toAddress = @"";
+    toField.text = @"";
+    amountInSatoshi = 0;
+}
+
 - (void)reload
 {
     if (![app.wallet isInitialized] || !app.latestResponse) {

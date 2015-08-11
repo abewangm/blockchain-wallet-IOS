@@ -1285,6 +1285,7 @@ void (^secondPasswordSuccess)(NSString *);
         // Actually log out
         if (buttonIndex == 1) {
             [self clearPin];
+            [self.sendViewController clearToAddressAndAmountFields];
             [self logout];
             [self closeSideMenu];
             [self showPasswordModal];
