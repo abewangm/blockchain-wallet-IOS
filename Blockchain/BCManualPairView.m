@@ -45,9 +45,20 @@
     passwordTextField.delegate = nil;
 }
 
-- (void)modalWasDismissed
+- (void)clearTextFields
+{
+    walletIdentifierTextField.text = nil;
+    passwordTextField.text = nil;
+}
+
+- (void)clearPasswordTextField
 {
     passwordTextField.text = nil;
+}
+
+- (void)modalWasDismissed
+{
+    [self clearPasswordTextField];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -90,7 +101,7 @@
     [walletIdentifierTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     
-    passwordTextField.text = @"";
+    [self clearTextFields];
     
     [app.wallet loadWalletWithGuid:guid sharedKey:nil password:password];
     

@@ -1211,6 +1211,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)manualPairClicked:(id)sender
 {
     [self showModalWithContent:manualPairView closeType:ModalCloseTypeBack headerText:BC_STRING_MANUAL_PAIRING];
+    [manualPairView clearPasswordTextField];
 }
 
 #pragma mark - Actions
