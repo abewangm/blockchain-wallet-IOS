@@ -333,15 +333,21 @@ MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(note, success, error, listener, pw)
-                .fromAddress(from, value, fee)
-                .toAddress(to);
+            new Spender(pw, note, listener)
+            .fromAddress(from)
+            .toAddress(to, value, fee)
+            .publish()
+            .then(success)
+            .catch(error)
         });
     }
     else {
-        new Spender(note, success, error, listener, null)
-            .fromAddress(from, value, fee)
-            .toAddress(to);
+        new Spender(null, note, listener)
+        .fromAddress(from)
+        .toAddress(to, value, fee)
+        .publish()
+        .then(success)
+        .catch(error)
     }
 
     return id;
