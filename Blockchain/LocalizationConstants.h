@@ -192,6 +192,7 @@
 #define BC_STRING_REQUEST_AMOUNT NSLocalizedString(@"Request Amount", nil)
 #define BC_STRING_LABEL_ADDRESS NSLocalizedString(@"Label Address", nil)
 #define BC_STRING_SCAN_QR_CODE NSLocalizedString(@"Scan QR Code", nil)
+#define BC_STRING_CONTINUE NSLocalizedString(@"Continue", nil)
 
 #define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my wallet", nil)
 #define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing wallet", nil)
