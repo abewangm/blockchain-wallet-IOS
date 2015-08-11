@@ -498,15 +498,21 @@ MyWalletPhone.quickSendFromAccountToAccount = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            Spender(note, success, error, listener, pw)
-                .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
-                .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+            new Spender(pw, note, listener)
+            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
+            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
+            .publish()
+            .then(success)
+            .catch(error)
         });
     }
     else {
-        Spender(note, success, error, listener, null)
-            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
-            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+        new Spender(null, note, listener)
+        .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
+        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
+        .publish()
+        .then(success)
+        .catch(error)
     }
 
     return id;
