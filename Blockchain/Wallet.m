@@ -257,28 +257,28 @@
 
 - (void)sendPaymentFromAddress:(NSString*)fromAddress toAddress:(NSString*)toAddress satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener
 {
-    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSendFromAddressToAddress(\"%@\", \"%@\", \"%@\")", [fromAddress escapeStringForJS], [toAddress escapeStringForJS], [satoshiValue escapeStringForJS]];
+    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(MyWalletPhone.createTransactionProposalFromAddressToAddress(\"%@\", \"%@\", \"%@\"))", [fromAddress escapeStringForJS], [toAddress escapeStringForJS], [satoshiValue escapeStringForJS]];
         
     [self.transactionProgressListeners setObject:listener forKey:txProgressID];
 }
 
 - (void)sendPaymentFromAddress:(NSString*)fromAddress toAccount:(int)toAccount satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener
 {
-    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSendFromAddressToAccount(\"%@\", %d, \"%@\")", [fromAddress escapeStringForJS], toAccount, [satoshiValue escapeStringForJS]];
+    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\", %d, \"%@\"))", [fromAddress escapeStringForJS], toAccount, [satoshiValue escapeStringForJS]];
     
     [self.transactionProgressListeners setObject:listener forKey:txProgressID];
 }
 
 - (void)sendPaymentFromAccount:(int)fromAccount toAddress:(NSString*)toAddress satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener
 {
-    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSendFromAccountToAddress(%d, \"%@\", \"%@\")", fromAccount, [toAddress escapeStringForJS], satoshiValue];
+    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(MyWalletPhone.createTransactionProposalFromAccountToAddress(%d, \"%@\", \"%@\"))", fromAccount, [toAddress escapeStringForJS], satoshiValue];
     
     [self.transactionProgressListeners setObject:listener forKey:txProgressID];
 }
 
 - (void)sendPaymentFromAccount:(int)fromAccount toAccount:(int)toAccount satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener
 {
-    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSendFromAccountToAccount(%d, %d, \"%@\")", fromAccount, toAccount, satoshiValue];
+    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(MyWalletPhone.createTransactionProposalFromAccountToAccount(%d, %d, \"%@\"))", fromAccount, toAccount, satoshiValue];
     
     [self.transactionProgressListeners setObject:listener forKey:txProgressID];
 }
@@ -1163,6 +1163,26 @@
 - (uint64_t)recommendedTransactionFeeForAccount:(int)account amount:(uint64_t)amount
 {
     return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
+}
+
+- (uint64_t)testFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString
+{
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\",%d,\"%@\"))", [fromAddress escapeStringForJS], toAccount,[amountString escapeStringForJS]] longLongValue];
+}
+
+- (uint64_t)testFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString
+{
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAddress(\"%@\",\"%@\",\"%@\"))", [fromAddress escapeStringForJS], [toAddress escapeStringForJS], [amountString escapeStringForJS]] longLongValue];
+}
+
+- (uint64_t)testFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString
+{
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAddress(%d,\"%@\",\"%@\"))", fromAccount, [toAddress escapeStringForJS], amountString] longLongValue];
+}
+
+- (uint64_t)testFeeFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString
+{
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAccount(%d,%d,\"%@\"))", fromAccount, toAccount, amountString] longLongValue];
 }
 
 #pragma mark - Callbacks from JS to Obj-C for HD wallet

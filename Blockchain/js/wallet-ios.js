@@ -203,9 +203,128 @@ MyWalletPhone.getReceivingAddressForAccount = function(num) {
     return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].receiveAddress;
 };
 
-MyWalletPhone.recommendedTransactionFeeForAccount = function(num, amount) {
-    return MyWallet.getBaseFee();
+MyWalletPhone.prepareTransaction = function() {
+    var id = ''+Math.round(Math.random()*100000);
+
+    var listener = {
+        on_start : function() {
+            device.execute('tx_on_start:', [id]);
+        },
+        on_begin_signing : function() {
+            device.execute('tx_on_begin_signing:', [id]);
+        },
+        on_sign_progress : function(i) {
+            device.execute('tx_on_sign_progress:input:', [id, i]);
+        },
+        on_finish_signing : function() {
+            device.execute('tx_on_finish_signing:', [id]);
+        }
+    };
+    
+    var success = function() {
+        device.execute('tx_on_success:', [id]);
+        delete pendingTransactions[id];
+    };
+    
+    var error = function(error) {
+        device.execute('tx_on_error:error:', [id, ''+error]);
+        delete pendingTransactions[id];
+    };
+    
+    return {
+        listener:listener,
+        success:success,
+        error:error,
+        id:id
+    };
+}
+
+MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to, valueString) {
+    
+    var transactionDetails = MyWalletPhone.prepareTransaction();
+    
+    var value = parseInt(valueString);
+    
+    var id = transactionDetails.id;
+    var success = transactionDetails.success;
+    var error = transactionDetails.error;
+    
+    var transaction = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAddress(to, value, null);
+    
+    return {
+        transaction:transaction,
+        success:success,
+        error:error,
+        id:id
+    };
 };
+
+MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to, valueString) {
+    
+    var value = parseInt(valueString);
+    
+    var transactionDetails = MyWalletPhone.prepareTransaction();
+    
+    var id = transactionDetails.id;
+    var success = transactionDetails.success;
+    var error = transactionDetails.error;
+    
+    var transaction = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, null);
+
+    return {
+        transaction:transaction,
+        success:success,
+        error:error,
+        id:id
+    };
+}
+
+MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to, valueString) {
+    
+    var value = parseInt(valueString);
+    
+    var transactionDetails = MyWalletPhone.prepareTransaction();
+    
+    var id = transactionDetails.id;
+    var success = transactionDetails.success;
+    var error = transactionDetails.error;
+    
+    var transaction = new Spender(transactionDetails.listener).fromAddress(from).toAddress(to, value, null);
+    
+    return {
+        transaction:transaction,
+        success:success,
+        error:error,
+        id:id
+    };
+}
+
+MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to, valueString) {
+    
+    var value = parseInt(valueString);
+    
+    var transactionDetails = MyWalletPhone.prepareTransaction();
+    
+    var id = transactionDetails.id;
+    var success = transactionDetails.success;
+    var error = transactionDetails.error;
+    
+    var transaction = new Spender(transactionDetails.listener).fromAddress(from).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, null);
+    
+    return {
+        transaction:transaction,
+        success:success,
+        error:error,
+        id:id
+    };
+}
+
+MyWalletPhone.recommendedTransactionFee = function(transactionDetails) {
+    var fee = null;
+    var txProposal = transactionDetails.transaction;
+    txProposal.tx.then(function(tx) {fee = tx.fee});
+    return fee;
+}
 
 MyWalletPhone.setPbkdf2Iterations = function(iterations) {
     var success = function () {
@@ -298,224 +417,28 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     MyWallet.login(user_guid, shared_key, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, null, other_error, fetch_success, decrypt_success, build_hd_success);
 };
 
-MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
-    var id = ''+Math.round(Math.random()*100000);
+MyWalletPhone.quickSend = function(transactionDetails) {
 
-    var listener = {
-        on_start : function() {
-            device.execute('tx_on_start:', [id]);
-        },
-        on_begin_signing : function() {
-            device.execute('tx_on_begin_signing:', [id]);
-        },
-        on_sign_progress : function(i) {
-            device.execute('tx_on_sign_progress:input:', [id, i]);
-        },
-        on_finish_signing : function() {
-            device.execute('tx_on_finish_signing:', [id]);
-        }
-    };
-
-    var success = function() {
-        device.execute('tx_on_success:', [id]);
-        delete pendingTransactions[id];
-    };
-
-    var error = function(error) {
-        device.execute('tx_on_error:error:', [id, ''+error]);
-        delete pendingTransactions[id];
-    };
-
-    var value = parseInt(valueString);
-
-    var fee = MyWallet.getBaseFee();
+    var txProposal = transactionDetails.transaction;
+    var success = transactionDetails.success;
+    var error = transactionDetails.error;
+    
     var note = null;
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(listener)
-            .fromAddress(from)
-            .toAddress(to, value, fee)
-            .publish(pw, note)
+        txProposal.publish(pw, note)
             .then(success)
             .catch(error)
         });
     }
     else {
-        new Spender(listener)
-        .fromAddress(from)
-        .toAddress(to, value, fee)
-        .publish(null, note)
-        .then(success)
-        .catch(error)
-    }
-
-    return id;
-};
-
-MyWalletPhone.quickSendFromAddressToAccount = function(from, to, valueString) {
-    var id = ''+Math.round(Math.random()*100000);
-
-    var listener = {
-        on_start : function() {
-            device.execute('tx_on_start:', [id]);
-        },
-        on_begin_signing : function() {
-            device.execute('tx_on_begin_signing:', [id]);
-        },
-        on_sign_progress : function(i) {
-            device.execute('tx_on_sign_progress:input:', [id, i]);
-        },
-        on_finish_signing : function() {
-            device.execute('tx_on_finish_signing:', [id]);
-        }
-    };
-
-    var success = function() {
-        device.execute('tx_on_success:', [id]);
-        delete pendingTransactions[id];
-    };
-
-    var error = function(error) {
-        device.execute('tx_on_error:error:', [id, ''+error]);
-        delete pendingTransactions[id];
-    };
-
-    var value = parseInt(valueString);
-
-    var fee = MyWallet.getBaseFee();
-    var note = null;
-
-    if (MyWallet.wallet.isDoubleEncrypted) {
-        MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(listener)
-            .fromAddress(from)
-            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
-            .publish(pw, note)
+        txProposal.publish(null, note)
             .then(success)
             .catch(error)
-        });
-    }
-    else {
-        new Spender(listener)
-        .fromAddress(from)
-        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
-        .publish(null, note)
-        .then(success)
-        .catch(error)
     }
 
-    return id;
-};
-
-MyWalletPhone.quickSendFromAccountToAddress = function(from, to, valueString) {
-    var id = ''+Math.round(Math.random()*100000);
-
-    var listener = {
-        on_start : function() {
-            device.execute('tx_on_start:', [id]);
-        },
-        on_begin_signing : function() {
-            device.execute('tx_on_begin_signing:', [id]);
-        },
-        on_sign_progress : function(i) {
-            device.execute('tx_on_sign_progress:input:', [id, i]);
-        },
-        on_finish_signing : function() {
-            device.execute('tx_on_finish_signing:', [id]);
-        }
-    };
-
-    var success = function() {
-        device.execute('tx_on_success:', [id]);
-        delete pendingTransactions[id];
-    };
-
-    var error = function(error) {
-        device.execute('tx_on_error:error:', [id, ''+error]);
-        delete pendingTransactions[id];
-    };
-
-    var value = parseInt(valueString);
-
-    var fee = MyWallet.getBaseFee();
-    var note = null;
-
-    if (MyWallet.wallet.isDoubleEncrypted) {
-        MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(listener)
-            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
-            .toAddress(to, value, fee)
-            .publish(pw, note)
-            .then(success)
-            .catch(error)
-        });
-    }
-    else {
-        new Spender(listener)
-        .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
-        .toAddress(to, value, fee)
-        .publish(null, note)
-        .then(success)
-        .catch(error)
-    }
-
-    return id;
-};
-
-MyWalletPhone.quickSendFromAccountToAccount = function(from, to, valueString) {
-    var id = ''+Math.round(Math.random()*100000);
-
-    var listener = {
-        on_start : function() {
-            device.execute('tx_on_start:', [id]);
-        },
-        on_begin_signing : function() {
-            device.execute('tx_on_begin_signing:', [id]);
-        },
-        on_sign_progress : function(i) {
-            device.execute('tx_on_sign_progress:input:', [id, i]);
-        },
-        on_finish_signing : function() {
-            device.execute('tx_on_finish_signing:', [id]);
-        }
-    };
-
-    var success = function() {
-        device.execute('tx_on_success:', [id]);
-        delete pendingTransactions[id];
-    };
-
-    var error = function(error) {
-        device.execute('tx_on_error:error:', [id, ''+error]);
-        delete pendingTransactions[id];
-    };
-
-    var value = parseInt(valueString);
-
-    var fee = MyWallet.getBaseFee();
-    var note = null;
-
-    if (MyWallet.wallet.isDoubleEncrypted) {
-        MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(listener)
-            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
-            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
-            .publish(pw, note)
-            .then(success)
-            .catch(error)
-        });
-    }
-    else {
-        new Spender(listener)
-        .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
-        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
-        .publish(null, note)
-        .then(success)
-        .catch(error)
-    }
-
-    return id;
+    return transactionDetails.id;
 };
 
 MyWalletPhone.apiGetPINValue = function(key, pin) {

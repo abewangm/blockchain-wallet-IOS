@@ -321,7 +321,7 @@ BOOL displayingLocalSymbolSend;
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         uint64_t amount = amountInSatoshi;
-        uint64_t fee = [self getRecommendedFeeForAmount:amount];
+        uint64_t fee = [self getTestFeeForAmount:amount];
         uint64_t amountTotal = amount + fee;
         
         NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
@@ -400,6 +400,31 @@ BOOL displayingLocalSymbolSend;
     
     return fee;
 }
+
+- (uint64_t)getTestFeeForAmount:(uint64_t)amount
+{
+    int64_t fee;
+    
+    NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
+
+    // Different ways of sending (from/to address or account
+    if (self.sendFromAddress && self.sendToAddress) {
+        fee = [app.wallet testFeeFromAddress:self.fromAddress toAddress:self.toAddress amountString:amountString];
+    }
+    else if (self.sendFromAddress && !self.sendToAddress) {
+        fee = [app.wallet testFeeFromAddress:self.fromAddress toAccount:self.toAccount amountString:amountString];
+    }
+    else if (!self.sendFromAddress && self.sendToAddress) {
+        fee = [app.wallet testFeeFromAccount:self.fromAccount toAddress:self.toAddress amountString:amountString];
+    }
+    else if (!self.sendFromAddress && !self.sendToAddress) {
+        fee = [app.wallet testFeeFromAccount:self.fromAccount toAccount:self.toAccount amountString:amountString];
+    } else {
+        fee = 1000;
+    }
+    return fee;
+}
+
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
 {
