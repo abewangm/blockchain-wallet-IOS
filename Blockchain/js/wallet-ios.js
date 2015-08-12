@@ -333,15 +333,21 @@ MyWalletPhone.quickSendFromAddressToAddress = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            new Spender(note, success, error, listener, pw)
-                .fromAddress(from, value, fee)
-                .toAddress(to);
+            new Spender(listener)
+            .fromAddress(from)
+            .toAddress(to, value, fee)
+            .publish(pw, note)
+            .then(success)
+            .catch(error)
         });
     }
     else {
-        new Spender(note, success, error, listener, null)
-            .fromAddress(from, value, fee)
-            .toAddress(to);
+        new Spender(listener)
+        .fromAddress(from)
+        .toAddress(to, value, fee)
+        .publish(null, note)
+        .then(success)
+        .catch(error)
     }
 
     return id;
@@ -382,15 +388,21 @@ MyWalletPhone.quickSendFromAddressToAccount = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            Spender(note, success, error, listener, pw)
-                .fromAddress(from, value, fee)
-                .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+            new Spender(listener)
+            .fromAddress(from)
+            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
+            .publish(pw, note)
+            .then(success)
+            .catch(error)
         });
     }
     else {
-        Spender(note, success, error, listener, null)
-            .fromAddress(from, value, fee)
-            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+        new Spender(listener)
+        .fromAddress(from)
+        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
+        .publish(null, note)
+        .then(success)
+        .catch(error)
     }
 
     return id;
@@ -431,15 +443,21 @@ MyWalletPhone.quickSendFromAccountToAddress = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            Spender(note, success, error, listener, pw)
-                .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
-                .toAddress(to);
+            new Spender(listener)
+            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
+            .toAddress(to, value, fee)
+            .publish(pw, note)
+            .then(success)
+            .catch(error)
         });
     }
     else {
-        Spender(note, success, error, listener, null)
-            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
-            .toAddress(to);
+        new Spender(listener)
+        .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
+        .toAddress(to, value, fee)
+        .publish(null, note)
+        .then(success)
+        .catch(error)
     }
 
     return id;
@@ -480,15 +498,21 @@ MyWalletPhone.quickSendFromAccountToAccount = function(from, to, valueString) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            Spender(note, success, error, listener, pw)
-                .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
-                .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+            new Spender(listener)
+            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
+            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
+            .publish(pw, note)
+            .then(success)
+            .catch(error)
         });
     }
     else {
-        Spender(note, success, error, listener, null)
-            .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from), value, fee)
-            .toAccount(MyWalletPhone.getIndexOfActiveAccount(to));
+        new Spender(listener)
+        .fromAccount(MyWalletPhone.getIndexOfActiveAccount(from))
+        .toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, fee)
+        .publish(null, note)
+        .then(success)
+        .catch(error)
     }
 
     return id;
