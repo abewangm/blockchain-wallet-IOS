@@ -438,7 +438,7 @@ MyWalletPhone.quickSend = function(transactionDictionary) {
             .catch(error)
     }
 
-    return transactionDetails.id;
+    return transactionDictionary.id;
 };
 
 MyWalletPhone.apiGetPINValue = function(key, pin) {
