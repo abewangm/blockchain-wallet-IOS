@@ -241,6 +241,10 @@ MyWalletPhone.prepareTransaction = function() {
 
 MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to, valueString, userFee) {
     
+    if (userFee < 0) {
+        userFee = null;
+    }
+    
     var transactionDetails = MyWalletPhone.prepareTransaction();
     
     var value = parseInt(valueString);
@@ -260,6 +264,10 @@ MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to,
 };
 
 MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to, valueString, userFee) {
+    
+    if (userFee < 0) {
+        userFee = null;
+    }
     
     var value = parseInt(valueString);
     
@@ -281,6 +289,10 @@ MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to,
 
 MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to, valueString, userFee) {
     
+    if (userFee < 0) {
+        userFee = null;
+    }
+    
     var value = parseInt(valueString);
     
     var transactionDetails = MyWalletPhone.prepareTransaction();
@@ -300,6 +312,10 @@ MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to,
 }
 
 MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to, valueString, userFee) {
+    
+    if (userFee < 0) {
+        userFee = null;
+    }
     
     var value = parseInt(valueString);
     
