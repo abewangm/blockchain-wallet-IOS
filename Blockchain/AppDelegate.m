@@ -765,6 +765,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)closeAllModals
 {
+    [app.wallet loading_stop];
+    
     [modalView endEditing:YES];
     
     [modalView removeFromSuperview];
@@ -1031,6 +1033,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_transactionsViewController setData:nil];
     
     [self reload];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"hasSeenUpgradeToHdScreen"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];
 }

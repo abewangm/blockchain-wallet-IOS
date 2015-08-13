@@ -127,6 +127,7 @@
 
 - (void)forgetWallet;
 - (void)toggleSideMenu;
+- (void)closeSideMenu;
 
 - (NSString *)guid;
 - (NSString *)sharedKey;

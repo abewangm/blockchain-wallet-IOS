@@ -109,16 +109,14 @@ MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
         console.log('Error upgrading legacy wallet to HD wallet: ' + e);
         device.execute('loading_stop');
     };
-
-    device.execute('loading_start_upgrade_to_hd');
-
+    
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            MyWallet.wallet.newHDWallet(firstAccountName, pw, success);
+            MyWallet.wallet.newHDWallet(firstAccountName, pw, success, error);
         });
     }
     else {
-        MyWallet.wallet.newHDWallet(firstAccountName, null, success);
+        MyWallet.wallet.newHDWallet(firstAccountName, null, success, error);
     }
 };
 
