@@ -325,10 +325,12 @@ uint64_t feeFromTransactionProposal = 10000;
 {
     [self dismissKeyboard];
     
+    uint64_t amount = amountInSatoshi;
+    [self getTestFeeForAmount:amount];
+    
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        uint64_t amount = amountInSatoshi;
-        uint64_t fee = [self getTestFeeForAmount:amount];
+        uint64_t fee = feeFromTransactionProposal;
         uint64_t amountTotal = amount + fee;
         
         NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
