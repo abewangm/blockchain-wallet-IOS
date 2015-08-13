@@ -30,6 +30,8 @@ uint64_t availableAmount = 0.0;
 
 BOOL displayingLocalSymbolSend;
 
+uint64_t feeFromTransactionProposal = 10000;
+
 #pragma mark - Lifecycle
 
 - (void)viewDidAppear:(BOOL)animated
@@ -41,11 +43,16 @@ BOOL displayingLocalSymbolSend;
         sendProgressModalText.text = [notification object];
     }];
     
+    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
+        feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
+    }];
+    
     app.mainTitleLabel.text = BC_STRING_SEND;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
 }
 
 - (void)viewDidLoad
@@ -409,22 +416,26 @@ BOOL displayingLocalSymbolSend;
 
     // Different ways of sending (from/to address or account
     if (self.sendFromAddress && self.sendToAddress) {
-        fee = [app.wallet testFeeFromAddress:self.fromAddress toAddress:self.toAddress amountString:amountString];
+        [app.wallet testFeeFromAddress:self.fromAddress toAddress:self.toAddress amountString:amountString];
     }
     else if (self.sendFromAddress && !self.sendToAddress) {
-        fee = [app.wallet testFeeFromAddress:self.fromAddress toAccount:self.toAccount amountString:amountString];
+        [app.wallet testFeeFromAddress:self.fromAddress toAccount:self.toAccount amountString:amountString];
     }
     else if (!self.sendFromAddress && self.sendToAddress) {
-        fee = [app.wallet testFeeFromAccount:self.fromAccount toAddress:self.toAddress amountString:amountString];
+        [app.wallet testFeeFromAccount:self.fromAccount toAddress:self.toAddress amountString:amountString];
     }
     else if (!self.sendFromAddress && !self.sendToAddress) {
-        fee = [app.wallet testFeeFromAccount:self.fromAccount toAccount:self.toAccount amountString:amountString];
+        [app.wallet testFeeFromAccount:self.fromAccount toAccount:self.toAccount amountString:amountString];
     } else {
-        fee = 1000;
+        fee = 10000;
     }
-    return fee;
+    return 10000;
 }
 
+- (NSNumber *)updateFee:(NSNumber *)fee
+{
+    return fee;
+}
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
 {

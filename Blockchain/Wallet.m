@@ -512,6 +512,37 @@
     return [self.webView executeJSSynchronous:@"MyWalletPhone.score_password(\"%@\")", passwordString];
 }
 
+
+- (uint64_t)recommendedTransactionFeeForAddress:(NSString*)address amount:(uint64_t)amount
+{
+    return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
+}
+
+- (uint64_t)recommendedTransactionFeeForAccount:(int)account amount:(uint64_t)amount
+{
+    return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
+}
+
+- (void)testFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString
+{
+    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\",%d,\"%@\"))", [fromAddress escapeStringForJS], toAccount,[amountString escapeStringForJS]];
+}
+
+- (void)testFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString
+{
+    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAddress(\"%@\",\"%@\",\"%@\"))", [fromAddress escapeStringForJS], [toAddress escapeStringForJS], [amountString escapeStringForJS]];
+}
+
+- (void)testFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString
+{
+    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAddress(%d,\"%@\",\"%@\"))", fromAccount, [toAddress escapeStringForJS], amountString];
+}
+
+- (void)testFeeFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString
+{
+    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAccount(%d,%d,\"%@\"))", fromAccount, toAccount, amountString];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -1010,6 +1041,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
+- (void)update_fee:(NSNumber *)fee
+{
+    DLog(@"update_fee");
+    NSLog(@"fee is %@", fee);
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"fee":fee}];
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)whitelistWallet
@@ -1153,36 +1191,6 @@
     DLog(@"Setting PBKDF2 Iterations");
     
     [self.webView executeJSSynchronous:@"MyWalletPhone.setPbkdf2Iterations(%d)", iterations];
-}
-
-- (uint64_t)recommendedTransactionFeeForAddress:(NSString*)address amount:(uint64_t)amount
-{
-    return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
-}
-
-- (uint64_t)recommendedTransactionFeeForAccount:(int)account amount:(uint64_t)amount
-{
-    return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
-}
-
-- (uint64_t)testFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString
-{
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\",%d,\"%@\"))", [fromAddress escapeStringForJS], toAccount,[amountString escapeStringForJS]] longLongValue];
-}
-
-- (uint64_t)testFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString
-{
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAddress(\"%@\",\"%@\",\"%@\"))", [fromAddress escapeStringForJS], [toAddress escapeStringForJS], [amountString escapeStringForJS]] longLongValue];
-}
-
-- (uint64_t)testFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString
-{
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAddress(%d,\"%@\",\"%@\"))", fromAccount, [toAddress escapeStringForJS], amountString] longLongValue];
-}
-
-- (uint64_t)testFeeFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString
-{
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAccount(%d,%d,\"%@\"))", fromAccount, toAccount, amountString] longLongValue];
 }
 
 #pragma mark - Callbacks from JS to Obj-C for HD wallet

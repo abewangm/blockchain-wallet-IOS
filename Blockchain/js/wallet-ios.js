@@ -320,10 +320,11 @@ MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to,
 }
 
 MyWalletPhone.recommendedTransactionFee = function(transactionDictionary) {
-    var fee = null;
     var txProposal = transactionDictionary.txProposal;
-    txProposal.tx.then(function(tx) {fee = tx.fee});
-    return fee;
+    txProposal.tx.then(function(tx) {
+        var fee = tx.fee;
+        device.execute('update_fee:', [fee]);
+    });
 }
 
 MyWalletPhone.setPbkdf2Iterations = function(iterations) {
