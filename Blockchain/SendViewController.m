@@ -407,7 +407,8 @@ uint64_t feeFromTransactionProposal = 10000;
         fee = [app.wallet recommendedTransactionFeeForAccount:self.fromAccount amount:amount];
     }
     
-    return fee;
+    uint64_t returnedFee = [[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] == nil ? fee : (uint64_t)(10000*10000*[[[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] floatValue]);
+    return returnedFee;
 }
 
 - (uint64_t)getTestFeeForAmount:(uint64_t)amount

@@ -20,13 +20,17 @@ const int textFieldTagVerifyEmail = 5;
 const int textFieldTagChangeEmail = 4;
 
 const int accountDetailsSection = 0;
-const int displaySection = 1;
-const int aboutSection = 2;
-
 const int accountDetailsIdentifier = 0;
 const int accountDetailsEmail = 1;
+
+const int displaySection = 1;
 const int displayLocalCurrency = 0;
 const int displayBtcUnit = 1;
+
+const int feesSection = 2;
+const int feePerKb = 0;
+
+const int aboutSection = 3;
 const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
@@ -37,6 +41,7 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic) UIAlertView *changeEmailAlertView;
 @property (nonatomic) UIAlertView *errorLoadingAlertView;
+@property (nonatomic) UIAlertView *changeFeeAlertView;
 @property (nonatomic, copy) NSString *enteredEmailString;
 @property (nonatomic, copy) NSString *emailString;
 @property (nonatomic) id notificationObserver;
@@ -154,6 +159,22 @@ const int aboutPrivacyPolicy = 1;
 - (NSString *)getUserEmail
 {
     return [self.accountInfoDictionary objectForKey:@"email"];
+}
+
+- (float)getFeePerKb
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] == nil ? 0.0001 : [[[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] floatValue];
+}
+
+- (void)alertViewToChangeFee
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, [self getFeePerKb]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.text = [[NSString alloc] initWithFormat:@"%.4f", [self getFeePerKb]];
+    textField.keyboardType = UIKeyboardTypeDecimalPad;
+    [alertView show];
+    self.changeFeeAlertView = alertView;
 }
 
 - (void)alertViewForErrorLoadingSettings
@@ -291,6 +312,19 @@ const int aboutPrivacyPolicy = 1;
                 }
             }
             return;
+    } else if ([alertView isEqual:self.changeFeeAlertView]) {
+        switch (buttonIndex) {
+            case 0: {
+                return;
+            }
+            case 1: {
+                UITextField *textField = [alertView textFieldAtIndex:0];
+                float fee = [textField.text floatValue];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:fee] forKey:@"feePerKb"];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
+                return;
+            }
+        }
     } else if ([alertView isEqual:self.errorLoadingAlertView]) {
         // User has tapped on cell when account info has not yet been loaded; get account info again
         [self getAccountInfo];
@@ -375,6 +409,15 @@ const int aboutPrivacyPolicy = 1;
             }
             return;
         }
+        case feesSection: {
+            switch (indexPath.row) {
+                case feePerKb: {
+                    [self alertViewToChangeFee];
+                    return;
+                }
+            }
+            return;
+        }
         case aboutSection: {
             switch (indexPath.row) {
                 case aboutTermsOfService: {
@@ -393,7 +436,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -401,6 +444,7 @@ const int aboutPrivacyPolicy = 1;
     switch (section) {
         case accountDetailsSection: return 2;
         case displaySection: return 2;
+        case feesSection: return 1;
         case aboutSection: return 2;
         default: return 0;
     }
@@ -411,6 +455,7 @@ const int aboutPrivacyPolicy = 1;
     switch (section) {
         case accountDetailsSection: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
         case displaySection: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
+        case feesSection: return BC_STRING_SETTINGS_FEES;
         case aboutSection: return BC_STRING_SETTINGS_ABOUT;
         default: return nil;
     }
@@ -483,6 +528,16 @@ const int aboutPrivacyPolicy = 1;
                     if (selectedCurrencyCode == nil) {
                         cell.detailTextLabel.text = @"";
                     }
+                    return cell;
+                }
+            }
+        }
+        case feesSection: {
+            switch (indexPath.row) {
+                case feePerKb: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_FEE_PER_KB;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self getFeePerKb]];
                     return cell;
                 }
             }
