@@ -41,6 +41,7 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic) UIAlertView *changeEmailAlertView;
 @property (nonatomic) UIAlertView *errorLoadingAlertView;
+@property (nonatomic) UIAlertView *changeFeeAlertView;
 @property (nonatomic, copy) NSString *enteredEmailString;
 @property (nonatomic, copy) NSString *emailString;
 @property (nonatomic) id notificationObserver;
@@ -158,6 +159,21 @@ const int aboutPrivacyPolicy = 1;
 - (NSString *)getUserEmail
 {
     return [self.accountInfoDictionary objectForKey:@"email"];
+}
+
+- (float)getFeePerKb
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] == nil ? 0.0001 : [[[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] floatValue];
+}
+
+- (void)alertViewToChangeFee
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, [self getFeePerKb]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.keyboardType = UIKeyboardTypeDecimalPad;
+    [alertView show];
+    self.changeFeeAlertView = alertView;
 }
 
 - (void)alertViewForErrorLoadingSettings
@@ -296,6 +312,17 @@ const int aboutPrivacyPolicy = 1;
             }
             return;
     } else if ([alertView isEqual:self.errorLoadingAlertView]) {
+        switch (buttonIndex) {
+            case 0: {
+                NSLog(@"cancel");
+                return;
+            }
+            case 1: {
+                NSLog(@"Done");
+                return;
+            }
+        }
+    } else if ([alertView isEqual:self.errorLoadingAlertView]) {
         // User has tapped on cell when account info has not yet been loaded; get account info again
         [self getAccountInfo];
         return;
@@ -374,6 +401,15 @@ const int aboutPrivacyPolicy = 1;
                 }
                 case displayBtcUnit: {
                     [self performSegueWithIdentifier:@"btcUnit" sender:nil];
+                    return;
+                }
+            }
+            return;
+        }
+        case feesSection: {
+            switch (indexPath.row) {
+                case feePerKb: {
+                    [self alertViewToChangeFee];
                     return;
                 }
             }
@@ -497,6 +533,8 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case feePerKb: {
                     cell.textLabel.text = BC_STRING_SETTINGS_FEE_PER_KB;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%.4f", [self getFeePerKb]];
                     return cell;
                 }
             }
