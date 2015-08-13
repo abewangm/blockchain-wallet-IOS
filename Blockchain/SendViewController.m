@@ -321,7 +321,7 @@ BOOL displayingLocalSymbolSend;
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         uint64_t amount = amountInSatoshi;
-        uint64_t fee = [self getTestFeeForAmount:amount];
+        uint64_t fee = [self getTestFeeForAmount:amount] == 0 ? [self getRecommendedFeeForAmount:amount] : [self getTestFeeForAmount:amount];
         uint64_t amountTotal = amount + fee;
         
         NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
@@ -398,7 +398,8 @@ BOOL displayingLocalSymbolSend;
         fee = [app.wallet recommendedTransactionFeeForAccount:self.fromAccount amount:amount];
     }
     
-    return fee;
+    uint64_t returnedFee = [[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] == nil ? fee : (uint64_t)(10000*10000*[[[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] floatValue]);
+    return returnedFee;
 }
 
 - (uint64_t)getTestFeeForAmount:(uint64_t)amount
