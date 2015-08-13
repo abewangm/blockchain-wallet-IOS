@@ -454,12 +454,6 @@ void (^secondPasswordSuccess)(NSString *);
     if (![app isPINSet]) {
         [app showPinModalAsView:NO];
     }
-    
-    if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenUpgradeToHdScreen"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasSeenUpgradeToHdScreen"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [self showHdUpgrade];
-    }
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
@@ -1602,7 +1596,15 @@ void (^secondPasswordSuccess)(NSString *);
         // Update your info to new pin code
         [self closePINModal:YES];
         
-        [app standardNotify:BC_STRING_PIN_SAVED_SUCCESSFULLY title:BC_STRING_SUCCESS delegate:nil];
+        UIAlertView *alertViewSavedPINSuccessfully = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
+        alertViewSavedPINSuccessfully.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenUpgradeToHdScreen"]) {
+                [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasSeenUpgradeToHdScreen"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [self showHdUpgrade];
+            }
+        };
+        [alertViewSavedPINSuccessfully show];
     }
 }
 
