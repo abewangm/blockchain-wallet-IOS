@@ -171,6 +171,7 @@ const int aboutPrivacyPolicy = 1;
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, [self getFeePerKb]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.text = [[NSString alloc] initWithFormat:@"%.4f", [self getFeePerKb]];
     textField.keyboardType = UIKeyboardTypeDecimalPad;
     [alertView show];
     self.changeFeeAlertView = alertView;
@@ -311,14 +312,16 @@ const int aboutPrivacyPolicy = 1;
                 }
             }
             return;
-    } else if ([alertView isEqual:self.errorLoadingAlertView]) {
+    } else if ([alertView isEqual:self.changeFeeAlertView]) {
         switch (buttonIndex) {
             case 0: {
-                NSLog(@"cancel");
                 return;
             }
             case 1: {
-                NSLog(@"Done");
+                UITextField *textField = [alertView textFieldAtIndex:0];
+                float fee = [textField.text floatValue];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:fee] forKey:@"feePerKb"];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
                 return;
             }
         }
@@ -534,7 +537,7 @@ const int aboutPrivacyPolicy = 1;
                 case feePerKb: {
                     cell.textLabel.text = BC_STRING_SETTINGS_FEE_PER_KB;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%.4f", [self getFeePerKb]];
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self getFeePerKb]];
                     return cell;
                 }
             }
