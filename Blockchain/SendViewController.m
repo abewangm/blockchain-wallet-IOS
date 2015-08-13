@@ -330,7 +330,17 @@ uint64_t feeFromTransactionProposal = 10000;
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        uint64_t fee = feeFromTransactionProposal;
+        
+        uint64_t fee;
+        
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] != nil) {
+            NSNumber *unconvertedFee = [[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"];
+            unconvertedFee = [NSNumber numberWithFloat:[unconvertedFee floatValue] * [[NSNumber numberWithInt:SATOSHI] floatValue]];
+            fee = (uint64_t)[unconvertedFee longLongValue];
+        } else {
+            fee = feeFromTransactionProposal;
+        }
+        
         uint64_t amountTotal = amount + fee;
         
         NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
@@ -407,8 +417,7 @@ uint64_t feeFromTransactionProposal = 10000;
         fee = [app.wallet recommendedTransactionFeeForAccount:self.fromAccount amount:amount];
     }
     
-    uint64_t returnedFee = [[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] == nil ? fee : (uint64_t)(10000*10000*[[[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] floatValue]);
-    return returnedFee;
+    return fee;
 }
 
 - (uint64_t)getTestFeeForAmount:(uint64_t)amount
