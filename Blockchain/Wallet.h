@@ -183,10 +183,10 @@
 - (uint64_t)recommendedTransactionFeeForAddress:(NSString*)address amount:(uint64_t)amount;
 - (uint64_t)recommendedTransactionFeeForAccount:(int)account amount:(uint64_t)amount;
 
-- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString;
-- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString;
-- (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString;
-- (void)getTransactionProposalFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString;
+- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee;
+- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee;
+- (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee;
+- (void)getTransactionProposalFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee;
 
 - (void)loading_start_get_history;
 - (void)loading_start_import_private_key;

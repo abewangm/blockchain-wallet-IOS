@@ -523,23 +523,39 @@
     return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
 }
 
-- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString
+- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee
 {
+    uint64_t fee;
+    if (userHasSetFee) {
+        fee = [app convertFeePerKbFromUserDefaults];
+    }
     [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\",%d,\"%@\"))", [fromAddress escapeStringForJS], toAccount,[amountString escapeStringForJS]];
 }
 
-- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString
+- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee
 {
+    uint64_t fee;
+    if (userHasSetFee) {
+        fee = [app convertFeePerKbFromUserDefaults];
+    }
     [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAddress(\"%@\",\"%@\",\"%@\"))", [fromAddress escapeStringForJS], [toAddress escapeStringForJS], [amountString escapeStringForJS]];
 }
 
-- (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString
+- (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee
 {
+    uint64_t fee;
+    if (userHasSetFee) {
+        fee = [app convertFeePerKbFromUserDefaults];
+    }
     [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAddress(%d,\"%@\",\"%@\"))", fromAccount, [toAddress escapeStringForJS], amountString];
 }
 
-- (void)getTransactionProposalFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString
+- (void)getTransactionProposalFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee
 {
+    uint64_t fee;
+    if (userHasSetFee) {
+        fee = [app convertFeePerKbFromUserDefaults];
+    }
     [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAccount(%d,%d,\"%@\"))", fromAccount, toAccount, amountString];
 }
 

@@ -239,7 +239,7 @@ MyWalletPhone.prepareTransaction = function() {
     };
 }
 
-MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to, valueString) {
+MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to, valueString, userFee) {
     
     var transactionDetails = MyWalletPhone.prepareTransaction();
     
@@ -249,7 +249,7 @@ MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to,
     var success = transactionDetails.success;
     var error = transactionDetails.error;
     
-    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAddress(to, value, null);
+    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAddress(to, value, userFee);
     
     return {
         txProposal:txProposal,
@@ -259,7 +259,7 @@ MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to,
     };
 };
 
-MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to, valueString) {
+MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to, valueString, userFee) {
     
     var value = parseInt(valueString);
     
@@ -269,7 +269,7 @@ MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to,
     var success = transactionDetails.success;
     var error = transactionDetails.error;
     
-    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, null);
+    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, userFee);
 
     return {
         txProposal:txProposal,
@@ -279,7 +279,7 @@ MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to,
     };
 }
 
-MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to, valueString) {
+MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to, valueString, userFee) {
     
     var value = parseInt(valueString);
     
@@ -289,7 +289,7 @@ MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to,
     var success = transactionDetails.success;
     var error = transactionDetails.error;
     
-    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAddress(to, value, null);
+    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAddress(to, value, userFee);
     
     return {
         txProposal:txProposal,
@@ -299,7 +299,7 @@ MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to,
     };
 }
 
-MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to, valueString) {
+MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to, valueString, userFee) {
     
     var value = parseInt(valueString);
     
@@ -309,7 +309,7 @@ MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to,
     var success = transactionDetails.success;
     var error = transactionDetails.error;
     
-    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, null);
+    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, userFee);
     
     return {
         txProposal:txProposal,
