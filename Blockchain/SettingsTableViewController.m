@@ -72,7 +72,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)setAllCurrencySymbolsDictionary:(NSDictionary *)allCurrencySymbolsDictionary
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self.notificationObserver name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
-
+    
     _allCurrencySymbolsDictionary = allCurrencySymbolsDictionary;
     
     [self reloadTableView];
@@ -234,7 +234,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)changeEmail:(NSString *)emailString
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
-
+    
     self.enteredEmailString = emailString;
     
     [app.wallet changeEmail:emailString];
@@ -274,44 +274,44 @@ const int aboutPrivacyPolicy = 1;
     [textField resignFirstResponder];
     
     if ([alertView isEqual:self.changeEmailAlertView]) {
-            switch (buttonIndex) {
-                case 0: {
-                    // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
-                    UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]];
-                    if ([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] && [alertView.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) {
-                        [self getAccountInfo];
-                    }
-                    return;
+        switch (buttonIndex) {
+            case 0: {
+                // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
+                UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]];
+                if ([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] && [alertView.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) {
+                    [self getAccountInfo];
                 }
-                case 1: {
-                    [self changeEmail:[alertView textFieldAtIndex:0].text];
-                    return;
-                }
+                return;
             }
-            return;
+            case 1: {
+                [self changeEmail:[alertView textFieldAtIndex:0].text];
+                return;
+            }
+        }
+        return;
     } else if ([alertView isEqual:self.verifyEmailAlertView]) {
-            switch (buttonIndex) {
-                case 0: {
-                    // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
-                    if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL]) {
-                        [self getAccountInfo];
-                    }
-                    return;
+        switch (buttonIndex) {
+            case 0: {
+                // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
+                if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL]) {
+                    [self getAccountInfo];
                 }
-                case 1: {
-                    [self resendVerificationEmail];
-                    return;
-                }
-                case 2: {
-                    // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
-                    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
-                    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                        [self alertViewToChangeEmail:YES];
-                    });
-                    return;
-                }
+                return;
             }
-            return;
+            case 1: {
+                [self resendVerificationEmail];
+                return;
+            }
+            case 2: {
+                // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
+                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
+                dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                    [self alertViewToChangeEmail:YES];
+                });
+                return;
+            }
+        }
+        return;
     } else if ([alertView isEqual:self.changeFeeAlertView]) {
         switch (buttonIndex) {
             case 0: {
