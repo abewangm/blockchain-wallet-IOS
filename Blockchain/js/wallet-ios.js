@@ -239,11 +239,8 @@ MyWalletPhone.prepareTransaction = function() {
     };
 }
 
-MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to, valueString, userFee) {
-    
-    if (userFee < 0) {
-        userFee = null;
-    }
+MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to, valueString) {
+
     
     var transactionDetails = MyWalletPhone.prepareTransaction();
     
@@ -253,7 +250,7 @@ MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to,
     var success = transactionDetails.success;
     var error = transactionDetails.error;
     
-    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAddress(to, value, userFee);
+    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAddress(to, value, null);
     
     return {
         txProposal:txProposal,
@@ -263,11 +260,7 @@ MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to,
     };
 };
 
-MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to, valueString, userFee) {
-    
-    if (userFee < 0) {
-        userFee = null;
-    }
+MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to, valueString) {
     
     var value = parseInt(valueString);
     
@@ -277,7 +270,7 @@ MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to,
     var success = transactionDetails.success;
     var error = transactionDetails.error;
     
-    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, userFee);
+    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, null);
 
     return {
         txProposal:txProposal,
@@ -287,12 +280,8 @@ MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to,
     };
 }
 
-MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to, valueString, userFee) {
-    
-    if (userFee < 0) {
-        userFee = null;
-    }
-    
+MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to, valueString) {
+
     var value = parseInt(valueString);
     
     var transactionDetails = MyWalletPhone.prepareTransaction();
@@ -301,7 +290,7 @@ MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to,
     var success = transactionDetails.success;
     var error = transactionDetails.error;
     
-    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAddress(to, value, userFee);
+    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAddress(to, value, null);
     
     return {
         txProposal:txProposal,
@@ -311,11 +300,7 @@ MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to,
     };
 }
 
-MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to, valueString, userFee) {
-    
-    if (userFee < 0) {
-        userFee = null;
-    }
+MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to, valueString) {
     
     var value = parseInt(valueString);
     
@@ -325,7 +310,7 @@ MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to,
     var success = transactionDetails.success;
     var error = transactionDetails.error;
     
-    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, userFee);
+    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, null);
     
     return {
         txProposal:txProposal,
@@ -341,6 +326,15 @@ MyWalletPhone.recommendedTransactionFee = function(transactionDictionary) {
         var fee = tx.fee;
         device.execute('update_fee:', [fee]);
     });
+}
+
+MyWalletPhone.setTransactionFee = function(fee) {
+    MyWallet.wallet.fee_per_kb = fee;
+}
+
+MyWalletPhone.getTransactionFee = function(fee) {
+    var fee = MyWallet.wallet.fee_per_kb;
+    return fee;
 }
 
 MyWalletPhone.setPbkdf2Iterations = function(iterations) {

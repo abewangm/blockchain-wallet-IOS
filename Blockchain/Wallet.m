@@ -523,44 +523,34 @@
     return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
 }
 
-- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee
+- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString
 {
-    // -1 will be manually converted to null in JS as it cannot be null here due to incompatible pointer
-    uint64_t fee = -1;
-    if (userHasSetFee) {
-        fee = [app convertFeePerKbFromUserDefaults];
-    }
-    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\",%d,\"%@\",%lld))", [fromAddress escapeStringForJS], toAccount,[amountString escapeStringForJS], fee];
+    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\",%d,\"%@\"))", [fromAddress escapeStringForJS], toAccount,[amountString escapeStringForJS]];
 }
 
-- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee
+- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString
 {
-    // -1 will be manually converted to null in JS as it cannot be null here due to incompatible pointer
-    uint64_t fee = -1;
-    if (userHasSetFee) {
-        fee = [app convertFeePerKbFromUserDefaults];
-    }
-    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAddress(\"%@\",\"%@\",\"%@\",%lld))", [fromAddress escapeStringForJS], [toAddress escapeStringForJS], [amountString escapeStringForJS], fee];
+    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAddress(\"%@\",\"%@\",\"%@\"))", [fromAddress escapeStringForJS], [toAddress escapeStringForJS], [amountString escapeStringForJS]];
 }
 
-- (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee
+- (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString
 {
-    // -1 will be manually converted to null in JS as it cannot be null here due to incompatible pointer
-    uint64_t fee = -1;
-    if (userHasSetFee) {
-        fee = [app convertFeePerKbFromUserDefaults];
-    }
-    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAddress(%d,\"%@\",\"%@\",%lld))", fromAccount, [toAddress escapeStringForJS], amountString, fee];
+    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAddress(%d,\"%@\",\"%@\"))", fromAccount, [toAddress escapeStringForJS], amountString];
 }
 
-- (void)getTransactionProposalFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString userHasSetFee:(BOOL)userHasSetFee
+- (void)getTransactionProposalFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString
 {
-    // -1 will be manually converted to null in JS as it cannot be null here due to incompatible pointer
-    uint64_t fee = -1;
-    if (userHasSetFee) {
-        fee = [app convertFeePerKbFromUserDefaults];
-    }
-    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAccount(%d,%d,\"%@\",%lld))", fromAccount, toAccount, amountString, fee];
+    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAccount(%d,%d,\"%@\"))", fromAccount, toAccount, amountString];
+}
+
+- (void)setTransactionFee:(uint64_t)feePerKb
+{
+    [self.webView executeJS:@"MyWalletPhone.setTransactionFee(%lld)", feePerKb];
+}
+
+- (uint64_t)getTransactionFee
+{
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getTransactionFee()"] longLongValue];
 }
 
 # pragma mark - Transaction handlers

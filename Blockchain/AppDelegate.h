@@ -33,8 +33,6 @@
 
 #define SATOSHI 100000000
 
-#define USER_DEFAULTS_KEY_FEE_PER_KB @"feePerKb"
-
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
@@ -166,7 +164,6 @@
 - (NSString*)formatMoney:(uint64_t)value;
 - (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal;
 - (NSString *)formatAmount:(uint64_t)amount localCurrency:(BOOL)localCurrency;
-- (uint64_t)convertFeePerKbFromUserDefaults;
 
 - (void)reload;
 - (void)toggleSymbol;

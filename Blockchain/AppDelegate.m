@@ -1774,13 +1774,6 @@ void (^secondPasswordSuccess)(NSString *);
     return returnValue;
 }
 
-- (uint64_t)convertFeePerKbFromUserDefaults
-{
-    NSNumber *unconvertedFee = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FEE_PER_KB];
-    unconvertedFee = [NSNumber numberWithFloat:[unconvertedFee floatValue] * [[NSNumber numberWithInt:SATOSHI] floatValue]];
-    return (uint64_t)[unconvertedFee longLongValue];
-}
-
 #pragma mark - mail compose delegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error

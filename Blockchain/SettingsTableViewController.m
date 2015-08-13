@@ -44,6 +44,7 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic) UIAlertView *changeFeeAlertView;
 @property (nonatomic, copy) NSString *enteredEmailString;
 @property (nonatomic, copy) NSString *emailString;
+@property (nonatomic) float currentFeePerKb;
 @property (nonatomic) id notificationObserver;
 @end
 
@@ -163,15 +164,18 @@ const int aboutPrivacyPolicy = 1;
 
 - (float)getFeePerKb
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FEE_PER_KB] == nil ? 0.0001 : [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FEE_PER_KB] floatValue];
+    uint64_t unconvertedFee = [app.wallet getTransactionFee];
+    float convertedFee = unconvertedFee / [[NSNumber numberWithInt:SATOSHI] floatValue];
+    self.currentFeePerKb = convertedFee;
+    return convertedFee;
 }
 
 - (void)alertViewToChangeFee
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, [self getFeePerKb]] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, self.currentFeePerKb] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField *textField = [alertView textFieldAtIndex:0];
-    textField.text = [[NSString alloc] initWithFormat:@"%.4f", [self getFeePerKb]];
+    textField.text = [[NSString alloc] initWithFormat:@"%.4f", self.currentFeePerKb];
     textField.keyboardType = UIKeyboardTypeDecimalPad;
     [alertView show];
     self.changeFeeAlertView = alertView;
@@ -320,7 +324,9 @@ const int aboutPrivacyPolicy = 1;
             case 1: {
                 UITextField *textField = [alertView textFieldAtIndex:0];
                 float fee = [textField.text floatValue];
-                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:fee] forKey:USER_DEFAULTS_KEY_FEE_PER_KB];
+                NSNumber *unconvertedFee = [NSNumber numberWithFloat:fee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
+                uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
+                [app.wallet setTransactionFee:convertedFee];
                 [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
                 return;
             }

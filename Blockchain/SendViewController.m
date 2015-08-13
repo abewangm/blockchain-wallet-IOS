@@ -326,7 +326,7 @@ uint64_t feeFromTransactionProposal = 10000;
     [self dismissKeyboard];
     
     uint64_t amount = amountInSatoshi;
-    [self getFeeForAmount:amount];
+    [self getTransactionProposalFeeForAmount:amount];
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -413,7 +413,7 @@ uint64_t feeFromTransactionProposal = 10000;
     return fee;
 }
 
-- (void)getTransactionProposalFeeForAmount:(uint64_t)amount withUserSetFee:(BOOL)userHasSetFeePerKb
+- (void)getTransactionProposalFeeForAmount:(uint64_t)amount
 {
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
     
@@ -421,25 +421,16 @@ uint64_t feeFromTransactionProposal = 10000;
 
     // Different ways of sending (from/to address or account
     if (self.sendFromAddress && self.sendToAddress) {
-        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAddress:self.toAddress amountString:amountString userHasSetFee:userHasSetFeePerKb];
+        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAddress:self.toAddress amountString:amountString];
     }
     else if (self.sendFromAddress && !self.sendToAddress) {
-        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAccount:self.toAccount amountString:amountString userHasSetFee:userHasSetFeePerKb];
+        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAccount:self.toAccount amountString:amountString];
     }
     else if (!self.sendFromAddress && self.sendToAddress) {
-        [app.wallet getTransactionProposalFeeFromAccount:self.fromAccount toAddress:self.toAddress amountString:amountString userHasSetFee:userHasSetFeePerKb];
+        [app.wallet getTransactionProposalFeeFromAccount:self.fromAccount toAddress:self.toAddress amountString:amountString];
     }
     else if (!self.sendFromAddress && !self.sendToAddress) {
-        [app.wallet getTransactionProposalFromAccount:self.fromAccount toAccount:self.toAccount amountString:amountString userHasSetFee:userHasSetFeePerKb];
-    }
-}
-
-- (void)getFeeForAmount:(uint64_t)amount
-{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FEE_PER_KB] == nil) {
-        [self getTransactionProposalFeeForAmount:amount withUserSetFee:NO];
-    } else {
-        [self getTransactionProposalFeeForAmount:amount withUserSetFee:YES];
+        [app.wallet getTransactionProposalFromAccount:self.fromAccount toAccount:self.toAccount amountString:amountString];
     }
 }
 
