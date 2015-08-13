@@ -1200,6 +1200,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showCreateWallet:(id)sender
 {
     [app showModalWithContent:newAccountView closeType:ModalCloseTypeBack headerText:BC_STRING_CREATE_NEW_WALLET];
+    [newAccountView clearPasswordTextFields];
 }
 
 - (void)showPairWallet:(id)sender
@@ -1210,6 +1211,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)manualPairClicked:(id)sender
 {
     [self showModalWithContent:manualPairView closeType:ModalCloseTypeBack headerText:BC_STRING_MANUAL_PAIRING];
+    [manualPairView clearPasswordTextField];
 }
 
 #pragma mark - Actions
@@ -1283,6 +1285,7 @@ void (^secondPasswordSuccess)(NSString *);
         // Actually log out
         if (buttonIndex == 1) {
             [self clearPin];
+            [self.sendViewController clearToAddressAndAmountFields];
             [self logout];
             [self closeSideMenu];
             [self showPasswordModal];

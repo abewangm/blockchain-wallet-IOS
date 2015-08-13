@@ -16,7 +16,7 @@
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     saveButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     saveButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [saveButton setTitle:BC_STRING_CREATE_WALLET forState:UIControlStateNormal];
+    [saveButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
     [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     saveButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
     
@@ -45,9 +45,20 @@
     passwordTextField.delegate = nil;
 }
 
-- (void)modalWasDismissed
+- (void)clearTextFields
+{
+    walletIdentifierTextField.text = nil;
+    passwordTextField.text = nil;
+}
+
+- (void)clearPasswordTextField
 {
     passwordTextField.text = nil;
+}
+
+- (void)modalWasDismissed
+{
+    [self clearPasswordTextField];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -90,7 +101,7 @@
     [walletIdentifierTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     
-    passwordTextField.text = @"";
+    [self clearTextFields];
     
     [app.wallet loadWalletWithGuid:guid sharedKey:nil password:password];
     

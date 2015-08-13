@@ -92,4 +92,6 @@
 
 - (void)reset;
 
+- (void)clearToAddressAndAmountFields;
+
 @end

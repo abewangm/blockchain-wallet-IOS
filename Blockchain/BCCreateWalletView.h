@@ -31,6 +31,7 @@
 }
 
 - (IBAction)termsOfServiceClicked:(id)sender;
+- (void)clearPasswordTextFields;
 
 @property(nonatomic, strong) NSString *tmpPassword;
 

@@ -20,6 +20,14 @@
 #define MENU_ENTRY_HEIGHT 54
 #define BALANCE_ENTRY_HEIGHT 58
 
+#define MENU_CELL_INDEX_SETTINGS 0
+#define MENU_CELL_INDEX_MERCHANT 1
+#define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 2
+#define MENU_CELL_INDEX_SUPPORT 3
+#define MENU_CELL_INDEX_UPGRADE 4
+#define MENU_CELL_INDEX_CHANGE_PIN 5
+#define MENU_CELL_INDEX_LOGOUT 6
+
 @interface SideMenuViewController ()
 
 @property (strong, readwrite, nonatomic) UITableView *tableView;
@@ -197,27 +205,27 @@ int accountEntries = 0;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSInteger row = indexPath.row;    
+    NSInteger row = indexPath.row;
     BOOL didUpgradeToHD = app.wallet.didUpgradeToHd;
     
-    if(row == 0) {
+    if(row == MENU_CELL_INDEX_SETTINGS) {
         [app accountSettingsClicked:nil];
-    } else if (row == 1){
+    } else if (row == MENU_CELL_INDEX_MERCHANT){
         [app merchantClicked:nil];
-    } else if (row == 2) {
+    } else if (row == MENU_CELL_INDEX_NEWS_PRICE_CHARTS) {
         [app newsClicked:nil];
-    } else if (row == 3) {
-         [app supportClicked:nil];
-    } else if (row == 4) {
+    } else if (row == MENU_CELL_INDEX_SUPPORT) {
+        [app supportClicked:nil];
+    } else if (row == MENU_CELL_INDEX_UPGRADE) {
         if (didUpgradeToHD) {
             [app backupClicked:nil];
         }
         else {
             [app showHdUpgrade];
         }
-    } else if (row == 5) {
+    } else if (row == MENU_CELL_INDEX_CHANGE_PIN) {
         [app changePINClicked:nil];
-    } else if (row == 6) {
+    } else if (row == MENU_CELL_INDEX_LOGOUT) {
         [app logoutClicked:nil];
     }
 }
