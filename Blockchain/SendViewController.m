@@ -333,8 +333,8 @@ uint64_t feeFromTransactionProposal = 10000;
         
         uint64_t fee;
         
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] != nil) {
-            NSNumber *unconvertedFee = [[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"];
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FEE_PER_KB] != nil) {
+            NSNumber *unconvertedFee = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FEE_PER_KB];
             unconvertedFee = [NSNumber numberWithFloat:[unconvertedFee floatValue] * [[NSNumber numberWithInt:SATOSHI] floatValue]];
             fee = (uint64_t)[unconvertedFee longLongValue];
         } else {

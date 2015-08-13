@@ -163,7 +163,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (float)getFeePerKb
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] == nil ? 0.0001 : [[[NSUserDefaults standardUserDefaults] objectForKey:@"feePerKb"] floatValue];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FEE_PER_KB] == nil ? 0.0001 : [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FEE_PER_KB] floatValue];
 }
 
 - (void)alertViewToChangeFee
@@ -320,7 +320,7 @@ const int aboutPrivacyPolicy = 1;
             case 1: {
                 UITextField *textField = [alertView textFieldAtIndex:0];
                 float fee = [textField.text floatValue];
-                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:fee] forKey:@"feePerKb"];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:fee] forKey:USER_DEFAULTS_KEY_FEE_PER_KB];
                 [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
                 return;
             }

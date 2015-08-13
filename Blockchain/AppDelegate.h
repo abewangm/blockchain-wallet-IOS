@@ -32,6 +32,9 @@
 #import "SettingsNavigationController.h"
 
 #define SATOSHI 100000000
+
+#define USER_DEFAULTS_KEY_FEE_PER_KB @"feePerKb"
+
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
