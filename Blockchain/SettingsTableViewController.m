@@ -20,13 +20,17 @@ const int textFieldTagVerifyEmail = 5;
 const int textFieldTagChangeEmail = 4;
 
 const int accountDetailsSection = 0;
-const int displaySection = 1;
-const int aboutSection = 2;
-
 const int accountDetailsIdentifier = 0;
 const int accountDetailsEmail = 1;
+
+const int displaySection = 1;
 const int displayLocalCurrency = 0;
 const int displayBtcUnit = 1;
+
+const int feesSection = 2;
+const int feePerKb = 0;
+
+const int aboutSection = 3;
 const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
@@ -37,8 +41,10 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic) UIAlertView *changeEmailAlertView;
 @property (nonatomic) UIAlertView *errorLoadingAlertView;
+@property (nonatomic) UIAlertView *changeFeeAlertView;
 @property (nonatomic, copy) NSString *enteredEmailString;
 @property (nonatomic, copy) NSString *emailString;
+@property (nonatomic) float currentFeePerKb;
 @property (nonatomic) id notificationObserver;
 @end
 
@@ -67,7 +73,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)setAllCurrencySymbolsDictionary:(NSDictionary *)allCurrencySymbolsDictionary
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self.notificationObserver name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
-
+    
     _allCurrencySymbolsDictionary = allCurrencySymbolsDictionary;
     
     [self reloadTableView];
@@ -156,6 +162,28 @@ const int aboutPrivacyPolicy = 1;
     return [self.accountInfoDictionary objectForKey:@"email"];
 }
 
+- (float)getFeePerKb
+{
+    uint64_t unconvertedFee = [app.wallet getTransactionFee];
+    float convertedFee = unconvertedFee / [[NSNumber numberWithInt:SATOSHI] floatValue];
+    self.currentFeePerKb = convertedFee;
+    return convertedFee;
+}
+
+- (void)alertViewToChangeFee
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, self.currentFeePerKb] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.spellCheckingType = UITextSpellCheckingTypeNo;
+    textField.text = [[NSString alloc] initWithFormat:@"%.4f", self.currentFeePerKb];
+    textField.keyboardType = UIKeyboardTypeDecimalPad;
+    [alertView show];
+    self.changeFeeAlertView = alertView;
+}
+
 - (void)alertViewForErrorLoadingSettings
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
@@ -170,6 +198,9 @@ const int aboutPrivacyPolicy = 1;
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.spellCheckingType = UITextSpellCheckingTypeNo;
     textField.tag = textFieldTagChangeEmail;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
@@ -182,9 +213,13 @@ const int aboutPrivacyPolicy = 1;
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_ARGUMENT, self.emailString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
     UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.spellCheckingType = UITextSpellCheckingTypeNo;
     textField.tag = textFieldTagVerifyEmail;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
+    textField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
     [alertView show];
     self.verifyEmailAlertView = alertView;
 }
@@ -212,7 +247,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)changeEmail:(NSString *)emailString
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
-
+    
     self.enteredEmailString = emailString;
     
     [app.wallet changeEmail:emailString];
@@ -252,44 +287,59 @@ const int aboutPrivacyPolicy = 1;
     [textField resignFirstResponder];
     
     if ([alertView isEqual:self.changeEmailAlertView]) {
-            switch (buttonIndex) {
-                case 0: {
-                    // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
-                    UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]];
-                    if ([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] && [alertView.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) {
-                        [self getAccountInfo];
-                    }
-                    return;
+        switch (buttonIndex) {
+            case 0: {
+                // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
+                UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]];
+                if ([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] && [alertView.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) {
+                    [self getAccountInfo];
                 }
-                case 1: {
-                    [self changeEmail:[alertView textFieldAtIndex:0].text];
-                    return;
-                }
+                return;
             }
-            return;
+            case 1: {
+                [self changeEmail:[alertView textFieldAtIndex:0].text];
+                return;
+            }
+        }
+        return;
     } else if ([alertView isEqual:self.verifyEmailAlertView]) {
-            switch (buttonIndex) {
-                case 0: {
-                    // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
-                    if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL]) {
-                        [self getAccountInfo];
-                    }
-                    return;
+        switch (buttonIndex) {
+            case 0: {
+                // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
+                if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL]) {
+                    [self getAccountInfo];
                 }
-                case 1: {
-                    [self resendVerificationEmail];
-                    return;
-                }
-                case 2: {
-                    // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
-                    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
-                    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                        [self alertViewToChangeEmail:YES];
-                    });
-                    return;
-                }
+                return;
             }
-            return;
+            case 1: {
+                [self resendVerificationEmail];
+                return;
+            }
+            case 2: {
+                // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
+                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
+                dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                    [self alertViewToChangeEmail:YES];
+                });
+                return;
+            }
+        }
+        return;
+    } else if ([alertView isEqual:self.changeFeeAlertView]) {
+        switch (buttonIndex) {
+            case 0: {
+                return;
+            }
+            case 1: {
+                UITextField *textField = [alertView textFieldAtIndex:0];
+                float fee = [textField.text floatValue];
+                NSNumber *unconvertedFee = [NSNumber numberWithFloat:fee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
+                uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
+                [app.wallet setTransactionFee:convertedFee];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
+                return;
+            }
+        }
     } else if ([alertView isEqual:self.errorLoadingAlertView]) {
         // User has tapped on cell when account info has not yet been loaded; get account info again
         [self getAccountInfo];
@@ -374,6 +424,15 @@ const int aboutPrivacyPolicy = 1;
             }
             return;
         }
+        case feesSection: {
+            switch (indexPath.row) {
+                case feePerKb: {
+                    [self alertViewToChangeFee];
+                    return;
+                }
+            }
+            return;
+        }
         case aboutSection: {
             switch (indexPath.row) {
                 case aboutTermsOfService: {
@@ -392,7 +451,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -400,6 +459,7 @@ const int aboutPrivacyPolicy = 1;
     switch (section) {
         case accountDetailsSection: return 2;
         case displaySection: return 2;
+        case feesSection: return 1;
         case aboutSection: return 2;
         default: return 0;
     }
@@ -410,6 +470,7 @@ const int aboutPrivacyPolicy = 1;
     switch (section) {
         case accountDetailsSection: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
         case displaySection: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
+        case feesSection: return BC_STRING_SETTINGS_FEES;
         case aboutSection: return BC_STRING_SETTINGS_ABOUT;
         default: return nil;
     }
@@ -482,6 +543,16 @@ const int aboutPrivacyPolicy = 1;
                     if (selectedCurrencyCode == nil) {
                         cell.detailTextLabel.text = @"";
                     }
+                    return cell;
+                }
+            }
+        }
+        case feesSection: {
+            switch (indexPath.row) {
+                case feePerKb: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_FEE_PER_KB;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self getFeePerKb]];
                     return cell;
                 }
             }

@@ -42,6 +42,7 @@ Boolean shouldShowAnimation;
         self.createWalletButton.frame = CGRectMake(40, self.frame.size.height - 220, 240, BUTTON_HEIGHT);
         self.createWalletButton.layer.cornerRadius = 16;
         self.createWalletButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        self.createWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.createWalletButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
         [self.createWalletButton setTitle:[BC_STRING_CREATE_NEW_WALLET uppercaseString] forState:UIControlStateNormal];
         [self.createWalletButton setBackgroundColor:[UIColor whiteColor]];
@@ -51,6 +52,7 @@ Boolean shouldShowAnimation;
         
         self.existingWalletButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.existingWalletButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        self.existingWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.existingWalletButton setTitle:BC_STRING_LOG_IN_TO_WALLET forState:UIControlStateNormal];
         self.existingWalletButton.frame = CGRectMake(20, self.frame.size.height - 160, 280, BUTTON_HEIGHT);
         [self.existingWalletButton setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];

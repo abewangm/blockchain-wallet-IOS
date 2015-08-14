@@ -192,6 +192,7 @@
 #define BC_STRING_REQUEST_AMOUNT NSLocalizedString(@"Request Amount", nil)
 #define BC_STRING_LABEL_ADDRESS NSLocalizedString(@"Label Address", nil)
 #define BC_STRING_SCAN_QR_CODE NSLocalizedString(@"Scan QR Code", nil)
+#define BC_STRING_CONTINUE NSLocalizedString(@"Continue", nil)
 
 #define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my wallet", nil)
 #define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing wallet", nil)
@@ -232,6 +233,8 @@
 #define BC_STRING_SETTINGS_EMAIL_UNVERIFIED NSLocalizedString(@"Please verify your email", nil)
 #define BC_STRING_SETTINGS_PLEASE_ADD_EMAIL NSLocalizedString(@"Please add an email address", nil)
 #define BC_STRING_SETTINGS_DISPLAY_PREFERENCES NSLocalizedString(@"Display", nil)
+#define BC_STRING_SETTINGS_FEES NSLocalizedString(@"Fees", nil)
+#define BC_STRING_SETTINGS_FEE_PER_KB NSLocalizedString(@"Fee per kilobyte", nil)
 #define BC_STRING_SETTINGS_LOCAL_CURRENCY NSLocalizedString(@"Local Currency", nil)
 #define BC_STRING_SETTINGS_BTC NSLocalizedString(@"Bitcoin Units", nil)
 #define BC_STRING_SETTINGS_NOTIFICATIONS NSLocalizedString(@"Notifications", nil)
@@ -244,11 +247,16 @@
 #define BC_STRING_SETTINGS_VERIFY NSLocalizedString(@"Verify", nil)
 #define BC_STRING_SETTINGS_SENT_TO_ARGUMENT NSLocalizedString(@"Sent to %@", nil)
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE NSLocalizedString(@"Enter your verification code", nil)
+#define BC_STRING_ENTER_VERIFICATION_CODE NSLocalizedString(@"Enter Verification Code", nil)
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND NSLocalizedString(@"Resend verification email", nil)
 #define BC_STRING_SETTINGS_CHANGE_EMAIL NSLocalizedString(@"Change Email", nil)
 #define BC_STRING_SETTINGS_EMAIL_VERIFIED NSLocalizedString(@"Your email has been verified.", nil)
 #define BC_STRING_SETTINGS_WALLET_IDENTIFIER NSLocalizedString (@"Wallet Identifer", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_TITLE NSLocalizedString(@"Error loading settings", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE NSLocalizedString(@"Please try again shortly.", nil)
+#define BC_STRING_SETTINGS_CHANGE_FEE_TITLE NSLocalizedString(@"Change fee per kilobyte", nil)
+#define BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT NSLocalizedString(@"Current rate: %.4f BTC", nil)
+#define BC_STRING_SETTINGS_FEE_ARGUMENT_BTC NSLocalizedString(@"%.4f BTC", nil)
+
 
 

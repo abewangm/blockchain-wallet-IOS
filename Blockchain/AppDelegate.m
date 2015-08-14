@@ -454,12 +454,6 @@ void (^secondPasswordSuccess)(NSString *);
     if (![app isPINSet]) {
         [app showPinModalAsView:NO];
     }
-    
-    if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenUpgradeToHdScreen"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasSeenUpgradeToHdScreen"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [self showHdUpgrade];
-    }
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
@@ -771,6 +765,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)closeAllModals
 {
+    [app.wallet loading_stop];
+    
     [modalView endEditing:YES];
     
     [modalView removeFromSuperview];
@@ -1038,6 +1034,9 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self reload];
     
+    [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"hasSeenUpgradeToHdScreen"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [self transitionToIndex:1];
 }
 
@@ -1200,6 +1199,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showCreateWallet:(id)sender
 {
     [app showModalWithContent:newAccountView closeType:ModalCloseTypeBack headerText:BC_STRING_CREATE_NEW_WALLET];
+    [newAccountView clearPasswordTextFields];
 }
 
 - (void)showPairWallet:(id)sender
@@ -1210,6 +1210,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)manualPairClicked:(id)sender
 {
     [self showModalWithContent:manualPairView closeType:ModalCloseTypeBack headerText:BC_STRING_MANUAL_PAIRING];
+    [manualPairView clearPasswordTextField];
 }
 
 #pragma mark - Actions
@@ -1283,6 +1284,7 @@ void (^secondPasswordSuccess)(NSString *);
         // Actually log out
         if (buttonIndex == 1) {
             [self clearPin];
+            [self.sendViewController clearToAddressAndAmountFields];
             [self logout];
             [self closeSideMenu];
             [self showPasswordModal];
@@ -1599,7 +1601,15 @@ void (^secondPasswordSuccess)(NSString *);
         // Update your info to new pin code
         [self closePINModal:YES];
         
-        [app standardNotify:BC_STRING_PIN_SAVED_SUCCESSFULLY title:BC_STRING_SUCCESS delegate:nil];
+        UIAlertView *alertViewSavedPINSuccessfully = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
+        alertViewSavedPINSuccessfully.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenUpgradeToHdScreen"]) {
+                [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasSeenUpgradeToHdScreen"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [self showHdUpgrade];
+            }
+        };
+        [alertViewSavedPINSuccessfully show];
     }
 }
 

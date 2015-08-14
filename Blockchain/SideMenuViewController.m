@@ -211,7 +211,7 @@ int accountEntries = 0;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSInteger row = indexPath.row;    
+    NSInteger row = indexPath.row;
     BOOL didUpgradeToHD = app.wallet.didUpgradeToHd;
     
     if(row == MENU_CELL_INDEX_SETTINGS) {
@@ -221,7 +221,7 @@ int accountEntries = 0;
     } else if (row == MENU_CELL_INDEX_NEWS_PRICE_CHARTS) {
         [app newsClicked:nil];
     } else if (row == MENU_CELL_INDEX_SUPPORT) {
-         [app supportClicked:nil];
+        [app supportClicked:nil];
     } else if (row == MENU_CELL_INDEX_UPGRADE) {
         if (didUpgradeToHD) {
             [app backupClicked:nil];

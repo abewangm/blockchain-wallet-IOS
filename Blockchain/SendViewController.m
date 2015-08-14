@@ -30,6 +30,8 @@ uint64_t availableAmount = 0.0;
 
 BOOL displayingLocalSymbolSend;
 
+uint64_t feeFromTransactionProposal = 10000;
+
 #pragma mark - Lifecycle
 
 - (void)viewDidAppear:(BOOL)animated
@@ -41,11 +43,16 @@ BOOL displayingLocalSymbolSend;
         sendProgressModalText.text = [notification object];
     }];
     
+    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
+        feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
+    }];
+    
     app.mainTitleLabel.text = BC_STRING_SEND;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
 }
 
 - (void)viewDidLoad
@@ -80,6 +87,13 @@ BOOL displayingLocalSymbolSend;
     }
     
     self.sendToAddress = true;
+}
+
+- (void)clearToAddressAndAmountFields
+{
+    self.toAddress = @"";
+    toField.text = @"";
+    amountInSatoshi = 0;
 }
 
 - (void)reload
@@ -311,10 +325,14 @@ BOOL displayingLocalSymbolSend;
 {
     [self dismissKeyboard];
     
+    uint64_t amount = amountInSatoshi;
+    [self getTransactionProposalFeeForAmount:amount];
+    
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        uint64_t amount = amountInSatoshi;
-        uint64_t fee = [self getRecommendedFeeForAmount:amount];
+        
+        uint64_t fee = feeFromTransactionProposal;
+        
         uint64_t amountTotal = amount + fee;
         
         NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
@@ -392,6 +410,27 @@ BOOL displayingLocalSymbolSend;
     }
     
     return fee;
+}
+
+- (void)getTransactionProposalFeeForAmount:(uint64_t)amount
+{
+    // The fee is set via feeForTransactionProposal via notification when the promise is delivered
+    
+    NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
+
+    // Different ways of sending (from/to address or account
+    if (self.sendFromAddress && self.sendToAddress) {
+        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAddress:self.toAddress amountString:amountString];
+    }
+    else if (self.sendFromAddress && !self.sendToAddress) {
+        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAccount:self.toAccount amountString:amountString];
+    }
+    else if (!self.sendFromAddress && self.sendToAddress) {
+        [app.wallet getTransactionProposalFeeFromAccount:self.fromAccount toAddress:self.toAddress amountString:amountString];
+    }
+    else if (!self.sendFromAddress && !self.sendToAddress) {
+        [app.wallet getTransactionProposalFromAccount:self.fromAccount toAccount:self.toAccount amountString:amountString];
+    }
 }
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString

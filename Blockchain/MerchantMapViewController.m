@@ -103,7 +103,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
     // For iOS 8 we need to request authorization to get access to the user's location
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
