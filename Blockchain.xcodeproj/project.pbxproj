@@ -17,6 +17,7 @@
 		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
 		232232171B44D02B00E5DF26 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232232161B44D02B00E5DF26 /* Upgrade.storyboard */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
+		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
 		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
 		23EA61BC1B540F020032B907 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EA61BB1B540F020032B907 /* Settings.storyboard */; };
@@ -334,6 +335,7 @@
 		2374BFB01B750EB200A53FBE /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Backup.strings; sourceTree = "<group>"; };
 		2374BFB21B750ECA00A53FBE /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Backup.strings; sourceTree = "<group>"; };
 		2374BFB41B750EDE00A53FBE /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Backup.strings; sourceTree = "<group>"; };
+		237827191B7E472D00E9EE03 /* BCSecureTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCSecureTextField.swift; sourceTree = "<group>"; };
 		239539811B486C7100989667 /* UILabel+MultiLineAutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MultiLineAutoSize.h"; sourceTree = "<group>"; };
 		239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MultiLineAutoSize.m"; sourceTree = "<group>"; };
 		23D9F26E1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsBitcoinUnitTableViewController.h; sourceTree = "<group>"; };
@@ -995,6 +997,7 @@
 				6710DA0C1A8E82D80089DDED /* BCLine.h */,
 				6710DA0D1A8E82D80089DDED /* BCLine.m */,
 				67D95A251B3DD86B0012EBB1 /* BCTextField.swift */,
+				237827191B7E472D00E9EE03 /* BCSecureTextField.swift */,
 				675038991B4D832F00F7B488 /* SideMenuViewCell.h */,
 				6750389A1B4D832F00F7B488 /* SideMenuViewCell.m */,
 			);
@@ -1176,6 +1179,7 @@
 				84B601C7197ACD6300DA1829 /* UITextField+Blocks.m in Sources */,
 				9F765F4714BC8AEF00048EFB /* MultiAddressResponse.m in Sources */,
 				FA6323391A433B1C00EB3974 /* Foundation-Utility.m in Sources */,
+				2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */,
 				9F2D934A14C05DD00053F0FF /* Address.m in Sources */,
 				67FA1A4D1ABA092D000C9196 /* RegExCategories.m in Sources */,
 				84B601CA197AD03800DA1829 /* BCModalView.m in Sources */,
