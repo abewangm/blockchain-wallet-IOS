@@ -174,7 +174,7 @@ const int aboutPrivacyPolicy = 1;
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, self.currentFeePerKb] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    UITextField *textField = [alertView textFieldAtIndex:0];
+    BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.spellCheckingType = UITextSpellCheckingTypeNo;
@@ -197,9 +197,8 @@ const int aboutPrivacyPolicy = 1;
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    UITextField *textField = [alertView textFieldAtIndex:0];
+    BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.spellCheckingType = UITextSpellCheckingTypeNo;
     textField.tag = textFieldTagChangeEmail;
     textField.delegate = self;
@@ -212,7 +211,7 @@ const int aboutPrivacyPolicy = 1;
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_ARGUMENT, self.emailString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
-    UITextField *textField = [alertView textFieldAtIndex:0];
+    BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.spellCheckingType = UITextSpellCheckingTypeNo;
@@ -283,7 +282,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     // Not the smoothest dismissal of the keyboard but better than no animation
-    UITextField *textField = [alertView textFieldAtIndex:0];
+    BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
     [textField resignFirstResponder];
     
     if ([alertView isEqual:self.changeEmailAlertView]) {
@@ -331,7 +330,7 @@ const int aboutPrivacyPolicy = 1;
                 return;
             }
             case 1: {
-                UITextField *textField = [alertView textFieldAtIndex:0];
+                BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
                 float fee = [textField.text floatValue];
                 NSNumber *unconvertedFee = [NSNumber numberWithFloat:fee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
                 uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
