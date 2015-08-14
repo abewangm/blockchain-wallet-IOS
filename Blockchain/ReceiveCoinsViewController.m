@@ -856,7 +856,7 @@ UIActionSheet *popupAddressArchive;
             // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
             cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
             cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
-            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-21-11, 0);
+            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
             cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
             
             [cell.watchLabel setHidden:TRUE];
@@ -902,7 +902,7 @@ UIActionSheet *popupAddressArchive;
             cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);
             
             cell.balanceLabel.frame = CGRectMake(254, 11, 83, 21);
-            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 254, cell.frame.size.height-21-11, 0);
+            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 254, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
             cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
             
             [cell.watchLabel setHidden:FALSE];
@@ -912,7 +912,7 @@ UIActionSheet *popupAddressArchive;
             cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
             
             cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
-            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-21-11, 0);
+            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
             cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
             
             [cell.watchLabel setHidden:TRUE];
