@@ -10,10 +10,10 @@
 
 @implementation ReceiveTableCell
 
-@synthesize balanceButton;
+@synthesize balanceLabel;
 @synthesize labelLabel;
 @synthesize addressLabel;
 @synthesize watchLabel;
-
+@synthesize balanceButton;
 
 @end
