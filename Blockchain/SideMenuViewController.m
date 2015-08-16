@@ -313,11 +313,7 @@ int accountEntries = 0;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
     if (![self showBalances]) {
-#ifdef HD_ENABLED
         return menuEntries;
-#else
-        return menuEntries - 1;
-#endif
     }
     if (sectionIndex == 0) {
         return 1;
@@ -374,6 +370,11 @@ int accountEntries = 0;
         NSMutableArray *images;
         images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", upgradeOrBackupImage, @"lock_icon", @"logout_icon"]];
 #else
+        if (indexPath.row == menuEntries - 1) {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        
         NSMutableArray *titles;
         titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
         
@@ -453,6 +454,11 @@ int accountEntries = 0;
         (indexPath.section == 2 && indexPath.row == menuEntries - 1)) {
         [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
     }
+#ifndef HD_ENABLED
+    if (indexPath.section == 0 && indexPath.row == menuEntries - 1) {
+        [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
+    }
+#endif
 }
 
 # pragma mark - Button actions
