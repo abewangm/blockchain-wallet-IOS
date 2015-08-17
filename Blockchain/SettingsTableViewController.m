@@ -45,7 +45,6 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic, copy) NSString *enteredEmailString;
 @property (nonatomic, copy) NSString *emailString;
 @property (nonatomic) float currentFeePerKb;
-@property (nonatomic) id notificationObserver;
 @end
 
 @implementation SettingsTableViewController
@@ -63,8 +62,10 @@ const int aboutPrivacyPolicy = 1;
 {
     __weak SettingsTableViewController *weakSelf = self;
     
-    self.notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        NSLog(@"gotCurrencySymbols");
         weakSelf.allCurrencySymbolsDictionary = note.userInfo;
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
     }];
     
     [app.wallet getAllCurrencySymbols];
@@ -72,8 +73,6 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)setAllCurrencySymbolsDictionary:(NSDictionary *)allCurrencySymbolsDictionary
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self.notificationObserver name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
-    
     _allCurrencySymbolsDictionary = allCurrencySymbolsDictionary;
     
     [self reloadTableView];
@@ -83,8 +82,10 @@ const int aboutPrivacyPolicy = 1;
 {
     __weak SettingsTableViewController *weakSelf = self;
     
-    self.notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        NSLog(@"gotAccountInfo");
         weakSelf.accountInfoDictionary = note.userInfo;
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     }];
     
     [app.wallet getAccountInfo];
@@ -92,8 +93,6 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)setAccountInfoDictionary:(NSDictionary *)accountInfoDictionary
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self.notificationObserver name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
-    
     _accountInfoDictionary = accountInfoDictionary;
     
     if (_accountInfoDictionary[@"currencies"] != nil) {
