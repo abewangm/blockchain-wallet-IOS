@@ -373,10 +373,18 @@ uint64_t feeFromTransactionProposal = 10000;
     if (amountInSatoshi + [self getRecommendedFeeForAmount:amountInSatoshi] > availableAmount) {
         btcAmountField.textColor = [UIColor redColor];
         fiatAmountField.textColor = [UIColor redColor];
+        sendPaymentButton.enabled = NO;
+        sendPaymentAccessoryButton.enabled = NO;
+        [sendPaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [sendPaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     }
     else {
         btcAmountField.textColor = [UIColor blackColor];
         fiatAmountField.textColor = [UIColor blackColor];
+        sendPaymentButton.enabled = YES;
+        sendPaymentAccessoryButton.enabled = YES;
+        [sendPaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [sendPaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
     
     if ([btcAmountField isFirstResponder]) {
