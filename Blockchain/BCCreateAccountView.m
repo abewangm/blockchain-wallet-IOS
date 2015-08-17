@@ -26,7 +26,7 @@
         labelLabel.font = [UIFont systemFontOfSize:17.0];
         [self addSubview:labelLabel];
         
-        _labelTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
+        _labelTextField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
         _labelTextField.borderStyle = UITextBorderStyleRoundedRect;
         _labelTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         _labelTextField.autocorrectionType = UITextAutocorrectionTypeNo;

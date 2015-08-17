@@ -22,15 +22,6 @@ Prepare OpenSSL:
     cd ../OpenSSL  
     ./build-libssl.sh
 
-## Open the project in Xcode
-
-    cd ../../
-    open Blockchain.xcodeproj
-
-## Build the project
-
-    cmd-r
-
 ## PSD and Asset Catalog
 
 Images.xcassets contains all images the app needs, but they must be generated first from the PSD sources in /Artwork. This requires ImageMagick and Grunt.

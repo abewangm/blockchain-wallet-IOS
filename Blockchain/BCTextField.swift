@@ -8,9 +8,11 @@
 
 import UIKit
 
-class BCTextField: UITextField {
+class BCTextField: BCSecureTextField {
 
     override func awakeFromNib() {
+        super.awakeFromNib()
+        
         if (self.superview == nil) {
             return
         }

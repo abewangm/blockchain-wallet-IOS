@@ -103,7 +103,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     // For iOS 8 we need to request authorization to get access to the user's location
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -136,9 +136,10 @@ static NSString *const kBlockchainNearByMerchantsURL = @"https://merchant-direct
 
 - (void)updateDisplayedMerchantsAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    // TODO for now we simply load all the merchant locations
-    NSString *urlString = [NSString stringWithFormat:@"%@?ULAT=%f&ULON=%f&D=40000&K=1", kBlockchainNearByMerchantsURL, coordinate.latitude, coordinate.longitude];
+    // Send approximate coordinates for merchant lookup
+    NSString *urlString = [NSString stringWithFormat:@"%@?ULAT=%.2f&ULON=%.2f&D=40000&K=1", kBlockchainNearByMerchantsURL, coordinate.latitude, coordinate.longitude];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:self.merchantLocationNetworkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError) {
             DLog(@"Error retrieving Merchants near location (Long)%f, (Lat)%f", coordinate.longitude, coordinate.latitude);

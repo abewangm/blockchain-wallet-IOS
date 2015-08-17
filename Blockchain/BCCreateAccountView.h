@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class BCSecureTextField;
 
 @interface BCCreateAccountView : UIView <UITextFieldDelegate>
 
-@property (nonatomic, strong) UITextField *labelTextField;
+@property (nonatomic, strong) BCSecureTextField *labelTextField;
 
 @end

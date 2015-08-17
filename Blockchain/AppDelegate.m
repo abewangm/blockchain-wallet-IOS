@@ -139,13 +139,12 @@ void (^secondPasswordSuccess)(NSString *);
     // Load settings    
     symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:@"symbolLocal"];
     
-    if ([AppDelegate isUnsafe]) {
-        [self alertUserOfCompromisedSecurity];
-    }
-    
     // If either of these is nil we are not properly paired
     if (![self guid] || ![self sharedKey]) {
         [self showWelcome];
+        if ([AppDelegate isUnsafe]) {
+            [self alertUserOfCompromisedSecurity];
+        }
         return TRUE;
     }
     
@@ -157,6 +156,9 @@ void (^secondPasswordSuccess)(NSString *);
     } else {
         // No PIN set we need to ask for the main password
         [self showPasswordModal];
+        if ([AppDelegate isUnsafe]) {
+            [self alertUserOfCompromisedSecurity];
+        }
     }
     
     // Migrate Password and PIN from NSUserDefaults (for users updating from old version)
