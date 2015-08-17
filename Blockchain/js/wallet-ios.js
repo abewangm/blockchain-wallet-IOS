@@ -330,9 +330,8 @@ MyWalletPhone.setTransactionFee = function(fee) {
     MyWallet.wallet.fee_per_kb = fee;
 }
 
-MyWalletPhone.getTransactionFee = function(fee) {
-    var fee = MyWallet.wallet.fee_per_kb;
-    return fee;
+MyWalletPhone.getTransactionFee = function() {
+    return MyWallet.wallet.fee_per_kb;
 }
 
 MyWalletPhone.setPbkdf2Iterations = function(iterations) {
