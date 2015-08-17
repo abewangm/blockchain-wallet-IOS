@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewController : UITableViewController
-
+@property (nonatomic) BOOL didChangeFee;
 @end

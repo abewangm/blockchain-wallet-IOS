@@ -986,6 +986,8 @@
 - (void)on_backup_wallet_start
 {
     DLog(@"on_backup_wallet_start");
+    [app hideBusyView];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
 
 - (void)on_backup_wallet_error
@@ -999,7 +1001,6 @@
 - (void)on_backup_wallet_success
 {
     DLog(@"on_backup_wallet_success");
-    
     if ([delegate respondsToSelector:@selector(didBackupWallet)])
         [delegate didBackupWallet];
 }

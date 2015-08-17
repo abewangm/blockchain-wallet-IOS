@@ -56,6 +56,27 @@ const int aboutPrivacyPolicy = 1;
     [self getAccountInfo];
     
     [self getAllCurrencySymbols];
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    if (self.didChangeFee) {
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CHECKING_WALLET_UPDATES];
+    }
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedChangingFee) name:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
+}
+
+- (void)finishedChangingFee
+{
+    self.didChangeFee = NO;
 }
 
 - (void)getAllCurrencySymbols
@@ -335,6 +356,7 @@ const int aboutPrivacyPolicy = 1;
                 uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
                 [app.wallet setTransactionFee:convertedFee];
                 [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
+                self.didChangeFee = YES;
                 return;
             }
         }
