@@ -17,6 +17,11 @@
 #import "LocalizationConstants.h"
 #import "TransactionsViewController.h"
 
+@interface SendViewController ()
+@property (nonatomic) id notificationObserver;
+@property (nonatomic) uint64_t feeFromTransactionProposal;
+@end
+
 @implementation SendViewController
 
 AVCaptureSession *captureSession;
@@ -30,7 +35,7 @@ uint64_t availableAmount = 0.0;
 
 BOOL displayingLocalSymbolSend;
 
-uint64_t feeFromTransactionProposal = 10000;
+uint64_t doo = 10000;
 
 #pragma mark - Lifecycle
 
@@ -43,8 +48,11 @@ uint64_t feeFromTransactionProposal = 10000;
         sendProgressModalText.text = [notification object];
     }];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-        feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
+    __weak SendViewController *weakSelf = self;
+    
+    self.notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
+        NSLog(@"gotfee");
+        weakSelf.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
     }];
     
     app.mainTitleLabel.text = BC_STRING_SEND;
@@ -179,6 +187,13 @@ uint64_t feeFromTransactionProposal = 10000;
 }
 
 #pragma mark - Payment
+
+- (void)setFeeFromTransactionProposal:(uint64_t)feeFromTransactionProposal
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self.notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
+    
+    _feeFromTransactionProposal = feeFromTransactionProposal;
+}
 
 - (void)reallyDoPayment
 {
@@ -331,7 +346,7 @@ uint64_t feeFromTransactionProposal = 10000;
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        uint64_t fee = feeFromTransactionProposal;
+        uint64_t fee = self.feeFromTransactionProposal;
         
         uint64_t amountTotal = amount + fee;
         
