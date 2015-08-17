@@ -986,7 +986,8 @@
 - (void)on_backup_wallet_start
 {
     DLog(@"on_backup_wallet_start");
-    [app hideBusyView];
+    // Hide the busy view if setting fee per kb - the call to backup the wallet is waiting on this setter to finish
+    [self loading_stop];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
 

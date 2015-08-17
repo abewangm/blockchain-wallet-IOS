@@ -56,7 +56,6 @@ const int aboutPrivacyPolicy = 1;
     [self getAccountInfo];
     
     [self getAllCurrencySymbols];
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -71,6 +70,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.didChangeFee = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedChangingFee) name:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
 
