@@ -18,7 +18,6 @@
 #import "TransactionsViewController.h"
 
 @interface SendViewController ()
-@property (nonatomic) id notificationObserver;
 @property (nonatomic) uint64_t feeFromTransactionProposal;
 @end
 
@@ -48,19 +47,11 @@ uint64_t doo = 10000;
         sendProgressModalText.text = [notification object];
     }];
     
-    __weak SendViewController *weakSelf = self;
-    
-    self.notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-        NSLog(@"gotfee");
-        weakSelf.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
-    }];
-    
     app.mainTitleLabel.text = BC_STRING_SEND;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
 }
 
 - (void)viewDidLoad
@@ -187,13 +178,6 @@ uint64_t doo = 10000;
 }
 
 #pragma mark - Payment
-
-- (void)setFeeFromTransactionProposal:(uint64_t)feeFromTransactionProposal
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self.notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-    
-    _feeFromTransactionProposal = feeFromTransactionProposal;
-}
 
 - (void)reallyDoPayment
 {
@@ -437,6 +421,13 @@ uint64_t doo = 10000;
 
 - (void)getTransactionProposalFeeForAmount:(uint64_t)amount
 {
+    __weak SendViewController *weakSelf = self;
+    
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
+        NSLog(@"gotfee");
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
+        weakSelf.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
+    }];
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
     
     NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
