@@ -63,7 +63,7 @@ const int aboutPrivacyPolicy = 1;
 {
     [super viewDidDisappear:animated];
     if (self.didChangeFee) {
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CHECKING_WALLET_UPDATES];
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_UPDATING_SETTINGS];
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
@@ -352,6 +352,11 @@ const int aboutPrivacyPolicy = 1;
             case 1: {
                 BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
                 float fee = [textField.text floatValue];
+                if (fee > 0.01) {
+                    [app standardNotify:BC_STRING_SETTINGS_FEE_TOO_HIGH];
+                    return;
+                }
+                
                 NSNumber *unconvertedFee = [NSNumber numberWithFloat:fee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
                 uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
                 [app.wallet setTransactionFee:convertedFee];

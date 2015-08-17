@@ -257,6 +257,8 @@
 #define BC_STRING_SETTINGS_CHANGE_FEE_TITLE NSLocalizedString(@"Change fee per kilobyte", nil)
 #define BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT NSLocalizedString(@"Current rate: %.4f BTC", nil)
 #define BC_STRING_SETTINGS_FEE_ARGUMENT_BTC NSLocalizedString(@"%.4f BTC", nil)
+#define BC_STRING_SETTINGS_FEE_TOO_HIGH NSLocalizedString(@"Fee is too high (0.01 BTC limit)", nil)
+#define BC_STRING_LOADING_UPDATING_SETTINGS NSLocalizedString(@"Updating settings", nil)
 
 
 
