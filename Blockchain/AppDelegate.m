@@ -451,6 +451,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"walletDidFinishLoad");
     
+    [manualPairView clearTextFields];
+    
     [app closeAllModals];
     
     if (![app isPINSet]) {

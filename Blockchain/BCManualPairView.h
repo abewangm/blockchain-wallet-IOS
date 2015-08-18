@@ -16,5 +16,6 @@
 
 - (IBAction)continueClicked:(id)sender;
 - (void)clearPasswordTextField;
+- (void)clearTextFields;
 
 @end

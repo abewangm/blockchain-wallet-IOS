@@ -101,7 +101,7 @@
     [walletIdentifierTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     
-    [self clearTextFields];
+    [self clearPasswordTextField];
     
     [app.wallet loadWalletWithGuid:guid sharedKey:nil password:password];
     
