@@ -36,6 +36,7 @@
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
 
 // Notifications used in settings
+#define NOTIFICATION_KEY_INSUFFICIENT_FUNDS @"InsufficientFunds"
 #define NOTIFICATION_KEY_FINISHED_CHANGING_FEE @"ChangedFee"
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"

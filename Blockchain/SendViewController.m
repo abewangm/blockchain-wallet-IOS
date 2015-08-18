@@ -49,6 +49,8 @@ uint64_t doo = 10000;
     }];
     
     app.mainTitleLabel.text = BC_STRING_SEND;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showInsufficientFunds) name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -56,6 +58,7 @@ uint64_t doo = 10000;
     [super viewDidDisappear:animated];
     self.isConfirmingPayment = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
 }
 
 - (void)viewDidLoad
@@ -72,6 +75,16 @@ uint64_t doo = 10000;
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
     [self reload];
+}
+
+- (void)showInsufficientFunds
+{
+    btcAmountField.textColor = [UIColor redColor];
+    fiatAmountField.textColor = [UIColor redColor];
+    sendPaymentButton.enabled = NO;
+    sendPaymentAccessoryButton.enabled = NO;
+    [sendPaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [sendPaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (void)resetFromAddress
@@ -326,7 +339,7 @@ uint64_t doo = 10000;
 
 - (void)calculateFees
 {
-    [self getTransactionProposalFeeForAmount:amountInSatoshi];
+    [self getTransactionProposalFeeForAmount:amountInSatoshi whileConfirmingPayment:YES];
 }
 
 - (void)confirmPayment
@@ -379,24 +392,6 @@ uint64_t doo = 10000;
 
 - (void)doCurrencyConversion
 {
-    // If the amount entered exceeds amount available + fee, change the color of the amount text
-    if (amountInSatoshi + [self getRecommendedFeeForAmount:amountInSatoshi] > availableAmount) {
-        btcAmountField.textColor = [UIColor redColor];
-        fiatAmountField.textColor = [UIColor redColor];
-        sendPaymentButton.enabled = NO;
-        sendPaymentAccessoryButton.enabled = NO;
-        [sendPaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [sendPaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    }
-    else {
-        btcAmountField.textColor = [UIColor blackColor];
-        fiatAmountField.textColor = [UIColor blackColor];
-        sendPaymentButton.enabled = YES;
-        sendPaymentAccessoryButton.enabled = YES;
-        [sendPaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [sendPaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    
     if ([btcAmountField isFirstResponder]) {
         fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
     }
@@ -408,8 +403,8 @@ uint64_t doo = 10000;
         btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
     }
     
-    uint64_t availableAmountMinusFee = availableAmount - [self getRecommendedFeeForAmount:availableAmount];
-    if (availableAmount < [self getRecommendedFeeForAmount:availableAmount]) {
+    uint64_t availableAmountMinusFee = availableAmount - self.feeFromTransactionProposal;
+    if (availableAmount < self.feeFromTransactionProposal) {
         availableAmountMinusFee = 0;
     }
     [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_FUNDS_AVAILABLE,
@@ -417,20 +412,19 @@ uint64_t doo = 10000;
                           forState:UIControlStateNormal];
 }
 
-- (uint64_t)getRecommendedFeeForAmount:(uint64_t)amount
+- (void)setFeeFromTransactionProposal:(uint64_t)feeFromTransactionProposal
 {
-    int64_t fee;
-    if (self.sendFromAddress) {
-        fee = [app.wallet recommendedTransactionFeeForAddress:self.fromAddress amount:amount];
-    }
-    else {
-        fee = [app.wallet recommendedTransactionFeeForAccount:self.fromAccount amount:amount];
-    }
-    
-    return fee;
+    _feeFromTransactionProposal = feeFromTransactionProposal;
+    btcAmountField.textColor = [UIColor blackColor];
+    fiatAmountField.textColor = [UIColor blackColor];
+    sendPaymentButton.enabled = YES;
+    sendPaymentAccessoryButton.enabled = YES;
+    [sendPaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [sendPaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self doCurrencyConversion];
 }
 
-- (void)setFeeFromTransactionProposal:(uint64_t)feeFromTransactionProposal
+- (void)setFeeFromTransactionProposalOnConfirmPayment:(uint64_t)feeFromTransactionProposal
 {
     _feeFromTransactionProposal = feeFromTransactionProposal;
     if (!self.isConfirmingPayment) {
@@ -439,12 +433,21 @@ uint64_t doo = 10000;
     }
 }
 
-- (void)getTransactionProposalFeeForAmount:(uint64_t)amount
+- (void)getTransactionProposalFeeForAmount:(uint64_t)amount whileConfirmingPayment:(BOOL)isConfirmingPayment
 {
+    if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
+        return;
+    }
+    
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
         NSLog(@"gotfee");
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-        self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
+        uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
+        if (isConfirmingPayment) {
+            [self setFeeFromTransactionProposalOnConfirmPayment:newFee];
+        } else {
+            self.feeFromTransactionProposal = newFee;
+        }
     }];
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
     
@@ -594,6 +597,8 @@ uint64_t doo = 10000;
             amountInSatoshi = [app.wallet parseBitcoinValue:amountString];
         }
         
+        [self getTransactionProposalFeeForAmount:amountInSatoshi whileConfirmingPayment:NO];
+        
         [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
         
         return YES;
@@ -634,7 +639,9 @@ uint64_t doo = 10000;
     self.fromAddress = address;
     DLog(@"fromAddress: %@", address);
     
-    [self doCurrencyConversion];
+    [self getTransactionProposalFeeForAmount:amountInSatoshi whileConfirmingPayment:NO];
+
+    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
 }
 
 - (void)didSelectToAddress:(NSString *)address
@@ -644,6 +651,8 @@ uint64_t doo = 10000;
     toField.text = [self labelForLegacyAddress:address];
     self.toAddress = address;
     DLog(@"toAddress: %@", address);
+    
+    [self getTransactionProposalFeeForAmount:amountInSatoshi whileConfirmingPayment:NO];
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -656,7 +665,9 @@ uint64_t doo = 10000;
     self.fromAccount = account;
     DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
     
-    [self doCurrencyConversion];
+    [self getTransactionProposalFeeForAmount:amountInSatoshi whileConfirmingPayment:NO];
+
+    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
 }
 
 - (void)didSelectToAccount:(int)account
@@ -666,6 +677,8 @@ uint64_t doo = 10000;
     toField.text = [app.wallet getLabelForAccount:account];
     self.toAccount = account;
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
+    
+    [self getTransactionProposalFeeForAmount:amountInSatoshi whileConfirmingPayment:NO];
 }
 
 #pragma mark - Actions
@@ -821,14 +834,14 @@ uint64_t doo = 10000;
 
 - (IBAction)useAllClicked:(id)sender
 {
-    if (availableAmount == 0 || availableAmount < [self getRecommendedFeeForAmount:availableAmount]) {
+    if (availableAmount == 0 || availableAmount < self.feeFromTransactionProposal) {
         return;
     }
     
     [fiatAmountField resignFirstResponder];
     [btcAmountField resignFirstResponder];
     
-    uint64_t availableWithoutFee = availableAmount - [self getRecommendedFeeForAmount:availableAmount];
+    uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
     amountInSatoshi = availableWithoutFee;
     
     [self doCurrencyConversion];

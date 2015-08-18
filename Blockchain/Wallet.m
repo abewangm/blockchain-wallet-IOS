@@ -868,6 +868,12 @@
         return;
     }
     
+    NSRange insufficientFundsStringRange = [message rangeOfString:@"Insufficient Funds" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (insufficientFundsStringRange.location != NSNotFound) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
+        return;
+    }
+    
     if ([type isEqualToString:@"error"]) {
         [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
     } else if ([type isEqualToString:@"info"]) {
@@ -1077,7 +1083,7 @@
     if (!message) {
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
     } else {
-        [app standardNotify:message];
+        [self makeNotice:nil id:nil message:message];
     }
 }
 
