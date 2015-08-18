@@ -1071,6 +1071,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"fee":fee}];
 }
 
+- (void)on_error_update_fee:(NSString *)message
+{
+    DLog(@"on_error_update_fee");
+    [app standardNotify:message];
+    [app hideBusyView];
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)whitelistWallet

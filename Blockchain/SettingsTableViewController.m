@@ -81,11 +81,9 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)getAllCurrencySymbols
 {
-    __weak SettingsTableViewController *weakSelf = self;
-    
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         NSLog(@"gotCurrencySymbols");
-        weakSelf.allCurrencySymbolsDictionary = note.userInfo;
+        self.allCurrencySymbolsDictionary = note.userInfo;
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
     }];
     
@@ -101,11 +99,9 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)getAccountInfo;
 {
-    __weak SettingsTableViewController *weakSelf = self;
-    
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         NSLog(@"gotAccountInfo");
-        weakSelf.accountInfoDictionary = note.userInfo;
+        self.accountInfoDictionary = note.userInfo;
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     }];
     

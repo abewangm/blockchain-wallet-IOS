@@ -19,6 +19,7 @@
 
 @interface SendViewController ()
 @property (nonatomic) uint64_t feeFromTransactionProposal;
+@property (nonatomic) BOOL isConfirmingPayment;
 @end
 
 @implementation SendViewController
@@ -50,7 +51,10 @@ uint64_t doo = 10000;
     app.mainTitleLabel.text = BC_STRING_SEND;
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.isConfirmingPayment = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
 }
 
@@ -320,16 +324,25 @@ uint64_t doo = 10000;
     }
 }
 
+- (void)calculateFees
+{
+    [self getTransactionProposalFeeForAmount:amountInSatoshi];
+    [app showBusyViewWithLoadingText:@"Calculating fees"];
+}
+
 - (void)confirmPayment
 {
-    [self dismissKeyboard];
+    self.isConfirmingPayment = YES;
     
-    uint64_t amount = amountInSatoshi;
-    [self getTransactionProposalFeeForAmount:amount];
+    [app hideBusyView];
+    
+    [self dismissKeyboard];
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
+        uint64_t amount = amountInSatoshi;
+
         uint64_t fee = self.feeFromTransactionProposal;
         
         uint64_t amountTotal = amount + fee;
@@ -355,6 +368,7 @@ uint64_t doo = 10000;
                                               otherButtonTitles:BC_STRING_SEND, nil];
         
         alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+            self.isConfirmingPayment = NO;
             if (buttonIndex == 1) {
                 [self reallyDoPayment];
             }
@@ -419,14 +433,21 @@ uint64_t doo = 10000;
     return fee;
 }
 
+- (void)setFeeFromTransactionProposal:(uint64_t)feeFromTransactionProposal
+{
+    _feeFromTransactionProposal = feeFromTransactionProposal;
+    if (!self.isConfirmingPayment) {
+        // Observer cannot be removed easily when insufficient funds error occurs from getting fee
+        [self confirmPayment];
+    }
+}
+
 - (void)getTransactionProposalFeeForAmount:(uint64_t)amount
 {
-    __weak SendViewController *weakSelf = self;
-    
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
         NSLog(@"gotfee");
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-        weakSelf.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
+        self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
     }];
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
     
@@ -798,7 +819,7 @@ uint64_t doo = 10000;
     labelAddressTextField.text = @"";
     
     // Complete payment
-    [self confirmPayment];
+    [self calculateFees];
 }
 
 - (IBAction)useAllClicked:(id)sender
@@ -851,7 +872,7 @@ uint64_t doo = 10000;
         return;
     }
     
-    [self confirmPayment];
+    [self calculateFees];
     
     //    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
     //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK
