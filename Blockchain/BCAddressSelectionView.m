@@ -246,8 +246,6 @@ int legacyAddressesSectionNumber;
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
         cell.backgroundColor = COLOR_BACKGROUND_GRAY;
-        
-        // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
         cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
         cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
         UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-21-11, 0);
@@ -275,6 +273,12 @@ int legacyAddressesSectionNumber;
     else
         cell.labelLabel.text = BC_STRING_NO_LABEL;
     
+    NSString *addr = cell.addressLabel.text;
+    Boolean isWatchOnlyLegacyAddress = false;
+    if (addr) {
+        isWatchOnlyLegacyAddress = [app.wallet isWatchOnlyLegacyAddress:addr];
+    }
+    
     if (showFromAddresses) {
         uint64_t balance = 0;
         if (section == addressBookSectionNumber) {
@@ -294,8 +298,7 @@ int legacyAddressesSectionNumber;
             cell.balanceButton.enabled = NO;
             cell.labelLabel.alpha = 0.5;
             cell.addressLabel.alpha = 0.5;
-        }
-        else {
+        } else {
             cell.userInteractionEnabled = YES;
             cell.balanceButton.enabled = YES;
             cell.labelLabel.alpha = 1.0;
@@ -304,6 +307,29 @@ int legacyAddressesSectionNumber;
     }
     else {
         cell.balanceLabel.text = nil;
+    }
+    
+    if (isWatchOnlyLegacyAddress) {
+        cell.watchLabel.hidden = NO;
+        cell.balanceButton.enabled = NO;
+        if (showFromAddresses) {
+            cell.userInteractionEnabled = NO;
+            cell.balanceButton.enabled = NO;
+            cell.labelLabel.alpha = 0.5;
+            cell.addressLabel.alpha = 0.5;
+        } else {
+            cell.userInteractionEnabled = YES;
+            cell.balanceButton.enabled = YES;
+            cell.labelLabel.alpha = 1.0;
+            cell.addressLabel.alpha = 1.0;
+        }
+        
+        // Show the watch only tag and resize the label and balance labels so there is enough space
+        cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);
+        
+        cell.balanceLabel.frame = CGRectMake(254, 11, 83, 21);
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 254, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
+        cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
     }
     
     // Disable user interaction on the balance button so the hit area is the full width of the table entry
