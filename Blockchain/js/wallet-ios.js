@@ -324,6 +324,9 @@ MyWalletPhone.recommendedTransactionFee = function(transactionDictionary) {
         var fee = tx.fee;
         device.execute('update_fee:', [fee]);
     });
+    txProposal.tx.catch(function(error) {
+        device.execute('on_error_update_fee:', [error.message]);
+    });
 }
 
 MyWalletPhone.setTransactionFee = function(fee) {

@@ -1074,8 +1074,11 @@
 - (void)on_error_update_fee:(NSString *)message
 {
     DLog(@"on_error_update_fee");
-    [app standardNotify:message];
-    [app hideBusyView];
+    if (!message) {
+        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
+    } else {
+        [app standardNotify:message];
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

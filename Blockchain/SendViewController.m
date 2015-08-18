@@ -327,15 +327,12 @@ uint64_t doo = 10000;
 - (void)calculateFees
 {
     [self getTransactionProposalFeeForAmount:amountInSatoshi];
-    [app showBusyViewWithLoadingText:@"Calculating fees"];
 }
 
 - (void)confirmPayment
 {
     self.isConfirmingPayment = YES;
-    
-    [app hideBusyView];
-    
+        
     [self dismissKeyboard];
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
