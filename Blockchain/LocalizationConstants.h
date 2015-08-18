@@ -186,6 +186,8 @@
 #define BC_STRING_TRANSACTION NSLocalizedString(@"Transaction", nil)
 #define BC_STRING_AUTOMATIC_PAIRING NSLocalizedString(@"Automatic Pairing", nil)
 #define BC_STRING_MANUAL_PAIRING NSLocalizedString(@"Manual Pairing", nil)
+#define BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE NSLocalizedString(@"Authorization Required", nil)
+#define BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE NSLocalizedString(@"Please check your email.", nil)
 #define BC_STRING_PASSWORD_REQUIRED NSLocalizedString(@"Password Required", nil)
 #define BC_STRING_SECOND_PASSWORD_REQUIRED NSLocalizedString(@"Second Password Required", nil)
 #define BC_STRING_CREATE_NEW_WALLET NSLocalizedString(@"Create New Wallet", nil)

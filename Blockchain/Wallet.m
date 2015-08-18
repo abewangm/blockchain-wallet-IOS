@@ -856,9 +856,15 @@
         return;
     }
     
-    NSRange range = [message rangeOfString:@"Invalid Email" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
-    if (range.location != NSNotFound) {
+    NSRange invalidEmailStringRange = [message rangeOfString:@"Invalid Email" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (invalidEmailStringRange.location != NSNotFound) {
         [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR delegate:nil];
+        return;
+    }
+    
+    NSRange authorizationRequiredStringRange = [message rangeOfString:@"Authorization Required" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (authorizationRequiredStringRange.location != NSNotFound) {
+        [app standardNotify:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE title:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE delegate:nil];
         return;
     }
     
