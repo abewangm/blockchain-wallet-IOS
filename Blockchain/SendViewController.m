@@ -48,15 +48,12 @@ uint64_t doo = 10000;
     }];
     
     app.mainTitleLabel.text = BC_STRING_SEND;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showInsufficientFunds) name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
 }
 
 - (void)viewDidLoad
@@ -385,12 +382,7 @@ uint64_t doo = 10000;
 {
     // If the amount entered exceeds amount available + fee, change the color of the amount text
     if (amountInSatoshi + self.feeFromTransactionProposal > availableAmount) {
-        btcAmountField.textColor = [UIColor redColor];
-        fiatAmountField.textColor = [UIColor redColor];
-        sendPaymentButton.enabled = NO;
-        sendPaymentAccessoryButton.enabled = NO;
-        [sendPaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [sendPaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self showInsufficientFunds];
     }
     else {
         btcAmountField.textColor = [UIColor blackColor];
@@ -483,6 +475,13 @@ uint64_t doo = 10000;
 }
 
 #pragma mark - Textfield Delegates
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([textField isEqual:toField]) {
+        [self getTransactionProposalFeeForAmount:amountInSatoshi];
+    }
+}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
