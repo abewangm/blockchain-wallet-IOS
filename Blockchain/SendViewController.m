@@ -335,11 +335,6 @@ uint64_t doo = 10000;
     }
 }
 
-- (void)calculateFees
-{
-    [self getTransactionProposalFeeForAmount:amountInSatoshi whileConfirmingPayment:YES];
-}
-
 - (void)confirmPayment
 {
     [self dismissKeyboard];
@@ -347,19 +342,15 @@ uint64_t doo = 10000;
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        uint64_t amount = amountInSatoshi;
-
-        uint64_t fee = self.feeFromTransactionProposal;
-        
         uint64_t availableAmountMinusFee = availableAmount - self.feeFromTransactionProposal;
         if (amountInSatoshi > availableAmountMinusFee) {
             [self showInsufficientFunds];
         }
         
-        uint64_t amountTotal = amount + fee;
+        uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
         
         NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
-        NSString *feeBTCString = [app formatMoney:fee localCurrency:FALSE];
+        NSString *feeBTCString = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
         NSString *amountTotalLocalString = [app formatMoney:amountTotal localCurrency:TRUE];
         
         NSString *toAddressLabelForAlertView = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
@@ -422,39 +413,24 @@ uint64_t doo = 10000;
         btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
     }
     
-    uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
-    if (availableAmount < self.feeFromTransactionProposal) {
-        availableWithoutFee = 0;
-    }
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_FUNDS_AVAILABLE,
-                                    [app formatMoney:availableWithoutFee localCurrency:displayingLocalSymbolSend]]
+    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_ALL_AMOUNT,
+                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
                           forState:UIControlStateNormal];
 }
 
-- (void)setFeeFromTransactionProposalOnConfirmPayment:(uint64_t)feeFromTransactionProposal
-{
-    _feeFromTransactionProposal = feeFromTransactionProposal;
-    [self confirmPayment];
-}
-
-- (void)getTransactionProposalFeeForAmount:(uint64_t)amount whileConfirmingPayment:(BOOL)isConfirmingPayment
+- (void)getTransactionProposalFeeForAmount:(uint64_t)amount
 {
     if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
         return;
     }
     
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-        NSLog(@"gotfee");
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-        uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
-        if (isConfirmingPayment) {
-            [self setFeeFromTransactionProposalOnConfirmPayment:newFee];
-        } else {
+            NSLog(@"gotfee");
+            [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
+            uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
             self.feeFromTransactionProposal = newFee;
-            [self updateFundsAvailable];
             [self doCurrencyConversion];
-        }
-    }];
+        }];
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
     
     NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
@@ -624,19 +600,6 @@ uint64_t doo = 10000;
 
 # pragma mark - AddressBook delegate
 
-- (void)updateFundsAvailable
-{
-    uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
-    if (availableAmount < self.feeFromTransactionProposal) {
-        availableWithoutFee = 0;
-    }
-    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
-    
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_FUNDS_AVAILABLE,
-                                    [app formatMoney:availableWithoutFee localCurrency:displayingLocalSymbolSend]]
-                          forState:UIControlStateNormal];
-}
-
 - (void)didSelectFromAddress:(NSString *)address
 {
     self.sendFromAddress = true;
@@ -655,12 +618,8 @@ uint64_t doo = 10000;
     selectAddressTextField.text = addressOrLabel;
     self.fromAddress = address;
     DLog(@"fromAddress: %@", address);
-
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_FUNDS_AVAILABLE,
-                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
-                          forState:UIControlStateNormal];
     
-    [self getTransactionProposalFeeForAmount:availableAmount whileConfirmingPayment:NO];
+    [self getTransactionProposalFeeForAmount:availableAmount];
 }
 
 - (void)didSelectToAddress:(NSString *)address
@@ -671,11 +630,7 @@ uint64_t doo = 10000;
     self.toAddress = address;
     DLog(@"toAddress: %@", address);
     
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_FUNDS_AVAILABLE,
-                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
-                          forState:UIControlStateNormal];
-    
-    [self getTransactionProposalFeeForAmount:availableAmount whileConfirmingPayment:NO];
+    [self getTransactionProposalFeeForAmount:availableAmount];
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -688,11 +643,7 @@ uint64_t doo = 10000;
     self.fromAccount = account;
     DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
     
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_FUNDS_AVAILABLE,
-                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
-                          forState:UIControlStateNormal];
-    
-    [self getTransactionProposalFeeForAmount:availableAmount whileConfirmingPayment:NO];
+    [self getTransactionProposalFeeForAmount:availableAmount];
 }
 
 - (void)didSelectToAccount:(int)account
@@ -703,11 +654,7 @@ uint64_t doo = 10000;
     self.toAccount = account;
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
     
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_FUNDS_AVAILABLE,
-                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
-                          forState:UIControlStateNormal];
-    
-    [self getTransactionProposalFeeForAmount:availableAmount whileConfirmingPayment:NO];
+    [self getTransactionProposalFeeForAmount:availableAmount];
 }
 
 #pragma mark - Actions
@@ -832,7 +779,7 @@ uint64_t doo = 10000;
                     [fiatAmountField becomeFirstResponder];
                 }
                 
-                [self getTransactionProposalFeeForAmount:amountInSatoshi whileConfirmingPayment:NO];
+                [self getTransactionProposalFeeForAmount:amountInSatoshi];
                 
                 [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
             });
@@ -860,7 +807,7 @@ uint64_t doo = 10000;
     labelAddressTextField.text = @"";
     
     // Complete payment
-    [self calculateFees];
+    [self confirmPayment];
 }
 
 - (IBAction)useAllClicked:(id)sender
@@ -916,7 +863,7 @@ uint64_t doo = 10000;
         return;
     }
     
-    [self calculateFees];
+    [self confirmPayment];
     
     //    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
     //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK
