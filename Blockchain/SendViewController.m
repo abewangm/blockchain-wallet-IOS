@@ -476,11 +476,6 @@ uint64_t doo = 10000;
 
 #pragma mark - Textfield Delegates
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self getTransactionProposalFeeForAmount:amountInSatoshi];
-}
-
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (textField == selectAddressTextField) {
@@ -576,6 +571,8 @@ uint64_t doo = 10000;
             amountInSatoshi = [app.wallet parseBitcoinValue:amountString];
         }
         
+        [self getTransactionProposalFeeForAmount:amountInSatoshi];
+        
         [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
         
         return YES;
@@ -584,6 +581,8 @@ uint64_t doo = 10000;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
         DLog(@"toAddress: %@", self.toAddress);
     }
+    
+    [self getTransactionProposalFeeForAmount:amountInSatoshi];
     
     return YES;
 }
@@ -834,6 +833,7 @@ uint64_t doo = 10000;
     uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
     amountInSatoshi = availableWithoutFee;
     
+    // TODO: See if can delete these
     btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
     fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
     
