@@ -78,6 +78,9 @@
 #define BC_STRING_SCAN_PAIRING_CODE NSLocalizedString(@"Scan Pairing Code", nil)
 #define BC_STRING_PARSING_PAIRING_CODE NSLocalizedString(@"Parsing Pairing Code", nil)
 
+#define BC_STRING_INSUFFICIENT_FUNDS NSLocalizedString(@"Insufficient Funds", nil)
+#define BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE NSLocalizedString(@"Please select a different address or lower the fee in Settings.", nil)
+
 #define BC_STRING_OK NSLocalizedString(@"OK", nil)
 #define BC_STRING_FAILED_TO_LOAD_WALLET_TITLE NSLocalizedString(@"Failed To Load Wallet", nil)
 
