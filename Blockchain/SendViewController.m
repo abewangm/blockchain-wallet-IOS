@@ -19,7 +19,6 @@
 
 @interface SendViewController ()
 @property (nonatomic) uint64_t feeFromTransactionProposal;
-@property (nonatomic) BOOL isConfirmingPayment;
 @end
 
 @implementation SendViewController
@@ -56,7 +55,6 @@ uint64_t doo = 10000;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    self.isConfirmingPayment = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
 }
@@ -344,8 +342,6 @@ uint64_t doo = 10000;
 
 - (void)confirmPayment
 {
-    self.isConfirmingPayment = YES;
-        
     [self dismissKeyboard];
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
@@ -383,7 +379,6 @@ uint64_t doo = 10000;
                                               otherButtonTitles:BC_STRING_SEND, nil];
         
         alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-            self.isConfirmingPayment = NO;
             if (buttonIndex == 1) {
                 [self reallyDoPayment];
             }
@@ -436,19 +431,10 @@ uint64_t doo = 10000;
                           forState:UIControlStateNormal];
 }
 
-- (void)setFeeFromTransactionProposal:(uint64_t)feeFromTransactionProposal
-{
-    _feeFromTransactionProposal = feeFromTransactionProposal;
-    [self doCurrencyConversion];
-}
-
 - (void)setFeeFromTransactionProposalOnConfirmPayment:(uint64_t)feeFromTransactionProposal
 {
     _feeFromTransactionProposal = feeFromTransactionProposal;
-    if (!self.isConfirmingPayment) {
-        // Observer cannot be removed easily when insufficient funds error occurs from getting fee
-        [self confirmPayment];
-    }
+    [self confirmPayment];
 }
 
 - (void)getTransactionProposalFeeForAmount:(uint64_t)amount whileConfirmingPayment:(BOOL)isConfirmingPayment
