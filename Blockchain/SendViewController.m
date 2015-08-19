@@ -478,9 +478,7 @@ uint64_t doo = 10000;
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if ([textField isEqual:toField]) {
-        [self getTransactionProposalFeeForAmount:amountInSatoshi];
-    }
+    [self getTransactionProposalFeeForAmount:amountInSatoshi];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -597,6 +595,13 @@ uint64_t doo = 10000;
     return YES;
 }
 
+- (void)updateFundsAvailable
+{
+    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_ALL_AMOUNT,
+                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
+                          forState:UIControlStateNormal];
+}
+
 # pragma mark - AddressBook delegate
 
 - (void)didSelectFromAddress:(NSString *)address
@@ -618,7 +623,9 @@ uint64_t doo = 10000;
     self.fromAddress = address;
     DLog(@"fromAddress: %@", address);
     
-    [self getTransactionProposalFeeForAmount:availableAmount];
+    [self updateFundsAvailable];
+    
+    [self getTransactionProposalFeeForAmount:amountInSatoshi];
 }
 
 - (void)didSelectToAddress:(NSString *)address
@@ -629,7 +636,9 @@ uint64_t doo = 10000;
     self.toAddress = address;
     DLog(@"toAddress: %@", address);
     
-    [self getTransactionProposalFeeForAmount:availableAmount];
+    [self updateFundsAvailable];
+
+    [self getTransactionProposalFeeForAmount:amountInSatoshi];
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -642,7 +651,9 @@ uint64_t doo = 10000;
     self.fromAccount = account;
     DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
     
-    [self getTransactionProposalFeeForAmount:availableAmount];
+    [self updateFundsAvailable];
+
+    [self getTransactionProposalFeeForAmount:amountInSatoshi];
 }
 
 - (void)didSelectToAccount:(int)account
@@ -653,7 +664,9 @@ uint64_t doo = 10000;
     self.toAccount = account;
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
     
-    [self getTransactionProposalFeeForAmount:availableAmount];
+    [self updateFundsAvailable];
+
+    [self getTransactionProposalFeeForAmount:amountInSatoshi];
 }
 
 #pragma mark - Actions

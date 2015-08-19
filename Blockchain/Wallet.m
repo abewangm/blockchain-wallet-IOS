@@ -1083,7 +1083,7 @@
     if (!message) {
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
     } else {
-        [self makeNotice:nil id:nil message:message];
+        [app standardNotify:message];
     }
 }
 
