@@ -47,6 +47,8 @@ uint64_t doo = 10000;
         sendProgressModalText.text = [notification object];
     }];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showInsufficientFunds) name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
+    
     app.mainTitleLabel.text = BC_STRING_SEND;
 }
 
@@ -54,6 +56,7 @@ uint64_t doo = 10000;
 {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
 }
 
 - (void)viewDidLoad
@@ -339,6 +342,11 @@ uint64_t doo = 10000;
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
+        if (btcAmountField.textColor == [UIColor redColor]) {
+            // Stop payment in case of error "No free outputs to spend"
+            return;
+        }
+        
         uint64_t availableAmountMinusFee = availableAmount - self.feeFromTransactionProposal;
         if (amountInSatoshi > availableAmountMinusFee) {
             [self showInsufficientFunds];
@@ -415,8 +423,14 @@ uint64_t doo = 10000;
 
 - (void)getTransactionProposalFeeForAmount:(uint64_t)amount
 {
-    if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""] || [self.toAddress length] != 34 || ![app.wallet isValidAddress:self.toAddress]) {
+    if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
         return;
+    }
+    
+    if (self.sendToAddress) {
+        if ([self.toAddress length] != 34 || ![app.wallet isValidAddress:self.toAddress]) {
+            return;
+        }
     }
     
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
@@ -826,23 +840,27 @@ uint64_t doo = 10000;
 
 - (IBAction)useAllClicked:(id)sender
 {
-    if (availableAmount == 0 || availableAmount <= self.feeFromTransactionProposal) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_INSUFFICIENT_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-        [alertView show];
-        return;
-    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Feature unavailable" message:@"Under development" delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
+    [alertView show];
+    return;
     
-    [fiatAmountField resignFirstResponder];
-    [btcAmountField resignFirstResponder];
-    
-    uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
-    amountInSatoshi = availableWithoutFee;
-    
-    // TODO: See if can delete these
-    btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
-    fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
-    
-    [self doCurrencyConversion];
+//    if (availableAmount == 0 || availableAmount <= self.feeFromTransactionProposal) {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_INSUFFICIENT_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+//        [alertView show];
+//        return;
+//    }
+//    
+//    [fiatAmountField resignFirstResponder];
+//    [btcAmountField resignFirstResponder];
+//    
+//    uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
+//    amountInSatoshi = availableWithoutFee;
+//    
+//    // TODO: See if can delete these
+//    btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
+//    fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
+//    
+//    [self doCurrencyConversion];
 }
 
 - (IBAction)sendPaymentClicked:(id)sender
