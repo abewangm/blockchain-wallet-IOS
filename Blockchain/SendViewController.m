@@ -437,7 +437,7 @@ uint64_t doo = 10000;
             [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
             uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
             self.feeFromTransactionProposal = newFee;
-            DLog(@"SendViewController: got fee of %lld", fee);
+            DLog(@"SendViewController: got fee of %lld", newFee);
             [self doCurrencyConversion];
         }];
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
