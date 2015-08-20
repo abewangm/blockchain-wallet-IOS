@@ -428,7 +428,7 @@ uint64_t doo = 10000;
     }
     
     if (self.sendToAddress) {
-        if ([self.toAddress length] != 34 || ![app.wallet isValidAddress:self.toAddress]) {
+        if (![app.wallet isValidAddress:self.toAddress]) {
             return;
         }
     }
