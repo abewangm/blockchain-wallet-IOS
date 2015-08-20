@@ -49,10 +49,10 @@ static const int BC_ALERTVIEW_UPGRADE_TAG = 1;
 {
     if (alertView.tag == BC_ALERTVIEW_UPGRADE_TAG) {
         switch (buttonIndex) {
-            case 0: NSLog(@"Cancelled upgrade");
+            case 0: DLog(@"UpgradeViewController: Cancelled upgrade");
                 [self dismissSelf];
                 break;
-            case 1: NSLog(@"Upgrading wallet");
+            case 1: DLog(@"UpgradeViewController: Upgrading wallet");
             [app.wallet loading_start_upgrade_to_hd];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [app closeSideMenu];

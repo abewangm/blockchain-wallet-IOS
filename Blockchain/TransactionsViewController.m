@@ -182,7 +182,7 @@ int lastNumberTransactions = INT_MAX;
 - (NSDecimalNumber *)getAmountForReceivedTransaction:(Transaction *)transaction
 {
     NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:ABS(transaction.result)] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:SATOSHI]];
-    NSLog(@"getting amount");
+    DLog(@"TransactionsViewController: getting amount for received transaction");
     return number;
 }
 

@@ -1067,7 +1067,7 @@
 - (void)update_fee:(NSNumber *)fee
 {
     DLog(@"update_fee");
-    NSLog(@"fee is %@", fee);
+    DLog(@"Wallet: fee is %@", fee);
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"fee":fee}];
 }
 

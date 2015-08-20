@@ -424,20 +424,20 @@ uint64_t doo = 10000;
 - (void)getTransactionProposalFeeForAmount:(uint64_t)amount
 {
     if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
+        DLog(@"Error: empty amount or toAddress");
         return;
     }
     
-    if (self.sendToAddress) {
-        if (![app.wallet isValidAddress:self.toAddress]) {
-            return;
-        }
+    if (self.sendToAddress && ![app.wallet isValidAddress:self.toAddress]) {
+        DLog(@"Error: toAddress is not a valid address");
+        return;
     }
     
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-            NSLog(@"gotfee");
             [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
             uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
             self.feeFromTransactionProposal = newFee;
+            DLog(@"SendViewController: got fee of %lld", fee);
             [self doCurrencyConversion];
         }];
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
