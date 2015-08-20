@@ -880,9 +880,10 @@ uint64_t doo = 10000;
         return;
     }
     
+    // Temporary fix; if the user went to settings to change fee/kb and nothing else changed, this is required to update the fee and to allow time to get the fee
+
     [self getTransactionProposalFeeForAmount:amountInSatoshi];
-    
-    [self confirmPayment];
+    [self performSelector:@selector(confirmPayment) withObject:nil afterDelay:0.3f];
     
     //    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
     //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK
