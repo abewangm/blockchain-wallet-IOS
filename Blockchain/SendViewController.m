@@ -415,7 +415,7 @@ uint64_t doo = 10000;
 
 - (void)getTransactionProposalFeeForAmount:(uint64_t)amount
 {
-    if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
+    if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""] || [self.toAddress length] != 34 || ![app.wallet isValidAddress:self.toAddress]) {
         return;
     }
     
