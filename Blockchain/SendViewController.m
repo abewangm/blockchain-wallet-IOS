@@ -424,12 +424,12 @@ uint64_t doo = 10000;
 - (void)getTransactionProposalFeeForAmount:(uint64_t)amount
 {
     if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
-        DLog(@"Error: empty amount or toAddress");
+        DLog(@"SendViewController Error: empty amount or toAddress");
         return;
     }
     
     if (self.sendToAddress && ![app.wallet isValidAddress:self.toAddress]) {
-        DLog(@"Error: toAddress is not a valid address");
+        DLog(@"SendViewController Error: toAddress is not a valid address");
         return;
     }
     

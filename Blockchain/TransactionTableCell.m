@@ -27,10 +27,8 @@
         
         long long secondsAgo  = -round([date timeIntervalSinceNow]);
         
-        if (secondsAgo < 1) { // Just now
+        if (secondsAgo <= 1) { // Just now
             dateLabel.text = NSLocalizedString(@"Just now", nil);
-        } else if (secondsAgo == 1) { // 1 second
-            dateLabel.text = NSLocalizedString(@"1 second ago", nil);
         } else if (secondsAgo < 60) { // 0 - 59 seconds
             dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld seconds ago", nil), secondsAgo];
         } else if (secondsAgo / 60 == 1) { // 1 minute
