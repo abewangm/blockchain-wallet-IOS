@@ -180,9 +180,6 @@
 
 - (void)setPbkdf2Iterations:(int)iterations;
 
-- (uint64_t)recommendedTransactionFeeForAddress:(NSString*)address amount:(uint64_t)amount;
-- (uint64_t)recommendedTransactionFeeForAccount:(int)account amount:(uint64_t)amount;
-
 - (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString;
 - (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString;
 - (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString;

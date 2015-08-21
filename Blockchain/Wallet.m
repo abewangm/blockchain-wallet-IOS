@@ -517,17 +517,6 @@
     return [self.webView executeJSSynchronous:@"MyWalletPhone.score_password(\"%@\")", passwordString];
 }
 
-
-- (uint64_t)recommendedTransactionFeeForAddress:(NSString*)address amount:(uint64_t)amount
-{
-    return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
-}
-
-- (uint64_t)recommendedTransactionFeeForAccount:(int)account amount:(uint64_t)amount
-{
-    return [[self.webView executeJSSynchronous:@"MyWallet.getBaseFee()"] longLongValue];
-}
-
 - (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString
 {
     [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\",%d,\"%@\"))", [fromAddress escapeStringForJS], toAccount,[amountString escapeStringForJS]];
