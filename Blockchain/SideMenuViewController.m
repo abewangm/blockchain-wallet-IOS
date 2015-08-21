@@ -443,22 +443,33 @@ int accountEntries = 0;
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Custom separator inset
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        float leftInset = (indexPath.section != 2) ? 56 : 15;
-        [cell setSeparatorInset:UIEdgeInsetsMake(0, leftInset, 0, 0)];
-    }
-    
-    // No separator for last entry of each section
-    if ((indexPath.section == 1 && indexPath.row == balanceEntries - 1) ||
-        (indexPath.section == 2 && indexPath.row == menuEntries - 1)) {
-        [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
-    }
-#ifndef HD_ENABLED
-    if (indexPath.section == 0 && indexPath.row == menuEntries - 1) {
-        [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
-    }
+        if ([self showBalances]) {
+            // Custom separator inset
+            float leftInset = (indexPath.section != 2) ? 56 : 15;
+            [cell setSeparatorInset:UIEdgeInsetsMake(0, leftInset, 0, 0)];
+            
+            // No separator for last entry of each section
+            if ((indexPath.section == 1 && indexPath.row == balanceEntries - 1) ||
+                (indexPath.section == 2 && indexPath.row == menuEntries - 1)) {
+                [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
+            }
+        } else {
+            // Custom separator inset
+            [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
+            
+            // No separator for last entry of each section
+#ifdef HD_ENABLED
+            if (indexPath.row == menuEntries - 1) {
+                [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
+            }
+#else
+            if (indexPath.row == menuEntries - 1 || indexPath.row == menuEntries - 2) {
+                [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
+            }
 #endif
+        }
+    }
 }
 
 # pragma mark - Button actions
