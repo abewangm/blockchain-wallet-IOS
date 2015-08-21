@@ -678,6 +678,7 @@ uint64_t doo = 10000;
     
     toField.text = [app.wallet getLabelForAccount:account];
     self.toAccount = account;
+    self.toAddress = @"";
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
     
     [self updateFundsAvailable];
