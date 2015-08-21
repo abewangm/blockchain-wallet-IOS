@@ -1377,6 +1377,10 @@ void (^secondPasswordSuccess)(NSString *);
     
     [mainPasswordTextField performSelectorOnMainThread:@selector(resignFirstResponder) withObject:nil waitUntilDone:NO];
     
+    if (![self checkInternetConnection]) {
+        return;
+    }
+    
     NSString *guid = [self guid];
     NSString *sharedKey = [self sharedKey];
     
