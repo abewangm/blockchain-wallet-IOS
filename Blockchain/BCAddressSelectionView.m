@@ -241,104 +241,100 @@ int legacyAddressesSectionNumber;
     int section = (int) indexPath.section;
     int row = (int) indexPath.row;
     
-    ReceiveTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"receive"];
+    ReceiveTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReceiveCell"];
     
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
         cell.backgroundColor = COLOR_BACKGROUND_GRAY;
-        cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
-        cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
-        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-21-11, 0);
-        cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
         
-        [cell.watchLabel setHidden:TRUE];
-    }
-    
-    NSString *label;
-    if (section == addressBookSectionNumber) {
-        label = [addressBookAddressLabels objectAtIndex:row];
-        cell.addressLabel.text = [addressBookAddresses objectAtIndex:row];
-    }
-    else if (section == accountsSectionNumber) {
-        label = accountLabels[indexPath.row];
-        cell.addressLabel.text = nil;
-    }
-    else if (section == legacyAddressesSectionNumber) {
-        label = [legacyAddressLabels objectAtIndex:row];
-        cell.addressLabel.text = [legacyAddresses objectAtIndex:row];
-    }
-    
-    if (label)
-        cell.labelLabel.text = label;
-    else
-        cell.labelLabel.text = BC_STRING_NO_LABEL;
-    
-    NSString *addr = cell.addressLabel.text;
-    Boolean isWatchOnlyLegacyAddress = false;
-    if (addr) {
-        isWatchOnlyLegacyAddress = [app.wallet isWatchOnlyLegacyAddress:addr];
-    }
-    
-    if (showFromAddresses) {
-        uint64_t balance = 0;
+        
+        NSString *label;
         if (section == addressBookSectionNumber) {
-            balance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
+            label = [addressBookAddressLabels objectAtIndex:row];
+            cell.addressLabel.text = [addressBookAddresses objectAtIndex:row];
         }
         else if (section == accountsSectionNumber) {
-            balance = [app.wallet getBalanceForAccount:[[accounts objectAtIndex:indexPath.row] intValue]];
+            label = accountLabels[indexPath.row];
+            cell.addressLabel.text = nil;
         }
         else if (section == legacyAddressesSectionNumber) {
-            balance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];
+            label = [legacyAddressLabels objectAtIndex:row];
+            cell.addressLabel.text = [legacyAddresses objectAtIndex:row];
         }
-        cell.balanceLabel.text = [app formatMoney:balance];
         
-        // Cells with empty balance can't be clicked and are dimmed
-        if (balance == 0) {
-            cell.userInteractionEnabled = NO;
-            cell.balanceButton.enabled = NO;
-            cell.labelLabel.alpha = 0.5;
-            cell.addressLabel.alpha = 0.5;
-        } else {
-            cell.userInteractionEnabled = YES;
-            cell.balanceButton.enabled = YES;
-            cell.labelLabel.alpha = 1.0;
-            cell.addressLabel.alpha = 1.0;
+        if (label)
+            cell.labelLabel.text = label;
+        else
+            cell.labelLabel.text = BC_STRING_NO_LABEL;
+        
+        NSString *addr = cell.addressLabel.text;
+        Boolean isWatchOnlyLegacyAddress = false;
+        if (addr) {
+            isWatchOnlyLegacyAddress = [app.wallet isWatchOnlyLegacyAddress:addr];
         }
-    }
-    else {
-        cell.balanceLabel.text = nil;
-    }
-    
-    if (isWatchOnlyLegacyAddress) {
-        cell.watchLabel.hidden = NO;
-        cell.balanceButton.enabled = NO;
+        
         if (showFromAddresses) {
-            cell.userInteractionEnabled = NO;
-            cell.balanceButton.enabled = NO;
-            cell.labelLabel.alpha = 0.5;
-            cell.addressLabel.alpha = 0.5;
-        } else {
-            cell.userInteractionEnabled = YES;
-            cell.balanceButton.enabled = YES;
-            cell.labelLabel.alpha = 1.0;
-            cell.addressLabel.alpha = 1.0;
+            uint64_t balance = 0;
+            if (section == addressBookSectionNumber) {
+                balance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
+            }
+            else if (section == accountsSectionNumber) {
+                balance = [app.wallet getBalanceForAccount:[[accounts objectAtIndex:indexPath.row] intValue]];
+            }
+            else if (section == legacyAddressesSectionNumber) {
+                balance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];
+            }
+            cell.balanceLabel.text = [app formatMoney:balance];
+            
+            // Cells with empty balance can't be clicked and are dimmed
+            if (balance == 0) {
+                cell.userInteractionEnabled = NO;
+                cell.labelLabel.alpha = 0.5;
+                cell.addressLabel.alpha = 0.5;
+            } else {
+                cell.userInteractionEnabled = YES;
+                cell.labelLabel.alpha = 1.0;
+                cell.addressLabel.alpha = 1.0;
+            }
+        }
+        else {
+            cell.balanceLabel.text = nil;
         }
         
-        // Show the watch only tag and resize the label and balance labels so there is enough space
-        cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);
+        if (isWatchOnlyLegacyAddress) {
+            if (showFromAddresses) {
+                cell.userInteractionEnabled = NO;
+                cell.labelLabel.alpha = 0.5;
+                cell.addressLabel.alpha = 0.5;
+            } else {
+                cell.userInteractionEnabled = YES;
+                cell.labelLabel.alpha = 1.0;
+                cell.addressLabel.alpha = 1.0;
+            }
+            
+            // Show the watch only tag and resize the label and balance labels so there is enough space
+            cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);
+            cell.balanceLabel.frame = CGRectMake(254, 11, 83, 21);
+            cell.watchLabel.hidden = NO;
+            
+        } else {
+            cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
+            cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
+            cell.watchLabel.hidden = YES;
+        }
         
-        cell.balanceLabel.frame = CGRectMake(254, 11, 83, 21);
-        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 254, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
-        cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
+        [cell layoutSubviews];
+        
+        // Disable user interaction on the balance button so the hit area is the full width of the table entry
+        [cell.balanceButton setUserInteractionEnabled:NO];
+        
+        cell.balanceLabel.adjustsFontSizeToFitWidth = YES;
+        
+        // Selected cell color
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
+        [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+        [cell setSelectedBackgroundView:v];
     }
-    
-    // Disable user interaction on the balance button so the hit area is the full width of the table entry
-    [cell.balanceButton setUserInteractionEnabled:NO];
-    
-    // Selected cell color
-    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
-    [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-    [cell setSelectedBackgroundView:v];
     
     return cell;
 }
