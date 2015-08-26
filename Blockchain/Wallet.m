@@ -517,6 +517,16 @@
     return [self.webView executeJSSynchronous:@"MyWalletPhone.score_password(\"%@\")", passwordString];
 }
 
+- (void)getMaximumTransactionFeeForAccount:(int)account
+{
+    [self.webView executeJS:@"MyWalletPhone.getMaximumTransactionFeeForAccount(%d)", account];
+}
+
+- (void)getMaximumTransactionFeeForAddress:(NSString *)address
+{
+    [self.webView executeJS:@"MyWalletPhone.getMaximumTransactionFeeForAddress(\"%@\")", address];
+}
+
 - (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString
 {
     [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\",%d,\"%@\"))", [fromAddress escapeStringForJS], toAccount,[amountString escapeStringForJS]];

@@ -421,6 +421,17 @@ uint64_t doo = 10000;
                           forState:UIControlStateNormal];
 }
 
+- (void)addObserverForFee
+{
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
+        uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
+        self.feeFromTransactionProposal = newFee;
+        DLog(@"SendViewController: got fee of %lld", newFee);
+        [self doCurrencyConversion];
+    }];
+}
+
 - (void)getTransactionProposalFeeForAmount:(uint64_t)amount
 {
     if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
@@ -433,13 +444,7 @@ uint64_t doo = 10000;
         return;
     }
     
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-            [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-            uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
-            self.feeFromTransactionProposal = newFee;
-            DLog(@"SendViewController: got fee of %lld", newFee);
-            [self doCurrencyConversion];
-        }];
+    [self addObserverForFee];
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
     
     NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
@@ -841,27 +846,41 @@ uint64_t doo = 10000;
 
 - (IBAction)useAllClicked:(id)sender
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Feature unavailable" message:@"Under development" delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
-    [alertView show];
-    return;
+    [self getMaxFee];
     
-//    if (availableAmount == 0 || availableAmount <= self.feeFromTransactionProposal) {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_INSUFFICIENT_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-//        [alertView show];
-//        return;
-//    }
-//    
-//    [fiatAmountField resignFirstResponder];
-//    [btcAmountField resignFirstResponder];
-//    
-//    uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
-//    amountInSatoshi = availableWithoutFee;
-//    
-//    // TODO: See if can delete these
-//    btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
-//    fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
-//    
-//    [self doCurrencyConversion];
+    [self performSelector:@selector(useAllFunds) withObject:nil afterDelay:0.5f];
+}
+
+- (void)useAllFunds
+{
+    if (availableAmount == 0 || availableAmount <= self.feeFromTransactionProposal) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_INSUFFICIENT_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+        [alertView show];
+        return;
+    }
+    
+    [fiatAmountField resignFirstResponder];
+    [btcAmountField resignFirstResponder];
+    
+    uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
+    amountInSatoshi = availableWithoutFee;
+    
+    // TODO: See if can delete these
+    btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
+    fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
+    
+    [self doCurrencyConversion];
+}
+
+- (void)getMaxFee
+{
+    [self addObserverForFee];
+    
+    if (self.sendFromAddress) {
+        [app.wallet getMaximumTransactionFeeForAddress:self.fromAddress];
+    } else {
+        [app.wallet getMaximumTransactionFeeForAccount:self.fromAccount];
+    }
 }
 
 - (IBAction)sendPaymentClicked:(id)sender

@@ -329,6 +329,22 @@ MyWalletPhone.recommendedTransactionFee = function(transactionDictionary) {
     });
 }
 
+MyWalletPhone.getMaximumTransactionFeeForAddress = function(address) {
+    var falseTransaction = new Spender().fromAddress(address);
+    falseTransaction.getSuggestedSweepFee().then(function(suggestedSweepFee) {
+        var maximumFee = suggestedSweepFee;
+        device.execute('update_fee:', [maximumFee]);
+    });
+}
+
+MyWalletPhone.getMaximumTransactionFeeForAccount = function(account) {
+    var falseTransaction = new Spender().fromAccount(MyWalletPhone.getIndexOfActiveAccount(account));
+    falseTransaction.getSuggestedSweepFee().then(function(suggestedSweepFee) {
+        var maximumFee = suggestedSweepFee;
+        device.execute('update_fee:', [maximumFee]);
+    });
+}
+
 MyWalletPhone.setTransactionFee = function(fee) {
     MyWallet.wallet.fee_per_kb = fee;
 }

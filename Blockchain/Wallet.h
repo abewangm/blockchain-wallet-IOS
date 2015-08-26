@@ -180,6 +180,9 @@
 
 - (void)setPbkdf2Iterations:(int)iterations;
 
+- (void)getMaximumTransactionFeeForAddress:(NSString*)address;
+- (void)getMaximumTransactionFeeForAccount:(int)account;
+
 - (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString;
 - (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString;
 - (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString;
