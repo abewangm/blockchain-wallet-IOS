@@ -321,7 +321,7 @@ const int aboutPrivacyPolicy = 1;
         switch (buttonIndex) {
             case 0: {
                 // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
-                if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL]) {
+                if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] || ![[self getUserEmail] isEqualToString:self.emailString]) {
                     [self getAccountInfo];
                 }
                 return;
