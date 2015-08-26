@@ -58,6 +58,15 @@ const int aboutPrivacyPolicy = 1;
     [self getAllCurrencySymbols];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:NO];
+    [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:NO];
+    [self.errorLoadingAlertView dismissWithClickedButtonIndex:0 animated:NO];
+    [self.changeFeeAlertView dismissWithClickedButtonIndex:0 animated:NO];
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
