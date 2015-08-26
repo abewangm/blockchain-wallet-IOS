@@ -297,16 +297,17 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // Not the smoothest dismissal of the keyboard but better than no animation
-    BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
-    [textField resignFirstResponder];
-    
     if ([alertView isEqual:self.changeEmailAlertView]) {
+        
+        // Not the smoothest dismissal of the keyboard but better than no animation
+        BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
+        [textField resignFirstResponder];
+        
         switch (buttonIndex) {
             case 0: {
                 // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
                 UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]];
-                if ([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] && [alertView.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) {
+                if (([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] && [alertView.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) || ![[self getUserEmail] isEqualToString:self.emailString]) {
                     [self getAccountInfo];
                 }
                 return;
@@ -318,6 +319,11 @@ const int aboutPrivacyPolicy = 1;
         }
         return;
     } else if ([alertView isEqual:self.verifyEmailAlertView]) {
+        
+        // Not the smoothest dismissal of the keyboard but better than no animation
+        BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
+        [textField resignFirstResponder];
+        
         switch (buttonIndex) {
             case 0: {
                 // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
@@ -341,6 +347,11 @@ const int aboutPrivacyPolicy = 1;
         }
         return;
     } else if ([alertView isEqual:self.changeFeeAlertView]) {
+        
+        // Not the smoothest dismissal of the keyboard but better than no animation
+        BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
+        [textField resignFirstResponder];
+        
         switch (buttonIndex) {
             case 0: {
                 return;
