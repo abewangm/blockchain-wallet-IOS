@@ -1079,6 +1079,7 @@
         [app standardNotify:message];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:nil];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
