@@ -1070,16 +1070,15 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"fee":fee}];
 }
 
-- (void)on_error_update_fee:(NSString *)message
+- (void)on_error_update_fee:(NSString *)errorCode
 {
     DLog(@"on_error_update_fee");
-    if (!message) {
+
+    if (!errorCode) {
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
-    } else {
-        [app standardNotify:message];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"errorCode": [NSNumber numberWithLongLong:[errorCode longLongValue]]}];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
