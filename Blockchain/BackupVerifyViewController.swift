@@ -13,6 +13,19 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     var wallet : Wallet?
     var isVerifying = false
     var verifyButton : UIButton?
+    var randomizedIndexes : [Int] = []
+    var indexDictionary = [0:NSLocalizedString("first word", comment:""),
+        1:NSLocalizedString("second word", comment:""),
+        2:NSLocalizedString("third word", comment:""),
+        3:NSLocalizedString("fourth word", comment:""),
+        4:NSLocalizedString("fifth word", comment:""),
+        5:NSLocalizedString("sixth word", comment:""),
+        6:NSLocalizedString("seventh word", comment:""),
+        7:NSLocalizedString("eighth word", comment:""),
+        8:NSLocalizedString("ninth word", comment:""),
+        9:NSLocalizedString("tenth word", comment:""),
+        10:NSLocalizedString("eleventh word", comment:""),
+        11:NSLocalizedString("twelfth word", comment:"")]
     
     @IBOutlet weak var word1: UITextField?
     @IBOutlet weak var word2: UITextField?
@@ -44,6 +57,8 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
             
             self.performSegueWithIdentifier("verifyBackupWithSecondPassword", sender: self)
         }
+        
+        randomizeCheckIndexes()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -59,7 +74,30 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         word1?.inputAccessoryView = verifyButton
         word2?.inputAccessoryView = verifyButton
         word3?.inputAccessoryView = verifyButton
+        if (randomizedIndexes.count >= 3) {
+            word1?.placeholder = indexDictionary[randomizedIndexes[0]]
+            word2?.placeholder = indexDictionary[randomizedIndexes[1]]
+            word3?.placeholder = indexDictionary[randomizedIndexes[2]]
+        }
         word1?.becomeFirstResponder()
+    }
+    
+    func randomizeCheckIndexes() {
+        var wordIndexes: [Int] = [];
+        for (var i = 0; i < Constants.Defaults.NumberOfRecoveryPhraseWords; i++) {
+            wordIndexes.append(i)
+        }
+        randomizedIndexes = shuffle(wordIndexes)
+    }
+    
+    func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
+        let c = count(list)
+        if c < 2 { return list }
+        for i in 0..<(c - 1) {
+            let j = Int(arc4random_uniform(UInt32(c - i))) + i
+            swap(&list[i], &list[j])
+        }
+        return list
     }
     
     func done() {
@@ -71,30 +109,40 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         
         let words = wallet!.recoveryPhrase.componentsSeparatedByString(" ")
         
-        if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
-            valid = false
-        } else { // Don't mark words as invalid until the user has entered all three
-            if word1!.text != words[0] {
-                pleaseTryAgain()
-                return
-            }
-            if word2!.text != words[2] {
-                pleaseTryAgain()
-                return
-            }
-            if word3!.text != words[5] {
-                pleaseTryAgain()
-                return
-            }
-        }
+        var randomWord1 : String
+        var randomWord2 : String
+        var randomWord3 : String
         
-        if valid {
-            word1?.resignFirstResponder()
-            word2?.resignFirstResponder()
-            word3?.resignFirstResponder()
-            wallet!.markRecoveryPhraseVerified()
-            NSNotificationCenter.defaultCenter().postNotificationName("AppDelegateReload", object: nil)
-            self.performSegueWithIdentifier("unwindVerifyWords", sender: self)
+        if (randomizedIndexes.count >= 3) {
+            randomWord1 = words[randomizedIndexes[0]]
+            randomWord2 = words[randomizedIndexes[1]]
+            randomWord3 = words[randomizedIndexes[2]]
+            
+            if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
+                valid = false
+            } else { // Don't mark words as invalid until the user has entered all three
+                if word1!.text != randomWord1 {
+                    pleaseTryAgain()
+                    return
+                }
+                if word2!.text != randomWord2 {
+                    pleaseTryAgain()
+                    return
+                }
+                if word3!.text != randomWord3 {
+                    pleaseTryAgain()
+                    return
+                }
+            }
+            
+            if valid {
+                word1?.resignFirstResponder()
+                word2?.resignFirstResponder()
+                word3?.resignFirstResponder()
+                wallet!.markRecoveryPhraseVerified()
+                NSNotificationCenter.defaultCenter().postNotificationName("AppDelegateReload", object: nil)
+                self.performSegueWithIdentifier("unwindVerifyWords", sender: self)
+            }
         }
     }
     

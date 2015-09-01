@@ -21,6 +21,9 @@ struct Constants {
         static let DefaultHeaderHeight : CGFloat = 65
         static let BackupButtonCornerRadius : CGFloat = 16
     }
+    struct Defaults {
+        static let NumberOfRecoveryPhraseWords = 12
+    }
 }
 
 // MARK: Helper functions

@@ -52,13 +52,13 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         updateCurrentPageLabel(0)
         
         wordsScrollView!.clipsToBounds = true
-        wordsScrollView!.contentSize = CGSizeMake(12 * wordLabel!.frame.width, wordLabel!.frame.height)
+        wordsScrollView!.contentSize = CGSizeMake(CGFloat(Constants.Defaults.NumberOfRecoveryPhraseWords) * wordLabel!.frame.width, wordLabel!.frame.height)
         wordsScrollView!.userInteractionEnabled = false
 
         wordLabels = [UILabel]()
         wordLabels?.insert(wordLabel!, atIndex: 0)
         var i: CGFloat = 0
-        for i in 1 ..< 12 {
+        for i in 1 ..< Constants.Defaults.NumberOfRecoveryPhraseWords {
             let offset: CGFloat = CGFloat(i) * wordLabel!.frame.width
             let x: CGFloat = wordLabel!.frame.origin.x + offset
             let label = UILabel(frame: CGRectMake(x, wordLabel!.frame.origin.y, wordLabel!.frame.size.width, wordLabel!.frame.size.height))
@@ -111,7 +111,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     }
     
     func updateCurrentPageLabel(page: Int) {
-        wordsProgressLabel!.text = NSLocalizedString(NSString(format: "Word %@ of %@", String(page + 1), String(12)) as String, comment: "")
+        wordsProgressLabel!.text = NSLocalizedString(NSString(format: "Word %@ of %@", String(page + 1), String((Constants.Defaults.NumberOfRecoveryPhraseWords))) as String, comment: "")
         if let count = wordLabels?.count {
             if wordsPageControl!.currentPage == count-1 {
                 nextWordButton?.backgroundColor = Constants.Colors.BlockchainBlue
@@ -166,7 +166,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject: AnyObject], context: UnsafeMutablePointer<Void>) {
         let words = wallet!.recoveryPhrase.componentsSeparatedByString(" ")
-        for i in 0 ..< 12 {
+        for i in 0 ..< Constants.Defaults.NumberOfRecoveryPhraseWords {
             wordLabels![i].text = words[i]
         }
 
