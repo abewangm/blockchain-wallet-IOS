@@ -33,7 +33,7 @@ import UIKit
         topBar!.backgroundColor = Constants.Colors.BlockchainBlue
         self.view.addSubview(topBar!);
         
-        var headerLabel = UILabel(frame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40));
+        let headerLabel = UILabel(frame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40));
         headerLabel.font = UIFont.systemFontOfSize(22.0)
         headerLabel.textColor = UIColor.whiteColor()
         headerLabel.textAlignment = .Center;
@@ -41,7 +41,7 @@ import UIKit
         headerLabel.text = NSLocalizedString("Backup Funds", comment: "");
         topBar!.addSubview(headerLabel);
         
-        closeButton = UIButton.buttonWithType(UIButtonType.Custom) as? UIButton
+        closeButton = UIButton(type: UIButtonType.Custom) as? UIButton
         closeButton!.contentHorizontalAlignment = .Left;
         closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
         closeButton!.titleLabel?.font = UIFont.systemFontOfSize(15)

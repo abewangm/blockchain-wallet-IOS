@@ -30,7 +30,7 @@
 @end
 
 @interface BCAddressSelectionView : UIView <UITableViewDelegate, UITableViewDataSource> {
-    IBOutlet UIView *view;
+    IBOutlet UIView *mainView;
     IBOutlet UITableView *tableView;
 }
 

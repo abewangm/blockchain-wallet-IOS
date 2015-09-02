@@ -117,13 +117,13 @@ int legacyAddressesSectionNumber;
             legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
         }
         
-        [self addSubview:view];
+        [self addSubview:mainView];
         
-        view.frame = CGRectMake(0, 0, app.window.frame.size.width, app.window.frame.size.height);
+        mainView.frame = CGRectMake(0, 0, app.window.frame.size.width, app.window.frame.size.height);
         
         [tableView layoutIfNeeded];
         float tableHeight = [tableView contentSize].height;
-        float tableSpace = view.frame.size.height - DEFAULT_HEADER_HEIGHT;
+        float tableSpace = mainView.frame.size.height - DEFAULT_HEADER_HEIGHT;
         
         CGRect frame = tableView.frame;
         frame.size.height = tableSpace;
@@ -138,6 +138,7 @@ int legacyAddressesSectionNumber;
         }
         
         tableView.backgroundColor = [UIColor whiteColor];
+        
     }
     return self;
 }
@@ -173,6 +174,12 @@ int legacyAddressesSectionNumber;
         return  1 + (legacyAddresses.count > 0 ? 1 : 0);
     }
     return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0);
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    header.contentView.backgroundColor = [UIColor whiteColor];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

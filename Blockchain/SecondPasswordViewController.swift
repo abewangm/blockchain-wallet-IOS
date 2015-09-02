@@ -11,7 +11,7 @@ import UIKit
 let BC_ALERTVIEW_SECOND_PASSWORD_ERROR_TAG = 2
 
 protocol SecondPasswordDelegate {
-    func didGetSecondPassword(String)
+    func didGetSecondPassword(_: String)
     var isVerifying : Bool {get set}
 }
 
@@ -31,7 +31,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     }
     
     override func viewDidAppear(animated: Bool) {
-        var continueButton = UIButton(frame: CGRectMake(0, 0, view.frame.size.width, 46))
+        let continueButton = UIButton(frame: CGRectMake(0, 0, view.frame.size.width, 46))
         continueButton.backgroundColor = Constants.Colors.BlockchainBlue;
         continueButton.setTitle(NSLocalizedString("Continue", comment:""), forState: .Normal)
         continueButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
@@ -53,12 +53,12 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     
     func checkSecondPassword() {
         let secondPassword = password!.text
-        if secondPassword.isEmpty {
+        if secondPassword!.isEmpty {
             alertUserWithErrorMessage((NSLocalizedString("No Password Entered", comment: "")))
         }
         else if wallet!.validateSecondPassword(secondPassword) {
             password?.resignFirstResponder()
-            delegate?.didGetSecondPassword(secondPassword)
+            delegate?.didGetSecondPassword(secondPassword!)
             if (delegate!.isVerifying) {
                 // if we are verifying backup, unwind to verify words view controller
                 self.performSegueWithIdentifier("unwindSecondPasswordToVerify", sender: self)
@@ -77,7 +77,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     }
     
     func alertUserWithErrorMessage(message : String) {
-        var alertView = UIAlertView()
+        let alertView = UIAlertView()
         alertView.title = NSLocalizedString("Error", comment:"")
         alertView.message = message;
         alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))

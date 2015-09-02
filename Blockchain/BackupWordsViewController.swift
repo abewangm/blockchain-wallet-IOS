@@ -33,7 +33,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         let blackText = NSAttributedString(string:  NSLocalizedString("Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe\n", comment:""), attributes:
             [NSForegroundColorAttributeName: UIColor.blackColor()])
         
-        var finalText = NSMutableAttributedString(attributedString: blackText)
+        let finalText = NSMutableAttributedString(attributedString: blackText)
         finalText.appendAttributedString(greyText);
         summaryLabel?.attributedText = finalText
         
@@ -104,7 +104,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
             if (wordsPageControl!.currentPage == count-1) {
                 performSegueWithIdentifier("backupVerify", sender: nil)
             } else if wordsPageControl!.currentPage < count-1 {
-                var pagePosition = wordLabel!.frame.width * CGFloat(wordsPageControl!.currentPage+1)
+                let pagePosition = wordLabel!.frame.width * CGFloat(wordsPageControl!.currentPage+1)
                 wordsScrollView?.setContentOffset(CGPointMake(pagePosition, wordsScrollView!.contentOffset.y), animated: true)
             }
         }
@@ -164,7 +164,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     @IBAction func unwindSecondPasswordSuccess(segue: UIStoryboardSegue) {
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject: AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String: AnyObject]?, context: UnsafeMutablePointer<Void>) {
         let words = wallet!.recoveryPhrase.componentsSeparatedByString(" ")
         for i in 0 ..< Constants.Defaults.NumberOfRecoveryPhraseWords {
             wordLabels![i].text = words[i]

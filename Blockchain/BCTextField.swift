@@ -17,8 +17,8 @@ class BCTextField: BCSecureTextField {
             return
         }
         
-        var onePixelHeight = 1.0/UIScreen.mainScreen().scale
-        var onePixelLine = UIView(frame: CGRectMake(0, self.frame.size.height - onePixelHeight,
+        let onePixelHeight = 1.0/UIScreen.mainScreen().scale
+        let onePixelLine = UIView(frame: CGRectMake(0, self.frame.size.height - onePixelHeight,
             self.frame.size.width + 15, onePixelHeight))
         
         onePixelLine.frame = self.superview!.convertRect(onePixelLine.frame, fromView: self)

@@ -283,7 +283,10 @@ const int aboutPrivacyPolicy = 1;
     
     self.emailString = self.enteredEmailString;
     
-    [self alertViewToVerifyEmail];
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        [self alertViewToVerifyEmail];
+    });
 }
 
 - (void)verifyEmailWithCode:(NSString *)codeString

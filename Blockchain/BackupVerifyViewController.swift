@@ -133,7 +133,6 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
                     pleaseTryAgain()
                     return
                 }
-            }
             
             if valid {
                 word1?.resignFirstResponder()
@@ -152,7 +151,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func pleaseTryAgain() {
-        var alertView = UIAlertView()
+        let alertView = UIAlertView()
         alertView.title = NSLocalizedString("Error", comment:"")
         alertView.message = NSLocalizedString("Please try again", comment:"")
         alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
@@ -160,11 +159,11 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func textFieldDidChange() {
-        if !word1!.text.isEmpty && !word2!.text.isEmpty && !word3!.text.isEmpty {
+        if !word1!.text!.isEmpty && !word2!.text!.isEmpty && !word3!.text!.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
             verifyButton?.enabled = true
             verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        } else if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
+        } else if word1!.text!.isEmpty || word2!.text!.isEmpty || word3!.text!.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
             verifyButton?.enabled = false
             verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)

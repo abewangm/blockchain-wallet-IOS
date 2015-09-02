@@ -1232,14 +1232,14 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)newsClicked:(id)sender
 {
     // TODO ZeroBlock does not have the URL scheme in it's .plist yet
-    NSURL *zeroBlockAppURL = [NSURL URLWithString:@"zeroblock://"];
+//    NSURL *zeroBlockAppURL = [NSURL URLWithString:@"zeroblock://"];
     
-    if ([[UIApplication sharedApplication] canOpenURL:zeroBlockAppURL]) {
-        [[UIApplication sharedApplication] openURL:zeroBlockAppURL];
-    }
-    else {
+//    if ([[UIApplication sharedApplication] canOpenURL:zeroBlockAppURL]) {
+//        [[UIApplication sharedApplication] openURL:zeroBlockAppURL];
+//    }
+//    else {
         [self pushWebViewController:@"https://zeroblock.com/" title:@"ZeroBlock"];
-    }
+//    }
 }
 
 - (IBAction)accountSettingsClicked:(id)sender
