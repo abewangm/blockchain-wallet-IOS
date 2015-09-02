@@ -325,7 +325,13 @@ MyWalletPhone.recommendedTransactionFee = function(transactionDictionary) {
         device.execute('update_fee:', [fee]);
     });
     txProposal.tx.catch(function(error) {
-        device.execute('on_error_update_fee:', [error.error]);
+        var errorArgument;
+        if (error.error) {
+            errorArgument = error.error;
+        } else {
+            errorArgument = error.message;
+        }
+        device.execute('on_error_update_fee:', [errorArgument]);
     });
 }
 

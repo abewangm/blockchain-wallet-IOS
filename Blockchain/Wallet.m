@@ -1076,6 +1076,9 @@
 
     if (!errorCode) {
         errorCode = @"404";
+    // Temporary fix; waiting on error codes to be send from My-Wallet-HD
+    } else if ([errorCode rangeOfString:@"dust"].length != 0) {
+        errorCode = @"100";
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"errorCode": [NSNumber numberWithLongLong:[errorCode longLongValue]]}];
