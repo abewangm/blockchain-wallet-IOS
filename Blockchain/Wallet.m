@@ -1076,8 +1076,8 @@
 
     if (!errorCode) {
         errorCode = @"404";
-    // Temporary fix; waiting on error codes to be send from My-Wallet-HD
-    } else if ([errorCode rangeOfString:@"dust"].length != 0) {
+    // Temporary fix; waiting on error codes to be sent from My-Wallet-HD
+    } else if ([errorCode respondsToSelector:@selector(rangeOfString:)] && [errorCode rangeOfString:@"dust"].length != 0) {
         errorCode = @"100";
     }
     
