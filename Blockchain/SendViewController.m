@@ -75,16 +75,6 @@ uint64_t doo = 10000;
     [self reload];
 }
 
-- (void)showInsufficientFunds
-{
-    btcAmountField.textColor = [UIColor redColor];
-    fiatAmountField.textColor = [UIColor redColor];
-    sendPaymentButton.enabled = NO;
-    sendPaymentAccessoryButton.enabled = NO;
-    [sendPaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [sendPaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-}
-
 - (void)resetFromAddress
 {
     self.fromAddress = @"";
@@ -356,6 +346,8 @@ uint64_t doo = 10000;
         alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 [self confirmSweepPayment];
+            } else {
+                [self enablePaymentButtons];
             }
         };
         
@@ -371,6 +363,9 @@ uint64_t doo = 10000;
 - (void)confirmPayment
 {
     [self dismissKeyboard];
+    
+    // Payment buttons are likely already disabled on a regular payment, but need to be disabled again when using all funds
+    [self disablePaymentButtons];
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -409,6 +404,7 @@ uint64_t doo = 10000;
                                               otherButtonTitles:BC_STRING_SEND, nil];
         
         alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [self enablePaymentButtons];
             if (buttonIndex == 1) {
                 [self reallyDoPayment];
             }
@@ -429,10 +425,7 @@ uint64_t doo = 10000;
     else {
         btcAmountField.textColor = [UIColor blackColor];
         fiatAmountField.textColor = [UIColor blackColor];
-        sendPaymentButton.enabled = YES;
-        sendPaymentAccessoryButton.enabled = YES;
-        [sendPaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [sendPaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self enablePaymentButtons];
     }
     
     if ([btcAmountField isFirstResponder]) {
@@ -450,6 +443,29 @@ uint64_t doo = 10000;
     [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_ALL_AMOUNT,
                                     [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
                           forState:UIControlStateNormal];
+}
+
+- (void)showInsufficientFunds
+{
+    btcAmountField.textColor = [UIColor redColor];
+    fiatAmountField.textColor = [UIColor redColor];
+    [self disablePaymentButtons];
+}
+
+- (void)disablePaymentButtons
+{
+    sendPaymentButton.enabled = NO;
+    sendPaymentAccessoryButton.enabled = NO;
+    [sendPaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [sendPaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+}
+
+- (void)enablePaymentButtons
+{
+    sendPaymentButton.enabled = YES;
+    sendPaymentAccessoryButton.enabled = YES;
+    [sendPaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [sendPaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
@@ -873,17 +889,28 @@ uint64_t doo = 10000;
 
 - (void)addObserverForFee
 {
+    [self disablePaymentButtons];
+    
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-        uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
+        
         if ([notification.userInfo count] != 0) {
             
+            uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
+            
             if ([notification.userInfo valueForKey:@"errorCode"]) {
-                if ([[notification.userInfo valueForKey:@"errorCode"] longLongValue] == 500) {
-                    [self showSweepConfirmationScreen];
-                    return;
+                uint64_t errorCodeValue = [[notification.userInfo valueForKey:@"errorCode"] longLongValue];
+                switch (errorCodeValue) {
+                    case 500: {
+                        [self showSweepConfirmationScreen];
+                        return;
+                    }
+                    case 404: {
+                        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
+                        [self enablePaymentButtons];
+                        return;
+                    }
                 }
-                
                 // Other related error codes go here
             }
             

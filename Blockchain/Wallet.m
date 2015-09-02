@@ -1075,7 +1075,7 @@
     DLog(@"on_error_update_fee");
 
     if (!errorCode) {
-        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
+        errorCode = @"404";
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"errorCode": [NSNumber numberWithLongLong:[errorCode longLongValue]]}];
