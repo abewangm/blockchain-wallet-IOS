@@ -905,24 +905,14 @@ uint64_t doo = 10000;
                         [self showSweepConfirmationScreen];
                         return;
                     }
-                    case 404: {
-                        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
-                        [self enablePaymentButtons];
-                        return;
-                    }
-                    case 100: {
-                        // Temporary fix; this error code is not yet implemented in My-Wallet-HD
-                        [app standardNotify: [[NSString alloc] initWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD_ARGUMENT, [app formatMoney:5460 localCurrency:NO]]];
-                        [self enablePaymentButtons];
-                        return;
-                    }
                 }
-                // Other related error codes go here
             }
             
             self.feeFromTransactionProposal = newFee;
             DLog(@"SendViewController: got fee of %lld", newFee);
             [self confirmPayment];
+        } else {
+            [self enablePaymentButtons];
         }
     }];
 }

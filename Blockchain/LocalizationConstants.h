@@ -40,7 +40,6 @@
 #define BC_STRING_SEND_TO NSLocalizedString(@"Send to...", nil)
 #define BC_STRING_CONFIRM_SWEEP_TITLE NSLocalizedString(@"Use all funds", nil)
 #define BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT NSLocalizedString(@"The amount you want to send (%@) is greater than your balance minus the fee (%@ - %@). Would you like to send %@?", nil)
-#define BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD_ARGUMENT NSLocalizedString(@"You must send an amount greater than the network dust threshold (%@)", nil)
 
 #define BC_STRING_YOU_MUST_ENTER_A_LABEL NSLocalizedString(@"You must enter a label", nil)
 #define BC_STRING_LABEL_MUST_HAVE_LESS_THAN_18_CHAR NSLocalizedString(@"Label must have less than 18 characters", nil)

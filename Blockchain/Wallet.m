@@ -1070,18 +1070,16 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"fee":fee}];
 }
 
-- (void)on_error_update_fee:(NSString *)errorCode
+- (void)on_error_update_fee:(NSString *)error
 {
     DLog(@"on_error_update_fee");
-
-    if (!errorCode) {
-        errorCode = @"404";
-    // Temporary fix; waiting on error codes to be sent from My-Wallet-HD
-    } else if ([errorCode respondsToSelector:@selector(rangeOfString:)] && [errorCode rangeOfString:@"dust"].length != 0) {
-        errorCode = @"100";
-    }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"errorCode": [NSNumber numberWithLongLong:[errorCode longLongValue]]}];
+    if ([error isKindOfClass:[NSString class]]) {
+        [app standardNotify:error];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"errorCode": [NSNumber numberWithLongLong:[error longLongValue]]}];
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
