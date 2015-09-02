@@ -41,7 +41,7 @@ import UIKit
         headerLabel.text = NSLocalizedString("Backup Funds", comment: "");
         topBar!.addSubview(headerLabel);
         
-        closeButton = UIButton(type: UIButtonType.Custom) as? UIButton
+        closeButton = UIButton.buttonWithType(UIButtonType.Custom) as? UIButton
         closeButton!.contentHorizontalAlignment = .Left;
         closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
         closeButton!.titleLabel?.font = UIFont.systemFontOfSize(15)

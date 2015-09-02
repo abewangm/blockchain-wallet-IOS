@@ -35,7 +35,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
         word1?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
         word2?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
         word3?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
@@ -133,6 +133,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
                     pleaseTryAgain()
                     return
                 }
+            }
             
             if valid {
                 word1?.resignFirstResponder()
@@ -151,7 +152,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func pleaseTryAgain() {
-        let alertView = UIAlertView()
+        var alertView = UIAlertView()
         alertView.title = NSLocalizedString("Error", comment:"")
         alertView.message = NSLocalizedString("Please try again", comment:"")
         alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
@@ -159,11 +160,11 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func textFieldDidChange() {
-        if !word1!.text!.isEmpty && !word2!.text!.isEmpty && !word3!.text!.isEmpty {
+        if !word1!.text.isEmpty && !word2!.text.isEmpty && !word3!.text.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
             verifyButton?.enabled = true
             verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        } else if word1!.text!.isEmpty || word2!.text!.isEmpty || word3!.text!.isEmpty {
+        } else if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
             verifyButton?.enabled = false
             verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
@@ -195,6 +196,6 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func didGetSecondPassword(password: String) {
-            wallet!.getRecoveryPhrase(password)
-        }
+        wallet!.getRecoveryPhrase(password)
+    }
 }

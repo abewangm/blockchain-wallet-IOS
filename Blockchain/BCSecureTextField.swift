@@ -20,7 +20,7 @@ class BCSecureTextField : UITextField {
         autocorrectionType = .No
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         autocorrectionType = .No
     }

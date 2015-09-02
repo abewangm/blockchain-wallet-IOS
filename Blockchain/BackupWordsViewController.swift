@@ -164,7 +164,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     @IBAction func unwindSecondPasswordSuccess(segue: UIStoryboardSegue) {
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String: AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject: AnyObject], context: UnsafeMutablePointer<Void>) {
         let words = wallet!.recoveryPhrase.componentsSeparatedByString(" ")
         for i in 0 ..< Constants.Defaults.NumberOfRecoveryPhraseWords {
             wordLabels![i].text = words[i]
