@@ -409,7 +409,7 @@ uint64_t doo = 10000;
 
 - (void)doCurrencyConversion
 {
-    // If the amount entered exceeds amount available + fee, change the color of the amount text
+    // If the amount entered exceeds amount available, change the color of the amount text
     if (amountInSatoshi > availableAmount) {
         [self showInsufficientFunds];
     }
