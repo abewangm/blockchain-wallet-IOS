@@ -38,6 +38,9 @@
 
 #define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
 
+#define KEYCHAIN_KEY_SHARED_KEY @"sharedkey"
+#define KEYCHAIN_KEY_GUID @"guid"
+
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
 #define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"
 #define UNSAFE_CHECK_PATH_BIN_BASH @"/bin/bash"
@@ -175,21 +178,21 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     // Migrate guid and sharedkey from NSUserDefaults to KeyChain
-    NSString *guid = [[NSUserDefaults standardUserDefaults] objectForKey:@"guid"];
+    NSString *guid = [[NSUserDefaults standardUserDefaults] objectForKey:KEYCHAIN_KEY_GUID];
     if (guid) {
         [self setGuid:guid];
         
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"guid"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEYCHAIN_KEY_GUID];
         
         // Remove all UIWebView cached data for users upgrading from older versions
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
     }
     
-    NSString *sharedkey = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedKey"];
+    NSString *sharedkey = [[NSUserDefaults standardUserDefaults] objectForKey:KEYCHAIN_KEY_SHARED_KEY];
     if (sharedkey) {
         [self setSharedkey:sharedkey];
         
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sharedKey"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEYCHAIN_KEY_SHARED_KEY];
     }
     
     // Listen for notification (from Swift code) to reload:
@@ -969,7 +972,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
         
-        [self.wallet loadWalletWithGuid:[code objectForKey:@"guid"] sharedKey:[code objectForKey:@"sharedKey"] password:[code objectForKey:@"password"]];
+        [self.wallet loadWalletWithGuid:[code objectForKey:KEYCHAIN_KEY_GUID] sharedKey:[code objectForKey:KEYCHAIN_KEY_SHARED_KEY] password:[code objectForKey:@"password"]];
         
         self.wallet.delegate = self;
         
@@ -1669,7 +1672,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (NSString *)guid
 {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"guid" accessGroup:nil];
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_GUID accessGroup:nil];
     NSData *guidData = [keychain objectForKey:(__bridge id)kSecValueData];
     NSString *guid = [[NSString alloc] initWithData:guidData encoding:NSUTF8StringEncoding];
     
@@ -1678,23 +1681,23 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)setGuid:(NSString *)guid
 {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"guid" accessGroup:nil];
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_GUID accessGroup:nil];
     [keychain setObject:(__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly forKey:(__bridge id)kSecAttrAccessible];
     
-    [keychain setObject:@"guid" forKey:(__bridge id)kSecAttrAccount];
+    [keychain setObject:KEYCHAIN_KEY_GUID forKey:(__bridge id)kSecAttrAccount];
     [keychain setObject:[guid dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
 }
 
 - (void)removeGuid
 {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"guid" accessGroup:nil];
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_GUID accessGroup:nil];
     
     [keychain resetKeychainItem];
 }
 
 - (NSString *)sharedKey
 {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"sharedkey" accessGroup:nil];
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
     NSData *sharedkeyData = [keychain objectForKey:(__bridge id)kSecValueData];
     NSString *sharedkey = [[NSString alloc] initWithData:sharedkeyData encoding:NSUTF8StringEncoding];
     
@@ -1703,16 +1706,16 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)setSharedkey:(NSString *)sharedkey
 {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"sharedkey" accessGroup:nil];
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
     [keychain setObject:(__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly forKey:(__bridge id)kSecAttrAccessible];
     
-    [keychain setObject:@"sharedkey" forKey:(__bridge id)kSecAttrAccount];
+    [keychain setObject:KEYCHAIN_KEY_SHARED_KEY forKey:(__bridge id)kSecAttrAccount];
     [keychain setObject:[sharedkey dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
 }
 
 - (void)removeSharedkey
 {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"sharedkey" accessGroup:nil];
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
     
     [keychain resetKeychainItem];
 }
