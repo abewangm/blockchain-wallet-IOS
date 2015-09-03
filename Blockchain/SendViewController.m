@@ -345,7 +345,7 @@ uint64_t doo = 10000;
             if (buttonIndex == 1) {
                 amountInSatoshi = maxAmount;
                 [self doCurrencyConversion];
-                [self confirmPayment];
+                [self sendPaymentClicked:nil];
             } else {
                 [self enablePaymentButtons];
             }
@@ -863,9 +863,7 @@ uint64_t doo = 10000;
             
             self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
             uint64_t maxAmount = [notification.userInfo[@"amount"] longLongValue];
-            
-            // A new spender has to be created for the max fee
-            [self getTransactionProposalFeeForAmount:maxAmount isConfirming:NO];
+
             DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[@"fee"] longLongValue]);
 
             if (isSpendingMoreThanAvailable) {
