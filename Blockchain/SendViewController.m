@@ -855,7 +855,7 @@ uint64_t doo = 10000;
 
 #pragma mark Fee Calculation
 
-- (void)addObserverForMaxFee:(BOOL)isSpendingMoreThanAvailable
+- (void)addObserverForMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
 {
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
@@ -878,7 +878,7 @@ uint64_t doo = 10000;
     }];
 }
 
-- (void)addObserverForFee:(BOOL)isConfirming
+- (void)addObserverForFeeWhileConfirming:(BOOL)isConfirming
 {
     [self disablePaymentButtons];
     
@@ -925,7 +925,7 @@ uint64_t doo = 10000;
         return;
     }
     
-    [self addObserverForFee:isConfirming];
+    [self addObserverForFeeWhileConfirming:isConfirming];
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
     
     NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
@@ -956,7 +956,7 @@ uint64_t doo = 10000;
 
 - (void)getMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
 {
-    [self addObserverForMaxFee:isSpendingMoreThanAvailable];
+    [self addObserverForMaxFeeDueToOverspending:isSpendingMoreThanAvailable];
     
     [self getMaxFeeFromWallet];
 }
