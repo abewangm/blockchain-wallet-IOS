@@ -1070,6 +1070,14 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"fee":fee}];
 }
 
+- (void)update_max_amount:(NSNumber *)amount fee:(NSNumber *)fee
+{
+    DLog(@"update_max_amount");
+    DLog(@"Wallet: max amount is %@ with fee %@", amount, fee);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"amount":amount , @"fee":fee}];
+}
+
 - (void)on_error_update_fee:(NSString *)error
 {
     DLog(@"on_error_update_fee");

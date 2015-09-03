@@ -325,7 +325,7 @@ uint64_t doo = 10000;
     }
 }
 
-- (void)showSweepConfirmationScreen
+- (void)showSweepConfirmationScreenWithMaxAmount:(uint64_t)maxAmount
 {
     [self dismissKeyboard];
     
@@ -336,16 +336,16 @@ uint64_t doo = 10000;
         NSString *balanceAmountString = [app formatMoney:availableAmount localCurrency:NO];
         NSString *feeAmountString = [app formatMoney:self.feeFromTransactionProposal localCurrency:NO];
         
-        uint64_t availableAmountMinusFee = availableAmount - self.feeFromTransactionProposal;
-        
-        NSString *canSendAmountString = [app formatMoney:availableAmountMinusFee localCurrency:NO];
+        NSString *canSendAmountString = [app formatMoney:maxAmount localCurrency:NO];
         
         NSString *sweepMessageString = [[NSString alloc] initWithFormat:BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT, wantToSendAmountString, balanceAmountString, feeAmountString, canSendAmountString];
         
         BCAlertView *alertView = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_SWEEP_TITLE message:sweepMessageString delegate:nil cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SEND, nil];
         alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
-                [self confirmSweepPayment];
+                amountInSatoshi = maxAmount;
+                [self doCurrencyConversion];
+                [self confirmPayment];
             } else {
                 [self enablePaymentButtons];
             }
@@ -355,14 +355,11 @@ uint64_t doo = 10000;
     });
 }
 
-- (void)confirmSweepPayment
-{
-    [self getMaxFeeAndConfirmPayment];
-}
-
 - (void)confirmPayment
 {
     [self dismissKeyboard];
+    
+    [self doCurrencyConversion];
     
     // Payment buttons are likely already disabled on a regular payment, but need to be disabled again when using all funds
     [self disablePaymentButtons];
@@ -372,12 +369,6 @@ uint64_t doo = 10000;
         
         if (btcAmountField.textColor == [UIColor redColor]) {
             // Stop payment in case of error "No free outputs to spend"
-            return;
-        }
-        
-        uint64_t availableAmountMinusFee = availableAmount - self.feeFromTransactionProposal;
-        if (amountInSatoshi > availableAmountMinusFee) {
-            [self showSweepConfirmationScreen];
             return;
         }
         
@@ -836,7 +827,9 @@ uint64_t doo = 10000;
 
 - (IBAction)useAllClicked:(id)sender
 {
-    [self getMaxFee];
+    [btcAmountField resignFirstResponder];
+    [fiatAmountField resignFirstResponder];
+    [self getMaxFeeDueToOverspending:NO];
 }
 
 - (void)useAllFunds
@@ -862,32 +855,30 @@ uint64_t doo = 10000;
 
 #pragma mark Fee Calculation
 
-- (void)addObserverForMaxFee
+- (void)addObserverForMaxFee:(BOOL)isSpendingMoreThanAvailable
 {
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
         if ([notification.userInfo count] != 0) {
+            
             self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
-            [self useAllFunds];
+            uint64_t maxAmount = [notification.userInfo[@"amount"] longLongValue];
+            
+            // A new spender has to be created for the max fee
+            [self getTransactionProposalFeeForAmount:maxAmount isConfirming:NO];
             DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[@"fee"] longLongValue]);
+
+            if (isSpendingMoreThanAvailable) {
+                [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
+            } else {
+                amountInSatoshi = maxAmount;
+                [self doCurrencyConversion];
+            }
         }
     }];
 }
 
-- (void)addObserverForConfirmingMaxFee
-{
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-        if ([notification.userInfo count] != 0) {
-            self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
-            [self useAllFunds];
-            [self confirmPayment];
-            DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[@"fee"] longLongValue]);
-        }
-    }];
-}
-
-- (void)addObserverForFee
+- (void)addObserverForFee:(BOOL)isConfirming
 {
     [self disablePaymentButtons];
     
@@ -902,7 +893,7 @@ uint64_t doo = 10000;
                 uint64_t errorCodeValue = [[notification.userInfo valueForKey:@"errorCode"] longLongValue];
                 switch (errorCodeValue) {
                     case 500: {
-                        [self showSweepConfirmationScreen];
+                        [self getMaxFeeDueToOverspending:YES];
                         return;
                     }
                 }
@@ -910,14 +901,19 @@ uint64_t doo = 10000;
             
             self.feeFromTransactionProposal = newFee;
             DLog(@"SendViewController: got fee of %lld", newFee);
-            [self confirmPayment];
+            
+            if (isConfirming) {
+                [self confirmPayment];
+            } else {
+                [self enablePaymentButtons];
+            }
         } else {
             [self enablePaymentButtons];
         }
     }];
 }
 
-- (void)getTransactionProposalFeeForAmount:(uint64_t)amount
+- (void)getTransactionProposalFeeForAmount:(uint64_t)amount isConfirming:(BOOL)isConfirming
 {
     if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
         DLog(@"SendViewController Error: empty amount or toAddress");
@@ -929,7 +925,7 @@ uint64_t doo = 10000;
         return;
     }
     
-    [self addObserverForFee];
+    [self addObserverForFee:isConfirming];
     // The fee is set via feeForTransactionProposal via notification when the promise is delivered
     
     NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
@@ -958,16 +954,9 @@ uint64_t doo = 10000;
     }
 }
 
-- (void)getMaxFee
+- (void)getMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
 {
-    [self addObserverForMaxFee];
-    
-    [self getMaxFeeFromWallet];
-}
-
-- (void)getMaxFeeAndConfirmPayment
-{
-    [self addObserverForConfirmingMaxFee];
+    [self addObserverForMaxFee:isSpendingMoreThanAvailable];
     
     [self getMaxFeeFromWallet];
 }
@@ -1007,7 +996,7 @@ uint64_t doo = 10000;
         return;
     }
     
-    [self getTransactionProposalFeeForAmount:amountInSatoshi];
+    [self getTransactionProposalFeeForAmount:amountInSatoshi isConfirming:YES];
     
     //    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
     //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK
