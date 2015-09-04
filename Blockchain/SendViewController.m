@@ -332,13 +332,15 @@ uint64_t doo = 10000;
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
+        uint64_t spendableAmount = maxAmount + self.feeFromTransactionProposal;
+        
         NSString *wantToSendAmountString = [app formatMoney:amountInSatoshi localCurrency:NO];
-        NSString *balanceAmountString = [app formatMoney:availableAmount localCurrency:NO];
+        NSString *spendableAmountString = [app formatMoney:spendableAmount localCurrency:NO];
         NSString *feeAmountString = [app formatMoney:self.feeFromTransactionProposal localCurrency:NO];
         
         NSString *canSendAmountString = [app formatMoney:maxAmount localCurrency:NO];
         
-        NSString *sweepMessageString = [[NSString alloc] initWithFormat:BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT, wantToSendAmountString, balanceAmountString, feeAmountString, canSendAmountString];
+        NSString *sweepMessageString = [[NSString alloc] initWithFormat:BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT, wantToSendAmountString, spendableAmountString, feeAmountString, canSendAmountString];
         
         BCAlertView *alertView = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_SWEEP_TITLE message:sweepMessageString delegate:nil cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SEND, nil];
         alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
