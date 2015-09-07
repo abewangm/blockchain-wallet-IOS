@@ -963,6 +963,9 @@ uint64_t doo = 10000;
 
 - (IBAction)sendPaymentClicked:(id)sender
 {
+    if (![app checkInternetConnection]) {
+        return;
+    };
     // If user pasted an address into the toField, assign it to toAddress
     if ([self.toAddress length] == 0) {
         self.toAddress = toField.text;
