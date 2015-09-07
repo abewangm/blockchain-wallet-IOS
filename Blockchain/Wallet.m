@@ -1104,6 +1104,15 @@
     [self.webView executeJS:@"MyWalletPhone.upgradeToHDWallet(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
 }
 
+- (Boolean)hasAccount
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.isUpgradedToHD"] boolValue];
+}
+
 - (Boolean)didUpgradeToHd
 {
 #ifdef HD_ENABLED

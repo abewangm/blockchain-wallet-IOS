@@ -160,6 +160,7 @@
 // HD Wallet
 - (void)whitelistWallet;
 - (void)upgradeToHDWallet;
+- (Boolean)hasAccount;
 - (Boolean)didUpgradeToHd;
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
 - (BOOL)isRecoveryPhraseVerified;

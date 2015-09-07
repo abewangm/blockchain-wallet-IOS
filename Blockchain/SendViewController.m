@@ -78,7 +78,7 @@ uint64_t doo = 10000;
 - (void)resetFromAddress
 {
     self.fromAddress = @"";
-    if ([app.wallet didUpgradeToHd]) {
+    if ([app.wallet hasAccount]) {
         // Default setting: send from default account
         self.sendFromAddress = false;
         
@@ -109,7 +109,7 @@ uint64_t doo = 10000;
     [self resetFromAddress];
     
     // If we only have one account and no legacy addresses -> can't change from address
-    if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]
+    if ([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
         && [app.wallet getAccountsCount] == 1) {
         [selectFromButton setHidden:YES];
     }
@@ -118,7 +118,7 @@ uint64_t doo = 10000;
     }
     
     // If we only have one account and no legacy addresses and no address book entries -> can't change to address
-    if ([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]
+    if ([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
         && [app.wallet addressBook].count == 0 && [app.wallet getAccountsCount] == 1) {
         [addressBookButton setHidden:YES];
     }
@@ -221,7 +221,7 @@ uint64_t doo = 10000;
         
         // Reset fields
         self.fromAddress = @"";
-        if ([app.wallet didUpgradeToHd]) {
+        if ([app.wallet hasAccount]) {
             // Default setting: send from default account
             self.sendFromAddress = false;
             int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
@@ -499,7 +499,7 @@ uint64_t doo = 10000;
 {
     if (textField == selectAddressTextField) {
         // If we only have one account and no legacy addresses -> can't change from address
-        if (!([app.wallet didUpgradeToHd] && ![app.wallet hasLegacyAddresses]
+        if (!([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
               && [app.wallet getAccountsCount] == 1)) {
             [self selectFromAddressClicked:textField];
         }

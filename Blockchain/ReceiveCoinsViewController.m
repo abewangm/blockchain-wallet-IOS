@@ -551,7 +551,7 @@ UIActionSheet *popupAddressArchive;
     }
     else {
         // Need at least one active address
-        if (activeKeys.count == 1 && ![app.wallet didUpgradeToHd]) {
+        if (activeKeys.count == 1 && ![app.wallet hasAccount]) {
             [app closeModalWithTransition:kCATransitionFade];
             
             [app standardNotify:BC_STRING_AT_LEAST_ONE_ACTIVE_ADDRESS];
