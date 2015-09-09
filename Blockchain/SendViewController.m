@@ -40,6 +40,13 @@ uint64_t doo = 10000;
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
+    CGFloat statusBarAdjustment = [[UIApplication sharedApplication] statusBarFrame].size.height > DEFAULT_STATUS_BAR_HEIGHT ? DEFAULT_STATUS_BAR_HEIGHT : 0;
+    
+    self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
+                                 app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT - statusBarAdjustment);
+    
     sendProgressModalText.text = nil;
     
     [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
@@ -68,9 +75,6 @@ uint64_t doo = 10000;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
     
     [toField setReturnKeyType:UIReturnKeyDone];
-    
-    self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
-                                 app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
     [self reload];
 }
