@@ -1,123 +1,168 @@
-/* Class = "IBUILabel"; text = "0 BTC"; ObjectID = "257"; */
-"257.text" = "0 BTC";
+/* (No Commment) */
+"2je-u4-PB2.text" = "トランザクション";
 
-/* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "読み込み";
-
-/* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "自動ペアリング";
-
-/* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
-"358.text" = "新しい財布を作成します。";
-
-/* Class = "IBUILabel"; text = "1"; ObjectID = "360"; */
-"360.text" = "1";
-
-/* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Http://blockchain.info/wallet であなたの PC または Mac を介してあなたの Blockchain の財布にログイン";
-
-/* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
-"363.text" = "2";
-
-/* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "[プロファイル] ボタンをクリックし、携帯を選択します。";
-
-/* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
-"368.text" = "3";
-
-/* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "QR コード - 正方形の黒い白いバーコードを明らかにするペアリング コードを表示をクリックします。お使いのカメラで、コードをスキャンします。";
-
-/* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "ペアリング コードをスキャンします。";
-
-/* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
-"376.normalTitle" = "ボタン 2";
-
-/* Class = "IBUIButton"; normalTitle = "Button 1"; ObjectID = "377"; */
-"377.normalTitle" = "ボタン 1";
-
-/* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "Blockchain 財布が既にある場合ペアのデバイス;それ以外の場合は、ウォレットの作成を選択します。それは無料です ！メールのアドレスは必須です。";
-
-/* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "Blockchain 財布へようこそ";
-
-/* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
-"2je-u4-PB2.text" = "Transactions";
-
-/* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "トランザクションがまだありません。";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
-"394.text" = "Password:";
-
-/* Class = "IBUILabel"; text = "Confirm:"; ObjectID = "396"; */
-"396.text" = "確認入力します。";
-
-/* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "ウォレットを作成します。";
-
-/* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "パスワードが必要です。";
-
-/* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "パスワード要求の説明 ］";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
-"468.text" = "Password:";
-
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "471"; */
-"471.normalTitle" = "Continue";
-
-/* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
-"586.text" = "財布識別子:";
-
-/* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "手動でペアに分野 (または自動ペアリングは、お使いのデバイスではサポートされていません)。以下のログインの詳細を入力してください。";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
-"591.text" = "Password:";
-
-/* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "ペアを手動で無効になっている二要素認証が必要です。";
-
-/* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "あなたがログアウトやお財布ファイルを復号化エラーがありました。パスワードを入力して下のログイン。";
-
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
-"625.normalTitle" = "Continue";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "627"; */
-"627.text" = "Password:";
-
-/* Class = "IBUILabel"; text = "Login"; ObjectID = "630"; */
-"630.text" = "ログイン";
-
-/* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
+/* Class = "UIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
 "5gL-FG-Zcc.normalTitle" = "財布を忘れてください。";
 
-/* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "この財布を忘れてをやり直す場合は、' 忘れて財布 ' キーを押します。";
+/* Class = "UIButton"; normalTitle = "1.12345 BTC"; ObjectID = "6sh-r5-yAx"; */
+"6sh-r5-yAx.normalTitle" = "1.12345 BTC";
 
-/* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
+/* (No Commment) */
+"257.text" = "0 BTC";
+
+/* Class = "UILabel"; text = "loading"; ObjectID = "263"; */
+"263.text" = "読み込み";
+
+/* (No Commment) */
+"353.text" = "自動ペアリング";
+
+/* (No Commment) */
+"358.text" = "新しい財布を作成します。";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "360"; */
+"360.text" = "1";
+
+/* Class = "UILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet"; ObjectID = "361"; */
+"361.text" = "Http://blockchain.info/wallet で Blockchain 長財布を介してお使いの PC または Mac にログインします。";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "363"; */
+"363.text" = "2";
+
+/* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
+"364.text" = "[アカウント設定] をクリックし、[デバイス] タブを選択";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "368"; */
+"368.text" = "3";
+
+/* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
+"369.text" = "白黒正方形のバーコード、QR コードを明らかにするためのペアリング コードの表示をクリックします。お使いのカメラでコードをスキャンします。";
+
+/* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
+"370.normalTitle" = "ペアリング コードをスキャンします。";
+
+/* (No Commment) */
+"376.normalTitle" = "ボタン 2";
+
+/* (No Commment) */
+"377.normalTitle" = "ボタン 1";
+
+/* (No Commment) */
+"378.text" = "既に Blockchain 財布があれば、ペアのデバイスを選択します。そうでなければ、ウォレットの作成を選択します。   それは無料です!メールは必要なし。";
+
+/* (No Commment) */
+"380.text" = "Blockchain 財布へようこそ";
+
+/* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
+"387.text" = "トランザクションがまだありません。";
+
+/* (No Commment) */
+"394.text" = "パスワード:";
+
+/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
+"395.placeholder" = "パスワード (最低 10 文字)";
+
+/* (No Commment) */
+"396.text" = "確認します。";
+
+/* Class = "UITextField"; placeholder = "Confirm password"; ObjectID = "397"; */
+"397.placeholder" = "パスワードを確認します。";
+
+/* (No Commment) */
+"398.normalTitle" = "財布を作成します。";
+
+/* (No Commment) */
+"465.text" = "必要なパスワード";
+
+/* Class = "UILabel"; text = "Password Request Description"; ObjectID = "467"; */
+"467.text" = "パスワード要求の説明";
+
+/* (No Commment) */
+"468.text" = "パスワード:";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "469"; */
+"469.placeholder" = "パスワード";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "471"; */
+"471.normalTitle" = "続行";
+
+/* (No Commment) */
+"586.text" = "財布識別子:";
+
+/* Class = "UITextField"; placeholder = "Wallet identifier"; ObjectID = "587"; */
+"587.placeholder" = "財布識別子";
+
+/* (No Commment) */
+"588.text" = "手動でペアを選択した (または自動ペアリングはあなたのデバイスではサポートされていません)。お客様のログイン情報を入力してください。";
+
+/* (No Commment) */
+"591.text" = "パスワード:";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "592"; */
+"592.placeholder" = "パスワード";
+
+/* (No Commment) */
+"602.text" = "2 要素認証のペアを手動で無効に必要があります。";
+
+/* Class = "UILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
+"624.text" = "あなたがログアウトまたは財布ファイルを復号化エラーが発生しました。下にパスワードを入力してログインします。";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "625"; */
+"625.normalTitle" = "続行";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "626"; */
+"626.placeholder" = "パスワード";
+
+/* (No Commment) */
+"627.text" = "パスワード:";
+
+/* (No Commment) */
+"630.text" = "ログイン";
+
+/* Class = "UILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
+"C0R-wB-wF1.text" = "この財布を忘れて、最初からやり直す場合は、「財布を忘れて ' を押します。";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "DIx-fJ-eKX"; */
+"DIx-fJ-eKX.text" = "タイトル";
+
+/* Class = "UITextField"; placeholder = "Your email"; ObjectID = "LsW-69-Qon"; */
+"LsW-69-Qon.placeholder" = "あなたのメール アドレス";
+
+/* Class = "UILabel"; text = "Weak"; ObjectID = "Mk4-63-3pL"; */
+"Mk4-63-3pL.text" = "弱い";
+
+/* (No Commment) */
 "OKS-md-gDQ.normalTitle" = "ボタン 3";
 
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "TzC-Tw-04r"; */
-"TzC-Tw-04r.normalTitle" = "Continue";
+/* Class = "UILabel"; text = "By creating a new wallet you agree to the"; ObjectID = "Qvx-f4-C2O"; */
+"Qvx-f4-C2O.text" = "同意する新しい財布を作成することによって、";
 
-/* Class = "IBUILabel"; text = "Email:"; ObjectID = "VcH-wh-BEs"; */
-"VcH-wh-BEs.text" = "Email:";
+/* (No Commment) */
+"TzC-Tw-04r.normalTitle" = "続行";
 
-/* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
-"jUZ-5W-4qw.text" = "* 必須";
+/* (No Commment) */
+"VcH-wh-BEs.text" = "電子メール：";
 
-/* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
+/* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
+"bzM-Ub-MUU.normalTitle" = "345.68 米ドル";
+
+/* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
+"fI2-PD-Xwa.normalTitle" = "私のカメラにアクセスできません。";
+
+/* (No Commment) */
+"jUZ-5W-4qw.text" = "* 必要";
+
+/* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 トランザクション";
 
-/* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
+/* (No Commment) */
 "qIf-DM-Gtq.text" = "手動ペアリング";
 
-/* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
+/* Class = "UILabel"; text = "You must have two-factor authentication disabled to pair manually."; ObjectID = "rQS-iv-7kZ"; */
+"rQS-iv-7kZ.text" = "2 要素認証のペアを手動で無効に必要があります。";
+
+/* Class = "UIButton"; normalTitle = "Blockchain Terms of Service"; ObjectID = "wfI-8F-dfm"; */
+"wfI-8F-dfm.normalTitle" = "Blockchain サービス利用規約";
+
+/* (No Commment) */
 "wvh-x7-hB8.text" = "* 最低 10 文字";
 

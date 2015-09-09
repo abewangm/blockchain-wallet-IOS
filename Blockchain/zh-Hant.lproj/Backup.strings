@@ -1,39 +1,92 @@
+/* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
+"1Hq-6D-ut1.normalTitle" = "再一次的備份基金";
+
+/* (No Commment) */
+"1Hq-6D-ut1.text" = "再一次的備份基金";
+
+/* (No Commment) */
+"3kJ-3U-lFe.text" = "請再試一次";
+
 /* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
 "4Nq-ue-tXr.text" = "驗證您記下備份的短語";
 
-/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+/* (No Commment) */
 "6zt-Xf-txg.text" = "按下並按住要揭示這個詞";
 
+/* (No Commment) */
+"07q-RX-CeI.text" = "請再試一次";
+
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "備份的錢包";
+"9A7-TT-PzN.title" = "備份的資金";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "你有沒有備份你的錢包";
+/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "你有沒有備份您的資金";
 
-/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
-"EQM-OM-jK8.normalTitle" = "驗證";
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
+"9WK-My-5CL.text" = "此操作需要第二個密碼你比特幣的錢包。請在下面輸入和按繼續。";
 
-/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+/* (No Commment) */
 "9hR-tm-aq5.placeholder" = "第一個單詞";
 
-/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
-"kcC-2S-PfL.placeholder" = "第三個單詞";
+/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
+"74J-f3-Lhq.title" = "所需的第二個密碼";
 
-/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+/* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
+"AFH-AI-Rgk.normalTitle" = "前一個單詞";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
+"CBl-1W-VP8.placeholder" = "密碼";
+
+/* (No Commment) */
+"EQM-OM-jK8.normalTitle" = "完成";
+
+/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "不要把截圖!
+你可以破壞你的錢包安全";
+
+/* (No Commment) */
 "Fda-Z4-3e7.placeholder" = "第六個單詞";
 
-/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+/* (No Commment) */
 "NaV-Bk-o1b.text" = "如何還原你的錢包";
 
-/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
+"OJg-MB-UId.title" = "關閉";
+
+/* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
+"Okr-VE-yvm.text" = "獨角獸";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
+"T3S-Dk-HAh.text" = "請再試一次";
+
+/* (No Commment) */
 "T4p-mz-siC.normalTitle" = "驗證備份";
 
-/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "把單詞寫在一張紙在它們出現的確切順序";
+/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "把單詞寫在一張紙的確切的順序，他們出現在一張紙，並存儲到安全的地方
+";
+
+/* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
+"Yh8-Gm-6op.text" = "失去了你 12 字恢復短語嗎?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "下一個單詞";
 
-/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "備份你的錢包很容易，可以確保你不會失去訪問到您的資金，即使我們的服務變得不可用。";
+/* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
+"eaO-py-9rY.normalTitle" = "下一個單詞";
+
+/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "備份您的資金是很容易和確保你不會失去訪問到您的比特幣，即使我們的服務變得不可用。";
+
+/* (No Commment) */
+"kcC-2S-PfL.placeholder" = "第三個單詞";
+
+/* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
+"mUc-u7-Zcj.text" = "詞的 12 5";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
+"mYR-MQ-mS2.title" = "備份的錢包";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
+"xmf-pK-R3X.title" = "備份的錢包";
 

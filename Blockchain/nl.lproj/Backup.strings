@@ -1,39 +1,92 @@
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Verifiëren dat u de back-up zin opschreef";
+/* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
+"1Hq-6D-ut1.normalTitle" = "Back-fondsen opnieuw";
 
-/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+/* (No Commment) */
+"1Hq-6D-ut1.text" = "Back-fondsen opnieuw";
+
+/* (No Commment) */
+"3kJ-3U-lFe.text" = "Probeer het a.u.b. opnieuw";
+
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Verifiëren dat u de back-up frase opschreef";
+
+/* (No Commment) */
 "6zt-Xf-txg.text" = "Houd ingedrukt om te onthullen het woord";
 
+/* (No Commment) */
+"07q-RX-CeI.text" = "Probeer het a.u.b. opnieuw";
+
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Back-portemonnee";
+"9A7-TT-PzN.title" = "Back-fondsen";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "U hebt niet gesteund uw portemonnee nog";
+/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "U niet een back-up uw fondsen nog";
 
-/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
-"EQM-OM-jK8.normalTitle" = "CONTROLEER OF";
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
+"9WK-My-5CL.text" = "Deze actie is het tweede wachtwoord vereist voor uw bitcoin portemonnee. Voer het hieronder en druk op blijven.";
 
-/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+/* (No Commment) */
 "9hR-tm-aq5.placeholder" = "eerste woord";
 
-/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
-"kcC-2S-PfL.placeholder" = "derde woord";
+/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
+"74J-f3-Lhq.title" = "Tweede wachtwoord vereist";
 
-/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+/* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
+"AFH-AI-Rgk.normalTitle" = "Vorige woord";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
+"CBl-1W-VP8.placeholder" = "Wachtwoord";
+
+/* (No Commment) */
+"EQM-OM-jK8.normalTitle" = "Gedaan";
+
+/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "Neem een screenshot niet!
+U kunt uw portemonnee veiligheid in gevaar brengen";
+
+/* (No Commment) */
 "Fda-Z4-3e7.placeholder" = "zesde woord";
 
-/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+/* (No Commment) */
 "NaV-Bk-o1b.text" = "Hoe om te herstellen van uw portemonnee";
 
-/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
+"OJg-MB-UId.title" = "Sluiten";
+
+/* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
+"Okr-VE-yvm.text" = "Eenhoorn";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
+"T3S-Dk-HAh.text" = "Probeer het a.u.b. opnieuw";
+
+/* (No Commment) */
 "T4p-mz-siC.normalTitle" = "BACK-UPS VERIFIËREN";
 
-/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Schrijf de woorden op een vel papier in de exacte volgorde ";
+/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Schrijf de woorden op een vel papier in de exacte volgorde waarin ze worden weergegeven op een vel papier, en slaan het ergens veilig
+";
+
+/* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
+"Yh8-Gm-6op.text" = "Verloor uw 12 woord herstel uitdrukking?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "VOLGENDE WOORD";
 
-/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Back-up van uw portemonnee is eenvoudig en zorgt ervoor dat verliest u geen toegang tot uw geld, zelfs als onze service niet meer beschikbaar is.";
+/* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
+"eaO-py-9rY.normalTitle" = "Volgende woord";
+
+/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Back-up van uw fondsen is eenvoudig en zorgt ervoor dat verliest u geen toegang tot uw bitcoins, zelfs als onze service niet meer beschikbaar is.";
+
+/* (No Commment) */
+"kcC-2S-PfL.placeholder" = "derde woord";
+
+/* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
+"mUc-u7-Zcj.text" = "Word 5 van 12";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
+"mYR-MQ-mS2.title" = "Back-portemonnee";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
+"xmf-pK-R3X.title" = "Back-portemonnee";
 

@@ -1,0 +1,92 @@
+/* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
+"1Hq-6D-ut1.normalTitle" = "बैकअप फिर से धन";
+
+/* (No Commment) */
+"1Hq-6D-ut1.text" = "बैकअप फिर से धन";
+
+/* (No Commment) */
+"3kJ-3U-lFe.text" = "कृपया पुन: प्रयास करें";
+
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "सत्यापित करें कि आप बैकअप वाक्यांश नीचे लिखा था";
+
+/* (No Commment) */
+"6zt-Xf-txg.text" = "शब्द प्रकट करने के लिए दबाकर रखें";
+
+/* (No Commment) */
+"07q-RX-CeI.text" = "कृपया पुन: प्रयास करें";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
+"9A7-TT-PzN.title" = "बैकअप फंड";
+
+/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "आप अपनी निधियों को अभी तक समर्थित नहीं है";
+
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
+"9WK-My-5CL.text" = "इस कार्रवाई के लिए अपना bitcoin बटुआ दूसरा पासवर्ड की आवश्यकता है। कृपया उसे नीचे दर्ज करें और प्रेस जारी रखें।";
+
+/* (No Commment) */
+"9hR-tm-aq5.placeholder" = "प्रथम शब्द";
+
+/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
+"74J-f3-Lhq.title" = "दूसरा पासवर्ड की आवश्यकता";
+
+/* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
+"AFH-AI-Rgk.normalTitle" = "पिछला शब्द";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
+"CBl-1W-VP8.placeholder" = "पासवर्ड";
+
+/* (No Commment) */
+"EQM-OM-jK8.normalTitle" = "किया";
+
+/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "एक स्क्रीनशॉट ले लो न!
+आप अपने बटुए की सुरक्षा ख़तरे में डालना कर सकते हैं";
+
+/* (No Commment) */
+"Fda-Z4-3e7.placeholder" = "छठे शब्द";
+
+/* (No Commment) */
+"NaV-Bk-o1b.text" = "अपने बटुए को पुनर्स्थापित कैसे करें";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
+"OJg-MB-UId.title" = "बंद करें";
+
+/* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
+"Okr-VE-yvm.text" = "एक तंगावाला";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
+"T3S-Dk-HAh.text" = "कृपया पुन: प्रयास करें";
+
+/* (No Commment) */
+"T4p-mz-siC.normalTitle" = "बैकअप सत्यापित करें";
+
+/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "सटीक क्रम वे कागज के एक पत्रक पर दिखाई देते हैं, और कहीं न कहीं सुरक्षित संग्रह में कागज के एक पत्रक पर शब्द लिखने के नीचे
+";
+
+/* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
+"Yh8-Gm-6op.text" = "अपने 12 वर्ड वसूली मुहावरा खो दिया?";
+
+/* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
+"dkQ-nj-Pkf.normalTitle" = "अगला शब्द";
+
+/* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
+"eaO-py-9rY.normalTitle" = "अगला शब्द";
+
+/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "ऊपर अपनी निधियों का बैकअप आसान है और यहां तक कि अगर हमारी सेवा अनुपलब्ध हो जाता है सुनिश्चित करता है आप अपने bitcoins के लिए, पहुँच खोना नहीं होगा।";
+
+/* (No Commment) */
+"kcC-2S-PfL.placeholder" = "तीसरा शब्द";
+
+/* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
+"mUc-u7-Zcj.text" = "12 में से 5 शब्द";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
+"mYR-MQ-mS2.title" = "बैकअप बटुआ";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
+"xmf-pK-R3X.title" = "बैकअप बटुआ";
+

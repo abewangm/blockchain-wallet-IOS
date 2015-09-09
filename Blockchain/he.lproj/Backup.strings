@@ -1,39 +1,92 @@
+/* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
+"1Hq-6D-ut1.normalTitle" = "גיבוי קרנות שוב";
+
+/* (No Commment) */
+"1Hq-6D-ut1.text" = "גיבוי קרנות שוב";
+
+/* (No Commment) */
+"3kJ-3U-lFe.text" = "אנא נסה שנית";
+
 /* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
 "4Nq-ue-tXr.text" = "ודא שאתה כתבת את הביטוי גיבוי";
 
-/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+/* (No Commment) */
 "6zt-Xf-txg.text" = "לחץ והחזק כדי לחשוף את המילה";
 
+/* (No Commment) */
+"07q-RX-CeI.text" = "אנא נסה שנית";
+
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "הארנק גיבוי";
+"9A7-TT-PzN.title" = "קרנות גיבוי";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "לא גיבית את הארנק שלך עדיין";
+/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "לא גיבית את הכספים שלך עדיין";
 
-/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
-"EQM-OM-jK8.normalTitle" = "ודא";
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
+"9WK-My-5CL.text" = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
 
-/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+/* (No Commment) */
 "9hR-tm-aq5.placeholder" = "המילה הראשונה";
 
-/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
-"kcC-2S-PfL.placeholder" = "המילה השלישית";
+/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
+"74J-f3-Lhq.title" = "דרושה סיסמה שנייה";
 
-/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+/* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
+"AFH-AI-Rgk.normalTitle" = "המילה הקודמת";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
+"CBl-1W-VP8.placeholder" = "סיסמה";
+
+/* (No Commment) */
+"EQM-OM-jK8.normalTitle" = "עשיתי";
+
+/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "אל תיקח צילום מסך!
+אתה עלול לסכן את האבטחה של הארנק שלך";
+
+/* (No Commment) */
 "Fda-Z4-3e7.placeholder" = "המילה השישית";
 
-/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+/* (No Commment) */
 "NaV-Bk-o1b.text" = "כיצד לשחזר את הארנק שלך";
 
-/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
+"OJg-MB-UId.title" = "סגור";
+
+/* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
+"Okr-VE-yvm.text" = "חד-קרן";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
+"T3S-Dk-HAh.text" = "אנא נסה שנית";
+
+/* (No Commment) */
 "T4p-mz-siC.normalTitle" = "ודא גיבוי";
 
-/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "תכתבי את המילים על גליון נייר לפי הסדר המדויק שהם מופיעים ";
+/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "תכתבי את המילים על גליון נייר לפי הסדר המדויק הם מופיעים על גיליון נייר, ואחסן אותו במקום בטוח
+";
+
+/* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
+"Yh8-Gm-6op.text" = "איבדת את 12 מילים שחזור?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "המילה הבאה";
 
-/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "מגבה את הארנק שלך היא קלה ומבטיחה שלא תאבד גישה כספים שלך, גם אם השירות שלנו הופך ללא זמין.";
+/* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
+"eaO-py-9rY.normalTitle" = "המילה הבאה";
+
+/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "לגבות כספים שלך היא קלה ומבטיחה שלא תאבד גישה bitcoins שלך, גם אם השירות שלנו הופך ללא זמין.";
+
+/* (No Commment) */
+"kcC-2S-PfL.placeholder" = "המילה השלישית";
+
+/* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
+"mUc-u7-Zcj.text" = "המילה 5 12";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
+"mYR-MQ-mS2.title" = "הארנק גיבוי";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
+"xmf-pK-R3X.title" = "הארנק גיבוי";
 

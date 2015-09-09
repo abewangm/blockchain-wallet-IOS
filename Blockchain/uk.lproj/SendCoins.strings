@@ -1,48 +1,69 @@
-/* Class = "IBUIButton"; normalTitle = "Send Payment"; ObjectID = "4"; */
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "4"; */
 "4.normalTitle" = "Надіслати";
 
-/* Class = "IBUILabel"; text = "From:"; ObjectID = "7"; */
-"7.text" = "Від";
-
-/* Class = "IBUILabel"; text = "To:"; ObjectID = "13"; */
-"13.text" = "Щоб";
-
-/* Class = "IBUITextField"; text = "0.00"; ObjectID = "52"; */
-"52.text" = "0.00";
-
-/* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 БТД = $10";
-
-/* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "Позначка:";
-
-/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
-"63.normalTitle" = "Зберегти";
-
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "64"; */
-"64.text" = "Адреса";
-
-/* Class = "IBUILabel"; text = "Address:"; ObjectID = "65"; */
-"65.text" = "Адреса:";
-
-/* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Адресна мітка";
-
-/* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
+/* (No Commment) */
 "6zi-8R-Tmt.normalTitle" = "БТД";
 
-/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
-"7ho-GV-ikp.text" = "Сума";
+/* Class = "UILabel"; text = "From"; ObjectID = "7"; */
+"7.text" = "Від";
 
-/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "8LN-Tc-WVh"; */
+/* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
+"7ho-GV-ikp.text" = "БТД";
+
+/* (No Commment) */
 "8LN-Tc-WVh.normalTitle" = "Зроблено";
 
-/* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
+/* (No Commment) */
+"13.text" = "Щоб";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
+"52.placeholder" = "0.000";
+
+/* (No Commment) */
+"52.text" = "0.00";
+
+/* (No Commment) */
+"57.text" = "5 БТД = $10";
+
+/* (No Commment) */
+"61.text" = "Позначка:";
+
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
+"62.placeholder" = "Етикетка";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
+"63.normalTitle" = "Зберегти";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "64"; */
+"64.text" = "Адреса";
+
+/* (No Commment) */
+"65.text" = "Адреса:";
+
+/* (No Commment) */
+"67.text" = "Адресна мітка";
+
+/* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
 "Zgn-Wx-Uwx.text" = "Будь ласка, зачекай";
 
-/* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
+/* (No Commment) */
 "aKC-Q2-phD.text" = "Відправлення платежу";
 
-/* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
+/* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
+"d7n-Ue-QXL.normalTitle" = "Коштів, що доступна";
+
+/* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
+"fpY-AA-We5.text" = "Щоб";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "pPu-bJ-k6p"; */
+"pPu-bJ-k6p.normalTitle" = "Надіслати";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
+"qx4-XV-uhn.placeholder" = "0.00";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
+"vGH-md-Ck3.text" = "USD";
+
+/* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Будь-яку адресу";
 

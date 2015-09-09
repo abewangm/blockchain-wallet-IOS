@@ -1,0 +1,72 @@
+/* (No Commment) */
+"1sL-eb-Qgc.normalTitle" = "Blizu";
+
+/* (No Commment) */
+"48.normalTitle" = "Shrani";
+
+/* (No Commment) */
+"56.text" = "Oznake naslov";
+
+/* (No Commment) */
+"57.text" = "Naslov";
+
+/* (No Commment) */
+"58.text" = "Oznaka";
+
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "59"; */
+"59.placeholder" = "Oznaka";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "60"; */
+"60.text" = "Naslov";
+
+/* (No Commment) */
+"68.text" = "Ni naslovi";
+
+/* (No Commment) */
+"69.text" = "Vaš račun je verjetno ni pravilno povezal. Kliknite na gumb v zgornjem levem kotu zaslona in sledite navodilom na zaslonu.";
+
+/* (No Commment) */
+"80.normalTitle" = "ARHIV NASLOV";
+
+/* (No Commment) */
+"81.normalTitle" = "OZNAKE NASLOV";
+
+/* (No Commment) */
+"88.normalTitle" = "ZAHTEVA PLAČILO";
+
+/* Class = "UILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
+"90.text" = "Bitcoin naslov ";
+
+/* (No Commment) */
+"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
+
+/* (No Commment) */
+"92.normalTitle" = "KOPIRAJTE NASLOV";
+
+/* (No Commment) */
+"100.text" = "Znesek:";
+
+/* (No Commment) */
+"120.text" = "5 BTC = $10";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
+"E60-hZ-tDl.placeholder" = "0.000";
+
+/* (No Commment) */
+"GwZ-6f-89z.normalTitle" = "BTC";
+
+/* Class = "UITextField"; text = "Only to control keyboard"; ObjectID = "OFk-NR-2Sp"; */
+"OFk-NR-2Sp.text" = "Samo za nadzor tipkovnice";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
+"a9y-3I-Drw.placeholder" = "0.00";
+
+/* (No Commment) */
+"i1j-pG-caF.normalTitle" = "Skeniranje zasebnega ključa";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
+"jRM-0A-Zuo.text" = "BTC";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
+"wDT-32-lDe.text" = "USD";
+

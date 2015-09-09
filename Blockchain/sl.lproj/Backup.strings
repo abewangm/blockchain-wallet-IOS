@@ -1,0 +1,92 @@
+/* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
+"1Hq-6D-ut1.normalTitle" = "Varnostno sredstva spet";
+
+/* (No Commment) */
+"1Hq-6D-ut1.text" = "Varnostno sredstva spet";
+
+/* (No Commment) */
+"3kJ-3U-lFe.text" = "Prosimo, poskusite znova";
+
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Preverite, ali da si zapisal varnostno stavek";
+
+/* (No Commment) */
+"6zt-Xf-txg.text" = "Pridr¾ite, da razkrije beseda";
+
+/* (No Commment) */
+"07q-RX-CeI.text" = "Prosimo, poskusite znova";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
+"9A7-TT-PzN.title" = "Varnostno sredstev";
+
+/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Jih ne varnostno kopirali sredstva še";
+
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
+"9WK-My-5CL.text" = "To dejanje zahteva drugo geslo za bitcoin denarnico. Vnesite spodaj ter časnikarstvo vzdržnost.";
+
+/* (No Commment) */
+"9hR-tm-aq5.placeholder" = "Prva beseda";
+
+/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
+"74J-f3-Lhq.title" = "Drugo geslo";
+
+/* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
+"AFH-AI-Rgk.normalTitle" = "Prejšnje besede";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
+"CBl-1W-VP8.placeholder" = "Geslo";
+
+/* (No Commment) */
+"EQM-OM-jK8.normalTitle" = "Opravljeno";
+
+/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "Ne bodite screenshot!
+Lahko ogrozijo varnost vaše denarnice";
+
+/* (No Commment) */
+"Fda-Z4-3e7.placeholder" = "šesti besedo";
+
+/* (No Commment) */
+"NaV-Bk-o1b.text" = "Kako obnoviti vaše denarnice";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
+"OJg-MB-UId.title" = "Blizu";
+
+/* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
+"Okr-VE-yvm.text" = "Samorog";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
+"T3S-Dk-HAh.text" = "Prosimo, poskusite znova";
+
+/* (No Commment) */
+"T4p-mz-siC.normalTitle" = "PREVERI VARNOSTNO KOPIRANJE";
+
+/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Besede napišite na list papirja v takem zaporedju, prikazani na list papirja, in to nekje varno shranjevanje
+";
+
+/* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
+"Yh8-Gm-6op.text" = "Izgubili vaše besede 12 beseda okrevanje?";
+
+/* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
+"dkQ-nj-Pkf.normalTitle" = "NASLEDNJO BESEDO";
+
+/* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
+"eaO-py-9rY.normalTitle" = "Naslednjo besedo";
+
+/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Varnostno kopiranje vaših sredstev je enostavno in zagotavlja, ne boste izgubili dostop do vaše bitcoins, tudi če storitev ni na voljo.";
+
+/* (No Commment) */
+"kcC-2S-PfL.placeholder" = "tretja beseda";
+
+/* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
+"mUc-u7-Zcj.text" = "Beseda 5 12";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
+"mYR-MQ-mS2.title" = "Varnostno denarnice";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
+"xmf-pK-R3X.title" = "Varnostno denarnice";
+

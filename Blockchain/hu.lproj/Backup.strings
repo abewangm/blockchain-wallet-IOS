@@ -1,69 +1,92 @@
-
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Backup funds again";
+"1Hq-6D-ut1.normalTitle" = "Biztonsági alapok újra";
+
+/* (No Commment) */
+"1Hq-6D-ut1.text" = "Biztonsági alapok újra";
+
+/* (No Commment) */
+"3kJ-3U-lFe.text" = "Legyen szíves megpróbál újra";
 
 /* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Verify that you wrote down the backup phrase";
+"4Nq-ue-tXr.text" = "Ellenőrizze, hogy írtál le a biztonságimásolat-készítő mondat";
 
-/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "Second Password Required";
+/* (No Commment) */
+"6zt-Xf-txg.text" = "Nyomja meg és tartsa, hogy felfedje a szót";
+
+/* (No Commment) */
+"07q-RX-CeI.text" = "Legyen szíves megpróbál újra";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Backup Wallet";
+"9A7-TT-PzN.title" = "Biztonsági alapok";
 
 /* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "You have not backed up your funds yet";
+"9Hu-uO-gJl.text" = "Nem biztonsági másolatban a források még";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue.";
+"9WK-My-5CL.text" = "Ez a művelet megköveteli a második jelszó bitcoin tárcátok. Kérjük, adja meg alább, és sajtó Folytatódik.";
 
-/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
-"9hR-tm-aq5.placeholder" = "first word";
+/* (No Commment) */
+"9hR-tm-aq5.placeholder" = "első szó";
+
+/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
+"74J-f3-Lhq.title" = "Második jelszó szükséges";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
-"AFH-AI-Rgk.normalTitle" = "Previous word";
+"AFH-AI-Rgk.normalTitle" = "Előző szó";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
-"CBl-1W-VP8.placeholder" = "Password";
+"CBl-1W-VP8.placeholder" = "Jelszó";
+
+/* (No Commment) */
+"EQM-OM-jK8.normalTitle" = "Kész";
 
 /* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
-"FDO-ui-cGo.text" = "Don't take a screenshot! You can jeopardize your wallet's security";
+"FDO-ui-cGo.text" = "Nem fog egy ernyőz!
+Veszélyeztetik a biztonság a pénztárca";
 
-/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
-"Fda-Z4-3e7.placeholder" = "sixth word";
+/* (No Commment) */
+"Fda-Z4-3e7.placeholder" = "hatodik szó";
+
+/* (No Commment) */
+"NaV-Bk-o1b.text" = "Hogyan viselkedni visszaad a pénztárca";
 
 /* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
-"OJg-MB-UId.title" = "Close";
+"OJg-MB-UId.title" = "Zár";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
-"Okr-VE-yvm.text" = "unicorn";
+"Okr-VE-yvm.text" = "Egyszarvú";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
-"T3S-Dk-HAh.text" = "Please try again";
+"T3S-Dk-HAh.text" = "Legyen szíves megpróbál újra";
+
+/* (No Commment) */
+"T4p-mz-siC.normalTitle" = "ELLENŐRIZZE A BIZTONSÁGI MÁSOLAT";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)";
+"UCL-i9-UDp.text" = "A következő szöveget írja a papírra a pontos sorrendben jelennek meg egy papírlapot, és tárolja biztonságos helyen
+";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "Lost your 12 word recovery phrase?";
+"Yh8-Gm-6op.text" = "Elveszett a 12 szó helyreállítási kifejezés?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
-"dkQ-nj-Pkf.normalTitle" = "NEXT WORD";
+"dkQ-nj-Pkf.normalTitle" = "KÖVETKEZŐ SZÓ";
 
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
-"eaO-py-9rY.normalTitle" = "Next word";
+"eaO-py-9rY.normalTitle" = "Következő szó";
 
 /* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable.";
+"eyR-AW-SMc.text" = "Hátlap megjelöl a alapok könnyen, és biztosítja, akkor nem tudunk hozzáférni a bitcoins, akkor is, ha a szolgáltatás elérhetetlenné válik.";
 
-/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
-"kcC-2S-PfL.placeholder" = "third word";
+/* (No Commment) */
+"kcC-2S-PfL.placeholder" = "harmadik szó";
 
 /* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
-"mUc-u7-Zcj.text" = "Word 5 of 12";
+"mUc-u7-Zcj.text" = "Szó 5-12";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "Backup Wallet";
+"mYR-MQ-mS2.title" = "Hát pénztárca";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "Backup Wallet";
+"xmf-pK-R3X.title" = "Hát pénztárca";
+

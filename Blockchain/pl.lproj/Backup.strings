@@ -1,39 +1,92 @@
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Sprawdź, że napisałeś w kopii zapasowej zdanie";
+/* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
+"1Hq-6D-ut1.normalTitle" = "Kopia zapasowa funduszy ponownie";
 
-/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+/* (No Commment) */
+"1Hq-6D-ut1.text" = "Kopia zapasowa funduszy ponownie";
+
+/* (No Commment) */
+"3kJ-3U-lFe.text" = "Spróbuj ponownie";
+
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Sprawdź, że napisałeś dół kopii zapasowej zdanie";
+
+/* (No Commment) */
 "6zt-Xf-txg.text" = "Naciśnij i przytrzymaj, aby odsłonić słowo";
 
+/* (No Commment) */
+"07q-RX-CeI.text" = "Spróbuj ponownie";
+
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Kopia zapasowa portfel";
+"9A7-TT-PzN.title" = "Kopia zapasowa funduszy";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Nie ma kopii zapasowej portfelu jeszcze";
+/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Nie ma kopii zapasowej fundusze jeszcze";
 
-/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
-"EQM-OM-jK8.normalTitle" = "SPRAWDŹ, CZY";
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
+"9WK-My-5CL.text" = "Ta akcja wymaga drugiego hasła dla portfela bitcoin. Proszę wpisać poniżej i naciśnij przycisk Kontynuuj.";
 
-/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+/* (No Commment) */
 "9hR-tm-aq5.placeholder" = "pierwsze słowo";
 
-/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
-"kcC-2S-PfL.placeholder" = "trzecie słowo";
+/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
+"74J-f3-Lhq.title" = "Drugie hasło wymagane";
 
-/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+/* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
+"AFH-AI-Rgk.normalTitle" = "Poprzednie słowo";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
+"CBl-1W-VP8.placeholder" = "Hasło";
+
+/* (No Commment) */
+"EQM-OM-jK8.normalTitle" = "Zrobić";
+
+/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "Nie Zrób zrzut ekranu!
+Może narażać bezpieczeństwa Twojego portfela";
+
+/* (No Commment) */
 "Fda-Z4-3e7.placeholder" = "szóste słowo";
 
-/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+/* (No Commment) */
 "NaV-Bk-o1b.text" = "Jak przywrócić swój portfel";
 
-/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
+"OJg-MB-UId.title" = "Zamknij";
+
+/* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
+"Okr-VE-yvm.text" = "jednorożec";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
+"T3S-Dk-HAh.text" = "Spróbuj ponownie";
+
+/* (No Commment) */
 "T4p-mz-siC.normalTitle" = "SPRAWDŹ, CZY KOPIA ZAPASOWA";
 
-/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Napisać na kartce papieru w takiej kolejności pojawiają się słowa ";
+/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Napisać słowa na kartce papieru w takiej kolejności pojawiają się na kartce papieru i przechowuj go w bezpiecznym miejscu
+";
+
+/* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
+"Yh8-Gm-6op.text" = "Stracił swoje zdanie odzyskiwania 12 słowo?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "NASTÊPNE";
 
-/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Poparcie w górze twój portfel jest łatwe i zapewnia, że nie stracisz dostęp do funduszy, nawet jeśli nasz serwis staje się niedostępny.";
+/* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
+"eaO-py-9rY.normalTitle" = "Nastêpne";
+
+/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Poparcie w górze twój funduszy jest łatwe i zapewnia, że nie stracisz dostęp do bitcoins, nawet jeśli nasz serwis staje się niedostępny.";
+
+/* (No Commment) */
+"kcC-2S-PfL.placeholder" = "trzecie słowo";
+
+/* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
+"mUc-u7-Zcj.text" = "Słowo 5 z 12";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
+"mYR-MQ-mS2.title" = "Kopia zapasowa portfel";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
+"xmf-pK-R3X.title" = "Kopia zapasowa portfel";
 

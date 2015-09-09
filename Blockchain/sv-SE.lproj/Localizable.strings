@@ -1,0 +1,745 @@
+/* (No Commment) */
+"%.4f BTC" = "%.4f BTC";
+
+/* (No Commment) */
+"%@ copied to clipboard" = "%@ kopieras till Urklipp";
+
+/* (No Commment) */
+"%d Confirmations" = "%d bekräftelser";
+
+/* (No Commment) */
+"%d Transactions" = "%d transaktioner";
+
+/* No comment provided by engineer. */
+"%lld hours ago" = "%lld timmar sedan";
+
+/* No comment provided by engineer. */
+"%lld minutes ago" = "%lld minuter sedan";
+
+/* No comment provided by engineer. */
+"%lld seconds ago" = "%lld sekunder sedan";
+
+/* No comment provided by engineer. */
+"(e.g., with your passport)" = "(t.ex. med ditt Passport-konto)";
+
+/* (No Commment) */
+"* Minimum 10 characters" = "* Minst 10 tecken";
+
+/* No comment provided by engineer. */
+"1 hour ago" = "1 timme sedan";
+
+/* No comment provided by engineer. */
+"1 minute ago" = "1 minut sedan";
+
+/* (No Commment) */
+"About" = "Om";
+
+/* (No Commment) */
+"Account Details" = "Kontouppgifter";
+
+/* (No Commment) */
+"Add Email" = "Lägga till e-";
+
+/* (No Commment) */
+"Add to Address book?" = "Lägg till i adressbok?";
+
+/* (No Commment) */
+"Address book" = "Adressbok";
+
+/* (No Commment) */
+"Address is not valid" = "Adressen är inte giltig";
+
+/* (No Commment) */
+"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Ett e-postkonto behövs för att återvinna en förlorad plånbok identifierare och fÃ¶r meddelanden om betalning. Också, din verifierad e-postadress kommer att användas som ett andra lager av verifiering när du loggar in på din plånbok.";
+
+/* (No Commment) */
+"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ett fel uppstod validera din PIN-kod med fjärrservern. Du kan vara offline eller blockchain kan uppleva svårigheter. Vill du försöka igen validering eller istället ange lösenordet manuellt?";
+
+/* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ett fel påträffades laddar din plånbok. Du kan vara offline eller Blockchain upplever svårigheter. Stäng programmet och försök igen senare eller åter koppla enheten.";
+
+/* (No Commment) */
+"Any address" = "Alla adresser";
+
+/* (No Commment) */
+"Anything you need to store, spend and receive your bitcoin" = "Allt du behöver lagra, spendera och få din bitcoin";
+
+/* (No Commment) */
+"Archive" = "Arkiv";
+
+/* (No Commment) */
+"Archive Address" = "Arkiv adress";
+
+/* (No Commment) */
+"Ask Me Later" = "Fråga mig senare";
+
+/* (No Commment) */
+"Authorization Required" = "Tillstånd krävs";
+
+/* (No Commment) */
+"Automatic Pairing" = "Automatisk parning";
+
+/* (No Commment) */
+"Automatically" = "Automatiskt";
+
+/* No comment provided by engineer. */
+"BACKUP FUNDS" = "BACKUP MEDEL";
+
+/* (No Commment) */
+"Backup" = "Säkerhetskopiering";
+
+/* No comment provided by engineer. */
+"Backup Funds" = "Backup medel";
+
+/* (No Commment) */
+"Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Innan din plånbok, Välj en pin-kod du använder för att låsa upp din plånbok. Det är viktigt du ihåg detta stift som det inte kan återställa eller ändras utan första låsa upp app.";
+
+/* (No Commment) */
+"Bitcoin Units" = "Bitcoin enheter";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin betalningsbegäran";
+
+/* (No Commment) */
+"Cancel" = "Avbryt";
+
+/* (No Commment) */
+"Cannot save PIN Code while wallet is not initialized or password is null" = "Kan inte spara PIN-kod medan plånbok inte är initierat eller lösenord är null";
+
+/* (No Commment) */
+"Change Email" = "Ändra e-post";
+
+/* (No Commment) */
+"Change PIN" = "Ändra PIN-kod";
+
+/* (No Commment) */
+"Change fee per kilobyte" = "Ändringsavgift per kilobyte";
+
+/* (No Commment) */
+"Checking for Wallet updates" = "Plånbok uppdateringar";
+
+/* No comment provided by engineer. */
+"Close" = "Stäng";
+
+/* (No Commment) */
+"Close App" = "Stänga App";
+
+/* (No Commment) */
+"Confirm Payment" = "Bekräfta betalning";
+
+/* (No Commment) */
+"Confirm your PIN" = "Bekräfta din PIN-kod";
+
+/* (No Commment) */
+"Connection timed out. Please check your internet connection." = "Connection timeout. Kontrollera din internet-anslutning.";
+
+/* No comment provided by engineer. */
+"Continue" = "Fortsätta";
+
+/* (No Commment) */
+"Copied to clipboard" = "Kopieras till Urklipp";
+
+/* (No Commment) */
+"Copy Address" = "Kopiera adressen";
+
+/* (No Commment) */
+"Create Account" = "Skapa konto";
+
+/* (No Commment) */
+"Create New Wallet" = "Skapa ny plånbok";
+
+/* (No Commment) */
+"Create Wallet" = "Skapa plånbok";
+
+/* (No Commment) */
+"Create personalized accounts to help keep your wallet organized" = "Skapa personliga konton för att hålla plånboken organiserade";
+
+/* (No Commment) */
+"Creating Account" = "Att skapa konto";
+
+/* (No Commment) */
+"Creating HD Wallet" = "Skapa HD plånbok";
+
+/* (No Commment) */
+"Creating new Wallet" = "Skapa ny plånbok";
+
+/* (No Commment) */
+"Current rate: %.4f BTC" = "Nuvarande pris: %.4f BTC";
+
+/* (No Commment) */
+"Decrypted PIN Password length 0" = "Dekrypterade PIN lösenordslängd 0";
+
+/* (No Commment) */
+"Decrypting Private Key" = "Dekryptera privat nyckel";
+
+/* (No Commment) */
+"Decrypting Wallet" = "Dekryptera plånbok";
+
+/* (No Commment) */
+"Display" = "Displayen";
+
+/* (No Commment) */
+"Do you really want to log out?" = "Vill du logga ut?";
+
+/* No comment provided by engineer. */
+"Done" = "Gjort";
+
+/* (No Commment) */
+"Downloading Wallet" = "Ladda ner plånbok";
+
+/* (No Commment) */
+"Easy one time wallet backup keeps you in control of your funds" = "Lätt en gång plånbok backup håller dig kontroll över dina fonder";
+
+/* (No Commment) */
+"Edit Account" = "Redigera konto";
+
+/* (No Commment) */
+"Email" = "E-post";
+
+/* (No Commment) */
+"Empty response from server." = "Tomma svar från servern.";
+
+/* (No Commment) */
+"Enter Password" = "Ange lösenord";
+
+/* (No Commment) */
+"Enter Verification Code" = "Ange verifieringskod";
+
+/* (No Commment) */
+"Enter your verification code" = "Ange verifieringskoden";
+
+/* No comment provided by engineer. */
+"Error" = "Fel";
+
+/* (No Commment) */
+"Error loading settings" = "Inställningar fel lastning";
+
+/* (No Commment) */
+"Failed To Load Wallet" = "Kunde inte ladda plånboken";
+
+/* (No Commment) */
+"Fee is too high (0.01 BTC limit)" = "Avgiften är för hög (0,01 BTC gräns)";
+
+/* (No Commment) */
+"Fee per kilobyte" = "Avgift per kilobyte";
+
+/* (No Commment) */
+"Fees" = "Avgifter";
+
+/* (No Commment) */
+"Finished Signing Inputs" = "Färdiga undertecknandet ingångar";
+
+/* (No Commment) */
+"Forget Wallet" = "Glömma plånboken";
+
+/* (No Commment) */
+"From and destination account have to be different" = "Från och destinationskonto måste vara olika";
+
+/* (No Commment) */
+"From and destination address have to be different" = "Från och måladressen måste vara olika";
+
+/* (No Commment) */
+"How would you like to pair?" = "Hur vill du par?";
+
+/* (No Commment) */
+"Identifier" = "Identifierare";
+
+/* (No Commment) */
+"Import Address" = "Importera adress";
+
+/* (No Commment) */
+"Imported Addresses" = "Importerade adresser";
+
+/* (No Commment) */
+"Imported Addresses (Archived)" = "Importerade adresser (arkiveras)";
+
+/* (No Commment) */
+"Imported Private Key %@" = "Importerade privata nyckeln %@";
+
+/* (No Commment) */
+"Importing key" = "Importera nyckel";
+
+/* (No Commment) */
+"Incorrect PIN. Please retry." = "Felaktig PIN-kod. Försök igen.";
+
+/* (No Commment) */
+"Information" = "Information";
+
+/* (No Commment) */
+"Initializing Wallet" = "Initierar plånbok";
+
+/* (No Commment) */
+"Insufficient Funds" = "Otillräckliga medel";
+
+/* (No Commment) */
+"Invalid GUID" = "Ogiltigt GUID";
+
+/* (No Commment) */
+"Invalid Identifier" = "Ogiltig identifierare";
+
+/* (No Commment) */
+"Invalid Send Value" = "Ogiltig skicka värdet";
+
+/* (No Commment) */
+"Invalid Shared Key" = "Ogiltig delad nyckel";
+
+/* (No Commment) */
+"Invalid Status Code Returned %@" = "Ogiltig statuskod returneras %@";
+
+/* (No Commment) */
+"Invalid email address." = "Ogiltig e-postadress.";
+
+/* (No Commment) */
+"Invalid server response. Please check your internet connection." = "Ogiltigt serversvar. Kontrollera din internet-anslutning.";
+
+/* (No Commment) */
+"Invalid to bitcoin address" = "Ogiltigt att bitcoin adress";
+
+/* No comment provided by engineer. */
+"Just now" = "Just nu";
+
+/* (No Commment) */
+"Label" = "Etikett";
+
+/* (No Commment) */
+"Label Address" = "Etikett adress";
+
+/* (No Commment) */
+"Label must contain letters and numbers only" = "Etiketten måste innehålla bokstäver och siffror endast";
+
+/* (No Commment) */
+"Label must have less than 18 characters" = "Etiketten måste ha mindre än 18 tecken";
+
+/* (No Commment) */
+"Loading External Page" = "Laddar extern sida";
+
+/* (No Commment) */
+"Loading transactions" = "Läser in transaktioner";
+
+/* (No Commment) */
+"Local Currency" = "Lokal valuta";
+
+/* (No Commment) */
+"Log in to my wallet" = "Logga in på min plånbok";
+
+/* (No Commment) */
+"Login existing wallet" = "Logga in befintliga plånbok";
+
+/* (No Commment) */
+"Logout" = "Logga ut";
+
+/* (No Commment) */
+"Manual Pairing" = "Manuell ihopkoppling";
+
+/* (No Commment) */
+"Manually" = "Manuellt";
+
+/* (No Commment) */
+"Merchant" = "Köpman";
+
+/* (No Commment) */
+"Merchant Map" = "Öppna karta";
+
+/* (No Commment) */
+"My Accounts" = "Mina konton";
+
+/* No comment provided by engineer. */
+"My Bitcoin Wallet" = "Min Bitcoin plånbok";
+
+/* (No Commment) */
+"Name your account" = "Namnge ditt konto";
+
+/* (No Commment) */
+"News, Price & Charts" = "Nyheter, Pris & diagram";
+
+/* No comment provided by engineer. */
+"Next word" = "Nästa ord";
+
+/* (No Commment) */
+"No" = "Nej";
+
+/* (No Commment) */
+"No Label" = "Ingen etikett";
+
+/* No comment provided by engineer. */
+"No Password Entered" = "Inga lösenord som anges";
+
+/* (No Commment) */
+"No internet connection." = "Ingen internet-anslutning.";
+
+/* (No Commment) */
+"Normal" = "Normal";
+
+/* (No Commment) */
+"Not now" = "Inte nu";
+
+/* (No Commment) */
+"Notifications" = "Anmälningar";
+
+/* No comment provided by engineer. */
+"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Nu kan du återställa dina fonder med 12 ordet återhämtning om du förlorar din plånbok lösenord";
+
+/* No comment provided by engineer. */
+"OK" = "Okej";
+
+/* (No Commment) */
+"Optionally receive notifications when a payment is sent or received from your wallet." = "Du kan också få meddelanden när en betalning skickas eller tas emot från din plånbok.";
+
+/* (No Commment) */
+"PIN Encrypted String is nil" = "PIN krypteras strängen är noll";
+
+/* (No Commment) */
+"PIN Response Object key or value length 0" = "PIN svar objekt nyckel eller värde längden 0";
+
+/* (No Commment) */
+"PIN Response Object success length 0" = "PIN svar objekt framgång längden 0";
+
+/* (No Commment) */
+"PIN Saved Successfully" = "PIN sparats";
+
+/* (No Commment) */
+"PIN Validation Error" = "PIN-kod fel";
+
+/* (No Commment) */
+"PIN Validation cannot be completed. Please enter your wallet password manually." = "PIN validering kan inte slutföras. Vänligen ange din plånbok lösenord manuellt.";
+
+/* (No Commment) */
+"PINs do not match" = "PINs matchar inte";
+
+/* (No Commment) */
+"Parsing Pairing Code" = "Parsning länkningskod";
+
+/* (No Commment) */
+"Password Required" = "Lösenord krävs";
+
+/* (No Commment) */
+"Password must 10 characters or longer" = "Lösenord måste 10 tecken eller längre";
+
+/* (No Commment) */
+"Passwords do not match" = "Lösenorden matchar inte";
+
+/* (No Commment) */
+"Payment Received" = "Betalning mottagen";
+
+/* (No Commment) */
+"Payment Sent!" = "Betalning skickas!";
+
+/* (No Commment) */
+"Please add an email address" = "Lägg till en e-postadress";
+
+/* (No Commment) */
+"Please check your email." = "Vänligen kontrollera din e-post.";
+
+/* (No Commment) */
+"Please choose another PIN" = "Välj en annan PIN";
+
+/* (No Commment) */
+"Please choose from the options below." = "Välj bland alternativen nedan.";
+
+/* (No Commment) */
+"Please enter a new PIN" = "Ange en ny PIN-kod";
+
+/* (No Commment) */
+"Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Skriv in din plånbok ID 36 tecken korrekt. Det finns i välkomstmeddelande vid start.";
+
+/* (No Commment) */
+"Please enter your PIN" = "Skriv in din PIN-kod";
+
+/* (No Commment) */
+"Please provide an email address." = "Ange en e-postadress.";
+
+/* (No Commment) */
+"Please select a different address to send from or lower the fee in Settings." = "Välj en annan adress att skicka från eller sänka avgiften i inställningar.";
+
+/* (No Commment) */
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Vänligen skicka betalning till bitcoin adress (< en href = \"https://blockchain.info/wallet/bitcoin-faq\" > hjälpa? < /a >): %@";
+
+/* (No Commment) */
+"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Vänligen skicka betalning till bitcoin adress. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+
+/* No comment provided by engineer. */
+"Please try again" = "Behaga försök igen";
+
+/* (No Commment) */
+"Please try again shortly." = "Försök igen inom kort.";
+
+/* (No Commment) */
+"Please verify your email" = "Vänligen kontrollera din e-post";
+
+/* (No Commment) */
+"Privacy Policy" = "Privacy Policy";
+
+/* (No Commment) */
+"Receive" = "Ta emot";
+
+/* (No Commment) */
+"Received" = "Fick";
+
+/* (No Commment) */
+"Regular" = "Regelbundna";
+
+/* (No Commment) */
+"Request Amount" = "Begäran belopp";
+
+/* (No Commment) */
+"Resend verification email" = "Skicka bekräftelsemailet";
+
+/* (No Commment) */
+"Retry Validation" = "Försök igen validering";
+
+/* (No Commment) */
+"SMS" = "SMS";
+
+/* (No Commment) */
+"Save" = "Spara";
+
+/* (No Commment) */
+"Scan Pairing Code" = "Scan länkningskod";
+
+/* (No Commment) */
+"Scan QR Code" = "Skanna QR-kod";
+
+/* (No Commment) */
+"Scan Watch Only Address?" = "Skanna klocka enda adressen?";
+
+/* No comment provided by engineer. */
+"Second Password Incorrect" = "Andra lösenord felaktigt";
+
+/* (No Commment) */
+"Second Password Required" = "Andra lösenord krävs";
+
+/* (No Commment) */
+"Send" = "Skicka";
+
+/* (No Commment) */
+"Send from..." = "Skicka från...";
+
+/* (No Commment) */
+"Send to..." = "Skicka till...";
+
+/* (No Commment) */
+"Sending Transaction" = "Skicka transaktionen";
+
+/* (No Commment) */
+"Sent" = "Skickas";
+
+/* (No Commment) */
+"Sent to %@" = "Skickas till %@";
+
+/* (No Commment) */
+"Settings" = "Inställningar";
+
+/* No comment provided by engineer. */
+"Signal %d was raised." = "Signal %d togs upp.";
+
+/* (No Commment) */
+"Signing Input %d" = "Logga in %d";
+
+/* (No Commment) */
+"Signing Inputs" = "Underteckna ingångar";
+
+/* (No Commment) */
+"Strong" = "Strong";
+
+/* (No Commment) */
+"Success" = "Framgång";
+
+/* (No Commment) */
+"Success!" = "Framgång!";
+
+/* (No Commment) */
+"Support" = "Stöd";
+
+/* (No Commment) */
+"Terms of Service" = "Villkor för tjänsten";
+
+/* (No Commment) */
+"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Det belopp du vill skicka (%1$@) är större än det högsta belopp du kan spendera minus avgiften (%2$@ - %3$@). Vill du skicka %4$@?";
+
+/* (No Commment) */
+"The private key you are attempting to import is encrypted. Please enter the password below." = "Den privata nyckeln som du försöker importera krypteras. Skriv in lösenordet nedan.";
+
+/* (No Commment) */
+"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Denna åtgärd kräver andra lösenordet för plånboken bitcoin. Anger du det nedan och tryck på Fortsätt.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Detta kommer att radera alla plånbok data på enheten. Vänligen bekräfta när du har din plånbok information sparas på andra håll annars alla bitcoins i denna plånbok kommer att vara otillgängliga!";
+
+/* (No Commment) */
+"To: %@
+%@
+Total Amount: %@
+Fee: %@
+(%@)" = "Till: %1$@%2$@ totala belopp: %3$@ avgift: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Total Balance" = "Totalt saldo";
+
+/* (No Commment) */
+"Transaction" = "Transaktion";
+
+/* (No Commment) */
+"Transferred" = "Överfört";
+
+/* (No Commment) */
+"UPGRADE YOUR WALLET" = "UPPGRADERA DIN PLÅNBOK";
+
+/* (No Commment) */
+"Unarchive" = "Hämta från Arkiv";
+
+/* (No Commment) */
+"Unarchive Address" = "Hämta från Arkiv adress";
+
+/* (No Commment) */
+"Unconfirmed" = "Obekräftade";
+
+/* No comment provided by engineer. */
+"Unhandled exception" = "Ohanterat undantag";
+
+/* (No Commment) */
+"Unsupported Private Key Format" = "Privat nyckel Format som inte stöds";
+
+/* (No Commment) */
+"Update" = "Uppdatering";
+
+/* (No Commment) */
+"Updating settings" = "Uppdatera inställningar";
+
+/* (No Commment) */
+"Upgrade Now" = "Uppgradera nu";
+
+/* (No Commment) */
+"Upgrade Wallet" = "Uppgradera plånbok";
+
+/* (No Commment) */
+"Upgrade to HD" = "Uppgradering till HD";
+
+/* (No Commment) */
+"Use all %@" = "Använda alla %@";
+
+/* (No Commment) */
+"Use all funds" = "Använda alla medel";
+
+/* (No Commment) */
+"User Declined" = "Användaren minskade";
+
+/* No comment provided by engineer. */
+"VERIFY BACKUP" = "VERIFIERA BACKUP";
+
+/* (No Commment) */
+"Verify" = "Kontrollera";
+
+/* (No Commment) */
+"Verifying" = "Kontrollera";
+
+/* (No Commment) */
+"Wallet Identifer" = "Plånbok identifierare";
+
+/* (No Commment) */
+"Wallet Paired Successfully." = "Plånbok Parade framgångsrikt.";
+
+/* (No Commment) */
+"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Plånbok adress %@ har pengar att spendera. Men den privata nyckeln måste skannas från ett papper plånbok eller en QR kod. Vill du Skanna den privata nyckeln nu?";
+
+/* (No Commment) */
+"Warning" = "Varning";
+
+/* (No Commment) */
+"Warning!!!" = "Varning!";
+
+/* (No Commment) */
+"We've designed a whole new
+wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse för dig";
+
+/* (No Commment) */
+"We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Vi har inkluderat några betydande förbättringar av integritet och säkerhet. När du klickar på uppdatera kommer inte du att kunna gå tillbaka till din gamla plånbok";
+
+/* (No Commment) */
+"Weak" = "Svag";
+
+/* (No Commment) */
+"We’ve detected a previous installation of Blockchain Wallet on your phone." = "Vi har upptäckt en tidigare installation av Blockchain plånbok på telefonen.";
+
+/* (No Commment) */
+"Would you like to add the bitcoin address %@ to your address book?" = "Vill du lägga till bitcoin adressen %@ i din adressbok?";
+
+/* No comment provided by engineer. */
+"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "Skriva på ett papper i den exakta ordning som de visas på ett ark papper och förvara den någonstans säkert
+";
+
+/* (No Commment) */
+"Yes" = "Ja";
+
+/* No comment provided by engineer. */
+"Yesterday" = "Igår";
+
+/* (No Commment) */
+"You are now running our most secure Bitcoin wallet" = "Du nu kör vår säkraste Bitcoin plånbok";
+
+/* No comment provided by engineer. */
+"You backed up your funds successfully" = "Du säkerhetskopierat dina medel framgångsrikt";
+
+/* (No Commment) */
+"You must enter a destination address" = "Du måste Ange resmålets adress";
+
+/* (No Commment) */
+"You must enter a label" = "Du måste ange en etikett";
+
+/* (No Commment) */
+"You must have two-factor authentication disabled to pair manually." = "Du måste ha två-faktorn authentication inaktiverat par manuellt.";
+
+/* (No Commment) */
+"You must leave at least one active address" = "Du måste lämna minst en aktiv adress";
+
+/* (No Commment) */
+"Your device appears to be jailbroken. The security of your wallet may be compromised." = "Enheten verkar vara jailbreakad. Säkerheten för din plånbok kan äventyras.";
+
+/* (No Commment) */
+"Your email has been verified." = "Din e-post har verifierats.";
+
+/* (No Commment) */
+"Your wallet was successfully created." = "Plånboken har skapats.";
+
+/* No comment provided by engineer. */
+"eighth word" = "åttonde ordet";
+
+/* No comment provided by engineer. */
+"eleventh word" = "elfte word";
+
+/* No comment provided by engineer. */
+"fifth word" = "femte uttrycka";
+
+/* No comment provided by engineer. */
+"first word" = "första ordet";
+
+/* No comment provided by engineer. */
+"fourth word" = "fjärde ordet";
+
+/* (No Commment) */
+"iOS Support Request" = "iOS supportärende";
+
+/* No comment provided by engineer. */
+"ninth word" = "nionde word";
+
+/* (No Commment) */
+"or Continue" = "eller Fortsätt";
+
+/* No comment provided by engineer. */
+"second word" = "andra ordet";
+
+/* No comment provided by engineer. */
+"seventh word" = "sjunde ordet";
+
+/* No comment provided by engineer. */
+"sixth word" = "sjätte ordet";
+
+/* No comment provided by engineer. */
+"tenth word" = "tionde word";
+
+/* No comment provided by engineer. */
+"third word" = "tredje ordet";
+
+/* No comment provided by engineer. */
+"twelfth word" = "tolfte word";
+

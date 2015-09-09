@@ -1,54 +1,72 @@
-/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "48"; */
-"48.normalTitle" = "Speichern";
-
-/* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
-"56.text" = "Adresse bezeichnen";
-
-/* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Adresse";
-
-/* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Bezeichnung";
-
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
-"60.text" = "Adresse";
-
-/* Class = "IBUILabel"; text = "No Addresses"; ObjectID = "68"; */
-"68.text" = "Keine Adressen";
-
-/* Class = "IBUILabel"; text = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen."; ObjectID = "69"; */
-"69.text" = "Dein Konto ist wahrscheinlich nicht korrekt gekoppelt. Klicke den Button an der oberen linken Seite des Bildschirms und folge den angezeigten Instruktionen.";
-
-/* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
-"80.normalTitle" = "ARCHIV-ADRESSE";
-
-/* Class = "IBUIButton"; normalTitle = "Set Label"; ObjectID = "81"; */
-"81.normalTitle" = "BEZEICHNUNG ADRESSE";
-
-/* Class = "IBUIButton"; normalTitle = "Request Payment"; ObjectID = "88"; */
-"88.normalTitle" = "ANTRAG-ZAHLUNG";
-
-/* Class = "IBUILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Bitcoin-Adresse ";
-
-/* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
-"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
-
-/* Class = "IBUIButton"; normalTitle = "Copy Address"; ObjectID = "92"; */
-"92.normalTitle" = "ADRESSE KOPIEREN";
-
-/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "100"; */
-"100.text" = "Betrag:";
-
-/* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "120"; */
-"120.text" = "5 BTC = $10";
-
-/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "1sL-eb-Qgc"; */
+/* (No Commment) */
 "1sL-eb-Qgc.normalTitle" = "Schließen";
 
-/* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "GwZ-6f-89z"; */
+/* (No Commment) */
+"48.normalTitle" = "Sie sparen";
+
+/* (No Commment) */
+"56.text" = "Bezeichnung Adresse";
+
+/* (No Commment) */
+"57.text" = "Adresse";
+
+/* (No Commment) */
+"58.text" = "Etikett";
+
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "59"; */
+"59.placeholder" = "Etikett";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "60"; */
+"60.text" = "Adresse";
+
+/* (No Commment) */
+"68.text" = "Keine Adressen";
+
+/* (No Commment) */
+"69.text" = "Ihr Konto ist wahrscheinlich nicht richtig kombiniert. Klicken Sie auf die Schaltfläche oben links auf dem Bildschirm und folgen Sie den Anweisungen auf dem Bildschirm.";
+
+/* (No Commment) */
+"80.normalTitle" = "ARCHIV-ADRESSE";
+
+/* (No Commment) */
+"81.normalTitle" = "BEZEICHNUNG ADRESSE";
+
+/* (No Commment) */
+"88.normalTitle" = "ANTRAG-ZAHLUNG";
+
+/* Class = "UILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
+"90.text" = "Bitcoin-Adresse ";
+
+/* (No Commment) */
+"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
+
+/* (No Commment) */
+"92.normalTitle" = "ADRESSE KOPIEREN";
+
+/* (No Commment) */
+"100.text" = "Betrag:";
+
+/* (No Commment) */
+"120.text" = "5 BTC = $10";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
+"E60-hZ-tDl.placeholder" = "0.000";
+
+/* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
 
-/* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "Privaten Schlüssel scannen";
+/* Class = "UITextField"; text = "Only to control keyboard"; ObjectID = "OFk-NR-2Sp"; */
+"OFk-NR-2Sp.text" = "Nur um die Tastatur zu steuern";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
+"a9y-3I-Drw.placeholder" = "0.00";
+
+/* (No Commment) */
+"i1j-pG-caF.normalTitle" = "Privater Schlüssel Scannen";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
+"jRM-0A-Zuo.text" = "BTC";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
+"wDT-32-lDe.text" = "USD";
 

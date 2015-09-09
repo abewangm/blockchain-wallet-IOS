@@ -1,48 +1,69 @@
-/* Class = "IBUIButton"; normalTitle = "Send Payment"; ObjectID = "4"; */
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "4"; */
 "4.normalTitle" = "Odeslat";
 
-/* Class = "IBUILabel"; text = "From:"; ObjectID = "7"; */
-"7.text" = "Od";
-
-/* Class = "IBUILabel"; text = "To:"; ObjectID = "13"; */
-"13.text" = "Do";
-
-/* Class = "IBUITextField"; text = "0.00"; ObjectID = "52"; */
-"52.text" = "0,00";
-
-/* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 BTC = 10 DOLARŮ";
-
-/* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "Popisek:";
-
-/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
-"63.normalTitle" = "Uložit";
-
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "64"; */
-"64.text" = "Adresa";
-
-/* Class = "IBUILabel"; text = "Address:"; ObjectID = "65"; */
-"65.text" = "Adresa:";
-
-/* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Popisek adresy";
-
-/* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
+/* (No Commment) */
 "6zi-8R-Tmt.normalTitle" = "BTC";
 
-/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
-"7ho-GV-ikp.text" = "Částka";
+/* Class = "UILabel"; text = "From"; ObjectID = "7"; */
+"7.text" = "Od";
 
-/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "8LN-Tc-WVh"; */
+/* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
+"7ho-GV-ikp.text" = "BTC";
+
+/* (No Commment) */
 "8LN-Tc-WVh.normalTitle" = "Hotovo";
 
-/* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
+/* (No Commment) */
+"13.text" = "Na";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
+"52.placeholder" = "0.000";
+
+/* (No Commment) */
+"52.text" = "0,00";
+
+/* (No Commment) */
+"57.text" = "5 BTC = 10 DOLARŮ";
+
+/* (No Commment) */
+"61.text" = "Popisek:";
+
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
+"62.placeholder" = "Popisek";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
+"63.normalTitle" = "Uložit";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "64"; */
+"64.text" = "Adresa";
+
+/* (No Commment) */
+"65.text" = "Adresa:";
+
+/* (No Commment) */
+"67.text" = "Popisek adresy";
+
+/* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
 "Zgn-Wx-Uwx.text" = "Počkejte prosím";
 
-/* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Odesílání platby";
+/* (No Commment) */
+"aKC-Q2-phD.text" = "Odeslání platby";
 
-/* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
+/* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
+"d7n-Ue-QXL.normalTitle" = "Dostupné finanční prostředky";
+
+/* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
+"fpY-AA-We5.text" = "Na";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "pPu-bJ-k6p"; */
+"pPu-bJ-k6p.normalTitle" = "Odeslat";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
+"qx4-XV-uhn.placeholder" = "0,00";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
+"vGH-md-Ck3.text" = "KČ";
+
+/* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Libovolná adresa";
 

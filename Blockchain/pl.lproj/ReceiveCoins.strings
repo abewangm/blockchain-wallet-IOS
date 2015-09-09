@@ -1,54 +1,72 @@
-/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "48"; */
-"48.normalTitle" = "Zapisz";
-
-/* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
-"56.text" = "Etykiety adresowej";
-
-/* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Adres";
-
-/* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Etykieta";
-
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
-"60.text" = "Adres";
-
-/* Class = "IBUILabel"; text = "No Addresses"; ObjectID = "68"; */
-"68.text" = "Nie adresów";
-
-/* Class = "IBUILabel"; text = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen."; ObjectID = "69"; */
-"69.text" = "Konto prawdopodobnie nie jest poprawnie połączony. Kliknij przycisk w górę po lewej stronie ekranu i postępuj zgodnie z instrukcjami na ekranie.";
-
-/* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
-"80.normalTitle" = "ADRES ARCHIWUM";
-
-/* Class = "IBUIButton"; normalTitle = "Set Label"; ObjectID = "81"; */
-"81.normalTitle" = "ETYKIETY ADRESOWEJ";
-
-/* Class = "IBUIButton"; normalTitle = "Request Payment"; ObjectID = "88"; */
-"88.normalTitle" = "ZŁÓŻ WNIOSEK O PŁATNOŚĆ";
-
-/* Class = "IBUILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Adres Bitcoin ";
-
-/* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
-"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
-
-/* Class = "IBUIButton"; normalTitle = "Copy Address"; ObjectID = "92"; */
-"92.normalTitle" = "SKOPIUJ ADRES";
-
-/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "100"; */
-"100.text" = "Kwota:";
-
-/* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "120"; */
-"120.text" = "5 BTC = $10";
-
-/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "1sL-eb-Qgc"; */
+/* (No Commment) */
 "1sL-eb-Qgc.normalTitle" = "Zamknij";
 
-/* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "GwZ-6f-89z"; */
+/* (No Commment) */
+"48.normalTitle" = "Zapisz";
+
+/* (No Commment) */
+"56.text" = "Etykiety adresowej";
+
+/* (No Commment) */
+"57.text" = "Adres";
+
+/* (No Commment) */
+"58.text" = "Etykieta";
+
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "59"; */
+"59.placeholder" = "Etykieta";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "60"; */
+"60.text" = "Adres";
+
+/* (No Commment) */
+"68.text" = "Nie adresów";
+
+/* (No Commment) */
+"69.text" = "Twoje konto prawdopodobnie nie jest poprawnie połączony. Kliknij przycisk w górnym lewym rogu ekranu i postępuj zgodnie z instrukcjami na ekranie.";
+
+/* (No Commment) */
+"80.normalTitle" = "ADRES ARCHIWUM";
+
+/* (No Commment) */
+"81.normalTitle" = "ETYKIETY ADRESOWEJ";
+
+/* (No Commment) */
+"88.normalTitle" = "ZŁÓŻ WNIOSEK O PŁATNOŚĆ";
+
+/* Class = "UILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
+"90.text" = "Adres Bitcoin ";
+
+/* (No Commment) */
+"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
+
+/* (No Commment) */
+"92.normalTitle" = "SKOPIUJ ADRES";
+
+/* (No Commment) */
+"100.text" = "Kwota:";
+
+/* (No Commment) */
+"120.text" = "5 BTC = $10";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
+"E60-hZ-tDl.placeholder" = "0.000";
+
+/* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
 
-/* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "Zeskanuj klucza prywatnego";
+/* Class = "UITextField"; text = "Only to control keyboard"; ObjectID = "OFk-NR-2Sp"; */
+"OFk-NR-2Sp.text" = "Tylko do kontroli klawiatury";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
+"a9y-3I-Drw.placeholder" = "0.00";
+
+/* (No Commment) */
+"i1j-pG-caF.normalTitle" = "Skanowanie klucza prywatnego";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
+"jRM-0A-Zuo.text" = "BTC";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
+"wDT-32-lDe.text" = "USD";
 

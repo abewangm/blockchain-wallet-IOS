@@ -1,123 +1,168 @@
-/* Class = "IBUILabel"; text = "0 BTC"; ObjectID = "257"; */
-"257.text" = "0 BTC";
-
-/* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "načítání";
-
-/* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "Automatické párování";
-
-/* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
-"358.text" = "Vytvoření nové peněženky";
-
-/* Class = "IBUILabel"; text = "1"; ObjectID = "360"; */
-"360.text" = "1";
-
-/* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Přihlášení k vaší peněžence Blockchain přes PC nebo Mac na http://blockchain.info/wallet";
-
-/* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
-"363.text" = "2";
-
-/* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Klepněte na tlačítko profil, pak zvolte mobilní.";
-
-/* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
-"368.text" = "3";
-
-/* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Klepněte na tlačítko Zobrazit kód párování odhalit QR Code - hranaté černé a bílé čárový kód. Skenování kód s vaším fotoaparátem.";
-
-/* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "Skenovat párovacím kódem";
-
-/* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
-"376.normalTitle" = "Tlačítko 2";
-
-/* Class = "IBUIButton"; normalTitle = "Button 1"; ObjectID = "377"; */
-"377.normalTitle" = "Tlačítko 1";
-
-/* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "Pokud již máte Blockchain peněženku, vyberte dvojici zařízení; jinak zvolte vytvořit peněženku.    Je to zdarma! Žádný e-mail.";
-
-/* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "Vítejte v Blockchain Peněženka";
-
-/* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
+/* (No Commment) */
 "2je-u4-PB2.text" = "Transakce";
 
-/* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Zatím žádné transakce";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
-"394.text" = "Heslo:";
-
-/* Class = "IBUILabel"; text = "Confirm:"; ObjectID = "396"; */
-"396.text" = "Potvrzení:";
-
-/* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "Vytvořit peněženku";
-
-/* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "Heslo je vyžadováno";
-
-/* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "Popis požadavku hesla";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
-"468.text" = "Heslo:";
-
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "471"; */
-"471.normalTitle" = "Pokračovat";
-
-/* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
-"586.text" = "Peněženka identifikátor:";
-
-/* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "Rozhodli jste se spárovat ručně (nebo automatické párování není podporován s vaším zařízením). Zadejte prosím své přihlašovací údaje níže.";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
-"591.text" = "Heslo:";
-
-/* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "Musíte mít dvoufaktorové ověřování zakázáno dvojici ručně.";
-
-/* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "Jste se odhlásili, nebo došlo k chybě dešifrování souboru peněženku. Zadejte své heslo níže k přihlášení.";
-
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
-"625.normalTitle" = "Pokračovat";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "627"; */
-"627.text" = "Heslo:";
-
-/* Class = "IBUILabel"; text = "Login"; ObjectID = "630"; */
-"630.text" = "Přihlášení";
-
-/* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
+/* Class = "UIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
 "5gL-FG-Zcc.normalTitle" = "Zapomeňte na peněženku";
 
-/* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "Pokud byste chtěli zapomenout na tuto úschovnu a začít znovu, stiskněte zapomněl peněženku.";
+/* Class = "UIButton"; normalTitle = "1.12345 BTC"; ObjectID = "6sh-r5-yAx"; */
+"6sh-r5-yAx.normalTitle" = "1.12345 BTC";
 
-/* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
+/* (No Commment) */
+"257.text" = "0 BTC";
+
+/* Class = "UILabel"; text = "loading"; ObjectID = "263"; */
+"263.text" = "načítání";
+
+/* (No Commment) */
+"353.text" = "Automatické párování";
+
+/* (No Commment) */
+"358.text" = "Vytvoření nové peněženky";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "360"; */
+"360.text" = "1";
+
+/* Class = "UILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet"; ObjectID = "361"; */
+"361.text" = "Přihlaste se k peněžence Blockchain přes PC nebo Mac na http://blockchain.info/wallet";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "363"; */
+"363.text" = "2";
+
+/* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
+"364.text" = "Klepněte na tlačítko nastavení účtu a pak zvolte kartu zařízení";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "368"; */
+"368.text" = "3";
+
+/* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
+"369.text" = "Klepněte na tlačítko Zobrazit kód párování odhalit QR kód, hranaté černé a bílé čárový kód. Skenování kód s fotoaparátem";
+
+/* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
+"370.normalTitle" = "Skenovat, párování kód";
+
+/* (No Commment) */
+"376.normalTitle" = "Tlačítko 2";
+
+/* (No Commment) */
+"377.normalTitle" = "Tlačítko 1";
+
+/* (No Commment) */
+"378.text" = "Pokud již máte Blockchain peněženku, vyberte dvojici zařízení; jinak zvolte vytvořit peněženku.    Je to zdarma! Žádný e-mail.";
+
+/* (No Commment) */
+"380.text" = "Vítejte v Blockchain Peněženka";
+
+/* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
+"387.text" = "Zatím žádné transakce";
+
+/* (No Commment) */
+"394.text" = "Heslo:";
+
+/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
+"395.placeholder" = "Heslo (minimálně 10 znaků)";
+
+/* (No Commment) */
+"396.text" = "Potvrzení:";
+
+/* Class = "UITextField"; placeholder = "Confirm password"; ObjectID = "397"; */
+"397.placeholder" = "Potvrzení hesla";
+
+/* (No Commment) */
+"398.normalTitle" = "Vytvoření peněženku";
+
+/* (No Commment) */
+"465.text" = "Heslo je vyžadováno";
+
+/* Class = "UILabel"; text = "Password Request Description"; ObjectID = "467"; */
+"467.text" = "Popis na vyžádání hesla";
+
+/* (No Commment) */
+"468.text" = "Heslo:";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "469"; */
+"469.placeholder" = "Heslo";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "471"; */
+"471.normalTitle" = "Pokračovat v";
+
+/* (No Commment) */
+"586.text" = "Peněženka identifikátor:";
+
+/* Class = "UITextField"; placeholder = "Wallet identifier"; ObjectID = "587"; */
+"587.placeholder" = "Peněženka identifikátor";
+
+/* (No Commment) */
+"588.text" = "Jste se rozhodli ručně spárovat (nebo automatické párování není podporován s vaším zařízením). Zadejte prosím své přihlašovací údaje níže.";
+
+/* (No Commment) */
+"591.text" = "Heslo:";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "592"; */
+"592.placeholder" = "Heslo";
+
+/* (No Commment) */
+"602.text" = "Musíte mít dvoufaktorové ověřování zakázáno dvojici ručně.";
+
+/* Class = "UILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
+"624.text" = "Jste se odhlásili, nebo došlo k chybě dešifrování souboru peněženku. Zadejte své heslo níže k přihlášení.";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "625"; */
+"625.normalTitle" = "Pokračovat v";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "626"; */
+"626.placeholder" = "Heslo";
+
+/* (No Commment) */
+"627.text" = "Heslo:";
+
+/* (No Commment) */
+"630.text" = "Přihlášení";
+
+/* Class = "UILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
+"C0R-wB-wF1.text" = "Pokud byste chtěli zapomenout na tuto peněženku a začít znovu, stiskněte zapomněl peněženku.";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "DIx-fJ-eKX"; */
+"DIx-fJ-eKX.text" = "Titul";
+
+/* Class = "UITextField"; placeholder = "Your email"; ObjectID = "LsW-69-Qon"; */
+"LsW-69-Qon.placeholder" = "Váš email";
+
+/* Class = "UILabel"; text = "Weak"; ObjectID = "Mk4-63-3pL"; */
+"Mk4-63-3pL.text" = "Slabá";
+
+/* (No Commment) */
 "OKS-md-gDQ.normalTitle" = "Tlačítko 3";
 
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "TzC-Tw-04r"; */
-"TzC-Tw-04r.normalTitle" = "Pokračovat";
+/* Class = "UILabel"; text = "By creating a new wallet you agree to the"; ObjectID = "Qvx-f4-C2O"; */
+"Qvx-f4-C2O.text" = "Vytvoření nové peněženky souhlasíte";
 
-/* Class = "IBUILabel"; text = "Email:"; ObjectID = "VcH-wh-BEs"; */
+/* (No Commment) */
+"TzC-Tw-04r.normalTitle" = "Pokračovat v";
+
+/* (No Commment) */
 "VcH-wh-BEs.text" = "E-mail:";
 
-/* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
+/* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
+"bzM-Ub-MUU.normalTitle" = "345.68 KČ";
+
+/* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
+"fI2-PD-Xwa.normalTitle" = "Nelze přístup k fotoaparátu";
+
+/* (No Commment) */
 "jUZ-5W-4qw.text" = "* Vyžaduje";
 
-/* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
+/* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 transakce";
 
-/* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
+/* (No Commment) */
 "qIf-DM-Gtq.text" = "Ruční párování";
 
-/* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
+/* Class = "UILabel"; text = "You must have two-factor authentication disabled to pair manually."; ObjectID = "rQS-iv-7kZ"; */
+"rQS-iv-7kZ.text" = "Musíte mít dvoufaktorové ověřování zakázáno dvojici ručně.";
+
+/* Class = "UIButton"; normalTitle = "Blockchain Terms of Service"; ObjectID = "wfI-8F-dfm"; */
+"wfI-8F-dfm.normalTitle" = "Blockchain podmínky služby";
+
+/* (No Commment) */
 "wvh-x7-hB8.text" = "* Minimálně 10 znaků";
 

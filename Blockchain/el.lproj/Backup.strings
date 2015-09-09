@@ -1,39 +1,92 @@
+/* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
+"1Hq-6D-ut1.normalTitle" = "Εφεδρική κεφάλαια και πάλι";
+
+/* (No Commment) */
+"1Hq-6D-ut1.text" = "Εφεδρική κεφάλαια και πάλι";
+
+/* (No Commment) */
+"3kJ-3U-lFe.text" = "Παρακαλώ προσπαθήστε ξανά";
+
 /* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
 "4Nq-ue-tXr.text" = "Βεβαιωθείτε ότι καταγράψατε το εφεδρικό φράση";
 
-/* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
+/* (No Commment) */
 "6zt-Xf-txg.text" = "Πατήστε και κρατήστε πατημένο για να αποκαλύψει τη λέξη";
 
+/* (No Commment) */
+"07q-RX-CeI.text" = "Παρακαλώ προσπαθήστε ξανά";
+
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Αντιγράφων ασφαλείας πορτοφόλι";
+"9A7-TT-PzN.title" = "Εφεδρική ταμεία";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Έχετε δεν υποστηρίξει το πορτοφόλι σας ακόμα";
+/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Έχετε δεν δημιουργήσει αντίγραφα σας ταμεία ακόμα";
 
-/* Class = "UIButton"; normalTitle = "VERIFY"; ObjectID = "EQM-OM-jK8"; */
-"EQM-OM-jK8.normalTitle" = "ΕΠΑΛΉΘΕΥΣΗ";
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
+"9WK-My-5CL.text" = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας bitcoin. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
 
-/* Class = "UITextField"; placeholder = "first word"; ObjectID = "9hR-tm-aq5"; */
+/* (No Commment) */
 "9hR-tm-aq5.placeholder" = "πρώτη λέξη";
 
-/* Class = "UITextField"; placeholder = "third word"; ObjectID = "kcC-2S-PfL"; */
-"kcC-2S-PfL.placeholder" = "Τρίτη λέξη";
+/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
+"74J-f3-Lhq.title" = "Δεύτερο κωδικό πρόσβασης που απαιτείται";
 
-/* Class = "UITextField"; placeholder = "sixth word"; ObjectID = "Fda-Z4-3e7"; */
+/* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
+"AFH-AI-Rgk.normalTitle" = "Προηγούμενης λέξης";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
+"CBl-1W-VP8.placeholder" = "Κωδικός πρόσβασης";
+
+/* (No Commment) */
+"EQM-OM-jK8.normalTitle" = "Γίνει";
+
+/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "Μην πάρτε ένα screenshot!
+Να θέσουν σε κίνδυνο ασφαλείας σας πορτοφόλι";
+
+/* (No Commment) */
 "Fda-Z4-3e7.placeholder" = "έκτη λέξη";
 
-/* Class = "UILabel"; text = "How to restore your wallet"; ObjectID = "NaV-Bk-o1b"; */
+/* (No Commment) */
 "NaV-Bk-o1b.text" = "Πώς να επαναφέρετε το πορτοφόλι σας";
 
-/* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
+"OJg-MB-UId.title" = "Κλείσιμο";
+
+/* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
+"Okr-VE-yvm.text" = "μονόκερος";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
+"T3S-Dk-HAh.text" = "Παρακαλώ προσπαθήστε ξανά";
+
+/* (No Commment) */
 "T4p-mz-siC.normalTitle" = "ΕΠΑΛΗΘΕΎΣΕΤΕ ΤΗ ΔΗΜΙΟΥΡΓΊΑ ΑΝΤΙΓΡΆΦΩΝ ΑΣΦΑΛΕΊΑΣ";
 
-/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear "; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Καταγράψτε τις λέξεις σε ένα φύλλο χαρτιού με την ακριβή σειρά που εμφανίζονται ";
+/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Καταγράψτε τις λέξεις σε ένα φύλλο χαρτιού με την ακριβή σειρά εμφανίζονται σε ένα φύλλο χαρτί, και να το αποθηκεύσετε κάπου ασφαλή
+";
+
+/* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
+"Yh8-Gm-6op.text" = "Χάσατε σας 12 λέξη φράση αποκατάστασης;";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "ΕΠΌΜΕΝΗ ΛΈΞΗ";
 
-/* Class = "UILabel"; text = "Backing up your wallet is easy and ensures you will not lose access to your funds, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Αντιγράφων ασφαλείας πορτοφόλι σας είναι εύκολο και εξασφαλίζει δεν θα χάσετε την πρόσβαση στα χρήματά σας, ακόμα κι αν μας υπηρεσία γίνεται διαθέσιμη.";
+/* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
+"eaO-py-9rY.normalTitle" = "Επόμενη λέξη";
+
+/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Δημιουργία αντιγράφων ασφαλείας των κεφαλαίων σας είναι εύκολο και εξασφαλίζει δεν θα χάσετε την πρόσβαση σε bitcoins σας, ακόμα κι αν μας υπηρεσία γίνεται διαθέσιμη.";
+
+/* (No Commment) */
+"kcC-2S-PfL.placeholder" = "Τρίτη λέξη";
+
+/* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
+"mUc-u7-Zcj.text" = "Λέξη 5 12";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
+"mYR-MQ-mS2.title" = "Εφεδρική πορτοφόλι";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
+"xmf-pK-R3X.title" = "Εφεδρική πορτοφόλι";
 

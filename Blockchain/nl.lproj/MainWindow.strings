@@ -1,123 +1,168 @@
-/* Class = "IBUILabel"; text = "0 BTC"; ObjectID = "257"; */
-"257.text" = "0 BTC";
-
-/* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "Laden";
-
-/* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "Automatische koppeling";
-
-/* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
-"358.text" = "Maak een nieuwe portefeuille";
-
-/* Class = "IBUILabel"; text = "1"; ObjectID = "360"; */
-"360.text" = "1";
-
-/* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Login aan uw portemonnee Blockchain via uw PC of Mac op http://blockchain.info/wallet";
-
-/* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
-"363.text" = "2";
-
-/* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Klik op de knop profiel en kies vervolgens Mobile.";
-
-/* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
-"368.text" = "3";
-
-/* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Klik op weergeven in paren rangschikken Code te onthullen een QR Code - een plein zwart-wit barcode. Scan de code met uw camera.";
-
-/* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "Scan Code in paren rangschikken";
-
-/* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
-"376.normalTitle" = "Knop 2";
-
-/* Class = "IBUIButton"; normalTitle = "Button 1"; ObjectID = "377"; */
-"377.normalTitle" = "Knop 1";
-
-/* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "Als u al een Blockchain portemonnee hebt, kiest u paar apparaat; Kies anders maken portemonnee.    Het is gratis! Geen e-mail vereist.";
-
-/* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "Welkom bij Blockchain portemonnee";
-
-/* Class = "IBUILabel"; text = "TRANSACTIONS"; ObjectID = "2je-u4-PB2"; */
+/* (No Commment) */
 "2je-u4-PB2.text" = "Transacties";
 
-/* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Geen transacties nog";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
-"394.text" = "Wachtwoord:";
-
-/* Class = "IBUILabel"; text = "Confirm:"; ObjectID = "396"; */
-"396.text" = "Bevestigen:";
-
-/* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "Portemonnee maken";
-
-/* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "Wachtwoord vereist";
-
-/* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "Beschrijving van de aanvraag van het wachtwoord";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
-"468.text" = "Wachtwoord:";
-
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "471"; */
-"471.normalTitle" = "Verder gaan";
-
-/* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
-"586.text" = "Portemonnee-id:";
-
-/* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "U hebt handmatig koppelen (of automatische koppeling wordt niet ondersteund met uw apparaat). Voer hieronder uw logingegevens.";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
-"591.text" = "Wachtwoord:";
-
-/* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "U moet verificatie met twee factoren uitgeschakeld aan paar handmatig.";
-
-/* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "U bent uitgelogd of er is een fout opgetreden bij uw portemonnee bestand decoderen. Geef uw wachtwoord hieronder om in te loggen.";
-
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
-"625.normalTitle" = "Verder gaan";
-
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "627"; */
-"627.text" = "Wachtwoord:";
-
-/* Class = "IBUILabel"; text = "Login"; ObjectID = "630"; */
-"630.text" = "Login";
-
-/* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
+/* Class = "UIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
 "5gL-FG-Zcc.normalTitle" = "Portemonnee vergeten";
 
-/* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
+/* Class = "UIButton"; normalTitle = "1.12345 BTC"; ObjectID = "6sh-r5-yAx"; */
+"6sh-r5-yAx.normalTitle" = "1.12345-BTC";
+
+/* (No Commment) */
+"257.text" = "0 BTC";
+
+/* Class = "UILabel"; text = "loading"; ObjectID = "263"; */
+"263.text" = "laden";
+
+/* (No Commment) */
+"353.text" = "Automatische koppeling";
+
+/* (No Commment) */
+"358.text" = "Maak een nieuwe portefeuille";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "360"; */
+"360.text" = "1";
+
+/* Class = "UILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet"; ObjectID = "361"; */
+"361.text" = "Meld u aan bij uw Blockchain portemonnee via uw PC of Mac op http://blockchain.info/wallet";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "363"; */
+"363.text" = "2";
+
+/* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
+"364.text" = "Klik op de knop Accountinstellingen en kies het tabblad apparaten";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "368"; */
+"368.text" = "3";
+
+/* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
+"369.text" = "Klik op weergeven in paren rangschikken Code te onthullen een QR-Code, een plein zwart-wit barcode. Scannen van de code met uw camera";
+
+/* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
+"370.normalTitle" = "Scan Code in paren rangschikken";
+
+/* (No Commment) */
+"376.normalTitle" = "Knop 2";
+
+/* (No Commment) */
+"377.normalTitle" = "Knop 1";
+
+/* (No Commment) */
+"378.text" = "Als u al een Blockchain portemonnee, kies paar apparaat; Kies anders maken portemonnee.    Het is gratis! Geen e-mail nodig.";
+
+/* (No Commment) */
+"380.text" = "Welkom bij Blockchain portemonnee";
+
+/* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
+"387.text" = "Geen transacties nog";
+
+/* (No Commment) */
+"394.text" = "Wachtwoord:";
+
+/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
+"395.placeholder" = "Paswoord (minimaal 10 karakters)";
+
+/* (No Commment) */
+"396.text" = "Bevestigen:";
+
+/* Class = "UITextField"; placeholder = "Confirm password"; ObjectID = "397"; */
+"397.placeholder" = "Bevestig wachtwoord";
+
+/* (No Commment) */
+"398.normalTitle" = "Portefeuille maken";
+
+/* (No Commment) */
+"465.text" = "Wachtwoord vereist";
+
+/* Class = "UILabel"; text = "Password Request Description"; ObjectID = "467"; */
+"467.text" = "Beschrijving van de aanvraag van het wachtwoord";
+
+/* (No Commment) */
+"468.text" = "Wachtwoord:";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "469"; */
+"469.placeholder" = "Wachtwoord";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "471"; */
+"471.normalTitle" = "Blijven";
+
+/* (No Commment) */
+"586.text" = "Portemonnee-id:";
+
+/* Class = "UITextField"; placeholder = "Wallet identifier"; ObjectID = "587"; */
+"587.placeholder" = "Portemonnee-id";
+
+/* (No Commment) */
+"588.text" = "U hebt handmatig koppelen (of automatische koppeling wordt niet ondersteund met uw apparaat). Voer hieronder uw logingegevens.";
+
+/* (No Commment) */
+"591.text" = "Wachtwoord:";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "592"; */
+"592.placeholder" = "Wachtwoord";
+
+/* (No Commment) */
+"602.text" = "U moet verificatie met twee factoren uitgeschakeld voor paar handmatig.";
+
+/* Class = "UILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
+"624.text" = "U bent uitgelogd of er is een fout opgetreden bij uw portemonnee bestand decoderen. Geef uw wachtwoord hieronder om in te loggen.";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "625"; */
+"625.normalTitle" = "Blijven";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "626"; */
+"626.placeholder" = "Wachtwoord";
+
+/* (No Commment) */
+"627.text" = "Wachtwoord:";
+
+/* (No Commment) */
+"630.text" = "Login";
+
+/* Class = "UILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
 "C0R-wB-wF1.text" = "Als u willen zou vergeten deze portefeuille en opnieuw te beginnen, drukt u op 'Vergeten portemonnee'.";
 
-/* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
+/* Class = "UILabel"; text = "Title"; ObjectID = "DIx-fJ-eKX"; */
+"DIx-fJ-eKX.text" = "Titel";
+
+/* Class = "UITextField"; placeholder = "Your email"; ObjectID = "LsW-69-Qon"; */
+"LsW-69-Qon.placeholder" = "Uw e-mailadres";
+
+/* Class = "UILabel"; text = "Weak"; ObjectID = "Mk4-63-3pL"; */
+"Mk4-63-3pL.text" = "Zwak";
+
+/* (No Commment) */
 "OKS-md-gDQ.normalTitle" = "Met knop 3";
 
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "TzC-Tw-04r"; */
-"TzC-Tw-04r.normalTitle" = "Verder gaan";
+/* Class = "UILabel"; text = "By creating a new wallet you agree to the"; ObjectID = "Qvx-f4-C2O"; */
+"Qvx-f4-C2O.text" = "Door het creëren van een nieuwe portefeuille gaat u akkoord met de";
 
-/* Class = "IBUILabel"; text = "Email:"; ObjectID = "VcH-wh-BEs"; */
+/* (No Commment) */
+"TzC-Tw-04r.normalTitle" = "Blijven";
+
+/* (No Commment) */
 "VcH-wh-BEs.text" = "E-mail:";
 
-/* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
+/* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
+"bzM-Ub-MUU.normalTitle" = "345.68 USD";
+
+/* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
+"fI2-PD-Xwa.normalTitle" = "Ik geen toegang tot mijn camera";
+
+/* (No Commment) */
 "jUZ-5W-4qw.text" = "* Vereist";
 
-/* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
+/* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 transacties";
 
-/* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
+/* (No Commment) */
 "qIf-DM-Gtq.text" = "Handmatige koppeling";
 
-/* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
+/* Class = "UILabel"; text = "You must have two-factor authentication disabled to pair manually."; ObjectID = "rQS-iv-7kZ"; */
+"rQS-iv-7kZ.text" = "U moet verificatie met twee factoren uitgeschakeld voor paar handmatig.";
+
+/* Class = "UIButton"; normalTitle = "Blockchain Terms of Service"; ObjectID = "wfI-8F-dfm"; */
+"wfI-8F-dfm.normalTitle" = "Blockchain Terms of Service";
+
+/* (No Commment) */
 "wvh-x7-hB8.text" = "* Minimum 10 tekens";
 

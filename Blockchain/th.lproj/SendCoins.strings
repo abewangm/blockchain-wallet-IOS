@@ -1,45 +1,69 @@
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "4"; */
+"4.normalTitle" = "ส่ง";
 
-/* Class = "IBUIButton"; normalTitle = "Send Payment"; ObjectID = "4"; */
-"4.normalTitle" = "Send Payment";
+/* (No Commment) */
+"6zi-8R-Tmt.normalTitle" = "บีทีซี";
 
-/* Class = "IBUILabel"; text = "From:"; ObjectID = "7"; */
-"7.text" = "From:";
+/* Class = "UILabel"; text = "From"; ObjectID = "7"; */
+"7.text" = "จาก";
 
-/* Class = "IBUILabel"; text = "To:"; ObjectID = "13"; */
-"13.text" = "To:";
+/* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
+"7ho-GV-ikp.text" = "บีทีซี";
 
-/* Class = "IBUITextField"; text = "0.00"; ObjectID = "52"; */
+/* (No Commment) */
+"8LN-Tc-WVh.normalTitle" = "เสร็จแล้ว";
+
+/* (No Commment) */
+"13.text" = "ถึง";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
+"52.placeholder" = "0.000";
+
+/* (No Commment) */
 "52.text" = "0.00";
 
-/* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 BTC = $10";
+/* (No Commment) */
+"57.text" = "บีทีซี 5 = $10";
 
-/* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "Label:";
+/* (No Commment) */
+"61.text" = "ป้ายชื่อ:";
 
-/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
-"63.normalTitle" = "Save";
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
+"62.placeholder" = "ป้ายชื่อ";
 
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "64"; */
-"64.text" = "Address";
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
+"63.normalTitle" = "บันทึก";
 
-/* Class = "IBUILabel"; text = "Address:"; ObjectID = "65"; */
-"65.text" = "Address:";
+/* Class = "UILabel"; text = "Address"; ObjectID = "64"; */
+"64.text" = "ที่อยู่";
 
-/* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Label Address";
+/* (No Commment) */
+"65.text" = "ที่อยู่:";
 
-/* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
-"6zi-8R-Tmt.normalTitle" = "BTC";
+/* (No Commment) */
+"67.text" = "ป้ายชื่อที่อยู่";
 
-/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
-"7ho-GV-ikp.text" = "Amount:";
+/* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
+"Zgn-Wx-Uwx.text" = "กรุณารอสักครู่";
 
-/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "8LN-Tc-WVh"; */
-"8LN-Tc-WVh.normalTitle" = "Close";
+/* (No Commment) */
+"aKC-Q2-phD.text" = "ส่งการชำระเงิน";
 
-/* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Please Wait";
+/* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
+"d7n-Ue-QXL.normalTitle" = "เงินที่มี";
 
-/* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Sending Payment";
+/* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
+"fpY-AA-We5.text" = "ถึง";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "pPu-bJ-k6p"; */
+"pPu-bJ-k6p.normalTitle" = "ส่ง";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
+"qx4-XV-uhn.placeholder" = "0.00";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
+"vGH-md-Ck3.text" = "ดอลลาร์สหรัฐ";
+
+/* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
+"zyc-E3-FOM.text" = "ที่อยู่ใด ๆ";
+

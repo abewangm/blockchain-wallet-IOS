@@ -1,0 +1,69 @@
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "4"; */
+"4.normalTitle" = "भेजें";
+
+/* (No Commment) */
+"6zi-8R-Tmt.normalTitle" = "बीटीसी";
+
+/* Class = "UILabel"; text = "From"; ObjectID = "7"; */
+"7.text" = "से";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
+"7ho-GV-ikp.text" = "बीटीसी";
+
+/* (No Commment) */
+"8LN-Tc-WVh.normalTitle" = "किया";
+
+/* (No Commment) */
+"13.text" = "करने के लिए";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
+"52.placeholder" = "0.000";
+
+/* (No Commment) */
+"52.text" = "0.00";
+
+/* (No Commment) */
+"57.text" = "5 बीटीसी = $10";
+
+/* (No Commment) */
+"61.text" = "लेबल:";
+
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
+"62.placeholder" = "लेबल";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
+"63.normalTitle" = "सहेजें";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "64"; */
+"64.text" = "पते";
+
+/* (No Commment) */
+"65.text" = "पता:";
+
+/* (No Commment) */
+"67.text" = "लेबल पता";
+
+/* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
+"Zgn-Wx-Uwx.text" = "कृपया प्रतीक्षा करो";
+
+/* (No Commment) */
+"aKC-Q2-phD.text" = "भुगतान भेजने";
+
+/* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
+"d7n-Ue-QXL.normalTitle" = "उपलब्ध धन";
+
+/* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
+"fpY-AA-We5.text" = "करने के लिए";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "pPu-bJ-k6p"; */
+"pPu-bJ-k6p.normalTitle" = "भेजें";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
+"qx4-XV-uhn.placeholder" = "0.00";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
+"vGH-md-Ck3.text" = "अमरीकी डालर";
+
+/* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
+"zyc-E3-FOM.text" = "किसी भी पते";
+

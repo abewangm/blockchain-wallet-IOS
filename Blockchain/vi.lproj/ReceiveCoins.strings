@@ -1,54 +1,72 @@
-/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "48"; */
-"48.normalTitle" = "Tiết kiệm";
-
-/* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
-"56.text" = "Nhãn địa chỉ";
-
-/* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Địa chỉ";
-
-/* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Nhãn";
-
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
-"60.text" = "Địa chỉ";
-
-/* Class = "IBUILabel"; text = "No Addresses"; ObjectID = "68"; */
-"68.text" = "Không có địa chỉ";
-
-/* Class = "IBUILabel"; text = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen."; ObjectID = "69"; */
-"69.text" = "Tài khoản của bạn có lẽ không được kết nối chính xác. Click vào nút ở phía trên bên trái của màn hình và làm theo các hướng dẫn trên màn hình.";
-
-/* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
-"80.normalTitle" = "LƯU TRỮ ĐỊA CHỈ";
-
-/* Class = "IBUIButton"; normalTitle = "Set Label"; ObjectID = "81"; */
-"81.normalTitle" = "NHÃN ĐỊA CHỈ";
-
-/* Class = "IBUIButton"; normalTitle = "Request Payment"; ObjectID = "88"; */
-"88.normalTitle" = "YÊU CẦU THANH TOÁN";
-
-/* Class = "IBUILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Bitcoin địa chỉ ";
-
-/* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
-"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
-
-/* Class = "IBUIButton"; normalTitle = "Copy Address"; ObjectID = "92"; */
-"92.normalTitle" = "SAO CHÉP ĐỊA CHỈ";
-
-/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "100"; */
-"100.text" = "Số tiền:";
-
-/* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "120"; */
-"120.text" = "5 BTC = $10";
-
-/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "1sL-eb-Qgc"; */
+/* (No Commment) */
 "1sL-eb-Qgc.normalTitle" = "Đóng";
 
-/* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "GwZ-6f-89z"; */
+/* (No Commment) */
+"48.normalTitle" = "Tiết kiệm";
+
+/* (No Commment) */
+"56.text" = "Nhãn địa chỉ";
+
+/* (No Commment) */
+"57.text" = "Địa chỉ";
+
+/* (No Commment) */
+"58.text" = "Nhãn";
+
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "59"; */
+"59.placeholder" = "Nhãn";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "60"; */
+"60.text" = "Địa chỉ";
+
+/* (No Commment) */
+"68.text" = "Không có địa chỉ";
+
+/* (No Commment) */
+"69.text" = "Tài khoản của bạn có lẽ không được kết nối chính xác. Click vào nút ở phía trên bên trái của màn hình và làm theo các hướng dẫn trên màn hình.";
+
+/* (No Commment) */
+"80.normalTitle" = "LƯU TRỮ ĐỊA CHỈ";
+
+/* (No Commment) */
+"81.normalTitle" = "NHÃN ĐỊA CHỈ";
+
+/* (No Commment) */
+"88.normalTitle" = "YÊU CẦU THANH TOÁN";
+
+/* Class = "UILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
+"90.text" = "Bitcoin địa chỉ ";
+
+/* (No Commment) */
+"91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
+
+/* (No Commment) */
+"92.normalTitle" = "SAO CHÉP ĐỊA CHỈ";
+
+/* (No Commment) */
+"100.text" = "Số tiền:";
+
+/* (No Commment) */
+"120.text" = "5 BTC = $10";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
+"E60-hZ-tDl.placeholder" = "0,000";
+
+/* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
 
-/* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
+/* Class = "UITextField"; text = "Only to control keyboard"; ObjectID = "OFk-NR-2Sp"; */
+"OFk-NR-2Sp.text" = "Chỉ để điều khiển bàn phím";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
+"a9y-3I-Drw.placeholder" = "0,00";
+
+/* (No Commment) */
 "i1j-pG-caF.normalTitle" = "Quét khóa riêng";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
+"jRM-0A-Zuo.text" = "BTC";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
+"wDT-32-lDe.text" = "USD";
 
