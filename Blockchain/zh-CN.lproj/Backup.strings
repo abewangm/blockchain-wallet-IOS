@@ -1,0 +1,92 @@
+/* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
+"1Hq-6D-ut1.normalTitle" = "再一次的备份基金";
+
+/* (No Commment) */
+"1Hq-6D-ut1.text" = "再一次的备份基金";
+
+/* (No Commment) */
+"3kJ-3U-lFe.text" = "请再试一次";
+
+/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "验证您记下备份的短语";
+
+/* (No Commment) */
+"6zt-Xf-txg.text" = "按下并按住要揭示这个词";
+
+/* (No Commment) */
+"07q-RX-CeI.text" = "请再试一次";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
+"9A7-TT-PzN.title" = "备份的资金";
+
+/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "你有没有备份您的资金";
+
+/* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
+"9WK-My-5CL.text" = "此操作需要第二个密码你比特币的钱包。请在下面输入和按继续。";
+
+/* (No Commment) */
+"9hR-tm-aq5.placeholder" = "第一个单词";
+
+/* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
+"74J-f3-Lhq.title" = "所需的第二个密码";
+
+/* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
+"AFH-AI-Rgk.normalTitle" = "前一个单词";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
+"CBl-1W-VP8.placeholder" = "密码";
+
+/* (No Commment) */
+"EQM-OM-jK8.normalTitle" = "完成";
+
+/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "不要把截图!
+你可以破坏你的钱包安全";
+
+/* (No Commment) */
+"Fda-Z4-3e7.placeholder" = "第六个单词";
+
+/* (No Commment) */
+"NaV-Bk-o1b.text" = "如何还原你的钱包";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
+"OJg-MB-UId.title" = "关闭";
+
+/* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
+"Okr-VE-yvm.text" = "独角兽";
+
+/* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
+"T3S-Dk-HAh.text" = "请再试一次";
+
+/* (No Commment) */
+"T4p-mz-siC.normalTitle" = "验证备份";
+
+/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "把单词写在一张纸的确切的顺序，他们出现在一张纸，并存储到安全的地方
+";
+
+/* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
+"Yh8-Gm-6op.text" = "失去了你 12 字恢复短语吗?";
+
+/* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
+"dkQ-nj-Pkf.normalTitle" = "下一个单词";
+
+/* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
+"eaO-py-9rY.normalTitle" = "下一个单词";
+
+/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "备份您的资金是很容易和确保你不会失去访问到您的比特币，即使我们的服务变得不可用。";
+
+/* (No Commment) */
+"kcC-2S-PfL.placeholder" = "第三个单词";
+
+/* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
+"mUc-u7-Zcj.text" = "词的 12 5";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
+"mYR-MQ-mS2.title" = "备份的钱包";
+
+/* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
+"xmf-pK-R3X.title" = "备份的钱包";
+
