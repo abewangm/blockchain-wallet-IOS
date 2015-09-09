@@ -31,7 +31,7 @@
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.adjustsFontSizeToFitWidth = YES;
-    headerLabel.text = @"Settings";
+    headerLabel.text = BC_STRING_SETTINGS;
     [topBar addSubview:headerLabel];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
