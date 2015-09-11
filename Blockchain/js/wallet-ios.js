@@ -994,3 +994,31 @@ MyWalletPhone.get_password_strength = function(password) {
     var strength = Helpers.scorePassword(password);
     return strength;
 }
+
+MyWalletPhone.generateNewAddress = function() {
+    MyWallet.getWallet(function() {
+        
+        device.execute('loading_start_generate_new_address');
+                       
+        var label = '';
+                       
+        var success = function () {
+            console.log('Success creating new address');
+            MyWalletPhone.get_history();
+            device.execute('loading_stop');
+        };
+        
+        var error = function (e) {
+            console.log('Error creating new address: ' + e);
+            device.execute('loading_stop');
+        };
+                       
+        if (MyWallet.wallet.isDoubleEncrypted) {
+            MyWalletPhone.getSecondPassword(function (pw) {
+                MyWallet.wallet.newLegacyAddress(label, pw, success, error);
+            });
+        } else {
+                MyWallet.wallet.newLegacyAddress(label, '', success, error);
+        }
+   });
+};

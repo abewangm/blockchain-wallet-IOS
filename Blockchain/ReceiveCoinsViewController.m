@@ -12,9 +12,10 @@
 #import "Address.h"
 #import "PrivateKeyReader.h"
 
-@interface ReceiveCoinsViewController()
+@interface ReceiveCoinsViewController() <UIAlertViewDelegate>
 @property (nonatomic) id paymentObserver;
 @property (nonatomic) double amountRequested;
+@property (nonatomic) UIAlertView *generateNewAddressAlertView;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -196,6 +197,8 @@ UIActionSheet *popupAddressArchive;
     }
     
     tableView.tableHeaderView = headerView;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_NEW_ADDRESS object:nil userInfo:nil];
     
     [tableView reloadData];
 }
@@ -454,13 +457,11 @@ UIActionSheet *popupAddressArchive;
 
 - (IBAction)scanKeyClicked:(id)sender
 {
-    PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
-        [app.wallet addKey:privateKeyString];
-        
-        [app.wallet loading_stop];
-    } error:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_NEW_ADDRESS message:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_NEW_ADDRESS_GENERATE_NEW, BC_STRING_NEW_ADDRESS_SCAN_QR_CODE, nil];
+    alertView.delegate = self;
+    self.generateNewAddressAlertView = alertView;
+    [alertView show];
     
-    [app.slidingViewController presentViewController:reader animated:YES completion:nil];
 }
 
 - (IBAction)labelSaveClicked:(id)sender
@@ -611,6 +612,54 @@ UIActionSheet *popupAddressArchive;
             [weakSelf alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
         }
     }];
+}
+
+- (void)generateNewAddress
+{
+    [app.wallet generateNewKey];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(promptForLabelAfterGenerate)
+                                                 name:NOTIFICATION_KEY_NEW_ADDRESS object:nil];
+}
+
+- (void)promptForLabelAfterGenerate
+{
+    //newest address is the last object in activeKeys
+    self.clickedAddress = [activeKeys lastObject];
+    [self labelAddressClicked:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_NEW_ADDRESS
+                                                  object:nil];
+}
+
+# pragma mark - UIAlertView delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView == self.generateNewAddressAlertView) {
+        switch (buttonIndex) {
+            case 0: {
+                DLog(@"Cancelled creating new address");
+                break;
+            }
+            case 1: {
+                DLog(@"Generating new address");
+                [self generateNewAddress];
+                break;
+            }
+            case 2: {
+                DLog(@"Scan QR code");
+                PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
+                    [app.wallet addKey:privateKeyString];
+                    
+                    [app.wallet loading_stop];
+                } error:nil];
+                
+                [app.slidingViewController presentViewController:reader animated:YES completion:nil];
+
+                break;
+            }
+        }
+    }
 }
 
 # pragma mark - UIActionSheet delegate

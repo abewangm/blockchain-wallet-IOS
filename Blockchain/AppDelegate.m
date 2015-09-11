@@ -492,6 +492,9 @@ void (^secondPasswordSuccess)(NSString *);
         [_sendViewController reset];
     }
     
+    // Cancel Notification for new address on receive coins view controller (bug when second password requested and app is backgrounded)
+    [[NSNotificationCenter defaultCenter] removeObserver:_receiveViewController name:NOTIFICATION_KEY_NEW_ADDRESS object:nil];
+    
     // Dismiss receiveCoinsViewController keyboard
     if (_receiveViewController) {
         [_receiveViewController hideKeyboard];

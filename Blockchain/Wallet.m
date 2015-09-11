@@ -554,6 +554,11 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.getTransactionFee()"] longLongValue];
 }
 
+- (void)generateNewKey
+{
+    [self.webView executeJS:@"MyWalletPhone.generateNewAddress()"];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -672,6 +677,11 @@
 - (void)loading_start_import_private_key
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
+}
+
+- (void)loading_start_generate_new_address
+{
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_GENERATING_NEW_ADDRESS];
 }
 
 - (void)loading_stop
@@ -1085,6 +1095,13 @@
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"errorCode": [NSNumber numberWithLongLong:[error longLongValue]]}];
     }
+}
+
+- (void)on_generate_key:(NSString*)address
+{
+    DLog(@"on_generate_key");
+    
+    [delegate didGenerateNewAddress:address];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

@@ -176,6 +176,7 @@
 - (void)setLabelForAccount:(int)account label:(NSString *)label;
 
 - (void)createAccountWithLabel:(NSString *)label;
+- (void)generateNewKey;
 
 - (NSString *)getReceiveAddressForAccount:(int)account;
 

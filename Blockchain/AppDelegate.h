@@ -34,6 +34,7 @@
 #define SATOSHI 100000000
 
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
+#define NOTIFICATION_KEY_NEW_ADDRESS @"newAddress"
 
 // Notifications used in settings
 #define NOTIFICATION_KEY_INSUFFICIENT_FUNDS @"InsufficientFunds"
