@@ -838,23 +838,6 @@ uint64_t doo = 10000;
     [self getMaxFeeDueToOverspending:NO];
 }
 
-- (void)useAllFunds
-{
-    if (availableAmount == 0 || availableAmount <= self.feeFromTransactionProposal) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_INSUFFICIENT_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-        [alertView show];
-        return;
-    }
-    
-    [fiatAmountField resignFirstResponder];
-    [btcAmountField resignFirstResponder];
-    
-    uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
-    amountInSatoshi = availableWithoutFee;
-    
-    [self doCurrencyConversion];
-}
-
 #pragma mark Fee Calculation
 
 - (void)addObserverForMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
