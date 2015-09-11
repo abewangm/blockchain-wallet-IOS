@@ -54,6 +54,8 @@
 #define DICTIONARY_KEY_KEY @"key"
 #define DICTIONARY_KEY_VALUE @"value"
 
+#define USER_DEFAULTS_KEY_SHARED_KEY @"sharedKey"
+#define USER_DEFAULTS_KEY_GUID @"guid"
 #define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
 #define USER_DEFAULTS_KEY_SYMBOL_LOCAL @"symbolLocal"
 #define USER_DEFAULTS_KEY_PASSWORD @"password"
@@ -65,7 +67,10 @@
 
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"
-#define KEYCHAIN_KEY_PASSWORD @"password"
+
+#define QR_CODE_KEY_GUID @"guid"
+#define QR_CODE_KEY_SHARED_KEY @"sharedKey"
+#define QR_CODE_KEY_PASSWORD @"password"
 
 #define STORYBOARD_NAME_SETTINGS @"Settings"
 #define STORYBOARD_NAME_BACKUP @"Backup"
@@ -921,7 +926,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
         
-        [self.wallet loadWalletWithGuid:[code objectForKey:KEYCHAIN_KEY_GUID] sharedKey:[code objectForKey:KEYCHAIN_KEY_SHARED_KEY] password:[code objectForKey:KEYCHAIN_KEY_PASSWORD]];
+        [self.wallet loadWalletWithGuid:[code objectForKey:QR_CODE_KEY_GUID] sharedKey:[code objectForKey:QR_CODE_KEY_SHARED_KEY] password:[code objectForKey:QR_CODE_KEY_PASSWORD]];
         
         self.wallet.delegate = self;
         
@@ -1622,11 +1627,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (NSString *)guid
 {
     // Migrate guid from NSUserDefaults to KeyChain
-    NSString *guidFromUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:KEYCHAIN_KEY_GUID];
+    NSString *guidFromUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GUID];
     if (guidFromUserDefaults) {
         [self setGuid:guidFromUserDefaults];
         
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEYCHAIN_KEY_GUID];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_GUID];
         
         // Remove all UIWebView cached data for users upgrading from older versions
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
@@ -1658,11 +1663,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (NSString *)sharedKey
 {
     // Migrate sharedKey from NSUserDefaults (for users updating from old version)
-    NSString *sharedKeyFromUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:KEYCHAIN_KEY_SHARED_KEY];
+    NSString *sharedKeyFromUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_SHARED_KEY];
     if (sharedKeyFromUserDefaults) {
         [self setSharedKey:sharedKeyFromUserDefaults];
         
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEYCHAIN_KEY_SHARED_KEY];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_SHARED_KEY];
     }
     
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
