@@ -36,10 +36,36 @@
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
 
+#define NOTIFICATION_KEY_APP_DELEGATE_RELOAD @"AppDelegateReload"
+
+#define DICTIONARY_KEY_ADDRESS @"address"
+#define DICTIONARY_KEY_AMOUNT @"amount"
+
 #define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
+#define USER_DEFAULTS_KEY_SYMBOL_LOCAL @"symbolLocal"
+#define USER_DEFAULTS_KEY_PASSWORD @"password"
+#define USER_DEFAULTS_KEY_PIN @"pin"
+#define USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD @"encryptedPINPassword"
+#define USER_DEFAULTS_KEY_PIN_KEY @"pinKey"
+#define USER_DEFAULTS_KEY_PASSWORD_PART_HASH @"passwordPartHash"
+#define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
 
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"
+#define KEYCHAIN_KEY_PASSWORD @"password"
+
+#define STORYBOARD_NAME_SETTINGS @"Settings"
+#define STORYBOARD_NAME_BACKUP @"Backup"
+#define STORYBOARD_NAME_UPGRADE @"Upgrade"
+
+#define NAVIGATION_CONTROLLER_NAME_SETTINGS @"SettingsNavigationController"
+#define NAVIGATION_CONTROLLER_NAME_BACKUP @"BackupNavigation"
+
+#define VIEW_CONTROLLER_NAME_UPGRADE @"UpgradeViewController"
+
+#define NIB_NAME_SEND_COINS @"SendCoins"
+
+#define SUPPORT_EMAIL_ADDRESS @"support@blockchain.zendesk.com"
 
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
 #define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"
@@ -140,7 +166,7 @@ void (^secondPasswordSuccess)(NSString *);
     busyView.alpha = 0.0f;
     
     // Load settings    
-    symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:@"symbolLocal"];
+    symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
     
     // Check and warn on jailbroken phones
     if ([AppDelegate isUnsafe]) {
@@ -163,20 +189,20 @@ void (^secondPasswordSuccess)(NSString *);
         }
         
         // Migrate Password and PIN from NSUserDefaults (for users updating from old version)
-        NSString * password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
-        NSString * pin = [[NSUserDefaults standardUserDefaults] objectForKey:@"pin"];
+        NSString * password = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PASSWORD];
+        NSString * pin = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN];
         
         if (password && pin) {
             self.wallet.password = password;
             
             [self savePIN:pin];
             
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"pin"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PASSWORD];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PIN];
         }
         
         // Listen for notification (from Swift code) to reload:
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:@"AppDelegateReload" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD object:nil];
         
         // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
         
@@ -312,7 +338,7 @@ void (^secondPasswordSuccess)(NSString *);
     symbolLocal = !symbolLocal;
     
     // Save this setting here and load it on start
-    [[NSUserDefaults standardUserDefaults] setBool:symbolLocal forKey:@"symbolLocal"];
+    [[NSUserDefaults standardUserDefaults] setBool:symbolLocal forKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self reload];
@@ -427,7 +453,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     //Becuase we are not storing the password on the device. We record the first few letters of the hashed password.
     //With the hash prefix we can then figure out if the password changed
-    NSString * passwordPartHash = [[NSUserDefaults standardUserDefaults] objectForKey:@"passwordPartHash"];
+    NSString * passwordPartHash = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PASSWORD_PART_HASH];
     if (![[[app.wallet.password SHA256] substringToIndex:MIN([app.wallet.password length], 5)] isEqualToString:passwordPartHash]) {
         [self clearPin];
     }
@@ -643,7 +669,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (NSDictionary*)parseURI:(NSString*)urlString
 {
     if (![urlString hasPrefix:@"bitcoin:"]) {
-        return [NSDictionary dictionaryWithObject:urlString forKey:@"address"];
+        return [NSDictionary dictionaryWithObject:urlString forKey:DICTIONARY_KEY_ADDRESS];
     }
     
     NSString * replaced = [[urlString stringByReplacingOccurrencesOfString:@"bitcoin:" withString:@"bitcoin://"] stringByReplacingOccurrencesOfString:@"////" withString:@"//"];
@@ -653,7 +679,7 @@ void (^secondPasswordSuccess)(NSString *);
     NSMutableDictionary *dict = [self parseQueryString:[url query]];
     
     if ([url host] != NULL)
-        [dict setObject:[url host] forKey:@"address"];
+        [dict setObject:[url host] forKey:DICTIONARY_KEY_ADDRESS];
     
     return dict;
 }
@@ -666,12 +692,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (!_sendViewController) {
         // really no reason to lazyload anymore...
-        _sendViewController = [[SendViewController alloc] initWithNibName:@"SendCoins" bundle:[NSBundle mainBundle]];
+        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     
     NSDictionary *dict = [self parseURI:[url absoluteString]];
-    NSString * addr = [dict objectForKey:@"address"];
-    NSString * amount = [dict objectForKey:@"amount"];
+    NSString * addr = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
+    NSString * amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
     
     [_sendViewController setAmountFromUrlHandler:amount withToAddress:addr];
     [_sendViewController reload];
@@ -954,7 +980,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
         
-        [self.wallet loadWalletWithGuid:[code objectForKey:KEYCHAIN_KEY_GUID] sharedKey:[code objectForKey:KEYCHAIN_KEY_SHARED_KEY] password:[code objectForKey:@"password"]];
+        [self.wallet loadWalletWithGuid:[code objectForKey:KEYCHAIN_KEY_GUID] sharedKey:[code objectForKey:KEYCHAIN_KEY_SHARED_KEY] password:[code objectForKey:KEYCHAIN_KEY_PASSWORD]];
         
         self.wallet.delegate = self;
         
@@ -1024,7 +1050,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self reload];
     
-    [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"hasSeenUpgradeToHdScreen"];
+    [[NSUserDefaults standardUserDefaults] setBool:false forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];
@@ -1035,8 +1061,8 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showAccountSettings
 {
     if (!_settingsNavigationController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Settings" bundle: nil];
-        self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"SettingsNavigationController"];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
+        self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
     }
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -1046,8 +1072,8 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showBackup
 {
     if (!_backupNavigationViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Backup" bundle: nil];
-        _backupNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:@"BackupNavigation"];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_BACKUP bundle: nil];
+        _backupNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
     }
     
     // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
@@ -1064,7 +1090,7 @@ void (^secondPasswordSuccess)(NSString *);
     MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
     controller.navigationBar.tintColor = COLOR_BLOCKCHAIN_BLUE;
-    [controller setToRecipients:@[@"support@blockchain.zendesk.com"]];
+    [controller setToRecipients:@[SUPPORT_EMAIL_ADDRESS]];
     [controller setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
     
     NSString *message = [NSString stringWithFormat:@"\n\n--\nApp: %@\nSystem: %@ %@\n",
@@ -1080,7 +1106,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showSendCoins
 {
     if (!_sendViewController) {
-        _sendViewController = [[SendViewController alloc] initWithNibName:@"SendCoins" bundle:[NSBundle mainBundle]];
+        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
@@ -1088,15 +1114,15 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)clearPin
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"encryptedPINPassword"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passwordPartHash"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"pinKey"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PASSWORD_PART_HASH];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PIN_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (BOOL)isPINSet
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"pinKey"] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:@"encryptedPINPassword"] != nil;
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD] != nil;
 }
 
 - (void)closePINModal:(BOOL)animated
@@ -1180,7 +1206,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showHdUpgrade
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Upgrade" bundle: nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_UPGRADE bundle: nil];
     UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeViewController"];
     upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
@@ -1346,7 +1372,7 @@ void (^secondPasswordSuccess)(NSString *);
 -(IBAction)QRCodebuttonClicked:(id)sender
 {
     if (!_sendViewController) {
-        _sendViewController = [[SendViewController alloc] initWithNibName:@"SendCoins" bundle:[NSBundle mainBundle]];
+        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     [_sendViewController QRCodebuttonClicked:sender];
 }
@@ -1391,7 +1417,7 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"pinKey"];
+    NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
     NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)_pin];
     
     [self showBusyViewWithLoadingText:BC_STRING_LOADING_VERIFYING];
@@ -1469,7 +1495,7 @@ void (^secondPasswordSuccess)(NSString *);
     NSNumber * code = [dictionary objectForKey:@"code"]; //This is a status code from the server
     NSString * error = [dictionary objectForKey:@"error"]; //This is an error string from the server or nil
     NSString * success = [dictionary objectForKey:@"success"]; //The PIN decryption value from the server
-    NSString * encryptedPINPassword = [[NSUserDefaults standardUserDefaults] objectForKey:@"encryptedPINPassword"];
+    NSString * encryptedPINPassword = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD];
     
     BOOL pinSuccess = FALSE;
     if (code == nil) {
@@ -1587,9 +1613,9 @@ void (^secondPasswordSuccess)(NSString *);
             return;
         }
         
-        [[NSUserDefaults standardUserDefaults] setValue:encrypted forKey:@"encryptedPINPassword"];
-        [[NSUserDefaults standardUserDefaults] setValue:[[app.wallet.password SHA256] substringToIndex:MIN([app.wallet.password length], 5)] forKey:@"passwordPartHash"];
-        [[NSUserDefaults standardUserDefaults] setValue:key forKey:@"pinKey"];
+        [[NSUserDefaults standardUserDefaults] setValue:encrypted forKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD];
+        [[NSUserDefaults standardUserDefaults] setValue:[[app.wallet.password SHA256] substringToIndex:MIN([app.wallet.password length], 5)] forKey:USER_DEFAULTS_KEY_PASSWORD_PART_HASH];
+        [[NSUserDefaults standardUserDefaults] setValue:key forKey:USER_DEFAULTS_KEY_PIN_KEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         // Update your info to new pin code
@@ -1598,8 +1624,8 @@ void (^secondPasswordSuccess)(NSString *);
         UIAlertView *alertViewSavedPINSuccessfully = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
 #ifdef HD_ENABLED
         alertViewSavedPINSuccessfully.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenUpgradeToHdScreen"]) {
-                [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasSeenUpgradeToHdScreen"];
+            if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN]) {
+                [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [self showHdUpgrade];
             }

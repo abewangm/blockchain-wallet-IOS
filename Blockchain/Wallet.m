@@ -18,6 +18,8 @@
 #import "NSData+Hex.h"
 #import "TransactionsViewController.h"
 
+#define USER_DEFAULTS_KEY_TRANSACTIONS @"transactions"
+
 @implementation transactionProgressListeners
 @end
 
@@ -718,7 +720,7 @@
     
     [self.webView executeJSWithCallback:^(NSString* latestBlockJSON) {
         
-        [[NSUserDefaults standardUserDefaults] setObject:latestBlockJSON forKey:@"transactions"];
+        [[NSUserDefaults standardUserDefaults] setObject:latestBlockJSON forKey:USER_DEFAULTS_KEY_TRANSACTIONS];
         
         [self parseLatestBlockJSON:latestBlockJSON];
         
