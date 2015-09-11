@@ -239,10 +239,9 @@ MyWalletPhone.prepareTransaction = function() {
 
 MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to, valueString) {
 
+    var value = parseInt(valueString);
     
     var transactionDetails = MyWalletPhone.prepareTransaction();
-    
-    var value = parseInt(valueString);
     
     var id = transactionDetails.id;
     var success = transactionDetails.success;

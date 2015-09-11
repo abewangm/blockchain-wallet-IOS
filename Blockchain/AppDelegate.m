@@ -117,11 +117,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey] && ![self isPINSet]) {
-        [self alertUserAskingToUseOldKeychain];
-        [[NSUserDefaults standardUserDefaults] setValue:USER_DEFAULTS_KEY_FIRST_RUN forKey:USER_DEFAULTS_KEY_FIRST_RUN];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+    [self checkForNewInstall];
     
     // Make sure the server session id SID is persisted for new UIWebViews
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -167,15 +163,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     // Load settings    
     symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
-    
-    // Check and warn on jailbroken phones
-    if ([AppDelegate isUnsafe]) {
-        [self alertUserOfCompromisedSecurity];
-    }
 
     // Not paired yet
     if (![self guid] || ![self sharedKey]) {
         [self showWelcome];
+        [self checkAndWarnOnJailbrokenPhones];
     }
     // Paired
     else {
@@ -186,6 +178,7 @@ void (^secondPasswordSuccess)(NSString *);
         } else {
             // No PIN set we need to ask for the main password
             [self showPasswordModal];
+            [self checkAndWarnOnJailbrokenPhones];
         }
         
         // Migrate Password and PIN from NSUserDefaults (for users updating from old version)
@@ -1824,11 +1817,29 @@ void (^secondPasswordSuccess)(NSString *);
     return returnValue;
 }
 
-#pragma mark - mail compose delegate
+#pragma mark - Mail compose delegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
     [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Device State Checks
+
+- (void)checkForNewInstall
+{
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey] && ![self isPINSet]) {
+        [self alertUserAskingToUseOldKeychain];
+        [[NSUserDefaults standardUserDefaults] setValue:USER_DEFAULTS_KEY_FIRST_RUN forKey:USER_DEFAULTS_KEY_FIRST_RUN];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (void)checkAndWarnOnJailbrokenPhones
+{
+    if ([AppDelegate isUnsafe]) {
+        [self alertUserOfCompromisedSecurity];
+    }
 }
 
 @end
