@@ -54,6 +54,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_FOOTER_HEIGHT 47
 #define DEFAULT_STATUS_BAR_HEIGHT 20
 
+#define NUMBER_KEYPAD_CHARACTER_SET_STRING @"1234567890.,"
+
 #ifdef DEBUG
     #define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else

@@ -44,6 +44,7 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic) UIAlertView *changeFeeAlertView;
 @property (nonatomic, copy) NSString *enteredEmailString;
 @property (nonatomic, copy) NSString *emailString;
+@property (nonatomic) UITextField *changeFeeTextField;
 @property (nonatomic) float currentFeePerKb;
 @end
 
@@ -206,6 +207,8 @@ const int aboutPrivacyPolicy = 1;
     textField.text = [[NSString alloc] initWithFormat:@"%.4f", self.currentFeePerKb];
     textField.keyboardType = UIKeyboardTypeDecimalPad;
     [alertView show];
+    textField.delegate = self;
+    self.changeFeeTextField = textField;
     self.changeFeeAlertView = alertView;
 }
 
@@ -407,6 +410,24 @@ const int aboutPrivacyPolicy = 1;
         self.changeEmailAlertView.delegate = nil;
         [self changeEmail:textField.text];
         [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
+    }
+    
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.changeFeeTextField) {
+        NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+        NSString *newStringPastDecimal = [[newString componentsSeparatedByString:decimalSeparator] lastObject];
+        NSCharacterSet *characterSetFromString = [NSCharacterSet characterSetWithCharactersInString:newString];
+        NSCharacterSet *numbersAndDecimalCharacterSet = [NSCharacterSet characterSetWithCharactersInString:NUMBER_KEYPAD_CHARACTER_SET_STRING];
+        
+        // Prevent users from entering amounts smaller than 0.0001 and only accept numbers and decimal representations
+        if (newStringPastDecimal.length > 4 || ![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString]) {
+            return NO;
+        }
     }
     
     return YES;
