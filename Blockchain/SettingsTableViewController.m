@@ -205,6 +205,7 @@ const int aboutPrivacyPolicy = 1;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.spellCheckingType = UITextSpellCheckingTypeNo;
     textField.text = [[NSString alloc] initWithFormat:@"%.4f", self.currentFeePerKb];
+    textField.text = [textField.text stringByReplacingOccurrencesOfString:@"." withString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     textField.keyboardType = UIKeyboardTypeDecimalPad;
     [alertView show];
     textField.delegate = self;
@@ -418,11 +419,27 @@ const int aboutPrivacyPolicy = 1;
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if (textField == self.changeFeeTextField) {
+        
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSArray  *points = [newString componentsSeparatedByString:@"."];
+        NSArray  *commas = [newString componentsSeparatedByString:@","];
+        
+        // Only one comma or point in input field allowed
+        if ([points count] > 2 || [commas count] > 2)
+            return NO;
+        
+        // Only 1 leading zero
+        if (points.count == 1 || commas.count == 1) {
+            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:@","] && [textField.text isEqualToString:@"0"]) {
+                return NO;
+            }
+        }
+        
         NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+        NSString *numbersWithDecimalSeparatorString = [[NSString alloc] initWithFormat:@"%@%@", NUMBER_KEYPAD_CHARACTER_SET_STRING, decimalSeparator];
         NSString *newStringPastDecimal = [[newString componentsSeparatedByString:decimalSeparator] lastObject];
         NSCharacterSet *characterSetFromString = [NSCharacterSet characterSetWithCharactersInString:newString];
-        NSCharacterSet *numbersAndDecimalCharacterSet = [NSCharacterSet characterSetWithCharactersInString:NUMBER_KEYPAD_CHARACTER_SET_STRING];
+        NSCharacterSet *numbersAndDecimalCharacterSet = [NSCharacterSet characterSetWithCharactersInString:numbersWithDecimalSeparatorString];
         
         // Prevent users from entering amounts smaller than 0.0001 and only accept numbers and decimal representations
         if (newStringPastDecimal.length > 4 || ![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString]) {
