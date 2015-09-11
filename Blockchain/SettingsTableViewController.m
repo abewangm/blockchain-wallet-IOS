@@ -228,6 +228,7 @@ const int aboutPrivacyPolicy = 1;
     textField.tag = textFieldTagChangeEmail;
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
+    textField.text = hasAddedEmail ? [self getUserEmail] : @"";
     [alertView show];
     self.changeEmailAlertView = alertView;
 }
