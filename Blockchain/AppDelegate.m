@@ -36,6 +36,11 @@
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
 
+#define ADDRESS_ZEROBLOCK @"https://zeroblock.com/"
+#define TITLE_ZEROBLOCK @"ZeroBlock"
+
+#define SOUND_FORMAT @"wav"
+
 #define NOTIFICATION_KEY_APP_DELEGATE_RELOAD @"AppDelegateReload"
 
 #define ANIMATION_KEY_HIDE_MODAL @"HideModal"
@@ -72,6 +77,8 @@
 #define VIEW_CONTROLLER_NAME_UPGRADE @"UpgradeViewController"
 
 #define NIB_NAME_SEND_COINS @"SendCoins"
+#define NIB_NAME_MERCHANT_MAP_VIEW @"MerchantMapView"
+#define NIB_NAME_RECEIVE_COINS @"ReceiveCoins"
 
 #define SUPPORT_EMAIL_ADDRESS @"support@blockchain.zendesk.com"
 
@@ -556,7 +563,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)playBeepSound
 {
     if (beepSoundID == 0) {
-        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: [[NSBundle mainBundle] pathForResource:@"beep" ofType:@"wav"]], &beepSoundID);
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: [[NSBundle mainBundle] pathForResource:@"beep" ofType:SOUND_FORMAT]], &beepSoundID);
     }
     
     AudioServicesPlaySystemSound(beepSoundID);
@@ -566,7 +573,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (alertSoundID == 0) {
         //Find the Alert Sound
-        NSString * alert_sound = [[NSBundle mainBundle] pathForResource:@"alert-received" ofType:@"wav"];
+        NSString * alert_sound = [[NSBundle mainBundle] pathForResource:@"alert-received" ofType:SOUND_FORMAT];
         
         //Create the system sound
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: alert_sound], &alertSoundID);
@@ -1141,7 +1148,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showHdUpgrade
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_UPGRADE bundle: nil];
-    UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeViewController"];
+    UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:VIEW_CONTROLLER_NAME_UPGRADE];
     upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
 }
@@ -1183,7 +1190,7 @@ void (^secondPasswordSuccess)(NSString *);
 //        [[UIApplication sharedApplication] openURL:zeroBlockAppURL];
 //    }
 //    else {
-        [self pushWebViewController:@"https://zeroblock.com/" title:@"ZeroBlock"];
+        [self pushWebViewController:ADDRESS_ZEROBLOCK title:@"ZeroBlock"];
 //    }
 }
 
@@ -1277,7 +1284,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)receiveCoinClicked:(UIButton *)sender
 {
     if (!_receiveViewController) {
-        _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:@"ReceiveCoins" bundle:[NSBundle mainBundle]];
+        _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
     }
     
     [_tabViewController setActiveViewController:_receiveViewController animated:TRUE index:2];
@@ -1296,7 +1303,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)merchantClicked:(UIButton *)sender
 {
     if (!_merchantViewController) {
-        _merchantViewController = [[MerchantMapViewController alloc] initWithNibName:@"MerchantMapView" bundle:[NSBundle mainBundle]];
+        _merchantViewController = [[MerchantMapViewController alloc] initWithNibName:NIB_NAME_MERCHANT_MAP_VIEW bundle:[NSBundle mainBundle]];
     }
     
     _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
