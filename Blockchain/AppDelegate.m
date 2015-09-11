@@ -218,64 +218,6 @@ void (^secondPasswordSuccess)(NSString *);
     return YES;
 }
 
-- (void)alertUserAskingToUseOldKeychain
-{
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    UIAlertView *alertViewToKeepOldWallet = [[UIAlertView alloc] initWithTitle:BC_STRING_ASK_TO_USE_OLD_WALLET_TITLE message:BC_STRING_ASK_TO_USE_OLD_WALLET_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_CREATE_NEW_WALLET otherButtonTitles: BC_STRING_LOGIN_EXISTING_WALLET, nil];
-    alertViewToKeepOldWallet.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        switch (buttonIndex) {
-            case 0: {
-                [self forgetWalletClicked:nil];
-                return;
-            }
-            case 1: {
-                return;
-            }
-        }
-    };
-    [alertViewToKeepOldWallet show];
-}
-
-- (void)alertUserOfCompromisedSecurity
-{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_UNSAFE_DEVICE_TITLE message:BC_STRING_UNSAFE_DEVICE_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    [alertView show];
-}
-
-+ (BOOL)isUnsafe
-{
-#if !(TARGET_IPHONE_SIMULATOR)
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_CYDIA]){
-        return YES;
-    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE]){
-        return YES;
-    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_BIN_BASH]){
-        return YES;
-    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_USR_SBIN_SSHD]){
-        return YES;
-    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_ETC_APT]){
-        return YES;
-    }
-    
-    NSError *error;
-    NSString *stringToBeWritten = @"TEST";
-    [stringToBeWritten writeToFile:UNSAFE_CHECK_PATH_WRITE_TEST atomically:YES
-                          encoding:NSUTF8StringEncoding error:&error];
-    if(error == nil){
-        return YES;
-    } else {
-        [[NSFileManager defaultManager] removeItemAtPath:UNSAFE_CHECK_PATH_WRITE_TEST error:nil];
-    }
-    
-    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:UNSAFE_CHECK_CYDIA_URL]]){
-        return YES;
-    }
-#endif
-    
-    return NO;
-}
-
 - (void)transitionToIndex:(NSInteger)newIndex
 {
     if (newIndex == 0)
@@ -302,17 +244,6 @@ void (^secondPasswordSuccess)(NSString *);
         NSInteger newIndex = _tabViewController.selectedIndex - 1;
         [self transitionToIndex:newIndex];
     }
-}
-
-- (BOOL)checkInternetConnection
-{
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-    if ([reachability currentReachabilityStatus] == NotReachable) {
-        DLog(@"No Internet connection");
-        [self showPinErrorWithMessage:BC_STRING_NO_INTERNET_CONNECTION];
-        return NO;
-    }
-    return YES;
 }
 
 #pragma mark - UI State
@@ -1683,9 +1614,7 @@ void (^secondPasswordSuccess)(NSString *);
         // Remove all UIWebView cached data for users upgrading from older versions
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
     }
-    
-//    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
-    
+        
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_GUID accessGroup:nil];
     NSData *guidData = [keychain objectForKey:(__bridge id)kSecValueData];
     NSString *guid = [[NSString alloc] initWithData:guidData encoding:NSUTF8StringEncoding];
@@ -1835,11 +1764,80 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (void)alertUserAskingToUseOldKeychain
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    UIAlertView *alertViewToKeepOldWallet = [[UIAlertView alloc] initWithTitle:BC_STRING_ASK_TO_USE_OLD_WALLET_TITLE message:BC_STRING_ASK_TO_USE_OLD_WALLET_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_CREATE_NEW_WALLET otherButtonTitles: BC_STRING_LOGIN_EXISTING_WALLET, nil];
+    alertViewToKeepOldWallet.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+        switch (buttonIndex) {
+            case 0: {
+                [self forgetWalletClicked:nil];
+                return;
+            }
+            case 1: {
+                return;
+            }
+        }
+    };
+    [alertViewToKeepOldWallet show];
+}
+
+- (void)alertUserOfCompromisedSecurity
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_UNSAFE_DEVICE_TITLE message:BC_STRING_UNSAFE_DEVICE_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    [alertView show];
+}
+
 - (void)checkAndWarnOnJailbrokenPhones
 {
     if ([AppDelegate isUnsafe]) {
         [self alertUserOfCompromisedSecurity];
     }
+}
+
++ (BOOL)isUnsafe
+{
+#if !(TARGET_IPHONE_SIMULATOR)
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_CYDIA]){
+        return YES;
+    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE]){
+        return YES;
+    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_BIN_BASH]){
+        return YES;
+    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_USR_SBIN_SSHD]){
+        return YES;
+    }else if([[NSFileManager defaultManager] fileExistsAtPath:UNSAFE_CHECK_PATH_ETC_APT]){
+        return YES;
+    }
+    
+    NSError *error;
+    NSString *stringToBeWritten = @"TEST";
+    [stringToBeWritten writeToFile:UNSAFE_CHECK_PATH_WRITE_TEST atomically:YES
+                          encoding:NSUTF8StringEncoding error:&error];
+    if(error == nil){
+        return YES;
+    } else {
+        [[NSFileManager defaultManager] removeItemAtPath:UNSAFE_CHECK_PATH_WRITE_TEST error:nil];
+    }
+    
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:UNSAFE_CHECK_CYDIA_URL]]){
+        return YES;
+    }
+#endif
+    
+    return NO;
+}
+
+- (BOOL)checkInternetConnection
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    if ([reachability currentReachabilityStatus] == NotReachable) {
+        DLog(@"No Internet connection");
+        [self showPinErrorWithMessage:BC_STRING_NO_INTERNET_CONNECTION];
+        return NO;
+    }
+    return YES;
 }
 
 @end
