@@ -437,12 +437,11 @@ const int aboutPrivacyPolicy = 1;
         
         NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
         NSString *numbersWithDecimalSeparatorString = [[NSString alloc] initWithFormat:@"%@%@", NUMBER_KEYPAD_CHARACTER_SET_STRING, decimalSeparator];
-        NSString *newStringPastDecimal = [[newString componentsSeparatedByString:decimalSeparator] lastObject];
         NSCharacterSet *characterSetFromString = [NSCharacterSet characterSetWithCharactersInString:newString];
         NSCharacterSet *numbersAndDecimalCharacterSet = [NSCharacterSet characterSetWithCharactersInString:numbersWithDecimalSeparatorString];
         
-        // Prevent users from entering amounts smaller than 0.0001 and only accept numbers and decimal representations
-        if (newStringPastDecimal.length > 4 || ![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString]) {
+        // Only accept numbers and decimal representations
+        if (![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString]) {
             return NO;
         }
     }
