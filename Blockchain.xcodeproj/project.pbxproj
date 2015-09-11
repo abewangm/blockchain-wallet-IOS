@@ -1181,7 +1181,6 @@
 				C9BE91851945D8F600FD516D /* PEKeyboard-2-dot.png in Resources */,
 				FA63233E1A433DEB00EB3974 /* MerchantMapView.xib in Resources */,
 				A2599BAA1B0B762400C2EA81 /* Backup.storyboard in Resources */,
-				235EBDCC1BA0BEF3004D3410 /* Blockchain-InfoPlist.strings in Resources */,
 				C9BE91881945D8F600FD516D /* PEKeyboard-2.png in Resources */,
 				67EEE7731A8E547900288753 /* PEPin-on@3x.png in Resources */,
 				C9BE91821945D8F600FD516D /* PEKeyboard-1-next.png in Resources */,

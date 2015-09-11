@@ -38,7 +38,7 @@
 
 #define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
 
-#define KEYCHAIN_KEY_SHARED_KEY @"sharedkey"
+#define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"
 
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
@@ -142,79 +142,61 @@ void (^secondPasswordSuccess)(NSString *);
     // Load settings    
     symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:@"symbolLocal"];
     
-    // If either of these is nil we are not properly paired
+    // Check and warn on jailbroken phones
+    if ([AppDelegate isUnsafe]) {
+        [self alertUserOfCompromisedSecurity];
+    }
+
+    // Not paired yet
     if (![self guid] || ![self sharedKey]) {
         [self showWelcome];
-        if ([AppDelegate isUnsafe]) {
-            [self alertUserOfCompromisedSecurity];
+    }
+    // Paired
+    else {
+
+        // If the PIN is set show the pin modal
+        if ([self isPINSet]) {
+            [self showPinModalAsView:YES];
+        } else {
+            // No PIN set we need to ask for the main password
+            [self showPasswordModal];
         }
-        return TRUE;
-    }
-    
-    // We are properly paired here
-    
-    // If the PIN is set show the entry modal
-    if ([self isPINSet]) {
-        [self showPinModalAsView:YES];
-    } else {
-        // No PIN set we need to ask for the main password
-        [self showPasswordModal];
-        if ([AppDelegate isUnsafe]) {
-            [self alertUserOfCompromisedSecurity];
+        
+        // Migrate Password and PIN from NSUserDefaults (for users updating from old version)
+        NSString * password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
+        NSString * pin = [[NSUserDefaults standardUserDefaults] objectForKey:@"pin"];
+        
+        if (password && pin) {
+            self.wallet.password = password;
+            
+            [self savePIN:pin];
+            
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"pin"];
         }
+        
+        // Listen for notification (from Swift code) to reload:
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:@"AppDelegateReload" object:nil];
+        
+        // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
+        
+        // Curtain view setup
+        curtainImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
+        
+        // Select the correct image depending on the screen size. The names used are the default names that LaunchImage assets get after processing. See @http://stackoverflow.com/questions/19107543/xcode-5-asset-catalog-how-to-reference-the-launchimage
+        // This works for iPhone 4/4S, 5/5S, 6 and 6Plus in Portrait
+        // TODO need to add new screen sizes with new iPhones ... ugly
+        // TODO we're currently using the scaled version of the app on iPhone 6 and 6 Plus
+        //        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
+        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-700-568h", @"414x736" : @"LaunchImage-700-568h"};
+        NSString *key = [NSString stringWithFormat:@"%dx%d", (int)[UIScreen mainScreen].bounds.size.width, (int)[UIScreen mainScreen].bounds.size.height];
+        UIImage *launchImage = [UIImage imageNamed:dict[key]];
+
+        curtainImageView.image = launchImage;
+        curtainImageView.alpha = 0;
     }
-    
-    // Migrate Password and PIN from NSUserDefaults (for users updating from old version)
-    NSString * password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
-    NSString * pin = [[NSUserDefaults standardUserDefaults] objectForKey:@"pin"];
-    
-    if (password && pin) {
-        self.wallet.password = password;
         
-        [self savePIN:pin];
-        
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password"];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"pin"];
-    }
-    
-    // Migrate guid and sharedkey from NSUserDefaults to KeyChain
-    NSString *guid = [[NSUserDefaults standardUserDefaults] objectForKey:KEYCHAIN_KEY_GUID];
-    if (guid) {
-        [self setGuid:guid];
-        
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEYCHAIN_KEY_GUID];
-        
-        // Remove all UIWebView cached data for users upgrading from older versions
-        [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    }
-    
-    NSString *sharedkey = [[NSUserDefaults standardUserDefaults] objectForKey:KEYCHAIN_KEY_SHARED_KEY];
-    if (sharedkey) {
-        [self setSharedkey:sharedkey];
-        
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEYCHAIN_KEY_SHARED_KEY];
-    }
-    
-    // Listen for notification (from Swift code) to reload:
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:@"AppDelegateReload" object:nil];
-    
-    // Curtain view setup
-    curtainImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
-    
-    // Select the correct image depending on the screen size. The names used are the default names that LaunchImage assets get after processing. See @http://stackoverflow.com/questions/19107543/xcode-5-asset-catalog-how-to-reference-the-launchimage
-    // This works for iPhone 4/4S, 5/5S, 6 and 6Plus in Portrait
-    // TODO need to add new screen sizes with new iPhones ... ugly
-    // TODO we're currently using the scaled version of the app on iPhone 6 and 6 Plus
-    //        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
-    NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-700-568h", @"414x736" : @"LaunchImage-700-568h"};
-    NSString *key = [NSString stringWithFormat:@"%dx%d", (int)[UIScreen mainScreen].bounds.size.width, (int)[UIScreen mainScreen].bounds.size.height];
-    UIImage *launchImage = [UIImage imageNamed:dict[key]];
-    
-    curtainImageView.image = launchImage;
-    
-    curtainImageView.alpha = 0;
-    
-    return TRUE;
+    return YES;
 }
 
 - (void)alertUserAskingToUseOldKeychain
@@ -947,7 +929,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [self setGuid:guid];
-    [self setSharedkey:sharedKey];
+    [self setSharedKey:sharedKey];
 }
 
 - (BOOL)isQRCodeScanningSupported
@@ -1028,7 +1010,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [self removeGuid];
-    [self removeSharedkey];
+    [self removeSharedKey];
     
     [self.wallet cancelTxSigning];
     
@@ -1672,6 +1654,19 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (NSString *)guid
 {
+    // Migrate guid from NSUserDefaults to KeyChain
+    NSString *guidFromUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:KEYCHAIN_KEY_GUID];
+    if (guidFromUserDefaults) {
+        [self setGuid:guidFromUserDefaults];
+        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEYCHAIN_KEY_GUID];
+        
+        // Remove all UIWebView cached data for users upgrading from older versions
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    }
+    
+//    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_GUID accessGroup:nil];
     NSData *guidData = [keychain objectForKey:(__bridge id)kSecValueData];
     NSString *guid = [[NSString alloc] initWithData:guidData encoding:NSUTF8StringEncoding];
@@ -1697,23 +1692,31 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (NSString *)sharedKey
 {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
-    NSData *sharedkeyData = [keychain objectForKey:(__bridge id)kSecValueData];
-    NSString *sharedkey = [[NSString alloc] initWithData:sharedkeyData encoding:NSUTF8StringEncoding];
+    // Migrate sharedKey from NSUserDefaults (for users updating from old version)
+    NSString *sharedKeyFromUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:KEYCHAIN_KEY_SHARED_KEY];
+    if (sharedKeyFromUserDefaults) {
+        [self setSharedKey:sharedKeyFromUserDefaults];
+        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEYCHAIN_KEY_SHARED_KEY];
+    }
     
-    return sharedkey.length == 0 ? nil : sharedkey;
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
+    NSData *sharedKeyData = [keychain objectForKey:(__bridge id)kSecValueData];
+    NSString *sharedKey = [[NSString alloc] initWithData:sharedKeyData encoding:NSUTF8StringEncoding];
+    
+    return sharedKey.length == 0 ? nil : sharedKey;
 }
 
-- (void)setSharedkey:(NSString *)sharedkey
+- (void)setSharedKey:(NSString *)sharedKey
 {
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
     [keychain setObject:(__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly forKey:(__bridge id)kSecAttrAccessible];
     
     [keychain setObject:KEYCHAIN_KEY_SHARED_KEY forKey:(__bridge id)kSecAttrAccount];
-    [keychain setObject:[sharedkey dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
+    [keychain setObject:[sharedKey dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
 }
 
-- (void)removeSharedkey
+- (void)removeSharedKey
 {
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
     
