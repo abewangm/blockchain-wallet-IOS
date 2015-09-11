@@ -852,10 +852,6 @@ uint64_t doo = 10000;
     uint64_t availableWithoutFee = availableAmount - self.feeFromTransactionProposal;
     amountInSatoshi = availableWithoutFee;
     
-    // TODO: See if can delete these
-    btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
-    fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
-    
     [self doCurrencyConversion];
 }
 
