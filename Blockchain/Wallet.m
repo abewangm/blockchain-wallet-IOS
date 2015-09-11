@@ -361,9 +361,6 @@
 {
     [self.webView executeJSWithCallback:^(NSString * final_balance) {
         self.final_balance = [final_balance longLongValue];
-        
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithLongLong:self.final_balance] forKey:@"final_balance"];
-        
     } command:@"MyWallet.wallet.finalBalance"];
 }
 
@@ -371,8 +368,6 @@
 {
     [self.webView executeJSWithCallback:^(NSString * total_sent) {
         self.total_sent = [total_sent longLongValue];
-        
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithLongLong:self.total_sent] forKey:@"total_sent"];
     } command:@"MyWallet.wallet.totalSent"];
 }
 
