@@ -38,8 +38,16 @@
 
 #define NOTIFICATION_KEY_APP_DELEGATE_RELOAD @"AppDelegateReload"
 
+#define ANIMATION_KEY_HIDE_MODAL @"HideModal"
+#define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
+
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"
+#define DICTIONARY_KEY_CODE @"code"
+#define DICTIONARY_KEY_ERROR @"error"
+#define DICTIONARY_KEY_SUCCESS @"success"
+#define DICTIONARY_KEY_KEY @"key"
+#define DICTIONARY_KEY_VALUE @"value"
 
 #define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
 #define USER_DEFAULTS_KEY_SYMBOL_LOCAL @"symbolLocal"
@@ -326,6 +334,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)walletFailedToLoad
 {
+    DLog(@"walletFailedToLoad");
     // When doing a manual pair the wallet fails to load the first time because the server needs to verify via email that the user grants access to this device. In that case we don't want to display any additional errors besides the server error telling the user to check his email.
     if ([manualPairView isDescendantOfView:_window.rootViewController.view]) {
         return;
@@ -413,6 +422,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)walletFailedToDecrypt
 {
+    DLog(@"walletFailedToDecrypt");
     // In case we were on the manual pair screen, we want to go back there. The way to check for that is that the wallet has a guid, but it's not saved yet
     if (wallet.guid && ![self guid]) {
         [self manualPairClicked:nil];
@@ -716,7 +726,7 @@ void (^secondPasswordSuccess)(NSString *);
     [animation setType:kCATransitionFade];
     
     [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
-    [[_window layer] addAnimation:animation forKey:@"HideModal"];
+    [[_window layer] addAnimation:animation forKey:ANIMATION_KEY_HIDE_MODAL];
     
     if (self.modalView.onDismiss) {
         self.modalView.onDismiss();
@@ -757,7 +767,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
-    [[_window layer] addAnimation:animation forKey:@"HideModal"];
+    [[_window layer] addAnimation:animation forKey:ANIMATION_KEY_HIDE_MODAL];
     
     if (self.modalView.onDismiss) {
         self.modalView.onDismiss();
@@ -846,7 +856,7 @@ void (^secondPasswordSuccess)(NSString *);
         }
         
         [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
-        [[_window.rootViewController.view layer] addAnimation:animation forKey:@"ShowModal"];
+        [[_window.rootViewController.view layer] addAnimation:animation forKey:ANIMATION_KEY_SHOW_MODAL];
     } @catch (NSException * e) {
         DLog(@"Animation Exception %@", e);
     }
@@ -1416,9 +1426,9 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self hideBusyView];
     
-    NSNumber * code = [dictionary objectForKey:@"code"]; //This is a status code from the server
-    NSString * error = [dictionary objectForKey:@"error"]; //This is an error string from the server or nil
-    NSString * success = [dictionary objectForKey:@"success"]; //The PIN decryption value from the server
+    NSNumber * code = [dictionary objectForKey:DICTIONARY_KEY_CODE]; //This is a status code from the server
+    NSString * error = [dictionary objectForKey:DICTIONARY_KEY_ERROR]; //This is an error string from the server or nil
+    NSString * success = [dictionary objectForKey:DICTIONARY_KEY_SUCCESS]; //The PIN decryption value from the server
     NSString * encryptedPINPassword = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD];
     
     BOOL pinSuccess = FALSE;
@@ -1514,10 +1524,10 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    NSNumber * code = [dictionary objectForKey:@"code"]; //This is a status code from the server
-    NSString * error = [dictionary objectForKey:@"error"]; //This is an error string from the server or nil
-    NSString * key = [dictionary objectForKey:@"key"]; //This is our pin code lookup key
-    NSString * value = [dictionary objectForKey:@"value"]; //This is our encryption string
+    NSNumber * code = [dictionary objectForKey:DICTIONARY_KEY_CODE]; //This is a status code from the server
+    NSString * error = [dictionary objectForKey:DICTIONARY_KEY_ERROR]; //This is an error string from the server or nil
+    NSString * key = [dictionary objectForKey:DICTIONARY_KEY_KEY]; //This is our pin code lookup key
+    NSString * value = [dictionary objectForKey:DICTIONARY_KEY_VALUE]; //This is our encryption string
     
     if (error != nil) {
         [self didFailPutPin:error];
@@ -1614,7 +1624,7 @@ void (^secondPasswordSuccess)(NSString *);
         // Remove all UIWebView cached data for users upgrading from older versions
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
     }
-        
+    
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_GUID accessGroup:nil];
     NSData *guidData = [keychain objectForKey:(__bridge id)kSecValueData];
     NSString *guid = [[NSString alloc] initWithData:guidData encoding:NSUTF8StringEncoding];
