@@ -36,8 +36,8 @@
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
 
-#define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
-#define ZEROBLOCK_TITLE @"ZeroBlock"
+#define ADDRESS_ZEROBLOCK @"https://zeroblock.com/"
+#define TITLE_ZEROBLOCK @"ZeroBlock"
 
 #define SOUND_FORMAT @"wav"
 
@@ -67,18 +67,18 @@
 #define KEYCHAIN_KEY_GUID @"guid"
 #define KEYCHAIN_KEY_PASSWORD @"password"
 
-#define SETTINGS_STORYBOARD_NAME @"Settings"
-#define BACKUP_STORYBOARD_NAME @"Backup"
-#define UPGRADE_STORYBOARD_NAME @"Upgrade"
+#define STORYBOARD_NAME_SETTINGS @"Settings"
+#define STORYBOARD_NAME_BACKUP @"Backup"
+#define STORYBOARD_NAME_UPGRADE @"Upgrade"
 
-#define SETTINGS_NAVIGATION_CONTROLLER_NAME @"SettingsNavigationController"
-#define BACKUP_NAVIGATION_CONTROLLER_NAME @"BackupNavigation"
+#define NAVIGATION_CONTROLLER_NAME_SETTINGS @"SettingsNavigationController"
+#define NAVIGATION_CONTROLLER_NAME_BACKUP @"BackupNavigation"
 
-#define UPGRADE_VIEW_CONTROLLER_NAME @"UpgradeViewController"
+#define VIEW_CONTROLLER_NAME_UPGRADE @"UpgradeViewController"
 
-#define SEND_COINS_NIB_NAME @"SendCoins"
-#define MERCHANT_MAP_VIEW_NIB_NAME @"MerchantMapView"
-#define RECEIVE_COINS_NIB_NAME @"ReceiveCoins"
+#define NIB_NAME_SEND_COINS @"SendCoins"
+#define NIB_NAME_MERCHANT_MAP_VIEW @"MerchantMapView"
+#define NIB_NAME_RECEIVE_COINS @"ReceiveCoins"
 
 #define SUPPORT_EMAIL_ADDRESS @"support@blockchain.zendesk.com"
 
@@ -633,7 +633,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (!_sendViewController) {
         // really no reason to lazyload anymore...
-        _sendViewController = [[SendViewController alloc] initWithNibName:SEND_COINS_NIB_NAME bundle:[NSBundle mainBundle]];
+        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     
     NSDictionary *dict = [self parseURI:[url absoluteString]];
@@ -1002,8 +1002,8 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showAccountSettings
 {
     if (!_settingsNavigationController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:SETTINGS_STORYBOARD_NAME bundle: nil];
-        self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:SETTINGS_NAVIGATION_CONTROLLER_NAME];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
+        self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
     }
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -1013,8 +1013,8 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showBackup
 {
     if (!_backupNavigationViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:BACKUP_STORYBOARD_NAME bundle: nil];
-        _backupNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:BACKUP_NAVIGATION_CONTROLLER_NAME];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_BACKUP bundle: nil];
+        _backupNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
     }
     
     // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
@@ -1047,7 +1047,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showSendCoins
 {
     if (!_sendViewController) {
-        _sendViewController = [[SendViewController alloc] initWithNibName:SEND_COINS_NIB_NAME bundle:[NSBundle mainBundle]];
+        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
@@ -1147,8 +1147,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showHdUpgrade
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:UPGRADE_STORYBOARD_NAME bundle: nil];
-    UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:UPGRADE_VIEW_CONTROLLER_NAME];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_UPGRADE bundle: nil];
+    UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:VIEW_CONTROLLER_NAME_UPGRADE];
     upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
 }
@@ -1190,7 +1190,7 @@ void (^secondPasswordSuccess)(NSString *);
 //        [[UIApplication sharedApplication] openURL:zeroBlockAppURL];
 //    }
 //    else {
-        [self pushWebViewController:ZEROBLOCK_ADDRESS title:ZEROBLOCK_TITLE];
+        [self pushWebViewController:ADDRESS_ZEROBLOCK title:@"ZeroBlock"];
 //    }
 }
 
@@ -1284,7 +1284,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)receiveCoinClicked:(UIButton *)sender
 {
     if (!_receiveViewController) {
-        _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:RECEIVE_COINS_NIB_NAME bundle:[NSBundle mainBundle]];
+        _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
     }
     
     [_tabViewController setActiveViewController:_receiveViewController animated:TRUE index:2];
@@ -1303,7 +1303,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)merchantClicked:(UIButton *)sender
 {
     if (!_merchantViewController) {
-        _merchantViewController = [[MerchantMapViewController alloc] initWithNibName:MERCHANT_MAP_VIEW_NIB_NAME bundle:[NSBundle mainBundle]];
+        _merchantViewController = [[MerchantMapViewController alloc] initWithNibName:NIB_NAME_MERCHANT_MAP_VIEW bundle:[NSBundle mainBundle]];
     }
     
     _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -1313,7 +1313,7 @@ void (^secondPasswordSuccess)(NSString *);
 -(IBAction)QRCodebuttonClicked:(id)sender
 {
     if (!_sendViewController) {
-        _sendViewController = [[SendViewController alloc] initWithNibName:SEND_COINS_NIB_NAME bundle:[NSBundle mainBundle]];
+        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     [_sendViewController QRCodebuttonClicked:sender];
 }
