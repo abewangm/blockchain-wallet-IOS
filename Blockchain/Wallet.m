@@ -559,6 +559,11 @@
     [self.webView executeJS:@"MyWalletPhone.generateNewAddress()"];
 }
 
+- (BOOL)checkIfWalletHasAddress:(NSString *)address
+{
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.checkIfWalletHasAddress(\"%@\")", [address escapeStringForJS]] boolValue];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

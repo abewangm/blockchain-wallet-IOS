@@ -1023,3 +1023,8 @@ MyWalletPhone.generateNewAddress = function() {
         }
    });
 };
+
+MyWalletPhone.checkIfWalletHasAddress = function(address) {
+    var addresses = MyWallet.wallet.addresses;
+    return (addresses.indexOf(address) > -1);
+}

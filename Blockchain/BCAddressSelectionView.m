@@ -276,7 +276,7 @@ int legacyAddressesSectionNumber;
         
         NSString *addr = cell.addressLabel.text;
         Boolean isWatchOnlyLegacyAddress = false;
-        if (addr && section != addressBookSectionNumber) {
+        if (addr && [app.wallet checkIfWalletHasAddress:addr]) {
             isWatchOnlyLegacyAddress = [app.wallet isWatchOnlyLegacyAddress:addr];
         }
         

@@ -199,6 +199,8 @@
 - (void)loading_stop;
 - (void)upgrade_success;
 
+- (BOOL)checkIfWalletHasAddress:(NSString *)address;
+
 // Settings
 - (void)getAccountInfo;
 - (void)changeEmail:(NSString *)newEmailString;
