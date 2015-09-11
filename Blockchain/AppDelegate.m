@@ -36,8 +36,8 @@
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
 
-#define ADDRESS_ZEROBLOCK @"https://zeroblock.com/"
-#define TITLE_ZEROBLOCK @"ZeroBlock"
+#define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
+#define ZEROBLOCK_TITLE @"ZeroBlock"
 
 #define SOUND_FORMAT @"wav"
 
@@ -1190,7 +1190,7 @@ void (^secondPasswordSuccess)(NSString *);
 //        [[UIApplication sharedApplication] openURL:zeroBlockAppURL];
 //    }
 //    else {
-        [self pushWebViewController:ADDRESS_ZEROBLOCK title:@"ZeroBlock"];
+        [self pushWebViewController:ZEROBLOCK_ADDRESS title:ZEROBLOCK_TITLE];
 //    }
 }
 
