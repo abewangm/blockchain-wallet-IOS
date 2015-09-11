@@ -1011,6 +1011,7 @@ MyWalletPhone.generateNewAddress = function() {
         var error = function (e) {
             console.log('Error creating new address: ' + e);
             device.execute('loading_stop');
+            device.execute('on_error_creating_new_address:', [e]);
         };
                        
         if (MyWallet.wallet.isDoubleEncrypted) {

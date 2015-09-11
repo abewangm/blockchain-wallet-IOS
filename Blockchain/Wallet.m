@@ -998,7 +998,7 @@
 - (void)on_backup_wallet_start
 {
     DLog(@"on_backup_wallet_start");
-    // Hide the busy view if setting fee per kb - the call to backup the wallet is waiting on this setter to finish
+    // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
     [self loading_stop];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
@@ -1102,6 +1102,12 @@
     DLog(@"on_generate_key");
     
     [delegate didGenerateNewAddress:address];
+}
+
+- (void)on_error_generating_new_address:(NSString*)error
+{
+    DLog(@"on_error_generating_new_address");
+    [app standardNotify:error];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

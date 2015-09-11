@@ -455,7 +455,7 @@ UIActionSheet *popupAddressArchive;
     }];
 }
 
-- (IBAction)scanKeyClicked:(id)sender
+- (IBAction)newAddressClicked:(id)sender
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_NEW_ADDRESS message:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_NEW_ADDRESS_GENERATE_NEW, BC_STRING_NEW_ADDRESS_SCAN_QR_CODE, nil];
     alertView.delegate = self;
@@ -483,6 +483,9 @@ UIActionSheet *popupAddressArchive;
     [self reload];
     
     [app closeModalWithTransition:kCATransitionFade];
+    
+    // Show busy view since syncWallet will block the main thread
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_UPDATING_LABEL];
 }
 
 - (IBAction)mainQRClicked:(id)sender
@@ -615,7 +618,7 @@ UIActionSheet *popupAddressArchive;
 }
 
 - (void)generateNewAddress
-{
+{    
     [app.wallet generateNewKey];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(promptForLabelAfterGenerate)
@@ -858,7 +861,7 @@ UIActionSheet *popupAddressArchive;
         
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 20, 14, 25, 25)];
         [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
-        [addButton addTarget:self action:@selector(scanKeyClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [addButton addTarget:self action:@selector(newAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
     }
     else if (section == 2)
