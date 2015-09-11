@@ -680,6 +680,112 @@ uint64_t doo = 10000;
     [self updateFundsAvailable];
 }
 
+#pragma mark - Fee Calculation
+
+- (void)addObserverForMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
+{
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
+        if ([notification.userInfo count] != 0) {
+            
+            self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
+            uint64_t maxAmount = [notification.userInfo[@"amount"] longLongValue];
+            
+            DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[@"fee"] longLongValue]);
+            
+            if (isSpendingMoreThanAvailable) {
+                [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
+            } else {
+                amountInSatoshi = maxAmount;
+                [self doCurrencyConversion];
+            }
+        }
+    }];
+}
+
+- (void)addObserverForFeeWhileConfirming:(BOOL)isConfirming
+{
+    [self disablePaymentButtons];
+    
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
+        
+        if ([notification.userInfo count] != 0) {
+            
+            uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
+            
+            if ([notification.userInfo valueForKey:@"errorCode"]) {
+                uint64_t errorCodeValue = [[notification.userInfo valueForKey:@"errorCode"] longLongValue];
+                switch (errorCodeValue) {
+                    case 500: {
+                        [self getMaxFeeDueToOverspending:YES];
+                        return;
+                    }
+                }
+            }
+            
+            self.feeFromTransactionProposal = newFee;
+            DLog(@"SendViewController: got fee of %lld", newFee);
+            
+            if (isConfirming) {
+                [self confirmPayment];
+            } else {
+                [self enablePaymentButtons];
+            }
+        } else {
+            [self enablePaymentButtons];
+        }
+    }];
+}
+
+- (void)getTransactionProposalFeeForAmount:(uint64_t)amount isConfirming:(BOOL)isConfirming
+{
+    if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
+        DLog(@"SendViewController Error: empty amount or toAddress");
+        return;
+    }
+    
+    if (self.sendToAddress && ![app.wallet isValidAddress:self.toAddress]) {
+        DLog(@"SendViewController Error: toAddress is not a valid address");
+        return;
+    }
+    
+    [self addObserverForFeeWhileConfirming:isConfirming];
+    // The fee is set via feeForTransactionProposal via notification when the promise is delivered
+    
+    NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
+    
+    // Different ways of sending (from/to address or account
+    if (self.sendFromAddress && self.sendToAddress) {
+        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAddress:self.toAddress amountString:amountString];
+    }
+    else if (self.sendFromAddress && !self.sendToAddress) {
+        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAccount:self.toAccount amountString:amountString];
+    }
+    else if (!self.sendFromAddress && self.sendToAddress) {
+        [app.wallet getTransactionProposalFeeFromAccount:self.fromAccount toAddress:self.toAddress amountString:amountString];
+    }
+    else if (!self.sendFromAddress && !self.sendToAddress) {
+        [app.wallet getTransactionProposalFromAccount:self.fromAccount toAccount:self.toAccount amountString:amountString];
+    }
+}
+
+- (void)getMaxFeeFromWallet
+{
+    if (self.sendFromAddress) {
+        [app.wallet getMaximumTransactionFeeForAddress:self.fromAddress];
+    } else {
+        [app.wallet getMaximumTransactionFeeForAccount:self.fromAccount];
+    }
+}
+
+- (void)getMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
+{
+    [self addObserverForMaxFeeDueToOverspending:isSpendingMoreThanAvailable];
+    
+    [self getMaxFeeFromWallet];
+}
+
 #pragma mark - Actions
 
 - (IBAction)selectFromAddressClicked:(id)sender
@@ -836,112 +942,6 @@ uint64_t doo = 10000;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     [self getMaxFeeDueToOverspending:NO];
-}
-
-#pragma mark Fee Calculation
-
-- (void)addObserverForMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
-{
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-        if ([notification.userInfo count] != 0) {
-            
-            self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
-            uint64_t maxAmount = [notification.userInfo[@"amount"] longLongValue];
-
-            DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[@"fee"] longLongValue]);
-
-            if (isSpendingMoreThanAvailable) {
-                [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
-            } else {
-                amountInSatoshi = maxAmount;
-                [self doCurrencyConversion];
-            }
-        }
-    }];
-}
-
-- (void)addObserverForFeeWhileConfirming:(BOOL)isConfirming
-{
-    [self disablePaymentButtons];
-    
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-        
-        if ([notification.userInfo count] != 0) {
-            
-            uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
-            
-            if ([notification.userInfo valueForKey:@"errorCode"]) {
-                uint64_t errorCodeValue = [[notification.userInfo valueForKey:@"errorCode"] longLongValue];
-                switch (errorCodeValue) {
-                    case 500: {
-                        [self getMaxFeeDueToOverspending:YES];
-                        return;
-                    }
-                }
-            }
-            
-            self.feeFromTransactionProposal = newFee;
-            DLog(@"SendViewController: got fee of %lld", newFee);
-            
-            if (isConfirming) {
-                [self confirmPayment];
-            } else {
-                [self enablePaymentButtons];
-            }
-        } else {
-            [self enablePaymentButtons];
-        }
-    }];
-}
-
-- (void)getTransactionProposalFeeForAmount:(uint64_t)amount isConfirming:(BOOL)isConfirming
-{
-    if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
-        DLog(@"SendViewController Error: empty amount or toAddress");
-        return;
-    }
-    
-    if (self.sendToAddress && ![app.wallet isValidAddress:self.toAddress]) {
-        DLog(@"SendViewController Error: toAddress is not a valid address");
-        return;
-    }
-    
-    [self addObserverForFeeWhileConfirming:isConfirming];
-    // The fee is set via feeForTransactionProposal via notification when the promise is delivered
-    
-    NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
-    
-    // Different ways of sending (from/to address or account
-    if (self.sendFromAddress && self.sendToAddress) {
-        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAddress:self.toAddress amountString:amountString];
-    }
-    else if (self.sendFromAddress && !self.sendToAddress) {
-        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAccount:self.toAccount amountString:amountString];
-    }
-    else if (!self.sendFromAddress && self.sendToAddress) {
-        [app.wallet getTransactionProposalFeeFromAccount:self.fromAccount toAddress:self.toAddress amountString:amountString];
-    }
-    else if (!self.sendFromAddress && !self.sendToAddress) {
-        [app.wallet getTransactionProposalFromAccount:self.fromAccount toAccount:self.toAccount amountString:amountString];
-    }
-}
-
-- (void)getMaxFeeFromWallet
-{
-    if (self.sendFromAddress) {
-        [app.wallet getMaximumTransactionFeeForAddress:self.fromAddress];
-    } else {
-        [app.wallet getMaximumTransactionFeeForAccount:self.fromAccount];
-    }
-}
-
-- (void)getMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
-{
-    [self addObserverForMaxFeeDueToOverspending:isSpendingMoreThanAvailable];
-    
-    [self getMaxFeeFromWallet];
 }
 
 - (IBAction)sendPaymentClicked:(id)sender
