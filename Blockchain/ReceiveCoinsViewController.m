@@ -455,7 +455,7 @@ UIActionSheet *popupAddressArchive;
     }];
 }
 
-- (IBAction)newAddressClicked:(id)sender
+- (IBAction)addNewAddressClicked:(id)sender
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_NEW_ADDRESS message:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_NEW_ADDRESS_GENERATE_NEW, BC_STRING_NEW_ADDRESS_SCAN_QR_CODE, nil];
     alertView.delegate = self;
@@ -861,7 +861,7 @@ UIActionSheet *popupAddressArchive;
         
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 20, 14, 25, 25)];
         [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
-        [addButton addTarget:self action:@selector(newAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [addButton addTarget:self action:@selector(addNewAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
     }
     else if (section == 2)
