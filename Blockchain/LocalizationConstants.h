@@ -57,6 +57,7 @@
 #define BC_STRING_INVALID_EMAIL_ADDRESS NSLocalizedString(@"Invalid email address.", nil)
 #define BC_STRING_DID_CREATE_NEW_ACCOUNT_DETAIL NSLocalizedString(@"Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app.", nil)
 #define BC_STRING_DID_CREATE_NEW_ACCOUNT_TITLE NSLocalizedString(@"Your wallet was successfully created.", nil)
+#define BC_STRING_MY_BITCOIN_WALLET NSLocalizedString(@"My Bitcoin Wallet", nil)
 #define BC_STRING_PASSWORD_STRENGTH_WEAK NSLocalizedString(@"Weak", nil)
 #define BC_STRING_PASSWORD_STRENGTH_REGULAR NSLocalizedString(@"Regular", nil)
 #define BC_STRING_PASSWORD_STRENGTH_NORMAL NSLocalizedString(@"Normal", nil)

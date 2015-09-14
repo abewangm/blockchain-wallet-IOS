@@ -890,7 +890,7 @@ MyWallet.getNTransactionsPerPage = function() {
 
 // Settings
 
-MyWalletPhone.get_user_info = function () {
+MyWalletPhone.get_account_info = function () {
     
     var success = function (data) {
         console.log('Getting account info');
@@ -933,7 +933,7 @@ MyWalletPhone.resend_verification_email = function(email) {
     BlockchainSettingsAPI.resendEmailConfirmation(email, success, error);
 }
 
-MyWalletPhone.change_currency = function(code) {
+MyWalletPhone.change_local_currency = function(code) {
     
     var success = function () {
         console.log('Changing local currency');

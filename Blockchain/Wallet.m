@@ -200,7 +200,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_currency(\"%@\")", currencyCode];
+    [self.webView executeJS:@"MyWalletPhone.change_local_currency(\"%@\")", currencyCode];
 }
 
 - (void)changeBtcCurrency:(NSString *)btcCode
@@ -218,7 +218,7 @@
         return;
     }
     
-    [self.webView executeJS:@"JSON.stringify(MyWalletPhone.get_user_info())"];
+    [self.webView executeJS:@"JSON.stringify(MyWalletPhone.get_account_info())"];
 }
 
 - (void)changeEmail:(NSString *)newEmailString
@@ -335,7 +335,7 @@
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
 #ifdef HD_ENABLED
-    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], NSLocalizedString(@"My Bitcoin Wallet", nil), nil];
+    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET, nil];
 #else
     // make a legacy wallet
     [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", %i)", [__password escapeStringForJS], [__email escapeStringForJS], [@"" escapeStringForJS], 0];
@@ -1115,6 +1115,11 @@
     [app standardNotify:error];
 }
 
+- (void)on_success_get_recovery_phrase:(NSString*)phrase
+{
+    self.recoveryPhrase = phrase;
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)whitelistWallet
@@ -1177,11 +1182,6 @@
     
     [self.webView executeJSSynchronous:@"MyWallet.wallet.hdwallet.verifyMnemonic()"];
 }
-
--(void)on_success_get_recovery_phrase:(NSString*)phrase {
-    self.recoveryPhrase = phrase;
-}
-
 
 - (int)getAccountsCount
 {
