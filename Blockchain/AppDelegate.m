@@ -1061,39 +1061,6 @@ void (^secondPasswordSuccess)(NSString *);
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
 }
 
-- (void)clearPin
-{
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PASSWORD_PART_HASH];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PIN_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (BOOL)isPINSet
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD] != nil;
-}
-
-- (void)closePINModal:(BOOL)animated
-{
-    // There are two different ways the pinModal is displayed: as a subview of tabViewController (on start) and as a viewController. This checks which one it is and dismisses accordingly
-    if ([self.pinEntryViewController.view isDescendantOfView:_window.rootViewController.view]) {
-        if (animated) {
-            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                self.pinEntryViewController.view.alpha = 0;
-            } completion:^(BOOL finished) {
-                [self.pinEntryViewController.view removeFromSuperview];
-            }];
-        }
-        else {
-            [self.pinEntryViewController.view removeFromSuperview];
-        }
-    }
-    else {
-        [_tabViewController dismissViewControllerAnimated:animated completion:^{ }];
-    }
-}
-
 - (void)showPinModalAsView:(BOOL)asView
 {
     // Don't show a new one if we already show it
@@ -1235,6 +1202,34 @@ void (^secondPasswordSuccess)(NSString *);
     
     peViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.tabViewController presentViewController:c animated:YES completion:nil];
+}
+
+- (void)clearPin
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PASSWORD_PART_HASH];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PIN_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)closePINModal:(BOOL)animated
+{
+    // There are two different ways the pinModal is displayed: as a subview of tabViewController (on start) and as a viewController. This checks which one it is and dismisses accordingly
+    if ([self.pinEntryViewController.view isDescendantOfView:_window.rootViewController.view]) {
+        if (animated) {
+            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                self.pinEntryViewController.view.alpha = 0;
+            } completion:^(BOOL finished) {
+                [self.pinEntryViewController.view removeFromSuperview];
+            }];
+        }
+        else {
+            [self.pinEntryViewController.view removeFromSuperview];
+        }
+    }
+    else {
+        [_tabViewController dismissViewControllerAnimated:animated completion:^{ }];
+    }
 }
 
 - (IBAction)logoutClicked:(id)sender
@@ -1778,7 +1773,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - Device State Checks
+#pragma mark - State Checks
 
 - (void)checkForNewInstall
 {
@@ -1863,6 +1858,11 @@ void (^secondPasswordSuccess)(NSString *);
         return NO;
     }
     return YES;
+}
+
+- (BOOL)isPINSet
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD] != nil;
 }
 
 @end
