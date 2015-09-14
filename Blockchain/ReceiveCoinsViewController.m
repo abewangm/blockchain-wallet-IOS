@@ -15,7 +15,7 @@
 @interface ReceiveCoinsViewController() <UIAlertViewDelegate>
 @property (nonatomic) id paymentObserver;
 @property (nonatomic) double amountRequested;
-@property (nonatomic) UIAlertView *generateNewAddressAlertView;
+@property (nonatomic) UIAlertView *addNewAddressAlertView;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -459,7 +459,7 @@ UIActionSheet *popupAddressArchive;
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_NEW_ADDRESS message:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_NEW_ADDRESS_GENERATE_NEW, BC_STRING_NEW_ADDRESS_SCAN_QR_CODE, nil];
     alertView.delegate = self;
-    self.generateNewAddressAlertView = alertView;
+    self.addNewAddressAlertView = alertView;
     [alertView show];
     
 }
@@ -638,7 +638,7 @@ UIActionSheet *popupAddressArchive;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView == self.generateNewAddressAlertView) {
+    if (alertView == self.addNewAddressAlertView) {
         switch (buttonIndex) {
             case 0: {
                 DLog(@"Cancelled creating new address");
