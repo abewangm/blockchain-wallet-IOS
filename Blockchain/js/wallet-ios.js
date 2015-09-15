@@ -1035,7 +1035,7 @@ MyWalletPhone.generateNewAddress = function() {
         
         device.execute('loading_start_generate_new_address');
                        
-        var label = '';
+        var label = null;
                        
         var success = function () {
             console.log('Success creating new address');
