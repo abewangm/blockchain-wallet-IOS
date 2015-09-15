@@ -257,31 +257,10 @@
     [self.webView executeJSSynchronous:@"MyWalletPhone.cancelTxSigning();"];
 }
 
-- (void)sendPaymentFromAddress:(NSString*)fromAddress toAddress:(NSString*)toAddress satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener
+- (void)sendPaymentWithListener:(transactionProgressListeners*)listener
 {
-    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(MyWalletPhone.createTransactionProposalFromAddressToAddress(\"%@\", \"%@\", \"%@\"))", [fromAddress escapeStringForJS], [toAddress escapeStringForJS], [satoshiValue escapeStringForJS]];
+    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend()"];
         
-    [self.transactionProgressListeners setObject:listener forKey:txProgressID];
-}
-
-- (void)sendPaymentFromAddress:(NSString*)fromAddress toAccount:(int)toAccount satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener
-{
-    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(MyWalletPhone.createTransactionProposalFromAddressToAccount(\"%@\", %d, \"%@\"))", [fromAddress escapeStringForJS], toAccount, [satoshiValue escapeStringForJS]];
-    
-    [self.transactionProgressListeners setObject:listener forKey:txProgressID];
-}
-
-- (void)sendPaymentFromAccount:(int)fromAccount toAddress:(NSString*)toAddress satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener
-{
-    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(MyWalletPhone.createTransactionProposalFromAccountToAddress(%d, \"%@\", \"%@\"))", fromAccount, [toAddress escapeStringForJS], satoshiValue];
-    
-    [self.transactionProgressListeners setObject:listener forKey:txProgressID];
-}
-
-- (void)sendPaymentFromAccount:(int)fromAccount toAccount:(int)toAccount satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener
-{
-    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(MyWalletPhone.createTransactionProposalFromAccountToAccount(%d, %d, \"%@\"))", fromAccount, toAccount, satoshiValue];
-    
     [self.transactionProgressListeners setObject:listener forKey:txProgressID];
 }
 
@@ -514,14 +493,49 @@
     return [self.webView executeJSSynchronous:@"MyWalletPhone.score_password(\"%@\")", passwordString];
 }
 
-- (void)getMaximumTransactionFeeForAccount:(int)account
+- (void)createNewPayment
 {
-    [self.webView executeJS:@"MyWalletPhone.getMaximumTransactionFeeForAccount(%d)", account];
+    [self.webView executeJS:@"MyWalletPhone.createNewPayment()"];
 }
 
-- (void)getMaximumTransactionFeeForAddress:(NSString *)address
+- (void)changePaymentFromAccount:(int)fromInt
 {
-    [self.webView executeJS:@"MyWalletPhone.getMaximumTransactionFeeForAddress(\"%@\")", address];
+    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(%d)", fromInt];
+}
+
+- (void)changePaymentFromAddress:(NSString *)fromString
+{
+    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(\"%@\")", [fromString escapeStringForJS]];
+}
+
+- (void)changePaymentToAccount:(int)toInt
+{
+    [self.webView executeJS:@"MyWalletPhone.changePaymentTo(%d)", toInt];
+}
+
+- (void)changePaymentToAddress:(NSString *)toString
+{
+    [self.webView executeJS:@"MyWalletPhone.changePaymentTo(\"%@\")", [toString escapeStringForJS]];
+}
+
+- (void)changePaymentAmount:(uint64_t)amount
+{
+    [self.webView executeJS:@"MyWalletPhone.changePaymentAmount(%lld)", amount];
+}
+
+- (void)sweepPayment
+{
+    [self.webView executeJS:@"MyWalletPhone.sweepPayment()"];
+}
+
+- (void)checkIfOverspending
+{
+    [self.webView executeJS:@"MyWalletPhone.checkIfUserIsOverSpending()"];
+}
+
+- (void)getPaymentFee
+{
+    [self.webView executeJS:@"MyWalletPhone.getPaymentFee()"];
 }
 
 - (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString
@@ -536,7 +550,7 @@
 
 - (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString
 {
-    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createTransactionProposalFromAccountToAddress(%d,\"%@\",\"%@\"))", fromAccount, [toAddress escapeStringForJS], amountString];
+    [self.webView executeJS:@"MyWalletPhone.recommendedTransactionFee(MyWalletPhone.createPaymentFromAccountToAddress(%d,\"%@\",\"%@\"))", fromAccount, [toAddress escapeStringForJS], amountString];
 }
 
 - (void)getTransactionProposalFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString
@@ -1087,19 +1101,21 @@
     DLog(@"update_max_amount");
     DLog(@"Wallet: max amount is %@ with fee %@", amount, fee);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"amount":amount , @"fee":fee}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"amount":amount, @"fee":fee}];
+}
+
+- (void)check_max_amount:(NSNumber *)amount fee:(NSNumber *)fee
+{
+    DLog(@"check_max_amount");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil userInfo:@{@"amount":amount, @"fee":fee}];
 }
 
 - (void)on_error_update_fee:(NSString *)error
 {
     DLog(@"on_error_update_fee");
     
-    if ([error isKindOfClass:[NSString class]]) {
-        [app standardNotify:error];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:nil];
-    } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"errorCode": [NSNumber numberWithLongLong:[error longLongValue]]}];
-    }
+    [app standardNotify:error];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"error":error}];
 }
 
 - (void)on_generate_key:(NSString*)address

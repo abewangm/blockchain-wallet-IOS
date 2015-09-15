@@ -57,6 +57,7 @@ uint64_t doo = 10000;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showInsufficientFunds) name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
     
     app.mainTitleLabel.text = BC_STRING_SEND;
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -77,6 +78,13 @@ uint64_t doo = 10000;
     [toField setReturnKeyType:UIReturnKeyDone];
     
     [self reload];
+    
+}
+
+- (void)resetPayment
+{
+    [app.wallet createNewPayment];
+    [app.wallet changePaymentFromAddress:@""];
 }
 
 - (void)resetFromAddress
@@ -88,13 +96,14 @@ uint64_t doo = 10000;
         
         int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
         self.fromAccount = defaultAccountIndex;
+        [app.wallet createNewPayment];
+        [self didSelectFromAccount:self.fromAccount];
     }
     else {
         // Default setting: send from any address
         self.sendFromAddress = true;
+        [self resetPayment];
     }
-    
-    self.sendToAddress = true;
 }
 
 - (void)clearToAddressAndAmountFields
@@ -102,6 +111,7 @@ uint64_t doo = 10000;
     self.toAddress = @"";
     toField.text = @"";
     amountInSatoshi = 0;
+    [self resetPayment];
 }
 
 - (void)reload
@@ -111,6 +121,8 @@ uint64_t doo = 10000;
     }
     
     [self resetFromAddress];
+    
+    self.sendToAddress = true;
     
     // If we only have one account and no legacy addresses -> can't change from address
     if ([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
@@ -159,9 +171,16 @@ uint64_t doo = 10000;
     
     if (self.sendToAddress) {
         toField.text = [self labelForLegacyAddress:self.toAddress];
+        if ([app.wallet isValidAddress:toField.text]) {
+            [self didSelectToAddress:self.toAddress];
+        } else {
+            toField.text = @"";
+            self.toAddress = @"";
+        }
     }
     else {
         toField.text = [app.wallet getLabelForAccount:self.toAccount];
+        [self didSelectToAccount:self.toAccount];
     }
     
     if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
@@ -249,6 +268,7 @@ uint64_t doo = 10000;
         self.toAddress = @"";
         amountInSatoshi = 0.0;
         [self doCurrencyConversion];
+        [self resetPayment];
         
         // Close transaction modal, go to transactions view, scroll to top and animate new transaction
         [app closeModalWithTransition:kCATransitionFade];
@@ -295,27 +315,21 @@ uint64_t doo = 10000;
     if (self.sendFromAddress && self.sendToAddress) {
         DLog(@"From: %@", self.fromAddress);
         DLog(@"To: %@", self.toAddress);
-        
-        [app.wallet sendPaymentFromAddress:self.fromAddress toAddress:self.toAddress satoshiValue:amountString listener:listener];
     }
     else if (self.sendFromAddress && !self.sendToAddress) {
         DLog(@"From: %@", self.fromAddress);
         DLog(@"To account: %d", self.toAccount);
-        
-        [app.wallet sendPaymentFromAddress:self.fromAddress toAccount:self.toAccount satoshiValue:amountString listener:listener];
     }
     else if (!self.sendFromAddress && self.sendToAddress) {
         DLog(@"From account: %d", self.fromAccount);
         DLog(@"To: %@", self.toAddress);
-        
-        [app.wallet sendPaymentFromAccount:self.fromAccount toAddress:self.toAddress satoshiValue:amountString listener:listener];
     }
     else if (!self.sendFromAddress && !self.sendToAddress) {
         DLog(@"From account: %d", self.fromAccount);
         DLog(@"To account: %d", self.toAccount);
-        
-        [app.wallet sendPaymentFromAccount:self.fromAccount toAccount:self.toAccount satoshiValue:amountString listener:listener];
     }
+    
+    [app.wallet sendPaymentWithListener:listener];
 }
 
 - (uint64_t)getInputAmountInSatoshi
@@ -350,8 +364,10 @@ uint64_t doo = 10000;
         alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 amountInSatoshi = maxAmount;
+                // Display to the user the max amount
                 [self doCurrencyConversion];
-                [self sendPaymentClicked:nil];
+                // Actually do the sweep and confirm
+                [self getMaxFeeWhileConfirming:YES];
             } else {
                 [self enablePaymentButtons];
             }
@@ -366,7 +382,7 @@ uint64_t doo = 10000;
     [self dismissKeyboard];
     
     [self doCurrencyConversion];
-    
+        
     // Payment buttons are likely already disabled on a regular payment, but need to be disabled again when using all funds
     [self disablePaymentButtons];
     
@@ -423,6 +439,7 @@ uint64_t doo = 10000;
         btcAmountField.textColor = [UIColor blackColor];
         fiatAmountField.textColor = [UIColor blackColor];
         [self enablePaymentButtons];
+        [app.wallet changePaymentAmount:amountInSatoshi];
     }
     
     if ([btcAmountField isFirstResponder]) {
@@ -600,6 +617,9 @@ uint64_t doo = 10000;
     } else if (textField == toField) {
         self.sendToAddress = true;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        if (self.toAddress && [app.wallet isValidAddress:self.toAddress]) {
+            [self didSelectToAddress:self.toAddress];
+        }
         DLog(@"toAddress: %@", self.toAddress);
     }
     
@@ -641,6 +661,8 @@ uint64_t doo = 10000;
     self.fromAddress = address;
     DLog(@"fromAddress: %@", address);
     
+    [app.wallet changePaymentFromAddress:address];
+    
     [self updateFundsAvailable];
 }
 
@@ -651,6 +673,8 @@ uint64_t doo = 10000;
     toField.text = [self labelForLegacyAddress:address];
     self.toAddress = address;
     DLog(@"toAddress: %@", address);
+    
+    [app.wallet changePaymentToAddress:address];
     
     [self updateFundsAvailable];
 }
@@ -665,6 +689,8 @@ uint64_t doo = 10000;
     self.fromAccount = account;
     DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
     
+    [app.wallet changePaymentFromAccount:account];
+    
     [self updateFundsAvailable];
 }
 
@@ -677,12 +703,31 @@ uint64_t doo = 10000;
     self.toAddress = @"";
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
     
+    [app.wallet changePaymentToAccount:account];
+    
     [self updateFundsAvailable];
 }
 
 #pragma mark - Fee Calculation
 
-- (void)addObserverForMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
+- (void)addObserverForCheckingForOverspending
+{
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil queue:nil usingBlock:^(NSNotification * notification) {
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil];
+        if ([notification.userInfo count] != 0) {
+            self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
+            uint64_t maxAmount = [notification.userInfo[@"amount"] longLongValue];
+            if (amountInSatoshi > maxAmount) {
+                [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
+            } else {
+                // Underspending - regular transaction
+                [self getFeeFromCurrentPayment];
+            }
+        }
+    }];
+}
+
+- (void)addObserverForMaxFeeWhileConfirming:(BOOL)isConfirming
 {
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
@@ -692,18 +737,17 @@ uint64_t doo = 10000;
             uint64_t maxAmount = [notification.userInfo[@"amount"] longLongValue];
             
             DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[@"fee"] longLongValue]);
+            amountInSatoshi = maxAmount;
+            [self doCurrencyConversion];
             
-            if (isSpendingMoreThanAvailable) {
-                [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
-            } else {
-                amountInSatoshi = maxAmount;
-                [self doCurrencyConversion];
+            if (isConfirming) {
+                [self getFeeFromCurrentPayment];
             }
         }
     }];
 }
 
-- (void)addObserverForFeeWhileConfirming:(BOOL)isConfirming
+- (void)addObserverForFee
 {
     [self disablePaymentButtons];
     
@@ -712,78 +756,44 @@ uint64_t doo = 10000;
         
         if ([notification.userInfo count] != 0) {
             
-            uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
+            NSString *errorString = [notification.userInfo valueForKey:@"error"];
             
-            if ([notification.userInfo valueForKey:@"errorCode"]) {
-                uint64_t errorCodeValue = [[notification.userInfo valueForKey:@"errorCode"] longLongValue];
-                switch (errorCodeValue) {
-                    case 500: {
-                        [self getMaxFeeDueToOverspending:YES];
-                        return;
-                    }
-                }
+            if (errorString != nil) {
+                [app standardNotify:errorString];
+                return;
             }
             
+            uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
             self.feeFromTransactionProposal = newFee;
             DLog(@"SendViewController: got fee of %lld", newFee);
             
-            if (isConfirming) {
-                [self confirmPayment];
-            } else {
-                [self enablePaymentButtons];
-            }
+            [self confirmPayment];
+            
         } else {
             [self enablePaymentButtons];
         }
     }];
 }
 
-- (void)getTransactionProposalFeeForAmount:(uint64_t)amount isConfirming:(BOOL)isConfirming
+- (void)getFeeFromCurrentPayment
 {
-    if (!amount || amount == 0 || !self.toAddress || [self.toAddress isEqualToString:@""]) {
-        DLog(@"SendViewController Error: empty amount or toAddress");
-        return;
-    }
+    [self addObserverForFee];
     
-    if (self.sendToAddress && ![app.wallet isValidAddress:self.toAddress]) {
-        DLog(@"SendViewController Error: toAddress is not a valid address");
-        return;
-    }
-    
-    [self addObserverForFeeWhileConfirming:isConfirming];
-    // The fee is set via feeForTransactionProposal via notification when the promise is delivered
-    
-    NSString *amountString = [[NSNumber numberWithLongLong:amount] stringValue];
-    
-    // Different ways of sending (from/to address or account
-    if (self.sendFromAddress && self.sendToAddress) {
-        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAddress:self.toAddress amountString:amountString];
-    }
-    else if (self.sendFromAddress && !self.sendToAddress) {
-        [app.wallet getTransactionProposalFeeFromAddress:self.fromAddress toAccount:self.toAccount amountString:amountString];
-    }
-    else if (!self.sendFromAddress && self.sendToAddress) {
-        [app.wallet getTransactionProposalFeeFromAccount:self.fromAccount toAddress:self.toAddress amountString:amountString];
-    }
-    else if (!self.sendFromAddress && !self.sendToAddress) {
-        [app.wallet getTransactionProposalFromAccount:self.fromAccount toAccount:self.toAccount amountString:amountString];
-    }
+    [app.wallet getPaymentFee];
 }
 
-- (void)getMaxFeeFromWallet
+- (void)checkMaxFee
 {
-    if (self.sendFromAddress) {
-        [app.wallet getMaximumTransactionFeeForAddress:self.fromAddress];
-    } else {
-        [app.wallet getMaximumTransactionFeeForAccount:self.fromAccount];
-    }
+    [self addObserverForCheckingForOverspending];
+    
+    [app.wallet checkIfOverspending];
 }
 
-- (void)getMaxFeeDueToOverspending:(BOOL)isSpendingMoreThanAvailable
+- (void)getMaxFeeWhileConfirming:(BOOL)isConfirming
 {
-    [self addObserverForMaxFeeDueToOverspending:isSpendingMoreThanAvailable];
+    [self addObserverForMaxFeeWhileConfirming:isConfirming];
     
-    [self getMaxFeeFromWallet];
+    [app.wallet sweepPayment];
 }
 
 #pragma mark - Actions
@@ -881,6 +891,7 @@ uint64_t doo = 10000;
                 self.toAddress = address;
                 self.sendToAddress = true;
                 DLog(@"toAddress: %@", self.toAddress);
+                [self didSelectToAddress:self.toAddress];
                 
                 NSString *amountString;
                 NSString *amountStringFromDictionary = [dict objectForKey:@"amount"];
@@ -941,7 +952,7 @@ uint64_t doo = 10000;
 {
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
-    [self getMaxFeeDueToOverspending:NO];
+    [self getMaxFeeWhileConfirming:NO];
 }
 
 - (IBAction)sendPaymentClicked:(id)sender
@@ -982,7 +993,7 @@ uint64_t doo = 10000;
         return;
     }
     
-    [self getTransactionProposalFeeForAmount:amountInSatoshi isConfirming:YES];
+    [self checkMaxFee];
     
     //    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
     //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK

@@ -102,10 +102,7 @@
 - (void)archiveLegacyAddress:(NSString *)address;
 - (void)unArchiveLegacyAddress:(NSString *)address;
 
-- (void)sendPaymentFromAddress:(NSString*)fromAddress toAddress:(NSString*)toAddress satoshiValue:(NSString*)satoshiValue listener:(transactionProgressListeners*)listener;
-- (void)sendPaymentFromAddress:(NSString*)fromAddress toAccount:(int)toAccount satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener;
-- (void)sendPaymentFromAccount:(int)fromAccount toAddress:(NSString*)toAddress satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener;
-- (void)sendPaymentFromAccount:(int)fromAccount toAccount:(int)toAccount satoshiValue:(NSString *)satoshiValue listener:(transactionProgressListeners*)listener;
+- (void)sendPaymentWithListener:(transactionProgressListeners*)listener;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 - (Boolean)isArchived:(NSString*)address;
@@ -182,14 +179,6 @@
 
 - (void)setPbkdf2Iterations:(int)iterations;
 
-- (void)getMaximumTransactionFeeForAddress:(NSString*)address;
-- (void)getMaximumTransactionFeeForAccount:(int)account;
-
-- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAccount:(int)toAccount amountString:(NSString *)amountString;
-- (void)getTransactionProposalFeeFromAddress:(NSString *)fromAddress toAddress:(NSString *)toAddress amountString:(NSString *)amountString;
-- (void)getTransactionProposalFeeFromAccount:(int)fromAccount toAddress:(NSString *)toAddress amountString:(NSString *)amountString;
-- (void)getTransactionProposalFromAccount:(int)fromAccount toAccount:(int)toAccount amountString:(NSString *)amountString;
-
 - (void)setTransactionFee:(uint64_t)feePerKb;
 - (uint64_t)getTransactionFee;
 
@@ -207,5 +196,16 @@
 - (void)resendVerificationEmail:(NSString *)emailString;
 - (void)verifyEmailWithCode:(NSString *)codeString;
 - (void)getAllCurrencySymbols;
+
+// Payment Spender
+- (void)createNewPayment;
+- (void)changePaymentFromAddress:(NSString *)fromString;
+- (void)changePaymentFromAccount:(int)fromInt;
+- (void)changePaymentToAccount:(int)toInt;
+- (void)changePaymentToAddress:(NSString *)toString;
+- (void)changePaymentAmount:(uint64_t)amount;
+- (void)sweepPayment;
+- (void)getPaymentFee;
+- (void)checkIfOverspending;
 
 @end

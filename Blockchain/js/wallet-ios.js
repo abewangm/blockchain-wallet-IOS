@@ -10,6 +10,7 @@ var BlockchainAPI = Blockchain.BlockchainAPI;
 var ImportExport = Blockchain.ImportExport;
 var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 var Helpers = Blockchain.Helpers;
+var Payment = Blockchain.Payment;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -22,6 +23,7 @@ WalletStore.setAPICode(API_CODE);
 
 var MyWalletPhone = {};
 var pendingTransactions = {};
+var currentPayment = null;
 
 window.onerror = function(errorMsg, url, lineNumber) {
     device.execute("jsUncaughtException:url:lineNumber:", [errorMsg, url, lineNumber]);
@@ -201,60 +203,69 @@ MyWalletPhone.getReceivingAddressForAccount = function(num) {
     return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].receiveAddress;
 };
 
-MyWalletPhone.prepareTransaction = function() {
-    var id = ''+Math.round(Math.random()*100000);
-
-    var listener = {
-        on_start : function() {
-            device.execute('tx_on_start:', [id]);
-        },
-        on_begin_signing : function() {
-            device.execute('tx_on_begin_signing:', [id]);
-        },
-        on_sign_progress : function(i) {
-            device.execute('tx_on_sign_progress:input:', [id, i]);
-        },
-        on_finish_signing : function() {
-            device.execute('tx_on_finish_signing:', [id]);
-        }
-    };
-    
-    var success = function() {
-        device.execute('tx_on_success:', [id]);
-        delete pendingTransactions[id];
-    };
-    
-    var error = function(error) {
-        device.execute('tx_on_error:error:', [id, ''+error]);
-        delete pendingTransactions[id];
-    };
-    
-    return {
-        listener:listener,
-        success:success,
-        error:error,
-        id:id
-    };
+MyWalletPhone.createNewPayment = function() {
+    console.log('Creating new payment');
+    currentPayment = new Payment();
 }
 
-MyWalletPhone.createTransactionProposalFromAccountToAddress = function(from, to, valueString) {
+MyWalletPhone.changePaymentFrom = function(from) {
+    currentPayment.from(from);
+}
 
-    var value = parseInt(valueString);
+MyWalletPhone.changePaymentTo = function(to) {
+    currentPayment.to(to);
+}
+
+MyWalletPhone.changePaymentAmount = function(amount) {
+    currentPayment.amount(amount);
+}
+
+MyWalletPhone.changePaymentAmountThenConfirm = function(amount) {
+    currentPayment.amount(amount);
+}
+
+MyWalletPhone.getPaymentFee = function() {
     
-    var transactionDetails = MyWalletPhone.prepareTransaction();
+    currentPayment.build();
     
-    var id = transactionDetails.id;
-    var success = transactionDetails.success;
-    var error = transactionDetails.error;
+    currentPayment.payment.then(function(x) {
+        console.log('getPaymentFee');
+        device.execute('update_fee:', [x.transaction.fee]);
+    });
     
-    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAddress(to, value, null);
+    currentPayment.payment.catch(function(error) {
+        var errorArgument;
+        if (error.error) {
+            errorArgument = error.error;
+        } else {
+            errorArgument = error.message;
+        }
+                                 
+        console.log('error updating fee: ' + errorArgument);
+        device.execute('on_error_update_fee:', [errorArgument]);
+    });
+}
+
+MyWalletPhone.checkIfUserIsOverSpending = function() {
+
+    currentPayment.payment = currentPayment.payment.then(function(x) {
+        device.execute('check_max_amount:fee:', [x.sweepAmount, x.sweepFee]);
+        return x;
+    });
+}
+
+MyWalletPhone.sweepPayment = function() {
     
-    return {
-        txProposal:txProposal,
-        success:success,
-        error:error,
-        id:id
-    };
+    currentPayment
+      .sweep()
+    
+    currentPayment.payment = currentPayment.payment.then(function(x) {
+        console.log('SweepFee: ' + x.sweepFee);
+        console.log('SweepAmount: ' + x.sweepAmount);
+        console.log('maxAmount and fee are' + x.sweepAmount + ',' + x.sweepFee);
+        device.execute('update_max_amount:fee:', [x.sweepAmount, x.sweepFee]);
+        return x;
+    });
 };
 
 MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to, valueString) {
@@ -317,13 +328,13 @@ MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to,
     };
 }
 
-MyWalletPhone.recommendedTransactionFee = function(transactionDictionary) {
-    var txProposal = transactionDictionary.txProposal;
-    txProposal.tx.then(function(tx) {
-        var fee = tx.fee;
-        device.execute('update_fee:', [fee]);
+MyWalletPhone.recommendedTransactionFee = function(payment) {
+    
+    payment.payment.then(function(x) {
+        device.execute('update_fee:', [x.transaction.fee]);
     });
-    txProposal.tx.catch(function(error) {
+    
+    payment.payment.catch(function(error) {
        var errorArgument;
        if (error.error) {
             errorArgument = error.error;
@@ -454,28 +465,52 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     MyWallet.login(user_guid, shared_key, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, null, other_error, fetch_success, decrypt_success, build_hd_success);
 };
 
-MyWalletPhone.quickSend = function(transactionDictionary) {
-
-    var txProposal = transactionDictionary.txProposal;
-    var success = transactionDictionary.success;
-    var error = transactionDictionary.error;
+MyWalletPhone.quickSend = function() {
     
-    var note = null;
-
+    var id = ''+Math.round(Math.random()*100000);
+    
+    var listener = {
+        on_start : function() {
+            device.execute('tx_on_start:', [id]);
+        },
+        on_begin_signing : function() {
+            device.execute('tx_on_begin_signing:', [id]);
+        },
+        on_sign_progress : function(i) {
+            device.execute('tx_on_sign_progress:input:', [id, i]);
+        },
+        on_finish_signing : function() {
+            device.execute('tx_on_finish_signing:', [id]);
+        }
+    };
+    
+    var success = function(payment) {
+        device.execute('tx_on_success:', [id]);
+        delete pendingTransactions[id];
+    };
+    
+    var error = function(error) {
+        device.execute('tx_on_error:error:', [id, ''+error]);
+        delete pendingTransactions[id];
+    };
+    
+    currentPayment.listener(listener);
+    
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-        txProposal.publish(pw, note)
-            .then(success)
-            .catch(error)
+            currentPayment
+                .sign(pw)
+                .publish()
+                .payment.then(success).catch(error);
         });
-    }
-    else {
-        txProposal.publish(null, note)
-            .then(success)
-            .catch(error)
+    } else {
+        currentPayment
+            .sign()
+            .publish()
+            .payment.then(success).catch(error);
     }
 
-    return transactionDictionary.id;
+    return id;
 };
 
 MyWalletPhone.apiGetPINValue = function(key, pin) {
