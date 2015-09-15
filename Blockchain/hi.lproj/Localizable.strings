@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "त्रुटि लोड हो रहा है अपने बटुए का सामना करना पड़ा था। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का सामना कर रहा है। कृपया अनुप्रयोग बंद करें और बाद में पुन: प्रयास करें";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "त्रुटि लोड हो रहा है अपने बटुए का सामना करना पड़ा था। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का सामना कर रहा है। कृपया अनुप्रयोग बंद करें और बाद में पुन: प्रयास करें या अपने डिवाइस पुन: जोड़ी।";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "से और गंतव्य पता है अलग होना करने के लिए";
 
 /* (No Commment) */
+"Generate new" = "नई उत्पन्न";
+
+/* (No Commment) */
+"Generating new address" = "नया पता जनरेट कर रहा है";
+
+/* (No Commment) */
 "How would you like to pair?" = "आप जोड़ी करने के लिए कैसे करना चाहेंगे?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "अपने खाते को नाम दें";
+
+/* (No Commment) */
+"New Address" = "नया पता";
 
 /* (No Commment) */
 "News, Price & Charts" = "समाचार, मूल्य और चार्ट्स";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "QR कोड स्कैन करें";
 
 /* (No Commment) */
+"Scan QR code" = "QR कोड स्कैन करें";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "देखो केवल पते को स्कैन?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "अद्यतन";
+
+/* (No Commment) */
+"Updating label" = "लेबल अद्यतन करना";
 
 /* (No Commment) */
 "Updating settings" = "सेटिंग्स अद्यतन कर रहा है";

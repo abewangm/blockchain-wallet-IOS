@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "PIN kodunuzu uzak sunucuyla doğrulanırken bir hata oluştu. Çevrimdışı olabilir veya blockchain sorunlar yaşıyor. Doğrulama yeniden deneyin veya bunun yerine parolanızı el ile girmek ister misin?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Cüzdanını yüklenirken hatayla karşılaşıldı. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen uygulamayı kapatın ve yeniden deneyin";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Cüzdanını yüklenirken hatayla karşılaşıldı. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen uygulamayı kapatın ve daha sonra yeniden deneyin veya aygıtınızı yeniden eşleyin.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Dan ve hedef adresi farklı olmak zorunda";
 
 /* (No Commment) */
+"Generate new" = "Yeni Oluştur";
+
+/* (No Commment) */
+"Generating new address" = "Yeni adresi oluşturma";
+
+/* (No Commment) */
 "How would you like to pair?" = "Çiftine ne dersin?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Hesap adı";
+
+/* (No Commment) */
+"New Address" = "Yeni adresi";
 
 /* (No Commment) */
 "News, Price & Charts" = "Haber, fiyat ve grafikler";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "Tarama QR kodu";
 
 /* (No Commment) */
+"Scan QR code" = "Tarama QR kodu";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Watch tek adresi tarama?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Güncelleştirme";
+
+/* (No Commment) */
+"Updating label" = "Etiket güncelleştirme";
 
 /* (No Commment) */
 "Updating settings" = "Ayarları güncelleştiriliyor";

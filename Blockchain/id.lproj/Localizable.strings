@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Terjadi kesalahan memvalidasi kode PIN Anda dengan remote server. Mungkin Anda offline atau blockchain mungkin mengalami kesulitan. Anda ingin Coba validasi atau sebaliknya Masukkan password Anda secara manual?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Kesalahan ditemukan memuat dompet Anda. Mungkin Anda offline atau Blockchain mengalami kesulitan. Silahkan tutup aplikasi dan coba lagi nanti";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Kesalahan ditemukan memuat dompet Anda. Mungkin Anda offline atau Blockchain mengalami kesulitan. Silakan menutup aplikasi dan coba lagi nanti atau kembali memasangkan perangkat Anda.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Dari dan alamat tujuan harus berbeda";
 
 /* (No Commment) */
+"Generate new" = "Menghasilkan baru";
+
+/* (No Commment) */
+"Generating new address" = "Menghasilkan alamat baru";
+
+/* (No Commment) */
 "How would you like to pair?" = "Bagaimana Anda ingin pasangan?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Nama akun";
+
+/* (No Commment) */
+"New Address" = "Alamat baru";
 
 /* (No Commment) */
 "News, Price & Charts" = "Berita, harga, & grafik";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "Pindai kode QR";
 
 /* (No Commment) */
+"Scan QR code" = "Pindai kode QR";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Memindai Watch hanya alamat?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Update";
+
+/* (No Commment) */
+"Updating label" = "Memperbarui label";
 
 /* (No Commment) */
 "Updating settings" = "Memperbarui pengaturan";

@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Při ověřování kódu PIN se vzdáleným serverem došlo k chybě. Jste pravděpodobně v režimu offline nebo blockchain mohou být potíže. Chcete opakovat ověření nebo místo toho zadat heslo ručně?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Byla zjištěna chyba načítání peněženku. Jste pravděpodobně v režimu offline nebo Blockchain v obtížích. Ukončete aplikaci a opakujte akci později";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Byla zjištěna chyba načítání peněženku. Jste pravděpodobně v režimu offline nebo Blockchain v obtížích. Ukončete aplikace a opakujte akci později nebo znovu spárovat zařízení.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Od a cílová adresa se musí lišit";
 
 /* (No Commment) */
+"Generate new" = "Generovat nový";
+
+/* (No Commment) */
+"Generating new address" = "Generování nové adresy";
+
+/* (No Commment) */
 "How would you like to pair?" = "Jak chcete dvojici?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Název účtu";
+
+/* (No Commment) */
+"New Address" = "Nová adresa";
 
 /* (No Commment) */
 "News, Price & Charts" = "Novinky, ceny a grafy";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "Skenování QR kód";
 
 /* (No Commment) */
+"Scan QR code" = "Skenování QR kód";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Prohledat pouze adresu Watch?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Aktualizovat";
+
+/* (No Commment) */
+"Updating label" = "Aktualizace popisku";
 
 /* (No Commment) */
 "Updating settings" = "Aktualizace nastavení";

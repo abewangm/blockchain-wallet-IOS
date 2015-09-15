@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Xác nhận mã PIN của bạn với máy chủ từ xa đã có lỗi. Bạn có thể được diễn đàn hoặc blockchain có thể gặp khó khăn. Bạn có muốn thử lại xác nhận hoặc thay vào đó nhập mật khẩu của bạn theo cách thủ công?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Một lỗi bắt gặp tải chi tiêu của bạn. Bạn có thể được diễn đàn hoặc Blockchain đang trải qua những khó khăn. Vui lòng đóng ứng dụng và thử lại sau";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Một lỗi bắt gặp tải chi tiêu của bạn. Bạn có thể được diễn đàn hoặc Blockchain đang trải qua những khó khăn. Xin vui lòng đóng ứng dụng và thử lại sau hoặc tái ghép nối thiết bị của bạn.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Từ và địa chỉ đích có thể khác nhau";
 
 /* (No Commment) */
+"Generate new" = "Tạo mới";
+
+/* (No Commment) */
+"Generating new address" = "Tạo địa chỉ mới";
+
+/* (No Commment) */
 "How would you like to pair?" = "Làm thế nào bạn muốn cặp?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Tên tài khoản của bạn";
+
+/* (No Commment) */
+"New Address" = "Địa chỉ mới";
 
 /* (No Commment) */
 "News, Price & Charts" = "Tin tức, giá & bảng xếp hạng";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "Quét mã QR";
 
 /* (No Commment) */
+"Scan QR code" = "Quét mã QR";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Quét địa chỉ duy nhất Watch?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Cập Nhật";
+
+/* (No Commment) */
+"Updating label" = "Đang Cập Nhật nhãn";
 
 /* (No Commment) */
 "Updating settings" = "Thiết đặt Cập Nhật";

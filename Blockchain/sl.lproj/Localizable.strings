@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Napaka pri preverjanju PIN kodo z oddaljenim strežnikom. Morda brez povezave ali blockchain lahko doživlja težave. Želite ponoviti potrditev ali namesto ročno vnesite svoje geslo?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Prišlo je do napake, nakladanje vaše denarnice. Morda brez povezave ali Blockchain je težave. Zaprite program in poskusite znova pozneje";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Prišlo je do napake, nakladanje vaše denarnice. Morda brez povezave ali Blockchain je težave. Zaprite program in poskusite znova pozneje ali znova povežite napravo.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Iz in ciljni naslov je treba različne";
 
 /* (No Commment) */
+"Generate new" = "Ustvarjajo nove";
+
+/* (No Commment) */
+"Generating new address" = "Ustvarjajo nov naslov";
+
+/* (No Commment) */
 "How would you like to pair?" = "Kako bi želeli par?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Ime računa";
+
+/* (No Commment) */
+"New Address" = "Nov naslov";
 
 /* (No Commment) */
 "News, Price & Charts" = "Novice, ceno in grafikoni";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "Skeniranje QR kode";
 
 /* (No Commment) */
+"Scan QR code" = "Skeniranje QR kode";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Skeniranje Watch samo naslov?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Posodobitev";
+
+/* (No Commment) */
+"Updating label" = "Posodabljanje oznako";
 
 /* (No Commment) */
 "Updating settings" = "Posodabljanje nastavitev";

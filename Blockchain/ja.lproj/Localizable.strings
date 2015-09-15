@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "リモート サーバーと PIN コードの検証エラーが発生しました。あなたがオフラインである、または blockchain により、問題が発生します。検証を再試行するか、代わりにあなたのパスワードを手動で入力したいですか。";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "あなたの財布の読み込みエラーが発生しました。あなたがオフラインであるか、Blockchain は問題します。アプリケーションを終了し、もう一度やり直してください。";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "あなたの財布の読み込みエラーが発生しました。あなたがオフラインであるか、Blockchain は問題します。くださいアプリケーションを終了やり直して、またはデバイスをペアリングし直します。";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "宛先アドレスが別でなければならないと";
 
 /* (No Commment) */
+"Generate new" = "新規生成します。";
+
+/* (No Commment) */
+"Generating new address" = "新しいアドレスの生成";
+
+/* (No Commment) */
 "How would you like to pair?" = "どのペアにしますか?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "あなたのアカウントに名前を付ける";
+
+/* (No Commment) */
+"New Address" = "新しいアドレス";
 
 /* (No Commment) */
 "News, Price & Charts" = "ニュース ・価格チャート";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "QR コードをスキャンします。";
 
 /* (No Commment) */
+"Scan QR code" = "QR コードをスキャンします。";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "時計アドレスだけをスキャンしますか。";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "更新";
+
+/* (No Commment) */
+"Updating label" = "ラベルを更新";
 
 /* (No Commment) */
 "Updating settings" = "設定の更新";

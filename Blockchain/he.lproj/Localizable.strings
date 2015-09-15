@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "אירעה שגיאה בעת אימות הקוד האישי שלך עם השרת המרוחק. אתה יכול להיות מנותק או blockchain עשויים לחוות קשיים. האם ברצונך לנסות שוב אימות או במקום להזין את הסיסמה שלך באופן ידני?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "אירעה שגיאה בעת טעינת הארנק שלך. אתה יכול להיות מנותק או Blockchain הוא נתקל בקשיים. נא לסגור את היישום ונסה שוב מאוחר יותר";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "אירעה שגיאה בעת טעינת הארנק שלך. אתה יכול להיות מנותק או Blockchain הוא נתקל בקשיים. נא לסגור את היישום, נסה שוב מאוחר יותר או לשייך מחדש את המכשיר.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "מ כתובת היעד חייב להיות שונה";
 
 /* (No Commment) */
+"Generate new" = "צור חדש";
+
+/* (No Commment) */
+"Generating new address" = "יצירת כתובת חדשה";
+
+/* (No Commment) */
 "How would you like to pair?" = "? מה דעתך על זוג";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "שם החשבון שלך";
+
+/* (No Commment) */
+"New Address" = "כתובת חדשה";
 
 /* (No Commment) */
 "News, Price & Charts" = "חדשות, מחיר & תרשימים";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "לסרוק קוד QR";
 
 /* (No Commment) */
+"Scan QR code" = "לסרוק קוד QR";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "סרוק הכתובת היחידה לצפות?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "עדכון";
+
+/* (No Commment) */
+"Updating label" = "עדכון תווית";
 
 /* (No Commment) */
 "Updating settings" = "עדכון הגדרות";

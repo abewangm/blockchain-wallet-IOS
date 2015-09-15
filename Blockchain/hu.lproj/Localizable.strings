@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Hiba történt a PIN-kódot a távoli szerverrel érvényesítése. Lehet, hogy kapcsolat nélküli vagy blockchain lehet nehézségei. Szeretne újra érvényesítés, vagy inkább kézzel adja meg a jelszavát?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Hiba történt a berakodás a pénztárca. Lehet, hogy kapcsolat nélküli vagy Blockchain nehézségekkel. Kérjük, zárja be az alkalmazást, és próbálja meg később";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Hiba történt a berakodás a pénztárca. Lehet, hogy kapcsolat nélküli vagy Blockchain nehézségekkel. Zárja be az alkalmazást, és próbálkozzon újra később, vagy párosítsa a készüléket.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Származó és a rendeltetési hely cím van, hogy különböző";
 
 /* (No Commment) */
+"Generate new" = "Generáljon újat";
+
+/* (No Commment) */
+"Generating new address" = "Új cím létrehozása";
+
+/* (No Commment) */
 "How would you like to pair?" = "Hogyan szeretne pár?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "A fiók neve";
+
+/* (No Commment) */
+"New Address" = "Új cím";
 
 /* (No Commment) */
 "News, Price & Charts" = "Hírek, árak és grafikonok";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "QR-kód beolvasásához";
 
 /* (No Commment) */
+"Scan QR code" = "QR-kód beolvasásához";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Scan Watch egyetlen cím?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Frissítés";
+
+/* (No Commment) */
+"Updating label" = "Címke frissítése";
 
 /* (No Commment) */
 "Updating settings" = "Frissítési beállítások";

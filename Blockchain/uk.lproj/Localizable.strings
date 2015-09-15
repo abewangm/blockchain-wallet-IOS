@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Помилка перевірки ваш PIN-код з віддаленим сервером. Можливо, ви в автономному режимі або blockchain може відчувати труднощі. Ви хочете, повторити перевірку або замість введення пароля вручну?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Сталася помилка під час завантаження вашого гаманця. Можливо, ви в автономному режимі або Blockchain переживає труднощі. Закрийте застосунок і повторіть спробу пізніше";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Сталася помилка під час завантаження вашого гаманця. Можливо, ви в автономному режимі або Blockchain переживає труднощі. Закрити програму та повторіть спробу пізніше або повторно встановіть зв'язок.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Від та адреси призначення мають бути різними";
 
 /* (No Commment) */
+"Generate new" = "Згенерувати нове";
+
+/* (No Commment) */
+"Generating new address" = "Створення нової адреси";
+
+/* (No Commment) */
 "How would you like to pair?" = "Як би ви хотіли пара?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Ім'я облікового запису";
+
+/* (No Commment) */
+"New Address" = "Нова адреса";
 
 /* (No Commment) */
 "News, Price & Charts" = "Новини, ціни та Чарти";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "Скануйте QR код";
 
 /* (No Commment) */
+"Scan QR code" = "Скануйте QR код";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Сканування дивитися тільки адресу?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Оновлення";
+
+/* (No Commment) */
+"Updating label" = "Оновлення етикетки";
 
 /* (No Commment) */
 "Updating settings" = "Оновлення налаштувань";

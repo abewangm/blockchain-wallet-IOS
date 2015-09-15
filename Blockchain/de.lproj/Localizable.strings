@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Überprüfen Ihren PIN-Code, mit dem remote-Server ist ein Fehler aufgetreten. Sie ist möglicherweise offline oder Blockchain möglicherweise Schwierigkeiten. Möchten Sie wiederholen Validierung oder stattdessen Ihr Kennwort manuell eingeben?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Fehler beim Laden Ihrer Brieftasche. Sie ist möglicherweise offline oder Blockchain Schwierigkeiten. Bitte schließen Sie die Anwendung und versuchen Sie es später erneut";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Fehler beim Laden Ihrer Brieftasche. Sie ist möglicherweise offline oder Blockchain Schwierigkeiten. Bitte schließen Sie die Anwendung und versuchen Sie später erneut, oder verbinden Sie Ihr Gerät erneut.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Aus und Zieladresse haben, anders zu sein";
 
 /* (No Commment) */
+"Generate new" = "Neu generieren";
+
+/* (No Commment) */
+"Generating new address" = "Generieren neue Adresse";
+
+/* (No Commment) */
 "How would you like to pair?" = "Wie möchten Sie paar?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Benennen Sie Ihr Konto";
+
+/* (No Commment) */
+"New Address" = "Neue Adresse";
 
 /* (No Commment) */
 "News, Price & Charts" = "Nachrichten, Preis & Charts";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "QR-Code Scannen";
 
 /* (No Commment) */
+"Scan QR code" = "QR-Code Scannen";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Scannen Watch einzige Adresse?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Update";
+
+/* (No Commment) */
+"Updating label" = "Bezeichnung";
 
 /* (No Commment) */
 "Updating settings" = "Update-Einstellungen";

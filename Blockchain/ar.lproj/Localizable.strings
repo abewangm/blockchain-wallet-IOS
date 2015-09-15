@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "حدث خطأ أثناء التحقق من صحة رمز PIN الخاص بك مع الملقم البعيد. قد تكون دون اتصال أو بلوكتشين قد يواجه بعض الصعوبات. هل تريد إعادة محاولة التحقق من الصحة أو بدلاً من ذلك قم بإدخال كلمة المرور الخاصة بك يدوياً؟";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "تمت مصادفة خطأ أثناء تحميل محفظتك. قد تكون دون اتصال أو بلوكتشين تعاني من صعوبات. الرجاء إغلاق التطبيق ثم حاول مرة أخرى لاحقاً";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "تمت مصادفة خطأ أثناء تحميل محفظتك. قد تكون دون اتصال أو بلوكتشاين تعاني من صعوبات. الرجاء إغلاق التطبيق وحاول مرة أخرى لاحقاً أو إعادة إقران الجهاز الخاص بك.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "من وعنوان الوجهة يجب أن تكون مختلفة";
 
 /* (No Commment) */
+"Generate new" = "توليد جديدة";
+
+/* (No Commment) */
+"Generating new address" = "إنشاء عنوان جديد";
+
+/* (No Commment) */
 "How would you like to pair?" = "كيف تريد أن زوج؟";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "اسم الحساب الخاص بك";
+
+/* (No Commment) */
+"New Address" = "عنوان جديد";
 
 /* (No Commment) */
 "News, Price & Charts" = "الأخبار، والأسعار والرسوم البيانية";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "مسح رمز ريال قطري";
 
 /* (No Commment) */
+"Scan QR code" = "مسح رمز ريال قطري";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "المسح الضوئي يشاهد العنوان فقط؟";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "التحديث";
+
+/* (No Commment) */
+"Updating label" = "تحديث التسمية";
 
 /* (No Commment) */
 "Updating settings" = "تحديث الإعدادات";

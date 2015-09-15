@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке ваш PIN-код с удаленным сервером. Вы может быть отключен или blockchain могут испытывать трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Ошибка загрузки ваш бумажник. Вы может быть отключен или Blockchain испытывает трудности. Закройте приложение и повторите попытку позже";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ошибка загрузки ваш бумажник. Вы может быть отключен или Blockchain испытывает трудности. Закройте приложение и повторите попытку позже или повторно пара ваше устройство.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "От и адрес назначения должны быть разными";
 
 /* (No Commment) */
+"Generate new" = "Генерировать новые";
+
+/* (No Commment) */
+"Generating new address" = "Создание нового адреса";
+
+/* (No Commment) */
 "How would you like to pair?" = "Как бы вы хотели пара?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Имя вашей учетной записи";
+
+/* (No Commment) */
+"New Address" = "Новый адрес";
 
 /* (No Commment) */
 "News, Price & Charts" = "Новости, цены и графики";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "QR-код";
 
 /* (No Commment) */
+"Scan QR code" = "QR-код";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Сканирование адрес только смотреть?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Обновление";
+
+/* (No Commment) */
+"Updating label" = "Обновление метки";
 
 /* (No Commment) */
 "Updating settings" = "Параметры обновления";

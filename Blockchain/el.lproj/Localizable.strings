@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Παρουσιάστηκε σφάλμα επικύρωση κωδικό σας PIN με τον απομακρυσμένο διακομιστή. Μπορεί να είστε σε μη απευθείας σύνδεση ή blockchain μπορεί να αντιμετωπίζουν δυσκολίες. Θα θέλατε επανάληψη επικύρωσης ή αντί να εισάγετε τον κωδικό σας με το χέρι;";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Παρουσιάστηκε σφάλμα κατά τη φόρτωση το πορτοφόλι σας. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain αντιμετωπίζει δυσκολίες. Κλείστε την εφαρμογή και προσπαθήστε ξανά αργότερα";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Παρουσιάστηκε σφάλμα κατά τη φόρτωση το πορτοφόλι σας. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain αντιμετωπίζει δυσκολίες. Παρακαλούμε να κλείσετε την εφαρμογή και προσπαθήστε ξανά αργότερα ή αντιστοιχίστε εκ νέου τη συσκευή σας.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Από και διεύθυνση προορισμού πρέπει να διαφέρει";
 
 /* (No Commment) */
+"Generate new" = "Δημιουργία νέων";
+
+/* (No Commment) */
+"Generating new address" = "Παράγει νέα διεύθυνση";
+
+/* (No Commment) */
 "How would you like to pair?" = "Πώς θα θέλατε να ζεύγος;";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Όνομα λογαριασμού σας";
+
+/* (No Commment) */
+"New Address" = "Νέα διεύθυνση";
 
 /* (No Commment) */
 "News, Price & Charts" = "Ειδήσεις, τιμή & διαγράμματα";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "Σάρωση κωδικού QR";
 
 /* (No Commment) */
+"Scan QR code" = "Σάρωση κωδικού QR";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Σάρωση μόνο διεύθυνση ρολόι;";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Ενημέρωση";
+
+/* (No Commment) */
+"Updating label" = "Ενημέρωση ετικέτα";
 
 /* (No Commment) */
 "Updating settings" = "Ενημέρωση ρυθμίσεων";

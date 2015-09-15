@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "S'ha produït un error validar el teu codi PIN amb el servidor remot. Vostè pot estar fora de línia o blockchain pot estar experimentant dificultats. Voleu provar de validació o en el seu lloc introduïu la vostra contrasenya manualment?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Error en carregar la seva cartera. Vostè pot estar fora de línia o Blockchain experimenta dificultats. Tanqueu l'aplicació i provar una altra vegada més tard";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Error en carregar la seva cartera. Vostè pot estar fora de línia o Blockchain experimenta dificultats. Tanqueu l'aplicació i torneu-ho més tard o tornar a ajuntar el dispositiu.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "Des i adreça de destinació ha de ser diferents";
 
 /* (No Commment) */
+"Generate new" = "Generar nous";
+
+/* (No Commment) */
+"Generating new address" = "Adreça de nova generació";
+
+/* (No Commment) */
 "How would you like to pair?" = "Com li agradaria a la parella?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Nom de compte";
+
+/* (No Commment) */
+"New Address" = "Nova adreça";
 
 /* (No Commment) */
 "News, Price & Charts" = "Notícies, preu i gràfics";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "Escaneja un codi QR";
 
 /* (No Commment) */
+"Scan QR code" = "Escaneja un codi QR";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Escanejar adreça única de veure?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Actualització";
+
+/* (No Commment) */
+"Updating label" = "Etiqueta d'actualització";
 
 /* (No Commment) */
 "Updating settings" = "Configuració d'actualització";

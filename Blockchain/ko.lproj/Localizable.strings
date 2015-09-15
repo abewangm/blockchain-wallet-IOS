@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "오류가 발생 원격 서버와 핀 코드의 유효성을 검사 했습니다. 당신이 오프 라인 될 수 있습니다 또는 blockchain 어려움을 겪고 있습니다. 유효성 검사를 다시 시도 하거나 대신 수동으로 비밀 번호를 입력 시겠습니까?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "오류가 당신의 지갑을 로드 하는 동안 발생 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 응용 프로그램을 종료 하 고 나중에 다시 시도 하십시오";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "오류가 당신의 지갑을 로드 하는 동안 발생 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 제발 응용 프로그램을 닫고 나중에 다시 시도 또는 장치를 다시 쌍.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "대상 주소 다를 수 있고";
 
 /* (No Commment) */
+"Generate new" = "새로운 생성";
+
+/* (No Commment) */
+"Generating new address" = "새 주소를 생성";
+
+/* (No Commment) */
 "How would you like to pair?" = "어떻게 쌍을 원하십니까?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "귀하의 계정 이름";
+
+/* (No Commment) */
+"New Address" = "새 주소";
 
 /* (No Commment) */
 "News, Price & Charts" = "뉴스, 가격 및 차트";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "QR 코드를 스캔";
 
 /* (No Commment) */
+"Scan QR code" = "QR 코드를 스캔";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "시계만 주소 스캔?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "업데이트";
+
+/* (No Commment) */
+"Updating label" = "레이블 업데이트";
 
 /* (No Commment) */
 "Updating settings" = "업데이트 설정";

@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "驗證您的 PIN 代碼與遠端伺服器時發生錯誤。你可能處於離線狀態或 blockchain 可能遇到的困難。要驗證重試或相反手動輸入您的密碼嗎?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "載入你的錢包時遇到錯誤。你可能處於離線狀態，或者 Blockchain 遇到困難。請關閉應用程式，請稍後再試";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "載入你的錢包時遇到錯誤。你可能處於離線狀態，或者 Blockchain 遇到困難。請關閉應用程式，請稍後再試或重新配對您的設備。";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "從和目的地位址必須是不同";
 
 /* (No Commment) */
+"Generate new" = "新生成";
+
+/* (No Commment) */
+"Generating new address" = "生成新的位址";
+
+/* (No Commment) */
 "How would you like to pair?" = "你怎麼想對?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "您的帳戶的名稱";
+
+/* (No Commment) */
+"New Address" = "新的位址";
 
 /* (No Commment) */
 "News, Price & Charts" = "新聞、 價格與圖表";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "掃描二維碼";
 
 /* (No Commment) */
+"Scan QR code" = "掃描二維碼";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "掃描表唯一位址嗎?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "更新";
+
+/* (No Commment) */
+"Updating label" = "更新標籤";
 
 /* (No Commment) */
 "Updating settings" = "更新設置";

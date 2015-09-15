@@ -56,6 +56,9 @@
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Eroare la validarea codul PIN cu serverul de la distanţă. Aţi putea fi deconectat sau blockchain pot fi întâmpină dificultăţi. Doriţi Reîncercare validare sau în schimb să introduceţi parola manual?";
 
 /* (No Commment) */
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Eroare la încărcarea portofel. Aţi putea fi deconectat sau Blockchain se confruntă cu dificultăți. Închideţi aplicaţia şi încercaţi din nou mai târziu";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Eroare la încărcarea portofel. Aţi putea fi deconectat sau Blockchain se confruntă cu dificultăți. Închideţi aplicaţia şi încercaţi din nou mai târziu sau re-asociaþi aparatul dvs.";
 
 /* (No Commment) */
@@ -239,6 +242,12 @@
 "From and destination address have to be different" = "La şi adresa de destinaţie trebuie să fie diferite";
 
 /* (No Commment) */
+"Generate new" = "Genera noi";
+
+/* (No Commment) */
+"Generating new address" = "Generatoare de noua adresa";
+
+/* (No Commment) */
 "How would you like to pair?" = "Cum doriţi să pereche?";
 
 /* (No Commment) */
@@ -348,6 +357,9 @@
 
 /* (No Commment) */
 "Name your account" = "Numele contului";
+
+/* (No Commment) */
+"New Address" = "Noua adresa";
 
 /* (No Commment) */
 "News, Price & Charts" = "Stiri, Pret & topuri";
@@ -500,6 +512,9 @@
 "Scan QR Code" = "Scanaţi codul QR";
 
 /* (No Commment) */
+"Scan QR code" = "Scanaţi codul QR";
+
+/* (No Commment) */
 "Scan Watch Only Address?" = "Uita-te la doar adresa de scanare?";
 
 /* No comment provided by engineer. */
@@ -601,6 +616,9 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Actualizare";
+
+/* (No Commment) */
+"Updating label" = "Actualizarea eticheta";
 
 /* (No Commment) */
 "Updating settings" = "Setările de actualizare";
