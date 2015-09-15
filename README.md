@@ -41,7 +41,7 @@ Whenever you change a PSD or SVG file, run:
   
     grunt
 
-The reason that the PNG files are not in the repository - even though it woud make life easier for other developers - is that the resuling PNG files are not determistic. This causes git to mark all images as changed every time you run Grunt. 
+The reason that the PNG files are not in the repository - even though it would make life easier for other developers - is that the resulting PNG files are not deterministic. This causes git to mark all images as changed every time you run Grunt. 
 
 ## Open the project in Xcode
 
