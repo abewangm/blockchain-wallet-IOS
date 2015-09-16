@@ -749,8 +749,6 @@ uint64_t doo = 10000;
 
 - (void)addObserverForFee
 {
-    [self disablePaymentButtons];
-    
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
         
@@ -992,6 +990,8 @@ uint64_t doo = 10000;
         [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
         return;
     }
+    
+    [self disablePaymentButtons];
     
     [self checkMaxFee];
     
