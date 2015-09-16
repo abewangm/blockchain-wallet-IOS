@@ -427,6 +427,7 @@ UIActionSheet *popupAddressArchive;
         else {
             [popupAddressArchive showInView:[UIApplication sharedApplication].keyWindow];
         }
+        [self hideKeyboard];
     }
 }
 
@@ -672,17 +673,17 @@ UIActionSheet *popupAddressArchive;
     switch (buttonIndex) {
         case 0:
             [self copyAddressClicked:nil];
+            [self showKeyboard];
             break;
         case 1:
-            [self hideKeyboard];
             [self labelAddressClicked:nil];
             break;
         case 2:
-            [self hideKeyboard];
             [self archiveAddressClicked:nil];
             break;
 
         default:
+            [self showKeyboard];
             break;
     }
 }
