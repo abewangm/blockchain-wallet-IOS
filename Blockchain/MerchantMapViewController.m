@@ -23,7 +23,7 @@
 
 #define METERS_PER_MILE 1609.344
 
-@interface MerchantMapViewController () <CLLocationManagerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate>
+@interface MerchantMapViewController () <CLLocationManagerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
@@ -42,6 +42,8 @@
 @property (strong, nonatomic) NSOperationQueue *merchantLocationNetworkQueue;
 
 @property (strong, nonatomic) CLLocation *lastCenterLocation;
+
+@property (strong, nonatomic) UIAlertView *askUserToEnableLocationServicesAlertView;
 
 @end
 
@@ -399,5 +401,71 @@ static NSString *const kBlockchainNearByMerchantsURL = @"https://merchant-direct
     }
 }
 
+- (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
+{
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
+        if ([CLLocationManager locationServicesEnabled]) {
+            if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied) {
+                // Ask to go to Settings for the app to enable location services
+                [self askUserToEnableLocationServicesInSettingsForApp];
+            }
+        } else {
+            [self askUserToEnableLocationServicesGlobally];
+            // Ask to go to Settings in Privacy to globally enable location services
+        }
+    } else {
+        if (![CLLocationManager locationServicesEnabled] || [CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied) {
+            // For iOS 7.1, tell the user to go to settings since you cannot open it with openURL:
+            [self askUserToEnableLocationServicesGlobally];
+        }
+    }
+    
+}
+
+- (void)askUserToEnableLocationServicesInSettingsForApp
+{
+    self.askUserToEnableLocationServicesAlertView = [[UIAlertView alloc] initWithTitle:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_TITLE
+                                                                               message:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE
+                                                                              delegate:self
+                                                                     cancelButtonTitle:BC_STRING_CANCEL
+                                                                     otherButtonTitles:BC_STRING_GO_TO_SETTINGS, nil];
+    [self.askUserToEnableLocationServicesAlertView show];
+}
+
+
+- (void)askUserToEnableLocationServicesGlobally
+{
+    NSString *pathToLocationServicesString;
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
+        pathToLocationServicesString = BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE_GLOBALLY_IOS_8_AND_ABOVE;
+    } else {
+        pathToLocationServicesString = BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE_GLOBALLY_IOS_7;
+    }
+    
+    self.askUserToEnableLocationServicesAlertView = [[UIAlertView alloc] initWithTitle:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_TITLE
+                                                                               message:pathToLocationServicesString
+                                                                              delegate:self
+                                                                     cancelButtonTitle:BC_STRING_OK
+                                                                     otherButtonTitles: nil];
+    [self.askUserToEnableLocationServicesAlertView show];
+}
+
+#pragma mark - UIAlertView Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView == self.askUserToEnableLocationServicesAlertView) {
+        switch (buttonIndex) {
+            case 0:
+                DLog(@"Cancelling prompt for location services");
+                break;
+            case 1:
+                DLog(@"Going to settings");
+                NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                [[UIApplication sharedApplication] openURL:settingsURL];
+                break;
+        }
+    }
+}
 
 @end
