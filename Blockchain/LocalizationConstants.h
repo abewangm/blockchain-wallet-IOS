@@ -73,6 +73,7 @@
 #define BC_STRING_SENT NSLocalizedString(@"Sent", nil)
 
 #define BC_STRING_ERROR NSLocalizedString(@"Error", nil)
+#define BC_STRING_ERROR_LOADING_WALLET_IDENTIFIER_FROM_KEYCHAIN NSLocalizedString(@"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again.", nil)
 
 #define BC_STRING_INFORMATION NSLocalizedString(@"Information", nil)
 #define BC_STRING_IMPORT_ADDRESS NSLocalizedString(@"Import Address", nil)

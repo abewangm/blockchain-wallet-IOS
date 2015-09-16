@@ -1491,6 +1491,8 @@ void (^secondPasswordSuccess)(NSString *);
         
         if (guid && sharedKey) {
             [self.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:decrypted];
+        } else {
+            [self failedToObtainValuesFromKeychain];
         }
         
         [self closePINModal:YES];
@@ -1689,6 +1691,22 @@ void (^secondPasswordSuccess)(NSString *);
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
     
     [keychain resetKeychainItem];
+}
+
+- (void)failedToObtainValuesFromKeychain
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE
+                                                    message:[NSString stringWithFormat:BC_STRING_ERROR_LOADING_WALLET_IDENTIFIER_FROM_KEYCHAIN]
+                                                   delegate:nil
+                                          cancelButtonTitle:BC_STRING_CLOSE_APP
+                                          otherButtonTitles:nil];
+    
+    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+        // Close App
+        UIApplication *app = [UIApplication sharedApplication];
+        [app performSelector:@selector(suspend)];
+    };
+    [alert show];
 }
 
 #pragma mark - Format helpers
