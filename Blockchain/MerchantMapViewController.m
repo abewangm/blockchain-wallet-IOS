@@ -64,10 +64,10 @@
     // We store "merchant categories" and mark the category as visible by setting the "value" to "1".  If we want to
     // hide the category we set it to @0
     [self.visibleMerchantTypes setValue:@1 forKey:[NSString stringWithFormat:@"%lu", (unsigned long)BCMerchantLocationTypeBeverage]];
-    [self.visibleMerchantTypes setValue:@1 forKey:[NSString stringWithFormat:@"%lu", BCMerchantLocationTypeBar]];
-    [self.visibleMerchantTypes setValue:@1 forKey:[NSString stringWithFormat:@"%lu", BCMerchantLocationTypeFood]];
-    [self.visibleMerchantTypes setValue:@1 forKey:[NSString stringWithFormat:@"%lu", BCMerchantLocationTypeBusiness]];
-    [self.visibleMerchantTypes setValue:@1 forKey:[NSString stringWithFormat:@"%lu", BCMerchantLocationTypeOther]];
+    [self.visibleMerchantTypes setValue:@1 forKey:[NSString stringWithFormat:@"%lu", (unsigned long)BCMerchantLocationTypeBar]];
+    [self.visibleMerchantTypes setValue:@1 forKey:[NSString stringWithFormat:@"%lu", (unsigned long)BCMerchantLocationTypeFood]];
+    [self.visibleMerchantTypes setValue:@1 forKey:[NSString stringWithFormat:@"%lu", (unsigned long)BCMerchantLocationTypeBusiness]];
+    [self.visibleMerchantTypes setValue:@1 forKey:[NSString stringWithFormat:@"%lu", (unsigned long)BCMerchantLocationTypeOther]];
 
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT);
     
@@ -165,7 +165,7 @@ static NSString *const kBlockchainNearByMerchantsURL = @"https://merchant-direct
     NSMutableArray *merchantsToAdd = [NSMutableArray arrayWithArray:[self.allMerchants allValues]];
     NSMutableArray *merchantsToRemove = [NSMutableArray new];
     for (Merchant *merchant in [self.allMerchants allValues]) {
-        NSString *merchantType = [NSString stringWithFormat:@"%lu", merchant.locationType];
+        NSString *merchantType = [NSString stringWithFormat:@"%lu", (unsigned long)merchant.locationType];
         if ([[self.visibleMerchantTypes objectForKey:merchantType]  isEqual: @0]) {
             [merchantsToRemove addObject:merchant];
         }
@@ -229,7 +229,7 @@ static NSString *const kBlockchainNearByMerchantsURL = @"https://merchant-direct
 - (void)toggleFilterForMerchantType:(BCMerchantLocationType)locationType imageName:(NSString *)imageName sender:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-    NSString *merchantType = [NSString stringWithFormat:@"%lu", locationType];
+    NSString *merchantType = [NSString stringWithFormat:@"%lu", (unsigned long)locationType];
     if ([[self.visibleMerchantTypes objectForKey:merchantType]  isEqual: @1]) {
         // We need to deactivate it
         [self.visibleMerchantTypes setValue:@0 forKey:merchantType];

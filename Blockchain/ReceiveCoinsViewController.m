@@ -12,7 +12,7 @@
 #import "Address.h"
 #import "PrivateKeyReader.h"
 
-@interface ReceiveCoinsViewController() <UIAlertViewDelegate>
+@interface ReceiveCoinsViewController() <UIAlertViewDelegate, UIActivityItemSource>
 @property (nonatomic) id paymentObserver;
 @property (nonatomic) double amountRequested;
 @property (nonatomic) UIAlertView *addNewAddressAlertView;
@@ -433,9 +433,8 @@ UIActionSheet *popupAddressArchive;
 - (IBAction)shareClicked:(id)sender
 {
     NSString *message = [self formatPaymentRequest:@""];
-    UIImage *image = qrCodePaymentImageView.image;
     NSURL *url = [NSURL URLWithString:[self uriURL]];
-    NSArray *activityItems = @[message, image, url];
+    NSArray *activityItems = @[message, self, url];
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     
@@ -994,6 +993,22 @@ UIActionSheet *popupAddressArchive;
     [cell.balanceButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
+}
+
+#pragma mark - UIActivityItemSource Delegate
+
+- (id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
+{
+    if (activityType == UIActivityTypePostToTwitter) {
+        return nil;
+    } else {
+        return qrCodePaymentImageView.image;
+    }
+}
+
+- (id)activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController
+{
+    return @"";
 }
 
 @end
