@@ -23,6 +23,8 @@
 #define BC_STRING_NO NSLocalizedString(@"No", nil)
 #define BC_STRING_YES NSLocalizedString(@"Yes", nil)
 #define BC_STRING_SEND NSLocalizedString(@"Send", nil)
+#define BC_STRING_NO_AVAILABLE_FUNDS NSLocalizedString(@"You have no available funds to send from this address", nil)
+#define BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD NSLocalizedString(@"Amount must be above dust threshold (%lld Satoshi)", nil)
 #define BC_STRING_RECEIVE NSLocalizedString(@"Receive", nil)
 #define BC_STRING_SENDING_TRANSACTION NSLocalizedString(@"Sending Transaction", nil)
 #define BC_STRING_USE_ALL_AMOUNT NSLocalizedString(@"Use all %@", nil)

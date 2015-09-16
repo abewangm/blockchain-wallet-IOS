@@ -710,6 +710,12 @@ uint64_t doo = 10000;
 
 #pragma mark - Fee Calculation
 
+- (void)alertUserForZeroSpendableAmount
+{
+    [app standardNotify:BC_STRING_NO_AVAILABLE_FUNDS];
+    [self enablePaymentButtons];
+}
+
 - (void)addObserverForCheckingForOverspending
 {
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil queue:nil usingBlock:^(NSNotification * notification) {
@@ -717,6 +723,12 @@ uint64_t doo = 10000;
         if ([notification.userInfo count] != 0) {
             self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
             uint64_t maxAmount = [notification.userInfo[@"amount"] longLongValue];
+            
+            if (maxAmount == 0) {
+                [self alertUserForZeroSpendableAmount];
+                return;
+            }
+            
             if (amountInSatoshi > maxAmount) {
                 [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
             } else {
@@ -739,6 +751,11 @@ uint64_t doo = 10000;
             DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[@"fee"] longLongValue]);
             amountInSatoshi = maxAmount;
             [self doCurrencyConversion];
+            
+            if (maxAmount == 0) {
+                [self alertUserForZeroSpendableAmount];
+                return;
+            }
             
             if (isConfirming) {
                 [self getFeeFromCurrentPayment];
@@ -988,6 +1005,11 @@ uint64_t doo = 10000;
     NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
     if (value <= 0 || [amountString doubleValue] <= 0) {
         [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
+        return;
+    }
+    
+    if (value <= DUST_THRESHOLD) {
+        [app standardNotify:[[NSString alloc] initWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, DUST_THRESHOLD]];
         return;
     }
     
