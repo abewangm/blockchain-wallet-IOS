@@ -196,15 +196,25 @@ const int aboutPrivacyPolicy = 1;
     return convertedFee;
 }
 
+- (NSString *)convertFloatToString:(float)floatNumber
+{
+    NSNumberFormatter *feePerKbFormatter = [[NSNumberFormatter alloc] init];
+    feePerKbFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    feePerKbFormatter.maximumFractionDigits = 8;
+    
+    return [feePerKbFormatter stringFromNumber:[NSNumber numberWithFloat:floatNumber]];
+}
+
 - (void)alertViewToChangeFee
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, self.currentFeePerKb] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
+    NSString *feePerKbString = [self convertFloatToString:self.currentFeePerKb];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, feePerKbString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.spellCheckingType = UITextSpellCheckingTypeNo;
-    textField.text = [[NSString alloc] initWithFormat:@"%.4f", self.currentFeePerKb];
+    textField.text = feePerKbString;
     textField.text = [textField.text stringByReplacingOccurrencesOfString:@"." withString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     textField.keyboardType = UIKeyboardTypeDecimalPad;
     [alertView show];
@@ -375,7 +385,9 @@ const int aboutPrivacyPolicy = 1;
             }
             case 1: {
                 BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
-                float fee = [textField.text floatValue];
+                NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+                NSString *convertedText = [textField.text stringByReplacingOccurrencesOfString:decimalSeparator withString:@"."];
+                float fee = [convertedText floatValue];
                 if (fee > 0.01) {
                     [app standardNotify:BC_STRING_SETTINGS_FEE_TOO_HIGH];
                     return;
@@ -634,7 +646,7 @@ const int aboutPrivacyPolicy = 1;
                 case feePerKb: {
                     cell.textLabel.text = BC_STRING_SETTINGS_FEE_PER_KB;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self getFeePerKb]];
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self convertFloatToString:[self getFeePerKb]]];
                     return cell;
                 }
             }
