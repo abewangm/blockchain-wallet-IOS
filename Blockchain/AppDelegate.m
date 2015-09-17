@@ -489,7 +489,7 @@ void (^secondPasswordSuccess)(NSString *);
         [_sendViewController dismissKeyboard];
         
         // Make sure the the send payment button on send screen is enabled (bug when second password requested and app is backgrounded)
-        [_sendViewController reset];
+        [_sendViewController enablePaymentButtons];
     }
     
     // Cancel Notification for new address on receive coins view controller (bug when second password requested and app is backgrounded)
@@ -718,7 +718,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeClose headerText:BC_STRING_SECOND_PASSWORD_REQUIRED onDismiss:^() {
         secondPasswordTextField.text = nil;
-        [self.sendViewController reset];
+        [self.sendViewController enablePaymentButtons];
     } onResume:nil];
     
     [modalView.closeButton removeTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventAllTouchEvents];

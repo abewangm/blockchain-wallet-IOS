@@ -90,8 +90,9 @@
 
 - (void)dismissKeyboard;
 
-- (void)reset;
+- (void)enablePaymentButtons;
 
+// Called on manual logout
 - (void)clearToAddressAndAmountFields;
 
 @end

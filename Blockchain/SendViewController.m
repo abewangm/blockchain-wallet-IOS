@@ -32,12 +32,9 @@ AVCaptureVideoPreviewLayer *videoPreviewLayer;
 float containerOffset;
 
 uint64_t amountInSatoshi = 0.0;
-
 uint64_t availableAmount = 0.0;
 
 BOOL displayingLocalSymbolSend;
-
-uint64_t doo = 10000;
 
 #pragma mark - Lifecycle
 
@@ -57,17 +54,13 @@ uint64_t doo = 10000;
         sendProgressModalText.text = [notification object];
     }];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showInsufficientFunds) name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
-    
     app.mainTitleLabel.text = BC_STRING_SEND;
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_INSUFFICIENT_FUNDS object:nil];
 }
 
 - (void)viewDidLoad
@@ -81,7 +74,6 @@ uint64_t doo = 10000;
     [toField setReturnKeyType:UIReturnKeyDone];
     
     [self reload];
-    
 }
 
 - (void)resetPayment
@@ -96,7 +88,6 @@ uint64_t doo = 10000;
     if ([app.wallet hasAccount]) {
         // Default setting: send from default account
         self.sendFromAddress = false;
-        
         int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
         self.fromAccount = defaultAccountIndex;
         [app.wallet createNewPayment];
@@ -114,6 +105,8 @@ uint64_t doo = 10000;
     self.toAddress = @"";
     toField.text = @"";
     amountInSatoshi = 0;
+    btcAmountField.text = @"";
+    fiatAmountField.text = @"";
     [self resetPayment];
 }
 
@@ -122,6 +115,8 @@ uint64_t doo = 10000;
     if (![app.wallet isInitialized] || !app.latestResponse) {
         return;
     }
+    
+    [self clearToAddressAndAmountFields];
     
     [self.sweepPaymentAlertView dismissWithClickedButtonIndex:0 animated:YES];
     [self.confirmPaymentAlertView dismissWithClickedButtonIndex:0 animated:YES];
@@ -201,14 +196,6 @@ uint64_t doo = 10000;
         displayingLocalSymbol = FALSE;
         displayingLocalSymbolSend = FALSE;
     }
-    
-    [self doCurrencyConversion];
-}
-
-- (void)reset
-{
-    [sendPaymentButton setEnabled:YES];
-    [sendPaymentAccessoryButton setEnabled:YES];
 }
 
 #pragma mark - Payment
@@ -218,11 +205,6 @@ uint64_t doo = 10000;
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
     
     listener.on_start = ^() {
-        //        app.disableBusyView = TRUE;
-        //
-        //        sendProgressModalText.text = BC_STRING_PLEASE_WAIT;
-        //
-        //        [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone];
     };
     
     listener.on_begin_signing = ^() {
@@ -245,36 +227,9 @@ uint64_t doo = 10000;
         
         [sendProgressActivityIndicator stopAnimating];
         
-        [sendPaymentButton setEnabled:YES];
-        [sendPaymentAccessoryButton setEnabled:YES];
+        [self enablePaymentButtons];
         
-        // Reset fields
-        self.fromAddress = @"";
-        if ([app.wallet hasAccount]) {
-            // Default setting: send from default account
-            self.sendFromAddress = false;
-            int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
-            selectAddressTextField.text = [app.wallet getLabelForAccount:defaultAccountIndex];
-            self.fromAccount = defaultAccountIndex;
-            
-            availableAmount = [app.wallet getBalanceForAccount:defaultAccountIndex];
-        }
-        else {
-            // Default setting: send from any address
-            self.sendFromAddress = true;
-            selectAddressTextField.text = BC_STRING_ANY_ADDRESS;
-            
-            availableAmount = [app.wallet getTotalBalanceForActiveLegacyAddresses];
-        }
-        
-        self.sendToAddress = true;
-        
-        toField.text = nil;
-        btcAmountField.text = nil;
-        self.toAddress = @"";
-        amountInSatoshi = 0.0;
-        [self doCurrencyConversion];
-        [self resetPayment];
+        // Fields are automatically reset by reload after a successful transaction
         
         // Close transaction modal, go to transactions view, scroll to top and animate new transaction
         [app closeModalWithTransition:kCATransitionFade];
@@ -284,7 +239,6 @@ uint64_t doo = 10000;
         });
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [app.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-            
             [app.wallet loading_start_get_history];
         });
     };
@@ -304,8 +258,7 @@ uint64_t doo = 10000;
     
     [self dismissKeyboard];
     
-    [sendPaymentButton setEnabled:NO];
-    [sendPaymentAccessoryButton setEnabled:NO];
+    [self disablePaymentButtons];
     
     [sendProgressActivityIndicator startAnimating];
     
@@ -512,8 +465,7 @@ uint64_t doo = 10000;
             [self reallyDoPayment];
         }
         return;
-    }
-    if (alertView == self.sweepPaymentAlertView) {
+    } else if (alertView == self.sweepPaymentAlertView) {
         if (buttonIndex == 1) {
             amountInSatoshi = self.maxAmountForSweepPaymentAlertView;
             // Display to the user the max amount
@@ -523,7 +475,6 @@ uint64_t doo = 10000;
         } else {
             [self enablePaymentButtons];
         }
-        return;
     }
 }
 
