@@ -91,7 +91,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
-        let c = count(list)
+        let c = list.count
         if c < 2 { return list }
         for i in 0..<(c - 1) {
             let j = Int(arc4random_uniform(UInt32(c - i))) + i
@@ -118,7 +118,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
             randomWord2 = words[randomizedIndexes[1]]
             randomWord3 = words[randomizedIndexes[2]]
             
-            if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
+            if word1!.text!.isEmpty || word2!.text!.isEmpty || word3!.text!.isEmpty {
                 valid = false
             } else { // Don't mark words as invalid until the user has entered all three
                 if word1!.text != randomWord1 {
@@ -152,7 +152,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func pleaseTryAgain() {
-        var alertView = UIAlertView()
+        let alertView = UIAlertView()
         alertView.title = NSLocalizedString("Error", comment:"")
         alertView.message = NSLocalizedString("Please try again", comment:"")
         alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
@@ -160,11 +160,11 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func textFieldDidChange() {
-        if !word1!.text.isEmpty && !word2!.text.isEmpty && !word3!.text.isEmpty {
+        if !word1!.text!.isEmpty && !word2!.text!.isEmpty && !word3!.text!.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
             verifyButton?.enabled = true
             verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        } else if word1!.text.isEmpty || word2!.text.isEmpty || word3!.text.isEmpty {
+        } else if word1!.text!.isEmpty || word2!.text!.isEmpty || word3!.text!.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
             verifyButton?.enabled = false
             verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
