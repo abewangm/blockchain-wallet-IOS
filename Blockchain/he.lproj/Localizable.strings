@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ יועתק אל הלוח";
@@ -50,16 +50,19 @@
 "Address is not valid" = "כתובת אינה חוקית";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "הסכום להיות מעל הסף אבק (%lld סטושי)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "חשבון דואר אלקטרוני יש צורך לעזור לשחזר את מזהה את הארנק האבוד של ועבור הודעות התשלום. כמו כן, את כתובת הדוא ל מאומת ישמש בתור שכבה נוספת של אימות בעת הכניסה לתוך הארנק שלך.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "אירעה שגיאה בעת אימות הקוד האישי שלך עם השרת המרוחק. אתה יכול להיות מנותק או blockchain עשויים לחוות קשיים. האם ברצונך לנסות שוב אימות או במקום להזין את הסיסמה שלך באופן ידני?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "אירעה שגיאה בעת טעינת הארנק שלך. אתה יכול להיות מנותק או Blockchain הוא נתקל בקשיים. נא לסגור את היישום ונסה שוב מאוחר יותר";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "אירעה שגיאה בעת טעינת הארנק שלך. אתה יכול להיות מנותק או Blockchain הוא נתקל בקשיים. נא לסגור את היישום, נסה שוב מאוחר יותר או לשייך מחדש את המכשיר.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "אירעה שגיאה בעת טעינת הארנק שלך. אתה יכול להיות מנותק או Blockchain הוא נתקל בקשיים. נא לסגור את היישום, נסה שוב מאוחר יותר או לשייך מחדש את המכשיר.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "אירעה שגיאה בעת אחזור המזהה את הארנק שלך מחזיק מפתחות. נא לסגור את היישום ונסה שוב.";
 
 /* (No Commment) */
 "Any address" = "כל כתובת";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "בקשתכם לתשלום ביטקוין";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain צריך שירותי איכון זמינה כדי לגשת למיקום שלך.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain צריך שירותי איכון זמינה כדי לגשת למיקום שלך. באפשרותך לאפשר גישה בהגדרות -> פרטיות -> שירותי איכון";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain צריך שירותי איכון זמינה כדי לגשת למיקום שלך. באפשרותך לאפשר גישה בהגדרות -> פרטיות -> מיקום -> שירותי איכון";
 
 /* (No Commment) */
 "Cancel" = "ביטול";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "יצירת הארנק החדש";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "שיעור נוכחי: %.4f BTC";
+"Current rate: %@ BTC" = "שיעור נוכחי: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "אורך PIN סיסמה מפוענחים 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "תגובה ריקה מהשרת.";
+
+/* (No Commment) */
+"Enable Location Services" = "הפעלת שירותי איכון";
 
 /* (No Commment) */
 "Enter Password" = "הזן את הסיסמה";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "יצירת כתובת חדשה";
+
+/* (No Commment) */
+"Go to Settings" = "עבור אל הגדרות";
 
 /* (No Commment) */
 "How would you like to pair?" = "? מה דעתך על זוג";
@@ -697,6 +715,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "גיבית את הכספים שלך בהצלחה";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "יש לך אין מימון לשלוח מהכתובת הזאת";
 
 /* (No Commment) */
 "You must enter a destination address" = "עליך להזין כתובת יעד";

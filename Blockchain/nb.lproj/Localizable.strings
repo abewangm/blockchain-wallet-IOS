@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ kopieres til utklippstavlen";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Adressen er ikke gyldig";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Beløpet må være over støv terskelen (%lld Satoshi)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "En e-postkonto er nødvendig for å gjenopprette en tapt konto-ID og for betaling. Også brukes bekreftet e-postadressen som et ekstra lag av bekreftelse når du logger inn din lommebok.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Feil ved validering av PIN-kode med den eksterne serveren. Du kan være frakoblet eller blockchain kan ha problemer. Ønsker du Prøv validering eller i stedet skrive inn passordet manuelt?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Det oppstod en feil under lasting lommeboken. Du kan være frakoblet eller Blockchain opplever vanskeligheter. Lukk programmet, og prøv på nytt senere";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Det oppstod en feil under lasting lommeboken. Du kan være frakoblet eller Blockchain opplever vanskeligheter. Vennligst lukk programmet og prøv på nytt senere eller nytt parer du enheten din.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Det oppstod en feil under lasting lommeboken. Du kan være frakoblet eller Blockchain opplever vanskeligheter. Vennligst lukk programmet og prøv på nytt senere eller nytt parer du enheten din.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Det oppstod en feil under henting din lommebok identifikator fra nøkkelringen. Lukk programmet, og prøv på nytt.";
 
 /* (No Commment) */
 "Any address" = "En adresse";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin betalingsforespørsel";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain må stedstjenester aktivert for å få tilgang til din plassering.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain må stedstjenester aktivert for å få tilgang til din plassering. Kan du aktivere tilgang innstillinger -> Personvern -> stedstjenester";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain må stedstjenester aktivert for å få tilgang til din plassering. Kan du aktivere tilgang innstillinger -> Personvern -> plassering -> stedstjenester";
 
 /* (No Commment) */
 "Cancel" = "Avbryt";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Opprette ny lommebok";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Gjeldende hastighet: %.4f BTC";
+"Current rate: %@ BTC" = "Gjeldende hastighet: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dekrypterte PIN passordlengde 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Tomme svar fra serveren.";
+
+/* (No Commment) */
+"Enable Location Services" = "Aktiver posisjonstjenestene";
 
 /* (No Commment) */
 "Enter Password" = "Passordet";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Generere nye adressen";
+
+/* (No Commment) */
+"Go to Settings" = "Gå til innstillinger";
 
 /* (No Commment) */
 "How would you like to pair?" = "Hvordan ville du like å par?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Du sikkerhetskopierte midlene vellykket";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Du har ingen tilgjengelige midler til å sende fra denne adressen";
 
 /* (No Commment) */
 "You must enter a destination address" = "Du må angi destinasjonsadresse";

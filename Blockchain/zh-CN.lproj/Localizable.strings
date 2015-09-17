@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "BTC %.4f";
+"%@ BTC" = "BTC %@";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ 复制到剪贴板";
@@ -50,16 +50,19 @@
 "Address is not valid" = "地址是无效的";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "金额必须高于灰尘阈值 (%lld 聪)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "电子邮件帐户需要帮助恢复丢失的钱包标识符和付款通知。此外，您已验证电子邮件地址将用作验证第二层当您登录到你的钱包。";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "验证您的 PIN 代码与远程服务器时发生错误。你可能处于脱机状态或 blockchain 可能遇到的困难。要验证重试或相反手动输入您的密码吗?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "加载你的钱包时遇到错误。你可能处于脱机状态，或者 Blockchain 遇到困难。请关闭应用程序，请稍后再试";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "加载你的钱包时遇到错误。你可能处于脱机状态，或者 Blockchain 遇到困难。请关闭应用程序，请稍后再试或重新配对您的设备。";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "加载你的钱包时遇到错误。你可能处于脱机状态，或者 Blockchain 遇到困难。请关闭应用程序，请稍后再试或重新配对您的设备。";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "从钥匙串中检索您的钱包标识符时出错。请关闭应用程序，然后重试。";
 
 /* (No Commment) */
 "Any address" = "任何地址";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "比特币付款请求";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain 需要位置服务启用，以便访问您所在的位置。";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain 需要位置服务启用，以便访问您所在的位置。您可以启用访问在设置-> 隐私-> 位置服务";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain 需要位置服务启用，以便访问您所在的位置。您可以启用访问在设置-> 隐私-> 位置-> 定位服务";
 
 /* (No Commment) */
 "Cancel" = "取消";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "创建新的钱包";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "现价: %.4f BTC";
+"Current rate: %@ BTC" = "现价: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "解密的 PIN 密码长度为 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "服务器的空响应。";
+
+/* (No Commment) */
+"Enable Location Services" = "启用定位服务";
 
 /* (No Commment) */
 "Enter Password" = "输入密码";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "生成新的地址";
+
+/* (No Commment) */
+"Go to Settings" = "转到设置";
 
 /* (No Commment) */
 "How would you like to pair?" = "你怎么想对?";
@@ -697,6 +715,9 @@ wallet experience for you" = "我们已经为您设计全新的钱包经验";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "你成功地备份您的资金";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "你有没有可用的资金，从该地址发送";
 
 /* (No Commment) */
 "You must enter a destination address" = "您必须输入目标地址";

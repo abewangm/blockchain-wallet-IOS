@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ αντιγράφεται στο Πρόχειρο";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Διεύθυνση δεν είναι έγκυρη";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Ποσό πρέπει να είναι πάνω από το όριο της σκόνης (%lld Satoshi)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Λογαριασμό email που απαιτείται για να βοηθήσει να ανακτήσει ένα χαμένο πορτοφόλι αναγνωριστικό και για ειδοποιήσεις πληρωμής. Επίσης, σας διεύθυνση email επαληθεύονται θα χρησιμοποιηθεί ως ένα δεύτερο στρώμα της επαλήθευσης όταν συνδέεστε στο πορτοφόλι σας.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Παρουσιάστηκε σφάλμα επικύρωση κωδικό σας PIN με τον απομακρυσμένο διακομιστή. Μπορεί να είστε σε μη απευθείας σύνδεση ή blockchain μπορεί να αντιμετωπίζουν δυσκολίες. Θα θέλατε επανάληψη επικύρωσης ή αντί να εισάγετε τον κωδικό σας με το χέρι;";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Παρουσιάστηκε σφάλμα κατά τη φόρτωση το πορτοφόλι σας. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain αντιμετωπίζει δυσκολίες. Κλείστε την εφαρμογή και προσπαθήστε ξανά αργότερα";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Παρουσιάστηκε σφάλμα κατά τη φόρτωση το πορτοφόλι σας. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain αντιμετωπίζει δυσκολίες. Παρακαλούμε να κλείσετε την εφαρμογή και προσπαθήστε ξανά αργότερα ή αντιστοιχίστε εκ νέου τη συσκευή σας.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Παρουσιάστηκε σφάλμα κατά τη φόρτωση το πορτοφόλι σας. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain αντιμετωπίζει δυσκολίες. Παρακαλούμε να κλείσετε την εφαρμογή και προσπαθήστε ξανά αργότερα ή αντιστοιχίστε εκ νέου τη συσκευή σας.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Παρουσιάστηκε σφάλμα κατά την ανάκτηση σας αναγνωριστικό πορτοφολιού από το keychain. Κλείστε την εφαρμογή και προσπαθήστε ξανά.";
 
 /* (No Commment) */
 "Any address" = "Οποιαδήποτε διεύθυνση";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin αίτηση πληρωμής";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας. Μπορείτε να ενεργοποιήσετε την πρόσβαση στις ρυθμίσεις -> προσωπικό απόρρητο -> υπηρεσίες τοποθεσίας";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας. Μπορείτε να ενεργοποιήσετε την πρόσβαση στις ρυθμίσεις -> προσωπικό απόρρητο -> θέση -> υπηρεσίες τοποθεσίας";
 
 /* (No Commment) */
 "Cancel" = "\"Άκυρο\"";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Δημιουργώντας νέα πορτοφόλι";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Σημερινό ποσοστό: %.4f BTC";
+"Current rate: %@ BTC" = "Σημερινό ποσοστό: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Αποκρυπτογραφηθούν με τον PIN κωδικό μήκος 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Κενή απόκριση από το διακομιστή.";
+
+/* (No Commment) */
+"Enable Location Services" = "Ενεργοποιήστε τις υπηρεσίες τοποθεσίας";
 
 /* (No Commment) */
 "Enter Password" = "Εισάγετε τον κωδικό πρόσβασης";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Παράγει νέα διεύθυνση";
+
+/* (No Commment) */
+"Go to Settings" = "Μεταβείτε στην επιλογή Ρυθμίσεις";
 
 /* (No Commment) */
 "How would you like to pair?" = "Πώς θα θέλατε να ζεύγος;";
@@ -697,6 +715,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Δημιουργήσατε αντίγραφα ασφαλείας των κεφαλαίων σας με επιτυχία";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Έχετε καμία διαθέσιμα κεφάλαια να στείλει από αυτή τη διεύθυνση";
 
 /* (No Commment) */
 "You must enter a destination address" = "Πρέπει να πληκτρολογήσετε μια διεύθυνση προορισμού";

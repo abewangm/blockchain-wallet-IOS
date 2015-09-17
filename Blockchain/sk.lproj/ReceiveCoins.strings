@@ -1,54 +1,72 @@
+/* (No Commment) */
+"1sL-eb-Qgc.normalTitle" = "Zavrieť";
 
-/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "48"; */
-"48.normalTitle" = "Save";
+/* (No Commment) */
+"48.normalTitle" = "Uložiť";
 
-/* Class = "IBUILabel"; text = "Label Address"; ObjectID = "56"; */
-"56.text" = "Label Address";
+/* (No Commment) */
+"56.text" = "Menovku s adresou";
 
-/* Class = "IBUILabel"; text = "Address:"; ObjectID = "57"; */
-"57.text" = "Address:";
+/* (No Commment) */
+"57.text" = "Adresa";
 
-/* Class = "IBUILabel"; text = "Label:"; ObjectID = "58"; */
-"58.text" = "Label:";
+/* (No Commment) */
+"58.text" = "Štítok";
 
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "60"; */
-"60.text" = "Address";
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "59"; */
+"59.placeholder" = "Štítok";
 
-/* Class = "IBUILabel"; text = "No Addresses"; ObjectID = "68"; */
-"68.text" = "No Addresses";
+/* Class = "UILabel"; text = "Address"; ObjectID = "60"; */
+"60.text" = "Adresa";
 
-/* Class = "IBUILabel"; text = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen."; ObjectID = "69"; */
-"69.text" = "Your account is probably not paired correctly. Click the button in the top left of the screen and follow the instructions on screen.";
+/* (No Commment) */
+"68.text" = "Žiadne adresy";
 
-/* Class = "IBUIButton"; normalTitle = "Archive"; ObjectID = "80"; */
-"80.normalTitle" = "Archive";
+/* (No Commment) */
+"69.text" = "Konto pravdepodobne nie je správne spárované. Kliknite na tlačidlo v hornej ľavej časti obrazovky a postupujte podľa pokynov na obrazovke.";
 
-/* Class = "IBUIButton"; normalTitle = "Set Label"; ObjectID = "81"; */
-"81.normalTitle" = "Set Label";
+/* (No Commment) */
+"80.normalTitle" = "ARCHÍV ADRESU";
 
-/* Class = "IBUIButton"; normalTitle = "Request Payment"; ObjectID = "88"; */
-"88.normalTitle" = "Request Payment";
+/* (No Commment) */
+"81.normalTitle" = "MENOVKU S ADRESOU";
 
-/* Class = "IBUILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Bitcoin Address ";
+/* (No Commment) */
+"88.normalTitle" = "POŽADOVAŤ PLATBU";
 
-/* Class = "IBUILabel"; text = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH"; ObjectID = "91"; */
+/* Class = "UILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
+"90.text" = "Bitcoin adresu ";
+
+/* (No Commment) */
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
-/* Class = "IBUIButton"; normalTitle = "Copy Address"; ObjectID = "92"; */
-"92.normalTitle" = "Copy Address";
+/* (No Commment) */
+"92.normalTitle" = "KOPÍROVAŤ ADRESU";
 
-/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "100"; */
-"100.text" = "Amount:";
+/* (No Commment) */
+"100.text" = "Výška:";
 
-/* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "120"; */
-"120.text" = "5 BTC = $10";
+/* (No Commment) */
+"120.text" = "5 BTC = 10 DOLÁROV";
 
-/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "1sL-eb-Qgc"; */
-"1sL-eb-Qgc.normalTitle" = "Close";
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
+"E60-hZ-tDl.placeholder" = "0.000";
 
-/* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "GwZ-6f-89z"; */
+/* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
 
-/* Class = "IBUIButton"; normalTitle = "Scan Private Key"; ObjectID = "i1j-pG-caF"; */
-"i1j-pG-caF.normalTitle" = "Scan Private Key";
+/* Class = "UITextField"; text = "Only to control keyboard"; ObjectID = "OFk-NR-2Sp"; */
+"OFk-NR-2Sp.text" = "Len aby ovládanie klávesnice";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
+"a9y-3I-Drw.placeholder" = "0.00";
+
+/* (No Commment) */
+"i1j-pG-caF.normalTitle" = "Skenovanie súkromný kľúč";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
+"jRM-0A-Zuo.text" = "BTC";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
+"wDT-32-lDe.text" = "USD";
+

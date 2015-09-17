@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "BTC %.4f";
+"%@ BTC" = "BTC %@";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "클립보드에 복사 하는 %@";
@@ -50,16 +50,19 @@
 "Address is not valid" = "주소는 유효 하지 않습니다.";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "금액 먼지 임계값 (%lld 사토시) 이상 되어야 합니다.";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "이메일 계정이 분실된 지갑 식별자를 복구할 수 있도록 하는 데 필요한 및 지불 알림. 당신의 지갑에 로그인 할 때 또한, 확인 된 이메일 주소 확인의 두 번째 계층으로 사용 됩니다.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "오류가 발생 원격 서버와 핀 코드의 유효성을 검사 했습니다. 당신이 오프 라인 될 수 있습니다 또는 blockchain 어려움을 겪고 있습니다. 유효성 검사를 다시 시도 하거나 대신 수동으로 비밀 번호를 입력 시겠습니까?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "오류가 당신의 지갑을 로드 하는 동안 발생 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 응용 프로그램을 종료 하 고 나중에 다시 시도 하십시오";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "오류가 당신의 지갑을 로드 하는 동안 발생 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 제발 응용 프로그램을 닫고 나중에 다시 시도 또는 장치를 다시 쌍.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "오류가 당신의 지갑을 로드 하는 동안 발생 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 제발 응용 프로그램을 닫고 나중에 다시 시도 또는 장치를 다시 쌍.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "오류는 키체인에서 지갑 식별자를 검색 하는 동안 발생 했습니다. 응용 프로그램을 종료 하 고 다시 시도 하십시오.";
 
 /* (No Commment) */
 "Any address" = "모든 주소";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin 지불 요청";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain 위치 서비스는 위치 정보에 액세스 하려면 사용 해야 합니다.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain 위치 서비스는 위치 정보에 액세스 하려면 사용 해야 합니다. 액세스를 사용할 수 있습니다 개인 정보-> 설정-> 위치 서비스";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain 위치 서비스는 위치 정보에 액세스 하려면 사용 해야 합니다. 액세스를 설정할 수 있습니다 설정에서 개인 정보를-> 위치->-> 위치 서비스";
 
 /* (No Commment) */
 "Cancel" = "취소";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "새 지갑 만들기";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "현재 속도: %.4f BTC";
+"Current rate: %@ BTC" = "현재 속도: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "해독 된 핀 암호 길이 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "서버에서 빈 응답입니다.";
+
+/* (No Commment) */
+"Enable Location Services" = "위치 서비스를 활성화";
 
 /* (No Commment) */
 "Enter Password" = "비밀 번호를 입력";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "새 주소를 생성";
+
+/* (No Commment) */
+"Go to Settings" = "설정으로 이동";
 
 /* (No Commment) */
 "How would you like to pair?" = "어떻게 쌍을 원하십니까?";
@@ -697,6 +715,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "귀하의 자금을 성공적으로 백업";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "당신은이 주소에서 보내는 데 사용할 수 있는 자금";
 
 /* (No Commment) */
 "You must enter a destination address" = "대상 주소를 입력 해야 합니다.";

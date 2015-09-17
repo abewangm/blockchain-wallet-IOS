@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ copiate în clipboard";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Adresa nu este validă";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Valoarea trebuie să fie peste pragul de praf (%lld Satoshi)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Un cont de e-mail este necesar să recupereze un identificator de pierdut portofelul şi pentru notificări de plată. De asemenea, adresa de e-mail verificată va fi utilizat ca un al doilea strat de verificare atunci când vă conectaţi în portofel.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Eroare la validarea codul PIN cu serverul de la distanţă. Aţi putea fi deconectat sau blockchain pot fi întâmpină dificultăţi. Doriţi Reîncercare validare sau în schimb să introduceţi parola manual?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Eroare la încărcarea portofel. Aţi putea fi deconectat sau Blockchain se confruntă cu dificultăți. Închideţi aplicaţia şi încercaţi din nou mai târziu";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Eroare la încărcarea portofel. Aţi putea fi deconectat sau Blockchain se confruntă cu dificultăți. Închideţi aplicaţia şi încercaţi din nou mai târziu sau re-asociaþi aparatul dvs.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Eroare la încărcarea portofel. Aţi putea fi deconectat sau Blockchain se confruntă cu dificultăți. Închideţi aplicaţia şi încercaţi din nou mai târziu sau re-asociaþi aparatul dvs.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Eroare la regăsirea dumneavoastră identificator de portofel din keychain. Vă rugăm să închideți aplicația și încercați din nou.";
 
 /* (No Commment) */
 "Any address" = "Orice adresă";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Cererea de plată Bitcoin";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain are nevoie de servicii de localizare activat pentru a acces la locaţia dvs.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain are nevoie de servicii de localizare activat pentru a acces la locaţia dvs. Puteţi permite accesul în Setări -> Privacy -> servicii de localizare";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain are nevoie de servicii de localizare activat pentru a acces la locaţia dvs. Puteţi permite accesul în Setări -> Privacy -> locaţie -> servicii de localizare";
 
 /* (No Commment) */
 "Cancel" = "Revocare";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Crearea de noi portofel";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Rata: %.4f BTC";
+"Current rate: %@ BTC" = "Rata: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Lungimea parolei PIN decriptat 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Gol de răspuns de la server.";
+
+/* (No Commment) */
+"Enable Location Services" = "Activare servicii de localizare";
 
 /* (No Commment) */
 "Enter Password" = "Introduceţi parola";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Generatoare de noua adresa";
+
+/* (No Commment) */
+"Go to Settings" = "Du-te la setările";
 
 /* (No Commment) */
 "How would you like to pair?" = "Cum doriţi să pereche?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Aţi făcut până-ţi fonduri cu succes";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Tu ai nu există fonduri disponibile pentru a trimite la aceasta adresa";
 
 /* (No Commment) */
 "You must enter a destination address" = "Trebuie să introduceţi o adresă de destinaţie";

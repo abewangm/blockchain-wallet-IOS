@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f बीटीसी";
+"%@ BTC" = "%@ बीटीसी";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "क्लिपबोर्ड पर प्रतिलिपि बनाई %@";
@@ -50,16 +50,19 @@
 "Address is not valid" = "पता मान्य नहीं है";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "राशि धूल दहलीज (%lld Satoshi) से ऊपर होना चाहिए";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "कोई ईमेल खाता एक खो बटुआ पहचानकर्ता उबरने में मदद करने के लिए की जरूरत है और भुगतान सूचनाओं के लिए। जब आप अपने बटुए में प्रवेश भी, अपना सत् यापित ईमेल पता सत्यापन की एक दूसरी परत के रूप में उपयोग किया जाएगा।";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "त्रुटि लोड हो रहा है अपने बटुए का सामना करना पड़ा था। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का सामना कर रहा है। कृपया अनुप्रयोग बंद करें और बाद में पुन: प्रयास करें";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "त्रुटि लोड हो रहा है अपने बटुए का सामना करना पड़ा था। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का सामना कर रहा है। कृपया अनुप्रयोग बंद करें और बाद में पुन: प्रयास करें या अपने डिवाइस पुन: जोड़ी।";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "त्रुटि लोड हो रहा है अपने बटुए का सामना करना पड़ा था। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का सामना कर रहा है। कृपया अनुप्रयोग बंद करें और बाद में पुन: प्रयास करें या अपने डिवाइस पुन: जोड़ी।";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "एक त्रुटि अपने बटुए पहचानकर्ता चाबी का गुच्छा से पुन: प्राप्त करने का सामना करना पड़ा था। कृपया अनुप्रयोग बंद करें और पुन: प्रयास करें।";
 
 /* (No Commment) */
 "Any address" = "किसी भी पते";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin भुगतान अनुरोध";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain स्थान सेवाएँ आपके स्थान तक पहुंचने के लिए सक्षम की जरूरत है।";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain स्थान सेवाएँ आपके स्थान तक पहुंचने के लिए सक्षम की जरूरत है। आप तक पहुँच को सक्षम कर सकते हैं गोपनीयता में सेटिंग्स -> -> स्थान सेवाएँ";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain स्थान सेवाएँ आपके स्थान तक पहुंचने के लिए सक्षम की जरूरत है। आप तक पहुँच को सक्षम कर सकते हैं गोपनीयता में सेटिंग्स -> -> स्थान स्थान सेवाएँ ->";
 
 /* (No Commment) */
 "Cancel" = "रद्द करें";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "नई बटुआ बनाना";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "वर्तमान दर: %.4f बीटीसी";
+"Current rate: %@ BTC" = "वर्तमान दर: %@ बीटीसी";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Decrypted पिन पासवर्ड लंबाई 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "सर्वर से खाली प्रतिसाद।";
+
+/* (No Commment) */
+"Enable Location Services" = "स्थान सेवाओं को सक्षम करें";
 
 /* (No Commment) */
 "Enter Password" = "पासवर्ड दर्ज करें";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "नया पता जनरेट कर रहा है";
+
+/* (No Commment) */
+"Go to Settings" = "सेटिंग्स पर जाएँ";
 
 /* (No Commment) */
 "How would you like to pair?" = "आप जोड़ी करने के लिए कैसे करना चाहेंगे?";
@@ -697,6 +715,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "आप अपनी निधियों को सफलतापूर्वक समर्थित";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "आप इस पते से भेजने के लिए कोई धनराशि उपलब्ध है";
 
 /* (No Commment) */
 "You must enter a destination address" = "आप एक गंतव्य पता दर्ज करना होगा";

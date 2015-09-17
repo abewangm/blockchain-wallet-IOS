@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "クリップボードにコピー %@";
@@ -50,16 +50,19 @@
 "Address is not valid" = "アドレスが正しくありません。";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "量する必要がありますほこりしきい値 (%lld 聡)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "メール アカウントはなくした財布識別子を回復するために必要な支払通知。また、あなたの財布にログインするときは、確認済みのメール アドレスを検証の第 2 層として使用されます。";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "リモート サーバーと PIN コードの検証エラーが発生しました。あなたがオフラインである、または blockchain により、問題が発生します。検証を再試行するか、代わりにあなたのパスワードを手動で入力したいですか。";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "あなたの財布の読み込みエラーが発生しました。あなたがオフラインであるか、Blockchain は問題します。アプリケーションを終了し、もう一度やり直してください。";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "あなたの財布の読み込みエラーが発生しました。あなたがオフラインであるか、Blockchain は問題します。くださいアプリケーションを終了やり直して、またはデバイスをペアリングし直します。";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "あなたの財布の読み込みエラーが発生しました。あなたがオフラインであるか、Blockchain は問題します。くださいアプリケーションを終了やり直して、またはデバイスをペアリングし直します。";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "キーチェーンから財布識別子の取得エラーが発生しました。アプリケーションを終了して、もう一度やり直してください。";
 
 /* (No Commment) */
 "Any address" = "任意のアドレス";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin 支払い要求";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain では、位置情報サービスのあなたの場所にアクセスするために有効になっている必要があります。";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain では、位置情報サービスのあなたの場所にアクセスするために有効になっている必要があります。アクセスを有効にすることができます設定 → プライバシー → 位置情報サービス";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain では、位置情報サービスのあなたの場所にアクセスするために有効になっている必要があります。アクセスを有効にすることができます設定 → プライバシー → 場所 → 位置情報サービス";
 
 /* (No Commment) */
 "Cancel" = "キャンセル";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "新しい財布を作成します。";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "現在のレート: %.4f BTC";
+"Current rate: %@ BTC" = "現在のレート: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "復号化された PIN パスワード長さ 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "サーバーから空の応答。";
+
+/* (No Commment) */
+"Enable Location Services" = "位置情報サービスを有効にします。";
 
 /* (No Commment) */
 "Enter Password" = "パスワードを入力します。";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "新しいアドレスの生成";
+
+/* (No Commment) */
+"Go to Settings" = "設定に移動します。";
 
 /* (No Commment) */
 "How would you like to pair?" = "どのペアにしますか?";
@@ -697,6 +715,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "あなたが正常にあなたの資金をバックアップ";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "このアドレスから送信する利用可能な資金があるない場合";
 
 /* (No Commment) */
 "You must enter a destination address" = "宛先アドレスを入力してください。";

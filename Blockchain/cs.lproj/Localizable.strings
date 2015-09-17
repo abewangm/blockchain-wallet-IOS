@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ zkopírován do schránky";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Adresa není platná";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Částka musí být vyšší než práh prach (%lld Satoshi)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "E-mailový účet, je nutné obnovit ztracené peněžence identifikátor a pro platební oznámení. Také ověřené e-mailová adresa bude použít jako druhou vrstvu ověřování při přihlášení do vaší peněženky.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Při ověřování kódu PIN se vzdáleným serverem došlo k chybě. Jste pravděpodobně v režimu offline nebo blockchain mohou být potíže. Chcete opakovat ověření nebo místo toho zadat heslo ručně?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Byla zjištěna chyba načítání peněženku. Jste pravděpodobně v režimu offline nebo Blockchain v obtížích. Ukončete aplikaci a opakujte akci později";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Byla zjištěna chyba načítání peněženku. Jste pravděpodobně v režimu offline nebo Blockchain v obtížích. Ukončete aplikace a opakujte akci později nebo znovu spárovat zařízení.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Byla zjištěna chyba načítání peněženku. Jste pravděpodobně v režimu offline nebo Blockchain v obtížích. Ukončete aplikace a opakujte akci později nebo znovu spárovat zařízení.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Při načítání identifikátoru peněženku z v řetězci klíčů došlo k chybě. Ukončete aplikaci a akci opakujte.";
 
 /* (No Commment) */
 "Any address" = "Libovolná adresa";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Žádost o platbu Bitcoin";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain potřebuje umístění služby povoleny při přístupu k vaší polohu.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain potřebuje umístění služby povoleny při přístupu k vaší polohu. Přístup můžete povolit v nastavení -> soukromí -> umístění služby";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain potřebuje umístění služby povoleny při přístupu k vaší polohu. Přístup můžete povolit v nastavení -> soukromí -> umístění -> umístění služby";
 
 /* (No Commment) */
 "Cancel" = "Zrušit";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Vytvoření nové peněženky";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Aktuální kurz: %.4f BTC";
+"Current rate: %@ BTC" = "Aktuální kurz: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dešifrovaný délka hesla PIN 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Prázdná odpověď ze serveru.";
+
+/* (No Commment) */
+"Enable Location Services" = "Povolení služby pro umístění";
 
 /* (No Commment) */
 "Enter Password" = "Zadat heslo";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Generování nové adresy";
+
+/* (No Commment) */
+"Go to Settings" = "Přejděte do nabídky nastavení";
 
 /* (No Commment) */
 "How would you like to pair?" = "Jak chcete dvojici?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Jste úspěšně zálohovány vaše finanční prostředky";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Žádné dostupné peníze poslat z této adresy";
 
 /* (No Commment) */
 "You must enter a destination address" = "Je třeba zadat cílovou adresu";

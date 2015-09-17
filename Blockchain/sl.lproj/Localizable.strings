@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ kopira v odložišče";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Naslov ni veljaven";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Znesek mora biti nad pragom prah (%lld Satoshi)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "E-poštni račun je potrebno, da pomaga obnoviti izgubljeno denarnico identifikator in za plačilo prijave. Tudi, preverjene email ogovor bo uporabijo kot druga plast preverjanje, ko se prijavite v vaši denarnici.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Napaka pri preverjanju PIN kodo z oddaljenim strežnikom. Morda brez povezave ali blockchain lahko doživlja težave. Želite ponoviti potrditev ali namesto ročno vnesite svoje geslo?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Prišlo je do napake, nakladanje vaše denarnice. Morda brez povezave ali Blockchain je težave. Zaprite program in poskusite znova pozneje";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Prišlo je do napake, nakladanje vaše denarnice. Morda brez povezave ali Blockchain je težave. Zaprite program in poskusite znova pozneje ali znova povežite napravo.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Prišlo je do napake, nakladanje vaše denarnice. Morda brez povezave ali Blockchain je težave. Zaprite program in poskusite znova pozneje ali znova povežite napravo.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Prišlo je do napake, pridobivanje vaš listnica identifikator iz je keychain. Prosimo, zaprite program in poskusite znova.";
 
 /* (No Commment) */
 "Any address" = "Katerikoli naslov";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Zahtevek za plačilo Bitcoin";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain potrebuje Location Services omogočen dostop do vaše lokacije.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain potrebuje Location Services omogočen dostop do vaše lokacije. Omogočite dostop v nastavitve -> zasebnost -> lokacijske storitve";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain potrebuje Location Services omogočen dostop do vaše lokacije. Omogočite dostop v nastavitve -> zasebnost -> Lokacija -> lokacijske storitve";
 
 /* (No Commment) */
 "Cancel" = "Prekliči";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Ustvarjanje nove denarnice";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Trenutna stopnja: %.4f BTC";
+"Current rate: %@ BTC" = "Trenutna stopnja: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dešifrirati geslo PIN dolžino 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Prazen odgovor strežnika.";
+
+/* (No Commment) */
+"Enable Location Services" = "Omogočite lokacijske storitve";
 
 /* (No Commment) */
 "Enter Password" = "Vnesite geslo";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Ustvarjajo nov naslov";
+
+/* (No Commment) */
+"Go to Settings" = "Pojdite na nastavitve";
 
 /* (No Commment) */
 "How would you like to pair?" = "Kako bi želeli par?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Ste varnostno kopirali sredstva uspešno";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Imate na voljo sredstva za pošiljanje iz tega naslova";
 
 /* (No Commment) */
 "You must enter a destination address" = "Morate vnesti ciljni naslov";

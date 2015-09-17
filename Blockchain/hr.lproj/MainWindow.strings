@@ -1,123 +1,168 @@
+/* (No Commment) */
+"2je-u4-PB2.text" = "Transakcije";
 
-/* Class = "IBUILabel"; text = "0 BTC"; ObjectID = "257"; */
+/* Class = "UIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
+"5gL-FG-Zcc.normalTitle" = "Zaboravi novčanik";
+
+/* Class = "UIButton"; normalTitle = "1.12345 BTC"; ObjectID = "6sh-r5-yAx"; */
+"6sh-r5-yAx.normalTitle" = "1.12345 BTC";
+
+/* (No Commment) */
 "257.text" = "0 BTC";
 
-/* Class = "IBUILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "loading";
+/* Class = "UILabel"; text = "loading"; ObjectID = "263"; */
+"263.text" = "učitavanje";
 
-/* Class = "IBUILabel"; text = "Automatic Pairing"; ObjectID = "353"; */
-"353.text" = "Automatic Pairing";
+/* (No Commment) */
+"353.text" = "Automatsko uparivanje";
 
-/* Class = "IBUILabel"; text = "Create Wallet"; ObjectID = "358"; */
-"358.text" = "Create Wallet";
+/* (No Commment) */
+"358.text" = "Stvoriti novi novčanik";
 
-/* Class = "IBUILabel"; text = "1"; ObjectID = "360"; */
+/* Class = "UILabel"; text = "1"; ObjectID = "360"; */
 "360.text" = "1";
 
-/* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet";
+/* Class = "UILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet"; ObjectID = "361"; */
+"361.text" = "Prijavite se na novčanik Blockchain preko PC ili Mac u http://blockchain.info/wallet";
 
-/* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
+/* Class = "UILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
-/* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Click the [Account Settings] button. Then choose the [Devices] tab.";
+/* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
+"364.text" = "Kliknite gumb Postavke računa, zatim odaberite karticu uređaji";
 
-/* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
+/* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
-/* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera.";
+/* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
+"369.text" = "Kliknite Pokaži uparivanja kod otkriti QR kod, trg crno-bijeli crtični kod. Skenirajte kod sa kamerom";
 
-/* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "Scan Pairing Code";
+/* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
+"370.normalTitle" = "Skenirajte kod za uparivanje";
 
-/* Class = "IBUIButton"; normalTitle = "Button 2"; ObjectID = "376"; */
-"376.normalTitle" = "Button 2";
+/* (No Commment) */
+"376.normalTitle" = "Gumb 2";
 
-/* Class = "IBUIButton"; normalTitle = "Button 1"; ObjectID = "377"; */
-"377.normalTitle" = "Button 1";
+/* (No Commment) */
+"377.normalTitle" = "Gumb 1";
 
-/* Class = "IBUILabel"; text = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required."; ObjectID = "378"; */
-"378.text" = "If you already have a Blockchain Wallet, choose Pair Device; otherwise, choose Create Wallet.    It's Free! No email required.";
+/* (No Commment) */
+"378.text" = "Ako ste već Blockchain novčanik, izabrati par uređaja; u suprotnom odaberite stvaranje novčanik.    To je besplatno! Ne e potrebna.";
 
-/* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet"; ObjectID = "380"; */
-"380.text" = "Welcome to Blockchain Wallet";
+/* (No Commment) */
+"380.text" = "Dobro došli u Blockchain novčaniku";
 
-/* Class = "IBUILabel"; text = "Transactions"; ObjectID = "386"; */
-"386.text" = "Transactions";
+/* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
+"387.text" = "Ne transakcije još";
 
-/* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection.";
+/* (No Commment) */
+"394.text" = "Lozinka:";
 
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
-"394.text" = "Password:";
+/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
+"395.placeholder" = "Lozinka (najmanje 10 znakova)";
 
-/* Class = "IBUILabel"; text = "Confirm:"; ObjectID = "396"; */
-"396.text" = "Confirm:";
+/* (No Commment) */
+"396.text" = "Potvrditi:";
 
-/* Class = "IBUIButton"; normalTitle = "Create Wallet"; ObjectID = "398"; */
-"398.normalTitle" = "Create Wallet";
+/* Class = "UITextField"; placeholder = "Confirm password"; ObjectID = "397"; */
+"397.placeholder" = "Potvrdi lozinku";
 
-/* Class = "IBUILabel"; text = "Password Required"; ObjectID = "465"; */
-"465.text" = "Password Required";
+/* (No Commment) */
+"398.normalTitle" = "Stvaranje novčanik";
 
-/* Class = "IBUILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "Password Request Description";
+/* (No Commment) */
+"465.text" = "Lozinka zahtijeva";
 
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "468"; */
-"468.text" = "Password:";
+/* Class = "UILabel"; text = "Password Request Description"; ObjectID = "467"; */
+"467.text" = "Lozinku zahtjev Opis";
 
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "471"; */
-"471.normalTitle" = "Continue";
+/* (No Commment) */
+"468.text" = "Lozinka:";
 
-/* Class = "IBUILabel"; text = "Wallet Identifier:"; ObjectID = "586"; */
-"586.text" = "Wallet Identifier:";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "469"; */
+"469.placeholder" = "Lozinku";
 
-/* Class = "IBUILabel"; text = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below."; ObjectID = "588"; */
-"588.text" = "You have chosen to pair manually (or automatic pairing is not supported with your device). Please enter your login details below.";
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "471"; */
+"471.normalTitle" = "I dalje";
 
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "591"; */
-"591.text" = "Password:";
+/* (No Commment) */
+"586.text" = "Novčanik oznaka:";
 
-/* Class = "IBUILabel"; text = "You must have two-factor authentication disabled to pair manually!"; ObjectID = "602"; */
-"602.text" = "You must have two-factor authentication disabled to pair manually!";
+/* Class = "UITextField"; placeholder = "Wallet identifier"; ObjectID = "587"; */
+"587.placeholder" = "Novčanik identifikator";
 
-/* Class = "IBUILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login.";
+/* (No Commment) */
+"588.text" = "Odabrali ste ručno uparivanje (ili Automatsko spajanje nije podržana s uređajem). Molimo unesite svoje podatke za prijavu ispod.";
 
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "625"; */
-"625.normalTitle" = "Continue";
+/* (No Commment) */
+"591.text" = "Lozinka:";
 
-/* Class = "IBUILabel"; text = "Password:"; ObjectID = "627"; */
-"627.text" = "Password:";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "592"; */
+"592.placeholder" = "Lozinku";
 
-/* Class = "IBUILabel"; text = "Login"; ObjectID = "630"; */
-"630.text" = "Login";
+/* (No Commment) */
+"602.text" = "Morate imati dvofaktorska provjera autentičnosti onemogućena da para ručno.";
 
-/* Class = "IBUIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "Forget Wallet";
+/* Class = "UILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
+"624.text" = "Prijave i dogodila se pogreška prilikom dešifriranja datoteke novčanik. Upišite svoju lozinku ispod da biste se prijavili.";
 
-/* Class = "IBUILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "If you would like to forget this wallet and start over, press 'Forget Wallet'.";
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "625"; */
+"625.normalTitle" = "I dalje";
 
-/* Class = "IBUIButton"; normalTitle = "Button 3"; ObjectID = "OKS-md-gDQ"; */
-"OKS-md-gDQ.normalTitle" = "Button 3";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "626"; */
+"626.placeholder" = "Lozinku";
 
-/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "TzC-Tw-04r"; */
-"TzC-Tw-04r.normalTitle" = "Continue";
+/* (No Commment) */
+"627.text" = "Lozinka:";
 
-/* Class = "IBUILabel"; text = "Email:"; ObjectID = "VcH-wh-BEs"; */
-"VcH-wh-BEs.text" = "Email:";
+/* (No Commment) */
+"630.text" = "Prijava";
 
-/* Class = "IBUILabel"; text = "* required for wallet backups"; ObjectID = "jUZ-5W-4qw"; */
-"jUZ-5W-4qw.text" = "* required for wallet backups";
+/* Class = "UILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
+"C0R-wB-wF1.text" = "Ako želite da zaboravi novčanik i krenuti ispočetka, pritisnite 'Zaboravi novčanik'.";
 
-/* Class = "IBUILabel"; text = "0 Transactions"; ObjectID = "kK3-Xs-d3Q"; */
-"kK3-Xs-d3Q.text" = "0 Transactions";
+/* Class = "UILabel"; text = "Title"; ObjectID = "DIx-fJ-eKX"; */
+"DIx-fJ-eKX.text" = "Naslov";
 
-/* Class = "IBUILabel"; text = "Manual Pairing"; ObjectID = "qIf-DM-Gtq"; */
-"qIf-DM-Gtq.text" = "Manual Pairing";
+/* Class = "UITextField"; placeholder = "Your email"; ObjectID = "LsW-69-Qon"; */
+"LsW-69-Qon.placeholder" = "E-pošte";
 
-/* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
-"wvh-x7-hB8.text" = "* minimum 10 characters";
+/* Class = "UILabel"; text = "Weak"; ObjectID = "Mk4-63-3pL"; */
+"Mk4-63-3pL.text" = "Slab";
+
+/* (No Commment) */
+"OKS-md-gDQ.normalTitle" = "Gumb 3";
+
+/* Class = "UILabel"; text = "By creating a new wallet you agree to the"; ObjectID = "Qvx-f4-C2O"; */
+"Qvx-f4-C2O.text" = "Stvaranje nove novčanik slažem se da je";
+
+/* (No Commment) */
+"TzC-Tw-04r.normalTitle" = "I dalje";
+
+/* (No Commment) */
+"VcH-wh-BEs.text" = "E-mail:";
+
+/* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
+"bzM-Ub-MUU.normalTitle" = "345.68 USD";
+
+/* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
+"fI2-PD-Xwa.normalTitle" = "Ja ne moći pristup moj fotoaparat";
+
+/* (No Commment) */
+"jUZ-5W-4qw.text" = "* Potrebno";
+
+/* (No Commment) */
+"kK3-Xs-d3Q.text" = "0 transakcija";
+
+/* (No Commment) */
+"qIf-DM-Gtq.text" = "Ručno uparivanje";
+
+/* Class = "UILabel"; text = "You must have two-factor authentication disabled to pair manually."; ObjectID = "rQS-iv-7kZ"; */
+"rQS-iv-7kZ.text" = "Morate imati dvofaktorska provjera autentičnosti onemogućena da para ručno.";
+
+/* Class = "UIButton"; normalTitle = "Blockchain Terms of Service"; ObjectID = "wfI-8F-dfm"; */
+"wfI-8F-dfm.normalTitle" = "Blockchain uvjeti korištenja";
+
+/* (No Commment) */
+"wvh-x7-hB8.text" = "* Najmanje 10 znakova";
+

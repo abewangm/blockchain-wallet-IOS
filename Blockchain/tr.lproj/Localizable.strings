@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "panoya kopyalanan %@";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Adres geçerli değil";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Bir miktar toz eşik (%lld Satoshi) olması gerekir";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "E-posta hesabını bir kayıp cüzdan tanımlayıcı kurtarmak yardımcı olmak için gerekiyorsa ve ödeme bildirimleri. Ayrıca, cüzdanını oturumu doğrulanmış e-posta adresinizi doğrulama ikinci bir tabaka olarak kullanılır.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "PIN kodunuzu uzak sunucuyla doğrulanırken bir hata oluştu. Çevrimdışı olabilir veya blockchain sorunlar yaşıyor. Doğrulama yeniden deneyin veya bunun yerine parolanızı el ile girmek ister misin?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Cüzdanını yüklenirken hatayla karşılaşıldı. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen uygulamayı kapatın ve yeniden deneyin";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Cüzdanını yüklenirken hatayla karşılaşıldı. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen uygulamayı kapatın ve daha sonra yeniden deneyin veya aygıtınızı yeniden eşleyin.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Cüzdanını yüklenirken hatayla karşılaşıldı. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen uygulamayı kapatın ve daha sonra yeniden deneyin veya aygıtınızı yeniden eşleyin.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Senin cüzdan tanımlayıcı Anahtarlık alınıyor bir hatayla karşılaşıldı. Lütfen uygulamayı kapatın ve yeniden deneyin.";
 
 /* (No Commment) */
 "Any address" = "Herhangi bir adres";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin ödeme talebi";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var. Erişimi etkinleştirebilirsiniz gizlilik ayarları -> Konum servisleri ->";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var. Erişimi etkinleştirebilirsiniz gizlilik ayarları -> konum -> Konum servisleri ->";
 
 /* (No Commment) */
 "Cancel" = "İptal";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Yeni cüzdan oluşturma";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Geçerli hızı: %.4f BTC";
+"Current rate: %@ BTC" = "Geçerli hızı: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Şifresi çözülmüş PIN parola uzunluğu 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Sunucudan boş yanıt.";
+
+/* (No Commment) */
+"Enable Location Services" = "Konum servisleri etkinleştirme";
 
 /* (No Commment) */
 "Enter Password" = "Parolayı girin";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Yeni adresi oluşturma";
+
+/* (No Commment) */
+"Go to Settings" = "Ayarları'na gidin";
 
 /* (No Commment) */
 "How would you like to pair?" = "Çiftine ne dersin?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Paranızı kadar başarıyla yedeklenen";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Bu adresten göndermek için kullanılabilir hiçbir para olduğu";
 
 /* (No Commment) */
 "You must enter a destination address" = "Bir hedef adresi girmeniz gerekir";

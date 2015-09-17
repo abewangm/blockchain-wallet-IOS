@@ -1,45 +1,69 @@
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "4"; */
+"4.normalTitle" = "Poslati";
 
-/* Class = "IBUIButton"; normalTitle = "Send Payment"; ObjectID = "4"; */
-"4.normalTitle" = "Send Payment";
-
-/* Class = "IBUILabel"; text = "From:"; ObjectID = "7"; */
-"7.text" = "From:";
-
-/* Class = "IBUILabel"; text = "To:"; ObjectID = "13"; */
-"13.text" = "To:";
-
-/* Class = "IBUITextField"; text = "0.00"; ObjectID = "52"; */
-"52.text" = "0.00";
-
-/* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
-"57.text" = "5 BTC = $10";
-
-/* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "Label:";
-
-/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
-"63.normalTitle" = "Save";
-
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "64"; */
-"64.text" = "Address";
-
-/* Class = "IBUILabel"; text = "Address:"; ObjectID = "65"; */
-"65.text" = "Address:";
-
-/* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Label Address";
-
-/* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
+/* (No Commment) */
 "6zi-8R-Tmt.normalTitle" = "BTC";
 
-/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
-"7ho-GV-ikp.text" = "Amount:";
+/* Class = "UILabel"; text = "From"; ObjectID = "7"; */
+"7.text" = "Od";
 
-/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "8LN-Tc-WVh"; */
-"8LN-Tc-WVh.normalTitle" = "Close";
+/* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
+"7ho-GV-ikp.text" = "BTC";
 
-/* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Please Wait";
+/* (No Commment) */
+"8LN-Tc-WVh.normalTitle" = "Učinio";
 
-/* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Sending Payment";
+/* (No Commment) */
+"13.text" = "Da";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
+"52.placeholder" = "0,000";
+
+/* (No Commment) */
+"52.text" = "0.00";
+
+/* (No Commment) */
+"57.text" = "5 BTC = 10 $";
+
+/* (No Commment) */
+"61.text" = "Oznaka:";
+
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
+"62.placeholder" = "Oznaka";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
+"63.normalTitle" = "Spremi";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "64"; */
+"64.text" = "Adresa";
+
+/* (No Commment) */
+"65.text" = "Adresa:";
+
+/* (No Commment) */
+"67.text" = "Natpis adrese";
+
+/* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
+"Zgn-Wx-Uwx.text" = "molim te čekaj";
+
+/* (No Commment) */
+"aKC-Q2-phD.text" = "Slanje uplata";
+
+/* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
+"d7n-Ue-QXL.normalTitle" = "Raspoloživih sredstava";
+
+/* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
+"fpY-AA-We5.text" = "Da";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "pPu-bJ-k6p"; */
+"pPu-bJ-k6p.normalTitle" = "Poslati";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
+"qx4-XV-uhn.placeholder" = "0.00";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
+"vGH-md-Ck3.text" = "USD";
+
+/* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
+"zyc-E3-FOM.text" = "Bilo koje adrese";
+

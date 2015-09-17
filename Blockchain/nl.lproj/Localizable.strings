@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ naar Klembord gekopieerd";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Adres is niet geldig";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Bedrag moet boven stof drempel (%lld Satoshi)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Een e-mailaccount is nodig om te helpen herstellen van een ID verloren portemonnee en voor betaalberichten. Uw geverifieerde e-mailadres zal ook worden gebruikt als een tweede laag van verificatie wanneer u zich bij uw portemonnee aanmeldt.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Er is een fout opgetreden bij het valideren van uw PIN-code met de externe server. U kunt off line of blockchain ondervindt moeilijkheden. Wenst u opnieuw validatie of in plaats daarvan uw wachtwoord handmatig invoeren?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Een fout was opgetreden laden uw portemonnee. U kunt off line of Blockchain ondervindt moeilijkheden. Sluit de toepassing en probeer het later opnieuw";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Een fout was opgetreden laden uw portemonnee. U kunt off line of Blockchain ondervindt moeilijkheden. Sluit de toepassing en probeer het later opnieuw of opnieuw koppelen uw apparaat.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Een fout was opgetreden laden uw portemonnee. U kunt off line of Blockchain ondervindt moeilijkheden. Sluit de toepassing en probeer het later opnieuw of opnieuw koppelen uw apparaat.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Een fout was opgetreden kan uw portemonnee-id ophalen uit de sleutelhanger. Sluit de toepassing en probeer het opnieuw.";
 
 /* (No Commment) */
 "Any address" = "Een willekeurig adres";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Verzoek om betaling van de Bitcoin";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain moet Locatieservices ingeschakeld om toegang tot uw locatie.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain moet Locatieservices ingeschakeld om toegang tot uw locatie. U kunt toegang inschakelen in instellingen -> Privacy -> locatie diensten";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain moet Locatieservices ingeschakeld om toegang tot uw locatie. U kunt toegang inschakelen in instellingen -> Privacy -> Locatie -> locatie diensten";
 
 /* (No Commment) */
 "Cancel" = "Annuleren";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Creëren van nieuwe portefeuille";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Huidige tempo: %.4f BTC";
+"Current rate: %@ BTC" = "Huidige tempo: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Gedecodeerde PIN wachtwoordlengte 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Lege reactie van de server.";
+
+/* (No Commment) */
+"Enable Location Services" = "Locatieservices inschakelen";
 
 /* (No Commment) */
 "Enter Password" = "Wachtwoord";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Genereren nieuwe adres";
+
+/* (No Commment) */
+"Go to Settings" = "Ga naar instellingen";
 
 /* (No Commment) */
 "How would you like to pair?" = "Hoe wil je paar?";
@@ -697,6 +715,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "U met succes een back-up uw fondsen";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "U hebt geen middelen voor het verzenden van dit adres";
 
 /* (No Commment) */
 "You must enter a destination address" = "U moet een doeladres invoeren";

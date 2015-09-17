@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ in Zwischenablage kopiert";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Adresse ist nicht gültig";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Betrag muss über Staub Schwellenwert (%lld Satoshi) sein.";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Ein e-Mail-Konto ist erforderlich zum Wiederherstellen eine verlorenen Portemonnaie-ID und für Zahlungsantwort. Außerdem wird Ihre verifizierte e-Mail-Adresse verwendet werden als zweite Schicht der Überprüfung bei der Anmeldung in Ihrer Brieftasche.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Überprüfen Ihren PIN-Code, mit dem remote-Server ist ein Fehler aufgetreten. Sie ist möglicherweise offline oder Blockchain möglicherweise Schwierigkeiten. Möchten Sie wiederholen Validierung oder stattdessen Ihr Kennwort manuell eingeben?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Fehler beim Laden Ihrer Brieftasche. Sie ist möglicherweise offline oder Blockchain Schwierigkeiten. Bitte schließen Sie die Anwendung und versuchen Sie es später erneut";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Fehler beim Laden Ihrer Brieftasche. Sie ist möglicherweise offline oder Blockchain Schwierigkeiten. Bitte schließen Sie die Anwendung und versuchen Sie später erneut, oder verbinden Sie Ihr Gerät erneut.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Fehler beim Laden Ihrer Brieftasche. Sie ist möglicherweise offline oder Blockchain Schwierigkeiten. Bitte schließen Sie die Anwendung und versuchen Sie später erneut, oder verbinden Sie Ihr Gerät erneut.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Abrufen Ihrer Brieftasche-ID aus den Schlüsselbund ein Fehler aufgetreten. Bitte schließen Sie die Anwendung und versuchen Sie es erneut.";
 
 /* (No Commment) */
 "Any address" = "Jede Adresse";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin-Zahlungsaufforderung";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain braucht die Ortungsdienste aktiviert, damit Sie Ihren Standort zugreifen.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain braucht die Ortungsdienste aktiviert, damit Sie Ihren Standort zugreifen. Sie können den Zugriff aktivieren unter Einstellungen -> Datenschutz -> Ortungsdienste";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain braucht die Ortungsdienste aktiviert, damit Sie Ihren Standort zugreifen. Sie können den Zugriff aktivieren unter Einstellungen -> Datenschutz -> Standort -> Ortungsdienste";
 
 /* (No Commment) */
 "Cancel" = "Abbrechen";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Erstellen von neuen Wallet";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Tageskurs: %.4f BTC";
+"Current rate: %@ BTC" = "Tageskurs: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Entschlüsselte PIN Passwortlänge 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Leere Antwort vom Server.";
+
+/* (No Commment) */
+"Enable Location Services" = "Standortbasierte Dienste aktivieren";
 
 /* (No Commment) */
 "Enter Password" = "Passwort eingeben";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Generieren neue Adresse";
+
+/* (No Commment) */
+"Go to Settings" = "Gehen Sie zu Einstellungen";
 
 /* (No Commment) */
 "How would you like to pair?" = "Wie möchten Sie paar?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Sie Ihr Geld erfolgreich gesichert";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Sie haben keine verfügbaren Mittel von dieser Adresse senden";
 
 /* (No Commment) */
 "You must enter a destination address" = "Sie müssen eine Zieladresse eingeben.";

@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ másolása vágólapra";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Cím érvénytelen.";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Összeg felett por küszöbértékét (%lld Satoshi) kell";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Egy elektronikus levél számla van szükség, hogy segítsen talpra elveszett pénztárca-azonosító és a fizetési értesítések. Is a megerősített email-címmel lesz egy második réteg, ellenőrzési amikor bejelentkezik a pénztárca.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Hiba történt a PIN-kódot a távoli szerverrel érvényesítése. Lehet, hogy kapcsolat nélküli vagy blockchain lehet nehézségei. Szeretne újra érvényesítés, vagy inkább kézzel adja meg a jelszavát?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Hiba történt a berakodás a pénztárca. Lehet, hogy kapcsolat nélküli vagy Blockchain nehézségekkel. Kérjük, zárja be az alkalmazást, és próbálja meg később";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Hiba történt a berakodás a pénztárca. Lehet, hogy kapcsolat nélküli vagy Blockchain nehézségekkel. Zárja be az alkalmazást, és próbálkozzon újra később, vagy párosítsa a készüléket.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Hiba történt a berakodás a pénztárca. Lehet, hogy kapcsolat nélküli vagy Blockchain nehézségekkel. Zárja be az alkalmazást, és próbálkozzon újra később, vagy párosítsa a készüléket.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Hiba történt a pénztárca azonosító visszakeresése a kulcstartó. Kérjük, zárja be az alkalmazást, és próbálja újra.";
 
 /* (No Commment) */
 "Any address" = "Bármilyen címet";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin kifizetési kérelem";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain kell a helyszolgáltatása engedélyeznie a helyadataihoz való hozzáférést.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain kell a helyszolgáltatása engedélyeznie a helyadataihoz való hozzáférést. Engedélyezheti a hozzáférést a beállítások -> Adatvédelem -> helymeghatározási szolgáltatások";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain kell a helyszolgáltatása engedélyeznie a helyadataihoz való hozzáférést. Engedélyezheti a hozzáférést a beállítások -> Adatvédelem -> hely -> helymeghatározási szolgáltatások";
 
 /* (No Commment) */
 "Cancel" = "Mégse";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Új Mobiltárcaprofil létrehozása";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Jelenlegi árfolyam: %.4f BTC";
+"Current rate: %@ BTC" = "Jelenlegi árfolyam: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Visszafejtett TÛS jelszó hossza 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Üres válasz a kiszolgálótól.";
+
+/* (No Commment) */
+"Enable Location Services" = "Engedélyezi a helyszolgáltatása";
 
 /* (No Commment) */
 "Enter Password" = "Adja meg a jelszót";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Új cím létrehozása";
+
+/* (No Commment) */
+"Go to Settings" = "Nyissa meg a Settings";
 
 /* (No Commment) */
 "How would you like to pair?" = "Hogyan szeretne pár?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Biztonsági másolatot készített az alapok sikeres";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Nincs rendelkezésre álló pénzeszközök küldeni erről a címről van";
 
 /* (No Commment) */
 "You must enter a destination address" = "Meg kell adnia a cél címét";

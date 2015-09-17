@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ kopieras till Urklipp";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Adressen är inte giltig";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Beloppet måste vara damm tröskelvärdet (%lld Satoshi)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Ett e-postkonto behövs för att återvinna en förlorad plånbok identifierare och fÃ¶r meddelanden om betalning. Också, din verifierad e-postadress kommer att användas som ett andra lager av verifiering när du loggar in på din plånbok.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ett fel uppstod validera din PIN-kod med fjärrservern. Du kan vara offline eller blockchain kan uppleva svårigheter. Vill du försöka igen validering eller istället ange lösenordet manuellt?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Ett fel påträffades laddar din plånbok. Du kan vara offline eller Blockchain upplever svårigheter. Stäng programmet och försök igen senare";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ett fel påträffades laddar din plånbok. Du kan vara offline eller Blockchain upplever svårigheter. Stäng programmet och försök igen senare eller åter koppla enheten.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ett fel påträffades laddar din plånbok. Du kan vara offline eller Blockchain upplever svårigheter. Stäng programmet och försök igen senare eller åter koppla enheten.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Ett fel påträffades hämtar din plånbok identifierare från nyckelringen. Stäng programmet och försök igen.";
 
 /* (No Commment) */
 "Any address" = "Alla adresser";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin betalningsbegäran";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain behöver platstjänster aktiverat för åtkomst till din plats.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain behöver platstjänster aktiverat för åtkomst till din plats. Du kan aktivera åtkomst i Inställningar -> Sekretess -> platstjänster";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain behöver platstjänster aktiverat för åtkomst till din plats. Du kan aktivera åtkomst i Inställningar -> Sekretess -> läge -> platstjänster";
 
 /* (No Commment) */
 "Cancel" = "Avbryt";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Skapa ny plånbok";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Nuvarande pris: %.4f BTC";
+"Current rate: %@ BTC" = "Nuvarande pris: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dekrypterade PIN lösenordslängd 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Tomma svar från servern.";
+
+/* (No Commment) */
+"Enable Location Services" = "Aktivera platstjänster";
 
 /* (No Commment) */
 "Enter Password" = "Ange lösenord";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Generera ny adress";
+
+/* (No Commment) */
+"Go to Settings" = "Gå till inställningar";
 
 /* (No Commment) */
 "How would you like to pair?" = "Hur vill du par?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Du säkerhetskopierat dina medel framgångsrikt";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Du har inga tillgängliga medel att skicka från denna adress";
 
 /* (No Commment) */
 "You must enter a destination address" = "Du måste Ange resmålets adress";

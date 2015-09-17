@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f БТД";
+"%@ BTC" = "%@ БТД";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@, скопированы в буфер обмена";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Адрес не является допустимым";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Сумма должна быть выше порога пыли (%lld Сатоши)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Учетной записи электронной почты необходимо, чтобы помочь восстановить потерял бумажник идентификатор и для уведомлений о платежах. Кроме того ваш адрес электронной почты будет использоваться в качестве второй слой проверки при входе в ваш бумажник.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке ваш PIN-код с удаленным сервером. Вы может быть отключен или blockchain могут испытывать трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Ошибка загрузки ваш бумажник. Вы может быть отключен или Blockchain испытывает трудности. Закройте приложение и повторите попытку позже";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ошибка загрузки ваш бумажник. Вы может быть отключен или Blockchain испытывает трудности. Закройте приложение и повторите попытку позже или повторно пара ваше устройство.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ошибка загрузки ваш бумажник. Вы может быть отключен или Blockchain испытывает трудности. Закройте приложение и повторите попытку позже или повторно пара ваше устройство.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Ошибка извлечения ваш бумажник идентификатор из связки ключей. Закройте приложение и повторите попытку.";
 
 /* (No Commment) */
 "Any address" = "Любой адрес";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin запроса платежа";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain потребностей служб определения местоположения включена для того, чтобы доступ к вашему местоположению.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain потребностей служб определения местоположения включена для того, чтобы доступ к вашему местоположению. Вы можете включить доступ в настройки -> Конфиденциальность -> службы определения местоположения";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain потребностей служб определения местоположения включена для того, чтобы доступ к вашему местоположению. Вы можете включить доступ в настройки -> Конфиденциальность -> Расположение -> службы определения местоположения";
 
 /* (No Commment) */
 "Cancel" = "Отмена";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Создание нового бумажника";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Текущая ставка: %.4f БТД";
+"Current rate: %@ BTC" = "Текущая ставка: %@ БТД";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Расшифрованная длина пароля PIN 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Пустой ответ от сервера.";
+
+/* (No Commment) */
+"Enable Location Services" = "Включение службы определения местоположения";
 
 /* (No Commment) */
 "Enter Password" = "Введите пароль";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Создание нового адреса";
+
+/* (No Commment) */
+"Go to Settings" = "Перейдите в раздел настройки";
 
 /* (No Commment) */
 "How would you like to pair?" = "Как бы вы хотели пара?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Для вас мы создали совершен
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Вы успешно резервное копирование ваших средств";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "У вас нет доступных средств для отправки с этого адреса";
 
 /* (No Commment) */
 "You must enter a destination address" = "Вам необходимо ввести адрес назначения";

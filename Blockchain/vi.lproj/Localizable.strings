@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ sao chép vào clipboard";
@@ -50,16 +50,19 @@
 "Address is not valid" = "Địa chỉ là không hợp lệ";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "Số tiền phải ở trên bụi ngưỡng (%lld Satoshi)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Một tài khoản email cần thiết để giúp phục hồi danh mất ví và thông báo thanh toán. Ngoài ra, địa chỉ email xác minh sẽ được sử dụng như một lớp thứ hai của xác minh khi bạn đăng nhập vào ví của bạn";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Xác nhận mã PIN của bạn với máy chủ từ xa đã có lỗi. Bạn có thể được diễn đàn hoặc blockchain có thể gặp khó khăn. Bạn có muốn thử lại xác nhận hoặc thay vào đó nhập mật khẩu của bạn theo cách thủ công?";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "Một lỗi bắt gặp tải chi tiêu của bạn. Bạn có thể được diễn đàn hoặc Blockchain đang trải qua những khó khăn. Vui lòng đóng ứng dụng và thử lại sau";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Một lỗi bắt gặp tải chi tiêu của bạn. Bạn có thể được diễn đàn hoặc Blockchain đang trải qua những khó khăn. Xin vui lòng đóng ứng dụng và thử lại sau hoặc tái ghép nối thiết bị của bạn.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Một lỗi bắt gặp tải chi tiêu của bạn. Bạn có thể được diễn đàn hoặc Blockchain đang trải qua những khó khăn. Xin vui lòng đóng ứng dụng và thử lại sau hoặc tái ghép nối thiết bị của bạn.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Một lỗi bắt gặp lấy định danh wallet của bạn từ keychain. Xin vui lòng đóng ứng dụng và thử lại.";
 
 /* (No Commment) */
 "Any address" = "Bất kỳ địa chỉ";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Yêu cầu thanh toán Bitcoin";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain cần dịch vụ vị trí cho phép để truy cập vào vị trí của bạn.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain cần dịch vụ vị trí cho phép để truy cập vào vị trí của bạn. Bạn có thể cho phép truy cập vào cài đặt -> Privacy -> Dịch vụ vị trí";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain cần dịch vụ vị trí cho phép để truy cập vào vị trí của bạn. Bạn có thể cho phép truy cập vào cài đặt -> Privacy -> vị trí -> Dịch vụ vị trí";
 
 /* (No Commment) */
 "Cancel" = "Hủy bỏ";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "Tạo mới Wallet";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "Tốc độ hiện tại: %.4f BTC";
+"Current rate: %@ BTC" = "Tốc độ hiện tại: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Giải mã PIN mật khẩu độ dài 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "Sản phẩm nào đáp ứng từ hệ phục vụ.";
+
+/* (No Commment) */
+"Enable Location Services" = "Kích hoạt dịch vụ vị trí";
 
 /* (No Commment) */
 "Enter Password" = "Nhập mật khẩu";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "Tạo địa chỉ mới";
+
+/* (No Commment) */
+"Go to Settings" = "Đi tới cài đặt";
 
 /* (No Commment) */
 "How would you like to pair?" = "Làm thế nào bạn muốn cặp?";
@@ -697,6 +715,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Bạn sao lưu các khoản tiền của bạn thành công";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "Bạn có không có tiền có sẵn để gửi từ địa chỉ này";
 
 /* (No Commment) */
 "You must enter a destination address" = "Bạn phải nhập một địa chỉ đích";

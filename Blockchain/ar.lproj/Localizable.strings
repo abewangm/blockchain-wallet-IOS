@@ -1,5 +1,5 @@
 /* (No Commment) */
-"%.4f BTC" = "%.4f BTC";
+"%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ نسخ إلى الحافظة";
@@ -50,16 +50,19 @@
 "Address is not valid" = "عنوان غير صحيح";
 
 /* (No Commment) */
+"Amount must be above dust threshold (%lld Satoshi)" = "يجب أن يكون مقدار عتبة الغبار (%lld ساتوشي)";
+
+/* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "حساب البريد إلكتروني مطلوب للمساعدة في استرداد معرفاً محفظة المفقودة، وإخطارات الدفع. أيضا، سيتم استخدام عنوان بريدك الإلكتروني تم التحقق منها كطبقة ثانية من التحقق عند تسجيل الدخول إلى محفظتك.";
 
 /* (No Commment) */
 "An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "حدث خطأ أثناء التحقق من صحة رمز PIN الخاص بك مع الملقم البعيد. قد تكون دون اتصال أو بلوكتشين قد يواجه بعض الصعوبات. هل تريد إعادة محاولة التحقق من الصحة أو بدلاً من ذلك قم بإدخال كلمة المرور الخاصة بك يدوياً؟";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later" = "تمت مصادفة خطأ أثناء تحميل محفظتك. قد تكون دون اتصال أو بلوكتشين تعاني من صعوبات. الرجاء إغلاق التطبيق ثم حاول مرة أخرى لاحقاً";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "تمت مصادفة خطأ أثناء تحميل محفظتك. قد تكون دون اتصال أو بلوكتشاين تعاني من صعوبات. الرجاء إغلاق التطبيق وحاول مرة أخرى لاحقاً أو إعادة إقران الجهاز الخاص بك.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "تمت مصادفة خطأ أثناء تحميل محفظتك. قد تكون دون اتصال أو بلوكتشاين تعاني من صعوبات. الرجاء إغلاق التطبيق وحاول مرة أخرى لاحقاً أو إعادة إقران الجهاز الخاص بك.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "تمت مصادفة خطأ في استرداد معرف المحفظة الخاصة بك من سلسلة المفاتيح. الرجاء إغلاق التطبيق ثم حاول مرة أخرى.";
 
 /* (No Commment) */
 "Any address" = "أي عنوان";
@@ -102,6 +105,15 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "طلب الدفع بيتكوين";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location." = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك.";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك. يمكنك تمكين الوصول في إعدادات--> الخصوصية--> \"خدمات الموقع\"";
+
+/* (No Commment) */
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك. يمكنك تمكين الوصول في إعدادات--> الخصوصية--> الموقع--> \"خدمات الموقع\"";
 
 /* (No Commment) */
 "Cancel" = "إلغاء الأمر";
@@ -167,7 +179,7 @@
 "Creating new Wallet" = "إنشاء محفظة جديدة";
 
 /* (No Commment) */
-"Current rate: %.4f BTC" = "المعدل الحالي: %.4f BTC";
+"Current rate: %@ BTC" = "المعدل الحالي: %@ BTC";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "فك تشفير كلمة المرور PIN طول 0";
@@ -201,6 +213,9 @@
 
 /* (No Commment) */
 "Empty response from server." = "فارغة واستجابة من الملقم.";
+
+/* (No Commment) */
+"Enable Location Services" = "تمكين خدمات الموقع";
 
 /* (No Commment) */
 "Enter Password" = "أدخل كلمة المرور";
@@ -246,6 +261,9 @@
 
 /* (No Commment) */
 "Generating new address" = "إنشاء عنوان جديد";
+
+/* (No Commment) */
+"Go to Settings" = "اذهب إلى الإعدادات";
 
 /* (No Commment) */
 "How would you like to pair?" = "كيف تريد أن زوج؟";
@@ -697,6 +715,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "يمكنك نسخ احتياطي الأموال الخاصة بك بنجاح";
+
+/* (No Commment) */
+"You have no available funds to send from this address" = "لديك لا الأموال المتاحة لإرسال من هذا العنوان";
 
 /* (No Commment) */
 "You must enter a destination address" = "يجب أن تقوم بإدخال عنوان الوجهة";
