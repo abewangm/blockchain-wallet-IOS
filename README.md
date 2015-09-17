@@ -1,4 +1,4 @@
-# My-Wallet-iPhone-HD
+# My-Wallet-V3-iOS
 
 
 # Building
@@ -7,13 +7,13 @@
 
 _ssh pub key has to be registered with Github for this to work_
 
-    git clone git@github.com:blockchain/My-Wallet-HD.git Submodules/My-Wallet-HD
+    git clone git@github.com:blockchain/My-Wallet-V3.git Submodules/My-Wallet-V3
     git clone git@github.com:x2on/OpenSSL-for-iPhone.git Submodules/OpenSSL
 
 Prepare the MyWallet Javascript:
 
     git submodule update --init
-    cd Submodules/My-Wallet-HD
+    cd Submodules/My-Wallet-V3
     npm install
     grunt build
 
