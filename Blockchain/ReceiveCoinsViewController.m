@@ -677,9 +677,11 @@ UIActionSheet *popupAddressArchive;
             break;
         case 1:
             [self labelAddressClicked:nil];
+            [self hideKeyboard];
             break;
         case 2:
             [self archiveAddressClicked:nil];
+            [self hideKeyboard];
             break;
 
         default:
