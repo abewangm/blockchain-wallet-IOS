@@ -123,27 +123,39 @@ BOOL displayingLocalSymbolSend;
     
     [self resetFromAddress];
     
+    // Default: send to address
     self.sendToAddress = true;
     
+    [self hideSelectFromAndToButtonsIfAppropriate];
+    
+    [self populateAddressFieldFromURLHandlerIfAvailable];
+    
+    [self updateFromAndToFields];
+    
+    [self updateLocalAndBtcSymbolsFromLatestResponse];
+}
+
+- (void)hideSelectFromAndToButtonsIfAppropriate
+{
     // If we only have one account and no legacy addresses -> can't change from address
     if ([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
         && [app.wallet getAccountsCount] == 1) {
+        
         [selectFromButton setHidden:YES];
+        
+        if ([app.wallet addressBook].count == 0) {
+            [addressBookButton setHidden:YES];
+        } else {
+            [addressBookButton setHidden:NO];
+        }
     }
     else {
         [selectFromButton setHidden:NO];
     }
-    
-    // If we only have one account and no legacy addresses and no address book entries -> can't change to address
-    if ([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
-        && [app.wallet addressBook].count == 0 && [app.wallet getAccountsCount] == 1) {
-        [addressBookButton setHidden:YES];
-    }
-    else {
-        [addressBookButton setHidden:NO];
-    }
-    
-    // Populate address field from URL handler if available.
+}
+
+- (void)populateAddressFieldFromURLHandlerIfAvailable
+{
     if (self.initialToAddressString && toField != nil) {
         self.sendToAddress = true;
         self.toAddress = self.initialToAddressString;
@@ -152,9 +164,16 @@ BOOL displayingLocalSymbolSend;
         toField.text = [self labelForLegacyAddress:self.toAddress];
         self.initialToAddressString = nil;
     }
-    
-    // Update account/address labels in case they changed
-    // Update available amount
+}
+
+- (void)updateFromAndToFields
+{
+    [self updateFromField];
+    [self updateToField];
+}
+
+- (void)updateFromField
+{
     if (self.sendFromAddress) {
         if (self.fromAddress.length == 0) {
             selectAddressTextField.text = BC_STRING_ANY_ADDRESS;
@@ -169,7 +188,10 @@ BOOL displayingLocalSymbolSend;
         selectAddressTextField.text = [app.wallet getLabelForAccount:self.fromAccount];
         availableAmount = [app.wallet getBalanceForAccount:self.fromAccount];
     }
-    
+}
+
+- (void)updateToField
+{
     if (self.sendToAddress) {
         toField.text = [self labelForLegacyAddress:self.toAddress];
         if ([app.wallet isValidAddress:toField.text]) {
@@ -183,7 +205,10 @@ BOOL displayingLocalSymbolSend;
         toField.text = [app.wallet getLabelForAccount:self.toAccount];
         [self didSelectToAccount:self.toAccount];
     }
-    
+}
+
+- (void)updateLocalAndBtcSymbolsFromLatestResponse
+{
     if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
         fiatLabel.text = app.latestResponse.symbol_local.code;
         btcLabel.text = app.latestResponse.symbol_btc.symbol;
