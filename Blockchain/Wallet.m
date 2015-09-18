@@ -925,6 +925,14 @@
 {
     DLog(@"did_decrypt");
     
+#ifndef HD_ENABLED
+    if ([self hasAccount]) {
+        uint64_t walletVersion = [[self.webView executeJSSynchronous:@"APP_VERSION"] longLongValue];
+        [app standardNotify:[[NSString alloc] initWithFormat:BC_STRING_WALLET_VERSION_NOT_SUPPORTED, walletVersion]];
+        return;
+    }
+#endif
+    
     self.sharedKey = [self.webView executeJSSynchronous:@"MyWallet.wallet.sharedKey"];
     self.guid = [self.webView executeJSSynchronous:@"MyWallet.wallet.guid"];
 
@@ -935,7 +943,12 @@
 - (void)did_load_wallet
 {
     DLog(@"did_load_wallet");
-    
+
+#ifndef HD_ENABLED
+    if ([self hasAccount]) {
+        return;
+    }
+#endif
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)])
         [delegate walletDidFinishLoad];
 }
