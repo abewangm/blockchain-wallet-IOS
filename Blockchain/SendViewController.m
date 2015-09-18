@@ -130,9 +130,9 @@ BOOL displayingLocalSymbolSend;
     
     [self populateAddressFieldFromURLHandlerIfAvailable];
     
-    [self updateFromAndToFields];
+    [self reloadFromAndToFields];
     
-    [self updateLocalAndBtcSymbolsFromLatestResponse];
+    [self reloadLocalAndBtcSymbolsFromLatestResponse];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
@@ -166,13 +166,13 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)updateFromAndToFields
+- (void)reloadFromAndToFields
 {
-    [self updateFromField];
-    [self updateToField];
+    [self reloadFromField];
+    [self reloadToField];
 }
 
-- (void)updateFromField
+- (void)reloadFromField
 {
     if (self.sendFromAddress) {
         if (self.fromAddress.length == 0) {
@@ -190,7 +190,7 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)updateToField
+- (void)reloadToField
 {
     if (self.sendToAddress) {
         toField.text = [self labelForLegacyAddress:self.toAddress];
@@ -207,7 +207,7 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)updateLocalAndBtcSymbolsFromLatestResponse
+- (void)reloadLocalAndBtcSymbolsFromLatestResponse
 {
     if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
         fiatLabel.text = app.latestResponse.symbol_local.code;

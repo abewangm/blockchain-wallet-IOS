@@ -150,12 +150,24 @@ int accountEntries = 0;
 
 - (void)reload
 {
+    [self reloadNumberOfBalancesToDisplay];
+    
+    // Resize table view
+    [self reloadTableViewSize];
+    
+    [self.tableView reloadData];
+}
+
+- (void)reloadNumberOfBalancesToDisplay
+{
     // Total entries: 1 entry for the total balance, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
     int numberOfAccounts = [app.wallet getAccountsCount];
     balanceEntries = numberOfAccounts + ([app.wallet hasLegacyAddresses] ? 1 : 0);
     accountEntries = numberOfAccounts;
-    
-    // Resize table view
+}
+
+- (void)reloadTableViewSize
+{
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT);
     if (![self showBalances]) {
         self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries);
@@ -173,8 +185,6 @@ int accountEntries = 0;
     else {
         self.tableView.scrollEnabled = NO;
     }
-    
-    [self.tableView reloadData];
 }
 
 - (Boolean)showBalances
