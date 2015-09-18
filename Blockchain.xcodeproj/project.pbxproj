@@ -1066,6 +1066,7 @@
 		9FB3636814B60128004BEA02 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Qkos Services Ltd";
