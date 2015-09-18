@@ -133,6 +133,15 @@ int lastNumberTransactions = INT_MAX;
     
     [tableView reloadData];
     
+    [self reloadNewTransactions];
+    
+    [self animateFirstCell];
+    
+    [self reloadLastNumberOfTransactions];
+}
+
+- (void)reloadNewTransactions
+{
     if (data.n_transactions > lastNumberTransactions) {
         uint32_t numNewTransactions = data.n_transactions - lastNumberTransactions;
         // Max number displayed
@@ -151,16 +160,22 @@ int lastNumberTransactions = INT_MAX;
         
         [tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationLeft];
     }
-    
+}
+
+- (void)animateFirstCell
+{
     // Animate the first cell
     if (data.transactions.count > 0 && animateNextCell) {
         [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
         animateNextCell = NO;
         
-        // Without a delay, the notification will not get the new transaction but the one before it
+        // Without a delay, the notification will not get the new transaction, but the one before it
         [self performSelector:@selector(postReceivePaymentNotification) withObject:nil afterDelay:0.1f];
     }
-    
+}
+
+- (void)reloadLastNumberOfTransactions
+{
     // If all the data is available, set the lastNumberTransactions - reload gets called once when wallet is loaded and once when latest block is loaded
     if (app.latestResponse) {
         lastNumberTransactions = data.n_transactions;
@@ -212,15 +227,27 @@ int lastNumberTransactions = INT_MAX;
     [balanceBigButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     [balanceSmallButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
+    [self setupBlueBackgroundForBounceArea];
+    
+    [self setupPullToRefresh];
+    
+    [self reload];
+}
+
+- (void)setupBlueBackgroundForBounceArea
+{
     // Blue background for bounce area
     CGRect frame = self.view.bounds;
     frame.origin.y = -frame.size.height;
     UIView* blueView = [[UIView alloc] initWithFrame:frame];
     blueView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
     [self.tableView addSubview:blueView];
-    // Make sure the refresh contorl is in front of the blue area
+    // Make sure the refresh control is in front of the blue area
     blueView.layer.zPosition -= 1;
-    
+}
+
+- (void)setupPullToRefresh
+{
     // Tricky way to get the refreshController to work on a UIViewController - @see http://stackoverflow.com/a/12502450/2076094
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = self.tableView;
@@ -230,8 +257,6 @@ int lastNumberTransactions = INT_MAX;
                        action:@selector(loadTransactions)
              forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = refreshControl;
-    
-    [self reload];
 }
 
 - (void)viewWillAppear:(BOOL)animated
