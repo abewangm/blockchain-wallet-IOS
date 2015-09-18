@@ -640,8 +640,6 @@ BOOL displayingLocalSymbolSend;
     DLog(@"toAddress: %@", address);
     
     [app.wallet changePaymentToAddress:address];
-    
-    [self updateFundsAvailable];
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -669,8 +667,6 @@ BOOL displayingLocalSymbolSend;
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
     
     [app.wallet changePaymentToAccount:account];
-    
-    [self updateFundsAvailable];
 }
 
 #pragma mark - Fee Calculation
@@ -686,8 +682,8 @@ BOOL displayingLocalSymbolSend;
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil queue:nil usingBlock:^(NSNotification * notification) {
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil];
         if ([notification.userInfo count] != 0) {
-            self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
-            uint64_t maxAmount = [notification.userInfo[@"amount"] longLongValue];
+            self.feeFromTransactionProposal = [notification.userInfo[DICTIONARY_KEY_FEE] longLongValue];
+            uint64_t maxAmount = [notification.userInfo[DICTIONARY_KEY_AMOUNT] longLongValue];
             
             if (maxAmount == 0) {
                 [self alertUserForZeroSpendableAmount];
@@ -710,10 +706,10 @@ BOOL displayingLocalSymbolSend;
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
         if ([notification.userInfo count] != 0) {
             
-            self.feeFromTransactionProposal = [notification.userInfo[@"fee"] longLongValue];
-            uint64_t maxAmount = [notification.userInfo[@"amount"] longLongValue];
+            self.feeFromTransactionProposal = [notification.userInfo[DICTIONARY_KEY_FEE] longLongValue];
+            uint64_t maxAmount = [notification.userInfo[DICTIONARY_KEY_AMOUNT] longLongValue];
             
-            DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[@"fee"] longLongValue]);
+            DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[DICTIONARY_KEY_FEE] longLongValue]);
             amountInSatoshi = maxAmount;
             [self doCurrencyConversion];
             
@@ -874,7 +870,7 @@ BOOL displayingLocalSymbolSend;
                 [self didSelectToAddress:self.toAddress];
                 
                 NSString *amountString;
-                NSString *amountStringFromDictionary = [dict objectForKey:@"amount"];
+                NSString *amountStringFromDictionary = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
                 if (amountStringFromDictionary != nil) {
                     amountString = amountStringFromDictionary;
                 } else {
@@ -940,11 +936,6 @@ BOOL displayingLocalSymbolSend;
     if (![app checkInternetConnection]) {
         return;
     };
-    // If user pasted an address into the toField, assign it to toAddress
-    if ([self.toAddress length] == 0) {
-        self.toAddress = toField.text;
-        DLog(@"toAddress: %@", self.toAddress);
-    }
     
     if ([self.toAddress length] == 0) {
         [app standardNotify:BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS];

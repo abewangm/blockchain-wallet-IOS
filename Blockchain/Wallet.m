@@ -1093,7 +1093,7 @@
 {
     DLog(@"update_fee");
     DLog(@"Wallet: fee is %@", fee);
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"fee":fee}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{DICTIONARY_KEY_FEE:fee}];
 }
 
 - (void)update_max_amount:(NSNumber *)amount fee:(NSNumber *)fee
@@ -1101,13 +1101,13 @@
     DLog(@"update_max_amount");
     DLog(@"Wallet: max amount is %@ with fee %@", amount, fee);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"amount":amount, @"fee":fee}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{DICTIONARY_KEY_AMOUNT:amount, DICTIONARY_KEY_FEE:fee}];
 }
 
 - (void)check_max_amount:(NSNumber *)amount fee:(NSNumber *)fee
 {
     DLog(@"check_max_amount");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil userInfo:@{@"amount":amount, @"fee":fee}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil userInfo:@{DICTIONARY_KEY_AMOUNT:amount, DICTIONARY_KEY_FEE:fee}];
 }
 
 - (void)on_error_update_fee:(NSString *)error

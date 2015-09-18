@@ -600,7 +600,7 @@ UIActionSheet *popupAddressArchive;
     __weak ReceiveCoinsViewController *weakSelf = self;
     
     self.paymentObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil queue:nil usingBlock:^(NSNotification *note) {
-        double amountReceived = [note.userInfo[@"amount"] doubleValue];
+        double amountReceived = [note.userInfo[DICTIONARY_KEY_AMOUNT] doubleValue];
         NSString *amountReceivedString = [[NSString alloc] initWithFormat:@"%.8f", amountReceived];
         double amountRequested = weakSelf.amountRequested;
         NSString *amountRequestedString = [[NSString alloc] initWithFormat:@"%.8f", amountRequested];
