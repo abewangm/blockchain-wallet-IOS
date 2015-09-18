@@ -313,7 +313,8 @@ uint64_t doo = 10000;
     
     [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
     
-    NSString *amountString = [[NSNumber numberWithLongLong:amountInSatoshi] stringValue];
+    NSString *amountString;
+    amountString = [[NSNumber numberWithLongLong:amountInSatoshi] stringValue];
     
     DLog(@"Sending uint64_t %llu Satoshi (String value: %@)", amountInSatoshi, amountString);
     
