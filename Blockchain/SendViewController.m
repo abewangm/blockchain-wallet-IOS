@@ -938,6 +938,11 @@ BOOL displayingLocalSymbolSend;
     };
     
     if ([self.toAddress length] == 0) {
+        self.toAddress = toField.text;
+        DLog(@"toAddress: %@", self.toAddress);
+    }
+    
+    if ([self.toAddress length] == 0) {
         [app standardNotify:BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS];
         return;
     }
