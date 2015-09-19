@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "지갑 주소 %@ 자금을 보낼 수 있다. 그러나 개인 키 종이 지갑 또는 QR 코드 스캔 될 필요가 있다. 개인 키를 지금 검사 하 시겠습니까?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "지원 되지 않는 지갑 버전 %lld";
+
+/* (No Commment) */
 "Warning" = "경고";
 
 /* (No Commment) */

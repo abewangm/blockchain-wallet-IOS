@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Tegnebog adresse %@ har midler til rådighed til at tilbringe. Men den private nøgle skal scannes fra et papir pung eller QR kode. Ønsker du at scanne den private nøgle nu?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Tegnebog version %lld understøttes ikke";
+
+/* (No Commment) */
 "Warning" = "Advarsel";
 
 /* (No Commment) */

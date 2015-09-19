@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Plånbok adress %@ har pengar att spendera. Men den privata nyckeln måste skannas från ett papper plånbok eller en QR kod. Vill du Skanna den privata nyckeln nu?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Plånbok version %lld stöds inte";
+
+/* (No Commment) */
 "Warning" = "Varning";
 
 /* (No Commment) */

@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Pénztárca cím %@ már rendelkezésre álló tölteni. Azonban a személyes kulcsot kell beolvasott egy papírt pénztárca vagy a QR-kód. Szeretne olvasni a titkos kulcs most?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Pénztárca verzió %lld nem támogatott";
+
+/* (No Commment) */
 "Warning" = "Figyelmeztetés";
 
 /* (No Commment) */

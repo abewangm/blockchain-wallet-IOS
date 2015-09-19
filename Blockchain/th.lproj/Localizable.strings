@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "%@ ที่อยู่กระเป๋าสตางค์มีเงินมีใช้จ่าย อย่างไรก็ตาม คีย์ส่วนตัวที่ต้องการจะสแกนจากกระดาษกระเป๋าหรือรหัส QR คุณต้องการสแกนคีย์ส่วนตัวตอนนี้หรือไม่";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "กระเป๋าสตางค์รุ่น %lld ไม่ได้รับการสนับสนุน";
+
+/* (No Commment) */
 "Warning" = "คำเตือน";
 
 /* (No Commment) */

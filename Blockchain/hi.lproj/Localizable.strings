@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "बटुआ पते %@ धन खर्च करने के लिए उपलब्ध है। तथापि निजी कुंजी से एक कागज बटुआ या QR कोड स्कैन किया जा करने के लिए की जरूरत है। आप निजी कुंजी अब स्कैन करना चाहते हैं?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "बटुआ संस्करण %lld समर्थित नहीं";
+
+/* (No Commment) */
 "Warning" = "चेतावनी";
 
 /* (No Commment) */

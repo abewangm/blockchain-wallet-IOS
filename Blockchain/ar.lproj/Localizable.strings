@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "وقد %@ عنوان المحفظة الأموال المتاحة للإنفاق. ومع ذلك يحتاج المفتاح الخاص المراد مسحها ضوئياً من ورقة المحفظة أو رمز ريال قطري. هل ترغب في مسح المفتاح الخاص الآن؟";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "محفظة %lld إصدار غير معتمد";
+
+/* (No Commment) */
 "Warning" = "تحذير";
 
 /* (No Commment) */

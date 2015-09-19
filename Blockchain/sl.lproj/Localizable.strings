@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Denarnica naslov %@ je na voljo za porabo sredstev. Pa zasebni ključ je treba skenirati iz papirja denarnice ali QR kodo. Ali želite zdaj skandirati zasebni ključ?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Denarnica različico %lld ni podprta";
+
+/* (No Commment) */
 "Warning" = "Opozorilo";
 
 /* (No Commment) */

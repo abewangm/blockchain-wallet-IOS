@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "%@ indirizzo portafoglio ha fondi disponibili a spendere. Tuttavia la chiave privata deve essere analizzato da un portafoglio di carta o un codice QR. Vuoi acquisire la chiave privata ora?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Portafoglio %lld di versione non supportata";
+
+/* (No Commment) */
 "Warning" = "Avviso";
 
 /* (No Commment) */

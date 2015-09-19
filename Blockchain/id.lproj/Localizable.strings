@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Dompet alamat %@ memiliki dana yang tersedia untuk dibelanjakan. Namun kunci pribadi perlu dipindai dari kertas dompet atau kode QR. Apakah Anda ingin memindai kunci pribadi sekarang?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Dompet versi %lld tidak didukung";
+
+/* (No Commment) */
 "Warning" = "Peringatan";
 
 /* (No Commment) */

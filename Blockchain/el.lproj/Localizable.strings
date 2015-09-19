@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "%@ διεύθυνση πορτοφόλι έχει κεφάλαια να ξοδέψει. Ωστόσο το ιδιωτικό κλειδί πρέπει να σαρωθεί από ένα χαρτί πορτοφόλι ή QR Code. Θα θέλατε να σαρώσετε το ιδιωτικό κλειδί τώρα;";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Πορτοφόλι έκδοση %lld δεν υποστηρίζεται";
+
+/* (No Commment) */
 "Warning" = "Προειδοποίηση";
 
 /* (No Commment) */
