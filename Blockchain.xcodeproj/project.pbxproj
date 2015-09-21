@@ -1199,7 +1199,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngit pull &&\ngrunt build";
+			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngit pull &&\nnpm install &&\ngrunt build";
 		};
 		23321D781BB072AB0005624F /* Clean Build My-Wallet-V3 */ = {
 			isa = PBXShellScriptBuildPhase;
