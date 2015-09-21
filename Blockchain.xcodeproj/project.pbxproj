@@ -1052,6 +1052,7 @@
 				238F8BD11BAB3662005B7024 /* Version Bump */,
 				23321D771BB071E70005624F /* Build My-Wallet-V3 */,
 				23321D781BB072AB0005624F /* Clean Build My-Wallet-V3 */,
+				23321D7B1BB084320005624F /* Image Processing */,
 				9FB3636F14B60128004BEA02 /* Resources */,
 			);
 			buildRules = (
@@ -1198,7 +1199,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngrunt build";
+			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngit pull &&\ngrunt build";
 		};
 		23321D781BB072AB0005624F /* Clean Build My-Wallet-V3 */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1212,7 +1213,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngrunt clean && rm -rf node_modules/; npm install && grunt build && ./node_modules/karma/bin/karma start karma.conf.js --single-run";
+			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngit pull &&\ngrunt clean && rm -rf node_modules/; npm install && grunt build && ./node_modules/karma/bin/karma start karma.conf.js --single-run";
+		};
+		23321D7B1BB084320005624F /* Image Processing */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Image Processing";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "cd ${SRCROOT} &&\nbrew install imagemagick;\nnpm install -g grunt-cli &&\ncd Artwork &&\nnpm install &&\nnpm install -g svgexport &&\ngrunt";
 		};
 		238F8BD11BAB3662005B7024 /* Version Bump */ = {
 			isa = PBXShellScriptBuildPhase;
