@@ -532,6 +532,10 @@ void (^secondPasswordSuccess)(NSString *);
         [_settingsNavigationController dismissViewControllerAnimated:NO completion:nil];
     }
     
+    if (_sendViewController) {
+        [_sendViewController dismissAlertViews];
+    }
+    
     [self closeSideMenu];
     
     // Close PIN Modal in case we are setting it (after login or when changing the PIN)

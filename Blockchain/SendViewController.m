@@ -63,6 +63,12 @@ BOOL displayingLocalSymbolSend;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self dismissAlertViews];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -110,6 +116,12 @@ BOOL displayingLocalSymbolSend;
     [self resetPayment];
 }
 
+- (void)dismissAlertViews
+{
+    [self.sweepPaymentAlertView dismissWithClickedButtonIndex:0 animated:YES];
+    [self.confirmPaymentAlertView dismissWithClickedButtonIndex:0 animated:YES];
+}
+
 - (void)reload
 {
     if (![app.wallet isInitialized] || !app.latestResponse) {
@@ -118,8 +130,7 @@ BOOL displayingLocalSymbolSend;
     
     [self clearToAddressAndAmountFields];
     
-    [self.sweepPaymentAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    [self.confirmPaymentAlertView dismissWithClickedButtonIndex:0 animated:YES];
+    [self dismissAlertViews];
     
     [self resetFromAddress];
     
@@ -133,6 +144,8 @@ BOOL displayingLocalSymbolSend;
     [self reloadFromAndToFields];
     
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    
+    [self updateFundsAvailable];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
@@ -421,9 +434,7 @@ BOOL displayingLocalSymbolSend;
         btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
     }
     
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_ALL_AMOUNT,
-                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
-                          forState:UIControlStateNormal];
+    [self updateFundsAvailable];
 }
 
 - (void)showInsufficientFunds
