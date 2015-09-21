@@ -929,6 +929,7 @@
     if ([self hasAccount]) {
         uint64_t walletVersion = [[self.webView executeJSSynchronous:@"APP_VERSION"] longLongValue];
         [app standardNotify:[[NSString alloc] initWithFormat:BC_STRING_WALLET_VERSION_NOT_SUPPORTED, walletVersion]];
+        // prevent assignment of GUID/sharedKey
         return;
     }
 #endif
@@ -946,6 +947,7 @@
 
 #ifndef HD_ENABLED
     if ([self hasAccount]) {
+        // prevent the PIN screen from loading
         return;
     }
 #endif
