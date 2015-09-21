@@ -17,6 +17,7 @@
 		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
 		232232171B44D02B00E5DF26 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232232161B44D02B00E5DF26 /* Upgrade.storyboard */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
+		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
 		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
@@ -28,7 +29,6 @@
 		670DF94B1A43BCB200CEA1EA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 670DF94A1A43BCB200CEA1EA /* Reachability.m */; };
 		6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6710DA0D1A8E82D80089DDED /* BCLine.m */; };
 		6710DA411A963F2B0089DDED /* BCHdUpgradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6710DA401A963F2B0089DDED /* BCHdUpgradeView.m */; };
-		672D00471AE6BA2800B2C074 /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 672D00461AE6BA2800B2C074 /* my-wallet.js */; };
 		673107EF19F6BAF200BE6899 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F749DFF1514F1EF00B3A8B8 /* AVFoundation.framework */; };
 		673107F219F6D49F00BE6899 /* PrivateKeyReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 673107F119F6D49F00BE6899 /* PrivateKeyReader.m */; };
 		674709EC19D1D14300757D46 /* BCWelcomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 674709EB19D1D14300757D46 /* BCWelcomeView.m */; };
@@ -326,6 +326,7 @@
 		232232161B44D02B00E5DF26 /* Upgrade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Upgrade.storyboard; sourceTree = "<group>"; };
 		232232181B44D4CB00E5DF26 /* UpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeViewController.h; sourceTree = "<group>"; };
 		232232191B44D4CB00E5DF26 /* UpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeViewController.m; sourceTree = "<group>"; };
+		23321D791BB0730C0005624F /* my-wallet.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "../../Submodules/My-Wallet-V3/dist/my-wallet.js"; sourceTree = "<group>"; };
 		235EBDD41BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/ReceiveCoins.strings"; sourceTree = "<group>"; };
 		235EBDD51BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/Backup.strings"; sourceTree = "<group>"; };
 		235EBDD61BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/SendCoins.strings"; sourceTree = "<group>"; };
@@ -391,7 +392,6 @@
 		6710DA0D1A8E82D80089DDED /* BCLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCLine.m; sourceTree = "<group>"; };
 		6710DA3F1A963F2B0089DDED /* BCHdUpgradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCHdUpgradeView.h; sourceTree = "<group>"; };
 		6710DA401A963F2B0089DDED /* BCHdUpgradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCHdUpgradeView.m; sourceTree = "<group>"; };
-		672D00461AE6BA2800B2C074 /* my-wallet.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "Submodules/My-Wallet-HD/dist/my-wallet.js"; sourceTree = SOURCE_ROOT; };
 		673107F019F6D49F00BE6899 /* PrivateKeyReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateKeyReader.h; sourceTree = "<group>"; };
 		673107F119F6D49F00BE6899 /* PrivateKeyReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateKeyReader.m; sourceTree = "<group>"; };
 		674709EA19D1D14300757D46 /* BCWelcomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCWelcomeView.h; sourceTree = "<group>"; };
@@ -718,7 +718,7 @@
 			isa = PBXGroup;
 			children = (
 				844BC7AF1949BD710024160B /* bridge.js */,
-				672D00461AE6BA2800B2C074 /* my-wallet.js */,
+				23321D791BB0730C0005624F /* my-wallet.js */,
 				9F0CBAAD15135DF200CD945D /* wallet-ios.html */,
 				67D2B6ED1A2F2DEF0078782C /* wallet-ios.js */,
 			);
@@ -1049,7 +1049,9 @@
 			buildPhases = (
 				9FB3636D14B60128004BEA02 /* Sources */,
 				9FB3636E14B60128004BEA02 /* Frameworks */,
-				238F8BD11BAB3662005B7024 /* ShellScript */,
+				238F8BD11BAB3662005B7024 /* Version Bump */,
+				23321D771BB071E70005624F /* Build My-Wallet-V3 */,
+				23321D781BB072AB0005624F /* Clean Build My-Wallet-V3 */,
 				9FB3636F14B60128004BEA02 /* Resources */,
 			);
 			buildRules = (
@@ -1132,6 +1134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23321D7A1BB0730C0005624F /* my-wallet.js in Resources */,
 				67D2B6EE1A2F2DEF0078782C /* wallet-ios.js in Resources */,
 				232232171B44D02B00E5DF26 /* Upgrade.storyboard in Resources */,
 				67EEE76F1A8E547200288753 /* PEPin-off@3x.png in Resources */,
@@ -1163,7 +1166,6 @@
 				C9BE91871945D8F600FD516D /* PEKeyboard-2-next.png in Resources */,
 				ECD244F419A8AC45004B1F40 /* PEKeyboard-4.png in Resources */,
 				ECD244EB19A8AC45004B1F40 /* PEKeyboard-3-done.png in Resources */,
-				672D00471AE6BA2800B2C074 /* my-wallet.js in Resources */,
 				ECD244F019A8AC45004B1F40 /* PEKeyboard-4-done.png in Resources */,
 				220E375D19A3614900E06996 /* SendCoins.xib in Resources */,
 				C9BE91841945D8F600FD516D /* PEKeyboard-2-done.png in Resources */,
@@ -1184,13 +1186,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		238F8BD11BAB3662005B7024 /* ShellScript */ = {
+		23321D771BB071E70005624F /* Build My-Wallet-V3 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build My-Wallet-V3";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngrunt build";
+		};
+		23321D781BB072AB0005624F /* Clean Build My-Wallet-V3 */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Clean Build My-Wallet-V3";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngrunt clean && rm -rf node_modules/; npm install && grunt build && ./node_modules/karma/bin/karma start karma.conf.js --single-run";
+		};
+		238F8BD11BAB3662005B7024 /* Version Bump */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Version Bump";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
