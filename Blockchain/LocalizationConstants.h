@@ -89,6 +89,7 @@
 
 #define BC_STRING_OK NSLocalizedString(@"OK", nil)
 #define BC_STRING_FAILED_TO_LOAD_WALLET_TITLE NSLocalizedString(@"Failed To Load Wallet", nil)
+#define BC_STRING_WALLET_VERSION_NOT_SUPPORTED NSLocalizedString(@"Wallet version %lld not supported", nil)
 
 #define BC_STRING_NO_INTERNET_CONNECTION NSLocalizedString(@"No internet connection.", nil)
 #define BC_STRING_TIMED_OUT NSLocalizedString(@"Connection timed out. Please check your internet connection.", nil)

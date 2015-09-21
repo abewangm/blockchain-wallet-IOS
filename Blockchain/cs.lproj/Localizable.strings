@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Peněženka adresu %@ má finanční prostředky utratit. Nicméně soukromý klíč musí být kontrolovány z papírové peněžence nebo QR kód. Chcete prohledat soukromý klíč nyní?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Peněženka %lld verze není podporován";
+
+/* (No Commment) */
 "Warning" = "Varování";
 
 /* (No Commment) */

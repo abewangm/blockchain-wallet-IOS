@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Novčanik adresa %@ ima sredstva na raspolaganju za potrošiti. No privatni ključ treba biti skenirane od papira novčanik ili QR koda. Će želite to skandirati što osobni ključ zatim?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Novčanik verzija %lld nije podržan";
+
+/* (No Commment) */
 "Warning" = "Upozorenje";
 
 /* (No Commment) */

@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "钱包地址 %@ 有资金来。然而私钥需要从纸钱包或 QR 码扫描。你想要扫描的私有密钥现在吗?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "不支持的钱包版本 %lld";
+
+/* (No Commment) */
 "Warning" = "警告";
 
 /* (No Commment) */

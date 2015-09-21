@@ -678,6 +678,9 @@ Fee: %@
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Portofel adresa %@ are fonduri disponibile pentru a petrece. Cu toate acestea cheia privată trebuie să fie scanate la o hârtie portofel sau codul QR. Doriţi să scanaţi cheia privată acum?";
 
 /* (No Commment) */
+"Wallet version %lld not supported" = "Portofel %lld versiune neacceptată";
+
+/* (No Commment) */
 "Warning" = "Avertisment";
 
 /* (No Commment) */

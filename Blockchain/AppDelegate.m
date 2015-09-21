@@ -927,11 +927,11 @@ void (^secondPasswordSuccess)(NSString *);
         
         [app clearPin];
         
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
-        
         [self.wallet loadWalletWithGuid:[code objectForKey:QR_CODE_KEY_GUID] sharedKey:[code objectForKey:QR_CODE_KEY_SHARED_KEY] password:[code objectForKey:QR_CODE_KEY_PASSWORD]];
         
         self.wallet.delegate = self;
+        
+        wallet.didScanQRCode = YES;
         
     } error:^(NSString*error) {
         [app standardNotify:error];
