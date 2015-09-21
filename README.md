@@ -8,7 +8,7 @@
 _ssh pub key has to be registered with Github for this to work_
 
     git clone git@github.com:blockchain/My-Wallet-V3.git Submodules/My-Wallet-V3
-    git clone git@github.com:x2on/OpenSSL-for-iPhone.git Submodules/OpenSSL
+    git clone git@github.com:x2on/OpenSSL-for-iPhone.git Submodules/OpenSSL-for-iPhone
 
 Prepare the MyWallet Javascript:
 
@@ -19,7 +19,7 @@ Prepare the MyWallet Javascript:
 
 Prepare OpenSSL:
 
-    cd ../OpenSSL  
+    cd ../OpenSSL-for-iPhone  
     ./build-libssl.sh
 
 ## PSD and Asset Catalog
