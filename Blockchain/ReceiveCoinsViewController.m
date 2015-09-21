@@ -131,19 +131,36 @@ UIActionSheet *popupAddressArchive;
 
 - (void)reload
 {
+    [self reloadAddresses];
+    
+    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    
+    [self reloadMainAddress];
+    
+    [self reloadHeaderView];
+    
+    // Legacy code for generating new addresses
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_NEW_ADDRESS object:nil userInfo:nil];
+    
+    [tableView reloadData];
+}
+
+- (void)reloadAddresses
+{
     self.activeKeys = [app.wallet activeLegacyAddresses];
     self.archivedKeys = [app.wallet archivedLegacyAddresses];
-    
+}
+
+- (void)reloadLocalAndBtcSymbolsFromLatestResponse
+{
     if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
         fiatLabel.text = app.latestResponse.symbol_local.code;
         btcLabel.text = app.latestResponse.symbol_btc.symbol;
     }
-    
-    // Show table header with the QR code of an address from the default account
-    float imageWidth = qrCodeMainImageView.frame.size.width;
+}
 
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 50)];
-    
+- (void)reloadMainAddress
+{
     // Get an address: the first empty receive address for the default HD account
     // Or the first active legacy address if there are no HD accounts
     if ([app.wallet getAccountsCount] > 0) {
@@ -158,11 +175,19 @@ UIActionSheet *popupAddressArchive;
             }
         }
     }
+}
+
+- (void)reloadHeaderView
+{
+    // Show table header with the QR code of an address from the default account
+    float imageWidth = qrCodeMainImageView.frame.size.width;
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 50)];
     
     if ([app.wallet getAccountsCount] > 0 || activeKeys.count > 0) {
-
+        
         qrCodeMainImageView.image = [self qrImageFromAddress:mainAddress];
-
+        
         [headerView addSubview:qrCodeMainImageView];
         
         // Label of the default HD account
@@ -197,10 +222,6 @@ UIActionSheet *popupAddressArchive;
     }
     
     tableView.tableHeaderView = headerView;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_NEW_ADDRESS object:nil userInfo:nil];
-    
-    [tableView reloadData];
 }
 
 #pragma mark - Helpers
