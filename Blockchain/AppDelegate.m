@@ -450,6 +450,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:mainPasswordTextField action:@selector(resignFirstResponder)];
+    mainPasswordTextField.text = @"";
     [mainPasswordView addGestureRecognizer:tapGesture];
 }
 
