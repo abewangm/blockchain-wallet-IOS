@@ -88,6 +88,8 @@
 // HD properties:
 @property NSString *recoveryPhrase;
 
+@property BOOL didScanQRCode;
+
 - (id)init;
 
 - (void)loadWalletWithGuid:(NSString *)_guid sharedKey:(NSString *)_sharedKey password:(NSString *)_password;

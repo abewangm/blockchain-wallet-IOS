@@ -874,6 +874,13 @@
         return;
     }
     
+#ifndef HD_ENABLED
+    if ([self hasAccount]) {
+        // Prevent email authorization message from appearing
+        return;
+    }
+#endif
+    
     // Don't display an error message for this notice, instead show a note in the sideMenu
     if ([message isEqualToString:@"For Improved security add an email address to your account."]) {
         app.showEmailWarning = YES;
@@ -933,6 +940,11 @@
         return;
     }
 #endif
+    
+    if (self.didScanQRCode) {
+        self.didScanQRCode = NO;
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
+    }
     
     self.sharedKey = [self.webView executeJSSynchronous:@"MyWallet.wallet.sharedKey"];
     self.guid = [self.webView executeJSSynchronous:@"MyWallet.wallet.guid"];
