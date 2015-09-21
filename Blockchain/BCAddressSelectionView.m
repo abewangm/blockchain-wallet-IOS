@@ -186,7 +186,7 @@ int legacyAddressesSectionNumber;
 {
     if (showFromAddresses) {
         if (section == accountsSectionNumber) {
-            return BC_STRING_MY_ACCOUNTS;
+            return [app.wallet hasAccount] ? BC_STRING_MY_ACCOUNTS : nil;
         }
         else if (section == legacyAddressesSectionNumber) {
             return BC_STRING_IMPORTED_ADDRESSES;
@@ -197,7 +197,7 @@ int legacyAddressesSectionNumber;
             return BC_STRING_ADDRESS_BOOK;
         }
         else if (section == accountsSectionNumber) {
-            return BC_STRING_MY_ACCOUNTS;
+            return [app.wallet hasAccount] ? BC_STRING_MY_ACCOUNTS : nil;
         }
         else if (section == legacyAddressesSectionNumber) {
             return BC_STRING_IMPORTED_ADDRESSES;
