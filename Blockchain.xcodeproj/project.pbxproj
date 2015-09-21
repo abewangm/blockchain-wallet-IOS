@@ -1050,7 +1050,6 @@
 				9FB3636D14B60128004BEA02 /* Sources */,
 				9FB3636E14B60128004BEA02 /* Frameworks */,
 				238F8BD11BAB3662005B7024 /* Version Bump */,
-				23321D771BB071E70005624F /* Build My-Wallet-V3 */,
 				23321D781BB072AB0005624F /* Clean Build My-Wallet-V3 */,
 				23321D7B1BB084320005624F /* Image Processing */,
 				9FB3636F14B60128004BEA02 /* Resources */,
@@ -1187,20 +1186,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		23321D771BB071E70005624F /* Build My-Wallet-V3 */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build My-Wallet-V3";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngit pull &&\nnpm install &&\ngrunt build";
-		};
 		23321D781BB072AB0005624F /* Clean Build My-Wallet-V3 */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
