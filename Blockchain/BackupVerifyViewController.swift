@@ -87,17 +87,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         for (var i = 0; i < Constants.Defaults.NumberOfRecoveryPhraseWords; i++) {
             wordIndexes.append(i)
         }
-        randomizedIndexes = shuffle(wordIndexes)
-    }
-    
-    func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
-        let c = list.count
-        if c < 2 { return list }
-        for i in 0..<(c - 1) {
-            let j = Int(arc4random_uniform(UInt32(c - i))) + i
-            swap(&list[i], &list[j])
-        }
-        return list
+        randomizedIndexes = wordIndexes.shuffle()
     }
     
     func done() {
@@ -197,5 +187,28 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     func didGetSecondPassword(password: String) {
         wallet!.getRecoveryPhrase(password)
+    }
+}
+
+extension CollectionType where Index == Int {
+    /// Return a copy of `self` with its elements shuffled
+    func shuffle() -> [Generator.Element] {
+        var list = Array(self)
+        list.shuffleInPlace()
+        return list
+    }
+}
+
+extension MutableCollectionType where Index == Int {
+    /// Shuffle the elements of `self` in-place.
+    mutating func shuffleInPlace() {
+        // empty and single-element collections don't shuffle
+        if count < 2 { return }
+        
+        for i in 0..<count - 1 {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            guard i != j else { continue }
+            swap(&self[i], &self[j])
+        }
     }
 }
