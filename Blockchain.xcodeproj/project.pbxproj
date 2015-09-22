@@ -1049,10 +1049,10 @@
 			buildPhases = (
 				9FB3636D14B60128004BEA02 /* Sources */,
 				9FB3636E14B60128004BEA02 /* Frameworks */,
-				238F8BD11BAB3662005B7024 /* Version Bump */,
-				23321D781BB072AB0005624F /* Clean Build My-Wallet-V3 */,
-				23321D7B1BB084320005624F /* Image Processing */,
+				23321D781BB072AB0005624F /* Update, Clean, Build My-Wallet-V3 */,
+				23321D7B1BB084320005624F /* Build Image Assets from PSDs */,
 				9FB3636F14B60128004BEA02 /* Resources */,
+				238F8BD11BAB3662005B7024 /* Version Bump */,
 			);
 			buildRules = (
 			);
@@ -1186,33 +1186,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		23321D781BB072AB0005624F /* Clean Build My-Wallet-V3 */ = {
+		23321D781BB072AB0005624F /* Update, Clean, Build My-Wallet-V3 */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Clean Build My-Wallet-V3";
+			name = "Update, Clean, Build My-Wallet-V3";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}/Submodules/My-Wallet-V3 &&\ngit pull &&\ngrunt clean && rm -rf node_modules/; npm install && grunt build && ./node_modules/karma/bin/karma start karma.conf.js --single-run";
+			shellScript = "# update submodule source\ngit submodule update ${SRCROOT}/Submodules/My-Wallet-V3\n\n# reinstall node modules, grunt build, and run tests\ncd ${SRCROOT}/Submodules/My-Wallet-V3 && grunt clean && rm -rf node_modules/ && npm install && grunt build && ./node_modules/karma/bin/karma start karma.conf.js --single-run";
 		};
-		23321D7B1BB084320005624F /* Image Processing */ = {
+		23321D7B1BB084320005624F /* Build Image Assets from PSDs */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Image Processing";
+			name = "Build Image Assets from PSDs";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT} &&\nbrew install imagemagick;\nnpm install -g grunt-cli &&\ncd Artwork &&\nnpm install &&\nnpm install -g svgexport &&\ngrunt";
+			shellScript = "# Install dependencies\nbrew install imagemagick\ncd ${SRCROOT}/Artwork\nnpm install -g grunt-cli\nnpm install\nnpm install -g svgexport\n\n# Build images\ngrunt";
 		};
 		238F8BD11BAB3662005B7024 /* Version Bump */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1226,7 +1226,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "VERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\nNEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\nNEWSUBVERSION=$(($NEWSUBVERSION + 1))\nNEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $NEWVERSIONSTRING\" \"${INFOPLIST_FILE}\"\n\nVERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\nNEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\nNEWSUBVERSION=$(($NEWSUBVERSION + 1))\nNEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $NEWVERSIONSTRING\" \"${INFOPLIST_FILE}\"";
+			shellScript = "VERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\nNEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\nNEWSUBVERSION=$(($NEWSUBVERSION + 1))\nNEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $NEWVERSIONSTRING\" \"${INFOPLIST_FILE}\"\n\n#VERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\n#NEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\n#NEWSUBVERSION=$(($NEWSUBVERSION + 1))\n#NEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n#/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $NEWVERSIONSTRING\" \"${INFOPLIST_FILE}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
