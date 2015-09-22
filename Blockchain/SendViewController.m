@@ -73,6 +73,9 @@ BOOL displayingLocalSymbolSend;
 {
     [super viewDidLoad];
     
+    // force Payment initialization in JS
+    [self resetPayment];
+    
     btcAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     fiatAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
