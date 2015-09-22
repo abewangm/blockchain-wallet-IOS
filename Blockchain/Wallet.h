@@ -210,4 +210,7 @@
 - (void)getPaymentFee;
 - (void)checkIfOverspending;
 
+// Recover with passphrase
+- (void)recoverWithPassphrase:(NSString *)passphrase;
+
 @end

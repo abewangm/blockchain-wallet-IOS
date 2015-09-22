@@ -111,46 +111,48 @@
 // Get here from New Account and also when manually pairing
 - (IBAction)createAccountClicked:(id)sender
 {
-    if ([emailTextField.text length] == 0) {
-        [app standardNotify:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS];
-        [emailTextField becomeFirstResponder];
-        return;
-    }
+    [app.wallet recoverWithPassphrase:@"mistake kitchen barrel miracle rally service borrow mimic cereal observe rich grant"];
     
-    if ([emailTextField.text rangeOfString:@"@"].location == NSNotFound) {
-        [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS];
-        [emailTextField becomeFirstResponder];
-        return;
-    }
-    
-    self.tmpPassword = passwordTextField.text;
-    
-    if ([self.tmpPassword length] < 10 || [self.tmpPassword length] > 255) {
-        [app standardNotify:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
-        [passwordTextField becomeFirstResponder];
-        return;
-    }
-    
-    if (![self.tmpPassword isEqualToString:[password2TextField text]]) {
-        [app standardNotify:BC_STRING_PASSWORDS_DO_NOT_MATCH];
-        [password2TextField becomeFirstResponder];
-        return;
-    }
-    
-    if (![app checkInternetConnection]) {
-        return;
-    }
-    
-    [emailTextField resignFirstResponder];
-    [passwordTextField resignFirstResponder];
-    [password2TextField resignFirstResponder];
-    
-    // Load the JS without a wallet
-    [app.wallet loadBlankWallet];
-    
-    // Get callback when wallet is done loading
-    // Continue in walletJSReady callback
-    app.wallet.delegate = self;
+//    if ([emailTextField.text length] == 0) {
+//        [app standardNotify:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS];
+//        [emailTextField becomeFirstResponder];
+//        return;
+//    }
+//    
+//    if ([emailTextField.text rangeOfString:@"@"].location == NSNotFound) {
+//        [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS];
+//        [emailTextField becomeFirstResponder];
+//        return;
+//    }
+//    
+//    self.tmpPassword = passwordTextField.text;
+//    
+//    if ([self.tmpPassword length] < 10 || [self.tmpPassword length] > 255) {
+//        [app standardNotify:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
+//        [passwordTextField becomeFirstResponder];
+//        return;
+//    }
+//    
+//    if (![self.tmpPassword isEqualToString:[password2TextField text]]) {
+//        [app standardNotify:BC_STRING_PASSWORDS_DO_NOT_MATCH];
+//        [password2TextField becomeFirstResponder];
+//        return;
+//    }
+//    
+//    if (![app checkInternetConnection]) {
+//        return;
+//    }
+//    
+//    [emailTextField resignFirstResponder];
+//    [passwordTextField resignFirstResponder];
+//    [password2TextField resignFirstResponder];
+//    
+//    // Load the JS without a wallet
+//    [app.wallet loadBlankWallet];
+//    
+//    // Get callback when wallet is done loading
+//    // Continue in walletJSReady callback
+//    app.wallet.delegate = self;
 }
 
 #pragma mark - Wallet Delegate method

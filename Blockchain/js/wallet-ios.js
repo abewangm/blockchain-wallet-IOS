@@ -1063,3 +1063,18 @@ MyWalletPhone.checkIfWalletHasAddress = function(address) {
     var addresses = MyWallet.wallet.addresses;
     return (addresses.indexOf(address) > -1);
 }
+
+MyWalletPhone.recoverWithPassphrase = function(passphrase) {
+    
+    console.log('recovering wallet');
+    
+    var success = function () {
+        console.log('recovery success');
+    }
+    
+    var error = function(error) {
+        console.log('recovery error: ' + error);
+    }
+    
+    MyWallet.recoverFromMnemonic('aerotech808@yahoo.com', 'anyPassword', passphrase, '', success, error);
+}

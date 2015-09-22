@@ -578,6 +578,11 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.checkIfWalletHasAddress(\"%@\")", [address escapeStringForJS]] boolValue];
 }
 
+- (void)recoverWithPassphrase:(NSString *)passphrase
+{
+    [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\")", [passphrase escapeStringForJS]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
