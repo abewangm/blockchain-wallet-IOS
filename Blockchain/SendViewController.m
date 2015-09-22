@@ -421,12 +421,12 @@ BOOL displayingLocalSymbolSend;
 - (void)doCurrencyConversion
 {
     // If the amount entered exceeds amount available, change the color of the amount text
-    if (amountInSatoshi > availableAmount) {
-        [self showInsufficientFunds];
+    if (amountInSatoshi > availableAmount || amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
+        [self highlightInvalidAmounts];
+        [self disablePaymentButtons];
     }
     else {
-        btcAmountField.textColor = [UIColor blackColor];
-        fiatAmountField.textColor = [UIColor blackColor];
+        [self removeHighlightFromAmounts];
         [self enablePaymentButtons];
         [app.wallet changePaymentAmount:amountInSatoshi];
     }
@@ -446,11 +446,16 @@ BOOL displayingLocalSymbolSend;
     [self updateFundsAvailable];
 }
 
-- (void)showInsufficientFunds
+- (void)highlightInvalidAmounts
 {
     btcAmountField.textColor = [UIColor redColor];
     fiatAmountField.textColor = [UIColor redColor];
-    [self disablePaymentButtons];
+}
+
+- (void)removeHighlightFromAmounts
+{
+    btcAmountField.textColor = [UIColor blackColor];
+    fiatAmountField.textColor = [UIColor blackColor];
 }
 
 - (void)disablePaymentButtons

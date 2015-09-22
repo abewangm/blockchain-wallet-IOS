@@ -269,12 +269,30 @@ UIActionSheet *popupAddressArchive;
 {
     uint64_t amount = [self getInputAmountInSatoshi];
     
+    if (amount > BTC_LIMIT_IN_SATOSHI) {
+        [self highlightInvalidAmounts];
+    } else {
+        [self removeHighlightFromAmounts];
+    }
+    
     if ([btcAmountField isFirstResponder]) {
         fiatAmountField.text = [app formatAmount:amount localCurrency:YES];
     }
     else if ([fiatAmountField isFirstResponder]) {
         btcAmountField.text = [app formatAmount:amount localCurrency:NO];
     }
+}
+
+- (void)highlightInvalidAmounts
+{
+    btcAmountField.textColor = [UIColor redColor];
+    fiatAmountField.textColor = [UIColor redColor];
+}
+
+- (void)removeHighlightFromAmounts
+{
+    btcAmountField.textColor = [UIColor blackColor];
+    fiatAmountField.textColor = [UIColor blackColor];
 }
 
 - (NSString *)getKey:(NSIndexPath*)indexPath
