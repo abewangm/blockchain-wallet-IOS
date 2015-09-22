@@ -57,7 +57,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
 
         wordLabels = [UILabel]()
         wordLabels?.insert(wordLabel!, atIndex: 0)
-        var i: CGFloat = 0
         for i in 1 ..< Constants.Defaults.NumberOfRecoveryPhraseWords {
             let offset: CGFloat = CGFloat(i) * wordLabel!.frame.width
             let x: CGFloat = wordLabel!.frame.origin.x + offset

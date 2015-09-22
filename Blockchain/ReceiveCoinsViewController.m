@@ -471,9 +471,9 @@ UIActionSheet *popupAddressArchive;
     
     [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
     
-    [activityViewController setCompletionHandler:^(NSString *activityType, BOOL completed) {
+    activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *error) {
         [self showKeyboard];
-    }];
+    };
 }
 
 - (IBAction)addNewAddressClicked:(id)sender
