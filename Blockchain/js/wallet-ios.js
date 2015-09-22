@@ -1008,8 +1008,9 @@ MyWalletPhone.recoverWithPassphrase = function(passphrase) {
     
     console.log('recovering wallet');
     
-    var success = function () {
+    var success = function (recoveredWalletDictionary) {
         console.log('recovery success');
+        device.execute('on_recover_with_passphrase_success:', [recoveredWalletDictionary]);
     }
     
     var error = function(error) {

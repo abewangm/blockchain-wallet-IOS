@@ -113,6 +113,8 @@
 {
     [app.wallet recoverWithPassphrase:@"mistake kitchen barrel miracle rally service borrow mimic cereal observe rich grant"];
     
+    app.wallet.delegate = app;
+
 //    if ([emailTextField.text length] == 0) {
 //        [app standardNotify:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS];
 //        [emailTextField becomeFirstResponder];

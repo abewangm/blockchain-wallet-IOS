@@ -76,6 +76,7 @@
 
 - (void)loadWalletWithGuid:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
 {
+    DLog(@"guid: %@, password: %@", _guid, _password);
     self.guid = _guid;
     // Shared Key can be empty
     self.sharedKey = _sharedKey;
@@ -1146,6 +1147,12 @@
 - (void)on_success_get_recovery_phrase:(NSString*)phrase
 {
     self.recoveryPhrase = phrase;
+}
+
+- (void)on_recover_with_passphrase_success:(NSDictionary *)recoveredWalletDictionary
+{
+    DLog(@"on_recover_with_passphrase_success_guid:sharedKey:password:");
+    [self loadWalletWithGuid:recoveredWalletDictionary[@"guid"] sharedKey:recoveredWalletDictionary[@"sharedKey"] password:recoveredWalletDictionary[@"password"]];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
