@@ -268,66 +268,6 @@ MyWalletPhone.sweepPayment = function() {
     });
 };
 
-MyWalletPhone.createTransactionProposalFromAccountToAccount = function(from, to, valueString) {
-    
-    var value = parseInt(valueString);
-    
-    var transactionDetails = MyWalletPhone.prepareTransaction();
-    
-    var id = transactionDetails.id;
-    var success = transactionDetails.success;
-    var error = transactionDetails.error;
-    
-    var txProposal = new Spender(transactionDetails.listener).fromAccount(MyWalletPhone.getIndexOfActiveAccount(from)).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, null);
-
-    return {
-        txProposal:txProposal,
-        success:success,
-        error:error,
-        id:id
-    };
-}
-
-MyWalletPhone.createTransactionProposalFromAddressToAddress = function(from, to, valueString) {
-
-    var value = parseInt(valueString);
-    
-    var transactionDetails = MyWalletPhone.prepareTransaction();
-    
-    var id = transactionDetails.id;
-    var success = transactionDetails.success;
-    var error = transactionDetails.error;
-    
-    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAddress(to, value, null);
-    
-    return {
-        txProposal:txProposal,
-        success:success,
-        error:error,
-        id:id
-    };
-}
-
-MyWalletPhone.createTransactionProposalFromAddressToAccount = function(from, to, valueString) {
-    
-    var value = parseInt(valueString);
-    
-    var transactionDetails = MyWalletPhone.prepareTransaction();
-    
-    var id = transactionDetails.id;
-    var success = transactionDetails.success;
-    var error = transactionDetails.error;
-    
-    var txProposal = new Spender(transactionDetails.listener).fromAddress(from).toAccount(MyWalletPhone.getIndexOfActiveAccount(to), value, null);
-    
-    return {
-        txProposal:txProposal,
-        success:success,
-        error:error,
-        id:id
-    };
-}
-
 MyWalletPhone.recommendedTransactionFee = function(payment) {
     
     payment.payment.then(function(x) {
