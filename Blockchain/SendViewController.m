@@ -127,7 +127,13 @@ BOOL displayingLocalSymbolSend;
 
 - (void)reload
 {
-    if (![app.wallet isInitialized] || !app.latestResponse) {
+    if (![app.wallet isInitialized]) {
+        DLog(@"SendViewController: Wallet not initialized");
+        return;
+    }
+    
+    if (!app.latestResponse) {
+        DLog(@"SendViewController: No latest response");
         return;
     }
     
