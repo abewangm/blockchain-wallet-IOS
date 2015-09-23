@@ -116,14 +116,8 @@ void (^secondPasswordSuccess)(NSString *);
 - (id)init
 {
     if (self = [super init]) {
-        self.btcFormatter = [[NSNumberFormatter alloc] init];
-        [_btcFormatter setMaximumFractionDigits:8];
-        [_btcFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        
-        self.localCurrencyFormatter = [[NSNumberFormatter alloc] init];
-        [_localCurrencyFormatter setMinimumFractionDigits:2];
-        [_localCurrencyFormatter setMaximumFractionDigits:2];
-        [_localCurrencyFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        [self setupBtcFormatter];
+        [self setupLocalCurrencyFormatter];
         
         self.modalChain = [[NSMutableArray alloc] init];
         
@@ -139,13 +133,9 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self checkForNewInstall];
     
-    // Make sure the server session id SID is persisted for new UIWebViews
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+    [self persistServerSessionIDForNewUIWebViews];
     
-    // Disable UIWebView caching
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:0 diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
+    [self disableUIWebViewCaching];
     
     // Allocate the global wallet
     self.wallet = [[Wallet alloc] init];
@@ -165,12 +155,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     _window.backgroundColor = [UIColor whiteColor];
     
-    // Side menu
-    _slidingViewController = [[ECSlidingViewController alloc] init];
-    _slidingViewController.topViewController = _tabViewController;
-    sideMenuViewController = [[SideMenuViewController alloc] init];
-    _slidingViewController.underLeftViewController = sideMenuViewController;
-    _window.rootViewController = _slidingViewController;
+    [self setupSideMenu];
     
     [_window makeKeyAndVisible];
     
@@ -184,56 +169,7 @@ void (^secondPasswordSuccess)(NSString *);
     // Load settings    
     symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
 
-    // Not paired yet
-    if (![self guid] || ![self sharedKey]) {
-        [self showWelcome];
-        [self checkAndWarnOnJailbrokenPhones];
-    }
-    // Paired
-    else {
-
-        // If the PIN is set show the pin modal
-        if ([self isPINSet]) {
-            [self showPinModalAsView:YES];
-        } else {
-            // No PIN set we need to ask for the main password
-            [self showPasswordModal];
-            [self checkAndWarnOnJailbrokenPhones];
-        }
-        
-        // Migrate Password and PIN from NSUserDefaults (for users updating from old version)
-        NSString * password = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PASSWORD];
-        NSString * pin = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN];
-        
-        if (password && pin) {
-            self.wallet.password = password;
-            
-            [self savePIN:pin];
-            
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PASSWORD];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PIN];
-        }
-        
-        // Listen for notification (from Swift code) to reload:
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD object:nil];
-        
-        // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
-        
-        // Curtain view setup
-        curtainImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
-        
-        // Select the correct image depending on the screen size. The names used are the default names that LaunchImage assets get after processing. See @http://stackoverflow.com/questions/19107543/xcode-5-asset-catalog-how-to-reference-the-launchimage
-        // This works for iPhone 4/4S, 5/5S, 6 and 6Plus in Portrait
-        // TODO need to add new screen sizes with new iPhones ... ugly
-        // TODO we're currently using the scaled version of the app on iPhone 6 and 6 Plus
-        //        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
-        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-700-568h", @"414x736" : @"LaunchImage-700-568h"};
-        NSString *key = [NSString stringWithFormat:@"%dx%d", (int)[UIScreen mainScreen].bounds.size.width, (int)[UIScreen mainScreen].bounds.size.height];
-        UIImage *launchImage = [UIImage imageNamed:dict[key]];
-
-        curtainImageView.image = launchImage;
-        curtainImageView.alpha = 0;
-    }
+    [self showWelcomeOrPinScreen];
         
     return YES;
 }
@@ -264,6 +200,106 @@ void (^secondPasswordSuccess)(NSString *);
         NSInteger newIndex = _tabViewController.selectedIndex - 1;
         [self transitionToIndex:newIndex];
     }
+}
+
+#pragma mark - Setup
+
+- (void)setupBtcFormatter
+{
+    self.btcFormatter = [[NSNumberFormatter alloc] init];
+    [_btcFormatter setMaximumFractionDigits:8];
+    [_btcFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+}
+
+- (void)setupLocalCurrencyFormatter
+{
+    self.localCurrencyFormatter = [[NSNumberFormatter alloc] init];
+    [_localCurrencyFormatter setMinimumFractionDigits:2];
+    [_localCurrencyFormatter setMaximumFractionDigits:2];
+    [_localCurrencyFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+}
+
+- (void)persistServerSessionIDForNewUIWebViews
+{
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+}
+
+- (void)disableUIWebViewCaching
+{
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:0 diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+}
+
+- (void)setupSideMenu
+{
+    _slidingViewController = [[ECSlidingViewController alloc] init];
+    _slidingViewController.topViewController = _tabViewController;
+    sideMenuViewController = [[SideMenuViewController alloc] init];
+    _slidingViewController.underLeftViewController = sideMenuViewController;
+    _window.rootViewController = _slidingViewController;
+}
+
+- (void)showWelcomeOrPinScreen
+{
+    // Not paired yet
+    if (![self guid] || ![self sharedKey]) {
+        [self showWelcome];
+        [self checkAndWarnOnJailbrokenPhones];
+    }
+    // Paired
+    else {
+        
+        // If the PIN is set show the pin modal
+        if ([self isPINSet]) {
+            [self showPinModalAsView:YES];
+        } else {
+            // No PIN set we need to ask for the main password
+            [self showPasswordModal];
+            [self checkAndWarnOnJailbrokenPhones];
+        }
+        
+        [self migratePasswordAndPinFromNSUserDefaults];
+        
+        // Listen for notification (from Swift code) to reload:
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD object:nil];
+        
+        // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
+        [self setupCurtainView];
+    }
+}
+
+- (void)migratePasswordAndPinFromNSUserDefaults
+{
+    NSString * password = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PASSWORD];
+    NSString * pin = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN];
+    
+    if (password && pin) {
+        self.wallet.password = password;
+        
+        [self savePIN:pin];
+        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PASSWORD];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PIN];
+    }
+}
+
+- (void)setupCurtainView
+{
+    // Curtain view setup
+    curtainImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
+    
+    // Select the correct image depending on the screen size. The names used are the default names that LaunchImage assets get after processing. See @http://stackoverflow.com/questions/19107543/xcode-5-asset-catalog-how-to-reference-the-launchimage
+    // This works for iPhone 4/4S, 5/5S, 6 and 6Plus in Portrait
+    // TODO need to add new screen sizes with new iPhones ... ugly
+    // TODO we're currently using the scaled version of the app on iPhone 6 and 6 Plus
+    //        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
+    NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-700-568h", @"414x736" : @"LaunchImage-700-568h"};
+    NSString *key = [NSString stringWithFormat:@"%dx%d", (int)[UIScreen mainScreen].bounds.size.width, (int)[UIScreen mainScreen].bounds.size.height];
+    UIImage *launchImage = [UIImage imageNamed:dict[key]];
+    
+    curtainImageView.image = launchImage;
+    curtainImageView.alpha = 0;
 }
 
 #pragma mark - UI State
@@ -456,7 +492,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)beginBackgroundUpdateTask
 {
-    // We're using a background task to insure we get enough time to sync. The bg task has to be ended before or when the timer expires, otherwise the app gets killed by the system.
+    // We're using a background task to ensure we get enough time to sync. The bg task has to be ended before or when the timer expires, otherwise the app gets killed by the system.
     // Always kill the old handler before starting a new one. In case the system starts a bg task when the app goes into background, comes to foreground and goes to background before the first background task was ended. In that case the first background task is never killed and the system kills the app when the maximum time is up.
     [self endBackgroundUpdateTask];
     
