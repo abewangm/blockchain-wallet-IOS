@@ -36,6 +36,7 @@
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_FEE @"fee"
 
+#define NOTIFICATION_KEY_SEND_SCREEN_RELOADING @"sendScreenReloading"
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
 #define NOTIFICATION_KEY_NEW_ADDRESS @"newAddress"
 

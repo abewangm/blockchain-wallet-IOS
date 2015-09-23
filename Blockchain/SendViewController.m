@@ -17,11 +17,8 @@
 #import "LocalizationConstants.h"
 #import "TransactionsViewController.h"
 
-@interface SendViewController () <UIAlertViewDelegate>
+@interface SendViewController ()
 @property (nonatomic) uint64_t feeFromTransactionProposal;
-@property (nonatomic) UIAlertView *confirmPaymentAlertView;
-@property (nonatomic) UIAlertView *sweepPaymentAlertView;
-@property (nonatomic) uint64_t maxAmountForSweepPaymentAlertView;
 @end
 
 @implementation SendViewController
@@ -61,12 +58,6 @@ BOOL displayingLocalSymbolSend;
 {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self dismissAlertViews];
 }
 
 - (void)viewDidLoad
@@ -119,12 +110,6 @@ BOOL displayingLocalSymbolSend;
     [self resetPayment];
 }
 
-- (void)dismissAlertViews
-{
-    [self.sweepPaymentAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    [self.confirmPaymentAlertView dismissWithClickedButtonIndex:0 animated:YES];
-}
-
 - (void)reload
 {
     if (![app.wallet isInitialized]) {
@@ -138,8 +123,6 @@ BOOL displayingLocalSymbolSend;
     }
     
     [self clearToAddressAndAmountFields];
-    
-    [self dismissAlertViews];
     
     [self resetFromAddress];
     
@@ -155,6 +138,10 @@ BOOL displayingLocalSymbolSend;
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     [self updateFundsAvailable];
+    
+    [self enablePaymentButtons];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SEND_SCREEN_RELOADING object:nil];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
@@ -367,9 +354,30 @@ BOOL displayingLocalSymbolSend;
         
         NSString *sweepMessageString = [[NSString alloc] initWithFormat:BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT, wantToSendAmountString, spendableAmountString, feeAmountString, canSendAmountString];
         
-        self.sweepPaymentAlertView = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_SWEEP_TITLE message:sweepMessageString delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SEND, nil];
-        self.maxAmountForSweepPaymentAlertView = maxAmount;
-        [self.sweepPaymentAlertView show];
+        BCAlertView *alert = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_SWEEP_TITLE
+                                                            message:sweepMessageString
+                                                           delegate:self
+                                                  cancelButtonTitle:BC_STRING_CANCEL
+                                                  otherButtonTitles:BC_STRING_SEND, nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:alert
+                                                 selector:@selector(dismissWithClickedButtonIndex:animated:)
+                                                     name:NOTIFICATION_KEY_SEND_SCREEN_RELOADING
+                                                   object:nil];
+        
+        alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                amountInSatoshi = maxAmount;
+                // Display to the user the max amount
+                [self doCurrencyConversion];
+                // Actually do the sweep and confirm
+                [self getMaxFeeWhileConfirming:YES];
+            } else {
+                [self enablePaymentButtons];
+            }
+        };
+        
+        [alert show];
     });
 }
 
@@ -404,15 +412,27 @@ BOOL displayingLocalSymbolSend;
             toAddressLabelForAlertView = @"";
         }
         
-        NSMutableString *messageString = [NSMutableString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, toAddressLabelForAlertView, toAddressStringForAlertView, amountTotalBTCString, feeBTCString, amountTotalLocalString];
+        NSString *messageString = [NSString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, toAddressLabelForAlertView, toAddressStringForAlertView, amountTotalBTCString, feeBTCString, amountTotalLocalString];
         
-        self.confirmPaymentAlertView = [[UIAlertView alloc] initWithTitle:BC_STRING_CONFIRM_PAYMENT
+        BCAlertView *alert = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_PAYMENT
                                                         message:messageString
-                                                       delegate:self
-                                              cancelButtonTitle:BC_STRING_CANCEL
-                                              otherButtonTitles:BC_STRING_SEND, nil];
+                                                        delegate:self
+                                                        cancelButtonTitle:BC_STRING_CANCEL
+                                                        otherButtonTitles:BC_STRING_SEND, nil];
         
-        [self.confirmPaymentAlertView show];
+        [[NSNotificationCenter defaultCenter] addObserver:alert
+                                                 selector:@selector(dismissWithClickedButtonIndex:animated:)
+                                                     name:NOTIFICATION_KEY_SEND_SCREEN_RELOADING
+                                                   object:nil];
+        
+        alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+                    [self enablePaymentButtons];
+                    if (buttonIndex == 1) {
+                        [self reallyDoPayment];
+                    }
+        };
+                              
+        [alert show];
     });
 }
 
@@ -504,29 +524,6 @@ BOOL displayingLocalSymbolSend;
     
     [self.view removeGestureRecognizer:self.tapGesture];
     self.tapGesture = nil;
-}
-
-#pragma mark - UIAlertView Delegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (alertView == self.confirmPaymentAlertView) {
-        [self enablePaymentButtons];
-        if (buttonIndex == 1) {
-            [self reallyDoPayment];
-        }
-        return;
-    } else if (alertView == self.sweepPaymentAlertView) {
-        if (buttonIndex == 1) {
-            amountInSatoshi = self.maxAmountForSweepPaymentAlertView;
-            // Display to the user the max amount
-            [self doCurrencyConversion];
-            // Actually do the sweep and confirm
-            [self getMaxFeeWhileConfirming:YES];
-        } else {
-            [self enablePaymentButtons];
-        }
-    }
 }
 
 #pragma mark - Textfield Delegates
