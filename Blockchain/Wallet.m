@@ -429,11 +429,15 @@
 - (void)archiveLegacyAddress:(NSString*)address
 {
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = true", [address escapeStringForJS]];
+    
+    [self getHistory];
 }
 
 - (void)unArchiveLegacyAddress:(NSString*)address
 {
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = false", [address escapeStringForJS]];
+    
+    [self getHistory];
 }
 
 - (uint64_t)getLegacyAddressBalance:(NSString*)address
