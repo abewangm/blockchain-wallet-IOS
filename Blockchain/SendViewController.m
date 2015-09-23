@@ -107,7 +107,6 @@ BOOL displayingLocalSymbolSend;
     amountInSatoshi = 0;
     btcAmountField.text = @"";
     fiatAmountField.text = @"";
-    [self resetPayment];
 }
 
 - (void)reload
@@ -123,6 +122,8 @@ BOOL displayingLocalSymbolSend;
     }
     
     [self clearToAddressAndAmountFields];
+    
+    [self resetPayment];
     
     [self resetFromAddress];
     

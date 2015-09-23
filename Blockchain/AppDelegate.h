@@ -205,7 +205,7 @@
 
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;
-- (BOOL)isPINSet;
+- (BOOL)isPinSet;
 
 - (BOOL)checkInternetConnection;
 

@@ -251,7 +251,7 @@ void (^secondPasswordSuccess)(NSString *);
     else {
         
         // If the PIN is set show the pin modal
-        if ([self isPINSet]) {
+        if ([self isPinSet]) {
             [self showPinModalAsView:YES];
         } else {
             // No PIN set we need to ask for the main password
@@ -448,7 +448,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [app closeAllModals];
     
-    if (![app isPINSet]) {
+    if (![app isPinSet]) {
         [app showPinModalAsView:NO];
     }
 }
@@ -577,7 +577,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     // Show pin modal before we close the app so the PIN verify modal gets shown in the list of running apps and immediately after we restart
-    if ([self isPINSet]) {
+    if ([self isPinSet]) {
         [self showPinModalAsView:YES];
         [self.pinEntryViewController reset];
     }
@@ -592,7 +592,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // The PIN modal is shown on ResignActive, but we don't want to override the modal with the welcome screen
-    if ([self isPINSet]) {
+    if ([self isPinSet]) {
         return;
     }
     
@@ -1107,7 +1107,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     // if pin exists - verify
-    if ([self isPINSet]) {
+    if ([self isPinSet]) {
         self.pinEntryViewController = [PEPinEntryController pinVerifyController];
     }
     // no pin - create
@@ -1228,17 +1228,17 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)changePIN
 {
-    PEPinEntryController *c = [PEPinEntryController pinChangeController];
-    c.pinDelegate = self;
-    c.navigationBarHidden = YES;
+    PEPinEntryController *pinChangeController = [PEPinEntryController pinChangeController];
+    pinChangeController.pinDelegate = self;
+    pinChangeController.navigationBarHidden = YES;
     
-    PEViewController *peViewController = (PEViewController *)[[c viewControllers] objectAtIndex:0];
+    PEViewController *peViewController = (PEViewController *)[[pinChangeController viewControllers] objectAtIndex:0];
     peViewController.cancelButton.hidden = NO;
     
-    self.pinEntryViewController = c;
+    self.pinEntryViewController = pinChangeController;
     
     peViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self.tabViewController presentViewController:c animated:YES completion:nil];
+    [self.tabViewController presentViewController:pinChangeController animated:YES completion:nil];
 }
 
 - (void)clearPin
@@ -1546,7 +1546,8 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (void)didFailPutPin:(NSString*)value {
+- (void)didFailPutPin:(NSString*)value
+{
     [self hideBusyView];
     
     // If the server returns an "Invalid Numerical Value" response it means the user entered "0000" and we show a slightly different error message
@@ -1565,7 +1566,8 @@ void (^secondPasswordSuccess)(NSString *);
     [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
 }
 
-- (void)didPutPinSuccess:(NSDictionary*)dictionary {
+- (void)didPutPinSuccess:(NSDictionary*)dictionary
+{
     [self hideBusyView];
     
     if (!app.wallet.password) {
@@ -1749,7 +1751,8 @@ void (^secondPasswordSuccess)(NSString *);
 #pragma mark - Format helpers
 
 // Format amount in satoshi as NSString (with symbol)
-- (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal {
+- (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
+{
     if (fsymbolLocal && latestResponse.symbol_local.conversion) {
         @try {
             NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)latestResponse.symbol_local.conversion]];
@@ -1783,7 +1786,8 @@ void (^secondPasswordSuccess)(NSString *);
     return [string stringByAppendingString:@" BTC"];
 }
 
-- (NSString*)formatMoney:(uint64_t)value {
+- (NSString*)formatMoney:(uint64_t)value
+{
     return [self formatMoney:value localCurrency:symbolLocal];
 }
 
@@ -1832,7 +1836,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)checkForNewInstall
 {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey] && ![self isPINSet]) {
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey] && ![self isPinSet]) {
         [self alertUserAskingToUseOldKeychain];
         [[NSUserDefaults standardUserDefaults] setValue:USER_DEFAULTS_KEY_FIRST_RUN forKey:USER_DEFAULTS_KEY_FIRST_RUN];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -1915,7 +1919,7 @@ void (^secondPasswordSuccess)(NSString *);
     return YES;
 }
 
-- (BOOL)isPINSet
+- (BOOL)isPinSet
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD] != nil;
 }
