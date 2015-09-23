@@ -423,7 +423,7 @@
 
 - (void)setLabel:(NSString*)label forLegacyAddress:(NSString*)address
 {
-    [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").label = \"%@\"", [address escapeStringForJS], [label escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
 }
 
 - (void)archiveLegacyAddress:(NSString*)address

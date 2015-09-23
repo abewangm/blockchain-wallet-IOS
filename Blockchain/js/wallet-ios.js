@@ -730,12 +730,12 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
             if (MyWallet.wallet.isDoubleEncrypted) {
                 MyWalletPhone.getSecondPassword(function (pw) {
-                    var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', pw, bip38Pass);
+                    var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, pw, bip38Pass);
                     promise.then(success, error);
                 });
             }
             else {
-                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', null, bip38Pass);
+                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, null, bip38Pass);
                 promise.then(success, error);
             }
         });
@@ -743,12 +743,12 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
     else {
         if (MyWallet.wallet.isDoubleEncrypted) {
             MyWalletPhone.getSecondPassword(function (pw) {
-                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', pw, null);
+                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, pw, null);
                 promise.then(success, error);
             });
         }
         else {
-            var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', null, null);
+            var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, null, null);
             promise.then(success, error);
         }
     }
@@ -1002,4 +1002,11 @@ MyWalletPhone.generateNewAddress = function() {
 MyWalletPhone.checkIfWalletHasAddress = function(address) {
     var addresses = MyWallet.wallet.addresses;
     return (addresses.indexOf(address) > -1);
+}
+
+MyWalletPhone.setLabelForAddress = function(address, label) {
+    if (label == '') {
+        label = null;
+    }
+    MyWallet.wallet.key(address).label = label;
 }
