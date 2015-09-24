@@ -57,6 +57,11 @@ WalletStore.addEventListener(function (event, obj) {
                 // Cancel busy view in case any error comes in - except for add email, that's handled differently in makeNotice
                 device.execute('loading_stop');
             }
+                             
+            if (obj.message == "Error Downloading Account Settings") {
+                device.execute('on_error_downloading_account_settings');
+                return;
+            }
 
             // Some messages are JSON objects and the error message is in the map
             try {

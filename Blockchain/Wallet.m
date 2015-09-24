@@ -1147,6 +1147,13 @@
     self.recoveryPhrase = phrase;
 }
 
+- (void)on_error_downloading_account_settings
+{
+    DLog(@"on_error_downloading_account_settings");
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)whitelistWallet

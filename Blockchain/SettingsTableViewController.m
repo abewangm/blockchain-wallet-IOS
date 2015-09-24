@@ -35,17 +35,21 @@ const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
 @interface SettingsTableViewController () <CurrencySelectorDelegate, BtcSelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
+
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
 @property (nonatomic, copy) NSDictionary *allCurrencySymbolsDictionary;
+
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic) UIAlertView *changeEmailAlertView;
-@property (nonatomic) UIAlertView *errorLoadingAlertView;
 @property (nonatomic) UIAlertView *changeFeeAlertView;
+
 @property (nonatomic, copy) NSString *enteredEmailString;
 @property (nonatomic, copy) NSString *emailString;
+
 @property (nonatomic) UITextField *changeFeeTextField;
 @property (nonatomic) float currentFeePerKb;
+
 @end
 
 @implementation SettingsTableViewController
@@ -53,10 +57,8 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self getAccountInfo];
-    
-    [self getAllCurrencySymbols];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
+    [self loadSettings];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -64,7 +66,6 @@ const int aboutPrivacyPolicy = 1;
     [super viewWillDisappear:animated];
     [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:NO];
     [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:NO];
-    [self.errorLoadingAlertView dismissWithClickedButtonIndex:0 animated:NO];
     [self.changeFeeAlertView dismissWithClickedButtonIndex:0 animated:NO];
 }
 
@@ -84,9 +85,25 @@ const int aboutPrivacyPolicy = 1;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedChangingFee) name:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    BOOL loadedSettings = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LOADED_SETTINGS] boolValue];
+    if (!loadedSettings) {
+        [self loadSettings];
+    }
+}
+
 - (void)finishedChangingFee
 {
     self.didChangeFee = NO;
+}
+
+- (void)loadSettings
+{
+    [self getAccountInfo];
+    
+    [self getAllCurrencySymbols];
 }
 
 - (void)getAllCurrencySymbols
@@ -112,6 +129,7 @@ const int aboutPrivacyPolicy = 1;
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         DLog(@"SettingsTableViewController: gotAccountInfo");
         self.accountInfoDictionary = note.userInfo;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     }];
     
@@ -225,9 +243,8 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)alertViewForErrorLoadingSettings
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    [alertView show];
-    self.errorLoadingAlertView = alertView;
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
 }
 
 - (void)alertViewToChangeEmail:(BOOL)hasAddedEmail
@@ -401,10 +418,6 @@ const int aboutPrivacyPolicy = 1;
                 return;
             }
         }
-    } else if ([alertView isEqual:self.errorLoadingAlertView]) {
-        // User has tapped on cell when account info has not yet been loaded; get account info again
-        [self getAccountInfo];
-        return;
     }
 }
 
@@ -669,9 +682,9 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL hasLoadedSettings = self.accountInfoDictionary ? YES : NO;
+    BOOL hasLoadedAccountInfoDictionary = self.accountInfoDictionary ? YES : NO;
     
-    if (!hasLoadedSettings) {
+    if (!hasLoadedAccountInfoDictionary) {
         [self alertViewForErrorLoadingSettings];
         return nil;
     } else {

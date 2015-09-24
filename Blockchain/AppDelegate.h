@@ -33,6 +33,8 @@
 
 #define SATOSHI 100000000
 
+#define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
+
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_FEE @"fee"
 
