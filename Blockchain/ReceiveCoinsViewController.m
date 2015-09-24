@@ -376,12 +376,16 @@ UIActionSheet *popupAddressArchive;
 
 - (void)setQRPayment
 {
-    double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
-    
-    UIImage *image = [self qrImageFromAddress:self.clickedAddress amount:amount];
-    
-    qrCodePaymentImageView.image = image;
-    qrCodePaymentImageView.contentMode = UIViewContentModeScaleAspectFit;
+    if ([self getInputAmountInSatoshi] <= BTC_LIMIT_IN_SATOSHI) {
+        
+        double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
+        
+        UIImage *image = [self qrImageFromAddress:self.clickedAddress amount:amount];
+        
+        qrCodePaymentImageView.image = image;
+        qrCodePaymentImageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+    }
     
     [self doCurrencyConversion];
 }
