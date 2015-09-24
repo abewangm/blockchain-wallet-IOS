@@ -268,44 +268,6 @@ MyWalletPhone.sweepPayment = function() {
     });
 };
 
-MyWalletPhone.recommendedTransactionFee = function(payment) {
-    
-    payment.payment.then(function(x) {
-        device.execute('update_fee:', [x.transaction.fee]);
-    });
-    
-    payment.payment.catch(function(error) {
-       var errorArgument;
-       if (error.error) {
-            errorArgument = error.error;
-       } else {
-            errorArgument = error.message;
-       }
-        console.log('error updating fee: ' + error.message);
-       device.execute('on_error_update_fee:', [errorArgument]);
-    });
-}
-
-MyWalletPhone.getMaximumTransactionFeeForAddress = function(address) {
-    var falseTransaction = new Spender().fromAddress(address);
-    falseTransaction.getSuggestedSweep().then(function(suggestedSweep) {
-        var maxAmount = suggestedSweep[0];
-        var maxFee = suggestedSweep[1];
-        console.log('maxAmount and fee are' + maxAmount + ',' + maxFee);
-        device.execute('update_max_amount:fee:', [maxAmount, maxFee]);
-    });
-}
-
-MyWalletPhone.getMaximumTransactionFeeForAccount = function(account) {
-    var falseTransaction = new Spender().fromAccount(MyWalletPhone.getIndexOfActiveAccount(account));
-    falseTransaction.getSuggestedSweep().then(function(suggestedSweep) {
-        var maxAmount = suggestedSweep[0];
-        var maxFee = suggestedSweep[1];
-        console.log('maxAmount and fee are' + maxAmount + ',' + maxFee);
-        device.execute('update_max_amount:fee:', [maxAmount, maxFee]);
-    });
-}
-
 MyWalletPhone.setTransactionFee = function(fee) {
     MyWallet.wallet.fee_per_kb = fee;
 }
