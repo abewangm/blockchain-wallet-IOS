@@ -696,12 +696,14 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
     if (needsBip38Passsword) {
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
             if (MyWallet.wallet.isDoubleEncrypted) {
+                device.execute('on_add_private_key_start');
                 MyWalletPhone.getSecondPassword(function (pw) {
                     var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, pw, bip38Pass);
                     promise.then(success, error);
                 });
             }
             else {
+                device.execute('on_add_private_key_start');
                 var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, null, bip38Pass);
                 promise.then(success, error);
             }
@@ -709,12 +711,14 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
     }
     else {
         if (MyWallet.wallet.isDoubleEncrypted) {
+            device.execute('on_add_private_key_start');
             MyWalletPhone.getSecondPassword(function (pw) {
                 var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, pw, null);
                 promise.then(success, error);
             });
         }
         else {
+            device.execute('on_add_private_key_start');
             var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, null, null);
             promise.then(success, error);
         }

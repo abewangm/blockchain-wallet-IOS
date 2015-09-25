@@ -186,7 +186,7 @@
 #define BC_STRING_LOADING_CREATING_WALLET NSLocalizedString(@"Creating new Wallet", nil)
 #define BC_STRING_LOADING_IMPORT_KEY NSLocalizedString(@"Importing key", nil)
 #define BC_STRING_LOADING_GENERATING_NEW_ADDRESS NSLocalizedString(@"Generating new address", nil)
-#define BC_STRING_LOADING_UPDATING_LABEL NSLocalizedString(@"Updating label", nil)
+#define BC_STRING_LOADING_SYNCING_WALLET NSLocalizedString(@"Syncing wallet", nil)
 #define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 
 #define BC_STRING_MERCHANT_MAP NSLocalizedString(@"Merchant Map", nil)
@@ -277,7 +277,6 @@
 #define BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT NSLocalizedString(@"Current rate: %@ BTC", nil)
 #define BC_STRING_SETTINGS_FEE_ARGUMENT_BTC NSLocalizedString(@"%@ BTC", nil)
 #define BC_STRING_SETTINGS_FEE_TOO_HIGH NSLocalizedString(@"Fee is too high (0.01 BTC limit)", nil)
-#define BC_STRING_LOADING_UPDATING_SETTINGS NSLocalizedString(@"Updating settings", nil)
 
 #define BC_STRING_NEW_ADDRESS NSLocalizedString(@"New Address", nil)
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)

@@ -43,7 +43,6 @@
 #define NOTIFICATION_KEY_NEW_ADDRESS @"newAddress"
 
 // Notifications used in settings
-#define NOTIFICATION_KEY_FINISHED_CHANGING_FEE @"ChangedFee"
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"

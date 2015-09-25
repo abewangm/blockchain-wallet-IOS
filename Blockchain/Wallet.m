@@ -423,6 +423,7 @@
 
 - (void)setLabel:(NSString*)label forLegacyAddress:(NSString*)address
 {
+    self.isSyncingForTrivialProcess = YES;
     [self.webView executeJS:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
 }
 
@@ -544,6 +545,7 @@
 
 - (void)setTransactionFee:(uint64_t)feePerKb
 {
+    self.isSyncingForTrivialProcess = YES;
     [self.webView executeJS:@"MyWalletPhone.setTransactionFee(%lld)", feePerKb];
 }
 
@@ -959,9 +961,20 @@
         [delegate didCreateNewAccount:_guid sharedKey:_sharedKey password:_password];
 }
 
+- (void)on_add_private_key_start
+{
+    DLog(@"on_add_private_key_start");
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
+}
+
 - (void)on_add_private_key:(NSString*)address
 {
-    [app standardNotify:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] title:BC_STRING_SUCCESS delegate:nil];
+    [self loading_stop];
+    self.isSyncingForCriticalProcess = YES;
+    DLog(@"on_add_private_key");
+    if ([delegate respondsToSelector:@selector(didImportPrivateKey:)]) {
+        [delegate didImportPrivateKey:address];
+    }
 }
 
 - (void)on_error_adding_private_key:(NSString*)error
@@ -1027,10 +1040,11 @@
 
 - (void)on_backup_wallet_start
 {
+    if (self.isSyncingForTrivialProcess) {
+        [self loading_stop];
+        self.isSyncingForTrivialProcess = NO;
+    }
     DLog(@"on_backup_wallet_start");
-    // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
-    [self loading_stop];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
 
 - (void)on_backup_wallet_error
@@ -1046,6 +1060,9 @@
     DLog(@"on_backup_wallet_success");
     if ([delegate respondsToSelector:@selector(didBackupWallet)])
         [delegate didBackupWallet];
+    // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
+    [self loading_stop];
+    self.isSyncingForCriticalProcess = NO;
 }
 
 - (void)did_fail_set_guid
@@ -1274,6 +1291,7 @@
 - (void)setLabelForAccount:(int)account label:(NSString *)label
 {
     if ([self isInitialized]) {
+        self.isSyncingForTrivialProcess = YES;
         [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, label];
     }
 }

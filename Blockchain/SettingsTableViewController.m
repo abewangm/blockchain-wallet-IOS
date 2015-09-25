@@ -72,17 +72,9 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if (self.didChangeFee) {
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_UPDATING_SETTINGS];
+    if (app.wallet.isSyncingForTrivialProcess) {
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    self.didChangeFee = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedChangingFee) name:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -92,11 +84,6 @@ const int aboutPrivacyPolicy = 1;
     if (!loadedSettings) {
         [self loadSettings];
     }
-}
-
-- (void)finishedChangingFee
-{
-    self.didChangeFee = NO;
 }
 
 - (void)loadSettings
@@ -414,7 +401,6 @@ const int aboutPrivacyPolicy = 1;
                 uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
                 [app.wallet setTransactionFee:convertedFee];
                 [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
-                self.didChangeFee = YES;
                 return;
             }
         }

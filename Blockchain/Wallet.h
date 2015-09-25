@@ -66,6 +66,7 @@
 - (void)didFailGetPinNoResponse;
 - (void)didFailGetPinInvalidResponse;
 - (void)didGetPinSuccess:(NSDictionary *)dictionary;
+- (void)didImportPrivateKey:(NSString *)address;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -89,6 +90,8 @@
 @property NSString *recoveryPhrase;
 
 @property BOOL didScanQRCode;
+@property BOOL isSyncingForTrivialProcess; // activities such as labeling addresses, setting the fee per kb
+@property BOOL isSyncingForCriticalProcess; // activities such as importing an address
 
 - (id)init;
 

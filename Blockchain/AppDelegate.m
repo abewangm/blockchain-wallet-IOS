@@ -1042,6 +1042,17 @@ void (^secondPasswordSuccess)(NSString *);
     [self transitionToIndex:1];
 }
 
+- (void)didImportPrivateKey:(NSString *)address
+{
+    BCAlertView *alertView = [[BCAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if (wallet.isSyncingForCriticalProcess) {
+            [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+        }
+    };
+    [alertView show];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountSettings

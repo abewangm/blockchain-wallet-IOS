@@ -552,8 +552,9 @@ UIActionSheet *popupAddressArchive;
     
     [app closeModalWithTransition:kCATransitionFade];
     
-    // Show busy view since syncWallet will block the main thread
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_UPDATING_LABEL];
+    if (app.wallet.isSyncingForTrivialProcess) {
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    }
 }
 
 - (IBAction)mainQRClicked:(id)sender
