@@ -62,6 +62,11 @@ WalletStore.addEventListener(function (event, obj) {
                 device.execute('on_error_downloading_account_settings');
                 return;
             }
+                             
+            if (obj.message == "update-currency-error" || obj.message == "update-btc-currency-error") {
+                device.execute('on_change_currency_error');
+                return;
+            }
 
             // Some messages are JSON objects and the error message is in the map
             try {

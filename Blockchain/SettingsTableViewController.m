@@ -58,7 +58,7 @@ const int aboutPrivacyPolicy = 1;
 {
     [super viewDidLoad];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
-    [self loadSettings];
+    [self reload];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -82,14 +82,15 @@ const int aboutPrivacyPolicy = 1;
     [super viewWillAppear:animated];
     BOOL loadedSettings = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LOADED_SETTINGS] boolValue];
     if (!loadedSettings) {
-        [self loadSettings];
+        [self reload];
     }
 }
 
-- (void)loadSettings
+- (void)reload
 {
-    [self getAccountInfo];
+    DLog(@"Reloading settings");
     
+    [self getAccountInfo];
     [self getAllCurrencySymbols];
 }
 

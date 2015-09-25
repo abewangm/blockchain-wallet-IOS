@@ -1079,6 +1079,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
 }
 
+- (void)on_change_currency_error
+{
+    DLog(@"on_change_local_currency_error");
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_UPDATING_TITLE delegate:nil];
+}
+
 - (void)on_get_account_info_success:(NSString *)accountInfo
 {
     DLog(@"on_get_account_info");
