@@ -89,7 +89,7 @@
 // HD properties:
 @property NSString *recoveryPhrase;
 
-@property BOOL didScanQRCode;
+@property BOOL didPairAutomatically;
 @property BOOL isSyncingForTrivialProcess; // activities such as labeling addresses, setting the fee per kb
 @property BOOL isSyncingForCriticalProcess; // activities such as importing an address
 

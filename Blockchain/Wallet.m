@@ -927,8 +927,8 @@
     }
 #endif
     
-    if (self.didScanQRCode) {
-        self.didScanQRCode = NO;
+    if (self.didPairAutomatically) {
+        self.didPairAutomatically = NO;
         [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
     }
     

@@ -969,7 +969,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         self.wallet.delegate = self;
         
-        wallet.didScanQRCode = YES;
+        wallet.didPairAutomatically = YES;
         
     } error:^(NSString*error) {
         [app standardNotify:error];
