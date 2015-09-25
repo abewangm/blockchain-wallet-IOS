@@ -525,7 +525,7 @@ UIActionSheet *popupAddressArchive;
 
 - (IBAction)addNewAddressClicked:(id)sender
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_NEW_ADDRESS message:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_NEW_ADDRESS_GENERATE_NEW, BC_STRING_NEW_ADDRESS_SCAN_QR_CODE, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_NEW_ADDRESS message:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_NEW_ADDRESS_GENERATE_NEW, BC_STRING_SCAN_PRIVATE_KEY, nil];
     alertView.delegate = self;
     self.addNewAddressAlertView = alertView;
     [alertView show];
@@ -719,10 +719,9 @@ UIActionSheet *popupAddressArchive;
                 break;
             }
             case 2: {
-                DLog(@"Scan QR code");
+                DLog(@"Scan Private Key");
                 PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
                     [app.wallet addKey:privateKeyString];
-                    
                     [app.wallet loading_stop];
                 } error:nil];
                 
