@@ -233,6 +233,9 @@
 "Error loading settings" = "خطأ في تحميل الإعدادات";
 
 /* (No Commment) */
+"Error updating settings" = "حدث خطأ أثناء تحديث الإعدادات";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "فشل في تحميل المحفظة";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "الرجاء التحقق من البريد الإلكتروني الخاص بك.";
 
 /* (No Commment) */
+"Please check your internet connection." = "الرجاء التحقق من اتصال الإنترنت الخاص بك.";
+
+/* (No Commment) */
 "Please choose another PIN" = "الرجاء اختيار آخر رقم التعريف الشخصي";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "الرجاء المحاولة مرة أخرى";
-
-/* (No Commment) */
-"Please try again shortly." = "الرجاء حاول مرة أخرى بعد قليل.";
 
 /* (No Commment) */
 "Please verify your email" = "الرجاء التحقق من البريد الإلكتروني الخاص بك";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "مسح رمز الازدواج";
+
+/* (No Commment) */
+"Scan Private Key" = "تفحص المفتاح الخاص";
 
 /* (No Commment) */
 "Scan QR Code" = "مسح رمز ريال قطري";
@@ -584,6 +590,9 @@
 "Support" = "الدعم";
 
 /* (No Commment) */
+"Syncing wallet" = "مزامنة المحفظة";
+
+/* (No Commment) */
 "Terms of Service" = "شروط الخدمة";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "التحديث";
-
-/* (No Commment) */
-"Updating label" = "تحديث التسمية";
-
-/* (No Commment) */
-"Updating settings" = "تحديث الإعدادات";
 
 /* (No Commment) */
 "Upgrade Now" = "الترقية الآن";

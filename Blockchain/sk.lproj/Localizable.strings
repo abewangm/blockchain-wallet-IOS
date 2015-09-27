@@ -233,6 +233,9 @@
 "Error loading settings" = "Chyba načítania nastavenia";
 
 /* (No Commment) */
+"Error updating settings" = "Chyba pri aktualizácii nastavenia";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Nepodarilo sa načítať peňaženka";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Prosím skontrolujte svoj e-mail.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Prosím skontrolujte svoje internetové pripojenie.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Prosím vyberte iný PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Skúste to prosím znova";
-
-/* (No Commment) */
-"Please try again shortly." = "Skúste to znova krátko.";
 
 /* (No Commment) */
 "Please verify your email" = "Skontrolujte, či váš e-mail";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Skenovanie Párovací kód";
+
+/* (No Commment) */
+"Scan Private Key" = "Skenovanie súkromný kľúč";
 
 /* (No Commment) */
 "Scan QR Code" = "Naskenujte QR kód";
@@ -584,6 +590,9 @@
 "Support" = "Podpora";
 
 /* (No Commment) */
+"Syncing wallet" = "Synchronizácia peňaženka";
+
+/* (No Commment) */
 "Terms of Service" = "Podmienky služby";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Aktualizácia";
-
-/* (No Commment) */
-"Updating label" = "Aktualizuje menovky";
-
-/* (No Commment) */
-"Updating settings" = "Aktualizuje sa nastavenie";
 
 /* (No Commment) */
 "Upgrade Now" = "Inovovať teraz";

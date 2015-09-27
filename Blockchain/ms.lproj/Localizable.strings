@@ -233,6 +233,9 @@
 "Error loading settings" = "Ralat memuatkan seting";
 
 /* (No Commment) */
+"Error updating settings" = "Ralat dalam mengemas kini seting";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Gagal untuk memuatkan Wallet";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Sila semak email anda.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Sila semak sambungan internet anda.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Sila pilih PIN yang lain";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Sila cuba lagi";
-
-/* (No Commment) */
-"Please try again shortly." = "Sila cuba sekali lagi tidak lama.";
 
 /* (No Commment) */
 "Please verify your email" = "Sila sahkan email anda";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Imbas kod berpasangan";
+
+/* (No Commment) */
+"Scan Private Key" = "Mengimbas kunci peribadi";
 
 /* (No Commment) */
 "Scan QR Code" = "Imbas Kod QR";
@@ -584,6 +590,9 @@
 "Support" = "Sokongan";
 
 /* (No Commment) */
+"Syncing wallet" = "Menyegerak wallet";
+
+/* (No Commment) */
 "Terms of Service" = "Syarat-syarat Perkhidmatan";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Kemas kini";
-
-/* (No Commment) */
-"Updating label" = "Mengemaskini label";
-
-/* (No Commment) */
-"Updating settings" = "Seting pengemaskinian";
 
 /* (No Commment) */
 "Upgrade Now" = "Menaik taraf sekarang";

@@ -233,6 +233,9 @@
 "Error loading settings" = "Error loading pengaturan";
 
 /* (No Commment) */
+"Error updating settings" = "Kesalahan update pengaturan";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Gagal memuat dompet";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Periksa email Anda.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Periksa koneksi internet Anda.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Pilih PIN lain";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Silakan coba lagi";
-
-/* (No Commment) */
-"Please try again shortly." = "Silakan coba lagi segera.";
 
 /* (No Commment) */
 "Please verify your email" = "Harap verifikasi email Anda";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Memindai memasangkan kode";
+
+/* (No Commment) */
+"Scan Private Key" = "Memindai kunci pribadi";
 
 /* (No Commment) */
 "Scan QR Code" = "Pindai kode QR";
@@ -584,6 +590,9 @@
 "Support" = "Dukungan";
 
 /* (No Commment) */
+"Syncing wallet" = "Sinkronisasi dompet";
+
+/* (No Commment) */
 "Terms of Service" = "Persyaratan Layanan";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Update";
-
-/* (No Commment) */
-"Updating label" = "Memperbarui label";
-
-/* (No Commment) */
-"Updating settings" = "Memperbarui pengaturan";
 
 /* (No Commment) */
 "Upgrade Now" = "Upgrade sekarang";

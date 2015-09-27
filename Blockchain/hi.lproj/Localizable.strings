@@ -233,6 +233,9 @@
 "Error loading settings" = "त्रुटि लोडिंग सेटिंग्स";
 
 /* (No Commment) */
+"Error updating settings" = "सेटिंग्स अद्यतन करने में त्रुटि";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "बटुआ लोड करने में विफल रहा";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "कृपया अपने ईमेल की जाँच करें।";
 
 /* (No Commment) */
+"Please check your internet connection." = "कृपया अपना इंटरनेट कनेक्शन जाँचें।";
+
+/* (No Commment) */
 "Please choose another PIN" = "कृपया चुनें किसी अन्य पिन";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "कृपया पुन: प्रयास करें";
-
-/* (No Commment) */
-"Please try again shortly." = "कृपया शीघ्र ही पुन: प्रयास करें।";
 
 /* (No Commment) */
 "Please verify your email" = "कृपया अपने ईमेल की जाँच करें";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "स्कैन कोड बाँधना";
+
+/* (No Commment) */
+"Scan Private Key" = "निजी कुंजी को स्कैन";
 
 /* (No Commment) */
 "Scan QR Code" = "QR कोड स्कैन करें";
@@ -584,6 +590,9 @@
 "Support" = "समर्थन";
 
 /* (No Commment) */
+"Syncing wallet" = "बटुआ सिंक्रनाइज़ किए जा रहे";
+
+/* (No Commment) */
 "Terms of Service" = "सेवा की शर्तें";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "अद्यतन";
-
-/* (No Commment) */
-"Updating label" = "लेबल अद्यतन करना";
-
-/* (No Commment) */
-"Updating settings" = "सेटिंग्स अद्यतन कर रहा है";
 
 /* (No Commment) */
 "Upgrade Now" = "अब नवीनीकरण करें";

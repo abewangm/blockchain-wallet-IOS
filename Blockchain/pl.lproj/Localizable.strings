@@ -233,6 +233,9 @@
 "Error loading settings" = "Błąd ładowania ustawień";
 
 /* (No Commment) */
+"Error updating settings" = "Błąd podczas aktualizowania ustawienia";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Nie można załadować portfel";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Proszę sprawdzić twój poczta elektroniczna.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Sprawdź swoje połączenie internetowe.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Proszę wybrać inny PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Spróbuj ponownie";
-
-/* (No Commment) */
-"Please try again shortly." = "Proszę spróbować ponownie wkrótce.";
 
 /* (No Commment) */
 "Please verify your email" = "Proszę sprawdzić twój poczta elektroniczna";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Zeskanuj kod parowania";
+
+/* (No Commment) */
+"Scan Private Key" = "Skanowanie klucza prywatnego";
 
 /* (No Commment) */
 "Scan QR Code" = "Kod QR dla";
@@ -584,6 +590,9 @@
 "Support" = "Wsparcie techniczne";
 
 /* (No Commment) */
+"Syncing wallet" = "Synchronizowanie portfel";
+
+/* (No Commment) */
 "Terms of Service" = "Warunki korzystania z usługi";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Aktualizacja";
-
-/* (No Commment) */
-"Updating label" = "Aktualizowanie etykiety";
-
-/* (No Commment) */
-"Updating settings" = "Aktualizowanie ustawień";
 
 /* (No Commment) */
 "Upgrade Now" = "Uaktualnij teraz";

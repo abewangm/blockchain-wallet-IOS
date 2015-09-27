@@ -233,6 +233,9 @@
 "Error loading settings" = "ข้อผิดพลาดการโหลดการตั้งค่า";
 
 /* (No Commment) */
+"Error updating settings" = "ข้อผิดพลาดในการปรับปรุงการตั้งค่า";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "ไม่สามารถโหลดกระเป๋าสตางค์";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "กรุณาตรวจสอบอีเมลของคุณ";
 
 /* (No Commment) */
+"Please check your internet connection." = "กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต";
+
+/* (No Commment) */
 "Please choose another PIN" = "โปรดเลือก PIN อีก";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "โปรดลองอีกครั้ง";
-
-/* (No Commment) */
-"Please try again shortly." = "กรุณาลองอีกครั้งในไม่ช้า";
 
 /* (No Commment) */
 "Please verify your email" = "กรุณาตรวจสอบอีเมลของคุณ";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "สแกนรหัสการจับคู่";
+
+/* (No Commment) */
+"Scan Private Key" = "การสแกนคีย์ส่วนตัว";
 
 /* (No Commment) */
 "Scan QR Code" = "สแกนรหัส QR";
@@ -584,6 +590,9 @@
 "Support" = "สนับสนุน";
 
 /* (No Commment) */
+"Syncing wallet" = "กระเป๋าสตางค์ที่ซิงค์";
+
+/* (No Commment) */
 "Terms of Service" = "เงื่อนไขการใช้บริการ";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "การปรับปรุง";
-
-/* (No Commment) */
-"Updating label" = "ปรับปรุงป้ายชื่อ";
-
-/* (No Commment) */
-"Updating settings" = "ปรับปรุงการตั้งค่า";
 
 /* (No Commment) */
 "Upgrade Now" = "อัพเกรดตอนนี้";

@@ -233,6 +233,9 @@
 "Error loading settings" = "Hata yükleme ayarları";
 
 /* (No Commment) */
+"Error updating settings" = "Ayarları güncelleştirilirken hata oluştu";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "M-cüzdan yüklenemedi";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Lütfen e-postanızı kontrol edin.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Lütfen internet bağlantınızı kontrol edin.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Lütfen başka bir PIN seçin";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Lütfen yeniden deneyin";
-
-/* (No Commment) */
-"Please try again shortly." = "Lütfen kısa bir süre sonra tekrar deneyin.";
 
 /* (No Commment) */
 "Please verify your email" = "Lütfen e-postanızı denetleyin";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Kod eşleştirme inceden inceye gözden geçirmek";
+
+/* (No Commment) */
+"Scan Private Key" = "Özel anahtar inceden inceye gözden geçirmek";
 
 /* (No Commment) */
 "Scan QR Code" = "Tarama QR kodu";
@@ -584,6 +590,9 @@
 "Support" = "Destek";
 
 /* (No Commment) */
+"Syncing wallet" = "M-cüzdan senkronizasyonu";
+
+/* (No Commment) */
 "Terms of Service" = "Terms of Service";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Güncelleştirme";
-
-/* (No Commment) */
-"Updating label" = "Etiket güncelleştirme";
-
-/* (No Commment) */
-"Updating settings" = "Ayarları güncelleştiriliyor";
 
 /* (No Commment) */
 "Upgrade Now" = "Şimdi yükseltmek";

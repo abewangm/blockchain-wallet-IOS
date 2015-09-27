@@ -233,6 +233,9 @@
 "Error loading settings" = "错误加载设置";
 
 /* (No Commment) */
+"Error updating settings" = "更新设置时出错";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "未能加载的钱包";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "请检查您的电子邮件。";
 
 /* (No Commment) */
+"Please check your internet connection." = "请检查您的互联网连接。";
+
+/* (No Commment) */
 "Please choose another PIN" = "请选择另一个 PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "请再试一次";
-
-/* (No Commment) */
-"Please try again shortly." = "请稍后再试。";
 
 /* (No Commment) */
 "Please verify your email" = "请验证您的电子邮件";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "扫描匹配码";
+
+/* (No Commment) */
+"Scan Private Key" = "扫描的专用密钥";
 
 /* (No Commment) */
 "Scan QR Code" = "扫描二维码";
@@ -584,6 +590,9 @@
 "Support" = "支持";
 
 /* (No Commment) */
+"Syncing wallet" = "同步的钱包";
+
+/* (No Commment) */
 "Terms of Service" = "服务条款";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "更新";
-
-/* (No Commment) */
-"Updating label" = "更新标签";
-
-/* (No Commment) */
-"Updating settings" = "更新设置";
 
 /* (No Commment) */
 "Upgrade Now" = "现在升级";

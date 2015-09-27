@@ -233,6 +233,9 @@
 "Error loading settings" = "Eroare încărcare setări";
 
 /* (No Commment) */
+"Error updating settings" = "Eroare la actualizarea setările";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Nu a reușit încărcarea portofel";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Vă rugăm să verificaţi adresa de email.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Vă rugăm să verificaţi conexiunea la internet.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Vă rugăm să alegeţi un alt PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Vă rugăm să încercaţi din nou";
-
-/* (No Commment) */
-"Please try again shortly." = "Vă rugăm să încercaţi din nou la scurt timp.";
 
 /* (No Commment) */
 "Please verify your email" = "Va rugam sa verificati adresa de email";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Scanaţi codul de asociere";
+
+/* (No Commment) */
+"Scan Private Key" = "Scanare cheie privată";
 
 /* (No Commment) */
 "Scan QR Code" = "Scanaţi codul QR";
@@ -584,6 +590,9 @@
 "Support" = "Suport";
 
 /* (No Commment) */
+"Syncing wallet" = "Sincronizarea portofel";
+
+/* (No Commment) */
 "Terms of Service" = "Conditii de utilizare";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Actualizare";
-
-/* (No Commment) */
-"Updating label" = "Actualizarea eticheta";
-
-/* (No Commment) */
-"Updating settings" = "Setările de actualizare";
 
 /* (No Commment) */
 "Upgrade Now" = "Upgrade acum";

@@ -233,6 +233,9 @@
 "Error loading settings" = "שגיאה בטעינת הגדרות";
 
 /* (No Commment) */
+"Error updating settings" = "שגיאה בעת עדכון הגדרות";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "לא הצליח לטעון את הארנק";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "נא בדוק את הדוא ל שלך.";
 
 /* (No Commment) */
+"Please check your internet connection." = "נא בדוק את החיבור שלך לאינטרנט.";
+
+/* (No Commment) */
 "Please choose another PIN" = "נא לבחור סיכה אחרת";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "אנא נסה שנית";
-
-/* (No Commment) */
-"Please try again shortly." = "אנא נסה שוב בקרוב.";
 
 /* (No Commment) */
 "Please verify your email" = "אנא בדוק את הדוא ל שלך";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "לסרוק קוד התאמה";
+
+/* (No Commment) */
+"Scan Private Key" = "סרוק מפתח פרטי";
 
 /* (No Commment) */
 "Scan QR Code" = "לסרוק קוד QR";
@@ -584,6 +590,9 @@
 "Support" = "תמיכה";
 
 /* (No Commment) */
+"Syncing wallet" = "מסנכרן את הארנק";
+
+/* (No Commment) */
 "Terms of Service" = "תנאי השירות";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "עדכון";
-
-/* (No Commment) */
-"Updating label" = "עדכון תווית";
-
-/* (No Commment) */
-"Updating settings" = "עדכון הגדרות";
 
 /* (No Commment) */
 "Upgrade Now" = "שדרג עכשיו";

@@ -233,6 +233,9 @@
 "Error loading settings" = "Σφάλμα φόρτωσης ρυθμίσεις";
 
 /* (No Commment) */
+"Error updating settings" = "Σφάλμα κατά την ενημέρωση των ρυθμίσεων";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Απέτυχε η φόρτωση πορτοφόλι";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Παρακαλώ ελέγξτε το email σας.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Παρακαλείστε να ελέγξετε σύνδεσή σας στο internet.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Παρακαλώ επιλέξτε μια άλλη καρφίτσα";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Παρακαλώ προσπαθήστε ξανά";
-
-/* (No Commment) */
-"Please try again shortly." = "Παρακαλώ προσπαθώ πάλι σύντομα.";
 
 /* (No Commment) */
 "Please verify your email" = "Παρακαλώ ελέγξτε το email σας";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Σάρωση σύζευξη κωδικός";
+
+/* (No Commment) */
+"Scan Private Key" = "Σάρωση ιδιωτικού κλειδιού";
 
 /* (No Commment) */
 "Scan QR Code" = "Σάρωση κωδικού QR";
@@ -584,6 +590,9 @@
 "Support" = "Υποστήριξη";
 
 /* (No Commment) */
+"Syncing wallet" = "Συγχρονισμός πορτοφόλι";
+
+/* (No Commment) */
 "Terms of Service" = "Όροι παροχής υπηρεσιών";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Ενημέρωση";
-
-/* (No Commment) */
-"Updating label" = "Ενημέρωση ετικέτα";
-
-/* (No Commment) */
-"Updating settings" = "Ενημέρωση ρυθμίσεων";
 
 /* (No Commment) */
 "Upgrade Now" = "Αναβάθμιση τώρα";

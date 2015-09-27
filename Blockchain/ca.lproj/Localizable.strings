@@ -233,6 +233,9 @@
 "Error loading settings" = "Configuració de càrrega d'error";
 
 /* (No Commment) */
+"Error updating settings" = "Error d'actualització d'escenes";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "No ha pogut carregar la cartera";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Si us plau revisa el teu email.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Si us plau, comproveu la connexió d'internet.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Trieu-ne un altre PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Intenteu-ho novament";
-
-/* (No Commment) */
-"Please try again shortly." = "Si us plau provar una altra vegada en breu.";
 
 /* (No Commment) */
 "Please verify your email" = "Si us plau verificar el seu e-mail";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Escanejar el codi d'aparellament";
+
+/* (No Commment) */
+"Scan Private Key" = "Clau privada d'escannejar";
 
 /* (No Commment) */
 "Scan QR Code" = "Escaneja un codi QR";
@@ -584,6 +590,9 @@
 "Support" = "Suport";
 
 /* (No Commment) */
+"Syncing wallet" = "Sincronització de cartera";
+
+/* (No Commment) */
 "Terms of Service" = "Condicions del servei";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Actualització";
-
-/* (No Commment) */
-"Updating label" = "Etiqueta d'actualització";
-
-/* (No Commment) */
-"Updating settings" = "Configuració d'actualització";
 
 /* (No Commment) */
 "Upgrade Now" = "Actualitza'l ara";

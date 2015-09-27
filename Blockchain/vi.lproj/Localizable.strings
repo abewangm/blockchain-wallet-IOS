@@ -233,6 +233,9 @@
 "Error loading settings" = "Lỗi tải cài đặt";
 
 /* (No Commment) */
+"Error updating settings" = "Lỗi cập nhật cài đặt";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Bị lỗi khi nạp Wallet";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Xin vui lòng kiểm tra email của bạn.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Xin vui lòng kiểm tra kết nối internet của bạn.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Hãy chọn một mã PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Xin vui lòng thử lại";
-
-/* (No Commment) */
-"Please try again shortly." = "Hãy thử một lần nữa một thời gian ngắn.";
 
 /* (No Commment) */
 "Please verify your email" = "Xin vui lòng xác minh email của bạn";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Quét ghép mã";
+
+/* (No Commment) */
+"Scan Private Key" = "Quét khóa riêng";
 
 /* (No Commment) */
 "Scan QR Code" = "Quét mã QR";
@@ -584,6 +590,9 @@
 "Support" = "Hỗ trợ";
 
 /* (No Commment) */
+"Syncing wallet" = "Đồng bộ hoá ví";
+
+/* (No Commment) */
 "Terms of Service" = "Điều khoản Dịch vụ";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Cập Nhật";
-
-/* (No Commment) */
-"Updating label" = "Đang Cập Nhật nhãn";
-
-/* (No Commment) */
-"Updating settings" = "Thiết đặt Cập Nhật";
 
 /* (No Commment) */
 "Upgrade Now" = "Nâng cấp bây giờ";

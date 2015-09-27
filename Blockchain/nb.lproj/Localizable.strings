@@ -233,6 +233,9 @@
 "Error loading settings" = "Feilinnstillinger";
 
 /* (No Commment) */
+"Error updating settings" = "Feil under oppdatering av innstillinger";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Kan ikke laste inn lommebok";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Sjekk din e-post.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Kontroller Internett-tilkoblingen.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Velg en annen PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Prøv på nytt";
-
-/* (No Commment) */
-"Please try again shortly." = "Prøv igjen snart.";
 
 /* (No Commment) */
 "Please verify your email" = "Kontroller e-post";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Skanne tilkoplingskode";
+
+/* (No Commment) */
+"Scan Private Key" = "Skanne privatnøkkel";
 
 /* (No Commment) */
 "Scan QR Code" = "Skanne QR-kode";
@@ -584,6 +590,9 @@
 "Support" = "Støtte";
 
 /* (No Commment) */
+"Syncing wallet" = "Synkronisering lommebok";
+
+/* (No Commment) */
 "Terms of Service" = "Vilkår for bruk";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Oppdatering";
-
-/* (No Commment) */
-"Updating label" = "Oppdatere etikett";
-
-/* (No Commment) */
-"Updating settings" = "Oppdaterer innstillinger";
 
 /* (No Commment) */
 "Upgrade Now" = "Oppgrader nå";

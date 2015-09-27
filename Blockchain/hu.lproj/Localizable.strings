@@ -233,6 +233,9 @@
 "Error loading settings" = "Hiba betöltése beállítások";
 
 /* (No Commment) */
+"Error updating settings" = "Hiba a beállítások frissítése";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Nem sikerült betölteni a pénztárca";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Kérjük, ellenőrizze e-mailjeit.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Kérjük, ellenőrizze az internet-kapcsolat.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Válasszon egy másik PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Legyen szíves megpróbál újra";
-
-/* (No Commment) */
-"Please try again shortly." = "Legyen szíves megpróbál újra hamarosan.";
 
 /* (No Commment) */
 "Please verify your email" = "Kérjük, ellenőrizze e-mailjeit";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Átkutat a párosító kód";
+
+/* (No Commment) */
+"Scan Private Key" = "Scan privát kulcs";
 
 /* (No Commment) */
 "Scan QR Code" = "QR-kód beolvasásához";
@@ -584,6 +590,9 @@
 "Support" = "Támogatás";
 
 /* (No Commment) */
+"Syncing wallet" = "Szinkronizál pénztárca";
+
+/* (No Commment) */
 "Terms of Service" = "Szolgáltatási feltételek";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Frissítés";
-
-/* (No Commment) */
-"Updating label" = "Címke frissítése";
-
-/* (No Commment) */
-"Updating settings" = "Frissítési beállítások";
 
 /* (No Commment) */
 "Upgrade Now" = "Frissítés most";

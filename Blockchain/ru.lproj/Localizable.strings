@@ -233,6 +233,9 @@
 "Error loading settings" = "Ошибка загрузки настройки";
 
 /* (No Commment) */
+"Error updating settings" = "Ошибка при обновлении параметров";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Не удалось загрузить бумажник";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Пожалуйста, проверьте вашу электронную почту.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Пожалуйста, проверьте ваше Интернет-соединение.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Пожалуйста, выберите другой PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Пожалуйста, попробуйте снова";
-
-/* (No Commment) */
-"Please try again shortly." = "Пожалуйста, попробуйте еще раз в ближайшее время.";
 
 /* (No Commment) */
 "Please verify your email" = "Пожалуйста, проверьте ваш электронный адрес";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Сканировать код привязки";
+
+/* (No Commment) */
+"Scan Private Key" = "Проверка закрытого ключа";
 
 /* (No Commment) */
 "Scan QR Code" = "QR-код";
@@ -584,6 +590,9 @@
 "Support" = "Поддержка";
 
 /* (No Commment) */
+"Syncing wallet" = "Синхронизации бумажника";
+
+/* (No Commment) */
 "Terms of Service" = "Условия предоставления услуг";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Обновление";
-
-/* (No Commment) */
-"Updating label" = "Обновление метки";
-
-/* (No Commment) */
-"Updating settings" = "Параметры обновления";
 
 /* (No Commment) */
 "Upgrade Now" = "Обновить сейчас";

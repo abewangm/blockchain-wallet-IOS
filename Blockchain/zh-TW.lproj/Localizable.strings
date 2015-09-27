@@ -233,6 +233,9 @@
 "Error loading settings" = "錯誤載入設置";
 
 /* (No Commment) */
+"Error updating settings" = "更新設置時出錯";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "未能載入的錢包";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "請檢查您的電子郵件。";
 
 /* (No Commment) */
+"Please check your internet connection." = "請檢查您的互聯網連接。";
+
+/* (No Commment) */
 "Please choose another PIN" = "請選擇另一個 PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "請再試一次";
-
-/* (No Commment) */
-"Please try again shortly." = "請稍後再試。";
 
 /* (No Commment) */
 "Please verify your email" = "請驗證您的電子郵件";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "掃描匹配碼";
+
+/* (No Commment) */
+"Scan Private Key" = "掃描的專用金鑰";
 
 /* (No Commment) */
 "Scan QR Code" = "掃描二維碼";
@@ -584,6 +590,9 @@
 "Support" = "支援";
 
 /* (No Commment) */
+"Syncing wallet" = "同步的錢包";
+
+/* (No Commment) */
 "Terms of Service" = "服務條款";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "更新";
-
-/* (No Commment) */
-"Updating label" = "更新標籤";
-
-/* (No Commment) */
-"Updating settings" = "更新設置";
 
 /* (No Commment) */
 "Upgrade Now" = "現在升級";

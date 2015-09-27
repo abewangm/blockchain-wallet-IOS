@@ -233,6 +233,9 @@
 "Error loading settings" = "エラー読み込み設定";
 
 /* (No Commment) */
+"Error updating settings" = "設定を更新中のエラー";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "財布を読み込みに失敗しました";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "あなたのメール アドレスを確認してください。";
 
 /* (No Commment) */
+"Please check your internet connection." = "あなたのインターネット接続を確認してください。";
+
+/* (No Commment) */
 "Please choose another PIN" = "別のピンを選択してください。";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "もう一度やり直してください。";
-
-/* (No Commment) */
-"Please try again shortly." = "後ほどお試しください。";
 
 /* (No Commment) */
 "Please verify your email" = "あなたのメール アドレスを確認してください。";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "ペアリング コードをスキャンします。";
+
+/* (No Commment) */
+"Scan Private Key" = "秘密キーをスキャンします。";
 
 /* (No Commment) */
 "Scan QR Code" = "QR コードをスキャンします。";
@@ -584,6 +590,9 @@
 "Support" = "サポート";
 
 /* (No Commment) */
+"Syncing wallet" = "同期の財布";
+
+/* (No Commment) */
 "Terms of Service" = "サービス利用規約";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "更新";
-
-/* (No Commment) */
-"Updating label" = "ラベルを更新";
-
-/* (No Commment) */
-"Updating settings" = "設定の更新";
 
 /* (No Commment) */
 "Upgrade Now" = "今すぐアップグレードします。";

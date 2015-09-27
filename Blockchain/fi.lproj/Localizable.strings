@@ -233,6 +233,9 @@
 "Error loading settings" = "Virhe lastaus asetukset";
 
 /* (No Commment) */
+"Error updating settings" = "Virhe päivitettäessä asetuksia";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Ei voitu ladata lompakko";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Haluta ruudullinen sinun email.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Tarkista internet-yhteys.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Valitse uuden PIN-koodin";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Yritä uudelleen";
-
-/* (No Commment) */
-"Please try again shortly." = "Yritä hetken kuluttua uudelleen.";
 
 /* (No Commment) */
 "Please verify your email" = "Tarkista sähköpostiosoitteesi";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Skannaa laiteparikoodi";
+
+/* (No Commment) */
+"Scan Private Key" = "Skannaa yksityinen avain";
 
 /* (No Commment) */
 "Scan QR Code" = "Skannaa QR-koodi";
@@ -584,6 +590,9 @@
 "Support" = "Tuki";
 
 /* (No Commment) */
+"Syncing wallet" = "Synkronointi lompakko";
+
+/* (No Commment) */
 "Terms of Service" = "Käyttöehdot";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Päivitys";
-
-/* (No Commment) */
-"Updating label" = "Päivittää merkintä";
-
-/* (No Commment) */
-"Updating settings" = "Päivitetään asetuksia";
 
 /* (No Commment) */
 "Upgrade Now" = "Päivitä nyt";

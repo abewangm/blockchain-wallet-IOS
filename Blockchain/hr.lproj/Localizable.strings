@@ -233,6 +233,9 @@
 "Error loading settings" = "Pogreška učitavanja postavki";
 
 /* (No Commment) */
+"Error updating settings" = "Pogreška pri ažuriranju postavki";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Nije uspjelo učitavanje novčanik";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Molim vas provjerite tvoj elektronička pošta.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Provjerite internetsku vezu.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Molimo odaberite drugi PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Molimo pokušajte ponovno";
-
-/* (No Commment) */
-"Please try again shortly." = "Uskoro pokušajte ponovo.";
 
 /* (No Commment) */
 "Please verify your email" = "Molim vas provjerite tvoj elektronička pošta";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Skenirajte kod za uparivanje";
+
+/* (No Commment) */
+"Scan Private Key" = "Skandirati što privatni ključ";
 
 /* (No Commment) */
 "Scan QR Code" = "Skenirajte QR kod";
@@ -584,6 +590,9 @@
 "Support" = "Podrška za";
 
 /* (No Commment) */
+"Syncing wallet" = "Sinkronizacija novčanik";
+
+/* (No Commment) */
 "Terms of Service" = "Uvjeti korištenja";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Ažuriranje";
-
-/* (No Commment) */
-"Updating label" = "Ažuriranje oznaka";
-
-/* (No Commment) */
-"Updating settings" = "Ažuriranje postavki";
 
 /* (No Commment) */
 "Upgrade Now" = "Nadogradite sada";

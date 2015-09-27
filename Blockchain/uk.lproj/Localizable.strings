@@ -233,6 +233,9 @@
 "Error loading settings" = "Помилка завантаження параметрів";
 
 /* (No Commment) */
+"Error updating settings" = "Помилка оновлення налаштувань";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Не вдалося завантажити гаманець";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Будь ласка, перевірте свою електронну пошту.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Будь ласка, Перевірте підключення до Інтернету.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Будь ласка, оберіть інший PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Будь ласка, спробуйте ще раз";
-
-/* (No Commment) */
-"Please try again shortly." = "Будь ласка, спробуйте ще раз найближчим часом.";
 
 /* (No Commment) */
 "Please verify your email" = "Перевірте вашу електронну пошту";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Сканування спаровування код";
+
+/* (No Commment) */
+"Scan Private Key" = "Сканування секретний ключ";
 
 /* (No Commment) */
 "Scan QR Code" = "Скануйте QR код";
@@ -584,6 +590,9 @@
 "Support" = "Підтримка";
 
 /* (No Commment) */
+"Syncing wallet" = "Синхронізацію гаманець";
+
+/* (No Commment) */
 "Terms of Service" = "Умови надання послуг";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Оновлення";
-
-/* (No Commment) */
-"Updating label" = "Оновлення етикетки";
-
-/* (No Commment) */
-"Updating settings" = "Оновлення налаштувань";
 
 /* (No Commment) */
 "Upgrade Now" = "Оновити зараз";

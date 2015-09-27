@@ -233,6 +233,9 @@
 "Error loading settings" = "Instellingen voor foutpagina laden";
 
 /* (No Commment) */
+"Error updating settings" = "Fout bij het bijwerken van instellingen";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Fout bij het laden van de portefeuille";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Controleer uw e-mailadres.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Controleer uw internetverbinding.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Kies een andere PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Probeer het a.u.b. opnieuw";
-
-/* (No Commment) */
-"Please try again shortly." = "Probeer het nogmaals kort.";
 
 /* (No Commment) */
 "Please verify your email" = "Controleer of uw e-mailadres";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Scan Code in paren rangschikken";
+
+/* (No Commment) */
+"Scan Private Key" = "Scannen van de persoonlijke sleutel";
 
 /* (No Commment) */
 "Scan QR Code" = "QR Code scannen";
@@ -584,6 +590,9 @@
 "Support" = "Ondersteuning";
 
 /* (No Commment) */
+"Syncing wallet" = "Synchroniseren portemonnee";
+
+/* (No Commment) */
 "Terms of Service" = "Algemene gebruiksvoorwaarden";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Update";
-
-/* (No Commment) */
-"Updating label" = "Label bijwerken";
-
-/* (No Commment) */
-"Updating settings" = "Bijwerken van instellingen voor";
 
 /* (No Commment) */
 "Upgrade Now" = "Upgrade nu";

@@ -233,6 +233,9 @@
 "Error loading settings" = "Inställningar fel lastning";
 
 /* (No Commment) */
+"Error updating settings" = "Gick inte att uppdatera inställningar";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Kunde inte ladda plånboken";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Vänligen kontrollera din e-post.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Kontrollera din internet-anslutning.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Välj en annan PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Behaga försök igen";
-
-/* (No Commment) */
-"Please try again shortly." = "Försök igen inom kort.";
 
 /* (No Commment) */
 "Please verify your email" = "Vänligen kontrollera din e-post";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Scan länkningskod";
+
+/* (No Commment) */
+"Scan Private Key" = "Skanna den privata nyckeln";
 
 /* (No Commment) */
 "Scan QR Code" = "Skanna QR-kod";
@@ -584,6 +590,9 @@
 "Support" = "Stöd";
 
 /* (No Commment) */
+"Syncing wallet" = "Synkronisera plånbok";
+
+/* (No Commment) */
 "Terms of Service" = "Villkor för tjänsten";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Uppdatering";
-
-/* (No Commment) */
-"Updating label" = "Uppdatera etikett";
-
-/* (No Commment) */
-"Updating settings" = "Uppdatera inställningar";
 
 /* (No Commment) */
 "Upgrade Now" = "Uppgradera nu";

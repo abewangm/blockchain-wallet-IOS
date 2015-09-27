@@ -233,6 +233,9 @@
 "Error loading settings" = "Error loading indstillinger";
 
 /* (No Commment) */
+"Error updating settings" = "Fejl under opdatering af indstillinger";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Kunne ikke indlæse tegnebog";
 
 /* (No Commment) */
@@ -461,6 +464,9 @@
 "Please check your email." = "Tjek venligst din e-mail.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Kontroller din internetforbindelse.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Vælg venligst en anden PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Prøv venligst igen";
-
-/* (No Commment) */
-"Please try again shortly." = "Prøv igen snart.";
 
 /* (No Commment) */
 "Please verify your email" = "Kontroller venligst din email";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Skan tilknytningskode";
+
+/* (No Commment) */
+"Scan Private Key" = "Skan Private nøgle";
 
 /* (No Commment) */
 "Scan QR Code" = "Skan QR koden";
@@ -584,6 +590,9 @@
 "Support" = "Support";
 
 /* (No Commment) */
+"Syncing wallet" = "Synkronisering tegnebog";
+
+/* (No Commment) */
 "Terms of Service" = "Terms of Service";
 
 /* (No Commment) */
@@ -634,12 +643,6 @@ Fee: %@
 
 /* (No Commment) */
 "Update" = "Opdatering";
-
-/* (No Commment) */
-"Updating label" = "Opdatering af etiket";
-
-/* (No Commment) */
-"Updating settings" = "Opdatere indstillinger";
 
 /* (No Commment) */
 "Upgrade Now" = "Opgradering nu";
