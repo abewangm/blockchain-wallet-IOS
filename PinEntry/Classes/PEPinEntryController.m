@@ -74,6 +74,7 @@ static PEViewController *VerifyController()
 + (PEPinEntryController *)pinVerifyController
 {
 	PEViewController *c = EnterController();
+    [[self class] addLongPressGestureToShowBundleShortNameAlertToPEViewController:c];
 	PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
 	c.delegate = n;
     n->pinController = c;
@@ -85,6 +86,7 @@ static PEViewController *VerifyController()
 + (PEPinEntryController *)pinChangeController
 {
 	PEViewController *c = EnterController();
+    [[self class] addLongPressGestureToShowBundleShortNameAlertToPEViewController:c];
 	PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
 	c.delegate = n;
     [c.cancelButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
@@ -99,6 +101,7 @@ static PEViewController *VerifyController()
 + (PEPinEntryController *)pinCreateController
 {
 	PEViewController *c = NewController();
+    [[self class] addLongPressGestureToShowBundleShortNameAlertToPEViewController:c];
 	PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
 	c.delegate = n;
     n->pinController = c;
@@ -168,6 +171,32 @@ static PEViewController *VerifyController()
 - (void)cancelController
 {
 	[self.pinDelegate pinEntryControllerDidCancel:self];
+}
+
++ (void)addLongPressGestureToShowBundleShortNameAlertToPEViewController:(PEViewController *)peViewController
+{
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPressGesture.minimumPressDuration = 3.0;
+    [peViewController.versionLabel addGestureRecognizer:longPressGesture];
+    peViewController.versionLabel.userInteractionEnabled = YES;
+}
+
++ (void)showBundleShortNameAlert
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *bundleShortName = infoDictionary[@"CFBundleName"];
+    NSString *bundleVersion = infoDictionary[@"CFBundleVersion"];
+    NSString *bundleShortVersionString = infoDictionary[@"CFBundleShortVersionString"];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:bundleShortName message:[[NSString alloc] initWithFormat:@"%@\nv%@", bundleVersion, bundleShortVersionString] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    [alert show];
+}
+
++  (void)handleLongPress:(UILongPressGestureRecognizer*)sender
+{
+    if (sender.state == UIGestureRecognizerStateBegan){
+        [self showBundleShortNameAlert];
+    }
 }
 
 @end
