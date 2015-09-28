@@ -83,6 +83,7 @@
 #define BC_STRING_UNSUPPORTED_PRIVATE_KEY_FORMAT NSLocalizedString(@"Unsupported Private Key Format", nil)
 #define BC_STRING_SCAN_PAIRING_CODE NSLocalizedString(@"Scan Pairing Code", nil)
 #define BC_STRING_PARSING_PAIRING_CODE NSLocalizedString(@"Parsing Pairing Code", nil)
+#define BC_STRING_INVALID_PAIRING_CODE NSLocalizedString(@"Invalid Pairing Code", nil)
 
 #define BC_STRING_INSUFFICIENT_FUNDS NSLocalizedString(@"Insufficient Funds", nil)
 #define BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE NSLocalizedString(@"Please select a different address to send from or lower the fee in Settings.", nil)

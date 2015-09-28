@@ -53,9 +53,14 @@ WalletStore.addEventListener(function (event, obj) {
 
     if (event == 'msg') {
         if (obj.type == 'error') {
+                             
             if (obj.message != "For Improved security add an email address to your account.") {
                 // Cancel busy view in case any error comes in - except for add email, that's handled differently in makeNotice
                 device.execute('loading_stop');
+            }
+                             
+            if (obj.message.search("Invalid Pairing Version Code") != -1) {
+                console.log('invalid foo');
             }
                              
             if (obj.message == "Error Downloading Account Settings") {
