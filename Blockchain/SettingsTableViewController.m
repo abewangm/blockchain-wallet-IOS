@@ -15,7 +15,6 @@
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
 
-
 const int textFieldTagVerifyEmail = 5;
 const int textFieldTagChangeEmail = 4;
 
@@ -211,7 +210,7 @@ const int aboutPrivacyPolicy = 1;
     return [feePerKbFormatter stringFromNumber:[NSNumber numberWithFloat:floatNumber]];
 }
 
-- (void)alertViewToChangeFee
+- (void)alertUserToChangeFee
 {
     NSString *feePerKbString = [self convertFloatToString:self.currentFeePerKb];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, feePerKbString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
@@ -229,13 +228,13 @@ const int aboutPrivacyPolicy = 1;
     self.changeFeeAlertView = alertView;
 }
 
-- (void)alertViewForErrorLoadingSettings
+- (void)alertUserOfErrorLoadingSettings
 {
     [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
 }
 
-- (void)alertViewToChangeEmail:(BOOL)hasAddedEmail
+- (void)alertUserToChangeEmail:(BOOL)hasAddedEmail
 {
     NSString *alertViewTitle = hasAddedEmail ? BC_STRING_SETTINGS_CHANGE_EMAIL :BC_STRING_ADD_EMAIL;
     
@@ -252,7 +251,7 @@ const int aboutPrivacyPolicy = 1;
     self.changeEmailAlertView = alertView;
 }
 
-- (void)alertViewToVerifyEmail
+- (void)alertUserToVerifyEmail
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_ARGUMENT, self.emailString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
@@ -268,7 +267,7 @@ const int aboutPrivacyPolicy = 1;
     self.verifyEmailAlertView = alertView;
 }
 
-- (void)alertViewForVerifyingEmailSuccess
+- (void)alertUserOfVerifyingEmailSuccess
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_SETTINGS_EMAIL_VERIFIED delegate:self cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
     [alertView show];
@@ -285,7 +284,7 @@ const int aboutPrivacyPolicy = 1;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
     
-    [self alertViewToVerifyEmail];
+    [self alertUserToVerifyEmail];
 }
 
 - (void)changeEmail:(NSString *)emailString
@@ -305,7 +304,7 @@ const int aboutPrivacyPolicy = 1;
     
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
     dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-        [self alertViewToVerifyEmail];
+        [self alertUserToVerifyEmail];
     });
 }
 
@@ -322,7 +321,7 @@ const int aboutPrivacyPolicy = 1;
     
     [self getAccountInfo];
     
-    [self alertViewForVerifyingEmailSuccess];
+    [self alertUserOfVerifyingEmailSuccess];
 }
 
 #pragma mark AlertView Delegate
@@ -372,7 +371,7 @@ const int aboutPrivacyPolicy = 1;
                 // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
                 dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
                 dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                    [self alertViewToChangeEmail:YES];
+                    [self alertUserToChangeEmail:YES];
                 });
                 return;
             }
@@ -495,11 +494,11 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case accountDetailsEmail: {
                     if (![self hasAddedEmail]) {
-                        [self alertViewToChangeEmail:NO];
+                        [self alertUserToChangeEmail:NO];
                     } else if ([self hasVerifiedEmail]) {
-                        [self alertViewToChangeEmail:YES];
+                        [self alertUserToChangeEmail:YES];
                     } else {
-                        [self alertViewToVerifyEmail];
+                        [self alertUserToVerifyEmail];
                     } return;
                 }
             }
@@ -521,7 +520,7 @@ const int aboutPrivacyPolicy = 1;
         case feesSection: {
             switch (indexPath.row) {
                 case feePerKb: {
-                    [self alertViewToChangeFee];
+                    [self alertUserToChangeFee];
                     return;
                 }
             }
@@ -672,7 +671,7 @@ const int aboutPrivacyPolicy = 1;
     BOOL hasLoadedAccountInfoDictionary = self.accountInfoDictionary ? YES : NO;
     
     if (!hasLoadedAccountInfoDictionary) {
-        [self alertViewForErrorLoadingSettings];
+        [self alertUserOfErrorLoadingSettings];
         return nil;
     } else {
         return indexPath;
