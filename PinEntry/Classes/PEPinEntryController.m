@@ -33,7 +33,7 @@ static PEViewController *EnterController()
 	PEViewController *c = [[PEViewController alloc] init];
 	c.prompt = BC_STRING_PLEASE_ENTER_PIN;
 	c.title = @"";
-    
+
     NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];
     c.versionLabel.text = [NSString stringWithFormat:@"v%@", version];
@@ -123,6 +123,7 @@ static PEViewController *VerifyController()
                 if (yes) {
                     if(verifyOnly == NO) {
                         PEViewController *c = NewController();
+                        [[self class] addLongPressGestureToShowBundleShortNameAlertToPEViewController:c];
                         c.delegate = self;
                         pinStage = PS_ENTER1;
                         [[self navigationController] pushViewController:c animated:NO];
@@ -138,6 +139,7 @@ static PEViewController *VerifyController()
 		case PS_ENTER1: {
 			pinEntry1 = [controller.pin intValue];
 			PEViewController *c = VerifyController();
+            [[self class] addLongPressGestureToShowBundleShortNameAlertToPEViewController:c];
 			c.delegate = self;
 			[[self navigationController] pushViewController:c animated:NO];
 			self.viewControllers = [NSArray arrayWithObject:c];
