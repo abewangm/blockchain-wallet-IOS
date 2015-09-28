@@ -15,6 +15,12 @@
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
 
+#define SEGUE_IDENTIFIER_CURRENCY @"currency"
+#define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
+#define SEGUE_IDENTIFIER_ABOUT @"about"
+#define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
+#define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
+
 const int textFieldTagVerifyEmail = 5;
 const int textFieldTagChangeEmail = 4;
 
@@ -464,19 +470,19 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"currency"]) {
+    if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_CURRENCY]) {
         SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
         settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
         settingsSelectorTableViewController.allCurrencySymbolsDictionary = self.allCurrencySymbolsDictionary;
         settingsSelectorTableViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:@"about"]) {
+    } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_ABOUT]) {
         SettingsAboutViewController *aboutViewController = segue.destinationViewController;
-        if ([sender isEqualToString:@"termsOfService"]) {
+        if ([sender isEqualToString:SEGUE_SENDER_TERMS_OF_SERVICE]) {
             aboutViewController.urlTargetString = TERMS_OF_SERVICE_URL;
-        } else if ([sender isEqualToString:@"privacyPolicy"]) {
+        } else if ([sender isEqualToString:SEGUE_SENDER_PRIVACY_POLICY]) {
             aboutViewController.urlTargetString = PRIVACY_POLICY_URL;
         }
-    } else if ([segue.identifier isEqualToString:@"btcUnit"]) {
+    } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_BTC_UNIT]) {
         SettingsBitcoinUnitTableViewController *settingsBtcUnitTableViewController = segue.destinationViewController;
         settingsBtcUnitTableViewController.itemsDictionary = self.accountInfoDictionary[@"btc_currencies"];
         settingsBtcUnitTableViewController.delegate = self;
@@ -507,11 +513,11 @@ const int aboutPrivacyPolicy = 1;
         case displaySection: {
             switch (indexPath.row) {
                 case displayLocalCurrency: {
-                    [self performSegueWithIdentifier:@"currency" sender:nil];
+                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
                     return;
                 }
                 case displayBtcUnit: {
-                    [self performSegueWithIdentifier:@"btcUnit" sender:nil];
+                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
                     return;
                 }
             }
@@ -529,11 +535,11 @@ const int aboutPrivacyPolicy = 1;
         case aboutSection: {
             switch (indexPath.row) {
                 case aboutTermsOfService: {
-                    [self performSegueWithIdentifier:@"about" sender:@"termsOfService"];
+                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_TERMS_OF_SERVICE];
                     return;
                 }
                 case aboutPrivacyPolicy: {
-                    [self performSegueWithIdentifier:@"about" sender:@"privacyPolicy"];
+                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_PRIVACY_POLICY];
                     return;
                 }
             }
