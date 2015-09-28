@@ -176,7 +176,7 @@ static PEViewController *VerifyController()
 + (void)addLongPressGestureToShowBundleShortNameAlertToPEViewController:(PEViewController *)peViewController
 {
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longPressGesture.minimumPressDuration = 3.0;
+    longPressGesture.minimumPressDuration = 1.0;
     [peViewController.versionLabel addGestureRecognizer:longPressGesture];
     peViewController.versionLabel.userInteractionEnabled = YES;
 }
