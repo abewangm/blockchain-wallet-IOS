@@ -59,10 +59,6 @@ WalletStore.addEventListener(function (event, obj) {
                 device.execute('loading_stop');
             }
                              
-            if (obj.message.search("Invalid Pairing Version Code") != -1) {
-                console.log('invalid foo');
-            }
-                             
             if (obj.message == "Error Downloading Account Settings") {
                 device.execute('on_error_downloading_account_settings');
                 return;
