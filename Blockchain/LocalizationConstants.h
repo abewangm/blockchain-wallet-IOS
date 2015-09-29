@@ -137,7 +137,7 @@
 #define BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN NSLocalizedString(@"Please choose another PIN", nil)
 #define BC_PIN_NO_MATCH NSLocalizedString(@"PINs do not match", nil)
 
-#define BC_STRING_PIN_VALIDATION_ERROR_DETAIL NSLocalizedString(@"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?", nil)
+#define BC_STRING_PIN_VALIDATION_ERROR_DETAIL NSLocalizedString(@"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?", nil)
 #define BC_STRING_ENTER_PASSWORD NSLocalizedString(@"Enter Password", nil)
 #define BC_STRING_PLEASE_ENTER_PIN NSLocalizedString(@"Please enter your PIN", nil)
 #define BC_STRING_PLEASE_ENTER_NEW_PIN NSLocalizedString(@"Please enter a new PIN", nil)
