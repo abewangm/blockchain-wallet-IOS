@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "कोई ईमेल खाता एक खो बटुआ पहचानकर्ता उबरने में मदद करने के लिए की जरूरत है और भुगतान सूचनाओं के लिए। जब आप अपने बटुए में प्रवेश भी, अपना सत् यापित ईमेल पता सत्यापन की एक दूसरी परत के रूप में उपयोग किया जाएगा।";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "त्रुटि लोड हो रहा है अपने बटुए का सामना करना पड़ा था। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का सामना कर रहा है। कृपया अनुप्रयोग बंद करें और बाद में पुन: प्रयास करें या अपने डिवाइस पुन: जोड़ी।";
@@ -672,7 +672,7 @@ Fee: %@
 "Verifying" = "का सत्यापन";
 
 /* (No Commment) */
-"Wallet Identifer" = "बटुआ Identifer";
+"Wallet Identifier" = "बटुआ Identifer";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "बटुआ सफलतापूर्वक बनती।";

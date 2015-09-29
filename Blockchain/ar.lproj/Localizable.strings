@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "حساب البريد إلكتروني مطلوب للمساعدة في استرداد معرفاً محفظة المفقودة، وإخطارات الدفع. أيضا، سيتم استخدام عنوان بريدك الإلكتروني تم التحقق منها كطبقة ثانية من التحقق عند تسجيل الدخول إلى محفظتك.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "حدث خطأ أثناء التحقق من صحة رمز PIN الخاص بك مع الملقم البعيد. قد تكون دون اتصال أو بلوكتشين قد يواجه بعض الصعوبات. هل تريد إعادة محاولة التحقق من الصحة أو بدلاً من ذلك قم بإدخال كلمة المرور الخاصة بك يدوياً؟";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "حدث خطأ أثناء التحقق من صحة رمز PIN الخاص بك مع الملقم البعيد. قد تكون دون اتصال أو بلوكتشين قد يواجه بعض الصعوبات. هل تريد إعادة محاولة التحقق من الصحة أو بدلاً من ذلك قم بإدخال كلمة المرور الخاصة بك يدوياً؟";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "تمت مصادفة خطأ أثناء تحميل محفظتك. قد تكون دون اتصال أو بلوكتشاين تعاني من صعوبات. الرجاء إغلاق التطبيق وحاول مرة أخرى لاحقاً أو إعادة إقران الجهاز الخاص بك.";
@@ -672,7 +672,7 @@ Fee: %@
 "Verifying" = "التحقق";
 
 /* (No Commment) */
-"Wallet Identifer" = "معرف المحفظة";
+"Wallet Identifier" = "معرف المحفظة";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "إقران المحفظة بنجاح.";

@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Ett e-postkonto behövs för att återvinna en förlorad plånbok identifierare och fÃ¶r meddelanden om betalning. Också, din verifierad e-postadress kommer att användas som ett andra lager av verifiering när du loggar in på din plånbok.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ett fel uppstod validera din PIN-kod med fjärrservern. Du kan vara offline eller blockchain kan uppleva svårigheter. Vill du försöka igen validering eller istället ange lösenordet manuellt?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ett fel uppstod validera din PIN-kod med fjärrservern. Du kan vara offline eller Blockchain kan uppleva svårigheter. Vill du försöka igen validering eller istället ange lösenordet manuellt?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ett fel påträffades laddar din plånbok. Du kan vara offline eller Blockchain upplever svårigheter. Stäng programmet och försök igen senare eller åter koppla enheten.";
@@ -672,7 +672,7 @@ Fee: %@
 "Verifying" = "Kontrollera";
 
 /* (No Commment) */
-"Wallet Identifer" = "Plånbok identifierare";
+"Wallet Identifier" = "Plånbok identifierare";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Plånbok Parade framgångsrikt.";

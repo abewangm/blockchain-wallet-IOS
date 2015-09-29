@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "电子邮件帐户需要帮助恢复丢失的钱包标识符和付款通知。此外，您已验证电子邮件地址将用作验证第二层当您登录到你的钱包。";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "验证您的 PIN 代码与远程服务器时发生错误。你可能处于脱机状态或 blockchain 可能遇到的困难。要验证重试或相反手动输入您的密码吗?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "验证您的 PIN 代码与远程服务器时发生错误。你可能处于脱机状态或 Blockchain 可能遇到的困难。要验证重试或相反手动输入您的密码吗?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "加载你的钱包时遇到错误。你可能处于脱机状态，或者 Blockchain 遇到困难。请关闭应用程序，请稍后再试或重新配对您的设备。";
@@ -672,7 +672,7 @@ Fee: %@
 "Verifying" = "验证";
 
 /* (No Commment) */
-"Wallet Identifer" = "钱包标识符";
+"Wallet Identifier" = "钱包标识符";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "配对成功的钱包。";

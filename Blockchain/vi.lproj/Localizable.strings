@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Một tài khoản email cần thiết để giúp phục hồi danh mất ví và thông báo thanh toán. Ngoài ra, địa chỉ email xác minh sẽ được sử dụng như một lớp thứ hai của xác minh khi bạn đăng nhập vào ví của bạn";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Xác nhận mã PIN của bạn với máy chủ từ xa đã có lỗi. Bạn có thể được diễn đàn hoặc blockchain có thể gặp khó khăn. Bạn có muốn thử lại xác nhận hoặc thay vào đó nhập mật khẩu của bạn theo cách thủ công?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Xác nhận mã PIN của bạn với máy chủ từ xa đã có lỗi. Bạn có thể được diễn đàn hoặc Blockchain có thể gặp khó khăn. Bạn có muốn thử lại xác nhận hoặc thay vào đó nhập mật khẩu của bạn theo cách thủ công?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Một lỗi bắt gặp tải chi tiêu của bạn. Bạn có thể được diễn đàn hoặc Blockchain đang trải qua những khó khăn. Xin vui lòng đóng ứng dụng và thử lại sau hoặc tái ghép nối thiết bị của bạn.";
@@ -672,7 +672,7 @@ Fee: %@
 "Verifying" = "Xác minh";
 
 /* (No Commment) */
-"Wallet Identifer" = "Ví Identifer";
+"Wallet Identifier" = "Ví Identifer";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Ví kết nối thành công.";

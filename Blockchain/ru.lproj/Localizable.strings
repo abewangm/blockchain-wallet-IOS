@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Учетной записи электронной почты необходимо, чтобы помочь восстановить потерял бумажник идентификатор и для уведомлений о платежах. Кроме того ваш адрес электронной почты будет использоваться в качестве второй слой проверки при входе в ваш бумажник.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке ваш PIN-код с удаленным сервером. Вы может быть отключен или blockchain могут испытывать трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке ваш PIN-код с удаленным сервером. Вы может быть отключен или Blockchain могут испытывать трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ошибка загрузки ваш бумажник. Вы может быть отключен или Blockchain испытывает трудности. Закройте приложение и повторите попытку позже или повторно пара ваше устройство.";
@@ -672,7 +672,7 @@ Fee: %@
 "Verifying" = "Проверка";
 
 /* (No Commment) */
-"Wallet Identifer" = "Идентификатор кошелька";
+"Wallet Identifier" = "Идентификатор кошелька";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Карманы паре успешно.";

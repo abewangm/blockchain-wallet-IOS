@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Un account di posta elettronica è necessario per aiutare a recuperare un identificatore di portafoglio perduta e per le notifiche di pagamento. Inoltre, il tuo indirizzo email verificato fungerà da un secondo strato di verifica quando accedi al tuo portafoglio.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Errore durante la convalida codice PIN con il server remoto. Potrebbe essere non in linea oppure blockchain possono avere difficoltà. Ti piacerebbe riprova la convalida oppure inserire manualmente la password?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Errore durante la convalida codice PIN con il server remoto. Potrebbe essere non in linea oppure Blockchain possono avere difficoltà. Ti piacerebbe riprova la convalida oppure inserire manualmente la password?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Un errore durante il caricamento il vostro portafoglio. Potrebbe essere non in linea oppure Blockchain è in difficoltà. Si prega di chiudere l'applicazione e riprovare più tardi o ri-associare il dispositivo.";
@@ -672,7 +672,7 @@ Fee: %@
 "Verifying" = "Verifica";
 
 /* (No Commment) */
-"Wallet Identifer" = "Identificatore del portafoglio";
+"Wallet Identifier" = "Identificatore del portafoglio";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Portafoglio abbinato con successo.";

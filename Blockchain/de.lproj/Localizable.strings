@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Ein e-Mail-Konto ist erforderlich zum Wiederherstellen eine verlorenen Portemonnaie-ID und für Zahlungsantwort. Außerdem wird Ihre verifizierte e-Mail-Adresse verwendet werden als zweite Schicht der Überprüfung bei der Anmeldung in Ihrer Brieftasche.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Überprüfen Ihren PIN-Code, mit dem remote-Server ist ein Fehler aufgetreten. Sie ist möglicherweise offline oder Blockchain möglicherweise Schwierigkeiten. Möchten Sie wiederholen Validierung oder stattdessen Ihr Kennwort manuell eingeben?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Überprüfen Ihren PIN-Code, mit dem remote-Server ist ein Fehler aufgetreten. Sie ist möglicherweise offline oder Blockchain möglicherweise Schwierigkeiten. Möchten Sie wiederholen Validierung oder stattdessen Ihr Kennwort manuell eingeben?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Fehler beim Laden Ihrer Brieftasche. Sie ist möglicherweise offline oder Blockchain Schwierigkeiten. Bitte schließen Sie die Anwendung und versuchen Sie später erneut, oder verbinden Sie Ihr Gerät erneut.";
@@ -672,7 +672,7 @@ Fee: %@
 "Verifying" = "Überprüfen";
 
 /* (No Commment) */
-"Wallet Identifer" = "Brieftasche Identifer";
+"Wallet Identifier" = "Brieftasche Identifer";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Brieftasche erfolgreich gepaart.";

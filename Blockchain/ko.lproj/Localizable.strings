@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "이메일 계정이 분실된 지갑 식별자를 복구할 수 있도록 하는 데 필요한 및 지불 알림. 당신의 지갑에 로그인 할 때 또한, 확인 된 이메일 주소 확인의 두 번째 계층으로 사용 됩니다.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "오류가 발생 원격 서버와 핀 코드의 유효성을 검사 했습니다. 당신이 오프 라인 될 수 있습니다 또는 blockchain 어려움을 겪고 있습니다. 유효성 검사를 다시 시도 하거나 대신 수동으로 비밀 번호를 입력 시겠습니까?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "오류가 발생 원격 서버와 핀 코드의 유효성을 검사 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있습니다. 유효성 검사를 다시 시도 하거나 대신 수동으로 비밀 번호를 입력 시겠습니까?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "오류가 당신의 지갑을 로드 하는 동안 발생 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 제발 응용 프로그램을 닫고 나중에 다시 시도 또는 장치를 다시 쌍.";
@@ -672,7 +672,7 @@ Fee: %@
 "Verifying" = "확인";
 
 /* (No Commment) */
-"Wallet Identifer" = "지갑 식별자";
+"Wallet Identifier" = "지갑 식별자";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "지갑에 성공적으로 대응.";
