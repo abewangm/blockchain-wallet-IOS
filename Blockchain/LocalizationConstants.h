@@ -280,6 +280,9 @@
 #define BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT NSLocalizedString(@"Current rate: %@ BTC", nil)
 #define BC_STRING_SETTINGS_FEE_ARGUMENT_BTC NSLocalizedString(@"%@ BTC", nil)
 #define BC_STRING_SETTINGS_FEE_TOO_HIGH NSLocalizedString(@"Fee is too high (0.01 BTC limit)", nil)
+#define BC_STRING_SETTINGS_COPY_GUID NSLocalizedString(@"Copy GUID", nil)
+#define BC_STRING_SETTINGS_COPY_GUID_WARNING NSLocalizedString(@"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet.", nil)
+#define BC_STRING_COPY_TO_CLIPBOARD NSLocalizedString(@"Copy to clipboard", nil)
 
 #define BC_STRING_NEW_ADDRESS NSLocalizedString(@"New Address", nil)
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)

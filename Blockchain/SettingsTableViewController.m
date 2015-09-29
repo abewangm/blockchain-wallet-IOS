@@ -498,6 +498,18 @@ const int aboutPrivacyPolicy = 1;
     switch (indexPath.section) {
         case accountDetailsSection: {
             switch (indexPath.row) {
+                case accountDetailsIdentifier: {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_COPY_GUID message:BC_STRING_SETTINGS_COPY_GUID_WARNING preferredStyle:UIAlertControllerStyleActionSheet];
+                    UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_TO_CLIPBOARD style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                        DLog("User confirmed copying GUID");
+                        [UIPasteboard generalPasteboard].string = app.wallet.guid;
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil];
+                    [alert addAction:cancelAction];
+                    [alert addAction:copyAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    return;
+                }
                 case accountDetailsEmail: {
                     if (![self hasAddedEmail]) {
                         [self alertUserToChangeEmail:NO];
