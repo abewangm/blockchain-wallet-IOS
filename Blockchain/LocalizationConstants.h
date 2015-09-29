@@ -272,7 +272,7 @@
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND NSLocalizedString(@"Resend verification email", nil)
 #define BC_STRING_SETTINGS_CHANGE_EMAIL NSLocalizedString(@"Change Email", nil)
 #define BC_STRING_SETTINGS_EMAIL_VERIFIED NSLocalizedString(@"Your email has been verified.", nil)
-#define BC_STRING_SETTINGS_WALLET_IDENTIFIER NSLocalizedString (@"Wallet Identifer", nil)
+#define BC_STRING_SETTINGS_WALLET_IDENTIFIER NSLocalizedString (@"Wallet Identifier", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_TITLE NSLocalizedString(@"Error loading settings", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE NSLocalizedString(@"Please check your internet connection.", nil)
 #define BC_STRING_SETTINGS_ERROR_UPDATING_TITLE NSLocalizedString(@"Error updating settings", nil)
