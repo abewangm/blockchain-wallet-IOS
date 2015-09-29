@@ -113,7 +113,7 @@ MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
     var success = function () {
         console.log('Upgraded legacy wallet to HD wallet');
 
-        MyWallet.getHistoryAndParseMultiAddressJSON();
+        MyWallet.wallet.getHistory();
         device.execute('loading_stop');
         device.execute('upgrade_success');
     };
@@ -357,7 +357,8 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     };
     
     var success = function() {
-        MyWallet.getHistoryAndParseMultiAddressJSON(history_success);
+        var getHistory = MyWallet.wallet.getHistory();
+        getHistory.then(history_success);
     };
     
     var other_error = function(e) {
@@ -636,7 +637,8 @@ MyWalletPhone.get_history = function() {
     
     device.execute('loading_start_get_history');
     
-    MyWallet.get_history(success, error);
+    var getHistory = MyWallet.wallet.getHistory();
+    getHistory.then(success).catch(error);
 };
 
 MyWalletPhone.get_wallet_and_history = function() {
@@ -653,7 +655,8 @@ MyWalletPhone.get_wallet_and_history = function() {
     device.execute('loading_start_get_wallet_and_history');
     
     MyWallet.getWallet(function() {
-        MyWallet.get_history(success, error);
+        var getHistory = MyWallet.wallet.getHistory();
+        getHistory.then(success).catch(error);
     });
 };
 
