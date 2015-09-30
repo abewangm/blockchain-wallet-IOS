@@ -699,8 +699,12 @@ void (^secondPasswordSuccess)(NSString *);
     }
     else if (textField == mainPasswordTextField) {
         [self mainPasswordClicked:textField];
-    } else if (textField == recoverWalletTextField) {
+    } else if (textField == recoverWalletPasswordTextField) {
         [self recoverWalletClicked:textField];
+    } else if (textField == recoverWalletPassphraseTextField) {
+        [recoverWalletEmailTextField becomeFirstResponder];
+    } else if (textField == recoverWalletEmailTextField) {
+        [recoverWalletPasswordTextField becomeFirstResponder];
     }
     
     return YES;
@@ -1195,7 +1199,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showRecoverWallet:(id)sender
 {
     [app showModalWithContent:recoverWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET onDismiss:nil onResume:^{
-        [recoverWalletTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.1f];
+        [recoverWalletPassphraseTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.1f];
     }];
 }
 
@@ -1209,9 +1213,17 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)recoverWalletClicked:(id)sender
 {
-    [recoverWalletTextField resignFirstResponder];
+    [recoverWalletPassphraseTextField resignFirstResponder];
+    [recoverWalletEmailTextField resignFirstResponder];
+    [recoverWalletPasswordTextField resignFirstResponder];
+
     [self showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_WALLET];
-    [self.wallet recoverWithPassphrase:recoverWalletTextField.text];
+    [self.wallet recoverWithEmail:recoverWalletEmailTextField.text password:recoverWalletPasswordTextField.text passphrase:recoverWalletPassphraseTextField.text];
+    
+    recoverWalletEmailTextField.text = @"";
+    recoverWalletPassphraseTextField.text = @"";
+    recoverWalletPasswordTextField.text = @"";
+    
     app.wallet.delegate = app;
 }
 

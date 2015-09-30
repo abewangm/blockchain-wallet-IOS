@@ -214,6 +214,6 @@
 - (void)checkIfOverspending;
 
 // Recover with passphrase
-- (void)recoverWithPassphrase:(NSString *)passphrase;
+- (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;
 
 @end

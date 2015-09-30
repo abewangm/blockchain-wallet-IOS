@@ -22,7 +22,9 @@
                 <outlet property="manualPairView" destination="585" id="z6f-l0-Z4m"/>
                 <outlet property="newAccountView" destination="355" id="hcZ-mn-DpM"/>
                 <outlet property="pairingInstructionsView" destination="351" id="374"/>
-                <outlet property="recoverWalletTextField" destination="fun-L2-B27" id="xnD-am-l60"/>
+                <outlet property="recoverWalletEmailTextField" destination="UcX-I6-OW6" id="Ck9-wf-SBq"/>
+                <outlet property="recoverWalletPassphraseTextField" destination="fun-L2-B27" id="p9A-lI-zoN"/>
+                <outlet property="recoverWalletPasswordTextField" destination="eYg-tq-Wnu" id="n87-aa-WX0"/>
                 <outlet property="recoverWalletView" destination="fRU-MO-cZM" id="8Vp-vY-wU1"/>
                 <outlet property="secondPasswordDescriptionLabel" destination="467" id="Yhk-8q-Q6W"/>
                 <outlet property="secondPasswordTextField" destination="469" id="475"/>
@@ -611,19 +613,37 @@ http://blockchain.info/wallet</string>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Type your recovery phrase below, separating each word by a space." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9QM-e4-aQb">
-                    <rect key="frame" x="36" y="57" width="248" height="54"/>
+                    <rect key="frame" x="36" y="25" width="248" height="54"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" id="fun-L2-B27" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
-                    <rect key="frame" x="36" y="119" width="248" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Recovery phrase" textAlignment="natural" minimumFontSize="17" id="fun-L2-B27" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                    <rect key="frame" x="36" y="87" width="248" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                     <connections>
                         <outlet property="delegate" destination="3" id="UH2-LX-vzU"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" id="UcX-I6-OW6" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                    <rect key="frame" x="36" y="125" width="248" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                    <connections>
+                        <outlet property="delegate" destination="3" id="MAP-bU-4pu"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" id="eYg-tq-Wnu" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                    <rect key="frame" x="36" y="163" width="248" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="3" id="Zbc-i6-I0m"/>
                     </connections>
                 </textField>
             </subviews>

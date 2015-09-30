@@ -424,17 +424,22 @@
 
 - (void)setLabel:(NSString*)label forLegacyAddress:(NSString*)address
 {
-    [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").label = \"%@\"", [address escapeStringForJS], [label escapeStringForJS]];
+    self.isSyncingForTrivialProcess = YES;
+    [self.webView executeJS:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
 }
 
 - (void)archiveLegacyAddress:(NSString*)address
 {
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = true", [address escapeStringForJS]];
+    
+    [self getHistory];
 }
 
 - (void)unArchiveLegacyAddress:(NSString*)address
 {
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = false", [address escapeStringForJS]];
+    
+    [self getHistory];
 }
 
 - (uint64_t)getLegacyAddressBalance:(NSString*)address
@@ -541,6 +546,7 @@
 
 - (void)setTransactionFee:(uint64_t)feePerKb
 {
+    self.isSyncingForTrivialProcess = YES;
     [self.webView executeJS:@"MyWalletPhone.setTransactionFee(%lld)", feePerKb];
 }
 
@@ -559,9 +565,9 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.checkIfWalletHasAddress(\"%@\")", [address escapeStringForJS]] boolValue];
 }
 
-- (void)recoverWithPassphrase:(NSString *)passphrase
+- (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase
 {
-    [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\")", [passphrase escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\",\"%@\",\"%@\")", [email escapeStringForJS], [recoveryPassword escapeStringForJS], [passphrase escapeStringForJS]];
 }
 
 # pragma mark - Transaction handlers
@@ -927,8 +933,8 @@
     }
 #endif
     
-    if (self.didScanQRCode) {
-        self.didScanQRCode = NO;
+    if (self.didPairAutomatically) {
+        self.didPairAutomatically = NO;
         [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
     }
     
@@ -961,9 +967,20 @@
         [delegate didCreateNewAccount:_guid sharedKey:_sharedKey password:_password];
 }
 
+- (void)on_add_private_key_start
+{
+    DLog(@"on_add_private_key_start");
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
+}
+
 - (void)on_add_private_key:(NSString*)address
 {
-    [app standardNotify:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] title:BC_STRING_SUCCESS delegate:nil];
+    [self loading_stop];
+    self.isSyncingForCriticalProcess = YES;
+    DLog(@"on_add_private_key");
+    if ([delegate respondsToSelector:@selector(didImportPrivateKey:)]) {
+        [delegate didImportPrivateKey:address];
+    }
 }
 
 - (void)on_error_adding_private_key:(NSString*)error
@@ -1029,10 +1046,11 @@
 
 - (void)on_backup_wallet_start
 {
+    if (self.isSyncingForTrivialProcess) {
+        [self loading_stop];
+        self.isSyncingForTrivialProcess = NO;
+    }
     DLog(@"on_backup_wallet_start");
-    // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
-    [self loading_stop];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
 
 - (void)on_backup_wallet_error
@@ -1048,6 +1066,9 @@
     DLog(@"on_backup_wallet_success");
     if ([delegate respondsToSelector:@selector(didBackupWallet)])
         [delegate didBackupWallet];
+    // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
+    [self loading_stop];
+    self.isSyncingForCriticalProcess = NO;
 }
 
 - (void)did_fail_set_guid
@@ -1062,6 +1083,12 @@
 {
     DLog(@"on_change_local_currency_success");
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
+}
+
+- (void)on_change_currency_error
+{
+    DLog(@"on_change_local_currency_error");
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_UPDATING_TITLE delegate:nil];
 }
 
 - (void)on_get_account_info_success:(NSString *)accountInfo
@@ -1153,6 +1180,21 @@
 {
     DLog(@"on_recover_with_passphrase_success_guid:sharedKey:password:");
     [self loadWalletWithGuid:recoveredWalletDictionary[@"guid"] sharedKey:recoveredWalletDictionary[@"sharedKey"] password:recoveredWalletDictionary[@"password"]];
+}
+
+- (void)on_recover_with_passphrase_error:(NSString *)error
+{
+    DLog(@"on_recover_with_passphrase_error:");
+    [self loading_stop];
+    [app standardNotify:error];
+}
+
+
+- (void)on_error_downloading_account_settings
+{
+    DLog(@"on_error_downloading_account_settings");
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
@@ -1275,6 +1317,7 @@
 - (void)setLabelForAccount:(int)account label:(NSString *)label
 {
     if ([self isInitialized]) {
+        self.isSyncingForTrivialProcess = YES;
         [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, label];
     }
 }

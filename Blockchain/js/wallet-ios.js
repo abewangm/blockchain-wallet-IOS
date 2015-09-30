@@ -53,9 +53,20 @@ WalletStore.addEventListener(function (event, obj) {
 
     if (event == 'msg') {
         if (obj.type == 'error') {
+                             
             if (obj.message != "For Improved security add an email address to your account.") {
                 // Cancel busy view in case any error comes in - except for add email, that's handled differently in makeNotice
                 device.execute('loading_stop');
+            }
+                             
+            if (obj.message == "Error Downloading Account Settings") {
+                device.execute('on_error_downloading_account_settings');
+                return;
+            }
+                             
+            if (obj.message == "update-currency-error" || obj.message == "update-btc-currency-error") {
+                device.execute('on_change_currency_error');
+                return;
             }
 
             // Some messages are JSON objects and the error message is in the map
@@ -267,44 +278,6 @@ MyWalletPhone.sweepPayment = function() {
         return x;
     });
 };
-
-MyWalletPhone.recommendedTransactionFee = function(payment) {
-    
-    payment.payment.then(function(x) {
-        device.execute('update_fee:', [x.transaction.fee]);
-    });
-    
-    payment.payment.catch(function(error) {
-       var errorArgument;
-       if (error.error) {
-            errorArgument = error.error;
-       } else {
-            errorArgument = error.message;
-       }
-        console.log('error updating fee: ' + error.message);
-       device.execute('on_error_update_fee:', [errorArgument]);
-    });
-}
-
-MyWalletPhone.getMaximumTransactionFeeForAddress = function(address) {
-    var falseTransaction = new Spender().fromAddress(address);
-    falseTransaction.getSuggestedSweep().then(function(suggestedSweep) {
-        var maxAmount = suggestedSweep[0];
-        var maxFee = suggestedSweep[1];
-        console.log('maxAmount and fee are' + maxAmount + ',' + maxFee);
-        device.execute('update_max_amount:fee:', [maxAmount, maxFee]);
-    });
-}
-
-MyWalletPhone.getMaximumTransactionFeeForAccount = function(account) {
-    var falseTransaction = new Spender().fromAccount(MyWalletPhone.getIndexOfActiveAccount(account));
-    falseTransaction.getSuggestedSweep().then(function(suggestedSweep) {
-        var maxAmount = suggestedSweep[0];
-        var maxFee = suggestedSweep[1];
-        console.log('maxAmount and fee are' + maxAmount + ',' + maxFee);
-        device.execute('update_max_amount:fee:', [maxAmount, maxFee]);
-    });
-}
 
 MyWalletPhone.setTransactionFee = function(fee) {
     MyWallet.wallet.fee_per_kb = fee;
@@ -729,26 +702,30 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
     if (needsBip38Passsword) {
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
             if (MyWallet.wallet.isDoubleEncrypted) {
+                device.execute('on_add_private_key_start');
                 MyWalletPhone.getSecondPassword(function (pw) {
-                    var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', pw, bip38Pass);
+                    var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, pw, bip38Pass);
                     promise.then(success, error);
                 });
             }
             else {
-                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', null, bip38Pass);
+                device.execute('on_add_private_key_start');
+                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, null, bip38Pass);
                 promise.then(success, error);
             }
         });
     }
     else {
         if (MyWallet.wallet.isDoubleEncrypted) {
+            device.execute('on_add_private_key_start');
             MyWalletPhone.getSecondPassword(function (pw) {
-                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', pw, null);
+                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, pw, null);
                 promise.then(success, error);
             });
         }
         else {
-            var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, '', null, null);
+            device.execute('on_add_private_key_start');
+            var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, null, null);
             promise.then(success, error);
         }
     }
@@ -1004,7 +981,7 @@ MyWalletPhone.checkIfWalletHasAddress = function(address) {
     return (addresses.indexOf(address) > -1);
 }
 
-MyWalletPhone.recoverWithPassphrase = function(passphrase) {
+MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
     
     console.log('recovering wallet');
     
@@ -1015,7 +992,15 @@ MyWalletPhone.recoverWithPassphrase = function(passphrase) {
     
     var error = function(error) {
         console.log('recovery error: ' + error);
+        device.execute('on_recover_with_passphrase_error:', [error]);
     }
     
-    MyWallet.recoverFromMnemonic('aerotech808@yahoo.com', 'anyPassword', passphrase, '', success, error);
+    MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error);
+}
+
+MyWalletPhone.setLabelForAddress = function(address, label) {
+    if (label == '') {
+        label = null;
+    }
+    MyWallet.wallet.key(address).label = label;
 }

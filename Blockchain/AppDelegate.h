@@ -90,7 +90,9 @@
     IBOutlet UIView *mainPasswordView;
     IBOutlet UITextField *mainPasswordTextField;
     
-    IBOutlet UITextField *recoverWalletTextField;
+    IBOutlet UITextField *recoverWalletPassphraseTextField;
+    IBOutlet UITextField *recoverWalletEmailTextField;
+    IBOutlet UITextField *recoverWalletPasswordTextField;
     
     @public
     
