@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Akaun e-mel diperlukan untuk membantu memulihkan pengecam hilang wallet dan pemberitahuan pembayaran. Juga, alamat e-mel yang disahkan akan digunakan sebagai lapisan kedua pengesahan apabila anda log masuk ke dalam wallet anda.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ralat berlaku semasa mengesahkan kod PIN anda dengan pelayan jauh. Anda berada di luar talian atau blockchain mungkin sedang mengalami kesukaran. Adakah awda ingin mencuba sekali lagi pengesahan atau sebaliknya masukkan kata laluan anda secara manual?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ralat berlaku semasa mengesahkan kod PIN anda dengan pelayan jauh. Anda berada di luar talian atau Blockchain mungkin sedang mengalami kesukaran. Adakah awda ingin mencuba sekali lagi pengesahan atau sebaliknya masukkan kata laluan anda secara manual?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ralat berlaku semasa memuatkan dompet anda. Anda berada di luar talian atau Blockchain mengalami kesukaran. Sila tutup aplikasi ini dan cuba lagi nanti atau berpasangan semula peranti anda.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Ralat memuatkan seting";
+
+/* (No Commment) */
+"Error updating settings" = "Ralat dalam mengemas kini seting";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Gagal untuk memuatkan Wallet";
@@ -461,6 +464,9 @@
 "Please check your email." = "Sila semak email anda.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Sila semak sambungan internet anda.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Sila pilih PIN yang lain";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Sila cuba lagi";
-
-/* (No Commment) */
-"Please try again shortly." = "Sila cuba sekali lagi tidak lama.";
 
 /* (No Commment) */
 "Please verify your email" = "Sila sahkan email anda";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Imbas kod berpasangan";
+
+/* (No Commment) */
+"Scan Private Key" = "Mengimbas kunci peribadi";
 
 /* (No Commment) */
 "Scan QR Code" = "Imbas Kod QR";
@@ -584,6 +590,9 @@
 "Support" = "Sokongan";
 
 /* (No Commment) */
+"Syncing wallet" = "Menyegerak wallet";
+
+/* (No Commment) */
 "Terms of Service" = "Syarat-syarat Perkhidmatan";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Kemas kini";
 
 /* (No Commment) */
-"Updating label" = "Mengemaskini label";
-
-/* (No Commment) */
-"Updating settings" = "Seting pengemaskinian";
-
-/* (No Commment) */
 "Upgrade Now" = "Menaik taraf sekarang";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Mengesahkan";
 
 /* (No Commment) */
-"Wallet Identifer" = "Wallet Identifer";
+"Wallet Identifier" = "Wallet Identifer";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Wallet berpasangan berjaya.";

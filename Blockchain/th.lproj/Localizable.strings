@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "บัญชีอีเมล์ต้องช่วยกู้คืนรหัสกระเป๋าสตางค์สูญหายและ การแจ้งเตือนการชำระเงิน ยัง ตรวจสอบอีเมล์ของคุณจะสามารถใช้เป็นชั้นที่สองของการตรวจสอบเมื่อคุณเข้าสู่กระเป๋าของคุณ";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "เกิดข้อผิดพลาดในการตรวจสอบรหัส PIN ของคุณกับเซิร์ฟเวอร์ระยะไกล คุณอาจจะออฟไลน์ หรือ blockchain อาจจะประสบความยากลำบาก คุณต้องลองตรวจสอบ หรือป้อนรหัสผ่านของคุณด้วยตนเองแทน หรือไม่";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "เกิดข้อผิดพลาดในการตรวจสอบรหัส PIN ของคุณกับเซิร์ฟเวอร์ระยะไกล คุณอาจจะออฟไลน์ หรือ Blockchain อาจจะประสบความยากลำบาก คุณต้องลองตรวจสอบ หรือป้อนรหัสผ่านของคุณด้วยตนเองแทน หรือไม่";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "เกิดข้อผิดพลาดการโหลดกระเป๋าสตางค์ของคุณ คุณอาจจะออฟไลน์ หรือ Blockchain กำลังประสบความยากลำบาก กรุณาปิดโปรแกรมประยุกต์ และลองอีกครั้งภายหลัง หรือคู่อุปกรณ์ของคุณอีกครั้ง";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "ข้อผิดพลาดการโหลดการตั้งค่า";
+
+/* (No Commment) */
+"Error updating settings" = "ข้อผิดพลาดในการปรับปรุงการตั้งค่า";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "ไม่สามารถโหลดกระเป๋าสตางค์";
@@ -461,6 +464,9 @@
 "Please check your email." = "กรุณาตรวจสอบอีเมลของคุณ";
 
 /* (No Commment) */
+"Please check your internet connection." = "กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต";
+
+/* (No Commment) */
 "Please choose another PIN" = "โปรดเลือก PIN อีก";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "โปรดลองอีกครั้ง";
-
-/* (No Commment) */
-"Please try again shortly." = "กรุณาลองอีกครั้งในไม่ช้า";
 
 /* (No Commment) */
 "Please verify your email" = "กรุณาตรวจสอบอีเมลของคุณ";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "สแกนรหัสการจับคู่";
+
+/* (No Commment) */
+"Scan Private Key" = "การสแกนคีย์ส่วนตัว";
 
 /* (No Commment) */
 "Scan QR Code" = "สแกนรหัส QR";
@@ -584,6 +590,9 @@
 "Support" = "สนับสนุน";
 
 /* (No Commment) */
+"Syncing wallet" = "กระเป๋าสตางค์ที่ซิงค์";
+
+/* (No Commment) */
 "Terms of Service" = "เงื่อนไขการใช้บริการ";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "การปรับปรุง";
 
 /* (No Commment) */
-"Updating label" = "ปรับปรุงป้ายชื่อ";
-
-/* (No Commment) */
-"Updating settings" = "ปรับปรุงการตั้งค่า";
-
-/* (No Commment) */
 "Upgrade Now" = "อัพเกรดตอนนี้";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "การตรวจสอบ";
 
 /* (No Commment) */
-"Wallet Identifer" = "กระเป๋าไป";
+"Wallet Identifier" = "กระเป๋าไป";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "กระเป๋าจับคู่เรียบร้อยแล้ว";

@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "E-poštni račun je potrebno, da pomaga obnoviti izgubljeno denarnico identifikator in za plačilo prijave. Tudi, preverjene email ogovor bo uporabijo kot druga plast preverjanje, ko se prijavite v vaši denarnici.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Napaka pri preverjanju PIN kodo z oddaljenim strežnikom. Morda brez povezave ali blockchain lahko doživlja težave. Želite ponoviti potrditev ali namesto ročno vnesite svoje geslo?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Napaka pri preverjanju PIN kodo z oddaljenim strežnikom. Morda brez povezave ali Blockchain lahko doživlja težave. Želite ponoviti potrditev ali namesto ročno vnesite svoje geslo?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Prišlo je do napake, nakladanje vaše denarnice. Morda brez povezave ali Blockchain je težave. Zaprite program in poskusite znova pozneje ali znova povežite napravo.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Nastavitve nalaganja napake";
+
+/* (No Commment) */
+"Error updating settings" = "Napaka pri posodabljanju nastavitve";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Pri nalaganju denarnice";
@@ -461,6 +464,9 @@
 "Please check your email." = "Prosim ček vaš email.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Preverite povezavo z internetom.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Izberite drugo PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Prosimo, poskusite znova";
-
-/* (No Commment) */
-"Please try again shortly." = "Poskusite znova v kratkem.";
 
 /* (No Commment) */
 "Please verify your email" = "Preverite vaš e-poštni";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Skeniranje, seznanjanje kodo";
+
+/* (No Commment) */
+"Scan Private Key" = "Skeniranje zasebnega ključa";
 
 /* (No Commment) */
 "Scan QR Code" = "Skeniranje QR kode";
@@ -584,6 +590,9 @@
 "Support" = "Podpora";
 
 /* (No Commment) */
+"Syncing wallet" = "Sinhroniziranje denarnice";
+
+/* (No Commment) */
 "Terms of Service" = "Pogoji storitve";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Posodobitev";
 
 /* (No Commment) */
-"Updating label" = "Posodabljanje oznako";
-
-/* (No Commment) */
-"Updating settings" = "Posodabljanje nastavitev";
-
-/* (No Commment) */
 "Upgrade Now" = "Nadgradi zdaj";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Preverjanje";
 
 /* (No Commment) */
-"Wallet Identifer" = "Denarnica identifikatorjem";
+"Wallet Identifier" = "Denarnica identifikatorjem";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Denarnica seznanjene uspešno.";

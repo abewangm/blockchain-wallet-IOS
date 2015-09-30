@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsNavigationController : UINavigationController
-
+- (void)reload;
 @end

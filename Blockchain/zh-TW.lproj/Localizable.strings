@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "電子郵件帳戶需要幫助恢復丟失的錢包識別碼和付款通知。此外，您已驗證電子郵件地址將用作驗證第二層當您登錄到你的錢包。";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "驗證您的 PIN 代碼與遠端伺服器時發生錯誤。你可能處於離線狀態或 blockchain 可能遇到的困難。要驗證重試或相反手動輸入您的密碼嗎?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "驗證您的 PIN 代碼與遠端伺服器時發生錯誤。你可能處於離線狀態或 Blockchain 可能遇到的困難。要驗證重試或相反手動輸入您的密碼嗎?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "載入你的錢包時遇到錯誤。你可能處於離線狀態，或者 Blockchain 遇到困難。請關閉應用程式，請稍後再試或重新配對您的設備。";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "錯誤載入設置";
+
+/* (No Commment) */
+"Error updating settings" = "更新設置時出錯";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "未能載入的錢包";
@@ -461,6 +464,9 @@
 "Please check your email." = "請檢查您的電子郵件。";
 
 /* (No Commment) */
+"Please check your internet connection." = "請檢查您的互聯網連接。";
+
+/* (No Commment) */
 "Please choose another PIN" = "請選擇另一個 PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "請再試一次";
-
-/* (No Commment) */
-"Please try again shortly." = "請稍後再試。";
 
 /* (No Commment) */
 "Please verify your email" = "請驗證您的電子郵件";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "掃描匹配碼";
+
+/* (No Commment) */
+"Scan Private Key" = "掃描的專用金鑰";
 
 /* (No Commment) */
 "Scan QR Code" = "掃描二維碼";
@@ -584,6 +590,9 @@
 "Support" = "支援";
 
 /* (No Commment) */
+"Syncing wallet" = "同步的錢包";
+
+/* (No Commment) */
 "Terms of Service" = "服務條款";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "更新";
 
 /* (No Commment) */
-"Updating label" = "更新標籤";
-
-/* (No Commment) */
-"Updating settings" = "更新設置";
-
-/* (No Commment) */
 "Upgrade Now" = "現在升級";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "驗證";
 
 /* (No Commment) */
-"Wallet Identifer" = "錢包識別碼";
+"Wallet Identifier" = "錢包識別碼";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "配對成功的錢包。";

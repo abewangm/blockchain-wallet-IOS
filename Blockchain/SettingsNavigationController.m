@@ -72,4 +72,12 @@
     }
 }
 
+- (void)reload
+{
+    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
+        SettingsTableViewController *settingsViewController = (SettingsTableViewController *)self.visibleViewController;
+        [settingsViewController reload];
+    }
+}
+
 @end

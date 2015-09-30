@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "En e-mail-konto er nødvendig for at hjælpe med at inddrive en tabt konto id og betaling anmeldelser. Også, din verificeret e-mail-adresse bruges som et andet lag af kontrol, når du logger ind på din tegnebog.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Der opstod en fejl under validering af din pinkode med fjernserveren. Du kan være offline eller blockchain kan vanskeligheder. Vil du prøve igen validering eller i stedet indtaste adgangskoden manuelt?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Der opstod en fejl under validering af din pinkode med fjernserveren. Du kan være offline eller Blockchain kan vanskeligheder. Vil du prøve igen validering eller i stedet indtaste adgangskoden manuelt?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Der opstod en fejl under indlæsning af din tegnebog. Du kan være offline eller Blockchain er vanskeligheder. Luk programmet og prøve igen senere eller re par enheden.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Error loading indstillinger";
+
+/* (No Commment) */
+"Error updating settings" = "Fejl under opdatering af indstillinger";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Kunne ikke indlæse tegnebog";
@@ -461,6 +464,9 @@
 "Please check your email." = "Tjek venligst din e-mail.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Kontroller din internetforbindelse.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Vælg venligst en anden PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Prøv venligst igen";
-
-/* (No Commment) */
-"Please try again shortly." = "Prøv igen snart.";
 
 /* (No Commment) */
 "Please verify your email" = "Kontroller venligst din email";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Skan tilknytningskode";
+
+/* (No Commment) */
+"Scan Private Key" = "Skan Private nøgle";
 
 /* (No Commment) */
 "Scan QR Code" = "Skan QR koden";
@@ -584,6 +590,9 @@
 "Support" = "Support";
 
 /* (No Commment) */
+"Syncing wallet" = "Synkronisering tegnebog";
+
+/* (No Commment) */
 "Terms of Service" = "Terms of Service";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Opdatering";
 
 /* (No Commment) */
-"Updating label" = "Opdatering af etiket";
-
-/* (No Commment) */
-"Updating settings" = "Opdatere indstillinger";
-
-/* (No Commment) */
 "Upgrade Now" = "Opgradering nu";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Kontrol";
 
 /* (No Commment) */
-"Wallet Identifer" = "Tegnebog identifikationen";
+"Wallet Identifier" = "Tegnebog identifikationen";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Tegnebog parret med succes.";

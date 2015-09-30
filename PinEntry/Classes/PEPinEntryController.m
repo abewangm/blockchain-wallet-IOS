@@ -33,7 +33,7 @@ static PEViewController *EnterController()
 	PEViewController *c = [[PEViewController alloc] init];
 	c.prompt = BC_STRING_PLEASE_ENTER_PIN;
 	c.title = @"";
-    
+
     NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];
     c.versionLabel.text = [NSString stringWithFormat:@"v%@", version];
@@ -74,6 +74,7 @@ static PEViewController *VerifyController()
 + (PEPinEntryController *)pinVerifyController
 {
 	PEViewController *c = EnterController();
+    [[self class] addLongPressGestureToVersionLabel:c.versionLabel];
 	PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
 	c.delegate = n;
     n->pinController = c;
@@ -85,6 +86,7 @@ static PEViewController *VerifyController()
 + (PEPinEntryController *)pinChangeController
 {
 	PEViewController *c = EnterController();
+    [[self class] addLongPressGestureToVersionLabel:c.versionLabel];
 	PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
 	c.delegate = n;
     [c.cancelButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
@@ -99,6 +101,7 @@ static PEViewController *VerifyController()
 + (PEPinEntryController *)pinCreateController
 {
 	PEViewController *c = NewController();
+    [[self class] addLongPressGestureToVersionLabel:c.versionLabel];
 	PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
 	c.delegate = n;
     n->pinController = c;
@@ -120,6 +123,7 @@ static PEViewController *VerifyController()
                 if (yes) {
                     if(verifyOnly == NO) {
                         PEViewController *c = NewController();
+                        [[self class] addLongPressGestureToVersionLabel:c.versionLabel];
                         c.delegate = self;
                         pinStage = PS_ENTER1;
                         [[self navigationController] pushViewController:c animated:NO];
@@ -135,6 +139,7 @@ static PEViewController *VerifyController()
 		case PS_ENTER1: {
 			pinEntry1 = [controller.pin intValue];
 			PEViewController *c = VerifyController();
+            [[self class] addLongPressGestureToVersionLabel:c.versionLabel];
 			c.delegate = self;
 			[[self navigationController] pushViewController:c animated:NO];
 			self.viewControllers = [NSArray arrayWithObject:c];
@@ -168,6 +173,32 @@ static PEViewController *VerifyController()
 - (void)cancelController
 {
 	[self.pinDelegate pinEntryControllerDidCancel:self];
+}
+
++ (void)addLongPressGestureToVersionLabel:(UILabel *)versionLabel
+{
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPressGesture.minimumPressDuration = 1.0;
+    [versionLabel addGestureRecognizer:longPressGesture];
+    versionLabel.userInteractionEnabled = YES;
+}
+
++ (void)showBundleShortNameAlert
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *bundleShortName = infoDictionary[@"CFBundleName"];
+    NSString *bundleVersion = infoDictionary[@"CFBundleVersion"];
+    NSString *bundleShortVersionString = infoDictionary[@"CFBundleShortVersionString"];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:bundleShortName message:[[NSString alloc] initWithFormat:@"%@\nv%@", bundleVersion, bundleShortVersionString] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    [alert show];
+}
+
++  (void)handleLongPress:(UILongPressGestureRecognizer*)sender
+{
+    if (sender.state == UIGestureRecognizerStateBegan){
+        [self showBundleShortNameAlert];
+    }
 }
 
 @end

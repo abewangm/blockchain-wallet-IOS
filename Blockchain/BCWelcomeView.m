@@ -71,14 +71,7 @@ Boolean shouldShowAnimation;
         self.recoverWalletButton.alpha = 0.0;
         
         // Version
-        UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.frame.size.height - 30, self.frame.size.width - 30, 20)];
-        versionLabel.font = [UIFont systemFontOfSize:12];
-        versionLabel.textAlignment = NSTextAlignmentRight;
-        versionLabel.textColor = [UIColor whiteColor];
-        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-        NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-        versionLabel.text = [NSString stringWithFormat:@"v%@", version];
-        [self addSubview:versionLabel];
+        [self setupVersionLabel];
     }
     
     return self;
@@ -109,6 +102,46 @@ Boolean shouldShowAnimation;
                          self.existingWalletButton.enabled = YES;
                          self.recoverWalletButton.enabled = YES;
                      }];
+}
+
+- (void)setupVersionLabel
+{
+    UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.frame.size.height - 30, self.frame.size.width - 30, 20)];
+    versionLabel.font = [UIFont systemFontOfSize:12];
+    versionLabel.textAlignment = NSTextAlignmentRight;
+    versionLabel.textColor = [UIColor whiteColor];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+    versionLabel.text = [NSString stringWithFormat:@"v%@", version];
+    [self addSubview:versionLabel];
+    
+    [self addLongPressGestureToShowBundleShortNameAlertToLabel:versionLabel];
+}
+
+- (void)addLongPressGestureToShowBundleShortNameAlertToLabel:(UILabel *)label
+{
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPressGesture.minimumPressDuration = 1.0;
+    [label addGestureRecognizer:longPressGesture];
+    label.userInteractionEnabled = YES;
+}
+
+- (void)showBundleShortNameAlert
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *bundleShortName = infoDictionary[@"CFBundleName"];
+    NSString *bundleVersion = infoDictionary[@"CFBundleVersion"];
+    NSString *bundleShortVersionString = infoDictionary[@"CFBundleShortVersionString"];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:bundleShortName message:[[NSString alloc] initWithFormat:@"%@\nv%@", bundleVersion, bundleShortVersionString] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    [alert show];
+}
+
+-  (void)handleLongPress:(UILongPressGestureRecognizer*)sender
+{
+    if (sender.state == UIGestureRecognizerStateBegan){
+        [self showBundleShortNameAlert];
+    }
 }
 
 @end

@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Konto e-mail jest potrzebne, aby pomóc odzyskać zgubiony portfel identyfikator i dla powiadomień o płatności. Również sprawdzone e-mail posłuży jako drugą warstwę weryfikacji podczas logowania do Twojego portfela.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Wystąpił błąd podczas sprawdzania poprawności kodu PIN z serwera zdalnego. Może być w trybie offline lub blockchain może napotkać trudności. Czy chcesz ponowić próbę sprawdzania poprawności lub zamiast ręcznie wprowadzić swoje hasło?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Wystąpił błąd podczas sprawdzania poprawności kodu PIN z serwera zdalnego. Może być w trybie offline lub Blockchain może napotkać trudności. Czy chcesz ponowić próbę sprawdzania poprawności lub zamiast ręcznie wprowadzić swoje hasło?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Napotkano błąd podczas ładowania Twojego portfela. Może być w trybie offline lub Blockchain przeżywa trudności. Zamknij aplikację i spróbuj ponownie później lub ponownie sparować urządzenie.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Błąd ładowania ustawień";
+
+/* (No Commment) */
+"Error updating settings" = "Błąd podczas aktualizowania ustawienia";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Nie można załadować portfel";
@@ -461,6 +464,9 @@
 "Please check your email." = "Proszę sprawdzić twój poczta elektroniczna.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Sprawdź swoje połączenie internetowe.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Proszę wybrać inny PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Spróbuj ponownie";
-
-/* (No Commment) */
-"Please try again shortly." = "Proszę spróbować ponownie wkrótce.";
 
 /* (No Commment) */
 "Please verify your email" = "Proszę sprawdzić twój poczta elektroniczna";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Zeskanuj kod parowania";
+
+/* (No Commment) */
+"Scan Private Key" = "Skanowanie klucza prywatnego";
 
 /* (No Commment) */
 "Scan QR Code" = "Kod QR dla";
@@ -584,6 +590,9 @@
 "Support" = "Wsparcie techniczne";
 
 /* (No Commment) */
+"Syncing wallet" = "Synchronizowanie portfel";
+
+/* (No Commment) */
 "Terms of Service" = "Warunki korzystania z usługi";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Aktualizacja";
 
 /* (No Commment) */
-"Updating label" = "Aktualizowanie etykiety";
-
-/* (No Commment) */
-"Updating settings" = "Aktualizowanie ustawień";
-
-/* (No Commment) */
 "Upgrade Now" = "Uaktualnij teraz";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Weryfikacji";
 
 /* (No Commment) */
-"Wallet Identifer" = "Portfel rozpozna";
+"Wallet Identifier" = "Portfel rozpozna";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Portfel pomy¶lnym uwierzytelnieniu.";

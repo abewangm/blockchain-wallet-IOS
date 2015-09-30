@@ -15,6 +15,11 @@
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
 
+#define SEGUE_IDENTIFIER_CURRENCY @"currency"
+#define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
+#define SEGUE_IDENTIFIER_ABOUT @"about"
+#define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
+#define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
 
 const int textFieldTagVerifyEmail = 5;
 const int textFieldTagChangeEmail = 4;
@@ -35,17 +40,21 @@ const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
 @interface SettingsTableViewController () <CurrencySelectorDelegate, BtcSelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
+
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
 @property (nonatomic, copy) NSDictionary *allCurrencySymbolsDictionary;
+
 @property (nonatomic) UIAlertView *verifyEmailAlertView;
 @property (nonatomic) UIAlertView *changeEmailAlertView;
-@property (nonatomic) UIAlertView *errorLoadingAlertView;
 @property (nonatomic) UIAlertView *changeFeeAlertView;
+
 @property (nonatomic, copy) NSString *enteredEmailString;
 @property (nonatomic, copy) NSString *emailString;
+
 @property (nonatomic) UITextField *changeFeeTextField;
 @property (nonatomic) float currentFeePerKb;
+
 @end
 
 @implementation SettingsTableViewController
@@ -53,10 +62,8 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self getAccountInfo];
-    
-    [self getAllCurrencySymbols];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
+    [self reload];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -64,29 +71,32 @@ const int aboutPrivacyPolicy = 1;
     [super viewWillDisappear:animated];
     [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:NO];
     [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:NO];
-    [self.errorLoadingAlertView dismissWithClickedButtonIndex:0 animated:NO];
     [self.changeFeeAlertView dismissWithClickedButtonIndex:0 animated:NO];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if (self.didChangeFee) {
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_UPDATING_SETTINGS];
+    if (app.wallet.isSyncingForTrivialProcess) {
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    self.didChangeFee = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedChangingFee) name:NOTIFICATION_KEY_FINISHED_CHANGING_FEE object:nil];
+    [super viewWillAppear:animated];
+    BOOL loadedSettings = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LOADED_SETTINGS] boolValue];
+    if (!loadedSettings) {
+        [self reload];
+    }
 }
 
-- (void)finishedChangingFee
+- (void)reload
 {
-    self.didChangeFee = NO;
+    DLog(@"Reloading settings");
+    
+    [self getAccountInfo];
+    [self getAllCurrencySymbols];
 }
 
 - (void)getAllCurrencySymbols
@@ -112,6 +122,7 @@ const int aboutPrivacyPolicy = 1;
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         DLog(@"SettingsTableViewController: gotAccountInfo");
         self.accountInfoDictionary = note.userInfo;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     }];
     
@@ -205,7 +216,7 @@ const int aboutPrivacyPolicy = 1;
     return [feePerKbFormatter stringFromNumber:[NSNumber numberWithFloat:floatNumber]];
 }
 
-- (void)alertViewToChangeFee
+- (void)alertUserToChangeFee
 {
     NSString *feePerKbString = [self convertFloatToString:self.currentFeePerKb];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, feePerKbString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
@@ -223,14 +234,13 @@ const int aboutPrivacyPolicy = 1;
     self.changeFeeAlertView = alertView;
 }
 
-- (void)alertViewForErrorLoadingSettings
+- (void)alertUserOfErrorLoadingSettings
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    [alertView show];
-    self.errorLoadingAlertView = alertView;
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
 }
 
-- (void)alertViewToChangeEmail:(BOOL)hasAddedEmail
+- (void)alertUserToChangeEmail:(BOOL)hasAddedEmail
 {
     NSString *alertViewTitle = hasAddedEmail ? BC_STRING_SETTINGS_CHANGE_EMAIL :BC_STRING_ADD_EMAIL;
     
@@ -247,7 +257,7 @@ const int aboutPrivacyPolicy = 1;
     self.changeEmailAlertView = alertView;
 }
 
-- (void)alertViewToVerifyEmail
+- (void)alertUserToVerifyEmail
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_ARGUMENT, self.emailString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
     alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
@@ -263,7 +273,7 @@ const int aboutPrivacyPolicy = 1;
     self.verifyEmailAlertView = alertView;
 }
 
-- (void)alertViewForVerifyingEmailSuccess
+- (void)alertUserOfVerifyingEmailSuccess
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_SETTINGS_EMAIL_VERIFIED delegate:self cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
     [alertView show];
@@ -280,7 +290,7 @@ const int aboutPrivacyPolicy = 1;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
     
-    [self alertViewToVerifyEmail];
+    [self alertUserToVerifyEmail];
 }
 
 - (void)changeEmail:(NSString *)emailString
@@ -300,7 +310,7 @@ const int aboutPrivacyPolicy = 1;
     
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
     dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-        [self alertViewToVerifyEmail];
+        [self alertUserToVerifyEmail];
     });
 }
 
@@ -317,7 +327,7 @@ const int aboutPrivacyPolicy = 1;
     
     [self getAccountInfo];
     
-    [self alertViewForVerifyingEmailSuccess];
+    [self alertUserOfVerifyingEmailSuccess];
 }
 
 #pragma mark AlertView Delegate
@@ -367,7 +377,7 @@ const int aboutPrivacyPolicy = 1;
                 // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
                 dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
                 dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                    [self alertViewToChangeEmail:YES];
+                    [self alertUserToChangeEmail:YES];
                 });
                 return;
             }
@@ -397,14 +407,9 @@ const int aboutPrivacyPolicy = 1;
                 uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
                 [app.wallet setTransactionFee:convertedFee];
                 [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
-                self.didChangeFee = YES;
                 return;
             }
         }
-    } else if ([alertView isEqual:self.errorLoadingAlertView]) {
-        // User has tapped on cell when account info has not yet been loaded; get account info again
-        [self getAccountInfo];
-        return;
     }
 }
 
@@ -465,19 +470,19 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"currency"]) {
+    if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_CURRENCY]) {
         SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
         settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
         settingsSelectorTableViewController.allCurrencySymbolsDictionary = self.allCurrencySymbolsDictionary;
         settingsSelectorTableViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:@"about"]) {
+    } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_ABOUT]) {
         SettingsAboutViewController *aboutViewController = segue.destinationViewController;
-        if ([sender isEqualToString:@"termsOfService"]) {
+        if ([sender isEqualToString:SEGUE_SENDER_TERMS_OF_SERVICE]) {
             aboutViewController.urlTargetString = TERMS_OF_SERVICE_URL;
-        } else if ([sender isEqualToString:@"privacyPolicy"]) {
+        } else if ([sender isEqualToString:SEGUE_SENDER_PRIVACY_POLICY]) {
             aboutViewController.urlTargetString = PRIVACY_POLICY_URL;
         }
-    } else if ([segue.identifier isEqualToString:@"btcUnit"]) {
+    } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_BTC_UNIT]) {
         SettingsBitcoinUnitTableViewController *settingsBtcUnitTableViewController = segue.destinationViewController;
         settingsBtcUnitTableViewController.itemsDictionary = self.accountInfoDictionary[@"btc_currencies"];
         settingsBtcUnitTableViewController.delegate = self;
@@ -495,11 +500,11 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case accountDetailsEmail: {
                     if (![self hasAddedEmail]) {
-                        [self alertViewToChangeEmail:NO];
+                        [self alertUserToChangeEmail:NO];
                     } else if ([self hasVerifiedEmail]) {
-                        [self alertViewToChangeEmail:YES];
+                        [self alertUserToChangeEmail:YES];
                     } else {
-                        [self alertViewToVerifyEmail];
+                        [self alertUserToVerifyEmail];
                     } return;
                 }
             }
@@ -508,11 +513,11 @@ const int aboutPrivacyPolicy = 1;
         case displaySection: {
             switch (indexPath.row) {
                 case displayLocalCurrency: {
-                    [self performSegueWithIdentifier:@"currency" sender:nil];
+                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
                     return;
                 }
                 case displayBtcUnit: {
-                    [self performSegueWithIdentifier:@"btcUnit" sender:nil];
+                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
                     return;
                 }
             }
@@ -521,7 +526,7 @@ const int aboutPrivacyPolicy = 1;
         case feesSection: {
             switch (indexPath.row) {
                 case feePerKb: {
-                    [self alertViewToChangeFee];
+                    [self alertUserToChangeFee];
                     return;
                 }
             }
@@ -530,11 +535,11 @@ const int aboutPrivacyPolicy = 1;
         case aboutSection: {
             switch (indexPath.row) {
                 case aboutTermsOfService: {
-                    [self performSegueWithIdentifier:@"about" sender:@"termsOfService"];
+                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_TERMS_OF_SERVICE];
                     return;
                 }
                 case aboutPrivacyPolicy: {
-                    [self performSegueWithIdentifier:@"about" sender:@"privacyPolicy"];
+                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_PRIVACY_POLICY];
                     return;
                 }
             }
@@ -669,10 +674,10 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL hasLoadedSettings = self.accountInfoDictionary ? YES : NO;
+    BOOL hasLoadedAccountInfoDictionary = self.accountInfoDictionary ? YES : NO;
     
-    if (!hasLoadedSettings) {
-        [self alertViewForErrorLoadingSettings];
+    if (!hasLoadedAccountInfoDictionary) {
+        [self alertUserOfErrorLoadingSettings];
         return nil;
     } else {
         return indexPath;

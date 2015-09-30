@@ -59,7 +59,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 // TODO: Get from JS
 #define DUST_THRESHOLD 5460
 
-#define BTC_LIMIT_IN_SATOSHI 2100000000000000
+#define BTC_LIMIT_IN_SATOSHI 21e14 // 21,000,000 (Total possible Bitcoins) * 100,000,000 (Satoshi)
 
 #ifdef DEBUG
     #define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);

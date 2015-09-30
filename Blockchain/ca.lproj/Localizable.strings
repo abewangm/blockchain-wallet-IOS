@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Un compte de correu cal per ajudar a recobrar un identificador de cartera perdudes i notificacions de pagament. També, l'adreça electrònica verificada s'utilitzarà com a una segona capa de verificació autenticar-te en la seva cartera.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "S'ha produït un error validar el teu codi PIN amb el servidor remot. Vostè pot estar fora de línia o blockchain pot estar experimentant dificultats. Voleu provar de validació o en el seu lloc introduïu la vostra contrasenya manualment?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "S'ha produït un error validar el teu codi PIN amb el servidor remot. Vostè pot estar fora de línia o Blockchain pot estar experimentant dificultats. Voleu provar de validació o en el seu lloc introduïu la vostra contrasenya manualment?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Error en carregar la seva cartera. Vostè pot estar fora de línia o Blockchain experimenta dificultats. Tanqueu l'aplicació i torneu-ho més tard o tornar a ajuntar el dispositiu.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Configuració de càrrega d'error";
+
+/* (No Commment) */
+"Error updating settings" = "Error d'actualització d'escenes";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "No ha pogut carregar la cartera";
@@ -461,6 +464,9 @@
 "Please check your email." = "Si us plau revisa el teu email.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Si us plau, comproveu la connexió d'internet.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Trieu-ne un altre PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Intenteu-ho novament";
-
-/* (No Commment) */
-"Please try again shortly." = "Si us plau provar una altra vegada en breu.";
 
 /* (No Commment) */
 "Please verify your email" = "Si us plau verificar el seu e-mail";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Escanejar el codi d'aparellament";
+
+/* (No Commment) */
+"Scan Private Key" = "Clau privada d'escannejar";
 
 /* (No Commment) */
 "Scan QR Code" = "Escaneja un codi QR";
@@ -584,6 +590,9 @@
 "Support" = "Suport";
 
 /* (No Commment) */
+"Syncing wallet" = "Sincronització de cartera";
+
+/* (No Commment) */
 "Terms of Service" = "Condicions del servei";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Actualització";
 
 /* (No Commment) */
-"Updating label" = "Etiqueta d'actualització";
-
-/* (No Commment) */
-"Updating settings" = "Configuració d'actualització";
-
-/* (No Commment) */
 "Upgrade Now" = "Actualitza'l ara";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Verificació";
 
 /* (No Commment) */
-"Wallet Identifer" = "L'identificador de cartera";
+"Wallet Identifier" = "L'identificador de cartera";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Cartera aparellat amb èxit.";

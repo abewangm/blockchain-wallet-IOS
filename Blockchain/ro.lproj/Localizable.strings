@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Un cont de e-mail este necesar să recupereze un identificator de pierdut portofelul şi pentru notificări de plată. De asemenea, adresa de e-mail verificată va fi utilizat ca un al doilea strat de verificare atunci când vă conectaţi în portofel.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Eroare la validarea codul PIN cu serverul de la distanţă. Aţi putea fi deconectat sau blockchain pot fi întâmpină dificultăţi. Doriţi Reîncercare validare sau în schimb să introduceţi parola manual?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Eroare la validarea codul PIN cu serverul de la distanţă. Aţi putea fi deconectat sau Blockchain pot fi întâmpină dificultăţi. Doriţi Reîncercare validare sau în schimb să introduceţi parola manual?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Eroare la încărcarea portofel. Aţi putea fi deconectat sau Blockchain se confruntă cu dificultăți. Închideţi aplicaţia şi încercaţi din nou mai târziu sau re-asociaþi aparatul dvs.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Eroare încărcare setări";
+
+/* (No Commment) */
+"Error updating settings" = "Eroare la actualizarea setările";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Nu a reușit încărcarea portofel";
@@ -461,6 +464,9 @@
 "Please check your email." = "Vă rugăm să verificaţi adresa de email.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Vă rugăm să verificaţi conexiunea la internet.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Vă rugăm să alegeţi un alt PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Vă rugăm să încercaţi din nou";
-
-/* (No Commment) */
-"Please try again shortly." = "Vă rugăm să încercaţi din nou la scurt timp.";
 
 /* (No Commment) */
 "Please verify your email" = "Va rugam sa verificati adresa de email";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Scanaţi codul de asociere";
+
+/* (No Commment) */
+"Scan Private Key" = "Scanare cheie privată";
 
 /* (No Commment) */
 "Scan QR Code" = "Scanaţi codul QR";
@@ -584,6 +590,9 @@
 "Support" = "Suport";
 
 /* (No Commment) */
+"Syncing wallet" = "Sincronizarea portofel";
+
+/* (No Commment) */
 "Terms of Service" = "Conditii de utilizare";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Actualizare";
 
 /* (No Commment) */
-"Updating label" = "Actualizarea eticheta";
-
-/* (No Commment) */
-"Updating settings" = "Setările de actualizare";
-
-/* (No Commment) */
 "Upgrade Now" = "Upgrade acum";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Verificarea";
 
 /* (No Commment) */
-"Wallet Identifer" = "Portofel identificator";
+"Wallet Identifier" = "Portofel identificator";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Portofel asociat cu succes.";

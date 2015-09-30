@@ -92,9 +92,6 @@
 
 - (void)enablePaymentButtons;
 
-// Called when backgrounding the app
-- (void)dismissAlertViews;
-
 // Called on manual logout
 - (void)clearToAddressAndAmountFields;
 

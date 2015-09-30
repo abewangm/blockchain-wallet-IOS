@@ -33,14 +33,16 @@
 
 #define SATOSHI 100000000
 
+#define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
+
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_FEE @"fee"
 
+#define NOTIFICATION_KEY_SEND_SCREEN_RELOADING @"sendScreenReloading"
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
 #define NOTIFICATION_KEY_NEW_ADDRESS @"newAddress"
 
 // Notifications used in settings
-#define NOTIFICATION_KEY_FINISHED_CHANGING_FEE @"ChangedFee"
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
@@ -208,7 +210,7 @@
 
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;
-- (BOOL)isPINSet;
+- (BOOL)isPinSet;
 
 - (BOOL)checkInternetConnection;
 

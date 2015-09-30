@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "E-mailový účet, je nutné obnovit ztracené peněžence identifikátor a pro platební oznámení. Také ověřené e-mailová adresa bude použít jako druhou vrstvu ověřování při přihlášení do vaší peněženky.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Při ověřování kódu PIN se vzdáleným serverem došlo k chybě. Jste pravděpodobně v režimu offline nebo blockchain mohou být potíže. Chcete opakovat ověření nebo místo toho zadat heslo ručně?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Při ověřování kódu PIN se vzdáleným serverem došlo k chybě. Jste pravděpodobně v režimu offline nebo Blockchain mohou být potíže. Chcete opakovat ověření nebo místo toho zadat heslo ručně?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Byla zjištěna chyba načítání peněženku. Jste pravděpodobně v režimu offline nebo Blockchain v obtížích. Ukončete aplikace a opakujte akci později nebo znovu spárovat zařízení.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Chyba při načítání nastavení";
+
+/* (No Commment) */
+"Error updating settings" = "Chyba při aktualizaci nastavení";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Nepodařilo se načíst Peněženka";
@@ -461,6 +464,9 @@
 "Please check your email." = "Zkontrolujte prosím váš email.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Zkontrolujte připojení k Internetu.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Vyberte si prosím jiné PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Zkuste to prosím znovu";
-
-/* (No Commment) */
-"Please try again shortly." = "Akci zopakujte.";
 
 /* (No Commment) */
 "Please verify your email" = "Zkontrolujte prosím váš email";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Skenovat, párování kód";
+
+/* (No Commment) */
+"Scan Private Key" = "Skenování soukromý klíč";
 
 /* (No Commment) */
 "Scan QR Code" = "Skenování QR kód";
@@ -584,6 +590,9 @@
 "Support" = "Podpora";
 
 /* (No Commment) */
+"Syncing wallet" = "Synchronizuji Peněženka";
+
+/* (No Commment) */
 "Terms of Service" = "Podmínky služby";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Aktualizovat";
 
 /* (No Commment) */
-"Updating label" = "Aktualizace popisku";
-
-/* (No Commment) */
-"Updating settings" = "Aktualizace nastavení";
-
-/* (No Commment) */
 "Upgrade Now" = "Upgradovat nyní";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Ověřování";
 
 /* (No Commment) */
-"Wallet Identifer" = "Peněženka identifikátorem";
+"Wallet Identifier" = "Peněženka identifikátorem";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Peněženka úspěšně spárována.";

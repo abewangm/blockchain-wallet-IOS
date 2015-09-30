@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Egy elektronikus levél számla van szükség, hogy segítsen talpra elveszett pénztárca-azonosító és a fizetési értesítések. Is a megerősített email-címmel lesz egy második réteg, ellenőrzési amikor bejelentkezik a pénztárca.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Hiba történt a PIN-kódot a távoli szerverrel érvényesítése. Lehet, hogy kapcsolat nélküli vagy blockchain lehet nehézségei. Szeretne újra érvényesítés, vagy inkább kézzel adja meg a jelszavát?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Hiba történt a PIN-kódot a távoli szerverrel érvényesítése. Lehet, hogy kapcsolat nélküli vagy Blockchain lehet nehézségei. Szeretne újra érvényesítés, vagy inkább kézzel adja meg a jelszavát?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Hiba történt a berakodás a pénztárca. Lehet, hogy kapcsolat nélküli vagy Blockchain nehézségekkel. Zárja be az alkalmazást, és próbálkozzon újra később, vagy párosítsa a készüléket.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Hiba betöltése beállítások";
+
+/* (No Commment) */
+"Error updating settings" = "Hiba a beállítások frissítése";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Nem sikerült betölteni a pénztárca";
@@ -461,6 +464,9 @@
 "Please check your email." = "Kérjük, ellenőrizze e-mailjeit.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Kérjük, ellenőrizze az internet-kapcsolat.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Válasszon egy másik PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Legyen szíves megpróbál újra";
-
-/* (No Commment) */
-"Please try again shortly." = "Legyen szíves megpróbál újra hamarosan.";
 
 /* (No Commment) */
 "Please verify your email" = "Kérjük, ellenőrizze e-mailjeit";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Átkutat a párosító kód";
+
+/* (No Commment) */
+"Scan Private Key" = "Scan privát kulcs";
 
 /* (No Commment) */
 "Scan QR Code" = "QR-kód beolvasásához";
@@ -584,6 +590,9 @@
 "Support" = "Támogatás";
 
 /* (No Commment) */
+"Syncing wallet" = "Szinkronizál pénztárca";
+
+/* (No Commment) */
 "Terms of Service" = "Szolgáltatási feltételek";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Frissítés";
 
 /* (No Commment) */
-"Updating label" = "Címke frissítése";
-
-/* (No Commment) */
-"Updating settings" = "Frissítési beállítások";
-
-/* (No Commment) */
 "Upgrade Now" = "Frissítés most";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Ellenőrzése";
 
 /* (No Commment) */
-"Wallet Identifer" = "Pénztárca megfeleltetve";
+"Wallet Identifier" = "Pénztárca megfeleltetve";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Pénztárca sikeresen párosítva.";

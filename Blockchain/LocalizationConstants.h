@@ -83,6 +83,7 @@
 #define BC_STRING_UNSUPPORTED_PRIVATE_KEY_FORMAT NSLocalizedString(@"Unsupported Private Key Format", nil)
 #define BC_STRING_SCAN_PAIRING_CODE NSLocalizedString(@"Scan Pairing Code", nil)
 #define BC_STRING_PARSING_PAIRING_CODE NSLocalizedString(@"Parsing Pairing Code", nil)
+#define BC_STRING_INVALID_PAIRING_CODE NSLocalizedString(@"Invalid Pairing Code", nil)
 
 #define BC_STRING_INSUFFICIENT_FUNDS NSLocalizedString(@"Insufficient Funds", nil)
 #define BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE NSLocalizedString(@"Please select a different address to send from or lower the fee in Settings.", nil)
@@ -136,7 +137,7 @@
 #define BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN NSLocalizedString(@"Please choose another PIN", nil)
 #define BC_PIN_NO_MATCH NSLocalizedString(@"PINs do not match", nil)
 
-#define BC_STRING_PIN_VALIDATION_ERROR_DETAIL NSLocalizedString(@"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?", nil)
+#define BC_STRING_PIN_VALIDATION_ERROR_DETAIL NSLocalizedString(@"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?", nil)
 #define BC_STRING_ENTER_PASSWORD NSLocalizedString(@"Enter Password", nil)
 #define BC_STRING_PLEASE_ENTER_PIN NSLocalizedString(@"Please enter your PIN", nil)
 #define BC_STRING_PLEASE_ENTER_NEW_PIN NSLocalizedString(@"Please enter a new PIN", nil)
@@ -186,7 +187,7 @@
 #define BC_STRING_LOADING_CREATING_WALLET NSLocalizedString(@"Creating new Wallet", nil)
 #define BC_STRING_LOADING_IMPORT_KEY NSLocalizedString(@"Importing key", nil)
 #define BC_STRING_LOADING_GENERATING_NEW_ADDRESS NSLocalizedString(@"Generating new address", nil)
-#define BC_STRING_LOADING_UPDATING_LABEL NSLocalizedString(@"Updating label", nil)
+#define BC_STRING_LOADING_SYNCING_WALLET NSLocalizedString(@"Syncing wallet", nil)
 #define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 
 #define BC_STRING_MERCHANT_MAP NSLocalizedString(@"Merchant Map", nil)
@@ -211,6 +212,7 @@
 #define BC_STRING_REQUEST_AMOUNT NSLocalizedString(@"Request Amount", nil)
 #define BC_STRING_LABEL_ADDRESS NSLocalizedString(@"Label Address", nil)
 #define BC_STRING_SCAN_QR_CODE NSLocalizedString(@"Scan QR Code", nil)
+#define BC_STRING_SCAN_PRIVATE_KEY NSLocalizedString(@"Scan Private Key", nil)
 #define BC_STRING_CONTINUE NSLocalizedString(@"Continue", nil)
 
 #define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my wallet", nil)
@@ -271,14 +273,14 @@
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND NSLocalizedString(@"Resend verification email", nil)
 #define BC_STRING_SETTINGS_CHANGE_EMAIL NSLocalizedString(@"Change Email", nil)
 #define BC_STRING_SETTINGS_EMAIL_VERIFIED NSLocalizedString(@"Your email has been verified.", nil)
-#define BC_STRING_SETTINGS_WALLET_IDENTIFIER NSLocalizedString (@"Wallet Identifer", nil)
+#define BC_STRING_SETTINGS_WALLET_IDENTIFIER NSLocalizedString (@"Wallet Identifier", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_TITLE NSLocalizedString(@"Error loading settings", nil)
-#define BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE NSLocalizedString(@"Please try again shortly.", nil)
+#define BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE NSLocalizedString(@"Please check your internet connection.", nil)
+#define BC_STRING_SETTINGS_ERROR_UPDATING_TITLE NSLocalizedString(@"Error updating settings", nil)
 #define BC_STRING_SETTINGS_CHANGE_FEE_TITLE NSLocalizedString(@"Change fee per kilobyte", nil)
 #define BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT NSLocalizedString(@"Current rate: %@ BTC", nil)
 #define BC_STRING_SETTINGS_FEE_ARGUMENT_BTC NSLocalizedString(@"%@ BTC", nil)
 #define BC_STRING_SETTINGS_FEE_TOO_HIGH NSLocalizedString(@"Fee is too high (0.01 BTC limit)", nil)
-#define BC_STRING_LOADING_UPDATING_SETTINGS NSLocalizedString(@"Updating settings", nil)
 
 #define BC_STRING_NEW_ADDRESS NSLocalizedString(@"New Address", nil)
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)

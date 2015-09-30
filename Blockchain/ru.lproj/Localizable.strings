@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Учетной записи электронной почты необходимо, чтобы помочь восстановить потерял бумажник идентификатор и для уведомлений о платежах. Кроме того ваш адрес электронной почты будет использоваться в качестве второй слой проверки при входе в ваш бумажник.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке ваш PIN-код с удаленным сервером. Вы может быть отключен или blockchain могут испытывать трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке ваш PIN-код с удаленным сервером. Вы может быть отключен или Blockchain могут испытывать трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ошибка загрузки ваш бумажник. Вы может быть отключен или Blockchain испытывает трудности. Закройте приложение и повторите попытку позже или повторно пара ваше устройство.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Ошибка загрузки настройки";
+
+/* (No Commment) */
+"Error updating settings" = "Ошибка при обновлении параметров";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Не удалось загрузить бумажник";
@@ -461,6 +464,9 @@
 "Please check your email." = "Пожалуйста, проверьте вашу электронную почту.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Пожалуйста, проверьте ваше Интернет-соединение.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Пожалуйста, выберите другой PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Пожалуйста, попробуйте снова";
-
-/* (No Commment) */
-"Please try again shortly." = "Пожалуйста, попробуйте еще раз в ближайшее время.";
 
 /* (No Commment) */
 "Please verify your email" = "Пожалуйста, проверьте ваш электронный адрес";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Сканировать код привязки";
+
+/* (No Commment) */
+"Scan Private Key" = "Проверка закрытого ключа";
 
 /* (No Commment) */
 "Scan QR Code" = "QR-код";
@@ -584,6 +590,9 @@
 "Support" = "Поддержка";
 
 /* (No Commment) */
+"Syncing wallet" = "Синхронизации бумажника";
+
+/* (No Commment) */
 "Terms of Service" = "Условия предоставления услуг";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Обновление";
 
 /* (No Commment) */
-"Updating label" = "Обновление метки";
-
-/* (No Commment) */
-"Updating settings" = "Параметры обновления";
-
-/* (No Commment) */
 "Upgrade Now" = "Обновить сейчас";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Проверка";
 
 /* (No Commment) */
-"Wallet Identifer" = "Идентификатор кошелька";
+"Wallet Identifier" = "Идентификатор кошелька";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Карманы паре успешно.";

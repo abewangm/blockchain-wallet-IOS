@@ -53,9 +53,7 @@ UIActionSheet *popupAddressArchive;
     qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 25, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    UITapGestureRecognizer *tapMainQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainQRClicked:)];
-    [qrCodeMainImageView addGestureRecognizer:tapMainQRGestureRecognizer];
-    qrCodeMainImageView.userInteractionEnabled = YES;
+    [self setupTapGestureForMainQR];
     
     // The more actions button will be added to the top menu bar
     [moreActionsButton removeFromSuperview];
@@ -78,9 +76,7 @@ UIActionSheet *popupAddressArchive;
                                               qrCodeMainImageView.frame.size.width,
                                               qrCodeMainImageView.frame.size.height);
     
-    UITapGestureRecognizer *tapDetailQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreActionsClicked:)];
-    [qrCodePaymentImageView addGestureRecognizer:tapDetailQRGestureRecognizer];
-    qrCodePaymentImageView.userInteractionEnabled = YES;
+    [self setupTapGestureForDetailQR];
     
     // iPhone4/4S
     if ([[UIScreen mainScreen] bounds].size.height < 568) {
@@ -96,21 +92,9 @@ UIActionSheet *popupAddressArchive;
                                          optionsTitleLabel.frame.size.width,
                                          optionsTitleLabel.frame.size.height);
     
-    UITapGestureRecognizer *tapGestureForLegacyLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLegacyAddressOnTap)];
-    [optionsTitleLabel addGestureRecognizer:tapGestureForLegacyLabel];
-    optionsTitleLabel.userInteractionEnabled = YES;
+    [self setupTapGestureForLegacyLabel];
     
-    popupAddressArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
-                           BC_STRING_COPY_ADDRESS,
-                           BC_STRING_LABEL_ADDRESS,
-                           BC_STRING_ARCHIVE_ADDRESS,
-                           nil];
-    
-    popupAddressUnArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
-                             BC_STRING_COPY_ADDRESS,
-                             BC_STRING_LABEL_ADDRESS,
-                             BC_STRING_UNARCHIVE_ADDRESS,
-                             nil];
+    [self setupArchiveActionSheets];
     
     [self reload];
 }
@@ -127,6 +111,49 @@ UIActionSheet *popupAddressArchive;
         [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
         self.paymentObserver = nil;
     }
+}
+
+- (void)setupTapGestureForLegacyLabel
+{
+    UITapGestureRecognizer *tapGestureForLegacyLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLegacyAddressOnTap)];
+    [optionsTitleLabel addGestureRecognizer:tapGestureForLegacyLabel];
+    optionsTitleLabel.userInteractionEnabled = YES;
+}
+
+- (void)setupTapGestureForMainLabel
+{
+    UITapGestureRecognizer *tapGestureForMainLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainAddressOnTap)];
+    [mainAddressLabel addGestureRecognizer:tapGestureForMainLabel];
+    mainAddressLabel.userInteractionEnabled = YES;
+}
+
+- (void)setupTapGestureForMainQR
+{
+    UITapGestureRecognizer *tapMainQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainQRClicked:)];
+    [qrCodeMainImageView addGestureRecognizer:tapMainQRGestureRecognizer];
+    qrCodeMainImageView.userInteractionEnabled = YES;
+}
+
+- (void)setupTapGestureForDetailQR
+{
+    UITapGestureRecognizer *tapDetailQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreActionsClicked:)];
+    [qrCodePaymentImageView addGestureRecognizer:tapDetailQRGestureRecognizer];
+    qrCodePaymentImageView.userInteractionEnabled = YES;
+}
+
+- (void)setupArchiveActionSheets
+{
+    popupAddressArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
+                           BC_STRING_COPY_ADDRESS,
+                           BC_STRING_LABEL_ADDRESS,
+                           BC_STRING_ARCHIVE_ADDRESS,
+                           nil];
+    
+    popupAddressUnArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
+                             BC_STRING_COPY_ADDRESS,
+                             BC_STRING_LABEL_ADDRESS,
+                             BC_STRING_UNARCHIVE_ADDRESS,
+                             nil];
 }
 
 - (void)reload
@@ -216,9 +243,7 @@ UIActionSheet *popupAddressArchive;
         [mainAddressLabel setAdjustsFontSizeToFitWidth:YES];
         [headerView addSubview:mainAddressLabel];
         
-        UITapGestureRecognizer *tapGestureForMainLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainAddressOnTap)];
-        [mainAddressLabel addGestureRecognizer:tapGestureForMainLabel];
-        mainAddressLabel.userInteractionEnabled = YES;
+        [self setupTapGestureForMainLabel];
     }
     
     tableView.tableHeaderView = headerView;
@@ -376,12 +401,16 @@ UIActionSheet *popupAddressArchive;
 
 - (void)setQRPayment
 {
-    double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
-    
-    UIImage *image = [self qrImageFromAddress:self.clickedAddress amount:amount];
-    
-    qrCodePaymentImageView.image = image;
-    qrCodePaymentImageView.contentMode = UIViewContentModeScaleAspectFit;
+    if ([self getInputAmountInSatoshi] <= BTC_LIMIT_IN_SATOSHI) {
+        
+        double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
+        
+        UIImage *image = [self qrImageFromAddress:self.clickedAddress amount:amount];
+        
+        qrCodePaymentImageView.image = image;
+        qrCodePaymentImageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+    }
     
     [self doCurrencyConversion];
 }
@@ -496,7 +525,7 @@ UIActionSheet *popupAddressArchive;
 
 - (IBAction)addNewAddressClicked:(id)sender
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_NEW_ADDRESS message:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_NEW_ADDRESS_GENERATE_NEW, BC_STRING_NEW_ADDRESS_SCAN_QR_CODE, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_NEW_ADDRESS message:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_NEW_ADDRESS_GENERATE_NEW, BC_STRING_SCAN_PRIVATE_KEY, nil];
     alertView.delegate = self;
     self.addNewAddressAlertView = alertView;
     [alertView show];
@@ -523,8 +552,9 @@ UIActionSheet *popupAddressArchive;
     
     [app closeModalWithTransition:kCATransitionFade];
     
-    // Show busy view since syncWallet will block the main thread
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_UPDATING_LABEL];
+    if (app.wallet.isSyncingForTrivialProcess) {
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    }
 }
 
 - (IBAction)mainQRClicked:(id)sender
@@ -689,10 +719,9 @@ UIActionSheet *popupAddressArchive;
                 break;
             }
             case 2: {
-                DLog(@"Scan QR code");
+                DLog(@"Scan Private Key");
                 PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
                     [app.wallet addKey:privateKeyString];
-                    
                     [app.wallet loading_stop];
                 } error:nil];
                 
@@ -708,7 +737,6 @@ UIActionSheet *popupAddressArchive;
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
     switch (buttonIndex) {
         case 0:
             [self copyAddressClicked:nil];

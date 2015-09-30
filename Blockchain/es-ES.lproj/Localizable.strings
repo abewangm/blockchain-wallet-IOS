@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Una cuenta de correo electrónico es necesario para ayudar a recuperar un identificador de cartera perdida y para las notificaciones de pago. También, se utilizará su dirección de email verificada como una segunda capa de verificación al iniciar sesión en su billetera.";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Error al validar tu código PIN con el servidor remoto. Usted puede estar offline o blockchain puede estar experimentando dificultades. ¿Quieres reintentar la validación o en su lugar, introduzca la contraseña manualmente?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Error al validar tu código PIN con el servidor remoto. Usted puede estar offline o Blockchain puede estar experimentando dificultades. ¿Quieres reintentar la validación o en su lugar, introduzca la contraseña manualmente?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Se ha producido un error cargando su billetera. Usted puede estar offline o Blockchain está experimentando dificultades. Por favor cierre la aplicación e intentarlo más tarde o volver a emparejar el dispositivo.";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "Configuración de carga de error";
+
+/* (No Commment) */
+"Error updating settings" = "Error al actualizar la configuración";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "No se pudo cargar la billetera";
@@ -461,6 +464,9 @@
 "Please check your email." = "Por favor revise su correo electrónico.";
 
 /* (No Commment) */
+"Please check your internet connection." = "Por favor compruebe su conexión a internet.";
+
+/* (No Commment) */
 "Please choose another PIN" = "Por favor, elija otro PIN";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "Por favor, inténtelo de nuevo";
-
-/* (No Commment) */
-"Please try again shortly." = "Intente por favor otra vez pronto.";
 
 /* (No Commment) */
 "Please verify your email" = "Por favor verifique su correo electrónico";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "Escanear el código de emparejamiento";
+
+/* (No Commment) */
+"Scan Private Key" = "Exploración de la clave privada";
 
 /* (No Commment) */
 "Scan QR Code" = "Escanear código QR";
@@ -584,6 +590,9 @@
 "Support" = "Apoyo";
 
 /* (No Commment) */
+"Syncing wallet" = "Carpeta de sincronización";
+
+/* (No Commment) */
 "Terms of Service" = "Términos de servicio";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "Actualización";
 
 /* (No Commment) */
-"Updating label" = "Actualización de etiqueta";
-
-/* (No Commment) */
-"Updating settings" = "Configuración de actualización";
-
-/* (No Commment) */
 "Upgrade Now" = "Actualizar ahora";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "Verificación de la";
 
 /* (No Commment) */
-"Wallet Identifer" = "Identificador de cartera";
+"Wallet Identifier" = "Identificador de cartera";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Cartera emparejados con éxito.";

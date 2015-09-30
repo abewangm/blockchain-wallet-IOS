@@ -116,14 +116,8 @@ void (^secondPasswordSuccess)(NSString *);
 - (id)init
 {
     if (self = [super init]) {
-        self.btcFormatter = [[NSNumberFormatter alloc] init];
-        [_btcFormatter setMaximumFractionDigits:8];
-        [_btcFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        
-        self.localCurrencyFormatter = [[NSNumberFormatter alloc] init];
-        [_localCurrencyFormatter setMinimumFractionDigits:2];
-        [_localCurrencyFormatter setMaximumFractionDigits:2];
-        [_localCurrencyFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        [self setupBtcFormatter];
+        [self setupLocalCurrencyFormatter];
         
         self.modalChain = [[NSMutableArray alloc] init];
         
@@ -139,13 +133,9 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self checkForNewInstall];
     
-    // Make sure the server session id SID is persisted for new UIWebViews
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+    [self persistServerSessionIDForNewUIWebViews];
     
-    // Disable UIWebView caching
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:0 diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
+    [self disableUIWebViewCaching];
     
     // Allocate the global wallet
     self.wallet = [[Wallet alloc] init];
@@ -165,12 +155,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     _window.backgroundColor = [UIColor whiteColor];
     
-    // Side menu
-    _slidingViewController = [[ECSlidingViewController alloc] init];
-    _slidingViewController.topViewController = _tabViewController;
-    sideMenuViewController = [[SideMenuViewController alloc] init];
-    _slidingViewController.underLeftViewController = sideMenuViewController;
-    _window.rootViewController = _slidingViewController;
+    [self setupSideMenu];
     
     [_window makeKeyAndVisible];
     
@@ -184,56 +169,7 @@ void (^secondPasswordSuccess)(NSString *);
     // Load settings    
     symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
 
-    // Not paired yet
-    if (![self guid] || ![self sharedKey]) {
-        [self showWelcome];
-        [self checkAndWarnOnJailbrokenPhones];
-    }
-    // Paired
-    else {
-
-        // If the PIN is set show the pin modal
-        if ([self isPINSet]) {
-            [self showPinModalAsView:YES];
-        } else {
-            // No PIN set we need to ask for the main password
-            [self showPasswordModal];
-            [self checkAndWarnOnJailbrokenPhones];
-        }
-        
-        // Migrate Password and PIN from NSUserDefaults (for users updating from old version)
-        NSString * password = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PASSWORD];
-        NSString * pin = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN];
-        
-        if (password && pin) {
-            self.wallet.password = password;
-            
-            [self savePIN:pin];
-            
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PASSWORD];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PIN];
-        }
-        
-        // Listen for notification (from Swift code) to reload:
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD object:nil];
-        
-        // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
-        
-        // Curtain view setup
-        curtainImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
-        
-        // Select the correct image depending on the screen size. The names used are the default names that LaunchImage assets get after processing. See @http://stackoverflow.com/questions/19107543/xcode-5-asset-catalog-how-to-reference-the-launchimage
-        // This works for iPhone 4/4S, 5/5S, 6 and 6Plus in Portrait
-        // TODO need to add new screen sizes with new iPhones ... ugly
-        // TODO we're currently using the scaled version of the app on iPhone 6 and 6 Plus
-        //        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
-        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-700-568h", @"414x736" : @"LaunchImage-700-568h"};
-        NSString *key = [NSString stringWithFormat:@"%dx%d", (int)[UIScreen mainScreen].bounds.size.width, (int)[UIScreen mainScreen].bounds.size.height];
-        UIImage *launchImage = [UIImage imageNamed:dict[key]];
-
-        curtainImageView.image = launchImage;
-        curtainImageView.alpha = 0;
-    }
+    [self showWelcomeOrPinScreen];
         
     return YES;
 }
@@ -266,6 +202,106 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+#pragma mark - Setup
+
+- (void)setupBtcFormatter
+{
+    self.btcFormatter = [[NSNumberFormatter alloc] init];
+    [_btcFormatter setMaximumFractionDigits:8];
+    [_btcFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+}
+
+- (void)setupLocalCurrencyFormatter
+{
+    self.localCurrencyFormatter = [[NSNumberFormatter alloc] init];
+    [_localCurrencyFormatter setMinimumFractionDigits:2];
+    [_localCurrencyFormatter setMaximumFractionDigits:2];
+    [_localCurrencyFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+}
+
+- (void)persistServerSessionIDForNewUIWebViews
+{
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+}
+
+- (void)disableUIWebViewCaching
+{
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:0 diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+}
+
+- (void)setupSideMenu
+{
+    _slidingViewController = [[ECSlidingViewController alloc] init];
+    _slidingViewController.topViewController = _tabViewController;
+    sideMenuViewController = [[SideMenuViewController alloc] init];
+    _slidingViewController.underLeftViewController = sideMenuViewController;
+    _window.rootViewController = _slidingViewController;
+}
+
+- (void)showWelcomeOrPinScreen
+{
+    // Not paired yet
+    if (![self guid] || ![self sharedKey]) {
+        [self showWelcome];
+        [self checkAndWarnOnJailbrokenPhones];
+    }
+    // Paired
+    else {
+        
+        // If the PIN is set show the pin modal
+        if ([self isPinSet]) {
+            [self showPinModalAsView:YES];
+        } else {
+            // No PIN set we need to ask for the main password
+            [self showPasswordModal];
+            [self checkAndWarnOnJailbrokenPhones];
+        }
+        
+        [self migratePasswordAndPinFromNSUserDefaults];
+        
+        // Listen for notification (from Swift code) to reload:
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD object:nil];
+        
+        // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
+        [self setupCurtainView];
+    }
+}
+
+- (void)migratePasswordAndPinFromNSUserDefaults
+{
+    NSString * password = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PASSWORD];
+    NSString * pin = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN];
+    
+    if (password && pin) {
+        self.wallet.password = password;
+        
+        [self savePIN:pin];
+        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PASSWORD];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PIN];
+    }
+}
+
+- (void)setupCurtainView
+{
+    // Curtain view setup
+    curtainImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
+    
+    // Select the correct image depending on the screen size. The names used are the default names that LaunchImage assets get after processing. See @http://stackoverflow.com/questions/19107543/xcode-5-asset-catalog-how-to-reference-the-launchimage
+    // This works for iPhone 4/4S, 5/5S, 6 and 6Plus in Portrait
+    // TODO need to add new screen sizes with new iPhones ... ugly
+    // TODO we're currently using the scaled version of the app on iPhone 6 and 6 Plus
+    //        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
+    NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-700-568h", @"414x736" : @"LaunchImage-700-568h"};
+    NSString *key = [NSString stringWithFormat:@"%dx%d", (int)[UIScreen mainScreen].bounds.size.width, (int)[UIScreen mainScreen].bounds.size.height];
+    UIImage *launchImage = [UIImage imageNamed:dict[key]];
+    
+    curtainImageView.image = launchImage;
+    curtainImageView.alpha = 0;
+}
+
 #pragma mark - UI State
 
 - (void)reload
@@ -273,6 +309,7 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController reload];
     [_transactionsViewController reload];
     [_receiveViewController reload];
+    [_settingsNavigationController reload];
     
     [sideMenuViewController reload];
 }
@@ -412,7 +449,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [app closeAllModals];
     
-    if (![app isPINSet]) {
+    if (![app isPinSet]) {
         [app showPinModalAsView:NO];
     }
 }
@@ -456,7 +493,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)beginBackgroundUpdateTask
 {
-    // We're using a background task to insure we get enough time to sync. The bg task has to be ended before or when the timer expires, otherwise the app gets killed by the system.
+    // We're using a background task to ensure we get enough time to sync. The bg task has to be ended before or when the timer expires, otherwise the app gets killed by the system.
     // Always kill the old handler before starting a new one. In case the system starts a bg task when the app goes into background, comes to foreground and goes to background before the first background task was ended. In that case the first background task is never killed and the system kills the app when the maximum time is up.
     [self endBackgroundUpdateTask];
     
@@ -532,11 +569,7 @@ void (^secondPasswordSuccess)(NSString *);
     if (_settingsNavigationController) {
         [_settingsNavigationController dismissViewControllerAnimated:NO completion:nil];
     }
-    
-    if (_sendViewController) {
-        [_sendViewController dismissAlertViews];
-    }
-    
+
     [self closeSideMenu];
     
     // Close PIN Modal in case we are setting it (after login or when changing the PIN)
@@ -545,7 +578,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     // Show pin modal before we close the app so the PIN verify modal gets shown in the list of running apps and immediately after we restart
-    if ([self isPINSet]) {
+    if ([self isPinSet]) {
         [self showPinModalAsView:YES];
         [self.pinEntryViewController reset];
     }
@@ -560,7 +593,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // The PIN modal is shown on ResignActive, but we don't want to override the modal with the welcome screen
-    if ([self isPINSet]) {
+    if ([self isPinSet]) {
         return;
     }
     
@@ -938,7 +971,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         self.wallet.delegate = self;
         
-        wallet.didScanQRCode = YES;
+        wallet.didPairAutomatically = YES;
         
     } error:^(NSString*error) {
         [app standardNotify:error];
@@ -1012,6 +1045,17 @@ void (^secondPasswordSuccess)(NSString *);
     [self transitionToIndex:1];
 }
 
+- (void)didImportPrivateKey:(NSString *)address
+{
+    BCAlertView *alertView = [[BCAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if (wallet.isSyncingForCriticalProcess) {
+            [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+        }
+    };
+    [alertView show];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountSettings
@@ -1077,7 +1121,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     // if pin exists - verify
-    if ([self isPINSet]) {
+    if ([self isPinSet]) {
         self.pinEntryViewController = [PEPinEntryController pinVerifyController];
     }
     // no pin - create
@@ -1215,17 +1259,17 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)changePIN
 {
-    PEPinEntryController *c = [PEPinEntryController pinChangeController];
-    c.pinDelegate = self;
-    c.navigationBarHidden = YES;
+    PEPinEntryController *pinChangeController = [PEPinEntryController pinChangeController];
+    pinChangeController.pinDelegate = self;
+    pinChangeController.navigationBarHidden = YES;
     
-    PEViewController *peViewController = (PEViewController *)[[c viewControllers] objectAtIndex:0];
+    PEViewController *peViewController = (PEViewController *)[[pinChangeController viewControllers] objectAtIndex:0];
     peViewController.cancelButton.hidden = NO;
     
-    self.pinEntryViewController = c;
+    self.pinEntryViewController = pinChangeController;
     
     peViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self.tabViewController presentViewController:c animated:YES completion:nil];
+    [self.tabViewController presentViewController:pinChangeController animated:YES completion:nil];
 }
 
 - (void)clearPin
@@ -1533,7 +1577,8 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (void)didFailPutPin:(NSString*)value {
+- (void)didFailPutPin:(NSString*)value
+{
     [self hideBusyView];
     
     // If the server returns an "Invalid Numerical Value" response it means the user entered "0000" and we show a slightly different error message
@@ -1552,7 +1597,8 @@ void (^secondPasswordSuccess)(NSString *);
     [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
 }
 
-- (void)didPutPinSuccess:(NSDictionary*)dictionary {
+- (void)didPutPinSuccess:(NSDictionary*)dictionary
+{
     [self hideBusyView];
     
     if (!app.wallet.password) {
@@ -1736,7 +1782,8 @@ void (^secondPasswordSuccess)(NSString *);
 #pragma mark - Format helpers
 
 // Format amount in satoshi as NSString (with symbol)
-- (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal {
+- (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
+{
     if (fsymbolLocal && latestResponse.symbol_local.conversion) {
         @try {
             NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)latestResponse.symbol_local.conversion]];
@@ -1770,7 +1817,8 @@ void (^secondPasswordSuccess)(NSString *);
     return [string stringByAppendingString:@" BTC"];
 }
 
-- (NSString*)formatMoney:(uint64_t)value {
+- (NSString*)formatMoney:(uint64_t)value
+{
     return [self formatMoney:value localCurrency:symbolLocal];
 }
 
@@ -1819,7 +1867,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)checkForNewInstall
 {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey] && ![self isPINSet]) {
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey] && ![self isPinSet]) {
         [self alertUserAskingToUseOldKeychain];
         [[NSUserDefaults standardUserDefaults] setValue:USER_DEFAULTS_KEY_FIRST_RUN forKey:USER_DEFAULTS_KEY_FIRST_RUN];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -1902,7 +1950,7 @@ void (^secondPasswordSuccess)(NSString *);
     return YES;
 }
 
-- (BOOL)isPINSet
+- (BOOL)isPinSet
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD] != nil;
 }

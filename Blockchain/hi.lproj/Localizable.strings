@@ -56,7 +56,7 @@
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "कोई ईमेल खाता एक खो बटुआ पहचानकर्ता उबरने में मदद करने के लिए की जरूरत है और भुगतान सूचनाओं के लिए। जब आप अपने बटुए में प्रवेश भी, अपना सत् यापित ईमेल पता सत्यापन की एक दूसरी परत के रूप में उपयोग किया जाएगा।";
 
 /* (No Commment) */
-"An error occured validating your PIN code with the remote server. You may be offline or blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "त्रुटि लोड हो रहा है अपने बटुए का सामना करना पड़ा था। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का सामना कर रहा है। कृपया अनुप्रयोग बंद करें और बाद में पुन: प्रयास करें या अपने डिवाइस पुन: जोड़ी।";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Error loading settings" = "त्रुटि लोडिंग सेटिंग्स";
+
+/* (No Commment) */
+"Error updating settings" = "सेटिंग्स अद्यतन करने में त्रुटि";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "बटुआ लोड करने में विफल रहा";
@@ -461,6 +464,9 @@
 "Please check your email." = "कृपया अपने ईमेल की जाँच करें।";
 
 /* (No Commment) */
+"Please check your internet connection." = "कृपया अपना इंटरनेट कनेक्शन जाँचें।";
+
+/* (No Commment) */
 "Please choose another PIN" = "कृपया चुनें किसी अन्य पिन";
 
 /* (No Commment) */
@@ -489,9 +495,6 @@
 
 /* No comment provided by engineer. */
 "Please try again" = "कृपया पुन: प्रयास करें";
-
-/* (No Commment) */
-"Please try again shortly." = "कृपया शीघ्र ही पुन: प्रयास करें।";
 
 /* (No Commment) */
 "Please verify your email" = "कृपया अपने ईमेल की जाँच करें";
@@ -525,6 +528,9 @@
 
 /* (No Commment) */
 "Scan Pairing Code" = "स्कैन कोड बाँधना";
+
+/* (No Commment) */
+"Scan Private Key" = "निजी कुंजी को स्कैन";
 
 /* (No Commment) */
 "Scan QR Code" = "QR कोड स्कैन करें";
@@ -584,6 +590,9 @@
 "Support" = "समर्थन";
 
 /* (No Commment) */
+"Syncing wallet" = "बटुआ सिंक्रनाइज़ किए जा रहे";
+
+/* (No Commment) */
 "Terms of Service" = "सेवा की शर्तें";
 
 /* (No Commment) */
@@ -636,12 +645,6 @@ Fee: %@
 "Update" = "अद्यतन";
 
 /* (No Commment) */
-"Updating label" = "लेबल अद्यतन करना";
-
-/* (No Commment) */
-"Updating settings" = "सेटिंग्स अद्यतन कर रहा है";
-
-/* (No Commment) */
 "Upgrade Now" = "अब नवीनीकरण करें";
 
 /* (No Commment) */
@@ -669,7 +672,7 @@ Fee: %@
 "Verifying" = "का सत्यापन";
 
 /* (No Commment) */
-"Wallet Identifer" = "बटुआ Identifer";
+"Wallet Identifier" = "बटुआ Identifer";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "बटुआ सफलतापूर्वक बनती।";
