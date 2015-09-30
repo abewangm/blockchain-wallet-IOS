@@ -14,11 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-#define DISABLE_EDITING_ACCOUNTS 1 // comment this line out to enable support for adding/editing accounts
-
-#define kConfirmationThreshold 3
-
-#define ANIMATION_DURATION .2f
+#pragma mark - Colors
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -50,16 +46,170 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_PASSWORD_STRENGTH_NORMAL UIColorFromRGB(0x5bc0de)
 #define COLOR_PASSWORD_STRENGTH_STRONG UIColorFromRGB(0x5cb85c)
 
+#pragma mark - Measurements
+
 #define DEFAULT_HEADER_HEIGHT 65
 #define DEFAULT_FOOTER_HEIGHT 47
 #define DEFAULT_STATUS_BAR_HEIGHT 20
 
+// MerchantMapViewcontroller
+#define METERS_PER_MILE 1609.344
+
+// AddressSelectionView
+#define ROW_HEIGHT 68
+#define ROW_HEIGHT_ACCOUNT 44
+
+// CreateWalletView
+#define IS_568_SCREEN (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)568) < DBL_EPSILON)
+#define SCROLL_HEIGHT_SMALL_SCREEN 4
+
+// BCHDUpgradeView/BCWelcomeView
+#define BUTTON_HEIGHT 40
+
+#pragma mark - Strings
+
+#define USER_DEFAULTS_KEY_TRANSACTIONS @"transactions"
+
 #define NUMBER_KEYPAD_CHARACTER_SET_STRING @"1234567890"
 
+#define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
+
+#define DICTIONARY_KEY_AMOUNT @"amount"
+#define DICTIONARY_KEY_FEE @"fee"
+
+#define NOTIFICATION_KEY_SEND_SCREEN_RELOADING @"sendScreenReloading"
+#define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
+#define NOTIFICATION_KEY_NEW_ADDRESS @"newAddress"
+
+// Notifications used in settings
+#define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
+#define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
+#define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
+#define NOTIFICATION_KEY_GET_HISTORY_SUCCESS @"GetHistory"
+#define NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS @"ChangeLocalCurrency"
+#define NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS @"GetAllCurrencySymbols"
+#define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
+#define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
+#define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
+#define NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS @"VerifyEmail"
+
+#define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
+#define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
+
+#define SEGUE_IDENTIFIER_CURRENCY @"currency"
+#define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
+#define SEGUE_IDENTIFIER_ABOUT @"about"
+#define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
+#define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
+
+#define WebROOT @"https://blockchain.info/"
+
+#define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
+#define ZEROBLOCK_TITLE @"ZeroBlock"
+
+#define SOUND_FORMAT @"wav"
+
+#define NOTIFICATION_KEY_APP_DELEGATE_RELOAD @"AppDelegateReload"
+
+#define ANIMATION_KEY_HIDE_MODAL @"HideModal"
+#define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
+
+#define DICTIONARY_KEY_ADDRESS @"address"
+#define DICTIONARY_KEY_AMOUNT @"amount"
+#define DICTIONARY_KEY_CODE @"code"
+#define DICTIONARY_KEY_ERROR @"error"
+#define DICTIONARY_KEY_SUCCESS @"success"
+#define DICTIONARY_KEY_KEY @"key"
+#define DICTIONARY_KEY_VALUE @"value"
+
+#define USER_DEFAULTS_KEY_SHARED_KEY @"sharedKey"
+#define USER_DEFAULTS_KEY_GUID @"guid"
+#define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
+#define USER_DEFAULTS_KEY_SYMBOL_LOCAL @"symbolLocal"
+#define USER_DEFAULTS_KEY_PASSWORD @"password"
+#define USER_DEFAULTS_KEY_PIN @"pin"
+#define USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD @"encryptedPINPassword"
+#define USER_DEFAULTS_KEY_PIN_KEY @"pinKey"
+#define USER_DEFAULTS_KEY_PASSWORD_PART_HASH @"passwordPartHash"
+#define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
+
+#define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
+#define KEYCHAIN_KEY_GUID @"guid"
+
+#define QR_CODE_KEY_GUID @"guid"
+#define QR_CODE_KEY_SHARED_KEY @"sharedKey"
+#define QR_CODE_KEY_PASSWORD @"password"
+
+#define STORYBOARD_NAME_SETTINGS @"Settings"
+#define STORYBOARD_NAME_BACKUP @"Backup"
+#define STORYBOARD_NAME_UPGRADE @"Upgrade"
+
+#define NAVIGATION_CONTROLLER_NAME_SETTINGS @"SettingsNavigationController"
+#define NAVIGATION_CONTROLLER_NAME_BACKUP @"BackupNavigation"
+
+#define VIEW_CONTROLLER_NAME_UPGRADE @"UpgradeViewController"
+
+#define NIB_NAME_SEND_COINS @"SendCoins"
+#define NIB_NAME_MERCHANT_MAP_VIEW @"MerchantMapView"
+#define NIB_NAME_RECEIVE_COINS @"ReceiveCoins"
+
+#define SUPPORT_EMAIL_ADDRESS @"support@blockchain.zendesk.com"
+
+#define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
+#define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"
+#define UNSAFE_CHECK_PATH_BIN_BASH @"/bin/bash"
+#define UNSAFE_CHECK_PATH_USR_SBIN_SSHD @"/usr/sbin/sshd"
+#define UNSAFE_CHECK_PATH_ETC_APT @"/etc/apt"
+#define UNSAFE_CHECK_PATH_WRITE_TEST @"/private/test.txt"
+#define UNSAFE_CHECK_CYDIA_URL @"cydia://package/com.example.package"
+
+#pragma mark - Constants
+
+#define SATOSHI 1e8 // 100,000,000
+#define MULTI_ADDR_TIME 60.0f // 1 Minute
+
+#define ANIMATION_DURATION .2f
+#define kConfirmationThreshold 3
+
+// TabViewController
+#define TAB_SEND 0
+#define TAB_TRANSACTIONS 1
+#define TAB_RECEIVE 2
+
+// SideMenuViewController
+#define SECTION_HEADER_HEIGHT 44
+
+#define MENU_ENTRY_HEIGHT 54
+#define BALANCE_ENTRY_HEIGHT 58
+
+#define MENU_CELL_INDEX_SETTINGS 0
+#define MENU_CELL_INDEX_MERCHANT 1
+#define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 2
+#define MENU_CELL_INDEX_SUPPORT 3
+#ifdef HD_ENABLED
+#define MENU_CELL_INDEX_UPGRADE 4
+#define MENU_CELL_INDEX_CHANGE_PIN 5
+#define MENU_CELL_INDEX_LOGOUT 6
+#else
+#define MENU_CELL_INDEX_UPGRADE -1
+#define MENU_CELL_INDEX_CHANGE_PIN 4
+#define MENU_CELL_INDEX_LOGOUT 5
+#endif
+
+#define PIN_API_STATUS_CODE_DELETED 1
+#define PIN_API_STATUS_PIN_INCORRECT 2
+#define PIN_API_STATUS_OK 0
+#define PIN_API_STATUS_UNKNOWN 3
+#define PIN_API_STATUS_DUPLICATE_KEY 4
+
+#define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
 // TODO: Get from JS
 #define DUST_THRESHOLD 5460
-
 #define BTC_LIMIT_IN_SATOSHI 21e14 // 21,000,000 (Total possible Bitcoins) * 100,000,000 (Satoshi)
+
+#pragma mark - Runtime modes
+
+#define DISABLE_EDITING_ACCOUNTS 1 // comment this line out to enable support for adding/editing accounts
 
 #ifdef DEBUG
     #define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);

@@ -36,65 +36,6 @@
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
 
-#define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
-#define ZEROBLOCK_TITLE @"ZeroBlock"
-
-#define SOUND_FORMAT @"wav"
-
-#define NOTIFICATION_KEY_APP_DELEGATE_RELOAD @"AppDelegateReload"
-
-#define ANIMATION_KEY_HIDE_MODAL @"HideModal"
-#define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
-
-#define DICTIONARY_KEY_ADDRESS @"address"
-#define DICTIONARY_KEY_AMOUNT @"amount"
-#define DICTIONARY_KEY_CODE @"code"
-#define DICTIONARY_KEY_ERROR @"error"
-#define DICTIONARY_KEY_SUCCESS @"success"
-#define DICTIONARY_KEY_KEY @"key"
-#define DICTIONARY_KEY_VALUE @"value"
-
-#define USER_DEFAULTS_KEY_SHARED_KEY @"sharedKey"
-#define USER_DEFAULTS_KEY_GUID @"guid"
-#define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
-#define USER_DEFAULTS_KEY_SYMBOL_LOCAL @"symbolLocal"
-#define USER_DEFAULTS_KEY_PASSWORD @"password"
-#define USER_DEFAULTS_KEY_PIN @"pin"
-#define USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD @"encryptedPINPassword"
-#define USER_DEFAULTS_KEY_PIN_KEY @"pinKey"
-#define USER_DEFAULTS_KEY_PASSWORD_PART_HASH @"passwordPartHash"
-#define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
-
-#define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
-#define KEYCHAIN_KEY_GUID @"guid"
-
-#define QR_CODE_KEY_GUID @"guid"
-#define QR_CODE_KEY_SHARED_KEY @"sharedKey"
-#define QR_CODE_KEY_PASSWORD @"password"
-
-#define STORYBOARD_NAME_SETTINGS @"Settings"
-#define STORYBOARD_NAME_BACKUP @"Backup"
-#define STORYBOARD_NAME_UPGRADE @"Upgrade"
-
-#define NAVIGATION_CONTROLLER_NAME_SETTINGS @"SettingsNavigationController"
-#define NAVIGATION_CONTROLLER_NAME_BACKUP @"BackupNavigation"
-
-#define VIEW_CONTROLLER_NAME_UPGRADE @"UpgradeViewController"
-
-#define NIB_NAME_SEND_COINS @"SendCoins"
-#define NIB_NAME_MERCHANT_MAP_VIEW @"MerchantMapView"
-#define NIB_NAME_RECEIVE_COINS @"ReceiveCoins"
-
-#define SUPPORT_EMAIL_ADDRESS @"support@blockchain.zendesk.com"
-
-#define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
-#define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"
-#define UNSAFE_CHECK_PATH_BIN_BASH @"/bin/bash"
-#define UNSAFE_CHECK_PATH_USR_SBIN_SSHD @"/usr/sbin/sshd"
-#define UNSAFE_CHECK_PATH_ETC_APT @"/etc/apt"
-#define UNSAFE_CHECK_PATH_WRITE_TEST @"/private/test.txt"
-#define UNSAFE_CHECK_CYDIA_URL @"cydia://package/com.example.package"
-
 AppDelegate * app;
 
 @implementation AppDelegate

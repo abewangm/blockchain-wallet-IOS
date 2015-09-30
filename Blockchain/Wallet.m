@@ -18,8 +18,6 @@
 #import "NSData+Hex.h"
 #import "TransactionsViewController.h"
 
-#define USER_DEFAULTS_KEY_TRANSACTIONS @"transactions"
-
 @implementation transactionProgressListeners
 @end
 

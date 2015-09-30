@@ -9,9 +9,6 @@
 #import "SettingsBitcoinUnitTableViewController.h"
 #import "AppDelegate.h"
 
-#define USER_DEFAULTS_KEY_BTC_UNIT @"btcUnit"
-
-
 @interface SettingsBitcoinUnitTableViewController ()
 @property (nonatomic, copy) NSArray *keysArray;
 @property (nonatomic, copy) NSArray *namesArray;

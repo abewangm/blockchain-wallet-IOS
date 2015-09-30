@@ -21,8 +21,6 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-#define METERS_PER_MILE 1609.344
-
 @interface MerchantMapViewController () <CLLocationManagerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

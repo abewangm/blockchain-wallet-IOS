@@ -12,9 +12,6 @@
 #import "ReceiveTableCell.h"
 #import "SendViewController.h"
 
-#define ROW_HEIGHT 68
-#define ROW_HEIGHT_ACCOUNT 44
-
 @implementation BCAddressSelectionView
 
 @synthesize addressBookAddresses;

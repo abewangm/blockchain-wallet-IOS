@@ -15,25 +15,6 @@
 #import "SideMenuViewCell.h"
 #import "BCLine.h"
 
-#define SECTION_HEADER_HEIGHT 44
-
-#define MENU_ENTRY_HEIGHT 54
-#define BALANCE_ENTRY_HEIGHT 58
-
-#define MENU_CELL_INDEX_SETTINGS 0
-#define MENU_CELL_INDEX_MERCHANT 1
-#define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 2
-#define MENU_CELL_INDEX_SUPPORT 3
-#ifdef HD_ENABLED
-#define MENU_CELL_INDEX_UPGRADE 4
-#define MENU_CELL_INDEX_CHANGE_PIN 5
-#define MENU_CELL_INDEX_LOGOUT 6
-#else
-#define MENU_CELL_INDEX_UPGRADE -1
-#define MENU_CELL_INDEX_CHANGE_PIN 4
-#define MENU_CELL_INDEX_LOGOUT 5
-#endif
-
 @interface SideMenuViewController ()
 
 @property (strong, readwrite, nonatomic) UITableView *tableView;

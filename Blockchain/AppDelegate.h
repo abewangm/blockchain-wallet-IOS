@@ -31,40 +31,6 @@
 #import "UpgradeViewController.h"
 #import "SettingsNavigationController.h"
 
-#define SATOSHI 100000000
-
-#define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
-
-#define DICTIONARY_KEY_AMOUNT @"amount"
-#define DICTIONARY_KEY_FEE @"fee"
-
-#define NOTIFICATION_KEY_SEND_SCREEN_RELOADING @"sendScreenReloading"
-#define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
-#define NOTIFICATION_KEY_NEW_ADDRESS @"newAddress"
-
-// Notifications used in settings
-#define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
-#define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
-#define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
-#define NOTIFICATION_KEY_GET_HISTORY_SUCCESS @"GetHistory"
-#define NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS @"ChangeLocalCurrency"
-#define NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS @"GetAllCurrencySymbols"
-#define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
-#define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
-#define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
-#define NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS @"VerifyEmail"
-
-#define WebROOT @"https://blockchain.info/"
-#define MULTI_ADDR_TIME 60.0f // 1 Minute
-
-#define PIN_API_STATUS_CODE_DELETED 1
-#define PIN_API_STATUS_PIN_INCORRECT 2
-#define PIN_API_STATUS_OK 0
-#define PIN_API_STATUS_UNKNOWN 3
-#define PIN_API_STATUS_DUPLICATE_KEY 4
-
-#define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
-
 @class TransactionsViewController, Wallet, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate> {

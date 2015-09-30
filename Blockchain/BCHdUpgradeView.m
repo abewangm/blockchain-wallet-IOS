@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import "LocalizationConstants.h"
 
-#define BUTTON_HEIGHT 40
 
 @implementation BCHdUpgradeView
 

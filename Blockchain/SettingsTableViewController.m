@@ -12,15 +12,6 @@
 #import "SettingsBitcoinUnitTableViewController.h"
 #import "AppDelegate.h"
 
-#define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
-#define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
-
-#define SEGUE_IDENTIFIER_CURRENCY @"currency"
-#define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
-#define SEGUE_IDENTIFIER_ABOUT @"about"
-#define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
-#define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
-
 const int textFieldTagVerifyEmail = 5;
 const int textFieldTagChangeEmail = 4;
 

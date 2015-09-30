@@ -9,10 +9,6 @@
 #import "TabViewcontroller.h"
 #import "AppDelegate.h"
 
-#define TAB_SEND 0
-#define TAB_TRANSACTIONS 1
-#define TAB_RECEIVE 2
-
 @implementation TabViewcontroller
 
 @synthesize oldViewController;
