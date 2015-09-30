@@ -29,7 +29,7 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(dismiss:)
-                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                     name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_ALERTS
                                                    object:nil];
     }
     
