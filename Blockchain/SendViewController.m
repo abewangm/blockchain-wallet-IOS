@@ -141,8 +141,6 @@ BOOL displayingLocalSymbolSend;
     [self updateFundsAvailable];
     
     [self enablePaymentButtons];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SEND_SCREEN_RELOADING object:nil];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
@@ -361,11 +359,6 @@ BOOL displayingLocalSymbolSend;
                                                   cancelButtonTitle:BC_STRING_CANCEL
                                                   otherButtonTitles:BC_STRING_SEND, nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:alert
-                                                 selector:@selector(dismissWithClickedButtonIndex:animated:)
-                                                     name:NOTIFICATION_KEY_SEND_SCREEN_RELOADING
-                                                   object:nil];
-        
         alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 amountInSatoshi = maxAmount;
@@ -420,11 +413,6 @@ BOOL displayingLocalSymbolSend;
                                                         delegate:self
                                                         cancelButtonTitle:BC_STRING_CANCEL
                                                         otherButtonTitles:BC_STRING_SEND, nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:alert
-                                                 selector:@selector(dismissWithClickedButtonIndex:animated:)
-                                                     name:NOTIFICATION_KEY_SEND_SCREEN_RELOADING
-                                                   object:nil];
         
         alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
                     [self enablePaymentButtons];

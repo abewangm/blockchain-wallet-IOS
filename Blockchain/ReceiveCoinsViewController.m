@@ -11,6 +11,7 @@
 #import "ReceiveTableCell.h"
 #import "Address.h"
 #import "PrivateKeyReader.h"
+#import "UIAlertController+AutoDismiss.h"
 
 @interface ReceiveCoinsViewController() <UIAlertViewDelegate, UIActivityItemSource>
 @property (nonatomic) id paymentObserver;
@@ -525,10 +526,27 @@ UIActionSheet *popupAddressArchive;
 
 - (IBAction)addNewAddressClicked:(id)sender
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_NEW_ADDRESS message:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_NEW_ADDRESS_GENERATE_NEW, BC_STRING_SCAN_PRIVATE_KEY, nil];
-    alertView.delegate = self;
-    self.addNewAddressAlertView = alertView;
-    [alertView show];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_ADDRESS message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *generateNewAddressAction = [UIAlertAction actionWithTitle:BC_STRING_NEW_ADDRESS_GENERATE_NEW style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self generateNewAddress];
+    }];
+    UIAlertAction *scanPrivateKeyAction = [UIAlertAction actionWithTitle:BC_STRING_SCAN_PRIVATE_KEY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self scanPrivateKey];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alertController addAction:generateNewAddressAction];
+    [alertController addAction:scanPrivateKeyAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] addObserver:alertController
+                                                 selector:@selector(autoDismiss)
+                                                     name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_ALERTS
+                                                   object:nil];
+    }];
 }
 
 - (IBAction)labelSaveClicked:(id)sender

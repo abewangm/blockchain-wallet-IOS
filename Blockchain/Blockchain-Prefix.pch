@@ -77,7 +77,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_FEE @"fee"
 
-#define NOTIFICATION_KEY_SEND_SCREEN_RELOADING @"sendScreenReloading"
+#define NOTIFICATION_KEY_RELOAD_TO_DISMISS_ALERTS @"reloadToDismissAlertViews"
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
 #define NOTIFICATION_KEY_NEW_ADDRESS @"newAddress"
 
@@ -109,7 +109,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define SOUND_FORMAT @"wav"
 
-#define NOTIFICATION_KEY_APP_DELEGATE_RELOAD @"AppDelegateReload"
+#define NOTIFICATION_KEY_APP_DELEGATE_RELOAD_FOR_SWIFT @"AppDelegateReload"
 
 #define ANIMATION_KEY_HIDE_MODAL @"HideModal"
 #define ANIMATION_KEY_SHOW_MODAL @"ShowModal"

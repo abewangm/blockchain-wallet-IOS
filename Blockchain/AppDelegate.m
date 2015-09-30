@@ -203,7 +203,7 @@ void (^secondPasswordSuccess)(NSString *);
         [self migratePasswordAndPinFromNSUserDefaults];
         
         // Listen for notification (from Swift code) to reload:
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD_FOR_SWIFT object:nil];
         
         // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
         [self setupCurtainView];
@@ -253,6 +253,8 @@ void (^secondPasswordSuccess)(NSString *);
     [_settingsNavigationController reload];
     
     [sideMenuViewController reload];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_TO_DISMISS_ALERTS object:nil];
 }
 
 - (void)toggleSymbol
