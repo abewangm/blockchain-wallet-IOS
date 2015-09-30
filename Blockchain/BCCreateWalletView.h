@@ -28,11 +28,14 @@
     IBOutlet UITextField *password2TextField;
     IBOutlet UILabel *passwordFeedbackLabel;
     IBOutlet UIProgressView *passwordStrengthMeter;
+    IBOutlet UITextField *recoverWalletPassphraseTextField;
 }
 
 - (IBAction)termsOfServiceClicked:(id)sender;
 - (void)clearPasswordTextFields;
 
 @property(nonatomic, strong) NSString *tmpPassword;
-
+@property(nonatomic) BOOL isRecoveringWallet;
+@property (strong, nonatomic) IBOutlet UIButton *termsOfServiceButton;
+@property(nonatomic) UIButton *createButton;
 @end

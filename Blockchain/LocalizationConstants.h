@@ -285,3 +285,5 @@
 #define BC_STRING_NEW_ADDRESS NSLocalizedString(@"New Address", nil)
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)
 #define BC_STRING_NEW_ADDRESS_GENERATE_NEW NSLocalizedString(@"Generate new", nil)
+
+#define BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)

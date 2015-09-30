@@ -21,15 +21,14 @@
     UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     createButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [createButton setTitle:BC_STRING_CREATE_WALLET forState:UIControlStateNormal];
     [createButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     createButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
-    
-    [createButton addTarget:self action:@selector(createAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
+    self.createButton = createButton;
     
     emailTextField.inputAccessoryView = createButton;
     passwordTextField.inputAccessoryView = createButton;
     password2TextField.inputAccessoryView = createButton;
+    recoverWalletPassphraseTextField.inputAccessoryView = createButton;
     
     passwordTextField.textColor = [UIColor grayColor];
     password2TextField.textColor = [UIColor grayColor];
@@ -38,6 +37,27 @@
     
     // If loadBlankWallet is called without a delay, app.wallet will still be nil
     [self performSelector:@selector(createBlankWallet) withObject:nil afterDelay:0.1f];
+}
+
+- (void)setIsRecoveringWallet:(BOOL)isRecoveringWallet
+{
+    _isRecoveringWallet = isRecoveringWallet;
+    
+    if (self.isRecoveringWallet) {
+        [self.createButton addTarget:self action:@selector(recoverWalletClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self.createButton setTitle:BC_STRING_RECOVER_WALLET forState:UIControlStateNormal];
+        recoverWalletPassphraseTextField.hidden = NO;
+        [self sendSubviewToBack:self.termsOfServiceButton];
+        self.termsOfServiceButton.hidden = YES;
+        password2TextField.returnKeyType = UIReturnKeyNext;
+    } else {
+        [self.createButton addTarget:self action:@selector(createAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self.createButton setTitle:BC_STRING_CREATE_WALLET forState:UIControlStateNormal];
+        recoverWalletPassphraseTextField.hidden = YES;
+        [self bringSubviewToFront:self.termsOfServiceButton];
+        self.termsOfServiceButton.hidden = NO;
+        password2TextField.returnKeyType = UIReturnKeyDone;
+    }
 }
 
 - (void)createBlankWallet
@@ -55,6 +75,7 @@
     emailTextField.delegate = self;
     passwordTextField.delegate = self;
     password2TextField.delegate = self;
+    recoverWalletPassphraseTextField.delegate = self;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // Scroll up to fit all entry fields on small screens
@@ -75,12 +96,14 @@
     emailTextField.delegate = nil;
     passwordTextField.delegate = nil;
     password2TextField.delegate = nil;
+    recoverWalletPassphraseTextField.delegate = nil;
 }
 
 - (void)clearPasswordTextFields
 {
     passwordTextField.text = nil;
     password2TextField.text = nil;
+    recoverWalletPassphraseTextField.text = nil;
     passwordStrengthMeter.progress = 0;
     
     passwordTextField.layer.borderColor = COLOR_TEXT_FIELD_BORDER_GRAY.CGColor;
@@ -101,49 +124,43 @@
     else if (textField == passwordTextField) {
         [password2TextField becomeFirstResponder];
     }
+    else if (textField == recoverWalletPassphraseTextField) {
+        [self recoverWalletClicked:textField];
+    }
     else {
-        [self createAccountClicked:textField];
+        if (self.isRecoveringWallet) {
+            [recoverWalletPassphraseTextField becomeFirstResponder];
+        } else {
+            [self createAccountClicked:textField];
+        }
     }
     
     return YES;
 }
 
+- (IBAction)recoverWalletClicked:(id)sender
+{
+    if (![self isReadyToSubmitForm]) {
+        return;
+    };
+    
+    [self closeKeyboard];
+    
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_WALLET];
+    [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:recoverWalletPassphraseTextField.text];
+    
+    app.wallet.delegate = app;
+}
+
+
 // Get here from New Account and also when manually pairing
 - (IBAction)createAccountClicked:(id)sender
 {
-    if ([emailTextField.text length] == 0) {
-        [app standardNotify:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS];
-        [emailTextField becomeFirstResponder];
+    if (![self isReadyToSubmitForm]) {
         return;
-    }
+    };
     
-    if ([emailTextField.text rangeOfString:@"@"].location == NSNotFound) {
-        [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS];
-        [emailTextField becomeFirstResponder];
-        return;
-    }
-    
-    self.tmpPassword = passwordTextField.text;
-    
-    if ([self.tmpPassword length] < 10 || [self.tmpPassword length] > 255) {
-        [app standardNotify:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
-        [passwordTextField becomeFirstResponder];
-        return;
-    }
-    
-    if (![self.tmpPassword isEqualToString:[password2TextField text]]) {
-        [app standardNotify:BC_STRING_PASSWORDS_DO_NOT_MATCH];
-        [password2TextField becomeFirstResponder];
-        return;
-    }
-    
-    if (![app checkInternetConnection]) {
-        return;
-    }
-    
-    [emailTextField resignFirstResponder];
-    [passwordTextField resignFirstResponder];
-    [password2TextField resignFirstResponder];
+    [self closeKeyboard];
     
     // Load the JS without a wallet
     [app.wallet loadBlankWallet];
@@ -151,6 +168,58 @@
     // Get callback when wallet is done loading
     // Continue in walletJSReady callback
     app.wallet.delegate = self;
+}
+
+- (BOOL)isReadyToSubmitForm
+{
+    if ([emailTextField.text length] == 0) {
+        [app standardNotify:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS];
+        [emailTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if ([emailTextField.text rangeOfString:@"@"].location == NSNotFound) {
+        [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS];
+        [emailTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    self.tmpPassword = passwordTextField.text;
+    
+    if ([self.tmpPassword length] < 10 || [self.tmpPassword length] > 255) {
+        [app standardNotify:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
+        [passwordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if (![self.tmpPassword isEqualToString:[password2TextField text]]) {
+        [app standardNotify:BC_STRING_PASSWORDS_DO_NOT_MATCH];
+        [password2TextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if (self.isRecoveringWallet) {
+        NSMutableString *recoveryPhrase = [[NSMutableString alloc] initWithString:recoverWalletPassphraseTextField.text];
+        NSInteger numberOfSpaces = [recoveryPhrase replaceOccurrencesOfString:@" " withString:@"space" options:NSLiteralSearch range:NSMakeRange(0, [recoveryPhrase length])];
+        if (numberOfSpaces != RECOVERY_PHRASE_NUMBER_OF_WORDS - 1) {
+            [app standardNotify:BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS];
+            return NO;
+        }
+    }
+        
+    if (![app checkInternetConnection]) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (void)closeKeyboard
+{
+    [emailTextField resignFirstResponder];
+    [passwordTextField resignFirstResponder];
+    [password2TextField resignFirstResponder];
+    [recoverWalletPassphraseTextField resignFirstResponder];
 }
 
 #pragma mark - Wallet Delegate method
@@ -172,6 +241,7 @@
     emailTextField.text = nil;
     passwordTextField.text = nil;
     password2TextField.text = nil;
+    recoverWalletPassphraseTextField.text = nil;
     
     // TODO Whitelist the new account - this needs to be removed again when we remove the beta invite system XXX
     [app.wallet whitelistWallet];

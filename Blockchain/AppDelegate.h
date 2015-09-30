@@ -80,7 +80,6 @@
     IBOutlet BCCreateWalletView *newAccountView;
     IBOutlet BCModalContentView *pairingInstructionsView;
     IBOutlet BCManualPairView *manualPairView;
-    IBOutlet BCModalContentView *recoverWalletView;
     
     BOOL validateSecondPassword;
     IBOutlet UILabel *secondPasswordDescriptionLabel;
@@ -89,10 +88,6 @@
     
     IBOutlet UIView *mainPasswordView;
     IBOutlet UITextField *mainPasswordTextField;
-    
-    IBOutlet UITextField *recoverWalletPassphraseTextField;
-    IBOutlet UITextField *recoverWalletEmailTextField;
-    IBOutlet UITextField *recoverWalletPasswordTextField;
     
     @public
     
@@ -201,7 +196,6 @@
 - (IBAction)secondPasswordClicked:(id)sender;
 - (IBAction)mainPasswordClicked:(id)sender;
 - (IBAction)manualPairClicked:(id)sender;
-- (IBAction)recoverWalletClicked:(id)sender;
 
 - (IBAction)newsClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;

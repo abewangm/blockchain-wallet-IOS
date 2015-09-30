@@ -70,3 +70,5 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #endif
 
  #define HD_ENABLED 1
+
+#define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
