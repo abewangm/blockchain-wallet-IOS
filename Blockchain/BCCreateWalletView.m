@@ -28,7 +28,6 @@
     emailTextField.inputAccessoryView = createButton;
     passwordTextField.inputAccessoryView = createButton;
     password2TextField.inputAccessoryView = createButton;
-    recoverWalletPassphraseTextField.inputAccessoryView = createButton;
     
     passwordTextField.textColor = [UIColor grayColor];
     password2TextField.textColor = [UIColor grayColor];
@@ -44,19 +43,11 @@
     _isRecoveringWallet = isRecoveringWallet;
     
     if (self.isRecoveringWallet) {
-        [self.createButton addTarget:self action:@selector(recoverWalletClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self.createButton addTarget:self action:@selector(showRecoveryPhraseView:) forControlEvents:UIControlEventTouchUpInside];
         [self.createButton setTitle:BC_STRING_RECOVER_WALLET forState:UIControlStateNormal];
-        recoverWalletPassphraseTextField.hidden = NO;
-        [self sendSubviewToBack:self.termsOfServiceButton];
-        self.termsOfServiceButton.hidden = YES;
-        password2TextField.returnKeyType = UIReturnKeyNext;
     } else {
         [self.createButton addTarget:self action:@selector(createAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.createButton setTitle:BC_STRING_CREATE_WALLET forState:UIControlStateNormal];
-        recoverWalletPassphraseTextField.hidden = YES;
-        [self bringSubviewToFront:self.termsOfServiceButton];
-        self.termsOfServiceButton.hidden = NO;
-        password2TextField.returnKeyType = UIReturnKeyDone;
     }
 }
 
@@ -75,7 +66,7 @@
     emailTextField.delegate = self;
     passwordTextField.delegate = self;
     password2TextField.delegate = self;
-    recoverWalletPassphraseTextField.delegate = self;
+    recoveryPassphraseTextField.delegate = self;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // Scroll up to fit all entry fields on small screens
@@ -96,14 +87,12 @@
     emailTextField.delegate = nil;
     passwordTextField.delegate = nil;
     password2TextField.delegate = nil;
-    recoverWalletPassphraseTextField.delegate = nil;
 }
 
 - (void)clearPasswordTextFields
 {
     passwordTextField.text = nil;
     password2TextField.text = nil;
-    recoverWalletPassphraseTextField.text = nil;
     passwordStrengthMeter.progress = 0;
     
     passwordTextField.layer.borderColor = COLOR_TEXT_FIELD_BORDER_GRAY.CGColor;
@@ -124,21 +113,21 @@
     else if (textField == passwordTextField) {
         [password2TextField becomeFirstResponder];
     }
-    else if (textField == recoverWalletPassphraseTextField) {
-        [self recoverWalletClicked:textField];
-    }
-    else {
+    else if (textField == password2TextField) {
         if (self.isRecoveringWallet) {
-            [recoverWalletPassphraseTextField becomeFirstResponder];
+            [self showRecoveryPhraseView:nil];
         } else {
             [self createAccountClicked:textField];
         }
+    }
+    else if (textField == recoveryPassphraseTextField) {
+        [self recoverWalletClicked:textField];
     }
     
     return YES;
 }
 
-- (IBAction)recoverWalletClicked:(id)sender
+- (IBAction)showRecoveryPhraseView:(id)sender
 {
     if (![self isReadyToSubmitForm]) {
         return;
@@ -146,8 +135,31 @@
     
     [self closeKeyboard];
     
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_WALLET];
-    [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:recoverWalletPassphraseTextField.text];
+    [app showModalWithContent:self.recoveryPhraseView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET onDismiss:^{
+        [self.createButton removeTarget:self action:@selector(recoverWalletClicked:) forControlEvents:UIControlEventTouchUpInside];
+    } onResume:^{
+        [recoveryPassphraseTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.3f];
+    }];
+    
+    [self.createButton removeTarget:self action:@selector(showRecoveryPhraseView:) forControlEvents:UIControlEventTouchUpInside];
+    [self.createButton addTarget:self action:@selector(recoverWalletClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    recoveryPassphraseTextField.inputAccessoryView = self.createButton;
+}
+
+- (IBAction)recoverWalletClicked:(id)sender
+{
+    if (self.isRecoveringWallet) {
+        NSMutableString *recoveryPhrase = [[NSMutableString alloc] initWithString:recoveryPassphraseTextField.text];
+        NSInteger numberOfSpaces = [recoveryPhrase replaceOccurrencesOfString:@" " withString:@"space" options:NSLiteralSearch range:NSMakeRange(0, [recoveryPhrase length])];
+        if (numberOfSpaces != RECOVERY_PHRASE_NUMBER_OF_WORDS - 1) {
+            [app standardNotify:BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS];
+            return;
+        }
+    }
+    
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
+    [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:recoveryPassphraseTextField.text];
     
     app.wallet.delegate = app;
 }
@@ -197,15 +209,6 @@
         [password2TextField becomeFirstResponder];
         return NO;
     }
-    
-    if (self.isRecoveringWallet) {
-        NSMutableString *recoveryPhrase = [[NSMutableString alloc] initWithString:recoverWalletPassphraseTextField.text];
-        NSInteger numberOfSpaces = [recoveryPhrase replaceOccurrencesOfString:@" " withString:@"space" options:NSLiteralSearch range:NSMakeRange(0, [recoveryPhrase length])];
-        if (numberOfSpaces != RECOVERY_PHRASE_NUMBER_OF_WORDS - 1) {
-            [app standardNotify:BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS];
-            return NO;
-        }
-    }
         
     if (![app checkInternetConnection]) {
         return NO;
@@ -219,7 +222,6 @@
     [emailTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     [password2TextField resignFirstResponder];
-    [recoverWalletPassphraseTextField resignFirstResponder];
 }
 
 #pragma mark - Wallet Delegate method
@@ -241,7 +243,6 @@
     emailTextField.text = nil;
     passwordTextField.text = nil;
     password2TextField.text = nil;
-    recoverWalletPassphraseTextField.text = nil;
     
     // TODO Whitelist the new account - this needs to be removed again when we remove the beta invite system XXX
     [app.wallet whitelistWallet];

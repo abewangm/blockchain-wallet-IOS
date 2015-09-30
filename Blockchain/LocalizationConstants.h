@@ -287,3 +287,4 @@
 #define BC_STRING_NEW_ADDRESS_GENERATE_NEW NSLocalizedString(@"Generate new", nil)
 
 #define BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering wallet", nil)

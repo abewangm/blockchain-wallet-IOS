@@ -216,16 +216,6 @@ http://blockchain.info/wallet</string>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </progressView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Recovery passphrase" minimumFontSize="17" id="L1x-Mw-4H5" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
-                    <rect key="frame" x="15" y="122" width="290" height="30"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                    <connections>
-                        <outlet property="delegate" destination="355" id="1NO-VZ-P3w"/>
-                    </connections>
-                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -236,8 +226,8 @@ http://blockchain.info/wallet</string>
                 <outlet property="passwordFeedbackLabel" destination="Mk4-63-3pL" id="Vra-AS-94J"/>
                 <outlet property="passwordStrengthMeter" destination="acf-bJ-kgP" id="ytC-Jd-waT"/>
                 <outlet property="passwordTextField" destination="395" id="451"/>
-                <outlet property="recoverWalletPassphraseTextField" destination="L1x-Mw-4H5" id="e78-VL-58a"/>
-                <outlet property="termsOfServiceButton" destination="wfI-8F-dfm" id="rXd-i6-YWO"/>
+                <outlet property="recoveryPassphraseTextField" destination="L1x-Mw-4H5" id="nkd-mq-VRt"/>
+                <outlet property="recoveryPhraseView" destination="0Sz-Ta-Xdw" id="xpu-3L-4fd"/>
             </connections>
             <point key="canvasLocation" x="133" y="-869"/>
         </view>
@@ -602,6 +592,30 @@ http://blockchain.info/wallet</string>
             </connections>
             <point key="canvasLocation" x="-244" y="-310"/>
         </viewController>
+        <view contentMode="scaleToFill" id="0Sz-Ta-Xdw" userLabel="Recovery Phrase" customClass="BCModalContentView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter your passphrase below, separating each word with a space." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="pEh-08-oZW">
+                    <rect key="frame" x="40" y="58" width="242" height="54"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Recovery passphrase" minimumFontSize="17" id="L1x-Mw-4H5" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                    <rect key="frame" x="40" y="120" width="242" height="30"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="500" y="-869"/>
+        </view>
     </objects>
     <resources>
         <image name="blockchain_logo" width="139" height="15"/>
