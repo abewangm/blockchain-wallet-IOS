@@ -529,7 +529,6 @@ UIActionSheet *popupAddressArchive;
     alertView.delegate = self;
     self.addNewAddressAlertView = alertView;
     [alertView show];
-    
 }
 
 - (IBAction)labelSaveClicked:(id)sender
@@ -687,7 +686,11 @@ UIActionSheet *popupAddressArchive;
 }
 
 - (void)generateNewAddress
-{    
+{
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
     [app.wallet generateNewKey];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(promptForLabelAfterGenerate)
@@ -701,6 +704,20 @@ UIActionSheet *popupAddressArchive;
     [self labelAddressClicked:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_NEW_ADDRESS
                                                   object:nil];
+}
+
+- (void)scanPrivateKey
+{
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
+    PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
+        [app.wallet addKey:privateKeyString];
+        [app.wallet loading_stop];
+    } error:nil];
+    
+    [app.slidingViewController presentViewController:reader animated:YES completion:nil];
 }
 
 # pragma mark - UIAlertView delegate
@@ -720,13 +737,7 @@ UIActionSheet *popupAddressArchive;
             }
             case 2: {
                 DLog(@"Scan Private Key");
-                PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
-                    [app.wallet addKey:privateKeyString];
-                    [app.wallet loading_stop];
-                } error:nil];
-                
-                [app.slidingViewController presentViewController:reader animated:YES completion:nil];
-
+                [self scanPrivateKey];
                 break;
             }
         }
