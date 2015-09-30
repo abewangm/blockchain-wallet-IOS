@@ -31,10 +31,6 @@
                                                  selector:@selector(dismiss:)
                                                      name:UIApplicationDidEnterBackgroundNotification
                                                    object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(dismissWithClickedButtonIndex:animated:)
-                                                     name:NOTIFICATION_KEY_SEND_SCREEN_RELOADING
-                                                   object:nil];
     }
     
     return self;
