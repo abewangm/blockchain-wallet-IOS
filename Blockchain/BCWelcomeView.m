@@ -60,6 +60,16 @@ Boolean shouldShowAnimation;
         self.existingWalletButton.enabled = NO;
         self.existingWalletButton.alpha = 0.0;
         
+        self.recoverWalletButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.recoverWalletButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        self.recoverWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        [self.recoverWalletButton setTitle:BC_STRING_RECOVER_WALLET forState:UIControlStateNormal];
+        self.recoverWalletButton.frame = CGRectMake(20, self.frame.size.height - 100, 280, BUTTON_HEIGHT);
+        [self.recoverWalletButton setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+        [self addSubview:self.recoverWalletButton];
+        self.recoverWalletButton.enabled = NO;
+        self.recoverWalletButton.alpha = 0.0;
+        
         // Version
         UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.frame.size.height - 30, self.frame.size.width - 30, 20)];
         versionLabel.font = [UIFont systemFontOfSize:12];
@@ -91,11 +101,13 @@ Boolean shouldShowAnimation;
                          // Fade in controls
                          self.createWalletButton.alpha = 1.0;
                          self.existingWalletButton.alpha = 1.0;
+                         self.recoverWalletButton.alpha = 1.0;
                      }
                      completion:^(BOOL finished){
                          // Activate controls
                          self.createWalletButton.enabled = YES;
                          self.existingWalletButton.enabled = YES;
+                         self.recoverWalletButton.enabled = YES;
                      }];
 }
 

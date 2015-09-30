@@ -11,6 +11,6 @@
 
 @interface BCWelcomeView : BCModalContentView
 
-@property (nonatomic, strong) UIButton *createWalletButton, *existingWalletButton;
+@property (nonatomic, strong) UIButton *createWalletButton, *existingWalletButton, *recoverWalletButton;
 
 @end

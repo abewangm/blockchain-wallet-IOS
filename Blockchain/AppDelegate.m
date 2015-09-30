@@ -666,6 +666,8 @@ void (^secondPasswordSuccess)(NSString *);
     }
     else if (textField == mainPasswordTextField) {
         [self mainPasswordClicked:textField];
+    } else if (textField == recoverWalletTextField) {
+        [self recoverWalletClicked:textField];
     }
     
     return YES;
@@ -1122,6 +1124,8 @@ void (^secondPasswordSuccess)(NSString *);
     BCWelcomeView *welcomeView = [[BCWelcomeView alloc] init];
     [welcomeView.createWalletButton addTarget:self action:@selector(showCreateWallet:) forControlEvents:UIControlEventTouchUpInside];
     [welcomeView.existingWalletButton addTarget:self action:@selector(showPairWallet:) forControlEvents:UIControlEventTouchUpInside];
+    [welcomeView.recoverWalletButton addTarget:self action:@selector(showRecoverWallet:) forControlEvents:UIControlEventTouchUpInside];
+
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
@@ -1144,6 +1148,13 @@ void (^secondPasswordSuccess)(NSString *);
     [app showModalWithContent:pairingInstructionsView closeType:ModalCloseTypeBack headerText:BC_STRING_AUTOMATIC_PAIRING];
 }
 
+- (void)showRecoverWallet:(id)sender
+{
+    [app showModalWithContent:recoverWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET onDismiss:nil onResume:^{
+        [recoverWalletTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.1f];
+    }];
+}
+
 - (IBAction)manualPairClicked:(id)sender
 {
     [self showModalWithContent:manualPairView closeType:ModalCloseTypeBack headerText:BC_STRING_MANUAL_PAIRING];
@@ -1151,6 +1162,14 @@ void (^secondPasswordSuccess)(NSString *);
 }
 
 #pragma mark - Actions
+
+- (IBAction)recoverWalletClicked:(id)sender
+{
+    [recoverWalletTextField resignFirstResponder];
+    [self showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_WALLET];
+    [self.wallet recoverWithPassphrase:recoverWalletTextField.text];
+    app.wallet.delegate = app;
+}
 
 - (IBAction)menuClicked:(id)sender
 {
