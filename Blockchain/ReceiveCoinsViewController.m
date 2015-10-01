@@ -516,11 +516,11 @@ UIAlertController *popupAddressArchive;
     }
     else {
         if ([archivedKeys containsObject:self.clickedAddress]) {
-            [self presentViewController:popupAddressUnArchive animated:YES completion:nil];
+            [self.view.window.rootViewController presentViewController:popupAddressUnArchive animated:YES completion:nil];
             [[NSNotificationCenter defaultCenter] addObserver:popupAddressUnArchive selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
         }
         else {
-            [self presentViewController:popupAddressArchive animated:YES completion:nil];
+            [self.view.window.rootViewController presentViewController:popupAddressArchive animated:YES completion:nil];
             [[NSNotificationCenter defaultCenter] addObserver:popupAddressArchive selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
         }
         [self hideKeyboard];
@@ -575,7 +575,7 @@ UIAlertController *popupAddressArchive;
     [alertController addAction:scanPrivateKeyAction];
     [alertController addAction:cancelAction];
     
-    [self presentViewController:alertController animated:YES completion:^{
+    [self.view.window.rootViewController presentViewController:alertController animated:YES completion:^{
         [[NSNotificationCenter defaultCenter] addObserver:alertController
                                                  selector:@selector(autoDismiss)
                                                      name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS
