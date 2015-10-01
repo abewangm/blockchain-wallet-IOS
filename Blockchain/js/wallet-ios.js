@@ -5,8 +5,7 @@ var CryptoJS = Blockchain.CryptoJS;
 var MyWallet = Blockchain.MyWallet;
 var WalletStore = Blockchain.WalletStore;
 var WalletCrypto = Blockchain.WalletCrypto;
-var Spender = Blockchain.Spender;
-var BlockchainAPI = Blockchain.BlockchainAPI;
+var BlockchainAPI = Blockchain.API;
 var ImportExport = Blockchain.ImportExport;
 var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 var Helpers = Blockchain.Helpers;
@@ -430,7 +429,7 @@ MyWalletPhone.quickSend = function() {
 MyWalletPhone.apiGetPINValue = function(key, pin) {
     $.ajax({
         type: "POST",
-        url: BlockchainAPI.getRootURL() + 'pin-store',
+        url: BlockchainAPI.ROOT_URL + 'pin-store',
         timeout: 20000,
         dataType: 'json',
         data: {
@@ -471,7 +470,7 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
 MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
     $.ajax({
         type: "POST",
-        url: BlockchainAPI.getRootURL() + 'pin-store',
+        url: BlockchainAPI.ROOT_URL + 'pin-store',
         timeout: 30000,
         data: {
             format: 'plain',
@@ -558,7 +557,7 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
 
         $.ajax({
             type: "POST",
-            url: BlockchainAPI.getRootURL() + 'wallet',
+            url: BlockchainAPI.ROOT_URL + 'wallet',
             timeout: 60000,
             data: {
                 format: 'plain',
@@ -942,7 +941,8 @@ MyWalletPhone.get_all_currency_symbols = function () {
         console.log('Error getting all currency symbols: ' + e);
     };
     
-    BlockchainAPI.get_ticker(success, error);
+    var promise = BlockchainAPI.getTicker();
+    promise.then(success, error);
 }
 
 MyWalletPhone.get_password_strength = function(password) {
