@@ -1055,6 +1055,9 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPinModalAsView:(BOOL)asView
 {
+    // Backgrounding from resetting PIN screen hides the status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
+    
     // Don't show a new one if we already show it
     if ([self.pinEntryViewController.view isDescendantOfView:_window.rootViewController.view] ||
         ( _tabViewController.presentedViewController != nil &&_tabViewController.presentedViewController == self.pinEntryViewController && !_pinEntryViewController.isBeingDismissed)) {
