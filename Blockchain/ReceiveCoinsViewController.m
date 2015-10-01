@@ -517,10 +517,15 @@ UIActionSheet *popupAddressArchive;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
+    qrCodePaymentImageView.userInteractionEnabled = NO;
+    
     [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
     
     activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *error) {
         [self showKeyboard];
+        
+        // Allow keyboard to complete animating before allowing an action sheet
+        [self performSelector:@selector(enableQRCodePaymentInteraction) withObject:nil afterDelay:0.2f];
     };
 }
 
@@ -657,6 +662,10 @@ UIActionSheet *popupAddressArchive;
     [app closeModalWithTransition:kCATransitionFade];
 }
 
+- (void)enableQRCodePaymentInteraction
+{
+    qrCodePaymentImageView.userInteractionEnabled = YES;
+}
 
 - (void)showKeyboard
 {
