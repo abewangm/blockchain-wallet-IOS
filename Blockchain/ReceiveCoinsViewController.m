@@ -11,7 +11,7 @@
 #import "ReceiveTableCell.h"
 #import "Address.h"
 #import "PrivateKeyReader.h"
-#import "UIAlertController+AutoDismiss.h"
+#import "UIViewController+AutoDismiss.h"
 
 @interface ReceiveCoinsViewController() <UIAlertViewDelegate, UIActivityItemSource>
 @property (nonatomic) id paymentObserver;
@@ -521,6 +521,8 @@ UIActionSheet *popupAddressArchive;
     
     [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:activityViewController selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    
     activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *error) {
         [self showKeyboard];
         
@@ -549,7 +551,7 @@ UIActionSheet *popupAddressArchive;
     [self presentViewController:alertController animated:YES completion:^{
         [[NSNotificationCenter defaultCenter] addObserver:alertController
                                                  selector:@selector(autoDismiss)
-                                                     name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_ALERTS
+                                                     name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS
                                                    object:nil];
     }];
 }

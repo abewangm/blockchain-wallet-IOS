@@ -1,14 +1,14 @@
 //
-//  UIAlertController+AutoDismiss.m
+//  UIViewController+AutoDismiss.m
 //  Blockchain
 //
-//  Created by Kevin Wu on 9/30/15.
+//  Created by Kevin Wu on 10/1/15.
 //  Copyright © 2015 Qkos Services Ltd. All rights reserved.
 //
 
-#import "UIAlertController+AutoDismiss.h"
+#import "UIViewController+AutoDismiss.h"
 
-@implementation UIAlertController (AutoDismiss)
+@implementation UIViewController (AutoDismiss)
 
 - (void)autoDismiss
 {

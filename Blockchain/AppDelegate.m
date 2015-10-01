@@ -254,7 +254,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [sideMenuViewController reload];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_TO_DISMISS_ALERTS object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
 }
 
 - (void)toggleSymbol

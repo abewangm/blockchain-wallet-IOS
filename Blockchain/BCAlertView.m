@@ -29,7 +29,7 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(dismiss:)
-                                                     name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_ALERTS
+                                                     name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS
                                                    object:nil];
     }
     
