@@ -13,7 +13,7 @@
 #import "TabViewController.h"
 #import "UncaughtExceptionHandler.h"
 #import "UITextField+Blocks.h"
-#import "UIAlertView+Blocks.h"
+#import "UIViewController+AutoDismiss.h"
 #import "LocalizationConstants.h"
 #import "TransactionsViewController.h"
 
@@ -353,25 +353,26 @@ BOOL displayingLocalSymbolSend;
         
         NSString *sweepMessageString = [[NSString alloc] initWithFormat:BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT, wantToSendAmountString, spendableAmountString, feeAmountString, canSendAmountString];
         
-        BCAlertView *alert = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_SWEEP_TITLE
-                                                            message:sweepMessageString
-                                                           delegate:self
-                                                  cancelButtonTitle:BC_STRING_CANCEL
-                                                  otherButtonTitles:BC_STRING_SEND, nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_SWEEP_TITLE message:sweepMessageString preferredStyle:UIAlertControllerStyleAlert];
         
-        alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (buttonIndex == 1) {
-                amountInSatoshi = maxAmount;
-                // Display to the user the max amount
-                [self doCurrencyConversion];
-                // Actually do the sweep and confirm
-                [self getMaxFeeWhileConfirming:YES];
-            } else {
-                [self enablePaymentButtons];
-            }
-        };
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self enablePaymentButtons];
+        }];
         
-        [alert show];
+        UIAlertAction *sendAction = [UIAlertAction actionWithTitle:BC_STRING_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            amountInSatoshi = maxAmount;
+            // Display to the user the max amount
+            [self doCurrencyConversion];
+            // Actually do the sweep and confirm
+            [self getMaxFeeWhileConfirming:YES];
+        }];
+        
+        [alert addAction:cancelAction];
+        [alert addAction:sendAction];
+        
+        [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     });
 }
 
@@ -398,30 +399,33 @@ BOOL displayingLocalSymbolSend;
         NSString *feeBTCString = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
         NSString *amountTotalLocalString = [app formatMoney:amountTotal localCurrency:TRUE];
         
-        NSString *toAddressLabelForAlertView = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
-        NSString *toAddressStringForAlertView = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
+        NSString *toAddressLabelForAlert = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
+        NSString *toAddressStringForAlert = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
         
         // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
-        if ([toAddressLabelForAlertView isEqualToString:toAddressStringForAlertView]) {
-            toAddressLabelForAlertView = @"";
+        if ([toAddressLabelForAlert isEqualToString:toAddressStringForAlert]) {
+            toAddressLabelForAlert = @"";
         }
         
-        NSString *messageString = [NSString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, toAddressLabelForAlertView, toAddressStringForAlertView, amountTotalBTCString, feeBTCString, amountTotalLocalString];
+        NSString *messageString = [NSString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, toAddressLabelForAlert, toAddressStringForAlert, amountTotalBTCString, feeBTCString, amountTotalLocalString];
         
-        BCAlertView *alert = [[BCAlertView alloc] initWithTitle:BC_STRING_CONFIRM_PAYMENT
-                                                        message:messageString
-                                                        delegate:self
-                                                        cancelButtonTitle:BC_STRING_CANCEL
-                                                        otherButtonTitles:BC_STRING_SEND, nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_PAYMENT message:messageString preferredStyle:UIAlertControllerStyleAlert];
         
-        alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-                    [self enablePaymentButtons];
-                    if (buttonIndex == 1) {
-                        [self reallyDoPayment];
-                    }
-        };
-                              
-        [alert show];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self enablePaymentButtons];
+        }];
+        
+        UIAlertAction *sendAction = [UIAlertAction actionWithTitle:BC_STRING_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self reallyDoPayment];
+            [self enablePaymentButtons];
+        }];
+        
+        [alert addAction:cancelAction];
+        [alert addAction:sendAction];
+        
+        [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     });
 }
 
