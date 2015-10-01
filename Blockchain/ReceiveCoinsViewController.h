@@ -20,7 +20,7 @@
 
 #import "Wallet.h"
 
-@interface ReceiveCoinsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate> {
+@interface ReceiveCoinsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
     IBOutlet UITableView *tableView;
     IBOutlet UIImageView *qrCodeMainImageView;
     IBOutlet UIImageView *qrCodePaymentImageView;

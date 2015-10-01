@@ -35,8 +35,8 @@ NSString *mainLabel;
 NSString *detailAddress;
 NSString *detailLabel;
 
-UIActionSheet *popupAddressUnArchive;
-UIActionSheet *popupAddressArchive;
+UIAlertController *popupAddressUnArchive;
+UIAlertController *popupAddressArchive;
 
 #pragma mark - Lifecycle
 
@@ -144,17 +144,42 @@ UIActionSheet *popupAddressArchive;
 
 - (void)setupArchiveActionSheets
 {
-    popupAddressArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
-                           BC_STRING_COPY_ADDRESS,
-                           BC_STRING_LABEL_ADDRESS,
-                           BC_STRING_ARCHIVE_ADDRESS,
-                           nil];
+    popupAddressArchive = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    popupAddressUnArchive = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    popupAddressUnArchive = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:BC_STRING_CANCEL destructiveButtonTitle:nil otherButtonTitles:
-                             BC_STRING_COPY_ADDRESS,
-                             BC_STRING_LABEL_ADDRESS,
-                             BC_STRING_UNARCHIVE_ADDRESS,
-                             nil];
+    UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self copyAddressClicked:nil];
+        [self showKeyboard];
+    }];
+    
+    UIAlertAction *labelAction = [UIAlertAction actionWithTitle:BC_STRING_LABEL_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self labelAddressClicked:nil];
+        [self hideKeyboard];
+    }];
+    
+    UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:BC_STRING_ARCHIVE_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self archiveAddressClicked:nil];
+        [self hideKeyboard];
+    }];
+    
+    UIAlertAction *unArchiveAction = [UIAlertAction actionWithTitle:BC_STRING_UNARCHIVE_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self archiveAddressClicked:nil];
+        [self hideKeyboard];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self showKeyboard];
+    }];
+    
+    [popupAddressArchive addAction:copyAction];
+    [popupAddressArchive addAction:labelAction];
+    [popupAddressArchive addAction:archiveAction];
+    [popupAddressArchive addAction:cancelAction];
+    
+    [popupAddressUnArchive addAction:copyAction];
+    [popupAddressUnArchive addAction:labelAction];
+    [popupAddressUnArchive addAction:unArchiveAction];
+    [popupAddressUnArchive addAction:cancelAction];
 }
 
 - (void)reload
@@ -491,10 +516,12 @@ UIActionSheet *popupAddressArchive;
     }
     else {
         if ([archivedKeys containsObject:self.clickedAddress]) {
-            [popupAddressUnArchive showInView:[UIApplication sharedApplication].keyWindow];
+            [self presentViewController:popupAddressUnArchive animated:YES completion:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:popupAddressUnArchive selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
         }
         else {
-            [popupAddressArchive showInView:[UIApplication sharedApplication].keyWindow];
+            [self presentViewController:popupAddressArchive animated:YES completion:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:popupAddressArchive selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
         }
         [self hideKeyboard];
     }
@@ -770,30 +797,6 @@ UIActionSheet *popupAddressArchive;
                 break;
             }
         }
-    }
-}
-
-# pragma mark - UIActionSheet delegate
-
-- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch (buttonIndex) {
-        case 0:
-            [self copyAddressClicked:nil];
-            [self showKeyboard];
-            break;
-        case 1:
-            [self labelAddressClicked:nil];
-            [self hideKeyboard];
-            break;
-        case 2:
-            [self archiveAddressClicked:nil];
-            [self hideKeyboard];
-            break;
-
-        default:
-            [self showKeyboard];
-            break;
     }
 }
 
