@@ -918,7 +918,8 @@ BOOL displayingLocalSymbolSend;
                 }
                 
                 if (app.latestResponse.symbol_btc) {
-                    amountInSatoshi = ([amountString doubleValue] * SATOSHI);
+                    NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
+                    amountInSatoshi = ([amountDecimalNumber doubleValue] * SATOSHI);
                 }
                 else {
                     amountInSatoshi = 0.0;
