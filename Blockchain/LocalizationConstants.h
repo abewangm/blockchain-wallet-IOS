@@ -217,6 +217,7 @@
 
 #define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my wallet", nil)
 #define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing wallet", nil)
+#define BC_STRING_RECOVER_WALLET NSLocalizedString(@"Recover Wallet", nil)
 
 #define BC_STRING_COPY_ADDRESS NSLocalizedString(@"Copy Address", nil)
 #define BC_STRING_ARCHIVE_ADDRESS NSLocalizedString(@"Archive Address", nil)
@@ -287,3 +288,6 @@
 #define BC_STRING_NEW_ADDRESS NSLocalizedString(@"New Address", nil)
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)
 #define BC_STRING_NEW_ADDRESS_GENERATE_NEW NSLocalizedString(@"Generate new", nil)
+
+#define BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering wallet", nil)

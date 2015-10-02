@@ -74,6 +74,7 @@
 
 - (void)loadWalletWithGuid:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
 {
+    DLog(@"guid: %@, password: %@", _guid, _password);
     self.guid = _guid;
     // Shared Key can be empty
     self.sharedKey = _sharedKey;
@@ -560,6 +561,11 @@
 - (BOOL)checkIfWalletHasAddress:(NSString *)address
 {
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.checkIfWalletHasAddress(\"%@\")", [address escapeStringForJS]] boolValue];
+}
+
+- (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase
+{
+    [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\",\"%@\",\"%@\")", [email escapeStringForJS], [recoveryPassword escapeStringForJS], [passphrase escapeStringForJS]];
 }
 
 # pragma mark - Transaction handlers
@@ -1167,6 +1173,20 @@
 {
     self.recoveryPhrase = phrase;
 }
+
+- (void)on_recover_with_passphrase_success:(NSDictionary *)recoveredWalletDictionary
+{
+    DLog(@"on_recover_with_passphrase_success_guid:sharedKey:password:");
+    [self loadWalletWithGuid:recoveredWalletDictionary[@"guid"] sharedKey:recoveredWalletDictionary[@"sharedKey"] password:recoveredWalletDictionary[@"password"]];
+}
+
+- (void)on_recover_with_passphrase_error:(NSString *)error
+{
+    DLog(@"on_recover_with_passphrase_error:");
+    [self loading_stop];
+    [app standardNotify:error];
+}
+
 
 - (void)on_error_downloading_account_settings
 {

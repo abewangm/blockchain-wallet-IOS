@@ -1112,6 +1112,8 @@ void (^secondPasswordSuccess)(NSString *);
     BCWelcomeView *welcomeView = [[BCWelcomeView alloc] init];
     [welcomeView.createWalletButton addTarget:self action:@selector(showCreateWallet:) forControlEvents:UIControlEventTouchUpInside];
     [welcomeView.existingWalletButton addTarget:self action:@selector(showPairWallet:) forControlEvents:UIControlEventTouchUpInside];
+    [welcomeView.recoverWalletButton addTarget:self action:@selector(showRecoverWallet:) forControlEvents:UIControlEventTouchUpInside];
+
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
@@ -1126,12 +1128,20 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showCreateWallet:(id)sender
 {
     [app showModalWithContent:newAccountView closeType:ModalCloseTypeBack headerText:BC_STRING_CREATE_NEW_WALLET];
+    newAccountView.isRecoveringWallet = NO;
     [newAccountView clearPasswordTextFields];
 }
 
 - (void)showPairWallet:(id)sender
 {
     [app showModalWithContent:pairingInstructionsView closeType:ModalCloseTypeBack headerText:BC_STRING_AUTOMATIC_PAIRING];
+}
+
+- (void)showRecoverWallet:(id)sender
+{
+    [app showModalWithContent:newAccountView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET];
+    newAccountView.isRecoveringWallet = YES;
+    [newAccountView clearPasswordTextFields];
 }
 
 - (IBAction)manualPairClicked:(id)sender

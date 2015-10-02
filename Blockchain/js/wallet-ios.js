@@ -984,6 +984,23 @@ MyWalletPhone.checkIfWalletHasAddress = function(address) {
     return (addresses.indexOf(address) > -1);
 }
 
+MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
+    
+    console.log('recovering wallet');
+    
+    var success = function (recoveredWalletDictionary) {
+        console.log('recovery success');
+        device.execute('on_recover_with_passphrase_success:', [recoveredWalletDictionary]);
+    }
+    
+    var error = function(error) {
+        console.log('recovery error: ' + error);
+        device.execute('on_recover_with_passphrase_error:', [error]);
+    }
+    
+    MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error);
+}
+
 MyWalletPhone.setLabelForAddress = function(address, label) {
     if (label == '') {
         label = null;
