@@ -124,10 +124,12 @@
 - (IBAction)recoverWalletClicked:(id)sender
 {
     if (self.isRecoveringWallet) {
-        NSMutableString *recoveryPhrase = [[NSMutableString alloc] initWithString:self.recoveryPhraseView.recoveryPassphraseTextField.text];
+        NSString *recoveryPhrase = [[NSMutableString alloc] initWithString:self.recoveryPhraseView.recoveryPassphraseTextField.text];
         
-        NSInteger numberOfSpaces = [recoveryPhrase replaceOccurrencesOfString:@" " withString:@"space" options:NSLiteralSearch range:NSMakeRange(0, [recoveryPhrase length])];
-        if (numberOfSpaces != RECOVERY_PHRASE_NUMBER_OF_WORDS - 1) {
+        NSMutableArray *wordsArray = (NSMutableArray *)[recoveryPhrase componentsSeparatedByString:@" "];
+        [wordsArray removeObject:@""];
+        
+        if (wordsArray.count != RECOVERY_PHRASE_NUMBER_OF_WORDS) {
             [app standardNotify:BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS];
             return;
         }
@@ -137,6 +139,8 @@
     [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:self.recoveryPhraseView.recoveryPassphraseTextField.text];
     
     [self clearSensitiveTextFields];
+    
+    [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
     
     app.wallet.delegate = app;
 }
