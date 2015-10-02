@@ -724,12 +724,11 @@ UIAlertController *popupAddressArchive;
     __weak ReceiveCoinsViewController *weakSelf = self;
     
     self.paymentObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil queue:nil usingBlock:^(NSNotification *note) {
-        double amountReceived = [note.userInfo[DICTIONARY_KEY_AMOUNT] doubleValue];
-        NSString *amountReceivedString = [[NSString alloc] initWithFormat:@"%.8f", amountReceived];
-        double amountRequested = weakSelf.amountRequested;
-        NSString *amountRequestedString = [[NSString alloc] initWithFormat:@"%.8f", amountRequested];
+        NSDecimalNumber *amountDecimalNumber = note.userInfo[DICTIONARY_KEY_AMOUNT];
+        u_int64_t amountReceived = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+        u_int64_t amountRequested = [[(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:weakSelf.amountRequested] decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
 
-        if ([amountReceivedString isEqualToString:amountRequestedString]) {
+        if (amountReceived == amountRequested) {
             NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
             u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
             btcAmountString = [app formatMoney:btcAmount localCurrency:NO];
