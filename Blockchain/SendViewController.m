@@ -288,8 +288,7 @@ BOOL displayingLocalSymbolSend;
         
         [sendProgressActivityIndicator stopAnimating];
         
-        [sendPaymentButton setEnabled:YES];
-        [sendPaymentAccessoryButton setEnabled:YES];
+        [self enablePaymentButtons];
         
         [app closeModalWithTransition:kCATransitionFade];
     };
@@ -479,18 +478,18 @@ BOOL displayingLocalSymbolSend;
 
 - (void)disablePaymentButtons
 {
-    sendPaymentButton.enabled = NO;
-    sendPaymentAccessoryButton.enabled = NO;
-    [sendPaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [sendPaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    continuePaymentButton.enabled = NO;
+    continuePaymentAccessoryButton.enabled = NO;
+    [continuePaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [continuePaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (void)enablePaymentButtons
 {
-    sendPaymentButton.enabled = YES;
-    sendPaymentAccessoryButton.enabled = YES;
-    [sendPaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [sendPaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    continuePaymentButton.enabled = YES;
+    continuePaymentAccessoryButton.enabled = YES;
+    [continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
