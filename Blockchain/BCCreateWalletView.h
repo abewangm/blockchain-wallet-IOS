@@ -20,6 +20,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BCModalContentView.h"
+#import "BCRecoveryView.h"
 #import "Wallet.h"
 
 @interface BCCreateWalletView : BCModalContentView <UITextFieldDelegate, WalletDelegate> {
@@ -28,13 +29,11 @@
     IBOutlet UITextField *password2TextField;
     IBOutlet UILabel *passwordFeedbackLabel;
     IBOutlet UIProgressView *passwordStrengthMeter;
-    IBOutlet UITextField *recoveryPassphraseTextField;
 }
 
 - (IBAction)termsOfServiceClicked:(id)sender;
-- (void)clearPasswordTextFields;
 
-@property(nonatomic) IBOutlet BCModalContentView *recoveryPhraseView;
+@property(nonatomic) IBOutlet BCRecoveryView *recoveryPhraseView;
 @property(nonatomic, strong) NSString *tmpPassword;
 @property(nonatomic) BOOL isRecoveringWallet;
 @property(nonatomic) UIButton *createButton;

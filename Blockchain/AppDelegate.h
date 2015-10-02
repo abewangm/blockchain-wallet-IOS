@@ -43,7 +43,7 @@
     IBOutlet BCFadeView *busyView;
     IBOutlet UILabel *busyLabel;
     
-    IBOutlet BCCreateWalletView *newAccountView;
+    IBOutlet BCCreateWalletView *createWalletView;
     IBOutlet BCModalContentView *pairingInstructionsView;
     IBOutlet BCManualPairView *manualPairView;
     

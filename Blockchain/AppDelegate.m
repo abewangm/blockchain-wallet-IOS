@@ -1127,9 +1127,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showCreateWallet:(id)sender
 {
-    [app showModalWithContent:newAccountView closeType:ModalCloseTypeBack headerText:BC_STRING_CREATE_NEW_WALLET];
-    newAccountView.isRecoveringWallet = NO;
-    [newAccountView clearPasswordTextFields];
+    [app showModalWithContent:createWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_CREATE_NEW_WALLET];
+    createWalletView.isRecoveringWallet = NO;
 }
 
 - (void)showPairWallet:(id)sender
@@ -1139,9 +1138,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showRecoverWallet:(id)sender
 {
-    [app showModalWithContent:newAccountView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET];
-    newAccountView.isRecoveringWallet = YES;
-    [newAccountView clearPasswordTextFields];
+    [app showModalWithContent:createWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET];
+    createWalletView.isRecoveringWallet = YES;
 }
 
 - (IBAction)manualPairClicked:(id)sender

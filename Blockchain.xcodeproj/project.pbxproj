@@ -61,6 +61,7 @@
 		67EEE7721A8E547900288753 /* PEPin-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67EEE7701A8E547900288753 /* PEPin-on@2x.png */; };
 		67EEE7731A8E547900288753 /* PEPin-on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67EEE7711A8E547900288753 /* PEPin-on@3x.png */; };
 		67FA1A4D1ABA092D000C9196 /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FA1A4C1ABA092D000C9196 /* RegExCategories.m */; };
+		6E2D90A21BBEC34800B719EC /* BCRecoveryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D90A11BBEC34800B719EC /* BCRecoveryView.m */; settings = {ASSET_TAGS = (); }; };
 		844BC7AE1949BB620024160B /* JSBridgeWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BC7AD1949BB620024160B /* JSBridgeWebView.m */; };
 		844BC7B01949BD830024160B /* bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 844BC7AF1949BD710024160B /* bridge.js */; };
 		84AEEC661987C49A000E8DC8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AEEC651987C49A000E8DC8 /* CoreLocation.framework */; };
@@ -447,6 +448,8 @@
 		67EEE7711A8E547900288753 /* PEPin-on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-on@3x.png"; sourceTree = "<group>"; };
 		67FA1A4B1ABA092D000C9196 /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
 		67FA1A4C1ABA092D000C9196 /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
+		6E2D90A01BBEC34800B719EC /* BCRecoveryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCRecoveryView.h; sourceTree = "<group>"; };
+		6E2D90A11BBEC34800B719EC /* BCRecoveryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCRecoveryView.m; sourceTree = "<group>"; };
 		844BC7AC1949BB620024160B /* JSBridgeWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBridgeWebView.h; sourceTree = "<group>"; };
 		844BC7AD1949BB620024160B /* JSBridgeWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBridgeWebView.m; sourceTree = "<group>"; };
 		844BC7AF1949BD710024160B /* bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = bridge.js; sourceTree = "<group>"; };
@@ -654,6 +657,8 @@
 		678AD5EC19D4731C00E9A778 /* Modal Content Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E2D90A01BBEC34800B719EC /* BCRecoveryView.h */,
+				6E2D90A11BBEC34800B719EC /* BCRecoveryView.m */,
 				9F61B89C151519EF0083C57A /* BCAddressSelectionView.h */,
 				9F61B89D151519EF0083C57A /* BCAddressSelectionView.m */,
 				678AD5E519D45FA300E9A778 /* BCModalContentView.h */,
@@ -1307,6 +1312,7 @@
 				9F1831EE151744EB00FB3D52 /* ReceiveTableCell.m in Sources */,
 				67EE1DCB19E3325900DBBFC9 /* ECSlidingAnimationController.m in Sources */,
 				67470A0819D43AFE00757D46 /* BCManualPairView.m in Sources */,
+				6E2D90A21BBEC34800B719EC /* BCRecoveryView.m in Sources */,
 				A2599B9F1B0B5FC800C2EA81 /* BackupViewController.swift in Sources */,
 				C9BE917C1945D8F600FD516D /* PEPinEntryController.m in Sources */,
 				239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */,

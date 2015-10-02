@@ -1171,12 +1171,14 @@
 
 - (void)on_success_get_recovery_phrase:(NSString*)phrase
 {
+    DLog(@"on_success_get_recovery_phrase:");
     self.recoveryPhrase = phrase;
 }
 
 - (void)on_recover_with_passphrase_success:(NSDictionary *)recoveredWalletDictionary
 {
     DLog(@"on_recover_with_passphrase_success_guid:sharedKey:password:");
+    
     [self loadWalletWithGuid:recoveredWalletDictionary[@"guid"] sharedKey:recoveredWalletDictionary[@"sharedKey"] password:recoveredWalletDictionary[@"password"]];
 }
 
