@@ -915,30 +915,17 @@ BOOL displayingLocalSymbolSend;
                 DLog(@"toAddress: %@", self.toAddress);
                 [self didSelectToAddress:self.toAddress];
                 
-                NSString *amountString;
                 NSString *amountStringFromDictionary = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
                 if (amountStringFromDictionary != nil) {
-                    amountString = amountStringFromDictionary;
-                } else {
                     if (app.latestResponse.symbol_btc) {
-                        amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-                        if ([amountString isEqualToString:@""]) {
-                            [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
-                            return;
-                        }
-                        NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
-                        NSDecimalNumber *decimalNumber = [amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble: app.latestResponse.symbol_btc.conversion / SATOSHI]];
-                        amountString = [app.btcFormatter stringFromNumber:decimalNumber];
-                        amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                        NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountStringFromDictionary];
+                        amountInSatoshi = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+                    } else {
+                        amountInSatoshi = 0.0;
                     }
-                }
-                
-                if (app.latestResponse.symbol_btc) {
-                    NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
-                    amountInSatoshi = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-                }
-                else {
-                    amountInSatoshi = 0.0;
+                } else {
+                    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+                    return;
                 }
                 
                 // If the amount is empty, open the amount field
