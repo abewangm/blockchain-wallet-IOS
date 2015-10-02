@@ -28,15 +28,27 @@
 #define PS_ENTER1	1
 #define PS_ENTER2	2
 
+static NSString *getVersionLabelString()
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+
+#ifndef DEBUG
+    return [NSString stringWithFormat:@"%@", version];
+#elsif HD_ENABLED
+    return [NSString stringWithFormat:@"%@ (v3)", version];
+#else
+    return [NSString stringWithFormat:@"%@ (v2)", version];
+#endif
+}
+
 static PEViewController *EnterController()
 {
 	PEViewController *c = [[PEViewController alloc] init];
 	c.prompt = BC_STRING_PLEASE_ENTER_PIN;
 	c.title = @"";
 
-    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
-    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-    c.versionLabel.text = [NSString stringWithFormat:@"v%@", version];
+    c.versionLabel.text = getVersionLabelString();
     
 	return c;
 }
@@ -47,9 +59,7 @@ static PEViewController *NewController()
 	c.prompt = BC_STRING_PLEASE_ENTER_NEW_PIN;
 	c.title = @"";
 
-    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
-    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-    c.versionLabel.text = [NSString stringWithFormat:@"v%@", version];
+    c.versionLabel.text = getVersionLabelString();
 
     return c;
 }
@@ -60,9 +70,7 @@ static PEViewController *VerifyController()
 	c.prompt = BC_STRING_CONFIRM_PIN;
 	c.title = @"";
 
-    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
-    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-    c.versionLabel.text = [NSString stringWithFormat:@"v%@", version];
+    c.versionLabel.text = getVersionLabelString();
 
 	return c;
 }

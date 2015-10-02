@@ -67,6 +67,9 @@ Boolean shouldShowAnimation;
         [self addSubview:self.recoverWalletButton];
         self.recoverWalletButton.enabled = NO;
         self.recoverWalletButton.alpha = 0.0;
+#ifndef HD_ENABLED
+        self.recoverWalletButton.hidden = YES;
+#endif
         
         // Version
         [self setupVersionLabel];
@@ -108,9 +111,17 @@ Boolean shouldShowAnimation;
     versionLabel.font = [UIFont systemFontOfSize:12];
     versionLabel.textAlignment = NSTextAlignmentRight;
     versionLabel.textColor = [UIColor whiteColor];
+
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-    versionLabel.text = [NSString stringWithFormat:@"v%@", version];
+#ifndef DEBUG
+    versionLabel.text =  [NSString stringWithFormat:@"%@", version];
+#elsif HD_ENABLED
+    versionLabel.text =  [NSString stringWithFormat:@"%@ (v3)", version];
+#else
+    versionLabel.text =  [NSString stringWithFormat:@"%@ (v2)", version];
+#endif
+    
     [self addSubview:versionLabel];
     
     [self addLongPressGestureToShowBundleShortNameAlertToLabel:versionLabel];
