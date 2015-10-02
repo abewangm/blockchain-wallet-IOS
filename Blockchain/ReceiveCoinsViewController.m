@@ -15,7 +15,6 @@
 
 @interface ReceiveCoinsViewController() <UIAlertViewDelegate, UIActivityItemSource>
 @property (nonatomic) id paymentObserver;
-@property (nonatomic) double amountRequested;
 @property (nonatomic) UIAlertView *addNewAddressAlertView;
 @end
 
@@ -373,8 +372,6 @@ UIAlertController *popupAddressArchive;
     
     amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
     
-    self.amountRequested = amount;
-    
     NSString *addressURL = [NSString stringWithFormat:@"bitcoin:%@?amount=%@", address, amountString];
     
     return [self createQRImageFromString:addressURL];
@@ -724,9 +721,10 @@ UIAlertController *popupAddressArchive;
     __weak ReceiveCoinsViewController *weakSelf = self;
     
     self.paymentObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil queue:nil usingBlock:^(NSNotification *note) {
-        NSDecimalNumber *amountDecimalNumber = note.userInfo[DICTIONARY_KEY_AMOUNT];
-        u_int64_t amountReceived = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-        u_int64_t amountRequested = [[(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:weakSelf.amountRequested] decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+        NSDecimalNumber *amountReceivedDecimalNumber = note.userInfo[DICTIONARY_KEY_AMOUNT];
+        u_int64_t amountReceived = [[amountReceivedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+        NSDecimalNumber *amountRequestedDecimalNumber = [NSDecimalNumber decimalNumberWithString:btcAmountField.text];
+        u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
 
         if (amountReceived == amountRequested) {
             NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
