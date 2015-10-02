@@ -51,10 +51,12 @@
 {
     _isRecoveringWallet = isRecoveringWallet;
     
-    if (self.isRecoveringWallet) {
+    if (_isRecoveringWallet) {
+        [self.createButton removeTarget:self action:@selector(createAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.createButton addTarget:self action:@selector(showRecoveryPhraseView:) forControlEvents:UIControlEventTouchUpInside];
         [self.createButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
     } else {
+        [self.createButton removeTarget:self action:@selector(showRecoveryPhraseView:) forControlEvents:UIControlEventTouchUpInside];
         [self.createButton addTarget:self action:@selector(createAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.createButton setTitle:BC_STRING_CREATE_WALLET forState:UIControlStateNormal];
     }
