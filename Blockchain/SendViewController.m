@@ -922,14 +922,16 @@ BOOL displayingLocalSymbolSend;
                 } else {
                     if (app.latestResponse.symbol_btc) {
                         amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-                        amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:[amountString doubleValue] * app.latestResponse.symbol_btc.conversion / SATOSHI]];
+                        NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
+                        NSDecimalNumber *decimalNumber = [amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble: app.latestResponse.symbol_btc.conversion / SATOSHI]];
+                        amountString = [app.btcFormatter stringFromNumber:decimalNumber];
                         amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
                     }
                 }
                 
                 if (app.latestResponse.symbol_btc) {
                     NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
-                    amountInSatoshi = ([amountDecimalNumber doubleValue] * SATOSHI);
+                    amountInSatoshi = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
                 }
                 else {
                     amountInSatoshi = 0.0;
