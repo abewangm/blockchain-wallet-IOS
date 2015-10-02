@@ -922,6 +922,10 @@ BOOL displayingLocalSymbolSend;
                 } else {
                     if (app.latestResponse.symbol_btc) {
                         amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                        if ([amountString isEqualToString:@""]) {
+                            [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+                            return;
+                        }
                         NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
                         NSDecimalNumber *decimalNumber = [amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble: app.latestResponse.symbol_btc.conversion / SATOSHI]];
                         amountString = [app.btcFormatter stringFromNumber:decimalNumber];
