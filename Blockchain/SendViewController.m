@@ -238,7 +238,7 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Payment
 
-- (void)reallyDoPayment
+- (IBAction)reallyDoPayment:(id)sender
 {
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
     
@@ -381,56 +381,57 @@ BOOL displayingLocalSymbolSend;
     });
 }
 
-- (void)confirmPayment
+- (void)showSummary
 {
     [self dismissKeyboard];
-    
-    [self doCurrencyConversion];
-        
-    // Payment buttons are likely already disabled on a regular payment, but need to be disabled again when using all funds
-    [self disablePaymentButtons];
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        if (btcAmountField.textColor == [UIColor redColor]) {
-            // Stop payment in case of error "No free outputs to spend"
-            return;
-        }
+        [app showModalWithContent:self.confirmPaymentView closeType:ModalCloseTypeBack headerText:BC_STRING_CONFIRM_PAYMENT onDismiss:^{
+            [self enablePaymentButtons];
+        } onResume:nil];
         
+        [UIView animateWithDuration:0.3f animations:^{
+            
+            UIButton *paymentButton = self.confirmPaymentView.reallyDoPaymentButton;
+            self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
+            NSLog(@"ANIMATING %@", NSStringFromCGRect(self.confirmPaymentView.reallyDoPaymentButton.frame));
+        }];
+
         uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
         
-        NSString *amountTotalBTCString = [app formatMoney:amountTotal localCurrency:FALSE];
-        NSString *feeBTCString = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
-        NSString *amountTotalLocalString = [app formatMoney:amountTotal localCurrency:TRUE];
+        NSString *fromAddressLabel = self.sendFromAddress ? [self labelForLegacyAddress:self.fromAddress] : [app.wallet getLabelForAccount:self.fromAccount];
+        NSString *fromAddressString = self.sendFromAddress ? self.fromAddress : [app.wallet getReceiveAddressForAccount:self.fromAccount];
         
-        NSString *toAddressLabelForAlert = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
-        NSString *toAddressStringForAlert = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
-        
-        // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
-        if ([toAddressLabelForAlert isEqualToString:toAddressStringForAlert]) {
-            toAddressLabelForAlert = @"";
+        if ([self.fromAddress isEqualToString:@""]) {
+            fromAddressString = BC_STRING_ANY_ADDRESS;
         }
         
-        NSString *messageString = [NSString stringWithFormat:BC_STRING_CONFIRM_PAYMENT_OF, toAddressLabelForAlert, toAddressStringForAlert, amountTotalBTCString, feeBTCString, amountTotalLocalString];
+        // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
+        if ([fromAddressLabel isEqualToString:fromAddressString]) {
+            fromAddressLabel = @"";
+        }
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_PAYMENT message:messageString preferredStyle:UIAlertControllerStyleAlert];
+        NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
+        NSString *toAddressString = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
         
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self enablePaymentButtons];
-        }];
+        // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
+        if ([toAddressLabel isEqualToString:toAddressString]) {
+            toAddressLabel = @"";
+        }
         
-        UIAlertAction *sendAction = [UIAlertAction actionWithTitle:BC_STRING_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self reallyDoPayment];
-            [self enablePaymentButtons];
-        }];
+        self.confirmPaymentView.fromLabel.text = [NSString stringWithFormat:@"%@\n%@", fromAddressLabel, fromAddressString];
+        self.confirmPaymentView.toLabel.text = [NSString stringWithFormat:@"%@\n%@", toAddressLabel, toAddressString];
         
-        [alert addAction:cancelAction];
-        [alert addAction:sendAction];
+        self.confirmPaymentView.fiatAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:TRUE];
+        self.confirmPaymentView.btcAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:FALSE];
         
-        [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
+        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
         
-        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+        self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
+        self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
     });
 }
 
@@ -789,7 +790,7 @@ BOOL displayingLocalSymbolSend;
             self.feeFromTransactionProposal = newFee;
             DLog(@"SendViewController: got fee of %lld", newFee);
             
-            [self confirmPayment];
+            [self showSummary];
             
         } else {
             [self enablePaymentButtons];
@@ -970,7 +971,7 @@ BOOL displayingLocalSymbolSend;
     labelAddressTextField.text = @"";
     
     // Complete payment
-    [self confirmPayment];
+    [self showSummary];
 }
 
 - (IBAction)useAllClicked:(id)sender

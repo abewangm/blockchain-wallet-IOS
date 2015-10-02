@@ -1,6 +1,6 @@
 
 /* Class = "IBUIButton"; normalTitle = "Send Payment"; ObjectID = "4"; */
-"4.normalTitle" = "Send";
+"4.normalTitle" = "Continue";
 
 /* Class = "IBUILabel"; text = "From:"; ObjectID = "7"; */
 "7.text" = "From";

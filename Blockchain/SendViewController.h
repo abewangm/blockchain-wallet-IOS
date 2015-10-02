@@ -21,6 +21,7 @@
 #import <UIKit/UIKit.h>
 #import "BCAddressSelectionView.h"
 #import "BCAlertView.h"
+#import "BCConfirmPaymentView.h"
 #import <AVFoundation/AVFoundation.h>
 
 @class Wallet;
@@ -56,6 +57,8 @@
 
     BOOL displayingLocalSymbol;
 }
+
+@property (strong, nonatomic) IBOutlet BCConfirmPaymentView *confirmPaymentView;
 
 @property(nonatomic, strong) NSString *addressFromURLHandler;
 

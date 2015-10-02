@@ -34,6 +34,7 @@
 #define BC_STRING_PAYMENT_RECEIVED NSLocalizedString(@"Payment Received", nil)
 
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
+#define BC_STRING_ADJUST_FEE NSLocalizedString(@"Adjust Fee", nil)
 #define BC_STRING_ASK_TO_ADD_TO_ADDRESS_BOOK NSLocalizedString(@"Would you like to add the bitcoin address %@ to your address book?", nil)
 #define BC_STRING_ARGUMENT_COPIED_TO_CLIPBOARD NSLocalizedString(@"%@ copied to clipboard", nil)
 #define BC_STRING_COPIED_TO_CLIPBOARD NSLocalizedString(@"Copied to clipboard", nil)
