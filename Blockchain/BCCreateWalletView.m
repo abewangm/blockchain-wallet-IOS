@@ -71,6 +71,12 @@
     password2TextField.delegate = self;
     
     [self clearSensitiveTextFields];
+
+#ifdef DEBUG
+    emailTextField.text = @"test@doesnotexist.tld";
+    passwordTextField.text = @"testpassword";
+    password2TextField.text = @"testpassword";
+#endif
     
     _recoveryPhraseView.recoveryPassphraseTextField.delegate = self;
     
