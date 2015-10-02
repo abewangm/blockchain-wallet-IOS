@@ -57,7 +57,7 @@
     BOOL displayingLocalSymbol;
 }
 
-@property(nonatomic, strong) NSString *initialToAddressString;
+@property(nonatomic, strong) NSString *addressFromURLHandler;
 
 @property(nonatomic, strong) NSString *fromAddress;
 @property(nonatomic, strong) NSString *toAddress;

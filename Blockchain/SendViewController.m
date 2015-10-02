@@ -19,6 +19,7 @@
 
 @interface SendViewController ()
 @property (nonatomic) uint64_t feeFromTransactionProposal;
+@property (nonatomic) uint64_t amountFromURLHandler;
 @end
 
 @implementation SendViewController
@@ -132,7 +133,7 @@ BOOL displayingLocalSymbolSend;
     
     [self hideSelectFromAndToButtonsIfAppropriate];
     
-    [self populateAddressFieldFromURLHandlerIfAvailable];
+    [self populateFieldsFromURLHandlerIfAvailable];
     
     [self reloadFromAndToFields];
     
@@ -162,15 +163,19 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)populateAddressFieldFromURLHandlerIfAvailable
+- (void)populateFieldsFromURLHandlerIfAvailable
 {
-    if (self.initialToAddressString && toField != nil) {
+    if (self.addressFromURLHandler && toField != nil) {
         self.sendToAddress = true;
-        self.toAddress = self.initialToAddressString;
+        self.toAddress = self.addressFromURLHandler;
         DLog(@"toAddress: %@", self.toAddress);
         
         toField.text = [self labelForLegacyAddress:self.toAddress];
-        self.initialToAddressString = nil;
+        self.addressFromURLHandler = nil;
+        
+        amountInSatoshi = self.amountFromURLHandler;
+        [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+        self.amountFromURLHandler = 0;
     }
 }
 
@@ -489,9 +494,10 @@ BOOL displayingLocalSymbolSend;
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
 {
-    self.initialToAddressString = addressString;
+    self.addressFromURLHandler = addressString;
     
-    amountInSatoshi = [amountString doubleValue] * SATOSHI;
+    NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
+    self.amountFromURLHandler = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
 }
 
 - (NSString *)labelForLegacyAddress:(NSString *)address
