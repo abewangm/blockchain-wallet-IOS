@@ -33,12 +33,14 @@ static NSString *getVersionLabelString()
     NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];
 
-#ifndef DEBUG
-    return [NSString stringWithFormat:@"%@", version];
-#elsif HD_ENABLED
-    return [NSString stringWithFormat:@"%@ (v3)", version];
+#ifdef DEBUG
+    #ifdef HD_ENABLED
+        return [NSString stringWithFormat:@"%@ (v3)", version];
+    #else
+        return [NSString stringWithFormat:@"%@ (v2)", version];
+    #endif
 #else
-    return [NSString stringWithFormat:@"%@ (v2)", version];
+    return[NSString stringWithFormat:@"%@", version];
 #endif
 }
 
