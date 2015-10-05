@@ -126,8 +126,10 @@
     if (self.isRecoveringWallet) {
         NSString *recoveryPhrase = [[NSMutableString alloc] initWithString:self.recoveryPhraseView.recoveryPassphraseTextField.text];
         
-        NSMutableArray *wordsArray = (NSMutableArray *)[recoveryPhrase componentsSeparatedByString:@" "];
-        [wordsArray removeObject:@""];
+        NSMutableArray *wordsArray = [[NSMutableArray alloc] initWithArray:[recoveryPhrase componentsSeparatedByString:@" "]];
+        if ([wordsArray containsObject:@""]) {
+            [wordsArray removeObject:@""];
+        }
         
         if (wordsArray.count != RECOVERY_PHRASE_NUMBER_OF_WORDS) {
             [app standardNotify:BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS];
@@ -137,8 +139,6 @@
     
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
     [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:self.recoveryPhraseView.recoveryPassphraseTextField.text];
-    
-    [self clearSensitiveTextFields];
     
     [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
     
@@ -256,6 +256,16 @@
 }
 
 #pragma mark - Helpers
+
+- (void)didRecoverWallet
+{
+    [self clearSensitiveTextFields];
+}
+
+- (void)didFailRecovery
+{
+    [self.recoveryPhraseView.recoveryPassphraseTextField becomeFirstResponder];
+}
 
 - (void)closeKeyboard
 {

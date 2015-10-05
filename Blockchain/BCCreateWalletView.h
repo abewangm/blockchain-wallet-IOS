@@ -33,6 +33,9 @@
 
 - (IBAction)termsOfServiceClicked:(id)sender;
 
+- (void)didFailRecovery;
+- (void)didRecoverWallet;
+
 @property(nonatomic) IBOutlet BCRecoveryView *recoveryPhraseView;
 @property(nonatomic, strong) NSString *tmpPassword;
 @property(nonatomic) BOOL isRecoveringWallet;

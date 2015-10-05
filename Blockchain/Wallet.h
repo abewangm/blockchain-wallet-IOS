@@ -67,6 +67,8 @@
 - (void)didFailGetPinInvalidResponse;
 - (void)didGetPinResponse:(NSDictionary *)dictionary;
 - (void)didImportPrivateKey:(NSString *)address;
+- (void)didFailRecovery;
+- (void)didRecoverWallet;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {

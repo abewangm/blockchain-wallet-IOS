@@ -1175,18 +1175,23 @@
     self.recoveryPhrase = phrase;
 }
 
-- (void)on_recover_with_passphrase_success:(NSDictionary *)recoveredWalletDictionary
+- (void)on_success_recover_with_passphrase:(NSDictionary *)recoveredWalletDictionary
 {
     DLog(@"on_recover_with_passphrase_success_guid:sharedKey:password:");
+    
+    if ([delegate respondsToSelector:@selector(didRecoverWallet)])
+        [delegate didRecoverWallet];
     
     [self loadWalletWithGuid:recoveredWalletDictionary[@"guid"] sharedKey:recoveredWalletDictionary[@"sharedKey"] password:recoveredWalletDictionary[@"password"]];
 }
 
-- (void)on_recover_with_passphrase_error:(NSString *)error
+- (void)on_error_recover_with_passphrase:(NSString *)error
 {
     DLog(@"on_recover_with_passphrase_error:");
     [self loading_stop];
-    [app standardNotify:error];
+    [app standardNotify:BC_STRING_INVALID_RECOVERY_PHRASE];
+    if ([delegate respondsToSelector:@selector(didFailRecovery)])
+        [delegate didFailRecovery];
 }
 
 

@@ -999,6 +999,16 @@ void (^secondPasswordSuccess)(NSString *);
     [alertView show];
 }
 
+- (void)didFailRecovery
+{
+    [createWalletView didFailRecovery];
+}
+
+- (void)didRecoverWallet
+{
+    [createWalletView didRecoverWallet];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountSettings

@@ -986,19 +986,25 @@ MyWalletPhone.checkIfWalletHasAddress = function(address) {
 
 MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
     
-    console.log('recovering wallet');
-    
-    var success = function (recoveredWalletDictionary) {
-        console.log('recovery success');
-        device.execute('on_recover_with_passphrase_success:', [recoveredWalletDictionary]);
-    }
-    
-    var error = function(error) {
+    if (MyWallet.isValidateBIP39Mnemonic(passphrase)) {
+        console.log('recovering wallet');
+        
+        var success = function (recoveredWalletDictionary) {
+            console.log('recovery success');
+            device.execute('on_success_recover_with_passphrase:', [recoveredWalletDictionary]);
+        }
+        
+        var error = function(error) {
+            console.log('recovery error after validation: ' + error);
+            device.execute('on_error_recover_with_passphrase:', [error]);
+        }
+        
+        MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error);
+
+    } else {
         console.log('recovery error: ' + error);
-        device.execute('on_recover_with_passphrase_error:', [error]);
-    }
-    
-    MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error);
+        device.execute('on_error_recover_with_passphrase:', [error]);
+    };
 }
 
 MyWalletPhone.setLabelForAddress = function(address, label) {
