@@ -124,6 +124,9 @@
 /* Class = "UILabel"; text = "Title"; ObjectID = "DIx-fJ-eKX"; */
 "DIx-fJ-eKX.text" = "Tytuł";
 
+/* Class = "UITextField"; placeholder = "Recovery passphrase"; ObjectID = "L1x-Mw-4H5"; */
+"L1x-Mw-4H5.placeholder" = "Odzyskiwanie hasła";
+
 /* Class = "UITextField"; placeholder = "Your email"; ObjectID = "LsW-69-Qon"; */
 "LsW-69-Qon.placeholder" = "Twój e-mail";
 
@@ -153,6 +156,9 @@
 
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 transakcji";
+
+/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Wprowadź swoje hasło poniżej, oddzielając każdy wyraz ze spacją.";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Ręczne parowanie";

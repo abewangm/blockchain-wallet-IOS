@@ -50,6 +50,9 @@
 "Address is not valid" = "Adresa nu este validă";
 
 /* (No Commment) */
+"Adjust Fee" = "Ajustare cost";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Valoarea trebuie să fie peste pragul de praf (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Copiaţi adresa";
+
+/* (No Commment) */
+"Copy GUID" = "Copie GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Copiaţi în clipboard";
 
 /* (No Commment) */
 "Create Account" = "Crează cont";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Identificator invalid";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Codul de asociere nevalidă";
 
 /* (No Commment) */
 "Invalid Send Value" = "Valoare nevalidă a trimite";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Vă rugăm să introduceţi PIN-ul";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Vă rugăm să introduceţi fraza ta de recuperare cu cuvinte separate prin spaţii";
+
+/* (No Commment) */
 "Please provide an email address." = "Vă rugăm să furnizaţi o adresă de e-mail.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Primit";
+
+/* (No Commment) */
+"Recover Wallet" = "Recupera portofel";
+
+/* (No Commment) */
+"Recovering wallet" = "Recuperarea portofel";
 
 /* (No Commment) */
 "Regular" = "Regulate";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Avertisment!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Avertisment: Identificatorul dvs portofel este informaţii sensibile. Copierea poate compromite securitatea de portofel.";
 
 /* (No Commment) */
 "We've designed a whole new

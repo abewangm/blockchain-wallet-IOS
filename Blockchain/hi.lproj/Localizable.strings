@@ -50,6 +50,9 @@
 "Address is not valid" = "पता मान्य नहीं है";
 
 /* (No Commment) */
+"Adjust Fee" = "शुल्क समायोजित करें";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "राशि धूल दहलीज (%lld Satoshi) से ऊपर होना चाहिए";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "पते की प्रतिलिपि बनाएँ";
+
+/* (No Commment) */
+"Copy GUID" = "GUID की प्रतिलिपि बनाएँ";
+
+/* (No Commment) */
+"Copy to clipboard" = "क्लिपबोर्ड पर प्रतिलिपि बनाएँ";
 
 /* (No Commment) */
 "Create Account" = "खाता बनाएँ";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "अमान्य पहचानकर्ता";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "अमान्य कोड बाँधना";
 
 /* (No Commment) */
 "Invalid Send Value" = "अमान्य भेजें मान";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "कृपया अपना पिन दर्ज करें";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "शब्दों के रिक्त स्थान से अलग के साथ अपने वसूली वाक्यांश दर्ज करें";
+
+/* (No Commment) */
 "Please provide an email address." = "कृपया एक ईमेल पता प्रदान करते हैं।";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "प्राप्त हुआ";
+
+/* (No Commment) */
+"Recover Wallet" = "बटुआ पुनर्प्राप्त करें";
+
+/* (No Commment) */
+"Recovering wallet" = "बटुआ पुनर्प्राप्त करना";
 
 /* (No Commment) */
 "Regular" = "नियमित रूप से";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "का सत्यापन";
 
 /* (No Commment) */
-"Wallet Identifier" = "बटुआ Identifer";
+"Wallet Identifier" = "बटुआ पहचानकर्ता";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "बटुआ सफलतापूर्वक बनती।";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "चेतावनी!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "चेतावनी: आपका बटुआ पहचानकर्ता संवेदनशील जानकारी है। यह नकल अपने बटुए की सुरक्षा से समझौता कर सकते हैं।";
 
 /* (No Commment) */
 "We've designed a whole new

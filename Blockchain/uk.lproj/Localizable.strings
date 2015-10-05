@@ -50,6 +50,9 @@
 "Address is not valid" = "Адреса є неприпустимою";
 
 /* (No Commment) */
+"Adjust Fee" = "Налаштуйте плата";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Сума повинна бути вище пилу поріг (%lld Сатосі)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Копіювати адресу";
+
+/* (No Commment) */
+"Copy GUID" = "Копія GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Скопіювати до буфера обміну";
 
 /* (No Commment) */
 "Create Account" = "Створити обліковий запис";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Неприпустимий ідентифікатор";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Неприпустимий код спаровування";
 
 /* (No Commment) */
 "Invalid Send Value" = "Неприпустиме надсилання значення";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Будь ласка, введіть PIN-код";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Будь ласка, введіть відновлення фраза з слів, розділених пробілами";
+
+/* (No Commment) */
 "Please provide an email address." = "Надайте, будь ласка, адресу електронної пошти.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Отримав";
+
+/* (No Commment) */
+"Recover Wallet" = "Відновити гаманець";
+
+/* (No Commment) */
+"Recovering wallet" = "Відновлення гаманець";
 
 /* (No Commment) */
 "Regular" = "Регулярні";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Перевірка";
 
 /* (No Commment) */
-"Wallet Identifier" = "Гаманець ідентифікатором";
+"Wallet Identifier" = "Ідентифікатор гаманець";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Гаманець парі успішно.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Попередження!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Попередження: Ідентифікатор вашого гаманця є конфіденційною інформацією. Копіювання його можуть становити загрозу безпеці вашого гаманця.";
 
 /* (No Commment) */
 "We've designed a whole new

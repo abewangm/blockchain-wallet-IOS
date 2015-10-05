@@ -50,13 +50,16 @@
 "Address is not valid" = "Dirección no es válida";
 
 /* (No Commment) */
+"Adjust Fee" = "Ajuste cuota";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Cantidad debe ser por encima del umbral de polvo (%lld Satoshi)";
 
 /* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Una cuenta de correo electrónico es necesario para ayudar a recuperar un identificador de cartera perdida y para las notificaciones de pago. También, se utilizará su dirección de email verificada como una segunda capa de verificación al iniciar sesión en su billetera.";
 
 /* (No Commment) */
-"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Error al validar tu código PIN con el servidor remoto. Usted puede estar offline o Blockchain puede estar experimentando dificultades. ¿Quieres reintentar la validación o en su lugar, introduzca la contraseña manualmente?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Error al validar su código PIN con el servidor remoto. Usted puede estar offline o Blockchain puede estar experimentando dificultades. ¿Quieres reintentar la validación o en su lugar, introduzca la contraseña manualmente?";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Se ha producido un error cargando su billetera. Usted puede estar offline o Blockchain está experimentando dificultades. Por favor cierre la aplicación e intentarlo más tarde o volver a emparejar el dispositivo.";
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Copiar dirección";
+
+/* (No Commment) */
+"Copy GUID" = "Copie el GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Copiar en el portapapeles";
 
 /* (No Commment) */
 "Create Account" = "Crear cuenta";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Identificador no válido";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Código de sincronización no válido";
 
 /* (No Commment) */
 "Invalid Send Value" = "Valor del envío no válido";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Por favor, ingrese su PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Por favor ingrese su frase de recuperación con palabras separadas por espacios";
+
+/* (No Commment) */
 "Please provide an email address." = "Por favor proporcione una dirección de correo electrónico.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Recibió";
+
+/* (No Commment) */
+"Recover Wallet" = "Recuperar cartera";
+
+/* (No Commment) */
+"Recovering wallet" = "Recuperación de cartera";
 
 /* (No Commment) */
 "Regular" = "Regular";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "¡ ADVERTENCIA!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "ADVERTENCIA: Su identificador de cartera es información confidencial. Copia puede comprometer la seguridad de su cartera.";
 
 /* (No Commment) */
 "We've designed a whole new

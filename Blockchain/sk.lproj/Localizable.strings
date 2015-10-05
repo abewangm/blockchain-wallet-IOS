@@ -50,6 +50,9 @@
 "Address is not valid" = "Adresa nie je platná";
 
 /* (No Commment) */
+"Adjust Fee" = "Upraviť poplatok";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Suma musí byť nad prachom limit (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Kopírovať adresu";
+
+/* (No Commment) */
+"Copy GUID" = "Kopírovať GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Kopírovať do schránky";
 
 /* (No Commment) */
 "Create Account" = "Vytvoriť účet";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Neplatný identifikátor";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Neplatný kód pre párovanie";
 
 /* (No Commment) */
 "Invalid Send Value" = "Neplatné odoslanie hodnotu";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Zadajte kód PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Zadajte prosím vaše zotavenie frázy s slová oddelené medzerou";
+
+/* (No Commment) */
 "Please provide an email address." = "Uveďte, prosím, e-mailovú adresu.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Prijaté";
+
+/* (No Commment) */
+"Recover Wallet" = "Obnoviť peňaženka";
+
+/* (No Commment) */
+"Recovering wallet" = "Obnovenie peňaženka";
 
 /* (No Commment) */
 "Regular" = "Pravidelné";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Overenie";
 
 /* (No Commment) */
-"Wallet Identifier" = "Peňaženka identifikátorom";
+"Wallet Identifier" = "Peňaženka identifikátor";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Peňaženka spárované úspešne.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Upozornenie!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Upozornenie: Vaša peňaženka identifikátor je citlivé informácie. Kopírovanie môže ohroziť bezpečnosť vašej peňaženky.";
 
 /* (No Commment) */
 "We've designed a whole new

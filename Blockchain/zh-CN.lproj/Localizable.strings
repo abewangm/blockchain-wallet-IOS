@@ -50,6 +50,9 @@
 "Address is not valid" = "地址是无效的";
 
 /* (No Commment) */
+"Adjust Fee" = "调整费用";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "金额必须高于灰尘阈值 (%lld 聪)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "复制地址";
+
+/* (No Commment) */
+"Copy GUID" = "复制 GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "复制到剪贴板";
 
 /* (No Commment) */
 "Create Account" = "创建帐户";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "无效的标识符";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "无效的配对代码";
 
 /* (No Commment) */
 "Invalid Send Value" = "无效的发送值";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "请输入您的 PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "请输入您恢复短语和单词之间用空格分隔";
+
+/* (No Commment) */
 "Please provide an email address." = "请提供一个电子邮件地址。";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "收到";
+
+/* (No Commment) */
+"Recover Wallet" = "恢复的钱包";
+
+/* (No Commment) */
+"Recovering wallet" = "恢复的钱包";
 
 /* (No Commment) */
 "Regular" = "定期";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "警告!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "警告: 您的钱包标识符是敏感信息。复制它可能危害安全的你的钱包。";
 
 /* (No Commment) */
 "We've designed a whole new

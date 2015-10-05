@@ -50,6 +50,9 @@
 "Address is not valid" = "Địa chỉ là không hợp lệ";
 
 /* (No Commment) */
+"Adjust Fee" = "Điều chỉnh phí";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Số tiền phải ở trên bụi ngưỡng (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Sao chép địa chỉ";
+
+/* (No Commment) */
+"Copy GUID" = "Sao chép GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Sao chép vào clipboard";
 
 /* (No Commment) */
 "Create Account" = "Tạo tài khoản";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Nhận dạng không hợp lệ";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Mã kết nối không hợp lệ";
 
 /* (No Commment) */
 "Invalid Send Value" = "Giá trị không hợp lệ gửi";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Xin vui lòng nhập mã PIN của bạn";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Vui lòng nhập cụm từ phục hồi của bạn với từ cách nhau bằng dấu";
+
+/* (No Commment) */
 "Please provide an email address." = "Vui lòng cung cấp địa chỉ email.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Nhận được";
+
+/* (No Commment) */
+"Recover Wallet" = "Phục hồi Wallet";
+
+/* (No Commment) */
+"Recovering wallet" = "Phục hồi ví";
 
 /* (No Commment) */
 "Regular" = "Thường xuyên";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Xác minh";
 
 /* (No Commment) */
-"Wallet Identifier" = "Ví Identifer";
+"Wallet Identifier" = "Định danh ví";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Ví kết nối thành công.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Cảnh báo!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Chú ý: Các định danh ví của bạn là thông tin nhạy cảm. Sao chép nó có thể thỏa hiệp sự bảo mật của chi tiêu của bạn.";
 
 /* (No Commment) */
 "We've designed a whole new

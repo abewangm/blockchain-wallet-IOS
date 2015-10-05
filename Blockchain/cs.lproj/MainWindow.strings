@@ -124,6 +124,9 @@
 /* Class = "UILabel"; text = "Title"; ObjectID = "DIx-fJ-eKX"; */
 "DIx-fJ-eKX.text" = "Titul";
 
+/* Class = "UITextField"; placeholder = "Recovery passphrase"; ObjectID = "L1x-Mw-4H5"; */
+"L1x-Mw-4H5.placeholder" = "Přístupové heslo zotavení";
+
 /* Class = "UITextField"; placeholder = "Your email"; ObjectID = "LsW-69-Qon"; */
 "LsW-69-Qon.placeholder" = "Váš email";
 
@@ -153,6 +156,9 @@
 
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 transakce";
+
+/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Vložte své heslo níže, oddělte jednotlivá slova mezerou.";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Ruční párování";

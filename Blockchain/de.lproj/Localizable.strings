@@ -50,6 +50,9 @@
 "Address is not valid" = "Adresse ist nicht gültig";
 
 /* (No Commment) */
+"Adjust Fee" = "Anpassen von Fee";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Betrag muss über Staub Schwellenwert (%lld Satoshi) sein.";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Adresse kopieren";
+
+/* (No Commment) */
+"Copy GUID" = "Kopieren Sie GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "In Zwischenablage kopieren";
 
 /* (No Commment) */
 "Create Account" = "Konto erstellen";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Ungültiger Bezeichner";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Ungültiger Paarung Code";
 
 /* (No Commment) */
 "Invalid Send Value" = "Ungültige senden Wert";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Bitte geben Sie Ihre PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Bitte geben Sie Ihre Erholung-Satz mit durch Leerzeichen getrennte Wörter";
+
+/* (No Commment) */
 "Please provide an email address." = "Bitte geben Sie eine e-Mail-Adresse.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Empfangen";
+
+/* (No Commment) */
+"Recover Wallet" = "Wallet wiederherstellen";
+
+/* (No Commment) */
+"Recovering wallet" = "Wiederherstellen der Brieftasche";
 
 /* (No Commment) */
 "Regular" = "Regelmäßige";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Überprüfen";
 
 /* (No Commment) */
-"Wallet Identifier" = "Brieftasche Identifer";
+"Wallet Identifier" = "Geldbörse-Bezeichner";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Brieftasche erfolgreich gepaart.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Warnung!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Warnung: Ihr Portemonnaie-Bezeichner ist vertraulicher Informationen. Kopieren sie könnten die Sicherheit Ihrer Brieftasche beeinträchtigen.";
 
 /* (No Commment) */
 "We've designed a whole new

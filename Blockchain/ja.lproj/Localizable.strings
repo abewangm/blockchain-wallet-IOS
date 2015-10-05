@@ -50,6 +50,9 @@
 "Address is not valid" = "アドレスが正しくありません。";
 
 /* (No Commment) */
+"Adjust Fee" = "料金を調整します。";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "量する必要がありますほこりしきい値 (%lld 聡)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "アドレスのコピー";
+
+/* (No Commment) */
+"Copy GUID" = "GUID をコピーします。";
+
+/* (No Commment) */
+"Copy to clipboard" = "クリップボードにコピー";
 
 /* (No Commment) */
 "Create Account" = "アカウントを作成します。";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "無効な識別子";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "ペアリング コードが無効です。";
 
 /* (No Commment) */
 "Invalid Send Value" = "無効な送信の値";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "暗証番号を入力してください。";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "スペースで区切られた単語で回復フレーズを入力してください。";
+
+/* (No Commment) */
 "Please provide an email address." = "メール アドレスを入力してください。";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "受信";
+
+/* (No Commment) */
+"Recover Wallet" = "財布を回復します。";
+
+/* (No Commment) */
+"Recovering wallet" = "財布を回復します。";
 
 /* (No Commment) */
 "Regular" = "正規";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "警告!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "警告: 財布識別子は機密情報です。コピーと、お財布のセキュリティが損なわれる可能性があります。";
 
 /* (No Commment) */
 "We've designed a whole new

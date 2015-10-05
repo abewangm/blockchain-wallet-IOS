@@ -1,5 +1,11 @@
-/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "4"; */
-"4.normalTitle" = "Gửi";
+/* Class = "UILabel"; text = "CurrAmt"; ObjectID = "2Ig-LA-4kK"; */
+"2Ig-LA-4kK.text" = "CurrAmt";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
+"4.normalTitle" = "Tiếp tục";
+
+/* Class = "UILabel"; text = "BtcAmt"; ObjectID = "6ll-Xx-4fm"; */
+"6ll-Xx-4fm.text" = "BtcAmt";
 
 /* (No Commment) */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -12,6 +18,9 @@
 
 /* (No Commment) */
 "8LN-Tc-WVh.normalTitle" = "Thực hiện";
+
+/* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
+"9B2-23-8j5.text" = "CurrAmt";
 
 /* (No Commment) */
 "13.text" = "Để";
@@ -43,11 +52,26 @@
 /* (No Commment) */
 "67.text" = "Nhãn địa chỉ";
 
+/* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
+"FB0-NP-5do.text" = "Lệ phí";
+
+/* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
+"IUn-6N-qeo.text" = "BtcAmt";
+
+/* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
+"Ubr-KG-egH.text" = "Tổng cộng";
+
+/* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
+"ZcA-OM-4nq.text" = "Từ:";
+
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
 "Zgn-Wx-Uwx.text" = "Hãy chờ";
 
 /* (No Commment) */
 "aKC-Q2-phD.text" = "Gửi thanh toán";
+
+/* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
+"aeG-gf-oXV.text" = "Số lượng";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "Tiền có sẵn";
@@ -55,14 +79,26 @@
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
 "fpY-AA-We5.text" = "Để";
 
-/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "pPu-bJ-k6p"; */
-"pPu-bJ-k6p.normalTitle" = "Gửi";
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
+"pPu-bJ-k6p.normalTitle" = "Tiếp tục";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
 "qx4-XV-uhn.placeholder" = "0,00";
 
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sXf-3w-qdy"; */
+"sXf-3w-qdy.normalTitle" = "Gửi";
+
+/* Class = "UILabel"; text = "CurrTotal"; ObjectID = "t8M-NC-003"; */
+"t8M-NC-003.text" = "CurrTotal";
+
 /* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
 "vGH-md-Ck3.text" = "USD";
+
+/* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
+"vzP-xG-GPO.text" = "BtcTotal";
+
+/* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
+"yGR-Eh-YG1.text" = "Để:";
 
 /* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "Bất kỳ địa chỉ";

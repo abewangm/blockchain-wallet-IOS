@@ -50,6 +50,9 @@
 "Address is not valid" = "Adressen er ikke gyldig";
 
 /* (No Commment) */
+"Adjust Fee" = "Justere gebyr";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Beløbet skal være støv tærskel (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Kopiere adressen";
+
+/* (No Commment) */
+"Copy GUID" = "Kopiere GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Kopier til Udklipsholder";
 
 /* (No Commment) */
 "Create Account" = "Opret konto";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Ugyldigt id";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Ugyldig kode for parring";
 
 /* (No Commment) */
 "Invalid Send Value" = "Ugyldig Send værdi";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Indtast venligst din pinkode";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Angiv venligst din opsving sætning med ord adskilt af mellemrum";
+
+/* (No Commment) */
 "Please provide an email address." = "Angiv en e-mail-adresse.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Modtaget";
+
+/* (No Commment) */
+"Recover Wallet" = "Genskab tegnebog";
+
+/* (No Commment) */
+"Recovering wallet" = "Inddrive tegnebog";
 
 /* (No Commment) */
 "Regular" = "Regelmæssig";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Kontrol";
 
 /* (No Commment) */
-"Wallet Identifier" = "Tegnebog identifikationen";
+"Wallet Identifier" = "Tegnebog id";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Tegnebog parret med succes.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Advarsel!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Advarsel: Din tegnebog id er følsomme oplysninger. Kopierer det kan kompromittere sikkerheden i din tegnebog.";
 
 /* (No Commment) */
 "We've designed a whole new

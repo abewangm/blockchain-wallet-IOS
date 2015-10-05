@@ -50,6 +50,9 @@
 "Address is not valid" = "Naslov ni veljaven";
 
 /* (No Commment) */
+"Adjust Fee" = "Prilagodite pristojbina";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Znesek mora biti nad pragom prah (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Kopirajte naslov";
+
+/* (No Commment) */
+"Copy GUID" = "Kopijo GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Kopiranje v odložišče";
 
 /* (No Commment) */
 "Create Account" = "Ustvarjanje računa";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Neveljaven identifikator";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Neveljavna koda za seznanjanje";
 
 /* (No Commment) */
 "Invalid Send Value" = "Neveljavno pošiljanje vrednost";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Vnesite kodo PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Vnesite vaš izterjavo stavek z besedami, ločenih s presledki";
+
+/* (No Commment) */
 "Please provide an email address." = "Navedite e-poštni naslov.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Prejel";
+
+/* (No Commment) */
+"Recover Wallet" = "Zopet prejeti denarnice";
+
+/* (No Commment) */
+"Recovering wallet" = "Obnavljanje denarnice";
 
 /* (No Commment) */
 "Regular" = "Redno";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Preverjanje";
 
 /* (No Commment) */
-"Wallet Identifier" = "Denarnica identifikatorjem";
+"Wallet Identifier" = "Identifikator denarnice";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Denarnica seznanjene uspešno.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Opozorilo!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Opozorilo: Vaše denarnice identifikator je občutljivih informacij. Kopirate lahko ogrozijo varnost vaše denarnice.";
 
 /* (No Commment) */
 "We've designed a whole new

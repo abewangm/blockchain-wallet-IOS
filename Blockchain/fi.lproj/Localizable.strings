@@ -50,6 +50,9 @@
 "Address is not valid" = "Osoite ei kelpaa";
 
 /* (No Commment) */
+"Adjust Fee" = "Muuta maksu";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Summan on oltava pöly-kynnysarvo (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Kopioi osoite";
+
+/* (No Commment) */
+"Copy GUID" = "Kopioi GUID-tunnus";
+
+/* (No Commment) */
+"Copy to clipboard" = "Kopioi leikepöydälle";
 
 /* (No Commment) */
 "Create Account" = "Luo tili";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Virheellinen tunniste";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Virheellinen pariliitoksen koodi";
 
 /* (No Commment) */
 "Invalid Send Value" = "Virheellinen lähetys arvo";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Kirjoita PIN-tunnus";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Kirjoita elpyminen lause välilyönnein erotettua sanaa";
+
+/* (No Commment) */
 "Please provide an email address." = "Anna sähköpostiosoite.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Saanut";
+
+/* (No Commment) */
+"Recover Wallet" = "Palauta lompakko";
+
+/* (No Commment) */
+"Recovering wallet" = "Palauta lompakko";
 
 /* (No Commment) */
 "Regular" = "Säännöllisesti";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Tarkistetaan";
 
 /* (No Commment) */
-"Wallet Identifier" = "Lompakko tunnukseen";
+"Wallet Identifier" = "Lompakko tunnus";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Lompakko pariksi onnistuneesti.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Varoitus!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Varoitus: Lompakko-tunniste on arkaluonteisia tietoja. Luvaton kopiointi saattaa vaarantaa tietoturvan lompakon.";
 
 /* (No Commment) */
 "We've designed a whole new

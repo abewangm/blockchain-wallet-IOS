@@ -50,6 +50,9 @@
 "Address is not valid" = "Cím érvénytelen.";
 
 /* (No Commment) */
+"Adjust Fee" = "Állítsa be a díj";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Összeg felett por küszöbértékét (%lld Satoshi) kell";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Cím másolása";
+
+/* (No Commment) */
+"Copy GUID" = "Példány-GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Másolása a vágólapra";
 
 /* (No Commment) */
 "Create Account" = "Fiók létrehozása";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Érvénytelen azonosító";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Érvénytelen párosítás kód";
 
 /* (No Commment) */
 "Invalid Send Value" = "Érvénytelen küldés érték";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Kérjük, írja be a PIN-kódot";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Kérjük, írja be a helyreállítási mondat szóközökkel elválasztott szavak";
+
+/* (No Commment) */
 "Please provide an email address." = "Kérjük, adja meg egy e-mail címet.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Kapott";
+
+/* (No Commment) */
+"Recover Wallet" = "Visszaszerez pénztárca";
+
+/* (No Commment) */
+"Recovering wallet" = "Beszedik a pénztárca";
 
 /* (No Commment) */
 "Regular" = "Rendszeres";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Ellenőrzése";
 
 /* (No Commment) */
-"Wallet Identifier" = "Pénztárca megfeleltetve";
+"Wallet Identifier" = "Pénztárca azonosítója";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Pénztárca sikeresen párosítva.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Figyelmeztetés!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Figyelmeztetés: A mobiltárca azonosítója az érzékeny információ. Másolás ez veszélyezteti a biztonságát a pénztárca.";
 
 /* (No Commment) */
 "We've designed a whole new

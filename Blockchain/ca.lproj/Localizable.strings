@@ -50,6 +50,9 @@
 "Address is not valid" = "Adreça no és vàlida";
 
 /* (No Commment) */
+"Adjust Fee" = "Ajustar quota";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Import ha de ser per sobre llindar de pols (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Copiar l'adreça";
+
+/* (No Commment) */
+"Copy GUID" = "Còpia GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Copiar al porta-retalls";
 
 /* (No Commment) */
 "Create Account" = "Crear compte";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Identificador vàlid";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Codi d'aparellament no vàlid";
 
 /* (No Commment) */
 "Invalid Send Value" = "Valor d'enviament no vàlid";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Si us plau, introduïu el PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Introduïu la seva frase de recuperació amb paraules separades per espais";
+
+/* (No Commment) */
 "Please provide an email address." = "Indiqueu una adreça de correu electrònic.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Rebut";
+
+/* (No Commment) */
+"Recover Wallet" = "Recuperar la cartera";
+
+/* (No Commment) */
+"Recovering wallet" = "Recuperació de cartera";
 
 /* (No Commment) */
 "Regular" = "Regular";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Verificació";
 
 /* (No Commment) */
-"Wallet Identifier" = "L'identificador de cartera";
+"Wallet Identifier" = "Identificador de cartera";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Cartera aparellat amb èxit.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Alerta!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Advertiment: El seu identificador cartera és informació confidencial. Copiar-lo, pot comprometre la seguretat de la seva butxaca.";
 
 /* (No Commment) */
 "We've designed a whole new

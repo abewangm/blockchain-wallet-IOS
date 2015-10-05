@@ -50,6 +50,9 @@
 "Address is not valid" = "ที่อยู่ไม่ถูกต้อง";
 
 /* (No Commment) */
+"Adjust Fee" = "ปรับค่าธรรมเนียม";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "ยอดเงินต้องอยู่เหนือขีดจำกัดฝุ่น (%lld ซาโตชิ)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "คัดลอกที่อยู่";
+
+/* (No Commment) */
+"Copy GUID" = "สำเนา GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "คัดลอกลงคลิปบอร์ด";
 
 /* (No Commment) */
 "Create Account" = "สร้างบัญชี";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "ตัวระบุที่ไม่ถูกต้อง";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "รหัสที่จับคู่ไม่ถูกต้อง";
 
 /* (No Commment) */
 "Invalid Send Value" = "ค่าส่งไม่ถูกต้อง";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "กรุณาป้อน PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "กรุณาป้อนวลีกู้คืนของคุณ มีคำคั่น ด้วยช่องว่าง";
+
+/* (No Commment) */
 "Please provide an email address." = "กรุณาใส่อยู่อีเมล์";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "ได้รับ";
+
+/* (No Commment) */
+"Recover Wallet" = "กู้คืนกระเป๋าสตางค์";
+
+/* (No Commment) */
+"Recovering wallet" = "กู้คืนกระเป๋าสตางค์";
 
 /* (No Commment) */
 "Regular" = "ปกติ";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "การตรวจสอบ";
 
 /* (No Commment) */
-"Wallet Identifier" = "กระเป๋าไป";
+"Wallet Identifier" = "กระเป๋าสตางค์รหัส";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "กระเป๋าจับคู่เรียบร้อยแล้ว";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "คำเตือน!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "คำเตือน: ตัวระบุที่กระเป๋าสตางค์ของคุณเป็นข้อมูลที่สำคัญ คัดลอกอาจทำอันตรายต่อความปลอดภัยของกระเป๋าสตางค์ของคุณ";
 
 /* (No Commment) */
 "We've designed a whole new

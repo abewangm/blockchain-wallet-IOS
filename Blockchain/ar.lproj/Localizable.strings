@@ -50,6 +50,9 @@
 "Address is not valid" = "عنوان غير صحيح";
 
 /* (No Commment) */
+"Adjust Fee" = "ضبط الرسوم";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "يجب أن يكون مقدار عتبة الغبار (%lld ساتوشي)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "نسخ عنوان";
+
+/* (No Commment) */
+"Copy GUID" = "نسخ المعرف الفريد العمومي";
+
+/* (No Commment) */
+"Copy to clipboard" = "نسخ إلى الحافظة";
 
 /* (No Commment) */
 "Create Account" = "إنشاء حساب";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "معرف غير صالح";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "رمز مزاوجة غير صالح";
 
 /* (No Commment) */
 "Invalid Send Value" = "قيمة إرسال غير صالح";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "الرجاء إدخال رقم PIN الخاص بك";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "الرجاء إدخال عبارة الاسترداد الخاصة بك مع الكلمات مفصولة بمسافات";
+
+/* (No Commment) */
 "Please provide an email address." = "الرجاء توفير عنوان بريد إلكتروني.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "تلقي";
+
+/* (No Commment) */
+"Recover Wallet" = "استرداد المحفظة";
+
+/* (No Commment) */
+"Recovering wallet" = "استعادة المحفظة";
 
 /* (No Commment) */
 "Regular" = "العادية";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "تحذير!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "تحذير: المعرف المحفظة الخاصة بك من المعلومات الحساسة. نسخ فإنه يجوز المساس بأمن محفظتك.";
 
 /* (No Commment) */
 "We've designed a whole new

@@ -50,6 +50,9 @@
 "Address is not valid" = "Indirizzo non è valido";
 
 /* (No Commment) */
+"Adjust Fee" = "Regolare il costo";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Importo deve essere superiore a soglia di polvere (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Copia indirizzo";
+
+/* (No Commment) */
+"Copy GUID" = "Copiare il GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Copia negli Appunti";
 
 /* (No Commment) */
 "Create Account" = "Creare Account";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Identificatore non valido";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Codice di abbinamento non valido";
 
 /* (No Commment) */
 "Invalid Send Value" = "Valore non valido invia";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Inserisci il tuo PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Inserisci la tua frase di recupero con parole separate da spazi";
+
+/* (No Commment) */
 "Please provide an email address." = "Si prega di fornire un indirizzo email.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Ha ricevuto";
+
+/* (No Commment) */
+"Recover Wallet" = "Recuperare il portafoglio";
+
+/* (No Commment) */
+"Recovering wallet" = "Recupero di portafoglio";
 
 /* (No Commment) */
 "Regular" = "Regolare";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Verifica";
 
 /* (No Commment) */
-"Wallet Identifier" = "Identificatore del portafoglio";
+"Wallet Identifier" = "Identificatore di portafoglio";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Portafoglio abbinato con successo.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Attenzione!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Avviso: L'identificatore di portafoglio sia informazioni sensibili. Copia di esso può compromettere la sicurezza del tuo portafoglio.";
 
 /* (No Commment) */
 "We've designed a whole new

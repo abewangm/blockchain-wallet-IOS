@@ -50,6 +50,9 @@
 "Address is not valid" = "Adressen är inte giltig";
 
 /* (No Commment) */
+"Adjust Fee" = "Justera avgift";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Beloppet måste vara damm tröskelvärdet (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Kopiera adressen";
+
+/* (No Commment) */
+"Copy GUID" = "Kopiera GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Kopiera till Urklipp";
 
 /* (No Commment) */
 "Create Account" = "Skapa konto";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Ogiltig identifierare";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Ogiltig ihopkoppling kod";
 
 /* (No Commment) */
 "Invalid Send Value" = "Ogiltig skicka värdet";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Skriv in din PIN-kod";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Skriv in din återhämtning fras med ord separerade med blanksteg";
+
+/* (No Commment) */
 "Please provide an email address." = "Ange en e-postadress.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Fick";
+
+/* (No Commment) */
+"Recover Wallet" = "Återställa plånbok";
+
+/* (No Commment) */
+"Recovering wallet" = "Återhämtar sig plånbok";
 
 /* (No Commment) */
 "Regular" = "Regelbundna";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Kontrollera";
 
 /* (No Commment) */
-"Wallet Identifier" = "Plånbok identifierare";
+"Wallet Identifier" = "Plånbok-ID";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Plånbok Parade framgångsrikt.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Varning!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Varning: Din plånbok identifierare är känslig information. Kopiera den kan äventyra säkerheten för din plånbok.";
 
 /* (No Commment) */
 "We've designed a whole new

@@ -50,6 +50,9 @@
 "Address is not valid" = "Adres geçerli değil";
 
 /* (No Commment) */
+"Adjust Fee" = "Ücret ayarlamak";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Bir miktar toz eşik (%lld Satoshi) olması gerekir";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Adresini kopyala";
+
+/* (No Commment) */
+"Copy GUID" = "Kopya GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Panoya kopyala";
 
 /* (No Commment) */
 "Create Account" = "Hesap oluşturma";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Geçersiz tanımlayıcı";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Geçersiz eşleştirme kodu";
 
 /* (No Commment) */
 "Invalid Send Value" = "Geçersiz gönderme değer";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "PIN kodunuzu giriniz";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Lütfen boşluklarla ayrılmış sözcükleri ile kurtarma metninizi girin";
+
+/* (No Commment) */
 "Please provide an email address." = "E-posta adresi veriniz.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Alınan";
+
+/* (No Commment) */
+"Recover Wallet" = "M-cüzdan kurtarmak";
+
+/* (No Commment) */
+"Recovering wallet" = "M-cüzdan kurtarma";
 
 /* (No Commment) */
 "Regular" = "Düzenli";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Doğrulama";
 
 /* (No Commment) */
-"Wallet Identifier" = "M-cüzdan tanımlayıcı";
+"Wallet Identifier" = "M-cüzdan tanımlayıcısı";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "M-cüzdan başarıyla eşleştirilmiş.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Uyarı!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Uyarı: Senin hassas bilgileri m-cüzdan tanımlayıcısıdır. Bu kopyalama cüzdanını güvenliğini tehlikeye atabilir.";
 
 /* (No Commment) */
 "We've designed a whole new

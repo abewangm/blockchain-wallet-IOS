@@ -50,6 +50,9 @@
 "Address is not valid" = "Adresa nije valjana";
 
 /* (No Commment) */
+"Adjust Fee" = "Prilagoditi naknadu";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Iznos mora biti iznad prašinu Praga (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Kopiraj adresu";
+
+/* (No Commment) */
+"Copy GUID" = "Kopirati GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Kopiraj u međuspremnik";
 
 /* (No Commment) */
 "Create Account" = "Stvaranje računa";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Neispravan identifikator";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Nije valjan za uparivanje Šifra";
 
 /* (No Commment) */
 "Invalid Send Value" = "Vrijednost nije valjana slanje";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Molimo unesite vaš PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Molimo unesite vaš oporavak izraz s riječi odvojene razmacima";
+
+/* (No Commment) */
 "Please provide an email address." = "Unesite adresu e-pošte.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Primio";
+
+/* (No Commment) */
+"Recover Wallet" = "Obnova novčanik";
+
+/* (No Commment) */
+"Recovering wallet" = "Oporavlja novčanik";
 
 /* (No Commment) */
 "Regular" = "Redovito";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Provjera";
 
 /* (No Commment) */
-"Wallet Identifier" = "Novčanik identifikatorom";
+"Wallet Identifier" = "Novčanik identifikator";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Novčanik paru uspješno.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Upozorenje!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Upozorenje: Vaš novčanik identifikator je osjetljive informacije. Povođenje Internet svibanj iskompromitirati sigurnost od tvoj novčanik.";
 
 /* (No Commment) */
 "We've designed a whole new

@@ -50,6 +50,9 @@
 "Address is not valid" = "주소는 유효 하지 않습니다.";
 
 /* (No Commment) */
+"Adjust Fee" = "요금 조정";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "금액 먼지 임계값 (%lld 사토시) 이상 되어야 합니다.";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "주소 복사";
+
+/* (No Commment) */
+"Copy GUID" = "GUID를 복사";
+
+/* (No Commment) */
+"Copy to clipboard" = "클립보드에 복사";
 
 /* (No Commment) */
 "Create Account" = "계정 만들기";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "잘못 된 식별자";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "잘못 된 연결 코드";
 
 /* (No Commment) */
 "Invalid Send Value" = "잘못 된 송신 값";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "귀하의 PIN을 입력 해 주시기 바랍니다";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "공백으로 구분 된 단어와 복구 문구를 입력 해 주시기 바랍니다";
+
+/* (No Commment) */
 "Please provide an email address." = "이메일 주소를 제공 하십시오.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "받은";
+
+/* (No Commment) */
+"Recover Wallet" = "복구 지갑";
+
+/* (No Commment) */
+"Recovering wallet" = "복구 지갑";
 
 /* (No Commment) */
 "Regular" = "일반";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "경고!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "경고: 당신의 지갑 식별자는 중요 한 정보입니다. 복사 하는 것은 당신의 지갑의 보안을 타협 수 있습니다.";
 
 /* (No Commment) */
 "We've designed a whole new

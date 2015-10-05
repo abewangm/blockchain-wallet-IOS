@@ -50,6 +50,9 @@
 "Address is not valid" = "Adres is niet geldig";
 
 /* (No Commment) */
+"Adjust Fee" = "Kosten aanpassen";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Bedrag moet boven stof drempel (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Adres kopiëren";
+
+/* (No Commment) */
+"Copy GUID" = "GUID kopiëren";
+
+/* (No Commment) */
+"Copy to clipboard" = "Naar klembord kopiëren";
 
 /* (No Commment) */
 "Create Account" = "Account aanmaken";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Ongeldige ID";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Ongeldige koppeling Code";
 
 /* (No Commment) */
 "Invalid Send Value" = "Ongeldige verzenden waarde";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Voer uw pincode";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Voer uw herstel zin met woorden die gescheiden zijn door spaties";
+
+/* (No Commment) */
 "Please provide an email address." = "Geef een e-mailadres.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Ontvangen";
+
+/* (No Commment) */
+"Recover Wallet" = "Herstellen van de portefeuille";
+
+/* (No Commment) */
+"Recovering wallet" = "Herstellende portemonnee";
 
 /* (No Commment) */
 "Regular" = "Regelmatige";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Verifiëren";
 
 /* (No Commment) */
-"Wallet Identifier" = "Portemonnee Identifier";
+"Wallet Identifier" = "Portemonnee-id";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Portefeuille met succes gekoppeld.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Waarschuwing!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Waarschuwing: Uw portemonnee id is gevoelige informatie. Kopiëren kan dit beveiligingsrisico voor uw portemonnee.";
 
 /* (No Commment) */
 "We've designed a whole new

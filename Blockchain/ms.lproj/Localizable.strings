@@ -50,6 +50,9 @@
 "Address is not valid" = "Alamat adalah tidak sah";
 
 /* (No Commment) */
+"Adjust Fee" = "Laraskan yuran";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Jumlah mesti melebihi ambang habuk (%lld Nanaho)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Salin Alamat";
+
+/* (No Commment) */
+"Copy GUID" = "Salinan GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Salin ke papan Keratan";
 
 /* (No Commment) */
 "Create Account" = "Cipta akaun";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Pengenalan tidak sah";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Kod berpasangan tidak sah";
 
 /* (No Commment) */
 "Invalid Send Value" = "Nilai tidak sah hantar";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Sila masukkan PIN anda";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Sila masukkan frasa pemulihan anda dengan kata-kata yang dipisahkan oleh kawasan";
+
+/* (No Commment) */
 "Please provide an email address." = "Sila berikan alamat e-mel.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Diterima";
+
+/* (No Commment) */
+"Recover Wallet" = "Memulihkan Wallet";
+
+/* (No Commment) */
+"Recovering wallet" = "Pulih wallet";
 
 /* (No Commment) */
 "Regular" = "Tetap";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Mengesahkan";
 
 /* (No Commment) */
-"Wallet Identifier" = "Wallet Identifer";
+"Wallet Identifier" = "Pengecam Wallet";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Wallet berpasangan berjaya.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Amaran!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Amaran: Pengenalpastian dompet anda adalah maklumat sensitif. Menyalinnya mungkin menjejaskan Keselamatan dompet anda.";
 
 /* (No Commment) */
 "We've designed a whole new

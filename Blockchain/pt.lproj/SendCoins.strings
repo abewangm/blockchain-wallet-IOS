@@ -1,48 +1,105 @@
-/* Class = "IBUIButton"; normalTitle = "Send Payment"; ObjectID = "4"; */
-"4.normalTitle" = "Send";
+/* Class = "UILabel"; text = "CurrAmt"; ObjectID = "2Ig-LA-4kK"; */
+"2Ig-LA-4kK.text" = "CurrAmt";
 
-/* Class = "IBUILabel"; text = "From:"; ObjectID = "7"; */
-"7.text" = "From";
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
+"4.normalTitle" = "Continue";
 
-/* Class = "IBUILabel"; text = "To:"; ObjectID = "13"; */
-"13.text" = "To";
+/* Class = "UILabel"; text = "BtcAmt"; ObjectID = "6ll-Xx-4fm"; */
+"6ll-Xx-4fm.text" = "BtcAmt";
 
-/* Class = "IBUITextField"; text = "0.00"; ObjectID = "52"; */
-"52.text" = "0.00";
+/* (No Commment) */
+"6zi-8R-Tmt.normalTitle" = "KIT MÃOS-LIVRES";
 
-/* Class = "IBUILabel"; text = "5 BTC = $10"; ObjectID = "57"; */
+/* Class = "UILabel"; text = "From"; ObjectID = "7"; */
+"7.text" = "De";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
+"7ho-GV-ikp.text" = "KIT MÃOS-LIVRES";
+
+/* (No Commment) */
+"8LN-Tc-WVh.normalTitle" = "Feito";
+
+/* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
+"9B2-23-8j5.text" = "CurrAmt";
+
+/* (No Commment) */
+"13.text" = "Para";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
+"52.placeholder" = "0.000";
+
+/* (No Commment) */
+"52.text" = "0,00";
+
+/* (No Commment) */
 "57.text" = "5 BTC = $10";
 
-/* Class = "IBUILabel"; text = "Label:"; ObjectID = "61"; */
-"61.text" = "Label:";
+/* (No Commment) */
+"61.text" = "Gravadora:";
 
-/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "63"; */
-"63.normalTitle" = "Save";
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
+"62.placeholder" = "Rótulo";
 
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "64"; */
-"64.text" = "Address";
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
+"63.normalTitle" = "Salvar";
 
-/* Class = "IBUILabel"; text = "Address:"; ObjectID = "65"; */
-"65.text" = "Address:";
+/* Class = "UILabel"; text = "Address"; ObjectID = "64"; */
+"64.text" = "Endereço";
 
-/* Class = "IBUILabel"; text = "Label Address"; ObjectID = "67"; */
-"67.text" = "Label Address";
+/* (No Commment) */
+"65.text" = "Endereço:";
 
-/* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
-"6zi-8R-Tmt.normalTitle" = "BTC";
+/* (No Commment) */
+"67.text" = "Etiqueta de endereço";
 
-/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
-"7ho-GV-ikp.text" = "Amount";
+/* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
+"FB0-NP-5do.text" = "Taxa";
 
-/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "8LN-Tc-WVh"; */
-"8LN-Tc-WVh.normalTitle" = "Close";
+/* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
+"IUn-6N-qeo.text" = "BtcAmt";
 
-/* Class = "IBUILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Please Wait";
+/* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
+"Ubr-KG-egH.text" = "Total";
 
-/* Class = "IBUILabel"; text = "Sending Payment"; ObjectID = "aKC-Q2-phD"; */
-"aKC-Q2-phD.text" = "Sending Payment";
+/* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
+"ZcA-OM-4nq.text" = "De:";
 
-/* Class = "IBUITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
-"zyc-E3-FOM.text" = "Any Address";
+/* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
+"Zgn-Wx-Uwx.text" = "Aguarde";
+
+/* (No Commment) */
+"aKC-Q2-phD.text" = "Envio de pagamento";
+
+/* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
+"aeG-gf-oXV.text" = "Quantidade";
+
+/* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
+"d7n-Ue-QXL.normalTitle" = "Fundos disponíveis";
+
+/* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
+"fpY-AA-We5.text" = "Para";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
+"pPu-bJ-k6p.normalTitle" = "Continue";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
+"qx4-XV-uhn.placeholder" = "0,00";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sXf-3w-qdy"; */
+"sXf-3w-qdy.normalTitle" = "Enviar";
+
+/* Class = "UILabel"; text = "CurrTotal"; ObjectID = "t8M-NC-003"; */
+"t8M-NC-003.text" = "CurrTotal";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
+"vGH-md-Ck3.text" = "USD";
+
+/* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
+"vzP-xG-GPO.text" = "BtcTotal";
+
+/* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
+"yGR-Eh-YG1.text" = "Para:";
+
+/* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
+"zyc-E3-FOM.text" = "Qualquer endereço";
 

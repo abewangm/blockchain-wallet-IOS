@@ -50,6 +50,9 @@
 "Address is not valid" = "Endereço não é válido";
 
 /* (No Commment) */
+"Adjust Fee" = "Ajustar a taxa de";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Montante deve ser acima do limiar de poeira (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Copie o endereço";
+
+/* (No Commment) */
+"Copy GUID" = "Copie o GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Copiar para área de transferência";
 
 /* (No Commment) */
 "Create Account" = "Criar conta";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Identificador inválido";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Código de emparelhamento inválido";
 
 /* (No Commment) */
 "Invalid Send Value" = "Valor de envio inválido";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Por favor digite o seu PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Por favor, digite sua frase de recuperação com palavras separadas por espaços";
+
+/* (No Commment) */
 "Please provide an email address." = "Por favor, forneça um endereço de e-mail.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Recebeu";
+
+/* (No Commment) */
+"Recover Wallet" = "Recuperar a carteira";
+
+/* (No Commment) */
+"Recovering wallet" = "Recuperando a carteira";
 
 /* (No Commment) */
 "Regular" = "Regular";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Aviso!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Aviso: Seu identificador de carteira é informação sensível. Copiá-lo pode comprometer a segurança de sua carteira.";
 
 /* (No Commment) */
 "We've designed a whole new

@@ -50,6 +50,9 @@
 "Address is not valid" = "Adres nie jest prawidłowa";
 
 /* (No Commment) */
+"Adjust Fee" = "Dostosować opłaty";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Kwota musi być powyżej progu pyłu (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Skopiuj adres";
+
+/* (No Commment) */
+"Copy GUID" = "Skopiuj identyfikator GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Kopiuj do schowka";
 
 /* (No Commment) */
 "Create Account" = "Utwórz konto";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Nieprawidłowy identyfikator";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Nieprawidłowy kod parowania";
 
 /* (No Commment) */
 "Invalid Send Value" = "Wartość nieprawidłowa Wyślij";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Proszę wprowadzić swój kod PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Wprowadź wyrażenie odzyskiwanie z wyrazy oddzielone spacjami";
+
+/* (No Commment) */
 "Please provide an email address." = "Proszę podać adres e-mail.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Otrzymał";
+
+/* (No Commment) */
+"Recover Wallet" = "Odzyskać portfela";
+
+/* (No Commment) */
+"Recovering wallet" = "Odzyskanie portfel";
 
 /* (No Commment) */
 "Regular" = "Regularne";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Weryfikacji";
 
 /* (No Commment) */
-"Wallet Identifier" = "Portfel rozpozna";
+"Wallet Identifier" = "Portfel identyfikator";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Portfel pomy¶lnym uwierzytelnieniu.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Ostrzeżenie!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Ostrzeżenie: Identyfikator portfel jest poufne informacje. Kopiowanie to może zagrozić bezpieczeństwu Twojego portfela.";
 
 /* (No Commment) */
 "We've designed a whole new

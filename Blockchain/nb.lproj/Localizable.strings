@@ -50,6 +50,9 @@
 "Address is not valid" = "Adressen er ikke gyldig";
 
 /* (No Commment) */
+"Adjust Fee" = "Justere avgift";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Beløpet må være over støv terskelen (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Kopier adressen";
+
+/* (No Commment) */
+"Copy GUID" = "Kopier guiden";
+
+/* (No Commment) */
+"Copy to clipboard" = "Kopier til utklippstavlen";
 
 /* (No Commment) */
 "Create Account" = "Opprette konto";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Ugyldig identifikator";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Ugyldig sammenkobling kode";
 
 /* (No Commment) */
 "Invalid Send Value" = "Ugyldig sending verdi";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Skriv inn PIN-koden";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Angi søkestrengen utvinning med ord atskilt med mellomrom";
+
+/* (No Commment) */
 "Please provide an email address." = "Oppgi en e-postadresse.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Mottatt";
+
+/* (No Commment) */
+"Recover Wallet" = "Gjenopprette lommebok";
+
+/* (No Commment) */
+"Recovering wallet" = "Utvinne lommebok";
 
 /* (No Commment) */
 "Regular" = "Vanlig";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Advarsel!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Advarsel: Din lommebok identifikator er sensitiv informasjon. Kopiere kan kompromittere sikkerheten til din lommebok.";
 
 /* (No Commment) */
 "We've designed a whole new

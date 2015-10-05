@@ -50,13 +50,16 @@
 "Address is not valid" = "Διεύθυνση δεν είναι έγκυρη";
 
 /* (No Commment) */
+"Adjust Fee" = "Ρυθμίστε την αμοιβή";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Ποσό πρέπει να είναι πάνω από το όριο της σκόνης (%lld Satoshi)";
 
 /* (No Commment) */
 "An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Λογαριασμό email που απαιτείται για να βοηθήσει να ανακτήσει ένα χαμένο πορτοφόλι αναγνωριστικό και για ειδοποιήσεις πληρωμής. Επίσης, σας διεύθυνση email επαληθεύονται θα χρησιμοποιηθεί ως ένα δεύτερο στρώμα της επαλήθευσης όταν συνδέεστε στο πορτοφόλι σας.";
 
 /* (No Commment) */
-"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Παρουσιάστηκε σφάλμα επικύρωση κωδικό σας PIN με τον απομακρυσμένο διακομιστή. Μπορεί να είστε σε μη απευθείας σύνδεση ή blockchain μπορεί να αντιμετωπίζουν δυσκολίες. Θα θέλατε επανάληψη επικύρωσης ή αντί να εισάγετε τον κωδικό σας με το χέρι;";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Παρουσιάστηκε σφάλμα επικύρωση κωδικό σας PIN με τον απομακρυσμένο διακομιστή. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain μπορεί να αντιμετωπίζουν δυσκολίες. Θα θέλατε επανάληψη επικύρωσης ή αντί να εισάγετε τον κωδικό σας με το χέρι;";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Παρουσιάστηκε σφάλμα κατά τη φόρτωση το πορτοφόλι σας. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain αντιμετωπίζει δυσκολίες. Παρακαλούμε να κλείσετε την εφαρμογή και προσπαθήστε ξανά αργότερα ή αντιστοιχίστε εκ νέου τη συσκευή σας.";
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Αντιγραφή διεύθυνσης";
+
+/* (No Commment) */
+"Copy GUID" = "Αντίγραφο GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Αντιγραφή στο Πρόχειρο";
 
 /* (No Commment) */
 "Create Account" = "Δημιουργία λογαριασμού";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Μη έγκυρο αναγνωριστικό";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Μη έγκυρο κώδικα αντιστοίχιση";
 
 /* (No Commment) */
 "Invalid Send Value" = "Η τιμή δεν είναι έγκυρη αποστολή";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Παρακαλούμε εισάγετε το PIN σας";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Παρακαλούμε εισάγετε φράση σας αποκατάστασης με λέξεις που διαχωρίζονται από διαστήματα";
+
+/* (No Commment) */
 "Please provide an email address." = "Καλείσθε να παράσχετε μια διεύθυνση ηλεκτρονικού ταχυδρομείου.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Έλαβε";
+
+/* (No Commment) */
+"Recover Wallet" = "Ανακτήσει το πορτοφόλι";
+
+/* (No Commment) */
+"Recovering wallet" = "Ανάκτηση πορτοφόλι";
 
 /* (No Commment) */
 "Regular" = "Τακτική";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Προειδοποίηση!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Προειδοποίηση: Το αναγνωριστικό σας πορτοφόλι είναι ευαίσθητες πληροφορίες. Την αντιγραφή μπορεί να διακυβεύσει την ασφάλεια του πορτοφολιού σας.";
 
 /* (No Commment) */
 "We've designed a whole new

@@ -50,6 +50,9 @@
 "Address is not valid" = "Адрес не является допустимым";
 
 /* (No Commment) */
+"Adjust Fee" = "Корректировать плату";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Сумма должна быть выше порога пыли (%lld Сатоши)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Копировать адрес";
+
+/* (No Commment) */
+"Copy GUID" = "Скопируйте GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Копировать в буфер";
 
 /* (No Commment) */
 "Create Account" = "Создать учетную запись";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Недопустимый идентификатор";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Недопустимый код спаривания";
 
 /* (No Commment) */
 "Invalid Send Value" = "Недопустимый отправить значение";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Пожалуйста, введите ваш PIN-код";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Пожалуйста, введите ваши восстановления фразу со слов, разделенных пробелами";
+
+/* (No Commment) */
 "Please provide an email address." = "Укажите адрес электронной почты.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Получил";
+
+/* (No Commment) */
+"Recover Wallet" = "Восстановить бумажника";
+
+/* (No Commment) */
+"Recovering wallet" = "Восстановление бумажник";
 
 /* (No Commment) */
 "Regular" = "Регулярные";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Предупреждение!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Предупреждение: Ваш бумажник идентификатор является конфиденциальной информации. Копирование это может нарушить безопасность вашего кошелька.";
 
 /* (No Commment) */
 "We've designed a whole new

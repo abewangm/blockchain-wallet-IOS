@@ -50,6 +50,9 @@
 "Address is not valid" = "Adresa není platná";
 
 /* (No Commment) */
+"Adjust Fee" = "Úprava poplatků";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Částka musí být vyšší než práh prach (%lld Satoshi)";
 
 /* (No Commment) */
@@ -156,6 +159,12 @@
 
 /* (No Commment) */
 "Copy Address" = "Kopírovat adresu";
+
+/* (No Commment) */
+"Copy GUID" = "Kopírovat GUID";
+
+/* (No Commment) */
+"Copy to clipboard" = "Kopírovat do schránky";
 
 /* (No Commment) */
 "Create Account" = "Vytvořit účet";
@@ -306,6 +315,9 @@
 
 /* (No Commment) */
 "Invalid Identifier" = "Neplatný identifikátor";
+
+/* (No Commment) */
+"Invalid Pairing Code" = "Neplatný kód párování";
 
 /* (No Commment) */
 "Invalid Send Value" = "Neplatné odeslání hodnota";
@@ -482,6 +494,9 @@
 "Please enter your PIN" = "Zadejte váš kód PIN";
 
 /* (No Commment) */
+"Please enter your recovery phrase with words separated by spaces" = "Zadejte prosím vaše zotavení fráze s slov oddělených mezerami";
+
+/* (No Commment) */
 "Please provide an email address." = "Zadejte e-mailovou adresu.";
 
 /* (No Commment) */
@@ -507,6 +522,12 @@
 
 /* (No Commment) */
 "Received" = "Přijaté";
+
+/* (No Commment) */
+"Recover Wallet" = "Obnovit Peněženka";
+
+/* (No Commment) */
+"Recovering wallet" = "Obnova Peněženka";
 
 /* (No Commment) */
 "Regular" = "Pravidelný";
@@ -672,7 +693,7 @@ Fee: %@
 "Verifying" = "Ověřování";
 
 /* (No Commment) */
-"Wallet Identifier" = "Peněženka identifikátorem";
+"Wallet Identifier" = "Peněženka identifikátor";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Peněženka úspěšně spárována.";
@@ -688,6 +709,9 @@ Fee: %@
 
 /* (No Commment) */
 "Warning!!!" = "Upozornění!!!";
+
+/* (No Commment) */
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Varování: Vaše peněženka identifikátor je citlivé informace. Kopírování může ohrozit bezpečnost vaší peněženky.";
 
 /* (No Commment) */
 "We've designed a whole new
