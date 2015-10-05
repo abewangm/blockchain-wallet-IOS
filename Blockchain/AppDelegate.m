@@ -199,15 +199,15 @@ void (^secondPasswordSuccess)(NSString *);
             [self showPasswordModal];
             [self checkAndWarnOnJailbrokenPhones];
         }
+        
+        [self migratePasswordAndPinFromNSUserDefaults];
+        
+        // Listen for notification (from Swift code) to reload:
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD_FOR_SWIFT object:nil];
+        
+        // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
+        [self setupCurtainView];
     }
-    
-    [self migratePasswordAndPinFromNSUserDefaults];
-    
-    // Listen for notification (from Swift code) to reload:
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD_FOR_SWIFT object:nil];
-    
-    // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
-    [self setupCurtainView];
 }
 
 - (void)migratePasswordAndPinFromNSUserDefaults
