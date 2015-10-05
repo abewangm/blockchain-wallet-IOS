@@ -65,7 +65,7 @@
 - (void)didFailGetPinTimeout;
 - (void)didFailGetPinNoResponse;
 - (void)didFailGetPinInvalidResponse;
-- (void)didGetPinSuccess:(NSDictionary *)dictionary;
+- (void)didGetPinResponse:(NSDictionary *)dictionary;
 - (void)didImportPrivateKey:(NSString *)address;
 @end
 

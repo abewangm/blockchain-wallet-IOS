@@ -1038,8 +1038,8 @@
 {
     DLog(@"on_pin_code_get_response:");
     
-    if ([delegate respondsToSelector:@selector(didGetPinSuccess:)])
-        [delegate didGetPinSuccess:responseObject];
+    if ([delegate respondsToSelector:@selector(didGetPinResponse:)])
+        [delegate didGetPinResponse:responseObject];
 }
 
 - (void)on_backup_wallet_start
