@@ -352,7 +352,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         
         device.execute('did_load_wallet');
         
-        BlockchainAPI.get_balances(MyWalletPhone.getLegacyArchivedAddresses(), function(result) {}, function(error) {});
+        MyWallet.wallet.getBalancesForArchived();
     };
     
     var success = function() {
