@@ -33,6 +33,7 @@ class BackupViewController: UIViewController {
             backupWalletButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), forState: .Normal)
             backupWalletAgainButton?.hidden = false
             lostRecoveryPhraseLabel?.hidden = false
+            lostRecoveryPhraseLabel?.adjustsFontSizeToFitWidth = true;
             
             // Override any font changes
             backupWalletAgainButton?.titleLabel?.font = UIFont.boldSystemFontOfSize(14);
