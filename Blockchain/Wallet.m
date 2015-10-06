@@ -423,11 +423,14 @@
 - (void)setLabel:(NSString*)label forLegacyAddress:(NSString*)address
 {
     self.isSyncingForTrivialProcess = YES;
+    
     [self.webView executeJS:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
 }
 
 - (void)archiveLegacyAddress:(NSString*)address
 {
+    self.isSyncingForCriticalProcess = YES;
+    
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = true", [address escapeStringForJS]];
     
     [self getHistory];
@@ -435,6 +438,8 @@
 
 - (void)unArchiveLegacyAddress:(NSString*)address
 {
+    self.isSyncingForCriticalProcess = YES;
+    
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = false", [address escapeStringForJS]];
     
     [self getHistory];
@@ -1124,6 +1129,10 @@
 - (void)on_get_history_success
 {
     DLog(@"on_get_history_success");
+    if (self.isSyncingForCriticalProcess) {
+        // Required to prevent user input while archiving/unarchiving addresses
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
