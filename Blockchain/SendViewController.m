@@ -240,6 +240,10 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)reallyDoPayment:(id)sender
 {
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
     
     listener.on_start = ^() {
@@ -395,7 +399,6 @@ BOOL displayingLocalSymbolSend;
             
             UIButton *paymentButton = self.confirmPaymentView.reallyDoPaymentButton;
             self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
-            NSLog(@"ANIMATING %@", NSStringFromCGRect(self.confirmPaymentView.reallyDoPaymentButton.frame));
         }];
 
         uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
