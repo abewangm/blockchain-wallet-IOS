@@ -724,7 +724,7 @@ UIAlertController *popupAddressArchive;
         NSDecimalNumber *amountReceivedDecimalNumber = note.userInfo[DICTIONARY_KEY_AMOUNT];
         u_int64_t amountReceived = [[amountReceivedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
         
-        if (btcAmountField.text != nil && [app.wallet parseBitcoinValue:btcAmountField.text] > 0) {
+        if ([app stringHasBitcoinValue:btcAmountField.text]) {
             NSDecimalNumber *amountRequestedDecimalNumber = [NSDecimalNumber decimalNumberWithString:btcAmountField.text];
             u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
             

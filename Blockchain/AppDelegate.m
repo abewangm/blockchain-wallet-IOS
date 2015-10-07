@@ -1848,6 +1848,11 @@ void (^secondPasswordSuccess)(NSString *);
     return returnValue;
 }
 
+- (BOOL)stringHasBitcoinValue:(NSString *)string
+{
+    return string != nil && [string doubleValue] > 0;
+}
+
 #pragma mark - Mail compose delegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error

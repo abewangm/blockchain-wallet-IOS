@@ -499,8 +499,12 @@ BOOL displayingLocalSymbolSend;
 {
     self.addressFromURLHandler = addressString;
     
-    NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
-    self.amountFromURLHandler = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+    if ([app stringHasBitcoinValue:amountString]) {
+        NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
+        self.amountFromURLHandler = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+    } else {
+        self.amountFromURLHandler = 0;
+    }
 }
 
 - (NSString *)labelForLegacyAddress:(NSString *)address
@@ -919,7 +923,7 @@ BOOL displayingLocalSymbolSend;
                 [self didSelectToAddress:self.toAddress];
                 
                 NSString *amountStringFromDictionary = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
-                if (amountStringFromDictionary != nil) {
+                if ([app stringHasBitcoinValue:amountStringFromDictionary]) {
                     if (app.latestResponse.symbol_btc) {
                         NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountStringFromDictionary];
                         amountInSatoshi = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
