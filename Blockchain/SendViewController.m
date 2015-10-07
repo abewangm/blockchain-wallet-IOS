@@ -726,7 +726,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)alertUserForZeroSpendableAmount
 {
-    [app standardNotify:BC_STRING_NO_AVAILABLE_FUNDS];
+    [app standardNotify:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE title:BC_STRING_NO_AVAILABLE_FUNDS delegate:nil];
     [self enablePaymentButtons];
 }
 
