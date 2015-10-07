@@ -13,9 +13,8 @@
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
 
-@interface ReceiveCoinsViewController() <UIAlertViewDelegate, UIActivityItemSource>
+@interface ReceiveCoinsViewController() <UIActivityItemSource>
 @property (nonatomic) id paymentObserver;
-@property (nonatomic) UIAlertView *addNewAddressAlertView;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -776,31 +775,9 @@ UIAlertController *popupAddressArchive;
         [app.wallet loading_stop];
     } error:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    
     [app.slidingViewController presentViewController:reader animated:YES completion:nil];
-}
-
-# pragma mark - UIAlertView delegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (alertView == self.addNewAddressAlertView) {
-        switch (buttonIndex) {
-            case 0: {
-                DLog(@"Cancelled creating new address");
-                break;
-            }
-            case 1: {
-                DLog(@"Generating new address");
-                [self generateNewAddress];
-                break;
-            }
-            case 2: {
-                DLog(@"Scan Private Key");
-                [self scanPrivateKey];
-                break;
-            }
-        }
-    }
 }
 
 # pragma mark - UITextField delegates
