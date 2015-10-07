@@ -723,17 +723,20 @@ UIAlertController *popupAddressArchive;
     self.paymentObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil queue:nil usingBlock:^(NSNotification *note) {
         NSDecimalNumber *amountReceivedDecimalNumber = note.userInfo[DICTIONARY_KEY_AMOUNT];
         u_int64_t amountReceived = [[amountReceivedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-        NSDecimalNumber *amountRequestedDecimalNumber = [NSDecimalNumber decimalNumberWithString:btcAmountField.text];
-        u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-
-        if (amountReceived == amountRequested) {
-            NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
-            btcAmountString = [app formatMoney:btcAmount localCurrency:NO];
-            NSString *localCurrencyAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            u_int64_t currencyAmount = [app.wallet parseBitcoinValue:localCurrencyAmountString];
-            localCurrencyAmountString = [app formatMoney:currencyAmount localCurrency:YES];
-            [weakSelf alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
+        
+        if (btcAmountField.text != nil && [app.wallet parseBitcoinValue:btcAmountField.text] > 0) {
+            NSDecimalNumber *amountRequestedDecimalNumber = [NSDecimalNumber decimalNumberWithString:btcAmountField.text];
+            u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+            
+            if (amountReceived == amountRequested) {
+                NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
+                btcAmountString = [app formatMoney:btcAmount localCurrency:NO];
+                NSString *localCurrencyAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                u_int64_t currencyAmount = [app.wallet parseBitcoinValue:localCurrencyAmountString];
+                localCurrencyAmountString = [app formatMoney:currencyAmount localCurrency:YES];
+                [weakSelf alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
+            }
         }
     }];
 }
