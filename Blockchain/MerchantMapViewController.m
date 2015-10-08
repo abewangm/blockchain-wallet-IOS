@@ -149,10 +149,6 @@ static NSString *const kBlockchainNearByMerchantsURL = @"https://merchant-direct
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSError *error = nil;
                 NSArray *merchantData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                if ([merchantData count] == 0) {
-                    [self showErrorOnLoadingMerchant];
-                    return;
-                }
                 for (NSDictionary *merchantDict in merchantData) {
                     Merchant *merchant = [Merchant merchantWithDict:merchantDict];
                     if (!merchant) {
