@@ -35,38 +35,42 @@ NSString *const kMerchantDistanceKey = @"distance";
 {
     Merchant *merchant = [[Merchant alloc] init];
 
-    merchant.merchantId = [dict safeObjectForKey:kMerchantIdKey];
-    merchant.name = [dict safeObjectForKey:kMerchantNameKey];
-    merchant.address = [dict safeObjectForKey:kMerchantAdressKey];
-    merchant.city = [dict safeObjectForKey:kMerchantCityKey];
-    merchant.pcode = [dict safeObjectForKey:kMerchantPCodeKey];
-    merchant.telephone = [dict safeObjectForKey:kMerchantTelphoneKey];
-    merchant.urlString = [dict safeObjectForKey:kMerchantURLKey];
-    merchant.latitude = [dict safeObjectForKey:kMerchantLatitudeKey];
-    merchant.longitude = [dict safeObjectForKey:kMerchantLongitudeKey];
-    merchant.longitude = [dict safeObjectForKey:kMerchantLongitudeKey];
-    
-    NSString *merchantType = [dict safeObjectForKey:kMerchantTypeKey];
-    BCMerchantLocationType locationType = BCMerchantLocationTypeOther;
-    if ([merchantType isEqualToString:@"1"]) {
-        locationType = BCMerchantLocationTypeBeverage;
-    } else if ([merchantType isEqualToString:@"2"]) {
-        locationType = BCMerchantLocationTypeBar;
-    } else if ([merchantType isEqualToString:@"3"]) {
-        locationType = BCMerchantLocationTypeFood;
-    } else if ([merchantType isEqualToString:@"4"]) {
-        locationType = BCMerchantLocationTypeBusiness;
-    } else if ([merchantType isEqualToString:@"5"]) {
-        locationType = BCMerchantLocationTypeOther;
+    if ([dict respondsToSelector:@selector(safeObjectForKey:)]) {
+        merchant.merchantId = [dict safeObjectForKey:kMerchantIdKey];
+        merchant.name = [dict safeObjectForKey:kMerchantNameKey];
+        merchant.address = [dict safeObjectForKey:kMerchantAdressKey];
+        merchant.city = [dict safeObjectForKey:kMerchantCityKey];
+        merchant.pcode = [dict safeObjectForKey:kMerchantPCodeKey];
+        merchant.telephone = [dict safeObjectForKey:kMerchantTelphoneKey];
+        merchant.urlString = [dict safeObjectForKey:kMerchantURLKey];
+        merchant.latitude = [dict safeObjectForKey:kMerchantLatitudeKey];
+        merchant.longitude = [dict safeObjectForKey:kMerchantLongitudeKey];
+        merchant.longitude = [dict safeObjectForKey:kMerchantLongitudeKey];
+        
+        NSString *merchantType = [dict safeObjectForKey:kMerchantTypeKey];
+        BCMerchantLocationType locationType = BCMerchantLocationTypeOther;
+        if ([merchantType isEqualToString:@"1"]) {
+            locationType = BCMerchantLocationTypeBeverage;
+        } else if ([merchantType isEqualToString:@"2"]) {
+            locationType = BCMerchantLocationTypeBar;
+        } else if ([merchantType isEqualToString:@"3"]) {
+            locationType = BCMerchantLocationTypeFood;
+        } else if ([merchantType isEqualToString:@"4"]) {
+            locationType = BCMerchantLocationTypeBusiness;
+        } else if ([merchantType isEqualToString:@"5"]) {
+            locationType = BCMerchantLocationTypeOther;
+        }
+        merchant.locationType = locationType;
+        
+        merchant.merchantDescription = [dict safeObjectForKey:kMerchantDescriptionKey];
+        
+        NSNumber *distance = [dict safeObjectForKey:kMerchantDistanceKey];
+        merchant.distance = [distance floatValue];
+        
+        return merchant;
+    } else {
+        return nil;
     }
-    merchant.locationType = locationType;
-    
-    merchant.merchantDescription = [dict safeObjectForKey:kMerchantDescriptionKey];
-    
-    NSNumber *distance = [dict safeObjectForKey:kMerchantDistanceKey];
-    merchant.distance = [distance floatValue];
-
-    return merchant;
 }
 
 - (NSString *)latLongQueryString
