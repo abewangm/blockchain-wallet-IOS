@@ -152,12 +152,7 @@ static NSString *const kBlockchainNearByMerchantsURL = @"https://merchant-direct
                 for (NSDictionary *merchantDict in merchantData) {
                     Merchant *merchant = [Merchant merchantWithDict:merchantDict];
                     if (!merchant) {
-                        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_MERCHANT_DIRECTORY_UNAVAILABLE preferredStyle:UIAlertControllerStyleAlert];
-                        UIAlertAction *okAction = [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                            [self closeButtonClicked:nil];
-                        }];
-                        [errorAlert addAction:okAction];
-                        [self presentViewController:errorAlert animated:YES completion:nil];
+                        [self showErrorOnLoadingMerchant];
                         return;
                     }
                     [self.allMerchants setObject:merchant forKey:merchant.merchantId];
@@ -249,6 +244,16 @@ static NSString *const kBlockchainNearByMerchantsURL = @"https://merchant-direct
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"marker_%@", imageName]] forState:UIControlStateNormal];
     }
     [self displayFilteredMerchants];
+}
+
+- (void)showErrorOnLoadingMerchant
+{
+    UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_MERCHANT_DIRECTORY_UNAVAILABLE preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self closeButtonClicked:nil];
+    }];
+    [errorAlert addAction:okAction];
+    [self presentViewController:errorAlert animated:YES completion:nil];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
