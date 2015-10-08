@@ -148,25 +148,30 @@ UIAlertController *popupAddressArchive;
     UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self copyAddressClicked:nil];
         [self showKeyboard];
+        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
     UIAlertAction *labelAction = [UIAlertAction actionWithTitle:BC_STRING_LABEL_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self labelAddressClicked:nil];
         [self hideKeyboard];
+        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
     UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:BC_STRING_ARCHIVE_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self archiveAddressClicked:nil];
         [self hideKeyboard];
+        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
     UIAlertAction *unArchiveAction = [UIAlertAction actionWithTitle:BC_STRING_UNARCHIVE_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self archiveAddressClicked:nil];
         [self hideKeyboard];
+        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self showKeyboard];
+        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
     [popupAddressArchive addAction:copyAction];
@@ -519,12 +524,15 @@ UIAlertController *popupAddressArchive;
             [self.view.window.rootViewController presentViewController:popupAddressArchive animated:YES completion:nil];
             [[NSNotificationCenter defaultCenter] addObserver:popupAddressArchive selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
         }
+        [self disableTapInteraction];
         [self hideKeyboard];
     }
 }
 
 - (IBAction)shareClicked:(id)sender
 {
+    [self disableTapInteraction];
+
     NSString *message = [self formatPaymentRequest:@""];
     NSURL *url = [NSURL URLWithString:[self uriURL]];
     NSArray *activityItems = @[message, self, url];
@@ -540,8 +548,6 @@ UIAlertController *popupAddressArchive;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
-    qrCodePaymentImageView.userInteractionEnabled = NO;
-    
     [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:activityViewController selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
@@ -550,7 +556,7 @@ UIAlertController *popupAddressArchive;
         [self showKeyboard];
         
         // Allow keyboard to complete animating before allowing an action sheet
-        [self performSelector:@selector(enableQRCodePaymentInteraction) withObject:nil afterDelay:0.2f];
+        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     };
 }
 
@@ -687,8 +693,15 @@ UIAlertController *popupAddressArchive;
     [app closeModalWithTransition:kCATransitionFade];
 }
 
-- (void)enableQRCodePaymentInteraction
+- (void)disableTapInteraction
 {
+    moreActionsButton.userInteractionEnabled = NO;
+    qrCodePaymentImageView.userInteractionEnabled = NO;
+}
+
+- (void)enableTapInteraction
+{
+    moreActionsButton.userInteractionEnabled = YES;
     qrCodePaymentImageView.userInteractionEnabled = YES;
 }
 
@@ -894,6 +907,8 @@ UIAlertController *popupAddressArchive;
         // Reset the requested amount when showing the request screen
         btcAmountField.text = nil;
         fiatAmountField.text = nil;
+        
+        [self enableTapInteraction];
         
         // Show an extra menu item (more actions)
         [app.modalView addSubview:moreActionsButton];
