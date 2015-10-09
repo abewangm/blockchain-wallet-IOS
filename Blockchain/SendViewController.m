@@ -367,9 +367,16 @@ BOOL displayingLocalSymbolSend;
         }];
         
         UIAlertAction *sendAction = [UIAlertAction actionWithTitle:BC_STRING_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            if (![self isAmountAboveDustThreshold:maxAmount]) {
+                [self enablePaymentButtons];
+                return;
+            }
+            
             amountInSatoshi = maxAmount;
             // Display to the user the max amount
             [self doCurrencyConversion];
+            
             // Actually do the sweep and confirm
             [self getMaxFeeWhileConfirming:YES];
         }];
@@ -434,6 +441,16 @@ BOOL displayingLocalSymbolSend;
         self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
         self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
     });
+}
+
+- (BOOL)isAmountAboveDustThreshold:(uint64_t)amount
+{
+    if (amount <= DUST_THRESHOLD) {
+        [app standardNotify:[[NSString alloc] initWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, DUST_THRESHOLD]];
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 #pragma mark - UI Helpers
@@ -1015,8 +1032,7 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-    if (value <= DUST_THRESHOLD) {
-        [app standardNotify:[[NSString alloc] initWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, DUST_THRESHOLD]];
+    if (![self isAmountAboveDustThreshold:value]) {
         return;
     }
     
