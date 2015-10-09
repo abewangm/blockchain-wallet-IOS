@@ -1126,6 +1126,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
 }
 
+- (void)on_verify_email_error
+{
+    DLog(@"on_verify_email_success");
+    [app standardNotify:BC_STRING_SETTINGS_VERIFY_EMAIL_INCORRECT_CODE];
+}
+
 - (void)on_get_history_success
 {
     DLog(@"on_get_history_success");

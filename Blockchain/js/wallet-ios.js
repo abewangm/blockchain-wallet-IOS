@@ -910,6 +910,7 @@ MyWalletPhone.verify_email = function(code) {
     
     var error = function (e) {
         console.log('Error verifying email: ' + e);
+        device.execute('on_verify_email_error');
     };
     
     BlockchainSettingsAPI.verifyEmail(code, success, error);
