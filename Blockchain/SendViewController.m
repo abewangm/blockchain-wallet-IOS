@@ -368,14 +368,14 @@ BOOL displayingLocalSymbolSend;
         
         UIAlertAction *sendAction = [UIAlertAction actionWithTitle:BC_STRING_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
+            amountInSatoshi = maxAmount;
+            // Display to the user the max amount
+            [self doCurrencyConversion];
+            
             if (![self isAmountAboveDustThreshold:maxAmount]) {
                 [self enablePaymentButtons];
                 return;
             }
-            
-            amountInSatoshi = maxAmount;
-            // Display to the user the max amount
-            [self doCurrencyConversion];
             
             // Actually do the sweep and confirm
             [self getMaxFeeWhileConfirming:YES];
