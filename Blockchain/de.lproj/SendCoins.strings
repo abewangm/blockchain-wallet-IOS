@@ -53,13 +53,13 @@
 "67.text" = "Bezeichnung Adresse";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Gebühr";
+"FB0-NP-5do.text" = "Gebühr: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "Insgesamt";
+"Ubr-KG-egH.text" = "Insgesamt:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
 "ZcA-OM-4nq.text" = "Von:";
@@ -71,7 +71,7 @@
 "aKC-Q2-phD.text" = "Versand Zahlung";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Betrag";
+"aeG-gf-oXV.text" = "Betrag: ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "Verfügbaren Mittel";

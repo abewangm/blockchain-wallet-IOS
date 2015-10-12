@@ -332,10 +332,16 @@
 "Invalid email address." = "अमान्य ईमेल पते।";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "अवैध वसूली वाक्यांश। कृपया पुन: प्रयास करें";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "अमान्य सर्वर प्रतिसाद। कृपया अपना इंटरनेट कनेक्शन जाँचें।";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Bitcoin पता करने के लिए अमान्य";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "अमान्य सत्यापन कोड। कृपया पुन: प्रयास करें।";
 
 /* No comment provided by engineer. */
 "Just now" = "बस अब";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "व्यापारी";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "व्यापारी निर्देशिका वर्तमान में अनुपलब्ध है। कृपया बाद में पुन: प्रयास करें।";
 
 /* (No Commment) */
 "Merchant Map" = "व्यापारी मानचित्र";

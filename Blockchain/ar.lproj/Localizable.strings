@@ -332,10 +332,16 @@
 "Invalid email address." = "عنوان البريد الإلكتروني غير صالح.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "عبارة استرداد غير صالحة. الرجاء المحاولة مرة أخرى";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "استجابة الملقم غير صالح. الرجاء التحقق من اتصال الإنترنت الخاص بك.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "غير صحيح لعنوان بيتكوين";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "رمز التحقق غير صحيحة. الرجاء المحاولة مرة أخرى.";
 
 /* No comment provided by engineer. */
 "Just now" = "الآن فقط";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "التاجر";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "الدليل التجاري غير متوفر حاليا. الرجاء المحاولة مرة أخرى لاحقاً.";
 
 /* (No Commment) */
 "Merchant Map" = "خريطة التاجر";

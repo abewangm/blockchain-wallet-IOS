@@ -332,10 +332,16 @@
 "Invalid email address." = "דוא ל לא תקין";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "הביטוי שחזור לא חוקי. אנא נסה שנית";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "תגובת השרת לא חוקי. נא בדוק את החיבור שלך לאינטרנט.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "חוקי לכתובת ביטקוין";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "קוד אימות לא חוקי. נא נסה שוב.";
 
 /* No comment provided by engineer. */
 "Just now" = "רק עכשיו";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "סוחר";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "מדריך סוחר אינו זמין כעת. נא נסה שוב מאוחר יותר.";
 
 /* (No Commment) */
 "Merchant Map" = "סוחר מפה";

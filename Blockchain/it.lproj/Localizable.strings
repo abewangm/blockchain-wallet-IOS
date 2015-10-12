@@ -332,10 +332,16 @@
 "Invalid email address." = "Indirizzo email non valido.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Frase di recupero non valido. Si prega di riprovare";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Risposta del server non valido. Verifica la tua connessione internet.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Non valido all'indirizzo bitcoin";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Codice di verifica non valido. Si prega di riprovare.";
 
 /* No comment provided by engineer. */
 "Just now" = "Solo ora";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Mercante";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Directory dei commercianti non è attualmente disponibile. Si prega di riprovare più tardi.";
 
 /* (No Commment) */
 "Merchant Map" = "Mappa di mercantili";

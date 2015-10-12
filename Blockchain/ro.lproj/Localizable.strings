@@ -332,10 +332,16 @@
 "Invalid email address." = "Adresă e-mail nevalidă.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Fraza de recuperare nevalid. Vă rugăm să încercaţi din nou";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Răspuns nevalid server. Vă rugăm să verificaţi conexiunea la internet.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Incorectă a bitcoin adresa";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Cod de verificare nevalidă. Vă rugăm să încercaţi din nou.";
 
 /* No comment provided by engineer. */
 "Just now" = "Chiar acum";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Comerciant";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Comerciant Director este disponibilă în prezent. Vă rugăm să încercaţi din nou mai târziu.";
 
 /* (No Commment) */
 "Merchant Map" = "Comerciant hartă";

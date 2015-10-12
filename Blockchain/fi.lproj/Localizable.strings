@@ -332,10 +332,16 @@
 "Invalid email address." = "Sähköpostiosoite ei kelpaa.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Pätemätön hyödyntämistä lause. Yritä uudelleen";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Palvelimen vastaus ei kelpaa. Tarkista internet-yhteys.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Virheellinen bitcoin osoitteeseen";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Virheellinen vahvistuskoodi. Yritä uudelleen.";
 
 /* No comment provided by engineer. */
 "Just now" = "Juuri nyt";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Kauppias";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Kauppias hakemistoon ei ole käytettävissä. Yritä myöhemmin uudelleen.";
 
 /* (No Commment) */
 "Merchant Map" = "Kauppa kartta";

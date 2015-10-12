@@ -332,10 +332,16 @@
 "Invalid email address." = "เมล์ไม่ถูกต้อง";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "วลีที่กู้คืนไม่ถูกต้อง โปรดลองอีกครั้ง";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "การตอบสนองของเซิร์ฟเวอร์ไม่ถูกต้อง กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "ถูกต้องที่อยู่ bitcoin";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "รหัสตรวจสอบที่ถูกต้อง กรุณาลองอีกครั้ง";
 
 /* No comment provided by engineer. */
 "Just now" = "เมื่อกี้นี้";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "ร้านค้า";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "ไดเรกทอรีพาณิชย์ไม่ กรุณาลองใหม่ในภายหลัง";
 
 /* (No Commment) */
 "Merchant Map" = "แผนที่ร้านค้า";

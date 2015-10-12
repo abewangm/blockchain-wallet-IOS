@@ -53,13 +53,13 @@
 "67.text" = "Διεύθυνση ετικέτα";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Αμοιβή";
+"FB0-NP-5do.text" = "Αμοιβή: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "Συνολικά";
+"Ubr-KG-egH.text" = "Σύνολο:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
 "ZcA-OM-4nq.text" = "Από:";
@@ -71,7 +71,7 @@
 "aKC-Q2-phD.text" = "Αποστολή της πληρωμής";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Ποσό";
+"aeG-gf-oXV.text" = "Ποσό: ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "Διαθέσιμα κονδύλια";

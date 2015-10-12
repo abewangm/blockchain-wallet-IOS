@@ -332,10 +332,16 @@
 "Invalid email address." = "Ugyldig e-mail-adresse.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Ugyldig opsving sætning. Prøv venligst igen";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Ugyldigt Serversvar. Kontroller din internetforbindelse.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Ugyldig til bitcoin adresse";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Ugyldig bekræftelseskode. Prøv venligst igen.";
 
 /* No comment provided by engineer. */
 "Just now" = "Lige nu";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Købmand";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Købmand register er ikke tilgængelig i øjeblikket. Prøv igen senere.";
 
 /* (No Commment) */
 "Merchant Map" = "Købmand kort";

@@ -332,10 +332,16 @@
 "Invalid email address." = "Μη έγκυρη διεύθυνση email.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Μη έγκυρη ανάκτηση φράση. Παρακαλώ προσπαθήστε ξανά";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Απόκριση διακομιστή δεν είναι έγκυρες. Παρακαλείστε να ελέγξετε σύνδεσή σας στο internet.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Μη έγκυρη διεύθυνση bitcoin";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Ο κωδικός επαλήθευσης δεν είναι έγκυρη. Παρακαλώ ξαναπροσπαθήστε.";
 
 /* No comment provided by engineer. */
 "Just now" = "Μόλις τώρα";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Έμπορος";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Εμπορικός κατάλογος είναι διαθέσιμο προς το παρόν. Παρακαλώ προσπαθήστε ξανά αργότερα.";
 
 /* (No Commment) */
 "Merchant Map" = "Έμπορος χάρτη";

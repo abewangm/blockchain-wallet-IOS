@@ -53,13 +53,13 @@
 "67.text" = "Label alamat";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Yuran";
+"FB0-NP-5do.text" = "Yuran: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "Jumlah keseluruhan";
+"Ubr-KG-egH.text" = "Jumlah keseluruhan:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
 "ZcA-OM-4nq.text" = "Daripada:";
@@ -71,7 +71,7 @@
 "aKC-Q2-phD.text" = "Menghantar bayaran";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Jumlah";
+"aeG-gf-oXV.text" = "Jumlah: ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "Wang yang ada";

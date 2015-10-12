@@ -332,10 +332,16 @@
 "Invalid email address." = "Neveljaven e-poštni naslov.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Neveljavno obnovitveno stavek. Prosimo, poskusite znova";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Neveljaven odziv strežnika. Preverite povezavo z internetom.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Neveljaven naslov bitcoin";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Neveljaven potrditveno kodo. Prosimo, poskusite znova.";
 
 /* No comment provided by engineer. */
 "Just now" = "Šele zdaj";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Trgovec";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Trgovec Directory je trenutno ni na voljo. Poskusite znova pozneje.";
 
 /* (No Commment) */
 "Merchant Map" = "Trgovec zemljevid";

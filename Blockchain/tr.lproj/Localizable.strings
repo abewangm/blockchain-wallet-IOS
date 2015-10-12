@@ -332,10 +332,16 @@
 "Invalid email address." = "Geçersiz e-posta adresi.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Geçersiz kurtarma ifade. Lütfen yeniden deneyin";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Geçersiz sunucu yanıtı. Lütfen internet bağlantınızı kontrol edin.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Bitcoin adresi geçersiz";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Geçersiz doğrulama kodu. Lütfen yeniden deneyin.";
 
 /* No comment provided by engineer. */
 "Just now" = "Sadece şimdi";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Tüccar";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Tüccar dizin şu anda kullanılamıyor. Lütfen daha sonra yeniden deneyin.";
 
 /* (No Commment) */
 "Merchant Map" = "Tüccar harita";

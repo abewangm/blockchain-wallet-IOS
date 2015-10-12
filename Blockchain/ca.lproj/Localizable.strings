@@ -332,10 +332,16 @@
 "Invalid email address." = "Adreça electrònica no vàlida.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Frase de recuperació no és vàlid. Intenteu-ho novament";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Resposta de servidor vàlid. Si us plau, comproveu la connexió d'internet.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "No és vàlid a l'adreça bitcoin";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Codi de verificació no és vàlid. Torneu-ho a provar.";
 
 /* No comment provided by engineer. */
 "Just now" = "Ara mateix";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Mercader";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Mercant directori està disponible actualment. Intenteu-ho més tard.";
 
 /* (No Commment) */
 "Merchant Map" = "Mapa mercant";

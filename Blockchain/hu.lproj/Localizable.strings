@@ -332,10 +332,16 @@
 "Invalid email address." = "Érvénytelen e-mail címét.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Érvénytelen helyreállítási kifejezést. Legyen szíves megpróbál újra";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Érvénytelen kiszolgálóválasz. Kérjük, ellenőrizze az internet-kapcsolat.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Érvénytelen címre bitcoin";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Érvénytelen ellenőrző kódot. Kérjük, próbálja meg újra.";
 
 /* No comment provided by engineer. */
 "Just now" = "Csak most";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Kereskedő";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Kereskedő a könyvtár a jelenleg nem érhető el. Kérjük, próbálkozzon később.";
 
 /* (No Commment) */
 "Merchant Map" = "Kereskedő megjelenítése";

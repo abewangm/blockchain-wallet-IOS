@@ -332,10 +332,16 @@
 "Invalid email address." = "Alamat email tidak valid.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Frase pemulihan tidak valid. Silakan coba lagi";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Respon server tidak sah. Periksa koneksi internet Anda.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Tidak valid untuk bitcoin alamat";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Kode verifikasi yang valid. Silakan coba lagi.";
 
 /* No comment provided by engineer. */
 "Just now" = "Sekarang";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Pedagang";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Pedagang direktori tidak tersedia. Harap coba lagi nanti.";
 
 /* (No Commment) */
 "Merchant Map" = "Peta pedagang";

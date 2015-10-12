@@ -332,10 +332,16 @@
 "Invalid email address." = "Địa chỉ email không hợp lệ.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Cụm từ phục hồi không hợp lệ. Xin vui lòng thử lại";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Phản ứng máy chủ không hợp lệ. Xin vui lòng kiểm tra kết nối internet của bạn.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Không hợp lệ địa chỉ bitcoin";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Mã xác minh không hợp lệ. Xin vui lòng thử lại.";
 
 /* No comment provided by engineer. */
 "Just now" = "Bây giờ chỉ cần";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Thương gia";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Thương mại Directory là hiện không có sẵn. Xin vui lòng thử lại sau.";
 
 /* (No Commment) */
 "Merchant Map" = "Thương gia bản đồ";

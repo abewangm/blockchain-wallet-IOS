@@ -332,10 +332,16 @@
 "Invalid email address." = "Ogiltig e-postadress.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Ogiltig återhämtning fras. Behaga försök igen";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Ogiltigt serversvar. Kontrollera din internet-anslutning.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Ogiltigt att bitcoin adress";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Ogiltig verifieringskod. Försök igen.";
 
 /* No comment provided by engineer. */
 "Just now" = "Just nu";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Köpman";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Handelsfartyg katalog är inte tillgänglig. Försök igen senare.";
 
 /* (No Commment) */
 "Merchant Map" = "Öppna karta";

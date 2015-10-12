@@ -53,13 +53,13 @@
 "67.text" = "عنوان التسمية";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "رسوم";
+"FB0-NP-5do.text" = "الرسوم: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "بتكامت";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "المجموع";
+"Ubr-KG-egH.text" = "المجموع:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
 "ZcA-OM-4nq.text" = "من:";
@@ -71,7 +71,7 @@
 "aKC-Q2-phD.text" = "إرسال الدفع";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "المبلغ";
+"aeG-gf-oXV.text" = "المبلغ: ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "الأموال المتاحة";

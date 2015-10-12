@@ -332,10 +332,16 @@
 "Invalid email address." = "Neplatná e-mailová adresa.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Neplatný obnovy frázy. Skúste to prosím znova";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Neplatná odpoveď serveru. Prosím skontrolujte svoje internetové pripojenie.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Neplatný bitcoin adresu";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Neplatný overovací kód. Prosím skúste to znova.";
 
 /* No comment provided by engineer. */
 "Just now" = "Práve teraz";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Obchodníka";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Obchodný adresár je momentálne nedostupný. Skúste znova neskôr.";
 
 /* (No Commment) */
 "Merchant Map" = "Obchodné Mapa";

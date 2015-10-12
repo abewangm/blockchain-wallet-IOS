@@ -53,13 +53,13 @@
 "67.text" = "Oznake naslov";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Pristojbina";
+"FB0-NP-5do.text" = "Pristojbine: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "Skupaj";
+"Ubr-KG-egH.text" = "Skupaj:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
 "ZcA-OM-4nq.text" = "Iz:";
@@ -71,7 +71,7 @@
 "aKC-Q2-phD.text" = "Pošiljanje plačilo";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Znesek";
+"aeG-gf-oXV.text" = "Znesek: ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "Razpoložljiva sredstva";

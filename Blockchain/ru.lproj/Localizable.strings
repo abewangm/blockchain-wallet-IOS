@@ -332,10 +332,16 @@
 "Invalid email address." = "Недопустимый адрес электронной почты.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Восстановления поврежденных фразы. Пожалуйста, попробуйте снова";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Ответ неверный сервера. Пожалуйста, проверьте ваше Интернет-соединение.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Недопустимый адрес bitcoin";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Недопустимый код. Пожалуйста, попробуйте еще раз.";
 
 /* No comment provided by engineer. */
 "Just now" = "Только сейчас";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Купец";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Торговый каталог в настоящее время недоступна. Пожалуйста, повторите попытку позже.";
 
 /* (No Commment) */
 "Merchant Map" = "Купец карта";

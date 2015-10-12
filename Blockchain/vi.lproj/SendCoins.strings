@@ -53,13 +53,13 @@
 "67.text" = "Nhãn địa chỉ";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Lệ phí";
+"FB0-NP-5do.text" = "Học phí: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "Tổng cộng";
+"Ubr-KG-egH.text" = "Tổng số:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
 "ZcA-OM-4nq.text" = "Từ:";
@@ -71,7 +71,7 @@
 "aKC-Q2-phD.text" = "Gửi thanh toán";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Số lượng";
+"aeG-gf-oXV.text" = "Số tiền: ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "Tiền có sẵn";

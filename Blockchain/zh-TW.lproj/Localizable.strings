@@ -332,10 +332,16 @@
 "Invalid email address." = "不正確電子郵件地址。";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "不正確恢復的短語。請再試一次";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "不正確伺服器回應。請檢查您的互聯網連接。";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "比特幣位址無效";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "驗證代碼無效。請再試一次。";
 
 /* No comment provided by engineer. */
 "Just now" = "只是現在";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "商人";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "商人目錄是當前不可用。請稍後再試。";
 
 /* (No Commment) */
 "Merchant Map" = "商人的地圖";

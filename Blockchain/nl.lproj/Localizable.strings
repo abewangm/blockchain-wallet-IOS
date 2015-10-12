@@ -332,10 +332,16 @@
 "Invalid email address." = "Ongeldig e-mailadres.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Ongeldige herstel zin. Probeer het a.u.b. opnieuw";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Ongeldige serverreactie. Controleer uw internetverbinding.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Ongeldig adres bitcoin";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Ongeldige verificatiecode. Probeer het opnieuw.";
 
 /* No comment provided by engineer. */
 "Just now" = "Zojuist";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Koopman";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Merchant Directory is momenteel niet beschikbaar. Probeer het later nog eens.";
 
 /* (No Commment) */
 "Merchant Map" = "Handelaar kaart";

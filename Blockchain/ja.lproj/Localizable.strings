@@ -332,10 +332,16 @@
 "Invalid email address." = "無効なメール アドレスです。";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "無効な回復フレーズ。もう一度やり直してください。";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "無効なサーバーの応答です。あなたのインターネット接続を確認してください。";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Bitcoin アドレスが無効です";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "無効な検証コードです。もう一度やり直してください。";
 
 /* No comment provided by engineer. */
 "Just now" = "ちょうど今";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "商人";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "商人のディレクトリは現在利用できません。後でもう一度試してください。";
 
 /* (No Commment) */
 "Merchant Map" = "加盟店マップ";

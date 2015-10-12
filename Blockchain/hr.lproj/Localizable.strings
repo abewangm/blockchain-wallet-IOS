@@ -332,10 +332,16 @@
 "Invalid email address." = "Nije valjana e-mail adresa.";
 
 /* (No Commment) */
+"Invalid recovery phrase. Please try again" = "Oporavak koji nije valjan izraz. Molimo pokušajte ponovno";
+
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Neispravan odgovor poslužitelja. Provjerite internetsku vezu.";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Valjan bitcoin adresu";
+
+/* (No Commment) */
+"Invalid verification code. Please try again." = "Valjana ovjera kod. Molimo pokušajte ponovo.";
 
 /* No comment provided by engineer. */
 "Just now" = "Sada";
@@ -378,6 +384,9 @@
 
 /* (No Commment) */
 "Merchant" = "Trgovac";
+
+/* (No Commment) */
+"Merchant Directory is currently unavailable. Please try again later." = "Trgovački direktorij je trenutno nedostupan. Pokušajte ponovo kasnije.";
 
 /* (No Commment) */
 "Merchant Map" = "Trgovačka karta";
