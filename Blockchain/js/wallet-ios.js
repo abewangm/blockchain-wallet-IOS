@@ -1,5 +1,4 @@
 var Buffer = Blockchain.Buffer;
-var $ = Blockchain.$;
 var CryptoJS = Blockchain.CryptoJS;
 
 var MyWallet = Blockchain.MyWallet;
@@ -28,19 +27,11 @@ window.onerror = function(errorMsg, url, lineNumber) {
     device.execute("jsUncaughtException:url:lineNumber:", [errorMsg, url, lineNumber]);
 };
 
-$(document).ajaxStart(function() {
-    // Disconnect WS when we send another request to the server - this was leading to crashes
-    webSocketDisconnect();
-}).ajaxStop(function() {
-    // Re-connect WS again when the request is finished
-    simpleWebSocketConnect();
-});
-
 console.log = function(message) {
     device.execute("log:", [message]);
 };
 
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function(event) {
     MyWallet.logout = function() {}
 });
 
@@ -82,6 +73,14 @@ WalletStore.addEventListener(function (event, obj) {
 
         else if (obj.type == 'success') {
             device.execute('makeNotice:id:message:', [''+obj.type, ''+obj.code, ''+obj.message]);
+        }
+                             
+        else if (obj.type == 'ajax-start' && obj.message == "ajax call started") {
+            webSocketDisconnect();
+        }
+        
+        else if (obj.type == 'ajax-start' && obj.message == "ajax call ended") {
+            simpleWebSocketConnect();
         }
 
         return;
@@ -427,81 +426,77 @@ MyWalletPhone.quickSend = function() {
 };
 
 MyWalletPhone.apiGetPINValue = function(key, pin) {
-    $.ajax({
-        type: "POST",
-        url: BlockchainAPI.ROOT_URL + 'pin-store',
-        timeout: 20000,
-        dataType: 'json',
-        data: {
-            format: 'json',
-            method: 'get',
-            pin : pin,
-            key : key
-        },
-        success: function (responseObject) {
-            device.execute('on_pin_code_get_response:', [responseObject]);
-        },
-        error: function (res) {
-            // Connection timed out
-            if (res && res.statusText == "timeout") {
-                device.execute('on_error_pin_code_get_timeout');
-            }
-            // Empty server response
-            else if (!res || !res.responseText || res.responseText.length == 0) {
-                device.execute('on_error_pin_code_get_empty_response');
-            } else {
-                try {
-                    var responseObject = $.parseJSON(res.responseText);
-
-                    if (!responseObject) {
-                        throw 'Response Object nil';
-                    }
-
-                    device.execute('on_pin_code_get_response:', [responseObject]);
-                } catch (e) {
-                    // Invalid server response
-                    device.execute('on_error_pin_code_get_invalid_response');
+    var data = {
+        format: 'json',
+        method: 'get',
+        pin : pin,
+        key : key
+    };
+    var s = function (responseObject) {
+        device.execute('on_pin_code_get_response:', [responseObject]);
+    };
+    var e = function (res) {
+        // Connection timed out
+        
+        if (res && res.statusText == "timeout") {
+            device.execute('on_error_pin_code_get_timeout');
+        }
+        // Empty server response
+        else if (!res || !res.responseText || res.responseText.length == 0) {
+            device.execute('on_error_pin_code_get_empty_response');
+        } else {
+            try {
+                var responseObject = JSON.parse(res.responseText);
+                
+                if (!responseObject) {
+                    throw 'Response Object nil';
                 }
+                
+                device.execute('on_pin_code_get_response:', [responseObject]);
+            } catch (e) {
+                // Invalid server response
+                device.execute('on_error_pin_code_get_invalid_response');
             }
         }
-    });
+    };
+    
+    BlockchainAPI.request("POST", 'pin-store', data, true, false).then(s).catch(e);
 };
 
 MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
-    $.ajax({
-        type: "POST",
-        url: BlockchainAPI.ROOT_URL + 'pin-store',
-        timeout: 30000,
-        data: {
-            format: 'plain',
-            method: 'put',
-            value : value,
-            pin : pin,
-            key : key
-        },
-        success: function (responseObject) {
-            responseObject.key = key;
-            responseObject.value = value;
-
-            device.execute('on_pin_code_put_response:', [responseObject]);
-        },
-        error: function (res) {
-            if (!res || !res.responseText || res.responseText.length == 0) {
-                device.execute('on_error_pin_code_put_error:', ['Unknown Error']);
-            } else {
-                try {
-                    var responseObject = $.parseJSON(res.responseText);
-
-                    responseObject.key = key;
-                    responseObject.value = value;
-
-                    device.execute('on_pin_code_put_response:', [responseObject]);
-                } catch (e) {
-                    device.execute('on_error_pin_code_put_error:', [res.responseText]);
-                }
+    var data = {
+        format: 'json',
+        method: 'put',
+        value : value,
+        pin : pin,
+        key : key
+    };
+    var s = function (responseObject) {
+        
+        responseObject.key = key;
+        responseObject.value = value;
+        
+        device.execute('on_pin_code_put_response:', [responseObject]);
+    };
+    var e = function (res) {
+        
+        if (!res || !res.responseText || res.responseText.length == 0) {
+            device.execute('on_error_pin_code_put_error:', ['Unknown Error']);
+        } else {
+            try {
+                var responseObject = JSON.parse(res.responseText);
+                
+                responseObject.key = key;
+                responseObject.value = value;
+                
+                device.execute('on_pin_code_put_response:', [responseObject]);
+            } catch (e) {
+                device.execute('on_error_pin_code_put_error:', [res.responseText]);
             }
         }
-    });
+    };
+    
+    BlockchainAPI.request("POST", 'pin-store', data, true, false).then(s).catch(e);
 };
 
 MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
@@ -554,43 +549,40 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
         }
 
         var encrypted_data = components[2];
-
-        $.ajax({
-            type: "POST",
-            url: BlockchainAPI.ROOT_URL + 'wallet',
-            timeout: 60000,
-            data: {
-                format: 'plain',
-                method: 'pairing-encryption-password',
-                guid: guid
-            },
-            success: function (encryption_phrase) {
-                try {
-
-                    // Pairing code PBKDF2 iterations is set to 10 in My Wallet
-                    var pairing_code_pbkdf2_iterations = 10;
-                    var decrypted = WalletCrypto.decrypt(encrypted_data, encryption_phrase, pairing_code_pbkdf2_iterations);
-
-                    if (decrypted != null) {
-                        var components2 = decrypted.split("|");
-
-                        success({
+        
+        var data = {
+            format: 'plain',
+            method: 'pairing-encryption-password',
+            guid: guid
+        };
+        var s = function (encryption_phrase) {
+            try {
+                
+                // Pairing code PBKDF2 iterations is set to 10 in My Wallet
+                var pairing_code_pbkdf2_iterations = 10;
+                var decrypted = WalletCrypto.decrypt(encrypted_data, encryption_phrase, pairing_code_pbkdf2_iterations);
+                
+                if (decrypted != null) {
+                    var components2 = decrypted.split("|");
+                    
+                    success({
                             version: raw_code[0],
                             guid: guid,
                             sharedKey: components2[0],
                             password: CryptoJS.enc.Hex.parse(components2[1]).toString(CryptoJS.enc.Utf8)
-                        });
-                    } else {
-                        error('Decryption Error');
-                    }
-                } catch(e) {
-                    error(''+e);
+                            });
+                } else {
+                    error('Decryption Error');
                 }
-            },
-            error: function (res) {
-                error('Pairing Code Server Error');
+            } catch(e) {
+                error(''+e);
             }
-        });
+        };
+        var e = function (res) {
+            error('Pairing Code Server Error');
+        };
+        
+        BlockchainAPI.request("POST", 'wallet', data, true, false).then(s).catch(e);
     } catch (e) {
         error(''+e);
     }

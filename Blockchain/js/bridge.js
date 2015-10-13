@@ -94,7 +94,7 @@ function JSBridgeObj_AddObject(id, obj)
         type : typeof(obj)
     }
         
-    $.extend(this.objectJson, json_obj);
+    Helpers.merge(this.objectJson, json_obj);
 }
 
 
