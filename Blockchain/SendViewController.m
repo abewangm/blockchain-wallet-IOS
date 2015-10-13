@@ -286,14 +286,18 @@ BOOL displayingLocalSymbolSend;
     
     listener.on_error = ^(NSString* error) {
         if (error && error.length != 0) {
-            [app standardNotify:error];
+            DLog(@"%@", error);
         }
+    
+        [app standardNotify:BC_STRING_SEND_ERROR];
         
         [sendProgressActivityIndicator stopAnimating];
         
         [self enablePaymentButtons];
         
         [app closeModalWithTransition:kCATransitionFade];
+        
+        [app reload];
     };
     
     [self dismissKeyboard];

@@ -296,3 +296,4 @@
 #define BC_STRING_INVALID_RECOVERY_PHRASE NSLocalizedString(@"Invalid recovery phrase. Please try again", nil)
 
 #define BC_STRING_MERCHANT_DIRECTORY_UNAVAILABLE NSLocalizedString(@"Merchant Directory is currently unavailable. Please try again later.", nil)
+#define BC_STRING_SEND_ERROR NSLocalizedString(@"No internet connection available. Please check your network settings.", nil)

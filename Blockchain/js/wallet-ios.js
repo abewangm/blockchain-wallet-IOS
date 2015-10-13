@@ -437,22 +437,24 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
     };
     var e = function (res) {
         // Connection timed out
-        
-        if (res && res.statusText == "timeout") {
+        console.log('rescode');
+        console.log(res);
+        var parsedRes = JSON.parse(res);
+
+        if (res === "timeout request") {
             device.execute('on_error_pin_code_get_timeout');
         }
         // Empty server response
-        else if (!res || !res.responseText || res.responseText.length == 0) {
+        else if (!Helpers.isNumber(parsedRes.code)) {
             device.execute('on_error_pin_code_get_empty_response');
         } else {
             try {
-                var responseObject = JSON.parse(res.responseText);
                 
-                if (!responseObject) {
+                if (!parsedRes) {
                     throw 'Response Object nil';
                 }
                 
-                device.execute('on_pin_code_get_response:', [responseObject]);
+                device.execute('on_pin_code_get_response:', [parsedRes]);
             } catch (e) {
                 // Invalid server response
                 device.execute('on_error_pin_code_get_invalid_response');
