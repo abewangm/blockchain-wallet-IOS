@@ -437,8 +437,6 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
     };
     var e = function (res) {
         // Connection timed out
-        console.log('rescode');
-        console.log(res);
         var parsedRes = JSON.parse(res);
 
         if (res === "timeout request") {
