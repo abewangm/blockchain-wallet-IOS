@@ -54,7 +54,7 @@ WalletStore.addEventListener(function (event, obj) {
                 return;
             }
                              
-            if (obj.message == "update-currency-error" || obj.message == "update-btc-currency-error") {
+            if (obj.message == "update-currency-errorundefined" || obj.message == "update-btc-currency-errorundefined") {
                 device.execute('on_change_currency_error');
                 return;
             }
@@ -75,11 +75,11 @@ WalletStore.addEventListener(function (event, obj) {
             device.execute('makeNotice:id:message:', [''+obj.type, ''+obj.code, ''+obj.message]);
         }
                              
-        else if (obj.type == 'ajax-start' && obj.message == "ajax call started") {
+        else if (obj.type == 'ajax-start') {
             webSocketDisconnect();
         }
         
-        else if (obj.type == 'ajax-start' && obj.message == "ajax call ended") {
+        else if (obj.type == 'ajax-end') {
             simpleWebSocketConnect();
         }
 
