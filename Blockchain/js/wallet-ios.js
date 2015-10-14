@@ -432,10 +432,10 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
         pin : pin,
         key : key
     };
-    var s = function (responseObject) {
+    var success = function (responseObject) {
         device.execute('on_pin_code_get_response:', [responseObject]);
     };
-    var e = function (res) {
+    var error = function (res) {
         // Connection timed out
         var parsedRes = JSON.parse(res);
 
@@ -453,14 +453,14 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
                 }
                 
                 device.execute('on_pin_code_get_response:', [parsedRes]);
-            } catch (e) {
+            } catch (error) {
                 // Invalid server response
                 device.execute('on_error_pin_code_get_invalid_response');
             }
         }
     };
     
-    BlockchainAPI.request("POST", 'pin-store', data, true, false).then(s).catch(e);
+    BlockchainAPI.request("POST", 'pin-store', data, true, false).then(success).catch(error);
 };
 
 MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
@@ -471,14 +471,14 @@ MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
         pin : pin,
         key : key
     };
-    var s = function (responseObject) {
+    var success = function (responseObject) {
         
         responseObject.key = key;
         responseObject.value = value;
         
         device.execute('on_pin_code_put_response:', [responseObject]);
     };
-    var e = function (res) {
+    var error = function (res) {
         
         if (!res || !res.responseText || res.responseText.length == 0) {
             device.execute('on_error_pin_code_put_error:', ['Unknown Error']);
@@ -496,7 +496,7 @@ MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
         }
     };
     
-    BlockchainAPI.request("POST", 'pin-store', data, true, false).then(s).catch(e);
+    BlockchainAPI.request("POST", 'pin-store', data, true, false).then(success).catch(error);
 };
 
 MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
@@ -555,7 +555,7 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
             method: 'pairing-encryption-password',
             guid: guid
         };
-        var s = function (encryption_phrase) {
+        var requestSuccess = function (encryption_phrase) {
             try {
                 
                 // Pairing code PBKDF2 iterations is set to 10 in My Wallet
@@ -578,11 +578,11 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
                 error(''+e);
             }
         };
-        var e = function (res) {
+        var requestError = function (res) {
             error('Pairing Code Server Error');
         };
         
-        BlockchainAPI.request("POST", 'wallet', data, true, false).then(s).catch(e);
+        BlockchainAPI.request("POST", 'wallet', data, true, false).then(requestSuccess).catch(requestError);
     } catch (e) {
         error(''+e);
     }

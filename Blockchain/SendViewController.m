@@ -271,7 +271,7 @@ BOOL displayingLocalSymbolSend;
         
         [self enablePaymentButtons];
         
-        // Fields are automatically reset by reload after a successful transaction
+        // Fields should be automatically reset by reload, called by didGetMultiAddressResponse: after a successful transaction
         
         // Close transaction modal, go to transactions view, scroll to top and animate new transaction
         [app closeModalWithTransition:kCATransitionFade];
