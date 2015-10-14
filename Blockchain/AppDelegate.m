@@ -1279,13 +1279,11 @@ void (^secondPasswordSuccess)(NSString *);
     alert.tapBlock = tapBlock;
     
     [alert show];
-    
 }
 
 - (IBAction)forgetWalletClicked:(id)sender
 {
-    // confirm forget wallet
-    [self confirmForgetWalletWithBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    void (^confirmForgetWalletBlock)(UIAlertView *alertView, NSInteger buttonIndex) = ^(UIAlertView *alertView, NSInteger buttonIndex) {
         // Forget Wallet Cancelled
         if (buttonIndex == 0) {
         }
@@ -1296,7 +1294,14 @@ void (^secondPasswordSuccess)(NSString *);
             [self forgetWallet];
             [app showWelcome];
         }
-    }];
+    };
+    
+    if ([mainPasswordTextField isFirstResponder]) {
+        [mainPasswordTextField resignFirstResponder];
+        [self performSelector:@selector(confirmForgetWalletWithBlock:) withObject:confirmForgetWalletBlock afterDelay:0.6f];
+    } else {
+        [self confirmForgetWalletWithBlock:confirmForgetWalletBlock];
+    }
 }
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender
