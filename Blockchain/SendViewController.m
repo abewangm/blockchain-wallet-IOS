@@ -271,7 +271,7 @@ BOOL displayingLocalSymbolSend;
         
         [self enablePaymentButtons];
         
-        // Fields should be automatically reset by reload, called by didGetMultiAddressResponse: after a successful transaction
+        // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a successful transaction
         
         // Close transaction modal, go to transactions view, scroll to top and animate new transaction
         [app closeModalWithTransition:kCATransitionFade];
@@ -281,6 +281,7 @@ BOOL displayingLocalSymbolSend;
         });
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [app.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+            [app.wallet getHistory];
         });
     };
     
@@ -297,7 +298,7 @@ BOOL displayingLocalSymbolSend;
         
         [app closeModalWithTransition:kCATransitionFade];
         
-        [app reload];
+        [app.wallet getHistory];
     };
     
     [self dismissKeyboard];
