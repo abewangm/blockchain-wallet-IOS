@@ -318,7 +318,7 @@ const int aboutPrivacyPolicy = 1;
     
     [self getAccountInfo];
     
-    [self alertUserOfVerifyingEmailSuccess];
+    [self performSelector:@selector(alertUserOfVerifyingEmailSuccess) withObject:nil afterDelay:0.2f];
 }
 
 #pragma mark AlertView Delegate

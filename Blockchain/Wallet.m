@@ -883,9 +883,9 @@
         return;
     }
     
-    NSRange invalidEmailStringRange = [message rangeOfString:@"Invalid Email" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    NSRange invalidEmailStringRange = [message rangeOfString:@"update-email-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (invalidEmailStringRange.location != NSNotFound) {
-        [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR delegate:nil];
+        [self performSelector:@selector(on_update_email_error) withObject:nil afterDelay:0.1f];
         return;
     }
     
@@ -1215,6 +1215,11 @@
     DLog(@"on_error_downloading_account_settings");
     [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
+}
+
+- (void)on_update_email_error
+{
+    [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR delegate:nil];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
