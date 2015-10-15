@@ -508,8 +508,11 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
 
     var error = function(e) {
         device.execute('loading_stop');
-
-        device.execute('on_error_creating_new_account:', [''+e]);
+        if (e == 'Invalid Email') {
+            device.execute('on_update_email_error');
+        } else {
+            device.execute('on_error_creating_new_account:', [''+e]);
+        }
     };
 
     device.execute('loading_start_new_account');
