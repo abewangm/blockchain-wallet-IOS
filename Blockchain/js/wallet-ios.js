@@ -436,17 +436,16 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
         device.execute('on_pin_code_get_response:', [responseObject]);
     };
     var error = function (res) {
-        // Connection timed out
-        var parsedRes = JSON.parse(res);
 
         if (res === "timeout request") {
             device.execute('on_error_pin_code_get_timeout');
         }
         // Empty server response
-        else if (!Helpers.isNumber(parsedRes.code)) {
+        else if (!Helpers.isNumber(JSON.parse(res).code)) {
             device.execute('on_error_pin_code_get_empty_response');
         } else {
             try {
+                var parsedRes = JSON.parse(res);
                 
                 if (!parsedRes) {
                     throw 'Response Object nil';
