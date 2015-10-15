@@ -15,6 +15,7 @@
 #endif
 
 // #define HD_ENABLED 1
+#define TOUCH_ID_ENABLED 1
 
 #pragma mark - Colors
 

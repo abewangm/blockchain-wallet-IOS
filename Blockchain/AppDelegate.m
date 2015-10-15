@@ -35,6 +35,7 @@
 #import "BCWebViewController.h"
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
+#import <LocalAuthentication/LocalAuthentication.h>
 
 AppDelegate * app;
 
@@ -1366,6 +1367,45 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     mainPasswordTextField.text = nil;
+}
+
+- (void)authenticateWithTouchID
+{
+    LAContext *context = [[LAContext alloc] init];
+    
+    NSError *error = nil;
+    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+                localizedReason:BC_STRING_TOUCH_ID_AUTHENTICATE
+                          reply:^(BOOL success, NSError *error) {
+                              
+                              if (error) {
+                                  UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_VERIFYING preferredStyle:UIAlertControllerStyleAlert];
+                                  [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                                  [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                                  return;
+                              }
+                              
+                              if (success) {
+                                  DLog(@"touchID success");
+                                  
+                              } else {
+                                  UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_WRONG_USER preferredStyle:UIAlertControllerStyleAlert];
+                                  [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                                  [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                                  return;
+                              }
+                              
+                          }];
+        
+    } else {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        return;
+        
+    }
 }
 
 #pragma mark - Pin Entry Delegates
