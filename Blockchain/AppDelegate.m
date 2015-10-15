@@ -1458,7 +1458,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFailGetPinNoResponse
 {
-    [self showPinErrorWithMessage:BC_STRING_EMPTY_RESPONSE];
+    [self showPinErrorWithMessage:BC_STRING_INCORRECT_PIN_RETRY];
 }
 
 - (void)didFailGetPinInvalidResponse
@@ -1570,8 +1570,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self hideBusyView];
     
-    // If the server returns an "Invalid Numerical Value" response it means the user entered "0000" and we show a slightly different error message
-    if ([@"Invalid Numerical Value" isEqual:value]) {
+    // If the server returns an "Unknown Error" response it means the user entered "0000" and we show a slightly different error message
+    if ([@"Unknown Error" isEqual:value]) {
         value = BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN;
     }
     [app standardNotify:value];
