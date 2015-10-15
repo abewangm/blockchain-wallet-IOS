@@ -973,14 +973,17 @@
 - (void)on_add_private_key_start
 {
     DLog(@"on_add_private_key_start");
+    self.isSyncingForCriticalProcess = YES;
+
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
 }
 
 - (void)on_add_private_key:(NSString*)address
 {
+    DLog(@"on_add_private_key");
     [self loading_stop];
     self.isSyncingForCriticalProcess = YES;
-    DLog(@"on_add_private_key");
+
     if ([delegate respondsToSelector:@selector(didImportPrivateKey:)]) {
         [delegate didImportPrivateKey:address];
     }
@@ -988,7 +991,9 @@
 
 - (void)on_error_adding_private_key:(NSString*)error
 {
-    [app standardNotify:error];
+    if ([delegate respondsToSelector:@selector(didFailToImportPrivateKey:)]) {
+        [delegate didFailToImportPrivateKey:error];
+    }
 }
 
 - (void)on_error_creating_new_account:(NSString*)message
@@ -1069,6 +1074,7 @@
     DLog(@"on_backup_wallet_success");
     if ([delegate respondsToSelector:@selector(didBackupWallet)])
         [delegate didBackupWallet];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
     [self loading_stop];
     self.isSyncingForCriticalProcess = NO;

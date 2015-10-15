@@ -999,6 +999,20 @@ void (^secondPasswordSuccess)(NSString *);
     [alertView show];
 }
 
+- (void)didFailToImportPrivateKey:(NSString *)error
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+    
+    UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if (wallet.isSyncingForCriticalProcess) {
+            [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+        }
+    }];
+    [errorAlert addAction:okAction];
+    [self.window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
+}
+
 - (void)didFailRecovery
 {
     [createWalletView didFailRecovery];

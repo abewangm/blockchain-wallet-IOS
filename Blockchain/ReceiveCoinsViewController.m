@@ -777,11 +777,27 @@ UIAlertController *popupAddressArchive;
                                                   object:nil];
 }
 
+- (void)promptForLabelAfterScan
+{
+    if (self.view.window) {
+        //newest address is the last object in activeKeys
+        self.clickedAddress = [activeKeys lastObject];
+        [self labelAddressClicked:nil];
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS
+                                                  object:nil];
+}
+
 - (void)scanPrivateKey
 {
     if (![app checkInternetConnection]) {
         return;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(promptForLabelAfterScan)
+                                                 name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     
     PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
         [app.wallet addKey:privateKeyString];
