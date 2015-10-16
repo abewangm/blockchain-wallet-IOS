@@ -174,7 +174,7 @@
 
 - (IBAction)termsOfServiceClicked:(id)sender
 {
-    [app pushWebViewController:[WebROOT stringByAppendingString:@"terms_of_service"] title:BC_STRING_TERMS_OF_SERVICE];
+    [app pushWebViewController:TERMS_OF_SERVICE_URL title:BC_STRING_TERMS_OF_SERVICE];
     [emailTextField becomeFirstResponder];
 }
 
