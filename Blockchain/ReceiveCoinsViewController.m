@@ -15,6 +15,7 @@
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource>
 @property (nonatomic) id paymentObserver;
+@property (nonatomic) UITextField *lastSelectedField;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -711,7 +712,7 @@ UIAlertController *popupAddressArchive;
     
     // Select the entry field
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [fiatAmountField becomeFirstResponder];
+        self.lastSelectedField == nil ? [fiatAmountField becomeFirstResponder] : [self.lastSelectedField becomeFirstResponder];
     });
 }
 
@@ -810,6 +811,14 @@ UIAlertController *popupAddressArchive;
 }
 
 # pragma mark - UITextField delegates
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == fiatAmountField || textField == btcAmountField) {
+        self.lastSelectedField = textField; 
+    }
+    return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
