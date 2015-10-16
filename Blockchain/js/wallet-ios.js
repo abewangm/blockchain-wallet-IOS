@@ -18,6 +18,7 @@ min = false;
 
 // Set the API code for the iOS Wallet for the server calls
 WalletStore.setAPICode(API_CODE);
+BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
 
 var MyWalletPhone = {};
 var pendingTransactions = {};
