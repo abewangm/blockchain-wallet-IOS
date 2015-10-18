@@ -419,6 +419,9 @@
 "No Password Entered" = "Không có mật khẩu";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Không có kết nối internet có sẵn. Xin vui lòng kiểm tra thiết đặt mạng của bạn.";
+
+/* (No Commment) */
 "No internet connection." = "Không có kết nối internet.";
 
 /* (No Commment) */

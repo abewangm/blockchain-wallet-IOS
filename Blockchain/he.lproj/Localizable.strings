@@ -419,6 +419,9 @@
 "No Password Entered" = "ללא הסיסמה שהוזנו";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "חיבור לאינטרנט זמין. נא בדוק את הגדרות הרשת שלך.";
+
+/* (No Commment) */
 "No internet connection." = "חיבור לאינטרנט.";
 
 /* (No Commment) */

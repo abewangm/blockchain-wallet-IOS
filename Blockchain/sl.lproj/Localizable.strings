@@ -419,6 +419,9 @@
 "No Password Entered" = "Brez gesla, vstopil";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Brez internetne povezave na voljo. Preverite nastavitev omrežja.";
+
+/* (No Commment) */
 "No internet connection." = "Brez internetne povezave.";
 
 /* (No Commment) */

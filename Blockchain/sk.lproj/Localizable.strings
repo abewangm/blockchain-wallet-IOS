@@ -419,6 +419,9 @@
 "No Password Entered" = "Žiadne heslo";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Pripojenie na internet nie je k dispozícii. Skontrolujte nastavenia siete.";
+
+/* (No Commment) */
 "No internet connection." = "Pripojenie na internet.";
 
 /* (No Commment) */

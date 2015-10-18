@@ -419,6 +419,9 @@
 "No Password Entered" = "ไม่มีรหัสผ่านที่ป้อน";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "ไม่เชื่อมต่ออินเตอร์เน็ต กรุณาตรวจสอบการตั้งค่าเครือข่ายของคุณ";
+
+/* (No Commment) */
 "No internet connection." = "ไม่มีการเชื่อมต่ออินเทอร์เน็ต";
 
 /* (No Commment) */

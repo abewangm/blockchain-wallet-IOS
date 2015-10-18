@@ -419,6 +419,9 @@
 "No Password Entered" = "입력 한 비밀 번호";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "사용할 수 없는 인터넷 연결. 네트워크 설정을 확인 하십시오.";
+
+/* (No Commment) */
 "No internet connection." = "아니 인터넷 연결입니다.";
 
 /* (No Commment) */

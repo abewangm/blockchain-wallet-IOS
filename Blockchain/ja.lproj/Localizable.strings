@@ -419,6 +419,9 @@
 "No Password Entered" = "パスワードを入力して";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "インターネット接続が可能。ネットワーク設定を確認してください。";
+
+/* (No Commment) */
 "No internet connection." = "いいえ、インターネット接続。";
 
 /* (No Commment) */

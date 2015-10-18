@@ -419,6 +419,9 @@
 "No Password Entered" = "沒有輸入密碼";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "無可用的互聯網連接。請檢查您的網路設置。";
+
+/* (No Commment) */
 "No internet connection." = "沒有互聯網連接。";
 
 /* (No Commment) */

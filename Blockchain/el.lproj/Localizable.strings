@@ -419,6 +419,9 @@
 "No Password Entered" = "Δεν τον κωδικό πρόσβασης που εγγράφονται";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Δεν Διαδίκτυο σύνδεση διαθέσιμος. Παρακαλώ ελέγξτε τις ρυθμίσεις δικτύου.";
+
+/* (No Commment) */
 "No internet connection." = "Καμία σύνδεση στο internet.";
 
 /* (No Commment) */

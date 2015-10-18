@@ -419,6 +419,9 @@
 "No Password Entered" = "Nici o parola introduse";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Nici o conexiune la internet disponibil. Vă rugăm să verificaţi setările de reţea.";
+
+/* (No Commment) */
 "No internet connection." = "Nici o conexiune la internet.";
 
 /* (No Commment) */

@@ -419,6 +419,9 @@
 "No Password Entered" = "Ei salasanaa";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Internet-yhteys ei ole käytettävissä. Tarkista verkkoasetukset.";
+
+/* (No Commment) */
 "No internet connection." = "Ei ole internetyhteyttä.";
 
 /* (No Commment) */

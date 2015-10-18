@@ -419,6 +419,9 @@
 "No Password Entered" = "कोई पासवर्ड दर्ज किया";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "कोई इंटरनेट कनेक्शन उपलब्ध नहीं। कृपया अपनी नेटवर्क सेटिंग्स की जाँच करें।";
+
+/* (No Commment) */
 "No internet connection." = "कोई इंटरनेट कनेक्शन।";
 
 /* (No Commment) */

@@ -419,6 +419,9 @@
 "No Password Entered" = "No hay contraseña";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "No hay conexión a internet. Por favor, compruebe su configuración de red.";
+
+/* (No Commment) */
 "No internet connection." = "No hay conexión a internet.";
 
 /* (No Commment) */

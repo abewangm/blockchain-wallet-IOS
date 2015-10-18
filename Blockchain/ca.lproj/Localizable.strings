@@ -419,6 +419,9 @@
 "No Password Entered" = "Cap contrasenya introduïda";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "No hi ha connexió a internet disponible. Si us plau, comproveu la configuració de xarxa.";
+
+/* (No Commment) */
 "No internet connection." = "No hi ha connexió a internet.";
 
 /* (No Commment) */

@@ -419,6 +419,9 @@
 "No Password Entered" = "Nema lozinke";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Internet veza nije dostupna. Provjerite mrežne postavke.";
+
+/* (No Commment) */
 "No internet connection." = "Bez internetske veze.";
 
 /* (No Commment) */

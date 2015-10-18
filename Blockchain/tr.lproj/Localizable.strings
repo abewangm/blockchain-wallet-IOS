@@ -419,6 +419,9 @@
 "No Password Entered" = "Girilen parola";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Internet bağlantısı yok. Lütfen ağ ayarlarınızı denetleyin.";
+
+/* (No Commment) */
 "No internet connection." = "Internet bağlantısı yok.";
 
 /* (No Commment) */

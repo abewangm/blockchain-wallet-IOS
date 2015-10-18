@@ -419,6 +419,9 @@
 "No Password Entered" = "Tiada kata laluan yang dimasukkan";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Tiada sambungan internet disediakan. Sila semak seting rangkaian awda.";
+
+/* (No Commment) */
 "No internet connection." = "Tiada sambungan internet.";
 
 /* (No Commment) */

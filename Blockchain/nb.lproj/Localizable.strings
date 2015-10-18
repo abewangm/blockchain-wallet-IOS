@@ -419,6 +419,9 @@
 "No Password Entered" = "Ingen passordet";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Ingen Internett-tilkobling er tilgjengelig. Kontroller nettverksinnstillingene.";
+
+/* (No Commment) */
 "No internet connection." = "Ingen Internett-tilkobling.";
 
 /* (No Commment) */
