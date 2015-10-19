@@ -451,11 +451,28 @@ BOOL displayingLocalSymbolSend;
 - (BOOL)isAmountAboveDustThreshold:(uint64_t)amount
 {
     if (amount <= DUST_THRESHOLD) {
-        [app standardNotify:[[NSString alloc] initWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, DUST_THRESHOLD]];
+        [self alertUserForAmountBelowDustThreshold];
         return NO;
     } else {
         return YES;
     }
+}
+
+- (void)alertUserForAmountBelowDustThreshold
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[[NSString alloc] initWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, DUST_THRESHOLD] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)alertUserForZeroSpendableAmount
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_AVAILABLE_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    [self enablePaymentButtons];
 }
 
 #pragma mark - UI Helpers
@@ -752,15 +769,6 @@ BOOL displayingLocalSymbolSend;
 }
 
 #pragma mark - Fee Calculation
-
-- (void)alertUserForZeroSpendableAmount
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_AVAILABLE_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
-    [self enablePaymentButtons];
-}
 
 - (void)addObserverForCheckingForOverspending
 {
