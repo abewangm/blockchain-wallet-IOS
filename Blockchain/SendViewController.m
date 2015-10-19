@@ -703,6 +703,8 @@ BOOL displayingLocalSymbolSend;
     [app.wallet changePaymentFromAddress:address];
     
     [self updateFundsAvailable];
+    
+    [self doCurrencyConversion];
 }
 
 - (void)didSelectToAddress:(NSString *)address
@@ -714,6 +716,8 @@ BOOL displayingLocalSymbolSend;
     DLog(@"toAddress: %@", address);
     
     [app.wallet changePaymentToAddress:address];
+    
+    [self doCurrencyConversion];
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -729,6 +733,8 @@ BOOL displayingLocalSymbolSend;
     [app.wallet changePaymentFromAccount:account];
     
     [self updateFundsAvailable];
+    
+    [self doCurrencyConversion];
 }
 
 - (void)didSelectToAccount:(int)account
@@ -741,6 +747,8 @@ BOOL displayingLocalSymbolSend;
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
     
     [app.wallet changePaymentToAccount:account];
+    
+    [self doCurrencyConversion];
 }
 
 #pragma mark - Fee Calculation
