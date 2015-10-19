@@ -207,6 +207,8 @@
 {
     if ([message isEqualToString:@""]) {
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+    } else if ([message isEqualToString:@"timeout request"]){
+        [app standardNotify:BC_STRING_TIMED_OUT];
     } else {
         [app standardNotify:message];
     }
