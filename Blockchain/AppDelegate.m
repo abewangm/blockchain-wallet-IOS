@@ -990,13 +990,15 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didImportPrivateKey:(NSString *)address
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (wallet.isSyncingForCriticalProcess) {
-            [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-        }
-    };
-    [alertView show];
+    if (_receiveViewController.view.window) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+        alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (wallet.isSyncingForCriticalProcess) {
+                [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+            }
+        };
+        [alertView show];
+    }
 }
 
 - (void)didFailToImportPrivateKey:(NSString *)error
