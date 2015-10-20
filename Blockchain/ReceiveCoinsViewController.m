@@ -606,7 +606,7 @@ UIAlertController *popupAddressArchive;
     
     [app closeModalWithTransition:kCATransitionFade];
     
-    if (app.wallet.isSyncingForTrivialProcess) {
+    if (app.wallet.isSyncingForCriticalProcess) {
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
 }
