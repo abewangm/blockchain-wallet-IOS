@@ -1005,7 +1005,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        if (wallet.isSyncingForCriticalProcess) {
+        if (wallet.isSyncingForCriticalProcess && [error isEqualToString:@"Key already imported"]) {
             [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         }
     }];
