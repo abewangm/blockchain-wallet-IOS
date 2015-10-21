@@ -796,11 +796,10 @@ UIAlertController *popupAddressArchive;
         return;
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(promptForLabelAfterScan)
-                                                 name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
-    
     PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(promptForLabelAfterScan)
+                                                     name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
         [app.wallet addKey:privateKeyString];
         [app.wallet loading_stop];
     } error:nil];
