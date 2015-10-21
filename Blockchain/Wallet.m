@@ -422,7 +422,7 @@
 
 - (void)setLabel:(NSString*)label forLegacyAddress:(NSString*)address
 {
-    self.isSyncingForCriticalProcess = YES;
+    self.isSyncingForTrivialProcess = YES;
     
     [self.webView executeJS:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
 }
@@ -1348,7 +1348,7 @@
 - (void)setLabelForAccount:(int)account label:(NSString *)label
 {
     if ([self isInitialized]) {
-        self.isSyncingForCriticalProcess = YES;
+        self.isSyncingForTrivialProcess = YES;
         [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, label];
     }
 }
