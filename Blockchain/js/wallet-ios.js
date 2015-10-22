@@ -18,6 +18,7 @@ min = false;
 
 // Set the API code for the iOS Wallet for the server calls
 WalletStore.setAPICode(API_CODE);
+BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
 
 var MyWalletPhone = {};
 var pendingTransactions = {};
@@ -436,17 +437,16 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
         device.execute('on_pin_code_get_response:', [responseObject]);
     };
     var error = function (res) {
-        // Connection timed out
-        var parsedRes = JSON.parse(res);
 
         if (res === "timeout request") {
             device.execute('on_error_pin_code_get_timeout');
         }
         // Empty server response
-        else if (!Helpers.isNumber(parsedRes.code)) {
+        else if (!Helpers.isNumber(JSON.parse(res).code)) {
             device.execute('on_error_pin_code_get_empty_response');
         } else {
             try {
+                var parsedRes = JSON.parse(res);
                 
                 if (!parsedRes) {
                     throw 'Response Object nil';
@@ -508,8 +508,11 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
 
     var error = function(e) {
         device.execute('loading_stop');
-
-        device.execute('on_error_creating_new_account:', [''+e]);
+        if (e == 'Invalid Email') {
+            device.execute('on_update_email_error');
+        } else {
+            device.execute('on_error_creating_new_account:', [''+e]);
+        }
     };
 
     device.execute('loading_start_new_account');

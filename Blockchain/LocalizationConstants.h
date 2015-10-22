@@ -302,3 +302,5 @@
 #define BC_STRING_TOUCH_ID_ERROR_WRONG_USER NSLocalizedString(@"Your identity does not match our records.", nil)
 #define BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE NSLocalizedString(@"Touch ID is not available on this device.", nil)
 #define BC_STRING_TOUCH_ID_AUTHENTICATE NSLocalizedString(@"Authenticate with Touch ID", nil)
+
+#define BC_STRING_NO_EMAIL_CONFIGURED NSLocalizedString(@"You do not have an account set up for Mail. Please contact %@", nil)

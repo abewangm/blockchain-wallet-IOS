@@ -419,6 +419,9 @@
 "No Password Entered" = "Δεν τον κωδικό πρόσβασης που εγγράφονται";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Δεν Διαδίκτυο σύνδεση διαθέσιμος. Παρακαλώ ελέγξτε τις ρυθμίσεις δικτύου.";
+
+/* (No Commment) */
 "No internet connection." = "Καμία σύνδεση στο internet.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Δημιουργήσατε αντίγραφα ασφαλείας των κεφαλαίων σας με επιτυχία";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Δεν έχετε ένα λογαριασμό που έχει συσταθεί για το ταχυδρομείο. Παρακαλούμε επικοινωνήστε με %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Έχετε καμία διαθέσιμα κεφάλαια να στείλει από αυτή τη διεύθυνση";

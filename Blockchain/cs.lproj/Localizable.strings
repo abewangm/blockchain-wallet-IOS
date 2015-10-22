@@ -419,6 +419,9 @@
 "No Password Entered" = "Žádné heslo";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Žádné připojení k Internetu k dispozici. Zkontrolujte nastavení sítě.";
+
+/* (No Commment) */
 "No internet connection." = "Žádné připojení k Internetu.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Jste úspěšně zálohovány vaše finanční prostředky";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Nemáte účet nastavený pro poštu. Prosím kontaktujte %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Žádné dostupné peníze poslat z této adresy";

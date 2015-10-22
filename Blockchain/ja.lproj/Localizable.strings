@@ -419,6 +419,9 @@
 "No Password Entered" = "パスワードを入力して";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "インターネット接続が可能。ネットワーク設定を確認してください。";
+
+/* (No Commment) */
 "No internet connection." = "いいえ、インターネット接続。";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "あなたが正常にあなたの資金をバックアップ";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "設定したメール アカウントがありません。%@ にお問い合わせください。";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "このアドレスから送信する利用可能な資金があるない場合";

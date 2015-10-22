@@ -991,13 +991,29 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didImportPrivateKey:(NSString *)address
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (wallet.isSyncingForCriticalProcess) {
+    if (_receiveViewController.view.window) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+        alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (wallet.isSyncingForCriticalProcess) {
+                [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+            }
+        };
+        [alertView show];
+    }
+}
+
+- (void)didFailToImportPrivateKey:(NSString *)error
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+    
+    UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if (wallet.isSyncingForCriticalProcess && [error isEqualToString:@"Key already imported"]) {
             [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         }
-    };
-    [alertView show];
+    }];
+    [errorAlert addAction:okAction];
+    [self.window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
 }
 
 - (void)didFailRecovery
@@ -1042,19 +1058,26 @@ void (^secondPasswordSuccess)(NSString *);
     // Send email using the Message UI Framework: http://stackoverflow.com/a/1513433/2076094
     // If the user has not email account set up, he should get a notification saying he can't send emails (tested on iOS 7.1.1)
     MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
-    controller.mailComposeDelegate = self;
-    controller.navigationBar.tintColor = COLOR_BLOCKCHAIN_BLUE;
-    [controller setToRecipients:@[SUPPORT_EMAIL_ADDRESS]];
-    [controller setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
     
-    NSString *message = [NSString stringWithFormat:@"\n\n--\nApp: %@\nSystem: %@ %@\n",
-                          [UncaughtExceptionHandler appNameAndVersionNumberDisplayString],
-                          [[UIDevice currentDevice] systemName],
-                          [[UIDevice currentDevice] systemVersion]];
-    [controller setMessageBody:message isHTML:NO];
-    
-    controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self.tabViewController presentViewController:controller animated:YES completion:nil];
+    if (controller != nil) {
+        controller.mailComposeDelegate = self;
+        controller.navigationBar.tintColor = COLOR_BLOCKCHAIN_BLUE;
+        [controller setToRecipients:@[SUPPORT_EMAIL_ADDRESS]];
+        [controller setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
+        
+        NSString *message = [NSString stringWithFormat:@"\n\n--\nApp: %@\nSystem: %@ %@\n",
+                             [UncaughtExceptionHandler appNameAndVersionNumberDisplayString],
+                             [[UIDevice currentDevice] systemName],
+                             [[UIDevice currentDevice] systemVersion]];
+        [controller setMessageBody:message isHTML:NO];
+        
+        controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self.tabViewController presentViewController:controller animated:YES completion:nil];
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_NO_EMAIL_CONFIGURED, SUPPORT_EMAIL_ADDRESS] preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)showSendCoins
@@ -1484,7 +1507,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFailGetPinNoResponse
 {
-    [self showPinErrorWithMessage:BC_STRING_EMPTY_RESPONSE];
+    [self showPinErrorWithMessage:BC_STRING_INCORRECT_PIN_RETRY];
 }
 
 - (void)didFailGetPinInvalidResponse
@@ -1596,8 +1619,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self hideBusyView];
     
-    // If the server returns an "Invalid Numerical Value" response it means the user entered "0000" and we show a slightly different error message
-    if ([@"Invalid Numerical Value" isEqual:value]) {
+    // If the server returns an "Unknown Error" response it means the user entered "0000" and we show a slightly different error message
+    if ([@"Unknown Error" isEqual:value]) {
         value = BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN;
     }
     [app standardNotify:value];

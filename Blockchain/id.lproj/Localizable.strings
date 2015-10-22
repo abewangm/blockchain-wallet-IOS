@@ -419,6 +419,9 @@
 "No Password Entered" = "Tidak ada kata sandi yang dimasukkan";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Tidak tersedia koneksi internet. Periksa setelan jaringan.";
+
+/* (No Commment) */
 "No internet connection." = "Tidak ada koneksi internet.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Anda didukung dana Anda berhasil";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Anda tidak memiliki rekening diatur untuk pesan. Silahkan hubungi %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Anda memiliki tidak ada dana yang tersedia untuk mengirim dari alamat ini";

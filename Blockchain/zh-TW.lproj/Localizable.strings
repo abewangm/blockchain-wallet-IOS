@@ -419,6 +419,9 @@
 "No Password Entered" = "沒有輸入密碼";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "無可用的互聯網連接。請檢查您的網路設置。";
+
+/* (No Commment) */
 "No internet connection." = "沒有互聯網連接。";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "你成功地備份您的資金";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "您沒有設置為郵件帳戶。請聯繫 %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "你有沒有可用的資金，從該位址發送";

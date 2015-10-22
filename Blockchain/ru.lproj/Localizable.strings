@@ -419,6 +419,9 @@
 "No Password Entered" = "Не введен пароль";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Нет подключение к Интернету доступно. Пожалуйста, проверьте настройки сети.";
+
+/* (No Commment) */
 "No internet connection." = "Нет подключение к Интернету.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Для вас мы создали совершен
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Вы успешно резервное копирование ваших средств";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Вы не имеют аккаунт создан для почты. Пожалуйста, свяжитесь с %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "У вас нет доступных средств для отправки с этого адреса";

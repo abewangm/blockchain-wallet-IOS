@@ -419,6 +419,9 @@
 "No Password Entered" = "Senza Password";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Nessuna connessione internet disponibile. Si prega di controllare le impostazioni di rete.";
+
+/* (No Commment) */
 "No internet connection." = "Senza connessione a internet.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Abbiamo progettato una nuova esperienza di portafo
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "È stato eseguito con successo i fondi";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Non hai un account impostato per la posta. Si prega di contattare %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Si dispone di fondi disponibili per inviare da questo indirizzo";

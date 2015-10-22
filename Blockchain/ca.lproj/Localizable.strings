@@ -419,6 +419,9 @@
 "No Password Entered" = "Cap contrasenya introduïda";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "No hi ha connexió a internet disponible. Si us plau, comproveu la configuració de xarxa.";
+
+/* (No Commment) */
 "No internet connection." = "No hi ha connexió a internet.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Recolzava el seu fons amb èxit";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "No teniu un compte de correu. Contacteu amb %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Té fons disponibles per poder enviar d'aquesta direcció";

@@ -419,6 +419,9 @@
 "No Password Entered" = "Không có mật khẩu";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Không có kết nối internet có sẵn. Xin vui lòng kiểm tra thiết đặt mạng của bạn.";
+
+/* (No Commment) */
 "No internet connection." = "Không có kết nối internet.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Bạn sao lưu các khoản tiền của bạn thành công";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Bạn không có một tài khoản thiết lập cho thư. Xin vui lòng liên hệ với %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Bạn có không có tiền có sẵn để gửi từ địa chỉ này";

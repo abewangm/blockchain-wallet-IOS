@@ -419,6 +419,9 @@
 "No Password Entered" = "ללא הסיסמה שהוזנו";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "חיבור לאינטרנט זמין. נא בדוק את הגדרות הרשת שלך.";
+
+/* (No Commment) */
 "No internet connection." = "חיבור לאינטרנט.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "גיבית את הכספים שלך בהצלחה";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "אין לך חשבון להגדיר עבור דואר. אנא צרו קשר %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "יש לך אין מימון לשלוח מהכתובת הזאת";

@@ -15,6 +15,7 @@
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource>
 @property (nonatomic) id paymentObserver;
+@property (nonatomic) UITextField *lastSelectedField;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -711,7 +712,7 @@ UIAlertController *popupAddressArchive;
     
     // Select the entry field
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [fiatAmountField becomeFirstResponder];
+        self.lastSelectedField == nil ? [fiatAmountField becomeFirstResponder] : [self.lastSelectedField becomeFirstResponder];
     });
 }
 
@@ -777,6 +778,18 @@ UIAlertController *popupAddressArchive;
                                                   object:nil];
 }
 
+- (void)promptForLabelAfterScan
+{
+    if (self.view.window) {
+        //newest address is the last object in activeKeys
+        self.clickedAddress = [activeKeys lastObject];
+        [self labelAddressClicked:nil];
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS
+                                                  object:nil];
+}
+
 - (void)scanPrivateKey
 {
     if (![app checkInternetConnection]) {
@@ -784,6 +797,9 @@ UIAlertController *popupAddressArchive;
     }
     
     PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(promptForLabelAfterScan)
+                                                     name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
         [app.wallet addKey:privateKeyString];
         [app.wallet loading_stop];
     } error:nil];
@@ -794,6 +810,14 @@ UIAlertController *popupAddressArchive;
 }
 
 # pragma mark - UITextField delegates
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == fiatAmountField || textField == btcAmountField) {
+        self.lastSelectedField = textField; 
+    }
+    return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField*)textField
 {

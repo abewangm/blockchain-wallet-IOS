@@ -419,6 +419,9 @@
 "No Password Entered" = "Girilen parola";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Internet bağlantısı yok. Lütfen ağ ayarlarınızı denetleyin.";
+
+/* (No Commment) */
 "No internet connection." = "Internet bağlantısı yok.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Paranızı kadar başarıyla yedeklenen";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Posta için ayarlanmış bir hesap var mı. %@ ulaşın";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Bu adresten göndermek için kullanılabilir hiçbir para olduğu";

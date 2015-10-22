@@ -419,6 +419,9 @@
 "No Password Entered" = "Ingen adgangskode angivet";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Ingen internetforbindelse til rådighed. Kontroller dine netværksindstillinger.";
+
+/* (No Commment) */
 "No internet connection." = "Ingen internetforbindelse.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Du sikkerhedskopieret dine penge";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Du har ikke en konto sat op til Mail. Kontakt venligst %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Du har ingen midler til rådighed til at sende fra denne adresse";

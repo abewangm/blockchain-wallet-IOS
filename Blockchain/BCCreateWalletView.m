@@ -174,7 +174,7 @@
 
 - (IBAction)termsOfServiceClicked:(id)sender
 {
-    [app pushWebViewController:[WebROOT stringByAppendingString:@"terms_of_service"] title:BC_STRING_TERMS_OF_SERVICE];
+    [app pushWebViewController:TERMS_OF_SERVICE_URL title:BC_STRING_TERMS_OF_SERVICE];
     [emailTextField becomeFirstResponder];
 }
 
@@ -207,6 +207,8 @@
 {
     if ([message isEqualToString:@""]) {
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+    } else if ([message isEqualToString:@"timeout request"]){
+        [app standardNotify:BC_STRING_TIMED_OUT];
     } else {
         [app standardNotify:message];
     }

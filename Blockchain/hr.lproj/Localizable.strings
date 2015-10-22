@@ -419,6 +419,9 @@
 "No Password Entered" = "Nema lozinke";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Internet veza nije dostupna. Provjerite mrežne postavke.";
+
+/* (No Commment) */
 "No internet connection." = "Bez internetske veze.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "Osmislili smo potpuno novi novčanik iskustvo za v
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Ste uspješno napravili backup svoje fondove";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Nemate korisnički račun za poštu. Obratite se %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Imate raspoloživih sredstava poslati sa ove adrese";

@@ -419,6 +419,9 @@
 "No Password Entered" = "कोई पासवर्ड दर्ज किया";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "कोई इंटरनेट कनेक्शन उपलब्ध नहीं। कृपया अपनी नेटवर्क सेटिंग्स की जाँच करें।";
+
+/* (No Commment) */
 "No internet connection." = "कोई इंटरनेट कनेक्शन।";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "आप अपनी निधियों को सफलतापूर्वक समर्थित";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "आप किसी खाते के लिए मेल सेट अप नहीं है। कृपया %@ से संपर्क करें";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "आप इस पते से भेजने के लिए कोई धनराशि उपलब्ध है";

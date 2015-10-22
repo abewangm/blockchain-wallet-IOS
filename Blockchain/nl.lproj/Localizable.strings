@@ -419,6 +419,9 @@
 "No Password Entered" = "Geen wachtwoord ingevoerd";
 
 /* (No Commment) */
+"No internet connection available. Please check your network settings." = "Geen internetverbinding beschikbaar. Controleer uw netwerkinstellingen.";
+
+/* (No Commment) */
 "No internet connection." = "Geen internetverbinding.";
 
 /* (No Commment) */
@@ -754,6 +757,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "U met succes een back-up uw fondsen";
+
+/* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "U hoeft niet een account instellen voor Mail. Neem contact op met %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "U hebt geen middelen voor het verzenden van dit adres";

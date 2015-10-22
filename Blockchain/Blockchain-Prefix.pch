@@ -83,6 +83,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS @"reloadToDismissViews"
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
 #define NOTIFICATION_KEY_NEW_ADDRESS @"newAddress"
+#define NOTIFICATION_KEY_SCANNED_NEW_ADDRESS @"scannedNewAddress"
 
 // Notifications used in settings
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
