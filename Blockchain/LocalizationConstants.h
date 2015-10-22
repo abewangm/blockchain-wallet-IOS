@@ -258,6 +258,8 @@
 #define BC_STRING_SETTINGS_DISPLAY_PREFERENCES NSLocalizedString(@"Display", nil)
 #define BC_STRING_SETTINGS_FEES NSLocalizedString(@"Fees", nil)
 #define BC_STRING_SETTINGS_FEE_PER_KB NSLocalizedString(@"Fee per kilobyte", nil)
+#define BC_STRING_SETTINGS_SECURITY NSLocalizedString(@"Security", nil)
+#define BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN NSLocalizedString(@"Use Touch ID as PIN", nil)
 #define BC_STRING_SETTINGS_LOCAL_CURRENCY NSLocalizedString(@"Local Currency", nil)
 #define BC_STRING_SETTINGS_BTC NSLocalizedString(@"Bitcoin Units", nil)
 #define BC_STRING_SETTINGS_NOTIFICATIONS NSLocalizedString(@"Notifications", nil)

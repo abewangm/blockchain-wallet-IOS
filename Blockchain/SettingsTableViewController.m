@@ -26,7 +26,10 @@ const int displayBtcUnit = 1;
 const int feesSection = 2;
 const int feePerKb = 0;
 
-const int aboutSection = 3;
+const int securitySection = 3;
+const int securityTouchID = 0;
+
+const int aboutSection = 4;
 const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
@@ -321,6 +324,21 @@ const int aboutPrivacyPolicy = 1;
     [self performSelector:@selector(alertUserOfVerifyingEmailSuccess) withObject:nil afterDelay:0.2f];
 }
 
+- (void)switchTouchIDTapped
+{
+    if ([app isTouchIDAvailable]) {
+        BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+        
+        if (!touchIDEnabled == YES) {
+            app.isValidatingPINForTouchID = YES;
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            [app showPinModalAsView:YES];
+        }
+    }
+}
+
 #pragma mark AlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -553,7 +571,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -562,6 +580,7 @@ const int aboutPrivacyPolicy = 1;
         case accountDetailsSection: return 2;
         case displaySection: return 2;
         case feesSection: return 1;
+        case securitySection: return 1;
         case aboutSection: return 2;
         default: return 0;
     }
@@ -573,6 +592,7 @@ const int aboutPrivacyPolicy = 1;
         case accountDetailsSection: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
         case displaySection: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
         case feesSection: return BC_STRING_SETTINGS_FEES;
+        case securitySection: return BC_STRING_SETTINGS_SECURITY;
         case aboutSection: return BC_STRING_SETTINGS_ABOUT;
         default: return nil;
     }
@@ -655,6 +675,24 @@ const int aboutPrivacyPolicy = 1;
                     cell.textLabel.text = BC_STRING_SETTINGS_FEE_PER_KB;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self convertFloatToString:[self getFeePerKb]]];
+                    return cell;
+                }
+            }
+        }
+        case securitySection: {
+            switch (indexPath.row) {
+                case securityTouchID: {
+                    cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                    if (!cell) {
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                        cell.textLabel.font = [SettingsTableViewController fontForCell];
+                        cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
+                        UISwitch *switchForTouchID = [[UISwitch alloc] init];
+                        BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+                        switchForTouchID.on = touchIDEnabled;
+                        [switchForTouchID addTarget:self action:@selector(switchTouchIDTapped) forControlEvents:UIControlEventTouchUpInside];
+                        cell.accessoryView = switchForTouchID;
+                    }
                     return cell;
                 }
             }

@@ -1028,7 +1028,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 #pragma mark - Show Screens
 
-- (void)showAccountSettings
+- (void)showSettings
 {
     if (!_settingsNavigationController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
@@ -1103,6 +1103,11 @@ void (^secondPasswordSuccess)(NSString *);
     // if pin exists - verify
     if ([self isPinSet]) {
         self.pinEntryViewController = [PEPinEntryController pinVerifyController];
+#ifdef TOUCH_ID_ENABLED
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED] && !self.isValidatingPINForTouchID) {
+            [self authenticateWithTouchID];
+        }
+#endif
     }
     // no pin - create
     else {
@@ -1210,7 +1215,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)accountSettingsClicked:(id)sender
 {
-    [app showAccountSettings];
+    [app showSettings];
 }
 
 - (IBAction)backupClicked:(id)sender
@@ -1410,7 +1415,9 @@ void (^secondPasswordSuccess)(NSString *);
                               }
                               
                               if (success) {
-                                  DLog(@"touchID success");
+                                  NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
+                                  NSString * pin = [self pinFromKeychain];
+                                  [app.wallet apiGetPINValue:pinKey pin:pin];
                                   
                               } else {
                                   UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_WRONG_USER preferredStyle:UIAlertControllerStyleAlert];
@@ -1418,16 +1425,28 @@ void (^secondPasswordSuccess)(NSString *);
                                   [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
                                   return;
                               }
-                              
+
                           }];
         
     } else {
-        
+
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
         return;
         
+    }
+}
+
+- (BOOL)isTouchIDAvailable
+{
+    LAContext *context = [[LAContext alloc] init];
+    
+    NSError *error = nil;
+    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+        return YES;
+    } else {
+        return NO;
     }
 }
 
@@ -1603,6 +1622,13 @@ void (^secondPasswordSuccess)(NSString *);
         [self closePINModal:YES];
         
         pinSuccess = TRUE;
+
+#ifdef TOUCH_ID_ENABLED
+        if (self.isValidatingPINForTouchID) {
+            [self showSettings];
+            self.isValidatingPINForTouchID = NO;
+        }
+#endif
     }
     // Unknown error
     else {
@@ -1728,6 +1754,31 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"Pin change cancelled!");
     [self closePINModal:YES];
+}
+
+- (void)setPINInKeychain:(NSString *)pin
+{
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_PIN accessGroup:nil];
+    [keychain setObject:(__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly forKey:(__bridge id)kSecAttrAccessible];
+    
+    [keychain setObject:KEYCHAIN_KEY_PIN forKey:(__bridge id)kSecAttrAccount];
+    [keychain setObject:[pin dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
+}
+
+- (NSString *)pinFromKeychain
+{
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_PIN accessGroup:nil];
+    NSData *pinData = [keychain objectForKey:(__bridge id)kSecValueData];
+    NSString *pin = [[NSString alloc] initWithData:pinData encoding:NSUTF8StringEncoding];
+    
+    return pin.length == 0 ? nil : pin;
+}
+
+- (void)removePinFromKeychain
+{
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_PIN accessGroup:nil];
+    
+    [keychain resetKeychainItem];
 }
 
 #pragma mark - GUID

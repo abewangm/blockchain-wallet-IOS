@@ -74,6 +74,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;
 
 @property (nonatomic) BOOL showEmailWarning;
+@property (nonatomic) BOOL isValidatingPINForTouchID;
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;
 
@@ -176,7 +177,7 @@
 - (BOOL)isPinSet;
 
 - (BOOL)checkInternetConnection;
-
+- (BOOL)isTouchIDAvailable;
 @end
 
 extern AppDelegate *app;
