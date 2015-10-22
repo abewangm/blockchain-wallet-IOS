@@ -759,6 +759,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 "You backed up your funds successfully" = "U met succes een back-up uw fondsen";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "U hoeft niet een account instellen voor Mail. Neem contact op met %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "U hebt geen middelen voor het verzenden van dit adres";
 
 /* (No Commment) */

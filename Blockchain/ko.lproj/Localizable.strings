@@ -759,6 +759,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 "You backed up your funds successfully" = "귀하의 자금을 성공적으로 백업";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "메일 설정 된 계정이 필요가 없습니다. %@에 문의 하시기 바랍니다";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "당신은이 주소에서 보내는 데 사용할 수 있는 자금";
 
 /* (No Commment) */

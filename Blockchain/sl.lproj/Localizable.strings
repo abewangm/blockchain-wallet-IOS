@@ -759,6 +759,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 "You backed up your funds successfully" = "Ste varnostno kopirali sredstva uspešno";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Nimate račun nastavite za pošto. Se obrnite na %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Imate na voljo sredstva za pošiljanje iz tega naslova";
 
 /* (No Commment) */

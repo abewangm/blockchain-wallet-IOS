@@ -759,6 +759,9 @@ wallet experience for you" = "Zaprojektowaliśmy zupełnie nowe doświadczenie p
 "You backed up your funds successfully" = "Kopii zapasowej fundusze pomyślnie";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Nie masz konta skonfigurować pocztę. Proszę o kontakt %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Masz nie dostępnych środków z tego adresu";
 
 /* (No Commment) */

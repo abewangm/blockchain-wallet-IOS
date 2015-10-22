@@ -759,6 +759,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 "You backed up your funds successfully" = "Biztonsági másolatot készített az alapok sikeres";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Nincs beállított E-mail fiókkal. Kérjük, forduljon %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Nincs rendelkezésre álló pénzeszközök küldeni erről a címről van";
 
 /* (No Commment) */

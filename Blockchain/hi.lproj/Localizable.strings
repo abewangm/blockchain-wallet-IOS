@@ -759,6 +759,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "You backed up your funds successfully" = "आप अपनी निधियों को सफलतापूर्वक समर्थित";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "आप किसी खाते के लिए मेल सेट अप नहीं है। कृपया %@ से संपर्क करें";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "आप इस पते से भेजने के लिए कोई धनराशि उपलब्ध है";
 
 /* (No Commment) */

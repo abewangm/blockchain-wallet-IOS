@@ -759,6 +759,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 "You backed up your funds successfully" = "يمكنك نسخ احتياطي الأموال الخاصة بك بنجاح";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "ليس لديك حساب للبريد. الرجاء الاتصال %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "لديك لا الأموال المتاحة لإرسال من هذا العنوان";
 
 /* (No Commment) */

@@ -759,6 +759,9 @@ wallet experience for you" = "Для вас мы создали совершен
 "You backed up your funds successfully" = "Вы успешно резервное копирование ваших средств";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Вы не имеют аккаунт создан для почты. Пожалуйста, свяжитесь с %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "У вас нет доступных средств для отправки с этого адреса";
 
 /* (No Commment) */

@@ -759,6 +759,9 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 "You backed up your funds successfully" = "Ste úspešne zálohovali svoje finančné prostriedky";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Nemáte účet zriadený pre poštu. Prosím, kontaktujte %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Nemáte k dispozícii finančné prostriedky na odoslanie z tejto adresy";
 
 /* (No Commment) */

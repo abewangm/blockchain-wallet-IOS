@@ -759,6 +759,9 @@ wallet experience for you" = "我们已经为您设计全新的钱包经验";
 "You backed up your funds successfully" = "你成功地备份您的资金";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "您没有设置为邮件帐户。请联系 %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "你有没有可用的资金，从该地址发送";
 
 /* (No Commment) */

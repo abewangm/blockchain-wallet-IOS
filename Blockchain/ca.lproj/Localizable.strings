@@ -759,6 +759,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 "You backed up your funds successfully" = "Recolzava el seu fons amb èxit";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "No teniu un compte de correu. Contacteu amb %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Té fons disponibles per poder enviar d'aquesta direcció";
 
 /* (No Commment) */

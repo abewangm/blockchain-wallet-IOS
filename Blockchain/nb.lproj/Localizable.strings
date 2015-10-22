@@ -759,6 +759,9 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 "You backed up your funds successfully" = "Du sikkerhetskopierte midlene vellykket";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Du har ikke en konto satt opp for e-post. Kontakt %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Du har ingen tilgjengelige midler til å sende fra denne adressen";
 
 /* (No Commment) */

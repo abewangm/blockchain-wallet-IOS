@@ -759,6 +759,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 "You backed up your funds successfully" = "Aţi făcut până-ţi fonduri cu succes";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Nu aveţi un cont configurat pentru Mail. Vă rugăm să contactaţi %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Tu ai nu există fonduri disponibile pentru a trimite la aceasta adresa";
 
 /* (No Commment) */

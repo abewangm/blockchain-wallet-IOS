@@ -759,6 +759,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 "You backed up your funds successfully" = "你成功地備份您的資金";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "您沒有設置為郵件帳戶。請聯繫 %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "你有沒有可用的資金，從該位址發送";
 
 /* (No Commment) */

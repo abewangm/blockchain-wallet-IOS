@@ -759,6 +759,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 "You backed up your funds successfully" = "Δημιουργήσατε αντίγραφα ασφαλείας των κεφαλαίων σας με επιτυχία";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Δεν έχετε ένα λογαριασμό που έχει συσταθεί για το ταχυδρομείο. Παρακαλούμε επικοινωνήστε με %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Έχετε καμία διαθέσιμα κεφάλαια να στείλει από αυτή τη διεύθυνση";
 
 /* (No Commment) */

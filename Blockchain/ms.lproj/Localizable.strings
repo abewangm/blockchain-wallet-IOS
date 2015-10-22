@@ -759,6 +759,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 "You backed up your funds successfully" = "Anda disokong dana anda berjaya";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Anda tidak mempunyai akaun untuk mel. Sila hubungi %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Engkau tiada dana yang sedia untuk menghantar alamat ini";
 
 /* (No Commment) */

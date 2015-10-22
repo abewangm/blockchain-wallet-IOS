@@ -759,6 +759,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "You backed up your funds successfully" = "Paranızı kadar başarıyla yedeklenen";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Posta için ayarlanmış bir hesap var mı. %@ ulaşın";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Bu adresten göndermek için kullanılabilir hiçbir para olduğu";
 
 /* (No Commment) */

@@ -759,6 +759,9 @@ wallet experience for you" = "Osmislili smo potpuno novi novčanik iskustvo za v
 "You backed up your funds successfully" = "Ste uspješno napravili backup svoje fondove";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Nemate korisnički račun za poštu. Obratite se %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Imate raspoloživih sredstava poslati sa ove adrese";
 
 /* (No Commment) */

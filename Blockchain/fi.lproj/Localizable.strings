@@ -759,6 +759,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "You backed up your funds successfully" = "Varmuuskopiointi rahat onnistui";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "Sinulla ei ole tilin postia. Ota yhteyttä %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "Sinulla ei ole varoja lähettää tähän osoitteeseen";
 
 /* (No Commment) */

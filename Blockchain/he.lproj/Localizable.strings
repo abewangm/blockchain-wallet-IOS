@@ -759,6 +759,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "You backed up your funds successfully" = "גיבית את הכספים שלך בהצלחה";
 
 /* (No Commment) */
+"You do not have an account set up for Mail. Please contact %@" = "אין לך חשבון להגדיר עבור דואר. אנא צרו קשר %@";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "יש לך אין מימון לשלוח מהכתובת הזאת";
 
 /* (No Commment) */
