@@ -976,8 +976,7 @@ MyWalletPhone.generateNewAddress = function() {
 };
 
 MyWalletPhone.checkIfWalletHasAddress = function(address) {
-    var addresses = MyWallet.wallet.addresses;
-    return (addresses.indexOf(address) > -1);
+    return (MyWallet.wallet.addresses.indexOf(address) > -1);
 }
 
 MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {

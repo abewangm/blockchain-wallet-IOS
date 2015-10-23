@@ -447,11 +447,17 @@
 
 - (uint64_t)getLegacyAddressBalance:(NSString*)address
 {
+    uint64_t errorBalance = 0;
     if (![self.webView isLoaded]) {
-        return 0;
+        return errorBalance;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").balance", [address escapeStringForJS]] longLongValue];
+    if ([self checkIfWalletHasAddress:address]) {
+        return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").balance", [address escapeStringForJS]] longLongValue];
+    } else {
+        DLog(@"Wallet error: Tried to get balance of address %@, which was not found in this wallet", address);
+        return errorBalance;
+    }
 }
 
 - (BOOL)addKey:(NSString*)privateKeyString
