@@ -1057,22 +1057,22 @@ void (^secondPasswordSuccess)(NSString *);
 {
     // Send email using the Message UI Framework: http://stackoverflow.com/a/1513433/2076094
     // If the user has not email account set up, he should get a notification saying he can't send emails (tested on iOS 7.1.1)
-    MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+    MFMailComposeViewController *emailViewController = [[MFMailComposeViewController alloc] init];
     
-    if (controller != nil) {
-        controller.mailComposeDelegate = self;
-        controller.navigationBar.tintColor = COLOR_BLOCKCHAIN_BLUE;
-        [controller setToRecipients:@[SUPPORT_EMAIL_ADDRESS]];
-        [controller setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
+    if (emailViewController != nil) {
+        emailViewController.mailComposeDelegate = self;
+        emailViewController.navigationBar.tintColor = COLOR_BLOCKCHAIN_BLUE;
+        [emailViewController setToRecipients:@[SUPPORT_EMAIL_ADDRESS]];
+        [emailViewController setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
         
         NSString *message = [NSString stringWithFormat:@"\n\n--\nApp: %@\nSystem: %@ %@\n",
                              [UncaughtExceptionHandler appNameAndVersionNumberDisplayString],
                              [[UIDevice currentDevice] systemName],
                              [[UIDevice currentDevice] systemVersion]];
-        [controller setMessageBody:message isHTML:NO];
+        [emailViewController setMessageBody:message isHTML:NO];
         
-        controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self.tabViewController presentViewController:controller animated:YES completion:nil];
+        emailViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self.tabViewController presentViewController:emailViewController animated:YES completion:nil];
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_NO_EMAIL_CONFIGURED, SUPPORT_EMAIL_ADDRESS] preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];

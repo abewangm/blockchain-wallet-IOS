@@ -128,7 +128,7 @@
 
 - (IBAction)phoneNumberAction:(id)sender
 {
-    NSString *phoneNumber = [NSString stringWithFormat:@"tel://%@", self.merchant.telephone];
+    NSString *phoneNumber = [NSString stringWithFormat:@"tel://%@", [self.merchant.telephone stringByReplacingOccurrencesOfString:@" " withString:@""]];
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:phoneNumber]]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     } else {

@@ -438,6 +438,9 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
     };
     var error = function (res) {
 
+        if (res === "Site is in Maintenance mode") {
+            device.execute('on_error_maintenance_mode');
+        }
         if (res === "timeout request") {
             device.execute('on_error_pin_code_get_timeout');
         }
@@ -976,8 +979,7 @@ MyWalletPhone.generateNewAddress = function() {
 };
 
 MyWalletPhone.checkIfWalletHasAddress = function(address) {
-    var addresses = MyWallet.wallet.addresses;
-    return (addresses.indexOf(address) > -1);
+    return (MyWallet.wallet.addresses.indexOf(address) > -1);
 }
 
 MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
