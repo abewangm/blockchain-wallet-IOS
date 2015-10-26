@@ -1058,6 +1058,14 @@
         [delegate didGetPinResponse:responseObject];
 }
 
+- (void)on_error_maintenance_mode
+{
+    DLog(@"on_error_maintenance_mode");
+    [self loading_stop];
+    [app.pinEntryViewController reset];
+    [app standardNotify:BC_STRING_MAINTENANCE_MODE];
+}
+
 - (void)on_backup_wallet_start
 {
     if (self.isSyncingForTrivialProcess) {

@@ -438,6 +438,9 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
     };
     var error = function (res) {
 
+        if (res === "Site is in Maintenance mode") {
+            device.execute('on_error_maintenance_mode');
+        }
         if (res === "timeout request") {
             device.execute('on_error_pin_code_get_timeout');
         }
