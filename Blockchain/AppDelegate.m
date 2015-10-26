@@ -1415,6 +1415,9 @@ void (^secondPasswordSuccess)(NSString *);
                               }
                               
                               if (success) {
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                      [self showBusyViewWithLoadingText:BC_STRING_LOADING_VERIFYING];
+                                  });
                                   NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
                                   NSString * pin = [self pinFromKeychain];
                                   [app.wallet apiGetPINValue:pinKey pin:pin];
