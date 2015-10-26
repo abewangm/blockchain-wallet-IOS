@@ -1410,7 +1410,9 @@ void (^secondPasswordSuccess)(NSString *);
                               if (error) {
                                   UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_VERIFYING preferredStyle:UIAlertControllerStyleAlert];
                                   [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-                                  [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                      [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                                  });
                                   return;
                               }
                               
@@ -1425,7 +1427,9 @@ void (^secondPasswordSuccess)(NSString *);
                               } else {
                                   UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_WRONG_USER preferredStyle:UIAlertControllerStyleAlert];
                                   [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-                                  [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                      [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                                  });
                                   return;
                               }
 
@@ -1435,7 +1439,9 @@ void (^secondPasswordSuccess)(NSString *);
 
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        });
         return;
         
     }
