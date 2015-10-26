@@ -119,6 +119,11 @@
 	[delegate pinEntryControllerDidEnteredPin:self];
 }
 
+- (void)keyboardViewDidSpecialAction
+{
+    [delegate pinEntryControllerDidSpecialAction];
+}
+
 - (void)setPrompt:(NSString *)p
 {
 	[self view];

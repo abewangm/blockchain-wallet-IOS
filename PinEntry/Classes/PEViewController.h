@@ -31,6 +31,7 @@
 
 @required
 - (void)pinEntryControllerDidEnteredPin:(PEViewController *)controller;
+- (void)pinEntryControllerDidSpecialAction;
 - (void)cancelController;
 
 @end

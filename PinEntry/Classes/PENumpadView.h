@@ -38,6 +38,7 @@ extern NSString *kPinEntryKeyboardCode;
 - (void)keyboardViewDidBackspaced;
 @optional
 - (void)keyboardViewDidOptKey;
+- (void)keyboardViewDidSpecialAction;
 
 @end
 
