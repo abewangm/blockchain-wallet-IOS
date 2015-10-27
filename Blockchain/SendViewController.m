@@ -415,9 +415,10 @@ BOOL displayingLocalSymbolSend;
         uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
         
         NSString *fromAddressLabel = self.sendFromAddress ? [self labelForLegacyAddress:self.fromAddress] : [app.wallet getLabelForAccount:self.fromAccount];
+        
         NSString *fromAddressString = self.sendFromAddress ? self.fromAddress : [app.wallet getReceiveAddressForAccount:self.fromAccount];
         
-        if ([self.fromAddress isEqualToString:@""]) {
+        if ([self.fromAddress isEqualToString:@""] && self.sendFromAddress) {
             fromAddressString = BC_STRING_ANY_ADDRESS;
         }
         
