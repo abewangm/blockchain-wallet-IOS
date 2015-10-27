@@ -91,16 +91,16 @@ int lastNumberTransactions = INT_MAX;
         [tableView.tableHeaderView addSubview:noTransactionsView];
         
         // Balance
-        [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalBalanceForActiveLegacyAddresses] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalBalanceForActiveLegacyAddresses] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
         [noTransactionsView removeFromSuperview];
         
         // Balance
-        [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalBalanceForActiveLegacyAddresses] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalBalanceForActiveLegacyAddresses] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
 }
 

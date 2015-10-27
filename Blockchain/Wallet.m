@@ -1340,13 +1340,22 @@
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.addresses.length > 0"] boolValue];
 }
 
-- (uint64_t)getTotalBalanceForActiveLegacyAddresses
+- (uint64_t)getTotalActiveBalance
 {
     if (![self isInitialized]) {
         return 0;
     }
     
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceSpendableActive"] longLongValue];
+}
+
+- (uint64_t)getTotalBalanceForActiveLegacyAddresses
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceSpendableActiveLegacy"] longLongValue];
 }
 
 - (uint64_t)getBalanceForAccount:(int)account
