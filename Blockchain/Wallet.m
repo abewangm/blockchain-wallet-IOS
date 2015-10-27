@@ -1242,6 +1242,12 @@
     [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR delegate:nil];
 }
 
+- (void)on_error_get_history:(NSString *)error
+{
+    [self loading_stop];
+    [app standardNotify:error];
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)whitelistWallet

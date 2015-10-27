@@ -355,9 +355,13 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         MyWallet.wallet.getBalancesForArchived();
     };
     
+    var history_error = function(error) {
+        device.execute('on_error_get_history:', [error]);
+    }
+    
     var success = function() {
         var getHistory = MyWallet.wallet.getHistory();
-        getHistory.then(history_success);
+        getHistory.then(history_success).catch(history_error);
     };
     
     var other_error = function(e) {
