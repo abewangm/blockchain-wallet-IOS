@@ -345,10 +345,6 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         device.execute('loading_start_multiaddr');
     };
     
-    var get_balances_for_archived_error = function(error) {
-        device.execute('on_error_get_history:', [error]);
-    }
-    
     var history_success = function() {
         logTime('get history');
         
@@ -356,8 +352,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         
         device.execute('did_load_wallet');
         
-        var getBalancesForArchived = MyWallet.wallet.getBalancesForArchived();
-        getBalancesForArchived.catch(get_balances_for_archived_error);
+        MyWallet.wallet.getBalancesForArchived();
     };
     
     var history_error = function(error) {
