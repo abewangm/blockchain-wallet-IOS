@@ -70,6 +70,7 @@
 - (void)didFailToImportPrivateKey:(NSString *)error;
 - (void)didFailRecovery;
 - (void)didRecoverWallet;
+- (void)didFailGetHistory:(NSString *)error;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {

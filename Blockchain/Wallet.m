@@ -1245,7 +1245,9 @@
 - (void)on_error_get_history:(NSString *)error
 {
     [self loading_stop];
-    [app standardNotify:error];
+    if ([self.delegate respondsToSelector:@selector(didFailGetHistory:)]) {
+        [self.delegate didFailGetHistory:error];
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

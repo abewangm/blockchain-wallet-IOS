@@ -1025,6 +1025,16 @@ void (^secondPasswordSuccess)(NSString *);
     [createWalletView didRecoverWallet];
 }
 
+- (void)didFailGetHistory:(NSString *)error
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        UIApplication *app = [UIApplication sharedApplication];
+        [app performSelector:@selector(suspend)];
+    }]];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountSettings
