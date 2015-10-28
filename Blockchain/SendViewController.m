@@ -488,6 +488,7 @@ BOOL displayingLocalSymbolSend;
     else {
         [self removeHighlightFromAmounts];
         [self enablePaymentButtons];
+
         [app.wallet changePaymentAmount:amountInSatoshi];
     }
     
@@ -569,6 +570,25 @@ BOOL displayingLocalSymbolSend;
     
     [self.view removeGestureRecognizer:self.tapGesture];
     self.tapGesture = nil;
+}
+
+- (BOOL)isKeyboardVisible
+{
+    if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder] || [toField isFirstResponder]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)showErrorBeforeSending:(NSString *)error
+{
+    if ([self isKeyboardVisible]) {
+        [self dismissKeyboard];
+        [app performSelector:@selector(standardNotifyAutoDismissingController:) withObject:error afterDelay:0.6f];
+    } else {
+        [app standardNotifyAutoDismissingController:error];
+    }
 }
 
 #pragma mark - Textfield Delegates
@@ -1031,29 +1051,29 @@ BOOL displayingLocalSymbolSend;
     }
     
     if ([self.toAddress length] == 0) {
-        [app standardNotifyAutoDismissingController:BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS];
+        [self showErrorBeforeSending:BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS];
         return;
     }
     
     if (self.sendToAddress && ![app.wallet isValidAddress:self.toAddress]) {
-        [app standardNotifyAutoDismissingController:BC_STRING_INVALID_TO_BITCOIN_ADDRESS];
+        [self showErrorBeforeSending:BC_STRING_INVALID_TO_BITCOIN_ADDRESS];
         return;
     }
     
     if (!self.sendFromAddress && !self.sendToAddress && self.fromAccount == self.toAccount) {
-        [app standardNotifyAutoDismissingController:BC_STRING_FROM_TO_ACCOUNT_DIFFERENT];
+        [self showErrorBeforeSending:BC_STRING_FROM_TO_ACCOUNT_DIFFERENT];
         return;
     }
     
     if (self.sendFromAddress && self.sendToAddress && [self.fromAddress isEqualToString:self.toAddress]) {
-        [app standardNotifyAutoDismissingController:BC_STRING_FROM_TO_ADDRESS_DIFFERENT];
+        [self showErrorBeforeSending:BC_STRING_FROM_TO_ADDRESS_DIFFERENT];
         return;
     }
     
     uint64_t value = amountInSatoshi;
     NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
     if (value <= 0 || [amountString doubleValue] <= 0) {
-        [app standardNotifyAutoDismissingController:BC_STRING_INVALID_SEND_VALUE];
+        [self showErrorBeforeSending:BC_STRING_INVALID_SEND_VALUE];
         return;
     }
     
