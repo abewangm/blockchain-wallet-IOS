@@ -523,6 +523,7 @@ BOOL displayingLocalSymbolSend;
 {
     continuePaymentButton.enabled = NO;
     continuePaymentAccessoryButton.enabled = NO;
+    [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
     [continuePaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [continuePaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
@@ -531,6 +532,7 @@ BOOL displayingLocalSymbolSend;
 {
     continuePaymentButton.enabled = YES;
     continuePaymentAccessoryButton.enabled = YES;
+    [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_GREEN];
     [continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
