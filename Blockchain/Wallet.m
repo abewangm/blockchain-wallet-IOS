@@ -357,7 +357,11 @@
         return FALSE;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").isWatchOnly", [address escapeStringForJS]] boolValue];
+    if ([self checkIfWalletHasAddress:address]) {
+        return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").isWatchOnly", [address escapeStringForJS]] boolValue];
+    } else {
+        return NO;
+    }
 }
 
 - (NSString*)labelForLegacyAddress:(NSString*)address
@@ -366,7 +370,11 @@
         return nil;
     }
     
-    return [self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").label", [address escapeStringForJS]];
+    if ([self checkIfWalletHasAddress:address]) {
+        return [self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").label", [address escapeStringForJS]];
+    } else {
+        return nil;
+    }
 }
 
 - (Boolean)isArchived:(NSString*)address

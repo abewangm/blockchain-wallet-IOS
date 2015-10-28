@@ -35,6 +35,7 @@
 #import "BCWebViewController.h"
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
+#import "UIViewController+AutoDismiss.h"
 
 AppDelegate * app;
 
@@ -296,6 +297,14 @@ void (^secondPasswordSuccess)(NSString *);
 }
 
 #pragma mark - AlertView Helpers
+
+- (void)standardNotifyAutoDismissingController:(NSString *)message
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
 
 - (void)standardNotify:(NSString*)message
 {
