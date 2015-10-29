@@ -999,15 +999,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didImportPrivateKey:(NSString *)address
 {
-    if (_receiveViewController.view.window) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-        alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (wallet.isSyncingForCriticalProcess) {
-                [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-            }
-        };
-        [alertView show];
-    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if (wallet.isSyncingForCriticalProcess) {
+            [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+        }
+    }]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)didFailToImportPrivateKey:(NSString *)error
@@ -1015,12 +1014,12 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         if (wallet.isSyncingForCriticalProcess && [error isEqualToString:@"Key already imported"]) {
             [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         }
-    }];
-    [errorAlert addAction:okAction];
+    }]];
+    [[NSNotificationCenter defaultCenter] addObserver:errorAlert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [self.window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
 }
 
