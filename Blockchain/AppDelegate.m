@@ -1035,7 +1035,19 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFailGetHistory:(NSString *)error
 {
-    [self standardNotify:error];
+    NSString *errorMessage = [error length] == 0 ? BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION : error;
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if ([self isPinSet]) {
+            [self showPinModalAsView:NO];
+        } else {
+            UIApplication *app = [UIApplication sharedApplication];
+            [app performSelector:@selector(suspend)];
+        }
+    }]];
+    
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Show Screens
