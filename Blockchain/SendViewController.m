@@ -286,17 +286,21 @@ BOOL displayingLocalSymbolSend;
     };
     
     listener.on_error = ^(NSString* error) {
-        if (error && error.length != 0) {
-            DLog(@"%@", error);
+        DLog(@"Send error: %@", error);
+
+        if ([error isEqualToString:@"undefined"]) {
+            [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
+        } else if (error && error.length != 0)  {
+            [app standardNotify:error];
         }
-    
-        [app standardNotify:BC_STRING_SEND_ERROR];
         
         [sendProgressActivityIndicator stopAnimating];
         
         [self enablePaymentButtons];
         
         [app closeModalWithTransition:kCATransitionFade];
+        
+        [self reload];
         
         [app.wallet getHistory];
     };
@@ -522,19 +526,23 @@ BOOL displayingLocalSymbolSend;
 - (void)disablePaymentButtons
 {
     continuePaymentButton.enabled = NO;
+    [continuePaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [continuePaymentButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
+    
     continuePaymentAccessoryButton.enabled = NO;
+    [continuePaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
-    [continuePaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [continuePaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (void)enablePaymentButtons
 {
     continuePaymentButton.enabled = YES;
+    [continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [continuePaymentButton setBackgroundColor:COLOR_BUTTON_GREEN];
+    
+    [continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     continuePaymentAccessoryButton.enabled = YES;
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_GREEN];
-    [continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString

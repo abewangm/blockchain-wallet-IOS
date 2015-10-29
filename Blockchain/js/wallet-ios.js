@@ -407,8 +407,8 @@ MyWalletPhone.quickSend = function() {
         delete pendingTransactions[id];
     };
     
-    var error = function(error) {
-        device.execute('tx_on_error:error:', [id, ''+error]);
+    var error = function(response) {
+        device.execute('tx_on_error:error:', [id, ''+response]);
         delete pendingTransactions[id];
     };
     
@@ -419,13 +419,13 @@ MyWalletPhone.quickSend = function() {
             currentPayment
                 .sign(pw)
                 .publish()
-                .payment.then(success).catch(error);
+                .then(success).catch(error);
         });
     } else {
         currentPayment
             .sign()
             .publish()
-            .payment.then(success).catch(error);
+            .then(success).catch(error);
     }
 
     return id;
