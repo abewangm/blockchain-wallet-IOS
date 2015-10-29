@@ -832,6 +832,10 @@ UIAlertController *popupAddressArchive;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (textField == labelTextField) {
+        return YES;
+    }
+    
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSArray  *points = [newString componentsSeparatedByString:@"."];
     NSArray  *commas = [newString componentsSeparatedByString:@","];
