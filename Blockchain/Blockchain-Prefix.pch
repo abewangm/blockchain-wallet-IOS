@@ -206,6 +206,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define PIN_API_STATUS_UNKNOWN 3
 #define PIN_API_STATUS_DUPLICATE_KEY 4
 
+#define PIN_COMMON_CODE_1 1234
+#define PIN_COMMON_CODE_2 1111
+#define PIN_COMMON_CODE_3 1212
+#define PIN_COMMON_CODE_4 7777
+#define PIN_COMMON_CODE_5 1004
+
+// Most common pin codes: http://datagenetics.com/blog/september32012/index.html
+
 #define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
 // TODO: Get from JS
 #define DUST_THRESHOLD 5460

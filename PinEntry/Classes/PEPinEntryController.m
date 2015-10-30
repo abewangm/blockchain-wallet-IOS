@@ -154,6 +154,7 @@ static PEViewController *VerifyController()
 			[[self navigationController] pushViewController:c animated:NO];
 			self.viewControllers = [NSArray arrayWithObject:c];
 			pinStage = PS_ENTER2;
+            [self.pinDelegate pinEntryController:self willChangeToNewPin:[controller.pin intValue]];
 			break;
 		}
 		case PS_ENTER2:
