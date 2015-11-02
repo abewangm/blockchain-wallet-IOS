@@ -1604,10 +1604,6 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self hideBusyView];
     
-    // If the server returns an "Unknown Error" response it means the user entered "0000" and we show a slightly different error message
-    if ([@"Unknown Error" isEqual:value]) {
-        value = BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN;
-    }
     [app standardNotify:value];
     
     [self reopenChangePIN];
@@ -1689,6 +1685,14 @@ void (^secondPasswordSuccess)(NSString *);
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_PIN_COMMON_CODE_WARNING_TITLE message:BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:nil]];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_TRY_AGAIN style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self reopenChangePIN];
+        }]];
+        [c presentViewController:alert animated:YES completion:nil];
+    }
+    
+    if (_pin == PIN_INVALID_CODE) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [self reopenChangePIN];
         }]];
         [c presentViewController:alert animated:YES completion:nil];

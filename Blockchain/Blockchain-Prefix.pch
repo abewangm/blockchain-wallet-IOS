@@ -211,6 +211,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define PIN_COMMON_CODE_3 1212
 #define PIN_COMMON_CODE_4 7777
 #define PIN_COMMON_CODE_5 1004
+#define PIN_INVALID_CODE 0000
 
 // Most common pin codes: http://datagenetics.com/blog/september32012/index.html
 
