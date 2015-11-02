@@ -288,7 +288,7 @@ BOOL displayingLocalSymbolSend;
     listener.on_error = ^(NSString* error) {
         DLog(@"Send error: %@", error);
 
-        if ([error isEqualToString:@"undefined"]) {
+        if ([error isEqualToString:ERROR_UNDEFINED]) {
             [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
         } else if (error && error.length != 0)  {
             [app standardNotify:error];

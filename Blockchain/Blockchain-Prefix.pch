@@ -231,5 +231,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
     #define NDEBUG 1
 #endif
 
-
+#define ERROR_UNDEFINED @"undefined"
+#define ERROR_TIMEOUT_REQUEST @"timeout request"
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
