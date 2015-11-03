@@ -420,7 +420,7 @@ BOOL displayingLocalSymbolSend;
         
         NSString *fromAddressLabel = self.sendFromAddress ? [self labelForLegacyAddress:self.fromAddress] : [app.wallet getLabelForAccount:self.fromAccount];
         
-        NSString *fromAddressString = self.sendFromAddress ? self.fromAddress : [app.wallet getReceiveAddressForAccount:self.fromAccount];
+        NSString *fromAddressString = self.sendFromAddress ? self.fromAddress : @"";
         
         if ([self.fromAddress isEqualToString:@""] && self.sendFromAddress) {
             fromAddressString = BC_STRING_ANY_ADDRESS;
@@ -432,7 +432,7 @@ BOOL displayingLocalSymbolSend;
         }
         
         NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
-        NSString *toAddressString = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
+        NSString *toAddressString = self.sendToAddress ? self.toAddress : @"";
         
         // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
         if ([toAddressLabel isEqualToString:toAddressString]) {
