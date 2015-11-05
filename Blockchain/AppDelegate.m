@@ -1198,7 +1198,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showRecoverWallet:(id)sender
 {
-    [app showModalWithContent:createWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET];
+    [app showModalWithContent:createWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_FUNDS];
     createWalletView.isRecoveringWallet = YES;
 }
 

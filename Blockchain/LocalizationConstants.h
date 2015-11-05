@@ -192,7 +192,7 @@
 #define BC_STRING_LOADING_CREATING_WALLET NSLocalizedString(@"Creating new Wallet", nil)
 #define BC_STRING_LOADING_IMPORT_KEY NSLocalizedString(@"Importing key", nil)
 #define BC_STRING_LOADING_GENERATING_NEW_ADDRESS NSLocalizedString(@"Generating new address", nil)
-#define BC_STRING_LOADING_SYNCING_WALLET NSLocalizedString(@"Syncing wallet", nil)
+#define BC_STRING_LOADING_SYNCING_WALLET NSLocalizedString(@"Syncing Wallet", nil)
 #define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 
 #define BC_STRING_MERCHANT_MAP NSLocalizedString(@"Merchant Map", nil)
@@ -220,9 +220,9 @@
 #define BC_STRING_SCAN_PRIVATE_KEY NSLocalizedString(@"Scan Private Key", nil)
 #define BC_STRING_CONTINUE NSLocalizedString(@"Continue", nil)
 
-#define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my wallet", nil)
-#define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing wallet", nil)
-#define BC_STRING_RECOVER_WALLET NSLocalizedString(@"Recover Wallet", nil)
+#define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my Wallet", nil)
+#define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing Wallet", nil)
+#define BC_STRING_RECOVER_FUNDS NSLocalizedString(@"Recover Funds", nil)
 
 #define BC_STRING_COPY_ADDRESS NSLocalizedString(@"Copy Address", nil)
 #define BC_STRING_ARCHIVE_ADDRESS NSLocalizedString(@"Archive Address", nil)
@@ -295,11 +295,11 @@
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)
 #define BC_STRING_NEW_ADDRESS_GENERATE_NEW NSLocalizedString(@"Generate new", nil)
 
-#define BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
-#define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering wallet", nil)
-#define BC_STRING_LOADING_RECOVERING_WALLET_SEARCHING_ARGUMENT_TEN_ACCOUNTS NSLocalizedString(@"Searching for empty accounts: %d of 10", nil)
+#define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_TEN_ACCOUNTS NSLocalizedString(@"Checking for more accounts: Step %d of 10", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET_ACCOUNT_ARGUMENT_FUNDS_ARGUMENT NSLocalizedString(@"Found account %d, with %@", nil)
-#define BC_STRING_LOADING_GENERATING_UUIDS NSLocalizedString(@"Generating UUIDs", nil)
+#define BC_STRING_LOADING_RECOVERY_CREATING_WALLET NSLocalizedString(@"Creating Wallet", nil)
 #define BC_STRING_INVALID_RECOVERY_PHRASE NSLocalizedString(@"Invalid recovery phrase. Please try again", nil)
 
 #define BC_STRING_MERCHANT_DIRECTORY_UNAVAILABLE NSLocalizedString(@"Merchant Directory is currently unavailable. Please try again later.", nil)

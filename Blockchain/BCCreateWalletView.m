@@ -109,7 +109,7 @@
     
     [self closeKeyboard];
     
-    [app showModalWithContent:self.recoveryPhraseView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET onDismiss:^{
+    [app showModalWithContent:self.recoveryPhraseView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_FUNDS onDismiss:^{
         [self.createButton removeTarget:self action:@selector(recoverWalletClicked:) forControlEvents:UIControlEventTouchUpInside];
     } onResume:^{
         [self.recoveryPhraseView.recoveryPassphraseTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.3f];
@@ -135,7 +135,7 @@
         }
         
         if (wordsArray.count != RECOVERY_PHRASE_NUMBER_OF_WORDS) {
-            [app standardNotify:BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS];
+            [app standardNotify:BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS];
             return;
         }
         
@@ -231,7 +231,7 @@
     }
     else if (textField == password2TextField) {
         if (self.isRecoveringWallet) {
-            [self.createButton setTitle:BC_STRING_RECOVER_WALLET forState:UIControlStateNormal];
+            [self.createButton setTitle:BC_STRING_RECOVER_FUNDS forState:UIControlStateNormal];
             [self showRecoveryPhraseView:nil];
         } else {
             [self createAccountClicked:textField];

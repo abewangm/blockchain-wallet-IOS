@@ -121,3 +121,6 @@
 
 /* Class = "IBUILabel"; text = "* minimum 10 characters"; ObjectID = "wvh-x7-hB8"; */
 "wvh-x7-hB8.text" = "* Minimum 10 characters";
+
+/* Class = "IBUILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Enter your 12 recovery words with spaces to recover your funds & transactions";

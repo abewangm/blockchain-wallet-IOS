@@ -61,7 +61,7 @@ Boolean shouldShowAnimation;
         self.recoverWalletButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.recoverWalletButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
         self.recoverWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        [self.recoverWalletButton setTitle:BC_STRING_RECOVER_WALLET forState:UIControlStateNormal];
+        [self.recoverWalletButton setTitle:BC_STRING_RECOVER_FUNDS forState:UIControlStateNormal];
         self.recoverWalletButton.frame = CGRectMake(0, 0, 230, BUTTON_HEIGHT);
         self.recoverWalletButton.center = CGPointMake(self.frame.size.width / 2, self.existingWalletButton.center.y + BUTTON_HEIGHT);
         [self.recoverWalletButton setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];

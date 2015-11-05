@@ -716,7 +716,7 @@
 
 - (void)loading_start_generate_uuids
 {
-    [app updateBusyViewLoadingText:BC_STRING_LOADING_GENERATING_UUIDS];
+    [app updateBusyViewLoadingText:BC_STRING_LOADING_RECOVERY_CREATING_WALLET];
 }
 
 - (void)loading_start_recover_wallet
@@ -1263,7 +1263,7 @@
     
     if ([totalReceived longLongValue] == 0) {
         self.emptyAccountIndex++;
-        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_SEARCHING_ARGUMENT_TEN_ACCOUNTS, self.emptyAccountIndex]];
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_TEN_ACCOUNTS, self.emptyAccountIndex]];
     } else {
         self.emptyAccountIndex = 0;
         self.recoveredAccountIndex++;
