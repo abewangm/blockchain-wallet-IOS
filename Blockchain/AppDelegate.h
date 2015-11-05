@@ -54,6 +54,7 @@
     
     IBOutlet UIView *mainPasswordView;
     IBOutlet UITextField *mainPasswordTextField;
+    IBOutlet UIButton *forgetWalletButton;
     
     @public
     

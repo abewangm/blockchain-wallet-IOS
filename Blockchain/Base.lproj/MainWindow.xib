@@ -16,6 +16,7 @@
                 <outlet property="busyLabel" destination="263" id="265"/>
                 <outlet property="busyView" destination="260" id="264"/>
                 <outlet property="createWalletView" destination="355" id="dlW-nX-G8c"/>
+                <outlet property="forgetWalletButton" destination="5gL-FG-Zcc" id="2Xs-Cn-kcy"/>
                 <outlet property="mainLogoImageView" destination="226" id="gjc-6g-P3E"/>
                 <outlet property="mainPasswordTextField" destination="626" id="633"/>
                 <outlet property="mainPasswordView" destination="623" id="634"/>
