@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin запроса платежа";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain в настоящее время отключен для обслуживания. Пожалуйста, повторите попытку позже.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain потребностей служб определения местоположения включена для того, чтобы доступ к вашему местоположению.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Забудьте бумажник";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Найдено %1$d счета, с %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "От и назначения учетной записи должны быть разными";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Генерировать новые";
+
+/* (No Commment) */
+"Generating UUIDs" = "Создание UUID";
 
 /* (No Commment) */
 "Generating new address" = "Создание нового адреса";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Сканирование адрес только смотреть?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Поиск пустых аккаунтов: %d из 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Второй пароль неправильный";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Условия предоставления услуг";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN-код который вы выбрали чрезвычайно распространены и могут быть легко угадать кем-то с доступом к телефону в течение 3 попыток. Вы хотели бы использовать этот ПИН-код в любом случае?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Вы хотите отправить (%1$@) сумма больше, чем максимальная сумма, которую вы можете потратить за вычетом комиссионных (%2$@ - %3$@). Вы хотели бы отправить %4$@?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Переданы";
+
+/* (No Commment) */
+"Try again" = "Повторить";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "ОБНОВИТЕ ВАШ КОШЕЛЕК";

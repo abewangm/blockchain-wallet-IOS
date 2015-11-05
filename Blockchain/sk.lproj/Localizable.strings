@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin žiadosť o platbu";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain je v súčasnosti z dôvodu údržby. Skúste znova neskôr.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain potrebuje Location Services povolená na prístup k vašej polohe.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Zabudnite na peňaženky";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Našiel účet %1$d, s %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Z a protiúčtu musia byť rôzne";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Generovať nové";
+
+/* (No Commment) */
+"Generating UUIDs" = "Generovanie uuid";
 
 /* (No Commment) */
 "Generating new address" = "Vytvára novú adresu";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Skenovanie hodinky len adresu?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Hľadanie prázdnych účtov: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Druhý nesprávne heslo";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Podmienky služby";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN ste vybrali je veľmi časté a môže byť ľahko uhádnuté niekoho s prístupom k telefónu do 3 skúša. Chceli by ste použiť tento kód PIN?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Sumu, ktorú chcete poslať (%1$@) je väčšia ako maximálna výška môžete stráviť mínus poplatok (%2$@ - %3$@). Chceli by ste poslať %4$@?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Prevedené";
+
+/* (No Commment) */
+"Try again" = "skús znova";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "INOVOVAŤ VAŠU PEŇAŽENKU";

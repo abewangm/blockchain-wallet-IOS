@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin 지불 요청";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain 유지 보수를 위해 아래로 현재 이다입니다. 나중에 다시 시도 하십시오.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain 위치 서비스는 위치 정보에 액세스 하려면 사용 해야 합니다.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "지갑을 잊어합니다";
 
 /* (No Commment) */
+"Found account %d, with %@" = "계정 %1$d, %2$@와 발견";
+
+/* (No Commment) */
 "From and destination account have to be different" = "대상 계정 다를 수 있고";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "새로운 생성";
+
+/* (No Commment) */
+"Generating UUIDs" = "Uuid를 생성";
 
 /* (No Commment) */
 "Generating new address" = "새 주소를 생성";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "시계만 주소 스캔?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "빈 계정에 대 한 검색: 10 %d";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "두 번째 비밀 번호 잘못 된";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "서비스 약관";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "선택한 핀 매우 일반적 이며 3 시도 이내 귀하의 휴대 전화에 액세스할 수 있는 사람에 의해 쉽게 짐작 될 수 있습니다. 어쨌든이 핀을 사용 하 시겠습니까?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@)를 보낼 금액 수수료 (%2$@-%3$@) 마이너스 보낼 수 있는 최대 크기 보다 큽니다. %4$@를 보낼 하 시겠습니까?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "전송";
+
+/* (No Commment) */
+"Try again" = "다시 시도";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "당신의 지갑 업그레이드";

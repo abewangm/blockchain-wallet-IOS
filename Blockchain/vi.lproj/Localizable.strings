@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Yêu cầu thanh toán Bitcoin";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain hiện nay là xuống để bảo trì. Xin vui lòng thử lại sau.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain cần dịch vụ vị trí cho phép để truy cập vào vị trí của bạn.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Quên Wallet";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Tìm thấy tài khoản %1$d, với %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Từ và điểm đến tài khoản có thể khác nhau";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Tạo mới";
+
+/* (No Commment) */
+"Generating UUIDs" = "Tạo ra UUID";
 
 /* (No Commment) */
 "Generating new address" = "Tạo địa chỉ mới";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Quét địa chỉ duy nhất Watch?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Tìm kiếm sản phẩm nào tài khoản: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Thứ hai mật khẩu không chính xác";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Điều khoản Dịch vụ";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN bạn chọn là rất phổ biến và có thể được dễ dàng đoán bởi một người có quyền truy cập vào điện thoại của bạn trong 3 cố gắng. Bạn có muốn dùng PIN này chứ?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Số tiền bạn muốn gửi (%1$@) là lớn hơn số tiền tối đa bạn có thể chi tiêu trừ đi phí (%2$@ - %3$@). Bạn có muốn gửi %4$@?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Chuyển giao";
+
+/* (No Commment) */
+"Try again" = "Thử lại";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "NÂNG CẤP CHI TIÊU CỦA BẠN";

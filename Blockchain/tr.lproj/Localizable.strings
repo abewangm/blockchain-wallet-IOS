@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin ödeme talebi";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain şu anda aşağı bakım için olduğunu. Lütfen daha sonra yeniden deneyin.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "M-cüzdan unut";
 
 /* (No Commment) */
+"Found account %d, with %@" = "%2$@ ile hesap %1$d bulundu";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Dan ve hedef hesabı farklı olmak zorunda";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Yeni Oluştur";
+
+/* (No Commment) */
+"Generating UUIDs" = "UUID oluşturmak";
 
 /* (No Commment) */
 "Generating new address" = "Yeni adresi oluşturma";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Watch tek adresi tarama?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Araştırıcı için boş rapor: 10 %d";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "İkinci parola yanlış";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Terms of Service";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Seçmiş olduğunuz PIN son derece yaygındır ve kolayca erişim 3 çalışır içinde telefonunuza olan biri tarafından tahmin. Yine de bu PIN kullanmak ister misiniz?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@) göndermek istediğiniz tutarı en fazla ücreti (%2$@ - %3$@) geçirebilirsiniz büyüktür. %4$@ göndermek ister misiniz?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transfer";
+
+/* (No Commment) */
+"Try again" = "Yeniden Deneyin";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "CÜZDANINI YÜKSELTME";

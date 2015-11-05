@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Cererea de plată Bitcoin";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain este în prezent în jos pentru întreţinere. Vă rugăm să încercaţi din nou mai târziu.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain are nevoie de servicii de localizare activat pentru a acces la locaţia dvs.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Uita de portofel";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Găsit cont %1$d, cu %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "La şi cont de destinaţie trebuie să fie diferite";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Genera noi";
+
+/* (No Commment) */
+"Generating UUIDs" = "Generarea modificațile";
 
 /* (No Commment) */
 "Generating new address" = "Generatoare de noua adresa";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Uita-te la doar adresa de scanare?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Căutarea pentru conturile de gol: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "A doua parolă incorectă";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Conditii de utilizare";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN-ul le-aţi selectat este extrem de comună şi poate fi uşor de ghicit de cineva cu acces la telefon în 3 incearca. Doriţi să utilizaţi acest PIN oricum?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Suma pe care doriţi să trimiteţi (%1$@) este mai mare decât suma maximă pe care vă puteţi petrece minus taxa (%2$@ - %3$@). Doriţi să trimiteţi %4$@?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transferat";
+
+/* (No Commment) */
+"Try again" = "încearcă din nou";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "UPGRADE-UL DE PORTOFEL";

@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Permintaan pembayaran Bitcoin";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain sedang untuk pemeliharaan. Harap coba lagi nanti.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain kebutuhan Layanan lokasi diaktifkan agar Anda dapat mengakses lokasi Anda.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Lupa dompet";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Menemukan account %1$d, dengan %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Dari dan account tujuan harus berbeda";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Menghasilkan baru";
+
+/* (No Commment) */
+"Generating UUIDs" = "Menghasilkan UUID";
 
 /* (No Commment) */
 "Generating new address" = "Menghasilkan alamat baru";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Memindai Watch hanya alamat?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Mencari account kosong: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Kedua Password salah";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Persyaratan Layanan";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN yang Anda pilih sangat umum dan dapat mudah ditebak oleh seseorang dengan akses ke telepon Anda dalam 3 mencoba. Apakah Anda ingin menggunakan PIN ini sih?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Jumlah yang Anda ingin mengirim (%1$@) lebih besar dari jumlah maksimum yang Anda dapat menghabiskan dikurangi biaya (%2$@ - %3$@). Apakah Anda ingin mengirim %4$@?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Ditransfer";
+
+/* (No Commment) */
+"Try again" = "Coba lagi";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "MENG-UPGRADE DOMPET ANDA";

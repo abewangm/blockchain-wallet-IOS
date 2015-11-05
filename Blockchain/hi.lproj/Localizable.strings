@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin भुगतान अनुरोध";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain वर्तमान में नीचे रखरखाव के लिए है। कृपया बाद में पुन: प्रयास करें।";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain स्थान सेवाएँ आपके स्थान तक पहुंचने के लिए सक्षम की जरूरत है।";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "बटुआ भूल जाते हैं";
 
 /* (No Commment) */
+"Found account %d, with %@" = "खाता %1$d, %2$@ के साथ पाया";
+
+/* (No Commment) */
 "From and destination account have to be different" = "से और गंतव्य खाता है अलग होना करने के लिए";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "नई उत्पन्न";
+
+/* (No Commment) */
+"Generating UUIDs" = "UUIDs जनरेट कर रहा है";
 
 /* (No Commment) */
 "Generating new address" = "नया पता जनरेट कर रहा है";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "देखो केवल पते को स्कैन?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "खाली खातों के लिए खोज: 10 का %d";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "दूसरा पासवर्ड ग़लत";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "सेवा की शर्तें";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "आपके द्वारा चयनित पिन बेहद आम है और आसानी से 3 की कोशिश के भीतर अपने फ़ोन करने के लिए उपयोग के साथ किसी के द्वारा अनुमान लगाया जा सकता। तुम वैसे भी इस पिन का उपयोग करना चाहते हैं?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@) भेजने के लिए इच्छित राशि आप शुल्क (%2$@ - %3$@) शून्य से खर्च कर सकते हैं अधिकतम राशि से अधिक है। आप %4$@ भेजना चाहेंगे?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "तबादला";
+
+/* (No Commment) */
+"Try again" = "फिर कोशिश करो";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "अपने बटुए का उन्नयन";

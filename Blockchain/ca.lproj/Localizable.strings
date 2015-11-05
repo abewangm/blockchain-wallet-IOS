@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Sol·licitud de pagament Bitcoin";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain és actualment avall per manteniment. Intenteu-ho més tard.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain ha permès per accedir a la ubicació de serveis d'ubicació.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Oblidar la cartera";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Trobat compte %1$d, amb %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Des i compte de destinació ha de ser diferents";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Generar nous";
+
+/* (No Commment) */
+"Generating UUIDs" = "Generació de UUIDs";
 
 /* (No Commment) */
 "Generating new address" = "Adreça de nova generació";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Escanejar adreça única de veure?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Buscant comptes buits: %d de 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Segona Contrasenya incorrecta";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Condicions del servei";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "El PIN que heu seleccionat és molt comú i es pot fàcilment endevinar per algú amb accés al seu telèfon dins de 3 intents. Voleu utilitzar aquest PIN anyways?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "La quantitat que voleu enviar (%1$@) és més gran que la quantitat màxima que pot gastar menys la quota (%2$@ - %3$@). Li agradaria enviar %4$@?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transferits";
+
+/* (No Commment) */
+"Try again" = "Torneu";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "MILLORAR LA SEVA CARTERA";

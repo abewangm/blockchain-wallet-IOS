@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin-Zahlungsaufforderung";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain ist derzeit für Wartungsarbeiten heruntergefahren. Bitte versuchen Sie es später erneut.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain braucht die Ortungsdienste aktiviert, damit Sie Ihren Standort zugreifen.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Brieftasche vergessen";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Konto %1$d, mit %2$@ gefunden";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Aus und Zielkonto haben, anders zu sein";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Neu generieren";
+
+/* (No Commment) */
+"Generating UUIDs" = "Generieren von UUIDs";
 
 /* (No Commment) */
 "Generating new address" = "Generieren neue Adresse";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Scannen Watch einzige Adresse?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Suche nach leeren Konten: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Zweite Passwort falsch";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Allgemeine Nutzungsbedingungen";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Die PIN, die Sie ausgewählt haben ist sehr verbreitet und kann von einer Person mit Zugriff auf Ihr Telefon innerhalb 3 Versuche leicht zu erraten. Möchten Sie diese PIN trotzdem verwenden?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Der Betrag (%1$@) gesendet werden sollen, ist größer als der Höchstbetrag, den Sie, abzüglich der Gebühr (%2$@ - %3$@ ausgeben können). Möchten Sie %4$@ senden?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Übertragen";
+
+/* (No Commment) */
+"Try again" = "Wiederholen";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "AKTUALISIEREN SIE IHRE BRIEFTASCHE";

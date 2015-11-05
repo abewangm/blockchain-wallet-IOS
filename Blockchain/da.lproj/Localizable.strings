@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin betalingsanmodning";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain er i øjeblikket nede for vedligeholdelse. Prøv igen senere.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain behov for placeringstjenester aktiveret for at få adgang til din placering.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Glem tegnebog";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Fundet konto %1$d, med %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Fra og destinationskontoen nødt til at være anderledes";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Generere nye";
+
+/* (No Commment) */
+"Generating UUIDs" = "Generere UUID'er";
 
 /* (No Commment) */
 "Generating new address" = "Generere ny adresse";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Skan Watch kun adresse?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Søge efter tomme konti: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Anden adgangskode forkert";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Terms of Service";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Den pinkode, du har valgt er meget almindelige og let kan gættes af en person med adgang til din telefon inden for 3 forsøg. Vil du gerne bruge denne PIN alligevel?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Det beløb du ønsker at sende (%1$@) er større end det maksimale beløb du kan bruge minus gebyr (%2$@ - %3$@). Ønsker du at sende %4$@?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Overført";
+
+/* (No Commment) */
+"Try again" = "Prøv igen";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "OPGRADERE DIN TEGNEBOG";

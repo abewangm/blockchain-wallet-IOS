@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Žádost o platbu Bitcoin";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain je v současné době vypnutý. Opakujte akci později.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain potřebuje umístění služby povoleny při přístupu k vaší polohu.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Zapomeňte na peněženku";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Nalezen účet %1$d, s %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Od a cílový účet musí být různé";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Generovat nový";
+
+/* (No Commment) */
+"Generating UUIDs" = "Generování identifikátorů UUID";
 
 /* (No Commment) */
 "Generating new address" = "Generování nové adresy";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Prohledat pouze adresu Watch?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Hledání prázdných účty: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Druhé heslo nesprávné";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Podmínky služby";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN, který jste vybrali je velmi časté a může být snadno uhodnout někdo s přístupem k telefonu do 3 pokusy. Chcete přesto použít tento PIN?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Částka, kterou chcete poslat (%1$@) je vyšší než maximální částka, kterou můžete utratit po odečtení poplatku (%2$@ - %3$@). Chcete poslat %4$@?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Přeneseny";
+
+/* (No Commment) */
+"Try again" = "Zkuste to znovu";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "INOVUJTE VAŠE PENĚŽENKA";

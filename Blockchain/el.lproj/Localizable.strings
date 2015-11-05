@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin αίτηση πληρωμής";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain αυτή τη στιγμή κάτω για τη συντήρηση. Παρακαλώ προσπαθήστε ξανά αργότερα.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Ξεχάστε το πορτοφόλι";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Βρέθηκαν λογαριασμό %1$d, με %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Από και το λογαριασμό προορισμού πρέπει να διαφέρει";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Δημιουργία νέων";
+
+/* (No Commment) */
+"Generating UUIDs" = "Δημιουργία αναγνωριστικών UUID";
 
 /* (No Commment) */
 "Generating new address" = "Παράγει νέα διεύθυνση";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Σάρωση μόνο διεύθυνση ρολόι;";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Ψάχνοντας για κενά λογαριασμοί: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Δεύτερο κωδικό πρόσβασης που είναι εσφαλμένη";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Όροι παροχής υπηρεσιών";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Η καρφίτσα που έχετε επιλέξει είναι πολύ συχνή και μπορεί να μαντέψει εύκολα κάποιος με πρόσβαση στο τηλέφωνό σας εντός 3 προσπαθεί. Θα θέλατε να χρησιμοποιήσετε αυτό το PIN ούτως ή άλλως;";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Το ποσό που θέλετε να στείλετε (%1$@) είναι μεγαλύτερο από το μέγιστο ποσό που μπορείτε να περάσετε μείον το τέλος (%2$@ - %3$@). Θα θέλατε να στείλετε %4$@";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Μεταφέρονται";
+
+/* (No Commment) */
+"Try again" = "Δοκίμασε ξανά";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "ΑΝΑΒΆΘΜΙΣΗ ΣΑΣ ΠΟΡΤΟΦΌΛΙ";

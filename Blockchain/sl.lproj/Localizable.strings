@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Zahtevek za plačilo Bitcoin";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain je trenutno navzdol za vzdrževanje. Poskusite znova pozneje.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain potrebuje Location Services omogočen dostop do vaše lokacije.";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "Pozabite denarnice";
 
 /* (No Commment) */
+"Found account %d, with %@" = "Našel račun %1$d, z %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "Iz in destinacijo račun je treba različne";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "Ustvarjajo nove";
+
+/* (No Commment) */
+"Generating UUIDs" = "Ustvarjanje UUID-jev";
 
 /* (No Commment) */
 "Generating new address" = "Ustvarjajo nov naslov";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Skeniranje Watch samo naslov?";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "Iskanje praznih računov: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Drugo geslo napačna";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "Pogoji storitve";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN, ki ste izbrali zelo pogosti in lahko enostavno uganiti nekdo dostop do telefona v 3 poskusih. Ali želite vseeno uporabiti ta PIN?";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Znesek, ki ga želite poslati (%1$@) je večji od največjega zneska, lahko preživijo minus pristojbina (%2$@ - %3$@). Ali želite poslati %4$@?";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Prenese";
+
+/* (No Commment) */
+"Try again" = "poskusi znova";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "NADGRADNJO VAŠE DENARNICE";

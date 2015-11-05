@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "คำขอชำระเงิน Bitcoin";
 
 /* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain กำลังลงสำหรับการบำรุงรักษา กรุณาลองใหม่ในภายหลัง";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain ต้องการสถานบริการที่เปิดใช้งานการเข้าถึงที่ตั้งของคุณ";
 
 /* (No Commment) */
@@ -263,6 +266,9 @@
 "Forget Wallet" = "ลืมกระเป๋าสตางค์";
 
 /* (No Commment) */
+"Found account %d, with %@" = "พบบัญชี %1$d กับ %2$@";
+
+/* (No Commment) */
 "From and destination account have to be different" = "จากบัญชีปลายทางที่ได้จะแตกต่างกัน";
 
 /* (No Commment) */
@@ -270,6 +276,9 @@
 
 /* (No Commment) */
 "Generate new" = "สร้างใหม่";
+
+/* (No Commment) */
+"Generating UUIDs" = "สร้าง UUIDs";
 
 /* (No Commment) */
 "Generating new address" = "สร้างที่อยู่ใหม่";
@@ -574,6 +583,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "สแกนดูอยู่เท่านั้น";
 
+/* (No Commment) */
+"Searching for empty accounts: %d of 10" = "ค้นหาบัญชีที่ว่างเปล่า: %d 10";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "สองรหัสผ่านไม่ถูกต้อง";
 
@@ -629,6 +641,9 @@
 "Terms of Service" = "เงื่อนไขการใช้บริการ";
 
 /* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN ที่คุณได้เลือกเป็นเรื่องธรรมดามาก และอาจได้เดา โดยผู้ที่เข้าสู่โทรศัพท์ของคุณภายใน 3 พยายาม คุณต้องใช้ PIN นี้";
+
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "เงินคุณต้องการส่ง (%1$@) มีค่ามากกว่ายอดเงินสูงสุดที่คุณสามารถใช้ลบค่าธรรมเนียม (%2$@ - %3$@) คุณต้องการส่ง %4$@";
 
 /* (No Commment) */
@@ -655,6 +670,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "การโอนย้าย";
+
+/* (No Commment) */
+"Try again" = "ลองอีกครั้ง";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "รุ่นกระเป๋าสตางค์ของคุณ";
