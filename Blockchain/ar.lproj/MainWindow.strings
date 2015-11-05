@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "المعاملات 0";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "أدخل كلمة المرور الخاصة بك أدناه، تفصل كل كلمة بمسافة.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "أدخل الكلمات استرداد 12 مع مسافات لاسترداد الأموال والمعاملات الخاص";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "ازدواج يدوي";

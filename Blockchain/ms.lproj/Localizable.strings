@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "Menyemak untuk pengemaskinian Wallet";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Menyemak untuk menambahkan akaun: %d langkah 10";
+
 /* No comment provided by engineer. */
 "Close" = "Tutup";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Mewujudkan HD Wallet";
+
+/* (No Commment) */
+"Creating Wallet" = "Mewujudkan Wallet";
 
 /* (No Commment) */
 "Creating new Wallet" = "Mewujudkan Wallet baru";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Menjana baru";
-
-/* (No Commment) */
-"Generating UUIDs" = "Menjana UUIDs";
 
 /* (No Commment) */
 "Generating new address" = "Alamat baru yang menjana";
@@ -377,10 +380,10 @@
 "Local Currency" = "Mata Wang tempatan";
 
 /* (No Commment) */
-"Log in to my wallet" = "Log masuk ke wallet saya";
+"Log in to my Wallet" = "Log masuk ke Wallet saya";
 
 /* (No Commment) */
-"Login existing wallet" = "Log masuk wallet sedia ada";
+"Login existing Wallet" = "Log masuk Wallet sedia ada";
 
 /* (No Commment) */
 "Logout" = "Log keluar";
@@ -545,10 +548,10 @@
 "Received" = "Diterima";
 
 /* (No Commment) */
-"Recover Wallet" = "Memulihkan Wallet";
+"Recover Funds" = "Mendapatkan semula dana";
 
 /* (No Commment) */
-"Recovering wallet" = "Pulih wallet";
+"Recovering Funds" = "Memungut dana";
 
 /* (No Commment) */
 "Regular" = "Tetap";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Mengimbas alamat hanya menonton?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Mencari akaun kosong: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Kedua kata laluan yang tidak betul";
@@ -635,7 +635,7 @@
 "Support" = "Sokongan";
 
 /* (No Commment) */
-"Syncing wallet" = "Menyegerak wallet";
+"Syncing Wallet" = "Menyegerak Wallet";
 
 /* (No Commment) */
 "Terms of Service" = "Syarat-syarat Perkhidmatan";

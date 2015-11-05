@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 transaksjoner";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Angi passordsetningen nedenfor, skiller hvert ord med et mellomrom.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Angi 12 utvinning ord mellomrom å gjenopprette dine midler og transaksjoner";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Manuell sammenkobling";

@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "Перевірка наявності оновлень гаманець";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Перевірка наявності більше облікових записів: крок %d 10";
+
 /* No comment provided by engineer. */
 "Close" = "Закрити";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Створення HD гаманець";
+
+/* (No Commment) */
+"Creating Wallet" = "Створення гаманець";
 
 /* (No Commment) */
 "Creating new Wallet" = "Створення нового гаманець";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Згенерувати нове";
-
-/* (No Commment) */
-"Generating UUIDs" = "Генерації UUID";
 
 /* (No Commment) */
 "Generating new address" = "Створення нової адреси";
@@ -377,10 +380,10 @@
 "Local Currency" = "Місцевій валюті";
 
 /* (No Commment) */
-"Log in to my wallet" = "Увійти в мій гаманець";
+"Log in to my Wallet" = "Увійти в мій гаманець";
 
 /* (No Commment) */
-"Login existing wallet" = "Логін існуючих гаманець";
+"Login existing Wallet" = "Логін існуючих гаманець";
 
 /* (No Commment) */
 "Logout" = "Вихід із системи";
@@ -545,10 +548,10 @@
 "Received" = "Отримав";
 
 /* (No Commment) */
-"Recover Wallet" = "Відновити гаманець";
+"Recover Funds" = "Відновити коштів";
 
 /* (No Commment) */
-"Recovering wallet" = "Відновлення гаманець";
+"Recovering Funds" = "Відновлення коштів";
 
 /* (No Commment) */
 "Regular" = "Регулярні";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Сканування дивитися тільки адресу?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Шукати порожні рахунки: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Другий пароль неправильні";
@@ -635,7 +635,7 @@
 "Support" = "Підтримка";
 
 /* (No Commment) */
-"Syncing wallet" = "Синхронізацію гаманець";
+"Syncing Wallet" = "Синхронізацію гаманець";
 
 /* (No Commment) */
 "Terms of Service" = "Умови надання послуг";

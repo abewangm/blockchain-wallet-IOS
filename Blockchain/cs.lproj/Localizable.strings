@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "Kontrola aktualizací Peněženka";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Kontrola více účtů: %d krok 10";
+
 /* No comment provided by engineer. */
 "Close" = "Zavřít";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Vytváření HD Peněženka";
+
+/* (No Commment) */
+"Creating Wallet" = "Vytváření Peněženka";
 
 /* (No Commment) */
 "Creating new Wallet" = "Vytvoření nové peněženky";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Generovat nový";
-
-/* (No Commment) */
-"Generating UUIDs" = "Generování identifikátorů UUID";
 
 /* (No Commment) */
 "Generating new address" = "Generování nové adresy";
@@ -377,10 +380,10 @@
 "Local Currency" = "Místní měna";
 
 /* (No Commment) */
-"Log in to my wallet" = "Přihlaste se k mé peněžence";
+"Log in to my Wallet" = "Přihlaste se k mé peněžence";
 
 /* (No Commment) */
-"Login existing wallet" = "Přihlášení stávajících Peněženka";
+"Login existing Wallet" = "Přihlášení stávajících Peněženka";
 
 /* (No Commment) */
 "Logout" = "Odhlášení";
@@ -545,10 +548,10 @@
 "Received" = "Přijaté";
 
 /* (No Commment) */
-"Recover Wallet" = "Obnovit Peněženka";
+"Recover Funds" = "Finanční prostředky zpět";
 
 /* (No Commment) */
-"Recovering wallet" = "Obnova Peněženka";
+"Recovering Funds" = "Obnova fondy";
 
 /* (No Commment) */
 "Regular" = "Pravidelný";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Prohledat pouze adresu Watch?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Hledání prázdných účty: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Druhé heslo nesprávné";
@@ -635,7 +635,7 @@
 "Support" = "Podpora";
 
 /* (No Commment) */
-"Syncing wallet" = "Synchronizuji Peněženka";
+"Syncing Wallet" = "Synchronizuji Peněženka";
 
 /* (No Commment) */
 "Terms of Service" = "Podmínky služby";

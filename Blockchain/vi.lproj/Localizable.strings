@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "Kiểm tra Cập Nhật ví";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Kiểm tra thêm tài khoản: bước %d 10";
+
 /* No comment provided by engineer. */
 "Close" = "Đóng";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Tạo HD Wallet";
+
+/* (No Commment) */
+"Creating Wallet" = "Việc tạo ra ví";
 
 /* (No Commment) */
 "Creating new Wallet" = "Tạo mới Wallet";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Tạo mới";
-
-/* (No Commment) */
-"Generating UUIDs" = "Tạo ra UUID";
 
 /* (No Commment) */
 "Generating new address" = "Tạo địa chỉ mới";
@@ -377,10 +380,10 @@
 "Local Currency" = "Tiền tệ địa phương";
 
 /* (No Commment) */
-"Log in to my wallet" = "Đăng nhập vào ví của tôi";
+"Log in to my Wallet" = "Đăng nhập vào ví của tôi";
 
 /* (No Commment) */
-"Login existing wallet" = "Đăng nhập hiện tại ví";
+"Login existing Wallet" = "Đăng nhập hiện tại Wallet";
 
 /* (No Commment) */
 "Logout" = "Đăng xuất";
@@ -545,10 +548,10 @@
 "Received" = "Nhận được";
 
 /* (No Commment) */
-"Recover Wallet" = "Phục hồi Wallet";
+"Recover Funds" = "Phục hồi tiền";
 
 /* (No Commment) */
-"Recovering wallet" = "Phục hồi ví";
+"Recovering Funds" = "Phục hồi tiền";
 
 /* (No Commment) */
 "Regular" = "Thường xuyên";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Quét địa chỉ duy nhất Watch?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Tìm kiếm sản phẩm nào tài khoản: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Thứ hai mật khẩu không chính xác";
@@ -635,7 +635,7 @@
 "Support" = "Hỗ trợ";
 
 /* (No Commment) */
-"Syncing wallet" = "Đồng bộ hoá ví";
+"Syncing Wallet" = "Đồng bộ hoá Wallet";
 
 /* (No Commment) */
 "Terms of Service" = "Điều khoản Dịch vụ";

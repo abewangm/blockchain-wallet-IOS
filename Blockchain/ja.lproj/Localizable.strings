@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "財布更新プログラムのチェック";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "多くのアカウントをチェック: 10 のステップ %d";
+
 /* No comment provided by engineer. */
 "Close" = "閉じる";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD ウォレットを作成します。";
+
+/* (No Commment) */
+"Creating Wallet" = "ウォレットの作成";
 
 /* (No Commment) */
 "Creating new Wallet" = "新しい財布を作成します。";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "新規生成します。";
-
-/* (No Commment) */
-"Generating UUIDs" = "Uuid を生成します。";
 
 /* (No Commment) */
 "Generating new address" = "新しいアドレスの生成";
@@ -377,10 +380,10 @@
 "Local Currency" = "現地通貨";
 
 /* (No Commment) */
-"Log in to my wallet" = "私の財布にログインします。";
+"Log in to my Wallet" = "私の財布にログインします。";
 
 /* (No Commment) */
-"Login existing wallet" = "ログインの既存の財布";
+"Login existing Wallet" = "ログインの既存の財布";
 
 /* (No Commment) */
 "Logout" = "ログアウト";
@@ -545,10 +548,10 @@
 "Received" = "受信";
 
 /* (No Commment) */
-"Recover Wallet" = "財布を回復します。";
+"Recover Funds" = "資金を回復します。";
 
 /* (No Commment) */
-"Recovering wallet" = "財布を回復します。";
+"Recovering Funds" = "資金を回収";
 
 /* (No Commment) */
 "Regular" = "正規";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "時計アドレスだけをスキャンしますか。";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "空のアカウントを検索: 10 の %d";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "第 2 パスワードが間違っています。";
@@ -635,7 +635,7 @@
 "Support" = "サポート";
 
 /* (No Commment) */
-"Syncing wallet" = "同期の財布";
+"Syncing Wallet" = "同期の財布";
 
 /* (No Commment) */
 "Terms of Service" = "サービス利用規約";

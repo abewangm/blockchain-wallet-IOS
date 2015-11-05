@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 transakcije";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Vnesite svoje geslo, spodaj, vsako besedo ločite s presledkom.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Vnesite vaš 12 regres besed s prostori za izterjavo sredstev & transakcije";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Ročno seznanjanje";

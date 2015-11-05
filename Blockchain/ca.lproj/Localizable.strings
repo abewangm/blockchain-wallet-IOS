@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "S'estan cercant actualitzacions de cartera";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Buscar més comptes: pas %d de 10";
+
 /* No comment provided by engineer. */
 "Close" = "Tancar";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Creació de cartera de HD";
+
+/* (No Commment) */
+"Creating Wallet" = "Creació de cartera";
 
 /* (No Commment) */
 "Creating new Wallet" = "Crear nova cartera";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Generar nous";
-
-/* (No Commment) */
-"Generating UUIDs" = "Generació de UUIDs";
 
 /* (No Commment) */
 "Generating new address" = "Adreça de nova generació";
@@ -377,10 +380,10 @@
 "Local Currency" = "Moneda local";
 
 /* (No Commment) */
-"Log in to my wallet" = "Accedir a la cartera";
+"Log in to my Wallet" = "Accedir a la cartera";
 
 /* (No Commment) */
-"Login existing wallet" = "Cartera existent de connexió";
+"Login existing Wallet" = "Connecti's cartera existent";
 
 /* (No Commment) */
 "Logout" = "Logout";
@@ -545,10 +548,10 @@
 "Received" = "Rebut";
 
 /* (No Commment) */
-"Recover Wallet" = "Recuperar la cartera";
+"Recover Funds" = "Recuperar el fons";
 
 /* (No Commment) */
-"Recovering wallet" = "Recuperació de cartera";
+"Recovering Funds" = "Recuperació de fons";
 
 /* (No Commment) */
 "Regular" = "Regular";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Escanejar adreça única de veure?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Buscant comptes buits: %d de 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Segona Contrasenya incorrecta";
@@ -635,7 +635,7 @@
 "Support" = "Suport";
 
 /* (No Commment) */
-"Syncing wallet" = "Sincronització de cartera";
+"Syncing Wallet" = "Sincronització de cartera";
 
 /* (No Commment) */
 "Terms of Service" = "Condicions del servei";

@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 tranzacţii";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Introduceți passphrase tau mai jos, separând fiecare cuvânt cu un spaţiu.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Introduceţi cuvintele tale 12 recuperare cu spaţii pentru a recupera fondurile dumneavoastră & tranzacţii";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Asocierea manuală";

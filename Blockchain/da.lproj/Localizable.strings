@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "Kontrollere for opdateringer, tegnebog";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Kontrol for flere konti: trin %d 10";
+
 /* No comment provided by engineer. */
 "Close" = "Luk";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "At skabe HD tegnebog";
+
+/* (No Commment) */
+"Creating Wallet" = "At skabe tegnebog";
 
 /* (No Commment) */
 "Creating new Wallet" = "At skabe ny tegnebog";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Generere nye";
-
-/* (No Commment) */
-"Generating UUIDs" = "Generere UUID'er";
 
 /* (No Commment) */
 "Generating new address" = "Generere ny adresse";
@@ -377,10 +380,10 @@
 "Local Currency" = "Lokal valuta";
 
 /* (No Commment) */
-"Log in to my wallet" = "Log ind på min tegnebog";
+"Log in to my Wallet" = "Log ind på min tegnebog";
 
 /* (No Commment) */
-"Login existing wallet" = "Login eksisterende tegnebog";
+"Login existing Wallet" = "Login eksisterende tegnebog";
 
 /* (No Commment) */
 "Logout" = "Logout";
@@ -545,10 +548,10 @@
 "Received" = "Modtaget";
 
 /* (No Commment) */
-"Recover Wallet" = "Genskab tegnebog";
+"Recover Funds" = "Inddrive midler";
 
 /* (No Commment) */
-"Recovering wallet" = "Inddrive tegnebog";
+"Recovering Funds" = "Inddrive midler";
 
 /* (No Commment) */
 "Regular" = "Regelmæssig";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Skan Watch kun adresse?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Søge efter tomme konti: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Anden adgangskode forkert";
@@ -635,7 +635,7 @@
 "Support" = "Support";
 
 /* (No Commment) */
-"Syncing wallet" = "Synkronisering tegnebog";
+"Syncing Wallet" = "Synkronisering tegnebog";
 
 /* (No Commment) */
 "Terms of Service" = "Terms of Service";

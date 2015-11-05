@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "Giao dịch 0";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Nhập cụm từ mật khẩu của bạn dưới đây, tách mỗi từ với một không gian.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Nhập từ 12 phục hồi của bạn với không gian để khôi phục lại tiền và giao dịch của bạn";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Hướng dẫn sử dụng kết nối";

@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "التحقق من وجود تحديثات المحفظة";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "التحقق من وجود مزيد من الحسابات: %d الخطوة 10";
+
 /* No comment provided by engineer. */
 "Close" = "قم بإغلاق";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "إنشاء محفظة عالية الدقة";
+
+/* (No Commment) */
+"Creating Wallet" = "إنشاء المحفظة";
 
 /* (No Commment) */
 "Creating new Wallet" = "إنشاء محفظة جديدة";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "توليد جديدة";
-
-/* (No Commment) */
-"Generating UUIDs" = "توليد UUIDs";
 
 /* (No Commment) */
 "Generating new address" = "إنشاء عنوان جديد";
@@ -377,10 +380,10 @@
 "Local Currency" = "العملة المحلية";
 
 /* (No Commment) */
-"Log in to my wallet" = "تسجيل الدخول إلى محفظتي";
+"Log in to my Wallet" = "تسجيل الدخول إلى محفظتي";
 
 /* (No Commment) */
-"Login existing wallet" = "المحفظة القائمة تسجيل الدخول";
+"Login existing Wallet" = "المحفظة القائمة تسجيل الدخول";
 
 /* (No Commment) */
 "Logout" = "تسجيل الخروج";
@@ -545,10 +548,10 @@
 "Received" = "تلقي";
 
 /* (No Commment) */
-"Recover Wallet" = "استرداد المحفظة";
+"Recover Funds" = "استرداد الأموال";
 
 /* (No Commment) */
-"Recovering wallet" = "استعادة المحفظة";
+"Recovering Funds" = "استرداد الأموال";
 
 /* (No Commment) */
 "Regular" = "العادية";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "المسح الضوئي يشاهد العنوان فقط؟";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "البحث عن حسابات فارغة: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "الثانية كلمة المرور غير صحيحة";
@@ -635,7 +635,7 @@
 "Support" = "الدعم";
 
 /* (No Commment) */
-"Syncing wallet" = "مزامنة المحفظة";
+"Syncing Wallet" = "مزامنة المحفظة";
 
 /* (No Commment) */
 "Terms of Service" = "شروط الخدمة";

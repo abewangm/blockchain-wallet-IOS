@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "הארנק עדכונים";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "בדיקת חשבונות נוספים: שלב %d של 10";
+
 /* No comment provided by engineer. */
 "Close" = "סגור";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "יצירת הארנק HD";
+
+/* (No Commment) */
+"Creating Wallet" = "יצירת הארנק";
 
 /* (No Commment) */
 "Creating new Wallet" = "יצירת הארנק החדש";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "צור חדש";
-
-/* (No Commment) */
-"Generating UUIDs" = "יצירת UUIDs";
 
 /* (No Commment) */
 "Generating new address" = "יצירת כתובת חדשה";
@@ -377,10 +380,10 @@
 "Local Currency" = "מטבע מקומי";
 
 /* (No Commment) */
-"Log in to my wallet" = "התחבר עם הארנק שלי";
+"Log in to my Wallet" = "התחבר עם הארנק שלי";
 
 /* (No Commment) */
-"Login existing wallet" = "הארנק קיימת כניסה";
+"Login existing Wallet" = "הארנק קיימת כניסה";
 
 /* (No Commment) */
 "Logout" = "יציאה מהמערכת";
@@ -545,10 +548,10 @@
 "Received" = "התקבל";
 
 /* (No Commment) */
-"Recover Wallet" = "לשחזר את הארנק";
+"Recover Funds" = "לשחזר קרנות";
 
 /* (No Commment) */
-"Recovering wallet" = "מחלים את הארנק";
+"Recovering Funds" = "קרנות בגמילה";
 
 /* (No Commment) */
 "Regular" = "רגיל";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "סרוק הכתובת היחידה לצפות?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "חיפוש עבור חשבונות ריק: %d של 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "סיסמה שנייה שגוי";
@@ -635,7 +635,7 @@
 "Support" = "תמיכה";
 
 /* (No Commment) */
-"Syncing wallet" = "מסנכרן את הארנק";
+"Syncing Wallet" = "מסנכרן את הארנק";
 
 /* (No Commment) */
 "Terms of Service" = "תנאי השירות";

@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "Preveritev zakaj modernizirati denarnice";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Preverjanje za več računov: korak %d 10";
+
 /* No comment provided by engineer. */
 "Close" = "Blizu";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Ustvarjanje HD denarnice";
+
+/* (No Commment) */
+"Creating Wallet" = "Ustvarjanje denarnice";
 
 /* (No Commment) */
 "Creating new Wallet" = "Ustvarjanje nove denarnice";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Ustvarjajo nove";
-
-/* (No Commment) */
-"Generating UUIDs" = "Ustvarjanje UUID-jev";
 
 /* (No Commment) */
 "Generating new address" = "Ustvarjajo nov naslov";
@@ -377,10 +380,10 @@
 "Local Currency" = "Lokalni valuti";
 
 /* (No Commment) */
-"Log in to my wallet" = "Prijava na mojo denarnico";
+"Log in to my Wallet" = "Prijava na mojo denarnico";
 
 /* (No Commment) */
-"Login existing wallet" = "Prijavo obstoječih denarnice";
+"Login existing Wallet" = "Prijavo obstoječih denarnice";
 
 /* (No Commment) */
 "Logout" = "Logout";
@@ -545,10 +548,10 @@
 "Received" = "Prejel";
 
 /* (No Commment) */
-"Recover Wallet" = "Zopet prejeti denarnice";
+"Recover Funds" = "Povračilo sredstev";
 
 /* (No Commment) */
-"Recovering wallet" = "Obnavljanje denarnice";
+"Recovering Funds" = "Povrnitve sredstev";
 
 /* (No Commment) */
 "Regular" = "Redno";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Skeniranje Watch samo naslov?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Iskanje praznih računov: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Drugo geslo napačna";
@@ -635,7 +635,7 @@
 "Support" = "Podpora";
 
 /* (No Commment) */
-"Syncing wallet" = "Sinhroniziranje denarnice";
+"Syncing Wallet" = "Sinhroniziranje denarnice";
 
 /* (No Commment) */
 "Terms of Service" = "Pogoji storitve";

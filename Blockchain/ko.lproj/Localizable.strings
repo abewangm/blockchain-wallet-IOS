@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "지갑 업데이트 확인";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "더 많은 계정에 대 한 검사: 10 단계 %d";
+
 /* No comment provided by engineer. */
 "Close" = "닫기";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD 지갑 만들기";
+
+/* (No Commment) */
+"Creating Wallet" = "지갑 만들기";
 
 /* (No Commment) */
 "Creating new Wallet" = "새 지갑 만들기";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "새로운 생성";
-
-/* (No Commment) */
-"Generating UUIDs" = "Uuid를 생성";
 
 /* (No Commment) */
 "Generating new address" = "새 주소를 생성";
@@ -377,10 +380,10 @@
 "Local Currency" = "현지 통화";
 
 /* (No Commment) */
-"Log in to my wallet" = "내 지갑에 로그인";
+"Log in to my Wallet" = "내 지갑에 로그인";
 
 /* (No Commment) */
-"Login existing wallet" = "로그인 기존 지갑";
+"Login existing Wallet" = "로그인 기존 지갑";
 
 /* (No Commment) */
 "Logout" = "로그 아웃";
@@ -545,10 +548,10 @@
 "Received" = "받은";
 
 /* (No Commment) */
-"Recover Wallet" = "복구 지갑";
+"Recover Funds" = "자금을 복구";
 
 /* (No Commment) */
-"Recovering wallet" = "복구 지갑";
+"Recovering Funds" = "자금을 회복";
 
 /* (No Commment) */
 "Regular" = "일반";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "시계만 주소 스캔?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "빈 계정에 대 한 검색: 10 %d";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "두 번째 비밀 번호 잘못 된";
@@ -635,7 +635,7 @@
 "Support" = "지원";
 
 /* (No Commment) */
-"Syncing wallet" = "동기화 지갑";
+"Syncing Wallet" = "동기화 지갑";
 
 /* (No Commment) */
 "Terms of Service" = "서비스 약관";

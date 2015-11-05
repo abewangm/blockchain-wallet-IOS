@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "תנועות 0";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "הזן את משפט הסיסמה שלך להלן, הפרדת כל מילה עם רווח.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "הזן את המילים שחזור 12 שלך עם רווחים כדי לשחזר את קרנות & תנועות";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "זיווג ידני";

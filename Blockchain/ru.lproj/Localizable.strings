@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "Проверка обновлений бумажник";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Проверка для более счетов: шаг %d из 10";
+
 /* No comment provided by engineer. */
 "Close" = "Закрыть";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Создание HD бумажник";
+
+/* (No Commment) */
+"Creating Wallet" = "Создание бумажник";
 
 /* (No Commment) */
 "Creating new Wallet" = "Создание нового бумажника";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Генерировать новые";
-
-/* (No Commment) */
-"Generating UUIDs" = "Создание UUID";
 
 /* (No Commment) */
 "Generating new address" = "Создание нового адреса";
@@ -377,10 +380,10 @@
 "Local Currency" = "Местной валюте";
 
 /* (No Commment) */
-"Log in to my wallet" = "Войти в мой бумажник";
+"Log in to my Wallet" = "Войти в мой бумажник";
 
 /* (No Commment) */
-"Login existing wallet" = "Вход существующих бумажник";
+"Login existing Wallet" = "Вход существующих бумажник";
 
 /* (No Commment) */
 "Logout" = "Выход";
@@ -545,10 +548,10 @@
 "Received" = "Получил";
 
 /* (No Commment) */
-"Recover Wallet" = "Восстановить бумажника";
+"Recover Funds" = "Возмещения средств";
 
 /* (No Commment) */
-"Recovering wallet" = "Восстановление бумажник";
+"Recovering Funds" = "Восстановление средства";
 
 /* (No Commment) */
 "Regular" = "Регулярные";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Сканирование адрес только смотреть?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Поиск пустых аккаунтов: %d из 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Второй пароль неправильный";
@@ -635,7 +635,7 @@
 "Support" = "Поддержка";
 
 /* (No Commment) */
-"Syncing wallet" = "Синхронизации бумажника";
+"Syncing Wallet" = "Синхронизации бумажника";
 
 /* (No Commment) */
 "Terms of Service" = "Условия предоставления услуг";

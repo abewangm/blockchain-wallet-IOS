@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 transaksi";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Masukkan kata sandi di bawah ini, memisahkan setiap kata dengan spasi.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Masukkan kata-kata 12 pemulihan Anda dengan ruang untuk memulihkan dana dan transaksi Anda";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Pemasangan manual";

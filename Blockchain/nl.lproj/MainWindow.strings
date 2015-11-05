@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 transacties";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Voer uw wachtwoord hieronder, elk woord scheiden met een spatie.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Voer uw 12 herstel woorden met spaties om te herstellen van uw fondsen & transacties";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Handmatige koppeling";

@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "Suchen nach Updates der Brieftasche";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Überprüfung auf weitere Konten: Schritt %d 10";
+
 /* No comment provided by engineer. */
 "Close" = "Schließen";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Erstellen von HD-Brieftasche";
+
+/* (No Commment) */
+"Creating Wallet" = "Mappe erstellen";
 
 /* (No Commment) */
 "Creating new Wallet" = "Erstellen von neuen Wallet";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Neu generieren";
-
-/* (No Commment) */
-"Generating UUIDs" = "Generieren von UUIDs";
 
 /* (No Commment) */
 "Generating new address" = "Generieren neue Adresse";
@@ -377,10 +380,10 @@
 "Local Currency" = "Lokaler Währung";
 
 /* (No Commment) */
-"Log in to my wallet" = "Melden Sie sich meine Brieftasche";
+"Log in to my Wallet" = "Melden Sie sich meine Brieftasche";
 
 /* (No Commment) */
-"Login existing wallet" = "Anmeldung vorhandenen Brieftasche";
+"Login existing Wallet" = "Anmeldung vorhandenen Wallet";
 
 /* (No Commment) */
 "Logout" = "Logout";
@@ -545,10 +548,10 @@
 "Received" = "Empfangen";
 
 /* (No Commment) */
-"Recover Wallet" = "Wallet wiederherstellen";
+"Recover Funds" = "Fonds zu erholen";
 
 /* (No Commment) */
-"Recovering wallet" = "Wiederherstellen der Brieftasche";
+"Recovering Funds" = "Wiederherstellen von Fonds";
 
 /* (No Commment) */
 "Regular" = "Regelmäßige";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Scannen Watch einzige Adresse?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Suche nach leeren Konten: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Zweite Passwort falsch";
@@ -635,7 +635,7 @@
 "Support" = "Unterstützung";
 
 /* (No Commment) */
-"Syncing wallet" = "Synchronisierung der Brieftasche";
+"Syncing Wallet" = "Synchronisieren von Wallet";
 
 /* (No Commment) */
 "Terms of Service" = "Allgemeine Nutzungsbedingungen";

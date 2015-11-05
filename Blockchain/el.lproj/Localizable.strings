@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "Έλεγχος για ενημερώσεις πορτοφόλι";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Έλεγχος για περισσότερους λογαριασμούς: %d βήμα 10";
+
 /* No comment provided by engineer. */
 "Close" = "Κλείσιμο";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Τη δημιουργία HD πορτοφόλι";
+
+/* (No Commment) */
+"Creating Wallet" = "Τη δημιουργία πορτοφολιού";
 
 /* (No Commment) */
 "Creating new Wallet" = "Δημιουργώντας νέα πορτοφόλι";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "Δημιουργία νέων";
-
-/* (No Commment) */
-"Generating UUIDs" = "Δημιουργία αναγνωριστικών UUID";
 
 /* (No Commment) */
 "Generating new address" = "Παράγει νέα διεύθυνση";
@@ -377,10 +380,10 @@
 "Local Currency" = "Τοπικό νόμισμα";
 
 /* (No Commment) */
-"Log in to my wallet" = "Συνδεθείτε στο πορτοφόλι μου";
+"Log in to my Wallet" = "Συνδεθείτε στο πορτοφόλι μου";
 
 /* (No Commment) */
-"Login existing wallet" = "Οι υπάρχουσες πορτοφόλι σύνδεσης";
+"Login existing Wallet" = "Οι υπάρχουσες πορτοφόλι σύνδεσης";
 
 /* (No Commment) */
 "Logout" = "Αποσύνδεση";
@@ -545,10 +548,10 @@
 "Received" = "Έλαβε";
 
 /* (No Commment) */
-"Recover Wallet" = "Ανακτήσει το πορτοφόλι";
+"Recover Funds" = "Ανάκτηση κεφαλαίων";
 
 /* (No Commment) */
-"Recovering wallet" = "Ανάκτηση πορτοφόλι";
+"Recovering Funds" = "Ανάκτησης των κεφαλαίων";
 
 /* (No Commment) */
 "Regular" = "Τακτική";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "Σάρωση μόνο διεύθυνση ρολόι;";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "Ψάχνοντας για κενά λογαριασμοί: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Δεύτερο κωδικό πρόσβασης που είναι εσφαλμένη";
@@ -635,7 +635,7 @@
 "Support" = "Υποστήριξη";
 
 /* (No Commment) */
-"Syncing wallet" = "Συγχρονισμός πορτοφόλι";
+"Syncing Wallet" = "Συγχρονισμός πορτοφόλι";
 
 /* (No Commment) */
 "Terms of Service" = "Όροι παροχής υπηρεσιών";

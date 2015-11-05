@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "बटुआ अद्यतनों के लिए जाँच";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "अधिक खातों के लिए जाँच: 10 के चरण %d";
+
 /* No comment provided by engineer. */
 "Close" = "बंद करें";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD बटुआ बनाना";
+
+/* (No Commment) */
+"Creating Wallet" = "बटुआ बनाना";
 
 /* (No Commment) */
 "Creating new Wallet" = "नई बटुआ बनाना";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "नई उत्पन्न";
-
-/* (No Commment) */
-"Generating UUIDs" = "UUIDs जनरेट कर रहा है";
 
 /* (No Commment) */
 "Generating new address" = "नया पता जनरेट कर रहा है";
@@ -377,10 +380,10 @@
 "Local Currency" = "स्थानीय मुद्रा";
 
 /* (No Commment) */
-"Log in to my wallet" = "मेरा बटुआ के लिए लॉग इन करें";
+"Log in to my Wallet" = "मेरा बटुआ के लिए लॉग इन करें";
 
 /* (No Commment) */
-"Login existing wallet" = "लॉगिन मौजूदा बटुआ";
+"Login existing Wallet" = "लॉगिन मौजूदा बटुआ";
 
 /* (No Commment) */
 "Logout" = "लॉग आउट";
@@ -545,10 +548,10 @@
 "Received" = "प्राप्त हुआ";
 
 /* (No Commment) */
-"Recover Wallet" = "बटुआ पुनर्प्राप्त करें";
+"Recover Funds" = "धन की वसूली";
 
 /* (No Commment) */
-"Recovering wallet" = "बटुआ पुनर्प्राप्त करना";
+"Recovering Funds" = "धन पुनर्प्राप्त करना";
 
 /* (No Commment) */
 "Regular" = "नियमित रूप से";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "देखो केवल पते को स्कैन?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "खाली खातों के लिए खोज: 10 का %d";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "दूसरा पासवर्ड ग़लत";
@@ -635,7 +635,7 @@
 "Support" = "समर्थन";
 
 /* (No Commment) */
-"Syncing wallet" = "बटुआ सिंक्रनाइज़ किए जा रहे";
+"Syncing Wallet" = "बटुआ सिंक्रनाइज़ किए जा रहे";
 
 /* (No Commment) */
 "Terms of Service" = "सेवा की शर्तें";

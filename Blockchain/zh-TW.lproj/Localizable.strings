@@ -139,6 +139,9 @@
 /* (No Commment) */
 "Checking for Wallet updates" = "檢查錢包更新";
 
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "檢查更多帳戶: 步 %d 的 10";
+
 /* No comment provided by engineer. */
 "Close" = "關閉";
 
@@ -186,6 +189,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "創建高清錢包";
+
+/* (No Commment) */
+"Creating Wallet" = "創建的錢包";
 
 /* (No Commment) */
 "Creating new Wallet" = "創建新的錢包";
@@ -276,9 +282,6 @@
 
 /* (No Commment) */
 "Generate new" = "新生成";
-
-/* (No Commment) */
-"Generating UUIDs" = "生成 Uuid";
 
 /* (No Commment) */
 "Generating new address" = "生成新的位址";
@@ -377,10 +380,10 @@
 "Local Currency" = "當地貨幣";
 
 /* (No Commment) */
-"Log in to my wallet" = "登錄到我的錢包";
+"Log in to my Wallet" = "登錄到我的錢包";
 
 /* (No Commment) */
-"Login existing wallet" = "登錄現有錢包";
+"Login existing Wallet" = "登錄現有錢包";
 
 /* (No Commment) */
 "Logout" = "登出";
@@ -545,10 +548,10 @@
 "Received" = "收到";
 
 /* (No Commment) */
-"Recover Wallet" = "恢復的錢包";
+"Recover Funds" = "追回資金";
 
 /* (No Commment) */
-"Recovering wallet" = "恢復的錢包";
+"Recovering Funds" = "收回資金";
 
 /* (No Commment) */
 "Regular" = "定期";
@@ -582,9 +585,6 @@
 
 /* (No Commment) */
 "Scan Watch Only Address?" = "掃描表唯一位址嗎?";
-
-/* (No Commment) */
-"Searching for empty accounts: %d of 10" = "尋找空帳戶: %d 10";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "第二個密碼不正確";
@@ -635,7 +635,7 @@
 "Support" = "支援";
 
 /* (No Commment) */
-"Syncing wallet" = "同步的錢包";
+"Syncing Wallet" = "同步的錢包";
 
 /* (No Commment) */
 "Terms of Service" = "服務條款";
