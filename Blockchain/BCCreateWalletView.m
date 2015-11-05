@@ -126,7 +126,10 @@
     if (self.isRecoveringWallet) {
         NSString *recoveryPhrase = [[NSMutableString alloc] initWithString:self.recoveryPhraseView.recoveryPassphraseTextField.text];
         
-        NSMutableArray *wordsArray = [[NSMutableArray alloc] initWithArray:[recoveryPhrase componentsSeparatedByString:@" "]];
+        NSString *trimmedRecoveryPhrase = [recoveryPhrase stringByTrimmingCharactersInSet:
+                                   [NSCharacterSet whitespaceCharacterSet]];
+        
+        NSMutableArray *wordsArray = [[NSMutableArray alloc] initWithArray:[trimmedRecoveryPhrase componentsSeparatedByString:@" "]];
         if ([wordsArray containsObject:@""]) {
             [wordsArray removeObject:@""];
         }
@@ -135,14 +138,15 @@
             [app standardNotify:BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS];
             return;
         }
+        
+        [app.wallet loading_start_recover_wallet];
+        [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:trimmedRecoveryPhrase];
+        
+        [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
+        self.recoveryPhraseView.recoveryPassphraseTextField.hidden = YES;
+
+        app.wallet.delegate = app;
     }
-    
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
-    [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:self.recoveryPhraseView.recoveryPassphraseTextField.text];
-    
-    [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
-    
-    app.wallet.delegate = app;
 }
 
 
@@ -262,11 +266,13 @@
 - (void)didRecoverWallet
 {
     [self clearSensitiveTextFields];
+    self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
 
 - (void)didFailRecovery
 {
     [self.recoveryPhraseView.recoveryPassphraseTextField becomeFirstResponder];
+    self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
 
 - (void)closeKeyboard

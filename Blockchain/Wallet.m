@@ -584,6 +584,8 @@
 
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase
 {
+    self.emptyAccountIndex = 0;
+    self.recoveredAccountIndex = 0;
     [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\",\"%@\",\"%@\")", [email escapeStringForJS], [recoveryPassword escapeStringForJS], [passphrase escapeStringForJS]];
 }
 
@@ -710,6 +712,16 @@
 - (void)loading_start_generate_new_address
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_GENERATING_NEW_ADDRESS];
+}
+
+- (void)loading_start_generate_uuids
+{
+    [app updateBusyViewLoadingText:BC_STRING_LOADING_GENERATING_UUIDS];
+}
+
+- (void)loading_start_recover_wallet
+{
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
 }
 
 - (void)loading_stop
@@ -1238,11 +1250,26 @@
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
     } else if ([error isEqualToString:ERROR_TIMEOUT_REQUEST]){
         [app standardNotify:BC_STRING_TIMED_OUT];
+    } else {
+        [app standardNotify:error];
     }
     if ([delegate respondsToSelector:@selector(didFailRecovery)])
         [delegate didFailRecovery];
 }
 
+- (void)on_progress_recover_with_passphrase:(NSString *)totalReceived finalBalance:(NSString *)finalBalance
+{
+    uint64_t fundsInAccount = [finalBalance longLongValue];
+    
+    if ([totalReceived longLongValue] == 0) {
+        self.emptyAccountIndex++;
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_SEARCHING_ARGUMENT_TEN_ACCOUNTS, self.emptyAccountIndex]];
+    } else {
+        self.emptyAccountIndex = 0;
+        self.recoveredAccountIndex++;
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ACCOUNT_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [app formatMoney:fundsInAccount]]];
+    }
+}
 
 - (void)on_error_downloading_account_settings
 {

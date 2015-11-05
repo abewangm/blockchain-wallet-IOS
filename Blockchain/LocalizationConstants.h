@@ -297,6 +297,9 @@
 
 #define BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering wallet", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET_SEARCHING_ARGUMENT_TEN_ACCOUNTS NSLocalizedString(@"Searching for empty accounts: %d of 10", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET_ACCOUNT_ARGUMENT_FUNDS_ARGUMENT NSLocalizedString(@"Found account %d, with %@", nil)
+#define BC_STRING_LOADING_GENERATING_UUIDS NSLocalizedString(@"Generating UUIDs", nil)
 #define BC_STRING_INVALID_RECOVERY_PHRASE NSLocalizedString(@"Invalid recovery phrase. Please try again", nil)
 
 #define BC_STRING_MERCHANT_DIRECTORY_UNAVAILABLE NSLocalizedString(@"Merchant Directory is currently unavailable. Please try again later.", nil)

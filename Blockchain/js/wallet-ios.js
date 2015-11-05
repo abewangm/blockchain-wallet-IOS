@@ -992,6 +992,24 @@ MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
     if (MyWallet.isValidateBIP39Mnemonic(passphrase)) {
         console.log('recovering wallet');
         
+        var accountProgress = function(obj) {
+            var totalReceived = obj.addresses[0]['total_received'];
+            var finalBalance = obj.wallet['final_balance'];
+            device.execute('on_progress_recover_with_passphrase:finalBalance:', [totalReceived, finalBalance]);
+        }
+        
+        var generateUUIDProgress = function() {
+            device.execute('loading_start_generate_uuids');
+        }
+        
+        var decryptWalletProgress = function() {
+            device.execute('loading_start_decrypt_wallet');
+        }
+        
+        var startedRestoreHDWallet = function() {
+            device.execute('loading_start_recover_wallet');
+        }
+        
         var success = function (recoveredWalletDictionary) {
             console.log('recovery success');
             device.execute('on_success_recover_with_passphrase:', [recoveredWalletDictionary]);
@@ -1002,7 +1020,7 @@ MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
             device.execute('on_error_recover_with_passphrase:', [error]);
         }
         
-        MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error);
+        MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error, startedRestoreHDWallet, accountProgress, generateUUIDProgress, decryptWalletProgress);
 
     } else {
         console.log('recovery error: ' + error);
