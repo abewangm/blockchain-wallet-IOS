@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Žádost o platbu Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain nemá přístup k fotoaparátu. Chcete-li přístup povolit, přejděte na zařízení nastavení.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain je v současné době vypnutý. Opakujte akci později.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain potřebuje umístění služby povoleny při přístupu k vaší polohu. Přístup můžete povolit v nastavení -> soukromí -> umístění -> umístění služby";
+
+/* (No Commment) */
+"Camera Access Denied" = "Fotoaparát přístup byl odepřen";
 
 /* (No Commment) */
 "Cancel" = "Zrušit";

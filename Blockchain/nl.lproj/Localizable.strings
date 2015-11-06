@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Verzoek om betaling van de Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain heeft geen toegang tot de camera. Als toegang wilt inschakelen, gaat u naar uw apparaat instellingen.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain is momenteel down voor onderhoud. Probeer het later nog eens.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain moet Locatieservices ingeschakeld om toegang tot uw locatie. U kunt toegang inschakelen in instellingen -> Privacy -> Locatie -> locatie diensten";
+
+/* (No Commment) */
+"Camera Access Denied" = "Camera toegang geweigerd";
 
 /* (No Commment) */
 "Cancel" = "Annuleren";

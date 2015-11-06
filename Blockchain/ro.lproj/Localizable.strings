@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Cererea de plată Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain nu are acces la aparatul de fotografiat. Pentru a permite accesul, du-te la setările aparatului.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain este în prezent în jos pentru întreţinere. Vă rugăm să încercaţi din nou mai târziu.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain are nevoie de servicii de localizare activat pentru a acces la locaţia dvs. Puteţi permite accesul în Setări -> Privacy -> locaţie -> servicii de localizare";
+
+/* (No Commment) */
+"Camera Access Denied" = "Aparat de fotografiat acces refuzat";
 
 /* (No Commment) */
 "Cancel" = "Revocare";

@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "طلب الدفع بيتكوين";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "بلوكتشين لا يحصلون على الكاميرا. لتمكين الوصول، انتقل إلى إعدادات الجهاز الخاص بك.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "بلوكتشين حاليا لأسفل للصيانة. الرجاء المحاولة مرة أخرى لاحقاً.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك. يمكنك تمكين الوصول في إعدادات--> الخصوصية--> الموقع--> \"خدمات الموقع\"";
+
+/* (No Commment) */
+"Camera Access Denied" = "تم رفض الوصول إلى الكاميرا";
 
 /* (No Commment) */
 "Cancel" = "إلغاء الأمر";

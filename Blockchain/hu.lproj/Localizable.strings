@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin kifizetési kérelem";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain nincs hozzáférés a kamera. Engedélyezi a hozzáférést, keresse fel az eszköz beállításait.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain jelenleg van legyőz részére fenntartás. Kérjük, próbálkozzon később.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain kell a helyszolgáltatása engedélyeznie a helyadataihoz való hozzáférést. Engedélyezheti a hozzáférést a beállítások -> Adatvédelem -> hely -> helymeghatározási szolgáltatások";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kamera-hozzáférés megtagadva";
 
 /* (No Commment) */
 "Cancel" = "Mégse";

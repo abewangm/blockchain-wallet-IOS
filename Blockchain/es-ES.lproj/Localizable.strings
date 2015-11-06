@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Solicitud de pago de Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain no tiene acceso a la cámara. Para habilitar el acceso, vaya a configuración de dispositivo.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain es actualmente hacia abajo para mantenimiento. Por favor Inténtalo más tarde.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain necesita Ubicación servicios habilitados para tener acceso a tu ubicación. Usted puede habilitar el acceso en ajustes -> privacidad -> Ubicación -> servicios de localización";
+
+/* (No Commment) */
+"Camera Access Denied" = "Acceso de cámara denegado";
 
 /* (No Commment) */
 "Cancel" = "Cancelar";

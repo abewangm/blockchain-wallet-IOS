@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin ödeme talebi";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain kameraya erişilmesini sahip değil. Erişimi etkinleştirmek için aygıt ayarları gidin.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain şu anda aşağı bakım için olduğunu. Lütfen daha sonra yeniden deneyin.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var. Erişimi etkinleştirebilirsiniz gizlilik ayarları -> konum -> Konum servisleri ->";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kamera erişim engellendi";
 
 /* (No Commment) */
 "Cancel" = "İptal";

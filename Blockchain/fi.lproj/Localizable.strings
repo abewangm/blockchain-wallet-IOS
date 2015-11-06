@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin ennakkomaksun pyyntö";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain ei ole pääsyä kameran. Jotta pääsy, siirry laitteen asetukset.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain on tällä hetkellä huollettavana. Yritä myöhemmin uudelleen.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain on käytössä, jotta voidaan käyttää sijaintiasi paikannuspalvelut. Voit ottaa access-asetukset -> Tietosuoja -> sijainti -> Sijaintipalvelut";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kameran käyttö estetty";
 
 /* (No Commment) */
 "Cancel" = "Peruuta";

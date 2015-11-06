@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin betalningsbegäran";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain har inte tillgång till kameran. För att aktivera åtkomst, gå till din enhet inställningar.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain är för närvarande nere för underhåll. Försök igen senare.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain behöver platstjänster aktiverat för åtkomst till din plats. Du kan aktivera åtkomst i Inställningar -> Sekretess -> läge -> platstjänster";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kameraåtkomst nekad";
 
 /* (No Commment) */
 "Cancel" = "Avbryt";

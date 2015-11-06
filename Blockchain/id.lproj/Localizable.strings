@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Permintaan pembayaran Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain tidak memiliki akses ke kamera. Untuk mengaktifkan akses, pergi ke pengaturan perangkat Anda.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain sedang untuk pemeliharaan. Harap coba lagi nanti.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain kebutuhan Layanan lokasi diaktifkan agar Anda dapat mengakses lokasi Anda. Anda dapat mengaktifkan akses dalam pengaturan -> Privacy -> lokasi -> Layanan lokasi";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kamera Akses ditolak";
 
 /* (No Commment) */
 "Cancel" = "Batal";

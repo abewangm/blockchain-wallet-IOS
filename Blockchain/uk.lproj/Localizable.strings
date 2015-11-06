@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin оплати запит";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain не має доступу до камери. Щоб дозволити доступ, перейдіть на ваш пристрій настройки.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain в даний час не працює для технічного обслуговування. Будь ласка, спробуйте ще раз пізніше.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain потребує служб визначення місцезнаходження ввімкнено для того, щоб отримати доступ до вашого місцезнаходження. Ви можете зробити доступними в настройки -> конфіденційності -> розташування -> служби локації";
+
+/* (No Commment) */
+"Camera Access Denied" = "Камери в доступі";
 
 /* (No Commment) */
 "Cancel" = "\"Скасувати\"";

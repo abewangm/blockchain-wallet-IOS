@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Yêu cầu thanh toán Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain không có quyền truy cập vào máy ảnh. Để cho phép truy nhập, hãy vào điện thoại cài đặt.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain hiện nay là xuống để bảo trì. Xin vui lòng thử lại sau.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain cần dịch vụ vị trí cho phép để truy cập vào vị trí của bạn. Bạn có thể cho phép truy cập vào cài đặt -> Privacy -> vị trí -> Dịch vụ vị trí";
+
+/* (No Commment) */
+"Camera Access Denied" = "Máy ảnh truy cập bị từ chối";
 
 /* (No Commment) */
 "Cancel" = "Hủy bỏ";

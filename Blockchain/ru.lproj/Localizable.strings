@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin запроса платежа";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain не имеет доступа к камере. Чтобы разрешить доступ, перейдите на устройство настройки.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain в настоящее время отключен для обслуживания. Пожалуйста, повторите попытку позже.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain потребностей служб определения местоположения включена для того, чтобы доступ к вашему местоположению. Вы можете включить доступ в настройки -> Конфиденциальность -> Расположение -> службы определения местоположения";
+
+/* (No Commment) */
+"Camera Access Denied" = "Камеры в доступе";
 
 /* (No Commment) */
 "Cancel" = "Отмена";

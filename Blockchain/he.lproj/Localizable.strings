@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "בקשתכם לתשלום ביטקוין";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain אין גישה למצלמה. כדי לאפשר גישה, עבור ההתקן שלך, הגדרות.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain מושבת כעת לצורך תחזוקה. נא נסה שוב מאוחר יותר.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain צריך שירותי איכון זמינה כדי לגשת למיקום שלך. באפשרותך לאפשר גישה בהגדרות -> פרטיות -> מיקום -> שירותי איכון";
+
+/* (No Commment) */
+"Camera Access Denied" = "המצלמה הגישה נדחתה";
 
 /* (No Commment) */
 "Cancel" = "ביטול";

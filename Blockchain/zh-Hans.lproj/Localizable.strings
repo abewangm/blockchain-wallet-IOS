@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "比特币付款请求";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain 没有访问摄像头。要启用访问，请转到您的设备设置。";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain 是目前下来进行维修工程。请稍后再试。";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain 需要位置服务启用，以便访问您所在的位置。您可以启用访问在设置-> 隐私-> 位置-> 定位服务";
+
+/* (No Commment) */
+"Camera Access Denied" = "相机访问被拒绝";
 
 /* (No Commment) */
 "Cancel" = "取消";

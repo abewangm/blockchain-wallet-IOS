@@ -110,6 +110,9 @@
 "Bitcoin payment request" = "Bitcoin αίτηση πληρωμής";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain δεν έχει πρόσβαση στην κάμερα. Για να ενεργοποιήσετε την πρόσβαση, πάει στη συσκευή σας ρυθμίσεις.";
+
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain αυτή τη στιγμή κάτω για τη συντήρηση. Παρακαλώ προσπαθήστε ξανά αργότερα.";
 
 /* (No Commment) */
@@ -120,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας. Μπορείτε να ενεργοποιήσετε την πρόσβαση στις ρυθμίσεις -> προσωπικό απόρρητο -> θέση -> υπηρεσίες τοποθεσίας";
+
+/* (No Commment) */
+"Camera Access Denied" = "Δεν επιτρέπεται η πρόσβαση φωτογραφική μηχανή";
 
 /* (No Commment) */
 "Cancel" = "\"Άκυρο\"";
