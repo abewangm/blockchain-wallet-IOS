@@ -916,14 +916,9 @@ BOOL displayingLocalSymbolSend;
 
 - (BOOL)startReadingQRCode
 {
-    NSError *error;
+    AVCaptureDeviceInput *input = [app getCaptureDeviceInput];
     
-    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
     if (!input) {
-        // This should never happen - all devices we support (iOS 7+) have cameras
-        DLog(@"QR code scanner problem: %@", [error localizedDescription]);
         return NO;
     }
     

@@ -27,7 +27,6 @@
 #import "PrivateKeyReader.h"
 #import "MerchantMapViewController.h"
 #import "NSData+Hex.h"
-#import <AVFoundation/AVFoundation.h>
 #import "Reachability.h"
 #import "SideMenuViewController.h"
 #import "BCWelcomeView.h"
@@ -913,6 +912,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)scanAccountQRCodeclicked:(id)sender
 {
+    if (![self getCaptureDeviceInput]) {
+        return;
+    }
+    
     PairingCodeParser * pairingCodeParser = [[PairingCodeParser alloc] initWithSuccess:^(NSDictionary*code) {
         DLog(@"scanAndParse success");
         
@@ -945,6 +948,11 @@ void (^secondPasswordSuccess)(NSString *);
         if (buttonIndex == 0) {
             _error(BC_STRING_USER_DECLINED);
         } else {
+            
+            if (![self getCaptureDeviceInput]) {
+                return;
+            }
+            
             PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:_success error:_error];
             [app.slidingViewController presentViewController:reader animated:YES completion:nil];
         }
@@ -2029,6 +2037,33 @@ void (^secondPasswordSuccess)(NSString *);
 - (BOOL)isPinSet
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD] != nil;
+}
+
+- (AVCaptureDeviceInput *)getCaptureDeviceInput
+{
+    NSError *error;
+    
+    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
+    if (!input) {
+        // This should never happen - all devices we support (iOS 7+) have cameras
+        DLog(@"QR code scanner problem: %@", [error localizedDescription]);
+        
+        if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] ==  AVAuthorizationStatusAuthorized) {
+            [app standardNotifyAutoDismissingController:[error localizedDescription]];
+        }
+        else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_TITLE message:BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_SETTINGS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                [[UIApplication sharedApplication] openURL:settingsURL];
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+            [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
+    }
+    return input;
 }
 
 @end

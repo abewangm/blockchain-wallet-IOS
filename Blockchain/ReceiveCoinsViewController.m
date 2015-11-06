@@ -796,6 +796,10 @@ UIAlertController *popupAddressArchive;
         return;
     }
     
+    if (![app getCaptureDeviceInput]) {
+        return;
+    }
+    
     PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(promptForLabelAfterScan)

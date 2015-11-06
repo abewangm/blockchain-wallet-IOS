@@ -30,6 +30,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "UpgradeViewController.h"
 #import "SettingsNavigationController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @class TransactionsViewController, Wallet, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController;
 
@@ -178,6 +179,8 @@
 - (BOOL)isPinSet;
 
 - (BOOL)checkInternetConnection;
+
+- (AVCaptureDeviceInput *)getCaptureDeviceInput;
 
 @end
 
