@@ -938,6 +938,7 @@
         NSRange range = [message rangeOfString:BC_STRING_IDENTIFIER options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
         if (range.location != NSNotFound) {
             [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
+            [self error_restoring_wallet];
         }
     }
 }
