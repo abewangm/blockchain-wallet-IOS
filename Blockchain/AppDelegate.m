@@ -1528,11 +1528,6 @@ void (^secondPasswordSuccess)(NSString *);
     
 }
 
-- (void)pinEntryControllerDidSpecialAction
-{
-    [self authenticateWithTouchID];
-}
-
 - (void)didFailGetPinTimeout
 {
     [self showPinErrorWithMessage:BC_STRING_TIMED_OUT];

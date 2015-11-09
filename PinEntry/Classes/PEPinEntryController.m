@@ -174,11 +174,6 @@ static PEViewController *VerifyController()
 	}
 }
 
-- (void)pinEntryControllerDidSpecialAction
-{
-    [self.pinDelegate pinEntryControllerDidSpecialAction];
-}
-
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated
 {
 	pinStage = PS_ENTER1;

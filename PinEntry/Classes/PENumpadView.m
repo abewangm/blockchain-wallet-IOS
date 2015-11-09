@@ -86,25 +86,7 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 
 - (void)drawRect:(CGRect)rect
 {
-    [[UIImage imageWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"PEKeyboard-3%@.png", detail]] scaledToSize:CGSizeMake(320,216)] drawAtPoint:CGPointMake(0, 0)];
-    
-#ifdef TOUCH_ID_ENABLED
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
-        NSString *touchIDString = BC_STRING_TOUCH_ID;
-        CGRect specialActionRect = Buttons[9];
-        NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-        style.alignment = NSTextAlignmentCenter;
-        NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                     NSParagraphStyleAttributeName: style };
-        CGSize size = [touchIDString sizeWithAttributes:attributes];
-        
-        CGRect textRect = CGRectMake(specialActionRect.origin.x + floorf((specialActionRect.size.width - size.width) / 2),
-                                     specialActionRect.origin.y + floorf((specialActionRect.size.height - size.height) / 2),
-                                     size.width,
-                                     size.height);
-        [touchIDString drawInRect:textRect withAttributes:attributes];
-    }
-#endif
+    [[UIImage imageWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"PEKeyboard-3%@.png", detail]] scaledToSize:CGSizeMake(320,216)] drawAtPoint:CGPointMake(0, 0)] ;
     
     if(activeClip >= 0) {
         [[UIBezierPath bezierPathWithRect:Buttons[activeClip]] addClip];
@@ -154,7 +136,6 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 				activeClip = -1;
 				if([detail isEqualToString: @""]) {
 					[self touchesCancelled:touches withEvent:event];
-                    [delegate keyboardViewDidSpecialAction];
 					return;
 				}
 				[delegate keyboardViewDidOptKey];

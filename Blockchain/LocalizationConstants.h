@@ -301,7 +301,6 @@
 #define BC_STRING_MERCHANT_DIRECTORY_UNAVAILABLE NSLocalizedString(@"Merchant Directory is currently unavailable. Please try again later.", nil)
 #define BC_STRING_SEND_ERROR NSLocalizedString(@"No internet connection available. Please check your network settings.", nil)
 
-#define BC_STRING_TOUCH_ID NSLocalizedString(@"Touch ID", nil)
 #define BC_STRING_TOUCH_ID_ERROR_VERIFYING NSLocalizedString(@"There was a problem verifying your identity.", nil)
 #define BC_STRING_TOUCH_ID_ERROR_WRONG_USER NSLocalizedString(@"Your identity does not match our records.", nil)
 #define BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE NSLocalizedString(@"Touch ID is not available on this device.", nil)
