@@ -86,6 +86,8 @@
 
 - (void)loadBlankWallet
 {
+    self.isSyncingForCriticalProcess = NO;
+    self.isSyncingForTrivialProcess = NO;
     [self loadWalletWithGuid:nil sharedKey:nil password:nil];
 }
 
