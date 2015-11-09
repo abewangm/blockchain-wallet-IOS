@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin žiadosť o platbu";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain nemá prístup k fotoaparátu. Umožnenie prístupu na lokalite váš prístroj nastavenie.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain je v súčasnosti z dôvodu údržby. Skúste znova neskôr.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain potrebuje Location Services povolená na prístup k vašej polohe.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain potrebuje Location Services povolená na prístup k vašej polohe. Môžete povoliť prístup v nastavenia -> Súkromie -> umiestnenie -> Služby polohy";
+
+/* (No Commment) */
+"Camera Access Denied" = "Fotoaparát prístup bol odmietnutý";
 
 /* (No Commment) */
 "Cancel" = "Zrušiť";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Kontrola aktualizácií peňaženka";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Kontrola viacerých účtov: krok %d 10";
 
 /* No comment provided by engineer. */
 "Close" = "Zavrieť";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Vytváranie HD peňaženka";
+
+/* (No Commment) */
+"Creating Wallet" = "Vytváranie peňaženka";
 
 /* (No Commment) */
 "Creating new Wallet" = "Vytvorenie novej peňaženky";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Zabudnite na peňaženky";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Našiel účet %1$d, s %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Z a protiúčtu musia byť rôzne";
@@ -368,10 +386,10 @@
 "Local Currency" = "Miestnej meny";
 
 /* (No Commment) */
-"Log in to my wallet" = "Prihláste sa do mojej peňaženky";
+"Log in to my Wallet" = "Prihláste sa do mojej peňaženky";
 
 /* (No Commment) */
-"Login existing wallet" = "Prihlasovacie údaje existujúcim peňaženka";
+"Login existing Wallet" = "Prihlasovacie údaje existujúcim peňaženka";
 
 /* (No Commment) */
 "Logout" = "Odhlásiť";
@@ -536,10 +554,10 @@
 "Received" = "Prijaté";
 
 /* (No Commment) */
-"Recover Wallet" = "Obnoviť peňaženka";
+"Recover Funds" = "Vrátenie finančných prostriedkov";
 
 /* (No Commment) */
-"Recovering wallet" = "Obnovenie peňaženka";
+"Recovering Funds" = "Vymáhanie finančných prostriedkov";
 
 /* (No Commment) */
 "Regular" = "Pravidelné";
@@ -623,10 +641,13 @@
 "Support" = "Podpora";
 
 /* (No Commment) */
-"Syncing wallet" = "Synchronizácia peňaženka";
+"Syncing Wallet" = "Synchronizácia peňaženka";
 
 /* (No Commment) */
 "Terms of Service" = "Podmienky služby";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN ste vybrali je veľmi časté a môže byť ľahko uhádnuté niekoho s prístupom k telefónu do 3 skúša. Chceli by ste použiť tento kód PIN?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Sumu, ktorú chcete poslať (%1$@) je väčšia ako maximálna výška môžete stráviť mínus poplatok (%2$@ - %3$@). Chceli by ste poslať %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Prevedené";
+
+/* (No Commment) */
+"Try again" = "skús znova";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "INOVOVAŤ VAŠU PEŇAŽENKU";

@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Richiesta di pagamento di Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain non ha accesso alla telecamera. Per abilitare l'accesso, vai al tuo dispositivo le impostazioni.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain è attualmente in manutenzione. Si prega di riprovare più tardi.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain ha bisogno di servizi di localizzazione abilitati al fine di accedere alla propria posizione.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain ha bisogno di servizi di localizzazione abilitati al fine di accedere alla propria posizione. È possibile abilitare l'accesso in Impostazioni -> Privacy -> posizione -> Servizi di localizzazione";
+
+/* (No Commment) */
+"Camera Access Denied" = "Fotocamera accesso negato";
 
 /* (No Commment) */
 "Cancel" = "Annulla";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Controllo degli aggiornamenti di portafoglio";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Il controllo per più account: passo %d di 10";
 
 /* No comment provided by engineer. */
 "Close" = "Chiudere";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Creazione di portafogli di HD";
+
+/* (No Commment) */
+"Creating Wallet" = "Creazione di portafogli";
 
 /* (No Commment) */
 "Creating new Wallet" = "Creazione nuovo portafoglio";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Dimenticare il portafoglio";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Trovato il conto %1$d, con %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Da e conto di destinazione devono essere differenti";
@@ -368,10 +386,10 @@
 "Local Currency" = "Valuta locale";
 
 /* (No Commment) */
-"Log in to my wallet" = "Accedere al mio portafoglio";
+"Log in to my Wallet" = "Accedere al mio portafoglio";
 
 /* (No Commment) */
-"Login existing wallet" = "Portafoglio esistente login";
+"Login existing Wallet" = "Account di accesso esistente portafoglio";
 
 /* (No Commment) */
 "Logout" = "Logout";
@@ -536,10 +554,10 @@
 "Received" = "Ha ricevuto";
 
 /* (No Commment) */
-"Recover Wallet" = "Recuperare il portafoglio";
+"Recover Funds" = "Recuperare i fondi";
 
 /* (No Commment) */
-"Recovering wallet" = "Recupero di portafoglio";
+"Recovering Funds" = "Recupero dei fondi";
 
 /* (No Commment) */
 "Regular" = "Regolare";
@@ -623,10 +641,13 @@
 "Support" = "Supporto";
 
 /* (No Commment) */
-"Syncing wallet" = "La sincronizzazione di portafoglio";
+"Syncing Wallet" = "La sincronizzazione di portafoglio";
 
 /* (No Commment) */
 "Terms of Service" = "Termini di servizio";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Il PIN è stato selezionato è estremamente comune e può essere facilmente indovinato da qualcuno con accesso al tuo telefono all'interno di 3 tentativi. Vuoi utilizzare comunque questo PIN?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "L'importo che si desidera inviare (%1$@) è superiore all'importo massimo che si può spendere meno la tassa (%2$@ - %3$@). Vuoi inviare %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Trasferito";
+
+/* (No Commment) */
+"Try again" = "Riprova";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "AGGIORNARE IL TUO PORTAFOGLIO";

@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin оплати запит";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain не має доступу до камери. Щоб дозволити доступ, перейдіть на ваш пристрій настройки.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain в даний час не працює для технічного обслуговування. Будь ласка, спробуйте ще раз пізніше.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain потребує служб визначення місцезнаходження ввімкнено для того, щоб отримати доступ до вашого місцезнаходження.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain потребує служб визначення місцезнаходження ввімкнено для того, щоб отримати доступ до вашого місцезнаходження. Ви можете зробити доступними в настройки -> конфіденційності -> розташування -> служби локації";
+
+/* (No Commment) */
+"Camera Access Denied" = "Камери в доступі";
 
 /* (No Commment) */
 "Cancel" = "\"Скасувати\"";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Перевірка наявності оновлень гаманець";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Перевірка наявності більше облікових записів: крок %d 10";
 
 /* No comment provided by engineer. */
 "Close" = "Закрити";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Створення HD гаманець";
+
+/* (No Commment) */
+"Creating Wallet" = "Створення гаманець";
 
 /* (No Commment) */
 "Creating new Wallet" = "Створення нового гаманець";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Забути гаманець";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Знайшов обліковий запис %1$d, з %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Від і призначення рахунку повинні бути різними";
@@ -368,10 +386,10 @@
 "Local Currency" = "Місцевій валюті";
 
 /* (No Commment) */
-"Log in to my wallet" = "Увійти в мій гаманець";
+"Log in to my Wallet" = "Увійти в мій гаманець";
 
 /* (No Commment) */
-"Login existing wallet" = "Логін існуючих гаманець";
+"Login existing Wallet" = "Логін існуючих гаманець";
 
 /* (No Commment) */
 "Logout" = "Вихід із системи";
@@ -536,10 +554,10 @@
 "Received" = "Отримав";
 
 /* (No Commment) */
-"Recover Wallet" = "Відновити гаманець";
+"Recover Funds" = "Відновити коштів";
 
 /* (No Commment) */
-"Recovering wallet" = "Відновлення гаманець";
+"Recovering Funds" = "Відновлення коштів";
 
 /* (No Commment) */
 "Regular" = "Регулярні";
@@ -623,10 +641,13 @@
 "Support" = "Підтримка";
 
 /* (No Commment) */
-"Syncing wallet" = "Синхронізацію гаманець";
+"Syncing Wallet" = "Синхронізацію гаманець";
 
 /* (No Commment) */
 "Terms of Service" = "Умови надання послуг";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Вибрані PIN-код є дуже поширеною і легко вгадати хтось має доступ до вашого телефону протягом 3 намагається. Використовувати цей PIN будь-якому випадку?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Сума, яку ви хочете відправити (%1$@) є більшою, ніж Максимальна сума, яку ви можете витратити мінус плату (%2$@ - %3$@). Ви хотіли б відправити %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Передані";
+
+/* (No Commment) */
+"Try again" = "Спробуй ще раз";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "ОНОВИТИ ВАШ ГАМАНЕЦЬ";

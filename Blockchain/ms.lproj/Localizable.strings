@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Permintaan bayaran Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain tidak mempunyai akses kepada kamera. Untuk mendayakan capaian, pergi ke seting peranti anda.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain sedang untuk penyelenggaraan. Sila cuba lagi nanti.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain memerlukan perkhidmatan lokasi yang dibolehkan untuk mencapai lokasi anda.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain memerlukan perkhidmatan lokasi yang dibolehkan untuk mencapai lokasi anda. Anda boleh mendayakan capaian dalam seting Privasi yang -> -> lokasi -> Perkhidmatan lokasi";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kamera capaian ditolak";
 
 /* (No Commment) */
 "Cancel" = "Batal";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Menyemak untuk pengemaskinian Wallet";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Menyemak untuk menambahkan akaun: %d langkah 10";
 
 /* No comment provided by engineer. */
 "Close" = "Tutup";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Mewujudkan HD Wallet";
+
+/* (No Commment) */
+"Creating Wallet" = "Mewujudkan Wallet";
 
 /* (No Commment) */
 "Creating new Wallet" = "Mewujudkan Wallet baru";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Lupa Wallet";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Mendapati akaun %1$d, dengan %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Dari dan akaun destinasi berbeza";
@@ -368,10 +386,10 @@
 "Local Currency" = "Mata Wang tempatan";
 
 /* (No Commment) */
-"Log in to my wallet" = "Log masuk ke wallet saya";
+"Log in to my Wallet" = "Log masuk ke Wallet saya";
 
 /* (No Commment) */
-"Login existing wallet" = "Log masuk wallet sedia ada";
+"Login existing Wallet" = "Log masuk Wallet sedia ada";
 
 /* (No Commment) */
 "Logout" = "Log keluar";
@@ -536,10 +554,10 @@
 "Received" = "Diterima";
 
 /* (No Commment) */
-"Recover Wallet" = "Memulihkan Wallet";
+"Recover Funds" = "Mendapatkan semula dana";
 
 /* (No Commment) */
-"Recovering wallet" = "Pulih wallet";
+"Recovering Funds" = "Memungut dana";
 
 /* (No Commment) */
 "Regular" = "Tetap";
@@ -623,10 +641,13 @@
 "Support" = "Sokongan";
 
 /* (No Commment) */
-"Syncing wallet" = "Menyegerak wallet";
+"Syncing Wallet" = "Menyegerak Wallet";
 
 /* (No Commment) */
 "Terms of Service" = "Syarat-syarat Perkhidmatan";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN yang anda pilih adalah sangat biasa dan boleh mudah meneka dengan seseorang yang mempunyai akses kepada telefon anda dalam tempoh 3 kali. Adakah anda ingin untuk menggunakan PIN ini pula?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Jumlah yang anda ingin hantarkan (%1$@) adalah lebih besar daripada jumlah maksimum yang anda boleh menghabiskan tolak yuran (%2$@ - %3$@). Adakah anda ingin menghantar %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Dipindahkan";
+
+/* (No Commment) */
+"Try again" = "cuba lagi";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "MENAIK TARAF DOMPET ANDA";

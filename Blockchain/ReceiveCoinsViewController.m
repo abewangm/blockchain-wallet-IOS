@@ -796,6 +796,10 @@ UIAlertController *popupAddressArchive;
         return;
     }
     
+    if (![app getCaptureDeviceInput]) {
+        return;
+    }
+    
     PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(promptForLabelAfterScan)
@@ -832,6 +836,10 @@ UIAlertController *popupAddressArchive;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (textField == labelTextField) {
+        return YES;
+    }
+    
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSArray  *points = [newString componentsSeparatedByString:@"."];
     NSArray  *commas = [newString componentsSeparatedByString:@","];

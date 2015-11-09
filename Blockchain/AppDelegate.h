@@ -30,6 +30,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "UpgradeViewController.h"
 #import "SettingsNavigationController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @class TransactionsViewController, Wallet, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController;
 
@@ -54,6 +55,7 @@
     
     IBOutlet UIView *mainPasswordView;
     IBOutlet UITextField *mainPasswordTextField;
+    IBOutlet UIButton *forgetWalletButton;
     
     @public
     
@@ -126,6 +128,7 @@
 - (void)walletFailedToDecrypt;
 
 // Display a message
+- (void)standardNotifyAutoDismissingController:(NSString *)message;
 - (void)standardNotify:(NSString*)message;
 - (void)standardNotify:(NSString*)message delegate:(id)fdelegate;
 - (void)standardNotify:(NSString*)message title:(NSString*)title delegate:(id)fdelegate;
@@ -177,7 +180,11 @@
 - (BOOL)isPinSet;
 
 - (BOOL)checkInternetConnection;
+
 - (BOOL)isTouchIDAvailable;
+
+- (AVCaptureDeviceInput *)getCaptureDeviceInput;
+
 @end
 
 extern AppDelegate *app;

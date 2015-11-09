@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin भुगतान अनुरोध";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain कैमरा करने के लिए पहुँच नहीं है। पहुँच को सक्षम करने के लिए, आपकी डिवाइस सेटिंग्स करने के लिए जाओ।";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain वर्तमान में नीचे रखरखाव के लिए है। कृपया बाद में पुन: प्रयास करें।";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain स्थान सेवाएँ आपके स्थान तक पहुंचने के लिए सक्षम की जरूरत है।";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain स्थान सेवाएँ आपके स्थान तक पहुंचने के लिए सक्षम की जरूरत है। आप तक पहुँच को सक्षम कर सकते हैं गोपनीयता में सेटिंग्स -> -> स्थान स्थान सेवाएँ ->";
+
+/* (No Commment) */
+"Camera Access Denied" = "कैमरे में प्रवेश निषेध है";
 
 /* (No Commment) */
 "Cancel" = "रद्द करें";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "बटुआ अद्यतनों के लिए जाँच";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "अधिक खातों के लिए जाँच: 10 के चरण %d";
 
 /* No comment provided by engineer. */
 "Close" = "बंद करें";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD बटुआ बनाना";
+
+/* (No Commment) */
+"Creating Wallet" = "बटुआ बनाना";
 
 /* (No Commment) */
 "Creating new Wallet" = "नई बटुआ बनाना";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "बटुआ भूल जाते हैं";
+
+/* (No Commment) */
+"Found account %d, with %@" = "खाता %1$d, %2$@ के साथ पाया";
 
 /* (No Commment) */
 "From and destination account have to be different" = "से और गंतव्य खाता है अलग होना करने के लिए";
@@ -368,10 +386,10 @@
 "Local Currency" = "स्थानीय मुद्रा";
 
 /* (No Commment) */
-"Log in to my wallet" = "मेरा बटुआ के लिए लॉग इन करें";
+"Log in to my Wallet" = "मेरा बटुआ के लिए लॉग इन करें";
 
 /* (No Commment) */
-"Login existing wallet" = "लॉगिन मौजूदा बटुआ";
+"Login existing Wallet" = "लॉगिन मौजूदा बटुआ";
 
 /* (No Commment) */
 "Logout" = "लॉग आउट";
@@ -536,10 +554,10 @@
 "Received" = "प्राप्त हुआ";
 
 /* (No Commment) */
-"Recover Wallet" = "बटुआ पुनर्प्राप्त करें";
+"Recover Funds" = "धन की वसूली";
 
 /* (No Commment) */
-"Recovering wallet" = "बटुआ पुनर्प्राप्त करना";
+"Recovering Funds" = "धन पुनर्प्राप्त करना";
 
 /* (No Commment) */
 "Regular" = "नियमित रूप से";
@@ -623,10 +641,13 @@
 "Support" = "समर्थन";
 
 /* (No Commment) */
-"Syncing wallet" = "बटुआ सिंक्रनाइज़ किए जा रहे";
+"Syncing Wallet" = "बटुआ सिंक्रनाइज़ किए जा रहे";
 
 /* (No Commment) */
 "Terms of Service" = "सेवा की शर्तें";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "आपके द्वारा चयनित पिन बेहद आम है और आसानी से 3 की कोशिश के भीतर अपने फ़ोन करने के लिए उपयोग के साथ किसी के द्वारा अनुमान लगाया जा सकता। तुम वैसे भी इस पिन का उपयोग करना चाहते हैं?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@) भेजने के लिए इच्छित राशि आप शुल्क (%2$@ - %3$@) शून्य से खर्च कर सकते हैं अधिकतम राशि से अधिक है। आप %4$@ भेजना चाहेंगे?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "तबादला";
+
+/* (No Commment) */
+"Try again" = "फिर कोशिश करो";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "अपने बटुए का उन्नयन";

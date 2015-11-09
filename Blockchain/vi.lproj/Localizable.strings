@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Yêu cầu thanh toán Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain không có quyền truy cập vào máy ảnh. Để cho phép truy nhập, hãy vào điện thoại cài đặt.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain hiện nay là xuống để bảo trì. Xin vui lòng thử lại sau.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain cần dịch vụ vị trí cho phép để truy cập vào vị trí của bạn.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain cần dịch vụ vị trí cho phép để truy cập vào vị trí của bạn. Bạn có thể cho phép truy cập vào cài đặt -> Privacy -> vị trí -> Dịch vụ vị trí";
+
+/* (No Commment) */
+"Camera Access Denied" = "Máy ảnh truy cập bị từ chối";
 
 /* (No Commment) */
 "Cancel" = "Hủy bỏ";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Kiểm tra Cập Nhật ví";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Kiểm tra thêm tài khoản: bước %d 10";
 
 /* No comment provided by engineer. */
 "Close" = "Đóng";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Tạo HD Wallet";
+
+/* (No Commment) */
+"Creating Wallet" = "Việc tạo ra ví";
 
 /* (No Commment) */
 "Creating new Wallet" = "Tạo mới Wallet";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Quên Wallet";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Tìm thấy tài khoản %1$d, với %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Từ và điểm đến tài khoản có thể khác nhau";
@@ -368,10 +386,10 @@
 "Local Currency" = "Tiền tệ địa phương";
 
 /* (No Commment) */
-"Log in to my wallet" = "Đăng nhập vào ví của tôi";
+"Log in to my Wallet" = "Đăng nhập vào ví của tôi";
 
 /* (No Commment) */
-"Login existing wallet" = "Đăng nhập hiện tại ví";
+"Login existing Wallet" = "Đăng nhập hiện tại Wallet";
 
 /* (No Commment) */
 "Logout" = "Đăng xuất";
@@ -536,10 +554,10 @@
 "Received" = "Nhận được";
 
 /* (No Commment) */
-"Recover Wallet" = "Phục hồi Wallet";
+"Recover Funds" = "Phục hồi tiền";
 
 /* (No Commment) */
-"Recovering wallet" = "Phục hồi ví";
+"Recovering Funds" = "Phục hồi tiền";
 
 /* (No Commment) */
 "Regular" = "Thường xuyên";
@@ -623,10 +641,13 @@
 "Support" = "Hỗ trợ";
 
 /* (No Commment) */
-"Syncing wallet" = "Đồng bộ hoá ví";
+"Syncing Wallet" = "Đồng bộ hoá Wallet";
 
 /* (No Commment) */
 "Terms of Service" = "Điều khoản Dịch vụ";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN bạn chọn là rất phổ biến và có thể được dễ dàng đoán bởi một người có quyền truy cập vào điện thoại của bạn trong 3 cố gắng. Bạn có muốn dùng PIN này chứ?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Số tiền bạn muốn gửi (%1$@) là lớn hơn số tiền tối đa bạn có thể chi tiêu trừ đi phí (%2$@ - %3$@). Bạn có muốn gửi %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Chuyển giao";
+
+/* (No Commment) */
+"Try again" = "Thử lại";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "NÂNG CẤP CHI TIÊU CỦA BẠN";

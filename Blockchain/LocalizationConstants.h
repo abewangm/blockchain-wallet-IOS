@@ -154,6 +154,9 @@
 #define BC_STRING_PIN_RESPONSE_OBJECT_KEY_OR_VALUE_LENGTH_0 NSLocalizedString(@"PIN Response Object key or value length 0", nil)
 #define BC_STRING_PIN_ENCRYPTED_STRING_IS_NIL NSLocalizedString(@"PIN Encrypted String is nil", nil)
 #define BC_STRING_PIN_SAVED_SUCCESSFULLY NSLocalizedString(@"PIN Saved Successfully", nil)
+#define BC_STRING_PIN_COMMON_CODE_WARNING_TITLE NSLocalizedString(@"Warning", nil)
+#define BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE NSLocalizedString(@"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?", nil)
+#define BC_STRING_TRY_AGAIN NSLocalizedString(@"Try again", nil)
 
 #define BC_STRING_PAYMENT_REQUEST NSLocalizedString(@"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@", nil)
 #define BC_STRING_PAYMENT_REQUEST_HTML NSLocalizedString(@"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@", nil)
@@ -189,7 +192,7 @@
 #define BC_STRING_LOADING_CREATING_WALLET NSLocalizedString(@"Creating new Wallet", nil)
 #define BC_STRING_LOADING_IMPORT_KEY NSLocalizedString(@"Importing key", nil)
 #define BC_STRING_LOADING_GENERATING_NEW_ADDRESS NSLocalizedString(@"Generating new address", nil)
-#define BC_STRING_LOADING_SYNCING_WALLET NSLocalizedString(@"Syncing wallet", nil)
+#define BC_STRING_LOADING_SYNCING_WALLET NSLocalizedString(@"Syncing Wallet", nil)
 #define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 
 #define BC_STRING_MERCHANT_MAP NSLocalizedString(@"Merchant Map", nil)
@@ -217,9 +220,9 @@
 #define BC_STRING_SCAN_PRIVATE_KEY NSLocalizedString(@"Scan Private Key", nil)
 #define BC_STRING_CONTINUE NSLocalizedString(@"Continue", nil)
 
-#define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my wallet", nil)
-#define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing wallet", nil)
-#define BC_STRING_RECOVER_WALLET NSLocalizedString(@"Recover Wallet", nil)
+#define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my Wallet", nil)
+#define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing Wallet", nil)
+#define BC_STRING_RECOVER_FUNDS NSLocalizedString(@"Recover Funds", nil)
 
 #define BC_STRING_COPY_ADDRESS NSLocalizedString(@"Copy Address", nil)
 #define BC_STRING_ARCHIVE_ADDRESS NSLocalizedString(@"Archive Address", nil)
@@ -294,12 +297,18 @@
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)
 #define BC_STRING_NEW_ADDRESS_GENERATE_NEW NSLocalizedString(@"Generate new", nil)
 
-#define BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
-#define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering wallet", nil)
+#define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_TEN_ACCOUNTS NSLocalizedString(@"Checking for more accounts: Step %d of 10", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET_ACCOUNT_ARGUMENT_FUNDS_ARGUMENT NSLocalizedString(@"Found account %d, with %@", nil)
+#define BC_STRING_LOADING_RECOVERY_CREATING_WALLET NSLocalizedString(@"Creating Wallet", nil)
 #define BC_STRING_INVALID_RECOVERY_PHRASE NSLocalizedString(@"Invalid recovery phrase. Please try again", nil)
 
 #define BC_STRING_MERCHANT_DIRECTORY_UNAVAILABLE NSLocalizedString(@"Merchant Directory is currently unavailable. Please try again later.", nil)
-#define BC_STRING_SEND_ERROR NSLocalizedString(@"No internet connection available. Please check your network settings.", nil)
+#define BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION NSLocalizedString(@"No internet connection available. Please check your network settings.", nil)
+#define BC_STRING_NO_EMAIL_CONFIGURED NSLocalizedString(@"You do not have an account set up for Mail. Please contact %@", nil)
+#define BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_TITLE NSLocalizedString(@"Camera Access Denied", nil)
+#define BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_MESSAGE NSLocalizedString(@"Blockchain does not have access to the camera. To enable access, go to your device Settings.", nil)
 
 #define BC_STRING_TOUCH_ID_ERROR_VERIFYING NSLocalizedString(@"There was a problem verifying your identity.", nil)
 #define BC_STRING_TOUCH_ID_ERROR_WRONG_USER NSLocalizedString(@"Your identity does not match our records.", nil)

@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin kifizetési kérelem";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain nincs hozzáférés a kamera. Engedélyezi a hozzáférést, keresse fel az eszköz beállításait.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain jelenleg van legyőz részére fenntartás. Kérjük, próbálkozzon később.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain kell a helyszolgáltatása engedélyeznie a helyadataihoz való hozzáférést.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain kell a helyszolgáltatása engedélyeznie a helyadataihoz való hozzáférést. Engedélyezheti a hozzáférést a beállítások -> Adatvédelem -> hely -> helymeghatározási szolgáltatások";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kamera-hozzáférés megtagadva";
 
 /* (No Commment) */
 "Cancel" = "Mégse";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "A mobiltárca-frissítések";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "További számlák ellenőrzése: 10 lépés %d";
 
 /* No comment provided by engineer. */
 "Close" = "Zár";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Létrehozása HD pénztárca";
+
+/* (No Commment) */
+"Creating Wallet" = "Pénztárca létrehozása";
 
 /* (No Commment) */
 "Creating new Wallet" = "Új Mobiltárcaprofil létrehozása";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Felejtsd el a tárca";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Számla %1$d, a %2$@ található";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Származó és a rendeltetési számlára van, hogy különböző";
@@ -368,10 +386,10 @@
 "Local Currency" = "Helyi pénznemben";
 
 /* (No Commment) */
-"Log in to my wallet" = "Fatörzs-ban-hoz az én-m pénztárca";
+"Log in to my Wallet" = "Fatörzs-ban-hoz az én-m pénztárca";
 
 /* (No Commment) */
-"Login existing wallet" = "Bejelentkezés meglévő pénztárca";
+"Login existing Wallet" = "Bejelentkezés meglévő pénztárca";
 
 /* (No Commment) */
 "Logout" = "Kijelentkezés";
@@ -536,10 +554,10 @@
 "Received" = "Kapott";
 
 /* (No Commment) */
-"Recover Wallet" = "Visszaszerez pénztárca";
+"Recover Funds" = "Alapokat visszaszerez";
 
 /* (No Commment) */
-"Recovering wallet" = "Beszedik a pénztárca";
+"Recovering Funds" = "Helyreállításhoz pénzeszközök";
 
 /* (No Commment) */
 "Regular" = "Rendszeres";
@@ -623,10 +641,13 @@
 "Support" = "Támogatás";
 
 /* (No Commment) */
-"Syncing wallet" = "Szinkronizál pénztárca";
+"Syncing Wallet" = "Szinkronizál pénztárca";
 
 /* (No Commment) */
 "Terms of Service" = "Szolgáltatási feltételek";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "A PIN-kódot választotta rendkívül gyakori, és valaki a hozzáférést a telefon belül 3 próbálkozás könnyen kitalálható. Szeretne használni a PIN-kód egyébként?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@) elküldeni kívánt összeg nagyobb, mint a maximális összeg mínusz a díj (%2$@ - %3$@) töltheti. Szeretne küldeni a %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Át";
+
+/* (No Commment) */
+"Try again" = "próbáld újra";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "FRISSÍTSE A PÉNZTÁRCA";

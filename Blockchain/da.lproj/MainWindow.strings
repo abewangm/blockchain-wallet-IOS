@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 posteringer";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Indtast din adgangssætning nedenfor, adskille hvert ord med et mellemrum.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Indtast din 12 opsving ord med mellemrum at inddrive dine midler & transaktioner";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Manuel parring";

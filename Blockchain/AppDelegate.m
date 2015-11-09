@@ -27,7 +27,6 @@
 #import "PrivateKeyReader.h"
 #import "MerchantMapViewController.h"
 #import "NSData+Hex.h"
-#import <AVFoundation/AVFoundation.h>
 #import "Reachability.h"
 #import "SideMenuViewController.h"
 #import "BCWelcomeView.h"
@@ -36,6 +35,7 @@
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
 #import <LocalAuthentication/LocalAuthentication.h>
+#import "UIViewController+AutoDismiss.h"
 
 AppDelegate * app;
 
@@ -298,6 +298,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 #pragma mark - AlertView Helpers
 
+- (void)standardNotifyAutoDismissingController:(NSString *)message
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)standardNotify:(NSString*)message
 {
     [self standardNotify:message title:BC_STRING_ERROR delegate:nil];
@@ -432,6 +440,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
     
+    forgetWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:mainPasswordTextField action:@selector(resignFirstResponder)];
     mainPasswordTextField.text = @"";
     [mainPasswordView addGestureRecognizer:tapGesture];
@@ -904,6 +913,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)scanAccountQRCodeclicked:(id)sender
 {
+    if (![self getCaptureDeviceInput]) {
+        return;
+    }
+    
     PairingCodeParser * pairingCodeParser = [[PairingCodeParser alloc] initWithSuccess:^(NSDictionary*code) {
         DLog(@"scanAndParse success");
         
@@ -936,6 +949,11 @@ void (^secondPasswordSuccess)(NSString *);
         if (buttonIndex == 0) {
             _error(BC_STRING_USER_DECLINED);
         } else {
+            
+            if (![self getCaptureDeviceInput]) {
+                return;
+            }
+            
             PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:_success error:_error];
             [app.slidingViewController presentViewController:reader animated:YES completion:nil];
         }
@@ -991,15 +1009,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didImportPrivateKey:(NSString *)address
 {
-    if (_receiveViewController.view.window) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-        alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (wallet.isSyncingForCriticalProcess) {
-                [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-            }
-        };
-        [alertView show];
-    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if (wallet.isSyncingForCriticalProcess) {
+            [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+        }
+    }]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)didFailToImportPrivateKey:(NSString *)error
@@ -1007,12 +1024,12 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         if (wallet.isSyncingForCriticalProcess && [error isEqualToString:@"Key already imported"]) {
             [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         }
-    }];
-    [errorAlert addAction:okAction];
+    }]];
+    [[NSNotificationCenter defaultCenter] addObserver:errorAlert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [self.window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
 }
 
@@ -1024,6 +1041,23 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)didRecoverWallet
 {
     [createWalletView didRecoverWallet];
+}
+
+- (void)didFailGetHistory:(NSString *)error
+{
+    NSString *errorMessage = [error length] == 0 ? BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION : error;
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if ([self isPinSet]) {
+            [self showPinModalAsView:NO];
+        } else {
+            UIApplication *app = [UIApplication sharedApplication];
+            [app performSelector:@selector(suspend)];
+        }
+    }]];
+    
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Show Screens
@@ -1179,7 +1213,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showRecoverWallet:(id)sender
 {
-    [app showModalWithContent:createWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET];
+    [app showModalWithContent:createWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_FUNDS];
     createWalletView.isRecoveringWallet = YES;
 }
 
@@ -1654,12 +1688,13 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self hideBusyView];
     
-    // If the server returns an "Unknown Error" response it means the user entered "0000" and we show a slightly different error message
-    if ([@"Unknown Error" isEqual:value]) {
-        value = BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN;
-    }
     [app standardNotify:value];
     
+    [self reopenChangePIN];
+}
+
+- (void)reopenChangePIN
+{
     [self closePINModal:NO];
     
     // Show the pin modal to enter a pin again
@@ -1721,6 +1756,30 @@ void (^secondPasswordSuccess)(NSString *);
         };
 #endif
         [alertViewSavedPINSuccessfully show];
+    }
+}
+
+- (void)pinEntryController:(PEPinEntryController *)c willChangeToNewPin:(NSUInteger)_pin
+{
+    if (_pin == PIN_COMMON_CODE_1 ||
+        _pin == PIN_COMMON_CODE_2 ||
+        _pin == PIN_COMMON_CODE_3 ||
+        _pin == PIN_COMMON_CODE_4) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_PIN_COMMON_CODE_WARNING_TITLE message:BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:nil]];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_TRY_AGAIN style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self reopenChangePIN];
+        }]];
+        [c presentViewController:alert animated:YES completion:nil];
+    }
+    
+    if (_pin == PIN_INVALID_CODE) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self reopenChangePIN];
+        }]];
+        [c presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -2078,6 +2137,33 @@ void (^secondPasswordSuccess)(NSString *);
 - (BOOL)isPinSet
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD] != nil;
+}
+
+- (AVCaptureDeviceInput *)getCaptureDeviceInput
+{
+    NSError *error;
+    
+    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
+    if (!input) {
+        // This should never happen - all devices we support (iOS 7+) have cameras
+        DLog(@"QR code scanner problem: %@", [error localizedDescription]);
+        
+        if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] ==  AVAuthorizationStatusAuthorized) {
+            [app standardNotifyAutoDismissingController:[error localizedDescription]];
+        }
+        else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_TITLE message:BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_SETTINGS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                [[UIApplication sharedApplication] openURL:settingsURL];
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+            [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
+    }
+    return input;
 }
 
 @end

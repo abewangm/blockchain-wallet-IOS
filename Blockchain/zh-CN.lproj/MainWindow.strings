@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 的交易";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "输入你的密码下面，用一个空格分隔每个单词。";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "输入要恢复你的资金和交易的空间你 12 恢复的话";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "手动配对";

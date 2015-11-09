@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin zahtjev";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain nema pristup kameri. Da biste omogućili pristup, ići na uređaj postavke.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain je trenutno. Pokušajte ponovo kasnije.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain treba Lokacijske usluge omogućen za pristup vašoj lokaciji.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain treba Lokacijske usluge omogućen za pristup vašoj lokaciji. Omogućite pristup u postavke -> Privacy -> mjesto -> Lokacijske usluge";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kamera pristup odbijen";
 
 /* (No Commment) */
 "Cancel" = "Odustani";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Provjera ažuriranja novčanik";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Provjera za dodatne račune: korak %d 10";
 
 /* No comment provided by engineer. */
 "Close" = "Zatvori";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Stvaranje HD novčanik";
+
+/* (No Commment) */
+"Creating Wallet" = "Stvaranje novčanik";
 
 /* (No Commment) */
 "Creating new Wallet" = "Stvaranje nove novčanik";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Zaboravi novčanik";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Pronašli račun %1$d, s %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Iz i odredišni račun moraju biti različite";
@@ -368,10 +386,10 @@
 "Local Currency" = "Lokalnoj valuti";
 
 /* (No Commment) */
-"Log in to my wallet" = "Prijavite se na moj novčanik";
+"Log in to my Wallet" = "Prijavite se na moj novčanik";
 
 /* (No Commment) */
-"Login existing wallet" = "Prijava postojećih novčanik";
+"Login existing Wallet" = "Prijava postojećih novčanik";
 
 /* (No Commment) */
 "Logout" = "Odjava";
@@ -536,10 +554,10 @@
 "Received" = "Primio";
 
 /* (No Commment) */
-"Recover Wallet" = "Obnova novčanik";
+"Recover Funds" = "Obnova fondova";
 
 /* (No Commment) */
-"Recovering wallet" = "Oporavlja novčanik";
+"Recovering Funds" = "Oporavak fondova";
 
 /* (No Commment) */
 "Regular" = "Redovito";
@@ -623,10 +641,13 @@
 "Support" = "Podrška za";
 
 /* (No Commment) */
-"Syncing wallet" = "Sinkronizacija novčanik";
+"Syncing Wallet" = "Sinkronizacija novčanik";
 
 /* (No Commment) */
 "Terms of Service" = "Uvjeti korištenja";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN odaberete je vrlo čest i može se lako pogoditi neko telefon u 3 pokušaja. Želite li ipak koristiti ovaj PIN?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Iznos koji želite poslati (%1$@) je veći od maksimalnog iznosa možete provesti bez naknade (%2$@ - %3$@). Želite li poslati %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Prenose";
+
+/* (No Commment) */
+"Try again" = "pokušaj ponovo";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "NADOGRADITE VAŠ NOVČANIK";

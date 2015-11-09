@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin betalingsanmodning";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain har ikke adgang til kameraet. Hvis du vil aktivere adgang, gå til enhedens indstillinger.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain er i øjeblikket nede for vedligeholdelse. Prøv igen senere.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain behov for placeringstjenester aktiveret for at få adgang til din placering.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain behov for placeringstjenester aktiveret for at få adgang til din placering. Du kan aktivere adgang i Indstillinger -> privatliv -> placering -> placeringstjenester";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kamera adgang nægtet";
 
 /* (No Commment) */
 "Cancel" = "Annuller";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Kontrollere for opdateringer, tegnebog";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Kontrol for flere konti: trin %d 10";
 
 /* No comment provided by engineer. */
 "Close" = "Luk";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "At skabe HD tegnebog";
+
+/* (No Commment) */
+"Creating Wallet" = "At skabe tegnebog";
 
 /* (No Commment) */
 "Creating new Wallet" = "At skabe ny tegnebog";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Glem tegnebog";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Fundet konto %1$d, med %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Fra og destinationskontoen nødt til at være anderledes";
@@ -368,10 +386,10 @@
 "Local Currency" = "Lokal valuta";
 
 /* (No Commment) */
-"Log in to my wallet" = "Log ind på min tegnebog";
+"Log in to my Wallet" = "Log ind på min tegnebog";
 
 /* (No Commment) */
-"Login existing wallet" = "Login eksisterende tegnebog";
+"Login existing Wallet" = "Login eksisterende tegnebog";
 
 /* (No Commment) */
 "Logout" = "Logout";
@@ -536,10 +554,10 @@
 "Received" = "Modtaget";
 
 /* (No Commment) */
-"Recover Wallet" = "Genskab tegnebog";
+"Recover Funds" = "Inddrive midler";
 
 /* (No Commment) */
-"Recovering wallet" = "Inddrive tegnebog";
+"Recovering Funds" = "Inddrive midler";
 
 /* (No Commment) */
 "Regular" = "Regelmæssig";
@@ -623,10 +641,13 @@
 "Support" = "Support";
 
 /* (No Commment) */
-"Syncing wallet" = "Synkronisering tegnebog";
+"Syncing Wallet" = "Synkronisering tegnebog";
 
 /* (No Commment) */
 "Terms of Service" = "Terms of Service";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Den pinkode, du har valgt er meget almindelige og let kan gættes af en person med adgang til din telefon inden for 3 forsøg. Vil du gerne bruge denne PIN alligevel?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Det beløb du ønsker at sende (%1$@) er større end det maksimale beløb du kan bruge minus gebyr (%2$@ - %3$@). Ønsker du at sende %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Overført";
+
+/* (No Commment) */
+"Try again" = "Prøv igen";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "OPGRADERE DIN TEGNEBOG";

@@ -400,7 +400,7 @@ int accountEntries = 0;
         
         // Total balance
         if (indexPath.section == 0 && indexPath.row == 0) {
-            uint64_t totalBalance = app.latestResponse.final_balance;
+            uint64_t totalBalance = [app.wallet getTotalActiveBalance];
             
             cell.amountLabel.text = [app formatMoney:totalBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = BC_STRING_TOTAL_BALANCE;

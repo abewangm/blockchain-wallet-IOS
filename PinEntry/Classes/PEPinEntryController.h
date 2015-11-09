@@ -32,6 +32,7 @@
 @required
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)pin callback:(void(^)(BOOL))callback;
 - (void)pinEntryController:(PEPinEntryController *)c changedPin:(NSUInteger)pin;
+- (void)pinEntryController:(PEPinEntryController *)c willChangeToNewPin:(NSUInteger)pin;
 - (void)pinEntryControllerDidCancel:(PEPinEntryController *)c;
 
 @end

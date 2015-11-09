@@ -357,7 +357,11 @@
         return FALSE;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").isWatchOnly", [address escapeStringForJS]] boolValue];
+    if ([self checkIfWalletHasAddress:address]) {
+        return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").isWatchOnly", [address escapeStringForJS]] boolValue];
+    } else {
+        return NO;
+    }
 }
 
 - (NSString*)labelForLegacyAddress:(NSString*)address
@@ -366,7 +370,11 @@
         return nil;
     }
     
-    return [self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").label", [address escapeStringForJS]];
+    if ([self checkIfWalletHasAddress:address]) {
+        return [self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").label", [address escapeStringForJS]];
+    } else {
+        return nil;
+    }
 }
 
 - (Boolean)isArchived:(NSString*)address
@@ -576,6 +584,8 @@
 
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase
 {
+    self.emptyAccountIndex = 0;
+    self.recoveredAccountIndex = 0;
     [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\",\"%@\",\"%@\")", [email escapeStringForJS], [recoveryPassword escapeStringForJS], [passphrase escapeStringForJS]];
 }
 
@@ -702,6 +712,16 @@
 - (void)loading_start_generate_new_address
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_GENERATING_NEW_ADDRESS];
+}
+
+- (void)loading_start_generate_uuids
+{
+    [app updateBusyViewLoadingText:BC_STRING_LOADING_RECOVERY_CREATING_WALLET];
+}
+
+- (void)loading_start_recover_wallet
+{
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
 }
 
 - (void)loading_stop
@@ -918,6 +938,7 @@
         NSRange range = [message rangeOfString:BC_STRING_IDENTIFIER options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
         if (range.location != NSNotFound) {
             [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
+            [self error_restoring_wallet];
         }
     }
 }
@@ -1222,13 +1243,34 @@
 
 - (void)on_error_recover_with_passphrase:(NSString *)error
 {
-    DLog(@"on_recover_with_passphrase_error:");
+    DLog(@"on_error_recover_with_passphrase:");
     [self loading_stop];
-    [app standardNotify:BC_STRING_INVALID_RECOVERY_PHRASE];
+    if (!error) {
+        [app standardNotify:BC_STRING_INVALID_RECOVERY_PHRASE];
+    } else if ([error isEqualToString:@""]) {
+        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
+    } else if ([error isEqualToString:ERROR_TIMEOUT_REQUEST]){
+        [app standardNotify:BC_STRING_TIMED_OUT];
+    } else {
+        [app standardNotify:error];
+    }
     if ([delegate respondsToSelector:@selector(didFailRecovery)])
         [delegate didFailRecovery];
 }
 
+- (void)on_progress_recover_with_passphrase:(NSString *)totalReceived finalBalance:(NSString *)finalBalance
+{
+    uint64_t fundsInAccount = [finalBalance longLongValue];
+    
+    if ([totalReceived longLongValue] == 0) {
+        self.emptyAccountIndex++;
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_TEN_ACCOUNTS, self.emptyAccountIndex]];
+    } else {
+        self.emptyAccountIndex = 0;
+        self.recoveredAccountIndex++;
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ACCOUNT_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [app formatMoney:fundsInAccount]]];
+    }
+}
 
 - (void)on_error_downloading_account_settings
 {
@@ -1240,6 +1282,14 @@
 - (void)on_update_email_error
 {
     [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR delegate:nil];
+}
+
+- (void)on_error_get_history:(NSString *)error
+{
+    [self loading_stop];
+    if ([self.delegate respondsToSelector:@selector(didFailGetHistory:)]) {
+        [self.delegate didFailGetHistory:error];
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
@@ -1330,6 +1380,15 @@
     }
     
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.addresses.length > 0"] boolValue];
+}
+
+- (uint64_t)getTotalActiveBalance
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceSpendableActive"] longLongValue];
 }
 
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses

@@ -109,7 +109,7 @@
     
     [self closeKeyboard];
     
-    [app showModalWithContent:self.recoveryPhraseView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_WALLET onDismiss:^{
+    [app showModalWithContent:self.recoveryPhraseView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_FUNDS onDismiss:^{
         [self.createButton removeTarget:self action:@selector(recoverWalletClicked:) forControlEvents:UIControlEventTouchUpInside];
     } onResume:^{
         [self.recoveryPhraseView.recoveryPassphraseTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.3f];
@@ -126,23 +126,27 @@
     if (self.isRecoveringWallet) {
         NSString *recoveryPhrase = [[NSMutableString alloc] initWithString:self.recoveryPhraseView.recoveryPassphraseTextField.text];
         
-        NSMutableArray *wordsArray = [[NSMutableArray alloc] initWithArray:[recoveryPhrase componentsSeparatedByString:@" "]];
+        NSString *trimmedRecoveryPhrase = [recoveryPhrase stringByTrimmingCharactersInSet:
+                                   [NSCharacterSet whitespaceCharacterSet]];
+        
+        NSMutableArray *wordsArray = [[NSMutableArray alloc] initWithArray:[trimmedRecoveryPhrase componentsSeparatedByString:@" "]];
         if ([wordsArray containsObject:@""]) {
             [wordsArray removeObject:@""];
         }
         
         if (wordsArray.count != RECOVERY_PHRASE_NUMBER_OF_WORDS) {
-            [app standardNotify:BC_STRING_RECOVERY_PHRASE_INSTRUCTIONS];
+            [app standardNotify:BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS];
             return;
         }
+        
+        [app.wallet loading_start_recover_wallet];
+        [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:trimmedRecoveryPhrase];
+        
+        [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
+        self.recoveryPhraseView.recoveryPassphraseTextField.hidden = YES;
+
+        app.wallet.delegate = app;
     }
-    
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
-    [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:self.recoveryPhraseView.recoveryPassphraseTextField.text];
-    
-    [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
-    
-    app.wallet.delegate = app;
 }
 
 
@@ -207,7 +211,7 @@
 {
     if ([message isEqualToString:@""]) {
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
-    } else if ([message isEqualToString:@"timeout request"]){
+    } else if ([message isEqualToString:ERROR_TIMEOUT_REQUEST]){
         [app standardNotify:BC_STRING_TIMED_OUT];
     } else {
         [app standardNotify:message];
@@ -227,7 +231,7 @@
     }
     else if (textField == password2TextField) {
         if (self.isRecoveringWallet) {
-            [self.createButton setTitle:BC_STRING_RECOVER_WALLET forState:UIControlStateNormal];
+            [self.createButton setTitle:BC_STRING_RECOVER_FUNDS forState:UIControlStateNormal];
             [self showRecoveryPhraseView:nil];
         } else {
             [self createAccountClicked:textField];
@@ -262,11 +266,13 @@
 - (void)didRecoverWallet
 {
     [self clearSensitiveTextFields];
+    self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
 
 - (void)didFailRecovery
 {
     [self.recoveryPhraseView.recoveryPassphraseTextField becomeFirstResponder];
+    self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
 
 - (void)closeKeyboard

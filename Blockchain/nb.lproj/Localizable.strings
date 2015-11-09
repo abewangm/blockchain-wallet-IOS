@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin betalingsforespørsel";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain har ikke tilgang til kameraet. For å aktivere tilgang, kan du gå til enheten innstillinger.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain er for øyeblikket nede for vedlikehold. Prøv igjen senere.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain må stedstjenester aktivert for å få tilgang til din plassering.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain må stedstjenester aktivert for å få tilgang til din plassering. Kan du aktivere tilgang innstillinger -> Personvern -> plassering -> stedstjenester";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kameraet tilgang";
 
 /* (No Commment) */
 "Cancel" = "Avbryt";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Ser etter lommebok oppdateringer";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Se etter flere kontoer: trinn %d 10";
 
 /* No comment provided by engineer. */
 "Close" = "Lukk";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Opprette HD lommebok";
+
+/* (No Commment) */
+"Creating Wallet" = "Opprette lommebok";
 
 /* (No Commment) */
 "Creating new Wallet" = "Opprette ny lommebok";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Glem lommebok";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Fant konto %1$d, med %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Fra og målkonto må være forskjellige";
@@ -368,10 +386,10 @@
 "Local Currency" = "Lokal valuta";
 
 /* (No Commment) */
-"Log in to my wallet" = "Logg inn på min lommebok";
+"Log in to my Wallet" = "Logg inn på min lommebok";
 
 /* (No Commment) */
-"Login existing wallet" = "Logg inn eksisterende lommebok";
+"Login existing Wallet" = "Logg inn eksisterende lommebok";
 
 /* (No Commment) */
 "Logout" = "Logg";
@@ -536,10 +554,10 @@
 "Received" = "Mottatt";
 
 /* (No Commment) */
-"Recover Wallet" = "Gjenopprette lommebok";
+"Recover Funds" = "Gjenopprette midler";
 
 /* (No Commment) */
-"Recovering wallet" = "Utvinne lommebok";
+"Recovering Funds" = "Utvinne midler";
 
 /* (No Commment) */
 "Regular" = "Vanlig";
@@ -623,10 +641,13 @@
 "Support" = "Støtte";
 
 /* (No Commment) */
-"Syncing wallet" = "Synkronisering lommebok";
+"Syncing Wallet" = "Synkronisering lommebok";
 
 /* (No Commment) */
 "Terms of Service" = "Vilkår for bruk";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN-koden du har valgt er svært vanlig, og kan være enkelt å gjette av noen med tilgang til telefonen i 3 prøver. Vil du bruke dette DATAFLYTPUNKTET allikevel?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Hvor du vil sende (%1$@) er større enn det maksimale beløpet du kan bruke minus avgiften (%2$@ - %3$@). Vil du sende %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Overført";
+
+/* (No Commment) */
+"Try again" = "prøv igjen";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "OPPGRADERE LOMMEBOKEN";

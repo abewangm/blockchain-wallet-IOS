@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin 支払い要求";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain には、カメラへのアクセスがありません。アクセスを有効にするには、デバイスの設定に移動します。";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain は現在メンテナンスのため停止します。後でもう一度試してください。";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain では、位置情報サービスのあなたの場所にアクセスするために有効になっている必要があります。";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain では、位置情報サービスのあなたの場所にアクセスするために有効になっている必要があります。アクセスを有効にすることができます設定 → プライバシー → 場所 → 位置情報サービス";
+
+/* (No Commment) */
+"Camera Access Denied" = "カメラのアクセスが拒否されました";
 
 /* (No Commment) */
 "Cancel" = "キャンセル";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "財布更新プログラムのチェック";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "多くのアカウントをチェック: 10 のステップ %d";
 
 /* No comment provided by engineer. */
 "Close" = "閉じる";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD ウォレットを作成します。";
+
+/* (No Commment) */
+"Creating Wallet" = "ウォレットの作成";
 
 /* (No Commment) */
 "Creating new Wallet" = "新しい財布を作成します。";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "財布を忘れてください。";
+
+/* (No Commment) */
+"Found account %d, with %@" = "%2$@ でのアカウント %1$d を発見します。";
 
 /* (No Commment) */
 "From and destination account have to be different" = "接続先のアカウントを異なるする必要がありますと";
@@ -368,10 +386,10 @@
 "Local Currency" = "現地通貨";
 
 /* (No Commment) */
-"Log in to my wallet" = "私の財布にログインします。";
+"Log in to my Wallet" = "私の財布にログインします。";
 
 /* (No Commment) */
-"Login existing wallet" = "ログインの既存の財布";
+"Login existing Wallet" = "ログインの既存の財布";
 
 /* (No Commment) */
 "Logout" = "ログアウト";
@@ -536,10 +554,10 @@
 "Received" = "受信";
 
 /* (No Commment) */
-"Recover Wallet" = "財布を回復します。";
+"Recover Funds" = "資金を回復します。";
 
 /* (No Commment) */
-"Recovering wallet" = "財布を回復します。";
+"Recovering Funds" = "資金を回収";
 
 /* (No Commment) */
 "Regular" = "正規";
@@ -623,10 +641,13 @@
 "Support" = "サポート";
 
 /* (No Commment) */
-"Syncing wallet" = "同期の財布";
+"Syncing Wallet" = "同期の財布";
 
 /* (No Commment) */
 "Terms of Service" = "サービス利用規約";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "選択したピンは非常に一般的であり 3 試行中あなたの電話へのアクセスを持つユーザーによって容易に推測することがあります。とにかくこのピンを使用しますか?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@) を送信する量はマイナス手数料 (%2$@ - %3$@) 過ごすことができる最大量を超えています。%4$@ を送信しますか?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "転送";
+
+/* (No Commment) */
+"Try again" = "もう一度やり直してください";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "あなたの財布をアップグレードします。";

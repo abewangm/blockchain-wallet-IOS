@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 συναλλαγές";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Πληκτρολογήστε συνθηματική φράση σας παρακάτω, χωρίζοντας την κάθε λέξη με ένα διάστημα.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Εισάγετε τα λόγια σας 12 αποκατάστασης με χώρους για να ανακτήσει σας ταμεία & συναλλαγές";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Μη αυτόματη αντιστοίχιση";

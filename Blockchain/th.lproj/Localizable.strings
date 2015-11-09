@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "คำขอชำระเงิน Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain ไม่สามารถเข้าถึงกล้อง การเปิดใช้งานการเข้าถึง ไปที่การตั้งค่าอุปกรณ์ของคุณ";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain กำลังลงสำหรับการบำรุงรักษา กรุณาลองใหม่ในภายหลัง";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain ต้องการสถานบริการที่เปิดใช้งานการเข้าถึงที่ตั้งของคุณ";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain ต้องการสถานบริการที่เปิดใช้งานการเข้าถึงที่ตั้งของคุณ คุณสามารถเปิดใช้งานการเข้าถึงในการตั้งค่าความเป็นส่วนตัว -> -> สถาน -> สถานบริการ";
+
+/* (No Commment) */
+"Camera Access Denied" = "ปฏิเสธการเข้ากล้อง";
 
 /* (No Commment) */
 "Cancel" = "ยกเลิก";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "การกระเป๋าสตางค์";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "ตรวจสอบบัญชีเพิ่มเติม: %d ขั้นตอนที่ 10";
 
 /* No comment provided by engineer. */
 "Close" = "ปิด";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "สร้าง HD กระเป๋าสตางค์";
+
+/* (No Commment) */
+"Creating Wallet" = "สร้างกระเป๋าสตางค์";
 
 /* (No Commment) */
 "Creating new Wallet" = "สร้างกระเป๋าใหม่";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "ลืมกระเป๋าสตางค์";
+
+/* (No Commment) */
+"Found account %d, with %@" = "พบบัญชี %1$d กับ %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "จากบัญชีปลายทางที่ได้จะแตกต่างกัน";
@@ -368,10 +386,10 @@
 "Local Currency" = "สกุลเงินท้องถิ่น";
 
 /* (No Commment) */
-"Log in to my wallet" = "เข้าสู่กระเป๋า";
+"Log in to my Wallet" = "เข้าสู่กระเป๋า";
 
 /* (No Commment) */
-"Login existing wallet" = "กระเป๋าสตางค์ที่มีอยู่เข้าสู่ระบบ";
+"Login existing Wallet" = "กระเป๋าสตางค์ที่มีอยู่เข้าสู่ระบบ";
 
 /* (No Commment) */
 "Logout" = "ออกจากระบบ";
@@ -536,10 +554,10 @@
 "Received" = "ได้รับ";
 
 /* (No Commment) */
-"Recover Wallet" = "กู้คืนกระเป๋าสตางค์";
+"Recover Funds" = "กู้เงิน";
 
 /* (No Commment) */
-"Recovering wallet" = "กู้คืนกระเป๋าสตางค์";
+"Recovering Funds" = "กู้เงิน";
 
 /* (No Commment) */
 "Regular" = "ปกติ";
@@ -623,10 +641,13 @@
 "Support" = "สนับสนุน";
 
 /* (No Commment) */
-"Syncing wallet" = "กระเป๋าสตางค์ที่ซิงค์";
+"Syncing Wallet" = "กระเป๋าสตางค์ที่ซิงค์";
 
 /* (No Commment) */
 "Terms of Service" = "เงื่อนไขการใช้บริการ";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN ที่คุณได้เลือกเป็นเรื่องธรรมดามาก และอาจได้เดา โดยผู้ที่เข้าสู่โทรศัพท์ของคุณภายใน 3 พยายาม คุณต้องใช้ PIN นี้";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "เงินคุณต้องการส่ง (%1$@) มีค่ามากกว่ายอดเงินสูงสุดที่คุณสามารถใช้ลบค่าธรรมเนียม (%2$@ - %3$@) คุณต้องการส่ง %4$@";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "การโอนย้าย";
+
+/* (No Commment) */
+"Try again" = "ลองอีกครั้ง";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "รุ่นกระเป๋าสตางค์ของคุณ";

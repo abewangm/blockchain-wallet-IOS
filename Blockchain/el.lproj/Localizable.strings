@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin αίτηση πληρωμής";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain δεν έχει πρόσβαση στην κάμερα. Για να ενεργοποιήσετε την πρόσβαση, πάει στη συσκευή σας ρυθμίσεις.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain αυτή τη στιγμή κάτω για τη συντήρηση. Παρακαλώ προσπαθήστε ξανά αργότερα.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας. Μπορείτε να ενεργοποιήσετε την πρόσβαση στις ρυθμίσεις -> προσωπικό απόρρητο -> θέση -> υπηρεσίες τοποθεσίας";
+
+/* (No Commment) */
+"Camera Access Denied" = "Δεν επιτρέπεται η πρόσβαση φωτογραφική μηχανή";
 
 /* (No Commment) */
 "Cancel" = "\"Άκυρο\"";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Έλεγχος για ενημερώσεις πορτοφόλι";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Έλεγχος για περισσότερους λογαριασμούς: %d βήμα 10";
 
 /* No comment provided by engineer. */
 "Close" = "Κλείσιμο";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Τη δημιουργία HD πορτοφόλι";
+
+/* (No Commment) */
+"Creating Wallet" = "Τη δημιουργία πορτοφολιού";
 
 /* (No Commment) */
 "Creating new Wallet" = "Δημιουργώντας νέα πορτοφόλι";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Ξεχάστε το πορτοφόλι";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Βρέθηκαν λογαριασμό %1$d, με %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Από και το λογαριασμό προορισμού πρέπει να διαφέρει";
@@ -368,10 +386,10 @@
 "Local Currency" = "Τοπικό νόμισμα";
 
 /* (No Commment) */
-"Log in to my wallet" = "Συνδεθείτε στο πορτοφόλι μου";
+"Log in to my Wallet" = "Συνδεθείτε στο πορτοφόλι μου";
 
 /* (No Commment) */
-"Login existing wallet" = "Οι υπάρχουσες πορτοφόλι σύνδεσης";
+"Login existing Wallet" = "Οι υπάρχουσες πορτοφόλι σύνδεσης";
 
 /* (No Commment) */
 "Logout" = "Αποσύνδεση";
@@ -536,10 +554,10 @@
 "Received" = "Έλαβε";
 
 /* (No Commment) */
-"Recover Wallet" = "Ανακτήσει το πορτοφόλι";
+"Recover Funds" = "Ανάκτηση κεφαλαίων";
 
 /* (No Commment) */
-"Recovering wallet" = "Ανάκτηση πορτοφόλι";
+"Recovering Funds" = "Ανάκτησης των κεφαλαίων";
 
 /* (No Commment) */
 "Regular" = "Τακτική";
@@ -623,10 +641,13 @@
 "Support" = "Υποστήριξη";
 
 /* (No Commment) */
-"Syncing wallet" = "Συγχρονισμός πορτοφόλι";
+"Syncing Wallet" = "Συγχρονισμός πορτοφόλι";
 
 /* (No Commment) */
 "Terms of Service" = "Όροι παροχής υπηρεσιών";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Η καρφίτσα που έχετε επιλέξει είναι πολύ συχνή και μπορεί να μαντέψει εύκολα κάποιος με πρόσβαση στο τηλέφωνό σας εντός 3 προσπαθεί. Θα θέλατε να χρησιμοποιήσετε αυτό το PIN ούτως ή άλλως;";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Το ποσό που θέλετε να στείλετε (%1$@) είναι μεγαλύτερο από το μέγιστο ποσό που μπορείτε να περάσετε μείον το τέλος (%2$@ - %3$@). Θα θέλατε να στείλετε %4$@";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Μεταφέρονται";
+
+/* (No Commment) */
+"Try again" = "Δοκίμασε ξανά";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "ΑΝΑΒΆΘΜΙΣΗ ΣΑΣ ΠΟΡΤΟΦΌΛΙ";

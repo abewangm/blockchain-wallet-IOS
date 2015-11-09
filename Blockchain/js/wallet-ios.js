@@ -355,9 +355,14 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         MyWallet.wallet.getBalancesForArchived();
     };
     
+    var history_error = function(error) {
+        console.log('login: error getting history');
+        device.execute('on_error_get_history:', [error]);
+    }
+    
     var success = function() {
         var getHistory = MyWallet.wallet.getHistory();
-        getHistory.then(history_success);
+        getHistory.then(history_success).catch(history_error);
     };
     
     var other_error = function(e) {
@@ -402,8 +407,8 @@ MyWalletPhone.quickSend = function() {
         delete pendingTransactions[id];
     };
     
-    var error = function(error) {
-        device.execute('tx_on_error:error:', [id, ''+error]);
+    var error = function(response) {
+        device.execute('tx_on_error:error:', [id, ''+response]);
         delete pendingTransactions[id];
     };
     
@@ -414,13 +419,13 @@ MyWalletPhone.quickSend = function() {
             currentPayment
                 .sign(pw)
                 .publish()
-                .payment.then(success).catch(error);
+                .then(success).catch(error);
         });
     } else {
         currentPayment
             .sign()
             .publish()
-            .payment.then(success).catch(error);
+            .then(success).catch(error);
     }
 
     return id;
@@ -987,6 +992,24 @@ MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
     if (MyWallet.isValidateBIP39Mnemonic(passphrase)) {
         console.log('recovering wallet');
         
+        var accountProgress = function(obj) {
+            var totalReceived = obj.addresses[0]['total_received'];
+            var finalBalance = obj.wallet['final_balance'];
+            device.execute('on_progress_recover_with_passphrase:finalBalance:', [totalReceived, finalBalance]);
+        }
+        
+        var generateUUIDProgress = function() {
+            device.execute('loading_start_generate_uuids');
+        }
+        
+        var decryptWalletProgress = function() {
+            device.execute('loading_start_decrypt_wallet');
+        }
+        
+        var startedRestoreHDWallet = function() {
+            device.execute('loading_start_recover_wallet');
+        }
+        
         var success = function (recoveredWalletDictionary) {
             console.log('recovery success');
             device.execute('on_success_recover_with_passphrase:', [recoveredWalletDictionary]);
@@ -997,7 +1020,7 @@ MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
             device.execute('on_error_recover_with_passphrase:', [error]);
         }
         
-        MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error);
+        MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error, startedRestoreHDWallet, accountProgress, generateUUIDProgress, decryptWalletProgress);
 
     } else {
         console.log('recovery error: ' + error);

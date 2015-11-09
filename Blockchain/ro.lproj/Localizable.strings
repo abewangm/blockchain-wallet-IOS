@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Cererea de plată Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain nu are acces la aparatul de fotografiat. Pentru a permite accesul, du-te la setările aparatului.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain este în prezent în jos pentru întreţinere. Vă rugăm să încercaţi din nou mai târziu.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain are nevoie de servicii de localizare activat pentru a acces la locaţia dvs.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain are nevoie de servicii de localizare activat pentru a acces la locaţia dvs. Puteţi permite accesul în Setări -> Privacy -> locaţie -> servicii de localizare";
+
+/* (No Commment) */
+"Camera Access Denied" = "Aparat de fotografiat acces refuzat";
 
 /* (No Commment) */
 "Cancel" = "Revocare";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Verificarea pentru portofel actualizări";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Pentru mai multe conturi: pas %d de 10";
 
 /* No comment provided by engineer. */
 "Close" = "Închide";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Crearea HD portofel";
+
+/* (No Commment) */
+"Creating Wallet" = "Crearea de portofel";
 
 /* (No Commment) */
 "Creating new Wallet" = "Crearea de noi portofel";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Uita de portofel";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Găsit cont %1$d, cu %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "La şi cont de destinaţie trebuie să fie diferite";
@@ -368,10 +386,10 @@
 "Local Currency" = "Moneda locală";
 
 /* (No Commment) */
-"Log in to my wallet" = "Conectaţi-vă la portofelul meu";
+"Log in to my Wallet" = "Conectaţi-vă la portofelul meu";
 
 /* (No Commment) */
-"Login existing wallet" = "Conectare existente portofel";
+"Login existing Wallet" = "Conectare existente portofel";
 
 /* (No Commment) */
 "Logout" = "Deconectare";
@@ -536,10 +554,10 @@
 "Received" = "Primit";
 
 /* (No Commment) */
-"Recover Wallet" = "Recupera portofel";
+"Recover Funds" = "Recupera fondurile";
 
 /* (No Commment) */
-"Recovering wallet" = "Recuperarea portofel";
+"Recovering Funds" = "Recuperarea fondurilor";
 
 /* (No Commment) */
 "Regular" = "Regulate";
@@ -623,10 +641,13 @@
 "Support" = "Suport";
 
 /* (No Commment) */
-"Syncing wallet" = "Sincronizarea portofel";
+"Syncing Wallet" = "Sincronizarea portofel";
 
 /* (No Commment) */
 "Terms of Service" = "Conditii de utilizare";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN-ul le-aţi selectat este extrem de comună şi poate fi uşor de ghicit de cineva cu acces la telefon în 3 incearca. Doriţi să utilizaţi acest PIN oricum?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Suma pe care doriţi să trimiteţi (%1$@) este mai mare decât suma maximă pe care vă puteţi petrece minus taxa (%2$@ - %3$@). Doriţi să trimiteţi %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transferat";
+
+/* (No Commment) */
+"Try again" = "încearcă din nou";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "UPGRADE-UL DE PORTOFEL";

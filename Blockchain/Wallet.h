@@ -70,6 +70,7 @@
 - (void)didFailToImportPrivateKey:(NSString *)error;
 - (void)didFailRecovery;
 - (void)didRecoverWallet;
+- (void)didFailGetHistory:(NSString *)error;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -91,6 +92,8 @@
 
 // HD properties:
 @property NSString *recoveryPhrase;
+@property int emptyAccountIndex;
+@property int recoveredAccountIndex;
 
 @property BOOL didPairAutomatically;
 @property BOOL isSyncingForTrivialProcess; // activities such as labeling addresses, setting the fee per kb
@@ -174,6 +177,7 @@
 - (int)getAccountsCount;
 - (BOOL)hasLegacyAddresses;
 
+- (uint64_t)getTotalActiveBalance;
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses;
 - (uint64_t)getBalanceForAccount:(int)account;
 
@@ -193,6 +197,7 @@
 - (void)loading_start_get_history;
 - (void)loading_start_import_private_key;
 - (void)loading_start_upgrade_to_hd;
+- (void)loading_start_recover_wallet;
 - (void)loading_stop;
 - (void)upgrade_success;
 

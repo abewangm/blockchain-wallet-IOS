@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "בקשתכם לתשלום ביטקוין";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain אין גישה למצלמה. כדי לאפשר גישה, עבור ההתקן שלך, הגדרות.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain מושבת כעת לצורך תחזוקה. נא נסה שוב מאוחר יותר.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain צריך שירותי איכון זמינה כדי לגשת למיקום שלך.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain צריך שירותי איכון זמינה כדי לגשת למיקום שלך. באפשרותך לאפשר גישה בהגדרות -> פרטיות -> מיקום -> שירותי איכון";
+
+/* (No Commment) */
+"Camera Access Denied" = "המצלמה הגישה נדחתה";
 
 /* (No Commment) */
 "Cancel" = "ביטול";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "הארנק עדכונים";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "בדיקת חשבונות נוספים: שלב %d של 10";
 
 /* No comment provided by engineer. */
 "Close" = "סגור";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "יצירת הארנק HD";
+
+/* (No Commment) */
+"Creating Wallet" = "יצירת הארנק";
 
 /* (No Commment) */
 "Creating new Wallet" = "יצירת הארנק החדש";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = ". שכח את הארנק";
+
+/* (No Commment) */
+"Found account %d, with %@" = "מצאתי חשבון %1$d, עם %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "מתוך חשבון היעד חייב להיות שונה";
@@ -368,10 +386,10 @@
 "Local Currency" = "מטבע מקומי";
 
 /* (No Commment) */
-"Log in to my wallet" = "התחבר עם הארנק שלי";
+"Log in to my Wallet" = "התחבר עם הארנק שלי";
 
 /* (No Commment) */
-"Login existing wallet" = "הארנק קיימת כניסה";
+"Login existing Wallet" = "הארנק קיימת כניסה";
 
 /* (No Commment) */
 "Logout" = "יציאה מהמערכת";
@@ -536,10 +554,10 @@
 "Received" = "התקבל";
 
 /* (No Commment) */
-"Recover Wallet" = "לשחזר את הארנק";
+"Recover Funds" = "לשחזר קרנות";
 
 /* (No Commment) */
-"Recovering wallet" = "מחלים את הארנק";
+"Recovering Funds" = "קרנות בגמילה";
 
 /* (No Commment) */
 "Regular" = "רגיל";
@@ -623,10 +641,13 @@
 "Support" = "תמיכה";
 
 /* (No Commment) */
-"Syncing wallet" = "מסנכרן את הארנק";
+"Syncing Wallet" = "מסנכרן את הארנק";
 
 /* (No Commment) */
 "Terms of Service" = "תנאי השירות";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "ה-PIN שבחרת נפוץ מאוד, אולי יהיה לנחש בקלות על ידי מישהו עם גישה לטלפון שלך בתוך 3 מנסה. האם ברצונך להשתמש הסיכה הזו בכל מקרה?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "הסכום שברצונך לשלוח (%1$@) גדול יותר מהסכום המרבי שתוכלו לבלות פחות דמי (%2$@ - %3$@). האם ברצונך לשלוח %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "הועבר";
+
+/* (No Commment) */
+"Try again" = "נסה שוב";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "לשדרג את הארנק שלך";

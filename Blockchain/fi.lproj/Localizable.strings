@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin ennakkomaksun pyyntö";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain ei ole pääsyä kameran. Jotta pääsy, siirry laitteen asetukset.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain on tällä hetkellä huollettavana. Yritä myöhemmin uudelleen.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain on käytössä, jotta voidaan käyttää sijaintiasi paikannuspalvelut.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain on käytössä, jotta voidaan käyttää sijaintiasi paikannuspalvelut. Voit ottaa access-asetukset -> Tietosuoja -> sijainti -> Sijaintipalvelut";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kameran käyttö estetty";
 
 /* (No Commment) */
 "Cancel" = "Peruuta";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Lompakko päivityksiä";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Etsitään lisää tilejä: 10 %d vaihe";
 
 /* No comment provided by engineer. */
 "Close" = "Sulje";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Luominen HD lompakko";
+
+/* (No Commment) */
+"Creating Wallet" = "Luo lompakko";
 
 /* (No Commment) */
 "Creating new Wallet" = "Luo uusi lompakko";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Unohda lompakko";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Löytyi huomioon %1$d %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Kohteesta ja kohteen tilin on oltava eri";
@@ -368,10 +386,10 @@
 "Local Currency" = "Paikallisessa valuutassa";
 
 /* (No Commment) */
-"Log in to my wallet" = "Kirjaudu sisään minun lompakko";
+"Log in to my Wallet" = "Kirjaudu sisään minun lompakko";
 
 /* (No Commment) */
-"Login existing wallet" = "Kirjaudu olemassa lompakko";
+"Login existing Wallet" = "Kirjaudu olemassa lompakko";
 
 /* (No Commment) */
 "Logout" = "Kirjaudu ulos";
@@ -536,10 +554,10 @@
 "Received" = "Saanut";
 
 /* (No Commment) */
-"Recover Wallet" = "Palauta lompakko";
+"Recover Funds" = "Takaisin varat";
 
 /* (No Commment) */
-"Recovering wallet" = "Palauta lompakko";
+"Recovering Funds" = "Periä varat";
 
 /* (No Commment) */
 "Regular" = "Säännöllisesti";
@@ -623,10 +641,13 @@
 "Support" = "Tuki";
 
 /* (No Commment) */
-"Syncing wallet" = "Synkronointi lompakko";
+"Syncing Wallet" = "Synkronointi lompakko";
 
 /* (No Commment) */
 "Terms of Service" = "Käyttöehdot";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Olet valinnut PIN on erittäin yleistä ja joku pääsee käyttämään puhelintasi vajaan 3 yrittää helposti arvattavissa. Haluatko silti käyttää tämän PIN?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Lähetä (%1$@) summa on suurempi kuin enimmäismäärä, voit viettää miinus maksu (%2$@ - %3$@). Haluatko lähettää %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Siirretty";
+
+/* (No Commment) */
+"Try again" = "Yritä uudestaan";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "PÄIVITTÄÄ LOMPAKON";

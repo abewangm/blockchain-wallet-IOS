@@ -286,17 +286,21 @@ BOOL displayingLocalSymbolSend;
     };
     
     listener.on_error = ^(NSString* error) {
-        if (error && error.length != 0) {
-            DLog(@"%@", error);
+        DLog(@"Send error: %@", error);
+
+        if ([error isEqualToString:ERROR_UNDEFINED]) {
+            [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
+        } else if (error && error.length != 0)  {
+            [app standardNotify:error];
         }
-    
-        [app standardNotify:BC_STRING_SEND_ERROR];
         
         [sendProgressActivityIndicator stopAnimating];
         
         [self enablePaymentButtons];
         
         [app closeModalWithTransition:kCATransitionFade];
+        
+        [self reload];
         
         [app.wallet getHistory];
     };
@@ -415,9 +419,10 @@ BOOL displayingLocalSymbolSend;
         uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
         
         NSString *fromAddressLabel = self.sendFromAddress ? [self labelForLegacyAddress:self.fromAddress] : [app.wallet getLabelForAccount:self.fromAccount];
-        NSString *fromAddressString = self.sendFromAddress ? self.fromAddress : [app.wallet getReceiveAddressForAccount:self.fromAccount];
         
-        if ([self.fromAddress isEqualToString:@""]) {
+        NSString *fromAddressString = self.sendFromAddress ? self.fromAddress : @"";
+        
+        if ([self.fromAddress isEqualToString:@""] && self.sendFromAddress) {
             fromAddressString = BC_STRING_ANY_ADDRESS;
         }
         
@@ -427,7 +432,7 @@ BOOL displayingLocalSymbolSend;
         }
         
         NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
-        NSString *toAddressString = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
+        NSString *toAddressString = self.sendToAddress ? self.toAddress : @"";
         
         // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
         if ([toAddressLabel isEqualToString:toAddressString]) {
@@ -487,6 +492,7 @@ BOOL displayingLocalSymbolSend;
     else {
         [self removeHighlightFromAmounts];
         [self enablePaymentButtons];
+
         [app.wallet changePaymentAmount:amountInSatoshi];
     }
     
@@ -520,17 +526,23 @@ BOOL displayingLocalSymbolSend;
 - (void)disablePaymentButtons
 {
     continuePaymentButton.enabled = NO;
+    [continuePaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [continuePaymentButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
+    
     continuePaymentAccessoryButton.enabled = NO;
-    [continuePaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [continuePaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [continuePaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
 }
 
 - (void)enablePaymentButtons
 {
     continuePaymentButton.enabled = YES;
-    continuePaymentAccessoryButton.enabled = YES;
     [continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [continuePaymentButton setBackgroundColor:COLOR_BUTTON_GREEN];
+    
     [continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    continuePaymentAccessoryButton.enabled = YES;
+    [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_GREEN];
 }
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
@@ -568,6 +580,25 @@ BOOL displayingLocalSymbolSend;
     
     [self.view removeGestureRecognizer:self.tapGesture];
     self.tapGesture = nil;
+}
+
+- (BOOL)isKeyboardVisible
+{
+    if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder] || [toField isFirstResponder]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)showErrorBeforeSending:(NSString *)error
+{
+    if ([self isKeyboardVisible]) {
+        [self dismissKeyboard];
+        [app performSelector:@selector(standardNotifyAutoDismissingController:) withObject:error afterDelay:0.6f];
+    } else {
+        [app standardNotifyAutoDismissingController:error];
+    }
 }
 
 #pragma mark - Textfield Delegates
@@ -885,14 +916,9 @@ BOOL displayingLocalSymbolSend;
 
 - (BOOL)startReadingQRCode
 {
-    NSError *error;
+    AVCaptureDeviceInput *input = [app getCaptureDeviceInput];
     
-    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
     if (!input) {
-        // This should never happen - all devices we support (iOS 7+) have cameras
-        DLog(@"QR code scanner problem: %@", [error localizedDescription]);
         return NO;
     }
     
@@ -1030,29 +1056,37 @@ BOOL displayingLocalSymbolSend;
     }
     
     if ([self.toAddress length] == 0) {
-        [app standardNotify:BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS];
+        [self showErrorBeforeSending:BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS];
         return;
     }
     
     if (self.sendToAddress && ![app.wallet isValidAddress:self.toAddress]) {
-        [app standardNotify:BC_STRING_INVALID_TO_BITCOIN_ADDRESS];
+        [self showErrorBeforeSending:BC_STRING_INVALID_TO_BITCOIN_ADDRESS];
         return;
     }
     
     if (!self.sendFromAddress && !self.sendToAddress && self.fromAccount == self.toAccount) {
-        [app standardNotify:BC_STRING_FROM_TO_ACCOUNT_DIFFERENT];
+        [self showErrorBeforeSending:BC_STRING_FROM_TO_ACCOUNT_DIFFERENT];
+        return;
+    }
+    
+    NSString *fromAddressString = self.sendFromAddress ? self.fromAddress : [app.wallet getReceiveAddressForAccount:self.fromAccount];
+    NSString *toAddressString = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
+    
+    if ([fromAddressString isEqualToString:toAddressString]) {
+        [self showErrorBeforeSending:BC_STRING_FROM_TO_ADDRESS_DIFFERENT];
         return;
     }
     
     if (self.sendFromAddress && self.sendToAddress && [self.fromAddress isEqualToString:self.toAddress]) {
-        [app standardNotify:BC_STRING_FROM_TO_ADDRESS_DIFFERENT];
+        [self showErrorBeforeSending:BC_STRING_FROM_TO_ADDRESS_DIFFERENT];
         return;
     }
     
     uint64_t value = amountInSatoshi;
     NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
     if (value <= 0 || [amountString doubleValue] <= 0) {
-        [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
+        [self showErrorBeforeSending:BC_STRING_INVALID_SEND_VALUE];
         return;
     }
     

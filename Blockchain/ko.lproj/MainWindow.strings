@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 트랜잭션";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "아래에 공백으로 각 단어를 구분 암호를 입력 합니다.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "귀하의 자금 및 트랜잭션 복구를 공백으로 12 복구 단어 입력";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "수동 페어링";

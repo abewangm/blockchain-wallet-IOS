@@ -14,8 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-// #define HD_ENABLED 1
-#define TOUCH_ID_ENABLED 1
+#define HD_ENABLED 1
 
 #pragma mark - Colors
 
@@ -37,6 +36,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BUTTON_GREEN UIColorFromRGB(0x7eb858)
 #define COLOR_BUTTON_GRAY UIColorFromRGB(0xebebeb)
 #define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0xb9b9b9)
+#define COLOR_BUTTON_KEYPAD_GRAY UIColorFromRGB(0xD4D9DD)
 
 #define COLOR_BACKGROUND_GRAY UIColorFromRGB(0xf7f7f7)
 #define COLOR_FOREGROUND_GRAY UIColorFromRGB(0x6d6d72)
@@ -210,6 +210,15 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define PIN_API_STATUS_UNKNOWN 3
 #define PIN_API_STATUS_DUPLICATE_KEY 4
 
+#define PIN_COMMON_CODE_1 1234
+#define PIN_COMMON_CODE_2 1111
+#define PIN_COMMON_CODE_3 1212
+#define PIN_COMMON_CODE_4 7777
+#define PIN_COMMON_CODE_5 1004
+#define PIN_INVALID_CODE 0000
+
+// Most common pin codes: http://datagenetics.com/blog/september32012/index.html
+
 #define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
 // TODO: Get from JS
 #define DUST_THRESHOLD 5460
@@ -227,5 +236,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
     #define NDEBUG 1
 #endif
 
-
+#define ERROR_UNDEFINED @"undefined"
+#define ERROR_TIMEOUT_REQUEST @"timeout request"
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
+
+#define TOUCH_ID_ENABLED 1

@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Sol·licitud de pagament Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain no té accés a la càmera. Permetre accés, anar al seu mecanisme d'escenes.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain és actualment avall per manteniment. Intenteu-ho més tard.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain ha permès per accedir a la ubicació de serveis d'ubicació.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain ha permès per accedir a la ubicació de serveis d'ubicació. Tens accés en escenes d'intimitat de -> -> localització -> serveis d'ubicació";
+
+/* (No Commment) */
+"Camera Access Denied" = "Càmera accés negat";
 
 /* (No Commment) */
 "Cancel" = "Cancel·la";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "S'estan cercant actualitzacions de cartera";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Buscar més comptes: pas %d de 10";
 
 /* No comment provided by engineer. */
 "Close" = "Tancar";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Creació de cartera de HD";
+
+/* (No Commment) */
+"Creating Wallet" = "Creació de cartera";
 
 /* (No Commment) */
 "Creating new Wallet" = "Crear nova cartera";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Oblidar la cartera";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Trobat compte %1$d, amb %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Des i compte de destinació ha de ser diferents";
@@ -368,10 +386,10 @@
 "Local Currency" = "Moneda local";
 
 /* (No Commment) */
-"Log in to my wallet" = "Accedir a la cartera";
+"Log in to my Wallet" = "Accedir a la cartera";
 
 /* (No Commment) */
-"Login existing wallet" = "Cartera existent de connexió";
+"Login existing Wallet" = "Connecti's cartera existent";
 
 /* (No Commment) */
 "Logout" = "Logout";
@@ -536,10 +554,10 @@
 "Received" = "Rebut";
 
 /* (No Commment) */
-"Recover Wallet" = "Recuperar la cartera";
+"Recover Funds" = "Recuperar el fons";
 
 /* (No Commment) */
-"Recovering wallet" = "Recuperació de cartera";
+"Recovering Funds" = "Recuperació de fons";
 
 /* (No Commment) */
 "Regular" = "Regular";
@@ -623,10 +641,13 @@
 "Support" = "Suport";
 
 /* (No Commment) */
-"Syncing wallet" = "Sincronització de cartera";
+"Syncing Wallet" = "Sincronització de cartera";
 
 /* (No Commment) */
 "Terms of Service" = "Condicions del servei";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "El PIN que heu seleccionat és molt comú i es pot fàcilment endevinar per algú amb accés al seu telèfon dins de 3 intents. Voleu utilitzar aquest PIN anyways?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "La quantitat que voleu enviar (%1$@) és més gran que la quantitat màxima que pot gastar menys la quota (%2$@ - %3$@). Li agradaria enviar %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transferits";
+
+/* (No Commment) */
+"Try again" = "Torneu";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "MILLORAR LA SEVA CARTERA";

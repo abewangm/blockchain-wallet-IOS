@@ -157,8 +157,8 @@
 /* (No Commment) */
 "kK3-Xs-d3Q.text" = "0 tapahtumat";
 
-/* Class = "UILabel"; text = "Enter your passphrase below, separating each word with a space."; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Kirjoita salasana alla, erottaa jokaisen sanan välilyönnillä.";
+/* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
+"pEh-08-oZW.text" = "Anna 12 recovery sanat välilyönnillä takaisin rahastot ja tapahtumat";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Manuaalinen pariliitoksen";

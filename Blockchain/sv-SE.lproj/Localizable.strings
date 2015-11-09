@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin betalningsbegäran";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain har inte tillgång till kameran. För att aktivera åtkomst, gå till din enhet inställningar.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain är för närvarande nere för underhåll. Försök igen senare.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain behöver platstjänster aktiverat för åtkomst till din plats.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain behöver platstjänster aktiverat för åtkomst till din plats. Du kan aktivera åtkomst i Inställningar -> Sekretess -> läge -> platstjänster";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kameraåtkomst nekad";
 
 /* (No Commment) */
 "Cancel" = "Avbryt";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Plånbok uppdateringar";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Kontroll för fler konton: steg %d 10";
 
 /* No comment provided by engineer. */
 "Close" = "Stäng";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Skapa HD plånbok";
+
+/* (No Commment) */
+"Creating Wallet" = "Att skapa plånbok";
 
 /* (No Commment) */
 "Creating new Wallet" = "Skapa ny plånbok";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Glömma plånboken";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Hittade konto %1$d, med %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Från och destinationskonto måste vara olika";
@@ -368,10 +386,10 @@
 "Local Currency" = "Lokal valuta";
 
 /* (No Commment) */
-"Log in to my wallet" = "Logga in på min plånbok";
+"Log in to my Wallet" = "Logga in på min plånbok";
 
 /* (No Commment) */
-"Login existing wallet" = "Logga in befintliga plånbok";
+"Login existing Wallet" = "Logga in befintliga plånbok";
 
 /* (No Commment) */
 "Logout" = "Logga ut";
@@ -536,10 +554,10 @@
 "Received" = "Fick";
 
 /* (No Commment) */
-"Recover Wallet" = "Återställa plånbok";
+"Recover Funds" = "Återkräva medel";
 
 /* (No Commment) */
-"Recovering wallet" = "Återhämtar sig plånbok";
+"Recovering Funds" = "Återvinna medel";
 
 /* (No Commment) */
 "Regular" = "Regelbundna";
@@ -623,10 +641,13 @@
 "Support" = "Stöd";
 
 /* (No Commment) */
-"Syncing wallet" = "Synkronisera plånbok";
+"Syncing Wallet" = "Synkronisera plånbok";
 
 /* (No Commment) */
 "Terms of Service" = "Villkor för tjänsten";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN-koden du har valt är mycket vanligt och lätt kan gissas av någon med tillgång till telefonen inom 3 försök. Vill du använda detta stift ändå?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Det belopp du vill skicka (%1$@) är större än det högsta belopp du kan spendera minus avgiften (%2$@ - %3$@). Vill du skicka %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Överfört";
+
+/* (No Commment) */
+"Try again" = "Försök igen";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "UPPGRADERA DIN PLÅNBOK";

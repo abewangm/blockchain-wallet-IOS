@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Verzoek om betaling van de Bitcoin";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain heeft geen toegang tot de camera. Als toegang wilt inschakelen, gaat u naar uw apparaat instellingen.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain is momenteel down voor onderhoud. Probeer het later nog eens.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain moet Locatieservices ingeschakeld om toegang tot uw locatie.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain moet Locatieservices ingeschakeld om toegang tot uw locatie. U kunt toegang inschakelen in instellingen -> Privacy -> Locatie -> locatie diensten";
+
+/* (No Commment) */
+"Camera Access Denied" = "Camera toegang geweigerd";
 
 /* (No Commment) */
 "Cancel" = "Annuleren";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "Controleren op updates van de portefeuille";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Controle voor meer accounts: stap %d van 10";
 
 /* No comment provided by engineer. */
 "Close" = "Sluiten";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "Maken van HD-portemonnee";
+
+/* (No Commment) */
+"Creating Wallet" = "Portefeuille maken";
 
 /* (No Commment) */
 "Creating new Wallet" = "Creëren van nieuwe portefeuille";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "Portemonnee vergeten";
+
+/* (No Commment) */
+"Found account %d, with %@" = "Gevonden rekening %1$d, met %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Uit en bestemmingsrekening moet worden verschillende";
@@ -368,10 +386,10 @@
 "Local Currency" = "Lokale valuta";
 
 /* (No Commment) */
-"Log in to my wallet" = "Inloggen op mijn portemonnee";
+"Log in to my Wallet" = "Inloggen op mijn portemonnee";
 
 /* (No Commment) */
-"Login existing wallet" = "Login bestaande portefeuille";
+"Login existing Wallet" = "Login bestaande portefeuille";
 
 /* (No Commment) */
 "Logout" = "Logout";
@@ -536,10 +554,10 @@
 "Received" = "Ontvangen";
 
 /* (No Commment) */
-"Recover Wallet" = "Herstellen van de portefeuille";
+"Recover Funds" = "Herstellen van fondsen";
 
 /* (No Commment) */
-"Recovering wallet" = "Herstellende portemonnee";
+"Recovering Funds" = "Herstellende fondsen";
 
 /* (No Commment) */
 "Regular" = "Regelmatige";
@@ -623,10 +641,13 @@
 "Support" = "Ondersteuning";
 
 /* (No Commment) */
-"Syncing wallet" = "Synchroniseren portemonnee";
+"Syncing Wallet" = "Synchroniseren portemonnee";
 
 /* (No Commment) */
 "Terms of Service" = "Algemene gebruiksvoorwaarden";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "De pincode die u hebt geselecteerd is uiterst gemeenschappelijk en eenvoudig geraden kan worden door iemand met toegang tot uw telefoon binnen 3 probeert. Wilt u deze PIN toch gebruiken?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Het bedrag dat u wilt verzenden (%1$@) is groter dan het maximale bedrag dat u minus de vergoeding (%2$@ - %3$@ uitgeven kunt). Zou u willen verzenden %4$@?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Overgedragen";
+
+/* (No Commment) */
+"Try again" = "&Opnieuw";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "UPGRADE UW PORTEMONNEE";

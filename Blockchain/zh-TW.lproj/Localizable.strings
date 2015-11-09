@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "比特幣付款請求";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain 沒有訪問攝像頭。要啟用訪問，請轉到您的設備設置。";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain 是目前下來進行維修工程。請稍後再試。";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain 需要位置服務啟用，以便訪問您所在的位置。";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain 需要位置服務啟用，以便訪問您所在的位置。您可以啟用訪問在設置-> 隱私-> 位置-> 定位服務";
+
+/* (No Commment) */
+"Camera Access Denied" = "相機訪問被拒絕";
 
 /* (No Commment) */
 "Cancel" = "取消";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "檢查錢包更新";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "檢查更多帳戶: 步 %d 的 10";
 
 /* No comment provided by engineer. */
 "Close" = "關閉";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "創建高清錢包";
+
+/* (No Commment) */
+"Creating Wallet" = "創建的錢包";
 
 /* (No Commment) */
 "Creating new Wallet" = "創建新的錢包";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "忘了錢包";
+
+/* (No Commment) */
+"Found account %d, with %@" = "發現帳戶 %1$d，與 %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "從和目標帳戶必須是不同";
@@ -368,10 +386,10 @@
 "Local Currency" = "當地貨幣";
 
 /* (No Commment) */
-"Log in to my wallet" = "登錄到我的錢包";
+"Log in to my Wallet" = "登錄到我的錢包";
 
 /* (No Commment) */
-"Login existing wallet" = "登錄現有錢包";
+"Login existing Wallet" = "登錄現有錢包";
 
 /* (No Commment) */
 "Logout" = "登出";
@@ -536,10 +554,10 @@
 "Received" = "收到";
 
 /* (No Commment) */
-"Recover Wallet" = "恢復的錢包";
+"Recover Funds" = "追回資金";
 
 /* (No Commment) */
-"Recovering wallet" = "恢復的錢包";
+"Recovering Funds" = "收回資金";
 
 /* (No Commment) */
 "Regular" = "定期";
@@ -623,10 +641,13 @@
 "Support" = "支援";
 
 /* (No Commment) */
-"Syncing wallet" = "同步的錢包";
+"Syncing Wallet" = "同步的錢包";
 
 /* (No Commment) */
 "Terms of Service" = "服務條款";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "您已選擇引腳是極為常見，可能具有訪問到您的手機內 3 個嘗試的人很容易猜到了。你想使用這針嗎?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "您想要發送 (%1$@) 的金額大於你可以花減去費用 (%2$@-%3$@) 的最高限額。你想發送 %4$@ 嗎?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "轉移";
+
+/* (No Commment) */
+"Try again" = "再試一次";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "升級你的錢包";

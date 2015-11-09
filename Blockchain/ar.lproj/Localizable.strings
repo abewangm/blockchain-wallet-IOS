@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "طلب الدفع بيتكوين";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "بلوكتشين لا يحصلون على الكاميرا. لتمكين الوصول، انتقل إلى إعدادات الجهاز الخاص بك.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "بلوكتشين حاليا لأسفل للصيانة. الرجاء المحاولة مرة أخرى لاحقاً.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك. يمكنك تمكين الوصول في إعدادات--> الخصوصية--> الموقع--> \"خدمات الموقع\"";
+
+/* (No Commment) */
+"Camera Access Denied" = "تم رفض الوصول إلى الكاميرا";
 
 /* (No Commment) */
 "Cancel" = "إلغاء الأمر";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "التحقق من وجود تحديثات المحفظة";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "التحقق من وجود مزيد من الحسابات: %d الخطوة 10";
 
 /* No comment provided by engineer. */
 "Close" = "قم بإغلاق";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "إنشاء محفظة عالية الدقة";
+
+/* (No Commment) */
+"Creating Wallet" = "إنشاء المحفظة";
 
 /* (No Commment) */
 "Creating new Wallet" = "إنشاء محفظة جديدة";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "نسيت المحفظة";
+
+/* (No Commment) */
+"Found account %d, with %@" = "العثور على حساب %1$d، مع %2$@";
 
 /* (No Commment) */
 "From and destination account have to be different" = "من ولدى حساب الوجهة تكون مختلفة";
@@ -368,10 +386,10 @@
 "Local Currency" = "العملة المحلية";
 
 /* (No Commment) */
-"Log in to my wallet" = "تسجيل الدخول إلى محفظتي";
+"Log in to my Wallet" = "تسجيل الدخول إلى محفظتي";
 
 /* (No Commment) */
-"Login existing wallet" = "المحفظة القائمة تسجيل الدخول";
+"Login existing Wallet" = "المحفظة القائمة تسجيل الدخول";
 
 /* (No Commment) */
 "Logout" = "تسجيل الخروج";
@@ -536,10 +554,10 @@
 "Received" = "تلقي";
 
 /* (No Commment) */
-"Recover Wallet" = "استرداد المحفظة";
+"Recover Funds" = "استرداد الأموال";
 
 /* (No Commment) */
-"Recovering wallet" = "استعادة المحفظة";
+"Recovering Funds" = "استرداد الأموال";
 
 /* (No Commment) */
 "Regular" = "العادية";
@@ -623,10 +641,13 @@
 "Support" = "الدعم";
 
 /* (No Commment) */
-"Syncing wallet" = "مزامنة المحفظة";
+"Syncing Wallet" = "مزامنة المحفظة";
 
 /* (No Commment) */
 "Terms of Service" = "شروط الخدمة";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "رقم التعريف الشخصي الذي حددته شائعة جداً وقد يمكن تخمينها بسهولة من شخص ما مع الوصول إلى الهاتف الخاص بك داخل 3 يحاول. هل تريد استخدام هذا الرقم على أي حال؟";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "والمبلغ الذي تريد إرساله (%1$@) أكبر من الحد الأقصى للمبلغ يمكنك قضاء ناقص الرسوم (%2$@-%3$@). هل ترغب في إرسال %4$@؟";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "نقل";
+
+/* (No Commment) */
+"Try again" = "حاول مرة أخرى";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "ترقية المحفظة الخاصة بك";

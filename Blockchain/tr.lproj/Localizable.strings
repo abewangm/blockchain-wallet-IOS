@@ -110,6 +110,12 @@
 "Bitcoin payment request" = "Bitcoin ödeme talebi";
 
 /* (No Commment) */
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain kameraya erişilmesini sahip değil. Erişimi etkinleştirmek için aygıt ayarları gidin.";
+
+/* (No Commment) */
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain şu anda aşağı bakım için olduğunu. Lütfen daha sonra yeniden deneyin.";
+
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var.";
 
 /* (No Commment) */
@@ -117,6 +123,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var. Erişimi etkinleştirebilirsiniz gizlilik ayarları -> konum -> Konum servisleri ->";
+
+/* (No Commment) */
+"Camera Access Denied" = "Kamera erişim engellendi";
 
 /* (No Commment) */
 "Cancel" = "İptal";
@@ -135,6 +144,9 @@
 
 /* (No Commment) */
 "Checking for Wallet updates" = "M-cüzdan güncelleştirmeleri denetleniyor";
+
+/* (No Commment) */
+"Checking for more accounts: Step %d of 10" = "Daha fazla hesaplarında kontrol: 10 adım %d";
 
 /* No comment provided by engineer. */
 "Close" = "Kapat";
@@ -183,6 +195,9 @@
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD cüzdan oluşturma";
+
+/* (No Commment) */
+"Creating Wallet" = "M-cüzdan oluşturma";
 
 /* (No Commment) */
 "Creating new Wallet" = "Yeni cüzdan oluşturma";
@@ -261,6 +276,9 @@
 
 /* (No Commment) */
 "Forget Wallet" = "M-cüzdan unut";
+
+/* (No Commment) */
+"Found account %d, with %@" = "%2$@ ile hesap %1$d bulundu";
 
 /* (No Commment) */
 "From and destination account have to be different" = "Dan ve hedef hesabı farklı olmak zorunda";
@@ -368,10 +386,10 @@
 "Local Currency" = "Yerel para birimi";
 
 /* (No Commment) */
-"Log in to my wallet" = "Cüzdanımı için giriş yapın";
+"Log in to my Wallet" = "Cüzdanımı için giriş yapın";
 
 /* (No Commment) */
-"Login existing wallet" = "Giriş varolan cüzdan";
+"Login existing Wallet" = "Giriş varolan cüzdan";
 
 /* (No Commment) */
 "Logout" = "Oturum kapatma";
@@ -536,10 +554,10 @@
 "Received" = "Alınan";
 
 /* (No Commment) */
-"Recover Wallet" = "M-cüzdan kurtarmak";
+"Recover Funds" = "Fon kurtarmak";
 
 /* (No Commment) */
-"Recovering wallet" = "M-cüzdan kurtarma";
+"Recovering Funds" = "Fonların kurtarma";
 
 /* (No Commment) */
 "Regular" = "Düzenli";
@@ -623,10 +641,13 @@
 "Support" = "Destek";
 
 /* (No Commment) */
-"Syncing wallet" = "M-cüzdan senkronizasyonu";
+"Syncing Wallet" = "M-cüzdan senkronizasyonu";
 
 /* (No Commment) */
 "Terms of Service" = "Terms of Service";
+
+/* (No Commment) */
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Seçmiş olduğunuz PIN son derece yaygındır ve kolayca erişim 3 çalışır içinde telefonunuza olan biri tarafından tahmin. Yine de bu PIN kullanmak ister misiniz?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@) göndermek istediğiniz tutarı en fazla ücreti (%2$@ - %3$@) geçirebilirsiniz büyüktür. %4$@ göndermek ister misiniz?";
@@ -655,6 +676,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transfer";
+
+/* (No Commment) */
+"Try again" = "Yeniden Deneyin";
 
 /* (No Commment) */
 "UPGRADE YOUR WALLET" = "CÜZDANINI YÜKSELTME";
