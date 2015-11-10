@@ -56,7 +56,7 @@ The reason that the PNG files are not in the repository - even though it would m
 
 Source Code License: LGPL v3
 
-Artwork & images remain Copyright Ben Reeves - Qkos Services Ltd 2012-2014
+Artwork & images remain Copyright Blockchain Luxembourg S.A.R.L
 
 ## Security
 
