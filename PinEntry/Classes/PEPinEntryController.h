@@ -44,6 +44,7 @@
 @interface PEPinEntryController : UINavigationController <PEViewControllerDelegate>
 {
 	BOOL verifyOnly;
+    BOOL verifyOptional;
 	NSUInteger pinStage;
 	NSUInteger pinEntry1;
 	PEViewController *pinController;
@@ -51,10 +52,13 @@
 }
 @property (nonatomic, readwrite, weak) id <PEPinEntryControllerDelegate> pinDelegate;
 @property (nonatomic, readonly) BOOL verifyOnly;
+@property (nonatomic, readonly) BOOL verifyOptional;
+
 
 -(void)reset;
 
 + (PEPinEntryController *)pinVerifyController;
++ (PEPinEntryController *)pinVerifyControllerClosable;
 + (PEPinEntryController *)pinChangeController;
 + (PEPinEntryController *)pinCreateController;
 

@@ -141,6 +141,7 @@
 
 #define BC_STRING_PIN_VALIDATION_ERROR_DETAIL NSLocalizedString(@"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?", nil)
 #define BC_STRING_ENTER_PASSWORD NSLocalizedString(@"Enter Password", nil)
+#define BC_STRING_ENTER_PIN NSLocalizedString(@"Enter PIN", nil)
 #define BC_STRING_PLEASE_ENTER_PIN NSLocalizedString(@"Please enter your PIN", nil)
 #define BC_STRING_PLEASE_ENTER_NEW_PIN NSLocalizedString(@"Please enter a new PIN", nil)
 #define BC_STRING_CONFIRM_PIN NSLocalizedString(@"Confirm your PIN", nil)
@@ -310,7 +311,7 @@
 #define BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_TITLE NSLocalizedString(@"Camera Access Denied", nil)
 #define BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_MESSAGE NSLocalizedString(@"Blockchain does not have access to the camera. To enable access, go to your device Settings.", nil)
 
-#define BC_STRING_TOUCH_ID_ERROR_VERIFYING NSLocalizedString(@"There was a problem verifying your identity.", nil)
+#define BC_STRING_TOUCH_ID_ERROR_VERIFYING_IDENTITY NSLocalizedString(@"There was a problem verifying your identity.", nil)
 #define BC_STRING_TOUCH_ID_ERROR_WRONG_USER NSLocalizedString(@"Your identity does not match our records.", nil)
 #define BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE NSLocalizedString(@"Touch ID is not available on this device.", nil)
 #define BC_STRING_TOUCH_ID_AUTHENTICATE NSLocalizedString(@"Authenticate with Touch ID", nil)

@@ -191,10 +191,15 @@ void (^secondPasswordSuccess)(NSString *);
     }
     // Paired
     else {
-        
+
         // If the PIN is set show the pin modal
         if ([self isPinSet]) {
             [self showPinModalAsView:YES];
+#ifdef TOUCH_ID_ENABLED
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
+                [self authenticateWithTouchID];
+            }
+#endif
         } else {
             // No PIN set we need to ask for the main password
             [self showPasswordModal];
@@ -528,7 +533,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self closeSideMenu];
     
     // Close PIN Modal in case we are setting it (after login or when changing the PIN)
-    if (self.pinEntryViewController.verifyOnly == NO) {
+    if (self.pinEntryViewController.verifyOnly == NO || self.pinEntryViewController.verifyOptional == NO) {
         [self closePINModal:NO];
     }
     
@@ -549,6 +554,11 @@ void (^secondPasswordSuccess)(NSString *);
 {
     // The PIN modal is shown on ResignActive, but we don't want to override the modal with the welcome screen
     if ([self isPinSet]) {
+#ifdef TOUCH_ID_ENABLED
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
+            [self authenticateWithTouchID];
+        }
+#endif
         return;
     }
     
@@ -1137,11 +1147,6 @@ void (^secondPasswordSuccess)(NSString *);
     // if pin exists - verify
     if ([self isPinSet]) {
         self.pinEntryViewController = [PEPinEntryController pinVerifyController];
-#ifdef TOUCH_ID_ENABLED
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED] && !self.isValidatingPINForTouchID) {
-            [self authenticateWithTouchID];
-        }
-#endif
     }
     // no pin - create
     else {
@@ -1282,6 +1287,21 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabViewController presentViewController:pinChangeController animated:YES completion:nil];
 }
 
+- (void)validatePINOptionally
+{
+    PEPinEntryController *pinVerifyPINOptionalController = [PEPinEntryController pinVerifyControllerClosable];
+    pinVerifyPINOptionalController.pinDelegate = self;
+    pinVerifyPINOptionalController.navigationBarHidden = YES;
+    
+    PEViewController *peViewController = (PEViewController *)[[pinVerifyPINOptionalController viewControllers] objectAtIndex:0];
+    peViewController.cancelButton.hidden = NO;
+    
+    self.pinEntryViewController = pinVerifyPINOptionalController;
+    
+    peViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self.settingsNavigationController.visibleViewController presentViewController:self.pinEntryViewController animated:YES completion:nil];
+}
+
 - (void)clearPin
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD];
@@ -1304,8 +1324,9 @@ void (^secondPasswordSuccess)(NSString *);
         else {
             [self.pinEntryViewController.view removeFromSuperview];
         }
-    }
-    else {
+    } else if (self.settingsNavigationController.presentedViewController == self.pinEntryViewController) {
+        [self.settingsNavigationController.visibleViewController dismissViewControllerAnimated:animated completion:^{ }];
+    } else {
         [_tabViewController dismissViewControllerAnimated:animated completion:^{ }];
     }
 }
@@ -1434,6 +1455,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)authenticateWithTouchID
 {
     LAContext *context = [[LAContext alloc] init];
+    context.localizedFallbackTitle = BC_STRING_ENTER_PIN;
     
     NSError *error = nil;
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
@@ -1442,11 +1464,16 @@ void (^secondPasswordSuccess)(NSString *);
                           reply:^(BOOL success, NSError *error) {
                               
                               if (error) {
-                                  UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_VERIFYING preferredStyle:UIAlertControllerStyleAlert];
-                                  [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                      [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
-                                  });
+                                  if (error.code != kLAErrorUserCancel &&
+                                      error.code != kLAErrorSystemCancel &&
+                                      error.code != kLAErrorUserFallback) {
+                                      
+                                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_VERIFYING_IDENTITY preferredStyle:UIAlertControllerStyleAlert];
+                                      [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                          [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                                      });
+                                  }
                                   return;
                               }
                               
@@ -1456,6 +1483,7 @@ void (^secondPasswordSuccess)(NSString *);
                                   });
                                   NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
                                   NSString * pin = [self pinFromKeychain];
+                                  DLog(@"touch ID is using PIN %@", pin);
                                   [app.wallet apiGetPINValue:pinKey pin:pin];
                                   
                               } else {
@@ -1493,6 +1521,11 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (void)disabledTouchID
+{
+    [self removePinFromKeychain];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback
@@ -1516,6 +1549,12 @@ void (^secondPasswordSuccess)(NSString *);
     if (![self checkInternetConnection]) {
         return;
     }
+    
+#ifdef TOUCH_ID_ENABLED
+    if (self.pinEntryViewController.verifyOptional) {
+        [self setPINInKeychain:pin];
+    }
+#endif
     
     [app.wallet apiGetPINValue:pinKey pin:pin];
     
@@ -1615,6 +1654,15 @@ void (^secondPasswordSuccess)(NSString *);
     }
     // Pin was accepted
     else if ([code intValue] == PIN_API_STATUS_OK) {
+        
+#ifdef TOUCH_ID_ENABLED
+        if (self.pinEntryViewController.verifyOptional) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [self closePINModal:YES];
+            return;
+        }
+#endif
         // This is for change PIN - verify the password first, then show the enter screens
         if (self.pinEntryViewController.verifyOnly == NO) {
             if (self.pinViewControllerCallback) {
@@ -1666,12 +1714,6 @@ void (^secondPasswordSuccess)(NSString *);
         
         pinSuccess = TRUE;
 
-#ifdef TOUCH_ID_ENABLED
-        if (self.isValidatingPINForTouchID) {
-            [self showSettings];
-            self.isValidatingPINForTouchID = NO;
-        }
-#endif
     }
     // Unknown error
     else {
@@ -1682,6 +1724,12 @@ void (^secondPasswordSuccess)(NSString *);
         self.pinViewControllerCallback(pinSuccess);
         self.pinViewControllerCallback = nil;
     }
+    
+#ifdef TOUCH_ID_ENABLED
+    if (!pinSuccess && self.pinEntryViewController.verifyOptional) {
+        [self removePinFromKeychain];
+    }
+#endif
 }
 
 - (void)didFailPutPin:(NSString*)value

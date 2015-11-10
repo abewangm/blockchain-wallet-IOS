@@ -76,7 +76,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;
 
 @property (nonatomic) BOOL showEmailWarning;
-@property (nonatomic) BOOL isValidatingPINForTouchID;
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;
 
@@ -178,10 +177,12 @@
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;
 - (BOOL)isPinSet;
+- (void)validatePINOptionally;
 
 - (BOOL)checkInternetConnection;
 
 - (BOOL)isTouchIDAvailable;
+- (void)disabledTouchID;
 
 - (AVCaptureDeviceInput *)getCaptureDeviceInput;
 

@@ -26,10 +26,17 @@ const int displayBtcUnit = 1;
 const int feesSection = 2;
 const int feePerKb = 0;
 
+#ifdef TOUCH_ID_ENABLED
 const int securitySection = 3;
 const int securityTouchID = 0;
 
 const int aboutSection = 4;
+#else
+const int securitySection = -1;
+const int securityTouchID = -1;
+
+const int aboutSection = 3;
+#endif
 const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
@@ -83,6 +90,15 @@ const int aboutPrivacyPolicy = 1;
     if (!loadedSettings) {
         [self reload];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+#ifdef TOUCH_ID_ENABLED
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTouchID inSection:securitySection];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+#endif
 }
 
 - (void)reload
@@ -329,12 +345,11 @@ const int aboutPrivacyPolicy = 1;
     if ([app isTouchIDAvailable]) {
         BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
         
-        [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
-        
         if (!touchIDEnabled == YES) {
-            app.isValidatingPINForTouchID = YES;
-            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-            [app showPinModalAsView:YES];
+            [app validatePINOptionally];
+        } else {
+            [app disabledTouchID];
+            [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
         }
     }
 }
@@ -571,7 +586,11 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#ifdef TOUCH_ID_ENABLED
     return 5;
+#else
+    return 4;
+#endif
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -683,16 +702,14 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case securityTouchID: {
                     cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
-                    if (!cell) {
-                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
-                        cell.textLabel.font = [SettingsTableViewController fontForCell];
-                        cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
-                        UISwitch *switchForTouchID = [[UISwitch alloc] init];
-                        BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
-                        switchForTouchID.on = touchIDEnabled;
-                        [switchForTouchID addTarget:self action:@selector(switchTouchIDTapped) forControlEvents:UIControlEventTouchUpInside];
-                        cell.accessoryView = switchForTouchID;
-                    }
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                    cell.textLabel.font = [SettingsTableViewController fontForCell];
+                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
+                    UISwitch *switchForTouchID = [[UISwitch alloc] init];
+                    BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+                    switchForTouchID.on = touchIDEnabled;
+                    [switchForTouchID addTarget:self action:@selector(switchTouchIDTapped) forControlEvents:UIControlEventTouchUpInside];
+                    cell.accessoryView = switchForTouchID;
                     return cell;
                 }
             }

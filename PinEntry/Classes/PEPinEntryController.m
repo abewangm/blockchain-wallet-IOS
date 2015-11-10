@@ -79,7 +79,7 @@ static PEViewController *VerifyController()
 
 @implementation PEPinEntryController
 
-@synthesize pinDelegate, verifyOnly;
+@synthesize pinDelegate, verifyOnly, verifyOptional;
 
 + (PEPinEntryController *)pinVerifyController
 {
@@ -91,6 +91,21 @@ static PEViewController *VerifyController()
 	n->pinStage = PS_VERIFY;
 	n->verifyOnly = YES;
 	return n;
+}
+
++ (PEPinEntryController *)pinVerifyControllerClosable
+{
+    PEViewController *c = EnterController();
+    [[self class] addLongPressGestureToVersionLabel:c.versionLabel];
+    PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
+    c.delegate = n;
+    [c.cancelButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
+    c.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    c.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_CANCEL style:UIBarButtonItemStylePlain target:n action:@selector(cancelController)];
+    n->pinController = c;
+    n->pinStage = PS_VERIFY;
+    n->verifyOptional = YES;
+    return n;
 }
 
 + (PEPinEntryController *)pinChangeController
