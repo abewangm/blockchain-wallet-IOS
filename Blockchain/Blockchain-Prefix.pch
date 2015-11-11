@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-#define HD_ENABLED 1
+//#define HD_ENABLED 1
 
 #pragma mark - Colors
 
