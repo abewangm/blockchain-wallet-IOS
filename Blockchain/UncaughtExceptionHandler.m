@@ -91,7 +91,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
 
 + (void)logException:(NSException*)exception walletIsLoaded:(BOOL)walletIsLoaded walletIsInitialized:(BOOL)walletIsInitialized
 {
-    NSString * message = [NSString stringWithFormat:@"<pre>Reason: %@\n\nStacktrace:%@\n\nApp Version: %@\nSystem Name: %@ -  System Version: %@\nActive View Controller: %@\nWallet State: JSLoaded = %@, isInitialized = %@</pre>",
+    NSString * message = [NSString stringWithFormat:@"<pre>Reason: %@\n\nStacktrace:%@\n\nApp Version: %@\nSystem Name: %@ -  System Version : %@\nActive View Controller: %@\nWallet State: JSLoaded = %@, isInitialized = %@</pre>",
       [exception reason],
       [[exception userInfo] objectForKey:UncaughtExceptionHandlerAddressesKey],
       [self appNameAndVersionNumberDisplayString],
