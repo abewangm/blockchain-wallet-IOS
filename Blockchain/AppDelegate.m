@@ -1099,7 +1099,7 @@ void (^secondPasswordSuccess)(NSString *);
         [emailViewController setToRecipients:@[SUPPORT_EMAIL_ADDRESS]];
         [emailViewController setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
         
-        NSString *message = [NSString stringWithFormat:@"\n\n--\nApp: %@\nSystem: %@ %@\nDevice: %@\n",
+        NSString *message = [NSString stringWithFormat:@"Dear Blockchain Support,\n\n\n\n--\nApp: %@\nSystem: %@ %@\nDevice: %@\n",
                              [UncaughtExceptionHandler appNameAndVersionNumberDisplayString],
                              [[UIDevice currentDevice] systemName],
                              [[UIDevice currentDevice] systemVersion],
