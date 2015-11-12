@@ -850,6 +850,8 @@
 				84F4BDF9197F21D700B7BF7B /* PairingCodeParser.m */,
 				673107F019F6D49F00BE6899 /* PrivateKeyReader.h */,
 				673107F119F6D49F00BE6899 /* PrivateKeyReader.m */,
+				233475F61BF4F8FB0056AB4E /* DeviceIdentifier.h */,
+				233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */,
 				9F1831F315176F2200FB3D52 /* Categories */,
 				9F0CBAAB15135DF200CD945D /* JavaScript */,
 				9F765F3A14BC7C3100048EFB /* Models */,
@@ -864,8 +866,6 @@
 		9FB3637C14B60128004BEA02 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				233475F61BF4F8FB0056AB4E /* DeviceIdentifier.h */,
-				233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */,
 				67470A0519D438E000757D46 /* LocalizationConstants.h */,
 				220ADA6819A3796200EB7599 /* Localizable.strings */,
 				9FB3637D14B60128004BEA02 /* Blockchain-Info.plist */,
