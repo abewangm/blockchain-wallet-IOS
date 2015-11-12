@@ -35,6 +35,7 @@
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
 #import "UIViewController+AutoDismiss.h"
+#import "DeviceIdentifier.h"
 
 AppDelegate * app;
 
@@ -1098,14 +1099,19 @@ void (^secondPasswordSuccess)(NSString *);
         [emailViewController setToRecipients:@[SUPPORT_EMAIL_ADDRESS]];
         [emailViewController setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
         
-        NSString *message = [NSString stringWithFormat:@"\n\n--\nApp: %@\nSystem: %@ %@\n",
+        NSString *message = [NSString stringWithFormat:@"\n\n--\nApp: %@\nSystem: %@ %@\nDevice: %@\n",
                              [UncaughtExceptionHandler appNameAndVersionNumberDisplayString],
                              [[UIDevice currentDevice] systemName],
-                             [[UIDevice currentDevice] systemVersion]];
+                             [[UIDevice currentDevice] systemVersion],
+                             [DeviceIdentifier deviceName]];
         [emailViewController setMessageBody:message isHTML:NO];
         
         emailViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self.tabViewController presentViewController:emailViewController animated:YES completion:nil];
+        [self.tabViewController presentViewController:emailViewController animated:YES completion:^{
+            UIAlertController *instructionsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_SUPPORT_EMAIL_SUBJECT message:BC_STRING_SUPPORT_INSTRUCTIONS preferredStyle:UIAlertControllerStyleAlert];
+            [instructionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            [emailViewController presentViewController:instructionsAlert animated:YES completion:nil];
+        }];
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_NO_EMAIL_CONFIGURED, SUPPORT_EMAIL_ADDRESS] preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];

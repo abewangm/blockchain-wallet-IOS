@@ -246,6 +246,7 @@
 #define BC_STRING_UPGRADE_ASKLATER_TITLE NSLocalizedString(@"Ask Me Later", nil)
 
 #define BC_STRING_SUPPORT_EMAIL_SUBJECT NSLocalizedString(@"iOS Support Request", nil)
+#define BC_STRING_SUPPORT_INSTRUCTIONS NSLocalizedString(@"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it.", nil)
 
 #define BC_STRING_UNSAFE_DEVICE_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_UNSAFE_DEVICE_MESSAGE NSLocalizedString(@"Your device appears to be jailbroken. The security of your wallet may be compromised.", nil)
