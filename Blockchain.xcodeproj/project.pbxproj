@@ -20,6 +20,7 @@
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
 		2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */ = {isa = PBXBuildFile; fileRef = 2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */; };
 		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
+		233475F81BF4F8FB0056AB4E /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
 		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
@@ -334,6 +335,8 @@
 		2326C6C01BBD7A8100AB7C4D /* UIViewController+AutoDismiss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AutoDismiss.h"; sourceTree = "<group>"; };
 		2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AutoDismiss.m"; sourceTree = "<group>"; };
 		23321D791BB0730C0005624F /* my-wallet.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "../../Submodules/My-Wallet-V3/dist/my-wallet.js"; sourceTree = "<group>"; };
+		233475F61BF4F8FB0056AB4E /* DeviceIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceIdentifier.h; path = ../DeviceIdentifier.h; sourceTree = "<group>"; };
+		233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceIdentifier.m; path = ../DeviceIdentifier.m; sourceTree = "<group>"; };
 		235EBDD41BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/ReceiveCoins.strings"; sourceTree = "<group>"; };
 		235EBDD51BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/Backup.strings"; sourceTree = "<group>"; };
 		235EBDD61BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/SendCoins.strings"; sourceTree = "<group>"; };
@@ -861,6 +864,8 @@
 		9FB3637C14B60128004BEA02 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				233475F61BF4F8FB0056AB4E /* DeviceIdentifier.h */,
+				233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */,
 				67470A0519D438E000757D46 /* LocalizationConstants.h */,
 				220ADA6819A3796200EB7599 /* Localizable.strings */,
 				9FB3637D14B60128004BEA02 /* Blockchain-Info.plist */,
@@ -1314,6 +1319,7 @@
 				6780DB981A40BDF40048EED2 /* AccountInOut.m in Sources */,
 				9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */,
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,
+				233475F81BF4F8FB0056AB4E /* DeviceIdentifier.m in Sources */,
 				6750389B1B4D832F00F7B488 /* SideMenuViewCell.m in Sources */,
 				9F1831EE151744EB00FB3D52 /* ReceiveTableCell.m in Sources */,
 				67EE1DCB19E3325900DBBFC9 /* ECSlidingAnimationController.m in Sources */,
