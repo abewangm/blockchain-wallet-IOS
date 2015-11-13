@@ -5,11 +5,6 @@
 
 ## Setup git submodules
 
-_ssh pub key has to be registered with Github for this to work_
-
-    git clone git@github.com:blockchain/My-Wallet-V3.git Submodules/My-Wallet-V3
-    git clone git@github.com:x2on/OpenSSL-for-iPhone.git Submodules/OpenSSL-for-iPhone
-
 Prepare the MyWallet Javascript:
 
     git submodule update --init
