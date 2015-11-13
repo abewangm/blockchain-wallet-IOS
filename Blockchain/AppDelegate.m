@@ -279,6 +279,15 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showBusyViewWithLoadingText:(NSString *)text
 {
+#ifdef TOUCH_ID_ENABLED
+    if (self.pinEntryViewController.verifyOptional &&
+        ![text isEqualToString:BC_STRING_LOADING_SYNCING_WALLET] &&
+        ![text isEqualToString:BC_STRING_LOADING_VERIFYING]) {
+        DLog(@"Verify optional PIN view is presented - will not update busy views unless verifying or syncing");
+        return;
+    }
+#endif
+    
     [busyLabel setText:text];
     
     [_window.rootViewController.view bringSubviewToFront:busyView];
@@ -288,6 +297,15 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)updateBusyViewLoadingText:(NSString *)text
 {
+#ifdef TOUCH_ID_ENABLED
+    if (self.pinEntryViewController.verifyOptional &&
+        ![text isEqualToString:BC_STRING_LOADING_SYNCING_WALLET] &&
+        ![text isEqualToString:BC_STRING_LOADING_VERIFYING]) {
+        DLog(@"Verify optional PIN view is presented - will not update busy views unless verifying or syncing");
+        return;
+    }
+#endif
+    
     if (busyView.alpha == 1.0) {
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
             [busyLabel setText:text];
@@ -1301,11 +1319,19 @@ void (^secondPasswordSuccess)(NSString *);
     
     PEViewController *peViewController = (PEViewController *)[[pinVerifyPINOptionalController viewControllers] objectAtIndex:0];
     peViewController.cancelButton.hidden = NO;
+    [peViewController.cancelButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
     
     self.pinEntryViewController = pinVerifyPINOptionalController;
     
     peViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self.settingsNavigationController.visibleViewController presentViewController:self.pinEntryViewController animated:YES completion:nil];
+    
+    [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    if (self.wallet.isSyncingForCriticalProcess) {
+        [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    }
+    
+    [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
 }
 
 - (void)clearPin
@@ -1330,11 +1356,11 @@ void (^secondPasswordSuccess)(NSString *);
         else {
             [self.pinEntryViewController.view removeFromSuperview];
         }
-    } else if (self.settingsNavigationController.presentedViewController == self.pinEntryViewController) {
-        [self.settingsNavigationController.visibleViewController dismissViewControllerAnimated:animated completion:^{ }];
     } else {
         [_tabViewController dismissViewControllerAnimated:animated completion:^{ }];
     }
+    
+    self.pinEntryViewController = nil;
 }
 
 - (IBAction)logoutClicked:(id)sender
@@ -1681,6 +1707,7 @@ void (^secondPasswordSuccess)(NSString *);
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
             [[NSUserDefaults standardUserDefaults] synchronize];
             [self closePINModal:YES];
+            [self showSettings];
             return;
         }
 #endif

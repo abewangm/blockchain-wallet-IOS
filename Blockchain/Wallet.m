@@ -116,11 +116,6 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     DLog(@"webViewDidFinishLoad:");
-#ifdef TOUCH_ID_ENABLED
-    if (app.modalView == app.pinEntryViewController.view && app.pinEntryViewController.verifyOptional) {
-        return;
-    }
-#endif
     
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];
@@ -570,7 +565,7 @@
 
 - (void)setTransactionFee:(uint64_t)feePerKb
 {
-    self.isSyncingForTrivialProcess = YES;
+    self.isSyncingForCriticalProcess = YES;
     [self.webView executeJS:@"MyWalletPhone.setTransactionFee(%lld)", feePerKb];
 }
 

@@ -79,7 +79,7 @@ int accountEntries = 0;
 - (void)setSideMenuGestures
 {
     // Hide status bar
-    if (!app.modalView) {
+    if (!app.pinEntryViewController.verifyOptional) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     }
     

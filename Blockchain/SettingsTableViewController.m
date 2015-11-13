@@ -78,7 +78,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if (app.wallet.isSyncingForTrivialProcess) {
+    if (app.wallet.isSyncingForCriticalProcess) {
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
 }
