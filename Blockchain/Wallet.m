@@ -116,6 +116,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     DLog(@"webViewDidFinishLoad:");
+#ifdef TOUCH_ID_ENABLED
+    if (app.modalView == app.pinEntryViewController.view && app.pinEntryViewController.verifyOptional) {
+        return;
+    }
+#endif
     
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];

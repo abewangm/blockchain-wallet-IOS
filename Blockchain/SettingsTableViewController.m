@@ -343,6 +343,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)switchTouchIDTapped
 {
     if ([app isTouchIDAvailable]) {
+        
         BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
         
         if (!touchIDEnabled == YES) {
@@ -351,6 +352,8 @@ const int aboutPrivacyPolicy = 1;
             [app disabledTouchID];
             [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
         }
+    } else {
+        DLog(@"Touch ID not available on this device!");
     }
 }
 

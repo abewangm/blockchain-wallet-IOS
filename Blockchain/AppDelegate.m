@@ -1453,6 +1453,21 @@ void (^secondPasswordSuccess)(NSString *);
         [self.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
         
         self.wallet.delegate = self;
+    } else {
+        
+        if (!guid) {
+            DLog(@"failed to retrieve GUID from Keychain");
+        }
+        
+        if (!sharedKey) {
+            DLog(@"failed to retrieve sharedKey from Keychain");
+        }
+        
+        if (guid && !sharedKey) {
+            DLog(@"!!! Failed to retrieve sharedKey from Keychain but was able to retreive GUID ???");
+        }
+        
+        [self failedToObtainValuesFromKeychain];
     }
     
     mainPasswordTextField.text = nil;
