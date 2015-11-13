@@ -1530,6 +1530,10 @@ void (^secondPasswordSuccess)(NSString *);
                                   });
                                   NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
                                   NSString * pin = [self pinFromKeychain];
+                                  if (!pin) {
+                                      [self failedToObtainValuesFromKeychain];
+                                      return;
+                                  }
                                   DLog(@"touch ID is using PIN %@", pin);
                                   [app.wallet apiGetPINValue:pinKey pin:pin];
                                   
