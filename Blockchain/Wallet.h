@@ -54,7 +54,7 @@
 - (void)didBackupWallet;
 - (void)didFailBackupWallet;
 - (void)walletJSReady;
-- (void)didGenerateNewAddress:(NSString *)address;
+- (void)didGenerateNewAddress;
 - (void)didParsePairingCode:(NSDictionary *)dict;
 - (void)errorParsingPairingCode:(NSString *)message;
 - (void)didCreateNewAccount:(NSString *)guid sharedKey:(NSString *)sharedKey password:(NSString *)password;

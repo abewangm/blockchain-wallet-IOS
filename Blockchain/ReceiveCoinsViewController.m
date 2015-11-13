@@ -761,6 +761,10 @@ UIAlertController *popupAddressArchive;
     }
     
     [app.wallet generateNewKey];
+}
+
+- (void)didGenerateNewAddress
+{
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(promptForLabelAfterGenerate)
                                                  name:NOTIFICATION_KEY_NEW_ADDRESS object:nil];
@@ -768,11 +772,9 @@ UIAlertController *popupAddressArchive;
 
 - (void)promptForLabelAfterGenerate
 {
-    if (self.view.window) {
-        //newest address is the last object in activeKeys
-        self.clickedAddress = [activeKeys lastObject];
-        [self labelAddressClicked:nil];
-    }
+    //newest address is the last object in activeKeys
+    self.clickedAddress = [activeKeys lastObject];
+    [self labelAddressClicked:nil];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_NEW_ADDRESS
                                                   object:nil];
@@ -780,11 +782,9 @@ UIAlertController *popupAddressArchive;
 
 - (void)promptForLabelAfterScan
 {
-    if (self.view.window) {
-        //newest address is the last object in activeKeys
-        self.clickedAddress = [activeKeys lastObject];
-        [self labelAddressClicked:nil];
-    }
+    //newest address is the last object in activeKeys
+    self.clickedAddress = [activeKeys lastObject];
+    [self labelAddressClicked:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS
                                                   object:nil];

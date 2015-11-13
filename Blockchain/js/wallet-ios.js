@@ -964,6 +964,7 @@ MyWalletPhone.generateNewAddress = function() {
         var success = function () {
             console.log('Success creating new address');
             MyWalletPhone.get_history();
+            device.execute('on_generate_key');
             device.execute('loading_stop');
         };
         

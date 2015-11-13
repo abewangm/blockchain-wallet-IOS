@@ -1214,11 +1214,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"error":error}];
 }
 
-- (void)on_generate_key:(NSString*)address
+- (void)on_generate_key
 {
     DLog(@"on_generate_key");
-    
-    [delegate didGenerateNewAddress:address];
+    [delegate didGenerateNewAddress];
 }
 
 - (void)on_error_generating_new_address:(NSString*)error

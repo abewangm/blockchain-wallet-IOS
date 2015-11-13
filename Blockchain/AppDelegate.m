@@ -1060,6 +1060,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)didGenerateNewAddress
+{
+    [app.receiveViewController didGenerateNewAddress];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountSettings
