@@ -283,7 +283,12 @@ MyWalletPhone.setTransactionFee = function(fee) {
 }
 
 MyWalletPhone.getTransactionFee = function() {
-    return MyWallet.wallet.fee_per_kb;
+    if (MyWallet.wallet) {
+        return MyWallet.wallet.fee_per_kb;
+    } else {
+        console.log('Error getting transaction fee');
+        return -1;
+    }
 }
 
 MyWalletPhone.setPbkdf2Iterations = function(iterations) {

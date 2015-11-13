@@ -571,7 +571,14 @@
 
 - (uint64_t)getTransactionFee
 {
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getTransactionFee()"] longLongValue];
+    id fee = [self.webView executeJSSynchronous:@"MyWalletPhone.getTransactionFee()"];
+    if ([fee intValue] < 0) {
+        DLog(@"Error retrieving fee");
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
+        return 0;
+    } else {
+        return [fee longLongValue];
+    }
 }
 
 - (void)generateNewKey
