@@ -698,9 +698,13 @@ BOOL displayingLocalSymbolSend;
             amountInSatoshi = [app.wallet parseBitcoinValue:amountString];
         }
         
-        [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+        if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
+            return NO;
+        } else {
+            [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+            return YES;
+        }
         
-        return YES;
     } else if (textField == toField) {
         self.sendToAddress = true;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];

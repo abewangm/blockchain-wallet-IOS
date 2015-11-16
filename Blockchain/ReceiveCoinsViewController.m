@@ -324,30 +324,12 @@ UIAlertController *popupAddressArchive;
 {
     uint64_t amount = [self getInputAmountInSatoshi];
     
-    if (amount > BTC_LIMIT_IN_SATOSHI) {
-        [self highlightInvalidAmounts];
-    } else {
-        [self removeHighlightFromAmounts];
-    }
-    
     if ([btcAmountField isFirstResponder]) {
         fiatAmountField.text = [app formatAmount:amount localCurrency:YES];
     }
     else if ([fiatAmountField isFirstResponder]) {
         btcAmountField.text = [app formatAmount:amount localCurrency:NO];
     }
-}
-
-- (void)highlightInvalidAmounts
-{
-    btcAmountField.textColor = [UIColor redColor];
-    fiatAmountField.textColor = [UIColor redColor];
-}
-
-- (void)removeHighlightFromAmounts
-{
-    btcAmountField.textColor = [UIColor blackColor];
-    fiatAmountField.textColor = [UIColor blackColor];
 }
 
 - (NSString *)getKey:(NSIndexPath*)indexPath
@@ -429,16 +411,12 @@ UIAlertController *popupAddressArchive;
 
 - (void)setQRPayment
 {
-    if ([self getInputAmountInSatoshi] <= BTC_LIMIT_IN_SATOSHI) {
+    double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
         
-        double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
+    UIImage *image = [self qrImageFromAddress:self.clickedAddress amount:amount];
         
-        UIImage *image = [self qrImageFromAddress:self.clickedAddress amount:amount];
-        
-        qrCodePaymentImageView.image = image;
-        qrCodePaymentImageView.contentMode = UIViewContentModeScaleAspectFit;
-        
-    }
+    qrCodePaymentImageView.image = image;
+    qrCodePaymentImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self doCurrencyConversion];
 }
@@ -836,63 +814,75 @@ UIAlertController *popupAddressArchive;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == labelTextField) {
+    if (textField == btcAmountField || textField == fiatAmountField) {
+        NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSArray  *points = [newString componentsSeparatedByString:@"."];
+        NSArray  *commas = [newString componentsSeparatedByString:@","];
+        
+        // Only one comma or point in input field allowed
+        if ([points count] > 2 || [commas count] > 2)
+            return NO;
+        
+        // Only 1 leading zero
+        if (points.count == 1 || commas.count == 1) {
+            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:@","] && [textField.text isEqualToString:@"0"]) {
+                return NO;
+            }
+        }
+        
+        // When entering amount in BTC, max 8 decimal places
+        if ([btcAmountField isFirstResponder]) {
+            // Max number of decimal places depends on bitcoin unit
+            NSUInteger maxlength = [@(SATOSHI) stringValue].length - [@(SATOSHI / app.latestResponse.symbol_btc.conversion) stringValue].length;
+            
+            if (points.count == 2) {
+                NSString *decimalString = points[1];
+                if (decimalString.length > maxlength) {
+                    return NO;
+                }
+            }
+            else if (commas.count == 2) {
+                NSString *decimalString = commas[1];
+                if (decimalString.length > maxlength) {
+                    return NO;
+                }
+            }
+        }
+        
+        // Fiat currencies have a max of 3 decimal places, most of them actually only 2. For now we will use 2.
+        else if ([fiatAmountField isFirstResponder]) {
+            if (points.count == 2) {
+                NSString *decimalString = points[1];
+                if (decimalString.length > 2) {
+                    return NO;
+                }
+            }
+            else if (commas.count == 2) {
+                NSString *decimalString = commas[1];
+                if (decimalString.length > 2) {
+                    return NO;
+                }
+            }
+        }
+        
+        uint64_t amountInSatoshi = 0;
+        NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        if (textField == fiatAmountField) {
+            amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
+        }
+        else {
+            amountInSatoshi = [app.wallet parseBitcoinValue:amountString];
+        }
+        
+        if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
+            return NO;
+        } else {
+            [self performSelector:@selector(setQRPayment) withObject:nil afterDelay:0.1f];
+            return YES;
+        }
+    } else {
         return YES;
     }
-    
-    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    NSArray  *points = [newString componentsSeparatedByString:@"."];
-    NSArray  *commas = [newString componentsSeparatedByString:@","];
-    
-    // Only one comma or point in input field allowed
-    if ([points count] > 2 || [commas count] > 2)
-        return NO;
-    
-    // Only 1 leading zero
-    if (points.count == 1 || commas.count == 1) {
-        if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:@","] && [textField.text isEqualToString:@"0"]) {
-            return NO;
-        }
-    }
-    
-    // When entering amount in BTC, max 8 decimal places
-    if ([btcAmountField isFirstResponder]) {
-        // Max number of decimal places depends on bitcoin unit
-        NSUInteger maxlength = [@(SATOSHI) stringValue].length - [@(SATOSHI / app.latestResponse.symbol_btc.conversion) stringValue].length;
-        
-        if (points.count == 2) {
-            NSString *decimalString = points[1];
-            if (decimalString.length > maxlength) {
-                return NO;
-            }
-        }
-        else if (commas.count == 2) {
-            NSString *decimalString = commas[1];
-            if (decimalString.length > maxlength) {
-                return NO;
-            }
-        }
-    }
-    
-    // Fiat currencies have a max of 3 decimal places, most of them actually only 2. For now we will use 2.
-    else if ([fiatAmountField isFirstResponder]) {
-        if (points.count == 2) {
-            NSString *decimalString = points[1];
-            if (decimalString.length > 2) {
-                return NO;
-            }
-        }
-        else if (commas.count == 2) {
-            NSString *decimalString = commas[1];
-            if (decimalString.length > 2) {
-                return NO;
-            }
-        }
-    }
-    
-    [self performSelector:@selector(setQRPayment) withObject:nil afterDelay:0.1f];
-    
-    return YES;
 }
 
 #pragma mark - UITableview Delegates
