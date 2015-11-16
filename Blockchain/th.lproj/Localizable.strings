@@ -515,6 +515,9 @@
 "Please choose from the options below." = "โปรดเลือกตัวเลือกด้านล่าง";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "โปรดอธิบายรายละเอียดปัญหาที่คุณประสบ กับตอนเราจะทำซ้ำได้ด้วย";
+
+/* (No Commment) */
 "Please enter a new PIN" = "กรุณาใส่รหัส PIN ใหม่";
 
 /* (No Commment) */

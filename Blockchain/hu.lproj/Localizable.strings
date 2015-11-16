@@ -515,6 +515,9 @@
 "Please choose from the options below." = "Kérjük válasszon az alábbi lehetőségek közül.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Kérjük, részletesen írja le a problémát tapasztal, valamint bármilyen lépést tudunk előcsalni.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Adja meg az új PIN-kód";
 
 /* (No Commment) */

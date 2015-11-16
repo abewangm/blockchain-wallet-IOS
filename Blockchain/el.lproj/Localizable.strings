@@ -515,6 +515,9 @@
 "Please choose from the options below." = "Παρακαλώ επιλέξτε από τις παρακάτω επιλογές.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Περιγράψτε λεπτομερώς το ζήτημα που αντιμετωπίζετε, μαζί με οποιοδήποτε τρόπο μπορούμε να αναπαραχθούν.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Πληκτρολογήστε ένα νέο κωδικό PIN";
 
 /* (No Commment) */

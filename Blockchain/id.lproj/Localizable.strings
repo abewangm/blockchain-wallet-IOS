@@ -515,6 +515,9 @@
 "Please choose from the options below." = "Silakan pilih dari opsi di bawah.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Jelaskan secara rinci masalah yang Anda mengalami, bersama dengan setiap langkah yang dapat kita ambil untuk mereproduksi itu.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Masukkan PIN baru";
 
 /* (No Commment) */

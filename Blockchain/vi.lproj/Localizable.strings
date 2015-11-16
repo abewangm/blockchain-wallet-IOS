@@ -515,6 +515,9 @@
 "Please choose from the options below." = "Xin vui lòng chọn từ các tùy chọn dưới đây.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Hãy mô tả chi tiết sự cố bạn đang gặp phải, cùng với bất kỳ bước nào chúng ta có thể sao chép nó.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Xin vui lòng nhập mã PIN mới";
 
 /* (No Commment) */

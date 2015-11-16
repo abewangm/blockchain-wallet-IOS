@@ -515,6 +515,9 @@
 "Please choose from the options below." = "कृपया नीचे दिए गए विकल्पों में से चुनें।";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "कृपया विस्तार से जो समस्या आप अनुभव कर रहे हैं, हम इसे पुन: उत्पन्न करने के लिए ले जा सकते हैं किसी भी कदम के साथ साथ वर्णन।";
+
+/* (No Commment) */
 "Please enter a new PIN" = "कृपया एक नया पिन दर्ज करें";
 
 /* (No Commment) */

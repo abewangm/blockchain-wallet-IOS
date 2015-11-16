@@ -515,6 +515,9 @@
 "Please choose from the options below." = "Si us plau, triar entre les opcions següents.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Descriviu detalladament l'assumpte que està experimentant, juntament amb els passos que pot prendre per reproduir.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Si us plau, introduïu un PIN nou";
 
 /* (No Commment) */

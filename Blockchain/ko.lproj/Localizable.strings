@@ -515,6 +515,9 @@
 "Please choose from the options below." = "아래 옵션에서 선택 하십시오.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "제발 자세히 우리가 재현에 취할 수 있는 모든 단계를 함께 발생 하는 문제를 설명.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "새 PIN을 입력 해 주시기 바랍니다";
 
 /* (No Commment) */

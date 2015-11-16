@@ -515,6 +515,9 @@
 "Please choose from the options below." = "以下のオプションから選択してください。";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "それを再現する私たちすることができます手順と共に、発生している問題の詳細について教えてください。";
+
+/* (No Commment) */
 "Please enter a new PIN" = "新しい PIN を入力してください。";
 
 /* (No Commment) */

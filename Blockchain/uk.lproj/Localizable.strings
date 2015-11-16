@@ -515,6 +515,9 @@
 "Please choose from the options below." = "Будь ласка, виберіть одну з опцій нижче.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Будь ласка, Опишіть детально питання, які виникають, а також будь-які кроки ми можемо зробити, щоб відтворити її.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Будь ласка, введіть новий PIN-код";
 
 /* (No Commment) */

@@ -515,6 +515,9 @@
 "Please choose from the options below." = "Valitse alla olevista vaihtoehdoista.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Kuvailkaa yksityiskohtaisesti ongelma sinulla on, sekä ohjeet, voimme jäljitellä sitä.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Anna uusi PIN-tunnus";
 
 /* (No Commment) */

@@ -515,6 +515,9 @@
 "Please choose from the options below." = "נא לבחור מתוך האפשרויות הבאות.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "בבקשה לתאר בפירוט את הבעיה שאתם חווים, יחד עם כל השלבים שניקח לשחזר את הכל.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "נא להזין מספר זיהוי אישי חדש";
 
 /* (No Commment) */

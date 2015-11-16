@@ -515,6 +515,9 @@
 "Please choose from the options below." = "Vyberte si prosím z nižšie uvedených možností.";
 
 /* (No Commment) */
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Podrobne opíšte problém ste sa stretli, spolu s žiadne kroky, môžeme na ich reprodukciu.";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Zadajte nový kód PIN";
 
 /* (No Commment) */
