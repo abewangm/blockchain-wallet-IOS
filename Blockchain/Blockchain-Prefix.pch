@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-//#define HD_ENABLED 1
+#define HD_ENABLED 1
 
 #pragma mark - Colors
 
@@ -136,9 +136,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_PIN_KEY @"pinKey"
 #define USER_DEFAULTS_KEY_PASSWORD_PART_HASH @"passwordPartHash"
 #define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
+#define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
+
+#define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
 
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"
+#define KEYCHAIN_KEY_PIN @"pin"
 
 #define QR_CODE_KEY_GUID @"guid"
 #define QR_CODE_KEY_SHARED_KEY @"sharedKey"
@@ -235,3 +239,5 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_UNDEFINED @"undefined"
 #define ERROR_TIMEOUT_REQUEST @"timeout request"
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
+
+#define TOUCH_ID_ENABLED 1

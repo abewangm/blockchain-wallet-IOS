@@ -79,7 +79,9 @@ int accountEntries = 0;
 - (void)setSideMenuGestures
 {
     // Hide status bar
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
+    if (!app.pinEntryViewController.verifyOptional) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
+    }
     
     // Disable all interactions on main view
     for (UIView *view in app.tabViewController.activeViewController.view.subviews) {

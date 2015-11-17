@@ -177,8 +177,12 @@
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;
 - (BOOL)isPinSet;
+- (void)validatePINOptionally;
 
 - (BOOL)checkInternetConnection;
+
+- (BOOL)isTouchIDAvailable;
+- (void)disabledTouchID;
 
 - (AVCaptureDeviceInput *)getCaptureDeviceInput;
 

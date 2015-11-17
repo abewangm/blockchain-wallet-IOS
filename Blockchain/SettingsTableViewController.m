@@ -26,7 +26,17 @@ const int displayBtcUnit = 1;
 const int feesSection = 2;
 const int feePerKb = 0;
 
+#ifdef TOUCH_ID_ENABLED
+const int securitySection = 3;
+const int securityTouchID = 0;
+
+const int aboutSection = 4;
+#else
+const int securitySection = -1;
+const int securityTouchID = -1;
+
 const int aboutSection = 3;
+#endif
 const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
@@ -68,7 +78,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if (app.wallet.isSyncingForTrivialProcess) {
+    if (app.wallet.isSyncingForCriticalProcess) {
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
 }
@@ -80,6 +90,15 @@ const int aboutPrivacyPolicy = 1;
     if (!loadedSettings) {
         [self reload];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+#ifdef TOUCH_ID_ENABLED
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTouchID inSection:securitySection];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+#endif
 }
 
 - (void)reload
@@ -321,6 +340,23 @@ const int aboutPrivacyPolicy = 1;
     [self performSelector:@selector(alertUserOfVerifyingEmailSuccess) withObject:nil afterDelay:0.2f];
 }
 
+- (void)switchTouchIDTapped
+{
+    if ([app isTouchIDAvailable]) {
+        
+        BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+        
+        if (!touchIDEnabled == YES) {
+            [app validatePINOptionally];
+        } else {
+            [app disabledTouchID];
+            [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+        }
+    } else {
+        DLog(@"Touch ID not available on this device!");
+    }
+}
+
 #pragma mark AlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -553,7 +589,11 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#ifdef TOUCH_ID_ENABLED
+    return 5;
+#else
     return 4;
+#endif
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -562,6 +602,7 @@ const int aboutPrivacyPolicy = 1;
         case accountDetailsSection: return 2;
         case displaySection: return 2;
         case feesSection: return 1;
+        case securitySection: return 1;
         case aboutSection: return 2;
         default: return 0;
     }
@@ -573,6 +614,7 @@ const int aboutPrivacyPolicy = 1;
         case accountDetailsSection: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
         case displaySection: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
         case feesSection: return BC_STRING_SETTINGS_FEES;
+        case securitySection: return BC_STRING_SETTINGS_SECURITY;
         case aboutSection: return BC_STRING_SETTINGS_ABOUT;
         default: return nil;
     }
@@ -659,6 +701,22 @@ const int aboutPrivacyPolicy = 1;
                 }
             }
         }
+        case securitySection: {
+            switch (indexPath.row) {
+                case securityTouchID: {
+                    cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                    cell.textLabel.font = [SettingsTableViewController fontForCell];
+                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
+                    UISwitch *switchForTouchID = [[UISwitch alloc] init];
+                    BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+                    switchForTouchID.on = touchIDEnabled;
+                    [switchForTouchID addTarget:self action:@selector(switchTouchIDTapped) forControlEvents:UIControlEventTouchUpInside];
+                    cell.accessoryView = switchForTouchID;
+                    return cell;
+                }
+            }
+        }
         case aboutSection: {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
@@ -679,7 +737,7 @@ const int aboutPrivacyPolicy = 1;
 {
     BOOL hasLoadedAccountInfoDictionary = self.accountInfoDictionary ? YES : NO;
     
-    if (!hasLoadedAccountInfoDictionary) {
+    if (!hasLoadedAccountInfoDictionary || [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LOADED_SETTINGS] boolValue] == NO) {
         [self alertUserOfErrorLoadingSettings];
         return nil;
     } else {
