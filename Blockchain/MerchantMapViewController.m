@@ -93,10 +93,6 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     
-    // Button to center user location on map
-    MKUserTrackingBarButtonItem *buttonItem = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
-    [self.toolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
-    
     // Adding gesture recognizer so we know when to update the pin locations
     UIPanGestureRecognizer* panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(userUpdatedMapBounds:)];
     [panGestureRecognizer setDelegate:self];
@@ -114,6 +110,8 @@
     
     [self.locationManager startUpdatingLocation];
     
+    [self addTrackingBarButtonItem];
+    
     self.mapView.showsUserLocation = YES;
 }
 
@@ -122,6 +120,9 @@
     [self.locationManager stopUpdatingLocation];
     
     self.mapView.showsUserLocation = NO;
+    
+    [self.toolbar setItems:nil];
+    self.mapView.userTrackingMode = MKUserTrackingModeNone;
 }
 
 - (void)clearMerchantAnnotations
@@ -132,6 +133,13 @@
         }
     }
     [self.merchantsLocationAnnotations removeAllObjects];
+}
+
+- (void)addTrackingBarButtonItem
+{
+    // Button to center user location on map
+    MKUserTrackingBarButtonItem *buttonItem = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    [self.toolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
 }
 
 static NSString *const kBlockchainNearByMerchantsURL = @"https://merchant-directory.blockchain.info/api/list_near_merchants.php";
@@ -417,69 +425,52 @@ static NSString *const kBlockchainNearByMerchantsURL = @"https://merchant-direct
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
 {
-    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
-        if ([CLLocationManager locationServicesEnabled]) {
-            if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied) {
-                // Ask to go to Settings for the app to enable location services
-                [self askUserToEnableLocationServicesInSettingsForApp];
-            }
-        } else {
-            [self askUserToEnableLocationServicesGlobally];
-            // Ask to go to Settings in Privacy to globally enable location services
-        }
-    } else {
-        if (![CLLocationManager locationServicesEnabled] || [CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied) {
-            // For iOS 7.1, tell the user to go to settings since you cannot open it with openURL:
-            [self askUserToEnableLocationServicesGlobally];
-        }
+    if (self.toolbar.items == nil ) {
+        // The only way to stop the spinner on the trackingBarButtonItem is to change the mapView's userTrackingMode, which calls this delegate method. When exiting from an alertView, do not prompt the user again for permissions.
+        return;
     }
     
+    if ([CLLocationManager locationServicesEnabled]) {
+        if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied) {
+            // Ask to go to Settings for the app to enable location services
+            [self askUserToEnableLocationServicesInSettingsForApp];
+        }
+    } else {
+        [self askUserToEnableLocationServicesGlobally];
+        // Ask to go to Settings in Privacy to globally enable location services
+    }
 }
 
 - (void)askUserToEnableLocationServicesInSettingsForApp
 {
-    self.askUserToEnableLocationServicesAlertView = [[UIAlertView alloc] initWithTitle:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_TITLE
-                                                                               message:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE
-                                                                              delegate:self
-                                                                     cancelButtonTitle:BC_STRING_CANCEL
-                                                                     otherButtonTitles:BC_STRING_GO_TO_SETTINGS, nil];
-    [self.askUserToEnableLocationServicesAlertView show];
+    UIAlertController *alertToEnableLocationServicesInSettingsForApp = [UIAlertController alertControllerWithTitle:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_TITLE message:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alertToEnableLocationServicesInSettingsForApp addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.toolbar setItems:nil];
+        self.mapView.userTrackingMode = MKUserTrackingModeNone;
+        [self addTrackingBarButtonItem];
+    }]];
+    [alertToEnableLocationServicesInSettingsForApp addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_SETTINGS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            DLog(@"Going to settings");
+            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            [[UIApplication sharedApplication] openURL:settingsURL];
+    }]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alertToEnableLocationServicesInSettingsForApp animated:YES completion:nil];
+    });
 }
 
 
 - (void)askUserToEnableLocationServicesGlobally
 {
-    NSString *pathToLocationServicesString;
-    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
-        pathToLocationServicesString = BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE_GLOBALLY_IOS_8_AND_ABOVE;
-    } else {
-        pathToLocationServicesString = BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE_GLOBALLY_IOS_7;
-    }
-    
-    self.askUserToEnableLocationServicesAlertView = [[UIAlertView alloc] initWithTitle:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_TITLE
-                                                                               message:pathToLocationServicesString
-                                                                              delegate:self
-                                                                     cancelButtonTitle:BC_STRING_OK
-                                                                     otherButtonTitles: nil];
-    [self.askUserToEnableLocationServicesAlertView show];
-}
-
-#pragma mark - UIAlertView Delegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (alertView == self.askUserToEnableLocationServicesAlertView) {
-        switch (buttonIndex) {
-            case 0:
-                DLog(@"Cancelling prompt for location services");
-                break;
-            case 1:
-                DLog(@"Going to settings");
-                NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-                [[UIApplication sharedApplication] openURL:settingsURL];
-                break;
-        }
-    }
+    UIAlertController *alertToEnableLocationServicesInSettingsForApp = [UIAlertController alertControllerWithTitle:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_TITLE message:BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE_GLOBALLY_IOS_8_AND_ABOVE preferredStyle:UIAlertControllerStyleAlert];
+    [alertToEnableLocationServicesInSettingsForApp addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.toolbar setItems:nil];
+        self.mapView.userTrackingMode = MKUserTrackingModeNone;
+        [self addTrackingBarButtonItem];
+    }]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alertToEnableLocationServicesInSettingsForApp animated:YES completion:nil];
+    });
 }
 
 @end
