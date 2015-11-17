@@ -1247,8 +1247,13 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showRecoverWallet:(id)sender
 {
-    [app showModalWithContent:createWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_FUNDS];
-    createWalletView.isRecoveringWallet = YES;
+    UIAlertController *recoveryWarningAlert = [UIAlertController alertControllerWithTitle:BC_STRING_RECOVER_FUNDS message:BC_STRING_RECOVER_FUNDS_ONLY_IF_FORGOT_CREDENTIALS preferredStyle:UIAlertControllerStyleAlert];
+    [recoveryWarningAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [app showModalWithContent:createWalletView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_FUNDS];
+        createWalletView.isRecoveringWallet = YES;
+    }]];
+    [recoveryWarningAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.window.rootViewController presentViewController:recoveryWarningAlert animated:YES completion:nil];
 }
 
 - (IBAction)manualPairClicked:(id)sender
