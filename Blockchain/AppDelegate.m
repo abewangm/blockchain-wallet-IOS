@@ -1507,7 +1507,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)authenticateWithTouchID
 {
     LAContext *context = [[LAContext alloc] init];
-    context.localizedFallbackTitle = BC_STRING_ENTER_PIN;
+    context.localizedFallbackTitle = @"";
     
     NSError *error = nil;
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
