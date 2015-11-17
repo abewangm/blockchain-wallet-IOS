@@ -1082,11 +1082,6 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-    if (self.sendFromAddress && self.sendToAddress && [self.fromAddress isEqualToString:self.toAddress]) {
-        [self showErrorBeforeSending:BC_STRING_FROM_TO_ADDRESS_DIFFERENT];
-        return;
-    }
-    
     uint64_t value = amountInSatoshi;
     NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
     if (value <= 0 || [amountString doubleValue] <= 0) {
