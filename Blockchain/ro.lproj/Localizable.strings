@@ -83,6 +83,9 @@
 "Ask Me Later" = "Întreabă-mă mai târziu";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Se autentifice cu ID-ul Touch";
+
+/* (No Commment) */
 "Authorization Required" = "Autorizaţii necesare";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Crearea HD portofel";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Crearea V3 portofel";
+
+/* (No Commment) */
 "Creating Wallet" = "Crearea de portofel";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Activare servicii de localizare";
+
+/* (No Commment) */
+"Enter PIN" = "Introduceţi codul PIN";
 
 /* (No Commment) */
 "Enter Password" = "Introduceţi parola";
@@ -602,6 +611,9 @@
 "Second Password Required" = "A doua parolă necesară";
 
 /* (No Commment) */
+"Security" = "Securitate";
+
+/* (No Commment) */
 "Send" = "Trimite";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Cheia privată care încercați să importați este criptat. Vă rugăm să introduceţi parola mai jos.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "A fost o problemă de verificarea identităţii.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Această acţiune necesită doua parola pentru portofel bitcoin. Vă rugăm să introduceţi-l mai jos şi apăsaţi continuă.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Soldul total";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Atinge ID nu este disponibil pe acest aparat.";
 
 /* (No Commment) */
 "Transaction" = "Tranzactie";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Upgrade de la HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Upgrade-ul la V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Folosiţi Touch ID ca PIN";
 
 /* (No Commment) */
 "Use all %@" = "Utilizaţi toate %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "Your email has been verified." = "Adresa de email a fost verificat.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Identitatea dumneavoastră nu corespunde înregistrărilor noastre.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Portofelul dumneavoastră a fost creat cu succes.";

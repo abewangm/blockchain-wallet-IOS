@@ -83,6 +83,9 @@
 "Ask Me Later" = "Відкласти";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Автентифіковано Touch ID";
+
+/* (No Commment) */
 "Authorization Required" = "Потрібна авторизація";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Створення HD гаманець";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Створення V3 гаманець";
+
+/* (No Commment) */
 "Creating Wallet" = "Створення гаманець";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Увімкнення служби локації";
+
+/* (No Commment) */
+"Enter PIN" = "Введіть PIN-код";
 
 /* (No Commment) */
 "Enter Password" = "Введіть пароль";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Другий пароль";
 
 /* (No Commment) */
+"Security" = "Безпека";
+
+/* (No Commment) */
 "Send" = "Надіслати";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Зашифрований закритий ключ, який ви намагаєтеся імпортувати. Будь ласка, введіть пароль нижче.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Виникли утруднення засвідчує вашу особу.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ця дія вимагає другий пароль для вашого гаманця bitcoin. Будь ласка, введіть його нижче та натисніть Продовжити.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Загальний баланс";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Touch ID недоступний на цьому пристрої.";
 
 /* (No Commment) */
 "Transaction" = "Транзакції";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Оновлення HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Оновлення до версії 3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Використання ID Touch як PIN";
 
 /* (No Commment) */
 "Use all %@" = "Використовувати всі %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "Your email has been verified." = "Перевірити свою електронну пошту.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Вашу особистість не відповідає нашому записів.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Ваш гаманець успішно створено.";

@@ -83,6 +83,9 @@
 "Ask Me Later" = "Спросите меня позже";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Проверка подлинности с сенсорным ID";
+
+/* (No Commment) */
 "Authorization Required" = "Требуется авторизация";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Создание HD бумажник";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Создание V3 бумажник";
+
+/* (No Commment) */
 "Creating Wallet" = "Создание бумажник";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Включение службы определения местоположения";
+
+/* (No Commment) */
+"Enter PIN" = "Введите PIN-код";
 
 /* (No Commment) */
 "Enter Password" = "Введите пароль";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Второй пароль";
 
 /* (No Commment) */
+"Security" = "Безопасность";
+
+/* (No Commment) */
 "Send" = "Отправить";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Закрытый ключ, который вы пытаетесь импортировать зашифрован. Пожалуйста, введите пароль.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Существует проблема установления вашей личности.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Это действие требует второй пароль для кошелек bitcoin. Пожалуйста, введите его ниже, и нажмите продолжить.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Общий баланс";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Касание ID не доступен на этом устройстве.";
 
 /* (No Commment) */
 "Transaction" = "Транзакция";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Обновление до HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Обновление до V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Использование сенсорного ID как PIN-код";
 
 /* (No Commment) */
 "Use all %@" = "Использовать все %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Для вас мы создали совершен
 
 /* (No Commment) */
 "Your email has been verified." = "Ваш электронный адрес был проверен.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Ваша личность не соответствует наши записи.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Ваш кошелек был успешно создан.";

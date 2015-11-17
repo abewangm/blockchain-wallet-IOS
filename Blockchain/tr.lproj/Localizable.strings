@@ -83,6 +83,9 @@
 "Ask Me Later" = "Sormak beni sonradan";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Dokunmatik kimliği ile kimlik doğrulaması";
+
+/* (No Commment) */
 "Authorization Required" = "Yetkilendirme gerekli";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "HD cüzdan oluşturma";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "V3 cüzdan oluşturma";
+
+/* (No Commment) */
 "Creating Wallet" = "M-cüzdan oluşturma";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Konum servisleri etkinleştirme";
+
+/* (No Commment) */
+"Enter PIN" = "PIN kodunu girin";
 
 /* (No Commment) */
 "Enter Password" = "Parolayı girin";
@@ -602,6 +611,9 @@
 "Second Password Required" = "İkinci parola gerekli";
 
 /* (No Commment) */
+"Security" = "Güvenlik";
+
+/* (No Commment) */
 "Send" = "Gönder";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Alma girişiminde bulunan özel anahtar şifrelenir. Lütfen parolanızı aşağıya girin.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Senin kimliğini doğrulayan bir hata oluştu.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Bu eylem için bitcoin-cüzdanını ikinci parola gerektirir. Lütfen aşağıya girin ve basın devam edin.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Toplam bakiye";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Dokunmatik kimliği bu aygıtta kullanılabilir değil.";
 
 /* (No Commment) */
 "Transaction" = "İşlem";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "HD için yükseltme";
+
+/* (No Commment) */
+"Upgrade to V3" = "V3 için yükseltme";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Dokunmatik kimliği'ni kullan PIN olarak";
 
 /* (No Commment) */
 "Use all %@" = "Bütün %@ kullanın";
@@ -808,6 +832,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "Your email has been verified." = "E-posta doğrulandı.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Kimliğinizi kayıtlarımız eşleşmiyor.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Cüzdanını başarıyla oluşturuldu.";

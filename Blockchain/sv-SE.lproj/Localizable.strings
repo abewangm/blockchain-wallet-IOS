@@ -83,6 +83,9 @@
 "Ask Me Later" = "Fråga mig senare";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Autentisera med Touch-ID";
+
+/* (No Commment) */
 "Authorization Required" = "Tillstånd krävs";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Skapa HD plånbok";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Att skapa V3 plånbok";
+
+/* (No Commment) */
 "Creating Wallet" = "Att skapa plånbok";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Aktivera platstjänster";
+
+/* (No Commment) */
+"Enter PIN" = "Ange PIN-kod";
 
 /* (No Commment) */
 "Enter Password" = "Ange lösenord";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Andra lösenord krävs";
 
 /* (No Commment) */
+"Security" = "Säkerhet";
+
+/* (No Commment) */
 "Send" = "Skicka";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Den privata nyckeln som du försöker importera krypteras. Skriv in lösenordet nedan.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Det gick inte att verifiera din identitet.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Denna åtgärd kräver andra lösenordet för plånboken bitcoin. Anger du det nedan och tryck på Fortsätt.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Totalt saldo";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Touch-ID finns inte på denna enhet.";
 
 /* (No Commment) */
 "Transaction" = "Transaktion";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Uppgradering till HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Uppgradera till V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Använda Touch-ID som PIN";
 
 /* (No Commment) */
 "Use all %@" = "Använda alla %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 
 /* (No Commment) */
 "Your email has been verified." = "Din e-post har verifierats.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Din identitet matchar inte våra register.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Plånboken har skapats.";

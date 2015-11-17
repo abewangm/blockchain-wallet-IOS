@@ -83,6 +83,9 @@
 "Ask Me Later" = "मुझे बाद में पूछें";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "स्पर्श ID के साथ प्रमाणित करें";
+
+/* (No Commment) */
 "Authorization Required" = "प्राधिकरण की आवश्यकता";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "HD बटुआ बनाना";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "V3 बटुआ बनाना";
+
+/* (No Commment) */
 "Creating Wallet" = "बटुआ बनाना";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "स्थान सेवाओं को सक्षम करें";
+
+/* (No Commment) */
+"Enter PIN" = "PIN दर्ज करें";
 
 /* (No Commment) */
 "Enter Password" = "पासवर्ड दर्ज करें";
@@ -602,6 +611,9 @@
 "Second Password Required" = "दूसरा पासवर्ड की आवश्यकता";
 
 /* (No Commment) */
+"Security" = "सुरक्षा";
+
+/* (No Commment) */
 "Send" = "भेजें";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "आप आयात करने का प्रयास कर रहे हैं निजी कुंजी एन्क्रिप्टेड है। कृपया नीचे दिए गए पासवर्ड दर्ज करें।";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "आपकी पहचान की पुष्टि करने में कोई समस्या थी।";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "इस कार्रवाई के लिए अपना bitcoin बटुआ दूसरा पासवर्ड की आवश्यकता है। कृपया उसे नीचे दर्ज करें और प्रेस जारी रखें।";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "कुल शेष राशि";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "स्पर्श ID इस डिवाइस पर उपलब्ध नहीं है।";
 
 /* (No Commment) */
 "Transaction" = "लेन-देन";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "HD के लिए अपग्रेड करें";
+
+/* (No Commment) */
+"Upgrade to V3" = "V3 के लिए अपग्रेड करें";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "पिन के रूप में स्पर्श ID का उपयोग करें";
 
 /* (No Commment) */
 "Use all %@" = "सभी %@ का उपयोग करें";
@@ -808,6 +832,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "Your email has been verified." = "आपका ईमेल सत्यापित किया गया है।";
+
+/* (No Commment) */
+"Your identity does not match our records." = "आपकी पहचान हमारे रिकॉर्ड से मेल नहीं खाता।";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "अपने बटुए को सफलतापूर्वक बनाया गया था।";

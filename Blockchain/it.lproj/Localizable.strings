@@ -83,6 +83,9 @@
 "Ask Me Later" = "Mi chiedono più tardi";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Autenticare con Touch ID";
+
+/* (No Commment) */
 "Authorization Required" = "Autorizzazione richiesta";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Creazione di portafogli di HD";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Creazione di portafogli V3";
+
+/* (No Commment) */
 "Creating Wallet" = "Creazione di portafogli";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Attivare servizi di localizzazione";
+
+/* (No Commment) */
+"Enter PIN" = "Immettere il PIN";
 
 /* (No Commment) */
 "Enter Password" = "Inserisci la Password";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Seconda Password necessaria";
 
 /* (No Commment) */
+"Security" = "Sicurezza";
+
+/* (No Commment) */
 "Send" = "Invia";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Si sta tentando di importare la chiave privata è crittografata. Si prega di inserire la password qui sotto.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "C'era un problema di verificare la tua identità.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Questa azione richiede la seconda password per il tuo portafoglio bitcoin. Inseriscilo qui sotto e premere continua.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Saldo totale";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Touch ID non è disponibile su questo dispositivo.";
 
 /* (No Commment) */
 "Transaction" = "Transazione";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Aggiornamento per HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Eseguire l'aggiornamento a V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Utilizzare Touch ID come PIN";
 
 /* (No Commment) */
 "Use all %@" = "Utilizzare tutte le %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Abbiamo progettato una nuova esperienza di portafo
 
 /* (No Commment) */
 "Your email has been verified." = "Il tuo indirizzo email è stato verificato.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "L'identità dell'utente non corrisponde il nostro record.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Il vostro portafoglio è stato creato correttamente.";

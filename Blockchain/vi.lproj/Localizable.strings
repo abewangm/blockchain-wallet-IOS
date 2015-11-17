@@ -83,6 +83,9 @@
 "Ask Me Later" = "Hỏi tôi sau";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Xác thực với Touch ID";
+
+/* (No Commment) */
 "Authorization Required" = "Cho phép yêu cầu";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Tạo HD Wallet";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Tạo V3 Wallet";
+
+/* (No Commment) */
 "Creating Wallet" = "Việc tạo ra ví";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Kích hoạt dịch vụ vị trí";
+
+/* (No Commment) */
+"Enter PIN" = "Nhập mã PIN";
 
 /* (No Commment) */
 "Enter Password" = "Nhập mật khẩu";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Yêu cầu mật khẩu thứ hai";
 
 /* (No Commment) */
+"Security" = "An ninh";
+
+/* (No Commment) */
 "Send" = "Gửi";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Khoá riêng bạn đang cố gắng nhập khẩu được mã hóa. Vui lòng nhập mật khẩu dưới đây.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Đã có một vấn đề xác minh danh tính của bạn.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Hành động này yêu cầu mật khẩu thứ hai cho bitcoin ví của bạn. Vui lòng nhập nó dưới đây và nhấn tiếp tục.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Tổng số dư";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Liên lạc ID là không có sẵn trên thiết bị này.";
 
 /* (No Commment) */
 "Transaction" = "Giao dịch";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Nâng cấp lên HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Nâng cấp lên V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Sử dụng Touch ID là mã PIN";
 
 /* (No Commment) */
 "Use all %@" = "Sử dụng tất cả %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "Your email has been verified." = "Email của bạn đã được xác minh.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Danh tính của bạn không khớp với hồ sơ của chúng tôi.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Chi tiêu của bạn tạo thành công.";

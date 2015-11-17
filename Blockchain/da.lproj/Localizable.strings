@@ -83,6 +83,9 @@
 "Ask Me Later" = "Spørg mig senere";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Godkende med Touch-ID";
+
+/* (No Commment) */
 "Authorization Required" = "Krævede tilladelse";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "At skabe HD tegnebog";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "At skabe V3 tegnebog";
+
+/* (No Commment) */
 "Creating Wallet" = "At skabe tegnebog";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Aktiver placeringstjenester";
+
+/* (No Commment) */
+"Enter PIN" = "Indtast PIN-kode";
 
 /* (No Commment) */
 "Enter Password" = "Indtast adgangskode";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Anden adgangskode kræves";
 
 /* (No Commment) */
+"Security" = "Sikkerhed";
+
+/* (No Commment) */
 "Send" = "Send";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Den private nøgle, du forsøger at importere er krypteret. Angiv adgangskode nedenfor.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Der var et problem, der bekræfter din identitet.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Denne handling kræver en anden adgangskode til tegnebogen bitcoin. Angiv det venligst nedenfor og tryk på Fortsæt.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Total Balance";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Touch-ID findes ikke på denne enhed.";
 
 /* (No Commment) */
 "Transaction" = "Transaktion";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Opgrader til HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Opgrader til V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Brug Touch ID som PIN";
 
 /* (No Commment) */
 "Use all %@" = "Bruge alle %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 
 /* (No Commment) */
 "Your email has been verified." = "Din email er blevet verificeret.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Din identitet svarer ikke til vores poster.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Din pung er oprettet.";

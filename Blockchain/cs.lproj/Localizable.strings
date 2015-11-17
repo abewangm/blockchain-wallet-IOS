@@ -83,6 +83,9 @@
 "Ask Me Later" = "Zobrazit dotaz později";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Ověřování s Touch ID";
+
+/* (No Commment) */
 "Authorization Required" = "Vyžadována autorizace";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Vytváření HD Peněženka";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Vytváření V3 Peněženka";
+
+/* (No Commment) */
 "Creating Wallet" = "Vytváření Peněženka";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Povolení služby pro umístění";
+
+/* (No Commment) */
+"Enter PIN" = "Zadejte kód PIN";
 
 /* (No Commment) */
 "Enter Password" = "Zadat heslo";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Druhé heslo je vyžadováno";
 
 /* (No Commment) */
+"Security" = "Bezpečnost";
+
+/* (No Commment) */
 "Send" = "Odeslat";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Šifrovaný soukromý klíč, který se pokoušíte importovat. Prosím zadejte heslo.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Došlo k problému s ověřením identity.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tato akce vyžaduje druhé heslo pro peněženku bitcoin. Prosím, zadejte a stiskněte tlačítko pokračovat.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Celkové saldo";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Dotek ID není k dispozici v tomto zařízení.";
 
 /* (No Commment) */
 "Transaction" = "Transakce";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Inovujte na HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Inovujte na V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Použít ID kontaktu jako PIN";
 
 /* (No Commment) */
 "Use all %@" = "Použít všechny %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "Your email has been verified." = "Váš email byl ověřen.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Vaše identita se neshoduje s našimi záznamy.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Vaše Peněženka byla úspěšně vytvořena.";

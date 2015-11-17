@@ -83,6 +83,9 @@
 "Ask Me Later" = "稍後再問我";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "使用觸摸 ID 進行身份驗證";
+
+/* (No Commment) */
 "Authorization Required" = "所需的授權";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "創建高清錢包";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "創建 V3 錢包";
+
+/* (No Commment) */
 "Creating Wallet" = "創建的錢包";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "啟用定位服務";
+
+/* (No Commment) */
+"Enter PIN" = "輸入 PIN";
 
 /* (No Commment) */
 "Enter Password" = "輸入密碼";
@@ -602,6 +611,9 @@
 "Second Password Required" = "所需的第二個密碼";
 
 /* (No Commment) */
+"Security" = "安全";
+
+/* (No Commment) */
 "Send" = "發送";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "您試圖導入的私密金鑰進行加密。請輸入下面的密碼。";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "還有一個問題，驗證您的身份。";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "此操作需要第二個密碼你比特幣的錢包。請在下面輸入和按繼續。";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "總餘額";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "觸摸 ID 在此設備上不可用。";
 
 /* (No Commment) */
 "Transaction" = "交易";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "升級到高清";
+
+/* (No Commment) */
+"Upgrade to V3" = "升級到 V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "使用觸摸 ID 作為銷";
 
 /* (No Commment) */
 "Use all %@" = "使用所有 %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "Your email has been verified." = "驗證了您的電子郵件。";
+
+/* (No Commment) */
+"Your identity does not match our records." = "您的身份與我們的記錄不匹配。";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "你的錢包已成功創建。";

@@ -83,6 +83,9 @@
 "Ask Me Later" = "Demanar-Me més tard";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Autenticar amb tacte ID";
+
+/* (No Commment) */
 "Authorization Required" = "Autorització requerida";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Creació de cartera de HD";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Creació de cartera de V3";
+
+/* (No Commment) */
 "Creating Wallet" = "Creació de cartera";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Permetre serveis d'ubicació";
+
+/* (No Commment) */
+"Enter PIN" = "Introduïu el PIN";
 
 /* (No Commment) */
 "Enter Password" = "Introduïu la contrasenya";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Segona contrasenya requerida";
 
 /* (No Commment) */
+"Security" = "Seguretat";
+
+/* (No Commment) */
 "Send" = "Enviar";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "La clau privada que intenteu importar està xifrada. Si us plau, introduïu la contrasenya sota.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Hi havia un problema verificar la vostra identitat.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Aquesta acció requereix la segona clau per a la seva cartera bitcoin. Torneu-lo a sota i premeu continuar.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Balanç total";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Tacte ID no està disponible en aquest dispositiu.";
 
 /* (No Commment) */
 "Transaction" = "Transacció";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Actualització a HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Rampa a V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Fan servir Tacte ID com PIN";
 
 /* (No Commment) */
 "Use all %@" = "Utilitzar tots els %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "Your email has been verified." = "El teu email ha estat verificat.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Seva identitat no coincideix nostres registres.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Seva cartera era reeixidament creat.";

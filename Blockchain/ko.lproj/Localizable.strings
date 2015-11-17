@@ -83,6 +83,9 @@
 "Ask Me Later" = "나중에 나 한 테 물어";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "터치 id 인증";
+
+/* (No Commment) */
 "Authorization Required" = "필요한 권한 부여";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "HD 지갑 만들기";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "V3 지갑 만들기";
+
+/* (No Commment) */
 "Creating Wallet" = "지갑 만들기";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "위치 서비스를 활성화";
+
+/* (No Commment) */
+"Enter PIN" = "PIN 입력";
 
 /* (No Commment) */
 "Enter Password" = "비밀 번호를 입력";
@@ -602,6 +611,9 @@
 "Second Password Required" = "두 번째 암호 필요";
 
 /* (No Commment) */
+"Security" = "보안";
+
+/* (No Commment) */
 "Send" = "보내기";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "가져올 하려고 하는 개인 키가 암호화 됩니다. 아래 암호를 입력 하십시오.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Id 확인 문제가 있었습니다.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "이 작업 bitcoin 지갑에 대 한 두 번째 암호를 요구 한다. 제발 아래 입력 하 고 누르면 계속.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "총 잔액";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "터치 ID는이 장치에 사용할 수 없습니다.";
 
 /* (No Commment) */
 "Transaction" = "트랜잭션";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "HD로 업그레이드";
+
+/* (No Commment) */
+"Upgrade to V3" = "V 3 업그레이드";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "터치 ID 핀으로 사용";
 
 /* (No Commment) */
 "Use all %@" = "모든 %@를 사용 하 여";
@@ -808,6 +832,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "Your email has been verified." = "귀하의 이메일 확인 되었습니다.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "본인은 우리의 레코드를 일치 하지 않습니다.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "당신의 지갑 성공적으로 만들었습니다.";

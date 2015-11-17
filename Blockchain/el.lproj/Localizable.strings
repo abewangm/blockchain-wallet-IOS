@@ -83,6 +83,9 @@
 "Ask Me Later" = "Να ερωτηθώ αργότερα";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Έλεγχος ταυτότητας με ID αφής";
+
+/* (No Commment) */
 "Authorization Required" = "Έγκριση που απαιτείται";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Τη δημιουργία HD πορτοφόλι";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Τη δημιουργία πορτοφολιού V3";
+
+/* (No Commment) */
 "Creating Wallet" = "Τη δημιουργία πορτοφολιού";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Ενεργοποιήστε τις υπηρεσίες τοποθεσίας";
+
+/* (No Commment) */
+"Enter PIN" = "Εισαγάγετε το PIN";
 
 /* (No Commment) */
 "Enter Password" = "Εισάγετε τον κωδικό πρόσβασης";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Δεύτερο κωδικό πρόσβασης που απαιτείται";
 
 /* (No Commment) */
+"Security" = "Ασφάλεια";
+
+/* (No Commment) */
 "Send" = "Αποστολή";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Το ιδιωτικό κλειδί που προσπαθείτε να εισαγάγετε είναι κρυπτογραφημένη. Παρακαλώ εισάγετε τον παρακάτω κωδικό πρόσβασης.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Υπήρχε ένα πρόβλημα που επαληθεύει την ταυτότητά σας.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας bitcoin. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Συνολικό υπόλοιπο";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "ID αφής δεν είναι διαθέσιμη σε αυτήν τη συσκευή.";
 
 /* (No Commment) */
 "Transaction" = "Συναλλαγή";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Αναβάθμιση σε HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Αναβάθμιση σε V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Χρήση αφής αναγνωριστικό ως PIN";
 
 /* (No Commment) */
 "Use all %@" = "Χρησιμοποιήστε όλα τα %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "Your email has been verified." = "Το email σας έχει ελεγχθεί.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Ταυτότητά σας δεν ταιριάζει με αρχεία μας.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Δημιουργήθηκε με επιτυχία το πορτοφόλι σας.";

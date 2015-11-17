@@ -83,6 +83,9 @@
 "Ask Me Later" = "Ellenorzes";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Hitelesít-val érint ID";
+
+/* (No Commment) */
 "Authorization Required" = "Szükséges engedély";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Létrehozása HD pénztárca";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "V3 pénztárca létrehozása";
+
+/* (No Commment) */
 "Creating Wallet" = "Pénztárca létrehozása";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Engedélyezi a helyszolgáltatása";
+
+/* (No Commment) */
+"Enter PIN" = "PIN-kód";
 
 /* (No Commment) */
 "Enter Password" = "Adja meg a jelszót";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Második jelszó szükséges";
 
 /* (No Commment) */
+"Security" = "Biztonsági";
+
+/* (No Commment) */
 "Send" = "Küldés";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Importálni kívánt személyes kulcs titkosított. Kérjük, írja be a jelszavad.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ez a művelet megköveteli a második jelszó bitcoin tárcátok. Kérjük, adja meg alább, és sajtó Folytatódik.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Egyenleg összesen";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Touch ID nem érhető el ezen az eszközön.";
 
 /* (No Commment) */
 "Transaction" = "Tranzakció";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Feljavít-hoz HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "V3 frissítés";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Használ érint azonosító PIN-kód";
 
 /* (No Commment) */
 "Use all %@" = "Használata minden %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "Your email has been verified." = "Ellenőrizte az e-mail.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Az identitás nem egyezik meg a rekordokat.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "A pénztárca sikeresen létrejött.";

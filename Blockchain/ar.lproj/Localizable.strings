@@ -83,6 +83,9 @@
 "Ask Me Later" = "السؤال لاحقاً";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "المصادقة باستخدام معرف اتصال";
+
+/* (No Commment) */
 "Authorization Required" = "الإذن اللازم";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "إنشاء محفظة عالية الدقة";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "إنشاء المحفظة V3";
+
+/* (No Commment) */
 "Creating Wallet" = "إنشاء المحفظة";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "تمكين خدمات الموقع";
+
+/* (No Commment) */
+"Enter PIN" = "أدخل رقم التعريف الشخصي";
 
 /* (No Commment) */
 "Enter Password" = "أدخل كلمة المرور";
@@ -602,6 +611,9 @@
 "Second Password Required" = "مطلوب كلمة المرور الثانية";
 
 /* (No Commment) */
+"Security" = "الأمن";
+
+/* (No Commment) */
 "Send" = "إرسال";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "يتم تشفير المفتاح الخاص الذي تحاول استيراد. الرجاء إدخال كلمة المرور أدناه.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "توجد مشكلة في التحقق من هويتك.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "هذا الإجراء يتطلب كلمة مرور الثانية محفظتك بيتكوين. الرجاء إدخال أدناه والصحافة.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "مجموع الرصيد";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "معرف اتصال غير متوفر على هذا الجهاز.";
 
 /* (No Commment) */
 "Transaction" = "الحركة";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "الترقية إلى HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "الترقية إلى V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "استخدام معرف اتصال دبوس";
 
 /* (No Commment) */
 "Use all %@" = "استخدام جميع %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "Your email has been verified." = "وقد تم التحقق من البريد الإلكتروني الخاص بك.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "لا يتطابق مع الهوية الخاصة بك سجلاتنا.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "تم بنجاح إنشاء محفظتك.";

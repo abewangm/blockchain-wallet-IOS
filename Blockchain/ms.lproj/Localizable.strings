@@ -83,6 +83,9 @@
 "Ask Me Later" = "Tanya saya kemudian";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Mengesahkan dengan sentuhan ID";
+
+/* (No Commment) */
 "Authorization Required" = "Kebenaran yang diperlukan";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Mewujudkan HD Wallet";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Mewujudkan V3 Wallet";
+
+/* (No Commment) */
 "Creating Wallet" = "Mewujudkan Wallet";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Membolehkan lokasi Perkhidmatan";
+
+/* (No Commment) */
+"Enter PIN" = "Masukkan PIN";
 
 /* (No Commment) */
 "Enter Password" = "Masukkan kata laluan";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Kedua kata laluan yang diperlukan";
 
 /* (No Commment) */
+"Security" = "Keselamatan";
+
+/* (No Commment) */
 "Send" = "Hantar";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Kunci peribadi yang anda sedang cuba import telah dienkripsikan. Sila masukkan kata laluan di bawah.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Jadilah masalah mengesahkan identiti anda.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata laluan kedua untuk bitcoin dompet anda. Sila masukkannya di bawah dan tekan teruskan.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Jumlah baki";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Sentuhan ID tidak terdapat pada peranti ini.";
 
 /* (No Commment) */
 "Transaction" = "Urus niaga";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Naik taraf ke HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Naik taraf kepada V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Menggunakan ID sentuhan sebagai PIN";
 
 /* (No Commment) */
 "Use all %@" = "Menggunakan semua %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "Your email has been verified." = "E-mel anda telah disahkan.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Identiti anda tidak padan dengan rekod kami.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Dompet anda telah berjaya dicipta.";

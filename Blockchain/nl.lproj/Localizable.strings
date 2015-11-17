@@ -83,6 +83,9 @@
 "Ask Me Later" = "Vraag Me Later";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Verifiëren met Touch-ID";
+
+/* (No Commment) */
 "Authorization Required" = "Vereiste vergunning";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Maken van HD-portemonnee";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Maken V3 portemonnee";
+
+/* (No Commment) */
 "Creating Wallet" = "Portefeuille maken";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Locatieservices inschakelen";
+
+/* (No Commment) */
+"Enter PIN" = "Voer pincode";
 
 /* (No Commment) */
 "Enter Password" = "Wachtwoord";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Tweede wachtwoord vereist";
 
 /* (No Commment) */
+"Security" = "Veiligheid";
+
+/* (No Commment) */
 "Send" = "Verzenden";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "De persoonlijke sleutel die u probeert te importeren is gecodeerd. Voer het wachtwoord hieronder.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Er was een probleem uw identiteit verifiëren.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Deze actie is het tweede wachtwoord vereist voor uw bitcoin portemonnee. Voer het hieronder en druk op blijven.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Totaalsaldo";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Touch-ID is niet beschikbaar op dit apparaat.";
 
 /* (No Commment) */
 "Transaction" = "Transactie";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Upgrade naar HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Upgrade naar V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Touch-ID gebruiken als PIN";
 
 /* (No Commment) */
 "Use all %@" = "Gebruik alle %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "Your email has been verified." = "Uw e-mailadres is geverifieerd.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Uw identiteit komt niet overeen met onze gegevens.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Uw portemonnee is met succes gemaakt.";

@@ -83,6 +83,9 @@
 "Ask Me Later" = "後で確認します。";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "タッチ ID と認証します。";
+
+/* (No Commment) */
 "Authorization Required" = "認証が必要です。";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "HD ウォレットを作成します。";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "V3 ウォレットを作成します。";
+
+/* (No Commment) */
 "Creating Wallet" = "ウォレットの作成";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "位置情報サービスを有効にします。";
+
+/* (No Commment) */
+"Enter PIN" = "暗証番号を入力します。";
 
 /* (No Commment) */
 "Enter Password" = "パスワードを入力します。";
@@ -602,6 +611,9 @@
 "Second Password Required" = "第 2 パスワードが必要です。";
 
 /* (No Commment) */
+"Security" = "セキュリティ";
+
+/* (No Commment) */
 "Send" = "送信";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "インポートしようとしている秘密キーは暗号化されます。下にパスワードを入力してください。";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "あなたの身元の確認で問題があった。";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "このアクションは、bitcoin 財布のための 2 番目のパスワードを必要があります。ください以下に入力し、続行を押す。";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "トータル バランス";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "タッチの ID は、このデバイスで使用可能ではありません。";
 
 /* (No Commment) */
 "Transaction" = "トランザクション";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "HD へのアップグレード";
+
+/* (No Commment) */
+"Upgrade to V3" = "V3 へのアップグレード";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "タッチ ID ピンとして使用します。";
 
 /* (No Commment) */
 "Use all %@" = "すべての %@ を使用します。";
@@ -808,6 +832,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "Your email has been verified." = "あなたのメール アドレスは確認されました。";
+
+/* (No Commment) */
+"Your identity does not match our records." = "あなたのアイデンティティは、私たちのレコードを一致しません。";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "あなたの財布は正常に作成されました。";

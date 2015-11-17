@@ -83,6 +83,9 @@
 "Ask Me Later" = ". תשאל אותי מאוחר יותר";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "אימות עם מזהה מגע";
+
+/* (No Commment) */
 "Authorization Required" = "אישור נדרש";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "יצירת הארנק HD";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "יצירת הארנק V3";
+
+/* (No Commment) */
 "Creating Wallet" = "יצירת הארנק";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "הפעלת שירותי איכון";
+
+/* (No Commment) */
+"Enter PIN" = "הזן את מספר הזיהוי האישי שלך";
 
 /* (No Commment) */
 "Enter Password" = "הזן את הסיסמה";
@@ -602,6 +611,9 @@
 "Second Password Required" = "דרושה סיסמה שנייה";
 
 /* (No Commment) */
+"Security" = "אבטחה";
+
+/* (No Commment) */
 "Send" = "שלח";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "המפתח הפרטי שאתה מנסה לייבא מוצפן. נא הזן את הסיסמה שלהלן.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "אירעה בעיה מאמת את זהותך.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "המאזן";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "מזהה מגע אינה זמינה במכשיר זה.";
 
 /* (No Commment) */
 "Transaction" = "עסקת";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "שדרוג ל- HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "שדרג ל- V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "השתמש במזהה מגע כמו סיכה";
 
 /* (No Commment) */
 "Use all %@" = "השתמש %@ כל";
@@ -808,6 +832,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "Your email has been verified." = "הדוא ל שלך אומת.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "הזהות שלך אינו תואם את הרשומות שלנו.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "הארנק שלך נוצר בהצלחה.";

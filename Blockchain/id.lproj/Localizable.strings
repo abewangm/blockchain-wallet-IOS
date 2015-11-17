@@ -83,6 +83,9 @@
 "Ask Me Later" = "Bertanya padaku nanti";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Mengotentikasi dengan sentuhan ID";
+
+/* (No Commment) */
 "Authorization Required" = "Otorisasi diperlukan";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Menciptakan HD dompet";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Membuat dompet V3";
+
+/* (No Commment) */
 "Creating Wallet" = "Membuat dompet";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Aktifkan layanan Lokasi";
+
+/* (No Commment) */
+"Enter PIN" = "Masukkan PIN";
 
 /* (No Commment) */
 "Enter Password" = "Masukkan sandi";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Kedua Password diperlukan";
 
 /* (No Commment) */
+"Security" = "Keamanan";
+
+/* (No Commment) */
 "Send" = "Kirim";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Kunci pribadi Anda sedang berusaha untuk mengimpor dienkripsi. Masukkan password di bawah ini.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Ada masalah saat memverifikasi identitas Anda.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan sandi kedua untuk bitcoin dompet Anda. Harap masukkan di bawah ini dan tekan continue.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Keseimbangan Total";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Sentuhan ID ini tidak tersedia pada perangkat ini.";
 
 /* (No Commment) */
 "Transaction" = "Transaksi";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Upgrade ke HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Upgrade ke V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Menggunakan sentuhan ID sebagai PIN";
 
 /* (No Commment) */
 "Use all %@" = "Menggunakan semua %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 
 /* (No Commment) */
 "Your email has been verified." = "Email Anda telah diverifikasi.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Identitas Anda tidak cocok dengan catatan kami.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Dompet Anda berhasil dibuat.";

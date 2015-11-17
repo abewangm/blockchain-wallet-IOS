@@ -83,6 +83,9 @@
 "Ask Me Later" = "Preguntarme más tarde";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Autenticar con Touch ID";
+
+/* (No Commment) */
 "Authorization Required" = "Autorización necesaria";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Crear carpeta HD";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Crear carpeta de V3";
+
+/* (No Commment) */
 "Creating Wallet" = "Creación de cartera";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Activar servicios de ubicación";
+
+/* (No Commment) */
+"Enter PIN" = "Introducir PIN";
 
 /* (No Commment) */
 "Enter Password" = "Escriba la contraseña";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Segunda contraseña necesaria";
 
 /* (No Commment) */
+"Security" = "Seguridad";
+
+/* (No Commment) */
 "Send" = "Enviar";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Se encripta la clave privada que está intentando importar. Por favor ingrese la contraseña abajo.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Hubo un problema de verificación de su identidad.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Esta acción requiere la segunda contraseña para su billetera bitcoin. Por favor ingrese a continuación y pulse continuar.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Saldo total";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "ID de contacto no está disponible en este dispositivo.";
 
 /* (No Commment) */
 "Transaction" = "Transacción";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Actualización a HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Actualización a V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Uso táctil ID PIN";
 
 /* (No Commment) */
 "Use all %@" = "Uso de %@ todos";
@@ -808,6 +832,9 @@ wallet experience for you" = "Hemos diseñado una nueva experiencia de cartera p
 
 /* (No Commment) */
 "Your email has been verified." = "Tu email ha sido verificada.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Su identidad no coincide con nuestros registros.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Su cartera se ha creado correctamente.";

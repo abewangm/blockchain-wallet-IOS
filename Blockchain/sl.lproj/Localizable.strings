@@ -83,6 +83,9 @@
 "Ask Me Later" = "Vprašaj Me pozneje";
 
 /* (No Commment) */
+"Authenticate with Touch ID" = "Preverjanje pristnosti z Touch ID";
+
+/* (No Commment) */
 "Authorization Required" = "Dovoljenja zahtevanega";
 
 /* (No Commment) */
@@ -197,6 +200,9 @@
 "Creating HD Wallet" = "Ustvarjanje HD denarnice";
 
 /* (No Commment) */
+"Creating V3 Wallet" = "Ustvarjanje V3 denarnice";
+
+/* (No Commment) */
 "Creating Wallet" = "Ustvarjanje denarnice";
 
 /* (No Commment) */
@@ -240,6 +246,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Omogočite lokacijske storitve";
+
+/* (No Commment) */
+"Enter PIN" = "Vnesite PIN";
 
 /* (No Commment) */
 "Enter Password" = "Vnesite geslo";
@@ -602,6 +611,9 @@
 "Second Password Required" = "Drugo geslo";
 
 /* (No Commment) */
+"Security" = "Varnost";
+
+/* (No Commment) */
 "Send" = "Pošlji";
 
 /* (No Commment) */
@@ -659,6 +671,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Zasebni ključ, ki ga poskušate uvoziti šifriran. Vnesite geslo, ki je spodaj.";
 
 /* (No Commment) */
+"There was a problem verifying your identity." = "Tam je bil problem vaši identiteti.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "To dejanje zahteva drugo geslo za bitcoin denarnico. Vnesite spodaj ter časnikarstvo vzdržnost.";
 
 /* (No Commment) */
@@ -673,6 +688,9 @@ Fee: %@
 
 /* (No Commment) */
 "Total Balance" = "Skupni saldo";
+
+/* (No Commment) */
+"Touch ID is not available on this device." = "Dotik ID ni na voljo v tej napravi.";
 
 /* (No Commment) */
 "Transaction" = "Transakcije";
@@ -712,6 +730,12 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade to HD" = "Nadgradnja HD";
+
+/* (No Commment) */
+"Upgrade to V3" = "Nadgradnja V3";
+
+/* (No Commment) */
+"Use Touch ID as PIN" = "Uporaba Touch ID kot PIN";
 
 /* (No Commment) */
 "Use all %@" = "Uporabite vse %@";
@@ -808,6 +832,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* (No Commment) */
 "Your email has been verified." = "Vaš email je bilo preverjeno.";
+
+/* (No Commment) */
+"Your identity does not match our records." = "Svojo identiteto se ne ujema z našo evidenco.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Vaši denarnici je bil uspešno ustvarjen.";
