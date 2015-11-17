@@ -179,6 +179,7 @@
 #define BC_STRING_IMPORTED_ADDRESSES_ARCHIVED NSLocalizedString(@"Imported Addresses (Archived)", nil)
 
 #define BC_STRING_UPGRADE_TO_HD NSLocalizedString(@"Upgrade to HD", nil)
+#define BC_STRING_UPGRADE_TO_V3 NSLocalizedString(@"Upgrade to V3", nil)
 
 #define BC_STRING_ADDRESS_BOOK NSLocalizedString(@"Address book", nil)
 
@@ -189,6 +190,7 @@
 #define BC_STRING_LOADING_LOADING_BUILD_HD_WALLET NSLocalizedString(@"Initializing Wallet", nil)
 #define BC_STRING_LOADING_CHECKING_WALLET_UPDATES NSLocalizedString(@"Checking for Wallet updates", nil)
 #define BC_STRING_LOADING_CREATING_HD_WALLET NSLocalizedString(@"Creating HD Wallet", nil)
+#define BC_STRING_LOADING_CREATING_V3_WALLET NSLocalizedString(@"Creating V3 Wallet", nil)
 #define BC_STRING_LOADING_CREATING_ACCOUNT NSLocalizedString(@"Creating Account", nil)
 #define BC_STRING_LOADING_CREATING_WALLET NSLocalizedString(@"Creating new Wallet", nil)
 #define BC_STRING_LOADING_IMPORT_KEY NSLocalizedString(@"Importing key", nil)

@@ -700,7 +700,7 @@
 
 - (void)loading_start_upgrade_to_hd
 {
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_HD_WALLET];
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_V3_WALLET];
 }
 
 - (void)loading_start_create_account

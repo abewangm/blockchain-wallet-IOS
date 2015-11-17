@@ -339,7 +339,7 @@ int accountEntries = 0;
 #ifdef HD_ENABLED
         NSString *upgradeOrBackupTitle;
         if (!app.wallet.didUpgradeToHd) {
-            upgradeOrBackupTitle = BC_STRING_UPGRADE_TO_HD;
+            upgradeOrBackupTitle = BC_STRING_UPGRADE_TO_V3;
         }
         else {
             upgradeOrBackupTitle = BC_STRING_BACKUP;
