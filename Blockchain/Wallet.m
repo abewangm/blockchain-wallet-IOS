@@ -135,13 +135,18 @@
 - (BOOL)isInitialized
 {
     // Initialized when the webView is loaded and the wallet is initialized (decrypted and in-memory wallet built)
-    return ([self.webView isLoaded] &&
+    BOOL isInitialized = ([self.webView isLoaded] &&
             [[self.webView executeJSSynchronous:@"MyWallet.getIsInitialized()"] boolValue]);
+    if (!isInitialized) {
+        DLog(@"Warning: Wallet not initialized!");
+    }
+    
+    return isInitialized;
 }
 
 - (BOOL)hasEncryptedWalletData
 {
-    if ([self.webView isLoaded])
+    if ([self isInitialized])
         return [[self.webView executeJSSynchronous:@"MyWalletPhone.hasEncryptedWalletData()"] boolValue];
     else
         return NO;
@@ -149,6 +154,9 @@
 
 - (void)pinServerPutKeyOnPinServerServer:(NSString*)key value:(NSString*)value pin:(NSString*)pin
 {
+    if (![self isInitialized]) {
+        return;
+    }
     [self.webView executeJS:@"MyWalletPhone.pinServerPutKeyOnPinServerServer(\"%@\", \"%@\", \"%@\")", key, value, pin];
 }
 
@@ -322,9 +330,10 @@
 #endif
 }
 
-- (BOOL)needsSecondPassword {
-    if (![self.webView isLoaded]) {
-        return FALSE;
+- (BOOL)needsSecondPassword
+{
+    if (![self isInitialized]) {
+        return false;
     }
     
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.isDoubleEncrypted"] boolValue];
@@ -332,7 +341,7 @@
 
 - (BOOL)validateSecondPassword:(NSString*)secondPassword
 {
-    if (![self.webView isLoaded]) {
+    if (![self isInitialized]) {
         return FALSE;
     }
     
@@ -341,6 +350,10 @@
 
 - (void)getFinalBalance
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJSWithCallback:^(NSString * final_balance) {
         self.final_balance = [final_balance longLongValue];
     } command:@"MyWallet.wallet.finalBalance"];
@@ -348,6 +361,10 @@
 
 - (void)getTotalSent
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJSWithCallback:^(NSString * total_sent) {
         self.total_sent = [total_sent longLongValue];
     } command:@"MyWallet.wallet.totalSent"];
@@ -355,8 +372,8 @@
 
 - (BOOL)isWatchOnlyLegacyAddress:(NSString*)address
 {
-    if (![self.webView isLoaded]) {
-        return FALSE;
+    if (![self isInitialized]) {
+        return false;
     }
     
     if ([self checkIfWalletHasAddress:address]) {
@@ -368,7 +385,7 @@
 
 - (NSString*)labelForLegacyAddress:(NSString*)address
 {
-    if (![self.webView isLoaded]) {
+    if (![self isInitialized]) {
         return nil;
     }
     
@@ -381,8 +398,8 @@
 
 - (Boolean)isArchived:(NSString*)address
 {
-    if (![self.webView isLoaded]) {
-        return false;
+    if (![self isInitialized]) {
+        return FALSE;
     }
     
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").archived", [address escapeStringForJS]] boolValue];
@@ -390,8 +407,8 @@
 
 - (BOOL)isValidAddress:(NSString*)string
 {
-    if (![self.webView isLoaded]) {
-        return FALSE;
+    if (![self isInitialized]) {
+        return false;
     }
     
     return [[self.webView executeJSSynchronous:@"MyWallet.isValidAddress(\"%@\");", [string escapeStringForJS]] boolValue];
@@ -399,7 +416,7 @@
 
 - (NSArray*)allLegacyAddresses
 {
-    if (![self.webView isLoaded]) {
+    if (![self isInitialized]) {
         return nil;
     }
     
@@ -410,7 +427,7 @@
 
 - (NSArray*)activeLegacyAddresses
 {
-    if (![self.webView isLoaded]) {
+    if (![self isInitialized]) {
         return nil;
     }
     
@@ -421,7 +438,7 @@
 
 - (NSArray*)archivedLegacyAddresses
 {
-    if (![self.webView isLoaded]) {
+    if (![self isInitialized]) {
         return nil;
     }
     
@@ -432,6 +449,10 @@
 
 - (void)setLabel:(NSString*)label forLegacyAddress:(NSString*)address
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     self.isSyncingForTrivialProcess = YES;
     
     [self.webView executeJS:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
@@ -439,6 +460,10 @@
 
 - (void)archiveLegacyAddress:(NSString*)address
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     self.isSyncingForCriticalProcess = YES;
     
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = true", [address escapeStringForJS]];
@@ -448,6 +473,10 @@
 
 - (void)unArchiveLegacyAddress:(NSString*)address
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     self.isSyncingForCriticalProcess = YES;
     
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = false", [address escapeStringForJS]];
@@ -458,7 +487,7 @@
 - (uint64_t)getLegacyAddressBalance:(NSString*)address
 {
     uint64_t errorBalance = 0;
-    if (![self.webView isLoaded]) {
+    if (![self isInitialized]) {
         return errorBalance;
     }
     
@@ -472,8 +501,8 @@
 
 - (BOOL)addKey:(NSString*)privateKeyString
 {
-    if (![self.webView isLoaded]) {
-        return 0;
+    if (![self isInitialized]) {
+        return false;
     }
     
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.addPrivateKey(\"%@\")", [privateKeyString escapeStringForJS]] boolValue];
@@ -481,7 +510,7 @@
 
 - (NSDictionary*)addressBook
 {
-    if (![self.webView isLoaded]) {
+    if (![self isInitialized]) {
         return [[NSDictionary alloc] init];
     }
     
@@ -492,6 +521,10 @@
 
 - (void)addToAddressBook:(NSString*)address label:(NSString*)label
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.addAddressBookEntry(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
 }
 
@@ -502,7 +535,7 @@
 
 - (NSString*)detectPrivateKeyFormat:(NSString*)privateKeyString
 {
-    if (![self.webView isLoaded]) {
+    if (![self isInitialized]) {
         return nil;
     }
     
@@ -520,57 +553,101 @@
 
 - (void)createNewPayment
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.createNewPayment()"];
 }
 
 - (void)changePaymentFromAccount:(int)fromInt
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(%d)", fromInt];
 }
 
 - (void)changePaymentFromAddress:(NSString *)fromString
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(\"%@\")", [fromString escapeStringForJS]];
 }
 
 - (void)changePaymentToAccount:(int)toInt
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.changePaymentTo(%d)", toInt];
 }
 
 - (void)changePaymentToAddress:(NSString *)toString
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.changePaymentTo(\"%@\")", [toString escapeStringForJS]];
 }
 
 - (void)changePaymentAmount:(uint64_t)amount
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.changePaymentAmount(%lld)", amount];
 }
 
 - (void)sweepPayment
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.sweepPayment()"];
 }
 
 - (void)checkIfOverspending
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.checkIfUserIsOverSpending()"];
 }
 
 - (void)getPaymentFee
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.getPaymentFee()"];
 }
 
 - (void)setTransactionFee:(uint64_t)feePerKb
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     self.isSyncingForCriticalProcess = YES;
     [self.webView executeJS:@"MyWalletPhone.setTransactionFee(%lld)", feePerKb];
 }
 
 - (uint64_t)getTransactionFee
 {
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
     id fee = [self.webView executeJSSynchronous:@"MyWalletPhone.getTransactionFee()"];
     if ([fee intValue] < 0) {
         DLog(@"Error retrieving fee");
@@ -583,16 +660,28 @@
 
 - (void)generateNewKey
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     [self.webView executeJS:@"MyWalletPhone.generateNewAddress()"];
 }
 
 - (BOOL)checkIfWalletHasAddress:(NSString *)address
 {
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.checkIfWalletHasAddress(\"%@\")", [address escapeStringForJS]] boolValue];
 }
 
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase
 {
+    if (![self.webView isLoaded]) {
+        return;
+    }
+    
     self.emptyAccountIndex = 0;
     self.recoveredAccountIndex = 0;
     [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\",\"%@\",\"%@\")", [email escapeStringForJS], [recoveryPassword escapeStringForJS], [passphrase escapeStringForJS]];
