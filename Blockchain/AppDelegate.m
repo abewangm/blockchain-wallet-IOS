@@ -1015,6 +1015,8 @@ void (^secondPasswordSuccess)(NSString *);
         [cookieStorage deleteCookie:each];
     }
     
+    self.merchantViewController = nil;
+    
     [self removeGuidFromKeychain];
     [self removeSharedKeyFromKeychain];
     
