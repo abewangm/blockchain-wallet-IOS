@@ -171,6 +171,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define UNSAFE_CHECK_PATH_WRITE_TEST @"/private/test.txt"
 #define UNSAFE_CHECK_CYDIA_URL @"cydia://package/com.example.package"
 
+#define BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT @"0%@000"
+#define FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT @"0%@00"
+
 #pragma mark - Constants
 
 #define SATOSHI 1e8 // 100,000,000

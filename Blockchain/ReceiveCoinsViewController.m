@@ -92,6 +92,9 @@ UIAlertController *popupAddressArchive;
                                          optionsTitleLabel.frame.size.width,
                                          optionsTitleLabel.frame.size.height);
     
+    btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+    fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+    
     [self setupTapGestureForLegacyLabel];
     
     [self setupArchiveActionSheets];
