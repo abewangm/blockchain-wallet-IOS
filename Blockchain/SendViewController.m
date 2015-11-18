@@ -346,7 +346,7 @@ BOOL displayingLocalSymbolSend;
 
 - (uint64_t)getInputAmountInSatoshi
 {
-    NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     
     if (displayingLocalSymbol) {
         return app.latestResponse.symbol_local.conversion * [amountString doubleValue];
@@ -644,7 +644,7 @@ BOOL displayingLocalSymbolSend;
         
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
-        NSArray  *commas = [newString componentsSeparatedByString:@","];
+        NSArray  *commas = [newString componentsSeparatedByString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
         
         // Only one comma or point in input field allowed
         if ([points count] > 2 || [commas count] > 2)
@@ -652,7 +652,7 @@ BOOL displayingLocalSymbolSend;
         
         // Only 1 leading zero
         if (points.count == 1 || commas.count == 1) {
-            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:@","] && [textField.text isEqualToString:@"0"]) {
+            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]] && [textField.text isEqualToString:@"0"]) {
                 return NO;
             }
         }
@@ -693,7 +693,7 @@ BOOL displayingLocalSymbolSend;
         }
         
         // Convert input amount to internal value
-        NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSString *amountString = [newString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         if (textField == fiatAmountField) {
             amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
         }
@@ -1086,7 +1086,7 @@ BOOL displayingLocalSymbolSend;
     }
     
     uint64_t value = amountInSatoshi;
-    NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     if (value <= 0 || [amountString doubleValue] <= 0) {
         [self showErrorBeforeSending:BC_STRING_INVALID_SEND_VALUE];
         return;

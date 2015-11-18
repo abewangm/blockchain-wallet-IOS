@@ -466,7 +466,7 @@ const int aboutPrivacyPolicy = 1;
         
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
-        NSArray  *commas = [newString componentsSeparatedByString:@","];
+        NSArray  *commas = [newString componentsSeparatedByString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
         
         // Only one comma or point in input field allowed
         if ([points count] > 2 || [commas count] > 2)
@@ -474,7 +474,7 @@ const int aboutPrivacyPolicy = 1;
         
         // Only 1 leading zero
         if (points.count == 1 || commas.count == 1) {
-            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:@","] && [textField.text isEqualToString:@"0"]) {
+            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]] && [textField.text isEqualToString:@"0"]) {
                 return NO;
             }
         }

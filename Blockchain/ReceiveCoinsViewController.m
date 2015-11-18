@@ -304,7 +304,7 @@ UIAlertController *popupAddressArchive;
     NSString *amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:amount]];
     app.btcFormatter.usesGroupingSeparator = YES;
     
-    amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    amountString = [amountString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     
     return [NSString stringWithFormat:@"bitcoin://%@?amount=%@", self.clickedAddress, amountString];
 }
@@ -312,11 +312,11 @@ UIAlertController *popupAddressArchive;
 - (uint64_t)getInputAmountInSatoshi
 {
     if ([btcAmountField isFirstResponder]) {
-        NSString *requestedAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSString *requestedAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         return [app.wallet parseBitcoinValue:requestedAmountString];
     }
     else if ([fiatAmountField isFirstResponder]) {
-        NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
     }
     
@@ -360,7 +360,7 @@ UIAlertController *popupAddressArchive;
     NSString *amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:amount]];
     app.btcFormatter.usesGroupingSeparator = YES;
     
-    amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    amountString = [amountString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     
     NSString *addressURL = [NSString stringWithFormat:@"bitcoin:%@?amount=%@", address, amountString];
     
@@ -516,7 +516,9 @@ UIAlertController *popupAddressArchive;
     [self disableTapInteraction];
 
     NSString *message = [self formatPaymentRequest:@""];
-    NSURL *url = [NSURL URLWithString:[self uriURL]];
+    
+    NSString *encodedPath = [[self uriURL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];    
+    NSURL *url = [NSURL URLWithString:encodedPath];
     NSArray *activityItems = @[message, self, url];
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
@@ -723,10 +725,10 @@ UIAlertController *popupAddressArchive;
             u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
             
             if (amountReceived == amountRequested) {
-                NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
                 u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
                 btcAmountString = [app formatMoney:btcAmount localCurrency:NO];
-                NSString *localCurrencyAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                NSString *localCurrencyAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
                 u_int64_t currencyAmount = [app.wallet parseBitcoinValue:localCurrencyAmountString];
                 localCurrencyAmountString = [app formatMoney:currencyAmount localCurrency:YES];
                 [weakSelf alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
@@ -820,7 +822,7 @@ UIAlertController *popupAddressArchive;
     if (textField == btcAmountField || textField == fiatAmountField) {
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
-        NSArray  *commas = [newString componentsSeparatedByString:@","];
+        NSArray  *commas = [newString componentsSeparatedByString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
         
         // Only one comma or point in input field allowed
         if ([points count] > 2 || [commas count] > 2)
@@ -828,7 +830,7 @@ UIAlertController *popupAddressArchive;
         
         // Only 1 leading zero
         if (points.count == 1 || commas.count == 1) {
-            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:@","] && [textField.text isEqualToString:@"0"]) {
+            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]] && [textField.text isEqualToString:@"0"]) {
                 return NO;
             }
         }
@@ -869,7 +871,7 @@ UIAlertController *popupAddressArchive;
         }
         
         uint64_t amountInSatoshi = 0;
-        NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSString *amountString = [newString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         if (textField == fiatAmountField) {
             amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
         }
