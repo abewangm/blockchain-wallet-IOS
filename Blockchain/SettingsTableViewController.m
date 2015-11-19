@@ -365,17 +365,29 @@ const int aboutPrivacyPolicy = 1;
 - (void)switchTouchIDTapped
 {
     if ([app isTouchIDAvailable]) {
-        
-        BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
-        
-        if (!touchIDEnabled == YES) {
-            [app validatePINOptionally];
-        } else {
-            [app disabledTouchID];
-            [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
-        }
+        [self toggleTouchID];
     } else {
         DLog(@"Touch ID not available on this device!");
+    }
+}
+
+- (void)toggleTouchID
+{
+    BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+    
+    if (!touchIDEnabled == YES) {
+        UIAlertController *alertForTogglingTouchID = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN message:BC_STRING_TOUCH_ID_WARNING preferredStyle:UIAlertControllerStyleAlert];
+        [alertForTogglingTouchID addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTouchID inSection:securitySection];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }]];
+        [alertForTogglingTouchID addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [app validatePINOptionally];
+        }]];
+        [self presentViewController:alertForTogglingTouchID animated:YES completion:nil];
+    } else {
+        [app disabledTouchID];
+        [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
     }
 }
 
