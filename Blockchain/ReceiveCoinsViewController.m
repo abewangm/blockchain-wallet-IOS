@@ -301,10 +301,11 @@ UIAlertController *popupAddressArchive;
     double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
     
     app.btcFormatter.usesGroupingSeparator = NO;
+    NSLocale *currentLocale = app.btcFormatter.locale;
+    app.btcFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     NSString *amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:amount]];
+    app.btcFormatter.locale = currentLocale;
     app.btcFormatter.usesGroupingSeparator = YES;
-    
-    amountString = [amountString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     
     return [NSString stringWithFormat:@"bitcoin://%@?amount=%@", self.clickedAddress, amountString];
 }
@@ -357,11 +358,12 @@ UIAlertController *popupAddressArchive;
 - (UIImage *)qrImageFromAddress:(NSString *)address amount:(double)amount
 {
     app.btcFormatter.usesGroupingSeparator = NO;
+    NSLocale *currentLocale = app.btcFormatter.locale;
+    app.btcFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     NSString *amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:amount]];
+    app.btcFormatter.locale = currentLocale;
     app.btcFormatter.usesGroupingSeparator = YES;
-    
-    amountString = [amountString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-    
+        
     NSString *addressURL = [NSString stringWithFormat:@"bitcoin:%@?amount=%@", address, amountString];
     
     return [self createQRImageFromString:addressURL];
@@ -517,8 +519,8 @@ UIAlertController *popupAddressArchive;
 
     NSString *message = [self formatPaymentRequest:@""];
     
-    NSString *encodedPath = [[self uriURL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];    
-    NSURL *url = [NSURL URLWithString:encodedPath];
+    NSURL *url = [NSURL URLWithString:[self uriURL]];
+    
     NSArray *activityItems = @[message, self, url];
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
