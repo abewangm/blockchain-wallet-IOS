@@ -219,19 +219,27 @@ MyWalletPhone.createNewPayment = function() {
 }
 
 MyWalletPhone.changePaymentFrom = function(from) {
-    currentPayment.from(from);
+    if (currentPayment) {
+        currentPayment.from(from);
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.changePaymentTo = function(to) {
-    currentPayment.to(to);
+    if (currentPayment) {
+        currentPayment.to(to);
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.changePaymentAmount = function(amount) {
-    currentPayment.amount(amount);
-}
-
-MyWalletPhone.changePaymentAmountThenConfirm = function(amount) {
-    currentPayment.amount(amount);
+    if (currentPayment) {
+        currentPayment.amount(amount);
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.getPaymentFee = function() {
