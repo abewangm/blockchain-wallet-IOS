@@ -155,7 +155,7 @@
 #define BC_STRING_PIN_RESPONSE_OBJECT_KEY_OR_VALUE_LENGTH_0 NSLocalizedString(@"PIN Response Object key or value length 0", nil)
 #define BC_STRING_PIN_ENCRYPTED_STRING_IS_NIL NSLocalizedString(@"PIN Encrypted String is nil", nil)
 #define BC_STRING_PIN_SAVED_SUCCESSFULLY NSLocalizedString(@"PIN Saved Successfully", nil)
-#define BC_STRING_PIN_COMMON_CODE_WARNING_TITLE NSLocalizedString(@"Warning", nil)
+#define BC_STRING_WARNING_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE NSLocalizedString(@"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?", nil)
 #define BC_STRING_TRY_AGAIN NSLocalizedString(@"Try again", nil)
 
@@ -297,6 +297,7 @@
 #define BC_STRING_SETTINGS_COPY_GUID NSLocalizedString(@"Copy GUID", nil)
 #define BC_STRING_SETTINGS_COPY_GUID_WARNING NSLocalizedString(@"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet.", nil)
 #define BC_STRING_COPY_TO_CLIPBOARD NSLocalizedString(@"Copy to clipboard", nil)
+#define BC_STRING_WARNING_FOR_ZERO_FEE NSLocalizedString(@"Transactions with no fees may take a long time to confirm or may not be accepted. Would you like to continue?", nil)
 
 #define BC_STRING_NEW_ADDRESS NSLocalizedString(@"New Address", nil)
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)

@@ -1878,7 +1878,7 @@ void (^secondPasswordSuccess)(NSString *);
         _pin == PIN_COMMON_CODE_3 ||
         _pin == PIN_COMMON_CODE_4) {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_PIN_COMMON_CODE_WARNING_TITLE message:BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:nil]];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_TRY_AGAIN style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [self reopenChangePIN];
