@@ -363,7 +363,7 @@ UIAlertController *popupAddressArchive;
     NSString *amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:amount]];
     app.btcFormatter.locale = currentLocale;
     app.btcFormatter.usesGroupingSeparator = YES;
-        
+    
     NSString *addressURL = [NSString stringWithFormat:@"bitcoin:%@?amount=%@", address, amountString];
     
     return [self createQRImageFromString:addressURL];
@@ -645,12 +645,16 @@ UIAlertController *popupAddressArchive;
     
     labelTextField.inputAccessoryView = saveButton;
     
+    BOOL isAlertPresented = [app.window.rootViewController.presentedViewController isMemberOfClass:[UIAlertController class]];
+    
     [app showModalWithContent:labelAddressView closeType:ModalCloseTypeClose headerText:BC_STRING_LABEL_ADDRESS onDismiss:^() {
         self.clickedAddress = nil;
         labelTextField.text = nil;
     } onResume:nil];
     
-    [labelTextField becomeFirstResponder];
+    if (!isAlertPresented) {
+        [labelTextField becomeFirstResponder];
+    }
 }
 
 - (IBAction)archiveAddressClicked:(id)sender
