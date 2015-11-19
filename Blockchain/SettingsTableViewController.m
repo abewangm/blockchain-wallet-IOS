@@ -217,18 +217,40 @@ const int aboutPrivacyPolicy = 1;
     return convertedFee;
 }
 
-- (NSString *)convertFloatToString:(float)floatNumber
+- (NSString *)convertFloatToString:(float)floatNumber forDisplay:(BOOL)isForDisplay
 {
     NSNumberFormatter *feePerKbFormatter = [[NSNumberFormatter alloc] init];
     feePerKbFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     feePerKbFormatter.maximumFractionDigits = 8;
-    
-    return [feePerKbFormatter stringFromNumber:[NSNumber numberWithFloat:floatNumber]];
+    NSNumber *amountNumber = [NSNumber numberWithFloat:floatNumber];
+    NSString *displayString = [feePerKbFormatter stringFromNumber:amountNumber];
+    if (isForDisplay) {
+        return displayString;
+    } else {
+        NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+        NSString *numbersWithDecimalSeparatorString = [[NSString alloc] initWithFormat:@"%@%@", NUMBER_KEYPAD_CHARACTER_SET_STRING, decimalSeparator];
+        NSCharacterSet *characterSetFromString = [NSCharacterSet characterSetWithCharactersInString:displayString];
+        NSCharacterSet *numbersAndDecimalCharacterSet = [NSCharacterSet characterSetWithCharactersInString:numbersWithDecimalSeparatorString];
+        
+        if (![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString]) {
+            // Current keypad will not support this character set; return string with known decimal separators "," and "."
+            feePerKbFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+            
+            if ([decimalSeparator isEqualToString:@"."]) {
+                return [feePerKbFormatter stringFromNumber:amountNumber];;
+            } else {
+                [feePerKbFormatter setDecimalSeparator:decimalSeparator];
+                return [feePerKbFormatter stringFromNumber:amountNumber];
+            }
+        }
+        
+        return displayString;
+    }
 }
 
 - (void)alertUserToChangeFee
 {
-    NSString *feePerKbString = [self convertFloatToString:self.currentFeePerKb];
+    NSString *feePerKbString = [self convertFloatToString:self.currentFeePerKb forDisplay:NO];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, feePerKbString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
@@ -501,7 +523,7 @@ const int aboutPrivacyPolicy = 1;
         NSCharacterSet *numbersAndDecimalCharacterSet = [NSCharacterSet characterSetWithCharactersInString:numbersWithDecimalSeparatorString];
         
         // Only accept numbers and decimal representations
-        if (![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString]) {
+        if (![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString] && ([decimalSeparator isEqualToString:@","] || [decimalSeparator isEqualToString:@"."])) {
             return NO;
         }
     }
@@ -712,7 +734,7 @@ const int aboutPrivacyPolicy = 1;
                 case feePerKb: {
                     cell.textLabel.text = BC_STRING_SETTINGS_FEE_PER_KB;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self convertFloatToString:[self getFeePerKb]]];
+                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self convertFloatToString:[self getFeePerKb] forDisplay:YES]];
                     return cell;
                 }
             }
