@@ -357,6 +357,14 @@ const int aboutPrivacyPolicy = 1;
     }
 }
 
+- (void)confirmChangeFee:(float)fee
+{
+    NSNumber *unconvertedFee = [NSNumber numberWithFloat:fee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
+    uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
+    [app.wallet setTransactionFee:convertedFee];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 #pragma mark AlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -434,19 +442,13 @@ const int aboutPrivacyPolicy = 1;
                     UIAlertController *alertForWarningOfZeroFee = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_WARNING_FOR_ZERO_FEE preferredStyle:UIAlertControllerStyleAlert];
                     [alertForWarningOfZeroFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
                     [alertForWarningOfZeroFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                        NSNumber *unconvertedFee = [NSNumber numberWithFloat:fee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
-                        uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
-                        [app.wallet setTransactionFee:convertedFee];
-                        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
+                        [self confirmChangeFee:fee];
                     }]];
                     [self presentViewController:alertForWarningOfZeroFee animated:YES completion:nil];
                     return;
                 }
                 
-                NSNumber *unconvertedFee = [NSNumber numberWithFloat:fee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
-                uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
-                [app.wallet setTransactionFee:convertedFee];
-                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
+                [self confirmChangeFee:fee];
                 
                 return;
             }
