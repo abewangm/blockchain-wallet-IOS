@@ -259,6 +259,7 @@
 #define BC_STRING_ASK_TO_USE_OLD_WALLET_MESSAGE NSLocalizedString(@"Please choose from the options below.", nil)
 
 #define BC_STRING_INVALID_ADDRESS NSLocalizedString(@"Address is not valid", nil)
+#define BC_STRING_INVALID_ADDRESS_ARGUMENT NSLocalizedString(@"Invalid address: %@", nil)
 
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
 #define BC_STRING_SETTINGS_EMAIL NSLocalizedString(@"Email", nil)

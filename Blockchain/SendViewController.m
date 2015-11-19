@@ -985,7 +985,7 @@ BOOL displayingLocalSymbolSend;
                 NSString *address = [dict objectForKey:@"address"];
                 
                 if (address == nil || ![app.wallet isValidAddress:address]) {
-                    [app standardNotify:BC_STRING_INVALID_ADDRESS];
+                    [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ADDRESS_ARGUMENT, address]];
                     return;
                 }
                 
