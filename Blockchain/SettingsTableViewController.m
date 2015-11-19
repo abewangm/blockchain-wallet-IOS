@@ -523,7 +523,7 @@ const int aboutPrivacyPolicy = 1;
         NSCharacterSet *numbersAndDecimalCharacterSet = [NSCharacterSet characterSetWithCharactersInString:numbersWithDecimalSeparatorString];
         
         // Only accept numbers and decimal representations
-        if (![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString] && ([decimalSeparator isEqualToString:@","] || [decimalSeparator isEqualToString:@"."])) {
+        if (![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString]) {
             return NO;
         }
     }
