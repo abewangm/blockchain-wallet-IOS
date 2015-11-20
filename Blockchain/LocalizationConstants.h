@@ -320,6 +320,9 @@
 #define BC_STRING_TOUCH_ID_ERROR_VERIFYING_IDENTITY NSLocalizedString(@"There was a problem verifying your identity.", nil)
 #define BC_STRING_TOUCH_ID_ERROR_WRONG_USER NSLocalizedString(@"Your identity does not match our records.", nil)
 #define BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE NSLocalizedString(@"Touch ID is not available on this device.", nil)
+#define BC_STRING_TOUCH_ID_ERROR_MUST_ENABLE NSLocalizedString(@"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint.", nil)
+#define BC_STRING_TOUCH_ID_ERROR_LOCKED NSLocalizedString(@"Touch ID has been locked due to too many failed attempts.", nil)
+#define BC_STRING_TOUCH_ID_ERROR_UNKNOWN_ARGUMENT NSLocalizedString(@"Unknown Touch ID error. Code: %ld", nil)
 #define BC_STRING_TOUCH_ID_AUTHENTICATE NSLocalizedString(@"Authenticate with Touch ID", nil)
 #define BC_STRING_TOUCH_ID_WARNING NSLocalizedString(@"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet.", nil)
 

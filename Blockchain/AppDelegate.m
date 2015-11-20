@@ -1562,25 +1562,44 @@ void (^secondPasswordSuccess)(NSString *);
         
     } else {
 
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE preferredStyle:UIAlertControllerStyleAlert];
+        NSString *errorString;
+        if (error.code == LAErrorTouchIDNotAvailable) {
+            errorString = BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE;
+        } else if (error.code == LAErrorTouchIDNotEnrolled) {
+            errorString = BC_STRING_TOUCH_ID_ERROR_MUST_ENABLE;
+        } else if (error.code == LAErrorTouchIDLockout) {
+            errorString = BC_STRING_TOUCH_ID_ERROR_LOCKED;
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorString preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
         });
         return;
-        
     }
 }
 
-- (BOOL)isTouchIDAvailable
+- (NSString *)checkForTouchIDAvailablility
 {
     LAContext *context = [[LAContext alloc] init];
     
     NSError *error = nil;
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
-        return YES;
+        return nil;
     } else {
-        return NO;
+        if (error.code == LAErrorTouchIDNotAvailable) {
+            return BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE;
+        } else if (error.code == LAErrorTouchIDNotEnrolled) {
+            return BC_STRING_TOUCH_ID_ERROR_MUST_ENABLE;
+        } else if (error.code == LAErrorTouchIDLockout) {
+            return BC_STRING_TOUCH_ID_ERROR_LOCKED;
+        }
+        
+        return BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE;
+        DLog(@"%@", [NSString stringWithFormat:BC_STRING_TOUCH_ID_ERROR_UNKNOWN_ARGUMENT, (long)error.code]);
     }
 }
 

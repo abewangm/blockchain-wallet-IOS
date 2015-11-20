@@ -364,10 +364,18 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)switchTouchIDTapped
 {
-    if ([app isTouchIDAvailable]) {
+    NSString *errorString = [app checkForTouchIDAvailablility];
+    if (!errorString) {
         [self toggleTouchID];
     } else {
-        DLog(@"Touch ID not available on this device!");
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+
+        UIAlertController *alertTouchIDError = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorString preferredStyle:UIAlertControllerStyleAlert];
+        [alertTouchIDError addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTouchID inSection:securitySection];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }]];
+        [self presentViewController:alertTouchIDError animated:YES completion:nil];
     }
 }
 
