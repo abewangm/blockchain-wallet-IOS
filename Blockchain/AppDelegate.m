@@ -1053,13 +1053,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)didFailToImportPrivateKey:(NSString *)error
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
-    
+    [self hideBusyView];
+    self.wallet.isSyncingForCriticalProcess = NO;
+
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
-    [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        if (wallet.isSyncingForCriticalProcess && [error isEqualToString:@"Key already imported"]) {
-            [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-        }
-    }]];
+    [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:errorAlert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [self.window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
 }
