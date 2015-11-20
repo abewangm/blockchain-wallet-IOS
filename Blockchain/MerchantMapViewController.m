@@ -81,8 +81,10 @@
     headerLabel.text = BC_STRING_MERCHANT_MAP;
     [topBarView addSubview:headerLabel];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-60-12, 14, 60, 51)];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
     closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    closeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [closeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
     [closeButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
     [closeButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
     closeButton.titleLabel.font = [UIFont systemFontOfSize:15];

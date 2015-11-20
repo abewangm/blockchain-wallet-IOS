@@ -23,6 +23,9 @@ class BackupViewController: UIViewController {
         super.viewWillAppear(animated)
         
         backupWalletButton?.setTitle(NSLocalizedString("BACKUP FUNDS", comment: ""), forState: .Normal)
+        backupWalletButton?.titleLabel?.adjustsFontSizeToFitWidth = true
+        backupWalletButton?.contentHorizontalAlignment = .Center
+        backupWalletButton?.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
         backupWalletButton?.clipsToBounds = true
         backupWalletButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         

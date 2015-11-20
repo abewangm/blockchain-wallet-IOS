@@ -57,9 +57,10 @@ import UIKit
         super.viewDidLayoutSubviews()
         
         if (viewControllers.count == 1) {
-            closeButton!.frame = CGRectMake(self.view.frame.size.width-60-12, 14, 60, 51);
+            closeButton!.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+            closeButton!.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
             closeButton!.contentHorizontalAlignment = .Right
-            closeButton?.titleLabel?.adjustsFontSizeToFitWidth = true
+            closeButton!.titleLabel?.adjustsFontSizeToFitWidth = true
             closeButton!.setTitle(NSLocalizedString("Close", comment: ""), forState: .Normal)
             closeButton!.setImage(nil, forState: .Normal)
         } else {
