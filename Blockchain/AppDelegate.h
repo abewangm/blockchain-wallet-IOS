@@ -108,6 +108,7 @@
 - (void)closeSideMenu;
 
 - (NSString *)guid;
+- (NSString *)hashedGuid;
 - (NSString *)sharedKey;
 
 - (void)swipeLeft;

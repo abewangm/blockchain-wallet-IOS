@@ -2028,6 +2028,11 @@ void (^secondPasswordSuccess)(NSString *);
     [keychain resetKeychainItem];
 }
 
+- (NSString *)hashedGuid
+{
+    return [[self guid] SHA256];
+}
+
 #pragma mark - SharedKey
 
 - (NSString *)sharedKey
