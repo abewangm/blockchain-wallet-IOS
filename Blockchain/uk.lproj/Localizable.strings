@@ -248,6 +248,9 @@
 "Enable Location Services" = "Увімкнення служби локації";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Увімкнення цієї функції дозволить всім користувачам з зареєстрованих Touch ID відбитків на цей пристрою для доступу до вашого гаманця.";
+
+/* (No Commment) */
 "Enter PIN" = "Введіть PIN-код";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Код неприпустимий стану повернувся %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "Неприпустима адреса: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Недійсна електронна адреса.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Загальний баланс";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "Touch ID був заблокований через занадто багато невдалих спроб.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Touch ID недоступний на цьому пристрої.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Touch ID не ввімкнуто цей пристрій. Щоб увімкнути Touch ID, перейдіть до параметри>Touch ID & ввести пароль і додати відбитки пальців.";
+
+/* (No Commment) */
 "Transaction" = "Транзакції";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Операції з без зборів може зайняти багато часу, щоб підтвердити або не може бути підтверджено на всіх. Ви хотіли б продовжити?";
 
 /* (No Commment) */
 "Transferred" = "Передані";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Необроблена виняткова ситуація";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Невідома помилка Touch ID. Код: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Непідтримуваний формат приватний ключ";
@@ -826,6 +844,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "You must leave at least one active address" = "Ви повинні залишити хоча б одну активну адресу";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Ви повинні завжди пари або увійти, якщо ви маєте доступ до GUID і пароль. Відновлення ваших фондів буде створено новий ідентифікатор GUID. Ви хотіли б продовжити?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Пристрій, як видається, бути зламаний. Безпеки вашого гаманця може бути віддана в жертву.";

@@ -248,6 +248,9 @@
 "Enable Location Services" = "위치 서비스를 활성화";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "이 기능을 사용 하면 당신의 지갑에 액세스 하려면이 장치에서 모든 사용자가 등록 된 터치 ID 지문 수 있게 됩니다.";
+
+/* (No Commment) */
 "Enter PIN" = "PIN 입력";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "%@를 반환 하는 잘못 된 상태 코드";
+
+/* (No Commment) */
+"Invalid address: %@" = "잘못 된 주소: %@";
 
 /* (No Commment) */
 "Invalid email address." = "잘못 된 이메일 주소입니다.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "총 잔액";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "터치 ID 너무 많은 실패 한 시도 때문에 잠겨 되어 있다.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "터치 ID는이 장치에 사용할 수 없습니다.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "터치 ID는이 장치에 사용할 수 없습니다. 터치 ID를 사용 하려면 설정->Touch ID & 암호 이동한 지문 추가 합니다.";
+
+/* (No Commment) */
 "Transaction" = "트랜잭션";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "거래 수수료 확인 하는 데 시간이 오래 걸릴 수 있습니다 또는 전혀 확인 되지 않고 있습니다. 계속 하 시겠습니까?";
 
 /* (No Commment) */
 "Transferred" = "전송";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "처리 되지 않은 예외";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "알 수 없는 터치 ID 오류가 발생 합니다. 코드: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "지원 되지 않는 개인 키 형식";
@@ -826,6 +844,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "You must leave at least one active address" = "하나 이상의 활성 주소를 두고 해야 합니다.";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "항상 쌍 하 또는 GUID 및 암호에 액세스할 수 있는 경우 로그인 해야 합니다. 귀하의 자금을 복구 하는 것은 새 GUID를 만들 것입니다. 계속 하 시겠습니까?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "당신의 장치에 jailbroken 나타납니다. 지갑의 보안이 손상 될 수 있습니다.";

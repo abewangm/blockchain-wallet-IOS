@@ -248,6 +248,9 @@
 "Enable Location Services" = "הפעלת שירותי איכון";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "הפעלת תכונה זו תאפשר לכל המשתמשים בעלי טביעת אצבע המגע מזהה רשומה על התקן זה כדי לגשת את הארנק שלך.";
+
+/* (No Commment) */
 "Enter PIN" = "הזן את מספר הזיהוי האישי שלך";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "קוד מצב לא חוקי חזר %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "כתובת לא חוקית: %@";
 
 /* (No Commment) */
 "Invalid email address." = "דוא ל לא תקין";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "המאזן";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "מזהה מגע ננעל עקב ניסיונות כושלים רבים מדי.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "מזהה מגע אינה זמינה במכשיר זה.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "מזהה מגע אינו זמין בהתקן זה. כדי לאפשר זיהוי מגע, ללכת & מזהה הגדרות->Touch קוד ולהוסיף על טביעת אצבע.";
+
+/* (No Commment) */
 "Transaction" = "עסקת";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "תנועות ללא עלויות עשויה להימשך זמן רב כדי לאשר או עשוי לא להיות מאושרות בכלל. האם ברצונך להמשיך?";
 
 /* (No Commment) */
 "Transferred" = "הועבר";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "חריג שאינו מטופל";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "שגיאה לא ידועה מזהה מגע. קוד: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "בתבנית שאינה נתמכת של מפתח פרטי";
@@ -826,6 +844,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "You must leave at least one active address" = "עליך להשאיר כתובת פעיל אחד לפחות";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "עליך תמיד זוג או להיכנס למערכת, אם יש לך גישה GUID והסיסמה שלך. שחזור כספים שלך תיצור GUID החדש. האם ברצונך להמשיך?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "המכשיר נראה jailbroken. . בסכנה את האבטחה של הארנק שלך";

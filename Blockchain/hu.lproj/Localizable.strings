@@ -248,6 +248,9 @@
 "Enable Location Services" = "Engedélyezi a helyszolgáltatása";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "A szolgáltatás engedélyezése lehetővé teszi, hogy minden felhasználó a regisztrált Touch ID ujjlenyomat ez berendezés-hoz belépés-hoz tárcátok.";
+
+/* (No Commment) */
 "Enter PIN" = "PIN-kód";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Érvénytelen állapot kódja %@ vissza";
+
+/* (No Commment) */
+"Invalid address: %@" = "Érvénytelen cím: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Érvénytelen e-mail címét.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Egyenleg összesen";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "Touch azonosító túl sok sikertelen kísérlet miatt zárolva van.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Touch ID nem érhető el ezen az eszközön.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Touch ID nincs engedélyezve ezen az eszközön. Ahhoz, hogy a Touch ID, megy beállítások->Touch ID & jelszót, és adjunk hozzá egy ujjlenyomat.";
+
+/* (No Commment) */
 "Transaction" = "Tranzakció";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Díjmentes megerősítéséhez hosszú időt vehet igénybe, vagy esetleg nem kell erősíteni minden. Szeretne továbbra is?";
 
 /* (No Commment) */
 "Transferred" = "Át";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Nem kezelt kivétel";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Ismeretlen azonosító Touch hiba. Kód: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Privát kulcs formátuma nem támogatott";
@@ -826,6 +844,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "You must leave at least one active address" = "Meg kell hagyni legalább egy aktív cím";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Mindig pár, vagy logika ha van hozzáférése a GUID és a jelszót. Beszedik a pénzt hoz létre új GUID azonosítót. Szeretne továbbra is?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "A készülék feltűnik-hoz lenni jailbroken. A pénztárca biztonságát is veszélybe.";

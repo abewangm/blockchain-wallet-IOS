@@ -248,6 +248,9 @@
 "Enable Location Services" = "تمكين خدمات الموقع";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "تمكين هذه الميزة سيتم السماح لكافة المستخدمين مع بصمة معرف اتصال مسجل على هذا الجهاز للوصول إلى محفظتك.";
+
+/* (No Commment) */
 "Enter PIN" = "أدخل رقم التعريف الشخصي";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "رمز الحالة غير صالح عاد %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "عنوان غير صالح: %@";
 
 /* (No Commment) */
 "Invalid email address." = "عنوان البريد الإلكتروني غير صالح.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "مجموع الرصيد";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "تم تأمين اتصال معرف سبب الكثير من المحاولات الفاشلة.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "معرف اتصال غير متوفر على هذا الجهاز.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "لم يتم تمكين اتصال معرف على هذا الجهاز. لتمكين اتصال معرف، انتقل إلى معرف الإعدادات->Touch & رمز المرور وإضافة بصمات الأصابع.";
+
+/* (No Commment) */
 "Transaction" = "الحركة";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "قد يستغرق وقتاً طويلاً للتأكد من معاملات مع أي رسوم أو قد لا يمكن تأكيد على الإطلاق. هل ترغب في الاستمرار؟";
 
 /* (No Commment) */
 "Transferred" = "نقل";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "استثناء لم تتم معالجته";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "خطأ معرف اتصال غير معروف. التعليمات البرمجية: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "تنسيق المفتاح الخاص غير معتمد";
@@ -826,6 +844,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "You must leave at least one active address" = "يجب ترك عنوان نشط واحد على الأقل";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "عليك دائماً الزوج أو تسجيل الدخول إذا كان لديك حق الوصول إلى GUID الخاص بك وكلمة المرور. استرداد الأموال الخاصة بك سيتم إنشاء GUID جديد. هل ترغب في الاستمرار؟";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "الجهاز الخاص بك، على ما يبدو، أي فون. قد تتعرض للخطر أمن محفظتك.";

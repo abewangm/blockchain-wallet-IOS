@@ -248,6 +248,9 @@
 "Enable Location Services" = "Locatieservices inschakelen";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Deze functie in te schakelen kunnen alle gebruikers met een geregistreerde vingerafdruk Touch ID op dit apparaat toegang tot uw portemonnee.";
+
+/* (No Commment) */
 "Enter PIN" = "Voer pincode";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Ongeldige statuscode Returned %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "Ongeldig adres: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Ongeldig e-mailadres.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Totaalsaldo";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "Touch-ID is geblokkeerd vanwege te veel mislukte pogingen.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Touch-ID is niet beschikbaar op dit apparaat.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Touch-ID is niet ingeschakeld op dit apparaat. Opdat Touch ID, ga naar instellingen->Touch-ID & toegangscode en voeg een vingerafdruk.";
+
+/* (No Commment) */
 "Transaction" = "Transactie";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transacties met geen kosten kunnen lang duren om te bevestigen of niet helemaal kunnen worden bevestigd. Wilt u doorgaan?";
 
 /* (No Commment) */
 "Transferred" = "Overgedragen";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Niet-verwerkte uitzondering";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Onbekende Touch ID fout. Code: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Niet-ondersteunde privé sleutel indeling";
@@ -826,6 +844,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "You must leave at least one active address" = "U moet ten minste één actieve adres";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "U moet altijd koppelen of inloggen als u toegang tot uw GUID en wachtwoord hebt. Herstellen van uw fondsen zal leiden tot een nieuwe GUID. Wilt u doorgaan?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Het apparaat lijkt te zijn jailbroken. De beveiliging van uw portefeuille kan worden aangetast.";

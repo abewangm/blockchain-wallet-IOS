@@ -248,6 +248,9 @@
 "Enable Location Services" = "Povoliť umiestnenie služby";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Zapnutie tejto funkcie vám umožní všetkých užívateľov s registrovaných Touch identifikácie odtlačkov tohto zariadenia na prístup k vašej peňaženke.";
+
+/* (No Commment) */
 "Enter PIN" = "Zadajte kód PIN";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Neplatný stav vrátený %@ kód";
+
+/* (No Commment) */
+"Invalid address: %@" = "Neplatná adresa: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Neplatná e-mailová adresa.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Celkové saldo";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "Dotyk ID bolo zamknuté z dôvodu príliš veľa neúspešných pokusov.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Dotyk ID nie je k dispozícii na tomto zariadení.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Dotyk ID nie je povolené na tomto zariadení. Touch ID, prejdite na nastavenia->Touch ID & prístupový kód a pridajte odtlačok.";
+
+/* (No Commment) */
 "Transaction" = "Transakcie";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transakcie bez poplatkov môže trvať dlhú dobu na potvrdenie alebo môžu byť potvrdené vôbec. Chcete pokračovať?";
 
 /* (No Commment) */
 "Transferred" = "Prevedené";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Nespracovaná výnimka";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Touch ID sa vyskytla chyba. Kód: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Nepodporovaný formát súkromného kľúča";
@@ -826,6 +844,9 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 
 /* (No Commment) */
 "You must leave at least one active address" = "Musíte nechať aspoň jeden aktívny adresy";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Vždy by ste mali pár alebo prihlásiť, ak máte prístup k svojim identifikátorom GUID a heslo. Obnovenie vašich finančných prostriedkov sa vytvorí nový identifikátor GUID. Chcete pokračovať?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Váš prístroj sa zdá byť jailbroken. Môže byť ohrozená bezpečnosť vašej peňaženky.";

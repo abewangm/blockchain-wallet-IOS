@@ -248,6 +248,9 @@
 "Enable Location Services" = "Ενεργοποιήστε τις υπηρεσίες τοποθεσίας";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Ενεργοποίηση αυτής της δυνατότητας θα επιτρέπουν σε όλους τους χρήστες με μια καταστατική ID αφής δακτυλικών αποτυπωμάτων σε αυτήν την συσκευή για να αποκτήσετε πρόσβαση στο πορτοφόλι σας.";
+
+/* (No Commment) */
 "Enter PIN" = "Εισαγάγετε το PIN";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Μη έγκυρη κατάσταση κωδικός %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "Άκυρη διεύθυνση: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Μη έγκυρη διεύθυνση email.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Συνολικό υπόλοιπο";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "Αφής ID έχει κλειδωθεί λόγω πάρα πολλές αποτυχημένες προσπάθειες.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "ID αφής δεν είναι διαθέσιμη σε αυτήν τη συσκευή.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "ID αφής δεν είναι ενεργοποιημένη σε αυτήν την συσκευή. Για να ενεργοποιήσετε την αφή ID, πηγαίνετε στο ρυθμίσεις->Touch ID & κωδικό πρόσβασης και να προσθέσετε ένα δακτυλικό αποτύπωμα.";
+
+/* (No Commment) */
 "Transaction" = "Συναλλαγή";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Συναλλαγές χωρίς χρεώσεις μπορεί να πάρει πολύ χρόνο να επιβεβαιώσει ή δεν μπορεί να επιβεβαιωθεί σε όλα. Θέλετε να συνεχίσετε;";
 
 /* (No Commment) */
 "Transferred" = "Μεταφέρονται";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Εξαίρεση που δεν αντιμετωπίστηκε";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Άγνωστο σφάλμα αφής ID. Κωδικός: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Μορφή του δεν υποστηρίζεται ιδιωτικό κλειδί";
@@ -826,6 +844,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "You must leave at least one active address" = "Πρέπει να αφήσετε μία τουλάχιστον ενεργό διεύθυνση";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Πάντα πρέπει να ζεύγος ή συνδεθείτε αν έχετε πρόσβαση σε GUID και τον κωδικό σας. Ανάκτησης των κεφαλαίων σας θα δημιουργήσει ένα νέο GUID. Θέλετε να συνεχίσετε;";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Συσκευή σας φαίνεται να είναι jailbroken. Μπορεί να παραβιαστεί η ασφάλεια του πορτοφολιού σας.";

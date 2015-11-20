@@ -248,6 +248,9 @@
 "Enable Location Services" = "Membolehkan lokasi Perkhidmatan";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Mendayakan ciri ini akan membolehkan semua pengguna dengan cap jari ID sentuhan yang berdaftar pada peranti ini untuk mencapai dompet anda.";
+
+/* (No Commment) */
 "Enter PIN" = "Masukkan PIN";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Kod Status sah kembali %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "Alamat tidak sah: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Alamat e-mel tidak sah.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Jumlah baki";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "Sentuhan ID telah dikunci oleh kerana terlalu banyak usaha yang gagal.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Sentuhan ID tidak terdapat pada peranti ini.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Sentuhan ID tidak didayakan pada peranti ini. Untuk mengaktifkan ID sentuh, pergi ke seting->Touch ID & kata laluan dan menambah satu cap jari.";
+
+/* (No Commment) */
 "Transaction" = "Urus niaga";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaksi tanpa yuran mungkin mengambil masa yang lama untuk mengesahkan atau mungkin tidak boleh disahkan sekali. Adakah anda ingin meneruskan?";
 
 /* (No Commment) */
 "Transferred" = "Dipindahkan";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Pengecualian yang tidak dapat dikawal";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Sentuhan ID ralat yang tidak diketahui. Kod: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Format kunci peribadi yang tidak disokong";
@@ -826,6 +844,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "You must leave at least one active address" = "Anda mesti meninggalkan alamat aktif sekurang-kurangnya satu";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Anda sentiasa perlu berpasangan atau login jika anda mempunyai akses kepada GUID dan kata laluan anda. Memungut dana anda akan mencipta GUID baru. Adakah anda ingin meneruskan?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Peranti muncul untuk menjadi jailbroken. Keselamatan dompet anda mungkin terjejas.";

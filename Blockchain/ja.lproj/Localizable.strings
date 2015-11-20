@@ -248,6 +248,9 @@
 "Enable Location Services" = "位置情報サービスを有効にします。";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "この機能を有効にすると、このデバイスがあなたの財布にアクセスするにタッチ ID 指紋の登録されているすべてのユーザーが許可されます。";
+
+/* (No Commment) */
 "Enter PIN" = "暗証番号を入力します。";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "%@ を返された無効なステータス コード";
+
+/* (No Commment) */
+"Invalid address: %@" = "無効なアドレス: %@";
 
 /* (No Commment) */
 "Invalid email address." = "無効なメール アドレスです。";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "トータル バランス";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "失敗した回数が多すぎるためタッチ ID がロックされました。";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "タッチの ID は、このデバイスで使用可能ではありません。";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "タッチの ID は、このデバイスには無効です。Touch ID を有効にするには、& 設定>Touch ID パスコードに指紋を追加してください。";
+
+/* (No Commment) */
 "Transaction" = "トランザクション";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "手数料トランザクション確認に長い時間がかかる可能性があります。 またはまったく確認されていません。続行しますか?";
 
 /* (No Commment) */
 "Transferred" = "転送";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "未処理の例外";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "不明なタッチ ID エラー。コード: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "サポートされない秘密キー形式";
@@ -826,6 +844,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "You must leave at least one active address" = "少なくとも 1 つのアクティブなアドレスにしておく必要があります。";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "ペアまたは、GUID とパスワードへのアクセスがあればログインする必要があります常にします。あなたの資金を回復する新しい GUID が作成されます。続行しますか?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "お使いのデバイスは、ジェイルブレイクする必要表示されます。あなたの財布のセキュリティが侵害される可能性があります。";

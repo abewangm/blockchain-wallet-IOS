@@ -248,6 +248,9 @@
 "Enable Location Services" = "Permetre serveis d'ubicació";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Permetre aquest tret permetrà tots els usuaris amb una empremta de Tacte ID registrat en aquest dispositiu d'accés a la seva cartera.";
+
+/* (No Commment) */
 "Enter PIN" = "Introduïu el PIN";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Codi d'estat no vàlid tornar %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "Adreça no és vàlid: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Adreça electrònica no vàlida.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Balanç total";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "Tacte ID ha estat tancat a causa de massa intents fallits.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Tacte ID no està disponible en aquest dispositiu.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Tacte ID no està habilitada en aquest dispositiu. Permetre Tacte ID, aneu a configuració->Touch ID & Passcode i afegir una empremta digital.";
+
+/* (No Commment) */
 "Transaction" = "Transacció";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaccions sense càrrecs pot trigar una bona estona per confirmar o no pot ser confirmat en absolut. Voleu continuar?";
 
 /* (No Commment) */
 "Transferred" = "Transferits";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Excepció no controlada";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Error desconegut de Tacte ID. Codi: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Format de clau privada no admès";
@@ -826,6 +844,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "You must leave at least one active address" = "Ha de deixar com a mínim una adreça activa";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Sempre cal ajuntar o connectar si teniu accés al seu GUID i contrasenya. Recuperant els seus fons es crearà un nou GUID. Voleu continuar?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Dispositiu sembla ser jailbroken. Es poden comprometre la seguretat de la seva butxaca.";

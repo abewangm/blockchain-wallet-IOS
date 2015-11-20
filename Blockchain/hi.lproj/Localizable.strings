@@ -248,6 +248,9 @@
 "Enable Location Services" = "स्थान सेवाओं को सक्षम करें";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "इस सुविधा को सक्षम करने के एक पंजीकृत स्पर्श ID फिंगरप्रिंट के साथ सभी उपयोगकर्ताओं के लिए अपने बटुए का उपयोग करने के लिए इस डिवाइस पर की अनुमति होगी।";
+
+/* (No Commment) */
 "Enter PIN" = "PIN दर्ज करें";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "अमान्य स्थिति कोड %@ में लौटे";
+
+/* (No Commment) */
+"Invalid address: %@" = "अमान्य पता: %@";
 
 /* (No Commment) */
 "Invalid email address." = "अमान्य ईमेल पते।";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "कुल शेष राशि";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "स्पर्श ID भी कई असफल प्रयासों के कारण बंद कर दिया गया है।";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "स्पर्श ID इस डिवाइस पर उपलब्ध नहीं है।";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "स्पर्श ID इस डिवाइस पर सक्षम नहीं है। स्पर्श ID को सक्षम करने के लिए, सेटिंग्स->Touch ID & पासकोड को जाना और एक फिंगरप्रिंट जोड़ें।";
+
+/* (No Commment) */
 "Transaction" = "लेन-देन";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "कोई फीस के साथ लेन-देन की पुष्टि करने के लिए एक लंबा समय लग सकते हैं या सब पर हो सकता की पुष्टि नहीं की। आप जारी रखना चाहेंगे?";
 
 /* (No Commment) */
 "Transferred" = "तबादला";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "मैनेज्ड अपवाद";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "अज्ञात स्पर्श ID त्रुटि। कोड: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "असमर्थित निजी कुंजी स्वरूप";
@@ -826,6 +844,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "You must leave at least one active address" = "आपको कम से कम एक सक्रिय पता छोड़ देना चाहिए";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "तुम हमेशा जोड़ी होना चाहिए या यदि आप आपके GUID और पासवर्ड का उपयोग लॉगिन। आपका धन पुनर्प्राप्त करना एक नया GUID पैदा करेगा। आप जारी रखना चाहेंगे?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Jailbroken किया जा करने के लिए अपने डिवाइस प्रकट होता है। अपने बटुए की सुरक्षा समझौता हो सकता है।";

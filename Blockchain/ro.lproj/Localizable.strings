@@ -248,6 +248,9 @@
 "Enable Location Services" = "Activare servicii de localizare";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Activarea această facilitate va permite tuturor utilizatorilor cu o amprentă de Touch ID înregistraţi pe acest dispozitiv accesul la portofel.";
+
+/* (No Commment) */
 "Enter PIN" = "Introduceţi codul PIN";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Codul de stare nevalidă %@ a revenit";
+
+/* (No Commment) */
+"Invalid address: %@" = "Adresă nevalidă: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Adresă e-mail nevalidă.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Soldul total";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "ID de atingere a fost blocat din cauza prea multe încercări nu a reuşit.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Atinge ID nu este disponibil pe acest aparat.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Atinge ID nu este activată pe acest aparat. Pentru a activa Touch ID, du-te la Settings->Touch ID & parola şi se adaugă o amprentă digitală.";
+
+/* (No Commment) */
 "Transaction" = "Tranzactie";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Tranzacţii fără taxe poate lua o lungă perioadă de timp pentru a confirma sau nu poate fi confirmat la toate. Doriţi să continuaţi?";
 
 /* (No Commment) */
 "Transferred" = "Transferat";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Excepție netratată";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Eroare necunoscută la Touch ID. Cod: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Neacceptat Format de cheie privată";
@@ -826,6 +844,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "You must leave at least one active address" = "Trebuie să lăsaţi cel puţin o adresă activ";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Tu ar trebui să întotdeauna pereche sau login dacă aveţi acces la GUID-ul şi parola. Recuperarea fondurilor dumneavoastră va crea un nou GUID. Doriţi să continuaţi?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Aparatul pare să fie jailbroken. Securitatea portofel poate fi compromisă.";

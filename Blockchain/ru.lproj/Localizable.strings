@@ -248,6 +248,9 @@
 "Enable Location Services" = "Включение службы определения местоположения";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Включение этой функции позволит всем пользователям с зарегистрированной касание ID отпечатков пальцев на этом устройстве для доступа в ваш бумажник.";
+
+/* (No Commment) */
 "Enter PIN" = "Введите PIN-код";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Недопустимый код состояния вернулся %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "Недопустимый адрес: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Недопустимый адрес электронной почты.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Общий баланс";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "Касание ID была заблокирована из-за слишком большого числа неудачных попыток.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Касание ID не доступен на этом устройстве.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Касание ID не включена на этом устройстве. Чтобы включить касание ID, перейдите к настройки>Touch код & код и добавить отпечаток пальца.";
+
+/* (No Commment) */
 "Transaction" = "Транзакция";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Сделки без сборов может занять много времени, чтобы подтвердить или не могут быть подтверждены на всех. Вы хотите продолжить?";
 
 /* (No Commment) */
 "Transferred" = "Переданы";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Необработанное исключение";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Неизвестная ошибка Touch ID. Код: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Неподдерживаемый формат частного ключа";
@@ -826,6 +844,9 @@ wallet experience for you" = "Для вас мы создали совершен
 
 /* (No Commment) */
 "You must leave at least one active address" = "Вы должны оставить по крайней мере один активный адрес";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Вы должны всегда пару или войти, если у вас есть доступ к вашим GUID и пароль. Восстановление ваших средств создаст новый GUID. Вы хотите продолжить?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Устройство, как представляется, быть jailbroken. Может быть нарушена безопасность вашего кошелька.";

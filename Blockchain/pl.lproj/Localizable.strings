@@ -248,6 +248,9 @@
 "Enable Location Services" = "Włączanie usług lokalizacyjnych";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Włączenie tej funkcji pozwoli wszystkim użytkownikom z Touch ID odcisków palców zarejestrowanych na tym urządzeniu dostępu do Twojego portfela.";
+
+/* (No Commment) */
 "Enter PIN" = "Wprowadź kod PIN";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Nieprawidłowy stan kod zwracany %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "Nieprawidłowy adres: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Nieprawidłowy adres e-mail.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Saldo";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "Dotknąć ID został zablokowany ze względu na zbyt wiele nieudanych prób.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Dotknąć ID nie jest dostępna na tym urządzeniu.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Dotknąć identyfikator nie jest włączona na tym urządzeniu. Aby włączyć Touch ID, przejdź do ustawienia>Touch ID & hasło i dodać pewien odcisk palca.";
+
+/* (No Commment) */
 "Transaction" = "Transakcji";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transakcje bez opłat może zająć dużo czasu, aby potwierdzić lub nie może być potwierdzone w ogóle. Czy chcesz kontynuować?";
 
 /* (No Commment) */
 "Transferred" = "Przeniesione";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Nieobsługiwany wyjątek";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Nieznany błąd identyfikator Touch. Kod: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Nieobsługiwany Format klucza prywatnego";
@@ -826,6 +844,9 @@ wallet experience for you" = "Zaprojektowaliśmy zupełnie nowe doświadczenie p
 
 /* (No Commment) */
 "You must leave at least one active address" = "Należy pozostawić co najmniej jednego aktywnego adresu";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Należy zawsze parę lub logowania, jeśli masz dostęp do swojego identyfikatora GUID i hasło. Odzyskiwanie środków będzie utworzyć nowy identyfikator GUID. Czy chcesz kontynuować?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Urządzenie wydaje się być jailbroken. Zabezpieczenie twój portfel może być zagrożona.";

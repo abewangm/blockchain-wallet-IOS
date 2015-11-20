@@ -248,6 +248,9 @@
 "Enable Location Services" = "Omogočite lokacijske storitve";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "To funkcijo bo omogočilo vsem uporabnikom dotik ID prstni odtis registriran na to napravo za dostop do vaše denarnice.";
+
+/* (No Commment) */
 "Enter PIN" = "Vnesite PIN";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "Neveljavno stanje kodo vrnil %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "Neveljaven naslov: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Neveljaven e-poštni naslov.";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "Skupni saldo";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "ID dotik zaklenjen zaradi preveč neuspešnih poskusov.";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "Dotik ID ni na voljo v tej napravi.";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Dotik ID v tej napravi ni omogočen. Omogočiti dotik ID, pojdite na nastavitve->Touch ID & kodo in dodajte prstni odtis.";
+
+/* (No Commment) */
 "Transaction" = "Transakcije";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transakcij brez pristojbine lahko traja dolgo časa, da potrdi ali lahko sploh ne potrdi. Ali želite nadaljevati?";
 
 /* (No Commment) */
 "Transferred" = "Prenese";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Neobravnavani izjema";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "Neznana napaka ID dotik. Šifra: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Nepodprta oblika zasebnega ključa";
@@ -826,6 +844,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* (No Commment) */
 "You must leave at least one active address" = "Moraš pustiti vsaj eno aktivno naslov";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Morate vedno seznaniti ali prepričevalnost, če imate dostop do GUID in geslo. Izterjavo vaših sredstev bo ustvaril nov GUID. Ali želite nadaljevati?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Naprava se zdi v obstati jailbroken. Ogrožena varnost vaše denarnice.";

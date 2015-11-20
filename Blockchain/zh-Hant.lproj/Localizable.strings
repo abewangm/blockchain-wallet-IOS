@@ -248,6 +248,9 @@
 "Enable Location Services" = "啟用定位服務";
 
 /* (No Commment) */
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "啟用此功能將允許所有使用者與註冊的觸摸 ID 指紋在此設備上訪問到你的錢包。";
+
+/* (No Commment) */
 "Enter PIN" = "輸入 PIN";
 
 /* (No Commment) */
@@ -354,6 +357,9 @@
 
 /* (No Commment) */
 "Invalid Status Code Returned %@" = "不正確狀態碼返回 %@";
+
+/* (No Commment) */
+"Invalid address: %@" = "不正確位址: %@";
 
 /* (No Commment) */
 "Invalid email address." = "不正確電子郵件地址。";
@@ -690,10 +696,19 @@ Fee: %@
 "Total Balance" = "總餘額";
 
 /* (No Commment) */
+"Touch ID has been locked due to too many failed attempts." = "由於太多的失敗嘗試，觸摸 ID 已被鎖定。";
+
+/* (No Commment) */
 "Touch ID is not available on this device." = "觸摸 ID 在此設備上不可用。";
 
 /* (No Commment) */
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "在此設備上未啟用觸摸 ID。若要啟用觸摸 ID，請轉到設置>Touch ID & 密碼並添加指紋。";
+
+/* (No Commment) */
 "Transaction" = "交易";
+
+/* (No Commment) */
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "交易不收取費用可能需要很長的時間來確認或不可能在所有確認。你想繼續嗎?";
 
 /* (No Commment) */
 "Transferred" = "轉移";
@@ -715,6 +730,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "未處理的異常";
+
+/* (No Commment) */
+"Unknown Touch ID error. Code: %ld" = "未知的觸摸 ID 錯誤。代碼: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "私人金鑰格式不受支援";
@@ -826,6 +844,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "You must leave at least one active address" = "你必須離開至少一個活動位址";
+
+/* (No Commment) */
+"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "你應該總是成對或登錄如果您有權訪問您的 GUID 和密碼。恢復您的資金將會創建一個新的 GUID。你想繼續嗎?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "您的設備似乎是越獄。可能會損害你的錢包的安全性。";
