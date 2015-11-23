@@ -299,6 +299,7 @@
 #define BC_STRING_SETTINGS_COPY_GUID_WARNING NSLocalizedString(@"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet.", nil)
 #define BC_STRING_COPY_TO_CLIPBOARD NSLocalizedString(@"Copy to clipboard", nil)
 #define BC_STRING_WARNING_FOR_ZERO_FEE NSLocalizedString(@"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?", nil)
+#define BC_STRING_SETTINGS_ERROR_FEE_OUT_OF_RANGE NSLocalizedString(@"Please enter a fee greater than 0 BTC and at most 0.01 BTC", nil)
 
 #define BC_STRING_NEW_ADDRESS NSLocalizedString(@"New Address", nil)
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)

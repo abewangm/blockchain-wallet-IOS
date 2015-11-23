@@ -257,18 +257,10 @@ const int aboutPrivacyPolicy = 1;
         NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
         NSString *convertedText = [textField.text stringByReplacingOccurrencesOfString:decimalSeparator withString:@"."];
         float fee = [convertedText floatValue];
-        if (fee > 0.01) {
-            [app standardNotify:BC_STRING_SETTINGS_FEE_TOO_HIGH];
-            return;
-        }
-        
-        if (fee == 0) {
-            UIAlertController *alertForWarningOfZeroFee = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_WARNING_FOR_ZERO_FEE preferredStyle:UIAlertControllerStyleAlert];
-            [alertForWarningOfZeroFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-            [alertForWarningOfZeroFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self confirmChangeFee:fee];
-            }]];
-            [self presentViewController:alertForWarningOfZeroFee animated:YES completion:nil];
+        if (fee > 0.01 || fee == 0) {
+            UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_SETTINGS_ERROR_FEE_OUT_OF_RANGE preferredStyle:UIAlertControllerStyleAlert];
+            [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:errorAlert animated:YES completion:nil];
             return;
         }
         
