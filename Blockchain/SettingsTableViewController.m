@@ -40,15 +40,11 @@ const int aboutSection = 3;
 const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
-@interface SettingsTableViewController () <CurrencySelectorDelegate, BtcSelectorDelegate, UIAlertViewDelegate, UITextFieldDelegate>
+@interface SettingsTableViewController () <CurrencySelectorDelegate, BtcSelectorDelegate, UITextFieldDelegate>
 
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
 @property (nonatomic, copy) NSDictionary *allCurrencySymbolsDictionary;
-
-@property (nonatomic) UIAlertView *verifyEmailAlertView;
-@property (nonatomic) UIAlertView *changeEmailAlertView;
-@property (nonatomic) UIAlertView *changeFeeAlertView;
 
 @property (nonatomic, copy) NSString *enteredEmailString;
 @property (nonatomic, copy) NSString *emailString;
@@ -65,14 +61,6 @@ const int aboutPrivacyPolicy = 1;
     [super viewDidLoad];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
     [self reload];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:NO];
-    [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:NO];
-    [self.changeFeeAlertView dismissWithClickedButtonIndex:0 animated:NO];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -251,24 +239,50 @@ const int aboutPrivacyPolicy = 1;
 - (void)alertUserToChangeFee
 {
     NSString *feePerKbString = [self convertFloatToString:self.currentFeePerKb forDisplay:NO];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, feePerKbString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_DONE, nil];
-    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
-    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    textField.spellCheckingType = UITextSpellCheckingTypeNo;
-    textField.text = feePerKbString;
-    textField.text = [textField.text stringByReplacingOccurrencesOfString:@"." withString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    textField.keyboardType = UIKeyboardTypeDecimalPad;
-    [alertView show];
-    textField.delegate = self;
-    self.changeFeeTextField = textField;
-    self.changeFeeAlertView = alertView;
+    UIAlertController *alertForChangingFeePerKb = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, feePerKbString] preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingFeePerKb addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
+        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
+        secureTextField.text = feePerKbString;
+        secureTextField.text = [textField.text stringByReplacingOccurrencesOfString:@"." withString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+        secureTextField.keyboardType = UIKeyboardTypeDecimalPad;
+        secureTextField.delegate = self;
+        self.changeFeeTextField = secureTextField;
+    }];
+    [alertForChangingFeePerKb addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertForChangingFeePerKb addAction:[UIAlertAction actionWithTitle:BC_STRING_DONE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        BCSecureTextField *textField = (BCSecureTextField *)[[alertForChangingFeePerKb textFields] firstObject];
+        NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+        NSString *convertedText = [textField.text stringByReplacingOccurrencesOfString:decimalSeparator withString:@"."];
+        float fee = [convertedText floatValue];
+        if (fee > 0.01) {
+            [app standardNotify:BC_STRING_SETTINGS_FEE_TOO_HIGH];
+            return;
+        }
+        
+        if (fee == 0) {
+            UIAlertController *alertForWarningOfZeroFee = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_WARNING_FOR_ZERO_FEE preferredStyle:UIAlertControllerStyleAlert];
+            [alertForWarningOfZeroFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+            [alertForWarningOfZeroFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self confirmChangeFee:fee];
+            }]];
+            [self presentViewController:alertForWarningOfZeroFee animated:YES completion:nil];
+            return;
+        }
+        
+        [self confirmChangeFee:fee];
+    }]];
+    [self presentViewController:alertForChangingFeePerKb animated:YES completion:nil];
 }
 
 - (void)alertUserOfErrorLoadingSettings
 {
     [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
+    UIAlertController *alertForErrorLoading = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE message:BC_STRING_SETTINGS_ERROR_LOADING_TITLE preferredStyle:UIAlertControllerStyleAlert];
+    [alertForErrorLoading addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertForErrorLoading animated:YES completion:nil];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
 }
 
@@ -276,39 +290,73 @@ const int aboutPrivacyPolicy = 1;
 {
     NSString *alertViewTitle = hasAddedEmail ? BC_STRING_SETTINGS_CHANGE_EMAIL :BC_STRING_ADD_EMAIL;
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles:BC_STRING_SETTINGS_VERIFY, nil];
-    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
-    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    textField.spellCheckingType = UITextSpellCheckingTypeNo;
-    textField.tag = textFieldTagChangeEmail;
-    textField.delegate = self;
-    textField.returnKeyType = UIReturnKeyDone;
-    textField.text = hasAddedEmail ? [self getUserEmail] : @"";
-    [alertView show];
-    self.changeEmailAlertView = alertView;
+    UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
+        UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]];
+        if (([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] && [alertForChangingEmail.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) || ![[self getUserEmail] isEqualToString:self.emailString]) {
+            [self getAccountInfo];
+        }
+    }]];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self changeEmail:[[alertForChangingEmail textFields] firstObject].text];
+    }]];
+    [alertForChangingEmail addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
+        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
+        secureTextField.tag = textFieldTagChangeEmail;
+        secureTextField.delegate = self;
+        secureTextField.returnKeyType = UIReturnKeyDone;
+        secureTextField.text = hasAddedEmail ? [self getUserEmail] : @"";
+    }];
+    [self presentViewController:alertForChangingEmail animated:YES completion:nil];
 }
 
 - (void)alertUserToVerifyEmail
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_ARGUMENT, self.emailString] delegate:self cancelButtonTitle:BC_STRING_CANCEL otherButtonTitles: BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND, BC_STRING_SETTINGS_CHANGE_EMAIL, nil];
-    alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
-    BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
-    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    textField.spellCheckingType = UITextSpellCheckingTypeNo;
-    textField.tag = textFieldTagVerifyEmail;
-    textField.delegate = self;
-    textField.returnKeyType = UIReturnKeyDone;
-    textField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
-    [alertView show];
-    self.verifyEmailAlertView = alertView;
+    UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_ARGUMENT, self.emailString] preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self resendVerificationEmail];
+    }]];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_CHANGE_EMAIL style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            [self alertUserToChangeEmail:YES];
+        });
+    }]];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
+        if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] || ![[self getUserEmail] isEqualToString:self.emailString]) {
+            [self getAccountInfo];
+        }
+    }]];
+    [alertForChangingEmail addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
+        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
+        secureTextField.tag = textFieldTagVerifyEmail;
+        secureTextField.delegate = self;
+        secureTextField.returnKeyType = UIReturnKeyDone;
+        secureTextField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
+    }];
+    [self presentViewController:alertForChangingEmail animated:YES completion:nil];
 }
 
 - (void)alertUserOfVerifyingEmailSuccess
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_SETTINGS_EMAIL_VERIFIED delegate:self cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    [alertView show];
+    UIAlertController *alertForVerifyingEmailSuccess = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_SETTINGS_EMAIL_VERIFIED preferredStyle:UIAlertControllerStyleAlert];
+    [alertForVerifyingEmailSuccess addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertForVerifyingEmailSuccess animated:YES completion:nil];
+}
+
+- (void)alertUserOfVerifyingEmailError
+{
+    UIAlertController *alertForVerifyingEmailError = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_SETTINGS_VERIFY_EMAIL_INVALID_CODE preferredStyle:UIAlertControllerStyleAlert];
+    [alertForVerifyingEmailError addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertForVerifyingEmailError animated:YES completion:nil];
 }
 
 - (void)resendVerificationEmail
@@ -349,6 +397,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)verifyEmailWithCode:(NSString *)codeString
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyEmailWithCodeSuccess) name:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyEmailWithCodeError) name:NOTIFICATION_KEY_VERIFY_EMAIL_ERROR object:nil];
     
     [app.wallet verifyEmailWithCode:codeString];
 }
@@ -356,10 +405,19 @@ const int aboutPrivacyPolicy = 1;
 - (void)verifyEmailWithCodeSuccess
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_ERROR object:nil];
     
     [self getAccountInfo];
     
-    [self performSelector:@selector(alertUserOfVerifyingEmailSuccess) withObject:nil afterDelay:0.2f];
+    [self alertUserOfVerifyingEmailSuccess];
+}
+
+- (void)verifyEmailWithCodeError
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_ERROR object:nil];
+    
+    [self alertUserOfVerifyingEmailError];
 }
 
 - (void)switchTouchIDTapped
@@ -407,113 +465,19 @@ const int aboutPrivacyPolicy = 1;
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-#pragma mark AlertView Delegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if ([alertView isEqual:self.changeEmailAlertView]) {
-        
-        // Not the smoothest dismissal of the keyboard but better than no animation
-        BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
-        [textField resignFirstResponder];
-        
-        switch (buttonIndex) {
-            case 0: {
-                // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
-                UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]];
-                if (([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] && [alertView.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) || ![[self getUserEmail] isEqualToString:self.emailString]) {
-                    [self getAccountInfo];
-                }
-                return;
-            }
-            case 1: {
-                [self changeEmail:[alertView textFieldAtIndex:0].text];
-                return;
-            }
-        }
-        return;
-    } else if ([alertView isEqual:self.verifyEmailAlertView]) {
-        
-        // Not the smoothest dismissal of the keyboard but better than no animation
-        BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
-        [textField resignFirstResponder];
-        
-        switch (buttonIndex) {
-            case 0: {
-                // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
-                if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_PLEASE_ADD_EMAIL] || ![[self getUserEmail] isEqualToString:self.emailString]) {
-                    [self getAccountInfo];
-                }
-                return;
-            }
-            case 1: {
-                [self resendVerificationEmail];
-                return;
-            }
-            case 2: {
-                // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
-                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
-                dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                    [self alertUserToChangeEmail:YES];
-                });
-                return;
-            }
-        }
-        return;
-    } else if ([alertView isEqual:self.changeFeeAlertView]) {
-        
-        // Not the smoothest dismissal of the keyboard but better than no animation
-        BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
-        [textField resignFirstResponder];
-        
-        switch (buttonIndex) {
-            case 0: {
-                return;
-            }
-            case 1: {
-                BCSecureTextField *textField = (BCSecureTextField *)[alertView textFieldAtIndex:0];
-                NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
-                NSString *convertedText = [textField.text stringByReplacingOccurrencesOfString:decimalSeparator withString:@"."];
-                float fee = [convertedText floatValue];
-                if (fee > 0.01) {
-                    [app standardNotify:BC_STRING_SETTINGS_FEE_TOO_HIGH];
-                    return;
-                }
-                
-                if (fee == 0) {
-                    UIAlertController *alertForWarningOfZeroFee = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_WARNING_FOR_ZERO_FEE preferredStyle:UIAlertControllerStyleAlert];
-                    [alertForWarningOfZeroFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-                    [alertForWarningOfZeroFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                        [self confirmChangeFee:fee];
-                    }]];
-                    [self presentViewController:alertForWarningOfZeroFee animated:YES completion:nil];
-                    return;
-                }
-                
-                [self confirmChangeFee:fee];
-                
-                return;
-            }
-        }
-    }
-}
-
 #pragma mark - TextField Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    // Not the smoothest dismissal of the keyboard but better than no animation
-    [textField resignFirstResponder];
+    __weak SettingsTableViewController *weakSelf = self;
     
-    if (textField.tag == textFieldTagVerifyEmail) {
-        [self verifyEmailWithCode:textField.text];
-        [self.verifyEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    } else if (textField.tag == textFieldTagChangeEmail) {
-        // Set delegate to nil, otherwise alertView delegate method will be called and changeEmail will be called twice
-        self.changeEmailAlertView.delegate = nil;
-        [self changeEmail:textField.text];
-        [self.changeEmailAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (textField.tag == textFieldTagVerifyEmail) {
+            [weakSelf verifyEmailWithCode:textField.text];
+        } else if (textField.tag == textFieldTagChangeEmail) {
+            [weakSelf changeEmail:textField.text];
+        }
+    }];
     
     return YES;
 }

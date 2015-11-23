@@ -96,6 +96,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
 #define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
 #define NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS @"VerifyEmail"
+#define NOTIFICATION_KEY_VERIFY_EMAIL_ERROR @"VerifyEmailError"
 
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"

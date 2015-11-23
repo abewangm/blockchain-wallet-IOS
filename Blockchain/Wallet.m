@@ -1267,8 +1267,8 @@
 
 - (void)on_verify_email_error
 {
-    DLog(@"on_verify_email_success");
-    [app standardNotify:BC_STRING_SETTINGS_VERIFY_EMAIL_INCORRECT_CODE];
+    DLog(@"on_verify_email_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_EMAIL_ERROR object:nil];
 }
 
 - (void)on_get_history_success

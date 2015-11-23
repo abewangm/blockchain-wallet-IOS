@@ -284,7 +284,7 @@
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_ENTER_CODE NSLocalizedString(@"Enter your verification code", nil)
 #define BC_STRING_ENTER_VERIFICATION_CODE NSLocalizedString(@"Enter Verification Code", nil)
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND NSLocalizedString(@"Resend verification email", nil)
-#define BC_STRING_SETTINGS_VERIFY_EMAIL_INCORRECT_CODE NSLocalizedString(@"Invalid verification code. Please try again.", nil)
+#define BC_STRING_SETTINGS_VERIFY_EMAIL_INVALID_CODE NSLocalizedString(@"Invalid verification code. Please try again.", nil)
 #define BC_STRING_SETTINGS_CHANGE_EMAIL NSLocalizedString(@"Change Email", nil)
 #define BC_STRING_SETTINGS_EMAIL_VERIFIED NSLocalizedString(@"Your email has been verified.", nil)
 #define BC_STRING_SETTINGS_WALLET_IDENTIFIER NSLocalizedString (@"Wallet Identifier", nil)
