@@ -86,8 +86,6 @@
 
 - (void)loadBlankWallet
 {
-    self.isSyncingForCriticalProcess = NO;
-    self.isSyncingForTrivialProcess = NO;
     [self loadWalletWithGuid:nil sharedKey:nil password:nil];
 }
 
@@ -176,7 +174,7 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.get_password_strength(\"%@\")", passwordString] floatValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.get_password_strength(\"%@\")", [passwordString escapeStringForJS]] floatValue];
 }
 
 - (void)getHistory
@@ -209,7 +207,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_local_currency(\"%@\")", currencyCode];
+    [self.webView executeJS:@"MyWalletPhone.change_local_currency(\"%@\")", [currencyCode escapeStringForJS]];
 }
 
 - (void)changeBtcCurrency:(NSString *)btcCode
@@ -218,7 +216,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_btc_currency(\"%@\")", btcCode];
+    [self.webView executeJS:@"MyWalletPhone.change_btc_currency(\"%@\")", [btcCode escapeStringForJS]];
 }
 
 - (void)getAccountInfo
@@ -236,7 +234,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_email_account(\"%@\")", newEmailString];
+    [self.webView executeJS:@"MyWalletPhone.change_email_account(\"%@\")", [newEmailString escapeStringForJS]];
 }
 
 - (void)resendVerificationEmail:(NSString *)emailString
@@ -245,7 +243,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.resend_verification_email(\"%@\")", emailString];
+    [self.webView executeJS:@"MyWalletPhone.resend_verification_email(\"%@\")", [emailString escapeStringForJS]];
 }
 
 - (void)verifyEmailWithCode:(NSString *)codeString
@@ -254,7 +252,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.verify_email(\"%@\")", codeString];
+    [self.webView executeJS:@"MyWalletPhone.verify_email(\"%@\")", [codeString escapeStringForJS]];
 }
 
 - (void)cancelTxSigning
@@ -540,15 +538,6 @@
     }
     
    return [self.webView executeJSSynchronous:@"MyWalletPhone.detectPrivateKeyFormat(\"%@\")", [privateKeyString escapeStringForJS]];
-}
-
-- (NSString *)scorePassword:(NSString *)passwordString
-{
-    if (![self.webView isLoaded]) {
-        return nil;
-    }
-    
-    return [self.webView executeJSSynchronous:@"MyWalletPhone.score_password(\"%@\")", passwordString];
 }
 
 - (void)createNewPayment

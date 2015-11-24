@@ -754,6 +754,9 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app.wallet loading_stop];
     
+    self.wallet.isSyncingForTrivialProcess = NO;
+    self.wallet.isSyncingForCriticalProcess = NO;
+    
     [modalView endEditing:YES];
     
     [modalView removeFromSuperview];
@@ -1055,7 +1058,7 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     [self hideBusyView];
     self.wallet.isSyncingForCriticalProcess = NO;
-
+    
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
     [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:errorAlert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
