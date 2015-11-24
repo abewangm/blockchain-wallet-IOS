@@ -152,6 +152,11 @@ MyWalletPhone.createAccount = function(label) {
 };
 
 MyWalletPhone.getActiveAccounts = function() {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return [];
+    }
+    
     var accounts = MyWallet.wallet.hdwallet.accounts;
     
     var activeAccounts = accounts.filter(function(account) { return account.archived === false; });
@@ -160,6 +165,11 @@ MyWalletPhone.getActiveAccounts = function() {
 };
 
 MyWalletPhone.getIndexOfActiveAccount = function(num) {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return 0;
+    }
+    
     var activeAccounts = MyWalletPhone.getActiveAccounts();
 
     var realNum = activeAccounts[num].index;
@@ -168,6 +178,11 @@ MyWalletPhone.getIndexOfActiveAccount = function(num) {
 };
 
 MyWalletPhone.getDefaultAccountIndex = function() {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return 0;
+    }
+    
     var index = MyWallet.wallet.hdwallet.defaultAccountIndex;
 
     var activeAccounts = MyWalletPhone.getActiveAccounts();
@@ -189,6 +204,7 @@ MyWalletPhone.getDefaultAccountIndex = function() {
 
 MyWalletPhone.getAccountsCount = function() {
     if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
         return 0;
     }
 
@@ -198,18 +214,38 @@ MyWalletPhone.getAccountsCount = function() {
 };
 
 MyWalletPhone.getBalanceForAccount = function(num) {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return 0;
+    }
+    
     return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].balance;
 };
 
 MyWalletPhone.getLabelForAccount = function(num) {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return '';
+    }
+    
     return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].label;
 };
 
 MyWalletPhone.setLabelForAccount = function(num, label) {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return;
+    }
+    
     MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].label = label;
 };
 
 MyWalletPhone.getReceivingAddressForAccount = function(num) {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return '';
+    }
+    
     return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].receiveAddress;
 };
 
