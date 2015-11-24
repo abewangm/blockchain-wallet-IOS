@@ -1514,6 +1514,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)authenticateWithTouchID
 {
+    self.pinEntryViewController.view.userInteractionEnabled = NO;
+    
     LAContext *context = [[LAContext alloc] init];
     context.localizedFallbackTitle = @"";
     
@@ -1522,6 +1524,8 @@ void (^secondPasswordSuccess)(NSString *);
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                 localizedReason:BC_STRING_TOUCH_ID_AUTHENTICATE
                           reply:^(BOOL success, NSError *error) {
+                              
+                              self.pinEntryViewController.view.userInteractionEnabled = YES;
                               
                               if (error) {
                                   if (error.code != kLAErrorUserCancel &&
@@ -1563,6 +1567,8 @@ void (^secondPasswordSuccess)(NSString *);
         
     } else {
 
+        self.pinEntryViewController.view.userInteractionEnabled = YES;
+        
         NSString *errorString;
         if (error.code == LAErrorTouchIDNotAvailable) {
             errorString = BC_STRING_TOUCH_ID_ERROR_NOT_AVAILABLE;
