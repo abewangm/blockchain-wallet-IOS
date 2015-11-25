@@ -754,6 +754,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app.wallet loading_stop];
     
+    secondPasswordSuccess = nil;
+    
     self.wallet.isSyncingForTrivialProcess = NO;
     self.wallet.isSyncingForCriticalProcess = NO;
     
