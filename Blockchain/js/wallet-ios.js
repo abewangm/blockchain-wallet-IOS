@@ -269,9 +269,9 @@ MyWalletPhone.changePaymentFrom = function(from) {
 MyWalletPhone.changePaymentTo = function(to) {
     if (currentPayment) {
         if (Helpers.isNumber(to)) {
-            currentPayment.from(MyWalletPhone.getIndexOfActiveAccount(to));
+            currentPayment.to(MyWalletPhone.getIndexOfActiveAccount(to));
         } else {
-            currentPayment.from(to);
+            currentPayment.to(to);
         }
     } else {
         console.log('Payment error: null payment object!');
