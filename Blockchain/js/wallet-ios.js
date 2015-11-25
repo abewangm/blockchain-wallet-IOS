@@ -256,7 +256,11 @@ MyWalletPhone.createNewPayment = function() {
 
 MyWalletPhone.changePaymentFrom = function(from) {
     if (currentPayment) {
-        currentPayment.from(from);
+        if (Helpers.isNumber(from)) {
+            currentPayment.from(MyWalletPhone.getIndexOfActiveAccount(from));
+        } else {
+            currentPayment.from(from);
+        }
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -264,7 +268,11 @@ MyWalletPhone.changePaymentFrom = function(from) {
 
 MyWalletPhone.changePaymentTo = function(to) {
     if (currentPayment) {
-        currentPayment.to(to);
+        if (Helpers.isNumber(to)) {
+            currentPayment.from(MyWalletPhone.getIndexOfActiveAccount(to));
+        } else {
+            currentPayment.from(to);
+        }
     } else {
         console.log('Payment error: null payment object!');
     }
