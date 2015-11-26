@@ -1311,6 +1311,18 @@
     [app standardNotify:error];
 }
 
+- (void)on_add_new_account
+{
+    DLog(@"on_add_new_account");
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+}
+
+- (void)on_error_add_new_account:(NSString*)error
+{
+    DLog(@"on_error_generating_new_address");
+    [app standardNotify:error];
+}
+
 - (void)on_success_get_recovery_phrase:(NSString*)phrase
 {
     DLog(@"on_success_get_recovery_phrase:");
@@ -1506,17 +1518,20 @@
 
 - (void)setLabelForAccount:(int)account label:(NSString *)label
 {
-    if ([self isInitialized]) {
+    if ([self isInitialized] && [app checkInternetConnection]) {
         self.isSyncingForTrivialProcess = YES;
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, label];
     }
 }
 
 - (void)createAccountWithLabel:(NSString *)label
 {
-    if ([self isInitialized]) {
+    if ([self isInitialized] && [app checkInternetConnection]) {
         // Show loading text
         [self loading_start_create_account];
+        
+        self.isSyncingForCriticalProcess = YES;
         
         // Wait a little bit to make sure the loading text is showing - then execute the blocking and kind of long create account
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

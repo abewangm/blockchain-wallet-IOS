@@ -1617,6 +1617,14 @@ void (^secondPasswordSuccess)(NSString *);
     [self removePinFromKeychain];
 }
 
+- (void)initializeScannerInReceiveViewController
+{
+    if (!_receiveViewController) {
+        _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
+    }
+    [_receiveViewController scanPrivateKey];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback

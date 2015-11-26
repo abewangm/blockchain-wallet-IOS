@@ -187,6 +187,8 @@
 
 - (AVCaptureDeviceInput *)getCaptureDeviceInput;
 
+- (void)initializeScannerInReceiveViewController;
+
 @end
 
 extern AppDelegate *app;
