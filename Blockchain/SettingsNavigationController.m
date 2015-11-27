@@ -33,6 +33,7 @@
     headerLabel.adjustsFontSizeToFitWidth = YES;
     headerLabel.text = BC_STRING_SETTINGS;
     [topBar addSubview:headerLabel];
+    self.headerLabel = headerLabel;
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

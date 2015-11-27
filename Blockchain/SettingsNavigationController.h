@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsNavigationController : UINavigationController
+@property (nonatomic) UILabel *headerLabel;
 - (void)reload;
 @end

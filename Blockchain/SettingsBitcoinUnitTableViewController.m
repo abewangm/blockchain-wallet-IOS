@@ -29,6 +29,14 @@
     return app.latestResponse.symbol_btc;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    navigationController.headerLabel.text = BC_STRING_SETTINGS_BTC;
+}
+
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];

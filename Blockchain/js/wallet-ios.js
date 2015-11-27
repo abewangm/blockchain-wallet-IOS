@@ -54,11 +54,6 @@ WalletStore.addEventListener(function (event, obj) {
                 device.execute('on_error_downloading_account_settings');
                 return;
             }
-                             
-            if (obj.message == "update-currency-errorundefined" || obj.message == "update-btc-currency-errorundefined") {
-                device.execute('on_change_currency_error');
-                return;
-            }
 
             // Some messages are JSON objects and the error message is in the map
             try {
@@ -951,6 +946,98 @@ MyWalletPhone.resend_verification_email = function(email) {
     };
     
     BlockchainSettingsAPI.resendEmailConfirmation(email, success, error);
+}
+
+MyWalletPhone.change_mobile_number = function(mobileNumber) {
+    
+    var success = function () {
+        console.log('Changing mobile number');
+        device.execute('on_change_mobile_number_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error changing mobile number: ' + e);
+    };
+    
+    BlockchainSettingsAPI.changeMobileNumber(mobileNumber, success, error);
+}
+
+MyWalletPhone.verify_mobile_number = function(code) {
+    
+    var success = function () {
+        console.log('Verifying mobile number');
+        device.execute('on_verify_mobile_number_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error verifying mobile number: ' + e);
+    };
+    
+    BlockchainSettingsAPI.verifyMobile(code, success, error);
+}
+
+MyWalletPhone.enable_two_step_verification = function() {
+    
+    var success = function () {
+        console.log('Enabling two step SMS');
+        device.execute('on_change_two_step_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error enabling two step SMS: ' + e);
+        device.execute('on_change_two_step_error');
+    };
+    
+    BlockchainSettingsAPI.setTwoFactorSMS(success, error);
+}
+
+MyWalletPhone.disable_two_step_verification = function() {
+    
+    var success = function () {
+        console.log('Disabling two step SMS');
+        device.execute('on_change_two_step_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error disabling two step SMS: ' + e);
+        device.execute('on_change_two_step_error');
+    };
+    
+    BlockchainSettingsAPI.unsetTwoFactor(success, error);
+}
+
+MyWalletPhone.update_password_hint = function(hint) {
+
+    var success = function () {
+        console.log('Updating password hint');
+        device.execute('on_update_password_hint_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error updating password hint: ' + e);
+        device.execute('on_update_password_hint_error');
+    };
+    
+    BlockchainSettingsAPI.update_password_hint1(hint, success, error);
+}
+
+MyWalletPhone.change_password = function(password) {
+    
+    var success = function () {
+        console.log('Changing password');
+        device.execute('on_change_password_success');
+    };
+    
+    var error = function (e) {
+        console.log('Error Changing password: ' + e);
+        device.execute('on_change_password_error');
+    };
+    
+    WalletStore.changePassword(password, success, error);
+}
+
+MyWalletPhone.isCorrectMainPassword = function(password) {
+    return WalletStore.isCorrectMainPassword(password);
 }
 
 MyWalletPhone.change_local_currency = function(code) {

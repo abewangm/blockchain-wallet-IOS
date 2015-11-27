@@ -26,11 +26,101 @@
                         <segue destination="goF-Hn-ysm" kind="show" identifier="currency" id="yG2-uQ-Z4Y"/>
                         <segue destination="PEl-Nc-OHV" kind="show" identifier="about" id="EnS-qO-bj5"/>
                         <segue destination="gkh-Vd-Yx4" kind="show" identifier="btcUnit" id="GMN-m2-0Kk"/>
+                        <segue destination="Jug-BV-tNm" kind="show" identifier="changePassword" id="rNr-oy-xNj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKa-p2-jgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1880" y="284"/>
+        </scene>
+        <!--Settings Change Password View Controller-->
+        <scene sceneID="T4P-KY-u2f">
+            <objects>
+                <viewController id="Jug-BV-tNm" customClass="SettingsChangePasswordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A25-EI-0B6"/>
+                        <viewControllerLayoutGuide type="bottom" id="oaG-SW-iWx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lGN-mj-HAA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zd5-DZ-hsS" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                                <rect key="frame" x="15" y="72" width="560" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zNy-ob-cC6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VKs-B5-luJ" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                                <rect key="frame" x="15" y="110" width="560" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="awS-6h-2bl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ii6-KE-x0B" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                                <rect key="frame" x="15" y="148" width="560" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Qlb-kH-wUB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="Eo5-Zf-tFk">
+                                <rect key="frame" x="15" y="138" width="560" height="2"/>
+                                <animations/>
+                                <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </progressView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmb-pO-dHq">
+                                <rect key="frame" x="512" y="110" width="63" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8NM-22-Q12"/>
+                                    <constraint firstAttribute="width" constant="63" id="GNX-fF-J8h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Eo5-Zf-tFk" firstAttribute="width" secondItem="VKs-B5-luJ" secondAttribute="width" id="1HL-pV-eNS"/>
+                            <constraint firstItem="zd5-DZ-hsS" firstAttribute="leading" secondItem="lGN-mj-HAA" secondAttribute="leadingMargin" constant="-5" id="6VO-6L-80j"/>
+                            <constraint firstItem="VKs-B5-luJ" firstAttribute="leading" secondItem="lGN-mj-HAA" secondAttribute="leadingMargin" constant="-5" id="7IX-6o-uOQ"/>
+                            <constraint firstItem="Ii6-KE-x0B" firstAttribute="leading" secondItem="lGN-mj-HAA" secondAttribute="leadingMargin" constant="-5" id="8j1-2g-6Ov"/>
+                            <constraint firstItem="Ii6-KE-x0B" firstAttribute="top" secondItem="Eo5-Zf-tFk" secondAttribute="bottom" constant="8" id="9XU-47-MaF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kmb-pO-dHq" secondAttribute="trailing" constant="5" id="MTt-Cr-l1d"/>
+                            <constraint firstItem="VKs-B5-luJ" firstAttribute="top" secondItem="zd5-DZ-hsS" secondAttribute="bottom" constant="8" id="Nsg-g2-05n"/>
+                            <constraint firstItem="Eo5-Zf-tFk" firstAttribute="top" secondItem="VKs-B5-luJ" secondAttribute="bottom" constant="-2" id="Nyj-D3-ip8"/>
+                            <constraint firstItem="Ii6-KE-x0B" firstAttribute="top" secondItem="VKs-B5-luJ" secondAttribute="bottom" constant="8" id="O2Q-fW-kth"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VKs-B5-luJ" secondAttribute="trailing" constant="5" id="T1V-zF-Jdq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zd5-DZ-hsS" secondAttribute="trailing" constant="5" id="jIF-Xn-sk1"/>
+                            <constraint firstItem="zd5-DZ-hsS" firstAttribute="top" secondItem="A25-EI-0B6" secondAttribute="bottom" constant="8" id="lQj-Xn-YeH"/>
+                            <constraint firstItem="Kmb-pO-dHq" firstAttribute="centerY" secondItem="VKs-B5-luJ" secondAttribute="centerY" id="myF-z3-kWp"/>
+                            <constraint firstItem="Eo5-Zf-tFk" firstAttribute="centerX" secondItem="VKs-B5-luJ" secondAttribute="centerX" id="nsk-kO-R9p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ii6-KE-x0B" secondAttribute="trailing" constant="5" id="wZx-Vz-Lbe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmNewPasswordTextField" destination="Ii6-KE-x0B" id="PxU-Gb-0ib"/>
+                        <outlet property="mainPasswordTextField" destination="zd5-DZ-hsS" id="VlB-7X-v1R"/>
+                        <outlet property="newerPasswordTextField" destination="VKs-B5-luJ" id="p3F-5b-raZ"/>
+                        <outlet property="passwordFeedbackLabel" destination="Kmb-pO-dHq" id="DMV-Mk-Cnj"/>
+                        <outlet property="passwordStrengthMeter" destination="Eo5-Zf-tFk" id="7BX-Vo-8v6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgc-Di-vzH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882" y="942"/>
         </scene>
         <!--Settings Selector Table View Controller-->
         <scene sceneID="aYu-sV-7Tq">

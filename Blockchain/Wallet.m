@@ -228,31 +228,93 @@
     [self.webView executeJS:@"JSON.stringify(MyWalletPhone.get_account_info())"];
 }
 
-- (void)changeEmail:(NSString *)newEmailString
+- (void)changeEmail:(NSString *)newEmail
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_email_account(\"%@\")", [newEmailString escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.change_email_account(\"%@\")", [newEmail escapeStringForJS]];
 }
 
-- (void)resendVerificationEmail:(NSString *)emailString
+- (void)resendVerificationEmail:(NSString *)email
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.resend_verification_email(\"%@\")", [emailString escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.resend_verification_email(\"%@\")", [email escapeStringForJS]];
 }
 
-- (void)verifyEmailWithCode:(NSString *)codeString
+- (void)verifyEmailWithCode:(NSString *)code{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.verify_email(\"%@\")", [code escapeStringForJS]];
+}
+
+- (void)changeMobileNumber:(NSString *)newMobileNumber
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.verify_email(\"%@\")", [codeString escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.change_mobile_number(\"%@\")", [newMobileNumber escapeStringForJS]];
+}
+
+- (void)verifyMobileNumber:(NSString *)code
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.verify_mobile_number(\"%@\")", [code escapeStringForJS]];
+}
+
+- (void)enableTwoStepVerification
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.enable_two_step_verification()"];
+}
+
+- (void)disableTwoStepVerification
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.disable_two_step_verification()"];
+}
+
+- (void)updatePasswordHint:(NSString *)hint
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.update_password_hint(\"%@\")", [hint escapeStringForJS]];
+}
+
+- (void)changePassword:(NSString *)changedPassword
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.change_password(\"%@\")", [changedPassword escapeStringForJS]];
+}
+
+- (BOOL)isCorrectPassword:(NSString *)inputedPassword
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isCorrectMainPassword(\"%@\")", [inputedPassword escapeStringForJS]] boolValue];
 }
 
 - (void)cancelTxSigning
@@ -1008,6 +1070,24 @@
         return;
     }
     
+    NSRange updateCurrencyErrorStringRange = [message rangeOfString:@"currency-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (updateCurrencyErrorStringRange.location != NSNotFound) {
+        [self performSelector:@selector(on_change_currency_error) withObject:nil afterDelay:0.1f];
+        return;
+    }
+    
+    NSRange updateSMSErrorStringRange = [message rangeOfString:@"sms-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (updateSMSErrorStringRange.location != NSNotFound) {
+        [self performSelector:@selector(on_change_mobile_number_error) withObject:nil afterDelay:0.1f];
+        return;
+    }
+    
+    NSRange updatePasswordHintErrorStringRange = [message rangeOfString:@"password-hint1" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (updatePasswordHintErrorStringRange.location != NSNotFound) {
+        [self performSelector:@selector(on_update_password_hint_error) withObject:nil afterDelay:0.1f];
+        return;
+    }
+    
     if ([type isEqualToString:@"error"]) {
         [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
     } else if ([type isEqualToString:@"info"]) {
@@ -1258,6 +1338,60 @@
 {
     DLog(@"on_verify_email_error");
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_EMAIL_ERROR object:nil];
+}
+
+- (void)on_change_mobile_number_success
+{
+    DLog(@"on_change_mobile_number_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
+}
+
+- (void)on_change_mobile_number_error
+{
+    DLog(@"on_change_mobile_number_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
+}
+
+- (void)on_verify_mobile_number_success
+{
+    DLog(@"on_verify_mobile_number_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS object:nil];
+}
+
+- (void)on_change_two_step_success
+{
+    DLog(@"on_change_two_step_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
+}
+
+- (void)on_change_two_step_error
+{
+    DLog(@"on_change_two_step_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
+}
+
+- (void)on_update_password_hint_success
+{
+    DLog(@"on_update_password_hint_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_SUCCESS object:nil];
+}
+
+- (void)on_update_password_hint_error
+{
+    DLog(@"on_update_password_hint_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR object:nil];
+}
+
+- (void)on_change_password_success
+{
+    DLog(@"on_change_password_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS object:nil];
+}
+
+- (void)on_change_password_error
+{
+    DLog(@"on_change_password_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR object:nil];
 }
 
 - (void)on_get_history_success

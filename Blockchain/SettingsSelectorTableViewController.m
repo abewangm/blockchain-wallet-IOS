@@ -22,6 +22,13 @@
     return app.latestResponse.symbol_local;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    navigationController.headerLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];

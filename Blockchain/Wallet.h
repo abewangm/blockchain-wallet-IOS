@@ -203,10 +203,17 @@
 
 // Settings
 - (void)getAccountInfo;
-- (void)changeEmail:(NSString *)newEmailString;
-- (void)resendVerificationEmail:(NSString *)emailString;
-- (void)verifyEmailWithCode:(NSString *)codeString;
+- (void)changeEmail:(NSString *)newEmail;
+- (void)resendVerificationEmail:(NSString *)email;
+- (void)verifyEmailWithCode:(NSString *)code;
 - (void)getAllCurrencySymbols;
+- (void)changeMobileNumber:(NSString *)newMobileNumber;
+- (void)verifyMobileNumber:(NSString *)code;
+- (void)updatePasswordHint:(NSString *)hint;
+- (void)enableTwoStepVerification;
+- (void)disableTwoStepVerification;
+- (void)changePassword:(NSString *)changedPassword;
+- (BOOL)isCorrectPassword:(NSString *)inputedPassword;
 
 // Payment Spender
 - (void)createNewPayment;
