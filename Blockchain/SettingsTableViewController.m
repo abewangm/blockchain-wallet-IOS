@@ -682,7 +682,9 @@ const int aboutPrivacyPolicy = 1;
         if ([[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] || !passwordHint) {
             [self alertUserThatAllWhiteSpaceCharactersClearsHint];
         } else {
-            [self changePasswordHint:passwordHint];
+            if ([self isHintValid:passwordHint]) {
+                [self changePasswordHint:passwordHint];
+            }
         }
     }]];
     NSString *passwordHint = self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
@@ -716,6 +718,18 @@ const int aboutPrivacyPolicy = 1;
     [app.wallet updatePasswordHint:hint];
 }
 
+- (BOOL)isHintValid:(NSString *)hint
+{
+    if ([app.wallet isCorrectPassword:hint]) {
+        [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR_SAME_AS_PASSWORD];
+        return NO;
+    } else if ([app.wallet validateSecondPassword:hint]) {
+        [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR_SAME_AS_SECOND_PASSWORD];
+        return NO;
+    }
+    return YES;
+}
+
 - (void)changePasswordHintSuccess
 {
     [self resetPasswordHintCell];
@@ -726,7 +740,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)changePasswordHintError
 {
     [self resetPasswordHintCell];
-    [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR];
+    [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR_INVALID_CHARACTERS];
 }
 
 - (void)resetPasswordHintCell
