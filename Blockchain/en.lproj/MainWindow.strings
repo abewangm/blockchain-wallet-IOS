@@ -14,8 +14,8 @@
 /* Class = "IBUILabel"; text = "1"; ObjectID = "360"; */
 "360.text" = "1";
 
-/* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at http://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Log in to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet";
+/* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at https://alpha.blockchain.info/"; ObjectID = "361"; */
+"361.text" = "Log in to your Blockchain Wallet via your PC or Mac at\nhttps://alpha.blockchain.info/";
 
 /* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
