@@ -313,6 +313,23 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (void)showVerifyingBusyViewWithTimer:(NSInteger)timeInSeconds
+{
+    [self showBusyViewWithLoadingText:BC_STRING_LOADING_VERIFYING];
+    self.loginTimer = [NSTimer scheduledTimerWithTimeInterval:timeInSeconds target:self selector:@selector(showErrorLoading) userInfo:nil repeats:NO];
+}
+
+- (void)showErrorLoading
+{
+    [self.loginTimer invalidate];
+
+    if (!self.wallet.guid) {
+        [self.pinEntryViewController reset];
+        [self hideBusyView];
+        [self standardNotifyAutoDismissingController:BC_STRING_ERROR_LOADING_WALLET];
+    }
+}
+
 - (void)hideBusyView
 {
     if (busyView.alpha == 1.0) {
@@ -1545,7 +1562,7 @@ void (^secondPasswordSuccess)(NSString *);
                               
                               if (success) {
                                   dispatch_async(dispatch_get_main_queue(), ^{
-                                      [self showBusyViewWithLoadingText:BC_STRING_LOADING_VERIFYING];
+                                      [self showVerifyingBusyViewWithTimer:30.0];
                                   });
                                   NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
                                   NSString * pin = [self pinFromKeychain];
@@ -1633,7 +1650,7 @@ void (^secondPasswordSuccess)(NSString *);
     NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
     NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)_pin];
     
-    [self showBusyViewWithLoadingText:BC_STRING_LOADING_VERIFYING];
+    [self showVerifyingBusyViewWithTimer:30.0];
     
     // Check if we have an internet connection
     // This only checks if a network interface is up. All other errors (including timeouts) are handled by JavaScript callbacks in Wallet.m
