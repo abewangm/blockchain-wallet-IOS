@@ -304,6 +304,7 @@
 #define BC_STRING_SETTINGS_TERMS_OF_SERVICE NSLocalizedString(@"Terms of Service", nil)
 #define BC_STRING_SETTINGS_VERIFY NSLocalizedString(@"Verify", nil)
 #define BC_STRING_SETTINGS_SENT_TO_ARGUMENT NSLocalizedString(@"Sent to %@", nil)
+#define BC_STRING_SETTINGS_VERIFY_MOBILE_RESEND NSLocalizedString(@"Resend verification SMS", nil)
 #define BC_STRING_SETTINGS_VERIFY_ENTER_CODE NSLocalizedString(@"Enter your verification code", nil)
 #define BC_STRING_ENTER_VERIFICATION_CODE NSLocalizedString(@"Enter Verification Code", nil)
 #define BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND NSLocalizedString(@"Resend verification email", nil)

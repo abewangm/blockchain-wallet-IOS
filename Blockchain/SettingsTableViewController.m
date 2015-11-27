@@ -368,8 +368,8 @@ const int aboutPrivacyPolicy = 1;
 - (void)alertUserToVerifyMobileNumber
 {
     UIAlertController *alertForVerifyingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_ARGUMENT, self.mobileNumberString] preferredStyle:UIAlertControllerStyleAlert];
-    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self verifyMobileNumber:[[alertForVerifyingMobileNumber textFields] firstObject].text];
+    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_RESEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self changeMobileNumber:self.mobileNumberString];
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self alertUserToChangeMobileNumber];
