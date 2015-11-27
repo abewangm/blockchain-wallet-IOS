@@ -19,5 +19,6 @@
 - (void)clearPasswordTextField;
 - (void)clearTextFields;
 - (void)verifyTwoFactorSMS;
+- (void)verifyTwoFactorGoogle;
 
 @end

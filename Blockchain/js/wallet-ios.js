@@ -1209,3 +1209,7 @@ MyWalletPhone.resendTwoFactorSms = function(user_guid) {
     
     MyWallet.resendTwoFactorSms(user_guid, success, error);
 }
+
+MyWalletPhone.get2FAType = function() {
+    return WalletStore.get2FAType();
+}

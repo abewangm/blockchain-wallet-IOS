@@ -12,10 +12,6 @@
 #import "SettingsBitcoinUnitTableViewController.h"
 #import "AppDelegate.h"
 
-const int twoStepAuthTypeSMS = 5;
-const int twoStepAuthTypeGoogle = 4;
-const int twoStepAuthTypeNone = 0;
-
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;
 const int textFieldTagChangeMobileNumber = 6;
@@ -458,10 +454,10 @@ const int aboutPrivacyPolicy = 1;
 {
     NSString *alertTitle;
     BOOL isTwoStepEnabled = NO;
-    if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == twoStepAuthTypeSMS) {
+    if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == TWO_STEP_AUTH_TYPE_SMS) {
         alertTitle = [NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS];
         isTwoStepEnabled = YES;
-    } else if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == twoStepAuthTypeGoogle) {
+    } else if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == TWO_STEP_AUTH_TYPE_GOOGLE) {
         alertTitle = [NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE];
         isTwoStepEnabled = YES;
     } else {
@@ -494,7 +490,7 @@ const int aboutPrivacyPolicy = 1;
 {
     if ([app checkInternetConnection]) {
         
-        if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == twoStepAuthTypeNone) {
+        if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == TWO_STEP_AUTH_TYPE_NONE) {
             self.isEnablingTwoStepSMS = YES;
             if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER] isEqualToString:self.mobileNumberString]) {
                 [self changeMobileNumber:self.mobileNumberString];
@@ -1063,12 +1059,13 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case securityTwoStep: {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
+                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     int authType = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue];
-                    if (authType == twoStepAuthTypeSMS) {
+                    if (authType == TWO_STEP_AUTH_TYPE_SMS) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
-                    } else if (authType == twoStepAuthTypeGoogle) {
+                    } else if (authType == TWO_STEP_AUTH_TYPE_GOOGLE) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                     } else {

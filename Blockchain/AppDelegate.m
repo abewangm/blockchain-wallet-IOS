@@ -1650,6 +1650,11 @@ void (^secondPasswordSuccess)(NSString *);
     [manualPairView verifyTwoFactorSMS];
 }
 
+- (void)verifyTwoFactorGoogle
+{
+    [manualPairView verifyTwoFactorGoogle];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback

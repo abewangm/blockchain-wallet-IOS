@@ -191,6 +191,7 @@
 - (void)initializeScannerInReceiveViewController;
 
 - (void)verifyTwoFactorSMS;
+- (void)verifyTwoFactorGoogle;
 
 @end
 

@@ -744,7 +744,17 @@
 
 - (void)resendTwoFactorSMS
 {
-    [self.webView executeJS:@"MyWalletPhone.resendTwoFactorSms(\"%@\")", [self.guid escapeStringForJS]];
+    if ([self.webView isLoaded]) {
+        [self.webView executeJS:@"MyWalletPhone.resendTwoFactorSms(\"%@\")", [self.guid escapeStringForJS]];
+    }
+}
+
+- (NSString *)get2FAType
+{
+    if ([self.webView isLoaded]) {
+        return [self.webView executeJSSynchronous:@"MyWalletPhone.get2FAType()"];
+    }
+    return nil;
 }
 
 # pragma mark - Transaction handlers
@@ -913,8 +923,14 @@
 - (void)on_fetch_needs_two_factor_code
 {
     DLog(@"on_fetch_needs_two_factor_code");
-    
-    [app verifyTwoFactorSMS];
+    NSString *twoFactorType = [app.wallet get2FAType];
+    if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_GOOGLE) {
+        [app verifyTwoFactorGoogle];
+    } else if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_SMS) {
+        [app verifyTwoFactorSMS];
+    } else {
+        [app standardNotifyAutoDismissingController:BC_STRING_INVALID_AUTHENTICATION_TYPE];
+    }
 }
 
 - (void)on_block

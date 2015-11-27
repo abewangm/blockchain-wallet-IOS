@@ -74,6 +74,7 @@
 #define BC_STRING_SENT NSLocalizedString(@"Sent", nil)
 
 #define BC_STRING_ERROR NSLocalizedString(@"Error", nil)
+#define BC_STRING_INVALID_AUTHENTICATION_TYPE NSLocalizedString(@"Invalid two-factor authentication type", nil)
 #define BC_STRING_ERROR_LOADING_WALLET_IDENTIFIER_FROM_KEYCHAIN NSLocalizedString(@"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again.", nil)
 #define BC_STRING_ERROR_LOADING_WALLET NSLocalizedString(@"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later.", nil)
 
