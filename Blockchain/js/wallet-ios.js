@@ -436,8 +436,11 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     };
     
     device.execute('loading_start_download_wallet');
+
+    if (!twoFACode) {
+        twoFACode = null;
+    }
     
-    twoFACode = null;
     MyWallet.login(user_guid, shared_key, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, null, other_error, fetch_success, decrypt_success, build_hd_success);
 };
 
@@ -1184,4 +1187,19 @@ MyWalletPhone.setLabelForAddress = function(address, label) {
         label = null;
     }
     MyWallet.wallet.key(address).label = label;
+}
+
+MyWalletPhone.resendTwoFactorSms = function(user_guid) {
+    
+    var success = function () {
+        console.log('Resend two factor SMS success');
+        device.execute('on_resend_two_factor_sms_success');
+    }
+    
+    var error = function(error) {
+        console.log('rResend two factor SMS error: ' + error);
+        device.execute('on_resend_two_factor_sms_error', [error]);
+    }
+    
+    MyWallet.resendTwoFactorSms(user_guid, success, error);
 }

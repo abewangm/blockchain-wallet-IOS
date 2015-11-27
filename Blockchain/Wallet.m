@@ -124,7 +124,12 @@
     if (self.guid && self.password) {
         DLog(@"Fetch Wallet");
         
-        [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS]];
+        if (!self.twoFactorInput) {
+            [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS]];
+        } else {
+            [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\", \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS], [self.twoFactorInput escapeStringForJS]];
+        }
+
     }
 }
 
@@ -738,6 +743,11 @@
     [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\",\"%@\",\"%@\")", [email escapeStringForJS], [recoveryPassword escapeStringForJS], [passphrase escapeStringForJS]];
 }
 
+- (void)resendTwoFactorSMS
+{
+    [self.webView executeJS:@"MyWalletPhone.resendTwoFactorSms(\"%@\")", [self.guid escapeStringForJS]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -905,7 +915,7 @@
 {
     DLog(@"on_fetch_needs_two_factor_code");
     
-    [app standardNotify:BC_STRING_DISABLE_TWO_FACTOR title:BC_STRING_ERROR delegate:nil];
+    [app verifyTwoFactorSMS];
 }
 
 - (void)on_block
@@ -1106,7 +1116,10 @@
         if (range.location != NSNotFound) {
             [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
             [self error_restoring_wallet];
+            return;
         }
+        
+        [app standardNotifyAutoDismissingController:message];
     }
 }
 
@@ -1522,6 +1535,16 @@
     if ([self.delegate respondsToSelector:@selector(didFailGetHistory:)]) {
         [self.delegate didFailGetHistory:error];
     }
+}
+
+- (void)on_resend_two_factor_sms_success
+{
+    [app verifyTwoFactorSMS];
+}
+
+- (void)on_resend_two_factor_sms_error:(NSString *)error
+{
+    [app standardNotifyAutoDismissingController:error];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

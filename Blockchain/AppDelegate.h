@@ -190,6 +190,8 @@
 
 - (void)initializeScannerInReceiveViewController;
 
+- (void)verifyTwoFactorSMS;
+
 @end
 
 extern AppDelegate *app;

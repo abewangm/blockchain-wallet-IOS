@@ -440,6 +440,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"walletDidFinishLoad");
     
+    self.wallet.twoFactorInput = nil;
+    
     [manualPairView clearTextFields];
     
     [app closeAllModals];
@@ -1281,6 +1283,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)manualPairClicked:(id)sender
 {
     [self showModalWithContent:manualPairView closeType:ModalCloseTypeBack headerText:BC_STRING_MANUAL_PAIRING];
+    self.wallet.twoFactorInput = nil;
     [manualPairView clearPasswordTextField];
 }
 
@@ -1640,6 +1643,11 @@ void (^secondPasswordSuccess)(NSString *);
         _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
     }
     [_receiveViewController scanPrivateKey];
+}
+
+- (void)verifyTwoFactorSMS
+{
+    [manualPairView verifyTwoFactorSMS];
 }
 
 #pragma mark - Pin Entry Delegates

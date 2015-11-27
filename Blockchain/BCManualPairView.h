@@ -12,10 +12,12 @@
 @interface BCManualPairView : BCModalContentView <UITextFieldDelegate> {
     IBOutlet UITextField *walletIdentifierTextField;
     IBOutlet UITextField *passwordTextField;
+    UITextField *verifyTwoFactorTextField;
 }
 
 - (IBAction)continueClicked:(id)sender;
 - (void)clearPasswordTextField;
 - (void)clearTextFields;
+- (void)verifyTwoFactorSMS;
 
 @end

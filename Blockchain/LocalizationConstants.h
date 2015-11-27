@@ -286,6 +286,7 @@
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_MESSAGE_SMS_ONLY NSLocalizedString(@"You can enable 2-step Verification via SMS on your mobile phone. In order to use Google Authenticator instead, please login to our web wallet.", nil)
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE NSLocalizedString(@"Google Authenticator", nil)
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS NSLocalizedString(@"SMS", nil)
+#define BC_STRING_ENTER_TWO_FACTOR_CODE NSLocalizedString(@"Please enter your 2FA code", nil)
 #define BC_STRING_SETTINGS_SECURITY_PASSWORD_HINT NSLocalizedString(@"Password Hint", nil)
 #define BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT NSLocalizedString(@"Change Password Hint", nil)
 #define BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_WARNING_ALL_WHITESPACE NSLocalizedString(@"Your new password hint contains no text. Your password hint will be cleared.", nil)
