@@ -14,6 +14,9 @@
 #import "AccountTableCell.h"
 #import "SideMenuViewCell.h"
 #import "BCLine.h"
+#import "PrivateKeyReader.h"
+#import "UIViewController+Autodismiss.h"
+
 
 @interface SideMenuViewController ()
 
@@ -392,12 +395,20 @@ int accountEntries = 0;
         cellIdentifier = @"CellBalance";
         
         AccountTableCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        
+
         if (cell == nil) {
             cell = [[AccountTableCell alloc] init];
             cell.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            if (indexPath.section > 0 && indexPath.row >= accountEntries) {
+                UIButton *importPrivateKeyButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
+                [importPrivateKeyButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
+                [importPrivateKeyButton addTarget:self action:@selector(importPrivateKeyClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [cell.contentView addSubview:importPrivateKeyButton];
+                cell.editButton.hidden = YES;
+            }
         }
         
         // Total balance
@@ -423,11 +434,9 @@ int accountEntries = 0;
         // Total legacy balance
         else {
             uint64_t legacyBalance = [app.wallet getTotalBalanceForActiveLegacyAddresses];
-            
             [cell.iconImage setImage:[UIImage imageNamed:@"importedaddress"]];
             cell.amountLabel.text = [app formatMoney:legacyBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = BC_STRING_IMPORTED_ADDRESSES;
-            cell.editButton.hidden = YES;
         }
         
         return cell;
@@ -476,6 +485,11 @@ int accountEntries = 0;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [createAccountView.labelTextField becomeFirstResponder];
     });
+}
+
+- (IBAction)importPrivateKeyClicked:(id)sender
+{
+    [app initializeScannerInReceiveViewController];
 }
 
 @end

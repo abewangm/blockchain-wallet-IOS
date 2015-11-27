@@ -138,9 +138,15 @@ MyWalletPhone.createAccount = function(label) {
 
         device.execute('loading_stop');
 
+        device.execute('on_add_new_account');
+        
         device.execute('reload');
     };
 
+    var error = function (error) {
+        device.execute('on_error_add_new_account:', [error]);
+    }
+    
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
             MyWallet.wallet.newAccount(label, pw, null, success);
