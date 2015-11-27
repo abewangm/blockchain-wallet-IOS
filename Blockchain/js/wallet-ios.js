@@ -435,6 +435,12 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         device.execute('on_fetch_needs_two_factor_code');
     };
     
+    var wrong_two_factor_code = function() {
+        console.log('wrong two factor code');
+        device.execute('loading_stop');
+        device.execute('wrong_two_factor_code');
+    }
+    
     device.execute('loading_start_download_wallet');
 
     if (!twoFACode) {

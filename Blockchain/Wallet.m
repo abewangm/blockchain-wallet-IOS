@@ -129,7 +129,6 @@
         } else {
             [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\", \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS], [self.twoFactorInput escapeStringForJS]];
         }
-
     }
 }
 
@@ -1545,6 +1544,11 @@
 - (void)on_resend_two_factor_sms_error:(NSString *)error
 {
     [app standardNotifyAutoDismissingController:error];
+}
+
+- (void)wrong_two_factor_code
+{
+    [app standardNotifyAutoDismissingController:BC_STRING_SETTINGS_VERIFY_INVALID_CODE];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
