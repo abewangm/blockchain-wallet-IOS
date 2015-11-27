@@ -148,7 +148,7 @@ int accountEntries = 0;
 {
     // Total entries: 1 entry for the total balance, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
     int numberOfAccounts = [app.wallet getAccountsCount];
-    balanceEntries = numberOfAccounts + ([app.wallet hasLegacyAddresses] ? 1 : 0);
+    balanceEntries = numberOfAccounts + 1;
     accountEntries = numberOfAccounts;
 }
 
@@ -176,7 +176,7 @@ int accountEntries = 0;
 - (Boolean)showBalances
 {
     // Return true if the user has upgraded and either legacy adresses or multiple accounts
-    return [app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getAccountsCount] > 1);
+    return [app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getAccountsCount] >= 1);
 }
 
 #pragma mark - SlidingViewController Delegate
@@ -261,7 +261,7 @@ int accountEntries = 0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 1 && accountEntries > 1) {
+    if (section == 1 && accountEntries >= 1) {
         return SECTION_HEADER_HEIGHT;
     }
     
@@ -271,7 +271,7 @@ int accountEntries = 0;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     // My Accounts
-    if (section == 1 && accountEntries > 1) {
+    if (section == 1 && accountEntries >= 1) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, SECTION_HEADER_HEIGHT)];
         view.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
         
