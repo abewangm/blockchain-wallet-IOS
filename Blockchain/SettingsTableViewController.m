@@ -495,11 +495,11 @@ const int aboutPrivacyPolicy = 1;
     if ([app checkInternetConnection]) {
         
         if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == twoStepAuthTypeNone) {
-            if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
-                [self enableTwoStepForSMS];
+            self.isEnablingTwoStepSMS = YES;
+            if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER] isEqualToString:self.mobileNumberString]) {
+                [self changeMobileNumber:self.mobileNumberString];
             } else {
                 [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsMobileNumber inSection:accountDetailsSection]];
-                self.isEnablingTwoStepSMS = YES;
             }
         } else {
             [self disableTwoStep];
