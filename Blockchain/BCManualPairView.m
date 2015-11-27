@@ -113,7 +113,7 @@
 {
     UIAlertController *alertForVerifyingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:BC_STRING_ENTER_TWO_FACTOR_CODE preferredStyle:UIAlertControllerStyleAlert];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        app.wallet.twoFactorInput = [[alertForVerifyingMobileNumber textFields] firstObject].text;
+        app.wallet.twoFactorInput = [[[alertForVerifyingMobileNumber textFields] firstObject].text stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self continueClicked:nil];
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_RESEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -134,13 +134,13 @@
 
 - (void)verifyTwoFactorGoogle
 {
-    UIAlertController *alertForVerifyingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:BC_STRING_ENTER_TWO_FACTOR_CODE preferredStyle:UIAlertControllerStyleAlert];
-    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        app.wallet.twoFactorInput = [[alertForVerifyingMobileNumber textFields] firstObject].text;
+    UIAlertController *alertForVerifyingGoogleAuth = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:BC_STRING_ENTER_TWO_FACTOR_CODE preferredStyle:UIAlertControllerStyleAlert];
+    [alertForVerifyingGoogleAuth addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        app.wallet.twoFactorInput = [[[alertForVerifyingGoogleAuth textFields] firstObject].text stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self continueClicked:nil];
     }]];
-    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [alertForVerifyingMobileNumber addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    [alertForVerifyingGoogleAuth addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertForVerifyingGoogleAuth addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         verifyTwoFactorTextField = (BCSecureTextField *)textField;
         verifyTwoFactorTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         verifyTwoFactorTextField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -148,7 +148,7 @@
         verifyTwoFactorTextField.returnKeyType = UIReturnKeyDone;
         verifyTwoFactorTextField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
     }];
-    [app.window.rootViewController presentViewController:alertForVerifyingMobileNumber animated:YES completion:nil];
+    [app.window.rootViewController presentViewController:alertForVerifyingGoogleAuth animated:YES completion:nil];
 }
 
 @end
