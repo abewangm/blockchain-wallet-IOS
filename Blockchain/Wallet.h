@@ -210,7 +210,7 @@
 - (void)changeMobileNumber:(NSString *)newMobileNumber;
 - (void)verifyMobileNumber:(NSString *)code;
 - (void)updatePasswordHint:(NSString *)hint;
-- (void)enableTwoStepVerification;
+- (void)enableTwoStepVerificationForSMS;
 - (void)disableTwoStepVerification;
 - (void)changePassword:(NSString *)changedPassword;
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword;

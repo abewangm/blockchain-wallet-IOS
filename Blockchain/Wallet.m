@@ -272,13 +272,13 @@
     [self.webView executeJS:@"MyWalletPhone.verify_mobile_number(\"%@\")", [code escapeStringForJS]];
 }
 
-- (void)enableTwoStepVerification
+- (void)enableTwoStepVerificationForSMS
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.enable_two_step_verification()"];
+    [self.webView executeJS:@"MyWalletPhone.enable_two_step_verification_sms()"];
 }
 
 - (void)disableTwoStepVerification

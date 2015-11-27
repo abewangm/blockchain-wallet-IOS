@@ -12,7 +12,9 @@
 #import "SettingsBitcoinUnitTableViewController.h"
 #import "AppDelegate.h"
 
-const int twoStepSMSAuthType = 5;
+const int twoStepAuthTypeSMS = 5;
+const int twoStepAuthTypeGoogle = 4;
+const int twoStepAuthTypeNone = 0;
 
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;
@@ -59,6 +61,8 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic) UITextField *changeFeeTextField;
 @property (nonatomic) float currentFeePerKb;
 
+@property (nonatomic) BOOL isEnablingTwoStepSMS;
+
 @end
 
 @implementation SettingsTableViewController
@@ -101,6 +105,8 @@ const int aboutPrivacyPolicy = 1;
 - (void)reload
 {
     DLog(@"Reloading settings");
+    
+    self.isEnablingTwoStepSMS = NO;
     
     [self getAccountInfo];
     [self getAllCurrencySymbols];
@@ -311,7 +317,9 @@ const int aboutPrivacyPolicy = 1;
 - (void)alertUserToChangeMobileNumber
 {
     UIAlertController *alertForChangingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_CHANGE_MOBILE_NUMBER message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertForChangingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        self.isEnablingTwoStepSMS = NO;
+    }]];
     [alertForChangingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self changeMobileNumber:[[alertForChangingMobileNumber textFields] firstObject].text];
     }]];
@@ -351,6 +359,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changeMobileNumberError
 {
+    self.isEnablingTwoStepSMS = NO;
     [self alertUserOfError:BC_STRING_SETTINGS_ERROR_INVALID_MOBILE_NUMBER];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
@@ -367,10 +376,8 @@ const int aboutPrivacyPolicy = 1;
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // If the user cancels right after adding a legitimate number, update accountInfo
-        UITableViewCell *mobileNumberCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsMobileNumber inSection:accountDetailsSection]];
-        if ([mobileNumberCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_VERIFIED] && ![[self getMobileNumber] isEqualToString:self.mobileNumberString]) {
-            [self getAccountInfo];
-        }
+        self.isEnablingTwoStepSMS = NO;
+        [self getAccountInfo];
     }]];
     [alertForVerifyingMobileNumber addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
@@ -389,12 +396,20 @@ const int aboutPrivacyPolicy = 1;
 {
     [app.wallet verifyMobileNumber:code];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyMobileNumberSuccess) name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS object:nil];
+    // Mobile number error appears through sendEvent
 }
 
 - (void)verifyMobileNumberSuccess
 {
     [self getAccountInfo];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS object:nil];
+    
+    if (self.isEnablingTwoStepSMS) {
+        self.isEnablingTwoStepSMS = NO;
+        [self enableTwoStepForSMS];
+        return;
+    }
+    
     [self alertUserOfSuccess:BC_STRING_SETTINGS_MOBILE_NUMBER_VERIFIED];
 }
 
@@ -439,28 +454,75 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Two Step
 
-- (void)switchTwoStepTapped
+- (void)alertUserToChangeTwoStepVerification
+{
+    NSString *alertTitle;
+    BOOL isTwoStepEnabled = NO;
+    if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == twoStepAuthTypeSMS) {
+        alertTitle = [NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS];
+        isTwoStepEnabled = YES;
+    } else if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == twoStepAuthTypeGoogle) {
+        alertTitle = [NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE];
+        isTwoStepEnabled = YES;
+    } else {
+        alertTitle = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_DISABLED;
+    }
+    
+    UIAlertController *alertForChangingTwoStep = [UIAlertController alertControllerWithTitle:alertTitle message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler: nil]];
+    [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:isTwoStepEnabled ? BC_STRING_DISABLE : BC_STRING_ENABLE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (!isTwoStepEnabled) {
+            [self alertUserThatOnlySMSCanBeEnabled];
+        } else {
+            [self changeTwoStepVerification];
+        }
+    }]];
+    [self presentViewController:alertForChangingTwoStep animated:YES completion:nil];
+}
+
+- (void)alertUserThatOnlySMSCanBeEnabled
+{
+    UIAlertController *alertForChangingTwoStep = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION message:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_MESSAGE_SMS_ONLY preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler: nil]];
+    [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self changeTwoStepVerification];
+    }]];
+    [self presentViewController:alertForChangingTwoStep animated:YES completion:nil];
+}
+
+- (void)changeTwoStepVerification
 {
     if ([app checkInternetConnection]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepSuccess) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepError) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
-        UITableViewCell *twoStepCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityTwoStep inSection:securitySection]];
-        UISwitch *switchTwoStep = (UISwitch *)twoStepCell.accessoryView;
-        switchTwoStep.userInteractionEnabled = NO;
-        if (switchTwoStep.on) {
-            [app.wallet enableTwoStepVerification];
+        
+        if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == twoStepAuthTypeNone) {
+            if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
+                [self enableTwoStepForSMS];
+            } else {
+                [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsMobileNumber inSection:accountDetailsSection]];
+                self.isEnablingTwoStepSMS = YES;
+            }
         } else {
-            [app.wallet disableTwoStepVerification];
+            [self disableTwoStep];
         }
-    } else {
-        [self getAccountInfo];
     }
+}
+
+- (void)enableTwoStepForSMS
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepSuccess) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepError) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
+    [app.wallet enableTwoStepVerificationForSMS];
+}
+
+- (void)disableTwoStep
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepSuccess) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepError) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
+    [app.wallet disableTwoStepVerification];
 }
 
 - (void)resetTwoStepStatus
 {
-    UITableViewCell *twoStepCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityTwoStep inSection:securitySection]];
-    twoStepCell.accessoryView.userInteractionEnabled = YES;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
 }
@@ -468,6 +530,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)changeTwoStepSuccess
 {
     [self resetTwoStepStatus];
+    [self getAccountInfo];
 }
 
 - (void)changeTwoStepError
@@ -532,10 +595,7 @@ const int aboutPrivacyPolicy = 1;
         });
     }]];
     [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        // If the user cancels right after adding a legitimate email address, update the tableView so that it says "Please verify" instead of "Please add"
-        if ([[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]].detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_VERIFIED] || ![[self getUserEmail] isEqualToString:self.emailString]) {
-            [self getAccountInfo];
-        }
+        [self getAccountInfo];
     }]];
     [alertForVerifyingEmail addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
@@ -831,7 +891,7 @@ const int aboutPrivacyPolicy = 1;
         case securitySection: {
             switch (indexPath.row) {
                 case securityTwoStep: {
-                    [app.wallet enableTwoStepVerification];
+                    [self alertUserToChangeTwoStepVerification];
                     return;
                 }
                 case securityPasswordHint: {
@@ -989,10 +1049,18 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case securityTwoStep: {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
-                    UISwitch *switchForTwoStep = [[UISwitch alloc] init];
-                    switchForTwoStep.on = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == twoStepSMSAuthType ? YES : NO;
-                    [switchForTwoStep addTarget:self action:@selector(switchTwoStepTapped) forControlEvents:UIControlEventTouchUpInside];
-                    cell.accessoryView = switchForTwoStep;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    int authType = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue];
+                    if (authType == twoStepAuthTypeSMS) {
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS;
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
+                    } else if (authType == twoStepAuthTypeGoogle) {
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE;
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
+                    } else {
+                        cell.detailTextLabel.text = BC_STRING_DISABLED;
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                    }
                     return cell;
                 }
                 case securityPasswordHint: {

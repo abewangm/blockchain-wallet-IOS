@@ -976,7 +976,7 @@ MyWalletPhone.verify_mobile_number = function(code) {
     BlockchainSettingsAPI.verifyMobile(code, success, error);
 }
 
-MyWalletPhone.enable_two_step_verification = function() {
+MyWalletPhone.enable_two_step_verification_sms = function() {
     
     var success = function () {
         console.log('Enabling two step SMS');
@@ -994,12 +994,12 @@ MyWalletPhone.enable_two_step_verification = function() {
 MyWalletPhone.disable_two_step_verification = function() {
     
     var success = function () {
-        console.log('Disabling two step SMS');
+        console.log('Disabling two step');
         device.execute('on_change_two_step_success');
     };
     
     var error = function (e) {
-        console.log('Error disabling two step SMS: ' + e);
+        console.log('Error disabling two step: ' + e);
         device.execute('on_change_two_step_error');
     };
     
