@@ -1203,8 +1203,8 @@ MyWalletPhone.resendTwoFactorSms = function(user_guid) {
     }
     
     var error = function(error) {
-        console.log('rResend two factor SMS error: ' + error);
-        device.execute('on_resend_two_factor_sms_error', [error]);
+        console.log('Resend two factor SMS error: ' + error);
+        device.execute('on_resend_two_factor_sms_error:', [error]);
     }
     
     MyWallet.resendTwoFactorSms(user_guid, success, error);

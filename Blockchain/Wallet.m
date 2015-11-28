@@ -1567,6 +1567,7 @@
 
 - (void)wrong_two_factor_code
 {
+    self.twoFactorInput = nil;
     [app standardNotifyAutoDismissingController:BC_STRING_SETTINGS_VERIFY_INVALID_CODE];
 }
 

@@ -67,6 +67,7 @@
         [passwordTextField becomeFirstResponder];
     }
     else if (textField == verifyTwoFactorTextField) {
+        [app.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
         app.wallet.twoFactorInput = textField.text;
         [self continueClicked:textField];
     } else {
@@ -112,12 +113,12 @@
 - (void)verifyTwoFactorSMS
 {
     UIAlertController *alertForVerifyingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:BC_STRING_ENTER_TWO_FACTOR_CODE preferredStyle:UIAlertControllerStyleAlert];
+    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [app.wallet resendTwoFactorSMS];
+    }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         app.wallet.twoFactorInput = [[[alertForVerifyingMobileNumber textFields] firstObject].text stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self continueClicked:nil];
-    }]];
-    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_RESEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [app.wallet resendTwoFactorSMS];
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [alertForVerifyingMobileNumber addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
