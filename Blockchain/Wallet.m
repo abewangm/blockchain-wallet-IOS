@@ -1134,7 +1134,10 @@
             return;
         }
         
-        [app standardNotifyAutoDismissingController:message];
+        if (![app guid]) {
+            // This error is only need for validating 2FA, so present it if the app has no guid, since it currently conflicts with makeNotice when backgrounding after changing password in-app
+            [app standardNotifyAutoDismissingController:message];
+        }
     }
 }
 

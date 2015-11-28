@@ -23,6 +23,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    createButton.frame = CGRectMake(0, 0, app.window.frame.size.width, 46);
+    createButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    [createButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
+    [createButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    createButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
+    [createButton addTarget:self action:@selector(confirmChangePassword) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.mainPasswordTextField.inputAccessoryView = createButton;
+    self.newerPasswordTextField.inputAccessoryView = createButton;
+    self.confirmNewPasswordTextField.inputAccessoryView = createButton;
+    
     self.mainPasswordTextField.delegate = self;
     self.newerPasswordTextField.delegate = self;
     self.confirmNewPasswordTextField.delegate = self;
@@ -88,12 +101,21 @@
 
 - (void)changePasswordSuccess
 {
+    [self.mainPasswordTextField resignFirstResponder];
+    [self.newerPasswordTextField resignFirstResponder];
+    [self.confirmNewPasswordTextField resignFirstResponder];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR object:nil];
     
     UIAlertController *alertForChangePasswordSuccess = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_SETTINGS_SECURITY_PASSWORD_CHANGED preferredStyle:UIAlertControllerStyleAlert];
     [alertForChangePasswordSuccess addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alertForChangePasswordSuccess animated:YES completion:nil];
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        app.settingsNavigationController = nil;
+        [app closeSideMenu];
+        [app showPasswordModal];
+        [app.window.rootViewController presentViewController:alertForChangePasswordSuccess animated:YES completion:nil];
+    }];
     
     self.view.userInteractionEnabled = YES;
     
@@ -102,6 +124,7 @@
 
 - (void)changePasswordError
 {
+    self.view.userInteractionEnabled = YES;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR object:nil];
 }
@@ -149,19 +172,24 @@
 - (BOOL)isReadyToSubmitForm
 {
     if (![app.wallet isCorrectPassword:self.mainPasswordTextField.text]) {
-        [app standardNotify:BC_STRING_INCORRECT_PASSWORD];
+        [self alertUserOfError:BC_STRING_INCORRECT_PASSWORD];
         return NO;
     }
     
     if ([self.newerPasswordTextField.text length] < 10 || [self.newerPasswordTextField.text length] > 255) {
-        [app standardNotify:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
+        [self alertUserOfError:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
         [self.newerPasswordTextField becomeFirstResponder];
         return NO;
     }
     
     if (![self.newerPasswordTextField.text isEqualToString:[self.confirmNewPasswordTextField text]]) {
-        [app standardNotify:BC_STRING_PASSWORDS_DO_NOT_MATCH];
+        [self alertUserOfError:BC_STRING_PASSWORDS_DO_NOT_MATCH];
         [self.confirmNewPasswordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if ([app.wallet isCorrectPassword:self.newerPasswordTextField.text]) {
+        [self alertUserOfError:BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT];
         return NO;
     }
     
@@ -170,6 +198,13 @@
     }
     
     return YES;
+}
+
+- (void)alertUserOfError:(NSString *)errorMessage
+{
+    UIAlertController *alertForError = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
+    [alertForError addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertForError animated:YES completion:nil];
 }
 
 @end

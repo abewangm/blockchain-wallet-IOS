@@ -105,6 +105,8 @@
 - (TransactionsViewController*)transactionsViewController;
 
 - (void)forgetWallet;
+- (void)showPasswordModal;
+
 - (void)toggleSideMenu;
 - (void)closeSideMenu;
 
