@@ -81,6 +81,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.isEnablingTwoStepSMS = NO;
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_SETTINGS;
     BOOL loadedSettings = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LOADED_SETTINGS] boolValue];
@@ -391,14 +392,20 @@ const int aboutPrivacyPolicy = 1;
 - (void)verifyMobileNumber:(NSString *)code
 {
     [app.wallet verifyMobileNumber:code];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyMobileNumberSuccess) name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS object:nil];
+    [self addObserversForVerifyingMobileNumber];
     // Mobile number error appears through sendEvent
+}
+
+- (void)addObserversForVerifyingMobileNumber
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyMobileNumberSuccess) name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyMobileNumberError) name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_ERROR object:nil];
 }
 
 - (void)verifyMobileNumberSuccess
 {
     [self getAccountInfo];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS object:nil];
+    [self removeObserversForVerifyingMobileNumber];
     
     if (self.isEnablingTwoStepSMS) {
         self.isEnablingTwoStepSMS = NO;
@@ -407,6 +414,18 @@ const int aboutPrivacyPolicy = 1;
     }
     
     [self alertUserOfSuccess:BC_STRING_SETTINGS_MOBILE_NUMBER_VERIFIED];
+}
+
+- (void)verifyMobileNumberError
+{
+    [self removeObserversForVerifyingMobileNumber];
+    self.isEnablingTwoStepSMS = NO;
+}
+
+- (void)removeObserversForVerifyingMobileNumber
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_ERROR object:nil];
 }
 
 #pragma mark - Change Touch ID
@@ -464,23 +483,9 @@ const int aboutPrivacyPolicy = 1;
         alertTitle = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_DISABLED;
     }
     
-    UIAlertController *alertForChangingTwoStep = [UIAlertController alertControllerWithTitle:alertTitle message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertForChangingTwoStep = [UIAlertController alertControllerWithTitle:alertTitle message:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_MESSAGE_SMS_ONLY preferredStyle:UIAlertControllerStyleAlert];
     [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler: nil]];
     [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:isTwoStepEnabled ? BC_STRING_DISABLE : BC_STRING_ENABLE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        if (!isTwoStepEnabled) {
-            [self alertUserThatOnlySMSCanBeEnabled];
-        } else {
-            [self changeTwoStepVerification];
-        }
-    }]];
-    [self presentViewController:alertForChangingTwoStep animated:YES completion:nil];
-}
-
-- (void)alertUserThatOnlySMSCanBeEnabled
-{
-    UIAlertController *alertForChangingTwoStep = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION message:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_MESSAGE_SMS_ONLY preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler: nil]];
-    [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self changeTwoStepVerification];
     }]];
     [self presentViewController:alertForChangingTwoStep animated:YES completion:nil];
@@ -492,8 +497,8 @@ const int aboutPrivacyPolicy = 1;
         
         if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == TWO_STEP_AUTH_TYPE_NONE) {
             self.isEnablingTwoStepSMS = YES;
-            if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER] isEqualToString:self.mobileNumberString]) {
-                [self changeMobileNumber:self.mobileNumberString];
+            if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
+                [self enableTwoStepForSMS];
             } else {
                 [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsMobileNumber inSection:accountDetailsSection]];
             }
@@ -505,19 +510,23 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)enableTwoStepForSMS
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepSuccess) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepError) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
+    [self addObserversForChangingTwoStep];
     [app.wallet enableTwoStepVerificationForSMS];
 }
 
 - (void)disableTwoStep
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepSuccess) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepError) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
+    [self addObserversForChangingTwoStep];
     [app.wallet disableTwoStepVerification];
 }
 
-- (void)resetTwoStepStatus
+- (void)addObserversForChangingTwoStep
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepSuccess) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepError) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
+}
+
+- (void)removeObserversForChangingTwoStep
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
@@ -525,13 +534,13 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changeTwoStepSuccess
 {
-    [self resetTwoStepStatus];
+    [self removeObserversForChangingTwoStep];
     [self getAccountInfo];
 }
 
 - (void)changeTwoStepError
 {
-    [self resetTwoStepStatus];
+    [self removeObserversForChangingTwoStep];
     [self getAccountInfo];
 }
 

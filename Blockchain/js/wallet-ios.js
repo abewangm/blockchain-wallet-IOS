@@ -980,6 +980,8 @@ MyWalletPhone.verify_mobile_number = function(code) {
     
     var error = function (e) {
         console.log('Error verifying mobile number: ' + e);
+        // Error message is already shown through a sendEvent
+        device.execute('on_verify_mobile_number_error');
     };
     
     BlockchainSettingsAPI.verifyMobile(code, success, error);

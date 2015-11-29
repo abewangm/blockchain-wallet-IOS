@@ -1389,6 +1389,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS object:nil];
 }
 
+- (void)on_verify_mobile_number_error
+{
+    DLog(@"on_verify_mobile_number_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_ERROR object:nil];
+}
+
 - (void)on_change_two_step_success
 {
     DLog(@"on_change_two_step_success");

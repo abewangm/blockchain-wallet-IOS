@@ -92,8 +92,7 @@
 - (void)confirmChangePassword
 {
     if ([self isReadyToSubmitForm]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePasswordSuccess) name:NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePasswordError) name:NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR object:nil];
+        [self addObserversForChangingPassword];
         self.view.userInteractionEnabled = NO;
         [app.wallet changePassword:self.newerPasswordTextField.text];
     }
@@ -105,8 +104,7 @@
     [self.newerPasswordTextField resignFirstResponder];
     [self.confirmNewPasswordTextField resignFirstResponder];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR object:nil];
+    [self removeObserversForChangingPassword];
     
     UIAlertController *alertForChangePasswordSuccess = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_SETTINGS_SECURITY_PASSWORD_CHANGED preferredStyle:UIAlertControllerStyleAlert];
     [alertForChangePasswordSuccess addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
@@ -125,6 +123,17 @@
 - (void)changePasswordError
 {
     self.view.userInteractionEnabled = YES;
+    [self removeObserversForChangingPassword];
+}
+
+- (void)addObserversForChangingPassword
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePasswordSuccess) name:NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePasswordError) name:NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR object:nil];
+}
+
+- (void)removeObserversForChangingPassword
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR object:nil];
 }
