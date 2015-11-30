@@ -472,15 +472,19 @@ const int aboutPrivacyPolicy = 1;
 - (void)alertUserToChangeTwoStepVerification
 {
     NSString *alertTitle;
-    BOOL isTwoStepEnabled = NO;
-    if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == TWO_STEP_AUTH_TYPE_SMS) {
+    BOOL isTwoStepEnabled = YES;
+    int twoStepType = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue];
+    if (twoStepType == TWO_STEP_AUTH_TYPE_SMS) {
         alertTitle = [NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS];
-        isTwoStepEnabled = YES;
-    } else if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == TWO_STEP_AUTH_TYPE_GOOGLE) {
+    } else if (twoStepType == TWO_STEP_AUTH_TYPE_GOOGLE) {
         alertTitle = [NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE];
-        isTwoStepEnabled = YES;
-    } else {
+    } else if (twoStepType == TWO_STEP_AUTH_TYPE_YUBI_KEY){
+        alertTitle = [NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_YUBI_KEY];
+    } else if (twoStepType == TWO_STEP_AUTH_TYPE_NONE) {
         alertTitle = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_DISABLED;
+        isTwoStepEnabled = NO;
+    } else {
+        alertTitle = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED;
     }
     
     UIAlertController *alertForChangingTwoStep = [UIAlertController alertControllerWithTitle:alertTitle message:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_MESSAGE_SMS_ONLY preferredStyle:UIAlertControllerStyleAlert];
@@ -1071,15 +1075,18 @@ const int aboutPrivacyPolicy = 1;
                     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     int authType = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue];
+                    cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                     if (authType == TWO_STEP_AUTH_TYPE_SMS) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS;
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                     } else if (authType == TWO_STEP_AUTH_TYPE_GOOGLE) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE;
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
-                    } else {
+                    } else if (authType == TWO_STEP_AUTH_TYPE_YUBI_KEY) {
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_YUBI_KEY;
+                    } else if (authType == TWO_STEP_AUTH_TYPE_NONE) {
                         cell.detailTextLabel.text = BC_STRING_DISABLED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                    } else {
+                        cell.detailTextLabel.text = BC_STRING_UNKNOWN;
                     }
                     return cell;
                 }
