@@ -559,8 +559,6 @@ void (^secondPasswordSuccess)(NSString *);
     // Close all modals
     [app closeAllModals];
     
-    [self.loginTimer invalidate];
-    
     // Close screens that shouldn't be in the foreground when returning to the wallet
     if (_backupNavigationViewController) {
         [_backupNavigationViewController dismissViewControllerAnimated:NO completion:nil];
@@ -1019,6 +1017,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)logout
 {
+    [self.loginTimer invalidate];
+    
     [self.wallet cancelTxSigning];
     
     [self.wallet loadBlankWallet];
