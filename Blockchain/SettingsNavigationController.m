@@ -43,6 +43,34 @@
     [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:backButton];
     self.backButton = backButton;
+    
+    BCFadeView *busyView = [[BCFadeView alloc] initWithFrame:app.window.rootViewController.view.frame];
+    busyView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    UIView *textWithSpinnerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 110)];
+    textWithSpinnerView.backgroundColor = [UIColor whiteColor];
+    [busyView addSubview:textWithSpinnerView];
+    textWithSpinnerView.center = busyView.center;
+    
+    UILabel *busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    busyLabel.adjustsFontSizeToFitWidth = YES;
+    busyLabel.text = BC_STRING_LOADING_SYNCING_WALLET;
+    busyLabel.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 + 15);
+    [textWithSpinnerView addSubview:busyLabel];
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 - 15);
+    [textWithSpinnerView addSubview:spinner];
+    [textWithSpinnerView bringSubviewToFront:spinner];
+    [spinner startAnimating];
+
+    busyView.containerView = textWithSpinnerView;
+    [busyView fadeOut];
+    
+    [self.view addSubview:busyView];
+    
+    [self.view bringSubviewToFront:busyView];
+    
+    self.busyView = busyView;
 }
 
 - (void)viewDidLayoutSubviews
@@ -79,6 +107,8 @@
         SettingsTableViewController *settingsViewController = (SettingsTableViewController *)self.visibleViewController;
         [settingsViewController reload];
     }
+    
+    [self.busyView fadeOut];
 }
 
 @end

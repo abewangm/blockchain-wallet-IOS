@@ -302,6 +302,9 @@ const int aboutPrivacyPolicy = 1;
     uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
     [app.wallet setTransactionFee:convertedFee];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
+    
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    [navigationController.busyView fadeIn];
 }
 
 #pragma mark - Change Mobile Number
