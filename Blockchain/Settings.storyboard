@@ -89,41 +89,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPe-3K-Hpg" customClass="BCFadeView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38c-8a-Op7">
-                                        <rect key="frame" x="175" y="245" width="250" height="110"/>
-                                        <subviews>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tqm-3F-xRV">
-                                                <rect key="frame" x="115" y="27" width="20" height="20"/>
-                                                <animations/>
-                                            </activityIndicatorView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.75" contentMode="left" fixedFrame="YES" text="Changing Password" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="U5c-Ux-JQm">
-                                                <rect key="frame" x="6" y="53" width="238" height="31"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="110" id="H1o-J5-69M"/>
-                                            <constraint firstAttribute="width" constant="250" id="b6h-cN-kYe"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="38c-8a-Op7" firstAttribute="centerX" secondItem="aPe-3K-Hpg" secondAttribute="centerX" id="7qh-qS-egp"/>
-                                    <constraint firstItem="38c-8a-Op7" firstAttribute="centerY" secondItem="aPe-3K-Hpg" secondAttribute="centerY" id="9GO-qJ-6f8"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="containerView" destination="38c-8a-Op7" id="GuS-D8-eY9"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -133,15 +98,11 @@
                             <constraint firstItem="VKs-B5-luJ" firstAttribute="leading" secondItem="lGN-mj-HAA" secondAttribute="leadingMargin" constant="-5" id="7IX-6o-uOQ"/>
                             <constraint firstItem="Ii6-KE-x0B" firstAttribute="leading" secondItem="lGN-mj-HAA" secondAttribute="leadingMargin" constant="-5" id="8j1-2g-6Ov"/>
                             <constraint firstItem="Ii6-KE-x0B" firstAttribute="top" secondItem="Eo5-Zf-tFk" secondAttribute="bottom" constant="8" id="9XU-47-MaF"/>
-                            <constraint firstItem="aPe-3K-Hpg" firstAttribute="height" secondItem="lGN-mj-HAA" secondAttribute="height" id="Gbm-GF-NtG"/>
-                            <constraint firstItem="aPe-3K-Hpg" firstAttribute="centerY" secondItem="lGN-mj-HAA" secondAttribute="centerY" id="MH5-Mc-8BF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Kmb-pO-dHq" secondAttribute="trailing" constant="5" id="MTt-Cr-l1d"/>
                             <constraint firstItem="VKs-B5-luJ" firstAttribute="top" secondItem="zd5-DZ-hsS" secondAttribute="bottom" constant="8" id="Nsg-g2-05n"/>
                             <constraint firstItem="Eo5-Zf-tFk" firstAttribute="top" secondItem="VKs-B5-luJ" secondAttribute="bottom" constant="-2" id="Nyj-D3-ip8"/>
                             <constraint firstItem="Ii6-KE-x0B" firstAttribute="top" secondItem="VKs-B5-luJ" secondAttribute="bottom" constant="8" id="O2Q-fW-kth"/>
-                            <constraint firstItem="aPe-3K-Hpg" firstAttribute="centerX" secondItem="lGN-mj-HAA" secondAttribute="centerX" id="P8O-zm-LDQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VKs-B5-luJ" secondAttribute="trailing" constant="5" id="T1V-zF-Jdq"/>
-                            <constraint firstItem="aPe-3K-Hpg" firstAttribute="width" secondItem="lGN-mj-HAA" secondAttribute="width" id="X9T-z0-6Oi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zd5-DZ-hsS" secondAttribute="trailing" constant="5" id="jIF-Xn-sk1"/>
                             <constraint firstItem="zd5-DZ-hsS" firstAttribute="top" secondItem="A25-EI-0B6" secondAttribute="bottom" constant="8" id="lQj-Xn-YeH"/>
                             <constraint firstItem="Kmb-pO-dHq" firstAttribute="centerY" secondItem="VKs-B5-luJ" secondAttribute="centerY" id="myF-z3-kWp"/>
@@ -150,7 +111,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="busyView" destination="aPe-3K-Hpg" id="G3Z-Pf-PXj"/>
                         <outlet property="confirmNewPasswordTextField" destination="Ii6-KE-x0B" id="PxU-Gb-0ib"/>
                         <outlet property="mainPasswordTextField" destination="zd5-DZ-hsS" id="VlB-7X-v1R"/>
                         <outlet property="newerPasswordTextField" destination="VKs-B5-luJ" id="p3F-5b-raZ"/>
@@ -176,7 +136,7 @@
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RV9-Y2-SS7" id="lda-XP-Jrq">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -207,7 +167,7 @@
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iR7-6X-pMc" id="TMZ-CJ-kzi">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>

@@ -11,7 +11,6 @@
 #import "SettingsChangePasswordViewController.h"
 
 @interface SettingsChangePasswordViewController () <UITextFieldDelegate>
-@property (nonatomic) IBOutlet BCFadeView *busyView;
 @property (nonatomic) IBOutlet UILabel *passwordFeedbackLabel;
 @property (nonatomic) IBOutlet UIProgressView *passwordStrengthMeter;
 @property (nonatomic) IBOutlet BCTextField *mainPasswordTextField;
@@ -25,9 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.busyView.alpha = 0.0;
-    [self hideBusyState];
     
     UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createButton.frame = CGRectMake(0, 0, app.window.frame.size.width, 46);
@@ -98,31 +94,19 @@
 {
     if ([self isReadyToSubmitForm]) {
         [self addObserversForChangingPassword];
-        [self showBusyState];
+        
+        [self.mainPasswordTextField resignFirstResponder];
+        [self.newerPasswordTextField resignFirstResponder];
+        [self.confirmNewPasswordTextField resignFirstResponder];
+        
+        SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+        [navigationController.busyView fadeIn];
         [app.wallet changePassword:self.newerPasswordTextField.text];
-    }
-}
-
-- (void)showBusyView
-{
-    [self.view bringSubviewToFront:self.busyView];
-    
-    [self.busyView fadeIn];
-}
-
-- (void)hideBusyView
-{
-    if (self.busyView.alpha == 1.0) {
-        [self.busyView fadeOut];
     }
 }
 
 - (void)changePasswordSuccess
 {
-    [self.mainPasswordTextField resignFirstResponder];
-    [self.newerPasswordTextField resignFirstResponder];
-    [self.confirmNewPasswordTextField resignFirstResponder];
-    
     [self removeObserversForChangingPassword];
     
     UIAlertController *alertForChangePasswordSuccess = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_SETTINGS_SECURITY_PASSWORD_CHANGED preferredStyle:UIAlertControllerStyleAlert];
@@ -133,34 +117,15 @@
         [app showPasswordModal];
         [app.window.rootViewController presentViewController:alertForChangePasswordSuccess animated:YES completion:nil];
     }];
-    
-    SettingsNavigationController *settingsNavigationController = (SettingsNavigationController *)self.navigationController;
-    settingsNavigationController.backButton.enabled = YES;
-    self.view.userInteractionEnabled = YES;
-    [self hideBusyState];
+
     [self clearTextFields];
 }
 
 - (void)changePasswordError
 {
-    [self hideBusyState];
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    [navigationController.busyView fadeOut];
     [self removeObserversForChangingPassword];
-}
-
-- (void)hideBusyState
-{
-    SettingsNavigationController *settingsNavigationController = (SettingsNavigationController *)self.navigationController;
-    settingsNavigationController.backButton.enabled = YES;
-    [self hideBusyView];
-    self.view.userInteractionEnabled = YES;
-}
-
-- (void)showBusyState
-{
-    SettingsNavigationController *settingsNavigationController = (SettingsNavigationController *)self.navigationController;
-    settingsNavigationController.backButton.enabled = NO;
-    [self showBusyView];
-    self.view.userInteractionEnabled = NO;
 }
 
 - (void)addObserversForChangingPassword
