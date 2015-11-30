@@ -546,6 +546,31 @@ UIAlertController *popupAddressArchive;
     };
 }
 
+- (IBAction)addNewAddressClicked:(id)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_ADDRESS message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *generateNewAddressAction = [UIAlertAction actionWithTitle:BC_STRING_NEW_ADDRESS_GENERATE_NEW style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self generateNewAddress];
+    }];
+    UIAlertAction *scanPrivateKeyAction = [UIAlertAction actionWithTitle:BC_STRING_SCAN_PRIVATE_KEY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self scanPrivateKey];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alertController addAction:generateNewAddressAction];
+    [alertController addAction:scanPrivateKeyAction];
+    [alertController addAction:cancelAction];
+    
+    [self.view.window.rootViewController presentViewController:alertController animated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] addObserver:alertController
+                                                 selector:@selector(autoDismiss)
+                                                     name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS
+                                                   object:nil];
+    }];
+}
+
 - (IBAction)labelSaveClicked:(id)sender
 {
     NSString *label = [labelTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -973,6 +998,12 @@ UIAlertController *popupAddressArchive;
         labelString = BC_STRING_MY_ACCOUNTS;
     else if (section == 1) {
         labelString = BC_STRING_IMPORTED_ADDRESSES;
+        if (![app.wallet didUpgradeToHd]) {
+            UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
+            [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
+            [addButton addTarget:self action:@selector(addNewAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [view addSubview:addButton];
+        }
     }
     else if (section == 2)
         labelString = BC_STRING_IMPORTED_ADDRESSES_ARCHIVED;
