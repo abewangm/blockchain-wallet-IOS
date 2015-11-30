@@ -1077,10 +1077,7 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-    NSString *fromAddressString = self.sendFromAddress ? self.fromAddress : [app.wallet getReceiveAddressForAccount:self.fromAccount];
-    NSString *toAddressString = self.sendToAddress ? self.toAddress : [app.wallet getReceiveAddressForAccount:self.toAccount];
-    
-    if ([fromAddressString isEqualToString:toAddressString]) {
+    if (self.sendFromAddress && self.sendToAddress && [self.fromAddress isEqualToString:self.toAddress]) {
         [self showErrorBeforeSending:BC_STRING_FROM_TO_ADDRESS_DIFFERENT];
         return;
     }
