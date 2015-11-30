@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 
 @interface SettingsNavigationController ()
-@property (nonatomic) UIButton *backButton;
 @end
 
 @implementation SettingsNavigationController

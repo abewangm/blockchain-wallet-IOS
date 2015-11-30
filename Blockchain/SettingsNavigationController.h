@@ -10,5 +10,6 @@
 
 @interface SettingsNavigationController : UINavigationController
 @property (nonatomic) UILabel *headerLabel;
+@property (nonatomic) UIButton *backButton;
 - (void)reload;
 @end

@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "BCFadeView.h"
 #import "SettingsChangePasswordViewController.h"
 
 @interface SettingsChangePasswordViewController () <UITextFieldDelegate>
+@property (nonatomic) IBOutlet BCFadeView *busyView;
 @property (nonatomic) IBOutlet UILabel *passwordFeedbackLabel;
 @property (nonatomic) IBOutlet UIProgressView *passwordStrengthMeter;
 @property (nonatomic) IBOutlet BCTextField *mainPasswordTextField;
@@ -23,6 +25,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.busyView.alpha = 0.0;
+    [self hideBusyState];
     
     UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createButton.frame = CGRectMake(0, 0, app.window.frame.size.width, 46);
@@ -93,8 +98,22 @@
 {
     if ([self isReadyToSubmitForm]) {
         [self addObserversForChangingPassword];
-        self.view.userInteractionEnabled = NO;
+        [self showBusyState];
         [app.wallet changePassword:self.newerPasswordTextField.text];
+    }
+}
+
+- (void)showBusyView
+{
+    [self.view bringSubviewToFront:self.busyView];
+    
+    [self.busyView fadeIn];
+}
+
+- (void)hideBusyView
+{
+    if (self.busyView.alpha == 1.0) {
+        [self.busyView fadeOut];
     }
 }
 
@@ -115,15 +134,33 @@
         [app.window.rootViewController presentViewController:alertForChangePasswordSuccess animated:YES completion:nil];
     }];
     
+    SettingsNavigationController *settingsNavigationController = (SettingsNavigationController *)self.navigationController;
+    settingsNavigationController.backButton.enabled = YES;
     self.view.userInteractionEnabled = YES;
-    
+    [self hideBusyState];
     [self clearTextFields];
 }
 
 - (void)changePasswordError
 {
-    self.view.userInteractionEnabled = YES;
+    [self hideBusyState];
     [self removeObserversForChangingPassword];
+}
+
+- (void)hideBusyState
+{
+    SettingsNavigationController *settingsNavigationController = (SettingsNavigationController *)self.navigationController;
+    settingsNavigationController.backButton.enabled = YES;
+    [self hideBusyView];
+    self.view.userInteractionEnabled = YES;
+}
+
+- (void)showBusyState
+{
+    SettingsNavigationController *settingsNavigationController = (SettingsNavigationController *)self.navigationController;
+    settingsNavigationController.backButton.enabled = NO;
+    [self showBusyView];
+    self.view.userInteractionEnabled = NO;
 }
 
 - (void)addObserversForChangingPassword
