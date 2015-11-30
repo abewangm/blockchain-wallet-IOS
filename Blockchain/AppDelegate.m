@@ -556,6 +556,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    [self.loginTimer invalidate];
+  
     // Close all modals
     [app closeAllModals];
     
