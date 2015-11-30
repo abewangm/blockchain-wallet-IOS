@@ -1659,6 +1659,11 @@ void (^secondPasswordSuccess)(NSString *);
     [manualPairView verifyTwoFactorGoogle];
 }
 
+- (void)verifyTwoFactorYubiKey
+{
+    [manualPairView verifyTwoFactorYubiKey];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback

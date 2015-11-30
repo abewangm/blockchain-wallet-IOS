@@ -194,6 +194,7 @@
 
 - (void)verifyTwoFactorSMS;
 - (void)verifyTwoFactorGoogle;
+- (void)verifyTwoFactorYubiKey;
 
 @end
 

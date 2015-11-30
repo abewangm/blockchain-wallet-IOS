@@ -112,7 +112,7 @@
 
 - (void)verifyTwoFactorSMS
 {
-    UIAlertController *alertForVerifyingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:BC_STRING_ENTER_TWO_FACTOR_CODE preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertForVerifyingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:[NSString stringWithFormat:BC_STRING_ENTER_ARGUMENT_TWO_FACTOR_CODE, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS] preferredStyle:UIAlertControllerStyleAlert];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [app.wallet resendTwoFactorSMS];
     }]];
@@ -135,13 +135,23 @@
 
 - (void)verifyTwoFactorGoogle
 {
-    UIAlertController *alertForVerifyingGoogleAuth = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:BC_STRING_ENTER_TWO_FACTOR_CODE preferredStyle:UIAlertControllerStyleAlert];
-    [alertForVerifyingGoogleAuth addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        app.wallet.twoFactorInput = [[[alertForVerifyingGoogleAuth textFields] firstObject].text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [self verifyTwoFactorSimpleWithType:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE];
+}
+
+- (void)verifyTwoFactorYubiKey
+{
+    [self verifyTwoFactorSimpleWithType:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_YUBI_KEY];
+}
+
+- (void)verifyTwoFactorSimpleWithType:(NSString *)type
+{
+    UIAlertController *alertForVerifying = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:[NSString stringWithFormat:BC_STRING_ENTER_ARGUMENT_TWO_FACTOR_CODE, type] preferredStyle:UIAlertControllerStyleAlert];
+    [alertForVerifying addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        app.wallet.twoFactorInput = [[[alertForVerifying textFields] firstObject].text stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self continueClicked:nil];
     }]];
-    [alertForVerifyingGoogleAuth addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [alertForVerifyingGoogleAuth addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    [alertForVerifying addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertForVerifying addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         verifyTwoFactorTextField = (BCSecureTextField *)textField;
         verifyTwoFactorTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         verifyTwoFactorTextField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -149,7 +159,7 @@
         verifyTwoFactorTextField.returnKeyType = UIReturnKeyDone;
         verifyTwoFactorTextField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
     }];
-    [app.window.rootViewController presentViewController:alertForVerifyingGoogleAuth animated:YES completion:nil];
+    [app.window.rootViewController presentViewController:alertForVerifying animated:YES completion:nil];
 }
 
 @end

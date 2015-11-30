@@ -291,7 +291,7 @@
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_YUBI_KEY NSLocalizedString(@"Yubi Key", nil)
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS NSLocalizedString(@"SMS", nil)
 #define BC_STRING_UNKNOWN NSLocalizedString(@"Unknown", nil)
-#define BC_STRING_ENTER_TWO_FACTOR_CODE NSLocalizedString(@"Please enter your 2FA code", nil)
+#define BC_STRING_ENTER_ARGUMENT_TWO_FACTOR_CODE NSLocalizedString(@"Please enter your %@ 2FA code", nil)
 #define BC_STRING_SETTINGS_SECURITY_PASSWORD_HINT NSLocalizedString(@"Password Hint", nil)
 #define BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT NSLocalizedString(@"Change Password Hint", nil)
 #define BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_WARNING_ALL_WHITESPACE NSLocalizedString(@"Your new password hint contains no text. Your password hint will be cleared.", nil)

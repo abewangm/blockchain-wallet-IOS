@@ -928,6 +928,8 @@
         [app verifyTwoFactorGoogle];
     } else if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_SMS) {
         [app verifyTwoFactorSMS];
+    } else if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_YUBI_KEY) {
+        [app verifyTwoFactorYubiKey];
     } else {
         [app standardNotifyAutoDismissingController:BC_STRING_INVALID_AUTHENTICATION_TYPE];
     }
