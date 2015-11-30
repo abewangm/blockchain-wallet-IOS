@@ -115,14 +115,16 @@ Boolean shouldShowAnimation;
 
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+    NSString *build = infoDictionary[@"CFBundleVersion"];
+    NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
 #ifdef DEBUG
     #ifdef HD_ENABLED
-        versionLabel.text =  [NSString stringWithFormat:@"%@ (v3)", version];
+        versionLabel.text =  [NSString stringWithFormat:@"%@ (v3)", versionAndBuild];
     #else
-        versionLabel.text =  [NSString stringWithFormat:@"%@ (v2)", version];
+        versionLabel.text =  [NSString stringWithFormat:@"%@ (v2)", versionAndBuild];
     #endif
 #else
-    versionLabel.text =  [NSString stringWithFormat:@"%@", version];
+    versionLabel.text =  [NSString stringWithFormat:@"%@", versionAndBuild];
 #endif
     
     [self addSubview:versionLabel];
@@ -145,7 +147,7 @@ Boolean shouldShowAnimation;
     NSString *bundleVersion = infoDictionary[@"CFBundleVersion"];
     NSString *bundleShortVersionString = infoDictionary[@"CFBundleShortVersionString"];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:bundleShortName message:[[NSString alloc] initWithFormat:@"%@\nv%@", bundleVersion, bundleShortVersionString] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:bundleShortName message:[[NSString alloc] initWithFormat:@"Build %@\nv%@", bundleVersion, bundleShortVersionString] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
     [alert show];
 }
 

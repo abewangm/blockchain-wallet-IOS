@@ -32,15 +32,16 @@ static NSString *getVersionLabelString()
 {
     NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-
+    NSString *build = infoDictionary[@"CFBundleVersion"];
+    NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
 #ifdef DEBUG
     #ifdef HD_ENABLED
-        return [NSString stringWithFormat:@"%@ (v3)", version];
+        return [NSString stringWithFormat:@"%@ (v3)", versionAndBuild];
     #else
-        return [NSString stringWithFormat:@"%@ (v2)", version];
+        return [NSString stringWithFormat:@"%@ (v2)", versionAndBuild];
     #endif
 #else
-    return[NSString stringWithFormat:@"%@", version];
+    return[NSString stringWithFormat:@"%@", versionAndBuild];
 #endif
 }
 
@@ -216,7 +217,7 @@ static PEViewController *VerifyController()
     NSString *bundleVersion = infoDictionary[@"CFBundleVersion"];
     NSString *bundleShortVersionString = infoDictionary[@"CFBundleShortVersionString"];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:bundleShortName message:[[NSString alloc] initWithFormat:@"%@\nv%@", bundleVersion, bundleShortVersionString] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:bundleShortName message:[[NSString alloc] initWithFormat:@"Build %@\nv%@", bundleVersion, bundleShortVersionString] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
     [alert show];
 }
 
