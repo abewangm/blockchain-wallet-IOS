@@ -484,16 +484,22 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)toggleEmailNotifications
 {
-    if ([self notificationsEnabled]) {
-        [app.wallet disableEmailNotifications];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesSectionNotificationsFooter];
+    
+    if ([app checkInternetConnection]) {
+        if ([self notificationsEnabled]) {
+            [app.wallet disableEmailNotifications];
+        } else {
+            [app.wallet enableEmailNotifications];
+        }
+        
+        UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:indexPath];
+        changeEmailNotificationsCell.userInteractionEnabled = NO;
+        [self addObserversForChangingEmailNotifications];
     } else {
-        [app.wallet enableEmailNotifications];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-    
-    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesSectionNotificationsFooter]];
-    changeEmailNotificationsCell.userInteractionEnabled = NO;
-    
-    [self addObserversForChangingEmailNotifications];
+
 }
 
 - (void)addObserversForChangingEmailNotifications
