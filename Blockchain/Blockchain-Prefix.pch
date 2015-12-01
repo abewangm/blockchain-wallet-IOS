@@ -148,6 +148,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER @"sms_number"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED @"email_verified"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE @"auth_type"
+#define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON @"notifications_on"
+#define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE @"notifications_type"
 
 #define USER_DEFAULTS_KEY_SHARED_KEY @"sharedKey"
 #define USER_DEFAULTS_KEY_GUID @"guid"

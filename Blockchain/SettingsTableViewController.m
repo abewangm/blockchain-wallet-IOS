@@ -22,14 +22,17 @@ const int accountDetailsIdentifier = 0;
 const int accountDetailsMobileNumber = 1;
 const int accountDetailsEmail = 2;
 
-const int displaySection = 1;
+const int notificationsSection = 1;
+const int notificationsEmail = 0;
+
+const int displaySection = 2;
 const int displayLocalCurrency = 0;
 const int displayBtcUnit = 1;
 
-const int feesSection = 2;
+const int feesSection = 3;
 const int feePerKb = 0;
 
-const int securitySection = 3;
+const int securitySection = 4;
 const int securityTwoStep = 0;
 const int securityPasswordHint = 1;
 const int securityPasswordChange = 2;
@@ -38,7 +41,7 @@ const int securityTouchID = 3;
 #else
 const int securityTouchID = -1;
 #endif
-const int aboutSection = 4;
+const int aboutSection = 5;
 const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
@@ -468,6 +471,63 @@ const int aboutPrivacyPolicy = 1;
         [app disabledTouchID];
         [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
     }
+}
+
+#pragma mark - Change email notifications
+
+- (BOOL)notificationsEnabled
+{
+    NSArray *notificationsType = self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE];
+    int notificationsOn = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON] intValue];
+    return notificationsType && [notificationsType count] > 0 && [notificationsType containsObject:@1] && notificationsOn > 0;
+}
+
+- (void)toggleEmailNotifications
+{
+    if ([self notificationsEnabled]) {
+        [app.wallet disableEmailNotifications];
+    } else {
+        [app.wallet enableEmailNotifications];
+    }
+    
+    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:notificationsEmail inSection:notificationsSection]];
+    changeEmailNotificationsCell.userInteractionEnabled = NO;
+    
+    [self addObserversForChangingEmailNotifications];
+}
+
+- (void)addObserversForChangingEmailNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailNotificationsSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailNotificationsSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR object:nil];
+}
+
+- (void)removeObserversForChangingEmailNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR object:nil];
+}
+
+- (void)changeEmailNotificationsSuccess
+{
+    [self removeObserversForChangingEmailNotifications];
+    
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    [navigationController.busyView fadeIn];
+    
+    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:notificationsEmail inSection:notificationsSection]];
+    changeEmailNotificationsCell.userInteractionEnabled = YES;
+}
+
+- (void)changeEmailNotificationsError
+{
+    [self removeObserversForChangingEmailNotifications];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:notificationsEmail inSection:notificationsSection];
+    
+    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    changeEmailNotificationsCell.userInteractionEnabled = YES;
+    
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Change Two Step
@@ -949,17 +1009,14 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#ifdef TOUCH_ID_ENABLED
-    return 5;
-#else
-    return 4;
-#endif
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case accountDetailsSection: return 3;
+        case notificationsSection: return 1;
         case displaySection: return 2;
         case feesSection: return 1;
         case securitySection: return securityTouchID < 0 ? 3 : 4;
@@ -972,6 +1029,7 @@ const int aboutPrivacyPolicy = 1;
 {
     switch (section) {
         case accountDetailsSection: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
+        case notificationsSection: return BC_STRING_SETTINGS_NOTIFICATIONS;
         case displaySection: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
         case feesSection: return BC_STRING_SETTINGS_FEES;
         case securitySection: return BC_STRING_SETTINGS_SECURITY;
@@ -984,6 +1042,7 @@ const int aboutPrivacyPolicy = 1;
 {
     switch (section) {
         case accountDetailsSection: return BC_STRING_SETTINGS_EMAIL_FOOTER;
+        case notificationsSection: return BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER;
         default: return nil;
     }
 }
@@ -1032,6 +1091,19 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
                     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+                    return cell;
+                }
+            }
+        }
+        case notificationsSection: {
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+            switch (indexPath.row) {
+                case notificationsEmail: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_NOTIFICATIONS;
+                    UISwitch *switchForEmailNotifications = [[UISwitch alloc] init];
+                    switchForEmailNotifications.on = [self notificationsEnabled];
+                    [switchForEmailNotifications addTarget:self action:@selector(toggleEmailNotifications) forControlEvents:UIControlEventTouchUpInside];
+                    cell.accessoryView = switchForEmailNotifications;
                     return cell;
                 }
             }
