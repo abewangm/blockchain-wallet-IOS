@@ -713,6 +713,7 @@ BOOL displayingLocalSymbolSend;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
         if (self.toAddress && [app.wallet isValidAddress:self.toAddress]) {
             [self didSelectToAddress:self.toAddress];
+            return NO;
         }
         DLog(@"toAddress: %@", self.toAddress);
     }
