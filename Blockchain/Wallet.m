@@ -513,7 +513,7 @@
 
 - (void)setLabel:(NSString*)label forLegacyAddress:(NSString*)address
 {
-    if (![self isInitialized]) {
+    if (![self isInitialized] || ![app checkInternetConnection]) {
         return;
     }
     
@@ -524,7 +524,7 @@
 
 - (void)archiveLegacyAddress:(NSString*)address
 {
-    if (![self isInitialized]) {
+    if (![self isInitialized] || ![app checkInternetConnection]) {
         return;
     }
     
@@ -537,7 +537,7 @@
 
 - (void)unArchiveLegacyAddress:(NSString*)address
 {
-    if (![self isInitialized]) {
+    if (![self isInitialized] || ![app checkInternetConnection]) {
         return;
     }
     
