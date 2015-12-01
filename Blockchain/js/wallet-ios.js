@@ -1215,3 +1215,31 @@ MyWalletPhone.resendTwoFactorSms = function(user_guid) {
 MyWalletPhone.get2FAType = function() {
     return WalletStore.get2FAType();
 }
+
+MyWalletPhone.enableNotifications = function() {
+    
+    var success = function () {
+        console.log('Enable notifications success');
+        device.execute('on_change_email_notifications_success');
+    }
+    
+    var error = function(error) {
+        console.log('Enable notifications error: ' + error);
+    }
+    
+    MyWallet.wallet.enableNotifications(success, error);
+}
+
+MyWalletPhone.disableNotifications = function() {
+    
+    var success = function () {
+        console.log('Disable notifications success');
+        device.execute('on_change_email_notifications_success');
+    }
+    
+    var error = function(error) {
+        console.log('Disable notifications error: ' + error);
+    }
+    
+    MyWallet.wallet.disableNotifications(success, error);
+}

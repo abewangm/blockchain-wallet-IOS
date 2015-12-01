@@ -107,7 +107,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR @"ChangeHintError"
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS @"ChangePassword"
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR @"ChangePasswordError"
-
+#define NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS @"ChangeEmailNotifications"
+#define NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR @"ChangeEmailNotificationsError"
 
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"

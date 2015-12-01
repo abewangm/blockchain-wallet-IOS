@@ -757,6 +757,24 @@
     return nil;
 }
 
+- (void)enableEmailNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.enableNotifications()"];
+}
+
+- (void)disableEmailNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.disableNotifications()"];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -1577,6 +1595,18 @@
 {
     self.twoFactorInput = nil;
     [app standardNotifyAutoDismissingController:BC_STRING_SETTINGS_VERIFY_INVALID_CODE];
+}
+
+- (void)on_change_email_notifications_success
+{
+    DLog(@"on_change_email_notifications_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS object:nil];
+}
+
+- (void)on_change_email_notifications_error
+{
+    DLog(@"on_change_email_notifications_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR object:nil];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

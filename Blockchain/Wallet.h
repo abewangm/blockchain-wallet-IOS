@@ -218,6 +218,8 @@
 - (void)disableTwoStepVerification;
 - (void)changePassword:(NSString *)changedPassword;
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword;
+- (void)enableEmailNotifications;
+- (void)disableEmailNotifications;
 
 // Payment Spender
 - (void)createNewPayment;
