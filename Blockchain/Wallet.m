@@ -1133,6 +1133,12 @@
         return;
     }
     
+    NSRange incorrectPasswordErrorStringRange = [message rangeOfString:@"Please check your password is correct" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (incorrectPasswordErrorStringRange.location != NSNotFound && ![app guid]) {
+        // Error message shown in error_other_decrypting_wallet without guid
+        return;
+    }
+    
     if ([type isEqualToString:@"error"]) {
         [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
     } else if ([type isEqualToString:@"info"]) {
@@ -1155,7 +1161,7 @@
         }
         
         if (![app guid]) {
-            // This error is only need for validating 2FA, so present it if the app has no guid, since it currently conflicts with makeNotice when backgrounding after changing password in-app
+            // This error is used whe trying to login with incorrect passwords or when the account is locked, so present an alert if the app has no guid, since it currently conflicts with makeNotice when backgrounding after changing password in-app
             [app standardNotifyAutoDismissingController:message];
         }
     }
