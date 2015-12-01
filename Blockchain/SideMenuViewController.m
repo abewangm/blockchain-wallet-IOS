@@ -146,9 +146,9 @@ int accountEntries = 0;
 
 - (void)reloadNumberOfBalancesToDisplay
 {
-    // Total entries: 1 entry for the total balance, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
+    // Total entries: 1 entry for the total balance, 1 for adding a new account, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
     int numberOfAccounts = [app.wallet getAccountsCount];
-    balanceEntries = numberOfAccounts + 1;
+    balanceEntries = numberOfAccounts + 2;
     accountEntries = numberOfAccounts;
 }
 
@@ -200,7 +200,7 @@ int accountEntries = 0;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self showBalances]) {
-        if (indexPath.section != 2) {
+        if (indexPath.section != 1) {
             return;
         }
     }
@@ -236,6 +236,10 @@ int accountEntries = 0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0 && indexPath.row == 0 && [self showBalances]) {
+        // My Accounts needs a smaller height
+        return SECTION_HEADER_HEIGHT;
+    }
     if (![self showBalances]) {
         return MENU_ENTRY_HEIGHT;
     }
@@ -256,13 +260,13 @@ int accountEntries = 0;
         return 1;
     }
     
-    return 3;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 1 && accountEntries >= 1) {
-        return SECTION_HEADER_HEIGHT;
+    if (section == 0 && accountEntries >= 1) {
+        return BALANCE_ENTRY_HEIGHT;
     }
     
     return 0;
@@ -270,33 +274,25 @@ int accountEntries = 0;
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    // My Accounts
-    if (section == 1 && accountEntries >= 1) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, SECTION_HEADER_HEIGHT)];
+    // Total Balance
+    if (section == 0 && accountEntries >= 1) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, BALANCE_ENTRY_HEIGHT)];
         view.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+        uint64_t totalBalance = [app.wallet getTotalActiveBalance];
         
-        BCLine *topSeparator = [[BCLine alloc] initWithFrame:CGRectMake(56, 0, self.tableView.frame.size.width, 1.0/[UIScreen mainScreen].scale)];
-        topSeparator.backgroundColor = [UIColor whiteColor];
-        [view addSubview:topSeparator];
-        
-        UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wallet.png"]];
-        icon.frame = CGRectMake(18, 13, 20, 18);
-        [view addSubview:icon];
-        
-        UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 0, self.tableView.frame.size.width - 56, SECTION_HEADER_HEIGHT)];
-        headerLabel.text = BC_STRING_MY_ACCOUNTS;
+        UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 10, self.tableView.frame.size.width - 100, 18)];
+        headerLabel.text = BC_STRING_TOTAL_BALANCE;
         headerLabel.textColor = [UIColor whiteColor];
         headerLabel.font = [UIFont boldSystemFontOfSize:17.0];
         [view addSubview:headerLabel];
-
-#ifndef DISABLE_EDITING_ACCOUNTS
-        UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
-        [addButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
-        [addButton addTarget:self action:@selector(addAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:addButton];
-#endif
         
-        BCLine *bottomSeparator = [[BCLine alloc] initWithFrame:CGRectMake(56, SECTION_HEADER_HEIGHT, self.tableView.frame.size.width, 1.0/[UIScreen mainScreen].scale)];
+        UILabel *amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 24, self.tableView.frame.size.width - 100, 30)];
+        amountLabel.text = [app formatMoney:totalBalance localCurrency:app->symbolLocal];;
+        amountLabel.textColor = [UIColor whiteColor];
+        amountLabel.font = [UIFont boldSystemFontOfSize:17.0];
+        [view addSubview:amountLabel];
+        
+        BCLine *bottomSeparator = [[BCLine alloc] initWithFrame:CGRectMake(56, BALANCE_ENTRY_HEIGHT, self.tableView.frame.size.width, 1.0/[UIScreen mainScreen].scale)];
         bottomSeparator.backgroundColor = [self.tableView separatorColor];
         [view addSubview:bottomSeparator];
         
@@ -312,9 +308,9 @@ int accountEntries = 0;
         return menuEntries;
     }
     if (sectionIndex == 0) {
-        return 1;
+        return balanceEntries;
     }
-    if (sectionIndex == 2) {
+    if (sectionIndex == 1) {
         return menuEntries;
     }
     
@@ -326,7 +322,7 @@ int accountEntries = 0;
     static NSString *cellIdentifier;
     
     if ((![self showBalances] && indexPath.section == 0) ||
-        ([self showBalances] && indexPath.section == 2)) {
+        ([self showBalances] && indexPath.section == 1)) {
 
         cellIdentifier = @"CellMenu";
         
@@ -402,28 +398,36 @@ int accountEntries = 0;
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            if (indexPath.section > 0 && indexPath.row >= accountEntries) {
+            if (indexPath.section == 0 && indexPath.row > accountEntries) {
                 UIButton *importPrivateKeyButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
                 [importPrivateKeyButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
                 [importPrivateKeyButton addTarget:self action:@selector(importPrivateKeyClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.contentView addSubview:importPrivateKeyButton];
                 cell.editButton.hidden = YES;
+            } else if (indexPath.section == 0 && indexPath.row == 0) {
+                UIButton *addAccountButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
+                [addAccountButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
+                [addAccountButton addTarget:self action:@selector(addAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [cell.contentView addSubview:addAccountButton];
+                cell.editButton.hidden = YES;
             }
         }
         
-        // Total balance
+        // My Accounts
         if (indexPath.section == 0 && indexPath.row == 0) {
-            uint64_t totalBalance = [app.wallet getTotalActiveBalance];
-            
-            cell.amountLabel.text = [app formatMoney:totalBalance localCurrency:app->symbolLocal];
-            cell.labelLabel.text = BC_STRING_TOTAL_BALANCE;
+            [cell.iconImage setImage:[UIImage imageNamed:@"wallet.png"]];
+            CGFloat heightDifference = cell.labelLabel.center.y - cell.contentView.center.y;
+            cell.labelLabel.frame = CGRectOffset(cell.labelLabel.frame, 0, -heightDifference);
+            cell.labelLabel.text = BC_STRING_MY_ACCOUNTS;
+#ifdef DISABLE_EDITING_ACCOUNTS
             cell.editButton.hidden = YES;
+#endif
+            return cell;
         }
         // Account balances
-        else if (indexPath.row < accountEntries) {
-            int accountIdx = (int) indexPath.row;
+        else if (indexPath.row <= accountEntries) {
+            int accountIdx = (int) indexPath.row - 1;
             uint64_t accountBalance = [app.wallet getBalanceForAccount:accountIdx];
-            
             cell.amountLabel.text = [app formatMoney:accountBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = [app.wallet getLabelForAccount:accountIdx];
             cell.accountIdx = accountIdx;
@@ -448,12 +452,12 @@ int accountEntries = 0;
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         if ([self showBalances]) {
             // Custom separator inset
-            float leftInset = (indexPath.section != 2) ? 56 : 15;
+            float leftInset = (indexPath.section != 1) ? 56 : 15;
             [cell setSeparatorInset:UIEdgeInsetsMake(0, leftInset, 0, 0)];
             
             // No separator for last entry of each section
-            if ((indexPath.section == 1 && indexPath.row == balanceEntries - 1) ||
-                (indexPath.section == 2 && indexPath.row == menuEntries - 1)) {
+            if ((indexPath.section == 0 && indexPath.row == balanceEntries - 1) ||
+                (indexPath.section == 1 && indexPath.row == menuEntries - 1)) {
                 [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
             }
         } else {
