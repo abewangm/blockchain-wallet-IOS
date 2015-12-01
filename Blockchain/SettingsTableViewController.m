@@ -17,20 +17,20 @@ const int textFieldTagVerifyMobileNumber = 7;
 const int textFieldTagChangeMobileNumber = 6;
 const int textFieldTagVerifyEmail = 5;
 
-const int accountDetailsSection = 0;
-const int accountDetailsIdentifier = 0;
-const int accountDetailsMobileNumber = 1;
-const int accountDetailsEmail = 2;
+const int walletInformationSection = 0;
+const int walletInformationIdentifier = 0;
 
-const int notificationsSection = 1;
-const int notificationsEmail = 0;
+const int preferencesSectionEmailFooter = 1;
+const int preferencesEmail = 0;
 
-const int displaySection = 2;
+const int preferencesSectionNotificationsFooter = 2;
+const int preferencesMobileNumber = 0;
+const int preferencesNotifications = 1;
+
+const int preferencesSectionEnd = 3;
 const int displayLocalCurrency = 0;
 const int displayBtcUnit = 1;
-
-const int feesSection = 3;
-const int feePerKb = 0;
+const int feePerKb = 2;
 
 const int securitySection = 4;
 const int securityTwoStep = 0;
@@ -304,7 +304,7 @@ const int aboutPrivacyPolicy = 1;
     NSNumber *unconvertedFee = [NSNumber numberWithFloat:fee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
     uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
     [app.wallet setTransactionFee:convertedFee];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:feesSection]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:preferencesSectionEnd]] withRowAnimation:UITableViewRowAnimationNone];
     
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     [navigationController.busyView fadeIn];
@@ -490,7 +490,7 @@ const int aboutPrivacyPolicy = 1;
         [app.wallet enableEmailNotifications];
     }
     
-    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:notificationsEmail inSection:notificationsSection]];
+    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesSectionNotificationsFooter]];
     changeEmailNotificationsCell.userInteractionEnabled = NO;
     
     [self addObserversForChangingEmailNotifications];
@@ -515,14 +515,14 @@ const int aboutPrivacyPolicy = 1;
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     [navigationController.busyView fadeIn];
     
-    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:notificationsEmail inSection:notificationsSection]];
+    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesNotifications]];
     changeEmailNotificationsCell.userInteractionEnabled = YES;
 }
 
 - (void)changeEmailNotificationsError
 {
     [self removeObserversForChangingEmailNotifications];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:notificationsEmail inSection:notificationsSection];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesNotifications];
     
     UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:indexPath];
     changeEmailNotificationsCell.userInteractionEnabled = YES;
@@ -567,7 +567,7 @@ const int aboutPrivacyPolicy = 1;
             if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
                 [self enableTwoStepForSMS];
             } else {
-                [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsMobileNumber inSection:accountDetailsSection]];
+                [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesMobileNumber inSection:preferencesSectionNotificationsFooter]];
             }
         } else {
             [self disableTwoStep];
@@ -635,7 +635,7 @@ const int aboutPrivacyPolicy = 1;
     UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS preferredStyle:UIAlertControllerStyleAlert];
     [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // If the user cancels right after adding a legitimate email address, update accountInfo
-        UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:accountDetailsEmail inSection:accountDetailsSection]];
+        UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesEmail inSection:preferencesSectionEmailFooter]];
         if (([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_UNVERIFIED] && [alertForChangingEmail.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) || ![[self getUserEmail] isEqualToString:self.emailString]) {
             [self getAccountInfo];
         }
@@ -914,9 +914,9 @@ const int aboutPrivacyPolicy = 1;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     switch (indexPath.section) {
-        case accountDetailsSection: {
+        case walletInformationSection: {
             switch (indexPath.row) {
-                case accountDetailsIdentifier: {
+                case walletInformationIdentifier: {
                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_COPY_GUID message:BC_STRING_SETTINGS_COPY_GUID_WARNING preferredStyle:UIAlertControllerStyleActionSheet];
                     UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_TO_CLIPBOARD style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                         DLog("User confirmed copying GUID");
@@ -928,19 +928,12 @@ const int aboutPrivacyPolicy = 1;
                     [self presentViewController:alert animated:YES completion:nil];
                     return;
                 }
-                case accountDetailsMobileNumber: {
-                    if ([self.accountInfoDictionary objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER]) {
-                        if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
-                            [self alertUserToChangeMobileNumber];
-                        } else {
-                            [self alertUserToVerifyMobileNumber];
-                        }
-                    } else {
-                        [self alertUserToChangeMobileNumber];
-                    }
-                    return;
-                }
-                case accountDetailsEmail: {
+            }
+            return;
+        }
+        case preferencesSectionEmailFooter: {
+            switch (indexPath.row) {
+                case preferencesEmail: {
                     if (![self hasAddedEmail]) {
                         [self alertUserToChangeEmail:NO];
                     } else if ([self hasVerifiedEmail]) {
@@ -952,7 +945,24 @@ const int aboutPrivacyPolicy = 1;
             }
             return;
         }
-        case displaySection: {
+        case preferencesSectionNotificationsFooter: {
+            switch (indexPath.row) {
+                case preferencesMobileNumber: {
+                    if ([self.accountInfoDictionary objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER]) {
+                        if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
+                            [self alertUserToChangeMobileNumber];
+                        } else {
+                            [self alertUserToVerifyMobileNumber];
+                        }
+                    } else {
+                        [self alertUserToChangeMobileNumber];
+                    }
+                    return;
+                }
+            }
+            return;
+        }
+        case preferencesSectionEnd: {
             switch (indexPath.row) {
                 case displayLocalCurrency: {
                     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
@@ -962,17 +972,11 @@ const int aboutPrivacyPolicy = 1;
                     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
                     return;
                 }
-            }
-            return;
-        }
-        case feesSection: {
-            switch (indexPath.row) {
                 case feePerKb: {
                     [self alertUserToChangeFee];
                     return;
                 }
             }
-            return;
         }
         case securitySection: {
             switch (indexPath.row) {
@@ -1015,10 +1019,10 @@ const int aboutPrivacyPolicy = 1;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case accountDetailsSection: return 3;
-        case notificationsSection: return 1;
-        case displaySection: return 2;
-        case feesSection: return 1;
+        case walletInformationSection: return 1;
+        case preferencesSectionEmailFooter: return 1;
+        case preferencesSectionNotificationsFooter: return 2;
+        case preferencesSectionEnd: return 3;
         case securitySection: return securityTouchID < 0 ? 3 : 4;
         case aboutSection: return 2;
         default: return 0;
@@ -1028,10 +1032,10 @@ const int aboutPrivacyPolicy = 1;
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
-        case accountDetailsSection: return BC_STRING_SETTINGS_ACCOUNT_DETAILS;
-        case notificationsSection: return BC_STRING_SETTINGS_NOTIFICATIONS;
-        case displaySection: return BC_STRING_SETTINGS_DISPLAY_PREFERENCES;
-        case feesSection: return BC_STRING_SETTINGS_FEES;
+        case walletInformationSection: return BC_STRING_SETTINGS_WALLET_INFORMATION;
+        case preferencesSectionEmailFooter: return BC_STRING_SETTINGS_PREFERENCES;
+        case preferencesSectionNotificationsFooter: return nil;
+        case preferencesSectionEnd: return nil;
         case securitySection: return BC_STRING_SETTINGS_SECURITY;
         case aboutSection: return BC_STRING_SETTINGS_ABOUT;
         default: return nil;
@@ -1041,8 +1045,8 @@ const int aboutPrivacyPolicy = 1;
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     switch (section) {
-        case accountDetailsSection: return BC_STRING_SETTINGS_EMAIL_FOOTER;
-        case notificationsSection: return BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER;
+        case preferencesSectionEmailFooter: return BC_STRING_SETTINGS_EMAIL_FOOTER;
+        case preferencesSectionNotificationsFooter: return BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER;
         default: return nil;
     }
 }
@@ -1054,9 +1058,9 @@ const int aboutPrivacyPolicy = 1;
     cell.detailTextLabel.font = [SettingsTableViewController fontForCell];
     
     switch (indexPath.section) {
-        case accountDetailsSection: {
+        case walletInformationSection: {
             switch (indexPath.row) {
-                case accountDetailsIdentifier: {
+                case walletInformationIdentifier: {
                     UITableViewCell *cellWithSubtitle = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
                     cellWithSubtitle.selectionStyle = UITableViewCellSelectionStyleNone;
                     cellWithSubtitle.textLabel.font = [SettingsTableViewController fontForCell];
@@ -1067,19 +1071,12 @@ const int aboutPrivacyPolicy = 1;
                     cellWithSubtitle.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     return cellWithSubtitle;
                 }
-                case accountDetailsMobileNumber: {
-                    cell.textLabel.text = BC_STRING_SETTINGS_MOBILE_NUMBER;
-                    if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
-                    } else {
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                    }
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return cell;
-                }
-                case accountDetailsEmail: {
+            }
+        }
+        case preferencesSectionEmailFooter: {
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+            switch (indexPath.row) {
+                case preferencesEmail: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     
@@ -1095,10 +1092,23 @@ const int aboutPrivacyPolicy = 1;
                 }
             }
         }
-        case notificationsSection: {
+        case preferencesSectionNotificationsFooter: {
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             switch (indexPath.row) {
-                case notificationsEmail: {
+                case preferencesMobileNumber: {
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.textLabel.text = BC_STRING_SETTINGS_MOBILE_NUMBER;
+                    if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
+                    } else {
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                    }
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    return cell;
+                }
+                case preferencesNotifications: {
                     cell.textLabel.text = BC_STRING_SETTINGS_NOTIFICATIONS;
                     UISwitch *switchForEmailNotifications = [[UISwitch alloc] init];
                     switchForEmailNotifications.on = [self notificationsEnabled];
@@ -1108,11 +1118,11 @@ const int aboutPrivacyPolicy = 1;
                 }
             }
         }
-        case displaySection: {
+        case preferencesSectionEnd: {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             switch (indexPath.row) {
                 case displayLocalCurrency: {
+                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
                     NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
@@ -1123,6 +1133,7 @@ const int aboutPrivacyPolicy = 1;
                     return cell;
                 }
                 case displayBtcUnit: {
+                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     NSString *selectedCurrencyCode = [self getBtcSymbolFromLatestResponse].name;
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
                     cell.detailTextLabel.text = selectedCurrencyCode;
@@ -1131,13 +1142,8 @@ const int aboutPrivacyPolicy = 1;
                     }
                     return cell;
                 }
-            }
-        }
-        case feesSection: {
-            switch (indexPath.row) {
                 case feePerKb: {
                     cell.textLabel.text = BC_STRING_SETTINGS_FEE_PER_KB;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self convertFloatToString:[self getFeePerKb] forDisplay:YES]];
                     return cell;
                 }
