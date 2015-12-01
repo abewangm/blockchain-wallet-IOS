@@ -1498,14 +1498,18 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)mainPasswordClicked:(id)sender
 {
+    [mainPasswordTextField resignFirstResponder];
+    [self performSelector:@selector(loginMainPassword) withObject:nil afterDelay:0.6f];
+}
+
+- (void)loginMainPassword
+{
     NSString *password = [mainPasswordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if (password.length == 0) {
         [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
         return;
     }
-    
-    [mainPasswordTextField performSelectorOnMainThread:@selector(resignFirstResponder) withObject:nil waitUntilDone:NO];
     
     if (![self checkInternetConnection]) {
         return;
