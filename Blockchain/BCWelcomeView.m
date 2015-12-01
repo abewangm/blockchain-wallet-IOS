@@ -128,34 +128,6 @@ Boolean shouldShowAnimation;
 #endif
     
     [self addSubview:versionLabel];
-    
-    [self addLongPressGestureToShowBundleShortNameAlertToLabel:versionLabel];
-}
-
-- (void)addLongPressGestureToShowBundleShortNameAlertToLabel:(UILabel *)label
-{
-    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longPressGesture.minimumPressDuration = 1.0;
-    [label addGestureRecognizer:longPressGesture];
-    label.userInteractionEnabled = YES;
-}
-
-- (void)showBundleShortNameAlert
-{
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *bundleShortName = infoDictionary[@"CFBundleName"];
-    NSString *bundleVersion = infoDictionary[@"CFBundleVersion"];
-    NSString *bundleShortVersionString = infoDictionary[@"CFBundleShortVersionString"];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:bundleShortName message:[[NSString alloc] initWithFormat:@"Build %@\nv%@", bundleVersion, bundleShortVersionString] delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    [alert show];
-}
-
--  (void)handleLongPress:(UILongPressGestureRecognizer*)sender
-{
-    if (sender.state == UIGestureRecognizerStateBegan){
-        [self showBundleShortNameAlert];
-    }
 }
 
 @end
