@@ -176,7 +176,7 @@
 #define BC_STRING_SAVE NSLocalizedString(@"Save", nil)
 #define BC_STRING_CREATE_WALLET NSLocalizedString(@"Create Wallet", nil)
 
-#define BC_STRING_MY_ACCOUNTS NSLocalizedString(@"My Accounts", nil)
+#define BC_STRING_ACCOUNTS NSLocalizedString(@"Accounts", nil)
 #define BC_STRING_TOTAL_BALANCE NSLocalizedString(@"Total Balance", nil)
 #define BC_STRING_IMPORTED_ADDRESSES NSLocalizedString(@"Imported Addresses", nil)
 #define BC_STRING_IMPORTED_ADDRESSES_ARCHIVED NSLocalizedString(@"Imported Addresses (Archived)", nil)

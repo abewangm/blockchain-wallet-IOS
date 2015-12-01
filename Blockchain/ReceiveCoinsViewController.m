@@ -995,7 +995,7 @@ UIAlertController *popupAddressArchive;
     NSString *labelString;
     
     if (section == 0)
-        labelString = BC_STRING_MY_ACCOUNTS;
+        labelString = BC_STRING_ACCOUNTS;
     else if (section == 1) {
         labelString = BC_STRING_IMPORTED_ADDRESSES;
         if (![app.wallet didUpgradeToHd]) {

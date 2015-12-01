@@ -418,7 +418,7 @@ int accountEntries = 0;
             [cell.iconImage setImage:[UIImage imageNamed:@"wallet.png"]];
             CGFloat heightDifference = cell.labelLabel.center.y - cell.contentView.center.y;
             cell.labelLabel.frame = CGRectOffset(cell.labelLabel.frame, 0, -heightDifference);
-            cell.labelLabel.text = BC_STRING_MY_ACCOUNTS;
+            cell.labelLabel.text = BC_STRING_ACCOUNTS;
 #ifdef DISABLE_EDITING_ACCOUNTS
             cell.editButton.hidden = YES;
 #endif
@@ -484,7 +484,11 @@ int accountEntries = 0;
 {
     BCCreateAccountView *createAccountView = [[BCCreateAccountView alloc] init];
     
-    [app showModalWithContent:createAccountView closeType:ModalCloseTypeClose headerText:BC_STRING_CREATE_ACCOUNT];
+    [app showModalWithContent:createAccountView closeType:ModalCloseTypeClose headerText:BC_STRING_CREATE_ACCOUNT onDismiss:^{
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
+    } onResume:^{
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
+    }];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [createAccountView.labelTextField becomeFirstResponder];
