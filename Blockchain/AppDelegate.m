@@ -715,7 +715,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     secondPasswordDescriptionLabel.text = BC_STRING_PRIVATE_KEY_ENCRYPTED_DESCRIPTION;
     
-    [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED onDismiss:^() {
+    [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeClose headerText:BC_STRING_PASSWORD_REQUIRED onDismiss:^() {
         NSString * password = secondPasswordTextField.text;
         
         if ([password length] == 0) {
