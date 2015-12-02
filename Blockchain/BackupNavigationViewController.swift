@@ -26,6 +26,10 @@ import UIKit
        isTransitioning = false
     }
     
+    internal func reload() {
+        self.popToRootViewControllerAnimated(false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
