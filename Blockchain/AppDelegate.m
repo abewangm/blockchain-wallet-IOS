@@ -323,7 +323,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self.loginTimer invalidate];
 
-    if (!self.wallet.guid) {
+    if (!self.wallet.guid && busyView.alpha == 1.0 && [busyLabel.text isEqualToString:BC_STRING_LOADING_VERIFYING]) {
         [self.pinEntryViewController reset];
         [self hideBusyView];
         [self standardNotifyAutoDismissingController:BC_STRING_ERROR_LOADING_WALLET];
