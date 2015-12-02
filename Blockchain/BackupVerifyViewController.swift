@@ -112,14 +112,19 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
                 valid = false
             } else { // Don't mark words as invalid until the user has entered all three
                 if word1!.text != randomWord1 {
-                    pleaseTryAgain()
-                    return
+                    word1?.textColor = UIColor.redColor()
+                    valid = false
                 }
                 if word2!.text != randomWord2 {
-                    pleaseTryAgain()
-                    return
+                    word2?.textColor = UIColor.redColor()
+                    valid = false
                 }
                 if word3!.text != randomWord3 {
+                    word3?.textColor = UIColor.redColor()
+                    valid = false
+                }
+                
+                if (!valid) {
                     pleaseTryAgain()
                     return
                 }
@@ -137,6 +142,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        textField.textColor = UIColor.blackColor()
         wrongWord?.hidden = true
         return true
     }
