@@ -30,7 +30,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         
         let greyText = NSAttributedString(string: NSLocalizedString("(e.g., with your passport)", comment:""), attributes:
             [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
-        let blackText = NSAttributedString(string:  NSLocalizedString("Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe\n", comment:""), attributes:
+        let blackText = NSAttributedString(string:  NSLocalizedString("Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe\n", comment:""), attributes:
             [NSForegroundColorAttributeName: UIColor.blackColor()])
         
         let finalText = NSMutableAttributedString(attributedString: blackText)

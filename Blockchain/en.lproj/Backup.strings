@@ -29,8 +29,8 @@
 /* Class = "UIButton"; normalTitle = "VERIFY BACKUP"; ObjectID = "T4p-mz-siC"; */
 "T4p-mz-siC.normalTitle" = "VERIFY BACKUP";
 
-/* Class = "UILabel"; text = "Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe\n"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Write the words down on a sheet of paper in the exact order they appear, and store it somewhere safe\n";
+/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe\n"; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe\n";
 
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Next word";
