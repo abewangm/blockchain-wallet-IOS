@@ -19,6 +19,8 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
 
     @IBOutlet weak var navigationBar: UINavigationBar?
     @IBOutlet weak var password: UITextField?
+    var topBar: UIView?
+    var closeButton: UIButton?
     
     var wallet : Wallet?
     
@@ -26,23 +28,43 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationBar!.backgroundColor = UIColor.blueColor()
+        
+        topBar = UIView(frame:CGRectMake(0, 0, self.view.frame.size.width, Constants.Measurements.DefaultHeaderHeight));
+        topBar!.backgroundColor = Constants.Colors.BlockchainBlue
+        self.view.addSubview(topBar!);
+        
+        let headerLabel = UILabel(frame:CGRectMake(80, 20.5, self.view.frame.size.width - 160, 40));
+        headerLabel.font = UIFont.systemFontOfSize(13.0)
+        headerLabel.textColor = UIColor.whiteColor()
+        headerLabel.textAlignment = .Center;
+        headerLabel.adjustsFontSizeToFitWidth = true;
+        headerLabel.text = NSLocalizedString("Second Password Required", comment: "");
+        topBar!.addSubview(headerLabel);
+        
+        closeButton = UIButton(type: UIButtonType.Custom)
+        closeButton!.contentHorizontalAlignment = .Left;
+        closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+        closeButton!.titleLabel?.font = UIFont.systemFontOfSize(15)
+        closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
+        closeButton!.addTarget(self, action:"close:", forControlEvents: UIControlEvents.TouchUpInside);
+        topBar!.addSubview(closeButton!);
+        
+        closeButton!.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+        closeButton!.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
+        closeButton!.contentHorizontalAlignment = .Right
+        closeButton!.titleLabel?.adjustsFontSizeToFitWidth = true
+        closeButton!.setTitle(NSLocalizedString("Close", comment: ""), forState: .Normal)
+        closeButton!.setImage(nil, forState: .Normal)
+        
+        password?.returnKeyType = .Done
     }
     
     override func viewDidAppear(animated: Bool) {
-        let continueButton = UIButton(frame: CGRectMake(0, 0, view.frame.size.width, 46))
-        continueButton.backgroundColor = Constants.Colors.BlockchainBlue;
-        continueButton.setTitle(NSLocalizedString("Continue", comment:""), forState: .Normal)
-        continueButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        continueButton.titleLabel!.font = UIFont.systemFontOfSize(17)
-        continueButton.enabled = true
-        continueButton.addTarget(self, action: "done", forControlEvents: .TouchUpInside)
-        password?.inputAccessoryView = continueButton
+        super.viewDidAppear(animated)
         password?.becomeFirstResponder()
     }
 
-    func done() {
+    @IBAction func done(sender: UIButton) {
         checkSecondPassword()
     }
     
