@@ -79,7 +79,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="360">
-                    <rect key="frame" x="24" y="57" width="20" height="21"/>
+                    <rect key="frame" x="24" y="33" width="20" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -87,7 +87,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="361">
-                    <rect key="frame" x="40" y="58" width="255" height="54"/>
+                    <rect key="frame" x="40" y="34" width="255" height="54"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <string key="text">Login to your Blockchain Wallet via your PC or Mac at
@@ -97,7 +97,7 @@ http://blockchain.info/wallet</string>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="363">
-                    <rect key="frame" x="24" y="147" width="20" height="23"/>
+                    <rect key="frame" x="24" y="108" width="20" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -105,7 +105,7 @@ http://blockchain.info/wallet</string>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Click the [Account Settings] button. Then choose the [Devices] tab." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="364">
-                    <rect key="frame" x="40" y="140" width="255" height="54"/>
+                    <rect key="frame" x="40" y="106" width="255" height="97"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>

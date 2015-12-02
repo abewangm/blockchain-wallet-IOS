@@ -14,20 +14,20 @@
 /* Class = "IBUILabel"; text = "1"; ObjectID = "360"; */
 "360.text" = "1";
 
-/* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at https://alpha.blockchain.info/"; ObjectID = "361"; */
-"361.text" = "Log in to your Blockchain Wallet via your PC or Mac at\nhttps://alpha.blockchain.info/";
+/* Class = "IBUILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at https://blockchain.info/wallet/login"; ObjectID = "361"; */
+"361.text" = "Log in to your Blockchain Wallet via your PC or Mac at\nhttps://blockchain.info/wallet/login";
 
 /* Class = "IBUILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
-/* Class = "IBUILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Click the Account Settings button, then choose the Devices tab";
+/* Class = "IBUILabel"; text = "If you’re using the old wallet, click the Account Settings button and choose the Devices tab. If you’re using our new beta wallet, go to Settings / Wallet Information."; ObjectID = "364"; */
+"364.text" = "If you’re using the old wallet, click the Account Settings button and choose the Devices tab. If you’re using our new beta wallet, go to Settings / Wallet Information.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
-/* Class = "IBUILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Click Show Pairing Code to reveal a QR Code, a square black and white barcode. Scan the code with your camera";
+/* Class = "IBUILabel"; text = "Click Show Pairing Code to reveal a QR Code, a square black & white barcode. Scan the code with your camera."; ObjectID = "369"; */
+"369.text" = "Click Show Pairing Code to reveal a QR Code, a square black & white barcode. Scan the code with your camera.";
 
 /* Class = "IBUIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
 "370.normalTitle" = "Scan Pairing Code";
