@@ -113,7 +113,7 @@
 #define BC_STRING_SECOND_PASSWORD_INCORRECT NSLocalizedString(@"Second Password Incorrect", nil)
 
 #define BC_STRING_ACTION_REQUIRES_SECOND_PASSWORD NSLocalizedString(@"This action requires the second password for your bitcoin wallet. Please enter it below and press continue.", nil)
-#define BC_STRING_INVALID_GUID NSLocalizedString(@"Invalid GUID", nil)
+#define BC_STRING_INVALID_GUID NSLocalizedString(@"Invalid Wallet ID", nil)
 
 #define BC_STRING_INVALID_SHARED_KEY NSLocalizedString(@"Invalid Shared Key", nil)
 #define BC_STRING_ENTER_YOUR_CHARACTER_WALLET_IDENTIFIER NSLocalizedString(@"Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup.", nil)
@@ -231,7 +231,7 @@
 #define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my Wallet", nil)
 #define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing Wallet", nil)
 #define BC_STRING_RECOVER_FUNDS NSLocalizedString(@"Recover Funds", nil)
-#define BC_STRING_RECOVER_FUNDS_ONLY_IF_FORGOT_CREDENTIALS NSLocalizedString(@"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?", nil)
+#define BC_STRING_RECOVER_FUNDS_ONLY_IF_FORGOT_CREDENTIALS NSLocalizedString(@"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?", nil)
 
 #define BC_STRING_COPY_ADDRESS NSLocalizedString(@"Copy Address", nil)
 #define BC_STRING_ARCHIVE_ADDRESS NSLocalizedString(@"Archive Address", nil)
@@ -337,7 +337,7 @@
 #define BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT NSLocalizedString(@"Current rate: %@ BTC", nil)
 #define BC_STRING_SETTINGS_FEE_ARGUMENT_BTC NSLocalizedString(@"%@ BTC", nil)
 #define BC_STRING_SETTINGS_FEE_TOO_HIGH NSLocalizedString(@"Fee is too high (0.01 BTC limit)", nil)
-#define BC_STRING_SETTINGS_COPY_GUID NSLocalizedString(@"Copy GUID", nil)
+#define BC_STRING_SETTINGS_COPY_GUID NSLocalizedString(@"Copy Wallet ID", nil)
 #define BC_STRING_SETTINGS_COPY_GUID_WARNING NSLocalizedString(@"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet.", nil)
 #define BC_STRING_COPY_TO_CLIPBOARD NSLocalizedString(@"Copy to clipboard", nil)
 #define BC_STRING_WARNING_FOR_ZERO_FEE NSLocalizedString(@"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?", nil)
