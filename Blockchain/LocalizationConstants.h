@@ -58,6 +58,7 @@
 #define BC_STRING_PASSWORDS_DO_NOT_MATCH NSLocalizedString(@"Passwords do not match", nil)
 #define BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT NSLocalizedString(@"New password must be different", nil)
 #define BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS NSLocalizedString(@"Please provide an email address.", nil)
+#define BC_STRING_PLEASE_VERIFY_EMAIL_ADDRESS_FIRST NSLocalizedString(@"Please verify your email address first.", nil)
 #define BC_STRING_INVALID_EMAIL_ADDRESS NSLocalizedString(@"Invalid email address.", nil)
 #define BC_STRING_DID_CREATE_NEW_ACCOUNT_DETAIL NSLocalizedString(@"Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app.", nil)
 #define BC_STRING_DID_CREATE_NEW_ACCOUNT_TITLE NSLocalizedString(@"Your wallet was successfully created.", nil)

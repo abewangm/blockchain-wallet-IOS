@@ -490,7 +490,13 @@ const int aboutPrivacyPolicy = 1;
         if ([self notificationsEnabled]) {
             [app.wallet disableEmailNotifications];
         } else {
-            [app.wallet enableEmailNotifications];
+            if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED] boolValue] == YES) {
+                [app.wallet enableEmailNotifications];
+            } else {
+                [self alertUserOfError:BC_STRING_PLEASE_VERIFY_EMAIL_ADDRESS_FIRST];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                return;
+            }
         }
         
         UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:indexPath];
