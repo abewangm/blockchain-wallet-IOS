@@ -1003,7 +1003,9 @@
             [response.transactions addObject:tx];
         }
         
-        [self loading_stop];
+        if (!self.isSyncingForCriticalProcess) {
+            [self loading_stop];
+        }
         
         [delegate didGetMultiAddressResponse:response];
     } command:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse())"];
@@ -1232,7 +1234,6 @@
 - (void)on_add_private_key:(NSString*)address
 {
     DLog(@"on_add_private_key");
-    [self loading_stop];
     self.isSyncingForCriticalProcess = YES;
 
     if ([delegate respondsToSelector:@selector(didImportPrivateKey:)]) {

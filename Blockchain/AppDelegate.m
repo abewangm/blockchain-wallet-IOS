@@ -1069,14 +1069,15 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didImportPrivateKey:(NSString *)address
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        if (wallet.isSyncingForCriticalProcess) {
-            [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-        }
-    }]];
-    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+    }];
 }
 
 - (void)didFailToImportPrivateKey:(NSString *)error
