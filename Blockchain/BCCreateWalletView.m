@@ -129,16 +129,6 @@
         NSString *trimmedRecoveryPhrase = [recoveryPhrase stringByTrimmingCharactersInSet:
                                    [NSCharacterSet whitespaceCharacterSet]];
         
-        NSMutableArray *wordsArray = [[NSMutableArray alloc] initWithArray:[trimmedRecoveryPhrase componentsSeparatedByString:@" "]];
-        if ([wordsArray containsObject:@""]) {
-            [wordsArray removeObject:@""];
-        }
-        
-        if (wordsArray.count != RECOVERY_PHRASE_NUMBER_OF_WORDS) {
-            [app standardNotify:BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS];
-            return;
-        }
-        
         [app.wallet loading_start_recover_wallet];
         [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:trimmedRecoveryPhrase];
         
