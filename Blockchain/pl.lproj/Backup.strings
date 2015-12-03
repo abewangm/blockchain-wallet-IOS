@@ -63,7 +63,7 @@ Może narażać bezpieczeństwa Twojego portfela";
 "T4p-mz-siC.normalTitle" = "SPRAWDŹ, CZY KOPIA ZAPASOWA";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Napisać słowa na kartce papieru w takiej kolejności pojawiają się na kartce papieru i przechowuj go w bezpiecznym miejscu
+"UCL-i9-UDp.text" = "Napisać słowa w takiej kolejności pojawiają się na kartce papieru i przechowuj go w bezpiecznym miejscu
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Może narażać bezpieczeństwa Twojego portfela";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Kopia zapasowa portfel";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "W dalszym ciągu";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Kopia zapasowa portfel";

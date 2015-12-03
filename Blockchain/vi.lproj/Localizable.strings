@@ -32,10 +32,25 @@
 "1 minute ago" = "1 phút trước";
 
 /* (No Commment) */
+"2-step Verification" = "quy trình xác minh 2 bước";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "quy trình xác minh 2 bước hiện đang bị vô hiệu hoá.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "quy trình xác minh 2 bước hiện đang được kích hoạt cho %@.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "quy trình xác minh 2 bước hiện đang được kích hoạt.";
+
+/* (No Commment) */
 "About" = "Về";
 
 /* (No Commment) */
 "Account Details" = "Chi tiết tài khoản";
+
+/* (No Commment) */
+"Accounts" = "Tài khoản";
 
 /* (No Commment) */
 "Add Email" = "Thêm Email";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Số tiền phải ở trên bụi ngưỡng (%lld Satoshi)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Một tài khoản email cần thiết để giúp phục hồi danh mất ví và thông báo thanh toán. Ngoài ra, địa chỉ email xác minh sẽ được sử dụng như một lớp thứ hai của xác minh khi bạn đăng nhập vào ví của bạn";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Xác nhận mã PIN của bạn với máy chủ từ xa đã có lỗi. Bạn có thể được diễn đàn hoặc Blockchain có thể gặp khó khăn. Bạn có muốn thử lại xác nhận hoặc thay vào đó nhập mật khẩu của bạn theo cách thủ công?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Trước khi truy cập vào ví của bạn, hãy chọn một số pin sử dụng để mở khóa chi tiêu của bạn. Nó là quan trọng bạn nhớ này pin như nó không thể được đặt lại hoặc thay đổi mà không cần đầu tiên mở khóa các ứng dụng.";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin đơn vị";
+"Bitcoin Unit" = "Bitcoin đơn vị";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Yêu cầu thanh toán Bitcoin";
@@ -140,7 +152,16 @@
 "Change Email" = "Thay đổi Email";
 
 /* (No Commment) */
+"Change Mobile Number" = "Thay đổi số điện thoại di động";
+
+/* (No Commment) */
 "Change PIN" = "Thay đổi mã PIN";
+
+/* (No Commment) */
+"Change Password" = "Thay đổi mật khẩu";
+
+/* (No Commment) */
+"Change Password Hint" = "Gợi ý mật khẩu thay đổi";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "Phí thay đổi mỗi kilobyte";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Kết nối hêt. Xin vui lòng kiểm tra kết nối internet của bạn.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Tiếp tục";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "Sao chép địa chỉ";
 
 /* (No Commment) */
-"Copy GUID" = "Sao chép GUID";
+"Copy Wallet ID" = "Sao chép Wallet ID";
 
 /* (No Commment) */
 "Copy to clipboard" = "Sao chép vào clipboard";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "Giải mã ví";
 
 /* (No Commment) */
+"Disable" = "Vô hiệu hoá";
+
+/* (No Commment) */
+"Disabled" = "Khuyết tật";
+
+/* (No Commment) */
 "Display" = "Hiển thị";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "Sản phẩm nào đáp ứng từ hệ phục vụ.";
 
 /* (No Commment) */
+"Enable" = "Kích hoạt tính năng";
+
+/* (No Commment) */
 "Enable Location Services" = "Kích hoạt dịch vụ vị trí";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Cho phép các thông báo để nhận được một email bất cứ khi nào bạn nhận được bitcoins. Chỉ có nhãn địa chỉ trong tài khoản của bạn và nhập khẩu địa chỉ là đủ điều kiện để kích hoạt thông báo.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Cho phép tính năng này sẽ cho phép tất cả người dùng với một dấu vân tay Touch ID đăng ký trên thiết bị này để truy cập để chi tiêu của bạn.";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "Lệ phí là quá cao (0,01 BTC giới hạn)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "Chi phí cho mỗi kilobyte";
+"Fee per KB" = "Phí KB";
 
 /* (No Commment) */
 "Fees" = "Lệ phí";
@@ -308,6 +341,9 @@
 "Go to Settings" = "Đi tới cài đặt";
 
 /* (No Commment) */
+"Google Authenticator" = "Google Authenticator";
+
+/* (No Commment) */
 "How would you like to pair?" = "Làm thế nào bạn muốn cặp?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "PIN không chính xác. Xin vui lòng thử lại.";
 
 /* (No Commment) */
+"Incorrect password" = "Mật khẩu không chính xác";
+
+/* (No Commment) */
 "Information" = "Thông tin";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "Không đủ tiền";
-
-/* (No Commment) */
-"Invalid GUID" = "GUID không hợp lệ";
 
 /* (No Commment) */
 "Invalid Identifier" = "Nhận dạng không hợp lệ";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "Mã trạng thái không hợp lệ trở lại %@";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "ID ví không hợp lệ";
+
+/* (No Commment) */
 "Invalid address: %@" = "Địa chỉ không hợp lệ: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Địa chỉ email không hợp lệ.";
+
+/* (No Commment) */
+"Invalid mobile number." = "Số điện thoại di động không hợp lệ.";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Cụm từ phục hồi không hợp lệ. Xin vui lòng thử lại";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Không hợp lệ địa chỉ bitcoin";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "Kiểu xác thực 2 yếu tố không hợp lệ";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "Mã xác minh không hợp lệ. Xin vui lòng thử lại.";
@@ -425,7 +470,7 @@
 "Merchant Map" = "Thương gia bản đồ";
 
 /* (No Commment) */
-"My Accounts" = "Tài khoản của tôi";
+"Mobile Number" = "Số điện thoại di động";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Bitcoin ví của tôi";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "Địa chỉ mới";
+
+/* (No Commment) */
+"New Email Address" = "Địa chỉ Email mới";
+
+/* (No Commment) */
+"New Mobile Number" = "Số điện thoại di động mới";
+
+/* (No Commment) */
+"New password must be different" = "Mật khẩu mới phải là khác nhau";
 
 /* (No Commment) */
 "News, Price & Charts" = "Tin tức, giá & bảng xếp hạng";
@@ -461,6 +515,9 @@
 "Normal" = "Bình thường";
 
 /* (No Commment) */
+"Not Stored" = "Không được lưu trữ";
+
+/* (No Commment) */
 "Not now" = "Không phải bây giờ";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "Tùy chọn nhận được thông báo khi một khoản thanh toán được gửi hoặc nhận được từ chi tiêu của bạn.";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "Mã PIN mã hóa chuỗi là con số không";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "Phân tích cú pháp kết nối mã";
 
 /* (No Commment) */
+"Password Hint" = "Gợi ý mật khẩu";
+
+/* (No Commment) */
 "Password Required" = "Yêu cầu mật khẩu";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "Thay đổi mật khẩu. Vui lòng đăng nhập để tiếp tục.";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Mật khẩu phải 10 ký tự hoặc dài hơn";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Hãy mô tả chi tiết sự cố bạn đang gặp phải, cùng với bất kỳ bước nào chúng ta có thể sao chép nó.";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Vui lòng nhập một khoản phí lớn hơn 0 BTC và tối đa 0,01 BTC";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Xin vui lòng nhập mã PIN mới";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "Vui lòng nhập mã 2FA %@ của bạn";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Vui lòng nhập mã định danh ví 36 nhân vật của bạn một cách chính xác. Loài này có ở email chào mừng ngày khởi động.";
@@ -560,7 +626,10 @@
 "Please try again" = "Xin vui lòng thử lại";
 
 /* (No Commment) */
-"Please verify your email" = "Xin vui lòng xác minh email của bạn";
+"Please verify your email address first." = "Xin vui lòng xác minh địa chỉ email của bạn đầu tiên.";
+
+/* (No Commment) */
+"Preferences" = "Sở thích";
 
 /* (No Commment) */
 "Privacy Policy" = "Chính sách bảo mật";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Yêu cầu số tiền";
+
+/* (No Commment) */
+"Resend verification SMS" = "Gửi lại xác minh tin nhắn SMS";
 
 /* (No Commment) */
 "Resend verification email" = "Gửi lại email xác minh";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Thứ hai mật khẩu không chính xác";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "Yêu cầu mật khẩu thứ hai";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "Gửi đến...";
+
+/* (No Commment) */
+"Send verification SMS" = "Gửi xác minh tin nhắn SMS";
 
 /* (No Commment) */
 "Sending Transaction" = "Gửi giao dịch";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Ký kết đầu vào";
+
+/* (No Commment) */
+"Stored" = "Lưu trữ";
 
 /* (No Commment) */
 "Strong" = "Mạnh";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "NÂNG CẤP CHI TIÊU CỦA BẠN";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Không thể nạp ví do không có phản ứng máy chủ. Bạn có thể được diễn đàn hoặc Blockchain đang trải qua những khó khăn. Xin vui lòng thử lại sau.";
+
+/* (No Commment) */
 "Unarchive" = "Unarchive";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "Ngoại lệ không được";
 
 /* (No Commment) */
+"Unknown" = "Chưa biết";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Lỗi liên lạc ID không xác định. Mã: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Không được hỗ trợ định dạng phím riêng";
+
+/* (No Commment) */
+"Unverified" = "Chưa được xác minh";
 
 /* (No Commment) */
 "Update" = "Cập Nhật";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "XÁC NHẬN SAO LƯU";
 
 /* (No Commment) */
+"Verified" = "Xác minh";
+
+/* (No Commment) */
 "Verify" = "Xác minh";
 
 /* (No Commment) */
 "Verifying" = "Xác minh";
 
 /* (No Commment) */
-"Wallet Identifier" = "Định danh ví";
+"Wallet ID" = "Ví ID";
+
+/* (No Commment) */
+"Wallet Information" = "Thông tin ví";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Ví kết nối thành công.";
@@ -811,8 +904,8 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "Would you like to add the bitcoin address %@ to your address book?" = "Bạn có muốn thêm bitcoin địa chỉ %@ vào sổ địa chỉ của bạn?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Viết các từ trên một tờ giấy trong bộ chính xác của họ xuất hiện trên một tờ giấy, và lưu trữ một nơi nào đó an toàn
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "Viết các từ trong bộ chính xác của họ xuất hiện trên một tờ giấy, và lưu trữ một nơi nào đó an toàn
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Bạn sao lưu các khoản tiền của bạn thành công";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Bạn có thể kích hoạt quy trình xác minh 2 bước qua SMS trên điện thoại di động của bạn. Để sử dụng các phương pháp xác thực khác thay thế, hãy đăng nhập vào wallet web của chúng tôi.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Bạn không có một tài khoản thiết lập cho thư. Xin vui lòng liên hệ với %@";
@@ -846,7 +942,7 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "You must leave at least one active address" = "Bạn phải để lại ít nhất một địa chỉ hoạt động";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Bạn luôn luôn nên ghép nối hoặc đăng nhập nếu bạn có quyền truy cập vào GUID và mật khẩu của bạn. Phục hồi khoản tiền của bạn sẽ tạo ra một GUID mới. Bạn có muốn tiếp tục không?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Bạn luôn luôn nên ghép nối hoặc đăng nhập nếu bạn có quyền truy cập vào Wallet ID và mật khẩu của bạn. Phục hồi khoản tiền của bạn sẽ tạo một ID mới ví. Bạn có muốn tiếp tục không?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Thiết bị của bạn dường như là jailbroken. Bảo mật của chi tiêu của bạn có thể bị tổn hại.";
@@ -858,7 +954,31 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "Your identity does not match our records." = "Danh tính của bạn không khớp với hồ sơ của chúng tôi.";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "Số điện thoại di động của bạn đã được xác minh.";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "Gợi ý mật khẩu mới của bạn chứa các ký tự không hợp lệ. Xin vui lòng thử lại.";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "Gợi ý mật khẩu mới của bạn có chứa không có văn bản. Gợi ý mật khẩu của bạn sẽ bị xóa.";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "Gợi ý mật khẩu mới của bạn phải được khác với mật khẩu của bạn. Xin vui lòng thử lại.";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "Gợi ý mật khẩu mới của bạn phải được khác nhau từ của bạn mật khẩu thứ hai. Xin vui lòng thử lại.";
+
+/* (No Commment) */
+"Your password hint has been updated." = "Gợi ý mật khẩu của bạn đã được Cập Nhật.";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Địa chỉ email xác minh được sử dụng để gửi mã số đăng nhập khi hoạt động đáng ngờ hoặc bất thường được phát hiện, để nhắc nhở bạn của ID đăng nhập ví của bạn, và gửi thông báo thanh toán bitcoin khi bạn nhận được tiền. Chúng tôi sẽ không sử dụng địa chỉ email của bạn cho mục đích tiếp thị.";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "Chi tiêu của bạn tạo thành công.";
+
+/* (No Commment) */
+"Yubi Key" = "Yubi Key";
 
 /* No comment provided by engineer. */
 "eighth word" = "thứ tám từ";

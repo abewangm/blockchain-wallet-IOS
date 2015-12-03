@@ -32,10 +32,25 @@
 "1 minute ago" = "1 minutt siden";
 
 /* (No Commment) */
+"2-step Verification" = "2-trinns bekreftelse";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "2-trinns bekreftelse er deaktivert.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "2-trinns bekreftelse er aktivert for %@.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "2-trinns bekreftelse er aktivert.";
+
+/* (No Commment) */
 "About" = "Om";
 
 /* (No Commment) */
 "Account Details" = "Kontodetaljer";
+
+/* (No Commment) */
+"Accounts" = "Kontoer";
 
 /* (No Commment) */
 "Add Email" = "Legge til epost";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Beløpet må være over støv terskelen (%lld Satoshi)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "En e-postkonto er nødvendig for å gjenopprette en tapt konto-ID og for betaling. Også brukes bekreftet e-postadressen som et ekstra lag av bekreftelse når du logger inn din lommebok.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Feil ved validering av PIN-kode med den eksterne serveren. Du kan være frakoblet eller Blockchain kan ha problemer. Ønsker du Prøv validering eller i stedet skrive inn passordet manuelt?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Før du åpner lommeboken, Velg en PIN å bruke låse opp lommeboken. Det er viktig du husker denne PIN-koden som det ikke kan tilbakestille eller endres uten først låse opp programmet.";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin enheter";
+"Bitcoin Unit" = "Bitcoin enhet";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin betalingsforespørsel";
@@ -140,7 +152,16 @@
 "Change Email" = "Endre e-post";
 
 /* (No Commment) */
+"Change Mobile Number" = "Endre mobilnummer";
+
+/* (No Commment) */
 "Change PIN" = "Endre PIN";
+
+/* (No Commment) */
+"Change Password" = "Endre passord";
+
+/* (No Commment) */
+"Change Password Hint" = "Endre passord vink";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "Endre gebyr per kilobyte";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Tilkobling tidsavbrutt. Kontroller Internett-tilkoblingen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Fortsett";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "Kopier adressen";
 
 /* (No Commment) */
-"Copy GUID" = "Kopier guiden";
+"Copy Wallet ID" = "Kopiere lommebok-ID";
 
 /* (No Commment) */
 "Copy to clipboard" = "Kopier til utklippstavlen";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "Dekryptering lommebok";
 
 /* (No Commment) */
+"Disable" = "Deaktiver";
+
+/* (No Commment) */
+"Disabled" = "Deaktivert";
+
+/* (No Commment) */
 "Display" = "Skjerm";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "Tomme svar fra serveren.";
 
 /* (No Commment) */
+"Enable" = "Aktiverer";
+
+/* (No Commment) */
 "Enable Location Services" = "Aktiver posisjonstjenestene";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Aktivere varsler å motta en melding hver gang du mottar bitcoins. Bare merket adresser i kontoene og importerte adresser kan utløse varsling.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktivering av denne funksjonen vil tillate alle brukere med et registrert Touch ID fingeravtrykk på denne enheten for lommeboken.";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "Avgiften er for høy (0,01 BTC grense)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "Gebyr per kilobyte";
+"Fee per KB" = "Gebyr per KB";
 
 /* (No Commment) */
 "Fees" = "Avgifter";
@@ -308,6 +341,9 @@
 "Go to Settings" = "Gå til innstillinger";
 
 /* (No Commment) */
+"Google Authenticator" = "Google godkjenner";
+
+/* (No Commment) */
 "How would you like to pair?" = "Hvordan ville du like å par?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "Feil PIN-kode. Prøv på nytt.";
 
 /* (No Commment) */
+"Incorrect password" = "Feil passord";
+
+/* (No Commment) */
 "Information" = "Informasjon";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "Utilstrekkelige midler";
-
-/* (No Commment) */
-"Invalid GUID" = "GUIDEN er ugyldig";
 
 /* (No Commment) */
 "Invalid Identifier" = "Ugyldig identifikator";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "Ugyldig Statuskoden returnert %@";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "Ugyldig lommebok-ID";
+
+/* (No Commment) */
 "Invalid address: %@" = "Ugyldig adresse: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Ugyldig e-postadresse.";
+
+/* (No Commment) */
+"Invalid mobile number." = "Ugyldig mobilnummer.";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Ugyldig utvinning setning. Prøv på nytt";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Ugyldig bitcoin adresse";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "Ugyldig godkjenningstype for to-faktor";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "Ugyldig bekreftelseskode. Prøv på nytt.";
@@ -425,7 +470,7 @@
 "Merchant Map" = "Kjøpmann kart";
 
 /* (No Commment) */
-"My Accounts" = "Mine kontoer";
+"Mobile Number" = "Mobilnummer";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Lommeboka Bitcoin";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "Ny adresse";
+
+/* (No Commment) */
+"New Email Address" = "Ny e-postadresse";
+
+/* (No Commment) */
+"New Mobile Number" = "Nye mobilnummer";
+
+/* (No Commment) */
+"New password must be different" = "Passord må være forskjellige";
 
 /* (No Commment) */
 "News, Price & Charts" = "Nyheter, pris og diagrammer";
@@ -461,6 +515,9 @@
 "Normal" = "Normal";
 
 /* (No Commment) */
+"Not Stored" = "Ikke lagret";
+
+/* (No Commment) */
 "Not now" = "ikke nå";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "ok";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "Du kan også motta varslinger når en betaling er sendt eller mottatt fra lommeboken.";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN krypterte strengen er null";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "Analyse av tilkoplingskode";
 
 /* (No Commment) */
+"Password Hint" = "Passordhint";
+
+/* (No Commment) */
 "Password Required" = "Passord kreves";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "Passord endret. Vennligst login for å fortsette.";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Passord må 10 tegn eller lengre";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Beskriv i detalj problemet du opplever, sammen med noen hvordan vi kan gjengi den.";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Skriv inn en avgift som er større enn 0 BTC og høyst 0,01 BTC";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Angi en ny PIN-kode";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "Angi %@ 2FA koden";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Skriv inn din lommebok-identifikator for 36 tegn riktig. Det kan finnes i Velkommen e-posten ved oppstart.";
@@ -560,7 +626,10 @@
 "Please try again" = "Prøv på nytt";
 
 /* (No Commment) */
-"Please verify your email" = "Kontroller e-post";
+"Please verify your email address first." = "Kontroller epostadressen din først.";
+
+/* (No Commment) */
+"Preferences" = "Innstillinger";
 
 /* (No Commment) */
 "Privacy Policy" = "Personvern";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Forespørsel beløp";
+
+/* (No Commment) */
+"Resend verification SMS" = "Send bekreftelse SMS";
 
 /* (No Commment) */
 "Resend verification email" = "Send e-postbekreftelse";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Andre passord feil";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "Andre passord kreves";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "Send til...";
+
+/* (No Commment) */
+"Send verification SMS" = "Sende bekreftelse SMS";
 
 /* (No Commment) */
 "Sending Transaction" = "Sende transaksjonen";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Signering innganger";
+
+/* (No Commment) */
+"Stored" = "Lagret";
 
 /* (No Commment) */
 "Strong" = "Sterk";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "OPPGRADERE LOMMEBOKEN";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Kan ikke laste lommebok på grunn av intet serversvar. Du kan være frakoblet eller Blockchain opplever vanskeligheter. Prøv igjen senere.";
+
+/* (No Commment) */
 "Unarchive" = "Hente frem";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "Ubehandlet unntak";
 
 /* (No Commment) */
+"Unknown" = "Ukjent";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Ukjent Touch ID-feil. Kode: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Privat nøkkel Format som ikke støttes";
+
+/* (No Commment) */
+"Unverified" = "Ubekreftet";
 
 /* (No Commment) */
 "Update" = "Oppdatering";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "KONTROLLER BACKUP";
 
 /* (No Commment) */
+"Verified" = "Bekreftet";
+
+/* (No Commment) */
 "Verify" = "Kontroller";
 
 /* (No Commment) */
 "Verifying" = "Kontrollere";
 
 /* (No Commment) */
-"Wallet Identifier" = "Lommebok identifikator";
+"Wallet ID" = "Lommebok-ID";
+
+/* (No Commment) */
+"Wallet Information" = "Lommebok informasjon";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Lommebok sammen med hell.";
@@ -811,8 +904,8 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 "Would you like to add the bitcoin address %@ to your address book?" = "Ønsker du å legge bitcoin adresse %@ i adresseboken?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Skrive ordene ned på et ark i rekkefølgen de vises på et papirark, og lagre den trygt sted
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "Skrive ordene ned i rekkefølgen de vises på et papirark, og lagre den trygt sted
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Du sikkerhetskopierte midlene vellykket";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Du kan aktivere 2-trinns verifisering via Tekstmelding på mobiltelefonen din. Bruke andre godkjenningsmetoder i stedet, vennligst logg inn til vårt web-lommebok.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Du har ikke en konto satt opp for e-post. Kontakt %@";
@@ -846,7 +942,7 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 "You must leave at least one active address" = "Du må la minst en aktiv adresse";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Du bør alltid par eller Logg inn hvis du har tilgang til GUID og passord. Gjenopprette midler vil opprette en ny GUID. Vil du fortsette?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Du bør alltid par eller logikk hvis du har tilgang til din konto-ID og passord. Gjenopprette midler vil opprette en ny konto-ID. Vil du fortsette?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Enheten synes å være jailbroken. Sikkerheten til din lommebok være usikker.";
@@ -858,7 +954,31 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 "Your identity does not match our records." = "Identiteten samsvarer ikke med våre opptegnelser.";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "Mobiltelefonnummeret er bekreftet.";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "Din nytt passordtips inneholder ugyldige tegn. Prøv på nytt.";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "Din nytt passordtips inneholder ikke tekst. Passordhintet fjernes.";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "Din nytt passordtips må være forskjellig fra passordet. Prøv på nytt.";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "Din nytt passordtips må være forskjellig fra andre passordet. Prøv på nytt.";
+
+/* (No Commment) */
+"Your password hint has been updated." = "Passordhintet er oppdatert.";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Bekreftet e-postadressen brukes til å sende logikk koder når mistenkelig eller uvanlig aktivitet oppdages, å minne deg om din lommebok påloggings-ID og sende bitcoin betalingsvarsler når du mottar midler. Vi vil ikke bruke e-postadressen din for markedsføringsformål.";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "Lommeboken ble opprettet.";
+
+/* (No Commment) */
+"Yubi Key" = "Yubi nøkkel";
 
 /* No comment provided by engineer. */
 "eighth word" = "Åttende ord";

@@ -63,7 +63,7 @@ U kunt uw portemonnee veiligheid in gevaar brengen";
 "T4p-mz-siC.normalTitle" = "BACK-UPS VERIFIËREN";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Schrijf de woorden op een vel papier in de exacte volgorde waarin ze worden weergegeven op een vel papier, en slaan het ergens veilig
+"UCL-i9-UDp.text" = "Noteer de woorden in de exacte volgorde waarin ze worden weergegeven op een vel papier, en slaan het ergens veilig
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ U kunt uw portemonnee veiligheid in gevaar brengen";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Back-portemonnee";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Blijven";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Back-portemonnee";

@@ -32,10 +32,25 @@
 "1 minute ago" = "1 dakika önce";
 
 /* (No Commment) */
+"2-step Verification" = "2-adım doğrulama";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "2-adım doğrulama şu anda devre dışı.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "2-adım doğrulama %@ için etkin durumda.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "2-adım doğrulama şu anda etkin durumda.";
+
+/* (No Commment) */
 "About" = "Hakkında";
 
 /* (No Commment) */
 "Account Details" = "Hesap bilgileri";
+
+/* (No Commment) */
+"Accounts" = "Hesapları";
 
 /* (No Commment) */
 "Add Email" = "E-posta Ekle";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Bir miktar toz eşik (%lld Satoshi) olması gerekir";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "E-posta hesabını bir kayıp cüzdan tanımlayıcı kurtarmak yardımcı olmak için gerekiyorsa ve ödeme bildirimleri. Ayrıca, cüzdanını oturumu doğrulanmış e-posta adresinizi doğrulama ikinci bir tabaka olarak kullanılır.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "PIN kodunuzu uzak sunucuyla doğrulanırken bir hata oluştu. Çevrimdışı olabilir veya Blockchain sorunlar yaşıyor. Doğrulama yeniden deneyin veya bunun yerine parolanızı el ile girmek ister misin?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Cüzdanını erişmeden önce cüzdanını kilidini açmak için kullanılacak bir PIN numarası seçiniz. Sıfırlamak veya ilk app kilidini olmadan değişti gibi bu PIN hatırlamak önemlidir.";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin birimleri";
+"Bitcoin Unit" = "Bitcoin birimi";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin ödeme talebi";
@@ -140,7 +152,16 @@
 "Change Email" = "E-posta değişikliği";
 
 /* (No Commment) */
+"Change Mobile Number" = "Telefon numarasını değiştirmek";
+
+/* (No Commment) */
 "Change PIN" = "PIN'i Değiştir";
+
+/* (No Commment) */
+"Change Password" = "Parola Değiştir";
+
+/* (No Commment) */
+"Change Password Hint" = "Değiştir parola ipucu";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "Kilobayt başına değişiklik ücreti";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Bağlantı zaman aşımına uğradı. Lütfen internet bağlantınızı kontrol edin.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Devam";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "Adresini kopyala";
 
 /* (No Commment) */
-"Copy GUID" = "Kopya GUID";
+"Copy Wallet ID" = "M-cüzdan kimliğini kopyalayın";
 
 /* (No Commment) */
 "Copy to clipboard" = "Panoya kopyala";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "M-cüzdan şifresini çözme";
 
 /* (No Commment) */
+"Disable" = "Devre dışı bırakma";
+
+/* (No Commment) */
+"Disabled" = "Engelli";
+
+/* (No Commment) */
 "Display" = "Görüntü";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "Sunucudan boş yanıt.";
 
 /* (No Commment) */
+"Enable" = "Etkinleştir";
+
+/* (No Commment) */
 "Enable Location Services" = "Konum servisleri etkinleştirme";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Bitcoins aldığınızda bir e-posta almak bildirimleri etkinleştirmek. Hesaplarınızı yalnızca etiketli adresleri ve alınan adresler tetikleyici bildirimleri için uygundur.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Bu özellik etkinleştirildiğinde, m-cüzdana erişmek için bu aygıtta kayıtlı Touch kimliği parmak izi olan tüm kullanıcılar sağlayacaktır.";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "Ücreti çok yüksek (0.01 BTC sınırı)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "Ücret-kilobayt";
+"Fee per KB" = "Ücret-KB";
 
 /* (No Commment) */
 "Fees" = "Ücretleri";
@@ -308,6 +341,9 @@
 "Go to Settings" = "Ayarları'na gidin";
 
 /* (No Commment) */
+"Google Authenticator" = "Google kimlik doğrulayıcısı";
+
+/* (No Commment) */
 "How would you like to pair?" = "Çiftine ne dersin?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "Yanlış PIN. Lütfen yeniden deneyin.";
 
 /* (No Commment) */
+"Incorrect password" = "Yanlış parola";
+
+/* (No Commment) */
 "Information" = "Bilgi";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "Yetersiz bakiye";
-
-/* (No Commment) */
-"Invalid GUID" = "Geçersiz GUID";
 
 /* (No Commment) */
 "Invalid Identifier" = "Geçersiz tanımlayıcı";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "%@ döndürülen geçersiz durum kodu";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "Geçersiz cüzdan kimliği";
+
+/* (No Commment) */
 "Invalid address: %@" = "Geçersiz adres: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Geçersiz e-posta adresi.";
+
+/* (No Commment) */
+"Invalid mobile number." = "Geçersiz telefon numarası.";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Geçersiz kurtarma ifade. Lütfen yeniden deneyin";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Bitcoin adresi geçersiz";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "Geçersiz iki faktörlü kimlik doğrulama türü";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "Geçersiz doğrulama kodu. Lütfen yeniden deneyin.";
@@ -425,7 +470,7 @@
 "Merchant Map" = "Tüccar harita";
 
 /* (No Commment) */
-"My Accounts" = "Benim hesapları";
+"Mobile Number" = "Cep telefonu numarası";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Benim Bitcoin cüzdan";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "Yeni adresi";
+
+/* (No Commment) */
+"New Email Address" = "Yeni e-posta adresi";
+
+/* (No Commment) */
+"New Mobile Number" = "Yeni cep telefonu numarası";
+
+/* (No Commment) */
+"New password must be different" = "Yeni parolanın farklı olması gerekir.";
 
 /* (No Commment) */
 "News, Price & Charts" = "Haber, fiyat ve grafikler";
@@ -461,6 +515,9 @@
 "Normal" = "Normal";
 
 /* (No Commment) */
+"Not Stored" = "Değil stok";
+
+/* (No Commment) */
 "Not now" = "Şimdi değil";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "Tamam";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "Bir ödeme gönderilen veya alınan cüzdanından isteğe bağlı olarak bildirim alma.";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN şifreli dize yok";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "Kod eşleştirme ayrıştırma";
 
 /* (No Commment) */
+"Password Hint" = "Parola ipucu";
+
+/* (No Commment) */
 "Password Required" = "Parola gerekli";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "Parola değiştirildi. Lütfen devam etmek için giriş yapın.";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Parola gerekir 10 karakter veya daha uzun";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Biz yeniden olacak herhangi bir adım ile birlikte yaşıyorsanız sorunu ayrıntılı olarak açıklayınız.";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Lütfen bir ücret 0 BTC en az 0,01 BTC'dan büyük ve girin";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Lütfen yeni bir PIN girin";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "Senin %@ 2FA kodunu giriniz";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "36 karakter cüzdan tanımlayıcı doğru şekilde giriniz. Başlangıçta edilir e-posta içinde bulunabilir.";
@@ -560,7 +626,10 @@
 "Please try again" = "Lütfen yeniden deneyin";
 
 /* (No Commment) */
-"Please verify your email" = "Lütfen e-postanızı denetleyin";
+"Please verify your email address first." = "Lütfen önce e-posta adresinizi doğrulayın.";
+
+/* (No Commment) */
+"Preferences" = "Tercihler";
 
 /* (No Commment) */
 "Privacy Policy" = "Gizlilik Politikası";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "İstek tutar";
+
+/* (No Commment) */
+"Resend verification SMS" = "Yeniden gönder doğrulama SMS";
 
 /* (No Commment) */
 "Resend verification email" = "Doğrulama e-postasını yeniden gönder";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "İkinci parola yanlış";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "İkinci parola gerekli";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "Göndermek...";
+
+/* (No Commment) */
+"Send verification SMS" = "Doğrulama SMS göndermek";
 
 /* (No Commment) */
 "Sending Transaction" = "İşlem gönderme";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Girişleri imzalama";
+
+/* (No Commment) */
+"Stored" = "Depolanan";
 
 /* (No Commment) */
 "Strong" = "Güçlü";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "CÜZDANINI YÜKSELTME";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Cüzdan yok sunucu yanıtı nedeniyle yüklenemedi. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen daha sonra yeniden deneyin.";
+
+/* (No Commment) */
 "Unarchive" = "Unarchive";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "İşlenmeyen Özel durum";
 
 /* (No Commment) */
+"Unknown" = "Bilinmiyor";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Bilinmeyen Touch kimliği hatası. Kod: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Desteklenmeyen özel anahtar biçimi";
+
+/* (No Commment) */
+"Unverified" = "Doğrulanmadı";
 
 /* (No Commment) */
 "Update" = "Güncelleştirme";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "DOĞRULAMA YEDEK";
 
 /* (No Commment) */
+"Verified" = "Doğrulanmadı";
+
+/* (No Commment) */
 "Verify" = "Doğrulayın";
 
 /* (No Commment) */
 "Verifying" = "Doğrulama";
 
 /* (No Commment) */
-"Wallet Identifier" = "M-cüzdan tanımlayıcısı";
+"Wallet ID" = "M-cüzdan kodu";
+
+/* (No Commment) */
+"Wallet Information" = "M-cüzdan bilgi";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "M-cüzdan başarıyla eşleştirilmiş.";
@@ -811,8 +904,8 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin adresi %@ adres defterine eklemek ister misiniz?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Kağıda bir yaprak kağıda görünür ve güvenli bir yerde saklayın tam sırayla kelimeleri yazmak
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "Bir yaprak kağıda görünür ve güvenli bir yerde saklayın aynı sırada kelimeleri yazmak
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Paranızı kadar başarıyla yedeklenen";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "2-adım doğrulama SMS ile cep telefonunuza etkinleştirebilirsiniz. Bunun yerine diğer kimlik doğrulama yöntemlerini kullanmak için lütfen bizim web cüzdan için giriş.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Posta için ayarlanmış bir hesap var mı. %@ ulaşın";
@@ -846,7 +942,7 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "You must leave at least one active address" = "En az bir etkin adres gitmelisiniz";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Her zaman çifti veya GUID ve parola erişiminiz varsa oturum açmanız gerekir. Paranızı kurtarma yeni bir GUID oluşturur. Devam etmek istiyor musunuz?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Her zaman çifti veya cüzdan ID ve parola erişiminiz varsa oturum açmanız gerekir. Paranızı kurtarma yeni bir m-cüzdan kodu oluşturun Devam etmek istiyor musunuz?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Aygıtınız jailbroken gibi görünüyor. Cüzdanını güvenliğini tehlikeye olabilir.";
@@ -858,7 +954,31 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "Your identity does not match our records." = "Kimliğinizi kayıtlarımız eşleşmiyor.";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "Cep telefonu numaranızı doğrulandı.";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "Yeni parola ipucunuz geçersiz karakterler içeriyor. Lütfen yeniden deneyin.";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "Yeni parola ipucunuz yok metin içerir. Parola ipucunuz temizlenir.";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "Yeni parola ipucunuz parolanızı farklı olmalıdır. Lütfen yeniden deneyin.";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "Yeni parola ipucunuz ikinci parolasından farklı olmalıdır. Lütfen yeniden deneyin.";
+
+/* (No Commment) */
+"Your password hint has been updated." = "Parola ipucunuz güncelleştirildi.";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Doğrulanmış e-posta adresinizi şüpheli veya olağan dışı etkinliği algılandığında, m-cüzdan oturum açma kimliğini hatırlatmak ve fon aldığınızda bitcoin ödeme uyarıları göndermek için giriş kodları göndermek için kullanılır. Biz e-posta adresinizi pazarlama amacıyla kullanmaz.";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "Cüzdanını başarıyla oluşturuldu.";
+
+/* (No Commment) */
+"Yubi Key" = "Yubi anahtar";
 
 /* No comment provided by engineer. */
 "eighth word" = "Sekizinci kelime";

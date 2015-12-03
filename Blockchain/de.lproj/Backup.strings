@@ -63,7 +63,7 @@ Sie können Ihren Geldbeutel Sicherheit gefährden.";
 "T4p-mz-siC.normalTitle" = "ÜBERPRÜFEN SIE DIE SICHERUNG";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Notieren Sie die Worte auf einem Blatt Papier in der exakten Reihenfolge sie erscheinen auf einem Blatt Papier, und speichern Sie es an sicherer Stelle
+"UCL-i9-UDp.text" = "Notieren Sie die Wörter in der exakten Reihenfolge sie erscheinen auf einem Blatt Papier, und speichern Sie es an sicherer Stelle
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Sie können Ihren Geldbeutel Sicherheit gefährden.";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Sicherung-Brieftasche";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Weiter";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Sicherung-Brieftasche";

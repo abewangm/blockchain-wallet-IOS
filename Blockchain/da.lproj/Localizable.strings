@@ -32,10 +32,25 @@
 "1 minute ago" = "1 minut siden";
 
 /* (No Commment) */
+"2-step Verification" = "2-trins verifikation";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "2-trins verifikation er i øjeblikket deaktiveret.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "2-trins verifikation er i øjeblikket aktiveret for %@.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "2-trins verifikation er i øjeblikket aktiveret.";
+
+/* (No Commment) */
 "About" = "Om";
 
 /* (No Commment) */
 "Account Details" = "Kontooplysninger";
+
+/* (No Commment) */
+"Accounts" = "Konti";
 
 /* (No Commment) */
 "Add Email" = "Tilføje E-mail";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Beløbet skal være støv tærskel (%lld Satoshi)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "En e-mail-konto er nødvendig for at hjælpe med at inddrive en tabt konto id og betaling anmeldelser. Også, din verificeret e-mail-adresse bruges som et andet lag af kontrol, når du logger ind på din tegnebog.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Der opstod en fejl under validering af din pinkode med fjernserveren. Du kan være offline eller Blockchain kan vanskeligheder. Vil du prøve igen validering eller i stedet indtaste adgangskoden manuelt?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Før adgang til tegnebogen, skal du vælge en PIN-kode til at bruge til at låse din tegnebog. Det er vigtigt du huske denne pin, som det ikke kan nulstilles eller ændres uden første frigøre app.";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin enheder";
+"Bitcoin Unit" = "Bitcoin enhed";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin betalingsanmodning";
@@ -140,7 +152,16 @@
 "Change Email" = "Ændre E-mail";
 
 /* (No Commment) */
+"Change Mobile Number" = "Ændre mobil nummer";
+
+/* (No Commment) */
 "Change PIN" = "Skift PIN-kode";
+
+/* (No Commment) */
+"Change Password" = "Skift adgangskode";
+
+/* (No Commment) */
+"Change Password Hint" = "Ændre adgangskodetippet";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "Ændre gebyr per kilobyte";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Forbindelsen fik timeout. Kontroller din internetforbindelse.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Fortsat";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "Kopiere adressen";
 
 /* (No Commment) */
-"Copy GUID" = "Kopiere GUID";
+"Copy Wallet ID" = "Kopiere tegnebog-ID";
 
 /* (No Commment) */
 "Copy to clipboard" = "Kopier til Udklipsholder";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "Dekryptere tegnebog";
 
 /* (No Commment) */
+"Disable" = "Deaktiver";
+
+/* (No Commment) */
+"Disabled" = "Handicappede";
+
+/* (No Commment) */
 "Display" = "Display";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "Tomme svar fra serveren.";
 
 /* (No Commment) */
+"Enable" = "Aktiverer";
+
+/* (No Commment) */
 "Enable Location Services" = "Aktiver placeringstjenester";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Aktiver meddelelser til at modtage en e-mail, hver gang du modtager bitcoins. Kun mærket adresser i dine konti og importerede adresser er berettiget til at udløse underretninger.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktivering af denne funktion vil give alle brugere med en registreret Touch ID fingeraftryk på denne enhed til at få adgang til din tegnebog.";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "Gebyret er for høj (0,01 BTC grænse)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "Gebyr per kilobyte";
+"Fee per KB" = "Gebyr per KB";
 
 /* (No Commment) */
 "Fees" = "Gebyrer";
@@ -308,6 +341,9 @@
 "Go to Settings" = "Gå til indstillinger";
 
 /* (No Commment) */
+"Google Authenticator" = "Google Autentificering";
+
+/* (No Commment) */
 "How would you like to pair?" = "Hvordan vil du gerne par?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "Ugyldig PIN-kode. Behage prøve igen.";
 
 /* (No Commment) */
+"Incorrect password" = "Forkert password";
+
+/* (No Commment) */
 "Information" = "Oplysninger";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "Utilstrækkelige midler";
-
-/* (No Commment) */
-"Invalid GUID" = "Ugyldig GUID";
 
 /* (No Commment) */
 "Invalid Identifier" = "Ugyldigt id";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "Ugyldig statuskode returnerede %@";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "Ugyldigt tegnebog-ID";
+
+/* (No Commment) */
 "Invalid address: %@" = "Ugyldig adresse: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Ugyldig e-mail-adresse.";
+
+/* (No Commment) */
+"Invalid mobile number." = "Ugyldig mobilnummer.";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Ugyldig opsving sætning. Prøv venligst igen";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Ugyldig til bitcoin adresse";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "Ugyldig to-faktor Autentifikation type";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "Ugyldig bekræftelseskode. Prøv venligst igen.";
@@ -425,7 +470,7 @@
 "Merchant Map" = "Købmand kort";
 
 /* (No Commment) */
-"My Accounts" = "Mine konti";
+"Mobile Number" = "Mobil nummer";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Min Bitcoin tegnebog";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "Ny adresse";
+
+/* (No Commment) */
+"New Email Address" = "Ny emailadresse";
+
+/* (No Commment) */
+"New Mobile Number" = "Nyt mobil nummer";
+
+/* (No Commment) */
+"New password must be different" = "Nye password skal være forskellige";
 
 /* (No Commment) */
 "News, Price & Charts" = "Nyheder, pris & diagrammer";
@@ -461,6 +515,9 @@
 "Normal" = "Normal";
 
 /* (No Commment) */
+"Not Stored" = "Ikke gemt";
+
+/* (No Commment) */
 "Not now" = "Ikke nu";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "Eventuelt modtage underretninger, når en betaling er sendt eller modtaget fra din tegnebog.";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN krypteret strengen er lig nul";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "Parsing tilknytningskode";
 
 /* (No Commment) */
+"Password Hint" = "Adgangskodetip";
+
+/* (No Commment) */
 "Password Required" = "Adgangskode kræves";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "Adgangskoden ændres. Venligst log ind for at fortsætte.";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Adgangskode skal 10 tegn eller længere";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Beskriv venligst detaljeret det problem, du oplever, sammen med eventuelle skridt vi kan tage for at gengive det.";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Angiv et gebyr, der er større end 0 BTC og højst 0,01 BTC";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Angiv en ny pinkode";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "Indtast venligst dine %@ 2FA kode";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Angiv venligst din tegnebog en identifikator på 36 tegn korrekt. Det kan findes i velkomstmail ved opstart.";
@@ -560,7 +626,10 @@
 "Please try again" = "Prøv venligst igen";
 
 /* (No Commment) */
-"Please verify your email" = "Kontroller venligst din email";
+"Please verify your email address first." = "Kontroller venligst din emailadresse først.";
+
+/* (No Commment) */
+"Preferences" = "Præferencer";
 
 /* (No Commment) */
 "Privacy Policy" = "Privacy Policy";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Anmodning beløb";
+
+/* (No Commment) */
+"Resend verification SMS" = "Gensend verifikation SMS";
 
 /* (No Commment) */
 "Resend verification email" = "Gensend bekræftelses-email";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Anden adgangskode forkert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "Anden adgangskode kræves";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "Send til...";
+
+/* (No Commment) */
+"Send verification SMS" = "Send verifikation SMS";
 
 /* (No Commment) */
 "Sending Transaction" = "Sender transaktion";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Underskrive indgange";
+
+/* (No Commment) */
+"Stored" = "Gemt";
 
 /* (No Commment) */
 "Strong" = "Stærke";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "OPGRADERE DIN TEGNEBOG";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Stand til at indlæse tegnebog på grund af ingen Serversvar. Du kan være offline eller Blockchain er vanskeligheder. Prøv igen senere.";
+
+/* (No Commment) */
 "Unarchive" = "Udpakke";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "Ikke-afviklet undtagelse";
 
 /* (No Commment) */
+"Unknown" = "Ukendt";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Ukendt Touch ID fejl. Kode: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Ikke-understøttet Private nøgle Format";
+
+/* (No Commment) */
+"Unverified" = "Ubekræftet";
 
 /* (No Commment) */
 "Update" = "Opdatering";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "KONTROLLERE BACKUP";
 
 /* (No Commment) */
+"Verified" = "Verificeret";
+
+/* (No Commment) */
 "Verify" = "Kontroller";
 
 /* (No Commment) */
 "Verifying" = "Kontrol";
 
 /* (No Commment) */
-"Wallet Identifier" = "Tegnebog id";
+"Wallet ID" = "Tegnebog-ID";
+
+/* (No Commment) */
+"Wallet Information" = "Tegnebog oplysninger";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Tegnebog parret med succes.";
@@ -811,8 +904,8 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 "Would you like to add the bitcoin address %@ to your address book?" = "Vil du gerne tilføje bitcoin adresse %@ til din adressebog?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Skrive ord på et ark papir i præcis den rækkefølge de vises på et ark papir, og opbevar den et sikkert sted
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "Skrive ord i præcis den rækkefølge de vises på et ark papir, og opbevar den et sikkert sted
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Du sikkerhedskopieret dine penge";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Du kan aktivere 2-trins kontrol via SMS på din mobiltelefon. For at bruge andre godkendelsesmetoder i stedet, log ind på vores web wallet.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Du har ikke en konto sat op til Mail. Kontakt venligst %@";
@@ -846,7 +942,7 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 "You must leave at least one active address" = "Du skal lade mindst én aktiv adresse";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Du bør altid pair eller login hvis du har adgang til dine GUID og adgangskode. Inddrive dine penge vil skabe et nyt GUID. Ønsker du at fortsætte?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Du bør altid pair eller login hvis du har adgang til din Wallet-ID og adgangskode. Inddrive dine penge vil oprette en ny tegnebog ID. Ønsker du at fortsætte?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Enheden synes at være jailbroken. Sikkerheden for din tegnebog kan være kompromitteret.";
@@ -858,7 +954,31 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 "Your identity does not match our records." = "Din identitet svarer ikke til vores poster.";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "Dit mobilnummer er blevet verificeret.";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "Din nye adgangskodetip indeholder ugyldige tegn. Prøv venligst igen.";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "Din nye adgangskodetip indeholder ingen tekst. Dit adgangskodetip vil blive ryddet.";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "Din nye adgangskodetip skal være forskellig fra adgangskoden. Prøv venligst igen.";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "Din nye adgangskodetip skal være forskellig fra din anden adgangskode. Prøv venligst igen.";
+
+/* (No Commment) */
+"Your password hint has been updated." = "Dit adgangskodetip er blevet opdateret.";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Din verificeret e-mail-adresse bruges til at sende login koder Når mistænkelige eller usædvanlige aktivitet registreres, minde dig om din tegnebog login-ID og sende bitcoin betaling advarsler, når du modtager midler. Vi vil ikke bruge din e-mail-adresse til markedsføringsformål.";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "Din pung er oprettet.";
+
+/* (No Commment) */
+"Yubi Key" = "Yubi nøgle";
 
 /* No comment provided by engineer. */
 "eighth word" = "ottende ord";

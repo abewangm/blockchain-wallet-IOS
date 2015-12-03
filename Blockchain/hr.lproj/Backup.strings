@@ -63,7 +63,7 @@ Može ugroziti vaš novčanik sigurnost";
 "T4p-mz-siC.normalTitle" = "PROVJERITE SIGURNOSNA KOPIJA";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Zapišite riječi na papiru u točan poredak na list papira i pohraniti ga negdje na sigurno
+"UCL-i9-UDp.text" = "Zapišite riječi u točan poredak na list papira i pohraniti ga negdje na sigurno
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Može ugroziti vaš novčanik sigurnost";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Sigurnosna kopija novčanik";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "I dalje";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Sigurnosna kopija novčanik";

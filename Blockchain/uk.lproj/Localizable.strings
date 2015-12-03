@@ -32,10 +32,25 @@
 "1 minute ago" = "1 хвилину тому";
 
 /* (No Commment) */
+"2-step Verification" = "Двоетапна перевірка";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "Двоетапна перевірка наразі вимкнуті.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "Двоетапна перевірка уже активовано для %@.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "Двоетапна перевірка активовані.";
+
+/* (No Commment) */
 "About" = "Про";
 
 /* (No Commment) */
 "Account Details" = "Реквізити рахунку";
+
+/* (No Commment) */
+"Accounts" = "Облікові записи";
 
 /* (No Commment) */
 "Add Email" = "Додати електронної пошти";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Сума повинна бути вище пилу поріг (%lld Сатосі)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Обліковий запис електронної пошти необхідно, щоб допомогти відновити втрачені гаманець ідентифікатор і для оплати сповіщення. Крім того, перевірену електронну адресу буде використовуватися як другий шар верифікації, коли ви входите в ваш гаманець.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Помилка перевірки ваш PIN-код з віддаленим сервером. Можливо, ви в автономному режимі або Blockchain може відчувати труднощі. Ви хочете, повторити перевірку або замість введення пароля вручну?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Перед зверненням до вашого гаманця, будь ласка, виберіть PIN-код для розблокування вашого гаманця. Дуже важливо, що ви пам'ятаєте цей PIN-код, як він не може скинути або змінені без першого розблокування застосунок.";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin одиниць";
+"Bitcoin Unit" = "Bitcoin одиниці";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin оплати запит";
@@ -140,7 +152,16 @@
 "Change Email" = "Змінити електронну адресу";
 
 /* (No Commment) */
+"Change Mobile Number" = "Змінити номер мобільного телефону";
+
+/* (No Commment) */
 "Change PIN" = "Зміна PIN-КОДУ";
+
+/* (No Commment) */
+"Change Password" = "Змінити пароль";
+
+/* (No Commment) */
+"Change Password Hint" = "Змінити підказку для пароля";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "Плата за зміну покілобайтною";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Вичерпано час підключення. Будь ласка, Перевірте підключення до Інтернету.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Продовжити";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "Копіювати адресу";
 
 /* (No Commment) */
-"Copy GUID" = "Копія GUID";
+"Copy Wallet ID" = "Копія посвідчення гаманець";
 
 /* (No Commment) */
 "Copy to clipboard" = "Скопіювати до буфера обміну";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "Дешифрування гаманець";
 
 /* (No Commment) */
+"Disable" = "Вимкнути";
+
+/* (No Commment) */
+"Disabled" = "Інваліди";
+
+/* (No Commment) */
 "Display" = "Дисплей";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "Пусті відповіді від сервера.";
 
 /* (No Commment) */
+"Enable" = "Увімкнути";
+
+/* (No Commment) */
 "Enable Location Services" = "Увімкнення служби локації";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Увімкнути сповіщення для отримання по електронній пошті, коли ви отримуєте bitcoins. Тільки помічені адреси у ваших облікових записів та імпортованих адреси мають право тригер сповіщення.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Увімкнення цієї функції дозволить всім користувачам з зареєстрованих Touch ID відбитків на цей пристрою для доступу до вашого гаманця.";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "Плата є занадто високою (0,01 БТД ліміт)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "Плата за покілобайтною";
+"Fee per KB" = "Плата за КБ";
 
 /* (No Commment) */
 "Fees" = "Зборів";
@@ -308,6 +341,9 @@
 "Go to Settings" = "Зайдіть в настройки";
 
 /* (No Commment) */
+"Google Authenticator" = "Генератор кодів Google";
+
+/* (No Commment) */
 "How would you like to pair?" = "Як би ви хотіли пара?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "Неправильний PIN-код. Спробуйте ще раз.";
 
 /* (No Commment) */
+"Incorrect password" = "Невірний пароль";
+
+/* (No Commment) */
 "Information" = "Інформація";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "Недостатньо коштів";
-
-/* (No Commment) */
-"Invalid GUID" = "Неприпустимий ідентифікатор GUID";
 
 /* (No Commment) */
 "Invalid Identifier" = "Неприпустимий ідентифікатор";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "Код неприпустимий стану повернувся %@";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "Неприпустимий Ідентифікатор гаманець";
+
+/* (No Commment) */
 "Invalid address: %@" = "Неприпустима адреса: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Недійсна електронна адреса.";
+
+/* (No Commment) */
+"Invalid mobile number." = "Неприпустимий номер мобільного телефону.";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Неприпустимий відновлення фразу. Будь ласка, спробуйте ще раз";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Неприпустима адреса bitcoin";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "Неприпустимий Двофакторна аутентифікація типу";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "Код підтвердження неправильний. Будь ласка, спробуйте ще раз.";
@@ -425,7 +470,7 @@
 "Merchant Map" = "Купець карти";
 
 /* (No Commment) */
-"My Accounts" = "Мої бізнес-партнери";
+"Mobile Number" = "Номер мобільного телефону";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Мій гаманець Bitcoin";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "Нова адреса";
+
+/* (No Commment) */
+"New Email Address" = "Нову адресу електронної пошти";
+
+/* (No Commment) */
+"New Mobile Number" = "Новий номер мобільного телефону";
+
+/* (No Commment) */
+"New password must be different" = "Новий пароль має відрізнятися";
 
 /* (No Commment) */
 "News, Price & Charts" = "Новини, ціни та Чарти";
@@ -461,6 +515,9 @@
 "Normal" = "Звичайний";
 
 /* (No Commment) */
+"Not Stored" = "Не зберігається";
+
+/* (No Commment) */
 "Not now" = "Не зараз";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "Гаразд";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "За потреби отримувати сповіщення, коли платіж надіслано або отримано з вашого гаманця.";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN зашифровані рядка дорівнює нулю";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "Розбір спаровування код";
 
 /* (No Commment) */
+"Password Hint" = "Підказку для пароля";
+
+/* (No Commment) */
 "Password Required" = "Пароль";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "Змінити пароль. Будь ласка, Логін, щоб продовжити.";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Пароль має 10 символів або довше";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Будь ласка, Опишіть детально питання, які виникають, а також будь-які кроки ми можемо зробити, щоб відтворити її.";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Будь ласка, введіть плату, більше за 0 БТД і в більшості 0.01 БТД";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Будь ласка, введіть новий PIN-код";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "Будь ласка, введіть ваш код 2FA %@";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Будь ласка, введіть свій ідентифікатор гаманець 36 характер правильно. Він може бути знайдений у вітальному листі під час запуску.";
@@ -560,7 +626,10 @@
 "Please try again" = "Будь ласка, спробуйте ще раз";
 
 /* (No Commment) */
-"Please verify your email" = "Перевірте вашу електронну пошту";
+"Please verify your email address first." = "Перевірте адресу електронної пошти, спочатку.";
+
+/* (No Commment) */
+"Preferences" = "Налаштування";
 
 /* (No Commment) */
 "Privacy Policy" = "Політика конфіденційності";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Сума замовлення";
+
+/* (No Commment) */
+"Resend verification SMS" = "Знову надіслати перевірочне SMS";
 
 /* (No Commment) */
 "Resend verification email" = "Знову надіслати перевірочне повідомлення електронної пошти";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Другий пароль неправильні";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "Другий пароль";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "Надіслати до...";
+
+/* (No Commment) */
+"Send verification SMS" = "Надіслати перевірочне SMS";
 
 /* (No Commment) */
 "Sending Transaction" = "Надсилання транзакції";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Підписання входи";
+
+/* (No Commment) */
+"Stored" = "Зберігається";
 
 /* (No Commment) */
 "Strong" = "Сильні";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "ОНОВИТИ ВАШ ГАМАНЕЦЬ";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Не вдається завантажити гаманець зв'язку без відповіді сервера. Можливо, ви в автономному режимі або Blockchain переживає труднощі. Будь ласка, спробуйте ще раз пізніше.";
+
+/* (No Commment) */
 "Unarchive" = "Unarchive";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "Необроблена виняткова ситуація";
 
 /* (No Commment) */
+"Unknown" = "Невідомо";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Невідома помилка Touch ID. Код: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Непідтримуваний формат приватний ключ";
+
+/* (No Commment) */
+"Unverified" = "Неперевірені";
 
 /* (No Commment) */
 "Update" = "Оновлення";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "ПЕРЕВІРТЕ, ЧИ РЕЗЕРВНОГО КОПІЮВАННЯ";
 
 /* (No Commment) */
+"Verified" = "Перевірено";
+
+/* (No Commment) */
 "Verify" = "Перевірте, чи";
 
 /* (No Commment) */
 "Verifying" = "Перевірка";
 
 /* (No Commment) */
-"Wallet Identifier" = "Ідентифікатор гаманець";
+"Wallet ID" = "Гаманець ID";
+
+/* (No Commment) */
+"Wallet Information" = "Гаманець інформації";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Гаманець парі успішно.";
@@ -811,8 +904,8 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "Would you like to add the bitcoin address %@ to your address book?" = "Хотіли б ви додати bitcoin адресу %@ до своєї адресної книги?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Запишіть слова на аркуші паперу згідно точного порядку вони з'являться на аркуші паперу і зберігайте його в надійному місці
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "Запишіть слова згідно точного порядку вони з'являться на аркуші паперу і зберігайте його в надійному місці
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Ви успішно для резервного копіювання ваших фондів";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Ви можете ввімкнути двоетапну перевірку за допомогою SMS на мобільний телефон. Для того, щоб використовувати інші методи автентифікації замість цього, будь ласка, Логін до нашого веб-гаманець.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Ви не маєте обліковий запис, створений для Mail. Будь ласка, звертайтеся %@";
@@ -846,7 +942,7 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "You must leave at least one active address" = "Ви повинні залишити хоча б одну активну адресу";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Ви повинні завжди пари або увійти, якщо ви маєте доступ до GUID і пароль. Відновлення ваших фондів буде створено новий ідентифікатор GUID. Ви хотіли б продовжити?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Ви повинні завжди пари або увійти, якщо у вас є доступ до вашого гаманця ID і пароль. Відновлення ваших фондів створить новий гаманець ID. Ви хотіли б продовжити?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Пристрій, як видається, бути зламаний. Безпеки вашого гаманця може бути віддана в жертву.";
@@ -858,7 +954,31 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "Your identity does not match our records." = "Вашу особистість не відповідає нашому записів.";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "Перевірити свій номер мобільного телефону.";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "Підказку про новий пароль містить неприпустимі символи. Будь ласка, спробуйте ще раз.";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "Підказку про новий пароль містить текст не. Підказку про пароль буде очищено.";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "Підказку про новий пароль має відрізнятися від пароля. Будь ласка, спробуйте ще раз.";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "Підказку про новий пароль має відрізнятися від пароля другий. Будь ласка, спробуйте ще раз.";
+
+/* (No Commment) */
+"Your password hint has been updated." = "Підказку про пароль був поновлений.";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Перевірену електронну адресу використовується для відправки Логін кодів, коли підозрілих або незвичайних діяльності, щоб нагадати вам про ваш гаманець Ідентифікатор входу і відправити bitcoin оплати оповіщення при надходженні коштів. Ми не будемо використовувати вашу адресу електронної пошти для маркетингових цілей.";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "Ваш гаманець успішно створено.";
+
+/* (No Commment) */
+"Yubi Key" = "Семіньяк ключ";
 
 /* No comment provided by engineer. */
 "eighth word" = "восьмий слово";

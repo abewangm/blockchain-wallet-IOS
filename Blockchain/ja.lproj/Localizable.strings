@@ -32,10 +32,25 @@
 "1 minute ago" = "1 分前";
 
 /* (No Commment) */
+"2-step Verification" = "2 段階認証プロセス";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "2 段階認証プロセスは、現在無効です。";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "2 段階認証プロセスは、%@ で現在有効です。";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "2 段階認証プロセスは、現在有効です。";
+
+/* (No Commment) */
 "About" = "について";
 
 /* (No Commment) */
 "Account Details" = "アカウントの詳細";
+
+/* (No Commment) */
+"Accounts" = "アカウント";
 
 /* (No Commment) */
 "Add Email" = "メール アドレスを追加します。";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "量する必要がありますほこりしきい値 (%lld 聡)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "メール アカウントはなくした財布識別子を回復するために必要な支払通知。また、あなたの財布にログインするときは、確認済みのメール アドレスを検証の第 2 層として使用されます。";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "リモート サーバーと PIN コードの検証エラーが発生しました。あなたがオフラインである、または Blockchain により、問題が発生します。検証を再試行するか、代わりにあなたのパスワードを手動で入力したいですか。";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "あなたの財布をアクセスする前に、あなたの財布のロックを解除に使用するピン番号を選択してください。リセットまたは、アプリを解除しないで変更することはできません、このピンが覚えていることが重要です。";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin ユニット";
+"Bitcoin Unit" = "Bitcoin ユニット";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin 支払い要求";
@@ -140,7 +152,16 @@
 "Change Email" = "メール アドレスを変更します。";
 
 /* (No Commment) */
+"Change Mobile Number" = "携帯電話の番号を変更します。";
+
+/* (No Commment) */
 "Change PIN" = "暗証番号の変更";
+
+/* (No Commment) */
+"Change Password" = "パスワードの変更";
+
+/* (No Commment) */
+"Change Password Hint" = "変更パスワードのヒント";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "/Kb 変更手数料";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "接続がタイムアウトしました。あなたのインターネット接続を確認してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "続行";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "アドレスのコピー";
 
 /* (No Commment) */
-"Copy GUID" = "GUID をコピーします。";
+"Copy Wallet ID" = "ウォレット ID をコピーします。";
 
 /* (No Commment) */
 "Copy to clipboard" = "クリップボードにコピー";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "財布を復号化します。";
 
 /* (No Commment) */
+"Disable" = "無効にします。";
+
+/* (No Commment) */
+"Disabled" = "無効になっています。";
+
+/* (No Commment) */
 "Display" = "ディスプレイ";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "サーバーから空の応答。";
 
 /* (No Commment) */
+"Enable" = "有効にします。";
+
+/* (No Commment) */
 "Enable Location Services" = "位置情報サービスを有効にします。";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Bitcoins を受信するたびにメールを受信する通知を有効にします。ラベル アドレスのみのアカウントで、インポートしたアドレスが通知をトリガーする対象となります。";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "この機能を有効にすると、このデバイスがあなたの財布にアクセスするにタッチ ID 指紋の登録されているすべてのユーザーが許可されます。";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "料金が高すぎる (0.01 BTC 制限)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "キロバイト当たり料金";
+"Fee per KB" = "KB 1 名あたり料金";
 
 /* (No Commment) */
 "Fees" = "手数料";
@@ -308,6 +341,9 @@
 "Go to Settings" = "設定に移動します。";
 
 /* (No Commment) */
+"Google Authenticator" = "Google 認証システム";
+
+/* (No Commment) */
 "How would you like to pair?" = "どのペアにしますか?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "暗証番号が正しくありません。再試行してください。";
 
 /* (No Commment) */
+"Incorrect password" = "パスワードが正しくありません。";
+
+/* (No Commment) */
 "Information" = "情報";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "資金不足";
-
-/* (No Commment) */
-"Invalid GUID" = "無効な GUID";
 
 /* (No Commment) */
 "Invalid Identifier" = "無効な識別子";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "%@ を返された無効なステータス コード";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "無効なウォレット ID";
+
+/* (No Commment) */
 "Invalid address: %@" = "無効なアドレス: %@";
 
 /* (No Commment) */
 "Invalid email address." = "無効なメール アドレスです。";
+
+/* (No Commment) */
+"Invalid mobile number." = "携帯電話の番号が無効です。";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "無効な回復フレーズ。もう一度やり直してください。";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Bitcoin アドレスが無効です";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "無効な 2 要素の認証の種類";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "無効な検証コードです。もう一度やり直してください。";
@@ -425,7 +470,7 @@
 "Merchant Map" = "加盟店マップ";
 
 /* (No Commment) */
-"My Accounts" = "私のアカウント";
+"Mobile Number" = "携帯電話番号";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Bitcoin 財布";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "新しいアドレス";
+
+/* (No Commment) */
+"New Email Address" = "新しいメール アドレス";
+
+/* (No Commment) */
+"New Mobile Number" = "新しい携帯電話番号";
+
+/* (No Commment) */
+"New password must be different" = "新しいパスワードは異なる必要があります。";
 
 /* (No Commment) */
 "News, Price & Charts" = "ニュース ・価格チャート";
@@ -461,6 +515,9 @@
 "Normal" = "通常";
 
 /* (No Commment) */
+"Not Stored" = "保存されません。";
+
+/* (No Commment) */
 "Not now" = "今ではありません";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "わかりました";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "必要に応じて支払いを送信またはあなたの財布から受信したときに通知を受け取る。";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN の暗号化された文字列が入力されていません";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "ペアリング コードを解析";
 
 /* (No Commment) */
+"Password Hint" = "パスワードのヒント";
+
+/* (No Commment) */
 "Password Required" = "必要なパスワード";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "パスワードを変更します。続行するにはログインをしてください。";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "パスワードには 10 文字する必要があります以上";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "それを再現する私たちすることができます手順と共に、発生している問題の詳細について教えてください。";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "0 BTC とせいぜい 0.01 BTC を超える料金を入力してください。";
+
+/* (No Commment) */
 "Please enter a new PIN" = "新しい PIN を入力してください。";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "%@ 2 fa コードを入力してください。";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "財布にある、36 文字の id を正しく入力してください。それは、起動時にウェルカム メールで見つけることが。";
@@ -560,7 +626,10 @@
 "Please try again" = "もう一度やり直してください。";
 
 /* (No Commment) */
-"Please verify your email" = "あなたのメール アドレスを確認してください。";
+"Please verify your email address first." = "まず、あなたのメール アドレスを確認してください。";
+
+/* (No Commment) */
+"Preferences" = "基本設定";
 
 /* (No Commment) */
 "Privacy Policy" = "プライバシー ポリシー";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "要求量";
+
+/* (No Commment) */
+"Resend verification SMS" = "再送信 SMS";
 
 /* (No Commment) */
 "Resend verification email" = "確認メールを再送信します。";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "第 2 パスワードが間違っています。";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "第 2 パスワードが必要です。";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "を送ってください.";
+
+/* (No Commment) */
+"Send verification SMS" = "検証 SMS を送信します。";
 
 /* (No Commment) */
 "Sending Transaction" = "トランザクションを送信します。";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "署名の入力";
+
+/* (No Commment) */
+"Stored" = "格納されています。";
 
 /* (No Commment) */
 "Strong" = "強力な";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "あなたの財布をアップグレードします。";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "サーバー応答がないため財布を読み込むことができません。あなたがオフラインであるか、Blockchain は問題します。後でもう一度試してください。";
+
+/* (No Commment) */
 "Unarchive" = "解凍し";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "未処理の例外";
 
 /* (No Commment) */
+"Unknown" = "不明";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "不明なタッチ ID エラー。コード: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "サポートされない秘密キー形式";
+
+/* (No Commment) */
+"Unverified" = "未確認";
 
 /* (No Commment) */
 "Update" = "更新";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "バックアップを検証します。";
 
 /* (No Commment) */
+"Verified" = "検証";
+
+/* (No Commment) */
 "Verify" = "確認します。";
 
 /* (No Commment) */
 "Verifying" = "確認します。";
 
 /* (No Commment) */
-"Wallet Identifier" = "財布識別子";
+"Wallet ID" = "ウォレット ID";
+
+/* (No Commment) */
+"Wallet Information" = "財布情報";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "正常にペアリングの財布。";
@@ -811,8 +904,8 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin アドレス %@ をアドレス帳に追加しますか?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "彼らは、紙のシート上に表示、どこか安全な保存の正確な順序で用紙 1 枚に言葉を書き留めてください。
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "彼らは、紙のシート上に表示、どこか安全な保存の正確な順序で言葉を書き留めてください。
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "あなたが正常にあなたの資金をバックアップ";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "あなたの携帯電話に SMS 経由で 2 段階認証プロセスを有効にできます。代わりに、他の認証方法を使用するためには、私たち web ウォレットにログインをしてください。";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "設定したメール アカウントがありません。%@ にお問い合わせください。";
@@ -846,7 +942,7 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "You must leave at least one active address" = "少なくとも 1 つのアクティブなアドレスにしておく必要があります。";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "ペアまたは、GUID とパスワードへのアクセスがあればログインする必要があります常にします。あなたの資金を回復する新しい GUID が作成されます。続行しますか?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "ペアまたは、ウォレット ID とパスワードへのアクセスがあればログインする必要があります常にします。新しいウォレット ID が作成されますあなたの資金を回復します。続行しますか?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "お使いのデバイスは、ジェイルブレイクする必要表示されます。あなたの財布のセキュリティが侵害される可能性があります。";
@@ -858,7 +954,31 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "Your identity does not match our records." = "あなたのアイデンティティは、私たちのレコードを一致しません。";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "あなたの携帯電話の番号を確認しました。";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "新しいパスワードのヒントには、無効な文字が含まれています。もう一度やり直してください。";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "新しいパスワードのヒントには、テキストは含まれていません。パスワードのヒントはクリアされます。";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "新しいパスワードのヒントは、あなたのパスワードとは異なるである必要があります。もう一度やり直してください。";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "新しいパスワードのヒントは、あなたの 2 番目のパスワードとは異なるである必要があります。もう一度やり直してください。";
+
+/* (No Commment) */
+"Your password hint has been updated." = "パスワードのヒントを更新しました。";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "確認済みのメール アドレスを使用して、不審なまたは異常なアクティビティが検出されると、あなたの財布のログイン ID を通知する、資金を受け取るときに bitcoin お支払いに関するアラートを送信するログイン コードを送信します。マーケティング目的のため、お客様のメール アドレスを使わないでしょう。";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "あなたの財布は正常に作成されました。";
+
+/* (No Commment) */
+"Yubi Key" = "ユビ ・ キー";
 
 /* No comment provided by engineer. */
 "eighth word" = "8 単語";

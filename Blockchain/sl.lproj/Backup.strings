@@ -63,7 +63,7 @@ Lahko ogrozijo varnost vaše denarnice";
 "T4p-mz-siC.normalTitle" = "PREVERI VARNOSTNO KOPIRANJE";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Besede napišite na list papirja v takem zaporedju, prikazani na list papirja, in to nekje varno shranjevanje
+"UCL-i9-UDp.text" = "Napišite besede v takem zaporedju, prikazani na list papirja, in to nekje varno shranjevanje
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Lahko ogrozijo varnost vaše denarnice";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Varnostno denarnice";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Še";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Varnostno denarnice";

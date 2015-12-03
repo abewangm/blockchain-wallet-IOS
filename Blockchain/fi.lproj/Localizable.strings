@@ -32,10 +32,25 @@
 "1 minute ago" = "10 minuuttia sitten";
 
 /* (No Commment) */
+"2-step Verification" = "2-vaiheinen vahvistus";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "2-vaiheinen vahvistus on poistettu käytöstä.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "2-vaiheinen vahvistus on käytössä %@.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "2-vaiheinen tarkistus on käytössä.";
+
+/* (No Commment) */
 "About" = "Tietoja";
 
 /* (No Commment) */
 "Account Details" = "Tilin tiedot";
+
+/* (No Commment) */
+"Accounts" = "Tilit";
 
 /* (No Commment) */
 "Add Email" = "Lisää sähköposti";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Summan on oltava pöly-kynnysarvo (%lld Satoshi)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Sähköpostitilin tarvitaan auttaa palauttaa kadonnut lompakko tunnus ja maksukehotuksista. Myös tarkistaa sähköpostiosoitteesi käytetään toiseen kerrokseen tarkastuksen kun kirjaudut lompakon.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Virhe tarkistettaessa PIN-koodin etäpalvelimen kanssa. Olet ehkä offline-tilassa tai Blockchain saattaa olla vaikeuksia. Haluatko yrittää uudelleen validointi tai sen sijaan Syötä salasana manuaalisesti?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Ennen käyttöä lompakon, valitse PIN-koodin käyttämään Avaa lompakko. On tärkeää muistaa tämä PIN-tunnus, koska se ei voi palauttaa tai vaihtaa avaamatta app.";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin yksiköt";
+"Bitcoin Unit" = "Bitcoin yksikkö";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin ennakkomaksun pyyntö";
@@ -140,7 +152,16 @@
 "Change Email" = "Muuta sähköposti";
 
 /* (No Commment) */
+"Change Mobile Number" = "Muuttaa matkapuhelinnumero";
+
+/* (No Commment) */
 "Change PIN" = "Vaihda PIN-tunnus";
+
+/* (No Commment) */
+"Change Password" = "Vaihda salasana";
+
+/* (No Commment) */
+"Change Password Hint" = "Muutos salasanavihje";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "VAIHTOMAKSU per kilotavu";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Yhteys aikakatkaistiin. Tarkista internet-yhteys.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Jatka";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "Kopioi osoite";
 
 /* (No Commment) */
-"Copy GUID" = "Kopioi GUID-tunnus";
+"Copy Wallet ID" = "Kopioi lompakko tunnus";
 
 /* (No Commment) */
 "Copy to clipboard" = "Kopioi leikepöydälle";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "Salauksen lompakko";
 
 /* (No Commment) */
+"Disable" = "Poista käytöstä";
+
+/* (No Commment) */
+"Disabled" = "Vammaisten";
+
+/* (No Commment) */
 "Display" = "Näyttö";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "Tyhjä vastaus palvelimelta.";
 
 /* (No Commment) */
+"Enable" = "Ota käyttöön";
+
+/* (No Commment) */
 "Enable Location Services" = "Ota sijaintipalvelut";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Ottaa käyttöön ilmoitukset saa sähköpostin aina, kun vastaanotat bitcoins. Vain merkityt osoitteet tilisi ja tuodut osoitteet voivat laukaista ilmoitukset.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Tämän ominaisuuden käyttöönotto Salli kaikkien käyttäjien rekisteröity Touch ID sormenjälki tämän laitteen päästä lompakon.";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "Maksu on liian korkea (0,01 BTC raja)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "Maksu per kilotavu";
+"Fee per KB" = "Maksu per KB";
 
 /* (No Commment) */
 "Fees" = "Maksut";
@@ -308,6 +341,9 @@
 "Go to Settings" = "Valitse asetukset";
 
 /* (No Commment) */
+"Google Authenticator" = "Google Authenticator";
+
+/* (No Commment) */
 "How would you like to pair?" = "Miten haluat pari?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "Virheellinen PIN-tunnus. Yritä uudelleen.";
 
 /* (No Commment) */
+"Incorrect password" = "Virheellinen salasana";
+
+/* (No Commment) */
 "Information" = "Tiedot";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "Varat eivät riitä";
-
-/* (No Commment) */
-"Invalid GUID" = "Virheellinen GUID-tunnus";
 
 /* (No Commment) */
 "Invalid Identifier" = "Virheellinen tunniste";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "Palautettu %@ virheellinen tilakoodi";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "Lompakko-tunnus ei kelpaa";
+
+/* (No Commment) */
 "Invalid address: %@" = "Sähköpostiosoite: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Sähköpostiosoite ei kelpaa.";
+
+/* (No Commment) */
+"Invalid mobile number." = "Virheellinen matkapuhelinnumero.";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Pätemätön hyödyntämistä lause. Yritä uudelleen";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Virheellinen bitcoin osoitteeseen";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "Virheellinen kaksivaiheinen todennustyyppi";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "Virheellinen vahvistuskoodi. Yritä uudelleen.";
@@ -425,7 +470,7 @@
 "Merchant Map" = "Kauppa kartta";
 
 /* (No Commment) */
-"My Accounts" = "Omat tilit";
+"Mobile Number" = "Matkapuhelinnumero";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Bitcoin lompakko";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "Uusi osoite";
+
+/* (No Commment) */
+"New Email Address" = "Uusi sähköpostiosoite";
+
+/* (No Commment) */
+"New Mobile Number" = "Veres eloisa joukko";
+
+/* (No Commment) */
+"New password must be different" = "Uuden salasanan on oltava erilainen";
 
 /* (No Commment) */
 "News, Price & Charts" = "Uutiset, hinnat ja kaavioita";
@@ -461,6 +515,9 @@
 "Normal" = "Normaali";
 
 /* (No Commment) */
+"Not Stored" = "Ei tallenneta";
+
+/* (No Commment) */
 "Not now" = "Ei nyt";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "Okei";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "Voit halutessasi vastaanottaa ilmoituksia, kun maksu lähetetään tai vastaanotetaan lompakostasi.";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN salattu merkkijono on nolla";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "Jäsennys, laiteparikoodi";
 
 /* (No Commment) */
+"Password Hint" = "Salasanavihje";
+
+/* (No Commment) */
 "Password Required" = "Salasana vaaditaan";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "Salasana vaihdettu. Kirjaudu sisään jatkaaksesi.";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Salasana on 10 merkkiä tai kauemmin";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Kuvailkaa yksityiskohtaisesti ongelma sinulla on, sekä ohjeet, voimme jäljitellä sitä.";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Syötä maksu, joka on suurempi kuin 0 BTC ja korkeintaan 0,01-BTC";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Anna uusi PIN-tunnus";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "Anna %@ 2FA koodi";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Kirjoita tunnuksesi 36 merkin lompakko oikein. Se löytyy Tervetuloa sähköpostitse käynnistettäessä.";
@@ -560,7 +626,10 @@
 "Please try again" = "Yritä uudelleen";
 
 /* (No Commment) */
-"Please verify your email" = "Tarkista sähköpostiosoitteesi";
+"Please verify your email address first." = "Tarkista sähköpostiosoitteesi.";
+
+/* (No Commment) */
+"Preferences" = "Asetukset";
 
 /* (No Commment) */
 "Privacy Policy" = "Yksityisyyden suoja";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Pyyntö määrä";
+
+/* (No Commment) */
+"Resend verification SMS" = "Lähetä vahvistus tekstiviestillä";
 
 /* (No Commment) */
 "Resend verification email" = "Vahvistussähköposti";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Toinen salasana väärin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "Toinen salasana";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "Lähetä...";
+
+/* (No Commment) */
+"Send verification SMS" = "Lähetä vahvistus tekstiviestillä";
 
 /* (No Commment) */
 "Sending Transaction" = "Lähettää tapahtuman";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Allekirjoittaminen tuotantopanosten";
+
+/* (No Commment) */
+"Stored" = "Tallennettu";
 
 /* (No Commment) */
 "Strong" = "Vahva";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "PÄIVITTÄÄ LOMPAKON";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Ei voi ladata lompakko koska palvelin ei vastaa. Saattaa olla offline-tilassa tai Blockchain on vaikeuksia. Yritä myöhemmin uudelleen.";
+
+/* (No Commment) */
 "Unarchive" = "Älä arkistoi";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "Käsittelemätön poikkeus";
 
 /* (No Commment) */
+"Unknown" = "Tuntematon";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Tuntematon Touch ID virhe. Koodi: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Yksityinen avain muotoa ei tueta";
+
+/* (No Commment) */
+"Unverified" = "Vahvistamatta";
 
 /* (No Commment) */
 "Update" = "Päivitys";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "TARKISTA VARMUUSKOPIOINTI";
 
 /* (No Commment) */
+"Verified" = "Tarkistaa";
+
+/* (No Commment) */
 "Verify" = "Tarkista";
 
 /* (No Commment) */
 "Verifying" = "Tarkistetaan";
 
 /* (No Commment) */
-"Wallet Identifier" = "Lompakko tunnus";
+"Wallet ID" = "Lompakko tunnus";
+
+/* (No Commment) */
+"Wallet Information" = "Lompakon tiedot";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Lompakko pariksi onnistuneesti.";
@@ -811,8 +904,8 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "Would you like to add the bitcoin address %@ to your address book?" = "Haluatko lisätä bitcoin osoite %@ osoitekirjaan?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Kirjoita sanat paperille tietyssä järjestyksessä ne näkyvät paperille ja tallentaa sen jossain turvallista
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "Kirjoita sanat tietyssä järjestyksessä ne näkyvät paperille ja tallentaa sen jossain turvallista
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Varmuuskopiointi rahat onnistui";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Voit ottaa 2-vaiheinen vahvistus tekstiviestinä matkapuhelimeesi. Jotta voit käyttää muita todennusmenetelmiä, kirjaudu sisään web-lompakkoon.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Sinulla ei ole tilin postia. Ota yhteyttä %@";
@@ -846,7 +942,7 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "You must leave at least one active address" = "Jätä vähintään yksi aktiivinen osoite";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Kannattaa aina pari tai Kirjaudu sisään jos GUID-tunnus ja salasana. Takaisin rahat luo uuden GUID. Haluatko jatkaa?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Kannattaa aina pari tai Kirjaudu sisään jos sinulla on pääsy sinun lompakko ID ja tunnussana. Takaisin rahat luo uuden lompakon. Haluatko jatkaa?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Laite tulee näkyviin jailbroken. Lompakon turvallisuus voi vaarantua.";
@@ -858,7 +954,31 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "Your identity does not match our records." = "Identiteetti ei vastaa tietomme.";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "Matkapuhelinnumero on varmistettu.";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "Uusi salasanavihje sisältää virheellisiä merkkejä. Yritä uudelleen.";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "Uusi salasanavihje jossa ei ole tekstiä. Salasanavihje poistetaan.";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "Uusi salasanavihje on oltava eri kuin salasana. Yritä uudelleen.";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "Uusi salasanavihje on oltava eri kuin toinen salasana. Yritä uudelleen.";
+
+/* (No Commment) */
+"Your password hint has been updated." = "Salasanavihje on päivitetty.";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Tarkistaa sähköpostiosoitteesi käytetään lähettää kirjautuminen koodit kun epäilyttävä tai epätavallinen toiminta havaitaan, muistuttaa lompakko Sisäänkirjautumistunnus ja lähettää bitcoin maksuilmoitukset, kun saat varat. Emme käytä sähköpostiosoitteesi markkinointitarkoituksiin.";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "Lompakko on luotu.";
+
+/* (No Commment) */
+"Yubi Key" = "Yubi avain";
 
 /* No comment provided by engineer. */
 "eighth word" = "Kahdeksas sana";

@@ -23,19 +23,19 @@
 "360.text" = "1";
 
 /* Class = "UILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Jelentkezz be hogy a Blockchain pénztárca, keresztül a PC vagy Mac http://blockchain.info/wallet";
+"361.text" = "Jelentkezz be hogy a Blockchain pénztárca, keresztül a PC vagy Mac https://blockchain.info/wallet/login";
 
 /* Class = "UILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Kattintson a beállítások gombra, majd válassza ki az eszközök lapon";
+"364.text" = "Ha használja a régi pénztárca, kattintson a beállítások gombra, és kattintson a eszközök fülre. Ha-a ' használ a új béta pénztárca, nyissa meg a Settings / pénztárca információkat.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Kattintson a Térkép párosítás kód-hoz feltár egy QR-kód, egy négyzet alakú fekete-fehér vonalkód. Olvassa be a kódot a kamerához";
+"369.text" = "Kattintson a Térkép párosítás kód-hoz feltár egy QR-kód, egy fehér négyzet fekete & vonalkód. Olvassa be a kódot a kamera.";
 
 /* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
 "370.normalTitle" = "Átkutat a párosító kód";
@@ -162,9 +162,6 @@
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Kézi párosítása";
-
-/* Class = "UILabel"; text = "You must have two-factor authentication disabled to pair manually."; ObjectID = "rQS-iv-7kZ"; */
-"rQS-iv-7kZ.text" = "Kettő-tényező hitelesítés le van tiltva, hogy pár manuálisan kell rendelkeznie.";
 
 /* Class = "UIButton"; normalTitle = "Blockchain Terms of Service"; ObjectID = "wfI-8F-dfm"; */
 "wfI-8F-dfm.normalTitle" = "Blockchain szolgáltatási feltételek";

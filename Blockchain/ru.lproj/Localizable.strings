@@ -32,10 +32,25 @@
 "1 minute ago" = "1 минуту назад";
 
 /* (No Commment) */
+"2-step Verification" = "Двухэтапная аутентификация";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "Двухэтапная аутентификация в настоящее время отключен.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "для %@ в настоящее время включена двухэтапная аутентификация.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "в настоящее время включена двухэтапная аутентификация.";
+
+/* (No Commment) */
 "About" = "О";
 
 /* (No Commment) */
 "Account Details" = "Реквизиты счета";
+
+/* (No Commment) */
+"Accounts" = "Учетные записи";
 
 /* (No Commment) */
 "Add Email" = "Добавить адрес электронной почты";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Сумма должна быть выше порога пыли (%lld Сатоши)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Учетной записи электронной почты необходимо, чтобы помочь восстановить потерял бумажник идентификатор и для уведомлений о платежах. Кроме того ваш адрес электронной почты будет использоваться в качестве второй слой проверки при входе в ваш бумажник.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке ваш PIN-код с удаленным сервером. Вы может быть отключен или Blockchain могут испытывать трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Перед обращением к ваш кошелек, пожалуйста выберите PIN-код, чтобы использовать, чтобы разблокировать ваш бумажник. Важно, что вы помните этот PIN-код, как нельзя сбросить или изменены без первого разблокировки приложения.";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin единицы";
+"Bitcoin Unit" = "Bitcoin блок";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin запроса платежа";
@@ -140,7 +152,16 @@
 "Change Email" = "Изменить адрес электронной почты";
 
 /* (No Commment) */
+"Change Mobile Number" = "Изменить номер мобильного телефона";
+
+/* (No Commment) */
 "Change PIN" = "Изменить PIN-код";
+
+/* (No Commment) */
+"Change Password" = "Смена пароля";
+
+/* (No Commment) */
+"Change Password Hint" = "Изменение подсказки для пароля";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "Сбор за изменение килобайту";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Истекло время ожидания подключения. Пожалуйста, проверьте ваше Интернет-соединение.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Продолжить";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "Копировать адрес";
 
 /* (No Commment) */
-"Copy GUID" = "Скопируйте GUID";
+"Copy Wallet ID" = "Скопируйте идентификатор кошелька";
 
 /* (No Commment) */
 "Copy to clipboard" = "Копировать в буфер";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "Расшифровка бумажник";
 
 /* (No Commment) */
+"Disable" = "Отключить";
+
+/* (No Commment) */
+"Disabled" = "Инвалидов";
+
+/* (No Commment) */
 "Display" = "Дисплей";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "Пустой ответ от сервера.";
 
 /* (No Commment) */
+"Enable" = "Включить";
+
+/* (No Commment) */
 "Enable Location Services" = "Включение службы определения местоположения";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Включите уведомления, чтобы получать по электронной почте всякий раз, когда вы получаете bitcoins. Только помеченные на ваших счетах и импортированные адреса имеют право триггера уведомления.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Включение этой функции позволит всем пользователям с зарегистрированной касание ID отпечатков пальцев на этом устройстве для доступа в ваш бумажник.";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "Плата слишком высока (0.01 BTC предел)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "Плата за килобайт";
+"Fee per KB" = "Плата за KB";
 
 /* (No Commment) */
 "Fees" = "Сборы";
@@ -308,6 +341,9 @@
 "Go to Settings" = "Перейдите в раздел настройки";
 
 /* (No Commment) */
+"Google Authenticator" = "Google Authenticator";
+
+/* (No Commment) */
 "How would you like to pair?" = "Как бы вы хотели пара?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "Неправильный PIN-код. Повторите попытку.";
 
 /* (No Commment) */
+"Incorrect password" = "Неправильный пароль";
+
+/* (No Commment) */
 "Information" = "Информация";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "Нехватка средств";
-
-/* (No Commment) */
-"Invalid GUID" = "Недопустимый GUID";
 
 /* (No Commment) */
 "Invalid Identifier" = "Недопустимый идентификатор";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "Недопустимый код состояния вернулся %@";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "Недопустимый идентификатор кошелька";
+
+/* (No Commment) */
 "Invalid address: %@" = "Недопустимый адрес: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Недопустимый адрес электронной почты.";
+
+/* (No Commment) */
+"Invalid mobile number." = "Недопустимый номер мобильного телефона.";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Восстановления поврежденных фразы. Пожалуйста, попробуйте снова";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Недопустимый адрес bitcoin";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "Тип недопустимый двухфакторной аутентификации";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "Недопустимый код. Пожалуйста, попробуйте еще раз.";
@@ -425,7 +470,7 @@
 "Merchant Map" = "Купец карта";
 
 /* (No Commment) */
-"My Accounts" = "Мои счета";
+"Mobile Number" = "Номер мобильного телефона";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Мой кошелек Bitcoin";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "Новый адрес";
+
+/* (No Commment) */
+"New Email Address" = "Новый адрес электронной почты";
+
+/* (No Commment) */
+"New Mobile Number" = "Новый номер мобильного телефона";
+
+/* (No Commment) */
+"New password must be different" = "Новый пароль должен отличаться";
 
 /* (No Commment) */
 "News, Price & Charts" = "Новости, цены и графики";
@@ -461,6 +515,9 @@
 "Normal" = "Нормальный";
 
 /* (No Commment) */
+"Not Stored" = "Не сохраняется";
+
+/* (No Commment) */
 "Not now" = "Не сейчас";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "Хорошо";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "При необходимости получаете уведомления, когда платеж отправляемое или получаемое из вашего бумажника.";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN шифруется строка nil";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "Разбор код привязки";
 
 /* (No Commment) */
+"Password Hint" = "Подсказка для пароля";
+
+/* (No Commment) */
 "Password Required" = "Требуется пароль";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "Пароль изменен. Пожалуйста, войти, чтобы продолжить.";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Пароль необходимо 10 символов или более";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Подробно опишите проблему, с которой вы столкнулись, а также любые шаги, которые мы можем предпринять, чтобы воспроизвести его.";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Пожалуйста, введите стоимость больше чем 0 BTC и более 0.01 BTC";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Пожалуйста, введите новый PIN-код";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "Пожалуйста, введите ваш код 2FA %@";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Пожалуйста, введите ваш идентификатор кошелька 36 символов правильно. Его можно найти в приветственном письме на запуске.";
@@ -560,7 +626,10 @@
 "Please try again" = "Пожалуйста, попробуйте снова";
 
 /* (No Commment) */
-"Please verify your email" = "Пожалуйста, проверьте ваш электронный адрес";
+"Please verify your email address first." = "Пожалуйста, проверьте ваш адрес электронной почты.";
+
+/* (No Commment) */
+"Preferences" = "Предпочтения";
 
 /* (No Commment) */
 "Privacy Policy" = "Политика конфиденциальности";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Количество запросов";
+
+/* (No Commment) */
+"Resend verification SMS" = "Проверка отправки SMS";
 
 /* (No Commment) */
 "Resend verification email" = "Отправить подтверждение";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Второй пароль неправильный";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "Второй пароль";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "Отправьте...";
+
+/* (No Commment) */
+"Send verification SMS" = "Отправить проверки SMS";
 
 /* (No Commment) */
 "Sending Transaction" = "Отправка сделки";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Подписание входов";
+
+/* (No Commment) */
+"Stored" = "Хранить";
 
 /* (No Commment) */
 "Strong" = "Стронг";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "ОБНОВИТЕ ВАШ КОШЕЛЕК";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Не удается загрузить карманы за счет ответа сервера. Вы может быть отключен или Blockchain испытывает трудности. Пожалуйста, повторите попытку позже.";
+
+/* (No Commment) */
 "Unarchive" = "Разархивировать";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "Необработанное исключение";
 
 /* (No Commment) */
+"Unknown" = "Неизвестно";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Неизвестная ошибка Touch ID. Код: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Неподдерживаемый формат частного ключа";
+
+/* (No Commment) */
+"Unverified" = "Непроверенные";
 
 /* (No Commment) */
 "Update" = "Обновление";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "ПРОВЕРИТЬ РЕЗЕРВНУЮ КОПИЮ";
 
 /* (No Commment) */
+"Verified" = "Проверено";
+
+/* (No Commment) */
 "Verify" = "Проверить";
 
 /* (No Commment) */
 "Verifying" = "Проверка";
 
 /* (No Commment) */
-"Wallet Identifier" = "Идентификатор кошелька";
+"Wallet ID" = "ID кошелька";
+
+/* (No Commment) */
+"Wallet Information" = "Кошелек информация";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Карманы паре успешно.";
@@ -811,8 +904,8 @@ wallet experience for you" = "Для вас мы создали совершен
 "Would you like to add the bitcoin address %@ to your address book?" = "Хотели бы вы добавить bitcoin адрес %@ в адресную книгу?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Запишите слова на листе бумаги в точном порядке, они отображаются на листе бумаги и хранить его в надежном
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "Запишите слова в точном порядке, они отображаются на листе бумаги и хранить его в надежном
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "Для вас мы создали совершен
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Вы успешно резервное копирование ваших средств";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Можно включить двухэтапную аутентификацию через SMS на вашем мобильном телефоне. Для того, чтобы использовать другие методы проверки подлинности, пожалуйста войдите в наш электронный кошелек.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Вы не имеют аккаунт создан для почты. Пожалуйста, свяжитесь с %@";
@@ -846,7 +942,7 @@ wallet experience for you" = "Для вас мы создали совершен
 "You must leave at least one active address" = "Вы должны оставить по крайней мере один активный адрес";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Вы должны всегда пару или войти, если у вас есть доступ к вашим GUID и пароль. Восстановление ваших средств создаст новый GUID. Вы хотите продолжить?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Вы должны всегда пару или войти, если у вас есть доступ к ваш бумажник ID и пароль. Восстановление ваших средств создаст новый идентификатор кошелька. Вы хотите продолжить?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Устройство, как представляется, быть jailbroken. Может быть нарушена безопасность вашего кошелька.";
@@ -858,7 +954,31 @@ wallet experience for you" = "Для вас мы создали совершен
 "Your identity does not match our records." = "Ваша личность не соответствует наши записи.";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "Номер вашего мобильного телефона была проверена.";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "Ваш новый пароль намек содержит недопустимые символы. Пожалуйста, попробуйте еще раз.";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "Ваш новый пароль намек не содержит текста. Подсказка для пароля будет очищен.";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "Ваш новый пароль намек должен отличаться от пароля. Пожалуйста, попробуйте еще раз.";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "Ваш новый пароль намек должен отличаться от вашего второго пароля. Пожалуйста, попробуйте еще раз.";
+
+/* (No Commment) */
+"Your password hint has been updated." = "Ваш пароль намек был обновлен.";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Ваш адрес электронной почты используется для отправки коды входа при обнаружении подозрительных или необычных деятельности, чтобы напомнить вам о логин вашего бумажника и отправить bitcoin оплаты оповещений при получении средств. Мы не будем использовать ваш адрес электронной почты для маркетинговых целей.";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "Ваш кошелек был успешно создан.";
+
+/* (No Commment) */
+"Yubi Key" = "Yubi ключ";
 
 /* No comment provided by engineer. */
 "eighth word" = "восьмой слово";

@@ -32,10 +32,25 @@
 "1 minute ago" = "1 मिनट पहले";
 
 /* (No Commment) */
+"2-step Verification" = "2-चरणीय सत् यापन";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "2-चरणीय सत् यापन वर्तमान में अक्षम किया गया है।";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "2-चरणीय सत् यापन वर्तमान में %@ के लिए सक्षम किया गया है।";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "2-चरणीय सत् यापन वर्तमान में सक्षम है।";
+
+/* (No Commment) */
 "About" = "के बारे में";
 
 /* (No Commment) */
 "Account Details" = "खाता विवरण";
+
+/* (No Commment) */
+"Accounts" = "गूगल खात";
 
 /* (No Commment) */
 "Add Email" = "ईमेल जोड़ने";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "राशि धूल दहलीज (%lld Satoshi) से ऊपर होना चाहिए";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "कोई ईमेल खाता एक खो बटुआ पहचानकर्ता उबरने में मदद करने के लिए की जरूरत है और भुगतान सूचनाओं के लिए। जब आप अपने बटुए में प्रवेश भी, अपना सत् यापित ईमेल पता सत्यापन की एक दूसरी परत के रूप में उपयोग किया जाएगा।";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "अपना बटुआ तक पहुँचने से पहले, कृपया अपना बटुआ अनलॉक करने के लिए उपयोग करने के लिए कोई पिन संख्या चुनें। यह महत्वपूर्ण आप इस पिन याद के रूप में इसे रीसेट नहीं कर सकते या app पहले ताला खोलने के बिना बदल गया है।";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin इकाइयों";
+"Bitcoin Unit" = "Bitcoin इकाई";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin भुगतान अनुरोध";
@@ -140,7 +152,16 @@
 "Change Email" = "ईमेल बदलें";
 
 /* (No Commment) */
+"Change Mobile Number" = "मोबाइल नंबर परिवर्तित करें";
+
+/* (No Commment) */
 "Change PIN" = "PIN परिवर्तित करे";
+
+/* (No Commment) */
+"Change Password" = "पासवर्ड परिवर्तित करें";
+
+/* (No Commment) */
+"Change Password Hint" = "बदलें पासवर्ड संकेत";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "किलोबाइट प्रति परिवर्तन शुल्क";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "कनेक्शन समयबाह्य हो गई। कृपया अपना इंटरनेट कनेक्शन जाँचें।";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "जारी रखें";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "पते की प्रतिलिपि बनाएँ";
 
 /* (No Commment) */
-"Copy GUID" = "GUID की प्रतिलिपि बनाएँ";
+"Copy Wallet ID" = "बटुआ ID की प्रतिलिपि बनाएँ";
 
 /* (No Commment) */
 "Copy to clipboard" = "क्लिपबोर्ड पर प्रतिलिपि बनाएँ";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "बटुआ डीक्रिप्ट करने";
 
 /* (No Commment) */
+"Disable" = "अक्षम करें";
+
+/* (No Commment) */
+"Disabled" = "विकलांग";
+
+/* (No Commment) */
 "Display" = "प्रदर्शन";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "सर्वर से खाली प्रतिसाद।";
 
 /* (No Commment) */
+"Enable" = "सक्षम करें";
+
+/* (No Commment) */
 "Enable Location Services" = "स्थान सेवाओं को सक्षम करें";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "जब भी आप bitcoins प्राप्त एक ईमेल प्राप्त करने के लिए सूचनाएँ सक्षम करें। अपने खातों में केवल लेबल पते और आयातित पतों ट्रिगर सूचनाएँ करने के लिए पात्र हैं।";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "इस सुविधा को सक्षम करने के एक पंजीकृत स्पर्श ID फिंगरप्रिंट के साथ सभी उपयोगकर्ताओं के लिए अपने बटुए का उपयोग करने के लिए इस डिवाइस पर की अनुमति होगी।";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "शुल्क बहुत अधिक है (0.01 बीटीसी सीमा)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "किलोबाइट प्रति शुल्क";
+"Fee per KB" = "KB प्रति शुल्क";
 
 /* (No Commment) */
 "Fees" = "फीस";
@@ -308,6 +341,9 @@
 "Go to Settings" = "सेटिंग्स पर जाएँ";
 
 /* (No Commment) */
+"Google Authenticator" = "Google प्रमाणक";
+
+/* (No Commment) */
 "How would you like to pair?" = "आप जोड़ी करने के लिए कैसे करना चाहेंगे?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "ग़लत PIN. कृपया पुन: प्रयास करें।";
 
 /* (No Commment) */
+"Incorrect password" = "गलत पासवर्ड";
+
+/* (No Commment) */
 "Information" = "जानकारी";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "अपर्याप्त धनराशि";
-
-/* (No Commment) */
-"Invalid GUID" = "अमान्य GUID";
 
 /* (No Commment) */
 "Invalid Identifier" = "अमान्य पहचानकर्ता";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "अमान्य स्थिति कोड %@ में लौटे";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "अमान्य बटुआ ID";
+
+/* (No Commment) */
 "Invalid address: %@" = "अमान्य पता: %@";
 
 /* (No Commment) */
 "Invalid email address." = "अमान्य ईमेल पते।";
+
+/* (No Commment) */
+"Invalid mobile number." = "अमान्य मोबाइल नंबर।";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "अवैध वसूली वाक्यांश। कृपया पुन: प्रयास करें";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Bitcoin पता करने के लिए अमान्य";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "अमान्य दो फैक्टर प्रमाणीकरण प्रकार";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "अमान्य सत्यापन कोड। कृपया पुन: प्रयास करें।";
@@ -425,7 +470,7 @@
 "Merchant Map" = "व्यापारी मानचित्र";
 
 /* (No Commment) */
-"My Accounts" = "मेरे खाते";
+"Mobile Number" = "मोबाइल नंबर";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "मेरी Bitcoin बटुआ";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "नया पता";
+
+/* (No Commment) */
+"New Email Address" = "नए ईमेल पते";
+
+/* (No Commment) */
+"New Mobile Number" = "नया मोबाइल नंबर";
+
+/* (No Commment) */
+"New password must be different" = "नया पासवर्ड अलग होना चाहिए.";
 
 /* (No Commment) */
 "News, Price & Charts" = "समाचार, मूल्य और चार्ट्स";
@@ -461,6 +515,9 @@
 "Normal" = "सामान्य";
 
 /* (No Commment) */
+"Not Stored" = "संग्रहीत नहीं";
+
+/* (No Commment) */
 "Not now" = "अभी नहीं";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "ठीक है";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "वैकल्पिक रूप से सूचनाएँ प्राप्त जब एक भुगतान भेजा या अपने बटुए से प्राप्त हुआ है।";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "पिन एन्क्रिप्टेड स्ट्रिंग नहीं के बराबर है";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "पार्सिंग कोड बाँधना";
 
 /* (No Commment) */
+"Password Hint" = "पासवर्ड संकेत";
+
+/* (No Commment) */
 "Password Required" = "पासवर्ड की आवश्यकता";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "पासवर्ड परिवर्तित कर दिया। कृपया जारी रखने के लिए लॉगिन।";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "पासवर्ड चाहिए 10 वर्णों या उससे अधिक समय";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "कृपया विस्तार से जो समस्या आप अनुभव कर रहे हैं, हम इसे पुन: उत्पन्न करने के लिए ले जा सकते हैं किसी भी कदम के साथ साथ वर्णन।";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "कृपया 0 बीटीसी और सबसे कम 0.01 बीटीसी से भी अधिक से अधिक एक शुल्क दर्ज करें";
+
+/* (No Commment) */
 "Please enter a new PIN" = "कृपया एक नया पिन दर्ज करें";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "कृपया अपने %@ 2FA कोड दर्ज करें";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "कृपया अपने 36 चरित्र बटुआ पहचानकर्ता सही ढंग से दर्ज करें। यह स्टार्टअप पर आपका स्वागत है ईमेल में पाया जा सकता है।";
@@ -560,7 +626,10 @@
 "Please try again" = "कृपया पुन: प्रयास करें";
 
 /* (No Commment) */
-"Please verify your email" = "कृपया अपने ईमेल की जाँच करें";
+"Please verify your email address first." = "कृपया अपना ईमेल पता पहले सत्यापित करें।";
+
+/* (No Commment) */
+"Preferences" = "वरीयताएँ";
 
 /* (No Commment) */
 "Privacy Policy" = "गोपनीयता नीति";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "राशि का अनुरोध";
+
+/* (No Commment) */
+"Resend verification SMS" = "SMS सत्यापन पुन: भेजें";
 
 /* (No Commment) */
 "Resend verification email" = "सत्यापन ईमेल पुनः भेजें";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "दूसरा पासवर्ड ग़लत";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "दूसरा पासवर्ड की आवश्यकता";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "करने के लिए भेज...";
+
+/* (No Commment) */
+"Send verification SMS" = "सत्यापन एसएमएस भेजें";
 
 /* (No Commment) */
 "Sending Transaction" = "भेजने के लेन-देन";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "आदानों पर हस्ताक्षर";
+
+/* (No Commment) */
+"Stored" = "संग्रहित";
 
 /* (No Commment) */
 "Strong" = "सशक्त";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "अपने बटुए का उन्नयन";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "कोई सर्वर प्रतिक्रिया के कारण बटुआ लोड करने में असमर्थ। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का सामना कर रहा है। कृपया बाद में पुन: प्रयास करें।";
+
+/* (No Commment) */
 "Unarchive" = "Unarchive";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "मैनेज्ड अपवाद";
 
 /* (No Commment) */
+"Unknown" = "अज्ञात";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "अज्ञात स्पर्श ID त्रुटि। कोड: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "असमर्थित निजी कुंजी स्वरूप";
+
+/* (No Commment) */
+"Unverified" = "असत्यापित";
 
 /* (No Commment) */
 "Update" = "अद्यतन";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "बैकअप सत्यापित करें";
 
 /* (No Commment) */
+"Verified" = "सत्यापित किया";
+
+/* (No Commment) */
 "Verify" = "सत्यापित करें";
 
 /* (No Commment) */
 "Verifying" = "का सत्यापन";
 
 /* (No Commment) */
-"Wallet Identifier" = "बटुआ पहचानकर्ता";
+"Wallet ID" = "बटुआ ID";
+
+/* (No Commment) */
+"Wallet Information" = "बटुआ जानकारी";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "बटुआ सफलतापूर्वक बनती।";
@@ -811,8 +904,8 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "Would you like to add the bitcoin address %@ to your address book?" = "आप bitcoin पते %@ आपकी पता पुस्तिका में जोड़ने के लिए चाहते हैं?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "सटीक क्रम वे कागज के एक पत्रक पर दिखाई देते हैं, और कहीं न कहीं सुरक्षित संग्रह में कागज के एक पत्रक पर शब्द लिखने के नीचे
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "शब्दों के सही क्रम में वे कागज के एक पत्रक पर दिखाई देते हैं, और कहीं न कहीं सुरक्षित संग्रह नीचे लिखें
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "आप अपनी निधियों को सफलतापूर्वक समर्थित";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "आप अपने मोबाइल फोन पर एसएमएस के जरिए 2-चरणीय सत् यापन सक्षम कर सकते हैं। बजाय अन्य प्रमाणीकरण पद्धतियों का उपयोग करने के लिए, कृपया हमारी वेब वॉलेट करने के लिए लॉगिन।";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "आप किसी खाते के लिए मेल सेट अप नहीं है। कृपया %@ से संपर्क करें";
@@ -846,7 +942,7 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "You must leave at least one active address" = "आपको कम से कम एक सक्रिय पता छोड़ देना चाहिए";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "तुम हमेशा जोड़ी होना चाहिए या यदि आप आपके GUID और पासवर्ड का उपयोग लॉगिन। आपका धन पुनर्प्राप्त करना एक नया GUID पैदा करेगा। आप जारी रखना चाहेंगे?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "तुम हमेशा जोड़ी होना चाहिए या यदि आपके पास पहुँच आपके बटुए ID और पासवर्ड के लिए लॉगिन। आपका धन पुनर्प्राप्त करना एक नया id के बटुए बनाएगा आप जारी रखना चाहेंगे?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Jailbroken किया जा करने के लिए अपने डिवाइस प्रकट होता है। अपने बटुए की सुरक्षा समझौता हो सकता है।";
@@ -858,7 +954,31 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "Your identity does not match our records." = "आपकी पहचान हमारे रिकॉर्ड से मेल नहीं खाता।";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "अपना मोबाइल नंबर सत्यापित किया गया है।";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "आपका नया पासवर्ड संकेत में अमान्य वर्ण हैं। कृपया पुन: प्रयास करें।";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "आपका नया पासवर्ड संकेत कोई पाठ होता है। अपने पासवर्ड संकेत को मंजूरी दे दी हो जाएगा।";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "आपका नया पासवर्ड संकेत अपना पासवर्ड से अलग होना चाहिए। कृपया पुन: प्रयास करें।";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "आपका नया पासवर्ड संकेत से अपना दूसरा पासवर्ड अलग होना चाहिए। कृपया पुन: प्रयास करें।";
+
+/* (No Commment) */
+"Your password hint has been updated." = "अपने पासवर्ड संकेत अद्यतन किया गया है।";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "अपना सत् यापित ईमेल पते जब संदेहास्पद या असामान्य गतिविधि पता है, आप अपने बटुए लॉगिन ID की याद दिलाने के लिए, और bitcoin भुगतान चेतावनियाँ भेज जब आप धन प्राप्त करने के लिए लॉगिन कोड भेजने के लिए उपयोग किया जाता है। हम विपणन उद्देश्यों के लिए अपने ईमेल पते का उपयोग नहीं करेगा।";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "अपने बटुए को सफलतापूर्वक बनाया गया था।";
+
+/* (No Commment) */
+"Yubi Key" = "Yubi कुंजी";
 
 /* No comment provided by engineer. */
 "eighth word" = "आठवें शब्द";

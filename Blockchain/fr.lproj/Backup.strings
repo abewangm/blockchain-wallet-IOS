@@ -63,7 +63,7 @@ Vous pouvez compromettre la sécurité de votre portefeuille";
 "T4p-mz-siC.normalTitle" = "VÉRIFIER LA SAUVEGARDE";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Écrire les mots sur une feuille de papier dans l'ordre exact ils apparaissent sur une feuille de papier et placez-le à un endroit sûr
+"UCL-i9-UDp.text" = "Écrivez les mots dans l'ordre exact ils apparaissent sur une feuille de papier et placez-le à un endroit sûr
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Vous pouvez compromettre la sécurité de votre portefeuille";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Portefeuille de sauvegarde";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Continuer";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Portefeuille de sauvegarde";

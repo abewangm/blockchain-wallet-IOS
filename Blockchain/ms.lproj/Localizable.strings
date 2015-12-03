@@ -32,10 +32,25 @@
 "1 minute ago" = "1 minit yang lalu";
 
 /* (No Commment) */
+"2-step Verification" = "2-langkah pengesahan";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "2-langkah pengesahan semasa ini dinyahdayakan.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "2-langkah pengesahan sedang didayakan untuk %@.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "2-langkah pengesahan sedang didayakan.";
+
+/* (No Commment) */
 "About" = "Kira-kira";
 
 /* (No Commment) */
 "Account Details" = "Butir-butir akaun";
+
+/* (No Commment) */
+"Accounts" = "Akaun-akaun";
 
 /* (No Commment) */
 "Add Email" = "Tambah e-mel";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Jumlah mesti melebihi ambang habuk (%lld Nanaho)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "Akaun e-mel diperlukan untuk membantu memulihkan pengecam hilang wallet dan pemberitahuan pembayaran. Juga, alamat e-mel yang disahkan akan digunakan sebagai lapisan kedua pengesahan apabila anda log masuk ke dalam wallet anda.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ralat berlaku semasa mengesahkan kod PIN anda dengan pelayan jauh. Anda berada di luar talian atau Blockchain mungkin sedang mengalami kesukaran. Adakah awda ingin mencuba sekali lagi pengesahan atau sebaliknya masukkan kata laluan anda secara manual?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Sebelum mencapai dompet anda, sila pilih satu nombor pin untuk menggunakan untuk membuka dompet anda. Ia adalah penting anda ingat pin ini kerana ia tidak boleh set semula atau dipinda tanpa pertama membuka apl.";
 
 /* (No Commment) */
-"Bitcoin Units" = "Bitcoin unit";
+"Bitcoin Unit" = "Bitcoin Unit";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Permintaan bayaran Bitcoin";
@@ -140,7 +152,16 @@
 "Change Email" = "Menukar e-mel";
 
 /* (No Commment) */
+"Change Mobile Number" = "Menukar nombor telefon bimbit";
+
+/* (No Commment) */
 "Change PIN" = "Tukar PIN";
+
+/* (No Commment) */
+"Change Password" = "Tukar kata laluan";
+
+/* (No Commment) */
+"Change Password Hint" = "Pembayang kata laluan perubahan";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "Perubahan yuran setiap kilobyte";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Sambungan tamat masa. Sila semak sambungan internet anda.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Terus";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "Salin Alamat";
 
 /* (No Commment) */
-"Copy GUID" = "Salinan GUID";
+"Copy Wallet ID" = "Salinan Wallet ID";
 
 /* (No Commment) */
 "Copy to clipboard" = "Salin ke papan Keratan";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "Wallet menyahdekripsi";
 
 /* (No Commment) */
+"Disable" = "Mematikan";
+
+/* (No Commment) */
+"Disabled" = "Kurang Upaya";
+
+/* (No Commment) */
 "Display" = "Paparan";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "Kosong respons daripada pelayan.";
 
 /* (No Commment) */
+"Enable" = "Membolehkan";
+
+/* (No Commment) */
 "Enable Location Services" = "Membolehkan lokasi Perkhidmatan";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Mendayakan pemberitahuan untuk menerima e-mel apabila anda menerima bitcoins. Hanya berlabel alamat dalam akaun anda dan alamat yang diimport adalah layak untuk pemberitahuan pencetus.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Mendayakan ciri ini akan membolehkan semua pengguna dengan cap jari ID sentuhan yang berdaftar pada peranti ini untuk mencapai dompet anda.";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "Yuran yang terlalu tinggi (had BTC 0.01)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "Yuran setiap kilobyte";
+"Fee per KB" = "Yuran bagi setiap KB";
 
 /* (No Commment) */
 "Fees" = "Yuran";
@@ -308,6 +341,9 @@
 "Go to Settings" = "Pergi ke seting";
 
 /* (No Commment) */
+"Google Authenticator" = "Google pengesah";
+
+/* (No Commment) */
 "How would you like to pair?" = "Bagaimana anda mahu pasangan?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "PIN yang tidak betul. Sila cuba lagi.";
 
 /* (No Commment) */
+"Incorrect password" = "Kata laluan salah";
+
+/* (No Commment) */
 "Information" = "Maklumat";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "Dana yang mencukupi";
-
-/* (No Commment) */
-"Invalid GUID" = "GUID tidak sah";
 
 /* (No Commment) */
 "Invalid Identifier" = "Pengenalan tidak sah";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "Kod Status sah kembali %@";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "Tidak sah Wallet ID";
+
+/* (No Commment) */
 "Invalid address: %@" = "Alamat tidak sah: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Alamat e-mel tidak sah.";
+
+/* (No Commment) */
+"Invalid mobile number." = "Nombor telefon bimbit yang tidak sah.";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Frasa pemulihan tidak sah. Sila cuba lagi";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Tidak sah untuk bitcoin alamat";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "Tidak sah pengesahan dua faktor jenis";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "Kod pengesahan tidak sah. Sila cuba sekali lagi.";
@@ -425,7 +470,7 @@
 "Merchant Map" = "Saudagar Peta";
 
 /* (No Commment) */
-"My Accounts" = "Akaun saya";
+"Mobile Number" = "Nombor telefon bimbit";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Wallet Bitcoin saya";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "Alamat baru";
+
+/* (No Commment) */
+"New Email Address" = "Alamat e-mel baru";
+
+/* (No Commment) */
+"New Mobile Number" = "Nombor mudah alih yang baru";
+
+/* (No Commment) */
+"New password must be different" = "Kata laluan mesti berbeza";
 
 /* (No Commment) */
 "News, Price & Charts" = "Berita, harga & Carta";
@@ -461,6 +515,9 @@
 "Normal" = "Normal";
 
 /* (No Commment) */
+"Not Stored" = "Tidak disimpan";
+
+/* (No Commment) */
 "Not now" = "bukan sekarang";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "ok";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "Pilihan menerima pemberitahuan apabila pembayaran yang dihantar atau diterima dari dompet anda.";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "Rentetan disulitkan PIN adalah kosong";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "Penghuraian Kod berpasangan";
 
 /* (No Commment) */
+"Password Hint" = "Pembayang kata laluan";
+
+/* (No Commment) */
 "Password Required" = "Kata laluan diperlukan";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "Kata laluan ditukar. Sila login untuk teruskan.";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Kata laluan mesti 10 aksara atau lebih";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Sila terangkan secara terperinci masalah anda alami, bersama-sama dengan mana-mana langkah-langkah yang boleh kita ambil untuk Ia membiak.";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Sila masukkan yuran lebih besar daripada 0 BTC dan paling 0.01 BTC";
+
+/* (No Commment) */
 "Please enter a new PIN" = "Sila masukkan PIN baru";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "Sila masukkan kod 2FA %@ anda";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Sila masukkan pengecam dompet 36 watak anda dengan betul. Ia boleh ditemui dalam e-mel alu-aluan pada permulaan.";
@@ -560,7 +626,10 @@
 "Please try again" = "Sila cuba lagi";
 
 /* (No Commment) */
-"Please verify your email" = "Sila sahkan email anda";
+"Please verify your email address first." = "Sila sahkan alamat e-mel terlebih dahulu.";
+
+/* (No Commment) */
+"Preferences" = "Keutamaan";
 
 /* (No Commment) */
 "Privacy Policy" = "Dasar privasi";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Jumlah permintaan";
+
+/* (No Commment) */
+"Resend verification SMS" = "Menghantar pengesahan SMS";
 
 /* (No Commment) */
 "Resend verification email" = "Hantar e-mel pengesahan";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Kedua kata laluan yang tidak betul";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "Kedua kata laluan yang diperlukan";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "Hantar ke...";
+
+/* (No Commment) */
+"Send verification SMS" = "Menghantar pengesahan SMS";
 
 /* (No Commment) */
 "Sending Transaction" = "Penghantaran transaksi";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Menandatangani input";
+
+/* (No Commment) */
+"Stored" = "Disimpan";
 
 /* (No Commment) */
 "Strong" = "Kuat";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "MENAIK TARAF DOMPET ANDA";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Tidak dapat memuatkan dompet kerana tiada tindak balas pelayan. Anda berada di luar talian atau Blockchain mengalami kesukaran. Sila cuba lagi nanti.";
+
+/* (No Commment) */
 "Unarchive" = "Unarchive";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "Pengecualian yang tidak dapat dikawal";
 
 /* (No Commment) */
+"Unknown" = "Tidak diketahui";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Sentuhan ID ralat yang tidak diketahui. Kod: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Format kunci peribadi yang tidak disokong";
+
+/* (No Commment) */
+"Unverified" = "Tidak dikenal pasti";
 
 /* (No Commment) */
 "Update" = "Kemas kini";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "MENGESAHKAN SANDARAN";
 
 /* (No Commment) */
+"Verified" = "Disahkan";
+
+/* (No Commment) */
 "Verify" = "Mengesahkan";
 
 /* (No Commment) */
 "Verifying" = "Mengesahkan";
 
 /* (No Commment) */
-"Wallet Identifier" = "Pengecam Wallet";
+"Wallet ID" = "Wallet ID";
+
+/* (No Commment) */
+"Wallet Information" = "Maklumat Wallet";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "Wallet berpasangan berjaya.";
@@ -811,8 +904,8 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 "Would you like to add the bitcoin address %@ to your address book?" = "Adakah anda ingin untuk tambah %@ alamat bitcoin ke dalam buku alamat anda?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Tulis perkataan pada sehelai kertas mengikut arahan yang sepatutnya mereka muncul pada sehelai kertas, dan simpan tempat selamat
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "Tuliskan perkataan mengikut arahan yang sepatutnya mereka muncul pada sehelai kertas, dan simpan tempat selamat
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Anda disokong dana anda berjaya";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Anda boleh membolehkan langkah 2 pengesahan melalui SMS pada telefon mudah alih. Untuk menggunakan kaedah pengesahan yang lain sebagai ganti, sila log masuk ke web kami wallet.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Anda tidak mempunyai akaun untuk mel. Sila hubungi %@";
@@ -846,7 +942,7 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 "You must leave at least one active address" = "Anda mesti meninggalkan alamat aktif sekurang-kurangnya satu";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "Anda sentiasa perlu berpasangan atau login jika anda mempunyai akses kepada GUID dan kata laluan anda. Memungut dana anda akan mencipta GUID baru. Adakah anda ingin meneruskan?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Anda sentiasa perlu berpasangan atau login jika anda mempunyai akses kepada Wallet ID dan kata laluan anda. Memungut dana anda akan mencipta ID yang baru Wallet. Adakah anda ingin meneruskan?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Peranti muncul untuk menjadi jailbroken. Keselamatan dompet anda mungkin terjejas.";
@@ -858,7 +954,31 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 "Your identity does not match our records." = "Identiti anda tidak padan dengan rekod kami.";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "Nombor telefon bimbit anda telah disahkan.";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "Pembayang kata laluan baru anda mengandungi aksara tidak sah. Sila cuba sekali lagi.";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "Pembayang kata laluan baru anda tidak mengandungi teks. Pembayang kata laluan anda akan dibersihkan.";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "Pembayang kata laluan baru anda mesti berbeza daripada kata laluan anda. Sila cuba sekali lagi.";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "Pembayang kata laluan baru anda mesti berbeza daripada kata laluan kedua. Sila cuba sekali lagi.";
+
+/* (No Commment) */
+"Your password hint has been updated." = "Pembayang kata laluan anda telah dikemaskini.";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Alamat e-mel yang disahkan akan digunakan untuk menghantar kod log masuk apabila aktiviti mencurigakan atau luar biasa yang dikesan, untuk mengingatkan anda tentang ID log masuk wallet, dan untuk menghantar amaran pembayaran bitcoin apabila anda menerima dana. Kami tidak akan menggunakan alamat e-mel anda untuk tujuan pemasaran.";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "Dompet anda telah berjaya dicipta.";
+
+/* (No Commment) */
+"Yubi Key" = "Kekunci Yubi";
 
 /* No comment provided by engineer. */
 "eighth word" = "perkataan yang kelapan";

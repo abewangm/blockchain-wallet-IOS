@@ -63,7 +63,7 @@
 "T4p-mz-siC.normalTitle" = "백업 확인";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "그들은 종이, 시트에 표시 하 고 어딘가에 안전 저장 정확한 순서로 종이에 단어를 적어
+"UCL-i9-UDp.text" = "그들은 종이, 시트에 표시 하 고 어딘가에 안전 저장 정확한 순서로 단어를 적어
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "백업 지갑";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "계속";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "백업 지갑";

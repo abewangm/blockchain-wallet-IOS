@@ -63,7 +63,7 @@ Bạn có thể gây nguy hiểm cho an ninh của bạn ví";
 "T4p-mz-siC.normalTitle" = "XÁC NHẬN SAO LƯU";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Viết các từ trên một tờ giấy trong bộ chính xác của họ xuất hiện trên một tờ giấy, và lưu trữ một nơi nào đó an toàn
+"UCL-i9-UDp.text" = "Viết các từ trong bộ chính xác của họ xuất hiện trên một tờ giấy, và lưu trữ một nơi nào đó an toàn
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Bạn có thể gây nguy hiểm cho an ninh của bạn ví";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Sao lưu Wallet";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Tiếp tục";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Sao lưu Wallet";

@@ -63,7 +63,7 @@ Můžete ohrozit bezpečnost vaší peněženky";
 "T4p-mz-siC.normalTitle" = "OVĚŘIT ZÁLOHU";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Napište slovy na list papíru v přesném pořadí, se objeví na list papíru a uložit ji někam do bezpečí
+"UCL-i9-UDp.text" = "Zapište se slova v přesném pořadí, se objeví na list papíru a uložit ji někam do bezpečí
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Můžete ohrozit bezpečnost vaší peněženky";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Zálohování Peněženka";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Pokračovat v";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Zálohování Peněženka";

@@ -63,7 +63,7 @@
 "T4p-mz-siC.normalTitle" = "التحقق من النسخ الاحتياطي";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "كتابة العبارة على ورقة بالترتيب الدقيق أنها تظهر على ورقة، وتخزينه في مكان أمن
+"UCL-i9-UDp.text" = "كتابة الكلمات بالترتيب الدقيق أنها تظهر على ورقة، وتخزينه في مكان أمن
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "محفظة احتياطية";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "مواصلة";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "محفظة احتياطية";

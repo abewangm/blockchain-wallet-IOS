@@ -63,7 +63,7 @@ Veszélyeztetik a biztonság a pénztárca";
 "T4p-mz-siC.normalTitle" = "ELLENŐRIZZE A BIZTONSÁGI MÁSOLAT";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "A következő szöveget írja a papírra a pontos sorrendben jelennek meg egy papírlapot, és tárolja biztonságos helyen
+"UCL-i9-UDp.text" = "A szavakat leírni a pontos sorrendben jelennek meg egy papírlapot, és tárolja biztonságos helyen
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Veszélyeztetik a biztonság a pénztárca";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Hát pénztárca";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Továbbra is";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Hát pénztárca";

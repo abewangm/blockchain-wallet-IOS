@@ -63,7 +63,7 @@ Anda dapat membahayakan keamanan dompet Anda";
 "T4p-mz-siC.normalTitle" = "MEMVERIFIKASI CADANGAN";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Tuliskan kata-kata pada selembar kertas dalam urutan yang tepat mereka muncul pada selembar kertas, dan menyimpannya di tempat yang aman
+"UCL-i9-UDp.text" = "Menuliskan kata-kata dalam urutan yang tepat mereka muncul pada selembar kertas, dan menyimpannya di tempat yang aman
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Anda dapat membahayakan keamanan dompet Anda";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Cadangan dompet";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Lanjutkan";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Cadangan dompet";

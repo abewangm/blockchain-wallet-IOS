@@ -63,7 +63,7 @@ Du kan äventyra din plånbok säkerhet";
 "T4p-mz-siC.normalTitle" = "VERIFIERA BACKUP";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Skriva på ett papper i den exakta ordning som de visas på ett ark papper och förvara den någonstans säkert
+"UCL-i9-UDp.text" = "Skriva ord i den exakta ordning som de visas på ett ark papper och förvara den någonstans säkert
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@ Du kan äventyra din plånbok säkerhet";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Backup plånbok";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Fortsätta";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Backup plånbok";

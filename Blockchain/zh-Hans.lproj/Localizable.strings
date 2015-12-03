@@ -32,10 +32,25 @@
 "1 minute ago" = "1 分钟前";
 
 /* (No Commment) */
+"2-step Verification" = "2 步认证";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "2 步验证当前已禁用。";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "2 步验证当前已启用 %@。";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "2 步验证当前已启用。";
+
+/* (No Commment) */
 "About" = "关于";
 
 /* (No Commment) */
 "Account Details" = "帐户的详细信息";
+
+/* (No Commment) */
+"Accounts" = "帐户";
 
 /* (No Commment) */
 "Add Email" = "添加电子邮件";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "金额必须高于灰尘阈值 (%lld 聪)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "电子邮件帐户需要帮助恢复丢失的钱包标识符和付款通知。此外，您已验证电子邮件地址将用作验证第二层当您登录到你的钱包。";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "验证您的 PIN 代码与远程服务器时发生错误。你可能处于脱机状态或 Blockchain 可能遇到的困难。要验证重试或相反手动输入您的密码吗?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "在访问之前你的钱包，请选择用来解锁你的钱包 pin 号。它是重要的你还记得这个别针，因为它不能重置或更改没有第一次解锁应用程序。";
 
 /* (No Commment) */
-"Bitcoin Units" = "比特币单位";
+"Bitcoin Unit" = "比特币单位";
 
 /* (No Commment) */
 "Bitcoin payment request" = "比特币付款请求";
@@ -140,7 +152,16 @@
 "Change Email" = "更改电子邮件";
 
 /* (No Commment) */
+"Change Mobile Number" = "更改移动电话号码";
+
+/* (No Commment) */
 "Change PIN" = "更改 pin 码";
+
+/* (No Commment) */
+"Change Password" = "更改密码";
+
+/* (No Commment) */
+"Change Password Hint" = "更改密码提示";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "更改费用每千字节";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "连接超时。请检查您的互联网连接。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "继续";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "复制地址";
 
 /* (No Commment) */
-"Copy GUID" = "复制 GUID";
+"Copy Wallet ID" = "复制的钱包 ID";
 
 /* (No Commment) */
 "Copy to clipboard" = "复制到剪贴板";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "解密的钱包";
 
 /* (No Commment) */
+"Disable" = "禁用";
+
+/* (No Commment) */
+"Disabled" = "已禁用";
+
+/* (No Commment) */
 "Display" = "显示";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "服务器的空响应。";
 
 /* (No Commment) */
+"Enable" = "启用";
+
+/* (No Commment) */
 "Enable Location Services" = "启用定位服务";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "启用通知，只要你接收比特币收到一封电子邮件。只有标记的地址在您的帐户和导入的地址有资格触发通知。";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "启用此功能将允许所有用户与注册的触摸 ID 指纹在此设备上访问到你的钱包。";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "费用是太高 (0.01 BTC 限制)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "费用每千字节";
+"Fee per KB" = "费用每 KB";
 
 /* (No Commment) */
 "Fees" = "费用";
@@ -308,6 +341,9 @@
 "Go to Settings" = "转到设置";
 
 /* (No Commment) */
+"Google Authenticator" = "Google 身份验证器";
+
+/* (No Commment) */
 "How would you like to pair?" = "你怎么想对?";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "不正确的 PIN。请重试。";
 
 /* (No Commment) */
+"Incorrect password" = "密码不正确";
+
+/* (No Commment) */
 "Information" = "信息";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "资金不足";
-
-/* (No Commment) */
-"Invalid GUID" = "无效的 GUID";
 
 /* (No Commment) */
 "Invalid Identifier" = "无效的标识符";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "无效的状态代码返回 %@";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "钱包 ID 无效";
+
+/* (No Commment) */
 "Invalid address: %@" = "无效的地址: %@";
 
 /* (No Commment) */
 "Invalid email address." = "无效的电子邮件地址。";
+
+/* (No Commment) */
+"Invalid mobile number." = "无效的移动电话号码。";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "无效的恢复的短语。请再试一次";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "比特币地址无效";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "无效的双因素身份验证类型";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "验证代码无效。请再试一次。";
@@ -425,7 +470,7 @@
 "Merchant Map" = "商人的地图";
 
 /* (No Commment) */
-"My Accounts" = "我的账户";
+"Mobile Number" = "移动电话号码";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "我的比特币钱包";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "新的地址";
+
+/* (No Commment) */
+"New Email Address" = "新的电子邮件地址";
+
+/* (No Commment) */
+"New Mobile Number" = "新的移动电话号码";
+
+/* (No Commment) */
+"New password must be different" = "新密码必须不同";
 
 /* (No Commment) */
 "News, Price & Charts" = "新闻、 价格与图表";
@@ -461,6 +515,9 @@
 "Normal" = "正常";
 
 /* (No Commment) */
+"Not Stored" = "不存储";
+
+/* (No Commment) */
 "Not now" = "不是现在";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "还行";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "付款是发送或接收来自你的钱包时，可以选择接收通知。";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN 加密字符串是零";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "解析匹配码";
 
 /* (No Commment) */
+"Password Hint" = "密码提示";
+
+/* (No Commment) */
 "Password Required" = "需要密码";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "更改密码。请登录以继续。";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "密码必须 10 个字符或更长时间";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "请详细描述你遇到，我们可以采取重现它任何步骤的问题。";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "请输入大于 0 的 BTC 和最 0.01 BTC 的费用";
+
+/* (No Commment) */
 "Please enter a new PIN" = "请输入新的 PIN";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "请输入您的 %@ 2FA 代码";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "请输入您的钱包 36 字符标识符正确。它可以在启动时的欢迎电子邮件中找到。";
@@ -560,7 +626,10 @@
 "Please try again" = "请再试一次";
 
 /* (No Commment) */
-"Please verify your email" = "请验证您的电子邮件";
+"Please verify your email address first." = "请先确认您的电子邮件地址。";
+
+/* (No Commment) */
+"Preferences" = "首选项";
 
 /* (No Commment) */
 "Privacy Policy" = "隐私策略";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "请求金额";
+
+/* (No Commment) */
+"Resend verification SMS" = "重新发送验证短信";
 
 /* (No Commment) */
 "Resend verification email" = "重新发送验证电子邮件";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "第二个密码不正确";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "所需的第二个密码";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = "发送给...";
+
+/* (No Commment) */
+"Send verification SMS" = "发送验证短信";
 
 /* (No Commment) */
 "Sending Transaction" = "发送交易";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "签署的投入";
+
+/* (No Commment) */
+"Stored" = "存储";
 
 /* (No Commment) */
 "Strong" = "强";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "升级你的钱包";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "无法加载由于没有服务器响应的钱包。你可能处于脱机状态，或者 Blockchain 遇到困难。请稍后再试。";
+
+/* (No Commment) */
 "Unarchive" = "Unarchive";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "未处理的异常";
 
 /* (No Commment) */
+"Unknown" = "未知";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "未知的触摸 ID 错误。代码: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "私人密钥格式不受支持";
+
+/* (No Commment) */
+"Unverified" = "未验证";
 
 /* (No Commment) */
 "Update" = "更新";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "验证备份";
 
 /* (No Commment) */
+"Verified" = "验证";
+
+/* (No Commment) */
 "Verify" = "验证";
 
 /* (No Commment) */
 "Verifying" = "验证";
 
 /* (No Commment) */
-"Wallet Identifier" = "钱包标识符";
+"Wallet ID" = "钱包 ID";
+
+/* (No Commment) */
+"Wallet Information" = "钱包信息";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "配对成功的钱包。";
@@ -811,8 +904,8 @@ wallet experience for you" = "我们已经为您设计全新的钱包经验";
 "Would you like to add the bitcoin address %@ to your address book?" = "你想将比特币地址 %@ 添加到您的通讯簿吗?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "把单词写在一张纸的确切的顺序，他们出现在一张纸，并存储到安全的地方
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "把单词写在他们出现在一张纸，并存储到安全的地方的准确顺序
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "我们已经为您设计全新的钱包经验";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "你成功地备份您的资金";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "你可以在您的移动电话上启用 2 步核查通过手机短信。为了改用其他身份验证方法，请登录到我们的 web 钱包。";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "您没有设置为邮件帐户。请联系 %@";
@@ -846,7 +942,7 @@ wallet experience for you" = "我们已经为您设计全新的钱包经验";
 "You must leave at least one active address" = "你必须离开至少一个活动地址";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "你应该总是成对或登录如果您有权访问您的 GUID 和密码。恢复您的资金将会创建一个新的 GUID。你想继续吗?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "你应该总是成对或登录如果您可以访问您的钱包 ID 和密码。恢复您的资金将会创建一个新的钱包 id。你想继续吗?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "您的设备似乎是越狱。可能会损害你的钱包的安全性。";
@@ -858,7 +954,31 @@ wallet experience for you" = "我们已经为您设计全新的钱包经验";
 "Your identity does not match our records." = "您的身份与我们的记录不匹配。";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "您的手机号码已经过验证。";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "您的新密码提示包含无效字符。请再试一次。";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "您的新密码提示不包含任何文本。密码提示将被清除。";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "您的新密码提示必须不同于您的密码。请再试一次。";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "您的新密码提示必须不同于您的第二个密码。请再试一次。";
+
+/* (No Commment) */
+"Your password hint has been updated." = "已更新您的密码提示。";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "您已验证电子邮件地址用来发送登录代码，当发现可疑或不寻常的活动，提醒你你的钱包的登录 ID，并发送比特币付款通知，当您收到资金。我们不会使用您的电子邮件地址用于市场营销目的。";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "你的钱包已成功创建。";
+
+/* (No Commment) */
+"Yubi Key" = "育碧的关键";
 
 /* No comment provided by engineer. */
 "eighth word" = "八字";

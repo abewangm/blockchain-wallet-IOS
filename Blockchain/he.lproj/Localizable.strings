@@ -32,10 +32,25 @@
 "1 minute ago" = "לפני 1 דקה";
 
 /* (No Commment) */
+"2-step Verification" = "אימות דו-שלבי";
+
+/* (No Commment) */
+"2-step Verification is currently disabled." = "אימות דו-שלבי אינה זמינה כעת.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled for %@." = "אימות דו-שלבי זמין כעת עבור %@.";
+
+/* (No Commment) */
+"2-step Verification is currently enabled." = "אימות דו-שלבי זמין כעת.";
+
+/* (No Commment) */
 "About" = "אודות";
 
 /* (No Commment) */
 "Account Details" = "פרטי חשבון";
+
+/* (No Commment) */
+"Accounts" = "חשבונות";
 
 /* (No Commment) */
 "Add Email" = "הוסף דוא";
@@ -54,9 +69,6 @@
 
 /* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "הסכום להיות מעל הסף אבק (%lld סטושי)";
-
-/* (No Commment) */
-"An email account is needed to help recover a lost wallet identifier and for payment notifications. Also, your verified email address will be used as a second layer of verification when you log into your wallet." = "חשבון דואר אלקטרוני יש צורך לעזור לשחזר את מזהה את הארנק האבוד של ועבור הודעות התשלום. כמו כן, את כתובת הדוא ל מאומת ישמש בתור שכבה נוספת של אימות בעת הכניסה לתוך הארנק שלך.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "אירעה שגיאה בעת אימות הקוד האישי שלך עם השרת המרוחק. אתה יכול להיות מנותק או Blockchain עשויים לחוות קשיים. האם ברצונך לנסות שוב אימות או במקום להזין את הסיסמה שלך באופן ידני?";
@@ -107,7 +119,7 @@
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "בטרם ייגש הארנק שלך, אנא בחר מספר pin כדי להשתמש כדי לפתוח את הארנק שלך. חשוב שתזכור את הסיכה הזאת כמו זה ניתן לאפס או לשנות ללא הראשון פותח את היישום.";
 
 /* (No Commment) */
-"Bitcoin Units" = "ביטקוין יחידות";
+"Bitcoin Unit" = "יחידת ביטקוין";
 
 /* (No Commment) */
 "Bitcoin payment request" = "בקשתכם לתשלום ביטקוין";
@@ -140,7 +152,16 @@
 "Change Email" = "שינוי דוא";
 
 /* (No Commment) */
+"Change Mobile Number" = "שינוי מספר טלפון נייד";
+
+/* (No Commment) */
 "Change PIN" = "שינוי PIN";
+
+/* (No Commment) */
+"Change Password" = "שינוי סיסמה";
+
+/* (No Commment) */
+"Change Password Hint" = "שינוי לסיסמה";
 
 /* (No Commment) */
 "Change fee per kilobyte" = "שינוי דמי לכל קילו בייט";
@@ -166,7 +187,7 @@
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "תם הזמן שהוקצב לחיבור. נא בדוק את החיבור שלך לאינטרנט.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "המשך";
 
 /* (No Commment) */
@@ -176,7 +197,7 @@
 "Copy Address" = "העתק כתובת";
 
 /* (No Commment) */
-"Copy GUID" = "העתק GUID";
+"Copy Wallet ID" = "מזהה את הארנק עותק";
 
 /* (No Commment) */
 "Copy to clipboard" = "העתק ללוח";
@@ -221,6 +242,12 @@
 "Decrypting Wallet" = "פענוח הארנק";
 
 /* (No Commment) */
+"Disable" = "בטל";
+
+/* (No Commment) */
+"Disabled" = "בעלי מוגבלויות";
+
+/* (No Commment) */
 "Display" = "התצוגה";
 
 /* (No Commment) */
@@ -245,7 +272,13 @@
 "Empty response from server." = "תגובה ריקה מהשרת.";
 
 /* (No Commment) */
+"Enable" = "לאפשר";
+
+/* (No Commment) */
 "Enable Location Services" = "הפעלת שירותי איכון";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "לאפשר הודעות כדי לקבל דואר אלקטרוני בכל פעם שאתה מקבל bitcoins. הודעות על ההדק זכאים רק עם תוויות כתובות בחשבונות שלך וכתובות מיובאים.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "הפעלת תכונה זו תאפשר לכל המשתמשים בעלי טביעת אצבע המגע מזהה רשומה על התקן זה כדי לגשת את הארנק שלך.";
@@ -278,7 +311,7 @@
 "Fee is too high (0.01 BTC limit)" = "התשלום הוא גבוה מדי (0.01 BTC מוגבל)";
 
 /* (No Commment) */
-"Fee per kilobyte" = "תשלום לכל קילו בייט";
+"Fee per KB" = "תשלום לכל KB";
 
 /* (No Commment) */
 "Fees" = "דמי";
@@ -308,6 +341,9 @@
 "Go to Settings" = "עבור אל הגדרות";
 
 /* (No Commment) */
+"Google Authenticator" = "Google Authenticator";
+
+/* (No Commment) */
 "How would you like to pair?" = "? מה דעתך על זוג";
 
 /* (No Commment) */
@@ -332,6 +368,9 @@
 "Incorrect PIN. Please retry." = "PIN שגוי. נא נסה שנית.";
 
 /* (No Commment) */
+"Incorrect password" = "סיסמה שגויה";
+
+/* (No Commment) */
 "Information" = "מידע";
 
 /* (No Commment) */
@@ -339,9 +378,6 @@
 
 /* (No Commment) */
 "Insufficient Funds" = "אין לי כסף";
-
-/* (No Commment) */
-"Invalid GUID" = "GUID לא חוקית";
 
 /* (No Commment) */
 "Invalid Identifier" = "מזהה לא חוקי";
@@ -359,10 +395,16 @@
 "Invalid Status Code Returned %@" = "קוד מצב לא חוקי חזר %@";
 
 /* (No Commment) */
+"Invalid Wallet ID" = "מזהה את הארנק לא חוקי";
+
+/* (No Commment) */
 "Invalid address: %@" = "כתובת לא חוקית: %@";
 
 /* (No Commment) */
 "Invalid email address." = "דוא ל לא תקין";
+
+/* (No Commment) */
+"Invalid mobile number." = "מספר טלפון נייד לא חוקי.";
 
 /* (No Commment) */
 "Invalid recovery phrase. Please try again" = "הביטוי שחזור לא חוקי. אנא נסה שנית";
@@ -372,6 +414,9 @@
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "חוקי לכתובת ביטקוין";
+
+/* (No Commment) */
+"Invalid two-factor authentication type" = "סוג לא חוקי אימות שני הגורמים";
 
 /* (No Commment) */
 "Invalid verification code. Please try again." = "קוד אימות לא חוקי. נא נסה שוב.";
@@ -425,7 +470,7 @@
 "Merchant Map" = "סוחר מפה";
 
 /* (No Commment) */
-"My Accounts" = "החשבונות שלי";
+"Mobile Number" = "מספר טלפון נייד";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "הארנק שלי ביטקוין";
@@ -435,6 +480,15 @@
 
 /* (No Commment) */
 "New Address" = "כתובת חדשה";
+
+/* (No Commment) */
+"New Email Address" = "כתובת הדוא ל החדשה";
+
+/* (No Commment) */
+"New Mobile Number" = "מספר נייד חדש";
+
+/* (No Commment) */
+"New password must be different" = "הסיסמה החדשה להיות שונה";
 
 /* (No Commment) */
 "News, Price & Charts" = "חדשות, מחיר & תרשימים";
@@ -461,6 +515,9 @@
 "Normal" = "רגיל";
 
 /* (No Commment) */
+"Not Stored" = "אינם מאוחסנים";
+
+/* (No Commment) */
 "Not now" = "לא עכשיו";
 
 /* (No Commment) */
@@ -471,9 +528,6 @@
 
 /* No comment provided by engineer. */
 "OK" = "אוקיי";
-
-/* (No Commment) */
-"Optionally receive notifications when a payment is sent or received from your wallet." = "אם תרצה לקבל הודעות תשלום השליחה או הקבלה של הארנק שלך.";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "מחרוזת מוצפנת PIN היא אפסית";
@@ -500,7 +554,13 @@
 "Parsing Pairing Code" = "ניתוח קוד התאמה";
 
 /* (No Commment) */
+"Password Hint" = "לסיסמה";
+
+/* (No Commment) */
 "Password Required" = "דרושה סיסמה";
+
+/* (No Commment) */
+"Password changed. Please login to continue." = "סיסמה לשינוי. אנא התחבר כדי להמשיך.";
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "הסיסמה חייבת 10 תווים או יותר";
@@ -533,7 +593,13 @@
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "בבקשה לתאר בפירוט את הבעיה שאתם חווים, יחד עם כל השלבים שניקח לשחזר את הכל.";
 
 /* (No Commment) */
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "הזינו בבקשה את תשלום גדול מ- 0 BTC, לכל היותר 0.01 BTC";
+
+/* (No Commment) */
 "Please enter a new PIN" = "נא להזין מספר זיהוי אישי חדש";
+
+/* (No Commment) */
+"Please enter your %@ 2FA code" = "אנא הקלידו את הקוד 2FA %@";
 
 /* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "נא הזן המזהה את הארנק שלך תו 36 כראוי. ניתן למצוא בדוא ל ברוכים הבאים בעת ההפעלה.";
@@ -560,7 +626,10 @@
 "Please try again" = "אנא נסה שנית";
 
 /* (No Commment) */
-"Please verify your email" = "אנא בדוק את הדוא ל שלך";
+"Please verify your email address first." = "נא ודא כי כתובת הדוא ל שלך קודם.";
+
+/* (No Commment) */
+"Preferences" = "העדפות";
 
 /* (No Commment) */
 "Privacy Policy" = "מדיניות פרטיות";
@@ -582,6 +651,9 @@
 
 /* (No Commment) */
 "Request Amount" = "לבקש סכום";
+
+/* (No Commment) */
+"Resend verification SMS" = "שלח מחדש אימות ב- SMS";
 
 /* (No Commment) */
 "Resend verification email" = "שלח מחדש דואר אלקטרוני לאימות";
@@ -613,7 +685,7 @@
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "סיסמה שנייה שגוי";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Second Password Required" = "דרושה סיסמה שנייה";
 
 /* (No Commment) */
@@ -627,6 +699,9 @@
 
 /* (No Commment) */
 "Send to..." = ". לשלוח...";
+
+/* (No Commment) */
+"Send verification SMS" = "שלח אימות ב- SMS";
 
 /* (No Commment) */
 "Sending Transaction" = "שליחת עסקת";
@@ -648,6 +723,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "חתימת כניסות";
+
+/* (No Commment) */
+"Stored" = "מאוחסן";
 
 /* (No Commment) */
 "Strong" = "סטרונג";
@@ -720,6 +798,9 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "לשדרג את הארנק שלך";
 
 /* (No Commment) */
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "אין אפשרות לטעון את הארנק בגלל שאין תגובה מהשרת. אתה יכול להיות מנותק או Blockchain הוא נתקל בקשיים. נא נסה שוב מאוחר יותר.";
+
+/* (No Commment) */
 "Unarchive" = "Unarchive";
 
 /* (No Commment) */
@@ -732,10 +813,16 @@ Fee: %@
 "Unhandled exception" = "חריג שאינו מטופל";
 
 /* (No Commment) */
+"Unknown" = "ידוע";
+
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "שגיאה לא ידועה מזהה מגע. קוד: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "בתבנית שאינה נתמכת של מפתח פרטי";
+
+/* (No Commment) */
+"Unverified" = "לא מאומתים";
 
 /* (No Commment) */
 "Update" = "עדכון";
@@ -768,13 +855,19 @@ Fee: %@
 "VERIFY BACKUP" = "ודא גיבוי";
 
 /* (No Commment) */
+"Verified" = "אומת";
+
+/* (No Commment) */
 "Verify" = "ודא";
 
 /* (No Commment) */
 "Verifying" = "אימות";
 
 /* (No Commment) */
-"Wallet Identifier" = "המזהה את הארנק";
+"Wallet ID" = "מזהה את הארנק";
+
+/* (No Commment) */
+"Wallet Information" = "הארנק מידע";
 
 /* (No Commment) */
 "Wallet Paired Successfully." = "הארנק לזווג בהצלחה.";
@@ -811,8 +904,8 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "Would you like to add the bitcoin address %@ to your address book?" = "האם ברצונך להוסיף את %@ כתובת ביטקוין לפנקס הכתובות שלך?";
 
 /* No comment provided by engineer. */
-"Write the words down on a sheet of paper in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "תכתבי את המילים על גליון נייר לפי הסדר המדויק הם מופיעים על גיליון נייר, ואחסן אותו במקום בטוח
+"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
+" = "תכתבי את המילים לפי הסדר המדויק הם מופיעים על גיליון נייר, ואחסן אותו במקום בטוח
 ";
 
 /* (No Commment) */
@@ -826,6 +919,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "גיבית את הכספים שלך בהצלחה";
+
+/* (No Commment) */
+"You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "ניתן לאפשר אימות דו-שלבי באמצעות SMS בטלפון הנייד שלך. על מנת להשתמש משיטות אימות אחרות במקום זאת, אנא התחבר כדי הארנק האינטרנט שלנו.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "אין לך חשבון להגדיר עבור דואר. אנא צרו קשר %@";
@@ -846,7 +942,7 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "You must leave at least one active address" = "עליך להשאיר כתובת פעיל אחד לפחות";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your GUID and password. Recovering your funds will create a new GUID. Would you like to continue?" = "עליך תמיד זוג או להיכנס למערכת, אם יש לך גישה GUID והסיסמה שלך. שחזור כספים שלך תיצור GUID החדש. האם ברצונך להמשיך?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "עליך תמיד זוג או להיכנס למערכת, אם יש לך גישה אל הארנק המזהה והסיסמה שלך. שחזור כספים שלך יהיה ליצור מזהה את הארנק החדש האם ברצונך להמשיך?";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "המכשיר נראה jailbroken. . בסכנה את האבטחה של הארנק שלך";
@@ -858,7 +954,31 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "Your identity does not match our records." = "הזהות שלך אינו תואם את הרשומות שלנו.";
 
 /* (No Commment) */
+"Your mobile number has been verified." = "מספר הטלפון הנייד שלך אומת.";
+
+/* (No Commment) */
+"Your new password hint contains invalid characters. Please try again." = "לסיסמה חדשה מכיל תווים לא חוקיים. נא נסה שוב.";
+
+/* (No Commment) */
+"Your new password hint contains no text. Your password hint will be cleared." = "לסיסמה חדשה מכיל טקסט. הרמז לסיסמה שלך ינוקה.";
+
+/* (No Commment) */
+"Your new password hint must be different from your password. Please try again." = "רמז הסיסמה החדשה להיות שונה מסיסמת שלך. נא נסה שוב.";
+
+/* (No Commment) */
+"Your new password hint must be different from your second password. Please try again." = "לסיסמה החדשה להיות שונה מסיסמת השני שלך. נא נסה שוב.";
+
+/* (No Commment) */
+"Your password hint has been updated." = "הרמז לסיסמה שלך עודכנה.";
+
+/* (No Commment) */
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "את כתובת הדוא ל מאומת משמש כדי לשלוח קודי כניסה פעילות חשודה או יוצא דופן מזוהה, כדי להזכיר לך את מזהה הכניסה שלך את הארנק, וכדי לשלוח התראות התשלום ביטקוין בעת קבלת כספים. לא נשתמש כתובת הדוא ל שלך למטרות שיווק.";
+
+/* (No Commment) */
 "Your wallet was successfully created." = "הארנק שלך נוצר בהצלחה.";
+
+/* (No Commment) */
+"Yubi Key" = "Yubi מפתח";
 
 /* No comment provided by engineer. */
 "eighth word" = "המילה השמיני";

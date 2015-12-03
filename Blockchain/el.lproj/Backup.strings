@@ -63,7 +63,7 @@
 "T4p-mz-siC.normalTitle" = "ΕΠΑΛΗΘΕΎΣΕΤΕ ΤΗ ΔΗΜΙΟΥΡΓΊΑ ΑΝΤΙΓΡΆΦΩΝ ΑΣΦΑΛΕΊΑΣ";
 
 /* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Καταγράψτε τις λέξεις σε ένα φύλλο χαρτιού με την ακριβή σειρά εμφανίζονται σε ένα φύλλο χαρτί, και να το αποθηκεύσετε κάπου ασφαλή
+"UCL-i9-UDp.text" = "Καταγράψτε τις λέξεις, την ακριβή σειρά που εμφανίζονται σε ένα φύλλο χαρτί, και να το αποθηκεύσετε κάπου ασφαλή
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -86,6 +86,9 @@
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Εφεδρική πορτοφόλι";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
+"nuD-nb-tAt.normalTitle" = "Συνεχίσει";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
 "xmf-pK-R3X.title" = "Εφεδρική πορτοφόλι";

@@ -23,19 +23,19 @@
 "360.text" = "1";
 
 /* Class = "UILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Logg på lommeboken Blockchain via PC eller Mac på http://blockchain.info/wallet";
+"361.text" = "Logg på lommeboken Blockchain via PC eller Mac på https://blockchain.info/wallet/login";
 
 /* Class = "UILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Klikk på Innstillinger-knappen, og velg kategorien enheter";
+"364.text" = "Hvis du bruker gamle lommeboken, klikker kontoinnstillinger og velger kategorien enheter. Hvis du bruker våre ny beta lommebok, gå til innstillinger / lommebok informasjon.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Klikk Vis sammenkobling kode for å vise en QR-kode, en firkantet svarthvite strekkode. Skanne koden med kameraet";
+"369.text" = "Klikk Vis sammenkobling kode for å vise en QR-kode, en firkantede, svarte & hvite strekkode. Skanne koden med kameraet.";
 
 /* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
 "370.normalTitle" = "Skanne tilkoplingskode";
@@ -162,9 +162,6 @@
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Manuell sammenkobling";
-
-/* Class = "UILabel"; text = "You must have two-factor authentication disabled to pair manually."; ObjectID = "rQS-iv-7kZ"; */
-"rQS-iv-7kZ.text" = "Du må ha to-faktor autentifisering deaktivert for manuelt.";
 
 /* Class = "UIButton"; normalTitle = "Blockchain Terms of Service"; ObjectID = "wfI-8F-dfm"; */
 "wfI-8F-dfm.normalTitle" = "Blockchain vilkår";
