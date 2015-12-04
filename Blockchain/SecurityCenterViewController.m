@@ -74,7 +74,6 @@
     BOOL hasBackedUpPhrase = app.wallet.isRecoveryPhraseVerified;
     self.backupPhraseLabel.text = hasBackedUpPhrase ? BC_STRING_PHRASE_BACKED : BC_STRING_BACKUP_PHRASE;
     self.backupPhraseLabel.textColor = hasBackedUpPhrase ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
-    self.backupPhraseButton.enabled = hasBackedUpPhrase ? NO : YES;
     if (hasBackedUpPhrase) {
         completedItems++;
     }
