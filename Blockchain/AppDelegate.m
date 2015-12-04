@@ -1126,12 +1126,27 @@ void (^secondPasswordSuccess)(NSString *);
 
 #pragma mark - Show Screens
 
+- (void)showSecurityCenter
+{
+    if (!_settingsNavigationController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
+        self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
+    }
+    
+    [self.settingsNavigationController showSecurityCenter];
+    
+    self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:nil];
+}
+
 - (void)showSettings
 {
     if (!_settingsNavigationController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
         self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
     }
+    
+    [self.settingsNavigationController showSettings];
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:nil];
@@ -1322,9 +1337,9 @@ void (^secondPasswordSuccess)(NSString *);
     [app showSettings];
 }
 
-- (IBAction)backupClicked:(id)sender
+- (IBAction)securityCenterClicked:(id)sender
 {
-    [app showBackup];
+    [app showSecurityCenter];
 }
 
 - (IBAction)supportClicked:(id)sender

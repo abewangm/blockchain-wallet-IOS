@@ -220,7 +220,7 @@ int accountEntries = 0;
         [app supportClicked:nil];
     } else if (row == MENU_CELL_INDEX_UPGRADE) {
         if (didUpgradeToHD) {
-            [app backupClicked:nil];
+            [app securityCenterClicked:nil];
         }
         else {
             [app showHdUpgrade];
@@ -336,16 +336,16 @@ int accountEntries = 0;
             cell.selectedBackgroundView = v;
         }
 #ifdef HD_ENABLED
-        NSString *upgradeOrBackupTitle;
+        NSString *upgradeOrSecurityCenterTitle;
         if (!app.wallet.didUpgradeToHd) {
-            upgradeOrBackupTitle = BC_STRING_UPGRADE_TO_V3;
+            upgradeOrSecurityCenterTitle = BC_STRING_UPGRADE_TO_V3;
         }
         else {
-            upgradeOrBackupTitle = BC_STRING_BACKUP;
+            upgradeOrSecurityCenterTitle = BC_STRING_SECURITY_CENTER;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, upgradeOrBackupTitle, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, upgradeOrSecurityCenterTitle, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
         
         NSString *upgradeOrBackupImage;
         if (!app.wallet.didUpgradeToHd) {

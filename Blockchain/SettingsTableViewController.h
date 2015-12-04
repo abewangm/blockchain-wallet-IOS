@@ -9,5 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewController : UITableViewController
+@property (nonatomic) UIViewController *alertTargetViewController;
 - (void)reload;
+
+// Security Center
+- (BOOL)hasVerifiedEmail;
+- (BOOL)hasVerifiedMobileNumber;
+- (BOOL)hasStoredPasswordHint;
+- (BOOL)hasEnabledTwoStep;
+
+- (void)verifyEmailTapped;
+- (void)linkMobileTapped;
+- (void)storeHintTapped;
+- (void)enableTwoStepTapped;
+
 @end

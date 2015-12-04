@@ -8,6 +8,7 @@
 
 #import "SettingsNavigationController.h"
 #import "SettingsTableViewController.h"
+#import "SecurityCenterViewController.h"
 #import "AppDelegate.h"
 
 @interface SettingsNavigationController ()
@@ -77,7 +78,7 @@
 {
     [super viewDidLayoutSubviews];
 
-    if (self.viewControllers.count == 1) {
+    if (self.viewControllers.count == 1 || [self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
         self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         self.backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -94,7 +95,7 @@
 
 - (void)backButtonClicked:(UIButton *)sender
 {
-    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
+    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]] || [self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self popViewControllerAnimated:YES];
@@ -109,6 +110,18 @@
     }
     
     [self.busyView fadeOut];
+}
+
+- (void)showSecurityCenter
+{
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_SECURITY_CENTER sender:nil];
+}
+
+- (void)showSettings
+{
+    if ([self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
+        [self popViewControllerAnimated:NO];
+    }
 }
 
 @end

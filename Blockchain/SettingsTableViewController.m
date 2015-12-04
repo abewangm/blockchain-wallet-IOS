@@ -10,6 +10,7 @@
 #import "SettingsSelectorTableViewController.h"
 #import "SettingsAboutViewController.h"
 #import "SettingsBitcoinUnitTableViewController.h"
+#import "SecurityCenterViewController.h"
 #import "AppDelegate.h"
 
 const int textFieldTagChangePasswordHint = 8;
@@ -136,6 +137,10 @@ const int aboutPrivacyPolicy = 1;
         DLog(@"SettingsTableViewController: gotAccountInfo");
         self.accountInfoDictionary = note.userInfo;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
+        if ([self.alertTargetViewController isMemberOfClass:[SecurityCenterViewController class]]) {
+            SecurityCenterViewController *securityViewController = (SecurityCenterViewController *)self.alertTargetViewController;
+            [securityViewController updateUI];
+        }
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     }];
     
@@ -215,14 +220,26 @@ const int aboutPrivacyPolicy = 1;
 {
     UIAlertController *alertForSuccess = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:successMessage preferredStyle:UIAlertControllerStyleAlert];
     [alertForSuccess addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alertForSuccess animated:YES completion:nil];
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForSuccess animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForSuccess animated:YES completion:nil];
+    }
+    
+    if (self.alertTargetViewController) {
+        [self reload];
+    }
 }
 
 - (void)alertUserOfError:(NSString *)errorMessage
 {
     UIAlertController *alertForError = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
     [alertForError addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alertForError animated:YES completion:nil];
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForError animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForError animated:YES completion:nil];
+    }
 }
 
 #pragma mark - Change Fee per KB
@@ -312,6 +329,11 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Mobile Number
 
+- (BOOL)hasVerifiedMobileNumber
+{
+    return [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue];
+}
+
 - (NSString *)getMobileNumber
 {
     return [self.accountInfoDictionary objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER];
@@ -337,8 +359,11 @@ const int aboutPrivacyPolicy = 1;
         secureTextField.returnKeyType = UIReturnKeyDone;
         secureTextField.text = self.mobileNumberString;
     }];
-    [self presentViewController:alertForChangingMobileNumber animated:YES completion:nil];
-}
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForChangingMobileNumber animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForChangingMobileNumber animated:YES completion:nil];
+    }}
 
 - (void)changeMobileNumber:(NSString *)newNumber
 {
@@ -392,8 +417,11 @@ const int aboutPrivacyPolicy = 1;
         secureTextField.returnKeyType = UIReturnKeyDone;
         secureTextField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
     }];
-    [self presentViewController:alertForVerifyingMobileNumber animated:YES completion:nil];
-}
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForVerifyingMobileNumber animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForVerifyingMobileNumber animated:YES completion:nil];
+    }}
 
 - (void)verifyMobileNumber:(NSString *)code
 {
@@ -544,6 +572,11 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Two Step
 
+- (BOOL)hasEnabledTwoStep
+{
+    return [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] != 0;
+}
+
 - (void)alertUserToChangeTwoStepVerification
 {
     NSString *alertTitle;
@@ -567,8 +600,11 @@ const int aboutPrivacyPolicy = 1;
     [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:isTwoStepEnabled ? BC_STRING_DISABLE : BC_STRING_ENABLE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self changeTwoStepVerification];
     }]];
-    [self presentViewController:alertForChangingTwoStep animated:YES completion:nil];
-}
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForChangingTwoStep animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForChangingTwoStep animated:YES completion:nil];
+    }}
 
 - (void)changeTwoStepVerification
 {
@@ -662,7 +698,12 @@ const int aboutPrivacyPolicy = 1;
         secureTextField.returnKeyType = UIReturnKeyDone;
         secureTextField.text = hasAddedEmail ? [self getUserEmail] : @"";
     }];
-    [self presentViewController:alertForChangingEmail animated:YES completion:nil];
+    
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForChangingEmail animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForChangingEmail animated:YES completion:nil];
+    }
 }
 
 - (void)alertUserToVerifyEmail
@@ -691,8 +732,11 @@ const int aboutPrivacyPolicy = 1;
         secureTextField.returnKeyType = UIReturnKeyDone;
         secureTextField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
     }];
-    [self presentViewController:alertForVerifyingEmail animated:YES completion:nil];
-}
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForVerifyingEmail animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForVerifyingEmail animated:YES completion:nil];
+    }}
 
 - (void)resendVerificationEmail
 {
@@ -757,9 +801,15 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Password Hint
 
+- (BOOL)hasStoredPasswordHint
+{
+    NSString *passwordHint = self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
+    return ![[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] && passwordHint;
+}
+
 - (void)alertUserToChangePasswordHint
 {
-    UIAlertController *alertForChangingPasswordHint = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertForChangingPasswordHint = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT message:BC_STRING_HINT_DESCRIPTION preferredStyle:UIAlertControllerStyleAlert];
     [alertForChangingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [alertForChangingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_UPDATE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *passwordHint = [[alertForChangingPasswordHint textFields] firstObject].text;
@@ -780,7 +830,11 @@ const int aboutPrivacyPolicy = 1;
         secureTextField.returnKeyType = UIReturnKeyDone;
         secureTextField.text = passwordHint;
     }];
-    [self presentViewController:alertForChangingPasswordHint animated:YES completion:nil];
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForChangingPasswordHint animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForChangingPasswordHint animated:YES completion:nil];
+    };
 }
 
 - (void)alertUserThatAllWhiteSpaceCharactersClearsHint
@@ -790,7 +844,11 @@ const int aboutPrivacyPolicy = 1;
     [alertForClearingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self changePasswordHint:@""];
     }]];
-    [self presentViewController:alertForClearingPasswordHint animated:YES completion:nil];
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForClearingPasswordHint animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForClearingPasswordHint animated:YES completion:nil];
+    }
 }
 
 - (void)changePasswordHint:(NSString *)hint
@@ -860,6 +918,20 @@ const int aboutPrivacyPolicy = 1;
         }
     }];
     
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController dismissViewControllerAnimated:YES completion:^{
+            if (textField.tag == textFieldTagVerifyEmail) {
+                [weakSelf verifyEmailWithCode:textField.text];
+                
+            } else if (textField.tag == textFieldTagVerifyMobileNumber) {
+                [weakSelf verifyMobileNumber:textField.text];
+                
+            } else if (textField.tag == textFieldTagChangeMobileNumber) {
+                [weakSelf changeMobileNumber:textField.text];
+            }
+        }];
+    }
+
     return YES;
 }
 
@@ -1110,7 +1182,7 @@ const int aboutPrivacyPolicy = 1;
                 case preferencesMobileNumber: {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.textLabel.text = BC_STRING_SETTINGS_MOBILE_NUMBER;
-                    if ([self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
+                    if ([self hasVerifiedMobileNumber]) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                     } else {
@@ -1185,13 +1257,12 @@ const int aboutPrivacyPolicy = 1;
                 }
                 case securityPasswordHint: {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_PASSWORD_HINT;
-                    NSString *passwordHint = self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
-                    if ([[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] || !passwordHint) {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_NOT_STORED;
-                    } else {
+                    if ([self hasStoredPasswordHint]) {
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_STORED;
+                    } else {
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_NOT_STORED;
                     }
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return cell;
@@ -1241,6 +1312,28 @@ const int aboutPrivacyPolicy = 1;
     } else {
         return indexPath;
     }
+}
+
+#pragma mark Security Center Helpers
+
+- (void)verifyEmailTapped
+{
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesEmail inSection:preferencesSectionEmailFooter]];
+}
+
+- (void)linkMobileTapped
+{
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesMobileNumber inSection:preferencesSectionNotificationsFooter]];
+}
+
+- (void)storeHintTapped
+{
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:securityPasswordHint inSection:securitySection]];
+}
+
+- (void)enableTwoStepTapped
+{
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:securityTwoStep inSection:securitySection]];
 }
 
 @end

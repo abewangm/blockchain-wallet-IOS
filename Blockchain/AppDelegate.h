@@ -173,7 +173,7 @@
 
 - (IBAction)newsClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
-- (IBAction)backupClicked:(id)sender;
+- (IBAction)securityCenterClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)changePINClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
