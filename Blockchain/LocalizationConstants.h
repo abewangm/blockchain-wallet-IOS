@@ -354,8 +354,12 @@
 #define BC_STRING_STORE_HINT NSLocalizedString(@"Store Hint", nil)
 #define BC_STRING_HINT_DESCRIPTION NSLocalizedString(@"We'll send the hint to your confirmed email address in case you request it.", nil)
 #define BC_STRING_HINT_STORED NSLocalizedString(@"Hint Stored", nil)
+#define BC_STRING_TWO_STEP_ENABLED_SUCCESS NSLocalizedString(@"2-Step has been enabled for SMS.", nil)
+#define BC_STRING_TWO_STEP_DISABLED_SUCCESS NSLocalizedString(@"2-Step has been disabled.", nil)
+#define BC_STRING_TWO_STEP_ERROR NSLocalizedString(@"An error occured while changing 2-Step verification.", nil)
 #define BC_STRING_TWO_STEP_ENABLED NSLocalizedString(@"2-Step Enabled", nil)
 #define BC_STRING_ENABLE_TWO_STEP NSLocalizedString(@"Enable 2-Step", nil)
+#define BC_STRING_ENABLE_TWO_STEP_SMS NSLocalizedString(@"Enable 2-Step for SMS", nil)
 
 #define BC_STRING_NEW_ADDRESS NSLocalizedString(@"New Address", nil)
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)

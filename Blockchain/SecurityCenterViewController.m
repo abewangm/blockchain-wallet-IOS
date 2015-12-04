@@ -8,6 +8,7 @@
 
 #import "SecurityCenterViewController.h"
 #import "SettingsTableViewController.h"
+#import "SettingsTwoStepViewController.h"
 #import "AppDelegate.h"
 
 @interface SecurityCenterViewController ()
@@ -49,13 +50,12 @@
     if (!self.settingsController) {
         self.settingsController = [[SettingsTableViewController alloc] init];
     }
-    
-    self.settingsController.alertTargetViewController = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.settingsController.alertTargetViewController = self;
     [self.settingsController reload];
 }
 
@@ -136,7 +136,16 @@
 
 - (IBAction)enableTwoStepTapped:(UIButton *)sender
 {
-    [self.settingsController enableTwoStepTapped];
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_TWO_STEP]) {
+        SettingsTwoStepViewController *twoStepViewController = (SettingsTwoStepViewController *)segue.destinationViewController;
+        twoStepViewController.settingsController = self.settingsController;
+        self.settingsController.alertTargetViewController = twoStepViewController;
+    }
 }
 
 @end

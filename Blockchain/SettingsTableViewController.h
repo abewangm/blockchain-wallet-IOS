@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewController : UITableViewController
-@property (nonatomic) UIViewController *alertTargetViewController;
+@property (weak, nonatomic) UIViewController *alertTargetViewController;
 - (void)reload;
 
 // Security Center
@@ -21,6 +21,6 @@
 - (void)verifyEmailTapped;
 - (void)linkMobileTapped;
 - (void)storeHintTapped;
-- (void)enableTwoStepTapped;
+- (void)changeTwoStepTapped;
 
 @end

@@ -27,6 +27,7 @@
                         <segue destination="PEl-Nc-OHV" kind="show" identifier="about" id="EnS-qO-bj5"/>
                         <segue destination="gkh-Vd-Yx4" kind="show" identifier="btcUnit" id="GMN-m2-0Kk"/>
                         <segue destination="Jug-BV-tNm" kind="show" identifier="changePassword" id="rNr-oy-xNj"/>
+                        <segue destination="3uM-Ae-qV5" kind="show" identifier="twoStep" id="Rsa-LU-pz6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKa-p2-jgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,7 +409,6 @@
                                                 </constraints>
                                                 <connections>
                                                     <action selector="enableTwoStepTapped:" destination="wnC-Xd-1Er" eventType="touchUpInside" id="bSG-H4-MnX"/>
-                                                    <action selector="storeHintTapped:" destination="wnC-Xd-1Er" eventType="touchUpInside" id="nbs-vx-nIA"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Two-Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIP-mj-Hh2">
@@ -560,11 +560,104 @@
                         <outlet property="verifyEmailButton" destination="IXz-ck-6Kr" id="N8j-FL-QeU"/>
                         <outlet property="verifyEmailCheckImageView" destination="lxF-eC-Lwp" id="VNy-H9-e1Z"/>
                         <outlet property="verifyEmailLabel" destination="8Ha-3e-Nqx" id="jPt-cB-JVM"/>
+                        <segue destination="3uM-Ae-qV5" kind="show" identifier="twoStep" id="ex9-ag-78o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CKo-Kq-XZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1188" y="1017"/>
         </scene>
+        <!--Settings Two Step View Controller-->
+        <scene sceneID="HeW-xC-pUq">
+            <objects>
+                <viewController id="3uM-Ae-qV5" customClass="SettingsTwoStepViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M53-K7-FLu"/>
+                        <viewControllerLayoutGuide type="bottom" id="TRF-Yh-iqZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1SC-Si-4XP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z4b-h7-LiF">
+                                <rect key="frame" x="275" y="72" width="50" height="50"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="TEj-J0-R6P"/>
+                                    <constraint firstAttribute="height" constant="50" id="gzi-PQ-615"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFL-5O-fcl">
+                                <rect key="frame" x="28" y="158" width="544" height="53"/>
+                                <animations/>
+                                <string key="text">Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone bumber to secure your wallet. This code will be requested when you try to access your wallet.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two-Step Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zy-R2-HoW">
+                                <rect key="frame" x="214" y="130" width="173" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="brm-79-cZC">
+                                <rect key="frame" x="9" y="537" width="59" height="58"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="4fS-uW-0YT"/>
+                                    <constraint firstAttribute="height" constant="58" id="Ys0-7w-1Cc"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8G-4j-qpJ">
+                                <rect key="frame" x="0.0" y="532" width="600" height="68"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="qSP-DH-iPq"/>
+                                </constraints>
+                                <state key="normal" title="Use your mobile phone number">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="twoStepTapped:" destination="3uM-Ae-qV5" eventType="touchUpInside" id="8IS-ob-IRM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z4b-h7-LiF" firstAttribute="top" secondItem="M53-K7-FLu" secondAttribute="bottom" constant="8" id="0KR-aV-HCl"/>
+                            <constraint firstItem="bFL-5O-fcl" firstAttribute="leading" secondItem="1SC-Si-4XP" secondAttribute="leadingMargin" constant="8" id="4WX-5c-5NC"/>
+                            <constraint firstItem="z4b-h7-LiF" firstAttribute="centerX" secondItem="1SC-Si-4XP" secondAttribute="centerX" id="83j-1C-Bof"/>
+                            <constraint firstItem="bFL-5O-fcl" firstAttribute="centerX" secondItem="1SC-Si-4XP" secondAttribute="centerX" id="8mt-4P-EwQ"/>
+                            <constraint firstItem="TRF-Yh-iqZ" firstAttribute="top" secondItem="g8G-4j-qpJ" secondAttribute="bottom" id="AOO-hM-NNS"/>
+                            <constraint firstItem="8Zy-R2-HoW" firstAttribute="top" secondItem="z4b-h7-LiF" secondAttribute="bottom" constant="8" id="GeT-Sq-JnN"/>
+                            <constraint firstItem="bFL-5O-fcl" firstAttribute="top" secondItem="8Zy-R2-HoW" secondAttribute="bottom" constant="8" id="Gza-0C-gmc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bFL-5O-fcl" secondAttribute="trailing" constant="8" id="JES-Ec-qiN"/>
+                            <constraint firstItem="g8G-4j-qpJ" firstAttribute="leading" secondItem="1SC-Si-4XP" secondAttribute="leadingMargin" constant="-20" id="Mmo-Hl-6aU"/>
+                            <constraint firstItem="bFL-5O-fcl" firstAttribute="top" secondItem="z4b-h7-LiF" secondAttribute="bottom" constant="8" id="Xp2-0P-STv"/>
+                            <constraint firstItem="brm-79-cZC" firstAttribute="leading" secondItem="1SC-Si-4XP" secondAttribute="leadingMargin" constant="-11" id="ZSn-D1-PI7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g8G-4j-qpJ" secondAttribute="trailing" constant="-20" id="ahr-ur-mD8"/>
+                            <constraint firstItem="8Zy-R2-HoW" firstAttribute="centerX" secondItem="1SC-Si-4XP" secondAttribute="centerX" id="kOb-Y7-jXa"/>
+                            <constraint firstItem="brm-79-cZC" firstAttribute="centerY" secondItem="g8G-4j-qpJ" secondAttribute="centerY" id="rK2-HT-tIJ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Xp2-0P-STv"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="twoStepButton" destination="g8G-4j-qpJ" id="HLj-pS-Mr1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kir-zd-I1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1635" y="1681"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Rsa-LU-pz6"/>
+    </inferredMetricsTieBreakers>
 </document>

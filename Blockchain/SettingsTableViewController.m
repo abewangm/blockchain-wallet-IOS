@@ -11,6 +11,7 @@
 #import "SettingsAboutViewController.h"
 #import "SettingsBitcoinUnitTableViewController.h"
 #import "SecurityCenterViewController.h"
+#import "SettingsTwoStepViewController.h"
 #import "AppDelegate.h"
 
 const int textFieldTagChangePasswordHint = 8;
@@ -140,6 +141,9 @@ const int aboutPrivacyPolicy = 1;
         if ([self.alertTargetViewController isMemberOfClass:[SecurityCenterViewController class]]) {
             SecurityCenterViewController *securityViewController = (SecurityCenterViewController *)self.alertTargetViewController;
             [securityViewController updateUI];
+        } else if ([self.alertTargetViewController isMemberOfClass:[SettingsTwoStepViewController class]]) {
+            SettingsTwoStepViewController *twoStepViewController = (SettingsTwoStepViewController *)self.alertTargetViewController;
+            [twoStepViewController updateUI];
         }
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     }];
@@ -442,7 +446,6 @@ const int aboutPrivacyPolicy = 1;
     [self removeObserversForVerifyingMobileNumber];
     
     if (self.isEnablingTwoStepSMS) {
-        self.isEnablingTwoStepSMS = NO;
         [self enableTwoStepForSMS];
         return;
     }
@@ -600,11 +603,13 @@ const int aboutPrivacyPolicy = 1;
     [alertForChangingTwoStep addAction:[UIAlertAction actionWithTitle:isTwoStepEnabled ? BC_STRING_DISABLE : BC_STRING_ENABLE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self changeTwoStepVerification];
     }]];
+    
     if (self.alertTargetViewController) {
         [self.alertTargetViewController presentViewController:alertForChangingTwoStep animated:YES completion:nil];
     } else {
         [self presentViewController:alertForChangingTwoStep animated:YES completion:nil];
-    }}
+    }
+}
 
 - (void)changeTwoStepVerification
 {
@@ -649,12 +654,19 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changeTwoStepSuccess
 {
+    if (self.isEnablingTwoStepSMS) {
+        [self alertUserOfSuccess:BC_STRING_TWO_STEP_ENABLED_SUCCESS];
+    } else {
+        [self alertUserOfSuccess:BC_STRING_TWO_STEP_DISABLED_SUCCESS];
+    }
+    self.isEnablingTwoStepSMS = NO;
     [self removeObserversForChangingTwoStep];
     [self getAccountInfo];
 }
 
 - (void)changeTwoStepError
 {
+    self.isEnablingTwoStepSMS = NO;
     [self removeObserversForChangingTwoStep];
     [self getAccountInfo];
 }
@@ -906,18 +918,6 @@ const int aboutPrivacyPolicy = 1;
 {
     __weak SettingsTableViewController *weakSelf = self;
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (textField.tag == textFieldTagVerifyEmail) {
-            [weakSelf verifyEmailWithCode:textField.text];
-            
-        } else if (textField.tag == textFieldTagVerifyMobileNumber) {
-            [weakSelf verifyMobileNumber:textField.text];
-            
-        } else if (textField.tag == textFieldTagChangeMobileNumber) {
-            [weakSelf changeMobileNumber:textField.text];
-        }
-    }];
-    
     if (self.alertTargetViewController) {
         [self.alertTargetViewController dismissViewControllerAnimated:YES completion:^{
             if (textField.tag == textFieldTagVerifyEmail) {
@@ -930,7 +930,20 @@ const int aboutPrivacyPolicy = 1;
                 [weakSelf changeMobileNumber:textField.text];
             }
         }];
+        return YES;
     }
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (textField.tag == textFieldTagVerifyEmail) {
+            [weakSelf verifyEmailWithCode:textField.text];
+            
+        } else if (textField.tag == textFieldTagVerifyMobileNumber) {
+            [weakSelf verifyMobileNumber:textField.text];
+            
+        } else if (textField.tag == textFieldTagChangeMobileNumber) {
+            [weakSelf changeMobileNumber:textField.text];
+        }
+    }];
 
     return YES;
 }
@@ -988,6 +1001,10 @@ const int aboutPrivacyPolicy = 1;
         SettingsBitcoinUnitTableViewController *settingsBtcUnitTableViewController = segue.destinationViewController;
         settingsBtcUnitTableViewController.itemsDictionary = self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_BTC_CURRENCIES];
         settingsBtcUnitTableViewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_TWO_STEP]) {
+        SettingsTwoStepViewController *twoStepViewController = (SettingsTwoStepViewController *)segue.destinationViewController;
+        twoStepViewController.settingsController = self;
+        self.alertTargetViewController = twoStepViewController;
     }
 }
 
@@ -1065,7 +1082,7 @@ const int aboutPrivacyPolicy = 1;
         case securitySection: {
             switch (indexPath.row) {
                 case securityTwoStep: {
-                    [self alertUserToChangeTwoStepVerification];
+                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
                     return;
                 }
                 case securityPasswordHint: {
@@ -1331,9 +1348,9 @@ const int aboutPrivacyPolicy = 1;
     [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:securityPasswordHint inSection:securitySection]];
 }
 
-- (void)enableTwoStepTapped
+- (void)changeTwoStepTapped
 {
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:securityTwoStep inSection:securitySection]];
+    [self alertUserToChangeTwoStepVerification];
 }
 
 @end

@@ -119,7 +119,7 @@
 
 - (void)showSettings
 {
-    if ([self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
+    if (![self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
         [self popViewControllerAnimated:NO];
     }
 }
