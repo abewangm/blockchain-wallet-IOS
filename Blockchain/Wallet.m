@@ -775,6 +775,27 @@
     [self.webView executeJS:@"MyWalletPhone.disableNotifications()"];
 }
 
+- (void)changeTorBlocking:(BOOL)willEnable
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.update_tor_ip_block(\"%@\")", [NSNumber numberWithBool:willEnable]];
+}
+
+- (void)on_update_tor_success
+{
+    DLog(@"on_update_tor_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
+}
+
+- (void)on_update_tor_error
+{
+    DLog(@"on_update_tor_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

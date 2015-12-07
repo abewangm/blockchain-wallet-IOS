@@ -220,6 +220,7 @@
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword;
 - (void)enableEmailNotifications;
 - (void)disableEmailNotifications;
+- (void)changeTorBlocking:(BOOL)willEnable;
 
 // Payment Spender
 - (void)createNewPayment;

@@ -38,8 +38,9 @@ const int securitySection = 4;
 const int securityTwoStep = 0;
 const int securityPasswordHint = 1;
 const int securityPasswordChange = 2;
+const int securityTorBlocking = 3;
 #ifdef TOUCH_ID_ENABLED
-const int securityTouchID = 3;
+const int securityTouchID = 4;
 #else
 const int securityTouchID = -1;
 #endif
@@ -905,6 +906,63 @@ const int aboutPrivacyPolicy = 1;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR object:nil];
 }
 
+#pragma mark - Change Tor Blocking
+
+- (void)changeTorBlockingTapped
+{
+    BOOL torBlockingEnabled = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
+    NSString *alertTitle;
+    NSString *alertActionTitle;
+    if (torBlockingEnabled == YES) {
+        alertTitle = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS_BLOCKED;
+        alertActionTitle = BC_STRING_ALLOW;
+    } else {
+        alertTitle = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS_ALLOWED;
+        alertActionTitle = BC_STRING_BLOCK;
+    }
+    
+    UIAlertController *alertForChangingTorBlocking = [UIAlertController alertControllerWithTitle:alertTitle message:BC_STRING_SETTINGS_SECURITY_TOR_BLOCKING_DESCRIPTION preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingTorBlocking addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTorBlocking inSection:securitySection];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }]];
+    [alertForChangingTorBlocking addAction:[UIAlertAction actionWithTitle:alertActionTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self updateTorBlocking:!torBlockingEnabled];
+    }]];
+    [self presentViewController:alertForChangingTorBlocking animated:YES completion:nil];
+}
+
+- (void)updateTorBlocking:(BOOL)willEnable
+{
+    if ([app checkInternetConnection]) {
+        [app.wallet changeTorBlocking:willEnable];
+        [self addObserversForUpdatingTorBlocking];
+    }
+}
+
+- (void)updateTorSuccess
+{
+    [self removeObserversForUpdatingTorBlocking];
+    [self getAccountInfo];
+}
+
+- (void)updateTorError
+{
+    [self removeObserversForUpdatingTorBlocking];
+}
+
+- (void)addObserversForUpdatingTorBlocking
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorSuccess) name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorError) name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR object:nil];
+}
+
+- (void)removeObserversForUpdatingTorBlocking
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR object:nil];
+}
+
 #pragma mark - Change Password
 
 - (void)changePassword
@@ -1093,6 +1151,10 @@ const int aboutPrivacyPolicy = 1;
                     [self changePassword];
                     return;
                 }
+                case securityTorBlocking: {
+                    [self changeTorBlockingTapped];
+                    return;
+                }
             }
             return;
         }
@@ -1124,7 +1186,7 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionEmailFooter: return 1;
         case preferencesSectionNotificationsFooter: return 2;
         case preferencesSectionEnd: return 3;
-        case securitySection: return securityTouchID < 0 ? 3 : 4;
+        case securitySection: return securityTouchID < 0 ? 4 : 5;
         case aboutSection: return 2;
         default: return 0;
     }
@@ -1287,6 +1349,20 @@ const int aboutPrivacyPolicy = 1;
                 case securityPasswordChange: {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    return cell;
+                }
+                case securityTorBlocking: {
+                    cell.textLabel.font = [SettingsTableViewController fontForCell];
+                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS;
+                    BOOL torBlockingEnabled = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    if (torBlockingEnabled) {
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
+                        cell.detailTextLabel.text = BC_STRING_BLOCKED;
+                    } else {
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                        cell.detailTextLabel.text = BC_STRING_ALLOWED;
+                    }
                     return cell;
                 }
                 case securityTouchID: {

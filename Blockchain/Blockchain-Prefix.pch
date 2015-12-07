@@ -111,6 +111,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR @"ChangePasswordError"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS @"ChangeEmailNotifications"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR @"ChangeEmailNotificationsError"
+#define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS @"ChangeTorBlocking"
+#define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR @"ChangeTorBlockingError"
 
 #define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
@@ -154,6 +156,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE @"auth_type"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON @"notifications_on"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE @"notifications_type"
+#define DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING @"block_tor_ips"
 
 #define USER_DEFAULTS_KEY_SHARED_KEY @"sharedKey"
 #define USER_DEFAULTS_KEY_GUID @"guid"

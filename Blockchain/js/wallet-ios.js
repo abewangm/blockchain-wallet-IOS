@@ -1243,3 +1243,18 @@ MyWalletPhone.disableNotifications = function() {
     
     MyWallet.wallet.disableNotifications(success, error);
 }
+
+MyWalletPhone.update_tor_ip_block = function(willEnable) {
+    
+    var success = function () {
+        console.log('Update tor success');
+        device.execute('on_update_tor_success');
+    }
+    
+    var error = function(error) {
+        console.log('Update tor error' + error);
+        device.execute('on_update_tor_error');
+    }
+    
+    BlockchainSettingsAPI.update_tor_ip_block(willEnable, success, error);
+}
