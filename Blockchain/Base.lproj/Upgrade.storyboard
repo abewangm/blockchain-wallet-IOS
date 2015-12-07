@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5EP-fa-fRb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ePD-pa-KWk">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="G4I-Yy-HAc">
+            <objects>
+                <navigationController id="ePD-pa-KWk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qaJ-xI-OYh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5EP-fa-fRb" kind="relationship" relationship="rootViewController" id="yHA-vW-MTg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Zx-MI-NZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-796" y="413"/>
+        </scene>
         <!--Upgrade View Controller-->
         <scene sceneID="PfE-Iq-Wbz">
             <objects>
@@ -53,12 +71,12 @@
                                     <constraint firstAttribute="width" constant="240" id="scu-Xe-9bf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="UPGRADE YOUR WALLET">
+                                <state key="normal" title="Learn More">
                                     <color key="titleColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="upgradeWalletButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="BYV-PO-LRT"/>
+                                    <action selector="learnMoreTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="CQI-Hw-pau"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="228" translatesAutoresizingMaskIntoConstraints="NO" id="g2G-dE-WKh">
@@ -100,6 +118,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0ie-rM-WF9"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="askLaterButtonToBottomConstraint" destination="fzT-lJ-2Ur" id="LQm-OU-Blw"/>
                         <outlet property="askMeLaterButton" destination="HuT-V7-syg" id="Ehk-8h-ja1"/>
@@ -111,11 +130,139 @@
                         <outlet property="scrollViewToPageControlConstraint" destination="Ih4-ar-rpC" id="J7F-M4-75z"/>
                         <outlet property="upgradeButtonToPageControlConstraint" destination="COa-Ur-5vF" id="TSj-JG-eiH"/>
                         <outlet property="upgradeWalletButton" destination="cZ9-x2-KGM" id="JPA-UW-jOL"/>
+                        <segue destination="TYP-sb-gNw" kind="presentation" identifier="upgradeDetails" modalTransitionStyle="crossDissolve" id="KeH-2V-790"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPw-Gt-jqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-130" y="413"/>
+        </scene>
+        <!--Upgrade Details View Controller-->
+        <scene sceneID="7Bv-RN-Y2i">
+            <objects>
+                <viewController id="TYP-sb-gNw" customClass="UpgradeDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ucS-O0-kR4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xz7-az-fVH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="txg-zw-9Vb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="228" translatesAutoresizingMaskIntoConstraints="NO" id="4cR-kX-YUY">
+                                <rect key="frame" x="180" y="20" width="240" height="60"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7bL-de-l0v"/>
+                                    <constraint firstAttribute="width" constant="240" id="CHK-th-gzX"/>
+                                    <constraint firstAttribute="height" constant="85" id="zgF-dk-54U"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Welcome to the new version of the Blockchain Wallet!">
+                                        <attributes>
+                                            <color key="NSColor" red="0.098039215690000001" green="0.45882352939999999" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineHeightMultiple="1.2"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zgF-dk-54U"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNr-bI-FMd">
+                                <rect key="frame" x="20" y="88" width="565" height="416"/>
+                                <animations/>
+                                <string key="text">Here's what's better: 
+Completely updated design and user experience. 
+Enhanced Privacy. 
+Simplified backup and recovery. 
+Customized fund management.
+
+Some more things changed: 
+For increased security, you cannot send Bitcoin via Email or SMS. 
+For privacy reasons, you cannot add new recipients to your address book. 
+Shared Coin cannot be used in the new wallet. 
+Spending from watch-only addresses is not supported. 
+API access is not enabled yet. 
+
+Note, that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept, of course. Enjoy! </string>
+                                <color key="textColor" red="0.098039215690000001" green="0.45882352939999999" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se6-R4-Eof">
+                                <rect key="frame" x="180" y="552" width="240" height="40"/>
+                                <animations/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.070588235289999995" green="0.45098039220000002" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelUpgradeButtonTapped:" destination="TYP-sb-gNw" eventType="touchUpInside" id="zs0-b3-185"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phO-Gl-N2n">
+                                <rect key="frame" x="180" y="512" width="240" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="2LV-eA-NBZ"/>
+                                    <constraint firstAttribute="height" constant="40" id="drt-zP-xnC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="UPGRADE YOUR WALLET">
+                                    <color key="titleColor" red="0.1058823529" green="0.54117647059999996" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="upgradeWalletButtonTapped:" destination="TYP-sb-gNw" eventType="touchUpInside" id="Vbg-i2-H5j"/>
+                                    <action selector="upgradeWalletButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="Wbk-ZA-2vM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.81568627449999997" green="0.87843137250000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YNr-bI-FMd" firstAttribute="top" secondItem="4cR-kX-YUY" secondAttribute="bottom" constant="8" id="7i3-C2-GAy"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="YNr-bI-FMd" secondAttribute="leading" id="Adf-yP-OZB"/>
+                            <constraint firstItem="4cR-kX-YUY" firstAttribute="leading" secondItem="txg-zw-9Vb" secondAttribute="leadingMargin" constant="160" id="Buw-NM-zaW"/>
+                            <constraint firstItem="YNr-bI-FMd" firstAttribute="leading" secondItem="4cR-kX-YUY" secondAttribute="trailing" constant="8" id="DeM-NA-kF2"/>
+                            <constraint firstItem="4cR-kX-YUY" firstAttribute="top" secondItem="ucS-O0-kR4" secondAttribute="bottom" id="DiW-rS-hE0"/>
+                            <constraint firstItem="4cR-kX-YUY" firstAttribute="centerX" secondItem="txg-zw-9Vb" secondAttribute="centerX" id="Ged-iw-0m1"/>
+                            <constraint firstItem="se6-R4-Eof" firstAttribute="width" secondItem="phO-Gl-N2n" secondAttribute="width" id="Mqf-Dy-0xa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YNr-bI-FMd" secondAttribute="trailing" constant="-5" id="Ty5-Zg-CRe"/>
+                            <constraint firstItem="se6-R4-Eof" firstAttribute="height" secondItem="phO-Gl-N2n" secondAttribute="height" id="Zkq-tS-aAS"/>
+                            <constraint firstItem="YNr-bI-FMd" firstAttribute="top" secondItem="4cR-kX-YUY" secondAttribute="bottom" constant="8" id="aGw-ve-CRz"/>
+                            <constraint firstItem="se6-R4-Eof" firstAttribute="top" secondItem="phO-Gl-N2n" secondAttribute="bottom" id="asP-mb-QSU"/>
+                            <constraint firstItem="phO-Gl-N2n" firstAttribute="top" secondItem="YNr-bI-FMd" secondAttribute="bottom" constant="8" id="fhR-UD-PIu"/>
+                            <constraint firstItem="Xz7-az-fVH" firstAttribute="top" secondItem="4cR-kX-YUY" secondAttribute="bottom" constant="495" id="hOH-II-U23"/>
+                            <constraint firstItem="Xz7-az-fVH" firstAttribute="top" secondItem="se6-R4-Eof" secondAttribute="bottom" constant="8" id="mCR-kU-Bvk"/>
+                            <constraint firstItem="se6-R4-Eof" firstAttribute="centerX" secondItem="txg-zw-9Vb" secondAttribute="centerX" id="oWQ-Pq-27c"/>
+                            <constraint firstItem="phO-Gl-N2n" firstAttribute="centerX" secondItem="txg-zw-9Vb" secondAttribute="centerX" id="wJZ-lx-3Ul"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4cR-kX-YUY" secondAttribute="trailing" constant="160" id="zJx-WR-8bI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7i3-C2-GAy"/>
+                                <exclude reference="DeM-NA-kF2"/>
+                                <exclude reference="Buw-NM-zaW"/>
+                                <exclude reference="zJx-WR-8bI"/>
+                                <exclude reference="hOH-II-U23"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="YNr-bI-FMd" id="vhe-AP-8XU"/>
+                        <outlet property="upgradeWalletButton" destination="phO-Gl-N2n" id="qbe-KR-qQt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zNt-cb-10n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="543" y="413"/>
         </scene>
     </scenes>
 </document>
