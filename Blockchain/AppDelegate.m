@@ -427,6 +427,8 @@ void (^secondPasswordSuccess)(NSString *);
         showSendCoins = NO;
     }
     
+    self.changedPassword = NO;
+    
     [self setAccountData:wallet.guid sharedKey:wallet.sharedKey];
     
     //Becuase we are not storing the password on the device. We record the first few letters of the hashed password.
@@ -1194,6 +1196,11 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPinModalAsView:(BOOL)asView
 {
+    if (self.changedPassword) {
+        [self showPasswordModal];
+        return;
+    }
+    
     // Backgrounding from resetting PIN screen hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     

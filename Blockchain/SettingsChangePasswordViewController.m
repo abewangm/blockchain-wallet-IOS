@@ -115,6 +115,7 @@
         app.settingsNavigationController = nil;
         [app closeSideMenu];
         [app showPasswordModal];
+        app.changedPassword = YES;
         [app.window.rootViewController presentViewController:alertForChangePasswordSuccess animated:YES completion:nil];
     }];
 
