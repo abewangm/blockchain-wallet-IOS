@@ -44,12 +44,17 @@
 
 - (IBAction)upgradeWalletButtonTapped:(UIButton *)sender
 {
-    [app.wallet loading_start_upgrade_to_hd];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [app closeSideMenu];
-        [app.wallet performSelector:@selector(upgradeToHDWallet) withObject:nil afterDelay:0.1f];
+    UIAlertController *confirmAlert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_UPGRADE message:BC_STRING_UPGRADE_WARNING preferredStyle:UIAlertControllerStyleAlert];
+    [confirmAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_UPGRADE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [app.wallet loading_start_upgrade_to_hd];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [app closeSideMenu];
+            [app.wallet performSelector:@selector(upgradeToHDWallet) withObject:nil afterDelay:0.1f];
         });
-    [self dismissSelf];
+        [self dismissSelf];
+    }]];
+    [confirmAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:confirmAlert animated:YES completion:nil];
 }
 
 - (void)dismissSelf
