@@ -32,6 +32,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *enableTwoStepLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *enableTwoStepCheckImageView;
 
+@property (strong, nonatomic) IBOutlet UIButton *blockTorButton;
+@property (strong, nonatomic) IBOutlet UILabel *blockTorLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *blockTorCheckImageView;
+
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 
 @property (nonatomic) SettingsTableViewController *settingsController;
@@ -102,7 +106,15 @@
         completedItems++;
     }
     
-    self.progressView.progress = (float)completedItems/5;
+    BOOL hasBlockedTorRequests = [self.settingsController hasBlockedTorRequests];
+    self.blockTorLabel.text = hasBlockedTorRequests ? BC_STRING_TOR_BLOCKED : BC_STRING_BLOCK_TOR;
+    self.blockTorLabel.textColor = hasBlockedTorRequests ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
+    self.blockTorButton.enabled = hasBlockedTorRequests ? NO : YES;
+    if (hasBlockedTorRequests) {
+        completedItems++;
+    }
+    
+    self.progressView.progress = (float)completedItems/6;
 }
 
 - (IBAction)verifyEmailButtonTapped:(UIButton *)sender
@@ -137,6 +149,11 @@
 - (IBAction)enableTwoStepTapped:(UIButton *)sender
 {
     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
+}
+
+- (IBAction)blockTorTapped:(UIButton *)sender
+{
+    [self.settingsController blockTorTapped];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

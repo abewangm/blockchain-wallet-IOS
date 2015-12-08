@@ -908,6 +908,11 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Tor Blocking
 
+- (BOOL)hasBlockedTorRequests
+{
+    return [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
+}
+
 - (void)changeTorBlockingTapped
 {
     BOOL torBlockingEnabled = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
@@ -929,8 +934,11 @@ const int aboutPrivacyPolicy = 1;
     [alertForChangingTorBlocking addAction:[UIAlertAction actionWithTitle:alertActionTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self updateTorBlocking:!torBlockingEnabled];
     }]];
-    [self presentViewController:alertForChangingTorBlocking animated:YES completion:nil];
-}
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForChangingTorBlocking animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForChangingTorBlocking animated:YES completion:nil];
+    }}
 
 - (void)updateTorBlocking:(BOOL)willEnable
 {
@@ -943,6 +951,11 @@ const int aboutPrivacyPolicy = 1;
 - (void)updateTorSuccess
 {
     [self removeObserversForUpdatingTorBlocking];
+    if ([self hasBlockedTorRequests]) {
+        [self alertUserOfSuccess:BC_STRING_TOR_ALLOWED];
+    } else {
+        [self alertUserOfSuccess:BC_STRING_TOR_BLOCKED];
+    }
     [self getAccountInfo];
 }
 
@@ -1427,6 +1440,11 @@ const int aboutPrivacyPolicy = 1;
 - (void)changeTwoStepTapped
 {
     [self alertUserToChangeTwoStepVerification];
+}
+
+- (void)blockTorTapped
+{
+    [self changeTorBlockingTapped];
 }
 
 @end

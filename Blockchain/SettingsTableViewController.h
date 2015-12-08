@@ -17,10 +17,12 @@
 - (BOOL)hasVerifiedMobileNumber;
 - (BOOL)hasStoredPasswordHint;
 - (BOOL)hasEnabledTwoStep;
+- (BOOL)hasBlockedTorRequests;
 
 - (void)verifyEmailTapped;
 - (void)linkMobileTapped;
 - (void)storeHintTapped;
 - (void)changeTwoStepTapped;
+- (void)blockTorTapped;
 
 @end
