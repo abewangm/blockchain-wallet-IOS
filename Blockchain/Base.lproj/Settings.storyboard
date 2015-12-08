@@ -272,10 +272,9 @@
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOo-cc-b3P">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="level2icons-security" translatesAutoresizingMaskIntoConstraints="NO" id="jOo-cc-b3P">
                                                         <rect key="frame" x="275" y="160" width="50" height="50"/>
                                                         <animations/>
-                                                        <color key="backgroundColor" red="0.4941176471" green="0.72156862749999995" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="cqt-VC-f2c"/>
                                                             <constraint firstAttribute="width" constant="50" id="yY0-om-qf0"/>
@@ -314,11 +313,11 @@
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXz-ck-6Kr">
                                                 <rect key="frame" x="275" y="183" width="50" height="50"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.4941176471" green="0.72156862749999995" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="HWp-WK-0p5"/>
                                                     <constraint firstAttribute="width" constant="50" id="bOY-Iv-GEY"/>
                                                 </constraints>
+                                                <state key="normal" image="email"/>
                                                 <connections>
                                                     <action selector="verifyEmailButtonTapped:" destination="wnC-Xd-1Er" eventType="touchUpInside" id="Fde-41-Tw0"/>
                                                 </connections>
@@ -336,17 +335,17 @@
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ael-oU-o5U">
                                                 <rect key="frame" x="275" y="338" width="50" height="50"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.4941176471" green="0.72156862749999995" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="aV4-lm-Pfu"/>
                                                     <constraint firstAttribute="width" constant="50" id="b6D-rr-bBq"/>
                                                 </constraints>
+                                                <state key="normal" image="phrase"/>
                                                 <connections>
                                                     <action selector="backupButtonTapped:" destination="wnC-Xd-1Er" eventType="touchUpInside" id="JZq-wx-AKU"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Backup Phrase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVd-f2-ZLG">
-                                                <rect key="frame" x="250" y="396" width="102" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup Phrase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVd-f2-ZLG">
+                                                <rect key="frame" x="249" y="396" width="103" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="faK-P2-q74"/>
@@ -358,17 +357,17 @@
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrZ-9r-sY4">
                                                 <rect key="frame" x="275" y="493" width="50" height="50"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.4941176471" green="0.72156862749999995" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Umt-r3-CkU"/>
                                                     <constraint firstAttribute="width" constant="50" id="uUQ-G5-5PE"/>
                                                 </constraints>
+                                                <state key="normal" image="phone"/>
                                                 <connections>
                                                     <action selector="linkMobileTapped:" destination="wnC-Xd-1Er" eventType="touchUpInside" id="0kB-le-gag"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link Mobile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f52-8F-scW">
-                                                <rect key="frame" x="262" y="551" width="78" height="30"/>
+                                                <rect key="frame" x="261" y="551" width="78" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Ow1-05-PsR"/>
@@ -380,17 +379,17 @@
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YD-Bc-1GR">
                                                 <rect key="frame" x="275" y="648" width="50" height="50"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.4941176471" green="0.72156862749999995" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Qzi-GE-lbW"/>
                                                     <constraint firstAttribute="height" constant="50" id="tws-SE-7zR"/>
                                                 </constraints>
+                                                <state key="normal" image="key"/>
                                                 <connections>
                                                     <action selector="storeHintTapped:" destination="wnC-Xd-1Er" eventType="touchUpInside" id="HIg-vs-Ij5"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Hint" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zs-bt-hEl">
-                                                <rect key="frame" x="267" y="706" width="68" height="30"/>
+                                                <rect key="frame" x="266" y="706" width="68" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="gau-ps-as7"/>
@@ -402,11 +401,11 @@
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smL-N3-aiv">
                                                 <rect key="frame" x="275" y="803" width="50" height="50"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.4941176471" green="0.72156862749999995" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="9sX-4x-oiQ"/>
                                                     <constraint firstAttribute="width" constant="50" id="YVr-zY-d2b"/>
                                                 </constraints>
+                                                <state key="normal" image="2fa"/>
                                                 <connections>
                                                     <action selector="enableTwoStepTapped:" destination="wnC-Xd-1Er" eventType="touchUpInside" id="bSG-H4-MnX"/>
                                                 </connections>
@@ -429,8 +428,8 @@
                                                     <constraint firstAttribute="width" constant="30" id="aNN-Tj-ZTz"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaq-Vs-Cb4">
-                                                <rect key="frame" x="212" y="396" width="30" height="30"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uaq-Vs-Cb4">
+                                                <rect key="frame" x="211" y="396" width="30" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="ASs-ab-lcF"/>
@@ -438,7 +437,7 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uAX-NW-pge">
-                                                <rect key="frame" x="223" y="551" width="30" height="30"/>
+                                                <rect key="frame" x="222" y="551" width="30" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="27O-6D-R2X"/>
@@ -446,7 +445,7 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tR8-QI-J1r">
-                                                <rect key="frame" x="237" y="706" width="30" height="30"/>
+                                                <rect key="frame" x="236" y="706" width="30" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="l6t-fD-gQO"/>
@@ -474,11 +473,11 @@
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gs3-z3-AOX">
                                                 <rect key="frame" x="275" y="958" width="50" height="50"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.4941176471" green="0.72156862749999995" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="So7-QS-qYg"/>
                                                     <constraint firstAttribute="height" constant="50" id="f6Z-fs-xjz"/>
                                                 </constraints>
+                                                <state key="normal" image="tor"/>
                                                 <connections>
                                                     <action selector="blockTorTapped:" destination="wnC-Xd-1Er" eventType="touchUpInside" id="FHA-iG-A07"/>
                                                 </connections>
@@ -696,6 +695,15 @@
             <point key="canvasLocation" x="1635" y="1681"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="2fa" width="26" height="26"/>
+        <image name="email" width="26" height="26"/>
+        <image name="key" width="26" height="26"/>
+        <image name="level2icons-security" width="23" height="26"/>
+        <image name="phone" width="26" height="26"/>
+        <image name="phrase" width="26" height="26"/>
+        <image name="tor" width="26" height="26"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ex9-ag-78o"/>
     </inferredMetricsTieBreakers>
