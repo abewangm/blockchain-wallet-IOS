@@ -9,7 +9,8 @@
 #import "UpgradeDetailsViewController.h"
 
 @interface UpgradeDetailsViewController ()
-@property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) IBOutlet UITextView *featuresTextView;
+@property (strong, nonatomic) IBOutlet UITextView *changesTextView;
 @property (strong, nonatomic) IBOutlet UIButton *upgradeWalletButton;
 @end
 
@@ -19,8 +20,11 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = COLOR_BLOCKCHAIN_UPGRADE_BLUE;
-    self.textView.text = BC_STRING_UPGRADE_DETAILS;
-    self.textView.textColor = COLOR_UPGRADE_TEXT_BLUE;
+    self.featuresTextView.text = BC_STRING_UPGRADE_FEATURES;
+    self.featuresTextView.textColor = COLOR_UPGRADE_TEXT_BLUE;
+    self.changesTextView.text = BC_STRING_UPGRADE_CHANGES;
+    self.changesTextView.textColor = COLOR_UPGRADE_TEXT_BLUE;
+    self.upgradeWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -32,8 +36,6 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    self.upgradeWalletButton.clipsToBounds = YES;
-    self.upgradeWalletButton.layer.cornerRadius = 20;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
