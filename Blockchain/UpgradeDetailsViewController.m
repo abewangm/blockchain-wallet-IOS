@@ -11,6 +11,7 @@
 @interface UpgradeDetailsViewController ()
 @property (strong, nonatomic) IBOutlet UITextView *featuresTextView;
 @property (strong, nonatomic) IBOutlet UITextView *changesTextView;
+@property (strong, nonatomic) IBOutlet UILabel *warningLabel;
 @property (strong, nonatomic) IBOutlet UIButton *upgradeWalletButton;
 @end
 
@@ -22,9 +23,16 @@
     self.view.backgroundColor = COLOR_BLOCKCHAIN_UPGRADE_BLUE;
     self.featuresTextView.text = BC_STRING_UPGRADE_FEATURES;
     self.featuresTextView.textColor = COLOR_UPGRADE_TEXT_BLUE;
+    self.featuresTextView.textContainerInset = UIEdgeInsetsZero;
+    self.featuresTextView.textContainer.lineFragmentPadding = 0;
+    
     self.changesTextView.text = BC_STRING_UPGRADE_CHANGES;
     self.changesTextView.textColor = COLOR_UPGRADE_TEXT_BLUE;
+    self.changesTextView.textContainerInset = UIEdgeInsetsZero;
+    self.changesTextView.textContainer.lineFragmentPadding = 0;
+    
     self.upgradeWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.warningLabel.text = BC_STRING_UPGRADE_WARNING;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -46,17 +54,12 @@
 
 - (IBAction)upgradeWalletButtonTapped:(UIButton *)sender
 {
-    UIAlertController *confirmAlert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_UPGRADE message:BC_STRING_UPGRADE_WARNING preferredStyle:UIAlertControllerStyleAlert];
-    [confirmAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_UPGRADE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [app.wallet loading_start_upgrade_to_hd];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [app closeSideMenu];
-            [app.wallet performSelector:@selector(upgradeToHDWallet) withObject:nil afterDelay:0.1f];
-        });
-        [self dismissSelf];
-    }]];
-    [confirmAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:confirmAlert animated:YES completion:nil];
+    [app.wallet loading_start_upgrade_to_hd];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [app closeSideMenu];
+        [app.wallet performSelector:@selector(upgradeToHDWallet) withObject:nil afterDelay:0.1f];
+    });
+    [self dismissSelf];
 }
 
 - (void)dismissSelf
