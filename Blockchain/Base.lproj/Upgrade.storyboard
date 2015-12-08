@@ -173,30 +173,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se6-R4-Eof">
-                                <rect key="frame" x="0.0" y="560" width="300" height="40"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="H7b-X9-oYE"/>
-                                </constraints>
-                                <state key="normal" title="Not now">
-                                    <color key="titleColor" red="0.070588235289999995" green="0.45098039220000002" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelUpgradeButtonTapped:" destination="TYP-sb-gNw" eventType="touchUpInside" id="zs0-b3-185"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GQ3-zt-jcN">
-                                <rect key="frame" x="20" y="317" width="560" height="166"/>
-                                <animations/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D5e-zI-7dK">
-                                <rect key="frame" x="20" y="114" width="560" height="166"/>
+                                <rect key="frame" x="20" y="88" width="560" height="416"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="9dz-JF-rvA"/>
@@ -210,109 +188,69 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here's what's better:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JC-yx-CYP">
-                                <rect key="frame" x="20" y="88" width="560" height="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebu-XV-0mt">
+                                <rect key="frame" x="180" y="552" width="240" height="40"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="textColor" red="0.098039215690000001" green="0.45882352939999999" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some more things changed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzk-U0-Z5A">
-                                <rect key="frame" x="20" y="291" width="560" height="18"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="textColor" red="0.098039215690000001" green="0.45882352939999999" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phO-Gl-N2n">
-                                <rect key="frame" x="300" y="560" width="300" height="40"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.070588235289999995" green="0.45098039220000002" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="i6c-Np-IbB"/>
+                                    <action selector="cancelUpgradeButtonTapped:" destination="TYP-sb-gNw" eventType="touchUpInside" id="5n2-Bn-mXS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gk5-cB-fZg">
+                                <rect key="frame" x="180" y="512" width="240" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="2LV-eA-NBZ"/>
-                                    <constraint firstAttribute="height" constant="40" id="drt-zP-xnC"/>
+                                    <constraint firstAttribute="height" constant="40" id="VSN-RW-BU1"/>
+                                    <constraint firstAttribute="width" constant="240" id="oHE-Aq-ZLb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Upgrade">
+                                <state key="normal" title="Upgrade Now">
                                     <color key="titleColor" red="0.1058823529" green="0.54117647059999996" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="2LV-eA-NBZ"/>
-                                        <exclude reference="drt-zP-xnC"/>
-                                    </mask>
-                                </variation>
                                 <connections>
-                                    <action selector="upgradeWalletButtonTapped:" destination="TYP-sb-gNw" eventType="touchUpInside" id="Vbg-i2-H5j"/>
-                                    <action selector="upgradeWalletButtonTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="Wbk-ZA-2vM"/>
+                                    <action selector="learnMoreTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="IVA-BY-RSM"/>
+                                    <action selector="upgradeWalletButtonTapped:" destination="TYP-sb-gNw" eventType="touchUpInside" id="udj-xl-m36"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clo-E9-Zsr">
-                                <rect key="frame" x="20" y="491" width="560" height="61"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.098039215690000001" green="0.45882352939999999" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.87843137250000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="9JC-yx-CYP" secondAttribute="trailing" id="0Hm-SK-lSe"/>
-                            <constraint firstItem="D5e-zI-7dK" firstAttribute="top" secondItem="9JC-yx-CYP" secondAttribute="bottom" constant="8" id="19R-ab-nB7"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="clo-E9-Zsr" secondAttribute="leading" id="2Jw-ar-Yof"/>
-                            <constraint firstItem="9JC-yx-CYP" firstAttribute="top" secondItem="4cR-kX-YUY" secondAttribute="bottom" constant="8" id="78k-19-kIO"/>
-                            <constraint firstItem="Xz7-az-fVH" firstAttribute="top" secondItem="phO-Gl-N2n" secondAttribute="bottom" id="9Vk-w9-ZFG"/>
+                            <constraint firstItem="Xz7-az-fVH" firstAttribute="top" secondItem="D5e-zI-7dK" secondAttribute="bottom" constant="8" id="6wd-pf-Y8P"/>
+                            <constraint firstItem="Gk5-cB-fZg" firstAttribute="top" secondItem="D5e-zI-7dK" secondAttribute="bottom" constant="8" id="BKQ-CQ-quF"/>
                             <constraint firstItem="4cR-kX-YUY" firstAttribute="leading" secondItem="txg-zw-9Vb" secondAttribute="leadingMargin" constant="160" id="Buw-NM-zaW"/>
                             <constraint firstItem="4cR-kX-YUY" firstAttribute="top" secondItem="ucS-O0-kR4" secondAttribute="bottom" id="DiW-rS-hE0"/>
                             <constraint firstItem="4cR-kX-YUY" firstAttribute="centerX" secondItem="txg-zw-9Vb" secondAttribute="centerX" id="Ged-iw-0m1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="D5e-zI-7dK" secondAttribute="trailing" id="JwH-zx-NQV"/>
                             <constraint firstAttribute="leadingMargin" secondItem="D5e-zI-7dK" secondAttribute="leading" id="KGd-X3-cfr"/>
-                            <constraint firstItem="se6-R4-Eof" firstAttribute="width" secondItem="phO-Gl-N2n" secondAttribute="width" id="Mqf-Dy-0xa"/>
-                            <constraint firstItem="se6-R4-Eof" firstAttribute="leading" secondItem="txg-zw-9Vb" secondAttribute="leadingMargin" constant="-20" id="Rks-mW-exG"/>
-                            <constraint firstItem="phO-Gl-N2n" firstAttribute="leading" secondItem="se6-R4-Eof" secondAttribute="trailing" id="TLk-sG-nFy"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="9JC-yx-CYP" secondAttribute="leading" id="TWL-Pl-qMd"/>
-                            <constraint firstItem="phO-Gl-N2n" firstAttribute="top" secondItem="clo-E9-Zsr" secondAttribute="bottom" constant="8" id="Uei-Qs-3Kq"/>
-                            <constraint firstItem="clo-E9-Zsr" firstAttribute="top" secondItem="GQ3-zt-jcN" secondAttribute="bottom" constant="8" id="YJ4-8l-Uh0"/>
-                            <constraint firstItem="phO-Gl-N2n" firstAttribute="height" secondItem="se6-R4-Eof" secondAttribute="height" id="Ydi-FF-Yq9"/>
-                            <constraint firstItem="D5e-zI-7dK" firstAttribute="height" secondItem="GQ3-zt-jcN" secondAttribute="height" id="ZYA-jk-CaV"/>
-                            <constraint firstItem="phO-Gl-N2n" firstAttribute="top" secondItem="GQ3-zt-jcN" secondAttribute="bottom" constant="8" id="Zjs-dv-JIA"/>
-                            <constraint firstItem="se6-R4-Eof" firstAttribute="height" secondItem="phO-Gl-N2n" secondAttribute="height" id="Zkq-tS-aAS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="phO-Gl-N2n" secondAttribute="trailing" constant="-20" id="aap-ZN-cgP"/>
-                            <constraint firstItem="se6-R4-Eof" firstAttribute="top" secondItem="phO-Gl-N2n" secondAttribute="bottom" id="asP-mb-QSU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rzk-U0-Z5A" secondAttribute="trailing" id="bbp-iN-hH9"/>
-                            <constraint firstItem="rzk-U0-Z5A" firstAttribute="centerY" secondItem="txg-zw-9Vb" secondAttribute="centerY" id="cwm-c0-crs"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="clo-E9-Zsr" secondAttribute="trailing" id="ejy-4l-IlJ"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="rzk-U0-Z5A" secondAttribute="leading" id="fpe-m2-KoK"/>
+                            <constraint firstItem="D5e-zI-7dK" firstAttribute="top" secondItem="4cR-kX-YUY" secondAttribute="bottom" constant="8" id="PQR-ol-0zo"/>
+                            <constraint firstItem="Ebu-XV-0mt" firstAttribute="top" secondItem="Gk5-cB-fZg" secondAttribute="bottom" id="QFP-86-Ave"/>
+                            <constraint firstItem="Ebu-XV-0mt" firstAttribute="centerX" secondItem="txg-zw-9Vb" secondAttribute="centerX" id="TTd-lZ-6la"/>
                             <constraint firstItem="Xz7-az-fVH" firstAttribute="top" secondItem="4cR-kX-YUY" secondAttribute="bottom" constant="495" id="hOH-II-U23"/>
-                            <constraint firstItem="Xz7-az-fVH" firstAttribute="top" secondItem="se6-R4-Eof" secondAttribute="bottom" id="mCR-kU-Bvk"/>
-                            <constraint firstItem="rzk-U0-Z5A" firstAttribute="top" secondItem="D5e-zI-7dK" secondAttribute="bottom" constant="11" id="oUD-mn-ruh"/>
-                            <constraint firstItem="se6-R4-Eof" firstAttribute="centerX" secondItem="txg-zw-9Vb" secondAttribute="centerX" id="oWQ-Pq-27c"/>
-                            <constraint firstItem="GQ3-zt-jcN" firstAttribute="top" secondItem="rzk-U0-Z5A" secondAttribute="bottom" constant="8" id="q61-aJ-0pW"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="GQ3-zt-jcN" secondAttribute="leading" id="rJh-jO-Ggs"/>
-                            <constraint firstItem="phO-Gl-N2n" firstAttribute="centerX" secondItem="txg-zw-9Vb" secondAttribute="centerX" id="wJZ-lx-3Ul"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GQ3-zt-jcN" secondAttribute="trailing" id="xuz-is-zF4"/>
+                            <constraint firstItem="Ebu-XV-0mt" firstAttribute="height" secondItem="Gk5-cB-fZg" secondAttribute="height" id="mAS-mI-YJ8"/>
+                            <constraint firstItem="Gk5-cB-fZg" firstAttribute="centerX" secondItem="txg-zw-9Vb" secondAttribute="centerX" id="seS-Oy-OHf"/>
+                            <constraint firstItem="Ebu-XV-0mt" firstAttribute="width" secondItem="Gk5-cB-fZg" secondAttribute="width" id="yaM-jb-OpK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4cR-kX-YUY" secondAttribute="trailing" constant="160" id="zJx-WR-8bI"/>
+                            <constraint firstItem="Xz7-az-fVH" firstAttribute="top" secondItem="Ebu-XV-0mt" secondAttribute="bottom" constant="8" id="zei-Ao-KfX"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Buw-NM-zaW"/>
                                 <exclude reference="zJx-WR-8bI"/>
-                                <exclude reference="Zkq-tS-aAS"/>
-                                <exclude reference="asP-mb-QSU"/>
-                                <exclude reference="oWQ-Pq-27c"/>
+                                <exclude reference="6wd-pf-Y8P"/>
                                 <exclude reference="hOH-II-U23"/>
-                                <exclude reference="Zjs-dv-JIA"/>
-                                <exclude reference="wJZ-lx-3Ul"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="changesTextView" destination="GQ3-zt-jcN" id="OoA-2k-TVo"/>
                         <outlet property="featuresTextView" destination="D5e-zI-7dK" id="7vu-P2-ABC"/>
-                        <outlet property="upgradeWalletButton" destination="phO-Gl-N2n" id="qbe-KR-qQt"/>
-                        <outlet property="warningLabel" destination="clo-E9-Zsr" id="rpP-aj-9rc"/>
+                        <outlet property="upgradeWalletButton" destination="Gk5-cB-fZg" id="QOq-z6-ME6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNt-cb-10n" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -240,8 +240,7 @@
 #define BC_STRING_AT_LEAST_ONE_ACTIVE_ADDRESS NSLocalizedString(@"You must leave at least one active address", nil)
 
 #define BC_STRING_UPGRADE_TEXT NSLocalizedString(@"We've designed a whole new\nwallet experience for you", nil)
-#define BC_STRING_UPGRADE_FEATURES NSLocalizedString(@"\u2022 Completely updated design and user experience.\n\u2022 Robust security center.\n\u2022 Enhanced Privacy.\n\u2022 Simplified backup and recovery.\n\u2022 Customized fund management.", nil)
-#define BC_STRING_UPGRADE_CHANGES NSLocalizedString(@"\n\u2022 For increased security, you cannot send bitcoins via Email or SMS.\n\u2022 For privacy reasons, you cannot add new recipients to your address book.\n\u2022 Shared Coin cannot be used in the new wallet.\n\u2022 Spending from watch-only addresses is not supported.\n\u2022 API access is not enabled yet.", nil)
+#define BC_STRING_UPGRADE_FEATURES NSLocalizedString(@"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:\n\n\u2022 Completely updated design and user experience\n\u2022 Robust security center\n\u2022 Enhanced Privacy\n\u2022 Simplified backup and recovery\n\u2022 Customized fund management\n\nTwo advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time. ", nil)
 #define BC_STRING_UPGRADE_WARNING NSLocalizedString(@"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept.", nil)
 #define BC_STRING_CONFIRM_UPGRADE NSLocalizedString(@"Confirm Upgrade", nil)
 #define BC_STRING_UPGRADE_NOW NSLocalizedString(@"Upgrade Now", nil)

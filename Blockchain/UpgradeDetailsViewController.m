@@ -10,8 +10,6 @@
 
 @interface UpgradeDetailsViewController ()
 @property (strong, nonatomic) IBOutlet UITextView *featuresTextView;
-@property (strong, nonatomic) IBOutlet UITextView *changesTextView;
-@property (strong, nonatomic) IBOutlet UILabel *warningLabel;
 @property (strong, nonatomic) IBOutlet UIButton *upgradeWalletButton;
 @end
 
@@ -26,13 +24,7 @@
     self.featuresTextView.textContainerInset = UIEdgeInsetsZero;
     self.featuresTextView.textContainer.lineFragmentPadding = 0;
     
-    self.changesTextView.text = BC_STRING_UPGRADE_CHANGES;
-    self.changesTextView.textColor = COLOR_UPGRADE_TEXT_BLUE;
-    self.changesTextView.textContainerInset = UIEdgeInsetsZero;
-    self.changesTextView.textContainer.lineFragmentPadding = 0;
-    
     self.upgradeWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.warningLabel.text = BC_STRING_UPGRADE_WARNING;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -44,6 +36,8 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    self.upgradeWalletButton.clipsToBounds = YES;
+    self.upgradeWalletButton.layer.cornerRadius = 20;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
