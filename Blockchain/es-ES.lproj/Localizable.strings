@@ -769,7 +769,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "La actualización tarda a sólo un segundo y su historia y bitcoins estará a salvo. Aquí es lo mejor: diseño • totalmente actualizado y experiencia usuario • seguridad sólida centro • • mayor privacidad simplificado backup y recuperación • modificado para requisitos particulares gestión de fondos en la nueva versión en este momento no se admiten dos tipos de transacciones avanzadas (gasto de sólo direcciones y moneda compartida).";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "La actualización tarda a sólo un segundo y su historia y bitcoins estará a salvo. Aquí es lo mejor: \n\n• diseño totalmente actualizado y experiencia usuario \n• seguridad sólida centro \n• mayor privacidad \n• simplificado backup y recuperación \n• modificado para requisitos particulares gestión de fondos\n\nen la nueva versión en este momento no se admiten dos tipos de transacciones avanzadas (gasto de sólo direcciones y moneda compartida).";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Hubo un problema de verificación de su identidad.";
