@@ -52,4 +52,8 @@ module.exports = (grunt) ->
     "shell:psd:phraseb:50"
     "shell:psd:tor:50"
     "shell:psd:torb:50"
+    "shell:psd:keyb:50"
+    "shell:psd:security1:50"
+    "shell:psd:security2:50"
+    "shell:psd:security3:50"
   ]

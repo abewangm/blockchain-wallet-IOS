@@ -12,6 +12,8 @@
 #import "AppDelegate.h"
 
 @interface SecurityCenterViewController ()
+@property (strong, nonatomic) IBOutlet UIImageView *securityLevelImageView;
+
 @property (strong, nonatomic) IBOutlet UIButton *verifyEmailButton;
 @property (strong, nonatomic) IBOutlet UILabel *verifyEmailLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *verifyEmailCheckImageView;
@@ -92,6 +94,16 @@
     }
     
     self.progressView.progress = (float)completedItems/6;
+    if (completedItems < 6 && completedItems > 2) {
+        self.securityLevelImageView.image = [UIImage imageNamed:@"security2"];
+        self.progressView.progressTintColor = COLOR_SECURITY_CENTER_YELLOW;
+    } else if (completedItems == 6) {
+        self.securityLevelImageView.image = [UIImage imageNamed:@"security3"];
+        self.progressView.progressTintColor = COLOR_SECURITY_CENTER_GREEN;
+    } else {
+        self.securityLevelImageView.image = [UIImage imageNamed:@"security1"];
+        self.progressView.progressTintColor = COLOR_SECURITY_CENTER_RED;
+    }
 }
 
 - (BOOL)updateEmail

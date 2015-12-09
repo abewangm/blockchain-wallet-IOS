@@ -10,6 +10,12 @@
 
 @implementation SettingsTwoStepViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.twoStepButton.layer.borderWidth = 0.5;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

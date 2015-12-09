@@ -42,6 +42,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_FOREGROUND_GRAY UIColorFromRGB(0x6d6d72)
 
 #define COLOR_SECURITY_CENTER_GREEN UIColorFromRGB(0x3CC476)
+#define COLOR_SECURITY_CENTER_YELLOW UIColorFromRGB(0xFCCC65)
+#define COLOR_SECURITY_CENTER_RED UIColorFromRGB(0xE47F7F)
 
 #define COLOR_TEXT_FIELD_GRAY UIColorFromRGB(0xd1d1d1)
 #define COLOR_TEXT_FIELD_BORDER_GRAY UIColorFromRGB(0xcdcdcd)
