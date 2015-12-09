@@ -901,7 +901,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne: • tamamen güncelleme tasarımı ve kullanıcı deneyimi iki gelişmiş hareket tipi (salt izle adresleri ve ortak madeni para harcama) içinde belgili tanımlık yeni yorum şu anda desteklenmiyor • güçlü Güvenlik Merkezi • Gelişmiş Gizlilik • Basitleştirilmiş yedekleme ve kurtarma • özelleştirilmiş fon yönetimi.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne: \n\n• tamamen güncelleme tasarımı ve kullanıcı deneyimi \n• güçlü Güvenlik Merkezi \n• Gelişmiş Gizlilik \n• Basitleştirilmiş yedekleme ve kurtarma \n• özelleştirilmiş fon yönetimi. \n\niki gelişmiş hareket tipi (salt izle adresleri ve ortak madeni para harcama) içinde belgili tanımlık yeni yorum şu anda desteklenmiyor.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Senin kimliğini doğrulayan bir hata oluştu.";

@@ -887,6 +887,7 @@ Garder votre xPub privé. Une personne ayant accès à votre xPub sera en mesure
 • Simplified backup and recovery
 • Customized fund management
 
+<<<<<<< HEAD
 Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "La mise à niveau prend juste une seconde, et vos bitcoins et votre historique seront en sécurité. Voici les avantages :
 
 • Design et expérience utilisateur entièrement à jour
@@ -896,6 +897,9 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 • Gestion personnalisée des fonds
 
 Deux types de transactions avancées (payer à partir des adresses Watch-Only et Shared Coin) ne sont pas disponibles dans la nouvelle version pour l’instant.";
+=======
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "La mise à niveau prend juste une seconde, et votre histoire et bitcoins seront en sécurité. Voici ce qui est mieux : \n\n• conception complètement mis à jour et expérience utilisateur \n• sécurité robuste centre \n• Privacy Enhanced \n• sauvegarde / restauration \n• Customized fonds gestion simplifiée \n\ndeux types de transactions avancées (dépenses de regarder uniquement les adresses et pièce partagée) ne sont pas pris en charge dans la nouvelle version en ce moment.";
+>>>>>>> 6124be1... add line breaks
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Problème lors de la vérification de votre identité.";
