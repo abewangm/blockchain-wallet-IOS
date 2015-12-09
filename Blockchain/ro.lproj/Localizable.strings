@@ -182,6 +182,9 @@
 "Confirm Payment" = "Confirma plata";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Confirmare Upgrade";
+
+/* (No Commment) */
 "Confirm your PIN" = "Confirma codul PIN";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "nu acum";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Reţineţi că odată ce actualizat, nu puteţi merge înapoi la versiunea anterioară, dar toate dumneavoastră bitcoins şi istoricul de tranzactie vor fi păstrate.";
+
+/* (No Commment) */
 "Notifications" = "Notificări";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Vă rugăm să adăugaţi o adresă de e-mail";
 
 /* (No Commment) */
-"Please check your email." = "Vă rugăm să verificaţi adresa de email.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Vă rugăm să verificaţi adresa de email. Dacă aţi verificat deja o încercare de conectare, trebuie să vă conectaţi prin intermediul nostru web portofel şi împerechează telefonul scanează codul QR sub Setări-> informaţii de portofel.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Vă rugăm să verificaţi conexiunea la internet.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Cheia privată care încercați să importați este criptat. Vă rugăm să introduceţi parola mai jos.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine: • complet actualizat design şi utilizator experienţă • securitate robustă centrul • Enhanced confidențialitate • simplificată de backup şi recuperare • personalizate Fondul management două tipuri de avansate tranzacţie (cheltuieli de doar uita-te la adresele şi la comun de monede) nu sunt acceptate în noua versiune în acest moment.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "A fost o problemă de verificarea identităţii.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Actualizare";
 
 /* (No Commment) */
+"Upgrade" = "Upgrade-ul";
+
+/* (No Commment) */
 "Upgrade Now" = "Upgrade acum";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "Weak" = "Slab";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Bine aţi venit la noua versiune de portofel Blockchain!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Ne-am detectat o instalare anterioară de portofel Blockchain pe telefon.";

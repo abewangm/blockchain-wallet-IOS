@@ -182,6 +182,9 @@
 "Confirm Payment" = "お支払いを確認します。";
 
 /* (No Commment) */
+"Confirm Upgrade" = "アップグレードを確認します。";
+
+/* (No Commment) */
 "Confirm your PIN" = "暗証番号を確認します。";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "今ではありません";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "注意いったんアップグレードすると、以前のバージョンに戻ることができないことがすべて、bitcoins およびトランザクションの履歴が保持されます。";
+
+/* (No Commment) */
 "Notifications" = "通知";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "メール アドレスを追加してください。";
 
 /* (No Commment) */
-"Please check your email." = "あなたのメール アドレスを確認してください。";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "あなたのメール アドレスを確認してください。既にログイン試行を確認したら場合、我々 の web 財布経由でログインし、設定の下の QR コードをスキャンすることによってあなたの携帯電話をペアリング-> ウォレットの情報。";
 
 /* (No Commment) */
 "Please check your internet connection." = "あなたのインターネット接続を確認してください。";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "インポートしようとしている秘密キーは暗号化されます。下にパスワードを入力してください。";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い: 完全に更新 • デザインとユーザー エクスペリエンスの • 堅牢なセキュリティ センター プライバシーの強化 • 簡体字バックアップ/リカバリ • カスタマイズされた基金管理 2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "あなたの身元の確認で問題があった。";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "更新";
 
 /* (No Commment) */
+"Upgrade" = "アップグレード";
+
+/* (No Commment) */
 "Upgrade Now" = "今すぐアップグレードします。";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "Weak" = "弱い";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Blockchain 財布の新バージョンへようこそ!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "私たちはあなたの携帯電話に Blockchain 財布の以前のインストールを検出されました。";

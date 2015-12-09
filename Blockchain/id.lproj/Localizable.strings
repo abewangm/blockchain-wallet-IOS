@@ -182,6 +182,9 @@
 "Confirm Payment" = "Konfirmasi pembayaran";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Mengkonfirmasi Upgrade";
+
+/* (No Commment) */
 "Confirm your PIN" = "Mengkonfirmasi PIN";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "Jangan sekarang";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Perhatikan bahwa setelah upgrade, Anda tidak bisa kembali ke versi sebelumnya, tapi semua bitcoins Anda dan riwayat transaksi Anda akan dipelihara.";
+
+/* (No Commment) */
 "Notifications" = "Pemberitahuan";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Tambahkan alamat email";
 
 /* (No Commment) */
-"Please check your email." = "Periksa email Anda.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Periksa email Anda. Jika Anda sudah memiliki diverifikasi percobaan login, Anda harus log in melalui dompet web kami dan memasangkan telepon Anda dengan memindai kode QR di bawah pengaturan-> dompet informasi.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Periksa koneksi internet Anda.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Kunci pribadi Anda sedang berusaha untuk mengimpor dienkripsi. Masukkan password di bawah ini.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade mengambil hanya satu detik dan bitcoins dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik: desain • benar-benar diperbarui dan pengguna pengalaman • keamanan yang kuat pusat ditingkatkan privasi • sederhana backup dan recovery • Customized pengelolaan dana maju transaksi dua jenis (pengeluaran dari alamat hanya menonton dan bersama koin) tidak didukung dalam versi baru saat ini.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Ada masalah saat memverifikasi identitas Anda.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Update";
 
 /* (No Commment) */
+"Upgrade" = "Meng-upgrade";
+
+/* (No Commment) */
 "Upgrade Now" = "Upgrade sekarang";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 
 /* (No Commment) */
 "Weak" = "Lemah";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Selamat datang di versi baru dari dompet Blockchain!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Kami telah mendeteksi instalasi sebelumnya dompet Blockchain pada ponsel Anda.";

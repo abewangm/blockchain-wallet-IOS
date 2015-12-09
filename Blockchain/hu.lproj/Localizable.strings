@@ -182,6 +182,9 @@
 "Confirm Payment" = "Erősítse fizetés";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Ellenőrizze a frissítés";
+
+/* (No Commment) */
 "Confirm your PIN" = "Erősítse meg a PIN-kódot";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "ne most";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Fontos megjegyezni, hogy miután frissített, nem mehet vissza a korábbi verzióra a bitcoins és a tranzakciók előzményeinek fogják tartani.";
+
+/* (No Commment) */
 "Notifications" = "Értesítések";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Adjon meg egy e-mail címet";
 
 /* (No Commment) */
-"Please check your email." = "Kérjük, ellenőrizze e-mailjeit.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Kérjük, ellenőrizze e-mailjeit. Ha már ellenőrizte, a bejelentkezési kísérlet, kell fatörzs-ban keresztül az internetes pénztárca és párosítja a telefont, a beállítások a QR-kód beolvasásával-> pénztárca információkat.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Kérjük, ellenőrizze az internet-kapcsolat.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Importálni kívánt személyes kulcs titkosított. Kérjük, írja be a jelszavad.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: design • teljesen frissített és felhasználó tapasztalat • robusztus biztonsági központ • továbbfejlesztett adatvédelmi egyszerűsített biztonsági mentés és helyreállítás • szabott alapkezelő két speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Frissítés";
 
 /* (No Commment) */
+"Upgrade" = "Frissítés";
+
+/* (No Commment) */
 "Upgrade Now" = "Frissítés most";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "Weak" = "Gyenge";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Üdvözöljük az új változat a Blockchain pénztárca!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Azt észleltük, hogy pénztárca Blockchain előző telepítése a telefonra.";

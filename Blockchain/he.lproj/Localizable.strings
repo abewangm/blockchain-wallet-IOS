@@ -182,6 +182,9 @@
 "Confirm Payment" = "לאשר תשלום";
 
 /* (No Commment) */
+"Confirm Upgrade" = "לאשר את השדרוג";
+
+/* (No Commment) */
 "Confirm your PIN" = "לאשר את מספר הזיהוי האישי";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "לא עכשיו";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "שימו לב כי לאחר שדרוג, אתה לא יכול לחזור לגירסה הקודמת, אך כל bitcoins שלך והיסטוריה הטרנזקציה שלך יישמר.";
+
+/* (No Commment) */
 "Notifications" = "הודעות";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "נא להוסיף כתובת דואר אלקטרוני";
 
 /* (No Commment) */
-"Please check your email." = "נא בדוק את הדוא ל שלך.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "נא בדוק את הדוא ל שלך. אם וידאת כבר ניסיון כניסה, עליך להיכנס באמצעות הארנק האינטרנט שלנו, זוג בטלפון שלך על-ידי סריקת הקוד QR תחת הגדרות-> הארנק מידע.";
 
 /* (No Commment) */
 "Please check your internet connection." = "נא בדוק את החיבור שלך לאינטרנט.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "המפתח הפרטי שאתה מנסה לייבא מוצפן. נא הזן את הסיסמה שלהלן.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "השדרוג לוקח רק שנייה, את bitcoins ואת ההיסטוריה יהיה בטוח. . הנה מה טוב יותר: • לעדכן ועיצוב המשתמש להיתקל • אבטחה איתנה במרכז • • פרטיות משופרת פשוטה גיבוי ושחזור • מותאם אישית ניהול קרנות שני סוגי תנועות מתקדם (להוציא מן השעון בלבד כתובות ומטבע משותפים) אינן נתמכות בגרסה החדשה בשלב זה.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "אירעה בעיה מאמת את זהותך.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "עדכון";
 
 /* (No Commment) */
+"Upgrade" = "שדרוג";
+
+/* (No Commment) */
 "Upgrade Now" = "שדרג עכשיו";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "Weak" = "חלש";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "ברוכים הבאים לגרסה החדשה של הארנק Blockchain!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "שגילינו התקנה קודמת של Blockchain הארנק בטלפון שלך.";

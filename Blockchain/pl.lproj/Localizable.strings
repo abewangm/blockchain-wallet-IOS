@@ -182,6 +182,9 @@
 "Confirm Payment" = "Potwierdzenia płatności";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Potwierdzenie uaktualnienia";
+
+/* (No Commment) */
 "Confirm your PIN" = "Potwierdź swój kod PIN";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "Nie teraz";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Należy zauważyć, że po uaktualnieniu, nie można wrócić do poprzedniej wersji, ale wszystkie Twoje bitcoins i historii transakcji będą przechowywane.";
+
+/* (No Commment) */
 "Notifications" = "Powiadomienia";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Proszę o dodanie adresu e-mail";
 
 /* (No Commment) */
-"Please check your email." = "Proszę sprawdzić twój poczta elektroniczna.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Proszę sprawdzić twój poczta elektroniczna. Jeśli została już zweryfikowana próba logowania, należy zalogować się za pośrednictwem naszego e-portfelem i sparować telefon, skanując kod QR zamieszczony w obszarze Ustawienia-> portfel informacji.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Sprawdź swoje połączenie internetowe.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Który próbujesz zaimportować klucz prywatny jest szyfrowana. Proszę podać hasło poniżej.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Uaktualnienie potrwa tylko chwilę i bitcoins i historia będzie bezpieczny. Oto co jest lepsze: • całkowicie zaktualizowane projekt i użytkownik przeżycie • solidne zabezpieczenia centrum ulepszone prywatności • uproszczony kopii zapasowych i odzyskiwania • Customized zarządzania funduszami dwa typy transakcji zaawansowane (wydatki z adresów tylko zegarek i wspólne monety) nie są obsługiwane w nowej wersji w tym czasie.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Wystąpił problem podczas sprawdzania tożsamości.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Aktualizacja";
 
 /* (No Commment) */
+"Upgrade" = "Uaktualnienia";
+
+/* (No Commment) */
 "Upgrade Now" = "Uaktualnij teraz";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Zaprojektowaliśmy zupełnie nowe doświadczenie p
 
 /* (No Commment) */
 "Weak" = "Słaby";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Witamy w nowej wersji Blockchain portfel!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Wykryliśmy poprzedniej instalacji Blockchain portfel w telefonie.";

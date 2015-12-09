@@ -182,6 +182,9 @@
 "Confirm Payment" = "Bekræfte betaling";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Bekræfte opgradering";
+
+/* (No Commment) */
 "Confirm your PIN" = "Bekræft din pinkode";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "Ikke nu";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Bemærk, at når opgraderet, man kan ikke gå tilbage til den tidligere version, men alle dine bitcoins og din transaktionshistorik vil blive holdt.";
+
+/* (No Commment) */
 "Notifications" = "Meddelelser";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Tilføj venligst en e-mail-adresse";
 
 /* (No Commment) */
-"Please check your email." = "Tjek venligst din e-mail.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Tjek venligst din e-mail. Hvis du har allerede bekræftet en login forsøg, skal du logge ind via vores web wallet og parre din telefon ved at scanne QR-koden under indstillinger-> tegnebog oplysninger.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Kontroller din internetforbindelse.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Den private nøgle, du forsøger at importere er krypteret. Angiv adgangskode nedenfor.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Opgraderingen tager kun et sekund og din bitcoins og historie vil være sikker. Her er hvad der er bedre: • helt opdateret design og bruger erfaringer • Robust sikkerhed center • forbedret Privacy • forenklet backup og recovery • tilpasset fondsforvaltning to avancerede posteringstyper (udgifter fra ur-kun adresser og fælles mønt) ikke understøttes i den nye version på dette tidspunkt.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Der var et problem, der bekræfter din identitet.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Opdatering";
 
 /* (No Commment) */
+"Upgrade" = "Opgradering";
+
+/* (No Commment) */
 "Upgrade Now" = "Opgradering nu";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 
 /* (No Commment) */
 "Weak" = "Svage";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Velkommen til den nye version af Blockchain tegnebog!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Vi har fundet en tidligere installation af Blockchain tegnebog på din telefon.";

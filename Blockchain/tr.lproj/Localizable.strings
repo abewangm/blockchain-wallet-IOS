@@ -182,6 +182,9 @@
 "Confirm Payment" = "Ödeme onaylamak";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Yükseltme doğrulamak";
+
+/* (No Commment) */
 "Confirm your PIN" = "PIN'İNİZİ onaylayın";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "Şimdi değil";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Not yükseltme sonra önceki sürüme geri dönemem, ancak senin bitcoins ve işlem geçmişinizi tutulacaktır.";
+
+/* (No Commment) */
 "Notifications" = "Bildirimleri";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Lütfen bir e-posta adresi eklemek";
 
 /* (No Commment) */
-"Please check your email." = "Lütfen e-postanızı kontrol edin.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Lütfen e-postanızı kontrol edin. Oturum açma girişimi doğruladığınız, bizim web cüzdan giriş yapın ve telefonunuz QR Kod ayarları altında tarayarak çifti-> m-cüzdan bilgi.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Lütfen internet bağlantınızı kontrol edin.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Alma girişiminde bulunan özel anahtar şifrelenir. Lütfen parolanızı aşağıya girin.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne: • tamamen güncelleme tasarımı ve kullanıcı deneyimi iki gelişmiş hareket tipi (salt izle adresleri ve ortak madeni para harcama) içinde belgili tanımlık yeni yorum şu anda desteklenmiyor • güçlü Güvenlik Merkezi • Gelişmiş Gizlilik • Basitleştirilmiş yedekleme ve kurtarma • özelleştirilmiş fon yönetimi.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Senin kimliğini doğrulayan bir hata oluştu.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Güncelleştirme";
 
 /* (No Commment) */
+"Upgrade" = "Yükseltme";
+
+/* (No Commment) */
 "Upgrade Now" = "Şimdi yükseltmek";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "Weak" = "Zayıf";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Blockchain cüzdan yeni sürümüne hoş geldiniz!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Blockchain cüzdan önceki bir yüklemesini telefonunuzda tespit ettik.";

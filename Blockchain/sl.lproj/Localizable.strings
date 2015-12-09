@@ -182,6 +182,9 @@
 "Confirm Payment" = "Potrdi plačilo";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Potrditev nadgradnjo";
+
+/* (No Commment) */
 "Confirm your PIN" = "Potrditev PIN";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "ne zdaj";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Upoštevajte, da ko nadgraditi, ne morete iti nazaj na prejšnjo različico, vendar bo ohranil vse bitcoins in zgodovine transakcij.";
+
+/* (No Commment) */
 "Notifications" = "Obvestila";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Dodajte e-poštni naslov";
 
 /* (No Commment) */
-"Please check your email." = "Prosim ček vaš email.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Prosim ček vaš email. Če ste že preverili poskus prijave, morate prijavite preko naše spletne denarnice in par telefon z skeniranje QR kodo pod nastavitve-> denarnico informacije.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Preverite povezavo z internetom.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Zasebni ključ, ki ga poskušate uvoziti šifriran. Vnesite geslo, ki je spodaj.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Vzpenjajoč se zalotiti šele seconda in bitcoins in zgodovina hoteti obstati varen. Tukaj je, kaj je bolje: • popolnoma posodobljen načrt ter uporabnik doživetje • zanesljive varnostne center • izboljšano zasebnosti • poenostavljeno varnostno kopiranje in obnovitev • Customized upravljanje skladov dve vrsti dodatne transakciji (porabe iz gledal samo naslove in delijo kovanec) niso podprti v novi različici obtorej.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Tam je bil problem vaši identiteti.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Posodobitev";
 
 /* (No Commment) */
+"Upgrade" = "Nadgradnja";
+
+/* (No Commment) */
 "Upgrade Now" = "Nadgradi zdaj";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* (No Commment) */
 "Weak" = "Šibka";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Dobrodošli na novo različico Blockchain denarnice!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Smo odkrili prejšnje namestitve Blockchain denarnice na telefonu.";

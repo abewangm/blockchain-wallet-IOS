@@ -182,6 +182,9 @@
 "Confirm Payment" = "Confirmar el pagament";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Confirmació d'actualització";
+
+/* (No Commment) */
 "Confirm your PIN" = "Confirmar el PIN";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "Ara no";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Tingueu en compte que una vegada millorat, no pot tornar a la versió anterior, però tots els teus bitcoins i el vostre historial de transacció es mantindrà.";
+
+/* (No Commment) */
 "Notifications" = "Notificacions";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Si us plau afegiu una adreça de correu electrònic";
 
 /* (No Commment) */
-"Please check your email." = "Si us plau revisa el teu email.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Si us plau revisa el teu email. Si ja heu verificat un intent de connexió, ha de registrar través de la nostra cartera de web i ajuntar el seu telèfon per escanejant el codi QR sota escenes-> cartera informació.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Si us plau, comproveu la connexió d'internet.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "La clau privada que intenteu importar està xifrada. Si us plau, introduïu la contrasenya sota.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "L'actualització pren només un segon i seu bitcoins i història estaran fora de perill. Aquí és què és millor: disseny • completament actualitzat i usuari experiència • seguretat robusta centre • • privacitat realçat simplificat reserva i recuperació • personalitzat fons gestió dos tipus de transacció avançat (despeses de només veure adreces i compartir moneda) no són compatibles amb la nova versió en aquest moment.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Hi havia un problema verificar la vostra identitat.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Actualització";
 
 /* (No Commment) */
+"Upgrade" = "Actualització";
+
+/* (No Commment) */
 "Upgrade Now" = "Actualitza'l ara";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "Weak" = "Feble";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Benvinguts a la nova versió de la cartera de Blockchain!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Hem detectat una instal·lació anterior del Blockchain cartera al seu telèfon.";

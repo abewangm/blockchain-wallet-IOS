@@ -182,6 +182,9 @@
 "Confirm Payment" = "Bekräfta betalning";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Bekräfta uppgradering";
+
+/* (No Commment) */
 "Confirm your PIN" = "Bekräfta din PIN-kod";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "Inte nu";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Observera att när uppgraderat, du kan inte gå tillbaka till den tidigare versionen, men alla dina bitcoins och din transaktionshistorik kommer att hållas.";
+
+/* (No Commment) */
 "Notifications" = "Anmälningar";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Lägg till en e-postadress";
 
 /* (No Commment) */
-"Please check your email." = "Vänligen kontrollera din e-post.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Vänligen kontrollera din e-post. Om du har redan kontrollerat ett inloggningsförsök, du bör logga in via vår web plånbok och koppla ihop telefonen genom att skanna QR-kod under Inställningar-> plånbok Information.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Kontrollera din internet-anslutning.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Den privata nyckeln som du försöker importera krypteras. Skriv in lösenordet nedan.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Uppgraderingen tar bara en sekund och dina bitcoins och historien kommer att vara säker. Här är vad är bättre: • helt uppdaterad design och förbrukaren erfarenhet • Robust säkerhet centrerar • förbättrad sekretesspolicy • förenklad säkerhetskopiering och återställning • Customized fondförvaltning två avancerade transaktionstyper (spendera från watch-bara adresser och delade mynt) inte stöds i den nya versionen på denna tid.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Det gick inte att verifiera din identitet.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Uppdatering";
 
 /* (No Commment) */
+"Upgrade" = "Uppgradera";
+
+/* (No Commment) */
 "Upgrade Now" = "Uppgradera nu";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 
 /* (No Commment) */
 "Weak" = "Svag";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Välkommen till den nya versionen av Blockchain plånboken!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Vi har upptäckt en tidigare installation av Blockchain plånbok på telefonen.";

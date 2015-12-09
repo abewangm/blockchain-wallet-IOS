@@ -182,6 +182,9 @@
 "Confirm Payment" = "确认付款";
 
 /* (No Commment) */
+"Confirm Upgrade" = "确认升级";
+
+/* (No Commment) */
 "Confirm your PIN" = "确认您的 PIN";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "不是现在";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "请注意，一旦升级，你不能回到以前的版本，但会保持您所有的比特币和您的交易历史。";
+
+/* (No Commment) */
 "Notifications" = "通知";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "请添加电子邮件地址";
 
 /* (No Commment) */
-"Please check your email." = "请检查您的电子邮件。";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "请检查您的电子邮件。如果您已验证了登录尝试，你应该通过我们的 web 钱包登录并通过扫描 QR 代码设置下的对你的电话-> 钱包信息。";
 
 /* (No Commment) */
 "Please check your internet connection." = "请检查您的互联网连接。";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "您试图导入的私钥进行加密。请输入下面的密码。";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升级只需一秒只是和你的比特币和历史将会安全。这里是更好的是: • 完全更新设计和用户体验 • 鲁棒安全中心增强隐私 • 简化备份和恢复 • 定制基金管理两种先进的交易类型 (开支从只手表地址和共享的硬币) 在这次的新版本中不支持。";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "还有一个问题，验证您的身份。";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "更新";
 
 /* (No Commment) */
+"Upgrade" = "升级";
+
+/* (No Commment) */
 "Upgrade Now" = "现在升级";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "我们已经为您设计全新的钱包经验";
 
 /* (No Commment) */
 "Weak" = "弱";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "欢迎到新版本的 Blockchain 的钱包!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "我们已经检测到以前安装的 Blockchain 的钱包在你的手机上。";

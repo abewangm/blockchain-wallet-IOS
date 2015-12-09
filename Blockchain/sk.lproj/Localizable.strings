@@ -182,6 +182,9 @@
 "Confirm Payment" = "Potvrdenie platby";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Potvrdiť aktualizáciu";
+
+/* (No Commment) */
 "Confirm your PIN" = "Potvrďte kód PIN";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "teraz nie";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Vedomie, že raz rekonštruované, nemôžete sa vrátiť k predchádzajúcej verzii ale zostanú všetky vaše bitcoins a vaša História transakcií.";
+
+/* (No Commment) */
 "Notifications" = "Oznámenia";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Pridajte e-mailovú adresu";
 
 /* (No Commment) */
-"Please check your email." = "Prosím skontrolujte svoj e-mail.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Prosím skontrolujte svoj e-mail. Ak ste už overili pokus o prihlásenie, by ste mali prihlásiť cez náš web peňaženku a spárovať mobil skenovanie QR kód pod nastavenia-> peňaženka informácie.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Prosím skontrolujte svoje internetové pripojenie.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Šifrovaný súkromný kľúč, ktorý sa pokúšate importovať. Zadajte heslo.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovácia bude trvať len chvíľku a bitcoins a História budú v bezpečí. Tu je to, čo je lepšie: • kompletne aktualizovaný dizajn a užívateľské skúsenosti • robustné zabezpečenie centrum rozšírená ochrana • zjednodušené zálohovanie a obnovenie • prispôsobené fond riadenia dva typy pokročilé transakcií (míňať len na hodinky adresy a zdieľané mince) nie sú podporované v novej verzii v tejto dobe.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Vyskytol sa problém pri overovaní vašej identity.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Aktualizácia";
 
 /* (No Commment) */
+"Upgrade" = "Inovácia";
+
+/* (No Commment) */
 "Upgrade Now" = "Inovovať teraz";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 
 /* (No Commment) */
 "Weak" = "Slabá";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Vitajte na novej verzii Blockchain peňaženku!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Sme rozpoznali predchádzajúcej inštalácie Blockchain peňaženka na telefóne.";

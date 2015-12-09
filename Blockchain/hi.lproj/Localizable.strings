@@ -182,6 +182,9 @@
 "Confirm Payment" = "भुगतान की पुष्टि करें";
 
 /* (No Commment) */
+"Confirm Upgrade" = "उन्नयन की पुष्टि करें";
+
+/* (No Commment) */
 "Confirm your PIN" = "अपने पिन की पुष्टि करें";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "अभी नहीं";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "ध्यान दें कि एक बार में उन्नत किया, तुम वापस पिछले संस्करण के लिए नहीं जा सकते, लेकिन अपने सभी bitcoins और अपने ट्रांजे़क्शन इतिहास रखा जाएगा।";
+
+/* (No Commment) */
 "Notifications" = "सूचनाएँ";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "कृपया एक ईमेल पते जोड़ें";
 
 /* (No Commment) */
-"Please check your email." = "कृपया अपने ईमेल की जाँच करें।";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "कृपया अपने ईमेल की जाँच करें। यदि आप पहले से ही एक लॉगिन का प्रयास सत्यापित कर लिया है, आप के माध्यम से हमारी वेब बटुए में लॉग इन करें और अपने फोन सेटिंग्स के अंतर्गत QR कोड स्कैन कर रहा है द्वारा जोड़ी चाहिए-> बटुए जानकारी।";
 
 /* (No Commment) */
 "Please check your internet connection." = "कृपया अपना इंटरनेट कनेक्शन जाँचें।";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "आप आयात करने का प्रयास कर रहे हैं निजी कुंजी एन्क्रिप्टेड है। कृपया नीचे दिए गए पासवर्ड दर्ज करें।";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "नवीनीकरण बस एक पल के लेता है और अपने bitcoins और इतिहास सुरक्षित हो जाएगा। यहाँ है क्या बेहतर है: पूरी तरह से अद्यतन किया • डिजाइन और उपयोगकर्ता अनुभव उन्नत लेन-देन के दो प्रकार (केवल-देखो पतों और सिक्का साझा से खर्च) समर्थित नहीं है इस समय में नए संस्करण में • मजबूत सुरक्षा केंद्र • गोपनीयता बढ़ाया • सरलीकृत बैकअप और वसूली • स्वनिर्धारित कोष प्रबंधन।";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "आपकी पहचान की पुष्टि करने में कोई समस्या थी।";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "अद्यतन";
 
 /* (No Commment) */
+"Upgrade" = "नवीनीकरण";
+
+/* (No Commment) */
 "Upgrade Now" = "अब नवीनीकरण करें";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "Weak" = "कमजोर";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Blockchain वॉलेट के नए संस्करण के लिए आपका स्वागत है!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "हम अपने फोन पर Blockchain बटुए के एक पूर्व स्थापना पाई है।";

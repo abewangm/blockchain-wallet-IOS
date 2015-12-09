@@ -182,6 +182,9 @@
 "Confirm Payment" = "Επιβεβαιώσετε την πληρωμή";
 
 /* (No Commment) */
+"Confirm Upgrade" = "Επιβεβαιώσει την αναβάθμιση";
+
+/* (No Commment) */
 "Confirm your PIN" = "Επιβεβαίωση αριθμού PIN σας";
 
 /* (No Commment) */
@@ -521,6 +524,9 @@
 "Not now" = "Όχι τώρα";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Σημειώστε ότι εφόσον γίνει η αναβάθμιση, μπορείτε να επιστρέψετε στην προηγούμενη έκδοση, αλλά όλα τα bitcoins σας και σας ιστορικό κινήσεων θα παραμείνει.";
+
+/* (No Commment) */
 "Notifications" = "Κοινοποιήσεις";
 
 /* No comment provided by engineer. */
@@ -578,7 +584,7 @@
 "Please add an email address" = "Παρακαλούμε να προσθέσετε μια διεύθυνση ηλεκτρονικού ταχυδρομείου";
 
 /* (No Commment) */
-"Please check your email." = "Παρακαλώ ελέγξτε το email σας.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Παρακαλώ ελέγξτε το email σας. Εάν έχετε ελέγξει ήδη μια προσπάθεια σύνδεσης, θα πρέπει να συνδεθείτε μέσω μας ηλεκτρονική μέθοδος πληρωμής και να ζευγαρώσετε το τηλέφωνό σας, σαρώνοντας τον κωδικό QR στην περιοχή ρυθμίσεις-> πληροφορίες πορτοφόλι.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Παρακαλείστε να ελέγξετε σύνδεσή σας στο internet.";
@@ -755,6 +761,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Το ιδιωτικό κλειδί που προσπαθείτε να εισαγάγετε είναι κρυπτογραφημένη. Παρακαλώ εισάγετε τον παρακάτω κωδικό πρόσβασης.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: • Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία • ισχυρή ασφάλεια κέντρο • • ενισχυμένη προστασία της ιδιωτικής ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης • προσαρμοσμένη διαχείριση κεφαλαίων δύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Υπήρχε ένα πρόβλημα που επαληθεύει την ταυτότητά σας.";
 
 /* (No Commment) */
@@ -828,6 +845,9 @@ Fee: %@
 "Update" = "Ενημέρωση";
 
 /* (No Commment) */
+"Upgrade" = "Αναβάθμιση";
+
+/* (No Commment) */
 "Upgrade Now" = "Αναβάθμιση τώρα";
 
 /* (No Commment) */
@@ -896,6 +916,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "Weak" = "Αδύναμη";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Καλωσορίζουμε τη νέα έκδοση του το Blockchain πορτοφόλι!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Σημαίνει ότι έχουμε εντοπίσει μια προηγούμενη εγκατάσταση του πορτοφολιού Blockchain στο τηλέφωνό σας.";
