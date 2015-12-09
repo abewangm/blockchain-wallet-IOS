@@ -847,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Unapređenje traje samo sekundu i bitcoins i povijest će biti sigurno. Evo što je bolje: • potpuno obnovljeno dizajn i korisničko iskustvo • robustan sigurnost centar • poboljšane privatnost • pojednostavljeno backup i recovery • prilagođeno upravljanje fondovima dvije vrste naprednih transakcija (trošiti sat samo adrese i dijeli novac) nisu podržane u novoj verziji u ovom trenutku.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Unapređenje traje samo sekundu i bitcoins i povijest će biti sigurno. Evo što je bolje: \n\n• potpuno obnovljeno dizajn i korisničko iskustvo \n• robustan sigurnost centar \n• poboljšane privatnost \n• pojednostavljeno backup i recovery \n• prilagođeno upravljanje fondovima\n\ndvije vrste naprednih transakcija (trošiti sat samo adrese i dijeli novac) nisu podržane u novoj verziji u ovom trenutku.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Bilo je problema kojim dokazuje svoj identitet.";

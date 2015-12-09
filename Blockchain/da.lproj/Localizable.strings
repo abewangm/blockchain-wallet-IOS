@@ -847,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Opgraderingen tager kun et sekund og din bitcoins og historie vil være sikker. Her er hvad der er bedre: • helt opdateret design og bruger erfaringer • Robust sikkerhed center • forbedret Privacy • forenklet backup og recovery • tilpasset fondsforvaltning to avancerede posteringstyper (udgifter fra ur-kun adresser og fælles mønt) ikke understøttes i den nye version på dette tidspunkt.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Opgraderingen tager kun et sekund og din bitcoins og historie vil være sikker. Her er hvad der er bedre: \n\n• helt opdateret design og bruger erfaringer \n• Robust sikkerhed center \n• forbedret Privacy \n• forenklet backup og recovery \n• tilpasset fondsforvaltning\n\nto avancerede posteringstyper (udgifter fra ur-kun adresser og fælles mønt) ikke understøttes i den nye version på dette tidspunkt.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Der var et problem, der bekræfter din identitet.";

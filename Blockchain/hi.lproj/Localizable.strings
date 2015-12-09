@@ -847,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "नवीनीकरण बस एक पल के लेता है और अपने bitcoins और इतिहास सुरक्षित हो जाएगा। यहाँ है क्या बेहतर है: पूरी तरह से अद्यतन किया • डिजाइन और उपयोगकर्ता अनुभव उन्नत लेन-देन के दो प्रकार (केवल-देखो पतों और सिक्का साझा से खर्च) समर्थित नहीं है इस समय में नए संस्करण में • मजबूत सुरक्षा केंद्र • गोपनीयता बढ़ाया • सरलीकृत बैकअप और वसूली • स्वनिर्धारित कोष प्रबंधन।";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "नवीनीकरण बस एक पल के लेता है और अपने bitcoins और इतिहास सुरक्षित हो जाएगा। यहाँ है क्या बेहतर है: \n\n• पूरी तरह से अद्यतन किया \n• डिजाइन और उपयोगकर्ता अनुभव उन्नत लेन-देन के दो प्रकार (केवल-देखो पतों और सिक्का साझा से खर्च) समर्थित नहीं है इस समय में नए संस्करण में \n• मजबूत सुरक्षा केंद्र \n• गोपनीयता बढ़ाया \n• सरलीकृत बैकअप और वसूली \n• स्वनिर्धारित कोष प्रबंधन।";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "आपकी पहचान की पुष्टि करने में कोई समस्या थी।";

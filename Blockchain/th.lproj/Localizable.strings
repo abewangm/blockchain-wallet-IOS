@@ -847,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "การอัพเกรดใช้เวลาเพียงวินาที และ bitcoins และประวัติของคุณจะปลอดภัย นี่คือสิ่งดี: •สมบูรณ์ปรับปรุงออกแบบและผู้ใช้ประสบการณ์•ความปลอดภัยแข็งแรงศูนย์•เพิ่มความเป็นส่วนตัว•ประยุกต์สำรองและกู้คืน•ปรับแต่งกองรุ่นใหม่ขณะนี้ไม่สนับสนุนชนิดของธุรกรรมขั้นสูง 2 (ใช้จ่ายจากที่อยู่ดูเดียวและเหรียญที่ใช้ร่วมกัน)";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "การอัพเกรดใช้เวลาเพียงวินาที และ bitcoins และประวัติของคุณจะปลอดภัย นี่คือสิ่งดี: \n\n• สมบูรณ์ปรับปรุงออกแบบและผู้ใช้ประสบการณ์\n• ความปลอดภัยแข็งแรงศูนย์\n• เพิ่มความเป็นส่วนตัว\n• ประยุกต์สำรองและกู้คืน\n• ปรับแต่งกองรุ่น\n\nใหม่ขณะนี้ไม่สนับสนุนชนิดของธุรกรรมขั้นสูง 2 (ใช้จ่ายจากที่อยู่ดูเดียวและเหรียญที่ใช้ร่วมกัน)";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "มีปัญหาในการตรวจสอบตัวตนของคุณ";

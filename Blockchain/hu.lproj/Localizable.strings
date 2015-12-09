@@ -847,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: design • teljesen frissített és felhasználó tapasztalat • robusztus biztonsági központ • továbbfejlesztett adatvédelmi egyszerűsített biztonsági mentés és helyreállítás • szabott alapkezelő két speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: \n\n• design teljesen frissített és felhasználó tapasztalat \n• robusztus biztonsági központ \n• továbbfejlesztett adatvédelmi \n• egyszerűsített biztonsági mentés és helyreállítás \n• szabott alapkezelő \n\nkét speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";
