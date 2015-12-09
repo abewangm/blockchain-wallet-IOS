@@ -887,7 +887,7 @@ Keep your xPub private. Someone with access to your xPub will be able to see all
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더: 완전히 업데이트 • 디자인과 사용자 경험 • 강력한 보안 센터 • 향상 된 개인 정보 보호 정책 • 간체 백업 및 복구 • 사용자 지정 기금 관리 두 고급 트랜잭션 유형 (시계 전용 주소를 공유 동전 지출)이 이번에 새로운 버전에서 지원 되지 않습니다.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더: \n\n• 완전히 업데이트 디자인과 사용자 경험 \n• 강력한 보안 센터 \n• 향상 된 개인 정보 보호 정책 \n• 간체 백업 및 복구 \n• 사용자 지정 기금 관리\n\n두 고급 트랜잭션 유형 (시계 전용 주소를 공유 동전 지출)이 이번에 새로운 버전에서 지원 되지 않습니다.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Id 확인 문제가 있었습니다.";

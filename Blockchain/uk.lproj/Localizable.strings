@@ -887,7 +887,7 @@ Keep your xPub private. Someone with access to your xPub will be able to see all
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Тут є те, що краще: • повністю оновлено дизайн і роботи користувачів • надійною системою безпеки центр • розширеної конфіденційності • спрощене резервного копіювання і відновлення • індивідуальні управління Фондом два типи передові операції (витрачати від дивитися лише для адрес і поділився монета) не підтримуються в новій версії в даний час.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Тут є те, що краще: \n\n• повністю оновлено дизайн і роботи користувачів \n• надійною системою безпеки центр \n• розширеної конфіденційності \n• спрощене резервного копіювання і відновлення \n• індивідуальні управління Фондом \n\nдва типи передові операції (витрачати від дивитися лише для адрес і поділився монета) не підтримуються в новій версії в даний час.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Виникли утруднення засвідчує вашу особу.";

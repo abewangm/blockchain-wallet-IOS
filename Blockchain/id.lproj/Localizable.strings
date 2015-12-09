@@ -850,6 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
+<<<<<<< HEAD
 Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Pemutakhiran ini hanya butuh beberapa detik dan bitcoin dan sejarah Anda akan aman. Berikut ini yang lebih baik:
 
 • Desain dan pengalaman pengguna yang  sepenuhnya dimutakhirkan
@@ -859,6 +860,9 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 • Pengelolaan Dana Disesuaikan
 
 Dua jenis transaksi tingkat lanjut (pengeluaran dari alamat dilihat saja dan Berbagi Koin) tidak didukung dalam versi baru saat ini.";
+=======
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade mengambil hanya satu detik dan bitcoins dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik: \n\n• desain benar-benar diperbarui dan pengguna pengalaman \n• keamanan yang kuat \n• pusat ditingkatkan privasi \n• sederhana backup dan recovery \n• Customized pengelolaan dana maju transaksi \n\ndua jenis (pengeluaran dari alamat hanya menonton dan bersama koin) tidak didukung dalam versi baru saat ini.";
+>>>>>>> 6124be1... add line breaks
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ada masalah saat memverifikasi identitas Anda.";

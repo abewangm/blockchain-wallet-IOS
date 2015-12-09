@@ -887,7 +887,7 @@ Keep your xPub private. Someone with access to your xPub will be able to see all
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い: 完全に更新 • デザインとユーザー エクスペリエンスの • 堅牢なセキュリティ センター プライバシーの強化 • 簡体字バックアップ/リカバリ • カスタマイズされた基金管理 2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い:\n\n• 完全に更新デザインとユーザー エクスペリエンスの \n• 堅牢なセキュリティ センター\n• プライバシーの強化 \n• 簡体字バックアップ/リカバリ \n• カスタマイズされた基金管理 \n\n2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "あなたの身元の確認で問題があった。";

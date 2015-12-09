@@ -887,7 +887,7 @@ Nechali svoje xPub. Niekoho, kto má prístup k vašej xPub bude schopný Zobraz
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovácia bude trvať len chvíľku a bitcoins a História budú v bezpečí. Tu je to, čo je lepšie: • kompletne aktualizovaný dizajn a užívateľské skúsenosti • robustné zabezpečenie centrum rozšírená ochrana • zjednodušené zálohovanie a obnovenie • prispôsobené fond riadenia dva typy pokročilé transakcií (míňať len na hodinky adresy a zdieľané mince) nie sú podporované v novej verzii v tejto dobe.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovácia bude trvať len chvíľku a bitcoins a História budú v bezpečí. Tu je to, čo je lepšie: \n\n• kompletne aktualizovaný dizajn a užívateľské skúsenosti \n• robustné zabezpečenie centrum rozšírená ochrana \n• zjednodušené zálohovanie a obnovenie \n• prispôsobené fond riadenia \n\ndva typy pokročilé transakcií (míňať len na hodinky adresy a zdieľané mince) nie sú podporované v novej verzii v tejto dobe.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Vyskytol sa problém pri overovaní vašej identity.";

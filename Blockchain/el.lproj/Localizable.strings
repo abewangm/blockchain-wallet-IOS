@@ -887,7 +887,7 @@ Keep your xPub private. Someone with access to your xPub will be able to see all
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: • Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία • ισχυρή ασφάλεια κέντρο • • ενισχυμένη προστασία της ιδιωτικής ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης • προσαρμοσμένη διαχείριση κεφαλαίων δύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: \n\n• Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία \n• ισχυρή ασφάλεια κέντρο \n• ενισχυμένη προστασία της ιδιωτικής \n• ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης \n• προσαρμοσμένη διαχείριση κεφαλαίων \n\nδύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Υπήρχε ένα πρόβλημα που επαληθεύει την ταυτότητά σας.";
