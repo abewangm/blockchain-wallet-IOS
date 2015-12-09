@@ -39,8 +39,9 @@ const int securityTwoStep = 0;
 const int securityPasswordHint = 1;
 const int securityPasswordChange = 2;
 const int securityTorBlocking = 3;
+const int securityWalletRecoveryPhrase = 4;
 #ifdef TOUCH_ID_ENABLED
-const int securityTouchID = 4;
+const int securityTouchID = 5;
 #else
 const int securityTouchID = -1;
 #endif
@@ -64,6 +65,7 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic) float currentFeePerKb;
 
 @property (nonatomic) BOOL isEnablingTwoStepSMS;
+@property (nonatomic) BackupNavigationViewController *backupController;
 
 @end
 
@@ -976,6 +978,20 @@ const int aboutPrivacyPolicy = 1;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR object:nil];
 }
 
+- (void)showBackup
+{
+    if (!self.backupController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_BACKUP bundle: nil];
+        self.backupController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
+    }
+    
+    // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
+    self.backupController.wallet = app.wallet;
+    
+    self.backupController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:self.backupController animated:YES completion:nil];
+}
+
 #pragma mark - Change Password
 
 - (void)changePassword
@@ -1168,6 +1184,10 @@ const int aboutPrivacyPolicy = 1;
                     [self changeTorBlockingTapped];
                     return;
                 }
+                case securityWalletRecoveryPhrase: {
+                    [self showBackup];
+                    return;
+                }
             }
             return;
         }
@@ -1199,7 +1219,7 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionEmailFooter: return 1;
         case preferencesSectionNotificationsFooter: return 2;
         case preferencesSectionEnd: return 3;
-        case securitySection: return securityTouchID < 0 ? 4 : 5;
+        case securitySection: return securityTouchID < 0 ? 5 : 6;
         case aboutSection: return 2;
         default: return 0;
     }
@@ -1376,6 +1396,19 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_ALLOWED;
                     }
+                    return cell;
+                }
+                case securityWalletRecoveryPhrase: {
+                    cell.textLabel.font = [SettingsTableViewController fontForCell];
+                    cell.textLabel.text = BC_STRING_WALLET_RECOVERY_PHRASE;
+                    if (app.wallet.isRecoveryPhraseVerified) {
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
+                    } else {
+                        cell.detailTextLabel.text = BC_STRING_SETTINGS_UNCONFIRMED;
+                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                    }
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return cell;
                 }
                 case securityTouchID: {
