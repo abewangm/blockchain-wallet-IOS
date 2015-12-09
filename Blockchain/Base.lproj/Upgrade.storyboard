@@ -250,6 +250,7 @@
                     </view>
                     <connections>
                         <outlet property="featuresTextView" destination="D5e-zI-7dK" id="7vu-P2-ABC"/>
+                        <outlet property="upgradeTitleLabel" destination="4cR-kX-YUY" id="Ofm-Ip-4qP"/>
                         <outlet property="upgradeWalletButton" destination="Gk5-cB-fZg" id="QOq-z6-ME6"/>
                     </connections>
                 </viewController>

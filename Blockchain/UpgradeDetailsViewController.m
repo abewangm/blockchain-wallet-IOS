@@ -10,6 +10,7 @@
 
 @interface UpgradeDetailsViewController ()
 @property (strong, nonatomic) IBOutlet UITextView *featuresTextView;
+@property (strong, nonatomic) IBOutlet UILabel *upgradeTitleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *upgradeWalletButton;
 @end
 
@@ -19,6 +20,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = COLOR_BLOCKCHAIN_UPGRADE_BLUE;
+    self.upgradeTitleLabel.text = BC_STRING_UPGRADE_TITLE;
     self.featuresTextView.text = BC_STRING_UPGRADE_FEATURES;
     self.featuresTextView.textColor = COLOR_UPGRADE_TEXT_BLUE;
     self.featuresTextView.textContainerInset = UIEdgeInsetsZero;
