@@ -729,6 +729,7 @@ UIAlertController *popupAddressArchive;
         if ([app stringHasBitcoinValue:btcAmountField.text]) {
             NSDecimalNumber *amountRequestedDecimalNumber = [NSDecimalNumber decimalNumberWithString:btcAmountField.text];
             u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+            amountRequested = app.latestResponse.symbol_btc.conversion * amountRequested / SATOSHI;
             
             if (amountReceived == amountRequested) {
                 NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
