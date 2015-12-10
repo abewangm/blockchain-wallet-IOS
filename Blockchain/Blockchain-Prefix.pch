@@ -154,6 +154,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON @"notifications_on"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE @"notifications_type"
 
+#define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
+#define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
+
 #define USER_DEFAULTS_KEY_SHARED_KEY @"sharedKey"
 #define USER_DEFAULTS_KEY_GUID @"guid"
 #define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"

@@ -311,7 +311,7 @@
 #define BC_STRING_SETTINGS_SECURITY_PASSWORD_CHANGED NSLocalizedString(@"Password changed. Please login to continue.", nil)
 #define BC_STRING_SETTINGS_LOCAL_CURRENCY NSLocalizedString(@"Local Currency", nil)
 #define BC_STRING_SETTINGS_BTC NSLocalizedString(@"Bitcoin Unit", nil)
-#define BC_STRING_SETTINGS_NOTIFICATIONS NSLocalizedString(@"Notifications", nil)
+#define BC_STRING_SETTINGS_EMAIL_NOTIFICATIONS NSLocalizedString(@"Email Notifications", nil)
 #define BC_STRING_SETTINGS_NOTIFICATIONS_SMS NSLocalizedString(@"SMS", nil)
 #define BC_STRING_SETTINGS_EMAIL_FOOTER NSLocalizedString(@"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes.", nil)
 #define BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER NSLocalizedString(@"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications.", nil)

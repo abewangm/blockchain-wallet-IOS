@@ -479,7 +479,7 @@ const int aboutPrivacyPolicy = 1;
 {
     NSArray *notificationsType = self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE];
     int notificationsOn = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON] intValue];
-    return notificationsType && [notificationsType count] > 0 && [notificationsType containsObject:@1] && notificationsOn > 0;
+    return notificationsType && [notificationsType count] > 0 && [notificationsType containsObject:@1] && (notificationsOn == DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE || notificationsOn == DICTIONARY_VALUE_NOTIFICATION_RECEIVE);;
 }
 
 - (void)toggleEmailNotifications
@@ -1121,7 +1121,7 @@ const int aboutPrivacyPolicy = 1;
                     return cell;
                 }
                 case preferencesNotifications: {
-                    cell.textLabel.text = BC_STRING_SETTINGS_NOTIFICATIONS;
+                    cell.textLabel.text = BC_STRING_SETTINGS_EMAIL_NOTIFICATIONS;
                     UISwitch *switchForEmailNotifications = [[UISwitch alloc] init];
                     switchForEmailNotifications.on = [self notificationsEnabled];
                     [switchForEmailNotifications addTarget:self action:@selector(toggleEmailNotifications) forControlEvents:UIControlEventTouchUpInside];
