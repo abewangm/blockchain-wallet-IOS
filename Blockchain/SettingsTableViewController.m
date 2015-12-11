@@ -589,37 +589,41 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)enableTwoStepForSMS
 {
-    [self addObserversForChangingTwoStep];
+    [self prepareForForChangingTwoStep];
     [app.wallet enableTwoStepVerificationForSMS];
 }
 
 - (void)disableTwoStep
 {
-    [self addObserversForChangingTwoStep];
+    [self prepareForForChangingTwoStep];
     [app.wallet disableTwoStepVerification];
 }
 
-- (void)addObserversForChangingTwoStep
+- (void)prepareForForChangingTwoStep
 {
+    UITableViewCell *enableTwoStepCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityTwoStep inSection:securitySection]];
+    enableTwoStepCell.userInteractionEnabled = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepSuccess) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepError) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
 }
 
-- (void)removeObserversForChangingTwoStep
+- (void)doneChangingTwoStep
 {
+    UITableViewCell *enableTwoStepCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityTwoStep inSection:securitySection]];
+    enableTwoStepCell.userInteractionEnabled = YES;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
 }
 
 - (void)changeTwoStepSuccess
 {
-    [self removeObserversForChangingTwoStep];
+    [self doneChangingTwoStep];
     [self getAccountInfo];
 }
 
 - (void)changeTwoStepError
 {
-    [self removeObserversForChangingTwoStep];
+    [self doneChangingTwoStep];
     [self getAccountInfo];
 }
 
