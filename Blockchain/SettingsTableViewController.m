@@ -1078,7 +1078,6 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case walletInformationIdentifier: {
                     UITableViewCell *cellWithSubtitle = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-                    cellWithSubtitle.selectionStyle = UITableViewCellSelectionStyleNone;
                     cellWithSubtitle.textLabel.font = [SettingsTableViewController fontForCell];
                     cellWithSubtitle.textLabel.text = BC_STRING_SETTINGS_WALLET_ID;
                     cellWithSubtitle.detailTextLabel.text = app.wallet.guid;
@@ -1126,6 +1125,7 @@ const int aboutPrivacyPolicy = 1;
                 }
                 case preferencesNotifications: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL_NOTIFICATIONS;
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     UISwitch *switchForEmailNotifications = [[UISwitch alloc] init];
                     switchForEmailNotifications.on = [self notificationsEnabled];
                     [switchForEmailNotifications addTarget:self action:@selector(toggleEmailNotifications) forControlEvents:UIControlEventTouchUpInside];
@@ -1208,6 +1208,7 @@ const int aboutPrivacyPolicy = 1;
                 case securityTouchID: {
                     cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
                     UISwitch *switchForTouchID = [[UISwitch alloc] init];
