@@ -178,23 +178,17 @@
     passwordTextField.text = nil;
     password2TextField.text = nil;
     
-    // TODO Whitelist the new account - this needs to be removed again when we remove the beta invite system XXX
-    [app.wallet whitelistWallet];
-    
-    // TODO XXX  dispatch is only here because of the whitelist call above, remove when that is removed
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // Reset wallet
-        [app forgetWallet];
+    // Reset wallet
+    [app forgetWallet];
         
-        // Load the newly created wallet
-        [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
+    // Load the newly created wallet
+    [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
         
-        app.wallet.delegate = app;
+    app.wallet.delegate = app;
         
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_DID_CREATE_NEW_ACCOUNT_DETAIL]
+    [app standardNotify:[NSString stringWithFormat:BC_STRING_DID_CREATE_NEW_ACCOUNT_DETAIL]
                       title:BC_STRING_DID_CREATE_NEW_ACCOUNT_TITLE
                    delegate:nil];
-    });
 }
 
 - (void)errorCreatingNewAccount:(NSString*)message
