@@ -1560,7 +1560,7 @@
     
     if ([totalReceived longLongValue] == 0) {
         self.emptyAccountIndex++;
-        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_TEN_ACCOUNTS, self.emptyAccountIndex]];
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_OF_ARGUMENT_ACCOUNTS, self.emptyAccountIndex, self.emptyAccountIndex > RECOVERY_ACCOUNT_DEFAULT_NUMBER ? self.emptyAccountIndex : RECOVERY_ACCOUNT_DEFAULT_NUMBER]];
     } else {
         self.emptyAccountIndex = 0;
         self.recoveredAccountIndex++;

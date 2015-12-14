@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "財布更新プログラムのチェック";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "多くのアカウントをチェック: 10 のステップ %d";
+"Checking for more accounts: Step %d of %d" = "多くのアカウントをチェック: %d のステップ %d";
 
 /* No comment provided by engineer. */
 "Close" = "閉じる";

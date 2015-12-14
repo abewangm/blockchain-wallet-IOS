@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Suchen nach Updates der Brieftasche";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Überprüfung auf weitere Konten: Schritt %d 10";
+"Checking for more accounts: Step %d of %d" = "Überprüfung auf weitere Konten: Schritt %d %d";
 
 /* No comment provided by engineer. */
 "Close" = "Schließen";

@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Έλεγχος για ενημερώσεις πορτοφόλι";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Έλεγχος για περισσότερους λογαριασμούς: %d βήμα 10";
+"Checking for more accounts: Step %d of %d" = "Έλεγχος για περισσότερους λογαριασμούς: %d βήμα %d";
 
 /* No comment provided by engineer. */
 "Close" = "Κλείσιμο";

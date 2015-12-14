@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Controllo degli aggiornamenti di portafoglio";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Il controllo per più account: passo %d di 10";
+"Checking for more accounts: Step %d of %d" = "Il controllo per più account: passo %d di %d";
 
 /* No comment provided by engineer. */
 "Close" = "Chiudere";

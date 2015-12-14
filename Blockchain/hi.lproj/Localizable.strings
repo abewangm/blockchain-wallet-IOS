@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "बटुआ अद्यतनों के लिए जाँच";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "अधिक खातों के लिए जाँच: 10 के चरण %d";
+"Checking for more accounts: Step %d of %d" = "अधिक खातों के लिए जाँच: %d के चरण %d";
 
 /* No comment provided by engineer. */
 "Close" = "बंद करें";

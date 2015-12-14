@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Перевірка наявності оновлень гаманець";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Перевірка наявності більше облікових записів: крок %d 10";
+"Checking for more accounts: Step %d of %d" = "Перевірка наявності більше облікових записів: крок %d %d";
 
 /* No comment provided by engineer. */
 "Close" = "Закрити";

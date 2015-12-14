@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Kontrollere for opdateringer, tegnebog";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Kontrol for flere konti: trin %d 10";
+"Checking for more accounts: Step %d of %d" = "Kontrol for flere konti: trin %d %d";
 
 /* No comment provided by engineer. */
 "Close" = "Luk";

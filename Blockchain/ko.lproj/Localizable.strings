@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "지갑 업데이트 확인";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "더 많은 계정에 대 한 검사: 10 단계 %d";
+"Checking for more accounts: Step %d of %d" = "더 많은 계정에 대 한 검사: %d 단계 %d";
 
 /* No comment provided by engineer. */
 "Close" = "닫기";

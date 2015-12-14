@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Provjera ažuriranja novčanik";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Provjera za dodatne račune: korak %d 10";
+"Checking for more accounts: Step %d of %d" = "Provjera za dodatne račune: korak %d %d";
 
 /* No comment provided by engineer. */
 "Close" = "Zatvori";

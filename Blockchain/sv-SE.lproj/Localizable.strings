@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Plånbok uppdateringar";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Kontroll för fler konton: steg %d 10";
+"Checking for more accounts: Step %d of %d" = "Kontroll för fler konton: steg %d %d";
 
 /* No comment provided by engineer. */
 "Close" = "Stäng";

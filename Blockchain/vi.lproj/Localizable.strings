@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Kiểm tra Cập Nhật ví";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Kiểm tra thêm tài khoản: bước %d 10";
+"Checking for more accounts: Step %d of %d" = "Kiểm tra thêm tài khoản: bước %d %d";
 
 /* No comment provided by engineer. */
 "Close" = "Đóng";

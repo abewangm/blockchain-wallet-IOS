@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "检查钱包更新";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "检查更多帐户: 步 %d 的 10";
+"Checking for more accounts: Step %d of %d" = "检查更多帐户: 步 %d 的 %d";
 
 /* No comment provided by engineer. */
 "Close" = "关闭";

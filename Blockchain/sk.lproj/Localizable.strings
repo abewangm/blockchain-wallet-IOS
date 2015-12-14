@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Kontrola aktualizácií peňaženka";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Kontrola viacerých účtov: krok %d 10";
+"Checking for more accounts: Step %d of %d" = "Kontrola viacerých účtov: krok %d %d";
 
 /* No comment provided by engineer. */
 "Close" = "Zavrieť";

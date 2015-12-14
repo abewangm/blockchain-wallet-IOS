@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Memeriksa pembaruan dompet";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Memeriksa lebih banyak account: langkah %d 10";
+"Checking for more accounts: Step %d of %d" = "Memeriksa lebih banyak account: langkah %d %d";
 
 /* No comment provided by engineer. */
 "Close" = "Tutup";

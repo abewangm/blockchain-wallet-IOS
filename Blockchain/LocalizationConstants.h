@@ -354,7 +354,7 @@
 
 #define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)
-#define BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_TEN_ACCOUNTS NSLocalizedString(@"Checking for more accounts: Step %d of 10", nil)
+#define BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_OF_ARGUMENT_ACCOUNTS NSLocalizedString(@"Checking for more accounts: Step %d of %d", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET_ACCOUNT_ARGUMENT_FUNDS_ARGUMENT NSLocalizedString(@"Found account %d, with %@", nil)
 #define BC_STRING_LOADING_RECOVERY_CREATING_WALLET NSLocalizedString(@"Creating Wallet", nil)
 #define BC_STRING_INVALID_RECOVERY_PHRASE NSLocalizedString(@"Invalid recovery phrase. Please try again", nil)

@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Preveritev zakaj modernizirati denarnice";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Preverjanje za več računov: korak %d 10";
+"Checking for more accounts: Step %d of %d" = "Preverjanje za več računov: korak %d %d";
 
 /* No comment provided by engineer. */
 "Close" = "Blizu";

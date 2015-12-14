@@ -262,6 +262,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 // TODO: Get from JS
 #define DUST_THRESHOLD 5460
 #define BTC_LIMIT_IN_SATOSHI 21e14 // 21,000,000 (Total possible Bitcoins) * 100,000,000 (Satoshi)
+#define RECOVERY_ACCOUNT_DEFAULT_NUMBER 10
+#define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 
 #pragma mark - Runtime modes
 
@@ -277,6 +279,5 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ERROR_UNDEFINED @"undefined"
 #define ERROR_TIMEOUT_REQUEST @"timeout request"
-#define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 
 #define TOUCH_ID_ENABLED 1

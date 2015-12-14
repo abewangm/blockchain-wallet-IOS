@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "S'estan cercant actualitzacions de cartera";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Buscar més comptes: pas %d de 10";
+"Checking for more accounts: Step %d of %d" = "Buscar més comptes: pas %d de %d";
 
 /* No comment provided by engineer. */
 "Close" = "Tancar";

@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "M-cüzdan güncelleştirmeleri denetleniyor";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Daha fazla hesaplarında kontrol: 10 adım %d";
+"Checking for more accounts: Step %d of %d" = "Daha fazla hesaplarında kontrol: %d adım %d";
 
 /* No comment provided by engineer. */
 "Close" = "Kapat";
