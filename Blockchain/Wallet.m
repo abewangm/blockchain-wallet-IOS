@@ -1057,6 +1057,8 @@
 - (void)on_tx
 {
     DLog(@"on_tx");
+
+    [app playBeepSound];
     
     [app.transactionsViewController animateNextCellAfterReload];
     
