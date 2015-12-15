@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Comprobación de actualizaciones de la cartera";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Comprobación de cuentas más: paso %d de %d";
+"Checking for more: Step %d of %d" = "Para más: %1$d paso de %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Cerrar";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Copiar en el portapapeles";
 
 /* (No Commment) */
-"Create Account" = "Crear cuenta";
+"Create" = "Crear";
 
 /* (No Commment) */
 "Create New Wallet" = "Crear nueva carpeta";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Crear carpeta";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Crear cuentas personalizadas para ayudar a mantener su cartera organizada";
-
-/* (No Commment) */
-"Creating Account" = "Crear cuenta";
+"Creating" = "Creación de";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Crear carpeta HD";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Tasa actual: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personalizar la forma de organizar tus bitcoins en su cartera de Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Longitud PIN contraseña descifrada 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Backup de carpeta fácil de una vez y lo mantiene en control de sus fondos";
 
 /* (No Commment) */
-"Edit Account" = "Editar cuenta";
+"Edit" = "Editar";
 
 /* (No Commment) */
 "Email" = "Correo electrónico";
+
+/* (No Commment) */
+"Email Notifications" = "Notificaciones por correo electrónico";
 
 /* (No Commment) */
 "Empty response from server." = "Respuesta vacía del servidor.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Activar servicios de ubicación";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Habilitar las notificaciones recibir un correo electrónico cuando usted recibe bitcoins. Sólo etiqueta direcciones en sus cuentas y direcciones importadas son elegibles para las notificaciones de activación.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Habilitar las notificaciones recibir un correo electrónico cuando usted recibe bitcoins. Sólo etiqueta direcciones e importados direcciones son elegibles para las notificaciones de activación.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Para activar esta función permitirá a todos los usuarios con una huella de contacto ID registrado en este dispositivo para acceder a tu cartera.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Olvidar la billetera";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Encuentra la cuenta %1$d, con %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Desde y la cuenta de destino tiene que ser diferente";
+"Found %d, with %@" = "Encuentra %1$d, con %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "De y dirección de destino debe ser diferente";
+
+/* (No Commment) */
+"From and destination have to be different" = "De destino debe ser diferente";
 
 /* (No Commment) */
 "Generate new" = "Generar nuevos";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Mi billetera Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Nombre de tu cuenta";
+"Name" = "Nombre";
 
 /* (No Commment) */
 "New Address" = "Nueva dirección";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "La actualización tarda a sólo un segundo y su historia y bitcoins estará a salvo. Aquí es lo mejor: \n\n• diseño totalmente actualizado y experiencia usuario \n• seguridad sólida centro \n• mayor privacidad \n• simplificado backup y recuperación \n• modificado para requisitos particulares gestión de fondos\n\nen la nueva versión en este momento no se admiten dos tipos de transacciones avanzadas (gasto de sólo direcciones y moneda compartida).";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "La actualización tarda a sólo un segundo y su historia y bitcoins estará a salvo. Aquí es lo mejor: diseño • totalmente actualizado y experiencia usuario • seguridad sólida centro • • mayor privacidad simplificado backup y recuperación • modificado para requisitos particulares gestión de fondos en la nueva versión en este momento no se admiten dos tipos de transacciones avanzadas (gasto de sólo direcciones y moneda compartida).";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Hubo un problema de verificación de su identidad.";

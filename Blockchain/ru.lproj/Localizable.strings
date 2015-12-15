@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Проверка обновлений бумажник";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Проверка для более счетов: шаг %d из %d";
+"Checking for more: Step %d of %d" = "Проверка для более: шаг %1$d %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Закрыть";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Копировать в буфер";
 
 /* (No Commment) */
-"Create Account" = "Создать учетную запись";
+"Create" = "Создать";
 
 /* (No Commment) */
 "Create New Wallet" = "Создать новый кошелек";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Создать кошелек";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Создавать персонализированные учетные записи, чтобы помочь сохранить ваши карманы организовал";
-
-/* (No Commment) */
-"Creating Account" = "Создание учетной записи";
+"Creating" = "Создание";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Создание HD бумажник";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Текущая ставка: %@ БТД";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Настроить способ организовать ваши bitcoins в вашем бумажнике Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Расшифрованная длина пароля PIN 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Просто один раз бумажник резервного копирования держит вас в контроле ваших средств";
 
 /* (No Commment) */
-"Edit Account" = "Редактирование учетной записи";
+"Edit" = "Редактировать";
 
 /* (No Commment) */
 "Email" = "Отправить по электронной почте";
+
+/* (No Commment) */
+"Email Notifications" = "Уведомления по электронной почте";
 
 /* (No Commment) */
 "Empty response from server." = "Пустой ответ от сервера.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Включение службы определения местоположения";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Включите уведомления, чтобы получать по электронной почте всякий раз, когда вы получаете bitcoins. Только помеченные на ваших счетах и импортированные адреса имеют право триггера уведомления.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Включите уведомления, чтобы получать по электронной почте всякий раз, когда вы получаете bitcoins. Только ярлык адреса и импортированные адреса имеют право триггера уведомления.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Включение этой функции позволит всем пользователям с зарегистрированной касание ID отпечатков пальцев на этом устройстве для доступа в ваш бумажник.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Забудьте бумажник";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Найдено %1$d счета, с %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "От и назначения учетной записи должны быть разными";
+"Found %d, with %@" = "Найдено %1$d, с %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "От и адрес назначения должны быть разными";
+
+/* (No Commment) */
+"From and destination have to be different" = "От и назначения должны быть разными";
 
 /* (No Commment) */
 "Generate new" = "Генерировать новые";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Мой кошелек Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Имя вашей учетной записи";
+"Name" = "Имя";
 
 /* (No Commment) */
 "New Address" = "Новый адрес";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Обновление занимает всего лишь второй и ваши bitcoins и истории будет безопасным. Вот то, что лучше: \n\n• полностью обновлен дизайн и пользовательский опыт \n• надежной безопасности центр \n• усиленной конфиденциальности \n• упрощенный резервного копирования и восстановления \n• индивидуальные фонд управления \n\nдвух типов передовых транзакций (тратить часы только адреса и разделяет монета) в новой версии в настоящее время не поддерживаются.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Обновление занимает всего лишь второй и ваши bitcoins и истории будет безопасным. Вот то, что лучше: • полностью обновлен дизайн и пользовательский опыт • надежной безопасности центр • усиленной конфиденциальности • упрощенный резервного копирования и восстановления • индивидуальные фонд управления двух типов передовых транзакций (тратить часы только адреса и разделяет монета) в новой версии в настоящее время не поддерживаются.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Существует проблема установления вашей личности.";

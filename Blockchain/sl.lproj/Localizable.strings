@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Preveritev zakaj modernizirati denarnice";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Preverjanje za več računov: korak %d %d";
+"Checking for more: Step %d of %d" = "Preverjanje za več: korak %1$d %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Blizu";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Kopiranje v odložišče";
 
 /* (No Commment) */
-"Create Account" = "Ustvarjanje računa";
+"Create" = "Ustvarite";
 
 /* (No Commment) */
 "Create New Wallet" = "Ustvarite novo Denarnica";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Ustvarite denarnice";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Ustvarite prilagojene račune, da pomagajo ohraniti vašo denarnico, ki organizira";
-
-/* (No Commment) */
-"Creating Account" = "Ustvarjanje računa";
+"Creating" = "Ustvarjanje";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Ustvarjanje HD denarnice";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Trenutna stopnja: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Prilagodite si organizirati vaš bitcoins v vaši denarnici Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dešifrirati geslo PIN dolžino 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Enostavno enkrat denarnico backup omogoča nadzor vaših sredstev";
 
 /* (No Commment) */
-"Edit Account" = "Urejanje račun";
+"Edit" = "Urejanje";
 
 /* (No Commment) */
 "Email" = "E-pošta";
+
+/* (No Commment) */
+"Email Notifications" = "E-obvestila";
 
 /* (No Commment) */
 "Empty response from server." = "Prazen odgovor strežnika.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Omogočite lokacijske storitve";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Omogoči prijave prejeli elektronsko sporočilo vsakokrat, ko prejmete bitcoins. Samo označeni naslovi v vaš račun in uvožene naslove so upravičeni, da sproži obvestila.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Omogoči prijave prejeli elektronsko sporočilo vsakokrat, ko prejmete bitcoins. Samo označeni naslovi in uvožene naslove so upravičeni, da sproži obvestila.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "To funkcijo bo omogočilo vsem uporabnikom dotik ID prstni odtis registriran na to napravo za dostop do vaše denarnice.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Pozabite denarnice";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Našel račun %1$d, z %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Iz in destinacijo račun je treba različne";
+"Found %d, with %@" = "Ustanavljati %1$d, z %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Iz in ciljni naslov je treba različne";
+
+/* (No Commment) */
+"From and destination have to be different" = "Iz in namembni kraj, je treba različne";
 
 /* (No Commment) */
 "Generate new" = "Ustvarjajo nove";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Moj Bitcoin denarnico";
 
 /* (No Commment) */
-"Name your account" = "Ime računa";
+"Name" = "ime";
 
 /* (No Commment) */
 "New Address" = "Nov naslov";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Vzpenjajoč se zalotiti šele seconda in bitcoins in zgodovina hoteti obstati varen. Tukaj je, kaj je bolje: \n\n• popolnoma posodobljen načrt ter uporabnik doživetje \n• zanesljive varnostne center \n• izboljšano zasebnosti \n• poenostavljeno varnostno kopiranje in obnovitev \n• Customized upravljanje skladov \n\ndve vrsti dodatne transakciji (porabe iz gledal samo naslove in delijo kovanec) niso podprti v novi različici obtorej.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Vzpenjajoč se zalotiti šele seconda in bitcoins in zgodovina hoteti obstati varen. Tukaj je, kaj je bolje: • popolnoma posodobljen načrt ter uporabnik doživetje • zanesljive varnostne center • izboljšano zasebnosti • poenostavljeno varnostno kopiranje in obnovitev • Customized upravljanje skladov dve vrsti dodatne transakciji (porabe iz gledal samo naslove in delijo kovanec) niso podprti v novi različici obtorej.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Tam je bil problem vaši identiteti.";

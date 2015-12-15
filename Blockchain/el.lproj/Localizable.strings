@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Έλεγχος για ενημερώσεις πορτοφόλι";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Έλεγχος για περισσότερους λογαριασμούς: %d βήμα %d";
+"Checking for more: Step %d of %d" = "Έλεγχος για περισσότερα: %1$d βήμα του %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Κλείσιμο";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Αντιγραφή στο Πρόχειρο";
 
 /* (No Commment) */
-"Create Account" = "Δημιουργία λογαριασμού";
+"Create" = "Δημιουργία";
 
 /* (No Commment) */
 "Create New Wallet" = "Δημιουργήσετε νέα πορτοφόλι";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Δημιουργία πορτοφόλι";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Δημιουργήστε εξατομικευμένη λογαριασμούς για να βοηθήσει να κρατήσει το πορτοφόλι σας οργανωμένη";
-
-/* (No Commment) */
-"Creating Account" = "Δημιουργία λογαριασμού";
+"Creating" = "Τη δημιουργία";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Τη δημιουργία HD πορτοφόλι";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Σημερινό ποσοστό: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Να προσαρμόσετε τον τρόπο που μπορείτε να οργανώσετε σας bitcoins στο πορτοφόλι σας Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Αποκρυπτογραφηθούν με τον PIN κωδικό μήκος 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Εύκολο ένα χρόνο εφεδρικής τροφοδοσίας πορτοφόλι σας κρατά σε έλεγχο των κεφαλαίων σας";
 
 /* (No Commment) */
-"Edit Account" = "Επεξεργαστείτε το λογαριασμό";
+"Edit" = "Επεξεργασία";
 
 /* (No Commment) */
 "Email" = "Ηλεκτρονικό ταχυδρομείο";
+
+/* (No Commment) */
+"Email Notifications" = "Ανακοινώσεις ηλεκτρονικού ταχυδρομείου";
 
 /* (No Commment) */
 "Empty response from server." = "Κενή απόκριση από το διακομιστή.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Ενεργοποιήστε τις υπηρεσίες τοποθεσίας";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Ενεργοποίηση κοινοποιήσεις να λαμβάνετε ένα email κάθε φορά που λαμβάνετε bitcoins. Μόνο με ετικέτα στους λογαριασμούς σας και εισαγόμενα διευθύνσεων δικαιούνται να σκανδάλη κοινοποιήσεις.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Ενεργοποίηση κοινοποιήσεις να λαμβάνετε ένα email κάθε φορά που λαμβάνετε bitcoins. Μόνο με την ένδειξη διευθύνσεις και εισάγονται διευθύνσεις δικαιούνται να σκανδάλη κοινοποιήσεις.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Ενεργοποίηση αυτής της δυνατότητας θα επιτρέπουν σε όλους τους χρήστες με μια καταστατική ID αφής δακτυλικών αποτυπωμάτων σε αυτήν την συσκευή για να αποκτήσετε πρόσβαση στο πορτοφόλι σας.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Ξεχάστε το πορτοφόλι";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Βρέθηκαν λογαριασμό %1$d, με %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Από και το λογαριασμό προορισμού πρέπει να διαφέρει";
+"Found %d, with %@" = "Βρέθηκαν %1$d, με %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Από και διεύθυνση προορισμού πρέπει να διαφέρει";
+
+/* (No Commment) */
+"From and destination have to be different" = "Από και προορισμού πρέπει να διαφέρει";
 
 /* (No Commment) */
 "Generate new" = "Δημιουργία νέων";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Το πορτοφόλι μου Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Όνομα λογαριασμού σας";
+"Name" = "Όνομα";
 
 /* (No Commment) */
 "New Address" = "Νέα διεύθυνση";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: \n\n• Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία \n• ισχυρή ασφάλεια κέντρο \n• ενισχυμένη προστασία της ιδιωτικής \n• ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης \n• προσαρμοσμένη διαχείριση κεφαλαίων \n\nδύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: • Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία • ισχυρή ασφάλεια κέντρο • • ενισχυμένη προστασία της ιδιωτικής ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης • προσαρμοσμένη διαχείριση κεφαλαίων δύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Υπήρχε ένα πρόβλημα που επαληθεύει την ταυτότητά σας.";

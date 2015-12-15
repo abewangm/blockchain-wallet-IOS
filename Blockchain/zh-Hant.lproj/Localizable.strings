@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "檢查錢包更新";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "檢查更多帳戶: 步 %d 的 %d";
+"Checking for more: Step %d of %d" = "檢查更多: 步 %1$d 的 %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "關閉";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "複製到剪貼簿";
 
 /* (No Commment) */
-"Create Account" = "創建帳戶";
+"Create" = "創建";
 
 /* (No Commment) */
 "Create New Wallet" = "創建新的錢包";
@@ -215,10 +215,7 @@
 "Create Wallet" = "創建錢包";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "創建個人化的帳戶，以説明保持你的錢包組織";
-
-/* (No Commment) */
-"Creating Account" = "創建帳戶";
+"Creating" = "創建";
 
 /* (No Commment) */
 "Creating HD Wallet" = "創建高清錢包";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "現價: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "自訂您組織您的比特幣在皮夾裡 Blockchain 的方式";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "解密的 PIN 密碼長度為 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "輕鬆一次錢包備份讓您控制您的資金";
 
 /* (No Commment) */
-"Edit Account" = "編輯帳戶";
+"Edit" = "編輯";
 
 /* (No Commment) */
 "Email" = "電子郵件";
+
+/* (No Commment) */
+"Email Notifications" = "電子郵件通知";
 
 /* (No Commment) */
 "Empty response from server." = "伺服器的空回應。";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "啟用定位服務";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "啟用通知，只要你接收比特幣收到一封電子郵件。只有標記的位址在您的帳戶和導入的位址有資格觸發通知。";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "啟用通知，只要你接收比特幣收到一封電子郵件。只有標記為位址和導入位址有資格向觸發通知。";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "啟用此功能將允許所有使用者與註冊的觸摸 ID 指紋在此設備上訪問到你的錢包。";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "忘了錢包";
 
 /* (No Commment) */
-"Found account %d, with %@" = "發現帳戶 %1$d，與 %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "從和目標帳戶必須是不同";
+"Found %d, with %@" = "發現 %1$d，與 %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "從和目的地位址必須是不同";
+
+/* (No Commment) */
+"From and destination have to be different" = "從和目的地必須是不同";
 
 /* (No Commment) */
 "Generate new" = "新生成";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "我的比特幣錢包";
 
 /* (No Commment) */
-"Name your account" = "您的帳戶的名稱";
+"Name" = "名稱";
 
 /* (No Commment) */
 "New Address" = "新的位址";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: \n\n• 完全更新設計和使用者體驗 \n• 魯棒安全中心\n• 增強隱私 \n• 簡化備份和恢復 \n• 定制基金管理\n\n兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: • 完全更新設計和使用者體驗 • 魯棒安全中心增強隱私 • 簡化備份和恢復 • 定制基金管理兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "還有一個問題，驗證您的身份。";

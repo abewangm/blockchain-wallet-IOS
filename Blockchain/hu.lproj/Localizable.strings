@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "A mobiltárca-frissítések";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "További számlák ellenőrzése: %d lépés %d";
+"Checking for more: Step %d of %d" = "Több ellenőrzése: lépés %1$d az %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Zár";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Másolása a vágólapra";
 
 /* (No Commment) */
-"Create Account" = "Fiók létrehozása";
+"Create" = "Létrehozása";
 
 /* (No Commment) */
 "Create New Wallet" = "Új Mobiltárcaprofil létrehozása";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Hozzon létre a pénztárca";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Hozzon létre testreszabott fiókokat, hogy segítsen tartani a pénztárca, szervezett";
-
-/* (No Commment) */
-"Creating Account" = "Fiók létrehozása";
+"Creating" = "Létrehozása";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Létrehozása HD pénztárca";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Jelenlegi árfolyam: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Megszokott a út Ön szervez a bitcoins a Blockchain pénztárca";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Visszafejtett TÛS jelszó hossza 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Könnyű idő pénztárca hát tart ellenőrzése a pénzed";
 
 /* (No Commment) */
-"Edit Account" = "Fiók szerkesztés";
+"Edit" = "Szerkesztése";
 
 /* (No Commment) */
 "Email" = "E-mailben";
+
+/* (No Commment) */
+"Email Notifications" = "E-mail értesítések";
 
 /* (No Commment) */
 "Empty response from server." = "Üres válasz a kiszolgálótól.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Engedélyezi a helyszolgáltatása";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Engedélyezi az értesítéseket szeretne kapni egy e-mailt kapni bitcoins. Értesítést kiváltó csak jelölt címeket a számlák és importált címek jogosultak.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Engedélyezi az értesítéseket szeretne kapni egy e-mailt kapni bitcoins. Csak a jelölt címeket és importált címek jogosultak trigger értesítések.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "A szolgáltatás engedélyezése lehetővé teszi, hogy minden felhasználó a regisztrált Touch ID ujjlenyomat ez berendezés-hoz belépés-hoz tárcátok.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Felejtsd el a tárca";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Számla %1$d, a %2$@ található";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Származó és a rendeltetési számlára van, hogy különböző";
+"Found %d, with %@" = "Talált %1$d, %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Származó és a rendeltetési hely cím van, hogy különböző";
+
+/* (No Commment) */
+"From and destination have to be different" = "Származó és a rendeltetési hely van, hogy különböző";
 
 /* (No Commment) */
 "Generate new" = "Generáljon újat";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Bitcoin tárcámat";
 
 /* (No Commment) */
-"Name your account" = "A fiók neve";
+"Name" = "név";
 
 /* (No Commment) */
 "New Address" = "Új cím";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: \n\n• design teljesen frissített és felhasználó tapasztalat \n• robusztus biztonsági központ \n• továbbfejlesztett adatvédelmi \n• egyszerűsített biztonsági mentés és helyreállítás \n• szabott alapkezelő \n\nkét speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: design • teljesen frissített és felhasználó tapasztalat • robusztus biztonsági központ • továbbfejlesztett adatvédelmi egyszerűsített biztonsági mentés és helyreállítás • szabott alapkezelő két speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";

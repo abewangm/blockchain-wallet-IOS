@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Verificarea pentru portofel actualizări";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Pentru mai multe conturi: pas %d de %d";
+"Checking for more: Step %d of %d" = "Verificarea pentru mai multe informaţii: pas %1$d de %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Închide";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Copiaţi în clipboard";
 
 /* (No Commment) */
-"Create Account" = "Crează cont";
+"Create" = "Crea";
 
 /* (No Commment) */
 "Create New Wallet" = "Portofel nou a crea";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Crea portofel";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Creaţi conturi de personalizat pentru a vă păstra portofel organizat";
-
-/* (No Commment) */
-"Creating Account" = "Crearea cont";
+"Creating" = "Crearea";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Crearea HD portofel";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Rata: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Particularizați modul în care organizați bitcoins dumneavoastră în portofel Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Lungimea parolei PIN decriptat 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Rezervă de portofel uşor o dată te ţine în controlul fondurile tale";
 
 /* (No Commment) */
-"Edit Account" = "Editați contul";
+"Edit" = "Editare";
 
 /* (No Commment) */
 "Email" = "E-mail";
+
+/* (No Commment) */
+"Email Notifications" = "Notificări prin e-mail";
 
 /* (No Commment) */
 "Empty response from server." = "Gol de răspuns de la server.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Activare servicii de localizare";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Activare notificări pentru a primi un email de fiecare dată când primiţi bitcoins. Numai etichetate adrese în conturile dumneavoastră şi adrese importate sunt eligibile la notificări declanşator.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Activare notificări pentru a primi un email de fiecare dată când primiţi bitcoins. Numai etichetat adrese şi importate adrese sunt eligibile la notificări declanşator.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Activarea această facilitate va permite tuturor utilizatorilor cu o amprentă de Touch ID înregistraţi pe acest dispozitiv accesul la portofel.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Uita de portofel";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Găsit cont %1$d, cu %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "La şi cont de destinaţie trebuie să fie diferite";
+"Found %d, with %@" = "Găsit %1$d, cu %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "La şi adresa de destinaţie trebuie să fie diferite";
+
+/* (No Commment) */
+"From and destination have to be different" = "La şi destinaţie trebuie să fie diferite";
 
 /* (No Commment) */
 "Generate new" = "Genera noi";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Portofelul meu Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Numele contului";
+"Name" = "nume";
 
 /* (No Commment) */
 "New Address" = "Noua adresa";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine: \n\n• complet actualizat design şi utilizator experienţă \n• securitate robustă centrul \n• Enhanced confidențialitate \n• simplificată de backup şi recuperare \n• personalizate Fondul management \n\ndouă tipuri de avansate tranzacţie (cheltuieli de doar uita-te la adresele şi la comun de monede) nu sunt acceptate în noua versiune în acest moment.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine: • complet actualizat design şi utilizator experienţă • securitate robustă centrul • Enhanced confidențialitate • simplificată de backup şi recuperare • personalizate Fondul management două tipuri de avansate tranzacţie (cheltuieli de doar uita-te la adresele şi la comun de monede) nu sunt acceptate în noua versiune în acest moment.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "A fost o problemă de verificarea identităţii.";

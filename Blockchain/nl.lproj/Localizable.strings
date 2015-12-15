@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Controleren op updates van de portefeuille";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Controle voor meer accounts: stap %d van %d";
+"Checking for more: Step %d of %d" = "Controleren voor meer informatie: stap %1$d van %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Sluiten";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Naar klembord kopiëren";
 
 /* (No Commment) */
-"Create Account" = "Account aanmaken";
+"Create" = "Maken";
 
 /* (No Commment) */
 "Create New Wallet" = "Maak nieuwe portefeuille";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Portefeuille maken";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Persoonlijke accounts te helpen houden uw portemonnee georganiseerd maken";
-
-/* (No Commment) */
-"Creating Account" = "Account aanmaken";
+"Creating" = "Maken";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Maken van HD-portemonnee";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Huidige tempo: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Aanpassen van de manier waarop u uw bitcoins organiseren in uw portemonnee Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Gedecodeerde PIN wachtwoordlengte 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Eenvoudig één keer portemonnee back-up houdt u in controle van uw fondsen";
 
 /* (No Commment) */
-"Edit Account" = "Account bewerken";
+"Edit" = "Bewerken";
 
 /* (No Commment) */
 "Email" = "E-mail";
+
+/* (No Commment) */
+"Email Notifications" = "E-mailberichten";
 
 /* (No Commment) */
 "Empty response from server." = "Lege reactie van de server.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Locatieservices inschakelen";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Meldingen te ontvangen een e-mail wilt ontvangen wanneer u bitcoins inschakelen. Alleen gelabelde adressen in uw rekeningen en geïmporteerde adressen komen in aanmerking voor trigger meldingen.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Meldingen te ontvangen een e-mail wilt ontvangen wanneer u bitcoins inschakelen. Alleen label adressen en geïmporteerde komen adressen in aanmerking voor trigger meldingen.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Deze functie in te schakelen kunnen alle gebruikers met een geregistreerde vingerafdruk Touch ID op dit apparaat toegang tot uw portemonnee.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Portemonnee vergeten";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Gevonden rekening %1$d, met %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Uit en bestemmingsrekening moet worden verschillende";
+"Found %d, with %@" = "Gevonden %1$d, met %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Uit en doeladres hebben om anders te zijn";
+
+/* (No Commment) */
+"From and destination have to be different" = "Uit en bestemming hebben om anders te zijn";
 
 /* (No Commment) */
 "Generate new" = "Nieuwe genereren";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Mijn Bitcoin portemonnee";
 
 /* (No Commment) */
-"Name your account" = "Naam van uw account";
+"Name" = "Naam";
 
 /* (No Commment) */
 "New Address" = "Nieuw adres";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zullen veilig. Hier is wat is beter: \n\n• volledig bijgewerkt ontwerp en gebruikerservaring \n• robuuste beveiliging center \n• verbeterde Privacy vereenvoudigde back-up en herstel \n• aangepast vermogensbeheer\n\ntwee geavanceerde transactiesoorten (besteding van horloge-alleen adressen en gedeelde munt) worden niet ondersteund in de nieuwe versie op dit moment.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zullen veilig. Hier is wat is beter: • volledig bijgewerkt ontwerp en gebruikerservaring • robuuste beveiliging center • verbeterde Privacy vereenvoudigde back-up en herstel • aangepast vermogensbeheer twee geavanceerde transactiesoorten (besteding van horloge-alleen adressen en gedeelde munt) worden niet ondersteund in de nieuwe versie op dit moment.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Er was een probleem uw identiteit verifiëren.";

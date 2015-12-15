@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Kontrola aktualizací Peněženka";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Kontrola více účtů: %d krok %d";
+"Checking for more: Step %d of %d" = "Kontrola více: krok %1$d %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Zavřít";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Kopírovat do schránky";
 
 /* (No Commment) */
-"Create Account" = "Vytvořit účet";
+"Create" = "Vytvořit";
 
 /* (No Commment) */
 "Create New Wallet" = "Vytvoření nové peněženky";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Vytvoření peněženku";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Vytvořit osobní účty pomoci udržet vaše peněženka, organizované";
-
-/* (No Commment) */
-"Creating Account" = "Vytvoření účtu";
+"Creating" = "Vytváření";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Vytváření HD Peněženka";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Aktuální kurz: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Upravit způsob, jak organizovat své bitcoins v peněžence Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dešifrovaný délka hesla PIN 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Snadné jednou peněženku zálohování vás drží kontrolu nad vaší fondů";
 
 /* (No Commment) */
-"Edit Account" = "Upravit účet";
+"Edit" = "Úpravy";
 
 /* (No Commment) */
 "Email" = "E-mail";
+
+/* (No Commment) */
+"Email Notifications" = "E-mailová upozornění";
 
 /* (No Commment) */
 "Empty response from server." = "Prázdná odpověď ze serveru.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Povolení služby pro umístění";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Povolte oznámení obdržet e-mail pokaždé, když přijmete bitcoins. Pouze označené adresy v účtech a importované adresy mají nárok na aktivační událost oznámení.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Povolte oznámení obdržet e-mail pokaždé, když přijmete bitcoins. Pouze označené adresy a importovat adresy mají nárok na aktivační událost oznámení.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Povolení této funkce umožní všem uživatelům s registrovanou Touch ID otisk na tomto zařízení pro přístup k vaší peněžence.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Zapomeňte na peněženku";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Nalezen účet %1$d, s %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Od a cílový účet musí být různé";
+"Found %d, with %@" = "Nalezeny %1$d, s %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Od a cílová adresa se musí lišit";
+
+/* (No Commment) */
+"From and destination have to be different" = "Od a cíl musí být různé";
 
 /* (No Commment) */
 "Generate new" = "Generovat nový";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Moje peněženka Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Název účtu";
+"Name" = "Jméno";
 
 /* (No Commment) */
 "New Address" = "Nová adresa";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovace bude trvat jen chvilku a bitcoins a historie bude v bezpečí. Zde je to, co je lepší:\n\n• kompletně aktualizován designu a uživatelské zkušenosti \n• robustní bezpečnostní centrum \n• rozšířené soukromí \n• zjednodušené zálohování a zotavení \n• vlastní správy fondu\n\ndva typy rozšířené transakcí (výdaje z hodinek pouze adresy a sdílené mince) nejsou podporovány v nové verzi v tuto chvíli.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovace bude trvat jen chvilku a bitcoins a historie bude v bezpečí. Zde je to, co je lepší: • kompletně aktualizován designu a uživatelské zkušenosti • robustní bezpečnostní centrum • rozšířené soukromí • zjednodušené zálohování a zotavení • vlastní správy fondu dva typy rozšířené transakcí (výdaje z hodinek pouze adresy a sdílené mince) nejsou podporovány v nové verzi v tuto chvíli.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Došlo k problému s ověřením identity.";

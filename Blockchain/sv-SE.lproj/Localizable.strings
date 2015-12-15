@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Plånbok uppdateringar";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Kontroll för fler konton: steg %d %d";
+"Checking for more: Step %d of %d" = "Kontroll för mer: steg %1$d av %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Stäng";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Kopiera till Urklipp";
 
 /* (No Commment) */
-"Create Account" = "Skapa konto";
+"Create" = "Skapa";
 
 /* (No Commment) */
 "Create New Wallet" = "Skapa ny plånbok";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Skapa plånbok";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Skapa personliga konton för att hålla plånboken organiserade";
-
-/* (No Commment) */
-"Creating Account" = "Att skapa konto";
+"Creating" = "Att skapa";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Skapa HD plånbok";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Nuvarande pris: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Anpassa hur du ordna dina bitcoins i plånboken Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dekrypterade PIN lösenordslängd 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Lätt en gång plånbok backup håller dig kontroll över dina fonder";
 
 /* (No Commment) */
-"Edit Account" = "Redigera konto";
+"Edit" = "Redigera";
 
 /* (No Commment) */
 "Email" = "E-post";
+
+/* (No Commment) */
+"Email Notifications" = "E-postmeddelanden";
 
 /* (No Commment) */
 "Empty response from server." = "Tomma svar från servern.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Aktivera platstjänster";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Aktivera meddelanden ta emot ett e-postmeddelande när du tar emot bitcoins. Bara märkt adresser i dina konton och importerade adresser kan utlösa meddelanden.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Aktivera meddelanden ta emot ett e-postmeddelande när du tar emot bitcoins. Bara märkt adresser och importerade är adresser berättigade att utlösa meddelanden.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktiverar den här funktionen kan alla användare med ett registrerat Touch ID fingeravtryck på den här enheten får tillgång till din plånbok.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Glömma plånboken";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Hittade konto %1$d, med %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Från och destinationskonto måste vara olika";
+"Found %d, with %@" = "Hittade %1$d, med %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Från och måladressen måste vara olika";
+
+/* (No Commment) */
+"From and destination have to be different" = "Från och destination måste vara olika";
 
 /* (No Commment) */
 "Generate new" = "Generera nya";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Min Bitcoin plånbok";
 
 /* (No Commment) */
-"Name your account" = "Namnge ditt konto";
+"Name" = "Namn";
 
 /* (No Commment) */
 "New Address" = "Ny adress";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Uppgraderingen tar bara en sekund och dina bitcoins och historien kommer att vara säker. Här är vad är bättre: \n\n• helt uppdaterad design och förbrukaren erfarenhet \n• Robust säkerhet centrerar \n• förbättrad sekretesspolicy \n• förenklad säkerhetskopiering och återställning \n• Customized fondförvaltning \n\ntvå avancerade transaktionstyper (spendera från watch-bara adresser och delade mynt) inte stöds i den nya versionen på denna tid.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Uppgraderingen tar bara en sekund och dina bitcoins och historien kommer att vara säker. Här är vad är bättre: • helt uppdaterad design och förbrukaren erfarenhet • Robust säkerhet centrerar • förbättrad sekretesspolicy • förenklad säkerhetskopiering och återställning • Customized fondförvaltning två avancerade transaktionstyper (spendera från watch-bara adresser och delade mynt) inte stöds i den nya versionen på denna tid.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Det gick inte att verifiera din identitet.";

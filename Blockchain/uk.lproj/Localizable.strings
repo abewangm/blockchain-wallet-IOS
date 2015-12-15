@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Перевірка наявності оновлень гаманець";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Перевірка наявності більше облікових записів: крок %d %d";
+"Checking for more: Step %d of %d" = "Перевірка наявності більше: крок %1$d %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Закрити";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Скопіювати до буфера обміну";
 
 /* (No Commment) */
-"Create Account" = "Створити обліковий запис";
+"Create" = "Створити";
 
 /* (No Commment) */
 "Create New Wallet" = "Створити новий гаманець";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Створити гаманець";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Створити персоналізовані рахунок, щоб допомогти зберегти ваш гаманець, організована";
-
-/* (No Commment) */
-"Creating Account" = "Створення облікового запису";
+"Creating" = "Створення";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Створення HD гаманець";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Поточного курсу: %@ БТД";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Настроїти спосіб організувати ваші bitcoins у вашому гаманці Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Довжина PIN пароль розшифровані 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Легко один раз гаманець backup дає змогу контролювати ваших фондів";
 
 /* (No Commment) */
-"Edit Account" = "Виправте обліковий запис";
+"Edit" = "Редагувати";
 
 /* (No Commment) */
 "Email" = "Електронна пошта";
+
+/* (No Commment) */
+"Email Notifications" = "Сповіщення електронною поштою";
 
 /* (No Commment) */
 "Empty response from server." = "Пусті відповіді від сервера.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Увімкнення служби локації";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Увімкнути сповіщення для отримання по електронній пошті, коли ви отримуєте bitcoins. Тільки помічені адреси у ваших облікових записів та імпортованих адреси мають право тригер сповіщення.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Увімкнути сповіщення для отримання по електронній пошті, коли ви отримуєте bitcoins. Тільки помічені адреси і імпортовані адреси мають право тригер сповіщення.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Увімкнення цієї функції дозволить всім користувачам з зареєстрованих Touch ID відбитків на цей пристрою для доступу до вашого гаманця.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Забути гаманець";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Знайшов обліковий запис %1$d, з %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Від і призначення рахунку повинні бути різними";
+"Found %d, with %@" = "Знайдено %1$d, з %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Від та адреси призначення мають бути різними";
+
+/* (No Commment) */
+"From and destination have to be different" = "Від і призначення мають бути різними";
 
 /* (No Commment) */
 "Generate new" = "Згенерувати нове";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Мій гаманець Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Ім'я облікового запису";
+"Name" = "Ім'я";
 
 /* (No Commment) */
 "New Address" = "Нова адреса";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Тут є те, що краще: \n\n• повністю оновлено дизайн і роботи користувачів \n• надійною системою безпеки центр \n• розширеної конфіденційності \n• спрощене резервного копіювання і відновлення \n• індивідуальні управління Фондом \n\nдва типи передові операції (витрачати від дивитися лише для адрес і поділився монета) не підтримуються в новій версії в даний час.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Тут є те, що краще: • повністю оновлено дизайн і роботи користувачів • надійною системою безпеки центр • розширеної конфіденційності • спрощене резервного копіювання і відновлення • індивідуальні управління Фондом два типи передові операції (витрачати від дивитися лише для адрес і поділився монета) не підтримуються в новій версії в даний час.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Виникли утруднення засвідчує вашу особу.";

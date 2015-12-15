@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "財布更新プログラムのチェック";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "多くのアカウントをチェック: %d のステップ %d";
+"Checking for more: Step %d of %d" = "詳細をチェック: %2$d のステップ %1$d";
 
 /* No comment provided by engineer. */
 "Close" = "閉じる";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "クリップボードにコピー";
 
 /* (No Commment) */
-"Create Account" = "アカウントを作成します。";
+"Create" = "作成します。";
 
 /* (No Commment) */
 "Create New Wallet" = "新しい財布を作成します。";
@@ -215,10 +215,7 @@
 "Create Wallet" = "財布を作成します。";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "あなたの財布の整理を保つために個人アカウントを作成します。";
-
-/* (No Commment) */
-"Creating Account" = "アカウントを作成します。";
+"Creating" = "作成します。";
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD ウォレットを作成します。";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "現在のレート: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Blockchain 財布、bitcoins を整理する方法をカスタマイズします。";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "復号化された PIN パスワード長さ 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "簡単な一回財布バックアップは、あなたの資金の制御";
 
 /* (No Commment) */
-"Edit Account" = "アカウントを編集します。";
+"Edit" = "編集";
 
 /* (No Commment) */
 "Email" = "電子メール";
+
+/* (No Commment) */
+"Email Notifications" = "電子メール通知";
 
 /* (No Commment) */
 "Empty response from server." = "サーバーから空の応答。";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "位置情報サービスを有効にします。";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Bitcoins を受信するたびにメールを受信する通知を有効にします。ラベル アドレスのみのアカウントで、インポートしたアドレスが通知をトリガーする対象となります。";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoins を受信するたびにメールを受信する通知を有効にします。アドレスをラベル付けされてインポートだけアドレスは、通知をトリガーします。";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "この機能を有効にすると、このデバイスがあなたの財布にアクセスするにタッチ ID 指紋の登録されているすべてのユーザーが許可されます。";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "財布を忘れてください。";
 
 /* (No Commment) */
-"Found account %d, with %@" = "%2$@ でのアカウント %1$d を発見します。";
-
-/* (No Commment) */
-"From and destination account have to be different" = "接続先のアカウントを異なるする必要がありますと";
+"Found %d, with %@" = "%2$@ と %1$d を発見します。";
 
 /* (No Commment) */
 "From and destination address have to be different" = "宛先アドレスが別でなければならないと";
+
+/* (No Commment) */
+"From and destination have to be different" = "異なる宛先";
 
 /* (No Commment) */
 "Generate new" = "新規生成します。";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Bitcoin 財布";
 
 /* (No Commment) */
-"Name your account" = "あなたのアカウントに名前を付ける";
+"Name" = "名";
 
 /* (No Commment) */
 "New Address" = "新しいアドレス";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い:\n\n• 完全に更新デザインとユーザー エクスペリエンスの \n• 堅牢なセキュリティ センター\n• プライバシーの強化 \n• 簡体字バックアップ/リカバリ \n• カスタマイズされた基金管理 \n\n2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い: 完全に更新 • デザインとユーザー エクスペリエンスの • 堅牢なセキュリティ センター プライバシーの強化 • 簡体字バックアップ/リカバリ • カスタマイズされた基金管理 2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "あなたの身元の確認で問題があった。";

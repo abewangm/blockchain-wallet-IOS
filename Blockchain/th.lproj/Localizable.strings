@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "การกระเป๋าสตางค์";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "ตรวจสอบบัญชีเพิ่มเติม: %d ขั้นตอนที่ %d";
+"Checking for more: Step %d of %d" = "ตรวจสอบเพิ่มเติม: %1$d ขั้นตอนของ %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "ปิด";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "คัดลอกลงคลิปบอร์ด";
 
 /* (No Commment) */
-"Create Account" = "สร้างบัญชี";
+"Create" = "สร้าง";
 
 /* (No Commment) */
 "Create New Wallet" = "สร้างกระเป๋าใหม่";
@@ -215,10 +215,7 @@
 "Create Wallet" = "สร้างกระเป๋าสตางค์";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "สร้างบัญชีส่วนบุคคลเพื่อช่วยให้คุณจัดระเบียบกระเป๋า";
-
-/* (No Commment) */
-"Creating Account" = "สร้างบัญชี";
+"Creating" = "สร้าง";
 
 /* (No Commment) */
 "Creating HD Wallet" = "สร้าง HD กระเป๋าสตางค์";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "ราคาปัจจุบัน: %@ บีทีซี";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "กำหนดวิธีคุณจัดระเบียบ bitcoins ของคุณในกระเป๋าสตางค์ของ Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "ถอดรหัสลับรหัสผ่าน PIN ยาว 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "เวลาง่ายหนึ่งกระเป๋าสำรองช่วยให้คุณควบคุมการเงินของคุณ";
 
 /* (No Commment) */
-"Edit Account" = "แก้ไขบัญชี";
+"Edit" = "แก้ไข";
 
 /* (No Commment) */
 "Email" = "อีเมล";
+
+/* (No Commment) */
+"Email Notifications" = "อีเมล์แจ้งเตือน";
 
 /* (No Commment) */
 "Empty response from server." = "การตอบสนองจากเซิร์ฟเวอร์ว่างเปล่า";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "เปิดสถานบริการ";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "เปิดใช้งานการแจ้งเตือนได้รับอีเมล์เมื่อใดก็ ตามที่คุณได้รับ bitcoins มีป้ายชื่ออยู่ในบัญชีของคุณและที่อยู่นำเข้ามีสิทธิ์ที่จะทริกเกอร์การแจ้งเตือน";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "เปิดใช้งานการแจ้งเตือนได้รับอีเมล์เมื่อใดก็ ตามที่คุณได้รับ bitcoins ชื่อที่อยู่ และนำเข้า มีสิทธิ์ที่จะทริกเกอร์การแจ้งเตือน";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "เปิดใช้งานคุณลักษณะนี้จะช่วยให้ผู้ใช้พิมพ์นิ้วมือสัมผัสรหัสลงทะเบียนทั้งหมดบนอุปกรณ์นี้เข้ากับกระเป๋าสตางค์ของคุณ";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "ลืมกระเป๋าสตางค์";
 
 /* (No Commment) */
-"Found account %d, with %@" = "พบบัญชี %1$d กับ %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "จากบัญชีปลายทางที่ได้จะแตกต่างกัน";
+"Found %d, with %@" = "พบ %1$d กับ %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "จากที่อยู่ปลายทางได้จะแตกต่างกัน";
+
+/* (No Commment) */
+"From and destination have to be different" = "จากปลายทางที่ต้องการแตกต่างกันและ";
 
 /* (No Commment) */
 "Generate new" = "สร้างใหม่";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "กระเป๋า Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "ชื่อบัญชีของคุณ";
+"Name" = "ชื่อ";
 
 /* (No Commment) */
 "New Address" = "ที่อยู่ใหม่";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "การอัพเกรดใช้เวลาเพียงวินาที และ bitcoins และประวัติของคุณจะปลอดภัย นี่คือสิ่งดี: \n\n• สมบูรณ์ปรับปรุงออกแบบและผู้ใช้ประสบการณ์\n• ความปลอดภัยแข็งแรงศูนย์\n• เพิ่มความเป็นส่วนตัว\n• ประยุกต์สำรองและกู้คืน\n• ปรับแต่งกองรุ่น\n\nใหม่ขณะนี้ไม่สนับสนุนชนิดของธุรกรรมขั้นสูง 2 (ใช้จ่ายจากที่อยู่ดูเดียวและเหรียญที่ใช้ร่วมกัน)";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "การอัพเกรดใช้เวลาเพียงวินาที และ bitcoins และประวัติของคุณจะปลอดภัย นี่คือสิ่งดี: •สมบูรณ์ปรับปรุงออกแบบและผู้ใช้ประสบการณ์•ความปลอดภัยแข็งแรงศูนย์•เพิ่มความเป็นส่วนตัว•ประยุกต์สำรองและกู้คืน•ปรับแต่งกองรุ่นใหม่ขณะนี้ไม่สนับสนุนชนิดของธุรกรรมขั้นสูง 2 (ใช้จ่ายจากที่อยู่ดูเดียวและเหรียญที่ใช้ร่วมกัน)";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "มีปัญหาในการตรวจสอบตัวตนของคุณ";

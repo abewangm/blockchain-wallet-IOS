@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Menyemak untuk pengemaskinian Wallet";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "Menyemak untuk menambahkan akaun: %d langkah %d";
+"Checking for more: Step %d of %d" = "Semakan untuk maklumat lanjut: %1$d langkah dari %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Tutup";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "Salin ke papan Keratan";
 
 /* (No Commment) */
-"Create Account" = "Cipta akaun";
+"Create" = "Mencipta";
 
 /* (No Commment) */
 "Create New Wallet" = "Mencipta Wallet baru";
@@ -215,10 +215,7 @@
 "Create Wallet" = "Mencipta Wallet";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Cipta akaun peribadi untuk membantu mengekalkan dompet yang dianjurkan";
-
-/* (No Commment) */
-"Creating Account" = "Mewujudkan akaun";
+"Creating" = "Mewujudkan";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Mewujudkan HD Wallet";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Harga semasa: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Menyesuaikan cara anda menguruskan bitcoins anda dalam dompet Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Panjang PIN kata laluan arca 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Mudah sekali wallet sandaran menjadikan anda dalam kawalan wang anda";
 
 /* (No Commment) */
-"Edit Account" = "Edit akaun";
+"Edit" = "Edit";
 
 /* (No Commment) */
 "Email" = "E-mel";
+
+/* (No Commment) */
+"Email Notifications" = "Pemberitahuan e-mel";
 
 /* (No Commment) */
 "Empty response from server." = "Kosong respons daripada pelayan.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "Membolehkan lokasi Perkhidmatan";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Mendayakan pemberitahuan untuk menerima e-mel apabila anda menerima bitcoins. Hanya berlabel alamat dalam akaun anda dan alamat yang diimport adalah layak untuk pemberitahuan pencetus.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Mendayakan pemberitahuan untuk menerima e-mel apabila anda menerima bitcoins. Sahaja dilabelkan alamat dan diimport alamat adalah layak untuk pemberitahuan pencetus.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Mendayakan ciri ini akan membolehkan semua pengguna dengan cap jari ID sentuhan yang berdaftar pada peranti ini untuk mencapai dompet anda.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "Lupa Wallet";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Mendapati akaun %1$d, dengan %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Dari dan akaun destinasi berbeza";
+"Found %d, with %@" = "Mendapati %1$d, dengan %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Dari dan alamat destinasi berbeza";
+
+/* (No Commment) */
+"From and destination have to be different" = "Dari dan destinasi yang perlu berbeza";
 
 /* (No Commment) */
 "Generate new" = "Menjana baru";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "Wallet Bitcoin saya";
 
 /* (No Commment) */
-"Name your account" = "Nama akaun";
+"Name" = "Nama";
 
 /* (No Commment) */
 "New Address" = "Alamat baru";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Naik taraf mengambil masa hanya satu saat dan bitcoins dan sejarah anda akan selamat. Di sini adalah Apakah lebih baik: \n\n• Reka bentuk benar-benar dikemaskini dan pengguna mengalami \n• keselamatan yang teguh Pusat \n• privasi dipertingkatkan ringkas sandaran dan pemulihan \n• Customized pengurusan dana \n\njenis transaksi lanjutan dua (perbelanjaan dari alamat menonton sahaja dan duit syiling yang dikongsi) tidak disokong dalam versi baru pada masa ini.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Naik taraf mengambil masa hanya satu saat dan bitcoins dan sejarah anda akan selamat. Di sini adalah Apakah lebih baik: Reka bentuk • benar-benar dikemaskini dan pengguna mengalami • keselamatan yang teguh Pusat • privasi dipertingkatkan ringkas sandaran dan pemulihan • Customized pengurusan dana jenis transaksi lanjutan dua (perbelanjaan dari alamat menonton sahaja dan duit syiling yang dikongsi) tidak disokong dalam versi baru pada masa ini.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Jadilah masalah mengesahkan identiti anda.";

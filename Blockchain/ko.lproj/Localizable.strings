@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "지갑 업데이트 확인";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of %d" = "더 많은 계정에 대 한 검사: %d 단계 %d";
+"Checking for more: Step %d of %d" = "대 한 자세한 확인: %2$d의 단계 %1$d";
 
 /* No comment provided by engineer. */
 "Close" = "닫기";
@@ -206,7 +206,7 @@
 "Copy to clipboard" = "클립보드에 복사";
 
 /* (No Commment) */
-"Create Account" = "계정 만들기";
+"Create" = "만들기";
 
 /* (No Commment) */
 "Create New Wallet" = "새 지갑 만들기";
@@ -215,10 +215,7 @@
 "Create Wallet" = "지갑 만들기";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "당신의 지갑 조직 유지할 수 있도록 개인된 계정 만들기";
-
-/* (No Commment) */
-"Creating Account" = "계정 만들기";
+"Creating" = "만들기";
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD 지갑 만들기";
@@ -234,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "현재 속도: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Blockchain 지갑에 당신의 bitcoins를 구성 하는 방법을 사용자 지정";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "해독 된 핀 암호 길이 0";
@@ -266,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "쉽게 한 번 지갑 백업 자금의 통제에서 당신을 유지합니다";
 
 /* (No Commment) */
-"Edit Account" = "계정 편집";
+"Edit" = "편집";
 
 /* (No Commment) */
 "Email" = "메일 주소";
+
+/* (No Commment) */
+"Email Notifications" = "이메일 알림";
 
 /* (No Commment) */
 "Empty response from server." = "서버에서 빈 응답입니다.";
@@ -281,7 +284,7 @@
 "Enable Location Services" = "위치 서비스를 활성화";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "사용 bitcoins 받을 때마다 이메일을 수신 알림. 귀하의 계정에만 레이블된 주소 및 가져온된 주소 트리거 알림을 받을 수 있습니다.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "사용 bitcoins 받을 때마다 이메일을 수신 알림. 주소를 표시 하 고 가져올 주소 트리거 알림을 받을 수 있습니다.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "이 기능을 사용 하면 당신의 지갑에 액세스 하려면이 장치에서 모든 사용자가 등록 된 터치 ID 지문 수 있게 됩니다.";
@@ -326,13 +329,13 @@
 "Forget Wallet" = "지갑을 잊어합니다";
 
 /* (No Commment) */
-"Found account %d, with %@" = "계정 %1$d, %2$@와 발견";
-
-/* (No Commment) */
-"From and destination account have to be different" = "대상 계정 다를 수 있고";
+"Found %d, with %@" = "%1$d, %2$@와 발견";
 
 /* (No Commment) */
 "From and destination address have to be different" = "대상 주소 다를 수 있고";
+
+/* (No Commment) */
+"From and destination have to be different" = "와 다를 수 있다";
 
 /* (No Commment) */
 "Generate new" = "새로운 생성";
@@ -479,7 +482,7 @@
 "My Bitcoin Wallet" = "내 Bitcoin 지갑";
 
 /* (No Commment) */
-"Name your account" = "귀하의 계정 이름";
+"Name" = "이름";
 
 /* (No Commment) */
 "New Address" = "새 주소";
@@ -769,7 +772,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더: \n\n• 완전히 업데이트 디자인과 사용자 경험 \n• 강력한 보안 센터 \n• 향상 된 개인 정보 보호 정책 \n• 간체 백업 및 복구 \n• 사용자 지정 기금 관리\n\n두 고급 트랜잭션 유형 (시계 전용 주소를 공유 동전 지출)이 이번에 새로운 버전에서 지원 되지 않습니다.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더: 완전히 업데이트 • 디자인과 사용자 경험 • 강력한 보안 센터 • 향상 된 개인 정보 보호 정책 • 간체 백업 및 복구 • 사용자 지정 기금 관리 두 고급 트랜잭션 유형 (시계 전용 주소를 공유 동전 지출)이 이번에 새로운 버전에서 지원 되지 않습니다.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Id 확인 문제가 있었습니다.";
