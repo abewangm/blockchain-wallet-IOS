@@ -1127,7 +1127,7 @@
         return;
     }
     
-    NSRange updatePasswordHintErrorStringRange = [message rangeOfString:@"password-hint1" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    NSRange updatePasswordHintErrorStringRange = [message rangeOfString:@"password-hint1-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (updatePasswordHintErrorStringRange.location != NSNotFound) {
         [self performSelector:@selector(on_update_password_hint_error) withObject:nil afterDelay:0.1f];
         return;
