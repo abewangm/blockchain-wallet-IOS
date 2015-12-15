@@ -186,8 +186,8 @@
         
     app.wallet.delegate = app;
         
-    [app standardNotify:[NSString stringWithFormat:BC_STRING_DID_CREATE_NEW_ACCOUNT_DETAIL]
-                      title:BC_STRING_DID_CREATE_NEW_ACCOUNT_TITLE
+    [app standardNotify:[NSString stringWithFormat:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL]
+                      title:BC_STRING_DID_CREATE_NEW_WALLET_TITLE
                    delegate:nil];
 }
 

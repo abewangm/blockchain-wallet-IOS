@@ -882,7 +882,7 @@
 
 - (void)loading_start_create_account
 {
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_ACCOUNT];
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING];
 }
 
 - (void)loading_start_new_account
@@ -1558,11 +1558,11 @@
     
     if ([totalReceived longLongValue] == 0) {
         self.emptyAccountIndex++;
-        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_OF_ARGUMENT_ACCOUNTS, self.emptyAccountIndex, self.emptyAccountIndex > RECOVERY_ACCOUNT_DEFAULT_NUMBER ? self.emptyAccountIndex : RECOVERY_ACCOUNT_DEFAULT_NUMBER]];
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_OF_ARGUMENT, self.emptyAccountIndex, self.emptyAccountIndex > RECOVERY_ACCOUNT_DEFAULT_NUMBER ? self.emptyAccountIndex : RECOVERY_ACCOUNT_DEFAULT_NUMBER]];
     } else {
         self.emptyAccountIndex = 0;
         self.recoveredAccountIndex++;
-        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ACCOUNT_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [app formatMoney:fundsInAccount]]];
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [app formatMoney:fundsInAccount]]];
     }
 }
 

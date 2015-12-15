@@ -1071,7 +1071,7 @@ BOOL displayingLocalSymbolSend;
     }
     
     if (!self.sendFromAddress && !self.sendToAddress && self.fromAccount == self.toAccount) {
-        [self showErrorBeforeSending:BC_STRING_FROM_TO_ACCOUNT_DIFFERENT];
+        [self showErrorBeforeSending:BC_STRING_FROM_TO_DIFFERENT];
         return;
     }
     

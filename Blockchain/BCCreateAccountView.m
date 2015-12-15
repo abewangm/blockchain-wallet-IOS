@@ -21,7 +21,7 @@
         self.backgroundColor = [UIColor whiteColor];
         
         UILabel *labelLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, window.frame.size.width - 40, 25)];
-        labelLabel.text = BC_STRING_NAME_YOUR_ACCOUNT;
+        labelLabel.text = BC_STRING_NAME;
         labelLabel.textColor = [UIColor darkGrayColor];
         labelLabel.font = [UIFont systemFontOfSize:17.0];
         [self addSubview:labelLabel];

@@ -971,7 +971,7 @@ UIAlertController *popupAddressArchive;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if ([app.wallet getAccountsCount] <= 1 && section == 0) {
+    if (section == 0) {
         return 12.0f;
     }
     
@@ -983,8 +983,8 @@ UIAlertController *popupAddressArchive;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
     view.backgroundColor = [UIColor whiteColor];
     
-    if ([app.wallet getAccountsCount] <= 1 && section == 0) {
-        return view;
+    if (section == 0) {
+        return nil;
     }
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
@@ -996,7 +996,7 @@ UIAlertController *popupAddressArchive;
     NSString *labelString;
     
     if (section == 0)
-        labelString = BC_STRING_ACCOUNTS;
+        labelString = nil;
     else if (section == 1) {
         labelString = BC_STRING_IMPORTED_ADDRESSES;
         if (![app.wallet didUpgradeToHd]) {

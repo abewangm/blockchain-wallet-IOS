@@ -55,7 +55,7 @@
     editAccountView.accountIdx = self.accountIdx;
     editAccountView.labelTextField.text = [app.wallet getLabelForAccount:self.accountIdx];
     
-    [app showModalWithContent:editAccountView closeType:ModalCloseTypeClose headerText:BC_STRING_EDIT_ACCOUNT onDismiss:^{
+    [app showModalWithContent:editAccountView closeType:ModalCloseTypeClose headerText:BC_STRING_EDIT onDismiss:^{
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
     } onResume:^{
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
