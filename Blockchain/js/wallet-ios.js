@@ -687,9 +687,9 @@ MyWalletPhone.hasEncryptedWalletData = function() {
 };
 
 MyWalletPhone.getWsReadyState = function() {
-    if (!ws) return -1;
+    if (!MyWallet.ws.socket) return -1;
 
-    return ws.readyState;
+    return MyWallet.ws.socket.readyState;
 };
 
 MyWalletPhone.get_history = function() {
@@ -738,10 +738,10 @@ MyWalletPhone.getMultiAddrResponse = function() {
     obj.final_balance = MyWallet.wallet.finalBalance;
     obj.n_transactions = MyWallet.wallet.numberTx;
     obj.addresses = MyWallet.wallet.addresses;
-
-    obj.symbol_local = symbol_local;
-    obj.symbol_btc = symbol_btc;
-
+    
+    obj.symbol_local = Blockchain.Shared.getLocalSymbol();
+    obj.symbol_btc = Blockchain.Shared.getBTCSymbol();
+    
     return obj;
 };
 
@@ -812,6 +812,7 @@ MyWalletPhone.getRecoveryPhrase = function(secondPassword) {
 // Shared functions
 
 function simpleWebSocketConnect() {
+
     if (!MyWallet.getIsInitialized()) {
         // The websocket should only operate when the wallet is initialized. We get calls before and after this is true because we stop and start the websocket for ajax calls
         return;
@@ -824,14 +825,14 @@ function simpleWebSocketConnect() {
         return;
     }
 
-    if (ws && reconnectInterval) {
-        console.log('Websocket already exists. Connection status: ' + ws.readyState);
+    if (MyWallet.ws.socket && MyWallet.ws.reconnectInterval) {
+        console.log('Websocket already exists. Connection status: ' + MyWallet.ws.socket.readyState);
         return;
     }
 
     // This should never really happen - try to recover gracefully
-    if (ws) {
-        console.log('Websocket already exists but no reconnectInverval. Connection status: ' + ws.readyState);
+    if (MyWallet.ws.socket) {
+        console.log('Websocket already exists but no reconnectInverval. Connection status: ' + MyWallet.ws.socket.readyState);
         webSocketDisconnect();
     }
 
@@ -851,22 +852,22 @@ function webSocketDisconnect() {
         return;
     }
 
-    if (reconnectInterval) {
-        clearInterval(reconnectInterval);
-        reconnectInterval = null;
+    if (MyWallet.ws.reconnectInterval) {
+        clearInterval(MyWallet.ws.reconnectInterval);
+        MyWallet.ws.reconnectInterval = null;
     }
     else {
         console.log('No reconnectInterval');
     }
 
-    if (!ws) {
+    if (!MyWallet.ws.websocket) {
         console.log('No websocket object');
         return;
     }
 
-    ws.close();
+    MyWallet.ws.socket.close();
 
-    ws = null;
+    MyWallet.ws.socket = null;
 }
 
 

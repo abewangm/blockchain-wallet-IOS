@@ -1061,8 +1061,6 @@
     [app playBeepSound];
     
     [app.transactionsViewController animateNextCellAfterReload];
-    
-    [self getHistory];
 }
 
 - (void)getPrivateKeyPassword:(NSString *)canDiscard success:(void(^)(id))_success error:(void(^)(id))_error
