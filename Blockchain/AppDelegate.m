@@ -780,8 +780,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     secondPasswordSuccess = nil;
     
-    self.wallet.isSyncingForTrivialProcess = NO;
-    self.wallet.isSyncingForCriticalProcess = NO;
+    self.wallet.isSyncing = NO;
     
     [modalView endEditing:YES];
     
@@ -1086,7 +1085,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     [self hideBusyView];
-    self.wallet.isSyncingForCriticalProcess = NO;
+    self.wallet.isSyncing = NO;
     
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
     [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
@@ -1375,7 +1374,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
     
-    if (self.wallet.isSyncingForCriticalProcess) {
+    if (self.wallet.isSyncing) {
         [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
     

@@ -98,8 +98,7 @@
 @property int recoveredAccountIndex;
 
 @property BOOL didPairAutomatically;
-@property BOOL isSyncingForTrivialProcess; // activities such as labeling addresses, setting the fee per kb
-@property BOOL isSyncingForCriticalProcess; // activities such as importing an address
+@property BOOL isSyncing;
 @property NSString *twoFactorInput;
 
 - (id)init;
