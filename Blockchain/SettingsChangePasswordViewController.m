@@ -84,7 +84,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if (textField == self.newerPasswordTextField) {
-        [self checkPasswordStrength];
+        [self performSelector:@selector(checkPasswordStrength) withObject:nil afterDelay:0.01];
     }
     
     return YES;
@@ -154,7 +154,7 @@
     NSString *description;
     
     CGFloat passwordStrength = [app.wallet getStrengthForPassword:password];
-    
+
     if (passwordStrength < 25) {
         color = COLOR_PASSWORD_STRENGTH_WEAK;
         description = BC_STRING_PASSWORD_STRENGTH_WEAK;
