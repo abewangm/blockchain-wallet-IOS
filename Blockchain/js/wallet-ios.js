@@ -70,14 +70,6 @@ WalletStore.addEventListener(function (event, obj) {
         else if (obj.type == 'success') {
             device.execute('makeNotice:id:message:', [''+obj.type, ''+obj.code, ''+obj.message]);
         }
-                             
-        else if (obj.type == 'ajax-start') {
-            webSocketDisconnect();
-        }
-        
-        else if (obj.type == 'ajax-end') {
-            simpleWebSocketConnect();
-        }
 
         return;
     }
@@ -686,12 +678,6 @@ MyWalletPhone.hasEncryptedWalletData = function() {
     return data && data.length > 0;
 };
 
-MyWalletPhone.getWsReadyState = function() {
-    if (!MyWallet.ws.socket) return -1;
-
-    return MyWallet.ws.socket.readyState;
-};
-
 MyWalletPhone.get_history = function() {
     var success = function () {
         console.log('Got wallet history');
@@ -808,67 +794,6 @@ MyWalletPhone.getRecoveryPhrase = function(secondPassword) {
     
     device.execute('on_success_get_recovery_phrase:', [recoveryPhrase]);
 };
-
-// Shared functions
-
-function simpleWebSocketConnect() {
-
-    if (!MyWallet.getIsInitialized()) {
-        // The websocket should only operate when the wallet is initialized. We get calls before and after this is true because we stop and start the websocket for ajax calls
-        return;
-    }
-
-    console.log('Connecting websocket...');
-
-    if (!window.WebSocket) {
-        console.log('No websocket support in JS runtime');
-        return;
-    }
-
-    if (MyWallet.ws.socket && MyWallet.ws.reconnectInterval) {
-        console.log('Websocket already exists. Connection status: ' + MyWallet.ws.socket.readyState);
-        return;
-    }
-
-    // This should never really happen - try to recover gracefully
-    if (MyWallet.ws.socket) {
-        console.log('Websocket already exists but no reconnectInverval. Connection status: ' + MyWallet.ws.socket.readyState);
-        webSocketDisconnect();
-    }
-
-    MyWallet.connectWebSocket();
-}
-
-function webSocketDisconnect() {
-    if (!MyWallet.getIsInitialized()) {
-        // The websocket should only operate when the wallet is initialized. We get calls before and after this is true because we stop and start the websocket for ajax calls
-        return;
-    }
-
-    console.log('Disconnecting websocket...');
-
-    if (!window.WebSocket) {
-        console.log('No websocket support in JS runtime');
-        return;
-    }
-
-    if (MyWallet.ws.reconnectInterval) {
-        clearInterval(MyWallet.ws.reconnectInterval);
-        MyWallet.ws.reconnectInterval = null;
-    }
-    else {
-        console.log('No reconnectInterval');
-    }
-
-    if (!MyWallet.ws.websocket) {
-        console.log('No websocket object');
-        return;
-    }
-
-    MyWallet.ws.socket.close();
-
-    MyWallet.ws.socket = null;
-}
 
 
 // Get passwords
