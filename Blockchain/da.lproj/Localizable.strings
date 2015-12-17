@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Kontrollere for opdateringer, tegnebog";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Kontrol for flere konti: trin %d 10";
+"Checking for more: Step %d of %d" = "Kontrol for mere: skridt %1$d af %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Luk";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Bekræfte betaling";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Bekræfte opgradering";
 
 /* (No Commment) */
 "Confirm your PIN" = "Bekræft din pinkode";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Kopier til Udklipsholder";
 
 /* (No Commment) */
-"Create Account" = "Opret konto";
+"Create" = "Oprette";
 
 /* (No Commment) */
 "Create New Wallet" = "Opret ny tegnebog";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Oprette tegnebog";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Oprette personlige konti for at hjælpe med at holde din tegnebog organiseret";
-
-/* (No Commment) */
-"Creating Account" = "Oprettelse af konto";
+"Creating" = "At skabe";
 
 /* (No Commment) */
 "Creating HD Wallet" = "At skabe HD tegnebog";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Aktuel kurs: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Tilpasse den måde, du organisere dine bitcoins i tegnebogen Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dekrypterede PIN adgangskodelængde 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Nem en gang tegnebog backup holder dig kontrol over dine penge";
 
 /* (No Commment) */
-"Edit Account" = "Rediger konto";
+"Edit" = "Rediger";
 
 /* (No Commment) */
 "Email" = "E-mail";
+
+/* (No Commment) */
+"Email Notifications" = "E-mail-meddelelser";
 
 /* (No Commment) */
 "Empty response from server." = "Tomme svar fra serveren.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Aktiver placeringstjenester";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Aktiver meddelelser til at modtage en e-mail, hver gang du modtager bitcoins. Kun mærket adresser i dine konti og importerede adresser er berettiget til at udløse underretninger.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Aktiver meddelelser til at modtage en e-mail, hver gang du modtager bitcoins. Kun mærket adresser og er adresser berettiget til at udløse underretninger.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktivering af denne funktion vil give alle brugere med en registreret Touch ID fingeraftryk på denne enhed til at få adgang til din tegnebog.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Glem tegnebog";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Fundet konto %1$d, med %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Fra og destinationskontoen nødt til at være anderledes";
+"Found %d, with %@" = "Fundet %1$d, med %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Fra og destinationsadressen nødt til at være anderledes";
+
+/* (No Commment) */
+"From and destination have to be different" = "Fra og destination skal være forskellige";
 
 /* (No Commment) */
 "Generate new" = "Generere nye";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Min Bitcoin tegnebog";
 
 /* (No Commment) */
-"Name your account" = "Navngive din konto";
+"Name" = "Navn";
 
 /* (No Commment) */
 "New Address" = "Ny adresse";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "Ikke nu";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Bemærk, at når opgraderet, man kan ikke gå tilbage til den tidligere version, men alle dine bitcoins og din transaktionshistorik vil blive holdt.";
 
 /* (No Commment) */
 "Notifications" = "Meddelelser";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Tilføj venligst en e-mail-adresse";
 
 /* (No Commment) */
-"Please check your email." = "Tjek venligst din e-mail.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Tjek venligst din e-mail. Hvis du har allerede bekræftet en login forsøg, skal du logge ind via vores web wallet og parre din telefon ved at scanne QR-koden under indstillinger-> tegnebog oplysninger.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Kontroller din internetforbindelse.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Den private nøgle, du forsøger at importere er krypteret. Angiv adgangskode nedenfor.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Opgraderingen tager kun et sekund og din bitcoins og historie vil være sikker. Her er hvad der er bedre: • helt opdateret design og bruger erfaringer • Robust sikkerhed center • forbedret Privacy • forenklet backup og recovery • tilpasset fondsforvaltning to avancerede posteringstyper (udgifter fra ur-kun adresser og fælles mønt) ikke understøttes i den nye version på dette tidspunkt.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Der var et problem, der bekræfter din identitet.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Opdatering";
 
 /* (No Commment) */
+"Upgrade" = "Opgradering";
+
+/* (No Commment) */
 "Upgrade Now" = "Opgradering nu";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 
 /* (No Commment) */
 "Weak" = "Svage";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Velkommen til den nye version af Blockchain tegnebog!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Vi har fundet en tidligere installation af Blockchain tegnebog på din telefon.";

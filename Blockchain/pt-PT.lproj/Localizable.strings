@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Verificação de atualizações de carteira";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Verificação de contas mais: passo %d de 10";
+"Checking for more: Step %d of %d" = "À procura de mais: passo %1$d de %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Fechar";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Confirmar pagamento";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Confirmar a atualização";
 
 /* (No Commment) */
 "Confirm your PIN" = "Confirme-o";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Copiar para área de transferência";
 
 /* (No Commment) */
-"Create Account" = "Criar conta";
+"Create" = "Criar";
 
 /* (No Commment) */
 "Create New Wallet" = "Criar nova carteira";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Criar carteira";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Criar contas personalizadas para ajudar a manter sua carteira organizada";
-
-/* (No Commment) */
-"Creating Account" = "Criar conta";
+"Creating" = "Criação de";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Criação de carteira de HD";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Taxa atual: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personalizar a maneira como você organiza seu bitcoins em sua carteira de Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Comprimento de pinos senha descriptografado 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Backup de carteira de fácil um tempo mantém você no controle de seus fundos";
 
 /* (No Commment) */
-"Edit Account" = "Editar conta";
+"Edit" = "Editar";
 
 /* (No Commment) */
 "Email" = "Email";
+
+/* (No Commment) */
+"Email Notifications" = "Notificações por e-mail";
 
 /* (No Commment) */
 "Empty response from server." = "Resposta vazia do servidor.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Habilitar os serviços de localização";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Habilitar notificações de receber um e-mail sempre que você receber bitcoins. Apenas rotulados endereços em suas contas e importados são elegíveis para notificações de gatilho.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Habilitar notificações de receber um e-mail sempre que você receber bitcoins. Apenas rotulado endereços e importados endereços são elegíveis para notificações de gatilho.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Habilitar este recurso permitirá que todos os usuários com uma digital Touch ID registrado neste dispositivo para acessar a sua carteira.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Esqueça a carteira";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Encontrada a conta %1$d, com %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Da conta de destino precisa ser diferente";
+"Found %d, with %@" = "Encontrei o %1$d, com %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "De e o endereço de destino tem que ser diferente";
+
+/* (No Commment) */
+"From and destination have to be different" = "De e destino tem que ser diferente";
 
 /* (No Commment) */
 "Generate new" = "Gerar novo";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Minha carteira de Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "O nome de sua conta";
+"Name" = "Nome";
 
 /* (No Commment) */
 "New Address" = "Novo endereço";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "Agora não";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Note que uma vez atualizado, você não pode voltar à versão anterior, mas todo seus bitcoins e seu histórico de transação serão mantidos.";
 
 /* (No Commment) */
 "Notifications" = "Notificações";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Por favor, adicione um endereço de e-mail";
 
 /* (No Commment) */
-"Please check your email." = "Por favor, verifique seu e-mail.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Por favor, verifique seu e-mail. Se você já verificou que uma tentativa de logon, você deve logar através de nossa carteira de web e emparelhar seu telefone escaneando o código QR em configurações-> informações de carteira.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Por favor, verifique sua conexão de internet.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "A chave privada que você está tentando importar é criptografada. Por favor digite a senha abaixo.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A atualização leva apenas um segundo e seu bitcoins e história estarão seguros. Aqui está o que é melhor: projeto • completamente atualizado e experiência do usuário • segurança robusta centro • • Privacy Enhanced simplificado de backup e recuperação • personalizado fundo gestão dois tipos de transação avançada (gastos de endereços apenas relógio e moeda compartilhada) não são suportados na versão nova neste momento.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Houve um problema verificar sua identidade.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Atualização";
 
 /* (No Commment) */
+"Upgrade" = "Atualização";
+
+/* (No Commment) */
 "Upgrade Now" = "Atualize agora";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Nós projetamos uma nova experiência de carteira 
 
 /* (No Commment) */
 "Weak" = "Fraco";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Bem-vindo a nova versão da carteira Blockchain!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Detectamos uma instalação anterior do Blockchain carteira no seu telefone.";

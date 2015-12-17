@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Verificarea pentru portofel actualizări";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Pentru mai multe conturi: pas %d de 10";
+"Checking for more: Step %d of %d" = "Verificarea pentru mai multe informaţii: pas %1$d de %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Închide";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Confirma plata";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Confirmare Upgrade";
 
 /* (No Commment) */
 "Confirm your PIN" = "Confirma codul PIN";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Copiaţi în clipboard";
 
 /* (No Commment) */
-"Create Account" = "Crează cont";
+"Create" = "Crea";
 
 /* (No Commment) */
 "Create New Wallet" = "Portofel nou a crea";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Crea portofel";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Creaţi conturi de personalizat pentru a vă păstra portofel organizat";
-
-/* (No Commment) */
-"Creating Account" = "Crearea cont";
+"Creating" = "Crearea";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Crearea HD portofel";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Rata: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Particularizați modul în care organizați bitcoins dumneavoastră în portofel Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Lungimea parolei PIN decriptat 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Rezervă de portofel uşor o dată te ţine în controlul fondurile tale";
 
 /* (No Commment) */
-"Edit Account" = "Editați contul";
+"Edit" = "Editare";
 
 /* (No Commment) */
 "Email" = "E-mail";
+
+/* (No Commment) */
+"Email Notifications" = "Notificări prin e-mail";
 
 /* (No Commment) */
 "Empty response from server." = "Gol de răspuns de la server.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Activare servicii de localizare";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Activare notificări pentru a primi un email de fiecare dată când primiţi bitcoins. Numai etichetate adrese în conturile dumneavoastră şi adrese importate sunt eligibile la notificări declanşator.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Activare notificări pentru a primi un email de fiecare dată când primiţi bitcoins. Numai etichetat adrese şi importate adrese sunt eligibile la notificări declanşator.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Activarea această facilitate va permite tuturor utilizatorilor cu o amprentă de Touch ID înregistraţi pe acest dispozitiv accesul la portofel.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Uita de portofel";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Găsit cont %1$d, cu %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "La şi cont de destinaţie trebuie să fie diferite";
+"Found %d, with %@" = "Găsit %1$d, cu %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "La şi adresa de destinaţie trebuie să fie diferite";
+
+/* (No Commment) */
+"From and destination have to be different" = "La şi destinaţie trebuie să fie diferite";
 
 /* (No Commment) */
 "Generate new" = "Genera noi";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Portofelul meu Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Numele contului";
+"Name" = "nume";
 
 /* (No Commment) */
 "New Address" = "Noua adresa";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "nu acum";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Reţineţi că odată ce actualizat, nu puteţi merge înapoi la versiunea anterioară, dar toate dumneavoastră bitcoins şi istoricul de tranzactie vor fi păstrate.";
 
 /* (No Commment) */
 "Notifications" = "Notificări";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Vă rugăm să adăugaţi o adresă de e-mail";
 
 /* (No Commment) */
-"Please check your email." = "Vă rugăm să verificaţi adresa de email.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Vă rugăm să verificaţi adresa de email. Dacă aţi verificat deja o încercare de conectare, trebuie să vă conectaţi prin intermediul nostru web portofel şi împerechează telefonul scanează codul QR sub Setări-> informaţii de portofel.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Vă rugăm să verificaţi conexiunea la internet.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Cheia privată care încercați să importați este criptat. Vă rugăm să introduceţi parola mai jos.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine: • complet actualizat design şi utilizator experienţă • securitate robustă centrul • Enhanced confidențialitate • simplificată de backup şi recuperare • personalizate Fondul management două tipuri de avansate tranzacţie (cheltuieli de doar uita-te la adresele şi la comun de monede) nu sunt acceptate în noua versiune în acest moment.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "A fost o problemă de verificarea identităţii.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Actualizare";
 
 /* (No Commment) */
+"Upgrade" = "Upgrade-ul";
+
+/* (No Commment) */
 "Upgrade Now" = "Upgrade acum";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "Weak" = "Slab";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Bine aţi venit la noua versiune de portofel Blockchain!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Ne-am detectat o instalare anterioară de portofel Blockchain pe telefon.";

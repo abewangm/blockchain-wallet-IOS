@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "S'estan cercant actualitzacions de cartera";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Buscar més comptes: pas %d de 10";
+"Checking for more: Step %d of %d" = "Comprovant per a més informació: %1$d pas de %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Tancar";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Confirmar el pagament";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Confirmació d'actualització";
 
 /* (No Commment) */
 "Confirm your PIN" = "Confirmar el PIN";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Copiar al porta-retalls";
 
 /* (No Commment) */
-"Create Account" = "Crear compte";
+"Create" = "Crear";
 
 /* (No Commment) */
 "Create New Wallet" = "Crear nova cartera";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Crear la cartera";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Crear comptes personalitzades per ajudar a mantenir la seva cartera organitzat";
-
-/* (No Commment) */
-"Creating Account" = "Crear compte";
+"Creating" = "Creació";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Creació de cartera de HD";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Taxa actual: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personalitza la manera com vostè organitzar els teus bitcoins en la seva cartera de Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Llargada de contrasenya PIN descriptada 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Còpia de seguretat una vegada fàcil cartera que manté el control dels seus fons";
 
 /* (No Commment) */
-"Edit Account" = "Editar compte";
+"Edit" = "Editar";
 
 /* (No Commment) */
 "Email" = "Correu electrònic";
+
+/* (No Commment) */
+"Email Notifications" = "Notificacions per correu electrònic";
 
 /* (No Commment) */
 "Empty response from server." = "Buit resposta del servidor.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Permetre serveis d'ubicació";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Habilitar les notificacions rebre un correu electrònic cada vegada que rebis bitcoins. Només amb l'etiqueta adreces als comptes i importació adreces són elegibles per desencadenar notificacions.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Habilitar les notificacions rebre un correu electrònic cada vegada que rebis bitcoins. Només etiquetada adreces i importar les adreces són elegibles per desencadenar notificacions.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Permetre aquest tret permetrà tots els usuaris amb una empremta de Tacte ID registrat en aquest dispositiu d'accés a la seva cartera.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Oblidar la cartera";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Trobat compte %1$d, amb %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Des i compte de destinació ha de ser diferents";
+"Found %d, with %@" = "Es troba %1$d, amb %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Des i adreça de destinació ha de ser diferents";
+
+/* (No Commment) */
+"From and destination have to be different" = "De destinació ha de ser diferent i";
 
 /* (No Commment) */
 "Generate new" = "Generar nous";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "La cartera de Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Nom de compte";
+"Name" = "Nom";
 
 /* (No Commment) */
 "New Address" = "Nova adreça";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "Ara no";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Tingueu en compte que una vegada millorat, no pot tornar a la versió anterior, però tots els teus bitcoins i el vostre historial de transacció es mantindrà.";
 
 /* (No Commment) */
 "Notifications" = "Notificacions";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Si us plau afegiu una adreça de correu electrònic";
 
 /* (No Commment) */
-"Please check your email." = "Si us plau revisa el teu email.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Si us plau revisa el teu email. Si ja heu verificat un intent de connexió, ha de registrar través de la nostra cartera de web i ajuntar el seu telèfon per escanejant el codi QR sota escenes-> cartera informació.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Si us plau, comproveu la connexió d'internet.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "La clau privada que intenteu importar està xifrada. Si us plau, introduïu la contrasenya sota.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "L'actualització pren només un segon i seu bitcoins i història estaran fora de perill. Aquí és què és millor: disseny • completament actualitzat i usuari experiència • seguretat robusta centre • • privacitat realçat simplificat reserva i recuperació • personalitzat fons gestió dos tipus de transacció avançat (despeses de només veure adreces i compartir moneda) no són compatibles amb la nova versió en aquest moment.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Hi havia un problema verificar la vostra identitat.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Actualització";
 
 /* (No Commment) */
+"Upgrade" = "Actualització";
+
+/* (No Commment) */
 "Upgrade Now" = "Actualitza'l ara";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "Weak" = "Feble";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Benvinguts a la nova versió de la cartera de Blockchain!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Hem detectat una instal·lació anterior del Blockchain cartera al seu telèfon.";

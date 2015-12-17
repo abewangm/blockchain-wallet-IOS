@@ -146,9 +146,9 @@ int accountEntries = 0;
 
 - (void)reloadNumberOfBalancesToDisplay
 {
-    // Total entries: 1 entry for the total balance, 1 for adding a new account, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
+    // Total entries: 1 entry for the total balance, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
     int numberOfAccounts = [app.wallet getAccountsCount];
-    balanceEntries = numberOfAccounts + 2;
+    balanceEntries = numberOfAccounts + 1;
     accountEntries = numberOfAccounts;
 }
 
@@ -236,10 +236,6 @@ int accountEntries = 0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 0 && [self showBalances]) {
-        // My Accounts needs a smaller height
-        return SECTION_HEADER_HEIGHT;
-    }
     if (![self showBalances]) {
         return MENU_ENTRY_HEIGHT;
     }
@@ -285,6 +281,17 @@ int accountEntries = 0;
         headerLabel.textColor = [UIColor whiteColor];
         headerLabel.font = [UIFont boldSystemFontOfSize:17.0];
         [view addSubview:headerLabel];
+        
+        UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wallet.png"]];
+        icon.frame = CGRectMake(18, 13, 20, 18);
+        [view addSubview:icon];
+        
+#ifndef DISABLE_EDITING_ACCOUNTS
+        UIButton *addAccountButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
+        [addAccountButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
+        [addAccountButton addTarget:self action:@selector(addAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:addAccountButton];
+#endif
         
         UILabel *amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 24, self.tableView.frame.size.width - 100, 30)];
         amountLabel.text = [app formatMoney:totalBalance localCurrency:app->symbolLocal];;
@@ -398,35 +405,17 @@ int accountEntries = 0;
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            if (indexPath.section == 0 && indexPath.row > accountEntries) {
+            if (indexPath.section == 0 && indexPath.row >= accountEntries) {
                 UIButton *importPrivateKeyButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
                 [importPrivateKeyButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
                 [importPrivateKeyButton addTarget:self action:@selector(importPrivateKeyClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.contentView addSubview:importPrivateKeyButton];
                 cell.editButton.hidden = YES;
-            } else if (indexPath.section == 0 && indexPath.row == 0) {
-                UIButton *addAccountButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
-                [addAccountButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
-                [addAccountButton addTarget:self action:@selector(addAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.contentView addSubview:addAccountButton];
-                cell.editButton.hidden = YES;
             }
         }
-        
-        // My Accounts
-        if (indexPath.section == 0 && indexPath.row == 0) {
-            [cell.iconImage setImage:[UIImage imageNamed:@"wallet.png"]];
-            CGFloat heightDifference = cell.labelLabel.center.y - cell.contentView.center.y;
-            cell.labelLabel.frame = CGRectOffset(cell.labelLabel.frame, 0, -heightDifference);
-            cell.labelLabel.text = BC_STRING_ACCOUNTS;
-#ifdef DISABLE_EDITING_ACCOUNTS
-            cell.editButton.hidden = YES;
-#endif
-            return cell;
-        }
         // Account balances
-        else if (indexPath.row <= accountEntries) {
-            int accountIdx = (int) indexPath.row - 1;
+        if (indexPath.row < accountEntries) {
+            int accountIdx = (int) indexPath.row;
             uint64_t accountBalance = [app.wallet getBalanceForAccount:accountIdx];
             cell.amountLabel.text = [app formatMoney:accountBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = [app.wallet getLabelForAccount:accountIdx];
@@ -484,7 +473,7 @@ int accountEntries = 0;
 {
     BCCreateAccountView *createAccountView = [[BCCreateAccountView alloc] init];
     
-    [app showModalWithContent:createAccountView closeType:ModalCloseTypeClose headerText:BC_STRING_CREATE_ACCOUNT onDismiss:^{
+    [app showModalWithContent:createAccountView closeType:ModalCloseTypeClose headerText:BC_STRING_CREATE onDismiss:^{
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
     } onResume:^{
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];

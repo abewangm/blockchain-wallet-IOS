@@ -1,6 +1,18 @@
+/* (No Commment) */
+"4cR-kX-YUY.text" = "Selamat datang ke versi baru Blockchain Wallet!";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "D5e-zI-7dK"; */
+"D5e-zI-7dK.text" = "Perisik Telefon ipsum dolor duduk er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. UT untuk iklan bahagian yg terkecil veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex semua yang anda commodo ea. Duis aute irure dolor di reprehenderit voluptate velit esse cillum dolore eu fugiat dan menawarkan pariatur. Excepteur sint occaecat cupidatat bebas proident, sunt culpa qui officia deserunt mollit anim id est laborum. Nam sejarah te conscient untuk faktor tum poen legum odioque civiuda.";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Ebu-XV-0mt"; */
+"Ebu-XV-0mt.normalTitle" = "Batal";
+
+/* Class = "UIButton"; normalTitle = "Upgrade Now"; ObjectID = "Gk5-cB-fZg"; */
+"Gk5-cB-fZg.normalTitle" = "Menaik taraf sekarang";
 
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
-"HuT-V7-syg.normalTitle" = "Ask Me Later";
+"HuT-V7-syg.normalTitle" = "Tanya saya kemudian";
 
-/* Class = "UIButton"; normalTitle = "UPGRADE YOUR WALLET"; ObjectID = "cZ9-x2-KGM"; */
-"cZ9-x2-KGM.normalTitle" = "UPGRADE YOUR WALLET";
+/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "cZ9-x2-KGM"; */
+"cZ9-x2-KGM.normalTitle" = "belajar lagi";
+

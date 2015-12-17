@@ -84,6 +84,9 @@ BOOL displayingLocalSymbolSend;
 {
     [app.wallet createNewPayment];
     [app.wallet changePaymentFromAddress:@""];
+    if (app.tabViewController.activeViewController == self) {
+        [app closeModalWithTransition:kCATransitionFade];
+    }
 }
 
 - (void)resetFromAddress
@@ -266,8 +269,6 @@ BOOL displayingLocalSymbolSend;
     };
     
     listener.on_success = ^() {
-        [app playBeepSound];
-        
         [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
         
         [sendProgressActivityIndicator stopAnimating];
@@ -284,7 +285,6 @@ BOOL displayingLocalSymbolSend;
         });
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [app.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-            [app.wallet getHistory];
         });
     };
     
@@ -1074,7 +1074,7 @@ BOOL displayingLocalSymbolSend;
     }
     
     if (!self.sendFromAddress && !self.sendToAddress && self.fromAccount == self.toAccount) {
-        [self showErrorBeforeSending:BC_STRING_FROM_TO_ACCOUNT_DIFFERENT];
+        [self showErrorBeforeSending:BC_STRING_FROM_TO_DIFFERENT];
         return;
     }
     

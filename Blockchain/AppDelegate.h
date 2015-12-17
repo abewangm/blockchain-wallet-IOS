@@ -96,6 +96,8 @@
 @property(nonatomic, strong) NSNumberFormatter *btcFormatter;
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;
 
+@property (nonatomic) BOOL changedPassword;
+
 - (void)setAccountData:(NSString*)guid sharedKey:(NSString*)sharedKey;
 
 - (void)playBeepSound;

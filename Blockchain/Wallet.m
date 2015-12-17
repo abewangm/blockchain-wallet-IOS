@@ -517,7 +517,7 @@
         return;
     }
     
-    self.isSyncingForTrivialProcess = YES;
+    self.isSyncing = YES;
     
     [self.webView executeJS:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
 }
@@ -528,7 +528,7 @@
         return;
     }
     
-    self.isSyncingForCriticalProcess = YES;
+    self.isSyncing = YES;
     
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = true", [address escapeStringForJS]];
     
@@ -541,7 +541,7 @@
         return;
     }
     
-    self.isSyncingForCriticalProcess = YES;
+    self.isSyncing = YES;
     
     [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = false", [address escapeStringForJS]];
     
@@ -693,7 +693,7 @@
         return;
     }
     
-    self.isSyncingForCriticalProcess = YES;
+    self.isSyncing = YES;
     [self.webView executeJS:@"MyWalletPhone.setTransactionFee(%lld)", feePerKb];
 }
 
@@ -903,7 +903,7 @@
 
 - (void)loading_start_create_account
 {
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_ACCOUNT];
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING];
 }
 
 - (void)loading_start_new_account
@@ -1024,7 +1024,7 @@
             [response.transactions addObject:tx];
         }
         
-        if (!self.isSyncingForCriticalProcess) {
+        if (!self.isSyncing) {
             [self loading_stop];
         }
         
@@ -1082,8 +1082,6 @@
     [app playBeepSound];
     
     [app.transactionsViewController animateNextCellAfterReload];
-    
-    [self getHistory];
 }
 
 - (void)getPrivateKeyPassword:(NSString *)canDiscard success:(void(^)(id))_success error:(void(^)(id))_error
@@ -1150,7 +1148,7 @@
         return;
     }
     
-    NSRange updatePasswordHintErrorStringRange = [message rangeOfString:@"password-hint1" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    NSRange updatePasswordHintErrorStringRange = [message rangeOfString:@"password-hint1-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (updatePasswordHintErrorStringRange.location != NSNotFound) {
         [self performSelector:@selector(on_update_password_hint_error) withObject:nil afterDelay:0.1f];
         return;
@@ -1247,7 +1245,7 @@
 - (void)on_add_private_key_start
 {
     DLog(@"on_add_private_key_start");
-    self.isSyncingForCriticalProcess = YES;
+    self.isSyncing = YES;
 
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
 }
@@ -1255,7 +1253,7 @@
 - (void)on_add_private_key:(NSString*)address
 {
     DLog(@"on_add_private_key");
-    self.isSyncingForCriticalProcess = YES;
+    self.isSyncing = YES;
 
     if ([delegate respondsToSelector:@selector(didImportPrivateKey:)]) {
         [delegate didImportPrivateKey:address];
@@ -1335,10 +1333,6 @@
 
 - (void)on_backup_wallet_start
 {
-    if (self.isSyncingForTrivialProcess) {
-        [self loading_stop];
-        self.isSyncingForTrivialProcess = NO;
-    }
     DLog(@"on_backup_wallet_start");
 }
 
@@ -1358,7 +1352,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
     [self loading_stop];
-    self.isSyncingForCriticalProcess = NO;
+    self.isSyncing = NO;
 }
 
 - (void)did_fail_set_guid
@@ -1482,7 +1476,7 @@
 - (void)on_get_history_success
 {
     DLog(@"on_get_history_success");
-    if (self.isSyncingForCriticalProcess) {
+    if (self.isSyncing) {
         // Required to prevent user input while archiving/unarchiving addresses
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
@@ -1581,11 +1575,11 @@
     
     if ([totalReceived longLongValue] == 0) {
         self.emptyAccountIndex++;
-        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_TEN_ACCOUNTS, self.emptyAccountIndex]];
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_CHECKING_ARGUMENT_OF_ARGUMENT, self.emptyAccountIndex, self.emptyAccountIndex > RECOVERY_ACCOUNT_DEFAULT_NUMBER ? self.emptyAccountIndex : RECOVERY_ACCOUNT_DEFAULT_NUMBER]];
     } else {
         self.emptyAccountIndex = 0;
         self.recoveredAccountIndex++;
-        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ACCOUNT_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [app formatMoney:fundsInAccount]]];
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [app formatMoney:fundsInAccount]]];
     }
 }
 
@@ -1638,12 +1632,6 @@
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
-
-- (void)whitelistWallet
-{
-    DLog(@"Whitelisting newly created wallet");
-    [self.webView executeJS:@"MyWallet.wallet.whitelistWallet('HvWJeR1WdybHvq0316i', 'alpha')"];
-}
 
 - (void)upgradeToHDWallet
 {
@@ -1766,7 +1754,7 @@
 - (void)setLabelForAccount:(int)account label:(NSString *)label
 {
     if ([self isInitialized] && [app checkInternetConnection]) {
-        self.isSyncingForTrivialProcess = YES;
+        self.isSyncing = YES;
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, label];
     }
@@ -1778,7 +1766,7 @@
         // Show loading text
         [self loading_start_create_account];
         
-        self.isSyncingForCriticalProcess = YES;
+        self.isSyncing = YES;
         
         // Wait a little bit to make sure the loading text is showing - then execute the blocking and kind of long create account
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

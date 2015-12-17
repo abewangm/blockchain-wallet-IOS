@@ -81,7 +81,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if (app.wallet.isSyncingForCriticalProcess) {
+    if (app.wallet.isSyncing) {
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
 }
@@ -513,7 +513,7 @@ const int aboutPrivacyPolicy = 1;
 {
     NSArray *notificationsType = self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE];
     int notificationsOn = [self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON] intValue];
-    return notificationsType && [notificationsType count] > 0 && [notificationsType containsObject:@1] && notificationsOn > 0;
+    return notificationsType && [notificationsType count] > 0 && [notificationsType containsObject:@1] && (notificationsOn == DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE || notificationsOn == DICTIONARY_VALUE_NOTIFICATION_RECEIVE);;
 }
 
 - (void)toggleEmailNotifications
@@ -633,24 +633,28 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)enableTwoStepForSMS
 {
-    [self addObserversForChangingTwoStep];
+    [self prepareForForChangingTwoStep];
     [app.wallet enableTwoStepVerificationForSMS];
 }
 
 - (void)disableTwoStep
 {
-    [self addObserversForChangingTwoStep];
+    [self prepareForForChangingTwoStep];
     [app.wallet disableTwoStepVerification];
 }
 
-- (void)addObserversForChangingTwoStep
+- (void)prepareForForChangingTwoStep
 {
+    UITableViewCell *enableTwoStepCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityTwoStep inSection:securitySection]];
+    enableTwoStepCell.userInteractionEnabled = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepSuccess) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTwoStepError) name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
 }
 
-- (void)removeObserversForChangingTwoStep
+- (void)doneChangingTwoStep
 {
+    UITableViewCell *enableTwoStepCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityTwoStep inSection:securitySection]];
+    enableTwoStepCell.userInteractionEnabled = YES;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
 }
@@ -663,14 +667,14 @@ const int aboutPrivacyPolicy = 1;
         [self alertUserOfSuccess:BC_STRING_TWO_STEP_DISABLED_SUCCESS];
     }
     self.isEnablingTwoStepSMS = NO;
-    [self removeObserversForChangingTwoStep];
+    [self doneChangingTwoStep];
     [self getAccountInfo];
 }
 
 - (void)changeTwoStepError
 {
     self.isEnablingTwoStepSMS = NO;
-    [self removeObserversForChangingTwoStep];
+    [self doneChangingTwoStep];
     [self getAccountInfo];
 }
 
@@ -1258,7 +1262,6 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case walletInformationIdentifier: {
                     UITableViewCell *cellWithSubtitle = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-                    cellWithSubtitle.selectionStyle = UITableViewCellSelectionStyleNone;
                     cellWithSubtitle.textLabel.font = [SettingsTableViewController fontForCell];
                     cellWithSubtitle.textLabel.text = BC_STRING_SETTINGS_WALLET_ID;
                     cellWithSubtitle.detailTextLabel.text = app.wallet.guid;
@@ -1305,7 +1308,8 @@ const int aboutPrivacyPolicy = 1;
                     return cell;
                 }
                 case preferencesNotifications: {
-                    cell.textLabel.text = BC_STRING_SETTINGS_NOTIFICATIONS;
+                    cell.textLabel.text = BC_STRING_SETTINGS_EMAIL_NOTIFICATIONS;
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     UISwitch *switchForEmailNotifications = [[UISwitch alloc] init];
                     switchForEmailNotifications.on = [self notificationsEnabled];
                     [switchForEmailNotifications addTarget:self action:@selector(toggleEmailNotifications) forControlEvents:UIControlEventTouchUpInside];
@@ -1414,6 +1418,7 @@ const int aboutPrivacyPolicy = 1;
                 case securityTouchID: {
                     cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
                     UISwitch *switchForTouchID = [[UISwitch alloc] init];
@@ -1443,6 +1448,10 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == walletInformationSection && indexPath.row == walletInformationIdentifier) {
+        return indexPath;
+    }
+    
     BOOL hasLoadedAccountInfoDictionary = self.accountInfoDictionary ? YES : NO;
     
     if (!hasLoadedAccountInfoDictionary || [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LOADED_SETTINGS] boolValue] == NO) {

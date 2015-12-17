@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Ser etter lommebok oppdateringer";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Se etter flere kontoer: trinn %d 10";
+"Checking for more: Step %d of %d" = "Se etter mer: trinn %1$d av %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Lukk";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Bekreft betaling";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Bekrefte oppgradering";
 
 /* (No Commment) */
 "Confirm your PIN" = "Bekreft PIN-koden";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Kopier til utklippstavlen";
 
 /* (No Commment) */
-"Create Account" = "Opprette konto";
+"Create" = "Opprette";
 
 /* (No Commment) */
 "Create New Wallet" = "Opprette ny lommebok";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Opprette lommebok";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Opprette personlige kontoer for å holde lommeboken organisert";
-
-/* (No Commment) */
-"Creating Account" = "Opprette konto";
+"Creating" = "Opprette";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Opprette HD lommebok";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Gjeldende hastighet: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Tilpasse måten du organiserer dine bitcoins i lommeboken Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dekrypterte PIN passordlengde 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Lett en gang lommebok sikkerhetskopiering holder deg i kontroll over pengene dine";
 
 /* (No Commment) */
-"Edit Account" = "Rediger konto";
+"Edit" = "Rediger";
 
 /* (No Commment) */
 "Email" = "E-post";
+
+/* (No Commment) */
+"Email Notifications" = "Beskjeder";
 
 /* (No Commment) */
 "Empty response from server." = "Tomme svar fra serveren.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Aktiver posisjonstjenestene";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Aktivere varsler å motta en melding hver gang du mottar bitcoins. Bare merket adresser i kontoene og importerte adresser kan utløse varsling.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Aktivere varsler å motta en melding hver gang du mottar bitcoins. Bare merket adresser og importerte er adresser kvalifisert til å utløse varsling.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktivering av denne funksjonen vil tillate alle brukere med et registrert Touch ID fingeravtrykk på denne enheten for lommeboken.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Glem lommebok";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Fant konto %1$d, med %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Fra og målkonto må være forskjellige";
+"Found %d, with %@" = "Fant %1$d, med %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Fra og destinasjonsadresse må være forskjellige";
+
+/* (No Commment) */
+"From and destination have to be different" = "Fra og være annerledes";
 
 /* (No Commment) */
 "Generate new" = "Generere nye";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Lommeboka Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Navngi kontoen";
+"Name" = "navn";
 
 /* (No Commment) */
 "New Address" = "Ny adresse";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "ikke nå";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Merk at oppgraderte du ikke kan gå tilbake til forrige versjon, men alle dine bitcoins og transaksjonsloggen skal holdes.";
 
 /* (No Commment) */
 "Notifications" = "Varsler";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Legg til en e-postadresse";
 
 /* (No Commment) */
-"Please check your email." = "Sjekk din e-post.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Sjekk din e-post. Hvis du allerede har bekreftet et påloggingsforsøk, bør du logge inn via vårt nett-pengebok og koble telefonen ved å skanne QR-kode under innstillinger-> lommebok informasjon.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Kontroller Internett-tilkoblingen.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Privatnøkkelen du prøver å importere krypteres. Skriv inn passordet nedenfor.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Oppgraderingen tar bare et sekund og din bitcoins og historien vil være trygt. Her er hva er bedre: • oppdatert design og brukeropplevelse Robust sikkerhet center forbedret personvern • forenklet sikkerhetskopiering og gjenoppretting • tilpasset fondet ledelse to avanserte transaksjonstyper (bruke bare se adresser og delte mynt) ikke støttes i den nye versjonen på dette tidspunktet.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Det oppstod et problem bekrefter din identitet.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Oppdatering";
 
 /* (No Commment) */
+"Upgrade" = "Oppgradering";
+
+/* (No Commment) */
 "Upgrade Now" = "Oppgrader nå";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 
 /* (No Commment) */
 "Weak" = "Svak";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Velkommen til den nye versjonen av Blockchain lommeboken!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Vi har oppdaget en tidligere installasjon av Blockchain lommebok på telefonen.";

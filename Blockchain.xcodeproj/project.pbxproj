@@ -20,6 +20,7 @@
 		2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */ = {isa = PBXBuildFile; fileRef = 2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */; };
 		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
 		233475F81BF4F8FB0056AB4E /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */; };
+		236F32791C15F97D00BC89F3 /* UpgradeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F32781C15F97D00BC89F3 /* UpgradeDetailsViewController.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
 		239CD4C81C12214A00997DF5 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239CD4CA1C12214A00997DF5 /* Settings.storyboard */; };
@@ -339,6 +340,8 @@
 		23321D791BB0730C0005624F /* my-wallet.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "../../Submodules/My-Wallet-V3/dist/my-wallet.js"; sourceTree = "<group>"; };
 		233475F61BF4F8FB0056AB4E /* DeviceIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceIdentifier.h; path = ../DeviceIdentifier.h; sourceTree = "<group>"; };
 		233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceIdentifier.m; path = ../DeviceIdentifier.m; sourceTree = "<group>"; };
+		234197861C17BB02004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Upgrade.strings; sourceTree = "<group>"; };
+		234197881C17BB08004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
 		235EBDD41BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/ReceiveCoins.strings"; sourceTree = "<group>"; };
 		235EBDD51BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/Backup.strings"; sourceTree = "<group>"; };
 		235EBDD61BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/SendCoins.strings"; sourceTree = "<group>"; };
@@ -351,6 +354,8 @@
 		235EBDE11BA0BFC8004D3410 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/MainWindow.strings; sourceTree = "<group>"; };
 		235EBDE21BA0BFC8004D3410 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/BCAddressSelectionView.strings; sourceTree = "<group>"; };
 		235EBDE31BA0BFC9004D3410 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		236F32771C15F97D00BC89F3 /* UpgradeDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeDetailsViewController.h; sourceTree = "<group>"; };
+		236F32781C15F97D00BC89F3 /* UpgradeDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeDetailsViewController.m; sourceTree = "<group>"; };
 		2374BFA41B750D6E00A53FBE /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Backup.strings; sourceTree = "<group>"; };
 		2374BFA61B750DE400A53FBE /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Backup.strings; sourceTree = "<group>"; };
 		2374BFA81B750E1900A53FBE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Backup.strings; sourceTree = "<group>"; };
@@ -987,6 +992,8 @@
 				A269E92D1B32D51F0052F953 /* SecondPasswordViewController.swift */,
 				232232181B44D4CB00E5DF26 /* UpgradeViewController.h */,
 				232232191B44D4CB00E5DF26 /* UpgradeViewController.m */,
+				236F32771C15F97D00BC89F3 /* UpgradeDetailsViewController.h */,
+				236F32781C15F97D00BC89F3 /* UpgradeDetailsViewController.m */,
 				23EA61C31B54258D0032B907 /* SettingsTableViewController.h */,
 				23EA61C41B54258D0032B907 /* SettingsTableViewController.m */,
 				23EA61C61B54282D0032B907 /* SettingsNavigationController.h */,
@@ -1387,6 +1394,7 @@
 				9F2D934A14C05DD00053F0FF /* Address.m in Sources */,
 				67FA1A4D1ABA092D000C9196 /* RegExCategories.m in Sources */,
 				84B601CA197AD03800DA1829 /* BCModalView.m in Sources */,
+				236F32791C15F97D00BC89F3 /* UpgradeDetailsViewController.m in Sources */,
 				9F0CBAAA151351F400CD945D /* Wallet.m in Sources */,
 				9F0CBAD81513CA2600CD945D /* BCFadeView.m in Sources */,
 				67E9674E19DF285000305358 /* SideMenuViewController.m in Sources */,
@@ -1720,6 +1728,7 @@
 				239CD5121C12216E00997DF5 /* sv-SE */,
 				239CD5141C12216F00997DF5 /* zh-CN */,
 				239CD5161C12217000997DF5 /* zh-TW */,
+				234197881C17BB08004B82C5 /* en */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -1766,6 +1775,7 @@
 				239CD5611C12223100997DF5 /* sv-SE */,
 				239CD5631C12223200997DF5 /* zh-CN */,
 				239CD5651C12223300997DF5 /* zh-TW */,
+				234197861C17BB02004B82C5 /* en */,
 			);
 			name = Upgrade.storyboard;
 			sourceTree = "<group>";

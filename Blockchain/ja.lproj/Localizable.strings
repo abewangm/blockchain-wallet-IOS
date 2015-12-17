@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "財布更新プログラムのチェック";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "多くのアカウントをチェック: 10 のステップ %d";
+"Checking for more: Step %d of %d" = "詳細をチェック: %2$d のステップ %1$d";
 
 /* No comment provided by engineer. */
 "Close" = "閉じる";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "お支払いを確認します。";
+
+/* (No Commment) */
+"Confirm Upgrade" = "アップグレードを確認します。";
 
 /* (No Commment) */
 "Confirm your PIN" = "暗証番号を確認します。";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "クリップボードにコピー";
 
 /* (No Commment) */
-"Create Account" = "アカウントを作成します。";
+"Create" = "作成します。";
 
 /* (No Commment) */
 "Create New Wallet" = "新しい財布を作成します。";
@@ -212,10 +215,7 @@
 "Create Wallet" = "財布を作成します。";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "あなたの財布の整理を保つために個人アカウントを作成します。";
-
-/* (No Commment) */
-"Creating Account" = "アカウントを作成します。";
+"Creating" = "作成します。";
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD ウォレットを作成します。";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "現在のレート: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Blockchain 財布、bitcoins を整理する方法をカスタマイズします。";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "復号化された PIN パスワード長さ 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "簡単な一回財布バックアップは、あなたの資金の制御";
 
 /* (No Commment) */
-"Edit Account" = "アカウントを編集します。";
+"Edit" = "編集";
 
 /* (No Commment) */
 "Email" = "電子メール";
+
+/* (No Commment) */
+"Email Notifications" = "電子メール通知";
 
 /* (No Commment) */
 "Empty response from server." = "サーバーから空の応答。";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "位置情報サービスを有効にします。";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Bitcoins を受信するたびにメールを受信する通知を有効にします。ラベル アドレスのみのアカウントで、インポートしたアドレスが通知をトリガーする対象となります。";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoins を受信するたびにメールを受信する通知を有効にします。アドレスをラベル付けされてインポートだけアドレスは、通知をトリガーします。";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "この機能を有効にすると、このデバイスがあなたの財布にアクセスするにタッチ ID 指紋の登録されているすべてのユーザーが許可されます。";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "財布を忘れてください。";
 
 /* (No Commment) */
-"Found account %d, with %@" = "%2$@ でのアカウント %1$d を発見します。";
-
-/* (No Commment) */
-"From and destination account have to be different" = "接続先のアカウントを異なるする必要がありますと";
+"Found %d, with %@" = "%2$@ と %1$d を発見します。";
 
 /* (No Commment) */
 "From and destination address have to be different" = "宛先アドレスが別でなければならないと";
+
+/* (No Commment) */
+"From and destination have to be different" = "異なる宛先";
 
 /* (No Commment) */
 "Generate new" = "新規生成します。";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Bitcoin 財布";
 
 /* (No Commment) */
-"Name your account" = "あなたのアカウントに名前を付ける";
+"Name" = "名";
 
 /* (No Commment) */
 "New Address" = "新しいアドレス";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "今ではありません";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "注意いったんアップグレードすると、以前のバージョンに戻ることができないことがすべて、bitcoins およびトランザクションの履歴が保持されます。";
 
 /* (No Commment) */
 "Notifications" = "通知";
@@ -578,7 +587,7 @@
 "Please add an email address" = "メール アドレスを追加してください。";
 
 /* (No Commment) */
-"Please check your email." = "あなたのメール アドレスを確認してください。";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "あなたのメール アドレスを確認してください。既にログイン試行を確認したら場合、我々 の web 財布経由でログインし、設定の下の QR コードをスキャンすることによってあなたの携帯電話をペアリング-> ウォレットの情報。";
 
 /* (No Commment) */
 "Please check your internet connection." = "あなたのインターネット接続を確認してください。";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "インポートしようとしている秘密キーは暗号化されます。下にパスワードを入力してください。";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い: 完全に更新 • デザインとユーザー エクスペリエンスの • 堅牢なセキュリティ センター プライバシーの強化 • 簡体字バックアップ/リカバリ • カスタマイズされた基金管理 2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "あなたの身元の確認で問題があった。";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "更新";
 
 /* (No Commment) */
+"Upgrade" = "アップグレード";
+
+/* (No Commment) */
 "Upgrade Now" = "今すぐアップグレードします。";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "Weak" = "弱い";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Blockchain 財布の新バージョンへようこそ!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "私たちはあなたの携帯電話に Blockchain 財布の以前のインストールを検出されました。";

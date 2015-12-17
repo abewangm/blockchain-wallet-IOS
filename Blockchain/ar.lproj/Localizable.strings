@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "التحقق من وجود تحديثات المحفظة";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "التحقق من وجود مزيد من الحسابات: %d الخطوة 10";
+"Checking for more: Step %d of %d" = "تدقيق لمزيد من المعلومات: %1$d خطوة من %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "قم بإغلاق";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "تأكيد الدفع";
+
+/* (No Commment) */
+"Confirm Upgrade" = "تأكيد عملية الترقية";
 
 /* (No Commment) */
 "Confirm your PIN" = "تأكيد رقم التعريف الشخصي الخاص بك";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "نسخ إلى الحافظة";
 
 /* (No Commment) */
-"Create Account" = "إنشاء حساب";
+"Create" = "إنشاء";
 
 /* (No Commment) */
 "Create New Wallet" = "إنشاء محفظة جديدة";
@@ -212,10 +215,7 @@
 "Create Wallet" = "إنشاء المحفظة";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "إنشاء حسابات شخصية للمساعدة على إبقاء محفظتك نظمت";
-
-/* (No Commment) */
-"Creating Account" = "إنشاء حساب";
+"Creating" = "إنشاء";
 
 /* (No Commment) */
 "Creating HD Wallet" = "إنشاء محفظة عالية الدقة";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "المعدل الحالي: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "تخصيص الطريقة التي يمكنك تنظيم الخاصة بك بيتكوينس في محفظتك بلوكتشين";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "فك تشفير كلمة المرور PIN طول 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "النسخ الاحتياطي في المحفظة مرة واحدة سهلة تبقيك في السيطرة على الأموال الخاصة بك";
 
 /* (No Commment) */
-"Edit Account" = "تحرير الحساب";
+"Edit" = "تحرير";
 
 /* (No Commment) */
 "Email" = "البريد الإلكتروني";
+
+/* (No Commment) */
+"Email Notifications" = "إعلامات البريد الإلكتروني";
 
 /* (No Commment) */
 "Empty response from server." = "فارغة واستجابة من الملقم.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "تمكين خدمات الموقع";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "تمكين إعلامات تلقي رسالة بريد إلكتروني عند تلقي بيتكوينس. المستوردة وإلا المسمى عناوين في حساباتك مؤهلون للإخطارات بالمشغل.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "تمكين إعلامات تلقي رسالة بريد إلكتروني عند تلقي بيتكوينس. فقط المسمى عناوين واستيراد عناوين المؤهلة للإخطارات بالمشغل.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "تمكين هذه الميزة سيتم السماح لكافة المستخدمين مع بصمة معرف اتصال مسجل على هذا الجهاز للوصول إلى محفظتك.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "نسيت المحفظة";
 
 /* (No Commment) */
-"Found account %d, with %@" = "العثور على حساب %1$d، مع %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "من ولدى حساب الوجهة تكون مختلفة";
+"Found %d, with %@" = "العثور على %1$d، مع %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "من وعنوان الوجهة يجب أن تكون مختلفة";
+
+/* (No Commment) */
+"From and destination have to be different" = "من والوجهة التي يجب أن تكون مختلفة";
 
 /* (No Commment) */
 "Generate new" = "توليد جديدة";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "محفظتي بيتكوين";
 
 /* (No Commment) */
-"Name your account" = "اسم الحساب الخاص بك";
+"Name" = "الاسم";
 
 /* (No Commment) */
 "New Address" = "عنوان جديد";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "ليس الآن";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "لاحظ أنه بمجرد رفع مستواها، لا يمكنك العودة إلى الإصدار السابق، ولكن سيتم الاحتفاظ بجميع بيتكوينس الخاص بك وتاريخ المعاملات الخاصة بك.";
 
 /* (No Commment) */
 "Notifications" = "إعلامات";
@@ -578,7 +587,7 @@
 "Please add an email address" = "الرجاء إضافة عنوان بريد إلكتروني";
 
 /* (No Commment) */
-"Please check your email." = "الرجاء التحقق من البريد الإلكتروني الخاص بك.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "الرجاء التحقق من البريد الإلكتروني الخاص بك. إذا كنت فعلا التحقق من محاولة تسجيل دخول، يجب تسجيل الدخول عبر الإنترنت المحفظة وإقران الهاتف الخاص بك عن طريق مسح رمز ريال قطري ضمن إعدادات-> \"معلومات المحفظة\".";
 
 /* (No Commment) */
 "Please check your internet connection." = "الرجاء التحقق من اتصال الإنترنت الخاص بك.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "يتم تشفير المفتاح الخاص الذي تحاول استيراد. الرجاء إدخال كلمة المرور أدناه.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل: • تحديث تماما تصميم والمستخدم تجربة • قوي الأمن مركز \"تعزيز الخصوصية\" • المبسطة النسخ الاحتياطي والاسترداد • مخصص صندوق الإدارة نوعين معاملة متقدمة (أنفاق من عناوين مشاهدة فقط وعمله مشتركة) غير معتمدة في الإصدار الجديد في هذا الوقت.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "توجد مشكلة في التحقق من هويتك.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "التحديث";
 
 /* (No Commment) */
+"Upgrade" = "ترقية";
+
+/* (No Commment) */
 "Upgrade Now" = "الترقية الآن";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "Weak" = "ضعيفة";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "مرحبا بكم في النسخة الجديدة من المحفظة بلوكتشين!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "لقد تم الكشف عن تثبيت سابق من المحفظة بلوكتشين على الهاتف الخاص بك.";

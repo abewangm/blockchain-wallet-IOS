@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "बटुआ अद्यतनों के लिए जाँच";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "अधिक खातों के लिए जाँच: 10 के चरण %d";
+"Checking for more: Step %d of %d" = "अधिक जानकारी के लिए जाँच: %2$d के चरण %1$d";
 
 /* No comment provided by engineer. */
 "Close" = "बंद करें";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "भुगतान की पुष्टि करें";
+
+/* (No Commment) */
+"Confirm Upgrade" = "उन्नयन की पुष्टि करें";
 
 /* (No Commment) */
 "Confirm your PIN" = "अपने पिन की पुष्टि करें";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "क्लिपबोर्ड पर प्रतिलिपि बनाएँ";
 
 /* (No Commment) */
-"Create Account" = "खाता बनाएँ";
+"Create" = "बनाएँ";
 
 /* (No Commment) */
 "Create New Wallet" = "नई बटुआ बनाएँ";
@@ -212,10 +215,7 @@
 "Create Wallet" = "बटुआ बनाएँ";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "रखने के अपने बटुए का आयोजन में मदद करने के लिए व्यक्तिगत खाते बनाएँ";
-
-/* (No Commment) */
-"Creating Account" = "खाता बनाना";
+"Creating" = "बनाना";
 
 /* (No Commment) */
 "Creating HD Wallet" = "HD बटुआ बनाना";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "वर्तमान दर: %@ बीटीसी";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "जिस तरह से आप अपने Blockchain बटुए में अपने bitcoins व्यवस्थित अनुकूलित करें";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Decrypted पिन पासवर्ड लंबाई 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "आसान एक बार बटुए बैकअप आप आपके धन के नियंत्रण में रहता है";
 
 /* (No Commment) */
-"Edit Account" = "खाता संपादित करें";
+"Edit" = "संपादित करें";
 
 /* (No Commment) */
 "Email" = "ईमेल";
+
+/* (No Commment) */
+"Email Notifications" = "ईमेल सूचनाएँ";
 
 /* (No Commment) */
 "Empty response from server." = "सर्वर से खाली प्रतिसाद।";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "स्थान सेवाओं को सक्षम करें";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "जब भी आप bitcoins प्राप्त एक ईमेल प्राप्त करने के लिए सूचनाएँ सक्षम करें। अपने खातों में केवल लेबल पते और आयातित पतों ट्रिगर सूचनाएँ करने के लिए पात्र हैं।";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "जब भी आप bitcoins प्राप्त एक ईमेल प्राप्त करने के लिए सूचनाएँ सक्षम करें। केवल पतों लेबल और आयातित पतों ट्रिगर सूचनाएँ करने के लिए पात्र हैं।";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "इस सुविधा को सक्षम करने के एक पंजीकृत स्पर्श ID फिंगरप्रिंट के साथ सभी उपयोगकर्ताओं के लिए अपने बटुए का उपयोग करने के लिए इस डिवाइस पर की अनुमति होगी।";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "बटुआ भूल जाते हैं";
 
 /* (No Commment) */
-"Found account %d, with %@" = "खाता %1$d, %2$@ के साथ पाया";
-
-/* (No Commment) */
-"From and destination account have to be different" = "से और गंतव्य खाता है अलग होना करने के लिए";
+"Found %d, with %@" = "%1$d, %2$@ के साथ पाया";
 
 /* (No Commment) */
 "From and destination address have to be different" = "से और गंतव्य पता है अलग होना करने के लिए";
+
+/* (No Commment) */
+"From and destination have to be different" = "से और गंतव्य अलग होना है";
 
 /* (No Commment) */
 "Generate new" = "नई उत्पन्न";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "मेरी Bitcoin बटुआ";
 
 /* (No Commment) */
-"Name your account" = "अपने खाते को नाम दें";
+"Name" = "नाम";
 
 /* (No Commment) */
 "New Address" = "नया पता";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "अभी नहीं";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "ध्यान दें कि एक बार में उन्नत किया, तुम वापस पिछले संस्करण के लिए नहीं जा सकते, लेकिन अपने सभी bitcoins और अपने ट्रांजे़क्शन इतिहास रखा जाएगा।";
 
 /* (No Commment) */
 "Notifications" = "सूचनाएँ";
@@ -578,7 +587,7 @@
 "Please add an email address" = "कृपया एक ईमेल पते जोड़ें";
 
 /* (No Commment) */
-"Please check your email." = "कृपया अपने ईमेल की जाँच करें।";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "कृपया अपने ईमेल की जाँच करें। यदि आप पहले से ही एक लॉगिन का प्रयास सत्यापित कर लिया है, आप के माध्यम से हमारी वेब बटुए में लॉग इन करें और अपने फोन सेटिंग्स के अंतर्गत QR कोड स्कैन कर रहा है द्वारा जोड़ी चाहिए-> बटुए जानकारी।";
 
 /* (No Commment) */
 "Please check your internet connection." = "कृपया अपना इंटरनेट कनेक्शन जाँचें।";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "आप आयात करने का प्रयास कर रहे हैं निजी कुंजी एन्क्रिप्टेड है। कृपया नीचे दिए गए पासवर्ड दर्ज करें।";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "नवीनीकरण बस एक पल के लेता है और अपने bitcoins और इतिहास सुरक्षित हो जाएगा। यहाँ है क्या बेहतर है: पूरी तरह से अद्यतन किया • डिजाइन और उपयोगकर्ता अनुभव उन्नत लेन-देन के दो प्रकार (केवल-देखो पतों और सिक्का साझा से खर्च) समर्थित नहीं है इस समय में नए संस्करण में • मजबूत सुरक्षा केंद्र • गोपनीयता बढ़ाया • सरलीकृत बैकअप और वसूली • स्वनिर्धारित कोष प्रबंधन।";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "आपकी पहचान की पुष्टि करने में कोई समस्या थी।";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "अद्यतन";
 
 /* (No Commment) */
+"Upgrade" = "नवीनीकरण";
+
+/* (No Commment) */
 "Upgrade Now" = "अब नवीनीकरण करें";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "Weak" = "कमजोर";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Blockchain वॉलेट के नए संस्करण के लिए आपका स्वागत है!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "हम अपने फोन पर Blockchain बटुए के एक पूर्व स्थापना पाई है।";

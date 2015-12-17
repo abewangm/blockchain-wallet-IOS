@@ -98,8 +98,7 @@
 @property int recoveredAccountIndex;
 
 @property BOOL didPairAutomatically;
-@property BOOL isSyncingForTrivialProcess; // activities such as labeling addresses, setting the fee per kb
-@property BOOL isSyncingForCriticalProcess; // activities such as importing an address
+@property BOOL isSyncing;
 @property NSString *twoFactorInput;
 
 - (id)init;
@@ -168,7 +167,6 @@
 - (NSString *)decrypt:(NSString *)data password:(NSString *)password pbkdf2_iterations:(int)pbkdf2_iterations;
 
 // HD Wallet
-- (void)whitelistWallet;
 - (void)upgradeToHDWallet;
 - (Boolean)hasAccount;
 - (Boolean)didUpgradeToHd;

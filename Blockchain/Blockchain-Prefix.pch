@@ -53,6 +53,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_PASSWORD_STRENGTH_NORMAL UIColorFromRGB(0x5bc0de)
 #define COLOR_PASSWORD_STRENGTH_STRONG UIColorFromRGB(0x5cb85c)
 
+#define COLOR_UPGRADE_TEXT_BLUE UIColorFromRGB(0x1975BB)
+
 #pragma mark - Measurements
 
 #define DEFAULT_HEADER_HEIGHT 65
@@ -122,7 +124,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
 #define SEGUE_IDENTIFIER_ABOUT @"about"
+
 #define SEGUE_IDENTIFIER_TWO_STEP @"twoStep"
+#define SEGUE_IDENTIFIER_UPGRADE_DETAILS @"upgradeDetails"
+
 #define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
 #define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
 #define SEGUE_IDENTIFIER_SECURITY_CENTER @"securityCenter"
@@ -159,6 +164,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON @"notifications_on"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE @"notifications_type"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING @"block_tor_ips"
+
+#define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
+#define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
 #define USER_DEFAULTS_KEY_SHARED_KEY @"sharedKey"
 #define USER_DEFAULTS_KEY_GUID @"guid"
@@ -265,6 +273,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 // TODO: Get from JS
 #define DUST_THRESHOLD 5460
 #define BTC_LIMIT_IN_SATOSHI 21e14 // 21,000,000 (Total possible Bitcoins) * 100,000,000 (Satoshi)
+#define RECOVERY_ACCOUNT_DEFAULT_NUMBER 10
+#define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 
 #pragma mark - Runtime modes
 
@@ -280,6 +290,5 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ERROR_UNDEFINED @"undefined"
 #define ERROR_TIMEOUT_REQUEST @"timeout request"
-#define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 
 #define TOUCH_ID_ENABLED 1

@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Lompakko päivityksiä";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Etsitään lisää tilejä: 10 %d vaihe";
+"Checking for more: Step %d of %d" = "Etsitään lisää: vaihe %1$d %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Sulje";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Vahvista maksu";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Vahvista päivitys";
 
 /* (No Commment) */
 "Confirm your PIN" = "Vahvista PIN-koodi";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Kopioi leikepöydälle";
 
 /* (No Commment) */
-"Create Account" = "Luo tili";
+"Create" = "Luo";
 
 /* (No Commment) */
 "Create New Wallet" = "Luo uusi lompakko";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Luo lompakko";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Henkilökohtainen tili voit pitää lompakon järjestetty";
-
-/* (No Commment) */
-"Creating Account" = "Tilin luominen";
+"Creating" = "Luominen";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Luominen HD lompakko";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Nykyinen määrä: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Mukauttaa tapaa, jolla voit järjestää oman bitcoins Blockchain lompakko";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Decrypted PIN salasanan pituus on 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Helppo ainoa aika lompakko varmuuskopiointi pitää sinut valvonta rahat";
 
 /* (No Commment) */
-"Edit Account" = "Muokkaa tiliä";
+"Edit" = "Muokkaa";
 
 /* (No Commment) */
 "Email" = "Sähköposti";
+
+/* (No Commment) */
+"Email Notifications" = "Sähköposti-ilmoitukset";
 
 /* (No Commment) */
 "Empty response from server." = "Tyhjä vastaus palvelimelta.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Ota sijaintipalvelut";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Ottaa käyttöön ilmoitukset saa sähköpostin aina, kun vastaanotat bitcoins. Vain merkityt osoitteet tilisi ja tuodut osoitteet voivat laukaista ilmoitukset.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Ottaa käyttöön ilmoitukset saa sähköpostin aina, kun vastaanotat bitcoins. Vain merkitty osoitteet ja tuodut osoitteet voivat laukaista ilmoitukset.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Tämän ominaisuuden käyttöönotto Salli kaikkien käyttäjien rekisteröity Touch ID sormenjälki tämän laitteen päästä lompakon.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Unohda lompakko";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Löytyi huomioon %1$d %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Kohteesta ja kohteen tilin on oltava eri";
+"Found %d, with %@" = "Löytyi %1$d %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Päässä ja kohdeosoite on erilainen";
+
+/* (No Commment) */
+"From and destination have to be different" = "Alkaen ja määränpää on erilainen";
 
 /* (No Commment) */
 "Generate new" = "Luo uusi";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Bitcoin lompakko";
 
 /* (No Commment) */
-"Name your account" = "Tilin";
+"Name" = "Nimi";
 
 /* (No Commment) */
 "New Address" = "Uusi osoite";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "Ei nyt";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Huomaa, että kun päivitetty, et voi palata edelliseen versioon, mutta kaikki bitcoins ja maksutapahtumat pidetään.";
 
 /* (No Commment) */
 "Notifications" = "Ilmoitukset";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Lisää sähköpostiosoite";
 
 /* (No Commment) */
-"Please check your email." = "Haluta ruudullinen sinun email.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Haluta ruudullinen sinun email. Jos olet tarkistanut kirjautumisyrityksen, pitäisi halko kotona kautta web-lompakkoa ja pari puhelimen skannaamalla QR-koodin asetukset-> lompakon tiedot.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Tarkista internet-yhteys.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Yrität tuoda yksityinen avain salataan. Kirjoita salasana alla.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Päivitys vie vain toinen ja bitcoins ja historia ovat turvassa. Tässä on mitä on parempi: • päivitetty kokonaan suunnittelu ja käyttäjien kokemuksia • luotettava tietoturva center Enhanced tietosuoja • yksinkertaistettu varmuuskopiointi ja palautus • räätälöidyt hallinnointi kaksi kehittynyt tapahtumatyyppiä (kuluttaa vain katsella-osoitteet ja jaettu kolikon) ei tueta tällä hetkellä uusi versio.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Ollut ongelmia henkilöllisyyden todentamista.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Päivitys";
 
 /* (No Commment) */
+"Upgrade" = "Päivitys";
+
+/* (No Commment) */
 "Upgrade Now" = "Päivitä nyt";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "Weak" = "Heikko";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Tervetuloa uusi versio Blockchain lompakko!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Havaitsimme aiempi asennus Blockchain lompakko puhelimeen.";

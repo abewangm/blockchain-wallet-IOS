@@ -427,6 +427,8 @@ void (^secondPasswordSuccess)(NSString *);
         showSendCoins = NO;
     }
     
+    self.changedPassword = NO;
+    
     [self setAccountData:wallet.guid sharedKey:wallet.sharedKey];
     
     //Becuase we are not storing the password on the device. We record the first few letters of the hashed password.
@@ -778,8 +780,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     secondPasswordSuccess = nil;
     
-    self.wallet.isSyncingForTrivialProcess = NO;
-    self.wallet.isSyncingForCriticalProcess = NO;
+    self.wallet.isSyncing = NO;
     
     [modalView endEditing:YES];
     
@@ -1084,7 +1085,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     [self hideBusyView];
-    self.wallet.isSyncingForCriticalProcess = NO;
+    self.wallet.isSyncing = NO;
     
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
     [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
@@ -1209,6 +1210,11 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPinModalAsView:(BOOL)asView
 {
+    if (self.changedPassword) {
+        [self showPasswordModal];
+        return;
+    }
+    
     // Backgrounding from resetting PIN screen hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
@@ -1383,7 +1389,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
     
-    if (self.wallet.isSyncingForCriticalProcess) {
+    if (self.wallet.isSyncing) {
         [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
     
@@ -1515,6 +1521,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)mainPasswordClicked:(id)sender
 {
+    [self showBusyViewWithLoadingText:BC_STRING_LOADING_DOWNLOADING_WALLET];
     [mainPasswordTextField resignFirstResponder];
     [self performSelector:@selector(loginMainPassword) withObject:nil afterDelay:0.6f];
 }
@@ -1525,10 +1532,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (password.length == 0) {
         [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        [self hideBusyView];
         return;
     }
     
     if (![self checkInternetConnection]) {
+        [self hideBusyView];
         return;
     }
     
@@ -1554,6 +1563,8 @@ void (^secondPasswordSuccess)(NSString *);
         }
         
         [self failedToObtainValuesFromKeychain];
+        
+        [self hideBusyView];
     }
     
     mainPasswordTextField.text = nil;

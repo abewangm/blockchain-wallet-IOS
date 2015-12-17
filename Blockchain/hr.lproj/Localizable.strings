@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Provjera ažuriranja novčanik";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Provjera za dodatne račune: korak %d 10";
+"Checking for more: Step %d of %d" = "Provjera za više: korak %1$d %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Zatvori";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Potvrda plaćanja";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Potvrdi nadogradnje";
 
 /* (No Commment) */
 "Confirm your PIN" = "Potvrdite svoj PIN";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Kopiraj u međuspremnik";
 
 /* (No Commment) */
-"Create Account" = "Stvaranje računa";
+"Create" = "Stvaranje";
 
 /* (No Commment) */
 "Create New Wallet" = "Stvoriti novi novčanik";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Stvaranje novčanik";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Stvaranje prilagođene račune za pomoć držati tvoj novčanik organizirana";
-
-/* (No Commment) */
-"Creating Account" = "Stvaranje računa";
+"Creating" = "Stvaranje";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Stvaranje HD novčanik";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Sadašnja stopa: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Prilagoditi način organiziranja vašeg bitcoins u novčaniku Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Raskrivanje lozinka PIN duljine 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Lako jednom novčanik sigurnosna kopija čuva u kontrolu nad sredstvima";
 
 /* (No Commment) */
-"Edit Account" = "Uređivanje računa";
+"Edit" = "Uredi";
 
 /* (No Commment) */
 "Email" = "E-pošte";
+
+/* (No Commment) */
+"Email Notifications" = "Obavijesti e-poštom";
 
 /* (No Commment) */
 "Empty response from server." = "Prazan odgovor poslužitelja.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Omogućavanje usluga lokacije";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Omogući obavijesti primati e-poštu kad god primite bitcoins. Samo označene adrese na računima i uvezenih adrese imaju pravo to obarač obavijest.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Omogući obavijesti primati e-poštu kad god primite bitcoins. Samo označene adrese i uvoze adrese imaju pravo to obarač obavijest.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Omogućavanje ove značajke će omogućiti svi korisnici s registriranim Touch ID otisak na ovom uređaju za pristup u vaš novčanik.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Zaboravi novčanik";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Pronašli račun %1$d, s %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Iz i odredišni račun moraju biti različite";
+"Found %d, with %@" = "Našao %1$d, s %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Iz i odredišna adresa moraju biti različite";
+
+/* (No Commment) */
+"From and destination have to be different" = "Iz i odredište moraju biti različite";
 
 /* (No Commment) */
 "Generate new" = "Generirati nove";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Novčanik Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Naziv računa";
+"Name" = "Ime";
 
 /* (No Commment) */
 "New Address" = "Nova adresa";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "Ne sad";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Imajte na umu da nakon ažurirati na, mogu vratiti na prethodnu verziju, ali vaš bitcoins i svoju povijest transakcija će se čuvati.";
 
 /* (No Commment) */
 "Notifications" = "Obavijesti";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Dodajte adresu e-pošte";
 
 /* (No Commment) */
-"Please check your email." = "Molim vas provjerite tvoj elektronička pošta.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Molim vas provjerite tvoj elektronička pošta. Ako ste već provjerili prijava pokus, treba prijaviti putem naše web novčanik i telefon upariti skeniranjem QR koda u postavkama-> novčanik informacije.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Provjerite internetsku vezu.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Šifrirani privatni ključ koji pokušavate uvesti. Molimo unesite lozinku.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Unapređenje traje samo sekundu i bitcoins i povijest će biti sigurno. Evo što je bolje: • potpuno obnovljeno dizajn i korisničko iskustvo • robustan sigurnost centar • poboljšane privatnost • pojednostavljeno backup i recovery • prilagođeno upravljanje fondovima dvije vrste naprednih transakcija (trošiti sat samo adrese i dijeli novac) nisu podržane u novoj verziji u ovom trenutku.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Bilo je problema kojim dokazuje svoj identitet.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Ažuriranje";
 
 /* (No Commment) */
+"Upgrade" = "Nadogradnja";
+
+/* (No Commment) */
 "Upgrade Now" = "Nadogradite sada";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Osmislili smo potpuno novi novčanik iskustvo za v
 
 /* (No Commment) */
 "Weak" = "Slab";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Dobrodošli na novu verziju Blockchain novčanik!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Otkrili smo prethodnu instalaciju Blockchain novčanik na telefonu.";

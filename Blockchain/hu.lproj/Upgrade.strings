@@ -1,6 +1,18 @@
+/* (No Commment) */
+"4cR-kX-YUY.text" = "Üdvözöljük az új változat a Blockchain pénztárca!";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "D5e-zI-7dK"; */
+"D5e-zI-7dK.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing peću, sed do eiusmod tempor incididunt ut labore et dolore magna ahhoz. Ut enim ad minimum veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea hajóskapitány kínál mindent, amit. DUIs aute irure dolor, reprehenderit a voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nem proident, a culpa qui Lapban deserunt mollit anim id est laborum sunt. Nam liber te conscient tum poen legum odioque civiuda tényezője.";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Ebu-XV-0mt"; */
+"Ebu-XV-0mt.normalTitle" = "Mégse";
+
+/* Class = "UIButton"; normalTitle = "Upgrade Now"; ObjectID = "Gk5-cB-fZg"; */
+"Gk5-cB-fZg.normalTitle" = "Frissítés most";
 
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
-"HuT-V7-syg.normalTitle" = "Ask Me Later";
+"HuT-V7-syg.normalTitle" = "Ellenorzes";
 
-/* Class = "UIButton"; normalTitle = "UPGRADE YOUR WALLET"; ObjectID = "cZ9-x2-KGM"; */
-"cZ9-x2-KGM.normalTitle" = "UPGRADE YOUR WALLET";
+/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "cZ9-x2-KGM"; */
+"cZ9-x2-KGM.normalTitle" = "tudj meg többet";
+

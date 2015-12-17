@@ -1,12 +1,12 @@
-
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
-"Ii6-KE-x0B.placeholder" = "Confirm New Password";
+"Ii6-KE-x0B.placeholder" = "Xác nhận mật khẩu mới";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
-"Kmb-pO-dHq.text" = "Weak";
+"Kmb-pO-dHq.text" = "Yếu";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
-"VKs-B5-luJ.placeholder" = "New Password";
+"VKs-B5-luJ.placeholder" = "Mật khẩu mới";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
-"zd5-DZ-hsS.placeholder" = "Password";
+"zd5-DZ-hsS.placeholder" = "Mật khẩu";
+

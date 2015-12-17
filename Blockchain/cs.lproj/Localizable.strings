@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Kontrola aktualizací Peněženka";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Kontrola více účtů: %d krok 10";
+"Checking for more: Step %d of %d" = "Kontrola více: krok %1$d %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Zavřít";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Potvrzení platby";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Potvrdit aktualizaci";
 
 /* (No Commment) */
 "Confirm your PIN" = "Potvrdit kód PIN";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Kopírovat do schránky";
 
 /* (No Commment) */
-"Create Account" = "Vytvořit účet";
+"Create" = "Vytvořit";
 
 /* (No Commment) */
 "Create New Wallet" = "Vytvoření nové peněženky";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Vytvoření peněženku";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Vytvořit osobní účty pomoci udržet vaše peněženka, organizované";
-
-/* (No Commment) */
-"Creating Account" = "Vytvoření účtu";
+"Creating" = "Vytváření";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Vytváření HD Peněženka";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Aktuální kurz: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Upravit způsob, jak organizovat své bitcoins v peněžence Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Dešifrovaný délka hesla PIN 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Snadné jednou peněženku zálohování vás drží kontrolu nad vaší fondů";
 
 /* (No Commment) */
-"Edit Account" = "Upravit účet";
+"Edit" = "Úpravy";
 
 /* (No Commment) */
 "Email" = "E-mail";
+
+/* (No Commment) */
+"Email Notifications" = "E-mailová upozornění";
 
 /* (No Commment) */
 "Empty response from server." = "Prázdná odpověď ze serveru.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Povolení služby pro umístění";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Povolte oznámení obdržet e-mail pokaždé, když přijmete bitcoins. Pouze označené adresy v účtech a importované adresy mají nárok na aktivační událost oznámení.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Povolte oznámení obdržet e-mail pokaždé, když přijmete bitcoins. Pouze označené adresy a importovat adresy mají nárok na aktivační událost oznámení.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Povolení této funkce umožní všem uživatelům s registrovanou Touch ID otisk na tomto zařízení pro přístup k vaší peněžence.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Zapomeňte na peněženku";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Nalezen účet %1$d, s %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Od a cílový účet musí být různé";
+"Found %d, with %@" = "Nalezeny %1$d, s %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Od a cílová adresa se musí lišit";
+
+/* (No Commment) */
+"From and destination have to be different" = "Od a cíl musí být různé";
 
 /* (No Commment) */
 "Generate new" = "Generovat nový";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Moje peněženka Bitcoin";
 
 /* (No Commment) */
-"Name your account" = "Název účtu";
+"Name" = "Jméno";
 
 /* (No Commment) */
 "New Address" = "Nová adresa";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "Teď ne";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Všimněte si, že po upgradu, nemůžete se vrátit k předchozí verzi, ale vaše bitcoins a historii transakcí bude nacházet.";
 
 /* (No Commment) */
 "Notifications" = "Oznámení";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Přidejte e-mailovou adresu";
 
 /* (No Commment) */
-"Please check your email." = "Zkontrolujte prosím váš email.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Zkontrolujte prosím váš email. Pokud jste již ověřili pokus o přihlášení, měli přihlásit přes náš web peněženku a spárování telefonu naskenováním kódu QR pod nastavení-> peněženky.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Zkontrolujte připojení k Internetu.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Šifrovaný soukromý klíč, který se pokoušíte importovat. Prosím zadejte heslo.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovace bude trvat jen chvilku a bitcoins a historie bude v bezpečí. Zde je to, co je lepší: • kompletně aktualizován designu a uživatelské zkušenosti • robustní bezpečnostní centrum • rozšířené soukromí • zjednodušené zálohování a zotavení • vlastní správy fondu dva typy rozšířené transakcí (výdaje z hodinek pouze adresy a sdílené mince) nejsou podporovány v nové verzi v tuto chvíli.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Došlo k problému s ověřením identity.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Aktualizovat";
 
 /* (No Commment) */
+"Upgrade" = "Inovace";
+
+/* (No Commment) */
 "Upgrade Now" = "Upgradovat nyní";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "Weak" = "Slabá";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Vítejte v nové verzi Blockchain peněženku!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Zachytili jsme předchozí instalace Blockchain peněženku na vašem telefonu.";

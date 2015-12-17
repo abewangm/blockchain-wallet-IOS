@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "A mobiltárca-frissítések";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "További számlák ellenőrzése: 10 lépés %d";
+"Checking for more: Step %d of %d" = "Több ellenőrzése: lépés %1$d az %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Zár";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Erősítse fizetés";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Ellenőrizze a frissítés";
 
 /* (No Commment) */
 "Confirm your PIN" = "Erősítse meg a PIN-kódot";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Másolása a vágólapra";
 
 /* (No Commment) */
-"Create Account" = "Fiók létrehozása";
+"Create" = "Létrehozása";
 
 /* (No Commment) */
 "Create New Wallet" = "Új Mobiltárcaprofil létrehozása";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Hozzon létre a pénztárca";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Hozzon létre testreszabott fiókokat, hogy segítsen tartani a pénztárca, szervezett";
-
-/* (No Commment) */
-"Creating Account" = "Fiók létrehozása";
+"Creating" = "Létrehozása";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Létrehozása HD pénztárca";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Jelenlegi árfolyam: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Megszokott a út Ön szervez a bitcoins a Blockchain pénztárca";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Visszafejtett TÛS jelszó hossza 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Könnyű idő pénztárca hát tart ellenőrzése a pénzed";
 
 /* (No Commment) */
-"Edit Account" = "Fiók szerkesztés";
+"Edit" = "Szerkesztése";
 
 /* (No Commment) */
 "Email" = "E-mailben";
+
+/* (No Commment) */
+"Email Notifications" = "E-mail értesítések";
 
 /* (No Commment) */
 "Empty response from server." = "Üres válasz a kiszolgálótól.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Engedélyezi a helyszolgáltatása";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Engedélyezi az értesítéseket szeretne kapni egy e-mailt kapni bitcoins. Értesítést kiváltó csak jelölt címeket a számlák és importált címek jogosultak.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Engedélyezi az értesítéseket szeretne kapni egy e-mailt kapni bitcoins. Csak a jelölt címeket és importált címek jogosultak trigger értesítések.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "A szolgáltatás engedélyezése lehetővé teszi, hogy minden felhasználó a regisztrált Touch ID ujjlenyomat ez berendezés-hoz belépés-hoz tárcátok.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Felejtsd el a tárca";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Számla %1$d, a %2$@ található";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Származó és a rendeltetési számlára van, hogy különböző";
+"Found %d, with %@" = "Talált %1$d, %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Származó és a rendeltetési hely cím van, hogy különböző";
+
+/* (No Commment) */
+"From and destination have to be different" = "Származó és a rendeltetési hely van, hogy különböző";
 
 /* (No Commment) */
 "Generate new" = "Generáljon újat";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Bitcoin tárcámat";
 
 /* (No Commment) */
-"Name your account" = "A fiók neve";
+"Name" = "név";
 
 /* (No Commment) */
 "New Address" = "Új cím";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "ne most";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Fontos megjegyezni, hogy miután frissített, nem mehet vissza a korábbi verzióra a bitcoins és a tranzakciók előzményeinek fogják tartani.";
 
 /* (No Commment) */
 "Notifications" = "Értesítések";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Adjon meg egy e-mail címet";
 
 /* (No Commment) */
-"Please check your email." = "Kérjük, ellenőrizze e-mailjeit.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Kérjük, ellenőrizze e-mailjeit. Ha már ellenőrizte, a bejelentkezési kísérlet, kell fatörzs-ban keresztül az internetes pénztárca és párosítja a telefont, a beállítások a QR-kód beolvasásával-> pénztárca információkat.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Kérjük, ellenőrizze az internet-kapcsolat.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Importálni kívánt személyes kulcs titkosított. Kérjük, írja be a jelszavad.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: design • teljesen frissített és felhasználó tapasztalat • robusztus biztonsági központ • továbbfejlesztett adatvédelmi egyszerűsített biztonsági mentés és helyreállítás • szabott alapkezelő két speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Frissítés";
 
 /* (No Commment) */
+"Upgrade" = "Frissítés";
+
+/* (No Commment) */
 "Upgrade Now" = "Frissítés most";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "Weak" = "Gyenge";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Üdvözöljük az új változat a Blockchain pénztárca!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Azt észleltük, hogy pénztárca Blockchain előző telepítése a telefonra.";

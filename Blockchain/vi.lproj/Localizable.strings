@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "Kiểm tra Cập Nhật ví";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "Kiểm tra thêm tài khoản: bước %d 10";
+"Checking for more: Step %d of %d" = "Kiểm tra để biết thêm: bước %1$d của %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Đóng";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "Xác nhận thanh toán";
+
+/* (No Commment) */
+"Confirm Upgrade" = "Xác nhận nâng cấp";
 
 /* (No Commment) */
 "Confirm your PIN" = "Xác nhận mã PIN của bạn";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "Sao chép vào clipboard";
 
 /* (No Commment) */
-"Create Account" = "Tạo tài khoản";
+"Create" = "Tạo";
 
 /* (No Commment) */
 "Create New Wallet" = "Tạo mới Wallet";
@@ -212,10 +215,7 @@
 "Create Wallet" = "Tạo Wallet";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "Tạo các tài khoản được cá nhân hoá để giúp giữ cho chi tiêu của bạn tổ chức";
-
-/* (No Commment) */
-"Creating Account" = "Tạo tài khoản";
+"Creating" = "Tạo";
 
 /* (No Commment) */
 "Creating HD Wallet" = "Tạo HD Wallet";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Tốc độ hiện tại: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Tuỳ chỉnh cách bạn tổ chức của bạn bitcoins trong ví của bạn Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "Giải mã PIN mật khẩu độ dài 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "Dễ dàng một lần ví sao lưu giữ bạn trong kiểm soát của khoản tiền của bạn";
 
 /* (No Commment) */
-"Edit Account" = "Chỉnh sửa tài khoản";
+"Edit" = "Chỉnh sửa";
 
 /* (No Commment) */
 "Email" = "Thư điện tử";
+
+/* (No Commment) */
+"Email Notifications" = "Thông báo email";
 
 /* (No Commment) */
 "Empty response from server." = "Sản phẩm nào đáp ứng từ hệ phục vụ.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "Kích hoạt dịch vụ vị trí";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "Cho phép các thông báo để nhận được một email bất cứ khi nào bạn nhận được bitcoins. Chỉ có nhãn địa chỉ trong tài khoản của bạn và nhập khẩu địa chỉ là đủ điều kiện để kích hoạt thông báo.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Cho phép các thông báo để nhận được một email bất cứ khi nào bạn nhận được bitcoins. Chỉ có nhãn địa chỉ và nhập địa chỉ có đủ điều kiện để kích hoạt thông báo.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Cho phép tính năng này sẽ cho phép tất cả người dùng với một dấu vân tay Touch ID đăng ký trên thiết bị này để truy cập để chi tiêu của bạn.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = "Quên Wallet";
 
 /* (No Commment) */
-"Found account %d, with %@" = "Tìm thấy tài khoản %1$d, với %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "Từ và điểm đến tài khoản có thể khác nhau";
+"Found %d, with %@" = "Tìm thấy %1$d, với %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Từ và địa chỉ đích có thể khác nhau";
+
+/* (No Commment) */
+"From and destination have to be different" = "Từ và điểm đến phải được khác nhau";
 
 /* (No Commment) */
 "Generate new" = "Tạo mới";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "Bitcoin ví của tôi";
 
 /* (No Commment) */
-"Name your account" = "Tên tài khoản của bạn";
+"Name" = "Tên";
 
 /* (No Commment) */
 "New Address" = "Địa chỉ mới";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "Không phải bây giờ";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Lưu ý rằng sau khi nâng cấp, bạn không thể quay về phiên bản trước, nhưng tất cả của bạn bitcoins và lịch sử giao dịch của bạn sẽ được giữ.";
 
 /* (No Commment) */
 "Notifications" = "Thông báo";
@@ -578,7 +587,7 @@
 "Please add an email address" = "Xin vui lòng thêm địa chỉ email";
 
 /* (No Commment) */
-"Please check your email." = "Xin vui lòng kiểm tra email của bạn.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Xin vui lòng kiểm tra email của bạn. Nếu bạn đã xác minh một nỗ lực đăng nhập, bạn cần đăng nhập thông qua của chúng tôi web ví và ghép nối điện thoại bằng cách quét mã QR dưới cài đặt-> ví thông tin.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Xin vui lòng kiểm tra kết nối internet của bạn.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Khoá riêng bạn đang cố gắng nhập khẩu được mã hóa. Vui lòng nhập mật khẩu dưới đây.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Việc nâng cấp có chỉ một lần thứ hai và bitcoins và lịch sử của bạn sẽ được an toàn. Dưới đây là những gì là tốt hơn: • hoàn toàn Cập Nhật thiết kế và người sử dụng kinh nghiệm • bảo mật mạnh mẽ Trung tâm • tăng cường bảo mật • giản thể sao lưu và phục hồi • Customized quản l ý quỹ hai loại nâng cao giao dịch (chi tiêu từ địa chỉ chỉ xem và chia sẻ xu) không được hỗ trợ trong phiên bản mới tại thời điểm này.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "Đã có một vấn đề xác minh danh tính của bạn.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "Cập Nhật";
 
 /* (No Commment) */
+"Upgrade" = "Nâng cấp";
+
+/* (No Commment) */
 "Upgrade Now" = "Nâng cấp bây giờ";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "Weak" = "Yếu";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "Chào mừng đến với phiên bản mới của các khoản chi tiêu Blockchain!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Chúng tôi đã phát hiện một cài đặt trước đó của Blockchain Wallet trên điện thoại của bạn.";

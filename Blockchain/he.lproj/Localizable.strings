@@ -170,7 +170,7 @@
 "Checking for Wallet updates" = "הארנק עדכונים";
 
 /* (No Commment) */
-"Checking for more accounts: Step %d of 10" = "בדיקת חשבונות נוספים: שלב %d של 10";
+"Checking for more: Step %d of %d" = "בדיקת יותר: שלב %1$d של %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "סגור";
@@ -180,6 +180,9 @@
 
 /* (No Commment) */
 "Confirm Payment" = "לאשר תשלום";
+
+/* (No Commment) */
+"Confirm Upgrade" = "לאשר את השדרוג";
 
 /* (No Commment) */
 "Confirm your PIN" = "לאשר את מספר הזיהוי האישי";
@@ -203,7 +206,7 @@
 "Copy to clipboard" = "העתק ללוח";
 
 /* (No Commment) */
-"Create Account" = "צור חשבון";
+"Create" = "צור";
 
 /* (No Commment) */
 "Create New Wallet" = "ליצור את הארנק החדש";
@@ -212,10 +215,7 @@
 "Create Wallet" = "ליצור את הארנק";
 
 /* (No Commment) */
-"Create personalized accounts to help keep your wallet organized" = "צור חשבונות אישית כדי לסייע לשמור על הארנק שלך מאורגן";
-
-/* (No Commment) */
-"Creating Account" = "יצירת חשבון";
+"Creating" = "יצירת";
 
 /* (No Commment) */
 "Creating HD Wallet" = "יצירת הארנק HD";
@@ -231,6 +231,9 @@
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "שיעור נוכחי: %@ BTC";
+
+/* (No Commment) */
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "להתאים אישית את אופן אתה מארגן את bitcoins שלך בארנק שלך Blockchain";
 
 /* (No Commment) */
 "Decrypted PIN Password length 0" = "אורך PIN סיסמה מפוענחים 0";
@@ -263,10 +266,13 @@
 "Easy one time wallet backup keeps you in control of your funds" = "פעם אחת קלה הארנק גיבוי משאיר אותך בשליטה של קרנות שלך";
 
 /* (No Commment) */
-"Edit Account" = "עריכת חשבון";
+"Edit" = "עריכה";
 
 /* (No Commment) */
 "Email" = "דוא";
+
+/* (No Commment) */
+"Email Notifications" = "הודעות דוא";
 
 /* (No Commment) */
 "Empty response from server." = "תגובה ריקה מהשרת.";
@@ -278,7 +284,7 @@
 "Enable Location Services" = "הפעלת שירותי איכון";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses in your accounts and imported addresses are eligible to trigger notifications." = "לאפשר הודעות כדי לקבל דואר אלקטרוני בכל פעם שאתה מקבל bitcoins. הודעות על ההדק זכאים רק עם תוויות כתובות בחשבונות שלך וכתובות מיובאים.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "לאפשר הודעות כדי לקבל דואר אלקטרוני בכל פעם שאתה מקבל bitcoins. רק עם תוויות כתובות ולא לייבא כתובות זכאים הודעות על ההדק.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "הפעלת תכונה זו תאפשר לכל המשתמשים בעלי טביעת אצבע המגע מזהה רשומה על התקן זה כדי לגשת את הארנק שלך.";
@@ -323,13 +329,13 @@
 "Forget Wallet" = ". שכח את הארנק";
 
 /* (No Commment) */
-"Found account %d, with %@" = "מצאתי חשבון %1$d, עם %2$@";
-
-/* (No Commment) */
-"From and destination account have to be different" = "מתוך חשבון היעד חייב להיות שונה";
+"Found %d, with %@" = "נמצאו %1$d, עם %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "מ כתובת היעד חייב להיות שונה";
+
+/* (No Commment) */
+"From and destination have to be different" = "מן היעד חייב להיות שונה";
 
 /* (No Commment) */
 "Generate new" = "צור חדש";
@@ -476,7 +482,7 @@
 "My Bitcoin Wallet" = "הארנק שלי ביטקוין";
 
 /* (No Commment) */
-"Name your account" = "שם החשבון שלך";
+"Name" = "שם";
 
 /* (No Commment) */
 "New Address" = "כתובת חדשה";
@@ -519,6 +525,9 @@
 
 /* (No Commment) */
 "Not now" = "לא עכשיו";
+
+/* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "שימו לב כי לאחר שדרוג, אתה לא יכול לחזור לגירסה הקודמת, אך כל bitcoins שלך והיסטוריה הטרנזקציה שלך יישמר.";
 
 /* (No Commment) */
 "Notifications" = "הודעות";
@@ -578,7 +587,7 @@
 "Please add an email address" = "נא להוסיף כתובת דואר אלקטרוני";
 
 /* (No Commment) */
-"Please check your email." = "נא בדוק את הדוא ל שלך.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "נא בדוק את הדוא ל שלך. אם וידאת כבר ניסיון כניסה, עליך להיכנס באמצעות הארנק האינטרנט שלנו, זוג בטלפון שלך על-ידי סריקת הקוד QR תחת הגדרות-> הארנק מידע.";
 
 /* (No Commment) */
 "Please check your internet connection." = "נא בדוק את החיבור שלך לאינטרנט.";
@@ -755,6 +764,17 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "המפתח הפרטי שאתה מנסה לייבא מוצפן. נא הזן את הסיסמה שלהלן.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
+
+• Completely updated design and user experience
+• Robust security center
+• Enhanced Privacy
+• Simplified backup and recovery
+• Customized fund management
+
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "השדרוג לוקח רק שנייה, את bitcoins ואת ההיסטוריה יהיה בטוח. . הנה מה טוב יותר: • לעדכן ועיצוב המשתמש להיתקל • אבטחה איתנה במרכז • • פרטיות משופרת פשוטה גיבוי ושחזור • מותאם אישית ניהול קרנות שני סוגי תנועות מתקדם (להוציא מן השעון בלבד כתובות ומטבע משותפים) אינן נתמכות בגרסה החדשה בשלב זה.";
+
+/* (No Commment) */
 "There was a problem verifying your identity." = "אירעה בעיה מאמת את זהותך.";
 
 /* (No Commment) */
@@ -828,6 +848,9 @@ Fee: %@
 "Update" = "עדכון";
 
 /* (No Commment) */
+"Upgrade" = "שדרוג";
+
+/* (No Commment) */
 "Upgrade Now" = "שדרג עכשיו";
 
 /* (No Commment) */
@@ -896,6 +919,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "Weak" = "חלש";
+
+/* (No Commment) */
+"Welcome to the new version of the Blockchain Wallet!" = "ברוכים הבאים לגרסה החדשה של הארנק Blockchain!";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "שגילינו התקנה קודמת של Blockchain הארנק בטלפון שלך.";
