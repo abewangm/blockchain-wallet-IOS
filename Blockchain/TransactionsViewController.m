@@ -158,7 +158,7 @@ int lastNumberTransactions = INT_MAX;
             [rows addObject:[NSIndexPath indexPathForRow:i inSection:0]];
         }
         
-        [tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationLeft];
+        [tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -166,7 +166,7 @@ int lastNumberTransactions = INT_MAX;
 {
     // Animate the first cell
     if (data.transactions.count > 0 && animateNextCell) {
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
         animateNextCell = NO;
         
         // Without a delay, the notification will not get the new transaction, but the one before it
