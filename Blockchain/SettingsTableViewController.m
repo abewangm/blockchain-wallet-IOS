@@ -1238,6 +1238,10 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == walletInformationSection && indexPath.row == walletInformationIdentifier) {
+        return indexPath;
+    }
+    
     BOOL hasLoadedAccountInfoDictionary = self.accountInfoDictionary ? YES : NO;
     
     if (!hasLoadedAccountInfoDictionary || [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LOADED_SETTINGS] boolValue] == NO) {
