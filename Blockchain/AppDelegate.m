@@ -1506,6 +1506,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)mainPasswordClicked:(id)sender
 {
+    [self showBusyViewWithLoadingText:BC_STRING_LOADING_DOWNLOADING_WALLET];
     [mainPasswordTextField resignFirstResponder];
     [self performSelector:@selector(loginMainPassword) withObject:nil afterDelay:0.6f];
 }
@@ -1516,10 +1517,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (password.length == 0) {
         [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        [self hideBusyView];
         return;
     }
     
     if (![self checkInternetConnection]) {
+        [self hideBusyView];
         return;
     }
     
@@ -1545,6 +1548,8 @@ void (^secondPasswordSuccess)(NSString *);
         }
         
         [self failedToObtainValuesFromKeychain];
+        
+        [self hideBusyView];
     }
     
     mainPasswordTextField.text = nil;
