@@ -1378,8 +1378,8 @@
 - (void)on_get_account_info_success:(NSString *)accountInfo
 {
     DLog(@"on_get_account_info");
-    NSDictionary *accountInfoDictionary = [accountInfo getJSONObject];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil userInfo:accountInfoDictionary];
+    self.accountInfo = [accountInfo getJSONObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
 }
 
 - (void)on_get_all_currency_symbols_success:(NSString *)currencies

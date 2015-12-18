@@ -92,6 +92,8 @@
 
 @property(nonatomic, strong) NSMutableDictionary *transactionProgressListeners;
 
+@property(nonatomic) NSDictionary *accountInfo;
+
 // HD properties:
 @property NSString *recoveryPhrase;
 @property int emptyAccountIndex;
