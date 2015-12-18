@@ -104,6 +104,7 @@ const int aboutPrivacyPolicy = 1;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTouchID inSection:securitySection];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 #endif
+    [self.tableView reloadData];
 }
 
 - (void)reload

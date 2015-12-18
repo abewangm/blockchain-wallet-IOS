@@ -58,6 +58,8 @@
     if (!self.settingsController) {
         self.settingsController = [[SettingsTableViewController alloc] init];
     }
+    
+    [self updateUI];
 }
 
 - (void)setupCheckImageViews

@@ -445,6 +445,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.wallet.twoFactorInput = nil;
     
+    [self.wallet getAccountInfo];
+    
     [manualPairView clearTextFields];
     
     [app closeAllModals];
