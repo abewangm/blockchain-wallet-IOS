@@ -240,7 +240,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXK-Ew-qLU">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvd-Pz-TSS">
                                                 <rect key="frame" x="0.0" y="-150" width="600" height="300"/>
@@ -342,7 +342,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link Mobile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f52-8F-scW">
-                                                <rect key="frame" x="262" y="551" width="78" height="30"/>
+                                                <rect key="frame" x="261" y="551" width="78" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Ow1-05-PsR"/>
                                                 </constraints>
@@ -362,7 +362,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Hint" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zs-bt-hEl">
-                                                <rect key="frame" x="267" y="706" width="68" height="30"/>
+                                                <rect key="frame" x="266" y="706" width="68" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="gau-ps-as7"/>
                                                 </constraints>
@@ -381,8 +381,8 @@
                                                     <action selector="enableTwoStepTapped:" destination="wnC-Xd-1Er" eventType="touchUpInside" id="bSG-H4-MnX"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Two-Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIP-mj-Hh2">
-                                                <rect key="frame" x="243" y="861" width="115" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable 2-Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIP-mj-Hh2">
+                                                <rect key="frame" x="252" y="861" width="96" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="IaH-3i-AjP"/>
                                                 </constraints>
@@ -405,28 +405,28 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="uAX-NW-pge">
-                                                <rect key="frame" x="232" y="551" width="30" height="30"/>
+                                                <rect key="frame" x="231" y="551" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="27O-6D-R2X"/>
                                                     <constraint firstAttribute="width" constant="30" id="6pJ-Jw-w05"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="tR8-QI-J1r">
-                                                <rect key="frame" x="237" y="706" width="30" height="30"/>
+                                                <rect key="frame" x="236" y="706" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="l6t-fD-gQO"/>
                                                     <constraint firstAttribute="width" constant="30" id="nkK-9c-Mth"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="BUK-Zb-tkN">
-                                                <rect key="frame" x="213" y="861" width="30" height="30"/>
+                                                <rect key="frame" x="222" y="861" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="54u-Q1-rBv"/>
                                                     <constraint firstAttribute="height" constant="30" id="Qg4-vf-6O9"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Tor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wor-ZR-sPS">
-                                                <rect key="frame" x="269" y="1016" width="63" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block TORs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wor-ZR-sPS">
+                                                <rect key="frame" x="260" y="1016" width="81" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Q8O-jt-1hb"/>
                                                 </constraints>
@@ -446,7 +446,7 @@
                                                 </connections>
                                             </button>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="Gtc-Af-dzc">
-                                                <rect key="frame" x="239" y="1016" width="30" height="30"/>
+                                                <rect key="frame" x="230" y="1016" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Aqq-52-TDy"/>
                                                     <constraint firstAttribute="height" constant="30" id="MQX-FZ-opu"/>
@@ -502,7 +502,7 @@
                                             <constraint firstAttribute="bottom" secondItem="gIP-mj-Hh2" secondAttribute="bottom" constant="102" id="oey-W9-HuT"/>
                                             <constraint firstItem="7YD-Bc-1GR" firstAttribute="centerX" secondItem="fXK-Ew-qLU" secondAttribute="centerX" id="p6i-ej-BEJ"/>
                                             <constraint firstAttribute="bottom" secondItem="f52-8F-scW" secondAttribute="bottom" constant="299" id="ug5-PL-dJf"/>
-                                            <constraint firstAttribute="height" constant="1200" id="yER-Mo-N1F"/>
+                                            <constraint firstAttribute="height" constant="1100" id="yER-Mo-N1F"/>
                                             <constraint firstItem="0zs-bt-hEl" firstAttribute="top" secondItem="7YD-Bc-1GR" secondAttribute="bottom" constant="8" id="zbZ-wq-5jI"/>
                                         </constraints>
                                         <variation key="default">
