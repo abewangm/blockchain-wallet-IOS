@@ -53,9 +53,32 @@
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_SECURITY_CENTER;
     
+    [self setupCheckImageViews];
+    
     if (!self.settingsController) {
         self.settingsController = [[SettingsTableViewController alloc] init];
     }
+}
+
+- (void)setupCheckImageViews
+{
+    self.verifyEmailCheckImageView.image = [self.verifyEmailCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.verifyEmailCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
+    
+    self.backupPhraseCheckImageView.image = [self.backupPhraseCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.backupPhraseCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
+    
+    self.linkMobileCheckImageView.image = [self.linkMobileCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.linkMobileCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
+    
+    self.storeHintCheckImageView.image = [self.storeHintCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.storeHintCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
+    
+    self.enableTwoStepCheckImageView.image = [self.enableTwoStepCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.enableTwoStepCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
+    
+    self.blockTorCheckImageView.image = [self.blockTorCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.blockTorCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -113,6 +136,7 @@
     self.verifyEmailLabel.textColor = hasVerifiedEmail ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     [self.verifyEmailButton setImage: hasVerifiedEmail ? [UIImage imageNamed:@"emailb"] : [UIImage imageNamed:@"email"] forState:UIControlStateNormal];
     self.verifyEmailButton.enabled = hasVerifiedEmail ? NO : YES;
+    self.verifyEmailCheckImageView.hidden = hasVerifiedEmail ? NO : YES;
     return hasVerifiedEmail;
 }
 
@@ -123,6 +147,7 @@
     self.backupPhraseLabel.textColor = hasBackedUpPhrase ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     [self.backupPhraseButton setImage: hasBackedUpPhrase ? [UIImage imageNamed:@"phraseb"] : [UIImage imageNamed:@"phrase"] forState:UIControlStateNormal];
     self.backupPhraseButton.enabled = hasBackedUpPhrase ? NO : YES;
+    self.backupPhraseCheckImageView.hidden = hasBackedUpPhrase ? NO : YES;
     return hasBackedUpPhrase;
 }
 
@@ -133,6 +158,7 @@
     self.linkMobileLabel.textColor = hasLinkedMobileNumber ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     self.linkMobileButton.enabled = hasLinkedMobileNumber ? NO : YES;
     [self.linkMobileButton setImage: hasLinkedMobileNumber ? [UIImage imageNamed:@"phoneb"] : [UIImage imageNamed:@"phone"] forState:UIControlStateNormal];
+    self.linkMobileCheckImageView.hidden = hasLinkedMobileNumber ? NO : YES;
     return hasLinkedMobileNumber;
 }
 
@@ -143,6 +169,7 @@
     self.storeHintLabel.textColor = hasStoredPasswordHint ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     self.storeHintButton.enabled = hasStoredPasswordHint ? NO : YES;
     [self.storeHintButton setImage: hasStoredPasswordHint ? [UIImage imageNamed:@"keyb"] : [UIImage imageNamed:@"key"] forState:UIControlStateNormal];
+    self.storeHintCheckImageView.hidden = hasStoredPasswordHint ? NO : YES;
     return hasStoredPasswordHint;
 }
 
@@ -153,6 +180,7 @@
     self.enableTwoStepLabel.textColor = hasEnabledTwoStep ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     self.enableTwoStepButton.enabled = hasEnabledTwoStep ? NO : YES;
     [self.enableTwoStepButton setImage: hasEnabledTwoStep ? [UIImage imageNamed:@"2fab"] : [UIImage imageNamed:@"2fa"] forState:UIControlStateNormal];
+    self.enableTwoStepCheckImageView.hidden = hasEnabledTwoStep ? NO : YES;
     return hasEnabledTwoStep;
 }
 
@@ -163,6 +191,7 @@
     self.blockTorLabel.textColor = hasBlockedTorRequests ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     self.blockTorButton.enabled = hasBlockedTorRequests ? NO : YES;
     [self.blockTorButton setImage: hasBlockedTorRequests ? [UIImage imageNamed:@"torb"] : [UIImage imageNamed:@"tor"] forState:UIControlStateNormal];
+    self.blockTorCheckImageView.hidden = hasBlockedTorRequests ? NO : YES;
     return hasBlockedTorRequests;
 }
 
