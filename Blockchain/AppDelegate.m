@@ -1594,7 +1594,7 @@ void (^secondPasswordSuccess)(NSString *);
                                       [self failedToObtainValuesFromKeychain];
                                       return;
                                   }
-                                  DLog(@"touch ID is using PIN %@", pin);
+                                  // DLog(@"touch ID is using PIN %@", pin);
                                   [app.wallet apiGetPINValue:pinKey pin:pin];
                                   
                               } else {

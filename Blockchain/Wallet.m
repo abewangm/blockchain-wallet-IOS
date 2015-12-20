@@ -74,7 +74,7 @@
 
 - (void)loadWalletWithGuid:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
 {
-    DLog(@"guid: %@, password: %@", _guid, _password);
+    // DLog(@"guid: %@, password: %@", _guid, _password);
     self.guid = _guid;
     // Shared Key can be empty
     self.sharedKey = _sharedKey;
