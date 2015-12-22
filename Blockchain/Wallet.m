@@ -1329,7 +1329,7 @@
     if ([delegate respondsToSelector:@selector(didBackupWallet)])
         [delegate didBackupWallet];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
-    // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
+    // Hide the busy view if previously syncing
     [self loading_stop];
     self.isSyncing = NO;
 }

@@ -129,8 +129,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define SOUND_FORMAT @"wav"
 
-#define NOTIFICATION_KEY_APP_DELEGATE_RELOAD_FOR_SWIFT @"AppDelegateReload"
-
 #define ANIMATION_KEY_HIDE_MODAL @"HideModal"
 #define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
 

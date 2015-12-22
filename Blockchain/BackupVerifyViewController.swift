@@ -135,8 +135,8 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
                 word2?.resignFirstResponder()
                 word3?.resignFirstResponder()
                 wallet!.markRecoveryPhraseVerified()
-                NSNotificationCenter.defaultCenter().postNotificationName("AppDelegateReload", object: nil)
-                self.navigationController?.popToRootViewControllerAnimated(true)
+                let backupNavigation = self.navigationController as? BackupNavigationViewController
+                backupNavigation?.busyView?.fadeIn()
             }
         }
     }
