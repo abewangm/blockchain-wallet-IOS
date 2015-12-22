@@ -12,6 +12,7 @@ let BC_ALERTVIEW_SECOND_PASSWORD_ERROR_TAG = 2
 
 protocol SecondPasswordDelegate {
     func didGetSecondPassword(_: String)
+    func returnToRootViewController(completionHandler: () -> Void ) -> Void
     var isVerifying : Bool {get set}
 }
 
@@ -68,11 +69,13 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
         checkSecondPassword()
     }
     
-    @IBAction func close(sender: UIBarButtonItem) {
+    @IBAction func close(sender: UIButton) {
         password?.resignFirstResponder()
-        self.performSegueWithIdentifier("unwindSecondPasswordCancel", sender: self)
+        delegate!.returnToRootViewController { () -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
-    
+
     func checkSecondPassword() {
         let secondPassword = password!.text
         if secondPassword!.isEmpty {
@@ -82,11 +85,10 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
             password?.resignFirstResponder()
             delegate?.didGetSecondPassword(secondPassword!)
             if (delegate!.isVerifying) {
-                // if we are verifying backup, unwind to verify words view controller
-                self.performSegueWithIdentifier("unwindSecondPasswordToVerify", sender: self)
-            } else {
-                self.performSegueWithIdentifier("unwindSecondPasswordSuccess", sender: self)
+                // if we are verifying backup, go to verify words view controller
+                self.navigationController?.performSegueWithIdentifier("backupVerify", sender: nil)
             }
+                self.dismissViewControllerAnimated(true, completion: nil)
         } else {
             alertUserWithErrorMessage((NSLocalizedString("Second Password Incorrect", comment: "")))
         }
