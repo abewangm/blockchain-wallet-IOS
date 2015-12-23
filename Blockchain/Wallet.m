@@ -1350,7 +1350,7 @@
     if ([delegate respondsToSelector:@selector(didBackupWallet)])
         [delegate didBackupWallet];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
-    // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
+    // Hide the busy view if previously syncing
     [self loading_stop];
     self.isSyncing = NO;
 }
@@ -1667,7 +1667,7 @@
         return;
     }
     
-    [self.webView executeJSSynchronous:@"MyWalletPhone.getRecoveryPhrase(\"%@\")", secondPassword];
+    [self.webView executeJSSynchronous:@"MyWalletPhone.getRecoveryPhrase(\"%@\")", [secondPassword escapeStringForJS]];
 }
 
 - (BOOL)isRecoveryPhraseVerified {
@@ -1756,7 +1756,7 @@
     if ([self isInitialized] && [app checkInternetConnection]) {
         self.isSyncing = YES;
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-        [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, label];
+        [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, [label escapeStringForJS]];
     }
 }
 
@@ -1770,7 +1770,7 @@
         
         // Wait a little bit to make sure the loading text is showing - then execute the blocking and kind of long create account
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.webView executeJSSynchronous:@"MyWalletPhone.createAccount(\"%@\")", label];
+            [self.webView executeJSSynchronous:@"MyWalletPhone.createAccount(\"%@\")", [label escapeStringForJS]];
         });
     }
 }

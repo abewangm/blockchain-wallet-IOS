@@ -166,6 +166,7 @@ BOOL displayingLocalSymbolSend;
     }
     else {
         [selectFromButton setHidden:NO];
+        [addressBookButton setHidden:NO];
     }
 }
 

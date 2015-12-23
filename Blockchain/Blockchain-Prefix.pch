@@ -139,8 +139,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define SOUND_FORMAT @"wav"
 
-#define NOTIFICATION_KEY_APP_DELEGATE_RELOAD_FOR_SWIFT @"AppDelegateReload"
-
 #define ANIMATION_KEY_HIDE_MODAL @"HideModal"
 #define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
 
@@ -164,6 +162,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON @"notifications_on"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE @"notifications_type"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING @"block_tor_ips"
+
+#define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
+#define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0

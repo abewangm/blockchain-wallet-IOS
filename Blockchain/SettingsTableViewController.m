@@ -666,6 +666,7 @@ const int aboutPrivacyPolicy = 1;
         [self alertUserOfSuccess:BC_STRING_TWO_STEP_DISABLED_SUCCESS];
     }
     self.isEnablingTwoStepSMS = NO;
+    
     [self doneChangingTwoStep];
     [self getAccountInfo];
 }

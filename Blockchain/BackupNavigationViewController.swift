@@ -21,13 +21,15 @@ import UIKit
             }
         }
     }
+    var busyView : BCFadeView?
     
     func finishTransitioning() {
        isTransitioning = false
     }
     
     internal func reload() {
-        self.popToRootViewControllerAnimated(false)
+        self.popToRootViewControllerAnimated(true)
+        busyView?.fadeOut()
     }
     
     override func viewDidLoad() {
@@ -55,6 +57,31 @@ import UIKit
         
         let backupViewController = self.viewControllers.first as! BackupViewController
         backupViewController.wallet = self.wallet
+        
+        busyView = BCFadeView(frame: view.frame)
+        busyView?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        let textWithSpinnerView = UIView(frame:CGRectMake(0, 0, 250, 110))
+        textWithSpinnerView.backgroundColor = UIColor.whiteColor()
+        busyView!.addSubview(textWithSpinnerView);
+        textWithSpinnerView.center = busyView!.center;
+        
+        let busyLabel = UILabel(frame:CGRectMake(0, 0, 100, 30))
+        busyLabel.adjustsFontSizeToFitWidth = true;
+        busyLabel.text = NSLocalizedString("Syncing Wallet", comment: "");
+        busyLabel.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 + 15);
+        textWithSpinnerView.addSubview(busyLabel);
+        
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        spinner.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 - 15);
+        textWithSpinnerView.addSubview(spinner);
+        textWithSpinnerView.bringSubviewToFront(spinner);
+        spinner.startAnimating();
+        
+        busyView!.containerView = textWithSpinnerView;
+        busyView!.fadeOut();
+        
+        view.addSubview(busyView!);
+        view.bringSubviewToFront(busyView!);
     }
     
     override func viewDidLayoutSubviews() {

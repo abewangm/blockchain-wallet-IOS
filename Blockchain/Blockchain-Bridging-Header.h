@@ -4,3 +4,4 @@
 
 #import <UIKit/UIKit.h>
 #import "wallet.h"
+#import "BCFadeView.h"
