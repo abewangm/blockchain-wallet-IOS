@@ -108,6 +108,12 @@ UIAlertController *popupAddressArchive;
     app.mainTitleLabel.text = BC_STRING_RECEIVE;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self hideKeyboard];
+}
+
 - (void)dealloc
 {
     if (self.paymentObserver) {
