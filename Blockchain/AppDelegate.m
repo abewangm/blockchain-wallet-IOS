@@ -516,6 +516,10 @@ void (^secondPasswordSuccess)(NSString *);
     } completion:^(BOOL finished) {
         [curtainImageView removeFromSuperview];
     }];
+    
+    if (self.tabViewController.activeViewController == _receiveViewController && modalView) {
+        [_receiveViewController showKeyboard];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
