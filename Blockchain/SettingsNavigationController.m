@@ -104,10 +104,18 @@
 
 - (void)reload
 {
-    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
-        SettingsTableViewController *settingsViewController = (SettingsTableViewController *)self.visibleViewController;
-        [settingsViewController reload];
+    for (UIViewController *viewController in self.viewControllers) {
+        if ([viewController isMemberOfClass:[SettingsTableViewController class]]) {
+            SettingsTableViewController *settingsViewController = (SettingsTableViewController *)viewController;
+            [settingsViewController reload];
+        }
+        
+        if ([viewController isMemberOfClass:[BackupNavigationViewController class]]) {
+            BackupNavigationViewController *backupViewController = (BackupNavigationViewController *)viewController;
+            [backupViewController reload];
+        }
     }
+
     
     [self.busyView fadeOut];
 }

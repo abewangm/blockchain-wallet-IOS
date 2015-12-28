@@ -12,6 +12,7 @@
 #import "SettingsBitcoinUnitTableViewController.h"
 #import "SecurityCenterViewController.h"
 #import "SettingsTwoStepViewController.h"
+#import "Blockchain-Swift.h"
 #import "AppDelegate.h"
 
 const int textFieldTagChangePasswordHint = 8;
@@ -74,6 +75,7 @@ const int aboutPrivacyPolicy = 1;
 {
     [super viewDidLoad];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
+    [self updateEmailAndMobileStrings];
     [self reload];
 }
 
@@ -112,7 +114,8 @@ const int aboutPrivacyPolicy = 1;
     DLog(@"Reloading settings");
     
     self.isEnablingTwoStepSMS = NO;
-    
+    [self.backupController reload];
+
     [self getAccountInfo];
     [self getAllCurrencySymbols];
 }
@@ -153,17 +156,7 @@ const int aboutPrivacyPolicy = 1;
         self.availableCurrenciesDictionary = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES];
     }
     
-    NSString *emailString = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL];
-    
-    if (emailString != nil) {
-        self.emailString = emailString;
-    }
-    
-    NSString *mobileNumberString = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER];
-
-    if (mobileNumberString != nil) {
-        self.mobileNumberString = mobileNumberString;
-    }
+    [self updateEmailAndMobileStrings];
     
     if ([self.alertTargetViewController isMemberOfClass:[SecurityCenterViewController class]]) {
         SecurityCenterViewController *securityViewController = (SecurityCenterViewController *)self.alertTargetViewController;
@@ -174,6 +167,21 @@ const int aboutPrivacyPolicy = 1;
     }
     
     [self reloadTableView];
+}
+
+- (void)updateEmailAndMobileStrings
+{
+    NSString *emailString = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL];
+    
+    if (emailString != nil) {
+        self.emailString = emailString;
+    }
+    
+    NSString *mobileNumberString = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER];
+    
+    if (mobileNumberString != nil) {
+        self.mobileNumberString = mobileNumberString;
+    }
 }
 
 - (void)changeLocalCurrencySuccess
