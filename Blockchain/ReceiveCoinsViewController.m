@@ -108,6 +108,12 @@ UIAlertController *popupAddressArchive;
     app.mainTitleLabel.text = BC_STRING_RECEIVE;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self hideKeyboard];
+}
+
 - (void)dealloc
 {
     if (self.paymentObserver) {
@@ -150,26 +156,26 @@ UIAlertController *popupAddressArchive;
     popupAddressUnArchive = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self copyAddressClicked:nil];
         [self showKeyboard];
+        [self copyAddressClicked:nil];
         [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
     UIAlertAction *labelAction = [UIAlertAction actionWithTitle:BC_STRING_LABEL_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self labelAddressClicked:nil];
         [self hideKeyboard];
+        [self labelAddressClicked:nil];
         [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
     UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:BC_STRING_ARCHIVE_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self archiveAddressClicked:nil];
         [self hideKeyboard];
+        [self archiveAddressClicked:nil];
         [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
     UIAlertAction *unArchiveAction = [UIAlertAction actionWithTitle:BC_STRING_UNARCHIVE_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self archiveAddressClicked:nil];
         [self hideKeyboard];
+        [self archiveAddressClicked:nil];
         [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
@@ -701,7 +707,12 @@ UIAlertController *popupAddressArchive;
     
     // Select the entry field
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.lastSelectedField == nil ? [fiatAmountField becomeFirstResponder] : [self.lastSelectedField becomeFirstResponder];
+        
+        if ([entryField isFirstResponder]) {
+            self.lastSelectedField == nil ? [fiatAmountField becomeFirstResponder] : [self.lastSelectedField becomeFirstResponder];
+        } else {
+            [labelTextField becomeFirstResponder];
+        }
     });
 }
 
@@ -709,6 +720,7 @@ UIAlertController *popupAddressArchive;
 {
     [fiatAmountField resignFirstResponder];
     [btcAmountField resignFirstResponder];
+    [labelTextField resignFirstResponder];
     [entryField resignFirstResponder];
 }
 
