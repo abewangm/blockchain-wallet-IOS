@@ -104,20 +104,9 @@
 
 - (void)reload
 {
-    for (UIViewController *viewController in self.viewControllers) {
-        if ([viewController isMemberOfClass:[SettingsTableViewController class]]) {
-            SettingsTableViewController *settingsViewController = (SettingsTableViewController *)viewController;
-            [settingsViewController reload];
-        }
-        
-        if ([viewController isMemberOfClass:[BackupNavigationViewController class]]) {
-            BackupNavigationViewController *backupViewController = (BackupNavigationViewController *)viewController;
-            [backupViewController reload];
-        }
-    }
-
-    
     [self.busyView fadeOut];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER object:nil];
 }
 
 - (void)showSecurityCenter

@@ -1934,4 +1934,57 @@
     [app standardNotify:decription];
 }
 
+#pragma mark - Settings Helpers
+
+- (BOOL)hasVerifiedEmail
+{
+    return [[self.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED] boolValue];
+}
+
+- (BOOL)hasVerifiedMobileNumber
+{
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue];
+}
+
+- (BOOL)hasStoredPasswordHint
+{
+    NSString *passwordHint = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
+    return ![[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] && passwordHint;
+}
+
+- (BOOL)hasEnabledTwoStep
+{
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] != 0;
+}
+
+- (BOOL)hasBlockedTorRequests
+{
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
+}
+
+- (int)securityCenterScore
+{
+    int completedItems = 0;
+    
+    if ([self hasVerifiedEmail]) {
+        completedItems++;
+    }
+    if (self.isRecoveryPhraseVerified) {
+        completedItems++;
+    }
+    if ([self hasVerifiedMobileNumber]) {
+        completedItems++;
+    }
+    if ([self hasStoredPasswordHint]) {
+        completedItems++;
+    }
+    if ([self hasEnabledTwoStep]) {
+        completedItems++;
+    }
+    if ([self hasBlockedTorRequests]) {
+        completedItems++;
+    }
+    return completedItems;
+}
+
 @end

@@ -222,6 +222,14 @@
 - (void)disableEmailNotifications;
 - (void)changeTorBlocking:(BOOL)willEnable;
 
+// Security Center
+- (BOOL)hasVerifiedEmail;
+- (BOOL)hasVerifiedMobileNumber;
+- (BOOL)hasStoredPasswordHint;
+- (BOOL)hasEnabledTwoStep;
+- (BOOL)hasBlockedTorRequests;
+- (int)securityCenterScore;
+
 // Payment Spender
 - (void)createNewPayment;
 - (void)changePaymentFromAddress:(NSString *)fromString;

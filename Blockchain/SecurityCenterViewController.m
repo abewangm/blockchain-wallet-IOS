@@ -92,31 +92,14 @@
 
 - (void)updateUI
 {
-    int completedItems = 0;
+    [self updateEmail];
+    [self updatePhrase];
+    [self updateMobile];
+    [self updateHint];
+    [self updateTwoStep];
+    [self updateTor];
     
-    if ([self updateEmail]) {
-        completedItems++;
-    }
-
-    if ([self updatePhrase]) {
-        completedItems++;
-    }
-
-    if ([self updateMobile]) {
-        completedItems++;
-    }
-
-    if ([self updateHint]) {
-        completedItems++;
-    }
-
-    if ([self updateTwoStep]) {
-        completedItems++;
-    }
-
-    if ([self updateTor]) {
-        completedItems++;
-    }
+    int completedItems = [app.wallet securityCenterScore];
     
     self.progressView.progress = (float)completedItems/6;
     if (completedItems < 6 && completedItems > 2) {
@@ -131,18 +114,17 @@
     }
 }
 
-- (BOOL)updateEmail
+- (void)updateEmail
 {
-    BOOL hasVerifiedEmail = [self.settingsController hasVerifiedEmail];
+    BOOL hasVerifiedEmail = [app.wallet hasVerifiedEmail];
     self.verifyEmailLabel.text = hasVerifiedEmail ? BC_STRING_EMAIL_VERIFIED : BC_STRING_VERIFY_EMAIL;
     self.verifyEmailLabel.textColor = hasVerifiedEmail ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     [self.verifyEmailButton setImage: hasVerifiedEmail ? [UIImage imageNamed:@"emailb"] : [UIImage imageNamed:@"email"] forState:UIControlStateNormal];
     self.verifyEmailButton.enabled = hasVerifiedEmail ? NO : YES;
     self.verifyEmailCheckImageView.hidden = hasVerifiedEmail ? NO : YES;
-    return hasVerifiedEmail;
 }
 
-- (BOOL)updatePhrase
+- (void)updatePhrase
 {
     BOOL hasBackedUpPhrase = app.wallet.isRecoveryPhraseVerified;
     self.backupPhraseLabel.text = hasBackedUpPhrase ? BC_STRING_PHRASE_BACKED : BC_STRING_BACKUP_PHRASE;
@@ -150,51 +132,46 @@
     [self.backupPhraseButton setImage: hasBackedUpPhrase ? [UIImage imageNamed:@"phraseb"] : [UIImage imageNamed:@"phrase"] forState:UIControlStateNormal];
     self.backupPhraseButton.enabled = hasBackedUpPhrase ? NO : YES;
     self.backupPhraseCheckImageView.hidden = hasBackedUpPhrase ? NO : YES;
-    return hasBackedUpPhrase;
 }
 
-- (BOOL)updateMobile
+- (void)updateMobile
 {
-    BOOL hasLinkedMobileNumber = [self.settingsController hasVerifiedMobileNumber];
+    BOOL hasLinkedMobileNumber = [app.wallet hasVerifiedMobileNumber];
     self.linkMobileLabel.text = hasLinkedMobileNumber ? BC_STRING_MOBILE_LINKED : BC_STRING_LINK_MOBILE;
     self.linkMobileLabel.textColor = hasLinkedMobileNumber ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     self.linkMobileButton.enabled = hasLinkedMobileNumber ? NO : YES;
     [self.linkMobileButton setImage: hasLinkedMobileNumber ? [UIImage imageNamed:@"phoneb"] : [UIImage imageNamed:@"phone"] forState:UIControlStateNormal];
     self.linkMobileCheckImageView.hidden = hasLinkedMobileNumber ? NO : YES;
-    return hasLinkedMobileNumber;
 }
 
-- (BOOL)updateHint
+- (void)updateHint
 {
-    BOOL hasStoredPasswordHint = [self.settingsController hasStoredPasswordHint];
+    BOOL hasStoredPasswordHint = [app.wallet hasStoredPasswordHint];
     self.storeHintLabel.text = hasStoredPasswordHint ? BC_STRING_HINT_STORED : BC_STRING_STORE_HINT;
     self.storeHintLabel.textColor = hasStoredPasswordHint ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     self.storeHintButton.enabled = hasStoredPasswordHint ? NO : YES;
     [self.storeHintButton setImage: hasStoredPasswordHint ? [UIImage imageNamed:@"keyb"] : [UIImage imageNamed:@"key"] forState:UIControlStateNormal];
     self.storeHintCheckImageView.hidden = hasStoredPasswordHint ? NO : YES;
-    return hasStoredPasswordHint;
 }
 
-- (BOOL)updateTwoStep
+- (void)updateTwoStep
 {
-    BOOL hasEnabledTwoStep = [self.settingsController hasEnabledTwoStep];
+    BOOL hasEnabledTwoStep = [app.wallet hasEnabledTwoStep];
     self.enableTwoStepLabel.text = hasEnabledTwoStep ? BC_STRING_TWO_STEP_ENABLED : BC_STRING_ENABLE_TWO_STEP;
     self.enableTwoStepLabel.textColor = hasEnabledTwoStep ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     self.enableTwoStepButton.enabled = hasEnabledTwoStep ? NO : YES;
     [self.enableTwoStepButton setImage: hasEnabledTwoStep ? [UIImage imageNamed:@"2fab"] : [UIImage imageNamed:@"2fa"] forState:UIControlStateNormal];
     self.enableTwoStepCheckImageView.hidden = hasEnabledTwoStep ? NO : YES;
-    return hasEnabledTwoStep;
 }
 
-- (BOOL)updateTor
+- (void)updateTor
 {
-    BOOL hasBlockedTorRequests = [self.settingsController hasBlockedTorRequests];
+    BOOL hasBlockedTorRequests = [app.wallet hasBlockedTorRequests];
     self.blockTorLabel.text = hasBlockedTorRequests ? BC_STRING_TOR_BLOCKED : BC_STRING_BLOCK_TOR;
     self.blockTorLabel.textColor = hasBlockedTorRequests ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
     self.blockTorButton.enabled = hasBlockedTorRequests ? NO : YES;
     [self.blockTorButton setImage: hasBlockedTorRequests ? [UIImage imageNamed:@"torb"] : [UIImage imageNamed:@"tor"] forState:UIControlStateNormal];
     self.blockTorCheckImageView.hidden = hasBlockedTorRequests ? NO : YES;
-    return hasBlockedTorRequests;
 }
 
 - (IBAction)verifyEmailButtonTapped:(UIButton *)sender

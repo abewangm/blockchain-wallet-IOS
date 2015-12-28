@@ -354,20 +354,16 @@ int accountEntries = 0;
         NSMutableArray *titles;
         titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, upgradeOrSecurityCenterTitle, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
         
-        NSString *upgradeOrBackupImage;
+        NSString *upgradeOrSecurityCenterImage;
         if (!app.wallet.didUpgradeToHd) {
             // XXX upgrade icon
-            upgradeOrBackupImage = @"icon_upgrade";
+            upgradeOrSecurityCenterImage = @"icon_upgrade";
         }
         else {
-            if (app.wallet.isRecoveryPhraseVerified) {
-                upgradeOrBackupImage = @"icon_backup_complete";
-            } else {
-                upgradeOrBackupImage = @"icon_backup_incomplete";
-            }
+            upgradeOrSecurityCenterImage = @"security";
         }
         NSMutableArray *images;
-        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", upgradeOrBackupImage, @"lock_icon", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", upgradeOrSecurityCenterImage, @"lock_icon", @"logout_icon"]];
 #else
         if (indexPath.row == menuEntries - 1) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -382,6 +378,19 @@ int accountEntries = 0;
 #endif
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
+        
+        if ([images[indexPath.row] isEqualToString:@"security"]) {
+            int completedItems = [app.wallet securityCenterScore];
+            cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            
+            if (completedItems < 6 && completedItems > 2) {
+                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_YELLOW];
+            } else if (completedItems == 6) {
+                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
+            } else {
+                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_RED];
+            }
+        }
         
         if (indexPath.row == 0 && app.showEmailWarning) {
             cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];

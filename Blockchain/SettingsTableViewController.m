@@ -77,6 +77,13 @@ const int aboutPrivacyPolicy = 1;
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
     [self updateEmailAndMobileStrings];
     [self reload];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -343,11 +350,6 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Mobile Number
 
-- (BOOL)hasVerifiedMobileNumber
-{
-    return [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue];
-}
-
 - (NSString *)getMobileNumber
 {
     return app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER];
@@ -585,11 +587,6 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Two Step
 
-- (BOOL)hasEnabledTwoStep
-{
-    return [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] != 0;
-}
-
 - (void)alertUserToChangeTwoStepVerification
 {
     NSString *alertTitle;
@@ -691,11 +688,6 @@ const int aboutPrivacyPolicy = 1;
 - (BOOL)hasAddedEmail
 {
     return [app.wallet.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL] ? YES : NO;
-}
-
-- (BOOL)hasVerifiedEmail
-{
-    return [[app.wallet.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED] boolValue];
 }
 
 - (NSString *)getUserEmail
@@ -828,12 +820,6 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Password Hint
 
-- (BOOL)hasStoredPasswordHint
-{
-    NSString *passwordHint = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
-    return ![[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] && passwordHint;
-}
-
 - (void)alertUserToChangePasswordHint
 {
     UIAlertController *alertForChangingPasswordHint = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT message:BC_STRING_HINT_DESCRIPTION preferredStyle:UIAlertControllerStyleAlert];
@@ -922,11 +908,6 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Tor Blocking
 
-- (BOOL)hasBlockedTorRequests
-{
-    return [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
-}
-
 - (void)changeTorBlockingTapped
 {
     BOOL torBlockingEnabled = [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
@@ -965,7 +946,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)updateTorSuccess
 {
     [self removeObserversForUpdatingTorBlocking];
-    if ([self hasBlockedTorRequests]) {
+    if ([app.wallet hasBlockedTorRequests]) {
         [self alertUserOfSuccess:BC_STRING_TOR_ALLOWED];
     } else {
         [self alertUserOfSuccess:BC_STRING_TOR_BLOCKED];
@@ -1136,7 +1117,7 @@ const int aboutPrivacyPolicy = 1;
                 case preferencesEmail: {
                     if (![self hasAddedEmail]) {
                         [self alertUserToChangeEmail:NO];
-                    } else if ([self hasVerifiedEmail]) {
+                    } else if ([app.wallet hasVerifiedEmail]) {
                         [self alertUserToChangeEmail:YES];
                     } else {
                         [self alertUserToVerifyEmail];
@@ -1305,7 +1286,7 @@ const int aboutPrivacyPolicy = 1;
                 case preferencesMobileNumber: {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.textLabel.text = BC_STRING_SETTINGS_MOBILE_NUMBER;
-                    if ([self hasVerifiedMobileNumber]) {
+                    if ([app.wallet hasVerifiedMobileNumber]) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                     } else {
@@ -1381,7 +1362,7 @@ const int aboutPrivacyPolicy = 1;
                 }
                 case securityPasswordHint: {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_PASSWORD_HINT;
-                    if ([self hasStoredPasswordHint]) {
+                    if ([app.wallet hasStoredPasswordHint]) {
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_STORED;
                     } else {

@@ -207,6 +207,8 @@ void (^secondPasswordSuccess)(NSString *);
             [self checkAndWarnOnJailbrokenPhones];
         }
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadSideMenu) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+        
         [self migratePasswordAndPinFromNSUserDefaults];
         
         // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
@@ -261,6 +263,11 @@ void (^secondPasswordSuccess)(NSString *);
     [sideMenuViewController reload];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+}
+
+- (void)reloadSideMenu
+{
+    [sideMenuViewController reload];
 }
 
 - (void)toggleSymbol

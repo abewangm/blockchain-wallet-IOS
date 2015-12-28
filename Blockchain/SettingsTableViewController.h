@@ -10,14 +10,8 @@
 
 @interface SettingsTableViewController : UITableViewController
 @property (weak, nonatomic) UIViewController *alertTargetViewController;
-- (void)reload;
 
-// Security Center
-- (BOOL)hasVerifiedEmail;
-- (BOOL)hasVerifiedMobileNumber;
-- (BOOL)hasStoredPasswordHint;
-- (BOOL)hasEnabledTwoStep;
-- (BOOL)hasBlockedTorRequests;
+- (void)reload;
 
 - (void)verifyEmailTapped;
 - (void)linkMobileTapped;

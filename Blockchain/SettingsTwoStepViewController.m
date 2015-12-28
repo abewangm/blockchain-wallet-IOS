@@ -7,6 +7,7 @@
 //
 
 #import "SettingsTwoStepViewController.h"
+#import "AppDelegate.h"
 
 @implementation SettingsTwoStepViewController
 
@@ -24,7 +25,7 @@
 
 - (void)updateUI
 {
-    if ([self.settingsController hasEnabledTwoStep]) {
+    if ([app.wallet hasEnabledTwoStep]) {
         [self.twoStepButton setTitle:BC_STRING_DISABLE forState:UIControlStateNormal];
     } else {
         [self.twoStepButton setTitle:BC_STRING_ENABLE_TWO_STEP_SMS forState:UIControlStateNormal];

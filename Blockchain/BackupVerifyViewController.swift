@@ -98,7 +98,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         var valid = true
         
         let words = wallet!.recoveryPhrase.componentsSeparatedByString(" ")
-        
+
         var randomWord1 : String
         var randomWord2 : String
         var randomWord3 : String
