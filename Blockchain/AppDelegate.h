@@ -158,7 +158,7 @@
 - (void)pushWebViewController:(NSString*)url title:(NSString *)title;
 
 - (void)showSendCoins;
-
+- (void)showDebugMenu;
 - (void)showHdUpgrade;
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender;

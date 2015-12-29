@@ -37,6 +37,7 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "UIViewController+AutoDismiss.h"
 #import "DeviceIdentifier.h"
+#import "DebugTableViewController.h"
 
 AppDelegate * app;
 
@@ -1192,6 +1193,16 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
+}
+
+- (void)showDebugMenu
+{
+    DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
+    navigationController.title = BC_STRING_DEBUG;
+    
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)showPinModalAsView:(BOOL)asView

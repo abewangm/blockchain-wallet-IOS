@@ -7,11 +7,10 @@
 //
 
 #import "SettingsAboutViewController.h"
+#import "SettingsNavigationController.h"
 
 @interface SettingsAboutViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
-@property (nonatomic) UIView *longPressGestureView;
 @end
 
 @implementation SettingsAboutViewController
@@ -24,30 +23,20 @@
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
     self.webView.scalesPageToFit = YES;
-    self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    self.longPressGesture.minimumPressDuration = 3.0;
-    self.longPressGestureView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
-    [self.navigationController.view addSubview:self.longPressGestureView];
-    [self.longPressGestureView addGestureRecognizer:self.longPressGesture];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
-    self.longPressGesture = nil;
-    [self.longPressGestureView removeFromSuperview];
-}
-
-- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
-{
-    if (longPress.state == UIGestureRecognizerStateBegan) {
-        [self showDebugMenu];
+    [super viewWillAppear:animated];
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    NSString *headerString;
+    if ([self.urlTargetString isEqualToString:TERMS_OF_SERVICE_URL]) {
+        headerString = BC_STRING_TERMS_OF_SERVICE;
+    } else if ([self.urlTargetString isEqualToString:PRIVACY_POLICY_URL]) {
+        headerString = BC_STRING_SETTINGS_PRIVACY_POLICY;
     }
-}
-
-- (void)showDebugMenu
-{
-    DLog(@"showing Debug menu");
+    
+    navigationController.headerLabel.text = headerString;
 }
 
 @end
