@@ -233,4 +233,6 @@
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;
 
+- (void)updateServerURL:(NSString *)newURL;
+
 @end

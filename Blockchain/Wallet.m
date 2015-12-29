@@ -115,6 +115,8 @@
 {
     DLog(@"webViewDidFinishLoad:");
     
+    [self updateServerURL:[app serverURL]];
+    
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];
     
@@ -773,6 +775,15 @@
     }
     
     [self.webView executeJS:@"MyWalletPhone.disableNotifications()"];
+}
+
+- (void)updateServerURL:(NSString *)newURL
+{
+    if (![self.webView isLoaded]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]];
 }
 
 # pragma mark - Transaction handlers

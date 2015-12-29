@@ -1169,3 +1169,7 @@ MyWalletPhone.disableNotifications = function() {
     
     MyWallet.wallet.disableNotifications(success, error);
 }
+
+MyWalletPhone.updateServerURL = function(url) {
+    BlockchainAPI.ROOT_URL = url;
+}
