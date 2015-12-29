@@ -85,7 +85,7 @@ BOOL displayingLocalSymbolSend;
     [app.wallet createNewPayment];
     [app.wallet changePaymentFromAddress:@""];
     if (app.tabViewController.activeViewController == self) {
-        [app closeModalWithTransition:kCATransitionFade];
+        [app closeModalWithTransition:kCATransitionPush];
     }
 }
 
