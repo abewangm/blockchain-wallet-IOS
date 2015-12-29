@@ -69,6 +69,8 @@
 {
     [self loadJS];
     
+    [self useDebugSettingsIfSet];
+    
     [self.webView executeJS:@"MyWalletPhone.apiGetPINValue(\"%@\", \"%@\")", key, pin];
 }
 
@@ -115,7 +117,7 @@
 {
     DLog(@"webViewDidFinishLoad:");
     
-    [self updateServerURL:[app serverURL]];
+    [self useDebugSettingsIfSet];
     
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];
@@ -779,11 +781,12 @@
 
 - (void)updateServerURL:(NSString *)newURL
 {
-    if (![self.webView isLoaded]) {
-        return;
-    }
-    
     [self.webView executeJS:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]];
+}
+
+- (void)updateWebSocketURL:(NSString *)newURL
+{
+    [self.webView executeJS:@"MyWalletPhone.updateWebsocketURL(\"%@\")", [newURL escapeStringForJS]];
 }
 
 # pragma mark - Transaction handlers
@@ -1922,6 +1925,21 @@
 #endif
     
     [app standardNotify:decription];
+}
+
+#pragma mark - Debugging
+
+- (void)useDebugSettingsIfSet
+{
+    NSString *serverURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+    if (serverURL) {
+        [self updateServerURL:serverURL];
+    }
+    
+    NSString *webSocketURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+    if (webSocketURL) {
+        [self updateWebSocketURL:webSocketURL];
+    }
 }
 
 @end

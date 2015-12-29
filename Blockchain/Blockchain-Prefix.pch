@@ -123,7 +123,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
 #define SEGUE_IDENTIFIER_DEBUG_MENU @"debugMenu"
 
-#define WebROOT @"https://blockchain.info/"
+#define DEFAULT_WALLET_SERVER @"https://blockchain.info/"
+#define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 
 #define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
 #define ZEROBLOCK_TITLE @"ZeroBlock"
@@ -169,7 +170,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
 
 #define USER_DEFAULTS_KEY_DEBUG_SERVER_URL @"serverURL"
-
+#define USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL @"webSocketURL"
 
 #define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
 

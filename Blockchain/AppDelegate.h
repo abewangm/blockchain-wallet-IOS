@@ -199,6 +199,7 @@
 - (void)verifyTwoFactorYubiKey;
 
 - (NSString *)serverURL;
+- (NSString *)webSocketURL;
 
 @end
 
