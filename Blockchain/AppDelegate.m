@@ -267,7 +267,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)reloadSideMenu
 {
-    [sideMenuViewController reload];
+    [sideMenuViewController reloadTableView];
 }
 
 - (void)toggleSymbol

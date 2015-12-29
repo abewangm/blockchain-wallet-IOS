@@ -111,12 +111,14 @@
 
 - (void)showSecurityCenter
 {
+    [self popToRootViewControllerAnimated:NO];
+
     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_SECURITY_CENTER sender:nil];
 }
 
 - (void)showSettings
 {
-    [self popViewControllerAnimated:NO];
+    [self popToRootViewControllerAnimated:NO];
 }
 
 @end

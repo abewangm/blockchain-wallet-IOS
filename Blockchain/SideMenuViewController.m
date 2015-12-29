@@ -144,6 +144,11 @@ int accountEntries = 0;
     [self.tableView reloadData];
 }
 
+- (void)reloadTableView
+{
+    [self.tableView reloadData];
+}
+
 - (void)reloadNumberOfBalancesToDisplay
 {
     // Total entries: 1 entry for the total balance, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
