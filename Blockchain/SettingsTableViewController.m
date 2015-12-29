@@ -912,9 +912,9 @@ const int aboutPrivacyPolicy = 1;
     } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_ABOUT]) {
         SettingsAboutViewController *aboutViewController = segue.destinationViewController;
         if ([sender isEqualToString:SEGUE_SENDER_TERMS_OF_SERVICE]) {
-            aboutViewController.urlTargetString = TERMS_OF_SERVICE_URL;
+            aboutViewController.urlTargetString = [[app serverURL] stringByAppendingString:TERMS_OF_SERVICE_URL_SUFFIX];
         } else if ([sender isEqualToString:SEGUE_SENDER_PRIVACY_POLICY]) {
-            aboutViewController.urlTargetString = PRIVACY_POLICY_URL;
+            aboutViewController.urlTargetString = [[app serverURL] stringByAppendingString:PRIVACY_POLICY_URL_SUFFIX];
         }
     } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_BTC_UNIT]) {
         SettingsBitcoinUnitTableViewController *settingsBtcUnitTableViewController = segue.destinationViewController;

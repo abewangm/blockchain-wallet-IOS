@@ -8,6 +8,7 @@
 
 #import "DebugTableViewController.h"
 #import "Blockchain-Swift.h"
+#import "AppDelegate.h"
 
 @interface DebugTableViewController ()
 
@@ -19,6 +20,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_DONE style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
+    self.navigationItem.title = BC_STRING_DEBUG;
 }
 
 - (void)dismiss
@@ -31,7 +33,7 @@
     UIAlertController *changeServerURLAlert = [UIAlertController alertControllerWithTitle:BC_STRING_SERVER_URL message:nil preferredStyle:UIAlertControllerStyleAlert];
     [changeServerURLAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.text = [self serverURL];
+        secureTextField.text = [app serverURL];
         secureTextField.returnKeyType = UIReturnKeyDone;
     }];
     [changeServerURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -39,13 +41,12 @@
         [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
         [self.tableView reloadData];
     }]];
+    [changeServerURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+        [self.tableView reloadData];
+    }]];
     [changeServerURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:changeServerURLAlert animated:YES completion:nil];
-}
-
-- (NSString *)serverURL
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? WebROOT : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
 }
 
 #pragma mark - Table view data source
@@ -65,7 +66,8 @@
     switch (indexPath.row) {
         case 0: {
             cell.textLabel.text = BC_STRING_SERVER_URL;
-            cell.detailTextLabel.text =  [self serverURL];
+            cell.detailTextLabel.text =  [app serverURL];
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
         default:

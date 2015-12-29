@@ -30,9 +30,9 @@
     [super viewWillAppear:animated];
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     NSString *headerString;
-    if ([self.urlTargetString isEqualToString:TERMS_OF_SERVICE_URL]) {
+    if ([self.urlTargetString containsString:TERMS_OF_SERVICE_URL_SUFFIX]) {
         headerString = BC_STRING_TERMS_OF_SERVICE;
-    } else if ([self.urlTargetString isEqualToString:PRIVACY_POLICY_URL]) {
+    } else if ([self.urlTargetString containsString:PRIVACY_POLICY_URL_SUFFIX]) {
         headerString = BC_STRING_SETTINGS_PRIVACY_POLICY;
     }
     

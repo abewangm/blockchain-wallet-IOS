@@ -1201,6 +1201,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
     navigationController.title = BC_STRING_DEBUG;
+    navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
     
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
@@ -2385,6 +2386,13 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     return input;
+}
+
+#pragma mark Debugging
+
+- (NSString *)serverURL
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? WebROOT : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
 }
 
 @end

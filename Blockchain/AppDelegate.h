@@ -198,6 +198,8 @@
 - (void)verifyTwoFactorGoogle;
 - (void)verifyTwoFactorYubiKey;
 
+- (NSString *)serverURL;
+
 @end
 
 extern AppDelegate *app;
