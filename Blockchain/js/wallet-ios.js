@@ -303,9 +303,19 @@ MyWalletPhone.getPaymentFee = function() {
 
 MyWalletPhone.checkIfUserIsOverSpending = function() {
 
-    currentPayment.payment = currentPayment.payment.then(function(x) {
+    currentPayment.payment.then(function(x) {
         device.execute('check_max_amount:fee:', [x.sweepAmount, x.sweepFee]);
         return x;
+    }).catch(function(error) {
+        var errorArgument;
+        if (error.error) {
+            errorArgument = error.error;
+        } else {
+            errorArgument = error.message;
+        }
+                                                                  
+        console.log('error checking for overspending: ' + errorArgument);
+        device.execute('on_error_update_fee:', [errorArgument]);
     });
 }
 
@@ -314,12 +324,21 @@ MyWalletPhone.sweepPayment = function() {
     currentPayment
       .sweep()
     
-    currentPayment.payment = currentPayment.payment.then(function(x) {
+    currentPayment.payment.then(function(x) {
         console.log('SweepFee: ' + x.sweepFee);
         console.log('SweepAmount: ' + x.sweepAmount);
         console.log('maxAmount and fee are' + x.sweepAmount + ',' + x.sweepFee);
         device.execute('update_max_amount:fee:', [x.sweepAmount, x.sweepFee]);
         return x;
+    }).catch(function(error) {
+        var errorArgument;
+        if (error.error) {
+            errorArgument = error.error;
+        } else {
+            errorArgument = error.message;
+        }
+        console.log('error sweeping payment: ' + errorArgument);
+        device.execute('on_error_update_fee:', [errorArgument]);
     });
 };
 
