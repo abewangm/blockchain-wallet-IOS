@@ -125,6 +125,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info/"
 #define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
+#define DEFAULT_MERCHANT_NEARBY_URL @"https://merchant-directory.blockchain.info/api/list_near_merchants.php"
 
 #define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
 #define ZEROBLOCK_TITLE @"ZeroBlock"
@@ -171,6 +172,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define USER_DEFAULTS_KEY_DEBUG_SERVER_URL @"serverURL"
 #define USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL @"webSocketURL"
+#define USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL @"nearbyMerchantsURL"
 
 #define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
 

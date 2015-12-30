@@ -70,6 +70,27 @@
     [self presentViewController:changeWebSocketURLAlert animated:YES completion:nil];
 }
 
+- (void)alertToChangeNearbyMerchantsURL
+{
+    UIAlertController *changeNearbyMerchantsURLAlert = [UIAlertController alertControllerWithTitle:BC_STRING_NEARBY_MERCHANTS_URL message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [changeNearbyMerchantsURLAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
+        secureTextField.text = [app nearbyMerchantsURL];
+        secureTextField.returnKeyType = UIReturnKeyDone;
+    }];
+    [changeNearbyMerchantsURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *textField = [[changeNearbyMerchantsURLAlert textFields] firstObject];
+        [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL];
+        [self.tableView reloadData];
+    }]];
+    [changeNearbyMerchantsURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL];
+        [self.tableView reloadData];
+    }]];
+    [changeNearbyMerchantsURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:changeNearbyMerchantsURLAlert animated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -77,7 +98,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,6 +118,12 @@
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
+        case 2: {
+            cell.textLabel.text = BC_STRING_NEARBY_MERCHANTS_URL;
+            cell.detailTextLabel.text = [app nearbyMerchantsURL];
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+            break;
+        }
         default:
             break;
     }
@@ -111,8 +138,13 @@
         case 0:
             [self alertToChangeServerURL];
             break;
-        default:
+        case 1:
             [self alertToChangeWebSocketURL];
+            break;
+        case 2:
+            [self alertToChangeNearbyMerchantsURL];
+            break;
+        default:
             break;
     }
 }

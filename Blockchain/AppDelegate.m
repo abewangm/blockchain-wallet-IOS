@@ -2400,4 +2400,9 @@ void (^secondPasswordSuccess)(NSString *);
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] == nil ? DEFAULT_WEBSOCKET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
 }
 
+- (NSString *)nearbyMerchantsURL
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL] == nil ? DEFAULT_MERCHANT_NEARBY_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL];
+}
+
 @end

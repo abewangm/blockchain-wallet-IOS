@@ -200,6 +200,7 @@
 
 - (NSString *)serverURL;
 - (NSString *)webSocketURL;
+- (NSString *)nearbyMerchantsURL;
 
 @end
 

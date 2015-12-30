@@ -378,4 +378,5 @@
 #define BC_STRING_DEBUG NSLocalizedString(@"Debug", nil)
 #define BC_STRING_SERVER_URL NSLocalizedString(@"Server URL", nil)
 #define BC_STRING_WEBSOCKET_URL NSLocalizedString(@"WebSocket URL", nil)
+#define BC_STRING_NEARBY_MERCHANTS_URL NSLocalizedString(@"Merchant URL", nil)
 #define BC_STRING_RESET NSLocalizedString(@"Reset", nil)
