@@ -1359,7 +1359,7 @@
 - (void)on_change_local_currency_success
 {
     DLog(@"on_change_local_currency_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
+    [self getHistory];
 }
 
 - (void)on_change_currency_error

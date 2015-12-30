@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol BtcSelectorDelegate <NSObject>
--(void)changeLocalCurrencySuccess;
-@end
-
 @interface SettingsBitcoinUnitTableViewController : UITableViewController
-@property (nonatomic) id <BtcSelectorDelegate> delegate;
 @property (nonatomic, copy) NSDictionary *itemsDictionary;
 @end

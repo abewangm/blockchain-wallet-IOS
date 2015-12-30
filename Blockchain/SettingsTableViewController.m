@@ -165,19 +165,6 @@ const int aboutPrivacyPolicy = 1;
     [self reloadTableView];
 }
 
-- (void)changeLocalCurrencySuccess
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
-    
-    [self getHistory];
-}
-
-- (void)getHistory
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
-    [app.wallet getHistory];
-}
-
 - (void)reloadTableView
 {
     [self.tableView reloadData];
