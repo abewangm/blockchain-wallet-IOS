@@ -247,9 +247,7 @@ const int aboutPrivacyPolicy = 1;
         [self presentViewController:alertForSuccess animated:YES completion:nil];
     }
     
-    if (self.alertTargetViewController) {
-        [self reload];
-    }
+    [self reload];
 }
 
 - (void)alertUserOfError:(NSString *)errorMessage
@@ -454,7 +452,6 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)verifyMobileNumberSuccess
 {
-    [self getAccountInfo];
     [self removeObserversForVerifyingMobileNumber];
     
     if (self.isEnablingTwoStepSMS) {
@@ -673,7 +670,6 @@ const int aboutPrivacyPolicy = 1;
     self.isEnablingTwoStepSMS = NO;
     
     [self doneChangingTwoStep];
-    [self getAccountInfo];
 }
 
 - (void)changeTwoStepError
@@ -889,7 +885,6 @@ const int aboutPrivacyPolicy = 1;
 {
     [self resetPasswordHintCell];
     [self alertUserOfSuccess:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_SUCCESS];
-    [self getAccountInfo];
 }
 
 - (void)changePasswordHintError
@@ -951,7 +946,6 @@ const int aboutPrivacyPolicy = 1;
     } else {
         [self alertUserOfSuccess:BC_STRING_TOR_BLOCKED];
     }
-    [self getAccountInfo];
 }
 
 - (void)updateTorError
