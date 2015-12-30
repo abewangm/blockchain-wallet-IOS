@@ -28,67 +28,25 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)alertToChangeServerURL
+- (void)alertToChangeURLName:(NSString *)name userDefaultKey:(NSString *)key currentURL:(NSString *)currentURL
 {
-    UIAlertController *changeServerURLAlert = [UIAlertController alertControllerWithTitle:BC_STRING_SERVER_URL message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [changeServerURLAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    UIAlertController *changeURLAlert = [UIAlertController alertControllerWithTitle:name message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [changeURLAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.text = [app serverURL];
+        secureTextField.text = currentURL;
         secureTextField.returnKeyType = UIReturnKeyDone;
     }];
-    [changeServerURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *textField = [[changeServerURLAlert textFields] firstObject];
-        [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+    [changeURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        BCSecureTextField *secureTextField = (BCSecureTextField *)[[changeURLAlert textFields] firstObject];
+        [[NSUserDefaults standardUserDefaults] setObject:secureTextField.text forKey:key];
         [self.tableView reloadData];
     }]];
-    [changeServerURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+    [changeURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
         [self.tableView reloadData];
     }]];
-    [changeServerURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:changeServerURLAlert animated:YES completion:nil];
-}
-
-- (void)alertToChangeWebSocketURL
-{
-    UIAlertController *changeWebSocketURLAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WEBSOCKET_URL message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [changeWebSocketURLAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.text = [app webSocketURL];
-        secureTextField.returnKeyType = UIReturnKeyDone;
-    }];
-    [changeWebSocketURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *textField = [[changeWebSocketURLAlert textFields] firstObject];
-        [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
-        [self.tableView reloadData];
-    }]];
-    [changeWebSocketURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
-        [self.tableView reloadData];
-    }]];
-    [changeWebSocketURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:changeWebSocketURLAlert animated:YES completion:nil];
-}
-
-- (void)alertToChangeNearbyMerchantsURL
-{
-    UIAlertController *changeNearbyMerchantsURLAlert = [UIAlertController alertControllerWithTitle:BC_STRING_NEARBY_MERCHANTS_URL message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [changeNearbyMerchantsURLAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.text = [app nearbyMerchantsURL];
-        secureTextField.returnKeyType = UIReturnKeyDone;
-    }];
-    [changeNearbyMerchantsURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *textField = [[changeNearbyMerchantsURLAlert textFields] firstObject];
-        [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL];
-        [self.tableView reloadData];
-    }]];
-    [changeNearbyMerchantsURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL];
-        [self.tableView reloadData];
-    }]];
-    [changeNearbyMerchantsURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:changeNearbyMerchantsURLAlert animated:YES completion:nil];
+    [changeURLAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:changeURLAlert animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -136,13 +94,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
         case 0:
-            [self alertToChangeServerURL];
+            [self alertToChangeURLName:BC_STRING_SERVER_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL currentURL:[app serverURL]];
             break;
         case 1:
-            [self alertToChangeWebSocketURL];
+            [self alertToChangeURLName:BC_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:[app webSocketURL]];
             break;
         case 2:
-            [self alertToChangeNearbyMerchantsURL];
+            [self alertToChangeURLName:BC_STRING_NEARBY_MERCHANTS_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL currentURL:[app nearbyMerchantsURL]];
             break;
         default:
             break;
