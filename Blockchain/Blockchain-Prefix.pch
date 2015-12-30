@@ -269,6 +269,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define RECOVERY_ACCOUNT_DEFAULT_NUMBER 10
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 
+#define DURATION_LONG_PRESS_GESTURE_DEBUG 2.0
+
 #pragma mark - Runtime modes
 
 // #define DISABLE_EDITING_ACCOUNTS 1 // comment this line out to enable support for adding/editing accounts

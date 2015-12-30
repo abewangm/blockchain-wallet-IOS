@@ -20,6 +20,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_DONE style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
+    self.navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
     self.navigationItem.title = BC_STRING_DEBUG;
 }
 

@@ -74,7 +74,7 @@ Boolean shouldShowAnimation;
 #endif
         UIView *debugView = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width - 80, 0, 80, 51)];
         UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-        longPressGesture.minimumPressDuration = 2.0;
+        longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;
         [debugView addGestureRecognizer:longPressGesture];
         [self addSubview:debugView];
         // Version

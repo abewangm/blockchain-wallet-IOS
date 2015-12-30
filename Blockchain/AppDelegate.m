@@ -1209,7 +1209,6 @@ void (^secondPasswordSuccess)(NSString *);
     DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
-    navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
     
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
