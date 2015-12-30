@@ -273,7 +273,16 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] setBool:symbolLocal forKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self reload];
+    [self reloadTopLevelViewControllers];
+}
+
+- (void)reloadTopLevelViewControllers
+{
+    [_sendViewController reload];
+    [_transactionsViewController reload];
+    [_receiveViewController reload];
+    
+    [sideMenuViewController reload];
 }
 
 - (void)showBusyViewWithLoadingText:(NSString *)text
