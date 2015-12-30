@@ -67,10 +67,4 @@ class BackupViewController: UIViewController {
             vc.isVerifying = true
         }
     }
-        
-    @IBAction func unwindSecondPasswordCancel(segue: UIStoryboardSegue) {
-    }
-    
-    @IBAction func unwindVerifyWords(segue: UIStoryboardSegue) {
-    }
 }

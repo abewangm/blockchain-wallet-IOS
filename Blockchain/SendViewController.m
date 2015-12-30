@@ -85,7 +85,7 @@ BOOL displayingLocalSymbolSend;
     [app.wallet createNewPayment];
     [app.wallet changePaymentFromAddress:@""];
     if (app.tabViewController.activeViewController == self) {
-        [app closeModalWithTransition:kCATransitionFade];
+        [app closeModalWithTransition:kCATransitionPush];
     }
 }
 
@@ -166,6 +166,7 @@ BOOL displayingLocalSymbolSend;
     }
     else {
         [selectFromButton setHidden:NO];
+        [addressBookButton setHidden:NO];
     }
 }
 
@@ -275,7 +276,8 @@ BOOL displayingLocalSymbolSend;
         
         [self enablePaymentButtons];
         
-        // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a successful transaction
+        // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
+        [self reload];
         
         // Close transaction modal, go to transactions view, scroll to top and animate new transaction
         [app closeModalWithTransition:kCATransitionFade];

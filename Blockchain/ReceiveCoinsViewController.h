@@ -65,5 +65,6 @@
 - (void)reload;
 
 - (void)hideKeyboard;
+- (void)showKeyboard;
 
 @end

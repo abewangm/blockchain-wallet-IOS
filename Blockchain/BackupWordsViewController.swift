@@ -160,7 +160,10 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         wallet!.getRecoveryPhrase(password)
     }
     
-    @IBAction func unwindSecondPasswordSuccess(segue: UIStoryboardSegue) {
+    func returnToRootViewController(completionHandler: () -> Void ) {
+        self.navigationController?.popToRootViewControllerWithHandler({ () -> () in
+            completionHandler()
+        })
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String: AnyObject]?, context: UnsafeMutablePointer<Void>) {

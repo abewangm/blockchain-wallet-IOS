@@ -69,6 +69,8 @@
 {
     [self loadJS];
     
+    [self useDebugSettingsIfSet];
+    
     [self.webView executeJS:@"MyWalletPhone.apiGetPINValue(\"%@\", \"%@\")", key, pin];
 }
 
@@ -114,6 +116,8 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     DLog(@"webViewDidFinishLoad:");
+    
+    [self useDebugSettingsIfSet];
     
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];
@@ -349,7 +353,7 @@
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
 - (void)loadWalletLogin
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@wallet/login", WebROOT]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@wallet/login", [app serverURL]]];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [webView loadRequest:requestObj];
 }
@@ -773,6 +777,16 @@
     }
     
     [self.webView executeJS:@"MyWalletPhone.disableNotifications()"];
+}
+
+- (void)updateServerURL:(NSString *)newURL
+{
+    [self.webView executeJS:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]];
+}
+
+- (void)updateWebSocketURL:(NSString *)newURL
+{
+    [self.webView executeJS:@"MyWalletPhone.updateWebsocketURL(\"%@\")", [newURL escapeStringForJS]];
 }
 
 # pragma mark - Transaction handlers
@@ -1329,7 +1343,7 @@
     if ([delegate respondsToSelector:@selector(didBackupWallet)])
         [delegate didBackupWallet];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
-    // Hide the busy view if setting fee per kb or generating new address - the call to backup the wallet is waiting on this setter to finish
+    // Hide the busy view if previously syncing
     [self loading_stop];
     self.isSyncing = NO;
 }
@@ -1911,6 +1925,21 @@
 #endif
     
     [app standardNotify:decription];
+}
+
+#pragma mark - Debugging
+
+- (void)useDebugSettingsIfSet
+{
+    NSString *serverURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+    if (serverURL) {
+        [self updateServerURL:serverURL];
+    }
+    
+    NSString *webSocketURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+    if (webSocketURL) {
+        [self updateWebSocketURL:webSocketURL];
+    }
 }
 
 @end

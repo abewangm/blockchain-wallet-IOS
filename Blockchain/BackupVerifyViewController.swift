@@ -135,8 +135,8 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
                 word2?.resignFirstResponder()
                 word3?.resignFirstResponder()
                 wallet!.markRecoveryPhraseVerified()
-                NSNotificationCenter.defaultCenter().postNotificationName("AppDelegateReload", object: nil)
-                self.performSegueWithIdentifier("unwindVerifyWords", sender: self)
+                let backupNavigation = self.navigationController as? BackupNavigationViewController
+                backupNavigation?.busyView?.fadeIn()
             }
         }
     }
@@ -179,10 +179,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         }
         return true
     }
-    
-    @IBAction func unwindFromSecondPasswordToVerify(segue: UIStoryboardSegue) {
-    }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "verifyBackupWithSecondPassword" {
             let vc = segue.destinationViewController as! SecondPasswordViewController
@@ -193,6 +190,12 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     func didGetSecondPassword(password: String) {
         wallet!.getRecoveryPhrase(password)
+    }
+    
+    func returnToRootViewController(completionHandler: () -> Void ) {
+        self.navigationController?.popToRootViewControllerWithHandler({ () -> () in
+            completionHandler()
+        })
     }
 }
 

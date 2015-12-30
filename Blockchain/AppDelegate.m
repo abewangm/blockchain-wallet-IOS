@@ -37,6 +37,7 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "UIViewController+AutoDismiss.h"
 #import "DeviceIdentifier.h"
+#import "DebugTableViewController.h"
 
 AppDelegate * app;
 
@@ -208,9 +209,6 @@ void (^secondPasswordSuccess)(NSString *);
         }
         
         [self migratePasswordAndPinFromNSUserDefaults];
-        
-        // Listen for notification (from Swift code) to reload:
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_APP_DELEGATE_RELOAD_FOR_SWIFT object:nil];
         
         // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
         [self setupCurtainView];
@@ -519,6 +517,10 @@ void (^secondPasswordSuccess)(NSString *);
     } completion:^(BOOL finished) {
         [curtainImageView removeFromSuperview];
     }];
+    
+    if (self.tabViewController.activeViewController == _receiveViewController && modalView) {
+        [_receiveViewController showKeyboard];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -1191,6 +1193,17 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
+}
+
+- (void)showDebugMenu
+{
+    DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
+    navigationController.title = BC_STRING_DEBUG;
+    navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
+    
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)showPinModalAsView:(BOOL)asView
@@ -2373,6 +2386,23 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     return input;
+}
+
+#pragma mark Debugging
+
+- (NSString *)serverURL
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? DEFAULT_WALLET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+}
+
+- (NSString *)webSocketURL
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] == nil ? DEFAULT_WEBSOCKET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+}
+
+- (NSString *)nearbyMerchantsURL
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL] == nil ? DEFAULT_MERCHANT_NEARBY_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL];
 }
 
 @end
