@@ -9,6 +9,7 @@
 #import "BCWelcomeView.h"
 #import "AppDelegate.h"
 #import "LocalizationConstants.h"
+#import "DebugTableViewController.h"
 
 @implementation BCWelcomeView
 
@@ -71,12 +72,23 @@ Boolean shouldShowAnimation;
 #ifndef HD_ENABLED
         self.recoverWalletButton.hidden = YES;
 #endif
-        
+        UIView *debugView = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width - 80, 0, 80, 51)];
+        UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        longPressGesture.minimumPressDuration = 2.0;
+        [debugView addGestureRecognizer:longPressGesture];
+        [self addSubview:debugView];
         // Version
         [self setupVersionLabel];
     }
     
     return self;
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
+{
+    if (longPress.state == UIGestureRecognizerStateBegan) {
+        [app showDebugMenu];
+    }
 }
 
 - (void)didMoveToSuperview
