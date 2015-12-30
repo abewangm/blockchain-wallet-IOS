@@ -45,7 +45,7 @@ const int aboutSection = 5;
 const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
-@interface SettingsTableViewController () <CurrencySelectorDelegate, BtcSelectorDelegate, UITextFieldDelegate>
+@interface SettingsTableViewController () <UITextFieldDelegate>
 
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *accountInfoDictionary;
@@ -895,7 +895,6 @@ const int aboutPrivacyPolicy = 1;
         SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
         settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
         settingsSelectorTableViewController.allCurrencySymbolsDictionary = self.allCurrencySymbolsDictionary;
-        settingsSelectorTableViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_ABOUT]) {
         SettingsAboutViewController *aboutViewController = segue.destinationViewController;
         if ([sender isEqualToString:SEGUE_SENDER_TERMS_OF_SERVICE]) {
@@ -906,7 +905,6 @@ const int aboutPrivacyPolicy = 1;
     } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_BTC_UNIT]) {
         SettingsBitcoinUnitTableViewController *settingsBtcUnitTableViewController = segue.destinationViewController;
         settingsBtcUnitTableViewController.itemsDictionary = self.accountInfoDictionary[DICTIONARY_KEY_ACCOUNT_SETTINGS_BTC_CURRENCIES];
-        settingsBtcUnitTableViewController.delegate = self;
     }
 }
 
