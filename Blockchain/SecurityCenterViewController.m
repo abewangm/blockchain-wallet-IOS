@@ -87,7 +87,7 @@
 {
     [super viewDidAppear:animated];
     self.settingsController.alertTargetViewController = self;
-    [self.settingsController reload];
+    [self updateUI];
 }
 
 - (void)updateUI
