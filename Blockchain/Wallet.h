@@ -99,7 +99,9 @@
 
 @property BOOL didPairAutomatically;
 @property BOOL isSyncing;
+@property BOOL isNew;
 @property NSString *twoFactorInput;
+@property (nonatomic) NSDictionary *currencySymbols;
 
 - (id)init;
 

@@ -119,6 +119,10 @@
     
     [self useDebugSettingsIfSet];
     
+    if (self.isNew) {
+        [self getAllCurrencySymbols];
+    }
+    
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];
     
@@ -1217,6 +1221,17 @@
 {
     DLog(@"did_load_wallet");
 
+    if (self.isNew) {
+        
+        NSString *currencyCode = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
+        
+        if ([[self.currencySymbols allKeys] containsObject:currencyCode]) {
+            [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
+        }
+    }
+    
+    self.isNew = NO;
+    
 #ifndef HD_ENABLED
     if ([self hasAccount]) {
         // prevent the PIN screen from loading
@@ -1379,6 +1394,7 @@
 {
     DLog(@"on_get_all_currency_symbols_success");
     NSDictionary *allCurrencySymbolsDictionary = [currencies getJSONObject];
+    self.currencySymbols = allCurrencySymbolsDictionary;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil userInfo:allCurrencySymbolsDictionary];
 }
 
