@@ -119,8 +119,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS @"ChangeTorBlocking"
 #define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR @"ChangeTorBlockingError"
 
-#define TERMS_OF_SERVICE_URL @"https://blockchain.info/Resources/TermsofServicePolicy.pdf"
-#define PRIVACY_POLICY_URL @"https://blockchain.info/Resources/PrivacyPolicy.pdf"
+#define TERMS_OF_SERVICE_URL_SUFFIX @"Resources/TermsofServicePolicy.pdf"
+#define PRIVACY_POLICY_URL_SUFFIX @"Resources/PrivacyPolicy.pdf"
 
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
@@ -132,8 +132,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
 #define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
 #define SEGUE_IDENTIFIER_SECURITY_CENTER @"securityCenter"
+#define SEGUE_IDENTIFIER_DEBUG_MENU @"debugMenu"
 
-#define WebROOT @"https://blockchain.info/"
+#define DEFAULT_WALLET_SERVER @"https://blockchain.info/"
+#define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
+#define DEFAULT_MERCHANT_NEARBY_URL @"https://merchant-directory.blockchain.info/api/list_near_merchants.php"
 
 #define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
 #define ZEROBLOCK_TITLE @"ZeroBlock"
@@ -181,6 +184,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_PASSWORD_PART_HASH @"passwordPartHash"
 #define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
 #define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
+
+#define USER_DEFAULTS_KEY_DEBUG_SERVER_URL @"serverURL"
+#define USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL @"webSocketURL"
+#define USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL @"nearbyMerchantsURL"
 
 #define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
 

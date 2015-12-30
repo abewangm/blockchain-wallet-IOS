@@ -69,6 +69,8 @@
 {
     [self loadJS];
     
+    [self useDebugSettingsIfSet];
+    
     [self.webView executeJS:@"MyWalletPhone.apiGetPINValue(\"%@\", \"%@\")", key, pin];
 }
 
@@ -114,6 +116,8 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     DLog(@"webViewDidFinishLoad:");
+    
+    [self useDebugSettingsIfSet];
     
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];
@@ -349,7 +353,7 @@
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
 - (void)loadWalletLogin
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@wallet/login", WebROOT]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@wallet/login", [app serverURL]]];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [webView loadRequest:requestObj];
 }
@@ -794,6 +798,16 @@
 {
     DLog(@"on_update_tor_error");
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
+}
+    
+- (void)updateServerURL:(NSString *)newURL
+{
+    [self.webView executeJS:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]];
+}
+
+- (void)updateWebSocketURL:(NSString *)newURL
+{
+    [self.webView executeJS:@"MyWalletPhone.updateWebsocketURL(\"%@\")", [newURL escapeStringForJS]];
 }
 
 # pragma mark - Transaction handlers
@@ -1985,6 +1999,21 @@
         completedItems++;
     }
     return completedItems;
+}
+    
+#pragma mark - Debugging
+
+- (void)useDebugSettingsIfSet
+{
+    NSString *serverURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+    if (serverURL) {
+        [self updateServerURL:serverURL];
+    }
+    
+    NSString *webSocketURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+    if (webSocketURL) {
+        [self updateWebSocketURL:webSocketURL];
+    }
 }
 
 @end

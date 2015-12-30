@@ -7,10 +7,10 @@
 //
 
 #import "SettingsAboutViewController.h"
+#import "SettingsNavigationController.h"
 
 @interface SettingsAboutViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
 @end
 
 @implementation SettingsAboutViewController
@@ -23,6 +23,20 @@
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
     self.webView.scalesPageToFit = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    NSString *headerString;
+    if ([self.urlTargetString containsString:TERMS_OF_SERVICE_URL_SUFFIX]) {
+        headerString = BC_STRING_TERMS_OF_SERVICE;
+    } else if ([self.urlTargetString containsString:PRIVACY_POLICY_URL_SUFFIX]) {
+        headerString = BC_STRING_SETTINGS_PRIVACY_POLICY;
+    }
+    
+    navigationController.headerLabel.text = headerString;
 }
 
 @end

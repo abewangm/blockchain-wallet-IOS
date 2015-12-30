@@ -168,7 +168,7 @@
 
 - (IBAction)termsOfServiceClicked:(id)sender
 {
-    [app pushWebViewController:TERMS_OF_SERVICE_URL title:BC_STRING_TERMS_OF_SERVICE];
+    [app pushWebViewController:[[app serverURL] stringByAppendingString:TERMS_OF_SERVICE_URL_SUFFIX] title:BC_STRING_TERMS_OF_SERVICE];
     [emailTextField becomeFirstResponder];
 }
 

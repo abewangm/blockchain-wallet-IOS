@@ -406,3 +406,8 @@
 #define BC_STRING_TOUCH_ID_WARNING NSLocalizedString(@"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet.", nil)
 
 #define BC_STRING_NO_EMAIL_CONFIGURED NSLocalizedString(@"You do not have an account set up for Mail. Please contact %@", nil)
+#define BC_STRING_DEBUG NSLocalizedString(@"Debug", nil)
+#define BC_STRING_SERVER_URL NSLocalizedString(@"Server URL", nil)
+#define BC_STRING_WEBSOCKET_URL NSLocalizedString(@"WebSocket URL", nil)
+#define BC_STRING_NEARBY_MERCHANTS_URL NSLocalizedString(@"Merchant URL", nil)
+#define BC_STRING_RESET NSLocalizedString(@"Reset", nil)

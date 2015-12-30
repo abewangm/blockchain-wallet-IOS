@@ -158,7 +158,7 @@
 - (void)pushWebViewController:(NSString*)url title:(NSString *)title;
 
 - (void)showSendCoins;
-
+- (void)showDebugMenu;
 - (void)showHdUpgrade;
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender;
@@ -197,6 +197,10 @@
 - (void)verifyTwoFactorSMS;
 - (void)verifyTwoFactorGoogle;
 - (void)verifyTwoFactorYubiKey;
+
+- (NSString *)serverURL;
+- (NSString *)webSocketURL;
+- (NSString *)nearbyMerchantsURL;
 
 @end
 

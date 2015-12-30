@@ -23,6 +23,7 @@
 ********************************************************************************/
 
 #import "PEPinEntryController.h"
+#import "AppDelegate.h"
 
 #define PS_VERIFY	0
 #define PS_ENTER1	1
@@ -193,6 +194,33 @@ static PEViewController *VerifyController()
 - (void)cancelController
 {
 	[self.pinDelegate pinEntryControllerDidCancel:self];
+}
+
+#pragma mark Debug Menu
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    self.longPressGesture.minimumPressDuration = 2.0;
+    self.longPressGestureView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
+    [self.view addSubview:self.longPressGestureView];
+    [self.longPressGestureView addGestureRecognizer:self.longPressGesture];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.longPressGesture = nil;
+    [self.longPressGestureView removeFromSuperview];
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
+{
+    if (longPress.state == UIGestureRecognizerStateBegan) {
+        [app showDebugMenu];
+    }
 }
 
 @end

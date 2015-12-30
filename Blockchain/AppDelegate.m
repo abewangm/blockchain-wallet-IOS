@@ -37,6 +37,7 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "UIViewController+AutoDismiss.h"
 #import "DeviceIdentifier.h"
+#import "DebugTableViewController.h"
 
 AppDelegate * app;
 
@@ -278,7 +279,16 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] setBool:symbolLocal forKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self reload];
+    [self reloadTopLevelViewControllers];
+}
+
+- (void)reloadTopLevelViewControllers
+{
+    [_sendViewController reload];
+    [_transactionsViewController reload];
+    [_receiveViewController reload];
+    
+    [sideMenuViewController reload];
 }
 
 - (void)showBusyViewWithLoadingText:(NSString *)text
@@ -1215,6 +1225,17 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
+}
+
+- (void)showDebugMenu
+{
+    DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
+    navigationController.title = BC_STRING_DEBUG;
+    navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
+    
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)showPinModalAsView:(BOOL)asView
@@ -2397,6 +2418,23 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     return input;
+}
+
+#pragma mark Debugging
+
+- (NSString *)serverURL
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? DEFAULT_WALLET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+}
+
+- (NSString *)webSocketURL
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] == nil ? DEFAULT_WEBSOCKET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+}
+
+- (NSString *)nearbyMerchantsURL
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL] == nil ? DEFAULT_MERCHANT_NEARBY_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL];
 }
 
 @end
