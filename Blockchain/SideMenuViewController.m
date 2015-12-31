@@ -357,7 +357,7 @@ int accountEntries = 0;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, upgradeOrSecurityCenterTitle, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
         
         NSString *upgradeOrSecurityCenterImage;
         if (!app.wallet.didUpgradeToHd) {
@@ -368,7 +368,7 @@ int accountEntries = 0;
             upgradeOrSecurityCenterImage = @"security";
         }
         NSMutableArray *images;
-        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", upgradeOrSecurityCenterImage, @"lock_icon", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"lock_icon", @"logout_icon"]];
 #else
         if (indexPath.row == menuEntries - 1) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
