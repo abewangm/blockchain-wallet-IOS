@@ -120,7 +120,6 @@ const int aboutPrivacyPolicy = 1;
 {
     DLog(@"Reloading settings");
     
-    self.isEnablingTwoStepSMS = NO;
     [self.backupController reload];
 
     [self getAccountInfo];
