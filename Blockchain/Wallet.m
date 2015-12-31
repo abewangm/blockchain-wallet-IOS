@@ -119,6 +119,10 @@
     
     [self useDebugSettingsIfSet];
     
+    if (self.isNew) {
+        [self getAllCurrencySymbols];
+    }
+    
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];
     
@@ -810,6 +814,17 @@
     [self.webView executeJS:@"MyWalletPhone.updateWebsocketURL(\"%@\")", [newURL escapeStringForJS]];
 }
 
+- (NSDictionary *)filteredWalletJSON
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    NSString * filteredWalletJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWalletPhone.filteredWalletJSON())"];
+    
+    return [filteredWalletJSON getJSONObject];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -1238,6 +1253,17 @@
 {
     DLog(@"did_load_wallet");
 
+    if (self.isNew) {
+        
+        NSString *currencyCode = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
+        
+        if ([[self.currencySymbols allKeys] containsObject:currencyCode]) {
+            [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
+        }
+    }
+    
+    self.isNew = NO;
+    
 #ifndef HD_ENABLED
     if ([self hasAccount]) {
         // prevent the PIN screen from loading
@@ -1380,7 +1406,7 @@
 - (void)on_change_local_currency_success
 {
     DLog(@"on_change_local_currency_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
+    [self getHistory];
 }
 
 - (void)on_change_currency_error
@@ -1400,6 +1426,7 @@
 {
     DLog(@"on_get_all_currency_symbols_success");
     NSDictionary *allCurrencySymbolsDictionary = [currencies getJSONObject];
+    self.currencySymbols = allCurrencySymbolsDictionary;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil userInfo:allCurrencySymbolsDictionary];
 }
 

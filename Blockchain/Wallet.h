@@ -101,7 +101,9 @@
 
 @property BOOL didPairAutomatically;
 @property BOOL isSyncing;
+@property BOOL isNew;
 @property NSString *twoFactorInput;
+@property (nonatomic) NSDictionary *currencySymbols;
 
 - (id)init;
 
@@ -204,6 +206,8 @@
 - (void)upgrade_success;
 
 - (BOOL)checkIfWalletHasAddress:(NSString *)address;
+
+- (NSDictionary *)filteredWalletJSON;
 
 // Settings
 - (void)getAccountInfo;

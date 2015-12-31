@@ -1212,3 +1212,40 @@ MyWalletPhone.updateServerURL = function(url) {
 MyWalletPhone.updateWebsocketURL = function(url) {
     MyWallet.ws.wsUrl = url;
 }
+
+MyWalletPhone.filteredWalletJSON = function() {
+    var walletJSON = JSON.parse(JSON.stringify(MyWallet.wallet, null, 2));
+    var hidden = '(REMOVED)';
+    
+    walletJSON['guid'] = hidden;
+    walletJSON['sharedKey'] = hidden;
+    walletJSON['dpasswordhash'] = hidden;
+    
+    for (var key in walletJSON) {
+        if (key == 'hd_wallets') {
+            
+            walletJSON[key][0]['seed_hex'] = hidden;
+            
+            for (var account in walletJSON[key][0]['accounts']) {
+                walletJSON[key][0]['accounts'][account]['xpriv'] = hidden;
+                walletJSON[key][0]['accounts'][account]['xpub'] = hidden;
+                walletJSON[key][0]['accounts'][account]['label'] = hidden;
+                walletJSON[key][0]['accounts'][account]['address_labels'] = hidden;
+                
+                if (walletJSON[key][0]['accounts'][account]['cache']) {
+                    walletJSON[key][0]['accounts'][account]['cache']['changeAccount'] = hidden;
+                    walletJSON[key][0]['accounts'][account]['cache']['receiveAccount'] = hidden;
+                }
+            }
+        }
+        
+        if (key == 'keys') {
+            for (var address in walletJSON[key]) {
+                walletJSON[key][address]['priv'] = hidden;
+                walletJSON[key][address]['label'] = hidden;
+                walletJSON[key][address]['addr'] = hidden;
+            }
+        }
+    }
+    return walletJSON;
+}

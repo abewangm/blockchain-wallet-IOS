@@ -32,7 +32,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self.delegate selector:@selector(changeLocalCurrencySuccess) name:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
     [self changeCurrencySymbol:self.selectedCurrencyCode];
 }
 

@@ -1232,8 +1232,6 @@ void (^secondPasswordSuccess)(NSString *);
     DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
-    navigationController.title = BC_STRING_DEBUG;
-    navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
     
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
@@ -1303,7 +1301,7 @@ void (^secondPasswordSuccess)(NSString *);
     [welcomeView.createWalletButton addTarget:self action:@selector(showCreateWallet:) forControlEvents:UIControlEventTouchUpInside];
     [welcomeView.existingWalletButton addTarget:self action:@selector(showPairWallet:) forControlEvents:UIControlEventTouchUpInside];
     [welcomeView.recoverWalletButton addTarget:self action:@selector(showRecoverWallet:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
@@ -1996,6 +1994,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         UIAlertView *alertViewSavedPINSuccessfully = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
 #ifdef HD_ENABLED
+        
         alertViewSavedPINSuccessfully.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN]) {
                 [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
