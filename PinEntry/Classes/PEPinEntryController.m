@@ -202,11 +202,13 @@ static PEViewController *VerifyController()
 {
     [super viewDidAppear:animated];
     
-    self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    self.longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;
-    self.longPressGestureView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
-    [self.view addSubview:self.longPressGestureView];
-    [self.longPressGestureView addGestureRecognizer:self.longPressGesture];
+    if (self.verifyOnly) {
+        self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        self.longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;
+        self.longPressGestureView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
+        [self.view addSubview:self.longPressGestureView];
+        [self.longPressGestureView addGestureRecognizer:self.longPressGesture];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
