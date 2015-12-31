@@ -205,6 +205,8 @@
 
 - (BOOL)checkIfWalletHasAddress:(NSString *)address;
 
+- (NSDictionary *)filteredWalletJSON;
+
 // Settings
 - (void)getAccountInfo;
 - (void)changeEmail:(NSString *)newEmail;

@@ -1197,3 +1197,24 @@ MyWalletPhone.updateServerURL = function(url) {
 MyWalletPhone.updateWebsocketURL = function(url) {
     MyWallet.ws.wsUrl = url;
 }
+
+MyWalletPhone.filteredWalletJSON = function() {
+    console.log(JSON.stringify(MyWallet.wallet, null, 2));
+    var walletJSON = JSON.parse(JSON.stringify(MyWallet.wallet, null, 2));
+    for (var key in walletJSON) {
+        if (key == 'hd_wallets') {
+            for (var account in walletJSON[key][0]['accounts']) {
+                walletJSON[key][0]['accounts'][account]['xpriv'] = 'private';
+                walletJSON[key][0]['accounts'][account]['label'] = 'private';
+            }
+        }
+        
+        if (key == 'keys') {
+            for (var address in walletJSON[key]) {
+                walletJSON[key][address]['priv'] = 'private';
+                walletJSON[key][address]['label'] = 'private';
+            }
+        }
+    }
+    return walletJSON;
+}

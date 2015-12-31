@@ -379,4 +379,6 @@
 #define BC_STRING_SERVER_URL NSLocalizedString(@"Server URL", nil)
 #define BC_STRING_WEBSOCKET_URL NSLocalizedString(@"WebSocket URL", nil)
 #define BC_STRING_NEARBY_MERCHANTS_URL NSLocalizedString(@"Merchant URL", nil)
+#define BC_STRING_WALLET_JSON NSLocalizedString(@"Wallet JSON", nil)
+#define BC_STRING_PLEASE_LOGIN NSLocalizedString(@"Please Login", nil)
 #define BC_STRING_RESET NSLocalizedString(@"Reset", nil)

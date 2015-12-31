@@ -793,6 +793,17 @@
     [self.webView executeJS:@"MyWalletPhone.updateWebsocketURL(\"%@\")", [newURL escapeStringForJS]];
 }
 
+- (NSDictionary *)filteredWalletJSON
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    NSString * filteredWalletJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWalletPhone.filteredWalletJSON())"];
+    
+    return [filteredWalletJSON getJSONObject];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
