@@ -1199,13 +1199,13 @@ MyWalletPhone.updateWebsocketURL = function(url) {
 }
 
 MyWalletPhone.filteredWalletJSON = function() {
-    console.log(JSON.stringify(MyWallet.wallet, null, 2));
     var walletJSON = JSON.parse(JSON.stringify(MyWallet.wallet, null, 2));
     for (var key in walletJSON) {
         if (key == 'hd_wallets') {
             for (var account in walletJSON[key][0]['accounts']) {
                 walletJSON[key][0]['accounts'][account]['xpriv'] = 'private';
                 walletJSON[key][0]['accounts'][account]['label'] = 'private';
+                walletJSON[key][0]['accounts'][account]['address_labels'] = 'private';
             }
         }
         
