@@ -322,7 +322,7 @@
 #define BC_STRING_BLOCKED NSLocalizedString(@"Blocked", nil)
 #define BC_STRING_ALLOW NSLocalizedString(@"Allow", nil)
 #define BC_STRING_ALLOWED NSLocalizedString(@"Allowed", nil)
-#define BC_STRING_SETTINGS_SECURITY_TOR_BLOCKING_DESCRIPTION NSLocalizedString(@"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users wallets.", nil)
+#define BC_STRING_SETTINGS_SECURITY_TOR_BLOCKING_DESCRIPTION NSLocalizedString(@"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets.", nil)
 #define BC_STRING_SETTINGS_LOCAL_CURRENCY NSLocalizedString(@"Local Currency", nil)
 #define BC_STRING_SETTINGS_BTC NSLocalizedString(@"Bitcoin Unit", nil)
 #define BC_STRING_SETTINGS_EMAIL_NOTIFICATIONS NSLocalizedString(@"Email Notifications", nil)
