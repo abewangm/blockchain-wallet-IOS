@@ -67,6 +67,8 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic) BOOL isEnablingTwoStepSMS;
 @property (nonatomic) BackupNavigationViewController *backupController;
 
+@property (nonatomic) int securityWalletRecoveryPhraseRowIndex;
+@property (nonatomic) int securityTouchIDRowIndex;
 @end
 
 @implementation SettingsTableViewController
@@ -74,6 +76,10 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.securityWalletRecoveryPhraseRowIndex = securityWalletRecoveryPhrase;
+    self.securityTouchIDRowIndex = securityTouchID;
+    
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
     [self updateEmailAndMobileStrings];
     [self reload];
@@ -110,7 +116,7 @@ const int aboutPrivacyPolicy = 1;
 {
     [super viewDidAppear:animated];
 #ifdef TOUCH_ID_ENABLED
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTouchID inSection:securitySection];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.securityTouchIDRowIndex inSection:securitySection];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 #endif
     [self.tableView reloadData];
@@ -472,7 +478,7 @@ const int aboutPrivacyPolicy = 1;
         
         UIAlertController *alertTouchIDError = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorString preferredStyle:UIAlertControllerStyleAlert];
         [alertTouchIDError addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTouchID inSection:securitySection];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.securityTouchIDRowIndex inSection:securitySection];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }]];
         [self presentViewController:alertTouchIDError animated:YES completion:nil];
@@ -486,7 +492,7 @@ const int aboutPrivacyPolicy = 1;
     if (!touchIDEnabled == YES) {
         UIAlertController *alertForTogglingTouchID = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN message:BC_STRING_TOUCH_ID_WARNING preferredStyle:UIAlertControllerStyleAlert];
         [alertForTogglingTouchID addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTouchID inSection:securitySection];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.securityTouchIDRowIndex inSection:securitySection];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }]];
         [alertForTogglingTouchID addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -1190,7 +1196,24 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionEmailFooter: return 1;
         case preferencesSectionNotificationsFooter: return 2;
         case preferencesSectionEnd: return 3;
-        case securitySection: return securityTouchID < 0 ? 5 : 6;
+        case securitySection: {
+            if (securityTouchID < 0) {
+                if (app.wallet.didUpgradeToHd) {
+                    return 5;
+                } else {
+                    return 4;
+                }
+            } else {
+                if (app.wallet.didUpgradeToHd) {
+                    return 6;
+                } else {
+                    // switch the row indexes to show only TouchID
+                    self.securityWalletRecoveryPhraseRowIndex = securityTouchID;
+                    self.securityTouchIDRowIndex = securityWalletRecoveryPhrase;
+                    return 5;
+                }
+            }
+        }
         case aboutSection: return 2;
         default: return 0;
     }
@@ -1317,8 +1340,7 @@ const int aboutPrivacyPolicy = 1;
             }
         }
         case securitySection: {
-            switch (indexPath.row) {
-                case securityTwoStep: {
+            if (indexPath.row == securityTwoStep) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
                     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -1338,7 +1360,7 @@ const int aboutPrivacyPolicy = 1;
                     }
                     return cell;
                 }
-                case securityPasswordHint: {
+            else if (indexPath.row == securityPasswordHint) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_PASSWORD_HINT;
                     if ([app.wallet hasStoredPasswordHint]) {
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
@@ -1350,12 +1372,12 @@ const int aboutPrivacyPolicy = 1;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return cell;
                 }
-                case securityPasswordChange: {
+            else if (indexPath.row == securityPasswordChange) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return cell;
                 }
-                case securityTorBlocking: {
+            else if (indexPath.row == securityTorBlocking) {
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS;
                     BOOL torBlockingEnabled = [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
@@ -1369,7 +1391,7 @@ const int aboutPrivacyPolicy = 1;
                     }
                     return cell;
                 }
-                case securityWalletRecoveryPhrase: {
+            else if (indexPath.row == self.securityWalletRecoveryPhraseRowIndex) {
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
                     cell.textLabel.text = BC_STRING_WALLET_RECOVERY_PHRASE;
                     if (app.wallet.isRecoveryPhraseVerified) {
@@ -1382,7 +1404,7 @@ const int aboutPrivacyPolicy = 1;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return cell;
                 }
-                case securityTouchID: {
+            else if (indexPath.row == self.securityTouchIDRowIndex) {
                     cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1395,7 +1417,6 @@ const int aboutPrivacyPolicy = 1;
                     cell.accessoryView = switchForTouchID;
                     return cell;
                 }
-            }
         }
         case aboutSection: {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
