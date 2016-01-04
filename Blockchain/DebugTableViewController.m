@@ -21,7 +21,15 @@
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_DONE style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     self.navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
-    self.navigationItem.title = BC_STRING_DEBUG;
+    NSString *presenter;
+    if (self.presenter == DEBUG_PRESENTER_SETTINGS_ABOUT) {
+        presenter = BC_STRING_SETTINGS_ABOUT;
+    } else if (self.presenter == DEBUG_PRESENTER_PIN_VERIFY) {
+        presenter = BC_STRING_SETTINGS_VERIFY;
+    } else if (self.presenter == DEBUG_PRESENTER_WELCOME_VIEW)  {
+        presenter = BC_STRING_WELCOME;
+    }
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ %@ %@", BC_STRING_DEBUG, BC_STRING_FROM_LOWERCASE, presenter];
 }
 
 - (void)viewWillAppear:(BOOL)animated

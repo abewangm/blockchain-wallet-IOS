@@ -285,6 +285,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 
 #define DURATION_LONG_PRESS_GESTURE_DEBUG 2.0
+#define DEBUG_PRESENTER_WELCOME_VIEW 0
+#define DEBUG_PRESENTER_PIN_VERIFY 1
+#define DEBUG_PRESENTER_SETTINGS_ABOUT 2
 
 #pragma mark - Runtime modes
 

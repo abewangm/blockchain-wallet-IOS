@@ -1227,9 +1227,10 @@ void (^secondPasswordSuccess)(NSString *);
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
 }
 
-- (void)showDebugMenu
+- (void)showDebugMenu:(int)presenter
 {
     DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
+    debugViewController.presenter = presenter;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
     

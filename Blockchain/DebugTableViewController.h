@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DebugTableViewController : UITableViewController
-
+@property (nonatomic) int presenter;
 @end

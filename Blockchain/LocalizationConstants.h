@@ -413,3 +413,5 @@
 #define BC_STRING_WALLET_JSON NSLocalizedString(@"Wallet JSON", nil)
 #define BC_STRING_PLEASE_LOGIN NSLocalizedString(@"Please Login", nil)
 #define BC_STRING_RESET NSLocalizedString(@"Reset", nil)
+#define BC_STRING_FROM_LOWERCASE NSLocalizedString(@"from", nil)
+#define BC_STRING_WELCOME NSLocalizedString(@"Welcome", nil)
