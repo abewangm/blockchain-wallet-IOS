@@ -41,6 +41,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BACKGROUND_GRAY UIColorFromRGB(0xf7f7f7)
 #define COLOR_FOREGROUND_GRAY UIColorFromRGB(0x6d6d72)
 
+#define COLOR_SECURITY_CENTER_GREEN UIColorFromRGB(0x3CC476)
+#define COLOR_SECURITY_CENTER_YELLOW UIColorFromRGB(0xFCCC65)
+#define COLOR_SECURITY_CENTER_RED UIColorFromRGB(0xE47F7F)
+
 #define COLOR_TEXT_FIELD_GRAY UIColorFromRGB(0xd1d1d1)
 #define COLOR_TEXT_FIELD_BORDER_GRAY UIColorFromRGB(0xcdcdcd)
 
@@ -88,11 +92,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_SCANNED_NEW_ADDRESS @"scannedNewAddress"
 
 // Notifications used in settings
+#define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER @"reloadSettingsAndSecurityCenter"
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
 #define NOTIFICATION_KEY_GET_HISTORY_SUCCESS @"GetHistory"
-#define NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS @"ChangeLocalCurrency"
 #define NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS @"GetAllCurrencySymbols"
 #define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
@@ -111,6 +115,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR @"ChangePasswordError"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS @"ChangeEmailNotifications"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR @"ChangeEmailNotificationsError"
+#define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS @"ChangeTorBlocking"
+#define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR @"ChangeTorBlockingError"
 
 #define TERMS_OF_SERVICE_URL_SUFFIX @"Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL_SUFFIX @"Resources/PrivacyPolicy.pdf"
@@ -118,9 +124,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
 #define SEGUE_IDENTIFIER_ABOUT @"about"
+
+#define SEGUE_IDENTIFIER_TWO_STEP @"twoStep"
 #define SEGUE_IDENTIFIER_UPGRADE_DETAILS @"upgradeDetails"
+
 #define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
 #define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
+#define SEGUE_IDENTIFIER_SECURITY_CENTER @"securityCenter"
 #define SEGUE_IDENTIFIER_DEBUG_MENU @"debugMenu"
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info/"
@@ -154,6 +164,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE @"auth_type"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON @"notifications_on"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE @"notifications_type"
+#define DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING @"block_tor_ips"
+
+#define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
+#define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
@@ -229,12 +243,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define MENU_ENTRY_HEIGHT 54
 #define BALANCE_ENTRY_HEIGHT 58
 
-#define MENU_CELL_INDEX_SETTINGS 0
-#define MENU_CELL_INDEX_MERCHANT 1
-#define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 2
-#define MENU_CELL_INDEX_SUPPORT 3
+#define MENU_CELL_INDEX_SETTINGS 1
+#define MENU_CELL_INDEX_MERCHANT 2
+#define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 3
+#define MENU_CELL_INDEX_SUPPORT 4
 #ifdef HD_ENABLED
-#define MENU_CELL_INDEX_UPGRADE 4
+#define MENU_CELL_INDEX_UPGRADE 0
 #define MENU_CELL_INDEX_CHANGE_PIN 5
 #define MENU_CELL_INDEX_LOGOUT 6
 #else
@@ -269,6 +283,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define BTC_LIMIT_IN_SATOSHI 21e14 // 21,000,000 (Total possible Bitcoins) * 100,000,000 (Satoshi)
 #define RECOVERY_ACCOUNT_DEFAULT_NUMBER 10
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
+
+#define DURATION_LONG_PRESS_GESTURE_DEBUG 2.0
 
 #pragma mark - Runtime modes
 

@@ -119,6 +119,10 @@
     
     [self useDebugSettingsIfSet];
     
+    if (self.isNew) {
+        [self getAllCurrencySymbols];
+    }
+    
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];
     
@@ -779,6 +783,27 @@
     [self.webView executeJS:@"MyWalletPhone.disableNotifications()"];
 }
 
+- (void)changeTorBlocking:(BOOL)willEnable
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.update_tor_ip_block(\"%@\")", [NSNumber numberWithBool:willEnable]];
+}
+
+- (void)on_update_tor_success
+{
+    DLog(@"on_update_tor_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
+}
+
+- (void)on_update_tor_error
+{
+    DLog(@"on_update_tor_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
+}
+    
 - (void)updateServerURL:(NSString *)newURL
 {
     [self.webView executeJS:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]];
@@ -787,6 +812,17 @@
 - (void)updateWebSocketURL:(NSString *)newURL
 {
     [self.webView executeJS:@"MyWalletPhone.updateWebsocketURL(\"%@\")", [newURL escapeStringForJS]];
+}
+
+- (NSDictionary *)filteredWalletJSON
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    NSString * filteredWalletJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWalletPhone.filteredWalletJSON())"];
+    
+    return [filteredWalletJSON getJSONObject];
 }
 
 # pragma mark - Transaction handlers
@@ -1217,6 +1253,17 @@
 {
     DLog(@"did_load_wallet");
 
+    if (self.isNew) {
+        
+        NSString *currencyCode = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
+        
+        if ([[self.currencySymbols allKeys] containsObject:currencyCode]) {
+            [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
+        }
+    }
+    
+    self.isNew = NO;
+    
 #ifndef HD_ENABLED
     if ([self hasAccount]) {
         // prevent the PIN screen from loading
@@ -1359,7 +1406,7 @@
 - (void)on_change_local_currency_success
 {
     DLog(@"on_change_local_currency_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_LOCAL_CURRENCY_SUCCESS object:nil];
+    [self getHistory];
 }
 
 - (void)on_change_currency_error
@@ -1371,14 +1418,15 @@
 - (void)on_get_account_info_success:(NSString *)accountInfo
 {
     DLog(@"on_get_account_info");
-    NSDictionary *accountInfoDictionary = [accountInfo getJSONObject];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil userInfo:accountInfoDictionary];
+    self.accountInfo = [accountInfo getJSONObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
 }
 
 - (void)on_get_all_currency_symbols_success:(NSString *)currencies
 {
     DLog(@"on_get_all_currency_symbols_success");
     NSDictionary *allCurrencySymbolsDictionary = [currencies getJSONObject];
+    self.currencySymbols = allCurrencySymbolsDictionary;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil userInfo:allCurrencySymbolsDictionary];
 }
 
@@ -1927,6 +1975,59 @@
     [app standardNotify:decription];
 }
 
+#pragma mark - Settings Helpers
+
+- (BOOL)hasVerifiedEmail
+{
+    return [[self.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED] boolValue];
+}
+
+- (BOOL)hasVerifiedMobileNumber
+{
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue];
+}
+
+- (BOOL)hasStoredPasswordHint
+{
+    NSString *passwordHint = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
+    return ![[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] && passwordHint;
+}
+
+- (BOOL)hasEnabledTwoStep
+{
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] != 0;
+}
+
+- (BOOL)hasBlockedTorRequests
+{
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
+}
+
+- (int)securityCenterScore
+{
+    int completedItems = 0;
+    
+    if ([self hasVerifiedEmail]) {
+        completedItems++;
+    }
+    if (self.isRecoveryPhraseVerified) {
+        completedItems++;
+    }
+    if ([self hasVerifiedMobileNumber]) {
+        completedItems++;
+    }
+    if ([self hasStoredPasswordHint]) {
+        completedItems++;
+    }
+    if ([self hasEnabledTwoStep]) {
+        completedItems++;
+    }
+    if ([self hasBlockedTorRequests]) {
+        completedItems++;
+    }
+    return completedItems;
+}
+    
 #pragma mark - Debugging
 
 - (void)useDebugSettingsIfSet

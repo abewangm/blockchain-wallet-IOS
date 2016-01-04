@@ -189,6 +189,8 @@
     [app standardNotify:[NSString stringWithFormat:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL]
                       title:BC_STRING_DID_CREATE_NEW_WALLET_TITLE
                    delegate:nil];
+    
+    app.wallet.isNew = YES;
 }
 
 - (void)errorCreatingNewAccount:(NSString*)message

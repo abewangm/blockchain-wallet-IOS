@@ -92,6 +92,8 @@
 
 @property(nonatomic, strong) NSMutableDictionary *transactionProgressListeners;
 
+@property(nonatomic) NSDictionary *accountInfo;
+
 // HD properties:
 @property NSString *recoveryPhrase;
 @property int emptyAccountIndex;
@@ -99,7 +101,9 @@
 
 @property BOOL didPairAutomatically;
 @property BOOL isSyncing;
+@property BOOL isNew;
 @property NSString *twoFactorInput;
+@property (nonatomic) NSDictionary *currencySymbols;
 
 - (id)init;
 
@@ -203,6 +207,8 @@
 
 - (BOOL)checkIfWalletHasAddress:(NSString *)address;
 
+- (NSDictionary *)filteredWalletJSON;
+
 // Settings
 - (void)getAccountInfo;
 - (void)changeEmail:(NSString *)newEmail;
@@ -218,6 +224,15 @@
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword;
 - (void)enableEmailNotifications;
 - (void)disableEmailNotifications;
+- (void)changeTorBlocking:(BOOL)willEnable;
+
+// Security Center
+- (BOOL)hasVerifiedEmail;
+- (BOOL)hasVerifiedMobileNumber;
+- (BOOL)hasStoredPasswordHint;
+- (BOOL)hasEnabledTwoStep;
+- (BOOL)hasBlockedTorRequests;
+- (int)securityCenterScore;
 
 // Payment Spender
 - (void)createNewPayment;

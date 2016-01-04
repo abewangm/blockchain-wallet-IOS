@@ -8,9 +8,12 @@
 
 #import "SettingsAboutViewController.h"
 #import "SettingsNavigationController.h"
+#import "DebugTableViewController.h"
 
 @interface SettingsAboutViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
+@property (nonatomic) UIView *longPressGestureView;
 @end
 
 @implementation SettingsAboutViewController
@@ -37,6 +40,35 @@
     }
     
     navigationController.headerLabel.text = headerString;
+}
+
+#pragma mark Debug Menu
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    self.longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;
+    self.longPressGestureView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
+    [self.navigationController.view addSubview:self.longPressGestureView];
+    [self.longPressGestureView addGestureRecognizer:self.longPressGesture];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.longPressGesture = nil;
+    [self.longPressGestureView removeFromSuperview];
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
+{
+    if (longPress.state == UIGestureRecognizerStateBegan) {
+        DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
+        [self presentViewController:navigationController animated:YES completion:nil];
+    }
 }
 
 @end

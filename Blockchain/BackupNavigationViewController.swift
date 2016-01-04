@@ -82,6 +82,8 @@ import UIKit
         
         view.addSubview(busyView!);
         view.bringSubviewToFront(busyView!);
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reload", name: "reloadSettingsAndSecurityCenter", object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -112,4 +114,8 @@ import UIKit
             isTransitioning = true
             }
         }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 }

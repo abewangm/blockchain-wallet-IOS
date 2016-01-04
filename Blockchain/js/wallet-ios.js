@@ -1189,6 +1189,21 @@ MyWalletPhone.disableNotifications = function() {
     MyWallet.wallet.disableNotifications(success, error);
 }
 
+MyWalletPhone.update_tor_ip_block = function(willEnable) {
+    
+    var success = function () {
+        console.log('Update tor success');
+        device.execute('on_update_tor_success');
+    }
+    
+    var error = function(error) {
+        console.log('Update tor error' + error);
+        device.execute('on_update_tor_error');
+    }
+    
+    BlockchainSettingsAPI.update_tor_ip_block(willEnable, success, error);
+}
+
 MyWalletPhone.updateServerURL = function(url) {
     BlockchainAPI.ROOT_URL = url;
     MyWallet.ws.headers = { 'Origin': url };
@@ -1196,4 +1211,41 @@ MyWalletPhone.updateServerURL = function(url) {
 
 MyWalletPhone.updateWebsocketURL = function(url) {
     MyWallet.ws.wsUrl = url;
+}
+
+MyWalletPhone.filteredWalletJSON = function() {
+    var walletJSON = JSON.parse(JSON.stringify(MyWallet.wallet, null, 2));
+    var hidden = '(REMOVED)';
+    
+    walletJSON['guid'] = hidden;
+    walletJSON['sharedKey'] = hidden;
+    walletJSON['dpasswordhash'] = hidden;
+    
+    for (var key in walletJSON) {
+        if (key == 'hd_wallets') {
+            
+            walletJSON[key][0]['seed_hex'] = hidden;
+            
+            for (var account in walletJSON[key][0]['accounts']) {
+                walletJSON[key][0]['accounts'][account]['xpriv'] = hidden;
+                walletJSON[key][0]['accounts'][account]['xpub'] = hidden;
+                walletJSON[key][0]['accounts'][account]['label'] = hidden;
+                walletJSON[key][0]['accounts'][account]['address_labels'] = hidden;
+                
+                if (walletJSON[key][0]['accounts'][account]['cache']) {
+                    walletJSON[key][0]['accounts'][account]['cache']['changeAccount'] = hidden;
+                    walletJSON[key][0]['accounts'][account]['cache']['receiveAccount'] = hidden;
+                }
+            }
+        }
+        
+        if (key == 'keys') {
+            for (var address in walletJSON[key]) {
+                walletJSON[key][address]['priv'] = hidden;
+                walletJSON[key][address]['label'] = hidden;
+                walletJSON[key][address]['addr'] = hidden;
+            }
+        }
+    }
+    return walletJSON;
 }

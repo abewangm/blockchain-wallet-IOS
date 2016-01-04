@@ -15,4 +15,6 @@
 @property (nonatomic) BCFadeView *busyView;
 
 - (void)reload;
+- (void)showSecurityCenter;
+- (void)showSettings;
 @end

@@ -144,6 +144,11 @@ int accountEntries = 0;
     [self.tableView reloadData];
 }
 
+- (void)reloadTableView
+{
+    [self.tableView reloadData];
+}
+
 - (void)reloadNumberOfBalancesToDisplay
 {
     // Total entries: 1 entry for the total balance, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
@@ -220,7 +225,7 @@ int accountEntries = 0;
         [app supportClicked:nil];
     } else if (row == MENU_CELL_INDEX_UPGRADE) {
         if (didUpgradeToHD) {
-            [app backupClicked:nil];
+            [app securityCenterClicked:nil];
         }
         else {
             [app showHdUpgrade];
@@ -343,31 +348,27 @@ int accountEntries = 0;
             cell.selectedBackgroundView = v;
         }
 #ifdef HD_ENABLED
-        NSString *upgradeOrBackupTitle;
+        NSString *upgradeOrSecurityCenterTitle;
         if (!app.wallet.didUpgradeToHd) {
-            upgradeOrBackupTitle = BC_STRING_UPGRADE_TO_V3;
+            upgradeOrSecurityCenterTitle = BC_STRING_UPGRADE_TO_V3;
         }
         else {
-            upgradeOrBackupTitle = BC_STRING_BACKUP;
+            upgradeOrSecurityCenterTitle = BC_STRING_SECURITY_CENTER;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, upgradeOrBackupTitle, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
         
-        NSString *upgradeOrBackupImage;
+        NSString *upgradeOrSecurityCenterImage;
         if (!app.wallet.didUpgradeToHd) {
             // XXX upgrade icon
-            upgradeOrBackupImage = @"icon_upgrade";
+            upgradeOrSecurityCenterImage = @"icon_upgrade";
         }
         else {
-            if (app.wallet.isRecoveryPhraseVerified) {
-                upgradeOrBackupImage = @"icon_backup_complete";
-            } else {
-                upgradeOrBackupImage = @"icon_backup_incomplete";
-            }
+            upgradeOrSecurityCenterImage = @"security";
         }
         NSMutableArray *images;
-        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", upgradeOrBackupImage, @"lock_icon", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"lock_icon", @"logout_icon"]];
 #else
         if (indexPath.row == menuEntries - 1) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -382,6 +383,19 @@ int accountEntries = 0;
 #endif
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
+        
+        if ([images[indexPath.row] isEqualToString:@"security"]) {
+            int completedItems = [app.wallet securityCenterScore];
+            cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            
+            if (completedItems < 6 && completedItems > 2) {
+                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_YELLOW];
+            } else if (completedItems == 6) {
+                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
+            } else {
+                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_RED];
+            }
+        }
         
         if (indexPath.row == 0 && app.showEmailWarning) {
             cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];

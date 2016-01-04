@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewController : UITableViewController
+@property (weak, nonatomic) UIViewController *alertTargetViewController;
+
 - (void)reload;
+
+- (void)verifyEmailTapped;
+- (void)linkMobileTapped;
+- (void)storeHintTapped;
+- (void)changeTwoStepTapped;
+- (void)blockTorTapped;
+
 @end

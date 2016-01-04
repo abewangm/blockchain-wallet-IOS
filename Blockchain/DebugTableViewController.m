@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 
 @interface DebugTableViewController ()
-
+@property (nonatomic) NSDictionary *filteredWalletJSON;
 @end
 
 @implementation DebugTableViewController
@@ -20,7 +20,14 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_DONE style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
+    self.navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
     self.navigationItem.title = BC_STRING_DEBUG;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.filteredWalletJSON = [app.wallet filteredWalletJSON];
 }
 
 - (void)dismiss
@@ -49,6 +56,16 @@
     [self presentViewController:changeURLAlert animated:YES completion:nil];
 }
 
+- (void)showFilteredWalletJSON
+{
+    UIViewController *viewController = [[UIViewController alloc] init];
+    UITextView *walletJSONTextView = [[UITextView alloc] initWithFrame:viewController.view.frame];
+    walletJSONTextView.text = [NSString stringWithFormat:@"%@", self.filteredWalletJSON];
+    walletJSONTextView.editable = NO;
+    [viewController.view addSubview:walletJSONTextView];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -56,7 +73,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,6 +99,14 @@
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
+        case 3: {
+            cell.textLabel.text = BC_STRING_WALLET_JSON;
+            cell.detailTextLabel.text = self.filteredWalletJSON == nil ? BC_STRING_PLEASE_LOGIN : nil;
+            cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+            cell.accessoryType = self.filteredWalletJSON == nil ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+            break;
+        }
         default:
             break;
     }
@@ -101,6 +126,12 @@
             break;
         case 2:
             [self alertToChangeURLName:BC_STRING_NEARBY_MERCHANTS_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL currentURL:[app nearbyMerchantsURL]];
+            break;
+        case 3: {
+            if (self.filteredWalletJSON) {
+                [self showFilteredWalletJSON];
+            }
+        }
             break;
         default:
             break;

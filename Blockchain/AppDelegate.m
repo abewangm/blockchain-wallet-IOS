@@ -208,6 +208,8 @@ void (^secondPasswordSuccess)(NSString *);
             [self checkAndWarnOnJailbrokenPhones];
         }
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadSideMenu) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+        
         [self migratePasswordAndPinFromNSUserDefaults];
         
         // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
@@ -258,11 +260,15 @@ void (^secondPasswordSuccess)(NSString *);
     [_transactionsViewController reload];
     [_receiveViewController reload];
     [_settingsNavigationController reload];
-    [_backupNavigationViewController reload];
     
     [sideMenuViewController reload];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+}
+
+- (void)reloadSideMenu
+{
+    [sideMenuViewController reloadTableView];
 }
 
 - (void)toggleSymbol
@@ -273,7 +279,16 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] setBool:symbolLocal forKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self reload];
+    [self reloadTopLevelViewControllers];
+}
+
+- (void)reloadTopLevelViewControllers
+{
+    [_sendViewController reload];
+    [_transactionsViewController reload];
+    [_receiveViewController reload];
+    
+    [sideMenuViewController reload];
 }
 
 - (void)showBusyViewWithLoadingText:(NSString *)text
@@ -442,6 +457,8 @@ void (^secondPasswordSuccess)(NSString *);
     DLog(@"walletDidFinishLoad");
     
     self.wallet.twoFactorInput = nil;
+    
+    [self.wallet getAccountInfo];
     
     [manualPairView clearTextFields];
     
@@ -1129,12 +1146,27 @@ void (^secondPasswordSuccess)(NSString *);
 
 #pragma mark - Show Screens
 
+- (void)showSecurityCenter
+{
+    if (!_settingsNavigationController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
+        self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
+    }
+    
+    [self.settingsNavigationController showSecurityCenter];
+    
+    self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:nil];
+}
+
 - (void)showSettings
 {
     if (!_settingsNavigationController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
         self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
     }
+    
+    [self.settingsNavigationController showSettings];
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:nil];
@@ -1200,8 +1232,6 @@ void (^secondPasswordSuccess)(NSString *);
     DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
-    navigationController.title = BC_STRING_DEBUG;
-    navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
     
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
@@ -1271,7 +1301,7 @@ void (^secondPasswordSuccess)(NSString *);
     [welcomeView.createWalletButton addTarget:self action:@selector(showCreateWallet:) forControlEvents:UIControlEventTouchUpInside];
     [welcomeView.existingWalletButton addTarget:self action:@selector(showPairWallet:) forControlEvents:UIControlEventTouchUpInside];
     [welcomeView.recoverWalletButton addTarget:self action:@selector(showRecoverWallet:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
@@ -1341,9 +1371,9 @@ void (^secondPasswordSuccess)(NSString *);
     [app showSettings];
 }
 
-- (IBAction)backupClicked:(id)sender
+- (IBAction)securityCenterClicked:(id)sender
 {
-    [app showBackup];
+    [app showSecurityCenter];
 }
 
 - (IBAction)supportClicked:(id)sender
@@ -1964,6 +1994,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         UIAlertView *alertViewSavedPINSuccessfully = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
 #ifdef HD_ENABLED
+        
         alertViewSavedPINSuccessfully.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN]) {
                 [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
