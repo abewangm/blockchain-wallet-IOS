@@ -48,15 +48,15 @@ NSString *const kMerchantDescriptionKey = @"description";
         
         NSString *merchantType = [dict safeObjectForKey:kMerchantTypeKey];
         BCMerchantLocationType locationType = BCMerchantLocationTypeOther;
-        if ([merchantType isEqual:@1]) {
+        if ([merchantType isEqual:[NSNumber numberWithInteger:BCMerchantLocationTypeBeverage]]) {
             locationType = BCMerchantLocationTypeBeverage;
-        } else if ([merchantType isEqual:@2]) {
+        } else if ([merchantType isEqual:[NSNumber numberWithInteger:BCMerchantLocationTypeBar]]) {
             locationType = BCMerchantLocationTypeBar;
-        } else if ([merchantType isEqual:@3]) {
+        } else if ([merchantType isEqual:[NSNumber numberWithInteger:BCMerchantLocationTypeFood]]) {
             locationType = BCMerchantLocationTypeFood;
-        } else if ([merchantType isEqual:@4]) {
+        } else if ([merchantType isEqual:[NSNumber numberWithInteger:BCMerchantLocationTypeBusiness]]) {
             locationType = BCMerchantLocationTypeBusiness;
-        } else if ([merchantType isEqual:@5]) {
+        } else if ([merchantType isEqual:[NSNumber numberWithInteger:BCMerchantLocationTypeOther]]) {
             locationType = BCMerchantLocationTypeOther;
         }
         merchant.locationType = locationType;
