@@ -135,8 +135,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info/"
 #define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
-#define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/"
-#define DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS @"api/list_near_merchants.php"
+#define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info"
+#define DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS @"/api/merchant"
 
 #define DEFAULT_HTML_WEBSOCKET_URL @"wss://*.blockchain.info"
 #define DEFAULT_HTML_WALLET_SERVER_URL @"https://blockchain.info"

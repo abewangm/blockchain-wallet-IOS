@@ -94,11 +94,6 @@
 
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    
-    // Adding gesture recognizer so we know when to update the pin locations
-    UIPanGestureRecognizer* panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(userUpdatedMapBounds:)];
-    [panGestureRecognizer setDelegate:self];
-    [self.mapView addGestureRecognizer:panGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -115,6 +110,8 @@
     [self addTrackingBarButtonItem];
     
     self.mapView.showsUserLocation = YES;
+    
+    [self updateDisplayedMerchants];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -144,15 +141,15 @@
     [self.toolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
 }
 
-- (void)updateDisplayedMerchantsAtCoordinate:(CLLocationCoordinate2D)coordinate
+- (void)updateDisplayedMerchants
 {
     // Send approximate coordinates for merchant lookup
-    NSString *urlString = [NSString stringWithFormat:@"%@%@?ULAT=%.2f&ULON=%.2f&D=40000&K=1", [app merchantURL], DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS, coordinate.latitude, coordinate.longitude];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", [app merchantURL], DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:self.merchantLocationNetworkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError) {
-            DLog(@"Error retrieving Merchants near location (Long)%f, (Lat)%f", coordinate.longitude, coordinate.latitude);
+            DLog(@"Error retrieving Merchants");
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSError *error = nil;
@@ -270,37 +267,6 @@
     return YES;
 }
 
-- (void)userUpdatedMapBounds:(UIGestureRecognizer*)gestureRecognizer
-{
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
-        
-        // Only updating when the distance between the last center point and the current center point is greater than 20% of the total diagonal distance, when the user changes zoom levels and moves this should still work
-        CLLocationCoordinate2D centerCoordinate = [self.mapView centerCoordinate];
-        CLLocation *centerLocation = [[CLLocation alloc] initWithLatitude:centerCoordinate.latitude longitude:centerCoordinate.longitude];
-        
-        CGFloat percentageChange = 0.0f;
-        if (!self.lastCenterLocation) {
-            // When we have no starting location we just assume we need to fetch new values
-            percentageChange = 1.0f;
-        } else {
-            CLLocationCoordinate2D topLeftCoordinate = [self.mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:self.mapView];
-            CLLocation *topLeftLocation = [[CLLocation alloc] initWithLatitude:topLeftCoordinate.latitude longitude:topLeftCoordinate.longitude];
-            
-            CLLocationCoordinate2D bottomRightCoordinate = [self.mapView convertPoint:CGPointMake(self.mapView.frame.size.width, self.mapView.frame.size.height) toCoordinateFromView:self.mapView];
-            CLLocation *bottomRightLocation = [[CLLocation alloc] initWithLatitude:bottomRightCoordinate.latitude longitude:bottomRightCoordinate.longitude];
-            
-            CLLocationDistance totalDiagonalDistance = [topLeftLocation distanceFromLocation:bottomRightLocation];
-            
-            percentageChange = [self.lastCenterLocation distanceFromLocation:centerLocation] / totalDiagonalDistance;
-        }
-        
-        if (percentageChange > 0.20) {
-            [self updateDisplayedMerchantsAtCoordinate:centerCoordinate];
-            self.lastCenterLocation = centerLocation;
-        }
-    }
-}
-
 #pragma mark - CCLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -336,7 +302,6 @@
     londonCoordinate.latitude = 51.508663f;
     londonCoordinate.longitude = -0.117380f;
     [self showUserOnMapAtLocation:londonCoordinate];
-    [self updateDisplayedMerchantsAtCoordinate:londonCoordinate];
 }
 
 - (void)showUserOnMapAtLocation:(CLLocationCoordinate2D)location
@@ -359,7 +324,6 @@
         userLocationCoordinate.longitude = userLocation.coordinate.longitude;
         
         [self showUserOnMapAtLocation:userLocationCoordinate];
-        [self updateDisplayedMerchantsAtCoordinate:userLocationCoordinate];
     }
 }
 
