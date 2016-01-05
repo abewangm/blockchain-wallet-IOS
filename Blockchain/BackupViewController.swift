@@ -44,6 +44,15 @@ class BackupViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if (backupWalletAgainButton?.hidden == false) {
+            backupWalletButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), forState: .Normal)
+        } else {
+            backupWalletButton?.setTitle(NSLocalizedString("BACKUP FUNDS", comment: ""), forState: .Normal)
+        }
+    }
+    
     @IBAction func backupWalletButtonTapped(sender: UIButton) {
         if (backupWalletButton!.titleLabel!.text == NSLocalizedString("VERIFY BACKUP", comment: "")) {
             performSegueWithIdentifier("verifyBackup", sender: nil)

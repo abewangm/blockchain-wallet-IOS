@@ -47,6 +47,7 @@ int accountEntries = 0;
         tableView.opaque = NO;
         tableView.backgroundColor = [UIColor clearColor];
         tableView.backgroundView = nil;
+        tableView.showsVerticalScrollIndicator = NO;
         tableView;
     });
 

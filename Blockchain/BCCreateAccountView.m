@@ -55,31 +55,25 @@
 
 - (IBAction)createAccountClicked:(id)sender
 {
-    // Remove whitespace
-    NSString *label = [self.labelTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    if (label.length == 0) {
-        [app standardNotify:BC_STRING_YOU_MUST_ENTER_A_LABEL];
-        return;
+    if ([app checkInternetConnection]) {
+        // Remove whitespace
+        NSString *label = [self.labelTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        if (label.length == 0) {
+            [app standardNotify:BC_STRING_YOU_MUST_ENTER_A_LABEL];
+            return;
+        }
+        
+        if (label.length > 17) {
+            // TODO i18n
+            [app standardNotify:BC_STRING_LABEL_MUST_HAVE_LESS_THAN_18_CHAR];
+            return;
+        }
+        
+        [app closeModalWithTransition:kCATransitionFade];
+        
+        [app.wallet createAccountWithLabel:label];
     }
-    
-    if (label.length > 17) {
-        // TODO i18n
-        [app standardNotify:BC_STRING_LABEL_MUST_HAVE_LESS_THAN_18_CHAR];
-        return;
-    }
-    
-    NSMutableCharacterSet *allowedCharSet = [[NSCharacterSet alphanumericCharacterSet] mutableCopy];
-    [allowedCharSet formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    if ([label rangeOfCharacterFromSet:[allowedCharSet invertedSet]].location != NSNotFound) {
-        [app standardNotify:BC_STRING_LABEL_MUST_BE_ALPHANUMERIC];
-        return;
-    }
-    
-    [app closeModalWithTransition:kCATransitionFade];
-    
-    [app.wallet createAccountWithLabel:label];
 }
 
 #pragma mark - Textfield Delegates

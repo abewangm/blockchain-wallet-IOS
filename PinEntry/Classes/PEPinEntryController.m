@@ -221,7 +221,7 @@ static PEViewController *VerifyController()
 - (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
 {
     if (longPress.state == UIGestureRecognizerStateBegan) {
-        [app showDebugMenu];
+        [app showDebugMenu:DEBUG_PRESENTER_PIN_VERIFY];
     }
 }
 

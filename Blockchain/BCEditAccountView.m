@@ -69,14 +69,6 @@
         return;
     }
     
-    NSMutableCharacterSet *allowedCharSet = [[NSCharacterSet alphanumericCharacterSet] mutableCopy];
-    [allowedCharSet formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    if ([label rangeOfCharacterFromSet:[allowedCharSet invertedSet]].location != NSNotFound) {
-        [app standardNotify:BC_STRING_LABEL_MUST_BE_ALPHANUMERIC];
-        return;
-    }
-    
     [app.wallet setLabelForAccount:self.accountIdx label:label];
     
     [app reload];

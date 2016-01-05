@@ -87,7 +87,7 @@ Boolean shouldShowAnimation;
 - (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
 {
     if (longPress.state == UIGestureRecognizerStateBegan) {
-        [app showDebugMenu];
+        [app showDebugMenu:DEBUG_PRESENTER_WELCOME_VIEW];
     }
 }
 

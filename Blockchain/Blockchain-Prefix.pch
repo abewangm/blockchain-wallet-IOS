@@ -135,7 +135,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info/"
 #define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
-#define DEFAULT_MERCHANT_NEARBY_URL @"https://merchant-directory.blockchain.info/api/list_near_merchants.php"
+#define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/"
+#define DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS @"api/list_near_merchants.php"
+
+#define DEFAULT_HTML_WEBSOCKET_URL @"wss://*.blockchain.info"
+#define DEFAULT_HTML_WALLET_SERVER_URL @"https://blockchain.info"
+#define DEFAULT_HTML_PREFIX_WALLET_SERVER_URL @"https://*.blockchain.info"
 
 #define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
 #define ZEROBLOCK_TITLE @"ZeroBlock"
@@ -186,7 +191,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define USER_DEFAULTS_KEY_DEBUG_SERVER_URL @"serverURL"
 #define USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL @"webSocketURL"
-#define USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL @"nearbyMerchantsURL"
+#define USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL @"merchantURL"
 
 #define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
 
@@ -285,6 +290,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 
 #define DURATION_LONG_PRESS_GESTURE_DEBUG 2.0
+#define DEBUG_PRESENTER_WELCOME_VIEW 0
+#define DEBUG_PRESENTER_PIN_VERIFY 1
+#define DEBUG_PRESENTER_SETTINGS_ABOUT 2
 
 #pragma mark - Runtime modes
 

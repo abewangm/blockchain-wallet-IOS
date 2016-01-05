@@ -21,7 +21,15 @@
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_DONE style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     self.navigationController.navigationBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
-    self.navigationItem.title = BC_STRING_DEBUG;
+    NSString *presenter;
+    if (self.presenter == DEBUG_PRESENTER_SETTINGS_ABOUT) {
+        presenter = BC_STRING_SETTINGS_ABOUT;
+    } else if (self.presenter == DEBUG_PRESENTER_PIN_VERIFY) {
+        presenter = BC_STRING_SETTINGS_VERIFY;
+    } else if (self.presenter == DEBUG_PRESENTER_WELCOME_VIEW)  {
+        presenter = BC_STRING_WELCOME;
+    }
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ %@ %@", BC_STRING_DEBUG, BC_STRING_FROM_LOWERCASE, presenter];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -94,8 +102,8 @@
             break;
         }
         case 2: {
-            cell.textLabel.text = BC_STRING_NEARBY_MERCHANTS_URL;
-            cell.detailTextLabel.text = [app nearbyMerchantsURL];
+            cell.textLabel.text = BC_STRING_MERCHANT_URL;
+            cell.detailTextLabel.text = [app merchantURL];
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
@@ -125,7 +133,7 @@
             [self alertToChangeURLName:BC_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:[app webSocketURL]];
             break;
         case 2:
-            [self alertToChangeURLName:BC_STRING_NEARBY_MERCHANTS_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL currentURL:[app nearbyMerchantsURL]];
+            [self alertToChangeURLName:BC_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:[app merchantURL]];
             break;
         case 3: {
             if (self.filteredWalletJSON) {

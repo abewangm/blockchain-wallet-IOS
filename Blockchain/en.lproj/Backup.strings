@@ -38,8 +38,8 @@
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "Previous word";
 
-/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable.";
+/* Class = "UILabel"; text = "Backing up your funds ensures that you will not lose access to your bitcoins (except imported addresses), even if you forget your password or if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Backing up your funds ensures that you will not lose access to your bitcoins (except imported addresses), even if you forget your password or if our service becomes unavailable.";
 
 /* Class = "UILabel"; text = "Don't take a screenshot!\nYou can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Don't take a screenshot!\nYou can jeopardize your wallet's security";

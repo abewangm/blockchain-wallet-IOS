@@ -1227,9 +1227,10 @@ void (^secondPasswordSuccess)(NSString *);
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
 }
 
-- (void)showDebugMenu
+- (void)showDebugMenu:(int)presenter
 {
     DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
+    debugViewController.presenter = presenter;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:debugViewController];
     
@@ -2431,9 +2432,9 @@ void (^secondPasswordSuccess)(NSString *);
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] == nil ? DEFAULT_WEBSOCKET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
 }
 
-- (NSString *)nearbyMerchantsURL
+- (NSString *)merchantURL
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL] == nil ? DEFAULT_MERCHANT_NEARBY_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL] == nil ? DEFAULT_MERCHANT_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
 }
 
 @end

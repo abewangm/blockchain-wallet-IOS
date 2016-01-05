@@ -27,14 +27,11 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         super.viewDidLoad()
         
         updatePreviousWordButton()
-        
-        let greyText = NSAttributedString(string: NSLocalizedString("(e.g., with your passport)", comment:""), attributes:
-            [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
-        let blackText = NSAttributedString(string:  NSLocalizedString("Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe\n", comment:""), attributes:
+
+        let blackText = NSAttributedString(string:  NSLocalizedString("Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins.", comment:""), attributes:
             [NSForegroundColorAttributeName: UIColor.blackColor()])
         
         let finalText = NSMutableAttributedString(attributedString: blackText)
-        finalText.appendAttributedString(greyText);
         summaryLabel?.attributedText = finalText
         
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
