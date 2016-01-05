@@ -144,15 +144,15 @@
     [self.toolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
 }
 
-- (void)updateDisplayedMerchantsAtCoordinate:(CLLocationCoordinate2D)coordinate
+- (void)updateDisplayedMerchants
 {
     // Send approximate coordinates for merchant lookup
-    NSString *urlString = [NSString stringWithFormat:@"%@%@?ULAT=%.2f&ULON=%.2f&D=40000&K=1", [app merchantURL], DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS, coordinate.latitude, coordinate.longitude];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", [app merchantURL], DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:self.merchantLocationNetworkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError) {
-            DLog(@"Error retrieving Merchants near location (Long)%f, (Lat)%f", coordinate.longitude, coordinate.latitude);
+            DLog(@"Error retrieving Merchants");
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSError *error = nil;
@@ -295,7 +295,7 @@
         }
         
         if (percentageChange > 0.20) {
-            [self updateDisplayedMerchantsAtCoordinate:centerCoordinate];
+            [self updateDisplayedMerchants];
             self.lastCenterLocation = centerLocation;
         }
     }
@@ -336,7 +336,7 @@
     londonCoordinate.latitude = 51.508663f;
     londonCoordinate.longitude = -0.117380f;
     [self showUserOnMapAtLocation:londonCoordinate];
-    [self updateDisplayedMerchantsAtCoordinate:londonCoordinate];
+    [self updateDisplayedMerchants];
 }
 
 - (void)showUserOnMapAtLocation:(CLLocationCoordinate2D)location
@@ -359,7 +359,7 @@
         userLocationCoordinate.longitude = userLocation.coordinate.longitude;
         
         [self showUserOnMapAtLocation:userLocationCoordinate];
-        [self updateDisplayedMerchantsAtCoordinate:userLocationCoordinate];
+        [self updateDisplayedMerchants];
     }
 }
 

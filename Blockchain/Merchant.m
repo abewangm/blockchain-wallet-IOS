@@ -14,14 +14,13 @@ NSString *const kMerchantIdKey = @"id";
 NSString *const kMerchantNameKey = @"name";
 NSString *const kMerchantAdressKey = @"address";
 NSString *const kMerchantCityKey = @"city";
-NSString *const kMerchantPCodeKey = @"pcode";
-NSString *const kMerchantTelphoneKey = @"tel";
-NSString *const kMerchantURLKey = @"web";
-NSString *const kMerchantLatitudeKey = @"lat";
-NSString *const kMerchantLongitudeKey = @"lon";
-NSString *const kMerchantTypeKey = @"hc";
-NSString *const kMerchantDescriptionKey = @"desc";
-NSString *const kMerchantDistanceKey = @"distance";
+NSString *const kMerchantPCodeKey = @"postal_code";
+NSString *const kMerchantTelphoneKey = @"phone";
+NSString *const kMerchantURLKey = @"website";
+NSString *const kMerchantLatitudeKey = @"latitude";
+NSString *const kMerchantLongitudeKey = @"longitude";
+NSString *const kMerchantTypeKey = @"category_id";
+NSString *const kMerchantDescriptionKey = @"description";
 
 @interface Merchant ()
 
@@ -49,23 +48,20 @@ NSString *const kMerchantDistanceKey = @"distance";
         
         NSString *merchantType = [dict safeObjectForKey:kMerchantTypeKey];
         BCMerchantLocationType locationType = BCMerchantLocationTypeOther;
-        if ([merchantType isEqualToString:@"1"]) {
+        if ([merchantType isEqual:@1]) {
             locationType = BCMerchantLocationTypeBeverage;
-        } else if ([merchantType isEqualToString:@"2"]) {
+        } else if ([merchantType isEqual:@2]) {
             locationType = BCMerchantLocationTypeBar;
-        } else if ([merchantType isEqualToString:@"3"]) {
+        } else if ([merchantType isEqual:@3]) {
             locationType = BCMerchantLocationTypeFood;
-        } else if ([merchantType isEqualToString:@"4"]) {
+        } else if ([merchantType isEqual:@4]) {
             locationType = BCMerchantLocationTypeBusiness;
-        } else if ([merchantType isEqualToString:@"5"]) {
+        } else if ([merchantType isEqual:@5]) {
             locationType = BCMerchantLocationTypeOther;
         }
         merchant.locationType = locationType;
         
         merchant.merchantDescription = [dict safeObjectForKey:kMerchantDescriptionKey];
-        
-        NSNumber *distance = [dict safeObjectForKey:kMerchantDistanceKey];
-        merchant.distance = [distance floatValue];
         
         return merchant;
     } else {
