@@ -96,6 +96,18 @@
     NSError *error = nil;
     NSString *walletHTML = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"wallet-ios" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
     
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] != nil) {
+        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:DEFAULT_HTML_WEBSOCKET_URL withString:[app webSocketURL]];
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] != nil) {
+        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:DEFAULT_HTML_WALLET_SERVER_URL withString:[app serverURL]];
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL] != nil) {
+        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:DEFAULT_HTML_PREFIX_WALLET_SERVER_URL withString:[app merchantURL]];
+    }
+    
     NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];
     
     [webView loadHTMLString:walletHTML baseURL:baseURL];

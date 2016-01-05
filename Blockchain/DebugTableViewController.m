@@ -102,8 +102,8 @@
             break;
         }
         case 2: {
-            cell.textLabel.text = BC_STRING_NEARBY_MERCHANTS_URL;
-            cell.detailTextLabel.text = [app nearbyMerchantsURL];
+            cell.textLabel.text = BC_STRING_MERCHANT_URL;
+            cell.detailTextLabel.text = [app merchantURL];
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
@@ -133,7 +133,7 @@
             [self alertToChangeURLName:BC_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:[app webSocketURL]];
             break;
         case 2:
-            [self alertToChangeURLName:BC_STRING_NEARBY_MERCHANTS_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_NEARBY_MERCHANTS_URL currentURL:[app nearbyMerchantsURL]];
+            [self alertToChangeURLName:BC_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:[app merchantURL]];
             break;
         case 3: {
             if (self.filteredWalletJSON) {
