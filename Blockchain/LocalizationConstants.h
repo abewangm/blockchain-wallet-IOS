@@ -251,7 +251,7 @@
 #define BC_STRING_UPGRADE_SUCCESS NSLocalizedString(@"You are now running our most secure Bitcoin wallet", nil)
 #define BC_STRING_UPGRADE_FEATURE_THREE NSLocalizedString(@"Customize the way you organize your bitcoins in your Blockchain Wallet", nil)
 #define BC_STRING_UPGRADE_FEATURE_TWO NSLocalizedString(@"Easy one time wallet backup keeps you in control of your funds", nil)
-#define BC_STRING_UPGRADE_FEATURE_ONE NSLocalizedString(@"Anything you need to store, spend and receive your bitcoin", nil)
+#define BC_STRING_UPGRADE_FEATURE_ONE NSLocalizedString(@"Everything you need to store, spend and receive your bitcoin", nil)
 #define BC_STRING_UPGRADE_ALERTVIEW_TITLE NSLocalizedString(@"Upgrade Wallet", nil)
 #define BC_STRING_UPGRADE_ALERTVIEW_MESSAGE NSLocalizedString(@"We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet", nil)
 #define BC_STRING_UPGRADE_ALERTVIEW_CANCEL_TITLE NSLocalizedString(@"Not now", nil)
