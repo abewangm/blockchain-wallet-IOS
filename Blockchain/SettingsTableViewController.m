@@ -1145,27 +1145,21 @@ const int aboutPrivacyPolicy = 1;
             }
         }
         case securitySection: {
-            switch (indexPath.row) {
-                case securityTwoStep: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
-                    return;
-                }
-                case securityPasswordHint: {
-                    [self alertUserToChangePasswordHint];
-                    return;
-                }
-                case securityPasswordChange: {
-                    [self changePassword];
-                    return;
-                }
-                case securityTorBlocking: {
-                    [self changeTorBlockingTapped];
-                    return;
-                }
-                case securityWalletRecoveryPhrase: {
-                    [self showBackup];
-                    return;
-                }
+            if (indexPath.row == securityTwoStep) {
+                [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
+                return;
+            } else if (indexPath.row == securityPasswordHint) {
+                [self alertUserToChangePasswordHint];
+                return;
+            } else if (indexPath.row == securityPasswordChange) {
+                [self changePassword];
+                return;
+            } else if (indexPath.row == securityTorBlocking) {
+                [self changeTorBlockingTapped];
+                return;
+            } else if (indexPath.row == self.securityWalletRecoveryPhraseRowIndex) {
+                [self showBackup];
+                return;
             }
             return;
         }
