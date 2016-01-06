@@ -667,6 +667,7 @@ const int aboutPrivacyPolicy = 1;
 - (void)changeTwoStepError
 {
     self.isEnablingTwoStepSMS = NO;
+    [self alertUserOfError:BC_STRING_TWO_STEP_ERROR];
     [self doneChangingTwoStep];
     [self getAccountInfo];
 }
