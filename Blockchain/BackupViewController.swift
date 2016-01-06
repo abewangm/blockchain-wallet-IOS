@@ -42,6 +42,8 @@ class BackupViewController: UIViewController {
             backupWalletAgainButton?.titleLabel?.font = UIFont.boldSystemFontOfSize(14);
             lostRecoveryPhraseLabel?.font = UIFont.boldSystemFontOfSize(14);
         }
+        
+        explanation?.sizeToFit();
     }
     
     override func viewDidLayoutSubviews() {
