@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld δευτερόλεπτα πριν";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(π.χ., με το διαβατήριό σας)";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* Τουλάχιστον 10 χαρακτήρες";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "πριν από 1 λεπτό";
+
+/* (No Commment) */
+"2-Step Enabled" = "2-βήμα ενεργοποιημένη";
+
+/* (No Commment) */
+"2-Step has been disabled." = "2-βήμα έχει απενεργοποιηθεί.";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "2-βήμα έχει ενεργοποιηθεί για SMS.";
 
 /* (No Commment) */
 "2-step Verification" = "Επαλήθευση 2 βημάτων";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "Ρυθμίστε την αμοιβή";
 
 /* (No Commment) */
+"Allow" = "Επιτρέπουν";
+
+/* (No Commment) */
+"Allowed" = "Επιτρέπεται";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Ποσό πρέπει να είναι πάνω από το όριο της σκόνης (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Παρουσιάστηκε σφάλμα επικύρωση κωδικό σας PIN με τον απομακρυσμένο διακομιστή. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain μπορεί να αντιμετωπίζουν δυσκολίες. Θα θέλατε επανάληψη επικύρωσης ή αντί να εισάγετε τον κωδικό σας με το χέρι;";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "Παρουσιάστηκε σφάλμα κατά την αλλαγή επαλήθευση σε 2 βήματα.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Παρουσιάστηκε σφάλμα κατά τη φόρτωση το πορτοφόλι σας. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain αντιμετωπίζει δυσκολίες. Παρακαλούμε να κλείσετε την εφαρμογή και προσπαθήστε ξανά αργότερα ή αντιστοιχίστε εκ νέου τη συσκευή σας.";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "Οποιαδήποτε διεύθυνση";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "Οτιδήποτε χρειάζεστε για την αποθήκευση, περνούν και λάβετε σας bitcoin";
 
 /* (No Commment) */
 "Archive" = "Αρχείο";
@@ -116,6 +128,9 @@
 "Backup Funds" = "Εφεδρική ταμεία";
 
 /* (No Commment) */
+"Backup Phrase" = "Εφεδρική φράση";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Πριν την προσπέλαση πορτοφόλι σας, επιλέξτε έναν αριθμό pin για να χρησιμοποιήσετε για να ξεκλειδώσετε το πορτοφόλι σας. Είναι σημαντικό να θυμάστε αυτό το pin, όπως δεν μπορεί να επαναφέρετε ή να αλλάξει χωρίς την πρώτη απελευθέρωση app.";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin αίτηση πληρωμής";
+
+/* (No Commment) */
+"Block" = "Μπλοκ";
+
+/* (No Commment) */
+"Block Tor" = "Μπλοκ Tor";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain δεν έχει πρόσβαση στην κάμερα. Για να ενεργοποιήσετε την πρόσβαση, πάει στη συσκευή σας ρυθμίσεις.";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας. Μπορείτε να ενεργοποιήσετε την πρόσβαση στις ρυθμίσεις -> προσωπικό απόρρητο -> θέση -> υπηρεσίες τοποθεσίας";
+
+/* (No Commment) */
+"Blocked" = "Μπλοκάρει";
 
 /* (No Commment) */
 "Camera Access Denied" = "Δεν επιτρέπεται η πρόσβαση φωτογραφική μηχανή";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "Κλείστε το App";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "Ολοκληρώστε τα παρακάτω βήματα για την απόλυτη ασφάλεια";
 
 /* (No Commment) */
 "Confirm Payment" = "Επιβεβαιώσετε την πληρωμή";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Να προσαρμόσετε τον τρόπο που μπορείτε να οργανώσετε σας bitcoins στο πορτοφόλι σας Blockchain";
 
 /* (No Commment) */
+"Debug" = "Εντοπισμού σφαλμάτων";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Αποκρυπτογραφηθούν με τον PIN κωδικό μήκος 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "Ανακοινώσεις ηλεκτρονικού ταχυδρομείου";
 
 /* (No Commment) */
+"Email Verified" = "Λευκόψαρων";
+
+/* (No Commment) */
 "Empty response from server." = "Κενή απόκριση από το διακομιστή.";
 
 /* (No Commment) */
 "Enable" = "Ενεργοποίηση";
 
 /* (No Commment) */
+"Enable 2-Step" = "Επιτρέψει 2-βήμα";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "Επιτρέψει 2-βήμα για SMS";
+
+/* (No Commment) */
 "Enable Location Services" = "Ενεργοποιήστε τις υπηρεσίες τοποθεσίας";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Ενεργοποίηση κοινοποιήσεις να λαμβάνετε ένα email κάθε φορά που λαμβάνετε bitcoins. Μόνο με την ένδειξη διευθύνσεις και εισάγονται διευθύνσεις δικαιούνται να σκανδάλη κοινοποιήσεις.";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Ενεργοποίηση αυτής της επιλογής για την πρόληψη των διευθύνσεων IP που είναι γνωστό ότι είναι μέρος του δικτύου τις anonymizing Tor από την πρόσβαση σε το πορτοφόλι σας. Το δίκτυο Tor χρησιμοποιείται συχνά από τους χάκερ που προσπαθεί να αποκτήσει πρόσβαση χρηστών Blockchain πορτοφόλια.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Ενεργοποίηση αυτής της δυνατότητας θα επιτρέπουν σε όλους τους χρήστες με μια καταστατική ID αφής δακτυλικών αποτυπωμάτων σε αυτήν την συσκευή για να αποκτήσετε πρόσβαση στο πορτοφόλι σας.";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "Σφάλμα κατά την ενημέρωση των ρυθμίσεων";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "Όλα όσα χρειάζεστε για την αποθήκευση, περνούν και λάβετε σας bitcoin";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Απέτυχε η φόρτωση πορτοφόλι";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "Ο Επαληθευτής Google";
+
+/* (No Commment) */
+"Hint Stored" = "Υπόδειξη αποθηκεύονται";
 
 /* (No Commment) */
 "How would you like to pair?" = "Πώς θα θέλατε να ζεύγος;";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "Ετικέτα πρέπει να έχουν λιγότερο από 18 χαρακτήρες";
 
 /* (No Commment) */
+"Link Mobile" = "Κινητό σύνδεση";
+
+/* (No Commment) */
 "Loading External Page" = "Φόρτωση εξωτερική σελίδα";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "Έμπορος χάρτη";
+
+/* (No Commment) */
+"Merchant URL" = "Έμπορος URL";
+
+/* (No Commment) */
+"Mobile Linked" = "Κινητό που συνδέονται";
 
 /* (No Commment) */
 "Mobile Number" = "Τον αριθμό του κινητού";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "Πληρωμής που στάλθηκαν!";
 
 /* (No Commment) */
+"Phrase Backed" = "Φράση που υποστηρίζεται";
+
+/* (No Commment) */
+"Please Login" = "Παρακαλούμε συνδεθείτε";
+
+/* (No Commment) */
 "Please add an email address" = "Παρακαλούμε να προσθέσετε μια διεύθυνση ηλεκτρονικού ταχυδρομείου";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "Στείλτε ξανά το μήνυμα ηλεκτρονικού ταχυδρομείου επαλήθευσης";
 
 /* (No Commment) */
+"Reset" = "Επαναφορά";
+
+/* (No Commment) */
 "Retry Validation" = "Επαναλάβετε την επικύρωση";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "Ασφάλεια";
 
 /* (No Commment) */
+"Security Center" = "Κέντρο ασφαλείας";
+
+/* (No Commment) */
 "Send" = "Αποστολή";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "Έστειλε να %@";
 
 /* (No Commment) */
+"Server URL" = "Διεύθυνση URL διακομιστή";
+
+/* (No Commment) */
 "Settings" = "Ρυθμίσεις";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Υπογραφή εισροές";
+
+/* (No Commment) */
+"Store Hint" = "Κατάστημα υπόδειξη";
 
 /* (No Commment) */
 "Stored" = "Αποθηκεύονται";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "Υποστήριξη";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "Συγχρονισμός πορτοφόλι";
 
 /* (No Commment) */
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "ΠΡΟΣ: %1$@%2$@ συνολικό ποσό: %3$@ αμοιβή: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "Tor αιτήσεις";
+
+/* (No Commment) */
+"Tor blocked" = "Tor μπλοκαριστεί";
+
+/* (No Commment) */
+"Tor requests allowed" = "Tor αιτήσεις επιτρέπεται";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "Προς το παρόν επιτρέπονται αιτήσεις Tor.";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "Tor αιτήσεις επί του παρόντος αποκλείονται.";
 
 /* (No Commment) */
 "Total Balance" = "Συνολικό υπόλοιπο";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "Επαλήθευση";
 
 /* (No Commment) */
+"Verify Email" = "Επιβεβαιώστε ηλεκτρονικό ταχυδρομείο";
+
+/* (No Commment) */
 "Verifying" = "Επαλήθευση";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "Πορτοφόλι πληροφορίες";
 
 /* (No Commment) */
+"Wallet JSON" = "Πορτοφόλι JSON";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "Πορτοφόλι, σε συνδυασμό με επιτυχία.";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "Πορτοφόλι ανάκτηση φράση";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "%@ διεύθυνση πορτοφόλι έχει κεφάλαια να ξοδέψει. Ωστόσο το ιδιωτικό κλειδί πρέπει να σαρωθεί από ένα χαρτί πορτοφόλι ή QR Code. Θα θέλατε να σαρώσετε το ιδιωτικό κλειδί τώρα;";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Προειδοποίηση: Το αναγνωριστικό σας πορτοφόλι είναι ευαίσθητες πληροφορίες. Την αντιγραφή μπορεί να διακυβεύσει την ασφάλεια του πορτοφολιού σας.";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "Θα σας στείλουμε την υπόδειξη να επιβεβαιωθεί το email σας, σε περίπτωση που ζητάτε.";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα εμπειρία πορτοφόλι για σας";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "Weak" = "Αδύναμη";
+
+/* (No Commment) */
+"WebSocket URL" = "WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "Καλώς όρισες";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "Καλωσορίζουμε τη νέα έκδοση του το Blockchain πορτοφόλι!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 "Would you like to add the bitcoin address %@ to your address book?" = "Θα θέλατε να προσθέσετε το bitcoin διεύθυνση %@ στο βιβλίο διευθύνσεων;";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Καταγράψτε τις λέξεις, την ακριβή σειρά που εμφανίζονται σε ένα φύλλο χαρτί, και να το αποθηκεύσετε κάπου ασφαλή
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Γράψετε σας φράση αποκατάστασης και να παραμένει κάπου πολύ αξιόπιστο και ασφαλές. Θυμηθείτε ότι όποιος ξέρει σας φράση αποκατάστασης έχει πρόσβαση σε bitcoins σας.";
 
 /* (No Commment) */
 "Yes" = "Ναι";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* No comment provided by engineer. */
 "fourth word" = "τέταρτη λέξη";
+
+/* (No Commment) */
+"from" = "από";
 
 /* (No Commment) */
 "iOS Support Request" = "Ίο αίτημα υποστήριξης";

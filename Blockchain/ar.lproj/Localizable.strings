@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld ثواني";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(على سبيل المثال، مع جواز سفرك)";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* الحد الأدنى 10 أحرف";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "منذ 1 دقيقة";
+
+/* (No Commment) */
+"2-Step Enabled" = "2-خطوة ممكنة";
+
+/* (No Commment) */
+"2-Step has been disabled." = "الخطوة 2--لقد تم تعطيل.";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "تم تمكين 2-خطوة للرسائل القصيرة.";
 
 /* (No Commment) */
 "2-step Verification" = "2-خطوة التحقق";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "ضبط الرسوم";
 
 /* (No Commment) */
+"Allow" = "تسمح";
+
+/* (No Commment) */
+"Allowed" = "يسمح";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "يجب أن يكون مقدار عتبة الغبار (%lld ساتوشي)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "حدث خطأ أثناء التحقق من صحة رمز PIN الخاص بك مع الملقم البعيد. قد تكون دون اتصال أو بلوكتشين قد يواجه بعض الصعوبات. هل تريد إعادة محاولة التحقق من الصحة أو بدلاً من ذلك قم بإدخال كلمة المرور الخاصة بك يدوياً؟";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "حدث خطأ أثناء تغيير التحقق من خطوتين.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "تمت مصادفة خطأ أثناء تحميل محفظتك. قد تكون دون اتصال أو بلوكتشاين تعاني من صعوبات. الرجاء إغلاق التطبيق وحاول مرة أخرى لاحقاً أو إعادة إقران الجهاز الخاص بك.";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "أي عنوان";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "أي شيء أنت بحاجة إلى تخزين، تنفق وتلقى الخاص بك بيتكوين";
 
 /* (No Commment) */
 "Archive" = "أرشيف";
@@ -116,6 +128,9 @@
 "Backup Funds" = "أموال احتياطية";
 
 /* (No Commment) */
+"Backup Phrase" = "العبارة النسخ الاحتياطي";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "قبل الوصول إلى المحفظة الخاصة بك، الرجاء اختيار رقم السري لاستخدام لفتح محفظتك. من المهم تذكر هذا الرقم كما لا يمكن إعادة تعيين أو تغيير دون الأولى فتح التطبيق.";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "طلب الدفع بيتكوين";
+
+/* (No Commment) */
+"Block" = "كتلة";
+
+/* (No Commment) */
+"Block Tor" = "كتلة تور";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "بلوكتشين لا يحصلون على الكاميرا. لتمكين الوصول، انتقل إلى إعدادات الجهاز الخاص بك.";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك. يمكنك تمكين الوصول في إعدادات--> الخصوصية--> الموقع--> \"خدمات الموقع\"";
+
+/* (No Commment) */
+"Blocked" = "حظر";
 
 /* (No Commment) */
 "Camera Access Denied" = "تم رفض الوصول إلى الكاميرا";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "قم بإغلاق التطبيق";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "أكمل الخطوات أدناه للأمن في نهاية المطاف";
 
 /* (No Commment) */
 "Confirm Payment" = "تأكيد الدفع";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "تخصيص الطريقة التي يمكنك تنظيم الخاصة بك بيتكوينس في محفظتك بلوكتشين";
 
 /* (No Commment) */
+"Debug" = "التصحيح";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "فك تشفير كلمة المرور PIN طول 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "إعلامات البريد الإلكتروني";
 
 /* (No Commment) */
+"Email Verified" = "التحقق من البريد الإلكتروني";
+
+/* (No Commment) */
 "Empty response from server." = "فارغة واستجابة من الملقم.";
 
 /* (No Commment) */
 "Enable" = "تمكين";
 
 /* (No Commment) */
+"Enable 2-Step" = "تمكين الخطوة 2";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "تمكين 2-خطوة للرسائل القصيرة";
+
+/* (No Commment) */
 "Enable Location Services" = "تمكين خدمات الموقع";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "تمكين إعلامات تلقي رسالة بريد إلكتروني عند تلقي بيتكوينس. فقط المسمى عناوين واستيراد عناوين المؤهلة للإخطارات بالمشغل.";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "تمكين هذا الخيار لمنع عناوين IP التي هي معروفة لتكون جزءا من شبكة تور anonymizing من الوصول إلى محفظتك. كثيرا ما يستخدم شبكة تور بمحاولة الوصول إلى محافظ بلوكتشين المستخدمين المتطفلين.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "تمكين هذه الميزة سيتم السماح لكافة المستخدمين مع بصمة معرف اتصال مسجل على هذا الجهاز للوصول إلى محفظتك.";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "حدث خطأ أثناء تحديث الإعدادات";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "كل ما تحتاجه لتخزين، قضاء، وتلقى بك بيتكوين";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "فشل في تحميل المحفظة";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "جوجل المصادق";
+
+/* (No Commment) */
+"Hint Stored" = "تلميح المخزنة";
 
 /* (No Commment) */
 "How would you like to pair?" = "كيف تريد أن زوج؟";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "يجب أن يكون التسمية أحرف أقل من 18";
 
 /* (No Commment) */
+"Link Mobile" = "وصلة الجوال";
+
+/* (No Commment) */
 "Loading External Page" = "تحميل صفحة خارجية";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "خريطة التاجر";
+
+/* (No Commment) */
+"Merchant URL" = "رابط التاجر";
+
+/* (No Commment) */
+"Mobile Linked" = "موبايل مرتبطة";
 
 /* (No Commment) */
 "Mobile Number" = "رقم الهاتف المحمول";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "الدفع أرسلت!";
 
 /* (No Commment) */
+"Phrase Backed" = "عبارة المدعومة";
+
+/* (No Commment) */
+"Please Login" = "الرجاء تسجيل الدخول";
+
+/* (No Commment) */
 "Please add an email address" = "الرجاء إضافة عنوان بريد إلكتروني";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "إعادة إرسال البريد الإلكتروني التحقق";
 
 /* (No Commment) */
+"Reset" = "إعادة تعيين";
+
+/* (No Commment) */
 "Retry Validation" = "أعد محاولة إجراء التحقق من الصحة";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "الأمن";
 
 /* (No Commment) */
+"Security Center" = "مركز الأمان";
+
+/* (No Commment) */
 "Send" = "إرسال";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "أرسل إلى %@";
 
 /* (No Commment) */
+"Server URL" = "محدد موقع معلومات الخادم";
+
+/* (No Commment) */
 "Settings" = "إعدادات";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "توقيع المدخلات";
+
+/* (No Commment) */
+"Store Hint" = "تلميح مخزن";
 
 /* (No Commment) */
 "Stored" = "تخزين";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "الدعم";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "مزامنة المحفظة";
 
 /* (No Commment) */
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "إلى: المبلغ الإجمالي %1$@%2$@: رسوم %3$@: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "طلبات تور";
+
+/* (No Commment) */
+"Tor blocked" = "حظر تور";
+
+/* (No Commment) */
+"Tor requests allowed" = "طلبات تور يسمح";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "ويسمح حاليا طلبات تور.";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "يتم حظر الطلبات تور حاليا.";
 
 /* (No Commment) */
 "Total Balance" = "مجموع الرصيد";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "تحقق";
 
 /* (No Commment) */
+"Verify Email" = "التحقق من البريد الإلكتروني";
+
+/* (No Commment) */
 "Verifying" = "التحقق";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "معلومات المحفظة";
 
 /* (No Commment) */
+"Wallet JSON" = "المحفظة JSON";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "إقران المحفظة بنجاح.";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "عبارة استرداد المحفظة";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "وقد %@ عنوان المحفظة الأموال المتاحة للإنفاق. ومع ذلك يحتاج المفتاح الخاص المراد مسحها ضوئياً من ورقة المحفظة أو رمز ريال قطري. هل ترغب في مسح المفتاح الخاص الآن؟";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "تحذير: المعرف المحفظة الخاصة بك من المعلومات الحساسة. نسخ فإنه يجوز المساس بأمن محفظتك.";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "سوف نرسل التلميح إلى عنوان بريدك الإلكتروني مؤكدة في حالة طلب ذلك.";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة كلياً في محفظة لك";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "Weak" = "ضعيفة";
+
+/* (No Commment) */
+"WebSocket URL" = "رابط ويبسوكيت";
+
+/* (No Commment) */
+"Welcome" = "مرحبا";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "مرحبا بكم في النسخة الجديدة من المحفظة بلوكتشين!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 "Would you like to add the bitcoin address %@ to your address book?" = "هل ترغب في إضافة %@ عنوان بيتكوين إلى دفتر العناوين الخاص بك؟";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "كتابة الكلمات بالترتيب الدقيق أنها تظهر على ورقة، وتخزينه في مكان أمن
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "اكتب \"عبارتك الانتعاش\" والاحتفاظ به في مكان جداً وآمنة. تذكر أن أي شخص يعرف \"عبارة الاسترداد\" الخاصة بك الوصول إلى بيتكوينس الخاص بك.";
 
 /* (No Commment) */
 "Yes" = "نعم";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* No comment provided by engineer. */
 "fourth word" = "الكلمة الرابعة";
+
+/* (No Commment) */
+"from" = "من";
 
 /* (No Commment) */
 "iOS Support Request" = "دائرة الرقابة الداخلية \"تطلب الدعم\"";

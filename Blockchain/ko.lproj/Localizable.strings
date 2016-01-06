@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld 초 전";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(예: 여권)와 함께";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* 최소 10 문자";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "1 분 전";
+
+/* (No Commment) */
+"2-Step Enabled" = "2 단계 사용";
+
+/* (No Commment) */
+"2-Step has been disabled." = "2 단계 해제 되었습니다.";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "2 단계는 SMS에 대 한 활성화 되었습니다.";
 
 /* (No Commment) */
 "2-step Verification" = "2 단계 인증";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "요금 조정";
 
 /* (No Commment) */
+"Allow" = "허용";
+
+/* (No Commment) */
+"Allowed" = "허용";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "금액 먼지 임계값 (%lld 사토시) 이상 되어야 합니다.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "오류가 발생 원격 서버와 핀 코드의 유효성을 검사 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있습니다. 유효성 검사를 다시 시도 하거나 대신 수동으로 비밀 번호를 입력 시겠습니까?";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "2 단계 확인을 변경 하는 동안 오류가 발생 했습니다.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "오류가 당신의 지갑을 로드 하는 동안 발생 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 제발 응용 프로그램을 닫고 나중에 다시 시도 또는 장치를 다시 쌍.";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "모든 주소";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "저장, 필요가 아무것도 지출 하 고 당신의 bitcoin 받을";
 
 /* (No Commment) */
 "Archive" = "아카이브";
@@ -116,6 +128,9 @@
 "Backup Funds" = "백업 자금";
 
 /* (No Commment) */
+"Backup Phrase" = "백업 문구";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "당신의 지갑에 액세스 하기 전에 당신의 지갑의 잠금을 해제를 사용 하 여 핀 번호를 선택 하십시오. 그것은 중요 당신이 기억이 핀 재설정 되거나 첫 번째 응용 프로그램 잠금 해제 없이 변경 될 수 없습니다.";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin 지불 요청";
+
+/* (No Commment) */
+"Block" = "블록";
+
+/* (No Commment) */
+"Block Tor" = "블록 토르";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain에는 카메라에 액세스할 수 없습니다. 액세스를 사용 하려면 장치 설정에 이동 합니다.";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain 위치 서비스는 위치 정보에 액세스 하려면 사용 해야 합니다. 액세스를 설정할 수 있습니다 설정에서 개인 정보를-> 위치->-> 위치 서비스";
+
+/* (No Commment) */
+"Blocked" = "차단";
 
 /* (No Commment) */
 "Camera Access Denied" = "카메라 액세스 거부";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "응용 프로그램을 닫습니다";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "궁극적인 보안을 위해 아래 단계를 완료";
 
 /* (No Commment) */
 "Confirm Payment" = "결제 확인";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Blockchain 지갑에 당신의 bitcoins를 구성 하는 방법을 사용자 지정";
 
 /* (No Commment) */
+"Debug" = "디버그";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "해독 된 핀 암호 길이 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "이메일 알림";
 
 /* (No Commment) */
+"Email Verified" = "이메일 확인";
+
+/* (No Commment) */
 "Empty response from server." = "서버에서 빈 응답입니다.";
 
 /* (No Commment) */
 "Enable" = "활성화";
 
 /* (No Commment) */
+"Enable 2-Step" = "2 단계 사용";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "SMS에 대 한 2 단계 사용";
+
+/* (No Commment) */
 "Enable Location Services" = "위치 서비스를 활성화";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "사용 bitcoins 받을 때마다 이메일을 수신 알림. 주소를 표시 하 고 가져올 주소 트리거 알림을 받을 수 있습니다.";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "당신의 지갑에 액세스 바위산 익명 네트워크의 일부가 될 것으로 알려진 IP 주소를 방지 하려면이 옵션을 사용 합니다. Tor 네트워크는 Blockchain 사용자의 지갑에 액세스를 시도 하는 해커에 의해 자주 사용 됩니다.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "이 기능을 사용 하면 당신의 지갑에 액세스 하려면이 장치에서 모든 사용자가 등록 된 터치 ID 지문 수 있게 됩니다.";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "오류 설정 업데이트";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "저장 하는 데 필요한 모든 지출 하 고 당신의 bitcoin 받을";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "지갑을 로드 하지 못했습니다.";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "구글 인증자";
+
+/* (No Commment) */
+"Hint Stored" = "저장 하는 힌트";
 
 /* (No Commment) */
 "How would you like to pair?" = "어떻게 쌍을 원하십니까?";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "레이블 미만 18 문자가 있어야 합니다.";
 
 /* (No Commment) */
+"Link Mobile" = "링크 모바일";
+
+/* (No Commment) */
 "Loading External Page" = "외부 페이지 로드";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "가맹점 지도";
+
+/* (No Commment) */
+"Merchant URL" = "가맹점 URL";
+
+/* (No Commment) */
+"Mobile Linked" = "모바일 연결";
 
 /* (No Commment) */
 "Mobile Number" = "휴대 전화 번호";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "지불 전송!";
 
 /* (No Commment) */
+"Phrase Backed" = "구 지원";
+
+/* (No Commment) */
+"Please Login" = "로그인을 하십시오";
+
+/* (No Commment) */
 "Please add an email address" = "이메일 주소를 추가 하시기 바랍니다";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "확인 메일 다시 보내기";
 
 /* (No Commment) */
+"Reset" = "리셋";
+
+/* (No Commment) */
 "Retry Validation" = "유효성 검사를 다시 시도";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "보안";
 
 /* (No Commment) */
+"Security Center" = "보안 센터";
+
+/* (No Commment) */
 "Send" = "보내기";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "%@ 전송";
 
 /* (No Commment) */
+"Server URL" = "서버 URL";
+
+/* (No Commment) */
 "Settings" = "설정";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "서명 입력";
+
+/* (No Commment) */
+"Store Hint" = "스토어 힌트";
 
 /* (No Commment) */
 "Stored" = "저장";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "지원";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "동기화 지갑";
 
 /* (No Commment) */
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = ": %1$@%2$@ 총 금액: %3$@ 요금: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "토르 요청";
+
+/* (No Commment) */
+"Tor blocked" = "토르 차단";
+
+/* (No Commment) */
+"Tor requests allowed" = "토르 요청 허용";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "토르 요청 현재 사용할 수 있습니다.";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "토르 요청 현재 차단 됩니다.";
 
 /* (No Commment) */
 "Total Balance" = "총 잔액";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "확인";
 
 /* (No Commment) */
+"Verify Email" = "이메일 확인";
+
+/* (No Commment) */
 "Verifying" = "확인";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "지갑 정보";
 
 /* (No Commment) */
+"Wallet JSON" = "지갑을 JSON";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "지갑에 성공적으로 대응.";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "지갑 복구 문구";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "지갑 주소 %@ 자금을 보낼 수 있다. 그러나 개인 키 종이 지갑 또는 QR 코드 스캔 될 필요가 있다. 개인 키를 지금 검사 하 시겠습니까?";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "경고: 당신의 지갑 식별자는 중요 한 정보입니다. 복사 하는 것은 당신의 지갑의 보안을 타협 수 있습니다.";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "당신이 그것을 요청 하는 경우에 힌트 확인 된 이메일 주소에 발송 됩니다.";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지갑 경험 설계 했습니다.";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "Weak" = "약한";
+
+/* (No Commment) */
+"WebSocket URL" = "WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "환영 합니다";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "에 오신 것을 환영 합니다 Blockchain 지갑의 새로운 버전!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 "Would you like to add the bitcoin address %@ to your address book?" = "주소록 bitcoin 주소 %@를 추가 하 시겠습니까?";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "그들은 종이, 시트에 표시 하 고 어딘가에 안전 저장 정확한 순서로 단어를 적어
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "복구 문구를 적어 하 고 매우 안전 하 고 안전한 어딘가에 그것을 유지. 당신의 복구 어구를 알고 있는 누군가 당신의 bitcoins에 액세스할 수 기억 하십시오.";
 
 /* (No Commment) */
 "Yes" = "예";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* No comment provided by engineer. */
 "fourth word" = "4 번째 단어";
+
+/* (No Commment) */
+"from" = "보낸 사람";
 
 /* (No Commment) */
 "iOS Support Request" = "iOS 지원 요청";

@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld 秒前";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(例えばパスポート) と";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* 最低 10 文字";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "1 分前";
+
+/* (No Commment) */
+"2-Step Enabled" = "2 ステップ有効";
+
+/* (No Commment) */
+"2-Step has been disabled." = "2 ステップは、無効になっています。";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "SMS の 2 段階になっています。";
 
 /* (No Commment) */
 "2-step Verification" = "2 段階認証プロセス";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "料金を調整します。";
 
 /* (No Commment) */
+"Allow" = "許可します。";
+
+/* (No Commment) */
+"Allowed" = "許可";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "量する必要がありますほこりしきい値 (%lld 聡)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "リモート サーバーと PIN コードの検証エラーが発生しました。あなたがオフラインである、または Blockchain により、問題が発生します。検証を再試行するか、代わりにあなたのパスワードを手動で入力したいですか。";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "2 段階認証プロセスを変更中にエラーが発生しました。";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "あなたの財布の読み込みエラーが発生しました。あなたがオフラインであるか、Blockchain は問題します。くださいアプリケーションを終了やり直して、またはデバイスをペアリングし直します。";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "任意のアドレス";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "格納するために必要なものを使うし、ビットコインを受け取る";
 
 /* (No Commment) */
 "Archive" = "アーカイブ";
@@ -116,6 +128,9 @@
 "Backup Funds" = "バックアップ資金";
 
 /* (No Commment) */
+"Backup Phrase" = "バックアップのフレーズ";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "あなたの財布をアクセスする前に、あなたの財布のロックを解除に使用するピン番号を選択してください。リセットまたは、アプリを解除しないで変更することはできません、このピンが覚えていることが重要です。";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin 支払い要求";
+
+/* (No Commment) */
+"Block" = "ブロック";
+
+/* (No Commment) */
+"Block Tor" = "Tor をブロックします。";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain には、カメラへのアクセスがありません。アクセスを有効にするには、デバイスの設定に移動します。";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain では、位置情報サービスのあなたの場所にアクセスするために有効になっている必要があります。アクセスを有効にすることができます設定 → プライバシー → 場所 → 位置情報サービス";
+
+/* (No Commment) */
+"Blocked" = "ブロック";
 
 /* (No Commment) */
 "Camera Access Denied" = "カメラのアクセスが拒否されました";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "アプリを閉じる";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "究極のセキュリティの次の手順します。";
 
 /* (No Commment) */
 "Confirm Payment" = "お支払いを確認します。";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Blockchain 財布、bitcoins を整理する方法をカスタマイズします。";
 
 /* (No Commment) */
+"Debug" = "デバッグ";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "復号化された PIN パスワード長さ 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "電子メール通知";
 
 /* (No Commment) */
+"Email Verified" = "確認メール";
+
+/* (No Commment) */
 "Empty response from server." = "サーバーから空の応答。";
 
 /* (No Commment) */
 "Enable" = "有効にします。";
 
 /* (No Commment) */
+"Enable 2-Step" = "2 ステップを有効にします。";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "SMS の 2 ステップを有効にします。";
+
+/* (No Commment) */
 "Enable Location Services" = "位置情報サービスを有効にします。";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoins を受信するたびにメールを受信する通知を有効にします。アドレスをラベル付けされてインポートだけアドレスは、通知をトリガーします。";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "あなたの財布にアクセスするから Tor 匿名のネットワークの一部に知られている IP アドレスを防ぐためにこのオプションを有効にします。Tor ネットワークは、Blockchain ユーザーの財布にアクセスしようとするハッカーによって使用される頻繁。";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "この機能を有効にすると、このデバイスがあなたの財布にアクセスするにタッチ ID 指紋の登録されているすべてのユーザーが許可されます。";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "設定を更新中のエラー";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "格納するために必要なすべてを費やすし、ビットコインを受け取る";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "財布を読み込みに失敗しました";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "Google 認証システム";
+
+/* (No Commment) */
+"Hint Stored" = "保存のヒント";
 
 /* (No Commment) */
 "How would you like to pair?" = "どのペアにしますか?";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "ラベルが必要未満 18 文字";
 
 /* (No Commment) */
+"Link Mobile" = "リンク モバイル";
+
+/* (No Commment) */
 "Loading External Page" = "外部ページの読み込み";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "加盟店マップ";
+
+/* (No Commment) */
+"Merchant URL" = "商人の URL";
+
+/* (No Commment) */
+"Mobile Linked" = "携帯リンク";
 
 /* (No Commment) */
 "Mobile Number" = "携帯電話番号";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "お支払いは、送信!";
 
 /* (No Commment) */
+"Phrase Backed" = "フレーズをバックアップ";
+
+/* (No Commment) */
+"Please Login" = "ログインしてください。";
+
+/* (No Commment) */
 "Please add an email address" = "メール アドレスを追加してください。";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "確認メールを再送信します。";
 
 /* (No Commment) */
+"Reset" = "リセット";
+
+/* (No Commment) */
 "Retry Validation" = "検証を再試行します。";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "セキュリティ";
 
 /* (No Commment) */
+"Security Center" = "セキュリティ センター";
+
+/* (No Commment) */
 "Send" = "送信";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "%@ に送信";
 
 /* (No Commment) */
+"Server URL" = "サーバーの URL";
+
+/* (No Commment) */
 "Settings" = "設定";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "署名の入力";
+
+/* (No Commment) */
+"Store Hint" = "ストアのヒント";
 
 /* (No Commment) */
 "Stored" = "格納されています。";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "サポート";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "同期の財布";
 
 /* (No Commment) */
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "%1$@ の%2$@ の合計額: %3$@ 料金: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "Tor 要求";
+
+/* (No Commment) */
+"Tor blocked" = "Tor をブロック";
+
+/* (No Commment) */
+"Tor requests allowed" = "許可された Tor 要求";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "Tor 要求は許可されています。";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "Tor の要求がブロックされています。";
 
 /* (No Commment) */
 "Total Balance" = "トータル バランス";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "確認します。";
 
 /* (No Commment) */
+"Verify Email" = "メール アドレスを確認します。";
+
+/* (No Commment) */
 "Verifying" = "確認します。";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "財布情報";
 
 /* (No Commment) */
+"Wallet JSON" = "JSON の財布";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "正常にペアリングの財布。";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "財布回復フレーズ";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "財布アドレス %@ は、費やすことのできる資金を持っています。しかし秘密のキーは紙の財布または QR コードからスキャンする必要があります。今すぐ秘密のキーをスキャンしますか?";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "警告: 財布識別子は機密情報です。コピーと、お財布のセキュリティが損なわれる可能性があります。";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "それを要求する場合に、ヒントを確認済みのメール アドレスに送信されます。";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "私たちはあなたのため全く新しい財布経験を設計しました。";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "Weak" = "弱い";
+
+/* (No Commment) */
+"WebSocket URL" = "WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "ようこそ";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "Blockchain 財布の新バージョンへようこそ!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin アドレス %@ をアドレス帳に追加しますか?";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "彼らは、紙のシート上に表示、どこか安全な保存の正確な順序で言葉を書き留めてください。
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "回復フレーズを書き留め、非常に安全かつ確実な場所に保管します。あなた bitcoins へのアクセスが回復フレーズを知っている人は誰でも覚えています。";
 
 /* (No Commment) */
 "Yes" = "[はい]";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* No comment provided by engineer. */
 "fourth word" = "4 番目の単語";
+
+/* (No Commment) */
+"from" = "差出人";
 
 /* (No Commment) */
 "iOS Support Request" = "iOS のサポート リクエスト";

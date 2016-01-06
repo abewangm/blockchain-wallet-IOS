@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld dakika önce";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(örneğin, passport hesabınızla)";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* En az 10 karakter";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "1 dakika önce";
+
+/* (No Commment) */
+"2-Step Enabled" = "2-adım etkin";
+
+/* (No Commment) */
+"2-Step has been disabled." = "2-adım devre dışı bırakıldı.";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "2-adım SMS için etkinleştirildi.";
 
 /* (No Commment) */
 "2-step Verification" = "2-adım doğrulama";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "Ücret ayarlamak";
 
 /* (No Commment) */
+"Allow" = "İzin ver";
+
+/* (No Commment) */
+"Allowed" = "İzin verilen";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Bir miktar toz eşik (%lld Satoshi) olması gerekir";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "PIN kodunuzu uzak sunucuyla doğrulanırken bir hata oluştu. Çevrimdışı olabilir veya Blockchain sorunlar yaşıyor. Doğrulama yeniden deneyin veya bunun yerine parolanızı el ile girmek ister misin?";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "2-adım doğrulama değiştirilirken bir hata oluştu.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Cüzdanını yüklenirken hatayla karşılaşıldı. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen uygulamayı kapatın ve daha sonra yeniden deneyin veya aygıtınızı yeniden eşleyin.";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "Herhangi bir adres";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "Saklamak için ihtiyacın olan her şeyi harcamak ve senin bitcoin almak";
 
 /* (No Commment) */
 "Archive" = "Arşiv";
@@ -116,6 +128,9 @@
 "Backup Funds" = "Yedek fonlar";
 
 /* (No Commment) */
+"Backup Phrase" = "Yedek ifade";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Cüzdanını erişmeden önce cüzdanını kilidini açmak için kullanılacak bir PIN numarası seçiniz. Sıfırlamak veya ilk app kilidini olmadan değişti gibi bu PIN hatırlamak önemlidir.";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin ödeme talebi";
+
+/* (No Commment) */
+"Block" = "Blok";
+
+/* (No Commment) */
+"Block Tor" = "Blok Tor";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain kameraya erişilmesini sahip değil. Erişimi etkinleştirmek için aygıt ayarları gidin.";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var. Erişimi etkinleştirebilirsiniz gizlilik ayarları -> konum -> Konum servisleri ->";
+
+/* (No Commment) */
+"Blocked" = "Bloke";
 
 /* (No Commment) */
 "Camera Access Denied" = "Kamera erişim engellendi";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "App kapatmak";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "Son güvenlik için aşağıdaki adımları tamamlayın";
 
 /* (No Commment) */
 "Confirm Payment" = "Ödeme onaylamak";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Gelenek belgili tanımlık yol senin bitcoins Blockchain cüzdanında düzenlemek";
 
 /* (No Commment) */
+"Debug" = "Hata ayıklama";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Şifresi çözülmüş PIN parola uzunluğu 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "E-posta bildirimleri";
 
 /* (No Commment) */
+"Email Verified" = "E-posta doğrulanmadı";
+
+/* (No Commment) */
 "Empty response from server." = "Sunucudan boş yanıt.";
 
 /* (No Commment) */
 "Enable" = "Etkinleştir";
 
 /* (No Commment) */
+"Enable 2-Step" = "2-adım etkinleştirme";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "2-adım SMS için etkinleştirme";
+
+/* (No Commment) */
 "Enable Location Services" = "Konum servisleri etkinleştirme";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoins aldığınızda bir e-posta almak bildirimleri etkinleştirmek. Sadece adresleri etiketli ve ithal adresleri tetikleyici bildirimleri için uygundur.";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Cüzdanını erişimini Tor sağladığına ağının bir parçası olarak bilinen IP adresleri önlemek için bu seçeneği etkinleştirin. Tor ağı sık Blockchain kullanıcıların cüzdan erişmeye çalışan bilgisayar korsanları tarafından kullanılır.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Bu özellik etkinleştirildiğinde, m-cüzdana erişmek için bu aygıtta kayıtlı Touch kimliği parmak izi olan tüm kullanıcılar sağlayacaktır.";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "Ayarları güncelleştirilirken hata oluştu";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "Depolamak için gereken her şeyi harcamak ve senin bitcoin almak";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "M-cüzdan yüklenemedi";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "Google kimlik doğrulayıcısı";
+
+/* (No Commment) */
+"Hint Stored" = "Saklı ipucu";
 
 /* (No Commment) */
 "How would you like to pair?" = "Çiftine ne dersin?";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "Etiket daha az 18 karakter olmalıdır";
 
 /* (No Commment) */
+"Link Mobile" = "Bağlantı cep";
+
+/* (No Commment) */
 "Loading External Page" = "Dış sayfa yükleme";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "Tüccar harita";
+
+/* (No Commment) */
+"Merchant URL" = "Tüccar URL";
+
+/* (No Commment) */
+"Mobile Linked" = "Bağlantılı cep";
 
 /* (No Commment) */
 "Mobile Number" = "Cep telefonu numarası";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "Gönderilen ödeme!";
 
 /* (No Commment) */
+"Phrase Backed" = "Desteklenen ifade";
+
+/* (No Commment) */
+"Please Login" = "Lütfen giriş yapın";
+
+/* (No Commment) */
 "Please add an email address" = "Lütfen bir e-posta adresi eklemek";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "Doğrulama e-postasını yeniden gönder";
 
 /* (No Commment) */
+"Reset" = "Sıfırlama";
+
+/* (No Commment) */
 "Retry Validation" = "Doğrulama yeniden deneyin";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "Güvenlik";
 
 /* (No Commment) */
+"Security Center" = "Güvenlik Merkezi";
+
+/* (No Commment) */
 "Send" = "Gönder";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "%@ için gönderilen";
 
 /* (No Commment) */
+"Server URL" = "Sunucu URL'si";
+
+/* (No Commment) */
 "Settings" = "Ayarlar";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Girişleri imzalama";
+
+/* (No Commment) */
+"Store Hint" = "Mağaza ipucu";
 
 /* (No Commment) */
 "Stored" = "Depolanan";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "Destek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "M-cüzdan senkronizasyonu";
 
 /* (No Commment) */
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "Için: %1$@%2$@ toplam tutarı: %3$@ ücret: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "Tor istekleri";
+
+/* (No Commment) */
+"Tor blocked" = "Tor bloke";
+
+/* (No Commment) */
+"Tor requests allowed" = "İzin verilen Tor istek";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "Tor isteklerini şu anda izin verilir.";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "Tor istekleri şu anda engellenir.";
 
 /* (No Commment) */
 "Total Balance" = "Toplam bakiye";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "Doğrulayın";
 
 /* (No Commment) */
+"Verify Email" = "E-posta doğrulamak";
+
+/* (No Commment) */
 "Verifying" = "Doğrulama";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "M-cüzdan bilgi";
 
 /* (No Commment) */
+"Wallet JSON" = "M-cüzdan JSON";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "M-cüzdan başarıyla eşleştirilmiş.";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "M-cüzdan kurtarma ifade";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "M-cüzdan adres %@ para harcamak için kullanılabilir olması. Ancak özel anahtar bir kağıt cüzdan veya QR Code taranması gerekir. Özel anahtar şimdi inceden inceye gözden geçirmek ister misiniz?";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Uyarı: Senin hassas bilgileri m-cüzdan tanımlayıcısıdır. Bu kopyalama cüzdanını güvenliğini tehlikeye atabilir.";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "-Dibi takdirde sen istemek belgili tanımlık sezindirme teyit e-posta adresinize göndereceğiz.";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "Weak" = "Zayıf";
+
+/* (No Commment) */
+"WebSocket URL" = "WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "Hoş geldiniz";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "Blockchain cüzdan yeni sürümüne hoş geldiniz!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin adresi %@ adres defterine eklemek ister misiniz?";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Bir yaprak kağıda görünür ve güvenli bir yerde saklayın aynı sırada kelimeleri yazmak
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Kurtarma metninizi Not ve çok güvenli ve güvenli bir yerde saklayın. Kurtarma metninizi bilen herkes senin bitcoins erişimi olduğunu unutmayın.";
 
 /* (No Commment) */
 "Yes" = "Evet";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* No comment provided by engineer. */
 "fourth word" = "Dördüncü kelime";
+
+/* (No Commment) */
+"from" = "Kaynak";
 
 /* (No Commment) */
 "iOS Support Request" = "IOS destek talep";

@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekund nazaj";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(npr. z vaš potni list)";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* Najmanj 10 znakov";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "minutami";
+
+/* (No Commment) */
+"2-Step Enabled" = "2-korak omogočeno";
+
+/* (No Commment) */
+"2-Step has been disabled." = "2-korak je onemogočen.";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "2-korak je bila omogočena za SMS.";
 
 /* (No Commment) */
 "2-step Verification" = "Preverjanje v 2 korakih";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "Prilagodite pristojbina";
 
 /* (No Commment) */
+"Allow" = "Omogočajo";
+
+/* (No Commment) */
+"Allowed" = "Dovoljeno";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Znesek mora biti nad pragom prah (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Napaka pri preverjanju PIN kodo z oddaljenim strežnikom. Morda brez povezave ali Blockchain lahko doživlja težave. Želite ponoviti potrditev ali namesto ročno vnesite svoje geslo?";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "Spreminjanje preverjanje v 2 korakih je prišlo do napake.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Prišlo je do napake, nakladanje vaše denarnice. Morda brez povezave ali Blockchain je težave. Zaprite program in poskusite znova pozneje ali znova povežite napravo.";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "Katerikoli naslov";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "Kaj morate shraniti, preživijo in prejeli vaše bitcoin";
 
 /* (No Commment) */
 "Archive" = "Arhiv";
@@ -116,6 +128,9 @@
 "Backup Funds" = "Varnostno sredstev";
 
 /* (No Commment) */
+"Backup Phrase" = "Varnostno stavek";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Pred dostopom do vaše denarnice, izberite številka pin za odklepanje vaš listnica. To je pomembno, se spomnite tega pina, kot ni mogoče ponastaviti ali spremeniti brez prvi sprostitev app.";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Zahtevek za plačilo Bitcoin";
+
+/* (No Commment) */
+"Block" = "Blok";
+
+/* (No Commment) */
+"Block Tor" = "Blok Tor";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain nimajo dostopa do fotoaparata. Če želite omogočiti dostop, pojdite na vaš načrt nastavitve.";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain potrebuje Location Services omogočen dostop do vaše lokacije. Omogočite dostop v nastavitve -> zasebnost -> Lokacija -> lokacijske storitve";
+
+/* (No Commment) */
+"Blocked" = "Blokiran";
 
 /* (No Commment) */
 "Camera Access Denied" = "Camera dostop zavrnjen";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "Blizu App";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "Sledite preostalim navodilom spodaj za končni varnosti";
 
 /* (No Commment) */
 "Confirm Payment" = "Potrdi plačilo";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Prilagodite si organizirati vaš bitcoins v vaši denarnici Blockchain";
 
 /* (No Commment) */
+"Debug" = "Iskanje napak";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Dešifrirati geslo PIN dolžino 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "E-obvestila";
 
 /* (No Commment) */
+"Email Verified" = "Email preverjalec";
+
+/* (No Commment) */
 "Empty response from server." = "Prazen odgovor strežnika.";
 
 /* (No Commment) */
 "Enable" = "Omogoči";
 
 /* (No Commment) */
+"Enable 2-Step" = "Omogoči 2-korak";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "Omogoči 2-korak za SMS";
+
+/* (No Commment) */
 "Enable Location Services" = "Omogočite lokacijske storitve";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Omogoči prijave prejeli elektronsko sporočilo vsakokrat, ko prejmete bitcoins. Samo označeni naslovi in uvožene naslove so upravičeni, da sproži obvestila.";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Omogočite to možnost, da se prepreči IP naslovov, ki so znane kot del Tor anonimnosti omrežja dostop do vaše denarnice. Tor omrežje je pogosto uporabljajo hekerji poskušali dostop do denarnice Blockchain uporabnikov.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "To funkcijo bo omogočilo vsem uporabnikom dotik ID prstni odtis registriran na to napravo za dostop do vaše denarnice.";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "Napaka pri posodabljanju nastavitve";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "Vse, kar potrebujete za shranjevanje, preživijo in prejeli vaše bitcoin";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Pri nalaganju denarnice";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "Programa Google Authenticator";
+
+/* (No Commment) */
+"Hint Stored" = "Namig, shranjene";
 
 /* (No Commment) */
 "How would you like to pair?" = "Kako bi želeli par?";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "Oznaka mora imeti manj kot 18 znakov";
 
 /* (No Commment) */
+"Link Mobile" = "Link Mobile";
+
+/* (No Commment) */
 "Loading External Page" = "Nalaganje zunanjih strani";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "Trgovec zemljevid";
+
+/* (No Commment) */
+"Merchant URL" = "Trgovec URL";
+
+/* (No Commment) */
+"Mobile Linked" = "Mobile, povezane";
 
 /* (No Commment) */
 "Mobile Number" = "Številka mobilnega telefona";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "Plačilu, poslano!";
 
 /* (No Commment) */
+"Phrase Backed" = "Stavek, ki podpirajo";
+
+/* (No Commment) */
+"Please Login" = "Prosimo, prijavite se";
+
+/* (No Commment) */
 "Please add an email address" = "Dodajte e-poštni naslov";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "Poslati potrditveno sporočilo";
 
 /* (No Commment) */
+"Reset" = "Ponastavitev";
+
+/* (No Commment) */
 "Retry Validation" = "Poskusite znova izvesti preverjanje veljavnosti";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "Varnost";
 
 /* (No Commment) */
+"Security Center" = "Varnostno središče";
+
+/* (No Commment) */
 "Send" = "Pošlji";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "Poslati %@";
 
 /* (No Commment) */
+"Server URL" = "Spletni naslov strežnika";
+
+/* (No Commment) */
 "Settings" = "Nastavitve";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Podpis vložkov";
+
+/* (No Commment) */
+"Store Hint" = "Namig trgovina";
 
 /* (No Commment) */
 "Stored" = "Shranjeni";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "Podpora";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "Sinhroniziranje denarnice";
 
 /* (No Commment) */
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "Za: %1$@%2$@ skupni znesek: %3$@ pristojbina: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "Tor zahteve";
+
+/* (No Commment) */
+"Tor blocked" = "Tor blokiran";
+
+/* (No Commment) */
+"Tor requests allowed" = "Tor zahteve dovoljeno";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "Tor zahteve so trenutno dovoljeni.";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "Tor zahteve, ki so trenutno zadržani.";
 
 /* (No Commment) */
 "Total Balance" = "Skupni saldo";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "Preverite, ali";
 
 /* (No Commment) */
+"Verify Email" = "Potrdi e-naslov";
+
+/* (No Commment) */
 "Verifying" = "Preverjanje";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "Denarnica informacije";
 
 /* (No Commment) */
+"Wallet JSON" = "Denarnica JSON";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "Denarnica seznanjene uspešno.";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "Denarnica regres stavek";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Denarnica naslov %@ je na voljo za porabo sredstev. Pa zasebni ključ je treba skenirati iz papirja denarnice ali QR kodo. Ali želite zdaj skandirati zasebni ključ?";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Opozorilo: Vaše denarnice identifikator je občutljivih informacij. Kopirate lahko ogrozijo varnost vaše denarnice.";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "Namig bomo poslali potrjeno email ogovor v primeru, da to zahtevate.";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico za vas";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* (No Commment) */
 "Weak" = "Šibka";
+
+/* (No Commment) */
+"WebSocket URL" = "WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "dobrodošli";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "Dobrodošli na novo različico Blockchain denarnice!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 "Would you like to add the bitcoin address %@ to your address book?" = "Ali želite dodati bitcoin naslov %@ v vaš adresar?";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Napišite besede v takem zaporedju, prikazani na list papirja, in to nekje varno shranjevanje
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Zapišite vaše okrevanje besede in ga hranite nekje zelo varen in zanesljiv. Ne pozabite, da kdor pozna vaše besede regres has postranski v vaš bitcoins.";
 
 /* (No Commment) */
 "Yes" = "da";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* No comment provided by engineer. */
 "fourth word" = "četrti besedo";
+
+/* (No Commment) */
+"from" = "iz";
 
 /* (No Commment) */
 "iOS Support Request" = "iOS podporo zahteva";

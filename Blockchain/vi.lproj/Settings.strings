@@ -1,3 +1,12 @@
+/* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
+"0zs-bt-hEl.text" = "Cửa hàng gợi ý";
+
+/* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
+"8Ha-3e-Nqx.text" = "Xác minh Email";
+
+/* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
+"8Zy-R2-HoW.text" = "Xác minh hai bước";
+
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
 "Ii6-KE-x0B.placeholder" = "Xác nhận mật khẩu mới";
 
@@ -6,6 +15,30 @@
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
 "VKs-B5-luJ.placeholder" = "Mật khẩu mới";
+
+/* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
+"WVd-f2-ZLG.text" = "Cụm từ sao lưu";
+
+/* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
+"Wor-ZR-sPS.text" = "Khối TORs";
+
+/* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
+"bFL-5O-fcl.text" = "Bảo vệ ví của bạn khỏi truy cập trái phép bằng cách bật xác minh 2 bước. Bạn có thể chọn sử dụng một ứng dụng miễn phí hoặc số điện thoại di động của bạn để bảo đảm chi tiêu của bạn. Mã này sẽ được yêu cầu khi bạn cố gắng truy cập vào ví của bạn.";
+
+/* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
+"f52-8F-scW.text" = "Điện thoại di động liên kết";
+
+/* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
+"g8G-4j-qpJ.normalTitle" = "Sử dụng số điện thoại di động của bạn";
+
+/* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
+"gIP-mj-Hh2.text" = "Sử 2 bước";
+
+/* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
+"u5x-QP-acV.text" = "Hoàn thành các bước dưới đây để cuối cùng an ninh";
+
+/* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
+"wnC-Xd-1Er.title" = "Trung tâm bảo mật";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
 "zd5-DZ-hsS.placeholder" = "Mật khẩu";
