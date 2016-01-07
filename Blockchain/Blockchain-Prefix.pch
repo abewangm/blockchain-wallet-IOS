@@ -15,6 +15,7 @@
 #endif
 
 #define HD_ENABLED 1
+#define ALLOW_URL_DEBUGGING 1
 
 #pragma mark - Colors
 

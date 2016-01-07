@@ -10,6 +10,11 @@
 #import "Blockchain-Swift.h"
 #import "AppDelegate.h"
 
+const int rowWalletJSON = 0;
+const int rowServerURL = 1;
+const int rowWebsocketURL = 2;
+const int rowMerchantURL = 3;
+
 @interface DebugTableViewController ()
 @property (nonatomic) NSDictionary *filteredWalletJSON;
 @end
@@ -76,12 +81,18 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+#ifdef ALLOW_URL_DEBUGGING
     return 4;
+#else
+    return 1;
+#endif
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,29 +100,29 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     
     switch (indexPath.row) {
-        case 0: {
+        case rowWalletJSON: {
+            cell.textLabel.text = BC_STRING_WALLET_JSON;
+            cell.detailTextLabel.text = self.filteredWalletJSON == nil ? BC_STRING_PLEASE_LOGIN : nil;
+            cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+            cell.accessoryType = self.filteredWalletJSON == nil ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+            break;
+        }
+        case rowServerURL: {
             cell.textLabel.text = BC_STRING_SERVER_URL;
             cell.detailTextLabel.text =  [app serverURL];
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
-        case 1: {
+        case rowWebsocketURL: {
             cell.textLabel.text = BC_STRING_WEBSOCKET_URL;
             cell.detailTextLabel.text = [app webSocketURL];
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
-        case 2: {
+        case rowMerchantURL: {
             cell.textLabel.text = BC_STRING_MERCHANT_URL;
             cell.detailTextLabel.text = [app merchantURL];
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-            break;
-        }
-        case 3: {
-            cell.textLabel.text = BC_STRING_WALLET_JSON;
-            cell.detailTextLabel.text = self.filteredWalletJSON == nil ? BC_STRING_PLEASE_LOGIN : nil;
-            cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-            cell.accessoryType = self.filteredWalletJSON == nil ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
@@ -126,20 +137,20 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
-        case 0:
-            [self alertToChangeURLName:BC_STRING_SERVER_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL currentURL:[app serverURL]];
-            break;
-        case 1:
-            [self alertToChangeURLName:BC_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:[app webSocketURL]];
-            break;
-        case 2:
-            [self alertToChangeURLName:BC_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:[app merchantURL]];
-            break;
-        case 3: {
+        case rowWalletJSON: {
             if (self.filteredWalletJSON) {
                 [self showFilteredWalletJSON];
             }
+            break;
         }
+        case rowServerURL:
+            [self alertToChangeURLName:BC_STRING_SERVER_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL currentURL:[app serverURL]];
+            break;
+        case rowWebsocketURL:
+            [self alertToChangeURLName:BC_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:[app webSocketURL]];
+            break;
+        case rowMerchantURL:
+            [self alertToChangeURLName:BC_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:[app merchantURL]];
             break;
         default:
             break;
