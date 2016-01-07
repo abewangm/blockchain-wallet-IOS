@@ -177,18 +177,17 @@
 - (IBAction)accountSettingsClicked:(id)sender;
 - (IBAction)securityCenterClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
-- (IBAction)changePINClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;
 - (BOOL)isPinSet;
 - (void)validatePINOptionally;
+- (void)changePIN;
 
 - (BOOL)checkInternetConnection;
 
 - (NSString *)checkForTouchIDAvailablility;
-- (void)disabledTouchID;
 
 - (AVCaptureDeviceInput *)getCaptureDeviceInput;
 

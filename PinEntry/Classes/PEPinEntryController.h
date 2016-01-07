@@ -53,6 +53,7 @@
 @property (nonatomic, readwrite, weak) id <PEPinEntryControllerDelegate> pinDelegate;
 @property (nonatomic, readonly) BOOL verifyOnly;
 @property (nonatomic, readonly) BOOL verifyOptional;
+@property (nonatomic, readwrite) BOOL inSettings;
 @property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
 @property (nonatomic) UIView *longPressGestureView;
 

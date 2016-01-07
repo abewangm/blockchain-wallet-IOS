@@ -41,12 +41,16 @@ const int securityPasswordHint = 1;
 const int securityPasswordChange = 2;
 const int securityTorBlocking = 3;
 const int securityWalletRecoveryPhrase = 4;
+
+const int PINSection = 5;
+const int PINChangePIN = 0;
 #ifdef TOUCH_ID_ENABLED
-const int securityTouchID = 5;
+const int PINTouchID = 1;
 #else
-const int securityTouchID = -1;
+const int PINTouchID = -1;
 #endif
-const int aboutSection = 5;
+
+const int aboutSection = 6;
 const int aboutTermsOfService = 0;
 const int aboutPrivacyPolicy = 1;
 
@@ -67,8 +71,6 @@ const int aboutPrivacyPolicy = 1;
 @property (nonatomic) BOOL isEnablingTwoStepSMS;
 @property (nonatomic) BackupNavigationViewController *backupController;
 
-@property (nonatomic) int securityWalletRecoveryPhraseRowIndex;
-@property (nonatomic) int securityTouchIDRowIndex;
 @end
 
 @implementation SettingsTableViewController
@@ -76,9 +78,6 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.securityWalletRecoveryPhraseRowIndex = securityWalletRecoveryPhrase;
-    self.securityTouchIDRowIndex = securityTouchID;
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
     [self updateEmailAndMobileStrings];
@@ -116,7 +115,7 @@ const int aboutPrivacyPolicy = 1;
 {
     [super viewDidAppear:animated];
 #ifdef TOUCH_ID_ENABLED
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.securityTouchIDRowIndex inSection:securitySection];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:PINTouchID inSection:PINSection];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 #endif
     [self.tableView reloadData];
@@ -478,7 +477,7 @@ const int aboutPrivacyPolicy = 1;
         
         UIAlertController *alertTouchIDError = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorString preferredStyle:UIAlertControllerStyleAlert];
         [alertTouchIDError addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.securityTouchIDRowIndex inSection:securitySection];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:PINTouchID inSection:PINSection];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }]];
         [self presentViewController:alertTouchIDError animated:YES completion:nil];
@@ -492,7 +491,7 @@ const int aboutPrivacyPolicy = 1;
     if (!touchIDEnabled == YES) {
         UIAlertController *alertForTogglingTouchID = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN message:BC_STRING_TOUCH_ID_WARNING preferredStyle:UIAlertControllerStyleAlert];
         [alertForTogglingTouchID addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.securityTouchIDRowIndex inSection:securitySection];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:PINTouchID inSection:PINSection];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }]];
         [alertForTogglingTouchID addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -500,7 +499,6 @@ const int aboutPrivacyPolicy = 1;
         }]];
         [self presentViewController:alertForTogglingTouchID animated:YES completion:nil];
     } else {
-        [app disabledTouchID];
         [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
     }
 }
@@ -958,6 +956,8 @@ const int aboutPrivacyPolicy = 1;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR object:nil];
 }
 
+#pragma mark - Wallet Recovery Phrase
+
 - (void)showBackup
 {
     if (!self.backupController) {
@@ -1157,9 +1157,18 @@ const int aboutPrivacyPolicy = 1;
             } else if (indexPath.row == securityTorBlocking) {
                 [self changeTorBlockingTapped];
                 return;
-            } else if (indexPath.row == self.securityWalletRecoveryPhraseRowIndex) {
+            } else if (indexPath.row == securityWalletRecoveryPhrase) {
                 [self showBackup];
                 return;
+            }
+            return;
+        }
+        case PINSection: {
+            switch (indexPath.row) {
+                case PINChangePIN: {
+                    [app changePIN];
+                    return;
+                }
             }
             return;
         }
@@ -1181,7 +1190,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return 7;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -1191,24 +1200,8 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionEmailFooter: return 1;
         case preferencesSectionNotificationsFooter: return 2;
         case preferencesSectionEnd: return 3;
-        case securitySection: {
-            if (securityTouchID < 0) {
-                if (app.wallet.didUpgradeToHd) {
-                    return 5;
-                } else {
-                    return 4;
-                }
-            } else {
-                if (app.wallet.didUpgradeToHd) {
-                    return 6;
-                } else {
-                    // switch the row indexes to show only TouchID
-                    self.securityWalletRecoveryPhraseRowIndex = securityTouchID;
-                    self.securityTouchIDRowIndex = securityWalletRecoveryPhrase;
-                    return 5;
-                }
-            }
-        }
+        case securitySection: return [app.wallet didUpgradeToHd] ? 5 : 4;
+        case PINSection: return PINTouchID < 0 ? 1 : 2;
         case aboutSection: return 2;
         default: return 0;
     }
@@ -1222,6 +1215,7 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionNotificationsFooter: return nil;
         case preferencesSectionEnd: return nil;
         case securitySection: return BC_STRING_SETTINGS_SECURITY;
+        case PINSection: return BC_STRING_PIN;
         case aboutSection: return BC_STRING_SETTINGS_ABOUT;
         default: return nil;
     }
@@ -1386,7 +1380,7 @@ const int aboutPrivacyPolicy = 1;
                     }
                     return cell;
                 }
-            else if (indexPath.row == self.securityWalletRecoveryPhraseRowIndex) {
+            else if (indexPath.row == securityWalletRecoveryPhrase) {
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
                     cell.textLabel.text = BC_STRING_WALLET_RECOVERY_PHRASE;
                     if (app.wallet.isRecoveryPhraseVerified) {
@@ -1399,19 +1393,26 @@ const int aboutPrivacyPolicy = 1;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return cell;
                 }
-            else if (indexPath.row == self.securityTouchIDRowIndex) {
-                    cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    cell.textLabel.font = [SettingsTableViewController fontForCell];
-                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
-                    UISwitch *switchForTouchID = [[UISwitch alloc] init];
-                    BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
-                    switchForTouchID.on = touchIDEnabled;
-                    [switchForTouchID addTarget:self action:@selector(switchTouchIDTapped) forControlEvents:UIControlEventTouchUpInside];
-                    cell.accessoryView = switchForTouchID;
-                    return cell;
-                }
+        }
+        case PINSection: {
+            if (indexPath.row == PINChangePIN) {
+                cell.textLabel.text = BC_STRING_CHANGE_PIN;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                return cell;
+            }
+            if (indexPath.row == PINTouchID) {
+                cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.font = [SettingsTableViewController fontForCell];
+                cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
+                UISwitch *switchForTouchID = [[UISwitch alloc] init];
+                BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+                switchForTouchID.on = touchIDEnabled;
+                [switchForTouchID addTarget:self action:@selector(switchTouchIDTapped) forControlEvents:UIControlEventTouchUpInside];
+                cell.accessoryView = switchForTouchID;
+                return cell;
+            }
         }
         case aboutSection: {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

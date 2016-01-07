@@ -415,3 +415,4 @@
 #define BC_STRING_RESET NSLocalizedString(@"Reset", nil)
 #define BC_STRING_FROM_LOWERCASE NSLocalizedString(@"from", nil)
 #define BC_STRING_WELCOME NSLocalizedString(@"Welcome", nil)
+#define BC_STRING_PIN NSLocalizedString(@"PIN", nil)

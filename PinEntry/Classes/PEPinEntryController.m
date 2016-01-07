@@ -81,7 +81,7 @@ static PEViewController *VerifyController()
 
 @implementation PEPinEntryController
 
-@synthesize pinDelegate, verifyOnly, verifyOptional;
+@synthesize pinDelegate, verifyOnly, verifyOptional, inSettings;
 
 + (PEPinEntryController *)pinVerifyController
 {
@@ -105,6 +105,7 @@ static PEViewController *VerifyController()
     n->pinController = c;
     n->pinStage = PS_VERIFY;
     n->verifyOptional = YES;
+    n->inSettings = YES;
     return n;
 }
 
@@ -119,6 +120,7 @@ static PEViewController *VerifyController()
     n->pinController = c;
 	n->pinStage = PS_VERIFY;
 	n->verifyOnly = NO;
+    n->inSettings = YES;
 	return n;
 }
 
