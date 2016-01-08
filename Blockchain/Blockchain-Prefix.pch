@@ -139,9 +139,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info"
 #define DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS @"/api/merchant"
 
-#define DEFAULT_HTML_WEBSOCKET_URL @"wss://*.blockchain.info"
-#define DEFAULT_HTML_WALLET_SERVER_URL @"https://blockchain.info"
-#define DEFAULT_HTML_PREFIX_WALLET_SERVER_URL @"https://*.blockchain.info"
+#define HTML_DEFAULT_WEBSOCKET_URL @"wss://*.blockchain.info"
+#define HTML_DEFAULT_WALLET_SERVER_URL @"https://blockchain.info"
+#define HTML_DEFAULT_PREFIX_WALLET_SERVER_URL @"https://*.blockchain.info"
+
+#define HTML_PLACEHOLDER_URL_PREFIX_WALLET_SERVER @"prefixWalletServer"
+#define HTML_PLACEHOLDER_URL_WALLET_SERVER @"walletServer"
+#define HTML_PLACEHOLDER_URL_WEB_SOCKET_SERVER @"webSocketServer"
 
 #define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
 #define ZEROBLOCK_TITLE @"ZeroBlock"

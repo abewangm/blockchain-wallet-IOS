@@ -97,15 +97,21 @@
     NSString *walletHTML = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"wallet-ios" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] != nil) {
-        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:DEFAULT_HTML_WEBSOCKET_URL withString:[app webSocketURL]];
+        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_WEB_SOCKET_SERVER withString:[app webSocketURL]];
+    } else {
+        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_WEB_SOCKET_SERVER withString:HTML_DEFAULT_WEBSOCKET_URL];
     }
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] != nil) {
-        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:DEFAULT_HTML_WALLET_SERVER_URL withString:[app serverURL]];
+        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_WALLET_SERVER withString:[app serverURL]];
+    } else {
+        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_WALLET_SERVER withString:HTML_DEFAULT_WALLET_SERVER_URL];
     }
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL] != nil) {
-        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:DEFAULT_HTML_PREFIX_WALLET_SERVER_URL withString:[app merchantURL]];
+        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_PREFIX_WALLET_SERVER withString:[app merchantURL]];
+    } else {
+        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_PREFIX_WALLET_SERVER withString:HTML_DEFAULT_PREFIX_WALLET_SERVER_URL];
     }
     
     NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];
