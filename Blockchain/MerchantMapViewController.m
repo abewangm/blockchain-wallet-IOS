@@ -144,8 +144,7 @@
 - (void)updateDisplayedMerchants
 {
     // Send approximate coordinates for merchant lookup
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", [app merchantURL], DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[app merchantURL]]];
     
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:self.merchantLocationNetworkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError) {
