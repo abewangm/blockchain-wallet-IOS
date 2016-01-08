@@ -576,6 +576,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self.loginTimer invalidate];
   
+    [_window.rootViewController dismissViewControllerAnimated:NO completion:nil];
+    
     // Close all modals
     [app closeAllModals];
     
@@ -1737,7 +1739,7 @@ void (^secondPasswordSuccess)(NSString *);
     if (![self checkInternetConnection]) {
         return;
     }
-        
+    
     [app.wallet apiGetPINValue:pinKey pin:pin];
     
     self.pinViewControllerCallback = callback;
