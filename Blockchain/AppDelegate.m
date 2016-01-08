@@ -2408,17 +2408,29 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (NSString *)serverURL
 {
+#ifdef ENABLE_DEBUG_MENU
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? DEFAULT_WALLET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+#else
+    return DEFAULT_WALLET_SERVER;
+#endif
 }
 
 - (NSString *)webSocketURL
 {
+#ifdef ENABLE_DEBUG_MENU
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] == nil ? DEFAULT_WEBSOCKET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+#else 
+    return DEFAULT_WEBSOCKET_SERVER;
+#endif
 }
 
 - (NSString *)merchantURL
 {
+#ifdef ENABLE_DEBUG_MENU
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL] == nil ? DEFAULT_MERCHANT_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
+#else
+    return DEFAULT_MERCHANT_URL;
+#endif
 }
 
 @end
