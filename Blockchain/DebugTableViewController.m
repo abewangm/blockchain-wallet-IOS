@@ -88,11 +88,7 @@ const int rowMerchantURL = 3;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#ifdef ALLOW_URL_DEBUGGING
     return 4;
-#else
-    return 1;
-#endif
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

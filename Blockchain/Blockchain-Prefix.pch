@@ -15,7 +15,7 @@
 #endif
 
 #define HD_ENABLED 1
-#define ALLOW_URL_DEBUGGING 1
+#define ALLOW_DEBUGGING 1
 
 #pragma mark - Colors
 
@@ -139,9 +139,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info"
 #define DEFAULT_MERCHANT_URL_ENDPOINT_NEARBY_MERCHANTS @"/api/merchant"
 
-#define DEFAULT_HTML_WEBSOCKET_URL @"wss://*.blockchain.info"
-#define DEFAULT_HTML_WALLET_SERVER_URL @"https://blockchain.info"
-#define DEFAULT_HTML_PREFIX_WALLET_SERVER_URL @"https://*.blockchain.info"
+#define HTML_DEFAULT_WEBSOCKET_URL @"wss://*.blockchain.info"
+#define HTML_DEFAULT_WALLET_SERVER_URL @"https://blockchain.info"
+#define HTML_DEFAULT_PREFIX_WALLET_SERVER_URL @"https://*.blockchain.info"
+#define HTML_DEFAULT_SHAREDCOIN_URL @"https://api.sharedcoin.com"
+
+#define HTML_PLACEHOLDER_CONNECT_SRC @"PLACEHOLDER_CONNECT_SRC"
 
 #define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
 #define ZEROBLOCK_TITLE @"ZeroBlock"
@@ -288,7 +291,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define RECOVERY_ACCOUNT_DEFAULT_NUMBER 10
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 
-#define DURATION_LONG_PRESS_GESTURE_DEBUG 2.0
+#define DURATION_LONG_PRESS_GESTURE_DEBUG 0.0
 #define DEBUG_PRESENTER_WELCOME_VIEW 0
 #define DEBUG_PRESENTER_PIN_VERIFY 1
 #define DEBUG_PRESENTER_SETTINGS_ABOUT 2
