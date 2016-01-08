@@ -97,7 +97,7 @@
     NSString *walletHTML = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"wallet-ios" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
     
     NSMutableArray *allowedURLs = [[NSMutableArray alloc] init];
-#ifdef ALLOW_DEBUGGING
+#ifdef ENABLE_DEBUG_MENU
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] != nil) {
         [allowedURLs addObject:[app webSocketURL]];
     } else {
@@ -423,7 +423,7 @@
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
-#ifdef HD_ENABLED
+#ifdef ENABLE_HD
     [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET, nil];
 #else
     // make a legacy wallet
@@ -1168,7 +1168,7 @@
         return;
     }
     
-#ifndef HD_ENABLED
+#ifndef ENABLE_HD
     if ([self hasAccount]) {
         // Prevent email authorization message from appearing
         return;
@@ -1257,7 +1257,7 @@
 {
     DLog(@"did_decrypt");
     
-#ifndef HD_ENABLED
+#ifndef ENABLE_HD
     if ([self hasAccount]) {
         uint64_t walletVersion = [[self.webView executeJSSynchronous:@"APP_VERSION"] longLongValue];
         [app standardNotify:[[NSString alloc] initWithFormat:BC_STRING_WALLET_VERSION_NOT_SUPPORTED, walletVersion]];
@@ -1293,7 +1293,7 @@
     
     self.isNew = NO;
     
-#ifndef HD_ENABLED
+#ifndef ENABLE_HD
     if ([self hasAccount]) {
         // prevent the PIN screen from loading
         return;
@@ -1720,7 +1720,7 @@
 
 - (Boolean)didUpgradeToHd
 {
-#ifdef HD_ENABLED
+#ifdef ENABLE_HD
     if (![self isInitialized]) {
         return NO;
     }

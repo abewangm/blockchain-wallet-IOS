@@ -36,7 +36,7 @@ static NSString *getVersionLabelString()
     NSString *build = infoDictionary[@"CFBundleVersion"];
     NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
 #ifdef DEBUG
-    #ifdef HD_ENABLED
+    #ifdef ENABLE_HD
         return [NSString stringWithFormat:@"%@ (v3)", versionAndBuild];
     #else
         return [NSString stringWithFormat:@"%@ (v2)", versionAndBuild];
@@ -203,7 +203,7 @@ static PEViewController *VerifyController()
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-#ifdef ALLOW_DEBUGGING
+#ifdef ENABLE_DEBUG_MENU
     if (self.verifyOnly) {
         self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         self.longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;

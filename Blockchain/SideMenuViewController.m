@@ -346,7 +346,7 @@ int accountEntries = 0;
             [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
             cell.selectedBackgroundView = v;
         }
-#ifdef HD_ENABLED
+#ifdef ENABLE_HD
         NSString *upgradeOrSecurityCenterTitle;
         if (!app.wallet.didUpgradeToHd) {
             upgradeOrSecurityCenterTitle = BC_STRING_UPGRADE_TO_V3;
@@ -467,7 +467,7 @@ int accountEntries = 0;
             [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
             
             // No separator for last entry of each section
-#ifdef HD_ENABLED
+#ifdef ENABLE_HD
             if (indexPath.row == menuEntries - 1) {
                 [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
             }

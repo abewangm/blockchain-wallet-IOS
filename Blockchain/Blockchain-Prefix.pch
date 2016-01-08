@@ -14,8 +14,8 @@
     #import "LocalizationConstants.h"
 #endif
 
-#define HD_ENABLED 1
-#define ALLOW_DEBUGGING 1
+#define ENABLE_HD 1
+#define ENABLE_DEBUG_MENU 1
 
 #pragma mark - Colors
 
@@ -256,7 +256,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define MENU_CELL_INDEX_MERCHANT 2
 #define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 3
 #define MENU_CELL_INDEX_SUPPORT 4
-#ifdef HD_ENABLED
+#ifdef ENABLE_HD
 #define MENU_CELL_INDEX_UPGRADE 0
 #define MENU_CELL_INDEX_LOGOUT 5
 #else

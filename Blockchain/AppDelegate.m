@@ -1983,7 +1983,7 @@ void (^secondPasswordSuccess)(NSString *);
         [self closePINModal:YES];
         
         UIAlertView *alertViewSavedPINSuccessfully = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
-#ifdef HD_ENABLED
+#ifdef ENABLE_HD
         
         alertViewSavedPINSuccessfully.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN]) {
