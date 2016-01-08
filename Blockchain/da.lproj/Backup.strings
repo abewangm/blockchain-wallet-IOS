@@ -19,7 +19,7 @@
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
 "9A7-TT-PzN.title" = "Backup midler";
 
-/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
 "9Hu-uO-gJl.text" = "Du har endnu ikke sikkerhedskopieret dine penge";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
@@ -50,9 +50,6 @@ Du kan bringe din tegnebog sikkerhed";
 /* (No Commment) */
 "NaV-Bk-o1b.text" = "Sådan gendannes din tegnebog";
 
-/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
-"OJg-MB-UId.title" = "Luk";
-
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
 "Okr-VE-yvm.text" = "Unicorn";
 
@@ -62,7 +59,7 @@ Du kan bringe din tegnebog sikkerhed";
 /* (No Commment) */
 "T4p-mz-siC.normalTitle" = "KONTROLLERE BACKUP";
 
-/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+/* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
 "UCL-i9-UDp.text" = "Skrive ord i præcis den rækkefølge de vises på et ark papir, og opbevar den et sikkert sted
 ";
 
@@ -75,8 +72,8 @@ Du kan bringe din tegnebog sikkerhed";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Næste ord";
 
-/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Sikkerhedskopiering af dine midler er let og sikrer du ikke mister adgang til din bitcoins, selv om vores service bliver utilgængelig.";
+/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Sikkerhedskopiering af dine midler sikrer, at du ikke mister adgang til din bitcoins (undtagen importerede adresser), selv hvis du glemmer din adgangskode, eller hvis vores tjeneste ikke er tilgængelig.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "tredje ord";

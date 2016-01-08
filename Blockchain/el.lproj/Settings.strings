@@ -1,3 +1,12 @@
+/* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
+"0zs-bt-hEl.text" = "Κατάστημα υπόδειξη";
+
+/* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
+"8Ha-3e-Nqx.text" = "Επιβεβαιώστε ηλεκτρονικό ταχυδρομείο";
+
+/* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
+"8Zy-R2-HoW.text" = "Επαλήθευσης σε δύο βήματα";
+
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
 "Ii6-KE-x0B.placeholder" = "Επιβεβαιώστε το νέο κωδικό πρόσβασης";
 
@@ -6,6 +15,30 @@
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
 "VKs-B5-luJ.placeholder" = "Νέο κωδικό πρόσβασης";
+
+/* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
+"WVd-f2-ZLG.text" = "Εφεδρική φράση";
+
+/* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
+"Wor-ZR-sPS.text" = "TORs μπλοκ";
+
+/* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
+"bFL-5O-fcl.text" = "Προστατέψτε το πορτοφόλι σας από μη εξουσιοδοτημένη πρόσβαση, ενεργοποιώντας την επαλήθευση σε 2 βήματα. Μπορείτε να επιλέξετε να χρησιμοποιήσετε μια ελεύθερη app ή το αριθμό τηλεφώνου για να εξασφαλίσει το πορτοφόλι σας. Αυτός ο κώδικας θα ζητηθεί κατά την προσπάθειά σας να αποκτήσετε πρόσβαση σας πορτοφόλι.";
+
+/* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
+"f52-8F-scW.text" = "Κινητό σύνδεση";
+
+/* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
+"g8G-4j-qpJ.normalTitle" = "Χρησιμοποιήστε τον αριθμό κινητού τηλεφώνου σας";
+
+/* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
+"gIP-mj-Hh2.text" = "Επιτρέψει 2-βήμα";
+
+/* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
+"u5x-QP-acV.text" = "Ολοκληρώστε τα παρακάτω βήματα για την απόλυτη ασφάλεια";
+
+/* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
+"wnC-Xd-1Er.title" = "Κέντρο ασφαλείας";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
 "zd5-DZ-hsS.placeholder" = "Κωδικός πρόσβασης";

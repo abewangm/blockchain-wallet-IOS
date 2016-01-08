@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekunder siden";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(f.eks med pass)";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* Minst 10 tegn";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "1 minutt siden";
+
+/* (No Commment) */
+"2-Step Enabled" = "2-trinns aktivert";
+
+/* (No Commment) */
+"2-Step has been disabled." = "2-step er deaktivert.";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "2-step er aktivert for SMS.";
 
 /* (No Commment) */
 "2-step Verification" = "2-trinns bekreftelse";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "Justere avgift";
 
 /* (No Commment) */
+"Allow" = "Tillate";
+
+/* (No Commment) */
+"Allowed" = "Tillatt";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Beløpet må være over støv terskelen (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Feil ved validering av PIN-kode med den eksterne serveren. Du kan være frakoblet eller Blockchain kan ha problemer. Ønsker du Prøv validering eller i stedet skrive inn passordet manuelt?";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "Det oppstod en feil under endring 2-Step bekreftelse.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Det oppstod en feil under lasting lommeboken. Du kan være frakoblet eller Blockchain opplever vanskeligheter. Vennligst lukk programmet og prøv på nytt senere eller nytt parer du enheten din.";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "En adresse";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "Alt du trenger å lagre, bruke og motta din bitcoin";
 
 /* (No Commment) */
 "Archive" = "Arkiv";
@@ -116,6 +128,9 @@
 "Backup Funds" = "Backup midler";
 
 /* (No Commment) */
+"Backup Phrase" = "Backup uttrykk";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Før du åpner lommeboken, Velg en PIN å bruke låse opp lommeboken. Det er viktig du husker denne PIN-koden som det ikke kan tilbakestille eller endres uten først låse opp programmet.";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin betalingsforespørsel";
+
+/* (No Commment) */
+"Block" = "Blokk";
+
+/* (No Commment) */
+"Block Tor" = "Blokkere Tor";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain har ikke tilgang til kameraet. For å aktivere tilgang, kan du gå til enheten innstillinger.";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain må stedstjenester aktivert for å få tilgang til din plassering. Kan du aktivere tilgang innstillinger -> Personvern -> plassering -> stedstjenester";
+
+/* (No Commment) */
+"Blocked" = "Blokkert";
 
 /* (No Commment) */
 "Camera Access Denied" = "Kameraet tilgang";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "Lukk programmet";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "Fullfør fremgangsmåten nedenfor for endelig sikkerhet";
 
 /* (No Commment) */
 "Confirm Payment" = "Bekreft betaling";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Tilpasse måten du organiserer dine bitcoins i lommeboken Blockchain";
 
 /* (No Commment) */
+"Debug" = "Feilsøke";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Dekrypterte PIN passordlengde 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "Beskjeder";
 
 /* (No Commment) */
+"Email Verified" = "Email bekreftet";
+
+/* (No Commment) */
 "Empty response from server." = "Tomme svar fra serveren.";
 
 /* (No Commment) */
 "Enable" = "Aktiverer";
 
 /* (No Commment) */
+"Enable 2-Step" = "Aktiver 2-trinns";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "Aktivere 2-Step for SMS";
+
+/* (No Commment) */
 "Enable Location Services" = "Aktiver posisjonstjenestene";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Aktivere varsler å motta en melding hver gang du mottar bitcoins. Bare merket adresser og importerte er adresser kvalifisert til å utløse varsling.";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Aktiver dette alternativet å hindre IP-adresser som er kjent for å være en del av Tor anonymiserer nettverket får tilgang til din lommebok. Tor-nettverket er ofte brukt av hackere som prøver å få tilgang til Blockchain brukernes lommebøker.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktivering av denne funksjonen vil tillate alle brukere med et registrert Touch ID fingeravtrykk på denne enheten for lommeboken.";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "Feil under oppdatering av innstillinger";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "Alt du trenger å lagre, bruke og motta din bitcoin";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Kan ikke laste inn lommebok";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "Google godkjenner";
+
+/* (No Commment) */
+"Hint Stored" = "Tips lagret";
 
 /* (No Commment) */
 "How would you like to pair?" = "Hvordan ville du like å par?";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "Etiketten må ha mindre enn 18 tegn";
 
 /* (No Commment) */
+"Link Mobile" = "Link Mobile";
+
+/* (No Commment) */
 "Loading External Page" = "Laste eksterne side";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "Kjøpmann kart";
+
+/* (No Commment) */
+"Merchant URL" = "Kjøpmann URL";
+
+/* (No Commment) */
+"Mobile Linked" = "Mobile knyttet";
 
 /* (No Commment) */
 "Mobile Number" = "Mobilnummer";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "Betaling sendt!";
 
 /* (No Commment) */
+"Phrase Backed" = "Uttrykket støttet";
+
+/* (No Commment) */
+"Please Login" = "Vennligst logg inn";
+
+/* (No Commment) */
 "Please add an email address" = "Legg til en e-postadresse";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "Send e-postbekreftelse";
 
 /* (No Commment) */
+"Reset" = "Tilbakestille";
+
+/* (No Commment) */
 "Retry Validation" = "Prøv validering";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "Sikkerhet";
 
 /* (No Commment) */
+"Security Center" = "Sikkerhetssenter";
+
+/* (No Commment) */
 "Send" = "Sende";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "Sendes til %@";
 
 /* (No Commment) */
+"Server URL" = "Server-URL";
+
+/* (No Commment) */
 "Settings" = "Innstillinger";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Signering innganger";
+
+/* (No Commment) */
+"Store Hint" = "Lagre Hint";
 
 /* (No Commment) */
 "Stored" = "Lagret";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "Støtte";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronisering lommebok";
 
 /* (No Commment) */
@@ -772,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Oppgraderingen tar bare et sekund og din bitcoins og historien vil være trygt. Her er hva er bedre: • oppdatert design og brukeropplevelse Robust sikkerhet center forbedret personvern • forenklet sikkerhetskopiering og gjenoppretting • tilpasset fondet ledelse to avanserte transaksjonstyper (bruke bare se adresser og delte mynt) ikke støttes i den nye versjonen på dette tidspunktet.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Oppgraderingen tar bare et sekund og din bitcoins og historien vil være trygt. Her er hva er bedre: \n\n• oppdatert design og brukeropplevelse\n• Robust sikkerhet center \n• forbedret personvern \n• forenklet sikkerhetskopiering og gjenoppretting \n• tilpasset fondet ledelse\n\nto avanserte transaksjonstyper (bruke bare se adresser og delte mynt) ikke støttes i den nye versjonen på dette tidspunktet.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Det oppstod et problem bekrefter din identitet.";
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "Til: %1$@%2$@ totalt beløp: %3$@ avgift: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "Tor-forespørsler";
+
+/* (No Commment) */
+"Tor blocked" = "Tor blokkert";
+
+/* (No Commment) */
+"Tor requests allowed" = "Tor-forespørsler tillatt";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "Tor forespørsler er nå tillatt.";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "Tor forespørsler er blokkert.";
 
 /* (No Commment) */
 "Total Balance" = "Total saldo";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "Kontroller";
 
 /* (No Commment) */
+"Verify Email" = "Kontrollere e-post";
+
+/* (No Commment) */
 "Verifying" = "Kontrollere";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "Lommebok informasjon";
 
 /* (No Commment) */
+"Wallet JSON" = "Lommebok JSON";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "Lommebok sammen med hell.";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "Lommebok utvinning uttrykk";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Lommebok adresse %@ har midler tilgjengelig for å bruke. Men privatnøkkelen må skannes fra en papir lommeboken eller QR-kode. Ønsker du å skanne privatnøkkelen nå?";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Advarsel: Din lommebok identifikator er sensitiv informasjon. Kopiere kan kompromittere sikkerheten til din lommebok.";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "Vi sender hintet til bekreftet e-postadressen din i tilfelle du sertifikatforespørselen.";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for deg";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 
 /* (No Commment) */
 "Weak" = "Svak";
+
+/* (No Commment) */
+"WebSocket URL" = "WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "velkommen";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "Velkommen til den nye versjonen av Blockchain lommeboken!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 "Would you like to add the bitcoin address %@ to your address book?" = "Ønsker du å legge bitcoin adresse %@ i adresseboken?";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Skrive ordene ned i rekkefølgen de vises på et papirark, og lagre den trygt sted
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Skriv ned din frisk uttrykk og holde den sted svært trygt og sikkert. Husk at alle som kjenner utvinning uttrykket har tilgang til din bitcoins.";
 
 /* (No Commment) */
 "Yes" = "ja";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 
 /* No comment provided by engineer. */
 "fourth word" = "fjerde ord";
+
+/* (No Commment) */
+"from" = "fra";
 
 /* (No Commment) */
 "iOS Support Request" = "iOS støtteanmodning";

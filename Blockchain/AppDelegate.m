@@ -293,14 +293,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showBusyViewWithLoadingText:(NSString *)text
 {
-#ifdef TOUCH_ID_ENABLED
-    if (self.pinEntryViewController.verifyOptional &&
+    if (self.pinEntryViewController.inSettings &&
         ![text isEqualToString:BC_STRING_LOADING_SYNCING_WALLET] &&
         ![text isEqualToString:BC_STRING_LOADING_VERIFYING]) {
         DLog(@"Verify optional PIN view is presented - will not update busy views unless verifying or syncing");
         return;
     }
-#endif
     
     [busyLabel setText:text];
     
@@ -311,14 +309,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)updateBusyViewLoadingText:(NSString *)text
 {
-#ifdef TOUCH_ID_ENABLED
-    if (self.pinEntryViewController.verifyOptional &&
+    if (self.pinEntryViewController.inSettings &&
         ![text isEqualToString:BC_STRING_LOADING_SYNCING_WALLET] &&
         ![text isEqualToString:BC_STRING_LOADING_VERIFYING]) {
         DLog(@"Verify optional PIN view is presented - will not update busy views unless verifying or syncing");
         return;
     }
-#endif
     
     if (busyView.alpha == 1.0) {
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
@@ -595,7 +591,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self closeSideMenu];
     
     // Close PIN Modal in case we are setting it (after login or when changing the PIN)
-    if (self.pinEntryViewController.verifyOnly == NO || self.pinEntryViewController.verifyOptional == NO) {
+    if (self.pinEntryViewController.verifyOnly == NO || self.pinEntryViewController.inSettings == NO) {
         [self closePINModal:NO];
     }
     
@@ -1382,26 +1378,6 @@ void (^secondPasswordSuccess)(NSString *);
     [app showSupport];
 }
 
-- (IBAction)changePINClicked:(id)sender
-{
-    [self changePIN];
-}
-
-- (void)changePIN
-{
-    PEPinEntryController *pinChangeController = [PEPinEntryController pinChangeController];
-    pinChangeController.pinDelegate = self;
-    pinChangeController.navigationBarHidden = YES;
-    
-    PEViewController *peViewController = (PEViewController *)[[pinChangeController viewControllers] objectAtIndex:0];
-    peViewController.cancelButton.hidden = NO;
-    
-    self.pinEntryViewController = pinChangeController;
-    
-    peViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self.tabViewController presentViewController:pinChangeController animated:YES completion:nil];
-}
-
 - (void)validatePINOptionally
 {
     PEPinEntryController *pinVerifyPINOptionalController = [PEPinEntryController pinVerifyControllerClosable];
@@ -1422,6 +1398,24 @@ void (^secondPasswordSuccess)(NSString *);
         [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
     
+    [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
+}
+
+- (void)changePIN
+{
+    PEPinEntryController *pinChangeController = [PEPinEntryController pinChangeController];
+    pinChangeController.pinDelegate = self;
+    pinChangeController.navigationBarHidden = YES;
+
+    PEViewController *peViewController = (PEViewController *)[[pinChangeController viewControllers] objectAtIndex:0];
+    peViewController.cancelButton.hidden = NO;
+    [peViewController.cancelButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.pinEntryViewController = pinChangeController;
+
+    peViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
+
     [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
 }
 
@@ -1697,11 +1691,6 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (void)disabledTouchID
-{
-    [self removePinFromKeychain];
-}
-
 - (void)initializeScannerInReceiveViewController
 {
     if (!_receiveViewController) {
@@ -1748,13 +1737,7 @@ void (^secondPasswordSuccess)(NSString *);
     if (![self checkInternetConnection]) {
         return;
     }
-    
-#ifdef TOUCH_ID_ENABLED
-    if (self.pinEntryViewController.verifyOptional) {
-        [self setPINInKeychain:pin];
-    }
-#endif
-    
+        
     [app.wallet apiGetPINValue:pinKey pin:pin];
     
     self.pinViewControllerCallback = callback;
@@ -1832,15 +1815,17 @@ void (^secondPasswordSuccess)(NSString *);
     }
     // Pin retry limit exceeded
     else if ([code intValue] == PIN_API_STATUS_CODE_DELETED) {
+        
         [app standardNotify:BC_STRING_PIN_VALIDATION_CANNOT_BE_COMPLETED];
         
         [self clearPin];
-        
+            
         [self logout];
-        
+            
         [self showPasswordModal];
         
         [self closePINModal:YES];
+
     }
     // Incorrect pin
     else if ([code integerValue] == PIN_API_STATUS_PIN_INCORRECT) {
@@ -1924,12 +1909,6 @@ void (^secondPasswordSuccess)(NSString *);
         self.pinViewControllerCallback(pinSuccess);
         self.pinViewControllerCallback = nil;
     }
-    
-#ifdef TOUCH_ID_ENABLED
-    if (!pinSuccess && self.pinEntryViewController.verifyOptional) {
-        [self removePinFromKeychain];
-    }
-#endif
 }
 
 - (void)didFailPutPin:(NSString*)value
@@ -1950,6 +1929,10 @@ void (^secondPasswordSuccess)(NSString *);
     self.pinEntryViewController.navigationBarHidden = YES;
     self.pinEntryViewController.pinDelegate = self;
     
+    if (self.isPinSet) {
+        self.pinEntryViewController.inSettings = YES;
+    }
+
     [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
 }
 
@@ -1974,6 +1957,10 @@ void (^secondPasswordSuccess)(NSString *);
     } else if ([key length] == 0 || [value length] == 0) {
         [self didFailPutPin:BC_STRING_PIN_RESPONSE_OBJECT_KEY_OR_VALUE_LENGTH_0];
     } else {
+        
+        if (self.pinEntryViewController.inSettings) {
+            [self showSettings];
+        }
         //Encrypt the wallet password with the random value
         NSString * encrypted = [app.wallet encrypt:app.wallet.password password:value pbkdf2_iterations:PIN_PBKDF2_ITERATIONS];
         
@@ -2065,6 +2052,8 @@ void (^secondPasswordSuccess)(NSString *);
     NSString * value = [[[NSData alloc] initWithBytes:data length:32] hexadecimalString];
     
     [app.wallet pinServerPutKeyOnPinServerServer:key value:value pin:pin];
+    
+    [self setPINInKeychain:pin];
 }
 
 - (void)pinEntryControllerDidCancel:(PEPinEntryController *)c
@@ -2089,13 +2078,6 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *pin = [[NSString alloc] initWithData:pinData encoding:NSUTF8StringEncoding];
     
     return pin.length == 0 ? nil : pin;
-}
-
-- (void)removePinFromKeychain
-{
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_PIN accessGroup:nil];
-    
-    [keychain resetKeychainItem];
 }
 
 #pragma mark - GUID

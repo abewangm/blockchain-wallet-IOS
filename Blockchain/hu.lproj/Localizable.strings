@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld másodperccel ezelőtt";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(pl. egy útlevelét)";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* Minimum 10 karakter";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "1 perc ezelőtt";
+
+/* (No Commment) */
+"2-Step Enabled" = "2-lépcsős engedélyezve";
+
+/* (No Commment) */
+"2-Step has been disabled." = "2 lépés le van tiltva.";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "2. lépés az SMS engedélyezve van.";
 
 /* (No Commment) */
 "2-step Verification" = "2. lépés ellenőrzés";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "Állítsa be a díj";
 
 /* (No Commment) */
+"Allow" = "Lehetővé teszi";
+
+/* (No Commment) */
+"Allowed" = "Engedélyezett";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Összeg felett por küszöbértékét (%lld Satoshi) kell";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Hiba történt a PIN-kódot a távoli szerverrel érvényesítése. Lehet, hogy kapcsolat nélküli vagy Blockchain lehet nehézségei. Szeretne újra érvényesítés, vagy inkább kézzel adja meg a jelszavát?";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "Hiba történt a változó 2. lépés ellenőrzés.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Hiba történt a berakodás a pénztárca. Lehet, hogy kapcsolat nélküli vagy Blockchain nehézségekkel. Zárja be az alkalmazást, és próbálkozzon újra később, vagy párosítsa a készüléket.";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "Bármilyen címet";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "Bármi kell tárolni, költeni, és kap a bitcoin";
 
 /* (No Commment) */
 "Archive" = "Archívum";
@@ -116,6 +128,9 @@
 "Backup Funds" = "Biztonsági alapok";
 
 /* (No Commment) */
+"Backup Phrase" = "Hát mondat";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Mielőtt hozzáférnének a pénztárca, válasszon egy pin-kódot használ-hoz kinyit a pénztárca. Fontos, hogy emlékszik a PIN-kód nem tud orrgazdaság vagy nélkül első felszabadítása a app.";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin kifizetési kérelem";
+
+/* (No Commment) */
+"Block" = "Blokk";
+
+/* (No Commment) */
+"Block Tor" = "Blokk Tor";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain nincs hozzáférés a kamera. Engedélyezi a hozzáférést, keresse fel az eszköz beállításait.";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain kell a helyszolgáltatása engedélyeznie a helyadataihoz való hozzáférést. Engedélyezheti a hozzáférést a beállítások -> Adatvédelem -> hely -> helymeghatározási szolgáltatások";
+
+/* (No Commment) */
+"Blocked" = "Blokkolt";
 
 /* (No Commment) */
 "Camera Access Denied" = "Kamera-hozzáférés megtagadva";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "Zárja be a App";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "Töltse ki az alábbi lépéseket az ultimate biztonsági";
 
 /* (No Commment) */
 "Confirm Payment" = "Erősítse fizetés";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Megszokott a út Ön szervez a bitcoins a Blockchain pénztárca";
 
 /* (No Commment) */
+"Debug" = "Debug";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Visszafejtett TÛS jelszó hossza 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "E-mail értesítések";
 
 /* (No Commment) */
+"Email Verified" = "Ellenőrzött e-mail";
+
+/* (No Commment) */
 "Empty response from server." = "Üres válasz a kiszolgálótól.";
 
 /* (No Commment) */
 "Enable" = "Engedélyezi a";
 
 /* (No Commment) */
+"Enable 2-Step" = "Engedélyezi a 2-lépcsős";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "2 lépés engedélyezi az SMS";
+
+/* (No Commment) */
 "Enable Location Services" = "Engedélyezi a helyszolgáltatása";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Engedélyezi az értesítéseket szeretne kapni egy e-mailt kapni bitcoins. Csak a jelölt címeket és importált címek jogosultak trigger értesítések.";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Engedélyezze ezt a beállítást, hogy megakadályozza az IP-címek, amelyekről ismert, hogy hozzáférjenek a pénztárca anonimizáló kiszûrése része. A Tor hálózat gyakran használt mellett bárdok kísérlet-hoz belépés Blockchain felhasználók pénztárca.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "A szolgáltatás engedélyezése lehetővé teszi, hogy minden felhasználó a regisztrált Touch ID ujjlenyomat ez berendezés-hoz belépés-hoz tárcátok.";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "Hiba a beállítások frissítése";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "Mindent meg kell tárolni, költeni, és kap a bitcoin";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Nem sikerült betölteni a pénztárca";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "A Google hitelesítő";
+
+/* (No Commment) */
+"Hint Stored" = "Tipp tárolt";
 
 /* (No Commment) */
 "How would you like to pair?" = "Hogyan szeretne pár?";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "Címke van kevesebb, mint 18 karakter";
 
 /* (No Commment) */
+"Link Mobile" = "Láncszem Mozgatható";
+
+/* (No Commment) */
 "Loading External Page" = "Külső oldal";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "Kereskedő megjelenítése";
+
+/* (No Commment) */
+"Merchant URL" = "Kereskedő URL";
+
+/* (No Commment) */
+"Mobile Linked" = "Kapcsolódó mobil";
 
 /* (No Commment) */
 "Mobile Number" = "Mobil szám";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "Fizetés küldött!";
 
 /* (No Commment) */
+"Phrase Backed" = "Kifejezés mögött";
+
+/* (No Commment) */
+"Please Login" = "Kérjük, jelentkezzen be";
+
+/* (No Commment) */
 "Please add an email address" = "Adjon meg egy e-mail címet";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "Megerősítésre szolgáló e-mail újraküldése";
 
 /* (No Commment) */
+"Reset" = "Reset";
+
+/* (No Commment) */
 "Retry Validation" = "Újra érvényesítés";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "Biztonsági";
 
 /* (No Commment) */
+"Security Center" = "A biztonsági központ";
+
+/* (No Commment) */
 "Send" = "Küldés";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "Küldött %@";
 
 /* (No Commment) */
+"Server URL" = "Kiszolgáló URL-címe";
+
+/* (No Commment) */
 "Settings" = "Beállítások";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Aláíró bemenetek";
+
+/* (No Commment) */
+"Store Hint" = "Bolt-tipp";
 
 /* (No Commment) */
 "Stored" = "Tárolt";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "Támogatás";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "Szinkronizál pénztárca";
 
 /* (No Commment) */
@@ -772,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: design • teljesen frissített és felhasználó tapasztalat • robusztus biztonsági központ • továbbfejlesztett adatvédelmi egyszerűsített biztonsági mentés és helyreállítás • szabott alapkezelő két speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: \n\n• design teljesen frissített és felhasználó tapasztalat \n• robusztus biztonsági központ \n• továbbfejlesztett adatvédelmi \n• egyszerűsített biztonsági mentés és helyreállítás \n• szabott alapkezelő \n\nkét speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "Címzett: %1$@%2$@ teljes összeg: %3$@ díj: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "Tor-kérések";
+
+/* (No Commment) */
+"Tor blocked" = "Tor blokkolva";
+
+/* (No Commment) */
+"Tor requests allowed" = "Tor engedélyezett kérések száma";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "Tor kérelmek jelenleg engedélyezett.";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "Tor kérelmek jelenleg zárolt.";
 
 /* (No Commment) */
 "Total Balance" = "Egyenleg összesen";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "Ellenőrizze";
 
 /* (No Commment) */
+"Verify Email" = "Ellenőrizze e-mailben";
+
+/* (No Commment) */
 "Verifying" = "Ellenőrzése";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "Mobiltárca-információk";
 
 /* (No Commment) */
+"Wallet JSON" = "Pénztárca JSON";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "Pénztárca sikeresen párosítva.";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "Pénztárca helyreállítási mondat";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Pénztárca cím %@ már rendelkezésre álló tölteni. Azonban a személyes kulcsot kell beolvasott egy papírt pénztárca vagy a QR-kód. Szeretne olvasni a titkos kulcs most?";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Figyelmeztetés: A mobiltárca azonosítója az érzékeny információ. Másolás ez veszélyezteti a biztonságát a pénztárca.";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "Küldünk a célzást a visszaigazolt e-mail cím abban az esetben Ön ezt kéri.";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztük az Ön számára";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "Weak" = "Gyenge";
+
+/* (No Commment) */
+"WebSocket URL" = "A WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "üdvözlet";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "Üdvözöljük az új változat a Blockchain pénztárca!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 "Would you like to add the bitcoin address %@ to your address book?" = "Hozzáadja a bitcoin cím %@ a címjegyzékhez?";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "A szavakat leírni a pontos sorrendben jelennek meg egy papírlapot, és tárolja biztonságos helyen
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Írja le a helyreállítási mondat, és eltartás ez valahol nagyon biztonságos és megbízható. Ne feledje, hogy bárki, aki tudja, hogy a helyreállítási mondat hozzáfér a bitcoins.";
 
 /* (No Commment) */
 "Yes" = "igen";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* No comment provided by engineer. */
 "fourth word" = "negyedik word";
+
+/* (No Commment) */
+"from" = "a";
 
 /* (No Commment) */
 "iOS Support Request" = "iOS támogatási igény";

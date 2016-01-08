@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld 秒前";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(例如，與您的護照)";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* 最低 10 個字元";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "1 分鐘前";
+
+/* (No Commment) */
+"2-Step Enabled" = "2 步啟用";
+
+/* (No Commment) */
+"2-Step has been disabled." = "2 步已被禁用。";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "2 步已啟用 SMS。";
 
 /* (No Commment) */
 "2-step Verification" = "2 步認證";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "調整費用";
 
 /* (No Commment) */
+"Allow" = "允許";
+
+/* (No Commment) */
+"Allowed" = "允許";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "金額必須高於灰塵閾值 (%lld 聰)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "驗證您的 PIN 代碼與遠端伺服器時發生錯誤。你可能處於離線狀態或 Blockchain 可能遇到的困難。要驗證重試或相反手動輸入您的密碼嗎?";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "變化 2 步驗證時出錯。";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "載入你的錢包時遇到錯誤。你可能處於離線狀態，或者 Blockchain 遇到困難。請關閉應用程式，請稍後再試或重新配對您的設備。";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "任何位址";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "什麼您需要存儲，花和接收您的比特幣";
 
 /* (No Commment) */
 "Archive" = "檔案";
@@ -116,6 +128,9 @@
 "Backup Funds" = "備份的資金";
 
 /* (No Commment) */
+"Backup Phrase" = "備份的短語";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "在訪問之前你的錢包，請選擇用來解鎖你的錢包 pin 號。它是重要的你還記得這個別針，因為它不能重置或更改沒有第一次解鎖應用程式。";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "比特幣付款請求";
+
+/* (No Commment) */
+"Block" = "塊";
+
+/* (No Commment) */
+"Block Tor" = "塊 Tor";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain 沒有訪問攝像頭。要啟用訪問，請轉到您的設備設置。";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain 需要位置服務啟用，以便訪問您所在的位置。您可以啟用訪問在設置-> 隱私-> 位置-> 定位服務";
+
+/* (No Commment) */
+"Blocked" = "阻止";
 
 /* (No Commment) */
 "Camera Access Denied" = "相機訪問被拒絕";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "關閉應用程式";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "完成下列步驟以最終的安全";
 
 /* (No Commment) */
 "Confirm Payment" = "確認付款";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "自訂您組織您的比特幣在皮夾裡 Blockchain 的方式";
 
 /* (No Commment) */
+"Debug" = "調試";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "解密的 PIN 密碼長度為 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "電子郵件通知";
 
 /* (No Commment) */
+"Email Verified" = "電子郵件驗證";
+
+/* (No Commment) */
 "Empty response from server." = "伺服器的空回應。";
 
 /* (No Commment) */
 "Enable" = "啟用";
 
 /* (No Commment) */
+"Enable 2-Step" = "啟用 2 步";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "為 SMS 啟用 2 步";
+
+/* (No Commment) */
 "Enable Location Services" = "啟用定位服務";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "啟用通知，只要你接收比特幣收到一封電子郵件。只有標記為位址和導入位址有資格向觸發通知。";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "啟用此選項以防止被公認為 Tor 匿名網路訪問你的錢包的一部分的 IP 位址。Tor 網路經常使用的駭客試圖訪問 Blockchain 使用者的錢包。";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "啟用此功能將允許所有使用者與註冊的觸摸 ID 指紋在此設備上訪問到你的錢包。";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "更新設置時出錯";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "一切您需要存儲，花和接收您的比特幣";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "未能載入的錢包";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "Google 身份驗證器";
+
+/* (No Commment) */
+"Hint Stored" = "存儲的提示";
 
 /* (No Commment) */
 "How would you like to pair?" = "你怎麼想對?";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "標籤必須有不少於 18 個字元";
 
 /* (No Commment) */
+"Link Mobile" = "連結手機";
+
+/* (No Commment) */
 "Loading External Page" = "載入外部頁";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "商人的地圖";
+
+/* (No Commment) */
+"Merchant URL" = "商人的 URL";
+
+/* (No Commment) */
+"Mobile Linked" = "手機連結";
 
 /* (No Commment) */
 "Mobile Number" = "行動電話號碼";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "付款發送!";
 
 /* (No Commment) */
+"Phrase Backed" = "支援的短語";
+
+/* (No Commment) */
+"Please Login" = "請登錄";
+
+/* (No Commment) */
 "Please add an email address" = "請添加電子郵件地址";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "重新發送驗證電子郵件";
 
 /* (No Commment) */
+"Reset" = "重置";
+
+/* (No Commment) */
 "Retry Validation" = "驗證重試";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "安全";
 
 /* (No Commment) */
+"Security Center" = "安全中心";
+
+/* (No Commment) */
 "Send" = "發送";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "發送到 %@";
 
 /* (No Commment) */
+"Server URL" = "伺服器 URL";
+
+/* (No Commment) */
 "Settings" = "設置";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "簽署的投入";
+
+/* (No Commment) */
+"Store Hint" = "存儲提示";
 
 /* (No Commment) */
 "Stored" = "存儲";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "支援";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "同步的錢包";
 
 /* (No Commment) */
@@ -772,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: • 完全更新設計和使用者體驗 • 魯棒安全中心增強隱私 • 簡化備份和恢復 • 定制基金管理兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: \n\n• 完全更新設計和使用者體驗 \n• 魯棒安全中心\n• 增強隱私 \n• 簡化備份和恢復 \n• 定制基金管理\n\n兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "還有一個問題，驗證您的身份。";
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "致: %1$@%2$@ 總金額: %3$@ 費用: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "Tor 的請求";
+
+/* (No Commment) */
+"Tor blocked" = "Tor 阻止";
+
+/* (No Commment) */
+"Tor requests allowed" = "允許的 Tor 請求";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "目前允許 Tor 請求。";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "Tor 請求當前被阻塞。";
 
 /* (No Commment) */
 "Total Balance" = "總餘額";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "驗證";
 
 /* (No Commment) */
+"Verify Email" = "驗證電子郵件";
+
+/* (No Commment) */
 "Verifying" = "驗證";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "錢包資訊";
 
 /* (No Commment) */
+"Wallet JSON" = "JSON 的錢包";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "配對成功的錢包。";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "錢包恢復短語";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "錢包位址 %@ 有資金來。然而私密金鑰需要從紙錢包或 QR 碼掃描。你想要掃描的私有金鑰現在嗎?";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "警告: 您的錢包識別碼是敏感資訊。複製它可能危害安全的你的錢包。";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "你的要求的情況下，我們就送您的確認電子郵件地址的提示。";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "Weak" = "弱";
+
+/* (No Commment) */
+"WebSocket URL" = "WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "歡迎";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "歡迎到新版本的 Blockchain 的錢包!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 "Would you like to add the bitcoin address %@ to your address book?" = "你想將比特幣位址 %@ 添加到您的通訊錄嗎?";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "把單詞寫在他們出現在一張紙，並存儲到安全的地方的準確順序
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "寫下你恢復短語並把它放在非常安全和安全。記住誰知道您恢復短語有權訪問您的比特幣。";
 
 /* (No Commment) */
 "Yes" = "是啊";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* No comment provided by engineer. */
 "fourth word" = "第四個單詞";
+
+/* (No Commment) */
+"from" = "從";
 
 /* (No Commment) */
 "iOS Support Request" = "iOS 支援請求";

@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld detik yang lalu";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(misalnya dengan paspor)";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "Minimum 10 karakter";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "1 menit yang lalu";
+
+/* (No Commment) */
+"2-Step Enabled" = "2 langkah diaktifkan";
+
+/* (No Commment) */
+"2-Step has been disabled." = "2 langkah telah dinonaktifkan.";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "2 langkah telah diaktifkan untuk SMS.";
 
 /* (No Commment) */
 "2-step Verification" = "Verifikasi 2 langkah";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "Menyesuaikan biaya";
 
 /* (No Commment) */
+"Allow" = "Memungkinkan";
+
+/* (No Commment) */
+"Allowed" = "Diperbolehkan";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Jumlah harus di atas ambang debu (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Terjadi kesalahan memvalidasi kode PIN Anda dengan remote server. Mungkin Anda offline atau Blockchain mungkin mengalami kesulitan. Anda ingin Coba validasi atau sebaliknya Masukkan password Anda secara manual?";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "Terjadi kesalahan saat mengganti verifikasi 2 langkah.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Kesalahan ditemukan memuat dompet Anda. Mungkin Anda offline atau Blockchain mengalami kesulitan. Silakan menutup aplikasi dan coba lagi nanti atau kembali memasangkan perangkat Anda.";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "Alamat";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "Apa pun yang Anda perlu untuk menyimpan, menghabiskan dan menerima bitcoin Anda";
 
 /* (No Commment) */
 "Archive" = "Arsip";
@@ -116,6 +128,9 @@
 "Backup Funds" = "Dana cadangan";
 
 /* (No Commment) */
+"Backup Phrase" = "Cadangan frase";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Sebelum mengakses dompet Anda, silakan pilih nomor pin menggunakan untuk membuka dompet Anda. Hal ini penting Anda ingat pin ini seperti itu tidak dapat ulang atau berubah tanpa pertama membuka aplikasi.";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Permintaan pembayaran Bitcoin";
+
+/* (No Commment) */
+"Block" = "Blok";
+
+/* (No Commment) */
+"Block Tor" = "Blok Tor";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain tidak memiliki akses ke kamera. Untuk mengaktifkan akses, pergi ke pengaturan perangkat Anda.";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain kebutuhan Layanan lokasi diaktifkan agar Anda dapat mengakses lokasi Anda. Anda dapat mengaktifkan akses dalam pengaturan -> Privacy -> lokasi -> Layanan lokasi";
+
+/* (No Commment) */
+"Blocked" = "Diblokir";
 
 /* (No Commment) */
 "Camera Access Denied" = "Kamera Akses ditolak";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "Menutup aplikasi";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "Menyelesaikan langkah-langkah di bawah ini untuk keamanan tertinggi";
 
 /* (No Commment) */
 "Confirm Payment" = "Konfirmasi pembayaran";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Menyesuaikan cara Anda mengatur bitcoins Anda dalam dompet Blockchain Anda";
 
 /* (No Commment) */
+"Debug" = "Debug";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Dekripsi panjang sandi PIN 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "Email pemberitahuan";
 
 /* (No Commment) */
+"Email Verified" = "Email diverifikasi";
+
+/* (No Commment) */
 "Empty response from server." = "Kosong respon dari server.";
 
 /* (No Commment) */
 "Enable" = "Mengaktifkan";
 
 /* (No Commment) */
+"Enable 2-Step" = "Mengaktifkan 2-langkah";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "Mengaktifkan 2 langkah untuk SMS";
+
+/* (No Commment) */
 "Enable Location Services" = "Aktifkan layanan Lokasi";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Mengaktifkan pemberitahuan untuk menerima email setiap kali Anda menerima bitcoins. Hanya label alamat dan impor alamat memenuhi syarat untuk memicu pemberitahuan.";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Mengaktifkan opsi ini untuk mencegah alamat IP yang dikenal sebagai bagian dari jaringan Tor menganonimkan mengakses dompet Anda. Jaringan Tor sering digunakan oleh hacker mencoba untuk mengakses dompet Blockchain pengguna.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Mengaktifkan fitur ini akan memungkinkan semua pengguna dengan sidik jari sentuhan ID terdaftar pada perangkat ini untuk mengakses dompet Anda.";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "Kesalahan update pengaturan";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "Semua yang Anda butuhkan untuk menyimpan, menghabiskan dan menerima bitcoin Anda";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Gagal memuat dompet";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "Google Authenticator";
+
+/* (No Commment) */
+"Hint Stored" = "Petunjuk yang disimpan";
 
 /* (No Commment) */
 "How would you like to pair?" = "Bagaimana Anda ingin pasangan?";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "Label harus kurang dari 18 huruf";
 
 /* (No Commment) */
+"Link Mobile" = "Link Mobile";
+
+/* (No Commment) */
 "Loading External Page" = "Loading halaman eksternal";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "Peta pedagang";
+
+/* (No Commment) */
+"Merchant URL" = "Pedagang URL";
+
+/* (No Commment) */
+"Mobile Linked" = "Mobile yang terkait";
 
 /* (No Commment) */
 "Mobile Number" = "Nomer HP";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "Pembayaran dikirim!";
 
 /* (No Commment) */
+"Phrase Backed" = "Frase yang didukung";
+
+/* (No Commment) */
+"Please Login" = "Silahkan Login";
+
+/* (No Commment) */
 "Please add an email address" = "Tambahkan alamat email";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "Kirim ulang email verifikasi";
 
 /* (No Commment) */
+"Reset" = "Reset";
+
+/* (No Commment) */
 "Retry Validation" = "Coba validasi";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "Keamanan";
 
 /* (No Commment) */
+"Security Center" = "Pusat Keamanan";
+
+/* (No Commment) */
 "Send" = "Kirim";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "Dikirim ke %@";
 
 /* (No Commment) */
+"Server URL" = "Server URL";
+
+/* (No Commment) */
 "Settings" = "Pengaturan";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Penandatanganan input";
+
+/* (No Commment) */
+"Store Hint" = "Toko petunjuk";
 
 /* (No Commment) */
 "Stored" = "Disimpan";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "Dukungan";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "Sinkronisasi dompet";
 
 /* (No Commment) */
@@ -772,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade mengambil hanya satu detik dan bitcoins dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik: desain • benar-benar diperbarui dan pengguna pengalaman • keamanan yang kuat pusat ditingkatkan privasi • sederhana backup dan recovery • Customized pengelolaan dana maju transaksi dua jenis (pengeluaran dari alamat hanya menonton dan bersama koin) tidak didukung dalam versi baru saat ini.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade mengambil hanya satu detik dan bitcoins dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik: \n\n• desain benar-benar diperbarui dan pengguna pengalaman \n• keamanan yang kuat \n• pusat ditingkatkan privasi \n• sederhana backup dan recovery \n• Customized pengelolaan dana maju transaksi \n\ndua jenis (pengeluaran dari alamat hanya menonton dan bersama koin) tidak didukung dalam versi baru saat ini.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ada masalah saat memverifikasi identitas Anda.";
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "Kepada: %1$@%2$@ jumlah: %3$@ biaya: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "Permintaan Tor";
+
+/* (No Commment) */
+"Tor blocked" = "Tor diblokir";
+
+/* (No Commment) */
+"Tor requests allowed" = "Tor permintaan diperbolehkan";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "Tor permintaan saat ini diperbolehkan.";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "Tor permintaan sedang diblokir.";
 
 /* (No Commment) */
 "Total Balance" = "Keseimbangan Total";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "Memverifikasi";
 
 /* (No Commment) */
+"Verify Email" = "Verifikasi Email";
+
+/* (No Commment) */
 "Verifying" = "Memverifikasi";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "Dompet informasi";
 
 /* (No Commment) */
+"Wallet JSON" = "Dompet JSON";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "Dompet dipasangkan berhasil.";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "Dompet pemulihan frase";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Dompet alamat %@ memiliki dana yang tersedia untuk dibelanjakan. Namun kunci pribadi perlu dipindai dari kertas dompet atau kode QR. Apakah Anda ingin memindai kunci pribadi sekarang?";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Peringatan: Pengenal dompet Anda adalah informasi sensitif. Menyalin itu mungkin membahayakan keamanan dompet Anda.";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "Kami akan mengirim petunjuk ke alamat email konfirmasi jika Anda memintanya.";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk Anda";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 
 /* (No Commment) */
 "Weak" = "Lemah";
+
+/* (No Commment) */
+"WebSocket URL" = "WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "Selamat datang";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "Selamat datang di versi baru dari dompet Blockchain!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 "Would you like to add the bitcoin address %@ to your address book?" = "Apakah Anda ingin menambahkan bitcoin alamat %@ ke buku alamat Anda?";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Menuliskan kata-kata dalam urutan yang tepat mereka muncul pada selembar kertas, dan menyimpannya di tempat yang aman
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Menuliskan frase pemulihan Anda dan menyimpannya di suatu tempat sangat aman dan aman. Ingat bahwa siapa saja yang mengetahui frase pemulihan Anda memiliki akses ke bitcoins Anda.";
 
 /* (No Commment) */
 "Yes" = "Ya";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 
 /* No comment provided by engineer. */
 "fourth word" = "kata keempat";
+
+/* (No Commment) */
+"from" = "dari";
 
 /* (No Commment) */
 "iOS Support Request" = "iOS permintaan dukungan";

@@ -374,7 +374,7 @@
 #define BC_STRING_HINT_STORED NSLocalizedString(@"Hint Stored", nil)
 #define BC_STRING_TWO_STEP_ENABLED_SUCCESS NSLocalizedString(@"2-Step has been enabled for SMS.", nil)
 #define BC_STRING_TWO_STEP_DISABLED_SUCCESS NSLocalizedString(@"2-Step has been disabled.", nil)
-#define BC_STRING_TWO_STEP_ERROR NSLocalizedString(@"An error occured while changing 2-Step verification.", nil)
+#define BC_STRING_TWO_STEP_ERROR NSLocalizedString(@"An error occurred while changing 2-Step verification.", nil)
 #define BC_STRING_TWO_STEP_ENABLED NSLocalizedString(@"2-Step Enabled", nil)
 #define BC_STRING_ENABLE_TWO_STEP NSLocalizedString(@"Enable 2-Step", nil)
 #define BC_STRING_ENABLE_TWO_STEP_SMS NSLocalizedString(@"Enable 2-Step for SMS", nil)
@@ -415,3 +415,4 @@
 #define BC_STRING_RESET NSLocalizedString(@"Reset", nil)
 #define BC_STRING_FROM_LOWERCASE NSLocalizedString(@"from", nil)
 #define BC_STRING_WELCOME NSLocalizedString(@"Welcome", nil)
+#define BC_STRING_PIN NSLocalizedString(@"PIN", nil)

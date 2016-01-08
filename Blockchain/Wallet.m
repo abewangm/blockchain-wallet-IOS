@@ -1728,8 +1728,11 @@
         return NO;
     }
     
+    if (![self didUpgradeToHd]) {
+        return NO;
+    }
+    
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.hdwallet.isMnemonicVerified"] boolValue];
-
 }
 
 - (void)markRecoveryPhraseVerified

@@ -30,7 +30,7 @@ ECSlidingViewController *sideMenu;
 
 UITapGestureRecognizer *tapToCloseGestureRecognizer;
 
-const int menuEntries = 7;
+const int menuEntries = 6;
 int balanceEntries = 0;
 int accountEntries = 0;
 
@@ -83,7 +83,7 @@ int accountEntries = 0;
 - (void)setSideMenuGestures
 {
     // Hide status bar
-    if (!app.pinEntryViewController.verifyOptional) {
+    if (!app.pinEntryViewController.inSettings) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     }
     
@@ -231,8 +231,6 @@ int accountEntries = 0;
         else {
             [app showHdUpgrade];
         }
-    } else if (row == MENU_CELL_INDEX_CHANGE_PIN) {
-        [app changePINClicked:nil];
     } else if (row == MENU_CELL_INDEX_LOGOUT) {
         [app logoutClicked:nil];
     }
@@ -358,7 +356,7 @@ int accountEntries = 0;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
         
         NSString *upgradeOrSecurityCenterImage;
         if (!app.wallet.didUpgradeToHd) {
@@ -369,7 +367,7 @@ int accountEntries = 0;
             upgradeOrSecurityCenterImage = @"security";
         }
         NSMutableArray *images;
-        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"lock_icon", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
 #else
         if (indexPath.row == menuEntries - 1) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -377,10 +375,10 @@ int accountEntries = 0;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_CHANGE_PIN, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
         
         NSMutableArray *images;
-        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"lock_icon", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
 #endif
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];

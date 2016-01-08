@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld секунд тому";
 
-/* No comment provided by engineer. */
-"(e.g., with your passport)" = "(наприклад, з паспортом)";
-
 /* (No Commment) */
 "* Minimum 10 characters" = "* Мінімум 10 символів";
 
@@ -30,6 +27,15 @@
 
 /* No comment provided by engineer. */
 "1 minute ago" = "1 хвилину тому";
+
+/* (No Commment) */
+"2-Step Enabled" = "Двоетапна включений";
+
+/* (No Commment) */
+"2-Step has been disabled." = "Двоетапну був відключений.";
+
+/* (No Commment) */
+"2-Step has been enabled for SMS." = "2-кроком стало можливим для SMS.";
 
 /* (No Commment) */
 "2-step Verification" = "Двоетапна перевірка";
@@ -68,10 +74,19 @@
 "Adjust Fee" = "Налаштуйте плата";
 
 /* (No Commment) */
+"Allow" = "Дозволити";
+
+/* (No Commment) */
+"Allowed" = "Допускається";
+
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Сума повинна бути вище пилу поріг (%lld Сатосі)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Помилка перевірки ваш PIN-код з віддаленим сервером. Можливо, ви в автономному режимі або Blockchain може відчувати труднощі. Ви хочете, повторити перевірку або замість введення пароля вручну?";
+
+/* (No Commment) */
+"An error occurred while changing 2-Step verification." = "Сталася помилка при зміні двоетапної перевірки.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Сталася помилка під час завантаження вашого гаманця. Можливо, ви в автономному режимі або Blockchain переживає труднощі. Закрити програму та повторіть спробу пізніше або повторно встановіть зв'язок.";
@@ -81,9 +96,6 @@
 
 /* (No Commment) */
 "Any address" = "Будь-яку адресу";
-
-/* (No Commment) */
-"Anything you need to store, spend and receive your bitcoin" = "Все, що тобі треба, витрачати і отримувати ваші bitcoin";
 
 /* (No Commment) */
 "Archive" = "Архів";
@@ -116,6 +128,9 @@
 "Backup Funds" = "Резервних фондів";
 
 /* (No Commment) */
+"Backup Phrase" = "Резервне копіювання фразу";
+
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Перед зверненням до вашого гаманця, будь ласка, виберіть PIN-код для розблокування вашого гаманця. Дуже важливо, що ви пам'ятаєте цей PIN-код, як він не може скинути або змінені без першого розблокування застосунок.";
 
 /* (No Commment) */
@@ -123,6 +138,12 @@
 
 /* (No Commment) */
 "Bitcoin payment request" = "Bitcoin оплати запит";
+
+/* (No Commment) */
+"Block" = "Блок";
+
+/* (No Commment) */
+"Block Tor" = "Блок Tor";
 
 /* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain не має доступу до камери. Щоб дозволити доступ, перейдіть на ваш пристрій настройки.";
@@ -138,6 +159,9 @@
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain потребує служб визначення місцезнаходження ввімкнено для того, щоб отримати доступ до вашого місцезнаходження. Ви можете зробити доступними в настройки -> конфіденційності -> розташування -> служби локації";
+
+/* (No Commment) */
+"Blocked" = "Заблокований";
 
 /* (No Commment) */
 "Camera Access Denied" = "Камери в доступі";
@@ -177,6 +201,9 @@
 
 /* (No Commment) */
 "Close App" = "Закрити застосунок";
+
+/* (No Commment) */
+"Complete the steps below for ultimate security" = "Завершити процедуру нижче кінцева безпеки";
 
 /* (No Commment) */
 "Confirm Payment" = "Підтвердження здійснення оплати";
@@ -236,6 +263,9 @@
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Настроїти спосіб організувати ваші bitcoins у вашому гаманці Blockchain";
 
 /* (No Commment) */
+"Debug" = "Налагодження";
+
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Довжина PIN пароль розшифровані 0";
 
 /* (No Commment) */
@@ -275,16 +305,28 @@
 "Email Notifications" = "Сповіщення електронною поштою";
 
 /* (No Commment) */
+"Email Verified" = "Електронної пошти підтверджено";
+
+/* (No Commment) */
 "Empty response from server." = "Пусті відповіді від сервера.";
 
 /* (No Commment) */
 "Enable" = "Увімкнути";
 
 /* (No Commment) */
+"Enable 2-Step" = "Увімкнення двоетапної";
+
+/* (No Commment) */
+"Enable 2-Step for SMS" = "Увімкнення двоетапної для SMS";
+
+/* (No Commment) */
 "Enable Location Services" = "Увімкнення служби локації";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Увімкнути сповіщення для отримання по електронній пошті, коли ви отримуєте bitcoins. Тільки помічені адреси і імпортовані адреси мають право тригер сповіщення.";
+
+/* (No Commment) */
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Ввімкніть цей параметр, щоб запобігти IP-адрес, які, як відомо, бути частиною Tor встановлення анонімності мережі доступ до вашого гаманця. Tor мережі часто використовується хакерами для доступу Blockchain користувачами гаманці.";
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Увімкнення цієї функції дозволить всім користувачам з зареєстрованих Touch ID відбитків на цей пристрою для доступу до вашого гаманця.";
@@ -309,6 +351,9 @@
 
 /* (No Commment) */
 "Error updating settings" = "Помилка оновлення налаштувань";
+
+/* (No Commment) */
+"Everything you need to store, spend and receive your bitcoin" = "Все, що тобі треба, витрачати і отримувати ваші bitcoin";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Не вдалося завантажити гаманець";
@@ -348,6 +393,9 @@
 
 /* (No Commment) */
 "Google Authenticator" = "Генератор кодів Google";
+
+/* (No Commment) */
+"Hint Stored" = "Підказка зберігається";
 
 /* (No Commment) */
 "How would you like to pair?" = "Як би ви хотіли пара?";
@@ -443,6 +491,9 @@
 "Label must have less than 18 characters" = "Мітка має бути менше 18 символів";
 
 /* (No Commment) */
+"Link Mobile" = "Мобільний зв'язок";
+
+/* (No Commment) */
 "Loading External Page" = "Завантаження зовнішнього сторінки";
 
 /* (No Commment) */
@@ -474,6 +525,12 @@
 
 /* (No Commment) */
 "Merchant Map" = "Купець карти";
+
+/* (No Commment) */
+"Merchant URL" = "Купець URL";
+
+/* (No Commment) */
+"Mobile Linked" = "Мобільний пов'язана";
 
 /* (No Commment) */
 "Mobile Number" = "Номер мобільного телефону";
@@ -584,6 +641,12 @@
 "Payment Sent!" = "Оплата послав!";
 
 /* (No Commment) */
+"Phrase Backed" = "Фраза резервне";
+
+/* (No Commment) */
+"Please Login" = "Будь ласка, Логін";
+
+/* (No Commment) */
 "Please add an email address" = "Будь ласка, додайте адресу електронної пошти";
 
 /* (No Commment) */
@@ -668,6 +731,9 @@
 "Resend verification email" = "Знову надіслати перевірочне повідомлення електронної пошти";
 
 /* (No Commment) */
+"Reset" = "Скидання";
+
+/* (No Commment) */
 "Retry Validation" = "Повторити перевірку";
 
 /* (No Commment) */
@@ -701,6 +767,9 @@
 "Security" = "Безпека";
 
 /* (No Commment) */
+"Security Center" = "Центр безпеки";
+
+/* (No Commment) */
 "Send" = "Надіслати";
 
 /* (No Commment) */
@@ -722,6 +791,9 @@
 "Sent to %@" = "Надіслані %@";
 
 /* (No Commment) */
+"Server URL" = "URL-адресу сервера";
+
+/* (No Commment) */
 "Settings" = "Параметри";
 
 /* No comment provided by engineer. */
@@ -732,6 +804,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Підписання входи";
+
+/* (No Commment) */
+"Store Hint" = "Магазин Підказка";
 
 /* (No Commment) */
 "Stored" = "Зберігається";
@@ -748,7 +823,7 @@
 /* (No Commment) */
 "Support" = "Підтримка";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Syncing Wallet" = "Синхронізацію гаманець";
 
 /* (No Commment) */
@@ -772,7 +847,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Тут є те, що краще: • повністю оновлено дизайн і роботи користувачів • надійною системою безпеки центр • розширеної конфіденційності • спрощене резервного копіювання і відновлення • індивідуальні управління Фондом два типи передові операції (витрачати від дивитися лише для адрес і поділився монета) не підтримуються в новій версії в даний час.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Тут є те, що краще: \n\n• повністю оновлено дизайн і роботи користувачів \n• надійною системою безпеки центр \n• розширеної конфіденційності \n• спрощене резервного копіювання і відновлення \n• індивідуальні управління Фондом \n\nдва типи передові операції (витрачати від дивитися лише для адрес і поділився монета) не підтримуються в новій версії в даний час.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Виникли утруднення засвідчує вашу особу.";
@@ -789,6 +864,21 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 Total Amount: %@
 Fee: %@
 (%@)" = "Кому: %1$@%2$@ суми: %3$@ плату: %4$@ (%5$@)";
+
+/* (No Commment) */
+"Tor Requests" = "Tor запити";
+
+/* (No Commment) */
+"Tor blocked" = "Tor заблоковано";
+
+/* (No Commment) */
+"Tor requests allowed" = "Tor запити дозволено";
+
+/* (No Commment) */
+"Tor requests are currently allowed." = "Tor запити є дозволеними.";
+
+/* (No Commment) */
+"Tor requests are currently blocked." = "Tor запити наразі заблоковано.";
 
 /* (No Commment) */
 "Total Balance" = "Загальний баланс";
@@ -884,6 +974,9 @@ Fee: %@
 "Verify" = "Перевірте, чи";
 
 /* (No Commment) */
+"Verify Email" = "Перевірити пошту";
+
+/* (No Commment) */
 "Verifying" = "Перевірка";
 
 /* (No Commment) */
@@ -893,7 +986,13 @@ Fee: %@
 "Wallet Information" = "Гаманець інформації";
 
 /* (No Commment) */
+"Wallet JSON" = "Гаманець JSON";
+
+/* (No Commment) */
 "Wallet Paired Successfully." = "Гаманець парі успішно.";
+
+/* (No Commment) */
+"Wallet Recovery Phrase" = "Гаманець відновлення фразу";
 
 /* (No Commment) */
 "Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Гаманець %@ адреса має кошти витрачають. Однак закритий ключ повинен бути відскановані з паперу гаманець або QR-код. Хотіли б ви тепер сканування закритий ключ?";
@@ -911,6 +1010,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Попередження: Ідентифікатор вашого гаманця є конфіденційною інформацією. Копіювання його можуть становити загрозу безпеці вашого гаманця.";
 
 /* (No Commment) */
+"We'll send the hint to your confirmed email address in case you request it." = "Ми надішлемо натяк на адресу електронної пошти підтверджено у випадку, якщо ви попросите про це.";
+
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Ми розробили абсолютно новий досвід, гаманець для вас";
 
@@ -919,6 +1021,12 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "Weak" = "Слабка";
+
+/* (No Commment) */
+"WebSocket URL" = "WebSocket URL";
+
+/* (No Commment) */
+"Welcome" = "Прошу";
 
 /* (No Commment) */
 "Welcome to the new version of the Blockchain Wallet!" = "Ласкаво просимо в нову версію Blockchain гаманець!";
@@ -930,9 +1038,7 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "Would you like to add the bitcoin address %@ to your address book?" = "Хотіли б ви додати bitcoin адресу %@ до своєї адресної книги?";
 
 /* No comment provided by engineer. */
-"Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe
-" = "Запишіть слова згідно точного порядку вони з'являться на аркуші паперу і зберігайте його в надійному місці
-";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Запишіть відновлення фразу і тримати його де-небудь дуже надійним і безпечним. Пам'ятайте, що будь-хто, хто знає вашу фразу відновлення має доступ до вашого bitcoins.";
 
 /* (No Commment) */
 "Yes" = "Так";
@@ -1020,6 +1126,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* No comment provided by engineer. */
 "fourth word" = "четверте слово";
+
+/* (No Commment) */
+"from" = "від";
 
 /* (No Commment) */
 "iOS Support Request" = "iOS підтримки запит";

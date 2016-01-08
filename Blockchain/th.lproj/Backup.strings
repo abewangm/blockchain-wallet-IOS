@@ -19,7 +19,7 @@
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
 "9A7-TT-PzN.title" = "กองทุนสำรอง";
 
-/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
 "9Hu-uO-gJl.text" = "คุณไม่สำรองเงินของคุณได้";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
@@ -50,9 +50,6 @@
 /* (No Commment) */
 "NaV-Bk-o1b.text" = "วิธีการคืนค่ากระเป๋าสตางค์ของคุณ";
 
-/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
-"OJg-MB-UId.title" = "ปิด";
-
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
 "Okr-VE-yvm.text" = "ยูนิคอร์น";
 
@@ -62,7 +59,7 @@
 /* (No Commment) */
 "T4p-mz-siC.normalTitle" = "ตรวจสอบการสำรองข้อมูล";
 
-/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+/* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
 "UCL-i9-UDp.text" = "เขียนคำลงในใบสั่งแน่นอนจะปรากฏบนกระดาษ และเก็บไว้ที่ไหนสักแห่งที่ปลอดภัย
 ";
 
@@ -75,8 +72,8 @@
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "คำถัดไป";
 
-/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "สำรองเงินของคุณเป็นเรื่องง่าย และให้แน่ใจว่า คุณจะไม่สูญเสียการเข้ากับ bitcoins ของคุณ แม้ว่าบริการของเราจะไม่";
+/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "สำรองเงินของคุณให้แน่ใจว่า คุณจะไม่เสียเข้ากับ bitcoins ของคุณ (ยกเว้นที่อยู่นำเข้า), ถ้าคุณลืมรหัสผ่าน หรือถ้าเราบริการไม่พร้อมใช้งาน";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "คำที่สาม";

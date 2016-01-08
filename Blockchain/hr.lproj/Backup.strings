@@ -19,7 +19,7 @@
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
 "9A7-TT-PzN.title" = "Sigurnosna kopija sredstva";
 
-/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
+/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
 "9Hu-uO-gJl.text" = "Stvorite sigurnosnu kopiju svoje fondove još";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
@@ -50,9 +50,6 @@ Može ugroziti vaš novčanik sigurnost";
 /* (No Commment) */
 "NaV-Bk-o1b.text" = "Kako vratiti novčanik";
 
-/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
-"OJg-MB-UId.title" = "Zatvori";
-
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
 "Okr-VE-yvm.text" = "jednorog";
 
@@ -62,7 +59,7 @@ Može ugroziti vaš novčanik sigurnost";
 /* (No Commment) */
 "T4p-mz-siC.normalTitle" = "PROVJERITE SIGURNOSNA KOPIJA";
 
-/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
+/* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
 "UCL-i9-UDp.text" = "Zapišite riječi u točan poredak na list papira i pohraniti ga negdje na sigurno
 ";
 
@@ -75,8 +72,8 @@ Može ugroziti vaš novčanik sigurnost";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Sljedeću riječ";
 
-/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Podrška gore tvoj sredstva je jednostavno i osigurava ne će izgubiti pristup bitcoins, čak i ako naša usluga postane nedostupan.";
+/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Podrška gore tvoj sredstva osigurava da nećete izgubiti pristup na vaš bitcoins (osim uvezene adrese), čak i ako zaboravite lozinku ili ako naša usluga postane nedostupan.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "Treća riječ";
