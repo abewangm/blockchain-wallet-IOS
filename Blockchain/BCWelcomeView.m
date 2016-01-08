@@ -72,11 +72,17 @@ Boolean shouldShowAnimation;
 #ifndef HD_ENABLED
         self.recoverWalletButton.hidden = YES;
 #endif
-        UIView *debugView = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width - 80, 0, 80, 51)];
+#ifdef ALLOW_DEBUGGING
+        UIButton *debugButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 80, 0, 80, 51)];
+        debugButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        [debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
+        [debugButton setTitle:BC_STRING_DEBUG forState:UIControlStateNormal];
         UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;
-        [debugView addGestureRecognizer:longPressGesture];
-        [self addSubview:debugView];
+        [debugButton addGestureRecognizer:longPressGesture];
+        [self addSubview:debugButton];
+#endif
         // Version
         [self setupVersionLabel];
     }

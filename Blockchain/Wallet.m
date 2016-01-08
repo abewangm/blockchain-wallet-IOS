@@ -96,23 +96,29 @@
     NSError *error = nil;
     NSString *walletHTML = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"wallet-ios" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
     
+    NSMutableArray *allowedURLs = [[NSMutableArray alloc] init];
+    
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] != nil) {
-        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_WEB_SOCKET_SERVER withString:[app webSocketURL]];
+        [allowedURLs addObject:[app webSocketURL]];
     } else {
-        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_WEB_SOCKET_SERVER withString:HTML_DEFAULT_WEBSOCKET_URL];
+        [allowedURLs addObject:HTML_DEFAULT_WEBSOCKET_URL];
     }
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] != nil) {
-        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_WALLET_SERVER withString:[app serverURL]];
+        [allowedURLs addObject:[app serverURL]];
     } else {
-        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_WALLET_SERVER withString:HTML_DEFAULT_WALLET_SERVER_URL];
+        [allowedURLs addObject:HTML_DEFAULT_WALLET_SERVER_URL];
     }
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL] != nil) {
-        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_PREFIX_WALLET_SERVER withString:[app merchantURL]];
+        [allowedURLs addObject:[app merchantURL]];
     } else {
-        walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_URL_PREFIX_WALLET_SERVER withString:HTML_DEFAULT_PREFIX_WALLET_SERVER_URL];
+        [allowedURLs addObject:HTML_DEFAULT_PREFIX_WALLET_SERVER_URL];
     }
+    
+    [allowedURLs addObject:HTML_DEFAULT_SHAREDCOIN_URL];
+    
+    walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_PLACEHOLDER_CONNECT_SRC withString:[allowedURLs componentsJoinedByString:@" "]];
     
     NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];
     

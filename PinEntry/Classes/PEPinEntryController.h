@@ -55,7 +55,7 @@
 @property (nonatomic, readonly) BOOL verifyOptional;
 @property (nonatomic, readwrite) BOOL inSettings;
 @property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
-@property (nonatomic) UIView *longPressGestureView;
+@property (nonatomic) UIButton *debugButton;
 
 
 -(void)reset;

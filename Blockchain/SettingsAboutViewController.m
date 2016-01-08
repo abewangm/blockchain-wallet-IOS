@@ -13,7 +13,7 @@
 @interface SettingsAboutViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
-@property (nonatomic) UIView *longPressGestureView;
+@property (nonatomic) UIButton *debugButton;
 @end
 
 @implementation SettingsAboutViewController
@@ -47,19 +47,24 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+#ifdef ALLOW_DEBUGGING
     self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     self.longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;
-    self.longPressGestureView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
-    [self.navigationController.view addSubview:self.longPressGestureView];
-    [self.longPressGestureView addGestureRecognizer:self.longPressGesture];
+    self.debugButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
+    self.debugButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    self.debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
+    [self.debugButton setTitle:BC_STRING_DEBUG forState:UIControlStateNormal];
+    [self.navigationController.view addSubview:self.debugButton];
+    [self.debugButton addGestureRecognizer:self.longPressGesture];
+#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.longPressGesture = nil;
-    [self.longPressGestureView removeFromSuperview];
+    [self.debugButton removeFromSuperview];
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
