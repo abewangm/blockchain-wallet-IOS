@@ -90,6 +90,14 @@ void (^secondPasswordSuccess)(NSString *);
     NSSetUncaughtExceptionHandler(&HandleException);
 #endif
     
+#ifndef ENABLE_DEBUG_MENU
+    // DLog(@"Clearing debug menu userDefaults since debug menu is off");
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+#endif
+    
     // White status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -2404,33 +2412,22 @@ void (^secondPasswordSuccess)(NSString *);
     return input;
 }
 
-#pragma mark Debugging
+#pragma mark API Endpoint Getters
 
+// The debug endpoints are cleared from userDefaults in didFinishLaunching when ENABLE_DEBUG_MENUENABLE_DEBUG_MENU is undefined..so no need to check ENABLE_DEBUG_MENU in these getters
 - (NSString *)serverURL
 {
-#ifdef ENABLE_DEBUG_MENU
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? DEFAULT_WALLET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
-#else
-    return DEFAULT_WALLET_SERVER;
-#endif
 }
 
 - (NSString *)webSocketURL
 {
-#ifdef ENABLE_DEBUG_MENU
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] == nil ? DEFAULT_WEBSOCKET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
-#else 
-    return DEFAULT_WEBSOCKET_SERVER;
-#endif
 }
 
 - (NSString *)merchantURL
 {
-#ifdef ENABLE_DEBUG_MENU
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL] == nil ? DEFAULT_MERCHANT_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
-#else
-    return DEFAULT_MERCHANT_URL;
-#endif
 }
 
 @end
