@@ -581,6 +581,16 @@ UIAlertController *popupAddressArchive;
 {
     NSString *label = [labelTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
+    if (![app.wallet didUpgradeToHd]) {
+        NSMutableCharacterSet *allowedCharSet = [[NSCharacterSet alphanumericCharacterSet] mutableCopy];
+        [allowedCharSet formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        if ([label rangeOfCharacterFromSet:[allowedCharSet invertedSet]].location != NSNotFound) {
+            [app standardNotify:BC_STRING_LABEL_MUST_BE_ALPHANUMERIC];
+            return;
+        }
+    }
+
     NSString *addr = self.clickedAddress;
     
     [app.wallet setLabel:label forLegacyAddress:addr];
