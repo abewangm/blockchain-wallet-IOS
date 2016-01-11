@@ -706,6 +706,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
+    if (![self isPinSet]) {
+        return NO;
+    }
+    
     [app closeModalWithTransition:kCATransitionFade];
     
     showSendCoins = YES;
