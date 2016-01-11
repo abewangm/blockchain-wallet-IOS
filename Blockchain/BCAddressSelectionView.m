@@ -109,9 +109,13 @@ int legacyAddressesSectionNumber;
                 [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
             }
             
-            addressBookSectionNumber = (addressBookAddresses.count > 0) ? 0 : -1;
-            accountsSectionNumber = addressBookSectionNumber + 1;
+            accountsSectionNumber = 0;
             legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
+            if (addressBookAddresses.count > 0) {
+                addressBookSectionNumber = (legacyAddressesSectionNumber > 0) ? legacyAddressesSectionNumber + 1 : accountsSectionNumber + 1;
+            } else {
+                addressBookSectionNumber = -1;
+            }
         }
         
         [self addSubview:mainView];
