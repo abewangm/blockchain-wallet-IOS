@@ -81,7 +81,7 @@
 #define BC_STRING_ERROR_LOADING_WALLET NSLocalizedString(@"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later.", nil)
 
 #define BC_STRING_INFORMATION NSLocalizedString(@"Information", nil)
-#define BC_STRING_IMPORT_ADDRESS NSLocalizedString(@"Import Address", nil)
+#define BC_STRING_IMPORT_PRIVATE_KEY NSLocalizedString(@"Import Private Key", nil)
 #define BC_STRING_IMPORTED_PRIVATE_KEY NSLocalizedString(@"Imported Private Key %@", nil)
 #define BC_STRING_DECRYPTING_PRIVATE_KEY NSLocalizedString(@"Decrypting Private Key", nil)
 
