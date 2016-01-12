@@ -310,7 +310,7 @@ BOOL displayingLocalSymbolSend;
         [app.wallet getHistory];
     };
     
-    [self dismissKeyboard];
+    [self hideKeyboard];
     
     [self disablePaymentButtons];
     
@@ -359,7 +359,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)showSweepConfirmationScreenWithMaxAmount:(uint64_t)maxAmount
 {
-    [self dismissKeyboard];
+    [self hideKeyboard];
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -406,7 +406,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)showSummary
 {
-    [self dismissKeyboard];
+    [self hideKeyboard];
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -577,7 +577,7 @@ BOOL displayingLocalSymbolSend;
     return address;
 }
 
-- (void)dismissKeyboard
+- (void)hideKeyboard
 {
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
@@ -599,7 +599,7 @@ BOOL displayingLocalSymbolSend;
 - (void)showErrorBeforeSending:(NSString *)error
 {
     if ([self isKeyboardVisible]) {
-        [self dismissKeyboard];
+        [self hideKeyboard];
         [app performSelector:@selector(standardNotifyAutoDismissingController:) withObject:error afterDelay:0.6f];
     } else {
         [app standardNotifyAutoDismissingController:error];
@@ -625,7 +625,7 @@ BOOL displayingLocalSymbolSend;
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     if (self.tapGesture == nil) {
-        self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+        self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
         
         [self.view addGestureRecognizer:self.tapGesture];
     }

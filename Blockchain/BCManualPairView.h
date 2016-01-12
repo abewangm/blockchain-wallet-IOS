@@ -16,6 +16,7 @@
 }
 
 - (IBAction)continueClicked:(id)sender;
+- (void)hideKeyboard;
 - (void)clearPasswordTextField;
 - (void)clearTextFields;
 - (void)verifyTwoFactorSMS;

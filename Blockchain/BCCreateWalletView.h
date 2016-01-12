@@ -35,6 +35,7 @@
 
 - (void)didFailRecovery;
 - (void)didRecoverWallet;
+- (void)hideKeyboard;
 
 @property(nonatomic) IBOutlet BCRecoveryView *recoveryPhraseView;
 @property(nonatomic, strong) NSString *tmpPassword;

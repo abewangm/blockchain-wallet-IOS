@@ -91,7 +91,7 @@
 
 - (void)reload;
 
-- (void)dismissKeyboard;
+- (void)hideKeyboard;
 
 - (void)enablePaymentButtons;
 

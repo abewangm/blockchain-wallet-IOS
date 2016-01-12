@@ -47,6 +47,12 @@
     passwordTextField.delegate = nil;
 }
 
+- (void)hideKeyboard
+{
+    [walletIdentifierTextField resignFirstResponder];
+    [passwordTextField resignFirstResponder];
+}
+
 - (void)clearTextFields
 {
     walletIdentifierTextField.text = nil;

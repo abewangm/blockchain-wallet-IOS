@@ -107,7 +107,7 @@
         return;
     };
     
-    [self closeKeyboard];
+    [self hideKeyboard];
     
     [app showModalWithContent:self.recoveryPhraseView closeType:ModalCloseTypeBack headerText:BC_STRING_RECOVER_FUNDS onDismiss:^{
         [self.createButton removeTarget:self action:@selector(recoverWalletClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -147,7 +147,7 @@
         return;
     };
     
-    [self closeKeyboard];
+    [self hideKeyboard];
     
     // Load the JS without a wallet
     [app.wallet loadBlankWallet];
@@ -261,11 +261,13 @@
     self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
 
-- (void)closeKeyboard
+- (void)hideKeyboard
 {
     [emailTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     [password2TextField resignFirstResponder];
+    
+    [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
 }
 
 - (void)clearSensitiveTextFields

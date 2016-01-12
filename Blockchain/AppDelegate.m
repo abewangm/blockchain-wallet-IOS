@@ -552,7 +552,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     // Dismiss sendviewController keyboard
     if (_sendViewController) {
-        [_sendViewController dismissKeyboard];
+        [_sendViewController hideKeyboard];
         
         // Make sure the the send payment button on send screen is enabled (bug when second password requested and app is backgrounded)
         [_sendViewController enablePaymentButtons];
@@ -564,6 +564,18 @@ void (^secondPasswordSuccess)(NSString *);
     // Dismiss receiveCoinsViewController keyboard
     if (_receiveViewController) {
         [_receiveViewController hideKeyboard];
+    }
+    
+    if (createWalletView) {
+        [createWalletView hideKeyboard];
+    }
+    
+    if (manualPairView) {
+        [manualPairView hideKeyboard];
+    }
+    
+    if ([mainPasswordTextField isFirstResponder]) {
+        [mainPasswordTextField resignFirstResponder];
     }
     
     // Show the LaunchImage so the list of running apps does not show the user's information
@@ -1362,7 +1374,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)menuClicked:(id)sender
 {
     if (_sendViewController) {
-        [_sendViewController dismissKeyboard];
+        [_sendViewController hideKeyboard];
     }
     [self toggleSideMenu];
 }
