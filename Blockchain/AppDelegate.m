@@ -219,10 +219,10 @@ void (^secondPasswordSuccess)(NSString *);
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadSideMenu) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
         
         [self migratePasswordAndPinFromNSUserDefaults];
-        
-        // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
-        [self setupCurtainView];
     }
+    
+    // TODO create BCCurtainView. There shouldn't be any view code, etc in the appdelegate..
+    [self setupCurtainView];
 }
 
 - (void)migratePasswordAndPinFromNSUserDefaults
@@ -546,6 +546,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+    if (!curtainImageView) {
+        [self setupCurtainView];
+    }
+    
     // Dismiss sendviewController keyboard
     if (_sendViewController) {
         [_sendViewController dismissKeyboard];
