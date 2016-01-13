@@ -1341,9 +1341,9 @@ const int aboutPrivacyPolicy = 1;
             }
         }
         case securitySection: {
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             if (indexPath.row == securityTwoStep) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
-                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     int authType = [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue];
                     cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
