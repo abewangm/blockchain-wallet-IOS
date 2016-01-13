@@ -294,6 +294,7 @@
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION NSLocalizedString(@"2-step Verification", nil)
 #define BC_STRING_ENABLE NSLocalizedString(@"Enable", nil)
 #define BC_STRING_DISABLE NSLocalizedString(@"Disable", nil)
+#define BC_STRING_SETTINGS_SECURITY_MUST_DISABLE_TWO_FACTOR_SMS_ARGUMENT NSLocalizedString(@"You must disable SMS 2-Step Verification before changing your mobile number (%@).", nil)
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT NSLocalizedString(@"2-step Verification is currently enabled for %@.", nil)
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED NSLocalizedString(@"2-step Verification is currently enabled.", nil)
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_DISABLED NSLocalizedString(@"2-step Verification is currently disabled.", nil)

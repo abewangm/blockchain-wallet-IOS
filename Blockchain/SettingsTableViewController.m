@@ -346,6 +346,17 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)alertUserToChangeMobileNumber
 {
+    if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == TWO_STEP_AUTH_TYPE_SMS) {
+        UIAlertController *alertToDisableTwoFactorSMS = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS] message:[NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_MUST_DISABLE_TWO_FACTOR_SMS_ARGUMENT, self.mobileNumberString] preferredStyle:UIAlertControllerStyleAlert];
+        [alertToDisableTwoFactorSMS addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        if (self.alertTargetViewController) {
+            [self.alertTargetViewController presentViewController:alertToDisableTwoFactorSMS animated:YES completion:nil];
+        } else {
+            [self presentViewController:alertToDisableTwoFactorSMS animated:YES completion:nil];
+        }
+        return;
+    }
+    
     UIAlertController *alertForChangingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_CHANGE_MOBILE_NUMBER message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alertForChangingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         self.isEnablingTwoStepSMS = NO;
@@ -368,7 +379,8 @@ const int aboutPrivacyPolicy = 1;
         [self.alertTargetViewController presentViewController:alertForChangingMobileNumber animated:YES completion:nil];
     } else {
         [self presentViewController:alertForChangingMobileNumber animated:YES completion:nil];
-    }}
+    }
+}
 
 - (void)changeMobileNumber:(NSString *)newNumber
 {
