@@ -404,7 +404,7 @@
 "Identifier" = "Pengenal";
 
 /* (No Commment) */
-"Import Address" = "Mengimpor alamat";
+"Import Private Key" = "Kunci pribadi impor";
 
 /* (No Commment) */
 "Imported Addresses" = "Alamat impor";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "Oke";
+
+/* (No Commment) */
+"PIN" = "PIN";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "String dienkripsi PIN nihil";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade mengambil hanya satu detik dan bitcoins dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik: \n\n• desain benar-benar diperbarui dan pengguna pengalaman \n• keamanan yang kuat \n• pusat ditingkatkan privasi \n• sederhana backup dan recovery \n• Customized pengelolaan dana maju transaksi \n\ndua jenis (pengeluaran dari alamat hanya menonton dan bersama koin) tidak didukung dalam versi baru saat ini.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade mengambil hanya satu detik dan bitcoins dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik: desain • benar-benar diperbarui dan pengguna pengalaman • keamanan yang kuat pusat ditingkatkan privasi • sederhana backup dan recovery • Customized pengelolaan dana maju transaksi dua jenis (pengeluaran dari alamat hanya menonton dan bersama koin) tidak didukung dalam versi baru saat ini.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ada masalah saat memverifikasi identitas Anda.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Anda memiliki tidak ada dana yang tersedia untuk mengirim dari alamat ini";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Anda harus menonaktifkan verifikasi 2 langkah SMS sebelum mengubah nomor ponsel Anda (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "Anda harus memasukkan alamat tujuan";

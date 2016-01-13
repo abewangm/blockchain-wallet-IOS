@@ -404,7 +404,7 @@
 "Identifier" = "Azonosítója";
 
 /* (No Commment) */
-"Import Address" = "Importálja a cím";
+"Import Private Key" = "Import privát kulcs";
 
 /* (No Commment) */
 "Imported Addresses" = "Importált címek";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "oké";
+
+/* (No Commment) */
+"PIN" = "PIN-KÓD";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN titkosított karakterlánca nulla";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: \n\n• design teljesen frissített és felhasználó tapasztalat \n• robusztus biztonsági központ \n• továbbfejlesztett adatvédelmi \n• egyszerűsített biztonsági mentés és helyreállítás \n• szabott alapkezelő \n\nkét speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: design • teljesen frissített és felhasználó tapasztalat • robusztus biztonsági központ • továbbfejlesztett adatvédelmi egyszerűsített biztonsági mentés és helyreállítás • szabott alapkezelő két speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Nincs rendelkezésre álló pénzeszközök küldeni erről a címről van";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Mielőtt módosítaná a mobil számát (%@) SMS-2-lépcsős ellenőrzés letiltása";
 
 /* (No Commment) */
 "You must enter a destination address" = "Meg kell adnia a cél címét";

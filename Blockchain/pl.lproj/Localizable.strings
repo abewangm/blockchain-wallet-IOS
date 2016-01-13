@@ -404,7 +404,7 @@
 "Identifier" = "Identyfikator";
 
 /* (No Commment) */
-"Import Address" = "Importowanie adresów";
+"Import Private Key" = "Klucza prywatnego importu";
 
 /* (No Commment) */
 "Imported Addresses" = "Importowane adresy";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
+
+/* (No Commment) */
+"PIN" = "KOD PIN";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN szyfrowane ciąg jest zerowe";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Uaktualnienie potrwa tylko chwilę i bitcoins i historia będzie bezpieczny. Oto co jest lepsze: \n\n• całkowicie zaktualizowane projekt i użytkownik przeżycie \n• solidne zabezpieczenia centrum \n• ulepszone prywatności \n• uproszczony kopii zapasowych i odzyskiwania \n• Customized zarządzania funduszami \n\ndwa typy transakcji zaawansowane (wydatki z adresów tylko zegarek i wspólne monety) nie są obsługiwane w nowej wersji w tym czasie.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Uaktualnienie potrwa tylko chwilę i bitcoins i historia będzie bezpieczny. Oto co jest lepsze: • całkowicie zaktualizowane projekt i użytkownik przeżycie • solidne zabezpieczenia centrum ulepszone prywatności • uproszczony kopii zapasowych i odzyskiwania • Customized zarządzania funduszami dwa typy transakcji zaawansowane (wydatki z adresów tylko zegarek i wspólne monety) nie są obsługiwane w nowej wersji w tym czasie.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Wystąpił problem podczas sprawdzania tożsamości.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "Zaprojektowaliśmy zupełnie nowe doświadczenie p
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Masz nie dostępnych środków z tego adresu";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Należy wyłączyć weryfikację SMS-em 2-krok przed zmianą numer telefonu komórkowego (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "Musisz wprowadzić adres docelowy";

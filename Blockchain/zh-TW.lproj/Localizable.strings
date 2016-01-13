@@ -404,7 +404,7 @@
 "Identifier" = "識別碼";
 
 /* (No Commment) */
-"Import Address" = "導入位址";
+"Import Private Key" = "導入私密金鑰";
 
 /* (No Commment) */
 "Imported Addresses" = "導入的位址";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "還行";
+
+/* (No Commment) */
+"PIN" = "PIN";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN 加密字串是零";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: \n\n• 完全更新設計和使用者體驗 \n• 魯棒安全中心\n• 增強隱私 \n• 簡化備份和恢復 \n• 定制基金管理\n\n兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: • 完全更新設計和使用者體驗 • 魯棒安全中心增強隱私 • 簡化備份和恢復 • 定制基金管理兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "還有一個問題，驗證您的身份。";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "你有沒有可用的資金，從該位址發送";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "您必須禁用短信 2 步驗證之前更改您的手機號碼 (%@)。";
 
 /* (No Commment) */
 "You must enter a destination address" = "您必須輸入目標位址";

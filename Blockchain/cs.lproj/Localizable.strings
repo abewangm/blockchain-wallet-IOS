@@ -404,7 +404,7 @@
 "Identifier" = "Identifikátor";
 
 /* (No Commment) */
-"Import Address" = "Importovat adresy";
+"Import Private Key" = "Importovat soukromý klíč";
 
 /* (No Commment) */
 "Imported Addresses" = "Importované adresy";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
+
+/* (No Commment) */
+"PIN" = "KÓD PIN";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN šifrovaný řetězec je nulová";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovace bude trvat jen chvilku a bitcoins a historie bude v bezpečí. Zde je to, co je lepší:\n\n• kompletně aktualizován designu a uživatelské zkušenosti \n• robustní bezpečnostní centrum \n• rozšířené soukromí \n• zjednodušené zálohování a zotavení \n• vlastní správy fondu\n\ndva typy rozšířené transakcí (výdaje z hodinek pouze adresy a sdílené mince) nejsou podporovány v nové verzi v tuto chvíli.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovace bude trvat jen chvilku a bitcoins a historie bude v bezpečí. Zde je to, co je lepší: • kompletně aktualizován designu a uživatelské zkušenosti • robustní bezpečnostní centrum • rozšířené soukromí • zjednodušené zálohování a zotavení • vlastní správy fondu dva typy rozšířené transakcí (výdaje z hodinek pouze adresy a sdílené mince) nejsou podporovány v nové verzi v tuto chvíli.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Došlo k problému s ověřením identity.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Žádné dostupné peníze poslat z této adresy";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Je třeba zakázat SMS 2krok ověření před změnou své mobilní číslo (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "Je třeba zadat cílovou adresu";

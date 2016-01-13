@@ -404,7 +404,7 @@
 "Identifier" = "Αναγνωριστικό";
 
 /* (No Commment) */
-"Import Address" = "Διεύθυνση εισαγωγών";
+"Import Private Key" = "Εισαγωγή ιδιωτικού κλειδιού";
 
 /* (No Commment) */
 "Imported Addresses" = "Εισηγμένες διευθύνσεις";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
+
+/* (No Commment) */
+"PIN" = "ΚΑΡΦΊΤΣΑ";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "Συμβολοσειρά κρυπτογραφημένα PIN είναι μηδενική";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: \n\n• Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία \n• ισχυρή ασφάλεια κέντρο \n• ενισχυμένη προστασία της ιδιωτικής \n• ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης \n• προσαρμοσμένη διαχείριση κεφαλαίων \n\nδύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: • Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία • ισχυρή ασφάλεια κέντρο • • ενισχυμένη προστασία της ιδιωτικής ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης • προσαρμοσμένη διαχείριση κεφαλαίων δύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Υπήρχε ένα πρόβλημα που επαληθεύει την ταυτότητά σας.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Έχετε καμία διαθέσιμα κεφάλαια να στείλει από αυτή τη διεύθυνση";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Πρέπει να απενεργοποιήσετε την επαλήθευση σε 2 βήματα SMS πριν να αλλάξετε τον αριθμό του κινητού σας (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "Πρέπει να πληκτρολογήσετε μια διεύθυνση προορισμού";

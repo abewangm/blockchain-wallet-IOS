@@ -404,7 +404,7 @@
 "Identifier" = "Id";
 
 /* (No Commment) */
-"Import Address" = "Adres importeren";
+"Import Private Key" = "Import persoonlijke sleutel";
 
 /* (No Commment) */
 "Imported Addresses" = "Geïmporteerde adressen";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "OK";
+
+/* (No Commment) */
+"PIN" = "PIN";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN gecodeerde String is gelijk aan nihil";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zullen veilig. Hier is wat is beter: \n\n• volledig bijgewerkt ontwerp en gebruikerservaring \n• robuuste beveiliging center \n• verbeterde Privacy vereenvoudigde back-up en herstel \n• aangepast vermogensbeheer\n\ntwee geavanceerde transactiesoorten (besteding van horloge-alleen adressen en gedeelde munt) worden niet ondersteund in de nieuwe versie op dit moment.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zullen veilig. Hier is wat is beter: • volledig bijgewerkt ontwerp en gebruikerservaring • robuuste beveiliging center • verbeterde Privacy vereenvoudigde back-up en herstel • aangepast vermogensbeheer twee geavanceerde transactiesoorten (besteding van horloge-alleen adressen en gedeelde munt) worden niet ondersteund in de nieuwe versie op dit moment.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Er was een probleem uw identiteit verifiëren.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "U hebt geen middelen voor het verzenden van dit adres";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Verificatie via SMS 2-Step voordat u wijzigt uw gsm-nummer (%@), moet u uitschakelen.";
 
 /* (No Commment) */
 "You must enter a destination address" = "U moet een doeladres invoeren";

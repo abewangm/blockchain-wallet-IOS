@@ -404,7 +404,7 @@
 "Identifier" = "المعرف";
 
 /* (No Commment) */
-"Import Address" = "استيراد العناوين";
+"Import Private Key" = "المفتاح الخاص الاستيراد";
 
 /* (No Commment) */
 "Imported Addresses" = "عناوين المستوردة";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "موافق";
+
+/* (No Commment) */
+"PIN" = "رقم التعريف الشخصي";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "سلسلة المشفرة دبوس صفراً";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل: •\n تحديث تماما تصميم والمستخدم تجربة •\n قوي الأمن مركز \"تعزيز الخصوصية\" •\n المبسطة النسخ الاحتياطي والاسترداد •\n\n مخصص صندوق الإدارة نوعين معاملة متقدمة (أنفاق من عناوين مشاهدة فقط وعمله مشتركة) غير معتمدة في الإصدار الجديد في هذا الوقت.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل: • تحديث تماما تصميم والمستخدم تجربة • قوي الأمن مركز \"تعزيز الخصوصية\" • المبسطة النسخ الاحتياطي والاسترداد • مخصص صندوق الإدارة نوعين معاملة متقدمة (أنفاق من عناوين مشاهدة فقط وعمله مشتركة) غير معتمدة في الإصدار الجديد في هذا الوقت.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "توجد مشكلة في التحقق من هويتك.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "لديك لا الأموال المتاحة لإرسال من هذا العنوان";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "يجب عليك تعطيل SMS 2-خطوة التحقق قبل تغيير رقم هاتفك النقال (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "يجب أن تقوم بإدخال عنوان الوجهة";

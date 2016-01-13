@@ -404,7 +404,7 @@
 "Identifier" = "Identifikator";
 
 /* (No Commment) */
-"Import Address" = "Importere adresse";
+"Import Private Key" = "Importer privatnøkkel";
 
 /* (No Commment) */
 "Imported Addresses" = "Importerte adresser";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "ok";
+
+/* (No Commment) */
+"PIN" = "PIN";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "PIN krypterte strengen er null";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Oppgraderingen tar bare et sekund og din bitcoins og historien vil være trygt. Her er hva er bedre: \n\n• oppdatert design og brukeropplevelse\n• Robust sikkerhet center \n• forbedret personvern \n• forenklet sikkerhetskopiering og gjenoppretting \n• tilpasset fondet ledelse\n\nto avanserte transaksjonstyper (bruke bare se adresser og delte mynt) ikke støttes i den nye versjonen på dette tidspunktet.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Oppgraderingen tar bare et sekund og din bitcoins og historien vil være trygt. Her er hva er bedre: • oppdatert design og brukeropplevelse Robust sikkerhet center forbedret personvern • forenklet sikkerhetskopiering og gjenoppretting • tilpasset fondet ledelse to avanserte transaksjonstyper (bruke bare se adresser og delte mynt) ikke støttes i den nye versjonen på dette tidspunktet.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Det oppstod et problem bekrefter din identitet.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Du har ingen tilgjengelige midler til å sende fra denne adressen";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Du må deaktivere SMS 2-Step-bekreftelse før du endrer mobiltelefonnummeret (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "Du må angi destinasjonsadresse";

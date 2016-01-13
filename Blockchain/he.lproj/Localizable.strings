@@ -404,7 +404,7 @@
 "Identifier" = "המזהה";
 
 /* (No Commment) */
-"Import Address" = "ייבוא כתובת";
+"Import Private Key" = "מפתח פרטי ייבוא";
 
 /* (No Commment) */
 "Imported Addresses" = "כתובות מיובאות";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "אוקיי";
+
+/* (No Commment) */
+"PIN" = "סיכה";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "מחרוזת מוצפנת PIN היא אפסית";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "יש לך אין מימון לשלוח מהכתובת הזאת";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "עליך לנטרל אימות דו-שלבי SMS לפני שינוי מספר הטלפון הנייד שלך (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "עליך להזין כתובת יעד";

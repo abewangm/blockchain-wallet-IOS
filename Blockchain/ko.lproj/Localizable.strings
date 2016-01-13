@@ -404,7 +404,7 @@
 "Identifier" = "식별자";
 
 /* (No Commment) */
-"Import Address" = "가져오기 주소";
+"Import Private Key" = "가져오기 개인 키";
 
 /* (No Commment) */
 "Imported Addresses" = "가져온된 주소";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "괜찮았던 것";
+
+/* (No Commment) */
+"PIN" = "핀";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "핀 암호화 문자열은 없음";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더: \n\n• 완전히 업데이트 디자인과 사용자 경험 \n• 강력한 보안 센터 \n• 향상 된 개인 정보 보호 정책 \n• 간체 백업 및 복구 \n• 사용자 지정 기금 관리\n\n두 고급 트랜잭션 유형 (시계 전용 주소를 공유 동전 지출)이 이번에 새로운 버전에서 지원 되지 않습니다.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더: 완전히 업데이트 • 디자인과 사용자 경험 • 강력한 보안 센터 • 향상 된 개인 정보 보호 정책 • 간체 백업 및 복구 • 사용자 지정 기금 관리 두 고급 트랜잭션 유형 (시계 전용 주소를 공유 동전 지출)이 이번에 새로운 버전에서 지원 되지 않습니다.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Id 확인 문제가 있었습니다.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "당신은이 주소에서 보내는 데 사용할 수 있는 자금";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "휴대폰 번호 (%@)를 변경 하기 전에 SMS 2 단계 인증을 해제 해야 합니다.";
 
 /* (No Commment) */
 "You must enter a destination address" = "대상 주소를 입력 해야 합니다.";

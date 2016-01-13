@@ -404,7 +404,7 @@
 "Identifier" = "Định danh";
 
 /* (No Commment) */
-"Import Address" = "Nhập địa chỉ";
+"Import Private Key" = "Khóa nhập khẩu riêng";
 
 /* (No Commment) */
 "Imported Addresses" = "Nhập khẩu địa chỉ";
@@ -594,6 +594,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
+
+/* (No Commment) */
+"PIN" = "MÃ PIN";
 
 /* (No Commment) */
 "PIN Encrypted String is nil" = "Mã PIN mã hóa chuỗi là con số không";
@@ -847,7 +850,7 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Việc nâng cấp có chỉ một lần thứ hai và bitcoins và lịch sử của bạn sẽ được an toàn. Dưới đây là những gì là tốt hơn: \n\n• hoàn toàn Cập Nhật thiết kế và người sử dụng kinh nghiệm \n• bảo mật mạnh mẽ Trung tâm • tăng cường bảo mật \n• giản thể sao lưu và phục hồi \n• Customized quản l ý quỹ hai loại nâng cao giao dịch (chi tiêu từ địa chỉ chỉ xem và chia sẻ xu) không được hỗ trợ trong phiên bản mới tại thời điểm này.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Việc nâng cấp có chỉ một lần thứ hai và bitcoins và lịch sử của bạn sẽ được an toàn. Dưới đây là những gì là tốt hơn: • hoàn toàn Cập Nhật thiết kế và người sử dụng kinh nghiệm • bảo mật mạnh mẽ Trung tâm • tăng cường bảo mật • giản thể sao lưu và phục hồi • Customized quản l ý quỹ hai loại nâng cao giao dịch (chi tiêu từ địa chỉ chỉ xem và chia sẻ xu) không được hỗ trợ trong phiên bản mới tại thời điểm này.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Đã có một vấn đề xác minh danh tính của bạn.";
@@ -1060,6 +1063,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Bạn có không có tiền có sẵn để gửi từ địa chỉ này";
+
+/* (No Commment) */
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Bạn phải vô hiệu hóa xác minh 2 bước qua SMS trước khi thay đổi số điện thoại di động của bạn (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "Bạn phải nhập một địa chỉ đích";
