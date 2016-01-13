@@ -439,6 +439,10 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"walletDidDecrypt");
     
+    if ([self isPinSet]) {
+        [self showHdUpgradeIfAppropriate];
+    }
+    
     if (showSendCoins) {
         [self showSendCoins];
         showSendCoins = NO;
@@ -1332,6 +1336,17 @@ void (^secondPasswordSuccess)(NSString *);
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
+- (void)showHdUpgradeIfAppropriate
+{
+#ifdef ENABLE_HD
+    if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN] && !self.pinEntryViewController && !_settingsNavigationController) {
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self showHdUpgrade];
+    }
+#endif
+}
+
 - (void)showHdUpgrade
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_UPGRADE bundle: nil];
@@ -2011,16 +2026,9 @@ void (^secondPasswordSuccess)(NSString *);
         [self closePINModal:YES];
         
         UIAlertView *alertViewSavedPINSuccessfully = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
-#ifdef ENABLE_HD
-        
         alertViewSavedPINSuccessfully.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN] && !self.pinEntryViewController && !_settingsNavigationController) {
-                [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                [self showHdUpgrade];
-            }
+            [self showHdUpgradeIfAppropriate];
         };
-#endif
         [alertViewSavedPINSuccessfully show];
     }
 }
@@ -2317,9 +2325,13 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)checkForNewInstall
 {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN] && [self guid] && [self sharedKey] && ![self isPinSet]) {
-        [self alertUserAskingToUseOldKeychain];
-        [[NSUserDefaults standardUserDefaults] setValue:USER_DEFAULTS_KEY_FIRST_RUN forKey:USER_DEFAULTS_KEY_FIRST_RUN];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN]) {
+        
+        if ([self guid] && [self sharedKey] && ![self isPinSet]) {
+            [self alertUserAskingToUseOldKeychain];
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_FIRST_RUN];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
