@@ -1205,7 +1205,7 @@ MyWalletPhone.update_tor_ip_block = function(willEnable) {
 }
 
 MyWalletPhone.updateServerURL = function(url) {
-    BlockchainAPI.ROOT_URL = url;
+    BlockchainAPI.ROOT_URL = url.concat('/');
     MyWallet.ws.headers = { 'Origin': url };
 }
 
