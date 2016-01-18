@@ -488,13 +488,13 @@
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").archived", [address escapeStringForJS]] boolValue];
 }
 
-- (BOOL)isValidAddress:(NSString*)string
+- (BOOL)isBitcoinAddress:(NSString*)string
 {
     if (![self isInitialized]) {
         return false;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.isValidAddress(\"%@\");", [string escapeStringForJS]] boolValue];
+    return [[self.webView executeJSSynchronous:@"Helpers.isBitcoinAddress(\"%@\");", [string escapeStringForJS]] boolValue];
 }
 
 - (NSArray*)allLegacyAddresses

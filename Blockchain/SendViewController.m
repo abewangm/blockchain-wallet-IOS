@@ -214,7 +214,7 @@ BOOL displayingLocalSymbolSend;
 {
     if (self.sendToAddress) {
         toField.text = [self labelForLegacyAddress:self.toAddress];
-        if ([app.wallet isValidAddress:toField.text]) {
+        if ([app.wallet isBitcoinAddress:toField.text]) {
             [self didSelectToAddress:self.toAddress];
         } else {
             toField.text = @"";
@@ -713,7 +713,7 @@ BOOL displayingLocalSymbolSend;
     } else if (textField == toField) {
         self.sendToAddress = true;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        if (self.toAddress && [app.wallet isValidAddress:self.toAddress]) {
+        if (self.toAddress && [app.wallet isBitcoinAddress:self.toAddress]) {
             [self didSelectToAddress:self.toAddress];
             return NO;
         }
@@ -987,7 +987,7 @@ BOOL displayingLocalSymbolSend;
                 
                 NSString *address = [dict objectForKey:@"address"];
                 
-                if (address == nil || ![app.wallet isValidAddress:address]) {
+                if (address == nil || ![app.wallet isBitcoinAddress:address]) {
                     [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ADDRESS_ARGUMENT, address]];
                     return;
                 }
@@ -1070,7 +1070,7 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-    if (self.sendToAddress && ![app.wallet isValidAddress:self.toAddress]) {
+    if (self.sendToAddress && ![app.wallet isBitcoinAddress:self.toAddress]) {
         [self showErrorBeforeSending:BC_STRING_INVALID_TO_BITCOIN_ADDRESS];
         return;
     }
