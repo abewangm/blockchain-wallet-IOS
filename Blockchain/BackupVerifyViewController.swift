@@ -148,11 +148,10 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     }
     
     func pleaseTryAgain() {
-        let alertView = UIAlertView()
-        alertView.title = NSLocalizedString("Error", comment:"")
-        alertView.message = NSLocalizedString("Please try again", comment:"")
-        alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
-        alertView.show()
+        let alert = UIAlertController(title:  NSLocalizedString("Error", comment:""), message: NSLocalizedString("Please try again", comment:""), preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .Default, handler:nil))
+        NSNotificationCenter.defaultCenter().addObserver(alert, selector: "autoDismiss", name: "reloadToDismissViews", object: nil)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     func textFieldDidChange() {
