@@ -134,6 +134,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_SECURITY_CENTER @"securityCenter"
 #define SEGUE_IDENTIFIER_DEBUG_MENU @"debugMenu"
 
+#define HOST_NAME_WALLET_SERVER @"blockchain.info"
+#define HOST_NAME_ZEROBLOCK @"zeroblock.com"
+#define HOST_NAME_DEV_SERVER @"blockchain.co.uk"
+
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info"
 #define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/api/merchant"
