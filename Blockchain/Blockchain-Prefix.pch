@@ -283,6 +283,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define TWO_STEP_AUTH_TYPE_YUBI_KEY 1
 #define TWO_STEP_AUTH_TYPE_NONE 0
 
+#define DELAY_KEYBOARD_DISMISSAL 0.6f
+
 #define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
 // TODO: Get from JS
 #define DUST_THRESHOLD 5460

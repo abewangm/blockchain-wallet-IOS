@@ -1544,7 +1544,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     if ([mainPasswordTextField isFirstResponder]) {
         [mainPasswordTextField resignFirstResponder];
-        [self performSelector:@selector(confirmForgetWalletWithBlock:) withObject:confirmForgetWalletBlock afterDelay:0.6f];
+        [self performSelector:@selector(confirmForgetWalletWithBlock:) withObject:confirmForgetWalletBlock afterDelay:DELAY_KEYBOARD_DISMISSAL];
     } else {
         [self confirmForgetWalletWithBlock:confirmForgetWalletBlock];
     }
@@ -1591,7 +1591,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self showBusyViewWithLoadingText:BC_STRING_LOADING_DOWNLOADING_WALLET];
     [mainPasswordTextField resignFirstResponder];
-    [self performSelector:@selector(loginMainPassword) withObject:nil afterDelay:0.6f];
+    [self performSelector:@selector(loginMainPassword) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
 }
 
 - (void)loginMainPassword

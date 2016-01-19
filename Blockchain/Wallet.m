@@ -1169,7 +1169,7 @@
     
     NSRange invalidEmailStringRange = [message rangeOfString:@"update-email-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (invalidEmailStringRange.location != NSNotFound) {
-        [self performSelector:@selector(on_update_email_error) withObject:nil afterDelay:0.1f];
+        [self performSelector:@selector(on_update_email_error) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
         return;
     }
     

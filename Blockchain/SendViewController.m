@@ -600,7 +600,7 @@ BOOL displayingLocalSymbolSend;
 {
     if ([self isKeyboardVisible]) {
         [self hideKeyboard];
-        [app performSelector:@selector(standardNotifyAutoDismissingController:) withObject:error afterDelay:0.6f];
+        [app performSelector:@selector(standardNotifyAutoDismissingController:) withObject:error afterDelay:DELAY_KEYBOARD_DISMISSAL];
     } else {
         [app standardNotifyAutoDismissingController:error];
     }
