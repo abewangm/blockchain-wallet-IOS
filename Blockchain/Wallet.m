@@ -757,6 +757,8 @@
         return;
     }
     
+    [self useDebugSettingsIfSet];
+    
     self.emptyAccountIndex = 0;
     self.recoveredAccountIndex = 0;
     [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\",\"%@\",\"%@\")", [email escapeStringForJS], [recoveryPassword escapeStringForJS], [passphrase escapeStringForJS]];
