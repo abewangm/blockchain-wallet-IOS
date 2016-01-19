@@ -787,9 +787,9 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *password = secondPasswordTextField.text;
     
     if ([password length] == 0) {
-        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        [app standardNotifyAutoDismissingController:BC_STRING_NO_PASSWORD_ENTERED];
     } else if(validateSecondPassword && ![wallet validateSecondPassword:password]) {
-        [app standardNotify:BC_STRING_SECOND_PASSWORD_INCORRECT];
+        [app standardNotifyAutoDismissingController:BC_STRING_SECOND_PASSWORD_INCORRECT];
         secondPasswordTextField.text = nil;
     } else {
         if (secondPasswordSuccess) {

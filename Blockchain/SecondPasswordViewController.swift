@@ -8,8 +8,6 @@
 
 import UIKit
 
-let BC_ALERTVIEW_SECOND_PASSWORD_ERROR_TAG = 2
-
 protocol SecondPasswordDelegate {
     func didGetSecondPassword(_: String)
     func returnToRootViewController(completionHandler: () -> Void ) -> Void
@@ -94,20 +92,13 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
         }
     }
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if alertView.tag == BC_ALERTVIEW_SECOND_PASSWORD_ERROR_TAG {
-            password?.text = ""
-        }
-    }
-    
     func alertUserWithErrorMessage(message : String) {
-        let alertView = UIAlertView()
-        alertView.title = NSLocalizedString("Error", comment:"")
-        alertView.message = message;
-        alertView.addButtonWithTitle(NSLocalizedString("OK", comment:""))
-        alertView.tag = BC_ALERTVIEW_SECOND_PASSWORD_ERROR_TAG;
-        alertView.delegate = self
-        alertView.show()
+        let alert = UIAlertController(title:  NSLocalizedString("Error", comment:""), message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .Default, handler: { (UIAlertAction) -> Void in
+             self.password?.text = ""
+        }))
+        NSNotificationCenter.defaultCenter().addObserver(alert, selector: "autoDismiss", name: "reloadToDismissViews", object: nil)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
