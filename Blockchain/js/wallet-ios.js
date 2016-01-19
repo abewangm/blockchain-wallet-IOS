@@ -1205,12 +1205,21 @@ MyWalletPhone.update_tor_ip_block = function(willEnable) {
 }
 
 MyWalletPhone.updateServerURL = function(url) {
-    BlockchainAPI.ROOT_URL = url.concat('/');
-    MyWallet.ws.headers = { 'Origin': url };
+    if (url.substring(url.length - 1) == '/') {
+        BlockchainAPI.ROOT_URL = url;
+        MyWallet.ws.headers = { 'Origin': url.substring(0, url.length - 1) };
+    } else {
+        BlockchainAPI.ROOT_URL = url.concat('/');
+        MyWallet.ws.headers = { 'Origin': url };
+    }
 }
 
 MyWalletPhone.updateWebsocketURL = function(url) {
-    MyWallet.ws.wsUrl = url;
+    if (url.substring(url.length - 1) == '/') {
+        MyWallet.ws.wsUrl = url.substring(0, url.length - 1);
+    } else {
+        MyWallet.ws.wsUrl = url;
+    }
 }
 
 MyWalletPhone.filteredWalletJSON = function() {

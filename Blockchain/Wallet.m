@@ -375,6 +375,7 @@
 
 - (void)parsePairingCode:(NSString*)code
 {
+    [self useDebugSettingsIfSet];
     [self.webView executeJS:@"MyWalletPhone.parsePairingCode(\"%@\");", [code escapeStringForJS]];
 }
 
