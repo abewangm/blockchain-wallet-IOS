@@ -346,7 +346,6 @@ int accountEntries = 0;
             [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
             cell.selectedBackgroundView = v;
         }
-#ifdef ENABLE_HD
         NSString *upgradeOrSecurityCenterTitle;
         if (!app.wallet.didUpgradeToHd) {
             upgradeOrSecurityCenterTitle = BC_STRING_UPGRADE_TO_V3;
@@ -368,18 +367,7 @@ int accountEntries = 0;
         }
         NSMutableArray *images;
         images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
-#else
-        if (indexPath.row == menuEntries - 1) {
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            return cell;
-        }
-        
-        NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
-        
-        NSMutableArray *images;
-        images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
-#endif
+
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         
@@ -467,15 +455,9 @@ int accountEntries = 0;
             [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
             
             // No separator for last entry of each section
-#ifdef ENABLE_HD
             if (indexPath.row == menuEntries - 1) {
                 [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
             }
-#else
-            if (indexPath.row == menuEntries - 1 || indexPath.row == menuEntries - 2) {
-                [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
-            }
-#endif
         }
     }
 }

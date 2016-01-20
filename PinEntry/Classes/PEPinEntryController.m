@@ -36,11 +36,7 @@ static NSString *getVersionLabelString()
     NSString *build = infoDictionary[@"CFBundleVersion"];
     NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
 #ifdef DEBUG
-    #ifdef ENABLE_HD
-        return [NSString stringWithFormat:@"%@ (v3)", versionAndBuild];
-    #else
-        return [NSString stringWithFormat:@"%@ (v2)", versionAndBuild];
-    #endif
+    return [NSString stringWithFormat:@"%@ (v3)", versionAndBuild];
 #else
     return[NSString stringWithFormat:@"%@", versionAndBuild];
 #endif
