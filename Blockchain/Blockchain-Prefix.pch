@@ -14,7 +14,6 @@
     #import "LocalizationConstants.h"
 #endif
 
-#define ENABLE_HD 1
 #define ENABLE_DEBUG_MENU 1
 
 #pragma mark - Colors
@@ -255,13 +254,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define MENU_CELL_INDEX_MERCHANT 2
 #define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 3
 #define MENU_CELL_INDEX_SUPPORT 4
-#ifdef ENABLE_HD
 #define MENU_CELL_INDEX_UPGRADE 0
 #define MENU_CELL_INDEX_LOGOUT 5
-#else
-#define MENU_CELL_INDEX_UPGRADE -1
-#define MENU_CELL_INDEX_LOGOUT 4
-#endif
 
 #define PIN_API_STATUS_CODE_DELETED 1
 #define PIN_API_STATUS_PIN_INCORRECT 2
