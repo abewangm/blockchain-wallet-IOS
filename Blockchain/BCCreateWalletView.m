@@ -330,7 +330,9 @@
         return NO;
     }
     
-    if ([emailTextField.text rangeOfString:@"@"].location == NSNotFound) {
+    if ([emailTextField.text hasPrefix:@"@"] ||
+        [emailTextField.text hasSuffix:@"@"] ||
+        ![emailTextField.text containsString:@"@"]) {
         [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS];
         [emailTextField becomeFirstResponder];
         return NO;
