@@ -758,7 +758,7 @@ UIAlertController *popupAddressArchive;
         
         if (didClickAccount) {
             weakSelf.clickedAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
-            [self setQRPayment];
+            [weakSelf setQRPayment];
         }
 
     }];
