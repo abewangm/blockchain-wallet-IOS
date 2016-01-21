@@ -138,7 +138,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define HOST_NAME_DEV_SERVER @"blockchain.co.uk"
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info"
-#define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
+#define DEFAULT_WEBSOCKET_SERVER @"wss://blockchain.info/inv"
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/api/merchant"
 
 #define HTML_CONNECT_SRC_PLACEHOLDER @"PLACEHOLDER_CONNECT_SRC"
