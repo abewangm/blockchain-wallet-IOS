@@ -126,7 +126,7 @@
 
 - (void)addToAddressBook:(NSString *)address label:(NSString *)label;
 
-- (BOOL)isValidAddress:(NSString *)string;
+- (BOOL)isBitcoinAddress:(NSString *)string;
 - (BOOL)isWatchOnlyLegacyAddress:(NSString*)address;
 
 - (void)cancelTxSigning;

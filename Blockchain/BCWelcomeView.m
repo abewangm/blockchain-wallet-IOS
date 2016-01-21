@@ -69,9 +69,6 @@ Boolean shouldShowAnimation;
         [self addSubview:self.recoverWalletButton];
         self.recoverWalletButton.enabled = NO;
         self.recoverWalletButton.alpha = 0.0;
-#ifndef ENABLE_HD
-        self.recoverWalletButton.hidden = YES;
-#endif
 #ifdef ENABLE_DEBUG_MENU
         UIButton *debugButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 80, 0, 80, 51)];
         debugButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -135,15 +132,7 @@ Boolean shouldShowAnimation;
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];
     NSString *build = infoDictionary[@"CFBundleVersion"];
     NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
-#ifdef DEBUG
-    #ifdef ENABLE_HD
-        versionLabel.text =  [NSString stringWithFormat:@"%@ (v3)", versionAndBuild];
-    #else
-        versionLabel.text =  [NSString stringWithFormat:@"%@ (v2)", versionAndBuild];
-    #endif
-#else
     versionLabel.text =  [NSString stringWithFormat:@"%@", versionAndBuild];
-#endif
     
     [self addSubview:versionLabel];
 }

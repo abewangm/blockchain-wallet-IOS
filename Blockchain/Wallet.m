@@ -375,6 +375,7 @@
 
 - (void)parsePairingCode:(NSString*)code
 {
+    [self useDebugSettingsIfSet];
     [self.webView executeJS:@"MyWalletPhone.parsePairingCode(\"%@\");", [code escapeStringForJS]];
 }
 
@@ -405,12 +406,7 @@
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
-#ifdef ENABLE_HD
     [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET, nil];
-#else
-    // make a legacy wallet
-    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", %i)", [__password escapeStringForJS], [__email escapeStringForJS], [@"" escapeStringForJS], 0];
-#endif
 }
 
 - (BOOL)needsSecondPassword
@@ -497,13 +493,13 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.isArchived(%d)", account] boolValue];
 }
 
-- (BOOL)isValidAddress:(NSString*)string
+- (BOOL)isBitcoinAddress:(NSString*)string
 {
     if (![self isInitialized]) {
         return false;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.isValidAddress(\"%@\");", [string escapeStringForJS]] boolValue];
+    return [[self.webView executeJSSynchronous:@"Helpers.isBitcoinAddress(\"%@\");", [string escapeStringForJS]] boolValue];
 }
 
 - (NSArray*)allLegacyAddresses
@@ -764,6 +760,8 @@
     if (![self.webView isLoaded]) {
         return;
     }
+    
+    [self useDebugSettingsIfSet];
     
     self.emptyAccountIndex = 0;
     self.recoveredAccountIndex = 0;
@@ -1159,13 +1157,6 @@
         return;
     }
     
-#ifndef ENABLE_HD
-    if ([self hasAccount]) {
-        // Prevent email authorization message from appearing
-        return;
-    }
-#endif
-    
     // Don't display an error message for this notice, instead show a note in the sideMenu
     if ([message isEqualToString:@"For Improved security add an email address to your account."]) {
         app.showEmailWarning = YES;
@@ -1175,7 +1166,7 @@
     
     NSRange invalidEmailStringRange = [message rangeOfString:@"update-email-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (invalidEmailStringRange.location != NSNotFound) {
-        [self performSelector:@selector(on_update_email_error) withObject:nil afterDelay:0.1f];
+        [self performSelector:@selector(on_update_email_error) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
         return;
     }
     
@@ -1248,15 +1239,6 @@
 {
     DLog(@"did_decrypt");
     
-#ifndef ENABLE_HD
-    if ([self hasAccount]) {
-        uint64_t walletVersion = [[self.webView executeJSSynchronous:@"APP_VERSION"] longLongValue];
-        [app standardNotify:[[NSString alloc] initWithFormat:BC_STRING_WALLET_VERSION_NOT_SUPPORTED, walletVersion]];
-        // prevent assignment of GUID/sharedKey
-        return;
-    }
-#endif
-    
     if (self.didPairAutomatically) {
         self.didPairAutomatically = NO;
         [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
@@ -1284,12 +1266,6 @@
     
     self.isNew = NO;
     
-#ifndef ENABLE_HD
-    if ([self hasAccount]) {
-        // prevent the PIN screen from loading
-        return;
-    }
-#endif
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)])
         [delegate walletDidFinishLoad];
 }
@@ -1618,13 +1594,13 @@
     DLog(@"on_error_recover_with_passphrase:");
     [self loading_stop];
     if (!error) {
-        [app standardNotify:BC_STRING_INVALID_RECOVERY_PHRASE];
+        [app standardNotifyAutoDismissingController:BC_STRING_INVALID_RECOVERY_PHRASE];
     } else if ([error isEqualToString:@""]) {
-        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION];
+        [app standardNotifyAutoDismissingController:BC_STRING_NO_INTERNET_CONNECTION];
     } else if ([error isEqualToString:ERROR_TIMEOUT_REQUEST]){
-        [app standardNotify:BC_STRING_TIMED_OUT];
+        [app standardNotifyAutoDismissingController:BC_STRING_TIMED_OUT];
     } else {
-        [app standardNotify:error];
+        [app standardNotifyAutoDismissingController:error];
     }
     if ([delegate respondsToSelector:@selector(didFailRecovery)])
         [delegate didFailRecovery];
@@ -1711,15 +1687,11 @@
 
 - (Boolean)didUpgradeToHd
 {
-#ifdef ENABLE_HD
     if (![self isInitialized]) {
         return NO;
     }
     
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.isUpgradedToHD"] boolValue];
-#else
-    return NO;
-#endif
 }
 
 - (void)getRecoveryPhrase:(NSString *)secondPassword;

@@ -14,7 +14,6 @@
     #import "LocalizationConstants.h"
 #endif
 
-#define ENABLE_HD 1
 #define ENABLE_DEBUG_MENU 1
 
 #pragma mark - Colors
@@ -134,7 +133,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_SECURITY_CENTER @"securityCenter"
 #define SEGUE_IDENTIFIER_DEBUG_MENU @"debugMenu"
 
-#define DEFAULT_WALLET_SERVER @"https://blockchain.info/"
+#define HOST_NAME_WALLET_SERVER @"blockchain.info"
+#define HOST_NAME_ZEROBLOCK @"zeroblock.com"
+#define HOST_NAME_DEV_SERVER @"blockchain.co.uk"
+
+#define DEFAULT_WALLET_SERVER @"https://blockchain.info"
 #define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/api/merchant"
 
@@ -250,17 +253,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define BALANCE_ENTRY_HEIGHT 58
 
 #define MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES 0
+#define MENU_CELL_INDEX_UPGRADE 1
 #define MENU_CELL_INDEX_SETTINGS 2
 #define MENU_CELL_INDEX_MERCHANT 3
 #define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 4
 #define MENU_CELL_INDEX_SUPPORT 5
-#ifdef ENABLE_HD
-#define MENU_CELL_INDEX_UPGRADE 1
 #define MENU_CELL_INDEX_LOGOUT 6
-#else
-#define MENU_CELL_INDEX_UPGRADE -1
-#define MENU_CELL_INDEX_LOGOUT 5
-#endif
 
 #define PIN_API_STATUS_CODE_DELETED 1
 #define PIN_API_STATUS_PIN_INCORRECT 2
@@ -281,6 +279,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define TWO_STEP_AUTH_TYPE_GOOGLE 4
 #define TWO_STEP_AUTH_TYPE_YUBI_KEY 1
 #define TWO_STEP_AUTH_TYPE_NONE 0
+
+#define DELAY_KEYBOARD_DISMISSAL 0.6f
 
 #define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
 // TODO: Get from JS

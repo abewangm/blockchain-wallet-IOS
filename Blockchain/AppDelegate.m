@@ -787,9 +787,9 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *password = secondPasswordTextField.text;
     
     if ([password length] == 0) {
-        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        [app standardNotifyAutoDismissingController:BC_STRING_NO_PASSWORD_ENTERED];
     } else if(validateSecondPassword && ![wallet validateSecondPassword:password]) {
-        [app standardNotify:BC_STRING_SECOND_PASSWORD_INCORRECT];
+        [app standardNotifyAutoDismissingController:BC_STRING_SECOND_PASSWORD_INCORRECT];
         secondPasswordTextField.text = nil;
     } else {
         if (secondPasswordSuccess) {
@@ -1349,13 +1349,11 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showHdUpgradeIfAppropriate
 {
-#ifdef ENABLE_HD
     if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN] && !self.pinEntryViewController && !_settingsNavigationController) {
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self showHdUpgrade];
     }
-#endif
 }
 
 - (void)showHdUpgrade
@@ -1560,7 +1558,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     if ([mainPasswordTextField isFirstResponder]) {
         [mainPasswordTextField resignFirstResponder];
-        [self performSelector:@selector(confirmForgetWalletWithBlock:) withObject:confirmForgetWalletBlock afterDelay:0.6f];
+        [self performSelector:@selector(confirmForgetWalletWithBlock:) withObject:confirmForgetWalletBlock afterDelay:DELAY_KEYBOARD_DISMISSAL];
     } else {
         [self confirmForgetWalletWithBlock:confirmForgetWalletBlock];
     }
@@ -1607,7 +1605,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self showBusyViewWithLoadingText:BC_STRING_LOADING_DOWNLOADING_WALLET];
     [mainPasswordTextField resignFirstResponder];
-    [self performSelector:@selector(loginMainPassword) withObject:nil afterDelay:0.6f];
+    [self performSelector:@selector(loginMainPassword) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
 }
 
 - (void)loginMainPassword

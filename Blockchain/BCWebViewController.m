@@ -137,8 +137,9 @@ NSMutableArray *visitedPages;
 {
     // External sites open in the system browser
     NSString *hostname = [[request URL] host];
-    if ([hostname rangeOfString:@"blockchain.info"].location == NSNotFound &&
-        [hostname rangeOfString:@"zeroblock.com"].location == NSNotFound) {
+    if ([hostname rangeOfString:HOST_NAME_WALLET_SERVER].location == NSNotFound &&
+        [hostname rangeOfString:HOST_NAME_ZEROBLOCK].location == NSNotFound &&
+        [hostname rangeOfString:HOST_NAME_DEV_SERVER].location == NSNotFound) {
         [[UIApplication sharedApplication] openURL:[request URL]];
         
         return FALSE;
