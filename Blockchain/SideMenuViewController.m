@@ -30,7 +30,7 @@ ECSlidingViewController *sideMenu;
 
 UITapGestureRecognizer *tapToCloseGestureRecognizer;
 
-const int menuEntries = 6;
+const int menuEntries = 7;
 int balanceEntries = 0;
 int accountEntries = 0;
 
@@ -216,7 +216,9 @@ int accountEntries = 0;
     NSInteger row = indexPath.row;
     BOOL didUpgradeToHD = app.wallet.didUpgradeToHd;
     
-    if(row == MENU_CELL_INDEX_SETTINGS) {
+    if (row == MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES) {
+        [app accountsAndAddressesClicked:nil];
+    } else if (row == MENU_CELL_INDEX_SETTINGS) {
         [app accountSettingsClicked:nil];
     } else if (row == MENU_CELL_INDEX_MERCHANT){
         [app merchantClicked:nil];
@@ -356,7 +358,7 @@ int accountEntries = 0;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[BC_STRING_ADDRESSES, upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
         
         NSString *upgradeOrSecurityCenterImage;
         if (!app.wallet.didUpgradeToHd) {
@@ -367,7 +369,7 @@ int accountEntries = 0;
             upgradeOrSecurityCenterImage = @"security";
         }
         NSMutableArray *images;
-        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[@"addresses_icon", upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
 #else
         if (indexPath.row == menuEntries - 1) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -375,7 +377,7 @@ int accountEntries = 0;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[@"", BC_STRING_SETTINGS, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
         
         NSMutableArray *images;
         images = [NSMutableArray arrayWithArray:@[@"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];

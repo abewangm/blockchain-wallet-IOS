@@ -122,7 +122,7 @@
 - (void)sendPaymentWithListener:(transactionProgressListeners*)listener;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
-- (Boolean)isArchived:(NSString*)address;
+- (Boolean)isAddressArchived:(NSString *)address;
 
 - (void)addToAddressBook:(NSString *)address label:(NSString *)label;
 
@@ -180,6 +180,7 @@
 - (int)getDefaultAccountIndex;
 - (int)getAccountsCount;
 - (BOOL)hasLegacyAddresses;
+- (Boolean)isAccountArchived:(int)account;
 
 - (uint64_t)getTotalActiveBalance;
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses;

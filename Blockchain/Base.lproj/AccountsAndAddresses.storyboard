@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rBZ-dM-VjN">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Accounts And Addresses Navigation Controller-->
+        <scene sceneID="EWG-pC-SH1">
+            <objects>
+                <navigationController storyboardIdentifier="AccountsAndAddressesNavigationController" id="rBZ-dM-VjN" customClass="AccountsAndAddressesNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fLg-pU-lZW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qg8-BR-Nzw" kind="relationship" relationship="rootViewController" id="O4a-Cu-lZ8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ua-k8-lnb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-342" y="415"/>
+        </scene>
+        <!--Accounts And Addresses View Controller-->
+        <scene sceneID="QDV-5v-54G">
+            <objects>
+                <viewController id="qg8-BR-Nzw" customClass="AccountsAndAddressesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TWv-0K-tFs"/>
+                        <viewControllerLayoutGuide type="bottom" id="KPV-iG-9mu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tSL-c0-Xii">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nGf-MK-yxQ"/>
+                    <connections>
+                        <segue destination="awo-1T-il6" kind="show" identifier="accountsAndAddressesDetail" id="4Ur-Kq-eUe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="97n-UC-z3C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="333" y="415"/>
+        </scene>
+        <!--Accounts And Addresses Detail View Controller-->
+        <scene sceneID="Gkz-0l-bLq">
+            <objects>
+                <viewController id="awo-1T-il6" customClass="AccountsAndAddressesDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Pj-yu-cn9"/>
+                        <viewControllerLayoutGuide type="bottom" id="ct4-R7-AyU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r5u-fP-21C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZh-Gh-g95" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="415"/>
+        </scene>
+    </scenes>
+</document>

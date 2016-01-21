@@ -125,7 +125,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
 #define SEGUE_IDENTIFIER_ABOUT @"about"
-
+#define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL @"accountsAndAddressesDetail"
 #define SEGUE_IDENTIFIER_TWO_STEP @"twoStep"
 #define SEGUE_IDENTIFIER_UPGRADE_DETAILS @"upgradeDetails"
 
@@ -202,10 +202,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define QR_CODE_KEY_SHARED_KEY @"sharedKey"
 #define QR_CODE_KEY_PASSWORD @"password"
 
+#define STORYBOARD_NAME_ACCOUNTS_AND_ADDRESSES @"AccountsAndAddresses"
 #define STORYBOARD_NAME_SETTINGS @"Settings"
 #define STORYBOARD_NAME_BACKUP @"Backup"
 #define STORYBOARD_NAME_UPGRADE @"Upgrade"
 
+#define NAVIGATION_CONTROLLER_NAME_ACCOUNTS_AND_ADDRESSES @"AccountsAndAddressesNavigationController"
 #define NAVIGATION_CONTROLLER_NAME_SETTINGS @"SettingsNavigationController"
 #define NAVIGATION_CONTROLLER_NAME_BACKUP @"BackupNavigation"
 
@@ -247,16 +249,17 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define MENU_ENTRY_HEIGHT 54
 #define BALANCE_ENTRY_HEIGHT 58
 
-#define MENU_CELL_INDEX_SETTINGS 1
-#define MENU_CELL_INDEX_MERCHANT 2
-#define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 3
-#define MENU_CELL_INDEX_SUPPORT 4
+#define MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES 0
+#define MENU_CELL_INDEX_SETTINGS 2
+#define MENU_CELL_INDEX_MERCHANT 3
+#define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 4
+#define MENU_CELL_INDEX_SUPPORT 5
 #ifdef ENABLE_HD
-#define MENU_CELL_INDEX_UPGRADE 0
-#define MENU_CELL_INDEX_LOGOUT 5
+#define MENU_CELL_INDEX_UPGRADE 1
+#define MENU_CELL_INDEX_LOGOUT 6
 #else
 #define MENU_CELL_INDEX_UPGRADE -1
-#define MENU_CELL_INDEX_LOGOUT 4
+#define MENU_CELL_INDEX_LOGOUT 5
 #endif
 
 #define PIN_API_STATUS_CODE_DELETED 1

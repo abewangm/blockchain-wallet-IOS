@@ -668,7 +668,7 @@ UIAlertController *popupAddressArchive;
 - (IBAction)archiveAddressClicked:(id)sender
 {
     NSString *addr = self.clickedAddress;
-    Boolean isArchived = [app.wallet isArchived:addr];
+    Boolean isArchived = [app.wallet isAddressArchived:addr];
     
     if (isArchived) {
         [app.wallet unArchiveLegacyAddress:addr];

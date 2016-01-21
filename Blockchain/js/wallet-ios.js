@@ -242,6 +242,15 @@ MyWalletPhone.getReceivingAddressForAccount = function(num) {
     return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].receiveAddress;
 };
 
+MyWalletPhone.isArchived = function(accountOrAddress) {
+    if (Helpers.isNumber(accountOrAddress) && accountOrAddress >= 0) {
+        return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(accountOrAddress)].archived;
+    } else if (accountOrAddress){
+        return MyWallet.wallet.key(accountOrAddress).archived;
+    }
+    return false;
+}
+
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment');
     currentPayment = new Payment();

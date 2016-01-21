@@ -479,13 +479,22 @@
     }
 }
 
-- (Boolean)isArchived:(NSString*)address
+- (Boolean)isAddressArchived:(NSString *)address
+{
+    if (![self isInitialized] || !address) {
+        return FALSE;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isArchived(\"%@\")", [address escapeStringForJS]] boolValue];
+}
+
+- (Boolean)isAccountArchived:(int)account
 {
     if (![self isInitialized]) {
         return FALSE;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").archived", [address escapeStringForJS]] boolValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isArchived(%d)", account] boolValue];
 }
 
 - (BOOL)isValidAddress:(NSString*)string

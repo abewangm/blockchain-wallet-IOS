@@ -1176,6 +1176,17 @@ void (^secondPasswordSuccess)(NSString *);
 
 #pragma mark - Show Screens
 
+- (void)showAccountsAndAddresses
+{
+    if (!_accountsAndAddressesNavigationController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_ACCOUNTS_AND_ADDRESSES bundle:nil];
+        self.accountsAndAddressesNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_ACCOUNTS_AND_ADDRESSES];
+    }
+    
+    self.accountsAndAddressesNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [_tabViewController presentViewController:self.accountsAndAddressesNavigationController animated:YES completion:nil];
+}
+
 - (void)showSecurityCenter
 {
     if (!_settingsNavigationController) {
@@ -1406,6 +1417,11 @@ void (^secondPasswordSuccess)(NSString *);
 //    else {
         [self pushWebViewController:ZEROBLOCK_ADDRESS title:ZEROBLOCK_TITLE];
 //    }
+}
+
+- (IBAction)accountsAndAddressesClicked:(id)sender
+{
+    [app showAccountsAndAddresses];
 }
 
 - (IBAction)accountSettingsClicked:(id)sender

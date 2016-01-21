@@ -31,6 +31,7 @@
 #import "UpgradeViewController.h"
 #import "SettingsNavigationController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AccountsAndAddressesNavigationController.h"
 
 @class TransactionsViewController, Wallet, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController;
 
@@ -71,6 +72,7 @@
 @property (strong, nonatomic) IBOutlet BCWebViewController *bcWebViewController;
 @property (strong, nonatomic) IBOutlet BackupNavigationViewController *backupNavigationViewController;
 @property (strong, nonatomic) SettingsNavigationController *settingsNavigationController;
+@property (strong, nonatomic) AccountsAndAddressesNavigationController *accountsAndAddressesNavigationController;
 
 @property (strong, nonatomic) IBOutlet UIImageView *mainLogoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;
@@ -174,6 +176,7 @@
 - (IBAction)manualPairClicked:(id)sender;
 
 - (IBAction)newsClicked:(id)sender;
+- (IBAction)accountsAndAddressesClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
 - (IBAction)securityCenterClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;

@@ -23,12 +23,16 @@
 		233475F81BF4F8FB0056AB4E /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */; };
 		236F32791C15F97D00BC89F3 /* UpgradeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F32781C15F97D00BC89F3 /* UpgradeDetailsViewController.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
+		237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
 		239CD4C81C12214A00997DF5 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239CD4CA1C12214A00997DF5 /* Settings.storyboard */; };
 		239CD5171C12217F00997DF5 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239CD5191C12217F00997DF5 /* Upgrade.storyboard */; };
 		239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239CD5671C122BDE00997DF5 /* SettingsTwoStepViewController.m */; };
+		23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF73381C454B8C00204503 /* AccountsAndAddressesNavigationController.m */; };
+		23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF733B1C455DDB00204503 /* AccountsAndAddressesViewController.m */; };
 		23C95EA61C0779C600E4692A /* SettingsChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C95EA51C0779C600E4692A /* SettingsChangePasswordViewController.m */; };
 		23D3A6291C0F699900DEF737 /* SecurityCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D3A6281C0F699900DEF737 /* SecurityCenterViewController.m */; };
+		23D5DB501C4415AE007AD0A2 /* AccountsAndAddresses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D5DB521C4415AE007AD0A2 /* AccountsAndAddresses.storyboard */; };
 		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
 		23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C41B54258D0032B907 /* SettingsTableViewController.m */; };
 		23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C71B54282D0032B907 /* SettingsNavigationController.m */; };
@@ -369,6 +373,8 @@
 		2374BFB21B750ECA00A53FBE /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Backup.strings; sourceTree = "<group>"; };
 		2374BFB41B750EDE00A53FBE /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Backup.strings; sourceTree = "<group>"; };
 		237827191B7E472D00E9EE03 /* BCSecureTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCSecureTextField.swift; sourceTree = "<group>"; };
+		237C9E8E1C482132000754F7 /* AccountsAndAddressesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesDetailViewController.h; sourceTree = "<group>"; };
+		237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesDetailViewController.m; sourceTree = "<group>"; };
 		239539811B486C7100989667 /* UILabel+MultiLineAutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MultiLineAutoSize.h"; sourceTree = "<group>"; };
 		239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MultiLineAutoSize.m"; sourceTree = "<group>"; };
 		239CD4C91C12214A00997DF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -451,6 +457,10 @@
 		239CD5651C12223300997DF5 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Upgrade.strings"; sourceTree = "<group>"; };
 		239CD5661C122BDE00997DF5 /* SettingsTwoStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTwoStepViewController.h; sourceTree = "<group>"; };
 		239CD5671C122BDE00997DF5 /* SettingsTwoStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTwoStepViewController.m; sourceTree = "<group>"; };
+		23BF73371C454B8C00204503 /* AccountsAndAddressesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesNavigationController.h; sourceTree = "<group>"; };
+		23BF73381C454B8C00204503 /* AccountsAndAddressesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesNavigationController.m; sourceTree = "<group>"; };
+		23BF733A1C455DDB00204503 /* AccountsAndAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesViewController.h; sourceTree = "<group>"; };
+		23BF733B1C455DDB00204503 /* AccountsAndAddressesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesViewController.m; sourceTree = "<group>"; };
 		23C95EA41C0779C600E4692A /* SettingsChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsChangePasswordViewController.h; sourceTree = "<group>"; };
 		23C95EA51C0779C600E4692A /* SettingsChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsChangePasswordViewController.m; sourceTree = "<group>"; };
 		23CEC69C1BA0C0F600F102BF /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/SendCoins.strings; sourceTree = "<group>"; };
@@ -479,6 +489,46 @@
 		23CEC6BA1BA0C26100F102BF /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		23D3A6271C0F699900DEF737 /* SecurityCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityCenterViewController.h; sourceTree = "<group>"; };
 		23D3A6281C0F699900DEF737 /* SecurityCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityCenterViewController.m; sourceTree = "<group>"; };
+		23D5DB511C4415AE007AD0A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AccountsAndAddresses.storyboard; sourceTree = "<group>"; };
+		23D5DB541C4415B1007AD0A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB561C4415B1007AD0A2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB581C4415B2007AD0A2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB5A1C4415B4007AD0A2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB5C1C4415B5007AD0A2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
+		23D5DB5E1C4415B5007AD0A2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB601C4415B6007AD0A2 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB621C4415B6007AD0A2 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB641C4415B7007AD0A2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB661C4415B7007AD0A2 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
+		23D5DB681C4415B8007AD0A2 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB6A1C4415B8007AD0A2 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
+		23D5DB6C1C4415B9007AD0A2 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB6E1C4415BA007AD0A2 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB701C4415BA007AD0A2 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB721C4415BB007AD0A2 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB741C4415BC007AD0A2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB761C4415BC007AD0A2 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB781C4415BD007AD0A2 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB7A1C4415BE007AD0A2 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB7C1C4415BE007AD0A2 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB7E1C4415BF007AD0A2 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB801C4415C0007AD0A2 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB821C4415C4007AD0A2 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB841C4415C4007AD0A2 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB861C4415C5007AD0A2 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB881C4415C5007AD0A2 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB8A1C4415C6007AD0A2 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB8C1C4415C7007AD0A2 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB8E1C4415C7007AD0A2 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB901C4415C9007AD0A2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB921C4415CF007AD0A2 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB941C4415CF007AD0A2 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB961C4415D0007AD0A2 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
+		23D5DB981C4415D1007AD0A2 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB9A1C4415D1007AD0A2 /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
+		23D5DB9C1C4415D2007AD0A2 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/AccountsAndAddresses.strings; sourceTree = "<group>"; };
+		23D5DB9E1C4415D3007AD0A2 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
+		23D5DBA01C4415D3007AD0A2 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
 		23D9F26E1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsBitcoinUnitTableViewController.h; sourceTree = "<group>"; };
 		23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsBitcoinUnitTableViewController.m; sourceTree = "<group>"; };
 		23EA61C31B54258D0032B907 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
@@ -975,6 +1025,12 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				237C9E8E1C482132000754F7 /* AccountsAndAddressesDetailViewController.h */,
+				237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */,
+				23BF733A1C455DDB00204503 /* AccountsAndAddressesViewController.h */,
+				23BF733B1C455DDB00204503 /* AccountsAndAddressesViewController.m */,
+				23BF73371C454B8C00204503 /* AccountsAndAddressesNavigationController.h */,
+				23BF73381C454B8C00204503 /* AccountsAndAddressesNavigationController.m */,
 				6775569719E752A00054699B /* BCWebViewController.h */,
 				6775569819E752A00054699B /* BCWebViewController.m */,
 				FACF69501A57164B00590E04 /* MerchantMapDetailViewController.h */,
@@ -1109,6 +1165,7 @@
 				C9D4B2B0193E024700EDA9EA /* Sounds */,
 				C9D4B2B1193E026500EDA9EA /* Xibs */,
 				A2599BAC1B0B762400C2EA81 /* Backup.storyboard */,
+				23D5DB521C4415AE007AD0A2 /* AccountsAndAddresses.storyboard */,
 				239CD5191C12217F00997DF5 /* Upgrade.storyboard */,
 				239CD4CA1C12214A00997DF5 /* Settings.storyboard */,
 			);
@@ -1201,7 +1258,7 @@
 				ORGANIZATIONNAME = "Qkos Services Ltd";
 				TargetAttributes = {
 					9FB3637014B60128004BEA02 = {
-						DevelopmentTeam = NZ6PH75U7K;
+						DevelopmentTeam = X7HZN828N4;
 					};
 				};
 			};
@@ -1293,6 +1350,7 @@
 				C9BE91821945D8F600FD516D /* PEKeyboard-1-next.png in Resources */,
 				ECD244ED19A8AC45004B1F40 /* PEKeyboard-3-edit.png in Resources */,
 				239CD4C81C12214A00997DF5 /* Settings.storyboard in Resources */,
+				23D5DB501C4415AE007AD0A2 /* AccountsAndAddresses.storyboard in Resources */,
 				9F7480D31514030800BC4292 /* alert-received.wav in Resources */,
 				C9BE917F1945D8F600FD516D /* PEKeyboard-1-done.png in Resources */,
 				C9BE91871945D8F600FD516D /* PEKeyboard-2-next.png in Resources */,
@@ -1367,6 +1425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */,
 				9F1831EB1516AE3500FB3D52 /* NSString+URLEncode.m in Sources */,
 				23EA61CB1B5591260032B907 /* SettingsSelectorTableViewController.m in Sources */,
 				678AD5E919D4610000E9A778 /* BCModalContentView.m in Sources */,
@@ -1399,6 +1458,7 @@
 				9F765F4714BC8AEF00048EFB /* MultiAddressResponse.m in Sources */,
 				FA6323391A433B1C00EB3974 /* Foundation-Utility.m in Sources */,
 				239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */,
+				23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */,
 				2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */,
 				9F2D934A14C05DD00053F0FF /* Address.m in Sources */,
 				67FA1A4D1ABA092D000C9196 /* RegExCategories.m in Sources */,
@@ -1434,6 +1494,7 @@
 				670DF94B1A43BCB200CEA1EA /* Reachability.m in Sources */,
 				67EE1DCE19E3325900DBBFC9 /* ECSlidingViewController.m in Sources */,
 				6780DB981A40BDF40048EED2 /* AccountInOut.m in Sources */,
+				23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */,
 				9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */,
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,
 				233475F81BF4F8FB0056AB4E /* DeviceIdentifier.m in Sources */,
@@ -1790,6 +1851,53 @@
 			name = Upgrade.storyboard;
 			sourceTree = "<group>";
 		};
+		23D5DB521C4415AE007AD0A2 /* AccountsAndAddresses.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23D5DB511C4415AE007AD0A2 /* Base */,
+				23D5DB541C4415B1007AD0A2 /* en */,
+				23D5DB561C4415B1007AD0A2 /* fr */,
+				23D5DB581C4415B2007AD0A2 /* es */,
+				23D5DB5A1C4415B4007AD0A2 /* de */,
+				23D5DB5C1C4415B5007AD0A2 /* zh-Hans */,
+				23D5DB5E1C4415B5007AD0A2 /* ja */,
+				23D5DB601C4415B6007AD0A2 /* it */,
+				23D5DB621C4415B6007AD0A2 /* nl */,
+				23D5DB641C4415B7007AD0A2 /* ko */,
+				23D5DB661C4415B7007AD0A2 /* zh-Hant */,
+				23D5DB681C4415B8007AD0A2 /* pt */,
+				23D5DB6A1C4415B8007AD0A2 /* pt-PT */,
+				23D5DB6C1C4415B9007AD0A2 /* da */,
+				23D5DB6E1C4415BA007AD0A2 /* fi */,
+				23D5DB701C4415BA007AD0A2 /* nb */,
+				23D5DB721C4415BB007AD0A2 /* sv */,
+				23D5DB741C4415BC007AD0A2 /* ru */,
+				23D5DB761C4415BC007AD0A2 /* pl */,
+				23D5DB781C4415BD007AD0A2 /* tr */,
+				23D5DB7A1C4415BE007AD0A2 /* ar */,
+				23D5DB7C1C4415BE007AD0A2 /* th */,
+				23D5DB7E1C4415BF007AD0A2 /* cs */,
+				23D5DB801C4415C0007AD0A2 /* hu */,
+				23D5DB821C4415C4007AD0A2 /* ca */,
+				23D5DB841C4415C4007AD0A2 /* hr */,
+				23D5DB861C4415C5007AD0A2 /* el */,
+				23D5DB881C4415C5007AD0A2 /* he */,
+				23D5DB8A1C4415C6007AD0A2 /* ro */,
+				23D5DB8C1C4415C7007AD0A2 /* sk */,
+				23D5DB8E1C4415C7007AD0A2 /* id */,
+				23D5DB901C4415C9007AD0A2 /* uk */,
+				23D5DB921C4415CF007AD0A2 /* ms */,
+				23D5DB941C4415CF007AD0A2 /* vi */,
+				23D5DB961C4415D0007AD0A2 /* es-ES */,
+				23D5DB981C4415D1007AD0A2 /* hi */,
+				23D5DB9A1C4415D1007AD0A2 /* sv-SE */,
+				23D5DB9C1C4415D2007AD0A2 /* sl */,
+				23D5DB9E1C4415D3007AD0A2 /* zh-CN */,
+				23D5DBA01C4415D3007AD0A2 /* zh-TW */,
+			);
+			name = AccountsAndAddresses.storyboard;
+			sourceTree = "<group>";
+		};
 		A2599BAC1B0B762400C2EA81 /* Backup.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1956,7 +2064,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
