@@ -1201,7 +1201,7 @@
 				ORGANIZATIONNAME = "Qkos Services Ltd";
 				TargetAttributes = {
 					9FB3637014B60128004BEA02 = {
-						DevelopmentTeam = NZ6PH75U7K;
+						DevelopmentTeam = X7HZN828N4;
 					};
 				};
 			};
@@ -1956,7 +1956,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
