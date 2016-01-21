@@ -755,6 +755,12 @@ UIAlertController *popupAddressArchive;
                 [weakSelf alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
             }
         }
+        
+        if (didClickAccount) {
+            weakSelf.clickedAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
+            [self setQRPayment];
+        }
+
     }];
 }
 
