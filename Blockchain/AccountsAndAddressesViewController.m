@@ -114,7 +114,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 45.0f;
+    if (section == 0 && ![app.wallet didUpgradeToHd]) {
+        return 0;
+    } else {
+        return 45.0f;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
