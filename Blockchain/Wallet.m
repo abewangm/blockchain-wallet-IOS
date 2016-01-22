@@ -1742,6 +1742,15 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.getDefaultAccountIndex()"] intValue];
 }
 
+- (void)setDefaultAccount:(int)index
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJSSynchronous:@"MyWalletPhone.setDefaultAccount(%d)", index];
+}
+
 - (BOOL)hasLegacyAddresses
 {
     if (![self isInitialized]) {

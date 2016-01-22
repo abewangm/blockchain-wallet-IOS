@@ -178,6 +178,7 @@
 - (BOOL)isRecoveryPhraseVerified;
 - (void)markRecoveryPhraseVerified;
 - (int)getDefaultAccountIndex;
+- (void)setDefaultAccount:(int)index;
 - (int)getAccountsCount;
 - (BOOL)hasLegacyAddresses;
 - (Boolean)isAccountArchived:(int)account;

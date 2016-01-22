@@ -21,15 +21,6 @@ const int numberOfSectionsArchived = 1;
 const int numberOfRowsAccountUnarchived = 3;
 const int numberOfRowsAddressUnarchived = 3;
 
-const int rowAccountUnarchivedName = 0;
-const int rowAccountUnarchivedMakeDefault = 1;
-const int rowAccountUnarchivedExtendedPublicKey = 2;
-
-const int rowAddressUnarchivedName = 0;
-const int rowAddressUnarchivedDetail = 1;
-const int rowAddressUnarchivedArchive = 2;
-const int rowAddressUnarchivedScanPrivateKey = 2;
-
 const int sectionArchived = 1;
 const int numberOfRowsArchived = 1;
 
@@ -63,6 +54,16 @@ const int numberOfRowsArchived = 1;
 }
 
 - (void)labelAccountClicked
+{
+    
+}
+
+- (void)showAddress:(NSString *)address
+{
+    
+}
+
+- (void)showAccountXPub:(int)account
 {
     
 }
@@ -106,9 +107,13 @@ const int numberOfRowsArchived = 1;
     if (section == 0) {
         
         if ([self isArchived]) {
-            return 1;
+            return numberOfRowsArchived;
         } else {
-            return self.address ? numberOfRowsAddressUnarchived : numberOfRowsAccountUnarchived;
+            if (self.address) {
+                return numberOfRowsAddressUnarchived;
+            } else {
+                return [app.wallet getDefaultAccountIndex] == self.account ? numberOfRowsAccountUnarchived - 1 : numberOfRowsAccountUnarchived;
+            }
         }
     }
     
@@ -125,10 +130,36 @@ const int numberOfRowsArchived = 1;
     
     switch (indexPath.section) {
         case 0: {
-            if (self.address) {
-                [self labelAddressClicked];
+            if ([self isArchived]) {
+                switch (indexPath.row) {
+                    case 0: {
+                        return;
+                    }
+                }
             } else {
-                [self labelAccountClicked];
+                switch (indexPath.row) {
+                    case 0: {
+                        if (self.address) {
+                            [self labelAddressClicked];
+                        } else {
+                            [self labelAccountClicked];
+                        }
+                        return;
+                    }
+                    case 1: {
+                        if (self.address) {
+                            [self showAddress:self.address];
+                        } else {
+                            if ([app.wallet getDefaultAccountIndex] != self.account) {
+                                [app.wallet setDefaultAccount:self.account];
+                            } else {
+                                [self showAccountXPub:self.account];
+                            }
+                        }
+                        return;
+                    }
+                    
+                }
             }
         }
     }
@@ -162,7 +193,11 @@ const int numberOfRowsArchived = 1;
                         cell.textLabel.text = BC_STRING_ADDRESS;
                         cell.detailTextLabel.text = self.address;
                     } else {
-                        cell.textLabel.text = BC_STRING_MAKE_DEFAULT;
+                        if ([app.wallet getDefaultAccountIndex] != self.account) {
+                            cell.textLabel.text = BC_STRING_MAKE_DEFAULT;
+                        } else {
+                            cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
+                        }
                     }
                     return cell;
                 }

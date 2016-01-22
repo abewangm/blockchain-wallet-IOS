@@ -195,6 +195,10 @@
         int accountIndex = (int) indexPath.row;
         NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex];
         
+        if ([app.wallet getDefaultAccountIndex] == accountIndex) {
+            
+        }
+        
         ReceiveTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"receiveAccount"];
         
         if (cell == nil) {

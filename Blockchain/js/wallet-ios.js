@@ -184,7 +184,7 @@ MyWalletPhone.getDefaultAccountIndex = function() {
     for (var i = 0; i < activeAccounts.length; i++) {
         var account = activeAccounts[i];
         if (account.index === index) {
-            defaultAccount = i;
+            defaultAccountIndex = i;
         }
     }
 
@@ -193,6 +193,15 @@ MyWalletPhone.getDefaultAccountIndex = function() {
     }
 
     return 0;
+}
+
+MyWalletPhone.setDefaultAccount = function(num) {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return 0;
+    }
+    
+    MyWallet.wallet.hdwallet.defaultAccountIndex = MyWalletPhone.getIndexOfActiveAccount(num);
 }
 
 MyWalletPhone.getAccountsCount = function() {
