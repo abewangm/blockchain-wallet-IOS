@@ -244,7 +244,11 @@ MyWalletPhone.getReceivingAddressForAccount = function(num) {
 
 MyWalletPhone.isArchived = function(accountOrAddress) {
     if (Helpers.isNumber(accountOrAddress) && accountOrAddress >= 0) {
-        return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(accountOrAddress)].archived;
+        if (MyWallet.wallet.isUpgradedToHD) {
+            return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(accountOrAddress)].archived;
+        } else {
+            return false;
+        }
     } else if (accountOrAddress){
         return MyWallet.wallet.key(accountOrAddress).archived;
     }

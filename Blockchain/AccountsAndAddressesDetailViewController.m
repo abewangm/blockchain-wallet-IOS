@@ -159,7 +159,7 @@ const int numberOfRowsArchived = 1;
                 case 1: {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     if (self.address) {
-                        cell.textLabel.text = BC_STRING_ADDRESSES;
+                        cell.textLabel.text = BC_STRING_ADDRESS;
                         cell.detailTextLabel.text = self.address;
                     } else {
                         cell.textLabel.text = BC_STRING_MAKE_DEFAULT;
