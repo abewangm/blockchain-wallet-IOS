@@ -1,11 +1,11 @@
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "2Ig-LA-4kK"; */
-"2Ig-LA-4kK.text" = "Montant en devise";
+"2Ig-LA-4kK.text" = "CurrAmt";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
-"4.normalTitle" = "Continuer";
+"4.normalTitle" = "Continuar";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "6ll-Xx-4fm"; */
-"6ll-Xx-4fm.text" = "Montant en BTC";
+"6ll-Xx-4fm.text" = "BtcAmt";
 
 /* (No Commment) */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -17,89 +17,89 @@
 "7ho-GV-ikp.text" = "BTC";
 
 /* (No Commment) */
-"8LN-Tc-WVh.normalTitle" = "Exécuté";
+"8LN-Tc-WVh.normalTitle" = "Pronto";
 
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
-"9B2-23-8j5.text" = "Montant en devise";
+"9B2-23-8j5.text" = "CurrAmt";
 
 /* (No Commment) */
-"13.text" = "À";
+"13.text" = "Para";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
-"52.placeholder" = "0,000";
+"52.placeholder" = "0.000";
 
 /* (No Commment) */
 "52.text" = "0,00";
 
 /* (No Commment) */
-"57.text" = "5 BTC = 10 $US";
+"57.text" = "5 BTC = $ 10";
 
 /* (No Commment) */
-"61.text" = "Étiquette :";
+"61.text" = "Rótulo:";
 
 /* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
-"62.placeholder" = "Étiquette";
+"62.placeholder" = "Rótulo";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
-"63.normalTitle" = "Sauvegarder";
+"63.normalTitle" = "Salvar";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "64"; */
-"64.text" = "Adresse";
+"64.text" = "Endereço";
 
 /* (No Commment) */
-"65.text" = "Adresse :";
+"65.text" = "Endereço:";
 
 /* (No Commment) */
-"67.text" = "Étiquette adresse";
+"67.text" = "Etiquetar endereço";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Frais : ";
+"FB0-NP-5do.text" = "Taxa: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
-"IUn-6N-qeo.text" = "Montant en BTC";
+"IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "Total :";
+"Ubr-KG-egH.text" = "Total:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
-"ZcA-OM-4nq.text" = "De :";
+"ZcA-OM-4nq.text" = "De:";
 
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Veuillez patienter";
+"Zgn-Wx-Uwx.text" = "Aguarde";
 
 /* (No Commment) */
-"aKC-Q2-phD.text" = "Envoi de paiement";
+"aKC-Q2-phD.text" = "Enviando pagamento";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Montant : ";
+"aeG-gf-oXV.text" = "Valor: ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
-"d7n-Ue-QXL.normalTitle" = "Fonds disponibles";
+"d7n-Ue-QXL.normalTitle" = "Fundos disponíveis";
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
-"fpY-AA-We5.text" = "À";
+"fpY-AA-We5.text" = "Para";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
-"pPu-bJ-k6p.normalTitle" = "Continuer";
+"pPu-bJ-k6p.normalTitle" = "Continuar";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
 "qx4-XV-uhn.placeholder" = "0,00";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sXf-3w-qdy"; */
-"sXf-3w-qdy.normalTitle" = "Envoyer";
+"sXf-3w-qdy.normalTitle" = "Enviar";
 
 /* Class = "UILabel"; text = "CurrTotal"; ObjectID = "t8M-NC-003"; */
-"t8M-NC-003.text" = "Devise totale";
+"t8M-NC-003.text" = "CurrTotal";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
-"vGH-md-Ck3.text" = "$US";
+"vGH-md-Ck3.text" = "US$";
 
 /* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
-"vzP-xG-GPO.text" = "BTC total";
+"vzP-xG-GPO.text" = "BtcTotal";
 
 /* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
-"yGR-Eh-YG1.text" = "À :";
+"yGR-Eh-YG1.text" = "Para:";
 
 /* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
-"zyc-E3-FOM.text" = "N'importe quelle adresse";
+"zyc-E3-FOM.text" = "Qualquer endereço";
 

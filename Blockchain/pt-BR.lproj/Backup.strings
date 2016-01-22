@@ -1,92 +1,92 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Veuillez refaire la sauvegarde des fonds";
+"1Hq-6D-ut1.normalTitle" = "Proteger fundos novamente";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "Veuillez refaire la sauvegarde des fonds";
+"1Hq-6D-ut1.text" = "Proteger fundos novamente";
 
 /* (No Commment) */
-"3kJ-3U-lFe.text" = "Veuillez réessayer";
+"3kJ-3U-lFe.text" = "Tente novamente";
 
 /* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Vérifiez que vous avez saisi la phrase de sauvegarde";
+"4Nq-ue-tXr.text" = "Verifique se você anotou a frase de segurança";
 
 /* (No Commment) */
-"6zt-Xf-txg.text" = "Appuyez et maintenez pour visualiser le mot";
+"6zt-Xf-txg.text" = "Mantenha pressionado para revelar a palavra";
 
 /* (No Commment) */
-"07q-RX-CeI.text" = "Veuillez réessayer";
+"07q-RX-CeI.text" = "Tente novamente";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Sauvegarder les fonds";
+"9A7-TT-PzN.title" = "Proteger fundos";
 
 /* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Vous n'avez pas encore sauvegardé vos fonds";
+"9Hu-uO-gJl.text" = "Você não protegeu seus fundos ainda";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Cette action requiert le deuxième mot de passe pour votre portefeuille bitcoin. Veuillez le saisir ci-dessous et appuyer sur continuer.";
+"9WK-My-5CL.text" = "Esta ação requer a segunda senha da sua carteira de bitcoin. Digite-a abaixo e pressione “Continuar”.";
 
 /* (No Commment) */
-"9hR-tm-aq5.placeholder" = "premier mot";
+"9hR-tm-aq5.placeholder" = "primeira palavra";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "Deuxième mot de passe requis";
+"74J-f3-Lhq.title" = "Segunda senha exigida";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
-"AFH-AI-Rgk.normalTitle" = "Mot précédent";
+"AFH-AI-Rgk.normalTitle" = "Palavra anterior";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
-"CBl-1W-VP8.placeholder" = "Mot de passe";
+"CBl-1W-VP8.placeholder" = "Senha";
 
 /* (No Commment) */
-"EQM-OM-jK8.normalTitle" = "Exécuté";
+"EQM-OM-jK8.normalTitle" = "Pronto";
 
 /* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
-"FDO-ui-cGo.text" = "Ne faites pas de capture d'écran !
-Vous pouvez compromettre la sécurité de votre portefeuille";
+"FDO-ui-cGo.text" = "Não faça uma captura de tela!
+Você pode comprometer a segurança da sua carteira";
 
 /* (No Commment) */
-"Fda-Z4-3e7.placeholder" = "sixième mot";
+"Fda-Z4-3e7.placeholder" = "sexta palavra";
 
 /* (No Commment) */
-"NaV-Bk-o1b.text" = "Comment restaurer votre portefeuille";
+"NaV-Bk-o1b.text" = "Como recuperar a carteira";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
-"Okr-VE-yvm.text" = "licorne";
+"Okr-VE-yvm.text" = "unicórnio";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
-"T3S-Dk-HAh.text" = "Veuillez réessayer";
+"T3S-Dk-HAh.text" = "Tente novamente";
 
 /* (No Commment) */
-"T4p-mz-siC.normalTitle" = "VÉRIFIEZ LA SAUVEGARDE";
+"T4p-mz-siC.normalTitle" = "VERIFICAR PROTEÇÃO";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Écrivez sur une feuille de papier les mots dans l'ordre où ils apparaissent et conservez-les dans un endroit sûr
+"UCL-i9-UDp.text" = "Escreva as palavras em uma folha de papel na exata ordem em que aparecem e guarde-a em um local seguro
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "Vous avez perdu votre phrase de récupération de 12 mots ?";
+"Yh8-Gm-6op.text" = "Perdeu sua frase de recuperação de 12 palavras?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
-"dkQ-nj-Pkf.normalTitle" = "MOT SUIVANT";
+"dkQ-nj-Pkf.normalTitle" = "PRÓXIMA PALAVRA";
 
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
-"eaO-py-9rY.normalTitle" = "Mot suivant";
+"eaO-py-9rY.normalTitle" = "Próxima palavra";
 
 /* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Sauvegarder vos fonds vous garantie de ne pas perdre l'accès à vos bitcoins (sauf des adresses importées), même si vous avez oublié votre mot de passe ou si notre service n'est plus disponible.";
+"eyR-AW-SMc.text" = "Proteger seus fundos garante que você não perderá acesso aos bitcoins (exceto endereços importados), mesmo que esqueça sua senha ou que o serviço esteja indisponível.";
 
 /* (No Commment) */
-"kcC-2S-PfL.placeholder" = "troisième mot";
+"kcC-2S-PfL.placeholder" = "terceira palavra";
 
 /* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
-"mUc-u7-Zcj.text" = "Mot 5 sur 12";
+"mUc-u7-Zcj.text" = "Palavra 5 de 12";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "Sauvegarder le portefeuille";
+"mYR-MQ-mS2.title" = "Proteger carteira";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
-"nuD-nb-tAt.normalTitle" = "Continuer";
+"nuD-nb-tAt.normalTitle" = "Continuar";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "Sauvegarder le portefeuille";
+"xmf-pK-R3X.title" = "Proteger carteira";
 

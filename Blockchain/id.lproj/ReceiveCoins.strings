@@ -5,7 +5,7 @@
 "48.normalTitle" = "Simpan";
 
 /* (No Commment) */
-"56.text" = "Label alamat";
+"56.text" = "Label Email";
 
 /* (No Commment) */
 "57.text" = "Alamat";
@@ -20,16 +20,16 @@
 "60.text" = "Alamat";
 
 /* (No Commment) */
-"68.text" = "Tidak ada alamat";
+"68.text" = "Tidak Ada Alamat";
 
 /* (No Commment) */
-"69.text" = "Account Anda mungkin tidak dipasangkan dengan benar. Klik tombol di bagian atas kiri layar dan ikuti petunjuk pada layar.";
+"69.text" = "Akun Anda mungkin tidak dipasangkan dengan benar. Klik tombol di bagian atas kiri layar dan ikuti petunjuk pada layar.";
 
 /* (No Commment) */
-"80.normalTitle" = "ALAMAT ARSIP";
+"80.normalTitle" = "ALAMAT DIARSIPKAN";
 
 /* (No Commment) */
-"81.normalTitle" = "LABEL ALAMAT";
+"81.normalTitle" = "ALAMAT DILABEL";
 
 /* (No Commment) */
 "88.normalTitle" = "PERMINTAAN PEMBAYARAN";
@@ -41,7 +41,7 @@
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
 /* (No Commment) */
-"92.normalTitle" = "SALIN ALAMAT";
+"92.normalTitle" = "ALAMAT SALIN";
 
 /* (No Commment) */
 "100.text" = "Jumlah:";
@@ -62,7 +62,7 @@
 "a9y-3I-Drw.placeholder" = "0.00";
 
 /* (No Commment) */
-"i1j-pG-caF.normalTitle" = "Memindai kunci pribadi";
+"i1j-pG-caF.normalTitle" = "Pindai Kunci Pribadi";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
 "jRM-0A-Zuo.text" = "BTC";

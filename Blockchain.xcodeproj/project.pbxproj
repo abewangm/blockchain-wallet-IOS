@@ -487,6 +487,22 @@
 		23EA61C71B54282D0032B907 /* SettingsNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsNavigationController.m; sourceTree = "<group>"; };
 		23EA61C91B5591260032B907 /* SettingsSelectorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSelectorTableViewController.h; sourceTree = "<group>"; };
 		23EA61CA1B5591260032B907 /* SettingsSelectorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSelectorTableViewController.m; sourceTree = "<group>"; };
+		23F341871C52C37C000E53AB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Upgrade.strings"; sourceTree = "<group>"; };
+		23F341881C52C37C000E53AB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Settings.strings"; sourceTree = "<group>"; };
+		23F341891C52C37C000E53AB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/SendCoins.strings"; sourceTree = "<group>"; };
+		23F3418A1C52C37C000E53AB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Backup.strings"; sourceTree = "<group>"; };
+		23F3418B1C52C37C000E53AB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/ReceiveCoins.strings"; sourceTree = "<group>"; };
+		23F3418C1C52C37D000E53AB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/MainWindow.strings"; sourceTree = "<group>"; };
+		23F3418D1C52C37D000E53AB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/BCAddressSelectionView.strings"; sourceTree = "<group>"; };
+		23F3418E1C52C37D000E53AB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		23F341911C52C391000E53AB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Upgrade.strings"; sourceTree = "<group>"; };
+		23F341921C52C391000E53AB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SendCoins.strings"; sourceTree = "<group>"; };
+		23F341931C52C391000E53AB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Backup.strings"; sourceTree = "<group>"; };
+		23F341941C52C391000E53AB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ReceiveCoins.strings"; sourceTree = "<group>"; };
+		23F341951C52C392000E53AB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainWindow.strings"; sourceTree = "<group>"; };
+		23F341961C52C392000E53AB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/BCAddressSelectionView.strings"; sourceTree = "<group>"; };
+		23F341971C52C392000E53AB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		23F341981C52C392000E53AB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Settings.strings"; sourceTree = "<group>"; };
 		23F720F01C32DC0A00577738 /* DebugTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugTableViewController.h; sourceTree = "<group>"; };
 		23F720F11C32DC0A00577738 /* DebugTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugTableViewController.m; sourceTree = "<group>"; };
 		670595A21AB0F59D00D2D6D9 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
@@ -1504,6 +1520,8 @@
 				23CEC6A81BA0C10500F102BF /* sv-SE */,
 				23CEC6B31BA0C15300F102BF /* zh-CN */,
 				23CEC6BA1BA0C26100F102BF /* zh-TW */,
+				23F3418E1C52C37D000E53AB /* es-MX */,
+				23F341971C52C392000E53AB /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1551,6 +1569,8 @@
 				23CEC6A51BA0C10500F102BF /* sv-SE */,
 				23CEC6B01BA0C15200F102BF /* zh-CN */,
 				23CEC6B71BA0C26100F102BF /* zh-TW */,
+				23F3418B1C52C37C000E53AB /* es-MX */,
+				23F341941C52C391000E53AB /* pt-BR */,
 			);
 			name = ReceiveCoins.xib;
 			sourceTree = "<group>";
@@ -1598,6 +1618,8 @@
 				23CEC6A71BA0C10500F102BF /* sv-SE */,
 				23CEC6B21BA0C15300F102BF /* zh-CN */,
 				23CEC6B91BA0C26100F102BF /* zh-TW */,
+				23F3418D1C52C37D000E53AB /* es-MX */,
+				23F341961C52C392000E53AB /* pt-BR */,
 			);
 			name = BCAddressSelectionView.xib;
 			sourceTree = "<group>";
@@ -1645,6 +1667,8 @@
 				23CEC6A31BA0C10400F102BF /* sv-SE */,
 				23CEC6AE1BA0C15200F102BF /* zh-CN */,
 				23CEC6B51BA0C26100F102BF /* zh-TW */,
+				23F341891C52C37C000E53AB /* es-MX */,
+				23F341921C52C391000E53AB /* pt-BR */,
 			);
 			name = SendCoins.xib;
 			sourceTree = "<group>";
@@ -1692,6 +1716,8 @@
 				23CEC6A61BA0C10500F102BF /* sv-SE */,
 				23CEC6B11BA0C15200F102BF /* zh-CN */,
 				23CEC6B81BA0C26100F102BF /* zh-TW */,
+				23F3418C1C52C37D000E53AB /* es-MX */,
+				23F341951C52C392000E53AB /* pt-BR */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -1739,6 +1765,8 @@
 				239CD5141C12216F00997DF5 /* zh-CN */,
 				239CD5161C12217000997DF5 /* zh-TW */,
 				234197881C17BB08004B82C5 /* en */,
+				23F341881C52C37C000E53AB /* es-MX */,
+				23F341981C52C392000E53AB /* pt-BR */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -1786,6 +1814,8 @@
 				239CD5631C12223200997DF5 /* zh-CN */,
 				239CD5651C12223300997DF5 /* zh-TW */,
 				234197861C17BB02004B82C5 /* en */,
+				23F341871C52C37C000E53AB /* es-MX */,
+				23F341911C52C391000E53AB /* pt-BR */,
 			);
 			name = Upgrade.storyboard;
 			sourceTree = "<group>";
@@ -1833,6 +1863,8 @@
 				23CEC6A41BA0C10500F102BF /* sv-SE */,
 				23CEC6AF1BA0C15200F102BF /* zh-CN */,
 				23CEC6B61BA0C26100F102BF /* zh-TW */,
+				23F3418A1C52C37C000E53AB /* es-MX */,
+				23F341931C52C391000E53AB /* pt-BR */,
 			);
 			name = Backup.storyboard;
 			sourceTree = "<group>";

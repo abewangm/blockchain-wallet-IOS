@@ -1,45 +1,45 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "Enregistrer l’indice";
+"0zs-bt-hEl.text" = "Sugerencia de tienda";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "Vérifier l’e-mail";
+"8Ha-3e-Nqx.text" = "Verificar correo electrónico";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "Vérification en 2 étapes";
+"8Zy-R2-HoW.text" = "Verificación de 2 pasos";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
-"Ii6-KE-x0B.placeholder" = "Confirmez le nouveau mot de passe";
+"Ii6-KE-x0B.placeholder" = "Confirmar nueva contraseña";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
-"Kmb-pO-dHq.text" = "Faible";
+"Kmb-pO-dHq.text" = "Débil";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
-"VKs-B5-luJ.placeholder" = "Nouveau mot de passe";
+"VKs-B5-luJ.placeholder" = "Nueva contraseña";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Phrase de sauvegarde";
+"WVd-f2-ZLG.text" = "Frase de copia de seguridad";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "Bloquer les TOR";
+"Wor-ZR-sPS.text" = "Bloquear solicitudes de TOR";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Protégez votre portefeuille contre tout accès non autorisé en activant la vérification en 2 étapes. Vous pouvez utiliser soit une application gratuite ou votre numéro de portable pour sécuriser votre portefeuille. Ce code vous sera demandé lorsque vous essaierez d'accéder à votre portefeuille.";
+"bFL-5O-fcl.text" = "Proteja su cartera de accesos no autorizados al permitir la verificación de 2 pasos. Usted puede elegir utilizar una aplicación gratuita o su número de teléfono móvil para asegurar su cartera. Se le solicitará este código cuando intente acceder a su monedero.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "Jumeler le portable";
+"f52-8F-scW.text" = "Enlace al teléfono celular";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
-"g8G-4j-qpJ.normalTitle" = "Utilisez votre numéro de portable";
+"g8G-4j-qpJ.normalTitle" = "Use su número de teléfono celular";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "Activez les 2 étapes";
+"gIP-mj-Hh2.text" = "Habilitar verificación de 2 pasos";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "Terminez les étapes ci-dessous pour une sécurité optimale";
+"u5x-QP-acV.text" = "Completar los siguientes pasos para conseguir la mayor seguridad posible";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
-"wnC-Xd-1Er.title" = "Centre de sécurité";
+"wnC-Xd-1Er.title" = "Centro de seguridad";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
-"zd5-DZ-hsS.placeholder" = "Mot de passe";
+"zd5-DZ-hsS.placeholder" = "Contraseña";
 

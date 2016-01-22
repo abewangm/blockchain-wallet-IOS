@@ -1,11 +1,11 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "Магазин подсказка";
+"0zs-bt-hEl.text" = "Сохранить подсказку";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "Проверка электронной почты";
+"8Ha-3e-Nqx.text" = "Верифицировать электронный адрес";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "Два этапа проверки";
+"8Zy-R2-HoW.text" = "2-шаговая верификация";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
 "Ii6-KE-x0B.placeholder" = "Подтвердите новый пароль";
@@ -17,28 +17,28 @@
 "VKs-B5-luJ.placeholder" = "Новый пароль";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Резервное копирование фраза";
+"WVd-f2-ZLG.text" = "Резервная фраза";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "Блок задания";
+"Wor-ZR-sPS.text" = "Заблокировать запросы из TOR";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Защите ваш кошелек от несанкционированного доступа, позволяя двухэтапную аутентификацию. Вы можете использовать бесплатное приложение или номер вашего мобильного телефона для обеспечения безопасности вашего кошелька. Этот код будет запрашиваться при попытке получить доступ к ваш бумажник.";
+"bFL-5O-fcl.text" = "Защитите свой кошелек от несанкционированного доступа, активировав 2-шаговую верификацию. Для обеспечения безопасности кошелька можно использовать бесплатное приложение или номер мобильного телефона. Этот код будет запрашиваться при попытке получить доступ к вашему кошельку.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "Мобильная связь";
+"f52-8F-scW.text" = "Зарегистрировать номер мобильного телефона";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
-"g8G-4j-qpJ.normalTitle" = "Используйте ваш номер мобильного телефона";
+"g8G-4j-qpJ.normalTitle" = "Используйте номер мобильного телефона";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "Включить 2-Step";
+"gIP-mj-Hh2.text" = "Включить 2-шаговую верификацию";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "Выполните действия ниже для конечной безопасности";
+"u5x-QP-acV.text" = "Выполните действия ниже для обеспечения безопасности";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
-"wnC-Xd-1Er.title" = "Центр обеспечения безопасности";
+"wnC-Xd-1Er.title" = "Центр безопасности";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
 "zd5-DZ-hsS.placeholder" = "Пароль";
