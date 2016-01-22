@@ -1247,6 +1247,8 @@ const int aboutPrivacyPolicy = 1;
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     cell.textLabel.font = [SettingsTableViewController fontForCell];
     cell.detailTextLabel.font = [SettingsTableViewController fontForCell];
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     
     switch (indexPath.section) {
         case walletInformationSection: {
@@ -1264,7 +1266,6 @@ const int aboutPrivacyPolicy = 1;
             }
         }
         case preferencesSectionEmailFooter: {
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             switch (indexPath.row) {
                 case preferencesEmail: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
@@ -1283,7 +1284,6 @@ const int aboutPrivacyPolicy = 1;
             }
         }
         case preferencesSectionNotificationsFooter: {
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             switch (indexPath.row) {
                 case preferencesMobileNumber: {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -1313,7 +1313,6 @@ const int aboutPrivacyPolicy = 1;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
                 case displayLocalCurrency: {
-                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
                     NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
@@ -1324,7 +1323,6 @@ const int aboutPrivacyPolicy = 1;
                     return cell;
                 }
                 case displayBtcUnit: {
-                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     NSString *selectedCurrencyCode = [self getBtcSymbolFromLatestResponse].name;
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
                     cell.detailTextLabel.text = selectedCurrencyCode;
@@ -1341,7 +1339,6 @@ const int aboutPrivacyPolicy = 1;
             }
         }
         case securitySection: {
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             if (indexPath.row == securityTwoStep) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
