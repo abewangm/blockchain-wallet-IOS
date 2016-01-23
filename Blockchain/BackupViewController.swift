@@ -39,6 +39,8 @@ class BackupViewController: UIViewController {
             backupWalletAgainButton?.titleLabel?.adjustsFontSizeToFitWidth = true;
             lostRecoveryPhraseLabel?.hidden = false
             lostRecoveryPhraseLabel?.adjustsFontSizeToFitWidth = true;
+            lostRecoveryPhraseLabel?.textAlignment = .Center;
+
             
             // Override any font changes
             backupWalletAgainButton?.titleLabel?.font = UIFont.boldSystemFontOfSize(14);
