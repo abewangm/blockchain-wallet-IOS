@@ -1278,7 +1278,6 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
-                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     return cell;
                 }
             }
@@ -1412,6 +1411,8 @@ const int aboutPrivacyPolicy = 1;
             if (indexPath.row == PINTouchID) {
                 cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                cell.textLabel.adjustsFontSizeToFitWidth = YES;
+                cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.font = [SettingsTableViewController fontForCell];
                 cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
