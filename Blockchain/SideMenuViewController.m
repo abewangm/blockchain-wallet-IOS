@@ -369,6 +369,7 @@ int accountEntries = 0;
         images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
 
         cell.textLabel.text = titles[indexPath.row];
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         
         if ([images[indexPath.row] isEqualToString:@"security"]) {
