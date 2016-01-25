@@ -759,8 +759,10 @@ UIAlertController *popupAddressArchive;
         }
         
         if (didClickAccount) {
-            weakSelf.clickedAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
+            detailAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
+            weakSelf.clickedAddress = detailAddress;
             [weakSelf setQRPayment];
+            [weakSelf animateTextOfLabel:optionsTitleLabel toFinalText:detailLabel];
         }
 
     }];
