@@ -510,6 +510,8 @@ void (^secondPasswordSuccess)(NSString *);
     [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
     
     forgetWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    forgetWalletButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
+    forgetWalletButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:mainPasswordTextField action:@selector(resignFirstResponder)];
     mainPasswordTextField.text = @"";
     [mainPasswordView addGestureRecognizer:tapGesture];
