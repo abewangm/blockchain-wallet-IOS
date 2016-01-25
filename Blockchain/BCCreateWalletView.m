@@ -257,7 +257,6 @@
 
 - (void)didFailRecovery
 {
-    [self.recoveryPhraseView.recoveryPassphraseTextField becomeFirstResponder];
     self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
 
