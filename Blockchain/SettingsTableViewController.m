@@ -202,12 +202,32 @@ const int aboutPrivacyPolicy = 1;
 
 + (UIFont *)fontForCell
 {
-    return [UIFont fontWithName:@"Helvetica Neue" size:15];
+    return [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
 }
 
 + (UIFont *)fontForCellSubtitle
 {
-    return [UIFont fontWithName:@"Helvetica Neue" size:12];
+    return [UIFont fontWithName:FONT_HELVETICA_NUEUE size:12];
+}
+
+
+
+- (UITableViewCell *)adjustFontForCell:(UITableViewCell *)cell
+{
+    UILabel *cellTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    cellTextLabel.text = cell.textLabel.text;
+    [cellTextLabel sizeToFit];
+    if (cellTextLabel.frame.size.width > cell.contentView.frame.size.width * 2/3) {
+        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:12];
+        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:12];
+    }
+    
+    if (cellTextLabel.frame.size.width > cell.contentView.frame.size.width * 4/5) {
+        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:10];
+        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:10];
+    }
+    
+    return cell;
 }
 
 - (CurrencySymbol *)getLocalSymbolFromLatestResponse
@@ -1278,7 +1298,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             }
         }
@@ -1295,7 +1315,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
                 case preferencesNotifications: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL_NOTIFICATIONS;
@@ -1355,7 +1375,7 @@ const int aboutPrivacyPolicy = 1;
                     } else {
                         cell.detailTextLabel.text = BC_STRING_UNKNOWN;
                     }
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityPasswordHint) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_PASSWORD_HINT;
@@ -1367,12 +1387,12 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_NOT_STORED;
                     }
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityPasswordChange) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityTorBlocking) {
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
@@ -1386,7 +1406,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_ALLOWED;
                     }
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityWalletRecoveryPhrase) {
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
@@ -1399,7 +1419,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
         }
         case PINSection: {

@@ -63,7 +63,7 @@
     style.lineHeightMultiple = 1.3;
     style.alignment = NSTextAlignmentCenter;
     
-    UIFont *font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    UIFont *font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
     
     NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjects:@[COLOR_BLOCKCHAIN_BLUE, style, font] forKeys:@[NSForegroundColorAttributeName, NSParagraphStyleAttributeName, NSFontAttributeName]];
     
