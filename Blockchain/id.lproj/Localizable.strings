@@ -2,16 +2,16 @@
 "%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
-"%@ copied to clipboard" = "%@ disalin ke clipboard";
+"%@ copied to clipboard" = "%@ disalin ke papan klip";
 
 /* (No Commment) */
 "%d Confirmations" = "%d konfirmasi";
 
 /* (No Commment) */
-"%d Transactions" = "%d transaksi";
+"%d Transactions" = "%d Transaksi";
 
 /* No comment provided by engineer. */
-"%lld hours ago" = "%lld menit yang lalu";
+"%lld hours ago" = "%lld jam yang lalu";
 
 /* No comment provided by engineer. */
 "%lld minutes ago" = "%lld menit yang lalu";
@@ -20,7 +20,7 @@
 "%lld seconds ago" = "%lld detik yang lalu";
 
 /* (No Commment) */
-"* Minimum 10 characters" = "Minimum 10 karakter";
+"* Minimum 10 characters" = "*Sandi (minimal 10 karakter)";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 jam yang lalu";
@@ -44,25 +44,25 @@
 "2-step Verification is currently disabled." = "Verifikasi 2 langkah saat ini dinonaktifkan.";
 
 /* (No Commment) */
-"2-step Verification is currently enabled for %@." = "Verifikasi 2 langkah diaktifkan saat ini untuk %@.";
+"2-step Verification is currently enabled for %@." = "Verifikasi 2 langkah saat ini diaktifkan untuk %@.";
 
 /* (No Commment) */
-"2-step Verification is currently enabled." = "Verifikasi 2 langkah diaktifkan saat ini.";
+"2-step Verification is currently enabled." = "Verifikasi 2 langkah saat ini diaktifkan.";
 
 /* (No Commment) */
 "About" = "Tentang";
 
 /* (No Commment) */
-"Account Details" = "Detail akun";
+"Account Details" = "Detail Akun";
 
 /* (No Commment) */
 "Accounts" = "Akun";
 
 /* (No Commment) */
-"Add Email" = "Tambahkan Email";
+"Add Email" = "Tambah Email";
 
 /* (No Commment) */
-"Add to Address book?" = "Tambahkan ke buku alamat?";
+"Add to Address book?" = "Tambahkan Buku Alamat?";
 
 /* (No Commment) */
 "Address book" = "Buku alamat";
@@ -71,52 +71,52 @@
 "Address is not valid" = "Alamat ini tidak valid";
 
 /* (No Commment) */
-"Adjust Fee" = "Menyesuaikan biaya";
+"Adjust Fee" = "Biaya Penyesuaian";
 
 /* (No Commment) */
-"Allow" = "Memungkinkan";
+"Allow" = "Mengizinkan";
 
 /* (No Commment) */
-"Allowed" = "Diperbolehkan";
+"Allowed" = "Diizinkan";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Jumlah harus di atas ambang debu (%lld Satoshi)";
+"Amount must be above dust threshold (%lld Satoshi)" = "Jumlah harus di atas ambang debu (% lld Satoshi)";
 
 /* (No Commment) */
-"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Terjadi kesalahan memvalidasi kode PIN Anda dengan remote server. Mungkin Anda offline atau Blockchain mungkin mengalami kesulitan. Anda ingin Coba validasi atau sebaliknya Masukkan password Anda secara manual?";
+"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Terjadi galat saat memvalidasi kode PIN Anda dengan server jarak jauh. Mungkin Anda sedang luring atau Blockchain mungkin sedang mengalami masalah. Anda ingin mencoba ulang validasi atau sebaliknya memasukkan sandi Anda secara manual?";
 
 /* (No Commment) */
-"An error occurred while changing 2-Step verification." = "Terjadi kesalahan saat mengganti verifikasi 2 langkah.";
+"An error occurred while changing 2-Step verification." = "Terjadi galat saat mengganti verifikasi 2 langkah.";
 
 /* (No Commment) */
-"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Kesalahan ditemukan memuat dompet Anda. Mungkin Anda offline atau Blockchain mengalami kesulitan. Silakan menutup aplikasi dan coba lagi nanti atau kembali memasangkan perangkat Anda.";
+"An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Galat terjadi saat memuat dompet Anda. Mungkin Anda sedang luring atau Blockchain sedang mengalami masalah. Silakan menutup aplikasi dan coba lagi nanti atau pasangkan kembali perangkat Anda.";
 
 /* (No Commment) */
-"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Kesalahan ditemukan mengambil pengenal dompet Anda dari keychain. Silahkan tutup aplikasi dan coba lagi.";
+"An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Galat ditemukan saat mengambil pengenal dompet Anda dari rantai kunci. Silakan tutup aplikasi dan coba lagi.";
 
 /* (No Commment) */
-"Any address" = "Alamat";
+"Any address" = "Alamat Mana Pun";
 
 /* (No Commment) */
 "Archive" = "Arsip";
 
 /* (No Commment) */
-"Archive Address" = "Alamat Arsip";
+"Archive Address" = "Alamat Diarsipkan";
 
 /* (No Commment) */
-"Ask Me Later" = "Bertanya padaku nanti";
+"Ask Me Later" = "Tanyakan Pada Saya Nanti";
 
 /* (No Commment) */
-"Authenticate with Touch ID" = "Mengotentikasi dengan sentuhan ID";
+"Authenticate with Touch ID" = "Mengotentikasi dengan Sentuhan ID";
 
 /* (No Commment) */
-"Authorization Required" = "Otorisasi diperlukan";
+"Authorization Required" = "Otorisasi Diperlukan";
 
 /* (No Commment) */
 "Automatic Pairing" = "Pemasangan otomatis";
 
 /* (No Commment) */
-"Automatically" = "Secara otomatis";
+"Automatically" = "Secara Otomatis";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "DANA CADANGAN";
@@ -125,16 +125,16 @@
 "Backup" = "Cadangan";
 
 /* No comment provided by engineer. */
-"Backup Funds" = "Dana cadangan";
+"Backup Funds" = "Dana Cadangan";
 
 /* (No Commment) */
-"Backup Phrase" = "Cadangan frase";
+"Backup Phrase" = "Cadangan Frasa";
 
 /* (No Commment) */
-"Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Sebelum mengakses dompet Anda, silakan pilih nomor pin menggunakan untuk membuka dompet Anda. Hal ini penting Anda ingat pin ini seperti itu tidak dapat ulang atau berubah tanpa pertama membuka aplikasi.";
+"Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Sebelum mengakses dompet Anda, silakan pilih nomor pin yang digunakan untuk membuka dompet Anda. Penting Anda mengingat pin ini karena tidak dapat direset atau membuka penguncian aplikasinya lebih dulu.";
 
 /* (No Commment) */
-"Bitcoin Unit" = "Bitcoin Unit";
+"Bitcoin Unit" = "Unit Bitcoin";
 
 /* (No Commment) */
 "Bitcoin payment request" = "Permintaan pembayaran Bitcoin";
@@ -143,28 +143,28 @@
 "Block" = "Blok";
 
 /* (No Commment) */
-"Block Tor" = "Blok Tor";
+"Block Tor" = "Blokir Tor";
 
 /* (No Commment) */
-"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain tidak memiliki akses ke kamera. Untuk mengaktifkan akses, pergi ke pengaturan perangkat Anda.";
+"Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain tidak memiliki akses ke kamera. Untuk mengaktifkan akses, pergi ke Pengaturan perangkat Anda.";
 
 /* (No Commment) */
-"Blockchain is currently down for maintenance. Please try again later." = "Blockchain sedang untuk pemeliharaan. Harap coba lagi nanti.";
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain sedang untuk pemeliharaan. Silakan coba lagi nanti.";
 
 /* (No Commment) */
-"Blockchain needs Location Services enabled in order to access your location." = "Blockchain kebutuhan Layanan lokasi diaktifkan agar Anda dapat mengakses lokasi Anda.";
+"Blockchain needs Location Services enabled in order to access your location." = "Blockchain membutuhkan pengaktifan Layanan Lokasi agar Anda dapat mengakses lokasi Anda.";
 
 /* (No Commment) */
-"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain kebutuhan Layanan lokasi diaktifkan agar Anda dapat mengakses lokasi Anda. Anda dapat mengaktifkan akses dalam pengaturan -> Privacy -> Layanan lokasi";
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain membutuhkan pengaktifan Layanan Lokasi agar Anda dapat mengakses lokasi Anda. Anda dapat mengaktifkan akses dalam Pengaturan->Privasi->Layanan Lokasi";
 
 /* (No Commment) */
-"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain kebutuhan Layanan lokasi diaktifkan agar Anda dapat mengakses lokasi Anda. Anda dapat mengaktifkan akses dalam pengaturan -> Privacy -> lokasi -> Layanan lokasi";
+"Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain membutuhkan pengaktifan Layanan Lokasi agar Anda dapat mengakses lokasi Anda. Anda dapat mengaktifkan akses dalam Pengaturan->Privasi->Lokasi->Layanan Lokasi";
 
 /* (No Commment) */
 "Blocked" = "Diblokir";
 
 /* (No Commment) */
-"Camera Access Denied" = "Kamera Akses ditolak";
+"Camera Access Denied" = "Akses Kamera Ditolak";
 
 /* (No Commment) */
 "Cancel" = "Batal";
@@ -176,205 +176,205 @@
 "Change Email" = "Ubah Email";
 
 /* (No Commment) */
-"Change Mobile Number" = "Ganti nomor HP";
+"Change Mobile Number" = "Ubah Nomor Ponsel";
 
 /* (No Commment) */
-"Change PIN" = "Perubahan PIN";
+"Change PIN" = "Ubah PIN";
 
 /* (No Commment) */
-"Change Password" = "Ubah sandi";
+"Change Password" = "Ubah Sandi";
 
 /* (No Commment) */
-"Change Password Hint" = "Petunjuk Password perubahan";
+"Change Password Hint" = "Ubah Petunjuk Sandi";
 
 /* (No Commment) */
-"Change fee per kilobyte" = "Biaya perubahan per Kilobita";
+"Change fee per kilobyte" = "Biaya perubahan per Kilobit";
 
 /* (No Commment) */
-"Checking for Wallet updates" = "Memeriksa pembaruan dompet";
+"Checking for Wallet updates" = "Memeriksa pembaruan Dompet";
 
 /* (No Commment) */
-"Checking for more: Step %d of %d" = "Memeriksa lebih lanjut: langkah %1$d dari %2$d";
+"Checking for more: Step %d of %d" = "Memeriksa lebih lanjut: Langkah %1$ d %2$ d";
 
 /* No comment provided by engineer. */
 "Close" = "Tutup";
 
 /* (No Commment) */
-"Close App" = "Menutup aplikasi";
+"Close App" = "Tutup Aplikasi";
 
 /* (No Commment) */
-"Complete the steps below for ultimate security" = "Menyelesaikan langkah-langkah di bawah ini untuk keamanan tertinggi";
+"Complete the steps below for ultimate security" = "Lengkapi langkah-langkah di bawah ini untuk keamanan pamungkas";
 
 /* (No Commment) */
-"Confirm Payment" = "Konfirmasi pembayaran";
+"Confirm Payment" = "Konfirmasi Pembayaran";
 
 /* (No Commment) */
-"Confirm Upgrade" = "Mengkonfirmasi Upgrade";
+"Confirm Upgrade" = "Konfirmasi Pembaruan";
 
 /* (No Commment) */
-"Confirm your PIN" = "Mengkonfirmasi PIN";
+"Confirm your PIN" = "Konfirmasi PIN";
 
 /* (No Commment) */
-"Connection timed out. Please check your internet connection." = "Koneksi timed out. Periksa koneksi internet Anda.";
+"Connection timed out. Please check your internet connection." = "Waktu habis koneksi. Periksa koneksi internet Anda.";
 
 /* (No Commment) */
 "Continue" = "Lanjutkan";
 
 /* (No Commment) */
-"Copied to clipboard" = "Disalin ke clipboard";
+"Copied to clipboard" = "Disalin ke Papan Klip";
 
 /* (No Commment) */
-"Copy Address" = "Salin alamat";
+"Copy Address" = "Salin Alamat";
 
 /* (No Commment) */
-"Copy Wallet ID" = "Salinan dompet ID";
+"Copy Wallet ID" = "Salin ID Dompet";
 
 /* (No Commment) */
-"Copy to clipboard" = "Salin ke clipboard";
+"Copy to clipboard" = "Salin ke Papan Klip";
 
 /* (No Commment) */
 "Create" = "Membuat";
 
 /* (No Commment) */
-"Create New Wallet" = "Membuat dompet elektronik baru";
+"Create New Wallet" = "Membuat Dompet Baru";
 
 /* (No Commment) */
-"Create Wallet" = "Membuat dompet";
+"Create Wallet" = "Membuat Dompet";
 
 /* (No Commment) */
 "Creating" = "Menciptakan";
 
 /* (No Commment) */
-"Creating HD Wallet" = "Menciptakan HD dompet";
+"Creating HD Wallet" = "Menciptakan HD Dompet";
 
 /* (No Commment) */
-"Creating V3 Wallet" = "Membuat dompet V3";
+"Creating V3 Wallet" = "Menciptakan Dompet V3";
 
 /* (No Commment) */
-"Creating Wallet" = "Membuat dompet";
+"Creating Wallet" = "Menciptakan Dompet";
 
 /* (No Commment) */
-"Creating new Wallet" = "Menciptakan baru dompet";
+"Creating new Wallet" = "Menciptakan Dompet Baru";
 
 /* (No Commment) */
-"Current rate: %@ BTC" = "Tingkat saat ini: %@ BTC";
+"Current rate: %@ BTC" = "Kurs Saat Ini: % @ situs BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Menyesuaikan cara Anda mengatur bitcoins Anda dalam dompet Blockchain Anda";
+"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Anda dapat menyesuaikan cara Anda mengatur bitcoin dalam dompet Blockchain Anda.";
 
 /* (No Commment) */
 "Debug" = "Debug";
 
 /* (No Commment) */
-"Decrypted PIN Password length 0" = "Dekripsi panjang sandi PIN 0";
+"Decrypted PIN Password length 0" = "Panjang Dekripsi sandi PIN 0";
 
 /* (No Commment) */
-"Decrypting Private Key" = "Mendekripsi kunci pribadi";
+"Decrypting Private Key" = "Mendekripsi Kunci Pribadi";
 
 /* (No Commment) */
-"Decrypting Wallet" = "Mendekripsi dompet";
+"Decrypting Wallet" = "Mendekripsi Dompet";
 
 /* (No Commment) */
 "Disable" = "Menonaktifkan";
 
 /* (No Commment) */
-"Disabled" = "Penyandang Cacat";
+"Disabled" = "Dinonaktifkan";
 
 /* (No Commment) */
 "Display" = "Tampilan";
 
 /* (No Commment) */
-"Do you really want to log out?" = "Apakah Anda benar-benar ingin logout?";
+"Do you really want to log out?" = "Anda benar-benar ingin keluar?";
 
 /* No comment provided by engineer. */
-"Done" = "Dilakukan";
+"Done" = "Sudah Selesai";
 
 /* (No Commment) */
-"Downloading Wallet" = "Men-download dompet";
+"Downloading Wallet" = "Mengunduh Dompet";
 
 /* (No Commment) */
-"Easy one time wallet backup keeps you in control of your funds" = "Mudah sekali dompet cadangan membuat Anda tetap dalam kendali dana Anda";
+"Easy one time wallet backup keeps you in control of your funds" = "Mudah sekali mencadangkan dompet Anda membuat dana tetap dalam kendali Anda";
 
 /* (No Commment) */
-"Edit" = "Mengedit";
+"Edit" = "Edit";
 
 /* (No Commment) */
 "Email" = "Email";
 
 /* (No Commment) */
-"Email Notifications" = "Email pemberitahuan";
+"Email Notifications" = "Email Pemberitahuan";
 
 /* (No Commment) */
 "Email Verified" = "Email diverifikasi";
 
 /* (No Commment) */
-"Empty response from server." = "Kosong respon dari server.";
+"Empty response from server." = "Tak ada tanggapan dari server.";
 
 /* (No Commment) */
 "Enable" = "Mengaktifkan";
 
 /* (No Commment) */
-"Enable 2-Step" = "Mengaktifkan 2-langkah";
+"Enable 2-Step" = "Mengaktifkan 2 Langkah";
 
 /* (No Commment) */
 "Enable 2-Step for SMS" = "Mengaktifkan 2 langkah untuk SMS";
 
 /* (No Commment) */
-"Enable Location Services" = "Aktifkan layanan Lokasi";
+"Enable Location Services" = "Mengaktifkan Layanan Lokasi";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Mengaktifkan pemberitahuan untuk menerima email setiap kali Anda menerima bitcoins. Hanya label alamat dan impor alamat memenuhi syarat untuk memicu pemberitahuan.";
+"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Mengaktifkan pemberitahuan untuk menerima email setiap kali Anda menerima bitcoin. Hanya label alamat dan impor alamat memenuhi syarat untuk mengaktivasi pemberitahuan.";
 
 /* (No Commment) */
-"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Mengaktifkan opsi ini untuk mencegah alamat IP yang dikenal sebagai bagian dari jaringan Tor menganonimkan mengakses dompet Anda. Jaringan Tor sering digunakan oleh hacker mencoba untuk mengakses dompet Blockchain pengguna.";
+"Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Mengaktifkan pilihan berikut untuk mencegah alamat IP yang dikenal menjadi bagian dari jaringan pengangoniman Tor untuk mengakses dompet Anda. Jaringan Tor sering digunakan peretas yang mencoba untuk mengakses dompet Blockchain pengguna.";
 
 /* (No Commment) */
-"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Mengaktifkan fitur ini akan memungkinkan semua pengguna dengan sidik jari sentuhan ID terdaftar pada perangkat ini untuk mengakses dompet Anda.";
+"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Mengaktifkan fitur ini akan memungkinkan semua pengguna dengan sidik jari sentuhan ID terdaftar di perangkat ini untuk mengakses dompet Anda.";
 
 /* (No Commment) */
 "Enter PIN" = "Masukkan PIN";
 
 /* (No Commment) */
-"Enter Password" = "Masukkan sandi";
+"Enter Password" = "Masukkan Sandi";
 
 /* (No Commment) */
-"Enter Verification Code" = "Masukkan kode verifikasi";
+"Enter Verification Code" = "Masukkan Kode Verifikasi";
 
 /* (No Commment) */
-"Enter your verification code" = "Masukkan kode verifikasi";
+"Enter your verification code" = "Masukkan kode verifikasi Anda";
 
 /* No comment provided by engineer. */
-"Error" = "Kesalahan";
+"Error" = "Galat";
 
 /* (No Commment) */
-"Error loading settings" = "Error loading pengaturan";
+"Error loading settings" = "Galat pemuatan pengaturan";
 
 /* (No Commment) */
-"Error updating settings" = "Kesalahan update pengaturan";
+"Error updating settings" = "Galat pemutakhiran pengaturan";
 
 /* (No Commment) */
-"Everything you need to store, spend and receive your bitcoin" = "Semua yang Anda butuhkan untuk menyimpan, menghabiskan dan menerima bitcoin Anda";
+"Everything you need to store, spend and receive your bitcoin" = "Apa pun yang Anda perlu simpan, belanjakan dan terima bitcoin Anda";
 
 /* (No Commment) */
-"Failed To Load Wallet" = "Gagal memuat dompet";
+"Failed To Load Wallet" = "Gagal Memuat Dompet";
 
 /* (No Commment) */
-"Fee is too high (0.01 BTC limit)" = "Biaya terlalu tinggi (0.01 BTC batas)";
+"Fee is too high (0.01 BTC limit)" = "Biaya terlalu tinggi (0.01 batas BTC)";
 
 /* (No Commment) */
-"Fee per KB" = "Biaya per KB";
+"Fee per KB" = "Biaya Per KB";
 
 /* (No Commment) */
 "Fees" = "Biaya";
 
 /* (No Commment) */
-"Finished Signing Inputs" = "Selesai penandatanganan input";
+"Finished Signing Inputs" = "Selesai Penandatanganan Masukan";
 
 /* (No Commment) */
-"Forget Wallet" = "Lupa dompet";
+"Forget Wallet" = "Lupa Dompet";
 
 /* (No Commment) */
-"Found %d, with %@" = "Menemukan %1$d, dengan %2$@";
+"Found %d, with %@" = "Ditemukan %1$ d, dengan %2$ @";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Dari dan alamat tujuan harus berbeda";
@@ -389,172 +389,172 @@
 "Generating new address" = "Menghasilkan alamat baru";
 
 /* (No Commment) */
-"Go to Settings" = "Pergi ke pengaturan";
+"Go to Settings" = "Pergi ke Pengaturan";
 
 /* (No Commment) */
-"Google Authenticator" = "Google Authenticator";
+"Google Authenticator" = "Otentikator Google";
 
 /* (No Commment) */
-"Hint Stored" = "Petunjuk yang disimpan";
+"Hint Stored" = "Petunjuk yang Disimpan";
 
 /* (No Commment) */
-"How would you like to pair?" = "Bagaimana Anda ingin pasangan?";
+"How would you like to pair?" = "Bagaimana Anda ingin pemasangannya?";
 
 /* (No Commment) */
 "Identifier" = "Pengenal";
 
 /* (No Commment) */
-"Import Private Key" = "Kunci pribadi impor";
+"Import Private Key" = "Impor Kunci Pribadi";
 
 /* (No Commment) */
-"Imported Addresses" = "Alamat impor";
+"Imported Addresses" = "Alamat yang Diimpor";
 
 /* (No Commment) */
-"Imported Addresses (Archived)" = "Alamat impor (Archive)";
+"Imported Addresses (Archived)" = "Alamat yang Diimpor (Diarsipkan)";
 
 /* (No Commment) */
-"Imported Private Key %@" = "%@ Impor kunci pribadi";
+"Imported Private Key %@" = "Impor Kunci Pribadi % @";
 
 /* (No Commment) */
 "Importing key" = "Mengimpor kunci";
 
 /* (No Commment) */
-"Incorrect PIN. Please retry." = "Salah PIN. Silakan coba lagi.";
+"Incorrect PIN. Please retry." = "PIN Salah. Silakan mencoba lagi.";
 
 /* (No Commment) */
-"Incorrect password" = "Password salah";
+"Incorrect password" = "Sandi Salah";
 
 /* (No Commment) */
 "Information" = "Informasi";
 
 /* (No Commment) */
-"Initializing Wallet" = "Inisialisasi dompet";
+"Initializing Wallet" = "Inisialisasi Dompet";
 
 /* (No Commment) */
-"Insufficient Funds" = "Dana tidak mencukupi";
+"Insufficient Funds" = "Dana Tidak Mencukupi";
 
 /* (No Commment) */
-"Invalid Identifier" = "Pengenal tidak valid";
+"Invalid Identifier" = "Pengenal Tidak Valid";
 
 /* (No Commment) */
-"Invalid Pairing Code" = "Kode pasangan tidak valid";
+"Invalid Pairing Code" = "Kode Pemasangan Tidak Valid";
 
 /* (No Commment) */
-"Invalid Send Value" = "Nilai valid kirim";
+"Invalid Send Value" = "Nilai Kirim Valid";
 
 /* (No Commment) */
-"Invalid Shared Key" = "Valid bersama kunci";
+"Invalid Shared Key" = "Kunci Berbagi Tidak Valid";
 
 /* (No Commment) */
-"Invalid Status Code Returned %@" = "Kode Status tidak valid kembali %@";
+"Invalid Status Code Returned %@" = "Kode Status Tidak Valid Kembali % @";
 
 /* (No Commment) */
-"Invalid Wallet ID" = "Tidak valid dompet ID";
+"Invalid Wallet ID" = "ID Dompet Tidak Valid";
 
 /* (No Commment) */
-"Invalid address: %@" = "Alamat tidak valid: %@";
+"Invalid address: %@" = "Alamat Tidak Valid: %@";
 
 /* (No Commment) */
-"Invalid email address." = "Alamat email tidak valid.";
+"Invalid email address." = "Alamat Email Anda Invalid";
 
 /* (No Commment) */
-"Invalid mobile number." = "Nomer tidak valid.";
+"Invalid mobile number." = "Nomor Ponsel Invalid";
 
 /* (No Commment) */
-"Invalid recovery phrase. Please try again" = "Frase pemulihan tidak valid. Silakan coba lagi";
+"Invalid recovery phrase. Please try again" = "Verifikasi Frasa Pemulihan Silakan coba lagi";
 
 /* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Respon server tidak sah. Periksa koneksi internet Anda.";
 
 /* (No Commment) */
-"Invalid to bitcoin address" = "Tidak valid untuk bitcoin alamat";
+"Invalid to bitcoin address" = "Alamat bitcoin Invalid";
 
 /* (No Commment) */
-"Invalid two-factor authentication type" = "Jenis tidak valid dua faktor otentikasi";
+"Invalid two-factor authentication type" = "Dua faktor otentikasi invalid";
 
 /* (No Commment) */
-"Invalid verification code. Please try again." = "Kode verifikasi yang valid. Silakan coba lagi.";
+"Invalid verification code. Please try again." = "Invalid kode verifikasi Silakan coba lagi.";
 
 /* No comment provided by engineer. */
-"Just now" = "Sekarang";
+"Just now" = "Saat ini";
 
 /* (No Commment) */
 "Label" = "Label";
 
 /* (No Commment) */
-"Label Address" = "Label alamat";
+"Label Address" = "Label Email";
 
 /* (No Commment) */
-"Label must contain letters and numbers only" = "Label harus berisi huruf dan angka hanya";
+"Label must contain letters and numbers only" = "Label harus berisi hanya huruf dan angka";
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Label harus kurang dari 18 huruf";
 
 /* (No Commment) */
-"Link Mobile" = "Link Mobile";
+"Link Mobile" = "Tautan Nomor Ponsel";
 
 /* (No Commment) */
-"Loading External Page" = "Loading halaman eksternal";
+"Loading External Page" = "Pemuatan Halaman Eksternal";
 
 /* (No Commment) */
-"Loading transactions" = "Loading transaksi";
+"Loading transactions" = "Pemuatan Transaksi";
 
 /* (No Commment) */
-"Local Currency" = "Mata uang lokal";
+"Local Currency" = "Mata Uang Lokal";
 
 /* (No Commment) */
-"Log in to my Wallet" = "Log in ke dompet";
+"Log in to my Wallet" = "Login ke Dompet";
 
 /* (No Commment) */
-"Login existing Wallet" = "Login yang ada dompet";
+"Login existing Wallet" = "Login Dompet yang ada";
 
 /* (No Commment) */
-"Logout" = "Logout";
+"Logout" = "Keluar";
 
 /* (No Commment) */
-"Manual Pairing" = "Pemasangan manual";
+"Manual Pairing" = "Pemasangan Manual";
 
 /* (No Commment) */
-"Manually" = "Secara manual";
+"Manually" = "Secara Manual";
 
 /* (No Commment) */
 "Merchant" = "Pedagang";
 
 /* (No Commment) */
-"Merchant Directory is currently unavailable. Please try again later." = "Pedagang direktori tidak tersedia. Harap coba lagi nanti.";
+"Merchant Directory is currently unavailable. Please try again later." = "Direktori Pedagang tidak tersedia. Silakan coba lagi nanti.";
 
 /* (No Commment) */
-"Merchant Map" = "Peta pedagang";
+"Merchant Map" = "Peta Pedagang";
 
 /* (No Commment) */
-"Merchant URL" = "Pedagang URL";
+"Merchant URL" = "URL Pedagang";
 
 /* (No Commment) */
-"Mobile Linked" = "Mobile yang terkait";
+"Mobile Linked" = "Tautan Ponsel";
 
 /* (No Commment) */
-"Mobile Number" = "Nomer HP";
+"Mobile Number" = "Nomor Ponsel";
 
 /* No comment provided by engineer. */
-"My Bitcoin Wallet" = "Dompet Bitcoin";
+"My Bitcoin Wallet" = "Dompet Bitcoin Saya";
 
 /* (No Commment) */
 "Name" = "Nama";
 
 /* (No Commment) */
-"New Address" = "Alamat baru";
+"New Address" = "Alamat Baru";
 
 /* (No Commment) */
-"New Email Address" = "Alamat Email baru";
+"New Email Address" = "Alamat Email Bar";
 
 /* (No Commment) */
-"New Mobile Number" = "Nomor HP baru";
+"New Mobile Number" = "Nomor Ponsel Baru";
 
 /* (No Commment) */
-"New password must be different" = "Sandi harus berbeda";
+"New password must be different" = "Sandi baru harus berbeda";
 
 /* (No Commment) */
-"News, Price & Charts" = "Berita, harga, & grafik";
+"News, Price & Charts" = "Berita, Harga, & Grafik";
 
 /* No comment provided by engineer. */
 "Next word" = "Kata berikutnya";
@@ -563,13 +563,13 @@
 "No" = "Tidak";
 
 /* (No Commment) */
-"No Label" = "Tidak ada Label";
+"No Label" = "Tanpa Label:";
 
 /* No comment provided by engineer. */
-"No Password Entered" = "Tidak ada kata sandi yang dimasukkan";
+"No Password Entered" = "Tidak Ada Sandi yang Dimasukkan";
 
 /* (No Commment) */
-"No internet connection available. Please check your network settings." = "Tidak tersedia koneksi internet. Periksa setelan jaringan.";
+"No internet connection available. Please check your network settings." = "Tidak tersedia koneksi internet. Periksa setelan jaringan";
 
 /* (No Commment) */
 "No internet connection." = "Tidak ada koneksi internet.";
@@ -578,82 +578,82 @@
 "Normal" = "Normal";
 
 /* (No Commment) */
-"Not Stored" = "Tidak disimpan";
+"Not Stored" = "Tidak Disimpan";
 
 /* (No Commment) */
 "Not now" = "Jangan sekarang";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Perhatikan bahwa setelah upgrade, Anda tidak bisa kembali ke versi sebelumnya, tapi semua bitcoins Anda dan riwayat transaksi Anda akan dipelihara.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Perhatikan bahwa setelah pemutakhiran, Anda tidak bisa kembali ke versi sebelumnya, tapi semua bitcoin Anda dan riwayat transaksi Anda akan disimpan.";
 
 /* (No Commment) */
 "Notifications" = "Pemberitahuan";
 
 /* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Sekarang Anda dapat mengembalikan dana Anda menggunakan frase pemulihan 12 kata jika Anda kehilangan sandi dompet Anda";
+"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Sekarang Anda dapat mengembalikan dana Anda menggunakan frasa pemulihan 12 kata jika Anda kehilangan sandi dompet Anda";
 
 /* No comment provided by engineer. */
-"OK" = "Oke";
+"OK" = "OKE";
 
 /* (No Commment) */
 "PIN" = "PIN";
 
 /* (No Commment) */
-"PIN Encrypted String is nil" = "String dienkripsi PIN nihil";
+"PIN Encrypted String is nil" = "String Terenkripsi PIN nihil";
 
 /* (No Commment) */
-"PIN Response Object key or value length 0" = "PIN respon objek kunci maupun nilai panjang 0";
+"PIN Response Object key or value length 0" = "Kunci Objek Respon PIN atau panjang nilai 0";
 
 /* (No Commment) */
-"PIN Response Object success length 0" = "Respon objek PIN sukses panjang 0";
+"PIN Response Object success length 0" = "Kunci Objek Respon PIN sukses panjang 0";
 
 /* (No Commment) */
-"PIN Saved Successfully" = "PIN yang berhasil diselamatkan";
+"PIN Saved Successfully" = "PIN Berhasil Diselamatkan";
 
 /* (No Commment) */
-"PIN Validation Error" = "Kesalahan validasi PIN";
+"PIN Validation Error" = "Galat Validasi PIN";
 
 /* (No Commment) */
-"PIN Validation cannot be completed. Please enter your wallet password manually." = "PIN validasi tidak dapat diselesaikan. Silakan masukkan password dompet Anda secara manual.";
+"PIN Validation cannot be completed. Please enter your wallet password manually." = "Validasi PIN tidak dapat diselesaikan. Silakan masukkan sandi dompet Anda secara manual.";
 
 /* (No Commment) */
-"PINs do not match" = "PIN tidak cocok";
+"PINs do not match" = "Sandi-sandi tidak cocok";
 
 /* (No Commment) */
-"Parsing Pairing Code" = "Parsing memasangkan kode";
+"Parsing Pairing Code" = "Kode Penguraian Pemasangan";
 
 /* (No Commment) */
-"Password Hint" = "Petunjuk password";
+"Password Hint" = "Petunjuk Sandi";
 
 /* (No Commment) */
-"Password Required" = "Sandi diperlukan";
+"Password Required" = "Sandi Diperlukan";
 
 /* (No Commment) */
-"Password changed. Please login to continue." = "Password berubah. Silahkan login untuk melanjutkan.";
+"Password changed. Please login to continue." = "Sandi berubah. Silakan login untuk melanjutkan.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Password harus 10 karakter atau lebih";
+"Password must 10 characters or longer" = "Sandi harus 10 karakter atau lebih";
 
 /* (No Commment) */
 "Passwords do not match" = "Sandi tidak cocok";
 
 /* (No Commment) */
-"Payment Received" = "Pembayaran yang diterima";
+"Payment Received" = "Pembayaran Diterima";
 
 /* (No Commment) */
-"Payment Sent!" = "Pembayaran dikirim!";
+"Payment Sent!" = "Pembayaran Terkirim!";
 
 /* (No Commment) */
-"Phrase Backed" = "Frase yang didukung";
+"Phrase Backed" = "Frasa Dicadangkan";
 
 /* (No Commment) */
-"Please Login" = "Silahkan Login";
+"Please Login" = "Silakan";
 
 /* (No Commment) */
-"Please add an email address" = "Tambahkan alamat email";
+"Please add an email address" = "Silakan tambah alamat email";
 
 /* (No Commment) */
-"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Periksa email Anda. Jika Anda sudah memiliki diverifikasi percobaan login, Anda harus log in melalui dompet web kami dan memasangkan telepon Anda dengan memindai kode QR di bawah pengaturan-> dompet informasi.";
+"Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Silakan periksa email Anda. Jika Anda sudah memiliki upaya login terverifikasi, Anda harus login melalui web dompet kami dan lakukan pemasangan telepon Anda dengan memindai kode QR di bawah Pengaturan -> Informasi Dompet.";
 
 /* (No Commment) */
 "Please check your internet connection." = "Periksa koneksi internet Anda.";
@@ -665,34 +665,34 @@
 "Please choose from the options below." = "Silakan pilih dari opsi di bawah.";
 
 /* (No Commment) */
-"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Jelaskan secara rinci masalah yang Anda mengalami, bersama dengan setiap langkah yang dapat kita ambil untuk mereproduksi itu.";
+"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Jelaskan secara rinci masalah yang Anda alami, bersama dengan setiap langkah yang dapat kita lakukan untuk mereproduksi itu.";
 
 /* (No Commment) */
-"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Masukkan biaya yang lebih besar daripada 0 BTC dan paling 0.01 BTC";
+"Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Masukkan biaya yang lebih besar daripada 0 BTC dan paling besar 0.01 BTC";
 
 /* (No Commment) */
 "Please enter a new PIN" = "Masukkan PIN baru";
 
 /* (No Commment) */
-"Please enter your %@ 2FA code" = "Masukkan kode 2FA %@";
+"Please enter your %@ 2FA code" = "Masukkan kode % @ 2FA Anda";
 
 /* (No Commment) */
-"Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Masukkan pengenal dompet 36 karakter Anda dengan benar. Hal ini dapat ditemukan di email Selamat datang pada saat startup.";
+"Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Masukkan pengenal dompet 36 karakter Anda dengan benar. Hal ini dapat ditemukan di email Selamat datang pada saat pengaktifan.";
 
 /* (No Commment) */
 "Please enter your PIN" = "Masukkan PIN Anda";
 
 /* (No Commment) */
-"Please enter your recovery phrase with words separated by spaces" = "Masukkan frase pemulihan Anda dengan kata-kata yang dipisahkan oleh ruang";
+"Please enter your recovery phrase with words separated by spaces" = "Masukkan frasa pemulihan Anda dengan kata-kata yang dipisahkan oleh spasi";
 
 /* (No Commment) */
-"Please provide an email address." = "Harap berikan alamat email.";
+"Please provide an email address." = "Silakan tambahkan alamat email";
 
 /* (No Commment) */
-"Please select a different address to send from or lower the fee in Settings." = "Silakan pilih alamat yang berbeda untuk mengirim dari atau menurunkan biaya dalam pengaturan.";
+"Please select a different address to send from or lower the fee in Settings." = "Silakan pilih alamat yang berbeda untuk mengirim dari atau menurunkan biaya dalam Pengaturan.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Silakan mengirim pembayaran ke alamat bitcoin (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > membantu? < /a >): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Silakan mengirim pembayaran ke alamat bitcoin (<a href=”https://blockchain.info/wallet/bitcoin-faq”>help?</a>): %@";
 
 /* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Silakan mengirim pembayaran ke alamat bitcoin. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
@@ -701,7 +701,7 @@
 "Please try again" = "Silakan coba lagi";
 
 /* (No Commment) */
-"Please verify your email address first." = "Pastikan alamat email yang pertama.";
+"Please verify your email address first." = "Verifikasi dulu alamat email Anda.";
 
 /* (No Commment) */
 "Preferences" = "Preferensi";
@@ -713,31 +713,31 @@
 "Receive" = "Menerima";
 
 /* (No Commment) */
-"Received" = "Menerima";
+"Received" = "Telah Menerima";
 
 /* (No Commment) */
-"Recover Funds" = "Memulihkan dana";
+"Recover Funds" = "Memulihkan Dana";
 
 /* (No Commment) */
-"Recovering Funds" = "Memulihkan dana";
+"Recovering Funds" = "Proses Pemulihan Dana";
 
 /* (No Commment) */
 "Regular" = "Reguler";
 
 /* (No Commment) */
-"Request Amount" = "Jumlah permintaan";
+"Request Amount" = "Jumlah Permintaan";
 
 /* (No Commment) */
-"Resend verification SMS" = "Kirim kembali verifikasi SMS";
+"Resend verification SMS" = "Kirim Ulang Verifikasi SMS";
 
 /* (No Commment) */
-"Resend verification email" = "Kirim ulang email verifikasi";
+"Resend verification email" = "Kirim Ulang Verifikasi Email";
 
 /* (No Commment) */
 "Reset" = "Reset";
 
 /* (No Commment) */
-"Retry Validation" = "Coba validasi";
+"Retry Validation" = "Coba lagi Validasi";
 
 /* (No Commment) */
 "SMS" = "SMS";
@@ -746,25 +746,25 @@
 "Save" = "Simpan";
 
 /* (No Commment) */
-"Scan Pairing Code" = "Memindai memasangkan kode";
+"Scan Pairing Code" = "Pindai Kode Pemasangan";
 
 /* (No Commment) */
-"Scan Private Key" = "Memindai kunci pribadi";
+"Scan Private Key" = "Pindai Kunci Pribadi";
 
 /* (No Commment) */
-"Scan QR Code" = "Pindai kode QR";
+"Scan QR Code" = "Pindai Kode QR";
 
 /* (No Commment) */
 "Scan QR code" = "Pindai kode QR";
 
 /* (No Commment) */
-"Scan Watch Only Address?" = "Memindai Watch hanya alamat?";
+"Scan Watch Only Address?" = "Memindai alamat Melihat Saja?";
 
 /* No comment provided by engineer. */
-"Second Password Incorrect" = "Kedua Password salah";
+"Second Password Incorrect" = "Sandi Kedua Salah";
 
 /* No comment provided by engineer. */
-"Second Password Required" = "Kedua Password diperlukan";
+"Second Password Required" = "Sandi Kedua Diperlukan";
 
 /* (No Commment) */
 "Security" = "Keamanan";
@@ -773,7 +773,7 @@
 "Security Center" = "Pusat Keamanan";
 
 /* (No Commment) */
-"Send" = "Kirim";
+"Send" = "Mengirim";
 
 /* (No Commment) */
 "Send from..." = "Kirim dari...";
@@ -782,13 +782,13 @@
 "Send to..." = "Kirim ke...";
 
 /* (No Commment) */
-"Send verification SMS" = "Kirim verifikasi SMS";
+"Send verification SMS" = "Kirim Verifikasi SMS";
 
 /* (No Commment) */
-"Sending Transaction" = "Mengirimkan transaksi";
+"Sending Transaction" = "Mengirimkan Transaksi";
 
 /* (No Commment) */
-"Sent" = "Dikirim";
+"Sent" = "Telah Dikirim";
 
 /* (No Commment) */
 "Sent to %@" = "Dikirim ke %@";
@@ -803,13 +803,13 @@
 "Signal %d was raised." = "Sinyal %d dibesarkan.";
 
 /* (No Commment) */
-"Signing Input %d" = "Penandatanganan %d masukan";
+"Signing Input %d" = "Penandatanganan Input %d";
 
 /* (No Commment) */
-"Signing Inputs" = "Penandatanganan input";
+"Signing Inputs" = "Penandatanganan Input";
 
 /* (No Commment) */
-"Store Hint" = "Toko petunjuk";
+"Store Hint" = "Petunjuk Toko";
 
 /* (No Commment) */
 "Stored" = "Disimpan";
@@ -818,28 +818,28 @@
 "Strong" = "Kuat";
 
 /* (No Commment) */
-"Success" = "Sukses";
+"Success" = "Berhasil";
 
 /* (No Commment) */
-"Success!" = "Sukses!";
+"Success!" = "Berhasil!";
 
 /* (No Commment) */
 "Support" = "Dukungan";
 
 /* No comment provided by engineer. */
-"Syncing Wallet" = "Sinkronisasi dompet";
+"Syncing Wallet" = "Menyinkronkan Dompet";
 
 /* (No Commment) */
 "Terms of Service" = "Persyaratan Layanan";
 
 /* (No Commment) */
-"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN yang Anda pilih sangat umum dan dapat mudah ditebak oleh seseorang dengan akses ke telepon Anda dalam 3 mencoba. Apakah Anda ingin menggunakan PIN ini sih?";
+"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN yang Anda pilih sangat umum dan dapat mudah ditebak oleh seseorang dengan akses ke telepon Anda dalam 3 mencoba. Anda tetap ingin menggunakan PIN ini?";
 
 /* (No Commment) */
-"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Jumlah yang Anda ingin mengirim (%1$@) lebih besar dari jumlah maksimum yang Anda dapat menghabiskan dikurangi biaya (%2$@ - %3$@). Apakah Anda ingin mengirim %4$@?";
+"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Jumlah yang ingin Anda kirim (%1$ @) lebih besar dari jumlah maksimum yang Anda dapat habiskan dikurangi biaya (%2$@ - %3$@). Anda ingin mengirimkan %4$@?";
 
 /* (No Commment) */
-"The private key you are attempting to import is encrypted. Please enter the password below." = "Kunci pribadi Anda sedang berusaha untuk mengimpor dienkripsi. Masukkan password di bawah ini.";
+"The private key you are attempting to import is encrypted. Please enter the password below." = "Kunci pribadi Anda sedang berusaha Anda impor sedang melakukan enkripsi. Masukkan sandi di bawah ini.";
 
 /* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
@@ -850,128 +850,140 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade mengambil hanya satu detik dan bitcoins dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik: \n\n• desain benar-benar diperbarui dan pengguna pengalaman \n• keamanan yang kuat \n• pusat ditingkatkan privasi \n• sederhana backup dan recovery \n• Customized pengelolaan dana maju transaksi \n\ndua jenis (pengeluaran dari alamat hanya menonton dan bersama koin) tidak didukung dalam versi baru saat ini.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Pemutakhiran ini hanya butuh beberapa detik dan bitcoin dan sejarah Anda akan aman. Berikut ini yang lebih baik:
+
+• Desain dan pengalaman pengguna yang  sepenuhnya dimutakhirkan
+• Pusat Keamanan Kokoh
+• Privasi yang Ditingkatkan
+• Pencadangan dan Pemulihan Sederhana
+• Pengelolaan Dana Disesuaikan
+
+Dua jenis transaksi tingkat lanjut (pengeluaran dari alamat dilihat saja dan Berbagi Koin) tidak didukung dalam versi baru saat ini.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ada masalah saat memverifikasi identitas Anda.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan sandi kedua untuk bitcoin dompet Anda. Harap masukkan di bawah ini dan tekan continue.";
+"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan sandi kedua untuk bitcoin dompet Anda. Silakan masukkan di bawah ini dan tekan lanjutkan.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Ini akan menghapus semua dompet data pada perangkat ini. Pastikan Anda memiliki informasi dompet yang disimpan di tempat lain jika tidak bitcoins apapun dalam dompet ini akan bisa diakses!!";
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Ini akan menghapus semua data dompet pada perangkat ini. Pastikan Anda memiliki informasi dompet yang disimpan di tempat lain jika tidak bitcoin apa pun dalam dompet ini tidak dapat diakses!!";
 
 /* (No Commment) */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
-(%@)" = "Kepada: %1$@%2$@ jumlah: %3$@ biaya: %4$@ (%5$@)";
+(%@)" = "Untuk: %1$@
+%2$ @
+Jumlah: %3$@
+Biaya: %4$@
+(%5$@)";
 
 /* (No Commment) */
 "Tor Requests" = "Permintaan Tor";
 
 /* (No Commment) */
-"Tor blocked" = "Tor diblokir";
+"Tor blocked" = "Tor Diblokir";
 
 /* (No Commment) */
-"Tor requests allowed" = "Tor permintaan diperbolehkan";
+"Tor requests allowed" = "Permintaan Tor diperbolehkan";
 
 /* (No Commment) */
-"Tor requests are currently allowed." = "Tor permintaan saat ini diperbolehkan.";
+"Tor requests are currently allowed." = "Permintaan Tor saat ini diperbolehkan.";
 
 /* (No Commment) */
-"Tor requests are currently blocked." = "Tor permintaan sedang diblokir.";
+"Tor requests are currently blocked." = "Permintaan Tor saat ini diblokir.";
 
 /* (No Commment) */
-"Total Balance" = "Keseimbangan Total";
+"Total Balance" = "Total Neraca";
 
 /* (No Commment) */
-"Touch ID has been locked due to too many failed attempts." = "Sentuhan ID telah dikunci karena terlalu banyak usaha yang gagal.";
+"Touch ID has been locked due to too many failed attempts." = "ID Sentuh telah dikunci karena terlalu banyak usaha yang gagal.";
 
 /* (No Commment) */
-"Touch ID is not available on this device." = "Sentuhan ID ini tidak tersedia pada perangkat ini.";
+"Touch ID is not available on this device." = "ID Sentuh tidak tersedia di perangkat ini.";
 
 /* (No Commment) */
-"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Sentuhan ID tidak diaktifkan pada perangkat ini. Untuk mengaktifkan Touch ID, pergi ke pengaturan->Touch ID & Passcode dan menambahkan sidik jari.";
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "ID Sentuh tidak diaktifkan di perangkat ini. Untuk mengaktifkan ID Sentuh, pergi ke Pengaturan -> ID Sentuh & Kode Akses dan tambahkan sidik jari.";
 
 /* (No Commment) */
 "Transaction" = "Transaksi";
 
 /* (No Commment) */
-"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaksi tanpa biaya mungkin memakan waktu lama untuk mengkonfirmasi atau mungkin tidak dikonfirmasi sama sekali. Anda ingin melanjutkan?";
+"Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaksi tanpa biaya mungkin memakan waktu lama untuk mengkonfirmasi atau mungkin tidak mengkonfirmasi sama sekali. Anda ingin melanjutkan?";
 
 /* (No Commment) */
-"Transferred" = "Ditransfer";
+"Transferred" = "Telah Ditransfer";
 
 /* (No Commment) */
 "Try again" = "Coba lagi";
 
 /* (No Commment) */
-"UPGRADE YOUR WALLET" = "MENG-UPGRADE DOMPET ANDA";
+"UPGRADE YOUR WALLET" = "MUTAKHIRKAN DOMPET ANDA";
 
 /* (No Commment) */
-"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Tidak dapat memuat dompet karena tidak ada respon server. Mungkin Anda offline atau Blockchain mengalami kesulitan. Harap coba lagi nanti.";
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Tidak dapat memuat dompet karena tidak ada respon dari server. Mungkin Anda sedang luring atau Blockchain sedang mengalami masalah. Silakan coba lagi nanti.";
 
 /* (No Commment) */
-"Unarchive" = "Unarchive";
+"Unarchive" = "Tidak Diarsipkan";
 
 /* (No Commment) */
-"Unarchive Address" = "Unarchive alamat";
+"Unarchive Address" = "Alamat Tidak Diarsipkan";
 
 /* (No Commment) */
-"Unconfirmed" = "Belum dikonfirmasi";
+"Unconfirmed" = "Belum Dikonfirmasi";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Eksepsi tidak tertangani";
 
 /* (No Commment) */
-"Unknown" = "Unknown";
+"Unknown" = "Tidak Dikenal";
 
 /* (No Commment) */
-"Unknown Touch ID error. Code: %ld" = "Error Touch ID tidak diketahui. Kode: %ld";
+"Unknown Touch ID error. Code: %ld" = "Galat ID Sentuh Tidak Dikenal Kode: %ld";
 
 /* (No Commment) */
-"Unsupported Private Key Format" = "Format kunci pribadi yang tidak didukung";
+"Unsupported Private Key Format" = "Format Kunci Pribadi yang tidak didukung";
 
 /* (No Commment) */
-"Unverified" = "Belum diverifikasi";
+"Unverified" = "Belum Diverifikasi";
 
 /* (No Commment) */
-"Update" = "Update";
+"Update" = "Pembaruan";
 
 /* (No Commment) */
-"Upgrade" = "Meng-upgrade";
+"Upgrade" = "Memutakhirkan";
 
 /* (No Commment) */
-"Upgrade Now" = "Upgrade sekarang";
+"Upgrade Now" = "Memutakhirkan Sekarang";
 
 /* (No Commment) */
-"Upgrade Wallet" = "Meng-upgrade dompet";
+"Upgrade Wallet" = "Memutakhirkan Dompet";
 
 /* (No Commment) */
-"Upgrade to HD" = "Upgrade ke HD";
+"Upgrade to HD" = "Memutakhirkan ke HD";
 
 /* (No Commment) */
-"Upgrade to V3" = "Upgrade ke V3";
+"Upgrade to V3" = "Memutakhirkan ke V3";
 
 /* (No Commment) */
-"Use Touch ID as PIN" = "Menggunakan sentuhan ID sebagai PIN";
+"Use Touch ID as PIN" = "Gunakan Sentuhan ID sebagai PIN";
 
 /* (No Commment) */
-"Use all %@" = "Menggunakan semua %@";
+"Use all %@" = "Gunakan semua %@";
 
 /* (No Commment) */
-"Use all funds" = "Menggunakan semua dana";
+"Use all funds" = "Gunakan semua dana";
 
 /* (No Commment) */
-"User Declined" = "Pengguna menolak";
+"User Declined" = "Pengguna Ditolak";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "MEMVERIFIKASI CADANGAN";
 
 /* (No Commment) */
-"Verified" = "Diverifikasi";
+"Verified" = "Telah Diverifikasi";
 
 /* (No Commment) */
 "Verify" = "Memverifikasi";
@@ -980,25 +992,25 @@ Fee: %@
 "Verify Email" = "Verifikasi Email";
 
 /* (No Commment) */
-"Verifying" = "Memverifikasi";
+"Verifying" = "Sedang Memverifikasi";
 
 /* (No Commment) */
-"Wallet ID" = "Dompet ID";
+"Wallet ID" = "ID Dompet";
 
 /* (No Commment) */
-"Wallet Information" = "Dompet informasi";
+"Wallet Information" = "Informasi Dompet";
 
 /* (No Commment) */
 "Wallet JSON" = "Dompet JSON";
 
 /* (No Commment) */
-"Wallet Paired Successfully." = "Dompet dipasangkan berhasil.";
+"Wallet Paired Successfully." = "Pemasangan Dompet Berhasil.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Dompet pemulihan frase";
+"Wallet Recovery Phrase" = "Frasa Pemulihan Dompet";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Dompet alamat %@ memiliki dana yang tersedia untuk dibelanjakan. Namun kunci pribadi perlu dipindai dari kertas dompet atau kode QR. Apakah Anda ingin memindai kunci pribadi sekarang?";
+"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Dompet alamat %@ memiliki dana yang tersedia untuk dibelanjakan. Namun kunci pribadi perlu dipindai dari dompet kertas atau kode QR. Apakah Anda ingin memindai kunci pribadi sekarang?";
 
 /* (No Commment) */
 "Wallet version %lld not supported" = "Dompet versi %lld tidak didukung";
@@ -1007,41 +1019,42 @@ Fee: %@
 "Warning" = "Peringatan";
 
 /* (No Commment) */
-"Warning!!!" = "Peringatan!";
+"Warning!!!" = "Peringatan!!!";
 
 /* (No Commment) */
-"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Peringatan: Pengenal dompet Anda adalah informasi sensitif. Menyalin itu mungkin membahayakan keamanan dompet Anda.";
+"Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Peringatan: Pengenal Dompet Anda merupakan informasi sensitif Menyalin itu mungkin membahayakan keamanan dompet Anda.";
 
 /* (No Commment) */
-"We'll send the hint to your confirmed email address in case you request it." = "Kami akan mengirim petunjuk ke alamat email konfirmasi jika Anda memintanya.";
+"We'll send the hint to your confirmed email address in case you request it." = "Kami akan mengirim petunjuk ke alamat email konfirmasi seandainya Anda memintanya.";
 
 /* (No Commment) */
 "We've designed a whole new
-wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk Anda";
+wallet experience for you" = "Kami telah merancang keseluruhannya baru
+dompet pengalaman untuk Anda";
 
 /* (No Commment) */
-"We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Kami menyertakan beberapa perbaikan privasi dan keamanan yang signifikan. Setelah Anda klik update Anda tidak akan dapat kembali ke dompet Anda lama";
+"We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Kami menyertakan beberapa privasi signifikan dan perbaikan keamanan. Setelah Anda klik pemutakhir Anda tidak akan dapat kembali ke dompet Anda lama";
 
 /* (No Commment) */
 "Weak" = "Lemah";
 
 /* (No Commment) */
-"WebSocket URL" = "WebSocket URL";
+"WebSocket URL" = "URL WebSocket";
 
 /* (No Commment) */
 "Welcome" = "Selamat datang";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Selamat datang di versi baru dari dompet Blockchain!";
+"Welcome to the new version of the Blockchain Wallet!" = "Selamat datang di versi baru Dompet Blockchain!";
 
 /* (No Commment) */
-"We’ve detected a previous installation of Blockchain Wallet on your phone." = "Kami telah mendeteksi instalasi sebelumnya dompet Blockchain pada ponsel Anda.";
+"We’ve detected a previous installation of Blockchain Wallet on your phone." = "Kami telah mendeteksi instalasi sebelumnya dari dompet di pada ponsel Anda.";
 
 /* (No Commment) */
-"Would you like to add the bitcoin address %@ to your address book?" = "Apakah Anda ingin menambahkan bitcoin alamat %@ ke buku alamat Anda?";
+"Would you like to add the bitcoin address %@ to your address book?" = "Apakah Anda ingin menambahkan alamat bitcoin %@ ke buku alamat Anda?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Menuliskan frase pemulihan Anda dan menyimpannya di suatu tempat sangat aman dan aman. Ingat bahwa siapa saja yang mengetahui frase pemulihan Anda memiliki akses ke bitcoins Anda.";
+"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Tulis Frasa Pemulihan Anda dan simpan di suatu tempat sangat aman dan terjamin. Ingat bahwa siapa saja yang mengetahui Frasa Pemulihan Anda memiliki akses ke bitcoin Anda.";
 
 /* (No Commment) */
 "Yes" = "Ya";
@@ -1050,16 +1063,16 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 "Yesterday" = "Kemarin";
 
 /* (No Commment) */
-"You are now running our most secure Bitcoin wallet" = "Anda sekarang menjalankan Bitcoin dompet kami paling aman";
+"You are now running our most secure Bitcoin wallet" = "Anda sekarang menjalankan dompet Bitcoin kami yang paling aman";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Anda didukung dana Anda berhasil";
+"You backed up your funds successfully" = "Anda berhasil mencadangkan dana dengan sukses";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Anda dapat mengaktifkan verifikasi 2 langkah melalui SMS di ponsel Anda. Untuk menggunakan metode otentikasi lain sebagai gantinya, silakan login ke dompet web kami.";
 
 /* (No Commment) */
-"You do not have an account set up for Mail. Please contact %@" = "Anda tidak memiliki rekening diatur untuk pesan. Silahkan hubungi %@";
+"You do not have an account set up for Mail. Please contact %@" = "Anda tidak memiliki rekening untuk pengaturan Email Silakan hubungi %@";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Anda memiliki tidak ada dana yang tersedia untuk mengirim dari alamat ini";
@@ -1074,16 +1087,16 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 "You must enter a label" = "Anda harus memasukkan label";
 
 /* (No Commment) */
-"You must have two-factor authentication disabled to pair manually." = "Anda harus memiliki dua faktor otentikasi dinonaktifkan untuk pasangan secara manual.";
+"You must have two-factor authentication disabled to pair manually." = "Anda harus memiliki dua faktor otentikasi dinonaktifkan untuk pemasangan secara manual.";
 
 /* (No Commment) */
 "You must leave at least one active address" = "Anda harus meninggalkan minimal satu alamat aktif";
 
 /* (No Commment) */
-"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Anda selalu harus memasangkan atau login bila Anda memiliki akses ke dompet ID dan password Anda. Memulihkan dana Anda akan membuat dompet id yang baru. Anda ingin melanjutkan?";
+"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Anda harus selalu memasangkan atau login bila Anda memiliki akses ke dompet ID dan sandi Anda. Memulihkan dana Anda akan membuat Dompet Id yang baru. Anda ingin melanjutkan?";
 
 /* (No Commment) */
-"Your device appears to be jailbroken. The security of your wallet may be compromised." = "Perangkat Anda tampaknya menjadi jailbroken. Keamanan dompet Anda dapat dikompromikan.";
+"Your device appears to be jailbroken. The security of your wallet may be compromised." = "Perangkat Anda tampaknya menjadi jailbroken. Keamanan dompet Anda mungkin terancam";
 
 /* (No Commment) */
 "Your email has been verified." = "Email Anda telah diverifikasi.";
@@ -1095,37 +1108,37 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 "Your mobile number has been verified." = "Nomor ponsel Anda telah diverifikasi.";
 
 /* (No Commment) */
-"Your new password hint contains invalid characters. Please try again." = "Petunjuk password baru Anda berisi karakter yang tidak valid. Silakan coba lagi.";
+"Your new password hint contains invalid characters. Please try again." = "Petunjuk sandi baru Anda berisi karakter yang tidak valid. Silakan coba lagi.";
 
 /* (No Commment) */
-"Your new password hint contains no text. Your password hint will be cleared." = "Petunjuk password baru Anda berisi teks tidak. Petunjuk password Anda akan dihapus.";
+"Your new password hint contains no text. Your password hint will be cleared." = "Petunjuk sandi baru Anda tidak berisi teks. Petunjuk sandi Anda akan dihapus.";
 
 /* (No Commment) */
-"Your new password hint must be different from your password. Please try again." = "Petunjuk password baru Anda harus berbeda dari sandi. Silakan coba lagi.";
+"Your new password hint must be different from your password. Please try again." = "Petunjuk sandi baru Anda harus berbeda dari sandi Anda. Silakan coba lagi.";
 
 /* (No Commment) */
-"Your new password hint must be different from your second password. Please try again." = "Petunjuk password baru Anda harus berbeda dari sandi kedua. Silakan coba lagi.";
+"Your new password hint must be different from your second password. Please try again." = "Petunjuk sandi baru Anda harus berbeda dari sandi kedua Anda. Silakan coba lagi.";
 
 /* (No Commment) */
-"Your password hint has been updated." = "Petunjuk password Anda telah diperbarui.";
+"Your password hint has been updated." = "Petunjuk sandi Anda telah diperbarui.";
 
 /* (No Commment) */
-"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Alamat email yang telah diverifikasi digunakan untuk mengirimkan kode login ketika aktivitas mencurigakan atau tidak biasa terdeteksi, untuk mengingatkan Anda tentang ID login dompet Anda, dan untuk mengirim peringatan pembayaran bitcoin bila Anda menerima dana. Kami tidak akan menggunakan alamat email Anda untuk tujuan pemasaran.";
+"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Alamat email Anda yang telah diverifikasi digunakan untuk mengirimkan kode login ketika ada aktivitas mencurigakan atau tidak biasa terdeteksi, untuk mengingatkan Anda tentang ID login dompet Anda, dan untuk mengirim peringatan pembayaran bitcoin bila Anda menerima dana. Kami tidak akan menggunakan alamat email Anda untuk tujuan pemasaran.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Dompet Anda berhasil dibuat.";
 
 /* (No Commment) */
-"Yubi Key" = "Yubi kunci";
+"Yubi Key" = "Kunci Yubi";
 
 /* No comment provided by engineer. */
 "eighth word" = "kata kedelapan";
 
 /* No comment provided by engineer. */
-"eleventh word" = "kesebelas kata";
+"eleventh word" = "kata kesebelas";
 
 /* No comment provided by engineer. */
-"fifth word" = "kelima kata";
+"fifth word" = "kata kelima";
 
 /* No comment provided by engineer. */
 "first word" = "kata pertama";
@@ -1137,10 +1150,10 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 "from" = "dari";
 
 /* (No Commment) */
-"iOS Support Request" = "iOS permintaan dukungan";
+"iOS Support Request" = "Permintaan Dukungan iOS";
 
 /* No comment provided by engineer. */
-"ninth word" = "kesembilan kata";
+"ninth word" = "kata kesembilan";
 
 /* (No Commment) */
 "or Continue" = "atau Lanjutkan";
@@ -1149,17 +1162,17 @@ wallet experience for you" = "Kami telah merancang pengalaman dompet baru untuk 
 "second word" = "kata kedua";
 
 /* No comment provided by engineer. */
-"seventh word" = "ketujuh kata";
+"seventh word" = "kata ketujuh";
 
 /* No comment provided by engineer. */
-"sixth word" = "keenam kata";
+"sixth word" = "kata keenam";
 
 /* No comment provided by engineer. */
-"tenth word" = "kesepuluh kata";
+"tenth word" = "kata kesepuluh";
 
 /* No comment provided by engineer. */
-"third word" = "perkataan ketiga";
+"third word" = "kata ketiga";
 
 /* No comment provided by engineer. */
-"twelfth word" = "kata kedua belas";
+"twelfth word" = "kata keduabelas";
 

@@ -35,8 +35,12 @@ class BackupViewController: UIViewController {
             backupIconImageView!.image = UIImage(named: "thumbs")
             backupWalletButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), forState: .Normal)
             backupWalletAgainButton?.hidden = false
+            backupWalletAgainButton?.titleLabel?.textAlignment = .Center;
+            backupWalletAgainButton?.titleLabel?.adjustsFontSizeToFitWidth = true;
             lostRecoveryPhraseLabel?.hidden = false
             lostRecoveryPhraseLabel?.adjustsFontSizeToFitWidth = true;
+            lostRecoveryPhraseLabel?.textAlignment = .Center;
+
             
             // Override any font changes
             backupWalletAgainButton?.titleLabel?.font = UIFont.boldSystemFontOfSize(14);

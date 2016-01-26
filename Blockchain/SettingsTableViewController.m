@@ -202,12 +202,32 @@ const int aboutPrivacyPolicy = 1;
 
 + (UIFont *)fontForCell
 {
-    return [UIFont fontWithName:@"Helvetica Neue" size:15];
+    return [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
 }
 
 + (UIFont *)fontForCellSubtitle
 {
-    return [UIFont fontWithName:@"Helvetica Neue" size:12];
+    return [UIFont fontWithName:FONT_HELVETICA_NUEUE size:12];
+}
+
+
+
+- (UITableViewCell *)adjustFontForCell:(UITableViewCell *)cell
+{
+    UILabel *cellTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    cellTextLabel.text = cell.textLabel.text;
+    [cellTextLabel sizeToFit];
+    if (cellTextLabel.frame.size.width > cell.contentView.frame.size.width * 2/3) {
+        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:12];
+        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:12];
+    }
+    
+    if (cellTextLabel.frame.size.width > cell.contentView.frame.size.width * 4/5) {
+        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:10];
+        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:10];
+    }
+    
+    return cell;
 }
 
 - (CurrencySymbol *)getLocalSymbolFromLatestResponse
@@ -1247,6 +1267,8 @@ const int aboutPrivacyPolicy = 1;
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     cell.textLabel.font = [SettingsTableViewController fontForCell];
     cell.detailTextLabel.font = [SettingsTableViewController fontForCell];
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     
     switch (indexPath.section) {
         case walletInformationSection: {
@@ -1264,7 +1286,6 @@ const int aboutPrivacyPolicy = 1;
             }
         }
         case preferencesSectionEmailFooter: {
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             switch (indexPath.row) {
                 case preferencesEmail: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
@@ -1277,13 +1298,11 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
-                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             }
         }
         case preferencesSectionNotificationsFooter: {
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             switch (indexPath.row) {
                 case preferencesMobileNumber: {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -1296,7 +1315,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
                 case preferencesNotifications: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL_NOTIFICATIONS;
@@ -1313,7 +1332,6 @@ const int aboutPrivacyPolicy = 1;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
                 case displayLocalCurrency: {
-                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
                     NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
                     cell.textLabel.text = BC_STRING_SETTINGS_LOCAL_CURRENCY;
@@ -1324,7 +1342,6 @@ const int aboutPrivacyPolicy = 1;
                     return cell;
                 }
                 case displayBtcUnit: {
-                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     NSString *selectedCurrencyCode = [self getBtcSymbolFromLatestResponse].name;
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
                     cell.detailTextLabel.text = selectedCurrencyCode;
@@ -1341,7 +1358,6 @@ const int aboutPrivacyPolicy = 1;
             }
         }
         case securitySection: {
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             if (indexPath.row == securityTwoStep) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -1359,7 +1375,7 @@ const int aboutPrivacyPolicy = 1;
                     } else {
                         cell.detailTextLabel.text = BC_STRING_UNKNOWN;
                     }
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityPasswordHint) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_PASSWORD_HINT;
@@ -1371,12 +1387,12 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_NOT_STORED;
                     }
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityPasswordChange) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityTorBlocking) {
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
@@ -1390,7 +1406,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_ALLOWED;
                     }
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityWalletRecoveryPhrase) {
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
@@ -1403,7 +1419,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return cell;
+                    return [self adjustFontForCell:cell];
                 }
         }
         case PINSection: {
@@ -1415,6 +1431,8 @@ const int aboutPrivacyPolicy = 1;
             if (indexPath.row == PINTouchID) {
                 cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
+                cell.textLabel.adjustsFontSizeToFitWidth = YES;
+                cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.font = [SettingsTableViewController fontForCell];
                 cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;

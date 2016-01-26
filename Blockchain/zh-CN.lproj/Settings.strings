@@ -5,7 +5,7 @@
 "8Ha-3e-Nqx.text" = "验证电子邮件";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "两步验证";
+"8Zy-R2-HoW.text" = "2 步验证";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
 "Ii6-KE-x0B.placeholder" = "确认新密码";
@@ -17,25 +17,25 @@
 "VKs-B5-luJ.placeholder" = "新密码";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "备份的短语";
+"WVd-f2-ZLG.text" = "备份短语";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "块职权范围";
+"Wor-ZR-sPS.text" = "阻止 Tor";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "通过启用 2 步核查从未经授权的访问保护你的钱包。您可以选择使用一个免费的应用程序或您的移动电话号码，以确保你的钱包。当您尝试访问你的钱包时，将要求此代码。";
+"bFL-5O-fcl.text" = "通过启用 2 步验证，保护您的钱包免遭未经授权的访问。您可以选择使用免费应用或移动电话号码保护您的钱包。在您尝试访问您的钱包时将请求此代码。";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "链接手机";
+"f52-8F-scW.text" = "关联移动电话";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
 "g8G-4j-qpJ.normalTitle" = "使用您的移动电话号码";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "启用 2 步";
+"gIP-mj-Hh2.text" = "启用 2 步验证";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "完成下列步骤以最终的安全";
+"u5x-QP-acV.text" = "完成下面的步骤以获得绝佳的安全性";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
 "wnC-Xd-1Er.title" = "安全中心";
