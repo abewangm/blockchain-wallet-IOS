@@ -484,6 +484,15 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.isArchived(\"%@\")", [address escapeStringForJS]] boolValue];
 }
 
+- (Boolean)isActiveAccountArchived:(int)account
+{
+    if (![self isInitialized]) {
+        return FALSE;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isArchived(MyWalletPhone.getIndexOfActiveAccount(%d))", account] boolValue];
+}
+
 - (Boolean)isAccountArchived:(int)account
 {
     if (![self isInitialized]) {
@@ -546,7 +555,7 @@
     [self.webView executeJS:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
 }
 
-- (void)archiveLegacyAddress:(NSString*)address
+- (void)toggleArchiveLegacyAddress:(NSString*)address
 {
     if (![self isInitialized] || ![app checkInternetConnection]) {
         return;
@@ -554,22 +563,18 @@
     
     self.isSyncing = YES;
     
-    [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = true", [address escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.toggleArchived(\"%@\")", [address escapeStringForJS]];
     
     [self getHistory];
 }
 
-- (void)unArchiveLegacyAddress:(NSString*)address
+- (void)toggleArchiveAccount:(int)account
 {
     if (![self isInitialized] || ![app checkInternetConnection]) {
         return;
     }
     
-    self.isSyncing = YES;
-    
-    [self.webView executeJS:@"MyWallet.wallet.key(\"%@\").archived = false", [address escapeStringForJS]];
-    
-    [self getHistory];
+    [self.webView executeJS:@"MyWalletPhone.toggleArchived(%d)", account];
 }
 
 - (uint64_t)getLegacyAddressBalance:(NSString*)address
@@ -1724,13 +1729,22 @@
     [self.webView executeJSSynchronous:@"MyWallet.wallet.hdwallet.verifyMnemonic()"];
 }
 
-- (int)getAccountsCount
+- (int)getActiveAccountsCount
 {
     if (![self isInitialized]) {
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAccountsCount()"] intValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getActiveAccountsCount()"] intValue];
+}
+
+- (int)getAllAccountsCount
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAllAccountsCount()"] intValue];
 }
 
 - (int)getDefaultAccountIndex
@@ -1778,30 +1792,43 @@
     return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceSpendableActiveLegacy"] longLongValue];
 }
 
-- (uint64_t)getBalanceForAccount:(int)account
+- (uint64_t)getBalanceForAccount:(int)account activeOnly:(BOOL)isActiveOnly
 {
     if (![self isInitialized]) {
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getBalanceForAccount(%d)", account] longLongValue];
+    if (isActiveOnly) {
+        return [[self.webView executeJSSynchronous:@"MyWalletPhone.getBalanceForAccount(MyWalletPhone.getIndexOfActiveAccount(%d))", account] longLongValue];
+    } else {
+        return [[self.webView executeJSSynchronous:@"MyWalletPhone.getBalanceForAccount(%d)", account] longLongValue];
+    }
 }
 
-- (NSString *)getLabelForAccount:(int)account
+- (NSString *)getLabelForAccount:(int)account activeOnly:(BOOL)isActiveOnly
 {
     if (![self isInitialized]) {
         return nil;
     }
     
-    return [self.webView executeJSSynchronous:@"MyWalletPhone.getLabelForAccount(%d)", account];
+    if (isActiveOnly) {
+        return [self.webView executeJSSynchronous:@"MyWalletPhone.getLabelForAccount(MyWalletPhone.getIndexOfActiveAccount(%d))", account];
+    } else {
+        return [self.webView executeJSSynchronous:@"MyWalletPhone.getLabelForAccount(%d)", account];
+    }
 }
 
-- (void)setLabelForAccount:(int)account label:(NSString *)label
+- (void)setLabelForAccount:(int)account activeOnly:(BOOL)isActiveOnly label:(NSString *)label
 {
     if ([self isInitialized] && [app checkInternetConnection]) {
         self.isSyncing = YES;
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-        [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, [label escapeStringForJS]];
+        
+        if (isActiveOnly) {
+            [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(MyWalletPhone.getIndexOfActiveAccount(%d), \"%@\")", account, [label escapeStringForJS]];
+        } else {
+            [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, [label escapeStringForJS]];
+        }
     }
 }
 
@@ -1820,13 +1847,17 @@
     }
 }
 
-- (NSString *)getReceiveAddressForAccount:(int)account
+- (NSString *)getReceiveAddressForAccount:(int)account activeOnly:(BOOL)isActiveOnly
 {
     if (![self isInitialized]) {
         return nil;
     }
     
-    return [self.webView executeJSSynchronous:@"MyWalletPhone.getReceivingAddressForAccount(%d)", account];
+    if (isActiveOnly) {
+        return [self.webView executeJSSynchronous:@"MyWalletPhone.getReceivingAddressForAccount(MyWalletPhone.getIndexOfActiveAccount(%d))", account];
+    } else {
+        return [self.webView executeJSSynchronous:@"MyWalletPhone.getReceivingAddressForAccount(%d)", account];
+    }
 }
 
 - (void)setPbkdf2Iterations:(int)iterations

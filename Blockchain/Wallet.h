@@ -116,8 +116,8 @@
 
 - (void)loadWalletLogin;
 
-- (void)archiveLegacyAddress:(NSString *)address;
-- (void)unArchiveLegacyAddress:(NSString *)address;
+- (void)toggleArchiveLegacyAddress:(NSString *)address;
+- (void)toggleArchiveAccount:(int)account;
 
 - (void)sendPaymentWithListener:(transactionProgressListeners*)listener;
 
@@ -179,21 +179,22 @@
 - (void)markRecoveryPhraseVerified;
 - (int)getDefaultAccountIndex;
 - (void)setDefaultAccount:(int)index;
-- (int)getAccountsCount;
+- (int)getActiveAccountsCount;
+- (int)getAllAccountsCount;
 - (BOOL)hasLegacyAddresses;
 - (Boolean)isAccountArchived:(int)account;
 
 - (uint64_t)getTotalActiveBalance;
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses;
-- (uint64_t)getBalanceForAccount:(int)account;
+- (uint64_t)getBalanceForAccount:(int)account activeOnly:(BOOL)isActiveOnly;
 
-- (NSString *)getLabelForAccount:(int)account;
-- (void)setLabelForAccount:(int)account label:(NSString *)label;
+- (NSString *)getLabelForAccount:(int)account activeOnly:(BOOL)isActiveOnly;
+- (void)setLabelForAccount:(int)account activeOnly:(BOOL)isActiveOnly label:(NSString *)label;
 
 - (void)createAccountWithLabel:(NSString *)label;
 - (void)generateNewKey;
 
-- (NSString *)getReceiveAddressForAccount:(int)account;
+- (NSString *)getReceiveAddressForAccount:(int)account activeOnly:(BOOL)isActiveOnly;
 
 - (void)setPbkdf2Iterations:(int)iterations;
 

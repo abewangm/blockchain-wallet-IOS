@@ -69,7 +69,7 @@
         return;
     }
     
-    [app.wallet setLabelForAccount:self.accountIdx label:label];
+    [app.wallet setLabelForAccount:self.accountIdx activeOnly:YES label:label];
     
     [app reload];
     

@@ -10,7 +10,6 @@
 
 @interface AccountsAndAddressesViewController : UIViewController
 @property (nonatomic) UITableView *tableView;
-@property(nonatomic, strong) NSArray *activeKeys;
-@property(nonatomic, strong) NSArray *archivedKeys;
+@property(nonatomic, strong) NSArray *allKeys;
 
 @end

@@ -154,7 +154,7 @@ BOOL displayingLocalSymbolSend;
 {
     // If we only have one account and no legacy addresses -> can't change from address
     if ([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
-        && [app.wallet getAccountsCount] == 1) {
+        && [app.wallet getActiveAccountsCount] == 1) {
         
         [selectFromButton setHidden:YES];
         
@@ -205,8 +205,8 @@ BOOL displayingLocalSymbolSend;
         }
     }
     else {
-        selectAddressTextField.text = [app.wallet getLabelForAccount:self.fromAccount];
-        availableAmount = [app.wallet getBalanceForAccount:self.fromAccount];
+        selectAddressTextField.text = [app.wallet getLabelForAccount:self.fromAccount activeOnly:YES];
+        availableAmount = [app.wallet getBalanceForAccount:self.fromAccount activeOnly:YES];
     }
 }
 
@@ -222,7 +222,7 @@ BOOL displayingLocalSymbolSend;
         }
     }
     else {
-        toField.text = [app.wallet getLabelForAccount:self.toAccount];
+        toField.text = [app.wallet getLabelForAccount:self.toAccount activeOnly:YES];
         [self didSelectToAccount:self.toAccount];
     }
 }
@@ -423,7 +423,7 @@ BOOL displayingLocalSymbolSend;
 
         uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
         
-        NSString *fromAddressLabel = self.sendFromAddress ? [self labelForLegacyAddress:self.fromAddress] : [app.wallet getLabelForAccount:self.fromAccount];
+        NSString *fromAddressLabel = self.sendFromAddress ? [self labelForLegacyAddress:self.fromAddress] : [app.wallet getLabelForAccount:self.fromAccount activeOnly:YES];
         
         NSString *fromAddressString = self.sendFromAddress ? self.fromAddress : @"";
         
@@ -436,7 +436,7 @@ BOOL displayingLocalSymbolSend;
             fromAddressLabel = @"";
         }
         
-        NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
+        NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount activeOnly:YES];
         NSString *toAddressString = self.sendToAddress ? self.toAddress : @"";
         
         // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
@@ -613,7 +613,7 @@ BOOL displayingLocalSymbolSend;
     if (textField == selectAddressTextField) {
         // If we only have one account and no legacy addresses -> can't change from address
         if (!([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
-              && [app.wallet getAccountsCount] == 1)) {
+              && [app.wallet getActiveAccountsCount] == 1)) {
             [self selectFromAddressClicked:textField];
         }
         return NO;  // Hide both keyboard and blinking cursor.
@@ -782,11 +782,11 @@ BOOL displayingLocalSymbolSend;
 {
     self.sendFromAddress = false;
     
-    availableAmount = [app.wallet getBalanceForAccount:account];
+    availableAmount = [app.wallet getBalanceForAccount:account activeOnly:YES];
     
-    selectAddressTextField.text = [app.wallet getLabelForAccount:account];
+    selectAddressTextField.text = [app.wallet getLabelForAccount:account activeOnly:YES];
     self.fromAccount = account;
-    DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
+    DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account activeOnly:YES]);
     
     [app.wallet changePaymentFromAccount:account];
     
@@ -799,10 +799,10 @@ BOOL displayingLocalSymbolSend;
 {
     self.sendToAddress = false;
     
-    toField.text = [app.wallet getLabelForAccount:account];
+    toField.text = [app.wallet getLabelForAccount:account activeOnly:YES];
     self.toAccount = account;
     self.toAddress = @"";
-    DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
+    DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account activeOnly:YES]);
     
     [app.wallet changePaymentToAccount:account];
     

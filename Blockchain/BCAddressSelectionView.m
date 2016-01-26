@@ -54,18 +54,18 @@ int legacyAddressesSectionNumber;
         // Select from address
         if (_showFromAddresses) {
             // First show the HD accounts with positive balance
-            for (int i = 0; i < app.wallet.getAccountsCount; i++) {
-                if ([app.wallet getBalanceForAccount:i] > 0) {
+            for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
+                if ([app.wallet getBalanceForAccount:i activeOnly:YES] > 0) {
                     [accounts addObject:[NSNumber numberWithInt:i]];
-                    [accountLabels addObject:[_wallet getLabelForAccount:i]];
+                    [accountLabels addObject:[_wallet getLabelForAccount:i activeOnly:YES]];
                 }
             }
             
             // Then show the HD accounts with a zero balance
-            for (int i = 0; i < app.wallet.getAccountsCount; i++) {
-                if (![app.wallet getBalanceForAccount:i] > 0) {
+            for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
+                if (![app.wallet getBalanceForAccount:i activeOnly:YES] > 0) {
                     [accounts addObject:[NSNumber numberWithInt:i]];
-                    [accountLabels addObject:[_wallet getLabelForAccount:i]];
+                    [accountLabels addObject:[_wallet getLabelForAccount:i activeOnly:YES]];
                 }
             }
             
@@ -98,9 +98,9 @@ int legacyAddressesSectionNumber;
             }
             
             // Then show the HD accounts
-            for (int i = 0; i < app.wallet.getAccountsCount; i++) {
+            for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
                 [accounts addObject:[NSNumber numberWithInt:i]];
-                [accountLabels addObject:[_wallet getLabelForAccount:i]];
+                [accountLabels addObject:[_wallet getLabelForAccount:i activeOnly:YES]];
             }
             
             // Finally show all the user's active legacy addresses
@@ -287,7 +287,7 @@ int legacyAddressesSectionNumber;
                 balance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
             }
             else if (section == accountsSectionNumber) {
-                balance = [app.wallet getBalanceForAccount:[[accounts objectAtIndex:indexPath.row] intValue]];
+                balance = [app.wallet getBalanceForAccount:[[accounts objectAtIndex:indexPath.row] intValue] activeOnly:YES];
             }
             else if (section == legacyAddressesSectionNumber) {
                 balance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];

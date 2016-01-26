@@ -40,7 +40,7 @@ const int numberOfRowsArchived = 1;
     }
     
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    navigationController.headerLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account];
+    navigationController.headerLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
 }
@@ -58,6 +58,12 @@ const int numberOfRowsArchived = 1;
 - (BOOL)isArchived
 {
     return [app.wallet isAddressArchived:self.address] || [app.wallet isAccountArchived:self.account];
+}
+
+- (void)showBusyView
+{
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    [navigationController.busyView fadeIn];
 }
 
 - (void)labelAddressClicked
@@ -82,9 +88,23 @@ const int numberOfRowsArchived = 1;
 
 - (void)setDefaultAccount:(int)account
 {
-    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    [navigationController.busyView fadeIn];
+    [self showBusyView];
     [app.wallet setDefaultAccount:account];
+}
+
+- (void)toggleArchive
+{
+    [self showBusyView];
+    if (self.address) {
+        [app.wallet toggleArchiveLegacyAddress:self.address];
+    } else {
+        [app.wallet toggleArchiveAccount:self.account];
+    }
+}
+
+- (void)scanPrivateKey
+{
+
 }
 
 - (void)alertToConfirmSetDefaultAccount:(int)account
@@ -187,7 +207,16 @@ const int numberOfRowsArchived = 1;
                         }
                         return;
                     }
-                    
+                    case 2: {
+                        if (self.address) {
+                            if ([app.wallet isWatchOnlyLegacyAddress:self.address]) {
+                                [self scanPrivateKey];
+                            }
+                        } else {
+                            [self showAccountXPub:self.account];
+                        }
+                        return;
+                    }
                 }
             }
         }
@@ -208,10 +237,12 @@ const int numberOfRowsArchived = 1;
                     if ([self isArchived]) {
                         cell.textLabel.text = BC_STRING_ARCHIVED;
                         UISwitch *archiveSwitch = [[UISwitch alloc] init];
+                        archiveSwitch.on = [self isArchived];
+                        [archiveSwitch addTarget:self action:@selector(toggleArchive) forControlEvents:UIControlEventTouchUpInside];
                         cell.accessoryView = archiveSwitch;
                     } else {
                         cell.textLabel.text = self.address? BC_STRING_LABEL : BC_STRING_NAME;
-                        cell.detailTextLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account];
+                        cell.detailTextLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     }
                     return cell;
@@ -238,6 +269,8 @@ const int numberOfRowsArchived = 1;
                         } else {
                             cell.textLabel.text = BC_STRING_ARCHIVED;
                             UISwitch *archiveSwitch = [[UISwitch alloc] init];
+                            archiveSwitch.on = [self isArchived];
+                            [archiveSwitch addTarget:self action:@selector(toggleArchive) forControlEvents:UIControlEventTouchUpInside];
                             cell.accessoryView = archiveSwitch;
                         }
                     } else {
@@ -252,6 +285,8 @@ const int numberOfRowsArchived = 1;
         case sectionArchived: {
             cell.textLabel.text = BC_STRING_ARCHIVED;
             UISwitch *archiveSwitch = [[UISwitch alloc] init];
+            archiveSwitch.on = [self isArchived];
+            [archiveSwitch addTarget:self action:@selector(toggleArchive) forControlEvents:UIControlEventTouchUpInside];
             cell.accessoryView = archiveSwitch;
             return cell;
         }

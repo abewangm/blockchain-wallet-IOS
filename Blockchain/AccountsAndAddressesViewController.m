@@ -18,8 +18,7 @@
 
 @implementation AccountsAndAddressesViewController
 
-@synthesize activeKeys;
-@synthesize archivedKeys;
+@synthesize allKeys;
 
 - (void)viewDidLoad
 {
@@ -47,14 +46,8 @@
 
 - (void)reload
 {
-    [self reloadAddresses];
+    allKeys = [app.wallet allLegacyAddresses];
     [self.tableView reloadData];
-}
-
-- (void)reloadAddresses
-{
-    activeKeys = [app.wallet activeLegacyAddresses];
-    archivedKeys = [app.wallet archivedLegacyAddresses];
 }
 
 - (void)didSelectAddress:(NSString *)address
@@ -84,18 +77,6 @@
 }
 
 #pragma mark - Helpers
-
-- (NSString *)getAddress:(NSIndexPath*)indexPath
-{
-    NSString *addr = nil;
-    
-    if ([indexPath section] == 1)
-        addr = [activeKeys objectAtIndex:[indexPath row]];
-    else if ([indexPath section] == 2)
-        addr = [archivedKeys objectAtIndex:[indexPath row]];
-    
-    return addr;
-}
 
 - (void)addNewAddressClicked:(id)sender
 {
@@ -153,10 +134,7 @@
         [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
         [addButton addTarget:self action:@selector(addNewAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
-    }
-    else if (section == 2)
-        labelString = BC_STRING_IMPORTED_ADDRESSES_ARCHIVED;
-    else
+    } else
         @throw @"Unknown Section";
     
     label.text = [labelString uppercaseString];
@@ -167,20 +145,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
-        return [app.wallet getAccountsCount];
+        return [app.wallet getAllAccountsCount];
     else if (section == 1)
-        return [activeKeys count];
-    else
-        return [archivedKeys count];
+        return [allKeys count];
+    return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    int n = 2;
-    
-    if ([archivedKeys count]) ++n;
-    
-    return n;
+    return 2;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -189,9 +162,7 @@
     if (indexPath.section == 0) {
         [self didSelectAccount:indexPath.row];
     } else if (indexPath.section == 1) {
-        [self didSelectAddress:activeKeys[indexPath.row]];
-    } else if (indexPath.section == 2) {
-        [self didSelectAddress:archivedKeys[indexPath.row]];
+        [self didSelectAddress:allKeys[indexPath.row]];
     }
 }
 
@@ -199,7 +170,7 @@
 {
     if (indexPath.section == 0) {
         int accountIndex = (int) indexPath.row;
-        NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex];
+        NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex activeOnly:NO];
         
         if ([app.wallet getDefaultAccountIndex] == accountIndex) {
             
@@ -223,14 +194,20 @@
         cell.labelLabel.text = accountLabelString;
         cell.addressLabel.text = @"";
         
-        uint64_t balance = [app.wallet getBalanceForAccount:accountIndex];
+        uint64_t balance = [app.wallet getBalanceForAccount:accountIndex activeOnly:NO];
         
         // Selected cell color
         UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
         [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
         [cell setSelectedBackgroundView:v];
         
-        cell.balanceLabel.text = [app formatMoney:balance];
+        if ([app.wallet isAccountArchived:accountIndex]) {
+            cell.balanceLabel.text = BC_STRING_ARCHIVED;
+            cell.balanceLabel.textColor = COLOR_BUTTON_BLUE;
+        } else {
+            cell.balanceLabel.text = [app formatMoney:balance];
+            cell.balanceLabel.textColor = COLOR_BUTTON_GREEN;
+        }
         cell.balanceLabel.minimumScaleFactor = 0.75f;
         [cell.balanceLabel setAdjustsFontSizeToFitWidth:YES];
         
@@ -239,7 +216,7 @@
         return cell;
     }
     
-    NSString *addr = [self getAddress:indexPath];
+    NSString *addr = [allKeys objectAtIndex:[indexPath row]];
     
     Boolean isWatchOnlyLegacyAddress = [app.wallet isWatchOnlyLegacyAddress:addr];
     
@@ -293,7 +270,13 @@
     [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
     [cell setSelectedBackgroundView:v];
     
-    cell.balanceLabel.text = [app formatMoney:balance];
+    if ([app.wallet isAddressArchived:addr]) {
+        cell.balanceLabel.text = BC_STRING_ARCHIVED;
+        cell.balanceLabel.textColor = COLOR_BUTTON_BLUE;
+    } else {
+        cell.balanceLabel.text = [app formatMoney:balance];
+        cell.balanceLabel.textColor = COLOR_BUTTON_GREEN;
+    }
     cell.balanceLabel.minimumScaleFactor = 0.75f;
     [cell.balanceLabel setAdjustsFontSizeToFitWidth:YES];
     

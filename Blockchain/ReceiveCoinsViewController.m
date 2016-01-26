@@ -229,9 +229,9 @@ UIAlertController *popupAddressArchive;
 {
     // Get an address: the first empty receive address for the default HD account
     // Or the first active legacy address if there are no HD accounts
-    if ([app.wallet getAccountsCount] > 0) {
+    if ([app.wallet getActiveAccountsCount] > 0) {
         int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
-        mainAddress = [app.wallet getReceiveAddressForAccount:defaultAccountIndex];
+        mainAddress = [app.wallet getReceiveAddressForAccount:defaultAccountIndex activeOnly:YES];
     }
     else if (activeKeys.count > 0) {
         for (NSString *address in activeKeys) {
@@ -250,7 +250,7 @@ UIAlertController *popupAddressArchive;
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 50)];
     
-    if ([app.wallet getAccountsCount] > 0 || activeKeys.count > 0) {
+    if ([app.wallet getActiveAccountsCount] > 0 || activeKeys.count > 0) {
         
         qrCodeMainImageView.image = [self qrImageFromAddress:mainAddress];
         
@@ -258,9 +258,9 @@ UIAlertController *popupAddressArchive;
         
         // Label of the default HD account
         mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 30, self.view.frame.size.width - 40, 18)];
-        if ([app.wallet getAccountsCount] > 0) {
+        if ([app.wallet getActiveAccountsCount] > 0) {
             int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
-            mainLabel = [app.wallet getLabelForAccount:defaultAccountIndex];
+            mainLabel = [app.wallet getLabelForAccount:defaultAccountIndex activeOnly:YES];
         }
         // Label of the default legacy address
         else {
@@ -671,19 +671,19 @@ UIAlertController *popupAddressArchive;
     Boolean isArchived = [app.wallet isAddressArchived:addr];
     
     if (isArchived) {
-        [app.wallet unArchiveLegacyAddress:addr];
+        [app.wallet toggleArchiveLegacyAddress:addr];
     }
     else {
         // Need at least one active address
         if (activeKeys.count == 1 && ![app.wallet hasAccount]) {
             [app closeModalWithTransition:kCATransitionFade];
             
-            [app standardNotify:BC_STRING_AT_LEAST_ONE_ACTIVE_ADDRESS];
+            [app standardNotifyAutoDismissingController:BC_STRING_AT_LEAST_ONE_ACTIVE_ADDRESS];
             
             return;
         }
         
-        [app.wallet archiveLegacyAddress:addr];
+        [app.wallet toggleArchiveLegacyAddress:addr];
     }
     
     [self reload];
@@ -759,7 +759,7 @@ UIAlertController *popupAddressArchive;
         }
         
         if (didClickAccount) {
-            detailAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
+            detailAddress = [app.wallet getReceiveAddressForAccount:clickedAccount activeOnly:YES];
             weakSelf.clickedAddress = detailAddress;
             [weakSelf setQRPayment];
             [weakSelf animateTextOfLabel:optionsTitleLabel toFinalText:detailLabel];
@@ -929,11 +929,11 @@ UIAlertController *popupAddressArchive;
     
     if (indexPath.section == 0) {
         int row = (int) indexPath.row;
-        detailAddress = [app.wallet getReceiveAddressForAccount:row];
+        detailAddress = [app.wallet getReceiveAddressForAccount:row activeOnly:YES];
         self.clickedAddress = detailAddress;
         clickedAccount = row;
         
-        detailLabel = [app.wallet getLabelForAccount:row];
+        detailLabel = [app.wallet getLabelForAccount:row activeOnly:YES];
     }
     else {
         detailAddress = [self getAddress:[_tableView indexPathForSelectedRow]];
@@ -1043,7 +1043,7 @@ UIAlertController *popupAddressArchive;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
-        return [app.wallet getAccountsCount];
+        return [app.wallet getActiveAccountsCount];
     else if (section == 1)
         return [activeKeys count];
     else
@@ -1063,7 +1063,7 @@ UIAlertController *popupAddressArchive;
 {
     if (indexPath.section == 0) {
         int accountIndex = (int) indexPath.row;
-        NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex];
+        NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex activeOnly:YES];
         
         ReceiveTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"receiveAccount"];
         
@@ -1083,7 +1083,7 @@ UIAlertController *popupAddressArchive;
         cell.labelLabel.text = accountLabelString;
         cell.addressLabel.text = @"";
         
-        uint64_t balance = [app.wallet getBalanceForAccount:accountIndex];
+        uint64_t balance = [app.wallet getBalanceForAccount:accountIndex activeOnly:YES];
         
         // Selected cell color
         UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
