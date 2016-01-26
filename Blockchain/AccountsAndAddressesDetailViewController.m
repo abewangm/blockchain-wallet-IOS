@@ -41,6 +41,18 @@ const int numberOfRowsArchived = 1;
     
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     navigationController.headerLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)reload
+{
+    [self.tableView reloadData];
 }
 
 - (BOOL)isArchived
@@ -66,6 +78,23 @@ const int numberOfRowsArchived = 1;
 - (void)showAccountXPub:(int)account
 {
     
+}
+
+- (void)setDefaultAccount:(int)account
+{
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    [navigationController.busyView fadeIn];
+    [app.wallet setDefaultAccount:account];
+}
+
+- (void)alertToConfirmSetDefaultAccount:(int)account
+{
+    UIAlertController *alertToSetDefaultAccount = [UIAlertController alertControllerWithTitle:BC_STRING_SET_DEFAULT_ACCOUNT message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertToSetDefaultAccount addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self setDefaultAccount:account];
+    }]];
+    [alertToSetDefaultAccount addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertToSetDefaultAccount animated:YES completion:nil];
 }
 
 #pragma mark Table View Delegate
@@ -151,7 +180,7 @@ const int numberOfRowsArchived = 1;
                             [self showAddress:self.address];
                         } else {
                             if ([app.wallet getDefaultAccountIndex] != self.account) {
-                                [app.wallet setDefaultAccount:self.account];
+                                [self alertToConfirmSetDefaultAccount:self.account];
                             } else {
                                 [self showAccountXPub:self.account];
                             }
@@ -168,8 +197,8 @@ const int numberOfRowsArchived = 1;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
+    cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     
     switch (indexPath.section) {

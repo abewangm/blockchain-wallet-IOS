@@ -268,6 +268,7 @@ void (^secondPasswordSuccess)(NSString *);
     [_transactionsViewController reload];
     [_receiveViewController reload];
     [_settingsNavigationController reload];
+    [_accountsAndAddressesNavigationController reload];
     
     [sideMenuViewController reload];
     

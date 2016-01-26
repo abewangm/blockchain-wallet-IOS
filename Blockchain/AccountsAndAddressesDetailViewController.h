@@ -11,4 +11,5 @@
 @interface AccountsAndAddressesDetailViewController : UIViewController
 @property (nonatomic) int account;
 @property (nonatomic) NSString *address;
+
 @end

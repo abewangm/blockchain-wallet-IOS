@@ -427,3 +427,4 @@
 #define BC_STRING_ARCHIVED_FOOTER_TITLE NSLocalizedString(@"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.\n\nIf there are any funds, they will be safe. In order to start using this thing again, unarchive it.", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_FOOTER_TITLE NSLocalizedString(@"Show your xPub if you are a merchant and use th Blockchain Merchant app to receive funds safely and privately.\n\nKeep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions.", nil)
 #define BC_STRING_WATCH_ONLY_FOOTER_TITLE NSLocalizedString(@"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key.", nil)
+#define BC_STRING_SET_DEFAULT_ACCOUNT NSLocalizedString(@"Set as Default Account?", nil)

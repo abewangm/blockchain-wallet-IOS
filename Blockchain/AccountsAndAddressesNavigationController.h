@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BCFadeView.h"
 
 @interface AccountsAndAddressesNavigationController : UINavigationController
 @property (nonatomic) UILabel *headerLabel;
 @property (nonatomic) UIButton *backButton;
+@property (nonatomic) BCFadeView *busyView;
+
+- (void)reload;
+
 @end
