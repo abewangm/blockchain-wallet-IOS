@@ -206,7 +206,7 @@
             cell.balanceLabel.textColor = COLOR_BUTTON_BLUE;
         } else {
             cell.balanceLabel.text = [app formatMoney:balance];
-            cell.balanceLabel.textColor = COLOR_BUTTON_GREEN;
+            cell.balanceLabel.textColor = COLOR_LABEL_BALANCE_GREEN;
         }
         cell.balanceLabel.minimumScaleFactor = 0.75f;
         [cell.balanceLabel setAdjustsFontSizeToFitWidth:YES];
@@ -275,7 +275,7 @@
         cell.balanceLabel.textColor = COLOR_BUTTON_BLUE;
     } else {
         cell.balanceLabel.text = [app formatMoney:balance];
-        cell.balanceLabel.textColor = COLOR_BUTTON_GREEN;
+        cell.balanceLabel.textColor = COLOR_LABEL_BALANCE_GREEN;
     }
     cell.balanceLabel.minimumScaleFactor = 0.75f;
     [cell.balanceLabel setAdjustsFontSizeToFitWidth:YES];
