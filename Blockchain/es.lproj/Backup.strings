@@ -1,35 +1,35 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Copia de seguridad fondos otra vez";
+"1Hq-6D-ut1.normalTitle" = "Crear nueva copia de seguridad de los fondos ";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "Copia de seguridad fondos otra vez";
+"1Hq-6D-ut1.text" = "Crear nueva copia de seguridad de los fondos ";
 
 /* (No Commment) */
-"3kJ-3U-lFe.text" = "Por favor, inténtelo de nuevo";
+"3kJ-3U-lFe.text" = "Por favor, inténtelo de nuevo.";
 
 /* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Verificar que usted escribió la frase copia de seguridad";
+"4Nq-ue-tXr.text" = "Verifique que ha escrito la palabra de la copia de seguridad";
 
 /* (No Commment) */
-"6zt-Xf-txg.text" = "Presione y sostenga para revelar la palabra";
+"6zt-Xf-txg.text" = "Presione y mantenga presionado para mostrar la palabra";
 
 /* (No Commment) */
-"07q-RX-CeI.text" = "Por favor, inténtelo de nuevo";
+"07q-RX-CeI.text" = "Por favor, inténtelo de nuevo.";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Fondos de reserva";
+"9A7-TT-PzN.title" = "Copia de seguridad de los fondos";
 
-/* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Usted tiene no copia sus fondos todavía";
+/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Usted todavía no ha realizado una copia de seguridad de sus fondos";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Esta acción requiere la segunda contraseña para su billetera bitcoin. Por favor ingrese a continuación y pulse continuar.";
+"9WK-My-5CL.text" = "Esta acción requiere la segunda contraseña para su monedero bitcoin. Introdúzcalo a continuación y pulse continuar.";
 
 /* (No Commment) */
-"9hR-tm-aq5.placeholder" = "primera palabra";
+"9hR-tm-aq5.placeholder" = "Primera palabra";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "Segunda contraseña necesaria";
+"74J-f3-Lhq.title" = "Se necesita la segunda contraseña";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "Palabra anterior";
@@ -38,36 +38,33 @@
 "CBl-1W-VP8.placeholder" = "Contraseña";
 
 /* (No Commment) */
-"EQM-OM-jK8.normalTitle" = "Hecho";
+"EQM-OM-jK8.normalTitle" = "Completado";
 
 /* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
-"FDO-ui-cGo.text" = "No tome una captura de pantalla!
-Usted puede poner en peligro la seguridad de tu cartera";
+"FDO-ui-cGo.text" = "¡No tome una captura de pantalla!
+Puede poner en peligro la seguridad de su monedero";
 
 /* (No Commment) */
-"Fda-Z4-3e7.placeholder" = "sexta palabra";
+"Fda-Z4-3e7.placeholder" = "Sexta palabra";
 
 /* (No Commment) */
-"NaV-Bk-o1b.text" = "Cómo restaurar su billetera";
-
-/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OJg-MB-UId"; */
-"OJg-MB-UId.title" = "Cerrar";
+"NaV-Bk-o1b.text" = "Cómo restaurar su monedero";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
-"Okr-VE-yvm.text" = "Unicornio";
+"Okr-VE-yvm.text" = "unicornio";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
-"T3S-Dk-HAh.text" = "Por favor, inténtelo de nuevo";
+"T3S-Dk-HAh.text" = "Por favor, inténtelo de nuevo.";
 
 /* (No Commment) */
 "T4p-mz-siC.normalTitle" = "COMPROBAR COPIA DE SEGURIDAD";
 
-/* Class = "UILabel"; text = "Write the words down in the exact order they appear on a sheet of paper, and store it somewhere safe (e.g., with your passport)"; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Escribir las palabras en el orden que aparecen en una hoja de papel y guárdela en lugar seguro
+/* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
+"UCL-i9-UDp.text" = "Escriba las palabras en el orden en que aparecen en una hoja de papel y guárdela en lugar seguro
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "¿Perdido su frase de recuperación de 12 word?";
+"Yh8-Gm-6op.text" = "¿Ha perdido la palabra 12 de su frase de recuperación?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "SIGUIENTE PALABRA";
@@ -75,8 +72,8 @@ Usted puede poner en peligro la seguridad de tu cartera";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Siguiente palabra";
 
-/* Class = "UILabel"; text = "Backing up your funds is easy and ensures you will not lose access to your bitcoins, even if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Copia de seguridad de sus fondos es fácil y asegura que no perderá acceso a tus bitcoins, incluso si nuestro servicio no está disponible.";
+/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Hacer una copia de seguridad de sus fondos asegura que no perderá acceso a sus bitcoins (excepto direcciones importadas), incluso si olvida su contraseña o si nuestro servicio no está disponible.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "tercera palabra";
@@ -85,11 +82,11 @@ Usted puede poner en peligro la seguridad de tu cartera";
 "mUc-u7-Zcj.text" = "Palabra 5 de 12";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "Carpeta de copia de seguridad";
+"mYR-MQ-mS2.title" = "Copia de seguridad del monedero";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
 "nuD-nb-tAt.normalTitle" = "Continuar";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "Carpeta de copia de seguridad";
+"xmf-pK-R3X.title" = "Copia de seguridad del monedero";
 
