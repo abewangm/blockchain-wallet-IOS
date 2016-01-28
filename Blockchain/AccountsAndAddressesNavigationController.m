@@ -80,6 +80,7 @@
 - (void)showBusyViewWithLoadingText:(NSString *)text
 {
     self.busyLabel.text = text;
+    [self.view bringSubviewToFront:self.busyView];
     [self.busyView fadeIn];
 }
 
@@ -106,8 +107,6 @@
 
 - (void)reload
 {
-    [self hideBusyView];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
 }
 
@@ -134,6 +133,7 @@
 {
     if ([self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
         [self dismissViewControllerAnimated:YES completion:nil];
+        app.topViewControllerDelegate = nil;
     } else {
         [self popViewControllerAnimated:YES];
     }

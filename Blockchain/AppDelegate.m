@@ -635,9 +635,10 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     [self.loginTimer invalidate];
-  
+    
     [_window.rootViewController dismissViewControllerAnimated:NO completion:nil];
     
+    self.topViewControllerDelegate = nil;
     // Close all modals
     [app closeAllModals];
     
@@ -845,8 +846,10 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (_tabViewController.presentedViewController) {
         BCModalViewController *bcModalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_SECOND_PASSWORD_REQUIRED view:secondPasswordView];
+        
+        secondPasswordTextField.text = nil;
+        
         [_tabViewController.presentedViewController presentViewController:bcModalViewController animated:YES completion:^{
-            secondPasswordTextField.text = nil;
             UIButton *secondPasswordOverlayButton = [[UIButton alloc] initWithFrame:[secondPasswordView convertRect:secondPasswordButton.frame toView:bcModalViewController.view]];
             [bcModalViewController.view addSubview:secondPasswordOverlayButton];
             [secondPasswordOverlayButton addTarget:self action:@selector(secondPasswordClicked:) forControlEvents:UIControlEventTouchUpInside];
