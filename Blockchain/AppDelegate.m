@@ -303,6 +303,13 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showBusyViewWithLoadingText:(NSString *)text
 {
+    if (self.topViewControllerDelegate) {
+        if ([self.topViewControllerDelegate respondsToSelector:@selector(showBusyViewWithLoadingText:)]) {
+            [self.topViewControllerDelegate showBusyViewWithLoadingText:text];
+        }
+        return;
+    }
+    
     if (self.pinEntryViewController.inSettings &&
         ![text isEqualToString:BC_STRING_LOADING_SYNCING_WALLET] &&
         ![text isEqualToString:BC_STRING_LOADING_VERIFYING]) {
@@ -319,6 +326,13 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)updateBusyViewLoadingText:(NSString *)text
 {
+    if (self.topViewControllerDelegate) {
+        if ([self.topViewControllerDelegate respondsToSelector:@selector(updateBusyViewLoadingText:)]) {
+            [self.topViewControllerDelegate updateBusyViewLoadingText:text];
+        }
+        return;
+    }
+    
     if (self.pinEntryViewController.inSettings &&
         ![text isEqualToString:BC_STRING_LOADING_SYNCING_WALLET] &&
         ![text isEqualToString:BC_STRING_LOADING_VERIFYING]) {
@@ -352,6 +366,13 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)hideBusyView
 {
+    if (self.topViewControllerDelegate) {
+        if ([self.topViewControllerDelegate respondsToSelector:@selector(hideBusyView)]) {
+            [self.topViewControllerDelegate hideBusyView];
+        }
+        return;
+    }
+    
     if (busyView.alpha == 1.0) {
         [busyView fadeOut];
     }
@@ -364,7 +385,14 @@ void (^secondPasswordSuccess)(NSString *);
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    
+    if (self.topViewControllerDelegate) {
+        if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+            [self.topViewControllerDelegate presentAlertController:alert];
+        }
+    } else {
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)standardNotify:(NSString*)message
@@ -815,14 +843,26 @@ void (^secondPasswordSuccess)(NSString *);
     
     secondPasswordSuccess = success;
     
-    [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeClose headerText:BC_STRING_SECOND_PASSWORD_REQUIRED onDismiss:^() {
-        secondPasswordTextField.text = nil;
-        [self.sendViewController enablePaymentButtons];
-    } onResume:nil];
-    
-    [modalView.closeButton removeTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventAllTouchEvents];
-    
-    [modalView.closeButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventAllTouchEvents];
+    if (_tabViewController.presentedViewController) {
+        BCModalViewController *bcModalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_SECOND_PASSWORD_REQUIRED view:secondPasswordView];
+        [_tabViewController.presentedViewController presentViewController:bcModalViewController animated:YES completion:^{
+            secondPasswordTextField.text = nil;
+            UIButton *secondPasswordOverlayButton = [[UIButton alloc] initWithFrame:[secondPasswordView convertRect:secondPasswordButton.frame toView:bcModalViewController.view]];
+            [bcModalViewController.view addSubview:secondPasswordOverlayButton];
+            [secondPasswordOverlayButton addTarget:self action:@selector(secondPasswordClicked:) forControlEvents:UIControlEventTouchUpInside];
+        }];
+        
+        [bcModalViewController.closeButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventAllTouchEvents];
+    } else {
+        [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeClose headerText:BC_STRING_SECOND_PASSWORD_REQUIRED onDismiss:^() {
+            secondPasswordTextField.text = nil;
+            [self.sendViewController enablePaymentButtons];
+        } onResume:nil];
+        
+        [modalView.closeButton removeTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventAllTouchEvents];
+        
+        [modalView.closeButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventAllTouchEvents];
+    }
     
     [secondPasswordTextField becomeFirstResponder];
 }
@@ -871,6 +911,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)closeModalWithTransition:(NSString *)transition
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MODAL_VIEW_DISMISSED object:nil];
+    
     [modalView removeFromSuperview];
     
     CATransition *animation = [CATransition animation];
@@ -1187,6 +1229,7 @@ void (^secondPasswordSuccess)(NSString *);
         self.accountsAndAddressesNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_ACCOUNTS_AND_ADDRESSES];
     }
     
+    self.topViewControllerDelegate = self.accountsAndAddressesNavigationController;
     self.accountsAndAddressesNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:self.accountsAndAddressesNavigationController animated:YES completion:nil];
 }

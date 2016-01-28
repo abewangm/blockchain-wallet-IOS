@@ -60,10 +60,10 @@ const int numberOfRowsArchived = 1;
     return [app.wallet isAddressArchived:self.address] || [app.wallet isAccountArchived:self.account];
 }
 
-- (void)showBusyView
+- (void)showBusyViewWithLoadingText:(NSString *)text;
 {
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    [navigationController.busyView fadeIn];
+    [navigationController showBusyViewWithLoadingText:text];
 }
 
 - (void)labelAddressClicked
@@ -88,13 +88,13 @@ const int numberOfRowsArchived = 1;
 
 - (void)setDefaultAccount:(int)account
 {
-    [self showBusyView];
+    [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     [app.wallet setDefaultAccount:account];
 }
 
 - (void)toggleArchive
 {
-    [self showBusyView];
+    [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     if (self.address) {
         [app.wallet toggleArchiveLegacyAddress:self.address];
     } else {

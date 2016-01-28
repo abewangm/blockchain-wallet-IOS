@@ -7,8 +7,8 @@
 //
 
 #import "AccountsAndAddressesNavigationController.h"
-#import "AppDelegate.h"
 #import "AccountsAndAddressesViewController.h"
+#import "AppDelegate.h"
 
 @interface AccountsAndAddressesNavigationController ()
 
@@ -52,11 +52,14 @@
     [busyView addSubview:textWithSpinnerView];
     textWithSpinnerView.center = busyView.center;
     
-    UILabel *busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-    busyLabel.adjustsFontSizeToFitWidth = YES;
-    busyLabel.text = BC_STRING_LOADING_SYNCING_WALLET;
-    busyLabel.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 + 15);
-    [textWithSpinnerView addSubview:busyLabel];
+    self.busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    self.busyLabel.font = [UIFont systemFontOfSize:14.0];
+    self.busyLabel.alpha = 0.75;
+    self.busyLabel.textAlignment = NSTextAlignmentCenter;
+    self.busyLabel.adjustsFontSizeToFitWidth = YES;
+    self.busyLabel.text = BC_STRING_LOADING_SYNCING_WALLET;
+    self.busyLabel.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 + 15);
+    [textWithSpinnerView addSubview:self.busyLabel];
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 - 15);
@@ -74,9 +77,36 @@
     self.busyView = busyView;
 }
 
+- (void)showBusyViewWithLoadingText:(NSString *)text
+{
+    self.busyLabel.text = text;
+    [self.busyView fadeIn];
+}
+
+- (void)updateBusyViewLoadingText:(NSString *)text
+{
+    if (self.busyView.alpha == 1.0) {
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            [self.busyLabel setText:text];
+        }];
+    }
+}
+
+- (void)hideBusyView
+{
+    if (self.busyView.alpha == 1.0) {
+        [self.busyView fadeOut];
+    }
+}
+
+- (void)presentAlertController:(UIAlertController *)alertController
+{
+    [self.visibleViewController presentViewController:alertController animated:YES completion:nil];
+}
+
 - (void)reload
 {
-    [self.busyView fadeOut];
+    [self hideBusyView];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
 }

@@ -25,6 +25,7 @@
 #import "TabViewController.h"
 #import "PEPinEntryController.h"
 #import "BCModalView.h"
+#import "BCModalViewController.h"
 #import "ECSlidingViewController.h"
 #import "Blockchain-Swift.h"
 #import <MessageUI/MFMailComposeViewController.h>
@@ -32,6 +33,8 @@
 #import "SettingsNavigationController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AccountsAndAddressesNavigationController.h"
+
+@protocol TopViewController;
 
 @class TransactionsViewController, Wallet, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController;
 
@@ -53,6 +56,7 @@
     IBOutlet UILabel *secondPasswordDescriptionLabel;
     IBOutlet UIView *secondPasswordView;
     IBOutlet UITextField *secondPasswordTextField;
+    IBOutlet UIButton *secondPasswordButton;
     
     IBOutlet UIView *mainPasswordView;
     IBOutlet UITextField *mainPasswordTextField;
@@ -62,6 +66,8 @@
     
     BOOL symbolLocal;
 }
+
+@property (nonatomic, weak) id <TopViewController> topViewControllerDelegate;
 
 @property (strong, nonatomic) IBOutlet ECSlidingViewController *slidingViewController;
 @property (strong, nonatomic) IBOutlet TabViewcontroller *tabViewController;
@@ -160,6 +166,7 @@
 - (void)pushWebViewController:(NSString*)url title:(NSString *)title;
 
 - (void)showSendCoins;
+- (void)showAccountsAndAddresses;
 - (void)showDebugMenu:(int)presenter;
 - (void)showHdUpgrade;
 

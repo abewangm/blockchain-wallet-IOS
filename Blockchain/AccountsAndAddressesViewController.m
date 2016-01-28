@@ -10,6 +10,8 @@
 #import "AccountsAndAddressesDetailViewController.h"
 #import "AppDelegate.h"
 #import "ReceiveTableCell.h"
+#import "BCCreateAccountView.h"
+#import "BCModalViewController.h"
 
 @interface AccountsAndAddressesViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) NSString *clickedAddress;
@@ -78,12 +80,20 @@
 
 #pragma mark - Helpers
 
-- (void)addNewAddressClicked:(id)sender
+- (void)newAccountClicked:(id)sender
 {
+    BCCreateAccountView *createAccountView = [[BCCreateAccountView alloc] init];
     
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createAccountView];
+    
+    [self presentViewController:modalViewController animated:YES completion:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [createAccountView.labelTextField becomeFirstResponder];
+    });
 }
 
-- (void)addNewAccountClicked:(id)sender
+- (void)newAddressClicked:(id)sender
 {
     
 }
@@ -125,14 +135,14 @@
         labelString = nil;
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
         [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
-        [addButton addTarget:self action:@selector(addNewAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [addButton addTarget:self action:@selector(newAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
     }
     else if (section == 1) {
         labelString = BC_STRING_IMPORTED_ADDRESSES;
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
         [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
-        [addButton addTarget:self action:@selector(addNewAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [addButton addTarget:self action:@selector(newAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
     } else
         @throw @"Unknown Section";

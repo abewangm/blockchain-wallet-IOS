@@ -96,6 +96,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_SCANNED_NEW_ADDRESS @"scannedNewAddress"
 #define NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES @"reloadAccountsAndAddresses"
 
+#define NOTIFICATION_KEY_MODAL_VIEW_DISMISSED @"modalViewDismissed"
+
 // Notifications used in settings
 #define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER @"reloadSettingsAndSecurityCenter"
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"

@@ -21,6 +21,7 @@
 		232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */; };
 		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
 		233475F81BF4F8FB0056AB4E /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */; };
+		235BD5661C58216000969B31 /* BCModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235BD5651C58216000969B31 /* BCModalViewController.m */; };
 		236F32791C15F97D00BC89F3 /* UpgradeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F32781C15F97D00BC89F3 /* UpgradeDetailsViewController.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */; };
@@ -349,6 +350,8 @@
 		233475F71BF4F8FB0056AB4E /* DeviceIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceIdentifier.m; path = ../DeviceIdentifier.m; sourceTree = "<group>"; };
 		234197861C17BB02004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Upgrade.strings; sourceTree = "<group>"; };
 		234197881C17BB08004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
+		235BD5641C58216000969B31 /* BCModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCModalViewController.h; sourceTree = "<group>"; };
+		235BD5651C58216000969B31 /* BCModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCModalViewController.m; sourceTree = "<group>"; };
 		235EBDD41BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/ReceiveCoins.strings"; sourceTree = "<group>"; };
 		235EBDD51BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/Backup.strings"; sourceTree = "<group>"; };
 		235EBDD61BA0BF70004D3410 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/SendCoins.strings"; sourceTree = "<group>"; };
@@ -1041,6 +1044,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				235BD5641C58216000969B31 /* BCModalViewController.h */,
+				235BD5651C58216000969B31 /* BCModalViewController.m */,
 				237C9E8E1C482132000754F7 /* AccountsAndAddressesDetailViewController.h */,
 				237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */,
 				23BF733A1C455DDB00204503 /* AccountsAndAddressesViewController.h */,
@@ -1477,6 +1482,7 @@
 				23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */,
 				2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */,
 				9F2D934A14C05DD00053F0FF /* Address.m in Sources */,
+				235BD5661C58216000969B31 /* BCModalViewController.m in Sources */,
 				67FA1A4D1ABA092D000C9196 /* RegExCategories.m in Sources */,
 				84B601CA197AD03800DA1829 /* BCModalView.m in Sources */,
 				236F32791C15F97D00BC89F3 /* UpgradeDetailsViewController.m in Sources */,
