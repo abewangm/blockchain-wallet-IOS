@@ -147,7 +147,7 @@ const int numberOfRowsArchived = 1;
     if (self.address) {
         return [app.wallet isWatchOnlyLegacyAddress:self.address] ? numberOfSectionsAddressUnarchived + 1 : numberOfSectionsAddressUnarchived;
     } else {
-        return numberOfSectionsAccountUnarchived;
+        return [app.wallet getDefaultAccountIndex] == self.account ? numberOfSectionsAccountUnarchived - 1 : numberOfSectionsAccountUnarchived;
     }
 }
 
