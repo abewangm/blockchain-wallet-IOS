@@ -8,7 +8,7 @@
 "%d Confirmations" = "%d 个确认";
 
 /* (No Commment) */
-"%d Transactions" = "0 笔交易";
+"%d Transactions" = "%d 笔交易";
 
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld 小时前";
