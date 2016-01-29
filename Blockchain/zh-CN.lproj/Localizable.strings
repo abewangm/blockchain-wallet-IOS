@@ -8,7 +8,7 @@
 "%d Confirmations" = "%d 个确认";
 
 /* (No Commment) */
-"%d Transactions" = "0 笔交易";
+"%d Transactions" = "%d 笔交易";
 
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld 小时前";
@@ -446,7 +446,7 @@
 "Invalid Shared Key" = "无效的共享密钥";
 
 /* (No Commment) */
-"Invalid Status Code Returned %@" = "返回了无效状态代码 @ %";
+"Invalid Status Code Returned %@" = "返回了无效状态代码 %@";
 
 /* (No Commment) */
 "Invalid Wallet ID" = "无效的钱包 ID";

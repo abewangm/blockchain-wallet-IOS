@@ -9,6 +9,7 @@ var ImportExport = Blockchain.ImportExport;
 var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 var Helpers = Blockchain.Helpers;
 var Payment = Blockchain.Payment;
+var WalletNetwork = Blockchain.WalletNetwork;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1195,11 +1196,13 @@ MyWalletPhone.resendTwoFactorSms = function(user_guid) {
     }
     
     var error = function(error) {
-        console.log('Resend two factor SMS error: ' + error);
-        device.execute('on_resend_two_factor_sms_error:', [error]);
+        var parsedError = JSON.parse(error);
+        console.log('Resend two factor SMS error: ');
+        console.log(parsedError);
+        device.execute('on_resend_two_factor_sms_error:', [parsedError['initial_error']]);
     }
     
-    MyWallet.resendTwoFactorSms(user_guid, success, error);
+    WalletNetwork.resendTwoFactorSms(user_guid).then(success).catch(error);
 }
 
 MyWalletPhone.get2FAType = function() {

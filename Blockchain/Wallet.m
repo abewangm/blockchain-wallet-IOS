@@ -1177,7 +1177,7 @@
     
     NSRange authorizationRequiredStringRange = [message rangeOfString:@"Authorization Required" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (authorizationRequiredStringRange.location != NSNotFound) {
-        [app standardNotify:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE title:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE delegate:nil];
+        [app standardNotifyAutoDismissingController:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE title:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE];
         return;
     }
     

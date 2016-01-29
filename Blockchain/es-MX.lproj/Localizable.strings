@@ -221,7 +221,7 @@
 "Continue" = "Continuar";
 
 /* (No Commment) */
-"Copied to clipboard" = "Se ha copiado el archivo %@ al portapapeles";
+"Copied to clipboard" = "Se ha copiado el archivo al portapapeles";
 
 /* (No Commment) */
 "Copy Address" = "Copiar dirección";
@@ -836,7 +836,7 @@
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "El PIN seleccionado es muy común y puede ser fácilmente adivinado por alguien con acceso a su teléfono en 3 intentos. ¿Le gustaría usar este PIN de todos modos?";
 
 /* (No Commment) */
-"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "La cantidad que desea enviar (%1$ a) es superior a la cantidad máxima que puede gastar sin contar la transacción (2% $a - $%3 a). ¿Quiere enviar %4$@?";
+"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "La cantidad que desea enviar (%1$ @) es superior a la cantidad máxima que puede gastar sin contar la transacción (2% $@ - $%3 @). ¿Quiere enviar %4$@?";
 
 /* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "La clave privada que está intentando importar está cifrada. Ingresa la contraseña abajo.";
@@ -1010,7 +1010,7 @@ Tarifa: %4$@
 "Wallet Recovery Phrase" = "Frase de recuperación de cartera";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "La dirección de monedero % tiene fondos disponibles para gastar. Sin embargo la clave privada debe ser analizada de un monedero de papel o código QR. ¿Le gustaría escanear ahora la clave privada?";
+"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "La dirección de monedero %@ tiene fondos disponibles para gastar. Sin embargo la clave privada debe ser analizada de un monedero de papel o código QR. ¿Le gustaría escanear ahora la clave privada?";
 
 /* (No Commment) */
 "Wallet version %lld not supported" = "La versión del Monedero %lld no es compatible";
@@ -1051,7 +1051,7 @@ una experiencia de usuario de monedero completamente nueva";
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Hemos detectado una instalación anterior del monedero Blockchain en su teléfono.";
 
 /* (No Commment) */
-"Would you like to add the bitcoin address %@ to your address book?" = "¿Quieres añadir la dirección % Bitcoin a su libreta de direcciones?";
+"Would you like to add the bitcoin address %@ to your address book?" = "¿Quieres añadir la dirección %@ Bitcoin a su libreta de direcciones?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Escriba su frase de recuperación y guárdela en algún lugar muy seguro. Recuerde que cualquiera que conozca su frase de recuperación tiene acceso a sus bitcoins.";
@@ -1078,7 +1078,7 @@ una experiencia de usuario de monedero completamente nueva";
 "You have no available funds to send from this address" = "No tiene fondos disponibles para enviar desde esta dirección";
 
 /* (No Commment) */
-"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Debe deshabilitar la verificación de 2 pasos mediante SMS antes de cambiar su número de celular (% a).";
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Debe deshabilitar la verificación de 2 pasos mediante SMS antes de cambiar su número de celular (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "Debe introducir una dirección de destino";

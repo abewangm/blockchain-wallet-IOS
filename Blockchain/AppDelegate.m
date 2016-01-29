@@ -382,7 +382,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)standardNotifyAutoDismissingController:(NSString *)message
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:message preferredStyle:UIAlertControllerStyleAlert];
+    [self standardNotifyAutoDismissingController:message title:BC_STRING_ERROR];
+}
+
+- (void)standardNotifyAutoDismissingController:(NSString*)message title:(NSString*)title
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     
