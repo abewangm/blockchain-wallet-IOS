@@ -23,7 +23,7 @@ const int sectionArchived = 1;
 const int numberOfRowsArchived = 1;
 
 typedef enum {
-    DetailTypeExtendedPublicKey = 100,
+    DetailTypeShowQRCode = 100,
     DetailTypeEditAccountLabel = 200,
     DetailTypeEditAddressLabel = 300,
     DetailTypeScanPrivateKey = 400,
@@ -97,7 +97,7 @@ typedef enum {
 
 - (void)showAccountXPub:(int)account
 {
-    
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:DetailTypeShowQRCode]];
 }
 
 - (void)setDefaultAccount:(int)account
@@ -154,6 +154,11 @@ typedef enum {
             [self setupModalView:editAccountView inViewController:segue.destinationViewController];
             
             [editAccountView.labelTextField becomeFirstResponder];
+            
+        } else if (detailType == DetailTypeShowQRCode) {
+            
+        } else if (detailType == DetailTypeScanPrivateKey) {
+            
         }
     }
 }
@@ -305,8 +310,11 @@ typedef enum {
                     } else {
                         if ([app.wallet getDefaultAccountIndex] != self.account) {
                             cell.textLabel.text = BC_STRING_MAKE_DEFAULT;
+                            cell.textLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+                            cell.accessoryType = UITableViewCellAccessoryNone;
                         } else {
                             cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
+                            cell.textLabel.textColor = [UIColor blackColor];
                         }
                     }
                     return cell;
