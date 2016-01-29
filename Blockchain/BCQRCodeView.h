@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BCQRCodeView : UIView
-@property (nonatomic) UIImageView *qrCodeMainImageView;
+@property (nonatomic) UIImageView *qrCodeImageView;
 @property (nonatomic) NSString *address;
-@property (nonatomic) UITextView *qrCodeTextView;
+@property (nonatomic) UILabel *qrCodeLabel;
 @end

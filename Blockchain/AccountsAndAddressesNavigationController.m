@@ -109,9 +109,14 @@
 - (void)reload
 {
     if (![self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]] &&
-               ![self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
+        ![self.visibleViewController isMemberOfClass:[AccountsAndAddressesDetailViewController class]]) {
         [self popViewControllerAnimated:YES];
     }
+    
+    if (!self.view.window) {
+        [self popToRootViewControllerAnimated:NO];
+    }
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
 }
 

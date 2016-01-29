@@ -22,20 +22,20 @@ const float imageWidth = 190;
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width - imageWidth) / 2, 25, imageWidth, imageWidth)];
+        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width - imageWidth) / 2, 25, imageWidth, imageWidth)];
         
         UITapGestureRecognizer *tapMainQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(QRCodeClicked)];
-        [self.qrCodeMainImageView addGestureRecognizer:tapMainQRGestureRecognizer];
-        self.qrCodeMainImageView.userInteractionEnabled = YES;
+        [self.qrCodeImageView addGestureRecognizer:tapMainQRGestureRecognizer];
+        self.qrCodeImageView.userInteractionEnabled = YES;
         
-        [self addSubview:self.qrCodeMainImageView];
+        [self addSubview:self.qrCodeImageView];
         
-        self.qrCodeTextView = [[UITextView alloc] initWithFrame:CGRectMake(20, self.qrCodeMainImageView.frame.origin.y + self.qrCodeMainImageView.frame.size.height + 3, 280, 100)];
-        self.qrCodeTextView.editable = NO;
-        self.qrCodeTextView.font = [UIFont systemFontOfSize:12.0];
-        self.qrCodeTextView.textAlignment = NSTextAlignmentCenter;
+        self.qrCodeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, self.qrCodeImageView.frame.origin.y + self.qrCodeImageView.frame.size.height + 3, 280, 30)];
+        self.qrCodeLabel.font = [UIFont systemFontOfSize:17.0];
+        self.qrCodeLabel.textAlignment = NSTextAlignmentCenter;
+        self.qrCodeLabel.adjustsFontSizeToFitWidth = YES;
         
-        [self addSubview:self.qrCodeTextView];
+        [self addSubview:self.qrCodeLabel];
     }
     return self;
 }
@@ -52,8 +52,8 @@ const float imageWidth = 190;
 {
     _address = address;
     
-    self.qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:address];
-    self.qrCodeTextView.text = address;
+    self.qrCodeImageView.image = [self.qrCodeGenerator qrImageFromAddress:address];
+    self.qrCodeLabel.text = address;
 }
 
 - (void)QRCodeClicked

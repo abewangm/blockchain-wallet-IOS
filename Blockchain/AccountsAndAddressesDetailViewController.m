@@ -192,6 +192,7 @@ typedef enum {
             
             [self setupModalView:qrCodeView inViewController:segue.destinationViewController];
             
+            qrCodeView.qrCodeLabel.text = BC_STRING_COPY_TO_CLIPBOARD;
             [self updateHeaderText:BC_STRING_EXTENDED_PUBLIC_KEY];
 
         } else if (detailType == DetailTypeShowAddress) {
