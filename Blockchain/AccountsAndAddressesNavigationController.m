@@ -8,6 +8,7 @@
 
 #import "AccountsAndAddressesNavigationController.h"
 #import "AccountsAndAddressesViewController.h"
+#import "AccountsAndAddressesDetailViewController.h"
 #import "AppDelegate.h"
 
 @interface AccountsAndAddressesNavigationController ()
@@ -107,6 +108,10 @@
 
 - (void)reload
 {
+    if (![self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]] &&
+               ![self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
+        [self popViewControllerAnimated:YES];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
 }
 

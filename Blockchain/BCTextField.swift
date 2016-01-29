@@ -13,6 +13,16 @@ class BCTextField: BCSecureTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setupOnePixelLine()
+    }
+    
+    override var frame: CGRect {
+        didSet {
+            setupOnePixelLine()
+        }
+    }
+    
+    func setupOnePixelLine() {
         if (self.superview == nil) {
             return
         }

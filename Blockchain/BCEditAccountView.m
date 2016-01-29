@@ -69,10 +69,10 @@
         return;
     }
     
+    [self.labelTextField resignFirstResponder];
+    
     [app.wallet setLabelForAccount:self.accountIdx activeOnly:YES label:label];
-    
-    [app reload];
-    
+        
     [app closeModalWithTransition:kCATransitionFade];
 }
 

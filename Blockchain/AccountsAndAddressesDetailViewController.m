@@ -9,10 +9,8 @@
 #import "AccountsAndAddressesNavigationController.h"
 #import "AccountsAndAddressesDetailViewController.h"
 #import "AppDelegate.h"
-
-@interface AccountsAndAddressesDetailViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic) UITableView *tableView;
-@end
+#import "BCEditAccountView.h"
+#import "BCEditAddressView.h"
 
 const int numberOfSectionsAccountUnarchived = 2;
 const int numberOfSectionsAddressUnarchived = 1; // 2 if watch only
@@ -23,6 +21,17 @@ const int numberOfRowsAddressUnarchived = 3;
 
 const int sectionArchived = 1;
 const int numberOfRowsArchived = 1;
+
+typedef enum {
+    DetailTypeExtendedPublicKey = 100,
+    DetailTypeEditAccountLabel = 200,
+    DetailTypeEditAddressLabel = 300,
+    DetailTypeScanPrivateKey = 400,
+}DetailType;
+
+@interface AccountsAndAddressesDetailViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic) UITableView *tableView;
+@end
 
 @implementation AccountsAndAddressesDetailViewController
 
@@ -39,9 +48,7 @@ const int numberOfRowsArchived = 1;
         DLog(@"Error: no account or address set!");
     }
     
-    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    navigationController.headerLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
-    
+    [self resetHeader];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
 }
 
@@ -50,8 +57,15 @@ const int numberOfRowsArchived = 1;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)resetHeader
+{
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    navigationController.headerLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
+}
+
 - (void)reload
 {
+    [self resetHeader];
     [self.tableView reloadData];
 }
 
@@ -68,12 +82,12 @@ const int numberOfRowsArchived = 1;
 
 - (void)labelAddressClicked
 {
-    
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:DetailTypeEditAddressLabel]];
 }
 
 - (void)labelAccountClicked
 {
-    
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:DetailTypeEditAccountLabel]];
 }
 
 - (void)showAddress:(NSString *)address
@@ -115,6 +129,42 @@ const int numberOfRowsArchived = 1;
     }]];
     [alertToSetDefaultAccount addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alertToSetDefaultAccount animated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT]) {
+        
+        int detailType = [sender intValue];
+        
+        if (detailType == DetailTypeEditAddressLabel) {
+            
+            BCEditAddressView *editAddressView = [[BCEditAddressView alloc] initWithAddress:self.address];
+            editAddressView.labelTextField.text = [app.wallet labelForLegacyAddress:self.address];
+            
+            [self setupModalView:editAddressView inViewController:segue.destinationViewController];
+            
+            [editAddressView.labelTextField becomeFirstResponder];
+            
+        } else if (detailType == DetailTypeEditAccountLabel) {
+            BCEditAccountView *editAccountView = [[BCEditAccountView alloc] init];
+            editAccountView.labelTextField.text = [app.wallet getLabelForAccount:self.account activeOnly:NO];
+            editAccountView.accountIdx = self.account;
+            
+            [self setupModalView:editAccountView inViewController:segue.destinationViewController];
+            
+            [editAccountView.labelTextField becomeFirstResponder];
+        }
+    }
+}
+
+- (void)setupModalView:(UIView *)modalView inViewController:(UIViewController *)viewController
+{
+    [viewController.view addSubview:modalView];
+    
+    CGRect frame = modalView.frame;
+    frame.origin.y = viewController.view.frame.origin.y + DEFAULT_HEADER_HEIGHT;
+    modalView.frame = frame;
 }
 
 #pragma mark Table View Delegate
