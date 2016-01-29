@@ -196,6 +196,8 @@
 
 - (NSString *)getReceiveAddressForAccount:(int)account activeOnly:(BOOL)isActiveOnly;
 
+- (NSString *)getXpubForAccount:(int)accountIndex;
+
 - (void)setPbkdf2Iterations:(int)iterations;
 
 - (void)setTransactionFee:(uint64_t)feePerKb;

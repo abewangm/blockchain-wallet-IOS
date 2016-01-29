@@ -848,6 +848,15 @@
     return [filteredWalletJSON getJSONObject];
 }
 
+- (NSString *)getXpubForAccount:(int)accountIndex
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return [self.webView executeJSSynchronous:@"MyWalletPhone.getXpubForAccount(%d)", accountIndex];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

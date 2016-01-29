@@ -15,6 +15,8 @@
 		220E375D19A3614900E06996 /* SendCoins.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E375F19A3614900E06996 /* SendCoins.xib */; };
 		220E376019A3614F00E06996 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E376219A3614F00E06996 /* MainWindow.xib */; };
 		230FD2D31C5BD04000336683 /* BCEditAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2D21C5BD04000336683 /* BCEditAddressView.m */; };
+		230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2D81C5BF1A700336683 /* BCQRCodeView.m */; };
+		230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */; };
 		23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */; };
 		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
@@ -339,6 +341,10 @@
 		220E376119A3614F00E06996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		230FD2D11C5BD04000336683 /* BCEditAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCEditAddressView.h; sourceTree = "<group>"; };
 		230FD2D21C5BD04000336683 /* BCEditAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCEditAddressView.m; sourceTree = "<group>"; };
+		230FD2D71C5BF1A700336683 /* BCQRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCQRCodeView.h; sourceTree = "<group>"; };
+		230FD2D81C5BF1A700336683 /* BCQRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCQRCodeView.m; sourceTree = "<group>"; };
+		230FD2DA1C5BFB4300336683 /* QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeGenerator.h; sourceTree = "<group>"; };
+		230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
 		23107F811BBEF0AC00A6A9D4 /* BCConfirmPaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCConfirmPaymentView.h; sourceTree = "<group>"; };
 		23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCConfirmPaymentView.m; sourceTree = "<group>"; };
 		231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAboutViewController.h; sourceTree = "<group>"; };
@@ -944,6 +950,8 @@
 		9F765F3A14BC7C3100048EFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				230FD2DA1C5BFB4300336683 /* QRCodeGenerator.h */,
+				230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */,
 				6780DB961A40BDF40048EED2 /* AccountInOut.h */,
 				6780DB971A40BDF40048EED2 /* AccountInOut.m */,
 				9F2D934814C05DD00053F0FF /* Address.h */,
@@ -1222,6 +1230,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				230FD2D71C5BF1A700336683 /* BCQRCodeView.h */,
+				230FD2D81C5BF1A700336683 /* BCQRCodeView.m */,
 				230FD2D11C5BD04000336683 /* BCEditAddressView.h */,
 				230FD2D21C5BD04000336683 /* BCEditAddressView.m */,
 				676250801A2DDF360052B63F /* AccountTableCell.h */,
@@ -1468,6 +1478,7 @@
 				674709EC19D1D14300757D46 /* BCWelcomeView.m in Sources */,
 				67D95A281B3DDC900012EBB1 /* Constants.swift in Sources */,
 				9F765F3214BC622E00048EFB /* TransactionsViewController.m in Sources */,
+				230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */,
 				676250821A2DDF360052B63F /* AccountTableCell.m in Sources */,
 				67EE1DCF19E3325900DBBFC9 /* UIViewController+ECSlidingViewController.m in Sources */,
 				C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */,
@@ -1524,6 +1535,7 @@
 				6780DB981A40BDF40048EED2 /* AccountInOut.m in Sources */,
 				23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */,
 				9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */,
+				230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */,
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,
 				233475F81BF4F8FB0056AB4E /* DeviceIdentifier.m in Sources */,
 				6750389B1B4D832F00F7B488 /* SideMenuViewCell.m in Sources */,

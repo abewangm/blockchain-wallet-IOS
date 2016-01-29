@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "BCEditAccountView.h"
 #import "BCEditAddressView.h"
+#import "BCQRCodeView.h"
 
 const int numberOfSectionsAccountUnarchived = 2;
 const int numberOfSectionsAddressUnarchived = 1; // 2 if watch only
@@ -23,10 +24,11 @@ const int sectionArchived = 1;
 const int numberOfRowsArchived = 1;
 
 typedef enum {
-    DetailTypeShowQRCode = 100,
-    DetailTypeEditAccountLabel = 200,
-    DetailTypeEditAddressLabel = 300,
-    DetailTypeScanPrivateKey = 400,
+    DetailTypeShowExtendedPublicKey = 100,
+    DetailTypeShowAddress = 200,
+    DetailTypeEditAccountLabel = 300,
+    DetailTypeEditAddressLabel = 400,
+    DetailTypeScanPrivateKey = 500,
 }DetailType;
 
 @interface AccountsAndAddressesDetailViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -52,6 +54,12 @@ typedef enum {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self resetHeader];
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -61,6 +69,12 @@ typedef enum {
 {
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     navigationController.headerLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
+}
+
+- (void)updateHeaderText:(NSString *)headerText
+{
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    navigationController.headerLabel.text = headerText;
 }
 
 - (void)reload
@@ -80,24 +94,39 @@ typedef enum {
     [navigationController showBusyViewWithLoadingText:text];
 }
 
+- (void)alertToShowAccountXPub
+{
+    UIAlertController *alertToShowXPub = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_EXTENDED_PUBLIC_KEY_WARNING preferredStyle:UIAlertControllerStyleAlert];
+    [alertToShowXPub addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self showAccountXPub:self.account];
+    }]];
+    [alertToShowXPub addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertToShowXPub animated:YES completion:nil];
+}
+
+- (void)showDetailScreenWithType:(DetailType)type
+{
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:type]];
+}
+
 - (void)labelAddressClicked
 {
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:DetailTypeEditAddressLabel]];
+    [self showDetailScreenWithType:DetailTypeEditAddressLabel];
 }
 
 - (void)labelAccountClicked
 {
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:DetailTypeEditAccountLabel]];
+    [self showDetailScreenWithType:DetailTypeEditAccountLabel];
 }
 
 - (void)showAddress:(NSString *)address
 {
-    
+    [self showDetailScreenWithType:DetailTypeShowAddress];
 }
 
 - (void)showAccountXPub:(int)account
 {
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:DetailTypeShowQRCode]];
+    [self showDetailScreenWithType:DetailTypeShowExtendedPublicKey];
 }
 
 - (void)setDefaultAccount:(int)account
@@ -147,6 +176,7 @@ typedef enum {
             [editAddressView.labelTextField becomeFirstResponder];
             
         } else if (detailType == DetailTypeEditAccountLabel) {
+            
             BCEditAccountView *editAccountView = [[BCEditAccountView alloc] init];
             editAccountView.labelTextField.text = [app.wallet getLabelForAccount:self.account activeOnly:NO];
             editAccountView.accountIdx = self.account;
@@ -155,10 +185,23 @@ typedef enum {
             
             [editAccountView.labelTextField becomeFirstResponder];
             
-        } else if (detailType == DetailTypeShowQRCode) {
+        } else if (detailType == DetailTypeShowExtendedPublicKey) {
             
-        } else if (detailType == DetailTypeScanPrivateKey) {
+            BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame];
+            qrCodeView.address = [app.wallet getXpubForAccount:self.account];
             
+            [self setupModalView:qrCodeView inViewController:segue.destinationViewController];
+            
+            [self updateHeaderText:BC_STRING_EXTENDED_PUBLIC_KEY];
+
+        } else if (detailType == DetailTypeShowAddress) {
+            
+            BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame];
+            qrCodeView.address = self.address;
+            
+            [self setupModalView:qrCodeView inViewController:segue.destinationViewController];
+            
+            [self updateHeaderText:BC_STRING_ADDRESS];
         }
     }
 }
@@ -257,7 +300,7 @@ typedef enum {
                             if ([app.wallet getDefaultAccountIndex] != self.account) {
                                 [self alertToConfirmSetDefaultAccount:self.account];
                             } else {
-                                [self showAccountXPub:self.account];
+                                [self alertToShowAccountXPub];
                             }
                         }
                         return;

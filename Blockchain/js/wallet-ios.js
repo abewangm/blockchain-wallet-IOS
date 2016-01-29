@@ -1270,6 +1270,10 @@ MyWalletPhone.updateWebsocketURL = function(url) {
     }
 }
 
+MyWalletPhone.getXpubForAccount = function(accountIndex) {
+    return MyWallet.wallet.hdwallet.accounts[accountIndex].extendedPublicKey;
+}
+
 MyWalletPhone.filteredWalletJSON = function() {
     var walletJSON = JSON.parse(JSON.stringify(MyWallet.wallet, null, 2));
     var hidden = '(REMOVED)';

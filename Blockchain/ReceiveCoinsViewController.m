@@ -12,10 +12,12 @@
 #import "Address.h"
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
+#import "QRCodeGenerator.h"
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource>
 @property (nonatomic) id paymentObserver;
 @property (nonatomic) UITextField *lastSelectedField;
+@property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -120,6 +122,14 @@ UIAlertController *popupAddressArchive;
         [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
         self.paymentObserver = nil;
     }
+}
+
+- (QRCodeGenerator *)qrCodeGenerator
+{
+    if (!_qrCodeGenerator) {
+        _qrCodeGenerator = [[QRCodeGenerator alloc] init];
+    }
+    return _qrCodeGenerator;
 }
 
 - (void)setupTapGestureForLegacyLabel
@@ -252,7 +262,7 @@ UIAlertController *popupAddressArchive;
     
     if ([app.wallet getActiveAccountsCount] > 0 || activeKeys.count > 0) {
         
-        qrCodeMainImageView.image = [self qrImageFromAddress:mainAddress];
+        qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
         
         [headerView addSubview:qrCodeMainImageView];
         
@@ -354,77 +364,11 @@ UIAlertController *popupAddressArchive;
     return key;
 }
 
-- (UIImage *)qrImageFromAddress:(NSString *)address
-{
-    NSString *addressURL = [NSString stringWithFormat:@"bitcoin:%@", address];
-    
-    return [self createQRImageFromString:addressURL];
-}
-
-- (UIImage *)qrImageFromAddress:(NSString *)address amount:(double)amount
-{
-    app.btcFormatter.usesGroupingSeparator = NO;
-    NSLocale *currentLocale = app.btcFormatter.locale;
-    app.btcFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
-    NSString *amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:amount]];
-    app.btcFormatter.locale = currentLocale;
-    app.btcFormatter.usesGroupingSeparator = YES;
-    
-    NSString *addressURL = [NSString stringWithFormat:@"bitcoin:%@?amount=%@", address, amountString];
-    
-    return [self createQRImageFromString:addressURL];
-}
-
-- (UIImage *)createQRImageFromString:(NSString *)string
-{
-    return [self createNonInterpolatedUIImageFromCIImage:[self createQRFromString:string] withScale:10*[[UIScreen mainScreen] scale]];
-}
-
-- (CIImage *)createQRFromString:(NSString *)qrString
-{
-    // Need to convert the string to a UTF-8 encoded NSData object
-    NSData *stringData = [qrString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    // Create the filter
-    CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    // Set the message content and error-correction level
-    [qrFilter setValue:stringData forKey:@"inputMessage"];
-    [qrFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
-    
-    return qrFilter.outputImage;
-}
-
-- (UIImage *)createNonInterpolatedUIImageFromCIImage:(CIImage *)image withScale:(CGFloat)scale
-{
-    // Render the CIImage into a CGImage
-    CGImageRef cgImage = [[CIContext contextWithOptions:nil] createCGImage:image fromRect:image.extent];
-    
-    // Now we'll rescale using CoreGraphics
-    UIGraphicsBeginImageContext(CGSizeMake(image.extent.size.width * scale, image.extent.size.width * scale));
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    // We don't want to interpolate (since we've got a pixel-correct image)
-    CGContextSetInterpolationQuality(context, kCGInterpolationNone);
-    CGContextDrawImage(context, CGContextGetClipBoundingBox(context), cgImage);
-    
-    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // Tidy up
-    UIGraphicsEndImageContext();
-    CGImageRelease(cgImage);
-    
-    // Rotate the image
-    UIImage *qrImage = [UIImage imageWithCGImage:[scaledImage CGImage]
-                                           scale:[scaledImage scale]
-                                     orientation:UIImageOrientationDownMirrored];
-    
-    return qrImage;
-}
-
 - (void)setQRPayment
 {
     double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
         
-    UIImage *image = [self qrImageFromAddress:self.clickedAddress amount:amount];
+    UIImage *image = [self.qrCodeGenerator qrImageFromAddress:self.clickedAddress amount:amount];
         
     qrCodePaymentImageView.image = image;
     qrCodePaymentImageView.contentMode = UIViewContentModeScaleAspectFit;
