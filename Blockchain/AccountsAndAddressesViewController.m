@@ -49,7 +49,6 @@
 - (void)reload
 {
     allKeys = [app.wallet allLegacyAddresses];
-    self.tableView.frame = app.window.frame;
     [self.tableView reloadData];
 }
 
@@ -112,8 +111,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 && ![app.wallet didUpgradeToHd]) {
-        return 0;
+    if (section == 0) {
+        if (![app.wallet isInitialized]) {
+            return 45.0f;
+        } else {
+            if ([app.wallet didUpgradeToHd]) {
+                return 45.0f;
+            } else {
+                return 0;
+            }
+        }
     } else {
         return 45.0f;
     }
