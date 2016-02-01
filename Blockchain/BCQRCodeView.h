@@ -11,7 +11,8 @@
 @interface BCQRCodeView : UIView
 @property (nonatomic) UIImageView *qrCodeImageView;
 @property (nonatomic) NSString *address;
-@property (nonatomic) UILabel *qrCodeLabel;
+@property (nonatomic) UILabel *qrCodeFooterLabel;
+@property (nonatomic) UILabel *qrCodeHeaderLabel;
 
 - (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText;
 

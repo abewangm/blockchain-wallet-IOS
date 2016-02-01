@@ -53,19 +53,18 @@ const float imageWidth = 190;
     CGFloat qrCodeImageViewYPosition = qrCodeHeaderLabel ? qrCodeHeaderLabel.frame.origin.y + qrCodeHeaderLabel.frame.size.height + 15 : 25 ;
     
     self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width - imageWidth) / 2, qrCodeImageViewYPosition, imageWidth, imageWidth)];
-    
-    UITapGestureRecognizer *tapMainQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(QRCodeClicked)];
-    [self.qrCodeImageView addGestureRecognizer:tapMainQRGestureRecognizer];
-    self.qrCodeImageView.userInteractionEnabled = YES;
-    
     [self addSubview:self.qrCodeImageView];
     
-    self.qrCodeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, self.qrCodeImageView.frame.origin.y + self.qrCodeImageView.frame.size.height + 15, 280, 30)];
-    self.qrCodeLabel.font = [UIFont systemFontOfSize:17.0];
-    self.qrCodeLabel.textAlignment = NSTextAlignmentCenter;
-    self.qrCodeLabel.adjustsFontSizeToFitWidth = YES;
+    self.qrCodeFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, self.qrCodeImageView.frame.origin.y + self.qrCodeImageView.frame.size.height + 15, 280, 20.5)];
+    self.qrCodeFooterLabel.font = [UIFont systemFontOfSize:17.0];
+    self.qrCodeFooterLabel.textAlignment = NSTextAlignmentCenter;
+    self.qrCodeFooterLabel.adjustsFontSizeToFitWidth = YES;
     
-    [self addSubview:self.qrCodeLabel];
+    UITapGestureRecognizer *tapFooterLabelGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(QRCodeClicked)];
+    [self.qrCodeFooterLabel addGestureRecognizer:tapFooterLabelGestureRecognizer];
+    self.qrCodeFooterLabel.userInteractionEnabled = YES;
+    
+    [self addSubview:self.qrCodeFooterLabel];
 }
 
 - (QRCodeGenerator *)qrCodeGenerator
@@ -81,12 +80,65 @@ const float imageWidth = 190;
     _address = address;
     
     self.qrCodeImageView.image = [self.qrCodeGenerator qrImageFromAddress:address];
-    self.qrCodeLabel.text = address;
+    self.qrCodeFooterLabel.text = address;
 }
 
 - (void)QRCodeClicked
 {
-    DLog(@"QR Code Clicked!");
+    [UIPasteboard generalPasteboard].string = self.address;
+    [self animateTextOfLabel:self.qrCodeFooterLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:self.qrCodeFooterLabel];
 }
+
+- (void)animateTextOfLabel:(UILabel *)labelToAnimate toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
+{
+    gestureReceiver.userInteractionEnabled = NO;
+    
+    CGRect originalFrame = labelToAnimate.frame;
+    NSString *originalText = labelToAnimate.text;
+    UIColor *originalTextColor = labelToAnimate.textColor;
+    
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        labelToAnimate.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        
+        labelToAnimate.text = intermediateText;
+        [labelToAnimate sizeToFit];
+        labelToAnimate.center = CGPointMake(self.center.x, labelToAnimate.center.y);
+        
+        UIImageView *checkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(labelToAnimate.frame.origin.x - labelToAnimate.frame.size.height - 5, labelToAnimate.frame.origin.y,labelToAnimate.frame.size.height, labelToAnimate.frame.size.height)];
+        checkImageView.image = [UIImage imageNamed:@"check"];
+        checkImageView.image = [checkImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        checkImageView.tintColor = COLOR_BUTTON_GREEN;
+        [self addSubview:checkImageView];
+        checkImageView.alpha = 0.0;
+        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            labelToAnimate.text = intermediateText;
+            labelToAnimate.textColor = COLOR_BUTTON_GREEN;
+            labelToAnimate.alpha = 1.0;
+            checkImageView.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(speed * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                    labelToAnimate.alpha = 0.0;
+                    checkImageView.alpha = 0.0;
+                } completion:^(BOOL finished) {
+                    
+                    labelToAnimate.frame = originalFrame;
+                    
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        labelToAnimate.text = originalText;
+                        labelToAnimate.textColor = originalTextColor;
+                        labelToAnimate.alpha = 1.0;
+                        gestureReceiver.userInteractionEnabled = YES;
+                    } completion:^(BOOL finished) {
+                        [checkImageView removeFromSuperview];
+                    }];
+                }];
+            });
+        }];
+    }];
+}
+
 
 @end
