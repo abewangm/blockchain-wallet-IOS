@@ -46,7 +46,6 @@ const float imageWidth = 190;
         qrCodeHeaderLabel.textColor = [UIColor grayColor];
         qrCodeHeaderLabel.numberOfLines = 5;
         qrCodeHeaderLabel.textAlignment = NSTextAlignmentCenter;
-        [qrCodeHeaderLabel adjustFontSizeToFit];
         qrCodeHeaderLabel.text = qrHeaderText;
         [self addSubview:qrCodeHeaderLabel];
     }
