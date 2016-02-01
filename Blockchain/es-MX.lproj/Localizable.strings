@@ -836,7 +836,7 @@
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "El PIN seleccionado es muy común y puede ser fácilmente adivinado por alguien con acceso a su teléfono en 3 intentos. ¿Le gustaría usar este PIN de todos modos?";
 
 /* (No Commment) */
-"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "La cantidad que desea enviar (%1$ @) es superior a la cantidad máxima que puede gastar sin contar la transacción (2% $@ - $%3 @). ¿Quiere enviar %4$@?";
+"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "La cantidad que desea enviar (%1$ @) es superior a la cantidad máxima que puede gastar sin contar la transacción (%2$@ - %3$@). ¿Quiere enviar %4$@?";
 
 /* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "La clave privada que está intentando importar está cifrada. Ingresa la contraseña abajo.";
