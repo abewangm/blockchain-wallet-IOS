@@ -25,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:app.window.frame style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
@@ -49,6 +49,7 @@
 - (void)reload
 {
     allKeys = [app.wallet allLegacyAddresses];
+    self.tableView.frame = app.window.frame;
     [self.tableView reloadData];
 }
 
@@ -188,17 +189,24 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
             cell.backgroundColor = COLOR_BACKGROUND_GRAY;
             
-            // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
-            cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
-            cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
-            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
-            cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
-            
             if ([app.wallet getDefaultAccountIndex] == accountIndex) {
+                
+                cell.labelLabel.frame = CGRectMake(20, 11, 155, 21);
+                cell.balanceLabel.frame = CGRectMake(247, 11, 90, 21);
+                UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
+                cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
+                
                 cell.watchLabel.hidden = NO;
                 cell.watchLabel.text = BC_STRING_DEFAULT;
                 cell.watchLabel.textColor = [UIColor grayColor];
             } else {
+                
+                // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
+                cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
+                cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
+                UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
+                cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
+                
                 cell.watchLabel.hidden = YES;
                 cell.watchLabel.text = BC_STRING_WATCH_ONLY;
                 cell.watchLabel.textColor = [UIColor redColor];

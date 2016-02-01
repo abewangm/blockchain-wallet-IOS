@@ -21,6 +21,7 @@
     [super awakeFromNib];
     self.balanceLabel.adjustsFontSizeToFitWidth = YES;
     self.watchLabel.adjustsFontSizeToFitWidth = YES;
+    self.watchLabel.textAlignment = NSTextAlignmentCenter;
     self.watchLabel.text = BC_STRING_WATCH_ONLY;
 }
 
