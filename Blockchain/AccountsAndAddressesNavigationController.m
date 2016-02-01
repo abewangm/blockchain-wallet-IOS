@@ -53,7 +53,7 @@
     [busyView addSubview:textWithSpinnerView];
     textWithSpinnerView.center = busyView.center;
     
-    self.busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    self.busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 230, 30)];
     self.busyLabel.font = [UIFont systemFontOfSize:14.0];
     self.busyLabel.alpha = 0.75;
     self.busyLabel.textAlignment = NSTextAlignmentCenter;

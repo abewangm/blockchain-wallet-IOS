@@ -12,6 +12,8 @@
 #import "ReceiveTableCell.h"
 #import "BCCreateAccountView.h"
 #import "BCModalViewController.h"
+#import "PrivateKeyReader.h"
+#import "UIViewController+AutoDismiss.h"
 
 @interface AccountsAndAddressesViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) NSString *clickedAddress;
@@ -95,7 +97,40 @@
 
 - (void)newAddressClicked:(id)sender
 {
+    [self scanPrivateKey];
+}
+
+- (void)scanPrivateKey
+{
+    if (![app checkInternetConnection]) {
+        return;
+    }
     
+    if (![app getCaptureDeviceInput]) {
+        return;
+    }
+    
+    PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(promptForLabelAfterScan)
+                                                     name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+        [app.wallet addKey:privateKeyString];
+        [app.wallet loading_stop];
+    } error:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    
+    [self presentViewController:reader animated:YES completion:nil];
+}
+
+- (void)promptForLabelAfterScan
+{
+    //newest address is the last object in activeKeys
+    self.clickedAddress = [allKeys lastObject];
+    [self didSelectAddress:self.clickedAddress];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS
+                                                  object:nil];
 }
 
 #pragma mark Table View Delegate
