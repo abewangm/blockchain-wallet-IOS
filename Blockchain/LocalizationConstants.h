@@ -424,6 +424,7 @@
 #define BC_STRING_PIN NSLocalizedString(@"PIN", nil)
 
 #define BC_STRING_MAKE_DEFAULT NSLocalizedString(@"Make Default", nil)
+#define BC_STRING_DEFAULT NSLocalizedString(@"Default", nil)
 #define BC_STRING_ARCHIVE_FOOTER_TITLE NSLocalizedString(@"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time.", nil)
 #define BC_STRING_ARCHIVED_FOOTER_TITLE NSLocalizedString(@"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.\n\nIf there are any funds, they will be safe. In order to start using this thing again, unarchive it.", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_FOOTER_TITLE NSLocalizedString(@"Show your xPub if you are a merchant and use th Blockchain Merchant app to receive funds safely and privately.\n\nKeep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions.", nil)

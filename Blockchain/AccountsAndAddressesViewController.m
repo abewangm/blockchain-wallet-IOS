@@ -182,10 +182,6 @@
         int accountIndex = (int) indexPath.row;
         NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex activeOnly:NO];
         
-        if ([app.wallet getDefaultAccountIndex] == accountIndex) {
-            
-        }
-        
         ReceiveTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"receiveAccount"];
         
         if (cell == nil) {
@@ -198,7 +194,15 @@
             UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
             cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
             
-            [cell.watchLabel setHidden:TRUE];
+            if ([app.wallet getDefaultAccountIndex] == accountIndex) {
+                cell.watchLabel.hidden = NO;
+                cell.watchLabel.text = BC_STRING_DEFAULT;
+                cell.watchLabel.textColor = COLOR_BUTTON_BLUE;
+            } else {
+                cell.watchLabel.hidden = YES;
+                cell.watchLabel.text = BC_STRING_WATCH_ONLY;
+                cell.watchLabel.textColor = [UIColor redColor];
+            }
         }
         
         cell.labelLabel.text = accountLabelString;
