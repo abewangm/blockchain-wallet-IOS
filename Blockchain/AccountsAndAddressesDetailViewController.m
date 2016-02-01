@@ -281,6 +281,7 @@ typedef enum {
             if ([self isArchived]) {
                 switch (indexPath.row) {
                     case 0: {
+                        [self toggleArchive];
                         return;
                     }
                 }
@@ -319,6 +320,9 @@ typedef enum {
                 }
             }
         }
+        case 1: {
+            [self toggleArchive];
+        }
     }
 }
 
@@ -334,11 +338,13 @@ typedef enum {
             switch (indexPath.row) {
                 case 0: {
                     if ([self isArchived]) {
-                        cell.textLabel.text = BC_STRING_ARCHIVED;
-                        UISwitch *archiveSwitch = [[UISwitch alloc] init];
-                        archiveSwitch.on = [self isArchived];
-                        [archiveSwitch addTarget:self action:@selector(toggleArchive) forControlEvents:UIControlEventTouchUpInside];
-                        cell.accessoryView = archiveSwitch;
+                        if ([self isArchived]) {
+                            cell.textLabel.text = BC_STRING_UNARCHIVE;
+                            cell.textLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+                        } else {
+                            cell.textLabel.text = BC_STRING_ARCHIVE;
+                            cell.textLabel.textColor = COLOR_BUTTON_RED;
+                        }
                     } else {
                         cell.textLabel.text = self.address? BC_STRING_LABEL : BC_STRING_NAME;
                         cell.detailTextLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
@@ -385,11 +391,13 @@ typedef enum {
             }
         }
         case sectionArchived: {
-            cell.textLabel.text = BC_STRING_ARCHIVED;
-            UISwitch *archiveSwitch = [[UISwitch alloc] init];
-            archiveSwitch.on = [self isArchived];
-            [archiveSwitch addTarget:self action:@selector(toggleArchive) forControlEvents:UIControlEventTouchUpInside];
-            cell.accessoryView = archiveSwitch;
+            if ([self isArchived]) {
+                cell.textLabel.text = BC_STRING_UNARCHIVE;
+                cell.textLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+            } else {
+                cell.textLabel.text = BC_STRING_ARCHIVE;
+                cell.textLabel.textColor = COLOR_BUTTON_RED;
+            }
             return cell;
         }
         default:
