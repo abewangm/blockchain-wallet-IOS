@@ -12,4 +12,7 @@
 @property (nonatomic) UIImageView *qrCodeImageView;
 @property (nonatomic) NSString *address;
 @property (nonatomic) UILabel *qrCodeLabel;
+
+- (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText;
+
 @end

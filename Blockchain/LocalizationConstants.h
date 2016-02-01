@@ -430,3 +430,4 @@
 #define BC_STRING_EXTENDED_PUBLIC_KEY_WARNING NSLocalizedString(@"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet.", nil)
 #define BC_STRING_WATCH_ONLY_FOOTER_TITLE NSLocalizedString(@"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key.", nil)
 #define BC_STRING_SET_DEFAULT_ACCOUNT NSLocalizedString(@"Set as Default Account?", nil)
+#define BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE NSLocalizedString(@"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin.", nil)
