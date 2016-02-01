@@ -375,11 +375,13 @@ typedef enum {
                             cell.textLabel.text = BC_STRING_SCAN_PRIVATE_KEY;
                             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         } else {
-                            cell.textLabel.text = BC_STRING_ARCHIVED;
-                            UISwitch *archiveSwitch = [[UISwitch alloc] init];
-                            archiveSwitch.on = [self isArchived];
-                            [archiveSwitch addTarget:self action:@selector(toggleArchive) forControlEvents:UIControlEventTouchUpInside];
-                            cell.accessoryView = archiveSwitch;
+                            if ([self isArchived]) {
+                                cell.textLabel.text = BC_STRING_UNARCHIVE;
+                                cell.textLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+                            } else {
+                                cell.textLabel.text = BC_STRING_ARCHIVE;
+                                cell.textLabel.textColor = COLOR_BUTTON_RED;
+                            }
                         }
                     } else {
                         cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
