@@ -197,7 +197,7 @@
             if ([app.wallet getDefaultAccountIndex] == accountIndex) {
                 cell.watchLabel.hidden = NO;
                 cell.watchLabel.text = BC_STRING_DEFAULT;
-                cell.watchLabel.textColor = COLOR_BUTTON_BLUE;
+                cell.watchLabel.textColor = [UIColor grayColor];
             } else {
                 cell.watchLabel.hidden = YES;
                 cell.watchLabel.text = BC_STRING_WATCH_ONLY;
