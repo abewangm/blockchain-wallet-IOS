@@ -311,6 +311,8 @@ typedef enum {
                         if (self.address) {
                             if ([app.wallet isWatchOnlyLegacyAddress:self.address]) {
                                 [self scanPrivateKey];
+                            } else {
+                                [self toggleArchive];
                             }
                         } else {
                             [self alertToShowAccountXPub];
@@ -340,10 +342,10 @@ typedef enum {
                     if ([self isArchived]) {
                         if ([self isArchived]) {
                             cell.textLabel.text = BC_STRING_UNARCHIVE;
-                            cell.textLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+                            cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
                         } else {
                             cell.textLabel.text = BC_STRING_ARCHIVE;
-                            cell.textLabel.textColor = COLOR_BUTTON_RED;
+                            cell.textLabel.textColor = [UIColor redColor];
                         }
                     } else {
                         cell.textLabel.text = self.address? BC_STRING_LABEL : BC_STRING_NAME;
@@ -377,10 +379,10 @@ typedef enum {
                         } else {
                             if ([self isArchived]) {
                                 cell.textLabel.text = BC_STRING_UNARCHIVE;
-                                cell.textLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+                                cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
                             } else {
                                 cell.textLabel.text = BC_STRING_ARCHIVE;
-                                cell.textLabel.textColor = COLOR_BUTTON_RED;
+                                cell.textLabel.textColor = [UIColor redColor];
                             }
                         }
                     } else {
@@ -395,10 +397,10 @@ typedef enum {
         case sectionArchived: {
             if ([self isArchived]) {
                 cell.textLabel.text = BC_STRING_UNARCHIVE;
-                cell.textLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+                cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
             } else {
                 cell.textLabel.text = BC_STRING_ARCHIVE;
-                cell.textLabel.textColor = COLOR_BUTTON_RED;
+                cell.textLabel.textColor = [UIColor redColor];
             }
             return cell;
         }

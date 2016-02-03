@@ -57,6 +57,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define COLOR_UPGRADE_TEXT_BLUE UIColorFromRGB(0x1975BB)
 
+#define COLOR_TABLE_VIEW_CELL_TEXT_BLUE UIColorFromRGB(0x007AFF)
+
 #pragma mark - Measurements
 
 #define DEFAULT_HEADER_HEIGHT 65
