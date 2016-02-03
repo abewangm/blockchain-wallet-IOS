@@ -362,7 +362,7 @@ typedef enum {
                     } else {
                         if ([app.wallet getDefaultAccountIndex] != self.account) {
                             cell.textLabel.text = BC_STRING_MAKE_DEFAULT;
-                            cell.textLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+                            cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
                             cell.accessoryType = UITableViewCellAccessoryNone;
                         } else {
                             cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
