@@ -531,6 +531,7 @@ const int aboutPrivacyPolicy = 1;
         }]];
         [self presentViewController:alertForTogglingTouchID animated:YES completion:nil];
     } else {
+        [app disabledTouchID];
         [[NSUserDefaults standardUserDefaults] setBool:!touchIDEnabled forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
     }
 }

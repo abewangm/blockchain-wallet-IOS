@@ -189,6 +189,7 @@
 - (BOOL)checkInternetConnection;
 
 - (NSString *)checkForTouchIDAvailablility;
+- (void)disabledTouchID;
 
 - (AVCaptureDeviceInput *)getCaptureDeviceInput;
 

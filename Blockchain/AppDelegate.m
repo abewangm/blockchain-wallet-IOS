@@ -1741,6 +1741,11 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (void)disabledTouchID
+{
+    [self removePinFromKeychain];
+}
+
 - (void)initializeScannerInReceiveViewController
 {
     if (!_receiveViewController) {
@@ -1787,6 +1792,12 @@ void (^secondPasswordSuccess)(NSString *);
     if (![self checkInternetConnection]) {
         return;
     }
+    
+#ifdef TOUCH_ID_ENABLED
+    if (self.pinEntryViewController.verifyOptional) {
+        [self setPINInKeychain:pin];
+    }
+#endif
     
     [app.wallet apiGetPINValue:pinKey pin:pin];
     
@@ -1959,6 +1970,12 @@ void (^secondPasswordSuccess)(NSString *);
         self.pinViewControllerCallback(pinSuccess);
         self.pinViewControllerCallback = nil;
     }
+    
+#ifdef TOUCH_ID_ENABLED
+    if ((!pinSuccess && self.pinEntryViewController.verifyOptional) || ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
+        [self removePinFromKeychain];
+    }
+#endif
 }
 
 - (void)didFailPutPin:(NSString*)value
@@ -2096,7 +2113,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     [app.wallet pinServerPutKeyOnPinServerServer:key value:value pin:pin];
     
-    [self setPINInKeychain:pin];
+#ifdef TOUCH_ID_ENABLED
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
+        [self setPINInKeychain:pin];
+    }
+#endif
 }
 
 - (void)pinEntryControllerDidCancel:(PEPinEntryController *)c
@@ -2121,6 +2142,13 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *pin = [[NSString alloc] initWithData:pinData encoding:NSUTF8StringEncoding];
     
     return pin.length == 0 ? nil : pin;
+}
+
+- (void)removePinFromKeychain
+{
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_PIN accessGroup:nil];
+
+    [keychain resetKeychainItem];
 }
 
 #pragma mark - GUID
