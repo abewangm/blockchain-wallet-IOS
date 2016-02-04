@@ -32,7 +32,7 @@
 
 @implementation UpgradeViewController
 
-- (IBAction)learnMoreTapped:(UIButton *)sender
+- (IBAction)upgradeTapped:(UIButton *)sender
 {
     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_UPGRADE_DETAILS sender:nil];
 }

@@ -11,8 +11,8 @@
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
 "HuT-V7-syg.normalTitle" = "Ask Me Later";
 
-/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "cZ9-x2-KGM"; */
-"cZ9-x2-KGM.normalTitle" = "Learn More";
+/* Class = "UIButton"; normalTitle = "Upgrade"; ObjectID = "cZ9-x2-KGM"; */
+"cZ9-x2-KGM.normalTitle" = "Upgrade";
 
-/* Class = "UILabel"; text = "Welcome to the new version of the Blockchain Wallet!"; ObjectID = "4cR-kX-YUY"; */
-"4cR-kX-YUY.text" = "Welcome to the new version of the Blockchain Wallet!";
+/* Class = "UILabel"; text = "Confirm Upgrade"; ObjectID = "4cR-kX-YUY"; */
+"4cR-kX-YUY.text" = "Confirm Upgrade";
