@@ -1972,7 +1972,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
 #ifdef TOUCH_ID_ENABLED
-    if ((!pinSuccess && self.pinEntryViewController.verifyOptional) || ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
+    if (!pinSuccess && self.pinEntryViewController.verifyOptional) {
         [self removePinFromKeychain];
     }
 #endif
