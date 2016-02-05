@@ -601,6 +601,15 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.addPrivateKey(\"%@\")", [privateKeyString escapeStringForJS]] boolValue];
 }
 
+- (BOOL)addKey:(NSString*)privateKeyString toWatchOnlyAddress:(NSString *)watchOnlyAddress
+{
+    if (![self isInitialized]) {
+        return false;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.addKeyToLegacyAddress(\"%@\", \"%@\")", [privateKeyString escapeStringForJS], [watchOnlyAddress escapeStringForJS]] boolValue];
+}
+
 - (NSDictionary*)addressBook
 {
     if (![self isInitialized]) {
@@ -1317,6 +1326,13 @@
     }
 }
 
+- (void)on_error_adding_private_key_watch_only:(NSString*)error
+{
+    if ([delegate respondsToSelector:@selector(didFailToImportPrivateKeyForWatchOnlyAddress:)]) {
+        [delegate didFailToImportPrivateKeyForWatchOnlyAddress:error];
+    }
+}
+
 - (void)on_error_creating_new_account:(NSString*)message
 {
     DLog(@"on_error_creating_new_account:");
@@ -1936,11 +1952,11 @@
         NSData * data = [self _internal_crypto_scrypt:_password salt:salt n:[N unsignedLongLongValue] r:[r unsignedIntegerValue] p:[p unsignedIntegerValue] dkLen:[derivedKeyLen unsignedIntegerValue]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [app hideBusyView];
-            
             if (data) {
                 _success([data hexadecimalString]);
             } else {
+                [app hideBusyView];
+
                 _error(@"Scrypt Error");
             }
         });

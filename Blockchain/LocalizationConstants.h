@@ -433,3 +433,8 @@
 #define BC_STRING_SET_DEFAULT_ACCOUNT NSLocalizedString(@"Set as Default Account?", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE NSLocalizedString(@"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin.", nil)
 #define BC_STRING_COPY_XPUB NSLocalizedString(@"Copy xPub", nil)
+#define BC_STRING_SCAN_INCORRECT_WATCH_ONLY_ADDRESS_MESSAGE NSLocalizedString(@"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key.", nil)
+#define BC_STRING_ADDRESS_NOT_PRESENT_IN_WALLET NSLocalizedString(@"Your wallet does not contain this address.", nil)
+#define BC_STRING_ADDRESS_NOT_WATCH_ONLY NSLocalizedString(@"This address is not watch-only.", nil)
+#define BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE NSLocalizedString(@"This private key does not correspond to this watch-only address. If you want to spend from this address, make sure you scan the correct private key.", nil)
+#define BC_STRING_WRONG_BIP38_PASSWORD NSLocalizedString(@"Wrong BIP38 Password", nil)

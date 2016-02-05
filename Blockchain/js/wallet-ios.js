@@ -854,6 +854,47 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
     }
 };
 
+MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) {
+    var success = function(address) {
+        console.log('Add private key success');
+        
+        device.execute('on_add_private_key:', [address.address]);
+    };
+    var error = function(message) {
+        console.log('Add private key Error: ' + message);
+    
+        device.execute('on_error_adding_private_key_watch_only:', [message]);
+    };
+    
+    var needsBip38Passsword = MyWallet.detectPrivateKeyFormat(privateKeyString) === 'bip38';
+    
+    if (needsBip38Passsword) {
+        MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
+            if (MyWallet.wallet.isDoubleEncrypted) {
+                device.execute('on_add_private_key_start');
+                MyWalletPhone.getSecondPassword(function (pw) {
+                    MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, pw, bip38Pass).then(success).catch(error);
+                });
+            } else {
+                device.execute('on_add_private_key_start');
+                MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, null, bip38Pass).then(success).catch(error);
+            }
+        });
+    }
+    else {
+        if (MyWallet.wallet.isDoubleEncrypted) {
+            device.execute('on_add_private_key_start');
+            MyWalletPhone.getSecondPassword(function (pw) {
+                MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, pw, null).then(success).catch(error);
+            });
+        }
+        else {
+            device.execute('on_add_private_key_start');
+            MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, null, null).then(success).catch(error);
+        }
+    }
+};
+
 MyWalletPhone.getRecoveryPhrase = function(secondPassword) {
     var recoveryPhrase = MyWallet.wallet.getMnemonic(secondPassword);
     

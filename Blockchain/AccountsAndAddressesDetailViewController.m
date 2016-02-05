@@ -12,6 +12,8 @@
 #import "BCEditAccountView.h"
 #import "BCEditAddressView.h"
 #import "BCQRCodeView.h"
+#import "PrivateKeyReader.h"
+#import "UIViewController+AutoDismiss.h"
 
 const int numberOfSectionsAccountUnarchived = 2;
 const int numberOfSectionsAddressUnarchived = 1; // 2 if watch only
@@ -145,11 +147,6 @@ typedef enum {
     }
 }
 
-- (void)scanPrivateKey
-{
-
-}
-
 - (void)alertToConfirmSetDefaultAccount:(int)account
 {
     UIAlertController *alertToSetDefaultAccount = [UIAlertController alertControllerWithTitle:BC_STRING_SET_DEFAULT_ACCOUNT message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -202,6 +199,7 @@ typedef enum {
             
             [self setupModalView:qrCodeView inViewController:segue.destinationViewController];
             
+            qrCodeView.qrCodeFooterLabel.text = BC_STRING_COPY_ADDRESS;
             [self updateHeaderText:BC_STRING_ADDRESS];
         }
     }
@@ -310,7 +308,7 @@ typedef enum {
                     case 2: {
                         if (self.address) {
                             if ([app.wallet isWatchOnlyLegacyAddress:self.address]) {
-                                [self scanPrivateKey];
+                                [app scanPrivateKeyForWatchOnlyAddress:self.address];
                             } else {
                                 [self toggleArchive];
                             }

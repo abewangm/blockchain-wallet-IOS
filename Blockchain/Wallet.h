@@ -73,6 +73,7 @@
 - (void)didFailGetHistory:(NSString *)error;
 - (void)resendTwoFactorSuccess;
 - (void)resendTwoFactorError:(NSString *)error;
+- (void)didFailToImportPrivateKeyForWatchOnlyAddress:(NSString *)error;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -93,6 +94,8 @@
 @property(nonatomic, strong) NSMutableDictionary *transactionProgressListeners;
 
 @property(nonatomic) NSDictionary *accountInfo;
+
+@property(nonatomic) NSString *lastScannedWatchOnlyAddress;
 
 // HD properties:
 @property NSString *recoveryPhrase;
@@ -132,6 +135,7 @@
 - (void)cancelTxSigning;
 
 - (BOOL)addKey:(NSString *)privateKeyString;
+- (BOOL)addKey:(NSString*)privateKeyString toWatchOnlyAddress:(NSString *)watchOnlyAddress;
 
 // Fetch String Array Of Addresses
 - (NSArray *)activeLegacyAddresses;

@@ -82,7 +82,9 @@
 {
     self.busyLabel.text = text;
     [self.view bringSubviewToFront:self.busyView];
-    [self.busyView fadeIn];
+    if (self.busyView.alpha < 1.0) {
+        [self.busyView fadeIn];
+    }
 }
 
 - (void)updateBusyViewLoadingText:(NSString *)text
@@ -103,7 +105,11 @@
 
 - (void)presentAlertController:(UIAlertController *)alertController
 {
-    [self.visibleViewController presentViewController:alertController animated:YES completion:nil];
+    if (self.presentedViewController) {
+        [self.presentedViewController presentViewController:alertController animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 - (void)reload

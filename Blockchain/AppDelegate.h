@@ -67,7 +67,7 @@
     BOOL symbolLocal;
 }
 
-@property (nonatomic, weak) id <TopViewController> topViewControllerDelegate;
+@property (nonatomic, weak) UIViewController <TopViewController> *topViewControllerDelegate;
 
 @property (strong, nonatomic) IBOutlet ECSlidingViewController *slidingViewController;
 @property (strong, nonatomic) IBOutlet TabViewcontroller *tabViewController;
@@ -203,6 +203,7 @@
 - (AVCaptureDeviceInput *)getCaptureDeviceInput;
 
 - (void)initializeScannerInReceiveViewController;
+- (void)scanPrivateKeyForWatchOnlyAddress:(NSString *)address;
 
 - (void)verifyTwoFactorSMS;
 - (void)verifyTwoFactorGoogle;

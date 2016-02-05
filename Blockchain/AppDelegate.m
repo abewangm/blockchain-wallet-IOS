@@ -53,6 +53,8 @@ BOOL showSendCoins = NO;
 SideMenuViewController *sideMenuViewController;
 UIImageView *curtainImageView;
 
+
+void (^addPrivateKeySuccess)(NSString *);
 void (^secondPasswordSuccess)(NSString *);
 
 #pragma mark - Lifecycle
@@ -321,7 +323,9 @@ void (^secondPasswordSuccess)(NSString *);
     
     [_window.rootViewController.view bringSubviewToFront:busyView];
     
-    [busyView fadeIn];
+    if (busyView.alpha < 1.0) {
+        [busyView fadeIn];
+    }
 }
 
 - (void)updateBusyViewLoadingText:(NSString *)text
@@ -790,7 +794,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
     if (textField == secondPasswordTextField) {
-        [self secondPasswordClicked:textField];
+        if (validateSecondPassword) {
+            [self secondPasswordClicked:textField];
+        } else {
+            [self privateKeyPasswordClicked];
+        }
     }
     else if (textField == mainPasswordTextField) {
         [self mainPasswordClicked:textField];
@@ -805,19 +813,48 @@ void (^secondPasswordSuccess)(NSString *);
     
     secondPasswordDescriptionLabel.text = BC_STRING_PRIVATE_KEY_ENCRYPTED_DESCRIPTION;
     
-    [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeClose headerText:BC_STRING_PASSWORD_REQUIRED onDismiss:^() {
-        NSString * password = secondPasswordTextField.text;
-        
-        if ([password length] == 0) {
-            if (error) error(BC_STRING_NO_PASSWORD_ENTERED);
-        } else {
-            if (success) success(password);
-        }
+    if (_tabViewController.presentedViewController) {
+        BCModalViewController *bcModalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_PASSWORD_REQUIRED view:secondPasswordView];
         
         secondPasswordTextField.text = nil;
-    } onResume:nil];
+        addPrivateKeySuccess = success;
+
+        [_tabViewController.presentedViewController presentViewController:bcModalViewController animated:YES completion:^{
+            UIButton *secondPasswordOverlayButton = [[UIButton alloc] initWithFrame:[secondPasswordView convertRect:secondPasswordButton.frame toView:bcModalViewController.view]];
+            [bcModalViewController.view addSubview:secondPasswordOverlayButton];
+            [secondPasswordOverlayButton addTarget:self action:@selector(privateKeyPasswordClicked) forControlEvents:UIControlEventTouchUpInside];
+        }];
+        
+        [bcModalViewController.closeButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventAllTouchEvents];
+    } else {
+        [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeClose headerText:BC_STRING_PASSWORD_REQUIRED onDismiss:^() {
+            NSString * password = secondPasswordTextField.text;
+        
+            if ([password length] == 0) {
+                if (error) error(BC_STRING_NO_PASSWORD_ENTERED);
+            } else {
+                if (success) success(password);
+            }
+        
+            secondPasswordTextField.text = nil;
+        } onResume:nil];
+    }
     
     [secondPasswordTextField becomeFirstResponder];
+}
+
+- (void)privateKeyPasswordClicked
+{
+    NSString * password = secondPasswordTextField.text;
+    
+    if ([password length] == 0) {
+        [self standardNotifyAutoDismissingController:BC_STRING_NO_PASSWORD_ENTERED];
+    } else {
+        [_tabViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+        if (addPrivateKeySuccess) addPrivateKeySuccess(password);
+    }
+    
+    secondPasswordTextField.text = nil;
 }
 
 - (IBAction)secondPasswordClicked:(id)sender
@@ -1122,6 +1159,32 @@ void (^secondPasswordSuccess)(NSString *);
     [alert show];
 }
 
+- (void)scanPrivateKeyForWatchOnlyAddress:(NSString *)address
+{
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
+    if (![app getCaptureDeviceInput]) {
+        return;
+    }
+    
+    PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
+        [app.wallet addKey:privateKeyString toWatchOnlyAddress:address];
+        [app.wallet loading_stop];
+    } error:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    
+    if (self.topViewControllerDelegate) {
+        [self.topViewControllerDelegate presentViewController:reader animated:YES completion:nil];
+    } else {
+        [_window.rootViewController presentViewController:reader animated:YES completion:nil];
+    }
+    
+    app.wallet.lastScannedWatchOnlyAddress = address;
+}
+
 - (void)logout
 {
     [self.loginTimer invalidate];
@@ -1193,7 +1256,54 @@ void (^secondPasswordSuccess)(NSString *);
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
     [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:errorAlert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    [self.window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
+    
+    if (self.topViewControllerDelegate) {
+        if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+            [self.topViewControllerDelegate presentAlertController:errorAlert];
+        }
+    } else {
+        [_window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
+    }
+}
+
+- (void)didFailToImportPrivateKeyForWatchOnlyAddress:(NSString *)error
+{
+    [self hideBusyView];
+    self.wallet.isSyncing = NO;
+    
+    NSString *alertTitle = BC_STRING_ERROR;
+    if ([error isEqualToString:@"addressNotPresentInWallet"]) {
+        error = BC_STRING_ADDRESS_NOT_PRESENT_IN_WALLET;
+    } else if ([error isEqualToString:@"addressNotWatchOnly"]) {
+        error = BC_STRING_ADDRESS_NOT_WATCH_ONLY;
+    } else if ([error isEqualToString:@"wrongBipPass"]) {
+        error = BC_STRING_WRONG_BIP38_PASSWORD;
+    } else if ([error isEqualToString:@"addressDoesNotMatchWithTheKey"]) {
+        alertTitle = BC_STRING_WARNING;
+        error = BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE;
+    }
+    
+    UIAlertController *errorAlert;
+    if ([alertTitle isEqualToString:BC_STRING_ERROR]) {
+        errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    } else {
+        errorAlert = [UIAlertController alertControllerWithTitle:alertTitle message:error preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_TRY_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self scanPrivateKeyForWatchOnlyAddress:self.wallet.lastScannedWatchOnlyAddress];
+        }]];
+    }
+
+    [[NSNotificationCenter defaultCenter] addObserver:errorAlert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
+
+    if (self.topViewControllerDelegate) {
+        if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+            [self.topViewControllerDelegate presentAlertController:errorAlert];
+        }
+    } else {
+        [_window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
+    }
 }
 
 - (void)didFailRecovery
