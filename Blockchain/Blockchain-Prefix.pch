@@ -149,7 +149,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/api/merchant"
 
 #define HTML_CONNECT_SRC_PLACEHOLDER @"PLACEHOLDER_CONNECT_SRC"
-#define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info"
+#define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info https://api.blockchain.info"
 
 #define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
 #define ZEROBLOCK_TITLE @"ZeroBlock"
