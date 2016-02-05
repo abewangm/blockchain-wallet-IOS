@@ -1217,7 +1217,7 @@
         return;
     }
     
-    NSRange incorrectPasswordErrorStringRange = [message rangeOfString:@"Please check your password is correct" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    NSRange incorrectPasswordErrorStringRange = [message rangeOfString:@"please check that your password is correct" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (incorrectPasswordErrorStringRange.location != NSNotFound && ![app guid]) {
         // Error message shown in error_other_decrypting_wallet without guid
         return;
