@@ -23,7 +23,6 @@
 @implementation ReceiveCoinsViewController
 
 @synthesize activeKeys;
-@synthesize archivedKeys;
 
 Boolean didClickAccount = NO;
 int clickedAccount;
@@ -36,7 +35,6 @@ NSString *mainLabel;
 NSString *detailAddress;
 NSString *detailLabel;
 
-UIAlertController *popupAddressUnArchive;
 UIAlertController *popupAddressArchive;
 
 #pragma mark - Lifecycle
@@ -163,7 +161,6 @@ UIAlertController *popupAddressArchive;
 - (void)setupArchiveActionSheets
 {
     popupAddressArchive = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    popupAddressUnArchive = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self showKeyboard];
@@ -183,12 +180,6 @@ UIAlertController *popupAddressArchive;
         [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
     }];
     
-    UIAlertAction *unArchiveAction = [UIAlertAction actionWithTitle:BC_STRING_UNARCHIVE_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self hideKeyboard];
-        [self archiveAddressClicked:nil];
-        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
-    }];
-    
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self showKeyboard];
         [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
@@ -198,11 +189,6 @@ UIAlertController *popupAddressArchive;
     [popupAddressArchive addAction:labelAction];
     [popupAddressArchive addAction:archiveAction];
     [popupAddressArchive addAction:cancelAction];
-    
-    [popupAddressUnArchive addAction:copyAction];
-    [popupAddressUnArchive addAction:labelAction];
-    [popupAddressUnArchive addAction:unArchiveAction];
-    [popupAddressUnArchive addAction:cancelAction];
 }
 
 - (void)reload
@@ -221,7 +207,6 @@ UIAlertController *popupAddressArchive;
 - (void)reloadAddresses
 {
     self.activeKeys = [app.wallet activeLegacyAddresses];
-    self.archivedKeys = [app.wallet archivedLegacyAddresses];
 }
 
 - (void)reloadLocalAndBtcSymbolsFromLatestResponse
@@ -303,8 +288,6 @@ UIAlertController *popupAddressArchive;
     
     if ([indexPath section] == 1)
         addr = [activeKeys objectAtIndex:[indexPath row]];
-    else if ([indexPath section] == 2)
-        addr = [archivedKeys objectAtIndex:[indexPath row]];
     
     return addr;
 }
@@ -355,8 +338,6 @@ UIAlertController *popupAddressArchive;
     
     if ([indexPath section] == 0)
         key = [activeKeys objectAtIndex:[indexPath row]];
-    else
-        key = [archivedKeys objectAtIndex:[indexPath row]];
     
     return key;
 }
@@ -447,14 +428,9 @@ UIAlertController *popupAddressArchive;
         [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodePaymentImageView];
     }
     else {
-        if ([archivedKeys containsObject:self.clickedAddress]) {
-            [self.view.window.rootViewController presentViewController:popupAddressUnArchive animated:YES completion:nil];
-            [[NSNotificationCenter defaultCenter] addObserver:popupAddressUnArchive selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-        }
-        else {
-            [self.view.window.rootViewController presentViewController:popupAddressArchive animated:YES completion:nil];
-            [[NSNotificationCenter defaultCenter] addObserver:popupAddressArchive selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-        }
+        [self.view.window.rootViewController presentViewController:popupAddressArchive animated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:popupAddressArchive selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+        
         [self disableTapInteraction];
         [self hideKeyboard];
     }
@@ -895,19 +871,13 @@ UIAlertController *popupAddressArchive;
 {
     if (section == 0)
         return [app.wallet getActiveAccountsCount];
-    else if (section == 1)
-        return [activeKeys count];
     else
-        return [archivedKeys count];
+        return [activeKeys count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    int n = 2;
-    
-    if ([archivedKeys count]) ++n;
-    
-    return n;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -46,7 +46,6 @@
 }
 
 @property(nonatomic, strong) NSArray *activeKeys;
-@property(nonatomic, strong) NSArray *archivedKeys;
 @property(nonatomic, strong) UITapGestureRecognizer *tapGesture;
 
 @property(nonatomic, strong) NSString *clickedAddress;
