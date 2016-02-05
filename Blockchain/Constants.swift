@@ -20,6 +20,10 @@ struct Constants {
     struct Measurements {
         static let DefaultHeaderHeight : CGFloat = 65
         static let BackupButtonCornerRadius : CGFloat = 16
+        static let BusyViewLabelWidth : CGFloat = 230
+        static let BusyViewLabelHeight : CGFloat = 30
+        static let BusyViewLabelAlpha : CGFloat = 0.75
+        static let BusyViewLabelFontSystemSize : CGFloat = 14.0
     }
     struct Defaults {
         static let NumberOfRecoveryPhraseWords = 12

@@ -79,6 +79,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 // BCHDUpgradeView/BCWelcomeView
 #define BUTTON_HEIGHT 40
 
+#define BUSY_VIEW_LABEL_HEIGHT 30
+#define BUSY_VIEW_LABEL_WIDTH 230
+#define BUSY_VIEW_LABEL_ALPHA 0.75
+#define BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE 14.0
+
 #pragma mark - Strings
 
 #define FONT_HELVETICA_NUEUE @"Helvetica Neue"
@@ -152,7 +157,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/api/merchant"
 
 #define HTML_CONNECT_SRC_PLACEHOLDER @"PLACEHOLDER_CONNECT_SRC"
-#define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info"
+#define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info https://api.blockchain.info"
 
 #define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
 #define ZEROBLOCK_TITLE @"ZeroBlock"

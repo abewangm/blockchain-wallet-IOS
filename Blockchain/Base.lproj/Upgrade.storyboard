@@ -66,12 +66,12 @@
                                     <constraint firstAttribute="width" constant="240" id="scu-Xe-9bf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Learn More">
+                                <state key="normal" title="Upgrade">
                                     <color key="titleColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="learnMoreTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="CQI-Hw-pau"/>
+                                    <action selector="upgradeTapped:" destination="5EP-fa-fRb" eventType="touchUpInside" id="xMw-dz-eHL"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="228" translatesAutoresizingMaskIntoConstraints="NO" id="g2G-dE-WKh">
@@ -150,7 +150,7 @@
                                     <constraint firstAttribute="height" constant="85" id="zgF-dk-54U"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Welcome to the new version of the Blockchain Wallet!">
+                                    <fragment content="Confirm Upgrade">
                                         <attributes>
                                             <color key="NSColor" red="0.098039215690000001" green="0.45882352939999999" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>

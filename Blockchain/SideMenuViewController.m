@@ -350,7 +350,7 @@ int accountEntries = 0;
         }
         NSString *upgradeOrSecurityCenterTitle;
         if (!app.wallet.didUpgradeToHd) {
-            upgradeOrSecurityCenterTitle = BC_STRING_UPGRADE_TO_V3;
+            upgradeOrSecurityCenterTitle = BC_STRING_UPGRADE;
         }
         else {
             upgradeOrSecurityCenterTitle = BC_STRING_SECURITY_CENTER;

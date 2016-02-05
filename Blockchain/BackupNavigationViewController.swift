@@ -65,8 +65,11 @@ import UIKit
         busyView!.addSubview(textWithSpinnerView);
         textWithSpinnerView.center = busyView!.center;
         
-        let busyLabel = UILabel(frame:CGRectMake(0, 0, 100, 30))
+        let busyLabel = UILabel(frame:CGRectMake(0, 0, Constants.Measurements.BusyViewLabelWidth, Constants.Measurements.BusyViewLabelHeight))
+        busyLabel.font = UIFont.systemFontOfSize(Constants.Measurements.BusyViewLabelFontSystemSize);
+        busyLabel.alpha = Constants.Measurements.BusyViewLabelAlpha;
         busyLabel.adjustsFontSizeToFitWidth = true;
+        busyLabel.textAlignment = .Center
         busyLabel.text = NSLocalizedString("Syncing Wallet", comment: "");
         busyLabel.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 + 15);
         textWithSpinnerView.addSubview(busyLabel);
