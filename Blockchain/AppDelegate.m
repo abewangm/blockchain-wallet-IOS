@@ -646,9 +646,10 @@ void (^secondPasswordSuccess)(NSString *);
     
     [_window.rootViewController dismissViewControllerAnimated:NO completion:nil];
     
-    self.topViewControllerDelegate = nil;
     // Close all modals
     [app closeAllModals];
+    
+    self.topViewControllerDelegate = nil;
     
     // Close screens that shouldn't be in the foreground when returning to the wallet
     if (_backupNavigationViewController) {
@@ -913,7 +914,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)closeAllModals
 {
-    [app.wallet loading_stop];
+    [self hideBusyView];
     
     secondPasswordSuccess = nil;
     
