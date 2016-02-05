@@ -362,7 +362,7 @@ int accountEntries = 0;
         }
         NSMutableArray *images;
 
-        images = [NSMutableArray arrayWithArray:@[@"addresses_icon", upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[@"icon_wallet", upgradeOrSecurityCenterImage, @"settings_icon", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
         
         cell.textLabel.text = titles[indexPath.row];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
