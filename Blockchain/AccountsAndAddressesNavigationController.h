@@ -22,6 +22,7 @@
 @property (nonatomic) BCFadeView *busyView;
 @property (nonatomic) UILabel *busyLabel;
 
+- (void)didGenerateNewAddress;
 - (void)reload;
 
 @end

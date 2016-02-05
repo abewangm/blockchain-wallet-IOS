@@ -292,13 +292,6 @@ int accountEntries = 0;
         icon.frame = CGRectMake(18, 13, 20, 18);
         [view addSubview:icon];
         
-#ifndef DISABLE_EDITING_ACCOUNTS
-        UIButton *addAccountButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
-        [addAccountButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
-        [addAccountButton addTarget:self action:@selector(addAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:addAccountButton];
-#endif
-        
         UILabel *amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 24, self.tableView.frame.size.width - 100, 30)];
         amountLabel.text = [app formatMoney:totalBalance localCurrency:app->symbolLocal];;
         amountLabel.textColor = [UIColor whiteColor];
@@ -410,13 +403,7 @@ int accountEntries = 0;
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            if (indexPath.section == 0 && indexPath.row >= accountEntries) {
-                UIButton *importPrivateKeyButton = [[UIButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - sideMenu.anchorLeftPeekAmount + 2, 2, 40, 40)];
-                [importPrivateKeyButton setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
-                [importPrivateKeyButton addTarget:self action:@selector(importPrivateKeyClicked:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.contentView addSubview:importPrivateKeyButton];
-                cell.editButton.hidden = YES;
-            }
+            cell.editButton.hidden = YES;
         }
         // Account balances
         if (indexPath.row < accountEntries) {
@@ -464,28 +451,6 @@ int accountEntries = 0;
             }
         }
     }
-}
-
-# pragma mark - Button actions
-
-- (IBAction)addAccountClicked:(id)sender
-{
-    BCCreateAccountView *createAccountView = [[BCCreateAccountView alloc] init];
-    
-    [app showModalWithContent:createAccountView closeType:ModalCloseTypeClose headerText:BC_STRING_CREATE onDismiss:^{
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
-    } onResume:^{
-        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
-    }];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [createAccountView.labelTextField becomeFirstResponder];
-    });
-}
-
-- (IBAction)importPrivateKeyClicked:(id)sender
-{
-    [app initializeScannerInReceiveViewController];
 }
 
 @end

@@ -97,7 +97,57 @@
 
 - (void)newAddressClicked:(id)sender
 {
-    [self scanPrivateKey];
+    if ([app.wallet didUpgradeToHd]) {
+        [self scanPrivateKey];
+    } else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_ADDRESS message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *generateNewAddressAction = [UIAlertAction actionWithTitle:BC_STRING_NEW_ADDRESS_GENERATE_NEW style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self generateNewAddress];
+        }];
+        UIAlertAction *scanPrivateKeyAction = [UIAlertAction actionWithTitle:BC_STRING_SCAN_PRIVATE_KEY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self scanPrivateKey];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [alertController addAction:generateNewAddressAction];
+        [alertController addAction:scanPrivateKeyAction];
+        [alertController addAction:cancelAction];
+        
+        [self presentViewController:alertController animated:YES completion:^{
+            [[NSNotificationCenter defaultCenter] addObserver:alertController
+                                                     selector:@selector(autoDismiss)
+                                                         name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS
+                                                       object:nil];
+        }];
+    }
+}
+
+- (void)generateNewAddress
+{
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
+    [app.wallet generateNewKey];
+}
+
+- (void)didGenerateNewAddress
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(promptForLabelAfterGenerate)
+                                                 name:NOTIFICATION_KEY_NEW_ADDRESS object:nil];
+}
+
+- (void)promptForLabelAfterGenerate
+{
+    //newest address is the last object in activeKeys
+    self.clickedAddress = [allKeys lastObject];
+    [self didSelectAddress:self.clickedAddress];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_NEW_ADDRESS
+                                                  object:nil];
 }
 
 - (void)scanPrivateKey

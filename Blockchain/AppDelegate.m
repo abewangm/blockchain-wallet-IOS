@@ -275,6 +275,8 @@ void (^secondPasswordSuccess)(NSString *);
     [sideMenuViewController reload];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    // Legacy code for generating new addresses
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_NEW_ADDRESS object:nil userInfo:nil];
 }
 
 - (void)reloadSideMenu
@@ -602,9 +604,6 @@ void (^secondPasswordSuccess)(NSString *);
         // Make sure the the send payment button on send screen is enabled (bug when second password requested and app is backgrounded)
         [_sendViewController enablePaymentButtons];
     }
-    
-    // Cancel Notification for new address on receive coins view controller (bug when second password requested and app is backgrounded)
-    [[NSNotificationCenter defaultCenter] removeObserver:_receiveViewController name:NOTIFICATION_KEY_NEW_ADDRESS object:nil];
     
     // Dismiss receiveCoinsViewController keyboard
     if (_receiveViewController) {
@@ -1171,7 +1170,6 @@ void (^secondPasswordSuccess)(NSString *);
     
     PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
         [app.wallet addKey:privateKeyString toWatchOnlyAddress:address];
-        [app.wallet loading_stop];
     } error:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
@@ -1335,7 +1333,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didGenerateNewAddress
 {
-    [app.receiveViewController didGenerateNewAddress];
+    [app.accountsAndAddressesNavigationController didGenerateNewAddress];
 }
 
 #pragma mark - Show Screens
@@ -1918,14 +1916,6 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)disabledTouchID
 {
     [self removePinFromKeychain];
-}
-
-- (void)initializeScannerInReceiveViewController
-{
-    if (!_receiveViewController) {
-        _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
-    }
-    [_receiveViewController scanPrivateKey];
 }
 
 - (void)verifyTwoFactorSMS
@@ -2645,7 +2635,12 @@ void (^secondPasswordSuccess)(NSString *);
                 [[UIApplication sharedApplication] openURL:settingsURL];
             }]];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-            [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+            
+            if (self.topViewControllerDelegate) {
+                [self.topViewControllerDelegate presentViewController:alert animated:YES completion:nil];
+            } else {
+                [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+            }
         }
     }
     return input;

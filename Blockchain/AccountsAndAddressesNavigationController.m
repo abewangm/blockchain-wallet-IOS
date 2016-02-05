@@ -155,4 +155,12 @@
     }
 }
 
+- (void)didGenerateNewAddress
+{
+    if ([self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
+        AccountsAndAddressesViewController *accountsAndAddressesViewController = (AccountsAndAddressesViewController *)self.visibleViewController;
+        [accountsAndAddressesViewController didGenerateNewAddress];
+    }
+}
+
 @end

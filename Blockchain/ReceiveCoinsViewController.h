@@ -58,10 +58,6 @@
 - (IBAction)copyAddressClicked:(id)sender;
 - (IBAction)labelSaveClicked:(id)sender;
 
-- (void)scanPrivateKey;
-
-- (void)didGenerateNewAddress;
-
 - (void)reload;
 
 - (void)hideKeyboard;

@@ -203,7 +203,6 @@
 
 - (AVCaptureDeviceInput *)getCaptureDeviceInput;
 
-- (void)initializeScannerInReceiveViewController;
 - (void)scanPrivateKeyForWatchOnlyAddress:(NSString *)address;
 
 - (void)verifyTwoFactorSMS;

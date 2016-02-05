@@ -215,9 +215,6 @@ UIAlertController *popupAddressArchive;
     
     [self reloadHeaderView];
     
-    // Legacy code for generating new addresses
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_NEW_ADDRESS object:nil userInfo:nil];
-    
     [tableView reloadData];
 }
 
@@ -496,31 +493,6 @@ UIAlertController *popupAddressArchive;
     };
 }
 
-- (IBAction)addNewAddressClicked:(id)sender
-{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_ADDRESS message:nil preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *generateNewAddressAction = [UIAlertAction actionWithTitle:BC_STRING_NEW_ADDRESS_GENERATE_NEW style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self generateNewAddress];
-    }];
-    UIAlertAction *scanPrivateKeyAction = [UIAlertAction actionWithTitle:BC_STRING_SCAN_PRIVATE_KEY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self scanPrivateKey];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    
-    [alertController addAction:generateNewAddressAction];
-    [alertController addAction:scanPrivateKeyAction];
-    [alertController addAction:cancelAction];
-    
-    [self.view.window.rootViewController presentViewController:alertController animated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] addObserver:alertController
-                                                 selector:@selector(autoDismiss)
-                                                     name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS
-                                                   object:nil];
-    }];
-}
-
 - (IBAction)labelSaveClicked:(id)sender
 {
     NSString *label = [labelTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -710,65 +682,6 @@ UIAlertController *popupAddressArchive;
         }
 
     }];
-}
-
-- (void)generateNewAddress
-{
-    if (![app checkInternetConnection]) {
-        return;
-    }
-    
-    [app.wallet generateNewKey];
-}
-
-- (void)didGenerateNewAddress
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(promptForLabelAfterGenerate)
-                                                 name:NOTIFICATION_KEY_NEW_ADDRESS object:nil];
-}
-
-- (void)promptForLabelAfterGenerate
-{
-    //newest address is the last object in activeKeys
-    self.clickedAddress = [activeKeys lastObject];
-    [self labelAddressClicked:nil];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_NEW_ADDRESS
-                                                  object:nil];
-}
-
-- (void)promptForLabelAfterScan
-{
-    //newest address is the last object in activeKeys
-    self.clickedAddress = [activeKeys lastObject];
-    [self labelAddressClicked:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS
-                                                  object:nil];
-}
-
-- (void)scanPrivateKey
-{
-    if (![app checkInternetConnection]) {
-        return;
-    }
-    
-    if (![app getCaptureDeviceInput]) {
-        return;
-    }
-    
-    PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(promptForLabelAfterScan)
-                                                     name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
-        [app.wallet addKey:privateKeyString];
-        [app.wallet loading_stop];
-    } error:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    
-    [app.slidingViewController presentViewController:reader animated:YES completion:nil];
 }
 
 # pragma mark - UITextField delegates
@@ -967,12 +880,6 @@ UIAlertController *popupAddressArchive;
         labelString = nil;
     else if (section == 1) {
         labelString = BC_STRING_IMPORTED_ADDRESSES;
-        if (![app.wallet didUpgradeToHd]) {
-            UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
-            [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
-            [addButton addTarget:self action:@selector(addNewAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
-            [view addSubview:addButton];
-        }
     }
     else if (section == 2)
         labelString = BC_STRING_IMPORTED_ADDRESSES_ARCHIVED;
