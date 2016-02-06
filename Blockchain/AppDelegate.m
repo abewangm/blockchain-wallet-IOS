@@ -1238,10 +1238,54 @@ void (^secondPasswordSuccess)(NSString *);
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil queue:nil usingBlock:^(NSNotification *note) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY, address] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY_ARGUMENT, address] preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+    }];
+}
+
+- (void)didImportIncorrectPrivateKey:(NSString *)address
+{
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
+
+        if (self.topViewControllerDelegate) {
+            if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+                [self.topViewControllerDelegate presentAlertController:alert];
+            }
+        } else {
+            [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+    }];
+}
+
+- (void)didImportPrivateKeyToLegacyAddress
+{
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_IMPORTED_PRIVATE_KEY_SUCCESS preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        
+        if (self.topViewControllerDelegate) {
+            if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+                [self.topViewControllerDelegate presentAlertController:alert];
+            }
+        } else {
+            [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
+        
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     }];
 }
@@ -1277,22 +1321,15 @@ void (^secondPasswordSuccess)(NSString *);
         error = BC_STRING_ADDRESS_NOT_WATCH_ONLY;
     } else if ([error isEqualToString:@"wrongBipPass"]) {
         error = BC_STRING_WRONG_BIP38_PASSWORD;
-    } else if ([error isEqualToString:@"addressDoesNotMatchWithTheKey"]) {
-        alertTitle = BC_STRING_WARNING;
-        error = BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE;
+    } else if ([error isEqualToString:@"privateKeyOfAnotherNonWatchOnlyAddress"]) {
+        error = BC_STRING_KEY_BELONGS_TO_OTHER_ADDRESS_NOT_WATCH_ONLY;
     }
     
-    UIAlertController *errorAlert;
-    if ([alertTitle isEqualToString:BC_STRING_ERROR]) {
-        errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
-        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    } else {
-        errorAlert = [UIAlertController alertControllerWithTitle:alertTitle message:error preferredStyle:UIAlertControllerStyleAlert];
-        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_TRY_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self scanPrivateKeyForWatchOnlyAddress:self.wallet.lastScannedWatchOnlyAddress];
-        }]];
-    }
+    UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:alertTitle message:error preferredStyle:UIAlertControllerStyleAlert];
+    [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_TRY_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self scanPrivateKeyForWatchOnlyAddress:self.wallet.lastScannedWatchOnlyAddress];
+    }]];
 
     [[NSNotificationCenter defaultCenter] addObserver:errorAlert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
 

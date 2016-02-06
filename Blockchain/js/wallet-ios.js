@@ -1,5 +1,4 @@
 var Buffer = Blockchain.Buffer;
-var CryptoJS = Blockchain.CryptoJS;
 
 var MyWallet = Blockchain.MyWallet;
 var WalletStore = Blockchain.WalletStore;
@@ -704,7 +703,7 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
                             version: raw_code[0],
                             guid: guid,
                             sharedKey: components2[0],
-                            password: CryptoJS.enc.Hex.parse(components2[1]).toString(CryptoJS.enc.Utf8)
+                            password: new Buffer(components2[1], 'hex').toString('utf8')
                             });
                 } else {
                     error('Decryption Error');
@@ -855,10 +854,16 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
 };
 
 MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) {
+    
     var success = function(address) {
-        console.log('Add private key success');
+        console.log('Add private key success:');
+        console.log(address.address);
         
-        device.execute('on_add_private_key:', [address.address]);
+        if (address.address != legacyAddress) {
+            device.execute('on_add_incorrect_private_key:', [legacyAddress]);
+        } else {
+            device.execute('on_add_private_key_to_legacy_address', [legacyAddress]);
+        }
     };
     var error = function(message) {
         console.log('Add private key Error: ' + message);

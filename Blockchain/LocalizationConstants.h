@@ -83,7 +83,6 @@
 
 #define BC_STRING_INFORMATION NSLocalizedString(@"Information", nil)
 #define BC_STRING_IMPORT_PRIVATE_KEY NSLocalizedString(@"Import Private Key", nil)
-#define BC_STRING_IMPORTED_PRIVATE_KEY NSLocalizedString(@"Imported Private Key %@", nil)
 #define BC_STRING_DECRYPTING_PRIVATE_KEY NSLocalizedString(@"Decrypting Private Key", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY NSLocalizedString(@"Extended Public Key", nil)
 
@@ -433,8 +432,11 @@
 #define BC_STRING_SET_DEFAULT_ACCOUNT NSLocalizedString(@"Set as Default Account?", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE NSLocalizedString(@"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin.", nil)
 #define BC_STRING_COPY_XPUB NSLocalizedString(@"Copy xPub", nil)
-#define BC_STRING_SCAN_INCORRECT_WATCH_ONLY_ADDRESS_MESSAGE NSLocalizedString(@"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key.", nil)
 #define BC_STRING_ADDRESS_NOT_PRESENT_IN_WALLET NSLocalizedString(@"Your wallet does not contain this address.", nil)
 #define BC_STRING_ADDRESS_NOT_WATCH_ONLY NSLocalizedString(@"This address is not watch-only.", nil)
-#define BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE NSLocalizedString(@"This private key does not correspond to this watch-only address. If you want to spend from this address, make sure you scan the correct private key.", nil)
+#define BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE NSLocalizedString(@"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key.", nil)
 #define BC_STRING_WRONG_BIP38_PASSWORD NSLocalizedString(@"Wrong BIP38 Password", nil)
+#define BC_STRING_KEY_BELONGS_TO_OTHER_ADDRESS_NOT_WATCH_ONLY NSLocalizedString(@"This private key belongs to another address that is not watch only", nil)
+#define BC_STRING_IMPORTED_PRIVATE_KEY_ARGUMENT NSLocalizedString(@"Imported Private Key %@", nil)
+#define BC_STRING_IMPORTED_PRIVATE_KEY_SUCCESS NSLocalizedString(@"You can now spend from this address.", nil)
+#define BC_STRING_IMPORTED_PRIVATE_KEY_TO_OTHER_ADDRESS_ARGUMENT NSLocalizedString(@"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key.", nil)

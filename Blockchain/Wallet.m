@@ -1319,6 +1319,26 @@
     }
 }
 
+- (void)on_add_incorrect_private_key:(NSString *)address
+{
+    DLog(@"on_add_incorrect_private_key:");
+    self.isSyncing = YES;
+    
+    if ([delegate respondsToSelector:@selector(didImportIncorrectPrivateKey:)]) {
+        [delegate didImportIncorrectPrivateKey:address];
+    }
+}
+
+- (void)on_add_private_key_to_legacy_address
+{
+    DLog(@"on_add_private_key_to_legacy_address:");
+    self.isSyncing = YES;
+    
+    if ([delegate respondsToSelector:@selector(didImportPrivateKeyToLegacyAddress)]) {
+        [delegate didImportPrivateKeyToLegacyAddress];
+    }
+}
+
 - (void)on_error_adding_private_key:(NSString*)error
 {
     if ([delegate respondsToSelector:@selector(didFailToImportPrivateKey:)]) {
