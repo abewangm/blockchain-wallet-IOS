@@ -1315,13 +1315,13 @@ void (^secondPasswordSuccess)(NSString *);
     self.wallet.isSyncing = NO;
     
     NSString *alertTitle = BC_STRING_ERROR;
-    if ([error isEqualToString:@"addressNotPresentInWallet"]) {
+    if ([error isEqualToString:ERROR_NOT_PRESENT_IN_WALLET]) {
         error = BC_STRING_ADDRESS_NOT_PRESENT_IN_WALLET;
-    } else if ([error isEqualToString:@"addressNotWatchOnly"]) {
+    } else if ([error isEqualToString:ERROR_ADDRESS_NOT_WATCH_ONLY]) {
         error = BC_STRING_ADDRESS_NOT_WATCH_ONLY;
-    } else if ([error isEqualToString:@"wrongBipPass"]) {
+    } else if ([error isEqualToString:ERROR_WRONG_BIP_PASSWORD]) {
         error = BC_STRING_WRONG_BIP38_PASSWORD;
-    } else if ([error isEqualToString:@"privateKeyOfAnotherNonWatchOnlyAddress"]) {
+    } else if ([error isEqualToString:ERROR_PRIVATE_KEY_OF_ANOTHER_WATCH_ONLY_ADDRESS]) {
         error = BC_STRING_KEY_BELONGS_TO_OTHER_ADDRESS_NOT_WATCH_ONLY;
     }
     
