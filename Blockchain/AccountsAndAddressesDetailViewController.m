@@ -373,7 +373,8 @@ typedef enum {
                     if (self.address) {
                         if ([app.wallet isWatchOnlyLegacyAddress:self.address]) {
                             cell.textLabel.text = BC_STRING_SCAN_PRIVATE_KEY;
-                            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                            cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
+                            cell.accessoryType = UITableViewCellAccessoryNone;
                         } else {
                             if ([self isArchived]) {
                                 cell.textLabel.text = BC_STRING_UNARCHIVE;
