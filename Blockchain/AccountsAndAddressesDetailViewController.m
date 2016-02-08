@@ -171,6 +171,7 @@ typedef enum {
             [self setupModalView:editAddressView inViewController:segue.destinationViewController];
             
             [editAddressView.labelTextField becomeFirstResponder];
+            [self updateHeaderText:BC_STRING_LABEL_ADDRESS];
             
         } else if (detailType == DetailTypeEditAccountLabel) {
             
@@ -181,6 +182,7 @@ typedef enum {
             [self setupModalView:editAccountView inViewController:segue.destinationViewController];
             
             [editAccountView.labelTextField becomeFirstResponder];
+            [self updateHeaderText:BC_STRING_NAME];
             
         } else if (detailType == DetailTypeShowExtendedPublicKey) {
             
