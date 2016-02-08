@@ -35,8 +35,6 @@ NSString *mainLabel;
 NSString *detailAddress;
 NSString *detailLabel;
 
-UIAlertController *popupAddressArchive;
-
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad
@@ -96,9 +94,7 @@ UIAlertController *popupAddressArchive;
     fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     
     [self setupTapGestureForLegacyLabel];
-    
-    [self setupArchiveActionSheets];
-    
+        
     [self reload];
 }
 
@@ -156,39 +152,6 @@ UIAlertController *popupAddressArchive;
     UITapGestureRecognizer *tapDetailQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreActionsClicked:)];
     [qrCodePaymentImageView addGestureRecognizer:tapDetailQRGestureRecognizer];
     qrCodePaymentImageView.userInteractionEnabled = YES;
-}
-
-- (void)setupArchiveActionSheets
-{
-    popupAddressArchive = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self showKeyboard];
-        [self copyAddressClicked:nil];
-        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
-    }];
-    
-    UIAlertAction *labelAction = [UIAlertAction actionWithTitle:BC_STRING_LABEL_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self hideKeyboard];
-        [self labelAddressClicked:nil];
-        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
-    }];
-    
-    UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:BC_STRING_ARCHIVE_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self hideKeyboard];
-        [self archiveAddressClicked:nil];
-        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
-    }];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [self showKeyboard];
-        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
-    }];
-    
-    [popupAddressArchive addAction:copyAction];
-    [popupAddressArchive addAction:labelAction];
-    [popupAddressArchive addAction:archiveAction];
-    [popupAddressArchive addAction:cancelAction];
 }
 
 - (void)reload
@@ -423,17 +386,8 @@ UIAlertController *popupAddressArchive;
 
 - (IBAction)moreActionsClicked:(id)sender
 {
-    if (didClickAccount) {
-        [UIPasteboard generalPasteboard].string = detailAddress;
-        [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodePaymentImageView];
-    }
-    else {
-        [self.view.window.rootViewController presentViewController:popupAddressArchive animated:YES completion:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:popupAddressArchive selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-        
-        [self disableTapInteraction];
-        [self hideKeyboard];
-    }
+    [UIPasteboard generalPasteboard].string = detailAddress;
+    [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodePaymentImageView];
 }
 
 - (IBAction)shareClicked:(id)sender
