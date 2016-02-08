@@ -262,15 +262,27 @@ MyWalletPhone.getReceivingAddressForAccount = function(num) {
 
 MyWalletPhone.isArchived = function(accountOrAddress) {
     if (Helpers.isNumber(accountOrAddress) && accountOrAddress >= 0) {
+        
         if (MyWallet.wallet.isUpgradedToHD) {
+            if (MyWallet.wallet.hdwallet.accounts[accountOrAddress] == null) {
+                device.execute('return_to_addresses_screen');
+                return false;
+            }
             return MyWallet.wallet.hdwallet.accounts[accountOrAddress].archived;
         } else {
             console.log('Warning: Getting accounts when wallet has not upgraded!');
             return false;
         }
     } else if (accountOrAddress) {
+        
+        if (MyWallet.wallet.key(accountOrAddress) == null) {
+            device.execute('return_to_addresses_screen');
+            return false;
+        }
+        
         return MyWallet.wallet.key(accountOrAddress).archived;
     }
+
     return false;
 }
 

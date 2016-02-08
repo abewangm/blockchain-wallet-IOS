@@ -76,6 +76,7 @@
 - (void)resendTwoFactorSuccess;
 - (void)resendTwoFactorError:(NSString *)error;
 - (void)didFailToImportPrivateKeyForWatchOnlyAddress:(NSString *)error;
+- (void)returnToAddressesScreen;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {

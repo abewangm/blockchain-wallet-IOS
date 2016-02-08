@@ -1374,6 +1374,13 @@ void (^secondPasswordSuccess)(NSString *);
     [app.accountsAndAddressesNavigationController didGenerateNewAddress];
 }
 
+- (void)returnToAddressesScreen
+{
+    if (self.accountsAndAddressesNavigationController) {
+        [self.accountsAndAddressesNavigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses

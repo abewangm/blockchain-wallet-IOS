@@ -1718,6 +1718,14 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR object:nil];
 }
 
+- (void)return_to_addresses_screen
+{
+    DLog(@"return_to_addresses_screen");
+    if ([self.delegate respondsToSelector:@selector(returnToAddressesScreen)]) {
+        [self.delegate returnToAddressesScreen];
+    }
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)upgradeToHDWallet
