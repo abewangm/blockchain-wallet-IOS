@@ -850,7 +850,6 @@
 • Simplified backup and recovery
 • Customized fund management
 
-<<<<<<< HEAD
 Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升级仅需片刻时间，您的比特币和历史记录将是安全的。下面是改进功能:
 
 • 完全颠覆性的设计和用户体验
@@ -860,9 +859,6 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 • 自定义资金管理
 
 新版本暂不支持两种高级交易类型 (从仅监视地址支付以及使用共享比特币支付)。";
-=======
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升级只需一秒只是和你的比特币和历史将会安全。这里是更好的是: \n\n• 完全更新设计和用户体验 \n• 鲁棒安全中心\n• 增强隐私 \n• 简化备份和恢复 \n• 定制基金管理\n\n两种先进的交易类型 (开支从只手表地址和共享的硬币) 在这次的新版本中不支持。";
->>>>>>> 6124be1... add line breaks
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "验证您的身份时出现问题。";
