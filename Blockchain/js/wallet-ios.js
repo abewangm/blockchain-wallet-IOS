@@ -9,6 +9,7 @@ var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 var Helpers = Blockchain.Helpers;
 var Payment = Blockchain.Payment;
 var WalletNetwork = Blockchain.WalletNetwork;
+var RNG = Blockchain.RNG;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1326,6 +1327,11 @@ MyWalletPhone.updateWebsocketURL = function(url) {
     } else {
         MyWallet.ws.wsUrl = url;
     }
+}
+
+MyWalletPhone.updateAPIURL = function(url) {
+    var randomBytesPath = '/v2/randombytes'
+    RNG.URL = url.concat(randomBytesPath);
 }
 
 MyWalletPhone.getXpubForAccount = function(accountIndex) {

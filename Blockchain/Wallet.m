@@ -103,6 +103,7 @@
     [connectSrcString appendString:[NSString stringWithFormat:@" %@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL]]];
     [connectSrcString appendString:[NSString stringWithFormat:@" %@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL]]];
     [connectSrcString appendString:[NSString stringWithFormat:@" %@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL]]];
+    [connectSrcString appendString:[NSString stringWithFormat:@" %@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL]]];
 #endif
     
     walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_CONNECT_SRC_PLACEHOLDER withString:connectSrcString];
@@ -844,6 +845,11 @@
 - (void)updateWebSocketURL:(NSString *)newURL
 {
     [self.webView executeJS:@"MyWalletPhone.updateWebsocketURL(\"%@\")", [newURL escapeStringForJS]];
+}
+
+- (void)updateAPIURL:(NSString *)newURL
+{
+    [self.webView executeJS:@"MyWalletPhone.updateAPIURL(\"%@\")", [newURL escapeStringForJS]];
 }
 
 - (NSDictionary *)filteredWalletJSON
@@ -2128,6 +2134,11 @@
     NSString *webSocketURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
     if (webSocketURL) {
         [self updateWebSocketURL:webSocketURL];
+    }
+    
+    NSString *apiURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
+    if (apiURL) {
+        [self updateAPIURL:apiURL];
     }
 }
 

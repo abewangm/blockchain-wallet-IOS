@@ -212,6 +212,7 @@
 - (NSString *)serverURL;
 - (NSString *)webSocketURL;
 - (NSString *)merchantURL;
+- (NSString *)apiURL;
 
 @end
 

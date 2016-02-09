@@ -14,6 +14,7 @@ const int rowWalletJSON = 0;
 const int rowServerURL = 1;
 const int rowWebsocketURL = 2;
 const int rowMerchantURL = 3;
+const int rowAPIURL = 4;
 
 @interface DebugTableViewController ()
 @property (nonatomic) NSDictionary *filteredWalletJSON;
@@ -88,39 +89,40 @@ const int rowMerchantURL = 3;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-    
+    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+
     switch (indexPath.row) {
         case rowWalletJSON: {
             cell.textLabel.text = BC_STRING_WALLET_JSON;
             cell.detailTextLabel.text = self.filteredWalletJSON == nil ? BC_STRING_PLEASE_LOGIN : nil;
             cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
             cell.accessoryType = self.filteredWalletJSON == nil ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
         case rowServerURL: {
             cell.textLabel.text = BC_STRING_SERVER_URL;
             cell.detailTextLabel.text =  [app serverURL];
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
         case rowWebsocketURL: {
             cell.textLabel.text = BC_STRING_WEBSOCKET_URL;
             cell.detailTextLabel.text = [app webSocketURL];
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
         }
         case rowMerchantURL: {
             cell.textLabel.text = BC_STRING_MERCHANT_URL;
             cell.detailTextLabel.text = [app merchantURL];
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             break;
+        }
+        case rowAPIURL: {
+            cell.textLabel.text = BC_STRING_API_URL;
+            cell.detailTextLabel.text = [app apiURL];
         }
         default:
             break;
@@ -148,6 +150,8 @@ const int rowMerchantURL = 3;
         case rowMerchantURL:
             [self alertToChangeURLName:BC_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:[app merchantURL]];
             break;
+        case rowAPIURL:
+            [self alertToChangeURLName:BC_STRING_API_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_API_URL currentURL:[app apiURL]];
         default:
             break;
     }

@@ -94,7 +94,7 @@ NSString *detailLabel;
     fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     
     [self setupTapGestureForLegacyLabel];
-        
+    
     [self reload];
 }
 
