@@ -65,10 +65,16 @@
 "Add to Address book?" = "Adres Defterine Ekle?";
 
 /* (No Commment) */
+"Address" = "Adres";
+
+/* (No Commment) */
 "Address book" = "Adres defteri";
 
 /* (No Commment) */
 "Address is not valid" = "Adres geçerli değil";
+
+/* (No Commment) */
+"Addresses" = "Adresleri";
 
 /* (No Commment) */
 "Adjust Fee" = "Ücret ayarlamak";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Arşiv adresi";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Artık kullanmak istemiyorsanız bu arşiv. Paranız güvende olacak ve herhangi bir zamanda unarchive.";
+
+/* (No Commment) */
+"Archived" = "Arşivlenmiş";
 
 /* (No Commment) */
 "Ask Me Later" = "Sormak beni sonradan";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Panoya kopyala";
 
 /* (No Commment) */
+"Copy xPub" = "Kopya xPub";
+
+/* (No Commment) */
 "Create" = "Oluşturmak";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "M-cüzdan şifresini çözme";
+
+/* (No Commment) */
+"Default" = "Varsayılan";
 
 /* (No Commment) */
 "Disable" = "Devre dışı bırakma";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Depolamak için gereken her şeyi harcamak ve senin bitcoin almak";
+
+/* (No Commment) */
+"Extended Public Key" = "Ortak anahtar genişletilmiş";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "M-cüzdan yüklenemedi";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Oturum kapatma";
+
+/* (No Commment) */
+"Make Default" = "Yapmak varsayılan";
 
 /* (No Commment) */
 "Manual Pairing" = "El ile eşleştirme";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Watch tek adresi tarama?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Bu kod inceden inceye gözden geçirmek veya güvenli bir şekilde Bitcoin almak için Blockchain tüccar app kopyalayabilirsiniz.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "İkinci parola yanlış";
 
@@ -797,7 +824,17 @@
 "Server URL" = "Sunucu URL'si";
 
 /* (No Commment) */
+"Set as Default Account?" = "Varsayılan hesap olarak ata?";
+
+/* (No Commment) */
 "Settings" = "Ayarlar";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Senin xPub bir tüccar ve Blockchain tüccar uygulamalarınızı güvenli bir şekilde ve özel olarak para almak gösterir.
+
+Senin xPub gizli tut. Senin xPub erişimi olan tüm fonları ve hareketleri görmek mümkün olacak.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Sinyal %d büyüdü.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne: \n\n• tamamen güncelleme tasarımı ve kullanıcı deneyimi \n• güçlü Güvenlik Merkezi \n• Gelişmiş Gizlilik \n• Basitleştirilmiş yedekleme ve kurtarma \n• özelleştirilmiş fon yönetimi. \n\niki gelişmiş hareket tipi (salt izle adresleri ve ortak madeni para harcama) içinde belgili tanımlık yeni yorum şu anda desteklenmiyor.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne: • tamamen güncelleme tasarımı ve kullanıcı deneyimi iki gelişmiş hareket tipi (salt izle adresleri ve ortak madeni para harcama) içinde belgili tanımlık yeni yorum şu anda desteklenmiyor • güçlü Güvenlik Merkezi • Gelişmiş Gizlilik • Basitleştirilmiş yedekleme ve kurtarma • özelleştirilmiş fon yönetimi.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Senin kimliğini doğrulayan bir hata oluştu.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Bu eylem için bitcoin-cüzdanını ikinci parola gerektirir. Lütfen aşağıya girin ve basın devam edin.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Bu adresi sadece izle.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Salt izle adres burası. Bu cüzdan, para harcamak istiyorsanız, özel anahtarınızı inceden inceye gözden geçirmek.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Bu özel anahtarı yalnızca saat değil başka bir adrese ait";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Bu şey arşivlenir. Yani app erişilemiyor ve ondan para gönderemiyor.
+
+Eğer herhangi bir fon var, güvende olacaklar. Bu şeyi tekrar kullanmaya başlamak için bu unarchive.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Bu bu aygıt üzerindeki tüm cüzdan verileri silecek. Lütfen sen-si olmak olmak ulaşılmaz başka bir yerde aksi takdirde herhangi bir bitcoins bu cüzdan vasiyetinde kaydedilen cüzdan bilgilerinizi onaylayın!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Uyarı: Senin hassas bilgileri m-cüzdan tanımlayıcısıdır. Bu kopyalama cüzdanını güvenliğini tehlikeye atabilir.";
 
 /* (No Commment) */
+"Watch Only" = "Sadece seyretmek";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "-Dibi takdirde sen istemek belgili tanımlık sezindirme teyit e-posta adresinize göndereceğiz.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "Welcome" = "Hoş geldiniz";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Blockchain cüzdan yeni sürümüne hoş geldiniz!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Blockchain cüzdan önceki bir yüklemesini telefonunuzda tespit ettik.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Kurtarma metninizi Not ve çok güvenli ve güvenli bir yerde saklayın. Kurtarma metninizi bilen herkes senin bitcoins erişimi olduğunu unutmayın.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Yanlış BIP38 şifre";
 
 /* (No Commment) */
 "Yes" = "Evet";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "2-adım doğrulama SMS ile cep telefonunuza etkinleştirebilirsiniz. Bunun yerine diğer kimlik doğrulama yöntemlerini kullanmak için lütfen bizim web cüzdan için giriş.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Şimdi bu adresten geçirebilirsiniz.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Posta için ayarlanmış bir hesap var mı. %@ ulaşın";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Her zaman çifti veya cüzdan ID ve parola erişiminiz varsa oturum açmanız gerekir. Paranızı kurtarma yeni bir m-cüzdan kodu oluşturun Devam etmek istiyor musunuz?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Yalnızca güvendiğiniz kişilere bu xPub göstermelidir. Bu bilgileri kullanarak, onlar-ebilmek muktedir ödemelerinizin takip edin ve cüzdan için erişim bozabilir.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Bir özel anahtar başarıyla. Not Bu salt izle adresine karşılık gelmez. Bu adresten geçirmek istiyorsan, doğru özel anahtarı inceden inceye gözden geçirmek emin olun.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Adresi %@ için özel anahtar başarıyla ve artık ondan geçirebilirsiniz. Bu adresten geçirmek istiyorsan, doğru özel anahtarı tarama emin olun.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Aygıtınız jailbroken gibi görünüyor. Cüzdanını güvenliğini tehlikeye olabilir.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Doğrulanmış e-posta adresinizi şüpheli veya olağan dışı etkinliği algılandığında, m-cüzdan oturum açma kimliğini hatırlatmak ve fon aldığınızda bitcoin ödeme uyarıları göndermek için giriş kodları göndermek için kullanılır. Biz e-posta adresinizi pazarlama amacıyla kullanmaz.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Cüzdanını bu adres içermiyor.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Cüzdanını başarıyla oluşturuldu.";

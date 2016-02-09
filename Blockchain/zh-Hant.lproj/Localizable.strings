@@ -65,10 +65,16 @@
 "Add to Address book?" = "添加到通訊錄嗎?";
 
 /* (No Commment) */
+"Address" = "位址";
+
+/* (No Commment) */
 "Address book" = "通訊錄";
 
 /* (No Commment) */
 "Address is not valid" = "位址是不正確";
+
+/* (No Commment) */
+"Addresses" = "位址";
 
 /* (No Commment) */
 "Adjust Fee" = "調整費用";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "存檔位址";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "這存檔如果你不想再使用它。您的資金將是安全的和你可以在任何時間 unarchive 它。";
+
+/* (No Commment) */
+"Archived" = "存檔";
 
 /* (No Commment) */
 "Ask Me Later" = "稍後再問我";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "複製到剪貼簿";
 
 /* (No Commment) */
+"Copy xPub" = "複製 xPub";
+
+/* (No Commment) */
 "Create" = "創建";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "解密的錢包";
+
+/* (No Commment) */
+"Default" = "預設";
 
 /* (No Commment) */
 "Disable" = "禁用";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "一切您需要存儲，花和接收您的比特幣";
+
+/* (No Commment) */
+"Extended Public Key" = "擴大公共金鑰";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "未能載入的錢包";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "登出";
+
+/* (No Commment) */
+"Make Default" = "讓預設";
 
 /* (No Commment) */
 "Manual Pairing" = "手動配對";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "掃描表唯一位址嗎?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "掃描此代碼或將其複製到您的 Blockchain 商人應用程式安全地接收比特幣。";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "第二個密碼不正確";
 
@@ -797,7 +824,17 @@
 "Server URL" = "伺服器 URL";
 
 /* (No Commment) */
+"Set as Default Account?" = "設為預設帳戶嗎?";
+
+/* (No Commment) */
 "Settings" = "設置";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "如果你是一個商人，和使用 Blockchain 商人應用程式來接收資金安全和私下表明你 xPub。
+
+保持你的 xPub 私人。有人訪問你的 xPub 將能夠看到所有你的資金和交易。";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "提出了信號 %d。";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: \n\n• 完全更新設計和使用者體驗 \n• 魯棒安全中心\n• 增強隱私 \n• 簡化備份和恢復 \n• 定制基金管理\n\n兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: • 完全更新設計和使用者體驗 • 魯棒安全中心增強隱私 • 簡化備份和恢復 • 定制基金管理兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "還有一個問題，驗證您的身份。";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "此操作需要第二個密碼你比特幣的錢包。請在下面輸入和按繼續。";
+
+/* (No Commment) */
+"This address is not watch-only." = "此位址不是只手錶。";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "這是一隻手錶的位址。如果你想花您從這個錢包內的資金，只是掃描您的私密金鑰。";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "這個私有金鑰屬於另一個位址，不是只的手錶";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "這件事被存檔。這意味著在應用程式中，不能訪問它，你無法從它發送的資金。
+
+如果有任何資金，他們將是安全的。為了重新開始使用這件事，unarchive 它。";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "這將擦除此設備上的所有錢包資料。請確認你有你的錢包中保存資訊在別處否則任何比特幣這錢包將無法訪問!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "警告: 您的錢包識別碼是敏感資訊。複製它可能危害安全的你的錢包。";
 
 /* (No Commment) */
+"Watch Only" = "只看";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "你的要求的情況下，我們就送您的確認電子郵件地址的提示。";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 "Welcome" = "歡迎";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "歡迎到新版本的 Blockchain 的錢包!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "我們已經檢測到以前安裝的 Blockchain 的錢包在你的手機上。";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "寫下你恢復短語並把它放在非常安全和安全。記住誰知道您恢復短語有權訪問您的比特幣。";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "錯誤 BIP38 密碼";
 
 /* (No Commment) */
 "Yes" = "是啊";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "你可以在您的行動電話上啟用 2 步核查通過手機短信。為了改用其他身份驗證方法，請登錄到我們的 web 錢包。";
+
+/* (No Commment) */
+"You can now spend from this address." = "現在，你可以花從這個位址。";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "您沒有設置為郵件帳戶。請聯繫 %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "你應該總是成對或登錄如果您可以訪問您的錢包 ID 和密碼。恢復您的資金將會創建一個新的錢包 id。你想繼續嗎?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "你應該只顯示那些您信任此 xPub。使用此資訊，他們可能能夠跟蹤您的款項，並中斷訪問到你的錢包。";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "您已成功導入私密金鑰。請注意，它並不對應于這只手錶的位址。如果你想花來自此位址，請確保您掃描正確的私密金鑰。";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "您已經成功導入私密金鑰的位址 %@，，你現在可以花從它。如果你想花來自此位址，請確保您掃描正確的私密金鑰。";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "您的設備似乎是越獄。可能會損害你的錢包的安全性。";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "您已驗證電子郵件地址用來發送登錄代碼，當發現可疑或不尋常的活動，提醒你你的錢包的登入識別碼，併發送比特幣付款通知，當您收到資金。我們不會使用您的電子郵件地址用於市場行銷目的。";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "你的錢包不包含此位址。";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "你的錢包已成功創建。";

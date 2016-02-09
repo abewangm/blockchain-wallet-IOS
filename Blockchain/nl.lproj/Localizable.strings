@@ -65,10 +65,16 @@
 "Add to Address book?" = "Toevoegen aan Adresboek?";
 
 /* (No Commment) */
+"Address" = "Adres";
+
+/* (No Commment) */
 "Address book" = "Adresboek";
 
 /* (No Commment) */
 "Address is not valid" = "Adres is niet geldig";
+
+/* (No Commment) */
+"Addresses" = "Adressen";
 
 /* (No Commment) */
 "Adjust Fee" = "Kosten aanpassen";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Archief adres";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Archief dit wilt u niet meer gebruiken. Uw geld zal veilig zijn, en u kunt désarchiver op elk gewenst moment.";
+
+/* (No Commment) */
+"Archived" = "Gearchiveerd";
 
 /* (No Commment) */
 "Ask Me Later" = "Vraag Me Later";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Naar klembord kopiëren";
 
 /* (No Commment) */
+"Copy xPub" = "Kopie xPub";
+
+/* (No Commment) */
 "Create" = "Maken";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Decoderen portemonnee";
+
+/* (No Commment) */
+"Default" = "Standaard";
 
 /* (No Commment) */
 "Disable" = "Uitschakelen";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Alles wat u nodig hebt om op te slaan, geven en ontvangen van uw bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Uitgebreide openbare sleutel";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Fout bij het laden van de portefeuille";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Logout";
+
+/* (No Commment) */
+"Make Default" = "Maak standaard";
 
 /* (No Commment) */
 "Manual Pairing" = "Handmatige koppeling";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Scannen Watch enige adres?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scan deze code of kopieer het naar uw Blockchain Merchant app om Bitcoin veilig te ontvangen.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Tweede wachtwoord onjuist";
 
@@ -797,7 +824,17 @@
 "Server URL" = "URL van server";
 
 /* (No Commment) */
+"Set as Default Account?" = "Instellen als standaard-Account?";
+
+/* (No Commment) */
 "Settings" = "Instellingen";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Toon uw xPub als u een handelaar bent en de Blockchain Merchant app te ontvangen van fondsen veilig en privé.
+
+Privé houden van uw xPub. Iemand met toegang tot uw xPub zal zitten kundig voor zien al uw fondsen en transacties.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signaal %d werd opgevoed.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zullen veilig. Hier is wat is beter: \n\n• volledig bijgewerkt ontwerp en gebruikerservaring \n• robuuste beveiliging center \n• verbeterde Privacy vereenvoudigde back-up en herstel \n• aangepast vermogensbeheer\n\ntwee geavanceerde transactiesoorten (besteding van horloge-alleen adressen en gedeelde munt) worden niet ondersteund in de nieuwe versie op dit moment.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zullen veilig. Hier is wat is beter: • volledig bijgewerkt ontwerp en gebruikerservaring • robuuste beveiliging center • verbeterde Privacy vereenvoudigde back-up en herstel • aangepast vermogensbeheer twee geavanceerde transactiesoorten (besteding van horloge-alleen adressen en gedeelde munt) worden niet ondersteund in de nieuwe versie op dit moment.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Er was een probleem uw identiteit verifiëren.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Deze actie is het tweede wachtwoord vereist voor uw bitcoin portemonnee. Voer het hieronder en druk op blijven.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Dit adres is niet alleen-horloge.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Dit is een alleen-horloge-adres. Als u uitgeven van uw geld uit binnen deze portefeuille wilt, uitsluitend scannen uw persoonlijke sleutel.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Deze persoonlijke sleutel behoort tot een ander adres dat niet alleen horloge";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Dit ding is gearchiveerd. Dat betekent dat het in de app kan niet worden geopend, en u kunt geen fondsen uit het verzenden.
+
+Als er geen middelen, zal ze veilig zijn. Désarchiver het volgende om te beginnen met behulp van dit ding opnieuw.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Dit zal wissen alle portemonnee gegevens op dit apparaat. Gelieve te bevestigen dat u inderdaad uw portemonnee gegevens opgeslagen elders anders elke bitcoins in deze portefeuille zal zitten ontoegankelijk!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Waarschuwing: Uw portemonnee id is gevoelige informatie. Kopiëren kan dit beveiligingsrisico voor uw portemonnee.";
 
 /* (No Commment) */
+"Watch Only" = "Alleen kijken";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "We sturen de hint naar uw bevestigde e-mailadres in het geval u daarom vraagt.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 "Welcome" = "Welkom";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Welkom op de nieuwe versie van de Blockchain-portefeuille!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "We hebben ontdekt een eerdere installatie van Blockchain portemonnee op uw telefoon.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Schrijf uw zin herstel en bewaar het ergens zeer veilig en veilig. Vergeet niet dat iedereen die uw herstel zin weet toegang tot uw bitcoins heeft.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Verkeerde BIP38 wachtwoord";
 
 /* (No Commment) */
 "Yes" = "Ja";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "U kunt 2-step verificatie via SMS op uw mobiele telefoon. Om andere verificatiemethoden te gebruiken, gelieve in te loggen op onze web-portemonnee.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Nu kunt u genieten van dit adres.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "U hoeft niet een account instellen voor Mail. Neem contact op met %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "U moet altijd koppelen of inloggen als u toegang tot uw portefeuille-ID en wachtwoord hebt. Herstellen van uw fondsen zal maken een nieuwe portefeuille-ID. Wilt u doorgaan?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "U moet alleen het weergeven van deze xPub aan die u vertrouwt. Met deze informatie kunnen zij kunnen bijhouden van uw betalingen en toegang tot uw portefeuille te verstoren.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "U hebt met succes een persoonlijke sleutel geïmporteerd. Merk op dat het niet overeenkomt met dit adres alleen-horloge. Als u uitgeven van dit adres wilt, zorg ervoor dat u de juiste persoonlijke sleutel scant.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "U hebt met succes geïmporteerd de persoonlijke sleutel voor het adres %@, en u kunt nu uit het besteden. Als u uitgeven van dit adres wilt, controleert u of dat u scant de juiste persoonlijke sleutel.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Het apparaat lijkt te zijn jailbroken. De beveiliging van uw portefeuille kan worden aangetast.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Uw geverifieerde e-mailadres wordt gebruikt om te sturen logingegevens wanneer verdachte of ongebruikelijke activiteit wordt gedetecteerd, herinneren u aan uw portemonnee aanmeldings-ID, en kunt sturen bitcoin betaling waarschuwingen wanneer u fondsen ontvangen. We zullen niet uw e-mailadres gebruiken voor marketingdoeleinden.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Uw portemonnee bevat geen dit adres.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Uw portemonnee is met succes gemaakt.";

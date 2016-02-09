@@ -65,10 +65,16 @@
 "Add to Address book?" = "Dodaj v adresar?";
 
 /* (No Commment) */
+"Address" = "Naslov";
+
+/* (No Commment) */
 "Address book" = "Adresar";
 
 /* (No Commment) */
 "Address is not valid" = "Naslov ni veljaven";
+
+/* (No Commment) */
+"Addresses" = "Naslovi";
 
 /* (No Commment) */
 "Adjust Fee" = "Prilagodite pristojbina";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Arhiv naslov";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arhiv to, če ne želite več uporabljati. Vaša sredstva bodo varni, in si lahko Dearhiviraj kadarkoli.";
+
+/* (No Commment) */
+"Archived" = "Arhivirani";
 
 /* (No Commment) */
 "Ask Me Later" = "Vprašaj Me pozneje";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Kopiranje v odložišče";
 
 /* (No Commment) */
+"Copy xPub" = "Kopija xPub";
+
+/* (No Commment) */
 "Create" = "Ustvarite";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Dešifriranje denarnice";
+
+/* (No Commment) */
+"Default" = "Privzeto";
 
 /* (No Commment) */
 "Disable" = "Onemogoči";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Vse, kar potrebujete za shranjevanje, preživijo in prejeli vaše bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Razširiti javnega ključa";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Pri nalaganju denarnice";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Logout";
+
+/* (No Commment) */
+"Make Default" = "Bo privzeto";
 
 /* (No Commment) */
 "Manual Pairing" = "Ročno seznanjanje";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Skeniranje Watch samo naslov?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "To kodo ali ulitek to v vaš trgovec Blockchain app varno sprejeti Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Drugo geslo napačna";
 
@@ -797,7 +824,17 @@
 "Server URL" = "Spletni naslov strežnika";
 
 /* (No Commment) */
+"Set as Default Account?" = "Nastavi kot privzeti račun?";
+
+/* (No Commment) */
 "Settings" = "Nastavitve";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Pokaži vaše xPub, če ste trgovec in uporabo Blockchain trgovec app opredmetil varno in zasebno.
+
+Vztrajati vaš xPub zasebno. Nekdo z dostopom do vašega xPub lahko videli vse sredstva in transakcije.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signal %d je bilo postavljeno.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Vzpenjajoč se zalotiti šele seconda in bitcoins in zgodovina hoteti obstati varen. Tukaj je, kaj je bolje: \n\n• popolnoma posodobljen načrt ter uporabnik doživetje \n• zanesljive varnostne center \n• izboljšano zasebnosti \n• poenostavljeno varnostno kopiranje in obnovitev \n• Customized upravljanje skladov \n\ndve vrsti dodatne transakciji (porabe iz gledal samo naslove in delijo kovanec) niso podprti v novi različici obtorej.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Vzpenjajoč se zalotiti šele seconda in bitcoins in zgodovina hoteti obstati varen. Tukaj je, kaj je bolje: • popolnoma posodobljen načrt ter uporabnik doživetje • zanesljive varnostne center • izboljšano zasebnosti • poenostavljeno varnostno kopiranje in obnovitev • Customized upravljanje skladov dve vrsti dodatne transakciji (porabe iz gledal samo naslove in delijo kovanec) niso podprti v novi različici obtorej.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Tam je bil problem vaši identiteti.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "To dejanje zahteva drugo geslo za bitcoin denarnico. Vnesite spodaj ter časnikarstvo vzdržnost.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Ta naslov ni samo za uro.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "To je naslov, samo gledam. Če želite preživeti vaš sredstev od znotraj tega denarnico, skeniranje vašega zasebnega ključa.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Ta zasebni ključ pripada še en naslov, ki ni gledal le";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Ta stvar je arhivirana. To pomeni, da ni mogoče dostopati v app, in ne morete poslati sredstev iz njega.
+
+Če obstajajo kakršne koli sredstev, bodo varno. Da bi začeli uporabljati to stvar znova, vzemi iz arhiva je.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "To boste izbrisali vse denarnico podatke v tej napravi. Prosimo, potrdite, imate vaše denarnice informacije, shranjene drugje drugače vse bitcoins v denarnici bo lahko nedosegljiv!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Opozorilo: Vaše denarnice identifikator je občutljivih informacij. Kopirate lahko ogrozijo varnost vaše denarnice.";
 
 /* (No Commment) */
+"Watch Only" = "Gledam samo";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Namig bomo poslali potrjeno email ogovor v primeru, da to zahtevate.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 "Welcome" = "dobrodošli";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Dobrodošli na novo različico Blockchain denarnice!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Smo odkrili prejšnje namestitve Blockchain denarnice na telefonu.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Zapišite vaše okrevanje besede in ga hranite nekje zelo varen in zanesljiv. Ne pozabite, da kdor pozna vaše besede regres has postranski v vaš bitcoins.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Narobe BIP38 geslo";
 
 /* (No Commment) */
 "Yes" = "da";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Lahko omogočite preverjanje v 2 korakih preko SMS na vaš mobilni telefon. Če želite uporabiti druge metode avtentifikacije namesto, prosimo, prijavite na naše spletne denarnice.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Zdaj lahko preživite s tega naslova.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Nimate račun nastavite za pošto. Se obrnite na %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Morate vedno seznaniti ali prepričevalnost, če imate dostop do vaše denarnice ID in geslo. Izterjavo vaših sredstev bo ustvaril nove denarnice ID. Ali želite nadaljevati?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Samo kažejo, da se bodo te xPub tistim, ki jim zaupate. Te informacije bodo mogli slediti vaš plačila in prekine dostop do vaše denarnice.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Uspešno uvozite zasebni ključ. Upoštevajte, da ne ustreza ta watch samo naslov. Če želite preživeti s tega naslova, se prepričajte, da jih optično preberete s pravilnim zasebnim ključem.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Uspešno uvozite zasebni ključ za naslov %@, in zdaj lahko preživite iz nje. Če želite preživeti s tega naslova, se prepričajte, vi skandirati s pravilnim zasebnim ključem.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Naprava se zdi v obstati jailbroken. Ogrožena varnost vaše denarnice.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Preverjeno e-poštni naslov se uporablja za pošiljanje prijavo kode, ko sumljivih ali nenavadnih dejavnosti, spomniti vi od vaš ID za prijavo denarnico, in poslati bitcoin plačilo opozoril, ko prejmete sredstva. Vaš e-poštni naslov ne uporabljamo za namene trženja.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Vaše denarnice ne vsebuje ta naslov.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Vaši denarnici je bil uspešno ustvarjen.";

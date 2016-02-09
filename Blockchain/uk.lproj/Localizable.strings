@@ -65,10 +65,16 @@
 "Add to Address book?" = "Додати в адресну книгу?";
 
 /* (No Commment) */
+"Address" = "Адреса";
+
+/* (No Commment) */
 "Address book" = "Адресна книга";
 
 /* (No Commment) */
 "Address is not valid" = "Адреса є неприпустимою";
+
+/* (No Commment) */
+"Addresses" = "Адреси";
 
 /* (No Commment) */
 "Adjust Fee" = "Налаштуйте плата";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Архів адреса";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Архів це, якщо ви не хочете використовувати більше. Ваші кошти будуть в безпеці, і ви можете unarchive його в будь-який час.";
+
+/* (No Commment) */
+"Archived" = "Архівні";
 
 /* (No Commment) */
 "Ask Me Later" = "Відкласти";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Скопіювати до буфера обміну";
 
 /* (No Commment) */
+"Copy xPub" = "Копіювати xPub";
+
+/* (No Commment) */
 "Create" = "Створити";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Дешифрування гаманець";
+
+/* (No Commment) */
+"Default" = "За промовчанням";
 
 /* (No Commment) */
 "Disable" = "Вимкнути";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Все, що тобі треба, витрачати і отримувати ваші bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Extended відкритий ключ";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Не вдалося завантажити гаманець";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Вихід із системи";
+
+/* (No Commment) */
+"Make Default" = "Зробити за промовчанням";
 
 /* (No Commment) */
 "Manual Pairing" = "Ручний спаровування";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Сканування дивитися тільки адресу?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Сканувати цей код або скопіюйте його до вашого застосунку Blockchain купець надійно отримувати Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Другий пароль неправильні";
 
@@ -797,7 +824,17 @@
 "Server URL" = "URL-адресу сервера";
 
 /* (No Commment) */
+"Set as Default Account?" = "Зробити стандартним обліковим записом?";
+
+/* (No Commment) */
 "Settings" = "Параметри";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Показати ваш xPub, якщо ви купця і використовувати Blockchain купець app на отримання коштів, безпечно і в приватному порядку.
+
+Тримайте ваш xPub приватних. Доступу до вашого xPub зможуть побачити всі ваші кошти та операцій.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "%d сигнал був піднятий.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Тут є те, що краще: \n\n• повністю оновлено дизайн і роботи користувачів \n• надійною системою безпеки центр \n• розширеної конфіденційності \n• спрощене резервного копіювання і відновлення \n• індивідуальні управління Фондом \n\nдва типи передові операції (витрачати від дивитися лише для адрес і поділився монета) не підтримуються в новій версії в даний час.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Тут є те, що краще: • повністю оновлено дизайн і роботи користувачів • надійною системою безпеки центр • розширеної конфіденційності • спрощене резервного копіювання і відновлення • індивідуальні управління Фондом два типи передові операції (витрачати від дивитися лише для адрес і поділився монета) не підтримуються в новій версії в даний час.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Виникли утруднення засвідчує вашу особу.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ця дія вимагає другий пароль для вашого гаманця bitcoin. Будь ласка, введіть його нижче та натисніть Продовжити.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Ця адреса не є тільки дивитися.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Це дивитися тільки адресу. Якщо ви хочете витрачати ваші кошти з в межах цей гаманець, просто сканування вашого закритого ключа.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Цей закритий ключ належить на іншу адресу, яка не тільки дивитися";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Архів цю річ. Це означає, що воно стає недоступним у застосунку, а не можна переказати кошти з нього.
+
+За наявності будь-яких коштів, вони будуть бути в безпеці. Для того, щоб почати використовувати цю річ знову, unarchive.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Це призведе до видалення всіх даних гаманець на цьому пристрої. Будь ласка, підтвердіть, у вас є ваш гаманець інформацію збережено в іншому місці в іншому випадку будь-яких bitcoins в цей гаманець будуть бути недоступною!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Попередження: Ідентифікатор вашого гаманця є конфіденційною інформацією. Копіювання його можуть становити загрозу безпеці вашого гаманця.";
 
 /* (No Commment) */
+"Watch Only" = "Дивитися тільки";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Ми надішлемо натяк на адресу електронної пошти підтверджено у випадку, якщо ви попросите про це.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "Welcome" = "Прошу";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Ласкаво просимо в нову версію Blockchain гаманець!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Це свідчить попередньої інсталяції Blockchain гаманця на вашому телефоні.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Запишіть відновлення фразу і тримати його де-небудь дуже надійним і безпечним. Пам'ятайте, що будь-хто, хто знає вашу фразу відновлення має доступ до вашого bitcoins.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Неправильний BIP38 пароль";
 
 /* (No Commment) */
 "Yes" = "Так";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Ви можете ввімкнути двоетапну перевірку за допомогою SMS на мобільний телефон. Для того, щоб використовувати інші методи автентифікації замість цього, будь ласка, Логін до нашого веб-гаманець.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Тепер ви можете витрачати з цієї адреси.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Ви не маєте обліковий запис, створений для Mail. Будь ласка, звертайтеся %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Ви повинні завжди пари або увійти, якщо у вас є доступ до вашого гаманця ID і пароль. Відновлення ваших фондів створить новий гаманець ID. Ви хотіли б продовжити?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Ви тільки повинні показати цей xPub тим, що ви довіряєте. З цією інформацією вони зможуть стежити за ваші платежі та зривати доступ до вашого гаманця.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Закритий ключ успішно імпортовано. Зверніть увагу, що воно не відповідає цій дивитися тільки адресу. Якщо ви хочете витратити з цієї адреси, переконайтеся, що у разі сканування з правильним закритим ключем.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Ви успішно імпортовано приватний ключ для %@ адресу, і тепер можна провести від нього. Якщо ви хочете витратити з цієї адреси, переконайтеся, що у разі сканування з правильним закритим ключем.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Пристрій, як видається, бути зламаний. Безпеки вашого гаманця може бути віддана в жертву.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Перевірену електронну адресу використовується для відправки Логін кодів, коли підозрілих або незвичайних діяльності, щоб нагадати вам про ваш гаманець Ідентифікатор входу і відправити bitcoin оплати оповіщення при надходженні коштів. Ми не будемо використовувати вашу адресу електронної пошти для маркетингових цілей.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Ваш гаманець не містить цю адресу.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Ваш гаманець успішно створено.";

@@ -65,10 +65,16 @@
 "Add to Address book?" = "Afegir a la llibreta d'adreces?";
 
 /* (No Commment) */
+"Address" = "Adreça";
+
+/* (No Commment) */
 "Address book" = "Llibreta d'adreces";
 
 /* (No Commment) */
 "Address is not valid" = "Adreça no és vàlida";
+
+/* (No Commment) */
+"Addresses" = "Adreces";
 
 /* (No Commment) */
 "Adjust Fee" = "Ajustar quota";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Adreça de l'arxiu";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arxivi això si no voleu utilitzar-lo ja. El seu fons serà segurs, i vostè pot unarchive en qualsevol moment.";
+
+/* (No Commment) */
+"Archived" = "Arxivats";
 
 /* (No Commment) */
 "Ask Me Later" = "Demanar-Me més tard";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Copiar al porta-retalls";
 
 /* (No Commment) */
+"Copy xPub" = "Còpia xPub";
+
+/* (No Commment) */
 "Create" = "Crear";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Desxifrar la cartera";
+
+/* (No Commment) */
+"Default" = "Per defecte";
 
 /* (No Commment) */
 "Disable" = "Impossibilitar";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Tot el que necessita emmagatzemar, passar i rebre el seu bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Estesa de clau pública";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "No ha pogut carregar la cartera";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Logout";
+
+/* (No Commment) */
+"Make Default" = "Fer per defecte";
 
 /* (No Commment) */
 "Manual Pairing" = "Manual de vinculació";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Escanejar adreça única de veure?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Escaneja aquest codi o copiar-lo al seu app Blockchain mercader segura rebre Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Segona Contrasenya incorrecta";
 
@@ -797,7 +824,17 @@
 "Server URL" = "Adreça URL del servidor";
 
 /* (No Commment) */
+"Set as Default Account?" = "Configurar com a compte per defecte?";
+
+/* (No Commment) */
 "Settings" = "Configuració";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Mostrar el seu xPub si vostè és un comerciant i utilitzar l'app Blockchain mercader per rebre fons de manera segura i privada.
+
+Mantenir el seu xPub privat. Algú amb accés a la xPub serà capaç de veure tot el seu fons i les transaccions.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Senyal %d es va criar.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "L'actualització pren només un segon i seu bitcoins i història estaran fora de perill. Aquí és què és millor: \n\n• disseny completament actualitzat i usuari experiència \n• seguretat robusta centre \n• privacitat realçat simplificat reserva i recuperació \n• personalitzat fons gestió \n\ndos tipus de transacció avançat (despeses de només veure adreces i compartir moneda) no són compatibles amb la nova versió en aquest moment.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "L'actualització pren només un segon i seu bitcoins i història estaran fora de perill. Aquí és què és millor: disseny • completament actualitzat i usuari experiència • seguretat robusta centre • • privacitat realçat simplificat reserva i recuperació • personalitzat fons gestió dos tipus de transacció avançat (despeses de només veure adreces i compartir moneda) no són compatibles amb la nova versió en aquest moment.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Hi havia un problema verificar la vostra identitat.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Aquesta acció requereix la segona clau per a la seva cartera bitcoin. Torneu-lo a sota i premeu continuar.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Aquesta adreça no és només de veure.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Això és una adreça només de veure. Si voleu passar el seu fons de dins d'aquesta cartera, només escannejar la seva clau privada.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Aquesta clau privada pertany a una altra adreça que no és només veure";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Aquesta cosa és arxivat. Això vol dir no es pot accedir a l'app, i no podràs enviar fons d'ella.
+
+Si hi ha qualsevol fons, estaran segurs. Per començar a utilitzar això una altra vegada, unarchive-lo.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Això esborrarà totes les dades de cartera d'aquest dispositiu. Confirmeu que té el seu moneder informació guardada en un altre lloc, en cas contrari qualsevol bitcoins en aquesta cartera serà ser inaccessible!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Advertiment: El seu identificador cartera és informació confidencial. Copiar-lo, pot comprometre la seguretat de la seva butxaca.";
 
 /* (No Commment) */
+"Watch Only" = "Només veure";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Enviarem la pista va confirmar correu electrònic en cas de demanar-lo.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 "Welcome" = "Benvingut";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Benvinguts a la nova versió de la cartera de Blockchain!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Hem detectat una instal·lació anterior del Blockchain cartera al seu telèfon.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Escriu la seva frase de recuperació i mantenir-lo en algun lloc molt segur i segur. Recordeu que qualsevol que conegui la frase de recuperació té accés als teus bitcoins.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Contrasenya equivocada BIP38";
 
 /* (No Commment) */
 "Yes" = "Sí";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Podeu habilitar la verificació mitjançant SMS 2 passos al telèfon mòbil. Per fer servir altres mètodes d'autenticació en el seu lloc, si us plau connecti's a la nostra cartera de web.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Ara podeu passar d'aquesta adreça.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "No teniu un compte de correu. Contacteu amb %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Sempre cal ajuntar o connectar si teniu accés a la seva cartera ID i contrasenya. Recuperant el seu fons crearà un nou identificador de cartera. Voleu continuar?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Només hauria de mostrar aquest xPub als que confieu. Amb aquesta informació, poden ser capaços de fer un seguiment dels seus pagaments i interrompre l'accés a la seva cartera.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Vostè haver importat reeixidament una clau privada. Tingueu en compte que no correspon a aquesta adreça només de veure. Si voleu passar d'aquesta adreça, assegureu-vos que escanejar la clau privada correcta.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Vostè haver importat reeixidament la clau privada per a l'adreça %@, i ara pot passar d'ella. Si voleu passar d'aquesta adreça, assegureu-vos que escaneja la clau privada correcta.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Dispositiu sembla ser jailbroken. Es poden comprometre la seguretat de la seva butxaca.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Adreça electrònica verificada s'utilitza per enviar codis quan es detecta activitat sospitosa o inusual, que recorden que l'ID de connexió de cartera i per enviar alertes de pagament bitcoin quan rebeu fons. No utilitzarem l'adreça electrònica per a finalitats de màrqueting.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "La cartera no conté aquesta adreça.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Seva cartera era reeixidament creat.";

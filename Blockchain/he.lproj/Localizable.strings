@@ -65,10 +65,16 @@
 "Add to Address book?" = "הוסף את פנקס הכתובות?";
 
 /* (No Commment) */
+"Address" = "כתובת";
+
+/* (No Commment) */
 "Address book" = "פנקס הכתובות";
 
 /* (No Commment) */
 "Address is not valid" = "כתובת אינה חוקית";
+
+/* (No Commment) */
+"Addresses" = "כתובות";
 
 /* (No Commment) */
 "Adjust Fee" = "להתאים את דמי";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "ארכיון כתובת";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "ארכיון זה אם אתה לא רוצה להמשיך להשתמש בו. קרנות שלך יהיה בטוח, אתה יכול unarchive אותו בכל עת.";
+
+/* (No Commment) */
+"Archived" = "בארכיון";
 
 /* (No Commment) */
 "Ask Me Later" = ". תשאל אותי מאוחר יותר";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "העתק ללוח";
 
 /* (No Commment) */
+"Copy xPub" = "העתק xPub";
+
+/* (No Commment) */
 "Create" = "צור";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "פענוח הארנק";
+
+/* (No Commment) */
+"Default" = "ברירת מחדל";
 
 /* (No Commment) */
 "Disable" = "בטל";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "כל מה שאתה צריך כדי לאחסן, לבלות ולקבל שלך ביטקוין";
+
+/* (No Commment) */
+"Extended Public Key" = "מורחב מפתח ציבורי";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "לא הצליח לטעון את הארנק";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "יציאה מהמערכת";
+
+/* (No Commment) */
+"Make Default" = "להפוך את ברירת המחדל";
 
 /* (No Commment) */
 "Manual Pairing" = "זיווג ידני";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "סרוק הכתובת היחידה לצפות?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "לסרוק את הקוד הזה, או להעתיק אותו לתוך האפליקציה Blockchain הסוחר שלך בצורה מאובטחת לקבל ביטקוין.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "סיסמה שנייה שגוי";
 
@@ -797,7 +824,17 @@
 "Server URL" = "כתובת url של השרת";
 
 /* (No Commment) */
+"Set as Default Account?" = "קבע כחשבון ברירת מחדל?";
+
+/* (No Commment) */
 "Settings" = "הגדרות";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "הצג את xPub שלך אם אתה סוחר ועושה שימוש app Blockchain הסוחר לקבל כספים בבטחה ובאופן פרטי.
+
+שמור את xPub הפרטי. מישהו עם גישה xPub שלך תהיה אפשרות לראות את כל הכספים, תנועות.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "אות %d גדל.";
@@ -857,6 +894,22 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
+
+/* (No Commment) */
+"This address is not watch-only." = "כתובת זו אינה השעון בלבד.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "זה כתובת השעון בלבד. אם אתה רוצה לבזבז כספים שלך בתוך הארנק הזה, רק לסרוק את המפתח הפרטי שלך.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "המפתח הפרטי הזה שייך לכתובת אחרת, שאינה רק את השעון";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "הדבר הזה הוא בארכיון. כלומר זה לא ניתן לגשת ב- app, אתה לא יכול לשלוח כספים ממנה.
+
+אם כל הכספים, הם יהיו בטוחים. כדי להתחיל להשתמש בזה שוב, unarchive את זה.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "זה יביא למחיקת כל הנתונים הארנק בהתקן זה. אנא אשרו שאת הארנק מידע שנמסר הציל במקום אחר אחרת כל bitcoins בצוואה את הארנק הזה אינו נגיש!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "אזהרה: המזהה את הארנק שלך אינו מידע רגיש. העתקתו עלול לפגוע בבטחון את הארנק שלך.";
 
 /* (No Commment) */
+"Watch Only" = "Watch בלבד";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "אנו נשלח את הרמז לכתובת הדואר האלקטרוני שסיפקת מאושרות למקרה לפי בקשה.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "Welcome" = "ברוך הבא";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "ברוכים הבאים לגרסה החדשה של הארנק Blockchain!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "שגילינו התקנה קודמת של Blockchain הארנק בטלפון שלך.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "לכתוב את הביטוי השחזור שלך ולשמור אותו במקום מאוד בטוחה ומאובטחת. זכור כי כל מי שמכיר את הביטוי השחזור שלך יש גישה bitcoins שלך.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "הסיסמה BIP38 הלא נכון";
 
 /* (No Commment) */
 "Yes" = "כן";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "ניתן לאפשר אימות דו-שלבי באמצעות SMS בטלפון הנייד שלך. על מנת להשתמש משיטות אימות אחרות במקום זאת, אנא התחבר כדי הארנק האינטרנט שלנו.";
+
+/* (No Commment) */
+"You can now spend from this address." = "אתה יכול להשקיע עכשיו מהכתובת הזו.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "אין לך חשבון להגדיר עבור דואר. אנא צרו קשר %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "עליך תמיד זוג או להיכנס למערכת, אם יש לך גישה אל הארנק המזהה והסיסמה שלך. שחזור כספים שלך יהיה ליצור מזהה את הארנק החדש האם ברצונך להמשיך?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "אתה צריך רק להראות את xPub כדי לאלו שבהם אתה בוטח. בעזרת מידע זה, ייתכן שהם יוכלו לשמור על מעקב אחר של התשלומים שלך, לשבש את הגישה שלך לארנק.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "בהצלחה ייבאת מפתח פרטי. שימו לב כי ואינו מתאים לכתובת זו השעון בלבד. אם אתה רוצה לבלות מכתובת זו, ודא סריקה של המפתח הפרטי המתאים.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "בהצלחה ייבאת את המפתח הפרטי עבור %@ הכתובת, עכשיו תוכלו לבלות ממנו. אם אתה רוצה לבלות מכתובת זו, ודא שאתה סורק את המפתח הפרטי המתאים.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "המכשיר נראה jailbroken. . בסכנה את האבטחה של הארנק שלך";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "את כתובת הדוא ל מאומת משמש כדי לשלוח קודי כניסה פעילות חשודה או יוצא דופן מזוהה, כדי להזכיר לך את מזהה הכניסה שלך את הארנק, וכדי לשלוח התראות התשלום ביטקוין בעת קבלת כספים. לא נשתמש כתובת הדוא ל שלך למטרות שיווק.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "הארנק שלך אינו מכיל את הכתובת הזו.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "הארנק שלך נוצר בהצלחה.";

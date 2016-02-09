@@ -65,10 +65,16 @@
 "Add to Address book?" = "إضافة إلى دفتر العناوين؟";
 
 /* (No Commment) */
+"Address" = "عنوان";
+
+/* (No Commment) */
 "Address book" = "دفتر العناوين";
 
 /* (No Commment) */
 "Address is not valid" = "عنوان غير صحيح";
+
+/* (No Commment) */
+"Addresses" = "عناوين";
 
 /* (No Commment) */
 "Adjust Fee" = "ضبط الرسوم";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "أرشيف العناوين";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "أرشفة هذا إذا كنت لا تريد استخدامه بعد الآن. الأموال الخاصة بك وسوف تكون آمنة، ويمكنك إلغاء الأرشفة فإنه في أي وقت.";
+
+/* (No Commment) */
+"Archived" = "أرشفة";
 
 /* (No Commment) */
 "Ask Me Later" = "السؤال لاحقاً";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "نسخ إلى الحافظة";
 
 /* (No Commment) */
+"Copy xPub" = "نسخ إكسبوب";
+
+/* (No Commment) */
 "Create" = "إنشاء";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "فك المحفظة";
+
+/* (No Commment) */
+"Default" = "افتراضي";
 
 /* (No Commment) */
 "Disable" = "قم بتعطيل";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "كل ما تحتاجه لتخزين، قضاء، وتلقى بك بيتكوين";
+
+/* (No Commment) */
+"Extended Public Key" = "توسيع المفتاح العمومي";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "فشل في تحميل المحفظة";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "تسجيل الخروج";
+
+/* (No Commment) */
+"Make Default" = "جعل الافتراضي";
 
 /* (No Commment) */
 "Manual Pairing" = "ازدواج يدوي";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "المسح الضوئي يشاهد العنوان فقط؟";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "مسح هذا الرمز أو نسخة إلى التطبيق الخاص بك التاجر بلوكتشين لتلقي بيتكوين بشكل أمن.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "الثانية كلمة المرور غير صحيحة";
 
@@ -797,7 +824,17 @@
 "Server URL" = "محدد موقع معلومات الخادم";
 
 /* (No Commment) */
+"Set as Default Account?" = "تعيين كحساب افتراضي؟";
+
+/* (No Commment) */
 "Settings" = "إعدادات";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "إظهار إكسبوب الخاص بك إذا كنت تاجر واستخدام التطبيق التاجر بلوكتشين للحصول على الأموال بأمان والقطاع الخاص.
+
+الاحتفاظ إكسبوب الخاص بك الخاصة. شخص ما مع الوصول إلى إكسبوب الخاص بك سوف تكون قادراً على مشاهدة كافة الأموال والمعاملات الخاصة بك.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "وأثير إشارة %d.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل: •\n تحديث تماما تصميم والمستخدم تجربة •\n قوي الأمن مركز \"تعزيز الخصوصية\" •\n المبسطة النسخ الاحتياطي والاسترداد •\n\n مخصص صندوق الإدارة نوعين معاملة متقدمة (أنفاق من عناوين مشاهدة فقط وعمله مشتركة) غير معتمدة في الإصدار الجديد في هذا الوقت.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل: • تحديث تماما تصميم والمستخدم تجربة • قوي الأمن مركز \"تعزيز الخصوصية\" • المبسطة النسخ الاحتياطي والاسترداد • مخصص صندوق الإدارة نوعين معاملة متقدمة (أنفاق من عناوين مشاهدة فقط وعمله مشتركة) غير معتمدة في الإصدار الجديد في هذا الوقت.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "توجد مشكلة في التحقق من هويتك.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "هذا الإجراء يتطلب كلمة مرور الثانية محفظتك بيتكوين. الرجاء إدخال أدناه والصحافة.";
+
+/* (No Commment) */
+"This address is not watch-only." = "هذا العنوان لا يشاهد فقط.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "هذا عنوان مشاهدة فقط. إذا كنت تريد أن تنفق الأموال الخاصة بك من داخل هذه المحفظة، مجرد تفحص المفتاح الخاص.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "ينتمي هذا المفتاح الخاص إلى عنوان آخر لا يشاهد فقط";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "يتم أرشفة هذا الشيء. وهذا يعني أنه لا يمكن الوصول إليها في التطبيق، ولا يمكنك إرسال الأموال منه.
+
+إذا كان هناك أي أموال، وسوف تكون آمنة. لبدء استخدام هذا الشيء مرة أخرى، إلغاء الأرشفة عليه.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "سيؤدي ذلك إلى محو كافة البيانات المحفظة الموجودة على هذا الجهاز. الرجاء التأكد من لديك معلومات المحفظة الخاصة بك المحفوظة في أماكن أخرى خلاف ذلك أي بيتكوينس في هذه الإرادة المحفظة لا يمكن الوصول إليها!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "تحذير: المعرف المحفظة الخاصة بك من المعلومات الحساسة. نسخ فإنه يجوز المساس بأمن محفظتك.";
 
 /* (No Commment) */
+"Watch Only" = "مشاهدة فقط";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "سوف نرسل التلميح إلى عنوان بريدك الإلكتروني مؤكدة في حالة طلب ذلك.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 "Welcome" = "مرحبا";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "مرحبا بكم في النسخة الجديدة من المحفظة بلوكتشين!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "لقد تم الكشف عن تثبيت سابق من المحفظة بلوكتشين على الهاتف الخاص بك.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "اكتب \"عبارتك الانتعاش\" والاحتفاظ به في مكان جداً وآمنة. تذكر أن أي شخص يعرف \"عبارة الاسترداد\" الخاصة بك الوصول إلى بيتكوينس الخاص بك.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "كلمة مرور خاطئة BIP38";
 
 /* (No Commment) */
 "Yes" = "نعم";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "يمكنك تمكين التحقق 2-خطوة عن طريق الرسائل القصيرة على الهاتف الجوال الخاص بك. من أجل استخدام أساليب المصادقة الأخرى بدلاً من ذلك، الرجاء تسجيل الدخول إلى المحفظة ويب.";
+
+/* (No Commment) */
+"You can now spend from this address." = "الآن يمكنك أن تنفق من هذا العنوان.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "ليس لديك حساب للبريد. الرجاء الاتصال %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "عليك دائماً الزوج أو تسجيل الدخول إذا كان لديك حق الوصول إلى \"معرف المحفظة\" وكلمة المرور الخاصة بك. استرداد الأموال الخاصة بك سيتم إنشاء معرف جديد المحفظة. هل ترغب في الاستمرار؟";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "ينبغي أن تظهر لك فقط هذه إكسبوب لتلك الثقة. مع هذه المعلومات، قد تكون قادراً على تعقب المدفوعات الخاصة بك وتعطيل الوصول إلى محفظتك.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "لقد قمت باستيراد مفتاح خاص بنجاح. لاحظ أن ذلك لا يتوافق مع هذا العنوان مشاهدة فقط. إذا كنت تريد أن تنفق من هذا العنوان، تأكد من أن تقوم بتفحص المفتاح الخاص الصحيح.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "قمت بنجاح باستيراد المفتاح الخاص من أجل %@ عنوان، ويمكنك الآن قضاء منه. إذا كنت تريد أن تنفق من هذا العنوان، تأكد من مسح المفتاح الخاص الصحيح.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "الجهاز الخاص بك، على ما يبدو، أي فون. قد تتعرض للخطر أمن محفظتك.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "يتم استخدام عنوان بريدك الإلكتروني تم التحقق منها ليرسل رموز تسجيل الدخول عندما يتم الكشف عن الأنشطة المشبوهة أو غير العادية، لتذكيرك بمعرف تسجيل دخول المحفظة الخاصة بك، وإرسال تنبيهات الدفع بيتكوين عندما تتلقى الأموال. ونحن لن تستخدم عنوان البريد الإلكتروني الخاص بك لأغراض التسويق.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "المحفظة الخاصة بك لا تحتوي على هذا العنوان.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "تم بنجاح إنشاء محفظتك.";

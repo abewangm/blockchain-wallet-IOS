@@ -65,10 +65,16 @@
 "Add to Address book?" = "주소록에 추가?";
 
 /* (No Commment) */
+"Address" = "주소";
+
+/* (No Commment) */
 "Address book" = "주소록";
 
 /* (No Commment) */
 "Address is not valid" = "주소는 유효 하지 않습니다.";
+
+/* (No Commment) */
+"Addresses" = "주소";
 
 /* (No Commment) */
 "Adjust Fee" = "요금 조정";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "아카이브 주소";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "더 이상 사용 하지 않으려는 경우에이 보관 합니다. 자금 안전 그리고 당신은 언제 든 지 그것을 unarchive 수 있습니다.";
+
+/* (No Commment) */
+"Archived" = "보관";
 
 /* (No Commment) */
 "Ask Me Later" = "나중에 나 한 테 물어";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "클립보드에 복사";
 
 /* (No Commment) */
+"Copy xPub" = "XPub 복사";
+
+/* (No Commment) */
 "Create" = "만들기";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "지갑의 암호 해독";
+
+/* (No Commment) */
+"Default" = "기본";
 
 /* (No Commment) */
 "Disable" = "사용 안 함";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "저장 하는 데 필요한 모든 지출 하 고 당신의 bitcoin 받을";
+
+/* (No Commment) */
+"Extended Public Key" = "공개 키 확장";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "지갑을 로드 하지 못했습니다.";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "로그 아웃";
+
+/* (No Commment) */
+"Make Default" = "만들기 기본";
 
 /* (No Commment) */
 "Manual Pairing" = "수동 페어링";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "시계만 주소 스캔?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "이 코드를 스캔 하거나 안전 하 게 받을 Bitcoin Blockchain 상인 응용 프로그램에 복사 합니다.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "두 번째 비밀 번호 잘못 된";
 
@@ -797,7 +824,17 @@
 "Server URL" = "서버 URL";
 
 /* (No Commment) */
+"Set as Default Account?" = "기본 계정으로 설정?";
+
+/* (No Commment) */
 "Settings" = "설정";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "당신이 상인 고 Blockchain 상인 애플 리 케이 션을 사용 하 여 안전 하 고 개인적으로 자금을 받을 경우 당신의 xPub를 표시 합니다.
+
+당신의 xPub 개인 유지. 누군가가 당신의 xPub에 액세스할 수 있는 모든 자금 및 거래를 볼 수 있게 됩니다.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "신호 %d은 올렸다.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더: \n\n• 완전히 업데이트 디자인과 사용자 경험 \n• 강력한 보안 센터 \n• 향상 된 개인 정보 보호 정책 \n• 간체 백업 및 복구 \n• 사용자 지정 기금 관리\n\n두 고급 트랜잭션 유형 (시계 전용 주소를 공유 동전 지출)이 이번에 새로운 버전에서 지원 되지 않습니다.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더: 완전히 업데이트 • 디자인과 사용자 경험 • 강력한 보안 센터 • 향상 된 개인 정보 보호 정책 • 간체 백업 및 복구 • 사용자 지정 기금 관리 두 고급 트랜잭션 유형 (시계 전용 주소를 공유 동전 지출)이 이번에 새로운 버전에서 지원 되지 않습니다.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Id 확인 문제가 있었습니다.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "이 작업 bitcoin 지갑에 대 한 두 번째 암호를 요구 한다. 제발 아래 입력 하 고 누르면 계속.";
+
+/* (No Commment) */
+"This address is not watch-only." = "이 주소는 시계 전용.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "이것은 시계 전용 주소 이다. 이 지갑 내에서 자금을 지출 하고자 하는 경우 그냥 개인 키를 검색 합니다.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "이 개인 키 시계만은 다른 주소에 속한다";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "이 일은 보관 됩니다. 즉, 응용 프로그램에 액세스할 수 없습니다 그리고 그것에서 자금을 보낼 수 없습니다.
+
+자금 경우 그들은 안전 하 게 있을 것입니다. 다시이 일을 사용 하 여 시작 하려면 그것 unarchive 합니다.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "이이 장치에 모든 지갑 데이터가 지워집니다. 당신은 당신의 지갑에 저장 된 정보 다른 곳에서 그렇지 않으면 어떤 bitcoins이 지갑 것입니다 액세스할 수 없습니다 것을 확인 하십시오!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "경고: 당신의 지갑 식별자는 중요 한 정보입니다. 복사 하는 것은 당신의 지갑의 보안을 타협 수 있습니다.";
 
 /* (No Commment) */
+"Watch Only" = "시계만";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "당신이 그것을 요청 하는 경우에 힌트 확인 된 이메일 주소에 발송 됩니다.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 "Welcome" = "환영 합니다";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "에 오신 것을 환영 합니다 Blockchain 지갑의 새로운 버전!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "우리가 귀하의 휴대 전화에 Blockchain 지갑의 이전 설치를 발견 했습니다.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "복구 문구를 적어 하 고 매우 안전 하 고 안전한 어딘가에 그것을 유지. 당신의 복구 어구를 알고 있는 누군가 당신의 bitcoins에 액세스할 수 기억 하십시오.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "잘못 된 BIP38 암호";
 
 /* (No Commment) */
 "Yes" = "예";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "귀하의 휴대 전화에 SMS 통해 2 단계 인증을 설정할 수 있습니다. 대신 다른 인증 방법을 사용, 우리의 웹 지갑에 로그인을 하시기 바랍니다.";
+
+/* (No Commment) */
+"You can now spend from this address." = "이제이 주소에서 보내실 수 있습니다.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "메일 설정 된 계정이 필요가 없습니다. %@에 문의 하시기 바랍니다";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "항상 쌍 하거나 당신의 지갑 ID와 비밀 번호에 액세스할 수 있는 경우 로그인 해야 합니다. 새 지갑 신분증 만들 것입니다 귀하의 자금을 복구 계속 하 시겠습니까?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "만을 신뢰할 수이 xPub를 표시 해야 합니다. 이 정보와 함께, 그들은 귀하의 지불의 추적 및 당신의 지갑에 대 한 액세스를 방해 수 있습니다.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "성공적으로 개인 키를 가져올 했습니다. 참고가 시계 전용 주소를 일치 하지 않습니다. 이 주소에서 지출 하고자 하는 경우 올바른 개인 키를 검색 하 고 있는지 확인 합니다.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "주소 %@에 대 한 개인 키를 성공적으로 가져온 고 그것에서 보낼 수 있습니다. 이 주소에서 지출 하고자 하는 경우 올바른 개인 키를 검색 하 고 있는지 확인 합니다.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "당신의 장치에 jailbroken 나타납니다. 지갑의 보안이 손상 될 수 있습니다.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "확인 된 이메일 주소는 의심 이나 비정상적인 행위가 감지 되 면, 지갑 로그인 ID를 당신을 생각나 게 하 고 자금을 받을 때 bitcoin 지불 경고를 보낼 때 로그인 코드를 보내는 데 사용 됩니다. 우리는 마케팅 목적으로 귀하의 이메일 주소를 사용 하지 않습니다.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "당신의 지갑은이 주소를 포함 하지 않습니다.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "당신의 지갑 성공적으로 만들었습니다.";

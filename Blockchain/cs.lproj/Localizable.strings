@@ -65,10 +65,16 @@
 "Add to Address book?" = "Přidat do adresáře?";
 
 /* (No Commment) */
+"Address" = "Adresa";
+
+/* (No Commment) */
 "Address book" = "Adresář";
 
 /* (No Commment) */
 "Address is not valid" = "Adresa není platná";
+
+/* (No Commment) */
+"Addresses" = "Adresy";
 
 /* (No Commment) */
 "Adjust Fee" = "Úprava poplatků";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Adresa archivu";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Archivujte, pokud nechcete používat už. Vaše prostředky budou v bezpečí, a můžete Odarchivovat kdykoliv.";
+
+/* (No Commment) */
+"Archived" = "Archivováno";
 
 /* (No Commment) */
 "Ask Me Later" = "Zobrazit dotaz později";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Kopírovat do schránky";
 
 /* (No Commment) */
+"Copy xPub" = "Kopírovat xPub";
+
+/* (No Commment) */
 "Create" = "Vytvořit";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Dešifrování Peněženka";
+
+/* (No Commment) */
+"Default" = "Výchozí";
 
 /* (No Commment) */
 "Disable" = "Zakázat";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Vše, co potřebujete k uložení, utrácet a získat vaše bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Rozšířený veřejný klíč";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Nepodařilo se načíst Peněženka";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Odhlášení";
+
+/* (No Commment) */
+"Make Default" = "Vytvořit výchozí";
 
 /* (No Commment) */
 "Manual Pairing" = "Ruční párování";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Prohledat pouze adresu Watch?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Tento kód nebo jej zkopírujte do app Blockchain obchodníka a bezpečně přijímat Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Druhé heslo nesprávné";
 
@@ -797,7 +824,17 @@
 "Server URL" = "Adresa URL serveru";
 
 /* (No Commment) */
+"Set as Default Account?" = "Nastavit jako výchozí účet?";
+
+/* (No Commment) */
 "Settings" = "Nastavení";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Ukaž svůj xPub Pokud jste obchodník a Blockchain obchodníka v aplikaci získat finanční prostředky, bezpečně a soukromě.
+
+Zachovat váš xPub soukromí. Uživatelé s přístupem k vaší xPub bude možnost vidět všechny prostředky a transakcí.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signál %d byla zvýšena.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovace bude trvat jen chvilku a bitcoins a historie bude v bezpečí. Zde je to, co je lepší:\n\n• kompletně aktualizován designu a uživatelské zkušenosti \n• robustní bezpečnostní centrum \n• rozšířené soukromí \n• zjednodušené zálohování a zotavení \n• vlastní správy fondu\n\ndva typy rozšířené transakcí (výdaje z hodinek pouze adresy a sdílené mince) nejsou podporovány v nové verzi v tuto chvíli.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovace bude trvat jen chvilku a bitcoins a historie bude v bezpečí. Zde je to, co je lepší: • kompletně aktualizován designu a uživatelské zkušenosti • robustní bezpečnostní centrum • rozšířené soukromí • zjednodušené zálohování a zotavení • vlastní správy fondu dva typy rozšířené transakcí (výdaje z hodinek pouze adresy a sdílené mince) nejsou podporovány v nové verzi v tuto chvíli.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Došlo k problému s ověřením identity.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tato akce vyžaduje druhé heslo pro peněženku bitcoin. Prosím, zadejte a stiskněte tlačítko pokračovat.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Tato adresa není určena jen dívat.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Jedná se o hodinky pouze adresu. Pokud chcete strávit své prostředky z v rámci této peněženky, prohledejte váš soukromý klíč.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Tento soukromý klíč patří na jinou adresu, která není pouze hodinky";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Tato věc je archivován. To znamená, není přístupná v app, a finanční prostředky nelze odeslat z ní.
+
+Pokud existují nějaké finanční prostředky, budou bezpečné. Aby bylo možné začít používat tuto věc znovu, Odarchivovat jej.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "To budou vymazána všechna data peněženku na tomto zařízení. Potvrďte, že máte vaše peněženka informace uložené jinde jinak jakýkoliv bitcoins v této peněženky bude být nepřístupné!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Varování: Vaše peněženka identifikátor je citlivé informace. Kopírování může ohrozit bezpečnost vaší peněženky.";
 
 /* (No Commment) */
+"Watch Only" = "Sledovat pouze";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Pošleme vám Nápověda potvrzené e-mailovou adresu pro případ, že o to požádáte.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 "Welcome" = "Vítej";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Vítejte v nové verzi Blockchain peněženku!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Zachytili jsme předchozí instalace Blockchain peněženku na vašem telefonu.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Poznamenejte si vaše zotavení fráze a udržet ji někde velmi spolehlivé a bezpečné. Pamatujte si, že každý, kdo zná vaše zotavení fráze má přístup k vaší bitcoins.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Špatné BIP38 heslo";
 
 /* (No Commment) */
 "Yes" = "Ano";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Povolit 2krok ověření přes SMS na mobilním telefonu. Místo toho pomocí jiné metody ověřování, prosím přihlásit se na náš web peněženku.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Nyní můžete strávit z této adresy.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Nemáte účet nastavený pro poštu. Prosím kontaktujte %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Byste měli vždy dvojice nebo přihlášení, pokud máte přístup k vaší peněžence ID a heslo. Obnovení vašich financí vytvoří nového peněženku. Chcete pokračovat?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Měli zobrazit pouze tento xPub těm, kterým důvěřujete. Pomocí těchto informací mohou být schopen sledovat vaše platby a dojde k narušení přístupu k vaší peněžence.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Jste úspěšně importovat soukromý klíč. Všimněte si, že nebude odpovídat na tuto adresu jen hodinky. Pokud chcete strávit z této adresy, ujistěte se, že skenujete správným soukromým klíčem.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Jste úspěšně importovat soukromý klíč pro adresu %@, a teď z ní strávíte. Pokud chcete strávit z této adresy, ujistěte se, že kontroly správným soukromým klíčem.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Zařízení se zdá být jailbroken. Může být ohrožena bezpečnost vaší peněženky.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Ověřené e-mailová adresa se používá pro odesílání přihlašovací kódy, při zjištění podezřelé nebo neobvyklé aktivity, která vám připomene vaše peněženka přihlašovací ID a vyslat bitcoin platební oznámení obdržíte finanční prostředky. Vaši e-mailovou adresu nepoužijeme k marketingovým účelům.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Vaše peněženka neobsahuje tuto adresu.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Vaše Peněženka byla úspěšně vytvořena.";

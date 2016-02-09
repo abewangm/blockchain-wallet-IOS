@@ -65,10 +65,16 @@
 "Add to Address book?" = "Thêm vào sổ địa chỉ?";
 
 /* (No Commment) */
+"Address" = "Địa chỉ";
+
+/* (No Commment) */
 "Address book" = "Sổ địa chỉ";
 
 /* (No Commment) */
 "Address is not valid" = "Địa chỉ là không hợp lệ";
+
+/* (No Commment) */
+"Addresses" = "Địa chỉ";
 
 /* (No Commment) */
 "Adjust Fee" = "Điều chỉnh phí";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Lưu trữ địa chỉ";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Lưu trữ này nếu bạn không muốn sử dụng nó nữa. Khoản tiền của bạn sẽ được an toàn, và bạn có thể unarchive bất kỳ lúc nào.";
+
+/* (No Commment) */
+"Archived" = "Lưu trữ";
 
 /* (No Commment) */
 "Ask Me Later" = "Hỏi tôi sau";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Sao chép vào clipboard";
 
 /* (No Commment) */
+"Copy xPub" = "Sao chép xPub";
+
+/* (No Commment) */
 "Create" = "Tạo";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Giải mã ví";
+
+/* (No Commment) */
+"Default" = "Mặc định";
 
 /* (No Commment) */
 "Disable" = "Vô hiệu hoá";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Tất cả mọi thứ bạn cần để lưu trữ, chi tiêu và nhận được của bạn bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Mở rộng các khóa công khai";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Bị lỗi khi nạp Wallet";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Đăng xuất";
+
+/* (No Commment) */
+"Make Default" = "Làm mặc định";
 
 /* (No Commment) */
 "Manual Pairing" = "Hướng dẫn sử dụng kết nối";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Quét địa chỉ duy nhất Watch?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Quét mã này hoặc sao chép nó vào ứng dụng Blockchain thương gia của bạn một cách an toàn nhận Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Thứ hai mật khẩu không chính xác";
 
@@ -797,7 +824,17 @@
 "Server URL" = "URL hệ phục vụ";
 
 /* (No Commment) */
+"Set as Default Account?" = "Thiết lập làm tài khoản mặc định?";
+
+/* (No Commment) */
 "Settings" = "Cài đặt";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Hiển thị xPub của bạn nếu bạn là một thương gia và sử dụng ứng dụng Blockchain thương gia để nhận được tiền an toàn và riêng tư.
+
+Giữ xPub của bạn riêng tư. Một người có quyền truy cập vào xPub của bạn sẽ có thể xem tất cả các khoản tiền và giao dịch của bạn.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Tín hiệu %d được nêu ra.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Việc nâng cấp có chỉ một lần thứ hai và bitcoins và lịch sử của bạn sẽ được an toàn. Dưới đây là những gì là tốt hơn: \n\n• hoàn toàn Cập Nhật thiết kế và người sử dụng kinh nghiệm \n• bảo mật mạnh mẽ Trung tâm • tăng cường bảo mật \n• giản thể sao lưu và phục hồi \n• Customized quản l ý quỹ hai loại nâng cao giao dịch (chi tiêu từ địa chỉ chỉ xem và chia sẻ xu) không được hỗ trợ trong phiên bản mới tại thời điểm này.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Việc nâng cấp có chỉ một lần thứ hai và bitcoins và lịch sử của bạn sẽ được an toàn. Dưới đây là những gì là tốt hơn: • hoàn toàn Cập Nhật thiết kế và người sử dụng kinh nghiệm • bảo mật mạnh mẽ Trung tâm • tăng cường bảo mật • giản thể sao lưu và phục hồi • Customized quản l ý quỹ hai loại nâng cao giao dịch (chi tiêu từ địa chỉ chỉ xem và chia sẻ xu) không được hỗ trợ trong phiên bản mới tại thời điểm này.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Đã có một vấn đề xác minh danh tính của bạn.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Hành động này yêu cầu mật khẩu thứ hai cho bitcoin ví của bạn. Vui lòng nhập nó dưới đây và nhấn tiếp tục.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Địa chỉ này không phải là chỉ có xem.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Đây là một địa chỉ chỉ có xem. Nếu bạn muốn chi tiêu tiền của bạn từ bên trong ví này, chỉ cần quét chìa khóa riêng của bạn.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Phím riêng này thuộc về một địa chỉ đó không phải là xem chỉ";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Điều này được lưu trữ. Có nghĩa là nó không thể được truy cập vào các ứng dụng, và bạn không thể gửi tiền từ nó.
+
+Nếu có bất kỳ khoản tiền, họ sẽ được an toàn. Để bắt đầu sử dụng điều này một lần nữa, unarchive nó.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Điều này sẽ xóa tất cả dữ liệu wallet trên thiết bị này. Xin vui lòng xác nhận bạn đã ví thông tin của bạn được lưu ở nơi khác nếu không bất kỳ bitcoins trong này ví sẽ được không thể tiếp cận!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Chú ý: Các định danh ví của bạn là thông tin nhạy cảm. Sao chép nó có thể thỏa hiệp sự bảo mật của chi tiêu của bạn.";
 
 /* (No Commment) */
+"Watch Only" = "Xem chỉ";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Chúng tôi sẽ gửi những gợi ý để địa chỉ email đã được xác nhận trong trường hợp bạn yêu cầu nó.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "Welcome" = "Chào mừng";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Chào mừng đến với phiên bản mới của các khoản chi tiêu Blockchain!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Chúng tôi đã phát hiện một cài đặt trước đó của Blockchain Wallet trên điện thoại của bạn.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Viết xuống cụm từ phục hồi của bạn và giữ nó ở một nơi rất an toàn và an toàn. Hãy nhớ rằng bất cứ ai biết cụm từ phục hồi của bạn có quyền truy cập vào bitcoins của bạn.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Mật khẩu sai BIP38";
 
 /* (No Commment) */
 "Yes" = "Có";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Bạn có thể kích hoạt quy trình xác minh 2 bước qua SMS trên điện thoại di động của bạn. Để sử dụng các phương pháp xác thực khác thay thế, hãy đăng nhập vào wallet web của chúng tôi.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Bây giờ bạn có thể chi tiêu từ địa chỉ này.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Bạn không có một tài khoản thiết lập cho thư. Xin vui lòng liên hệ với %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Bạn luôn luôn nên ghép nối hoặc đăng nhập nếu bạn có quyền truy cập vào Wallet ID và mật khẩu của bạn. Phục hồi khoản tiền của bạn sẽ tạo một ID mới ví. Bạn có muốn tiếp tục không?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Bạn chỉ nên hiển thị này xPub cho những người bạn tin tưởng. Với thông tin này, họ có thể theo dõi các khoản thanh toán của bạn và làm gián đoạn truy cập vào ví của bạn.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Bạn đã chuyển nhập thành công một phím riêng. Lưu ý rằng nó không tương ứng với địa chỉ này chỉ xem. Nếu bạn muốn chi tiêu từ địa chỉ này, hãy chắc chắn rằng bạn quét đúng chìa khóa riêng.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Bạn đã chuyển nhập thành công khóa riêng cho địa chỉ %@, và bây giờ bạn có thể chi tiêu từ nó. Nếu bạn muốn chi tiêu từ địa chỉ này, hãy chắc chắn rằng bạn quét đúng chìa khóa riêng.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Thiết bị của bạn dường như là jailbroken. Bảo mật của chi tiêu của bạn có thể bị tổn hại.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Địa chỉ email xác minh được sử dụng để gửi mã số đăng nhập khi hoạt động đáng ngờ hoặc bất thường được phát hiện, để nhắc nhở bạn của ID đăng nhập ví của bạn, và gửi thông báo thanh toán bitcoin khi bạn nhận được tiền. Chúng tôi sẽ không sử dụng địa chỉ email của bạn cho mục đích tiếp thị.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Chi tiêu của bạn không chứa địa chỉ này.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Chi tiêu của bạn tạo thành công.";

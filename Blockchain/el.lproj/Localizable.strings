@@ -65,10 +65,16 @@
 "Add to Address book?" = "Προσθήκη στο βιβλίο διευθύνσεων;";
 
 /* (No Commment) */
+"Address" = "Διεύθυνση";
+
+/* (No Commment) */
 "Address book" = "Βιβλίο διευθύνσεων";
 
 /* (No Commment) */
 "Address is not valid" = "Διεύθυνση δεν είναι έγκυρη";
+
+/* (No Commment) */
+"Addresses" = "Διευθύνσεις";
 
 /* (No Commment) */
 "Adjust Fee" = "Ρυθμίστε την αμοιβή";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Αρχείο διεύθυνση";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Αρχειοθετήστε αυτό αν δεν θέλετε να το χρησιμοποιούν πια. Τα χρήματά σας θα είναι ασφαλές, και σας μπορεί να το αφαιρέσετε οποιαδήποτε στιγμή.";
+
+/* (No Commment) */
+"Archived" = "Αρχειοθετούνται";
 
 /* (No Commment) */
 "Ask Me Later" = "Να ερωτηθώ αργότερα";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Αντιγραφή στο Πρόχειρο";
 
 /* (No Commment) */
+"Copy xPub" = "Αντίγραφο xPub";
+
+/* (No Commment) */
 "Create" = "Δημιουργία";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Αποκρυπτογράφηση πορτοφόλι";
+
+/* (No Commment) */
+"Default" = "Προεπιλογή";
 
 /* (No Commment) */
 "Disable" = "Απενεργοποίηση";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Όλα όσα χρειάζεστε για την αποθήκευση, περνούν και λάβετε σας bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Επεκταθεί δημόσιο κλειδί";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Απέτυχε η φόρτωση πορτοφόλι";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Αποσύνδεση";
+
+/* (No Commment) */
+"Make Default" = "Κάνει προεπιλογή";
 
 /* (No Commment) */
 "Manual Pairing" = "Μη αυτόματη αντιστοίχιση";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Σάρωση μόνο διεύθυνση ρολόι;";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Σάρωση αυτόν τον κώδικα ή να το αντιγράψετε σε σας app Blockchain έμπορος να λάβετε με ασφάλεια το Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Δεύτερο κωδικό πρόσβασης που είναι εσφαλμένη";
 
@@ -797,7 +824,17 @@
 "Server URL" = "Διεύθυνση URL διακομιστή";
 
 /* (No Commment) */
+"Set as Default Account?" = "Ορίσετε ως προεπιλεγμένο λογαριασμό;";
+
+/* (No Commment) */
 "Settings" = "Ρυθμίσεις";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Δείχνουν xPub σας, αν είστε έμπορος και χρησιμοποιήστε την εφαρμογή Blockchain έμπορος να λαμβάνουν κεφάλαια με ασφάλεια και ιδιωτικώς.
+
+Κρατήστε απόρρητες τις xPub σας. Κάποιος με πρόσβαση σε xPub σας θα είναι σε θέση να δείτε όλα τα κεφάλαια και οι συναλλαγές.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Υψώθηκε σήμα %d.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: \n\n• Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία \n• ισχυρή ασφάλεια κέντρο \n• ενισχυμένη προστασία της ιδιωτικής \n• ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης \n• προσαρμοσμένη διαχείριση κεφαλαίων \n\nδύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: • Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία • ισχυρή ασφάλεια κέντρο • • ενισχυμένη προστασία της ιδιωτικής ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης • προσαρμοσμένη διαχείριση κεφαλαίων δύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Υπήρχε ένα πρόβλημα που επαληθεύει την ταυτότητά σας.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας bitcoin. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Αυτή η διεύθυνση δεν είναι μόνο ρολόι.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Αυτή είναι μια διεύθυνση μόνο ρολόι. Εάν θέλετε να ξοδεψετε τα χρήματα σας από μέσα το πορτοφόλι, απλά σαρώστε το ιδιωτικό σας κλειδί.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Αυτό το ιδιωτικό κλειδί που ανήκει σε άλλη διεύθυνση που δεν είναι μόνο το ρολόι";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Αυτό το πράγμα είναι αρχειοθετημένο. Αυτό σημαίνει ότι δεν είναι δυνατή η πρόσβαση στην εφαρμογή και δεν μπορείτε να στείλετε χρήματα από αυτό.
+
+Εάν υπάρχουν οποιαδήποτε χρήματα, θα είναι ασφαλής. Προκειμένου να αρχίσετε να χρησιμοποιείτε αυτό το πράγμα ξανά, κατάργηση αρχειοθέτησης σε αυτό.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Αυτό θα διαγράψει όλα τα δεδομένα πορτοφόλι σε αυτήν τη συσκευή. Επιβεβαιώστε ότι έχετε πληροφορίες πορτοφόλι σας αποθηκεύονται αλλού, διαφορετικά οποιαδήποτε bitcoins σε αυτό πορτοφόλι θα είναι απροσπέλαστα!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Προειδοποίηση: Το αναγνωριστικό σας πορτοφόλι είναι ευαίσθητες πληροφορίες. Την αντιγραφή μπορεί να διακυβεύσει την ασφάλεια του πορτοφολιού σας.";
 
 /* (No Commment) */
+"Watch Only" = "Παρακολουθήσετε μόνο";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Θα σας στείλουμε την υπόδειξη να επιβεβαιωθεί το email σας, σε περίπτωση που ζητάτε.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 "Welcome" = "Καλώς όρισες";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Καλωσορίζουμε τη νέα έκδοση του το Blockchain πορτοφόλι!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Σημαίνει ότι έχουμε εντοπίσει μια προηγούμενη εγκατάσταση του πορτοφολιού Blockchain στο τηλέφωνό σας.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Γράψετε σας φράση αποκατάστασης και να παραμένει κάπου πολύ αξιόπιστο και ασφαλές. Θυμηθείτε ότι όποιος ξέρει σας φράση αποκατάστασης έχει πρόσβαση σε bitcoins σας.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "BIP38 λάθος κωδικό πρόσβασης";
 
 /* (No Commment) */
 "Yes" = "Ναι";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Μπορείτε να ενεργοποιήσετε την επαλήθευση σε 2 βήματα μέσω SMS στο κινητό σας τηλέφωνο. Προκειμένου να χρησιμοποιήσετε άλλες μεθόδους ελέγχου ταυτότητας, αντίθετα, παρακαλώ συνδεθείτε για να μας ηλεκτρονική μέθοδος πληρωμής.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Τώρα, μπορείτε να περάσετε από αυτή τη διεύθυνση.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Δεν έχετε ένα λογαριασμό που έχει συσταθεί για το ταχυδρομείο. Παρακαλούμε επικοινωνήστε με %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Πάντα πρέπει να ζεύγος ή συνδεθείτε αν έχετε πρόσβαση στο πορτοφόλι ID και τον κωδικό σας. Ανάκτησης των κεφαλαίων σας θα δημιουργήσει ένα νέο αναγνωριστικό πορτοφόλι. Θέλετε να συνεχίσετε;";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Θα πρέπει να δείξει μόνο αυτό xPub σε εκείνους που εμπιστεύεστε. Με αυτές τις πληροφορίες, αυτοί μπορεί να είναι σε θέση να παρακολουθείτε τις πληρωμές σας και να διακόψει την πρόσβασή σας στο πορτοφόλι σας.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Που έχετε εισαγάγει με επιτυχία ένα ιδιωτικό κλειδί. Σημειώστε ότι δεν αντιστοιχεί σε αυτή τη διεύθυνση μόνο ρολόι. Αν θέλετε να περάσουν από αυτή τη διεύθυνση, βεβαιωθείτε ότι μπορείτε να σαρώσετε το σωστό ιδιωτικό κλειδί.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Που έχετε εισαγάγει με επιτυχία το ιδιωτικό κλειδί για τη διεύθυνση %@, και τώρα μπορείτε να περάσετε από αυτό. Αν θέλετε να περάσουν από αυτή τη διεύθυνση, βεβαιωθείτε ότι έχετε σαρώσει το σωστό ιδιωτικό κλειδί.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Συσκευή σας φαίνεται να είναι jailbroken. Μπορεί να παραβιαστεί η ασφάλεια του πορτοφολιού σας.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Σας διεύθυνση email επαληθεύονται είναι συνήθιζα να στέλνω login κωδικούς όταν ύποπτη ή ασυνήθιστη δραστηριότητα ανιχνεύεται, θυμίζω you του δικό σας αναγνωριστικό σύνδεσης πορτοφόλι, και να στείλετε ειδοποιήσεις πληρωμής bitcoin όταν λαμβάνετε ταμεία. Δεν θα χρησιμοποιήσουμε τη διεύθυνση email σας για σκοπούς μάρκετινγκ.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Το πορτοφόλι σας δεν περιέχει αυτή τη διεύθυνση.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Δημιουργήθηκε με επιτυχία το πορτοφόλι σας.";

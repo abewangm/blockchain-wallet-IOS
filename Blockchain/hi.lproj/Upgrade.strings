@@ -1,5 +1,5 @@
 /* (No Commment) */
-"4cR-kX-YUY.text" = "Blockchain वॉलेट के नए संस्करण के लिए आपका स्वागत है!";
+"4cR-kX-YUY.text" = "नवीनीकरण की पुष्टि करें";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "D5e-zI-7dK"; */
 "D5e-zI-7dK.text" = "Lorem ipsum dolor बैठ एर elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt यूटी labore एट dolore magna aliqua. यूटी enim विज्ञापन अत्यल्प आकार का प्राणी veniam, quis nostrud exercitation ullamco laboris nisi यूटी ea commodo consequat पूर्व aliquip. Duis aute irure dolor voluptate velit esse cillum dolore यूरोपीय संघ fugiat सोता pariatur में reprehenderit में। Excepteur sint occaecat cupidatat गैर proident, culpa qui officia deserunt mollit anim आईडी स्था laborum में sunt। गुटनिरपेक्ष आंदोलन हम ते conscient तुम poen legum odioque civiuda कारक करने के लिए।";
@@ -13,6 +13,6 @@
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
 "HuT-V7-syg.normalTitle" = "मुझे बाद में पूछें";
 
-/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "cZ9-x2-KGM"; */
-"cZ9-x2-KGM.normalTitle" = "और जानो";
+/* Class = "UIButton"; normalTitle = "Upgrade"; ObjectID = "cZ9-x2-KGM"; */
+"cZ9-x2-KGM.normalTitle" = "नवीनीकरण";
 

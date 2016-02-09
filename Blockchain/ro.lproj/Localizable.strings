@@ -65,10 +65,16 @@
 "Add to Address book?" = "Adauga agenda?";
 
 /* (No Commment) */
+"Address" = "Adresa";
+
+/* (No Commment) */
 "Address book" = "Agendă";
 
 /* (No Commment) */
 "Address is not valid" = "Adresa nu este validă";
+
+/* (No Commment) */
+"Addresses" = "Adrese";
 
 /* (No Commment) */
 "Adjust Fee" = "Ajustare cost";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Arhiva adresa";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arhiva-asta dacă nu vrei să-l utilizaţi mai. Fondurile vor fi în siguranţă, şi vă pot unarchive în orice moment.";
+
+/* (No Commment) */
+"Archived" = "Arhivate";
 
 /* (No Commment) */
 "Ask Me Later" = "Întreabă-mă mai târziu";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Copiaţi în clipboard";
 
 /* (No Commment) */
+"Copy xPub" = "Copie xPub";
+
+/* (No Commment) */
 "Create" = "Crea";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Decriptarea portofel";
+
+/* (No Commment) */
+"Default" = "În mod implicit";
 
 /* (No Commment) */
 "Disable" = "Nu fi de acord";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Tot ce ai nevoie pentru a stoca, petrece şi primi ţi bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Cheia publică a extins";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Nu a reușit încărcarea portofel";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Deconectare";
+
+/* (No Commment) */
+"Make Default" = "Face implicit";
 
 /* (No Commment) */
 "Manual Pairing" = "Asocierea manuală";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Uita-te la doar adresa de scanare?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scanaţi acest cod sau copiaţi-l în app Blockchain comerciant pentru a primi sigur Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "A doua parolă incorectă";
 
@@ -797,7 +824,17 @@
 "Server URL" = "URL-ul serverului";
 
 /* (No Commment) */
+"Set as Default Account?" = "Setat drept cont implicit?";
+
+/* (No Commment) */
 "Settings" = "Setări";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Arată xPub dumneavoastră dacă sunteţi un comerciant şi utiliza aplicaţia Blockchain comerciant să primească fonduri în condiţii de siguranţă şi în particular.
+
+Păstra al tău xPub privat. Cineva cu acces la xPub vă va fi capabil pentru a vedea toate fondurile şi tranzacţii.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "%d semnal a fost ridicat.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine: \n\n• complet actualizat design şi utilizator experienţă \n• securitate robustă centrul \n• Enhanced confidențialitate \n• simplificată de backup şi recuperare \n• personalizate Fondul management \n\ndouă tipuri de avansate tranzacţie (cheltuieli de doar uita-te la adresele şi la comun de monede) nu sunt acceptate în noua versiune în acest moment.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine: • complet actualizat design şi utilizator experienţă • securitate robustă centrul • Enhanced confidențialitate • simplificată de backup şi recuperare • personalizate Fondul management două tipuri de avansate tranzacţie (cheltuieli de doar uita-te la adresele şi la comun de monede) nu sunt acceptate în noua versiune în acest moment.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "A fost o problemă de verificarea identităţii.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Această acţiune necesită doua parola pentru portofel bitcoin. Vă rugăm să introduceţi-l mai jos şi apăsaţi continuă.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Aceasta adresa este nu numai de ceas.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Aceasta este o adresă numai de ceas. Dacă doriţi să cheltuiţi fondurile din cadrul acest portofel, doar scanare cheia privată.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Această cheie privată aparţine de o altă adresă care nu este doar ceas";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Acest lucru este arhivată. Asta înseamnă că acesta nu poate fi accesat în app, şi nu puteţi trimite fonduri de la ea.
+
+Dacă există orice fonduri, acestea vor fi în siguranţă. Pentru a începe să utilizaţi acest lucru din nou, unarchive-l.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Aceasta va şterge toate datele de portofel pe acest aparat. Vă rugăm să confirmaţi aveţi informaţiile portofel altfel salvate în altă parte orice bitcoins în acest portofel va fi inaccesibile!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Avertisment: Identificatorul dvs portofel este informaţii sensibile. Copierea poate compromite securitatea de portofel.";
 
 /* (No Commment) */
+"Watch Only" = "Uita-te doar";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Vă vom trimite indiciu la adresa ta de e-mail confirmată în cazul în care veţi solicita aceasta.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 "Welcome" = "bun venit";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Bine aţi venit la noua versiune de portofel Blockchain!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Ne-am detectat o instalare anterioară de portofel Blockchain pe telefon.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Notaţi-vă fraza de recuperare şi păstraţi-l undeva foarte sigur şi securizat. Amintiţi-vă că oricine ştie dumneavoastră fraza de recuperare are acces la dumneavoastră bitcoins.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Gresit BIP38 parola";
 
 /* (No Commment) */
 "Yes" = "da";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Aveţi posibilitatea să activaţi verificare în 2 paşi prin SMS pe telefonul mobil. Pentru a utiliza alte metode de autentificare în schimb, vă rugăm să login la portofel noastre de web.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Acum puteti petrece la această adresă.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Nu aveţi un cont configurat pentru Mail. Vă rugăm să contactaţi %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Tu ar trebui să întotdeauna pereche sau login dacă aveţi acces la portofel ID-ul şi parola. Recuperarea fondurilor dumneavoastră va crea un nou portofel ID. Doriţi să continuaţi?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Ar trebui să afişa numai acest xPub pentru cei care aveți încredere. Cu această informaţie, se putea urmări de plăţile şi perturba accesul la portofel.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Le-am importat cu succes o cheie privată. Reţineţi că acesta nu corespunde la această adresă numai de ceas. Dacă doriţi să petreceţi la această adresă, asiguraţi-vă că vă scana cheia privată corect.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Le-am importat cu succes la cheia privată pentru adresa %@, şi acum puteţi petrece la ea. Dacă doriţi să-şi petreacă la această adresă, asiguraţi-vă că vă scana cheia privată corect.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Aparatul pare să fie jailbroken. Securitatea portofel poate fi compromisă.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Adresa ta de email verificate este folosit pentru a trimite coduri de conectare când detectează activitate suspecte sau neobişnuite, să vă reamintesc de ţi portofelul login ID-ul şi a trimite alerte de plată bitcoin când primiţi fonduri. Noi nu va folosi adresa de e-mail pentru scopuri de marketing.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Portofel nu conţine această adresă.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Portofelul dumneavoastră a fost creat cu succes.";

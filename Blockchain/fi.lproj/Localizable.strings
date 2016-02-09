@@ -65,10 +65,16 @@
 "Add to Address book?" = "Lisää osoitteistoon?";
 
 /* (No Commment) */
+"Address" = "Osoite";
+
+/* (No Commment) */
 "Address book" = "Osoitteisto";
 
 /* (No Commment) */
 "Address is not valid" = "Osoite ei kelpaa";
+
+/* (No Commment) */
+"Addresses" = "Osoitteet";
 
 /* (No Commment) */
 "Adjust Fee" = "Muuta maksu";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Arkisto osoite";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arkistoida, jos et halua käyttää sitä enää. Rahat ovat turvassa ja voit triviaalien milloin tahansa.";
+
+/* (No Commment) */
+"Archived" = "Arkistoitu";
 
 /* (No Commment) */
 "Ask Me Later" = "Kysy myöhemmin";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Kopioi leikepöydälle";
 
 /* (No Commment) */
+"Copy xPub" = "Kopioi xPub";
+
+/* (No Commment) */
 "Create" = "Luo";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Salauksen lompakko";
+
+/* (No Commment) */
+"Default" = "Oletus";
 
 /* (No Commment) */
 "Disable" = "Poista käytöstä";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Kaiken täytyy tallentaa, käyttää ja saada teidän bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Laajennettu julkisen avaimen";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Ei voitu ladata lompakko";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Kirjaudu ulos";
+
+/* (No Commment) */
+"Make Default" = "Tee oletus";
 
 /* (No Commment) */
 "Manual Pairing" = "Manuaalinen pariliitoksen";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Skannata katsella ainoa osoite?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skannaa tämä koodi tai kopioi se Blockchain kauppias app saada turvallisesti Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Toinen salasana väärin";
 
@@ -797,7 +824,17 @@
 "Server URL" = "Palvelimen URL-osoite";
 
 /* (No Commment) */
+"Set as Default Account?" = "Aseta oletustiliksi?";
+
+/* (No Commment) */
 "Settings" = "Asetukset";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Näytä teidän xPub, jos olet kauppias ja käyttää Blockchain kauppias app saadakseen varoja turvallisesti ja yksityisesti.
+
+Pitää sinun xPub salassa. Joku pääsee sinun xPub voi nähdä kaikki rahaa ja tapahtumia.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signaalin %d esille.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Päivitys vie vain toinen ja bitcoins ja historia ovat turvassa. Tässä on mitä on parempi: \n\n• päivitetty kokonaan suunnittelu ja käyttäjien kokemuksia \n• luotettava tietoturva center\n• Enhanced tietosuoja \n• yksinkertaistettu varmuuskopiointi ja palautus \n• räätälöidyt hallinnointi\n\nkaksi kehittynyt tapahtumatyyppiä (kuluttaa vain katsella-osoitteet ja jaettu kolikon) ei tueta tällä hetkellä uusi versio.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Päivitys vie vain toinen ja bitcoins ja historia ovat turvassa. Tässä on mitä on parempi: • päivitetty kokonaan suunnittelu ja käyttäjien kokemuksia • luotettava tietoturva center Enhanced tietosuoja • yksinkertaistettu varmuuskopiointi ja palautus • räätälöidyt hallinnointi kaksi kehittynyt tapahtumatyyppiä (kuluttaa vain katsella-osoitteet ja jaettu kolikon) ei tueta tällä hetkellä uusi versio.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ollut ongelmia henkilöllisyyden todentamista.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tämä toiminto edellyttää sekunnissa salasana bitcoin-lompakon. Kirjoita se ja paina Jatka.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Tämä osoite ei ole vain katsella.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Tämä on vain katsella-osoite. Jos haluat viettää rahaa sisällä tämän lompakon, vain skannata yksityisen avaimen.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Yksityinen avain kuuluu toiseen osoitteeseen, joka ei ole vain katsella";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Tämä asia on arkistoitu. Tämä tarkoittaa sitä voi käyttää app ja et voi lähettää varoja se.
+
+Jos varoja, ne ovat turvassa. Käytön tämä asia uudelleen aloittamiseksi triviaalien se.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Tämä poistaa kaikki laitteen tiedot lompakko. Vahvista, lompakon tiedot tallennetaan muualla muuten mitään bitcoins lompakko-se voi käyttää!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Varoitus: Lompakko-tunniste on arkaluonteisia tietoja. Luvaton kopiointi saattaa vaarantaa tietoturvan lompakon.";
 
 /* (No Commment) */
+"Watch Only" = "Katsella vain";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Lähetämme Vihje vahvistettu sähköpostiosoite, jos pyydät sitä.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "Welcome" = "Tervetuloa";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Tervetuloa uusi versio Blockchain lompakko!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Havaitsimme aiempi asennus Blockchain lompakko puhelimeen.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Kirjoita muistiin elpyminen lause ja pitää se jonnekin, erittäin turvallinen ja varma. Muista, että jokainen, joka tuntee Recovery-lause on pääsy sinun bitcoins.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Väärä BIP38 salasana";
 
 /* (No Commment) */
 "Yes" = "Kyllä";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Voit ottaa 2-vaiheinen vahvistus tekstiviestinä matkapuhelimeesi. Jotta voit käyttää muita todennusmenetelmiä, kirjaudu sisään web-lompakkoon.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Voit nyt käyttää tästä osoitteesta.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Sinulla ei ole tilin postia. Ota yhteyttä %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Kannattaa aina pari tai Kirjaudu sisään jos sinulla on pääsy sinun lompakko ID ja tunnussana. Takaisin rahat luo uuden lompakon. Haluatko jatkaa?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Näytä vain xPub niille luotat. Tämän tiedon he ehkä seurata maksuja ja häiritä sinun lompakko.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Yksityinen avain Olen tuonti onnistui. Huomaa, että se ei vastaa vain katsella-osoitteeseen. Jos haluat viettää tästä osoitteesta, varmista, että tarkistat oikealla yksityisellä avaimella.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Olet onnistuneesti tuonut yksityistä avainta osoite %@, ja voit nyt käyttää sitä. Jos haluat viettää tästä osoitteesta, varmista, että tarkistat oikealla yksityisellä avaimella.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Laite tulee näkyviin jailbroken. Lompakon turvallisuus voi vaarantua.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Tarkistaa sähköpostiosoitteesi käytetään lähettää kirjautuminen koodit kun epäilyttävä tai epätavallinen toiminta havaitaan, muistuttaa lompakko Sisäänkirjautumistunnus ja lähettää bitcoin maksuilmoitukset, kun saat varat. Emme käytä sähköpostiosoitteesi markkinointitarkoituksiin.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Lompakon ei sisällä tähän osoitteeseen.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Lompakko on luotu.";

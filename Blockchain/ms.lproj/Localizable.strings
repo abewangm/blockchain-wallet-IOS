@@ -65,10 +65,16 @@
 "Add to Address book?" = "Menambah kepada buku alamat?";
 
 /* (No Commment) */
+"Address" = "Alamat";
+
+/* (No Commment) */
 "Address book" = "Buku alamat";
 
 /* (No Commment) */
 "Address is not valid" = "Alamat adalah tidak sah";
+
+/* (No Commment) */
+"Addresses" = "Alamat";
 
 /* (No Commment) */
 "Adjust Fee" = "Laraskan yuran";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Arkib alamat";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arkib ini jika anda tidak mahu menggunakannya lagi. Dana anda akan selamat, dan anda boleh unarchive pada bila-bila masa.";
+
+/* (No Commment) */
+"Archived" = "Arkib";
 
 /* (No Commment) */
 "Ask Me Later" = "Tanya saya kemudian";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Salin ke papan Keratan";
 
 /* (No Commment) */
+"Copy xPub" = "Salinan xPub";
+
+/* (No Commment) */
 "Create" = "Mencipta";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Wallet menyahdekripsi";
+
+/* (No Commment) */
+"Default" = "Lalai";
 
 /* (No Commment) */
 "Disable" = "Mematikan";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Segala-galanya yang anda perlu menyimpan, membelanjakan dan menerima bitcoin anda";
+
+/* (No Commment) */
+"Extended Public Key" = "Dilanjutkan kekunci awam";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Gagal untuk memuatkan Wallet";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Log keluar";
+
+/* (No Commment) */
+"Make Default" = "Membuat lalai";
 
 /* (No Commment) */
 "Manual Pairing" = "Berpasangan secara manual";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Mengimbas alamat hanya menonton?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Imbas Kod ini atau menyalinnya ke dalam aplikasi Saudagar Blockchain anda dengan selamat menerima Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Kedua kata laluan yang tidak betul";
 
@@ -797,7 +824,17 @@
 "Server URL" = "Pelayan URL";
 
 /* (No Commment) */
+"Set as Default Account?" = "Set sebagai akaun lalai?";
+
+/* (No Commment) */
 "Settings" = "Seting";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Menunjukkan xPub anda jika anda seoang dan menggunakan aplikasi Saudagar Blockchain untuk mendapat dana dengan selamat dan swasta.
+
+Teruskan xPub anda yang peribadi. Seseorang yang mempunyai akses ke xPub anda akan dapat melihat semua transaksi dan dana anda.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "%d isyarat dibesarkan.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Naik taraf mengambil masa hanya satu saat dan bitcoins dan sejarah anda akan selamat. Di sini adalah Apakah lebih baik: \n\n• Reka bentuk benar-benar dikemaskini dan pengguna mengalami \n• keselamatan yang teguh Pusat \n• privasi dipertingkatkan ringkas sandaran dan pemulihan \n• Customized pengurusan dana \n\njenis transaksi lanjutan dua (perbelanjaan dari alamat menonton sahaja dan duit syiling yang dikongsi) tidak disokong dalam versi baru pada masa ini.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Naik taraf mengambil masa hanya satu saat dan bitcoins dan sejarah anda akan selamat. Di sini adalah Apakah lebih baik: Reka bentuk • benar-benar dikemaskini dan pengguna mengalami • keselamatan yang teguh Pusat • privasi dipertingkatkan ringkas sandaran dan pemulihan • Customized pengurusan dana jenis transaksi lanjutan dua (perbelanjaan dari alamat menonton sahaja dan duit syiling yang dikongsi) tidak disokong dalam versi baru pada masa ini.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Jadilah masalah mengesahkan identiti anda.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata laluan kedua untuk bitcoin dompet anda. Sila masukkannya di bawah dan tekan teruskan.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Alamat ini bukanlah menonton sahaja.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Ini adalah alamat yang menonton sahaja. Jika anda mahu untuk menghabiskan wang anda dari dalam wallet ini, hanya mengimbas kunci persendirian.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Ini kunci peribadi milik ke alamat lain yang tidak menonton sahaja";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Perkara ini direkodkan. Ini bermakna ia tidak boleh dicapai dalam aplikasi ini, dan anda tidak boleh menghantar dana dari.
+
+Jika terdapat apa-apa dana, mereka akan selamat. Untuk mula menggunakan perkara ini lagi, unarchive ia.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Ini akan memadam semua data dompet pada peranti ini. Sila sahkan anda mempunyai dompet maklumat anda disimpan di tempat lain sebaliknya bitcoins mana-mana dalam wallet ini akan boleh dicapai!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Amaran: Pengenalpastian dompet anda adalah maklumat sensitif. Menyalinnya mungkin menjejaskan Keselamatan dompet anda.";
 
 /* (No Commment) */
+"Watch Only" = "Lihat sahaja";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Kami akan menghantar kunci jawab untuk alamat e-mel telah disahkan jika anda memintanya.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 "Welcome" = "Mengalu-alukan";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Selamat datang ke versi baru Blockchain Wallet!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Kami telah mengesan pemasangan terdahulu daripada Blockchain Wallet pada telefon anda.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Catatkan frasa pemulihan anda dan menyimpannya di tempat yang selamat dan terjamin. Ingatlah bahawa sesiapa yang mengetahui frasa pemulihan anda mempunyai akses untuk bitcoins anda.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Kata laluan salah BIP38";
 
 /* (No Commment) */
 "Yes" = "Ya";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Anda boleh membolehkan langkah 2 pengesahan melalui SMS pada telefon mudah alih. Untuk menggunakan kaedah pengesahan yang lain sebagai ganti, sila log masuk ke web kami wallet.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Anda kini boleh menghabiskan daripada alamat ini.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Anda tidak mempunyai akaun untuk mel. Sila hubungi %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Anda sentiasa perlu berpasangan atau login jika anda mempunyai akses kepada Wallet ID dan kata laluan anda. Memungut dana anda akan mencipta ID yang baru Wallet. Adakah anda ingin meneruskan?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Anda hanya perlu menunjukkan xPub ini kepada orang-orang yang anda percayai. Dengan maklumat ini, mereka mungkin dapat terus menjejaki anak pembayaran balik anda dan menganggu capaian ke dompet anda.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Anda telah berjaya diimport kunci persendirian. Ambil perhatian bahawa ia tidak sepadan dengan alamat ini menonton sahaja. Jika anda mahu untuk menghabiskan dari alamat ini, pastikan anda imbas kunci peribadi yang betul.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Anda telah berjaya mengimport kunci peribadi untuk %@ alamat, dan anda kini boleh menghabiskan daripadanya. Jika anda ingin membelanjakan daripada alamat ini, pastikan anda mengimbas kunci peribadi yang betul.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Peranti muncul untuk menjadi jailbroken. Keselamatan dompet anda mungkin terjejas.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Alamat e-mel yang disahkan akan digunakan untuk menghantar kod log masuk apabila aktiviti mencurigakan atau luar biasa yang dikesan, untuk mengingatkan anda tentang ID log masuk wallet, dan untuk menghantar amaran pembayaran bitcoin apabila anda menerima dana. Kami tidak akan menggunakan alamat e-mel anda untuk tujuan pemasaran.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Dompet mengandungi alamat ini.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Dompet anda telah berjaya dicipta.";

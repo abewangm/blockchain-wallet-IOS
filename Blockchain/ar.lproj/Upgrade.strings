@@ -1,5 +1,5 @@
 /* (No Commment) */
-"4cR-kX-YUY.text" = "مرحبا بكم في النسخة الجديدة من المحفظة بلوكتشين!";
+"4cR-kX-YUY.text" = "تأكيد عملية الترقية";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "D5e-zI-7dK"; */
 "D5e-zI-7dK.text" = "أبجد هوز حطي الجلوس أية مقال ايليت، كونسيكتيتاور سلام أديبيسيسينج بيكو، sed دو ايوسمود حطي إينسيديدونت ut لابوري et الكوة ماجنا ثخذ. أبجد هوز الإعلانية كلمن سعفص، حطي هوز اكسيرسيتيشن أولامكو لابريس مشروط حطي كلمن سعفص قرشت ثخذ ضظغ. أبجد هوز حطي عرار aute في كلمن في فولوبتاتي قرشت esse سلوم ثخذ الاتحاد الأوروبي فوجيات ثخذ ضظغ. أبجد سينت حطي كلمن غير برويدينت، شريعة في إهمال qui حيث ديسيرونت موليت انيم معرف est ضظغ. حركة عدم الانحياز ويبر كونسسينت الشركة المصرية للاتصالات عامل توم بون العام أوديوك سيفيودا.";
@@ -13,6 +13,6 @@
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
 "HuT-V7-syg.normalTitle" = "السؤال لاحقاً";
 
-/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "cZ9-x2-KGM"; */
-"cZ9-x2-KGM.normalTitle" = "التعرف على المزيد";
+/* Class = "UIButton"; normalTitle = "Upgrade"; ObjectID = "cZ9-x2-KGM"; */
+"cZ9-x2-KGM.normalTitle" = "ترقية";
 

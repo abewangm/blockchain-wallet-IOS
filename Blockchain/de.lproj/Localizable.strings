@@ -65,10 +65,16 @@
 "Add to Address book?" = "Zum Adressbuch hinzufügen?";
 
 /* (No Commment) */
+"Address" = "Adresse";
+
+/* (No Commment) */
 "Address book" = "Adressbuch";
 
 /* (No Commment) */
 "Address is not valid" = "Adresse ist nicht gültig";
+
+/* (No Commment) */
+"Addresses" = "Adressen";
 
 /* (No Commment) */
 "Adjust Fee" = "Anpassen von Fee";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Archiv-Adresse";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Archivieren Sie dies, wenn Sie nicht, dass es nicht mehr verwenden möchten. Ihre Mittel werden sicher und Sie können es jederzeit öffnen.";
+
+/* (No Commment) */
+"Archived" = "Archiviert";
 
 /* (No Commment) */
 "Ask Me Later" = "Fragen Sie mich später";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "In Zwischenablage kopieren";
 
 /* (No Commment) */
+"Copy xPub" = "XPub kopieren";
+
+/* (No Commment) */
 "Create" = "Erstellen";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Entschlüsseln von Wallet";
+
+/* (No Commment) */
+"Default" = "In der Standardeinstellung";
 
 /* (No Commment) */
 "Disable" = "Deaktivieren";
@@ -354,6 +372,9 @@
 
 /* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Alles was Sie brauchen, um zu speichern, zu verbringen und erhalten Ihre bitcoin";
+
+/* (No Commment) */
+"Extended Public Key" = "Öffentlichen Schlüssel erweitert";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Fehler beim Laden der Brieftasche";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Logout";
+
+/* (No Commment) */
+"Make Default" = "Machen Standard";
 
 /* (No Commment) */
 "Manual Pairing" = "Manuelle Kopplung";
@@ -704,7 +728,7 @@
 "Please verify your email address first." = "Bitte überprüfen Sie zuerst Ihre e-Mail-Adresse.";
 
 /* (No Commment) */
-"Preferences" = "Einstellungen";
+"Preferences" = "\"Einstellungen\"";
 
 /* (No Commment) */
 "Privacy Policy" = "Datenschutz";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Scannen Watch einzige Adresse?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scannen Sie dieser Code oder kopieren Sie sie in Ihre Blockchain Merchant app sicher Bitcoin zu erhalten.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Zweite Passwort falsch";
 
@@ -797,7 +824,17 @@
 "Server URL" = "Server-URL";
 
 /* (No Commment) */
+"Set as Default Account?" = "Als Standardkonto festlegen?";
+
+/* (No Commment) */
 "Settings" = "Einstellungen";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Zeigen Sie Ihre xPub, wenn Sie ein Händler und verwende die Blockchain Kaufmann-app um Gelder sicher und privat zu erhalten.
+
+Ihre xPub privat zu halten. Jemand mit Zugang zu Ihrem xPub werden alle Ihre Mittel und Transaktionen zu sehen.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signal %d wuchs.";
@@ -850,13 +887,29 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Die Aktualisierung dauert nur eine Sekunde und Ihre Bitcoins und Geschichte werden sicher. Hier ist, was ist besser: \n\n• komplett aktualisiert Design und User experience \n• robuste Sicherheit Mitte \n• Privacy Enhanced \n• vereinfacht Backup und Recovery \n• Customized Fondsmanagement \n\nzwei erweiterte Buchungsarten (Ausgaben von Uhr-nur Adressen und Laufzeit-Münze) werden in der neuen Version zu diesem Zeitpunkt nicht unterstützt.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Die Aktualisierung dauert nur eine Sekunde und Ihre Bitcoins und Geschichte werden sicher. Hier ist, was ist besser: komplett aktualisiert • Design und User experience • robuste Sicherheit Mitte • Privacy Enhanced • vereinfacht Backup und Recovery • Customized Fondsmanagement zwei erweiterte Buchungsarten (Ausgaben von Uhr-nur Adressen und Laufzeit-Münze) werden in der neuen Version zu diesem Zeitpunkt nicht unterstützt.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Es gab ein Problem, Ihre Identität zu überprüfen.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Diese Aktion erfordert das zweite Kennwort für Ihre Bitcoin-Börse. Bitte geben Sie es unten, und drücken Sie weiter.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Diese Adresse ist nicht nur beobachten.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Dies ist ein nur-Uhr-Adresse. Wollen Sie Ihre Gelder aus innerhalb dieser Tasche ausgeben, nur Scannen Sie Ihres privaten Schlüssels.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Dieser private Schlüssel gehört zu einer anderen Adresse, die nicht nur zu sehen ist";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Dieses Ding wird archiviert. Das heißt, es kann nicht zugegriffen werden, in der app und Mittel können nicht gesendet werden, von ihm.
+
+Wenn Mittel vorhanden sind, werden sie sicher. Um diese Sache wieder zu verwenden zu beginnen, désarchiver.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Dies löscht alle Brieftasche-Daten auf diesem Gerät. Bitte bestätigen Sie, dass Ihre Brieftasche Informationen gespeichert anderswo sonst Bitcoins in diesem Portemonnaie zugegriffen werden!!";
@@ -1013,6 +1066,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Warnung: Ihr Portemonnaie-Bezeichner ist vertraulicher Informationen. Kopieren sie könnten die Sicherheit Ihrer Brieftasche beeinträchtigen.";
 
 /* (No Commment) */
+"Watch Only" = "Sehen Sie nur";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Wir senden den Hinweis an Ihre bestätigte e-Mail-Adresse für den Fall, dass Sie es anfordern.";
 
 /* (No Commment) */
@@ -1032,9 +1088,6 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 "Welcome" = "Herzlich Willkommen";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Willkommen Sie in der neuen Version der Blockchain Brieftasche!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Wir haben eine frühere Installation von Blockchain Wallet auf deinem Handy festgestellt.";
 
 /* (No Commment) */
@@ -1042,6 +1095,9 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Notieren Sie Ihre Recovery-Satz und halten Sie es irgendwo sehr sicher und sicher. Denken Sie daran, dass wer Ihre Recovery-Satz kennt Zugriff auf Ihre Bitcoins hat.";
+
+/* (No Commment) */
+"Wrong BIP38 Password" = "Falsche BIP38 Passwort";
 
 /* (No Commment) */
 "Yes" = "Ja";
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Sie können 2-stufige Verifizierung per SMS auf Ihrem Mobiltelefon aktivieren. Um andere Authentifizierungsmethoden verwenden, melden Sie sich an unserer Online-Zahlungsmethode.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Jetzt können Sie von dieser Adresse verbringen.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Sie müssen kein Konto für Mail eingerichtet. Bitte kontaktieren Sie %@";
@@ -1081,6 +1140,15 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Sie sollten immer koppeln oder haben Sie Zugriff auf Ihre Brieftasche-ID und Passwort einloggen. Wiederherstellen Ihrer Fonds schafft eine neue Geldbörse-ID. Möchten Sie fortfahren?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Sie sollten nur diese xPub, die zeigen, denen, die Sie vertrauen. Mit diesen Informationen können sie möglicherweise behalten Sie Ihre Zahlungen und Zugriff auf Ihre Brieftasche zu stören.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Sie haben erfolgreich einen privaten Schlüssel importiert. Beachten Sie, dass es diese Uhr nur Adresse nicht entspricht. Wenn Sie von dieser Adresse verbringen möchten, stellen Sie sicher, dass den korrekten privaten Schlüssel zu scannen.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Sie haben erfolgreich importiert, des privaten Schlüssels für die Adresse %@, und verbringen Sie nun von ihm. Wenn Sie von dieser Adresse ausgeben möchten, stellen Sie sicher, dass Sie den richtigen privaten Schlüssel scannen.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Ihr Gerät wird sein Jailbroken. Die Sicherheit Ihrer Brieftasche möglicherweise gefährdet.";
@@ -1111,6 +1179,9 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Ihre verifizierte e-Mail-Adresse wird verwendet, um die Login-Codes zu senden, wenn verdächtige oder ungewöhnliche Aktivitäten erkannt wird, an Ihre Brieftasche-Anmelde-ID erinnern und um Bitcoin Zahlung Warnungen zu senden, wenn Sie Gelder erhalten. Wir werden Ihre e-Mail-Adresse nicht für Marketingzwecke verwenden.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Ihre Geldbörse ist diese Adresse nicht enthalten.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Ihre Geldbörse wurde erfolgreich erstellt.";

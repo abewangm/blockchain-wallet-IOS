@@ -1,5 +1,5 @@
 /* (No Commment) */
-"4cR-kX-YUY.text" = "Καλωσορίζουμε τη νέα έκδοση του το Blockchain πορτοφόλι!";
+"4cR-kX-YUY.text" = "Επιβεβαιώστε την αναβάθμιση";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "D5e-zI-7dK"; */
 "D5e-zI-7dK.text" = "Σχεδιασμός Tech καθίσει er lamet ΕΛΙΤ, consectetaur cillium adipisicing pecu, sed eiusmod χ incididunt ut labore et dolore magna aliqua. UT enim διαφημίσεων ημιτόνιο veniam, αυτό nostrud exercitation ullamco laboris ΝΗΣΙ ut aliquip ex ea commodo consequat. DUIs dolor irure aute σε reprehenderit σε voluptate δεν θα esse cillum dolore ΕΕ fugiat nulla pariatur. Excepteur Σεν occaecat cupidatat μη proident, στην culpa qui officia deserunt mollitas ένα anim αναγνωριστικό est laborum. Nam liber te βρίσκομαι στον παράγοντα tum poen legum odioque civiuda.";
@@ -13,6 +13,6 @@
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
 "HuT-V7-syg.normalTitle" = "Να ερωτηθώ αργότερα";
 
-/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "cZ9-x2-KGM"; */
-"cZ9-x2-KGM.normalTitle" = "Μάθε περισσότερα";
+/* Class = "UIButton"; normalTitle = "Upgrade"; ObjectID = "cZ9-x2-KGM"; */
+"cZ9-x2-KGM.normalTitle" = "Αναβάθμιση";
 

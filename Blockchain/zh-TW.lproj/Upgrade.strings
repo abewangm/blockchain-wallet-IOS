@@ -1,5 +1,5 @@
 /* (No Commment) */
-"4cR-kX-YUY.text" = "歡迎到新版本的 Blockchain 的錢包!";
+"4cR-kX-YUY.text" = "確認升級";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "D5e-zI-7dK"; */
 "D5e-zI-7dK.text" = "Lorem ipsum 憂傷坐呃雅致 lamet，consectetaur cillium adipisicing 獨特，sed 做 eiusmod 平整 incididunt ut labore et dolore 麥格納 aliqua。Ut enim ad 微量 veniam，奎斯製造 nisi ut aliquip ex ea commodo consequat ullamco nostrud 實習。在樹中找尋 velit 存在 cillum dolore 歐盟 fugiat nulla pariatur 的 duis 獲得急性伊魯雷憂傷。Excepteur sint occaecat cupidatat 非 proident，必須在締約過失責任魁斡旋 deserunt mollit 阿尼姆 id est laborum。不結盟運動游離 te conscient 因素 tum 首詩從簡法學 odioque civiuda。";
@@ -13,6 +13,6 @@
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
 "HuT-V7-syg.normalTitle" = "稍後再問我";
 
-/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "cZ9-x2-KGM"; */
-"cZ9-x2-KGM.normalTitle" = "瞭解更多資訊";
+/* Class = "UIButton"; normalTitle = "Upgrade"; ObjectID = "cZ9-x2-KGM"; */
+"cZ9-x2-KGM.normalTitle" = "升級";
 
