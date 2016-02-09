@@ -262,7 +262,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        [self didSelectAccount:indexPath.row];
+        [self didSelectAccount:(int)indexPath.row];
     } else if (indexPath.section == 1) {
         [self didSelectAddress:allKeys[indexPath.row]];
     }
