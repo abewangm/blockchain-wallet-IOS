@@ -65,10 +65,16 @@
 "Add to Address book?" = "Добавить в адресную книгу?";
 
 /* (No Commment) */
+"Address" = "Адрес";
+
+/* (No Commment) */
 "Address book" = "Адресная книга";
 
 /* (No Commment) */
 "Address is not valid" = "Адрес недействителен";
+
+/* (No Commment) */
+"Addresses" = "Адреса";
 
 /* (No Commment) */
 "Adjust Fee" = "Скорректировать комиссию";
@@ -102,6 +108,12 @@
 
 /* (No Commment) */
 "Archive Address" = "Адрес архива";
+
+/* (No Commment) */
+"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Архив, это если вы не хотите использовать его больше. Ваши средства будут в безопасности, и вы можете разархивировать его в любое время.";
+
+/* (No Commment) */
+"Archived" = "Архив";
 
 /* (No Commment) */
 "Ask Me Later" = "Спросите меня позже";
@@ -233,6 +245,9 @@
 "Copy to clipboard" = "Скопировано в буфер обмена";
 
 /* (No Commment) */
+"Copy xPub" = "Копирование xPub";
+
+/* (No Commment) */
 "Create" = "Создать";
 
 /* (No Commment) */
@@ -273,6 +288,9 @@
 
 /* (No Commment) */
 "Decrypting Wallet" = "Расшифровка кошелька";
+
+/* (No Commment) */
+"Default" = "По умолчанию";
 
 /* (No Commment) */
 "Disable" = "Деактивировать";
@@ -356,6 +374,9 @@
 "Everything you need to store, spend and receive your bitcoin" = "Все, что вам нужно для хранения, перевода и получения bitcoin";
 
 /* (No Commment) */
+"Extended Public Key" = "Расширенный открытый ключ";
+
+/* (No Commment) */
 "Failed To Load Wallet" = "Не удалось загрузить бумажник";
 
 /* (No Commment) */
@@ -413,7 +434,7 @@
 "Imported Addresses (Archived)" = "Импортированные адреса (в архиве)";
 
 /* (No Commment) */
-"Imported Private Key %@" = "Импортированный закрытый ключ % @";
+"Imported Private Key %@" = "Импортируемого закрытого ключа %@";
 
 /* (No Commment) */
 "Importing key" = "Импорт ключа";
@@ -510,6 +531,9 @@
 
 /* (No Commment) */
 "Logout" = "Выйти";
+
+/* (No Commment) */
+"Make Default" = "Сделать по умолчанию";
 
 /* (No Commment) */
 "Manual Pairing" = "Ручное сопряжение";
@@ -760,6 +784,9 @@
 /* (No Commment) */
 "Scan Watch Only Address?" = "Сканировать адрес для просмотра?";
 
+/* (No Commment) */
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Этот код или скопировать его в приложение Blockchain купец безопасно получать Bitcoin.";
+
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Неверный второй пароль ";
 
@@ -797,7 +824,17 @@
 "Server URL" = "URL-адрес сервера";
 
 /* (No Commment) */
+"Set as Default Account?" = "Установить в качестве учетной записи по умолчанию?";
+
+/* (No Commment) */
 "Settings" = "Настройки";
+
+/* (No Commment) */
+"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
+
+Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Покажите вашу xPub, если вы торговец и использовать Blockchain купец приложение для получения средств, безопасно и конфиденциально.
+              
+Держите ваш xPub частных. Кто-то с доступом к вашей xPub смогут увидеть всех ваших средств и операций.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Сигнал %d был поднят.";
@@ -865,6 +902,22 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Это действие требует введения второго пароля для кошелька bitcoin. Пожалуйста, введите его ниже и нажмите продолжить.";
+
+/* (No Commment) */
+"This address is not watch-only." = "Этот адрес не только смотреть.";
+
+/* (No Commment) */
+"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Это часы только адрес. Если вы хотите потратить ваши средства от в пределах этой бумажник, просто сканировать ваш закрытый ключ.";
+
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Этот закрытый ключ принадлежит к другой адрес, который является не только смотреть";
+
+/* (No Commment) */
+"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+
+If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Эта вещь архивируется. Это означает, он не может использоваться в приложении, и вы не можете отправить средства от него.
+                
+Если есть какие-либо средства, они будут безопасно. Для того, чтобы начать использовать эту вещь снова, разархивировать его.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Это сотрет все данные кошелька на этом устройстве. Пожалуйста, убедитесь, что  информация  о кошельке сохранена в другом месте, в противном случае Bitcoins в нем будут недоступны!!";
@@ -1025,6 +1078,9 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Предупреждение: Ваш идентификатор кошелька является конфиденциальной информацией. Копирование может нарушить безопасность вашего кошелька.";
 
 /* (No Commment) */
+"Watch Only" = "Смотреть только";
+
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Мы отправим подсказку на подтвержденный адрес электронной почты в случае, если вы запросите ее.";
 
 /* (No Commment) */
@@ -1057,6 +1113,9 @@ wallet experience for you" = "Мы разработали полностью н�
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Запишите фразу для восстановления и сохраните ее в безопасном и надежном месте. Помните, что любой, кто знает вашу фразу для восстановления, имеет доступ к вашим bitcoins.";
 
 /* (No Commment) */
+"Wrong BIP38 Password" = "BIP38 неправильный пароль";
+
+/* (No Commment) */
 "Yes" = "Да";
 
 /* No comment provided by engineer. */
@@ -1070,6 +1129,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Можно включить двухэтапную аутентификацию через SMS на вашем мобильном телефоне. Для того, чтобы использовать другие методы проверки подлинности, пожалуйста войдите в наш web-кошелек.";
+
+/* (No Commment) */
+"You can now spend from this address." = "Теперь вы можете потратить с этого адреса.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "У вас нет аккаунта для почты. Свяжитесь с %@.";
@@ -1094,6 +1156,15 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Вы должны всегда выполнять сопряжение или входить в систему, если у вас есть доступ к ID кошелька и паролю. Восстановление ваших средств создаст новый ID кошелька. Вы хотите продолжить?";
+
+/* (No Commment) */
+"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Вы только должны показать этот xPub для тех, которым вы доверяете. С этой информацией они могут иметь возможность отслеживать ваши платежи и нарушить доступ к ваш бумажник.";
+
+/* (No Commment) */
+"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Вы успешно импортировали закрытый ключ. Обратите внимание, что он не соответствует этот часы только адрес. Если вы хотите потратить с этого адреса, убедитесь, что вы сканируете правильный закрытый ключ.";
+
+/* (No Commment) */
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Вы успешно импортировали закрытый ключ для адреса %@, и вы теперь можете потратить от него. Если вы хотите потратить с этого адреса, убедитесь, что вы сканируете правильный закрытый ключ.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Возможно, ваше устройство взломано. Возможно, безопасность вашего кошелька нарушена.";
@@ -1124,6 +1195,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Ваш подтвержденный электронный адрес  используется для отправки кодов входа в систему, при подозрительной или необычной активности, для напоминания  ID для доступа к кошельку и отправления сообщений о поступлении средств на счет. Мы не будем использовать ваш электронный адрес в маркетинговых целях.";
+
+/* (No Commment) */
+"Your wallet does not contain this address." = "Ваш кошелек не содержат этот адрес.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Ваш кошелек был успешно создан.";
