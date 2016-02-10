@@ -1242,7 +1242,13 @@ void (^secondPasswordSuccess)(NSString *);
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY_ARGUMENT, address] preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        if (self.topViewControllerDelegate) {
+            if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+                [self.topViewControllerDelegate presentAlertController:alert];
+            }
+        } else {
+            [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
         [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
     }];
 }
