@@ -258,7 +258,7 @@ MyWalletPhone.getReceivingAddressForAccount = function(num) {
         return '';
     }
     
-    return MyWallet.wallet.hdwallet.accounts[MyWalletPhone.getIndexOfActiveAccount(num)].receiveAddress;
+    return MyWallet.wallet.hdwallet.accounts[num].receiveAddress;
 };
 
 MyWalletPhone.isArchived = function(accountOrAddress) {
