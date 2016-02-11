@@ -817,7 +817,6 @@ void (^secondPasswordSuccess)(NSString *);
     if (_tabViewController.presentedViewController) {
         BCModalViewController *bcModalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_PASSWORD_REQUIRED view:secondPasswordView];
         
-        secondPasswordTextField.text = nil;
         addPrivateKeySuccess = success;
 
         [_tabViewController.presentedViewController presentViewController:bcModalViewController animated:YES completion:^{
@@ -866,7 +865,6 @@ void (^secondPasswordSuccess)(NSString *);
         [app standardNotifyAutoDismissingController:BC_STRING_NO_PASSWORD_ENTERED];
     } else if(validateSecondPassword && ![wallet validateSecondPassword:password]) {
         [app standardNotifyAutoDismissingController:BC_STRING_SECOND_PASSWORD_INCORRECT];
-        secondPasswordTextField.text = nil;
     } else {
         if (secondPasswordSuccess) {
             // It takes ANIMATION_DURATION to dismiss the second password view, then a little extra to make sure any wait spinners start spinning before we execute the success function.
@@ -877,6 +875,8 @@ void (^secondPasswordSuccess)(NSString *);
         }
         [app closeModalWithTransition:kCATransitionFade];
     }
+    
+    secondPasswordTextField.text = nil;
 }
 
 - (void)getSecondPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error
@@ -889,8 +889,6 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (_tabViewController.presentedViewController) {
         BCModalViewController *bcModalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_SECOND_PASSWORD_REQUIRED view:secondPasswordView];
-        
-        secondPasswordTextField.text = nil;
         
         [_tabViewController.presentedViewController presentViewController:bcModalViewController animated:YES completion:^{
             UIButton *secondPasswordOverlayButton = [[UIButton alloc] initWithFrame:[secondPasswordView convertRect:secondPasswordButton.frame toView:bcModalViewController.view]];
@@ -918,6 +916,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self hideBusyView];
     
     secondPasswordSuccess = nil;
+    secondPasswordTextField.text = nil;
     
     self.wallet.isSyncing = NO;
     
