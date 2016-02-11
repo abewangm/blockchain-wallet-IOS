@@ -575,7 +575,11 @@
         return;
     }
     
+    self.isSyncing = YES;
+    
     [self.webView executeJS:@"MyWalletPhone.toggleArchived(%d)", account];
+    
+    [self getHistory];
 }
 
 - (uint64_t)getLegacyAddressBalance:(NSString*)address
