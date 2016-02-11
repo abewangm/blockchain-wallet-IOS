@@ -42,8 +42,11 @@ NSString *const kMerchantDescriptionKey = @"description";
         merchant.pcode = [dict safeObjectForKey:kMerchantPCodeKey];
         merchant.telephone = [dict safeObjectForKey:kMerchantTelphoneKey];
         merchant.urlString = [dict safeObjectForKey:kMerchantURLKey];
-        merchant.latitude = [[dict safeObjectForKey:kMerchantLatitudeKey] stringValue];
-        merchant.longitude = [[dict safeObjectForKey:kMerchantLongitudeKey] stringValue];
+        
+        id latitude = [dict safeObjectForKey:kMerchantLatitudeKey];
+        merchant.latitude = [latitude isKindOfClass:[NSString class]] ? latitude : [latitude stringValue];
+        id longitude = [dict safeObjectForKey:kMerchantLongitudeKey];
+        merchant.longitude = [longitude isKindOfClass:[NSString class]] ? longitude : [longitude stringValue];
         
         NSString *merchantType = [dict safeObjectForKey:kMerchantTypeKey];
         BCMerchantLocationType locationType = BCMerchantLocationTypeOther;
