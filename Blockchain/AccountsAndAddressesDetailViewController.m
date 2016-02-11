@@ -246,7 +246,7 @@ typedef enum {
     if (self.address) {
         return [app.wallet isWatchOnlyLegacyAddress:self.address] ? numberOfSectionsAddressUnarchived + 1 : numberOfSectionsAddressUnarchived;
     } else {
-        return [app.wallet getDefaultAccountIndex] == self.account ? numberOfSectionsAccountUnarchived - 1 : numberOfSectionsAccountUnarchived;
+        return [app.wallet getDefaultAccountIndexActiveOnly:NO] == self.account ? numberOfSectionsAccountUnarchived - 1 : numberOfSectionsAccountUnarchived;
     }
 }
 
@@ -260,7 +260,7 @@ typedef enum {
             if (self.address) {
                 return numberOfRowsAddressUnarchived;
             } else {
-                return [app.wallet getDefaultAccountIndex] == self.account ? numberOfRowsAccountUnarchived - 1 : numberOfRowsAccountUnarchived;
+                return [app.wallet getDefaultAccountIndexActiveOnly:NO] == self.account ? numberOfRowsAccountUnarchived - 1 : numberOfRowsAccountUnarchived;
             }
         }
     }
@@ -299,7 +299,7 @@ typedef enum {
                         if (self.address) {
                             [self showAddress:self.address];
                         } else {
-                            if ([app.wallet getDefaultAccountIndex] != self.account) {
+                            if ([app.wallet getDefaultAccountIndexActiveOnly:NO] != self.account) {
                                 [self alertToConfirmSetDefaultAccount:self.account];
                             } else {
                                 [self alertToShowAccountXPub];
@@ -360,7 +360,7 @@ typedef enum {
                         cell.textLabel.text = BC_STRING_ADDRESS;
                         cell.detailTextLabel.text = self.address;
                     } else {
-                        if ([app.wallet getDefaultAccountIndex] != self.account) {
+                        if ([app.wallet getDefaultAccountIndexActiveOnly:NO] != self.account) {
                             cell.textLabel.text = BC_STRING_MAKE_DEFAULT;
                             cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
                             cell.accessoryType = UITableViewCellAccessoryNone;

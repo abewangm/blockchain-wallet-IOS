@@ -1810,13 +1810,13 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAllAccountsCount()"] intValue];
 }
 
-- (int)getDefaultAccountIndex
+- (int)getDefaultAccountIndexActiveOnly:(BOOL)isActiveOnly
 {
     if (![self isInitialized]) {
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getDefaultAccountIndex()"] intValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getDefaultAccountIndex(%d)", isActiveOnly] intValue];
 }
 
 - (void)setDefaultAccount:(int)index

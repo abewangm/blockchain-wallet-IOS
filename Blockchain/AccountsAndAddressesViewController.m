@@ -280,7 +280,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
             cell.backgroundColor = COLOR_BACKGROUND_GRAY;
             
-            if ([app.wallet getDefaultAccountIndex] == accountIndex) {
+            if ([app.wallet getDefaultAccountIndexActiveOnly:NO] == accountIndex) {
                 
                 cell.labelLabel.frame = CGRectMake(20, 11, 155, 21);
                 cell.balanceLabel.frame = CGRectMake(247, 11, 90, 21);

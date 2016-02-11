@@ -185,7 +185,7 @@ NSString *detailLabel;
     // Get an address: the first empty receive address for the default HD account
     // Or the first active legacy address if there are no HD accounts
     if ([app.wallet getActiveAccountsCount] > 0) {
-        int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
+        int defaultAccountIndex = [app.wallet getDefaultAccountIndexActiveOnly:YES];
         mainAddress = [app.wallet getReceiveAddressForAccount:defaultAccountIndex activeOnly:YES];
     }
     else if (activeKeys.count > 0) {
@@ -214,7 +214,7 @@ NSString *detailLabel;
         // Label of the default HD account
         mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 30, self.view.frame.size.width - 40, 18)];
         if ([app.wallet getActiveAccountsCount] > 0) {
-            int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
+            int defaultAccountIndex = [app.wallet getDefaultAccountIndexActiveOnly:YES];
             mainLabel = [app.wallet getLabelForAccount:defaultAccountIndex activeOnly:YES];
         }
         // Label of the default legacy address

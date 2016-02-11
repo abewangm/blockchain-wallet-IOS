@@ -171,19 +171,26 @@ MyWalletPhone.getIndexOfActiveAccount = function(num) {
     return realNum;
 };
 
-MyWalletPhone.getDefaultAccountIndex = function() {
+MyWalletPhone.getDefaultAccountIndex = function(isActiveOnly) {
     if (!MyWallet.wallet.isUpgradedToHD) {
         console.log('Warning: Getting accounts when wallet has not upgraded!');
         return 0;
     }
     
+    var shouldUseActiveAccounts = Boolean(isActiveOnly);
+
+    var accounts;
+    if (shouldUseActiveAccounts) {
+        accounts = MyWallet.wallet.hdwallet.activeAccounts;
+    } else {
+        accounts = MyWallet.wallet.hdwallet.accounts;
+    }
+    
     var index = MyWallet.wallet.hdwallet.defaultAccountIndex;
 
-    var allAccounts = MyWallet.wallet.hdwallet.accounts;
-
     var defaultAccountIndex = null;
-    for (var i = 0; i < allAccounts.length; i++) {
-        var account = allAccounts[i];
+    for (var i = 0; i < accounts.length; i++) {
+        var account = accounts[i];
         if (account.index === index) {
             defaultAccountIndex = i;
         }

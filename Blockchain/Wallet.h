@@ -184,7 +184,7 @@
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
 - (BOOL)isRecoveryPhraseVerified;
 - (void)markRecoveryPhraseVerified;
-- (int)getDefaultAccountIndex;
+- (int)getDefaultAccountIndexActiveOnly:(BOOL)isActiveOnly;
 - (void)setDefaultAccount:(int)index;
 - (int)getActiveAccountsCount;
 - (int)getAllAccountsCount;
