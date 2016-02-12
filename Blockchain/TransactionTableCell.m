@@ -21,6 +21,7 @@
         return;
     
     if (transaction.time > 0)  {
+        dateLabel.adjustsFontSizeToFitWidth = YES;
         dateLabel.hidden = NO;
         
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.time];
@@ -83,11 +84,13 @@
         pendingIcon.hidden = YES;
         btcButton.alpha = 1;
         actionLabel.alpha = 1;
+        dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 172, dateLabel.frame.size.height);
     } else {
         pendingText.hidden = NO;
         pendingIcon.hidden = NO;
         btcButton.alpha = 0.5;
         actionLabel.alpha = 0.5;
+        dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 90, dateLabel.frame.size.height);
     }
 }
 
