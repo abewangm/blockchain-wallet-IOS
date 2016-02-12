@@ -87,7 +87,11 @@ typedef enum {
 
 - (BOOL)isArchived
 {
-    return [app.wallet isAddressArchived:self.address] || [app.wallet isAccountArchived:self.account];
+    if (self.address) {
+      return [app.wallet isAddressArchived:self.address];
+    } else {
+      return [app.wallet isAccountArchived:self.account];
+    }
 }
 
 - (void)showBusyViewWithLoadingText:(NSString *)text;

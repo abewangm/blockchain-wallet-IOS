@@ -74,8 +74,10 @@
         AccountsAndAddressesDetailViewController *detailViewController = segue.destinationViewController;
         if (self.clickedAddress) {
             detailViewController.address = self.clickedAddress;
+            detailViewController.account = -1;
         } else if (self.clickedAccount >= 0) {
             detailViewController.account = self.clickedAccount;
+            detailViewController.address = nil;
         }
     }
 }
