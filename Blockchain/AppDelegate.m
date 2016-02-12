@@ -814,12 +814,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     secondPasswordDescriptionLabel.text = BC_STRING_PRIVATE_KEY_ENCRYPTED_DESCRIPTION;
     
-    if (_tabViewController.presentedViewController) {
+    if (self.topViewControllerDelegate) {
         BCModalViewController *bcModalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_PASSWORD_REQUIRED view:secondPasswordView];
         
         addPrivateKeySuccess = success;
 
-        [_tabViewController.presentedViewController presentViewController:bcModalViewController animated:YES completion:^{
+        [self.topViewControllerDelegate presentViewController:bcModalViewController animated:YES completion:^{
             UIButton *secondPasswordOverlayButton = [[UIButton alloc] initWithFrame:[secondPasswordView convertRect:secondPasswordButton.frame toView:bcModalViewController.view]];
             [bcModalViewController.view addSubview:secondPasswordOverlayButton];
             [secondPasswordOverlayButton addTarget:self action:@selector(privateKeyPasswordClicked) forControlEvents:UIControlEventTouchUpInside];
@@ -887,10 +887,10 @@ void (^secondPasswordSuccess)(NSString *);
     
     secondPasswordSuccess = success;
     
-    if (_tabViewController.presentedViewController) {
+    if (self.topViewControllerDelegate) {
         BCModalViewController *bcModalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_SECOND_PASSWORD_REQUIRED view:secondPasswordView];
         
-        [_tabViewController.presentedViewController presentViewController:bcModalViewController animated:YES completion:^{
+        [self.topViewControllerDelegate presentViewController:bcModalViewController animated:YES completion:^{
             UIButton *secondPasswordOverlayButton = [[UIButton alloc] initWithFrame:[secondPasswordView convertRect:secondPasswordButton.frame toView:bcModalViewController.view]];
             [bcModalViewController.view addSubview:secondPasswordOverlayButton];
             [secondPasswordOverlayButton addTarget:self action:@selector(secondPasswordClicked:) forControlEvents:UIControlEventTouchUpInside];
