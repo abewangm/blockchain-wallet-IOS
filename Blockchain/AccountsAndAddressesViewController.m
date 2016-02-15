@@ -162,11 +162,11 @@
         return;
     }
     
-    PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
+    PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* keyString) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(promptForLabelAfterScan)
                                                      name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
-        [app.wallet addKey:privateKeyString];
+        [app.wallet addKey:keyString];
     } error:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];

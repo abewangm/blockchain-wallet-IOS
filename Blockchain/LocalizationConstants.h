@@ -442,6 +442,7 @@
 #define BC_STRING_WRONG_BIP38_PASSWORD NSLocalizedString(@"Wrong BIP38 Password", nil)
 #define BC_STRING_KEY_BELONGS_TO_OTHER_ADDRESS_NOT_WATCH_ONLY NSLocalizedString(@"This private key belongs to another address that is not watch only", nil)
 #define BC_STRING_IMPORTED_PRIVATE_KEY_ARGUMENT NSLocalizedString(@"Imported Private Key %@", nil)
+#define BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT NSLocalizedString(@"Imported watch-only address %@", nil)
 #define BC_STRING_IMPORTED_PRIVATE_KEY_SUCCESS NSLocalizedString(@"You can now spend from this address.", nil)
 #define BC_STRING_IMPORTED_PRIVATE_KEY_TO_OTHER_ADDRESS_ARGUMENT NSLocalizedString(@"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key.", nil)
 

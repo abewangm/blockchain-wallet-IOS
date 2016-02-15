@@ -1254,8 +1254,10 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
+    NSString *messageWithArgument = [app.wallet isWatchOnlyLegacyAddress:address] ? BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT : BC_STRING_IMPORTED_PRIVATE_KEY_ARGUMENT;
+    
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil queue:nil usingBlock:^(NSNotification *note) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:BC_STRING_IMPORTED_PRIVATE_KEY_ARGUMENT, address] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:messageWithArgument, address] preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
         if (self.topViewControllerDelegate) {
