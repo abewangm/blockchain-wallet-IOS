@@ -1186,7 +1186,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)askUserToAddWatchOnlyAddress:(NSString *)address success:(void (^)(NSString *))success
 {
-    UIAlertController *alertToWarnAboutWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertToWarnAboutWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING_ONE, BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING_TWO] preferredStyle:UIAlertControllerStyleAlert];
     [alertToWarnAboutWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if (success) {
             success(address);

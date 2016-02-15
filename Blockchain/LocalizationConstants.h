@@ -446,5 +446,6 @@
 #define BC_STRING_IMPORTED_PRIVATE_KEY_SUCCESS NSLocalizedString(@"You can now spend from this address.", nil)
 #define BC_STRING_IMPORTED_PRIVATE_KEY_TO_OTHER_ADDRESS_ARGUMENT NSLocalizedString(@"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key.", nil)
 
-#define BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING NSLocalizedString(@"You are about to import a watch-only address. That means you can only access these funds if you have the private key stored elsewhere. If you do not have a paper wallet or other backup you should not instruct anyone to send you coins to this address. This is recommended for advanced users only. Continue?", nil)
+#define BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING_ONE NSLocalizedString(@"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. You cannot spend bitcoin from a watch-only address directly, but you can get the balance, or export a transaction to be signed externally. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address.", nil)
+#define BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING_TWO NSLocalizedString(@"These options are recommended for advanced users only. Continue?", nil)
 #define BC_STRING_UNKNOWN_KEY_FORMAT NSLocalizedString(@"Unknown key format", nil)
