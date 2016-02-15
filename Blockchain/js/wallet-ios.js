@@ -823,6 +823,7 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
     };
     var error = function(e) {
         console.log('Add private key Error');
+        console.log(e);
         
         var message = 'There was an error importing this private key';
         
@@ -1175,7 +1176,7 @@ MyWalletPhone.get_password_strength = function(password) {
 MyWalletPhone.generateNewAddress = function() {
     MyWallet.getWallet(function() {
         
-        device.execute('loading_start_generate_new_address');
+        device.execute('loading_start_create_new_address');
                        
         var label = null;
                        

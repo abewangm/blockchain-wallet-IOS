@@ -100,21 +100,21 @@
 - (void)newAddressClicked:(id)sender
 {
     if ([app.wallet didUpgradeToHd]) {
-        [self scanPrivateKey];
+        [self importAddress];
     } else {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_ADDRESS message:nil preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *generateNewAddressAction = [UIAlertAction actionWithTitle:BC_STRING_NEW_ADDRESS_GENERATE_NEW style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *generateNewAddressAction = [UIAlertAction actionWithTitle:BC_STRING_NEW_ADDRESS_CREATE_NEW style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self generateNewAddress];
         }];
-        UIAlertAction *scanPrivateKeyAction = [UIAlertAction actionWithTitle:BC_STRING_SCAN_PRIVATE_KEY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self scanPrivateKey];
+        UIAlertAction *importAddressAction = [UIAlertAction actionWithTitle:BC_STRING_IMPORT_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self importAddress];
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         }];
         
         [alertController addAction:generateNewAddressAction];
-        [alertController addAction:scanPrivateKeyAction];
+        [alertController addAction:importAddressAction];
         [alertController addAction:cancelAction];
         
         [self presentViewController:alertController animated:YES completion:^{
@@ -152,7 +152,7 @@
                                                   object:nil];
 }
 
-- (void)scanPrivateKey
+- (void)importAddress
 {
     if (![app checkInternetConnection]) {
         return;

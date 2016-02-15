@@ -10,6 +10,7 @@
 #import "AccountsAndAddressesViewController.h"
 #import "AccountsAndAddressesDetailViewController.h"
 #import "AppDelegate.h"
+#import "PrivateKeyReader.h"
 
 @interface AccountsAndAddressesNavigationController ()
 

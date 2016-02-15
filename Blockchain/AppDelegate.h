@@ -204,6 +204,7 @@
 - (AVCaptureDeviceInput *)getCaptureDeviceInput;
 
 - (void)scanPrivateKeyForWatchOnlyAddress:(NSString *)address;
+- (void)askUserToAddWatchOnlyAddress:(NSString *)address success:(void (^)(NSString *))success;
 
 - (void)verifyTwoFactorSMS;
 - (void)verifyTwoFactorGoogle;

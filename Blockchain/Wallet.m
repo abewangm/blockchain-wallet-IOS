@@ -996,9 +996,9 @@
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
 }
 
-- (void)loading_start_generate_new_address
+- (void)loading_start_create_new_address
 {
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_GENERATING_NEW_ADDRESS];
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_NEW_ADDRESS];
 }
 
 - (void)loading_start_generate_uuids

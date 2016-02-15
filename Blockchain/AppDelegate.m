@@ -1184,6 +1184,23 @@ void (^secondPasswordSuccess)(NSString *);
     app.wallet.lastScannedWatchOnlyAddress = address;
 }
 
+- (void)askUserToAddWatchOnlyAddress:(NSString *)address success:(void (^)(NSString *))success
+{
+    UIAlertController *alertToWarnAboutWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING preferredStyle:UIAlertControllerStyleAlert];
+    [alertToWarnAboutWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (success) {
+            success(address);
+        }
+    }]];
+    [alertToWarnAboutWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    
+    if (self.topViewControllerDelegate) {
+        [self.topViewControllerDelegate presentViewController:alertToWarnAboutWatchOnly animated:YES completion:nil];
+    } else {
+        [_window.rootViewController presentViewController:alertToWarnAboutWatchOnly animated:YES completion:nil];
+    }
+}
+
 - (void)logout
 {
     [self.loginTimer invalidate];
