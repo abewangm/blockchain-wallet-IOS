@@ -69,6 +69,10 @@
         return;
     }
     
+    if (![app.wallet isAccountNameValid:label]) {
+        return;
+    }
+    
     [self.labelTextField resignFirstResponder];
     
     [app.wallet setLabelForAccount:self.accountIdx activeOnly:NO label:label];

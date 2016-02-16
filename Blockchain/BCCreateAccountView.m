@@ -70,6 +70,10 @@
             return;
         }
         
+        if (![app.wallet isAccountNameValid:label]) {
+            return;
+        }
+        
         [app closeModalWithTransition:kCATransitionFade];
         
         [app.wallet createAccountWithLabel:label];

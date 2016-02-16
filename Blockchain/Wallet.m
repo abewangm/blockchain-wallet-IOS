@@ -876,6 +876,15 @@
     return [self.webView executeJSSynchronous:@"MyWalletPhone.getXpubForAccount(%d)", accountIndex];
 }
 
+- (BOOL)isAccountNameValid:(NSString *)name
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isAccountNameValid(\"%@\")", [name escapeStringForJS]] boolValue];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -1733,6 +1742,14 @@
     DLog(@"return_to_addresses_screen");
     if ([self.delegate respondsToSelector:@selector(returnToAddressesScreen)]) {
         [self.delegate returnToAddressesScreen];
+    }
+}
+
+- (void)on_error_account_name_in_use
+{
+    DLog(@"on_error_account_name_in_use");
+    if ([self.delegate respondsToSelector:@selector(alertUserOfInvalidAccountName)]) {
+        [self.delegate alertUserOfInvalidAccountName];
     }
 }
 

@@ -259,6 +259,24 @@ MyWalletPhone.setLabelForAccount = function(num, label) {
     MyWallet.wallet.hdwallet.accounts[num].label = label;
 };
 
+MyWalletPhone.isAccountNameValid = function(name) {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return false;
+    }
+    
+    var accounts = MyWallet.wallet.hdwallet.accounts;
+    for (var i = 0; i < accounts.length; i++) {
+        var account = accounts[i];
+        if (account.label == name) {
+            device.execute('on_error_account_name_in_use');
+            return false;
+        }
+    }
+    
+    return true;
+}
+
 MyWalletPhone.getReceivingAddressForAccount = function(num) {
     if (!MyWallet.wallet.isUpgradedToHD) {
         console.log('Warning: Getting accounts when wallet has not upgraded!');

@@ -1406,6 +1406,13 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (void)alertUserOfInvalidAccountName
+{
+    [self standardNotifyAutoDismissingController:BC_STRING_NAME_ALREADY_IN_USE];
+    
+    [self hideBusyView];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses
