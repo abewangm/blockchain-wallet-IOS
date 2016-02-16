@@ -261,6 +261,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
 
 #define ANIMATION_DURATION .2f
+#define ANIMATION_DURATION_LONG .3f
 #define kConfirmationThreshold 3
 
 // TabViewController

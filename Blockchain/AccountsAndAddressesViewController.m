@@ -167,7 +167,7 @@
                                                  selector:@selector(promptForLabelAfterScan)
                                                      name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
         [app.wallet addKey:keyString];
-    } error:nil];
+    } error:nil acceptPublicKeys:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     

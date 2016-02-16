@@ -1151,7 +1151,7 @@ void (^secondPasswordSuccess)(NSString *);
                 return;
             }
             
-            PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:_success error:_error];
+            PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:_success error:_error acceptPublicKeys:NO];
             [app.slidingViewController presentViewController:reader animated:YES completion:nil];
         }
     };
@@ -1171,7 +1171,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
         [app.wallet addKey:privateKeyString toWatchOnlyAddress:address];
-    } error:nil];
+    } error:nil acceptPublicKeys:NO];
     
     [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     
@@ -1275,9 +1275,11 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
+    NSString *message = [app.wallet isWatchOnlyLegacyAddress:address] ? [NSString stringWithFormat:BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT, address] : [NSString stringWithFormat:@"%@\n\n%@", BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_ONE, BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_TWO];
+    
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_ONE, BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_TWO] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:message preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
 

@@ -106,7 +106,7 @@
 
 - (void)presentAlertController:(UIAlertController *)alertController
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION_LONG * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (self.presentedViewController) {
             [self.presentedViewController presentViewController:alertController animated:YES completion:nil];
         } else {

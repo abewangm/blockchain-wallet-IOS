@@ -13,7 +13,8 @@
 
 @property(nonatomic, copy) void (^success)(NSString*);
 @property(nonatomic, copy) void (^error)(NSString*);
+@property (nonatomic) BOOL acceptsPublicKeys;
 
-- (id)initWithSuccess:(void (^)(NSString*))__success error:(void (^)(NSString*))__error;
+- (id)initWithSuccess:(void (^)(NSString*))__success error:(void (^)(NSString*))__error acceptPublicKeys:(BOOL)acceptPublicKeys;
 
 @end
