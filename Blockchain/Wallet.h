@@ -77,6 +77,7 @@
 - (void)resendTwoFactorError:(NSString *)error;
 - (void)didFailToImportPrivateKeyForWatchOnlyAddress:(NSString *)error;
 - (void)returnToAddressesScreen;
+- (void)alertUserOfInvalidAccountName;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -190,6 +191,7 @@
 - (int)getAllAccountsCount;
 - (BOOL)hasLegacyAddresses;
 - (Boolean)isAccountArchived:(int)account;
+- (BOOL)isAccountNameValid:(NSString *)name;
 
 - (uint64_t)getTotalActiveBalance;
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses;
