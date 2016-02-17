@@ -1140,21 +1140,6 @@ MyWalletPhone.change_local_currency = function(code) {
     BlockchainSettingsAPI.change_local_currency(code, success, error);
 }
 
-MyWalletPhone.verify_email = function(code) {
-    
-    var success = function () {
-        console.log('Verifying email');
-        device.execute('on_verify_email_success');
-    };
-    
-    var error = function (e) {
-        console.log('Error verifying email: ' + e);
-        device.execute('on_verify_email_error');
-    };
-    
-    BlockchainSettingsAPI.verifyEmail(code, success, error);
-}
-
 MyWalletPhone.change_btc_currency = function(code) {
     
     var success = function () {

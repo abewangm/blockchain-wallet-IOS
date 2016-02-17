@@ -444,3 +444,5 @@
 #define BC_STRING_IMPORTED_PRIVATE_KEY_SUCCESS NSLocalizedString(@"You can now spend from this address.", nil)
 #define BC_STRING_IMPORTED_PRIVATE_KEY_TO_OTHER_ADDRESS_ARGUMENT NSLocalizedString(@"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key.", nil)
 #define BC_STRING_NAME_ALREADY_IN_USE NSLocalizedString(@"This name is already in use. Please choose a different name.", nil)
+#define BC_STIRNG_VERIFICATION_EMAIL_SENT_TO_ARGUMENT NSLocalizedString(@"Verification email has been sent to %@.", nil)
+#define BC_STRING_PLEASE_CHECK_AND_CLICK_EMAIL_VERIFICATION_LINK NSLocalizedString(@"Please check your email and click on the verification link.", nil)

@@ -227,7 +227,6 @@
 - (void)getAccountInfo;
 - (void)changeEmail:(NSString *)newEmail;
 - (void)resendVerificationEmail:(NSString *)email;
-- (void)verifyEmailWithCode:(NSString *)code;
 - (void)getAllCurrencySymbols;
 - (void)changeMobileNumber:(NSString *)newMobileNumber;
 - (void)verifyMobileNumber:(NSString *)code;
