@@ -650,6 +650,16 @@
     [self.webView executeJS:@"MyWalletPhone.createNewPayment()"];
 }
 
+
+- (void)resetPaymentFee
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.resetPaymentFee()"];
+}
+
 - (void)changePaymentFromAccount:(int)fromInt
 {
     if (![self isInitialized]) {
