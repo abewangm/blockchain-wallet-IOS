@@ -632,11 +632,9 @@ BOOL displayingLocalSymbolSend;
     
     if (textField == btcAmountField) {
         displayingLocalSymbolSend = NO;
-        [app.wallet resetPaymentFee];
     }
     else if (textField == fiatAmountField) {
         displayingLocalSymbolSend = YES;
-        [app.wallet resetPaymentFee];
     }
     
     [self doCurrencyConversion];

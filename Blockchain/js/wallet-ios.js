@@ -402,14 +402,6 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
     });
 }
 
-MyWalletPhone.resetPaymentFee = function() {
-    if (currentPayment) {
-        currentPayment.fee(null);
-    } else {
-        console.log('Payment error: null payment object!');
-    }
-}
-
 MyWalletPhone.sweepPayment = function() {
     
     currentPayment

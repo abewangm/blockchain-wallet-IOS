@@ -256,7 +256,6 @@
 - (void)changePaymentAmount:(uint64_t)amount;
 - (void)sweepPayment;
 - (void)getPaymentFee;
-- (void)resetPaymentFee;
 - (void)checkIfOverspending;
 
 // Recover with passphrase
