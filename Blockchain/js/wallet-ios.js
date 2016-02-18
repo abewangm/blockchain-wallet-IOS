@@ -328,6 +328,7 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment');
     currentPayment = new Payment();
+    MyWalletPhone.resetPaymentFee();
 }
 
 MyWalletPhone.changePaymentFrom = function(from) {
@@ -337,6 +338,7 @@ MyWalletPhone.changePaymentFrom = function(from) {
         } else {
             currentPayment.from(from);
         }
+        MyWalletPhone.resetPaymentFee();
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -349,6 +351,7 @@ MyWalletPhone.changePaymentTo = function(to) {
         } else {
             currentPayment.to(to);
         }
+        MyWalletPhone.resetPaymentFee();
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -357,6 +360,7 @@ MyWalletPhone.changePaymentTo = function(to) {
 MyWalletPhone.changePaymentAmount = function(amount) {
     if (currentPayment) {
         currentPayment.amount(amount);
+        MyWalletPhone.resetPaymentFee();
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -400,6 +404,14 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
         console.log('error checking for overspending: ' + errorArgument);
         device.execute('on_error_update_fee:', [errorArgument]);
     });
+}
+
+MyWalletPhone.resetPaymentFee = function() {
+    if (currentPayment) {
+        currentPayment.fee(null);
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.sweepPayment = function() {
@@ -1139,21 +1151,6 @@ MyWalletPhone.change_local_currency = function(code) {
     };
     
     BlockchainSettingsAPI.change_local_currency(code, success, error);
-}
-
-MyWalletPhone.verify_email = function(code) {
-    
-    var success = function () {
-        console.log('Verifying email');
-        device.execute('on_verify_email_success');
-    };
-    
-    var error = function (e) {
-        console.log('Error verifying email: ' + e);
-        device.execute('on_verify_email_error');
-    };
-    
-    BlockchainSettingsAPI.verifyEmail(code, success, error);
 }
 
 MyWalletPhone.change_btc_currency = function(code) {

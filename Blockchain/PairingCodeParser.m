@@ -135,8 +135,10 @@ BOOL isReadingQRCode;
     [app hideBusyView];
 
     if (self.error) {
-        if ([message containsString:@"Invalid Pairing Version Code"]) {
+        if ([message containsString:ERROR_INVALID_PAIRING_VERSION_CODE]) {
             self.error(BC_STRING_INVALID_PAIRING_CODE);
+        } else if ([message containsString:ERROR_TYPE_MUST_START_WITH_NUMBER]){
+            self.error(BC_STRING_ERROR_PLEASE_REFRESH_PAIRING_CODE);
         } else {
             self.error(message);
         }

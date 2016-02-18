@@ -270,14 +270,6 @@
     [self.webView executeJS:@"MyWalletPhone.resend_verification_email(\"%@\")", [email escapeStringForJS]];
 }
 
-- (void)verifyEmailWithCode:(NSString *)code{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.webView executeJS:@"MyWalletPhone.verify_email(\"%@\")", [code escapeStringForJS]];
-}
-
 - (void)changeMobileNumber:(NSString *)newMobileNumber
 {
     if (![self isInitialized]) {
@@ -656,6 +648,16 @@
     }
     
     [self.webView executeJS:@"MyWalletPhone.createNewPayment()"];
+}
+
+
+- (void)resetPaymentFee
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.resetPaymentFee()"];
 }
 
 - (void)changePaymentFromAccount:(int)fromInt
@@ -1505,18 +1507,6 @@
 {
     DLog(@"on_resend_verification_email_success");
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
-}
-
-- (void)on_verify_email_success
-{
-    DLog(@"on_verify_email_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
-}
-
-- (void)on_verify_email_error
-{
-    DLog(@"on_verify_email_error");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_VERIFY_EMAIL_ERROR object:nil];
 }
 
 - (void)on_change_mobile_number_success

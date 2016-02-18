@@ -227,7 +227,6 @@
 - (void)getAccountInfo;
 - (void)changeEmail:(NSString *)newEmail;
 - (void)resendVerificationEmail:(NSString *)email;
-- (void)verifyEmailWithCode:(NSString *)code;
 - (void)getAllCurrencySymbols;
 - (void)changeMobileNumber:(NSString *)newMobileNumber;
 - (void)verifyMobileNumber:(NSString *)code;
@@ -257,6 +256,7 @@
 - (void)changePaymentAmount:(uint64_t)amount;
 - (void)sweepPayment;
 - (void)getPaymentFee;
+- (void)resetPaymentFee;
 - (void)checkIfOverspending;
 
 // Recover with passphrase

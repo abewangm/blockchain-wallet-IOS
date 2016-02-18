@@ -18,7 +18,6 @@
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;
 const int textFieldTagChangeMobileNumber = 6;
-const int textFieldTagVerifyEmail = 5;
 
 const int walletInformationSection = 0;
 const int walletInformationIdentifier = 0;
@@ -747,7 +746,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)alertUserToVerifyEmail
 {
-    UIAlertController *alertForVerifyingEmail = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_SENT_TO_ARGUMENT, self.emailString] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertForVerifyingEmail = [UIAlertController alertControllerWithTitle:[[NSString alloc] initWithFormat:BC_STIRNG_VERIFICATION_EMAIL_SENT_TO_ARGUMENT, self.emailString] message:BC_STRING_PLEASE_CHECK_AND_CLICK_EMAIL_VERIFICATION_LINK preferredStyle:UIAlertControllerStyleAlert];
     [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self resendVerificationEmail];
     }]];
@@ -758,19 +757,10 @@ const int aboutPrivacyPolicy = 1;
             [self alertUserToChangeEmail:YES];
         });
     }]];
-    [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self getAccountInfo];
     }]];
-    [alertForVerifyingEmail addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.tag = textFieldTagVerifyEmail;
-        secureTextField.delegate = self;
-        secureTextField.returnKeyType = UIReturnKeyDone;
-        secureTextField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
-    }];
+
     if (self.alertTargetViewController) {
         [self.alertTargetViewController presentViewController:alertForVerifyingEmail animated:YES completion:nil];
     } else {
@@ -810,32 +800,6 @@ const int aboutPrivacyPolicy = 1;
     dispatch_after(delayTime, dispatch_get_main_queue(), ^{
         [self alertUserToVerifyEmail];
     });
-}
-
-- (void)verifyEmailWithCode:(NSString *)codeString
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyEmailWithCodeSuccess) name:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyEmailWithCodeError) name:NOTIFICATION_KEY_VERIFY_EMAIL_ERROR object:nil];
-    
-    [app.wallet verifyEmailWithCode:codeString];
-}
-
-- (void)verifyEmailWithCodeSuccess
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_ERROR object:nil];
-    
-    [self getAccountInfo];
-    
-    [self alertUserOfSuccess:BC_STRING_SETTINGS_EMAIL_VERIFIED];
-}
-
-- (void)verifyEmailWithCodeError
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_EMAIL_ERROR object:nil];
-    
-    [self alertUserOfError:BC_STRING_SETTINGS_VERIFY_INVALID_CODE];
 }
 
 #pragma mark - Change Password Hint
@@ -1020,10 +984,7 @@ const int aboutPrivacyPolicy = 1;
     
     if (self.alertTargetViewController) {
         [self.alertTargetViewController dismissViewControllerAnimated:YES completion:^{
-            if (textField.tag == textFieldTagVerifyEmail) {
-                [weakSelf verifyEmailWithCode:textField.text];
-                
-            } else if (textField.tag == textFieldTagVerifyMobileNumber) {
+            if (textField.tag == textFieldTagVerifyMobileNumber) {
                 [weakSelf verifyMobileNumber:textField.text];
                 
             } else if (textField.tag == textFieldTagChangeMobileNumber) {
@@ -1034,10 +995,7 @@ const int aboutPrivacyPolicy = 1;
     }
     
     [self dismissViewControllerAnimated:YES completion:^{
-        if (textField.tag == textFieldTagVerifyEmail) {
-            [weakSelf verifyEmailWithCode:textField.text];
-            
-        } else if (textField.tag == textFieldTagVerifyMobileNumber) {
+        if (textField.tag == textFieldTagVerifyMobileNumber) {
             [weakSelf verifyMobileNumber:textField.text];
             
         } else if (textField.tag == textFieldTagChangeMobileNumber) {

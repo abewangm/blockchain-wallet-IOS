@@ -101,6 +101,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_ADDRESS_NOT_WATCH_ONLY @"addressNotWatchOnly"
 #define ERROR_WRONG_BIP_PASSWORD @"wrongBipPass"
 #define ERROR_PRIVATE_KEY_OF_ANOTHER_WATCH_ONLY_ADDRESS @"privateKeyOfAnotherNonWatchOnlyAddress"
+#define ERROR_TYPE_MUST_START_WITH_NUMBER @"TypeError: must start with number"
+#define ERROR_INVALID_PAIRING_VERSION_CODE @"Invalid Pairing Version Code"
 
 #define NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS @"reloadToDismissViews"
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
@@ -120,8 +122,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
 #define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
-#define NOTIFICATION_KEY_VERIFY_EMAIL_SUCCESS @"VerifyEmail"
-#define NOTIFICATION_KEY_VERIFY_EMAIL_ERROR @"VerifyEmailError"
 #define NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS @"ChangeMobileNumber"
 #define NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR @"ChangeMobileNumberError"
 #define NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS @"VerifyMobileNumber"
