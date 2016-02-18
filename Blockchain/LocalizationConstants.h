@@ -124,6 +124,7 @@
 #define BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL NSLocalizedString(@"Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app.", nil)
 #define BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE NSLocalizedString(@"Wallet Paired Successfully.", nil)
 #define BC_STRING_WATCH_ONLY NSLocalizedString(@"Watch Only", nil)
+#define BC_STRING_WATCH_ONLY_RECEIVE_WARNING NSLocalizedString(@"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?", nil)
 #define BC_STRING_ASK_FOR_PRIVATE_KEY_TITLE NSLocalizedString(@"Scan Watch Only Address?", nil)
 #define BC_STRING_ASK_FOR_PRIVATE_KEY_DETAIL NSLocalizedString(@"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?", nil)
 #define BC_STRING_USER_DECLINED NSLocalizedString(@"User Declined", nil)
