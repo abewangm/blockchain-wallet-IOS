@@ -328,6 +328,7 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment');
     currentPayment = new Payment();
+    MyWalletPhone.resetPaymentFee();
 }
 
 MyWalletPhone.changePaymentFrom = function(from) {
@@ -337,6 +338,7 @@ MyWalletPhone.changePaymentFrom = function(from) {
         } else {
             currentPayment.from(from);
         }
+        MyWalletPhone.resetPaymentFee();
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -349,6 +351,7 @@ MyWalletPhone.changePaymentTo = function(to) {
         } else {
             currentPayment.to(to);
         }
+        MyWalletPhone.resetPaymentFee();
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -357,6 +360,7 @@ MyWalletPhone.changePaymentTo = function(to) {
 MyWalletPhone.changePaymentAmount = function(amount) {
     if (currentPayment) {
         currentPayment.amount(amount);
+        MyWalletPhone.resetPaymentFee();
     } else {
         console.log('Payment error: null payment object!');
     }
