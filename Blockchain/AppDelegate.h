@@ -83,8 +83,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *mainLogoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;
 
-@property (nonatomic) BOOL showEmailWarning;
-
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;
 
 @property (strong, nonatomic) IBOutlet UIWindow *window;

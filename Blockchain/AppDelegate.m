@@ -66,9 +66,7 @@ void (^secondPasswordSuccess)(NSString *);
         [self setupLocalCurrencyFormatter];
         
         self.modalChain = [[NSMutableArray alloc] init];
-        
-        self.showEmailWarning = NO;
-        
+                
         app = self;
     }
     

@@ -209,9 +209,6 @@
 
 - (void)getWalletAndHistory
 {
-    // TODO disable the email warning until next start - not ideal, but there is no easy way to check if the email is set
-    app.showEmailWarning = NO;
-    
     if ([self isInitialized])
         [self.webView executeJS:@"MyWalletPhone.get_wallet_and_history()"];
 }
@@ -1185,9 +1182,7 @@
     }
     
     // Don't display an error message for this notice, instead show a note in the sideMenu
-    if ([message isEqualToString:@"For Improved security add an email address to your account."]) {
-        app.showEmailWarning = YES;
-        
+    if ([message isEqualToString:@"For Improved security add an email address to your account."]) {        
         return;
     }
     
