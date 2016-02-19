@@ -1055,11 +1055,6 @@
     }
 }
 
-- (void)on_block
-{
-    DLog(@"on_block");
-}
-
 - (void)did_set_latest_block
 {
     DLog(@"did_set_latest_block");
@@ -1151,14 +1146,14 @@
         return nil;
     }
     
-    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(WalletStore.getAllTransactions())"];
+    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.txList.transactionsForIOS)"];
     
     return [allTransactionsJSON getJSONObject];
 }
 
-- (void)on_tx
+- (void)on_tx_received
 {
-    DLog(@"on_tx");
+    DLog(@"on_tx_received");
 
     [app playBeepSound];
     

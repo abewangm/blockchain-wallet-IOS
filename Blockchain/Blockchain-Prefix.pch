@@ -86,6 +86,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define TX_TYPE_TRANSFER @"transfer"
+#define TX_TYPE_SENT @"sent"
+#define TX_TYPE_RECEIVED @"received"
+
 #define FONT_HELVETICA_NUEUE @"Helvetica Neue"
 
 #define USER_DEFAULTS_KEY_TRANSACTIONS @"transactions"
@@ -172,6 +176,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ANIMATION_KEY_HIDE_MODAL @"HideModal"
 #define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
+
+#define DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT @"block_height"
+#define DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS @"confirmations"
+#define DICTIONARY_KEY_TRANSACTION_FEE @"fee"
+#define DICTIONARY_KEY_TRANSACTION_MY_HASH @"myHash"
+#define DICTIONARY_KEY_TRANSACTION_TX_TYPE @"txType"
+#define DICTIONARY_KEY_TRANSACTION_RESULT @"result"
+#define DICTIONARY_KEY_TRANSACTION_TIME @"time"
 
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"

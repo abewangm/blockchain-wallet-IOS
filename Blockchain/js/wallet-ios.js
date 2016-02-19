@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // Register for JS event handlers and forward to Obj-C handlers
 
 WalletStore.addEventListener(function (event, obj) {
-    var eventsWithObjCHandlers = ["did_fail_set_guid", "did_multiaddr", "did_set_latest_block", "error_restoring_wallet", "logging_out", "on_backup_wallet_start", "on_backup_wallet_error", "on_backup_wallet_success", "on_block", "on_tx", "ws_on_close", "ws_on_open", "did_load_wallet"];
+    var eventsWithObjCHandlers = ["did_fail_set_guid", "did_multiaddr", "did_set_latest_block", "error_restoring_wallet", "logging_out", "on_backup_wallet_start", "on_backup_wallet_error", "on_backup_wallet_success", "on_tx_received", "ws_on_close", "ws_on_open", "did_load_wallet"];
 
     if (event == 'msg') {
         if (obj.type == 'error') {
@@ -820,7 +820,7 @@ MyWalletPhone.get_wallet_and_history = function() {
 MyWalletPhone.getMultiAddrResponse = function() {
     var obj = {};
 
-    obj.transactions = WalletStore.getTransactions();
+    obj.transactions = MyWallet.wallet.txList.transactionsForIOS;
     obj.total_received = MyWallet.wallet.totalReceived;
     obj.total_sent = MyWallet.wallet.totalSent;
     obj.final_balance = MyWallet.wallet.finalBalance;
