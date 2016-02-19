@@ -1061,8 +1061,6 @@
     
     [self.webView executeJSWithCallback:^(NSString* latestBlockJSON) {
         
-        [[NSUserDefaults standardUserDefaults] setObject:latestBlockJSON forKey:USER_DEFAULTS_KEY_TRANSACTIONS];
-        
         [self parseLatestBlockJSON:latestBlockJSON];
         
     } command:@"JSON.stringify(WalletStore.getLatestBlock())"];

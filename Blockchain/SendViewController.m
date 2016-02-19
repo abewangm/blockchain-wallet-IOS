@@ -118,6 +118,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)reload
 {
+    [self clearToAddressAndAmountFields];
+
     if (![app.wallet isInitialized]) {
         DLog(@"SendViewController: Wallet not initialized");
         return;
@@ -127,8 +129,6 @@ BOOL displayingLocalSymbolSend;
         DLog(@"SendViewController: No latest response");
         return;
     }
-    
-    [self clearToAddressAndAmountFields];
     
     [self resetPayment];
     
