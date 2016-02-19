@@ -213,6 +213,14 @@
         [self.webView executeJS:@"MyWalletPhone.get_wallet_and_history()"];
 }
 
+- (void)getHistoryIfNoTransactionMessage
+{
+    if (!self.didReceiveMessageForLastTransaction) {
+        DLog(@"Did not receive tx message for %f seconds - getting history", DELAY_GET_HISTORY_BACKUP);
+        [self getHistory];
+    }
+}
+
 - (void)getAllCurrencySymbols
 {
     if (![self.webView isLoaded]) {
@@ -1149,6 +1157,8 @@
 - (void)on_tx_received
 {
     DLog(@"on_tx_received");
+    
+    self.didReceiveMessageForLastTransaction = YES;
 
     [app playBeepSound];
     

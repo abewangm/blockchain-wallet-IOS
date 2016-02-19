@@ -270,6 +270,9 @@ BOOL displayingLocalSymbolSend;
     };
     
     listener.on_success = ^() {
+        
+        DLog(@"SendViewController: on_success");
+        
         [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
         
         [sendProgressActivityIndicator stopAnimating];
@@ -277,7 +280,7 @@ BOOL displayingLocalSymbolSend;
         [self enablePaymentButtons];
         
         // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
-        [self reload];
+        [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
         
         // Close transaction modal, go to transactions view, scroll to top and animate new transaction
         [app closeModalWithTransition:kCATransitionFade];
@@ -342,6 +345,8 @@ BOOL displayingLocalSymbolSend;
         DLog(@"From account: %d", self.fromAccount);
         DLog(@"To account: %d", self.toAccount);
     }
+    
+    app.wallet.didReceiveMessageForLastTransaction = NO;
     
     [app.wallet sendPaymentWithListener:listener];
 }
