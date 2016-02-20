@@ -2,7 +2,7 @@
 "%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
-"%@ copied to clipboard" = "% @ скопирован в буфер обмена";
+"%@ copied to clipboard" = "%@ скопирован в буфер обмена";
 
 /* (No Commment) */
 "%d Confirmations" = "%d Подтверждения";
@@ -11,13 +11,13 @@
 "%d Transactions" = "%d Транзакций";
 
 /* No comment provided by engineer. */
-"%lld hours ago" = "% lld часов назад";
+"%lld hours ago" = "%lld часов назад";
 
 /* No comment provided by engineer. */
-"%lld minutes ago" = "% lld минут назад";
+"%lld minutes ago" = "%lld минут назад";
 
 /* No comment provided by engineer. */
-"%lld seconds ago" = "% lld секунд назад";
+"%lld seconds ago" = "%lld секунд назад";
 
 /* (No Commment) */
 "* Minimum 10 characters" = "*Минимум 10 символов";
@@ -48,6 +48,9 @@
 
 /* (No Commment) */
 "2-step Verification is currently enabled." = "2-шаговая верификация в настоящее время включена.";
+
+/* (No Commment) */
+"API URL" = "URL-АДРЕС API";
 
 /* (No Commment) */
 "About" = "О системе";
@@ -86,7 +89,7 @@
 "Allowed" = "Разрешено";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Сумма должна быть выше порога пыли (lld Satoshi %)";
+"Amount must be above dust threshold (%lld Satoshi)" = "Сумма должна быть выше порога пыли (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке вашего PIN-кода удаленным сервером. Вероятно, вы отключены, или Blockchain  испытывает технические трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
@@ -110,10 +113,10 @@
 "Archive Address" = "Адрес архива";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Архив, это если вы не хотите использовать его больше. Ваши средства будут в безопасности, и вы можете разархивировать его в любое время.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Отправьте это в архив, если НЕ хотите больше этим пользоваться. Ваши средства будут в безопасности, и вы можете при необходимости разархивировать это в любое время.";
 
 /* (No Commment) */
-"Archived" = "Архив";
+"Archived" = "Архивировано";
 
 /* (No Commment) */
 "Ask Me Later" = "Спросите меня позже";
@@ -143,7 +146,7 @@
 "Backup Phrase" = "Резервная фраза";
 
 /* (No Commment) */
-"Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Перед входом в кошелек, пожалуйста выберите PIN-код разблокировки вашего бумажника. Важно помните этот PIN-код, так как его нельзя сбросить или изменить без  разблокировки приложения.";
+"Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Перед входом в кошелек, пожалуйста выберите PIN-код разблокировки вашего кошелька. Важно помните этот PIN-код, так как его нельзя сбросить или изменить без  разблокировки приложения.";
 
 /* (No Commment) */
 "Bitcoin Unit" = "Единица Bitcoin";
@@ -206,7 +209,7 @@
 "Checking for Wallet updates" = "Проверка обновлений кошелька";
 
 /* (No Commment) */
-"Checking for more: Step %d of %d" = "Детальная проверка: Шаг %1$ из %2$d";
+"Checking for more: Step %d of %d" = "Детальная проверка: Шаг %1$d из %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Закрыть";
@@ -221,7 +224,7 @@
 "Confirm Payment" = "Подтвердить оплату";
 
 /* (No Commment) */
-"Confirm Upgrade" = "Подтвердите обновление";
+"Confirm Upgrade" = "Подтвердить обновление";
 
 /* (No Commment) */
 "Confirm your PIN" = "Подтвердите PIN-код";
@@ -374,10 +377,10 @@
 "Everything you need to store, spend and receive your bitcoin" = "Все, что вам нужно для хранения, перевода и получения bitcoin";
 
 /* (No Commment) */
-"Extended Public Key" = "Расширенный открытый ключ";
+"Extended Public Key" = "Расширенный общий ключ";
 
 /* (No Commment) */
-"Failed To Load Wallet" = "Не удалось загрузить бумажник";
+"Failed To Load Wallet" = "Не удалось загрузить кошелек";
 
 /* (No Commment) */
 "Fee is too high (0.01 BTC limit)" = "Плата слишком высока (предел 0.01 BTC)";
@@ -395,7 +398,7 @@
 "Forget Wallet" = "Удалить кошелек";
 
 /* (No Commment) */
-"Found %d, with %@" = "Найдено %1$ d, с %2$ @";
+"Found %d, with %@" = "Найдено %1$d, с %2$@";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Адреса отправки и назначения должны быть разными";
@@ -425,6 +428,9 @@
 "Identifier" = "Идентификатор";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Покажите xPub, если вы выступаете в роли продавца, и используйте приложение Blockchain Merchant для обеспечения безопасности и конфиденциальности при получении средств.";
+
+/* (No Commment) */
 "Import Private Key" = "Импортировать личный ключ";
 
 /* (No Commment) */
@@ -434,7 +440,7 @@
 "Imported Addresses (Archived)" = "Импортированные адреса (в архиве)";
 
 /* (No Commment) */
-"Imported Private Key %@" = "Импортируемого закрытого ключа %@";
+"Imported Private Key %@" = "Импортированный закрытый ключ %@";
 
 /* (No Commment) */
 "Importing key" = "Импорт ключа";
@@ -467,13 +473,13 @@
 "Invalid Shared Key" = "Недопустимый общий ключ";
 
 /* (No Commment) */
-"Invalid Status Code Returned %@" = "Недопустимый код статуса  % @";
+"Invalid Status Code Returned %@" = "Недопустимый код статуса  %@";
 
 /* (No Commment) */
 "Invalid Wallet ID" = "Недопустимый ID кошелька";
 
 /* (No Commment) */
-"Invalid address: %@" = "Недопустимый адрес: % @";
+"Invalid address: %@" = "Недопустимый адрес: %@";
 
 /* (No Commment) */
 "Invalid email address." = "Недопустимый адрес электронной почты.";
@@ -500,10 +506,13 @@
 "Just now" = "Сейчас";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Обращайтесь с xPub как с конфиденциальной информацией. Получив доступ к xPub , кто-то получит доступ к информации по всем вашим фондам и операциям.";
+
+/* (No Commment) */
 "Label" = "Ярлык";
 
 /* (No Commment) */
-"Label Address" = "Адрес этикетки";
+"Label Address" = "Адрес ярлыка";
 
 /* (No Commment) */
 "Label must contain letters and numbers only" = "Метка должна содержать только буквы и цифры";
@@ -533,7 +542,7 @@
 "Logout" = "Выйти";
 
 /* (No Commment) */
-"Make Default" = "Сделать по умолчанию";
+"Make Default" = "Сделать настройкой по умолчанию";
 
 /* (No Commment) */
 "Manual Pairing" = "Ручное сопряжение";
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Мой кошелек Bitcoin";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "ПРИМЕЧАНИЕ: Обратите внимание, что закрытый сканированный ключ не соответствует этому адресу, предназначенному только для просмотра. Если вы хотите потратить средства с этого адреса, убедитесь, что вы сканируете правильный личный ключ.";
 
 /* (No Commment) */
 "Name" = "Имя";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Пожалуйста, добавьте адрес электронной почты";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Пожалуйста, проверьте свою электронную почту и нажмите на ссылку подтверждения.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Пожалуйста, проверьте вашу электронную почту. Если вы вошли в систему, вы должны войти в через наш web-кошелек и выполнить сопряжение телефона, сканировав QR-код в разделе Параметры -> Информация о кошельке.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Пожалуйста, укажите адрес электронной почты.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Обновите код привязки и повторите попытку.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Пожалуйста, выберите другой адрес для отправки или снизьте комиссию в настройках.";
@@ -785,7 +803,7 @@
 "Scan Watch Only Address?" = "Сканировать адрес для просмотра?";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Этот код или скопировать его в приложение Blockchain купец безопасно получать Bitcoin.";
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Сканируйте этот код или скопируйте его в приложение Blockchain Merchant для безопасного получения Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Неверный второй пароль ";
@@ -818,23 +836,19 @@
 "Sent" = "Отправлено";
 
 /* (No Commment) */
-"Sent to %@" = "Отправлено в % @";
+"Sent to %@" = "Отправлено в %@";
 
 /* (No Commment) */
 "Server URL" = "URL-адрес сервера";
 
 /* (No Commment) */
-"Set as Default Account?" = "Установить в качестве учетной записи по умолчанию?";
+"Set as Default?" = "Установить по умолчанию?";
 
 /* (No Commment) */
 "Settings" = "Настройки";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Покажите вашу xPub, если вы торговец и использовать Blockchain купец приложение для получения средств, безопасно и конфиденциально.
-              
-Держите ваш xPub частных. Кто-то с доступом к вашей xPub смогут увидеть всех ваших средств и операций.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Предоставление данных вашего xPub разрешает третьим сторонам отслеживать историю ваших транзакций. Так как уполномоченные лица могут быть в состоянии нарушить ваш доступ к кошельку, предоставляйте данные xPub только людям, которым вы доверяете.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Сигнал %d был поднят.";
@@ -873,7 +887,7 @@ Keep your xPub private. Someone with access to your xPub will be able to see all
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN-код, который вы выбрали, широко используется и может быть легко угадан кем-то с доступом к телефону с 3 попыток. Вы хотели бы использовать этот PIN-код в любом случае?";
 
 /* (No Commment) */
-"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Сумма, которую вы хотите отправить, (%1$ @) больше, чем максимальный размер, который вы можете потратить за вычетом комиссионных (%2$ @ - %3$ @). Вы хотели бы отправить %4$ @?";
+"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Сумма, которую вы хотите отправить, (%1$@) больше, чем максимальный размер, который вы можете потратить за вычетом комиссионных (%2$@ - %3$@). Вы хотели бы отправить %4$@?";
 
 /* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Закрытый ключ, который вы пытаетесь импортировать, зашифрован. Пожалуйста, введите пароль ниже.";
@@ -901,23 +915,22 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "Проблема с установлением вашей личности.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Это действие требует введения второго пароля для кошелька bitcoin. Пожалуйста, введите его ниже и нажмите продолжить.";
+"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Это действие требует введения второго пароля для кошелька bitcoin. Пожалуйста, введите его ниже и нажмите Продолжить.";
 
 /* (No Commment) */
-"This address is not watch-only." = "Этот адрес не только смотреть.";
+"This address is not watch-only." = "Этот адрес предназначен не только для просмотра.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Это часы только адрес. Если вы хотите потратить ваши средства от в пределах этой бумажник, просто сканировать ваш закрытый ключ.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Этот адрес предназначен только для просмотра. Чтобы воспользоваться средствами из этого кошелька, отсканируйте свой личный ключ.";
 
 /* (No Commment) */
-"This private key belongs to another address that is not watch only" = "Этот закрытый ключ принадлежит к другой адрес, который является не только смотреть";
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Это отправлено в архив. Хотя находящиеся здесь средства нельзя отправлять, они будут находиться в безопасности. Чтобы начать пользоваться снова, достаточно просто разархивировать.";
 
 /* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+"This name is already in use. Please choose a different name." = "Это имя уже используется. Пожалуйста, выберите другое имя.";
 
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Эта вещь архивируется. Это означает, он не может использоваться в приложении, и вы не можете отправить средства от него.
-                
-Если есть какие-либо средства, они будут безопасно. Для того, чтобы начать использовать эту вещь снова, разархивировать его.";
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Этот личный ключ связан с другим адресом, не являющимся адресом только для просмотра";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Это сотрет все данные кошелька на этом устройстве. Пожалуйста, убедитесь, что  информация  о кошельке сохранена в другом месте, в противном случае Bitcoins в нем будут недоступны!!";
@@ -928,7 +941,7 @@ If there are any funds, they will be safe. In order to start using this thing ag
 Total Amount: %@
 Fee: %@
 (%@)" = "Кому: %1$@
-%2$ @
+%2$@
 Сумма: %3$@
 Комиссия: %4$@
 (%5$@)";
@@ -976,7 +989,7 @@ Fee: %@
 "UPGRADE YOUR WALLET" = "ОБНОВИТЕ ВАШ КОШЕЛЕК";
 
 /* (No Commment) */
-"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Не удается загрузить кошелек из-за отсутствия ответа от сервера. Вероятно, вы отключены, или Blockchain  испытывает технические трудности. Попробуйте еще раз позднее.";
+"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Не удается загрузить кошелек из-за отсутствия ответа от сервера. Вероятно, вы отключены, или Blockchain  испытывать технические трудности. Попробуйте еще раз позднее.";
 
 /* (No Commment) */
 "Unarchive" = "Разархивировать";
@@ -994,7 +1007,7 @@ Fee: %@
 "Unknown" = "Неизвестно";
 
 /* (No Commment) */
-"Unknown Touch ID error. Code: %ld" = "Неизвестная ошибка сенсорного ID. Код: % ld";
+"Unknown Touch ID error. Code: %ld" = "Неизвестная ошибка сенсорного ID. Код: %ld";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Неподдерживаемый формат частного ключа";
@@ -1024,7 +1037,7 @@ Fee: %@
 "Use Touch ID as PIN" = "Использовать сенсорный ID как PIN-код";
 
 /* (No Commment) */
-"Use all %@" = "Использовать все % @";
+"Use all %@" = "Использовать все %@";
 
 /* (No Commment) */
 "Use all funds" = "Использовать все средства";
@@ -1034,6 +1047,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "ПРОВЕРИТЬ РЕЗЕРВНУЮ КОПИЮ";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Верификационное сообщение было отправлено на адрес  %@.";
 
 /* (No Commment) */
 "Verified" = "Подтвержден";
@@ -1063,10 +1079,10 @@ Fee: %@
 "Wallet Recovery Phrase" = "Фраза для восстановления кошелька";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Адрес кошелька % @ имеет в наличии свободные средства. Однако закрытый ключ должен сканироваться с бумажного кошелька или QR-кода. Вы хотите сканировать закрытый ключ сейчас?";
+"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Адрес кошелька %@ имеет в наличии свободные средства. Однако закрытый ключ должен сканироваться с бумажного кошелька или QR-кода. Вы хотите сканировать закрытый ключ сейчас?";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Бумажник версии % lld не поддерживается";
+"Wallet version %lld not supported" = "Бумажник версии %lld не поддерживается";
 
 /* (No Commment) */
 "Warning" = "Предупреждение";
@@ -1078,7 +1094,7 @@ Fee: %@
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Предупреждение: Ваш идентификатор кошелька является конфиденциальной информацией. Копирование может нарушить безопасность вашего кошелька.";
 
 /* (No Commment) */
-"Watch Only" = "Смотреть только";
+"Watch Only" = "Только для просмотра";
 
 /* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Мы отправим подсказку на подтвержденный адрес электронной почты в случае, если вы запросите ее.";
@@ -1101,19 +1117,16 @@ wallet experience for you" = "Мы разработали полностью н�
 "Welcome" = "Добро пожаловать!";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "Добро пожаловать в новую версию кошелька Blockchain!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Мы обнаружили предыдущую версию Blockchain Кошелька на вашем телефоне.";
 
 /* (No Commment) */
-"Would you like to add the bitcoin address %@ to your address book?" = "Хотели бы вы добавить bitcoin адрес % @ в вашу адресную книгу?";
+"Would you like to add the bitcoin address %@ to your address book?" = "Хотели бы вы добавить bitcoin адрес %@ в вашу адресную книгу?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Запишите фразу для восстановления и сохраните ее в безопасном и надежном месте. Помните, что любой, кто знает вашу фразу для восстановления, имеет доступ к вашим bitcoins.";
 
 /* (No Commment) */
-"Wrong BIP38 Password" = "BIP38 неправильный пароль";
+"Wrong BIP38 Password" = "Неверный пароль BIP38";
 
 /* (No Commment) */
 "Yes" = "Да";
@@ -1131,7 +1144,7 @@ wallet experience for you" = "Мы разработали полностью н�
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Можно включить двухэтапную аутентификацию через SMS на вашем мобильном телефоне. Для того, чтобы использовать другие методы проверки подлинности, пожалуйста войдите в наш web-кошелек.";
 
 /* (No Commment) */
-"You can now spend from this address." = "Теперь вы можете потратить с этого адреса.";
+"You can now spend from this address." = "Теперь вы можете тратить средства с этого адреса.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "У вас нет аккаунта для почты. Свяжитесь с %@.";
@@ -1140,7 +1153,7 @@ wallet experience for you" = "Мы разработали полностью н�
 "You have no available funds to send from this address" = "У вас нет доступных средств для отправки с этого адреса";
 
 /* (No Commment) */
-"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Вы должны отключить 2-шаговую верификацию для SMS перед изменением вашего мобильного телефона (% @).";
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Вы должны отключить 2-шаговую верификацию для SMS перед изменением вашего мобильного телефона (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "Вам необходимо ввести адрес получателя";
@@ -1158,13 +1171,10 @@ wallet experience for you" = "Мы разработали полностью н�
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Вы должны всегда выполнять сопряжение или входить в систему, если у вас есть доступ к ID кошелька и паролю. Восстановление ваших средств создаст новый ID кошелька. Вы хотите продолжить?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Вы только должны показать этот xPub для тех, которым вы доверяете. С этой информацией они могут иметь возможность отслеживать ваши платежи и нарушить доступ к ваш бумажник.";
+"You've successfully imported a private key." = "Вы успешно импортировали личный ключ.";
 
 /* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Вы успешно импортировали закрытый ключ. Обратите внимание, что он не соответствует этот часы только адрес. Если вы хотите потратить с этого адреса, убедитесь, что вы сканируете правильный закрытый ключ.";
-
-/* (No Commment) */
-"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Вы успешно импортировали закрытый ключ для адреса %@, и вы теперь можете потратить от него. Если вы хотите потратить с этого адреса, убедитесь, что вы сканируете правильный закрытый ключ.";
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Вы успешно импортировали личный ключ дляадреса  %@, и вы можете тратить средства с этого адреса. Если вы хотите потратить средства с этого адреса, убедитесь, что вы сканируете правильный личный ключ.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Возможно, ваше устройство взломано. Возможно, безопасность вашего кошелька нарушена.";
@@ -1197,7 +1207,7 @@ wallet experience for you" = "Мы разработали полностью н�
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Ваш подтвержденный электронный адрес  используется для отправки кодов входа в систему, при подозрительной или необычной активности, для напоминания  ID для доступа к кошельку и отправления сообщений о поступлении средств на счет. Мы не будем использовать ваш электронный адрес в маркетинговых целях.";
 
 /* (No Commment) */
-"Your wallet does not contain this address." = "Ваш кошелек не содержат этот адрес.";
+"Your wallet does not contain this address." = "Ваш кошелек не содержат этого адреса.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Ваш кошелек был успешно создан.";

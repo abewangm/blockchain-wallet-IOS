@@ -57,7 +57,7 @@ Vous pouvez compromettre la sécurité de votre portefeuille";
 "T3S-Dk-HAh.text" = "Veuillez réessayer";
 
 /* (No Commment) */
-"T4p-mz-siC.normalTitle" = "VÉRIFIEZ LA SAUVEGARDE";
+"T4p-mz-siC.normalTitle" = "VÉRIFIER LA SAUVEGARDE";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
 "UCL-i9-UDp.text" = "Écrivez sur une feuille de papier les mots dans l'ordre où ils apparaissent et conservez-les dans un endroit sûr

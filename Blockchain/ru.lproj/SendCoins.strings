@@ -50,10 +50,10 @@
 "65.text" = "Адрес:";
 
 /* (No Commment) */
-"67.text" = "Адрес этикетки";
+"67.text" = "Адрес ярлыка";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Комиссия ";
+"FB0-NP-5do.text" = "Комиссия: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";

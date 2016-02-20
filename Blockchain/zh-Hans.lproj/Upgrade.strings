@@ -1,18 +1,18 @@
 /* (No Commment) */
-"4cR-kX-YUY.text" = "欢迎到新版本的 Blockchain 的钱包!";
+"4cR-kX-YUY.text" = "确认升级";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "D5e-zI-7dK"; */
-"D5e-zI-7dK.text" = "Lorem ipsum 忧伤坐呃雅致 lamet，consectetaur cillium adipisicing 独特，sed 做 eiusmod 平整 incididunt ut labore et dolore 麦格纳 aliqua。Ut enim ad 微量 veniam，奎斯制造 nisi ut aliquip ex ea commodo consequat ullamco nostrud 实习。在树中找寻 velit 存在 cillum dolore 欧盟 fugiat nulla pariatur 的 duis 获得急性伊鲁雷忧伤。Excepteur sint occaecat cupidatat 非 proident，必须在缔约过失责任魁斡旋 deserunt mollit 阿尼姆 id est laborum。不结盟运动游离 te conscient 因素 tum 首诗从简法学 odioque civiuda。";
+"D5e-zI-7dK.text" = "`Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Nam liber te conscient to factor tum poen legum odioque civiuda.";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Ebu-XV-0mt"; */
 "Ebu-XV-0mt.normalTitle" = "取消";
 
 /* Class = "UIButton"; normalTitle = "Upgrade Now"; ObjectID = "Gk5-cB-fZg"; */
-"Gk5-cB-fZg.normalTitle" = "现在升级";
+"Gk5-cB-fZg.normalTitle" = "立即升级";
 
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
 "HuT-V7-syg.normalTitle" = "稍后再问我";
 
-/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "cZ9-x2-KGM"; */
-"cZ9-x2-KGM.normalTitle" = "了解更多信息";
+/* Class = "UIButton"; normalTitle = "Upgrade"; ObjectID = "cZ9-x2-KGM"; */
+"cZ9-x2-KGM.normalTitle" = "升级";
 

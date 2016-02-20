@@ -11,7 +11,7 @@
 "6zi-8R-Tmt.normalTitle" = "BTC";
 
 /* Class = "UILabel"; text = "From"; ObjectID = "7"; */
-"7.text" = "发送者";
+"7.text" = "自";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
 "7ho-GV-ikp.text" = "BTC";
@@ -23,7 +23,7 @@
 "9B2-23-8j5.text" = "CurrAmt";
 
 /* (No Commment) */
-"13.text" = "接收者";
+"13.text" = "至";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
 "52.placeholder" = "0.000";
@@ -71,13 +71,13 @@
 "aKC-Q2-phD.text" = "发送付款";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "金额: ";
+"aeG-gf-oXV.text" = "金额： ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "可用总额";
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
-"fpY-AA-We5.text" = "接收者";
+"fpY-AA-We5.text" = "至";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
 "pPu-bJ-k6p.normalTitle" = "继续";

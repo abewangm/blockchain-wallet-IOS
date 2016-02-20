@@ -23,7 +23,7 @@
 "9Hu-uO-gJl.text" = "Вы еще не сделали резервную копию ваших средств";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Это действие требует введения второго пароля для кошелька bitcoin. Пожалуйста, введите его ниже и нажмите продолжить.";
+"9WK-My-5CL.text" = "Это действие требует введения второго пароля для кошелька bitcoin. Пожалуйста, введите его ниже и нажмите Продолжить.";
 
 /* (No Commment) */
 "9hR-tm-aq5.placeholder" = "первое слово";
@@ -60,7 +60,7 @@
 "T4p-mz-siC.normalTitle" = "ПРОВЕРИТЬ РЕЗЕРВНУЮ КОПИЮ";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Запишите слова в точном порядке, в котором они отображаются на листе бумаги и храните его в надежном месте
+"UCL-i9-UDp.text" = "Запишите слова в точном порядке, в котором они отображаются на листе бумаги, и храните его в надежном месте
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */

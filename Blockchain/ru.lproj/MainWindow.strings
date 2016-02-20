@@ -105,7 +105,7 @@ https://blockchain.info/wallet/login";
 "602.text" = "Вы должны отключить функцию двухфакторной проверки для использования ручного режима сопряжения.";
 
 /* Class = "UILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "Вы вышли из системы либо произошла ошибка расшифровки файла вашего бумажника. Введите ваш пароль ниже для входа в систему.";
+"624.text" = "Вы вышли из системы, либо произошла ошибка расшифровки файла вашего кошелька. Введите ваш пароль ниже для входа в систему.";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "625"; */
 "625.normalTitle" = "Продолжить";
