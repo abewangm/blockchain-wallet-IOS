@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2-stufige Prüfung ist derzeit aktiviert.";
 
 /* (No Commment) */
+"API URL" = "API-URL";
+
+/* (No Commment) */
 "About" = "Über";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Archiv-Adresse";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Archivieren Sie dies, wenn Sie nicht, dass es nicht mehr verwenden möchten. Ihre Mittel werden sicher und Sie können es jederzeit öffnen.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Archivieren Sie dies, wenn Sie nicht, dass es nicht mehr verwenden möchten. Ihr Geld bleibt sicher, und Sie können es jederzeit öffnen.";
 
 /* (No Commment) */
 "Archived" = "Archiviert";
@@ -425,6 +428,9 @@
 "Identifier" = "Bezeichner";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Wenn Sie ein Händler sind, zeigen Sie Ihre xPub und mit der Blockchain Kaufmann-app erhalten Mittel sicher und privat.";
+
+/* (No Commment) */
 "Import Private Key" = "Import-Privatschlüssels";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Gerade jetzt";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Ihre xPub privat zu halten. Jemand mit Zugang zu Ihrem xPub werden alle Ihre Mittel und Transaktionen zu sehen.";
+
+/* (No Commment) */
 "Label" = "Etikett";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Mein Bitcoin-Wallet";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Hinweis: Der gescannte private Schlüssel entspricht nicht an diese Adresse nur beobachten. Wenn Sie von dieser Adresse verbringen möchten, stellen Sie sicher, dass den korrekten privaten Schlüssel zu scannen.";
 
 /* (No Commment) */
 "Name" = "Name";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Bitte fügen Sie eine e-Mail-Adresse";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Bitte überprüfen Sie Ihre e-Mail und klicken Sie auf den Bestätigungs-Link.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Bitte überprüfen Sie Ihre e-Mail. Wenn Sie bereits ein Anmeldeversuch überprüft haben, sollten Sie über unser Online-Zahlungsmethode anmelden und koppeln Sie Ihr Mobiltelefon durch Scannen den QR-Code unter Einstellungen-> Wallet-Informationen.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Bitte geben Sie eine e-Mail-Adresse.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Aktualisieren der Kopplungscode, und versuchen Sie es erneut.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Bitte wählen Sie eine andere Adresse senden oder senken Sie die Gebühr in den Einstellungen.";
@@ -824,17 +842,13 @@
 "Server URL" = "Server-URL";
 
 /* (No Commment) */
-"Set as Default Account?" = "Als Standardkonto festlegen?";
+"Set as Default?" = "Als Standard festlegen?";
 
 /* (No Commment) */
 "Settings" = "Einstellungen";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Zeigen Sie Ihre xPub, wenn Sie ein Händler und verwende die Blockchain Kaufmann-app um Gelder sicher und privat zu erhalten.
-
-Ihre xPub privat zu halten. Jemand mit Zugang zu Ihrem xPub werden alle Ihre Mittel und Transaktionen zu sehen.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Teilen Ihre xPub autorisiert andere um Ihre Transaktionsgeschichte zu verfolgen. Befugte Personen in der Lage, Sie zu stören, den Zugriff auf Ihre Brieftasche sein mag, nur teilen Sie Ihre xPub mit Menschen, denen, die Sie vertrauen.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signal %d wuchs.";
@@ -887,7 +901,7 @@ Ihre xPub privat zu halten. Jemand mit Zugang zu Ihrem xPub werden alle Ihre Mit
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Die Aktualisierung dauert nur eine Sekunde und Ihre Bitcoins und Geschichte werden sicher. Hier ist, was ist besser: \n\n• komplett aktualisiert Design und User experience \n• robuste Sicherheit Mitte \n• Privacy Enhanced \n• vereinfacht Backup und Recovery \n• Customized Fondsmanagement \n\nzwei erweiterte Buchungsarten (Ausgaben von Uhr-nur Adressen und Laufzeit-Münze) werden in der neuen Version zu diesem Zeitpunkt nicht unterstützt.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Die Aktualisierung dauert nur eine Sekunde und Ihre Bitcoins und Geschichte werden sicher. Hier ist, was ist besser: komplett aktualisiert • Design und User experience • robuste Sicherheit Mitte • Privacy Enhanced • vereinfacht Backup und Recovery • Customized Fondsmanagement zwei erweiterte Buchungsarten (Ausgaben von Uhr-nur Adressen und Laufzeit-Münze) werden in der neuen Version zu diesem Zeitpunkt nicht unterstützt.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Es gab ein Problem, Ihre Identität zu überprüfen.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Diese Adresse ist nicht nur beobachten.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Dies ist ein nur-Uhr-Adresse. Wollen Sie Ihre Gelder aus innerhalb dieser Tasche ausgeben, nur Scannen Sie Ihres privaten Schlüssels.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Dies ist ein nur-Uhr-Adresse. Um Ihr Geld von dieser Tasche zu verbringen, Scannen Sie bitte Ihren privaten Schlüssel.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Dies wird archiviert. Obwohl Sie keine Gelder von hier aus senden können, bleiben alle Mittel sicher. Einfach öffnen Sie, um es wieder zu verwenden zu beginnen.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Dieser Name wird bereits verwendet. Bitte wählen Sie einen anderen Namen.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Dieser private Schlüssel gehört zu einer anderen Adresse, die nicht nur zu sehen ist";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Dieses Ding wird archiviert. Das heißt, es kann nicht zugegriffen werden, in der app und Mittel können nicht gesendet werden, von ihm.
-
-Wenn Mittel vorhanden sind, werden sie sicher. Um diese Sache wieder zu verwenden zu beginnen, désarchiver.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Dies löscht alle Brieftasche-Daten auf diesem Gerät. Bitte bestätigen Sie, dass Ihre Brieftasche Informationen gespeichert anderswo sonst Bitcoins in diesem Portemonnaie zugegriffen werden!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "ÜBERPRÜFEN SIE DIE SICHERUNG";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Überprüfungs-Email wurde an %@ gesendet.";
 
 /* (No Commment) */
 "Verified" = "Überprüft";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Sie sollten immer koppeln oder haben Sie Zugriff auf Ihre Brieftasche-ID und Passwort einloggen. Wiederherstellen Ihrer Fonds schafft eine neue Geldbörse-ID. Möchten Sie fortfahren?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Sie sollten nur diese xPub, die zeigen, denen, die Sie vertrauen. Mit diesen Informationen können sie möglicherweise behalten Sie Ihre Zahlungen und Zugriff auf Ihre Brieftasche zu stören.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Sie haben erfolgreich einen privaten Schlüssel importiert. Beachten Sie, dass es diese Uhr nur Adresse nicht entspricht. Wenn Sie von dieser Adresse verbringen möchten, stellen Sie sicher, dass den korrekten privaten Schlüssel zu scannen.";
+"You've successfully imported a private key." = "Sie haben erfolgreich einen privaten Schlüssel importiert.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Sie haben erfolgreich importiert, des privaten Schlüssels für die Adresse %@, und verbringen Sie nun von ihm. Wenn Sie von dieser Adresse ausgeben möchten, stellen Sie sicher, dass Sie den richtigen privaten Schlüssel scannen.";

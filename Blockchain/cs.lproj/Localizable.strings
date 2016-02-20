@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2krok ověření je zapnut.";
 
 /* (No Commment) */
+"API URL" = "API URL";
+
+/* (No Commment) */
 "About" = "O";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Adresa archivu";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Archivujte, pokud nechcete používat už. Vaše prostředky budou v bezpečí, a můžete Odarchivovat kdykoliv.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Archivujte, pokud nechcete používat už. Vaše prostředky budou i nadále bezpečné, a můžete Odarchivovat kdykoliv.";
 
 /* (No Commment) */
 "Archived" = "Archivováno";
@@ -425,6 +428,9 @@
 "Identifier" = "Identifikátor";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Pokud jste obchodník, Ukázat své xPub a Blockchain obchodníka v aplikaci získat finanční prostředky, bezpečně a soukromě.";
+
+/* (No Commment) */
 "Import Private Key" = "Importovat soukromý klíč";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Právě teď";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Zachovat váš xPub soukromí. Uživatelé s přístupem k vaší xPub bude možnost vidět všechny prostředky a transakcí.";
+
+/* (No Commment) */
 "Label" = "Popisek";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Moje peněženka Bitcoin";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Poznámka: Naskenované soukromý klíč neodpovídá této hodinky pouze adresu. Pokud chcete strávit z této adresy, ujistěte se, že skenujete správným soukromým klíčem.";
 
 /* (No Commment) */
 "Name" = "Jméno";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Přidejte e-mailovou adresu";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Zkontrolujte svůj e-mail a klikněte na ověřovací odkaz.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Zkontrolujte prosím váš email. Pokud jste již ověřili pokus o přihlášení, měli přihlásit přes náš web peněženku a spárování telefonu naskenováním kódu QR pod nastavení-> peněženky.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Zadejte e-mailovou adresu.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Prosím aktualizujte párovací kód a akci opakujte.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Prosím zvolte jinou adresu posílat z nebo snížit poplatek v nastavení.";
@@ -824,17 +842,13 @@
 "Server URL" = "Adresa URL serveru";
 
 /* (No Commment) */
-"Set as Default Account?" = "Nastavit jako výchozí účet?";
+"Set as Default?" = "Nastavit jako výchozí?";
 
 /* (No Commment) */
 "Settings" = "Nastavení";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Ukaž svůj xPub Pokud jste obchodník a Blockchain obchodníka v aplikaci získat finanční prostředky, bezpečně a soukromě.
-
-Zachovat váš xPub soukromí. Uživatelé s přístupem k vaší xPub bude možnost vidět všechny prostředky a transakcí.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Sdílení vašeho xPub autorizuje jiné sledovat historii transakcí. Oprávněné osoby mohou být schopni roztříštit vás v přístupu k vaší peněžence, sdílejte pouze své xPub s lidmi, kterým důvěřujete.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signál %d byla zvýšena.";
@@ -887,7 +901,7 @@ Zachovat váš xPub soukromí. Uživatelé s přístupem k vaší xPub bude mož
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovace bude trvat jen chvilku a bitcoins a historie bude v bezpečí. Zde je to, co je lepší:\n\n• kompletně aktualizován designu a uživatelské zkušenosti \n• robustní bezpečnostní centrum \n• rozšířené soukromí \n• zjednodušené zálohování a zotavení \n• vlastní správy fondu\n\ndva typy rozšířené transakcí (výdaje z hodinek pouze adresy a sdílené mince) nejsou podporovány v nové verzi v tuto chvíli.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovace bude trvat jen chvilku a bitcoins a historie bude v bezpečí. Zde je to, co je lepší: • kompletně aktualizován designu a uživatelské zkušenosti • robustní bezpečnostní centrum • rozšířené soukromí • zjednodušené zálohování a zotavení • vlastní správy fondu dva typy rozšířené transakcí (výdaje z hodinek pouze adresy a sdílené mince) nejsou podporovány v nové verzi v tuto chvíli.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Došlo k problému s ověřením identity.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Tato adresa není určena jen dívat.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Jedná se o hodinky pouze adresu. Pokud chcete strávit své prostředky z v rámci této peněženky, prohledejte váš soukromý klíč.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Jedná se o hodinky pouze adresu. Utrácet své finanční prostředky z této peněženky, scan váš soukromý klíč.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "To je archivován. I když zde nemůžete poslat finanční prostředky, veškeré finanční prostředky bude i nadále bezpečné. Odarchivovat jednoduše začít používat znovu.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Tento název je již používán. Zvolte prosím jiný název.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Tento soukromý klíč patří na jinou adresu, která není pouze hodinky";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Tato věc je archivován. To znamená, není přístupná v app, a finanční prostředky nelze odeslat z ní.
-
-Pokud existují nějaké finanční prostředky, budou bezpečné. Aby bylo možné začít používat tuto věc znovu, Odarchivovat jej.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "To budou vymazána všechna data peněženku na tomto zařízení. Potvrďte, že máte vaše peněženka informace uložené jinde jinak jakýkoliv bitcoins v této peněženky bude být nepřístupné!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "OVĚŘIT ZÁLOHU";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Do %@ byla odeslána ověřovací e-mail.";
 
 /* (No Commment) */
 "Verified" = "Ověřeno";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Byste měli vždy dvojice nebo přihlášení, pokud máte přístup k vaší peněžence ID a heslo. Obnovení vašich financí vytvoří nového peněženku. Chcete pokračovat?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Měli zobrazit pouze tento xPub těm, kterým důvěřujete. Pomocí těchto informací mohou být schopen sledovat vaše platby a dojde k narušení přístupu k vaší peněžence.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Jste úspěšně importovat soukromý klíč. Všimněte si, že nebude odpovídat na tuto adresu jen hodinky. Pokud chcete strávit z této adresy, ujistěte se, že skenujete správným soukromým klíčem.";
+"You've successfully imported a private key." = "Jste úspěšně importovat soukromý klíč.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Jste úspěšně importovat soukromý klíč pro adresu %@, a teď z ní strávíte. Pokud chcete strávit z této adresy, ujistěte se, že kontroly správným soukromým klíčem.";

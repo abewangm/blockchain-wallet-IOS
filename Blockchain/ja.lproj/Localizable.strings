@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2 段階認証プロセスは、現在有効です。";
 
 /* (No Commment) */
+"API URL" = "API の URL";
+
+/* (No Commment) */
 "About" = "について";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "アーカイブ アドレス";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "それをもう使用しない場合は、これをアーカイブします。あなたの資金は、安全であるし、いつでも解凍することができます。";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "あなたはもうそれを使用したくない場合は、これをアーカイブします。あなたの資金は、安全のままになり、いつでも解凍することができます。";
 
 /* (No Commment) */
 "Archived" = "アーカイブ";
@@ -425,6 +428,9 @@
 "Identifier" = "識別子";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "商人、あなたの xPub を表示し、安全にそして個人的に資金を受け取る Blockchain 商人アプリを使用します。";
+
+/* (No Commment) */
 "Import Private Key" = "インポートの秘密キー";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "ちょうど今";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "あなたの xPub は非公開にされます。あなたの xPub へのアクセスとの誰かは資金およびトランザクションのすべてを表示することができます。";
+
+/* (No Commment) */
 "Label" = "ラベル";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Bitcoin 財布";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "注: スキャンされた秘密キーは、この時計専用のアドレスに対応していません。このアドレスからを過ごすしたい場合は、適切な秘密キーをスキャンすることを確認します。";
 
 /* (No Commment) */
 "Name" = "名";
@@ -677,6 +689,9 @@
 "Please add an email address" = "メール アドレスを追加してください。";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "あなたのメール アドレスを確認し、確認用のリンクをクリックしてください。";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "あなたのメール アドレスを確認してください。既にログイン試行を確認したら場合、我々 の web 財布経由でログインし、設定の下の QR コードをスキャンすることによってあなたの携帯電話をペアリング-> ウォレットの情報。";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "メール アドレスを入力してください。";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "ペアリング コードを更新して、もう一度やり直してください。";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "別のアドレスから送信または設定で料金を下げるを選択してください。";
@@ -824,17 +842,13 @@
 "Server URL" = "サーバーの URL";
 
 /* (No Commment) */
-"Set as Default Account?" = "既定のアカウントとして設定しますか。";
+"Set as Default?" = "既定値として設定します。";
 
 /* (No Commment) */
 "Settings" = "設定";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "商人を安全にそして個人的に資金を受け取る Blockchain 商人アプリを使用してかどうかは、あなたの xPub を表示します。
-
-あなたの xPub は非公開にされます。あなたの xPub へのアクセスとの誰かは資金およびトランザクションのすべてを表示することができます。";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "あなたの xPub を共有トランザクション履歴を追跡する他のユーザーを許可します。承認された人は、あなたの財布にアクセスするからあなたを混乱させることができる場合があります、あなたの xPub を信頼できる人のみ共有します。";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "信号 %d が発生しました。";
@@ -887,7 +901,7 @@ Keep your xPub private. Someone with access to your xPub will be able to see all
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い:\n\n• 完全に更新デザインとユーザー エクスペリエンスの \n• 堅牢なセキュリティ センター\n• プライバシーの強化 \n• 簡体字バックアップ/リカバリ \n• カスタマイズされた基金管理 \n\n2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い: 完全に更新 • デザインとユーザー エクスペリエンスの • 堅牢なセキュリティ センター プライバシーの強化 • 簡体字バックアップ/リカバリ • カスタマイズされた基金管理 2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "あなたの身元の確認で問題があった。";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "このアドレスは、時計だけではありません。";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "時計専用のアドレスです。この財布の内でからあなたの資金を費やす場合は、ちょうどあなたのプライベートキーをスキャンします。";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "時計専用のアドレスです。この財布からあなたの資金を費やす、あなたの秘密鍵をスキャンしてください。";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "これはアーカイブされます。ここから資金を送信することはできません、しかし任意およびすべての資金は安全に残る。それを再度使用を開始するアーカイブを解除します。";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "この名前は既に使用されています。別の名前を選択してください。";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "この秘密キーは、時計だけではない別のアドレスに属する";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "このことはアーカイブされます。つまり、アプリでアクセスできないし、それから資金を送信することはできません。
-
-任意の資金、彼らは安全であります。この事をもう一度使用するには、まずそれを解凍します。";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "このデバイス上のすべての財布データが消去されます。アクセスできない場所以外の場合この財布での任意 bitcoins 保存あなたの財布情報がある場合に確認してください!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "バックアップを検証します。";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "%@ に確認メールが送信されました。";
 
 /* (No Commment) */
 "Verified" = "検証";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "ペアまたは、ウォレット ID とパスワードへのアクセスがあればログインする必要があります常にします。新しいウォレット ID が作成されますあなたの資金を回復します。続行しますか?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "のみ、信頼する人にこの xPub を表示する必要があります。この情報により、彼らはあなたの支払を追跡し、あなたの財布にアクセスを中断することがあります。";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "秘密キーを正常にインポートしました。この時計専用アドレスに対応していないことに注意してください。このアドレスからを過ごすしたい場合は、適切な秘密キーをスキャンすることを確認します。";
+"You've successfully imported a private key." = "秘密キーを正常にインポートしました。";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "アドレス %@ の秘密キーを正常にインポートしたし、今から過ごすことができます。このアドレスからを過ごすしたい場合は、適切な秘密キーをスキャンするを確認します。";

@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2-خطوة التحقق ممكنة حاليا.";
 
 /* (No Commment) */
+"API URL" = "رابط API";
+
+/* (No Commment) */
 "About" = "حول";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "أرشيف العناوين";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "أرشفة هذا إذا كنت لا تريد استخدامه بعد الآن. الأموال الخاصة بك وسوف تكون آمنة، ويمكنك إلغاء الأرشفة فإنه في أي وقت.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "أرشفة هذا إذا كنت لا تريد استخدامه بعد الآن. سوف تظل الأموال الخاصة بك آمنة، ويمكنك إلغاء الأرشفة فإنه في أي وقت.";
 
 /* (No Commment) */
 "Archived" = "أرشفة";
@@ -425,6 +428,9 @@
 "Identifier" = "المعرف";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "إذا كنت تاجراً، إظهار إكسبوب الخاص بك واستخدام التطبيق التاجر بلوكتشين للحصول على الأموال بأمان والقطاع الخاص.";
+
+/* (No Commment) */
 "Import Private Key" = "المفتاح الخاص الاستيراد";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "الآن فقط";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "الاحتفاظ إكسبوب الخاص بك الخاصة. شخص ما مع الوصول إلى إكسبوب الخاص بك سوف تكون قادراً على مشاهدة كافة الأموال والمعاملات الخاصة بك.";
+
+/* (No Commment) */
 "Label" = "التسمية";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "محفظتي بيتكوين";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "ملاحظة: المفتاح الخاص الممسوحة ضوئياً لا تتوافق مع هذا العنوان مشاهدة فقط. إذا كنت تريد أن تنفق من هذا العنوان، تأكد من أن تقوم بتفحص المفتاح الخاص الصحيح.";
 
 /* (No Commment) */
 "Name" = "الاسم";
@@ -677,6 +689,9 @@
 "Please add an email address" = "الرجاء إضافة عنوان بريد إلكتروني";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "الرجاء التحقق من البريد الإلكتروني الخاص بك وانقر فوق ارتباط التحقق من الصحة.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "الرجاء التحقق من البريد الإلكتروني الخاص بك. إذا كنت فعلا التحقق من محاولة تسجيل دخول، يجب تسجيل الدخول عبر الإنترنت المحفظة وإقران الهاتف الخاص بك عن طريق مسح رمز ريال قطري ضمن إعدادات-> \"معلومات المحفظة\".";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "الرجاء توفير عنوان بريد إلكتروني.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "الرجاء تحديث رمز الازدواج وحاول مرة أخرى.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "الرجاء تحديد عنوان مختلف لإرسال من أو تخفيض الرسوم في الإعدادات.";
@@ -824,17 +842,13 @@
 "Server URL" = "محدد موقع معلومات الخادم";
 
 /* (No Commment) */
-"Set as Default Account?" = "تعيين كحساب افتراضي؟";
+"Set as Default?" = "تعيين كافتراضي؟";
 
 /* (No Commment) */
 "Settings" = "إعدادات";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "إظهار إكسبوب الخاص بك إذا كنت تاجر واستخدام التطبيق التاجر بلوكتشين للحصول على الأموال بأمان والقطاع الخاص.
-
-الاحتفاظ إكسبوب الخاص بك الخاصة. شخص ما مع الوصول إلى إكسبوب الخاص بك سوف تكون قادراً على مشاهدة كافة الأموال والمعاملات الخاصة بك.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "مشاركة الخاص بك إكسبوب يأذن للآخرين بتعقب محفوظات المعاملة الخاصة بك. كما قد يتمكن الأشخاص المرخص لهم من تعطيل يمكنك من الوصول إلى محفظتك، فقط مشاركة الخاص بك إكسبوب مع شخص تثق به.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "وأثير إشارة %d.";
@@ -887,7 +901,7 @@ Keep your xPub private. Someone with access to your xPub will be able to see all
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل: •\n تحديث تماما تصميم والمستخدم تجربة •\n قوي الأمن مركز \"تعزيز الخصوصية\" •\n المبسطة النسخ الاحتياطي والاسترداد •\n\n مخصص صندوق الإدارة نوعين معاملة متقدمة (أنفاق من عناوين مشاهدة فقط وعمله مشتركة) غير معتمدة في الإصدار الجديد في هذا الوقت.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل: • تحديث تماما تصميم والمستخدم تجربة • قوي الأمن مركز \"تعزيز الخصوصية\" • المبسطة النسخ الاحتياطي والاسترداد • مخصص صندوق الإدارة نوعين معاملة متقدمة (أنفاق من عناوين مشاهدة فقط وعمله مشتركة) غير معتمدة في الإصدار الجديد في هذا الوقت.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "توجد مشكلة في التحقق من هويتك.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "هذا العنوان لا يشاهد فقط.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "هذا عنوان مشاهدة فقط. إذا كنت تريد أن تنفق الأموال الخاصة بك من داخل هذه المحفظة، مجرد تفحص المفتاح الخاص.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "هذا عنوان مشاهدة فقط. أن تنفق الأموال الخاصة بك من هذه المحفظة، الرجاء تفحص المفتاح الخاص.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "وهذا يتم أرشفة. على الرغم من أن لا يمكنك إرسال الأموال من هنا، سوف تظل جميع الأموال الآمنة. ببساطة إلغاء الأرشفة لبدء استخدامه مرة أخرى.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "هذا الاسم قيد الاستخدام بالفعل. الرجاء اختيار اسم مختلف.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "ينتمي هذا المفتاح الخاص إلى عنوان آخر لا يشاهد فقط";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "يتم أرشفة هذا الشيء. وهذا يعني أنه لا يمكن الوصول إليها في التطبيق، ولا يمكنك إرسال الأموال منه.
-
-إذا كان هناك أي أموال، وسوف تكون آمنة. لبدء استخدام هذا الشيء مرة أخرى، إلغاء الأرشفة عليه.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "سيؤدي ذلك إلى محو كافة البيانات المحفظة الموجودة على هذا الجهاز. الرجاء التأكد من لديك معلومات المحفظة الخاصة بك المحفوظة في أماكن أخرى خلاف ذلك أي بيتكوينس في هذه الإرادة المحفظة لا يمكن الوصول إليها!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "التحقق من النسخ الاحتياطي";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "وقد تم إرسال البريد الإلكتروني التحقق إلى %@.";
 
 /* (No Commment) */
 "Verified" = "التحقق";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "عليك دائماً الزوج أو تسجيل الدخول إذا كان لديك حق الوصول إلى \"معرف المحفظة\" وكلمة المرور الخاصة بك. استرداد الأموال الخاصة بك سيتم إنشاء معرف جديد المحفظة. هل ترغب في الاستمرار؟";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "ينبغي أن تظهر لك فقط هذه إكسبوب لتلك الثقة. مع هذه المعلومات، قد تكون قادراً على تعقب المدفوعات الخاصة بك وتعطيل الوصول إلى محفظتك.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "لقد قمت باستيراد مفتاح خاص بنجاح. لاحظ أن ذلك لا يتوافق مع هذا العنوان مشاهدة فقط. إذا كنت تريد أن تنفق من هذا العنوان، تأكد من أن تقوم بتفحص المفتاح الخاص الصحيح.";
+"You've successfully imported a private key." = "لقد قمت باستيراد مفتاح خاص بنجاح.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "قمت بنجاح باستيراد المفتاح الخاص من أجل %@ عنوان، ويمكنك الآن قضاء منه. إذا كنت تريد أن تنفق من هذا العنوان، تأكد من مسح المفتاح الخاص الصحيح.";

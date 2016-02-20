@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "verificació en dos passos 2 està activat.";
 
 /* (No Commment) */
+"API URL" = "API D'URL";
+
+/* (No Commment) */
 "About" = "Sobre";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Adreça de l'arxiu";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arxivi això si no voleu utilitzar-lo ja. El seu fons serà segurs, i vostè pot unarchive en qualsevol moment.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Arxivi això si no voleu utilitzar-lo ja. El seu fons continuarà sent segurs, i vostè pot unarchive en qualsevol moment.";
 
 /* (No Commment) */
 "Archived" = "Arxivats";
@@ -425,6 +428,9 @@
 "Identifier" = "Identificador";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Si ets un comerciant, Mostra el seu xPub i utilitzar l'app Blockchain mercader per rebre fons de manera segura i privada.";
+
+/* (No Commment) */
 "Import Private Key" = "Clau privada d'importació";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Ara mateix";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Mantenir el seu xPub privat. Algú amb accés a la xPub serà capaç de veure tot el seu fons i les transaccions.";
+
+/* (No Commment) */
 "Label" = "Etiqueta";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "La cartera de Bitcoin";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Nota: La clau privada escanejada no correspon a aquesta adreça només de veure. Si voleu passar d'aquesta adreça, assegureu-vos que escanejar la clau privada correcta.";
 
 /* (No Commment) */
 "Name" = "Nom";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Si us plau afegiu una adreça de correu electrònic";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Si us plau revisa el teu email i faci clic a l'enllaç de verificació.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Si us plau revisa el teu email. Si ja heu verificat un intent de connexió, ha de registrar través de la nostra cartera de web i ajuntar el seu telèfon per escanejant el codi QR sota escenes-> cartera informació.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Indiqueu una adreça de correu electrònic.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Actualitza el codi d'aparellament i torneu-ho a provar.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Seleccioneu una adreça diferent a enviar des o baixar la quota en escenes.";
@@ -824,17 +842,13 @@
 "Server URL" = "Adreça URL del servidor";
 
 /* (No Commment) */
-"Set as Default Account?" = "Configurar com a compte per defecte?";
+"Set as Default?" = "Configuració per defecte?";
 
 /* (No Commment) */
 "Settings" = "Configuració";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Mostrar el seu xPub si vostè és un comerciant i utilitzar l'app Blockchain mercader per rebre fons de manera segura i privada.
-
-Mantenir el seu xPub privat. Algú amb accés a la xPub serà capaç de veure tot el seu fons i les transaccions.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Compartir el seu xPub autoritza altres a seguir la història de transacció. Com les persones autoritzades pot ser capaços d'interrompre accedeixin a la seva cartera, el seu xPub només compartir amb gent que confia.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Senyal %d es va criar.";
@@ -887,7 +901,7 @@ Mantenir el seu xPub privat. Algú amb accés a la xPub serà capaç de veure to
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "L'actualització pren només un segon i seu bitcoins i història estaran fora de perill. Aquí és què és millor: \n\n• disseny completament actualitzat i usuari experiència \n• seguretat robusta centre \n• privacitat realçat simplificat reserva i recuperació \n• personalitzat fons gestió \n\ndos tipus de transacció avançat (despeses de només veure adreces i compartir moneda) no són compatibles amb la nova versió en aquest moment.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "L'actualització pren només un segon i seu bitcoins i història estaran fora de perill. Aquí és què és millor: disseny • completament actualitzat i usuari experiència • seguretat robusta centre • • privacitat realçat simplificat reserva i recuperació • personalitzat fons gestió dos tipus de transacció avançat (despeses de només veure adreces i compartir moneda) no són compatibles amb la nova versió en aquest moment.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Hi havia un problema verificar la vostra identitat.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Aquesta adreça no és només de veure.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Això és una adreça només de veure. Si voleu passar el seu fons de dins d'aquesta cartera, només escannejar la seva clau privada.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Això és una adreça només de veure. Per passar el seu fons d'aquesta cartera, escanegeu la seva clau privada.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Això és arxivat. Encara que no podeu enviar fons des d'aquí, tots fons quedarà segurs. Simplement unarchive per començar a utilitzar una altra vegada.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Aquest nom és ja en ús. Si us plau, triar un nom diferent.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Aquesta clau privada pertany a una altra adreça que no és només veure";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Aquesta cosa és arxivat. Això vol dir no es pot accedir a l'app, i no podràs enviar fons d'ella.
-
-Si hi ha qualsevol fons, estaran segurs. Per començar a utilitzar això una altra vegada, unarchive-lo.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Això esborrarà totes les dades de cartera d'aquest dispositiu. Confirmeu que té el seu moneder informació guardada en un altre lloc, en cas contrari qualsevol bitcoins en aquesta cartera serà ser inaccessible!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "VERIFICAR LA CÒPIA DE SEGURETAT";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "E-mail de comprovació s'ha enviat a %@.";
 
 /* (No Commment) */
 "Verified" = "Verificat";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Sempre cal ajuntar o connectar si teniu accés a la seva cartera ID i contrasenya. Recuperant el seu fons crearà un nou identificador de cartera. Voleu continuar?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Només hauria de mostrar aquest xPub als que confieu. Amb aquesta informació, poden ser capaços de fer un seguiment dels seus pagaments i interrompre l'accés a la seva cartera.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Vostè haver importat reeixidament una clau privada. Tingueu en compte que no correspon a aquesta adreça només de veure. Si voleu passar d'aquesta adreça, assegureu-vos que escanejar la clau privada correcta.";
+"You've successfully imported a private key." = "Vostè haver importat reeixidament una clau privada.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Vostè haver importat reeixidament la clau privada per a l'adreça %@, i ara pot passar d'ella. Si voleu passar d'aquesta adreça, assegureu-vos que escaneja la clau privada correcta.";

@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "Preverjanje v 2 korakih je trenutno omogočena.";
 
 /* (No Commment) */
+"API URL" = "API URL";
+
+/* (No Commment) */
 "About" = "O";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Arhiv naslov";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arhiv to, če ne želite več uporabljati. Vaša sredstva bodo varni, in si lahko Dearhiviraj kadarkoli.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Arhiv to, če ne želite več uporabljati. Vaša sredstva bodo ostala varna, in si lahko Dearhiviraj kadarkoli.";
 
 /* (No Commment) */
 "Archived" = "Arhivirani";
@@ -425,6 +428,9 @@
 "Identifier" = "Identifikator";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Če ste trgovec, pokazati svoje xPub in uporabo Blockchain trgovec app opredmetil varno in zasebno.";
+
+/* (No Commment) */
 "Import Private Key" = "Uvoz zasebnega ključa";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Šele zdaj";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Vztrajati vaš xPub zasebno. Nekdo z dostopom do vašega xPub lahko videli vse sredstva in transakcije.";
+
+/* (No Commment) */
 "Label" = "Oznaka";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Moj Bitcoin denarnico";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Opomba: Skenirane zasebni ključ ne ustreza ta watch samo naslov. Če želite preživeti s tega naslova, se prepričajte, da jih optično preberete s pravilnim zasebnim ključem.";
 
 /* (No Commment) */
 "Name" = "ime";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Dodajte e-poštni naslov";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Prosim ček vaš email in kliknite na povezavo za preverjanje.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Prosim ček vaš email. Če ste že preverili poskus prijave, morate prijavite preko naše spletne denarnice in par telefon z skeniranje QR kodo pod nastavitve-> denarnico informacije.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Navedite e-poštni naslov.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Osvežite se kode in poskusite znova.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Izberite drug naslov za pošiljanje iz ali nižje pristojbine v nastavitve.";
@@ -824,17 +842,13 @@
 "Server URL" = "Spletni naslov strežnika";
 
 /* (No Commment) */
-"Set as Default Account?" = "Nastavi kot privzeti račun?";
+"Set as Default?" = "Nastavi kot privzeti?";
 
 /* (No Commment) */
 "Settings" = "Nastavitve";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Pokaži vaše xPub, če ste trgovec in uporabo Blockchain trgovec app opredmetil varno in zasebno.
-
-Vztrajati vaš xPub zasebno. Nekdo z dostopom do vašega xPub lahko videli vse sredstva in transakcije.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Delitev vaše xPub dovoljuje drugim za sledenje zgodovine transakcij. Kot pooblaščene osebe lahko motijo vas dostop do vaše denarnice, samo delite svoje xPub z ljudmi, ki jim zaupate.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signal %d je bilo postavljeno.";
@@ -887,7 +901,7 @@ Vztrajati vaš xPub zasebno. Nekdo z dostopom do vašega xPub lahko videli vse s
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Vzpenjajoč se zalotiti šele seconda in bitcoins in zgodovina hoteti obstati varen. Tukaj je, kaj je bolje: \n\n• popolnoma posodobljen načrt ter uporabnik doživetje \n• zanesljive varnostne center \n• izboljšano zasebnosti \n• poenostavljeno varnostno kopiranje in obnovitev \n• Customized upravljanje skladov \n\ndve vrsti dodatne transakciji (porabe iz gledal samo naslove in delijo kovanec) niso podprti v novi različici obtorej.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Vzpenjajoč se zalotiti šele seconda in bitcoins in zgodovina hoteti obstati varen. Tukaj je, kaj je bolje: • popolnoma posodobljen načrt ter uporabnik doživetje • zanesljive varnostne center • izboljšano zasebnosti • poenostavljeno varnostno kopiranje in obnovitev • Customized upravljanje skladov dve vrsti dodatne transakciji (porabe iz gledal samo naslove in delijo kovanec) niso podprti v novi različici obtorej.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Tam je bil problem vaši identiteti.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Ta naslov ni samo za uro.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "To je naslov, samo gledam. Če želite preživeti vaš sredstev od znotraj tega denarnico, skeniranje vašega zasebnega ključa.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "To je naslov, samo gledam. Porabiti sredstva iz tega denarnico, prosim skandirati svoj zasebni ključ.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "To je arhivirana. Čeprav ne morete poslati sredstev od tukaj, vsa sredstva bodo ostala varna. Preprosto vzemi iz arhiva začeti ponovno uporabo.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "To ime je že v uporabi. Izberite drugo ime.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Ta zasebni ključ pripada še en naslov, ki ni gledal le";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Ta stvar je arhivirana. To pomeni, da ni mogoče dostopati v app, in ne morete poslati sredstev iz njega.
-
-Če obstajajo kakršne koli sredstev, bodo varno. Da bi začeli uporabljati to stvar znova, vzemi iz arhiva je.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "To boste izbrisali vse denarnico podatke v tej napravi. Prosimo, potrdite, imate vaše denarnice informacije, shranjene drugje drugače vse bitcoins v denarnici bo lahko nedosegljiv!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "PREVERI VARNOSTNO KOPIRANJE";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Preveritev email je bil poslan v %@.";
 
 /* (No Commment) */
 "Verified" = "Preveriti";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Morate vedno seznaniti ali prepričevalnost, če imate dostop do vaše denarnice ID in geslo. Izterjavo vaših sredstev bo ustvaril nove denarnice ID. Ali želite nadaljevati?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Samo kažejo, da se bodo te xPub tistim, ki jim zaupate. Te informacije bodo mogli slediti vaš plačila in prekine dostop do vaše denarnice.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Uspešno uvozite zasebni ključ. Upoštevajte, da ne ustreza ta watch samo naslov. Če želite preživeti s tega naslova, se prepričajte, da jih optično preberete s pravilnim zasebnim ključem.";
+"You've successfully imported a private key." = "Uspešno uvozite zasebni ključ.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Uspešno uvozite zasebni ključ za naslov %@, in zdaj lahko preživite iz nje. Če želite preživeti s tega naslova, se prepričajte, vi skandirati s pravilnim zasebnim ključem.";
