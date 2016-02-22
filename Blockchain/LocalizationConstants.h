@@ -453,3 +453,5 @@
 #define BC_STIRNG_VERIFICATION_EMAIL_SENT_TO_ARGUMENT NSLocalizedString(@"Verification email has been sent to %@.", nil)
 #define BC_STRING_PLEASE_CHECK_AND_CLICK_EMAIL_VERIFICATION_LINK NSLocalizedString(@"Please check your email and click on the verification link.", nil)
 #define BC_STRING_ERROR_PLEASE_REFRESH_PAIRING_CODE NSLocalizedString(@"Please refresh the pairing code and try again.", nil)
+
+#define BC_STRING_DONT_SHOW_AGAIN NSLocalizedString(@"Don't show again", nil)
