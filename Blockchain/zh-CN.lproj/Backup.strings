@@ -41,7 +41,7 @@
 "EQM-OM-jK8.normalTitle" = "完成";
 
 /* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
-"FDO-ui-cGo.text" = "不执行屏幕截图!
+"FDO-ui-cGo.text" = "不抓取屏幕截图!
 您可能会损害您钱包的安全性";
 
 /* (No Commment) */
@@ -67,10 +67,10 @@
 "Yh8-Gm-6op.text" = "丢失 12 个词的恢复短语吗?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
-"dkQ-nj-Pkf.normalTitle" = "下一个词语";
+"dkQ-nj-Pkf.normalTitle" = "下一个词";
 
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
-"eaO-py-9rY.normalTitle" = "下一个词语";
+"eaO-py-9rY.normalTitle" = "下一个词";
 
 /* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
 "eyR-AW-SMc.text" = "备份您的资金，即使您忘记密码或服务不可用，也会确保您不会失去对比特币的访问(导入的地址除外)。";

@@ -209,11 +209,16 @@
 
 - (void)getWalletAndHistory
 {
-    // TODO disable the email warning until next start - not ideal, but there is no easy way to check if the email is set
-    app.showEmailWarning = NO;
-    
     if ([self isInitialized])
         [self.webView executeJS:@"MyWalletPhone.get_wallet_and_history()"];
+}
+
+- (void)getHistoryIfNoTransactionMessage
+{
+    if (!self.didReceiveMessageForLastTransaction) {
+        DLog(@"Did not receive tx message for %f seconds - getting history", DELAY_GET_HISTORY_BACKUP);
+        [self getHistory];
+    }
 }
 
 - (void)getAllCurrencySymbols
@@ -650,16 +655,6 @@
     [self.webView executeJS:@"MyWalletPhone.createNewPayment()"];
 }
 
-
-- (void)resetPaymentFee
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.webView executeJS:@"MyWalletPhone.resetPaymentFee()"];
-}
-
 - (void)changePaymentFromAccount:(int)fromInt
 {
     if (![self isInitialized]) {
@@ -1065,18 +1060,11 @@
     }
 }
 
-- (void)on_block
-{
-    DLog(@"on_block");
-}
-
 - (void)did_set_latest_block
 {
     DLog(@"did_set_latest_block");
     
     [self.webView executeJSWithCallback:^(NSString* latestBlockJSON) {
-        
-        [[NSUserDefaults standardUserDefaults] setObject:latestBlockJSON forKey:USER_DEFAULTS_KEY_TRANSACTIONS];
         
         [self parseLatestBlockJSON:latestBlockJSON];
         
@@ -1161,14 +1149,16 @@
         return nil;
     }
     
-    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(WalletStore.getAllTransactions())"];
+    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.txList.transactionsForIOS)"];
     
     return [allTransactionsJSON getJSONObject];
 }
 
-- (void)on_tx
+- (void)on_tx_received
 {
-    DLog(@"on_tx");
+    DLog(@"on_tx_received");
+    
+    self.didReceiveMessageForLastTransaction = YES;
 
     [app playBeepSound];
     
@@ -1202,9 +1192,7 @@
     }
     
     // Don't display an error message for this notice, instead show a note in the sideMenu
-    if ([message isEqualToString:@"For Improved security add an email address to your account."]) {
-        app.showEmailWarning = YES;
-        
+    if ([message isEqualToString:@"For Improved security add an email address to your account."]) {        
         return;
     }
     

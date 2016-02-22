@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "quy trình xác minh 2 bước hiện đang được kích hoạt.";
 
 /* (No Commment) */
+"API URL" = "API URL";
+
+/* (No Commment) */
 "About" = "Về";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Lưu trữ địa chỉ";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Lưu trữ này nếu bạn không muốn sử dụng nó nữa. Khoản tiền của bạn sẽ được an toàn, và bạn có thể unarchive bất kỳ lúc nào.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Lưu trữ này nếu bạn không muốn sử dụng nó nữa. Khoản tiền của bạn sẽ vẫn an toàn, và bạn có thể unarchive bất kỳ lúc nào.";
 
 /* (No Commment) */
 "Archived" = "Lưu trữ";
@@ -425,6 +428,9 @@
 "Identifier" = "Định danh";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Nếu bạn là một thương gia, Hiển thị của bạn xPub và sử dụng ứng dụng Blockchain thương gia để nhận được tiền an toàn và riêng tư.";
+
+/* (No Commment) */
 "Import Private Key" = "Khóa nhập khẩu riêng";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Bây giờ chỉ cần";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Giữ xPub của bạn riêng tư. Một người có quyền truy cập vào xPub của bạn sẽ có thể xem tất cả các khoản tiền và giao dịch của bạn.";
+
+/* (No Commment) */
 "Label" = "Nhãn";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Bitcoin ví của tôi";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Lưu ý: Khóa riêng được quét không tương ứng với địa chỉ này chỉ xem. Nếu bạn muốn chi tiêu từ địa chỉ này, hãy chắc chắn rằng bạn quét đúng chìa khóa riêng.";
 
 /* (No Commment) */
 "Name" = "Tên";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Xin vui lòng thêm địa chỉ email";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Xin vui lòng kiểm tra email của bạn và nhấp vào liên kết xác minh.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Xin vui lòng kiểm tra email của bạn. Nếu bạn đã xác minh một nỗ lực đăng nhập, bạn cần đăng nhập thông qua của chúng tôi web ví và ghép nối điện thoại bằng cách quét mã QR dưới cài đặt-> ví thông tin.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Vui lòng cung cấp địa chỉ email.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Xin vui lòng làm mới các mã ghép nối và thử lại.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Vui lòng chọn một địa chỉ khác nhau để gửi từ hoặc giảm lệ phí trong cài đặt.";
@@ -824,17 +842,13 @@
 "Server URL" = "URL hệ phục vụ";
 
 /* (No Commment) */
-"Set as Default Account?" = "Thiết lập làm tài khoản mặc định?";
+"Set as Default?" = "Đặt như mặc định?";
 
 /* (No Commment) */
 "Settings" = "Cài đặt";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Hiển thị xPub của bạn nếu bạn là một thương gia và sử dụng ứng dụng Blockchain thương gia để nhận được tiền an toàn và riêng tư.
-
-Giữ xPub của bạn riêng tư. Một người có quyền truy cập vào xPub của bạn sẽ có thể xem tất cả các khoản tiền và giao dịch của bạn.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Chia sẻ xPub của bạn cho phép những người khác để theo dõi lịch sử giao dịch của bạn. Là người được ủy quyền có thể ngăn cản bạn truy cập vào ví của bạn, chỉ chia sẻ xPub của bạn với những người bạn tin cậy.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Tín hiệu %d được nêu ra.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Địa chỉ này không phải là chỉ có xem.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Đây là một địa chỉ chỉ có xem. Nếu bạn muốn chi tiêu tiền của bạn từ bên trong ví này, chỉ cần quét chìa khóa riêng của bạn.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Đây là một địa chỉ chỉ có xem. Để chi tiêu tiền của bạn từ wallet này, xin hãy quét chìa khóa riêng của bạn.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Điều này được lưu trữ. Mặc dù bạn không thể gửi tiền từ đây, mọi khoản tiền sẽ được giữ an toàn. Chỉ đơn giản là unarchive để bắt đầu sử dụng nó một lần nữa.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Tên này hiện đang sử dụng. Vui lòng chọn một tên khác nhau.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Phím riêng này thuộc về một địa chỉ đó không phải là xem chỉ";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Điều này được lưu trữ. Có nghĩa là nó không thể được truy cập vào các ứng dụng, và bạn không thể gửi tiền từ nó.
-
-Nếu có bất kỳ khoản tiền, họ sẽ được an toàn. Để bắt đầu sử dụng điều này một lần nữa, unarchive nó.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Điều này sẽ xóa tất cả dữ liệu wallet trên thiết bị này. Xin vui lòng xác nhận bạn đã ví thông tin của bạn được lưu ở nơi khác nếu không bất kỳ bitcoins trong này ví sẽ được không thể tiếp cận!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "XÁC NHẬN SAO LƯU";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Xác nhận email đã được gửi đến %@.";
 
 /* (No Commment) */
 "Verified" = "Xác minh";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Bạn luôn luôn nên ghép nối hoặc đăng nhập nếu bạn có quyền truy cập vào Wallet ID và mật khẩu của bạn. Phục hồi khoản tiền của bạn sẽ tạo một ID mới ví. Bạn có muốn tiếp tục không?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Bạn chỉ nên hiển thị này xPub cho những người bạn tin tưởng. Với thông tin này, họ có thể theo dõi các khoản thanh toán của bạn và làm gián đoạn truy cập vào ví của bạn.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Bạn đã chuyển nhập thành công một phím riêng. Lưu ý rằng nó không tương ứng với địa chỉ này chỉ xem. Nếu bạn muốn chi tiêu từ địa chỉ này, hãy chắc chắn rằng bạn quét đúng chìa khóa riêng.";
+"You've successfully imported a private key." = "Bạn đã chuyển nhập thành công một phím riêng.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Bạn đã chuyển nhập thành công khóa riêng cho địa chỉ %@, và bây giờ bạn có thể chi tiêu từ nó. Nếu bạn muốn chi tiêu từ địa chỉ này, hãy chắc chắn rằng bạn quét đúng chìa khóa riêng.";

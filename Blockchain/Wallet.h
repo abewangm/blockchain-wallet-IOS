@@ -100,6 +100,7 @@
 @property(nonatomic) NSDictionary *accountInfo;
 
 @property(nonatomic) NSString *lastScannedWatchOnlyAddress;
+@property(nonatomic) BOOL didReceiveMessageForLastTransaction;
 
 // HD properties:
 @property NSString *recoveryPhrase;
@@ -155,6 +156,7 @@
 - (BOOL)validateSecondPassword:(NSString *)secondPassword;
 
 - (void)getHistory;
+- (void)getHistoryIfNoTransactionMessage;
 - (void)getWalletAndHistory;
 
 - (uint64_t)getLegacyAddressBalance:(NSString *)address;
@@ -256,7 +258,6 @@
 - (void)changePaymentAmount:(uint64_t)amount;
 - (void)sweepPayment;
 - (void)getPaymentFee;
-- (void)resetPaymentFee;
 - (void)checkIfOverspending;
 
 // Recover with passphrase

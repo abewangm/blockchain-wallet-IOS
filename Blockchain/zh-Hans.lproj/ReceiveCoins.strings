@@ -20,13 +20,13 @@
 "60.text" = "地址";
 
 /* (No Commment) */
-"68.text" = "没有地址";
+"68.text" = "无地址";
 
 /* (No Commment) */
-"69.text" = "您的帐户可能没有正确配对。单击顶部的按钮屏幕左下部，并按照屏幕上的说明。";
+"69.text" = "您的帐户可能没有正确配对。单击屏幕左上部的按钮并按照屏幕上的说明执行操作。";
 
 /* (No Commment) */
-"80.normalTitle" = "存档地址";
+"80.normalTitle" = "归档地址";
 
 /* (No Commment) */
 "81.normalTitle" = "标签地址";
@@ -44,7 +44,7 @@
 "92.normalTitle" = "复制地址";
 
 /* (No Commment) */
-"100.text" = "金额:";
+"100.text" = "金额：";
 
 /* (No Commment) */
 "120.text" = "5 BTC = $10";
@@ -56,13 +56,13 @@
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "UITextField"; text = "Only to control keyboard"; ObjectID = "OFk-NR-2Sp"; */
-"OFk-NR-2Sp.text" = "仅用于控制键盘";
+"OFk-NR-2Sp.text" = "仅控制键盘";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
 "a9y-3I-Drw.placeholder" = "0.00";
 
 /* (No Commment) */
-"i1j-pG-caF.normalTitle" = "扫描的专用密钥";
+"i1j-pG-caF.normalTitle" = "扫描私钥";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
 "jRM-0A-Zuo.text" = "BTC";

@@ -45,7 +45,7 @@ https://blockchain.info/Wallet/login";
 "376.normalTitle" = "Botón 2";
 
 /* (No Commment) */
-"377.normalTitle" = "Botón 2";
+"377.normalTitle" = "Botón 1";
 
 /* (No Commment) */
 "378.text" = "Si ya tiene un monedero de Blockchain, seleccione Emparejar dispositivo; de lo contrario, seleccione Crear monedero.    ¡Es gratis! No necesita un correo electrónico.";
@@ -72,7 +72,7 @@ https://blockchain.info/Wallet/login";
 "398.normalTitle" = "Crear Monedero";
 
 /* (No Commment) */
-"465.text" = "Se necesita la segunda contraseña";
+"465.text" = "Se necesita la contraseña";
 
 /* Class = "UILabel"; text = "Password Request Description"; ObjectID = "467"; */
 "467.text" = "Descripción de solicitud de contraseña";

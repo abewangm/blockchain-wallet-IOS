@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2-stegs verifikation är aktiverat.";
 
 /* (No Commment) */
+"API URL" = "API URL";
+
+/* (No Commment) */
 "About" = "Om";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Arkiv adress";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arkivera detta om du inte vill använda det längre. Dina pengar kommer att vara säker, och du kan hämta från Arkiv det när som helst.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Arkivera detta om du inte vill använda det längre. Dina pengar kommer att förbli säker, och du kan hämta från Arkiv det när som helst.";
 
 /* (No Commment) */
 "Archived" = "Arkiverade";
@@ -425,6 +428,9 @@
 "Identifier" = "Identifierare";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Om du är en köpman, visar din xPub och använda Blockchain köpman app att ta emot medel säkert och privat.";
+
+/* (No Commment) */
 "Import Private Key" = "Import-nyckel";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Just nu";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Hålla din xPub privat. Någon med tillgång till din xPub kommer att kunna se alla dina fonder och transaktioner.";
+
+/* (No Commment) */
 "Label" = "Etikett";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Min Bitcoin plånbok";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Obs: Den skannade privata nyckeln motsvarar inte till denna klocka-bara adress. Om du vill spendera från denna adress, se till att du skanna rätt privat nyckel.";
 
 /* (No Commment) */
 "Name" = "Namn";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Lägg till en e-postadress";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Behaga check din email och klicka på verifieringslänken.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Vänligen kontrollera din e-post. Om du har redan kontrollerat ett inloggningsförsök, du bör logga in via vår web plånbok och koppla ihop telefonen genom att skanna QR-kod under Inställningar-> plånbok Information.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Ange en e-postadress.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Uppdatera länkningskoden och försök igen.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Välj en annan adress att skicka från eller sänka avgiften i inställningar.";
@@ -824,17 +842,13 @@
 "Server URL" = "Server-URL";
 
 /* (No Commment) */
-"Set as Default Account?" = "Ange som standardkonto?";
+"Set as Default?" = "Ange som standard?";
 
 /* (No Commment) */
 "Settings" = "Inställningar";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Visa din xPub om du är en köpman och använda den Blockchain köpmannen app att ta emot medel säkert och privat.
-
-Hålla din xPub privat. Någon med tillgång till din xPub kommer att kunna se alla dina fonder och transaktioner.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Dela din xPub tillåter andra att spåra din transaktionshistorik. Som personer kan kunna störa dig åtkomst till din plånbok, bara dela din xPub med människor du litar på.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signal %d togs upp.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Denna adress är inte bara titta på.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Detta är en klocka-bara adress. Om du vill spendera dina pengar från inom denna plånbok, bara söka igenom din privata nyckel.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Detta är en klocka-bara adress. För att spendera dina pengar från denna plånbok, vänligen skanna din privata nyckel.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Här arkiveras. Om du inte kan skicka pengar från här, kommer att alla medel förbli säker. Helt enkelt hämta från Arkiv om du vill börja använda den igen.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Detta namn används redan. Välj ett annat namn.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Denna privata nyckel hör till en annan adress som inte är klockan bara";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Det här är arkiverad. Det innebär att det inte kan nås i app, och du kan inte skicka pengar från den.
-
-Om det finns några medel, kommer att de vara säker. För att börja använda det här igen, hämta från Arkiv det.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Detta kommer att radera alla plånbok data på enheten. Vänligen bekräfta när du har din plånbok information sparas på andra håll annars alla bitcoins i denna plånbok kommer att vara otillgängliga!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "VERIFIERA BACKUP";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Bekräftande email har skickats till %@.";
 
 /* (No Commment) */
 "Verified" = "Verifierat";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Du bör alltid par eller logga in om du har tillgång till din plånbok-ID och lösenord. Återfå dina pengar kommer att skapa en ny plånbok-ID. Vill du fortsätta?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Du ska bara visa denna xPub till dem du litar på. Med denna information, kan de kunna hålla reda på dina betalningar och störa tillgång till din plånbok.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Du har lyckosam importerat en privat nyckel. Observera att det inte motsvarar till denna klocka-bara adress. Om du vill spendera från denna adress, se till att du skanna rätt privat nyckel.";
+"You've successfully imported a private key." = "Du har lyckosam importerat en privat nyckel.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Du har lyckosam importerat den privata nyckeln för adress %@, och du kan nu spendera från den. Om du vill spendera från denna adress, se till att du skannar rätt privat nyckel.";

@@ -5,7 +5,7 @@
 "8Ha-3e-Nqx.text" = "Vérifier l’e-mail";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "Vérification en 2 étapes";
+"8Zy-R2-HoW.text" = "Vérification en deux étapes";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
 "Ii6-KE-x0B.placeholder" = "Confirmez le nouveau mot de passe";

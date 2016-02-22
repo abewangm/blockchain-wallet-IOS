@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "Verificare în 2 paşi este activată.";
 
 /* (No Commment) */
+"API URL" = "API URL-UL";
+
+/* (No Commment) */
 "About" = "Despre";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Arhiva adresa";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arhiva-asta dacă nu vrei să-l utilizaţi mai. Fondurile vor fi în siguranţă, şi vă pot unarchive în orice moment.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Arhiva-asta dacă nu vrei să-l utilizaţi mai. Fondurile dumneavoastră vor rămâne în siguranţă, şi vă pot unarchive în orice moment.";
 
 /* (No Commment) */
 "Archived" = "Arhivate";
@@ -425,6 +428,9 @@
 "Identifier" = "Identificator";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Dacă sunteţi un comerciant, Arată dumneavoastră xPub şi de a folosi app Blockchain comerciant să primească fonduri în condiţii de siguranţă şi în particular.";
+
+/* (No Commment) */
 "Import Private Key" = "Cheie privată de import";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Chiar acum";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Păstra al tău xPub privat. Cineva cu acces la xPub vă va fi capabil pentru a vedea toate fondurile şi tranzacţii.";
+
+/* (No Commment) */
 "Label" = "Eticheta";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Portofelul meu Bitcoin";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Notă: Cheia privată scanate nu corespunde la această adresă numai de ceas. Dacă doriţi să petreceţi la această adresă, asiguraţi-vă că vă scana cheia privată corect.";
 
 /* (No Commment) */
 "Name" = "nume";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Vă rugăm să adăugaţi o adresă de e-mail";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Te rog verifica email-ul şi faceţi clic pe link-ul de verificare.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Vă rugăm să verificaţi adresa de email. Dacă aţi verificat deja o încercare de conectare, trebuie să vă conectaţi prin intermediul nostru web portofel şi împerechează telefonul scanează codul QR sub Setări-> informaţii de portofel.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Vă rugăm să furnizaţi o adresă de e-mail.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Reîmprospătați codului de cuplare și încercați din nou.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Vă rugăm să selectaţi o altă adresă pentru a trimite la sau de a reduce taxa de în setărilor.";
@@ -824,17 +842,13 @@
 "Server URL" = "URL-ul serverului";
 
 /* (No Commment) */
-"Set as Default Account?" = "Setat drept cont implicit?";
+"Set as Default?" = "Setează ca implicite?";
 
 /* (No Commment) */
 "Settings" = "Setări";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Arată xPub dumneavoastră dacă sunteţi un comerciant şi utiliza aplicaţia Blockchain comerciant să primească fonduri în condiţii de siguranţă şi în particular.
-
-Păstra al tău xPub privat. Cineva cu acces la xPub vă va fi capabil pentru a vedea toate fondurile şi tranzacţii.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Partajare dumneavoastră xPub autorizează altora pentru a urmări Istoricul tranzactiei. Ca persoane autorizate ar putea să perturbe-vă la accesarea portofel, numai cota ta xPub cu oameni tu trust.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "%d semnal a fost ridicat.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Aceasta adresa este nu numai de ceas.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Aceasta este o adresă numai de ceas. Dacă doriţi să cheltuiţi fondurile din cadrul acest portofel, doar scanare cheia privată.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Aceasta este o adresă numai de ceas. Pentru a cheltui fondurile dumneavoastră la acest portofel, vă rugăm să scanaţi cheia privată.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Aceasta este arhivată. Deşi nu puteţi trimite fonduri de aici, orice şi toate fondurile va rămâne în siguranţă. Unarchive pur şi simplu pentru a începe să utilizaţi-l din nou.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Acest nume este deja în uz. Vă rugăm să alegeţi un nume diferit.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Această cheie privată aparţine de o altă adresă care nu este doar ceas";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Acest lucru este arhivată. Asta înseamnă că acesta nu poate fi accesat în app, şi nu puteţi trimite fonduri de la ea.
-
-Dacă există orice fonduri, acestea vor fi în siguranţă. Pentru a începe să utilizaţi acest lucru din nou, unarchive-l.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Aceasta va şterge toate datele de portofel pe acest aparat. Vă rugăm să confirmaţi aveţi informaţiile portofel altfel salvate în altă parte orice bitcoins în acest portofel va fi inaccesibile!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "VERIFICA BACKUP";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Verificării e-mail a fost trimis la %@.";
 
 /* (No Commment) */
 "Verified" = "Verificate";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Tu ar trebui să întotdeauna pereche sau login dacă aveţi acces la portofel ID-ul şi parola. Recuperarea fondurilor dumneavoastră va crea un nou portofel ID. Doriţi să continuaţi?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Ar trebui să afişa numai acest xPub pentru cei care aveți încredere. Cu această informaţie, se putea urmări de plăţile şi perturba accesul la portofel.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Le-am importat cu succes o cheie privată. Reţineţi că acesta nu corespunde la această adresă numai de ceas. Dacă doriţi să petreceţi la această adresă, asiguraţi-vă că vă scana cheia privată corect.";
+"You've successfully imported a private key." = "Le-am importat cu succes o cheie privată.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Le-am importat cu succes la cheia privată pentru adresa %@, şi acum puteţi petrece la ea. Dacă doriţi să-şi petreacă la această adresă, asiguraţi-vă că vă scana cheia privată corect.";

@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2. lépés ellenőrzés be van kapcsolva.";
 
 /* (No Commment) */
+"API URL" = "API URL";
+
+/* (No Commment) */
 "About" = "Körülbelül";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Archívum cím";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Archív ez, ha nem akarod, hogy használ ez anymore. Pénzed lesz biztonságos, és, archiválás, azt bármikor.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Archív ez, ha nem akar-hoz használ ez anymore. Az alapok továbbra is biztonságos, és Ön archiválás, azt bármikor.";
 
 /* (No Commment) */
 "Archived" = "Archivált";
@@ -425,6 +428,9 @@
 "Identifier" = "Azonosítója";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Ha egy kereskedő, a xPub és a kereskedő Blockchain app felhasználási részesülnek, biztonságosan és zárt.";
+
+/* (No Commment) */
 "Import Private Key" = "Import privát kulcs";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Csak most";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Tartsa a xPub magán. A xPub hozzáféréssel rendelkező személy lesz képes-hoz lát minden a pénzeszközök és tranzakciók.";
+
+/* (No Commment) */
 "Label" = "Címke";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Bitcoin tárcámat";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Megjegyzés: A beolvasott privát kulcs nem felel meg e csak watch cím. Ha szeretne költeni erre a címre, győződjön meg róla, hogy ellenőrizze a megfelelő személyes kulccsal.";
 
 /* (No Commment) */
 "Name" = "név";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Adjon meg egy e-mail címet";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Kérjük, ellenőrizze az e-mail, és kattintson az ellenőrzés linkre.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Kérjük, ellenőrizze e-mailjeit. Ha már ellenőrizte, a bejelentkezési kísérlet, kell fatörzs-ban keresztül az internetes pénztárca és párosítja a telefont, a beállítások a QR-kód beolvasásával-> pénztárca információkat.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Kérjük, adja meg egy e-mail címet.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Kérjük, frissítse a párosítási kódot, majd próbálja újra.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Kérjük, válasszon egy másik címet küld, vagy a díj beállítások leenged.";
@@ -824,17 +842,13 @@
 "Server URL" = "Kiszolgáló URL-címe";
 
 /* (No Commment) */
-"Set as Default Account?" = "Beállítás alapértelmezett fiók?";
+"Set as Default?" = "Készlet mint hiba?";
 
 /* (No Commment) */
 "Settings" = "Beállítások";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "A xPub azt mutatják, ha a kereskedő és a kereskedő Blockchain app segítségével pénzeszközöket, biztonságosan és magántulajdonban.
-
-Tartsa a xPub magán. A xPub hozzáféréssel rendelkező személy lesz képes-hoz lát minden a pénzeszközök és tranzakciók.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "A xPub megosztása felhatalmazza mások a tranzakciók előzményeinek nyomon követésére. Jogosult személyek esetleg képes megzavarni, hozzáférjenek a pénztárca, csak megosztja a xPub meg, akikben megbízol.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Jel %d emelték.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Ez a cím nem csak nézni.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Ez csak watch cím. Ha szeretné tölteni a pénzeszközök a pénztárca, csak átkutat a privát kulcs.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Ez csak watch cím. Költeni a pénzt a pénztárca, kérjük scan a privát kulcs.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Ez az archivált. Bár nem küldhet alapok itt, és minden alapok továbbra is biztonságos. Egyszerűen archiválás-hoz elkezd használ ez újra.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Ez a név már használatban van. Kérjük, válasszon egy másik nevet.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Ez a privát kulcs tartozik egy másik címre, amely nem csak néz";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Ez a dolog archiválja. Ez azt jelenti, hogy nem érhető el az app, és nem küldhet alapok belőle.
-
-Ha vannak olyan alapok, azok biztonságban lesznek. Annak érdekében, hogy elkezd használ ez dolog újra, archiválás, azt.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Ez akarat töröl minden pénztárca adat ezen az eszközön. Kérjük, erősítse meg, hogy az mentett máshol egyébként minden bitcoins a pénztárca lesz lenni hozzáférhetetlen pénztárca információ!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "ELLENŐRIZZE A BIZTONSÁGI MÁSOLAT";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Ellenőrző e-mailt küldtek %@.";
 
 /* (No Commment) */
 "Verified" = "Ellenőrzött";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Mindig párba, vagy ha van hozzáférése a pénztárca azonosítás és jelszó logika. Beszedik a pénzt hoz létre egy új pénztárcát. Szeretne továbbra is?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Kell egyetlen mutat a xPub, akikben megbízunk. Ezt az információt is tudnak nyomon követi a kifizetések, és megszakadhat a hozzáférés a tárcájában.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Sikeresen importált egy privát kulcs. Vegye figyelembe, hogy ez nem felel meg e csak watch cím. Ha szeretne költeni erre a címre, győződjön meg róla, hogy ellenőrizze a megfelelő személyes kulccsal.";
+"You've successfully imported a private key." = "Sikeresen importált egy privát kulcs.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Sikeresen importálta a privát kulcs részére a cím %@, és lehetősége van elköltenie belőle. Ha szeretne költeni erre a címre, győződjön meg róla, beolvasás a megfelelő személyes kulccsal.";

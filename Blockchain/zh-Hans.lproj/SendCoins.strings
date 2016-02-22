@@ -11,7 +11,7 @@
 "6zi-8R-Tmt.normalTitle" = "BTC";
 
 /* Class = "UILabel"; text = "From"; ObjectID = "7"; */
-"7.text" = "从";
+"7.text" = "自";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
 "7ho-GV-ikp.text" = "BTC";
@@ -23,7 +23,7 @@
 "9B2-23-8j5.text" = "CurrAmt";
 
 /* (No Commment) */
-"13.text" = "自";
+"13.text" = "至";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
 "52.placeholder" = "0.000";
@@ -59,10 +59,10 @@
 "IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "总数:";
+"Ubr-KG-egH.text" = "总计:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
-"ZcA-OM-4nq.text" = "从：";
+"ZcA-OM-4nq.text" = "发送者:";
 
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
 "Zgn-Wx-Uwx.text" = "请稍候";
@@ -71,13 +71,13 @@
 "aKC-Q2-phD.text" = "发送付款";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "金额: ";
+"aeG-gf-oXV.text" = "金额： ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
-"d7n-Ue-QXL.normalTitle" = "可用资金";
+"d7n-Ue-QXL.normalTitle" = "可用总额";
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
-"fpY-AA-We5.text" = "自";
+"fpY-AA-We5.text" = "至";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
 "pPu-bJ-k6p.normalTitle" = "继续";
@@ -98,7 +98,7 @@
 "vzP-xG-GPO.text" = "BtcTotal";
 
 /* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
-"yGR-Eh-YG1.text" = "自：";
+"yGR-Eh-YG1.text" = "接收者:";
 
 /* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "任何地址";

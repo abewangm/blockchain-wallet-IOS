@@ -5,7 +5,7 @@
 "48.normalTitle" = "Сохранить";
 
 /* (No Commment) */
-"56.text" = "Электронный адрес";
+"56.text" = "Адрес ярлыка";
 
 /* (No Commment) */
 "57.text" = "Адрес";
@@ -29,7 +29,7 @@
 "80.normalTitle" = "АДРЕС АРХИВА";
 
 /* (No Commment) */
-"81.normalTitle" = "АДРЕС ЭТИКЕТКИ";
+"81.normalTitle" = "АДРЕС ЯРЛЫКА";
 
 /* (No Commment) */
 "88.normalTitle" = "ЗАПРОСИТЬ ОПЛАТУ";

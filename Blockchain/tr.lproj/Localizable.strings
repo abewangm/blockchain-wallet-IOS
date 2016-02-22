@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2-adım doğrulama şu anda etkin durumda.";
 
 /* (No Commment) */
+"API URL" = "API URL";
+
+/* (No Commment) */
 "About" = "Hakkında";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Arşiv adresi";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Artık kullanmak istemiyorsanız bu arşiv. Paranız güvende olacak ve herhangi bir zamanda unarchive.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Artık kullanmak istemiyorsanız bu arşiv. Paranız güvenli kalır ve herhangi bir zamanda unarchive.";
 
 /* (No Commment) */
 "Archived" = "Arşivlenmiş";
@@ -425,6 +428,9 @@
 "Identifier" = "Tanımlayıcı";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Bir tüccar iseniz, sizin xPub göstermek ve Blockchain tüccar app güvenli bir şekilde ve özel olarak para almak için kullanın.";
+
+/* (No Commment) */
 "Import Private Key" = "Alma özel anahtar";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Sadece şimdi";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Senin xPub gizli tut. Senin xPub erişimi olan tüm fonları ve hareketleri görmek mümkün olacak.";
+
+/* (No Commment) */
 "Label" = "Etiket";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Benim Bitcoin cüzdan";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Not: Taranan özel anahtarın Bu salt izle adresine karşılık gelmez. Bu adresten geçirmek istiyorsan, doğru özel anahtarı inceden inceye gözden geçirmek emin olun.";
 
 /* (No Commment) */
 "Name" = "Adı";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Lütfen bir e-posta adresi eklemek";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Lütfen e-postanızı kontrol ve doğrulama bağlantısını tıklatın.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Lütfen e-postanızı kontrol edin. Oturum açma girişimi doğruladığınız, bizim web cüzdan giriş yapın ve telefonunuz QR Kod ayarları altında tarayarak çifti-> m-cüzdan bilgi.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "E-posta adresi veriniz.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Lütfen Eşleştirme kodunu yenileyin ve yeniden deneyin.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Lütfen göndermek veya ayarları ücretine azaltmak için farklı bir adres seçin.";
@@ -824,17 +842,13 @@
 "Server URL" = "Sunucu URL'si";
 
 /* (No Commment) */
-"Set as Default Account?" = "Varsayılan hesap olarak ata?";
+"Set as Default?" = "Varsayılan olarak ayarlamak?";
 
 /* (No Commment) */
 "Settings" = "Ayarlar";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Senin xPub bir tüccar ve Blockchain tüccar uygulamalarınızı güvenli bir şekilde ve özel olarak para almak gösterir.
-
-Senin xPub gizli tut. Senin xPub erişimi olan tüm fonları ve hareketleri görmek mümkün olacak.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Senin xPub paylaştığınız diğer kişilerin işlem geçmişinizi izlemesi için yetki verir. Sadece yetkili kişiler cüzdanını erişmesini bozmaya mümkün olabilir gibi senin xPub güvendiğiniz kişilerle paylaşın.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Sinyal %d büyüdü.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Bu adresi sadece izle.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Salt izle adres burası. Bu cüzdan, para harcamak istiyorsanız, özel anahtarınızı inceden inceye gözden geçirmek.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Salt izle adres burası. Bu cüzdanından para harcamak için özel anahtarınızı tarama.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Bu arşivlenir. Buradan para gönderemiyor rağmen tüm fonları güvenli kalacak. Sadece tekrar kullanmaya başlamak için unarchive.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Bu ad zaten kullanılıyor. Lütfen farklı bir ad seçin.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Bu özel anahtarı yalnızca saat değil başka bir adrese ait";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Bu şey arşivlenir. Yani app erişilemiyor ve ondan para gönderemiyor.
-
-Eğer herhangi bir fon var, güvende olacaklar. Bu şeyi tekrar kullanmaya başlamak için bu unarchive.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Bu bu aygıt üzerindeki tüm cüzdan verileri silecek. Lütfen sen-si olmak olmak ulaşılmaz başka bir yerde aksi takdirde herhangi bir bitcoins bu cüzdan vasiyetinde kaydedilen cüzdan bilgilerinizi onaylayın!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "DOĞRULAMA YEDEK";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Doğrulama e-postası %@ için gönderdi.";
 
 /* (No Commment) */
 "Verified" = "Doğrulanmadı";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Her zaman çifti veya cüzdan ID ve parola erişiminiz varsa oturum açmanız gerekir. Paranızı kurtarma yeni bir m-cüzdan kodu oluşturun Devam etmek istiyor musunuz?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Yalnızca güvendiğiniz kişilere bu xPub göstermelidir. Bu bilgileri kullanarak, onlar-ebilmek muktedir ödemelerinizin takip edin ve cüzdan için erişim bozabilir.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Bir özel anahtar başarıyla. Not Bu salt izle adresine karşılık gelmez. Bu adresten geçirmek istiyorsan, doğru özel anahtarı inceden inceye gözden geçirmek emin olun.";
+"You've successfully imported a private key." = "Bir özel anahtar başarıyla.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Adresi %@ için özel anahtar başarıyla ve artık ondan geçirebilirsiniz. Bu adresten geçirmek istiyorsan, doğru özel anahtarı tarama emin olun.";

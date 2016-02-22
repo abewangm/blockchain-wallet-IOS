@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2-step verificatie is ingeschakeld.";
 
 /* (No Commment) */
+"API URL" = "API-URL";
+
+/* (No Commment) */
 "About" = "Over";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Archief adres";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Archief dit wilt u niet meer gebruiken. Uw geld zal veilig zijn, en u kunt désarchiver op elk gewenst moment.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Archief dit als u niet wilt om het te gebruiken meer. Uw geld veilig te houden, en u kunt désarchiver op elk gewenst moment.";
 
 /* (No Commment) */
 "Archived" = "Gearchiveerd";
@@ -425,6 +428,9 @@
 "Identifier" = "Id";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Bent u een handelaar, Toon uw xPub en gebruik van de Blockchain Merchant app te ontvangen van fondsen veilig en privé.";
+
+/* (No Commment) */
 "Import Private Key" = "Import persoonlijke sleutel";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Zojuist";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Privé houden van uw xPub. Iemand met toegang tot uw xPub zal zitten kundig voor zien al uw fondsen en transacties.";
+
+/* (No Commment) */
 "Label" = "Label";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Mijn Bitcoin portemonnee";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Opmerking: De gescande privésleutel beantwoordt niet aan dit adres alleen-horloge. Als u uitgeven van dit adres wilt, zorg ervoor dat u de juiste persoonlijke sleutel scant.";
 
 /* (No Commment) */
 "Name" = "Naam";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Voeg een e-mailadres";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Controleer uw e-mail en klik op de verificatielink.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Controleer uw e-mailadres. Als u hebt al een login poging gecontroleerd, moet u inloggen via onze web-portemonnee en koppel je telefoon door het scannen van de QR code onder instellingen-> portemonnee informatie.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Geef een e-mailadres.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Vernieuw de pairing code en probeer het opnieuw.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Selecteer een ander adres te verzenden vanuit of lager de vergoeding in instellingen.";
@@ -824,17 +842,13 @@
 "Server URL" = "URL van server";
 
 /* (No Commment) */
-"Set as Default Account?" = "Instellen als standaard-Account?";
+"Set as Default?" = "Als standaard instellen?";
 
 /* (No Commment) */
 "Settings" = "Instellingen";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Toon uw xPub als u een handelaar bent en de Blockchain Merchant app te ontvangen van fondsen veilig en privé.
-
-Privé houden van uw xPub. Iemand met toegang tot uw xPub zal zitten kundig voor zien al uw fondsen en transacties.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Delen van uw xPub machtigt anderen uw transactiegeschiedenis bijhouden. Als geautoriseerde personen mogelijk verstoren u toegang krijgen tot uw portemonnee, alleen uw xPub te delen met mensen die u vertrouwt.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signaal %d werd opgevoed.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Dit adres is niet alleen-horloge.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Dit is een alleen-horloge-adres. Als u uitgeven van uw geld uit binnen deze portefeuille wilt, uitsluitend scannen uw persoonlijke sleutel.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Dit is een alleen-horloge-adres. Te besteden uw geld uit deze portefeuille, scannen kunt u uw persoonlijke sleutel.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Dit wordt gearchiveerd. Hoewel u geen fondsen vanaf hier verzenden, en alle middelen veilig te houden. Désarchiver gewoon om te beginnen het opnieuw te gebruiken.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Deze naam is al in gebruik. Kies een andere naam.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Deze persoonlijke sleutel behoort tot een ander adres dat niet alleen horloge";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Dit ding is gearchiveerd. Dat betekent dat het in de app kan niet worden geopend, en u kunt geen fondsen uit het verzenden.
-
-Als er geen middelen, zal ze veilig zijn. Désarchiver het volgende om te beginnen met behulp van dit ding opnieuw.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Dit zal wissen alle portemonnee gegevens op dit apparaat. Gelieve te bevestigen dat u inderdaad uw portemonnee gegevens opgeslagen elders anders elke bitcoins in deze portefeuille zal zitten ontoegankelijk!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "BACK-UPS VERIFIËREN";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Controle e-mail is verstuurd naar %@.";
 
 /* (No Commment) */
 "Verified" = "Geverifieerd";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "U moet altijd koppelen of inloggen als u toegang tot uw portefeuille-ID en wachtwoord hebt. Herstellen van uw fondsen zal maken een nieuwe portefeuille-ID. Wilt u doorgaan?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "U moet alleen het weergeven van deze xPub aan die u vertrouwt. Met deze informatie kunnen zij kunnen bijhouden van uw betalingen en toegang tot uw portefeuille te verstoren.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "U hebt met succes een persoonlijke sleutel geïmporteerd. Merk op dat het niet overeenkomt met dit adres alleen-horloge. Als u uitgeven van dit adres wilt, zorg ervoor dat u de juiste persoonlijke sleutel scant.";
+"You've successfully imported a private key." = "U hebt met succes een persoonlijke sleutel geïmporteerd.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "U hebt met succes geïmporteerd de persoonlijke sleutel voor het adres %@, en u kunt nu uit het besteden. Als u uitgeven van dit adres wilt, controleert u of dat u scant de juiste persoonlijke sleutel.";

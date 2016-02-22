@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2-langkah pengesahan sedang didayakan.";
 
 /* (No Commment) */
+"API URL" = "API URL";
+
+/* (No Commment) */
 "About" = "Kira-kira";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Arkib alamat";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arkib ini jika anda tidak mahu menggunakannya lagi. Dana anda akan selamat, dan anda boleh unarchive pada bila-bila masa.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Arkib ini jika anda tidak mahu menggunakannya lagi. Dana anda akan kekal selamat, dan anda boleh unarchive pada bila-bila masa.";
 
 /* (No Commment) */
 "Archived" = "Arkib";
@@ -425,6 +428,9 @@
 "Identifier" = "Pengenalpastian";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Jika anda seorang peniaga, menunjukkan xPub anda dan menggunakan aplikasi Saudagar Blockchain untuk mendapat dana dengan selamat dan swasta.";
+
+/* (No Commment) */
 "Import Private Key" = "Kunci peribadi import";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Tadi";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Teruskan xPub anda yang peribadi. Seseorang yang mempunyai akses ke xPub anda akan dapat melihat semua transaksi dan dana anda.";
+
+/* (No Commment) */
 "Label" = "Label";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Wallet Bitcoin saya";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Nota: Kunci peribadi imbasan tidak sepadan dengan alamat ini menonton sahaja. Jika anda mahu untuk menghabiskan dari alamat ini, pastikan anda imbas kunci peribadi yang betul.";
 
 /* (No Commment) */
 "Name" = "Nama";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Sila tambah alamat e-mel";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Sila semak emel anda dan klik pada link pengesahan.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Sila semak email anda. Jika anda telah pun mengesahkan satu percubaan log masuk, anda perlu log masuk melalui kurangnya web dan telefon anda berpasangan dengan mengimbas kod QR di bawah seting-> maklumat Wallet.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Sila berikan alamat e-mel.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Sila segarkan semula kod pasangan dan cuba lagi.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Sila pilih alamat yang berbeza untuk menghantar dari atau yuran tersebut dalam persekitaran yang lebih rendah.";
@@ -824,17 +842,13 @@
 "Server URL" = "Pelayan URL";
 
 /* (No Commment) */
-"Set as Default Account?" = "Set sebagai akaun lalai?";
+"Set as Default?" = "Set sebagai lalai?";
 
 /* (No Commment) */
 "Settings" = "Seting";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Menunjukkan xPub anda jika anda seoang dan menggunakan aplikasi Saudagar Blockchain untuk mendapat dana dengan selamat dan swasta.
-
-Teruskan xPub anda yang peribadi. Seseorang yang mempunyai akses ke xPub anda akan dapat melihat semua transaksi dan dana anda.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Perkongsian xPub anda membenarkan orang lain untuk mengesan sejarah transaksi anda. Kerana orang-orang yang diberi kuasa boleh mengganggu anda daripada mengakses dompet anda, hanya berkongsi xPub anda dengan orang-orang yang anda percayai.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "%d isyarat dibesarkan.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Alamat ini bukanlah menonton sahaja.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Ini adalah alamat yang menonton sahaja. Jika anda mahu untuk menghabiskan wang anda dari dalam wallet ini, hanya mengimbas kunci persendirian.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Ini adalah alamat yang menonton sahaja. Untuk menghabiskan wang anda dari wallet ini, sila imbas kunci persendirian.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Ini adalah Arkib. Walaupun anda tidak boleh menghantar dana dari sini, segala dana akan kekal selamat. Hanya unarchive untuk mula menggunakannya lagi.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Nama ini sudah digunakan. Sila pilih nama yang berlainan.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Ini kunci peribadi milik ke alamat lain yang tidak menonton sahaja";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Perkara ini direkodkan. Ini bermakna ia tidak boleh dicapai dalam aplikasi ini, dan anda tidak boleh menghantar dana dari.
-
-Jika terdapat apa-apa dana, mereka akan selamat. Untuk mula menggunakan perkara ini lagi, unarchive ia.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Ini akan memadam semua data dompet pada peranti ini. Sila sahkan anda mempunyai dompet maklumat anda disimpan di tempat lain sebaliknya bitcoins mana-mana dalam wallet ini akan boleh dicapai!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "MENGESAHKAN SANDARAN";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Emel pengesahan telah dihantar ke %@.";
 
 /* (No Commment) */
 "Verified" = "Disahkan";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Anda sentiasa perlu berpasangan atau login jika anda mempunyai akses kepada Wallet ID dan kata laluan anda. Memungut dana anda akan mencipta ID yang baru Wallet. Adakah anda ingin meneruskan?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Anda hanya perlu menunjukkan xPub ini kepada orang-orang yang anda percayai. Dengan maklumat ini, mereka mungkin dapat terus menjejaki anak pembayaran balik anda dan menganggu capaian ke dompet anda.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Anda telah berjaya diimport kunci persendirian. Ambil perhatian bahawa ia tidak sepadan dengan alamat ini menonton sahaja. Jika anda mahu untuk menghabiskan dari alamat ini, pastikan anda imbas kunci peribadi yang betul.";
+"You've successfully imported a private key." = "Anda telah berjaya diimport kunci persendirian.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Anda telah berjaya mengimport kunci peribadi untuk %@ alamat, dan anda kini boleh menghabiskan daripadanya. Jika anda ingin membelanjakan daripada alamat ini, pastikan anda mengimbas kunci peribadi yang betul.";

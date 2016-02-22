@@ -65,11 +65,11 @@
     
     [btcButton setTitle:[app formatMoney:ABS(transaction.result)] forState:UIControlStateNormal];
     
-    if(transaction.intraWallet) {
+    if([transaction.txType isEqualToString:TX_TYPE_TRANSFER]) {
         [btcButton setBackgroundColor:COLOR_TRANSACTION_TRANSFERRED];
         actionLabel.text = [BC_STRING_TRANSFERRED uppercaseString];
         actionLabel.textColor = COLOR_TRANSACTION_TRANSFERRED;
-    } else if (transaction.result >= 0) {
+    } else if ([transaction.txType isEqualToString:TX_TYPE_RECEIVED]) {
         [btcButton setBackgroundColor:COLOR_TRANSACTION_RECEIVED];
         actionLabel.text = [BC_STRING_RECEIVED uppercaseString];
         actionLabel.textColor = COLOR_TRANSACTION_RECEIVED;

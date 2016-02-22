@@ -86,9 +86,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
-#define FONT_HELVETICA_NUEUE @"Helvetica Neue"
+#define TX_TYPE_TRANSFER @"transfer"
+#define TX_TYPE_SENT @"sent"
+#define TX_TYPE_RECEIVED @"received"
 
-#define USER_DEFAULTS_KEY_TRANSACTIONS @"transactions"
+#define FONT_HELVETICA_NUEUE @"Helvetica Neue"
 
 #define NUMBER_KEYPAD_CHARACTER_SET_STRING @"1234567890"
 
@@ -172,6 +174,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ANIMATION_KEY_HIDE_MODAL @"HideModal"
 #define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
+
+#define DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT @"block_height"
+#define DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS @"confirmations"
+#define DICTIONARY_KEY_TRANSACTION_FEE @"fee"
+#define DICTIONARY_KEY_TRANSACTION_MY_HASH @"myHash"
+#define DICTIONARY_KEY_TRANSACTION_TX_TYPE @"txType"
+#define DICTIONARY_KEY_TRANSACTION_RESULT @"result"
+#define DICTIONARY_KEY_TRANSACTION_TIME @"time"
 
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"
@@ -304,6 +314,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define TWO_STEP_AUTH_TYPE_NONE 0
 
 #define DELAY_KEYBOARD_DISMISSAL 0.6f
+#define DELAY_GET_HISTORY_BACKUP 3.0f
 
 #define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
 // TODO: Get from JS

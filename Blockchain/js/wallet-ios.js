@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // Register for JS event handlers and forward to Obj-C handlers
 
 WalletStore.addEventListener(function (event, obj) {
-    var eventsWithObjCHandlers = ["did_fail_set_guid", "did_multiaddr", "did_set_latest_block", "error_restoring_wallet", "logging_out", "on_backup_wallet_start", "on_backup_wallet_error", "on_backup_wallet_success", "on_block", "on_tx", "ws_on_close", "ws_on_open", "did_load_wallet"];
+    var eventsWithObjCHandlers = ["did_fail_set_guid", "did_multiaddr", "did_set_latest_block", "error_restoring_wallet", "logging_out", "on_backup_wallet_start", "on_backup_wallet_error", "on_backup_wallet_success", "on_tx_received", "ws_on_close", "ws_on_open", "did_load_wallet"];
 
     if (event == 'msg') {
         if (obj.type == 'error') {
@@ -328,7 +328,6 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment');
     currentPayment = new Payment();
-    MyWalletPhone.resetPaymentFee();
 }
 
 MyWalletPhone.changePaymentFrom = function(from) {
@@ -338,7 +337,6 @@ MyWalletPhone.changePaymentFrom = function(from) {
         } else {
             currentPayment.from(from);
         }
-        MyWalletPhone.resetPaymentFee();
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -351,7 +349,6 @@ MyWalletPhone.changePaymentTo = function(to) {
         } else {
             currentPayment.to(to);
         }
-        MyWalletPhone.resetPaymentFee();
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -360,7 +357,6 @@ MyWalletPhone.changePaymentTo = function(to) {
 MyWalletPhone.changePaymentAmount = function(amount) {
     if (currentPayment) {
         currentPayment.amount(amount);
-        MyWalletPhone.resetPaymentFee();
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -404,14 +400,6 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
         console.log('error checking for overspending: ' + errorArgument);
         device.execute('on_error_update_fee:', [errorArgument]);
     });
-}
-
-MyWalletPhone.resetPaymentFee = function() {
-    if (currentPayment) {
-        currentPayment.fee(null);
-    } else {
-        console.log('Payment error: null payment object!');
-    }
 }
 
 MyWalletPhone.sweepPayment = function() {
@@ -832,7 +820,7 @@ MyWalletPhone.get_wallet_and_history = function() {
 MyWalletPhone.getMultiAddrResponse = function() {
     var obj = {};
 
-    obj.transactions = WalletStore.getTransactions();
+    obj.transactions = MyWallet.wallet.txList.transactionsForIOS;
     obj.total_received = MyWallet.wallet.totalReceived;
     obj.total_sent = MyWallet.wallet.totalSent;
     obj.final_balance = MyWallet.wallet.finalBalance;

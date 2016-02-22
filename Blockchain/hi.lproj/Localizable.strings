@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2-चरणीय सत् यापन वर्तमान में सक्षम है।";
 
 /* (No Commment) */
+"API URL" = "API यूआरएल";
+
+/* (No Commment) */
 "About" = "के बारे में";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "पुरालेख के पते";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "यदि आप इसे अब और का उपयोग करने के लिए नहीं चाहते, तो यह संग्रह। आपका धन सुरक्षित हो जाएगा, और आप इसे किसी भी समय unarchive कर सकते हैं।";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "यदि आप इसे अब और का उपयोग करने के लिए नहीं चाहते हैं, तो यह संग्रह। आपका धन सुरक्षित रहेगा, और आप इसे किसी भी समय unarchive कर सकते हैं।";
 
 /* (No Commment) */
 "Archived" = "आर्काइव्ड";
@@ -425,6 +428,9 @@
 "Identifier" = "पहचानकर्ता";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "यदि आप एक व्यापारी हैं, अपना xPub दिखाने और सुरक्षित रूप से और निजी तौर पर धन प्राप्त करने के लिए लॉकचेन मर्चेंट ऐप का उपयोग करें।";
+
+/* (No Commment) */
 "Import Private Key" = "आयात निजी कुंजी";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "बस अब";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "अपने xPub को निजी रखना। अपने xPub के लिए पहुँच के साथ कोई अपने धन और लेन-देन के सभी को देखने में सक्षम हो जाएगा।";
+
+/* (No Commment) */
 "Label" = "लेबल";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "मेरी Bitcoin बटुआ";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "नोट:: यह केवल देखो पता करने के लिए स्कैन की गई निजी कुंजी संगत नहीं है। आप इस पते से खर्च करने के लिए चाहते हैं, तो सुनिश्चित करें कि आप सही निजी कुंजी स्कैन।";
 
 /* (No Commment) */
 "Name" = "नाम";
@@ -677,6 +689,9 @@
 "Please add an email address" = "कृपया एक ईमेल पते जोड़ें";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "कृपया अपने ईमेल की जाँच और सत्यापन लिंक पर क्लिक करें।";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "कृपया अपने ईमेल की जाँच करें। यदि आप पहले से ही एक लॉगिन का प्रयास सत्यापित कर लिया है, आप के माध्यम से हमारी वेब बटुए में लॉग इन करें और अपने फोन सेटिंग्स के अंतर्गत QR कोड स्कैन कर रहा है द्वारा जोड़ी चाहिए-> बटुए जानकारी।";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "कृपया एक ईमेल पता प्रदान करते हैं।";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "कृपया पेयरिंग कोड को ताज़ा करें और पुन: प्रयास करें।";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "कृपया किसी भिन्न पते से भेजने के लिए या सेटिंग्स में शुल्क को कम करने के लिए का चयन करें।";
@@ -824,17 +842,13 @@
 "Server URL" = "सर्वर URL";
 
 /* (No Commment) */
-"Set as Default Account?" = "डिफ़ॉल्ट खाते के रूप में सेट करें?";
+"Set as Default?" = "डिफ़ॉल्ट के रूप में सेट करें?";
 
 /* (No Commment) */
 "Settings" = "सेटिंग्स";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "यदि आप एक व्यापारी हैं और सुरक्षित रूप से और निजी तौर पर धन प्राप्त करने के लिए लॉकचेन मर्चेंट ऐप का उपयोग करें अपने xPub दिखाएँ।
-
-अपने xPub को निजी रखना। अपने xPub के लिए पहुँच के साथ कोई अपने धन और लेन-देन के सभी को देखने में सक्षम हो जाएगा।";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "अपने xPub साझा दूसरों अपने ट्रांजे़क्शन इतिहास ट्रैक करने के लिए अधिकृत। अधिकृत व्यक्तियों आप अपने बटुए तक पहुंचने से बाधित करने में सक्षम हो सकता है के रूप में, केवल अपने xPub पर भरोसा है आप लोगों के साथ साझा।";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "सिग्नल %d उठाया था।";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "यह पता केवल देखो नहीं है।";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "यह एक केवल-देखो पता है। यदि आप इस वॉलेट के भीतर से अपने धन खर्च करने के लिए चाहते हैं, बस अपने निजी कुंजी स्कैन।";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "यह एक केवल-देखो पता है। इस वॉलेट से आपकी धनराशि खर्च करने के लिए, कृपया अपने निजी कुंजी स्कैन करें।";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "यह संग्रहीत है। भले ही आप यहाँ से धन भेजा नहीं कर सकता, किसी भी और सभी धन सुरक्षित रहेगा। बस इसे फिर से का उपयोग कर प्रारंभ करने के लिए unarchive.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "यह नाम पहले से उपयोग में है। कृपया कोई भिन्न नाम चुनें।";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "देखो केवल नहीं है किसी अन्य पता करने के लिए इस निजी कुंजी संबंध रखता है";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "यह बात संग्रहीत है। इसका मतलब है कि यह app में नहीं पहुँचा जा सकता, और आप इसे से धन नहीं भेज सकते।
-
-यदि किसी भी धन नहीं हैं, वे सुरक्षित हो जाएगा। फिर से इस बात का उपयोग कर प्रारंभ करने के लिए, यह unarchive.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "यह इस डिवाइस पर सभी बटुआ डाटा मिटा देगा। कृपया पुष्टि करें कि आप अपने बटुए जानकारी कहीं और अन्यथा किसी भी bitcoins इस बटुए वसीयत में सहेजा गया दुर्गम हो है!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "बैकअप सत्यापित करें";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "सत्यापन ईमेल करने के लिए %@ भेजा गया है।";
 
 /* (No Commment) */
 "Verified" = "सत्यापित किया";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "तुम हमेशा जोड़ी होना चाहिए या यदि आपके पास पहुँच आपके बटुए ID और पासवर्ड के लिए लॉगिन। आपका धन पुनर्प्राप्त करना एक नया id के बटुए बनाएगा आप जारी रखना चाहेंगे?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "आप केवल उन तुम पर भरोसा करने के लिए यह xPub दिखाना चाहिए। इस जानकारी के साथ, वे अपने भुगतान का ट्रैक रखें और अपने बटुए के लिए पहुँच को बाधित करने में सक्षम हो सकता है।";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "आप सफलतापूर्वक एक निजी कुंजी आयात किए गए। ध्यान दें कि यह इस केवल-देखो पता करने के लिए संगत नहीं है। आप इस पते से खर्च करने के लिए चाहते हैं, तो सुनिश्चित करें कि आप सही निजी कुंजी स्कैन।";
+"You've successfully imported a private key." = "आप सफलतापूर्वक एक निजी कुंजी आयात किए गए।";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "आप सफलतापूर्वक पता %@ के लिए निजी कुंजी आयात किया है, और आप इसे से अब खर्च कर सकते हैं। आप इस पते से खर्च करने के लिए चाहते हैं, तो सुनिश्चित करें कि आप सही निजी कुंजी स्कैन।";

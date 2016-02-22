@@ -33,7 +33,7 @@ https://blockchain.info/wallet/login";
 "364.text" = "如果您使用的是旧钱包，请单击“帐户设置”按钮并选择“设备”选项卡。如果您使用的是的测试版钱包，请转到“设置”/“钱包信息”。";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
-"368.text" = "1";
+"368.text" = "3";
 
 /* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
 "369.text" = "单击“显示配对代码”可显示二维码，这是一个方形黑白条码。使用您的相机扫描该代码。";
@@ -87,7 +87,7 @@ https://blockchain.info/wallet/login";
 "471.normalTitle" = "继续";
 
 /* (No Commment) */
-"586.text" = "钱包 ID:";
+"586.text" = "钱包 ID：";
 
 /* Class = "UITextField"; placeholder = "Wallet identifier"; ObjectID = "587"; */
 "587.placeholder" = "钱包 ID";
@@ -138,7 +138,7 @@ https://blockchain.info/wallet/login";
 "OKS-md-gDQ.normalTitle" = "按钮 3";
 
 /* Class = "UILabel"; text = "By creating a new wallet you agree to the"; ObjectID = "Qvx-f4-C2O"; */
-"Qvx-f4-C2O.text" = "通过创建一个新钱包，您同意";
+"Qvx-f4-C2O.text" = "创建新钱包即表示您同意";
 
 /* (No Commment) */
 "TzC-Tw-04r.normalTitle" = "继续";

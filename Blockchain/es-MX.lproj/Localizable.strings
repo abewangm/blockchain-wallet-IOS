@@ -5,7 +5,7 @@
 "%@ copied to clipboard" = "Se ha copiado el archivo %@ al portapapeles";
 
 /* (No Commment) */
-"%d Confirmations" = "Confirmaciones de %d";
+"%d Confirmations" = "confirmaciones de %d";
 
 /* (No Commment) */
 "%d Transactions" = "%d Transacciones";
@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "La verificación de 2 pasos está actualmente activada.";
 
 /* (No Commment) */
+"API URL" = "URL DE LA API";
+
+/* (No Commment) */
 "About" = "Acerca de";
 
 /* (No Commment) */
@@ -74,7 +77,7 @@
 "Address is not valid" = "La dirección no es válida";
 
 /* (No Commment) */
-"Addresses" = "Direcciones de";
+"Addresses" = "Direcciones";
 
 /* (No Commment) */
 "Adjust Fee" = "Tarifa de ajuste";
@@ -110,13 +113,13 @@
 "Archive Address" = "Archivo de direcciones";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Este archivo si no desea utilizar más. Su dinero estará a salvo, y usted puede descomprimira en cualquier momento.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Archívelo si NO desea utilizarlo más. Sus fondos estarán a salvo y puede revertirlo en cualquier momento.";
 
 /* (No Commment) */
-"Archived" = "Programa archivado";
+"Archived" = "Archivado";
 
 /* (No Commment) */
-"Ask Me Later" = "Pregúnteme más tarde";
+"Ask Me Later" = "Pregúntame más tarde";
 
 /* (No Commment) */
 "Authenticate with Touch ID" = "Autenticar con Touch ID";
@@ -161,7 +164,7 @@
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain no tiene acceso a la cámara. Para habilitar el acceso, vaya a la Configuración del dispositivo.";
 
 /* (No Commment) */
-"Blockchain is currently down for maintenance. Please try again later." = "Blockchain no tiene acceso a la cámara. Por favor, inténtelo de nuevo más tarde.";
+"Blockchain is currently down for maintenance. Please try again later." = "Blockchain no tiene actualmente acceso a la cámara. Por favor, inténtelo de nuevo más tarde.";
 
 /* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain necesita tener los servicios de ubicación habilitados para acceder a su ubicación.";
@@ -245,7 +248,7 @@
 "Copy to clipboard" = "Copiar al portapapeles";
 
 /* (No Commment) */
-"Copy xPub" = "XPub copia";
+"Copy xPub" = "Copie xPub";
 
 /* (No Commment) */
 "Create" = "Crear:";
@@ -374,7 +377,7 @@
 "Everything you need to store, spend and receive your bitcoin" = "Todo lo que necesita para almacenar, gastar y recibir sus Bitcoin";
 
 /* (No Commment) */
-"Extended Public Key" = "Extendido de clave pública";
+"Extended Public Key" = "Clave pública extendida";
 
 /* (No Commment) */
 "Failed To Load Wallet" = "Se ha producido un error al cargar el monedero";
@@ -425,6 +428,9 @@
 "Identifier" = "Identificador";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Muestre su xPub si es un comerciante y utilice la aplicación Blockchain Merchant para recibir fondos en forma segura y privada.";
+
+/* (No Commment) */
 "Import Private Key" = "Escanear la clave privada";
 
 /* (No Commment) */
@@ -434,7 +440,7 @@
 "Imported Addresses (Archived)" = "Direcciones importadas (Archivadas)";
 
 /* (No Commment) */
-"Imported Private Key %@" = "%@ clave privada importados";
+"Imported Private Key %@" = "Clave privada %@ importada";
 
 /* (No Commment) */
 "Importing key" = "Importando clave";
@@ -500,6 +506,9 @@
 "Just now" = "Ahora mismo";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "No divulgue su xPub. Alguien con acceso a su xPub podrá ver todos sus fondos y transacciones.";
+
+/* (No Commment) */
 "Label" = "Etiqueta";
 
 /* (No Commment) */
@@ -533,7 +542,7 @@
 "Logout" = "Cerrar sesión";
 
 /* (No Commment) */
-"Make Default" = "Hacer por defecto";
+"Make Default" = "Convertir en opción predeterminada";
 
 /* (No Commment) */
 "Manual Pairing" = "Emparejamiento manual";
@@ -560,7 +569,10 @@
 "Mobile Number" = "Número de teléfono celular";
 
 /* No comment provided by engineer. */
-"My Bitcoin Wallet" = "Mi monedero de Bitcoins";
+"My Bitcoin Wallet" = "Mi monedero de Bitcoin";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "NOTA: La clave privada escaneada no corresponde a esta dirección de solo ver. Si usted desea gastar desde esta dirección, asegúrese de escanear la clave privada correcta.";
 
 /* (No Commment) */
 "Name" = "Nombre";
@@ -650,7 +662,7 @@
 "Password Hint" = "Sugerencia para la contraseña";
 
 /* (No Commment) */
-"Password Required" = "Se necesita la segunda contraseña";
+"Password Required" = "Se necesita la contraseña";
 
 /* (No Commment) */
 "Password changed. Please login to continue." = "Cambiar contraseña. Inicie sesión para continuar.";
@@ -675,6 +687,9 @@
 
 /* (No Commment) */
 "Please add an email address" = "Agregue una dirección de correo electrónico";
+
+/* (No Commment) */
+"Please check your email and click on the verification link." = "Por favor revise su correo electrónico y haga clic en el enlace de verificación.";
 
 /* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Revise su correo electrónico. Si ya ha verificado un intento de inicio de sesión, debe iniciar sesión a través de nuestro monedero web y su teléfono emparejado mediante el escaneado del código QR en Configuración -> Información del monedero.";
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Agregue una dirección de correo electrónico";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Por favor actualizar el código de emparejamiento y vuelva a intentarlo.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Seleccione una dirección diferente desde la que enviar o bajar la cuota en la Configuración.";
@@ -785,7 +803,7 @@
 "Scan Watch Only Address?" = "Escanear dirección de sólo lectura";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Escanea este código o copie en su Blockchain mercader aplicación firmemente recibir Bitcoin.";
+"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Escanee este código o cópielo en su aplicación Blockchain Merchant para recibir los Bitcoin en forma segura.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Segunda contraseña incorrecta";
@@ -824,17 +842,13 @@
 "Server URL" = "Dirección web del servidor";
 
 /* (No Commment) */
-"Set as Default Account?" = "¿Establecer como cuenta predeterminada?";
+"Set as Default?" = "¿Establecer como predeterminado?";
 
 /* (No Commment) */
 "Settings" = "Configuración";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Mostrar su xPub si usted es un comerciante y utiliza la aplicación Blockchain mercante para recibir fondos de forma segura y privada.
-              
-Mantenga su xPub privado. Alguien con acceso a su xPub podrá ver todos sus fondos y transacciones.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Si comparte su xPub, autoriza a otros a seguir su historial de transacciones. Como las personas autorizadas pueden interrumpir el acceso a su monedero, sólo comparta xPub con personas de confianza.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "La señal de %d ha sido levantada.";
@@ -904,20 +918,19 @@ Dos tipos de transacciones avanzadas no son admitidos en la nueva versión por e
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Esta acción requiere la segunda contraseña para su monedero bitcoin. Introdúzcalo a continuación y pulse continuar.";
 
 /* (No Commment) */
-"This address is not watch-only." = "Esta dirección no está sólo.";
+"This address is not watch-only." = "Esta dirección no está configurada como «solo ver».";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Esta es una dirección sólo. Si desea pasar sus fondos desde dentro de esta carpeta, simplemente analizar su clave privada.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Esta dirección está configurada como «solo ver». Si desea gastar los fondos de este monedero, simplemente escanee su llave privada.";
 
 /* (No Commment) */
-"This private key belongs to another address that is not watch only" = "Esta clave privada pertenece a otra dirección que no es sólo ver";
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Esto se archiva. Aunque no se pueden enviar fondos desde aquí, todos los fondos continuarán siendo seguros. Descomprima simplemente los archivos para comenzar a utilizarlos otra vez.";
 
 /* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
+"This name is already in use. Please choose a different name." = "Ese nombre ya está en uso. Elija un nombre diferente.";
 
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Esta cosa se archiva. Eso significa no se puede acceder en la aplicación, y no puede enviar fondos de ella.
-                
-Si hay fondos, estarán seguros. Para comenzar a utilizar esta cosa otra vez, désarchiver.";
+/* (No Commment) */
+"This private key belongs to another address that is not watch only" = "Esta clave privada pertenece a otra dirección que no es «solo ver»";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Esto borrará todos los datos del monedero en este dispositivo. Por favor, confirme que ha guardado su información de monedero en otro lugar o de lo contrario cualquier Bitcoin que se encuentre ¡¡quedará inaccesible!!";
@@ -958,7 +971,7 @@ Tarifa: %4$@
 "Touch ID is not available on this device." = "Touch ID no está disponible en este dispositivo.";
 
 /* (No Commment) */
-"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Touch ID no está disponible en este dispositivo. Para activar Touch ID, vaya a Configuración-> Touch ID y contraseña y añadir una huella dactilar.";
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Touch ID no está habilitado en este dispositivo. Para activar Touch ID, vaya a Configuración-> Touch ID y contraseña y añadir una huella dactilar.";
 
 /* (No Commment) */
 "Transaction" = "Transacción";
@@ -1036,6 +1049,9 @@ Tarifa: %4$@
 "VERIFY BACKUP" = "COMPROBAR COPIA DE SEGURIDAD";
 
 /* (No Commment) */
+"Verification email has been sent to %@." = "El correo electrónico de verificación se ha enviado a %@.";
+
+/* (No Commment) */
 "Verified" = "Verificado";
 
 /* (No Commment) */
@@ -1048,7 +1064,7 @@ Tarifa: %4$@
 "Verifying" = "Verificando";
 
 /* (No Commment) */
-"Wallet ID" = "Identificador del monedero:";
+"Wallet ID" = "Identificador del monedero";
 
 /* (No Commment) */
 "Wallet Information" = "Información del monedero";
@@ -1063,7 +1079,7 @@ Tarifa: %4$@
 "Wallet Recovery Phrase" = "Frase de recuperación de cartera";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "La dirección de monedero % tiene fondos disponibles para gastar. Sin embargo la clave privada debe ser analizada de un monedero de papel o código QR. ¿Le gustaría escanear ahora la clave privada?";
+"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "La dirección de monedero %@ tiene fondos disponibles para gastar. Sin embargo la clave privada debe ser analizada de un monedero de papel o código QR. ¿Le gustaría escanear ahora la clave privada?";
 
 /* (No Commment) */
 "Wallet version %lld not supported" = "La versión del Monedero %lld no es compatible";
@@ -1101,19 +1117,16 @@ una experiencia de usuario de monedero completamente nueva";
 "Welcome" = "¡Bienvenido!";
 
 /* (No Commment) */
-"Welcome to the new version of the Blockchain Wallet!" = "¡Bienvenido a la nueva versión de la Monedero de Blockchain!";
-
-/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Hemos detectado una instalación anterior del monedero Blockchain en su teléfono.";
 
 /* (No Commment) */
-"Would you like to add the bitcoin address %@ to your address book?" = "¿Quieres añadir la dirección % Bitcoin a su libreta de direcciones?";
+"Would you like to add the bitcoin address %@ to your address book?" = "¿Quieres añadir la dirección %@ Bitcoin a su libreta de direcciones?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Escriba su frase de recuperación y guárdela en algún lugar muy seguro. Recuerde que cualquiera que conozca su frase de recuperación tiene acceso a sus bitcoins.";
 
 /* (No Commment) */
-"Wrong BIP38 Password" = "Contraseña incorrecta BIP38";
+"Wrong BIP38 Password" = "Contraseña BIP38 incorrecta";
 
 /* (No Commment) */
 "Yes" = "Sí";
@@ -1131,7 +1144,7 @@ una experiencia de usuario de monedero completamente nueva";
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Puedes habilitar la verificación de 2 pasos a través de SMS en su teléfono móvil. Para poder utilizar otros métodos de autenticación en lugar de ello, por favor, inicie sesión en nuestro monedero web.";
 
 /* (No Commment) */
-"You can now spend from this address." = "Ahora puede pasar desde esta dirección.";
+"You can now spend from this address." = "Ahora puede gastar desde esta dirección.";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "No tiene una cuenta configurada para correo. Por favor, contacte %@.";
@@ -1158,13 +1171,10 @@ una experiencia de usuario de monedero completamente nueva";
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Siempre debería juntar o iniciar sesión si tiene acceso a la ID y contraseña de su Monedero. La recuperación de sus fondos creará una nueva ID de Monedero. ¿Quiere continuar?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Sólo debe mostrar esta xPub a los que confiar. Con esta información, puede ser capaces de realizar un seguimiento de sus pagos e interrumpir el acceso a su cartera.";
+"You've successfully imported a private key." = "Ha importado exitosamente una clave privada.";
 
 /* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Con éxito haya importado una clave privada. Tenga en cuenta que no corresponde a esta dirección sólo. Si usted desea pasar desde esta dirección, asegúrese de que analice la clave privada correcta.";
-
-/* (No Commment) */
-"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Con éxito haya importado la clave privada de la dirección %@, y ahora puedes pasar de él. Si usted desea pasar desde esta dirección, asegúrese de que escanea la clave privada correcta.";
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Ha importado exitosamente la clave privada parala dirección %@ y ahora puede gastar desde esta dirección. Si usted desea gastar desde esta dirección, asegúrese de escanear la clave privada correcta.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Parece que el sistema operativo de este dispositivo ha sido modificado. La seguridad de su monedero puede estar comprometida.";
@@ -1182,7 +1192,7 @@ una experiencia de usuario de monedero completamente nueva";
 "Your new password hint contains invalid characters. Please try again." = "Su nueva sugerencia de contraseña contiene caracteres no válidos. Por favor, inténtelo de nuevo más tarde.";
 
 /* (No Commment) */
-"Your new password hint contains no text. Your password hint will be cleared." = "Su nueva sugerencia de contraseña contiene caracteres no válidos. Se borrará su  sugerencia de contraseña.";
+"Your new password hint contains no text. Your password hint will be cleared." = "Su nueva sugerencia de contraseña contiene caracteres no válidos. Se borrará su sugerencia de contraseña.";
 
 /* (No Commment) */
 "Your new password hint must be different from your password. Please try again." = "Su nueva sugerencia de contraseña no puede ser idéntica a su contraseña. Por favor, inténtelo de nuevo más tarde.";
@@ -1197,7 +1207,7 @@ una experiencia de usuario de monedero completamente nueva";
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Su dirección de correo electrónico verificada se utiliza para enviar códigos de inicio de sesión cuando se detecta actividad sospechosa o inusual, para recordarle su ID de inicio de sesión de monedero y para enviar avisos de pago de bitcoin cuando reciba los fondos. No utilizaremos su dirección de correo electrónico para fines de mercadeo y/o publicidad.";
 
 /* (No Commment) */
-"Your wallet does not contain this address." = "La billetera no contiene esta dirección.";
+"Your wallet does not contain this address." = "Su billetera no contiene esta dirección.";
 
 /* (No Commment) */
 "Your wallet was successfully created." = "Su monedero se ha creado correctamente.";
@@ -1215,13 +1225,13 @@ una experiencia de usuario de monedero completamente nueva";
 "fifth word" = "quinta palabra";
 
 /* No comment provided by engineer. */
-"first word" = "primera palabra";
+"first word" = "Primera palabra";
 
 /* No comment provided by engineer. */
 "fourth word" = "cuarta palabra";
 
 /* (No Commment) */
-"from" = "De:";
+"from" = "de";
 
 /* (No Commment) */
 "iOS Support Request" = "Solicitud de soporte de iOS";
@@ -1239,7 +1249,7 @@ una experiencia de usuario de monedero completamente nueva";
 "seventh word" = "séptima palabra";
 
 /* No comment provided by engineer. */
-"sixth word" = "sexta palabra";
+"sixth word" = "Sexta palabra";
 
 /* No comment provided by engineer. */
 "tenth word" = "décima palabra";

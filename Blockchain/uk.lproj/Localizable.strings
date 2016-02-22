@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "Двоетапна перевірка активовані.";
 
 /* (No Commment) */
+"API URL" = "API URL";
+
+/* (No Commment) */
 "About" = "Про";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Архів адреса";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Архів це, якщо ви не хочете використовувати більше. Ваші кошти будуть в безпеці, і ви можете unarchive його в будь-який час.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Архів це, якщо ви хочете, щоб використовувати його більше. Ваших фондів залишаться безпечними, і ви можете unarchive його в будь-який час.";
 
 /* (No Commment) */
 "Archived" = "Архівні";
@@ -425,6 +428,9 @@
 "Identifier" = "Ідентифікатор";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Якщо ви купця, показати ваш xPub і використовувати Blockchain купець app на отримання коштів, безпечно і в приватному порядку.";
+
+/* (No Commment) */
 "Import Private Key" = "Імпорт секретний ключ";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Просто зараз";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Тримайте ваш xPub приватних. Доступу до вашого xPub зможуть побачити всі ваші кошти та операцій.";
+
+/* (No Commment) */
 "Label" = "Етикетка";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Мій гаманець Bitcoin";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Примітка: Відскановані закритого ключа не відповідає цій дивитися тільки адресу. Якщо ви хочете витратити з цієї адреси, переконайтеся, що у разі сканування з правильним закритим ключем.";
 
 /* (No Commment) */
 "Name" = "Ім'я";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Будь ласка, додайте адресу електронної пошти";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Перевірте вашу електронну пошту і натисніть на посилання для підтвердження.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Будь ласка, перевірте свою електронну пошту. Якщо ви вже підтвердили спробу входу, ви повинні увійти в систему за допомогою нашої веб-гаманець і з'єднати телефон шляхом сканування QR-код у групі настройки-> гаманець інформації.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Надайте, будь ласка, адресу електронної пошти.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Будь ласка, оновіть спаровування код і повторіть спробу.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Будь ласка виберіть іншу адресу, щоб відправити від або знизити плату в настройках.";
@@ -824,17 +842,13 @@
 "Server URL" = "URL-адресу сервера";
 
 /* (No Commment) */
-"Set as Default Account?" = "Зробити стандартним обліковим записом?";
+"Set as Default?" = "Встановити за замовчуванням?";
 
 /* (No Commment) */
 "Settings" = "Параметри";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Показати ваш xPub, якщо ви купця і використовувати Blockchain купець app на отримання коштів, безпечно і в приватному порядку.
-
-Тримайте ваш xPub приватних. Доступу до вашого xPub зможуть побачити всі ваші кошти та операцій.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Спільний доступ до вашого xPub дозволяє іншим користувачам відстежувати угоду історію. Як уповноважених осіб може бути в змозі порушити ви доступ до вашого гаманця, тільки спільний доступ ваше xPub людей, що ви довіряєте.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "%d сигнал був піднятий.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Ця адреса не є тільки дивитися.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Це дивитися тільки адресу. Якщо ви хочете витрачати ваші кошти з в межах цей гаманець, просто сканування вашого закритого ключа.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Це дивитися тільки адресу. Витрачати ваші кошти від цей гаманець, будь ласка, сканування вашого закритого ключа.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Це Архів. Хоча не можна переказати кошти з тут, всі кошти залишаться безпечними. Просто unarchive щоб почати використовувати його знову.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Це ім'я вже існує. Будь ласка, оберіть інше ім'я.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Цей закритий ключ належить на іншу адресу, яка не тільки дивитися";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Архів цю річ. Це означає, що воно стає недоступним у застосунку, а не можна переказати кошти з нього.
-
-За наявності будь-яких коштів, вони будуть бути в безпеці. Для того, щоб почати використовувати цю річ знову, unarchive.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Це призведе до видалення всіх даних гаманець на цьому пристрої. Будь ласка, підтвердіть, у вас є ваш гаманець інформацію збережено в іншому місці в іншому випадку будь-яких bitcoins в цей гаманець будуть бути недоступною!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "ПЕРЕВІРТЕ, ЧИ РЕЗЕРВНОГО КОПІЮВАННЯ";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Перевірочне повідомлення електронної пошти надіслано на %@.";
 
 /* (No Commment) */
 "Verified" = "Перевірено";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Ви повинні завжди пари або увійти, якщо у вас є доступ до вашого гаманця ID і пароль. Відновлення ваших фондів створить новий гаманець ID. Ви хотіли б продовжити?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Ви тільки повинні показати цей xPub тим, що ви довіряєте. З цією інформацією вони зможуть стежити за ваші платежі та зривати доступ до вашого гаманця.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Закритий ключ успішно імпортовано. Зверніть увагу, що воно не відповідає цій дивитися тільки адресу. Якщо ви хочете витратити з цієї адреси, переконайтеся, що у разі сканування з правильним закритим ключем.";
+"You've successfully imported a private key." = "Закритий ключ успішно імпортовано.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Ви успішно імпортовано приватний ключ для %@ адресу, і тепер можна провести від нього. Якщо ви хочете витратити з цієї адреси, переконайтеся, що у разі сканування з правильним закритим ключем.";

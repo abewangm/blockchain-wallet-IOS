@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "אימות דו-שלבי זמין כעת.";
 
 /* (No Commment) */
+"API URL" = "API של כתובת URL";
+
+/* (No Commment) */
 "About" = "אודות";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "ארכיון כתובת";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "ארכיון זה אם אתה לא רוצה להמשיך להשתמש בו. קרנות שלך יהיה בטוח, אתה יכול unarchive אותו בכל עת.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "ארכיון זה אם אתה לא רוצה להמשיך להשתמש בו. קרנות שלך יישאר בטוח, אתה יכול unarchive אותו בכל עת.";
 
 /* (No Commment) */
 "Archived" = "בארכיון";
@@ -425,6 +428,9 @@
 "Identifier" = "המזהה";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "אם אתה סוחר, להראות xPub שלך ולהשתמש app Blockchain הסוחר לקבל כספים בבטחה ובאופן פרטי.";
+
+/* (No Commment) */
 "Import Private Key" = "מפתח פרטי ייבוא";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "רק עכשיו";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "שמור את xPub הפרטי. מישהו עם גישה xPub שלך תהיה אפשרות לראות את כל הכספים, תנועות.";
+
+/* (No Commment) */
 "Label" = "תווית";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "הארנק שלי ביטקוין";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "הערה: המפתח הפרטי שנסרקו אינו תואם לכתובת זו השעון בלבד. אם אתה רוצה לבלות מכתובת זו, ודא סריקה של המפתח הפרטי המתאים.";
 
 /* (No Commment) */
 "Name" = "שם";
@@ -677,6 +689,9 @@
 "Please add an email address" = "נא להוסיף כתובת דואר אלקטרוני";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "נא בדוק את הדוא ל שלך ולחץ על הקישור אימות.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "נא בדוק את הדוא ל שלך. אם וידאת כבר ניסיון כניסה, עליך להיכנס באמצעות הארנק האינטרנט שלנו, זוג בטלפון שלך על-ידי סריקת הקוד QR תחת הגדרות-> הארנק מידע.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "נא לספק כתובת דואר אלקטרוני.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "נא לרענן את קוד ההתאמה ונסה שוב.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "בחר כתובת שונה לשלוח או הנמכה של דמי בהגדרות.";
@@ -824,17 +842,13 @@
 "Server URL" = "כתובת url של השרת";
 
 /* (No Commment) */
-"Set as Default Account?" = "קבע כחשבון ברירת מחדל?";
+"Set as Default?" = "קבע ברירת מחדל?";
 
 /* (No Commment) */
 "Settings" = "הגדרות";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "הצג את xPub שלך אם אתה סוחר ועושה שימוש app Blockchain הסוחר לקבל כספים בבטחה ובאופן פרטי.
-
-שמור את xPub הפרטי. מישהו עם גישה xPub שלך תהיה אפשרות לראות את כל הכספים, תנועות.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "שיתוף xPub שלך מסמיך אחרים כדי לעקוב אחר ההיסטוריה התנועה שלך. כפי ה\"גורמים עשוי להיות מסוגל לשבש את מלגשת אל הארנק שלך, לשתף רק xPub שלך עם אנשים שאתה בוטח.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "אות %d גדל.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "כתובת זו אינה השעון בלבד.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "זה כתובת השעון בלבד. אם אתה רוצה לבזבז כספים שלך בתוך הארנק הזה, רק לסרוק את המפתח הפרטי שלך.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "זה כתובת השעון בלבד. כדי להעביר את הכספים שלך מהארנק הזה, בבקשה לסרוק את המפתח הפרטי שלך.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "זה נמצא בארכיון. אבל אתה לא יכול לשלוח כספים מכאן, כל קרנות יישאר בטוח. Unarchive פשוט כדי להתחיל להשתמש בו שוב.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "שם זה כבר נמצא בשימוש. נא לבחור שם אחר.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "המפתח הפרטי הזה שייך לכתובת אחרת, שאינה רק את השעון";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "הדבר הזה הוא בארכיון. כלומר זה לא ניתן לגשת ב- app, אתה לא יכול לשלוח כספים ממנה.
-
-אם כל הכספים, הם יהיו בטוחים. כדי להתחיל להשתמש בזה שוב, unarchive את זה.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "זה יביא למחיקת כל הנתונים הארנק בהתקן זה. אנא אשרו שאת הארנק מידע שנמסר הציל במקום אחר אחרת כל bitcoins בצוואה את הארנק הזה אינו נגיש!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "ודא גיבוי";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "דואר אלקטרוני לאימות נשלחה %@.";
 
 /* (No Commment) */
 "Verified" = "אומת";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "עליך תמיד זוג או להיכנס למערכת, אם יש לך גישה אל הארנק המזהה והסיסמה שלך. שחזור כספים שלך יהיה ליצור מזהה את הארנק החדש האם ברצונך להמשיך?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "אתה צריך רק להראות את xPub כדי לאלו שבהם אתה בוטח. בעזרת מידע זה, ייתכן שהם יוכלו לשמור על מעקב אחר של התשלומים שלך, לשבש את הגישה שלך לארנק.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "בהצלחה ייבאת מפתח פרטי. שימו לב כי ואינו מתאים לכתובת זו השעון בלבד. אם אתה רוצה לבלות מכתובת זו, ודא סריקה של המפתח הפרטי המתאים.";
+"You've successfully imported a private key." = "בהצלחה ייבאת מפתח פרטי.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "בהצלחה ייבאת את המפתח הפרטי עבור %@ הכתובת, עכשיו תוכלו לבלות ממנו. אם אתה רוצה לבלות מכתובת זו, ודא שאתה סורק את המפתח הפרטי המתאים.";

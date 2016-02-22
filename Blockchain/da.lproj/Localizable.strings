@@ -50,6 +50,9 @@
 "2-step Verification is currently enabled." = "2-trins verifikation er i øjeblikket aktiveret.";
 
 /* (No Commment) */
+"API URL" = "API URL";
+
+/* (No Commment) */
 "About" = "Om";
 
 /* (No Commment) */
@@ -110,7 +113,7 @@
 "Archive Address" = "Arkiv adresse";
 
 /* (No Commment) */
-"Archive this if you don't want to use it anymore. Your funds will be safe, and you can unarchive it at any time." = "Arkivere dette hvis du ikke ønsker at bruge det længere. Dine penge vil være sikker, og du kan udpakke det til enhver tid.";
+"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Arkivere dette hvis du ikke vil bruge det længere. Dine penge vil forblive sikker, og du kan udpakke det til enhver tid.";
 
 /* (No Commment) */
 "Archived" = "Arkiveret";
@@ -425,6 +428,9 @@
 "Identifier" = "Id";
 
 /* (No Commment) */
+"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Hvis du er en købmand, Vis dine xPub og bruge Blockchain købmand app til at modtage midler, sikkert og privat.";
+
+/* (No Commment) */
 "Import Private Key" = "Importer Private nøgle";
 
 /* (No Commment) */
@@ -500,6 +506,9 @@
 "Just now" = "Lige nu";
 
 /* (No Commment) */
+"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Holde din xPub privat. En person med adgang til din xPub vil kunne se alle dine midler og transaktioner.";
+
+/* (No Commment) */
 "Label" = "Etiket";
 
 /* (No Commment) */
@@ -561,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Min Bitcoin tegnebog";
+
+/* (No Commment) */
+"NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Bemærk: Den scannede private nøgle svarer ikke til denne ur-kun adresse. Hvis du ønsker at bruge fra denne adresse, Sørg for, at scanner du den korrekte private nøgle.";
 
 /* (No Commment) */
 "Name" = "Navn";
@@ -677,6 +689,9 @@
 "Please add an email address" = "Tilføj venligst en e-mail-adresse";
 
 /* (No Commment) */
+"Please check your email and click on the verification link." = "Kontroller din e-mail, og klik på bekræftelseslinket.";
+
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Tjek venligst din e-mail. Hvis du har allerede bekræftet en login forsøg, skal du logge ind via vores web wallet og parre din telefon ved at scanne QR-koden under indstillinger-> tegnebog oplysninger.";
 
 /* (No Commment) */
@@ -711,6 +726,9 @@
 
 /* (No Commment) */
 "Please provide an email address." = "Angiv en e-mail-adresse.";
+
+/* (No Commment) */
+"Please refresh the pairing code and try again." = "Opdater pardannelseskoden, og prøv igen.";
 
 /* (No Commment) */
 "Please select a different address to send from or lower the fee in Settings." = "Vælg en anden adresse at sende fra eller lavere gebyr i indstillinger.";
@@ -824,17 +842,13 @@
 "Server URL" = "Server URL";
 
 /* (No Commment) */
-"Set as Default Account?" = "Angiv som standardkonto?";
+"Set as Default?" = "Indstiller som standard?";
 
 /* (No Commment) */
 "Settings" = "Indstillinger";
 
 /* (No Commment) */
-"Show your xPub if you are a merchant and use the Blockchain Merchant app to receive funds safely and privately.
-
-Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Vis dine xPub, hvis du er en købmand og bruge Blockchain købmand app til at modtage midler, sikkert og privat.
-
-Holde din xPub privat. En person med adgang til din xPub vil kunne se alle dine midler og transaktioner.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Deling af din xPub bemyndiger andre til at spore din transaktionsoversigt. Som autoriserede personer kan muligvis forstyrre dig fra at få adgang til tegnebogen, kun dele din xPub med mennesker du har tillid til.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signal %d blev rejst.";
@@ -899,17 +913,16 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This address is not watch-only." = "Denne adresse er ikke kun for ur.";
 
 /* (No Commment) */
-"This is a watch-only address. If you want to spend your funds from within this wallet, just scan your private key." = "Dette er et ur-bare adresse. Hvis du ønsker at tilbringe dine penge fra inden for denne tegnebog, lige scanne din private nøgle.";
+"This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Dette er et ur-bare adresse. For at tilbringe dine penge fra denne konto, kan du scanne din private nøgle.";
+
+/* (No Commment) */
+"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Dette er arkiveret. Selvom du ikke kan sende midler herfra, forbliver alle midler sikker. Du skal blot udpakke for at begynde at bruge det igen.";
+
+/* (No Commment) */
+"This name is already in use. Please choose a different name." = "Dette navn er allerede i brug. Vælg venligst et andet navn.";
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Denne private nøgle tilhører en anden adresse, der ikke er watch kun";
-
-/* (No Commment) */
-"This thing is archived. That means it cannot be accessed in the app, and you cannot send funds from it.
-
-If there are any funds, they will be safe. In order to start using this thing again, unarchive it." = "Denne ting er arkiveret. Det betyder det ikke kan tilgås i app, og du kan ikke sende penge fra den.
-
-Hvis der er nogen midler, vil de være sikker. For at begynde at bruge denne ting igen, udpakke den.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Dette vil slette alle tegnebogsdata på denne enhed. Bekræft venligst, du har din tegnebog oplysninger gemt andre steder ellers nogen bitcoins i denne tegnebog vil være utilgængelige!!";
@@ -1022,6 +1035,9 @@ Fee: %@
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "KONTROLLERE BACKUP";
+
+/* (No Commment) */
+"Verification email has been sent to %@." = "Bekræftelses e-mail er blevet sendt til %@.";
 
 /* (No Commment) */
 "Verified" = "Verificeret";
@@ -1142,10 +1158,7 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Du bør altid pair eller login hvis du har adgang til din Wallet-ID og adgangskode. Inddrive dine penge vil oprette en ny tegnebog ID. Ønsker du at fortsætte?";
 
 /* (No Commment) */
-"You should only show this xPub to those you trust. With this information, they may be able to keep track of your payments and disrupt access to your wallet." = "Du skal kun vise denne xPub til dem, du har tillid til. Med disse oplysninger, kan de være i stand til at holde styr på dine betalinger og forstyrre adgang til tegnebogen.";
-
-/* (No Commment) */
-"You've successfully imported a private key. Note that it does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Du har med held indført en privat nøgle. Bemærk at det ikke svarer til denne adresse, se-kun. Hvis du ønsker at bruge fra denne adresse, Sørg for, at scanner du den korrekte private nøgle.";
+"You've successfully imported a private key." = "Du har med held indført en privat nøgle.";
 
 /* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Du har succesfuldt importeret den private nøgle til den adresse %@, og du kan nu bruge fra det. Hvis du ønsker at bruge fra denne adresse, Sørg for, du scanner den korrekte private nøgle.";
