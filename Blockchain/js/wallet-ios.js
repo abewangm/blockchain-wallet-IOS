@@ -18,7 +18,7 @@ API_CODE = '35e77459-723f-48b0-8c9e-6e9e8f54fbd3';
 min = false;
 
 // Set the API code for the iOS Wallet for the server calls
-WalletStore.setAPICode(API_CODE);
+BlockchainAPI.API_CODE = API_CODE;
 BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
 
 var MyWalletPhone = {};
@@ -768,7 +768,7 @@ MyWalletPhone.addAddressBookEntry = function(bitcoinAddress, label) {
 
 MyWalletPhone.detectPrivateKeyFormat = function(privateKeyString) {
     try {
-        return MyWallet.detectPrivateKeyFormat(privateKeyString);
+        return Helpers.detectPrivateKeyFormat(privateKeyString);
     } catch(e) {
         return null;
     }
@@ -858,7 +858,7 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
         device.execute('on_error_adding_private_key:', [message]);
     };
 
-    var needsBip38Passsword = MyWallet.detectPrivateKeyFormat(privateKeyString) === 'bip38';
+    var needsBip38Passsword = Helpers.detectPrivateKeyFormat(privateKeyString) === 'bip38';
 
     if (needsBip38Passsword) {
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
@@ -910,7 +910,7 @@ MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) 
         device.execute('on_error_adding_private_key_watch_only:', [message]);
     };
     
-    var needsBip38Passsword = MyWallet.detectPrivateKeyFormat(privateKeyString) === 'bip38';
+    var needsBip38Passsword = Helpers.detectPrivateKeyFormat(privateKeyString) === 'bip38';
     
     if (needsBip38Passsword) {
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
@@ -1212,7 +1212,7 @@ MyWalletPhone.checkIfWalletHasAddress = function(address) {
 
 MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
     
-    if (MyWallet.isValidateBIP39Mnemonic(passphrase)) {
+    if (Helpers.isValidBIP39Mnemonic(passphrase)) {
         console.log('recovering wallet');
         
         var accountProgress = function(obj) {
