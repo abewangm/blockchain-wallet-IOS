@@ -19,6 +19,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "BCInsetLabel.h"
 
 @class LatestBlock, Transaction;
 
@@ -26,6 +27,7 @@
     Transaction * transaction;
     IBOutlet UILabel * dateLabel;
     IBOutlet UIButton * btcButton;
+    IBOutlet BCInsetLabel *watchOnlyLabel;
     
     IBOutlet UIImageView *pendingIcon;
     IBOutlet UILabel *pendingText;

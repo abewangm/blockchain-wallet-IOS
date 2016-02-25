@@ -182,6 +182,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TRANSACTION_TX_TYPE @"txType"
 #define DICTIONARY_KEY_TRANSACTION_RESULT @"result"
 #define DICTIONARY_KEY_TRANSACTION_TIME @"time"
+#define DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY @"fromWatchOnly"
+#define DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY @"toWatchOnly"
 
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"
