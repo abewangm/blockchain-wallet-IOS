@@ -1308,6 +1308,8 @@ MyWalletPhone.disableNotifications = function() {
 
 MyWalletPhone.update_tor_ip_block = function(willEnable) {
     
+    var shouldEnable = Boolean(willEnable);
+    
     var success = function () {
         console.log('Update tor success');
         device.execute('on_update_tor_success');
@@ -1318,7 +1320,7 @@ MyWalletPhone.update_tor_ip_block = function(willEnable) {
         device.execute('on_update_tor_error');
     }
     
-    BlockchainSettingsAPI.update_tor_ip_block(willEnable, success, error);
+    BlockchainSettingsAPI.update_tor_ip_block(shouldEnable, success, error);
 }
 
 MyWalletPhone.updateServerURL = function(url) {

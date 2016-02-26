@@ -823,7 +823,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.update_tor_ip_block(\"%@\")", [NSNumber numberWithBool:willEnable]];
+    [self.webView executeJS:@"MyWalletPhone.update_tor_ip_block(%d)", willEnable];
 }
 
 - (void)on_update_tor_success
