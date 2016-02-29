@@ -1062,6 +1062,10 @@
 
 - (void)did_set_latest_block
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     DLog(@"did_set_latest_block");
     
     [self.webView executeJSWithCallback:^(NSString* latestBlockJSON) {
@@ -1086,6 +1090,10 @@
 
 - (void)did_multiaddr
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     DLog(@"did_multiaddr");
     
     [self getFinalBalance];
@@ -1145,7 +1153,7 @@
 
 - (NSArray *)getAllTransactions
 {
-    if (![self.webView isLoaded]) {
+    if (![self isInitialized]) {
         return nil;
     }
     
