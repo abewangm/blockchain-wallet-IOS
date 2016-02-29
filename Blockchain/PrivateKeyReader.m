@@ -45,7 +45,7 @@ BOOL isReadingQRCode;
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.adjustsFontSizeToFitWidth = YES;
-    headerLabel.text = BC_STRING_IMPORT_PRIVATE_KEY;
+    headerLabel.text = BC_STRING_SCAN_QR_CODE;
     [topBarView addSubview:headerLabel];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70, 15, 80, 51)];
