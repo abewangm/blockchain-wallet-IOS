@@ -130,6 +130,7 @@
 - (void)showModalWithContent:(UIView *)contentView closeType:(ModalCloseType)closeType headerText:(NSString *)headerText onDismiss:(void (^)())onDismiss onResume:(void (^)())onResume;
 - (void)showModalWithContent:(UIView *)contentView closeType:(ModalCloseType)closeType showHeader:(BOOL)showHeader headerText:(NSString *)headerText onDismiss:(void (^)())onDismiss onResume:(void (^)())onResume;
 - (void)closeModalWithTransition:(NSString *)transition;
+- (void)closeAllModals;
 
 - (NSDictionary*)parseURI:(NSString*)string;
 

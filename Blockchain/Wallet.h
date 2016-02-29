@@ -78,6 +78,8 @@
 - (void)didFailToImportPrivateKeyForWatchOnlyAddress:(NSString *)error;
 - (void)returnToAddressesScreen;
 - (void)alertUserOfInvalidAccountName;
+- (void)alertUserOfInvalidPrivateKey;
+- (void)sendFromWatchOnlyAddress;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -128,6 +130,7 @@
 - (void)toggleArchiveAccount:(int)account;
 
 - (void)sendPaymentWithListener:(transactionProgressListeners*)listener;
+- (void)sendFromWatchOnlyAddress:(NSString *)watchOnlyAddress privateKey:(NSString *)privateKeyString;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 - (Boolean)isAddressArchived:(NSString *)address;

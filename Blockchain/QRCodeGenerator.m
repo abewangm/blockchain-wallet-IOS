@@ -13,7 +13,7 @@
 
 - (UIImage *)qrImageFromAddress:(NSString *)address
 {
-    NSString *addressURL = [NSString stringWithFormat:@"bitcoin:%@", address];
+    NSString *addressURL = [NSString stringWithFormat:@"%@%@", PREFIX_BITCOIN_URI, address];
     
     return [self createQRImageFromString:addressURL];
 }
@@ -27,7 +27,7 @@
     app.btcFormatter.locale = currentLocale;
     app.btcFormatter.usesGroupingSeparator = YES;
     
-    NSString *addressURL = [NSString stringWithFormat:@"bitcoin:%@?amount=%@", address, amountString];
+    NSString *addressURL = [NSString stringWithFormat:@"%@%@?amount=%@", PREFIX_BITCOIN_URI, address, amountString];
     
     return [self createQRImageFromString:addressURL];
 }

@@ -749,11 +749,11 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (NSDictionary*)parseURI:(NSString*)urlString
 {
-    if (![urlString hasPrefix:@"bitcoin:"]) {
+    if (![urlString hasPrefix:PREFIX_BITCOIN_URI]) {
         return [NSDictionary dictionaryWithObject:urlString forKey:DICTIONARY_KEY_ADDRESS];
     }
     
-    NSString * replaced = [[urlString stringByReplacingOccurrencesOfString:@"bitcoin:" withString:@"bitcoin://"] stringByReplacingOccurrencesOfString:@"////" withString:@"//"];
+    NSString * replaced = [[urlString stringByReplacingOccurrencesOfString:PREFIX_BITCOIN_URI withString:[NSString stringWithFormat:@"%@//", PREFIX_BITCOIN_URI]] stringByReplacingOccurrencesOfString:@"////" withString:@"//"];
     
     NSURL * url = [NSURL URLWithString:replaced];
     
@@ -1254,7 +1254,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     NSString *messageWithArgument = [app.wallet isWatchOnlyLegacyAddress:address] ? BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT : BC_STRING_IMPORTED_PRIVATE_KEY_ARGUMENT;
     
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:messageWithArgument, address] preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -1265,7 +1265,7 @@ void (^secondPasswordSuccess)(NSString *);
         } else {
             [_window.rootViewController presentViewController:alert animated:YES completion:nil];
         }
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     }];
 }
 
@@ -1275,7 +1275,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     NSString *message = [app.wallet isWatchOnlyLegacyAddress:address] ? [NSString stringWithFormat:BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT, address] : [NSString stringWithFormat:@"%@\n\n%@", BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_ONE, BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_TWO];
     
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:message preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
@@ -1289,7 +1289,7 @@ void (^secondPasswordSuccess)(NSString *);
             [_window.rootViewController presentViewController:alert animated:YES completion:nil];
         }
         
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     }];
 }
 
@@ -1297,7 +1297,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil queue:nil usingBlock:^(NSNotification *note) {
+    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_IMPORTED_PRIVATE_KEY_SUCCESS preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
@@ -1311,13 +1311,13 @@ void (^secondPasswordSuccess)(NSString *);
             [_window.rootViewController presentViewController:alert animated:YES completion:nil];
         }
         
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     }];
 }
 
 - (void)didFailToImportPrivateKey:(NSString *)error
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.receiveViewController name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     [self hideBusyView];
     self.wallet.isSyncing = NO;
     
@@ -1411,6 +1411,16 @@ void (^secondPasswordSuccess)(NSString *);
     [self standardNotifyAutoDismissingController:BC_STRING_NAME_ALREADY_IN_USE];
     
     [self hideBusyView];
+}
+
+- (void)alertUserOfInvalidPrivateKey
+{
+    [self standardNotifyAutoDismissingController:BC_STRING_INCORRECT_PRIVATE_KEY];
+}
+
+- (void)sendFromWatchOnlyAddress
+{
+    [_sendViewController sendFromWatchOnlyAddress];
 }
 
 #pragma mark - Show Screens

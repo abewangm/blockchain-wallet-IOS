@@ -10,6 +10,7 @@ var Helpers = Blockchain.Helpers;
 var Payment = Blockchain.Payment;
 var WalletNetwork = Blockchain.WalletNetwork;
 var RNG = Blockchain.RNG;
+var Address = Blockchain.Address;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -891,6 +892,48 @@ MyWalletPhone.addPrivateKey = function(privateKeyString) {
         }
     }
 };
+
+MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey = function(privateKeyString, watchOnlyAddress) {
+    
+    if (!MyWallet.wallet.key(watchOnlyAddress).isWatchOnly) {
+        console.log('Address is not watch only!');
+        return;
+    }
+    
+    var success = function(payment) {
+        console.log('Add private key success:');
+        device.execute('on_success_import_key_for_sending_from_watch_only');
+    };
+    
+    var error = function(message) {
+        console.log('Add private key error: ' + message);
+        device.execute('on_error_import_key_for_sending_from_watch_only:', message);
+    };
+    
+    var needsBip38Passsword = Helpers.detectPrivateKeyFormat(privateKeyString) === 'bip38';
+    
+    if (needsBip38Passsword) {
+        MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
+            Helpers.privateKeyCorrespondsToAddress(watchOnlyAddress, privateKeyString, bip38Pass).then(function (decryptedPrivateKey) {
+                if (decryptedPrivateKey) {
+                    currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
+                } else {
+                    console.log('Add private key error: ');
+                    device.execute('on_error_import_key_for_sending_from_watch_only:', ['wrongPrivateKey']);
+                }
+            }).catch(error);
+        });
+    } else {
+        Helpers.privateKeyCorrespondsToAddress(watchOnlyAddress, privateKeyString, null).then(function (decryptedPrivateKey) {
+           if (decryptedPrivateKey) {
+             currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
+           } else {
+             console.log('Add private key error: ');
+             device.execute('on_error_import_key_for_sending_from_watch_only:', ['wrongPrivateKey']);
+           }
+        }).catch(error);
+    }
+}
 
 MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) {
     

@@ -447,7 +447,7 @@
 #define BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT NSLocalizedString(@"Imported watch-only address %@", nil)
 #define BC_STRING_IMPORTED_PRIVATE_KEY_SUCCESS NSLocalizedString(@"You can now spend from this address.", nil)
 #define BC_STRING_IMPORTED_PRIVATE_KEY_TO_OTHER_ADDRESS_ARGUMENT NSLocalizedString(@"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key.", nil)
-#define BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING_ONE NSLocalizedString(@"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. You cannot spend bitcoin from a watch-only address directly, but you can get the balance, or export a transaction to be signed externally. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address.", nil)
+#define BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING_ONE NSLocalizedString(@"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address.", nil)
 #define BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING_TWO NSLocalizedString(@"These options are recommended for advanced users only. Continue?", nil)
 #define BC_STRING_UNKNOWN_KEY_FORMAT NSLocalizedString(@"Unknown key format", nil)
 #define BC_STRING_NAME_ALREADY_IN_USE NSLocalizedString(@"This name is already in use. Please choose a different name.", nil)
@@ -456,3 +456,6 @@
 #define BC_STRING_ERROR_PLEASE_REFRESH_PAIRING_CODE NSLocalizedString(@"Please refresh the pairing code and try again.", nil)
 
 #define BC_STRING_DONT_SHOW_AGAIN NSLocalizedString(@"Don't show again", nil)
+#define BC_STRING_INCORRECT_PRIVATE_KEY NSLocalizedString(@"Incorrect private key", nil)
+#define BC_STRING_PRIVATE_KEY_NEEDED NSLocalizedString(@"Private Key Needed", nil)
+#define BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT NSLocalizedString(@"This action requires the private key for the Bitcoin address %@. Please scan the QR code.", nil)

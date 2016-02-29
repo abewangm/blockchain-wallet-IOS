@@ -89,6 +89,8 @@
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 
+- (void)sendFromWatchOnlyAddress;
+
 - (void)reload;
 
 - (void)hideKeyboard;

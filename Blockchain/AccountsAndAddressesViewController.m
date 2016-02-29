@@ -165,7 +165,7 @@
     PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* keyString) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(promptForLabelAfterScan)
-                                                     name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+                                                     name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
         [app.wallet addKey:keyString];
     } error:nil acceptPublicKeys:YES];
     
@@ -180,7 +180,7 @@
     self.clickedAddress = [allKeys lastObject];
     [self didSelectAddress:self.clickedAddress];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS
                                                   object:nil];
 }
 

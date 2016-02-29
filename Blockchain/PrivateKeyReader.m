@@ -126,29 +126,32 @@ BOOL isReadingQRCode;
             
             // Check the format of the privateKey and if it's valid, pass it back via the success callback
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    NSString *scannedString = [metadataObj stringValue];
+                NSString *scannedString = [metadataObj stringValue];
                 
-                    NSString *format = [app.wallet detectPrivateKeyFormat:scannedString];
+                if ([scannedString hasPrefix:PREFIX_BITCOIN_URI]) {
+                    scannedString = [scannedString substringFromIndex:[PREFIX_BITCOIN_URI length]];
+                }
+                 
+                NSString *format = [app.wallet detectPrivateKeyFormat:scannedString];
                 
-                    if (!app.wallet || [format length] > 0) {
-                        if (self.success) {
-                            self.success(scannedString);
+                if (!app.wallet || [format length] > 0) {
+                    if (self.success) {
+                        self.success(scannedString);
+                    }
+                } else {
+                    [app hideBusyView];
+                    
+                    if (self.acceptsPublicKeys) {
+                        if ([app.wallet isBitcoinAddress:scannedString]) {
+                            [app askUserToAddWatchOnlyAddress:scannedString success:self.success];
+                        } else {
+                            [app standardNotifyAutoDismissingController:BC_STRING_UNKNOWN_KEY_FORMAT];
                         }
                     } else {
-                        [app hideBusyView];
-                        
-                        if (self.acceptsPublicKeys) {
-                            if ([app.wallet isBitcoinAddress:scannedString]) {
-                                [app askUserToAddWatchOnlyAddress:scannedString success:self.success];
-                            } else {
-                                [app standardNotifyAutoDismissingController:BC_STRING_UNKNOWN_KEY_FORMAT];
-                            }
-                        } else {
-                            [app standardNotifyAutoDismissingController:BC_STRING_UNSUPPORTED_PRIVATE_KEY_FORMAT];
-                        }
-
+                        [app standardNotifyAutoDismissingController:BC_STRING_UNSUPPORTED_PRIVATE_KEY_FORMAT];
                     }
-                });
+                }
+            });
         }
     }
 }

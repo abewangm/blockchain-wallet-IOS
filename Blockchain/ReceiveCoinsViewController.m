@@ -592,7 +592,7 @@ NSString *detailLabel;
     
     [[NSNotificationCenter defaultCenter] addObserver:alertForWatchOnly selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     
-    [self presentViewController:alertForWatchOnly animated:YES completion:nil];
+    [app.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
 }
 
 - (void)showReceiveModal
