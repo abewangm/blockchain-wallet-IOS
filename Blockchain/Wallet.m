@@ -378,13 +378,6 @@
 }
 
 // Pairing code JS callbacks
-- (void)ask_for_private_key:(NSString*)address success:(void(^)(id))_success error:(void(^)(id))_error
-{
-    DLog(@"ask_for_private_key:");
-    
-    if ([delegate respondsToSelector:@selector(askForPrivateKey:success:error:)])
-        [delegate askForPrivateKey:address success:_success error:_error];
-}
 
 - (void)didParsePairingCode:(NSDictionary *)dict
 {
@@ -1004,11 +997,6 @@
 - (void)loading_start_new_account
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_WALLET];
-}
-
-- (void)loading_start_import_private_key
-{
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
 }
 
 - (void)loading_start_create_new_address

@@ -167,7 +167,7 @@
                                                  selector:@selector(promptForLabelAfterScan)
                                                      name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
         [app.wallet addKey:keyString];
-    } error:nil acceptPublicKeys:YES];
+    } error:nil acceptPublicKeys:YES busyViewText:BC_STRING_LOADING_IMPORT_KEY];
     
     [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     

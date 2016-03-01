@@ -59,7 +59,6 @@
 - (void)errorParsingPairingCode:(NSString *)message;
 - (void)didCreateNewAccount:(NSString *)guid sharedKey:(NSString *)sharedKey password:(NSString *)password;
 - (void)errorCreatingNewAccount:(NSString *)message;
-- (void)askForPrivateKey:(NSString *)address success:(void(^)(id))_success error:(void(^)(id))_error;
 - (void)didFailPutPin:(NSString *)value;
 - (void)didPutPinSuccess:(NSDictionary *)dictionary;
 - (void)didFailGetPinTimeout;
@@ -218,7 +217,6 @@
 - (uint64_t)getTransactionFee;
 
 - (void)loading_start_get_history;
-- (void)loading_start_import_private_key;
 - (void)loading_start_upgrade_to_hd;
 - (void)loading_start_recover_wallet;
 - (void)loading_stop;

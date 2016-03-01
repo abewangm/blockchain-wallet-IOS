@@ -15,7 +15,7 @@ AVCaptureSession *captureSession;
 AVCaptureVideoPreviewLayer *videoPreviewLayer;
 BOOL isReadingQRCode;
 
-- (id)initWithSuccess:(void (^)(NSString*))__success error:(void (^)(NSString*))__error acceptPublicKeys:(BOOL)acceptPublicKeys
+- (id)initWithSuccess:(void (^)(NSString*))__success error:(void (^)(NSString*))__error acceptPublicKeys:(BOOL)acceptPublicKeys busyViewText:(NSString *)text
 {
     self = [super init];
     
@@ -25,6 +25,7 @@ BOOL isReadingQRCode;
         self.success = __success;
         self.error = __error;
         self.acceptsPublicKeys = acceptPublicKeys;
+        self.busyViewText = text;
     }
     
     return self;
@@ -121,7 +122,7 @@ BOOL isReadingQRCode;
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [self stopReadingQRCode];
                 
-                [app.wallet loading_start_import_private_key];
+                [app showBusyViewWithLoadingText:self.busyViewText];
             });
             
             // Check the format of the privateKey and if it's valid, pass it back via the success callback

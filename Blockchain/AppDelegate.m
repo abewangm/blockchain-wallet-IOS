@@ -1132,31 +1132,6 @@ void (^secondPasswordSuccess)(NSString *);
     [self.slidingViewController presentViewController:pairingCodeParser animated:YES completion:nil];
 }
 
-- (void)askForPrivateKey:(NSString*)address success:(void(^)(id))_success error:(void(^)(id))_error
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ASK_FOR_PRIVATE_KEY_TITLE
-                                                    message:[NSString stringWithFormat:BC_STRING_ASK_FOR_PRIVATE_KEY_DETAIL, address]
-                                                   delegate:nil
-                                          cancelButtonTitle:BC_STRING_NO
-                                          otherButtonTitles:BC_STRING_YES, nil];
-    
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (buttonIndex == 0) {
-            _error(BC_STRING_USER_DECLINED);
-        } else {
-            
-            if (![self getCaptureDeviceInput]) {
-                return;
-            }
-            
-            PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:_success error:_error acceptPublicKeys:NO];
-            [app.slidingViewController presentViewController:reader animated:YES completion:nil];
-        }
-    };
-    
-    [alert show];
-}
-
 - (void)scanPrivateKeyForWatchOnlyAddress:(NSString *)address
 {
     if (![app checkInternetConnection]) {
@@ -1169,7 +1144,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
         [app.wallet addKey:privateKeyString toWatchOnlyAddress:address];
-    } error:nil acceptPublicKeys:NO];
+    } error:nil acceptPublicKeys:NO busyViewText:BC_STRING_LOADING_IMPORT_KEY];
     
     [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     

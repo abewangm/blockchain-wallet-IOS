@@ -633,19 +633,19 @@ BOOL displayingLocalSymbolSend;
 {
     UIAlertController *alertForSpendingFromWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_PRIVATE_KEY_NEEDED message:[NSString stringWithFormat:BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT, self.fromAddress] preferredStyle:UIAlertControllerStyleAlert];
     [alertForSpendingFromWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self scanPrivateKeyForWatchOnlyAddress];
+        [self scanPrivateKeyToSendFromWatchOnlyAddress];
     }]];
     [alertForSpendingFromWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [app.tabViewController presentViewController:alertForSpendingFromWatchOnly animated:YES completion:nil];
 }
 
-- (void)scanPrivateKeyForWatchOnlyAddress
+- (void)scanPrivateKeyToSendFromWatchOnlyAddress
 {
     PrivateKeyReader *privateKeyScanner = [[PrivateKeyReader alloc] initWithSuccess:^(NSString *privateKeyString) {
         [app.wallet sendFromWatchOnlyAddress:self.fromAddress privateKey:privateKeyString];
     } error:^(NSString *error) {
         [app closeAllModals];
-    } acceptPublicKeys:NO];
+    } acceptPublicKeys:NO busyViewText:BC_STRING_LOADING_PROCESSING_KEY];
     
     [app.tabViewController presentViewController:privateKeyScanner animated:YES completion:nil];
 }
