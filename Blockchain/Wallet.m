@@ -612,6 +612,15 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.addKeyToLegacyAddress(\"%@\", \"%@\")", [privateKeyString escapeStringForJS], [watchOnlyAddress escapeStringForJS]] boolValue];
 }
 
+- (void)sendFromWatchOnlyAddress:(NSString *)watchOnlyAddress privateKey:(NSString *)privateKeyString
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:[NSString stringWithFormat:@"MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey(\"%@\", \"%@\")", [privateKeyString escapeStringForJS], [watchOnlyAddress escapeStringForJS]]];
+}
+
 - (NSDictionary*)addressBook
 {
     if (![self isInitialized]) {
@@ -1002,9 +1011,9 @@
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
 }
 
-- (void)loading_start_generate_new_address
+- (void)loading_start_create_new_address
 {
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_GENERATING_NEW_ADDRESS];
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_NEW_ADDRESS];
 }
 
 - (void)loading_start_generate_uuids
@@ -1452,7 +1461,7 @@
     DLog(@"on_backup_wallet_success");
     if ([delegate respondsToSelector:@selector(didBackupWallet)])
         [delegate didBackupWallet];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     // Hide the busy view if previously syncing
     [self loading_stop];
     self.isSyncing = NO;
@@ -1736,6 +1745,30 @@
     DLog(@"on_error_account_name_in_use");
     if ([self.delegate respondsToSelector:@selector(alertUserOfInvalidAccountName)]) {
         [self.delegate alertUserOfInvalidAccountName];
+    }
+}
+
+- (void)on_success_import_key_for_sending_from_watch_only
+{
+    [self loading_stop];
+    
+    DLog(@"on_success_import_key_for_sending_from_watch_only");
+    if ([self.delegate respondsToSelector:@selector(sendFromWatchOnlyAddress)]) {
+        [self.delegate sendFromWatchOnlyAddress];
+    }
+}
+
+- (void)on_error_import_key_for_sending_from_watch_only:(NSString *)error
+{
+    [self loading_stop];
+    
+    DLog(@"on_error_import_key_for_sending_from_watch_only");
+    if ([error isEqualToString:ERROR_WRONG_PRIVATE_KEY]) {
+        if ([self.delegate respondsToSelector:@selector(alertUserOfInvalidPrivateKey)]) {
+            [self.delegate alertUserOfInvalidPrivateKey];
+        }
+    } else {
+        [app standardNotifyAutoDismissingController:error];
     }
 }
 

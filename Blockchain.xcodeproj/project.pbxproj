@@ -38,6 +38,7 @@
 		23D3A6291C0F699900DEF737 /* SecurityCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D3A6281C0F699900DEF737 /* SecurityCenterViewController.m */; };
 		23D5DB501C4415AE007AD0A2 /* AccountsAndAddresses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D5DB521C4415AE007AD0A2 /* AccountsAndAddresses.storyboard */; };
 		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
+		23E2FC081C7F60E7004CFF79 /* BCInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */; };
 		23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C41B54258D0032B907 /* SettingsTableViewController.m */; };
 		23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C71B54282D0032B907 /* SettingsNavigationController.m */; };
 		23EA61CB1B5591260032B907 /* SettingsSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61CA1B5591260032B907 /* SettingsSelectorTableViewController.m */; };
@@ -545,6 +546,8 @@
 		23D5DBA01C4415D3007AD0A2 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
 		23D9F26E1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsBitcoinUnitTableViewController.h; sourceTree = "<group>"; };
 		23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsBitcoinUnitTableViewController.m; sourceTree = "<group>"; };
+		23E2FC061C7F60E7004CFF79 /* BCInsetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCInsetLabel.h; sourceTree = "<group>"; };
+		23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCInsetLabel.m; sourceTree = "<group>"; };
 		23EA61C31B54258D0032B907 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		23EA61C41B54258D0032B907 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		23EA61C61B54282D0032B907 /* SettingsNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsNavigationController.h; sourceTree = "<group>"; };
@@ -1232,6 +1235,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				23E2FC061C7F60E7004CFF79 /* BCInsetLabel.h */,
+				23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */,
 				230FD2D71C5BF1A700336683 /* BCQRCodeView.h */,
 				230FD2D81C5BF1A700336683 /* BCQRCodeView.m */,
 				230FD2D11C5BD04000336683 /* BCEditAddressView.h */,
@@ -1476,6 +1481,7 @@
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
 				23F720F21C32DC0A00577738 /* DebugTableViewController.m in Sources */,
 				23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */,
+				23E2FC081C7F60E7004CFF79 /* BCInsetLabel.m in Sources */,
 				C9BE917D1945D8F600FD516D /* PEViewController.m in Sources */,
 				674709EC19D1D14300757D46 /* BCWelcomeView.m in Sources */,
 				67D95A281B3DDC900012EBB1 /* Constants.swift in Sources */,

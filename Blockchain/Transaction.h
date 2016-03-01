@@ -22,6 +22,8 @@
 @property(nonatomic, assign) uint32_t size;
 @property(nonatomic, assign) uint64_t time;
 @property(nonatomic, assign) uint32_t tx_index;
+@property(nonatomic, assign) BOOL fromWatchOnly;
+@property(nonatomic, assign) BOOL toWatchOnly;
 
 @property(nonatomic, strong) InOut *from;
 @property(nonatomic, strong) InOut *to;

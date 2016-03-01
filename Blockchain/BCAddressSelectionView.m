@@ -310,16 +310,6 @@ int legacyAddressesSectionNumber;
         }
         
         if (isWatchOnlyLegacyAddress) {
-            if (showFromAddresses) {
-                cell.userInteractionEnabled = NO;
-                cell.labelLabel.alpha = 0.5;
-                cell.addressLabel.alpha = 0.5;
-            } else {
-                cell.userInteractionEnabled = YES;
-                cell.labelLabel.alpha = 1.0;
-                cell.addressLabel.alpha = 1.0;
-            }
-            
             // Show the watch only tag and resize the label and balance labels so there is enough space
             cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);
             cell.balanceLabel.frame = CGRectMake(254, 11, 83, 21);

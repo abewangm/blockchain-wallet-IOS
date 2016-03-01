@@ -100,21 +100,21 @@
 - (void)newAddressClicked:(id)sender
 {
     if ([app.wallet didUpgradeToHd]) {
-        [self scanPrivateKey];
+        [self importAddress];
     } else {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_ADDRESS message:nil preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *generateNewAddressAction = [UIAlertAction actionWithTitle:BC_STRING_NEW_ADDRESS_GENERATE_NEW style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *generateNewAddressAction = [UIAlertAction actionWithTitle:BC_STRING_NEW_ADDRESS_CREATE_NEW style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self generateNewAddress];
         }];
-        UIAlertAction *scanPrivateKeyAction = [UIAlertAction actionWithTitle:BC_STRING_SCAN_PRIVATE_KEY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self scanPrivateKey];
+        UIAlertAction *importAddressAction = [UIAlertAction actionWithTitle:BC_STRING_IMPORT_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self importAddress];
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         }];
         
         [alertController addAction:generateNewAddressAction];
-        [alertController addAction:scanPrivateKeyAction];
+        [alertController addAction:importAddressAction];
         [alertController addAction:cancelAction];
         
         [self presentViewController:alertController animated:YES completion:^{
@@ -152,7 +152,7 @@
                                                   object:nil];
 }
 
-- (void)scanPrivateKey
+- (void)importAddress
 {
     if (![app checkInternetConnection]) {
         return;
@@ -162,12 +162,12 @@
         return;
     }
     
-    PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* privateKeyString) {
+    PrivateKeyReader *reader = [[PrivateKeyReader alloc] initWithSuccess:^(NSString* keyString) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(promptForLabelAfterScan)
-                                                     name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS object:nil];
-        [app.wallet addKey:privateKeyString];
-    } error:nil];
+                                                     name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+        [app.wallet addKey:keyString];
+    } error:nil acceptPublicKeys:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:reader selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     
@@ -180,7 +180,7 @@
     self.clickedAddress = [allKeys lastObject];
     [self didSelectAddress:self.clickedAddress];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_SCANNED_NEW_ADDRESS
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS
                                                   object:nil];
 }
 

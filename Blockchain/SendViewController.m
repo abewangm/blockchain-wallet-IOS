@@ -16,6 +16,7 @@
 #import "UIViewController+AutoDismiss.h"
 #import "LocalizationConstants.h"
 #import "TransactionsViewController.h"
+#import "PrivateKeyReader.h"
 
 @interface SendViewController ()
 @property (nonatomic) uint64_t feeFromTransactionProposal;
@@ -251,6 +252,23 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
+    if (self.sendFromAddress && [app.wallet isWatchOnlyLegacyAddress:self.fromAddress]) {
+        
+        [self alertUserForSpendingFromWatchOnlyAddress];
+    
+        return;
+    } else {
+        [self sendPaymentWithListener];
+    }
+}
+
+- (void)sendFromWatchOnlyAddress
+{
+    [self sendPaymentWithListener];
+}
+
+- (void)sendPaymentWithListener
+{
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
     
     listener.on_start = ^() {
@@ -609,6 +627,27 @@ BOOL displayingLocalSymbolSend;
     } else {
         [app standardNotifyAutoDismissingController:error];
     }
+}
+
+- (void)alertUserForSpendingFromWatchOnlyAddress
+{
+    UIAlertController *alertForSpendingFromWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_PRIVATE_KEY_NEEDED message:[NSString stringWithFormat:BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT, self.fromAddress] preferredStyle:UIAlertControllerStyleAlert];
+    [alertForSpendingFromWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self scanPrivateKeyForWatchOnlyAddress];
+    }]];
+    [alertForSpendingFromWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [app.tabViewController presentViewController:alertForSpendingFromWatchOnly animated:YES completion:nil];
+}
+
+- (void)scanPrivateKeyForWatchOnlyAddress
+{
+    PrivateKeyReader *privateKeyScanner = [[PrivateKeyReader alloc] initWithSuccess:^(NSString *privateKeyString) {
+        [app.wallet sendFromWatchOnlyAddress:self.fromAddress privateKey:privateKeyString];
+    } error:^(NSString *error) {
+        [app closeAllModals];
+    } acceptPublicKeys:NO];
+    
+    [app.tabViewController presentViewController:privateKeyScanner animated:YES completion:nil];
 }
 
 #pragma mark - Textfield Delegates

@@ -79,6 +79,26 @@
         actionLabel.textColor = COLOR_TRANSACTION_SENT;
     }
     
+    watchOnlyLabel.adjustsFontSizeToFitWidth = YES;
+    watchOnlyLabel.layer.cornerRadius = 5;
+    watchOnlyLabel.clipsToBounds = YES;
+    watchOnlyLabel.text = BC_STRING_WATCH_ONLY;
+    watchOnlyLabel.customEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4);
+    
+    if ((([transaction.txType isEqualToString:TX_TYPE_RECEIVED] || [transaction.txType isEqualToString:TX_TYPE_TRANSFER]) && transaction.toWatchOnly) || ([transaction.txType isEqualToString:TX_TYPE_SENT] && transaction.fromWatchOnly)) {
+        watchOnlyLabel.hidden = NO;
+        actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 20, 172, 21);
+        dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 3, dateLabel.frame.size.width, dateLabel.frame.size.height);
+        pendingText.frame = CGRectMake(pendingText.frame.origin.x, 5, pendingText.frame.size.width, pendingText.frame.size.height);
+        pendingIcon.frame = CGRectMake(pendingIcon.frame.origin.x, 6, pendingIcon.frame.size.width, pendingIcon.frame.size.height);
+    } else {
+        watchOnlyLabel.hidden = YES;
+        actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 29, 172, 21);
+        dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 11, dateLabel.frame.size.width, dateLabel.frame.size.height);
+        pendingText.frame = CGRectMake(pendingText.frame.origin.x, 13, pendingText.frame.size.width, pendingText.frame.size.height);
+        pendingIcon.frame = CGRectMake(pendingIcon.frame.origin.x, 14, pendingIcon.frame.size.width, pendingIcon.frame.size.height);
+    }
+    
     if (transaction.confirmations >= kConfirmationThreshold) {
         pendingText.hidden = YES;
         pendingIcon.hidden = YES;

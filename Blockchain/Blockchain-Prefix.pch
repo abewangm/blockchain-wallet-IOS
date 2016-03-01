@@ -86,6 +86,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define PREFIX_BITCOIN_URI @"bitcoin:"
+
 #define TX_TYPE_TRANSFER @"transfer"
 #define TX_TYPE_SENT @"sent"
 #define TX_TYPE_RECEIVED @"received"
@@ -101,6 +103,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ERROR_NOT_PRESENT_IN_WALLET @"addressNotPresentInWallet"
 #define ERROR_ADDRESS_NOT_WATCH_ONLY @"addressNotWatchOnly"
+#define ERROR_WRONG_PRIVATE_KEY @"wrongPrivateKey"
 #define ERROR_WRONG_BIP_PASSWORD @"wrongBipPass"
 #define ERROR_PRIVATE_KEY_OF_ANOTHER_WATCH_ONLY_ADDRESS @"privateKeyOfAnotherNonWatchOnlyAddress"
 #define ERROR_TYPE_MUST_START_WITH_NUMBER @"TypeError: must start with number"
@@ -109,7 +112,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS @"reloadToDismissViews"
 #define NOTIFICATION_KEY_LOADING_TEXT @"SetLoadingText"
 #define NOTIFICATION_KEY_NEW_ADDRESS @"newAddress"
-#define NOTIFICATION_KEY_SCANNED_NEW_ADDRESS @"scannedNewAddress"
+#define NOTIFICATION_KEY_BACKUP_SUCCESS @"backupSuccess"
 #define NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES @"reloadAccountsAndAddresses"
 
 #define NOTIFICATION_KEY_MODAL_VIEW_DISMISSED @"modalViewDismissed"
@@ -182,6 +185,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TRANSACTION_TX_TYPE @"txType"
 #define DICTIONARY_KEY_TRANSACTION_RESULT @"result"
 #define DICTIONARY_KEY_TRANSACTION_TIME @"time"
+#define DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY @"fromWatchOnly"
+#define DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY @"toWatchOnly"
 
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"
@@ -221,6 +226,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_PASSWORD_PART_HASH @"passwordPartHash"
 #define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
 #define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
+#define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"
 
 #define USER_DEFAULTS_KEY_DEBUG_SERVER_URL @"serverURL"
 #define USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL @"webSocketURL"
@@ -271,6 +277,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
 
 #define ANIMATION_DURATION .2f
+#define ANIMATION_DURATION_LONG .5f
 #define kConfirmationThreshold 3
 
 // TabViewController

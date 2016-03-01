@@ -578,6 +578,60 @@ NSString *detailLabel;
     [alertView show];
 }
 
+- (void)alertUserOfWatchOnlyAddress
+{
+    UIAlertController *alertForWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_WATCH_ONLY_RECEIVE_WARNING preferredStyle:UIAlertControllerStyleAlert];
+    [alertForWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self showReceiveModal];
+    }]];
+    [alertForWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_DONT_SHOW_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING];
+        [self showReceiveModal];
+    }]];
+    [alertForWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:alertForWatchOnly selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    
+    [app.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
+}
+
+- (void)showReceiveModal
+{
+    [self startObservingForReceivedPayment];
+    
+    optionsTitleLabel.text = detailLabel;
+    
+    [app showModalWithContent:requestCoinsView closeType:ModalCloseTypeClose headerText:BC_STRING_REQUEST_AMOUNT onDismiss:^() {
+        // Remove the extra menu item (more actions)
+        [moreActionsButton removeFromSuperview];
+        moreActionsButton.alpha = 0.0f;
+        
+        if (self.paymentObserver) {
+            [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
+            self.paymentObserver = nil;
+        }
+        
+    } onResume:^() {
+        // Reset the requested amount when showing the request screen
+        btcAmountField.text = nil;
+        fiatAmountField.text = nil;
+        
+        [self enableTapInteraction];
+        
+        // Show an extra menu item (more actions)
+        [app.modalView addSubview:moreActionsButton];
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            moreActionsButton.alpha = 1.0f;
+        }];
+    }];
+    
+    [self setQRPayment];
+    
+    entryField.inputAccessoryView = amountKeyboardAccessoryView;
+    
+    [self showKeyboard];
+}
+
 - (void)startObservingForReceivedPayment
 {
     __weak ReceiveCoinsViewController *weakSelf = self;
@@ -712,6 +766,8 @@ NSString *detailLabel;
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     didClickAccount = (indexPath.section == 0);
     
     if (indexPath.section == 0) {
@@ -723,7 +779,7 @@ NSString *detailLabel;
         detailLabel = [app.wallet getLabelForAccount:row activeOnly:YES];
     }
     else {
-        detailAddress = [self getAddress:[_tableView indexPathForSelectedRow]];
+        detailAddress = [self getAddress:indexPath];
         NSString *addr = detailAddress;
         NSString *label = [app.wallet labelForLegacyAddress:addr];
         
@@ -733,42 +789,14 @@ NSString *detailLabel;
             detailLabel = label;
         else
             detailLabel = addr;
-    }
-    optionsTitleLabel.text = detailLabel;
-    
-    [self startObservingForReceivedPayment];
-    
-    [app showModalWithContent:requestCoinsView closeType:ModalCloseTypeClose headerText:BC_STRING_REQUEST_AMOUNT onDismiss:^() {
-        // Remove the extra menu item (more actions)
-        [moreActionsButton removeFromSuperview];
-        moreActionsButton.alpha = 0.0f;
         
-        if (self.paymentObserver) {
-            [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
-            self.paymentObserver = nil;
+        if ([app.wallet isWatchOnlyLegacyAddress:addr] && ![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING]) {
+            [self alertUserOfWatchOnlyAddress];
+            return;
         }
-
-    } onResume:^() {
-        // Reset the requested amount when showing the request screen
-        btcAmountField.text = nil;
-        fiatAmountField.text = nil;
-        
-        [self enableTapInteraction];
-        
-        // Show an extra menu item (more actions)
-        [app.modalView addSubview:moreActionsButton];
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            moreActionsButton.alpha = 1.0f;
-        }];
-    }];
+    }
     
-    [self setQRPayment];
-    
-    entryField.inputAccessoryView = amountKeyboardAccessoryView;
-    
-    [self showKeyboard];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self showReceiveModal];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
