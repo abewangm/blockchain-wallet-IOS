@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SendViewController">
@@ -324,14 +324,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2Ig-LA-4kK">
-                    <rect key="frame" x="123" y="144" width="70" height="21"/>
+                    <rect key="frame" x="235" y="144" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BtcAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="IUn-6N-qeo">
-                    <rect key="frame" x="201" y="144" width="104" height="21"/>
+                    <rect key="frame" x="123" y="144" width="104" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -353,45 +353,54 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9B2-23-8j5">
-                    <rect key="frame" x="123" y="173" width="70" height="21"/>
+                    <rect key="frame" x="235" y="173" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BtcAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="6ll-Xx-4fm">
-                    <rect key="frame" x="201" y="173" width="104" height="21"/>
+                    <rect key="frame" x="123" y="173" width="104" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" id="olS-cb-xpX" customClass="BCLine">
-                    <rect key="frame" x="15" y="200" width="320" height="1"/>
+                    <rect key="frame" x="15" y="227" width="320" height="1"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Ubr-KG-egH">
-                    <rect key="frame" x="15" y="209" width="100" height="21"/>
+                    <rect key="frame" x="15" y="236" width="100" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrTotal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="t8M-NC-003">
-                    <rect key="frame" x="123" y="209" width="70" height="21"/>
+                    <rect key="frame" x="235" y="236" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BtcTotal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vzP-xG-GPO">
-                    <rect key="frame" x="201" y="209" width="104" height="21"/>
+                    <rect key="frame" x="123" y="236" width="104" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cbp-Qe-FKP">
+                    <rect key="frame" x="123" y="196" width="90" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="Customize Fee"/>
+                    <connections>
+                        <action selector="customizeFeeClicked:" destination="-1" eventType="touchUpInside" id="Dbt-ek-ZBN"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -400,6 +409,7 @@
                 <outlet property="btcAmountLabel" destination="IUn-6N-qeo" id="2cb-i6-6XZ"/>
                 <outlet property="btcFeeLabel" destination="6ll-Xx-4fm" id="qti-sQ-cI9"/>
                 <outlet property="btcTotalLabel" destination="vzP-xG-GPO" id="f2m-Cb-nwT"/>
+                <outlet property="customizeFeeButton" destination="Cbp-Qe-FKP" id="DVk-aP-z2F"/>
                 <outlet property="fiatAmountLabel" destination="2Ig-LA-4kK" id="d1d-zZ-ISe"/>
                 <outlet property="fiatFeeLabel" destination="9B2-23-8j5" id="zEu-EG-IyE"/>
                 <outlet property="fiatTotalLabel" destination="t8M-NC-003" id="c32-y9-K3U"/>

@@ -93,7 +93,7 @@
 #define BC_STRING_INVALID_PAIRING_CODE NSLocalizedString(@"Invalid Pairing Code", nil)
 
 #define BC_STRING_INSUFFICIENT_FUNDS NSLocalizedString(@"Insufficient Funds", nil)
-#define BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE NSLocalizedString(@"Please select a different address to send from or lower the fee in Settings.", nil)
+#define BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS NSLocalizedString(@"Please select a different address to send from.", nil)
 
 #define BC_STRING_OK NSLocalizedString(@"OK", nil)
 #define BC_STRING_FAILED_TO_LOAD_WALLET_TITLE NSLocalizedString(@"Failed To Load Wallet", nil)
@@ -458,3 +458,13 @@
 #define BC_STRING_INCORRECT_PRIVATE_KEY NSLocalizedString(@"Incorrect private key", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED NSLocalizedString(@"Private Key Needed", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT NSLocalizedString(@"This action requires the private key for the Bitcoin address %@. Please scan the QR code.", nil)
+#define BC_STRING_TRANSACTION_FEE_TITLE NSLocalizedString(@"Transaction Fee", nil)
+#define BC_STRING_TRANSACTION_FEE_DESCRIPTION_ARGUMENT NSLocalizedString(@"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time.", nil)
+#define BC_STRING_ENTER_ARGUMENT_AMOUNT NSLocalizedString(@"Enter %@ amount", nil)
+#define BC_STRING_RETRIEVING_RECOMMENDED_FEE NSLocalizedString(@"Retrieving recommended fee", nil)
+#define BC_STRING_FEE_HIGHER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT NSLocalizedString(@"You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block).", nil)
+#define BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT NSLocalizedString(@"You specified an exceptionally small transaction fee of %@. Your transaction may be stuck and possibly never be confirmed. We strongly recommend a fee of no less than %@ (recommended fee for likely inclusion within 6 blocks).", nil)
+#define BC_STRING_INCREASE_FEE NSLocalizedString(@"Increase Fee", nil)
+#define BC_STRING_LOWER_FEE NSLocalizedString(@"Lower Fee", nil)
+#define BC_STRING_KEEP_HIGHER_FEE NSLocalizedString(@"Keep Higher Fee", nil)
+#define BC_STRING_KEEP_LOWER_FEE NSLocalizedString(@"Keep Lower Fee", nil)

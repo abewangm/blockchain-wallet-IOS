@@ -702,13 +702,13 @@
     [self.webView executeJS:@"MyWalletPhone.changePaymentAmount(%lld)", amount];
 }
 
-- (void)sweepPayment
+- (void)sweepPaymentThenConfirm:(BOOL)willConfirm
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.sweepPayment()"];
+    [self.webView executeJS:@"MyWalletPhone.sweepPaymentThenConfirm(%d)", willConfirm];
 }
 
 - (void)checkIfOverspending
@@ -729,14 +729,32 @@
     [self.webView executeJS:@"MyWalletPhone.getPaymentFee()"];
 }
 
-- (void)setTransactionFee:(uint64_t)feePerKb
+- (void)getTransactionSizeEstimate
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.getSizeEstimate()"];
+}
+
+- (void)setForcedTransactionFee:(uint64_t)fee
 {
     if (![self isInitialized]) {
         return;
     }
     
     self.isSyncing = YES;
-    [self.webView executeJS:@"MyWalletPhone.setTransactionFee(%lld)", feePerKb];
+    [self.webView executeJS:@"MyWalletPhone.setForcedTransactionFee(%lld)", fee];
+}
+
+- (void)setFeePerKilobyte:(uint64_t)feePerKb
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.setFeePerKilobyte(%lld)", feePerKb];
 }
 
 - (uint64_t)getTransactionFee
@@ -1572,25 +1590,40 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
-- (void)update_fee:(NSNumber *)fee
+- (void)update_fee_per_kilobyte:(NSNumber *)fee
 {
     DLog(@"update_fee");
     DLog(@"Wallet: fee is %@", fee);
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{DICTIONARY_KEY_FEE:fee}];
+    if ([self.delegate respondsToSelector:@selector(didChangeFeePerKilobyte:)]) {
+        [self.delegate didChangeFeePerKilobyte:fee];
+    }
 }
 
-- (void)update_max_amount:(NSNumber *)amount fee:(NSNumber *)fee
+- (void)update_forced_fee:(NSNumber *)fee
+{
+    DLog(@"update_fee");
+    DLog(@"Wallet: fee is %@", fee);
+    if ([self.delegate respondsToSelector:@selector(didChangeForcedFee:)]) {
+        [self.delegate didChangeForcedFee:fee];
+    }
+}
+
+- (void)update_max_amount:(NSNumber *)amount fee:(NSNumber *)fee willConfirm:(NSNumber *)willConfirm
 {
     DLog(@"update_max_amount");
     DLog(@"Wallet: max amount is %@ with fee %@", amount, fee);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{DICTIONARY_KEY_AMOUNT:amount, DICTIONARY_KEY_FEE:fee}];
+    if ([self.delegate respondsToSelector:@selector(didGetMaxFee:amount:willConfirm:)]) {
+        [self.delegate didGetMaxFee:fee amount:amount willConfirm:[willConfirm boolValue]];
+    }
 }
 
 - (void)check_max_amount:(NSNumber *)amount fee:(NSNumber *)fee
 {
     DLog(@"check_max_amount");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil userInfo:@{DICTIONARY_KEY_AMOUNT:amount, DICTIONARY_KEY_FEE:fee}];
+    if ([self.delegate respondsToSelector:@selector(didCheckForOverSpending:fee:)]) {
+        [self.delegate didCheckForOverSpending:amount fee:fee];
+    }
 }
 
 - (void)on_error_update_fee:(NSString *)error
@@ -1757,6 +1790,15 @@
         }
     } else {
         [app standardNotifyAutoDismissingController:error];
+    }
+}
+
+- (void)estimate_transaction_size:(NSNumber *)size
+{
+    DLog(@"estimate_transaction_size:");
+    uint64_t convertedSize = [size longLongValue];
+    if ([self.delegate respondsToSelector:@selector(estimateTransactionSize:)]) {
+        [self.delegate estimateTransactionSize:convertedSize];
     }
 }
 

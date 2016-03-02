@@ -167,6 +167,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/api/merchant"
 #define DEFAULT_API_URL @"https://api.blockchain.info"
 
+#define DYNAMIC_FEE_SERVICE_URL @"https://api.blockchain.info/fees"
+
 #define HTML_CONNECT_SRC_PLACEHOLDER @"PLACEHOLDER_CONNECT_SRC"
 #define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info https://api.blockchain.info"
 
@@ -195,6 +197,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_SUCCESS @"success"
 #define DICTIONARY_KEY_KEY @"key"
 #define DICTIONARY_KEY_VALUE @"value"
+
+#define DICTIONARY_KEY_FEE_ESTIMATE @"estimate"
+#define DICTIONARY_KEY_FEE @"fee"
+#define DICTIONARY_KEY_SURGE @"surge"
 
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL @"email"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED @"email_verified"

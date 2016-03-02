@@ -328,7 +328,8 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
 
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment');
-    currentPayment = new Payment();
+    // In case dynamic fee service fails, default to 30000
+    currentPayment = new Payment({ feePerKb: 30000 });
 }
 
 MyWalletPhone.changePaymentFrom = function(from) {
@@ -403,8 +404,10 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
     });
 }
 
-MyWalletPhone.sweepPayment = function() {
+MyWalletPhone.sweepPaymentThenConfirm = function(willConfirm) {
     
+    var shouldConfirm = Boolean(willConfirm);
+
     currentPayment
       .sweep()
     
@@ -412,7 +415,7 @@ MyWalletPhone.sweepPayment = function() {
         console.log('SweepFee: ' + x.sweepFee);
         console.log('SweepAmount: ' + x.sweepAmount);
         console.log('maxAmount and fee are' + x.sweepAmount + ',' + x.sweepFee);
-        device.execute('update_max_amount:fee:', [x.sweepAmount, x.sweepFee]);
+        device.execute('update_max_amount:fee:willConfirm:', [x.sweepAmount, x.sweepFee, shouldConfirm]);
         return x;
     }).catch(function(error) {
         var errorArgument;
@@ -426,8 +429,32 @@ MyWalletPhone.sweepPayment = function() {
     });
 };
 
-MyWalletPhone.setTransactionFee = function(fee) {
-    MyWallet.wallet.fee_per_kb = fee;
+
+MyWalletPhone.getSizeEstimate = function() {
+    currentPayment.sideEffect(function (x) {console.log('txsize');console.log(x.transaction.sizeEstimate);
+        device.execute('estimate_transaction_size:', [x.transaction.sizeEstimate]);
+    });
+}
+
+MyWalletPhone.setForcedTransactionFee = function(fee) {
+    currentPayment.fee(fee).build().sideEffect(function (x) {
+        console.log('payment fee set to ');
+        console.log(x.transaction.fee);
+        device.execute('update_forced_fee:', [x.forcedFee]);
+    });
+}
+
+MyWalletPhone.setFeePerKilobyte = function(fee) {
+    console.log('setting fee per kb to ');
+    console.log(fee);
+    
+    currentPayment.build();
+    
+    currentPayment.feePerKb(fee).sideEffect(function (x) {
+        console.log('fee per kb set to ');
+        console.log(x.feePerKb);
+        device.execute('update_fee_per_kilobyte:', [x.transaction.fee]);
+    });
 }
 
 MyWalletPhone.getTransactionFee = function() {

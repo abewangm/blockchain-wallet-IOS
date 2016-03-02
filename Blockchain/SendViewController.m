@@ -18,9 +18,25 @@
 #import "TransactionsViewController.h"
 #import "PrivateKeyReader.h"
 
-@interface SendViewController ()
+@interface SendViewController () <UITextFieldDelegate>
+
+@property (nonatomic) BCSecureTextField *customFeeField;
+@property (nonatomic) uint64_t recommendedForcedFee;
+@property (nonatomic) uint64_t maxSendableAmount;
 @property (nonatomic) uint64_t feeFromTransactionProposal;
+@property (nonatomic) UIAlertAction *customFeeAction;
+
 @property (nonatomic) uint64_t amountFromURLHandler;
+
+@property (nonatomic) NSDictionary *recommendedFees;
+@property (nonatomic) BOOL isSurgeOccurring;
+@property (nonatomic) uint64_t upperRecommendedLimit;
+@property (nonatomic) uint64_t lowerRecommendedLimit;
+@property (nonatomic) uint64_t estimatedTransactionSize;
+
+@property (nonatomic, copy) void (^getDynamicFeeSuccess)();
+@property (nonatomic, copy) void (^getDynamicFeeError)();
+
 @end
 
 @implementation SendViewController
@@ -331,8 +347,6 @@ BOOL displayingLocalSymbolSend;
         [app.wallet getHistory];
     };
     
-    [self hideKeyboard];
-    
     [self disablePaymentButtons];
     
     [sendProgressActivityIndicator startAnimating];
@@ -387,6 +401,8 @@ BOOL displayingLocalSymbolSend;
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
+        self.maxSendableAmount = maxAmount;
+        
         uint64_t spendableAmount = maxAmount + self.feeFromTransactionProposal;
         
         NSString *wantToSendAmountString = [app formatMoney:amountInSatoshi localCurrency:NO];
@@ -415,7 +431,11 @@ BOOL displayingLocalSymbolSend;
             }
             
             // Actually do the sweep and confirm
-            [self getMaxFeeWhileConfirming:YES];
+            __weak SendViewController *weakSelf = self;
+            [self getDynamicFeeWithSuccess:^{
+                [weakSelf getMaxFeeThenConfirm:YES];
+            } error:nil];
+        
         }];
         
         [alert addAction:cancelAction];
@@ -501,7 +521,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)alertUserForZeroSpendableAmount
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_AVAILABLE_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS_OR_FEE preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_AVAILABLE_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
@@ -629,6 +649,35 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
+- (void)showWarningForFee:(uint64_t)fee isHigherThanRecommendedRange:(BOOL)feeIsTooHigh
+{
+    NSString *message;
+    uint64_t suggestedFee = 0;
+    NSString *useSuggestedFee;
+    NSString *keepUserInputFee;
+    
+    if (feeIsTooHigh) {
+        message = [NSString stringWithFormat:BC_STRING_FEE_HIGHER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [app formatMoney:fee localCurrency:NO], [app formatMoney:self.upperRecommendedLimit localCurrency:NO]];
+        suggestedFee = self.upperRecommendedLimit;
+        useSuggestedFee = BC_STRING_LOWER_FEE;
+        keepUserInputFee = BC_STRING_KEEP_HIGHER_FEE;
+    } else {
+        message = [NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [app formatMoney:fee localCurrency:NO], [app formatMoney:self.lowerRecommendedLimit localCurrency:NO]];
+        suggestedFee = self.lowerRecommendedLimit;
+        useSuggestedFee = BC_STRING_INCREASE_FEE;
+        keepUserInputFee = BC_STRING_KEEP_LOWER_FEE;
+    }
+    UIAlertController *alertForFeeOutsideRecommendedRange = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:useSuggestedFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self changeForcedFee:suggestedFee];
+    }]];
+    [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:keepUserInputFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self changeForcedFee:fee];
+    }]];
+    [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [app.tabViewController presentViewController:alertForFeeOutsideRecommendedRange animated:YES completion:nil];
+}
+
 - (void)alertUserForSpendingFromWatchOnlyAddress
 {
     UIAlertController *alertForSpendingFromWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_PRIVATE_KEY_NEEDED message:[NSString stringWithFormat:BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT, self.fromAddress] preferredStyle:UIAlertControllerStyleAlert];
@@ -686,7 +735,7 @@ BOOL displayingLocalSymbolSend;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == btcAmountField || textField == fiatAmountField) {
+    if (textField == btcAmountField || textField == fiatAmountField || textField == self.customFeeField) {
         
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
@@ -723,7 +772,7 @@ BOOL displayingLocalSymbolSend;
         }
         
         // Fiat currencies have a max of 3 decimal places, most of them actually only 2. For now we will use 2.
-        else {
+        else if (textField == fiatAmountField) {
             if (points.count == 2) {
                 NSString *decimalString = points[1];
                 if (decimalString.length > 2) {
@@ -740,10 +789,22 @@ BOOL displayingLocalSymbolSend;
         
         // Convert input amount to internal value
         NSString *amountString = [newString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+        if (textField == self.customFeeField) {
+            if ([app.wallet parseBitcoinValue:amountString] + amountInSatoshi > self.maxSendableAmount + self.feeFromTransactionProposal) {
+                textField.textColor = [UIColor redColor];
+                self.customFeeAction.enabled = NO;
+            } else {
+                textField.textColor = [UIColor blackColor];
+                self.customFeeAction.enabled = YES;
+            }
+            return YES;
+        }
+        
         if (textField == fiatAmountField) {
             amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
         }
-        else {
+        else if (textField == btcAmountField) {
             amountInSatoshi = [app.wallet parseBitcoinValue:amountString];
         }
         
@@ -855,99 +916,168 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Fee Calculation
 
-- (void)addObserverForCheckingForOverspending
+- (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee
 {
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil queue:nil usingBlock:^(NSNotification * notification) {
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_CHECK_MAX_AMOUNT object:nil];
-        if ([notification.userInfo count] != 0) {
-            self.feeFromTransactionProposal = [notification.userInfo[DICTIONARY_KEY_FEE] longLongValue];
-            uint64_t maxAmount = [notification.userInfo[DICTIONARY_KEY_AMOUNT] longLongValue];
-            
-            if (maxAmount == 0) {
-                [self alertUserForZeroSpendableAmount];
-                return;
-            }
-            
-            if (amountInSatoshi > maxAmount) {
-                [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
-            } else {
-                // Underspending - regular transaction
-                [self getFeeFromCurrentPayment];
-            }
-        }
-    }];
-}
-
-- (void)addObserverForMaxFeeWhileConfirming:(BOOL)isConfirming
-{
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-        if ([notification.userInfo count] != 0) {
-            
-            self.feeFromTransactionProposal = [notification.userInfo[DICTIONARY_KEY_FEE] longLongValue];
-            uint64_t maxAmount = [notification.userInfo[DICTIONARY_KEY_AMOUNT] longLongValue];
-            
-            DLog(@"SendViewController: got max fee of %lld", [notification.userInfo[DICTIONARY_KEY_FEE] longLongValue]);
-            amountInSatoshi = maxAmount;
-            [self doCurrencyConversion];
-            
-            if (maxAmount == 0) {
-                [self alertUserForZeroSpendableAmount];
-                return;
-            }
-            
-            if (isConfirming) {
-                [self getFeeFromCurrentPayment];
-            }
-        }
-    }];
-}
-
-- (void)addObserverForFee
-{
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_UPDATE_FEE object:nil queue:nil usingBlock:^(NSNotification * notification) {
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_UPDATE_FEE object:nil];
-        
-        if ([notification.userInfo count] != 0) {
-            
-            NSString *errorString = [notification.userInfo valueForKey:@"error"];
-            
-            if (errorString != nil) {
-                [app standardNotify:errorString];
-                return;
-            }
-            
-            uint64_t newFee = [notification.userInfo[@"fee"] longLongValue];
-            self.feeFromTransactionProposal = newFee;
-            DLog(@"SendViewController: got fee of %lld", newFee);
-            
-            [self showSummary];
-            
-        } else {
-            [self enablePaymentButtons];
-        }
-    }];
-}
-
-- (void)getFeeFromCurrentPayment
-{
-    [self addObserverForFee];
+    self.feeFromTransactionProposal = [fee longLongValue];
+    uint64_t maxAmount = [amount longLongValue];
+    self.maxSendableAmount = maxAmount;
     
-    [app.wallet getPaymentFee];
+    if (maxAmount == 0) {
+        [self alertUserForZeroSpendableAmount];
+        return;
+    }
+    
+    if (amountInSatoshi > maxAmount) {
+        [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
+    } else {
+        // Underspending - regular transaction
+        __weak SendViewController *weakSelf = self;
+        [self getDynamicFeeWithSuccess:^{
+            [weakSelf showSummary];
+        } error:nil];
+    }
+}
+
+- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm
+{
+    self.feeFromTransactionProposal = [fee longLongValue];
+    uint64_t maxAmount = [amount longLongValue];
+    self.maxSendableAmount = maxAmount;
+    
+    DLog(@"SendViewController: got max fee of %lld", [fee longLongValue]);
+    amountInSatoshi = maxAmount;
+    [self doCurrencyConversion];
+    
+    if (maxAmount == 0) {
+        [self alertUserForZeroSpendableAmount];
+        return;
+    }
+    
+    if (willConfirm) {
+        [self showSummary];
+    }
 }
 
 - (void)checkMaxFee
 {
-    [self addObserverForCheckingForOverspending];
-    
     [app.wallet checkIfOverspending];
 }
 
-- (void)getMaxFeeWhileConfirming:(BOOL)isConfirming
+- (void)getMaxFeeThenConfirm:(BOOL)willConfirm
 {
-    [self addObserverForMaxFeeWhileConfirming:isConfirming];
+    [app.wallet sweepPaymentThenConfirm:willConfirm];
+}
+
+- (void)changeForcedFee:(uint64_t)absoluteFee
+{
+    [app.wallet setForcedTransactionFee:absoluteFee];
+}
+
+- (void)didChangeForcedFee:(NSNumber *)fee
+{
+    self.feeFromTransactionProposal = [fee longLongValue];
     
-    [app.wallet sweepPayment];
+    uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
+    
+    self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
+    self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
+    
+    self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
+    self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
+}
+
+- (void)changeFeePerKilobyte:(uint64_t)fee
+{
+    [app.wallet setFeePerKilobyte:fee];
+}
+
+- (void)didChangeFeePerKilobyte:(NSNumber *)fee
+{
+    self.recommendedForcedFee = [fee longLongValue];
+    self.feeFromTransactionProposal = [fee longLongValue];
+    
+    if (self.getDynamicFeeSuccess) {
+        self.getDynamicFeeSuccess();
+    }
+}
+
+- (void)getDynamicFeeWithSuccess:(void (^)())success error:(void (^)())error
+{
+    self.getDynamicFeeSuccess = success;
+    
+    [app showBusyViewWithLoadingText:BC_STRING_RETRIEVING_RECOMMENDED_FEE];
+    
+    NSURL *url = [NSURL URLWithString:DYNAMIC_FEE_SERVICE_URL];
+    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:req completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        
+        if (!error) {
+            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)response;
+            if (httpResp.statusCode == 200) {
+                NSError *jsonError;
+                NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+                if (!jsonError) {
+                    
+                    self.recommendedFees = jsonObject;
+                    uint64_t feeForLikelyInclusionWithinNextTwoBlocks = (uint64_t)[jsonObject[DICTIONARY_KEY_FEE_ESTIMATE][1][DICTIONARY_KEY_FEE] longLongValue];
+                    self.isSurgeOccurring = [jsonObject[DICTIONARY_KEY_FEE_ESTIMATE][1][DICTIONARY_KEY_SURGE] boolValue];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self changeFeePerKilobyte:feeForLikelyInclusionWithinNextTwoBlocks];
+                    });
+                }
+                else {
+                    DLog(@"%@", jsonError);
+                }
+            }
+            else {
+                DLog(@"Error: statusCode %d", httpResp.statusCode);
+            }
+        }
+        else{
+            DLog(@"%@", error);
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [app hideBusyView];
+        });
+        
+    }];
+    
+    [dataTask resume];
+}
+
+- (uint64_t)guessAbsoluteFee:(uint64_t)size fee:(uint64_t)feePerKb
+{
+    return feePerKb * size/1000;
+}
+
+- (void)updateEstimatedTransactionSize:(uint64_t)size
+{
+    self.estimatedTransactionSize = size;
+    [self showDynamicFeeAlert:self.recommendedForcedFee];
+}
+
+- (BOOL)evaluateFeeForTransactionSize:(uint64_t)fee
+{
+    BOOL isWithinRange = YES;
+    
+    uint64_t highFee = (uint64_t)[self.recommendedFees[DICTIONARY_KEY_FEE_ESTIMATE][0][DICTIONARY_KEY_FEE] longLongValue];
+    uint64_t lowFee = (uint64_t)[self.recommendedFees[DICTIONARY_KEY_FEE_ESTIMATE][5][DICTIONARY_KEY_FEE] longLongValue];
+    
+    self.upperRecommendedLimit = [self guessAbsoluteFee:self.estimatedTransactionSize fee:highFee];
+    self.lowerRecommendedLimit = [self guessAbsoluteFee:self.estimatedTransactionSize fee:lowFee];
+    
+    if (fee > self.upperRecommendedLimit) {
+        isWithinRange = NO;
+        [self showWarningForFee:fee isHigherThanRecommendedRange:YES];
+    } else if (fee < self.lowerRecommendedLimit) {
+        isWithinRange = NO;
+        [self showWarningForFee:fee isHigherThanRecommendedRange:NO];
+    }
+    
+    return isWithinRange;
 }
 
 #pragma mark - Actions
@@ -1095,7 +1225,63 @@ BOOL displayingLocalSymbolSend;
 {
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
-    [self getMaxFeeWhileConfirming:NO];
+    
+    __weak SendViewController *weakSelf = self;
+    [self getDynamicFeeWithSuccess:^{
+        [weakSelf getMaxFeeThenConfirm:NO];
+    } error:nil];
+}
+
+- (IBAction)customizeFeeClicked:(UIButton *)sender
+{
+    [app.wallet getTransactionSizeEstimate];
+}
+
+- (void)showDynamicFeeAlert:(uint64_t)fee
+{
+    NSString *bitcoinUnit = app.latestResponse.symbol_btc.symbol;
+    NSString *suggestedFee = [app formatAmount:fee localCurrency:NO];
+    
+    UIAlertController *customFeeAlert = [UIAlertController alertControllerWithTitle:BC_STRING_TRANSACTION_FEE_TITLE message:BC_STRING_TRANSACTION_FEE_DESCRIPTION_ARGUMENT preferredStyle:UIAlertControllerStyleAlert];
+    [customFeeAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        BCTextField *secureTextField = (BCTextField *)textField;
+        secureTextField.keyboardType = UIKeyboardTypeDecimalPad;
+        secureTextField.text = suggestedFee;
+        secureTextField.frame = CGRectMake(secureTextField.frame.origin.x, secureTextField.frame.origin.y, 30, secureTextField.frame.size.height);
+        secureTextField.textAlignment = NSTextAlignmentRight;
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = bitcoinUnit;
+        label.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:14];
+        label.adjustsFontSizeToFitWidth = YES;
+        label.textColor = COLOR_BUTTON_DARK_GRAY;
+        secureTextField.leftView = label;
+        secureTextField.leftViewMode = UITextFieldViewModeAlways;
+        self.customFeeField = secureTextField;
+        self.customFeeField.delegate = self;
+    }];
+    
+    UIAlertAction *customFeeAction = [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        BCSecureTextField *textField = (BCSecureTextField *)[[customFeeAlert textFields] firstObject];
+        NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+        NSString *convertedText = [textField.text stringByReplacingOccurrencesOfString:decimalSeparator withString:@"."];
+        float unconvertedFee = [convertedText floatValue];
+        NSNumber *unconvertedFeeNumber = [NSNumber numberWithFloat:unconvertedFee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
+        uint64_t convertedFee = (uint64_t)[unconvertedFeeNumber longLongValue];
+        
+        if ([self evaluateFeeForTransactionSize:convertedFee]) {
+            [self changeForcedFee:convertedFee];
+        }
+    }];
+    
+    self.customFeeAction = customFeeAction;
+    
+    [customFeeAlert addAction:customFeeAction];
+    [customFeeAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:customFeeAlert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    
+    [self.view.window.rootViewController presentViewController:customFeeAlert animated:YES completion:nil];
 }
 
 - (IBAction)sendPaymentClicked:(id)sender
@@ -1139,6 +1325,8 @@ BOOL displayingLocalSymbolSend;
     if (![self isAmountAboveDustThreshold:value]) {
         return;
     }
+    
+    [self hideKeyboard];
     
     [self disablePaymentButtons];
     

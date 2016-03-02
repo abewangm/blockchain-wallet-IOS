@@ -79,6 +79,11 @@
 - (void)alertUserOfInvalidAccountName;
 - (void)alertUserOfInvalidPrivateKey;
 - (void)sendFromWatchOnlyAddress;
+- (void)estimateTransactionSize:(uint64_t)size;
+- (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
+- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm;
+- (void)didChangeFeePerKilobyte:(NSNumber *)fee;
+- (void)didChangeForcedFee:(NSNumber *)fee;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -213,8 +218,10 @@
 
 - (void)setPbkdf2Iterations:(int)iterations;
 
-- (void)setTransactionFee:(uint64_t)feePerKb;
+- (void)setFeePerKilobyte:(uint64_t)feePerKb;
+- (void)setForcedTransactionFee:(uint64_t)fee;
 - (uint64_t)getTransactionFee;
+- (void)getTransactionSizeEstimate;
 
 - (void)loading_start_get_history;
 - (void)loading_start_upgrade_to_hd;
@@ -257,7 +264,7 @@
 - (void)changePaymentToAccount:(int)toInt;
 - (void)changePaymentToAddress:(NSString *)toString;
 - (void)changePaymentAmount:(uint64_t)amount;
-- (void)sweepPayment;
+- (void)sweepPaymentThenConfirm:(BOOL)willConfirm;
 - (void)getPaymentFee;
 - (void)checkIfOverspending;
 

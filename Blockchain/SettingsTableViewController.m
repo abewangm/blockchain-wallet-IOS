@@ -32,7 +32,6 @@ const int preferencesNotifications = 1;
 const int preferencesSectionEnd = 3;
 const int displayLocalCurrency = 0;
 const int displayBtcUnit = 1;
-const int feePerKb = 2;
 
 const int securitySection = 4;
 const int securityTwoStep = 0;
@@ -273,14 +272,6 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Change Fee per KB
 
-- (float)getFeePerKb
-{
-    uint64_t unconvertedFee = [app.wallet getTransactionFee];
-    float convertedFee = unconvertedFee / [[NSNumber numberWithInt:SATOSHI] floatValue];
-    self.currentFeePerKb = convertedFee;
-    return convertedFee;
-}
-
 - (NSString *)convertFloatToString:(float)floatNumber forDisplay:(BOOL)isForDisplay
 {
     NSNumberFormatter *feePerKbFormatter = [[NSNumberFormatter alloc] init];
@@ -310,50 +301,6 @@ const int aboutPrivacyPolicy = 1;
         
         return displayString;
     }
-}
-
-- (void)alertUserToChangeFee
-{
-    NSString *feePerKbString = [self convertFloatToString:self.currentFeePerKb forDisplay:NO];
-    UIAlertController *alertForChangingFeePerKb = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_CHANGE_FEE_TITLE message:[[NSString alloc] initWithFormat:BC_STRING_SETTINGS_CHANGE_FEE_MESSAGE_ARGUMENT, feePerKbString] preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingFeePerKb addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.text = feePerKbString;
-        secureTextField.text = [textField.text stringByReplacingOccurrencesOfString:@"." withString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-        secureTextField.keyboardType = UIKeyboardTypeDecimalPad;
-        secureTextField.delegate = self;
-        self.changeFeeTextField = secureTextField;
-    }];
-    [alertForChangingFeePerKb addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [alertForChangingFeePerKb addAction:[UIAlertAction actionWithTitle:BC_STRING_DONE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        BCSecureTextField *textField = (BCSecureTextField *)[[alertForChangingFeePerKb textFields] firstObject];
-        NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
-        NSString *convertedText = [textField.text stringByReplacingOccurrencesOfString:decimalSeparator withString:@"."];
-        float fee = [convertedText floatValue];
-        if (fee > 0.01 || fee == 0) {
-            UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_SETTINGS_ERROR_FEE_OUT_OF_RANGE preferredStyle:UIAlertControllerStyleAlert];
-            [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:errorAlert animated:YES completion:nil];
-            return;
-        }
-        
-        [self confirmChangeFee:fee];
-    }]];
-    [self presentViewController:alertForChangingFeePerKb animated:YES completion:nil];
-}
-
-- (void)confirmChangeFee:(float)fee
-{
-    NSNumber *unconvertedFee = [NSNumber numberWithFloat:fee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
-    uint64_t convertedFee = (uint64_t)[unconvertedFee longLongValue];
-    [app.wallet setTransactionFee:convertedFee];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:feePerKb inSection:preferencesSectionEnd]] withRowAnimation:UITableViewRowAnimationNone];
-    
-    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
-    [navigationController.busyView fadeIn];
 }
 
 #pragma mark - Change Mobile Number
@@ -1129,10 +1076,6 @@ const int aboutPrivacyPolicy = 1;
                     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
                     return;
                 }
-                case feePerKb: {
-                    [self alertUserToChangeFee];
-                    return;
-                }
             }
         }
         case securitySection: {
@@ -1190,7 +1133,7 @@ const int aboutPrivacyPolicy = 1;
         case walletInformationSection: return 1;
         case preferencesSectionEmailFooter: return 1;
         case preferencesSectionNotificationsFooter: return 2;
-        case preferencesSectionEnd: return 3;
+        case preferencesSectionEnd: return 2;
         case securitySection: return [app.wallet didUpgradeToHd] ? 5 : 4;
         case PINSection: return PINTouchID < 0 ? 1 : 2;
         case aboutSection: return 2;
@@ -1307,11 +1250,6 @@ const int aboutPrivacyPolicy = 1;
                     if (selectedCurrencyCode == nil) {
                         cell.detailTextLabel.text = @"";
                     }
-                    return cell;
-                }
-                case feePerKb: {
-                    cell.textLabel.text = BC_STRING_SETTINGS_FEE_PER_KB;
-                    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:BC_STRING_SETTINGS_FEE_ARGUMENT_BTC, [self convertFloatToString:[self getFeePerKb] forDisplay:YES]];
                     return cell;
                 }
             }

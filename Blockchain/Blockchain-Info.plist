@@ -41,6 +41,13 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>service-dynamic-fee.dev.blockchain.co.uk</key>
+			<dict>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 			<key>merchant-directory.blockchain.info</key>
 			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>
