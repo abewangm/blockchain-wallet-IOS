@@ -1217,7 +1217,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self reload];
     
-    [[NSUserDefaults standardUserDefaults] setBool:false forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
+    [[NSUserDefaults standardUserDefaults] setBool:false forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN_AFER_UPDATING_APP];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];
@@ -1574,8 +1574,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showHdUpgradeIfAppropriate
 {
-    if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN] && !self.pinEntryViewController && !_settingsNavigationController) {
-        [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
+    if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN_AFER_UPDATING_APP] && !self.pinEntryViewController && !_settingsNavigationController) {
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN_AFER_UPDATING_APP];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self showHdUpgrade];
     }
@@ -2592,6 +2592,10 @@ void (^secondPasswordSuccess)(NSString *);
         
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_FIRST_RUN];
         [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
     }
 }
 
