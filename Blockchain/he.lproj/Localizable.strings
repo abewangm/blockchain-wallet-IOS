@@ -260,6 +260,9 @@
 "Create Wallet" = "ליצור את הארנק";
 
 /* (No Commment) */
+"Create new address" = "ליצור כתובת חדשה";
+
+/* (No Commment) */
 "Creating" = "יצירת";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "יצירת הארנק החדש";
+
+/* (No Commment) */
+"Creating new address" = "יצירת כתובת חדשה";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "שיעור נוכחי: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "אתה רוצה לצאת?";
+
+/* (No Commment) */
+"Don't show again" = "אל תציג שוב";
 
 /* No comment provided by engineer. */
 "Done" = "עשיתי";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "מן היעד חייב להיות שונה";
 
 /* (No Commment) */
-"Generate new" = "צור חדש";
-
-/* (No Commment) */
-"Generating new address" = "יצירת כתובת חדשה";
-
-/* (No Commment) */
 "Go to Settings" = "עבור אל הגדרות";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "מפתח פרטי ייבוא";
 
 /* (No Commment) */
+"Import address" = "ייבוא כתובת";
+
+/* (No Commment) */
 "Imported Addresses" = "כתובות מיובאות";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "מפתח פרטי מיובאת %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "כתובת השעון בלבד המיובאים %@";
+
+/* (No Commment) */
 "Importing key" = "ייבוא מפתח";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "סיסמה שגויה";
+
+/* (No Commment) */
+"Incorrect private key" = "המפתח הפרטי שגוי";
 
 /* (No Commment) */
 "Information" = "מידע";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "הסיסמה החדשה להיות שונה";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "הסיסמה החדשה להיות שונה לסיסמה";
 
 /* (No Commment) */
 "News, Price & Charts" = "חדשות, מחיר & תרשימים";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "מדיניות פרטיות";
 
 /* (No Commment) */
+"Private Key Needed" = "מפתח פרטי הדרושים";
+
+/* (No Commment) */
+"Processing key" = "עיבוד מפתח";
+
+/* (No Commment) */
 "Receive" = "לקבל";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "לסרוק קוד QR";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "סרוק הכתובת היחידה לצפות?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "לסרוק את הקוד הזה, או להעתיק אותו לתוך האפליקציה Blockchain הסוחר שלך בצורה מאובטחת לקבל ביטקוין.";
@@ -907,6 +925,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "אירעה בעיה מאמת את זהותך.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "אפשרויות אלה מומלץ עבור משתמשים מתקדמים בלבד. האם להמשיך?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "פעולה זו דורשת את המפתח הפרטי עבור %@ כתובת ביטקוין. בבקשה לסרוק קוד QR.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
 
 /* (No Commment) */
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "שגיאה לא ידועה מזהה מגע. קוד: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "תבנית המפתח לא ידוע";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "בתבנית שאינה נתמכת של מפתח פרטי";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "הביטוי שחזור הארנק";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "הארנק כתובת %@ יש כסף לבלות. עם זאת המפתח הפרטי צריך לסרוק את הארנק נייר או קוד QR. האם ברצונך לסרוק את המפתח הפרטי עכשיו?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "הארנק גירסה %lld אינו נתמך";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* No comment provided by engineer. */
 "Yesterday" = "אתמול";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "אתה עומד ייבוא כתובת השעון בלבד, כתובת (או script המפתח הציבור) מאוחסן בארנק ללא הפרטי המתאים מפתח. משמעות הדבר היא כי ניתן לבלות את הכספים רק אם יש לך המפתח הפרטי מאוחסנים במקום אחר. אם אין לך את המפתח הפרטי המאוחסן, אינם מורים שמישהו ישלח לך ביטקוין לכתובת השעון בלבד.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "אתה עומד לקבל ביטקוין לכתובת השעון בלבד. אתה יכול רק להשקיע כספים אלה אם יש לך גישה למפתח הפרטי. האם להמשיך?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "עכשיו אתה מפעיל את הארנק ביטקוין המאובטחת ביותר שלנו";

@@ -260,6 +260,9 @@
 "Create Wallet" = "Portefeuille maken";
 
 /* (No Commment) */
+"Create new address" = "Nieuw adres maken";
+
+/* (No Commment) */
 "Creating" = "Maken";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Creëren van nieuwe portefeuille";
+
+/* (No Commment) */
+"Creating new address" = "Nieuw adres creëren";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Huidige tempo: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Wil je echt uit te loggen?";
+
+/* (No Commment) */
+"Don't show again" = "Niet opnieuw weergeven";
 
 /* No comment provided by engineer. */
 "Done" = "Gedaan";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "Uit en bestemming hebben om anders te zijn";
 
 /* (No Commment) */
-"Generate new" = "Nieuwe genereren";
-
-/* (No Commment) */
-"Generating new address" = "Genereren nieuwe adres";
-
-/* (No Commment) */
 "Go to Settings" = "Ga naar instellingen";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Import persoonlijke sleutel";
 
 /* (No Commment) */
+"Import address" = "Adres importeren";
+
+/* (No Commment) */
 "Imported Addresses" = "Geïmporteerde adressen";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Geïmporteerde persoonlijke sleutel %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Geïmporteerde watch-only adres %@";
+
+/* (No Commment) */
 "Importing key" = "Sleutel importeren";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Onjuist wachtwoord";
+
+/* (No Commment) */
+"Incorrect private key" = "Onjuiste persoonlijke sleutel";
 
 /* (No Commment) */
 "Information" = "Informatie";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Nieuw wachtwoord mag niet hetzelfde zijn";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Nieuwe wachtwoord moet verschillen van uw wachtwoordhint";
 
 /* (No Commment) */
 "News, Price & Charts" = "Nieuws, prijs & Charts";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Privacybeleid";
 
 /* (No Commment) */
+"Private Key Needed" = "Prive-sleutel nodig";
+
+/* (No Commment) */
+"Processing key" = "Verwerking van sleutel";
+
+/* (No Commment) */
 "Receive" = "Ontvangen";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "QR code scannen";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Scannen Watch enige adres?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scan deze code of kopieer het naar uw Blockchain Merchant app om Bitcoin veilig te ontvangen.";
@@ -901,10 +919,16 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zullen veilig. Hier is wat is beter: \n\n• volledig bijgewerkt ontwerp en gebruikerservaring \n• robuuste beveiliging center \n• verbeterde Privacy vereenvoudigde back-up en herstel \n• aangepast vermogensbeheer\n\ntwee geavanceerde transactiesoorten (besteding van horloge-alleen adressen en gedeelde munt) worden niet ondersteund in de nieuwe versie op dit moment.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zullen veilig. Hier is wat is beter: • volledig bijgewerkt ontwerp en gebruikerservaring • robuuste beveiliging center • verbeterde Privacy vereenvoudigde back-up en herstel • aangepast vermogensbeheer twee geavanceerde transactiesoorten (besteding van horloge-alleen adressen en gedeelde munt) worden niet ondersteund in de nieuwe versie op dit moment.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Er was een probleem uw identiteit verifiëren.";
+
+/* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Deze opties zijn alleen aanbevolen voor geavanceerde gebruikers. Blijven?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Deze actie vereist de persoonlijke sleutel voor de Bitcoin adres %@. Gelieve scan de QR code.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Deze actie is het tweede wachtwoord vereist voor uw bitcoin portemonnee. Voer het hieronder en druk op blijven.";
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Onbekende Touch ID fout. Code: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Onbekend-sleutelindeling";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Niet-ondersteunde privé sleutel indeling";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Portemonnee herstel zin";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Portemonnee adres %@ heeft middelen te besteden. De persoonlijke sleutel moet echter worden gescand van een papier portemonnee of QR Code. Wilt u de persoonlijke sleutel nu scannen?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Wallet versie %lld niet ondersteund";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* No comment provided by engineer. */
 "Yesterday" = "Gisteren";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "U bent bezig met het importeren van een alleen-horloge-adres, een adres (of openbare sleutel script) opgeslagen in de portefeuille zonder de bijbehorende persoonlijke sleutel. Dit betekent dat de fondsen alleen als u de persoonlijke sleutel elders opgeslagen kunnen worden besteed. Als u de persoonlijke sleutel opgeslagen geen, instrueren niet iedereen te verzenden u bitcoin de watch-only adres.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "U bent bezig met bitcoin naar een alleen-horloge-adres ontvangen. U kunt deze fondsen alleen uitgeven als u toegang tot de persoonlijke sleutel hebt. Blijven?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "U werkt nu onze meest veilige Bitcoin portemonnee";

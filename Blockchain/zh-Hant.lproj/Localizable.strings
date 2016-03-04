@@ -260,6 +260,9 @@
 "Create Wallet" = "創建錢包";
 
 /* (No Commment) */
+"Create new address" = "創建新的位址";
+
+/* (No Commment) */
 "Creating" = "創建";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "創建新的錢包";
+
+/* (No Commment) */
+"Creating new address" = "創建新的位址";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "現價: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "你真的想要登出嗎?";
+
+/* (No Commment) */
+"Don't show again" = "不要再顯示";
 
 /* No comment provided by engineer. */
 "Done" = "完成";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "從和目的地必須是不同";
 
 /* (No Commment) */
-"Generate new" = "新生成";
-
-/* (No Commment) */
-"Generating new address" = "生成新的位址";
-
-/* (No Commment) */
 "Go to Settings" = "轉到設置";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "導入私密金鑰";
 
 /* (No Commment) */
+"Import address" = "導入位址";
+
+/* (No Commment) */
 "Imported Addresses" = "導入的位址";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "導入的私密金鑰 %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "導入只觀看位址 %@";
+
+/* (No Commment) */
 "Importing key" = "導入金鑰";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "密碼不正確";
+
+/* (No Commment) */
+"Incorrect private key" = "不正確的私密金鑰";
 
 /* (No Commment) */
 "Information" = "資訊";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "新密碼必須不同";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "新密碼必須不同于您的密碼提示";
 
 /* (No Commment) */
 "News, Price & Charts" = "新聞、 價格與圖表";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "隱私權原則";
 
 /* (No Commment) */
+"Private Key Needed" = "需要私人金鑰";
+
+/* (No Commment) */
+"Processing key" = "處理的關鍵";
+
+/* (No Commment) */
 "Receive" = "接收";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "掃描二維碼";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "掃描表唯一位址嗎?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "掃描此代碼或將其複製到您的 Blockchain 商人應用程式安全地接收比特幣。";
@@ -901,10 +919,16 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: \n\n• 完全更新設計和使用者體驗 \n• 魯棒安全中心\n• 增強隱私 \n• 簡化備份和恢復 \n• 定制基金管理\n\n兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: • 完全更新設計和使用者體驗 • 魯棒安全中心增強隱私 • 簡化備份和恢復 • 定制基金管理兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "還有一個問題，驗證您的身份。";
+
+/* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "這些選項被建議僅高級使用者使用。要繼續嗎?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "此操作需要使用私密金鑰的比特幣位址 %@。請掃描 QR 代碼。";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "此操作需要第二個密碼你比特幣的錢包。請在下面輸入和按繼續。";
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "未知的觸摸 ID 錯誤。代碼: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "未知金鑰格式";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "私人金鑰格式不受支援";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "錢包恢復短語";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "錢包位址 %@ 有資金來。然而私密金鑰需要從紙錢包或 QR 碼掃描。你想要掃描的私有金鑰現在嗎?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "不支援的錢包版本 %lld";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* No comment provided by engineer. */
 "Yesterday" = "昨天";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "您將要導入一隻手錶的位址，位址 (或公共金鑰腳本) 存儲在錢包沒有相應的私人鑰匙。這意味著只有如果你有的專用金鑰存儲在其他地方，可以資金。如果你沒有私密金鑰存儲，不指示任何人向只手錶位址發送你比特幣。";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "你將收到比特幣到一隻手錶的位址。如果您有權訪問的私有金鑰，你可以只花這些資金。要繼續嗎?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "你現在正在運行我們最安全的比特幣錢包";

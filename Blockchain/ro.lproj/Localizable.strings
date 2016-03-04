@@ -260,6 +260,9 @@
 "Create Wallet" = "Crea portofel";
 
 /* (No Commment) */
+"Create new address" = "Creare adresă";
+
+/* (No Commment) */
 "Creating" = "Crearea";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Crearea de noi portofel";
+
+/* (No Commment) */
+"Creating new address" = "Creare adresă nouă";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Rata: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Într-adevăr doriţi să ieşiţi?";
+
+/* (No Commment) */
+"Don't show again" = "Nu se mai afișează";
 
 /* No comment provided by engineer. */
 "Done" = "Făcut";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "La şi destinaţie trebuie să fie diferite";
 
 /* (No Commment) */
-"Generate new" = "Genera noi";
-
-/* (No Commment) */
-"Generating new address" = "Generatoare de noua adresa";
-
-/* (No Commment) */
 "Go to Settings" = "Du-te la setările";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Cheie privată de import";
 
 /* (No Commment) */
+"Import address" = "Adresa de import";
+
+/* (No Commment) */
 "Imported Addresses" = "Adrese importate";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Cheie privată importate %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Importate doar uita-te la adresa %@";
+
+/* (No Commment) */
 "Importing key" = "Importul cheie";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Parolă incorectă";
+
+/* (No Commment) */
+"Incorrect private key" = "Cheia privată incorecte";
 
 /* (No Commment) */
 "Information" = "Informaţii";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Noua parola trebuie să fie diferite";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Noua parola trebuie să fie diferite vă indiciu pentru parolă";
 
 /* (No Commment) */
 "News, Price & Charts" = "Stiri, Pret & topuri";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Politica de confidenţialitate";
 
 /* (No Commment) */
+"Private Key Needed" = "Cheie privată necesare";
+
+/* (No Commment) */
+"Processing key" = "Cheie de prelucrare";
+
+/* (No Commment) */
 "Receive" = "Primi";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "Scanaţi codul QR";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Uita-te la doar adresa de scanare?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scanaţi acest cod sau copiaţi-l în app Blockchain comerciant pentru a primi sigur Bitcoin.";
@@ -901,10 +919,16 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine: \n\n• complet actualizat design şi utilizator experienţă \n• securitate robustă centrul \n• Enhanced confidențialitate \n• simplificată de backup şi recuperare \n• personalizate Fondul management \n\ndouă tipuri de avansate tranzacţie (cheltuieli de doar uita-te la adresele şi la comun de monede) nu sunt acceptate în noua versiune în acest moment.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine: • complet actualizat design şi utilizator experienţă • securitate robustă centrul • Enhanced confidențialitate • simplificată de backup şi recuperare • personalizate Fondul management două tipuri de avansate tranzacţie (cheltuieli de doar uita-te la adresele şi la comun de monede) nu sunt acceptate în noua versiune în acest moment.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "A fost o problemă de verificarea identităţii.";
+
+/* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Aceste opţiuni sunt recomandate doar pentru utilizatorii avansați. Continuați?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Această acţiune necesită acces la cheia privată pentru Bitcoin adresa %@. Vă rugăm să scanaţi codul QR.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Această acţiune necesită doua parola pentru portofel bitcoin. Vă rugăm să introduceţi-l mai jos şi apăsaţi continuă.";
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Eroare necunoscută la Touch ID. Cod: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Format de cheie necunoscută";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Neacceptat Format de cheie privată";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Fraza de recuperare portofel";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Portofel adresa %@ are fonduri disponibile pentru a petrece. Cu toate acestea cheia privată trebuie să fie scanate la o hârtie portofel sau codul QR. Doriţi să scanaţi cheia privată acum?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Portofel %lld versiune neacceptată";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* No comment provided by engineer. */
 "Yesterday" = "Ieri";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Intenţionaţi să importaţi o adresa doar uita-te la, o adresa (sau script de cheie publică) stocate în portofel fara privat corespunzător cheie. Acest lucru înseamnă că banii pot fi cheltuite numai dacă aveţi cheia privată stocate în altă parte. Dacă nu aveţi acces la cheia privată stocate, instrui oricui să vă trimită bitcoin la adresa numai de ceas.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Veți primi bitcoin doar uita-te la adresa. Vă puteţi petrece doar acestor fonduri dacă aveţi acces la cheia privată. Continuați?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Acum rulează nostru cel mai sigur portofel Bitcoin";

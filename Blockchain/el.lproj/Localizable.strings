@@ -260,6 +260,9 @@
 "Create Wallet" = "Δημιουργία πορτοφόλι";
 
 /* (No Commment) */
+"Create new address" = "Δημιουργία νέας διεύθυνσης";
+
+/* (No Commment) */
 "Creating" = "Τη δημιουργία";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Δημιουργώντας νέα πορτοφόλι";
+
+/* (No Commment) */
+"Creating new address" = "Δημιουργώντας νέα διεύθυνση";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Σημερινό ποσοστό: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Θέλετε να αποσυνδεθείτε;";
+
+/* (No Commment) */
+"Don't show again" = "Να μην εμφανιστεί ξανά";
 
 /* No comment provided by engineer. */
 "Done" = "Γίνει";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "Από και προορισμού πρέπει να διαφέρει";
 
 /* (No Commment) */
-"Generate new" = "Δημιουργία νέων";
-
-/* (No Commment) */
-"Generating new address" = "Παράγει νέα διεύθυνση";
-
-/* (No Commment) */
 "Go to Settings" = "Μεταβείτε στην επιλογή Ρυθμίσεις";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Εισαγωγή ιδιωτικού κλειδιού";
 
 /* (No Commment) */
+"Import address" = "Εισαγωγή διευθύνσεων";
+
+/* (No Commment) */
 "Imported Addresses" = "Εισηγμένες διευθύνσεις";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Εισαγόμενα ιδιωτικού κλειδιού %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Εισάγονται μόνο ρολόι διεύθυνση %@";
+
+/* (No Commment) */
 "Importing key" = "Εισαγωγή κλειδί";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Εσφαλμένος κωδικός πρόσβασης";
+
+/* (No Commment) */
+"Incorrect private key" = "Εσφαλμένη ιδιωτικού κλειδιού";
 
 /* (No Commment) */
 "Information" = "Πληροφορίες";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Νέος κωδικός πρόσβασης πρέπει να είναι διαφορετικό";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Νέος κωδικός πρόσβασης πρέπει να είναι διαφορετική από την υπόδειξη κωδικού πρόσβασης";
 
 /* (No Commment) */
 "News, Price & Charts" = "Ειδήσεις, τιμή & διαγράμματα";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Πολιτική προστασίας προσωπικών δεδομένων";
 
 /* (No Commment) */
+"Private Key Needed" = "Ιδιωτικού κλειδιού απαιτείται";
+
+/* (No Commment) */
+"Processing key" = "Επεξεργασία κλειδί";
+
+/* (No Commment) */
 "Receive" = "Λάβετε";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "Σάρωση κωδικού QR";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Σάρωση μόνο διεύθυνση ρολόι;";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Σάρωση αυτόν τον κώδικα ή να το αντιγράψετε σε σας app Blockchain έμπορος να λάβετε με ασφάλεια το Bitcoin.";
@@ -901,10 +919,16 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: \n\n• Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία \n• ισχυρή ασφάλεια κέντρο \n• ενισχυμένη προστασία της ιδιωτικής \n• ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης \n• προσαρμοσμένη διαχείριση κεφαλαίων \n\nδύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: • Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία • ισχυρή ασφάλεια κέντρο • • ενισχυμένη προστασία της ιδιωτικής ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης • προσαρμοσμένη διαχείριση κεφαλαίων δύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Υπήρχε ένα πρόβλημα που επαληθεύει την ταυτότητά σας.";
+
+/* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Αυτές οι επιλογές συνιστάται μόνο για προχωρημένους χρήστες. Συνέχεια;";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Αυτή η ενέργεια απαιτεί το ιδιωτικό κλειδί για το Bitcoin διεύθυνση %@. Παρακαλούμε να Σκανάρετε τον κωδικό QR.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας bitcoin. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Άγνωστο σφάλμα αφής ID. Κωδικός: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Άγνωστη μορφή κλειδιού";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Μορφή του δεν υποστηρίζεται ιδιωτικό κλειδί";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Πορτοφόλι ανάκτηση φράση";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "%@ διεύθυνση πορτοφόλι έχει κεφάλαια να ξοδέψει. Ωστόσο το ιδιωτικό κλειδί πρέπει να σαρωθεί από ένα χαρτί πορτοφόλι ή QR Code. Θα θέλατε να σαρώσετε το ιδιωτικό κλειδί τώρα;";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Πορτοφόλι έκδοση %lld δεν υποστηρίζεται";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* No comment provided by engineer. */
 "Yesterday" = "Χθες";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Είστε έτοιμοι να εισαγάγετε μια διεύθυνση μόνο ρολόι, μια διεύθυνση (ή δημόσιου κλειδιού δέσμης ενεργειών) που αποθηκεύονται στο πορτοφόλι χωρίς το αντίστοιχο ιδιωτικό κλειδί. Αυτό σημαίνει ότι τα κονδύλια μπορούν να δαπανηθούν μόνο αν έχετε το ιδιωτικό κλειδί είναι αποθηκευμένα αλλού. Εάν δεν έχετε το ιδιωτικό κλειδί, μη συγκεντρώνεις οποιονδήποτε να σας στείλει bitcoin στην διεύθυνση μόνο ρολόι.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Είστε έτοιμος να λάβετε bitcoin σε μια διεύθυνση μόνο ρολόι. Μπορείτε να περάσετε μόνο αυτά τα κεφάλαια, αν έχετε πρόσβαση στο ιδιωτικό κλειδί. Συνέχεια;";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Τώρα εσύ είσαι running μας πιο ασφαλή Bitcoin πορτοφόλι";

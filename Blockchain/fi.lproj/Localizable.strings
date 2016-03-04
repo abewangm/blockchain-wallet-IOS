@@ -260,6 +260,9 @@
 "Create Wallet" = "Luo lompakko";
 
 /* (No Commment) */
+"Create new address" = "Luo uusi osoite";
+
+/* (No Commment) */
 "Creating" = "Luominen";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Luo uusi lompakko";
+
+/* (No Commment) */
+"Creating new address" = "Luo uusi osoite";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Nykyinen määrä: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Haluatko kirjautua ulos?";
+
+/* (No Commment) */
+"Don't show again" = "Älä Näytä uudelleen";
 
 /* No comment provided by engineer. */
 "Done" = "Tehnyt";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "Alkaen ja määränpää on erilainen";
 
 /* (No Commment) */
-"Generate new" = "Luo uusi";
-
-/* (No Commment) */
-"Generating new address" = "Luo uusi osoite";
-
-/* (No Commment) */
 "Go to Settings" = "Valitse asetukset";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Tuo yksityinen avain";
 
 /* (No Commment) */
+"Import address" = "Tuo osoite";
+
+/* (No Commment) */
 "Imported Addresses" = "Tuodut osoitteet";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Tuotu yksityinen avain %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Tuoda vain katsella-osoite %@";
+
+/* (No Commment) */
 "Importing key" = "Tuo avain";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Virheellinen salasana";
+
+/* (No Commment) */
+"Incorrect private key" = "Virheellinen yksityinen avain";
 
 /* (No Commment) */
 "Information" = "Tiedot";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Uuden salasanan on oltava erilainen";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Uuden salasanan on oltava erilainen salasanavihje";
 
 /* (No Commment) */
 "News, Price & Charts" = "Uutiset, hinnat ja kaavioita";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Yksityisyyden suoja";
 
 /* (No Commment) */
+"Private Key Needed" = "Yksityinen avain kaivata";
+
+/* (No Commment) */
+"Processing key" = "Käsittely avain";
+
+/* (No Commment) */
 "Receive" = "Vastaanottaa";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "Skannaa QR-koodi";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Skannata katsella ainoa osoite?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skannaa tämä koodi tai kopioi se Blockchain kauppias app saada turvallisesti Bitcoin.";
@@ -901,10 +919,16 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Päivitys vie vain toinen ja bitcoins ja historia ovat turvassa. Tässä on mitä on parempi: \n\n• päivitetty kokonaan suunnittelu ja käyttäjien kokemuksia \n• luotettava tietoturva center\n• Enhanced tietosuoja \n• yksinkertaistettu varmuuskopiointi ja palautus \n• räätälöidyt hallinnointi\n\nkaksi kehittynyt tapahtumatyyppiä (kuluttaa vain katsella-osoitteet ja jaettu kolikon) ei tueta tällä hetkellä uusi versio.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Päivitys vie vain toinen ja bitcoins ja historia ovat turvassa. Tässä on mitä on parempi: • päivitetty kokonaan suunnittelu ja käyttäjien kokemuksia • luotettava tietoturva center Enhanced tietosuoja • yksinkertaistettu varmuuskopiointi ja palautus • räätälöidyt hallinnointi kaksi kehittynyt tapahtumatyyppiä (kuluttaa vain katsella-osoitteet ja jaettu kolikon) ei tueta tällä hetkellä uusi versio.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ollut ongelmia henkilöllisyyden todentamista.";
+
+/* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Nämä vaihtoehdot ovat suositellaan vain kokeneille käyttäjille. Haluatko jatkaa?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tämä toiminto edellyttää yksityisen avaimen Bitcoin osoite %@. Skannaa QR-koodi.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tämä toiminto edellyttää sekunnissa salasana bitcoin-lompakon. Kirjoita se ja paina Jatka.";
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Tuntematon Touch ID virhe. Koodi: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Tuntematon avaimen muodon";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Yksityinen avain muotoa ei tueta";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Lompakko Recovery lause";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Lompakko osoite %@ on varoja käytettävissä. Kuitenkin yksityinen avain on skannattu kirjan lompakko tai QR-koodin. Haluatko skannata yksityinen avain nyt?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Lompakko versio %lld ei tueta";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* No comment provided by engineer. */
 "Yesterday" = "Eilen";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Olet tuomassa katsella vain osoite, osoite (tai julkinen avain kirjoitus) tallennettu lompakon ilman vastaava yksityinen avain. Tämä tarkoittaa sitä, että varat käytetty vain jos sinulla on oma avain on tallennettu muualle. Jos sinulla ei ole yksityinen avain tallennettu, opettaa joku lähettää bitcoin vain katsella-osoitteeseen.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Olet saanut bitcoin vain katsella-osoitteeseen. Olet vain viettää näitä varoja, jos sinulla on yksityisen avaimen käyttöoikeus. Haluatko jatkaa?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Käytössä on nyt turvallisin Bitcoin lompakko";

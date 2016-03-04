@@ -260,6 +260,9 @@
 "Create Wallet" = "M-cüzdan oluşturmak";
 
 /* (No Commment) */
+"Create new address" = "Yeni adres oluştur";
+
+/* (No Commment) */
 "Creating" = "Oluşturma";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Yeni cüzdan oluşturma";
+
+/* (No Commment) */
+"Creating new address" = "Yeni adresi oluşturma";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Geçerli hızı: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Çıkış istiyor musunuz?";
+
+/* (No Commment) */
+"Don't show again" = "Bir daha gösterme";
 
 /* No comment provided by engineer. */
 "Done" = "Bitmiş";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "Dan ve hedef farklı olmak zorunda";
 
 /* (No Commment) */
-"Generate new" = "Yeni Oluştur";
-
-/* (No Commment) */
-"Generating new address" = "Yeni adresi oluşturma";
-
-/* (No Commment) */
 "Go to Settings" = "Ayarları'na gidin";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Alma özel anahtar";
 
 /* (No Commment) */
+"Import address" = "Adres alma";
+
+/* (No Commment) */
 "Imported Addresses" = "Alınan adresler";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Alınan özel anahtar %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "İçe aktarılan salt izle adresi %@";
+
+/* (No Commment) */
 "Importing key" = "Anahtarı alma";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Yanlış parola";
+
+/* (No Commment) */
+"Incorrect private key" = "Hatalı özel anahtarı";
 
 /* (No Commment) */
 "Information" = "Bilgi";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Yeni parolanın farklı olması gerekir.";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Yeni parolanın parola ipucunuza farklı olması gerekir.";
 
 /* (No Commment) */
 "News, Price & Charts" = "Haber, fiyat ve grafikler";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Gizlilik Politikası";
 
 /* (No Commment) */
+"Private Key Needed" = "Özel anahtar gerekli";
+
+/* (No Commment) */
+"Processing key" = "Anahtar işleme";
+
+/* (No Commment) */
 "Receive" = "Almak";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "Tarama QR kodu";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Watch tek adresi tarama?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Bu kod inceden inceye gözden geçirmek veya güvenli bir şekilde Bitcoin almak için Blockchain tüccar app kopyalayabilirsiniz.";
@@ -901,10 +919,16 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne: \n\n• tamamen güncelleme tasarımı ve kullanıcı deneyimi \n• güçlü Güvenlik Merkezi \n• Gelişmiş Gizlilik \n• Basitleştirilmiş yedekleme ve kurtarma \n• özelleştirilmiş fon yönetimi. \n\niki gelişmiş hareket tipi (salt izle adresleri ve ortak madeni para harcama) içinde belgili tanımlık yeni yorum şu anda desteklenmiyor.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne: • tamamen güncelleme tasarımı ve kullanıcı deneyimi iki gelişmiş hareket tipi (salt izle adresleri ve ortak madeni para harcama) içinde belgili tanımlık yeni yorum şu anda desteklenmiyor • güçlü Güvenlik Merkezi • Gelişmiş Gizlilik • Basitleştirilmiş yedekleme ve kurtarma • özelleştirilmiş fon yönetimi.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Senin kimliğini doğrulayan bir hata oluştu.";
+
+/* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Bu seçenekler yalnızca ileri düzey kullanıcılar için tavsiye edilir. Devam edilsin mi?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Bu eylem, Bitcoin adresi %@ için özel anahtar gerektirir. Lütfen tarama QR kodu.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Bu eylem için bitcoin-cüzdanını ikinci parola gerektirir. Lütfen aşağıya girin ve basın devam edin.";
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Bilinmeyen Touch kimliği hatası. Kod: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Bilinmeyen anahtar biçimi";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Desteklenmeyen özel anahtar biçimi";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "M-cüzdan kurtarma ifade";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "M-cüzdan adres %@ para harcamak için kullanılabilir olması. Ancak özel anahtar bir kağıt cüzdan veya QR Code taranması gerekir. Özel anahtar şimdi inceden inceye gözden geçirmek ister misiniz?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "M-cüzdan sürüm %lld desteklenmiyor";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Dün";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Bir salt izle adresi almak üzere olduğunuz, bir adres (veya genel anahtar komut dosyası) m-cüzdan olmadan karşılık gelen özel anahtar depolanan. Bu özel anahtar eğer sen-si olmak başka bir yerde depolanan yalnızca para harcanan olabilir anlamına gelir. Depolanan ├╢zel anahtar─▒ varsa kimse bitcoin salt izle adresine göndermek için talimat değil.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Bitcoin bir salt izle adresine almak üzeresiniz. Özel anahtara erişimi varsa bu fonların yalnızca geçirebilirsiniz. Devam edilsin mi?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Artık bizim en güvenli Bitcoin m-cüzdan oynanıyor";

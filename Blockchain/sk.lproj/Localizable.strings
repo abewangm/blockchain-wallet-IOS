@@ -260,6 +260,9 @@
 "Create Wallet" = "Vytvoriť peňaženka";
 
 /* (No Commment) */
+"Create new address" = "Vytvoriť novú adresu";
+
+/* (No Commment) */
 "Creating" = "Vytvorenie";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Vytvorenie novej peňaženky";
+
+/* (No Commment) */
+"Creating new address" = "Vytvoriť novú adresu";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Aktuálny kurz: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Naozaj chcete odhlásiť?";
+
+/* (No Commment) */
+"Don't show again" = "Nabudúce nezobrazovať";
 
 /* No comment provided by engineer. */
 "Done" = "Hotovo";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "Z a určenia musia byť rôzne";
 
 /* (No Commment) */
-"Generate new" = "Generovať nové";
-
-/* (No Commment) */
-"Generating new address" = "Vytvára novú adresu";
-
-/* (No Commment) */
 "Go to Settings" = "Prejdite na nastavenia";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Importovať súkromný kľúč";
 
 /* (No Commment) */
+"Import address" = "Importovať adresu";
+
+/* (No Commment) */
 "Imported Addresses" = "Importovaných adries";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Dovážané súkromný kľúč %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Importovať adresy určenej iba na hodinky %@";
+
+/* (No Commment) */
 "Importing key" = "Import kľúča";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Nesprávne heslo";
+
+/* (No Commment) */
+"Incorrect private key" = "Nesprávne súkromný kľúč";
 
 /* (No Commment) */
 "Information" = "Informácie";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Nové heslo sa musí odlišovať";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Nové heslo sa musí odlišovať od pomôcku pre heslo";
 
 /* (No Commment) */
 "News, Price & Charts" = "Novinky, cena & grafy";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Ochrana osobných údajov";
 
 /* (No Commment) */
+"Private Key Needed" = "Súkromný kľúč potrebný";
+
+/* (No Commment) */
+"Processing key" = "Spracovanie na kľúč";
+
+/* (No Commment) */
 "Receive" = "Prijímať";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "Naskenujte QR kód";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Skenovanie hodinky len adresu?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Naskenujte tento kód, alebo ho skopírujte do svojho obchodníka Blockchain app bezpečne prijímať Bitcoin.";
@@ -901,10 +919,16 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovácia bude trvať len chvíľku a bitcoins a História budú v bezpečí. Tu je to, čo je lepšie: \n\n• kompletne aktualizovaný dizajn a užívateľské skúsenosti \n• robustné zabezpečenie centrum rozšírená ochrana \n• zjednodušené zálohovanie a obnovenie \n• prispôsobené fond riadenia \n\ndva typy pokročilé transakcií (míňať len na hodinky adresy a zdieľané mince) nie sú podporované v novej verzii v tejto dobe.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Inovácia bude trvať len chvíľku a bitcoins a História budú v bezpečí. Tu je to, čo je lepšie: • kompletne aktualizovaný dizajn a užívateľské skúsenosti • robustné zabezpečenie centrum rozšírená ochrana • zjednodušené zálohovanie a obnovenie • prispôsobené fond riadenia dva typy pokročilé transakcií (míňať len na hodinky adresy a zdieľané mince) nie sú podporované v novej verzii v tejto dobe.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Vyskytol sa problém pri overovaní vašej identity.";
+
+/* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Tieto možnosti sa odporúča iba pre skúsených používateľov. Chcete pokračovať?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Táto akcia vyžaduje súkromný kľúč pre Bitcoin adresu %@. Prosím scan QR kód.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Táto akcia vyžaduje druhé heslo pre bitcoin peňaženku. Prosím, zadajte ju nižšie a stlačte tlačidlo pokračovať.";
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Touch ID sa vyskytla chyba. Kód: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Neznámy formát";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Nepodporovaný formát súkromného kľúča";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Peňaženka obnovy frázy";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Peňaženka adresu %@ má finančné prostriedky k dispozícii utrácať. Však súkromný kľúč musí byť naskenované z papier peňaženku alebo QR Code. Chceli by ste scan súkromný kľúč teraz?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Peňaženka %lld verzia nie je podporovaná";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 
 /* No comment provided by engineer. */
 "Yesterday" = "Včera";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Chystáte sa importovať iba na hodinky adresu, adresu (alebo verejný kľúč skript) uložené v peňaženke bez zodpovedajúceho súkromného kľúča. To znamená, že prostriedky môžu byť použité, len ak máte súkromný kľúč uložený na inom mieste. Ak nemáte súkromný kľúč uložený, nie poučiť komukoľvek poslať bitcoin adresu len na hodinky.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Ste chystá získať bitcoin adresu len na hodinky. Tieto finančné prostriedky môžete stráviť len ak máte prístup k osobnému kľúču. Chcete pokračovať?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Teraz používate naše najbezpečnejšie Bitcoin peňaženku";

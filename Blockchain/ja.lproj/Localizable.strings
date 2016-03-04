@@ -260,6 +260,9 @@
 "Create Wallet" = "財布を作成します。";
 
 /* (No Commment) */
+"Create new address" = "新しいアドレスを作成します。";
+
+/* (No Commment) */
 "Creating" = "作成します。";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "新しい財布を作成します。";
+
+/* (No Commment) */
+"Creating new address" = "新しいアドレスを作成します。";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "現在のレート: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "ログアウトしますか。";
+
+/* (No Commment) */
+"Don't show again" = "次回から表示しません。";
 
 /* No comment provided by engineer. */
 "Done" = "行われます";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "異なる宛先";
 
 /* (No Commment) */
-"Generate new" = "新規生成します。";
-
-/* (No Commment) */
-"Generating new address" = "新しいアドレスの生成";
-
-/* (No Commment) */
 "Go to Settings" = "設定に移動します。";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "インポートの秘密キー";
 
 /* (No Commment) */
+"Import address" = "アドレスをインポートします。";
+
+/* (No Commment) */
 "Imported Addresses" = "インポートされたアドレス";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "インポートされた秘密キー %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "輸入時計専用アドレス %@";
+
+/* (No Commment) */
 "Importing key" = "キーをインポートします。";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "パスワードが正しくありません。";
+
+/* (No Commment) */
+"Incorrect private key" = "正しくない秘密鍵";
 
 /* (No Commment) */
 "Information" = "情報";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "新しいパスワードは異なる必要があります。";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "新しいパスワードは、パスワードのヒントから異なる必要があります。";
 
 /* (No Commment) */
 "News, Price & Charts" = "ニュース ・価格チャート";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "プライバシー ポリシー";
 
 /* (No Commment) */
+"Private Key Needed" = "秘密キーが必要な";
+
+/* (No Commment) */
+"Processing key" = "キーの処理";
+
+/* (No Commment) */
 "Receive" = "受信";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "QR コードをスキャンします。";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "時計アドレスだけをスキャンしますか。";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "このコードをスキャンまたは Bitcoin を安全に受信する Blockchain 商人アプリにコピーします。";
@@ -901,10 +919,16 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い:\n\n• 完全に更新デザインとユーザー エクスペリエンスの \n• 堅牢なセキュリティ センター\n• プライバシーの強化 \n• 簡体字バックアップ/リカバリ \n• カスタマイズされた基金管理 \n\n2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここではより良い: 完全に更新 • デザインとユーザー エクスペリエンスの • 堅牢なセキュリティ センター プライバシーの強化 • 簡体字バックアップ/リカバリ • カスタマイズされた基金管理 2 つの高度なトランザクション タイプ (時計専用アドレスや共有のコインから支出) がこの時点で新しいバージョンでサポートされていません。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "あなたの身元の確認で問題があった。";
+
+/* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "これらのオプションは、上級ユーザーのみに推奨されます。続行しますか。";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "このアクションでは、Bitcoin アドレス %@ の秘密キーが必要です。QR コードをスキャンしてください。";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "このアクションは、bitcoin 財布のための 2 番目のパスワードを必要があります。ください以下に入力し、続行を押す。";
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "不明なタッチ ID エラー。コード: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "不明なキーの形式";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "サポートされない秘密キー形式";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "財布回復フレーズ";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "財布アドレス %@ は、費やすことのできる資金を持っています。しかし秘密のキーは紙の財布または QR コードからスキャンする必要があります。今すぐ秘密のキーをスキャンしますか?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "財布バージョン %lld はサポートされていません";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* No comment provided by engineer. */
 "Yesterday" = "昨日";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "時計のみのアドレスをインポートしようとしている、アドレス (または公開キー スクリプト) が対応するプライベートなし財布キーに保存します。これは、秘密キーは場所に格納した場合のみ資金を費やすことができることを意味します。格納されている秘密キーを持っていない場合は時計のみのアドレスにあなたの bitcoin を送信する誰も指示しません。";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "時計のみのアドレスに bitcoin を受信しようとしています。秘密キーにアクセスできる場合は、これらの資金を過ごすことができますのみ。続行しますか。";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "現在、最も安全な我々 Bitcoin 財布を実行しています";

@@ -260,6 +260,9 @@
 "Create Wallet" = "Skapa plånbok";
 
 /* (No Commment) */
+"Create new address" = "Skapa ny adress";
+
+/* (No Commment) */
 "Creating" = "Att skapa";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Skapa ny plånbok";
+
+/* (No Commment) */
+"Creating new address" = "Skapa ny adress";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Nuvarande pris: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Vill du logga ut?";
+
+/* (No Commment) */
+"Don't show again" = "Visa inte igen";
 
 /* No comment provided by engineer. */
 "Done" = "Gjort";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "Från och destination måste vara olika";
 
 /* (No Commment) */
-"Generate new" = "Generera nya";
-
-/* (No Commment) */
-"Generating new address" = "Generera ny adress";
-
-/* (No Commment) */
 "Go to Settings" = "Gå till inställningar";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Import-nyckel";
 
 /* (No Commment) */
+"Import address" = "Importera adress";
+
+/* (No Commment) */
 "Imported Addresses" = "Importerade adresser";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Importerade privata nyckeln %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Importeras endast titta på adress %@";
+
+/* (No Commment) */
 "Importing key" = "Importera nyckel";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Felaktigt lösenord";
+
+/* (No Commment) */
+"Incorrect private key" = "Felaktig privata nyckel";
 
 /* (No Commment) */
 "Information" = "Information";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Nya lösenordet måste vara olika";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Nya lösenordet måste vara olika från lösenordsledtråden";
 
 /* (No Commment) */
 "News, Price & Charts" = "Nyheter, Pris & diagram";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Privacy Policy";
 
 /* (No Commment) */
+"Private Key Needed" = "Privat nyckel behövs";
+
+/* (No Commment) */
+"Processing key" = "Bearbetningen nyckel";
+
+/* (No Commment) */
 "Receive" = "Ta emot";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "Skanna QR-kod";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Skanna klocka enda adressen?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skanna den här koden eller kopiera den till din Blockchain köpman app att säkert få Bitcoin.";
@@ -901,10 +919,16 @@
 • Simplified backup and recovery
 • Customized fund management
 
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Uppgraderingen tar bara en sekund och dina bitcoins och historien kommer att vara säker. Här är vad är bättre: \n\n• helt uppdaterad design och förbrukaren erfarenhet \n• Robust säkerhet centrerar \n• förbättrad sekretesspolicy \n• förenklad säkerhetskopiering och återställning \n• Customized fondförvaltning \n\ntvå avancerade transaktionstyper (spendera från watch-bara adresser och delade mynt) inte stöds i den nya versionen på denna tid.";
+Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Uppgraderingen tar bara en sekund och dina bitcoins och historien kommer att vara säker. Här är vad är bättre: • helt uppdaterad design och förbrukaren erfarenhet • Robust säkerhet centrerar • förbättrad sekretesspolicy • förenklad säkerhetskopiering och återställning • Customized fondförvaltning två avancerade transaktionstyper (spendera från watch-bara adresser och delade mynt) inte stöds i den nya versionen på denna tid.";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Det gick inte att verifiera din identitet.";
+
+/* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Dessa alternativ rekommenderas endast för avancerade användare. Vill du fortsätta?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Denna åtgärd kräver den privata nyckeln för Bitcoin adress %@. Vänligen skanna QR-koden.";
 
 /* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Denna åtgärd kräver andra lösenordet för plånboken bitcoin. Anger du det nedan och tryck på Fortsätt.";
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Okänt Touch ID fel. Kod: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Okänd nyckelformat";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Privat nyckel Format som inte stöds";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Plånbok återhämtning fras";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Plånbok adress %@ har pengar att spendera. Men den privata nyckeln måste skannas från ett papper plånbok eller en QR kod. Vill du Skanna den privata nyckeln nu?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Plånbok version %lld stöds inte";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 
 /* No comment provided by engineer. */
 "Yesterday" = "Igår";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Du kommer att importera en klocka-bara adress, en adress (eller offentliga nyckel script) lagras i plånboken utan den motsvarande privat nyckel. Detta innebär att fonderna kan användas bara om du har den privata nyckeln lagras någon annanstans. Om du inte har den privata nyckeln lagras, inte instruera någon till sända du bitcoin till watch-bara adressen.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Du kommer att få bitcoin till en klocka-bara adress. Du kan bara spendera dessa medel om du har tillgång till den privata nyckeln. Vill du fortsätta?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Du nu kör vår säkraste Bitcoin plånbok";
