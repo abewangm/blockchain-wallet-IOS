@@ -836,6 +836,10 @@ void (^secondPasswordSuccess)(NSString *);
         
             secondPasswordTextField.text = nil;
         } onResume:nil];
+        
+        [modalView.closeButton removeTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventAllTouchEvents];
+        
+        [modalView.closeButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventAllTouchEvents];
     }
     
     [secondPasswordTextField becomeFirstResponder];
@@ -848,7 +852,11 @@ void (^secondPasswordSuccess)(NSString *);
     if ([password length] == 0) {
         [self standardNotifyAutoDismissingController:BC_STRING_NO_PASSWORD_ENTERED];
     } else {
-        [_tabViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+        if (_tabViewController.presentedViewController) {
+            [_tabViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [self closeModalWithTransition:kCATransitionFade];
+        }
         if (addPrivateKeySuccess) addPrivateKeySuccess(password);
     }
     

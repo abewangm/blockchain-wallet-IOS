@@ -1755,6 +1755,8 @@
         if ([self.delegate respondsToSelector:@selector(alertUserOfInvalidPrivateKey)]) {
             [self.delegate alertUserOfInvalidPrivateKey];
         }
+    } else if ([error isEqualToString:ERROR_WRONG_BIP_PASSWORD]) {
+        [app standardNotifyAutoDismissingController:BC_STRING_WRONG_BIP38_PASSWORD];
     } else {
         [app standardNotifyAutoDismissingController:error];
     }

@@ -907,7 +907,7 @@ MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey = function(privateKeyString
     
     var error = function(message) {
         console.log('Add private key error: ' + message);
-        device.execute('on_error_import_key_for_sending_from_watch_only:', message);
+        device.execute('on_error_import_key_for_sending_from_watch_only:', [message]);
     };
     
     var needsBip38Passsword = Helpers.detectPrivateKeyFormat(privateKeyString) === 'bip38';
