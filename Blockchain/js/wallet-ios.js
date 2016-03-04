@@ -328,7 +328,7 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
 
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment');
-    currentPayment = new Payment();
+    currentPayment = new Payment({ feePerKb: MyWallet.wallet.fee_per_kb });
 }
 
 MyWalletPhone.changePaymentFrom = function(from) {
