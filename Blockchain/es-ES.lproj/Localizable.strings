@@ -260,6 +260,9 @@
 "Create Wallet" = "Crear Monedero";
 
 /* (No Commment) */
+"Create new address" = "Crear nueva dirección";
+
+/* (No Commment) */
 "Creating" = "Creando";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Creando nuevo monedero";
+
+/* (No Commment) */
+"Creating new address" = "Crear nueva dirección";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Tarifa actual: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "¿Quiere cerrar sesión?";
+
+/* (No Commment) */
+"Don't show again" = "No mostrar de nuevo";
 
 /* No comment provided by engineer. */
 "Done" = "Completado";
@@ -434,6 +443,9 @@
 "Import Private Key" = "Escanear la clave privada";
 
 /* (No Commment) */
+"Import address" = "Importar dirección";
+
+/* (No Commment) */
 "Imported Addresses" = "Direcciones importadas";
 
 /* (No Commment) */
@@ -443,6 +455,9 @@
 "Imported Private Key %@" = "Clave privada %@ importada";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Dirección sólo importado %@";
+
+/* (No Commment) */
 "Importing key" = "Importando clave";
 
 /* (No Commment) */
@@ -450,6 +465,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Contraseña incorrecta";
+
+/* (No Commment) */
+"Incorrect private key" = "Clave privada incorrecta";
 
 /* (No Commment) */
 "Information" = "Información";
@@ -588,6 +606,9 @@
 
 /* (No Commment) */
 "New password must be different" = "La nueva contraseña debe ser diferente";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Nueva contraseña debe ser diferente de tu pregunta secreta";
 
 /* (No Commment) */
 "News, Price & Charts" = "Noticias, precios y gráficos";
@@ -750,6 +771,12 @@
 
 /* (No Commment) */
 "Privacy Policy" = "Política de privacidad";
+
+/* (No Commment) */
+"Private Key Needed" = "Clave privada es necesario";
+
+/* (No Commment) */
+"Processing key" = "Proceso clave";
 
 /* (No Commment) */
 "Receive" = "Recibir";
@@ -915,6 +942,12 @@ Dos tipos de transacciones avanzadas no son admitidos en la nueva versión por e
 "There was a problem verifying your identity." = "Se ha producido un problema al verificar su identidad.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Estas opciones se recomiendan para usuarios avanzados solamente. ¿Desea continuar?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Esta acción requiere la clave privada para el %@ de dirección Bitcoin. Por favor escanear el código QR.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Esta acción requiere la segunda contraseña para su monedero bitcoin. Introdúzcalo a continuación y pulse continuar.";
 
 /* (No Commment) */
@@ -1008,6 +1041,9 @@ Tarifa: %4$@
 
 /* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Error desconocido del Touch ID. Código: %ld";
+
+/* (No Commment) */
+"Unknown key format" = "Formato clave desconocida";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Formato de clave privada no compatible";
@@ -1133,6 +1169,9 @@ una experiencia de usuario de monedero completamente nueva";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Ayer";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Estás a punto de recibir bitcoin a una dirección sólo. Sólo puede gastar estos fondos si tiene acceso a la clave privada. ¿Desea continuar?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Está ejecutando nuestra billetera Bitcoin más segura";
