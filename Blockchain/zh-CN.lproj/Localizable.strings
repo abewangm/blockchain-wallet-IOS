@@ -260,6 +260,9 @@
 "Create Wallet" = "创建钱包";
 
 /* (No Commment) */
+"Create new address" = "创建新的地址";
+
+/* (No Commment) */
 "Creating" = "创建";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "创建新钱包";
+
+/* (No Commment) */
+"Creating new address" = "创建新的地址";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "现价: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "确实要注销吗?";
+
+/* (No Commment) */
+"Don't show again" = "不要再显示";
 
 /* No comment provided by engineer. */
 "Done" = "完成";
@@ -434,6 +443,9 @@
 "Import Private Key" = "导入私钥";
 
 /* (No Commment) */
+"Import address" = "导入地址";
+
+/* (No Commment) */
 "Imported Addresses" = "导入的地址";
 
 /* (No Commment) */
@@ -443,6 +455,9 @@
 "Imported Private Key %@" = "导入的私钥 %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "导入只观看地址 %@";
+
+/* (No Commment) */
 "Importing key" = "导入密钥";
 
 /* (No Commment) */
@@ -450,6 +465,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "密码不正确";
+
+/* (No Commment) */
+"Incorrect private key" = "不正确的私钥";
 
 /* (No Commment) */
 "Information" = "信息";
@@ -588,6 +606,9 @@
 
 /* (No Commment) */
 "New password must be different" = "新密码必须不同";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "新密码必须不同于您的密码提示";
 
 /* (No Commment) */
 "News, Price & Charts" = "新闻、价格与图表";
@@ -750,6 +771,12 @@
 
 /* (No Commment) */
 "Privacy Policy" = "隐私政策";
+
+/* (No Commment) */
+"Private Key Needed" = "需要私人密钥";
+
+/* (No Commment) */
+"Processing key" = "处理的关键";
 
 /* (No Commment) */
 "Receive" = "接收";
@@ -915,6 +942,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "验证您的身份时出现问题。";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "这些选项被建议仅高级用户使用。要继续吗?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "此操作需要使用私钥的比特币地址 %@。请扫描 QR 代码。";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "此操作要求您为比特币钱包输入二级密码。请在下方输入并按“继续”。";
 
 /* (No Commment) */
@@ -1008,6 +1041,9 @@ Fee: %@
 
 /* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "未知的触摸 ID 错误。代码: %ld";
+
+/* (No Commment) */
+"Unknown key format" = "未知密钥格式";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "私人密钥格式不受支持";
@@ -1133,6 +1169,9 @@ wallet experience for you" = "我们为您设计了一个
 
 /* No comment provided by engineer. */
 "Yesterday" = "昨天";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "你将收到比特币到一只手表的地址。如果您有权访问的私有密钥，你可以只花这些资金。要继续吗?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "您现在正在运行我们最安全的比特币钱包";
