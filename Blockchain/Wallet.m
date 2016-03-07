@@ -593,7 +593,7 @@
         return false;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.addPrivateKey(\"%@\")", [privateKeyString escapeStringForJS]] boolValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.addKey(\"%@\")", [privateKeyString escapeStringForJS]] boolValue];
 }
 
 - (BOOL)addKey:(NSString*)privateKeyString toWatchOnlyAddress:(NSString *)watchOnlyAddress
@@ -1323,13 +1323,13 @@
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
 }
 
-- (void)on_add_private_key:(NSString*)address
+- (void)on_add_key:(NSString*)address
 {
     DLog(@"on_add_private_key");
     self.isSyncing = YES;
 
-    if ([delegate respondsToSelector:@selector(didImportPrivateKey:)]) {
-        [delegate didImportPrivateKey:address];
+    if ([delegate respondsToSelector:@selector(didImportKey:)]) {
+        [delegate didImportKey:address];
     }
 }
 

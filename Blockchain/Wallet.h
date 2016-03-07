@@ -65,7 +65,7 @@
 - (void)didFailGetPinNoResponse;
 - (void)didFailGetPinInvalidResponse;
 - (void)didGetPinResponse:(NSDictionary *)dictionary;
-- (void)didImportPrivateKey:(NSString *)address;
+- (void)didImportKey:(NSString *)address;
 - (void)didImportIncorrectPrivateKey:(NSString *)address;
 - (void)didImportPrivateKeyToLegacyAddress;
 - (void)didFailToImportPrivateKey:(NSString *)error;

@@ -1231,7 +1231,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self transitionToIndex:1];
 }
 
-- (void)didImportPrivateKey:(NSString *)address
+- (void)didImportKey:(NSString *)address
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     

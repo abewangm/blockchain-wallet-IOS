@@ -834,11 +834,11 @@ MyWalletPhone.getMultiAddrResponse = function() {
     return obj;
 };
 
-MyWalletPhone.addPrivateKey = function(privateKeyString) {
+MyWalletPhone.addKey = function(keyString) {
     var success = function(address) {
         console.log('Add private key success');
         
-        device.execute('on_add_private_key:', [address.address]);
+        device.execute('on_add_key:', [address.address]);
     };
     var error = function(e) {
         console.log('Add private key Error');
