@@ -859,20 +859,20 @@ MyWalletPhone.addKey = function(keyString) {
         device.execute('on_error_adding_private_key:', [message]);
     };
 
-    var needsBip38Passsword = Helpers.detectPrivateKeyFormat(privateKeyString) === 'bip38';
+    var needsBip38Passsword = Helpers.detectPrivateKeyFormat(keyString) === 'bip38';
 
     if (needsBip38Passsword) {
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
             if (MyWallet.wallet.isDoubleEncrypted) {
                 device.execute('on_add_private_key_start');
                 MyWalletPhone.getSecondPassword(function (pw) {
-                    var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, pw, bip38Pass);
+                    var promise = MyWallet.wallet.importLegacyAddress(keyString, null, pw, bip38Pass);
                     promise.then(success, error);
                 });
             }
             else {
                 device.execute('on_add_private_key_start');
-                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, null, bip38Pass);
+                var promise = MyWallet.wallet.importLegacyAddress(keyString, null, null, bip38Pass);
                 promise.then(success, error);
             }
         });
@@ -881,13 +881,13 @@ MyWalletPhone.addKey = function(keyString) {
         if (MyWallet.wallet.isDoubleEncrypted) {
             device.execute('on_add_private_key_start');
             MyWalletPhone.getSecondPassword(function (pw) {
-                var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, pw, null);
+                var promise = MyWallet.wallet.importLegacyAddress(keyString, null, pw, null);
                 promise.then(success, error);
             });
         }
         else {
             device.execute('on_add_private_key_start');
-            var promise = MyWallet.wallet.importLegacyAddress(privateKeyString, null, null, null);
+            var promise = MyWallet.wallet.importLegacyAddress(keyString, null, null, null);
             promise.then(success, error);
         }
     }
