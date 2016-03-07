@@ -31,9 +31,11 @@
 
 static NSString *getVersionLabelString()
 {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-    return version;
+    NSString *build = infoDictionary[@"CFBundleVersion"];
+    NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
+    return[NSString stringWithFormat:@"%@", versionAndBuild];
 }
 
 static PEViewController *EnterController()
