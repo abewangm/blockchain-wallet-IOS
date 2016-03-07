@@ -34,7 +34,7 @@
 @property (nonatomic) uint64_t lowerRecommendedLimit;
 @property (nonatomic) uint64_t estimatedTransactionSize;
 
-@property (nonatomic, copy) void (^getDynamicFeeSuccess)();
+@property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
 
 @end
@@ -165,6 +165,10 @@ BOOL displayingLocalSymbolSend;
     [self updateFundsAvailable];
     
     [self enablePaymentButtons];
+    
+    self.recommendedFees = nil;
+    
+    [self getDynamicFee];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
@@ -431,10 +435,7 @@ BOOL displayingLocalSymbolSend;
             }
             
             // Actually do the sweep and confirm
-            __weak SendViewController *weakSelf = self;
-            [self getDynamicFeeWithSuccess:^{
-                [weakSelf getMaxFeeThenConfirm:YES];
-            } error:nil];
+            [self getMaxFeeThenConfirm:YES];
         
         }];
         
@@ -495,6 +496,11 @@ BOOL displayingLocalSymbolSend;
         
         self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
         self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
+        
+        if (self.isSurgeOccurring) {
+            self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor redColor];
+            self.confirmPaymentView.btcFeeLabel.textColor = [UIColor redColor];
+        }
         
         self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
         self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
@@ -916,6 +922,22 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Fee Calculation
 
+- (uint64_t)suggestedFee
+{
+    if (self.recommendedFees) {
+        return (uint64_t)[self.recommendedFees[DICTIONARY_KEY_FEE_ESTIMATE][1][DICTIONARY_KEY_FEE] longLongValue];
+    } else {
+        return 0;
+    }
+}
+
+- (void)getTransactionFeeWithSuccess:(void (^)())success error:(void (^)())error
+{
+    self.getTransactionFeeSuccess = success;
+    
+    [app.wallet getTransactionFee];
+}
+
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee
 {
     self.feeFromTransactionProposal = [fee longLongValue];
@@ -932,7 +954,8 @@ BOOL displayingLocalSymbolSend;
     } else {
         // Underspending - regular transaction
         __weak SendViewController *weakSelf = self;
-        [self getDynamicFeeWithSuccess:^{
+        
+        [self getTransactionFeeWithSuccess:^{
             [weakSelf showSummary];
         } error:nil];
     }
@@ -955,6 +978,16 @@ BOOL displayingLocalSymbolSend;
     
     if (willConfirm) {
         [self showSummary];
+    }
+}
+
+- (void)didGetFee:(NSNumber *)fee
+{
+    self.feeFromTransactionProposal = [fee longLongValue];
+    self.recommendedForcedFee = [fee longLongValue];
+    
+    if (self.getTransactionFeeSuccess) {
+        self.getTransactionFeeSuccess();
     }
 }
 
@@ -991,22 +1024,8 @@ BOOL displayingLocalSymbolSend;
     [app.wallet setFeePerKilobyte:fee];
 }
 
-- (void)didChangeFeePerKilobyte:(NSNumber *)fee
+- (void)getDynamicFee
 {
-    self.recommendedForcedFee = [fee longLongValue];
-    self.feeFromTransactionProposal = [fee longLongValue];
-    
-    if (self.getDynamicFeeSuccess) {
-        self.getDynamicFeeSuccess();
-    }
-}
-
-- (void)getDynamicFeeWithSuccess:(void (^)())success error:(void (^)())error
-{
-    self.getDynamicFeeSuccess = success;
-    
-    [app showBusyViewWithLoadingText:BC_STRING_RETRIEVING_RECOMMENDED_FEE];
-    
     NSURL *url = [NSURL URLWithString:DYNAMIC_FEE_SERVICE_URL];
     NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:url];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
@@ -1020,12 +1039,12 @@ BOOL displayingLocalSymbolSend;
                 if (!jsonError) {
                     
                     self.recommendedFees = jsonObject;
-                    uint64_t feeForLikelyInclusionWithinNextTwoBlocks = (uint64_t)[jsonObject[DICTIONARY_KEY_FEE_ESTIMATE][1][DICTIONARY_KEY_FEE] longLongValue];
                     self.isSurgeOccurring = [jsonObject[DICTIONARY_KEY_FEE_ESTIMATE][1][DICTIONARY_KEY_SURGE] boolValue];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self changeFeePerKilobyte:feeForLikelyInclusionWithinNextTwoBlocks];
+                        [self changeFeePerKilobyte:[self suggestedFee]];
                     });
+            
                 }
                 else {
                     DLog(@"%@", jsonError);
@@ -1038,10 +1057,6 @@ BOOL displayingLocalSymbolSend;
         else{
             DLog(@"%@", error);
         }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [app hideBusyView];
-        });
         
     }];
     
@@ -1068,6 +1083,10 @@ BOOL displayingLocalSymbolSend;
     
     self.upperRecommendedLimit = [self guessAbsoluteFee:self.estimatedTransactionSize fee:highFee];
     self.lowerRecommendedLimit = [self guessAbsoluteFee:self.estimatedTransactionSize fee:lowFee];
+    
+    if (self.lowerRecommendedLimit < FEE_MINIMUM) {
+        self.lowerRecommendedLimit = FEE_MINIMUM;
+    }
     
     if (fee > self.upperRecommendedLimit) {
         isWithinRange = NO;
@@ -1226,10 +1245,7 @@ BOOL displayingLocalSymbolSend;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
-    __weak SendViewController *weakSelf = self;
-    [self getDynamicFeeWithSuccess:^{
-        [weakSelf getMaxFeeThenConfirm:NO];
-    } error:nil];
+    [self getMaxFeeThenConfirm:NO];
 }
 
 - (IBAction)customizeFeeClicked:(UIButton *)sender

@@ -82,7 +82,7 @@
 - (void)estimateTransactionSize:(uint64_t)size;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm;
-- (void)didChangeFeePerKilobyte:(NSNumber *)fee;
+- (void)didGetFee:(NSNumber *)fee;
 - (void)didChangeForcedFee:(NSNumber *)fee;
 @end
 
@@ -218,11 +218,6 @@
 
 - (void)setPbkdf2Iterations:(int)iterations;
 
-- (void)setFeePerKilobyte:(uint64_t)feePerKb;
-- (void)setForcedTransactionFee:(uint64_t)fee;
-- (uint64_t)getTransactionFee;
-- (void)getTransactionSizeEstimate;
-
 - (void)loading_start_get_history;
 - (void)loading_start_upgrade_to_hd;
 - (void)loading_start_recover_wallet;
@@ -265,8 +260,11 @@
 - (void)changePaymentToAddress:(NSString *)toString;
 - (void)changePaymentAmount:(uint64_t)amount;
 - (void)sweepPaymentThenConfirm:(BOOL)willConfirm;
-- (void)getPaymentFee;
 - (void)checkIfOverspending;
+- (void)setFeePerKilobyte:(uint64_t)feePerKb;
+- (void)setForcedTransactionFee:(uint64_t)fee;
+- (void)getTransactionFee;
+- (void)getTransactionSizeEstimate;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;

@@ -282,6 +282,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SATOSHI 1e8 // 100,000,000
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
 
+#define FEE_MINIMUM 5000
+
 #define ANIMATION_DURATION .2f
 #define ANIMATION_DURATION_LONG .5f
 #define kConfirmationThreshold 3

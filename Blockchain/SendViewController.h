@@ -94,7 +94,7 @@
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm;
 - (void)updateEstimatedTransactionSize:(uint64_t)size;
 - (void)didChangeForcedFee:(NSNumber *)fee;
-- (void)didChangeFeePerKilobyte:(NSNumber *)fee;
+- (void)didGetFee:(NSNumber *)fee;
 
 - (void)reload;
 

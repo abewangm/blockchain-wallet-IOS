@@ -720,15 +720,6 @@
     [self.webView executeJS:@"MyWalletPhone.checkIfUserIsOverSpending()"];
 }
 
-- (void)getPaymentFee
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.webView executeJS:@"MyWalletPhone.getPaymentFee()"];
-}
-
 - (void)getTransactionSizeEstimate
 {
     if (![self isInitialized]) {
@@ -744,7 +735,6 @@
         return;
     }
     
-    self.isSyncing = YES;
     [self.webView executeJS:@"MyWalletPhone.setForcedTransactionFee(%lld)", fee];
 }
 
@@ -757,20 +747,13 @@
     [self.webView executeJS:@"MyWalletPhone.setFeePerKilobyte(%lld)", feePerKb];
 }
 
-- (uint64_t)getTransactionFee
+- (void)getTransactionFee
 {
     if (![self isInitialized]) {
-        return 0;
+        return;
     }
     
-    id fee = [self.webView executeJSSynchronous:@"MyWalletPhone.getTransactionFee()"];
-    if ([fee intValue] < 0) {
-        DLog(@"Error retrieving fee");
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
-        return 0;
-    } else {
-        return [fee longLongValue];
-    }
+    [self.webView executeJS:@"MyWalletPhone.getTransactionFee()"];
 }
 
 - (void)generateNewKey
@@ -1590,12 +1573,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
-- (void)update_fee_per_kilobyte:(NSNumber *)fee
+- (void)did_get_fee:(NSNumber *)fee
 {
     DLog(@"update_fee");
     DLog(@"Wallet: fee is %@", fee);
-    if ([self.delegate respondsToSelector:@selector(didChangeFeePerKilobyte:)]) {
-        [self.delegate didChangeFeePerKilobyte:fee];
+    if ([self.delegate respondsToSelector:@selector(didGetFee:)]) {
+        [self.delegate didGetFee:fee];
     }
 }
 

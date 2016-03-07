@@ -364,32 +364,12 @@ MyWalletPhone.changePaymentAmount = function(amount) {
     }
 }
 
-MyWalletPhone.getPaymentFee = function() {
-    
-    currentPayment.build();
-    
-    currentPayment.payment.then(function(x) {
-        console.log('getPaymentFee');
-        device.execute('update_fee:', [x.transaction.fee]);
-    });
-    
-    currentPayment.payment.catch(function(error) {
-        var errorArgument;
-        if (error.error) {
-            errorArgument = error.error;
-        } else {
-            errorArgument = error.message;
-        }
-                                 
-        console.log('error updating fee: ' + errorArgument);
-        device.execute('on_error_update_fee:', [errorArgument]);
-    });
-}
-
 MyWalletPhone.checkIfUserIsOverSpending = function() {
 
     currentPayment.payment.then(function(x) {
         device.execute('check_max_amount:fee:', [x.sweepAmount, x.sweepFee]);
+        console.log('checking for overspending: maxAmount and fee are' + x.sweepAmount + ',' + x.sweepFee);
+
         return x;
     }).catch(function(error) {
         var errorArgument;
@@ -445,24 +425,31 @@ MyWalletPhone.setForcedTransactionFee = function(fee) {
 }
 
 MyWalletPhone.setFeePerKilobyte = function(fee) {
-    console.log('setting fee per kb to ');
-    console.log(fee);
-    
-    currentPayment.build();
-    
     currentPayment.feePerKb(fee).sideEffect(function (x) {
         console.log('fee per kb set to ');
         console.log(x.feePerKb);
-        device.execute('update_fee_per_kilobyte:', [x.transaction.fee]);
     });
 }
 
 MyWalletPhone.getTransactionFee = function() {
-    if (MyWallet.wallet) {
-        return MyWallet.wallet.fee_per_kb;
+    if (currentPayment) {
+        currentPayment.build().sideEffect(function (x) {
+            device.execute('did_get_fee:', [x.transaction.fee]);
+        });
+        
+        currentPayment.payment.catch(function(error) {
+            var errorArgument;
+            if (error.error) {
+                errorArgument = error.error;
+            } else {
+                errorArgument = error.message;
+            }
+                                    
+            console.log('error updating fee: ' + errorArgument);
+            device.execute('on_error_update_fee:', [errorArgument]);
+        });
     } else {
         console.log('Error getting transaction fee');
-        return -1;
     }
 }
 
