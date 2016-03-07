@@ -130,9 +130,7 @@ Boolean shouldShowAnimation;
 
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-    NSString *build = infoDictionary[@"CFBundleVersion"];
-    NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
-    versionLabel.text =  [NSString stringWithFormat:@"%@", versionAndBuild];
+    versionLabel.text = version;
     
     [self addSubview:versionLabel];
 }
