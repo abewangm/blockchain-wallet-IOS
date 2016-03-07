@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-#define ENABLE_DEBUG_MENU 1
+// #define ENABLE_DEBUG_MENU 1
 
 #pragma mark - Colors
 
