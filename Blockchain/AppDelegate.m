@@ -1256,7 +1256,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
-    NSString *message = [app.wallet isWatchOnlyLegacyAddress:address] ? [NSString stringWithFormat:BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT, address] : [NSString stringWithFormat:@"%@\n\n%@", BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_ONE, BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_TWO];
+    NSString *message = [NSString stringWithFormat:@"%@\n\n%@", BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_ONE, BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_TWO];
     
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         
