@@ -143,10 +143,18 @@ typedef enum {
 
 - (void)toggleArchive
 {
-    [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     if (self.address) {
-        [app.wallet toggleArchiveLegacyAddress:self.address];
+        
+        NSArray *activeLegacyAddresses = [app.wallet activeLegacyAddresses];
+        
+        if (![app.wallet didUpgradeToHd] && [activeLegacyAddresses count] == 1 && [[activeLegacyAddresses firstObject] isEqualToString:self.address]) {
+            [app standardNotifyAutoDismissingController:BC_STRING_AT_LEAST_ONE_ADDRESS_REQUIRED];
+        } else {
+            [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+            [app.wallet toggleArchiveLegacyAddress:self.address];
+        }
     } else {
+        [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         [app.wallet toggleArchiveAccount:self.account];
     }
 }

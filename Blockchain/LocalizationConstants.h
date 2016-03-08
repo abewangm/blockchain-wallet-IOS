@@ -434,6 +434,7 @@
 #define BC_STRING_EXTENDED_PUBLIC_KEY_WARNING NSLocalizedString(@"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust.", nil)
 #define BC_STRING_WATCH_ONLY_FOOTER_TITLE NSLocalizedString(@"This is a watch-only address. To spend your funds from this wallet, please scan your private key.", nil)
 #define BC_STRING_SET_DEFAULT_ACCOUNT NSLocalizedString(@"Set as Default?", nil)
+#define BC_STRING_AT_LEAST_ONE_ADDRESS_REQUIRED NSLocalizedString(@"You must have at least one active address", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE NSLocalizedString(@"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin.", nil)
 #define BC_STRING_COPY_XPUB NSLocalizedString(@"Copy xPub", nil)
 #define BC_STRING_ADDRESS_NOT_PRESENT_IN_WALLET NSLocalizedString(@"Your wallet does not contain this address.", nil)
