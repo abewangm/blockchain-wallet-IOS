@@ -23,7 +23,7 @@
     self.view.backgroundColor = COLOR_BLOCKCHAIN_UPGRADE_BLUE;
     self.upgradeTitleLabel.text = BC_STRING_UPGRADE_TITLE;
     [self.upgradeTitleLabel adjustFontSizeToFit];
-    self.featuresTextView.text = BC_STRING_UPGRADE_FEATURES;
+    self.featuresTextView.text = [NSString stringWithFormat:@"%@\n\n\u2022 %@\n\u2022 %@\n\u2022 %@\n\u2022 %@\n\u2022 %@\n\n%@", BC_STRING_UPGRADE_FEATURES_WHATS_BETTER, BC_STRING_UPGRADE_FEATURES_REDESIGNED_USER_EXPERIENCE, BC_STRING_UPGRADE_FEATURES_ROBUST_SECURITY_CENTER, BC_STRING_UPGRADE_FEATURES_ENHANCED_PRIVACY, BC_STRING_UPGRADE_FEATURES_SIMPLIFIED_BACKUP, BC_STRING_UPGRADE_FEATURES_CUSTOMIZED_FUND_MANAGEMENT, BC_STRING_UPGRADE_FEATURES_SHARED_COIN_NOT_SUPPORTED];
     self.featuresTextView.textColor = COLOR_UPGRADE_TEXT_BLUE;
     self.featuresTextView.textContainerInset = UIEdgeInsetsZero;
     self.featuresTextView.textContainer.lineFragmentPadding = 0;
