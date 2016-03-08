@@ -20,11 +20,9 @@
 
 @interface SendViewController () <UITextFieldDelegate>
 
-@property (nonatomic) BCSecureTextField *customFeeField;
 @property (nonatomic) uint64_t recommendedForcedFee;
 @property (nonatomic) uint64_t maxSendableAmount;
 @property (nonatomic) uint64_t feeFromTransactionProposal;
-@property (nonatomic) UIAlertAction *customFeeAction;
 
 @property (nonatomic) uint64_t amountFromURLHandler;
 
@@ -88,6 +86,9 @@ BOOL displayingLocalSymbolSend;
     btcAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     fiatAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
+    feeField.inputAccessoryView = amountKeyboardAccessoryView;
+    
+    feeField.delegate = self;
     
     btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
@@ -131,6 +132,7 @@ BOOL displayingLocalSymbolSend;
     amountInSatoshi = 0;
     btcAmountField.text = @"";
     fiatAmountField.text = @"";
+    feeField.text = @"";
 }
 
 - (void)reload
@@ -167,6 +169,8 @@ BOOL displayingLocalSymbolSend;
     [self enablePaymentButtons];
     
     self.recommendedFees = nil;
+    
+    [self changeToDefaultFeeMode];
     
     [self getDynamicFee];
 }
@@ -631,6 +635,7 @@ BOOL displayingLocalSymbolSend;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     [toField resignFirstResponder];
+    [feeField resignFirstResponder];
     
     [self.view removeGestureRecognizer:self.tapGesture];
     self.tapGesture = nil;
@@ -638,7 +643,7 @@ BOOL displayingLocalSymbolSend;
 
 - (BOOL)isKeyboardVisible
 {
-    if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder] || [toField isFirstResponder]) {
+    if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder] || [toField isFirstResponder] || [feeField isFirstResponder]) {
         return YES;
     }
     
@@ -705,6 +710,86 @@ BOOL displayingLocalSymbolSend;
     [app.tabViewController presentViewController:privateKeyScanner animated:YES completion:nil];
 }
 
+- (void)changeToCustomFeeMode
+{
+    [continuePaymentAccessoryButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    [continuePaymentButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    
+    [continuePaymentAccessoryButton addTarget:self action:@selector(getTransactionSizeEstimate) forControlEvents:UIControlEventTouchUpInside];
+    [continuePaymentButton addTarget:self action:@selector(getTransactionSizeEstimate) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self arrangeViewsToFeeMode];
+}
+
+- (void)changeToDefaultFeeMode
+{
+    [continuePaymentAccessoryButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    [continuePaymentButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    
+    [continuePaymentAccessoryButton addTarget:self action:@selector(sendPaymentClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [continuePaymentButton addTarget:self action:@selector(sendPaymentClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self arrangeViewsToDefaultMode];
+}
+
+- (void)arrangeViewsToFeeMode
+{
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        
+        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+            toLabel.frame = CGRectMake(toLabel.frame.origin.x, 71, toLabel.frame.size.width, toLabel.frame.size.height);
+            toField.frame = CGRectMake(toField.frame.origin.x, 67, toField.frame.size.width, toField.frame.size.height);
+            addressBookButton.frame = CGRectMake(addressBookButton.frame.origin.x, 67, addressBookButton.frame.size.width, addressBookButton.frame.size.height);
+            lineBelowToField.frame = CGRectMake(lineBelowToField.frame.origin.x, 100, lineBelowToField.frame.size.width, lineBelowToField.frame.size.height);
+            
+            bottomContainerView.frame = CGRectMake(bottomContainerView.frame.origin.x, 109, bottomContainerView.frame.size.width, bottomContainerView.frame.size.height);
+            btcLabel.frame = CGRectMake(btcLabel.frame.origin.x, -3, btcLabel.frame.size.width, btcLabel.frame.size.height);
+            btcAmountField.frame = CGRectMake(btcAmountField.frame.origin.x, -6, btcAmountField.frame.size.width, btcAmountField.frame.size.height);
+            fiatLabel.frame = CGRectMake(fiatLabel.frame.origin.x, -3, fiatLabel.frame.size.width, fiatLabel.frame.size.height);
+            fiatAmountField.frame = CGRectMake(fiatAmountField.frame.origin.x, -7, fiatAmountField.frame.size.width, fiatAmountField.frame.size.height);
+            lineBelowAmountFields.frame = CGRectMake(lineBelowAmountFields.frame.origin.x, 22, lineBelowAmountFields.frame.size.width, lineBelowAmountFields.frame.size.height);
+            
+            feeField.frame = CGRectMake(feeField.frame.origin.x, 23, feeField.frame.size.width, feeField.frame.size.height);
+            feeLabel.frame = CGRectMake(feeLabel.frame.origin.x, 26, feeLabel.frame.size.width, feeLabel.frame.size.height);
+            lineBelowFeeField.frame = CGRectMake(lineBelowFeeField.frame.origin.x, 50, lineBelowFeeField.frame.size.width, lineBelowFeeField.frame.size.height);
+        }
+        
+        feeField.hidden = NO;
+        feeLabel.hidden = NO;
+        lineBelowFeeField.hidden = NO;
+    }];
+    
+    [feeField becomeFirstResponder];
+}
+
+- (void)arrangeViewsToDefaultMode
+{
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        
+        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+            toLabel.frame = CGRectMake(toLabel.frame.origin.x, 76, toLabel.frame.size.width, toLabel.frame.size.height);
+            toField.frame = CGRectMake(toField.frame.origin.x, 72, toField.frame.size.width, toField.frame.size.height);
+            addressBookButton.frame = CGRectMake(addressBookButton.frame.origin.x, 72, addressBookButton.frame.size.width, addressBookButton.frame.size.height);
+            lineBelowToField.frame = CGRectMake(lineBelowToField.frame.origin.x, 111, lineBelowToField.frame.size.width, lineBelowToField.frame.size.height);
+            
+            bottomContainerView.frame = CGRectMake(bottomContainerView.frame.origin.x, 119, bottomContainerView.frame.size.width, bottomContainerView.frame.size.height);
+            btcLabel.frame = CGRectMake(btcLabel.frame.origin.x, 6, btcLabel.frame.size.width, btcLabel.frame.size.height);
+            btcAmountField.frame = CGRectMake(btcAmountField.frame.origin.x, 3, btcAmountField.frame.size.width, btcAmountField.frame.size.height);
+            fiatLabel.frame = CGRectMake(fiatLabel.frame.origin.x, 6, fiatLabel.frame.size.width, fiatLabel.frame.size.height);
+            fiatAmountField.frame = CGRectMake(fiatAmountField.frame.origin.x, 2, fiatAmountField.frame.size.width, fiatAmountField.frame.size.height);
+            lineBelowAmountFields.frame = CGRectMake(lineBelowAmountFields.frame.origin.x, 40, lineBelowAmountFields.frame.size.width, lineBelowAmountFields.frame.size.height);
+            
+            feeField.frame = CGRectMake(feeField.frame.origin.x, 54, feeField.frame.size.width, feeField.frame.size.height);
+            feeLabel.frame = CGRectMake(feeLabel.frame.origin.x, 51, feeLabel.frame.size.width, feeLabel.frame.size.height);
+            lineBelowFeeField.frame = CGRectMake(lineBelowFeeField.frame.origin.x, 88, lineBelowFeeField.frame.size.width, lineBelowFeeField.frame.size.height);
+        }
+        
+        feeField.hidden = YES;
+        feeLabel.hidden = YES;
+        lineBelowFeeField.hidden = YES;
+    }];
+}
+
 #pragma mark - Textfield Delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -741,7 +826,7 @@ BOOL displayingLocalSymbolSend;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == btcAmountField || textField == fiatAmountField || textField == self.customFeeField) {
+    if (textField == btcAmountField || textField == fiatAmountField || textField == feeField) {
         
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
@@ -759,7 +844,7 @@ BOOL displayingLocalSymbolSend;
         }
         
         // When entering amount in BTC, max 8 decimal places
-        if (textField == btcAmountField) {
+        if (textField == btcAmountField || textField == feeField) {
             // Max number of decimal places depends on bitcoin unit
             NSUInteger maxlength = [@(SATOSHI) stringValue].length - [@(SATOSHI / app.latestResponse.symbol_btc.conversion) stringValue].length;
             
@@ -796,13 +881,13 @@ BOOL displayingLocalSymbolSend;
         // Convert input amount to internal value
         NSString *amountString = [newString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
-        if (textField == self.customFeeField) {
-            if ([app.wallet parseBitcoinValue:amountString] + amountInSatoshi > self.maxSendableAmount + self.feeFromTransactionProposal) {
+        if (textField == feeField) {
+            if ([app.wallet parseBitcoinValue:amountString] + amountInSatoshi > availableAmount) {
                 textField.textColor = [UIColor redColor];
-                self.customFeeAction.enabled = NO;
+                [self disablePaymentButtons];
             } else {
                 textField.textColor = [UIColor blackColor];
-                self.customFeeAction.enabled = YES;
+                [self enablePaymentButtons];
             }
             return YES;
         }
@@ -1008,6 +1093,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didChangeForcedFee:(NSNumber *)fee
 {
+    [self sendPaymentClicked:nil];
+    
     self.feeFromTransactionProposal = [fee longLongValue];
     
     uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
@@ -1068,10 +1155,20 @@ BOOL displayingLocalSymbolSend;
     return feePerKb * size/1000;
 }
 
+- (void)getTransactionSizeEstimate
+{
+    [app.wallet getTransactionSizeEstimate];
+}
+
 - (void)updateEstimatedTransactionSize:(uint64_t)size
 {
     self.estimatedTransactionSize = size;
-    [self showDynamicFeeAlert:self.recommendedForcedFee];
+    
+    uint64_t customFee = [app.wallet parseBitcoinValue:feeField.text];
+    
+    if ([self evaluateFeeForTransactionSize:customFee]) {
+        [self changeForcedFee:customFee];
+    };
 }
 
 - (BOOL)evaluateFeeForTransactionSize:(uint64_t)fee
@@ -1227,6 +1324,7 @@ BOOL displayingLocalSymbolSend;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     [toField resignFirstResponder];
+    [feeField resignFirstResponder];
 }
 
 - (IBAction)labelAddressClicked:(id)sender
@@ -1250,54 +1348,11 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)customizeFeeClicked:(UIButton *)sender
 {
-    [app.wallet getTransactionSizeEstimate];
-}
-
-- (void)showDynamicFeeAlert:(uint64_t)fee
-{
-    NSString *bitcoinUnit = app.latestResponse.symbol_btc.symbol;
-    NSString *suggestedFee = [app formatAmount:fee localCurrency:NO];
+    [app closeModalWithTransition:kCATransitionFade];
     
-    UIAlertController *customFeeAlert = [UIAlertController alertControllerWithTitle:BC_STRING_TRANSACTION_FEE_TITLE message:BC_STRING_TRANSACTION_FEE_DESCRIPTION_ARGUMENT preferredStyle:UIAlertControllerStyleAlert];
-    [customFeeAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCTextField *secureTextField = (BCTextField *)textField;
-        secureTextField.keyboardType = UIKeyboardTypeDecimalPad;
-        secureTextField.text = suggestedFee;
-        secureTextField.frame = CGRectMake(secureTextField.frame.origin.x, secureTextField.frame.origin.y, 30, secureTextField.frame.size.height);
-        secureTextField.textAlignment = NSTextAlignmentRight;
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.text = bitcoinUnit;
-        label.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:14];
-        label.adjustsFontSizeToFitWidth = YES;
-        label.textColor = COLOR_BUTTON_DARK_GRAY;
-        secureTextField.leftView = label;
-        secureTextField.leftViewMode = UITextFieldViewModeAlways;
-        self.customFeeField = secureTextField;
-        self.customFeeField.delegate = self;
-    }];
+    [self changeToCustomFeeMode];
     
-    UIAlertAction *customFeeAction = [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        BCSecureTextField *textField = (BCSecureTextField *)[[customFeeAlert textFields] firstObject];
-        NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
-        NSString *convertedText = [textField.text stringByReplacingOccurrencesOfString:decimalSeparator withString:@"."];
-        float unconvertedFee = [convertedText floatValue];
-        NSNumber *unconvertedFeeNumber = [NSNumber numberWithFloat:unconvertedFee * [[NSNumber numberWithInt:SATOSHI] floatValue]];
-        uint64_t convertedFee = (uint64_t)[unconvertedFeeNumber longLongValue];
-        
-        if ([self evaluateFeeForTransactionSize:convertedFee]) {
-            [self changeForcedFee:convertedFee];
-        }
-    }];
-    
-    self.customFeeAction = customFeeAction;
-    
-    [customFeeAlert addAction:customFeeAction];
-    [customFeeAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:customFeeAlert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    
-    [self.view.window.rootViewController presentViewController:customFeeAlert animated:YES completion:nil];
+    feeField.text = [app formatAmount:self.feeFromTransactionProposal localCurrency:NO];
 }
 
 - (IBAction)sendPaymentClicked:(id)sender

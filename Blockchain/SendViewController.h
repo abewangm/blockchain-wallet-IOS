@@ -23,6 +23,7 @@
 #import "BCAlertView.h"
 #import "BCConfirmPaymentView.h"
 #import <AVFoundation/AVFoundation.h>
+#import "BCLine.h"
 
 @class Wallet;
 
@@ -34,6 +35,7 @@
     IBOutlet UIButton *selectFromButton;
     IBOutlet UIButton *fundsAvailableButton;
     
+    IBOutlet UILabel *toLabel;
     IBOutlet UITextField *toField;
     IBOutlet UIButton *addressBookButton;
 
@@ -55,6 +57,16 @@
     IBOutlet UILabel *sendProgressModalText;
     IBOutlet UIActivityIndicatorView *sendProgressActivityIndicator;
 
+    IBOutlet UILabel *feeLabel;
+    IBOutlet UITextField *feeField;
+    
+    IBOutlet BCLine *lineBelowFromField;
+    IBOutlet BCLine *lineBelowToField;
+    IBOutlet BCLine *lineBelowAmountFields;
+    IBOutlet BCLine *lineBelowFeeField;
+    
+    IBOutlet UIView *bottomContainerView;
+    
     BOOL displayingLocalSymbol;
 }
 

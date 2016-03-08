@@ -9,12 +9,15 @@
             <connections>
                 <outlet property="addressBookButton" destination="S58-Vf-zi7" id="Qci-gS-6Wt"/>
                 <outlet property="amountKeyboardAccessoryView" destination="56" id="kgb-Ig-Yso"/>
+                <outlet property="bottomContainerView" destination="UFr-og-Lbi" id="lgK-g1-LV7"/>
                 <outlet property="btcAmountField" destination="52" id="YXL-6B-QU6"/>
                 <outlet property="btcLabel" destination="7ho-GV-ikp" id="e2a-3k-kXk"/>
                 <outlet property="confirmPaymentView" destination="oiD-iq-uRP" id="ukp-zO-Gem"/>
                 <outlet property="containerView" destination="Gzr-Wy-8Rh" id="DL3-hD-g0C"/>
                 <outlet property="continuePaymentAccessoryButton" destination="pPu-bJ-k6p" id="ymH-4D-0a6"/>
                 <outlet property="continuePaymentButton" destination="4" id="xDx-7s-gZq"/>
+                <outlet property="feeField" destination="p7q-Ud-nYh" id="A0V-si-4g2"/>
+                <outlet property="feeLabel" destination="Zhm-Jw-P4C" id="Piy-45-yLj"/>
                 <outlet property="fiatAmountField" destination="qx4-XV-uhn" id="Ns6-YO-Z1m"/>
                 <outlet property="fiatLabel" destination="vGH-md-Ck3" id="LhR-Tz-aN6"/>
                 <outlet property="fromLabel" destination="7" id="oF6-bR-xhe"/>
@@ -22,12 +25,17 @@
                 <outlet property="labelAddressLabel" destination="64" id="70"/>
                 <outlet property="labelAddressTextField" destination="62" id="71"/>
                 <outlet property="labelAddressView" destination="60" id="72"/>
+                <outlet property="lineBelowAmountFields" destination="CCV-V9-it9" id="ugq-xO-0xu"/>
+                <outlet property="lineBelowFeeField" destination="hE6-gR-aYg" id="uG3-4u-SEQ"/>
+                <outlet property="lineBelowFromField" destination="Ln6-qa-kth" id="fc8-7K-FFo"/>
+                <outlet property="lineBelowToField" destination="X3L-rz-Q8u" id="NLJ-KC-GmX"/>
                 <outlet property="selectAddressTextField" destination="zyc-E3-FOM" id="TU8-Uu-bf4"/>
                 <outlet property="selectFromButton" destination="BRT-me-wxI" id="qT9-fg-Tm7"/>
                 <outlet property="sendProgressActivityIndicator" destination="tKj-lu-8bc" id="yLg-rV-y7v"/>
                 <outlet property="sendProgressModal" destination="XyZ-hO-KXJ" id="Nyn-qU-b1D"/>
                 <outlet property="sendProgressModalText" destination="Zgn-Wx-Uwx" id="zlo-7b-BI7"/>
                 <outlet property="toField" destination="pZ1-lU-Nxo" id="EUF-Pr-YyL"/>
+                <outlet property="toLabel" destination="fpY-AA-We5" id="etP-GV-fjT"/>
                 <outlet property="view" destination="3" id="27"/>
             </connections>
         </placeholder>
@@ -155,6 +163,27 @@
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fee" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Zhm-Jw-P4C">
+                                    <rect key="frame" x="15" y="54" width="40" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.000" minimumFontSize="17" id="p7q-Ud-nYh" userLabel="Amount No Border Style Text Field - 0.00" customClass="BCSecureTextField" customModule="Blockchain" customModuleProvider="target">
+                                    <rect key="frame" x="68" y="51" width="244" height="28"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="MPG-3J-rVc"/>
+                                    </connections>
+                                </textField>
+                                <view hidden="YES" contentMode="scaleToFill" id="hE6-gR-aYg" customClass="BCLine">
+                                    <rect key="frame" x="15" y="88" width="305" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -217,7 +246,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="324" y="691.5"/>
+            <point key="canvasLocation" x="324" y="691"/>
         </view>
         <view contentMode="scaleToFill" id="60" userLabel="Label Address View">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>

@@ -61,6 +61,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Measurements
 
+#define HEIGHT_IPHONE_4S 480
+
 #define DEFAULT_HEADER_HEIGHT 65
 #define DEFAULT_FOOTER_HEIGHT 47
 #define DEFAULT_STATUS_BAR_HEIGHT 20
@@ -167,7 +169,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/api/merchant"
 #define DEFAULT_API_URL @"https://api.blockchain.info"
 
-#define DYNAMIC_FEE_SERVICE_URL @"https://api.blockchain.info/fees"
+#define DYNAMIC_FEE_SERVICE_URL @"https://api.staging.blockchain.co.uk/fees"
 
 #define HTML_CONNECT_SRC_PLACEHOLDER @"PLACEHOLDER_CONNECT_SRC"
 #define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info https://api.blockchain.info"
