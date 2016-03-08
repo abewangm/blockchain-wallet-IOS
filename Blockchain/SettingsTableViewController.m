@@ -132,18 +132,16 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)getAllCurrencySymbols
 {
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
-        DLog(@"SettingsTableViewController: gotCurrencySymbols");
-        self.allCurrencySymbolsDictionary = note.userInfo;
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
-    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCurrencySymbols) name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
     
     [app.wallet getAllCurrencySymbols];
 }
 
-- (void)setAllCurrencySymbolsDictionary:(NSDictionary *)allCurrencySymbolsDictionary
+- (void)updateCurrencySymbols
 {
-    _allCurrencySymbolsDictionary = allCurrencySymbolsDictionary;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
+
+    self.allCurrencySymbolsDictionary = app.wallet.currencySymbols;
     
     [self reloadTableView];
 }

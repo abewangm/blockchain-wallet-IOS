@@ -1487,7 +1487,7 @@
     DLog(@"on_get_all_currency_symbols_success");
     NSDictionary *allCurrencySymbolsDictionary = [currencies getJSONObject];
     self.currencySymbols = allCurrencySymbolsDictionary;
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil userInfo:allCurrencySymbolsDictionary];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
 }
 
 - (void)on_change_email_success
