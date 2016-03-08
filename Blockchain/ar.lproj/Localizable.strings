@@ -260,6 +260,9 @@
 "Create Wallet" = "إنشاء المحفظة";
 
 /* (No Commment) */
+"Create new address" = "إنشاء عنوان جديد";
+
+/* (No Commment) */
 "Creating" = "إنشاء";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "إنشاء محفظة جديدة";
+
+/* (No Commment) */
+"Creating new address" = "إنشاء عنوان جديد";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "المعدل الحالي: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "هل تريد تسجيل الخروج حقاً؟";
+
+/* (No Commment) */
+"Don't show again" = "لا تظهر مرة أخرى";
 
 /* No comment provided by engineer. */
 "Done" = "عمله";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "من والوجهة التي يجب أن تكون مختلفة";
 
 /* (No Commment) */
-"Generate new" = "توليد جديدة";
-
-/* (No Commment) */
-"Generating new address" = "إنشاء عنوان جديد";
-
-/* (No Commment) */
 "Go to Settings" = "اذهب إلى الإعدادات";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "المفتاح الخاص الاستيراد";
 
 /* (No Commment) */
+"Import address" = "استيراد العناوين";
+
+/* (No Commment) */
 "Imported Addresses" = "عناوين المستوردة";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "%@ استيراد المفتاح الخاص";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "استيراد عنوان مشاهدة فقط %@";
+
+/* (No Commment) */
 "Importing key" = "استيراد مفتاح";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "كلمة المرور غير صحيحة";
+
+/* (No Commment) */
+"Incorrect private key" = "المفتاح الخاص غير صحيحة";
 
 /* (No Commment) */
 "Information" = "معلومات";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "كلمة المرور الجديدة يجب أن تكون مختلفة";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "كلمة المرور الجديدة يجب أن تكون مختلفة من تلميح كلمة المرور";
 
 /* (No Commment) */
 "News, Price & Charts" = "الأخبار، والأسعار والرسوم البيانية";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "سياسة الخصوصية";
 
 /* (No Commment) */
+"Private Key Needed" = "المفتاح الخاص اللازمة";
+
+/* (No Commment) */
+"Processing key" = "تجهيز مفتاح";
+
+/* (No Commment) */
 "Receive" = "تلقي";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "مسح رمز ريال قطري";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "المسح الضوئي يشاهد العنوان فقط؟";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "مسح هذا الرمز أو نسخة إلى التطبيق الخاص بك التاجر بلوكتشين لتلقي بيتكوين بشكل أمن.";
@@ -907,6 +925,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "توجد مشكلة في التحقق من هويتك.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "هذه الخيارات هي مستحسن للمستخدمين المتقدمين فقط. هل تريد المتابعة؟";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "يتطلب هذا الإجراء المفتاح الخاص ل %@ عنوان بيتكوين. الرجاء مسح رمز ريال قطري.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "هذا الإجراء يتطلب كلمة مرور الثانية محفظتك بيتكوين. الرجاء إدخال أدناه والصحافة.";
 
 /* (No Commment) */
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "خطأ معرف اتصال غير معروف. التعليمات البرمجية: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "تنسيق المفتاح غير معروف";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "تنسيق المفتاح الخاص غير معتمد";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "عبارة استرداد المحفظة";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "وقد %@ عنوان المحفظة الأموال المتاحة للإنفاق. ومع ذلك يحتاج المفتاح الخاص المراد مسحها ضوئياً من ورقة المحفظة أو رمز ريال قطري. هل ترغب في مسح المفتاح الخاص الآن؟";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "محفظة %lld إصدار غير معتمد";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* No comment provided by engineer. */
 "Yesterday" = "أمس";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "أنت على وشك استيراد عنوان يشاهد فقط، عنوان (أو البرامج النصية الرئيسية العامة) المخزنة في المحفظة دون القطاع الخاص المطابق مفتاح. وهذا يعني أن الأموال التي يمكن أن تنفق فقط إذا كان لديك المفتاح الخاص مخزنة في مكان آخر. إذا لم يكن لديك المفتاح الخاص المخزنة، يصدر تعليمات لأي شخص أن يرسل لك بيتكوين إلى عنوان مشاهدة فقط.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "أنت على وشك تلقي بيتكوين إلى عنوان مشاهدة فقط. يمكن أن تنفق هذه الأموال فقط إذا كان لديك حق الوصول إلى المفتاح الخاص. هل تريد المتابعة؟";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "يمكنك الآن تشغيل المحفظة بيتكوين الأكثر أماناً";

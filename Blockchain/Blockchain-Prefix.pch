@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-#define ENABLE_DEBUG_MENU 1
+// #define ENABLE_DEBUG_MENU 1
 
 #pragma mark - Colors
 
@@ -87,6 +87,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE 14.0
 
 #pragma mark - Strings
+
+#define INFO_PLIST_KEY_CFBUNDLE_SHORT_VERSION_STRING @"CFBundleShortVersionString"
 
 #define PREFIX_BITCOIN_URI @"bitcoin:"
 
@@ -233,6 +235,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_PIN_KEY @"pinKey"
 #define USER_DEFAULTS_KEY_PASSWORD_PART_HASH @"passwordPartHash"
 #define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
+#define USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING @"bundleVersionString"
 #define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
 #define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"
 

@@ -836,6 +836,10 @@ void (^secondPasswordSuccess)(NSString *);
         
             secondPasswordTextField.text = nil;
         } onResume:nil];
+        
+        [modalView.closeButton removeTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventAllTouchEvents];
+        
+        [modalView.closeButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventAllTouchEvents];
     }
     
     [secondPasswordTextField becomeFirstResponder];
@@ -848,7 +852,11 @@ void (^secondPasswordSuccess)(NSString *);
     if ([password length] == 0) {
         [self standardNotifyAutoDismissingController:BC_STRING_NO_PASSWORD_ENTERED];
     } else {
-        [_tabViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+        if (_tabViewController.presentedViewController) {
+            [_tabViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [self closeModalWithTransition:kCATransitionFade];
+        }
         if (addPrivateKeySuccess) addPrivateKeySuccess(password);
     }
     
@@ -1217,13 +1225,13 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self reload];
     
-    [[NSUserDefaults standardUserDefaults] setBool:false forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];
 }
 
-- (void)didImportPrivateKey:(NSString *)address
+- (void)didImportKey:(NSString *)address
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
@@ -1248,7 +1256,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
-    NSString *message = [app.wallet isWatchOnlyLegacyAddress:address] ? [NSString stringWithFormat:BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT, address] : [NSString stringWithFormat:@"%@\n\n%@", BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_ONE, BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_TWO];
+    NSString *message = [NSString stringWithFormat:@"%@\n\n%@", BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_ONE, BC_STRING_INCORRECT_PRIVATE_KEY_IMPORTED_MESSAGE_TWO];
     
     __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
         
@@ -1599,8 +1607,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showHdUpgradeIfAppropriate
 {
-    if (![app.wallet didUpgradeToHd] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN] && !self.pinEntryViewController && !_settingsNavigationController) {
-        [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
+    NSString *bundleShortVersionString = [[NSBundle mainBundle] infoDictionary][INFO_PLIST_KEY_CFBUNDLE_SHORT_VERSION_STRING];
+    
+    if (![app.wallet didUpgradeToHd] && ![[[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING] isEqualToString:bundleShortVersionString] && !self.pinEntryViewController && !_settingsNavigationController) {
+        [[NSUserDefaults standardUserDefaults] setValue:bundleShortVersionString forKey:USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self showHdUpgrade];
     }
@@ -2617,6 +2627,10 @@ void (^secondPasswordSuccess)(NSString *);
         
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_KEY_FIRST_RUN];
         [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN];
     }
 }
 

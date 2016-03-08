@@ -260,6 +260,9 @@
 "Create Wallet" = "Создать кошелек";
 
 /* (No Commment) */
+"Create new address" = "Создать новый адрес";
+
+/* (No Commment) */
 "Creating" = "Создание";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Создание нового кошелька";
+
+/* (No Commment) */
+"Creating new address" = "Создавая новый адрес";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Текущая ставка: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Вы действительно хотите выйти?";
+
+/* (No Commment) */
+"Don't show again" = "Не показывать снова";
 
 /* No comment provided by engineer. */
 "Done" = "Готово";
@@ -434,6 +443,9 @@
 "Import Private Key" = "Импортировать личный ключ";
 
 /* (No Commment) */
+"Import address" = "Импорт адресов";
+
+/* (No Commment) */
 "Imported Addresses" = "Импортированные адреса";
 
 /* (No Commment) */
@@ -443,6 +455,9 @@
 "Imported Private Key %@" = "Импортированный закрытый ключ %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Импортируются только смотреть адрес %@";
+
+/* (No Commment) */
 "Importing key" = "Импорт ключа";
 
 /* (No Commment) */
@@ -450,6 +465,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Неправильный пароль";
+
+/* (No Commment) */
+"Incorrect private key" = "Неправильный ключ";
 
 /* (No Commment) */
 "Information" = "Информация ";
@@ -588,6 +606,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Новый пароль должен отличаться от старого";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Новый пароль должен отличаться от вашего подсказку для пароля";
 
 /* (No Commment) */
 "News, Price & Charts" = "Новости, цены и графики";
@@ -750,6 +771,12 @@
 
 /* (No Commment) */
 "Privacy Policy" = "Политика конфиденциальности";
+
+/* (No Commment) */
+"Private Key Needed" = "Закрытый ключ требуется";
+
+/* (No Commment) */
+"Processing key" = "Обработки ключ";
 
 /* (No Commment) */
 "Receive" = "Получить";
@@ -915,6 +942,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "Проблема с установлением вашей личности.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Эти опции рекомендуется только для продвинутых пользователей. Продолжить?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Это действие требуется закрытый ключ для %@ адрес Bitcoin. Пожалуйста, сканируете QR-код.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Это действие требует введения второго пароля для кошелька bitcoin. Пожалуйста, введите его ниже и нажмите Продолжить.";
 
 /* (No Commment) */
@@ -1008,6 +1041,9 @@ Fee: %@
 
 /* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Неизвестная ошибка сенсорного ID. Код: %ld";
+
+/* (No Commment) */
+"Unknown key format" = "Неизвестный формат ключа";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Неподдерживаемый формат частного ключа";
@@ -1133,6 +1169,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* No comment provided by engineer. */
 "Yesterday" = "Вчера";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Вы собираетесь получить bitcoin на часы только адрес. Вы только можете потратить эти средства, если у вас есть доступ к закрытому ключу. Продолжить?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Теперь вы используете самый безопасный кошелек Bitcoin";

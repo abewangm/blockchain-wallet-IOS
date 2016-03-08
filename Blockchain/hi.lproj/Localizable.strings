@@ -260,6 +260,9 @@
 "Create Wallet" = "बटुआ बनाएँ";
 
 /* (No Commment) */
+"Create new address" = "नया पता बनाएँ";
+
+/* (No Commment) */
 "Creating" = "बनाना";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "नई बटुआ बनाना";
+
+/* (No Commment) */
+"Creating new address" = "नया पता बनाना";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "वर्तमान दर: %@ बीटीसी";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "तुम सच में लॉग इन करने के लिए चाहते हैं?";
+
+/* (No Commment) */
+"Don't show again" = "फिर से न दिखाएँ";
 
 /* No comment provided by engineer. */
 "Done" = "किया";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "से और गंतव्य अलग होना है";
 
 /* (No Commment) */
-"Generate new" = "नई उत्पन्न";
-
-/* (No Commment) */
-"Generating new address" = "नया पता जनरेट कर रहा है";
-
-/* (No Commment) */
 "Go to Settings" = "सेटिंग्स पर जाएँ";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "आयात निजी कुंजी";
 
 /* (No Commment) */
+"Import address" = "पते आयात करें";
+
+/* (No Commment) */
 "Imported Addresses" = "आयातित पतों";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "आयातित निजी कुंजी %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "आयातित केवल देखो पता %@";
+
+/* (No Commment) */
 "Importing key" = "कुंजी आयात कर रहा है";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "गलत पासवर्ड";
+
+/* (No Commment) */
+"Incorrect private key" = "गलत निजी कुंजी";
 
 /* (No Commment) */
 "Information" = "जानकारी";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "नया पासवर्ड अलग होना चाहिए.";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "नया पासवर्ड आपके पासवर्ड संकेत से अलग होना चाहिए";
 
 /* (No Commment) */
 "News, Price & Charts" = "समाचार, मूल्य और चार्ट्स";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "गोपनीयता नीति";
 
 /* (No Commment) */
+"Private Key Needed" = "निजी कुंजी आवश्यक";
+
+/* (No Commment) */
+"Processing key" = "कुंजी संसाधन";
+
+/* (No Commment) */
 "Receive" = "प्राप्त";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "QR कोड स्कैन करें";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "देखो केवल पते को स्कैन?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "इस कोड को स्कैन करें या यह सुरक्षित रूप से Bitcoin प्राप्त करने के लिए अपने लॉकचेन व्यापारी app में प्रतिलिपि बनाएँ।";
@@ -907,6 +925,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "आपकी पहचान की पुष्टि करने में कोई समस्या थी।";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "ये विकल्प केवल उन्नत उपयोगकर्ताओं के लिए सिफारिश कर रहे हैं। जारी रखें?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "इस क्रिया के लिए Bitcoin पता %@ निजी कुंजी की आवश्यकता है। कृपया QR कोड स्कैन करें।";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "इस कार्रवाई के लिए अपना bitcoin बटुआ दूसरा पासवर्ड की आवश्यकता है। कृपया उसे नीचे दर्ज करें और प्रेस जारी रखें।";
 
 /* (No Commment) */
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "अज्ञात स्पर्श ID त्रुटि। कोड: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "अज्ञात कुंजी स्वरूप";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "असमर्थित निजी कुंजी स्वरूप";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "बटुआ वसूली वाक्यांश";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "बटुआ पते %@ धन खर्च करने के लिए उपलब्ध है। तथापि निजी कुंजी से एक कागज बटुआ या QR कोड स्कैन किया जा करने के लिए की जरूरत है। आप निजी कुंजी अब स्कैन करना चाहते हैं?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "बटुआ संस्करण %lld समर्थित नहीं";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* No comment provided by engineer. */
 "Yesterday" = "कल";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "लगभग एक ही देखो पता आयात करने के लिए कर रहे हैं, कोई पता (या सार्वजनिक कुंजी स्क्रिप्ट) इसी निजी बिना बटुआ कुंजी में संग्रहीत। इसका मतलब यह है कि केवल यदि आप कहीं और निजी कुंजी संग्रहीत धन खर्च किया जा कर सकते हैं। यदि आपके पास निजी कुंजी संग्रहीत नहीं है, आप केवल देखो पता करने के लिए bitcoin भेजने के लिए किसी को भी हिदायत नहीं।";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "आप के बारे में bitcoin एक केवल-देखो पता करने के लिए प्राप्त करने के लिए कर रहे हैं। आप निजी कुंजी के लिए पहुँच है, तो आप केवल इन धन खर्च कर सकते हैं। जारी रखें?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "आप हमारे सबसे सुरक्षित Bitcoin बटुआ अब चल रहे हैं";

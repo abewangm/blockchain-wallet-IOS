@@ -260,6 +260,9 @@
 "Create Wallet" = "Membuat Dompet";
 
 /* (No Commment) */
+"Create new address" = "Membuat alamat baru";
+
+/* (No Commment) */
 "Creating" = "Menciptakan";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Menciptakan Dompet Baru";
+
+/* (No Commment) */
+"Creating new address" = "Membuat alamat baru";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Kurs Saat Ini: %@ situs BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Anda benar-benar ingin keluar?";
+
+/* (No Commment) */
+"Don't show again" = "Jangan Tampilkan lagi";
 
 /* No comment provided by engineer. */
 "Done" = "Sudah Selesai";
@@ -434,6 +443,9 @@
 "Import Private Key" = "Impor Kunci Pribadi";
 
 /* (No Commment) */
+"Import address" = "Mengimpor alamat";
+
+/* (No Commment) */
 "Imported Addresses" = "Alamat yang Diimpor";
 
 /* (No Commment) */
@@ -443,6 +455,9 @@
 "Imported Private Key %@" = "Impor Kunci Pribadi %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Impor alamat hanya menonton %@";
+
+/* (No Commment) */
 "Importing key" = "Mengimpor kunci";
 
 /* (No Commment) */
@@ -450,6 +465,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Sandi Salah";
+
+/* (No Commment) */
+"Incorrect private key" = "Kunci pribadi yang salah";
 
 /* (No Commment) */
 "Information" = "Informasi";
@@ -588,6 +606,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Sandi baru harus berbeda";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Sandi harus berbeda dari petunjuk password Anda";
 
 /* (No Commment) */
 "News, Price & Charts" = "Berita, Harga, & Grafik";
@@ -750,6 +771,12 @@
 
 /* (No Commment) */
 "Privacy Policy" = "Kebijakan Privasi";
+
+/* (No Commment) */
+"Private Key Needed" = "Kunci pribadi diperlukan";
+
+/* (No Commment) */
+"Processing key" = "Pengolahan kunci";
 
 /* (No Commment) */
 "Receive" = "Menerima";
@@ -915,6 +942,12 @@ Dua jenis transaksi tingkat lanjut (pengeluaran dari alamat dilihat saja dan Ber
 "There was a problem verifying your identity." = "Ada masalah saat memverifikasi identitas Anda.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Opsi ini disarankan untuk pengguna tingkat lanjut hanya. Lanjutkan?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tindakan ini memerlukan kunci pribadi untuk Bitcoin alamat %@. Harap Pindai kode QR.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan sandi kedua untuk bitcoin dompet Anda. Silakan masukkan di bawah ini dan tekan lanjutkan.";
 
 /* (No Commment) */
@@ -1008,6 +1041,9 @@ Biaya: %4$@
 
 /* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Galat ID Sentuh Tidak Dikenal Kode: %ld";
+
+/* (No Commment) */
+"Unknown key format" = "Format kunci yang tidak diketahui";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Format Kunci Pribadi yang tidak didukung";
@@ -1133,6 +1169,9 @@ dompet pengalaman untuk Anda";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Kemarin";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Anda akan menerima bitcoin ke alamat hanya menonton. Anda hanya dapat menghabiskan dana ini jika Anda memiliki akses ke kunci pribadi. Lanjutkan?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Anda sekarang menjalankan dompet Bitcoin kami yang paling aman";

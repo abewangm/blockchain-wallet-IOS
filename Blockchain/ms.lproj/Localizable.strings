@@ -260,6 +260,9 @@
 "Create Wallet" = "Mencipta Wallet";
 
 /* (No Commment) */
+"Create new address" = "Buat alamat baru";
+
+/* (No Commment) */
 "Creating" = "Mewujudkan";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Mewujudkan Wallet baru";
+
+/* (No Commment) */
+"Creating new address" = "Mencipta alamat baru";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Harga semasa: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Adakah anda benar-benar mahu log keluar?";
+
+/* (No Commment) */
+"Don't show again" = "Jangan tunjuk lagi";
 
 /* No comment provided by engineer. */
 "Done" = "Dilakukan";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "Dari dan destinasi yang perlu berbeza";
 
 /* (No Commment) */
-"Generate new" = "Menjana baru";
-
-/* (No Commment) */
-"Generating new address" = "Alamat baru yang menjana";
-
-/* (No Commment) */
 "Go to Settings" = "Pergi ke seting";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Kunci peribadi import";
 
 /* (No Commment) */
+"Import address" = "Import alamat";
+
+/* (No Commment) */
 "Imported Addresses" = "Alamat yang diimport";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "%@ kunci peribadi yang diimport";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "%@ alamat menonton sahaja yang diimport";
+
+/* (No Commment) */
 "Importing key" = "Import utama";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Kata laluan salah";
+
+/* (No Commment) */
+"Incorrect private key" = "Kunci peribadi yang tidak betul";
 
 /* (No Commment) */
 "Information" = "Maklumat";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Kata laluan mesti berbeza";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Kata laluan mesti berbeza daripada pembayang kata laluan anda";
 
 /* (No Commment) */
 "News, Price & Charts" = "Berita, harga & Carta";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Dasar privasi";
 
 /* (No Commment) */
+"Private Key Needed" = "Kunci peribadi diperlukan";
+
+/* (No Commment) */
+"Processing key" = "Pemprosesan utama";
+
+/* (No Commment) */
 "Receive" = "Menerima";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "Imbas Kod QR";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Mengimbas alamat hanya menonton?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Imbas Kod ini atau menyalinnya ke dalam aplikasi Saudagar Blockchain anda dengan selamat menerima Bitcoin.";
@@ -907,6 +925,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "Jadilah masalah mengesahkan identiti anda.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Opsyen ini disyorkan untuk pengguna yang maju hanya. Teruskan?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tindakan ini memerlukan kunci peribadi untuk %@ alamat Bitcoin. Sila imbas Kod QR.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata laluan kedua untuk bitcoin dompet anda. Sila masukkannya di bawah dan tekan teruskan.";
 
 /* (No Commment) */
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Sentuhan ID ralat yang tidak diketahui. Kod: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Format utama yang tidak diketahui";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Format kunci peribadi yang tidak disokong";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Wallet pemulihan frasa";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Wallet alamat %@ mempunyai dana sedia untuk menghabiskan. Walau bagaimanapun kunci peribadi perlu diimbas dari dompet kertas atau kod QR. Adakah anda ingin untuk imbas kunci peribadi sekarang?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Wallet versi %lld tidak disokong";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* No comment provided by engineer. */
 "Yesterday" = "Semalam";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Anda kira-kira untuk mengimport alamat yang menonton sahaja, satu alamat (atau skrip utama awam) disimpan dalam dompet tanpa swasta sama kunci. Ini bererti bahawa dana-dana yang boleh digunakan hanya jika anda mempunyai kunci peribadi disimpan di tempat lain. Jika anda tidak mempunyai kunci peribadi yang disimpan, tidak mengarahkan sesiapa untuk menghantar bitcoin ke alamat menonton sahaja.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Anda akan menerima bitcoin ke alamat yang menonton sahaja. Anda hanya boleh menggunakan dana ini jika anda mempunyai akses kepada kunci peribadi. Teruskan?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Anda sekarang sedang kurangnya Bitcoin paling selamat";

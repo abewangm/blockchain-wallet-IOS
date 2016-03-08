@@ -260,6 +260,9 @@
 "Create Wallet" = "Criar carteira";
 
 /* (No Commment) */
+"Create new address" = "Criar novo endereço";
+
+/* (No Commment) */
 "Creating" = "Criando";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Criando nova carteira";
+
+/* (No Commment) */
+"Creating new address" = "Criando novo endereço";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Taxa atual: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Realmente deseja sair?";
+
+/* (No Commment) */
+"Don't show again" = "Não mostrar novamente";
 
 /* No comment provided by engineer. */
 "Done" = "Pronto";
@@ -434,6 +443,9 @@
 "Import Private Key" = "Importar chave privada";
 
 /* (No Commment) */
+"Import address" = "Endereço de importação";
+
+/* (No Commment) */
 "Imported Addresses" = "Endereços importados";
 
 /* (No Commment) */
@@ -443,6 +455,9 @@
 "Imported Private Key %@" = "Chave privada importada %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "%@ de endereço somente relógio importado";
+
+/* (No Commment) */
 "Importing key" = "Importando chave";
 
 /* (No Commment) */
@@ -450,6 +465,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Senha incorreta";
+
+/* (No Commment) */
+"Incorrect private key" = "Chave privada incorreta";
 
 /* (No Commment) */
 "Information" = "Informações";
@@ -588,6 +606,9 @@
 
 /* (No Commment) */
 "New password must be different" = "A senha nova deve ser diferente";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Nova senha deve ser diferente da sua dica de senha";
 
 /* (No Commment) */
 "News, Price & Charts" = "Notícias, preços e gráficos";
@@ -750,6 +771,12 @@
 
 /* (No Commment) */
 "Privacy Policy" = "Política de privacidade";
+
+/* (No Commment) */
+"Private Key Needed" = "Precisava de chave privada";
+
+/* (No Commment) */
+"Processing key" = "Chave de processamento";
 
 /* (No Commment) */
 "Receive" = "Receber";
@@ -915,6 +942,12 @@ Dois tipos de transação avançada (gastar a partir de endereços somente obser
 "There was a problem verifying your identity." = "Houve um problema ao verificar sua identidade.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Essas opções são recomendadas somente para usuários avançados. Continuar?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Esta ação requer a chave particular para o %@ de endereço Bitcoin. Por favor verificar o código QR.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Esta ação requer a segunda senha da sua carteira de bitcoin. Digite-a abaixo e pressione “Continuar”.";
 
 /* (No Commment) */
@@ -1008,6 +1041,9 @@ Taxa: %4$@
 
 /* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Erro desconhecido do Touch ID. Código: %ld";
+
+/* (No Commment) */
+"Unknown key format" = "Formato chave desconhecido";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Formato de chave privada incompatível";
@@ -1133,6 +1169,9 @@ totalmente nova para você";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Ontem";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Você está prestes a receber o bitcoin para um endereço apenas assistir. Você só pode gastar estes fundos se você tem acesso à chave privada. Continuar?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "No momento, você está trabalhando com a nossa carteira de bitcoin mais segura.";

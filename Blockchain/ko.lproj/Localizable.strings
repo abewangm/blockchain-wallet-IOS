@@ -260,6 +260,9 @@
 "Create Wallet" = "지갑 만들기";
 
 /* (No Commment) */
+"Create new address" = "새 주소 만들기";
+
+/* (No Commment) */
 "Creating" = "만들기";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "새 지갑 만들기";
+
+/* (No Commment) */
+"Creating new address" = "새 주소 만들기";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "현재 속도: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "로그 아웃 하 시겠습니까?";
+
+/* (No Commment) */
+"Don't show again" = "다시 표시 하지 않음";
 
 /* No comment provided by engineer. */
 "Done" = "완료";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "와 다를 수 있다";
 
 /* (No Commment) */
-"Generate new" = "새로운 생성";
-
-/* (No Commment) */
-"Generating new address" = "새 주소를 생성";
-
-/* (No Commment) */
 "Go to Settings" = "설정으로 이동";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "가져오기 개인 키";
 
 /* (No Commment) */
+"Import address" = "가져오기 주소";
+
+/* (No Commment) */
 "Imported Addresses" = "가져온된 주소";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "가져온된 개인 키 %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "가져온된 시계 전용 주소 %@";
+
+/* (No Commment) */
 "Importing key" = "키를 가져오기";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "잘못 된 암호";
+
+/* (No Commment) */
+"Incorrect private key" = "잘못 된 개인 키";
 
 /* (No Commment) */
 "Information" = "정보";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "새 암호는 서로 달라 야 합니다.";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "새 암호 암호 힌트 달라 야 합니다.";
 
 /* (No Commment) */
 "News, Price & Charts" = "뉴스, 가격 및 차트";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "개인 정보 보호 정책";
 
 /* (No Commment) */
+"Private Key Needed" = "개인 키 필요";
+
+/* (No Commment) */
+"Processing key" = "키 처리";
+
+/* (No Commment) */
 "Receive" = "수신";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "QR 코드를 스캔";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "시계만 주소 스캔?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "이 코드를 스캔 하거나 안전 하 게 받을 Bitcoin Blockchain 상인 응용 프로그램에 복사 합니다.";
@@ -907,6 +925,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "Id 확인 문제가 있었습니다.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "이 옵션은 고급 사용자만 위한 것이 좋습니다. 계속 하 시겠습니까?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "이 작업 Bitcoin 주소 %@에 대 한 개인 키를 필요합니다. QR 코드를 스캔 하십시오.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "이 작업 bitcoin 지갑에 대 한 두 번째 암호를 요구 한다. 제발 아래 입력 하 고 누르면 계속.";
 
 /* (No Commment) */
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "알 수 없는 터치 ID 오류가 발생 합니다. 코드: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "알 수 없는 키 형식";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "지원 되지 않는 개인 키 형식";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "지갑 복구 문구";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "지갑 주소 %@ 자금을 보낼 수 있다. 그러나 개인 키 종이 지갑 또는 QR 코드 스캔 될 필요가 있다. 개인 키를 지금 검사 하 시겠습니까?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "지원 되지 않는 지갑 버전 %lld";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* No comment provided by engineer. */
 "Yesterday" = "어제";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "시계 전용 주소를 가져올 하려고, 주소 (또는 공개 키 스크립트)에 저장 된 해당 개인 없이 지갑 키. 즉, 당신이 하는 경우 개인 키 저장 다른 자금 지출 하실 수 있습니다. 개인 키를 저장 하지 않은 경우 시계 전용 주소 bitcoin에 보낼 사람이 지시 하지 않습니다.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Bitcoin 시계 전용 주소를 받을 수 있습니다. 개인 키에 액세스할 수 있는 경우에 이러한 자금을 보낼 수 있습니다. 계속 하 시겠습니까?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "이제 우리의 가장 안전한 Bitcoin 지갑을 실행 하는";

@@ -260,6 +260,9 @@
 "Create Wallet" = "Stvaranje novčanik";
 
 /* (No Commment) */
+"Create new address" = "Stvori novu adresu";
+
+/* (No Commment) */
 "Creating" = "Stvaranje";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Stvaranje nove novčanik";
+
+/* (No Commment) */
+"Creating new address" = "Stvaranje nove adrese";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Sadašnja stopa: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Stvarno želite odjaviti?";
+
+/* (No Commment) */
+"Don't show again" = "Ne pokazuj više";
 
 /* No comment provided by engineer. */
 "Done" = "Učinio";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "Iz i odredište moraju biti različite";
 
 /* (No Commment) */
-"Generate new" = "Generirati nove";
-
-/* (No Commment) */
-"Generating new address" = "Generira novu adresu";
-
-/* (No Commment) */
 "Go to Settings" = "Idite na postavke";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Uvezi privatni ključ";
 
 /* (No Commment) */
+"Import address" = "Uvoz adresa";
+
+/* (No Commment) */
 "Imported Addresses" = "Uvezeni adrese";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Uvezeni osobni ključ %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Uvesti samo za sat adresa %@";
+
+/* (No Commment) */
 "Importing key" = "Uvoz ključ";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Netočna lozinka";
+
+/* (No Commment) */
+"Incorrect private key" = "Neispravna privatni ključ";
 
 /* (No Commment) */
 "Information" = "Informacije";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Nova lozinka mora biti različita";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Nova lozinka mora biti različita od vaš podsjetnik za lozinku";
 
 /* (No Commment) */
 "News, Price & Charts" = "Vijesti, cijene i karte";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Pravilnik o zaštiti privatnosti";
 
 /* (No Commment) */
+"Private Key Needed" = "Privatni ključ koji je potreban";
+
+/* (No Commment) */
+"Processing key" = "Obrada ključ";
+
+/* (No Commment) */
 "Receive" = "Primiti";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "Skenirajte QR kod";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Skandirati što gledati samo adresu?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skenirajte ovaj kod ili ga kopirajte u Blockchain trgovac aplikaciju za sigurno primanje Bitcoin.";
@@ -907,6 +925,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "Bilo je problema kojim dokazuje svoj identitet.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Ove opcije se preporučuje samo naprednim korisnicima. Želite li nastaviti?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Ova akcija zahtijeva privatni ključ za Bitcoin adresa %@. Skenirajte QR kod.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ova akcija zahtijeva drugu lozinku za novčanik bitcoin. Molimo unesite ga ispod i pritisnite dalje.";
 
 /* (No Commment) */
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Nepoznata pogreška Touch ID. Kod: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Nepoznat oblik ključa";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Format nije podržan privatni ključ";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Novčanik oporavak izraz";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Novčanik adresa %@ ima sredstva na raspolaganju za potrošiti. No privatni ključ treba biti skenirane od papira novčanik ili QR koda. Će želite to skandirati što osobni ključ zatim?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Novčanik verzija %lld nije podržan";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Osmislili smo potpuno novi novčanik iskustvo za v
 
 /* No comment provided by engineer. */
 "Yesterday" = "Jučer";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Koju ćete uvesti samo za sat adresu, adresu (ili javni ključ original) pohranjenih pod opcijom novčanik bez odgovarajući privatni ključ. To znači da se sredstva mogu trošiti samo ako imate privatni ključ pohranjen negdje drugdje. Ako nemate privatni ključ pohranjen, ne uči da šalju bitcoin na adresu samo za sat.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Vi ćete primiti bitcoin gledati samo adresu. Ta sredstva možete provesti samo ako imate pristup do privatnog ključa. Želite li nastaviti?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Sada imate naš najsigurniji Bitcoin novčanik";

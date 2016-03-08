@@ -260,6 +260,9 @@
 "Create Wallet" = "Hozzon létre a pénztárca";
 
 /* (No Commment) */
+"Create new address" = "Hozzon létre új címet";
+
+/* (No Commment) */
 "Creating" = "Létrehozása";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Új Mobiltárcaprofil létrehozása";
+
+/* (No Commment) */
+"Creating new address" = "Új cím létrehozása";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Jelenlegi árfolyam: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Igazán akar kijelentkezni?";
+
+/* (No Commment) */
+"Don't show again" = "Ne jelenjék meg többé";
 
 /* No comment provided by engineer. */
 "Done" = "Kész";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "Származó és a rendeltetési hely van, hogy különböző";
 
 /* (No Commment) */
-"Generate new" = "Generáljon újat";
-
-/* (No Commment) */
-"Generating new address" = "Új cím létrehozása";
-
-/* (No Commment) */
 "Go to Settings" = "Nyissa meg a Settings";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Import privát kulcs";
 
 /* (No Commment) */
+"Import address" = "Importálja a cím";
+
+/* (No Commment) */
 "Imported Addresses" = "Importált címek";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Importált személyes kulcs %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Importált csak watch cím %@";
+
+/* (No Commment) */
 "Importing key" = "Kulcs importálása";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Hibás jelszó";
+
+/* (No Commment) */
+"Incorrect private key" = "Helytelen privát kulcs";
 
 /* (No Commment) */
 "Information" = "Információk";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Új jelszó nem egyezhet";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Új jelszót a jelszó-emlékeztető eltérőnek kell lennie.";
 
 /* (No Commment) */
 "News, Price & Charts" = "Hírek, árak és grafikonok";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Adatvédelmi politika";
 
 /* (No Commment) */
+"Private Key Needed" = "Személyes kulcs szükséges";
+
+/* (No Commment) */
+"Processing key" = "Feldolgozás kulcs";
+
+/* (No Commment) */
 "Receive" = "Kap";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "QR-kód beolvasásához";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Scan Watch egyetlen cím?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "E kód beolvasni, vagy másold be a Blockchain kereskedő app, hogy biztonságosan kap Bitcoin.";
@@ -907,6 +925,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Ezek a beállítások csak haladóknak ajánlott. Folytatja?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Ez a művelet megköveteli a személyes kulcsot a Bitcoin cím %@. Legyen szíves átkutat a QR-kód.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ez a művelet megköveteli a második jelszó bitcoin tárcátok. Kérjük, adja meg alább, és sajtó Folytatódik.";
 
 /* (No Commment) */
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Ismeretlen azonosító Touch hiba. Kód: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Ismeretlen kulcs formátuma";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Privát kulcs formátuma nem támogatott";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Pénztárca helyreállítási mondat";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Pénztárca cím %@ már rendelkezésre álló tölteni. Azonban a személyes kulcsot kell beolvasott egy papírt pénztárca vagy a QR-kód. Szeretne olvasni a titkos kulcs most?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Pénztárca verzió %lld nem támogatott";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* No comment provided by engineer. */
 "Yesterday" = "Tegnap";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Arról, hogy behozatali csak watch cím, egy címet (vagy a nyilvános kulcs script) tárolja a pénztárca nélkül a megfelelő privát kulcs. Ez azt jelenti, hogy az alapok el lehet költeni, csak akkor, ha a személyes kulcs máshol. Ha nem rendelkezünk tárolt privát kulcs, nem utasíthatja akárki-hoz küld ön bitcoin csak watch címre.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Te arról, hogy bitcoin csak watch címre. Ezek az alapok csak töltheti, ha hozzáférünk a titkos kulcshoz. Folytatja?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Most fut a leg--bb biztosít Bitcoin pénztárca";

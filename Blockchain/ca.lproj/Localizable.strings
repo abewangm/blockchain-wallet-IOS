@@ -260,6 +260,9 @@
 "Create Wallet" = "Crear la cartera";
 
 /* (No Commment) */
+"Create new address" = "Crear nova adreça";
+
+/* (No Commment) */
 "Creating" = "Creació";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Crear nova cartera";
+
+/* (No Commment) */
+"Creating new address" = "Creació de la nova adreça";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Taxa actual: %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Realment voleu desconnectar?";
+
+/* (No Commment) */
+"Don't show again" = "No tornis a mostrar";
 
 /* No comment provided by engineer. */
 "Done" = "Fet";
@@ -407,12 +416,6 @@
 "From and destination have to be different" = "De destinació ha de ser diferent i";
 
 /* (No Commment) */
-"Generate new" = "Generar nous";
-
-/* (No Commment) */
-"Generating new address" = "Adreça de nova generació";
-
-/* (No Commment) */
 "Go to Settings" = "Aneu a configuració";
 
 /* (No Commment) */
@@ -434,6 +437,9 @@
 "Import Private Key" = "Clau privada d'importació";
 
 /* (No Commment) */
+"Import address" = "Adreça d'importació";
+
+/* (No Commment) */
 "Imported Addresses" = "Adreces importats";
 
 /* (No Commment) */
@@ -443,6 +449,9 @@
 "Imported Private Key %@" = "Clau privada importada %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Importats només per veure l'adreça %@";
+
+/* (No Commment) */
 "Importing key" = "Importar la clau";
 
 /* (No Commment) */
@@ -450,6 +459,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Contrasenya incorrecta";
+
+/* (No Commment) */
+"Incorrect private key" = "Clau privada incorrecta";
 
 /* (No Commment) */
 "Information" = "Informació";
@@ -588,6 +600,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Nova contrasenya ha de ser diferent";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Nova contrasenya ha de ser diferent de la pista de contrasenya";
 
 /* (No Commment) */
 "News, Price & Charts" = "Notícies, preu i gràfics";
@@ -752,6 +767,12 @@
 "Privacy Policy" = "Política de privacitat";
 
 /* (No Commment) */
+"Private Key Needed" = "Clau privada necessària";
+
+/* (No Commment) */
+"Processing key" = "Clau de processament";
+
+/* (No Commment) */
 "Receive" = "Rebre";
 
 /* (No Commment) */
@@ -798,9 +819,6 @@
 
 /* (No Commment) */
 "Scan QR code" = "Escaneja un codi QR";
-
-/* (No Commment) */
-"Scan Watch Only Address?" = "Escanejar adreça única de veure?";
 
 /* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Escaneja aquest codi o copiar-lo al seu app Blockchain mercader segura rebre Bitcoin.";
@@ -907,6 +925,12 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "There was a problem verifying your identity." = "Hi havia un problema verificar la vostra identitat.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Aquestes opcions són recomanables per a usuaris avançats només. Voleu continuar?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Aquesta acció requereix la clau privada per a la Bitcoin adreça %@. Si us plau escanegeu el codi QR.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Aquesta acció requereix la segona clau per a la seva cartera bitcoin. Torneu-lo a sota i premeu continuar.";
 
 /* (No Commment) */
@@ -998,6 +1022,9 @@ Fee: %@
 "Unknown Touch ID error. Code: %ld" = "Error desconegut de Tacte ID. Codi: %ld";
 
 /* (No Commment) */
+"Unknown key format" = "Format de clau desconegut";
+
+/* (No Commment) */
 "Unsupported Private Key Format" = "Format de clau privada no admès";
 
 /* (No Commment) */
@@ -1067,9 +1094,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Frase de recuperació de cartera";
 
 /* (No Commment) */
-"Wallet address %@ has funds available to spend. However the private key needs to be scanned from a paper wallet or QR Code. Would you like to scan the private key now?" = "Cartera adreça %@ té fons disponibles per a passar. Però la clau privada ha de ser escanejat d'una cartera de document o codi QR. Voleu escanejar la clau privada ara?";
-
-/* (No Commment) */
 "Wallet version %lld not supported" = "Cartera versió %lld no suportat";
 
 /* (No Commment) */
@@ -1120,6 +1144,12 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* No comment provided by engineer. */
 "Yesterday" = "Ahir";
+
+/* (No Commment) */
+"You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Vas a importar una adreça només de veure, una adreça (o seqüència clau pública) emmagatzemats en la cartera sense el corresponent privat clau. Això significa que el fons pot passar només si teniu la clau privada s'emmagatzema en un altre lloc. Si no teniu la clau privada s'emmagatzema, no manar ningú per enviar-vos bitcoin a l'adreça només de veure.";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Esteu a punt de rebre bitcoin a una adreça només de veure. Aquests fons només pot passar si teniu accés a la clau privada. Voleu continuar?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Ara esteu executant nostra cartera Bitcoin més segura";

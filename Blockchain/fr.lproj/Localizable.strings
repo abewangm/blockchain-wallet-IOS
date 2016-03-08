@@ -260,6 +260,9 @@
 "Create Wallet" = "Créer Portefeuille";
 
 /* (No Commment) */
+"Create new address" = "Créer une nouvelle adresse";
+
+/* (No Commment) */
 "Creating" = "Création";
 
 /* (No Commment) */
@@ -273,6 +276,9 @@
 
 /* (No Commment) */
 "Creating new Wallet" = "Création d’un nouveau portefeuille";
+
+/* (No Commment) */
+"Creating new address" = "Création de nouvelle adresse";
 
 /* (No Commment) */
 "Current rate: %@ BTC" = "Taux actuel : %@ BTC";
@@ -306,6 +312,9 @@
 
 /* (No Commment) */
 "Do you really want to log out?" = "Voulez-vous vraiment fermer la session ?";
+
+/* (No Commment) */
+"Don't show again" = "Ne plus afficher";
 
 /* No comment provided by engineer. */
 "Done" = "Exécuté";
@@ -434,6 +443,9 @@
 "Import Private Key" = "Importer la clé privée";
 
 /* (No Commment) */
+"Import address" = "Importer des adresses";
+
+/* (No Commment) */
 "Imported Addresses" = "Adresses importées";
 
 /* (No Commment) */
@@ -443,6 +455,9 @@
 "Imported Private Key %@" = "Clé privée importée %@";
 
 /* (No Commment) */
+"Imported watch-only address %@" = "Importé montre seule adresse %@";
+
+/* (No Commment) */
 "Importing key" = "Importation de la clé";
 
 /* (No Commment) */
@@ -450,6 +465,9 @@
 
 /* (No Commment) */
 "Incorrect password" = "Mot de passe incorrect";
+
+/* (No Commment) */
+"Incorrect private key" = "Clé privée incorrect";
 
 /* (No Commment) */
 "Information" = "Informations";
@@ -588,6 +606,9 @@
 
 /* (No Commment) */
 "New password must be different" = "Le nouveau mot de passe doit être différent";
+
+/* (No Commment) */
+"New password must be different from your password hint" = "Nouveau mot de passe doit être différent de votre indice de mot de passe";
 
 /* (No Commment) */
 "News, Price & Charts" = "Actualités, Prix et Graphiques";
@@ -750,6 +771,12 @@
 
 /* (No Commment) */
 "Privacy Policy" = "Politique de confidentialité";
+
+/* (No Commment) */
+"Private Key Needed" = "Besoin de la clé privée";
+
+/* (No Commment) */
+"Processing key" = "Clé de transformation";
 
 /* (No Commment) */
 "Receive" = "Recevoir";
@@ -915,6 +942,12 @@ Deux types de transactions avancées (payer à partir des adresses Watch-Only et
 "There was a problem verifying your identity." = "Problème lors de la vérification de votre identité.";
 
 /* (No Commment) */
+"These options are recommended for advanced users only. Continue?" = "Ces options sont recommandées pour les utilisateurs avancés seulement. Continuer ?";
+
+/* (No Commment) */
+"This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Cette action nécessite la clé privée pour le %@ d'adresse Bitcoin. Veuillez scanner le code QR.";
+
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Cette action requiert le deuxième mot de passe pour votre portefeuille bitcoin. Veuillez le saisir ci-dessous et appuyer sur continuer.";
 
 /* (No Commment) */
@@ -1008,6 +1041,9 @@ Montant : %4$@
 
 /* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Erreur inconnue de Touch ID. Code : %ld";
+
+/* (No Commment) */
+"Unknown key format" = "Format de clé inconnue";
 
 /* (No Commment) */
 "Unsupported Private Key Format" = "Format de clé privée non pris en charge";
@@ -1133,6 +1169,9 @@ expérience portefeuille pour vous";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Hier";
+
+/* (No Commment) */
+"You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Vous êtes sur le point de recevoir bitcoin à une adresse montre uniquement. Vous pouvez seulement dépenser ces fonds si vous avez accès à la clé privée. Continuer ?";
 
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Vous utilisez à présent notre portefeuille bitcoin le plus sûr";
