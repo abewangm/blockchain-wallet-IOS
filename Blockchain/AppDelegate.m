@@ -1280,22 +1280,24 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_IMPORTED_PRIVATE_KEY_SUCCESS preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
-        
-        if (self.topViewControllerDelegate) {
-            if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
-                [self.topViewControllerDelegate presentAlertController:alert];
-            }
-        } else {
-            [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alertUserOfImportedPrivateKeyIntoLegacyAddress) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+}
+
+- (void)alertUserOfImportedPrivateKeyIntoLegacyAddress
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_IMPORTED_PRIVATE_KEY_SUCCESS preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    if (self.topViewControllerDelegate) {
+        if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+            [self.topViewControllerDelegate presentAlertController:alert];
         }
-        
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
-    }];
+    } else {
+        [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)didFailToImportPrivateKey:(NSString *)error
