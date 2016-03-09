@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Voltooi de stappen hieronder voor de ultieme beveiliging";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Volledig bijgewerkte ontwerp en gebruikerservaring";
+
+/* (No Commment) */
 "Confirm Payment" = "Betaling bevestigen";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Aanpassen van de manier waarop u uw bitcoins organiseren in uw portemonnee Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Aangepaste vermogensbeheer";
 
 /* (No Commment) */
 "Debug" = "Debug";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Deze functie in te schakelen kunnen alle gebruikers met een geregistreerde vingerafdruk Touch ID op dit apparaat toegang tot uw portemonnee.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Verbeterde Privacy";
 
 /* (No Commment) */
 "Enter PIN" = "Voer pincode";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Opnieuw validatie";
 
 /* (No Commment) */
+"Robust security center" = "Robuuste Beveiligingscentrum";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Instellingen";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Gedeelde munt wordt niet ondersteund in de nieuwe versie op dit moment.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Delen van uw xPub machtigt anderen uw transactiegeschiedenis bijhouden. Als geautoriseerde personen mogelijk verstoren u toegang krijgen tot uw portemonnee, alleen uw xPub te delen met mensen die u vertrouwt.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Ondertekening van ingangen";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Vereenvoudigde back-up en herstel";
 
 /* (No Commment) */
 "Store Hint" = "Winkel Hint";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "De persoonlijke sleutel die u probeert te importeren is gecodeerd. Voer het wachtwoord hieronder.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zullen veilig. Hier is wat is beter: \n\n• volledig bijgewerkt ontwerp en gebruikerservaring \n• robuuste beveiliging center \n• verbeterde Privacy vereenvoudigde back-up en herstel \n• aangepast vermogensbeheer\n\ntwee geavanceerde transactiesoorten (besteding van horloge-alleen adressen en gedeelde munt) worden niet ondersteund in de nieuwe versie op dit moment.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zal veilig zijn. Hier is wat is beter:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Er was een probleem uw identiteit verifiëren.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "You must enter a label" = "U moet een label invoeren";
+
+/* (No Commment) */
+"You must have at least one active address" = "U moet ten minste één actieve adres";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "U moet verificatie met twee factoren uitgeschakeld voor paar handmatig.";

@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "أكمل الخطوات أدناه للأمن في نهاية المطاف";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "حدثت تماما التصميم وتجربة المستخدم";
+
+/* (No Commment) */
 "Confirm Payment" = "تأكيد الدفع";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "تخصيص الطريقة التي يمكنك تنظيم الخاصة بك بيتكوينس في محفظتك بلوكتشين";
+
+/* (No Commment) */
+"Customized fund management" = "إدارة الأموال المخصصة";
 
 /* (No Commment) */
 "Debug" = "التصحيح";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "تمكين هذه الميزة سيتم السماح لكافة المستخدمين مع بصمة معرف اتصال مسجل على هذا الجهاز للوصول إلى محفظتك.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "الخصوصية المحسنة";
 
 /* (No Commment) */
 "Enter PIN" = "أدخل رقم التعريف الشخصي";
@@ -803,6 +812,9 @@
 "Retry Validation" = "أعد محاولة إجراء التحقق من الصحة";
 
 /* (No Commment) */
+"Robust security center" = "مركز قوي الأمن";
+
+/* (No Commment) */
 "SMS" = "الرسائل القصيرة";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "إعدادات";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "العملة المشتركة غير معتمدة في الإصدار الجديد في هذا الوقت.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "مشاركة الخاص بك إكسبوب يأذن للآخرين بتعقب محفوظات المعاملة الخاصة بك. كما قد يتمكن الأشخاص المرخص لهم من تعطيل يمكنك من الوصول إلى محفظتك، فقط مشاركة الخاص بك إكسبوب مع شخص تثق به.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "توقيع المدخلات";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "تبسيط النسخ الاحتياطي والاسترداد";
 
 /* (No Commment) */
 "Store Hint" = "تلميح مخزن";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "يتم تشفير المفتاح الخاص الذي تحاول استيراد. الرجاء إدخال كلمة المرور أدناه.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل: •\n تحديث تماما تصميم والمستخدم تجربة •\n قوي الأمن مركز \"تعزيز الخصوصية\" •\n المبسطة النسخ الاحتياطي والاسترداد •\n\n مخصص صندوق الإدارة نوعين معاملة متقدمة (أنفاق من عناوين مشاهدة فقط وعمله مشتركة) غير معتمدة في الإصدار الجديد في هذا الوقت.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "توجد مشكلة في التحقق من هويتك.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "You must enter a label" = "يجب إدخال تسمية";
+
+/* (No Commment) */
+"You must have at least one active address" = "يجب أن يكون لديك عنوان نشط واحد على الأقل";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "يجب أن يكون لديك مصادقة اثنين-عامل تعطيل لزوج يدوياً.";

@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "השלם את השלבים להלן עבור אבטחה האולטימטיבי";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "חווית המשתמש ועיצוב מעודכנת לחלוטין";
+
+/* (No Commment) */
 "Confirm Payment" = "לאשר תשלום";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "להתאים אישית את אופן אתה מארגן את bitcoins שלך בארנק שלך Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "ניהול קרנות מותאם אישית";
 
 /* (No Commment) */
 "Debug" = "איתור באגים";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "הפעלת תכונה זו תאפשר לכל המשתמשים בעלי טביעת אצבע המגע מזהה רשומה על התקן זה כדי לגשת את הארנק שלך.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "פרטיות משופרות";
 
 /* (No Commment) */
 "Enter PIN" = "הזן את מספר הזיהוי האישי שלך";
@@ -803,6 +812,9 @@
 "Retry Validation" = "נסה שנית אימות";
 
 /* (No Commment) */
+"Robust security center" = "מרכז אבטחה איתנה";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "הגדרות";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "מטבע משותף אינה נתמכת בגירסה החדשה בשלב זה.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "שיתוף xPub שלך מסמיך אחרים כדי לעקוב אחר ההיסטוריה התנועה שלך. כפי ה\"גורמים עשוי להיות מסוגל לשבש את מלגשת אל הארנק שלך, לשתף רק xPub שלך עם אנשים שאתה בוטח.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "חתימת כניסות";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "פשוטה גיבוי ושחזור";
 
 /* (No Commment) */
 "Store Hint" = "חנות רמז";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "המפתח הפרטי שאתה מנסה לייבא מוצפן. נא הזן את הסיסמה שלהלן.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "השדרוג לוקח רק שנייה, את bitcoins ואת ההיסטוריה יהיה בטוח. . הנה מה טוב יותר: • לעדכן ועיצוב המשתמש להיתקל • אבטחה איתנה במרכז • • פרטיות משופרת פשוטה גיבוי ושחזור • מותאם אישית ניהול קרנות שני סוגי תנועות מתקדם (להוציא מן השעון בלבד כתובות ומטבע משותפים) אינן נתמכות בגרסה החדשה בשלב זה.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "השדרוג לוקח רק שנייה, את bitcoins ואת ההיסטוריה יהיה בטוח. . הנה מה טוב יותר:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "אירעה בעיה מאמת את זהותך.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "You must enter a label" = "עליך להזין תווית";
+
+/* (No Commment) */
+"You must have at least one active address" = "דרושה לך לפחות פעיל כתובת אחת";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "יש אימות דו-גורמי זמין על זוג באופן ידני.";

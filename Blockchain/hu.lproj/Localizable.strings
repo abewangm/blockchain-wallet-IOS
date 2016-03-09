@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Töltse ki az alábbi lépéseket az ultimate biztonsági";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Teljesen frissített tervezői és felhasználói élmény";
+
+/* (No Commment) */
 "Confirm Payment" = "Erősítse fizetés";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Megszokott a út Ön szervez a bitcoins a Blockchain pénztárca";
+
+/* (No Commment) */
+"Customized fund management" = "Testreszabott alapkezelő";
 
 /* (No Commment) */
 "Debug" = "Debug";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "A szolgáltatás engedélyezése lehetővé teszi, hogy minden felhasználó a regisztrált Touch ID ujjlenyomat ez berendezés-hoz belépés-hoz tárcátok.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Továbbfejlesztett adatvédelmi";
 
 /* (No Commment) */
 "Enter PIN" = "PIN-kód";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Újra érvényesítés";
 
 /* (No Commment) */
+"Robust security center" = "Robusztus biztonsági központ";
+
+/* (No Commment) */
 "SMS" = "SMS-BEN";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Beállítások";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Megosztott érme nem támogatja az új verzió, ebben az időben.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "A xPub megosztása felhatalmazza mások a tranzakciók előzményeinek nyomon követésére. Jogosult személyek esetleg képes megzavarni, hozzáférjenek a pénztárca, csak megosztja a xPub meg, akikben megbízol.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Aláíró bemenetek";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Egyszerűsített biztonsági mentés és helyreállítás";
 
 /* (No Commment) */
 "Store Hint" = "Bolt-tipp";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Importálni kívánt személyes kulcs titkosított. Kérjük, írja be a jelszavad.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb: \n\n• design teljesen frissített és felhasználó tapasztalat \n• robusztus biztonsági központ \n• továbbfejlesztett adatvédelmi \n• egyszerűsített biztonsági mentés és helyreállítás \n• szabott alapkezelő \n\nkét speciális tranzakciótípusok (költés csak watch címek és megosztott érme) nem támogatja az új verzióban ebben az időben.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "You must enter a label" = "Meg kell adnia egy címkét";
+
+/* (No Commment) */
+"You must have at least one active address" = "Rendelkeznie kell legalább egy aktív cím";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Kettő-tényező hitelesítés le van tiltva, hogy pár manuálisan kell rendelkeznie.";

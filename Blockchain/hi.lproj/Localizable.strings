@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "परम सुरक्षा के लिए नीचे चरणों को पूरा";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "पूरी तरह से अद्यतन डिजाइन और उपयोगकर्ता अनुभव";
+
+/* (No Commment) */
 "Confirm Payment" = "भुगतान की पुष्टि करें";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "जिस तरह से आप अपने Blockchain बटुए में अपने bitcoins व्यवस्थित अनुकूलित करें";
+
+/* (No Commment) */
+"Customized fund management" = "अनुकूलित फंड प्रबंधन";
 
 /* (No Commment) */
 "Debug" = "डीबग करें";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "इस सुविधा को सक्षम करने के एक पंजीकृत स्पर्श ID फिंगरप्रिंट के साथ सभी उपयोगकर्ताओं के लिए अपने बटुए का उपयोग करने के लिए इस डिवाइस पर की अनुमति होगी।";
+
+/* (No Commment) */
+"Enhanced Privacy" = "गोपनीयता में वृद्धि हुई";
 
 /* (No Commment) */
 "Enter PIN" = "PIN दर्ज करें";
@@ -803,6 +812,9 @@
 "Retry Validation" = "सत्यापन पुन: प्रयास करें";
 
 /* (No Commment) */
+"Robust security center" = "मजबूत सुरक्षा केंद्र";
+
+/* (No Commment) */
 "SMS" = "एसएमएस";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "सेटिंग्स";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "साझा किए गए सिक्के इस समय नए संस्करण में समर्थित नहीं है।";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "अपने xPub साझा दूसरों अपने ट्रांजे़क्शन इतिहास ट्रैक करने के लिए अधिकृत। अधिकृत व्यक्तियों आप अपने बटुए तक पहुंचने से बाधित करने में सक्षम हो सकता है के रूप में, केवल अपने xPub पर भरोसा है आप लोगों के साथ साझा।";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "आदानों पर हस्ताक्षर";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "सरलीकृत बैकअप और रिकवरी";
 
 /* (No Commment) */
 "Store Hint" = "दुकान संकेत";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "आप आयात करने का प्रयास कर रहे हैं निजी कुंजी एन्क्रिप्टेड है। कृपया नीचे दिए गए पासवर्ड दर्ज करें।";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "नवीनीकरण बस एक पल के लेता है और अपने bitcoins और इतिहास सुरक्षित हो जाएगा। यहाँ है क्या बेहतर है: \n\n• पूरी तरह से अद्यतन किया \n• डिजाइन और उपयोगकर्ता अनुभव उन्नत लेन-देन के दो प्रकार (केवल-देखो पतों और सिक्का साझा से खर्च) समर्थित नहीं है इस समय में नए संस्करण में \n• मजबूत सुरक्षा केंद्र \n• गोपनीयता बढ़ाया \n• सरलीकृत बैकअप और वसूली \n• स्वनिर्धारित कोष प्रबंधन।";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "बस एक दूसरे नवीनीकरण लेता है और अपने bitcoins और इतिहास सुरक्षित हो जाएगा। यहाँ है क्या बेहतर है:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "आपकी पहचान की पुष्टि करने में कोई समस्या थी।";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "You must enter a label" = "आप कोई लेबल दर्ज करना होगा";
+
+/* (No Commment) */
+"You must have at least one active address" = "आप कम से कम एक सक्रिय पता होना चाहिए";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "आप दो फैक्टर प्रमाणीकरण करने के लिए जोड़ी को मैन्युअल रूप से अक्षम होना आवश्यक है।";

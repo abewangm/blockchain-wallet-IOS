@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Conclua as etapas abaixo para melhor segurança";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Completamente atualizado design e experiência do usuário";
+
+/* (No Commment) */
 "Confirm Payment" = "Confirmar pagamento";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personalizar a maneira como você organiza seu bitcoins em sua carteira de Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Gestão de fundos personalizados";
 
 /* (No Commment) */
 "Debug" = "Depurar";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Habilitar este recurso permitirá que todos os usuários com uma digital Touch ID registrado neste dispositivo para acessar a sua carteira.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Privacidade realçada";
 
 /* (No Commment) */
 "Enter PIN" = "Digite o PIN";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Repetição de validação";
 
 /* (No Commment) */
+"Robust security center" = "Centro de segurança robusta";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Configurações";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Moeda comum não é suportada na versão nova neste momento.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Compartilhar seu xPub autoriza outros para acompanhar o seu histórico de transacções. Pessoas autorizadas seja capazes de romper acessem sua carteira, apenas Compartilhe sua xPub com as pessoas que você confia.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Assinatura de entradas";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Recuperação e backup simplificado";
 
 /* (No Commment) */
 "Store Hint" = "Dica de loja";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "A chave privada que você está tentando importar é criptografada. Por favor digite a senha abaixo.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "A atualização leva apenas um segundo e seu bitcoins e história estarão seguros. Aqui está o que é melhor: \n\n• projeto completamente atualizado e experiência do usuário \n• segurança robusta centro \n• Privacy Enhanced simplificado de backup e recuperação \n• personalizado fundo gestão\n\ndois tipos de transação avançada (gastos de endereços apenas relógio e moeda compartilhada) não são suportados na versão nova neste momento.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "A atualização leva apenas um segundo e seu bitcoins e história estarão seguros. Aqui está o que é melhor:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Houve um problema verificar sua identidade.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Nós projetamos uma nova experiência de carteira 
 
 /* (No Commment) */
 "You must enter a label" = "Você deve digitar um rótulo";
+
+/* (No Commment) */
+"You must have at least one active address" = "Você deve ter pelo menos um endereço ativo";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Você deve ter desabilitada manualmente a par de autenticação de dois fatores.";

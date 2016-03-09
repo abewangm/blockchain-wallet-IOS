@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Completare i passaggi di seguito per garantire la massima sicurezza";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Design completamente aggiornato e user experience";
+
+/* (No Commment) */
 "Confirm Payment" = "La conferma di pagamento";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personalizzare il modo di organizzare i Bitcoin nel tuo portafoglio Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Gestione dei fondi su misura";
 
 /* (No Commment) */
 "Debug" = "Eseguire il debug";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Abilitando questa funzione consentirà tutti gli utenti con un'impronta di Touch ID registrato su questo dispositivo per accedere al tuo portafoglio.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Maggiore Privacy";
 
 /* (No Commment) */
 "Enter PIN" = "Immettere il PIN";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Riprova la convalida";
 
 /* (No Commment) */
+"Robust security center" = "Centro sicurezza PC robusto";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Impostazioni";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Moneta comune non è supportato nella nuova versione in questo momento.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Condividere il tuo xPub autorizza gli altri a tenere traccia di cronologia delle transazioni. Come le persone autorizzate possono essere in grado di distruggere voi di accedere al tuo portafoglio, solo condividere il tuo xPub con persone di che fiducia.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Firma di ingressi";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Ripristino e backup semplificato";
 
 /* (No Commment) */
 "Store Hint" = "Suggerimento di archivio";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Si sta tentando di importare la chiave privata è crittografata. Si prega di inserire la password qui sotto.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "L'aggiornamento dura solo un attimo e i Bitcoin e la storia sarà al sicuri. Ecco cosa c'è di meglio: \n\n• design completamente aggiornato e utente esperienza \n• robusta protezione centro \n• Privacy Enhanced \n• semplificato backup e ripristino \n• personalizzato fondo gestione \n\ndue tipi di transazione avanzata (spesa da indirizzi solo orologio e ha condiviso la foto di moneta) non sono supportati nella nuova versione in questo momento.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "L'aggiornamento dura solo un attimo e i Bitcoin e la storia sarà al sicuri. Ecco ciò che è meglio:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "C'era un problema di verificare la tua identità.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Abbiamo progettato una nuova esperienza di portafo
 
 /* (No Commment) */
 "You must enter a label" = "È necessario immettere un'etichetta";
+
+/* (No Commment) */
+"You must have at least one active address" = "È necessario disporre di almeno un indirizzo attivo";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "È necessario disporre di autenticazione a due fattori disabilitato manualmente a coppia.";

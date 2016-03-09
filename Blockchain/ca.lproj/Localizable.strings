@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Completar els passos sota per a la garantia definitiva";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Disseny completament actualitzada i experiència d'usuari";
+
+/* (No Commment) */
 "Confirm Payment" = "Confirmar el pagament";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personalitza la manera com vostè organitzar els teus bitcoins en la seva cartera de Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Gestió de fons personalitzats";
 
 /* (No Commment) */
 "Debug" = "Depuració";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Permetre aquest tret permetrà tots els usuaris amb una empremta de Tacte ID registrat en aquest dispositiu d'accés a la seva cartera.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Privadesa";
 
 /* (No Commment) */
 "Enter PIN" = "Introduïu el PIN";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Torneu a provar de validació";
 
 /* (No Commment) */
+"Robust security center" = "Centre de seguretat robusta";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Configuració";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Moneda compartit no és compatible amb la versió nova en aquest moment.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Compartir el seu xPub autoritza altres a seguir la història de transacció. Com les persones autoritzades pot ser capaços d'interrompre accedeixin a la seva cartera, el seu xPub només compartir amb gent que confia.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Signatura aportacions";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Simplificat de reserva i recuperació";
 
 /* (No Commment) */
 "Store Hint" = "Pista de botiga";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "La clau privada que intenteu importar està xifrada. Si us plau, introduïu la contrasenya sota.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "L'actualització pren només un segon i seu bitcoins i història estaran fora de perill. Aquí és què és millor: \n\n• disseny completament actualitzat i usuari experiència \n• seguretat robusta centre \n• privacitat realçat simplificat reserva i recuperació \n• personalitzat fons gestió \n\ndos tipus de transacció avançat (despeses de només veure adreces i compartir moneda) no són compatibles amb la nova versió en aquest moment.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "L'actualització pren només un segon i seu bitcoins i història estaran fora de perill. Aquí és què és millor:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Hi havia un problema verificar la vostra identitat.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "You must enter a label" = "Heu d'introduir una etiqueta";
+
+/* (No Commment) */
+"You must have at least one active address" = "Vostè ha de tenir com a mínim una adreça activa";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Vostè ha de tenir d'autenticació de dos factor impossibilitat per parell manualment.";

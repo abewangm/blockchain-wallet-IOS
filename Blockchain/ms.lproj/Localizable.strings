@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Lengkapkan langkah-langkah di bawah untuk keselamatan yang muktamad";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Rekabentuk terkini dan pengalaman pengguna";
+
+/* (No Commment) */
 "Confirm Payment" = "Mengesahkan bayaran";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Menyesuaikan cara anda menguruskan bitcoins anda dalam dompet Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Pengurusan dana yang disesuaikan";
 
 /* (No Commment) */
 "Debug" = "Nyahpepijat";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Mendayakan ciri ini akan membolehkan semua pengguna dengan cap jari ID sentuhan yang berdaftar pada peranti ini untuk mencapai dompet anda.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Privasi dipertingkatkan";
 
 /* (No Commment) */
 "Enter PIN" = "Masukkan PIN";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Mencuba semula pengesahan";
 
 /* (No Commment) */
+"Robust security center" = "Pusat Keselamatan yang teguh";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Seting";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Duit syiling yang dikongsi tidak disokong dalam versi baru pada masa ini.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Perkongsian xPub anda membenarkan orang lain untuk mengesan sejarah transaksi anda. Kerana orang-orang yang diberi kuasa boleh mengganggu anda daripada mengakses dompet anda, hanya berkongsi xPub anda dengan orang-orang yang anda percayai.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Menandatangani input";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Pemulihan dan sandaran dipermudahkan";
 
 /* (No Commment) */
 "Store Hint" = "Kedai pembayang";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Kunci peribadi yang anda sedang cuba import telah dienkripsikan. Sila masukkan kata laluan di bawah.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Naik taraf mengambil masa hanya satu saat dan bitcoins dan sejarah anda akan selamat. Di sini adalah Apakah lebih baik: \n\n• Reka bentuk benar-benar dikemaskini dan pengguna mengalami \n• keselamatan yang teguh Pusat \n• privasi dipertingkatkan ringkas sandaran dan pemulihan \n• Customized pengurusan dana \n\njenis transaksi lanjutan dua (perbelanjaan dari alamat menonton sahaja dan duit syiling yang dikongsi) tidak disokong dalam versi baru pada masa ini.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Naik taraf mengambil masa hanya satu saat dan bitcoins dan sejarah anda akan selamat. Inilah lebih baik daripadanya:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Jadilah masalah mengesahkan identiti anda.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "You must enter a label" = "Awda mesti masukkan label";
+
+/* (No Commment) */
+"You must have at least one active address" = "Anda mesti mempunyai sekurang-kurangnya satu alamat yang aktif";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Anda mesti mempunyai pengesahan dua faktor yang Kurang Upaya untuk pasangan secara manual.";
