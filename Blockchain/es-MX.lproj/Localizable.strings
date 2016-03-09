@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Completar los siguientes pasos para conseguir la mayor seguridad posible";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Diseño totalmente actualizado y experiencia de usuario";
+
+/* (No Commment) */
 "Confirm Payment" = "Confirmar el pago";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personalice la forma en la que organiza sus Bitcoins en su monedero Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Gestión de fondos personalizados";
 
 /* (No Commment) */
 "Debug" = "Depuración";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Activar esta función permitirá el acceso a su monedero a todos los usuarios con una huella dactilar registrada en el Touch ID de este dispositivo.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Privacidad mejorada";
 
 /* (No Commment) */
 "Enter PIN" = "Introduzca el PIN";
@@ -809,6 +818,9 @@
 "Retry Validation" = "Intentar de nuevo Validación";
 
 /* (No Commment) */
+"Robust security center" = "Centro de seguridad robusta";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -875,6 +887,9 @@
 "Settings" = "Configuración";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Moneda común no se admite en la nueva versión en este momento.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Si comparte su xPub, autoriza a otros a seguir su historial de transacciones. Como las personas autorizadas pueden interrumpir el acceso a su monedero, sólo comparta xPub con personas de confianza.";
 
 /* No comment provided by engineer. */
@@ -885,6 +900,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Las firmas de entrada %d";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Simplificado backup y recuperación";
 
 /* (No Commment) */
 "Store Hint" = "Sugerencia de tienda";
@@ -918,6 +936,9 @@
 
 /* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "La clave privada que está intentando importar está cifrada. Ingresa la contraseña abajo.";
+
+/* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "La actualización tarda a sólo un segundo y su historia y bitcoins estará a salvo. Aquí es lo que es mejor:";
 
 /* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
@@ -1199,6 +1220,9 @@ una experiencia de usuario de monedero completamente nueva";
 
 /* (No Commment) */
 "You must enter a label" = "Debe introducir una etiqueta";
+
+/* (No Commment) */
+"You must have at least one active address" = "Debe tener al menos una dirección activa";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Debe tener la verificación de dos pasos para realizar el emparejamiento manual.";

@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Terminez les étapes ci-dessous pour une sécurité optimale";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Conception entièrement actualisée et expérience utilisateur";
+
+/* (No Commment) */
 "Confirm Payment" = "Confirmer le paiement";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personnalisez la façon dont vous rangez vos bitcoins dans votre portefeuille Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Gestion de fonds sur mesure";
 
 /* (No Commment) */
 "Debug" = "Débogage";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "En activant cette fonctionnalité, vous autoriserez tous les utilisateurs ayant leur empreinte digitale Touch ID enregistrée sur cet appareil à accéder à votre portefeuille.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Amélioration de la vie privée";
 
 /* (No Commment) */
 "Enter PIN" = "Saisissez le code PIN";
@@ -809,6 +818,9 @@
 "Retry Validation" = "Réessayer la Validation";
 
 /* (No Commment) */
+"Robust security center" = "Centre de sécurité robuste";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -875,6 +887,9 @@
 "Settings" = "Paramètres";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Pièce partagée n'est pas pris en charge dans la nouvelle version en ce moment.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Partager votre xPub autorise les autres à suivre l'historique de vos transactions. Comme les personnes autorisées peuvent être en mesure de perturber votre accès à votre portefeuille, ne partagez votre xPub qu’avec des gens en qui vous avez confiance.";
 
 /* No comment provided by engineer. */
@@ -885,6 +900,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Entrées de connexion";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Récupération et sauvegarde simplifiée";
 
 /* (No Commment) */
 "Store Hint" = "Enregistrer l’indice";
@@ -918,6 +936,9 @@
 
 /* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "La clé privée que vous essayez d'importer est cryptée. Veuillez entrer le mot de passe ci-dessous.";
+
+/* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "La mise à niveau prend juste une seconde, et votre histoire et bitcoins seront en sécurité. Voici ce qui est mieux :";
 
 /* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
@@ -1199,6 +1220,9 @@ expérience portefeuille pour vous";
 
 /* (No Commment) */
 "You must enter a label" = "Vous devez entrer une étiquette";
+
+/* (No Commment) */
+"You must have at least one active address" = "Vous devez avoir au moins une adresse active";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Vous devez avoir une authentification à deux facteurs désactivée pour jumeler manuellement.";
