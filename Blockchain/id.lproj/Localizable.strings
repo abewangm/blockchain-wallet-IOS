@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Lengkapi langkah-langkah di bawah ini untuk keamanan pamungkas";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Desain benar-benar diperbarui dan pengalaman pengguna";
+
+/* (No Commment) */
 "Confirm Payment" = "Konfirmasi Pembayaran";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Anda dapat menyesuaikan cara Anda mengatur bitcoin dalam dompet Blockchain Anda.";
+
+/* (No Commment) */
+"Customized fund management" = "Pengelolaan dana disesuaikan";
 
 /* (No Commment) */
 "Debug" = "Debug";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Mengaktifkan fitur ini akan memungkinkan semua pengguna dengan sidik jari sentuhan ID terdaftar di perangkat ini untuk mengakses dompet Anda.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Peningkatan privasi";
 
 /* (No Commment) */
 "Enter PIN" = "Masukkan PIN";
@@ -809,6 +818,9 @@
 "Retry Validation" = "Coba lagi Validasi";
 
 /* (No Commment) */
+"Robust security center" = "Pusat keamanan yang kuat";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -875,6 +887,9 @@
 "Settings" = "Pengaturan";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Bersama koin tidak didukung dalam versi baru saat ini.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Berbagi xPub Anda memberi otorisasi orang lain untuk melacak riwayat transaksi Anda. Karena orang yang mendapatkan otorisasi dapat mengganggu Anda mengakses dompet Anda, hanya berbagi xPub Anda dengan orang-orang yang Anda percaya.";
 
 /* No comment provided by engineer. */
@@ -885,6 +900,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Penandatanganan Input";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Sederhana backup dan recovery";
 
 /* (No Commment) */
 "Store Hint" = "Petunjuk Toko";
@@ -918,6 +936,9 @@
 
 /* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Kunci pribadi Anda sedang berusaha Anda impor sedang melakukan enkripsi. Masukkan sandi di bawah ini.";
+
+/* (No Commment) */
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Upgrade mengambil hanya satu detik dan bitcoins dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik:";
 
 /* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
@@ -1199,6 +1220,9 @@ dompet pengalaman untuk Anda";
 
 /* (No Commment) */
 "You must enter a label" = "Anda harus memasukkan label";
+
+/* (No Commment) */
+"You must have at least one active address" = "Anda harus memiliki minimal satu alamat aktif";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Anda harus memiliki dua faktor otentikasi dinonaktifkan untuk pemasangan secara manual.";

@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Son güvenlik için aşağıdaki adımları tamamlayın";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Tamamen güncellenmiş tasarımı ve kullanıcı deneyimi";
+
+/* (No Commment) */
 "Confirm Payment" = "Ödeme onaylamak";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Gelenek belgili tanımlık yol senin bitcoins Blockchain cüzdanında düzenlemek";
+
+/* (No Commment) */
+"Customized fund management" = "Özelleştirilmiş fon yönetimi";
 
 /* (No Commment) */
 "Debug" = "Hata ayıklama";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Bu özellik etkinleştirildiğinde, m-cüzdana erişmek için bu aygıtta kayıtlı Touch kimliği parmak izi olan tüm kullanıcılar sağlayacaktır.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Geliştirilmiş gizlilik";
 
 /* (No Commment) */
 "Enter PIN" = "PIN kodunu girin";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Doğrulama yeniden deneyin";
 
 /* (No Commment) */
+"Robust security center" = "Sağlam Güvenlik Merkezi";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Ayarlar";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Paylaşılan jeton yeni sürümü şu anda desteklenmiyor.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Senin xPub paylaştığınız diğer kişilerin işlem geçmişinizi izlemesi için yetki verir. Sadece yetkili kişiler cüzdanını erişmesini bozmaya mümkün olabilir gibi senin xPub güvendiğiniz kişilerle paylaşın.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Girişleri imzalama";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Basitleştirilmiş yedekleme ve kurtarma";
 
 /* (No Commment) */
 "Store Hint" = "Mağaza ipucu";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Alma girişiminde bulunan özel anahtar şifrelenir. Lütfen parolanızı aşağıya girin.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne: \n\n• tamamen güncelleme tasarımı ve kullanıcı deneyimi \n• güçlü Güvenlik Merkezi \n• Gelişmiş Gizlilik \n• Basitleştirilmiş yedekleme ve kurtarma \n• özelleştirilmiş fon yönetimi. \n\niki gelişmiş hareket tipi (salt izle adresleri ve ortak madeni para harcama) içinde belgili tanımlık yeni yorum şu anda desteklenmiyor.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Senin kimliğini doğrulayan bir hata oluştu.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "You must enter a label" = "Bir etiket girmelisiniz";
+
+/* (No Commment) */
+"You must have at least one active address" = "En az bir etkin adresi olmalıdır";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "İki faktörlü kimlik doğrulamasını çiftine el ile devre dışı olması gerekir.";

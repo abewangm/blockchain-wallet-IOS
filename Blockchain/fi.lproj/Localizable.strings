@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Ohjeiden alla turvallisuuden";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Täysin päivitetty design ja käyttäjäkokemuksen";
+
+/* (No Commment) */
 "Confirm Payment" = "Vahvista maksu";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Mukauttaa tapaa, jolla voit järjestää oman bitcoins Blockchain lompakko";
+
+/* (No Commment) */
+"Customized fund management" = "Mukautetun hallinnointi";
 
 /* (No Commment) */
 "Debug" = "Debug";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Tämän ominaisuuden käyttöönotto Salli kaikkien käyttäjien rekisteröity Touch ID sormenjälki tämän laitteen päästä lompakon.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Parantaa yksityisyyden";
 
 /* (No Commment) */
 "Enter PIN" = "Anna PIN-koodi";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Yritä uudelleen validointi";
 
 /* (No Commment) */
+"Robust security center" = "Vankka Tietoturvakeskus";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Asetukset";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Jaettu kolikon ei tueta uudessa versiossa tällä hetkellä.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Jakaminen sinun xPub antaa toiset jotta jäljittää maksuhistoriastasi. Kuten oikeutetut henkilöt häiritä sinua käyttämästä lompakon, jakaa vain sinun xPub luottamillesi ihmisille.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Allekirjoittaminen tuotantopanosten";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Yksinkertaistettu varmuuskopiointi ja palautus";
 
 /* (No Commment) */
 "Store Hint" = "Store Vihje";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Yrität tuoda yksityinen avain salataan. Kirjoita salasana alla.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Päivitys vie vain toinen ja bitcoins ja historia ovat turvassa. Tässä on mitä on parempi: \n\n• päivitetty kokonaan suunnittelu ja käyttäjien kokemuksia \n• luotettava tietoturva center\n• Enhanced tietosuoja \n• yksinkertaistettu varmuuskopiointi ja palautus \n• räätälöidyt hallinnointi\n\nkaksi kehittynyt tapahtumatyyppiä (kuluttaa vain katsella-osoitteet ja jaettu kolikon) ei tueta tällä hetkellä uusi versio.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Päivitys vie vain toinen ja bitcoins ja historia ovat turvassa. Tässä on, mikä on parempi:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ollut ongelmia henkilöllisyyden todentamista.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "You must enter a label" = "Kirjoita otsikko";
+
+/* (No Commment) */
+"You must have at least one active address" = "Sinulla on vähintään yksi aktiivinen osoite";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Sinulla on kaksivaiheinen todennus pois pari käsin.";

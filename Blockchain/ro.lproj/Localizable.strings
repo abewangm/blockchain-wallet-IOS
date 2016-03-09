@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Finalizaţi paşii de mai jos pentru final de securitate";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Design complet actualizat şi experienţa utilizatorului";
+
+/* (No Commment) */
 "Confirm Payment" = "Confirma plata";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Particularizați modul în care organizați bitcoins dumneavoastră în portofel Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Gestionarea Fondului personalizate";
 
 /* (No Commment) */
 "Debug" = "Depanare";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Activarea această facilitate va permite tuturor utilizatorilor cu o amprentă de Touch ID înregistraţi pe acest dispozitiv accesul la portofel.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Confidenţialitate îmbunătăţită";
 
 /* (No Commment) */
 "Enter PIN" = "Introduceţi codul PIN";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Reîncercați validare";
 
 /* (No Commment) */
+"Robust security center" = "Centrul de securitate robustă";
+
+/* (No Commment) */
 "SMS" = "SMS-URI";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Setări";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Monedă comună nu este acceptată în noua versiune în acest moment.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Partajare dumneavoastră xPub autorizează altora pentru a urmări Istoricul tranzactiei. Ca persoane autorizate ar putea să perturbe-vă la accesarea portofel, numai cota ta xPub cu oameni tu trust.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Semnarea intrări";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Simplificat de backup şi recuperare";
 
 /* (No Commment) */
 "Store Hint" = "Magazin de sugestie";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Cheia privată care încercați să importați este criptat. Vă rugăm să introduceţi parola mai jos.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine: \n\n• complet actualizat design şi utilizator experienţă \n• securitate robustă centrul \n• Enhanced confidențialitate \n• simplificată de backup şi recuperare \n• personalizate Fondul management \n\ndouă tipuri de avansate tranzacţie (cheltuieli de doar uita-te la adresele şi la comun de monede) nu sunt acceptate în noua versiune în acest moment.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "A fost o problemă de verificarea identităţii.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "You must enter a label" = "Introduceţi o etichetă";
+
+/* (No Commment) */
+"You must have at least one active address" = "Trebuie să aveţi cel puţin o adresă activ";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Trebuie să aveţi două-factor de autentificare cu handicap să pereche manual.";

@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Hoàn thành các bước dưới đây để cuối cùng an ninh";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Thiết kế hoàn toàn Cập Nhật và kinh nghiệm người dùng";
+
+/* (No Commment) */
 "Confirm Payment" = "Xác nhận thanh toán";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Tuỳ chỉnh cách bạn tổ chức của bạn bitcoins trong ví của bạn Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Quản lý quỹ tùy chỉnh";
 
 /* (No Commment) */
 "Debug" = "Gỡ lỗi";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Cho phép tính năng này sẽ cho phép tất cả người dùng với một dấu vân tay Touch ID đăng ký trên thiết bị này để truy cập để chi tiêu của bạn.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Tăng cường bảo mật";
 
 /* (No Commment) */
 "Enter PIN" = "Nhập mã PIN";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Thử lại xác nhận";
 
 /* (No Commment) */
+"Robust security center" = "Trung tâm bảo mật mạnh mẽ";
+
+/* (No Commment) */
 "SMS" = "TIN NHẮN SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Cài đặt";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Đồng xu được chia sẻ không được hỗ trợ trong phiên bản mới tại thời điểm này.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Chia sẻ xPub của bạn cho phép những người khác để theo dõi lịch sử giao dịch của bạn. Là người được ủy quyền có thể ngăn cản bạn truy cập vào ví của bạn, chỉ chia sẻ xPub của bạn với những người bạn tin cậy.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Ký kết đầu vào";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Đơn giản hóa sao lưu và phục hồi";
 
 /* (No Commment) */
 "Store Hint" = "Cửa hàng gợi ý";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Khoá riêng bạn đang cố gắng nhập khẩu được mã hóa. Vui lòng nhập mật khẩu dưới đây.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Việc nâng cấp có chỉ một lần thứ hai và bitcoins và lịch sử của bạn sẽ được an toàn. Dưới đây là những gì là tốt hơn: \n\n• hoàn toàn Cập Nhật thiết kế và người sử dụng kinh nghiệm \n• bảo mật mạnh mẽ Trung tâm • tăng cường bảo mật \n• giản thể sao lưu và phục hồi \n• Customized quản l ý quỹ hai loại nâng cao giao dịch (chi tiêu từ địa chỉ chỉ xem và chia sẻ xu) không được hỗ trợ trong phiên bản mới tại thời điểm này.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Việc nâng cấp diễn một chút và bitcoins và lịch sử của bạn sẽ được an toàn. Dưới đây là những gì tốt hơn:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Đã có một vấn đề xác minh danh tính của bạn.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "You must enter a label" = "Bạn phải nhập một nhãn";
+
+/* (No Commment) */
+"You must have at least one active address" = "Bạn phải có ít nhất một địa chỉ hoạt động";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Bạn phải xác thực 2 yếu tố vô hiệu hóa cặp theo cách thủ công.";

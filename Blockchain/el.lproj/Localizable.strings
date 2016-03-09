@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Ολοκληρώστε τα παρακάτω βήματα για την απόλυτη ασφάλεια";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Εντελώς επικαιροποιημένου σχεδίου και εμπειρία χρήστη";
+
+/* (No Commment) */
 "Confirm Payment" = "Επιβεβαιώσετε την πληρωμή";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Να προσαρμόσετε τον τρόπο που μπορείτε να οργανώσετε σας bitcoins στο πορτοφόλι σας Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Προσαρμοσμένη ταμείο διαχείρισης";
 
 /* (No Commment) */
 "Debug" = "Εντοπισμού σφαλμάτων";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Ενεργοποίηση αυτής της δυνατότητας θα επιτρέπουν σε όλους τους χρήστες με μια καταστατική ID αφής δακτυλικών αποτυπωμάτων σε αυτήν την συσκευή για να αποκτήσετε πρόσβαση στο πορτοφόλι σας.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Ενισχυμένου απορρήτου";
 
 /* (No Commment) */
 "Enter PIN" = "Εισαγάγετε το PIN";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Επαναλάβετε την επικύρωση";
 
 /* (No Commment) */
+"Robust security center" = "Ισχυρή ασφάλεια κέντρο";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Ρυθμίσεις";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Κοινόχρηστο κέρμα δεν υποστηρίζεται στη νέα έκδοση αυτή τη στιγμή.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Κοινή χρήση xPub σας εξουσιοδοτεί άλλους για να παρακολουθείτε το ιστορικό συναλλαγών σου. Καθώς και εξουσιοδοτημένα πρόσωπα μπορεί να είναι σε θέση να διαταράξει σας από την πρόσβαση στο πορτοφόλι σας, μοιράζονται μόνο σας xPub με ανθρώπους που εμπιστεύεστε.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Υπογραφή εισροές";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης";
 
 /* (No Commment) */
 "Store Hint" = "Κατάστημα υπόδειξη";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Το ιδιωτικό κλειδί που προσπαθείτε να εισαγάγετε είναι κρυπτογραφημένη. Παρακαλώ εισάγετε τον παρακάτω κωδικό πρόσβασης.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο: \n\n• Ενημερώθηκε πλήρως σχεδίαση και χρήστη εμπειρία \n• ισχυρή ασφάλεια κέντρο \n• ενισχυμένη προστασία της ιδιωτικής \n• ζωής απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης \n• προσαρμοσμένη διαχείριση κεφαλαίων \n\nδύο τύποι προηγμένη κίνησης (οι δαπάνες από το ρολόι μόνο διευθύνσεις και κοινού νομίσματος) δεν υποστηρίζονται στη νέα έκδοση αυτή τη στιγμή.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Υπήρχε ένα πρόβλημα που επαληθεύει την ταυτότητά σας.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "You must enter a label" = "Πρέπει να πληκτρολογήσετε μια ετικέτα";
+
+/* (No Commment) */
+"You must have at least one active address" = "Πρέπει να έχετε τουλάχιστον μία ενεργή διεύθυνση";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Πρέπει να έχετε δύο παράγοντα ελέγχου ταυτότητας, άτομα με ειδικές ανάγκες για τα ζευγάρι με μη αυτόματο τρόπο.";

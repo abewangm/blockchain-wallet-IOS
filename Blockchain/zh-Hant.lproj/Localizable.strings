@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "完成下列步驟以最終的安全";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "完全更新的設計和使用者體驗";
+
+/* (No Commment) */
 "Confirm Payment" = "確認付款";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "自訂您組織您的比特幣在皮夾裡 Blockchain 的方式";
+
+/* (No Commment) */
+"Customized fund management" = "自訂的基金管理";
 
 /* (No Commment) */
 "Debug" = "調試";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "啟用此功能將允許所有使用者與註冊的觸摸 ID 指紋在此設備上訪問到你的錢包。";
+
+/* (No Commment) */
+"Enhanced Privacy" = "增強的隱私保護";
 
 /* (No Commment) */
 "Enter PIN" = "輸入 PIN";
@@ -803,6 +812,9 @@
 "Retry Validation" = "驗證重試";
 
 /* (No Commment) */
+"Robust security center" = "強健的安全中心";
+
+/* (No Commment) */
 "SMS" = "短信";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "設置";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "此時，共用的硬幣不在新版本的支援。";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "分享你的 xPub 授權他人跟蹤您的交易歷史。獲授權的人士可能能夠擾亂你訪問你的錢包，只與你信任的人分享你的 xPub。";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "簽署的投入";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "簡化的備份和恢復";
 
 /* (No Commment) */
 "Store Hint" = "存儲提示";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "您試圖導入的私密金鑰進行加密。請輸入下面的密碼。";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是: \n\n• 完全更新設計和使用者體驗 \n• 魯棒安全中心\n• 增強隱私 \n• 簡化備份和恢復 \n• 定制基金管理\n\n兩種先進的交易類型 (開支從只手錶位址和共用的硬幣) 在這次的新版本中不支援。";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "還有一個問題，驗證您的身份。";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "You must enter a label" = "您必須輸入一個標籤";
+
+/* (No Commment) */
+"You must have at least one active address" = "您必須具有至少一個活動位址";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "您必須手動禁用對雙因素身份驗證。";

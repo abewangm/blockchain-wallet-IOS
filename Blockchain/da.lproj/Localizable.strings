@@ -221,6 +221,9 @@
 "Complete the steps below for ultimate security" = "Udfør trin nedenfor for ultimative sikkerhed";
 
 /* (No Commment) */
+"Completely updated design and user experience" = "Helt opdateret design og brugeroplevelse";
+
+/* (No Commment) */
 "Confirm Payment" = "Bekræfte betaling";
 
 /* (No Commment) */
@@ -285,6 +288,9 @@
 
 /* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Tilpasse den måde, du organisere dine bitcoins i tegnebogen Blockchain";
+
+/* (No Commment) */
+"Customized fund management" = "Tilpassede fondsforvaltning";
 
 /* (No Commment) */
 "Debug" = "Debug";
@@ -360,6 +366,9 @@
 
 /* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktivering af denne funktion vil give alle brugere med en registreret Touch ID fingeraftryk på denne enhed til at få adgang til din tegnebog.";
+
+/* (No Commment) */
+"Enhanced Privacy" = "Forbedret Privacy";
 
 /* (No Commment) */
 "Enter PIN" = "Indtast PIN-kode";
@@ -803,6 +812,9 @@
 "Retry Validation" = "Retry validering";
 
 /* (No Commment) */
+"Robust security center" = "Robust Sikkerhedscenter";
+
+/* (No Commment) */
 "SMS" = "SMS";
 
 /* (No Commment) */
@@ -866,6 +878,9 @@
 "Settings" = "Indstillinger";
 
 /* (No Commment) */
+"Shared Coin is not supported in the new version at this time." = "Fælles mønt understøttes ikke i den nye version på dette tidspunkt.";
+
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Deling af din xPub bemyndiger andre til at spore din transaktionsoversigt. Som autoriserede personer kan muligvis forstyrre dig fra at få adgang til tegnebogen, kun dele din xPub med mennesker du har tillid til.";
 
 /* No comment provided by engineer. */
@@ -876,6 +891,9 @@
 
 /* (No Commment) */
 "Signing Inputs" = "Underskrive indgange";
+
+/* (No Commment) */
+"Simplified backup and recovery" = "Forenklet backup og gendannelse";
 
 /* (No Commment) */
 "Store Hint" = "Butik vink";
@@ -911,15 +929,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Den private nøgle, du forsøger at importere er krypteret. Angiv adgangskode nedenfor.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:
-
-• Completely updated design and user experience
-• Robust security center
-• Enhanced Privacy
-• Simplified backup and recovery
-• Customized fund management
-
-Two advanced transaction types (Spending from watch-only addresses and Shared Coin) are not supported in the new version at this time." = "Opgraderingen tager kun et sekund og din bitcoins og historie vil være sikker. Her er hvad der er bedre: \n\n• helt opdateret design og bruger erfaringer \n• Robust sikkerhed center \n• forbedret Privacy \n• forenklet backup og recovery \n• tilpasset fondsforvaltning\n\nto avancerede posteringstyper (udgifter fra ur-kun adresser og fælles mønt) ikke understøttes i den nye version på dette tidspunkt.";
+"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Opgraderingen tager kun et sekund og din bitcoins og historie vil være sikker. Her er hvad er bedre:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Der var et problem, der bekræfter din identitet.";
@@ -1177,6 +1187,9 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 
 /* (No Commment) */
 "You must enter a label" = "Du skal angive en etiket";
+
+/* (No Commment) */
+"You must have at least one active address" = "Du skal have mindst én aktiv adresse";
 
 /* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Du skal have to-faktor autentificering deaktiveret par manuelt.";
