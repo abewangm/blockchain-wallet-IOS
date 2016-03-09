@@ -101,6 +101,7 @@
 @property(nonatomic) NSDictionary *accountInfo;
 
 @property(nonatomic) NSString *lastScannedWatchOnlyAddress;
+@property(nonatomic) NSString *lastImportedAddress;
 @property(nonatomic) BOOL didReceiveMessageForLastTransaction;
 
 // HD properties:

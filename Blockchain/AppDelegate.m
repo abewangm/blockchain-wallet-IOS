@@ -1235,21 +1235,27 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
-    NSString *messageWithArgument = [app.wallet isWatchOnlyLegacyAddress:address] ? BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT : BC_STRING_IMPORTED_PRIVATE_KEY_ARGUMENT;
+    self.wallet.lastImportedAddress = address;
     
-    __block id notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil queue:nil usingBlock:^(NSNotification *note) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:messageWithArgument, address] preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
-        if (self.topViewControllerDelegate) {
-            if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
-                [self.topViewControllerDelegate presentAlertController:alert];
-            }
-        } else {
-            [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alertUserOfImportedKey) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+}
+
+- (void)alertUserOfImportedKey
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    
+    NSString *messageWithArgument = [app.wallet isWatchOnlyLegacyAddress:self.wallet.lastImportedAddress] ? BC_STRING_IMPORTED_WATCH_ONLY_ADDRESS_ARGUMENT : BC_STRING_IMPORTED_PRIVATE_KEY_ARGUMENT;
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:[NSString stringWithFormat:messageWithArgument, self.wallet.lastImportedAddress] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    if (self.topViewControllerDelegate) {
+        if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+            [self.topViewControllerDelegate presentAlertController:alert];
         }
-        [[NSNotificationCenter defaultCenter] removeObserver:notificationObserver name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
-    }];
+    } else {
+        [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)didImportIncorrectPrivateKey:(NSString *)address
