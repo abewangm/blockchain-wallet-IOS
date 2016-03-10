@@ -63,7 +63,7 @@
     btcButton.titleLabel.minimumScaleFactor =  0.75f;
     [btcButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
     
-    [btcButton setTitle:[app formatMoney:ABS(transaction.result)] forState:UIControlStateNormal];
+    [btcButton setTitle:[app formatMoney:ABS(transaction.amount)] forState:UIControlStateNormal];
     
     if([transaction.txType isEqualToString:TX_TYPE_TRANSFER]) {
         [btcButton setBackgroundColor:COLOR_TRANSACTION_TRANSFERRED];

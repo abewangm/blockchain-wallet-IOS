@@ -25,7 +25,7 @@
     transaction.fee = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FEE] longLongValue];
     transaction.myHash = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_MY_HASH];
     transaction.txType = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TX_TYPE];
-    transaction.result = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_RESULT] longLongValue];
+    transaction.amount = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_AMOUNT] longLongValue];
     transaction.time = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TIME] longLongValue];
     transaction.fromWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY] boolValue];
     transaction.toWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY] boolValue];
