@@ -90,6 +90,7 @@
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 
 - (void)sendFromWatchOnlyAddress;
+- (void)transferFundsFromAddress:(NSString *)address;
 
 - (void)reload;
 

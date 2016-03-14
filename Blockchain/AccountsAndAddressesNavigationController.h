@@ -24,5 +24,6 @@
 
 - (void)didGenerateNewAddress;
 - (void)reload;
+- (void)alertUserToTransferAllFunds;
 
 @end

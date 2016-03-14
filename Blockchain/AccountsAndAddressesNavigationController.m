@@ -11,6 +11,7 @@
 #import "AccountsAndAddressesDetailViewController.h"
 #import "AppDelegate.h"
 #import "PrivateKeyReader.h"
+#import "SendViewController.h"
 
 @interface AccountsAndAddressesNavigationController ()
 
@@ -146,6 +147,36 @@
         [self.backButton setTitle:@"" forState:UIControlStateNormal];
         [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
     }
+}
+
+- (void)alertUserToTransferAllFunds
+{
+    UIAlertController *alertToTransfer = [UIAlertController alertControllerWithTitle:BC_STRING_TRANSFER_FUNDS message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_TRANSFER_FUNDS_DESCRIPTION_ONE, BC_STRING_TRANSFER_FUNDS_DESCRIPTION_TWO] preferredStyle:UIAlertControllerStyleAlert];
+    [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_TRANSFER_FUNDS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self transferAllFundsClicked];
+    }]];
+    [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_DONT_SHOW_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT];
+    }]];
+    
+    [self presentViewController:alertToTransfer animated:YES completion:nil];
+}
+
+- (void)transferAllFundsClicked
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [app closeSideMenu];
+    }];
+    
+    if (!app.sendViewController) {
+        app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
+    }
+    
+    
+    [app showSendCoins];
+    
+    [app.sendViewController transferFundsFromAddress:@""];
 }
 
 - (IBAction)backButtonClicked:(UIButton *)sender

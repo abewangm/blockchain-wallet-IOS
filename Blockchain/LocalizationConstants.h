@@ -433,8 +433,12 @@
 
 #define BC_STRING_MAKE_DEFAULT NSLocalizedString(@"Make Default", nil)
 #define BC_STRING_DEFAULT NSLocalizedString(@"Default", nil)
+#define BC_STRING_TRANSFER_FUNDS NSLocalizedString(@"Transfer Funds", nil)
+#define BC_STRING_TRANSFER_FUNDS_DESCRIPTION_ONE NSLocalizedString(@"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet.", nil)
+#define BC_STRING_TRANSFER_FUNDS_DESCRIPTION_TWO NSLocalizedString(@"Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features.", nil)
 #define BC_STRING_ARCHIVE_FOOTER_TITLE NSLocalizedString(@"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time.", nil)
 #define BC_STRING_ARCHIVED_FOOTER_TITLE NSLocalizedString(@"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again.", nil)
+#define BC_STRING_TRANSFER_FOOTER_TITLE NSLocalizedString(@"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet.", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_FOOTER_TITLE_ONE NSLocalizedString(@"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately.", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_FOOTER_TITLE_TWO NSLocalizedString(@"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions.", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_WARNING NSLocalizedString(@"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust.", nil)

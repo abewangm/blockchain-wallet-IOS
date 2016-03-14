@@ -54,20 +54,6 @@
     [self.tableView reloadData];
 }
 
-- (void)didSelectAddress:(NSString *)address
-{
-    self.clickedAddress = address;
-    self.clickedAccount = -1;
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL sender:nil];
-}
-
-- (void)didSelectAccount:(int)account
-{
-    self.clickedAccount = account;
-    self.clickedAddress = nil;
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL sender:nil];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL]) {
@@ -80,6 +66,22 @@
             detailViewController.address = nil;
         }
     }
+}
+
+#pragma mark - Actions
+
+- (void)didSelectAddress:(NSString *)address
+{
+    self.clickedAddress = address;
+    self.clickedAccount = -1;
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL sender:nil];
+}
+
+- (void)didSelectAccount:(int)account
+{
+    self.clickedAccount = account;
+    self.clickedAddress = nil;
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL sender:nil];
 }
 
 #pragma mark - Helpers
