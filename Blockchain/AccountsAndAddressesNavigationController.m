@@ -48,6 +48,16 @@
     [topBar addSubview:backButton];
     self.backButton = backButton;
     
+    UIButton *warningButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    warningButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    warningButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+    [warningButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [warningButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
+    [warningButton addTarget:self action:@selector(alertUserToTransferAllFunds) forControlEvents:UIControlEventTouchUpInside];
+    [topBar addSubview:warningButton];
+    warningButton.hidden = YES;
+    self.warningButton = warningButton;
+    
     BCFadeView *busyView = [[BCFadeView alloc] initWithFrame:app.window.rootViewController.view.frame];
     busyView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
     UIView *textWithSpinnerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 110)];
@@ -134,6 +144,8 @@
 {
     [super viewDidLayoutSubviews];
     
+    self.warningButton.frame = CGRectMake(6, 16, 85, 51);
+    
     if (self.viewControllers.count == 1 || [self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
         self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -167,12 +179,12 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         [app closeSideMenu];
+        app.topViewControllerDelegate = nil;
     }];
     
     if (!app.sendViewController) {
         app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
-    
     
     [app showSendCoins];
     

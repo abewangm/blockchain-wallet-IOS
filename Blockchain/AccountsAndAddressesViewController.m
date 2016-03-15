@@ -41,6 +41,15 @@
     [super viewWillAppear:animated];
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     navigationController.headerLabel.text = nil;
+    
+    [self displayTransferFundsWarningIfAppropriate];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    navigationController.warningButton.hidden = YES;
 }
 
 - (void)dealloc
@@ -52,6 +61,19 @@
 {
     allKeys = [app.wallet allLegacyAddresses];
     [self.tableView reloadData];
+    
+    [self displayTransferFundsWarningIfAppropriate];
+}
+
+- (void)displayTransferFundsWarningIfAppropriate
+{
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    
+    if ([app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForActiveLegacyAddresses] > 0) {
+        navigationController.warningButton.hidden = NO;
+    } else {
+        navigationController.warningButton.hidden = YES;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
