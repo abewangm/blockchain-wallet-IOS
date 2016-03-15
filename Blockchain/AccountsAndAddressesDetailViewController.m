@@ -128,7 +128,10 @@ typedef enum {
 
 - (void)transferFundsFromAddressClicked
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [app closeSideMenu];
+        app.topViewControllerDelegate = nil;
+    }];
     
     if (!app.sendViewController) {
         app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
