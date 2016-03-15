@@ -329,7 +329,7 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment');
     // In case dynamic fee service fails, default to 30000
-    currentPayment = new Payment({ feePerKb: 30000 });
+    currentPayment = new Payment();
 }
 
 MyWalletPhone.changePaymentFrom = function(from) {
@@ -365,13 +365,13 @@ MyWalletPhone.changePaymentAmount = function(amount) {
 }
 
 MyWalletPhone.checkIfUserIsOverSpending = function() {
-
-    currentPayment.payment.then(function(x) {
+    
+    var checkForOverSpending = function(x) {
         device.execute('check_max_amount:fee:', [x.sweepAmount, x.sweepFee]);
         console.log('checking for overspending: maxAmount and fee are' + x.sweepAmount + ',' + x.sweepFee);
-
-        return x;
-    }).catch(function(error) {
+    }
+    
+    currentPayment.payment.then(checkForOverSpending).catch(function(error) {
         var errorArgument;
         if (error.error) {
             errorArgument = error.error;
@@ -409,33 +409,25 @@ MyWalletPhone.sweepPaymentThenConfirm = function(willConfirm) {
     });
 };
 
-
-MyWalletPhone.getSizeEstimate = function() {
-    currentPayment.sideEffect(function (x) {console.log('txsize');console.log(x.transaction.sizeEstimate);
-        device.execute('estimate_transaction_size:', [x.transaction.sizeEstimate]);
+MyWalletPhone.setForcedTransactionFee = function(fee, afterEvaluation) {
+        
+    currentPayment.fee(fee).prebuild(true).sideEffect(function (x) {
+        console.log('forced fee set:');
+        console.log(x.finalFee);
+        console.log('absolute fee bounds:');
+        console.log(x.absoluteFeeBounds);
+        device.execute('update_forced_fee:bounds:afterEvaluation:', [x.finalFee, x.absoluteFeeBounds, afterEvaluation]);
     });
 }
 
-MyWalletPhone.setForcedTransactionFee = function(fee) {
-    currentPayment.fee(fee).build().sideEffect(function (x) {
-        console.log('payment fee set to ');
-        console.log(x.transaction.fee);
-        device.execute('update_forced_fee:', [x.forcedFee]);
-    });
-}
-
-MyWalletPhone.setFeePerKilobyte = function(fee) {
-    currentPayment.feePerKb(fee).sideEffect(function (x) {
-        console.log('fee per kb set to ');
-        console.log(x.feePerKb);
-    });
-}
-
-MyWalletPhone.getTransactionFee = function() {
+MyWalletPhone.getTransactionFee = function(advanced) {
     if (currentPayment) {
-        currentPayment.build().sideEffect(function (x) {
-            device.execute('did_get_fee:', [x.transaction.fee]);
-        });
+        
+        var isAdvanced = Boolean(advanced);
+
+        currentPayment.prebuild(isAdvanced).sideEffect(function (x) {
+            device.execute('did_get_fee:', [x.finalFee]);
+        }).build();
         
         currentPayment.payment.catch(function(error) {
             var errorArgument;
@@ -563,21 +555,6 @@ MyWalletPhone.quickSend = function() {
     
     var id = ''+Math.round(Math.random()*100000);
     
-    var listener = {
-        on_start : function() {
-            device.execute('tx_on_start:', [id]);
-        },
-        on_begin_signing : function() {
-            device.execute('tx_on_begin_signing:', [id]);
-        },
-        on_sign_progress : function(i) {
-            device.execute('tx_on_sign_progress:input:', [id, i]);
-        },
-        on_finish_signing : function() {
-            device.execute('tx_on_finish_signing:', [id]);
-        }
-    };
-    
     var success = function(payment) {
         device.execute('tx_on_success:', [id]);
         delete pendingTransactions[id];
@@ -588,7 +565,21 @@ MyWalletPhone.quickSend = function() {
         delete pendingTransactions[id];
     };
     
-    currentPayment.listener(listener);
+    currentPayment.on('on_start', function () {
+        device.execute('tx_on_start:', [id]);
+    });
+    
+    currentPayment.on('on_begin_signing', function() {
+       device.execute('tx_on_begin_signing:', [id]);
+    });
+    
+    currentPayment.on('on_sign_progress', function(i) {
+        device.execute('tx_on_sign_progress:input:', [id, i]);
+    });
+    
+    currentPayment.on('on_finish_signing', function(i) {
+        device.execute('tx_on_finish_signing:', [id]);
+    });
     
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {

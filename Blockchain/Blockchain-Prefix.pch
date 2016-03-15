@@ -174,7 +174,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DYNAMIC_FEE_SERVICE_URL @"https://api.staging.blockchain.co.uk/fees"
 
 #define HTML_CONNECT_SRC_PLACEHOLDER @"PLACEHOLDER_CONNECT_SRC"
-#define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info https://api.blockchain.info"
+#define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info https://api.blockchain.info https://api.staging.blockchain.co.uk"
 
 #define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
 #define ZEROBLOCK_TITLE @"ZeroBlock"
@@ -286,8 +286,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define SATOSHI 1e8 // 100,000,000
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
-
-#define FEE_MINIMUM 5000
 
 #define ANIMATION_DURATION .2f
 #define ANIMATION_DURATION_LONG .5f

@@ -83,7 +83,7 @@
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm;
 - (void)didGetFee:(NSNumber *)fee;
-- (void)didChangeForcedFee:(NSNumber *)fee;
+- (void)didChangeForcedFee:(NSNumber *)fee bounds:(NSArray *)bounds afterEvaluation:(BOOL)afterEvaluation;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -262,10 +262,8 @@
 - (void)changePaymentAmount:(uint64_t)amount;
 - (void)sweepPaymentThenConfirm:(BOOL)willConfirm;
 - (void)checkIfOverspending;
-- (void)setFeePerKilobyte:(uint64_t)feePerKb;
-- (void)setForcedTransactionFee:(uint64_t)fee;
-- (void)getTransactionFee;
-- (void)getTransactionSizeEstimate;
+- (void)setForcedTransactionFee:(uint64_t)fee afterEvaluation:(BOOL)afterEvaluation;
+- (void)getTransactionFee:(BOOL)customFee;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;

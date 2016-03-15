@@ -31,6 +31,7 @@
 @property (nonatomic) uint64_t upperRecommendedLimit;
 @property (nonatomic) uint64_t lowerRecommendedLimit;
 @property (nonatomic) uint64_t estimatedTransactionSize;
+@property (nonatomic) BOOL customFeeMode;
 
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
@@ -171,8 +172,6 @@ BOOL displayingLocalSymbolSend;
     self.recommendedFees = nil;
     
     [self changeToDefaultFeeMode];
-    
-    [self getDynamicFee];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
@@ -680,10 +679,10 @@ BOOL displayingLocalSymbolSend;
     }
     UIAlertController *alertForFeeOutsideRecommendedRange = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:useSuggestedFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self changeForcedFee:suggestedFee];
+        [self changeForcedFee:suggestedFee afterEvaluation:YES];
     }]];
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:keepUserInputFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self changeForcedFee:fee];
+        [self changeForcedFee:fee afterEvaluation:YES];
     }]];
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [app.tabViewController presentViewController:alertForFeeOutsideRecommendedRange animated:YES completion:nil];
@@ -716,24 +715,14 @@ BOOL displayingLocalSymbolSend;
 
 - (void)changeToCustomFeeMode
 {
-    [continuePaymentAccessoryButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-    [continuePaymentButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-    
-    [continuePaymentAccessoryButton addTarget:self action:@selector(getTransactionSizeEstimate) forControlEvents:UIControlEventTouchUpInside];
-    [continuePaymentButton addTarget:self action:@selector(getTransactionSizeEstimate) forControlEvents:UIControlEventTouchUpInside];
-    
     [self arrangeViewsToFeeMode];
+    self.customFeeMode = YES;
 }
 
 - (void)changeToDefaultFeeMode
-{
-    [continuePaymentAccessoryButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-    [continuePaymentButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-    
-    [continuePaymentAccessoryButton addTarget:self action:@selector(sendPaymentClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [continuePaymentButton addTarget:self action:@selector(sendPaymentClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
+{    
     [self arrangeViewsToDefaultMode];
+    self.customFeeMode = NO;
 }
 
 - (void)arrangeViewsToFeeMode
@@ -1020,11 +1009,11 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)getTransactionFeeWithSuccess:(void (^)())success error:(void (^)())error
+- (void)getTransactionFeeWithSuccess:(void (^)())success error:(void (^)())error advanced:(BOOL)isAdvanced
 {
     self.getTransactionFeeSuccess = success;
     
-    [app.wallet getTransactionFee];
+    [app.wallet getTransactionFee:isAdvanced];
 }
 
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee
@@ -1046,7 +1035,7 @@ BOOL displayingLocalSymbolSend;
         
         [self getTransactionFeeWithSuccess:^{
             [weakSelf showSummary];
-        } error:nil];
+        } error:nil advanced:self.customFeeMode];
     }
 }
 
@@ -1090,104 +1079,40 @@ BOOL displayingLocalSymbolSend;
     [app.wallet sweepPaymentThenConfirm:willConfirm];
 }
 
-- (void)changeForcedFee:(uint64_t)absoluteFee
+- (void)changeForcedFee:(uint64_t)absoluteFee afterEvaluation:(BOOL)afterEvaluation
 {
-    [app.wallet setForcedTransactionFee:absoluteFee];
+    [app.wallet setForcedTransactionFee:absoluteFee afterEvaluation:(BOOL)afterEvaluation];
 }
 
-- (void)didChangeForcedFee:(NSNumber *)fee
+- (void)didChangeForcedFee:(NSNumber *)fee bounds:(NSArray *)bounds afterEvaluation:(BOOL)afterEvaluation
 {
-    [self sendPaymentClicked:nil];
-    
     self.feeFromTransactionProposal = [fee longLongValue];
+    feeField.text = [app formatAmount:self.feeFromTransactionProposal localCurrency:FALSE];
     
-    uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
+    if (afterEvaluation) {
+        [self checkMaxFee];
+        return;
+    }
     
-    self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
-    self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
-    
-    self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
-    self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
-}
-
-- (void)changeFeePerKilobyte:(uint64_t)fee
-{
-    [app.wallet setFeePerKilobyte:fee];
-}
-
-- (void)getDynamicFee
-{
-    NSURL *url = [NSURL URLWithString:DYNAMIC_FEE_SERVICE_URL];
-    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:url];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:req completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+    if ([self evaluateFee:[fee longLongValue] absoluteFeeBounds:bounds]) {
+        uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
         
-        if (!error) {
-            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)response;
-            if (httpResp.statusCode == 200) {
-                NSError *jsonError;
-                NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-                if (!jsonError) {
-                    
-                    self.recommendedFees = jsonObject;
-                    self.isSurgeOccurring = [jsonObject[DICTIONARY_KEY_FEE_ESTIMATE][1][DICTIONARY_KEY_SURGE] boolValue];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self changeFeePerKilobyte:[self suggestedFee]];
-                    });
-            
-                }
-                else {
-                    DLog(@"%@", jsonError);
-                }
-            }
-            else {
-                DLog(@"Error: statusCode %d", httpResp.statusCode);
-            }
-        }
-        else{
-            DLog(@"%@", error);
-        }
+        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
+        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
         
-    }];
-    
-    [dataTask resume];
+        self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
+        self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
+        
+        [self checkMaxFee];
+    }
 }
 
-- (uint64_t)guessAbsoluteFee:(uint64_t)size fee:(uint64_t)feePerKb
-{
-    return feePerKb * size/1000;
-}
-
-- (void)getTransactionSizeEstimate
-{
-    [app.wallet getTransactionSizeEstimate];
-}
-
-- (void)updateEstimatedTransactionSize:(uint64_t)size
-{
-    self.estimatedTransactionSize = size;
-    
-    uint64_t customFee = [app.wallet parseBitcoinValue:feeField.text];
-    
-    if ([self evaluateFeeForTransactionSize:customFee]) {
-        [self changeForcedFee:customFee];
-    };
-}
-
-- (BOOL)evaluateFeeForTransactionSize:(uint64_t)fee
+- (BOOL)evaluateFee:(uint64_t)fee absoluteFeeBounds:(NSArray *)bounds
 {
     BOOL isWithinRange = YES;
     
-    uint64_t highFee = (uint64_t)[self.recommendedFees[DICTIONARY_KEY_FEE_ESTIMATE][0][DICTIONARY_KEY_FEE] longLongValue];
-    uint64_t lowFee = (uint64_t)[self.recommendedFees[DICTIONARY_KEY_FEE_ESTIMATE][5][DICTIONARY_KEY_FEE] longLongValue];
-    
-    self.upperRecommendedLimit = [self guessAbsoluteFee:self.estimatedTransactionSize fee:highFee];
-    self.lowerRecommendedLimit = [self guessAbsoluteFee:self.estimatedTransactionSize fee:lowFee];
-    
-    if (self.lowerRecommendedLimit < FEE_MINIMUM) {
-        self.lowerRecommendedLimit = FEE_MINIMUM;
-    }
+    self.upperRecommendedLimit = [[bounds firstObject] longLongValue];
+    self.lowerRecommendedLimit = [[bounds lastObject] longLongValue];
     
     if (fee > self.upperRecommendedLimit) {
         isWithinRange = NO;
@@ -1405,7 +1330,11 @@ BOOL displayingLocalSymbolSend;
     
     [self disablePaymentButtons];
     
-    [self checkMaxFee];
+    if (feeField.hidden) {
+        [self checkMaxFee];
+    } else {
+        [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
+    }
     
     //    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
     //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK

@@ -1416,11 +1416,6 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController sendFromWatchOnlyAddress];
 }
 
-- (void)estimateTransactionSize:(uint64_t)size
-{
-    [_sendViewController updateEstimatedTransactionSize:size];
-}
-
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee
 {
     [_sendViewController didCheckForOverSpending:amount fee:fee];
@@ -1436,9 +1431,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didGetFee:fee];
 }
 
-- (void)didChangeForcedFee:(NSNumber *)fee
+- (void)didChangeForcedFee:(NSNumber *)fee bounds:(NSArray *)bounds afterEvaluation:(BOOL)afterEvaluation
 {
-    [_sendViewController didChangeForcedFee:fee];
+    [_sendViewController didChangeForcedFee:fee bounds:bounds afterEvaluation:afterEvaluation];
 }
 
 #pragma mark - Show Screens

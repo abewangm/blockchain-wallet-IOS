@@ -720,40 +720,22 @@
     [self.webView executeJS:@"MyWalletPhone.checkIfUserIsOverSpending()"];
 }
 
-- (void)getTransactionSizeEstimate
+- (void)setForcedTransactionFee:(uint64_t)fee afterEvaluation:(BOOL)afterEvaluation
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.getSizeEstimate()"];
+    [self.webView executeJS:@"MyWalletPhone.setForcedTransactionFee(%lld, %d)", fee, afterEvaluation];
 }
 
-- (void)setForcedTransactionFee:(uint64_t)fee
+- (void)getTransactionFee:(BOOL)customFee
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.setForcedTransactionFee(%lld)", fee];
-}
-
-- (void)setFeePerKilobyte:(uint64_t)feePerKb
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.webView executeJS:@"MyWalletPhone.setFeePerKilobyte(%lld)", feePerKb];
-}
-
-- (void)getTransactionFee
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.webView executeJS:@"MyWalletPhone.getTransactionFee()"];
+    [self.webView executeJS:@"MyWalletPhone.getTransactionFee(%d)", customFee];
 }
 
 - (void)generateNewKey
@@ -1582,12 +1564,12 @@
     }
 }
 
-- (void)update_forced_fee:(NSNumber *)fee
+- (void)update_forced_fee:(NSNumber *)fee bounds:(NSArray *)bounds afterEvaluation:(NSNumber *)afterEvaluation
 {
-    DLog(@"update_fee");
-    DLog(@"Wallet: fee is %@", fee);
-    if ([self.delegate respondsToSelector:@selector(didChangeForcedFee:)]) {
-        [self.delegate didChangeForcedFee:fee];
+    DLog(@"update_forced_fee");
+    DLog(@"Wallet: forced fee is %@", fee);
+    if ([self.delegate respondsToSelector:@selector(didChangeForcedFee:bounds:afterEvaluation:)]) {
+        [self.delegate didChangeForcedFee:fee bounds:bounds afterEvaluation:[afterEvaluation boolValue]];
     }
 }
 
@@ -1775,15 +1757,6 @@
         [app standardNotifyAutoDismissingController:BC_STRING_WRONG_BIP38_PASSWORD];
     } else {
         [app standardNotifyAutoDismissingController:error];
-    }
-}
-
-- (void)estimate_transaction_size:(NSNumber *)size
-{
-    DLog(@"estimate_transaction_size:");
-    uint64_t convertedSize = [size longLongValue];
-    if ([self.delegate respondsToSelector:@selector(estimateTransactionSize:)]) {
-        [self.delegate estimateTransactionSize:convertedSize];
     }
 }
 

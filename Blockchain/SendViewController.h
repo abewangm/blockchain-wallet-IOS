@@ -104,8 +104,7 @@
 - (void)sendFromWatchOnlyAddress;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm;
-- (void)updateEstimatedTransactionSize:(uint64_t)size;
-- (void)didChangeForcedFee:(NSNumber *)fee;
+- (void)didChangeForcedFee:(NSNumber *)fee bounds:(NSArray *)bounds afterEvaluation:(BOOL)afterEvaluation;
 - (void)didGetFee:(NSNumber *)fee;
 
 - (void)reload;
