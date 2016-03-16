@@ -388,8 +388,13 @@ MyWalletPhone.sweepPaymentThenConfirm = function(willConfirm) {
     
     var shouldConfirm = Boolean(willConfirm);
 
-    currentPayment
-    .sweep(false).build();
+    if (shouldConfirm) {
+        currentPayment
+        .sweep(false).prebuild(false).build();
+    } else {
+        currentPayment
+        .sweep(false).prebuild(false);
+    }
     
     currentPayment.payment.then(function(x) {
         console.log('SweepFee: ' + x.sweepFee);
@@ -425,9 +430,9 @@ MyWalletPhone.getTransactionFee = function(advanced) {
         
         var isAdvanced = Boolean(advanced);
 
-        currentPayment.prebuild(isAdvanced).sideEffect(function (x) {
+        currentPayment.prebuild(isAdvanced).build().sideEffect(function (x) {
             device.execute('did_get_fee:', [x.finalFee]);
-        }).build();
+        })
         
         currentPayment.payment.catch(function(error) {
             var errorArgument;
