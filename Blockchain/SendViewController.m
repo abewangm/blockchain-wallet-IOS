@@ -453,7 +453,7 @@ BOOL displayingLocalSymbolSend;
             if (self.customFeeMode) {
                 [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
             } else {
-                [self getMaxFeeThenConfirm:NO];
+                [self getMaxFeeThenConfirm:YES];
             }
         
         }];
