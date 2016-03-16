@@ -389,7 +389,7 @@ MyWalletPhone.sweepPaymentThenConfirm = function(willConfirm) {
     var shouldConfirm = Boolean(willConfirm);
 
     currentPayment
-      .sweep(false)
+    .sweep(false).build();
     
     currentPayment.payment.then(function(x) {
         console.log('SweepFee: ' + x.sweepFee);

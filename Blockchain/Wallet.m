@@ -1591,12 +1591,23 @@
     }
 }
 
-- (void)on_error_update_fee:(NSString *)error
+- (void)on_error_update_fee:(NSDictionary *)error
 {
     DLog(@"on_error_update_fee");
     
-    [app standardNotify:error];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_UPDATE_FEE object:nil userInfo:@{@"error":error}];
+    NSString *message = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
+    if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS]) {
+        [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
+    } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
+        uint64_t threshold = [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue];
+        [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, threshold]];
+    } else {
+        [app standardNotifyAutoDismissingController:message];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(enableSendPaymentButtons)]) {
+        [self.delegate enableSendPaymentButtons];
+    }
 }
 
 - (void)on_generate_key

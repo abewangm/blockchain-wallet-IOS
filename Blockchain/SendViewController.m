@@ -442,11 +442,6 @@ BOOL displayingLocalSymbolSend;
             // Display to the user the max amount
             [self doCurrencyConversion];
             
-            if (![self isAmountAboveDustThreshold:maxAmount]) {
-                [self enablePaymentButtons];
-                return;
-            }
-            
             // Actually do the sweep and confirm
             self.transactionType = TransactionTypeSweepAndConfirm;
             
@@ -524,24 +519,6 @@ BOOL displayingLocalSymbolSend;
         self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
         self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
     });
-}
-
-- (BOOL)isAmountAboveDustThreshold:(uint64_t)amount
-{
-    if (amount <= DUST_THRESHOLD) {
-        [self alertUserForAmountBelowDustThreshold];
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
-- (void)alertUserForAmountBelowDustThreshold
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[[NSString alloc] initWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, DUST_THRESHOLD] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)alertUserForZeroSpendableAmount
@@ -1356,10 +1333,6 @@ BOOL displayingLocalSymbolSend;
     NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     if (value <= 0 || [amountString doubleValue] <= 0) {
         [self showErrorBeforeSending:BC_STRING_INVALID_SEND_VALUE];
-        return;
-    }
-    
-    if (![self isAmountAboveDustThreshold:value]) {
         return;
     }
     

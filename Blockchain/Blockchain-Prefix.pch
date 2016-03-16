@@ -102,9 +102,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
 
+#define DICTIONARY_KEY_MESSAGE @"message"
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_FEE @"fee"
 
+#define ERROR_BELOW_DUST_THRESHOLD @"BELOW_DUST_THRESHOLD"
+#define ERROR_NO_UNSPENT_OUTPUTS @"NO_UNSPENT_OUTPUTS"
 #define ERROR_NOT_PRESENT_IN_WALLET @"addressNotPresentInWallet"
 #define ERROR_ADDRESS_NOT_WATCH_ONLY @"addressNotWatchOnly"
 #define ERROR_WRONG_PRIVATE_KEY @"wrongPrivateKey"
@@ -198,6 +201,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_CODE @"code"
 #define DICTIONARY_KEY_ERROR @"error"
+#define DICTIONARY_KEY_THRESHOLD @"threshold"
 #define DICTIONARY_KEY_SUCCESS @"success"
 #define DICTIONARY_KEY_KEY @"key"
 #define DICTIONARY_KEY_VALUE @"value"
@@ -334,8 +338,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DELAY_GET_HISTORY_BACKUP 3.0f
 
 #define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
-// TODO: Get from JS
-#define DUST_THRESHOLD 5460
+
 #define BTC_LIMIT_IN_SATOSHI 21e14 // 21,000,000 (Total possible Bitcoins) * 100,000,000 (Satoshi)
 #define RECOVERY_ACCOUNT_DEFAULT_NUMBER 10
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12

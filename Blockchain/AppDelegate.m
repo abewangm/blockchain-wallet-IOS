@@ -1436,6 +1436,11 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didChangeForcedFee:fee bounds:bounds afterEvaluation:afterEvaluation];
 }
 
+- (void)enableSendPaymentButtons
+{
+    [_sendViewController enablePaymentButtons];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses
