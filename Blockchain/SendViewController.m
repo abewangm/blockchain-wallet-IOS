@@ -1273,6 +1273,14 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)useAllClicked:(id)sender
 {
+    if ([self.toAddress length] == 0) {
+        self.toAddress = toField.text;
+        if ([self.toAddress length] == 0) {
+            [app standardNotifyAutoDismissingController:BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS];
+            return;
+        }
+    }
+    
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
