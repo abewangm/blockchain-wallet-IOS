@@ -18,7 +18,15 @@
 #import "TransactionsViewController.h"
 #import "PrivateKeyReader.h"
 
+typedef enum {
+    TransactionTypeRegular = 100,
+    TransactionTypeSweep = 200,
+    TransactionTypeSweepAndConfirm = 300,
+}TransactionType;
+
 @interface SendViewController () <UITextFieldDelegate>
+
+@property (nonatomic) TransactionType transactionType;
 
 @property (nonatomic) uint64_t recommendedForcedFee;
 @property (nonatomic) uint64_t maxSendableAmount;
@@ -106,6 +114,8 @@ BOOL displayingLocalSymbolSend;
     if (app.tabViewController.activeViewController == self) {
         [app closeModalWithTransition:kCATransitionPush];
     }
+    
+    self.transactionType = TransactionTypeRegular;
 }
 
 - (void)resetFromAddress
@@ -438,7 +448,13 @@ BOOL displayingLocalSymbolSend;
             }
             
             // Actually do the sweep and confirm
-            [self getMaxFeeThenConfirm:YES];
+            self.transactionType = TransactionTypeSweepAndConfirm;
+            
+            if (self.customFeeMode) {
+                [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
+            } else {
+                [self getMaxFeeThenConfirm:NO];
+            }
         
         }];
         
@@ -684,7 +700,9 @@ BOOL displayingLocalSymbolSend;
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:keepUserInputFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self changeForcedFee:fee afterEvaluation:YES];
     }]];
-    [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self enablePaymentButtons];
+    }]];
     [app.tabViewController presentViewController:alertForFeeOutsideRecommendedRange animated:YES completion:nil];
 }
 
@@ -815,6 +833,8 @@ BOOL displayingLocalSymbolSend;
     }
     
     [self doCurrencyConversion];
+    
+    self.transactionType = TransactionTypeRegular;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -1089,21 +1109,28 @@ BOOL displayingLocalSymbolSend;
     self.feeFromTransactionProposal = [fee longLongValue];
     feeField.text = [app formatAmount:self.feeFromTransactionProposal localCurrency:FALSE];
     
-    if (afterEvaluation) {
-        [self checkMaxFee];
+    if (self.transactionType == TransactionTypeSweep) {
+        return;
+    } else if (self.transactionType == TransactionTypeSweepAndConfirm) {
+        [self showSummary];
         return;
     }
     
-    if ([self evaluateFee:[fee longLongValue] absoluteFeeBounds:bounds]) {
-        uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
-        
-        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
-        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
-        
-        self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
-        self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
-        
+    if (afterEvaluation) {
         [self checkMaxFee];
+        return;
+    } else {
+        if ([self evaluateFee:[fee longLongValue] absoluteFeeBounds:bounds]) {
+            uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
+            
+            self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
+            self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
+            
+            self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
+            self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
+            
+            [self checkMaxFee];
+        }
     }
 }
 
@@ -1272,7 +1299,17 @@ BOOL displayingLocalSymbolSend;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
-    [self getMaxFeeThenConfirm:NO];
+    self.transactionType = TransactionTypeSweep;
+    
+    if (self.customFeeMode) {
+        // should subtract from unspent outputs here instead of availableAmount
+        amountInSatoshi = availableAmount - [app.wallet parseBitcoinValue:feeField.text];
+        [app.wallet changePaymentAmount:amountInSatoshi];
+        [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
+        [self doCurrencyConversion];
+    } else {
+        [self getMaxFeeThenConfirm:NO];
+    }
 }
 
 - (IBAction)customizeFeeClicked:(UIButton *)sender
