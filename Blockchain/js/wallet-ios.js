@@ -387,9 +387,25 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
 
 MyWalletPhone.changeForcedFee = function(fee) {
     console.log('changing forced fee to ' + fee);
-    var buildFailure = function (e) {console.log('buildfailure');console.log(e);}
-    currentPayment.fee(fee).prebuild(true).build().catch(buildFailure);
-    device.execute('did_change_forced_fee:', [fee]);
+    var buildFailure = function (error) {
+        console.log('buildfailure');
+        
+        var errorArgument;
+        if (error.error) {
+            errorArgument = error.error;
+        } else {
+            errorArgument = error.message;
+        }
+        
+        console.log('error updating fee: ' + errorArgument);
+        device.execute('on_error_update_fee:', [errorArgument]);
+        
+        return error.payment;
+    }
+    currentPayment.fee(fee).prebuild(true).build().then(function (x) {
+        device.execute('did_change_forced_fee:', [fee]);
+        return x;
+    }).catch(buildFailure);
 }
 
 MyWalletPhone.getFeeBounds = function() {
@@ -444,24 +460,29 @@ MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
 
 MyWalletPhone.getTransactionFee = function(advanced) {
     if (currentPayment) {
-        
+        console.log('getTxFee');
         var isAdvanced = Boolean(advanced);
 
-        currentPayment.prebuild(isAdvanced).build().sideEffect(function (x) {
-            device.execute('did_get_fee:', [x.finalFee]);
-        })
-        
-        currentPayment.payment.catch(function(error) {
+        var buildFailure = function(error) {
+
             var errorArgument;
             if (error.error) {
                 errorArgument = error.error;
             } else {
                 errorArgument = error.message;
             }
-                                    
+            
             console.log('error updating fee: ' + errorArgument);
             device.execute('on_error_update_fee:', [errorArgument]);
-        });
+            
+            return error.payment;
+        }
+        
+        currentPayment.prebuild(isAdvanced).build().then(function (x) {
+            device.execute('did_get_fee:', [x.finalFee]);
+            return x;
+        }).catch(buildFailure);
+        
     } else {
         console.log('Error getting transaction fee');
     }
