@@ -702,13 +702,13 @@
     [self.webView executeJS:@"MyWalletPhone.changePaymentAmount(%lld)", amount];
 }
 
-- (void)sweepPaymentThenConfirm:(BOOL)willConfirm
+- (void)sweepPaymentThenConfirm:(BOOL)willConfirm isAdvanced:(BOOL)isAdvanced
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.sweepPaymentThenConfirm(%d)", willConfirm];
+    [self.webView executeJS:@"MyWalletPhone.sweepPaymentThenConfirm(%d, %d)", willConfirm, isAdvanced];
 }
 
 - (void)checkIfOverspending

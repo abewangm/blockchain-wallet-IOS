@@ -384,23 +384,22 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
     });
 }
 
-MyWalletPhone.sweepPaymentThenConfirm = function(willConfirm) {
-    
+MyWalletPhone.sweepPaymentThenConfirm = function(willConfirm, isAdvanced) {
+
     var shouldConfirm = Boolean(willConfirm);
 
     if (shouldConfirm) {
         currentPayment
-        .sweep(false).prebuild(false).build();
+        .sweep(isAdvanced).prebuild(isAdvanced).build();
     } else {
         currentPayment
-        .sweep(false).prebuild(false);
+        .sweep(isAdvanced).prebuild(isAdvanced);
     }
     
     currentPayment.payment.then(function(x) {
-        console.log('SweepFee: ' + x.sweepFee);
-        console.log('SweepAmount: ' + x.sweepAmount);
-        console.log('maxAmount and fee are' + x.sweepAmount + ',' + x.sweepFee);
-        device.execute('update_max_amount:fee:willConfirm:', [x.sweepAmount, x.sweepFee, shouldConfirm]);
+        console.log('ForcedFee: ' + x.forcedFee);
+        console.log('SweepAmount: ' + x.amounts);
+        device.execute('update_max_amount:fee:willConfirm:', [x.amounts[0], x.forcedFee, shouldConfirm]);
         return x;
     }).catch(function(error) {
         var errorArgument;

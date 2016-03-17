@@ -1080,7 +1080,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)getMaxFeeThenConfirm:(BOOL)willConfirm
 {
-    [app.wallet sweepPaymentThenConfirm:willConfirm];
+    [app.wallet sweepPaymentThenConfirm:willConfirm isAdvanced:self.customFeeMode];
 }
 
 - (void)changeForcedFee:(uint64_t)absoluteFee afterEvaluation:(BOOL)afterEvaluation
@@ -1094,6 +1094,7 @@ BOOL displayingLocalSymbolSend;
     feeField.text = [app formatAmount:self.feeFromTransactionProposal localCurrency:FALSE];
     
     if (self.transactionType == TransactionTypeSweep) {
+        [app.wallet sweepPaymentThenConfirm:NO isAdvanced:self.customFeeMode];
         return;
     } else if (self.transactionType == TransactionTypeSweepAndConfirm) {
         [self showSummary];
@@ -1286,11 +1287,7 @@ BOOL displayingLocalSymbolSend;
     self.transactionType = TransactionTypeSweep;
     
     if (self.customFeeMode) {
-        // should subtract from unspent outputs here instead of availableAmount
-        amountInSatoshi = availableAmount - [app.wallet parseBitcoinValue:feeField.text];
-        [app.wallet changePaymentAmount:amountInSatoshi];
         [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
-        [self doCurrencyConversion];
     } else {
         [self getMaxFeeThenConfirm:NO];
     }
@@ -1346,6 +1343,8 @@ BOOL displayingLocalSymbolSend;
     [self hideKeyboard];
     
     [self disablePaymentButtons];
+    
+    self.transactionType = TransactionTypeRegular;
     
     if (feeField.hidden) {
         [self checkMaxFee];

@@ -261,7 +261,7 @@
 - (void)changePaymentToAccount:(int)toInt;
 - (void)changePaymentToAddress:(NSString *)toString;
 - (void)changePaymentAmount:(uint64_t)amount;
-- (void)sweepPaymentThenConfirm:(BOOL)willConfirm;
+- (void)sweepPaymentThenConfirm:(BOOL)willConfirm isAdvanced:(BOOL)isAdvanced;
 - (void)checkIfOverspending;
 - (void)setForcedTransactionFee:(uint64_t)fee afterEvaluation:(BOOL)afterEvaluation;
 - (void)getTransactionFee:(BOOL)customFee;
