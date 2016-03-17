@@ -558,6 +558,22 @@ BOOL displayingLocalSymbolSend;
         btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
     }
     
+    if (self.customFeeMode && availableAmount < amountInSatoshi + [app.wallet parseBitcoinValue:feeField.text]) {
+        
+        [self disablePaymentButtons];
+        
+        if ([feeField isFirstResponder]) {
+            feeField.textColor = [UIColor redColor];
+        } else {
+            [self highlightInvalidAmounts];
+        }
+    } else {
+        [self enablePaymentButtons];
+        
+        feeField.textColor = [UIColor blackColor];
+        [self removeHighlightFromAmounts];
+    }
+    
     [self updateFundsAvailable];
 }
 
@@ -879,7 +895,7 @@ BOOL displayingLocalSymbolSend;
                 return NO;
             }
             
-            if (fee + amountInSatoshi > availableAmount) {
+            if (fee + amountInSatoshi >= availableAmount) {
                 textField.textColor = [UIColor redColor];
                 [self disablePaymentButtons];
             } else {
@@ -1284,13 +1300,20 @@ BOOL displayingLocalSymbolSend;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
-    self.transactionType = TransactionTypeSweep;
-    
     if (self.customFeeMode) {
+        uint64_t customFee = [app.wallet parseBitcoinValue:feeField.text];
+        
+        if (customFee >= availableAmount) {
+            [app standardNotifyAutoDismissingController:BC_STRING_PLEASE_LOWER_CUSTOM_FEE];
+            return;
+        }
+        
         [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
     } else {
         [self getMaxFeeThenConfirm:NO];
     }
+    
+    self.transactionType = TransactionTypeSweep;
 }
 
 - (IBAction)customizeFeeClicked:(UIButton *)sender

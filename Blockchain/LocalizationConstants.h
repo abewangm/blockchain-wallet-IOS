@@ -475,3 +475,4 @@
 #define BC_STRING_LOWER_FEE NSLocalizedString(@"Lower Fee", nil)
 #define BC_STRING_KEEP_HIGHER_FEE NSLocalizedString(@"Keep Higher Fee", nil)
 #define BC_STRING_KEEP_LOWER_FEE NSLocalizedString(@"Keep Lower Fee", nil)
+#define BC_STRING_PLEASE_LOWER_CUSTOM_FEE NSLocalizedString(@"Please lower the fee to an amount that is less than your balance", nil)
