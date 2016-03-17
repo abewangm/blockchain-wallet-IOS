@@ -872,7 +872,14 @@ BOOL displayingLocalSymbolSend;
         NSString *amountString = [newString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
         if (textField == feeField) {
-            if ([app.wallet parseBitcoinValue:amountString] + amountInSatoshi > availableAmount) {
+            
+            uint64_t fee = [app.wallet parseBitcoinValue:amountString];
+            
+            if (fee > BTC_LIMIT_IN_SATOSHI) {
+                return NO;
+            }
+            
+            if (fee + amountInSatoshi > availableAmount) {
                 textField.textColor = [UIColor redColor];
                 [self disablePaymentButtons];
             } else {
