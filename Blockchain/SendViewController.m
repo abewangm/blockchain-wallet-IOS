@@ -446,9 +446,9 @@ BOOL displayingLocalSymbolSend;
             self.transactionType = TransactionTypeSweepAndConfirm;
             
             if (self.customFeeMode) {
-                [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
+                [app.wallet sweepPaymentAdvancedThenConfirm:[app.wallet parseBitcoinValue:feeField.text]];
             } else {
-                [self getMaxFeeThenConfirm:YES];
+                [app.wallet sweepPaymentRegularThenConfirm];
             }
         
         }];
@@ -688,6 +688,7 @@ BOOL displayingLocalSymbolSend;
     }
     UIAlertController *alertForFeeOutsideRecommendedRange = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:useSuggestedFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        feeField.text = [app formatAmount:suggestedFee localCurrency:NO];
         [self changeForcedFee:suggestedFee afterEvaluation:YES];
     }]];
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:keepUserInputFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -1089,49 +1090,38 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
+- (void)didChangeForcedFee:(NSNumber *)fee
+{
+    self.feeFromTransactionProposal = [fee longLongValue];
+    [self showSummary];
+}
+
 - (void)checkMaxFee
 {
     [app.wallet checkIfOverspending];
 }
 
-- (void)getMaxFeeThenConfirm:(BOOL)willConfirm
-{
-    [app.wallet sweepPaymentThenConfirm:willConfirm isAdvanced:self.customFeeMode];
-}
-
 - (void)changeForcedFee:(uint64_t)absoluteFee afterEvaluation:(BOOL)afterEvaluation
 {
-    [app.wallet setForcedTransactionFee:absoluteFee afterEvaluation:(BOOL)afterEvaluation];
+    if (afterEvaluation) {
+        [app.wallet changeForcedFee:absoluteFee];
+    } else {
+        [app.wallet getFeeBounds];
+    }
 }
 
-- (void)didChangeForcedFee:(NSNumber *)fee bounds:(NSArray *)bounds afterEvaluation:(BOOL)afterEvaluation
+- (void)didGetFeeBounds:(NSArray *)bounds
 {
-    self.feeFromTransactionProposal = [fee longLongValue];
-    feeField.text = [app formatAmount:self.feeFromTransactionProposal localCurrency:FALSE];
-    
-    if (self.transactionType == TransactionTypeSweep) {
-        [app.wallet sweepPaymentThenConfirm:NO isAdvanced:self.customFeeMode];
-        return;
-    } else if (self.transactionType == TransactionTypeSweepAndConfirm) {
-        [self showSummary];
-        return;
-    }
-    
-    if (afterEvaluation) {
-        [self checkMaxFee];
-        return;
-    } else {
-        if ([self evaluateFee:[fee longLongValue] absoluteFeeBounds:bounds]) {
-            uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
+    if ([self evaluateFee:[app.wallet parseBitcoinValue:feeField.text] absoluteFeeBounds:bounds]) {
+        uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
             
-            self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
-            self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
-            
-            self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
-            self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
-            
-            [self checkMaxFee];
-        }
+        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
+        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
+        
+        self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
+        self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
+        
+        [app.wallet changeForcedFee:[app.wallet parseBitcoinValue:feeField.text]];
     }
 }
 
@@ -1308,9 +1298,9 @@ BOOL displayingLocalSymbolSend;
             return;
         }
         
-        [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
+        [app.wallet sweepPaymentAdvanced:[app.wallet parseBitcoinValue:feeField.text]];
     } else {
-        [self getMaxFeeThenConfirm:NO];
+        [app.wallet sweepPaymentRegular];
     }
     
     self.transactionType = TransactionTypeSweep;

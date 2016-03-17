@@ -702,6 +702,42 @@
     [self.webView executeJS:@"MyWalletPhone.changePaymentAmount(%lld)", amount];
 }
 
+- (void)sweepPaymentRegular
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.sweepPaymentRegular()"];
+}
+
+- (void)sweepPaymentRegularThenConfirm
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.sweepPaymentRegularThenConfirm()"];
+}
+
+- (void)sweepPaymentAdvanced:(uint64_t)fee
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.sweepPaymentAdvanced(%lld)", fee];
+}
+
+- (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.sweepPaymentAdvancedThenConfirm(%lld)", fee];
+}
+
 - (void)sweepPaymentThenConfirm:(BOOL)willConfirm isAdvanced:(BOOL)isAdvanced
 {
     if (![self isInitialized]) {
@@ -720,13 +756,22 @@
     [self.webView executeJS:@"MyWalletPhone.checkIfUserIsOverSpending()"];
 }
 
-- (void)setForcedTransactionFee:(uint64_t)fee afterEvaluation:(BOOL)afterEvaluation
+- (void)changeForcedFee:(uint64_t)fee
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.setForcedTransactionFee(%lld, %d)", fee, afterEvaluation];
+    [self.webView executeJS:@"MyWalletPhone.changeForcedFee(%lld)", fee];
+}
+
+- (void)getFeeBounds
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.getFeeBounds()"];
 }
 
 - (void)getTransactionFee:(BOOL)customFee
@@ -1564,12 +1609,19 @@
     }
 }
 
-- (void)update_forced_fee:(NSNumber *)fee bounds:(NSArray *)bounds afterEvaluation:(NSNumber *)afterEvaluation
+- (void)did_change_forced_fee:(NSNumber *)fee
 {
-    DLog(@"update_forced_fee");
-    DLog(@"Wallet: forced fee is %@", fee);
-    if ([self.delegate respondsToSelector:@selector(didChangeForcedFee:bounds:afterEvaluation:)]) {
-        [self.delegate didChangeForcedFee:fee bounds:bounds afterEvaluation:[afterEvaluation boolValue]];
+    DLog(@"did_change_forced_fee");
+    if ([self.delegate respondsToSelector:@selector(didChangeForcedFee:)]) {
+        [self.delegate didChangeForcedFee:fee];
+    }
+}
+
+- (void)update_fee_bounds:(NSArray *)bounds
+{
+    DLog(@"update_fee_bounds");
+    if ([self.delegate respondsToSelector:@selector(didGetFeeBounds:)]) {
+        [self.delegate didGetFeeBounds:bounds];
     }
 }
 

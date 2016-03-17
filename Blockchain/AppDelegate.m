@@ -1431,9 +1431,14 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didGetFee:fee];
 }
 
-- (void)didChangeForcedFee:(NSNumber *)fee bounds:(NSArray *)bounds afterEvaluation:(BOOL)afterEvaluation
+- (void)didChangeForcedFee:(NSNumber *)fee
 {
-    [_sendViewController didChangeForcedFee:fee bounds:bounds afterEvaluation:afterEvaluation];
+    [_sendViewController didChangeForcedFee:fee];
+}
+
+- (void)didGetFeeBounds:(NSArray *)bounds
+{
+    [_sendViewController didGetFeeBounds:(NSArray *)bounds];
 }
 
 - (void)enableSendPaymentButtons

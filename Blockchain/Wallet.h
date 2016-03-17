@@ -83,7 +83,8 @@
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm;
 - (void)didGetFee:(NSNumber *)fee;
-- (void)didChangeForcedFee:(NSNumber *)fee bounds:(NSArray *)bounds afterEvaluation:(BOOL)afterEvaluation;
+- (void)didGetFeeBounds:(NSArray *)bounds;
+- (void)didChangeForcedFee:(NSNumber *)fee;
 - (void)enableSendPaymentButtons;
 @end
 
@@ -261,9 +262,13 @@
 - (void)changePaymentToAccount:(int)toInt;
 - (void)changePaymentToAddress:(NSString *)toString;
 - (void)changePaymentAmount:(uint64_t)amount;
-- (void)sweepPaymentThenConfirm:(BOOL)willConfirm isAdvanced:(BOOL)isAdvanced;
+- (void)sweepPaymentRegular;
+- (void)sweepPaymentRegularThenConfirm;
+- (void)sweepPaymentAdvanced:(uint64_t)fee;
+- (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
 - (void)checkIfOverspending;
-- (void)setForcedTransactionFee:(uint64_t)fee afterEvaluation:(BOOL)afterEvaluation;
+- (void)getFeeBounds;
+- (void)changeForcedFee:(uint64_t)fee;
 - (void)getTransactionFee:(BOOL)customFee;
 
 // Recover with passphrase
