@@ -415,8 +415,8 @@ MyWalletPhone.sweepPaymentThenConfirm = function(willConfirm) {
 };
 
 MyWalletPhone.setForcedTransactionFee = function(fee, afterEvaluation) {
-
-    currentPayment.fee(fee).prebuild(true).build().sideEffect(function (x) {
+        
+    currentPayment.fee(fee).prebuild(true).sideEffect(function (x) {
         console.log('forced fee set:');
         console.log(x.finalFee);
         console.log('absolute fee bounds:');
