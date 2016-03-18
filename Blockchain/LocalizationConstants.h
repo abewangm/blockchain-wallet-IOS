@@ -466,7 +466,7 @@
 #define BC_STRING_ERROR_PLEASE_REFRESH_PAIRING_CODE NSLocalizedString(@"Please refresh the pairing code and try again.", nil)
 
 #define BC_STRING_DONT_SHOW_AGAIN NSLocalizedString(@"Don't show again", nil)
-#define BC_STRING_TRANSFER_AND_DONT_SHOW_AGAIN NSLocalizedString(@"Transfer and don't show again", nil)
+#define BC_STRING_NOT_NOW NSLocalizedString(@"Not now", nil)
 #define BC_STRING_INCORRECT_PRIVATE_KEY NSLocalizedString(@"Incorrect private key", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED NSLocalizedString(@"Private Key Needed", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT NSLocalizedString(@"This action requires the private key for the Bitcoin address %@. Please scan the QR code.", nil)
