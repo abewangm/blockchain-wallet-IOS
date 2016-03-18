@@ -457,7 +457,7 @@
 #define BC_STRING_ADD_WATCH_ONLY_ADDRESS_WARNING_TWO NSLocalizedString(@"These options are recommended for advanced users only. Continue?", nil)
 #define BC_STRING_UNKNOWN_KEY_FORMAT NSLocalizedString(@"Unknown key format", nil)
 #define BC_STRING_NAME_ALREADY_IN_USE NSLocalizedString(@"This name is already in use. Please choose a different name.", nil)
-#define BC_STIRNG_VERIFICATION_EMAIL_SENT_TO_ARGUMENT NSLocalizedString(@"Verification email has been sent to %@.", nil)
+#define BC_STRING_VERIFICATION_EMAIL_SENT_TO_ARGUMENT NSLocalizedString(@"Verification email has been sent to %@.", nil)
 #define BC_STRING_PLEASE_CHECK_AND_CLICK_EMAIL_VERIFICATION_LINK NSLocalizedString(@"Please check your email and click on the verification link.", nil)
 #define BC_STRING_ERROR_PLEASE_REFRESH_PAIRING_CODE NSLocalizedString(@"Please refresh the pairing code and try again.", nil)
 
