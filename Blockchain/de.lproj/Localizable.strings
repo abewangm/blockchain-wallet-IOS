@@ -1,13 +1,13 @@
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ BTC" = "%@ BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ copied to clipboard" = "%@ in Zwischenablage kopiert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Confirmations" = "%d Bestätigungen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Transactions" = "%d Transaktionen";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "vor %lld Sekunden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "* Minimum 10 characters" = "* Mindestens 10 Zeichen";
 
 /* No comment provided by engineer. */
@@ -28,625 +28,628 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "vor 1 minute";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step Enabled" = "2-stufige aktiviert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been disabled." = "2-stufige wurde deaktiviert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been enabled for SMS." = "2-stufige wurde für SMS aktiviert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification" = "2-stufige Prüfung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently disabled." = "2-stufige Prüfung ist derzeit deaktiviert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled for %@." = "2-stufige Prüfung ist derzeit für %@ aktiviert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled." = "2-stufige Prüfung ist derzeit aktiviert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "API URL" = "API-URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "About" = "Über";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Account Details" = "Kontodetails";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Accounts" = "Konten";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add Email" = "Fügen Sie E-Mail";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add to Address book?" = "Zum Adressbuch hinzufügen?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address" = "Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address book" = "Adressbuch";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address is not valid" = "Adresse ist nicht gültig";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Addresses" = "Adressen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Adjust Fee" = "Anpassen von Fee";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allow" = "Ermöglichen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allowed" = "Zulässig";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Amount must be above dust threshold (%lld Satoshi)" = "Betrag muss über Staub Schwellenwert (%lld Satoshi) sein.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Überprüfen Ihren PIN-Code, mit dem remote-Server ist ein Fehler aufgetreten. Sie ist möglicherweise offline oder Blockchain möglicherweise Schwierigkeiten. Möchten Sie wiederholen Validierung oder stattdessen Ihr Kennwort manuell eingeben?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred while changing 2-Step verification." = "Fehler beim Wechsel 2-Schritt-Prüfung.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Fehler beim Laden Ihrer Brieftasche. Sie ist möglicherweise offline oder Blockchain Schwierigkeiten. Bitte schließen Sie die Anwendung und versuchen Sie später erneut, oder verbinden Sie Ihr Gerät erneut.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Abrufen Ihrer Brieftasche-ID aus den Schlüsselbund ein Fehler aufgetreten. Bitte schließen Sie die Anwendung und versuchen Sie es erneut.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Any address" = "Jede Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive" = "Archiv";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive Address" = "Archiv-Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Archivieren Sie dies, wenn Sie nicht, dass es nicht mehr verwenden möchten. Ihr Geld bleibt sicher, und Sie können es jederzeit öffnen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archived" = "Archiviert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Ask Me Later" = "Fragen Sie mich später";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authenticate with Touch ID" = "Authentifizieren mit Touch-ID";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authorization Required" = "Erforderliche Genehmigung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatic Pairing" = "Automatische Kopplung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatically" = "Automatisch";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "SICHERUNG DER MITTEL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup" = "Sicherung";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "Sicherung der Mittel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup Phrase" = "Backup-Satz";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Vor dem Zugriff auf Ihre Brieftasche, bitte wählen Sie eine Pin-Nummer verwenden, um Ihren Geldbeutel zu entsperren. Es ist wichtig, dass Sie diese Pin erinnern, wie es nicht zurückgesetzt oder ohne erste Erschließung der app geändert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin Unit" = "Bitcoin-Einheit";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin payment request" = "Bitcoin-Zahlungsaufforderung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block" = "Block";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block Tor" = "Tor zu blockieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain hat keinen Zugriff auf die Kamera. Um Zugang zu aktivieren, gehen Sie auf Ihr Gerät Einstellungen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain ist derzeit für Wartungsarbeiten heruntergefahren. Bitte versuchen Sie es später erneut.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain braucht die Ortungsdienste aktiviert, damit Sie Ihren Standort zugreifen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain braucht die Ortungsdienste aktiviert, damit Sie Ihren Standort zugreifen. Sie können den Zugriff aktivieren unter Einstellungen -> Datenschutz -> Ortungsdienste";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain braucht die Ortungsdienste aktiviert, damit Sie Ihren Standort zugreifen. Sie können den Zugriff aktivieren unter Einstellungen -> Datenschutz -> Standort -> Ortungsdienste";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blocked" = "Blockiert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Camera Access Denied" = "Kamera-Zugriff verweigert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cancel" = "Abbrechen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "PIN-Code kann nicht gespeichert werden, während die Brieftasche ist nicht initialisiert oder Kennwort ist null";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Email" = "E-Mail ändern";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Mobile Number" = "Handynummer ändern";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change PIN" = "PIN ändern";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password" = "Passwort ändern";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password Hint" = "Ändern Passwort-Hinweis";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change fee per kilobyte" = "Umbuchungsgebühr pro KB";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for Wallet updates" = "Suchen nach Updates der Brieftasche";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for more: Step %d of %d" = "Mehr gesucht: Schritt %1$d von %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Schließen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Close App" = "App zu schließen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Complete the steps below for ultimate security" = "Führen Sie die Schritte unten für ultimative Sicherheit";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Completely updated design and user experience" = "Vollständig aktualisierten Design und User experience";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Payment" = "Bestätigen Sie die Zahlung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Upgrade" = "Upgrade zu bestätigen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm your PIN" = "Ihre PIN bestätigen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Connection timed out. Please check your internet connection." = "Verbindungstimeout. Bitte überprüfen Sie Ihre Internetverbindung.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Continue" = "Weiter";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copied to clipboard" = "In Zwischenablage kopiert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Address" = "Adresse kopieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Wallet ID" = "Geldbörse-ID kopieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy to clipboard" = "In Zwischenablage kopieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy xPub" = "XPub kopieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create" = "Erstellen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create New Wallet" = "Erstellen Sie neue Brieftasche";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create Wallet" = "Mappe erstellen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create new address" = "Erstellen Sie neue Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating" = "Erstellen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating HD Wallet" = "Erstellen von HD-Brieftasche";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating V3 Wallet" = "Erstellen von V3-Brieftasche";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating Wallet" = "Mappe erstellen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new Wallet" = "Erstellen von neuen Wallet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new address" = "Neue Adresse erstellen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Current rate: %@ BTC" = "Tageskurs: %@ BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Passen Sie an, wie Sie Ihre Bitcoins im Portemonnaie Blockchain organisieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customized fund management" = "Angepasste Fondsmanagement";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Debug" = "Debuggen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypted PIN Password length 0" = "Entschlüsselte PIN Passwortlänge 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Private Key" = "Privaten Schlüssel entschlüsseln";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Wallet" = "Entschlüsseln von Wallet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Default" = "In der Standardeinstellung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disable" = "Deaktivieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disabled" = "Behinderte";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Display" = "Anzeige";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Do you really want to log out?" = "Möchten Sie wirklich abmelden?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Don't show again" = "Nicht wieder anzeigen";
 
 /* No comment provided by engineer. */
 "Done" = "Fertig";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Downloading Wallet" = "Mappe herunterladen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Easy one time wallet backup keeps you in control of your funds" = "Einfach einmal Brieftasche Backup hält Sie Kontrolle über Ihr Geld";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Edit" = "Bearbeiten";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email" = "E-Mail";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Notifications" = "E-Mail-Benachrichtigungen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Verified" = "E-Mail überprüft";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Empty response from server." = "Leere Antwort vom Server.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable" = "Aktivieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step" = "2-stufige aktivieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step for SMS" = "2-stufige für SMS aktivieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable Location Services" = "Standortbasierte Dienste aktivieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Aktivieren Sie Benachrichtigungen per e-Mail erhalten, sobald Sie Bitcoins erhalten. Nur mit der Bezeichnung Adressen und importiert sind Adressen berechtigt, Trigger-Benachrichtigungen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Aktivieren Sie diese Option, um die IP-Adressen zu verhindern, die als bekannt sind Teil des Anonymisierungs Netzwerks Zugriff auf Ihren Geldbeutel. Das Tor-Netzwerk dient häufig von Hackern Blockchain Benutzer Brieftasche zugreifen möchten.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktivierung dieser Funktion können alle Benutzer mit einem registrierten Fingerabdruck Touch ID auf diesem Gerät Zugriff auf Ihren Geldbeutel.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enhanced Privacy" = "Verbesserter Datenschutz";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter PIN" = "PIN eingeben";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Password" = "Passwort eingeben";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Verification Code" = "Verifizierungscode eingeben";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter your verification code" = "Geben Sie Ihren Bestätigungscode";
 
 /* No comment provided by engineer. */
 "Error" = "Fehler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error loading settings" = "Fehlereinstellungen be-";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error updating settings" = "Fehler beim Aktualisieren der Einstellungen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Everything you need to store, spend and receive your bitcoin" = "Alles was Sie brauchen, um zu speichern, zu verbringen und erhalten Ihre bitcoin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Extended Public Key" = "Öffentlichen Schlüssel erweitert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Failed To Load Wallet" = "Fehler beim Laden der Brieftasche";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee is too high (0.01 BTC limit)" = "Gebühr ist zu hoch (0.01 BTC-Grenze)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee per KB" = "Gebühr pro KB";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fees" = "Gebühren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Finished Signing Inputs" = "Unterzeichnung der Eingaben abgeschlossen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Zu Ihrer Sicherheit empfehlen wir Ihnen, sämtliche Guthaben in den importierten Adressen in Ihrer Brieftasche Blockchain zu übertragen.";
+
+/* No comment provided by engineer. */
 "Forget Wallet" = "Brieftasche vergessen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Found %d, with %@" = "%1$d, mit %2$@ gefunden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination address have to be different" = "Aus und Zieladresse haben, anders zu sein";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination have to be different" = "Aus und das Ziel haben, anders zu sein";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Go to Settings" = "Gehen Sie zu Einstellungen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Google Authenticator" = "Google Authenticator";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Hint Stored" = "Hinweis gespeichert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "How would you like to pair?" = "Wie möchten Sie paar?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Identifier" = "Bezeichner";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Wenn Sie ein Händler sind, zeigen Sie Ihre xPub und mit der Blockchain Kaufmann-app erhalten Mittel sicher und privat.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import Private Key" = "Import-Privatschlüssels";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import address" = "Import-Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses" = "Importierte Adressen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses (Archived)" = "Importierte Adressen (archiviert)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Private Key %@" = "Importierte Private Schlüssel %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported watch-only address %@" = "Importiert nur beobachten-Adresse %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Importing key" = "Schlüssel importieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect PIN. Please retry." = "Falsche PIN. Wiederholen Sie den Vorgang.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect password" = "Falsches Kennwort";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect private key" = "Falsche privaten Schlüssel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Information" = "Informationen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Initializing Wallet" = "Initialisieren der Brieftasche";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Insufficient Funds" = "Unzureichende Geldmittel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Identifier" = "Ungültiger Bezeichner";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Pairing Code" = "Ungültiger Paarung Code";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Send Value" = "Ungültige senden Wert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Shared Key" = "Ungültige freigegebenen Schlüssel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Status Code Returned %@" = "Ungültigen Statuscode zurückgegeben %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Wallet ID" = "Ungültige Wallet-ID";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid address: %@" = "Ungültige Adresse: %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid email address." = "Ungültige e-Mail-Adresse.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid mobile number." = "Ungültige Handynummer.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid recovery phrase. Please try again" = "Ungültige Wiederherstellung Satz. Bitte versuchen Sie es erneut";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid server response. Please check your internet connection." = "Ungültige Antwort. Bitte überprüfen Sie Ihre Internetverbindung.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid to bitcoin address" = "Bitcoin-Adresse ungültig";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid two-factor authentication type" = "Ungültige Zweifaktor-Authentifizierung-Typ";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid verification code. Please try again." = "Ungültiger Bestätigungscode. Bitte versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
 "Just now" = "Gerade jetzt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Ihre xPub privat zu halten. Jemand mit Zugang zu Ihrem xPub werden alle Ihre Mittel und Transaktionen zu sehen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label" = "Etikett";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label Address" = "Bezeichnung Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must contain letters and numbers only" = "Etikett muss Buchstaben und Zahlen nur enthalten.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must have less than 18 characters" = "Etikett muss weniger als 18 Zeichen lang sein.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Link Mobile" = "Verbindung Mobile";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading External Page" = "Laden externer Seite";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading transactions" = "Laden von Transaktionen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Local Currency" = "Lokaler Währung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Log in to my Wallet" = "Melden Sie sich meine Brieftasche";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Login existing Wallet" = "Anmeldung vorhandenen Wallet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Logout" = "Logout";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Make Default" = "Machen Standard";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manual Pairing" = "Manuelle Kopplung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manually" = "Manuell";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant" = "Kaufmann";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Directory is currently unavailable. Please try again later." = "Händler-Verzeichnis ist derzeit nicht verfügbar. Bitte versuchen Sie es später erneut.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Map" = "Händler Karte";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant URL" = "Händler-URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Linked" = "Mobile verknüpft";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Number" = "Handy-Nummer";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Mein Bitcoin-Wallet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Hinweis: Der gescannte private Schlüssel entspricht nicht an diese Adresse nur beobachten. Wenn Sie von dieser Adresse verbringen möchten, stellen Sie sicher, dass den korrekten privaten Schlüssel zu scannen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Name" = "Name";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Address" = "Neue Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Email Address" = "Neue E-Mail-Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Mobile Number" = "Neue Handy-Nummer";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different" = "Neues Passwort muss unterschiedlich sein.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different from your password hint" = "Neues Passwort muss sich von Ihren Passwort-Hinweis unterscheiden.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "News, Price & Charts" = "Nachrichten, Preis & Charts";
 
 /* No comment provided by engineer. */
 "Next word" = "Nächste Wort";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No" = "Nein";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No Label" = "Keine Bezeichnung";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "Kein Passwort eingegeben";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection available. Please check your network settings." = "Keine Internetverbindung zur Verfügung. Bitte überprüfen Sie Ihre Netzwerkeinstellungen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection." = "Keine Internet-Verbindung.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Normal" = "Normal";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not Stored" = "Nicht gespeichert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not now" = "Jetzt nicht";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Beachten Sie, dass sobald aktualisiert, Sie können nicht mehr auf die vorherige Version zurück, aber Ihre Bitcoins und Ihre Transaktionsgeschichte gehalten werden.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Notifications" = "Benachrichtigungen";
 
 /* No comment provided by engineer. */
@@ -655,184 +658,184 @@
 /* No comment provided by engineer. */
 "OK" = "Okay";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN" = "POLIG";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Encrypted String is nil" = "PIN-verschlüsselte Zeichenfolge ist NULL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object key or value length 0" = "PIN-Response-Objekt Schlüssel oder Wert Länge 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object success length 0" = "PIN-Response-Objekt Erfolg Länge 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Saved Successfully" = "POLIG erfolgreich gespeichert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation Error" = "PIN-Validierungsfehler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "PIN-Validierung kann nicht abgeschlossen werden. Bitte geben Sie Ihre Brieftasche Kennwort manuell.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PINs do not match" = "Stifte stimmen nicht überein.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Parsing Pairing Code" = "Analysieren von Code Paarung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Hint" = "Passwort-Hinweis";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Required" = "Kennwort erforderlich";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password changed. Please login to continue." = "Das Kennwort geändert. Bitte einloggen um fortzufahren.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password must 10 characters or longer" = "Passwort muss 10 Zeichen oder länger";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Passwords do not match" = "Kennwörter stimmen nicht überein";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Received" = "Zahlung erhalten";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Sent!" = "Zahlung gesendet!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Phrase Backed" = "Satz gesichert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please Login" = "Bitte einloggen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please add an email address" = "Bitte fügen Sie eine e-Mail-Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email and click on the verification link." = "Bitte überprüfen Sie Ihre e-Mail und klicken Sie auf den Bestätigungs-Link.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Bitte überprüfen Sie Ihre e-Mail. Wenn Sie bereits ein Anmeldeversuch überprüft haben, sollten Sie über unser Online-Zahlungsmethode anmelden und koppeln Sie Ihr Mobiltelefon durch Scannen den QR-Code unter Einstellungen-> Wallet-Informationen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your internet connection." = "Bitte überprüfen Sie Ihre Internetverbindung.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose another PIN" = "Bitte wählen Sie eine andere PIN";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose from the options below." = "Bitte wählen Sie aus den folgenden Optionen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Bitte beschreiben Sie ausführlich die Frage, die Sie erleben werden, die zusammen mit allen Schritten, die wir ergreifen können, um ihn zu reproduzieren.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Bitte geben Sie eine Gebühr, die größer als 0 BTC und höchstens 0,01 BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a new PIN" = "Bitte geben Sie eine neue PIN";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your %@ 2FA code" = "Bitte geben Sie Ihre %@ 2FA code";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Bitte geben Sie Ihre ID mit Brieftasche 36 Zeichen korrekt. Es finden Sie in der Willkommens-Mail beim Start.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your PIN" = "Bitte geben Sie Ihre PIN";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your recovery phrase with words separated by spaces" = "Bitte geben Sie Ihre Erholung-Satz mit durch Leerzeichen getrennte Wörter";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please provide an email address." = "Bitte geben Sie eine e-Mail-Adresse.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please refresh the pairing code and try again." = "Aktualisieren der Kopplungscode, und versuchen Sie es erneut.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please select a different address to send from or lower the fee in Settings." = "Bitte wählen Sie eine andere Adresse senden oder senken Sie die Gebühr in den Einstellungen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitte senden Sie Zahlung an Bitcoin-Adresse (< a Href = \"https://blockchain.info/wallet/bitcoin-faq\" > helfen? </a >): %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Bitte senden Sie Zahlungen an Bitcoin-Adresse. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Bitte versuchen Sie es erneut";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please verify your email address first." = "Bitte überprüfen Sie zuerst Ihre e-Mail-Adresse.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Preferences" = "\"Einstellungen\"";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Privacy Policy" = "Datenschutz";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Private Key Needed" = "Privaten Schlüssel benötigt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Processing key" = "Verarbeitung der Schlüssel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Receive" = "Erhalten";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Received" = "Empfangen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recover Funds" = "Fonds zu erholen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recovering Funds" = "Wiederherstellen von Fonds";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Regular" = "Regelmäßige";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Request Amount" = "Anfrage-Betrag";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification SMS" = "Senden Sie SMS-Verifizierung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification email" = "Überprüfungs-Email erneut senden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Reset" = "Zurücksetzen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Retry Validation" = "Wiederholen Sie Validierung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Robust security center" = "Robuste Sicherheits-center";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "SMS" = "SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Save" = "Sie sparen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Pairing Code" = "Scan Code Paarung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Private Key" = "Privater Schlüssel Scannen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR Code" = "QR-Code Scannen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR code" = "QR-Code Scannen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scannen Sie dieser Code oder kopieren Sie sie in Ihre Blockchain Merchant app sicher Bitcoin zu erhalten.";
 
 /* No comment provided by engineer. */
@@ -841,408 +844,414 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "Zweite Kennwort erforderlich";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security" = "Sicherheit";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security Center" = "Sicherheits-Center";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send" = "Senden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send from..." = "Senden von...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send to..." = "Schicken...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send verification SMS" = "Senden Sie SMS-Verifizierung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sending Transaction" = "Transaktion senden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent" = "Gesendet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent to %@" = "An %@ gesendet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Server URL" = "Server-URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Set as Default?" = "Als Standard festlegen?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Settings" = "Einstellungen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Shared Coin is not supported in the new version at this time." = "Freigegebene Münze wird nicht unterstützt in der neuen Version zu diesem Zeitpunkt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Teilen Ihre xPub autorisiert andere um Ihre Transaktionsgeschichte zu verfolgen. Befugte Personen in der Lage, Sie zu stören, den Zugriff auf Ihre Brieftasche sein mag, nur teilen Sie Ihre xPub mit Menschen, denen, die Sie vertrauen.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signal %d wuchs.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Input %d" = "Unterzeichnung der Eingabe %d";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Inputs" = "Unterzeichnung der Eingänge";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Simplified backup and recovery" = "Vereinfachte Sicherung und Wiederherstellung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Store Hint" = "Shop-Tipp";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Stored" = "Gespeichert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Strong" = "Strong";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success" = "Erfolg";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success!" = "Erfolg!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Support" = "Unterstützung";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synchronisieren von Wallet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Terms of Service" = "Allgemeine Nutzungsbedingungen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Die PIN, die Sie ausgewählt haben ist sehr verbreitet und kann von einer Person mit Zugriff auf Ihr Telefon innerhalb 3 Versuche leicht zu erraten. Möchten Sie diese PIN trotzdem verwenden?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Der Betrag (%1$@) gesendet werden sollen, ist größer als der Höchstbetrag, den Sie, abzüglich der Gebühr (%2$@ - %3$@ ausgeben können). Möchten Sie %4$@ senden?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Der private Schlüssel, die, den Sie versuchen zu importieren, ist verschlüsselt. Geben Sie bitte das Passwort ein.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Die Aktualisierung dauert nur eine Sekunde und Ihre Bitcoins und Geschichte werden sicher. Hier ist, was ist besser:";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "There was a problem verifying your identity." = "Es gab ein Problem, Ihre Identität zu überprüfen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "These options are recommended for advanced users only. Continue?" = "Diese Optionen sind nur für erfahrene Benutzer empfohlen. Weiter?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Dieser Vorgang erfordert den privaten Schlüssel für die Bitcoin-Adresse %@. Bitte Scannen Sie den QR-Code.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Diese Aktion erfordert das zweite Kennwort für Ihre Bitcoin-Börse. Bitte geben Sie es unten, und drücken Sie weiter.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This address is not watch-only." = "Diese Adresse ist nicht nur beobachten.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Dies ist ein nur-Uhr-Adresse. Um Ihr Geld von dieser Tasche zu verbringen, Scannen Sie bitte Ihren privaten Schlüssel.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Dies wird archiviert. Obwohl Sie keine Gelder von hier aus senden können, bleiben alle Mittel sicher. Einfach öffnen Sie, um es wieder zu verwenden zu beginnen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This name is already in use. Please choose a different name." = "Dieser Name wird bereits verwendet. Bitte wählen Sie einen anderen Namen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This private key belongs to another address that is not watch only" = "Dieser private Schlüssel gehört zu einer anderen Adresse, die nicht nur zu sehen ist";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Dies löscht alle Brieftasche-Daten auf diesem Gerät. Bitte bestätigen Sie, dass Ihre Brieftasche Informationen gespeichert anderswo sonst Bitcoins in diesem Portemonnaie zugegriffen werden!!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "An: %1$@%2$@ Gesamtbetrag: %3$@ Gebühr: %4$@ (%5$@)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor Requests" = "Tor-Anforderungen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor blocked" = "Tor blockiert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests allowed" = "Tor-Anfragen zulässig";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently allowed." = "Tor-Anforderungen sind derzeit zulässig.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently blocked." = "Tor-Anforderungen werden derzeit blockiert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Total Balance" = "Gesamtsaldo";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID has been locked due to too many failed attempts." = "Kontakt-ID wurde aufgrund von zu vielen Fehlversuchen gesperrt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not available on this device." = "Kontakt-ID steht nicht auf diesem Gerät.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Kontakt-ID ist auf diesem Gerät nicht aktiviert. Touch-ID aktivieren, gehen Sie zu Einstellungen->Touch ID & Passwort und Hinzufügen eines Fingerabdrucks.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transaction" = "Transaktion";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaktionen ohne Gebühren können sehr lange dauern, zu bestätigen oder überhaupt nicht bestätigt werden können. Möchten Sie fortfahren?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Transfer Funds" = "Geld überweisen";
+
+/* No comment provided by engineer. */
 "Transferred" = "Übertragen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Try again" = "Wiederholen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "UPGRADE YOUR WALLET" = "AKTUALISIEREN SIE IHRE BRIEFTASCHE";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Fehler beim Laden der Brieftasche wegen keine Serverantwort. Sie ist möglicherweise offline oder Blockchain Schwierigkeiten. Bitte versuchen Sie es später erneut.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive" = "Entarchivieren";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive Address" = "Entarchivieren Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unconfirmed" = "Unbestätigte";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Nicht behandelte Ausnahme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown" = "Unbekannt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown Touch ID error. Code: %ld" = "Unbekannter Touch ID Fehler. Code: %ld";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown key format" = "Unbekannter Schlüssel-format";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unsupported Private Key Format" = "Nicht unterstützte Private-Key-Format";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unverified" = "Ungeprüfte";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Update" = "Update";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade" = "Upgrade";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Now" = "Jetzt upgraden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Wallet" = "Upgrade-Brieftasche";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to HD" = "Upgrade auf HD";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to V3" = "Upgrade auf V3";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use Touch ID as PIN" = "Touch-ID als PIN verwenden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all %@" = "Alle %@ verwenden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all funds" = "Alle Mittel einsetzen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "User Declined" = "Benutzer abgelehnt";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "ÜBERPRÜFEN SIE DIE SICHERUNG";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verification email has been sent to %@." = "Überprüfungs-Email wurde an %@ gesendet.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verified" = "Überprüft";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify" = "Überprüfen Sie";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify Email" = "Überprüfen Sie Email";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verifying" = "Überprüfen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet ID" = "Geldbörse-ID";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Information" = "Wallet-Informationen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet JSON" = "Brieftasche JSON";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Paired Successfully." = "Brieftasche erfolgreich gepaart.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Recovery Phrase" = "Brieftasche Recovery Phrase";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet version %lld not supported" = "Brieftasche Version %lld nicht unterstützt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning" = "Warnung";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning!!!" = "Warnung!!!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Warnung: Ihr Portemonnaie-Bezeichner ist vertraulicher Informationen. Kopieren sie könnten die Sicherheit Ihrer Brieftasche beeinträchtigen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Watch Only" = "Sehen Sie nur";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We'll send the hint to your confirmed email address in case you request it." = "Wir senden den Hinweis an Ihre bestätigte e-Mail-Adresse für den Fall, dass Sie es anfordern.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've designed a whole new
 wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche für Sie entwickelt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Wir haben einige bedeutenden Datenschutz und Sicherheit Verbesserungen enthalten. Sobald Sie auf Update klicken werden Sie nicht in der Lage, um wieder auf Ihre alte Geldbörse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Weak" = "Schwach";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "WebSocket URL" = "WebSocket-URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Welcome" = "Herzlich Willkommen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Wir haben eine frühere Installation von Blockchain Wallet auf deinem Handy festgestellt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Would you like to add the bitcoin address %@ to your address book?" = "Möchten Sie die Bitcoin-Adresse %@ Ihrem Adressbuch hinzufügen?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Notieren Sie Ihre Recovery-Satz und halten Sie es irgendwo sehr sicher und sicher. Denken Sie daran, dass wer Ihre Recovery-Satz kennt Zugriff auf Ihre Bitcoins hat.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wrong BIP38 Password" = "Falsche BIP38 Passwort";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yes" = "Ja";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Gestern";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Sie sind dabei, eine nur-Uhr-Adresse importieren, eine Adresse (oder öffentlichen Schlüssel Skript) in der Brieftasche ohne den entsprechenden privaten Schlüssel gespeichert. Dies bedeutet, dass die Gelder ausgegeben werden können, nur haben Sie der private Schlüssel an anderer Stelle haben gespeichert. Wenn Sie nicht den privaten Schlüssel gespeichert haben, weisen Sie nicht an, jeder Bitcoin auf der Uhr nur Adresse senden.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Sie sollen Bitcoin an eine Uhr nur Adresse erhalten. Sie können diese Mittel nur ausgeben, wenn Sie Zugriff auf den privaten Schlüssel haben. Weiter?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are now running our most secure Bitcoin wallet" = "Sie laufen nun unsere sicherste Bitcoin-Brieftasche";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Sie Ihr Geld erfolgreich gesichert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Sie können 2-stufige Verifizierung per SMS auf Ihrem Mobiltelefon aktivieren. Um andere Authentifizierungsmethoden verwenden, melden Sie sich an unserer Online-Zahlungsmethode.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can now spend from this address." = "Jetzt können Sie von dieser Adresse verbringen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You do not have an account set up for Mail. Please contact %@" = "Sie müssen kein Konto für Mail eingerichtet. Bitte kontaktieren Sie %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You have no available funds to send from this address" = "Sie haben keine verfügbaren Mittel von dieser Adresse senden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Sie müssen SMS 2-Step Verification bevor Sie ändern Ihre Handy-Nummer (%@) deaktivieren.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a destination address" = "Sie müssen eine Zieladresse eingeben.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a label" = "Sie müssen eine Bezeichnung eingeben.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have at least one active address" = "Sie müssen mindestens eine aktive Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have two-factor authentication disabled to pair manually." = "Sie müssen zwei-Faktor-Authentifizierung auf paar manuell deaktiviert haben.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must leave at least one active address" = "Du musst mindestens eine aktive Adresse verlassen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Sie sollten immer koppeln oder haben Sie Zugriff auf Ihre Brieftasche-ID und Passwort einloggen. Wiederherstellen Ihrer Fonds schafft eine neue Geldbörse-ID. Möchten Sie fortfahren?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported a private key." = "Sie haben erfolgreich einen privaten Schlüssel importiert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Sie haben erfolgreich importiert, des privaten Schlüssels für die Adresse %@, und verbringen Sie nun von ihm. Wenn Sie von dieser Adresse ausgeben möchten, stellen Sie sicher, dass Sie den richtigen privaten Schlüssel scannen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Ihr Gerät wird sein Jailbroken. Die Sicherheit Ihrer Brieftasche möglicherweise gefährdet.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your email has been verified." = "Ihre e-Mail wurde überprüft.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your identity does not match our records." = "Ihre Identität entspricht nicht unseren Aufzeichnungen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your mobile number has been verified." = "Ihre Handy-Nummer wurde überprüft.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains invalid characters. Please try again." = "Ihr neues Passwort-Hinweis enthält ungültige Zeichen. Bitte versuchen Sie es erneut.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains no text. Your password hint will be cleared." = "Ihr neues Passwort-Hinweis enthält keinen Text. Ihr Passwort-Hinweis wird gelöscht.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your password. Please try again." = "Ihre neue Kennworthinweis dürfen Ihr Passwort unterscheiden. Bitte versuchen Sie es erneut.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your second password. Please try again." = "Ihre neue Kennworthinweis dürfen Ihr zweites Passwort unterscheiden. Bitte versuchen Sie es erneut.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your password hint has been updated." = "Ihr Passwort-Hinweis wurde aktualisiert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Ihr Guthaben werden sicher und sicher und profitieren Sie von mehr Privatsphäre und praktische Backup- und Recovery-Funktionen.";
+
+/* No comment provided by engineer. */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Ihre verifizierte e-Mail-Adresse wird verwendet, um die Login-Codes zu senden, wenn verdächtige oder ungewöhnliche Aktivitäten erkannt wird, an Ihre Brieftasche-Anmelde-ID erinnern und um Bitcoin Zahlung Warnungen zu senden, wenn Sie Gelder erhalten. Wir werden Ihre e-Mail-Adresse nicht für Marketingzwecke verwenden.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet does not contain this address." = "Ihre Geldbörse ist diese Adresse nicht enthalten.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet was successfully created." = "Ihre Geldbörse wurde erfolgreich erstellt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yubi Key" = "Yubi-Schlüssel";
 
 /* No comment provided by engineer. */
@@ -1260,16 +1269,16 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 /* No comment provided by engineer. */
 "fourth word" = "vierte Wort";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "from" = "Von";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "iOS Support Request" = "iOS-Supportanfrage";
 
 /* No comment provided by engineer. */
 "ninth word" = "Neunte Wort";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "or Continue" = "oder weiter";
 
 /* No comment provided by engineer. */

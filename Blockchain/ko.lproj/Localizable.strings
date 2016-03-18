@@ -1,13 +1,13 @@
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ BTC" = "BTC %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ copied to clipboard" = "클립보드에 복사 하는 %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Confirmations" = "%d 확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Transactions" = "%d 거래";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld 초 전";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "* Minimum 10 characters" = "* 최소 10 문자";
 
 /* No comment provided by engineer. */
@@ -28,625 +28,628 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "1 분 전";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step Enabled" = "2 단계 사용";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been disabled." = "2 단계 해제 되었습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been enabled for SMS." = "2 단계는 SMS에 대 한 활성화 되었습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification" = "2 단계 인증";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently disabled." = "2 단계 인증 현재 사용할 수 없습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled for %@." = "2 단계 확인은 현재 %@ 사용할 수 있습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled." = "2 단계 인증 현재 사용할 수 있습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "API URL" = "API URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "About" = "에 대 한";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Account Details" = "계정 세부 정보";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Accounts" = "계정";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add Email" = "이메일 추가";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add to Address book?" = "주소록에 추가?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address" = "주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address book" = "주소록";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address is not valid" = "주소는 유효 하지 않습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Addresses" = "주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Adjust Fee" = "요금 조정";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allow" = "허용";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allowed" = "허용";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Amount must be above dust threshold (%lld Satoshi)" = "금액 먼지 임계값 (%lld 사토시) 이상 되어야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "오류가 발생 원격 서버와 핀 코드의 유효성을 검사 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있습니다. 유효성 검사를 다시 시도 하거나 대신 수동으로 비밀 번호를 입력 시겠습니까?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred while changing 2-Step verification." = "2 단계 확인을 변경 하는 동안 오류가 발생 했습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "오류가 당신의 지갑을 로드 하는 동안 발생 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 제발 응용 프로그램을 닫고 나중에 다시 시도 또는 장치를 다시 쌍.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "오류는 키체인에서 지갑 식별자를 검색 하는 동안 발생 했습니다. 응용 프로그램을 종료 하 고 다시 시도 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Any address" = "모든 주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive" = "아카이브";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive Address" = "아카이브 주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "더 이상 그것을 사용 하려는 경우에이 보관 합니다. 자금 안전, 유지 됩니다 그리고 당신은 언제 든 지 그것을 unarchive 수 있습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archived" = "보관";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Ask Me Later" = "나중에 나 한 테 물어";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authenticate with Touch ID" = "터치 id 인증";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authorization Required" = "필요한 권한 부여";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatic Pairing" = "자동 페어링";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatically" = "자동으로";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "백업 자금";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup" = "백업";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "백업 자금";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup Phrase" = "백업 문구";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "당신의 지갑에 액세스 하기 전에 당신의 지갑의 잠금을 해제를 사용 하 여 핀 번호를 선택 하십시오. 그것은 중요 당신이 기억이 핀 재설정 되거나 첫 번째 응용 프로그램 잠금 해제 없이 변경 될 수 없습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin Unit" = "Bitcoin 단위";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin payment request" = "Bitcoin 지불 요청";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block" = "블록";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block Tor" = "블록 토르";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain에는 카메라에 액세스할 수 없습니다. 액세스를 사용 하려면 장치 설정에 이동 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain 유지 보수를 위해 아래로 현재 이다입니다. 나중에 다시 시도 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain 위치 서비스는 위치 정보에 액세스 하려면 사용 해야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain 위치 서비스는 위치 정보에 액세스 하려면 사용 해야 합니다. 액세스를 사용할 수 있습니다 개인 정보-> 설정-> 위치 서비스";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain 위치 서비스는 위치 정보에 액세스 하려면 사용 해야 합니다. 액세스를 설정할 수 있습니다 설정에서 개인 정보를-> 위치->-> 위치 서비스";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blocked" = "차단";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Camera Access Denied" = "카메라 액세스 거부";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cancel" = "취소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "동안 지갑 초기화 되지 않은 암호는 null 또는 핀 코드를 저장할 수 없습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Email" = "이메일 변경";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Mobile Number" = "휴대폰 번호 변경";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change PIN" = "변경 핀";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password" = "비밀 번호 변경";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password Hint" = "변경 암호 힌트";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change fee per kilobyte" = "변경 수수료 / k b";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for Wallet updates" = "지갑 업데이트 확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for more: Step %d of %d" = "대 한 자세한 확인: %2$d의 단계 %1$d";
 
 /* No comment provided by engineer. */
 "Close" = "닫기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Close App" = "응용 프로그램을 닫습니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Complete the steps below for ultimate security" = "궁극적인 보안을 위해 아래 단계를 완료";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Completely updated design and user experience" = "완전히 업데이트 된 디자인과 사용자 경험";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Payment" = "결제 확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Upgrade" = "업그레이드 확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm your PIN" = "PIN 확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Connection timed out. Please check your internet connection." = "연결 시간 초과. 인터넷 연결을 확인 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Continue" = "계속";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copied to clipboard" = "클립보드에 복사";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Address" = "주소 복사";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Wallet ID" = "복사 지갑 ID";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy to clipboard" = "클립보드에 복사";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy xPub" = "XPub 복사";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create" = "만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create New Wallet" = "새 지갑 만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create Wallet" = "지갑 만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create new address" = "새 주소 만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating" = "만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating HD Wallet" = "HD 지갑 만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating V3 Wallet" = "V3 지갑 만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating Wallet" = "지갑 만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new Wallet" = "새 지갑 만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new address" = "새 주소 만들기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Current rate: %@ BTC" = "현재 속도: %@ BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Blockchain 지갑에 당신의 bitcoins를 구성 하는 방법을 사용자 지정";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customized fund management" = "사용자 지정 된 기금 관리";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Debug" = "디버그";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypted PIN Password length 0" = "해독 된 핀 암호 길이 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Private Key" = "개인 키의 암호 해독";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Wallet" = "지갑의 암호 해독";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Default" = "기본";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disable" = "사용 안 함";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disabled" = "사용 안 함";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Display" = "디스플레이";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Do you really want to log out?" = "로그 아웃 하 시겠습니까?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Don't show again" = "다시 표시 하지 않음";
 
 /* No comment provided by engineer. */
 "Done" = "완료";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Downloading Wallet" = "다운로드 지갑";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Easy one time wallet backup keeps you in control of your funds" = "쉽게 한 번 지갑 백업 자금의 통제에서 당신을 유지합니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Edit" = "편집";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email" = "메일 주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Notifications" = "이메일 알림";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Verified" = "이메일 확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Empty response from server." = "서버에서 빈 응답입니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable" = "활성화";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step" = "2 단계 사용";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step for SMS" = "SMS에 대 한 2 단계 사용";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable Location Services" = "위치 서비스를 활성화";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "사용 bitcoins 받을 때마다 이메일을 수신 알림. 주소를 표시 하 고 가져올 주소 트리거 알림을 받을 수 있습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "당신의 지갑에 액세스 바위산 익명 네트워크의 일부가 될 것으로 알려진 IP 주소를 방지 하려면이 옵션을 사용 합니다. Tor 네트워크는 Blockchain 사용자의 지갑에 액세스를 시도 하는 해커에 의해 자주 사용 됩니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "이 기능을 사용 하면 당신의 지갑에 액세스 하려면이 장치에서 모든 사용자가 등록 된 터치 ID 지문 수 있게 됩니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enhanced Privacy" = "향상 된 개인 정보 보호";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter PIN" = "PIN 입력";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Password" = "비밀 번호를 입력";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Verification Code" = "확인 코드를 입력";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter your verification code" = "확인 코드를 입력";
 
 /* No comment provided by engineer. */
 "Error" = "오류";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error loading settings" = "오류 로드 설정";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error updating settings" = "오류 설정 업데이트";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Everything you need to store, spend and receive your bitcoin" = "저장 하는 데 필요한 모든 지출 하 고 당신의 bitcoin 받을";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Extended Public Key" = "공개 키 확장";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Failed To Load Wallet" = "지갑을 로드 하지 못했습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee is too high (0.01 BTC limit)" = "요금은 너무 높다 (0.01 BTC 제한)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee per KB" = "KB 당 요금";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fees" = "수수료";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Finished Signing Inputs" = "서명 입력 완료";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "안전을 위해 좋습니다 Blockchain 지갑에 가져온된 주소에 어떤 균형을 전송할 수 있습니다.";
+
+/* No comment provided by engineer. */
 "Forget Wallet" = "지갑을 잊어합니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Found %d, with %@" = "%1$d, %2$@와 발견";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination address have to be different" = "대상 주소 다를 수 있고";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination have to be different" = "와 다를 수 있다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Go to Settings" = "설정으로 이동";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Google Authenticator" = "구글 인증자";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Hint Stored" = "저장 하는 힌트";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "How would you like to pair?" = "어떻게 쌍을 원하십니까?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Identifier" = "식별자";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "가맹점 인 경우 당신의 xPub을 표시 하 고 Blockchain 상인 애플 리 케이 션을 사용 하 여 안전 하 고 개인적으로 자금을 받을.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import Private Key" = "가져오기 개인 키";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import address" = "가져오기 주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses" = "가져온된 주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses (Archived)" = "가져온된 주소 (보관)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Private Key %@" = "가져온된 개인 키 %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported watch-only address %@" = "가져온된 시계 전용 주소 %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Importing key" = "키를 가져오기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect PIN. Please retry." = "잘못 된 핀입니다. 다시 시도 하시기 바랍니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect password" = "잘못 된 암호";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect private key" = "잘못 된 개인 키";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Information" = "정보";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Initializing Wallet" = "초기화 지갑";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Insufficient Funds" = "부족 한 자금";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Identifier" = "잘못 된 식별자";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Pairing Code" = "잘못 된 연결 코드";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Send Value" = "잘못 된 송신 값";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Shared Key" = "잘못 된 공유 키";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Status Code Returned %@" = "%@를 반환 하는 잘못 된 상태 코드";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Wallet ID" = "잘못 된 지갑 ID";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid address: %@" = "잘못 된 주소: %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid email address." = "잘못 된 이메일 주소입니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid mobile number." = "잘못 된 모바일 수입니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid recovery phrase. Please try again" = "잘못 된 복구 구문입니다. 다시 시도 하십시오";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid server response. Please check your internet connection." = "잘못 된 서버 응답입니다. 인터넷 연결을 확인 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid to bitcoin address" = "Bitcoin 주소에 잘못 된";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid two-factor authentication type" = "잘못 된 이중 인증 유형";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid verification code. Please try again." = "잘못 된 확인 코드입니다. 다시 시도 하십시오.";
 
 /* No comment provided by engineer. */
 "Just now" = "지금 막";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "당신의 xPub 개인 유지. 누군가가 당신의 xPub에 액세스할 수 있는 모든 자금 및 거래를 볼 수 있게 됩니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label" = "레이블";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label Address" = "라벨 주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must contain letters and numbers only" = "레이블 문자 및 숫자만 포함 해야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must have less than 18 characters" = "레이블 미만 18 문자가 있어야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Link Mobile" = "링크 모바일";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading External Page" = "외부 페이지 로드";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading transactions" = "거래 로드";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Local Currency" = "현지 통화";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Log in to my Wallet" = "내 지갑에 로그인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Login existing Wallet" = "로그인 기존 지갑";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Logout" = "로그 아웃";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Make Default" = "만들기 기본";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manual Pairing" = "수동 페어링";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manually" = "수동으로";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant" = "가맹점";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Directory is currently unavailable. Please try again later." = "상인 디렉터리 현재 제공 되지 않습니다. 나중에 다시 시도 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Map" = "가맹점 지도";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant URL" = "가맹점 URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Linked" = "모바일 연결";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Number" = "휴대 전화 번호";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "내 Bitcoin 지갑";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "참고: 스캔 한 개인 키가 시계 전용 주소를 일치 하지 않습니다. 이 주소에서 지출 하고자 하는 경우 올바른 개인 키를 검색 하 고 있는지 확인 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Name" = "이름";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Address" = "새 주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Email Address" = "새로운 이메일 주소";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Mobile Number" = "새로운 휴대 전화 번호";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different" = "새 암호는 서로 달라 야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different from your password hint" = "새 암호 암호 힌트 달라 야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "News, Price & Charts" = "뉴스, 가격 및 차트";
 
 /* No comment provided by engineer. */
 "Next word" = "다음 단어";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No" = "없음";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No Label" = "상표 없음";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "입력 한 비밀 번호";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection available. Please check your network settings." = "사용할 수 없는 인터넷 연결. 네트워크 설정을 확인 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection." = "아니 인터넷 연결입니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Normal" = "정상";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not Stored" = "저장 되지";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not now" = "지금은 아니에요";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Note 업그레이드 되 면 이전 버전으로 다시 갈 수 없어 하지만 모든 bitcoins 및 거래 내역을 보관 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Notifications" = "알림";
 
 /* No comment provided by engineer. */
@@ -655,184 +658,184 @@
 /* No comment provided by engineer. */
 "OK" = "괜찮았던 것";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN" = "핀";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Encrypted String is nil" = "핀 암호화 문자열은 없음";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object key or value length 0" = "핀 응답 개체 키 또는 값 길이 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object success length 0" = "핀 응답 개체 성공 길이 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Saved Successfully" = "성공적으로 저장 하는 핀";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation Error" = "핀 유효성 검사 오류";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "핀 유효성 검사를 완료할 수 없습니다. 당신의 지갑 암호를 수동으로 입력 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PINs do not match" = "핀이 일치 하지 않습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Parsing Pairing Code" = "페어링 코드 구문 분석";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Hint" = "암호 힌트";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Required" = "암호 필요";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password changed. Please login to continue." = "비밀 번호 변경. 계속 하려면 로그인을 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password must 10 characters or longer" = "암호 해야 10 자 이상";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Passwords do not match" = "암호가 일치 하지 않습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Received" = "지불 받은";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Sent!" = "지불 전송!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Phrase Backed" = "구 지원";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please Login" = "로그인을 하십시오";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please add an email address" = "이메일 주소를 추가 하시기 바랍니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email and click on the verification link." = "귀하의 이메일을 확인 하 고 확인 링크를 클릭 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "귀하의 이메일을 확인 하시기 바랍니다. 우리의 웹 지갑 통해 로그인 하 고 설정 아래 QR 코드를 스캔 하 여 귀하의 휴대 전화 쌍 해야 로그인 시도 이미 확인 하는 경우-> 지갑 정보.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your internet connection." = "인터넷 연결을 확인 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose another PIN" = "다른 핀을 선택 하십시오";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose from the options below." = "아래 옵션에서 선택 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "제발 자세히 우리가 재현에 취할 수 있는 모든 단계를 함께 발생 하는 문제를 설명.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "0 BTC 및 최대 0.01 BTC 보다 큰 비용을 입력 해 주시기 바랍니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a new PIN" = "새 PIN을 입력 해 주시기 바랍니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your %@ 2FA code" = "%@ 2FA 코드를 입력 해 주시기 바랍니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "올바르게 36 캐릭터 지갑 식별자를 입력 하십시오. 그것은 시작에 환영 이메일에서 찾을 수 있습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your PIN" = "귀하의 PIN을 입력 해 주시기 바랍니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your recovery phrase with words separated by spaces" = "공백으로 구분 된 단어와 복구 문구를 입력 해 주시기 바랍니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please provide an email address." = "이메일 주소를 제공 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please refresh the pairing code and try again." = "페어링 코드를 새로 고침 하 고 다시 시도 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please select a different address to send from or lower the fee in Settings." = "다른 주소에서 보내거나 낮은 설정에서 수수료를 선택 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "지불 bitcoin 주소를 보내주시기 바랍니다 (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > 도움이? < /a >): %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "지불 bitcoin 주소로 보내주시기 바랍니다. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "다시 시도 하십시오";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please verify your email address first." = "귀하의 이메일 주소를 먼저 확인 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Preferences" = "환경 설정";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Privacy Policy" = "개인 정보 보호 정책";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Private Key Needed" = "개인 키 필요";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Processing key" = "키 처리";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Receive" = "수신";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Received" = "받은";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recover Funds" = "자금을 복구";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recovering Funds" = "자금을 회복";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Regular" = "일반";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Request Amount" = "요청 금액";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification SMS" = "다시 확인 SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification email" = "확인 메일 다시 보내기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Reset" = "리셋";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Retry Validation" = "유효성 검사를 다시 시도";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Robust security center" = "강력한 보안 센터";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "SMS" = "SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Save" = "저장";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Pairing Code" = "스캔 코드를 페어링";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Private Key" = "개인 키를 검색";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR Code" = "QR 코드를 스캔";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR code" = "QR 코드를 스캔";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "이 코드를 스캔 하거나 안전 하 게 받을 Bitcoin Blockchain 상인 응용 프로그램에 복사 합니다.";
 
 /* No comment provided by engineer. */
@@ -841,408 +844,414 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "두 번째 암호 필요";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security" = "보안";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security Center" = "보안 센터";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send" = "보내기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send from..." = "보내...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send to..." = "보내기...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send verification SMS" = "확인 SMS를 보내기";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sending Transaction" = "보내는 트랜잭션";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent" = "전송";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent to %@" = "%@ 전송";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Server URL" = "서버 URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Set as Default?" = "기본값으로 설정?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Settings" = "설정";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Shared Coin is not supported in the new version at this time." = "공유 동전이이 시간에는 새로운 버전에서 지원 되지 않습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "당신의 xPub 공유 거래 내역을 추적 하려면 다른 권한을 부여 합니다. 허가한 사람 액세스 당신의 지갑에서 당신을 방해 할 수 있습니다로 신뢰 하는 사람들과 당신의 xPub 공유.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "신호 %d은 올렸다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Input %d" = "서명 입력된 %d";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Inputs" = "서명 입력";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Simplified backup and recovery" = "단순화 된 백업 및 복구";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Store Hint" = "스토어 힌트";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Stored" = "저장";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Strong" = "강력한";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success" = "성공";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success!" = "성공!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Support" = "지원";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "동기화 지갑";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Terms of Service" = "서비스 약관";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "선택한 핀 매우 일반적 이며 3 시도 이내 귀하의 휴대 전화에 액세스할 수 있는 사람에 의해 쉽게 짐작 될 수 있습니다. 어쨌든이 핀을 사용 하 시겠습니까?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@)를 보낼 금액 수수료 (%2$@-%3$@) 마이너스 보낼 수 있는 최대 크기 보다 큽니다. %4$@를 보낼 하 시겠습니까?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "가져올 하려고 하는 개인 키가 암호화 됩니다. 아래 암호를 입력 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더:";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "There was a problem verifying your identity." = "Id 확인 문제가 있었습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "These options are recommended for advanced users only. Continue?" = "이 옵션은 고급 사용자만 위한 것이 좋습니다. 계속 하 시겠습니까?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "이 작업 Bitcoin 주소 %@에 대 한 개인 키를 필요합니다. QR 코드를 스캔 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "이 작업 bitcoin 지갑에 대 한 두 번째 암호를 요구 한다. 제발 아래 입력 하 고 누르면 계속.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This address is not watch-only." = "이 주소는 시계 전용.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "이것은 시계 전용 주소 이다. 이 지갑에서 귀하의 자금을 지출, 개인 키를 검색 하시기 바랍니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "이 보관 됩니다. 여기에서 자금을 보낼 수 없습니다, 하지만 모든 자금 안전 하 게 유지 됩니다. 단순히 그것을 사용 하 여 다시 시작을 unarchive.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This name is already in use. Please choose a different name." = "이 이름은 이미 사용 중에서입니다. 다른 이름을 선택 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This private key belongs to another address that is not watch only" = "이 개인 키 시계만은 다른 주소에 속한다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "이이 장치에 모든 지갑 데이터가 지워집니다. 당신은 당신의 지갑에 저장 된 정보 다른 곳에서 그렇지 않으면 어떤 bitcoins이 지갑 것입니다 액세스할 수 없습니다 것을 확인 하십시오!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = ": %1$@%2$@ 총 금액: %3$@ 요금: %4$@ (%5$@)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor Requests" = "토르 요청";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor blocked" = "토르 차단";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests allowed" = "토르 요청 허용";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently allowed." = "토르 요청 현재 사용할 수 있습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently blocked." = "토르 요청 현재 차단 됩니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Total Balance" = "총 잔액";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID has been locked due to too many failed attempts." = "터치 ID 너무 많은 실패 한 시도 때문에 잠겨 되어 있다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not available on this device." = "터치 ID는이 장치에 사용할 수 없습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "터치 ID는이 장치에 사용할 수 없습니다. 터치 ID를 사용 하려면 설정->Touch ID & 암호 이동한 지문 추가 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transaction" = "트랜잭션";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "거래 수수료 확인 하는 데 시간이 오래 걸릴 수 있습니다 또는 전혀 확인 되지 않고 있습니다. 계속 하 시겠습니까?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Transfer Funds" = "송금 자금";
+
+/* No comment provided by engineer. */
 "Transferred" = "전송";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Try again" = "다시 시도";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "UPGRADE YOUR WALLET" = "당신의 지갑 업그레이드";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "서버 응답 때문 지갑 로드 수 없습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 나중에 다시 시도 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive" = "Unarchive";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive Address" = "주소 unarchive";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unconfirmed" = "미확인";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "처리 되지 않은 예외";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown" = "알 수 없는";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown Touch ID error. Code: %ld" = "알 수 없는 터치 ID 오류가 발생 합니다. 코드: %ld";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown key format" = "알 수 없는 키 형식";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unsupported Private Key Format" = "지원 되지 않는 개인 키 형식";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unverified" = "확인 되지 않은";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Update" = "업데이트";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade" = "업그레이드";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Now" = "지금 업그레이드";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Wallet" = "업그레이드 지갑";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to HD" = "HD로 업그레이드";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to V3" = "V 3 업그레이드";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use Touch ID as PIN" = "터치 ID 핀으로 사용";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all %@" = "모든 %@를 사용 하 여";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all funds" = "모든 자금을 사용 하 여";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "User Declined" = "사용자 거부";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "백업 확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verification email has been sent to %@." = "%@를 확인 이메일을 보냈습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verified" = "확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify" = "확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify Email" = "이메일 확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verifying" = "확인";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet ID" = "ID 지갑";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Information" = "지갑 정보";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet JSON" = "지갑을 JSON";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Paired Successfully." = "지갑에 성공적으로 대응.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Recovery Phrase" = "지갑 복구 문구";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet version %lld not supported" = "지원 되지 않는 지갑 버전 %lld";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning" = "경고";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning!!!" = "경고!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "경고: 당신의 지갑 식별자는 중요 한 정보입니다. 복사 하는 것은 당신의 지갑의 보안을 타협 수 있습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Watch Only" = "시계만";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We'll send the hint to your confirmed email address in case you request it." = "당신이 그것을 요청 하는 경우에 힌트 확인 된 이메일 주소에 발송 됩니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've designed a whole new
 wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지갑 경험 설계 했습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "우리는 몇 가지 중요 한 개인 정보 보호 및 보안 향상을 포함 했다. 업데이트를 클릭 하면 당신은 당신의 오래 된 지갑에 다시 갈 수 없을";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Weak" = "약한";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "WebSocket URL" = "WebSocket URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Welcome" = "환영 합니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "우리가 귀하의 휴대 전화에 Blockchain 지갑의 이전 설치를 발견 했습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Would you like to add the bitcoin address %@ to your address book?" = "주소록 bitcoin 주소 %@를 추가 하 시겠습니까?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "복구 문구를 적어 하 고 매우 안전 하 고 안전한 어딘가에 그것을 유지. 당신의 복구 어구를 알고 있는 누군가 당신의 bitcoins에 액세스할 수 기억 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wrong BIP38 Password" = "잘못 된 BIP38 암호";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yes" = "예";
 
 /* No comment provided by engineer. */
 "Yesterday" = "어제";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "시계 전용 주소를 가져올 하려고, 주소 (또는 공개 키 스크립트)에 저장 된 해당 개인 없이 지갑 키. 즉, 당신이 하는 경우 개인 키 저장 다른 자금 지출 하실 수 있습니다. 개인 키를 저장 하지 않은 경우 시계 전용 주소 bitcoin에 보낼 사람이 지시 하지 않습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Bitcoin 시계 전용 주소를 받을 수 있습니다. 개인 키에 액세스할 수 있는 경우에 이러한 자금을 보낼 수 있습니다. 계속 하 시겠습니까?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are now running our most secure Bitcoin wallet" = "이제 우리의 가장 안전한 Bitcoin 지갑을 실행 하는";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "귀하의 자금을 성공적으로 백업";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "귀하의 휴대 전화에 SMS 통해 2 단계 인증을 설정할 수 있습니다. 대신 다른 인증 방법을 사용, 우리의 웹 지갑에 로그인을 하시기 바랍니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can now spend from this address." = "이제이 주소에서 보내실 수 있습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You do not have an account set up for Mail. Please contact %@" = "메일 설정 된 계정이 필요가 없습니다. %@에 문의 하시기 바랍니다";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You have no available funds to send from this address" = "당신은이 주소에서 보내는 데 사용할 수 있는 자금";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "휴대폰 번호 (%@)를 변경 하기 전에 SMS 2 단계 인증을 해제 해야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a destination address" = "대상 주소를 입력 해야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a label" = "레이블을 입력 해야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have at least one active address" = "하나 이상의 활성 주소를가지고 있어야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have two-factor authentication disabled to pair manually." = "2 단계 인증 쌍을 수동으로 비활성화 해야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must leave at least one active address" = "하나 이상의 활성 주소를 두고 해야 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "항상 쌍 하거나 당신의 지갑 ID와 비밀 번호에 액세스할 수 있는 경우 로그인 해야 합니다. 새 지갑 신분증 만들 것입니다 귀하의 자금을 복구 계속 하 시겠습니까?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported a private key." = "성공적으로 개인 키를 가져올 했습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "주소 %@에 대 한 개인 키를 성공적으로 가져온 고 그것에서 보낼 수 있습니다. 이 주소에서 지출 하고자 하는 경우 올바른 개인 키를 검색 하 고 있는지 확인 합니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "당신의 장치에 jailbroken 나타납니다. 지갑의 보안이 손상 될 수 있습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your email has been verified." = "귀하의 이메일 확인 되었습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your identity does not match our records." = "본인은 우리의 레코드를 일치 하지 않습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your mobile number has been verified." = "휴대폰 번호는 확인 되었습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains invalid characters. Please try again." = "새 암호 힌트에 잘못 된 문자가 포함 되어 있습니다. 다시 시도 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains no text. Your password hint will be cleared." = "새 암호 힌트 텍스트가 포함 되어 있습니다. 비밀 번호 힌트 삭제 됩니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your password. Please try again." = "새 암호 힌트에서 암호 달라 야 합니다. 다시 시도 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your second password. Please try again." = "새 암호 힌트 두 번째 암호에서 달라 야 합니다. 다시 시도 하십시오.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your password hint has been updated." = "암호 힌트 업데이트 되었습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "전송된 자금 안전 하 고 안전한, 그리고 증가 개인 정보 보호 및 편리한 백업 및 복구 기능에서 혜택을 얻을 것.";
+
+/* No comment provided by engineer. */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "확인 된 이메일 주소는 의심 이나 비정상적인 행위가 감지 되 면, 지갑 로그인 ID를 당신을 생각나 게 하 고 자금을 받을 때 bitcoin 지불 경고를 보낼 때 로그인 코드를 보내는 데 사용 됩니다. 우리는 마케팅 목적으로 귀하의 이메일 주소를 사용 하지 않습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet does not contain this address." = "당신의 지갑은이 주소를 포함 하지 않습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet was successfully created." = "당신의 지갑 성공적으로 만들었습니다.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yubi Key" = "Yubi 키";
 
 /* No comment provided by engineer. */
@@ -1260,16 +1269,16 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 /* No comment provided by engineer. */
 "fourth word" = "4 번째 단어";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "from" = "보낸 사람";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "iOS Support Request" = "iOS 지원 요청";
 
 /* No comment provided by engineer. */
 "ninth word" = "9 단어";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "or Continue" = "또는 계속";
 
 /* No comment provided by engineer. */

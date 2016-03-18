@@ -1,13 +1,13 @@
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ BTC" = "%@ BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ copied to clipboard" = "%@ kopieres til utklippstavlen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Confirmations" = "%d bekreftelser";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Transactions" = "%d transaksjoner";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekunder siden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "* Minimum 10 characters" = "* Minst 10 tegn";
 
 /* No comment provided by engineer. */
@@ -28,625 +28,628 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "1 minutt siden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step Enabled" = "2-trinns aktivert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been disabled." = "2-step er deaktivert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been enabled for SMS." = "2-step er aktivert for SMS.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification" = "2-trinns bekreftelse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently disabled." = "2-trinns bekreftelse er deaktivert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled for %@." = "2-trinns bekreftelse er aktivert for %@.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled." = "2-trinns bekreftelse er aktivert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "API URL" = "API URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "About" = "Om";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Account Details" = "Kontodetaljer";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Accounts" = "Kontoer";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add Email" = "Legge til epost";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add to Address book?" = "Legge til adresseboken?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address" = "Adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address book" = "Adressebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address is not valid" = "Adressen er ikke gyldig";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Addresses" = "Adresser";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Adjust Fee" = "Justere avgift";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allow" = "Tillate";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allowed" = "Tillatt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Amount must be above dust threshold (%lld Satoshi)" = "Beløpet må være over støv terskelen (%lld Satoshi)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Feil ved validering av PIN-kode med den eksterne serveren. Du kan være frakoblet eller Blockchain kan ha problemer. Ønsker du Prøv validering eller i stedet skrive inn passordet manuelt?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred while changing 2-Step verification." = "Det oppstod en feil under endring 2-Step bekreftelse.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Det oppstod en feil under lasting lommeboken. Du kan være frakoblet eller Blockchain opplever vanskeligheter. Vennligst lukk programmet og prøv på nytt senere eller nytt parer du enheten din.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Det oppstod en feil under henting din lommebok identifikator fra nøkkelringen. Lukk programmet, og prøv på nytt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Any address" = "En adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive" = "Arkiv";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive Address" = "Arkiv-adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Arkiv dette hvis du ikke vil bruke den lenger. Midlene vil være trygt, og du kan hente det frem når som helst.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archived" = "Arkivert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Ask Me Later" = "Spør meg senere";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authenticate with Touch ID" = "Godkjenne med Touch-ID";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authorization Required" = "Godkjenning kreves";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatic Pairing" = "Automatisk tilkobling";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatically" = "Automatisk";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "BACKUP MIDLER";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup" = "Sikkerhetskopiering";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "Backup midler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup Phrase" = "Backup uttrykk";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Før du åpner lommeboken, Velg en PIN å bruke låse opp lommeboken. Det er viktig du husker denne PIN-koden som det ikke kan tilbakestille eller endres uten først låse opp programmet.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin Unit" = "Bitcoin enhet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin payment request" = "Bitcoin betalingsforespørsel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block" = "Blokk";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block Tor" = "Blokkere Tor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain har ikke tilgang til kameraet. For å aktivere tilgang, kan du gå til enheten innstillinger.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain er for øyeblikket nede for vedlikehold. Prøv igjen senere.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain må stedstjenester aktivert for å få tilgang til din plassering.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain må stedstjenester aktivert for å få tilgang til din plassering. Kan du aktivere tilgang innstillinger -> Personvern -> stedstjenester";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain må stedstjenester aktivert for å få tilgang til din plassering. Kan du aktivere tilgang innstillinger -> Personvern -> plassering -> stedstjenester";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blocked" = "Blokkert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Camera Access Denied" = "Kameraet tilgang";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cancel" = "Avbryt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Kan ikke lagre PIN-koden mens mur ikke er initialisert eller passord er null";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Email" = "Endre e-post";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Mobile Number" = "Endre mobilnummer";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change PIN" = "Endre PIN";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password" = "Endre passord";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password Hint" = "Endre passord vink";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change fee per kilobyte" = "Endre gebyr per kilobyte";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for Wallet updates" = "Ser etter lommebok oppdateringer";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for more: Step %d of %d" = "Se etter mer: trinn %1$d av %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Lukk";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Close App" = "Lukk programmet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Complete the steps below for ultimate security" = "Fullfør fremgangsmåten nedenfor for endelig sikkerhet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Completely updated design and user experience" = "Helt oppdatert design og brukeropplevelse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Payment" = "Bekreft betaling";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Upgrade" = "Bekrefte oppgradering";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm your PIN" = "Bekreft PIN-koden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Connection timed out. Please check your internet connection." = "Tilkobling tidsavbrutt. Kontroller Internett-tilkoblingen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Continue" = "Fortsett";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copied to clipboard" = "Kopiert til utklippstavlen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Address" = "Kopier adressen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Wallet ID" = "Kopiere lommebok-ID";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy to clipboard" = "Kopier til utklippstavlen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy xPub" = "Kopier xPub";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create" = "Opprette";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create New Wallet" = "Opprette ny lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create Wallet" = "Opprette lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create new address" = "Lage ny adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating" = "Opprette";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating HD Wallet" = "Opprette HD lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating V3 Wallet" = "Opprette V3 lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating Wallet" = "Opprette lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new Wallet" = "Opprette ny lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new address" = "Lage ny adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Current rate: %@ BTC" = "Gjeldende hastighet: %@ BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Tilpasse måten du organiserer dine bitcoins i lommeboken Blockchain";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customized fund management" = "Tilpasset fund management";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Debug" = "Feilsøke";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypted PIN Password length 0" = "Dekrypterte PIN passordlengde 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Private Key" = "Dekryptering privatnøkkel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Wallet" = "Dekryptering lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Default" = "Standard";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disable" = "Deaktiver";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disabled" = "Deaktivert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Display" = "Skjerm";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Do you really want to log out?" = "Vil du logge?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Don't show again" = "Ikke Vis igjen";
 
 /* No comment provided by engineer. */
 "Done" = "Gjort";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Downloading Wallet" = "Nedlasting lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Easy one time wallet backup keeps you in control of your funds" = "Lett en gang lommebok sikkerhetskopiering holder deg i kontroll over pengene dine";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Edit" = "Rediger";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email" = "E-post";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Notifications" = "Beskjeder";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Verified" = "Email bekreftet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Empty response from server." = "Tomme svar fra serveren.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable" = "Aktiverer";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step" = "Aktiver 2-trinns";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step for SMS" = "Aktivere 2-Step for SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable Location Services" = "Aktiver posisjonstjenestene";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Aktivere varsler å motta en melding hver gang du mottar bitcoins. Bare merket adresser og importerte er adresser kvalifisert til å utløse varsling.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Aktiver dette alternativet å hindre IP-adresser som er kjent for å være en del av Tor anonymiserer nettverket får tilgang til din lommebok. Tor-nettverket er ofte brukt av hackere som prøver å få tilgang til Blockchain brukernes lommebøker.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktivering av denne funksjonen vil tillate alle brukere med et registrert Touch ID fingeravtrykk på denne enheten for lommeboken.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enhanced Privacy" = "Forbedret personvern";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter PIN" = "Angi PIN-koden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Password" = "Passordet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Verification Code" = "Angi bekreftelseskode";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter your verification code" = "Angi verifisering kode";
 
 /* No comment provided by engineer. */
 "Error" = "Feil";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error loading settings" = "Feilinnstillinger";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error updating settings" = "Feil under oppdatering av innstillinger";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Everything you need to store, spend and receive your bitcoin" = "Alt du trenger å lagre, bruke og motta din bitcoin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Extended Public Key" = "Utvidet fellesnøkkel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Failed To Load Wallet" = "Kan ikke laste inn lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee is too high (0.01 BTC limit)" = "Avgiften er for høy (0,01 BTC grense)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee per KB" = "Gebyr per KB";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fees" = "Avgifter";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Finished Signing Inputs" = "Ferdig å registrere innganger";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "For din sikkerhet anbefaler vi deg å overføre beløp i importerte adressene i lommeboken Blockchain.";
+
+/* No comment provided by engineer. */
 "Forget Wallet" = "Glem lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Found %d, with %@" = "Fant %1$d, med %2$@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination address have to be different" = "Fra og destinasjonsadresse må være forskjellige";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination have to be different" = "Fra og være annerledes";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Go to Settings" = "Gå til innstillinger";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Google Authenticator" = "Google godkjenner";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Hint Stored" = "Tips lagret";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "How would you like to pair?" = "Hvordan ville du like å par?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Identifier" = "Identifikator";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Hvis du er en handelsmann, Vis din xPub og bruk Blockchain kjøpmann programmet for å motta midler sikkert og privat.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import Private Key" = "Importer privatnøkkel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import address" = "Importere adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses" = "Importerte adresser";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses (Archived)" = "Importerte adresser (arkivert)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Private Key %@" = "Importerte privat nøkkel %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported watch-only address %@" = "Importerte bare se adressen %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Importing key" = "Importere nøkkelen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect PIN. Please retry." = "Feil PIN-kode. Prøv på nytt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect password" = "Feil passord";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect private key" = "Feil privatnøkkelen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Information" = "Informasjon";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Initializing Wallet" = "Initialisering av Wallet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Insufficient Funds" = "Utilstrekkelige midler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Identifier" = "Ugyldig identifikator";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Pairing Code" = "Ugyldig sammenkobling kode";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Send Value" = "Ugyldig sending verdi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Shared Key" = "Ugyldig delt nøkkel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Status Code Returned %@" = "Ugyldig Statuskoden returnert %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Wallet ID" = "Ugyldig lommebok-ID";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid address: %@" = "Ugyldig adresse: %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid email address." = "Ugyldig e-postadresse.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid mobile number." = "Ugyldig mobilnummer.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid recovery phrase. Please try again" = "Ugyldig utvinning setning. Prøv på nytt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid server response. Please check your internet connection." = "Ugyldig serversvar. Kontroller Internett-tilkoblingen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid to bitcoin address" = "Ugyldig bitcoin adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid two-factor authentication type" = "Ugyldig godkjenningstype for to-faktor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid verification code. Please try again." = "Ugyldig bekreftelseskode. Prøv på nytt.";
 
 /* No comment provided by engineer. */
 "Just now" = "Akkurat nå";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Hold din xPub privat. Noen med tilgang til din xPub vil kunne se alle midler og transaksjoner.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label" = "Etikett";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label Address" = "Etikett-adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must contain letters and numbers only" = "Etiketten kan inneholde bokstaver og tall bare";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must have less than 18 characters" = "Etiketten må ha mindre enn 18 tegn";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Link Mobile" = "Link Mobile";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading External Page" = "Laste eksterne side";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading transactions" = "Laster inn transaksjoner";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Local Currency" = "Lokal valuta";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Log in to my Wallet" = "Logg inn på min lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Login existing Wallet" = "Logg inn eksisterende lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Logout" = "Logg";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Make Default" = "Gjøre standard";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manual Pairing" = "Manuell sammenkobling";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manually" = "Manuelt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant" = "Kjøpmann";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Directory is currently unavailable. Please try again later." = "Kjøpmannen katalog er ikke tilgjengelig. Prøv igjen senere.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Map" = "Kjøpmann kart";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant URL" = "Kjøpmann URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Linked" = "Mobile knyttet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Number" = "Mobilnummer";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Lommeboka Bitcoin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Merk: Skannede privatnøkkelen samsvarer ikke med denne bare se adressen. Hvis du vil bruke fra denne adressen, kontrollerer du at du skanner den rette privatnøkkelen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Name" = "navn";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Address" = "Ny adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Email Address" = "Ny e-postadresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Mobile Number" = "Nye mobilnummer";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different" = "Passord må være forskjellige";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different from your password hint" = "Passord må være forskjellig fra passordhintet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "News, Price & Charts" = "Nyheter, pris og diagrammer";
 
 /* No comment provided by engineer. */
 "Next word" = "Neste ordet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No" = "nei";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No Label" = "Nei avmerke";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "Ingen passordet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection available. Please check your network settings." = "Ingen Internett-tilkobling er tilgjengelig. Kontroller nettverksinnstillingene.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection." = "Ingen Internett-tilkobling.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Normal" = "Normal";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not Stored" = "Ikke lagret";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not now" = "ikke nå";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Merk at oppgraderte du ikke kan gå tilbake til forrige versjon, men alle dine bitcoins og transaksjonsloggen skal holdes.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Notifications" = "Varsler";
 
 /* No comment provided by engineer. */
@@ -655,184 +658,184 @@
 /* No comment provided by engineer. */
 "OK" = "ok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN" = "PIN";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Encrypted String is nil" = "PIN krypterte strengen er null";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object key or value length 0" = "PIN Response-objektet nøkkel- eller lengden 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object success length 0" = "PIN Response-objektet suksess lengden 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Saved Successfully" = "PIN lagret";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation Error" = "PIN valideringsfeil";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "PIN-godkjenningen kan ikke fullføres. Skriv inn passordet lommebok manuelt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PINs do not match" = "PINs samsvarer ikke";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Parsing Pairing Code" = "Analyse av tilkoplingskode";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Hint" = "Passordhint";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Required" = "Passord kreves";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password changed. Please login to continue." = "Passord endret. Vennligst login for å fortsette.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password must 10 characters or longer" = "Passord må 10 tegn eller lengre";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Passwords do not match" = "Passordene samsvarer ikke";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Received" = "Betaling mottatt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Sent!" = "Betaling sendt!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Phrase Backed" = "Uttrykket støttet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please Login" = "Vennligst logg inn";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please add an email address" = "Legg til en e-postadresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email and click on the verification link." = "Vennligst sjekk din email og klikk på bekreftelseskoblingen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Sjekk din e-post. Hvis du allerede har bekreftet et påloggingsforsøk, bør du logge inn via vårt nett-pengebok og koble telefonen ved å skanne QR-kode under innstillinger-> lommebok informasjon.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your internet connection." = "Kontroller Internett-tilkoblingen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose another PIN" = "Velg en annen PIN";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose from the options below." = "Velg blant alternativene nedenfor.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Beskriv i detalj problemet du opplever, sammen med noen hvordan vi kan gjengi den.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Skriv inn en avgift som er større enn 0 BTC og høyst 0,01 BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a new PIN" = "Angi en ny PIN-kode";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your %@ 2FA code" = "Angi %@ 2FA koden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Skriv inn din lommebok-identifikator for 36 tegn riktig. Det kan finnes i Velkommen e-posten ved oppstart.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your PIN" = "Skriv inn PIN-koden";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your recovery phrase with words separated by spaces" = "Angi søkestrengen utvinning med ord atskilt med mellomrom";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please provide an email address." = "Oppgi en e-postadresse.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please refresh the pairing code and try again." = "Oppdater koden og prøv på nytt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please select a different address to send from or lower the fee in Settings." = "Velg en annen adresse å sende fra eller redusere avgiften i innstillingene.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Behage sende betalingen til bitcoin adresse (< en href = \"https://blockchain.info/wallet/bitcoin-faq\" > hjelp? < /a >): %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Behage sende betalingen til bitcoin adresse. Vanlige spørsmål: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Prøv på nytt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please verify your email address first." = "Kontroller epostadressen din først.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Preferences" = "Innstillinger";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Privacy Policy" = "Personvern";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Private Key Needed" = "Privat nøkkel behøvde";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Processing key" = "Bearbeiding nøkkel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Receive" = "Motta";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Received" = "Mottatt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recover Funds" = "Gjenopprette midler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recovering Funds" = "Utvinne midler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Regular" = "Vanlig";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Request Amount" = "Forespørsel beløp";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification SMS" = "Send bekreftelse SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification email" = "Send e-postbekreftelse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Reset" = "Tilbakestille";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Retry Validation" = "Prøv validering";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Robust security center" = "Robust Sikkerhetssenter";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "SMS" = "SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Save" = "Lagre";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Pairing Code" = "Skanne tilkoplingskode";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Private Key" = "Skanne privatnøkkel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR Code" = "Skanne QR-kode";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR code" = "Skanne QR-kode";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skann denne koden eller kopiere den til Blockchain kjøpmann app å sikkert motta Bitcoin.";
 
 /* No comment provided by engineer. */
@@ -841,408 +844,414 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "Andre passord kreves";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security" = "Sikkerhet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security Center" = "Sikkerhetssenter";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send" = "Sende";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send from..." = "Sende fra...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send to..." = "Send til...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send verification SMS" = "Sende bekreftelse SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sending Transaction" = "Sende transaksjonen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent" = "Sendt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent to %@" = "Sendes til %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Server URL" = "Server-URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Set as Default?" = "Angi som standard?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Settings" = "Innstillinger";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Shared Coin is not supported in the new version at this time." = "Delte mynt støttes ikke i den nye versjonen på dette tidspunktet.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Dele din xPub autoriserer andre følge transaksjonsloggen. Som autoriserte personer kunne forstyrre deg tilgang til din lommebok, bare dele dine xPub med personer du stoler.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signal %d ble reist.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Input %d" = "Logge inn %d";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Inputs" = "Signering innganger";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Simplified backup and recovery" = "Forenklet sikkerhetskopiering og gjenoppretting";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Store Hint" = "Lagre Hint";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Stored" = "Lagret";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Strong" = "Sterk";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success" = "Suksess";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success!" = "Suksess!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Support" = "Støtte";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronisering lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Terms of Service" = "Vilkår for bruk";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "PIN-koden du har valgt er svært vanlig, og kan være enkelt å gjette av noen med tilgang til telefonen i 3 prøver. Vil du bruke dette DATAFLYTPUNKTET allikevel?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Hvor du vil sende (%1$@) er større enn det maksimale beløpet du kan bruke minus avgiften (%2$@ - %3$@). Vil du sende %4$@?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Privatnøkkelen du prøver å importere krypteres. Skriv inn passordet nedenfor.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Oppgraderingen tar bare et sekund og din bitcoins og historien vil være trygt. Her er hva er bedre:";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "There was a problem verifying your identity." = "Det oppstod et problem bekrefter din identitet.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "These options are recommended for advanced users only. Continue?" = "Disse alternativene er anbefalt for avanserte brukere. Vil du fortsette?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Denne handlingen krever privatnøkkelen for Bitcoin adressen %@. Kan skanne QR code.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Denne handlingen krever andre passordet for lommeboken bitcoin. Oppgi Vennligst dette nedenfor og Trykk Fortsett.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This address is not watch-only." = "Denne adressen er ikke bare se.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Dette er en bare se adressen. For å bruke midler fra denne wallet, kan du skanne den private nøkkelen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Dette er arkivert. Du ikke kan sende penger her, vil alle midler forblir trygg. Bare hente frem for å begynne å bruke det igjen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This name is already in use. Please choose a different name." = "Dette navnet er allerede i bruk. Velg et annet navn.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This private key belongs to another address that is not watch only" = "Denne private nøkkelen tilhører en annen adresse som ikke se bare";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Dette vil slette alle lommebok data på denne enheten. Bekreft du har lommebok informasjon lagret andre steder ellers noen bitcoins i dette lommeboken vil være utilgjengelig!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "Til: %1$@%2$@ totalt beløp: %3$@ avgift: %4$@ (%5$@)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor Requests" = "Tor-forespørsler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor blocked" = "Tor blokkert";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests allowed" = "Tor-forespørsler tillatt";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently allowed." = "Tor forespørsler er nå tillatt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently blocked." = "Tor forespørsler er blokkert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Total Balance" = "Total saldo";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID has been locked due to too many failed attempts." = "Kontakt-ID er låst på grunn av for mange mislykkede påloggingsforsøk.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not available on this device." = "Kontakt-ID er ikke tilgjengelig på denne enheten.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Kontakt-ID er ikke aktivert på denne enheten. For å aktivere berøring-ID, gå til innstillinger->Touch ID & passord og legge et fingeravtrykk.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transaction" = "Transaksjonen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaksjoner uten avgifter kan ta lang tid å bekrefte eller kan ikke bekreftes på alle. Vil du fortsette?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Transfer Funds" = "Overføre penger";
+
+/* No comment provided by engineer. */
 "Transferred" = "Overført";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Try again" = "prøv igjen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "UPGRADE YOUR WALLET" = "OPPGRADERE LOMMEBOKEN";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Kan ikke laste lommebok på grunn av intet serversvar. Du kan være frakoblet eller Blockchain opplever vanskeligheter. Prøv igjen senere.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive" = "Hente frem";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive Address" = "Hente frem adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unconfirmed" = "Ubekreftet";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Ubehandlet unntak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown" = "Ukjent";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown Touch ID error. Code: %ld" = "Ukjent Touch ID-feil. Kode: %ld";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown key format" = "Ukjent nøkkel format";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unsupported Private Key Format" = "Privat nøkkel Format som ikke støttes";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unverified" = "Ubekreftet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Update" = "Oppdatering";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade" = "Oppgradering";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Now" = "Oppgrader nå";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Wallet" = "Oppgradere lommebok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to HD" = "Oppgradering til HD";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to V3" = "Oppgrader til V3";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use Touch ID as PIN" = "Bruke Touch-ID som PIN";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all %@" = "Bruke alle %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all funds" = "Bruke alle midler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "User Declined" = "Brukeren avslått";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "KONTROLLER BACKUP";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verification email has been sent to %@." = "Verifiseringen email er sendt til %@.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verified" = "Bekreftet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify" = "Kontroller";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify Email" = "Kontrollere e-post";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verifying" = "Kontrollere";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet ID" = "Lommebok-ID";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Information" = "Lommebok informasjon";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet JSON" = "Lommebok JSON";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Paired Successfully." = "Lommebok sammen med hell.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Recovery Phrase" = "Lommebok utvinning uttrykk";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet version %lld not supported" = "Lommebok versjon %lld støttes ikke";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning" = "Advarsel";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning!!!" = "Advarsel!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Advarsel: Din lommebok identifikator er sensitiv informasjon. Kopiere kan kompromittere sikkerheten til din lommebok.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Watch Only" = "Se kun";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We'll send the hint to your confirmed email address in case you request it." = "Vi sender hintet til bekreftet e-postadressen din i tilfelle du sertifikatforespørselen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've designed a whole new
 wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for deg";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Vi har inkludert noen betydelige personvern og sikkerhet forbedringer. Når du klikker Oppdater du vil ikke kunne gå tilbake til den gamle lommeboken";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Weak" = "Svak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "WebSocket URL" = "WebSocket URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Welcome" = "velkommen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Vi har oppdaget en tidligere installasjon av Blockchain lommebok på telefonen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Would you like to add the bitcoin address %@ to your address book?" = "Ønsker du å legge bitcoin adresse %@ i adresseboken?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Skriv ned din frisk uttrykk og holde den sted svært trygt og sikkert. Husk at alle som kjenner utvinning uttrykket har tilgang til din bitcoins.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wrong BIP38 Password" = "Feil BIP38 passord";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yes" = "ja";
 
 /* No comment provided by engineer. */
 "Yesterday" = "I går";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Du er ferd med å importere en se-bare adresse, en adresse (eller offentlig nøkkel skript) lagres i lommeboken uten den tilsvarende privat nøkkel. Dette betyr at midler kan brukes bare hvis du har privatnøkkelen lagret andre steder. Hvis du ikke har privatnøkkelen lagret, ikke instruere noen å sende deg bitcoin til bare se adressen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Du skal motta bitcoin til en se-bare adresse. Du kan bare bruke disse midlene hvis du har tilgang til privatnøkkelen. Vil du fortsette?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are now running our most secure Bitcoin wallet" = "Du kjører nå lommeboken vår mest sikre Bitcoin";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Du sikkerhetskopierte midlene vellykket";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Du kan aktivere 2-trinns verifisering via Tekstmelding på mobiltelefonen din. Bruke andre godkjenningsmetoder i stedet, vennligst logg inn til vårt web-lommebok.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can now spend from this address." = "Du kan nå bruke fra denne adressen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You do not have an account set up for Mail. Please contact %@" = "Du har ikke en konto satt opp for e-post. Kontakt %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You have no available funds to send from this address" = "Du har ingen tilgjengelige midler til å sende fra denne adressen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Du må deaktivere SMS 2-Step-bekreftelse før du endrer mobiltelefonnummeret (%@).";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a destination address" = "Du må angi destinasjonsadresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a label" = "Du må angi en etikett";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have at least one active address" = "Du må ha minst én aktiv adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have two-factor authentication disabled to pair manually." = "Du må ha to-faktor autentifisering deaktivert for manuelt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must leave at least one active address" = "Du må la minst en aktiv adresse";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Du bør alltid par eller logikk hvis du har tilgang til din konto-ID og passord. Gjenopprette midler vil opprette en ny konto-ID. Vil du fortsette?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported a private key." = "Du har importert en privat nøkkel.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Du har importert privatnøkkelen for adresse %@, og du kan nå bruke fra den. Hvis du vil bruke fra denne adressen, må du skanne den rette privatnøkkelen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Enheten synes å være jailbroken. Sikkerheten til din lommebok være usikker.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your email has been verified." = "E-posten er bekreftet.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your identity does not match our records." = "Identiteten samsvarer ikke med våre opptegnelser.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your mobile number has been verified." = "Mobiltelefonnummeret er bekreftet.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains invalid characters. Please try again." = "Din nytt passordtips inneholder ugyldige tegn. Prøv på nytt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains no text. Your password hint will be cleared." = "Din nytt passordtips inneholder ikke tekst. Passordhintet fjernes.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your password. Please try again." = "Din nytt passordtips må være forskjellig fra passordet. Prøv på nytt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your second password. Please try again." = "Din nytt passordtips må være forskjellig fra andre passordet. Prøv på nytt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your password hint has been updated." = "Passordhintet er oppdatert.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Overførte midlene vil være trygt og sikkert, og du vil dra nytte økt personvern og praktisk sikkerhetskopiering og gjenoppretting.";
+
+/* No comment provided by engineer. */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Bekreftet e-postadressen brukes til å sende logikk koder når mistenkelig eller uvanlig aktivitet oppdages, å minne deg om din lommebok påloggings-ID og sende bitcoin betalingsvarsler når du mottar midler. Vi vil ikke bruke e-postadressen din for markedsføringsformål.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet does not contain this address." = "Lommeboken inneholder ikke denne adressen.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet was successfully created." = "Lommeboken ble opprettet.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yubi Key" = "Yubi nøkkel";
 
 /* No comment provided by engineer. */
@@ -1260,16 +1269,16 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 /* No comment provided by engineer. */
 "fourth word" = "fjerde ord";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "from" = "fra";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "iOS Support Request" = "iOS støtteanmodning";
 
 /* No comment provided by engineer. */
 "ninth word" = "Niende ord";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "or Continue" = "eller Fortsett";
 
 /* No comment provided by engineer. */

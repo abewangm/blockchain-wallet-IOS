@@ -1,13 +1,13 @@
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ BTC" = "%@ BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ copied to clipboard" = "%@ نسخ إلى الحافظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Confirmations" = "%d تأكيدات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Transactions" = "%d المعاملات";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld ثواني";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "* Minimum 10 characters" = "* الحد الأدنى 10 أحرف";
 
 /* No comment provided by engineer. */
@@ -28,625 +28,628 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "منذ 1 دقيقة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step Enabled" = "2-خطوة ممكنة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been disabled." = "الخطوة 2--لقد تم تعطيل.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been enabled for SMS." = "تم تمكين 2-خطوة للرسائل القصيرة.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification" = "2-خطوة التحقق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently disabled." = "2-خطوة التحقق معطلة حاليا.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled for %@." = "2-خطوة التحقق ممكنة حاليا ل %@.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled." = "2-خطوة التحقق ممكنة حاليا.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "API URL" = "رابط API";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "About" = "حول";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Account Details" = "تفاصيل الحساب";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Accounts" = "الحسابات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add Email" = "إضافة البريد الإلكتروني";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add to Address book?" = "إضافة إلى دفتر العناوين؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address" = "عنوان";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address book" = "دفتر العناوين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address is not valid" = "عنوان غير صحيح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Addresses" = "عناوين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Adjust Fee" = "ضبط الرسوم";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allow" = "تسمح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allowed" = "يسمح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Amount must be above dust threshold (%lld Satoshi)" = "يجب أن يكون مقدار عتبة الغبار (%lld ساتوشي)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "حدث خطأ أثناء التحقق من صحة رمز PIN الخاص بك مع الملقم البعيد. قد تكون دون اتصال أو بلوكتشين قد يواجه بعض الصعوبات. هل تريد إعادة محاولة التحقق من الصحة أو بدلاً من ذلك قم بإدخال كلمة المرور الخاصة بك يدوياً؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred while changing 2-Step verification." = "حدث خطأ أثناء تغيير التحقق من خطوتين.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "تمت مصادفة خطأ أثناء تحميل محفظتك. قد تكون دون اتصال أو بلوكتشاين تعاني من صعوبات. الرجاء إغلاق التطبيق وحاول مرة أخرى لاحقاً أو إعادة إقران الجهاز الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "تمت مصادفة خطأ في استرداد معرف المحفظة الخاصة بك من سلسلة المفاتيح. الرجاء إغلاق التطبيق ثم حاول مرة أخرى.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Any address" = "أي عنوان";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive" = "أرشيف";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive Address" = "أرشيف العناوين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "أرشفة هذا إذا كنت لا تريد استخدامه بعد الآن. سوف تظل الأموال الخاصة بك آمنة، ويمكنك إلغاء الأرشفة فإنه في أي وقت.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archived" = "أرشفة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Ask Me Later" = "السؤال لاحقاً";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authenticate with Touch ID" = "المصادقة باستخدام معرف اتصال";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authorization Required" = "الإذن اللازم";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatic Pairing" = "الأقران التلقائي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatically" = "تلقائياً";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "أموال احتياطية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup" = "النسخ الاحتياطي";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "أموال احتياطية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup Phrase" = "العبارة النسخ الاحتياطي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "قبل الوصول إلى المحفظة الخاصة بك، الرجاء اختيار رقم السري لاستخدام لفتح محفظتك. من المهم تذكر هذا الرقم كما لا يمكن إعادة تعيين أو تغيير دون الأولى فتح التطبيق.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin Unit" = "وحدة بيتكوين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin payment request" = "طلب الدفع بيتكوين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block" = "كتلة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block Tor" = "كتلة تور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "بلوكتشين لا يحصلون على الكاميرا. لتمكين الوصول، انتقل إلى إعدادات الجهاز الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain is currently down for maintenance. Please try again later." = "بلوكتشين حاليا لأسفل للصيانة. الرجاء المحاولة مرة أخرى لاحقاً.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location." = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك. يمكنك تمكين الوصول في إعدادات--> الخصوصية--> \"خدمات الموقع\"";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "بلوكتشين يحتاج إلى \"خدمات الموقع التي\" يوفرها من أجل الوصول إلى الموقع الخاص بك. يمكنك تمكين الوصول في إعدادات--> الخصوصية--> الموقع--> \"خدمات الموقع\"";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blocked" = "حظر";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Camera Access Denied" = "تم رفض الوصول إلى الكاميرا";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cancel" = "إلغاء الأمر";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "لا يمكن حفظ رمز PIN في حين لم تتم تهيئة المحفظة أو كلمة المرور فارغ";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Email" = "تغيير البريد الإلكتروني";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Mobile Number" = "تغيير رقم الهاتف المحمول";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change PIN" = "تغيير رقم التعريف الشخصي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password" = "تغيير كلمة المرور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password Hint" = "تغيير تلميح كلمة المرور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change fee per kilobyte" = "رسوم تغيير كل كيلوبايت";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for Wallet updates" = "التحقق من وجود تحديثات المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for more: Step %d of %d" = "تدقيق لمزيد من المعلومات: %1$d خطوة من %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "قم بإغلاق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Close App" = "قم بإغلاق التطبيق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Complete the steps below for ultimate security" = "أكمل الخطوات أدناه للأمن في نهاية المطاف";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Completely updated design and user experience" = "حدثت تماما التصميم وتجربة المستخدم";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Payment" = "تأكيد الدفع";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Upgrade" = "تأكيد عملية الترقية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm your PIN" = "تأكيد رقم التعريف الشخصي الخاص بك";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Connection timed out. Please check your internet connection." = "انتهت مهلة الاتصال. الرجاء التحقق من اتصال الإنترنت الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Continue" = "مواصلة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copied to clipboard" = "نسخ إلى الحافظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Address" = "نسخ عنوان";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Wallet ID" = "نسخ معرف المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy to clipboard" = "نسخ إلى الحافظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy xPub" = "نسخ إكسبوب";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create" = "إنشاء";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create New Wallet" = "إنشاء محفظة جديدة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create Wallet" = "إنشاء المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create new address" = "إنشاء عنوان جديد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating" = "إنشاء";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating HD Wallet" = "إنشاء محفظة عالية الدقة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating V3 Wallet" = "إنشاء المحفظة V3";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating Wallet" = "إنشاء المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new Wallet" = "إنشاء محفظة جديدة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new address" = "إنشاء عنوان جديد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Current rate: %@ BTC" = "المعدل الحالي: %@ BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "تخصيص الطريقة التي يمكنك تنظيم الخاصة بك بيتكوينس في محفظتك بلوكتشين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customized fund management" = "إدارة الأموال المخصصة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Debug" = "التصحيح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypted PIN Password length 0" = "فك تشفير كلمة المرور PIN طول 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Private Key" = "فك تشفير المفتاح الخاص";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Wallet" = "فك المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Default" = "افتراضي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disable" = "قم بتعطيل";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disabled" = "ذوي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Display" = "عرض";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Do you really want to log out?" = "هل تريد تسجيل الخروج حقاً؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Don't show again" = "لا تظهر مرة أخرى";
 
 /* No comment provided by engineer. */
 "Done" = "عمله";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Downloading Wallet" = "تحميل المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Easy one time wallet backup keeps you in control of your funds" = "النسخ الاحتياطي في المحفظة مرة واحدة سهلة تبقيك في السيطرة على الأموال الخاصة بك";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Edit" = "تحرير";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email" = "البريد الإلكتروني";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Notifications" = "إعلامات البريد الإلكتروني";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Verified" = "التحقق من البريد الإلكتروني";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Empty response from server." = "فارغة واستجابة من الملقم.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable" = "تمكين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step" = "تمكين الخطوة 2";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step for SMS" = "تمكين 2-خطوة للرسائل القصيرة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable Location Services" = "تمكين خدمات الموقع";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "تمكين إعلامات تلقي رسالة بريد إلكتروني عند تلقي بيتكوينس. فقط المسمى عناوين واستيراد عناوين المؤهلة للإخطارات بالمشغل.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "تمكين هذا الخيار لمنع عناوين IP التي هي معروفة لتكون جزءا من شبكة تور anonymizing من الوصول إلى محفظتك. كثيرا ما يستخدم شبكة تور بمحاولة الوصول إلى محافظ بلوكتشين المستخدمين المتطفلين.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "تمكين هذه الميزة سيتم السماح لكافة المستخدمين مع بصمة معرف اتصال مسجل على هذا الجهاز للوصول إلى محفظتك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enhanced Privacy" = "الخصوصية المحسنة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter PIN" = "أدخل رقم التعريف الشخصي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Password" = "أدخل كلمة المرور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Verification Code" = "أدخل رمز التحقق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter your verification code" = "أدخل رمز التحقق";
 
 /* No comment provided by engineer. */
 "Error" = "خطأ";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error loading settings" = "خطأ في تحميل الإعدادات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error updating settings" = "حدث خطأ أثناء تحديث الإعدادات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Everything you need to store, spend and receive your bitcoin" = "كل ما تحتاجه لتخزين، قضاء، وتلقى بك بيتكوين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Extended Public Key" = "توسيع المفتاح العمومي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Failed To Load Wallet" = "فشل في تحميل المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee is too high (0.01 BTC limit)" = "رسوم مرتفعة للغاية (0.01 BTC الحد)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee per KB" = "رسوم كل كيلو بايت";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fees" = "رسوم";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Finished Signing Inputs" = "الانتهاء من توقيع المدخلات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "لسلامتك، ننصحك بتحويل أي أرصدة في العناوين المستوردة في محفظتك بلوكتشين.";
+
+/* No comment provided by engineer. */
 "Forget Wallet" = "نسيت المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Found %d, with %@" = "العثور على %1$d، مع %2$@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination address have to be different" = "من وعنوان الوجهة يجب أن تكون مختلفة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination have to be different" = "من والوجهة التي يجب أن تكون مختلفة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Go to Settings" = "اذهب إلى الإعدادات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Google Authenticator" = "جوجل المصادق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Hint Stored" = "تلميح المخزنة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "How would you like to pair?" = "كيف تريد أن زوج؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Identifier" = "المعرف";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "إذا كنت تاجراً، إظهار إكسبوب الخاص بك واستخدام التطبيق التاجر بلوكتشين للحصول على الأموال بأمان والقطاع الخاص.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import Private Key" = "المفتاح الخاص الاستيراد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import address" = "استيراد العناوين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses" = "عناوين المستوردة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses (Archived)" = "عناوين المستوردة (أرشفة)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Private Key %@" = "%@ استيراد المفتاح الخاص";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported watch-only address %@" = "استيراد عنوان مشاهدة فقط %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Importing key" = "استيراد مفتاح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect PIN. Please retry." = "PIN غير صحيح. الرجاء إعادة المحاولة.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect password" = "كلمة المرور غير صحيحة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect private key" = "المفتاح الخاص غير صحيحة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Information" = "معلومات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Initializing Wallet" = "تهيئة المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Insufficient Funds" = "عدم كفاية الأموال";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Identifier" = "معرف غير صالح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Pairing Code" = "رمز مزاوجة غير صالح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Send Value" = "قيمة إرسال غير صالح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Shared Key" = "صالح تبادل مفتاح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Status Code Returned %@" = "رمز الحالة غير صالح عاد %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Wallet ID" = "معرف غير صالح المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid address: %@" = "عنوان غير صالح: %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid email address." = "عنوان البريد الإلكتروني غير صالح.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid mobile number." = "رقم الهاتف المحمول غير صالح.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid recovery phrase. Please try again" = "عبارة استرداد غير صالحة. الرجاء المحاولة مرة أخرى";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid server response. Please check your internet connection." = "استجابة الملقم غير صالح. الرجاء التحقق من اتصال الإنترنت الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid to bitcoin address" = "غير صحيح لعنوان بيتكوين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid two-factor authentication type" = "نوع مصادقة ثنائية العامل غير صالحة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid verification code. Please try again." = "رمز التحقق غير صحيحة. الرجاء المحاولة مرة أخرى.";
 
 /* No comment provided by engineer. */
 "Just now" = "الآن فقط";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "الاحتفاظ إكسبوب الخاص بك الخاصة. شخص ما مع الوصول إلى إكسبوب الخاص بك سوف تكون قادراً على مشاهدة كافة الأموال والمعاملات الخاصة بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label" = "التسمية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label Address" = "عنوان التسمية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must contain letters and numbers only" = "يجب أن تحتوي التسمية على أحرف وأرقام فقط";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must have less than 18 characters" = "يجب أن يكون التسمية أحرف أقل من 18";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Link Mobile" = "وصلة الجوال";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading External Page" = "تحميل صفحة خارجية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading transactions" = "تحميل المعاملات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Local Currency" = "العملة المحلية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Log in to my Wallet" = "تسجيل الدخول إلى محفظتي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Login existing Wallet" = "المحفظة القائمة تسجيل الدخول";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Logout" = "تسجيل الخروج";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Make Default" = "جعل الافتراضي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manual Pairing" = "ازدواج يدوي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manually" = "يدوياً";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant" = "التاجر";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Directory is currently unavailable. Please try again later." = "الدليل التجاري غير متوفر حاليا. الرجاء المحاولة مرة أخرى لاحقاً.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Map" = "خريطة التاجر";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant URL" = "رابط التاجر";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Linked" = "موبايل مرتبطة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Number" = "رقم الهاتف المحمول";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "محفظتي بيتكوين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "ملاحظة: المفتاح الخاص الممسوحة ضوئياً لا تتوافق مع هذا العنوان مشاهدة فقط. إذا كنت تريد أن تنفق من هذا العنوان، تأكد من أن تقوم بتفحص المفتاح الخاص الصحيح.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Name" = "الاسم";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Address" = "عنوان جديد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Email Address" = "عنوان البريد الإلكتروني الجديد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Mobile Number" = "رقم الهاتف المحمول الجديدة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different" = "كلمة المرور الجديدة يجب أن تكون مختلفة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different from your password hint" = "كلمة المرور الجديدة يجب أن تكون مختلفة من تلميح كلمة المرور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "News, Price & Charts" = "الأخبار، والأسعار والرسوم البيانية";
 
 /* No comment provided by engineer. */
 "Next word" = "الكلمة التالية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No" = "لا";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No Label" = "لا توجد تسمية";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "لا توجد كلمة المرور التي تم إدخالها";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection available. Please check your network settings." = "لا يتوفر اتصال إنترنت. الرجاء التحقق من إعدادات شبكة الاتصال الخاصة بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection." = "أي اتصال بالإنترنت.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Normal" = "عادي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not Stored" = "لا يتم تخزين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not now" = "ليس الآن";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "لاحظ أنه بمجرد رفع مستواها، لا يمكنك العودة إلى الإصدار السابق، ولكن سيتم الاحتفاظ بجميع بيتكوينس الخاص بك وتاريخ المعاملات الخاصة بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Notifications" = "إعلامات";
 
 /* No comment provided by engineer. */
@@ -655,184 +658,184 @@
 /* No comment provided by engineer. */
 "OK" = "موافق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN" = "رقم التعريف الشخصي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Encrypted String is nil" = "سلسلة المشفرة دبوس صفراً";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object key or value length 0" = "دبوس طول مفتاح أو قيمة \"كائن الاستجابة\" 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object success length 0" = "كائن الاستجابة دبوس طول النجاح 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Saved Successfully" = "دبوس حفظه بنجاح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation Error" = "خطأ التحقق من صحة رقم التعريف الشخصي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "لا يمكن إكمال التحقق من صحة رقم التعريف الشخصي. الرجاء إدخال كلمة المرور المحفظة الخاصة بك يدوياً.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PINs do not match" = "لا تتطابق مع دبابيس";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Parsing Pairing Code" = "تحليل رمز الازدواج";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Hint" = "تلميح كلمة المرور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Required" = "مطلوب كلمة مرور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password changed. Please login to continue." = "تغيير كلمة المرور. الرجاء تسجيل الدخول لمتابعة.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password must 10 characters or longer" = "كلمة مرور يجب 10 أحرف أو أطول";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Passwords do not match" = "لا تتطابق كلمات المرور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Received" = "استلام الدفع";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Sent!" = "الدفع أرسلت!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Phrase Backed" = "عبارة المدعومة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please Login" = "الرجاء تسجيل الدخول";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please add an email address" = "الرجاء إضافة عنوان بريد إلكتروني";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email and click on the verification link." = "الرجاء التحقق من البريد الإلكتروني الخاص بك وانقر فوق ارتباط التحقق من الصحة.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "الرجاء التحقق من البريد الإلكتروني الخاص بك. إذا كنت فعلا التحقق من محاولة تسجيل دخول، يجب تسجيل الدخول عبر الإنترنت المحفظة وإقران الهاتف الخاص بك عن طريق مسح رمز ريال قطري ضمن إعدادات-> \"معلومات المحفظة\".";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your internet connection." = "الرجاء التحقق من اتصال الإنترنت الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose another PIN" = "الرجاء اختيار آخر رقم التعريف الشخصي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose from the options below." = "الرجاء اختيار أحد الخيارات أدناه.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "يرجى وصف بالتفصيل مسألة كنت تواجه، جنبا إلى جنب مع أي خطوات يمكن أن نتخذها لإنتاجه.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "الرجاء إدخال رسوم أكبر من 0 BTC وفي معظم 0.01 BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a new PIN" = "الرجاء إدخال رقم PIN الجديد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your %@ 2FA code" = "الرجاء إدخال التعليمات البرمجية 2FA %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "الرجاء إدخال المعرف المحفظة 36 الطابع الخاص بك بشكل صحيح. يمكن الاطلاع على ذلك في رسالة البريد الإلكتروني الترحيبية عند بدء التشغيل.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your PIN" = "الرجاء إدخال رقم PIN الخاص بك";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your recovery phrase with words separated by spaces" = "الرجاء إدخال عبارة الاسترداد الخاصة بك مع الكلمات مفصولة بمسافات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please provide an email address." = "الرجاء توفير عنوان بريد إلكتروني.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please refresh the pairing code and try again." = "الرجاء تحديث رمز الازدواج وحاول مرة أخرى.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please select a different address to send from or lower the fee in Settings." = "الرجاء تحديد عنوان مختلف لإرسال من أو تخفيض الرسوم في الإعدادات.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "الرجاء إرسال الدفع إلى عنوان بيتكوين (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > مساعدة؟ </a >): %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "الرجاء إرسال الدفع إلى عنوان بيتكوين. أسئلة وأجوبة: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "الرجاء المحاولة مرة أخرى";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please verify your email address first." = "الرجاء التحقق من عنوان البريد الإلكتروني الخاص بك أولاً.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Preferences" = "تفضيلات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Privacy Policy" = "سياسة الخصوصية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Private Key Needed" = "المفتاح الخاص اللازمة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Processing key" = "تجهيز مفتاح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Receive" = "تلقي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Received" = "تلقي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recover Funds" = "استرداد الأموال";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recovering Funds" = "استرداد الأموال";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Regular" = "العادية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Request Amount" = "كمية الطلب";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification SMS" = "التحقق إعادة إرسال الرسائل القصيرة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification email" = "إعادة إرسال البريد الإلكتروني التحقق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Reset" = "إعادة تعيين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Retry Validation" = "أعد محاولة إجراء التحقق من الصحة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Robust security center" = "مركز قوي الأمن";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "SMS" = "الرسائل القصيرة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Save" = "حفظ";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Pairing Code" = "مسح رمز الازدواج";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Private Key" = "تفحص المفتاح الخاص";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR Code" = "مسح رمز ريال قطري";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR code" = "مسح رمز ريال قطري";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "مسح هذا الرمز أو نسخة إلى التطبيق الخاص بك التاجر بلوكتشين لتلقي بيتكوين بشكل أمن.";
 
 /* No comment provided by engineer. */
@@ -841,408 +844,414 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "مطلوب كلمة المرور الثانية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security" = "الأمن";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security Center" = "مركز الأمان";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send" = "إرسال";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send from..." = "إرسال من...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send to..." = "إرسال إلى...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send verification SMS" = "إرسال التحقق SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sending Transaction" = "إرسال المعاملات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent" = "أرسلت";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent to %@" = "أرسل إلى %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Server URL" = "محدد موقع معلومات الخادم";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Set as Default?" = "تعيين كافتراضي؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Settings" = "إعدادات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Shared Coin is not supported in the new version at this time." = "العملة المشتركة غير معتمدة في الإصدار الجديد في هذا الوقت.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "مشاركة الخاص بك إكسبوب يأذن للآخرين بتعقب محفوظات المعاملة الخاصة بك. كما قد يتمكن الأشخاص المرخص لهم من تعطيل يمكنك من الوصول إلى محفظتك، فقط مشاركة الخاص بك إكسبوب مع شخص تثق به.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "وأثير إشارة %d.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Input %d" = "توقيع %d الإدخال";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Inputs" = "توقيع المدخلات";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Simplified backup and recovery" = "تبسيط النسخ الاحتياطي والاسترداد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Store Hint" = "تلميح مخزن";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Stored" = "تخزين";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Strong" = "قوية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success" = "نجاح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success!" = "النجاح!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Support" = "الدعم";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "مزامنة المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Terms of Service" = "شروط الخدمة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "رقم التعريف الشخصي الذي حددته شائعة جداً وقد يمكن تخمينها بسهولة من شخص ما مع الوصول إلى الهاتف الخاص بك داخل 3 يحاول. هل تريد استخدام هذا الرقم على أي حال؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "والمبلغ الذي تريد إرساله (%1$@) أكبر من الحد الأقصى للمبلغ يمكنك قضاء ناقص الرسوم (%2$@-%3$@). هل ترغب في إرسال %4$@؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "يتم تشفير المفتاح الخاص الذي تحاول استيراد. الرجاء إدخال كلمة المرور أدناه.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل:";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "There was a problem verifying your identity." = "توجد مشكلة في التحقق من هويتك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "These options are recommended for advanced users only. Continue?" = "هذه الخيارات هي مستحسن للمستخدمين المتقدمين فقط. هل تريد المتابعة؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "يتطلب هذا الإجراء المفتاح الخاص ل %@ عنوان بيتكوين. الرجاء مسح رمز ريال قطري.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "هذا الإجراء يتطلب كلمة مرور الثانية محفظتك بيتكوين. الرجاء إدخال أدناه والصحافة.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This address is not watch-only." = "هذا العنوان لا يشاهد فقط.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "هذا عنوان مشاهدة فقط. أن تنفق الأموال الخاصة بك من هذه المحفظة، الرجاء تفحص المفتاح الخاص.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "وهذا يتم أرشفة. على الرغم من أن لا يمكنك إرسال الأموال من هنا، سوف تظل جميع الأموال الآمنة. ببساطة إلغاء الأرشفة لبدء استخدامه مرة أخرى.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This name is already in use. Please choose a different name." = "هذا الاسم قيد الاستخدام بالفعل. الرجاء اختيار اسم مختلف.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This private key belongs to another address that is not watch only" = "ينتمي هذا المفتاح الخاص إلى عنوان آخر لا يشاهد فقط";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "سيؤدي ذلك إلى محو كافة البيانات المحفظة الموجودة على هذا الجهاز. الرجاء التأكد من لديك معلومات المحفظة الخاصة بك المحفوظة في أماكن أخرى خلاف ذلك أي بيتكوينس في هذه الإرادة المحفظة لا يمكن الوصول إليها!!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "إلى: المبلغ الإجمالي %1$@%2$@: رسوم %3$@: %4$@ (%5$@)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor Requests" = "طلبات تور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor blocked" = "حظر تور";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests allowed" = "طلبات تور يسمح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently allowed." = "ويسمح حاليا طلبات تور.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently blocked." = "يتم حظر الطلبات تور حاليا.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Total Balance" = "مجموع الرصيد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID has been locked due to too many failed attempts." = "تم تأمين اتصال معرف سبب الكثير من المحاولات الفاشلة.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not available on this device." = "معرف اتصال غير متوفر على هذا الجهاز.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "لم يتم تمكين اتصال معرف على هذا الجهاز. لتمكين اتصال معرف، انتقل إلى معرف الإعدادات->Touch & رمز المرور وإضافة بصمات الأصابع.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transaction" = "الحركة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "قد يستغرق وقتاً طويلاً للتأكد من معاملات مع أي رسوم أو قد لا يمكن تأكيد على الإطلاق. هل ترغب في الاستمرار؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Transfer Funds" = "نقل الأموال";
+
+/* No comment provided by engineer. */
 "Transferred" = "نقل";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Try again" = "حاول مرة أخرى";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "UPGRADE YOUR WALLET" = "ترقية المحفظة الخاصة بك";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "غير قادر على تحميل المحفظة بسبب لا استجابة الملقم. قد تكون دون اتصال أو بلوكتشين تعاني من صعوبات. الرجاء المحاولة مرة أخرى لاحقاً.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive" = "إلغاء الأرشفة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive Address" = "إلغاء الأرشفة عنوان";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unconfirmed" = "غير مؤكدة";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "استثناء لم تتم معالجته";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown" = "المجهول";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown Touch ID error. Code: %ld" = "خطأ معرف اتصال غير معروف. التعليمات البرمجية: %ld";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown key format" = "تنسيق المفتاح غير معروف";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unsupported Private Key Format" = "تنسيق المفتاح الخاص غير معتمد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unverified" = "لم يتم التحقق منها";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Update" = "التحديث";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade" = "ترقية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Now" = "الترقية الآن";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Wallet" = "ترقية المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to HD" = "الترقية إلى HD";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to V3" = "الترقية إلى V3";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use Touch ID as PIN" = "استخدام معرف اتصال دبوس";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all %@" = "استخدام جميع %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all funds" = "استخدام جميع الأموال";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "User Declined" = "ورفض المستخدم";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "التحقق من النسخ الاحتياطي";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verification email has been sent to %@." = "وقد تم إرسال البريد الإلكتروني التحقق إلى %@.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verified" = "التحقق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify" = "تحقق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify Email" = "التحقق من البريد الإلكتروني";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verifying" = "التحقق";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet ID" = "معرف المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Information" = "معلومات المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet JSON" = "المحفظة JSON";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Paired Successfully." = "إقران المحفظة بنجاح.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Recovery Phrase" = "عبارة استرداد المحفظة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet version %lld not supported" = "محفظة %lld إصدار غير معتمد";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning" = "تحذير";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning!!!" = "تحذير!!!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "تحذير: المعرف المحفظة الخاصة بك من المعلومات الحساسة. نسخ فإنه يجوز المساس بأمن محفظتك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Watch Only" = "مشاهدة فقط";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We'll send the hint to your confirmed email address in case you request it." = "سوف نرسل التلميح إلى عنوان بريدك الإلكتروني مؤكدة في حالة طلب ذلك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've designed a whole new
 wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة كلياً في محفظة لك";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "لقد قمنا بتضمين بعض التحسينات الهامة في الخصوصية والأمن. بمجرد النقر فوق تحديث لن تتمكن من العودة إلى محفظتك القديمة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Weak" = "ضعيفة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "WebSocket URL" = "رابط ويبسوكيت";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Welcome" = "مرحبا";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "لقد تم الكشف عن تثبيت سابق من المحفظة بلوكتشين على الهاتف الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Would you like to add the bitcoin address %@ to your address book?" = "هل ترغب في إضافة %@ عنوان بيتكوين إلى دفتر العناوين الخاص بك؟";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "اكتب \"عبارتك الانتعاش\" والاحتفاظ به في مكان جداً وآمنة. تذكر أن أي شخص يعرف \"عبارة الاسترداد\" الخاصة بك الوصول إلى بيتكوينس الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wrong BIP38 Password" = "كلمة مرور خاطئة BIP38";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yes" = "نعم";
 
 /* No comment provided by engineer. */
 "Yesterday" = "أمس";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "أنت على وشك استيراد عنوان يشاهد فقط، عنوان (أو البرامج النصية الرئيسية العامة) المخزنة في المحفظة دون القطاع الخاص المطابق مفتاح. وهذا يعني أن الأموال التي يمكن أن تنفق فقط إذا كان لديك المفتاح الخاص مخزنة في مكان آخر. إذا لم يكن لديك المفتاح الخاص المخزنة، يصدر تعليمات لأي شخص أن يرسل لك بيتكوين إلى عنوان مشاهدة فقط.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "أنت على وشك تلقي بيتكوين إلى عنوان مشاهدة فقط. يمكن أن تنفق هذه الأموال فقط إذا كان لديك حق الوصول إلى المفتاح الخاص. هل تريد المتابعة؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are now running our most secure Bitcoin wallet" = "يمكنك الآن تشغيل المحفظة بيتكوين الأكثر أماناً";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "يمكنك نسخ احتياطي الأموال الخاصة بك بنجاح";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "يمكنك تمكين التحقق 2-خطوة عن طريق الرسائل القصيرة على الهاتف الجوال الخاص بك. من أجل استخدام أساليب المصادقة الأخرى بدلاً من ذلك، الرجاء تسجيل الدخول إلى المحفظة ويب.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can now spend from this address." = "الآن يمكنك أن تنفق من هذا العنوان.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You do not have an account set up for Mail. Please contact %@" = "ليس لديك حساب للبريد. الرجاء الاتصال %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You have no available funds to send from this address" = "لديك لا الأموال المتاحة لإرسال من هذا العنوان";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "يجب عليك تعطيل SMS 2-خطوة التحقق قبل تغيير رقم هاتفك النقال (%@).";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a destination address" = "يجب أن تقوم بإدخال عنوان الوجهة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a label" = "يجب إدخال تسمية";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have at least one active address" = "يجب أن يكون لديك عنوان نشط واحد على الأقل";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have two-factor authentication disabled to pair manually." = "يجب أن يكون لديك مصادقة اثنين-عامل تعطيل لزوج يدوياً.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must leave at least one active address" = "يجب ترك عنوان نشط واحد على الأقل";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "عليك دائماً الزوج أو تسجيل الدخول إذا كان لديك حق الوصول إلى \"معرف المحفظة\" وكلمة المرور الخاصة بك. استرداد الأموال الخاصة بك سيتم إنشاء معرف جديد المحفظة. هل ترغب في الاستمرار؟";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported a private key." = "لقد قمت باستيراد مفتاح خاص بنجاح.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "قمت بنجاح باستيراد المفتاح الخاص من أجل %@ عنوان، ويمكنك الآن قضاء منه. إذا كنت تريد أن تنفق من هذا العنوان، تأكد من مسح المفتاح الخاص الصحيح.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "الجهاز الخاص بك، على ما يبدو، أي فون. قد تتعرض للخطر أمن محفظتك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your email has been verified." = "وقد تم التحقق من البريد الإلكتروني الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your identity does not match our records." = "لا يتطابق مع الهوية الخاصة بك سجلاتنا.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your mobile number has been verified." = "وقد تم التحقق من رقم الهاتف المحمول الخاص بك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains invalid characters. Please try again." = "تلميح كلمة المرور الجديدة تحتوي على أحرف غير صالحة. الرجاء المحاولة مرة أخرى.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains no text. Your password hint will be cleared." = "تلميح كلمة المرور الجديدة لا يحتوي على نص. سيتم مسح تلميح كلمة المرور.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your password. Please try again." = "تلميح كلمة المرور الجديدة يجب أن تكون مختلفة عن كلمة المرور الخاصة بك. الرجاء المحاولة مرة أخرى.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your second password. Please try again." = "تلميح كلمة المرور الجديدة يجب أن تكون مختلفة عن كلمة المرور ثانية. الرجاء المحاولة مرة أخرى.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your password hint has been updated." = "وقد تم تحديث تلميح كلمة المرور.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "الأموال المحولة الخاصة بك سوف تكون آمنة ومأمونة، ويمكنك الاستفادة من ميزات النسخ الاحتياطي والاسترداد مريحة وزيادة الخصوصية.";
+
+/* No comment provided by engineer. */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "يتم استخدام عنوان بريدك الإلكتروني تم التحقق منها ليرسل رموز تسجيل الدخول عندما يتم الكشف عن الأنشطة المشبوهة أو غير العادية، لتذكيرك بمعرف تسجيل دخول المحفظة الخاصة بك، وإرسال تنبيهات الدفع بيتكوين عندما تتلقى الأموال. ونحن لن تستخدم عنوان البريد الإلكتروني الخاص بك لأغراض التسويق.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet does not contain this address." = "المحفظة الخاصة بك لا تحتوي على هذا العنوان.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet was successfully created." = "تم بنجاح إنشاء محفظتك.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yubi Key" = "مفتاح يوبي";
 
 /* No comment provided by engineer. */
@@ -1260,16 +1269,16 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 /* No comment provided by engineer. */
 "fourth word" = "الكلمة الرابعة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "from" = "من";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "iOS Support Request" = "دائرة الرقابة الداخلية \"تطلب الدعم\"";
 
 /* No comment provided by engineer. */
 "ninth word" = "الكلمة التاسعة";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "or Continue" = "أو متابعة";
 
 /* No comment provided by engineer. */
