@@ -328,7 +328,6 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
 
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment');
-    // In case dynamic fee service fails, default to 30000
     currentPayment = new Payment();
 }
 
@@ -379,9 +378,11 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
         } else {
             errorArgument = error.message;
         }
-                                                                  
+                                                            
         console.log('error checking for overspending: ' + errorArgument);
         device.execute('on_error_update_fee:', [errorArgument]);
+                                                            
+        return error.payment;
     });
 }
 
@@ -423,8 +424,27 @@ MyWalletPhone.sweepPaymentRegular = function() {
 }
 
 MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
-    currentPayment.sweep(false).prebuild(false).build();
-    MyWalletPhone.updateSweep(false, true);
+    
+    var buildFailure = function (error) {
+        console.log('buildfailure');
+        
+        var errorArgument;
+        if (error.error) {
+            errorArgument = error.error;
+        } else {
+            errorArgument = error.message;
+        }
+        
+        console.log('error sweeping regular then confirm: ' + errorArgument);
+        device.execute('on_error_update_fee:', [errorArgument]);
+        
+        return error.payment;
+    }
+    
+    currentPayment.sweep(false).prebuild(false).build().then(function(x) {
+        MyWalletPhone.updateSweep(false, true);
+        return x;
+    }).catch(buildFailure);
 }
 
 MyWalletPhone.sweepPaymentAdvanced = function(fee) {
@@ -433,8 +453,27 @@ MyWalletPhone.sweepPaymentAdvanced = function(fee) {
 }
 
 MyWalletPhone.sweepPaymentAdvancedThenConfirm = function(fee) {
-    currentPayment.fee(fee).sweep(true).prebuild(true).build();
-    MyWalletPhone.updateSweep(true, true);
+    
+    var buildFailure = function (error) {
+        console.log('buildfailure');
+        
+        var errorArgument;
+        if (error.error) {
+            errorArgument = error.error;
+        } else {
+            errorArgument = error.message;
+        }
+        
+        console.log('error sweeping advanced then confirm: ' + errorArgument);
+        device.execute('on_error_update_fee:', [errorArgument]);
+        
+        return error.payment;
+    }
+    
+    currentPayment.fee(fee).sweep(true).prebuild(true).build().then(function(x) {
+        MyWalletPhone.updateSweep(true, true);
+        return x;
+    }).catch(buildFailure);
 }
 
 MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {

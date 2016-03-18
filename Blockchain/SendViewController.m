@@ -697,6 +697,9 @@ BOOL displayingLocalSymbolSend;
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self enablePaymentButtons];
     }]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:alertForFeeOutsideRecommendedRange selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    
     [app.tabViewController presentViewController:alertForFeeOutsideRecommendedRange animated:YES completion:nil];
 }
 
