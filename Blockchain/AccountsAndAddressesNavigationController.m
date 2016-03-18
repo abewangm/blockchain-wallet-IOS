@@ -53,7 +53,7 @@
     warningButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
     [warningButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [warningButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
-    [warningButton addTarget:self action:@selector(alertUserToTransferAllFunds) forControlEvents:UIControlEventTouchUpInside];
+    [warningButton addTarget:self action:@selector(alertUserToTransferAllFunds:) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:warningButton];
     warningButton.hidden = YES;
     self.warningButton = warningButton;
@@ -161,16 +161,19 @@
     }
 }
 
-- (void)alertUserToTransferAllFunds
+- (void)alertUserToTransferAllFunds:(BOOL)userClicked
 {
     UIAlertController *alertToTransfer = [UIAlertController alertControllerWithTitle:BC_STRING_TRANSFER_FUNDS message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_TRANSFER_FUNDS_DESCRIPTION_ONE, BC_STRING_TRANSFER_FUNDS_DESCRIPTION_TWO] preferredStyle:UIAlertControllerStyleAlert];
     [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_TRANSFER_FUNDS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self transferAllFundsClicked];
     }]];
-    [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_DONT_SHOW_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT];
-    }]];
+    
+    if (!userClicked) {
+        [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_DONT_SHOW_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT];
+        }]];
+    }
     
     [self presentViewController:alertToTransfer animated:YES completion:nil];
 }
