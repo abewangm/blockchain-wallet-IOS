@@ -53,7 +53,7 @@
     warningButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
     [warningButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [warningButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
-    [warningButton addTarget:self action:@selector(alertUserToTransferAllFunds:) forControlEvents:UIControlEventTouchUpInside];
+    [warningButton addTarget:self action:@selector(transferAllFundsWarningClicked) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:warningButton];
     warningButton.hidden = YES;
     self.warningButton = warningButton;
@@ -176,6 +176,11 @@
     }
     
     [self presentViewController:alertToTransfer animated:YES completion:nil];
+}
+
+- (void)transferAllFundsWarningClicked
+{
+    [self alertUserToTransferAllFunds:YES];
 }
 
 - (void)transferAllFundsClicked
