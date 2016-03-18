@@ -86,6 +86,7 @@
 - (void)didGetFeeBounds:(NSArray *)bounds;
 - (void)didChangeForcedFee:(NSNumber *)fee;
 - (void)enableSendPaymentButtons;
+- (void)didGetSurgeStatus:(BOOL)surgeStatus;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -270,6 +271,7 @@
 - (void)getFeeBounds;
 - (void)changeForcedFee:(uint64_t)fee;
 - (void)getTransactionFee:(BOOL)customFee;
+- (void)getSurgeStatus;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;

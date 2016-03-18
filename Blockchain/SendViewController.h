@@ -67,6 +67,7 @@
     
     IBOutlet UIView *bottomContainerView;
     
+    IBOutlet UIButton *feeInformationButton;
     BOOL displayingLocalSymbol;
 }
 
@@ -80,6 +81,7 @@
 @property int toAccount;
 @property BOOL sendFromAddress;
 @property BOOL sendToAddress;
+@property BOOL surgeIsOccurring;
 
 @property(nonatomic, strong) UITapGestureRecognizer *tapGesture;
 

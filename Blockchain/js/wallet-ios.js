@@ -363,6 +363,13 @@ MyWalletPhone.changePaymentAmount = function(amount) {
     }
 }
 
+MyWalletPhone.getSurgeStatus = function() {
+    currentPayment.payment.then(function (x) {
+       device.execute('update_surge_status:', [x.fees.default.surge]);
+       return x;
+    });
+}
+
 MyWalletPhone.checkIfUserIsOverSpending = function() {
     
     var checkForOverSpending = function(x) {

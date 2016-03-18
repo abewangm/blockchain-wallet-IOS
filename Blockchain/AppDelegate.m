@@ -1441,6 +1441,11 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didGetFeeBounds:(NSArray *)bounds];
 }
 
+- (void)didGetSurgeStatus:(BOOL)surgeStatus
+{
+    _sendViewController.surgeIsOccurring = surgeStatus;
+}
+
 - (void)enableSendPaymentButtons
 {
     [_sendViewController enablePaymentButtons];

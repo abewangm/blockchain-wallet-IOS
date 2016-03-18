@@ -35,7 +35,6 @@ typedef enum {
 @property (nonatomic) uint64_t amountFromURLHandler;
 
 @property (nonatomic) NSDictionary *recommendedFees;
-@property (nonatomic) BOOL isSurgeOccurring;
 @property (nonatomic) uint64_t upperRecommendedLimit;
 @property (nonatomic) uint64_t lowerRecommendedLimit;
 @property (nonatomic) uint64_t estimatedTransactionSize;
@@ -99,6 +98,8 @@ BOOL displayingLocalSymbolSend;
     
     feeField.delegate = self;
     
+    feeInformationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
     btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     
@@ -109,6 +110,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)resetPayment
 {
+    self.surgeIsOccurring = NO;
     [app.wallet createNewPayment];
     [app.wallet changePaymentFromAddress:@""];
     if (app.tabViewController.activeViewController == self) {
@@ -511,7 +513,7 @@ BOOL displayingLocalSymbolSend;
         self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
         self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
         
-        if (self.isSurgeOccurring) {
+        if (self.surgeIsOccurring) {
             self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor redColor];
             self.confirmPaymentView.btcFeeLabel.textColor = [UIColor redColor];
         }
@@ -1318,6 +1320,24 @@ BOOL displayingLocalSymbolSend;
     feeField.text = [app formatAmount:self.feeFromTransactionProposal localCurrency:NO];
 }
 
+- (IBAction)feeInformationClicked:(UIButton *)sender
+{
+    NSString *title;
+    NSString *message;
+    if (self.surgeIsOccurring) {
+        title = BC_STRING_SURGE_OCCURRING_TITLE;
+        message = BC_STRING_SURGE_OCCURRING_MESSAGE;
+    } else {
+        title = BC_STRING_FEE_INFORMATION_TITLE;
+        message = BC_STRING_FEE_INFORMATION_MESSAGE;
+    }
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 - (IBAction)sendPaymentClicked:(id)sender
 {
     if (![app checkInternetConnection]) {
@@ -1367,6 +1387,8 @@ BOOL displayingLocalSymbolSend;
     } else {
         [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
     }
+    
+    [app.wallet getSurgeStatus];
     
     //    if ([[app.wallet.addressBook objectForKey:self.toAddress] length] == 0 && ![app.wallet.allLegacyAddresses containsObject:self.toAddress]) {
     //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ADD_TO_ADDRESS_BOOK

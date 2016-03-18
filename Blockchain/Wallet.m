@@ -783,6 +783,15 @@
     [self.webView executeJS:@"MyWalletPhone.getTransactionFee(%d)", customFee];
 }
 
+- (void)getSurgeStatus
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    return [self.webView executeJS:@"MyWalletPhone.getSurgeStatus()"];
+}
+
 - (void)generateNewKey
 {
     if (![self isInitialized]) {
@@ -1622,6 +1631,14 @@
     DLog(@"update_fee_bounds");
     if ([self.delegate respondsToSelector:@selector(didGetFeeBounds:)]) {
         [self.delegate didGetFeeBounds:bounds];
+    }
+}
+
+- (void)update_surge_status:(NSNumber *)surgeStatus
+{
+    DLog(@"update_surge_status");
+    if ([self.delegate respondsToSelector:@selector(didGetSurgeStatus:)]) {
+        [self.delegate didGetSurgeStatus:[surgeStatus boolValue]];
     }
 }
 

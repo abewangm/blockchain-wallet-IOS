@@ -17,6 +17,7 @@
                 <outlet property="continuePaymentAccessoryButton" destination="pPu-bJ-k6p" id="ymH-4D-0a6"/>
                 <outlet property="continuePaymentButton" destination="4" id="xDx-7s-gZq"/>
                 <outlet property="feeField" destination="p7q-Ud-nYh" id="A0V-si-4g2"/>
+                <outlet property="feeInformationButton" destination="llH-jD-d80" id="olX-js-b6w"/>
                 <outlet property="feeLabel" destination="Zhm-Jw-P4C" id="Piy-45-yLj"/>
                 <outlet property="fiatAmountField" destination="qx4-XV-uhn" id="Ns6-YO-Z1m"/>
                 <outlet property="fiatLabel" destination="vGH-md-Ck3" id="LhR-Tz-aN6"/>
@@ -430,6 +431,14 @@
                         <action selector="customizeFeeClicked:" destination="-1" eventType="touchUpInside" id="Dbt-ek-ZBN"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="left" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="llH-jD-d80">
+                    <rect key="frame" x="235" y="202" width="70" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="icon_support"/>
+                    <connections>
+                        <action selector="feeInformationClicked:" destination="-1" eventType="touchUpInside" id="ar4-F4-S7S"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -452,6 +461,7 @@
     <resources>
         <image name="cancel" width="11" height="11"/>
         <image name="disclosure" width="11" height="17"/>
+        <image name="icon_support" width="26" height="26"/>
         <image name="receive_icon_hi" width="29" height="24"/>
     </resources>
 </document>
