@@ -1766,6 +1766,10 @@
 
 - (void)upgradeToHDWallet
 {
+    if (![self isInitialized]) {
+        return;
+    }
+    
     DLog(@"Creating HD Wallet");
     [self.webView executeJS:@"MyWalletPhone.upgradeToHDWallet(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
 }
