@@ -98,11 +98,15 @@ typedef enum {
 
 - (BOOL)canTransferFromAddress
 {
+#ifdef ENABLE_TRANSFER_FUNDS
     if (self.address) {
         return [app.wallet getLegacyAddressBalance:self.address] > 0 && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
     } else {
         return NO;
     }
+#else
+    return NO;
+#endif
 }
 
 - (void)showBusyViewWithLoadingText:(NSString *)text;

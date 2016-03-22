@@ -16,6 +16,8 @@
 
 // #define ENABLE_DEBUG_MENU 1
 
+// #define ENABLE_TRANSFER_FUNDS 1
+
 #pragma mark - Colors
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \

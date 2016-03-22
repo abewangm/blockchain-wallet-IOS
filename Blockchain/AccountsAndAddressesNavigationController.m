@@ -47,7 +47,7 @@
     [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:backButton];
     self.backButton = backButton;
-    
+#ifdef ENABLE_TRANSFER_FUNDS
     UIButton *warningButton = [UIButton buttonWithType:UIButtonTypeCustom];
     warningButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     warningButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
@@ -57,7 +57,7 @@
     [topBar addSubview:warningButton];
     warningButton.hidden = YES;
     self.warningButton = warningButton;
-    
+#endif
     BCFadeView *busyView = [[BCFadeView alloc] initWithFrame:app.window.rootViewController.view.frame];
     busyView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
     UIView *textWithSpinnerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 110)];
@@ -163,6 +163,7 @@
 
 - (void)alertUserToTransferAllFunds:(BOOL)userClicked
 {
+#ifdef ENABLE_TRANSFER_FUNDS
     UIAlertController *alertToTransfer = [UIAlertController alertControllerWithTitle:BC_STRING_TRANSFER_FUNDS message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_TRANSFER_FUNDS_DESCRIPTION_ONE, BC_STRING_TRANSFER_FUNDS_DESCRIPTION_TWO] preferredStyle:UIAlertControllerStyleAlert];
     [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
     [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_TRANSFER_FUNDS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -176,6 +177,7 @@
     }
     
     [self presentViewController:alertToTransfer animated:YES completion:nil];
+#endif
 }
 
 - (void)transferAllFundsWarningClicked
