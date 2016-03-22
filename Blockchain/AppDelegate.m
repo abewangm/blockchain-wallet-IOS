@@ -1462,7 +1462,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.topViewControllerDelegate = self.accountsAndAddressesNavigationController;
     self.accountsAndAddressesNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [_tabViewController presentViewController:self.accountsAndAddressesNavigationController animated:YES completion:nil];
+    
+    [_tabViewController presentViewController:self.accountsAndAddressesNavigationController animated:YES completion:^{
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT] && self.accountsAndAddressesNavigationController.viewControllers.count == 1 && [app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForActiveLegacyAddresses] > 0) {
+            [self.accountsAndAddressesNavigationController alertUserToTransferAllFunds:NO];
+        }
+    }];
 }
 
 - (void)showSecurityCenter

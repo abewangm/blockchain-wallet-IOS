@@ -109,6 +109,7 @@
 - (void)didGetFeeBounds:(NSArray *)bounds;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust;
 - (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
+- (void)transferFundsFromAddress:(NSString *)address;
 
 - (void)reload;
 

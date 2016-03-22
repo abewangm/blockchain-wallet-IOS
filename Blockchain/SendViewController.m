@@ -300,6 +300,26 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
+- (void)transferFundsFromAddress:(NSString *)address
+{
+    [self reload];
+
+    self.sendFromAddress = true;
+    
+    [self resetPayment];
+    
+    if (!address || [address isEqualToString:@""]) {
+        self.fromAddress = address;
+        [self reloadFromField];
+    } else {
+        [self didSelectFromAddress:address];
+    }
+    
+    [self didSelectToAccount:[app.wallet getDefaultAccountIndexActiveOnly:YES]];
+    
+    [self getMaxFeeWhileConfirming:YES];
+}
+
 - (void)sendFromWatchOnlyAddress
 {
     [self sendPaymentWithListener];

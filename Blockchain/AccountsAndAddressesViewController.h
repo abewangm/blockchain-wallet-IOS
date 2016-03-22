@@ -10,6 +10,7 @@
 
 @interface AccountsAndAddressesViewController : UIViewController
 @property (nonatomic) UITableView *tableView;
-@property(nonatomic, strong) NSArray *allKeys;
+@property (nonatomic, strong) NSArray *allKeys;
+
 - (void)didGenerateNewAddress;
 @end

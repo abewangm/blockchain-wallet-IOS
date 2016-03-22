@@ -14,6 +14,7 @@
 #import "BCQRCodeView.h"
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
+#import "SendViewController.h"
 
 const int numberOfSectionsAccountUnarchived = 2;
 const int numberOfSectionsAddressUnarchived = 1; // 2 if watch only
@@ -22,8 +23,9 @@ const int numberOfSectionsArchived = 1;
 const int numberOfRowsAccountUnarchived = 3;
 const int numberOfRowsAddressUnarchived = 3;
 
-const int sectionArchived = 1;
 const int numberOfRowsArchived = 1;
+
+const int numberOfRowsTransfer = 1;
 
 typedef enum {
     DetailTypeShowExtendedPublicKey = 100,
@@ -94,6 +96,19 @@ typedef enum {
     }
 }
 
+- (BOOL)canTransferFromAddress
+{
+#ifdef ENABLE_TRANSFER_FUNDS
+    if (self.address) {
+        return [app.wallet getLegacyAddressBalance:self.address] > 0 && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
+    } else {
+        return NO;
+    }
+#else
+    return NO;
+#endif
+}
+
 - (void)showBusyViewWithLoadingText:(NSString *)text;
 {
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
@@ -113,6 +128,24 @@ typedef enum {
 - (void)showDetailScreenWithType:(DetailType)type
 {
     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:type]];
+}
+
+- (void)transferFundsFromAddressClicked
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [app closeSideMenu];
+        app.topViewControllerDelegate = nil;
+    }];
+    
+    if (!app.sendViewController) {
+        app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
+    }
+    
+    [app closeSideMenu];
+    
+    [app showSendCoins];
+
+    [app.sendViewController transferFundsFromAddress:self.address];
 }
 
 - (void)labelAddressClicked
@@ -232,7 +265,23 @@ typedef enum {
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    if (section == 0) {
+    BOOL canTransferFromAddress = [self canTransferFromAddress];
+    
+    int sectionTransfer = -1;
+    int sectionMain = 0;
+    int sectionArchived = 1;
+    
+    if (canTransferFromAddress) {
+        sectionTransfer = 0;
+        sectionMain = 1;
+        sectionArchived = 2;
+    }
+    
+    if (section == sectionTransfer) {
+        return BC_STRING_TRANSFER_FOOTER_TITLE;
+    }
+    
+    if (section == sectionMain) {
         if ([self isArchived]) {
             return BC_STRING_ARCHIVED_FOOTER_TITLE;
         } else {
@@ -242,7 +291,7 @@ typedef enum {
                 return [NSString stringWithFormat:@"%@\n\n%@", BC_STRING_EXTENDED_PUBLIC_KEY_FOOTER_TITLE_ONE, BC_STRING_EXTENDED_PUBLIC_KEY_FOOTER_TITLE_TWO];
             }
         }
-    } else if (section == 1) {
+    } else if (section == sectionArchived) {
         return BC_STRING_ARCHIVE_FOOTER_TITLE;
     }
     
@@ -256,7 +305,11 @@ typedef enum {
     }
     
     if (self.address) {
-        return [app.wallet isWatchOnlyLegacyAddress:self.address] ? numberOfSectionsAddressUnarchived + 1 : numberOfSectionsAddressUnarchived;
+        int numberOfSections = numberOfSectionsAddressUnarchived;
+        if ([self canTransferFromAddress]) {
+            numberOfSections++;
+        }
+        return [app.wallet isWatchOnlyLegacyAddress:self.address] ? numberOfSections + 1 : numberOfSections;
     } else {
         return [app.wallet getDefaultAccountIndexActiveOnly:NO] == self.account ? numberOfSectionsAccountUnarchived - 1 : numberOfSectionsAccountUnarchived;
     }
@@ -264,21 +317,44 @@ typedef enum {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
+    BOOL canTransferFromAddress = [self canTransferFromAddress];
+    
+    if (canTransferFromAddress) {
+        if (section == 0) {
+            if ([self isArchived]) {
+                return numberOfRowsArchived;
+            } else {
+                return numberOfRowsTransfer;
+            }
+        }
         
-        if ([self isArchived]) {
-            return numberOfRowsArchived;
-        } else {
+        if (section == 1) {
             if (self.address) {
                 return numberOfRowsAddressUnarchived;
             } else {
                 return [app.wallet getDefaultAccountIndexActiveOnly:NO] == self.account ? numberOfRowsAccountUnarchived - 1 : numberOfRowsAccountUnarchived;
             }
         }
-    }
-    
-    if (section == sectionArchived) {
-        return numberOfRowsArchived;
+        
+        if (section == 2) {
+            return numberOfRowsArchived;
+        }
+    } else {
+        if (section == 0) {
+            if ([self isArchived]) {
+                return numberOfRowsArchived;
+            } else {
+                if (self.address) {
+                    return numberOfRowsAddressUnarchived;
+                } else {
+                    return [app.wallet getDefaultAccountIndexActiveOnly:NO] == self.account ? numberOfRowsAccountUnarchived - 1 : numberOfRowsAccountUnarchived;
+                }
+            }
+        }
+        
+        if (section == 1) {
+            return numberOfRowsArchived;
+        }
     }
     
     return 0;
@@ -288,55 +364,73 @@ typedef enum {
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    switch (indexPath.section) {
-        case 0: {
-            if ([self isArchived]) {
-                switch (indexPath.row) {
-                    case 0: {
-                        [self toggleArchive];
-                        return;
-                    }
+    BOOL canTransferFromAddress = [self canTransferFromAddress];
+    
+    int sectionTransfer = -1;
+    int sectionMain = 0;
+    int sectionArchived = 1;
+    
+    if (canTransferFromAddress) {
+        sectionTransfer = 0;
+        sectionMain = 1;
+        sectionArchived = 2;
+    }
+    
+    if (indexPath.section == sectionTransfer) {
+        switch (indexPath.row) {
+            case 0: {
+                [self transferFundsFromAddressClicked];
+            }
+        }
+    }
+    
+    if (indexPath.section == sectionMain) {
+        if ([self isArchived]) {
+            switch (indexPath.row) {
+                case 0: {
+                    [self toggleArchive];
+                    return;
                 }
-            } else {
-                switch (indexPath.row) {
-                    case 0: {
-                        if (self.address) {
-                            [self labelAddressClicked];
-                        } else {
-                            [self labelAccountClicked];
-                        }
-                        return;
+            }
+        } else {
+            switch (indexPath.row) {
+                case 0: {
+                    if (self.address) {
+                        [self labelAddressClicked];
+                    } else {
+                        [self labelAccountClicked];
                     }
-                    case 1: {
-                        if (self.address) {
+                    return;
+                }
+                case 1: {
+                    if (self.address) {
                             [self showAddress:self.address];
-                        } else {
-                            if ([app.wallet getDefaultAccountIndexActiveOnly:NO] != self.account) {
-                                [self alertToConfirmSetDefaultAccount:self.account];
-                            } else {
-                                [self alertToShowAccountXPub];
-                            }
-                        }
-                        return;
-                    }
-                    case 2: {
-                        if (self.address) {
-                            if ([app.wallet isWatchOnlyLegacyAddress:self.address]) {
-                                [app scanPrivateKeyForWatchOnlyAddress:self.address];
-                            } else {
-                                [self toggleArchive];
-                            }
+                    } else {
+                        if ([app.wallet getDefaultAccountIndexActiveOnly:NO] != self.account) {
+                            [self alertToConfirmSetDefaultAccount:self.account];
                         } else {
                             [self alertToShowAccountXPub];
                         }
-                        return;
                     }
+                    return;
+                }
+                case 2: {
+                    if (self.address) {
+                        if ([app.wallet isWatchOnlyLegacyAddress:self.address]) {
+                            [app scanPrivateKeyForWatchOnlyAddress:self.address];
+                        } else {
+                            [self toggleArchive];
+                        }
+                    } else {
+                        [self alertToShowAccountXPub];
+                    }
+                        return;
                 }
             }
         }
-        case 1: {
-            [self toggleArchive];
-        }
+    }
+    if (indexPath.section == sectionArchived) {
+        [self toggleArchive];
     }
 }
 
@@ -347,11 +441,72 @@ typedef enum {
     cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     
-    switch (indexPath.section) {
-        case 0: {
-            switch (indexPath.row) {
-                case 0: {
+    BOOL canTransferFromAddress = [self canTransferFromAddress];
+    
+    int sectionTransfer = -1;
+    int sectionMain = 0;
+    int sectionArchived = 1;
+    
+    if (canTransferFromAddress) {
+        sectionTransfer = 0;
+        sectionMain = 1;
+        sectionArchived = 2;
+    }
+    
+    if (indexPath.section == sectionTransfer) {
+        switch (indexPath.row) {
+            case 0: {
+                cell.textLabel.text = BC_STRING_TRANSFER_FUNDS;
+                cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
+                cell.detailTextLabel.text = nil;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
+            return cell;
+        }
+    }
+    
+    if (indexPath.section == sectionMain) {
+        switch (indexPath.row) {
+            case 0: {
+                if ([self isArchived]) {
                     if ([self isArchived]) {
+                        cell.textLabel.text = BC_STRING_UNARCHIVE;
+                        cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
+                    } else {
+                        cell.textLabel.text = BC_STRING_ARCHIVE;
+                        cell.textLabel.textColor = [UIColor redColor];
+                    }
+                } else {
+                    cell.textLabel.text = self.address? BC_STRING_LABEL : BC_STRING_NAME;
+                    cell.detailTextLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                }
+                return cell;
+            }
+            case 1: {
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                if (self.address) {
+                    cell.textLabel.text = BC_STRING_ADDRESS;
+                    cell.detailTextLabel.text = self.address;
+                } else {
+                    if ([app.wallet getDefaultAccountIndexActiveOnly:NO] != self.account) {
+                        cell.textLabel.text = BC_STRING_MAKE_DEFAULT;
+                        cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
+                        cell.accessoryType = UITableViewCellAccessoryNone;
+                    } else {
+                        cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
+                        cell.textLabel.textColor = [UIColor blackColor];
+                    }
+                }
+                return cell;
+            }
+            case 2: {
+                if (self.address) {
+                    if ([app.wallet isWatchOnlyLegacyAddress:self.address]) {
+                        cell.textLabel.text = BC_STRING_SCAN_PRIVATE_KEY;
+                        cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
+                        cell.accessoryType = UITableViewCellAccessoryNone;
+                    } else {
                         if ([self isArchived]) {
                             cell.textLabel.text = BC_STRING_UNARCHIVE;
                             cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
@@ -359,67 +514,27 @@ typedef enum {
                             cell.textLabel.text = BC_STRING_ARCHIVE;
                             cell.textLabel.textColor = [UIColor redColor];
                         }
-                    } else {
-                        cell.textLabel.text = self.address? BC_STRING_LABEL : BC_STRING_NAME;
-                        cell.detailTextLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
-                        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     }
-                    return cell;
-                }
-                case 1: {
+                } else {
+                    cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    if (self.address) {
-                        cell.textLabel.text = BC_STRING_ADDRESS;
-                        cell.detailTextLabel.text = self.address;
-                    } else {
-                        if ([app.wallet getDefaultAccountIndexActiveOnly:NO] != self.account) {
-                            cell.textLabel.text = BC_STRING_MAKE_DEFAULT;
-                            cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
-                            cell.accessoryType = UITableViewCellAccessoryNone;
-                        } else {
-                            cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
-                            cell.textLabel.textColor = [UIColor blackColor];
-                        }
-                    }
-                    return cell;
                 }
-                case 2: {
-                    if (self.address) {
-                        if ([app.wallet isWatchOnlyLegacyAddress:self.address]) {
-                            cell.textLabel.text = BC_STRING_SCAN_PRIVATE_KEY;
-                            cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
-                            cell.accessoryType = UITableViewCellAccessoryNone;
-                        } else {
-                            if ([self isArchived]) {
-                                cell.textLabel.text = BC_STRING_UNARCHIVE;
-                                cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
-                            } else {
-                                cell.textLabel.text = BC_STRING_ARCHIVE;
-                                cell.textLabel.textColor = [UIColor redColor];
-                            }
-                        }
-                    } else {
-                        cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
-                        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    }
-                    return cell;
-                }
-                default: return nil;
+                return cell;
             }
+            default: return nil;
         }
-        case sectionArchived: {
-            if ([self isArchived]) {
-                cell.textLabel.text = BC_STRING_UNARCHIVE;
-                cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
-            } else {
-                cell.textLabel.text = BC_STRING_ARCHIVE;
-                cell.textLabel.textColor = [UIColor redColor];
-            }
-            return cell;
-        }
-        default:
-            return nil;
     }
+    if (indexPath.section == sectionArchived) {
+        if ([self isArchived]) {
+            cell.textLabel.text = BC_STRING_UNARCHIVE;
+            cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
+        } else {
+            cell.textLabel.text = BC_STRING_ARCHIVE;
+            cell.textLabel.textColor = [UIColor redColor];
+        }
+        return cell;
+    }
+    return nil;
 }
 
 @end

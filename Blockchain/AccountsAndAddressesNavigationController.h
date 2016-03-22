@@ -19,10 +19,12 @@
 @interface AccountsAndAddressesNavigationController : UINavigationController <TopViewController>
 @property (nonatomic) UILabel *headerLabel;
 @property (nonatomic) UIButton *backButton;
+@property (nonatomic) UIButton *warningButton;
 @property (nonatomic) BCFadeView *busyView;
 @property (nonatomic) UILabel *busyLabel;
 
 - (void)didGenerateNewAddress;
 - (void)reload;
+- (void)alertUserToTransferAllFunds:(BOOL)automaticallyShown;
 
 @end

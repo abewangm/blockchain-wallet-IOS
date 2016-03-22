@@ -11,6 +11,7 @@
 #import "AccountsAndAddressesDetailViewController.h"
 #import "AppDelegate.h"
 #import "PrivateKeyReader.h"
+#import "SendViewController.h"
 
 @interface AccountsAndAddressesNavigationController ()
 
@@ -46,7 +47,17 @@
     [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:backButton];
     self.backButton = backButton;
-    
+#ifdef ENABLE_TRANSFER_FUNDS
+    UIButton *warningButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    warningButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    warningButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+    [warningButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [warningButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
+    [warningButton addTarget:self action:@selector(transferAllFundsWarningClicked) forControlEvents:UIControlEventTouchUpInside];
+    [topBar addSubview:warningButton];
+    warningButton.hidden = YES;
+    self.warningButton = warningButton;
+#endif
     BCFadeView *busyView = [[BCFadeView alloc] initWithFrame:app.window.rootViewController.view.frame];
     busyView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
     UIView *textWithSpinnerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 110)];
@@ -133,6 +144,8 @@
 {
     [super viewDidLayoutSubviews];
     
+    self.warningButton.frame = CGRectMake(6, 16, 85, 51);
+    
     if (self.viewControllers.count == 1 || [self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
         self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -146,6 +159,46 @@
         [self.backButton setTitle:@"" forState:UIControlStateNormal];
         [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
     }
+}
+
+- (void)alertUserToTransferAllFunds:(BOOL)userClicked
+{
+#ifdef ENABLE_TRANSFER_FUNDS
+    UIAlertController *alertToTransfer = [UIAlertController alertControllerWithTitle:BC_STRING_TRANSFER_FUNDS message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_TRANSFER_FUNDS_DESCRIPTION_ONE, BC_STRING_TRANSFER_FUNDS_DESCRIPTION_TWO] preferredStyle:UIAlertControllerStyleAlert];
+    [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+    [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_TRANSFER_FUNDS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self transferAllFundsClicked];
+    }]];
+    
+    if (!userClicked) {
+        [alertToTransfer addAction:[UIAlertAction actionWithTitle:BC_STRING_DONT_SHOW_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT];
+        }]];
+    }
+    
+    [self presentViewController:alertToTransfer animated:YES completion:nil];
+#endif
+}
+
+- (void)transferAllFundsWarningClicked
+{
+    [self alertUserToTransferAllFunds:YES];
+}
+
+- (void)transferAllFundsClicked
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [app closeSideMenu];
+        app.topViewControllerDelegate = nil;
+    }];
+    
+    if (!app.sendViewController) {
+        app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
+    }
+    
+    [app showSendCoins];
+    
+    [app.sendViewController transferFundsFromAddress:@""];
 }
 
 - (IBAction)backButtonClicked:(UIButton *)sender

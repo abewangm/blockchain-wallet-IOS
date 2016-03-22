@@ -41,6 +41,15 @@
     [super viewWillAppear:animated];
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     navigationController.headerLabel.text = nil;
+    
+    [self displayTransferFundsWarningIfAppropriate];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    navigationController.warningButton.hidden = YES;
 }
 
 - (void)dealloc
@@ -52,20 +61,19 @@
 {
     allKeys = [app.wallet allLegacyAddresses];
     [self.tableView reloadData];
+    
+    [self displayTransferFundsWarningIfAppropriate];
 }
 
-- (void)didSelectAddress:(NSString *)address
+- (void)displayTransferFundsWarningIfAppropriate
 {
-    self.clickedAddress = address;
-    self.clickedAccount = -1;
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL sender:nil];
-}
-
-- (void)didSelectAccount:(int)account
-{
-    self.clickedAccount = account;
-    self.clickedAddress = nil;
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL sender:nil];
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    
+    if ([app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForActiveLegacyAddresses] > 0 && navigationController.visibleViewController == self) {
+        navigationController.warningButton.hidden = NO;
+    } else {
+        navigationController.warningButton.hidden = YES;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -80,6 +88,22 @@
             detailViewController.address = nil;
         }
     }
+}
+
+#pragma mark - Actions
+
+- (void)didSelectAddress:(NSString *)address
+{
+    self.clickedAddress = address;
+    self.clickedAccount = -1;
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL sender:nil];
+}
+
+- (void)didSelectAccount:(int)account
+{
+    self.clickedAccount = account;
+    self.clickedAddress = nil;
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL sender:nil];
 }
 
 #pragma mark - Helpers

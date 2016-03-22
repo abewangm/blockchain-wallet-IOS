@@ -1,13 +1,13 @@
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ BTC" = "%@ BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%@ copied to clipboard" = "panoya kopyalanan %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Confirmations" = "%d teyitleri";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "%d Transactions" = "%d hareketleri";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld dakika önce";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "* Minimum 10 characters" = "* En az 10 karakter";
 
 /* No comment provided by engineer. */
@@ -28,625 +28,628 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "1 dakika önce";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step Enabled" = "2-adım etkin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been disabled." = "2-adım devre dışı bırakıldı.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-Step has been enabled for SMS." = "2-adım SMS için etkinleştirildi.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification" = "2-adım doğrulama";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently disabled." = "2-adım doğrulama şu anda devre dışı.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled for %@." = "2-adım doğrulama %@ için etkin durumda.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "2-step Verification is currently enabled." = "2-adım doğrulama şu anda etkin durumda.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "API URL" = "API URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "About" = "Hakkında";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Account Details" = "Hesap bilgileri";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Accounts" = "Hesapları";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add Email" = "E-posta Ekle";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Add to Address book?" = "Adres Defterine Ekle?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address" = "Adres";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address book" = "Adres defteri";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Address is not valid" = "Adres geçerli değil";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Addresses" = "Adresleri";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Adjust Fee" = "Ücret ayarlamak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allow" = "İzin ver";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Allowed" = "İzin verilen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Amount must be above dust threshold (%lld Satoshi)" = "Bir miktar toz eşik (%lld Satoshi) olması gerekir";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "PIN kodunuzu uzak sunucuyla doğrulanırken bir hata oluştu. Çevrimdışı olabilir veya Blockchain sorunlar yaşıyor. Doğrulama yeniden deneyin veya bunun yerine parolanızı el ile girmek ister misin?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error occurred while changing 2-Step verification." = "2-adım doğrulama değiştirilirken bir hata oluştu.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Cüzdanını yüklenirken hatayla karşılaşıldı. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen uygulamayı kapatın ve daha sonra yeniden deneyin veya aygıtınızı yeniden eşleyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Senin cüzdan tanımlayıcı Anahtarlık alınıyor bir hatayla karşılaşıldı. Lütfen uygulamayı kapatın ve yeniden deneyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Any address" = "Herhangi bir adres";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive" = "Arşiv";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive Address" = "Arşiv adresi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Artık kullanmak istemiyorsanız bu arşiv. Paranız güvenli kalır ve herhangi bir zamanda unarchive.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Archived" = "Arşivlenmiş";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Ask Me Later" = "Sormak beni sonradan";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authenticate with Touch ID" = "Dokunmatik kimliği ile kimlik doğrulaması";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Authorization Required" = "Yetkilendirme gerekli";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatic Pairing" = "Otomatik eþleþtirme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Automatically" = "Otomatik olarak";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "YEDEK FONLAR";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup" = "Yedekleme";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "Yedek fonlar";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Backup Phrase" = "Yedek ifade";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Cüzdanını erişmeden önce cüzdanını kilidini açmak için kullanılacak bir PIN numarası seçiniz. Sıfırlamak veya ilk app kilidini olmadan değişti gibi bu PIN hatırlamak önemlidir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin Unit" = "Bitcoin birimi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Bitcoin payment request" = "Bitcoin ödeme talebi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block" = "Blok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Block Tor" = "Blok Tor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain kameraya erişilmesini sahip değil. Erişimi etkinleştirmek için aygıt ayarları gidin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain şu anda aşağı bakım için olduğunu. Lütfen daha sonra yeniden deneyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var. Erişimi etkinleştirebilirsiniz gizlilik ayarları -> Konum servisleri ->";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain konumu konumunuza erişmek için etkinleştirilen hizmetler ihtiyacı var. Erişimi etkinleştirebilirsiniz gizlilik ayarları -> konum -> Konum servisleri ->";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Blocked" = "Bloke";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Camera Access Denied" = "Kamera erişim engellendi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cancel" = "İptal";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "PIN kodu cüzdan başlatılmamış veya parola null sırasında kaydedilemiyor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Email" = "E-posta değişikliği";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Mobile Number" = "Telefon numarasını değiştirmek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change PIN" = "PIN'i Değiştir";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password" = "Parola Değiştir";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change Password Hint" = "Değiştir parola ipucu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Change fee per kilobyte" = "Kilobayt başına değişiklik ücreti";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for Wallet updates" = "M-cüzdan güncelleştirmeleri denetleniyor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Checking for more: Step %d of %d" = "Daha fazla bilgi için kontrol: %2$d adım %1$d";
 
 /* No comment provided by engineer. */
 "Close" = "Kapat";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Close App" = "App kapatmak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Complete the steps below for ultimate security" = "Son güvenlik için aşağıdaki adımları tamamlayın";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Completely updated design and user experience" = "Tamamen güncellenmiş tasarımı ve kullanıcı deneyimi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Payment" = "Ödeme onaylamak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm Upgrade" = "Yükseltme doğrulamak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Confirm your PIN" = "PIN'İNİZİ onaylayın";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Connection timed out. Please check your internet connection." = "Bağlantı zaman aşımına uğradı. Lütfen internet bağlantınızı kontrol edin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Continue" = "Devam";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copied to clipboard" = "Panoya kopyalanan";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Address" = "Adresini kopyala";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy Wallet ID" = "M-cüzdan kimliğini kopyalayın";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy to clipboard" = "Panoya kopyala";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Copy xPub" = "Kopya xPub";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create" = "Oluşturmak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create New Wallet" = "Yeni cüzdan oluşturmak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create Wallet" = "M-cüzdan oluşturmak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Create new address" = "Yeni adres oluştur";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating" = "Oluşturma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating HD Wallet" = "HD cüzdan oluşturma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating V3 Wallet" = "V3 cüzdan oluşturma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating Wallet" = "M-cüzdan oluşturma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new Wallet" = "Yeni cüzdan oluşturma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Creating new address" = "Yeni adresi oluşturma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Current rate: %@ BTC" = "Geçerli hızı: %@ BTC";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Gelenek belgili tanımlık yol senin bitcoins Blockchain cüzdanında düzenlemek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Customized fund management" = "Özelleştirilmiş fon yönetimi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Debug" = "Hata ayıklama";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypted PIN Password length 0" = "Şifresi çözülmüş PIN parola uzunluğu 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Private Key" = "Özel anahtar şifresini çözme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Decrypting Wallet" = "M-cüzdan şifresini çözme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Default" = "Varsayılan";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disable" = "Devre dışı bırakma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Disabled" = "Engelli";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Display" = "Görüntü";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Do you really want to log out?" = "Çıkış istiyor musunuz?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Don't show again" = "Bir daha gösterme";
 
 /* No comment provided by engineer. */
 "Done" = "Bitmiş";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Downloading Wallet" = "M-cüzdan İndiriyor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Easy one time wallet backup keeps you in control of your funds" = "Kolay bir kez m-cüzdan yedek para kontrol altında tutar";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Edit" = "Düzenle";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email" = "E-posta";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Notifications" = "E-posta bildirimleri";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Email Verified" = "E-posta doğrulanmadı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Empty response from server." = "Sunucudan boş yanıt.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable" = "Etkinleştir";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step" = "2-adım etkinleştirme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable 2-Step for SMS" = "2-adım SMS için etkinleştirme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable Location Services" = "Konum servisleri etkinleştirme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoins aldığınızda bir e-posta almak bildirimleri etkinleştirmek. Sadece adresleri etiketli ve ithal adresleri tetikleyici bildirimleri için uygundur.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Cüzdanını erişimini Tor sağladığına ağının bir parçası olarak bilinen IP adresleri önlemek için bu seçeneği etkinleştirin. Tor ağı sık Blockchain kullanıcıların cüzdan erişmeye çalışan bilgisayar korsanları tarafından kullanılır.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Bu özellik etkinleştirildiğinde, m-cüzdana erişmek için bu aygıtta kayıtlı Touch kimliği parmak izi olan tüm kullanıcılar sağlayacaktır.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enhanced Privacy" = "Geliştirilmiş gizlilik";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter PIN" = "PIN kodunu girin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Password" = "Parolayı girin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter Verification Code" = "Doğrulama kodu girin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Enter your verification code" = "Doğrulama kodu girin";
 
 /* No comment provided by engineer. */
 "Error" = "Hata";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error loading settings" = "Hata yükleme ayarları";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Error updating settings" = "Ayarları güncelleştirilirken hata oluştu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Everything you need to store, spend and receive your bitcoin" = "Depolamak için gereken her şeyi harcamak ve senin bitcoin almak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Extended Public Key" = "Ortak anahtar genişletilmiş";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Failed To Load Wallet" = "M-cüzdan yüklenemedi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee is too high (0.01 BTC limit)" = "Ücreti çok yüksek (0.01 BTC sınırı)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fee per KB" = "Ücret-KB";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Fees" = "Ücretleri";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Finished Signing Inputs" = "Girişleri imzalama bitmiş";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Güvenliğiniz için alınan adreslerinizi herhangi bir bakiyelerde Blockchain-cüzdanını aktarmak için öneririz.";
+
+/* No comment provided by engineer. */
 "Forget Wallet" = "M-cüzdan unut";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Found %d, with %@" = "%1$d, %2$@ ile bulundu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination address have to be different" = "Dan ve hedef adresi farklı olmak zorunda";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "From and destination have to be different" = "Dan ve hedef farklı olmak zorunda";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Go to Settings" = "Ayarları'na gidin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Google Authenticator" = "Google kimlik doğrulayıcısı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Hint Stored" = "Saklı ipucu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "How would you like to pair?" = "Çiftine ne dersin?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Identifier" = "Tanımlayıcı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Bir tüccar iseniz, sizin xPub göstermek ve Blockchain tüccar app güvenli bir şekilde ve özel olarak para almak için kullanın.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import Private Key" = "Alma özel anahtar";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Import address" = "Adres alma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses" = "Alınan adresler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Addresses (Archived)" = "Alınan adresler (Arşiv)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported Private Key %@" = "Alınan özel anahtar %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Imported watch-only address %@" = "İçe aktarılan salt izle adresi %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Importing key" = "Anahtarı alma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect PIN. Please retry." = "Yanlış PIN. Lütfen yeniden deneyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect password" = "Yanlış parola";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Incorrect private key" = "Hatalı özel anahtarı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Information" = "Bilgi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Initializing Wallet" = "M-cüzdan başlatılıyor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Insufficient Funds" = "Yetersiz bakiye";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Identifier" = "Geçersiz tanımlayıcı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Pairing Code" = "Geçersiz eşleştirme kodu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Send Value" = "Geçersiz gönderme değer";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Shared Key" = "Geçersiz paylaşılan anahtar";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Status Code Returned %@" = "%@ döndürülen geçersiz durum kodu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid Wallet ID" = "Geçersiz cüzdan kimliği";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid address: %@" = "Geçersiz adres: %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid email address." = "Geçersiz e-posta adresi.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid mobile number." = "Geçersiz telefon numarası.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid recovery phrase. Please try again" = "Geçersiz kurtarma ifade. Lütfen yeniden deneyin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid server response. Please check your internet connection." = "Geçersiz sunucu yanıtı. Lütfen internet bağlantınızı kontrol edin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid to bitcoin address" = "Bitcoin adresi geçersiz";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid two-factor authentication type" = "Geçersiz iki faktörlü kimlik doğrulama türü";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Invalid verification code. Please try again." = "Geçersiz doğrulama kodu. Lütfen yeniden deneyin.";
 
 /* No comment provided by engineer. */
 "Just now" = "Sadece şimdi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Senin xPub gizli tut. Senin xPub erişimi olan tüm fonları ve hareketleri görmek mümkün olacak.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label" = "Etiket";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label Address" = "Etiket adres";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must contain letters and numbers only" = "Etiketi yalnızca harf ve sayı içermelidir";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Label must have less than 18 characters" = "Etiket daha az 18 karakter olmalıdır";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Link Mobile" = "Bağlantı cep";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading External Page" = "Dış sayfa yükleme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Loading transactions" = "İşlem yükleyen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Local Currency" = "Yerel para birimi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Log in to my Wallet" = "Cüzdanımı için giriş yapın";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Login existing Wallet" = "Giriş varolan cüzdan";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Logout" = "Oturum kapatma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Make Default" = "Yapmak varsayılan";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manual Pairing" = "El ile eşleştirme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Manually" = "El ile";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant" = "Tüccar";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Directory is currently unavailable. Please try again later." = "Tüccar dizin şu anda kullanılamıyor. Lütfen daha sonra yeniden deneyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant Map" = "Tüccar harita";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Merchant URL" = "Tüccar URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Linked" = "Bağlantılı cep";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Mobile Number" = "Cep telefonu numarası";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Benim Bitcoin cüzdan";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Not: Taranan özel anahtarın Bu salt izle adresine karşılık gelmez. Bu adresten geçirmek istiyorsan, doğru özel anahtarı inceden inceye gözden geçirmek emin olun.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Name" = "Adı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Address" = "Yeni adresi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Email Address" = "Yeni e-posta adresi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New Mobile Number" = "Yeni cep telefonu numarası";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different" = "Yeni parolanın farklı olması gerekir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "New password must be different from your password hint" = "Yeni parolanın parola ipucunuza farklı olması gerekir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "News, Price & Charts" = "Haber, fiyat ve grafikler";
 
 /* No comment provided by engineer. */
 "Next word" = "Sonraki sözcüğü";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No" = "Hayır";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No Label" = "Etiket yok";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "Girilen parola";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection available. Please check your network settings." = "Internet bağlantısı yok. Lütfen ağ ayarlarınızı denetleyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "No internet connection." = "Internet bağlantısı yok.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Normal" = "Normal";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not Stored" = "Değil stok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Not now" = "Şimdi değil";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Not yükseltme sonra önceki sürüme geri dönemem, ancak senin bitcoins ve işlem geçmişinizi tutulacaktır.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Notifications" = "Bildirimleri";
 
 /* No comment provided by engineer. */
@@ -655,184 +658,184 @@
 /* No comment provided by engineer. */
 "OK" = "Tamam";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN" = "PIN";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Encrypted String is nil" = "PIN şifreli dize yok";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object key or value length 0" = "PIN Response nesnesi anahtar veya değer uzunluğu 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Response Object success length 0" = "PIN Response nesnesi başarı uzunluğu 0";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Saved Successfully" = "PIN başarıyla kaydedildi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation Error" = "PIN doğrulama hatası";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "PIN Doğrulama tamamlanamıyor. El ile cüzdan şifrenizi giriniz.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "PINs do not match" = "PIN'ler eşleşmiyor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Parsing Pairing Code" = "Kod eşleştirme ayrıştırma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Hint" = "Parola ipucu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password Required" = "Parola gerekli";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password changed. Please login to continue." = "Parola değiştirildi. Lütfen devam etmek için giriş yapın.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Password must 10 characters or longer" = "Parola gerekir 10 karakter veya daha uzun";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Passwords do not match" = "Parolalar uyuşmuyor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Received" = "Alınan ödeme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Payment Sent!" = "Gönderilen ödeme!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Phrase Backed" = "Desteklenen ifade";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please Login" = "Lütfen giriş yapın";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please add an email address" = "Lütfen bir e-posta adresi eklemek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email and click on the verification link." = "Lütfen e-postanızı kontrol ve doğrulama bağlantısını tıklatın.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Lütfen e-postanızı kontrol edin. Oturum açma girişimi doğruladığınız, bizim web cüzdan giriş yapın ve telefonunuz QR Kod ayarları altında tarayarak çifti-> m-cüzdan bilgi.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please check your internet connection." = "Lütfen internet bağlantınızı kontrol edin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose another PIN" = "Lütfen başka bir PIN seçin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please choose from the options below." = "Aşağıdaki seçenekler arasından seçiniz.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Biz yeniden olacak herhangi bir adım ile birlikte yaşıyorsanız sorunu ayrıntılı olarak açıklayınız.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Lütfen bir ücret 0 BTC en az 0,01 BTC'dan büyük ve girin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter a new PIN" = "Lütfen yeni bir PIN girin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your %@ 2FA code" = "Senin %@ 2FA kodunu giriniz";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "36 karakter cüzdan tanımlayıcı doğru şekilde giriniz. Başlangıçta edilir e-posta içinde bulunabilir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your PIN" = "PIN kodunuzu giriniz";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please enter your recovery phrase with words separated by spaces" = "Lütfen boşluklarla ayrılmış sözcükleri ile kurtarma metninizi girin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please provide an email address." = "E-posta adresi veriniz.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please refresh the pairing code and try again." = "Lütfen Eşleştirme kodunu yenileyin ve yeniden deneyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please select a different address to send from or lower the fee in Settings." = "Lütfen göndermek veya ayarları ücretine azaltmak için farklı bir adres seçin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Ödeme bitcoin adresine gönderin (< bir href = \"https://blockchain.info/wallet/bitcoin-faq\" > Yardım? < /a >): %@";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Ödeme bitcoin adresine gönderin. SSS: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Lütfen yeniden deneyin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Please verify your email address first." = "Lütfen önce e-posta adresinizi doğrulayın.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Preferences" = "Tercihler";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Privacy Policy" = "Gizlilik Politikası";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Private Key Needed" = "Özel anahtar gerekli";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Processing key" = "Anahtar işleme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Receive" = "Almak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Received" = "Alınan";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recover Funds" = "Fon kurtarmak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Recovering Funds" = "Fonların kurtarma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Regular" = "Düzenli";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Request Amount" = "İstek tutar";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification SMS" = "Yeniden gönder doğrulama SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Resend verification email" = "Doğrulama e-postasını yeniden gönder";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Reset" = "Sıfırlama";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Retry Validation" = "Doğrulama yeniden deneyin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Robust security center" = "Sağlam Güvenlik Merkezi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "SMS" = "SMS";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Save" = "Kaydet";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Pairing Code" = "Kod eşleştirme inceden inceye gözden geçirmek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan Private Key" = "Özel anahtar inceden inceye gözden geçirmek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR Code" = "Tarama QR kodu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan QR code" = "Tarama QR kodu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Bu kod inceden inceye gözden geçirmek veya güvenli bir şekilde Bitcoin almak için Blockchain tüccar app kopyalayabilirsiniz.";
 
 /* No comment provided by engineer. */
@@ -841,408 +844,414 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "İkinci parola gerekli";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security" = "Güvenlik";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Security Center" = "Güvenlik Merkezi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send" = "Gönder";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send from..." = "Göndermek...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send to..." = "Göndermek...";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Send verification SMS" = "Doğrulama SMS göndermek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sending Transaction" = "İşlem gönderme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent" = "Gönderilen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sent to %@" = "%@ için gönderilen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Server URL" = "Sunucu URL'si";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Set as Default?" = "Varsayılan olarak ayarlamak?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Settings" = "Ayarlar";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Shared Coin is not supported in the new version at this time." = "Paylaşılan jeton yeni sürümü şu anda desteklenmiyor.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Senin xPub paylaştığınız diğer kişilerin işlem geçmişinizi izlemesi için yetki verir. Sadece yetkili kişiler cüzdanını erişmesini bozmaya mümkün olabilir gibi senin xPub güvendiğiniz kişilerle paylaşın.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Sinyal %d büyüdü.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Input %d" = "İmzalama giriş %d";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Signing Inputs" = "Girişleri imzalama";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Simplified backup and recovery" = "Basitleştirilmiş yedekleme ve kurtarma";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Store Hint" = "Mağaza ipucu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Stored" = "Depolanan";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Strong" = "Güçlü";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success" = "Başarı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Success!" = "Başarı!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Support" = "Destek";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "M-cüzdan senkronizasyonu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Terms of Service" = "Terms of Service";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Seçmiş olduğunuz PIN son derece yaygındır ve kolayca erişim 3 çalışır içinde telefonunuza olan biri tarafından tahmin. Yine de bu PIN kullanmak ister misiniz?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@) göndermek istediğiniz tutarı en fazla ücreti (%2$@ - %3$@) geçirebilirsiniz büyüktür. %4$@ göndermek ister misiniz?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Alma girişiminde bulunan özel anahtar şifrelenir. Lütfen parolanızı aşağıya girin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne:";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "There was a problem verifying your identity." = "Senin kimliğini doğrulayan bir hata oluştu.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "These options are recommended for advanced users only. Continue?" = "Bu seçenekler yalnızca ileri düzey kullanıcılar için tavsiye edilir. Devam edilsin mi?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Bu eylem, Bitcoin adresi %@ için özel anahtar gerektirir. Lütfen tarama QR kodu.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Bu eylem için bitcoin-cüzdanını ikinci parola gerektirir. Lütfen aşağıya girin ve basın devam edin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This address is not watch-only." = "Bu adresi sadece izle.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Salt izle adres burası. Bu cüzdanından para harcamak için özel anahtarınızı tarama.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Bu arşivlenir. Buradan para gönderemiyor rağmen tüm fonları güvenli kalacak. Sadece tekrar kullanmaya başlamak için unarchive.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This name is already in use. Please choose a different name." = "Bu ad zaten kullanılıyor. Lütfen farklı bir ad seçin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This private key belongs to another address that is not watch only" = "Bu özel anahtarı yalnızca saat değil başka bir adrese ait";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Bu bu aygıt üzerindeki tüm cüzdan verileri silecek. Lütfen sen-si olmak olmak ulaşılmaz başka bir yerde aksi takdirde herhangi bir bitcoins bu cüzdan vasiyetinde kaydedilen cüzdan bilgilerinizi onaylayın!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "Için: %1$@%2$@ toplam tutarı: %3$@ ücret: %4$@ (%5$@)";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor Requests" = "Tor istekleri";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor blocked" = "Tor bloke";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests allowed" = "İzin verilen Tor istek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently allowed." = "Tor isteklerini şu anda izin verilir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Tor requests are currently blocked." = "Tor istekleri şu anda engellenir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Total Balance" = "Toplam bakiye";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID has been locked due to too many failed attempts." = "Dokunmatik kimliği çok fazla başarısız girişim nedeniyle kilitlendi.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not available on this device." = "Dokunmatik kimliği bu aygıtta kullanılabilir değil.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Dokunmatik kimliği bu aygıt üzerinde etkin değil. Dokunmatik kimliği etkinleştirmek için ayarları->Touch ID & giriş kodu gidin ve bir parmak izi ekleyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transaction" = "İşlem";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Hiç bir ücret hareketleriyle onaylamak için uzun bir zaman alabilir veya hiç teyit değil. Devam etmek istiyor musunuz?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Transfer Funds" = "Para transferi";
+
+/* No comment provided by engineer. */
 "Transferred" = "Transfer";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Try again" = "Yeniden Deneyin";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "UPGRADE YOUR WALLET" = "CÜZDANINI YÜKSELTME";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Cüzdan yok sunucu yanıtı nedeniyle yüklenemedi. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen daha sonra yeniden deneyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive" = "Unarchive";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unarchive Address" = "Adresi unarchive";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unconfirmed" = "Teyit edilmemiş";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "İşlenmeyen Özel durum";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown" = "Bilinmiyor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown Touch ID error. Code: %ld" = "Bilinmeyen Touch kimliği hatası. Kod: %ld";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unknown key format" = "Bilinmeyen anahtar biçimi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unsupported Private Key Format" = "Desteklenmeyen özel anahtar biçimi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Unverified" = "Doğrulanmadı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Update" = "Güncelleştirme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade" = "Yükseltme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Now" = "Şimdi yükseltmek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade Wallet" = "M-cüzdan yükseltme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to HD" = "HD için yükseltme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Upgrade to V3" = "V3 için yükseltme";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use Touch ID as PIN" = "Dokunmatik kimliği'ni kullan PIN olarak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all %@" = "Bütün %@ kullanın";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Use all funds" = "Tüm fonlar kullanın";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "User Declined" = "Kullanıcı reddetti";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "DOĞRULAMA YEDEK";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verification email has been sent to %@." = "Doğrulama e-postası %@ için gönderdi.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verified" = "Doğrulanmadı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify" = "Doğrulayın";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verify Email" = "E-posta doğrulamak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Verifying" = "Doğrulama";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet ID" = "M-cüzdan kodu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Information" = "M-cüzdan bilgi";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet JSON" = "M-cüzdan JSON";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Paired Successfully." = "M-cüzdan başarıyla eşleştirilmiş.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet Recovery Phrase" = "M-cüzdan kurtarma ifade";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wallet version %lld not supported" = "M-cüzdan sürüm %lld desteklenmiyor";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning" = "Uyarı";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning!!!" = "Uyarı!!!";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Uyarı: Senin hassas bilgileri m-cüzdan tanımlayıcısıdır. Bu kopyalama cüzdanını güvenliğini tehlikeye atabilir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Watch Only" = "Sadece seyretmek";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We'll send the hint to your confirmed email address in case you request it." = "-Dibi takdirde sen istemek belgili tanımlık sezindirme teyit e-posta adresinize göndereceğiz.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've designed a whole new
 wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Bazı önemli gizlilik ve güvenlik iyileştirmeleri yer verdik. Güncelleştir'i bir kez eski cüzdanını geri dönmek mümkün olmayacaktır";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Weak" = "Zayıf";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "WebSocket URL" = "WebSocket URL";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Welcome" = "Hoş geldiniz";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Blockchain cüzdan önceki bir yüklemesini telefonunuzda tespit ettik.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin adresi %@ adres defterine eklemek ister misiniz?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Kurtarma metninizi Not ve çok güvenli ve güvenli bir yerde saklayın. Kurtarma metninizi bilen herkes senin bitcoins erişimi olduğunu unutmayın.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Wrong BIP38 Password" = "Yanlış BIP38 şifre";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yes" = "Evet";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Dün";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Bir salt izle adresi almak üzere olduğunuz, bir adres (veya genel anahtar komut dosyası) m-cüzdan olmadan karşılık gelen özel anahtar depolanan. Bu özel anahtar eğer sen-si olmak başka bir yerde depolanan yalnızca para harcanan olabilir anlamına gelir. Depolanan ├╢zel anahtar─▒ varsa kimse bitcoin salt izle adresine göndermek için talimat değil.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Bitcoin bir salt izle adresine almak üzeresiniz. Özel anahtara erişimi varsa bu fonların yalnızca geçirebilirsiniz. Devam edilsin mi?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You are now running our most secure Bitcoin wallet" = "Artık bizim en güvenli Bitcoin m-cüzdan oynanıyor";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Paranızı kadar başarıyla yedeklenen";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "2-adım doğrulama SMS ile cep telefonunuza etkinleştirebilirsiniz. Bunun yerine diğer kimlik doğrulama yöntemlerini kullanmak için lütfen bizim web cüzdan için giriş.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You can now spend from this address." = "Şimdi bu adresten geçirebilirsiniz.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You do not have an account set up for Mail. Please contact %@" = "Posta için ayarlanmış bir hesap var mı. %@ ulaşın";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You have no available funds to send from this address" = "Bu adresten göndermek için kullanılabilir hiçbir para olduğu";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "SMS 2-adım doğrulama (%@) cep telefonu numaranızı değiştirmeden önce devre dışı bırakmanız gerekir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a destination address" = "Bir hedef adresi girmeniz gerekir";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must enter a label" = "Bir etiket girmelisiniz";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have at least one active address" = "En az bir etkin adresi olmalıdır";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must have two-factor authentication disabled to pair manually." = "İki faktörlü kimlik doğrulamasını çiftine el ile devre dışı olması gerekir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You must leave at least one active address" = "En az bir etkin adres gitmelisiniz";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Her zaman çifti veya cüzdan ID ve parola erişiminiz varsa oturum açmanız gerekir. Paranızı kurtarma yeni bir m-cüzdan kodu oluşturun Devam etmek istiyor musunuz?";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported a private key." = "Bir özel anahtar başarıyla.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Adresi %@ için özel anahtar başarıyla ve artık ondan geçirebilirsiniz. Bu adresten geçirmek istiyorsan, doğru özel anahtarı tarama emin olun.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Aygıtınız jailbroken gibi görünüyor. Cüzdanını güvenliğini tehlikeye olabilir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your email has been verified." = "E-posta doğrulandı.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your identity does not match our records." = "Kimliğinizi kayıtlarımız eşleşmiyor.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your mobile number has been verified." = "Cep telefonu numaranızı doğrulandı.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains invalid characters. Please try again." = "Yeni parola ipucunuz geçersiz karakterler içeriyor. Lütfen yeniden deneyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint contains no text. Your password hint will be cleared." = "Yeni parola ipucunuz yok metin içerir. Parola ipucunuz temizlenir.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your password. Please try again." = "Yeni parola ipucunuz parolanızı farklı olmalıdır. Lütfen yeniden deneyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your new password hint must be different from your second password. Please try again." = "Yeni parola ipucunuz ikinci parolasından farklı olmalıdır. Lütfen yeniden deneyin.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your password hint has been updated." = "Parola ipucunuz güncelleştirildi.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
+"Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Aktarılan fonlar güvenli olacak ve artan gizlilik ve uygun yedekleme ve kurtarma özelliklerinden yararlanacaksınız.";
+
+/* No comment provided by engineer. */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Doğrulanmış e-posta adresinizi şüpheli veya olağan dışı etkinliği algılandığında, m-cüzdan oturum açma kimliğini hatırlatmak ve fon aldığınızda bitcoin ödeme uyarıları göndermek için giriş kodları göndermek için kullanılır. Biz e-posta adresinizi pazarlama amacıyla kullanmaz.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet does not contain this address." = "Cüzdanını bu adres içermiyor.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Your wallet was successfully created." = "Cüzdanını başarıyla oluşturuldu.";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "Yubi Key" = "Yubi anahtar";
 
 /* No comment provided by engineer. */
@@ -1260,16 +1269,16 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 /* No comment provided by engineer. */
 "fourth word" = "Dördüncü kelime";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "from" = "Kaynak";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "iOS Support Request" = "IOS destek talep";
 
 /* No comment provided by engineer. */
 "ninth word" = "Dokuzuncu kelime";
 
-/* (No Commment) */
+/* No comment provided by engineer. */
 "or Continue" = "veya devam";
 
 /* No comment provided by engineer. */
