@@ -410,14 +410,14 @@ MyWalletPhone.changeForcedFee = function(fee) {
         
         return error.payment;
     }
-    currentPayment.fee(fee).prebuild(true).build().then(function (x) {
-        device.execute('did_change_forced_fee:', [fee]);
+    currentPayment.prebuild(fee).build().then(function (x) {
+        device.execute('did_change_forced_fee:dust:', [fee, x.extraFeeConsumption]);
         return x;
     }).catch(buildFailure);
 }
 
-MyWalletPhone.getFeeBounds = function() {
-    currentPayment.prebuild(true).then(function (x) {
+MyWalletPhone.getFeeBounds = function(fee) {
+    currentPayment.prebuild(fee).then(function (x) {
         console.log('absolute fee bounds:');
         console.log(x.absoluteFeeBounds);
         device.execute('update_fee_bounds:', [x.absoluteFeeBounds]);
@@ -426,8 +426,10 @@ MyWalletPhone.getFeeBounds = function() {
 }
 
 MyWalletPhone.sweepPaymentRegular = function() {
-    currentPayment.sweep(false).prebuild(false);
-    MyWalletPhone.updateSweep(false, false);
+    currentPayment.useAll().then(function (x) {
+        MyWalletPhone.updateSweep(false, false);
+        return x;
+    });
 }
 
 MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
@@ -448,15 +450,17 @@ MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
         return error.payment;
     }
     
-    currentPayment.sweep(false).prebuild(false).build().then(function(x) {
+    currentPayment.useAll().build().then(function(x) {
         MyWalletPhone.updateSweep(false, true);
         return x;
     }).catch(buildFailure);
 }
 
 MyWalletPhone.sweepPaymentAdvanced = function(fee) {
-    currentPayment.fee(fee).sweep(true).prebuild(true);
-    MyWalletPhone.updateSweep(true, false);
+    currentPayment.useAll().then(function (x) {
+        MyWalletPhone.updateSweep(true, false);
+        return x;
+    });
 }
 
 MyWalletPhone.sweepPaymentAdvancedThenConfirm = function(fee) {
@@ -477,7 +481,7 @@ MyWalletPhone.sweepPaymentAdvancedThenConfirm = function(fee) {
         return error.payment;
     }
     
-    currentPayment.fee(fee).sweep(true).prebuild(true).build().then(function(x) {
+    currentPayment.useAll(fee).build().then(function(x) {
         MyWalletPhone.updateSweep(true, true);
         return x;
     }).catch(buildFailure);
@@ -485,12 +489,9 @@ MyWalletPhone.sweepPaymentAdvancedThenConfirm = function(fee) {
 
 MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
     currentPayment.payment.then(function(x) {
-                                
-       var updatedFee = isAdvanced ? x.forcedFee : x.sweepFee;
-                                
-       console.log('updated fee: ' + updatedFee);
+       console.log('updated fee: ' + x.finalFee);
        console.log('SweepAmount: ' + x.amounts);
-       device.execute('update_max_amount:fee:willConfirm:', [x.amounts[0], updatedFee, willConfirm]);
+       device.execute('update_max_amount:fee:dust:willConfirm:', [x.amounts[0], x.finalFee, x.extraFeeConsumption, willConfirm]);
        return x;
     }).catch(function(error) {
        var errorArgument;
@@ -504,10 +505,8 @@ MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
     });
 }
 
-MyWalletPhone.getTransactionFee = function(advanced) {
+MyWalletPhone.getTransactionFee = function() {
     if (currentPayment) {
-        console.log('getTxFee');
-        var isAdvanced = Boolean(advanced);
 
         var buildFailure = function(error) {
 
@@ -524,8 +523,8 @@ MyWalletPhone.getTransactionFee = function(advanced) {
             return error.payment;
         }
         
-        currentPayment.prebuild(isAdvanced).build().then(function (x) {
-            device.execute('did_get_fee:', [x.finalFee]);
+        currentPayment.prebuild().build().then(function (x) {
+            device.execute('did_get_fee:dust:', [x.finalFee, x.extraFeeConsumption]);
             return x;
         }).catch(buildFailure);
         

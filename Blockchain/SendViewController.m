@@ -31,6 +31,7 @@ typedef enum {
 @property (nonatomic) uint64_t recommendedForcedFee;
 @property (nonatomic) uint64_t maxSendableAmount;
 @property (nonatomic) uint64_t feeFromTransactionProposal;
+@property (nonatomic) uint64_t dust;
 
 @property (nonatomic) uint64_t amountFromURLHandler;
 
@@ -111,6 +112,8 @@ BOOL displayingLocalSymbolSend;
 - (void)resetPayment
 {
     self.surgeIsOccurring = NO;
+    self.dust = 0;
+    
     [app.wallet createNewPayment];
     [app.wallet changePaymentFromAddress:@""];
     if (app.tabViewController.activeViewController == self) {
@@ -481,7 +484,8 @@ BOOL displayingLocalSymbolSend;
             self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
         }];
 
-        uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
+        uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
+        uint64_t feeTotal = self.dust + self.feeFromTransactionProposal;
         
         NSString *fromAddressLabel = self.sendFromAddress ? [self labelForLegacyAddress:self.fromAddress] : [app.wallet getLabelForAccount:self.fromAccount activeOnly:YES];
         
@@ -510,8 +514,8 @@ BOOL displayingLocalSymbolSend;
         self.confirmPaymentView.fiatAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:TRUE];
         self.confirmPaymentView.btcAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:FALSE];
         
-        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
-        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
+        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:feeTotal localCurrency:TRUE];
+        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:feeTotal localCurrency:FALSE];
         
         if (self.surgeIsOccurring) {
             self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor redColor];
@@ -1035,11 +1039,11 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)getTransactionFeeWithSuccess:(void (^)())success error:(void (^)())error advanced:(BOOL)isAdvanced
+- (void)getTransactionFeeWithSuccess:(void (^)())success error:(void (^)())error
 {
     self.getTransactionFeeSuccess = success;
     
-    [app.wallet getTransactionFee:isAdvanced];
+    [app.wallet getTransactionFee];
 }
 
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee
@@ -1061,15 +1065,16 @@ BOOL displayingLocalSymbolSend;
         
         [self getTransactionFeeWithSuccess:^{
             [weakSelf showSummary];
-        } error:nil advanced:self.customFeeMode];
+        } error:nil];
     }
 }
 
-- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm
+- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm
 {
     self.feeFromTransactionProposal = [fee longLongValue];
     uint64_t maxAmount = [amount longLongValue];
     self.maxSendableAmount = maxAmount;
+    self.dust = dust == nil ? 0 : [dust longLongValue];
     
     DLog(@"SendViewController: got max fee of %lld", [fee longLongValue]);
     amountInSatoshi = maxAmount;
@@ -1085,19 +1090,21 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)didGetFee:(NSNumber *)fee
+- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust
 {
     self.feeFromTransactionProposal = [fee longLongValue];
     self.recommendedForcedFee = [fee longLongValue];
+    self.dust = dust == nil ? 0 : [dust longLongValue];
     
     if (self.getTransactionFeeSuccess) {
         self.getTransactionFeeSuccess();
     }
 }
 
-- (void)didChangeForcedFee:(NSNumber *)fee
+- (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust
 {
     self.feeFromTransactionProposal = [fee longLongValue];
+    self.dust = dust == nil ? 0 : [dust longLongValue];
     [self showSummary];
 }
 
@@ -1111,17 +1118,18 @@ BOOL displayingLocalSymbolSend;
     if (afterEvaluation) {
         [app.wallet changeForcedFee:absoluteFee];
     } else {
-        [app.wallet getFeeBounds];
+        [app.wallet getFeeBounds:[app.wallet parseBitcoinValue:feeField.text]];
     }
 }
 
 - (void)didGetFeeBounds:(NSArray *)bounds
 {
     if ([self evaluateFee:[app.wallet parseBitcoinValue:feeField.text] absoluteFeeBounds:bounds]) {
-        uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal;
-            
-        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:TRUE];
-        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:self.feeFromTransactionProposal localCurrency:FALSE];
+        uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
+        uint64_t feeTotal = self.dust + self.feeFromTransactionProposal;
+        
+        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:feeTotal localCurrency:TRUE];
+        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:feeTotal localCurrency:FALSE];
         
         self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
         self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
@@ -1322,16 +1330,17 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)feeInformationClicked:(UIButton *)sender
 {
-    NSString *title;
-    NSString *message;
-    if (self.surgeIsOccurring) {
-        title = BC_STRING_SURGE_OCCURRING_TITLE;
-        message = BC_STRING_SURGE_OCCURRING_MESSAGE;
-    } else {
-        title = BC_STRING_FEE_INFORMATION_TITLE;
-        message = BC_STRING_FEE_INFORMATION_MESSAGE;
-    }
+    NSString *title = BC_STRING_FEE_INFORMATION_TITLE;
+    NSString *message = BC_STRING_FEE_INFORMATION_MESSAGE;
     
+    if (self.surgeIsOccurring) {
+        message = [message stringByAppendingString:[NSString stringWithFormat:@"\n\n%@", BC_STRING_SURGE_OCCURRING_MESSAGE]];
+    }
+
+    if (self.dust > 0) {
+        message = [message stringByAppendingString:[NSString stringWithFormat:@"\n\n%@", BC_STRING_FEE_INFORMATION_DUST]];
+    }
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];

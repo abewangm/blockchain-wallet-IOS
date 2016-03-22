@@ -1421,19 +1421,19 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didCheckForOverSpending:amount fee:fee];
 }
 
-- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm
+- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm
 {
-    [_sendViewController didGetMaxFee:fee amount:amount willConfirm:willConfirm];
+    [_sendViewController didGetMaxFee:fee amount:amount dust:dust willConfirm:willConfirm];
 }
 
-- (void)didGetFee:(NSNumber *)fee
+- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust
 {
-    [_sendViewController didGetFee:fee];
+    [_sendViewController didGetFee:fee dust:dust];
 }
 
-- (void)didChangeForcedFee:(NSNumber *)fee
+- (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust
 {
-    [_sendViewController didChangeForcedFee:fee];
+    [_sendViewController didChangeForcedFee:fee dust:dust];
 }
 
 - (void)didGetFeeBounds:(NSArray *)bounds

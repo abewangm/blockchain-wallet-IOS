@@ -765,22 +765,22 @@
     [self.webView executeJS:@"MyWalletPhone.changeForcedFee(%lld)", fee];
 }
 
-- (void)getFeeBounds
+- (void)getFeeBounds:(uint64_t)fee
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.getFeeBounds()"];
+    [self.webView executeJS:@"MyWalletPhone.getFeeBounds(%lld)", fee];
 }
 
-- (void)getTransactionFee:(BOOL)customFee
+- (void)getTransactionFee
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.getTransactionFee(%d)", customFee];
+    [self.webView executeJS:@"MyWalletPhone.getTransactionFee()"];
 }
 
 - (void)getSurgeStatus
@@ -1609,20 +1609,20 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
-- (void)did_get_fee:(NSNumber *)fee
+- (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust
 {
     DLog(@"update_fee");
     DLog(@"Wallet: fee is %@", fee);
-    if ([self.delegate respondsToSelector:@selector(didGetFee:)]) {
-        [self.delegate didGetFee:fee];
+    if ([self.delegate respondsToSelector:@selector(didGetFee:dust:)]) {
+        [self.delegate didGetFee:fee dust:dust];
     }
 }
 
-- (void)did_change_forced_fee:(NSNumber *)fee
+- (void)did_change_forced_fee:(NSNumber *)fee dust:(NSNumber *)dust
 {
     DLog(@"did_change_forced_fee");
-    if ([self.delegate respondsToSelector:@selector(didChangeForcedFee:)]) {
-        [self.delegate didChangeForcedFee:fee];
+    if ([self.delegate respondsToSelector:@selector(didChangeForcedFee:dust:)]) {
+        [self.delegate didChangeForcedFee:fee dust:dust];
     }
 }
 
@@ -1642,13 +1642,13 @@
     }
 }
 
-- (void)update_max_amount:(NSNumber *)amount fee:(NSNumber *)fee willConfirm:(NSNumber *)willConfirm
+- (void)update_max_amount:(NSNumber *)amount fee:(NSNumber *)fee dust:(NSNumber *)dust willConfirm:(NSNumber *)willConfirm
 {
     DLog(@"update_max_amount");
     DLog(@"Wallet: max amount is %@ with fee %@", amount, fee);
     
-    if ([self.delegate respondsToSelector:@selector(didGetMaxFee:amount:willConfirm:)]) {
-        [self.delegate didGetMaxFee:fee amount:amount willConfirm:[willConfirm boolValue]];
+    if ([self.delegate respondsToSelector:@selector(didGetMaxFee:amount:dust:willConfirm:)]) {
+        [self.delegate didGetMaxFee:fee amount:amount dust:dust willConfirm:[willConfirm boolValue]];
     }
 }
 

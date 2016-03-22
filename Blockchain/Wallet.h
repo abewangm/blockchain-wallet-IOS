@@ -81,10 +81,10 @@
 - (void)sendFromWatchOnlyAddress;
 - (void)estimateTransactionSize:(uint64_t)size;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
-- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm;
-- (void)didGetFee:(NSNumber *)fee;
+- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
+- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust;
 - (void)didGetFeeBounds:(NSArray *)bounds;
-- (void)didChangeForcedFee:(NSNumber *)fee;
+- (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
 - (void)enableSendPaymentButtons;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
 @end
@@ -268,9 +268,9 @@
 - (void)sweepPaymentAdvanced:(uint64_t)fee;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
 - (void)checkIfOverspending;
-- (void)getFeeBounds;
+- (void)getFeeBounds:(uint64_t)fee;
 - (void)changeForcedFee:(uint64_t)fee;
-- (void)getTransactionFee:(BOOL)customFee;
+- (void)getTransactionFee;
 - (void)getSurgeStatus;
 
 // Recover with passphrase

@@ -480,3 +480,4 @@
 #define BC_STRING_SURGE_OCCURRING_MESSAGE NSLocalizedString(@"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual.", nil)
 #define BC_STRING_FEE_INFORMATION_TITLE NSLocalizedString(@"Transaction Fees", nil)
 #define BC_STRING_FEE_INFORMATION_MESSAGE NSLocalizedString(@"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time.", nil)
+#define BC_STRING_FEE_INFORMATION_DUST NSLocalizedString(@"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned.", nil)

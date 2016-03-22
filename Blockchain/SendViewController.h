@@ -105,10 +105,10 @@
 
 - (void)sendFromWatchOnlyAddress;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
-- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount willConfirm:(BOOL)willConfirm;
+- (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
 - (void)didGetFeeBounds:(NSArray *)bounds;
-- (void)didGetFee:(NSNumber *)fee;
-- (void)didChangeForcedFee:(NSNumber *)fee;
+- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust;
+- (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
 
 - (void)reload;
 
