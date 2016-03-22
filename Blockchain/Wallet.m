@@ -1626,11 +1626,12 @@
     }
 }
 
-- (void)update_fee_bounds:(NSArray *)bounds
-{
+- (void)update_fee_bounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation
+{    
     DLog(@"update_fee_bounds");
-    if ([self.delegate respondsToSelector:@selector(didGetFeeBounds:)]) {
-        [self.delegate didGetFeeBounds:bounds];
+    
+    if ([self.delegate respondsToSelector:@selector(didGetFeeBounds:confirmationEstimation:)]) {
+        [self.delegate didGetFeeBounds:bounds confirmationEstimation:confirmationEstimation];
     }
 }
 

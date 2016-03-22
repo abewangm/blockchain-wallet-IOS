@@ -420,7 +420,8 @@ MyWalletPhone.getFeeBounds = function(fee) {
     currentPayment.prebuild(fee).then(function (x) {
         console.log('absolute fee bounds:');
         console.log(x.absoluteFeeBounds);
-        device.execute('update_fee_bounds:', [x.absoluteFeeBounds]);
+        var expectedBlock = x.confEstimation == Infinity ? -1 : x.confEstimation;
+        device.execute('update_fee_bounds:confirmationEstimation:', [x.absoluteFeeBounds, expectedBlock]);
         return x;
     });
 }
@@ -457,14 +458,13 @@ MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
 }
 
 MyWalletPhone.sweepPaymentAdvanced = function(fee) {
-    currentPayment.useAll().then(function (x) {
+    currentPayment.useAll(fee).then(function (x) {
         MyWalletPhone.updateSweep(true, false);
         return x;
     });
 }
 
 MyWalletPhone.sweepPaymentAdvancedThenConfirm = function(fee) {
-    
     var buildFailure = function (error) {
         console.log('buildfailure');
         

@@ -1142,38 +1142,52 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)didGetFeeBounds:(NSArray *)bounds
+- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation
 {
-    if ([self evaluateFee:[app.wallet parseBitcoinValue:feeField.text] absoluteFeeBounds:bounds]) {
-        uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
-        uint64_t feeTotal = self.dust + self.feeFromTransactionProposal;
-        
-        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:feeTotal localCurrency:TRUE];
-        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:feeTotal localCurrency:FALSE];
-        
-        self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
-        self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
-        
-        [app.wallet changeForcedFee:[app.wallet parseBitcoinValue:feeField.text]];
+    uint64_t typedFee = [app.wallet parseBitcoinValue:feeField.text];
+    
+    if ([confirmationEstimation isMemberOfClass:[NSNull class]]) {
+        DLog(@"fee is too low, and we cannot suggest raising the fee without lowering the total amount user is spending");
+        return;
+    }
+    
+    if ([confirmationEstimation intValue] < 0) {
+        self.lowerRecommendedLimit = [[bounds lastObject] longLongValue];
+        [self showWarningForFee:typedFee isHigherThanRecommendedRange:NO];
+        return;
+    }
+
+    uint64_t expectedBlock = [confirmationEstimation longLongValue];
+    
+    if (expectedBlock >= 2 && expectedBlock <= 6) {
+        [self changeForcedFeeAndUpdateValues];
+        return;
+    }
+    
+    if (expectedBlock == 1) {
+        if (typedFee <= [[bounds firstObject] longLongValue]) {
+            [self changeForcedFeeAndUpdateValues];
+            return;
+        } else {
+            self.upperRecommendedLimit = [[bounds firstObject] longLongValue];
+            [self showWarningForFee:typedFee isHigherThanRecommendedRange:YES];
+            return;
+        }
     }
 }
 
-- (BOOL)evaluateFee:(uint64_t)fee absoluteFeeBounds:(NSArray *)bounds
+- (void)changeForcedFeeAndUpdateValues
 {
-    BOOL isWithinRange = YES;
+    uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
+    uint64_t feeTotal = self.dust + self.feeFromTransactionProposal;
     
-    self.upperRecommendedLimit = [[bounds firstObject] longLongValue];
-    self.lowerRecommendedLimit = [[bounds lastObject] longLongValue];
+    self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:feeTotal localCurrency:TRUE];
+    self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:feeTotal localCurrency:FALSE];
     
-    if (fee > self.upperRecommendedLimit) {
-        isWithinRange = NO;
-        [self showWarningForFee:fee isHigherThanRecommendedRange:YES];
-    } else if (fee < self.lowerRecommendedLimit) {
-        isWithinRange = NO;
-        [self showWarningForFee:fee isHigherThanRecommendedRange:NO];
-    }
+    self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
+    self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
     
-    return isWithinRange;
+    [app.wallet changeForcedFee:[app.wallet parseBitcoinValue:feeField.text]];
 }
 
 #pragma mark - Actions
