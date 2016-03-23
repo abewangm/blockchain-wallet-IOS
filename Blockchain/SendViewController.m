@@ -327,68 +327,6 @@ BOOL displayingLocalSymbolSend;
 
 - (void)sendPaymentWithListener
 {
-    transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
-    
-    listener.on_start = ^() {
-    };
-    
-    listener.on_begin_signing = ^() {
-        sendProgressModalText.text = BC_STRING_SIGNING_INPUTS;
-    };
-    
-    listener.on_sign_progress = ^(int input) {
-        DLog(@"Signing input: %d", input);
-        sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_SIGNING_INPUT, input];
-    };
-    
-    listener.on_finish_signing = ^() {
-        sendProgressModalText.text = BC_STRING_FINISHED_SIGNING_INPUTS;
-    };
-    
-    listener.on_success = ^() {
-        
-        DLog(@"SendViewController: on_success");
-        
-        [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
-        
-        [sendProgressActivityIndicator stopAnimating];
-        
-        [self enablePaymentButtons];
-        
-        // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
-        [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
-        
-        // Close transaction modal, go to transactions view, scroll to top and animate new transaction
-        [app closeModalWithTransition:kCATransitionFade];
-        [app.transactionsViewController animateNextCellAfterReload];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [app transactionsClicked:nil];
-        });
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [app.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-        });
-    };
-    
-    listener.on_error = ^(NSString* error) {
-        DLog(@"Send error: %@", error);
-
-        if ([error isEqualToString:ERROR_UNDEFINED]) {
-            [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
-        } else if (error && error.length != 0)  {
-            [app standardNotify:error];
-        }
-        
-        [sendProgressActivityIndicator stopAnimating];
-        
-        [self enablePaymentButtons];
-        
-        [app closeModalWithTransition:kCATransitionFade];
-        
-        [self reload];
-        
-        [app.wallet getHistory];
-    };
-    
     [self disablePaymentButtons];
     
     [sendProgressActivityIndicator startAnimating];
@@ -397,32 +335,97 @@ BOOL displayingLocalSymbolSend;
     
     [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
     
-    NSString *amountString;
-    amountString = [[NSNumber numberWithLongLong:amountInSatoshi] stringValue];
-    
-    DLog(@"Sending uint64_t %llu Satoshi (String value: %@)", amountInSatoshi, amountString);
-    
-    // Different ways of sending (from/to address or account
-    if (self.sendFromAddress && self.sendToAddress) {
-        DLog(@"From: %@", self.fromAddress);
-        DLog(@"To: %@", self.toAddress);
-    }
-    else if (self.sendFromAddress && !self.sendToAddress) {
-        DLog(@"From: %@", self.fromAddress);
-        DLog(@"To account: %d", self.toAccount);
-    }
-    else if (!self.sendFromAddress && self.sendToAddress) {
-        DLog(@"From account: %d", self.fromAccount);
-        DLog(@"To: %@", self.toAddress);
-    }
-    else if (!self.sendFromAddress && !self.sendToAddress) {
-        DLog(@"From account: %d", self.fromAccount);
-        DLog(@"To account: %d", self.toAccount);
-    }
-    
-    app.wallet.didReceiveMessageForLastTransaction = NO;
-    
-    [app.wallet sendPaymentWithListener:listener];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
+         
+         listener.on_start = ^() {
+         };
+         
+         listener.on_begin_signing = ^() {
+             sendProgressModalText.text = BC_STRING_SIGNING_INPUTS;
+         };
+         
+         listener.on_sign_progress = ^(int input) {
+             DLog(@"Signing input: %d", input);
+             sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_SIGNING_INPUT, input];
+         };
+         
+         listener.on_finish_signing = ^() {
+             sendProgressModalText.text = BC_STRING_FINISHED_SIGNING_INPUTS;
+         };
+         
+         listener.on_success = ^() {
+             
+             DLog(@"SendViewController: on_success");
+             
+             [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
+             
+             [sendProgressActivityIndicator stopAnimating];
+             
+             [self enablePaymentButtons];
+             
+             // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
+             [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
+             
+             // Close transaction modal, go to transactions view, scroll to top and animate new transaction
+             [app closeModalWithTransition:kCATransitionFade];
+             [app.transactionsViewController animateNextCellAfterReload];
+             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                 [app transactionsClicked:nil];
+             });
+             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                 [app.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+             });
+         };
+         
+         listener.on_error = ^(NSString* error) {
+             DLog(@"Send error: %@", error);
+             
+             if ([error isEqualToString:ERROR_UNDEFINED]) {
+                 [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
+             } else if (error && error.length != 0)  {
+                 [app standardNotify:error];
+             }
+             
+             [sendProgressActivityIndicator stopAnimating];
+             
+             [self enablePaymentButtons];
+             
+             [app closeModalWithTransition:kCATransitionFade];
+             
+             [self reload];
+             
+             [app.wallet getHistory];
+         };
+         
+         NSString *amountString;
+         amountString = [[NSNumber numberWithLongLong:amountInSatoshi] stringValue];
+         
+         DLog(@"Sending uint64_t %llu Satoshi (String value: %@)", amountInSatoshi, amountString);
+         
+         // Different ways of sending (from/to address or account
+         if (self.sendFromAddress && self.sendToAddress) {
+             DLog(@"From: %@", self.fromAddress);
+             DLog(@"To: %@", self.toAddress);
+         }
+         else if (self.sendFromAddress && !self.sendToAddress) {
+             DLog(@"From: %@", self.fromAddress);
+             DLog(@"To account: %d", self.toAccount);
+         }
+         else if (!self.sendFromAddress && self.sendToAddress) {
+             DLog(@"From account: %d", self.fromAccount);
+             DLog(@"To: %@", self.toAddress);
+         }
+         else if (!self.sendFromAddress && !self.sendToAddress) {
+             DLog(@"From account: %d", self.fromAccount);
+             DLog(@"To account: %d", self.toAccount);
+         }
+         
+         app.wallet.didReceiveMessageForLastTransaction = NO;
+         
+         [app.wallet sendPaymentWithListener:listener];
+    });
 }
 
 - (uint64_t)getInputAmountInSatoshi
