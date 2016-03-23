@@ -1436,9 +1436,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didChangeForcedFee:fee dust:dust];
 }
 
-- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation
+- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
 {
-    [_sendViewController didGetFeeBounds:(NSArray *)bounds confirmationEstimation:confirmationEstimation];
+    [_sendViewController didGetFeeBounds:(NSArray *)bounds confirmationEstimation:confirmationEstimation maxAmounts:maxAmounts maxFees:maxFees];
 }
 
 - (void)didGetSurgeStatus:(BOOL)surgeStatus

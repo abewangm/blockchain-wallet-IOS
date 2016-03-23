@@ -317,7 +317,7 @@ BOOL displayingLocalSymbolSend;
     
     [self didSelectToAccount:[app.wallet getDefaultAccountIndexActiveOnly:YES]];
     
-    [self getMaxFeeWhileConfirming:YES];
+    [app.wallet sweepPaymentRegularThenConfirm];
 }
 
 - (void)sendFromWatchOnlyAddress
@@ -727,6 +727,26 @@ BOOL displayingLocalSymbolSend;
     [[NSNotificationCenter defaultCenter] addObserver:alertForFeeOutsideRecommendedRange selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     
     [app.tabViewController presentViewController:alertForFeeOutsideRecommendedRange animated:YES completion:nil];
+}
+
+- (void)showWarningForInsufficientFundsAndLowFee:(uint64_t)fee suggestedFee:(uint64_t)suggestedFee suggestedAmount:(uint64_t)suggestedAmount
+{
+    NSString *feeString = [app formatMoney:fee localCurrency:NO];
+    NSString *suggestedFeeString = [app formatMoney:suggestedFee localCurrency:NO];
+    NSString *suggestedAmountString = [app formatMoney:suggestedAmount localCurrency:NO];
+    
+    UIAlertController *alertForInsufficientFundsAndLowFee = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:[NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_MUST_LOWER_AMOUNT_SUGGESTED_FEE_ARGUMENT_SUGGESTED_AMOUNT_ARGUMENT, feeString, suggestedFeeString, suggestedAmountString] preferredStyle:UIAlertControllerStyleAlert];
+    [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_KEEP_LOWER_FEE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self changeForcedFee:fee afterEvaluation:YES];
+    }]];
+    [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_USE_RECOMMENDED_VALUES style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        feeField.text = [app formatAmount:suggestedFee localCurrency:NO];
+        amountInSatoshi = suggestedAmount;
+        [self doCurrencyConversion];
+        [self changeForcedFee:suggestedFee afterEvaluation:YES];
+    }]];
+    [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [app.tabViewController presentViewController:alertForInsufficientFundsAndLowFee animated:YES completion:nil];
 }
 
 - (void)alertUserForSpendingFromWatchOnlyAddress
@@ -1142,12 +1162,12 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation
+- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
 {
     uint64_t typedFee = [app.wallet parseBitcoinValue:feeField.text];
     
     if ([confirmationEstimation isMemberOfClass:[NSNull class]]) {
-        DLog(@"fee is too low, and we cannot suggest raising the fee without lowering the total amount user is spending");
+        [self showWarningForInsufficientFundsAndLowFee:typedFee suggestedFee:[[maxFees lastObject] longLongValue] suggestedAmount:[[maxAmounts lastObject] longLongValue]];
         return;
     }
     

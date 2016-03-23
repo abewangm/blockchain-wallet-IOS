@@ -421,7 +421,7 @@ MyWalletPhone.getFeeBounds = function(fee) {
         console.log('absolute fee bounds:');
         console.log(x.absoluteFeeBounds);
         var expectedBlock = x.confEstimation == Infinity ? -1 : x.confEstimation;
-        device.execute('update_fee_bounds:confirmationEstimation:', [x.absoluteFeeBounds, expectedBlock]);
+        device.execute('update_fee_bounds:confirmationEstimation:maxAmounts:maxFees:', [x.absoluteFeeBounds, expectedBlock, x.maxSpendableAmounts, x.sweepFees]);
         return x;
     });
 }

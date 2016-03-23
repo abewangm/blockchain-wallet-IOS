@@ -83,7 +83,7 @@
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust;
-- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation;
+- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees;
 - (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
 - (void)enableSendPaymentButtons;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;

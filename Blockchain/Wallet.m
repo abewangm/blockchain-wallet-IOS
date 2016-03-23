@@ -1626,12 +1626,12 @@
     }
 }
 
-- (void)update_fee_bounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation
+- (void)update_fee_bounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
 {    
-    DLog(@"update_fee_bounds");
+    DLog(@"update_fee_bounds:confirmationEstimation:maxAmounts:maxFees");
     
-    if ([self.delegate respondsToSelector:@selector(didGetFeeBounds:confirmationEstimation:)]) {
-        [self.delegate didGetFeeBounds:bounds confirmationEstimation:confirmationEstimation];
+    if ([self.delegate respondsToSelector:@selector(didGetFeeBounds:confirmationEstimation:maxAmounts:maxFees:)]) {
+        [self.delegate didGetFeeBounds:bounds confirmationEstimation:confirmationEstimation maxAmounts:maxAmounts maxFees:maxFees];
     }
 }
 
