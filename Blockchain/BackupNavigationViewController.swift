@@ -17,7 +17,7 @@ import UIKit
     var isTransitioning : Bool = false {
         didSet {
             if isTransitioning == true {
-                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "finishTransitioning", userInfo: nil, repeats: false)
+                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(BackupNavigationViewController.finishTransitioning), userInfo: nil, repeats: false)
             }
         }
     }
@@ -52,7 +52,7 @@ import UIKit
         closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
         closeButton!.titleLabel?.font = UIFont.systemFontOfSize(15)
         closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
-        closeButton!.addTarget(self, action:"backButtonClicked", forControlEvents: UIControlEvents.TouchUpInside);
+        closeButton!.addTarget(self, action:#selector(BackupNavigationViewController.backButtonClicked), forControlEvents: UIControlEvents.TouchUpInside);
         topBar!.addSubview(closeButton!);
         
         let backupViewController = self.viewControllers.first as! BackupViewController
@@ -86,7 +86,7 @@ import UIKit
         view.addSubview(busyView!);
         view.bringSubviewToFront(busyView!);
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reload", name: "reloadSettingsAndSecurityCenter", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BackupNavigationViewController.reload), name: "reloadSettingsAndSecurityCenter", object: nil)
     }
     
     override func viewDidLayoutSubviews() {
