@@ -36,9 +36,9 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        word1?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
-        word2?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
-        word3?.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
+        word1?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), forControlEvents: .EditingChanged)
+        word2?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), forControlEvents: .EditingChanged)
+        word3?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), forControlEvents: .EditingChanged)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         
@@ -69,7 +69,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
         verifyButton?.titleLabel!.font = UIFont.boldSystemFontOfSize(15)
         verifyButton?.enabled = true
-        verifyButton?.addTarget(self, action: "done", forControlEvents: .TouchUpInside)
+        verifyButton?.addTarget(self, action: #selector(BackupVerifyViewController.done), forControlEvents: .TouchUpInside)
         verifyButton?.enabled = false
         word1?.inputAccessoryView = verifyButton
         word2?.inputAccessoryView = verifyButton
@@ -84,8 +84,10 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     func randomizeCheckIndexes() {
         var wordIndexes: [Int] = [];
-        for (var i = 0; i < Constants.Defaults.NumberOfRecoveryPhraseWords; i++) {
-            wordIndexes.append(i)
+        var index = 0;
+        for _ in 0..<Constants.Defaults.NumberOfRecoveryPhraseWords {
+            index += 1
+            wordIndexes.append(index)
         }
         randomizedIndexes = wordIndexes.shuffle()
     }
@@ -150,7 +152,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     func pleaseTryAgain() {
         let alert = UIAlertController(title:  NSLocalizedString("Error", comment:""), message: NSLocalizedString("Please try again", comment:""), preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .Default, handler:nil))
-        NSNotificationCenter.defaultCenter().addObserver(alert, selector: "autoDismiss", name: "reloadToDismissViews", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(alert, selector: #selector(UIViewController.autoDismiss), name: "reloadToDismissViews", object: nil)
         presentViewController(alert, animated: true, completion: nil)
     }
     

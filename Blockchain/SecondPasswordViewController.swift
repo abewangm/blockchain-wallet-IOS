@@ -45,7 +45,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
         closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
         closeButton!.titleLabel?.font = UIFont.systemFontOfSize(15)
         closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
-        closeButton!.addTarget(self, action:"close:", forControlEvents: UIControlEvents.TouchUpInside);
+        closeButton!.addTarget(self, action:#selector(SecondPasswordViewController.close(_:)), forControlEvents: UIControlEvents.TouchUpInside);
         topBar!.addSubview(closeButton!);
         
         closeButton!.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
@@ -97,7 +97,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAle
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .Default, handler: { (UIAlertAction) -> Void in
              self.password?.text = ""
         }))
-        NSNotificationCenter.defaultCenter().addObserver(alert, selector: "autoDismiss", name: "reloadToDismissViews", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(alert, selector: #selector(UIViewController.autoDismiss), name: "reloadToDismissViews", object: nil)
         presentViewController(alert, animated: true, completion: nil)
     }
     
