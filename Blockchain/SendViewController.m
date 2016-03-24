@@ -593,7 +593,7 @@ BOOL displayingLocalSymbolSend;
         } else {
             [self highlightInvalidAmounts];
         }
-    } else {
+    } else if (self.customFeeMode) {
         [self enablePaymentButtons];
         
         feeField.textColor = [UIColor blackColor];
