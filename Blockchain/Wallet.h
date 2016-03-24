@@ -87,6 +87,7 @@
 - (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
 - (void)enableSendPaymentButtons;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
+- (void)updateSendBalance:(NSNumber *)balance;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {

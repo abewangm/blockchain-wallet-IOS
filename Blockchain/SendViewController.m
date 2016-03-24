@@ -115,7 +115,7 @@ BOOL displayingLocalSymbolSend;
     self.dust = 0;
     
     [app.wallet createNewPayment];
-    [app.wallet changePaymentFromAddress:@""];
+    [self resetFromAddress];
     if (app.tabViewController.activeViewController == self) {
         [app closeModalWithTransition:kCATransitionPush];
     }
@@ -131,13 +131,12 @@ BOOL displayingLocalSymbolSend;
         self.sendFromAddress = false;
         int defaultAccountIndex = [app.wallet getDefaultAccountIndexActiveOnly:YES];
         self.fromAccount = defaultAccountIndex;
-        [app.wallet createNewPayment];
         [self didSelectFromAccount:self.fromAccount];
     }
     else {
         // Default setting: send from any address
         self.sendFromAddress = true;
-        [self resetPayment];
+        [self didSelectFromAddress:self.fromAddress];
     }
 }
 
@@ -166,8 +165,6 @@ BOOL displayingLocalSymbolSend;
     }
     
     [self resetPayment];
-    
-    [self resetFromAddress];
     
     // Default: send to address
     self.sendToAddress = true;
@@ -847,6 +844,12 @@ BOOL displayingLocalSymbolSend;
     }];
 }
 
+- (void)updateSendBalance:(NSNumber *)balance
+{
+    availableAmount = [balance longLongValue];
+    [self updateFundsAvailable];
+}
+
 #pragma mark - Textfield Delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -1014,15 +1017,11 @@ BOOL displayingLocalSymbolSend;
         addressOrLabel = address;
     }
     
-    availableAmount = [app.wallet getLegacyAddressBalance:address];
-    
     selectAddressTextField.text = addressOrLabel;
     self.fromAddress = address;
     DLog(@"fromAddress: %@", address);
     
     [app.wallet changePaymentFromAddress:address];
-    
-    [self updateFundsAvailable];
     
     [self doCurrencyConversion];
 }

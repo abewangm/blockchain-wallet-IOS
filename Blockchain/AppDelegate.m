@@ -1451,6 +1451,11 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController enablePaymentButtons];
 }
 
+- (void)updateSendBalance:(NSNumber *)balance
+{
+    [_sendViewController updateSendBalance:balance];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses

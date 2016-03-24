@@ -95,6 +95,8 @@
 - (void)didSelectFromAccount:(int)account;
 - (void)didSelectToAccount:(int)account;
 
+- (void)updateSendBalance:(NSNumber *)balance;
+
 - (IBAction)sendPaymentClicked:(id)sender;
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)useAllClicked:(id)sender;

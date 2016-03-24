@@ -1841,6 +1841,14 @@
     }
 }
 
+- (void)update_send_balance:(NSNumber *)balance
+{
+    DLog(@"update_send_balance");
+    if ([self.delegate respondsToSelector:@selector(updateSendBalance:)]) {
+        [self.delegate updateSendBalance:balance];
+    }
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)upgradeToHDWallet
@@ -1975,6 +1983,24 @@
     } else {
         return [[self.webView executeJSSynchronous:@"MyWalletPhone.getBalanceForAccount(%d)", account] longLongValue];
     }
+}
+
+- (uint64_t)getSpendableBalanceForAccount:(int)account
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForAccount(MyWalletPhone.getIndexOfActiveAccount(%d))", account] longLongValue];
+}
+
+- (uint64_t)getSpendableBalanceForAddress:(NSString *)address
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForAddress(\"%@\")", [address escapeStringForJS]] longLongValue];
 }
 
 - (NSString *)getLabelForAccount:(int)account activeOnly:(BOOL)isActiveOnly
