@@ -75,7 +75,7 @@
     
     [self.labelTextField resignFirstResponder];
     
-    [app.wallet setLabelForAccount:self.accountIdx activeOnly:NO label:label];
+    [app.wallet setLabelForAccount:self.accountIdx label:label];
         
     [app closeModalWithTransition:kCATransitionFade];
 }

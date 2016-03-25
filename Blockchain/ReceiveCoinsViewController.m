@@ -185,8 +185,8 @@ NSString *detailLabel;
     // Get an address: the first empty receive address for the default HD account
     // Or the first active legacy address if there are no HD accounts
     if ([app.wallet getActiveAccountsCount] > 0) {
-        int defaultAccountIndex = [app.wallet getDefaultAccountIndexActiveOnly:YES];
-        mainAddress = [app.wallet getReceiveAddressForAccount:defaultAccountIndex activeOnly:YES];
+        int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
+        mainAddress = [app.wallet getReceiveAddressForAccount:defaultAccountIndex];
     }
     else if (activeKeys.count > 0) {
         for (NSString *address in activeKeys) {
@@ -214,8 +214,8 @@ NSString *detailLabel;
         // Label of the default HD account
         mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 30, self.view.frame.size.width - 40, 18)];
         if ([app.wallet getActiveAccountsCount] > 0) {
-            int defaultAccountIndex = [app.wallet getDefaultAccountIndexActiveOnly:YES];
-            mainLabel = [app.wallet getLabelForAccount:defaultAccountIndex activeOnly:YES];
+            int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
+            mainLabel = [app.wallet getLabelForAccount:defaultAccountIndex];
         }
         // Label of the default legacy address
         else {
@@ -659,7 +659,7 @@ NSString *detailLabel;
         }
         
         if (didClickAccount) {
-            detailAddress = [app.wallet getReceiveAddressForAccount:clickedAccount activeOnly:YES];
+            detailAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
             weakSelf.clickedAddress = detailAddress;
             [weakSelf setQRPayment];
             [weakSelf animateTextOfLabel:optionsTitleLabel toFinalText:detailLabel];
@@ -772,11 +772,11 @@ NSString *detailLabel;
     
     if (indexPath.section == 0) {
         int row = (int) indexPath.row;
-        detailAddress = [app.wallet getReceiveAddressForAccount:row activeOnly:YES];
+        detailAddress = [app.wallet getReceiveAddressForAccount:[app.wallet getIndexOfActiveAccount:row]];
         self.clickedAddress = detailAddress;
-        clickedAccount = row;
+        clickedAccount = [app.wallet getIndexOfActiveAccount:row];
         
-        detailLabel = [app.wallet getLabelForAccount:row activeOnly:YES];
+        detailLabel = [app.wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:row]];
     }
     else {
         detailAddress = [self getAddress:indexPath];
@@ -865,8 +865,8 @@ NSString *detailLabel;
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        int accountIndex = (int) indexPath.row;
-        NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex activeOnly:YES];
+        int accountIndex = [app.wallet getIndexOfActiveAccount:(int)indexPath.row];
+        NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex];
         
         ReceiveTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"receiveAccount"];
         
@@ -886,7 +886,7 @@ NSString *detailLabel;
         cell.labelLabel.text = accountLabelString;
         cell.addressLabel.text = @"";
         
-        uint64_t balance = [app.wallet getBalanceForAccount:accountIndex activeOnly:YES];
+        uint64_t balance = [app.wallet getBalanceForAccount:accountIndex];
         
         // Selected cell color
         UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];

@@ -192,6 +192,10 @@
 - (NSString *)encrypt:(NSString *)data password:(NSString *)password pbkdf2_iterations:(int)pbkdf2_iterations;
 - (NSString *)decrypt:(NSString *)data password:(NSString *)password pbkdf2_iterations:(int)pbkdf2_iterations;
 
+- (BOOL)isAddressAvailable:(NSString *)address;
+- (BOOL)isAccountAvailable:(int)account;
+- (int)getIndexOfActiveAccount:(int)account;
+
 // HD Wallet
 - (void)upgradeToHDWallet;
 - (Boolean)hasAccount;
@@ -199,7 +203,7 @@
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
 - (BOOL)isRecoveryPhraseVerified;
 - (void)markRecoveryPhraseVerified;
-- (int)getDefaultAccountIndexActiveOnly:(BOOL)isActiveOnly;
+- (int)getDefaultAccountIndex;
 - (void)setDefaultAccount:(int)index;
 - (int)getActiveAccountsCount;
 - (int)getAllAccountsCount;
@@ -209,15 +213,15 @@
 
 - (uint64_t)getTotalActiveBalance;
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses;
-- (uint64_t)getBalanceForAccount:(int)account activeOnly:(BOOL)isActiveOnly;
+- (uint64_t)getBalanceForAccount:(int)account;
 
-- (NSString *)getLabelForAccount:(int)account activeOnly:(BOOL)isActiveOnly;
-- (void)setLabelForAccount:(int)account activeOnly:(BOOL)isActiveOnly label:(NSString *)label;
+- (NSString *)getLabelForAccount:(int)account;
+- (void)setLabelForAccount:(int)account label:(NSString *)label;
 
 - (void)createAccountWithLabel:(NSString *)label;
 - (void)generateNewKey;
 
-- (NSString *)getReceiveAddressForAccount:(int)account activeOnly:(BOOL)isActiveOnly;
+- (NSString *)getReceiveAddressForAccount:(int)account;
 
 - (NSString *)getXpubForAccount:(int)accountIndex;
 

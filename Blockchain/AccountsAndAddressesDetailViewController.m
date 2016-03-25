@@ -72,7 +72,7 @@ typedef enum {
 - (void)resetHeader
 {
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    navigationController.headerLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
+    navigationController.headerLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account];
 }
 
 - (void)updateHeaderText:(NSString *)headerText
@@ -221,7 +221,7 @@ typedef enum {
         } else if (detailType == DetailTypeEditAccountLabel) {
             
             BCEditAccountView *editAccountView = [[BCEditAccountView alloc] init];
-            editAccountView.labelTextField.text = [app.wallet getLabelForAccount:self.account activeOnly:NO];
+            editAccountView.labelTextField.text = [app.wallet getLabelForAccount:self.account];
             editAccountView.accountIdx = self.account;
             
             [self setupModalView:editAccountView inViewController:segue.destinationViewController];
@@ -311,7 +311,7 @@ typedef enum {
         }
         return [app.wallet isWatchOnlyLegacyAddress:self.address] ? numberOfSections + 1 : numberOfSections;
     } else {
-        return [app.wallet getDefaultAccountIndexActiveOnly:NO] == self.account ? numberOfSectionsAccountUnarchived - 1 : numberOfSectionsAccountUnarchived;
+        return [app.wallet getDefaultAccountIndex] == self.account ? numberOfSectionsAccountUnarchived - 1 : numberOfSectionsAccountUnarchived;
     }
 }
 
@@ -332,7 +332,7 @@ typedef enum {
             if (self.address) {
                 return numberOfRowsAddressUnarchived;
             } else {
-                return [app.wallet getDefaultAccountIndexActiveOnly:NO] == self.account ? numberOfRowsAccountUnarchived - 1 : numberOfRowsAccountUnarchived;
+                return [app.wallet getDefaultAccountIndex] == self.account ? numberOfRowsAccountUnarchived - 1 : numberOfRowsAccountUnarchived;
             }
         }
         
@@ -347,7 +347,7 @@ typedef enum {
                 if (self.address) {
                     return numberOfRowsAddressUnarchived;
                 } else {
-                    return [app.wallet getDefaultAccountIndexActiveOnly:NO] == self.account ? numberOfRowsAccountUnarchived - 1 : numberOfRowsAccountUnarchived;
+                    return [app.wallet getDefaultAccountIndex] == self.account ? numberOfRowsAccountUnarchived - 1 : numberOfRowsAccountUnarchived;
                 }
             }
         }
@@ -406,7 +406,7 @@ typedef enum {
                     if (self.address) {
                             [self showAddress:self.address];
                     } else {
-                        if ([app.wallet getDefaultAccountIndexActiveOnly:NO] != self.account) {
+                        if ([app.wallet getDefaultAccountIndex] != self.account) {
                             [self alertToConfirmSetDefaultAccount:self.account];
                         } else {
                             [self alertToShowAccountXPub];
@@ -478,7 +478,7 @@ typedef enum {
                     }
                 } else {
                     cell.textLabel.text = self.address? BC_STRING_LABEL : BC_STRING_NAME;
-                    cell.detailTextLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account activeOnly:NO];
+                    cell.detailTextLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                 return cell;
@@ -489,7 +489,7 @@ typedef enum {
                     cell.textLabel.text = BC_STRING_ADDRESS;
                     cell.detailTextLabel.text = self.address;
                 } else {
-                    if ([app.wallet getDefaultAccountIndexActiveOnly:NO] != self.account) {
+                    if ([app.wallet getDefaultAccountIndex] != self.account) {
                         cell.textLabel.text = BC_STRING_MAKE_DEFAULT;
                         cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
                         cell.accessoryType = UITableViewCellAccessoryNone;

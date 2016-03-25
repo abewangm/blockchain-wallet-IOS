@@ -298,7 +298,7 @@
 {
     if (indexPath.section == 0) {
         int accountIndex = (int) indexPath.row;
-        NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex activeOnly:NO];
+        NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex];
         
         ReceiveTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"receiveAccount"];
         
@@ -306,7 +306,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
             cell.backgroundColor = COLOR_BACKGROUND_GRAY;
             
-            if ([app.wallet getDefaultAccountIndexActiveOnly:NO] == accountIndex) {
+            if ([app.wallet getDefaultAccountIndex] == accountIndex) {
                 
                 cell.labelLabel.frame = CGRectMake(20, 11, 155, 21);
                 cell.balanceLabel.frame = CGRectMake(247, 11, 90, 21);
@@ -333,7 +333,7 @@
         cell.labelLabel.text = accountLabelString;
         cell.addressLabel.text = @"";
         
-        uint64_t balance = [app.wallet getBalanceForAccount:accountIndex activeOnly:NO];
+        uint64_t balance = [app.wallet getBalanceForAccount:accountIndex];
         
         // Selected cell color
         UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];

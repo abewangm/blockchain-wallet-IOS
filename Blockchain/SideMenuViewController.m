@@ -398,10 +398,10 @@ int accountEntries = 0;
         }
         // Account balances
         if (indexPath.row < accountEntries) {
-            int accountIdx = (int) indexPath.row;
-            uint64_t accountBalance = [app.wallet getBalanceForAccount:accountIdx activeOnly:YES];
+            int accountIdx = [app.wallet getIndexOfActiveAccount:(int)indexPath.row];
+            uint64_t accountBalance = [app.wallet getBalanceForAccount:accountIdx];
             cell.amountLabel.text = [app formatMoney:accountBalance localCurrency:app->symbolLocal];
-            cell.labelLabel.text = [app.wallet getLabelForAccount:accountIdx activeOnly:YES];
+            cell.labelLabel.text = [app.wallet getLabelForAccount:accountIdx];
             cell.accountIdx = accountIdx;
 #ifdef DISABLE_EDITING_ACCOUNTS
             cell.editButton.hidden = YES;

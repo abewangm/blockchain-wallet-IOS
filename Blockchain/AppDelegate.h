@@ -161,6 +161,7 @@
 - (BOOL)stringHasBitcoinValue:(NSString *)string;
 
 - (void)reload;
+- (void)reloadAfterMultiAddressResponse;
 - (void)toggleSymbol;
   
 - (void)pushWebViewController:(NSString*)url title:(NSString *)title;
