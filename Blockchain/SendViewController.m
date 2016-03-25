@@ -381,6 +381,8 @@ BOOL displayingLocalSymbolSend;
              
              if ([error isEqualToString:ERROR_UNDEFINED]) {
                  [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
+             } else if ([error isEqualToString:ERROR_FEE_TOO_LOW]) {
+                 [app standardNotify:BC_STRING_SEND_ERROR_FEE_TOO_LOW];
              } else if (error && error.length != 0)  {
                  [app standardNotify:error];
              }
