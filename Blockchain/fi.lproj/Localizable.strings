@@ -1,13 +1,13 @@
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ copied to clipboard" = "%@ kopioida leikepöydälle";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Confirmations" = "%d vahvistukset";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Transactions" = "%d tapahtumat";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekuntia sitten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "* Minimum 10 characters" = "* Vähintään 10 merkkiä";
 
 /* No comment provided by engineer. */
@@ -28,628 +28,643 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "10 minuuttia sitten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step Enabled" = "2-vaiheinen käytössä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been disabled." = "2-vaihe on poistettu käytöstä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been enabled for SMS." = "2-vaihe on otettu käyttöön SMS.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification" = "2-vaiheinen vahvistus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently disabled." = "2-vaiheinen vahvistus on poistettu käytöstä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled for %@." = "2-vaiheinen vahvistus on käytössä %@.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled." = "2-vaiheinen tarkistus on käytössä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "API URL" = "API-OSOITE";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "About" = "Tietoja";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Account Details" = "Tilin tiedot";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Accounts" = "Tilit";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add Email" = "Lisää sähköposti";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add to Address book?" = "Lisää osoitteistoon?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address" = "Osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address book" = "Osoitteisto";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address is not valid" = "Osoite ei kelpaa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Addresses" = "Osoitteet";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Adjust Fee" = "Muuta maksu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allow" = "Salli";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allowed" = "Internet";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Summan on oltava pöly-kynnysarvo (%lld Satoshi)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Virhe tarkistettaessa PIN-koodin etäpalvelimen kanssa. Olet ehkä offline-tilassa tai Blockchain saattaa olla vaikeuksia. Haluatko yrittää uudelleen validointi tai sen sijaan Syötä salasana manuaalisesti?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Virhe muutettaessa 2-vaiheinen vahvistus.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Virhe ladattaessa lompakon. Saattaa olla offline-tilassa tai Blockchain on vaikeuksia. Sulje sovellus ja yritä myöhemmin uudelleen tai uudelleen laiteparin.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Virhe lompakko-tunnus haetaan avainnippu. Sulje sovellus ja yritä uudelleen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Any address" = "Osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive" = "Arkisto";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive Address" = "Arkisto osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Arkistoida, jos et halua käyttää sitä enää. Rahat pysyvät turvassa ja voit triviaalien milloin tahansa.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archived" = "Arkistoitu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Ask Me Later" = "Kysy myöhemmin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authenticate with Touch ID" = "Todenna Touch tunnus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authorization Required" = "Lupa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatic Pairing" = "Automaattinen pariliitoksen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatically" = "Automaattisesti";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "VARMUUSKOPIO VAROJA";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup" = "Varmuuskopiointi";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "Varmuuskopio varoja";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup Phrase" = "Varmuuskopio lause";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Ennen käyttöä lompakon, valitse PIN-koodin käyttämään Avaa lompakko. On tärkeää muistaa tämä PIN-tunnus, koska se ei voi palauttaa tai vaihtaa avaamatta app.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin Unit" = "Bitcoin yksikkö";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin payment request" = "Bitcoin ennakkomaksun pyyntö";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block" = "Lohko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block Tor" = "Estää Tor";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain ei ole pääsyä kameran. Jotta pääsy, siirry laitteen asetukset.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain on tällä hetkellä huollettavana. Yritä myöhemmin uudelleen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain on käytössä, jotta voidaan käyttää sijaintiasi paikannuspalvelut.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain on käytössä, jotta voidaan käyttää sijaintiasi paikannuspalvelut. Voit ottaa access-asetukset -> Tietosuoja -> Sijaintipalvelut";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain on käytössä, jotta voidaan käyttää sijaintiasi paikannuspalvelut. Voit ottaa access-asetukset -> Tietosuoja -> sijainti -> Sijaintipalvelut";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blocked" = "Estetty";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Camera Access Denied" = "Kameran käyttö estetty";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cancel" = "Peruuta";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Ei voi tallentaa PIN-koodin lompakko ei ole alustettu tai salasana on null";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Email" = "Muuta sähköposti";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Mobile Number" = "Muuttaa matkapuhelinnumero";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change PIN" = "Vaihda PIN-tunnus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password" = "Vaihda salasana";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password Hint" = "Muutos salasanavihje";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change fee per kilobyte" = "VAIHTOMAKSU per kilotavu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for Wallet updates" = "Lompakko päivityksiä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for more: Step %d of %d" = "Etsitään lisää: vaihe %1$d %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Sulje";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Close App" = "Sulje ohjelma";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Complete the steps below for ultimate security" = "Ohjeiden alla turvallisuuden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Completely updated design and user experience" = "Täysin päivitetty design ja käyttäjäkokemuksen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Payment" = "Vahvista maksu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Upgrade" = "Vahvista päivitys";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm your PIN" = "Vahvista PIN-koodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Yhteys aikakatkaistiin. Tarkista internet-yhteys.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Jatka";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copied to clipboard" = "Kopioida leikepöydälle";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Address" = "Kopioi osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Wallet ID" = "Kopioi lompakko tunnus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy to clipboard" = "Kopioi leikepöydälle";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy xPub" = "Kopioi xPub";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create" = "Luo";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create New Wallet" = "Luo uusi lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create Wallet" = "Luo lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create new address" = "Luo uusi osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating" = "Luominen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating HD Wallet" = "Luominen HD lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating V3 Wallet" = "Luominen V3 lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating Wallet" = "Luo lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new Wallet" = "Luo uusi lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new address" = "Luo uusi osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Current rate: %@ BTC" = "Nykyinen määrä: %@ BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Mukauttaa tapaa, jolla voit järjestää oman bitcoins Blockchain lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customized fund management" = "Mukautetun hallinnointi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Debug" = "Debug";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Decrypted PIN salasanan pituus on 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Private Key" = "Salauksen yksityistä avainta";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Wallet" = "Salauksen lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Default" = "Oletus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disable" = "Poista käytöstä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disabled" = "Vammaisten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Display" = "Näyttö";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Do you really want to log out?" = "Haluatko kirjautua ulos?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Don't show again" = "Älä Näytä uudelleen";
 
 /* No comment provided by engineer. */
 "Done" = "Tehnyt";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Downloading Wallet" = "Lataaminen lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Easy one time wallet backup keeps you in control of your funds" = "Helppo ainoa aika lompakko varmuuskopiointi pitää sinut valvonta rahat";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Edit" = "Muokkaa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email" = "Sähköposti";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Notifications" = "Sähköposti-ilmoitukset";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Verified" = "Sähköposti tarkistaa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Empty response from server." = "Tyhjä vastaus palvelimelta.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable" = "Ota käyttöön";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step" = "Ota 2-vaiheinen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step for SMS" = "Ota 2-vaiheinen SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable Location Services" = "Ota sijaintipalvelut";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Ottaa käyttöön ilmoitukset saa sähköpostin aina, kun vastaanotat bitcoins. Vain merkitty osoitteet ja tuodut osoitteet voivat laukaista ilmoitukset.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Tämä vaihtoehto estää IP-osoitteet, joiden tiedetään olevan osa Tor anonymisoivan verkon käyttämästä lompakon. Tor-verkon käytetään usein hakkerit yrittävät käyttää Blockchain käyttäjien lompakot.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Tämän ominaisuuden käyttöönotto Salli kaikkien käyttäjien rekisteröity Touch ID sormenjälki tämän laitteen päästä lompakon.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enhanced Privacy" = "Parantaa yksityisyyden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Enter %@ amount" = "Syötä %@ summa";
+
+/* (No Commment) */
 "Enter PIN" = "Anna PIN-koodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Password" = "Anna salasana";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Verification Code" = "Syötä varmistuskoodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter your verification code" = "Kirjoita tarkistuskoodi";
 
 /* No comment provided by engineer. */
 "Error" = "Virhe";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error loading settings" = "Virhe lastaus asetukset";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error updating settings" = "Virhe päivitettäessä asetuksia";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Kaiken täytyy tallentaa, käyttää ja saada teidän bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Extended Public Key" = "Laajennettu julkisen avaimen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Failed To Load Wallet" = "Ei voitu ladata lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee is too high (0.01 BTC limit)" = "Maksu on liian korkea (0,01 BTC raja)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee per KB" = "Maksu per KB";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fees" = "Maksut";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Finished Signing Inputs" = "Valmis allekirjoittamista tuotantopanosten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Oman turvallisuutesi suosittelemme siirtää kaikki varat tuodut osoitteet Blockchain-lompakkoosi.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Forget Wallet" = "Unohda lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Found %d, with %@" = "Löytyi %1$d %2$@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination address have to be different" = "Päässä ja kohdeosoite on erilainen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination have to be different" = "Alkaen ja määränpää on erilainen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Go to Settings" = "Valitse asetukset";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Google Authenticator" = "Google Authenticator";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Hint Stored" = "Vihje tallennettu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "How would you like to pair?" = "Miten haluat pari?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Identifier" = "Tunnus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Jos olet kauppias, Näytä oman xPub ja saada varoja turvallisesti ja yksityisesti Blockchain kauppias-sovelluksella.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import Private Key" = "Tuo yksityinen avain";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import address" = "Tuo osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses" = "Tuodut osoitteet";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses (Archived)" = "Tuodut osoitteet (Archived)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Private Key %@" = "Tuotu yksityinen avain %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported watch-only address %@" = "Tuoda vain katsella-osoite %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Importing key" = "Tuo avain";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect PIN. Please retry." = "Virheellinen PIN-tunnus. Yritä uudelleen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect password" = "Virheellinen salasana";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect private key" = "Virheellinen yksityinen avain";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Increase fee" = "Lisää maksu";
+
+/* (No Commment) */
 "Information" = "Tiedot";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Initializing Wallet" = "Alustetaan lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Insufficient Funds" = "Varat eivät riitä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Identifier" = "Virheellinen tunniste";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Pairing Code" = "Virheellinen pariliitoksen koodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Send Value" = "Virheellinen lähetys arvo";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Shared Key" = "Virheellinen jaetun avaimen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Status Code Returned %@" = "Palautettu %@ virheellinen tilakoodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Wallet ID" = "Lompakko-tunnus ei kelpaa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid address: %@" = "Sähköpostiosoite: %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid email address." = "Sähköpostiosoite ei kelpaa.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid mobile number." = "Virheellinen matkapuhelinnumero.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Pätemätön hyödyntämistä lause. Yritä uudelleen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Palvelimen vastaus ei kelpaa. Tarkista internet-yhteys.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid to bitcoin address" = "Virheellinen bitcoin osoitteeseen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid two-factor authentication type" = "Virheellinen kaksivaiheinen todennustyyppi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid verification code. Please try again." = "Virheellinen vahvistuskoodi. Yritä uudelleen.";
 
 /* No comment provided by engineer. */
 "Just now" = "Juuri nyt";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Keep higher fee" = "Pitää korkeampi maksu";
+
+/* (No Commment) */
+"Keep lower fee" = "Pitää pienempää maksua";
+
+/* (No Commment) */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Pitää sinun xPub salassa. Joku pääsee sinun xPub voi nähdä kaikki rahaa ja tapahtumia.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label" = "Etiketti";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label Address" = "Osoitetarra";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must contain letters and numbers only" = "Otsikon on sisällettävä vain kirjaimia ja numeroita";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must have less than 18 characters" = "Etiketin on oltava vähemmän kuin 18 merkkiä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Link Mobile" = "Linkki Mobile";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading External Page" = "Ulkoinen sivu lastaus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading transactions" = "Ladataan tapahtumia";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Local Currency" = "Paikallisessa valuutassa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Log in to my Wallet" = "Kirjaudu sisään minun lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Login existing Wallet" = "Kirjaudu olemassa lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Logout" = "Kirjaudu ulos";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Lower fee" = "Alennettu maksu";
+
+/* (No Commment) */
 "Make Default" = "Tee oletus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manual Pairing" = "Manuaalinen pariliitoksen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manually" = "Manuaalisesti";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant" = "Kauppias";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Directory is currently unavailable. Please try again later." = "Kauppias hakemistoon ei ole käytettävissä. Yritä myöhemmin uudelleen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Map" = "Kauppa kartta";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant URL" = "Kauppias URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Linked" = "Mobile liittyy";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Number" = "Matkapuhelinnumero";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Bitcoin lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Huomautus: Skannatun yksityinen avain ei vastaa vain katsella-osoite. Jos haluat viettää tästä osoitteesta, varmista, että tarkistat oikealla yksityisellä avaimella.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Name" = "Nimi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Address" = "Uusi osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Email Address" = "Uusi sähköpostiosoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Mobile Number" = "Veres eloisa joukko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different" = "Uuden salasanan on oltava erilainen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different from your password hint" = "Uuden salasanan on oltava erilainen salasanavihje";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "News, Price & Charts" = "Uutiset, hinnat ja kaavioita";
 
 /* No comment provided by engineer. */
 "Next word" = "Seuraava sana";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No" = "Ei";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No Label" = "Ei merkkiä";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "Ei salasanaa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection available. Please check your network settings." = "Internet-yhteys ei ole käytettävissä. Tarkista verkkoasetukset.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection." = "Ei ole internetyhteyttä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Normal" = "Normaali";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not Stored" = "Ei tallenneta";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not now" = "Ei nyt";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Huomaa, että kun päivitetty, et voi palata edelliseen versioon, mutta kaikki bitcoins ja maksutapahtumat pidetään.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Notifications" = "Ilmoitukset";
 
 /* No comment provided by engineer. */
@@ -658,184 +673,190 @@
 /* No comment provided by engineer. */
 "OK" = "Okei";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN" = "PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Encrypted String is nil" = "PIN salattu merkkijono on nolla";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object key or value length 0" = "PIN Response-objektin avaimen tai arvon pituus 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object success length 0" = "PIN Response-objektin menestys pituus on 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Saved Successfully" = "PIN tallennettu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation Error" = "PIN Validation erehdys";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "PIN-koodin vahvistus ei onnistu. Kirjoita lompakko salasana manuaalisesti.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PINs do not match" = "Nastat eivät täsmää";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Parsing Pairing Code" = "Jäsennys, laiteparikoodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Hint" = "Salasanavihje";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Required" = "Salasana vaaditaan";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password changed. Please login to continue." = "Salasana vaihdettu. Kirjaudu sisään jatkaaksesi.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password must 10 characters or longer" = "Salasana on 10 merkkiä tai kauemmin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Passwords do not match" = "Salasanat eivät täsmää";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Received" = "Maksu vastaanotettu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Sent!" = "Maksupyyntöihin!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Phrase Backed" = "Lause tukena";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please Login" = "Kirjaudu sisään";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please add an email address" = "Lisää sähköpostiosoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email and click on the verification link." = "Tarkista sähköpostisi ja klikkaa vahvistuslinkkiä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Haluta ruudullinen sinun email. Jos olet tarkistanut kirjautumisyrityksen, pitäisi halko kotona kautta web-lompakkoa ja pari puhelimen skannaamalla QR-koodin asetukset-> lompakon tiedot.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your internet connection." = "Tarkista internet-yhteys.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose another PIN" = "Valitse uuden PIN-koodin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose from the options below." = "Valitse alla olevista vaihtoehdoista.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Kuvailkaa yksityiskohtaisesti ongelma sinulla on, sekä ohjeet, voimme jäljitellä sitä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Syötä maksu, joka on suurempi kuin 0 BTC ja korkeintaan 0,01-BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a new PIN" = "Anna uusi PIN-tunnus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your %@ 2FA code" = "Anna %@ 2FA koodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Kirjoita tunnuksesi 36 merkin lompakko oikein. Se löytyy Tervetuloa sähköpostitse käynnistettäessä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your PIN" = "Kirjoita PIN-tunnus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your recovery phrase with words separated by spaces" = "Kirjoita elpyminen lause välilyönnein erotettua sanaa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Please lower the fee to an amount that is less than your balance" = "Haluta alentaa maksun summa on pienempi kuin saldo";
+
+/* (No Commment) */
 "Please provide an email address." = "Anna sähköpostiosoite.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please refresh the pairing code and try again." = "Päivitä laiteparikoodin ja yritä uudelleen.";
 
-/* No comment provided by engineer. */
-"Please select a different address to send from or lower the fee in Settings." = "Valitse eri osoite lähettää tai laskea maksu asetukset.";
+/* (No Commment) */
+"Please select a different address to send from." = "Valitse toinen osoite lähettää.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Lähetä maksu bitcoin osoite (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > auttaa? < /a >): %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Lähetä maksu bitcoin osoite. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Yritä uudelleen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please verify your email address first." = "Tarkista sähköpostiosoitteesi.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Preferences" = "Asetukset";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Privacy Policy" = "Yksityisyyden suoja";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Private Key Needed" = "Yksityinen avain kaivata";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Processing key" = "Käsittely avain";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Receive" = "Vastaanottaa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Received" = "Saanut";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recover Funds" = "Takaisin varat";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recovering Funds" = "Periä varat";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Regular" = "Säännöllisesti";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Request Amount" = "Pyyntö määrä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification SMS" = "Lähetä vahvistus tekstiviestillä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification email" = "Vahvistussähköposti";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Reset" = "Palauta";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Retrieving recommended fee" = "Haetaan suositellaan maksu";
+
+/* (No Commment) */
 "Retry Validation" = "Yritä uudelleen validointi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Robust security center" = "Vankka Tietoturvakeskus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "SMS" = "SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Save" = "Tallenna";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Pairing Code" = "Skannaa laiteparikoodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Private Key" = "Skannaa yksityinen avain";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR Code" = "Skannaa QR-koodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR code" = "Skannaa QR-koodi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skannaa tämä koodi tai kopioi se Blockchain kauppias app saada turvallisesti Bitcoin.";
 
 /* No comment provided by engineer. */
@@ -844,414 +865,450 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "Toinen salasana";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security" = "Turvallisuus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security Center" = "Security Center";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send" = "Lähetä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send from..." = "Lähettää...";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send to..." = "Lähetä...";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send verification SMS" = "Lähetä vahvistus tekstiviestillä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sending Transaction" = "Lähettää tapahtuman";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent" = "Lähetti";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent to %@" = "Lähetetään %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Server URL" = "Palvelimen URL-osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Set as Default?" = "Aseta oletukseksi?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Settings" = "Asetukset";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Shared Coin is not supported in the new version at this time." = "Jaettu kolikon ei tueta uudessa versiossa tällä hetkellä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Jakaminen sinun xPub antaa toiset jotta jäljittää maksuhistoriastasi. Kuten oikeutetut henkilöt häiritä sinua käyttämästä lompakon, jakaa vain sinun xPub luottamillesi ihmisille.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signaalin %d esille.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Input %d" = "Allekirjoittaminen syöttö %d";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Inputs" = "Allekirjoittaminen tuotantopanosten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Simplified backup and recovery" = "Yksinkertaistettu varmuuskopiointi ja palautus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Store Hint" = "Store Vihje";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Stored" = "Tallennettu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Strong" = "Vahva";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success" = "Menestys";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success!" = "Menestys!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Support" = "Tuki";
+
+/* (No Commment) */
+"Surge Occurring" = "Aalto, esiintyy";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronointi lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Terms of Service" = "Käyttöehdot";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual." = "Bitcoin kaivos verkko on meneillään suuri määrä toimintaan, Suositellut maksuja, jotka ovat normaalia korkeammat.";
+
+/* (No Commment) */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Olet valinnut PIN on erittäin yleistä ja joku pääsee käyttämään puhelintasi vajaan 3 yrittää helposti arvattavissa. Haluatko silti käyttää tämän PIN?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Lähetä (%1$@) summa on suurempi kuin enimmäismäärä, voit viettää miinus maksu (%2$@ - %3$@). Haluatko lähettää %4$@?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The fee you have specified is too low." = "Olet määrittänyt maksu on liian alhainen.";
+
+/* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Yrität tuoda yksityinen avain salataan. Kirjoita salasana alla.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Päivitys vie vain toinen ja bitcoins ja historia ovat turvassa. Tässä on, mikä on parempi:";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "There was a problem verifying your identity." = "Ollut ongelmia henkilöllisyyden todentamista.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "These options are recommended for advanced users only. Continue?" = "Nämä vaihtoehdot ovat suositellaan vain kokeneille käyttäjille. Haluatko jatkaa?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tämä toiminto edellyttää yksityisen avaimen Bitcoin osoite %@. Skannaa QR-koodi.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tämä toiminto edellyttää sekunnissa salasana bitcoin-lompakon. Kirjoita se ja paina Jatka.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This address is not watch-only." = "Tämä osoite ei ole vain katsella.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Tämä on vain katsella-osoite. Kuluttaa rahaa tämän lompakon, Skannaa yksityisen avaimen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Tämä on arkistoitu. Vaikka et pysty lähettämään varoja täältä, kaikki ja kaikki varat pysyvät turvassa. Yksinkertaisesti triviaalien alkaa käyttää uudelleen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This name is already in use. Please choose a different name." = "Tämä nimi on jo käytössä. Valitse eri nimi.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Yksityinen avain kuuluu toiseen osoitteeseen, joka ei ole vain katsella";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Tämä tapahtuma edellyttää korkeampaa hintaa pöly kulutuksen vuoksi muutoksen on palautettava.";
+
+/* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Tämä poistaa kaikki laitteen tiedot lompakko. Vahvista, lompakon tiedot tallennetaan muualla muuten mitään bitcoins lompakko-se voi käyttää!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "Vastaanottaja: %1$@%2$@ kokonaissumma: %3$@ maksu: %4$@ (%5$@)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor Requests" = "Tor pyynnöt";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor blocked" = "Tor estää";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests allowed" = "Tor pyyntöjä";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently allowed." = "Tor pyynnöt on sallittu.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently blocked." = "Tor pyynnöt ovat parhaillaan myyntikiellossa.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Total Balance" = "Taseen loppusumma";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID has been locked due to too many failed attempts." = "Touch tunnus on lukittu, koska liian monta epäonnistunutta yritystä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not available on this device." = "Touch tunnus ei ole käytettävissä tässä laitteessa.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Touch tunnus ei ole käytössä tässä laitteessa. Jotta hipaista tunnus, siirry asetukset->Touch ID & salasana ja lisää sormenjälki.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transaction" = "Tapahtuman";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Transaction Fee" = "Palvelumaksu";
+
+/* (No Commment) */
+"Transaction Fees" = "Palvelumaksut";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Palvelumaksut vaikuttaa kuinka nopeasti Bitcoin kaivos verkko vahvistaa liiketoimet ja riippuvat ajankohtainen verkko olosuhteet. Suosittelemme alla maksua tapahtumaan tässä vaiheessa.";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Palvelumaksut vaikuttaa kuinka nopeasti Bitcoin kaivos verkko vahvistaa liiketoimet, ja riippuu ajankohtainen verkko olosuhteet. Suosittelemme JavaScript tapahtuman tällä hetkellä maksu.";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Tapahtumat ilman maksuja voi kestää kauan vahvistaa tai ei voida vahvistaa ollenkaan. Haluatko jatkaa?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transfer Funds" = "Siirtää varoja";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transferred" = "Siirretty";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Try again" = "Yritä uudestaan";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "UPGRADE YOUR WALLET" = "PÄIVITTÄÄ LOMPAKON";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Ei voi ladata lompakko koska palvelin ei vastaa. Saattaa olla offline-tilassa tai Blockchain on vaikeuksia. Yritä myöhemmin uudelleen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive" = "Älä arkistoi";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive Address" = "Triviaalien osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unconfirmed" = "Vahvistamaton";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Käsittelemätön poikkeus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown" = "Tuntematon";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Tuntematon Touch ID virhe. Koodi: %ld";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown key format" = "Tuntematon avaimen muodon";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unsupported Private Key Format" = "Yksityinen avain muotoa ei tueta";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unverified" = "Vahvistamatta";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Update" = "Päivitys";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade" = "Päivitys";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Now" = "Päivitä nyt";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Wallet" = "Päivittää lompakko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to HD" = "Päivitä HD";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to V3" = "Päivitä V3";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use Touch ID as PIN" = "Käytä Touch ID PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all %@" = "Käyttää kaikki %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all funds" = "Kaikki varojen käyttö";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Use recommended values" = "Käytä suositeltuja arvoja";
+
+/* (No Commment) */
 "User Declined" = "Käyttäjän vähentynyt";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "TARKISTA VARMUUSKOPIOINTI";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verification email has been sent to %@." = "Vahvistusviesti on lähetetty %@.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verified" = "Tarkistaa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify" = "Tarkista";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify Email" = "Vahvista sähköpostiosoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verifying" = "Tarkistetaan";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet ID" = "Lompakko tunnus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Information" = "Lompakon tiedot";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet JSON" = "Lompakko JSON";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Paired Successfully." = "Lompakko pariksi onnistuneesti.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Recovery Phrase" = "Lompakko Recovery lause";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet version %lld not supported" = "Lompakko versio %lld ei tueta";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning" = "Varoitus";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning!!!" = "Varoitus!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Varoitus: Lompakko-tunniste on arkaluonteisia tietoja. Luvaton kopiointi saattaa vaarantaa tietoturvan lompakon.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Watch Only" = "Katsella vain";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Lähetämme Vihje vahvistettu sähköpostiosoite, jos pyydät sitä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus sinulle";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Olemme mukana joitakin merkittäviä yksityisyyden suojan ja tietoturvan parannuksia. Kun valitset Päivitä, et voi mennä takaisin vanhan lompakon";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Weak" = "Heikko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "WebSocket URL" = "WebSocket URL-osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Welcome" = "Tervetuloa";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Havaitsimme aiempi asennus Blockchain lompakko puhelimeen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Haluatko lisätä bitcoin osoite %@ osoitekirjaan?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Kirjoita muistiin elpyminen lause ja pitää se jonnekin, erittäin turvallinen ja varma. Muista, että jokainen, joka tuntee Recovery-lause on pääsy sinun bitcoins.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wrong BIP38 Password" = "Väärä BIP38 salasana";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yes" = "Kyllä";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Eilen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Olet tuomassa katsella vain osoite, osoite (tai julkinen avain kirjoitus) tallennettu lompakon ilman vastaava yksityinen avain. Tämä tarkoittaa sitä, että varat käytetty vain jos sinulla on oma avain on tallennettu muualle. Jos sinulla ei ole yksityinen avain tallennettu, opettaa joku lähettää bitcoin vain katsella-osoitteeseen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Olet saanut bitcoin vain katsella-osoitteeseen. Olet vain viettää näitä varoja, jos sinulla on yksityisen avaimen käyttöoikeus. Haluatko jatkaa?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Käytössä on nyt turvallisin Bitcoin lompakko";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Varmuuskopiointi rahat onnistui";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Voit ottaa 2-vaiheinen vahvistus tekstiviestinä matkapuhelimeesi. Jotta voit käyttää muita todennusmenetelmiä, kirjaudu sisään web-lompakkoon.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can now spend from this address." = "Voit nyt käyttää tästä osoitteesta.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Sinulla ei ole tilin postia. Ota yhteyttä %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You have no available funds to send from this address" = "Sinulla ei ole varoja lähettää tähän osoitteeseen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "2-vaiheinen tekstiviestivahvistus ennen kuin vaihdat matkapuhelimesi numeron (%@) on poistettava käytöstä.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a destination address" = "Kirjoita kohde-osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a label" = "Kirjoita otsikko";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have at least one active address" = "Sinulla on vähintään yksi aktiivinen osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Sinulla on kaksivaiheinen todennus pois pari käsin.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must leave at least one active address" = "Jätä vähintään yksi aktiivinen osoite";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Kannattaa aina pari tai Kirjaudu sisään jos sinulla on pääsy sinun lompakko ID ja tunnussana. Takaisin rahat luo uuden lompakon. Haluatko jatkaa?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may be stuck and possibly never be confirmed. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@." = "Määrittämäsi poikkeuksellisen pieni Palvelumaksu %1$@. Kauppa voi olla jumissa ja koskaan vahvistaa. Jotta sinun tapahtumassasi kuluessa noin tunnin (kuusi korttelin), suosittelemme maksu peräti %2$@.";
+
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may become stuck and possibly never confirm. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@. Since you don’t have sufficient funds, that means the Send amount will also have to be lowered to %@." = "Määrittämäsi poikkeuksellisen pieni Palvelumaksu %1$@. Tapahtuman voi juuttua kiinni ja mahdollisesti koskaan vahvistaa. Jotta sinun tapahtumassasi kuluessa noin tunnin (kuusi korttelin), suosittelemme maksu peräti %2$@. Koska sinulla ei ole riittäviä varoja, se tarkoittaa Lähetä summa täytyy laskea %3$@.";
+
+/* (No Commment) */
+"You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Määritetty %1$@ epätavallisen korkeita suorituksesta maksettavaa palkkiota. Jos pienennät %2$@ maksu, voit odottaa tapahtuman kuluessa seuraavan 10 minuutin (yhden lohkon).";
+
+/* (No Commment) */
 "You've successfully imported a private key." = "Yksityinen avain Olen tuonti onnistui.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Olet onnistuneesti tuonut yksityistä avainta osoite %@, ja voit nyt käyttää sitä. Jos haluat viettää tästä osoitteesta, varmista, että tarkistat oikealla yksityisellä avaimella.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Laite tulee näkyviin jailbroken. Lompakon turvallisuus voi vaarantua.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your email has been verified." = "Sähköpostiosoitteesi on vahvistettu.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your identity does not match our records." = "Identiteetti ei vastaa tietomme.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your mobile number has been verified." = "Matkapuhelinnumero on varmistettu.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains invalid characters. Please try again." = "Uusi salasanavihje sisältää virheellisiä merkkejä. Yritä uudelleen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains no text. Your password hint will be cleared." = "Uusi salasanavihje jossa ei ole tekstiä. Salasanavihje poistetaan.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your password. Please try again." = "Uusi salasanavihje on oltava eri kuin salasana. Yritä uudelleen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your second password. Please try again." = "Uusi salasanavihje on oltava eri kuin toinen salasana. Yritä uudelleen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your password hint has been updated." = "Salasanavihje on päivitetty.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Siirrettyjen varojen on turvallinen ja sinulle hyötyä lisää yksityisyyttä ja kätevä varmuuskopiointi ja palautus toiminnot.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Tarkistaa sähköpostiosoitteesi käytetään lähettää kirjautuminen koodit kun epäilyttävä tai epätavallinen toiminta havaitaan, muistuttaa lompakko Sisäänkirjautumistunnus ja lähettää bitcoin maksuilmoitukset, kun saat varat. Emme käytä sähköpostiosoitteesi markkinointitarkoituksiin.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet does not contain this address." = "Lompakon ei sisällä tähän osoitteeseen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet was successfully created." = "Lompakko on luotu.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yubi Key" = "Yubi avain";
 
 /* No comment provided by engineer. */
@@ -1269,16 +1326,16 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 /* No comment provided by engineer. */
 "fourth word" = "Neljäs sana";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "from" = "Alkaen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "iOS Support Request" = "iOS tukipyyntö";
 
 /* No comment provided by engineer. */
 "ninth word" = "Yhdeksäs sana";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "or Continue" = "tai Jatka";
 
 /* No comment provided by engineer. */

@@ -1,13 +1,13 @@
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ BTC" = "%@ БТД";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ copied to clipboard" = "%@ скопійовано до буфера обміну";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Confirmations" = "%d підтверджень";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Transactions" = "%d угоди";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld секунд тому";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "* Minimum 10 characters" = "* Мінімум 10 символів";
 
 /* No comment provided by engineer. */
@@ -28,628 +28,643 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "1 хвилину тому";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step Enabled" = "Двоетапна включений";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been disabled." = "Двоетапну був відключений.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been enabled for SMS." = "2-кроком стало можливим для SMS.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification" = "Двоетапна перевірка";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently disabled." = "Двоетапна перевірка наразі вимкнуті.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled for %@." = "Двоетапна перевірка уже активовано для %@.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled." = "Двоетапна перевірка активовані.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "API URL" = "API URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "About" = "Про";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Account Details" = "Реквізити рахунку";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Accounts" = "Облікові записи";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add Email" = "Додати електронної пошти";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add to Address book?" = "Додати в адресну книгу?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address" = "Адреса";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address book" = "Адресна книга";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address is not valid" = "Адреса є неприпустимою";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Addresses" = "Адреси";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Adjust Fee" = "Налаштуйте плата";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allow" = "Дозволити";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allowed" = "Допускається";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Сума повинна бути вище пилу поріг (%lld Сатосі)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Помилка перевірки ваш PIN-код з віддаленим сервером. Можливо, ви в автономному режимі або Blockchain може відчувати труднощі. Ви хочете, повторити перевірку або замість введення пароля вручну?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Сталася помилка при зміні двоетапної перевірки.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Сталася помилка під час завантаження вашого гаманця. Можливо, ви в автономному режимі або Blockchain переживає труднощі. Закрити програму та повторіть спробу пізніше або повторно встановіть зв'язок.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Сталася помилка при отримання вашого гаманця ідентифікатор із зв'язці ключів. Закрийте застосунок і повторіть спробу.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Any address" = "Будь-яку адресу";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive" = "Архів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive Address" = "Архів адреса";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Архів це, якщо ви хочете, щоб використовувати його більше. Ваших фондів залишаться безпечними, і ви можете unarchive його в будь-який час.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archived" = "Архівні";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Ask Me Later" = "Відкласти";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authenticate with Touch ID" = "Автентифіковано Touch ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authorization Required" = "Потрібна авторизація";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatic Pairing" = "Автоматичне створення пари";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatically" = "Автоматично";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "РЕЗЕРВНИХ ФОНДІВ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup" = "Резервне копіювання";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "Резервних фондів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup Phrase" = "Резервне копіювання фразу";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Перед зверненням до вашого гаманця, будь ласка, виберіть PIN-код для розблокування вашого гаманця. Дуже важливо, що ви пам'ятаєте цей PIN-код, як він не може скинути або змінені без першого розблокування застосунок.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin Unit" = "Bitcoin одиниці";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin payment request" = "Bitcoin оплати запит";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block" = "Блок";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block Tor" = "Блок Tor";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain не має доступу до камери. Щоб дозволити доступ, перейдіть на ваш пристрій настройки.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain в даний час не працює для технічного обслуговування. Будь ласка, спробуйте ще раз пізніше.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain потребує служб визначення місцезнаходження ввімкнено для того, щоб отримати доступ до вашого місцезнаходження.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain потребує служб визначення місцезнаходження ввімкнено для того, щоб отримати доступ до вашого місцезнаходження. Ви можете зробити доступними в настройки -> конфіденційності -> служби локації";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain потребує служб визначення місцезнаходження ввімкнено для того, щоб отримати доступ до вашого місцезнаходження. Ви можете зробити доступними в настройки -> конфіденційності -> розташування -> служби локації";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blocked" = "Заблокований";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Camera Access Denied" = "Камери в доступі";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cancel" = "\"Скасувати\"";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Не вдалося зберегти PIN-код, а не ініціалізовано гаманець або пароль є пустим";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Email" = "Змінити електронну адресу";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Mobile Number" = "Змінити номер мобільного телефону";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change PIN" = "Зміна PIN-КОДУ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password" = "Змінити пароль";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password Hint" = "Змінити підказку для пароля";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change fee per kilobyte" = "Плата за зміну покілобайтною";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for Wallet updates" = "Перевірка наявності оновлень гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for more: Step %d of %d" = "Перевірка наявності більше: крок %1$d %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Закрити";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Close App" = "Закрити застосунок";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Complete the steps below for ultimate security" = "Завершити процедуру нижче кінцева безпеки";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Completely updated design and user experience" = "Повністю оновлений дизайн та користувацького досвіду";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Payment" = "Підтвердження здійснення оплати";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Upgrade" = "Підтвердить оновлення";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm your PIN" = "Підтвердіть PIN-код";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Вичерпано час підключення. Будь ласка, Перевірте підключення до Інтернету.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Продовжити";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copied to clipboard" = "Скопійовано до буфера обміну";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Address" = "Копіювати адресу";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Wallet ID" = "Копія посвідчення гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy to clipboard" = "Скопіювати до буфера обміну";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy xPub" = "Копіювати xPub";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create" = "Створити";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create New Wallet" = "Створити новий гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create Wallet" = "Створити гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create new address" = "Створити нову адресу";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating" = "Створення";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating HD Wallet" = "Створення HD гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating V3 Wallet" = "Створення V3 гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating Wallet" = "Створення гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new Wallet" = "Створення нового гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new address" = "Створення нової адреси";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Current rate: %@ BTC" = "Поточного курсу: %@ БТД";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Настроїти спосіб організувати ваші bitcoins у вашому гаманці Blockchain";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customized fund management" = "Індивідуальні Фонду управління";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Debug" = "Налагодження";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Довжина PIN пароль розшифровані 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Private Key" = "Закритий ключ дешифрування";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Wallet" = "Дешифрування гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Default" = "За промовчанням";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disable" = "Вимкнути";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disabled" = "Інваліди";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Display" = "Дисплей";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Do you really want to log out?" = "Ви дійсно хочете вийти?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Don't show again" = "Не показувати";
 
 /* No comment provided by engineer. */
 "Done" = "Зроблено";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Downloading Wallet" = "Завантаження гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Easy one time wallet backup keeps you in control of your funds" = "Легко один раз гаманець backup дає змогу контролювати ваших фондів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Edit" = "Редагувати";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email" = "Електронна пошта";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Notifications" = "Сповіщення електронною поштою";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Verified" = "Електронної пошти підтверджено";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Empty response from server." = "Пусті відповіді від сервера.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable" = "Увімкнути";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step" = "Увімкнення двоетапної";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step for SMS" = "Увімкнення двоетапної для SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable Location Services" = "Увімкнення служби локації";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Увімкнути сповіщення для отримання по електронній пошті, коли ви отримуєте bitcoins. Тільки помічені адреси і імпортовані адреси мають право тригер сповіщення.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Ввімкніть цей параметр, щоб запобігти IP-адрес, які, як відомо, бути частиною Tor встановлення анонімності мережі доступ до вашого гаманця. Tor мережі часто використовується хакерами для доступу Blockchain користувачами гаманці.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Увімкнення цієї функції дозволить всім користувачам з зареєстрованих Touch ID відбитків на цей пристрою для доступу до вашого гаманця.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enhanced Privacy" = "Розширеної конфіденційності";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Enter %@ amount" = "Введіть суму %@";
+
+/* (No Commment) */
 "Enter PIN" = "Введіть PIN-код";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Password" = "Введіть пароль";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Verification Code" = "Введіть перевірочний код";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter your verification code" = "Введіть перевірочний код";
 
 /* No comment provided by engineer. */
 "Error" = "Помилка";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error loading settings" = "Помилка завантаження параметрів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error updating settings" = "Помилка оновлення налаштувань";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Все, що тобі треба, витрачати і отримувати ваші bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Extended Public Key" = "Extended відкритий ключ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Failed To Load Wallet" = "Не вдалося завантажити гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee is too high (0.01 BTC limit)" = "Плата є занадто високою (0,01 БТД ліміт)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee per KB" = "Плата за КБ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fees" = "Зборів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Finished Signing Inputs" = "Закінчив підписання входи";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Для вашої безпеки рекомендуємо вам передавати будь-яких залишків в імпортованих адреси в Blockchain гаманці.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Forget Wallet" = "Забути гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Found %d, with %@" = "Знайдено %1$d, з %2$@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination address have to be different" = "Від та адреси призначення мають бути різними";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination have to be different" = "Від і призначення мають бути різними";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Go to Settings" = "Зайдіть в настройки";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Google Authenticator" = "Генератор кодів Google";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Hint Stored" = "Підказка зберігається";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "How would you like to pair?" = "Як би ви хотіли пара?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Identifier" = "Ідентифікатор";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Якщо ви купця, показати ваш xPub і використовувати Blockchain купець app на отримання коштів, безпечно і в приватному порядку.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import Private Key" = "Імпорт секретний ключ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import address" = "Імпорт адрес";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses" = "Імпортовані адреси";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses (Archived)" = "Імпортовані адрес (в архіві)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Private Key %@" = "Імпортований закритий ключ %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported watch-only address %@" = "Імпортуються лише дивитися адресу %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Importing key" = "Імпорт ключ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect PIN. Please retry." = "Неправильний PIN-код. Спробуйте ще раз.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect password" = "Невірний пароль";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect private key" = "Неправильна закритого ключа";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Increase fee" = "Збільшення плати";
+
+/* (No Commment) */
 "Information" = "Інформація";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Initializing Wallet" = "Ініціалізація гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Insufficient Funds" = "Недостатньо коштів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Identifier" = "Неприпустимий ідентифікатор";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Pairing Code" = "Неприпустимий код спаровування";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Send Value" = "Неприпустиме надсилання значення";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Shared Key" = "Неприпустиме спільного ключа";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Status Code Returned %@" = "Код неприпустимий стану повернувся %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Wallet ID" = "Неприпустимий Ідентифікатор гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid address: %@" = "Неприпустима адреса: %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid email address." = "Недійсна електронна адреса.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid mobile number." = "Неприпустимий номер мобільного телефону.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Неприпустимий відновлення фразу. Будь ласка, спробуйте ще раз";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Неприпустимий сервер відповідь. Будь ласка, Перевірте підключення до Інтернету.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid to bitcoin address" = "Неприпустима адреса bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid two-factor authentication type" = "Неприпустимий Двофакторна аутентифікація типу";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid verification code. Please try again." = "Код підтвердження неправильний. Будь ласка, спробуйте ще раз.";
 
 /* No comment provided by engineer. */
 "Just now" = "Просто зараз";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Keep higher fee" = "Тримати вище плата";
+
+/* (No Commment) */
+"Keep lower fee" = "Тримати нижня плата";
+
+/* (No Commment) */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Тримайте ваш xPub приватних. Доступу до вашого xPub зможуть побачити всі ваші кошти та операцій.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label" = "Етикетка";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label Address" = "Адресна мітка";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must contain letters and numbers only" = "Мітка має містити букви і цифри лише";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must have less than 18 characters" = "Мітка має бути менше 18 символів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Link Mobile" = "Мобільний зв'язок";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading External Page" = "Завантаження зовнішнього сторінки";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading transactions" = "Завантажують транзакції";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Local Currency" = "Місцевій валюті";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Log in to my Wallet" = "Увійти в мій гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Login existing Wallet" = "Логін існуючих гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Logout" = "Вихід із системи";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Lower fee" = "Нижня плата";
+
+/* (No Commment) */
 "Make Default" = "Зробити за промовчанням";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manual Pairing" = "Ручний спаровування";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manually" = "Вручну";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant" = "Купець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Directory is currently unavailable. Please try again later." = "Торговий реєстр в даний момент недоступний. Будь ласка, спробуйте ще раз пізніше.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Map" = "Купець карти";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant URL" = "Купець URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Linked" = "Мобільний пов'язана";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Number" = "Номер мобільного телефону";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Мій гаманець Bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Примітка: Відскановані закритого ключа не відповідає цій дивитися тільки адресу. Якщо ви хочете витратити з цієї адреси, переконайтеся, що у разі сканування з правильним закритим ключем.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Name" = "Ім'я";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Address" = "Нова адреса";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Email Address" = "Нову адресу електронної пошти";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Mobile Number" = "Новий номер мобільного телефону";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different" = "Новий пароль має відрізнятися";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different from your password hint" = "Новий пароль має відрізнятися від підказку про пароль";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "News, Price & Charts" = "Новини, ціни та Чарти";
 
 /* No comment provided by engineer. */
 "Next word" = "Наступне слово";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No" = "Ні";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No Label" = "Без Мітки";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "Пароль, внесений";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection available. Please check your network settings." = "Немає з'єднання з Інтернетом доступні. Будь ласка, перевірте налаштування мережі.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection." = "Немає з'єднання з Інтернетом.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Normal" = "Звичайний";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not Stored" = "Не зберігається";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not now" = "Не зараз";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Зверніть увагу, що після того, як оновлено, ви не можете повернутися до попередньої версії, але всі bitcoins і угоду історію буде зберігатися.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Notifications" = "Сповіщення";
 
 /* No comment provided by engineer. */
@@ -658,184 +673,190 @@
 /* No comment provided by engineer. */
 "OK" = "Гаразд";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN" = "PIN-КОД";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Encrypted String is nil" = "PIN зашифровані рядка дорівнює нулю";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object key or value length 0" = "РОЗНІМНА відповідь об'єкта розділу або значення довжини 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object success length 0" = "РОЗНІМНА відповідь об'єкт успіх довжина 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Saved Successfully" = "PIN збережено успішно";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation Error" = "Помилка перевірки PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "Не вдалося завершити перевірку PIN-КОДУ. Будь ласка, введіть ваш пароль гаманець вручну.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PINs do not match" = "PIN-коди не співпадають";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Parsing Pairing Code" = "Розбір спаровування код";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Hint" = "Підказку для пароля";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Required" = "Пароль";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password changed. Please login to continue." = "Змінити пароль. Будь ласка, Логін, щоб продовжити.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password must 10 characters or longer" = "Пароль має 10 символів або довше";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Passwords do not match" = "Паролі не співпадають";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Received" = "Плату отримано";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Sent!" = "Оплата послав!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Phrase Backed" = "Фраза резервне";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please Login" = "Будь ласка, Логін";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please add an email address" = "Будь ласка, додайте адресу електронної пошти";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email and click on the verification link." = "Перевірте вашу електронну пошту і натисніть на посилання для підтвердження.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Будь ласка, перевірте свою електронну пошту. Якщо ви вже підтвердили спробу входу, ви повинні увійти в систему за допомогою нашої веб-гаманець і з'єднати телефон шляхом сканування QR-код у групі настройки-> гаманець інформації.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your internet connection." = "Будь ласка, Перевірте підключення до Інтернету.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose another PIN" = "Будь ласка, оберіть інший PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose from the options below." = "Будь ласка, виберіть одну з опцій нижче.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Будь ласка, Опишіть детально питання, які виникають, а також будь-які кроки ми можемо зробити, щоб відтворити її.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Будь ласка, введіть плату, більше за 0 БТД і в більшості 0.01 БТД";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a new PIN" = "Будь ласка, введіть новий PIN-код";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your %@ 2FA code" = "Будь ласка, введіть ваш код 2FA %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Будь ласка, введіть свій ідентифікатор гаманець 36 характер правильно. Він може бути знайдений у вітальному листі під час запуску.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your PIN" = "Будь ласка, введіть PIN-код";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your recovery phrase with words separated by spaces" = "Будь ласка, введіть відновлення фраза з слів, розділених пробілами";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Please lower the fee to an amount that is less than your balance" = "Будь ласка, знизити плату на суму, що менше, ніж ваш баланс";
+
+/* (No Commment) */
 "Please provide an email address." = "Надайте, будь ласка, адресу електронної пошти.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please refresh the pairing code and try again." = "Будь ласка, оновіть спаровування код і повторіть спробу.";
 
-/* No comment provided by engineer. */
-"Please select a different address to send from or lower the fee in Settings." = "Будь ласка виберіть іншу адресу, щоб відправити від або знизити плату в настройках.";
+/* (No Commment) */
+"Please select a different address to send from." = "Будь ласка виберіть іншу адресу для надсилання з.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Будь ласка, надішліть оплати адреси bitcoin (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > допомогти? </a >): %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Будь ласка, надішліть оплати адреси bitcoin. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Будь ласка, спробуйте ще раз";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please verify your email address first." = "Перевірте адресу електронної пошти, спочатку.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Preferences" = "Налаштування";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Privacy Policy" = "Політика конфіденційності";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Private Key Needed" = "Закритий ключ необхідно";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Processing key" = "Ключ обробки";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Receive" = "Отримувати";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Received" = "Отримав";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recover Funds" = "Відновити коштів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recovering Funds" = "Відновлення коштів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Regular" = "Регулярні";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Request Amount" = "Сума замовлення";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification SMS" = "Знову надіслати перевірочне SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification email" = "Знову надіслати перевірочне повідомлення електронної пошти";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Reset" = "Скидання";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Retrieving recommended fee" = "Отримання рекомендований внесок";
+
+/* (No Commment) */
 "Retry Validation" = "Повторити перевірку";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Robust security center" = "Надійний захист центр";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "SMS" = "SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Save" = "Зберегти";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Pairing Code" = "Сканування спаровування код";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Private Key" = "Сканування секретний ключ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR Code" = "Скануйте QR код";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR code" = "Скануйте QR код";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Сканувати цей код або скопіюйте його до вашого застосунку Blockchain купець надійно отримувати Bitcoin.";
 
 /* No comment provided by engineer. */
@@ -844,414 +865,450 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "Другий пароль";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security" = "Безпека";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security Center" = "Центр безпеки";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send" = "Надіслати";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send from..." = "Надіслати від...";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send to..." = "Надіслати до...";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send verification SMS" = "Надіслати перевірочне SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sending Transaction" = "Надсилання транзакції";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent" = "Відправлені";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent to %@" = "Надіслані %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Server URL" = "URL-адресу сервера";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Set as Default?" = "Встановити за замовчуванням?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Settings" = "Параметри";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Shared Coin is not supported in the new version at this time." = "Спільні монета не підтримується в новій версії в даний час.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Спільний доступ до вашого xPub дозволяє іншим користувачам відстежувати угоду історію. Як уповноважених осіб може бути в змозі порушити ви доступ до вашого гаманця, тільки спільний доступ ваше xPub людей, що ви довіряєте.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "%d сигнал був піднятий.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Input %d" = "Підписання вхідного %d";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Inputs" = "Підписання входи";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Simplified backup and recovery" = "Спрощений резервного копіювання і відновлення";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Store Hint" = "Магазин Підказка";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Stored" = "Зберігається";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Strong" = "Сильні";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success" = "Успіх";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success!" = "Успіх!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Support" = "Підтримка";
+
+/* (No Commment) */
+"Surge Occurring" = "Сплесків, що відбуваються";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Синхронізацію гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Terms of Service" = "Умови надання послуг";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual." = "Bitcoin видобутку мережі в даний час переживає значного обсягу діяльності, в результаті чого рекомендованих зборів, що вище, ніж зазвичай.";
+
+/* (No Commment) */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Вибрані PIN-код є дуже поширеною і легко вгадати хтось має доступ до вашого телефону протягом 3 намагається. Використовувати цей PIN будь-якому випадку?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Сума, яку ви хочете відправити (%1$@) є більшою, ніж Максимальна сума, яку ви можете витратити мінус плату (%2$@ - %3$@). Ви хотіли б відправити %4$@?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The fee you have specified is too low." = "Указаний плата є занадто низьким.";
+
+/* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Зашифрований закритий ключ, який ви намагаєтеся імпортувати. Будь ласка, введіть пароль нижче.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Ось те, що краще:";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "There was a problem verifying your identity." = "Виникли утруднення засвідчує вашу особу.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "These options are recommended for advanced users only. Continue?" = "Ці параметри рекомендованих виключно для досвідчених користувачів. Продовжити?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Ця дія вимагає закритий ключ для %@ адреси Bitcoin. Будь ласка скануйте QR-код.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ця дія вимагає другий пароль для вашого гаманця bitcoin. Будь ласка, введіть його нижче та натисніть Продовжити.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This address is not watch-only." = "Ця адреса не є тільки дивитися.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Це дивитися тільки адресу. Витрачати ваші кошти від цей гаманець, будь ласка, сканування вашого закритого ключа.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Це Архів. Хоча не можна переказати кошти з тут, всі кошти залишаться безпечними. Просто unarchive щоб почати використовувати його знову.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This name is already in use. Please choose a different name." = "Це ім'я вже існує. Будь ласка, оберіть інше ім'я.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Цей закритий ключ належить на іншу адресу, яка не тільки дивитися";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Ця угода вимагає вище плату для пилу споживання пов'язано з невеликою кількістю змін будуть повернуті.";
+
+/* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Це призведе до видалення всіх даних гаманець на цьому пристрої. Будь ласка, підтвердіть, у вас є ваш гаманець інформацію збережено в іншому місці в іншому випадку будь-яких bitcoins в цей гаманець будуть бути недоступною!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "Кому: %1$@%2$@ суми: %3$@ плату: %4$@ (%5$@)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor Requests" = "Tor запити";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor blocked" = "Tor заблоковано";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests allowed" = "Tor запити дозволено";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently allowed." = "Tor запити є дозволеними.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently blocked." = "Tor запити наразі заблоковано.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Total Balance" = "Загальний баланс";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID has been locked due to too many failed attempts." = "Touch ID був заблокований через занадто багато невдалих спроб.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not available on this device." = "Touch ID недоступний на цьому пристрої.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Touch ID не ввімкнуто цей пристрій. Щоб увімкнути Touch ID, перейдіть до параметри>Touch ID & ввести пароль і додати відбитки пальців.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transaction" = "Транзакції";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Transaction Fee" = "Плата операцію";
+
+/* (No Commment) */
+"Transaction Fees" = "Комісії за операції";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Комісії за операції вплинути як швидко Bitcoin видобутку мережі буде підтвердити ваші операції і залежать від поточних умов мережі. Ми рекомендуємо плату нижче за операцію в цей час.";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Комісії за операції вплинути як швидко Bitcoin видобутку мережі буде підтвердити ваші операції й залежать від поточних умов мережі. Ми рекомендуємо плату, зображений на дану операцію в цей час.";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Операції з без зборів може зайняти багато часу, щоб підтвердити або не може бути підтверджено на всіх. Ви хотіли б продовжити?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transfer Funds" = "Переказ коштів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transferred" = "Передані";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Try again" = "Спробуй ще раз";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "UPGRADE YOUR WALLET" = "ОНОВИТИ ВАШ ГАМАНЕЦЬ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Не вдається завантажити гаманець зв'язку без відповіді сервера. Можливо, ви в автономному режимі або Blockchain переживає труднощі. Будь ласка, спробуйте ще раз пізніше.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive" = "Unarchive";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive Address" = "Unarchive адреса";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unconfirmed" = "Непідтверджені";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Необроблена виняткова ситуація";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown" = "Невідомо";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Невідома помилка Touch ID. Код: %ld";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown key format" = "Невідомий формат ключа";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unsupported Private Key Format" = "Непідтримуваний формат приватний ключ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unverified" = "Неперевірені";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Update" = "Оновлення";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade" = "Оновлення";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Now" = "Оновити зараз";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Wallet" = "Оновити гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to HD" = "Оновлення HD";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to V3" = "Оновлення до версії 3";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use Touch ID as PIN" = "Використання ID Touch як PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all %@" = "Використовувати всі %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all funds" = "Використовувати всі кошти";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Use recommended values" = "Використовувати рекомендоване значення";
+
+/* (No Commment) */
 "User Declined" = "Користувач відхилена";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "ПЕРЕВІРТЕ, ЧИ РЕЗЕРВНОГО КОПІЮВАННЯ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verification email has been sent to %@." = "Перевірочне повідомлення електронної пошти надіслано на %@.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verified" = "Перевірено";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify" = "Перевірте, чи";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify Email" = "Перевірити пошту";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verifying" = "Перевірка";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet ID" = "Гаманець ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Information" = "Гаманець інформації";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet JSON" = "Гаманець JSON";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Paired Successfully." = "Гаманець парі успішно.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Recovery Phrase" = "Гаманець відновлення фразу";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet version %lld not supported" = "Гаманець %lld версія не підтримується";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning" = "Попередження";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning!!!" = "Попередження!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Попередження: Ідентифікатор вашого гаманця є конфіденційною інформацією. Копіювання його можуть становити загрозу безпеці вашого гаманця.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Watch Only" = "Дивитися тільки";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Ми надішлемо натяк на адресу електронної пошти підтверджено у випадку, якщо ви попросите про це.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Ми розробили абсолютно новий досвід, гаманець для вас";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Ми включили деякі значні поліпшення конфіденційності та безпеки. Після того, як ви натисніть кнопку оновлення ви не зможете повернутися до старої гаманець";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Weak" = "Слабка";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "WebSocket URL" = "WebSocket URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Welcome" = "Прошу";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Це свідчить попередньої інсталяції Blockchain гаманця на вашому телефоні.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Хотіли б ви додати bitcoin адресу %@ до своєї адресної книги?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Запишіть відновлення фразу і тримати його де-небудь дуже надійним і безпечним. Пам'ятайте, що будь-хто, хто знає вашу фразу відновлення має доступ до вашого bitcoins.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wrong BIP38 Password" = "Неправильний BIP38 пароль";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yes" = "Так";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Вчора";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Ви маєте намір імпортувати тільки дивитися адреса, адреса (або громадськості ключових сценарій) зберігаються в гаманець без відповідного приватний ключ. Це означає, що кошти можна витратити тільки якщо у вас є закритий ключ зберігається в іншому місці. Якщо ви не маєте закритого ключа зберігається, не доручити будь-кому надсилати вам bitcoin дивитися тільки адресу.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Ви маєте намір отримати bitcoin дивитися тільки адресу. Ви тільки можете витратити ці кошти, якщо ви маєте доступ до закритого ключа. Продовжити?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Зараз запущено наші найбільш безпечний Bitcoin гаманець";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Ви успішно для резервного копіювання ваших фондів";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Ви можете ввімкнути двоетапну перевірку за допомогою SMS на мобільний телефон. Для того, щоб використовувати інші методи автентифікації замість цього, будь ласка, Логін до нашого веб-гаманець.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can now spend from this address." = "Тепер ви можете витрачати з цієї адреси.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Ви не маєте обліковий запис, створений для Mail. Будь ласка, звертайтеся %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You have no available funds to send from this address" = "У вас немає вільних коштів для надсилання з цієї адреси";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Ви повинні відключити SMS двоетапну перевірку, перш ніж змінювати ваш номер мобільного телефону (%@).";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a destination address" = "Слід ввести адреси призначення";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a label" = "Введіть мітку";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have at least one active address" = "Ви повинні мати принаймні одну адресу активні";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Ви повинні мати двофакторна автентифікація вимкнуто до пари вручну.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must leave at least one active address" = "Ви повинні залишити хоча б одну активну адресу";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Ви повинні завжди пари або увійти, якщо у вас є доступ до вашого гаманця ID і пароль. Відновлення ваших фондів створить новий гаманець ID. Ви хотіли б продовжити?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may be stuck and possibly never be confirmed. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@." = "Указані виключно малих транзакції плату з %1$@. Транзакцію може бути застрягли і можливо ніколи не підтверджені. Щоб збільшити ймовірність того, для транзакцій для підтвердження протягом приблизно однієї години (шість блоків), рекомендуємо збір у розмірі не менше, ніж %2$@.";
+
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may become stuck and possibly never confirm. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@. Since you don’t have sufficient funds, that means the Send amount will also have to be lowered to %@." = "Указані виключно малих транзакції плату з %1$@. Транзакції можуть застрягти і можливо ніколи не підтвердити. Щоб збільшити ймовірність того, для транзакцій для підтвердження протягом приблизно однієї години (шість блоків), рекомендуємо збір у розмірі не менше, ніж %2$@. Оскільки ви не маєте достатніх коштів, це означає, що надіслати суму доведеться бути знижена до %3$@.";
+
+/* (No Commment) */
+"You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Указані незвично високі операційні плату з %1$@. Навіть якщо знизити плату до %2$@, ви можете очікувати трансакції на підтвердження протягом наступних 10 хвилин (один блок).";
+
+/* (No Commment) */
 "You've successfully imported a private key." = "Закритий ключ успішно імпортовано.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Ви успішно імпортовано приватний ключ для %@ адресу, і тепер можна провести від нього. Якщо ви хочете витратити з цієї адреси, переконайтеся, що у разі сканування з правильним закритим ключем.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Пристрій, як видається, бути зламаний. Безпеки вашого гаманця може бути віддана в жертву.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your email has been verified." = "Перевірити свою електронну пошту.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your identity does not match our records." = "Вашу особистість не відповідає нашому записів.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your mobile number has been verified." = "Перевірити свій номер мобільного телефону.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains invalid characters. Please try again." = "Підказку про новий пароль містить неприпустимі символи. Будь ласка, спробуйте ще раз.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains no text. Your password hint will be cleared." = "Підказку про новий пароль містить текст не. Підказку про пароль буде очищено.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your password. Please try again." = "Підказку про новий пароль має відрізнятися від пароля. Будь ласка, спробуйте ще раз.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your second password. Please try again." = "Підказку про новий пароль має відрізнятися від пароля другий. Будь ласка, спробуйте ще раз.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your password hint has been updated." = "Підказку про пароль був поновлений.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Передані кошти будуть бути безпечною, і ви будете користуватися Підвищена конфіденційність і зручний резервного копіювання і відновлення функції.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Перевірену електронну адресу використовується для відправки Логін кодів, коли підозрілих або незвичайних діяльності, щоб нагадати вам про ваш гаманець Ідентифікатор входу і відправити bitcoin оплати оповіщення при надходженні коштів. Ми не будемо використовувати вашу адресу електронної пошти для маркетингових цілей.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet does not contain this address." = "Ваш гаманець не містить цю адресу.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet was successfully created." = "Ваш гаманець успішно створено.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yubi Key" = "Семіньяк ключ";
 
 /* No comment provided by engineer. */
@@ -1269,16 +1326,16 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 /* No comment provided by engineer. */
 "fourth word" = "четверте слово";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "from" = "від";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "iOS Support Request" = "iOS підтримки запит";
 
 /* No comment provided by engineer. */
 "ninth word" = "Дев'ятий слово";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "or Continue" = "або продовжити";
 
 /* No comment provided by engineer. */

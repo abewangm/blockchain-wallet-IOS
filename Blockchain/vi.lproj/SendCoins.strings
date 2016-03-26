@@ -52,6 +52,9 @@
 /* (No Commment) */
 "67.text" = "Nhãn địa chỉ";
 
+/* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
+"Cbp-Qe-FKP.normalTitle" = "Tùy chỉnh các lệ phí";
+
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
 "FB0-NP-5do.text" = "Học phí: ";
 
@@ -67,6 +70,9 @@
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
 "Zgn-Wx-Uwx.text" = "Hãy chờ";
 
+/* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
+"Zhm-Jw-P4C.text" = "Lệ phí";
+
 /* (No Commment) */
 "aKC-Q2-phD.text" = "Gửi thanh toán";
 
@@ -78,6 +84,9 @@
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
 "fpY-AA-We5.text" = "Để";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "p7q-Ud-nYh"; */
+"p7q-Ud-nYh.placeholder" = "0,000";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
 "pPu-bJ-k6p.normalTitle" = "Tiếp tục";

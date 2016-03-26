@@ -1,13 +1,13 @@
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ BTC" = "BTC %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ copied to clipboard" = "%@ 複製到剪貼簿";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Confirmations" = "%d 確認";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Transactions" = "%d 交易";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld 秒前";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "* Minimum 10 characters" = "* 最低 10 個字元";
 
 /* No comment provided by engineer. */
@@ -28,628 +28,643 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "1 分鐘前";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step Enabled" = "2 步啟用";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been disabled." = "2 步已被禁用。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been enabled for SMS." = "2 步已啟用 SMS。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification" = "2 步認證";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently disabled." = "2 步驗證當前已禁用。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled for %@." = "2 步驗證當前已啟用 %@。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled." = "2 步驗證當前已啟用。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "API URL" = "API URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "About" = "關於";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Account Details" = "帳戶的詳細資訊";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Accounts" = "帳戶";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add Email" = "添加電子郵件";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add to Address book?" = "添加到通訊錄嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address" = "位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address book" = "通訊錄";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address is not valid" = "位址是不正確";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Addresses" = "位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Adjust Fee" = "調整費用";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allow" = "允許";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allowed" = "允許";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "金額必須高於灰塵閾值 (%lld 聰)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "驗證您的 PIN 代碼與遠端伺服器時發生錯誤。你可能處於離線狀態或 Blockchain 可能遇到的困難。要驗證重試或相反手動輸入您的密碼嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred while changing 2-Step verification." = "變化 2 步驗證時出錯。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "載入你的錢包時遇到錯誤。你可能處於離線狀態，或者 Blockchain 遇到困難。請關閉應用程式，請稍後再試或重新配對您的設備。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "從鑰匙串中檢索您的錢包識別碼時出錯。請關閉應用程式，然後重試。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Any address" = "任何位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive" = "檔案";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive Address" = "存檔位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "這存檔如果你不想再使用它。您的資金將保持安全，並且你可以在任何時間 unarchive 它。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archived" = "存檔";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Ask Me Later" = "稍後再問我";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authenticate with Touch ID" = "使用觸摸 ID 進行身份驗證";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authorization Required" = "所需的授權";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatic Pairing" = "自動配對";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatically" = "自動";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "備份的資金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup" = "備份";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "備份的資金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup Phrase" = "備份的短語";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "在訪問之前你的錢包，請選擇用來解鎖你的錢包 pin 號。它是重要的你還記得這個別針，因為它不能重置或更改沒有第一次解鎖應用程式。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin Unit" = "比特幣單位";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin payment request" = "比特幣付款請求";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block" = "塊";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block Tor" = "塊 Tor";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain 沒有訪問攝像頭。要啟用訪問，請轉到您的設備設置。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain 是目前下來進行維修工程。請稍後再試。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain 需要位置服務啟用，以便訪問您所在的位置。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain 需要位置服務啟用，以便訪問您所在的位置。您可以啟用訪問在設置-> 隱私-> 位置服務";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain 需要位置服務啟用，以便訪問您所在的位置。您可以啟用訪問在設置-> 隱私-> 位置-> 定位服務";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blocked" = "阻止";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Camera Access Denied" = "相機訪問被拒絕";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cancel" = "取消";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "未初始化的錢包或密碼為空時無法保存 PIN 碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Email" = "更改電子郵件";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Mobile Number" = "更改行動電話號碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change PIN" = "更改 pin 碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password" = "更改密碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password Hint" = "更改密碼提示";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change fee per kilobyte" = "更改費用每千位元組";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for Wallet updates" = "檢查錢包更新";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for more: Step %d of %d" = "檢查更多: 步 %1$d 的 %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "關閉";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Close App" = "關閉應用程式";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Complete the steps below for ultimate security" = "完成下列步驟以最終的安全";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Completely updated design and user experience" = "完全更新的設計和使用者體驗";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Payment" = "確認付款";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Upgrade" = "確認升級";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm your PIN" = "確認您的 PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Connection timed out. Please check your internet connection." = "連接逾時。請檢查您的互聯網連接。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "繼續";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copied to clipboard" = "複製到剪貼簿";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Address" = "複製位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Wallet ID" = "複製的錢包 ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy to clipboard" = "複製到剪貼簿";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy xPub" = "複製 xPub";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create" = "創建";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create New Wallet" = "創建新的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create Wallet" = "創建錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create new address" = "創建新的位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating" = "創建";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating HD Wallet" = "創建高清錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating V3 Wallet" = "創建 V3 錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating Wallet" = "創建的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new Wallet" = "創建新的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new address" = "創建新的位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Current rate: %@ BTC" = "現價: %@ BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "自訂您組織您的比特幣在皮夾裡 Blockchain 的方式";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customized fund management" = "自訂的基金管理";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Debug" = "調試";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "解密的 PIN 密碼長度為 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Private Key" = "解密私密金鑰";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Wallet" = "解密的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Default" = "預設";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disable" = "禁用";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disabled" = "已禁用";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Display" = "顯示";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Do you really want to log out?" = "你真的想要登出嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Don't show again" = "不要再顯示";
 
 /* No comment provided by engineer. */
 "Done" = "完成";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Downloading Wallet" = "下載的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Easy one time wallet backup keeps you in control of your funds" = "輕鬆一次錢包備份讓您控制您的資金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Edit" = "編輯";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email" = "電子郵件";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Notifications" = "電子郵件通知";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Verified" = "電子郵件驗證";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Empty response from server." = "伺服器的空回應。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable" = "啟用";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step" = "啟用 2 步";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step for SMS" = "為 SMS 啟用 2 步";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable Location Services" = "啟用定位服務";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "啟用通知，只要你接收比特幣收到一封電子郵件。只有標記為位址和導入位址有資格向觸發通知。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "啟用此選項以防止被公認為 Tor 匿名網路訪問你的錢包的一部分的 IP 位址。Tor 網路經常使用的駭客試圖訪問 Blockchain 使用者的錢包。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "啟用此功能將允許所有使用者與註冊的觸摸 ID 指紋在此設備上訪問到你的錢包。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enhanced Privacy" = "增強的隱私保護";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Enter %@ amount" = "輸入 %@ 金額";
+
+/* (No Commment) */
 "Enter PIN" = "輸入 PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Password" = "輸入密碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Verification Code" = "輸入驗證碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter your verification code" = "輸入您的驗證碼";
 
 /* No comment provided by engineer. */
 "Error" = "錯誤";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error loading settings" = "錯誤載入設置";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error updating settings" = "更新設置時出錯";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "一切您需要存儲，花和接收您的比特幣";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Extended Public Key" = "擴大公共金鑰";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Failed To Load Wallet" = "未能載入的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee is too high (0.01 BTC limit)" = "費用是太高 (0.01 BTC 限制)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee per KB" = "費用每 KB";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fees" = "費用";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Finished Signing Inputs" = "完成簽署投入";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "為了您的安全，我們建議您將任何在您導入的位址的餘額轉移到你的 Blockchain 錢包。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Forget Wallet" = "忘了錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Found %d, with %@" = "發現 %1$d，與 %2$@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination address have to be different" = "從和目的地位址必須是不同";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination have to be different" = "從和目的地必須是不同";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Go to Settings" = "轉到設置";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Google Authenticator" = "Google 身份驗證器";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Hint Stored" = "存儲的提示";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "How would you like to pair?" = "你怎麼想對?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Identifier" = "識別碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "如果你是個商人，顯示你的 xPub 和使用 Blockchain 商人應用程式來接收資金安全和私下。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import Private Key" = "導入私密金鑰";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import address" = "導入位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses" = "導入的位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses (Archived)" = "導入的位址 (歸檔)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Private Key %@" = "導入的私密金鑰 %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported watch-only address %@" = "導入只觀看位址 %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Importing key" = "導入金鑰";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect PIN. Please retry." = "不正確的 PIN。請重試。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect password" = "密碼不正確";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect private key" = "不正確的私密金鑰";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Increase fee" = "增加費用";
+
+/* (No Commment) */
 "Information" = "資訊";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Initializing Wallet" = "初始化的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Insufficient Funds" = "資金不足";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Identifier" = "不正確識別碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Pairing Code" = "不正確配對代碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Send Value" = "不正確發送值";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Shared Key" = "不正確共用金鑰";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Status Code Returned %@" = "不正確狀態碼返回 %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Wallet ID" = "錢包 ID 無效";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid address: %@" = "不正確位址: %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid email address." = "不正確電子郵件地址。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid mobile number." = "不正確行動電話號碼。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid recovery phrase. Please try again" = "不正確恢復的短語。請再試一次";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "不正確伺服器回應。請檢查您的互聯網連接。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid to bitcoin address" = "比特幣位址無效";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid two-factor authentication type" = "不正確雙因素身份驗證類型";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid verification code. Please try again." = "驗證代碼無效。請再試一次。";
 
 /* No comment provided by engineer. */
 "Just now" = "只是現在";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Keep higher fee" = "保持較高的費用";
+
+/* (No Commment) */
+"Keep lower fee" = "保持較低的費用";
+
+/* (No Commment) */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "保持你的 xPub 私人。有人訪問你的 xPub 將能夠看到所有你的資金和交易。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label" = "標籤";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label Address" = "標籤位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must contain letters and numbers only" = "標籤必須包含字母和數位";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must have less than 18 characters" = "標籤必須有不少於 18 個字元";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Link Mobile" = "連結手機";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading External Page" = "載入外部頁";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading transactions" = "正在載入交易記錄";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Local Currency" = "當地貨幣";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Log in to my Wallet" = "登錄到我的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Login existing Wallet" = "登錄現有錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Logout" = "登出";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Lower fee" = "低費用";
+
+/* (No Commment) */
 "Make Default" = "讓預設";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manual Pairing" = "手動配對";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manually" = "手動";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant" = "商人";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Directory is currently unavailable. Please try again later." = "商人目錄是當前不可用。請稍後再試。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Map" = "商人的地圖";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant URL" = "商人的 URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Linked" = "手機連結";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Number" = "行動電話號碼";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "我的比特幣錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "注: 掃描的私密金鑰這只手錶的位址不對應。如果你想花來自此位址，請確保您掃描正確的私密金鑰。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Name" = "名稱";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Address" = "新的位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Email Address" = "新的電子郵件地址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Mobile Number" = "新的行動電話號碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different" = "新密碼必須不同";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different from your password hint" = "新密碼必須不同于您的密碼提示";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "News, Price & Charts" = "新聞、 價格與圖表";
 
 /* No comment provided by engineer. */
 "Next word" = "下一個單詞";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No" = "沒有";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No Label" = "沒有標籤";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "沒有輸入密碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection available. Please check your network settings." = "無可用的互聯網連接。請檢查您的網路設置。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection." = "沒有互聯網連接。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Normal" = "正常";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not Stored" = "不存儲";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not now" = "不是現在";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "請注意，一旦升級，你不能回到以前的版本，但會保持您所有的比特幣和您的交易歷史。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Notifications" = "通知";
 
 /* No comment provided by engineer. */
@@ -658,184 +673,190 @@
 /* No comment provided by engineer. */
 "OK" = "還行";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN" = "PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Encrypted String is nil" = "PIN 加密字串是零";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object key or value length 0" = "引腳的回應物件鍵或值長度為 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object success length 0" = "引腳的回應物件成功長度為 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Saved Successfully" = "已成功保存的 PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation Error" = "PIN 驗證錯誤";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "不能完成 PIN 驗證。請手動輸入密碼的錢包。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PINs do not match" = "針腳不匹配";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Parsing Pairing Code" = "解析匹配碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Hint" = "密碼提示";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Required" = "需要密碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password changed. Please login to continue." = "更改密碼。請登錄以繼續。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password must 10 characters or longer" = "密碼必須 10 個字元或更長時間";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Passwords do not match" = "密碼不匹配";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Received" = "收到付款";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Sent!" = "付款發送!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Phrase Backed" = "支援的短語";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please Login" = "請登錄";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please add an email address" = "請添加電子郵件地址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email and click on the verification link." = "請檢查您的電子郵件，然後按一下驗證連結。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "請檢查您的電子郵件。如果您已驗證了登錄嘗試，你應該通過我們的 web 錢包登錄並通過掃描 QR 代碼設置下的對你的電話-> 錢包資訊。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your internet connection." = "請檢查您的互聯網連接。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose another PIN" = "請選擇另一個 PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose from the options below." = "請從下面的選項中選擇。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "請詳細描述你遇到，我們可以採取重現它任何步驟的問題。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "請輸入大於 0 的 BTC 和最 0.01 BTC 的費用";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a new PIN" = "請輸入新的 PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your %@ 2FA code" = "請輸入您的 %@ 2FA 代碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "請輸入您的錢包 36 字元識別碼正確。它可以在啟動時的歡迎電子郵件中找到。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your PIN" = "請輸入您的 PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your recovery phrase with words separated by spaces" = "請輸入您恢復短語和單詞之間用空格分隔";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Please lower the fee to an amount that is less than your balance" = "請降低到小於您的餘額金額費用";
+
+/* (No Commment) */
 "Please provide an email address." = "請提供一個電子郵件地址。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please refresh the pairing code and try again." = "請刷新配對的代碼，然後重試。";
 
-/* No comment provided by engineer. */
-"Please select a different address to send from or lower the fee in Settings." = "請選擇要從發送或降低費用中設置不同的位址。";
+/* (No Commment) */
+"Please select a different address to send from." = "請選擇一個不同的位址從發送。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "請向比特幣位址發送付款 (< href =\"HTTPs://blockchain.info/wallet/bitcoin-faq\"> 説明? < /a >): %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "請向比特幣位址發送付款。常見問題: (HTTPs://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "請再試一次";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please verify your email address first." = "請先確認您的電子郵件地址。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Preferences" = "首選項";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Privacy Policy" = "隱私權原則";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Private Key Needed" = "需要私人金鑰";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Processing key" = "處理的關鍵";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Receive" = "接收";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Received" = "收到";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recover Funds" = "追回資金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recovering Funds" = "收回資金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Regular" = "定期";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Request Amount" = "請求金額";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification SMS" = "重新發送驗證短信";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification email" = "重新發送驗證電子郵件";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Reset" = "重置";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Retrieving recommended fee" = "檢索推薦費";
+
+/* (No Commment) */
 "Retry Validation" = "驗證重試";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Robust security center" = "強健的安全中心";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "SMS" = "短信";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Save" = "保存";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Pairing Code" = "掃描匹配碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Private Key" = "掃描的專用金鑰";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR Code" = "掃描二維碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR code" = "掃描二維碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "掃描此代碼或將其複製到您的 Blockchain 商人應用程式安全地接收比特幣。";
 
 /* No comment provided by engineer. */
@@ -844,414 +865,450 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "所需的第二個密碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security" = "安全";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security Center" = "安全中心";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send" = "發送";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send from..." = "從發送......";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send to..." = "發送給...";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send verification SMS" = "發送驗證短信";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sending Transaction" = "發送交易";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent" = "發送";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent to %@" = "發送到 %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Server URL" = "伺服器 URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Set as Default?" = "設為預設值嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Settings" = "設置";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Shared Coin is not supported in the new version at this time." = "此時，共用的硬幣不在新版本的支援。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "分享你的 xPub 授權他人跟蹤您的交易歷史。獲授權的人士可能能夠擾亂你訪問你的錢包，只與你信任的人分享你的 xPub。";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "提出了信號 %d。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Input %d" = "簽署輸入的 %d";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Inputs" = "簽署的投入";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Simplified backup and recovery" = "簡化的備份和恢復";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Store Hint" = "存儲提示";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Stored" = "存儲";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Strong" = "強";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success" = "成功";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success!" = "成功!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Support" = "支援";
+
+/* (No Commment) */
+"Surge Occurring" = "浪湧發生";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "同步的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Terms of Service" = "服務條款";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual." = "比特幣挖掘網路目前正在經歷活性，導致推薦費用，也比平常高高的卷。";
+
+/* (No Commment) */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "您已選擇引腳是極為常見，可能具有訪問到您的手機內 3 個嘗試的人很容易猜到了。你想使用這針嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "您想要發送 (%1$@) 的金額大於你可以花減去費用 (%2$@-%3$@) 的最高限額。你想發送 %4$@ 嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The fee you have specified is too low." = "您已指定的費用是太低。";
+
+/* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "您試圖導入的私密金鑰進行加密。請輸入下面的密碼。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "升級只需一秒只是和你的比特幣和歷史將會安全。這裡是更好的是:";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "There was a problem verifying your identity." = "還有一個問題，驗證您的身份。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "These options are recommended for advanced users only. Continue?" = "這些選項被建議僅高級使用者使用。要繼續嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "此操作需要使用私密金鑰的比特幣位址 %@。請掃描 QR 代碼。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "此操作需要第二個密碼你比特幣的錢包。請在下面輸入和按繼續。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This address is not watch-only." = "此位址不是只手錶。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "這是一隻手錶的位址。花您從這錢包裡的資金，請掃描您的私密金鑰。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "這被存檔。雖然你不能從這兒寄資金，任何及所有資金將都保持安全。只是 unarchive 開始再次使用它。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This name is already in use. Please choose a different name." = "此名稱已在使用。請選擇一個不同的名稱。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This private key belongs to another address that is not watch only" = "這個私有金鑰屬於另一個位址，不是只的手錶";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "這筆交易塵埃消費量較少的變化要返回要求較高的費用。";
+
+/* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "這將擦除此設備上的所有錢包資料。請確認你有你的錢包中保存資訊在別處否則任何比特幣這錢包將無法訪問!!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "致: %1$@%2$@ 總金額: %3$@ 費用: %4$@ (%5$@)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor Requests" = "Tor 的請求";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor blocked" = "Tor 阻止";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests allowed" = "允許的 Tor 請求";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently allowed." = "目前允許 Tor 請求。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently blocked." = "Tor 請求當前被阻塞。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Total Balance" = "總餘額";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID has been locked due to too many failed attempts." = "由於太多的失敗嘗試，觸摸 ID 已被鎖定。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not available on this device." = "觸摸 ID 在此設備上不可用。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "在此設備上未啟用觸摸 ID。若要啟用觸摸 ID，請轉到設置>Touch ID & 密碼並添加指紋。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transaction" = "交易";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Transaction Fee" = "交易費用";
+
+/* (No Commment) */
+"Transaction Fees" = "交易費用";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "交易費用的影響如何快速比特幣挖掘網路將確認您的交易和取決於當前的網路狀況。我們建議在這次交易以下費用。";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "交易費用的影響如何快速比特幣挖掘網路將確認您的交易，並取決於當前的網路狀況。我們建議這筆交易在此時所顯示的費用。";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "交易不收取費用可能需要很長的時間來確認或不可能在所有確認。你想繼續嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transfer Funds" = "資金劃轉";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transferred" = "轉移";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Try again" = "再試一次";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "UPGRADE YOUR WALLET" = "升級你的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "無法載入由於沒有伺服器回應的錢包。你可能處於離線狀態，或者 Blockchain 遇到困難。請稍後再試。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive" = "Unarchive";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive Address" = "Unarchive 位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unconfirmed" = "未經證實的";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "未處理的異常";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown" = "未知";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "未知的觸摸 ID 錯誤。代碼: %ld";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown key format" = "未知金鑰格式";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unsupported Private Key Format" = "私人金鑰格式不受支援";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unverified" = "未驗證";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Update" = "更新";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade" = "升級";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Now" = "現在升級";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Wallet" = "升級的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to HD" = "升級到高清";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to V3" = "升級到 V3";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use Touch ID as PIN" = "使用觸摸 ID 作為銷";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all %@" = "使用所有 %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all funds" = "使用所有基金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Use recommended values" = "使用推薦的值";
+
+/* (No Commment) */
 "User Declined" = "使用者下降";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "驗證備份";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verification email has been sent to %@." = "驗證郵件到 %@ 的情況。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verified" = "驗證";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify" = "驗證";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify Email" = "驗證電子郵件";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verifying" = "驗證";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet ID" = "錢包 ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Information" = "錢包資訊";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet JSON" = "JSON 的錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Paired Successfully." = "配對成功的錢包。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Recovery Phrase" = "錢包恢復短語";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet version %lld not supported" = "不支援的錢包版本 %lld";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning" = "警告";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning!!!" = "警告!!!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "警告: 您的錢包識別碼是敏感資訊。複製它可能危害安全的你的錢包。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Watch Only" = "只看";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "你的要求的情況下，我們就送您的確認電子郵件地址的提示。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "我們包含了一些重要的隱私和安全改進。一旦您按一下更新你不能回到你的舊錢包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Weak" = "弱";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "WebSocket URL" = "WebSocket URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Welcome" = "歡迎";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "我們已經檢測到以前安裝的 Blockchain 的錢包在你的手機上。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "你想將比特幣位址 %@ 添加到您的通訊錄嗎?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "寫下你恢復短語並把它放在非常安全和安全。記住誰知道您恢復短語有權訪問您的比特幣。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wrong BIP38 Password" = "錯誤 BIP38 密碼";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yes" = "是啊";
 
 /* No comment provided by engineer. */
 "Yesterday" = "昨天";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "您將要導入一隻手錶的位址，位址 (或公共金鑰腳本) 存儲在錢包沒有相應的私人鑰匙。這意味著只有如果你有的專用金鑰存儲在其他地方，可以資金。如果你沒有私密金鑰存儲，不指示任何人向只手錶位址發送你比特幣。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "你將收到比特幣到一隻手錶的位址。如果您有權訪問的私有金鑰，你可以只花這些資金。要繼續嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "你現在正在運行我們最安全的比特幣錢包";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "你成功地備份您的資金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "你可以在您的行動電話上啟用 2 步核查通過手機短信。為了改用其他身份驗證方法，請登錄到我們的 web 錢包。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can now spend from this address." = "現在，你可以花從這個位址。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "您沒有設置為郵件帳戶。請聯繫 %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You have no available funds to send from this address" = "你有沒有可用的資金，從該位址發送";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "您必須禁用短信 2 步驗證之前更改您的手機號碼 (%@)。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a destination address" = "您必須輸入目標位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a label" = "您必須輸入一個標籤";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have at least one active address" = "您必須具有至少一個活動位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "您必須手動禁用對雙因素身份驗證。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must leave at least one active address" = "你必須離開至少一個活動位址";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "你應該總是成對或登錄如果您可以訪問您的錢包 ID 和密碼。恢復您的資金將會創建一個新的錢包 id。你想繼續嗎?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may be stuck and possibly never be confirmed. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@." = "您指定 %1$@ 極少的交易費。您的交易可能會卡住，可能從來沒有被證實。為了增加您的交易確認在大約一小時 （六塊） 的可能性，我們強烈建議費用不低於 %2$@。";
+
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may become stuck and possibly never confirm. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@. Since you don’t have sufficient funds, that means the Send amount will also have to be lowered to %@." = "您指定 %1$@ 極少的交易費。您的交易可能會被卡住，並可能永遠不會確認。為了增加您的交易確認在大約一小時 （六塊） 的可能性，我們強烈建議費用不低於 %2$@。因為你沒有足夠的資金，這意味著發送量亦會降低到 %3$@。";
+
+/* (No Commment) */
+"You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "您指定 %1$@ 異常高昂的交易費用。即使你降低到 %2$@ 費，你可以期望要確認在接下來的 10 分鐘 （一個塊） 內的交易記錄。";
+
+/* (No Commment) */
 "You've successfully imported a private key." = "您已成功導入私密金鑰。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "您已經成功導入私密金鑰的位址 %@，，你現在可以花從它。如果你想花來自此位址，請確保您掃描正確的私密金鑰。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "您的設備似乎是越獄。可能會損害你的錢包的安全性。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your email has been verified." = "驗證了您的電子郵件。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your identity does not match our records." = "您的身份與我們的記錄不匹配。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your mobile number has been verified." = "您的手機號碼已經過驗證。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains invalid characters. Please try again." = "您的新密碼提示包含無效字元。請再試一次。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains no text. Your password hint will be cleared." = "您的新密碼提示不包含任何文本。密碼提示將被清除。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your password. Please try again." = "您的新密碼提示必須不同于您的密碼。請再試一次。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your second password. Please try again." = "您的新密碼提示必須不同于您的第二個密碼。請再試一次。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your password hint has been updated." = "已更新您的密碼提示。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "你轉移的資金將是安全和有保障的和你會受益于增加的隱私和方便的備份和恢復功能。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "您已驗證電子郵件地址用來發送登錄代碼，當發現可疑或不尋常的活動，提醒你你的錢包的登入識別碼，併發送比特幣付款通知，當您收到資金。我們不會使用您的電子郵件地址用於市場行銷目的。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet does not contain this address." = "你的錢包不包含此位址。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet was successfully created." = "你的錢包已成功創建。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yubi Key" = "育碧的關鍵";
 
 /* No comment provided by engineer. */
@@ -1269,16 +1326,16 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 /* No comment provided by engineer. */
 "fourth word" = "第四個單詞";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "from" = "從";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "iOS Support Request" = "iOS 支援請求";
 
 /* No comment provided by engineer. */
 "ninth word" = "第九屆的詞";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "or Continue" = "或繼續";
 
 /* No comment provided by engineer. */

@@ -52,6 +52,9 @@
 /* (No Commment) */
 "67.text" = "Menovku s adresou";
 
+/* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
+"Cbp-Qe-FKP.normalTitle" = "Prispôsobenie poplatkov";
+
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
 "FB0-NP-5do.text" = "Poplatok: ";
 
@@ -67,6 +70,9 @@
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
 "Zgn-Wx-Uwx.text" = "prosím počkajte";
 
+/* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
+"Zhm-Jw-P4C.text" = "Poplatok";
+
 /* (No Commment) */
 "aKC-Q2-phD.text" = "Odoslanie platby";
 
@@ -78,6 +84,9 @@
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
 "fpY-AA-We5.text" = "Na";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "p7q-Ud-nYh"; */
+"p7q-Ud-nYh.placeholder" = "0.000";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
 "pPu-bJ-k6p.normalTitle" = "Pokračovať";

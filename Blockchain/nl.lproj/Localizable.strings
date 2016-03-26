@@ -1,13 +1,13 @@
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ copied to clipboard" = "%@ naar Klembord gekopieerd";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Confirmations" = "%d bevestigingen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Transactions" = "%d transacties";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld seconden geleden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "* Minimum 10 characters" = "* Minimum 10 tekens";
 
 /* No comment provided by engineer. */
@@ -28,628 +28,643 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "1 minuut geleden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step Enabled" = "2-step ingeschakeld";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been disabled." = "2-step heeft geweest verminkte.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been enabled for SMS." = "2-step is ingeschakeld voor SMS.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification" = "2-step verificatie";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently disabled." = "2-step verificatie is momenteel uitgeschakeld.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled for %@." = "2-step verificatie is momenteel ingeschakeld voor %@.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled." = "2-step verificatie is ingeschakeld.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "API URL" = "API-URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "About" = "Over";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Account Details" = "Accountgegevens";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Accounts" = "Rekeningen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add Email" = "E-mail toevoegen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add to Address book?" = "Toevoegen aan Adresboek?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address" = "Adres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address book" = "Adresboek";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address is not valid" = "Adres is niet geldig";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Addresses" = "Adressen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Adjust Fee" = "Kosten aanpassen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allow" = "Toestaan";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allowed" = "Toegestaan";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Bedrag moet boven stof drempel (%lld Satoshi)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Er is een fout opgetreden bij het valideren van uw PIN-code met de externe server. U kunt off line of Blockchain ondervindt moeilijkheden. Wenst u opnieuw validatie of in plaats daarvan uw wachtwoord handmatig invoeren?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Er is een fout opgetreden tijdens het wijzigen van 2-Step verificatie.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Een fout was opgetreden laden uw portemonnee. U kunt off line of Blockchain ondervindt moeilijkheden. Sluit de toepassing en probeer het later opnieuw of opnieuw koppelen uw apparaat.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Een fout was opgetreden kan uw portemonnee-id ophalen uit de sleutelhanger. Sluit de toepassing en probeer het opnieuw.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Any address" = "Een willekeurig adres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive" = "Archief";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive Address" = "Archief adres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Archief dit als u niet wilt om het te gebruiken meer. Uw geld veilig te houden, en u kunt désarchiver op elk gewenst moment.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archived" = "Gearchiveerd";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Ask Me Later" = "Vraag Me Later";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authenticate with Touch ID" = "Verifiëren met Touch-ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authorization Required" = "Vereiste vergunning";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatic Pairing" = "Automatische koppeling";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatically" = "Automatisch";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "BACK-FONDSEN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup" = "Back-up";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "Back-fondsen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup Phrase" = "Back-up frase";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Voordat u uw portemonnee, kies een pin-nummer te gebruiken om te ontgrendelen uw portemonnee. Het is belangrijk dat u deze pin herinneren als het niet kunnen herstellen of wijzigen zonder het eerste openen van de app.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin Unit" = "Bitcoin eenheid";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin payment request" = "Verzoek om betaling van de Bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block" = "Blok";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block Tor" = "Blokkeren van Tor";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain heeft geen toegang tot de camera. Als toegang wilt inschakelen, gaat u naar uw apparaat instellingen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain is momenteel down voor onderhoud. Probeer het later nog eens.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain moet Locatieservices ingeschakeld om toegang tot uw locatie.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain moet Locatieservices ingeschakeld om toegang tot uw locatie. U kunt toegang inschakelen in instellingen -> Privacy -> locatie diensten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain moet Locatieservices ingeschakeld om toegang tot uw locatie. U kunt toegang inschakelen in instellingen -> Privacy -> Locatie -> locatie diensten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blocked" = "Geblokkeerd";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Camera Access Denied" = "Camera toegang geweigerd";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cancel" = "Annuleren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "PIN-Code opslaan niet terwijl portemonnee is niet geïnitialiseerd of wachtwoord null is";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Email" = "E-mailadres wijzigen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Mobile Number" = "Mobiele nummer wijzigen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change PIN" = "Verandering PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password" = "Wachtwoord wijzigen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password Hint" = "Geheugensteun voor het wachtwoord wijzigen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change fee per kilobyte" = "Verandering vergoeding per kilobyte";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for Wallet updates" = "Controleren op updates van de portefeuille";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for more: Step %d of %d" = "Controleren voor meer informatie: stap %1$d van %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Sluiten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Close App" = "Sluit App";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Complete the steps below for ultimate security" = "Voltooi de stappen hieronder voor de ultieme beveiliging";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Completely updated design and user experience" = "Volledig bijgewerkte ontwerp en gebruikerservaring";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Payment" = "Betaling bevestigen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Upgrade" = "Bevestig Upgrade";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm your PIN" = "Uw PIN-code bevestigen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Time-out verbinding. Controleer uw internetverbinding.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Blijven";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copied to clipboard" = "Gekopieerd naar Klembord";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Address" = "Adres kopiëren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Wallet ID" = "Kopieer de ID van de portefeuille";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy to clipboard" = "Naar klembord kopiëren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy xPub" = "Kopie xPub";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create" = "Maken";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create New Wallet" = "Maak nieuwe portefeuille";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create Wallet" = "Portefeuille maken";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create new address" = "Nieuw adres maken";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating" = "Maken";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating HD Wallet" = "Maken van HD-portemonnee";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating V3 Wallet" = "Maken V3 portemonnee";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating Wallet" = "Portefeuille maken";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new Wallet" = "Creëren van nieuwe portefeuille";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new address" = "Nieuw adres creëren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Current rate: %@ BTC" = "Huidige tempo: %@ BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Aanpassen van de manier waarop u uw bitcoins organiseren in uw portemonnee Blockchain";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customized fund management" = "Aangepaste vermogensbeheer";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Debug" = "Debug";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Gedecodeerde PIN wachtwoordlengte 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Private Key" = "Prive-sleutel decoderen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Wallet" = "Decoderen portemonnee";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Default" = "Standaard";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disable" = "Uitschakelen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disabled" = "Handicap";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Display" = "Weergave";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Do you really want to log out?" = "Wil je echt uit te loggen?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Don't show again" = "Niet opnieuw weergeven";
 
 /* No comment provided by engineer. */
 "Done" = "Gedaan";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Downloading Wallet" = "Downloaden van de portefeuille";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Easy one time wallet backup keeps you in control of your funds" = "Eenvoudig één keer portemonnee back-up houdt u in controle van uw fondsen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Edit" = "Bewerken";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email" = "E-mail";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Notifications" = "E-mailberichten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Verified" = "E-mail geverifieerd";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Empty response from server." = "Lege reactie van de server.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable" = "Inschakelen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step" = "2-stap inschakelen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step for SMS" = "2-stap inschakelen voor SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable Location Services" = "Locatieservices inschakelen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Meldingen te ontvangen een e-mail wilt ontvangen wanneer u bitcoins inschakelen. Alleen label adressen en geïmporteerde komen adressen in aanmerking voor trigger meldingen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Schakel deze optie in om te voorkomen dat IP-adressen waarvan bekend is dat het deel uitmaken van het netwerk Tor anoniem toegang krijgen tot uw portemonnee. Het Tor netwerk wordt vaak gebruikt door hackers Blockchain gebruikers portemonnee toegang probeert te krijgen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Deze functie in te schakelen kunnen alle gebruikers met een geregistreerde vingerafdruk Touch ID op dit apparaat toegang tot uw portemonnee.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enhanced Privacy" = "Verbeterde Privacy";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Enter %@ amount" = "Bedrag van de %@";
+
+/* (No Commment) */
 "Enter PIN" = "Voer pincode";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Password" = "Wachtwoord";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Verification Code" = "Voer de verificatiecode in";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter your verification code" = "Voer uw verificatiecode in";
 
 /* No comment provided by engineer. */
 "Error" = "Fout";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error loading settings" = "Instellingen voor foutpagina laden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error updating settings" = "Fout bij het bijwerken van instellingen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Alles wat u nodig hebt om op te slaan, geven en ontvangen van uw bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Extended Public Key" = "Uitgebreide openbare sleutel";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Failed To Load Wallet" = "Fout bij het laden van de portefeuille";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee is too high (0.01 BTC limit)" = "Kosten te hoog is (0,01 BTC limiet)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee per KB" = "Vergoeding per KB";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fees" = "Vergoedingen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Finished Signing Inputs" = "Klaar ondertekening ingangen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Voor uw eigen veiligheid raden wij u aan Breng eventuele saldi in uw geïmporteerde adressen in uw portemonnee Blockchain.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Forget Wallet" = "Portemonnee vergeten";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Found %d, with %@" = "Gevonden %1$d, met %2$@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination address have to be different" = "Uit en doeladres hebben om anders te zijn";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination have to be different" = "Uit en bestemming hebben om anders te zijn";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Go to Settings" = "Ga naar instellingen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Google Authenticator" = "Google verificator";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Hint Stored" = "Hint opgeslagen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "How would you like to pair?" = "Hoe wil je paar?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Identifier" = "Id";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Bent u een handelaar, Toon uw xPub en gebruik van de Blockchain Merchant app te ontvangen van fondsen veilig en privé.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import Private Key" = "Import persoonlijke sleutel";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import address" = "Adres importeren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses" = "Geïmporteerde adressen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses (Archived)" = "Geïmporteerde adressen (gearchiveerd)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Private Key %@" = "Geïmporteerde persoonlijke sleutel %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported watch-only address %@" = "Geïmporteerde watch-only adres %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Importing key" = "Sleutel importeren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect PIN. Please retry." = "Onjuiste PIN. Gelieve opnieuw te proberen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect password" = "Onjuist wachtwoord";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect private key" = "Onjuiste persoonlijke sleutel";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Increase fee" = "Verhoging van de vergoeding";
+
+/* (No Commment) */
 "Information" = "Informatie";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Initializing Wallet" = "Initialiseren van de portefeuille";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Insufficient Funds" = "Onvoldoende middelen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Identifier" = "Ongeldige ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Pairing Code" = "Ongeldige koppeling Code";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Send Value" = "Ongeldige verzenden waarde";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Shared Key" = "Ongeldige gedeelde sleutel";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Status Code Returned %@" = "Ongeldige statuscode Returned %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Wallet ID" = "Ongeldige ID van de portefeuille";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid address: %@" = "Ongeldig adres: %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid email address." = "Ongeldig e-mailadres.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid mobile number." = "Ongeldige GSM-nummer.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Ongeldige herstel zin. Probeer het a.u.b. opnieuw";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Ongeldige serverreactie. Controleer uw internetverbinding.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid to bitcoin address" = "Ongeldig adres bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid two-factor authentication type" = "Ongeldige verificatie met twee factoren type";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid verification code. Please try again." = "Ongeldige verificatiecode. Probeer het opnieuw.";
 
 /* No comment provided by engineer. */
 "Just now" = "Zojuist";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Keep higher fee" = "Houden van de hogere vergoeding";
+
+/* (No Commment) */
+"Keep lower fee" = "Lagere vergoeding houden";
+
+/* (No Commment) */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Privé houden van uw xPub. Iemand met toegang tot uw xPub zal zitten kundig voor zien al uw fondsen en transacties.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label" = "Label";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label Address" = "Label adres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must contain letters and numbers only" = "Label moet bevatten letters en cijfers alleen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must have less than 18 characters" = "Etiket moet minder dan 18 tekens";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Link Mobile" = "Mobiele verbinding";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading External Page" = "Laden van externe pagina";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading transactions" = "Laden van transacties";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Local Currency" = "Lokale valuta";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Log in to my Wallet" = "Inloggen op mijn portemonnee";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Login existing Wallet" = "Login bestaande portefeuille";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Logout" = "Logout";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Lower fee" = "Lagere vergoeding";
+
+/* (No Commment) */
 "Make Default" = "Maak standaard";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manual Pairing" = "Handmatige koppeling";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manually" = "Handmatig";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant" = "Koopman";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Directory is currently unavailable. Please try again later." = "Merchant Directory is momenteel niet beschikbaar. Probeer het later nog eens.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Map" = "Handelaar kaart";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant URL" = "Merchant URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Linked" = "Mobiele gekoppeld";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Number" = "GSM-nummer";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Mijn Bitcoin portemonnee";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Opmerking: De gescande privésleutel beantwoordt niet aan dit adres alleen-horloge. Als u uitgeven van dit adres wilt, zorg ervoor dat u de juiste persoonlijke sleutel scant.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Name" = "Naam";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Address" = "Nieuw adres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Email Address" = "Nieuw e-mailadres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Mobile Number" = "Nieuwe GSM-nummer";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different" = "Nieuw wachtwoord mag niet hetzelfde zijn";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different from your password hint" = "Nieuwe wachtwoord moet verschillen van uw wachtwoordhint";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "News, Price & Charts" = "Nieuws, prijs & Charts";
 
 /* No comment provided by engineer. */
 "Next word" = "Volgende woord";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No" = "No";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No Label" = "Geen Label";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "Geen wachtwoord ingevoerd";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection available. Please check your network settings." = "Geen internetverbinding beschikbaar. Controleer uw netwerkinstellingen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection." = "Geen internetverbinding.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Normal" = "Normaal";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not Stored" = "Niet opgeslagen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not now" = "Niet nu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Merk op dat nadat de upgrade is voltooid, u kunt niet teruggaan naar de vorige versie, maar alle uw bitcoins en uw transactiegeschiedenis zullen worden gehouden.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Notifications" = "Meldingen";
 
 /* No comment provided by engineer. */
@@ -658,184 +673,190 @@
 /* No comment provided by engineer. */
 "OK" = "OK";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN" = "PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Encrypted String is nil" = "PIN gecodeerde String is gelijk aan nihil";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object key or value length 0" = "PIN Response-Object sleutel of waarde lengte 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object success length 0" = "PIN Response-Object succes lengte 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Saved Successfully" = "PIN succesvol opgeslagen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation Error" = "PIN validatiefout";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "PIN validatie kan niet worden voltooid. Voer uw portemonnee wachtwoord handmatig.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PINs do not match" = "Pinnen komen niet overeen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Parsing Pairing Code" = "Parseren Code in paren rangschikken";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Hint" = "Geheugensteun voor het wachtwoord";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Required" = "Wachtwoord vereist";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password changed. Please login to continue." = "Wachtwoord gewijzigd. Gelieve in te loggen om door te gaan.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password must 10 characters or longer" = "Wachtwoord moet 10 karakters of langer";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Passwords do not match" = "Wachtwoorden komen niet overeen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Received" = "Betaling ontvangen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Sent!" = "Betaling verzonden!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Phrase Backed" = "Zin gesteund";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please Login" = "Gelieve in te loggen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please add an email address" = "Voeg een e-mailadres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email and click on the verification link." = "Controleer uw e-mail en klik op de verificatielink.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Controleer uw e-mailadres. Als u hebt al een login poging gecontroleerd, moet u inloggen via onze web-portemonnee en koppel je telefoon door het scannen van de QR code onder instellingen-> portemonnee informatie.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your internet connection." = "Controleer uw internetverbinding.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose another PIN" = "Kies een andere PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose from the options below." = "Kies uit de onderstaande opties.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Beschrijf in detail het probleem dat u ondervindt, samen met eventuele stappen die we nemen kunnen om het te reproduceren.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Voer een bedrag groter is dan 0 BTC en ten hoogste 0,01 BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a new PIN" = "Voer een nieuwe PIN-code";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your %@ 2FA code" = "Voer uw %@ 2FA code";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Voer uw portemonnee-id 36 tekens correct. Het kan worden gevonden in het welkomstbericht bij het opstarten.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your PIN" = "Voer uw pincode";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your recovery phrase with words separated by spaces" = "Voer uw herstel zin met woorden die gescheiden zijn door spaties";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Please lower the fee to an amount that is less than your balance" = "Gelieve het verlagen van de vergoeding tot een bedrag dat kleiner is dan uw saldo";
+
+/* (No Commment) */
 "Please provide an email address." = "Geef een e-mailadres.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please refresh the pairing code and try again." = "Vernieuw de pairing code en probeer het opnieuw.";
 
-/* No comment provided by engineer. */
-"Please select a different address to send from or lower the fee in Settings." = "Selecteer een ander adres te verzenden vanuit of lager de vergoeding in instellingen.";
+/* (No Commment) */
+"Please select a different address to send from." = "Selecteer een ander adres te sturen uit.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Stuur betaling naar bitcoin adres (< een href = \"https://blockchain.info/wallet/bitcoin-faq\" > helpen? < /a >): %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Stuur de betaling naar bitcoin adres. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Probeer het a.u.b. opnieuw";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please verify your email address first." = "Controleer eerst of uw e-mailadres.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Preferences" = "Voorkeuren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Privacy Policy" = "Privacybeleid";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Private Key Needed" = "Prive-sleutel nodig";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Processing key" = "Verwerking van sleutel";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Receive" = "Ontvangen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Received" = "Ontvangen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recover Funds" = "Herstellen van fondsen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recovering Funds" = "Herstellende fondsen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Regular" = "Regelmatige";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Request Amount" = "Verzoek bedrag";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification SMS" = "Verificatie SMS verzenden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification email" = "Controle e-mail opnieuw sturen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Reset" = "Reset";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Retrieving recommended fee" = "Ophalen van aanbevolen vergoeding";
+
+/* (No Commment) */
 "Retry Validation" = "Opnieuw validatie";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Robust security center" = "Robuuste Beveiligingscentrum";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "SMS" = "SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Save" = "Opslaan";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Pairing Code" = "Scan Code in paren rangschikken";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Private Key" = "Scannen van de persoonlijke sleutel";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR Code" = "QR Code scannen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR code" = "QR code scannen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scan deze code of kopieer het naar uw Blockchain Merchant app om Bitcoin veilig te ontvangen.";
 
 /* No comment provided by engineer. */
@@ -844,414 +865,450 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "Tweede wachtwoord vereist";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security" = "Veiligheid";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security Center" = "Beveiligingscentrum";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send" = "Verzenden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send from..." = "Verzenden van...";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send to..." = "Stuur naar...";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send verification SMS" = "Verificatie SMS verzenden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sending Transaction" = "Verzendende transactie";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent" = "Verzonden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent to %@" = "Verzonden naar %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Server URL" = "URL van server";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Set as Default?" = "Als standaard instellen?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Settings" = "Instellingen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Shared Coin is not supported in the new version at this time." = "Gedeelde munt wordt niet ondersteund in de nieuwe versie op dit moment.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Delen van uw xPub machtigt anderen uw transactiegeschiedenis bijhouden. Als geautoriseerde personen mogelijk verstoren u toegang krijgen tot uw portemonnee, alleen uw xPub te delen met mensen die u vertrouwt.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signaal %d werd opgevoed.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Input %d" = "Ondertekening Input %d";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Inputs" = "Ondertekening van ingangen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Simplified backup and recovery" = "Vereenvoudigde back-up en herstel";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Store Hint" = "Winkel Hint";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Stored" = "Opgeslagen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Strong" = "Strong";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success" = "Succes";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success!" = "Succes!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Support" = "Ondersteuning";
+
+/* (No Commment) */
+"Surge Occurring" = "Surge voorkomen";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synchroniseren portemonnee";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Terms of Service" = "Algemene gebruiksvoorwaarden";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual." = "De Bitcoin mining netwerk is momenteel een hoog volume van de activiteit, wat resulteert in Aanbevolen kosten die hoger zijn dan normaal.";
+
+/* (No Commment) */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "De pincode die u hebt geselecteerd is uiterst gemeenschappelijk en eenvoudig geraden kan worden door iemand met toegang tot uw telefoon binnen 3 probeert. Wilt u deze PIN toch gebruiken?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Het bedrag dat u wilt verzenden (%1$@) is groter dan het maximale bedrag dat u minus de vergoeding (%2$@ - %3$@ uitgeven kunt). Zou u willen verzenden %4$@?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The fee you have specified is too low." = "De vergoeding die u hebt opgegeven is te laag.";
+
+/* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "De persoonlijke sleutel die u probeert te importeren is gecodeerd. Voer het wachtwoord hieronder.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "De upgrade duurt slechts een seconde en uw bitcoins en de geschiedenis zal veilig zijn. Hier is wat is beter:";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "There was a problem verifying your identity." = "Er was een probleem uw identiteit verifiëren.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "These options are recommended for advanced users only. Continue?" = "Deze opties zijn alleen aanbevolen voor geavanceerde gebruikers. Blijven?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Deze actie vereist de persoonlijke sleutel voor de Bitcoin adres %@. Gelieve scan de QR code.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Deze actie is het tweede wachtwoord vereist voor uw bitcoin portemonnee. Voer het hieronder en druk op blijven.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This address is not watch-only." = "Dit adres is niet alleen-horloge.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Dit is een alleen-horloge-adres. Te besteden uw geld uit deze portefeuille, scannen kunt u uw persoonlijke sleutel.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Dit wordt gearchiveerd. Hoewel u geen fondsen vanaf hier verzenden, en alle middelen veilig te houden. Désarchiver gewoon om te beginnen het opnieuw te gebruiken.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This name is already in use. Please choose a different name." = "Deze naam is al in gebruik. Kies een andere naam.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Deze persoonlijke sleutel behoort tot een ander adres dat niet alleen horloge";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Deze transactie vereist een hogere vergoeding voor stof consumptie als gevolg van de kleine hoeveelheid verandering moet worden geretourneerd.";
+
+/* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Dit zal wissen alle portemonnee gegevens op dit apparaat. Gelieve te bevestigen dat u inderdaad uw portemonnee gegevens opgeslagen elders anders elke bitcoins in deze portefeuille zal zitten ontoegankelijk!!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "Aan: %1$@%2$@ totale bedrag: %3$@ Fee: %4$@ (%5$@)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor Requests" = "Tor aanvragen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor blocked" = "Tor geblokkeerd";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests allowed" = "Tor verzoeken toegestaan";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently allowed." = "Tor aanvragen zijn momenteel toegestaan.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently blocked." = "Tor aanvragen worden momenteel geblokkeerd.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Total Balance" = "Totaalsaldo";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID has been locked due to too many failed attempts." = "Touch-ID is geblokkeerd vanwege te veel mislukte pogingen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not available on this device." = "Touch-ID is niet beschikbaar op dit apparaat.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "Touch-ID is niet ingeschakeld op dit apparaat. Opdat Touch ID, ga naar instellingen->Touch-ID & toegangscode en voeg een vingerafdruk.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transaction" = "Transactie";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Transaction Fee" = "Transactiekosten";
+
+/* (No Commment) */
+"Transaction Fees" = "Transactiekosten";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Transactiekosten van invloed op hoe snel het Bitcoin mining netwerk zal bevestigen uw transacties en afhankelijk van de huidige netwerkcondities. Het is raadzaam de vergoeding hieronder voor de transactie op dit moment.";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Transactiekosten van invloed op hoe snel het Bitcoin mining netwerk zal bevestigen uw transacties, en afhankelijk van de huidige netwerkomstandigheden. Het is raadzaam de vergoeding voor deze transactie op dit moment weergegeven.";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transacties met geen kosten kunnen lang duren om te bevestigen of niet helemaal kunnen worden bevestigd. Wilt u doorgaan?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transfer Funds" = "Overdracht van middelen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transferred" = "Overgedragen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Try again" = "&Opnieuw";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "UPGRADE YOUR WALLET" = "UPGRADE UW PORTEMONNEE";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Onvermogend voor vracht portefeuille toe te schrijven aan geen reactie van server. U kunt off line of Blockchain ondervindt moeilijkheden. Probeer het later nog eens.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive" = "Désarchiver";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive Address" = "Désarchiver adres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unconfirmed" = "Onbevestigde";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Niet-verwerkte uitzondering";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown" = "Onbekend";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Onbekende Touch ID fout. Code: %ld";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown key format" = "Onbekend-sleutelindeling";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unsupported Private Key Format" = "Niet-ondersteunde privé sleutel indeling";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unverified" = "Niet-geverifieerde";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Update" = "Update";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade" = "Upgrade";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Now" = "Upgrade nu";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Wallet" = "Upgrade portemonnee";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to HD" = "Upgrade naar HD";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to V3" = "Upgrade naar V3";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use Touch ID as PIN" = "Touch-ID gebruiken als PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all %@" = "Gebruik alle %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all funds" = "Gebruik alle middelen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Use recommended values" = "Aanbevolen waarden gebruiken";
+
+/* (No Commment) */
 "User Declined" = "Gebruiker geweigerd";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "BACK-UPS VERIFIËREN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verification email has been sent to %@." = "Controle e-mail is verstuurd naar %@.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verified" = "Geverifieerd";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify" = "Controleer of";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify Email" = "Controleer of E-mail";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verifying" = "Verifiëren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet ID" = "Portemonnee-ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Information" = "Persoonlijke gegevens";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet JSON" = "Portemonnee JSON";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Paired Successfully." = "Portefeuille met succes gekoppeld.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Recovery Phrase" = "Portemonnee herstel zin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet version %lld not supported" = "Wallet versie %lld niet ondersteund";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning" = "Waarschuwing";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning!!!" = "Waarschuwing!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Waarschuwing: Uw portemonnee id is gevoelige informatie. Kopiëren kan dit beveiligingsrisico voor uw portemonnee.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Watch Only" = "Alleen kijken";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "We sturen de hint naar uw bevestigde e-mailadres in het geval u daarom vraagt.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van de portefeuille voor u";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "We hebben ook enkele verbeteringen op het gebied van privacy en veiligheid. Zodra u op bijwerken klikt zal niet u zitten kundig voor terug te keren naar uw oude portemonnee";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Weak" = "Zwak";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "WebSocket URL" = "WebSocket URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Welcome" = "Welkom";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "We hebben ontdekt een eerdere installatie van Blockchain portemonnee op uw telefoon.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Wilt u de bitcoin adres %@ aan uw adresboek toevoegen?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Schrijf uw zin herstel en bewaar het ergens zeer veilig en veilig. Vergeet niet dat iedereen die uw herstel zin weet toegang tot uw bitcoins heeft.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wrong BIP38 Password" = "Verkeerde BIP38 wachtwoord";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yes" = "Ja";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Gisteren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "U bent bezig met het importeren van een alleen-horloge-adres, een adres (of openbare sleutel script) opgeslagen in de portefeuille zonder de bijbehorende persoonlijke sleutel. Dit betekent dat de fondsen alleen als u de persoonlijke sleutel elders opgeslagen kunnen worden besteed. Als u de persoonlijke sleutel opgeslagen geen, instrueren niet iedereen te verzenden u bitcoin de watch-only adres.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "U bent bezig met bitcoin naar een alleen-horloge-adres ontvangen. U kunt deze fondsen alleen uitgeven als u toegang tot de persoonlijke sleutel hebt. Blijven?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "U werkt nu onze meest veilige Bitcoin portemonnee";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "U met succes een back-up uw fondsen";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "U kunt 2-step verificatie via SMS op uw mobiele telefoon. Om andere verificatiemethoden te gebruiken, gelieve in te loggen op onze web-portemonnee.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can now spend from this address." = "Nu kunt u genieten van dit adres.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "U hoeft niet een account instellen voor Mail. Neem contact op met %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You have no available funds to send from this address" = "U hebt geen middelen voor het verzenden van dit adres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Verificatie via SMS 2-Step voordat u wijzigt uw gsm-nummer (%@), moet u uitschakelen.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a destination address" = "U moet een doeladres invoeren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a label" = "U moet een label invoeren";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have at least one active address" = "U moet ten minste één actieve adres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "U moet verificatie met twee factoren uitgeschakeld voor paar handmatig.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must leave at least one active address" = "U moet ten minste één actieve adres";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "U moet altijd koppelen of inloggen als u toegang tot uw portefeuille-ID en wachtwoord hebt. Herstellen van uw fondsen zal maken een nieuwe portefeuille-ID. Wilt u doorgaan?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may be stuck and possibly never be confirmed. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@." = "U een uitzonderlijk kleine transactiekost van %1$@ hebt opgegeven. Uw transactie kan worden geplakt en mogelijk nooit worden bevestigd. Het vergroten van de kans op voor uw transactie te bevestigen binnen ongeveer een uur (zes blokken), raden wij een vergoeding van niet minder dan %2$@.";
+
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may become stuck and possibly never confirm. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@. Since you don’t have sufficient funds, that means the Send amount will also have to be lowered to %@." = "U een uitzonderlijk kleine transactiekost van %1$@ hebt opgegeven. Uw transactie kan worden geplakt en eventueel nooit bevestigen. Het vergroten van de kans op voor uw transactie te bevestigen binnen ongeveer een uur (zes blokken), raden wij een vergoeding van niet minder dan %2$@. Aangezien u niet voldoende middelen hebt, betekent dat het verzenden bedrag zal ook moeten worden verlaagd tot %3$@.";
+
+/* (No Commment) */
+"You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "U een ongewoon hoge transactiekosten van %1$@ hebt opgegeven. Zelfs als u het bedrag dat %2$@ verlaagt, kunt u de transactie te bevestigen binnen de volgende 10 minuten (één blok) verwachten.";
+
+/* (No Commment) */
 "You've successfully imported a private key." = "U hebt met succes een persoonlijke sleutel geïmporteerd.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "U hebt met succes geïmporteerd de persoonlijke sleutel voor het adres %@, en u kunt nu uit het besteden. Als u uitgeven van dit adres wilt, controleert u of dat u scant de juiste persoonlijke sleutel.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Het apparaat lijkt te zijn jailbroken. De beveiliging van uw portefeuille kan worden aangetast.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your email has been verified." = "Uw e-mailadres is geverifieerd.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your identity does not match our records." = "Uw identiteit komt niet overeen met onze gegevens.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your mobile number has been verified." = "Uw gsm-nummer is geverifieerd.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains invalid characters. Please try again." = "Uw nieuwe wachtwoordhint bevat ongeldige tekens. Probeer het opnieuw.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains no text. Your password hint will be cleared." = "Uw nieuwe wachtwoordhint bevat geen tekst. Uw wachtwoordhint zal worden gewist.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your password. Please try again." = "Uw nieuwe geheugensteun voor het wachtwoord moet afwijken van uw wachtwoord. Probeer het opnieuw.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your second password. Please try again." = "Uw nieuwe geheugensteun voor het wachtwoord moet afwijken van uw tweede wachtwoord. Probeer het opnieuw.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your password hint has been updated." = "Uw wachtwoordhint is bijgewerkt.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Uw overgedragen geld zal veilig en betrouwbaar, en profiteert u van verhoogde privacy en handige functies van de back-up en herstel.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Uw geverifieerde e-mailadres wordt gebruikt om te sturen logingegevens wanneer verdachte of ongebruikelijke activiteit wordt gedetecteerd, herinneren u aan uw portemonnee aanmeldings-ID, en kunt sturen bitcoin betaling waarschuwingen wanneer u fondsen ontvangen. We zullen niet uw e-mailadres gebruiken voor marketingdoeleinden.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet does not contain this address." = "Uw portemonnee bevat geen dit adres.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet was successfully created." = "Uw portemonnee is met succes gemaakt.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yubi Key" = "Yubi sleutel";
 
 /* No comment provided by engineer. */
@@ -1269,16 +1326,16 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 /* No comment provided by engineer. */
 "fourth word" = "vierde woord";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "from" = "Van";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "iOS Support Request" = "iOS ondersteuningsverzoek";
 
 /* No comment provided by engineer. */
 "ninth word" = "negende woord";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "or Continue" = "of doorgaan";
 
 /* No comment provided by engineer. */

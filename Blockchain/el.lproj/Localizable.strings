@@ -1,13 +1,13 @@
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ copied to clipboard" = "%@ αντιγράφεται στο Πρόχειρο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Confirmations" = "%d επιβεβαιώσεις";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Transactions" = "%d συναλλαγές";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld δευτερόλεπτα πριν";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "* Minimum 10 characters" = "* Τουλάχιστον 10 χαρακτήρες";
 
 /* No comment provided by engineer. */
@@ -28,628 +28,643 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "πριν από 1 λεπτό";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step Enabled" = "2-βήμα ενεργοποιημένη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been disabled." = "2-βήμα έχει απενεργοποιηθεί.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been enabled for SMS." = "2-βήμα έχει ενεργοποιηθεί για SMS.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification" = "Επαλήθευση 2 βημάτων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently disabled." = "Επαλήθευση σε 2 βήματα είναι απενεργοποιημένος.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled for %@." = "Επαλήθευση 2 βημάτων σήμερα είναι ενεργοποιημένη για %@.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled." = "Επαλήθευση 2 βημάτων σήμερα είναι ενεργοποιημένη.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "API URL" = "ΔΙΕΎΘΥΝΣΗ URL API";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "About" = "Σχετικά με";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Account Details" = "Τα στοιχεία του λογαριασμού";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Accounts" = "Λογαριασμοί";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add Email" = "Προσθέστε το Email";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add to Address book?" = "Προσθήκη στο βιβλίο διευθύνσεων;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address" = "Διεύθυνση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address book" = "Βιβλίο διευθύνσεων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address is not valid" = "Διεύθυνση δεν είναι έγκυρη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Addresses" = "Διευθύνσεις";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Adjust Fee" = "Ρυθμίστε την αμοιβή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allow" = "Επιτρέπουν";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allowed" = "Επιτρέπεται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "Ποσό πρέπει να είναι πάνω από το όριο της σκόνης (%lld Satoshi)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Παρουσιάστηκε σφάλμα επικύρωση κωδικό σας PIN με τον απομακρυσμένο διακομιστή. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain μπορεί να αντιμετωπίζουν δυσκολίες. Θα θέλατε επανάληψη επικύρωσης ή αντί να εισάγετε τον κωδικό σας με το χέρι;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Παρουσιάστηκε σφάλμα κατά την αλλαγή επαλήθευση σε 2 βήματα.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Παρουσιάστηκε σφάλμα κατά τη φόρτωση το πορτοφόλι σας. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain αντιμετωπίζει δυσκολίες. Παρακαλούμε να κλείσετε την εφαρμογή και προσπαθήστε ξανά αργότερα ή αντιστοιχίστε εκ νέου τη συσκευή σας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "Παρουσιάστηκε σφάλμα κατά την ανάκτηση σας αναγνωριστικό πορτοφολιού από το keychain. Κλείστε την εφαρμογή και προσπαθήστε ξανά.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Any address" = "Οποιαδήποτε διεύθυνση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive" = "Αρχείο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive Address" = "Αρχείο διεύθυνση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "Αρχειοθετήστε αυτό αν δεν θέλετε να το χρησιμοποιούν πια. Τα χρήματά σας θα παραμείνουν ασφαλείς και σας μπορεί να το αφαιρέσετε οποιαδήποτε στιγμή.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archived" = "Αρχειοθετούνται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Ask Me Later" = "Να ερωτηθώ αργότερα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authenticate with Touch ID" = "Έλεγχος ταυτότητας με ID αφής";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authorization Required" = "Έγκριση που απαιτείται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatic Pairing" = "Αυτόματη αντιστοίχιση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatically" = "Αυτόματα";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "ΕΦΕΔΡΙΚΉ ΤΑΜΕΊΑ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup" = "Δημιουργία αντιγράφων ασφαλείας";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "Εφεδρική ταμεία";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup Phrase" = "Εφεδρική φράση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "Πριν την προσπέλαση πορτοφόλι σας, επιλέξτε έναν αριθμό pin για να χρησιμοποιήσετε για να ξεκλειδώσετε το πορτοφόλι σας. Είναι σημαντικό να θυμάστε αυτό το pin, όπως δεν μπορεί να επαναφέρετε ή να αλλάξει χωρίς την πρώτη απελευθέρωση app.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin Unit" = "Bitcoin μονάδα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin payment request" = "Bitcoin αίτηση πληρωμής";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block" = "Μπλοκ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block Tor" = "Μπλοκ Tor";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain δεν έχει πρόσβαση στην κάμερα. Για να ενεργοποιήσετε την πρόσβαση, πάει στη συσκευή σας ρυθμίσεις.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain αυτή τη στιγμή κάτω για τη συντήρηση. Παρακαλώ προσπαθήστε ξανά αργότερα.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας. Μπορείτε να ενεργοποιήσετε την πρόσβαση στις ρυθμίσεις -> προσωπικό απόρρητο -> υπηρεσίες τοποθεσίας";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain χρειάζεται υπηρεσίες τοποθεσίας ενεργοποιημένη για να αποκτήσει πρόσβαση στην τοποθεσία σας. Μπορείτε να ενεργοποιήσετε την πρόσβαση στις ρυθμίσεις -> προσωπικό απόρρητο -> θέση -> υπηρεσίες τοποθεσίας";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blocked" = "Μπλοκάρει";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Camera Access Denied" = "Δεν επιτρέπεται η πρόσβαση φωτογραφική μηχανή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cancel" = "\"Άκυρο\"";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Δεν μπορεί να σώσει κωδικό PIN, ενώ δεν έχει προετοιμαστεί πορτοφόλι ή τον κωδικό πρόσβασης είναι null";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Email" = "Αλλαγή Email";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Mobile Number" = "Αλλάξτε τον αριθμό του κινητού";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change PIN" = "Αλλαγή PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password" = "Αλλαγή κωδικού πρόσβασης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password Hint" = "Αλλαγή υπόδειξη κωδικού πρόσβασης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change fee per kilobyte" = "Τέλος της αλλαγής, ανά kilobyte";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for Wallet updates" = "Έλεγχος για ενημερώσεις πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for more: Step %d of %d" = "Έλεγχος για περισσότερα: %1$d βήμα του %2$d";
 
 /* No comment provided by engineer. */
 "Close" = "Κλείσιμο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Close App" = "Κλείστε το App";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Complete the steps below for ultimate security" = "Ολοκληρώστε τα παρακάτω βήματα για την απόλυτη ασφάλεια";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Completely updated design and user experience" = "Εντελώς επικαιροποιημένου σχεδίου και εμπειρία χρήστη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Payment" = "Επιβεβαιώσετε την πληρωμή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Upgrade" = "Επιβεβαιώσει την αναβάθμιση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm your PIN" = "Επιβεβαίωση αριθμού PIN σας";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Η σύνδεση έληξε. Παρακαλείστε να ελέγξετε σύνδεσή σας στο internet.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "Συνεχίσει";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copied to clipboard" = "Αντιγραφή στο Πρόχειρο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Address" = "Αντιγραφή διεύθυνσης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Wallet ID" = "Αντίγραφο πορτοφόλι ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy to clipboard" = "Αντιγραφή στο Πρόχειρο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy xPub" = "Αντίγραφο xPub";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create" = "Δημιουργία";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create New Wallet" = "Δημιουργήσετε νέα πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create Wallet" = "Δημιουργία πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create new address" = "Δημιουργία νέας διεύθυνσης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating" = "Τη δημιουργία";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating HD Wallet" = "Τη δημιουργία HD πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating V3 Wallet" = "Τη δημιουργία πορτοφολιού V3";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating Wallet" = "Τη δημιουργία πορτοφολιού";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new Wallet" = "Δημιουργώντας νέα πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new address" = "Δημιουργώντας νέα διεύθυνση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Current rate: %@ BTC" = "Σημερινό ποσοστό: %@ BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Να προσαρμόσετε τον τρόπο που μπορείτε να οργανώσετε σας bitcoins στο πορτοφόλι σας Blockchain";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customized fund management" = "Προσαρμοσμένη ταμείο διαχείρισης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Debug" = "Εντοπισμού σφαλμάτων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "Αποκρυπτογραφηθούν με τον PIN κωδικό μήκος 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Private Key" = "Αποκρυπτογράφηση ιδιωτικού κλειδιού";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Wallet" = "Αποκρυπτογράφηση πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Default" = "Προεπιλογή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disable" = "Απενεργοποίηση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disabled" = "Άτομα με ειδικές ανάγκες";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Display" = "Οθόνη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Do you really want to log out?" = "Θέλετε να αποσυνδεθείτε;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Don't show again" = "Να μην εμφανιστεί ξανά";
 
 /* No comment provided by engineer. */
 "Done" = "Γίνει";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Downloading Wallet" = "Τη λήψη πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Easy one time wallet backup keeps you in control of your funds" = "Εύκολο ένα χρόνο εφεδρικής τροφοδοσίας πορτοφόλι σας κρατά σε έλεγχο των κεφαλαίων σας";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Edit" = "Επεξεργασία";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email" = "Ηλεκτρονικό ταχυδρομείο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Notifications" = "Ανακοινώσεις ηλεκτρονικού ταχυδρομείου";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Verified" = "Λευκόψαρων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Empty response from server." = "Κενή απόκριση από το διακομιστή.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable" = "Ενεργοποίηση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step" = "Επιτρέψει 2-βήμα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step for SMS" = "Επιτρέψει 2-βήμα για SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable Location Services" = "Ενεργοποιήστε τις υπηρεσίες τοποθεσίας";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Ενεργοποίηση κοινοποιήσεις να λαμβάνετε ένα email κάθε φορά που λαμβάνετε bitcoins. Μόνο με την ένδειξη διευθύνσεις και εισάγονται διευθύνσεις δικαιούνται να σκανδάλη κοινοποιήσεις.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Ενεργοποίηση αυτής της επιλογής για την πρόληψη των διευθύνσεων IP που είναι γνωστό ότι είναι μέρος του δικτύου τις anonymizing Tor από την πρόσβαση σε το πορτοφόλι σας. Το δίκτυο Tor χρησιμοποιείται συχνά από τους χάκερ που προσπαθεί να αποκτήσει πρόσβαση χρηστών Blockchain πορτοφόλια.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Ενεργοποίηση αυτής της δυνατότητας θα επιτρέπουν σε όλους τους χρήστες με μια καταστατική ID αφής δακτυλικών αποτυπωμάτων σε αυτήν την συσκευή για να αποκτήσετε πρόσβαση στο πορτοφόλι σας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enhanced Privacy" = "Ενισχυμένου απορρήτου";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Enter %@ amount" = "Εισάγετε το ποσό %@";
+
+/* (No Commment) */
 "Enter PIN" = "Εισαγάγετε το PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Password" = "Εισάγετε τον κωδικό πρόσβασης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Verification Code" = "Εισάγετε κωδικό επαλήθευσης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter your verification code" = "Εισάγετε τον κωδικό επαλήθευσής σας";
 
 /* No comment provided by engineer. */
 "Error" = "Σφάλμα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error loading settings" = "Σφάλμα φόρτωσης ρυθμίσεις";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error updating settings" = "Σφάλμα κατά την ενημέρωση των ρυθμίσεων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "Όλα όσα χρειάζεστε για την αποθήκευση, περνούν και λάβετε σας bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Extended Public Key" = "Επεκταθεί δημόσιο κλειδί";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Failed To Load Wallet" = "Απέτυχε η φόρτωση πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee is too high (0.01 BTC limit)" = "Τέλος είναι πολύ υψηλό (0.01 BTC όριο)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee per KB" = "Χρέωση ανά KB";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fees" = "Αμοιβές";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Finished Signing Inputs" = "Τελείωσε την υπογραφή εισροές";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Για την ασφάλειά σας, σας συνιστούμε να μεταφέρετε το υπόλοιπο σε εισηγμένες διευθύνσεις σας στο πορτοφόλι σας Blockchain.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Forget Wallet" = "Ξεχάστε το πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Found %d, with %@" = "Βρέθηκαν %1$d, με %2$@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination address have to be different" = "Από και διεύθυνση προορισμού πρέπει να διαφέρει";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination have to be different" = "Από και προορισμού πρέπει να διαφέρει";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Go to Settings" = "Μεταβείτε στην επιλογή Ρυθμίσεις";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Google Authenticator" = "Ο Επαληθευτής Google";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Hint Stored" = "Υπόδειξη αποθηκεύονται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "How would you like to pair?" = "Πώς θα θέλατε να ζεύγος;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Identifier" = "Αναγνωριστικό";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Εάν είστε ένας έμπορος, δείχνουν xPub σας και χρήση της εφαρμογής Blockchain έμπορος να λαμβάνουν κεφάλαια με ασφάλεια και ιδιωτικώς.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import Private Key" = "Εισαγωγή ιδιωτικού κλειδιού";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import address" = "Εισαγωγή διευθύνσεων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses" = "Εισηγμένες διευθύνσεις";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses (Archived)" = "Εισηγμένες διευθύνσεις (Archived)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Private Key %@" = "Εισαγόμενα ιδιωτικού κλειδιού %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported watch-only address %@" = "Εισάγονται μόνο ρολόι διεύθυνση %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Importing key" = "Εισαγωγή κλειδί";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect PIN. Please retry." = "Λανθασμένο κωδικό PIN. Δοκιμάστε ξανά.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect password" = "Εσφαλμένος κωδικός πρόσβασης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect private key" = "Εσφαλμένη ιδιωτικού κλειδιού";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Increase fee" = "Αύξηση τελών";
+
+/* (No Commment) */
 "Information" = "Πληροφορίες";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Initializing Wallet" = "Την προετοιμασία πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Insufficient Funds" = "Ανεπαρκή χρήματα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Identifier" = "Μη έγκυρο αναγνωριστικό";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Pairing Code" = "Μη έγκυρο κώδικα αντιστοίχιση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Send Value" = "Η τιμή δεν είναι έγκυρη αποστολή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Shared Key" = "Μη έγκυρο κοινόχρηστο κλειδί";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Status Code Returned %@" = "Μη έγκυρη κατάσταση κωδικός %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Wallet ID" = "Μη έγκυρο αναγνωριστικό πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid address: %@" = "Άκυρη διεύθυνση: %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid email address." = "Μη έγκυρη διεύθυνση email.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid mobile number." = "Μη έγκυρος αριθμός κινητού.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid recovery phrase. Please try again" = "Μη έγκυρη ανάκτηση φράση. Παρακαλώ προσπαθήστε ξανά";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "Απόκριση διακομιστή δεν είναι έγκυρες. Παρακαλείστε να ελέγξετε σύνδεσή σας στο internet.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid to bitcoin address" = "Μη έγκυρη διεύθυνση bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid two-factor authentication type" = "Μη έγκυρη πιστοποίηση δύο παραγόντων τύπου";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid verification code. Please try again." = "Ο κωδικός επαλήθευσης δεν είναι έγκυρη. Παρακαλώ ξαναπροσπαθήστε.";
 
 /* No comment provided by engineer. */
 "Just now" = "Μόλις τώρα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Keep higher fee" = "Κρατήσει υψηλότερα τέλη";
+
+/* (No Commment) */
+"Keep lower fee" = "Κρατήσει χαμηλότερη αμοιβή";
+
+/* (No Commment) */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Κρατήστε απόρρητες τις xPub σας. Κάποιος με πρόσβαση σε xPub σας θα είναι σε θέση να δείτε όλα τα κεφάλαια και οι συναλλαγές.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label" = "Ετικέτα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label Address" = "Διεύθυνση ετικέτα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must contain letters and numbers only" = "Ετικέτα πρέπει να περιέχει γράμματα και αριθμούς μόνο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must have less than 18 characters" = "Ετικέτα πρέπει να έχουν λιγότερο από 18 χαρακτήρες";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Link Mobile" = "Κινητό σύνδεση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading External Page" = "Φόρτωση εξωτερική σελίδα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading transactions" = "Φόρτωση συναλλαγές";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Local Currency" = "Τοπικό νόμισμα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Log in to my Wallet" = "Συνδεθείτε στο πορτοφόλι μου";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Login existing Wallet" = "Οι υπάρχουσες πορτοφόλι σύνδεσης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Logout" = "Αποσύνδεση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Lower fee" = "Χαμηλότερη αμοιβή";
+
+/* (No Commment) */
 "Make Default" = "Κάνει προεπιλογή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manual Pairing" = "Μη αυτόματη αντιστοίχιση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manually" = "Με μη αυτόματο τρόπο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant" = "Έμπορος";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Directory is currently unavailable. Please try again later." = "Εμπορικός κατάλογος είναι διαθέσιμο προς το παρόν. Παρακαλώ προσπαθήστε ξανά αργότερα.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Map" = "Έμπορος χάρτη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant URL" = "Έμπορος URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Linked" = "Κινητό που συνδέονται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Number" = "Τον αριθμό του κινητού";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Το πορτοφόλι μου Bitcoin";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "Σημείωση: Το σαρωμένο ιδιωτικό κλειδί δεν αντιστοιχεί σε αυτή τη διεύθυνση μόνο ρολόι. Αν θέλετε να περάσουν από αυτή τη διεύθυνση, βεβαιωθείτε ότι μπορείτε να σαρώσετε το σωστό ιδιωτικό κλειδί.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Name" = "Όνομα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Address" = "Νέα διεύθυνση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Email Address" = "Νέα διεύθυνση ηλεκτρονικού ταχυδρομείου";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Mobile Number" = "Νέο κινητό αριθμό";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different" = "Νέος κωδικός πρόσβασης πρέπει να είναι διαφορετικό";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different from your password hint" = "Νέος κωδικός πρόσβασης πρέπει να είναι διαφορετική από την υπόδειξη κωδικού πρόσβασης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "News, Price & Charts" = "Ειδήσεις, τιμή & διαγράμματα";
 
 /* No comment provided by engineer. */
 "Next word" = "Επόμενη λέξη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No" = "Όχι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No Label" = "Καμία ετικέτα";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "Δεν τον κωδικό πρόσβασης που εγγράφονται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection available. Please check your network settings." = "Δεν Διαδίκτυο σύνδεση διαθέσιμος. Παρακαλώ ελέγξτε τις ρυθμίσεις δικτύου.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection." = "Καμία σύνδεση στο internet.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Normal" = "Κανονική";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not Stored" = "Δεν αποθηκεύονται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not now" = "Όχι τώρα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Σημειώστε ότι εφόσον γίνει η αναβάθμιση, μπορείτε να επιστρέψετε στην προηγούμενη έκδοση, αλλά όλα τα bitcoins σας και σας ιστορικό κινήσεων θα παραμείνει.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Notifications" = "Κοινοποιήσεις";
 
 /* No comment provided by engineer. */
@@ -658,184 +673,190 @@
 /* No comment provided by engineer. */
 "OK" = "Ok";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN" = "ΚΑΡΦΊΤΣΑ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Encrypted String is nil" = "Συμβολοσειρά κρυπτογραφημένα PIN είναι μηδενική";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object key or value length 0" = "PIN απάντηση αντικείμενο κλειδί ή τιμή μήκους 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object success length 0" = "PIN αντικείμενο Response επιτυχία μήκος 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Saved Successfully" = "ΚΑΡΦΊΤΣΑ αποθηκευτεί με επιτυχία";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation Error" = "Σφάλμα επικύρωσης καρφίτσα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "Δεν μπορεί να ολοκληρωθεί η επικύρωση του PIN. Παρακαλούμε εισάγετε τον κωδικό του πορτοφολιού σας με μη αυτόματο τρόπο.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PINs do not match" = "Δεν ταιριάζουν καρφίτσες";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Parsing Pairing Code" = "Ανάλυση σύζευξη κωδικός";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Hint" = "Υπόδειξη κωδικού πρόσβασης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Required" = "Κωδικό πρόσβασης που απαιτείται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password changed. Please login to continue." = "Αλλάξει τον κωδικό πρόσβασης. ΠΑΡΑΚΑΛΩ Συνδεθειτε για να συνεχίσει.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password must 10 characters or longer" = "Κωδικός πρόσβασης πρέπει να 10 χαρακτήρες ή περισσότερο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Passwords do not match" = "Κωδικοί πρόσβασης δεν ταιριάζουν";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Received" = "Πληρωμής που έλαβε";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Sent!" = "Πληρωμής που στάλθηκαν!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Phrase Backed" = "Φράση που υποστηρίζεται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please Login" = "Παρακαλούμε συνδεθείτε";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please add an email address" = "Παρακαλούμε να προσθέσετε μια διεύθυνση ηλεκτρονικού ταχυδρομείου";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email and click on the verification link." = "Παρακαλώ ελέγξτε το email σας και κάντε κλικ στο σύνδεσμο επαλήθευσης.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "Παρακαλώ ελέγξτε το email σας. Εάν έχετε ελέγξει ήδη μια προσπάθεια σύνδεσης, θα πρέπει να συνδεθείτε μέσω μας ηλεκτρονική μέθοδος πληρωμής και να ζευγαρώσετε το τηλέφωνό σας, σαρώνοντας τον κωδικό QR στην περιοχή ρυθμίσεις-> πληροφορίες πορτοφόλι.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your internet connection." = "Παρακαλείστε να ελέγξετε σύνδεσή σας στο internet.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose another PIN" = "Παρακαλώ επιλέξτε μια άλλη καρφίτσα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose from the options below." = "Παρακαλώ επιλέξτε από τις παρακάτω επιλογές.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Περιγράψτε λεπτομερώς το ζήτημα που αντιμετωπίζετε, μαζί με οποιοδήποτε τρόπο μπορούμε να αναπαραχθούν.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Παρακαλούμε εισάγετε μια αμοιβή μεγαλύτερη από 0 BTC και στα περισσότερα 0.01 BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a new PIN" = "Πληκτρολογήστε ένα νέο κωδικό PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your %@ 2FA code" = "Παρακαλούμε εισάγετε τον κωδικό σας %@ 2FA";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "Παρακαλούμε εισάγετε σωστά σας αναγνωριστικό πορτοφόλι 36 χαρακτήρα. Μπορεί να βρεθεί σε το ευπρόσδεκτο ηλεκτρονικό ταχυδρομείο κατά την εκκίνηση.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your PIN" = "Παρακαλούμε εισάγετε το PIN σας";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your recovery phrase with words separated by spaces" = "Παρακαλούμε εισάγετε φράση σας αποκατάστασης με λέξεις που διαχωρίζονται από διαστήματα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Please lower the fee to an amount that is less than your balance" = "Παρακαλώ να μειώσει το τέλος ένα ποσό που είναι μικρότερο από το υπόλοιπο σας";
+
+/* (No Commment) */
 "Please provide an email address." = "Καλείσθε να παράσχετε μια διεύθυνση ηλεκτρονικού ταχυδρομείου.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please refresh the pairing code and try again." = "Ανανεώστε τον κωδικό ζεύξης και προσπαθήστε ξανά.";
 
-/* No comment provided by engineer. */
-"Please select a different address to send from or lower the fee in Settings." = "Παρακαλώ επιλέξτε μια διαφορετική διεύθυνση για την αποστολή από ή μείωση των τελών στις ρυθμίσεις.";
+/* (No Commment) */
+"Please select a different address to send from." = "Παρακαλώ επιλέξτε μια διαφορετική διεύθυνση για την αποστολή από.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Παρακαλώ στείλτε πληρωμής bitcoin διεύθυνση (< ένα href = \"https://blockchain.info/wallet/bitcoin-faq\" > βοηθήσει; < /a >): %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Παρακαλώ στείλτε πληρωμής bitcoin διεύθυνση. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Παρακαλώ προσπαθήστε ξανά";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please verify your email address first." = "Παρακαλώ επιβεβαιώστε διεύθυνση ηλεκτρονικού ταχυδρομείου σας πρώτα.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Preferences" = "Προτιμήσεις";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Privacy Policy" = "Πολιτική προστασίας προσωπικών δεδομένων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Private Key Needed" = "Ιδιωτικού κλειδιού απαιτείται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Processing key" = "Επεξεργασία κλειδί";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Receive" = "Λάβετε";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Received" = "Έλαβε";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recover Funds" = "Ανάκτηση κεφαλαίων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recovering Funds" = "Ανάκτησης των κεφαλαίων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Regular" = "Τακτική";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Request Amount" = "Αίτηση ποσό";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification SMS" = "Νέα αποστολή επαλήθευσης SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification email" = "Στείλτε ξανά το μήνυμα ηλεκτρονικού ταχυδρομείου επαλήθευσης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Reset" = "Επαναφορά";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Retrieving recommended fee" = "Ανάκτηση συνιστάται αμοιβή";
+
+/* (No Commment) */
 "Retry Validation" = "Επαναλάβετε την επικύρωση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Robust security center" = "Ισχυρή ασφάλεια κέντρο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "SMS" = "SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Save" = "Αποθήκευση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Pairing Code" = "Σάρωση σύζευξη κωδικός";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Private Key" = "Σάρωση ιδιωτικού κλειδιού";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR Code" = "Σάρωση κωδικού QR";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR code" = "Σάρωση κωδικού QR";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Σάρωση αυτόν τον κώδικα ή να το αντιγράψετε σε σας app Blockchain έμπορος να λάβετε με ασφάλεια το Bitcoin.";
 
 /* No comment provided by engineer. */
@@ -844,414 +865,450 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "Δεύτερο κωδικό πρόσβασης που απαιτείται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security" = "Ασφάλεια";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security Center" = "Κέντρο ασφαλείας";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send" = "Αποστολή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send from..." = "Στείλτε από...";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send to..." = "Στείλτε σε...";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send verification SMS" = "Αποστολή επαλήθευσης SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sending Transaction" = "Αποστολή της συναλλαγής";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent" = "Έστειλε";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent to %@" = "Έστειλε να %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Server URL" = "Διεύθυνση URL διακομιστή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Set as Default?" = "Ορισμός ως προεπιλογή;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Settings" = "Ρυθμίσεις";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Shared Coin is not supported in the new version at this time." = "Κοινόχρηστο κέρμα δεν υποστηρίζεται στη νέα έκδοση αυτή τη στιγμή.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Κοινή χρήση xPub σας εξουσιοδοτεί άλλους για να παρακολουθείτε το ιστορικό συναλλαγών σου. Καθώς και εξουσιοδοτημένα πρόσωπα μπορεί να είναι σε θέση να διαταράξει σας από την πρόσβαση στο πορτοφόλι σας, μοιράζονται μόνο σας xPub με ανθρώπους που εμπιστεύεστε.";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Υψώθηκε σήμα %d.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Input %d" = "Υπογραφή εισόδου %d";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Inputs" = "Υπογραφή εισροές";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Simplified backup and recovery" = "Απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Store Hint" = "Κατάστημα υπόδειξη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Stored" = "Αποθηκεύονται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Strong" = "Ισχυρή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success" = "Επιτυχία";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success!" = "Επιτυχία!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Support" = "Υποστήριξη";
+
+/* (No Commment) */
+"Surge Occurring" = "Κύμα που συμβαίνουν";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Συγχρονισμός πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Terms of Service" = "Όροι παροχής υπηρεσιών";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual." = "Το δίκτυο Bitcoin εξόρυξης βιώνει αυτή τη στιγμή ενός μεγάλου όγκου δραστηριότητα, με αποτέλεσμα την προτεινόμενη αμοιβή που είναι μεγαλύτερο από το συνηθισμένο.";
+
+/* (No Commment) */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "Η καρφίτσα που έχετε επιλέξει είναι πολύ συχνή και μπορεί να μαντέψει εύκολα κάποιος με πρόσβαση στο τηλέφωνό σας εντός 3 προσπαθεί. Θα θέλατε να χρησιμοποιήσετε αυτό το PIN ούτως ή άλλως;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "Το ποσό που θέλετε να στείλετε (%1$@) είναι μεγαλύτερο από το μέγιστο ποσό που μπορείτε να περάσετε μείον το τέλος (%2$@ - %3$@). Θα θέλατε να στείλετε %4$@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The fee you have specified is too low." = "Η αμοιβή του καθορίσατε είναι υπερβολικά χαμηλή.";
+
+/* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Το ιδιωτικό κλειδί που προσπαθείτε να εισαγάγετε είναι κρυπτογραφημένη. Παρακαλώ εισάγετε τον παρακάτω κωδικό πρόσβασης.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Η αναβάθμιση διαρκεί μόνο ένα δευτερόλεπτο και bitcoins και την ιστορία σας θα είναι ασφαλές. Εδώ είναι τι είναι καλύτερο:";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "There was a problem verifying your identity." = "Υπήρχε ένα πρόβλημα που επαληθεύει την ταυτότητά σας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "These options are recommended for advanced users only. Continue?" = "Αυτές οι επιλογές συνιστάται μόνο για προχωρημένους χρήστες. Συνέχεια;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Αυτή η ενέργεια απαιτεί το ιδιωτικό κλειδί για το Bitcoin διεύθυνση %@. Παρακαλούμε να Σκανάρετε τον κωδικό QR.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας bitcoin. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This address is not watch-only." = "Αυτή η διεύθυνση δεν είναι μόνο ρολόι.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Αυτή είναι μια διεύθυνση μόνο ρολόι. Να δαπανήσει τα κεφάλαιά σας από το πορτοφόλι, παρακαλώ Σαρώστε το ιδιωτικό σας κλειδί.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Αυτό αρχειοθετείται. Αν και δεν μπορείτε να στείλετε χρήματα από εδώ, και κάθε κεφάλαια θα παραμείνουν ασφαλείς. Απλά κατάργηση αρχειοθέτησης για να το χρησιμοποιήσετε ξανά.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This name is already in use. Please choose a different name." = "Αυτό το όνομα είναι ήδη σε χρήση. Παρακαλώ επιλέξτε ένα διαφορετικό όνομα.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This private key belongs to another address that is not watch only" = "Αυτό το ιδιωτικό κλειδί που ανήκει σε άλλη διεύθυνση που δεν είναι μόνο το ρολόι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Αυτήν τη συναλλαγή απαιτεί μια υψηλότερη χρέωση για σκόνη κατανάλωση λόγω της μικρής ποσότητας της αλλαγής που θα επιστραφούν.";
+
+/* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Αυτό θα διαγράψει όλα τα δεδομένα πορτοφόλι σε αυτήν τη συσκευή. Επιβεβαιώστε ότι έχετε πληροφορίες πορτοφόλι σας αποθηκεύονται αλλού, διαφορετικά οποιαδήποτε bitcoins σε αυτό πορτοφόλι θα είναι απροσπέλαστα!!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "ΠΡΟΣ: %1$@%2$@ συνολικό ποσό: %3$@ αμοιβή: %4$@ (%5$@)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor Requests" = "Tor αιτήσεις";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor blocked" = "Tor μπλοκαριστεί";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests allowed" = "Tor αιτήσεις επιτρέπεται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently allowed." = "Προς το παρόν επιτρέπονται αιτήσεις Tor.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently blocked." = "Tor αιτήσεις επί του παρόντος αποκλείονται.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Total Balance" = "Συνολικό υπόλοιπο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID has been locked due to too many failed attempts." = "Αφής ID έχει κλειδωθεί λόγω πάρα πολλές αποτυχημένες προσπάθειες.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not available on this device." = "ID αφής δεν είναι διαθέσιμη σε αυτήν τη συσκευή.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "ID αφής δεν είναι ενεργοποιημένη σε αυτήν την συσκευή. Για να ενεργοποιήσετε την αφή ID, πηγαίνετε στο ρυθμίσεις->Touch ID & κωδικό πρόσβασης και να προσθέσετε ένα δακτυλικό αποτύπωμα.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transaction" = "Συναλλαγή";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Transaction Fee" = "Τέλος συναλλαγής";
+
+/* (No Commment) */
+"Transaction Fees" = "Χρεώσεις συναλλαγών";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Τέλη συναλλαγής επιπτώσεις πόσο γρήγορα το δίκτυο Bitcoin εξόρυξης θα επιβεβαιώσει τις συναλλαγές σας και να εξαρτώνται από την τρέχουσα κατάσταση του δικτύου. Σας συνιστούμε την αμοιβή κάτω από για τη συναλλαγή αυτή τη στιγμή.";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Τέλη συναλλαγής επιπτώσεις πόσο γρήγορα το δίκτυο Bitcoin εξόρυξης θα επιβεβαιώσει τις συναλλαγές σας, και να εξαρτώνται από τις τρέχουσες συνθήκες δικτύου. Σας συνιστούμε την αμοιβή που εμφανίζονται για αυτήν τη συναλλαγή αυτή τη στιγμή.";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Συναλλαγές χωρίς χρεώσεις μπορεί να πάρει πολύ χρόνο να επιβεβαιώσει ή δεν μπορεί να επιβεβαιωθεί σε όλα. Θέλετε να συνεχίσετε;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transfer Funds" = "Μεταφορά κεφαλαίων";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transferred" = "Μεταφέρονται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Try again" = "Δοκίμασε ξανά";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "UPGRADE YOUR WALLET" = "ΑΝΑΒΆΘΜΙΣΗ ΣΑΣ ΠΟΡΤΟΦΌΛΙ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "Αδύνατη η φόρτωση της πορτοφόλι λόγω ανταπόκρισης του διακομιστή. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain αντιμετωπίζει δυσκολίες. Παρακαλώ προσπαθήστε ξανά αργότερα.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive" = "Αφαιρέσετε";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive Address" = "Αφαιρέσετε την διεύθυνση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unconfirmed" = "Ανεπιβεβαίωτες";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "Εξαίρεση που δεν αντιμετωπίστηκε";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown" = "Άγνωστο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "Άγνωστο σφάλμα αφής ID. Κωδικός: %ld";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown key format" = "Άγνωστη μορφή κλειδιού";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unsupported Private Key Format" = "Μορφή του δεν υποστηρίζεται ιδιωτικό κλειδί";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unverified" = "Χωρίς επαλήθευση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Update" = "Ενημέρωση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade" = "Αναβάθμιση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Now" = "Αναβάθμιση τώρα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Wallet" = "Αναβάθμιση πορτοφόλι";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to HD" = "Αναβάθμιση σε HD";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to V3" = "Αναβάθμιση σε V3";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use Touch ID as PIN" = "Χρήση αφής αναγνωριστικό ως PIN";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all %@" = "Χρησιμοποιήστε όλα τα %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all funds" = "Χρησιμοποιήστε όλα τα κεφάλαια";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Use recommended values" = "Χρησιμοποιήστε τις συνιστώμενες τιμές";
+
+/* (No Commment) */
 "User Declined" = "Χρήστη μειώθηκε";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "ΕΠΑΛΗΘΕΎΣΕΤΕ ΤΗ ΔΗΜΙΟΥΡΓΊΑ ΑΝΤΙΓΡΆΦΩΝ ΑΣΦΑΛΕΊΑΣ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verification email has been sent to %@." = "Επαλήθευση email έχει σταλεί σε %@.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verified" = "Επαληθεύεται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify" = "Επαλήθευση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify Email" = "Επιβεβαιώστε ηλεκτρονικό ταχυδρομείο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verifying" = "Επαλήθευση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet ID" = "Πορτοφόλι ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Information" = "Πορτοφόλι πληροφορίες";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet JSON" = "Πορτοφόλι JSON";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Paired Successfully." = "Πορτοφόλι, σε συνδυασμό με επιτυχία.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Recovery Phrase" = "Πορτοφόλι ανάκτηση φράση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet version %lld not supported" = "Πορτοφόλι έκδοση %lld δεν υποστηρίζεται";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning" = "Προειδοποίηση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning!!!" = "Προειδοποίηση!!!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "Προειδοποίηση: Το αναγνωριστικό σας πορτοφόλι είναι ευαίσθητες πληροφορίες. Την αντιγραφή μπορεί να διακυβεύσει την ασφάλεια του πορτοφολιού σας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Watch Only" = "Παρακολουθήσετε μόνο";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "Θα σας στείλουμε την υπόδειξη να επιβεβαιωθεί το email σας, σε περίπτωση που ζητάτε.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα εμπειρία πορτοφόλι για σας";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Έχουμε συμπεριλάβει μερικές σημαντικές βελτιώσεις ασφαλείας και απορρήτου. Μόλις κάνετε κλικ στο ενημερωμένη έκδοση δεν θα είστε σε θέση να επιστρέψουν στο παλιό πορτοφόλι σας";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Weak" = "Αδύναμη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "WebSocket URL" = "WebSocket URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Welcome" = "Καλώς όρισες";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Σημαίνει ότι έχουμε εντοπίσει μια προηγούμενη εγκατάσταση του πορτοφολιού Blockchain στο τηλέφωνό σας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Θα θέλατε να προσθέσετε το bitcoin διεύθυνση %@ στο βιβλίο διευθύνσεων;";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Γράψετε σας φράση αποκατάστασης και να παραμένει κάπου πολύ αξιόπιστο και ασφαλές. Θυμηθείτε ότι όποιος ξέρει σας φράση αποκατάστασης έχει πρόσβαση σε bitcoins σας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wrong BIP38 Password" = "BIP38 λάθος κωδικό πρόσβασης";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yes" = "Ναι";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Χθες";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "Είστε έτοιμοι να εισαγάγετε μια διεύθυνση μόνο ρολόι, μια διεύθυνση (ή δημόσιου κλειδιού δέσμης ενεργειών) που αποθηκεύονται στο πορτοφόλι χωρίς το αντίστοιχο ιδιωτικό κλειδί. Αυτό σημαίνει ότι τα κονδύλια μπορούν να δαπανηθούν μόνο αν έχετε το ιδιωτικό κλειδί είναι αποθηκευμένα αλλού. Εάν δεν έχετε το ιδιωτικό κλειδί, μη συγκεντρώνεις οποιονδήποτε να σας στείλει bitcoin στην διεύθυνση μόνο ρολόι.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "Είστε έτοιμος να λάβετε bitcoin σε μια διεύθυνση μόνο ρολόι. Μπορείτε να περάσετε μόνο αυτά τα κεφάλαια, αν έχετε πρόσβαση στο ιδιωτικό κλειδί. Συνέχεια;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Τώρα εσύ είσαι running μας πιο ασφαλή Bitcoin πορτοφόλι";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "Δημιουργήσατε αντίγραφα ασφαλείας των κεφαλαίων σας με επιτυχία";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Μπορείτε να ενεργοποιήσετε την επαλήθευση σε 2 βήματα μέσω SMS στο κινητό σας τηλέφωνο. Προκειμένου να χρησιμοποιήσετε άλλες μεθόδους ελέγχου ταυτότητας, αντίθετα, παρακαλώ συνδεθείτε για να μας ηλεκτρονική μέθοδος πληρωμής.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can now spend from this address." = "Τώρα, μπορείτε να περάσετε από αυτή τη διεύθυνση.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Δεν έχετε ένα λογαριασμό που έχει συσταθεί για το ταχυδρομείο. Παρακαλούμε επικοινωνήστε με %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You have no available funds to send from this address" = "Έχετε καμία διαθέσιμα κεφάλαια να στείλει από αυτή τη διεύθυνση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Πρέπει να απενεργοποιήσετε την επαλήθευση σε 2 βήματα SMS πριν να αλλάξετε τον αριθμό του κινητού σας (%@).";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a destination address" = "Πρέπει να πληκτρολογήσετε μια διεύθυνση προορισμού";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a label" = "Πρέπει να πληκτρολογήσετε μια ετικέτα";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have at least one active address" = "Πρέπει να έχετε τουλάχιστον μία ενεργή διεύθυνση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "Πρέπει να έχετε δύο παράγοντα ελέγχου ταυτότητας, άτομα με ειδικές ανάγκες για τα ζευγάρι με μη αυτόματο τρόπο.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must leave at least one active address" = "Πρέπει να αφήσετε μία τουλάχιστον ενεργό διεύθυνση";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "Πάντα πρέπει να ζεύγος ή συνδεθείτε αν έχετε πρόσβαση στο πορτοφόλι ID και τον κωδικό σας. Ανάκτησης των κεφαλαίων σας θα δημιουργήσει ένα νέο αναγνωριστικό πορτοφόλι. Θέλετε να συνεχίσετε;";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may be stuck and possibly never be confirmed. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@." = "Καθορίσατε με εξαιρετικά μικρές συναλλαγή χρέωση του %1$@. Συναλλαγή σας μπορεί να κολλήσει και ενδεχομένως ποτέ να επιβεβαιωθεί. Για να αυξήσετε τις πιθανότητες για την συναλλαγή για να επιβεβαιώσετε μέσα σε περίπου μία ώρα (έξι τεμάχια), σας συνιστούμε μια αμοιβή του δεν είναι λιγότερο από %2$@.";
+
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may become stuck and possibly never confirm. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@. Since you don’t have sufficient funds, that means the Send amount will also have to be lowered to %@." = "Καθορίσατε με εξαιρετικά μικρές συναλλαγή χρέωση του %1$@. Σας συναλλαγή ενδέχεται να γίνουν κολλήσει και ποτέ να επιβεβαιώσει ενδεχομένως. Για να αυξήσετε τις πιθανότητες για την συναλλαγή για να επιβεβαιώσετε μέσα σε περίπου μία ώρα (έξι τεμάχια), σας συνιστούμε μια αμοιβή του δεν είναι λιγότερο από %2$@. Εφόσον δεν έχετε επαρκείς πόρους, που σημαίνει ότι το ποσό της αποστολής θα πρέπει επίσης να μειωθεί ώστε να %3$@.";
+
+/* (No Commment) */
+"You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Καθορίσατε με ασυνήθιστα μεγάλη συναλλαγή χρέωση του %1$@. Ακόμα κι αν μπορείτε να μειώσετε το τέλος να %2$@, μπορείτε να περιμένετε τη συναλλαγή για να επιβεβαιώσετε μέσα στα επόμενα 10 λεπτά (ένα τετράγωνο).";
+
+/* (No Commment) */
 "You've successfully imported a private key." = "Που έχετε εισαγάγει με επιτυχία ένα ιδιωτικό κλειδί.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Που έχετε εισαγάγει με επιτυχία το ιδιωτικό κλειδί για τη διεύθυνση %@, και τώρα μπορείτε να περάσετε από αυτό. Αν θέλετε να περάσουν από αυτή τη διεύθυνση, βεβαιωθείτε ότι έχετε σαρώσει το σωστό ιδιωτικό κλειδί.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Συσκευή σας φαίνεται να είναι jailbroken. Μπορεί να παραβιαστεί η ασφάλεια του πορτοφολιού σας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your email has been verified." = "Το email σας έχει ελεγχθεί.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your identity does not match our records." = "Ταυτότητά σας δεν ταιριάζει με αρχεία μας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your mobile number has been verified." = "Τον αριθμό του κινητού σας έχει ελεγχθεί.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains invalid characters. Please try again." = "Σας νέα υπόδειξη κωδικού πρόσβασης περιέχει μη έγκυρους χαρακτήρες. Παρακαλώ ξαναπροσπαθήστε.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains no text. Your password hint will be cleared." = "Σας νέα υπόδειξη κωδικού πρόσβασης περιέχει κανένα κείμενο. Θα πρέπει να αποψιλωθεί σας υπόδειξη κωδικού πρόσβασης.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your password. Please try again." = "Σας νέα υπόδειξη κωδικού πρόσβασης πρέπει να είναι διαφορετικό από τον κωδικό πρόσβασής σας. Παρακαλώ ξαναπροσπαθήστε.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your second password. Please try again." = "Σας νέα υπόδειξη κωδικού πρόσβασης πρέπει να είναι διαφορετικό από το δεύτερο τον κωδικό πρόσβασής σας. Παρακαλώ ξαναπροσπαθήστε.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your password hint has been updated." = "Έχει ενημερωθεί σας υπόδειξη κωδικού πρόσβασης.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Χορηγηθέντων κεφαλαίων σας θα είναι ασφαλή, και θα επωφεληθεί από την αυξανόμενη μυστικότητα και τα πρακτικά χαρακτηριστικά αντιγράφων ασφαλείας και ανάκτησης.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "Σας διεύθυνση email επαληθεύονται είναι συνήθιζα να στέλνω login κωδικούς όταν ύποπτη ή ασυνήθιστη δραστηριότητα ανιχνεύεται, θυμίζω you του δικό σας αναγνωριστικό σύνδεσης πορτοφόλι, και να στείλετε ειδοποιήσεις πληρωμής bitcoin όταν λαμβάνετε ταμεία. Δεν θα χρησιμοποιήσουμε τη διεύθυνση email σας για σκοπούς μάρκετινγκ.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet does not contain this address." = "Το πορτοφόλι σας δεν περιέχει αυτή τη διεύθυνση.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet was successfully created." = "Δημιουργήθηκε με επιτυχία το πορτοφόλι σας.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yubi Key" = "Yubi κλειδί";
 
 /* No comment provided by engineer. */
@@ -1269,16 +1326,16 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 /* No comment provided by engineer. */
 "fourth word" = "τέταρτη λέξη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "from" = "από";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "iOS Support Request" = "Ίο αίτημα υποστήριξης";
 
 /* No comment provided by engineer. */
 "ninth word" = "ένατη λέξη";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "or Continue" = "ή συνέχεια";
 
 /* No comment provided by engineer. */

@@ -1,13 +1,13 @@
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%@ copied to clipboard" = "クリップボードにコピー %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Confirmations" = "%d 確認";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "%d Transactions" = "%d 取引";
 
 /* No comment provided by engineer. */
@@ -19,7 +19,7 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld 秒前";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "* Minimum 10 characters" = "* 最低 10 文字";
 
 /* No comment provided by engineer. */
@@ -28,628 +28,643 @@
 /* No comment provided by engineer. */
 "1 minute ago" = "1 分前";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step Enabled" = "2 ステップ有効";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been disabled." = "2 ステップは、無効になっています。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-Step has been enabled for SMS." = "SMS の 2 段階になっています。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification" = "2 段階認証プロセス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently disabled." = "2 段階認証プロセスは、現在無効です。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled for %@." = "2 段階認証プロセスは、%@ で現在有効です。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "2-step Verification is currently enabled." = "2 段階認証プロセスは、現在有効です。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "API URL" = "API の URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "About" = "について";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Account Details" = "アカウントの詳細";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Accounts" = "アカウント";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add Email" = "メール アドレスを追加します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Add to Address book?" = "アドレス帳に追加しますか。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address" = "アドレス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address book" = "アドレス帳";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Address is not valid" = "アドレスが正しくありません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Addresses" = "アドレス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Adjust Fee" = "料金を調整します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allow" = "許可します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Allowed" = "許可";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Amount must be above dust threshold (%lld Satoshi)" = "量する必要がありますほこりしきい値 (%lld 聡)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "リモート サーバーと PIN コードの検証エラーが発生しました。あなたがオフラインである、または Blockchain により、問題が発生します。検証を再試行するか、代わりにあなたのパスワードを手動で入力したいですか。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2 段階認証プロセスを変更中にエラーが発生しました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "あなたの財布の読み込みエラーが発生しました。あなたがオフラインであるか、Blockchain は問題します。くださいアプリケーションを終了やり直して、またはデバイスをペアリングし直します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "An error was encountered retrieving your wallet identifier from the keychain. Please close the application and try again." = "キーチェーンから財布識別子の取得エラーが発生しました。アプリケーションを終了して、もう一度やり直してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Any address" = "任意のアドレス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive" = "アーカイブ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive Address" = "アーカイブ アドレス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time." = "あなたはもうそれを使用したくない場合は、これをアーカイブします。あなたの資金は、安全のままになり、いつでも解凍することができます。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Archived" = "アーカイブ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Ask Me Later" = "後で確認します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authenticate with Touch ID" = "タッチ ID と認証します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Authorization Required" = "認証が必要です。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatic Pairing" = "自動ペアリング";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Automatically" = "自動的に";
 
 /* No comment provided by engineer. */
 "BACKUP FUNDS" = "バックアップ資金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup" = "バックアップ";
 
 /* No comment provided by engineer. */
 "Backup Funds" = "バックアップ資金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Backup Phrase" = "バックアップのフレーズ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Before accessing your wallet, please choose a pin number to use to unlock your wallet. It's important you remember this pin as it cannot be reset or changed without first unlocking the app." = "あなたの財布をアクセスする前に、あなたの財布のロックを解除に使用するピン番号を選択してください。リセットまたは、アプリを解除しないで変更することはできません、このピンが覚えていることが重要です。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin Unit" = "Bitcoin ユニット";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Bitcoin payment request" = "Bitcoin 支払い要求";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block" = "ブロック";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Block Tor" = "Tor をブロックします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain does not have access to the camera. To enable access, go to your device Settings." = "Blockchain には、カメラへのアクセスがありません。アクセスを有効にするには、デバイスの設定に移動します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain is currently down for maintenance. Please try again later." = "Blockchain は現在メンテナンスのため停止します。後でもう一度試してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location." = "Blockchain では、位置情報サービスのあなたの場所にアクセスするために有効になっている必要があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location Services" = "Blockchain では、位置情報サービスのあなたの場所にアクセスするために有効になっている必要があります。アクセスを有効にすることができます設定 → プライバシー → 位置情報サービス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blockchain needs Location Services enabled in order to access your location. You can enable access in Settings->Privacy->Location->Location Services" = "Blockchain では、位置情報サービスのあなたの場所にアクセスするために有効になっている必要があります。アクセスを有効にすることができます設定 → プライバシー → 場所 → 位置情報サービス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Blocked" = "ブロック";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Camera Access Denied" = "カメラのアクセスが拒否されました";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cancel" = "キャンセル";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "財布が初期化されていないか、パスワードが null の PIN コードを保存できません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Email" = "メール アドレスを変更します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Mobile Number" = "携帯電話の番号を変更します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change PIN" = "暗証番号の変更";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password" = "パスワードの変更";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change Password Hint" = "変更パスワードのヒント";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Change fee per kilobyte" = "/Kb 変更手数料";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for Wallet updates" = "財布更新プログラムのチェック";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Checking for more: Step %d of %d" = "詳細をチェック: %2$d のステップ %1$d";
 
 /* No comment provided by engineer. */
 "Close" = "閉じる";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Close App" = "アプリを閉じる";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Complete the steps below for ultimate security" = "究極のセキュリティの次の手順します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Completely updated design and user experience" = "完全に更新されたデザインとユーザー エクスペリエンス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Payment" = "お支払いを確認します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm Upgrade" = "アップグレードを確認します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Confirm your PIN" = "暗証番号を確認します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Connection timed out. Please check your internet connection." = "接続がタイムアウトしました。あなたのインターネット接続を確認してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Continue" = "続行";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copied to clipboard" = "クリップボードにコピー";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Address" = "アドレスのコピー";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy Wallet ID" = "ウォレット ID をコピーします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy to clipboard" = "クリップボードにコピー";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Copy xPub" = "XPub をコピーします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create" = "作成します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create New Wallet" = "新しい財布を作成します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create Wallet" = "財布を作成します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Create new address" = "新しいアドレスを作成します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating" = "作成します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating HD Wallet" = "HD ウォレットを作成します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating V3 Wallet" = "V3 ウォレットを作成します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating Wallet" = "ウォレットの作成";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new Wallet" = "新しい財布を作成します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Creating new address" = "新しいアドレスを作成します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Current rate: %@ BTC" = "現在のレート: %@ BTC";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Blockchain 財布、bitcoins を整理する方法をカスタマイズします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Customized fund management" = "カスタマイズされた基金管理";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Debug" = "デバッグ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypted PIN Password length 0" = "復号化された PIN パスワード長さ 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Private Key" = "秘密キーを復号化します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Decrypting Wallet" = "財布を復号化します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Default" = "デフォルト";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disable" = "無効にします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Disabled" = "無効になっています。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Display" = "ディスプレイ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Do you really want to log out?" = "ログアウトしますか。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Don't show again" = "次回から表示しません。";
 
 /* No comment provided by engineer. */
 "Done" = "行われます";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Downloading Wallet" = "財布をダウンロード";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Easy one time wallet backup keeps you in control of your funds" = "簡単な一回財布バックアップは、あなたの資金の制御";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Edit" = "編集";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email" = "電子メール";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Notifications" = "電子メール通知";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Email Verified" = "確認メール";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Empty response from server." = "サーバーから空の応答。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable" = "有効にします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step" = "2 ステップを有効にします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable 2-Step for SMS" = "SMS の 2 ステップを有効にします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable Location Services" = "位置情報サービスを有効にします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoins を受信するたびにメールを受信する通知を有効にします。アドレスをラベル付けされてインポートだけアドレスは、通知をトリガーします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "あなたの財布にアクセスするから Tor 匿名のネットワークの一部に知られている IP アドレスを防ぐためにこのオプションを有効にします。Tor ネットワークは、Blockchain ユーザーの財布にアクセスしようとするハッカーによって使用される頻繁。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "この機能を有効にすると、このデバイスがあなたの財布にアクセスするにタッチ ID 指紋の登録されているすべてのユーザーが許可されます。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enhanced Privacy" = "プライバシー強化";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Enter %@ amount" = "%@ 金額を入力します。";
+
+/* (No Commment) */
 "Enter PIN" = "暗証番号を入力します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Password" = "パスワードを入力します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter Verification Code" = "検証コードを入力します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Enter your verification code" = "検証コードを入力します。";
 
 /* No comment provided by engineer. */
 "Error" = "エラー";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error loading settings" = "エラー読み込み設定";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Error updating settings" = "設定を更新中のエラー";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Everything you need to store, spend and receive your bitcoin" = "格納するために必要なすべてを費やすし、ビットコインを受け取る";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Extended Public Key" = "公開キーを拡張";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Failed To Load Wallet" = "財布を読み込みに失敗しました";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee is too high (0.01 BTC limit)" = "料金が高すぎる (0.01 BTC 制限)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fee per KB" = "KB 1 名あたり料金";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Fees" = "手数料";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Finished Signing Inputs" = "署名の入力終了";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "安全のため我々 は Blockchain 財布に、インポートされた住所に残高を転送することをお勧めします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Forget Wallet" = "財布を忘れてください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Found %d, with %@" = "%2$@ と %1$d を発見します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination address have to be different" = "宛先アドレスが別でなければならないと";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "From and destination have to be different" = "異なる宛先";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Go to Settings" = "設定に移動します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Google Authenticator" = "Google 認証システム";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Hint Stored" = "保存のヒント";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "How would you like to pair?" = "どのペアにしますか?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Identifier" = "識別子";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "商人、あなたの xPub を表示し、安全にそして個人的に資金を受け取る Blockchain 商人アプリを使用します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import Private Key" = "インポートの秘密キー";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Import address" = "アドレスをインポートします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses" = "インポートされたアドレス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Addresses (Archived)" = "インポートされたアドレス (アーカイブ)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported Private Key %@" = "インポートされた秘密キー %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Imported watch-only address %@" = "輸入時計専用アドレス %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Importing key" = "キーをインポートします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect PIN. Please retry." = "暗証番号が正しくありません。再試行してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect password" = "パスワードが正しくありません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Incorrect private key" = "正しくない秘密鍵";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Increase fee" = "料を増やす";
+
+/* (No Commment) */
 "Information" = "情報";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Initializing Wallet" = "財布の初期化";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Insufficient Funds" = "資金不足";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Identifier" = "無効な識別子";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Pairing Code" = "ペアリング コードが無効です。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Send Value" = "無効な送信の値";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Shared Key" = "共有キーが無効です。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Status Code Returned %@" = "%@ を返された無効なステータス コード";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid Wallet ID" = "無効なウォレット ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid address: %@" = "無効なアドレス: %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid email address." = "無効なメール アドレスです。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid mobile number." = "携帯電話の番号が無効です。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid recovery phrase. Please try again" = "無効な回復フレーズ。もう一度やり直してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid server response. Please check your internet connection." = "無効なサーバーの応答です。あなたのインターネット接続を確認してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid to bitcoin address" = "Bitcoin アドレスが無効です";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid two-factor authentication type" = "無効な 2 要素の認証の種類";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Invalid verification code. Please try again." = "無効な検証コードです。もう一度やり直してください。";
 
 /* No comment provided by engineer. */
 "Just now" = "ちょうど今";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Keep higher fee" = "高い手数料を維持します。";
+
+/* (No Commment) */
+"Keep lower fee" = "低料金を維持します。";
+
+/* (No Commment) */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "あなたの xPub は非公開にされます。あなたの xPub へのアクセスとの誰かは資金およびトランザクションのすべてを表示することができます。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label" = "ラベル";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label Address" = "ラベル アドレス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must contain letters and numbers only" = "ラベルは、文字と数字のみを含める必要があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Label must have less than 18 characters" = "ラベルが必要未満 18 文字";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Link Mobile" = "リンク モバイル";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading External Page" = "外部ページの読み込み";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Loading transactions" = "トランザクションを読み込んでください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Local Currency" = "現地通貨";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Log in to my Wallet" = "私の財布にログインします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Login existing Wallet" = "ログインの既存の財布";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Logout" = "ログアウト";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Lower fee" = "低料金";
+
+/* (No Commment) */
 "Make Default" = "デフォルト";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manual Pairing" = "手動ペアリング";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Manually" = "手動で";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant" = "商人";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Directory is currently unavailable. Please try again later." = "商人のディレクトリは現在利用できません。後でもう一度試してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant Map" = "加盟店マップ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Merchant URL" = "商人の URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Linked" = "携帯リンク";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Mobile Number" = "携帯電話番号";
 
 /* No comment provided by engineer. */
 "My Bitcoin Wallet" = "Bitcoin 財布";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "NOTE: The scanned private key does not correspond to this watch-only address. If you want to spend from this address, make sure that you scan the correct private key." = "注: スキャンされた秘密キーは、この時計専用のアドレスに対応していません。このアドレスからを過ごすしたい場合は、適切な秘密キーをスキャンすることを確認します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Name" = "名";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Address" = "新しいアドレス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Email Address" = "新しいメール アドレス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New Mobile Number" = "新しい携帯電話番号";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different" = "新しいパスワードは異なる必要があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "New password must be different from your password hint" = "新しいパスワードは、パスワードのヒントから異なる必要があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "News, Price & Charts" = "ニュース ・価格チャート";
 
 /* No comment provided by engineer. */
 "Next word" = "次の単語";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No" = "いいえ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No Label" = "ラベルなし";
 
 /* No comment provided by engineer. */
 "No Password Entered" = "パスワードを入力して";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection available. Please check your network settings." = "インターネット接続が可能。ネットワーク設定を確認してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "No internet connection." = "いいえ、インターネット接続。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Normal" = "通常";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not Stored" = "保存されません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Not now" = "今ではありません";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "注意いったんアップグレードすると、以前のバージョンに戻ることができないことがすべて、bitcoins およびトランザクションの履歴が保持されます。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Notifications" = "通知";
 
 /* No comment provided by engineer. */
@@ -658,184 +673,190 @@
 /* No comment provided by engineer. */
 "OK" = "わかりました";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN" = "ピン";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Encrypted String is nil" = "PIN の暗号化された文字列が入力されていません";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object key or value length 0" = "ピンの応答オブジェクト キーまたは値長さ 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Response Object success length 0" = "ピン応答オブジェクト成功長さ 0";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Saved Successfully" = "ピンが正常に保存されました";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation Error" = "ピンの検証エラー";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PIN Validation cannot be completed. Please enter your wallet password manually." = "ピンの検証を完了できません。あなたの財布のパスワードを手動で入力してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "PINs do not match" = "ピンが一致しません";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Parsing Pairing Code" = "ペアリング コードを解析";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Hint" = "パスワードのヒント";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password Required" = "必要なパスワード";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password changed. Please login to continue." = "パスワードを変更します。続行するにはログインをしてください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Password must 10 characters or longer" = "パスワードには 10 文字する必要があります以上";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Passwords do not match" = "パスワードが一致しません";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Received" = "お支払いの受信";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Payment Sent!" = "お支払いは、送信!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Phrase Backed" = "フレーズをバックアップ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please Login" = "ログインしてください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please add an email address" = "メール アドレスを追加してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email and click on the verification link." = "あなたのメール アドレスを確認し、確認用のリンクをクリックしてください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your email. If you have already verified a login attempt, you should log in via our web wallet and pair your phone by scanning the QR code under Settings -> Wallet Information." = "あなたのメール アドレスを確認してください。既にログイン試行を確認したら場合、我々 の web 財布経由でログインし、設定の下の QR コードをスキャンすることによってあなたの携帯電話をペアリング-> ウォレットの情報。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please check your internet connection." = "あなたのインターネット接続を確認してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose another PIN" = "別のピンを選択してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please choose from the options below." = "以下のオプションから選択してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "それを再現する私たちすることができます手順と共に、発生している問題の詳細について教えてください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "0 BTC とせいぜい 0.01 BTC を超える料金を入力してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter a new PIN" = "新しい PIN を入力してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your %@ 2FA code" = "%@ 2 fa コードを入力してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup." = "財布にある、36 文字の id を正しく入力してください。それは、起動時にウェルカム メールで見つけることが。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your PIN" = "暗証番号を入力してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please enter your recovery phrase with words separated by spaces" = "スペースで区切られた単語で回復フレーズを入力してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Please lower the fee to an amount that is less than your balance" = "あなたの残高より少ない量に料金を下げてください。";
+
+/* (No Commment) */
 "Please provide an email address." = "メール アドレスを入力してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please refresh the pairing code and try again." = "ペアリング コードを更新して、もう一度やり直してください。";
 
-/* No comment provided by engineer. */
-"Please select a different address to send from or lower the fee in Settings." = "別のアドレスから送信または設定で料金を下げるを選択してください。";
+/* (No Commment) */
+"Please select a different address to send from." = "別のアドレスから送信するを選択してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitcoin アドレスにお支払いを送信してください (< href =\"https://blockchain.info/wallet/bitcoin-faq\"> ヘルプ? </a >): %@";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "支払いを bitcoin アドレスに送ってください。よくある質問: (https://blockchain.info/wallet/bitcoin-faq): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "もう一度やり直してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Please verify your email address first." = "まず、あなたのメール アドレスを確認してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Preferences" = "基本設定";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Privacy Policy" = "プライバシー ポリシー";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Private Key Needed" = "秘密キーが必要な";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Processing key" = "キーの処理";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Receive" = "受信";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Received" = "受信";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recover Funds" = "資金を回復します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Recovering Funds" = "資金を回収";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Regular" = "正規";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Request Amount" = "要求量";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification SMS" = "再送信 SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Resend verification email" = "確認メールを再送信します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Reset" = "リセット";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Retrieving recommended fee" = "料金をお勧め取得";
+
+/* (No Commment) */
 "Retry Validation" = "検証を再試行します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Robust security center" = "堅牢なセキュリティ センター";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "SMS" = "SMS";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Save" = "保存";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Pairing Code" = "ペアリング コードをスキャンします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan Private Key" = "秘密キーをスキャンします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR Code" = "QR コードをスキャンします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan QR code" = "QR コードをスキャンします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "このコードをスキャンまたは Bitcoin を安全に受信する Blockchain 商人アプリにコピーします。";
 
 /* No comment provided by engineer. */
@@ -844,414 +865,450 @@
 /* No comment provided by engineer. */
 "Second Password Required" = "第 2 パスワードが必要です。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security" = "セキュリティ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Security Center" = "セキュリティ センター";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send" = "送信";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send from..." = "を送信.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send to..." = "を送ってください.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Send verification SMS" = "検証 SMS を送信します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sending Transaction" = "トランザクションを送信します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent" = "送信";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sent to %@" = "%@ に送信";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Server URL" = "サーバーの URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Set as Default?" = "既定値として設定します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Settings" = "設定";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Shared Coin is not supported in the new version at this time." = "共有のコインは、この時点で新しいバージョンでサポートされていません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "あなたの xPub を共有トランザクション履歴を追跡する他のユーザーを許可します。承認された人は、あなたの財布にアクセスするからあなたを混乱させることができる場合があります、あなたの xPub を信頼できる人のみ共有します。";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "信号 %d が発生しました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Input %d" = "署名の入力 %d";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Signing Inputs" = "署名の入力";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Simplified backup and recovery" = "簡略化されたバックアップとリカバリ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Store Hint" = "ストアのヒント";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Stored" = "格納されています。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Strong" = "強力な";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success" = "成功";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Success!" = "成功!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Support" = "サポート";
+
+/* (No Commment) */
+"Surge Occurring" = "発生するサージします。";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "同期の財布";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Terms of Service" = "サービス利用規約";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual." = "Bitcoin マイニング ネットワークは現在大量の処理、通常より高い推奨料金の結果を経験しています。";
+
+/* (No Commment) */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "選択したピンは非常に一般的であり 3 試行中あなたの電話へのアクセスを持つユーザーによって容易に推測することがあります。とにかくこのピンを使用しますか?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "(%1$@) を送信する量はマイナス手数料 (%2$@ - %3$@) 過ごすことができる最大量を超えています。%4$@ を送信しますか?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"The fee you have specified is too low." = "指定した料金が低すぎます。";
+
+/* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "インポートしようとしている秘密キーは暗号化されます。下にパスワードを入力してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここで何ですより。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "There was a problem verifying your identity." = "あなたの身元の確認で問題があった。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "These options are recommended for advanced users only. Continue?" = "これらのオプションは、上級ユーザーのみに推奨されます。続行しますか。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "このアクションでは、Bitcoin アドレス %@ の秘密キーが必要です。QR コードをスキャンしてください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "このアクションは、bitcoin 財布のための 2 番目のパスワードを必要があります。ください以下に入力し、続行を押す。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This address is not watch-only." = "このアドレスは、時計だけではありません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "時計専用のアドレスです。この財布からあなたの資金を費やす、あなたの秘密鍵をスキャンしてください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "これはアーカイブされます。ここから資金を送信することはできません、しかし任意およびすべての資金は安全に残る。それを再度使用を開始するアーカイブを解除します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This name is already in use. Please choose a different name." = "この名前は既に使用されています。別の名前を選択してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "This private key belongs to another address that is not watch only" = "この秘密キーは、時計だけではない別のアドレスに属する";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "このトランザクションは、少量の返される変更によるほこり消費の高い手数料を必要があります。";
+
+/* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "このデバイス上のすべての財布データが消去されます。アクセスできない場所以外の場合この財布での任意 bitcoins 保存あなたの財布情報がある場合に確認してください!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "To: %@
 %@
 Total Amount: %@
 Fee: %@
 (%@)" = "%1$@ の%2$@ の合計額: %3$@ 料金: %4$@ (%5$@)";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor Requests" = "Tor 要求";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor blocked" = "Tor をブロック";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests allowed" = "許可された Tor 要求";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently allowed." = "Tor 要求は許可されています。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Tor requests are currently blocked." = "Tor の要求がブロックされています。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Total Balance" = "トータル バランス";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID has been locked due to too many failed attempts." = "失敗した回数が多すぎるためタッチ ID がロックされました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not available on this device." = "タッチの ID は、このデバイスで使用可能ではありません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "タッチの ID は、このデバイスには無効です。Touch ID を有効にするには、& 設定>Touch ID パスコードに指紋を追加してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transaction" = "トランザクション";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Transaction Fee" = "取引手数料";
+
+/* (No Commment) */
+"Transaction Fees" = "取引手数料";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "取引手数料は、Bitcoin マイニング ネットワークがあなたのトランザクションを確認、現在のネットワークの状態に依存してどのように迅速に影響します。この時点でトランザクションの下記料金をお勧めします。";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "取引手数料は、Bitcoin マイニング ネットワークがあなたのトランザクションを確認、現在のネットワークの状態に依存してどのように迅速に影響します。代金はこの時点でこの取引をお勧めします。";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "手数料トランザクション確認に長い時間がかかる可能性があります。 またはまったく確認されていません。続行しますか?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transfer Funds" = "資金を移動";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Transferred" = "転送";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Try again" = "もう一度やり直してください";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "UPGRADE YOUR WALLET" = "あなたの財布をアップグレードします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later." = "サーバー応答がないため財布を読み込むことができません。あなたがオフラインであるか、Blockchain は問題します。後でもう一度試してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive" = "解凍し";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unarchive Address" = "アドレスを解凍し";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unconfirmed" = "未確認";
 
 /* No comment provided by engineer. */
 "Unhandled exception" = "未処理の例外";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown" = "不明";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown Touch ID error. Code: %ld" = "不明なタッチ ID エラー。コード: %ld";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unknown key format" = "不明なキーの形式";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unsupported Private Key Format" = "サポートされない秘密キー形式";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Unverified" = "未確認";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Update" = "更新";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade" = "アップグレード";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Now" = "今すぐアップグレードします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade Wallet" = "財布をアップグレードします。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to HD" = "HD へのアップグレード";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Upgrade to V3" = "V3 へのアップグレード";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use Touch ID as PIN" = "タッチ ID ピンとして使用します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all %@" = "すべての %@ を使用します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Use all funds" = "すべての資金を使用します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"Use recommended values" = "推奨値を使用します。";
+
+/* (No Commment) */
 "User Declined" = "拒否したユーザー";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "バックアップを検証します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verification email has been sent to %@." = "%@ に確認メールが送信されました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verified" = "検証";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify" = "確認します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verify Email" = "メール アドレスを確認します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Verifying" = "確認します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet ID" = "ウォレット ID";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Information" = "財布情報";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet JSON" = "JSON の財布";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Paired Successfully." = "正常にペアリングの財布。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet Recovery Phrase" = "財布回復フレーズ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wallet version %lld not supported" = "財布バージョン %lld はサポートされていません";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning" = "警告";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning!!!" = "警告!";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Warning: Your wallet identifier is sensitive information. Copying it may compromise the security of your wallet." = "警告: 財布識別子は機密情報です。コピーと、お財布のセキュリティが損なわれる可能性があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Watch Only" = "時計のみ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We'll send the hint to your confirmed email address in case you request it." = "それを要求する場合に、ヒントを確認済みのメール アドレスに送信されます。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've designed a whole new
 wallet experience for you" = "私たちはあなたのため全く新しい財布経験を設計しました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "我々 は、プライバシーとセキュリティが大幅に向上を含まれています。一度クリックすると、古い財布に戻ることはできません更新";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Weak" = "弱い";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "WebSocket URL" = "WebSocket URL";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Welcome" = "ようこそ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "私たちはあなたの携帯電話に Blockchain 財布の以前のインストールを検出されました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin アドレス %@ をアドレス帳に追加しますか?";
 
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "回復フレーズを書き留め、非常に安全かつ確実な場所に保管します。あなた bitcoins へのアクセスが回復フレーズを知っている人は誰でも覚えています。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Wrong BIP38 Password" = "間違って BIP38 のパスワード";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yes" = "[はい]";
 
 /* No comment provided by engineer. */
 "Yesterday" = "昨日";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to import a watch-only address, an address (or public key script) stored in the wallet without the corresponding private key. This means that the funds can be spent ONLY if you have the private key stored elsewhere. If you do not have the private key stored, do NOT instruct anyone to send you bitcoin to the watch-only address." = "時計のみのアドレスをインポートしようとしている、アドレス (または公開キー スクリプト) が対応するプライベートなし財布キーに保存します。これは、秘密キーは場所に格納した場合のみ資金を費やすことができることを意味します。格納されている秘密キーを持っていない場合は時計のみのアドレスにあなたの bitcoin を送信する誰も指示しません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are about to receive bitcoin to a watch-only address. You can only spend these funds if you have access to the private key. Continue?" = "時計のみのアドレスに bitcoin を受信しようとしています。秘密キーにアクセスできる場合は、これらの資金を過ごすことができますのみ。続行しますか。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "現在、最も安全な我々 Bitcoin 財布を実行しています";
 
 /* No comment provided by engineer. */
 "You backed up your funds successfully" = "あなたが正常にあなたの資金をバックアップ";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "あなたの携帯電話に SMS 経由で 2 段階認証プロセスを有効にできます。代わりに、他の認証方法を使用するためには、私たち web ウォレットにログインをしてください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You can now spend from this address." = "今、このアドレスから過ごすことができます。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "設定したメール アカウントがありません。%@ にお問い合わせください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You have no available funds to send from this address" = "このアドレスから送信する利用可能な資金があるない場合";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "携帯電話番号 (%@) を変更する前に SMS 2 段階認証プロセスを無効にする必要があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a destination address" = "宛先アドレスを入力してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must enter a label" = "ラベルを入力する必要があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have at least one active address" = "少なくとも 1 つのアクティブなアドレスする必要があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must have two-factor authentication disabled to pair manually." = "2 要素認証のペアを手動で無効に必要があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You must leave at least one active address" = "少なくとも 1 つのアクティブなアドレスにしておく必要があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "ペアまたは、ウォレット ID とパスワードへのアクセスがあればログインする必要があります常にします。新しいウォレット ID が作成されますあなたの資金を回復します。続行しますか?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may be stuck and possibly never be confirmed. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@." = "%1$@ の非常に小さな手数料を指定しました。あなたのトランザクションが滞る可能性があります、おそらく決して確認されます。約 1 時間 (6 ブロック) 内を確認するあなたのトランザクションのための可能性を高めるため、%2$@ 未満の手数料強く推奨します。";
+
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may become stuck and possibly never confirm. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@. Since you don’t have sufficient funds, that means the Send amount will also have to be lowered to %@." = "%1$@ の非常に小さな手数料を指定しました。あなたのトランザクションが立ち往生になることがあります、可能性があることを確認します。約 1 時間 (6 ブロック) 内を確認するあなたのトランザクションのための可能性を高めるため、%2$@ 未満の手数料強く推奨します。十分な資金を持っていない場合はので、送信量が %3$@ に低下する必要がありますつまり。";
+
+/* (No Commment) */
+"You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "%1$@ の異常に高い手数料を指定しました。%2$@ に料金を下げる場合でも次の 10 分 (1 ブロック) 内を確認するトランザクションが期待できます。";
+
+/* (No Commment) */
 "You've successfully imported a private key." = "秘密キーを正常にインポートしました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "アドレス %@ の秘密キーを正常にインポートしたし、今から過ごすことができます。このアドレスからを過ごすしたい場合は、適切な秘密キーをスキャンするを確認します。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "お使いのデバイスは、ジェイルブレイクする必要表示されます。あなたの財布のセキュリティが侵害される可能性があります。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your email has been verified." = "あなたのメール アドレスは確認されました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your identity does not match our records." = "あなたのアイデンティティは、私たちのレコードを一致しません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your mobile number has been verified." = "あなたの携帯電話の番号を確認しました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains invalid characters. Please try again." = "新しいパスワードのヒントには、無効な文字が含まれています。もう一度やり直してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint contains no text. Your password hint will be cleared." = "新しいパスワードのヒントには、テキストは含まれていません。パスワードのヒントはクリアされます。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your password. Please try again." = "新しいパスワードのヒントは、あなたのパスワードとは異なるである必要があります。もう一度やり直してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your new password hint must be different from your second password. Please try again." = "新しいパスワードのヒントは、あなたの 2 番目のパスワードとは異なるである必要があります。もう一度やり直してください。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your password hint has been updated." = "パスワードのヒントを更新しました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "安心・安全、あなたの転送資金になります、プライバシーの強化、バックアップ/リカバリの便利な機能から恩恵を受けるでしょう。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "確認済みのメール アドレスを使用して、不審なまたは異常なアクティビティが検出されると、あなたの財布のログイン ID を通知する、資金を受け取るときに bitcoin お支払いに関するアラートを送信するログイン コードを送信します。マーケティング目的のため、お客様のメール アドレスを使わないでしょう。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet does not contain this address." = "あなたの財布にこのアドレスが含まれていません。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Your wallet was successfully created." = "あなたの財布は正常に作成されました。";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Yubi Key" = "ユビ ・ キー";
 
 /* No comment provided by engineer. */
@@ -1269,16 +1326,16 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 /* No comment provided by engineer. */
 "fourth word" = "4 番目の単語";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "from" = "差出人";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "iOS Support Request" = "iOS のサポート リクエスト";
 
 /* No comment provided by engineer. */
 "ninth word" = "9 言葉";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "or Continue" = "または続行";
 
 /* No comment provided by engineer. */

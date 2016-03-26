@@ -371,6 +371,9 @@
 "Enhanced Privacy" = "增強的隱私保護";
 
 /* (No Commment) */
+"Enter %@ amount" = "輸入 %@ 金額";
+
+/* (No Commment) */
 "Enter PIN" = "輸入 PIN";
 
 /* (No Commment) */
@@ -411,6 +414,9 @@
 
 /* (No Commment) */
 "Finished Signing Inputs" = "完成簽署投入";
+
+/* (No Commment) */
+"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "為了您的安全，我們建議您將任何在您導入的位址的餘額轉移到你的 Blockchain 錢包。";
 
 /* (No Commment) */
 "Forget Wallet" = "忘了錢包";
@@ -473,6 +479,9 @@
 "Incorrect private key" = "不正確的私密金鑰";
 
 /* (No Commment) */
+"Increase fee" = "增加費用";
+
+/* (No Commment) */
 "Information" = "資訊";
 
 /* (No Commment) */
@@ -527,6 +536,12 @@
 "Just now" = "只是現在";
 
 /* (No Commment) */
+"Keep higher fee" = "保持較高的費用";
+
+/* (No Commment) */
+"Keep lower fee" = "保持較低的費用";
+
+/* (No Commment) */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "保持你的 xPub 私人。有人訪問你的 xPub 將能夠看到所有你的資金和交易。";
 
 /* (No Commment) */
@@ -561,6 +576,9 @@
 
 /* (No Commment) */
 "Logout" = "登出";
+
+/* (No Commment) */
+"Lower fee" = "低費用";
 
 /* (No Commment) */
 "Make Default" = "讓預設";
@@ -749,13 +767,16 @@
 "Please enter your recovery phrase with words separated by spaces" = "請輸入您恢復短語和單詞之間用空格分隔";
 
 /* (No Commment) */
+"Please lower the fee to an amount that is less than your balance" = "請降低到小於您的餘額金額費用";
+
+/* (No Commment) */
 "Please provide an email address." = "請提供一個電子郵件地址。";
 
 /* (No Commment) */
 "Please refresh the pairing code and try again." = "請刷新配對的代碼，然後重試。";
 
 /* (No Commment) */
-"Please select a different address to send from or lower the fee in Settings." = "請選擇要從發送或降低費用中設置不同的位址。";
+"Please select a different address to send from." = "請選擇一個不同的位址從發送。";
 
 /* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "請向比特幣位址發送付款 (< href =\"HTTPs://blockchain.info/wallet/bitcoin-faq\"> 説明? < /a >): %@";
@@ -807,6 +828,9 @@
 
 /* (No Commment) */
 "Reset" = "重置";
+
+/* (No Commment) */
+"Retrieving recommended fee" = "檢索推薦費";
 
 /* (No Commment) */
 "Retry Validation" = "驗證重試";
@@ -913,6 +937,9 @@
 /* (No Commment) */
 "Support" = "支援";
 
+/* (No Commment) */
+"Surge Occurring" = "浪湧發生";
+
 /* No comment provided by engineer. */
 "Syncing Wallet" = "同步的錢包";
 
@@ -920,10 +947,16 @@
 "Terms of Service" = "服務條款";
 
 /* (No Commment) */
+"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual." = "比特幣挖掘網路目前正在經歷活性，導致推薦費用，也比平常高高的卷。";
+
+/* (No Commment) */
 "The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?" = "您已選擇引腳是極為常見，可能具有訪問到您的手機內 3 個嘗試的人很容易猜到了。你想使用這針嗎?";
 
 /* (No Commment) */
 "The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?" = "您想要發送 (%1$@) 的金額大於你可以花減去費用 (%2$@-%3$@) 的最高限額。你想發送 %4$@ 嗎?";
+
+/* (No Commment) */
+"The fee you have specified is too low." = "您已指定的費用是太低。";
 
 /* (No Commment) */
 "The private key you are attempting to import is encrypted. Please enter the password below." = "您試圖導入的私密金鑰進行加密。請輸入下面的密碼。";
@@ -957,6 +990,9 @@
 
 /* (No Commment) */
 "This private key belongs to another address that is not watch only" = "這個私有金鑰屬於另一個位址，不是只的手錶";
+
+/* (No Commment) */
+"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "這筆交易塵埃消費量較少的變化要返回要求較高的費用。";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "這將擦除此設備上的所有錢包資料。請確認你有你的錢包中保存資訊在別處否則任何比特幣這錢包將無法訪問!!";
@@ -999,7 +1035,22 @@ Fee: %@
 "Transaction" = "交易";
 
 /* (No Commment) */
+"Transaction Fee" = "交易費用";
+
+/* (No Commment) */
+"Transaction Fees" = "交易費用";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "交易費用的影響如何快速比特幣挖掘網路將確認您的交易和取決於當前的網路狀況。我們建議在這次交易以下費用。";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "交易費用的影響如何快速比特幣挖掘網路將確認您的交易，並取決於當前的網路狀況。我們建議這筆交易在此時所顯示的費用。";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "交易不收取費用可能需要很長的時間來確認或不可能在所有確認。你想繼續嗎?";
+
+/* (No Commment) */
+"Transfer Funds" = "資金劃轉";
 
 /* (No Commment) */
 "Transferred" = "轉移";
@@ -1066,6 +1117,9 @@ Fee: %@
 
 /* (No Commment) */
 "Use all funds" = "使用所有基金";
+
+/* (No Commment) */
+"Use recommended values" = "使用推薦的值";
 
 /* (No Commment) */
 "User Declined" = "使用者下降";
@@ -1201,6 +1255,15 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 "You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?" = "你應該總是成對或登錄如果您可以訪問您的錢包 ID 和密碼。恢復您的資金將會創建一個新的錢包 id。你想繼續嗎?";
 
 /* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may be stuck and possibly never be confirmed. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@." = "您指定 %1$@ 極少的交易費。您的交易可能會卡住，可能從來沒有被證實。為了增加您的交易確認在大約一小時 （六塊） 的可能性，我們強烈建議費用不低於 %2$@。";
+
+/* (No Commment) */
+"You specified an exceptionally small transaction fee of %@. Your transaction may become stuck and possibly never confirm. To increase the likelihood for your transaction to confirm within approximately one hour (six blocks), we strongly recommend a fee of no less than %@. Since you don’t have sufficient funds, that means the Send amount will also have to be lowered to %@." = "您指定 %1$@ 極少的交易費。您的交易可能會被卡住，並可能永遠不會確認。為了增加您的交易確認在大約一小時 （六塊） 的可能性，我們強烈建議費用不低於 %2$@。因為你沒有足夠的資金，這意味著發送量亦會降低到 %3$@。";
+
+/* (No Commment) */
+"You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "您指定 %1$@ 異常高昂的交易費用。即使你降低到 %2$@ 費，你可以期望要確認在接下來的 10 分鐘 （一個塊） 內的交易記錄。";
+
+/* (No Commment) */
 "You've successfully imported a private key." = "您已成功導入私密金鑰。";
 
 /* (No Commment) */
@@ -1232,6 +1295,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "Your password hint has been updated." = "已更新您的密碼提示。";
+
+/* (No Commment) */
+"Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "你轉移的資金將是安全和有保障的和你會受益于增加的隱私和方便的備份和恢復功能。";
 
 /* (No Commment) */
 "Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes." = "您已驗證電子郵件地址用來發送登錄代碼，當發現可疑或不尋常的活動，提醒你你的錢包的登入識別碼，併發送比特幣付款通知，當您收到資金。我們不會使用您的電子郵件地址用於市場行銷目的。";
