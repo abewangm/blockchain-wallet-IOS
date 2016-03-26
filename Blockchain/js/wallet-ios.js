@@ -329,19 +329,24 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment')
     currentPayment = new Payment();
-    currentPayment.on('update', function(x){
-        if (x) {
-            if (x.from != null) device.execute('update_send_balance:', [x.balance]);
-        }
-    });
 }
 
 MyWalletPhone.changePaymentFrom = function(from) {
     if (currentPayment) {
         if (Helpers.isNumber(from)) {
-            currentPayment.from(MyWalletPhone.getIndexOfActiveAccount(from));
+            currentPayment.from(MyWalletPhone.getIndexOfActiveAccount(from)).then(function(x) {
+                if (x) {
+                    if (x.from != null) device.execute('update_send_balance:', [x.balance]);
+                }
+                return x;
+            });
         } else {
-            currentPayment.from(from);
+            currentPayment.from(from).then(function(x){
+                if (x) {
+                    if (x.from != null) device.execute('update_send_balance:', [x.balance]);
+                }
+                return x;
+            });
         }
     } else {
         console.log('Payment error: null payment object!');
