@@ -1985,22 +1985,23 @@
     }
 }
 
-- (uint64_t)getSpendableBalanceForAccount:(int)account
+- (uint64_t)getSpendableBalanceForAddress:(NSString *)address;
 {
     if (![self isInitialized]) {
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForAccount(MyWalletPhone.getIndexOfActiveAccount(%d))", account] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForPayment(\"%@\")", [address escapeStringForJS]] longLongValue];
 }
 
-- (uint64_t)getSpendableBalanceForAddress:(NSString *)address
+
+- (uint64_t)getSpendableBalanceForAccount:(int)account;
 {
     if (![self isInitialized]) {
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForAddress(\"%@\")", [address escapeStringForJS]] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForPayment(%d)", account] longLongValue];
 }
 
 - (NSString *)getLabelForAccount:(int)account activeOnly:(BOOL)isActiveOnly

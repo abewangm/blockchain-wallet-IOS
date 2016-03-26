@@ -114,6 +114,7 @@
 - (void)transferFundsFromAddress:(NSString *)address;
 
 - (void)reload;
+- (void)reloadAfterMultiAddressResponse;
 
 - (void)hideKeyboard;
 

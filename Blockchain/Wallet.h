@@ -273,6 +273,8 @@
 - (void)changeForcedFee:(uint64_t)fee;
 - (void)getTransactionFee;
 - (void)getSurgeStatus;
+- (uint64_t)getSpendableBalanceForAddress:(NSString *)address;
+- (uint64_t)getSpendableBalanceForAccount:(int)account;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;

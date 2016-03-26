@@ -186,6 +186,15 @@ BOOL displayingLocalSymbolSend;
     [self changeToDefaultFeeMode];
 }
 
+- (void)reloadAfterMultiAddressResponse
+{
+    if (self.sendFromAddress) {
+        [app.wallet getSpendableBalanceForAddress:self.fromAddress];
+    } else {
+        [app.wallet getSpendableBalanceForAccount:self.fromAccount];
+    }
+}
+
 - (void)hideSelectFromAndToButtonsIfAppropriate
 {
     // If we only have one account and no legacy addresses -> can't change from address
@@ -562,6 +571,16 @@ BOOL displayingLocalSymbolSend;
 
 - (void)doCurrencyConversion
 {
+    [self doCurrencyConversionAfterMultiAddress:NO];
+}
+
+- (void)doCurrencyConversionAfterMultiAddress
+{
+    [self doCurrencyConversionAfterMultiAddress:YES];
+}
+
+- (void)doCurrencyConversionAfterMultiAddress:(BOOL)afterMultiAddress
+{
     // If the amount entered exceeds amount available, change the color of the amount text
     if (amountInSatoshi > availableAmount || amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
         [self highlightInvalidAmounts];
@@ -570,8 +589,9 @@ BOOL displayingLocalSymbolSend;
     else {
         [self removeHighlightFromAmounts];
         [self enablePaymentButtons];
-
-        [app.wallet changePaymentAmount:amountInSatoshi];
+        if (!afterMultiAddress) {
+            [app.wallet changePaymentAmount:amountInSatoshi];
+        }
     }
     
     if ([btcAmountField isFirstResponder]) {
@@ -849,7 +869,7 @@ BOOL displayingLocalSymbolSend;
 - (void)updateSendBalance:(NSNumber *)balance
 {
     availableAmount = [balance longLongValue];
-    [self updateFundsAvailable];
+    [self doCurrencyConversionAfterMultiAddress];
 }
 
 #pragma mark - Textfield Delegates
