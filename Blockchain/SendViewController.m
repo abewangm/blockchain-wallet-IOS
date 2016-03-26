@@ -97,6 +97,8 @@ BOOL displayingLocalSymbolSend;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
     feeField.inputAccessoryView = amountKeyboardAccessoryView;
     
+    self.confirmPaymentView.customizeFeeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
     feeField.delegate = self;
     
     feeInformationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
