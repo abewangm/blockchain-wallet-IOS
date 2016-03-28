@@ -350,8 +350,10 @@
 - (void)sendPaymentWithListener:(transactionProgressListeners*)listener
 {
     NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend()"];
-        
-    [self.transactionProgressListeners setObject:listener forKey:txProgressID];
+    
+    if (listener) {
+        [self.transactionProgressListeners setObject:listener forKey:txProgressID];
+    }
 }
 
 - (uint64_t)parseBitcoinValue:(NSString*)input
@@ -522,6 +524,17 @@
     NSString *activeAddressesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.activeAddresses)"];
     
     return [activeAddressesJSON getJSONObject];
+}
+
+- (NSArray*)spendableActiveLegacyAddresses
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    NSString *spendableActiveAddressesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.spendableActiveAddresses)"];
+    
+    return [spendableActiveAddressesJSON getJSONObject];
 }
 
 - (NSArray*)archivedLegacyAddresses
@@ -700,6 +713,24 @@
     }
     
     [self.webView executeJS:@"MyWalletPhone.changePaymentAmount(%lld)", amount];
+}
+
+- (void)getInfoForTransferAllFundsToDefaultAccount
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount()"];
+}
+
+- (void)setupTransferForAllFundsToDefaultAccount:(int)addressIndex
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(%d)", addressIndex];
 }
 
 - (void)sweepPaymentRegular
@@ -1873,6 +1904,40 @@
     DLog(@"update_send_balance");
     if ([self.delegate respondsToSelector:@selector(updateSendBalance:)]) {
         [self.delegate updateSendBalance:balance];
+    }
+}
+
+- (void)update_transfer_all_amount:(NSNumber *)amount fee:(NSNumber *)fee
+{
+    [self loading_stop];
+    DLog(@"update_transfer_all_amount:fee:");
+    
+    if ([self.delegate respondsToSelector:@selector(updateTransferAllAmount:fee:)]) {
+        [self.delegate updateTransferAllAmount:amount fee:fee];
+    }
+}
+
+- (void)skip_address_transfer_all
+{
+    DLog(@"skip_address_transfer_all");
+    if ([self.delegate respondsToSelector:@selector(skipAddressForTransferAll)]) {
+        [self.delegate skipAddressForTransferAll];
+    }
+}
+
+- (void)show_summary_for_transfer_all
+{
+    DLog(@"show_summary_for_transfer_all");
+    if ([self.delegate respondsToSelector:@selector(showSummaryForTransferAll)]) {
+        [self.delegate showSummaryForTransferAll];
+    }
+}
+
+- (void)send_transfer_all
+{
+    DLog(@"send_transfer_all");
+    if ([self.delegate respondsToSelector:@selector(sendDuringTransferAll)]) {
+        [self.delegate sendDuringTransferAll];
     }
 }
 

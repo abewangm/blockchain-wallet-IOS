@@ -35,7 +35,6 @@ typedef enum {
 
 @property (nonatomic) uint64_t amountFromURLHandler;
 
-@property (nonatomic) NSDictionary *recommendedFees;
 @property (nonatomic) uint64_t upperRecommendedLimit;
 @property (nonatomic) uint64_t lowerRecommendedLimit;
 @property (nonatomic) uint64_t estimatedTransactionSize;
@@ -183,9 +182,10 @@ BOOL displayingLocalSymbolSend;
     
     [self enablePaymentButtons];
     
-    self.recommendedFees = nil;
-    
     [self changeToDefaultFeeMode];
+    
+    [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
+    [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)reloadAfterMultiAddressResponse
@@ -308,7 +308,12 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)transferFundsFromAddress:(NSString *)address
+- (void)getInfoForTransferAllFundsToDefaultAccount
+{
+    [app.wallet getInfoForTransferAllFundsToDefaultAccount];
+}
+
+- (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
 {
     [self reload];
 
@@ -438,6 +443,95 @@ BOOL displayingLocalSymbolSend;
          
          [app.wallet sendPaymentWithListener:listener];
     });
+}
+
+- (void)transferAllFundsToDefaultAccountWithListener
+{
+    transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
+    
+    listener.on_start = ^() {
+    };
+    
+    listener.on_begin_signing = ^() {
+    };
+    
+    listener.on_sign_progress = ^(int input) {
+    };
+    
+    listener.on_finish_signing = ^() {
+    };
+    
+    listener.on_success = ^() {
+        
+        DLog(@"SendViewController: on_success_transfer_all at payment %i", self.transferAllPaymentIndex);
+        
+        self.transferAllPaymentIndex++;
+        
+        if (self.transferAllPaymentIndex < self.transferAllAddressesCount) {
+            sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex, self.transferAllAddressesCount];
+            [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex];
+        } else {
+            [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
+            
+            [sendProgressActivityIndicator stopAnimating];
+            
+            [self enablePaymentButtons];
+            
+            // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
+            [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
+            
+            // Close transaction modal, go to transactions view, scroll to top and animate new transaction
+            [app closeAllModals];
+            [app.transactionsViewController animateNextCellAfterReload];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [app transactionsClicked:nil];
+            });
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [app.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+            });
+            
+            [self reload];
+        }
+    };
+    
+    listener.on_error = ^(NSString* error) {
+        DLog(@"Send error: %@", error);
+        
+        if ([error isEqualToString:ERROR_UNDEFINED]) {
+            [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
+        } else if (error && error.length != 0)  {
+            [app standardNotify:error];
+        }
+        
+        [sendProgressActivityIndicator stopAnimating];
+        
+        [self enablePaymentButtons];
+        
+        [app closeModalWithTransition:kCATransitionFade];
+        
+        [self reload];
+        
+        [app.wallet getHistory];
+    };
+    
+    [self hideKeyboard];
+    
+    [self disablePaymentButtons];
+    
+    [sendProgressActivityIndicator startAnimating];
+    
+    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex, self.transferAllAddressesCount];
+    
+    [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
+    
+    app.wallet.didReceiveMessageForLastTransaction = NO;
+    
+    [app.wallet sendPaymentWithListener:listener];
+}
+
+- (void)sendDuringTransferAll
+{
+    [self transferAllFundsToDefaultAccountWithListener];
 }
 
 - (uint64_t)getInputAmountInSatoshi
@@ -876,6 +970,45 @@ BOOL displayingLocalSymbolSend;
     [self doCurrencyConversionAfterMultiAddress];
 }
 
+- (void)skipAddressForTransferAll
+{
+    self.transferAllPaymentIndex++;
+    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex, self.transferAllAddressesCount];
+    [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex];
+}
+
+- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee
+{
+    [self reload];
+    
+    [self resetPayment];
+    
+    [self reloadFromField];
+    
+    [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
+    
+    self.feeFromTransactionProposal = [fee longLongValue];
+    amountInSatoshi = [amount longLongValue];
+    
+    self.fromAddress = @"";
+
+    self.sendFromAddress = true;
+    
+    [self disablePaymentButtons];
+    
+    [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex];
+}
+
+- (void)showSummaryForTransferAll
+{
+    [self showSummary];
+    
+    [self enablePaymentButtons];
+    
+    [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
+    [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccountWithListener) forControlEvents:UIControlEventTouchUpInside];
+}
+
 #pragma mark - Textfield Delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -1097,15 +1230,6 @@ BOOL displayingLocalSymbolSend;
 }
 
 #pragma mark - Fee Calculation
-
-- (uint64_t)suggestedFee
-{
-    if (self.recommendedFees) {
-        return (uint64_t)[self.recommendedFees[DICTIONARY_KEY_FEE_ESTIMATE][1][DICTIONARY_KEY_FEE] longLongValue];
-    } else {
-        return 0;
-    }
-}
 
 - (void)getTransactionFeeWithSuccess:(void (^)())success error:(void (^)())error
 {

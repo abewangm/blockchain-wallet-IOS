@@ -88,6 +88,10 @@
 - (void)enableSendPaymentButtons;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
 - (void)updateSendBalance:(NSNumber *)balance;
+- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee;
+- (void)skipAddressForTransferAll;
+- (void)showSummaryForTransferAll;
+- (void)sendDuringTransferAll;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -156,6 +160,7 @@
 
 // Fetch String Array Of Addresses
 - (NSArray *)activeLegacyAddresses;
+- (NSArray *)spendableActiveLegacyAddresses;
 - (NSArray *)allLegacyAddresses;
 - (NSArray *)archivedLegacyAddresses;
 
@@ -272,6 +277,8 @@
 - (void)sweepPaymentRegularThenConfirm;
 - (void)sweepPaymentAdvanced:(uint64_t)fee;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
+- (void)getInfoForTransferAllFundsToDefaultAccount;
+- (void)setupTransferForAllFundsToDefaultAccount:(int)addressIndex;
 - (void)checkIfOverspending;
 - (void)getFeeBounds:(uint64_t)fee;
 - (void)changeForcedFee:(uint64_t)fee;

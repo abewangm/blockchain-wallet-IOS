@@ -198,7 +198,10 @@
     
     [app showSendCoins];
     
-    [app.sendViewController transferFundsFromAddress:@""];
+    app.sendViewController.transferAllAddressesCount = [[app.wallet spendableActiveLegacyAddresses] count];
+    app.sendViewController.transferAllPaymentIndex = 0;
+    
+    [app.sendViewController getInfoForTransferAllFundsToDefaultAccount];
 }
 
 - (IBAction)backButtonClicked:(UIButton *)sender

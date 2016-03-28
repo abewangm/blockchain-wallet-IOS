@@ -655,6 +655,80 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     MyWallet.login(user_guid, shared_key, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, null, other_error, fetch_success, decrypt_success, build_hd_success);
 };
 
+MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
+    var totalAmount = 0;
+    var totalFee = 0;
+    var promise = 0;
+    for (var index = 0; index < MyWallet.wallet.spendableActiveAddresses.length; index++) {
+        var payment = new Payment();
+        payment.from(MyWallet.wallet.spendableActiveAddresses[index]).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
+            console.log('SweepFee: ' + x.sweepFee);
+            console.log('SweepAmount: ' + x.sweepAmount);
+            totalAmount += x.sweepAmount;
+            totalFee += x.sweepFee;
+            if (promise == MyWallet.wallet.spendableActiveAddresses.length - 1) {
+               console.log('totalAmount: ' + totalAmount);
+               console.log('totalFee: ' + totalFee);
+               device.execute('update_transfer_all_amount:fee:', [totalAmount, totalFee]);
+            }
+            promise++;
+            return x;
+        });
+    }
+}
+
+MyWalletPhone.transferAllFundsToDefaultAccount = function(paymentIndex) {
+    var totalAmount = 0;
+    var totalFee = 0;
+    currentPayment = new Payment();
+    
+    currentPayment.from(MyWallet.wallet.spendableActiveAddresses[paymentIndex]).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
+        console.log('SweepFee: ' + x.sweepFee);
+        console.log('SweepAmount: ' + x.sweepAmount);
+        totalAmount += x.sweepAmount;
+        totalFee += x.sweepFee;
+        
+        if (x.sweepAmount <= 546) {
+            device.execute('skip_address_transfer_all');
+            return x;
+        }
+                                                                                                                                               
+        MyWalletPhone.sendTransferAll(paymentIndex);
+
+        return x;
+    });
+}
+
+MyWalletPhone.sendTransferAll = function(paymentIndex) {
+    
+    var buildFailure = function (error) {
+        console.log('failure building transfer all payment');
+        
+        var errorArgument;
+        if (error.error) {
+            errorArgument = error.error;
+        } else {
+            errorArgument = error.message;
+        }
+        
+        console.log('error updating fee: ' + errorArgument);
+        device.execute('on_error_update_fee:', [errorArgument]);
+        
+        return error.payment;
+    }
+    
+    currentPayment.prebuild().build().then(function (x) {
+       
+       if (paymentIndex > 0) {
+          device.execute('send_transfer_all');                                 
+       } else {
+          device.execute('show_summary_for_transfer_all');
+       }
+                                           
+       return x;
+    }).catch(buildFailure);
+}
+
 MyWalletPhone.quickSend = function() {
     
     var id = ''+Math.round(Math.random()*100000);
