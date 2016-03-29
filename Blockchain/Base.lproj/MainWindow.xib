@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIApplication">
@@ -21,8 +21,10 @@
                 <outlet property="mainPasswordTextField" destination="626" id="633"/>
                 <outlet property="mainPasswordView" destination="623" id="634"/>
                 <outlet property="mainTitleLabel" destination="DIx-fJ-eKX" id="Cqj-bt-tZE"/>
+                <outlet property="manualPairButton" destination="fI2-PD-Xwa" id="1gm-LI-g4O"/>
                 <outlet property="manualPairView" destination="585" id="z6f-l0-Z4m"/>
                 <outlet property="pairingInstructionsView" destination="351" id="374"/>
+                <outlet property="scanPairingCodeButton" destination="370" id="B1h-vC-H70"/>
                 <outlet property="secondPasswordButton" destination="471" id="H2J-Rk-XoH"/>
                 <outlet property="secondPasswordDescriptionLabel" destination="467" id="Yhk-8q-Q6W"/>
                 <outlet property="secondPasswordTextField" destination="469" id="475"/>

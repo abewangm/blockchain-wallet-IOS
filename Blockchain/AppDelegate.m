@@ -1700,6 +1700,10 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showPairWallet:(id)sender
 {
     [app showModalWithContent:pairingInstructionsView closeType:ModalCloseTypeBack headerText:BC_STRING_AUTOMATIC_PAIRING];
+    scanPairingCodeButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
+    scanPairingCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    manualPairButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
+    manualPairButton.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)showRecoverWallet:(id)sender

@@ -69,6 +69,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_FOOTER_HEIGHT 47
 #define DEFAULT_STATUS_BAR_HEIGHT 20
 
+#define WELCOME_VIEW_BUTTON_EDGE_INSETS UIEdgeInsetsMake(0, 12.5, 0, 12.5)
+
 // MerchantMapViewcontroller
 #define METERS_PER_MILE 1609.344
 

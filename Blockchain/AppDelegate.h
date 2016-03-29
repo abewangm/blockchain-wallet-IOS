@@ -52,6 +52,9 @@
     IBOutlet BCModalContentView *pairingInstructionsView;
     IBOutlet BCManualPairView *manualPairView;
     
+    IBOutlet UIButton *scanPairingCodeButton;
+    IBOutlet UIButton *manualPairButton;
+    
     BOOL validateSecondPassword;
     IBOutlet UILabel *secondPasswordDescriptionLabel;
     IBOutlet UIView *secondPasswordView;

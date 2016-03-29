@@ -42,6 +42,8 @@ Boolean shouldShowAnimation;
         self.createWalletButton.layer.cornerRadius = 16;
         self.createWalletButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
         self.createWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        self.createWalletButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.createWalletButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
         [self.createWalletButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
         [self.createWalletButton setTitle:[BC_STRING_CREATE_NEW_WALLET uppercaseString] forState:UIControlStateNormal];
         [self.createWalletButton setBackgroundColor:[UIColor whiteColor]];
