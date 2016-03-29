@@ -980,19 +980,15 @@ BOOL displayingLocalSymbolSend;
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee
 {
     [self reload];
-    
-    [self resetPayment];
-    
-    [self reloadFromField];
-    
+
     [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
     
     self.feeFromTransactionProposal = [fee longLongValue];
     amountInSatoshi = [amount longLongValue];
     
-    self.fromAddress = @"";
-
-    self.sendFromAddress = true;
+    [self didSelectFromAddress:@""];
+    
+    selectAddressTextField.text = BC_STRING_ANY_ADDRESS;
     
     [self disablePaymentButtons];
     
