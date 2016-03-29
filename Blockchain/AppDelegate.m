@@ -1483,14 +1483,14 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController showSummaryForTransferAll];
 }
 
-- (void)sendDuringTransferAll
+- (void)sendDuringTransferAll:(NSString *)secondPassword
 {
-    [_sendViewController sendDuringTransferAll];
+    [_sendViewController sendDuringTransferAll:secondPassword];
 }
 
-- (void)skipAddressForTransferAll
+- (void)skipAddressForTransferAll:(NSString *)secondPassword;
 {
-    [_sendViewController skipAddressForTransferAll];
+    [_sendViewController skipAddressForTransferAll:secondPassword];
 }
 
 #pragma mark - Show Screens

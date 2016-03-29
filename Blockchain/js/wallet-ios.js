@@ -677,7 +677,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     }
 }
 
-MyWalletPhone.transferAllFundsToDefaultAccount = function(paymentIndex) {
+MyWalletPhone.transferAllFundsToDefaultAccount = function(paymentIndex, secondPassword) {
     var totalAmount = 0;
     var totalFee = 0;
     currentPayment = new Payment();
@@ -689,17 +689,17 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(paymentIndex) {
         totalFee += x.sweepFee;
         
         if (x.sweepAmount <= 546) {
-            device.execute('skip_address_transfer_all');
+            device.execute('skip_address_transfer_all:', [secondPassword]);
             return x;
         }
                                                                                                                                                
-        MyWalletPhone.sendTransferAll(paymentIndex);
+        MyWalletPhone.sendTransferAll(paymentIndex, secondPassword);
 
         return x;
     });
 }
 
-MyWalletPhone.sendTransferAll = function(paymentIndex) {
+MyWalletPhone.sendTransferAll = function(paymentIndex, secondPassword) {
     
     var buildFailure = function (error) {
         console.log('failure building transfer all payment');
@@ -720,7 +720,7 @@ MyWalletPhone.sendTransferAll = function(paymentIndex) {
     currentPayment.prebuild().build().then(function (x) {
        
        if (paymentIndex > 0) {
-          device.execute('send_transfer_all');                                 
+          device.execute('send_transfer_all:', [secondPassword]);
        } else {
           device.execute('show_summary_for_transfer_all');
        }
@@ -729,12 +729,12 @@ MyWalletPhone.sendTransferAll = function(paymentIndex) {
     }).catch(buildFailure);
 }
 
-MyWalletPhone.quickSend = function() {
+MyWalletPhone.quickSend = function(secondPassword) {
     
     var id = ''+Math.round(Math.random()*100000);
     
     var success = function(payment) {
-        device.execute('tx_on_success:', [id]);
+        device.execute('tx_on_success:secondPassword:', [id, secondPassword]);
         delete pendingTransactions[id];
     };
     
@@ -760,12 +760,22 @@ MyWalletPhone.quickSend = function() {
     });
     
     if (MyWallet.wallet.isDoubleEncrypted) {
-        MyWalletPhone.getSecondPassword(function (pw) {
+        if (secondPassword) {
             currentPayment
+            .sign(secondPassword)
+            .publish()
+            .then(success).catch(error);
+        } else {
+            MyWalletPhone.getSecondPassword(function (pw) {
+                                            
+                secondPassword = pw;
+                                            
+                currentPayment
                 .sign(pw)
                 .publish()
                 .then(success).catch(error);
-        });
+            });
+        }
     } else {
         currentPayment
             .sign()

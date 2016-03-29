@@ -27,7 +27,7 @@
 @property(nonatomic, copy) void (^on_begin_signing)();
 @property(nonatomic, copy) void (^on_sign_progress)(int input);
 @property(nonatomic, copy) void (^on_finish_signing)();
-@property(nonatomic, copy) void (^on_success)();
+@property(nonatomic, copy) void (^on_success)(NSString*secondPassword);
 @property(nonatomic, copy) void (^on_error)(NSString*error);
 @end
 
@@ -89,9 +89,9 @@
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
 - (void)updateSendBalance:(NSNumber *)balance;
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee;
-- (void)skipAddressForTransferAll;
+- (void)skipAddressForTransferAll:(NSString *)secondPassword;
 - (void)showSummaryForTransferAll;
-- (void)sendDuringTransferAll;
+- (void)sendDuringTransferAll:(NSString *)secondPassword;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -142,7 +142,7 @@
 - (void)toggleArchiveLegacyAddress:(NSString *)address;
 - (void)toggleArchiveAccount:(int)account;
 
-- (void)sendPaymentWithListener:(transactionProgressListeners*)listener;
+- (void)sendPaymentWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)sendFromWatchOnlyAddress:(NSString *)watchOnlyAddress privateKey:(NSString *)privateKeyString;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
@@ -278,7 +278,7 @@
 - (void)sweepPaymentAdvanced:(uint64_t)fee;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
 - (void)getInfoForTransferAllFundsToDefaultAccount;
-- (void)setupTransferForAllFundsToDefaultAccount:(int)addressIndex;
+- (void)setupTransferForAllFundsToDefaultAccount:(int)addressIndex secondPassword:(NSString *)secondPassword;
 - (void)checkIfOverspending;
 - (void)getFeeBounds:(uint64_t)fee;
 - (void)changeForcedFee:(uint64_t)fee;

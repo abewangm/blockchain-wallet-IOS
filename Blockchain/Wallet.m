@@ -347,9 +347,15 @@
     [self.webView executeJSSynchronous:@"MyWalletPhone.cancelTxSigning();"];
 }
 
-- (void)sendPaymentWithListener:(transactionProgressListeners*)listener
+- (void)sendPaymentWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
 {
-    NSString * txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend()"];
+    NSString * txProgressID;
+    
+    if (secondPassword) {
+        txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(\"%@\")", [secondPassword escapeStringForJS]];
+    } else {
+        txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend()"];
+    }
     
     if (listener) {
         [self.transactionProgressListeners setObject:listener forKey:txProgressID];
@@ -724,13 +730,13 @@
     [self.webView executeJS:@"MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount()"];
 }
 
-- (void)setupTransferForAllFundsToDefaultAccount:(int)addressIndex
+- (void)setupTransferForAllFundsToDefaultAccount:(int)addressIndex secondPassword:(NSString *)secondPassword
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(%d)", addressIndex];
+    [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(%d, \"%@\")", addressIndex, [secondPassword escapeStringForJS]];
 }
 
 - (void)sweepPaymentRegular
@@ -1025,13 +1031,13 @@
     }
 }
 
-- (void)tx_on_success:(NSString*)txProgressID
+- (void)tx_on_success:(NSString*)txProgressID secondPassword:(NSString *)secondPassword
 {
     transactionProgressListeners *listener = [self.transactionProgressListeners objectForKey:txProgressID];
     
     if (listener) {
         if (listener.on_success) {
-            listener.on_success();
+            listener.on_success(secondPassword);
         }
     }
 }
@@ -1917,11 +1923,11 @@
     }
 }
 
-- (void)skip_address_transfer_all
+- (void)skip_address_transfer_all:(NSString *)secondPassword
 {
     DLog(@"skip_address_transfer_all");
-    if ([self.delegate respondsToSelector:@selector(skipAddressForTransferAll)]) {
-        [self.delegate skipAddressForTransferAll];
+    if ([self.delegate respondsToSelector:@selector(skipAddressForTransferAll:)]) {
+        [self.delegate skipAddressForTransferAll:secondPassword];
     }
 }
 
@@ -1933,11 +1939,11 @@
     }
 }
 
-- (void)send_transfer_all
+- (void)send_transfer_all:(NSString *)secondPassword
 {
     DLog(@"send_transfer_all");
-    if ([self.delegate respondsToSelector:@selector(sendDuringTransferAll)]) {
-        [self.delegate sendDuringTransferAll];
+    if ([self.delegate respondsToSelector:@selector(sendDuringTransferAll:)]) {
+        [self.delegate sendDuringTransferAll:secondPassword];
     }
 }
 

@@ -368,7 +368,7 @@ BOOL displayingLocalSymbolSend;
              sendProgressModalText.text = BC_STRING_FINISHED_SIGNING_INPUTS;
          };
          
-         listener.on_success = ^() {
+         listener.on_success = ^(NSString*secondPassword) {
              
              DLog(@"SendViewController: on_success");
              
@@ -441,11 +441,16 @@ BOOL displayingLocalSymbolSend;
          
          app.wallet.didReceiveMessageForLastTransaction = NO;
          
-         [app.wallet sendPaymentWithListener:listener];
+         [app.wallet sendPaymentWithListener:listener secondPassword:nil];
     });
 }
 
-- (void)transferAllFundsToDefaultAccountWithListener
+- (void)transferAllFundsToDefaultAccount
+{
+    [self transferAllFundsToDefaultAccountWithSecondPassword:nil];
+}
+
+- (void)transferAllFundsToDefaultAccountWithSecondPassword:(NSString *)_secondPassword
 {
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
     
@@ -461,7 +466,7 @@ BOOL displayingLocalSymbolSend;
     listener.on_finish_signing = ^() {
     };
     
-    listener.on_success = ^() {
+    listener.on_success = ^(NSString*secondPassword) {
         
         DLog(@"SendViewController: on_success_transfer_all at payment %i", self.transferAllPaymentIndex);
         
@@ -469,7 +474,7 @@ BOOL displayingLocalSymbolSend;
         
         if (self.transferAllPaymentIndex < self.transferAllAddressesCount) {
             sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex, self.transferAllAddressesCount];
-            [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex];
+            [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex secondPassword:secondPassword];
         } else {
             [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
             
@@ -526,12 +531,12 @@ BOOL displayingLocalSymbolSend;
     
     app.wallet.didReceiveMessageForLastTransaction = NO;
     
-    [app.wallet sendPaymentWithListener:listener];
+    [app.wallet sendPaymentWithListener:listener secondPassword:_secondPassword];
 }
 
-- (void)sendDuringTransferAll
+- (void)sendDuringTransferAll:(NSString *)secondPassword
 {
-    [self transferAllFundsToDefaultAccountWithListener];
+    [self transferAllFundsToDefaultAccountWithSecondPassword:secondPassword];
 }
 
 - (uint64_t)getInputAmountInSatoshi
@@ -970,11 +975,11 @@ BOOL displayingLocalSymbolSend;
     [self doCurrencyConversionAfterMultiAddress];
 }
 
-- (void)skipAddressForTransferAll
+- (void)skipAddressForTransferAll:(NSString *)secondPassword
 {
     self.transferAllPaymentIndex++;
     sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex, self.transferAllAddressesCount];
-    [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex];
+    [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex secondPassword:secondPassword];
 }
 
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee
@@ -992,7 +997,7 @@ BOOL displayingLocalSymbolSend;
     
     [self disablePaymentButtons];
     
-    [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex];
+    [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex secondPassword:nil];
 }
 
 - (void)showSummaryForTransferAll
@@ -1002,7 +1007,7 @@ BOOL displayingLocalSymbolSend;
     [self enablePaymentButtons];
     
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
-    [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccountWithListener) forControlEvents:UIControlEventTouchUpInside];
+    [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - Textfield Delegates

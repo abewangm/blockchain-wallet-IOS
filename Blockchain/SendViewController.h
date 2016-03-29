@@ -119,8 +119,8 @@
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)showSummaryForTransferAll;
-- (void)sendDuringTransferAll;
-- (void)skipAddressForTransferAll;
+- (void)sendDuringTransferAll:(NSString *)secondPassword;
+- (void)skipAddressForTransferAll:(NSString *)secondPassword;
 
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
