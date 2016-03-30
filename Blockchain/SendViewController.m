@@ -524,7 +524,9 @@ BOOL displayingLocalSymbolSend;
     
     [sendProgressActivityIndicator startAnimating];
     
-    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex+1, self.transferAllAddressesCount];
+    if (self.transferAllPaymentIndex + 1 <= self.transferAllAddressesCount) {
+        sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex + 1, self.transferAllAddressesCount];
+    }
     
     [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
     
