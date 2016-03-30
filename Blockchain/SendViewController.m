@@ -992,6 +992,13 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
 {
+    if ([addressesUsed count] == 0) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self showErrorBeforeSending:BC_STRING_NO_ADDRESSES_WITH_BALANCE_ABOVE_DUST];
+        });
+        return;
+    }
+
     self.transferAllAddresses = [[NSMutableArray alloc] initWithArray:addressesUsed];
     self.transferAllAddressesInitialCount = [self.transferAllAddresses count];
     
@@ -1004,7 +1011,7 @@ BOOL displayingLocalSymbolSend;
     
     [self didSelectFromAddress:@""];
     
-    selectAddressTextField.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [addressesUsed count]];
+    selectAddressTextField.text = [addressesUsed count] == 1 ? [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESS, [addressesUsed count]] : [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [addressesUsed count]];
     
     [self disablePaymentButtons];
     

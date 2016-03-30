@@ -9,6 +9,8 @@
 
 #define BC_STRING_ANY_ADDRESS NSLocalizedString(@"Any address", nil)
 #define BC_STRING_ARGUMENT_ADDRESSES NSLocalizedString(@"%d addresses", nil)
+#define BC_STRING_ARGUMENT_ADDRESS NSLocalizedString(@"%d address", nil)
+#define BC_STRING_NO_ADDRESSES_WITH_BALANCE_ABOVE_DUST NSLocalizedString(@"You have no addresses with a balance above the required dust threshold.", nil)
 
 #define BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS NSLocalizedString(@"You must enter a destination address", nil)
 #define BC_STRING_INVALID_TO_BITCOIN_ADDRESS NSLocalizedString(@"Invalid to bitcoin address", nil)
