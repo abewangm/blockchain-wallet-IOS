@@ -473,7 +473,6 @@ BOOL displayingLocalSymbolSend;
         self.transferAllPaymentIndex++;
         
         if (self.transferAllPaymentIndex < self.transferAllAddressesCount) {
-            sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex, self.transferAllAddressesCount];
             [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex secondPassword:secondPassword];
         } else {
             [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
@@ -525,7 +524,7 @@ BOOL displayingLocalSymbolSend;
     
     [sendProgressActivityIndicator startAnimating];
     
-    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex, self.transferAllAddressesCount];
+    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex+1, self.transferAllAddressesCount];
     
     [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
     
