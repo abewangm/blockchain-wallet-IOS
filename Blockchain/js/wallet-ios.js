@@ -656,20 +656,28 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
 };
 
 MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
+    
     var totalAmount = 0;
     var totalFee = 0;
     var promise = 0;
+    var totalAddressesUsed = [];
+    
     for (var index = 0; index < MyWallet.wallet.spendableActiveAddresses.length; index++) {
         var payment = new Payment();
         payment.from(MyWallet.wallet.spendableActiveAddresses[index]).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
             console.log('SweepFee: ' + x.sweepFee);
             console.log('SweepAmount: ' + x.sweepAmount);
-            totalAmount += x.sweepAmount;
-            totalFee += x.sweepFee;
+                                                                                                                                     
+            if (x.sweepAmount > 546) {
+                totalAmount += x.sweepAmount;
+                totalFee += x.sweepFee;
+                totalAddressesUsed.push(x.from[0]);
+            }
+
             if (promise == MyWallet.wallet.spendableActiveAddresses.length - 1) {
                console.log('totalAmount: ' + totalAmount);
                console.log('totalFee: ' + totalFee);
-               device.execute('update_transfer_all_amount:fee:', [totalAmount, totalFee]);
+               device.execute('update_transfer_all_amount:fee:addressesUsed:', [totalAmount, totalFee, totalAddressesUsed]);
             }
             promise++;
             return x;
@@ -677,29 +685,24 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     }
 }
 
-MyWalletPhone.transferAllFundsToDefaultAccount = function(paymentIndex, secondPassword) {
+MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, address, secondPassword) {
     var totalAmount = 0;
     var totalFee = 0;
     currentPayment = new Payment();
     
-    currentPayment.from(MyWallet.wallet.spendableActiveAddresses[paymentIndex]).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
+    currentPayment.from(address).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
         console.log('SweepFee: ' + x.sweepFee);
         console.log('SweepAmount: ' + x.sweepAmount);
         totalAmount += x.sweepAmount;
         totalFee += x.sweepFee;
-        
-        if (x.sweepAmount <= 546) {
-            device.execute('skip_address_transfer_all:', [secondPassword]);
-            return x;
-        }
                                                                                                                                                
-        MyWalletPhone.sendTransferAll(paymentIndex, secondPassword);
+        MyWalletPhone.sendTransferAll(isFirstTransfer, secondPassword);
 
         return x;
     });
 }
 
-MyWalletPhone.sendTransferAll = function(paymentIndex, secondPassword) {
+MyWalletPhone.sendTransferAll = function(isFirstTransfer, secondPassword) {
     
     var buildFailure = function (error) {
         console.log('failure building transfer all payment');
@@ -719,10 +722,10 @@ MyWalletPhone.sendTransferAll = function(paymentIndex, secondPassword) {
     
     currentPayment.prebuild().build().then(function (x) {
        
-       if (paymentIndex > 0) {
-          device.execute('send_transfer_all:', [secondPassword]);
-       } else {
+       if (isFirstTransfer) {
           device.execute('show_summary_for_transfer_all');
+       } else {
+          device.execute('send_transfer_all:', [secondPassword]);
        }
                                            
        return x;

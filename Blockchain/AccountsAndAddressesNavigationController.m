@@ -198,9 +198,6 @@
     
     [app showSendCoins];
     
-    app.sendViewController.transferAllAddressesCount = (int)[[app.wallet spendableActiveLegacyAddresses] count];
-    app.sendViewController.transferAllPaymentIndex = 0;
-    
     [app.sendViewController getInfoForTransferAllFundsToDefaultAccount];
 }
 

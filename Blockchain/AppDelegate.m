@@ -1473,9 +1473,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController updateSendBalance:balance];
 }
 
-- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee
+- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
 {
-    [_sendViewController updateTransferAllAmount:amount fee:fee];
+    [_sendViewController updateTransferAllAmount:amount fee:fee addressesUsed:addressesUsed];
 }
 
 - (void)showSummaryForTransferAll
@@ -1486,11 +1486,6 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)sendDuringTransferAll:(NSString *)secondPassword
 {
     [_sendViewController sendDuringTransferAll:secondPassword];
-}
-
-- (void)skipAddressForTransferAll:(NSString *)secondPassword;
-{
-    [_sendViewController skipAddressForTransferAll:secondPassword];
 }
 
 #pragma mark - Show Screens

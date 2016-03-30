@@ -88,8 +88,7 @@
 - (void)enableSendPaymentButtons;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
 - (void)updateSendBalance:(NSNumber *)balance;
-- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee;
-- (void)skipAddressForTransferAll:(NSString *)secondPassword;
+- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
 @end
@@ -278,7 +277,8 @@
 - (void)sweepPaymentAdvanced:(uint64_t)fee;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
 - (void)getInfoForTransferAllFundsToDefaultAccount;
-- (void)setupTransferForAllFundsToDefaultAccount:(int)addressIndex secondPassword:(NSString *)secondPassword;
+- (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
+- (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
 - (void)checkIfOverspending;
 - (void)getFeeBounds:(uint64_t)fee;
 - (void)changeForcedFee:(uint64_t)fee;

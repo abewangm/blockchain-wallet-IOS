@@ -450,6 +450,30 @@ BOOL displayingLocalSymbolSend;
     [self transferAllFundsToDefaultAccountWithSecondPassword:nil];
 }
 
+- (void)finishedTransferFunds
+{
+    [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
+    
+    [sendProgressActivityIndicator stopAnimating];
+    
+    [self enablePaymentButtons];
+    
+    // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
+    [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
+    
+    // Close transaction modal, go to transactions view, scroll to top and animate new transaction
+    [app closeAllModals];
+    [app.transactionsViewController animateNextCellAfterReload];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [app transactionsClicked:nil];
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [app.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    });
+    
+    [self reload];
+}
+
 - (void)transferAllFundsToDefaultAccountWithSecondPassword:(NSString *)_secondPassword
 {
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
@@ -468,33 +492,14 @@ BOOL displayingLocalSymbolSend;
     
     listener.on_success = ^(NSString*secondPassword) {
         
-        DLog(@"SendViewController: on_success_transfer_all at payment %i", self.transferAllPaymentIndex);
+        DLog(@"SendViewController: on_success_transfer_all for address %@", [self.transferAllAddresses firstObject]);
         
-        self.transferAllPaymentIndex++;
-        
-        if (self.transferAllPaymentIndex < self.transferAllAddressesCount) {
-            [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex secondPassword:secondPassword];
+        if ([self.transferAllAddresses count] > 1) {
+            [self.transferAllAddresses removeObjectAtIndex:0];
+            [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:[self.transferAllAddresses firstObject] secondPassword:secondPassword];
         } else {
-            [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
-            
-            [sendProgressActivityIndicator stopAnimating];
-            
-            [self enablePaymentButtons];
-            
-            // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
-            [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
-            
-            // Close transaction modal, go to transactions view, scroll to top and animate new transaction
-            [app closeAllModals];
-            [app.transactionsViewController animateNextCellAfterReload];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [app transactionsClicked:nil];
-            });
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [app.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-            });
-            
-            [self reload];
+            [self.transferAllAddresses removeAllObjects];
+            [self finishedTransferFunds];
         }
     };
     
@@ -524,8 +529,8 @@ BOOL displayingLocalSymbolSend;
     
     [sendProgressActivityIndicator startAnimating];
     
-    if (self.transferAllPaymentIndex + 1 <= self.transferAllAddressesCount) {
-        sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex + 1, self.transferAllAddressesCount];
+    if (self.transferAllAddressesInitialCount - [self.transferAllAddresses count] <= self.transferAllAddressesInitialCount) {
+        sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllAddressesInitialCount - [self.transferAllAddresses count] + 1, self.transferAllAddressesInitialCount];
     }
     
     [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
@@ -604,6 +609,11 @@ BOOL displayingLocalSymbolSend;
 
 - (void)showSummary
 {
+    [self showSummaryWithCustomFromLabel:nil];
+}
+
+- (void)showSummaryWithCustomFromLabel:(NSString *)customFromLabel
+{
     [self hideKeyboard];
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
@@ -618,7 +628,7 @@ BOOL displayingLocalSymbolSend;
             UIButton *paymentButton = self.confirmPaymentView.reallyDoPaymentButton;
             self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
         }];
-
+        
         uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
         uint64_t feeTotal = self.dust + self.feeFromTransactionProposal;
         
@@ -633,6 +643,10 @@ BOOL displayingLocalSymbolSend;
         // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
         if ([fromAddressLabel isEqualToString:fromAddressString]) {
             fromAddressLabel = @"";
+        }
+        
+        if (customFromLabel) {
+            fromAddressString = customFromLabel;
         }
         
         NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
@@ -976,15 +990,11 @@ BOOL displayingLocalSymbolSend;
     [self doCurrencyConversionAfterMultiAddress];
 }
 
-- (void)skipAddressForTransferAll:(NSString *)secondPassword
+- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
 {
-    self.transferAllPaymentIndex++;
-    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllPaymentIndex, self.transferAllAddressesCount];
-    [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex secondPassword:secondPassword];
-}
-
-- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee
-{
+    self.transferAllAddresses = [[NSMutableArray alloc] initWithArray:addressesUsed];
+    self.transferAllAddressesInitialCount = [self.transferAllAddresses count];
+    
     [self reload];
 
     [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
@@ -994,16 +1004,16 @@ BOOL displayingLocalSymbolSend;
     
     [self didSelectFromAddress:@""];
     
-    selectAddressTextField.text = BC_STRING_ANY_ADDRESS;
+    selectAddressTextField.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [addressesUsed count]];
     
     [self disablePaymentButtons];
     
-    [app.wallet setupTransferForAllFundsToDefaultAccount:self.transferAllPaymentIndex secondPassword:nil];
+    [app.wallet setupFirstTransferForAllFundsToDefaultAccount:[addressesUsed firstObject] secondPassword:nil];
 }
 
 - (void)showSummaryForTransferAll
 {
-    [self showSummary];
+    [self showSummaryWithCustomFromLabel:selectAddressTextField.text];
     
     [self enablePaymentButtons];
     

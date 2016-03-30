@@ -83,8 +83,8 @@
 @property BOOL sendToAddress;
 @property BOOL surgeIsOccurring;
 
-@property (nonatomic) int transferAllAddressesCount;
-@property (nonatomic) int transferAllPaymentIndex;
+@property (nonatomic) NSMutableArray *transferAllAddresses;
+@property (nonatomic) int transferAllAddressesInitialCount;
 
 @property(nonatomic, strong) UITapGestureRecognizer *tapGesture;
 
@@ -117,10 +117,9 @@
 
 - (void)getInfoForTransferAllFundsToDefaultAccount;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
-- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee;
+- (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
-- (void)skipAddressForTransferAll:(NSString *)secondPassword;
 
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;

@@ -730,13 +730,22 @@
     [self.webView executeJS:@"MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount()"];
 }
 
-- (void)setupTransferForAllFundsToDefaultAccount:(int)addressIndex secondPassword:(NSString *)secondPassword
+- (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(%d, \"%@\")", addressIndex, [secondPassword escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(true, \"%@\", \"%@\")", [address escapeStringForJS], [secondPassword escapeStringForJS]];
+}
+
+- (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(false, \"%@\", \"%@\")", [address escapeStringForJS], [secondPassword escapeStringForJS]];
 }
 
 - (void)sweepPaymentRegular
@@ -1913,21 +1922,13 @@
     }
 }
 
-- (void)update_transfer_all_amount:(NSNumber *)amount fee:(NSNumber *)fee
+- (void)update_transfer_all_amount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
 {
     [self loading_stop];
     DLog(@"update_transfer_all_amount:fee:");
     
-    if ([self.delegate respondsToSelector:@selector(updateTransferAllAmount:fee:)]) {
-        [self.delegate updateTransferAllAmount:amount fee:fee];
-    }
-}
-
-- (void)skip_address_transfer_all:(NSString *)secondPassword
-{
-    DLog(@"skip_address_transfer_all");
-    if ([self.delegate respondsToSelector:@selector(skipAddressForTransferAll:)]) {
-        [self.delegate skipAddressForTransferAll:secondPassword];
+    if ([self.delegate respondsToSelector:@selector(updateTransferAllAmount:fee:addressesUsed:)]) {
+        [self.delegate updateTransferAllAmount:amount fee:fee addressesUsed:addressesUsed];
     }
 }
 

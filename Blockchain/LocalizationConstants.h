@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #define BC_STRING_ANY_ADDRESS NSLocalizedString(@"Any address", nil)
+#define BC_STRING_ARGUMENT_ADDRESSES NSLocalizedString(@"%d addresses", nil)
 
 #define BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS NSLocalizedString(@"You must enter a destination address", nil)
 #define BC_STRING_INVALID_TO_BITCOIN_ADDRESS NSLocalizedString(@"Invalid to bitcoin address", nil)
