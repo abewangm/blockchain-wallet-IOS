@@ -98,6 +98,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     // For iOS 8 we need to request authorization to get access to the user's location
@@ -116,6 +118,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [self.locationManager stopUpdatingLocation];
     
     self.mapView.showsUserLocation = NO;
