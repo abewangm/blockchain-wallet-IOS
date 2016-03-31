@@ -11,6 +11,7 @@ var Payment = Blockchain.Payment;
 var WalletNetwork = Blockchain.WalletNetwork;
 var RNG = Blockchain.RNG;
 var Address = Blockchain.Address;
+var Bitcoin = Blockchain.Bitcoin;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -399,7 +400,7 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
 MyWalletPhone.changeForcedFee = function(fee) {
     console.log('changing forced fee to ' + fee);
     var buildFailure = function (error) {
-        console.log('buildfailure');
+        console.log('buildfailure forced fee');
         
         var errorArgument;
         if (error.error) {
@@ -668,7 +669,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
             console.log('SweepFee: ' + x.sweepFee);
             console.log('SweepAmount: ' + x.sweepAmount);
                                                                                                                                      
-            if (x.sweepAmount > 546) {
+            if (x.sweepAmount > Bitcoin.networks.bitcoin.dustThreshold) {
                 totalAmount += x.sweepAmount;
                 totalFee += x.sweepFee;
                 totalAddressesUsed.push(x.from[0]);
