@@ -396,7 +396,7 @@ BOOL displayingLocalSymbolSend;
          
          listener.on_error = ^(NSString* error) {
              DLog(@"Send error: %@", error);
-             
+                          
              if ([error isEqualToString:ERROR_UNDEFINED]) {
                  [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
              } else if ([error isEqualToString:ERROR_FEE_TOO_LOW]) {
@@ -506,6 +506,8 @@ BOOL displayingLocalSymbolSend;
     listener.on_error = ^(NSString* error) {
         DLog(@"Send error: %@", error);
         
+        [app closeAllModals];
+        
         if ([error isEqualToString:ERROR_UNDEFINED]) {
             [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
         } else if (error && error.length != 0)  {
@@ -515,8 +517,6 @@ BOOL displayingLocalSymbolSend;
         [sendProgressActivityIndicator stopAnimating];
         
         [self enablePaymentButtons];
-        
-        [app closeModalWithTransition:kCATransitionFade];
         
         [self reload];
         
