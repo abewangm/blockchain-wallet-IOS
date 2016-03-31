@@ -63,7 +63,7 @@ int legacyAddressesSectionNumber;
             
             // Then show the HD accounts with a zero balance
             for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
-                if (![app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:i]] > 0) {
+                if (!([app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:i]] > 0)) {
                     [accounts addObject:[NSNumber numberWithInt:i]];
                     [accountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
                 }
@@ -79,7 +79,7 @@ int legacyAddressesSectionNumber;
             
             // Then show the active legacy addresses with a zero balance
             for (NSString * addr in _wallet.activeLegacyAddresses) {
-                if (![_wallet getLegacyAddressBalance:addr] > 0) {
+                if (!([_wallet getLegacyAddressBalance:addr] > 0)) {
                     [legacyAddresses addObject:addr];
                     [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
                 }
