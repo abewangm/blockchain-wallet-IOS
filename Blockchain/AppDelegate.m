@@ -532,6 +532,9 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [_sendViewController reload];
+    
+    // Enabling touch ID and immediately backgrounding the app hides the status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response

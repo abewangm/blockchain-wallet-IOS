@@ -104,10 +104,6 @@ const int aboutPrivacyPolicy = 1;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-#ifdef TOUCH_ID_ENABLED
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:PINTouchID inSection:PINSection];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-#endif
     [self.tableView reloadData];
 }
 
