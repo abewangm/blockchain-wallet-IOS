@@ -367,6 +367,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #endif
 
 #define ERROR_UNDEFINED @"undefined"
+#define ERROR_ALL_OUTPUTS_ARE_VERY_SMALL @"All Outputs Are Very Small"
 #define ERROR_TIMEOUT_REQUEST @"timeout request"
 
 #define TOUCH_ID_ENABLED 1

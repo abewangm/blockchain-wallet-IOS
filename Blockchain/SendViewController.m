@@ -394,7 +394,7 @@ BOOL displayingLocalSymbolSend;
              [self reload];
          };
          
-         listener.on_error = ^(NSString* error) {
+         listener.on_error = ^(NSString* error, NSString* secondPassword) {
              DLog(@"Send error: %@", error);
                           
              if ([error isEqualToString:ERROR_UNDEFINED]) {
@@ -450,9 +450,31 @@ BOOL displayingLocalSymbolSend;
     [self transferAllFundsToDefaultAccountWithSecondPassword:nil];
 }
 
+- (void)continueTransferringFundsWithSecondPassword:(NSString *)secondPassword
+{
+    if ([self.transferAllAddresses count] > 1) {
+        [self.transferAllAddresses removeObjectAtIndex:0];
+        [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:[self.transferAllAddresses firstObject] secondPassword:secondPassword];
+    } else {
+        [self.transferAllAddresses removeAllObjects];
+        [self finishedTransferFunds];
+    }
+}
+
 - (void)finishedTransferFunds
 {
-    [app standardNotify:BC_STRING_PAYMENT_SENT title:BC_STRING_SUCCESS delegate:nil];
+    if (self.transferAllAddressesUnspendable > 0) {
+        
+        NSString *addressOrAddressesTransferred = self.transferAllAddressesInitialCount - self.transferAllAddressesUnspendable == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
+        NSString *addressOrAddressesSkipped = self.transferAllAddressesUnspendable == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
+        
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT_OUTPUTS_ARGUMENT_ARGUMENT_TOO_SMALL, self.transferAllAddressesInitialCount - self.transferAllAddressesUnspendable, addressOrAddressesTransferred, self.transferAllAddressesUnspendable, addressOrAddressesSkipped] title:BC_STRING_PAYMENTS_SENT delegate:nil];
+    } else {
+        
+        NSString *addressOrAddressesTransferred = self.transferAllAddressesInitialCount == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
+        
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT, self.transferAllAddressesInitialCount, addressOrAddressesTransferred] title:BC_STRING_PAYMENTS_SENT delegate:nil];
+    }
     
     [sendProgressActivityIndicator stopAnimating];
     
@@ -494,17 +516,18 @@ BOOL displayingLocalSymbolSend;
         
         DLog(@"SendViewController: on_success_transfer_all for address %@", [self.transferAllAddresses firstObject]);
         
-        if ([self.transferAllAddresses count] > 1) {
-            [self.transferAllAddresses removeObjectAtIndex:0];
-            [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:[self.transferAllAddresses firstObject] secondPassword:secondPassword];
-        } else {
-            [self.transferAllAddresses removeAllObjects];
-            [self finishedTransferFunds];
-        }
+        [self continueTransferringFundsWithSecondPassword:secondPassword];
     };
     
-    listener.on_error = ^(NSString* error) {
+    listener.on_error = ^(NSString* error, NSString* secondPassword) {
         DLog(@"Send error: %@", error);
+        
+        if ([error containsString:ERROR_ALL_OUTPUTS_ARE_VERY_SMALL]) {
+            self.transferAllAddressesUnspendable++;
+            [self continueTransferringFundsWithSecondPassword:secondPassword];
+            DLog(@"Output too small; continuing transfer all");
+            return;
+        }
         
         [app closeAllModals];
         
@@ -1001,6 +1024,7 @@ BOOL displayingLocalSymbolSend;
 
     self.transferAllAddresses = [[NSMutableArray alloc] initWithArray:addressesUsed];
     self.transferAllAddressesInitialCount = [self.transferAllAddresses count];
+    self.transferAllAddressesUnspendable = 0;
     
     [self reload];
 

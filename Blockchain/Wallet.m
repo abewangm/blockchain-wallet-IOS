@@ -1051,13 +1051,13 @@
     }
 }
 
-- (void)tx_on_error:(NSString*)txProgressID error:(NSString*)error
+- (void)tx_on_error:(NSString*)txProgressID error:(NSString*)error secondPassword:(NSString *)secondPassword
 {
     transactionProgressListeners *listener = [self.transactionProgressListeners objectForKey:txProgressID];
     
     if (listener) {
         if (listener.on_error) {
-            listener.on_error(error);
+            listener.on_error(error, secondPassword);
         }
     }
 }

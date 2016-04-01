@@ -28,7 +28,7 @@
 @property(nonatomic, copy) void (^on_sign_progress)(int input);
 @property(nonatomic, copy) void (^on_finish_signing)();
 @property(nonatomic, copy) void (^on_success)(NSString*secondPassword);
-@property(nonatomic, copy) void (^on_error)(NSString*error);
+@property(nonatomic, copy) void (^on_error)(NSString*error, NSString*secondPassword);
 @end
 
 @interface Key : NSObject {

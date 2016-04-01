@@ -85,6 +85,7 @@
 
 @property (nonatomic) NSMutableArray *transferAllAddresses;
 @property (nonatomic) int transferAllAddressesInitialCount;
+@property (nonatomic) int transferAllAddressesUnspendable;
 
 @property(nonatomic, strong) UITapGestureRecognizer *tapGesture;
 

@@ -743,7 +743,7 @@ MyWalletPhone.quickSend = function(secondPassword) {
     };
     
     var error = function(response) {
-        device.execute('tx_on_error:error:', [id, ''+response]);
+        device.execute('tx_on_error:error:secondPassword:', [id, ''+response, secondPassword]);
         delete pendingTransactions[id];
     };
     
