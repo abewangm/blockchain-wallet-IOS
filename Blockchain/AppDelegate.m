@@ -932,6 +932,10 @@ void (^secondPasswordSuccess)(NSString *);
         [modalView.closeButton removeTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventAllTouchEvents];
         
         [modalView.closeButton addTarget:self action:@selector(closeAllModals) forControlEvents:UIControlEventAllTouchEvents];
+        
+        if (_sendViewController.transferAllMode) {
+            [modalView.closeButton addTarget:_sendViewController action:@selector(reload) forControlEvents:UIControlEventAllTouchEvents];
+        }
     }
     
     [secondPasswordTextField becomeFirstResponder];

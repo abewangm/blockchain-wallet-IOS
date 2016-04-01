@@ -186,6 +186,10 @@ BOOL displayingLocalSymbolSend;
     
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.confirmPaymentView.customizeFeeButton.hidden = NO;
+    
+    self.transferAllMode = NO;
 }
 
 - (void)reloadAfterMultiAddressResponse
@@ -646,6 +650,10 @@ BOOL displayingLocalSymbolSend;
             [self enablePaymentButtons];
         } onResume:nil];
         
+        if (self.transferAllMode) {
+            [app.modalView.backButton addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
         [UIView animateWithDuration:0.3f animations:^{
             
             UIButton *paymentButton = self.confirmPaymentView.reallyDoPaymentButton;
@@ -1017,13 +1025,13 @@ BOOL displayingLocalSymbolSend;
 {
     if ([addressesUsed count] == 0) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self showErrorBeforeSending:BC_STRING_NO_ADDRESSES_WITH_BALANCE_ABOVE_DUST];
+            [self showErrorBeforeSending:BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_DUST];
         });
         return;
     }
 
     self.transferAllAddresses = [[NSMutableArray alloc] initWithArray:addressesUsed];
-    self.transferAllAddressesInitialCount = [self.transferAllAddresses count];
+    self.transferAllAddressesInitialCount = (int)[self.transferAllAddresses count];
     self.transferAllAddressesUnspendable = 0;
     
     [self reload];
@@ -1039,6 +1047,8 @@ BOOL displayingLocalSymbolSend;
     
     [self disablePaymentButtons];
     
+    self.transferAllMode = YES;
+    
     [app.wallet setupFirstTransferForAllFundsToDefaultAccount:[addressesUsed firstObject] secondPassword:nil];
 }
 
@@ -1048,6 +1058,8 @@ BOOL displayingLocalSymbolSend;
     
     [self enablePaymentButtons];
     
+    self.confirmPaymentView.customizeFeeButton.hidden = YES;
+
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];
 }
