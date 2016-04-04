@@ -1115,6 +1115,11 @@
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
 }
 
+- (void)loading_start_transfer_all:(NSNumber *)addressIndex
+{
+    [app showBusyViewWithLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, [addressIndex intValue], [[self spendableActiveLegacyAddresses] count]]];
+}
+
 - (void)loading_stop
 {
     DLog(@"Stop loading");
@@ -1915,7 +1920,6 @@
 
 - (void)update_transfer_all_amount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
 {
-    [self loading_stop];
     DLog(@"update_transfer_all_amount:fee:");
     
     if ([self.delegate respondsToSelector:@selector(updateTransferAllAmount:fee:addressesUsed:)]) {

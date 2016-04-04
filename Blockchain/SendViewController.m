@@ -315,6 +315,10 @@ BOOL displayingLocalSymbolSend;
 
 - (void)getInfoForTransferAllFundsToDefaultAccount
 {
+    app.topViewControllerDelegate = nil;
+    
+    [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, 1, [[app.wallet spendableActiveLegacyAddresses] count]]];
+    
     [app.wallet getInfoForTransferAllFundsToDefaultAccount];
 }
 
@@ -1076,6 +1080,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)showSummaryForTransferAll
 {
+    [app hideBusyView];
+    
     [self showSummaryWithCustomFromLabel:selectAddressTextField.text];
     
     [self enablePaymentButtons];

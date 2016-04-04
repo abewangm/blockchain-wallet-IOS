@@ -654,7 +654,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     
     var totalAmount = 0;
     var totalFee = 0;
-    var promise = 0;
+    var promiseIndex = 0;
     var totalAddressesUsed = [];
     
     for (var index = 0; index < MyWallet.wallet.spendableActiveAddresses.length; index++) {
@@ -669,12 +669,16 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
                 totalAddressesUsed.push(x.from[0]);
             }
 
-            if (promise == MyWallet.wallet.spendableActiveAddresses.length - 1) {
+            if (promiseIndex == MyWallet.wallet.spendableActiveAddresses.length - 1) {
                console.log('totalAmount: ' + totalAmount);
                console.log('totalFee: ' + totalFee);
                device.execute('update_transfer_all_amount:fee:addressesUsed:', [totalAmount, totalFee, totalAddressesUsed]);
             }
-            promise++;
+                                                                                                                                     
+            promiseIndex++;
+            
+            device.execute('loading_start_transfer_all:', [promiseIndex]);
+
             return x;
         });
     }
