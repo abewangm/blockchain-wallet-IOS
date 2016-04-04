@@ -660,6 +660,8 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     for (var index = 0; index < MyWallet.wallet.spendableActiveAddresses.length; index++) {
         var payment = new Payment();
         payment.from(MyWallet.wallet.spendableActiveAddresses[index]).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
+            
+            console.log('from:' + x.from);
             console.log('SweepFee: ' + x.sweepFee);
             console.log('SweepAmount: ' + x.sweepAmount);
                                                                                                                                      
@@ -690,6 +692,8 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
     currentPayment = new Payment();
     
     currentPayment.from(address).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
+                                                                                                
+        console.log('from:' + x.from);
         console.log('SweepFee: ' + x.sweepFee);
         console.log('SweepAmount: ' + x.sweepAmount);
         totalAmount += x.sweepAmount;
