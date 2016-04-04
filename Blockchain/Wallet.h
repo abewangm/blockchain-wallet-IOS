@@ -91,6 +91,7 @@
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
+- (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -151,8 +152,6 @@
 
 - (BOOL)isBitcoinAddress:(NSString *)string;
 - (BOOL)isWatchOnlyLegacyAddress:(NSString*)address;
-
-- (void)cancelTxSigning;
 
 - (BOOL)addKey:(NSString *)privateKeyString;
 - (BOOL)addKey:(NSString*)privateKeyString toWatchOnlyAddress:(NSString *)watchOnlyAddress;

@@ -188,6 +188,7 @@ BOOL displayingLocalSymbolSend;
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];
     
     self.confirmPaymentView.customizeFeeButton.hidden = NO;
+    sendProgressCancelButton.hidden = YES;
     
     self.transferAllMode = NO;
 }
@@ -562,6 +563,11 @@ BOOL displayingLocalSymbolSend;
     
     [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
     
+    [UIView animateWithDuration:0.3f animations:^{
+        UIButton *cancelButton = sendProgressCancelButton;
+        sendProgressCancelButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - cancelButton.frame.size.height, cancelButton.frame.size.width, cancelButton.frame.size.height);
+    }];
+    
     app.wallet.didReceiveMessageForLastTransaction = NO;
     
     [app.wallet sendPaymentWithListener:listener secondPassword:_secondPassword];
@@ -570,6 +576,14 @@ BOOL displayingLocalSymbolSend;
 - (void)sendDuringTransferAll:(NSString *)secondPassword
 {
     [self transferAllFundsToDefaultAccountWithSecondPassword:secondPassword];
+}
+
+- (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword
+{
+    [app closeAllModals];
+    [self reload];
+    
+    [self showErrorBeforeSending:error];
 }
 
 - (uint64_t)getInputAmountInSatoshi
@@ -714,6 +728,14 @@ BOOL displayingLocalSymbolSend;
     [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
     [self enablePaymentButtons];
+}
+
+- (IBAction)sendProgressCancelButtonClicked:(UIButton *)sender
+{
+    [app.wallet createNewPayment];
+    self.transferAllAddressesInitialCount = (int)(self.transferAllAddressesInitialCount - [self.transferAllAddresses count]);
+    [self.transferAllAddresses removeAllObjects];
+    [self finishedTransferFunds];
 }
 
 #pragma mark - UI Helpers
@@ -1059,6 +1081,7 @@ BOOL displayingLocalSymbolSend;
     [self enablePaymentButtons];
     
     self.confirmPaymentView.customizeFeeButton.hidden = YES;
+    sendProgressCancelButton.hidden = NO;
 
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];

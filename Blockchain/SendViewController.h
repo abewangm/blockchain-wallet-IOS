@@ -56,6 +56,7 @@
     IBOutlet UIView *sendProgressModal;
     IBOutlet UILabel *sendProgressModalText;
     IBOutlet UIActivityIndicatorView *sendProgressActivityIndicator;
+    IBOutlet UIButton *sendProgressCancelButton;
 
     IBOutlet UILabel *feeLabel;
     IBOutlet UITextField *feeField;
@@ -122,6 +123,7 @@
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
+- (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
 
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;

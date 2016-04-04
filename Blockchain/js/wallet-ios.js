@@ -25,7 +25,6 @@ BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
 BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
 var MyWalletPhone = {};
-var pendingTransactions = {};
 var currentPayment = null;
 
 window.onerror = function(errorMsg, url, lineNumber) {
@@ -92,12 +91,6 @@ WalletStore.addEventListener(function (event, obj) {
 
 
 // My Wallet phone functions
-
-MyWalletPhone.cancelTxSigning = function() {
-    for (var key in pendingTransactions) {
-        pendingTransactions[key].cancel();
-    }
-}
 
 MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
     var success = function () {
@@ -716,8 +709,10 @@ MyWalletPhone.sendTransferAll = function(isFirstTransfer, secondPassword) {
             errorArgument = error.message;
         }
         
-        console.log('error updating fee: ' + errorArgument);
-        device.execute('on_error_update_fee:', [errorArgument]);
+        console.log('error transfering all funds: ' + errorArgument);
+        
+        // pass second password to frontend in case we want to continue sending from other addresses
+        device.execute('on_error_transfer_all:secondPassword', [errorArgument, secondPassword]);
         
         return error.payment;
     }
@@ -740,12 +735,10 @@ MyWalletPhone.quickSend = function(secondPassword) {
     
     var success = function(payment) {
         device.execute('tx_on_success:secondPassword:', [id, secondPassword]);
-        delete pendingTransactions[id];
     };
     
     var error = function(response) {
         device.execute('tx_on_error:error:secondPassword:', [id, ''+response, secondPassword]);
-        delete pendingTransactions[id];
     };
     
     currentPayment.on('on_start', function () {

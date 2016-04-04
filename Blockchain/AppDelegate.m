@@ -1099,9 +1099,6 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFailBackupWallet
 {
-    // Cancel any tx signing just in case
-    [self.wallet cancelTxSigning];
-    
     // Refresh the wallet and history
     [self.wallet getWalletAndHistory];
 }
@@ -1210,8 +1207,6 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self.loginTimer invalidate];
     
-    [self.wallet cancelTxSigning];
-    
     [self.wallet loadBlankWallet];
     
     self.latestResponse = nil;
@@ -1236,9 +1231,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self removeGuidFromKeychain];
     [self removeSharedKeyFromKeychain];
-    
-    [self.wallet cancelTxSigning];
-    
+        
     [self.wallet clearLocalStorage];
     
     [self.wallet loadBlankWallet];
@@ -1493,6 +1486,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)sendDuringTransferAll:(NSString *)secondPassword
 {
     [_sendViewController sendDuringTransferAll:secondPassword];
+}
+
+- (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword
+{
+    [_sendViewController didErrorDuringTransferAll:error secondPassword:secondPassword];
 }
 
 #pragma mark - Show Screens

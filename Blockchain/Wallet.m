@@ -338,15 +338,6 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.isCorrectMainPassword(\"%@\")", [inputedPassword escapeStringForJS]] boolValue];
 }
 
-- (void)cancelTxSigning
-{
-    if (![self.webView isLoaded]) {
-        return;
-    }
-    
-    [self.webView executeJSSynchronous:@"MyWalletPhone.cancelTxSigning();"];
-}
-
 - (void)sendPaymentWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
 {
     NSString * txProgressID;
@@ -1929,6 +1920,14 @@
     
     if ([self.delegate respondsToSelector:@selector(updateTransferAllAmount:fee:addressesUsed:)]) {
         [self.delegate updateTransferAllAmount:amount fee:fee addressesUsed:addressesUsed];
+    }
+}
+
+- (void)on_error_transfer_all:(NSString *)error secondPassword:(NSString *)secondPassword
+{
+    DLog(@"on_error_transfer_all");
+    if ([self.delegate respondsToSelector:@selector(didErrorDuringTransferAll:secondPassword:)]) {
+        [self.delegate didErrorDuringTransferAll:error secondPassword:secondPassword];
     }
 }
 
