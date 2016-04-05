@@ -333,10 +333,7 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
     
     for (var index = 0; index < parsedAddresses.length; index++) {
         MyWallet.wallet.key(parsedAddresses[index]).archived = true;
-        device.execute('update_archived_progress:', [index]);
     }
-    
-    device.execute('finished_archived_transferred_addresses');
 }
 
 MyWalletPhone.createNewPayment = function() {
@@ -746,6 +743,8 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
 }
 
 MyWalletPhone.quickSend = function(secondPassword) {
+    
+    console.log('quickSend');
     
     var id = ''+Math.round(Math.random()*100000);
     

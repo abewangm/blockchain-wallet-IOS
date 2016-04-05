@@ -762,6 +762,16 @@ BOOL displayingLocalSymbolSend;
     sendProgressModalText.text = BC_STRING_CANCELLING;
     [self.transferAllAddressesTransferred addObject:self.transferAllAddressesToTransfer[0]];
     [self.transferAllAddressesToTransfer removeAllObjects];
+    
+    [self performSelector:@selector(reloadIfNoConnection) withObject:nil afterDelay:10.0];
+}
+
+- (void)reloadIfNoConnection
+{
+    if (self.transferAllMode) {
+        [app closeAllModals];
+        [self reload];
+    }
 }
 
 #pragma mark - UI Helpers
@@ -1473,18 +1483,16 @@ BOOL displayingLocalSymbolSend;
 
 - (void)archiveTransferredAddresses
 {
-    [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_ARCHIVING_ADDRESSES];
-    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_ARCHIVING_ADDRESSES_ARGUMENT_OF_ARGUMENT, 1, [self.transferAllAddressesTransferred count]];
+    [app showBusyViewWithLoadingText:[NSString stringWithFormat:BC_STRING_ARCHIVING_ADDRESSES]];
+                                      
     [app.wallet archiveTransferredAddresses:self.transferAllAddressesTransferred];
-}
-
-- (void)updateArchivedProgress:(NSNumber *)index
-{
-    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_ARCHIVING_ADDRESSES_ARGUMENT_OF_ARGUMENT, [index intValue] + 1, self.transferAllAddressesTransferred.count];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedArchivingTransferredAddresses) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
 }
 
 - (void)finishedArchivingTransferredAddresses
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     [app closeAllModals];
 }
 

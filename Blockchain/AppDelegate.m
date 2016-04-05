@@ -1493,16 +1493,6 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didErrorDuringTransferAll:error secondPassword:secondPassword];
 }
 
-- (void)updateArchivedProgress:(NSNumber *)index
-{
-    [_sendViewController updateArchivedProgress:index];
-}
-
-- (void)finishedArchivingTransferredAddresses
-{
-    [_sendViewController finishedArchivingTransferredAddresses];
-}
-
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses

@@ -1961,22 +1961,6 @@
     }
 }
 
-- (void)update_archived_progress:(NSNumber *)index
-{
-    DLog(@"update_archived_progress");
-    if ([self.delegate respondsToSelector:@selector(updateArchivedProgress:)]) {
-        [self.delegate updateArchivedProgress:index];
-    }
-}
-
-- (void)finished_archived_transferred_addresses
-{
-    DLog(@"finished_archived_transferred_addresses");
-    if ([self.delegate respondsToSelector:@selector(finishedArchivingTransferredAddresses)]) {
-        [self.delegate finishedArchivingTransferredAddresses];
-    }
-}
-
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)upgradeToHDWallet
