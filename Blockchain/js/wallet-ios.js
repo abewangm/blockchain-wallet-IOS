@@ -327,6 +327,18 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
     }
 }
 
+MyWalletPhone.archiveTransferredAddresses = function(addresses) {
+    
+    var parsedAddresses = JSON.parse(addresses);
+    
+    for (var index = 0; index < parsedAddresses.length; index++) {
+        MyWallet.wallet.key(parsedAddresses[index]).archived = true;
+        device.execute('update_archived_progress:', [index]);
+    }
+    
+    device.execute('finished_archived_transferred_addresses');
+}
+
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment')
     currentPayment = new Payment();

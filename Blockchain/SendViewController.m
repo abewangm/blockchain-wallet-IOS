@@ -461,8 +461,11 @@ BOOL displayingLocalSymbolSend;
 
 - (void)continueTransferringFundsWithSecondPassword:(NSString *)secondPassword
 {
-    if ([self.transferAllAddressesToTransfer count] > 1) {
+    if ([self.transferAllAddressesToTransfer count] > 0) {
         [self.transferAllAddressesTransferred addObject:self.transferAllAddressesToTransfer[0]];
+    }
+    
+    if ([self.transferAllAddressesToTransfer count] > 1) {
         [self.transferAllAddressesToTransfer removeObjectAtIndex:0];
         self.fromAddress = self.transferAllAddressesToTransfer[0];
         [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:self.transferAllAddressesToTransfer[0] secondPassword:secondPassword];
@@ -474,18 +477,34 @@ BOOL displayingLocalSymbolSend;
 
 - (void)finishedTransferFunds
 {
+    NSString *summary;
     if (self.transferAllAddressesUnspendable > 0) {
         
         NSString *addressOrAddressesTransferred = self.transferAllAddressesInitialCount - self.transferAllAddressesUnspendable == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
         NSString *addressOrAddressesSkipped = self.transferAllAddressesUnspendable == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
         
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT_OUTPUTS_ARGUMENT_ARGUMENT_TOO_SMALL, self.transferAllAddressesInitialCount - self.transferAllAddressesUnspendable, addressOrAddressesTransferred, self.transferAllAddressesUnspendable, addressOrAddressesSkipped] title:BC_STRING_PAYMENTS_SENT delegate:nil];
+        summary = [NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT_OUTPUTS_ARGUMENT_ARGUMENT_TOO_SMALL, self.transferAllAddressesInitialCount - self.transferAllAddressesUnspendable, addressOrAddressesTransferred, self.transferAllAddressesUnspendable, addressOrAddressesSkipped];
     } else {
         
-        NSString *addressOrAddressesTransferred = self.transferAllAddressesInitialCount == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
+        NSString *addressOrAddressesTransferred = [self.transferAllAddressesTransferred count] == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
         
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT, self.transferAllAddressesInitialCount, addressOrAddressesTransferred] title:BC_STRING_PAYMENTS_SENT delegate:nil];
+        summary = [NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT, [self.transferAllAddressesTransferred count], addressOrAddressesTransferred];
     }
+    
+    NSString *message = [self.transferAllAddressesTransferred count] > 0 ? [NSString stringWithFormat:@"%@\n\n%@", summary, BC_STRING_PAYMENT_ASK_TO_ARCHIVE_TRANSFERRED_ADDRESSES] : summary;
+    
+    UIAlertController *alertForPaymentsSent = [UIAlertController alertControllerWithTitle:BC_STRING_PAYMENTS_SENT message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    if ([self.transferAllAddressesTransferred count] > 0) {
+        [alertForPaymentsSent addAction:[UIAlertAction actionWithTitle:BC_STRING_ARCHIVE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self archiveTransferredAddresses];
+        }]];
+        [alertForPaymentsSent addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+    } else {
+        [alertForPaymentsSent addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    }
+    
+    [app.tabViewController presentViewController:alertForPaymentsSent animated:YES completion:nil];
     
     [sendProgressActivityIndicator stopAnimating];
     
@@ -740,8 +759,9 @@ BOOL displayingLocalSymbolSend;
 {
     [app.wallet createNewPayment];
     self.transferAllAddressesInitialCount = (int)(self.transferAllAddressesInitialCount - [self.transferAllAddressesToTransfer count]);
+    sendProgressModalText.text = BC_STRING_CANCELLING;
+    [self.transferAllAddressesTransferred addObject:self.transferAllAddressesToTransfer[0]];
     [self.transferAllAddressesToTransfer removeAllObjects];
-    [self finishedTransferFunds];
 }
 
 #pragma mark - UI Helpers
@@ -1450,6 +1470,23 @@ BOOL displayingLocalSymbolSend;
 }
 
 #pragma mark - Actions
+
+- (void)archiveTransferredAddresses
+{
+    [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_ARCHIVING_ADDRESSES];
+    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_ARCHIVING_ADDRESSES_ARGUMENT_OF_ARGUMENT, 1, [self.transferAllAddressesTransferred count]];
+    [app.wallet archiveTransferredAddresses:self.transferAllAddressesTransferred];
+}
+
+- (void)updateArchivedProgress:(NSNumber *)index
+{
+    sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_ARCHIVING_ADDRESSES_ARGUMENT_OF_ARGUMENT, [index intValue] + 1, self.transferAllAddressesTransferred.count];
+}
+
+- (void)finishedArchivingTransferredAddresses
+{
+    [app closeAllModals];
+}
 
 - (IBAction)selectFromAddressClicked:(id)sender
 {

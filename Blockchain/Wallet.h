@@ -92,6 +92,8 @@
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
+- (void)updateArchivedProgress:(NSNumber *)index;
+- (void)finishedArchivingTransferredAddresses;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -141,6 +143,7 @@
 
 - (void)toggleArchiveLegacyAddress:(NSString *)address;
 - (void)toggleArchiveAccount:(int)account;
+- (void)archiveTransferredAddresses:(NSArray *)transferredAddresses;
 
 - (void)sendPaymentWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)sendFromWatchOnlyAddress:(NSString *)watchOnlyAddress privateKey:(NSString *)privateKeyString;

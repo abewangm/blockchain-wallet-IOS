@@ -17,6 +17,7 @@
 #import "crypto_scrypt.h"
 #import "NSData+Hex.h"
 #import "TransactionsViewController.h"
+#import "NSArray+EncodedJSONString.h"
 
 @implementation transactionProgressListeners
 @end
@@ -580,6 +581,15 @@
     [self.webView executeJS:@"MyWalletPhone.toggleArchived(%d)", account];
     
     [self getHistory];
+}
+
+- (void)archiveTransferredAddresses:(NSArray *)transferredAddresses
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.archiveTransferredAddresses(\"%@\")", [[transferredAddresses jsonString] escapeStringForJS]];
 }
 
 - (uint64_t)getLegacyAddressBalance:(NSString*)address
@@ -1948,6 +1958,22 @@
     DLog(@"send_transfer_all");
     if ([self.delegate respondsToSelector:@selector(sendDuringTransferAll:)]) {
         [self.delegate sendDuringTransferAll:secondPassword];
+    }
+}
+
+- (void)update_archived_progress:(NSNumber *)index
+{
+    DLog(@"update_archived_progress");
+    if ([self.delegate respondsToSelector:@selector(updateArchivedProgress:)]) {
+        [self.delegate updateArchivedProgress:index];
+    }
+}
+
+- (void)finished_archived_transferred_addresses
+{
+    DLog(@"finished_archived_transferred_addresses");
+    if ([self.delegate respondsToSelector:@selector(finishedArchivingTransferredAddresses)]) {
+        [self.delegate finishedArchivingTransferredAddresses];
     }
 }
 
