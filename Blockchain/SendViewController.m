@@ -461,11 +461,13 @@ BOOL displayingLocalSymbolSend;
 
 - (void)continueTransferringFundsWithSecondPassword:(NSString *)secondPassword
 {
-    if ([self.transferAllAddresses count] > 1) {
-        [self.transferAllAddresses removeObjectAtIndex:0];
-        [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:[self.transferAllAddresses firstObject] secondPassword:secondPassword];
+    if ([self.transferAllAddressesToTransfer count] > 1) {
+        [self.transferAllAddressesTransferred addObject:self.transferAllAddressesToTransfer[0]];
+        [self.transferAllAddressesToTransfer removeObjectAtIndex:0];
+        self.fromAddress = self.transferAllAddressesToTransfer[0];
+        [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:self.transferAllAddressesToTransfer[0] secondPassword:secondPassword];
     } else {
-        [self.transferAllAddresses removeAllObjects];
+        [self.transferAllAddressesToTransfer removeAllObjects];
         [self finishedTransferFunds];
     }
 }
@@ -523,7 +525,7 @@ BOOL displayingLocalSymbolSend;
     
     listener.on_success = ^(NSString*secondPassword) {
         
-        DLog(@"SendViewController: on_success_transfer_all for address %@", [self.transferAllAddresses firstObject]);
+        DLog(@"SendViewController: on_success_transfer_all for address %@", [self.transferAllAddressesToTransfer firstObject]);
         
         [self continueTransferringFundsWithSecondPassword:secondPassword];
     };
@@ -561,8 +563,8 @@ BOOL displayingLocalSymbolSend;
     
     [sendProgressActivityIndicator startAnimating];
     
-    if (self.transferAllAddressesInitialCount - [self.transferAllAddresses count] <= self.transferAllAddressesInitialCount) {
-        sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllAddressesInitialCount - [self.transferAllAddresses count] + 1, self.transferAllAddressesInitialCount];
+    if (self.transferAllAddressesInitialCount - [self.transferAllAddressesToTransfer count] <= self.transferAllAddressesInitialCount) {
+        sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllAddressesInitialCount - [self.transferAllAddressesToTransfer count] + 1, self.transferAllAddressesInitialCount];
     }
     
     [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
@@ -737,8 +739,8 @@ BOOL displayingLocalSymbolSend;
 - (IBAction)sendProgressCancelButtonClicked:(UIButton *)sender
 {
     [app.wallet createNewPayment];
-    self.transferAllAddressesInitialCount = (int)(self.transferAllAddressesInitialCount - [self.transferAllAddresses count]);
-    [self.transferAllAddresses removeAllObjects];
+    self.transferAllAddressesInitialCount = (int)(self.transferAllAddressesInitialCount - [self.transferAllAddressesToTransfer count]);
+    [self.transferAllAddressesToTransfer removeAllObjects];
     [self finishedTransferFunds];
 }
 
@@ -1056,8 +1058,9 @@ BOOL displayingLocalSymbolSend;
         return;
     }
 
-    self.transferAllAddresses = [[NSMutableArray alloc] initWithArray:addressesUsed];
-    self.transferAllAddressesInitialCount = (int)[self.transferAllAddresses count];
+    self.transferAllAddressesToTransfer = [[NSMutableArray alloc] initWithArray:addressesUsed];
+    self.transferAllAddressesTransferred = [[NSMutableArray alloc] init];
+    self.transferAllAddressesInitialCount = (int)[self.transferAllAddressesToTransfer count];
     self.transferAllAddressesUnspendable = 0;
     
     [self reload];

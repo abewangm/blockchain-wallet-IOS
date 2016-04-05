@@ -661,9 +661,10 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
         var payment = new Payment();
         payment.from(MyWallet.wallet.spendableActiveAddresses[index]).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
             
-            console.log('from:' + x.from);
-            console.log('SweepFee: ' + x.sweepFee);
-            console.log('SweepAmount: ' + x.sweepAmount);
+            console.log('gettingInfoTransferAll: from:' + x.from);
+            console.log('gettingInfoTransferAll: balance:' + x.balance);
+            console.log('gettingInfoTransferAll: SweepFee: ' + x.sweepFee);
+            console.log('gettingInfoTransferAll: SweepAmount: ' + x.sweepAmount);
                                                                                                                                      
             if (x.sweepAmount > Bitcoin.networks.bitcoin.dustThreshold) {
                 totalAmount += x.sweepAmount;
@@ -691,22 +692,6 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
     var totalFee = 0;
     currentPayment = new Payment();
     
-    currentPayment.from(address).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
-                                                                                                
-        console.log('from:' + x.from);
-        console.log('SweepFee: ' + x.sweepFee);
-        console.log('SweepAmount: ' + x.sweepAmount);
-        totalAmount += x.sweepAmount;
-        totalFee += x.sweepFee;
-                                                                                                                                               
-        MyWalletPhone.sendTransferAll(isFirstTransfer, secondPassword);
-
-        return x;
-    });
-}
-
-MyWalletPhone.sendTransferAll = function(isFirstTransfer, secondPassword) {
-    
     var buildFailure = function (error) {
         console.log('failure building transfer all payment');
         
@@ -720,20 +705,31 @@ MyWalletPhone.sendTransferAll = function(isFirstTransfer, secondPassword) {
         console.log('error transfering all funds: ' + errorArgument);
         
         // pass second password to frontend in case we want to continue sending from other addresses
-        device.execute('on_error_transfer_all:secondPassword', [errorArgument, secondPassword]);
+        device.execute('on_error_transfer_all:secondPassword:', [errorArgument, secondPassword]);
         
         return error.payment;
     }
     
-    currentPayment.prebuild().build().then(function (x) {
-       
-       if (isFirstTransfer) {
-          device.execute('show_summary_for_transfer_all');
-       } else {
-          device.execute('send_transfer_all:', [secondPassword]);
-       }
-                                           
-       return x;
+    currentPayment.from(address).to(MyWalletPhone.getReceivingAddressForAccount(MyWallet.wallet.hdwallet.defaultAccountIndex)).useAll().then(function (x) {
+                                                                                         
+        console.log('buildingTransferAll: from:' + x.from);
+        console.log('buildingTransferAll: balance:' + x.balance);
+        console.log('buildingTransferAll: SweepFee: ' + x.sweepFee);
+        console.log('buildingTransferAll: SweepAmount: ' + x.sweepAmount);
+        totalAmount += x.sweepAmount;
+        totalFee += x.sweepFee;
+        return x;
+    }).build().then(function (x) {
+                                                                                                         
+        if (isFirstTransfer) {
+           device.execute('show_summary_for_transfer_all');
+        } else {
+            console.log('builtTransferAll: from:' + x.from);
+            console.log('builtTransferAll: to:' + x.to);
+            device.execute('send_transfer_all:', [secondPassword]);
+        }
+                                                                                                         
+        return x;
     }).catch(buildFailure);
 }
 
@@ -746,6 +742,7 @@ MyWalletPhone.quickSend = function(secondPassword) {
     };
     
     var error = function(response) {
+        console.log(response);
         device.execute('tx_on_error:error:secondPassword:', [id, ''+response, secondPassword]);
     };
     
