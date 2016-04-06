@@ -86,8 +86,8 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         var wordIndexes: [Int] = [];
         var index = 0;
         for _ in 0..<Constants.Defaults.NumberOfRecoveryPhraseWords {
-            index += 1
             wordIndexes.append(index)
+            index += 1
         }
         randomizedIndexes = wordIndexes.shuffle()
     }
