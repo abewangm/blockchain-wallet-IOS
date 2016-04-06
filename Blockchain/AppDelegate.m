@@ -895,8 +895,10 @@ void (^secondPasswordSuccess)(NSString *);
         if (secondPasswordSuccess) {
             // It takes ANIMATION_DURATION to dismiss the second password view, then a little extra to make sure any wait spinners start spinning before we execute the success function.
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5*ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                secondPasswordSuccess(password);
-                secondPasswordSuccess = nil;
+                if (secondPasswordSuccess) {
+                    secondPasswordSuccess(password);
+                    secondPasswordSuccess = nil;
+                }
             });
         }
         [app closeModalWithTransition:kCATransitionFade];
