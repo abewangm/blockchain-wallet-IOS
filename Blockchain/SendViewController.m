@@ -1349,14 +1349,14 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee
 {
-    self.feeFromTransactionProposal = [fee longLongValue];
-    uint64_t maxAmount = [amount longLongValue];
-    self.maxSendableAmount = maxAmount;
-    
-    if (maxAmount == 0) {
+    if ([amount longLongValue] <= 0) {
         [self alertUserForZeroSpendableAmount];
         return;
     }
+    
+    self.feeFromTransactionProposal = [fee longLongValue];
+    uint64_t maxAmount = [amount longLongValue];
+    self.maxSendableAmount = maxAmount;
     
     if (amountInSatoshi > maxAmount) {
         [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
@@ -1372,6 +1372,11 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm
 {
+    if ([amount longLongValue] <= 0) {
+        [self alertUserForZeroSpendableAmount];
+        return;
+    }
+    
     self.feeFromTransactionProposal = [fee longLongValue];
     uint64_t maxAmount = [amount longLongValue];
     self.maxSendableAmount = maxAmount;
@@ -1380,11 +1385,6 @@ BOOL displayingLocalSymbolSend;
     DLog(@"SendViewController: got max fee of %lld", [fee longLongValue]);
     amountInSatoshi = maxAmount;
     [self doCurrencyConversion];
-    
-    if (maxAmount == 0) {
-        [self alertUserForZeroSpendableAmount];
-        return;
-    }
     
     if (willConfirm) {
         [self showSummary];
