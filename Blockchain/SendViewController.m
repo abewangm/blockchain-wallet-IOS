@@ -657,7 +657,10 @@ BOOL displayingLocalSymbolSend;
             self.transactionType = TransactionTypeSweepAndConfirm;
             
             if (self.customFeeMode) {
-                [app.wallet sweepPaymentAdvancedThenConfirm:[app.wallet parseBitcoinValue:feeField.text]];
+                
+                NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                [app.wallet sweepPaymentAdvancedThenConfirm:[app.wallet parseBitcoinValue:btcAmountString]];
             } else {
                 [app.wallet sweepPaymentRegularThenConfirm];
             }
@@ -800,7 +803,9 @@ BOOL displayingLocalSymbolSend;
         btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
     }
     
-    if (self.customFeeMode && availableAmount < amountInSatoshi + [app.wallet parseBitcoinValue:feeField.text]) {
+    NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    
+    if (self.customFeeMode && availableAmount < amountInSatoshi + [app.wallet parseBitcoinValue:btcAmountString]) {
         
         [self disablePaymentButtons];
         
@@ -1414,13 +1419,17 @@ BOOL displayingLocalSymbolSend;
     if (afterEvaluation) {
         [app.wallet changeForcedFee:absoluteFee];
     } else {
-        [app.wallet getFeeBounds:[app.wallet parseBitcoinValue:feeField.text]];
+        NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+        [app.wallet getFeeBounds:[app.wallet parseBitcoinValue:btcAmountString]];
     }
 }
 
 - (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
 {
-    uint64_t typedFee = [app.wallet parseBitcoinValue:feeField.text];
+    NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    
+    uint64_t typedFee = [app.wallet parseBitcoinValue:btcAmountString];
     
     if ([confirmationEstimation isMemberOfClass:[NSNull class]]) {
         [self showWarningForInsufficientFundsAndLowFee:typedFee suggestedFee:[[maxFees lastObject] longLongValue] suggestedAmount:[[maxAmounts lastObject] longLongValue]];
@@ -1463,7 +1472,9 @@ BOOL displayingLocalSymbolSend;
     self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
     self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
     
-    [app.wallet changeForcedFee:[app.wallet parseBitcoinValue:feeField.text]];
+    NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    
+    [app.wallet changeForcedFee:[app.wallet parseBitcoinValue:btcAmountString]];
 }
 
 #pragma mark - Actions
@@ -1629,14 +1640,17 @@ BOOL displayingLocalSymbolSend;
     [fiatAmountField resignFirstResponder];
     
     if (self.customFeeMode) {
-        uint64_t customFee = [app.wallet parseBitcoinValue:feeField.text];
+        
+        NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+        uint64_t customFee = [app.wallet parseBitcoinValue:btcAmountString];
         
         if (customFee >= availableAmount) {
             [app standardNotifyAutoDismissingController:BC_STRING_PLEASE_LOWER_CUSTOM_FEE];
             return;
         }
         
-        [app.wallet sweepPaymentAdvanced:[app.wallet parseBitcoinValue:feeField.text]];
+        [app.wallet sweepPaymentAdvanced:customFee];
     } else {
         [app.wallet sweepPaymentRegular];
     }
@@ -1719,7 +1733,10 @@ BOOL displayingLocalSymbolSend;
     if (feeField.hidden) {
         [self checkMaxFee];
     } else {
-        [self changeForcedFee:[app.wallet parseBitcoinValue:feeField.text] afterEvaluation:NO];
+
+        NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+        [self changeForcedFee:[app.wallet parseBitcoinValue:btcAmountString] afterEvaluation:NO];
     }
     
     [app.wallet getSurgeStatus];
