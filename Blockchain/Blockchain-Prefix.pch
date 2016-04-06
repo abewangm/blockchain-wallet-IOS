@@ -16,7 +16,7 @@
 
 // #define ENABLE_DEBUG_MENU 1
 
-#define ENABLE_TRANSFER_FUNDS 1
+// #define ENABLE_TRANSFER_FUNDS 1
 
 #pragma mark - Colors
 
