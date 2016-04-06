@@ -139,6 +139,11 @@
 
 - (IBAction)webURLAction:(id)sender
 {
+    if ([self.merchant.urlString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0) {
+        DLog(@"URLString contains only whitespace");
+        return;
+    }
+    
     if ([self.merchant.urlString length] > 0) {
         NSString *merchantURL = self.merchant.urlString;
         NSRange httpRange = [merchantURL rangeOfString:@"http://"];
