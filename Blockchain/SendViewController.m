@@ -757,21 +757,8 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)sendProgressCancelButtonClicked:(UIButton *)sender
 {
-    [app.wallet createNewPayment];
-    self.transferAllAddressesInitialCount = (int)(self.transferAllAddressesInitialCount - [self.transferAllAddressesToTransfer count]);
-    sendProgressModalText.text = BC_STRING_CANCELLING;
-    [self.transferAllAddressesTransferred addObject:self.transferAllAddressesToTransfer[0]];
-    [self.transferAllAddressesToTransfer removeAllObjects];
-    
-    [self performSelector:@selector(reloadIfNoConnection) withObject:nil afterDelay:10.0];
-}
-
-- (void)reloadIfNoConnection
-{
-    if (self.transferAllMode) {
-        [app closeAllModals];
-        [self reload];
-    }
+    [app closeAllModals];
+    [self reload];
 }
 
 #pragma mark - UI Helpers
