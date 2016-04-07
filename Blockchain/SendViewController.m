@@ -754,8 +754,8 @@ BOOL displayingLocalSymbolSend;
             self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor redColor];
             self.confirmPaymentView.btcFeeLabel.textColor = [UIColor redColor];
         } else {
-            self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor blackColor];
-            self.confirmPaymentView.btcFeeLabel.textColor = [UIColor blackColor];
+            self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor darkGrayColor];
+            self.confirmPaymentView.btcFeeLabel.textColor = [UIColor darkGrayColor];
         }
         
         self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
