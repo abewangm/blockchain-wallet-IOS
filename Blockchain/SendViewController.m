@@ -195,6 +195,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)reloadAfterMultiAddressResponse
 {
+    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    
     if (self.sendFromAddress) {
         [app.wallet getSpendableBalanceForAddress:self.fromAddress];
     } else {
