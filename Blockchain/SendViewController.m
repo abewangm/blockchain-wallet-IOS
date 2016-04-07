@@ -753,6 +753,9 @@ BOOL displayingLocalSymbolSend;
         if (self.surgeIsOccurring) {
             self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor redColor];
             self.confirmPaymentView.btcFeeLabel.textColor = [UIColor redColor];
+        } else {
+            self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor blackColor];
+            self.confirmPaymentView.btcFeeLabel.textColor = [UIColor blackColor];
         }
         
         self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
