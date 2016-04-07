@@ -731,6 +731,8 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
     }).build().then(function (x) {
                                                                                                          
         if (isFirstTransfer) {
+           console.log('builtTransferAll: from:' + x.from);
+           console.log('builtTransferAll: to:' + x.to);
            device.execute('show_summary_for_transfer_all');
         } else {
             console.log('builtTransferAll: from:' + x.from);

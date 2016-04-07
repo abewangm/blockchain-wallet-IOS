@@ -43,6 +43,8 @@ typedef enum {
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
 
+@property (nonatomic) NSString *temporarySecondPassword;
+
 @end
 
 @implementation SendViewController
@@ -202,6 +204,8 @@ BOOL displayingLocalSymbolSend;
     } else {
         [app.wallet getSpendableBalanceForAccount:self.fromAccount];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
@@ -461,8 +465,10 @@ BOOL displayingLocalSymbolSend;
     [self transferAllFundsToDefaultAccountWithSecondPassword:nil];
 }
 
-- (void)continueTransferringFundsWithSecondPassword:(NSString *)secondPassword
+- (void)continueTransferringFunds
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
+    
     if ([self.transferAllAddressesToTransfer count] > 0) {
         [self.transferAllAddressesTransferred addObject:self.transferAllAddressesToTransfer[0]];
     }
@@ -470,7 +476,7 @@ BOOL displayingLocalSymbolSend;
     if ([self.transferAllAddressesToTransfer count] > 1) {
         [self.transferAllAddressesToTransfer removeObjectAtIndex:0];
         self.fromAddress = self.transferAllAddressesToTransfer[0];
-        [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:self.transferAllAddressesToTransfer[0] secondPassword:secondPassword];
+        [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:self.transferAllAddressesToTransfer[0] secondPassword:self.temporarySecondPassword];
     } else {
         [self.transferAllAddressesToTransfer removeAllObjects];
         [self finishedTransferFunds];
@@ -548,7 +554,9 @@ BOOL displayingLocalSymbolSend;
         
         DLog(@"SendViewController: on_success_transfer_all for address %@", [self.transferAllAddressesToTransfer firstObject]);
         
-        [self continueTransferringFundsWithSecondPassword:secondPassword];
+        self.temporarySecondPassword = secondPassword;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(continueTransferringFunds) name:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
     };
     
     listener.on_error = ^(NSString* error, NSString* secondPassword) {
@@ -556,7 +564,8 @@ BOOL displayingLocalSymbolSend;
         
         if ([error containsString:ERROR_ALL_OUTPUTS_ARE_VERY_SMALL]) {
             self.transferAllAddressesUnspendable++;
-            [self continueTransferringFundsWithSecondPassword:secondPassword];
+            self.temporarySecondPassword = secondPassword;
+            [self continueTransferringFunds];
             DLog(@"Output too small; continuing transfer all");
             return;
         }
