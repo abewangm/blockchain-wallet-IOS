@@ -434,10 +434,14 @@ MyWalletPhone.getFeeBounds = function(fee) {
 }
 
 MyWalletPhone.sweepPaymentRegular = function() {
-    currentPayment.useAll().then(function (x) {
-        MyWalletPhone.updateSweep(false, false);
-        return x;
-    });
+    if (currentPayment) {
+        currentPayment.useAll().then(function (x) {
+            MyWalletPhone.updateSweep(false, false);
+            return x;
+        });
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
@@ -458,17 +462,25 @@ MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
         return error.payment;
     }
     
-    currentPayment.useAll().build().then(function(x) {
-        MyWalletPhone.updateSweep(false, true);
-        return x;
-    }).catch(buildFailure);
+    if (currentPayment) {
+        currentPayment.useAll().build().then(function(x) {
+            MyWalletPhone.updateSweep(false, true);
+            return x;
+        }).catch(buildFailure);
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.sweepPaymentAdvanced = function(fee) {
-    currentPayment.useAll(fee).then(function (x) {
-        MyWalletPhone.updateSweep(true, false);
-        return x;
-    });
+    if (currentPayment) {
+        currentPayment.useAll(fee).then(function (x) {
+            MyWalletPhone.updateSweep(true, false);
+            return x;
+        });
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.sweepPaymentAdvancedThenConfirm = function(fee) {
@@ -488,28 +500,37 @@ MyWalletPhone.sweepPaymentAdvancedThenConfirm = function(fee) {
         return error.payment;
     }
     
-    currentPayment.useAll(fee).build().then(function(x) {
-        MyWalletPhone.updateSweep(true, true);
-        return x;
-    }).catch(buildFailure);
+    if (currentPayment) {
+        currentPayment.useAll(fee).build().then(function(x) {
+            MyWalletPhone.updateSweep(true, true);
+            return x;
+        }).catch(buildFailure);
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
-    currentPayment.payment.then(function(x) {
-       console.log('updated fee: ' + x.finalFee);
-       console.log('SweepAmount: ' + x.amounts);
-       device.execute('update_max_amount:fee:dust:willConfirm:', [x.amounts[0], x.finalFee, x.extraFeeConsumption, willConfirm]);
-       return x;
-    }).catch(function(error) {
-       var errorArgument;
-       if (error.error) {
-           errorArgument = error.error;
-       } else {
-           errorArgument = error.message;
-       }
-       console.log('error sweeping payment: ' + errorArgument);
-       device.execute('on_error_update_fee:', [errorArgument]);
-    });
+    
+    if (currentPayment) {
+       currentPayment.payment.then(function(x) {
+          console.log('updated fee: ' + x.finalFee);
+          console.log('SweepAmount: ' + x.amounts);
+          device.execute('update_max_amount:fee:dust:willConfirm:', [x.amounts[0], x.finalFee, x.extraFeeConsumption, willConfirm]);
+          return x;
+       }).catch(function(error) {
+          var errorArgument;
+          if (error.error) {
+              errorArgument = error.error;
+          } else {
+              errorArgument = error.message;
+          }
+          console.log('error sweeping payment: ' + errorArgument);
+          device.execute('on_error_update_fee:', [errorArgument]);
+       });
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.getSpendableBalanceForPayment = function(from) {
@@ -549,7 +570,7 @@ MyWalletPhone.getTransactionFee = function() {
         }).catch(buildFailure);
         
     } else {
-        console.log('Error getting transaction fee');
+        console.log('Payment error: null payment object!');
     }
 }
 
@@ -758,6 +779,11 @@ MyWalletPhone.quickSend = function(secondPassword) {
         console.log(response);
         device.execute('tx_on_error:error:secondPassword:', [id, ''+response, secondPassword]);
     };
+    
+    if (!currentPayment) {
+        console.log('Payment error: null payment object!');
+        return;
+    }
     
     currentPayment.on('on_start', function () {
         device.execute('tx_on_start:', [id]);
