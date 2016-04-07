@@ -371,10 +371,14 @@ MyWalletPhone.changePaymentAmount = function(amount) {
 }
 
 MyWalletPhone.getSurgeStatus = function() {
-    currentPayment.payment.then(function (x) {
-       device.execute('update_surge_status:', [x.fees.default.surge]);
-       return x;
-    });
+    if (currentPayment) {
+       currentPayment.payment.then(function (x) {
+          device.execute('update_surge_status:', [x.fees.default.surge]);
+          return x;
+       });
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.checkIfUserIsOverSpending = function() {
@@ -385,19 +389,23 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
         return x;
     }
     
-    currentPayment.payment.then(checkForOverSpending).catch(function(error) {
-        var errorArgument;
-        if (error.error) {
-            errorArgument = error.error;
-        } else {
-            errorArgument = error.message;
-        }
+    if (currentPayment) {
+        currentPayment.payment.then(checkForOverSpending).catch(function(error) {
+            var errorArgument;
+            if (error.error) {
+                errorArgument = error.error;
+            } else {
+                errorArgument = error.message;
+            }
                                                             
-        console.log('error checking for overspending: ' + errorArgument);
-        device.execute('on_error_update_fee:', [errorArgument]);
+            console.log('error checking for overspending: ' + errorArgument);
+            device.execute('on_error_update_fee:', [errorArgument]);
                                                             
-        return error.payment;
-    });
+            return error.payment;
+        });
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.changeForcedFee = function(fee) {
@@ -417,20 +425,30 @@ MyWalletPhone.changeForcedFee = function(fee) {
         
         return error.payment;
     }
-    currentPayment.prebuild(fee).build().then(function (x) {
-        device.execute('did_change_forced_fee:dust:', [fee, x.extraFeeConsumption]);
-        return x;
-    }).catch(buildFailure);
+    
+    if (currentPayment) {
+       currentPayment.prebuild(fee).build().then(function (x) {
+           device.execute('did_change_forced_fee:dust:', [fee, x.extraFeeConsumption]);
+           return x;
+       }).catch(buildFailure);
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.getFeeBounds = function(fee) {
-    currentPayment.prebuild(fee).then(function (x) {
-        console.log('absolute fee bounds:');
-        console.log(x.absoluteFeeBounds);
-        var expectedBlock = x.confEstimation == Infinity ? -1 : x.confEstimation;
-        device.execute('update_fee_bounds:confirmationEstimation:maxAmounts:maxFees:', [x.absoluteFeeBounds, expectedBlock, x.maxSpendableAmounts, x.sweepFees]);
-        return x;
-    });
+    
+    if (currentPayment) {
+       currentPayment.prebuild(fee).then(function (x) {
+           console.log('absolute fee bounds:');
+           console.log(x.absoluteFeeBounds);
+           var expectedBlock = x.confEstimation == Infinity ? -1 : x.confEstimation;
+           device.execute('update_fee_bounds:confirmationEstimation:maxAmounts:maxFees:', [x.absoluteFeeBounds, expectedBlock, x.maxSpendableAmounts, x.sweepFees]);
+           return x;
+       });
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.sweepPaymentRegular = function() {
@@ -739,30 +757,33 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
         
         return error.payment;
     }
-    
-    currentPayment.from(address).to(MyWalletPhone.getReceivingAddressForAccount(MyWallet.wallet.hdwallet.defaultAccountIndex)).useAll().then(function (x) {
+    if (currentPayment) {
+        currentPayment.from(address).to(MyWalletPhone.getReceivingAddressForAccount(MyWallet.wallet.hdwallet.defaultAccountIndex)).useAll().then(function (x) {
                                                                                          
-        console.log('buildingTransferAll: from:' + x.from);
-        console.log('buildingTransferAll: balance:' + x.balance);
-        console.log('buildingTransferAll: SweepFee: ' + x.sweepFee);
-        console.log('buildingTransferAll: SweepAmount: ' + x.sweepAmount);
-        totalAmount += x.sweepAmount;
-        totalFee += x.sweepFee;
-        return x;
-    }).build().then(function (x) {
+            console.log('buildingTransferAll: from:' + x.from);
+            console.log('buildingTransferAll: balance:' + x.balance);
+            console.log('buildingTransferAll: SweepFee: ' + x.sweepFee);
+            console.log('buildingTransferAll: SweepAmount: ' + x.sweepAmount);
+            totalAmount += x.sweepAmount;
+            totalFee += x.sweepFee;
+            return x;
+        }).build().then(function (x) {
                                                                                                          
-        if (isFirstTransfer) {
-           console.log('builtTransferAll: from:' + x.from);
-           console.log('builtTransferAll: to:' + x.to);
-           device.execute('show_summary_for_transfer_all');
-        } else {
-            console.log('builtTransferAll: from:' + x.from);
-            console.log('builtTransferAll: to:' + x.to);
-            device.execute('send_transfer_all:', [secondPassword]);
-        }
+            if (isFirstTransfer) {
+               console.log('builtTransferAll: from:' + x.from);
+               console.log('builtTransferAll: to:' + x.to);
+               device.execute('show_summary_for_transfer_all');
+            } else {
+                console.log('builtTransferAll: from:' + x.from);
+                console.log('builtTransferAll: to:' + x.to);
+                device.execute('send_transfer_all:', [secondPassword]);
+            }
                                                                                                          
-        return x;
-    }).catch(buildFailure);
+            return x;
+        }).catch(buildFailure);
+    } else {
+        console.log('Payment error: null payment object!');
+    }
 }
 
 MyWalletPhone.quickSend = function(secondPassword) {
@@ -1151,7 +1172,11 @@ MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey = function(privateKeyString
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
             Helpers.privateKeyCorrespondsToAddress(watchOnlyAddress, privateKeyString, bip38Pass).then(function (decryptedPrivateKey) {
                 if (decryptedPrivateKey) {
-                    currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
+                    if (currentPayment) {
+                        currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
+                    } else {
+                        console.log('Payment error: null payment object!');
+                    }
                 } else {
                     console.log('Add private key error: ');
                     device.execute('on_error_import_key_for_sending_from_watch_only:', ['wrongPrivateKey']);
@@ -1161,7 +1186,11 @@ MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey = function(privateKeyString
     } else {
         Helpers.privateKeyCorrespondsToAddress(watchOnlyAddress, privateKeyString, null).then(function (decryptedPrivateKey) {
            if (decryptedPrivateKey) {
-             currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
+             if (currentPayment) {
+                 currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
+             } else {
+                 console.log('Payment error: null payment object!');
+             }
            } else {
              console.log('Add private key error: ');
              device.execute('on_error_import_key_for_sending_from_watch_only:', ['wrongPrivateKey']);
