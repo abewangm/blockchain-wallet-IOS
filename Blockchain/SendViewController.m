@@ -104,6 +104,7 @@ BOOL displayingLocalSymbolSend;
     
     feeInformationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
+    toField.placeholder = BC_STRING_ENTER_BITCOIN_ADDRESS_OR_SELECT;
     btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     
