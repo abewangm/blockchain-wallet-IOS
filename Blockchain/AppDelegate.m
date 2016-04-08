@@ -335,6 +335,11 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
+    if (_sendViewController.isSending && modalView) {
+        DLog(@"Send progress modal is presented - will not show busy view");
+        return;
+    }
+    
     [busyLabel setText:text];
     
     [_window.rootViewController.view bringSubviewToFront:busyView];

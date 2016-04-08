@@ -85,6 +85,8 @@
 @property BOOL surgeIsOccurring;
 @property BOOL transferAllMode;
 
+@property (nonatomic) BOOL isSending;
+
 @property (nonatomic) NSMutableArray *transferAllAddressesToTransfer;
 @property (nonatomic) NSMutableArray *transferAllAddressesTransferred;
 @property (nonatomic) int transferAllAddressesInitialCount;

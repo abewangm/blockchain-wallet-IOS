@@ -193,6 +193,7 @@ BOOL displayingLocalSymbolSend;
     sendProgressCancelButton.hidden = YES;
     
     self.transferAllMode = NO;
+    self.isSending = NO;
 }
 
 - (void)reloadAfterMultiAddressResponse
@@ -556,6 +557,9 @@ BOOL displayingLocalSymbolSend;
         
         self.temporarySecondPassword = secondPassword;
         
+        // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
+        [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(continueTransferringFunds) name:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
     };
     
@@ -605,6 +609,7 @@ BOOL displayingLocalSymbolSend;
     }];
     
     app.wallet.didReceiveMessageForLastTransaction = NO;
+    self.isSending = YES;
     
     [app.wallet sendPaymentWithListener:listener secondPassword:_secondPassword];
 }
