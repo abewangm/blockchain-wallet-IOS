@@ -475,7 +475,7 @@ BOOL displayingLocalSymbolSend;
         [self.transferAllAddressesTransferred addObject:self.transferAllAddressesToTransfer[0]];
     }
     
-    if ([self.transferAllAddressesToTransfer count] > 1) {
+    if ([self.transferAllAddressesToTransfer count] > 1 && self.transferAllMode) {
         [self.transferAllAddressesToTransfer removeObjectAtIndex:0];
         self.fromAddress = self.transferAllAddressesToTransfer[0];
         [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:self.transferAllAddressesToTransfer[0] secondPassword:self.temporarySecondPassword];
@@ -617,7 +617,11 @@ BOOL displayingLocalSymbolSend;
 
 - (void)sendDuringTransferAll:(NSString *)secondPassword
 {
-    [self transferAllFundsToDefaultAccountWithSecondPassword:secondPassword];
+    if (self.transferAllMode) {
+        [self transferAllFundsToDefaultAccountWithSecondPassword:secondPassword];
+    } else {
+        [self finishedTransferFunds];
+    }
 }
 
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword
@@ -780,8 +784,17 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)sendProgressCancelButtonClicked:(UIButton *)sender
 {
-    [app closeAllModals];
-    [self reload];
+    sendProgressModalText.text = BC_STRING_CANCELLING;
+    self.transferAllMode = NO;
+    [self performSelector:@selector(cancelAndReloadIfTransferFails) withObject:nil afterDelay:10.0];
+}
+
+- (void)cancelAndReloadIfTransferFails
+{
+    if (self.isSending && [sendProgressModalText.text isEqualToString:BC_STRING_CANCELLING]) {
+        [self reload];
+        [app closeAllModals];
+    }
 }
 
 #pragma mark - UI Helpers

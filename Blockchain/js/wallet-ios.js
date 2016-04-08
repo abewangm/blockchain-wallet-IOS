@@ -798,7 +798,12 @@ MyWalletPhone.quickSend = function(secondPassword) {
     
     var error = function(response) {
         console.log(response);
-        device.execute('tx_on_error:error:secondPassword:', [id, ''+response, secondPassword]);
+        
+        var error = response;
+        if (response.initial_error) {
+            error = response.initial_error;
+        }
+        device.execute('tx_on_error:error:secondPassword:', [id, ''+error, secondPassword]);
     };
     
     if (!currentPayment) {
