@@ -942,7 +942,12 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
         if (e == 'Invalid Email') {
             device.execute('on_update_email_error');
         } else {
-            device.execute('on_error_creating_new_account:', [''+e]);
+            var message = e;
+            if (e.initial_error) {
+                message = e.initial_error;
+            }
+            
+            device.execute('on_error_creating_new_account:', [''+message]);
         }
     };
 

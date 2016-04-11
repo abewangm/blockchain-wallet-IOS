@@ -307,10 +307,6 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)reallyDoPayment:(id)sender
 {
-    if (![app checkInternetConnection]) {
-        return;
-    }
-    
     if (self.sendFromAddress && [app.wallet isWatchOnlyLegacyAddress:self.fromAddress]) {
         
         [self alertUserForSpendingFromWatchOnlyAddress];
@@ -1721,10 +1717,6 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)sendPaymentClicked:(id)sender
 {
-    if (![app checkInternetConnection]) {
-        return;
-    };
-    
     if ([self.toAddress length] == 0) {
         self.toAddress = toField.text;
         DLog(@"toAddress: %@", self.toAddress);

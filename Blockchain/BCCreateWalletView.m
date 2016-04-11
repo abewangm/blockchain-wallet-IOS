@@ -351,10 +351,6 @@
         return NO;
     }
     
-    if (![app checkInternetConnection]) {
-        return NO;
-    }
-    
     return YES;
 }
 
