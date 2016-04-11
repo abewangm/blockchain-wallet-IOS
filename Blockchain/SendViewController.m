@@ -760,7 +760,7 @@ BOOL displayingLocalSymbolSend;
         self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:feeTotal localCurrency:TRUE];
         self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:feeTotal localCurrency:FALSE];
         
-        if (self.surgeIsOccurring) {
+        if (self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SIMULATE_SURGE]) {
             self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor redColor];
             self.confirmPaymentView.btcFeeLabel.textColor = [UIColor redColor];
         } else {

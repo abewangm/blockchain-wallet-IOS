@@ -15,6 +15,7 @@ const int rowServerURL = 1;
 const int rowWebsocketURL = 2;
 const int rowMerchantURL = 3;
 const int rowAPIURL = 4;
+const int surgeToggle = 5;
 
 @interface DebugTableViewController ()
 @property (nonatomic) NSDictionary *filteredWalletJSON;
@@ -70,6 +71,12 @@ const int rowAPIURL = 4;
     [self presentViewController:changeURLAlert animated:YES completion:nil];
 }
 
+- (void)toggleSurge
+{
+    BOOL surgeOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SIMULATE_SURGE];
+    [[NSUserDefaults standardUserDefaults] setBool:!surgeOn forKey:USER_DEFAULTS_KEY_SIMULATE_SURGE];
+}
+
 - (void)showFilteredWalletJSON
 {
     UIViewController *viewController = [[UIViewController alloc] init];
@@ -89,7 +96,7 @@ const int rowAPIURL = 4;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -123,6 +130,15 @@ const int rowAPIURL = 4;
         case rowAPIURL: {
             cell.textLabel.text = BC_STRING_API_URL;
             cell.detailTextLabel.text = [app apiURL];
+            break;
+        }
+        case surgeToggle: {
+            cell.textLabel.text = BC_STRING_SIMULATE_SURGE;
+            UISwitch *surgeToggle = [[UISwitch alloc] init];
+            BOOL surgeOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SIMULATE_SURGE];
+            surgeToggle.on = surgeOn;
+            [surgeToggle addTarget:self action:@selector(toggleSurge) forControlEvents:UIControlEventTouchUpInside];
+            cell.accessoryView = surgeToggle;
         }
         default:
             break;

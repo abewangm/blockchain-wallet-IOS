@@ -496,6 +496,7 @@
 #define BC_STRING_KEEP_LOWER_FEE NSLocalizedString(@"Keep lower fee", nil)
 #define BC_STRING_USE_RECOMMENDED_VALUES NSLocalizedString(@"Use recommended values", nil)
 #define BC_STRING_PLEASE_LOWER_CUSTOM_FEE NSLocalizedString(@"Please lower the fee to an amount that is less than your balance", nil)
+#define BC_STRING_SIMULATE_SURGE NSLocalizedString(@"Simulate surge", nil)
 #define BC_STRING_SURGE_OCCURRING_TITLE NSLocalizedString(@"Surge Occurring", nil)
 #define BC_STRING_SURGE_OCCURRING_MESSAGE NSLocalizedString(@"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual.", nil)
 #define BC_STRING_FEE_INFORMATION_TITLE NSLocalizedString(@"Transaction Fees", nil)
