@@ -24,6 +24,8 @@
 
 @synthesize allKeys;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -65,16 +67,7 @@
     [self displayTransferFundsWarningIfAppropriate];
 }
 
-- (void)displayTransferFundsWarningIfAppropriate
-{
-    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    
-    if ([app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForActiveLegacyAddresses] > 0 && navigationController.visibleViewController == self) {
-        navigationController.warningButton.hidden = NO;
-    } else {
-        navigationController.warningButton.hidden = YES;
-    }
-}
+#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -208,7 +201,18 @@
                                                   object:nil];
 }
 
-#pragma mark Table View Delegate
+- (void)displayTransferFundsWarningIfAppropriate
+{
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    
+    if ([app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForActiveLegacyAddresses] > 0 && navigationController.visibleViewController == self) {
+        navigationController.warningButton.hidden = NO;
+    } else {
+        navigationController.warningButton.hidden = YES;
+    }
+}
+
+#pragma mark - Table View Delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

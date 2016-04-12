@@ -41,6 +41,8 @@ typedef enum {
 
 @implementation AccountsAndAddressesDetailViewController
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -69,6 +71,14 @@ typedef enum {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)reload
+{
+    [self resetHeader];
+    [self.tableView reloadData];
+}
+
+#pragma mark - UI Helpers
+
 - (void)resetHeader
 {
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
@@ -81,11 +91,33 @@ typedef enum {
     navigationController.headerLabel.text = headerText;
 }
 
-- (void)reload
+- (void)showBusyViewWithLoadingText:(NSString *)text;
 {
-    [self resetHeader];
-    [self.tableView reloadData];
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    [navigationController showBusyViewWithLoadingText:text];
 }
+
+- (void)alertToShowAccountXPub
+{
+    UIAlertController *alertToShowXPub = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_EXTENDED_PUBLIC_KEY_WARNING preferredStyle:UIAlertControllerStyleAlert];
+    [alertToShowXPub addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self showAccountXPub:self.account];
+    }]];
+    [alertToShowXPub addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertToShowXPub animated:YES completion:nil];
+}
+
+- (void)alertToConfirmSetDefaultAccount:(int)account
+{
+    UIAlertController *alertToSetDefaultAccount = [UIAlertController alertControllerWithTitle:BC_STRING_SET_DEFAULT_ACCOUNT message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertToSetDefaultAccount addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self setDefaultAccount:account];
+    }]];
+    [alertToSetDefaultAccount addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertToSetDefaultAccount animated:YES completion:nil];
+}
+
+#pragma mark - Wallet status
 
 - (BOOL)isArchived
 {
@@ -109,26 +141,7 @@ typedef enum {
 #endif
 }
 
-- (void)showBusyViewWithLoadingText:(NSString *)text;
-{
-    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    [navigationController showBusyViewWithLoadingText:text];
-}
-
-- (void)alertToShowAccountXPub
-{
-    UIAlertController *alertToShowXPub = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_EXTENDED_PUBLIC_KEY_WARNING preferredStyle:UIAlertControllerStyleAlert];
-    [alertToShowXPub addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self showAccountXPub:self.account];
-    }]];
-    [alertToShowXPub addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alertToShowXPub animated:YES completion:nil];
-}
-
-- (void)showDetailScreenWithType:(DetailType)type
-{
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:type]];
-}
+#pragma mark - Actions
 
 - (void)transferFundsFromAddressClicked
 {
@@ -192,14 +205,11 @@ typedef enum {
     }
 }
 
-- (void)alertToConfirmSetDefaultAccount:(int)account
+#pragma mark - Navigation
+
+- (void)showDetailScreenWithType:(DetailType)type
 {
-    UIAlertController *alertToSetDefaultAccount = [UIAlertController alertControllerWithTitle:BC_STRING_SET_DEFAULT_ACCOUNT message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertToSetDefaultAccount addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self setDefaultAccount:account];
-    }]];
-    [alertToSetDefaultAccount addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alertToSetDefaultAccount animated:YES completion:nil];
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT sender:[NSNumber numberWithInt:type]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -261,7 +271,7 @@ typedef enum {
     modalView.frame = frame;
 }
 
-#pragma mark Table View Delegate
+#pragma mark - Table View Delegate
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {

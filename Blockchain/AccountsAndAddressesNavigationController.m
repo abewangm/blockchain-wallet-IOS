@@ -19,6 +19,8 @@
 
 @implementation AccountsAndAddressesNavigationController
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -90,6 +92,43 @@
     self.busyView = busyView;
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    self.warningButton.frame = CGRectMake(6, 16, 85, 51);
+    
+    if (self.viewControllers.count == 1 || [self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
+        self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+        self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        self.backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        [self.backButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
+        [self.backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
+        [self.backButton setImage:nil forState:UIControlStateNormal];
+    } else {
+        self.backButton.frame = CGRectMake(0, 12, 85, 51);
+        self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [self.backButton setTitle:@"" forState:UIControlStateNormal];
+        [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
+    }
+}
+
+- (void)reload
+{
+    if (![self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]] &&
+        ![self.visibleViewController isMemberOfClass:[AccountsAndAddressesDetailViewController class]]) {
+        [self popViewControllerAnimated:YES];
+    }
+    
+    if (!self.view.window) {
+        [self popToRootViewControllerAnimated:NO];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
+}
+
+#pragma mark - Busy view
+
 - (void)showBusyViewWithLoadingText:(NSString *)text
 {
     self.busyLabel.text = text;
@@ -115,6 +154,8 @@
     }
 }
 
+#pragma mark - UI helpers
+
 - (void)presentAlertController:(UIAlertController *)alertController
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION_LONG * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -124,41 +165,6 @@
             [self presentViewController:alertController animated:YES completion:nil];
         }
     });
-}
-
-- (void)reload
-{
-    if (![self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]] &&
-        ![self.visibleViewController isMemberOfClass:[AccountsAndAddressesDetailViewController class]]) {
-        [self popViewControllerAnimated:YES];
-    }
-    
-    if (!self.view.window) {
-        [self popToRootViewControllerAnimated:NO];
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES object:nil];
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    self.warningButton.frame = CGRectMake(6, 16, 85, 51);
-    
-    if (self.viewControllers.count == 1 || [self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
-        self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
-        self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-        self.backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        [self.backButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-        [self.backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-        [self.backButton setImage:nil forState:UIControlStateNormal];
-    } else {
-        self.backButton.frame = CGRectMake(0, 12, 85, 51);
-        self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        [self.backButton setTitle:@"" forState:UIControlStateNormal];
-        [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
-    }
 }
 
 - (void)alertUserToTransferAllFunds:(BOOL)userClicked
@@ -180,6 +186,8 @@
 #endif
 }
 
+#pragma mark - Transfer Funds
+
 - (void)transferAllFundsWarningClicked
 {
     [self alertUserToTransferAllFunds:YES];
@@ -200,6 +208,8 @@
     
     [app.sendViewController getInfoForTransferAllFundsToDefaultAccount];
 }
+
+#pragma mark - Navigation
 
 - (IBAction)backButtonClicked:(UIButton *)sender
 {
