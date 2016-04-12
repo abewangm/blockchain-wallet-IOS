@@ -50,6 +50,7 @@
                                        @"iPhone7,2": @"iPhone 6",
                                        @"iPhone8,1": @"iPhone 6S (GSM+CDMA)",
                                        @"iPhone8,2": @"iPhone 6S+ (GSM+CDMA)",
+                                       @"iPhone8,4": @"iPhone SE",
                                        };
     NSString *deviceName = [deviceDictionary objectForKey:identifier];
     if (!deviceName) {
