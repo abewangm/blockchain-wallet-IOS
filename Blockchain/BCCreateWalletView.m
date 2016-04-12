@@ -199,6 +199,8 @@
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
     } else if ([message isEqualToString:ERROR_TIMEOUT_REQUEST]){
         [app standardNotify:BC_STRING_TIMED_OUT];
+    } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST]){
+        [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION];
     } else {
         [app standardNotify:message];
     }

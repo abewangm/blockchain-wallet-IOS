@@ -1369,8 +1369,12 @@
     if (message != nil) {
         NSRange identifierRange = [message rangeOfString:BC_STRING_IDENTIFIER options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
         NSRange connectivityErrorRange = [message rangeOfString:ERROR_FAILED_NETWORK_REQUEST options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
-        if (identifierRange.location != NSNotFound || connectivityErrorRange.location != NSNotFound) {
+        if (identifierRange.location != NSNotFound) {
             [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
+            [self error_restoring_wallet];
+            return;
+        } else if (connectivityErrorRange.location != NSNotFound) {
+            [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
             [self error_restoring_wallet];
             return;
         }
