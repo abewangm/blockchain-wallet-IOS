@@ -1636,12 +1636,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     // asView inserts the modal's view into the rootViewController as a view - this is only used in didFinishLaunching so there is no delay when showing the PIN on start
     if (asView) {
-        if (![_settingsNavigationController isBeingPresented]) {
-            [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
-        } else {
+        if ([_settingsNavigationController isBeingPresented]) {
             // Immediately after enabling touch ID, backgrounding the app while the Settings scren is still being presented results in failure to add the PIN screen back. Using a delay to allow animation to complete fixes this
             [_window.rootViewController.view performSelector:@selector(addSubview:) withObject:self.pinEntryViewController.view afterDelay:DELAY_KEYBOARD_DISMISSAL];
             [self performSelector:@selector(showStatusBar) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
+        } else {
+            [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
         }
     }
     else {
