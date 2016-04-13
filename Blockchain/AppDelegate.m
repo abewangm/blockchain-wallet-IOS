@@ -1639,6 +1639,7 @@ void (^secondPasswordSuccess)(NSString *);
         if (![_settingsNavigationController isBeingPresented]) {
             [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
         } else {
+            // Immediately after enabling touch ID, backgrounding the app while the Settings scren is still being presented results in failure to add the PIN screen back. Using a delay to allow animation to complete fixes this
             [_window.rootViewController.view performSelector:@selector(addSubview:) withObject:self.pinEntryViewController.view afterDelay:DELAY_KEYBOARD_DISMISSAL];
             [self performSelector:@selector(showStatusBar) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
         }
