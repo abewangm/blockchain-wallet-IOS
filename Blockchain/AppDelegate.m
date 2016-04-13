@@ -1636,13 +1636,23 @@ void (^secondPasswordSuccess)(NSString *);
     
     // asView inserts the modal's view into the rootViewController as a view - this is only used in didFinishLaunching so there is no delay when showing the PIN on start
     if (asView) {
-        [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
+        if (![_settingsNavigationController isBeingPresented]) {
+            [_window.rootViewController.view addSubview:self.pinEntryViewController.view];
+        } else {
+            [_window.rootViewController.view performSelector:@selector(addSubview:) withObject:self.pinEntryViewController.view afterDelay:DELAY_KEYBOARD_DISMISSAL];
+            [self performSelector:@selector(showStatusBar) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
+        }
     }
     else {
         [self.tabViewController presentViewController:self.pinEntryViewController animated:YES completion:nil];
     }
     
     [self hideBusyView];
+}
+
+- (void)showStatusBar
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
 }
 
 - (void)toggleSideMenu
