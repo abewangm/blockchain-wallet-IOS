@@ -1854,24 +1854,18 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)logoutClicked:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_LOGOUT
-                                                    message:BC_STRING_REALLY_LOGOUT
-                                                   delegate:self
-                                          cancelButtonTitle:BC_STRING_CANCEL
-                                          otherButtonTitles:BC_STRING_OK, nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_LOGOUT message:BC_STRING_REALLY_LOGOUT preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self clearPin];
+        [self.sendViewController clearToAddressAndAmountFields];
+        [self logout];
+        [self closeSideMenu];
+        [self showPasswordModal];
+    }]];
     
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        // Actually log out
-        if (buttonIndex == 1) {
-            [self clearPin];
-            [self.sendViewController clearToAddressAndAmountFields];
-            [self logout];
-            [self closeSideMenu];
-            [self showPasswordModal];
-        }
-    };
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     
-    [alert show];
+    [_window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)confirmForgetWalletWithBlock:(void (^)(UIAlertView *alertView, NSInteger buttonIndex))tapBlock
