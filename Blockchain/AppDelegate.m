@@ -1871,25 +1871,26 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)forgetWalletClicked:(id)sender
 {
-    void (^confirmForgetWalletBlock)(UIAlertView *alertView, NSInteger buttonIndex) = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        // Forget Wallet Cancelled
-        if (buttonIndex == 0) {
-        }
-        // Forget Wallet Confirmed
-        else if (buttonIndex == 1) {
-            DLog(@"forgetting wallet");
-            [app closeModalWithTransition:kCATransitionFade];
-            [self forgetWallet];
-            [app showWelcome];
-        }
-    };
+    UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
+    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DLog(@"forgetting wallet");
+        [app closeModalWithTransition:kCATransitionFade];
+        [self forgetWallet];
+        [app showWelcome];
+    }]];
     
     if ([mainPasswordTextField isFirstResponder]) {
         [mainPasswordTextField resignFirstResponder];
-        [self performSelector:@selector(confirmForgetWalletWithBlock:) withObject:confirmForgetWalletBlock afterDelay:DELAY_KEYBOARD_DISMISSAL];
+        [self performSelector:@selector(presentViewControllerAnimated:) withObject:forgetWalletAlert afterDelay:DELAY_KEYBOARD_DISMISSAL];
     } else {
-        [self confirmForgetWalletWithBlock:confirmForgetWalletBlock];
+        [_window.rootViewController presentViewController:forgetWalletAlert animated:YES completion:nil];
     }
+}
+
+- (void)presentViewControllerAnimated:(UIViewController *)viewController
+{
+    [_window.rootViewController presentViewController:viewController animated:YES completion:nil];
 }
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender
