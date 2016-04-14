@@ -462,37 +462,26 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE
-                                                    message:[NSString stringWithFormat:BC_STRING_FAILED_TO_LOAD_WALLET_DETAIL]
-                                                   delegate:nil
-                                          cancelButtonTitle:BC_STRING_FORGET_WALLET
-                                          otherButtonTitles:BC_STRING_CLOSE_APP, nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE message:[NSString stringWithFormat:BC_STRING_FAILED_TO_LOAD_WALLET_DETAIL] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
+        [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self walletFailedToLoad];
+        }]];
+        [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self forgetWallet];
+            [app showWelcome];
+        }]];
+        [_window.rootViewController presentViewController:forgetWalletAlert animated:YES completion:nil];
+    }]];
     
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        // Close App
-        if (buttonIndex == 1) {
-            UIApplication *app = [UIApplication sharedApplication];
-            
-            [app performSelector:@selector(suspend)];
-        }
-        // Forget Wallet
-        else {
-            [self confirmForgetWalletWithBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                // Forget Wallet Cancelled
-                if (buttonIndex == 0) {
-                    // Open the Failed to load alert again
-                    [self walletFailedToLoad];
-                }
-                // Forget Wallet Confirmed
-                else if (buttonIndex == 1) {
-                    [self forgetWallet];
-                    [app showWelcome];
-                }
-            }];
-        }
-    };
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CLOSE_APP style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        UIApplication *app = [UIApplication sharedApplication];
+        
+        [app performSelector:@selector(suspend)];
+    }]];
     
-    [alert show];
+    [_window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)walletDidDecrypt
