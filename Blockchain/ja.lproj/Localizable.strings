@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d 取引";
 
+/* (No Commment) */
+"%d address" = "%d アドレス";
+
+/* (No Commment) */
+"%d addresses" = "%d アドレス";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld 時間前";
 
@@ -119,6 +125,9 @@
 "Archived" = "アーカイブ";
 
 /* (No Commment) */
+"Archiving addresses" = "アーカイブのアドレス";
+
+/* (No Commment) */
 "Ask Me Later" = "後で確認します。";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "ブロック";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "%2$d のアドレス %1$d を計算する:";
+
+/* (No Commment) */
 "Camera Access Denied" = "カメラのアクセスが拒否されました";
 
 /* (No Commment) */
 "Cancel" = "キャンセル";
+
+/* (No Commment) */
+"Cancelling" = "キャンセル";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "財布が初期化されていないか、パスワードが null の PIN コードを保存できません。";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "%@ 金額を入力します。";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Bitcoin アドレスを入力または選択します";
 
 /* (No Commment) */
 "Enter PIN" = "暗証番号を入力します。";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "お支払いは、送信!";
 
 /* (No Commment) */
+"Payments Sent" = "お支払いを送信";
+
+/* (No Commment) */
 "Phrase Backed" = "フレーズをバックアップ";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "要求量";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "要求に失敗しました。あなたのインターネット接続を確認してください。";
+
+/* (No Commment) */
 "Resend verification SMS" = "再送信 SMS";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "簡略化されたバックアップとリカバリ";
+
+/* (No Commment) */
+"Simulate surge" = "サージをシミュレートします。";
 
 /* (No Commment) */
 "Store Hint" = "ストアのヒント";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "転送";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "%1$d %2$@ から転送された資金";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "%1$d %2$@ から転送された資金。%3$d %4$@ の出力が小さすぎて。";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "すべての資金を転送する: %2$i のアドレス %1$i";
 
 /* (No Commment) */
 "Try again" = "もう一度やり直してください";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin アドレス %@ をアドレス帳に追加しますか?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "使用されるアドレスをアーカイブしますか?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "回復フレーズを書き留め、非常に安全かつ確実な場所に保管します。あなた bitcoins へのアクセスが回復フレーズを知っている人は誰でも覚えています。";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "設定したメール アカウントがありません。%@ にお問い合わせください。";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "必要な塵のしきい値を超える支出できるバランスとアドレスがあるない場合。";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "このアドレスから送信する利用可能な資金があるない場合";

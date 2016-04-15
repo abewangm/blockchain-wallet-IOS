@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d giao dịch";
 
+/* (No Commment) */
+"%d address" = "địa chỉ %d";
+
+/* (No Commment) */
+"%d addresses" = "địa chỉ %d";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld giờ trước đây";
 
@@ -119,6 +125,9 @@
 "Archived" = "Lưu trữ";
 
 /* (No Commment) */
+"Archiving addresses" = "Lưu trữ địa chỉ";
+
+/* (No Commment) */
 "Ask Me Later" = "Hỏi tôi sau";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Bị chặn";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Tính toán: Địa chỉ %1$d của %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Máy ảnh truy cập bị từ chối";
 
 /* (No Commment) */
 "Cancel" = "Hủy bỏ";
+
+/* (No Commment) */
+"Cancelling" = "Hủy bỏ";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Không thể lưu mã PIN trong khi ví không được khởi tạo hoặc mật khẩu là không";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "Nhập số tiền %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Nhập địa chỉ Bitcoin hoặc chọn";
 
 /* (No Commment) */
 "Enter PIN" = "Nhập mã PIN";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "Thanh toán được gửi!";
 
 /* (No Commment) */
+"Payments Sent" = "Gửi các khoản thanh toán";
+
+/* (No Commment) */
 "Phrase Backed" = "Cụm từ được hỗ trợ";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "Yêu cầu số tiền";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "Yêu cầu thất bại. Vui lòng kiểm tra kết nối internet của bạn.";
+
+/* (No Commment) */
 "Resend verification SMS" = "Gửi lại xác minh tin nhắn SMS";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Đơn giản hóa sao lưu và phục hồi";
+
+/* (No Commment) */
+"Simulate surge" = "Mô phỏng sự đột biến";
 
 /* (No Commment) */
 "Store Hint" = "Cửa hàng gợi ý";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Chuyển giao";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Chuyển tiền từ %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Chuyển tiền từ %1$d %2$@. Kết quả đầu ra cho %3$d %4$@ còn quá nhỏ.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Chuyển tất cả tiền: địa chỉ %1$i của %2$i";
 
 /* (No Commment) */
 "Try again" = "Thử lại";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Bạn có muốn thêm bitcoin địa chỉ %@ vào sổ địa chỉ của bạn?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Bạn có muốn lưu trữ các địa chỉ được sử dụng?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Viết xuống cụm từ phục hồi của bạn và giữ nó ở một nơi rất an toàn và an toàn. Hãy nhớ rằng bất cứ ai biết cụm từ phục hồi của bạn có quyền truy cập vào bitcoins của bạn.";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Bạn không có một tài khoản thiết lập cho thư. Xin vui lòng liên hệ với %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Bạn có không có địa chỉ với một sự cân bằng spendable ở trên ngưỡng bụi yêu cầu.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Bạn có không có tiền có sẵn để gửi từ địa chỉ này";

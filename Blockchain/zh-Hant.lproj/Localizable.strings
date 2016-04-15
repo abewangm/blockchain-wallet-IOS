@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d 交易";
 
+/* (No Commment) */
+"%d address" = "%d 位址";
+
+/* (No Commment) */
+"%d addresses" = "%d 位址";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld 小時前";
 
@@ -119,6 +125,9 @@
 "Archived" = "存檔";
 
 /* (No Commment) */
+"Archiving addresses" = "存檔位址";
+
+/* (No Commment) */
 "Ask Me Later" = "稍後再問我";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "阻止";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "計算 ︰ 位址 %1$d 的 %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "相機訪問被拒絕";
 
 /* (No Commment) */
 "Cancel" = "取消";
+
+/* (No Commment) */
+"Cancelling" = "取消";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "未初始化的錢包或密碼為空時無法保存 PIN 碼";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "輸入 %@ 金額";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "輸入比特幣位址或選擇";
 
 /* (No Commment) */
 "Enter PIN" = "輸入 PIN";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "付款發送!";
 
 /* (No Commment) */
+"Payments Sent" = "發送付款";
+
+/* (No Commment) */
 "Phrase Backed" = "支援的短語";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "請求金額";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "請求失敗。請檢查您的互聯網連接。";
+
+/* (No Commment) */
 "Resend verification SMS" = "重新發送驗證短信";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "簡化的備份和恢復";
+
+/* (No Commment) */
+"Simulate surge" = "類比浪湧";
 
 /* (No Commment) */
 "Store Hint" = "存儲提示";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "轉移";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "轉移的資金，從 %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "%1$d %2$@ 的轉移的資金。%3$d %4$@ 的輸出結果太小了。";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "將所有資金都轉 ︰ 位址 %1$i 的 %2$i";
 
 /* (No Commment) */
 "Try again" = "再試一次";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "你想將比特幣位址 %@ 添加到您的通訊錄嗎?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "你想存檔使用的位址嗎？";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "寫下你恢復短語並把它放在非常安全和安全。記住誰知道您恢復短語有權訪問您的比特幣。";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "您沒有設置為郵件帳戶。請聯繫 %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "你有沒有可平衡所需的灰塵閾值以上的位址。";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "你有沒有可用的資金，從該位址發送";

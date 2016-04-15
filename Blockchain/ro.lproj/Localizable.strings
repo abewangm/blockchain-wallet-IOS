@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d tranzacţii";
 
+/* (No Commment) */
+"%d address" = "adresa de %d";
+
+/* (No Commment) */
+"%d addresses" = "adrese %d";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld ore în urmă";
 
@@ -119,6 +125,9 @@
 "Archived" = "Arhivate";
 
 /* (No Commment) */
+"Archiving addresses" = "Arhivarea adreselor";
+
+/* (No Commment) */
 "Ask Me Later" = "Întreabă-mă mai târziu";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Blocat";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Se calculează: %1$d adresa de %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Aparat de fotografiat acces refuzat";
 
 /* (No Commment) */
 "Cancel" = "Revocare";
+
+/* (No Commment) */
+"Cancelling" = "Anularea";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Imposibil de salvat codul PIN în timp ce nu este inițializat portofel sau parola este null";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "Introdu suma %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Introduceţi adresa de Bitcoin sau selectaţi";
 
 /* (No Commment) */
 "Enter PIN" = "Introduceţi codul PIN";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "Trimis de plată!";
 
 /* (No Commment) */
+"Payments Sent" = "Plăţi trimis";
+
+/* (No Commment) */
 "Phrase Backed" = "Fraza susţinute";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "Solicita suma";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "Cererea nu a reuşit. Vă rugăm să verificaţi conexiunea la internet.";
+
+/* (No Commment) */
 "Resend verification SMS" = "Retrimite verificare SMS";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Simplificat de backup şi recuperare";
+
+/* (No Commment) */
+"Simulate surge" = "Simula val";
 
 /* (No Commment) */
 "Store Hint" = "Magazin de sugestie";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transferat";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Fonduri transferate de la %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Fonduri transferate de la %1$d %2$@. Iesiri pentru %3$d %4$@ au fost prea mici.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Transferarea tuturor fondurilor: %1$i adresa de %2$i";
 
 /* (No Commment) */
 "Try again" = "încearcă din nou";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Doriţi să adăugaţi bitcoin adresa %@ în agendă?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Doriţi să arhivaţi adresele utilizate?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Notaţi-vă fraza de recuperare şi păstraţi-l undeva foarte sigur şi securizat. Amintiţi-vă că oricine ştie dumneavoastră fraza de recuperare are acces la dumneavoastră bitcoins.";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Nu aveţi un cont configurat pentru Mail. Vă rugăm să contactaţi %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Aveţi nicio adresă cu un echilibru spendable deasupra pragului necesar praf.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Tu ai nu există fonduri disponibile pentru a trimite la aceasta adresa";

@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d תנועות";
 
+/* (No Commment) */
+"%d address" = "כתובת %d";
+
+/* (No Commment) */
+"%d addresses" = "כתובות %d";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld. לפני כמה שעות";
 
@@ -119,6 +125,9 @@
 "Archived" = "בארכיון";
 
 /* (No Commment) */
+"Archiving addresses" = "בארכיון כתובות";
+
+/* (No Commment) */
 "Ask Me Later" = ". תשאל אותי מאוחר יותר";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "חסם";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "חישוב: %1$d כתובת של %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "המצלמה הגישה נדחתה";
 
 /* (No Commment) */
 "Cancel" = "ביטול";
+
+/* (No Commment) */
+"Cancelling" = "ביטול";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "אין אפשרות לשמור קוד PIN בזמן הארנק לא אותחל או סיסמה הוא null";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "הזן כמות %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "הזן כתובת ביטקוין או בחר";
 
 /* (No Commment) */
 "Enter PIN" = "הזן את מספר הזיהוי האישי שלך";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "התשלום נשלח!";
 
 /* (No Commment) */
+"Payments Sent" = "תשלומים שנשלחו";
+
+/* (No Commment) */
 "Phrase Backed" = "הביטוי מגובה";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "לבקש סכום";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "הבקשה נכשלה. נא בדוק את החיבור שלך לאינטרנט.";
+
+/* (No Commment) */
 "Resend verification SMS" = "שלח מחדש אימות ב- SMS";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "פשוטה גיבוי ושחזור";
+
+/* (No Commment) */
+"Simulate surge" = "לדמות גל";
 
 /* (No Commment) */
 "Store Hint" = "חנות רמז";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "הועבר";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "כספים שהועברו %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "כספים שהועברו %1$d %2$@. יציאות עבור %3$d %4$@ היו קטנות מדי.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "העברת כספים כל: כתובת %1$i של %2$i";
 
 /* (No Commment) */
 "Try again" = "נסה שוב";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "האם ברצונך להוסיף את %@ כתובת ביטקוין לפנקס הכתובות שלך?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "האם ברצונך לאחסן בארכיון את הכתובות שישמשו?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "לכתוב את הביטוי השחזור שלך ולשמור אותו במקום מאוד בטוחה ומאובטחת. זכור כי כל מי שמכיר את הביטוי השחזור שלך יש גישה bitcoins שלך.";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "אין לך חשבון להגדיר עבור דואר. אנא צרו קשר %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = ". לך אין כתובות עם מאזן מתכלה למכשיר מעל הסף הנדרשים אבק...";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "יש לך אין מימון לשלוח מהכתובת הזאת";

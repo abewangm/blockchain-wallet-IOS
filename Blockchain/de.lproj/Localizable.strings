@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d Transaktionen";
 
+/* (No Commment) */
+"%d address" = "%d-Adresse";
+
+/* (No Commment) */
+"%d addresses" = "%d-Adressen";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld Stunden ago";
 
@@ -119,6 +125,9 @@
 "Archived" = "Archiviert";
 
 /* (No Commment) */
+"Archiving addresses" = "Archivierung von Adressen";
+
+/* (No Commment) */
 "Ask Me Later" = "Fragen Sie mich später";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Blockiert";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Berechnung: Adresse %1$d von %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Kamera-Zugriff verweigert";
 
 /* (No Commment) */
 "Cancel" = "Abbrechen";
+
+/* (No Commment) */
+"Cancelling" = "Stornieren";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "PIN-Code kann nicht gespeichert werden, während die Brieftasche ist nicht initialisiert oder Kennwort ist null";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "%@-Betrag eingeben";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Bitcoin-Adresse eingeben oder auswählen";
 
 /* (No Commment) */
 "Enter PIN" = "PIN eingeben";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "Zahlung gesendet!";
 
 /* (No Commment) */
+"Payments Sent" = "Zahlungen gesendet";
+
+/* (No Commment) */
 "Phrase Backed" = "Satz gesichert";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "Anfrage-Betrag";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "Die Anforderung ist fehlgeschlagen. Bitte überprüfen Sie Ihre Internetverbindung.";
+
+/* (No Commment) */
 "Resend verification SMS" = "Senden Sie SMS-Verifizierung";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Vereinfachte Sicherung und Wiederherstellung";
+
+/* (No Commment) */
+"Simulate surge" = "Überspannungsschutz zu simulieren";
 
 /* (No Commment) */
 "Store Hint" = "Shop-Tipp";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Übertragen";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Guthaben aus %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Guthaben aus %1$d %2$@. Ausgänge für %3$d %4$@ waren zu klein.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Alle Gelder: Adresse %1$i von %2$i";
 
 /* (No Commment) */
 "Try again" = "Wiederholen";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Möchten Sie die Bitcoin-Adresse %@ Ihrem Adressbuch hinzufügen?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Möchten Sie die verwendeten Adressen archivieren?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Notieren Sie Ihre Recovery-Satz und halten Sie es irgendwo sehr sicher und sicher. Denken Sie daran, dass wer Ihre Recovery-Satz kennt Zugriff auf Ihre Bitcoins hat.";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Sie müssen kein Konto für Mail eingerichtet. Bitte kontaktieren Sie %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Sie haben keine Adressen mit einem spendable Gleichgewicht über der Schwelle erforderlich Staub.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Sie haben keine verfügbaren Mittel von dieser Adresse senden";

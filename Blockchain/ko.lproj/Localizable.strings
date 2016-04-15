@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d 거래";
 
+/* (No Commment) */
+"%d address" = "%d 주소";
+
+/* (No Commment) */
+"%d addresses" = "%d 주소";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld 시간 전";
 
@@ -119,6 +125,9 @@
 "Archived" = "보관";
 
 /* (No Commment) */
+"Archiving addresses" = "주소를 보관";
+
+/* (No Commment) */
 "Ask Me Later" = "나중에 나 한 테 물어";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "차단";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "%2$d의 주소 %1$d 계산:";
+
+/* (No Commment) */
 "Camera Access Denied" = "카메라 액세스 거부";
 
 /* (No Commment) */
 "Cancel" = "취소";
+
+/* (No Commment) */
+"Cancelling" = "취소";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "동안 지갑 초기화 되지 않은 암호는 null 또는 핀 코드를 저장할 수 없습니다.";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "%@ 입력";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Bitcoin 주소를 입력 또는 선택";
 
 /* (No Commment) */
 "Enter PIN" = "PIN 입력";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "지불 전송!";
 
 /* (No Commment) */
+"Payments Sent" = "지불 전송";
+
+/* (No Commment) */
 "Phrase Backed" = "구 지원";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "요청 금액";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "요청이 실패 했습니다. 인터넷 연결을 확인 하십시오.";
+
+/* (No Commment) */
 "Resend verification SMS" = "다시 확인 SMS";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "단순화 된 백업 및 복구";
+
+/* (No Commment) */
+"Simulate surge" = "서 지를 시뮬레이션";
 
 /* (No Commment) */
 "Store Hint" = "스토어 힌트";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "전송";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "%1$d %2$@에서 전송된 자금";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "%1$d %2$@에서 전송된 자금입니다. %3$d %4$@에 대 한 출력 했다 너무 작은입니다.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "모든 자금을 전송: %2$i의 주소 %1$i";
 
 /* (No Commment) */
 "Try again" = "다시 시도";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "주소록 bitcoin 주소 %@를 추가 하 시겠습니까?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "사용 하는 주소를 보관 하 시겠습니까?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "복구 문구를 적어 하 고 매우 안전 하 고 안전한 어딘가에 그것을 유지. 당신의 복구 어구를 알고 있는 누군가 당신의 bitcoins에 액세스할 수 기억 하십시오.";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "메일 설정 된 계정이 필요가 없습니다. %@에 문의 하시기 바랍니다";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "당신은 필요한 먼지 임계값 spendable 밸런스와 주소가 있다.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "당신은이 주소에서 보내는 데 사용할 수 있는 자금";
