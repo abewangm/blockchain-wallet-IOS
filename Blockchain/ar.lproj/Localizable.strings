@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d المعاملات";
 
+/* (No Commment) */
+"%d address" = "عنوان %d";
+
+/* (No Commment) */
+"%d addresses" = "عناوين %d";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld ساعات";
 
@@ -119,6 +125,9 @@
 "Archived" = "أرشفة";
 
 /* (No Commment) */
+"Archiving addresses" = "أرشفة عناوين";
+
+/* (No Commment) */
 "Ask Me Later" = "السؤال لاحقاً";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "حظر";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "حساب: عنوان %1$d من %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "تم رفض الوصول إلى الكاميرا";
 
 /* (No Commment) */
 "Cancel" = "إلغاء الأمر";
+
+/* (No Commment) */
+"Cancelling" = "إلغاء";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "لا يمكن حفظ رمز PIN في حين لم تتم تهيئة المحفظة أو كلمة المرور فارغ";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "أدخل مبلغ %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "أدخل عنوان بيتكوين أو تحديد";
 
 /* (No Commment) */
 "Enter PIN" = "أدخل رقم التعريف الشخصي";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "الدفع أرسلت!";
 
 /* (No Commment) */
+"Payments Sent" = "المبالغ المرسلة";
+
+/* (No Commment) */
 "Phrase Backed" = "عبارة المدعومة";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "كمية الطلب";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "فشل الطلب. الرجاء التحقق من اتصال الإنترنت الخاص بك.";
+
+/* (No Commment) */
 "Resend verification SMS" = "التحقق إعادة إرسال الرسائل القصيرة";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "تبسيط النسخ الاحتياطي والاسترداد";
+
+/* (No Commment) */
+"Simulate surge" = "محاكاة موجه";
 
 /* (No Commment) */
 "Store Hint" = "تلميح مخزن";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "نقل";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "الأموال المحولة من %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "الأموال المحولة من %1$d %2$@. نواتج %3$d %4$@ كانت صغيرة جداً.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "نقل جميع الأموال: عنوان %1$i من %2$i";
 
 /* (No Commment) */
 "Try again" = "حاول مرة أخرى";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "هل ترغب في إضافة %@ عنوان بيتكوين إلى دفتر العناوين الخاص بك؟";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "هل تريد أرشفة عناوين المستخدمة؟";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "اكتب \"عبارتك الانتعاش\" والاحتفاظ به في مكان جداً وآمنة. تذكر أن أي شخص يعرف \"عبارة الاسترداد\" الخاصة بك الوصول إلى بيتكوينس الخاص بك.";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "ليس لديك حساب للبريد. الرجاء الاتصال %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "لديك لا عناوين مع توازن المنفق فوق العتبة المطلوبة الغبار.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "لديك لا الأموال المتاحة لإرسال من هذا العنوان";

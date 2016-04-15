@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d transacties";
 
+/* (No Commment) */
+"%d address" = "%d adres";
+
+/* (No Commment) */
+"%d addresses" = "%d adressen";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld uren geleden";
 
@@ -119,6 +125,9 @@
 "Archived" = "Gearchiveerd";
 
 /* (No Commment) */
+"Archiving addresses" = "Archivering van adressen";
+
+/* (No Commment) */
 "Ask Me Later" = "Vraag Me Later";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Geblokkeerd";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Berekening: Adres %1$d van %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Camera toegang geweigerd";
 
 /* (No Commment) */
 "Cancel" = "Annuleren";
+
+/* (No Commment) */
+"Cancelling" = "Annuleren";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "PIN-Code opslaan niet terwijl portemonnee is niet geïnitialiseerd of wachtwoord null is";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "Bedrag van de %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Invoeren van Bitcoin adres of selecteer";
 
 /* (No Commment) */
 "Enter PIN" = "Voer pincode";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "Betaling verzonden!";
 
 /* (No Commment) */
+"Payments Sent" = "Verzonden betalingen";
+
+/* (No Commment) */
 "Phrase Backed" = "Zin gesteund";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "Verzoek bedrag";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "Aanvraag is mislukt. Controleer uw internetverbinding.";
+
+/* (No Commment) */
 "Resend verification SMS" = "Verificatie SMS verzenden";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Vereenvoudigde back-up en herstel";
+
+/* (No Commment) */
+"Simulate surge" = "Simuleren van de schommeling";
 
 /* (No Commment) */
 "Store Hint" = "Winkel Hint";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Overgedragen";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Overgedragen middelen uit %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Overgedragen middelen uit %1$d %2$@. Uitgangen voor %3$d %4$@ waren te klein.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "De overdracht van alle middelen: adres %1$i van %2$i";
 
 /* (No Commment) */
 "Try again" = "&Opnieuw";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Wilt u de bitcoin adres %@ aan uw adresboek toevoegen?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Wilt u het archief van de adressen die worden gebruikt?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Schrijf uw zin herstel en bewaar het ergens zeer veilig en veilig. Vergeet niet dat iedereen die uw herstel zin weet toegang tot uw bitcoins heeft.";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "U hoeft niet een account instellen voor Mail. Neem contact op met %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Hebt u geen adressen met een spendable evenwicht boven de drempel van het vereiste stof.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "U hebt geen middelen voor het verzenden van dit adres";

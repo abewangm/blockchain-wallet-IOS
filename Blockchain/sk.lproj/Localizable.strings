@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d transakcie";
 
+/* (No Commment) */
+"%d address" = "%d adresu";
+
+/* (No Commment) */
+"%d addresses" = "%d adresy";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld Máj";
 
@@ -119,6 +125,9 @@
 "Archived" = "Archivované";
 
 /* (No Commment) */
+"Archiving addresses" = "Archivácia adresy";
+
+/* (No Commment) */
 "Ask Me Later" = "Spýtať sa neskôr";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Blokované";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Výpočet: Adresa %1$d z %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Fotoaparát prístup bol odmietnutý";
 
 /* (No Commment) */
 "Cancel" = "Zrušiť";
+
+/* (No Commment) */
+"Cancelling" = "Zrušenie";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "PIN kód sa nedá uložiť, kým nie je inicializovaný peňaženku alebo heslo má hodnotu null";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "Zadajte čiastku, %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Zadajte Bitcoin adresu, alebo vyberte";
 
 /* (No Commment) */
 "Enter PIN" = "Zadajte kód PIN";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "Platby odoslané!";
 
 /* (No Commment) */
+"Payments Sent" = "Platby odoslané";
+
+/* (No Commment) */
 "Phrase Backed" = "Frázy podporovaný";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "Požiadanie čiastku";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "Požiadavka zlyhala. Prosím skontrolujte svoje internetové pripojenie.";
+
+/* (No Commment) */
 "Resend verification SMS" = "Znovu odoslať overovací SMS";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Zjednodušiť zálohovanie a obnovenie";
+
+/* (No Commment) */
+"Simulate surge" = "Simuláciu nárastu";
 
 /* (No Commment) */
 "Store Hint" = "Sklad tip";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Prevedené";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Prevedených finančných prostriedkov z %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Prevedených finančných prostriedkov z %1$d %2$@. Výstupy pre %3$d %4$@ boli príliš malé.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Prenos všetkých fondov: adresu %1$i %2$i";
 
 /* (No Commment) */
 "Try again" = "skús znova";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Chcete pridať bitcoin adresu %@ do svojho adresára?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Chcete archivovať adresy použité?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Zapíšte si vaše zotavenie frázy a udržať je niekde veľmi bezpečné. Pamätajte si, že každý, kto pozná vaše zotavenie frázy má prístup k vašej bitcoins.";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Nemáte účet zriadený pre poštu. Prosím, kontaktujte %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Budete mať žiadne adresy spendable zostatok nad prahom vyžaduje prachu.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Nemáte k dispozícii finančné prostriedky na odoslanie z tejto adresy";

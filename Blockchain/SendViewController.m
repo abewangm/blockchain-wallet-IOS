@@ -1705,7 +1705,7 @@ BOOL displayingLocalSymbolSend;
     NSString *title = BC_STRING_FEE_INFORMATION_TITLE;
     NSString *message = BC_STRING_FEE_INFORMATION_MESSAGE;
     
-    if (self.surgeIsOccurring) {
+    if (self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SIMULATE_SURGE]) {
         message = [message stringByAppendingString:[NSString stringWithFormat:@"\n\n%@", BC_STRING_SURGE_OCCURRING_MESSAGE]];
     }
 

@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d ธุรกรรม";
 
+/* (No Commment) */
+"%d address" = "ที่อยู่ %d";
+
+/* (No Commment) */
+"%d addresses" = "ที่อยู่ %d";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld ชั่วโมงที่ผ่านมา";
 
@@ -119,6 +125,9 @@
 "Archived" = "ที่เก็บถาวร";
 
 /* (No Commment) */
+"Archiving addresses" = "ที่อยู่ถาวร";
+
+/* (No Commment) */
 "Ask Me Later" = "ถามฉันในภายหลัง";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "ถูกบล็อค";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "คำนวณ: ที่อยู่ %1$d ของ %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "ปฏิเสธการเข้ากล้อง";
 
 /* (No Commment) */
 "Cancel" = "ยกเลิก";
+
+/* (No Commment) */
+"Cancelling" = "การยกเลิก";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "ไม่สามารถบันทึกรหัส PIN ในขณะที่กระเป๋าไม่ถูกเตรียมใช้งาน หรือรหัสผ่านเป็น null";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "ป้อนจำนวนเงิน %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "ป้อนที่อยู่ของ Bitcoin หรือเลือก";
 
 /* (No Commment) */
 "Enter PIN" = "ป้อน PIN";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "ชำระเงินส่ง";
 
 /* (No Commment) */
+"Payments Sent" = "ส่งการชำระเงิน";
+
+/* (No Commment) */
 "Phrase Backed" = "วลีที่สนับสนุน";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "ขอยอดเงิน";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "คำขอล้มเหลว กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต";
+
+/* (No Commment) */
 "Resend verification SMS" = "ส่ง SMS ยืนยัน";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "สำรองข้อมูลที่ง่ายและการกู้คืน";
+
+/* (No Commment) */
+"Simulate surge" = "จำลองการกระชาก";
 
 /* (No Commment) */
 "Store Hint" = "แนะนำร้านค้า";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "การโอนย้าย";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "โอนเงิน %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "โอนเงิน %1$d %2$@ ผลสำหรับ %3$d %4$@ มีขนาดเล็กเกินไป";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "โอนเงิน: ชื่อ %1$i ของ %2$i";
 
 /* (No Commment) */
 "Try again" = "ลองอีกครั้ง";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "เราได้ออกแบบกระเ�
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "คุณต้องการเพิ่ม %@ ที่อยู่ bitcoin สมุดรายชื่อหรือไม่";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "คุณต้องการเก็บถาวรที่ใช้อยู่หรือไม่";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "จดวลีกู้คืนของคุณ และเก็บไว้อย่างมั่นคง และปลอดภัย จำได้ว่า ใครรู้วลีกู้คืนของคุณมีการเข้าถึงของคุณ bitcoins";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "เราได้ออกแบบกระเ�
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "คุณไม่มีบัญชีการตั้งค่าจดหมาย กรุณาติดต่อ %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "คุณมีที่อยู่ไม่ มีดุล spendable เหนือขีดจำกัดฝุ่นจำเป็น";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "คุณมีเงินทุนไม่มีการส่งจากที่อยู่นี้";
