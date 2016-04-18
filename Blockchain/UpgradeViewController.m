@@ -140,7 +140,7 @@
     [self setupCaptionLabels];
     
     self.upgradeWalletButton.titleLabel.text = BC_STRING_UPGRADE_BUTTON_TITLE;
-    self.askMeLaterButton.titleLabel.text = BC_STRING_UPGRADE_ASKLATER_TITLE;
+    self.askMeLaterButton.titleLabel.text = BC_STRING_ASK_ME_LATER;
     
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = [[self imageNamesArray] count];

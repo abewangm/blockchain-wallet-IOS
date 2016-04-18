@@ -2115,6 +2115,11 @@ void (^secondPasswordSuccess)(NSString *);
     [manualPairView verifyTwoFactorYubiKey];
 }
 
+-(void)rateApp {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[APP_STORE_LINK_PREFIX stringByAppendingString:APP_STORE_ID]]];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback

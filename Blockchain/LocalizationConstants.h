@@ -284,7 +284,7 @@
 #define BC_STRING_UPGRADE_ALERTVIEW_UPDATE_TITLE NSLocalizedString(@"Update", nil)
 #define BC_STRING_DONT_UPGRADE NSLocalizedString(@"or Continue", nil)
 #define BC_STRING_UPGRADE_BUTTON_TITLE NSLocalizedString(@"UPGRADE YOUR WALLET", nil)
-#define BC_STRING_UPGRADE_ASKLATER_TITLE NSLocalizedString(@"Ask Me Later", nil)
+#define BC_STRING_ASK_ME_LATER NSLocalizedString(@"Ask Me Later", nil)
 
 #define BC_STRING_SUPPORT_EMAIL_SUBJECT NSLocalizedString(@"iOS Support Request", nil)
 #define BC_STRING_SUPPORT_INSTRUCTIONS NSLocalizedString(@"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it.", nil)
@@ -504,3 +504,7 @@
 #define BC_STRING_FEE_INFORMATION_TITLE NSLocalizedString(@"Transaction Fees", nil)
 #define BC_STRING_FEE_INFORMATION_MESSAGE NSLocalizedString(@"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time.", nil)
 #define BC_STRING_FEE_INFORMATION_DUST NSLocalizedString(@"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned.", nil)
+
+#define BC_STRING_APP_REVIEW_PROMPT_TITLE NSLocalizedString(@"Rate Blockchain Wallet", nil)
+#define BC_STRING_YES_RATE_BLOCKCHAIN_WALLET NSLocalizedString(@"Yes, rate Blockchain Wallet", nil)
+#define BC_STRING_APP_REVIEW_PROMPT_MESSAGE NSLocalizedString(@"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it.", nil)
