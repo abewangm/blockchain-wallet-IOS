@@ -62,6 +62,8 @@
         button.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(imageSize.height + spacing), 0);
         [button setTitleColor:COLOR_TAB_BAR_BUTTON_TEXT_GRAY forState:UIControlStateNormal];
         [button setTitleColor:COLOR_TAB_BAR_BUTTON_TEXT_BLUE forState:UIControlStateHighlighted];
+        
+        button.titleLabel.adjustsFontSizeToFitWidth = YES;
     }
 }
 
