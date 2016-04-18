@@ -774,8 +774,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (NSDictionary*)parseURI:(NSString*)urlString
 {
+    if (!urlString) {
+        return nil;
+    }
+    
     if (![urlString hasPrefix:PREFIX_BITCOIN_URI]) {
-        return urlString == nil ? nil : [NSDictionary dictionaryWithObject:urlString forKey:DICTIONARY_KEY_ADDRESS];
+        return [NSDictionary dictionaryWithObject:urlString forKey:DICTIONARY_KEY_ADDRESS];
     }
     
     NSString * replaced = [[urlString stringByReplacingOccurrencesOfString:PREFIX_BITCOIN_URI withString:[NSString stringWithFormat:@"%@//", PREFIX_BITCOIN_URI]] stringByReplacingOccurrencesOfString:@"////" withString:@"//"];
