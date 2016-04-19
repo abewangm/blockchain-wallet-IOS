@@ -73,6 +73,16 @@ int lastNumberTransactions = INT_MAX;
 {
     if (_tableView == self.filterTableView) {
         
+        if (indexPath.row == 0) {
+            self.filterIndex = FILTER_INDEX_ALL;
+        } else if (indexPath.row == [self tableView:_tableView numberOfRowsInSection:0] - 1) {
+            self.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
+        } else {
+            self.filterIndex = indexPath.row - 1;
+        }
+        
+        [self toggleFilterMenu:nil];
+        
     } else {
         TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
         [cell transactionClicked:nil];
@@ -120,7 +130,7 @@ int lastNumberTransactions = INT_MAX;
         [tableView.tableHeaderView addSubview:noTransactionsView];
         
         // Balance
-        [self changeFilterButtonTitle:BC_STRING_ALL];
+        self.filterIndex = FILTER_INDEX_ALL;
         [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
         [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
@@ -129,7 +139,7 @@ int lastNumberTransactions = INT_MAX;
         [noTransactionsView removeFromSuperview];
         
         // Balance
-        [self changeFilterButtonTitle:BC_STRING_ALL];
+        self.filterIndex = FILTER_INDEX_ALL;
         [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
         [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
@@ -268,6 +278,32 @@ int lastNumberTransactions = INT_MAX;
         self.filterTableView.delegate = self;
         self.filterTableView.backgroundColor = [UIColor whiteColor];
         [app.window.rootViewController.view addSubview:self.filterTableView];
+    }
+}
+
+- (void)setFilterIndex:(NSInteger)filterIndex
+{
+    _filterIndex = filterIndex;
+    
+    if (filterIndex == FILTER_INDEX_ALL) {
+        [self changeFilterButtonTitle:BC_STRING_ALL];
+    } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        [self changeFilterButtonTitle:BC_STRING_IMPORTED_ADDRESSES];
+    } else {
+        [self changeFilterButtonTitle:self.filterableAccounts[filterIndex]];
+    }
+    
+    [self.tableView reloadData];
+}
+
+- (NSMutableArray *)transactionsToDisplay
+{
+    if (self.filterIndex == FILTER_INDEX_ALL) {
+        return data.transactions;
+    } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        
+    } else {
+        
     }
 }
 

@@ -313,6 +313,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ANIMATION_DURATION_LONG .5f
 #define kConfirmationThreshold 3
 
+// TransactionsViewController
+#define FILTER_INDEX_ALL -1
+#define FILTER_INDEX_IMPORTED_ADDRESSES -2
+
 // TabViewController
 #define TAB_SEND 0
 #define TAB_TRANSACTIONS 1

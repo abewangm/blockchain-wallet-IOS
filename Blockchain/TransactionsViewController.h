@@ -39,7 +39,7 @@
 @property(nonatomic, strong) MultiAddressResponse *data;
 @property(nonatomic, strong) LatestBlock *latestBlock;
 
-@property(nonatomic) NSInteger selectedAccount;
+@property(nonatomic) NSInteger filterIndex;
 @property(nonatomic) UITableView *filterTableView;
 @property(nonatomic) NSMutableArray *filterableAccounts;
 
