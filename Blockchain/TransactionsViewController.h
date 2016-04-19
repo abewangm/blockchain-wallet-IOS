@@ -40,7 +40,8 @@
 @property(nonatomic, strong) LatestBlock *latestBlock;
 
 @property(nonatomic) NSInteger selectedAccount;
-@property(nonatomic) UIPickerView *filterPickerView;
+@property(nonatomic) UITableView *filterTableView;
+@property(nonatomic) NSMutableArray *filterableAccounts;
 
 - (void)reload;
 - (void)animateNextCellAfterReload;
