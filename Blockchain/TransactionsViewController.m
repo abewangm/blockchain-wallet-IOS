@@ -270,13 +270,25 @@ int lastNumberTransactions = INT_MAX;
 - (void)toggleFilterMenu:(UIButton *)sender
 {
     if (self.filterTableView) {
-        [self.filterTableView removeFromSuperview];
-        self.filterTableView = nil;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.filterTableView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [self.filterTableView removeFromSuperview];
+            self.filterTableView = nil;
+        }];
     } else {
         self.filterTableView = [[UITableView alloc] initWithFrame:CGRectMake(sender.frame.origin.x, sender.frame.origin.y + sender.frame.size.height, sender.frame.size.width, 200)];
         self.filterTableView.dataSource = self;
         self.filterTableView.delegate = self;
         self.filterTableView.backgroundColor = [UIColor whiteColor];
+        self.filterTableView.layer.masksToBounds = NO;
+        self.filterTableView.layer.shadowRadius = 5;
+        self.filterTableView.layer.shadowOpacity = 0.5;
+        
+        CATransition *transition = [CATransition animation];
+        transition.duration = 0.25;
+        transition.type = kCATransitionReveal;
+        [self.filterTableView.layer addAnimation:transition forKey:nil];
         [app.window.rootViewController.view addSubview:self.filterTableView];
     }
 }
