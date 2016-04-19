@@ -83,6 +83,7 @@ int lastNumberTransactions = INT_MAX;
     if (!self.data) {
         [noTransactionsView removeFromSuperview];
         
+        [self changeFilterButtonTitle:@""];
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
         [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
     }
@@ -91,6 +92,7 @@ int lastNumberTransactions = INT_MAX;
         [tableView.tableHeaderView addSubview:noTransactionsView];
         
         // Balance
+        [self changeFilterButtonTitle:BC_STRING_ALL];
         [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
         [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
@@ -99,6 +101,7 @@ int lastNumberTransactions = INT_MAX;
         [noTransactionsView removeFromSuperview];
         
         // Balance
+        [self changeFilterButtonTitle:BC_STRING_ALL];
         [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
         [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
@@ -206,6 +209,26 @@ int lastNumberTransactions = INT_MAX;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil userInfo:[NSDictionary dictionaryWithObject:[self getAmountForReceivedTransaction:[data.transactions firstObject]] forKey:DICTIONARY_KEY_AMOUNT]];
 }
 
+- (void)changeFilterButtonTitle:(NSString *)newTitle
+{
+    [filterTransactionsButton setTitle:newTitle forState:UIControlStateNormal];
+    
+    CGFloat spacing = 8;
+    filterTransactionsButton.titleEdgeInsets = UIEdgeInsetsMake(0, -filterTransactionsButton.imageView.frame.size.width, 0, filterTransactionsButton.imageView.frame.size.width);
+    filterTransactionsButton.imageEdgeInsets = UIEdgeInsetsMake(0, filterTransactionsButton.titleLabel.frame.size.width + spacing, 0, -filterTransactionsButton.titleLabel.frame.size.width);
+}
+
+- (void)showFilterOptions:(UIButton *)sender
+{
+    if (self.filterPickerView) {
+        [self.filterPickerView removeFromSuperview];
+        self.filterPickerView = nil;
+    } else {
+        self.filterPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(sender.frame.origin.x, sender.frame.origin.y + sender.frame.size.height, sender.frame.size.width, 200)];
+        [app.window.rootViewController.view addSubview:self.filterPickerView];
+    }
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -226,6 +249,7 @@ int lastNumberTransactions = INT_MAX;
     
     [balanceBigButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     [balanceSmallButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
+    [filterTransactionsButton addTarget:self action:@selector(showFilterOptions:) forControlEvents:UIControlEventTouchUpInside];
     
     [self setupBlueBackgroundForBounceArea];
     

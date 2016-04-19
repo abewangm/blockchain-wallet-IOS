@@ -30,12 +30,17 @@
     
     IBOutlet UIView *noTransactionsView;
     
+    IBOutlet UIButton *filterTransactionsButton;
+    
     MultiAddressResponse *data;
     LatestBlock *latestBlock;
 }
 
 @property(nonatomic, strong) MultiAddressResponse *data;
 @property(nonatomic, strong) LatestBlock *latestBlock;
+
+@property(nonatomic) NSInteger selectedAccount;
+@property(nonatomic) UIPickerView *filterPickerView;
 
 - (void)reload;
 - (void)animateNextCellAfterReload;

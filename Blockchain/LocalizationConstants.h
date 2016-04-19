@@ -7,6 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 
+#define BC_STRING_ALL NSLocalizedString(@"All", nil)
 #define BC_STRING_ANY_ADDRESS NSLocalizedString(@"Any address", nil)
 #define BC_STRING_ARGUMENT_ADDRESSES NSLocalizedString(@"%d addresses", nil)
 #define BC_STRING_ARGUMENT_ADDRESS NSLocalizedString(@"%d address", nil)

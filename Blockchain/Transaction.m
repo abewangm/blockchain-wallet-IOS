@@ -17,6 +17,9 @@
     
     Transaction * transaction = [[Transaction alloc] init];
     
+    transaction.inputs = [[NSArray alloc] initWithArray:[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_PROCESSED_INPUTS]];
+    transaction.outputs = [[NSArray alloc] initWithArray:[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_PROCESSED_OUTPUTS]];
+    
     transaction.from = [[InOut alloc] init];
     transaction.to = [[InOut alloc] init];
 
