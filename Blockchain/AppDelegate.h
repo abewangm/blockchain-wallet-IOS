@@ -218,6 +218,8 @@
 - (NSString *)merchantURL;
 - (NSString *)apiURL;
 
+- (void)rateApp;
+
 @end
 
 extern AppDelegate *app;

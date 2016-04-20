@@ -1374,7 +1374,9 @@
             [self error_restoring_wallet];
             return;
         } else if (connectivityErrorRange.location != NSNotFound) {
-            [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION_LONG * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+            });
             [self error_restoring_wallet];
             return;
         }

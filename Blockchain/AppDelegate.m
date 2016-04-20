@@ -763,6 +763,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (NSDictionary*)parseURI:(NSString*)urlString
 {
+    if (!urlString) {
+        return nil;
+    }
+    
     if (![urlString hasPrefix:PREFIX_BITCOIN_URI]) {
         return [NSDictionary dictionaryWithObject:urlString forKey:DICTIONARY_KEY_ADDRESS];
     }
@@ -2097,6 +2101,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)verifyTwoFactorYubiKey
 {
     [manualPairView verifyTwoFactorYubiKey];
+}
+
+-(void)rateApp {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[APP_STORE_LINK_PREFIX stringByAppendingString:APP_STORE_ID]]];
 }
 
 #pragma mark - Pin Entry Delegates

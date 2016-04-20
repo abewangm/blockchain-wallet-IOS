@@ -18,6 +18,9 @@
 
 // #define ENABLE_TRANSFER_FUNDS 1
 
+#define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
+#define APP_STORE_ID @"id493253309"
+
 #pragma mark - Colors
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -39,6 +42,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BUTTON_GRAY UIColorFromRGB(0xebebeb)
 #define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0xb9b9b9)
 #define COLOR_BUTTON_KEYPAD_GRAY UIColorFromRGB(0xD4D9DD)
+
+#define COLOR_TAB_BAR_BUTTON_TEXT_GRAY UIColorFromRGB(0xc9c7c8)
+#define COLOR_TAB_BAR_BUTTON_TEXT_BLUE UIColorFromRGB(0x1c8ac7)
 
 #define COLOR_LABEL_BALANCE_GREEN UIColorFromRGB(0x6CAD46)
 
@@ -103,8 +109,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define FONT_HELVETICA_NUEUE @"Helvetica Neue"
 
 #define NUMBER_KEYPAD_CHARACTER_SET_STRING @"1234567890"
-
-#define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
 
 #define DICTIONARY_KEY_MESSAGE @"message"
 #define DICTIONARY_KEY_AMOUNT @"amount"
@@ -236,6 +240,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
+#define USER_DEFAULTS_KEY_APP_REVIEW_PROMPT_DATE @"hideAppReviewPrompt"
+#define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
+#define USER_DEFAULTS_KEY_HIDE_APP_REVIEW_PROMPT @"hideAppReviewPrompt"
 #define USER_DEFAULTS_KEY_SHARED_KEY @"sharedKey"
 #define USER_DEFAULTS_KEY_GUID @"guid"
 #define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
