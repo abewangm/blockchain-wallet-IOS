@@ -222,6 +222,39 @@
     }
 }
 
+- (void)filterTransactionsByImportedAddresses
+{
+    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity('imported')"];
+}
+
+- (void)filterTransactionsByAccount:(int)account
+{
+    [self updateTransactionsWithCommand:[NSString stringWithFormat:@"MyWalletPhone.getTransactionsWithIdentity(%d)", account]];
+}
+
+- (void)removeTransactionsFilter
+{
+    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity()"];
+}
+
+- (void)updateTransactionsWithCommand:(NSString *)command
+{
+    if ([self isInitialized]) {
+        
+        NSString *filteredTransactionsJSON = [self.webView executeJSSynchronous:[NSString stringWithFormat:@"JSON.stringify(%@)", command]];
+        
+        NSMutableArray *filteredTransactions = [NSMutableArray array];
+        
+        for (NSDictionary *dict in [filteredTransactionsJSON getJSONObject]) {
+            Transaction *tx = [Transaction fromJSONDict:dict];
+            
+            [filteredTransactions addObject:tx];
+        }
+        
+        [delegate didFilterTransactions:filteredTransactions];
+    }
+}
+
 - (void)getAllCurrencySymbols
 {
     if (![self.webView isLoaded]) {
@@ -1270,7 +1303,7 @@
         return nil;
     }
     
-    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.txList.transactionsForIOS)"];
+    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.txList.transactionsForIOS())"];
     
     return [allTransactionsJSON getJSONObject];
 }

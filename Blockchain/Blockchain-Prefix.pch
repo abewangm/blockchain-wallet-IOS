@@ -198,8 +198,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ANIMATION_KEY_HIDE_MODAL @"HideModal"
 #define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
 
-#define DICTIONARY_KEY_TRANSACTION_PROCESSED_OUTPUTS @"processedOutputs"
-#define DICTIONARY_KEY_TRANSACTION_PROCESSED_INPUTS @"processedInputs"
 #define DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT @"block_height"
 #define DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS @"confirmations"
 #define DICTIONARY_KEY_TRANSACTION_FEE @"fee"

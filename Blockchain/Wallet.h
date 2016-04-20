@@ -46,6 +46,7 @@
 @optional
 - (void)didSetLatestBlock:(LatestBlock*)block;
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response;
+- (void)didFilterTransactions:(NSArray *)transactions;
 - (void)walletDidDecrypt;
 - (void)walletFailedToDecrypt;
 - (void)walletDidLoad;
@@ -199,6 +200,10 @@
 - (BOOL)isAddressAvailable:(NSString *)address;
 - (BOOL)isAccountAvailable:(int)account;
 - (int)getIndexOfActiveAccount:(int)account;
+
+- (void)filterTransactionsByImportedAddresses;
+- (void)filterTransactionsByAccount:(int)account;
+- (void)removeTransactionsFilter;
 
 // HD Wallet
 - (void)upgradeToHDWallet;

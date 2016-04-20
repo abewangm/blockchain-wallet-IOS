@@ -551,6 +551,13 @@ void (^secondPasswordSuccess)(NSString *);
     [self reloadAfterMultiAddressResponse];
 }
 
+- (void)didFilterTransactions:(NSArray *)transactions
+{
+    _transactionsViewController.data.transactions = [NSMutableArray arrayWithArray:transactions];
+    
+    [_transactionsViewController reload];
+}
+
 - (void)didSetLatestBlock:(LatestBlock*)block
 {
     _transactionsViewController.latestBlock = block;

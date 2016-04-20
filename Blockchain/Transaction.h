@@ -25,9 +25,6 @@
 @property(nonatomic, assign) BOOL fromWatchOnly;
 @property(nonatomic, assign) BOOL toWatchOnly;
 
-@property(nonatomic, strong) NSArray *inputs;
-@property(nonatomic, strong) NSArray *outputs;
-
 @property(nonatomic, strong) InOut *from;
 @property(nonatomic, strong) InOut *to;
 

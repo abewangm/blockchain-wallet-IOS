@@ -25,7 +25,7 @@ int lastNumberTransactions = INT_MAX;
 - (NSInteger)tableView:(UITableView *)_tableView numberOfRowsInSection:(NSInteger)section
 {
     if (_tableView == self.filterTableView) {
-        return [self.filterableAccounts count] + 2; // All + accounts + Imported Addresses
+        return [app.wallet getActiveAccountsCount] + 2; // All + accounts + Imported Addresses
     } else {
         return [data.transactions count];
     }
@@ -42,7 +42,7 @@ int lastNumberTransactions = INT_MAX;
         } else if (indexPath.row == [self tableView:_tableView numberOfRowsInSection:0] - 1) {
             cell.textLabel.text = BC_STRING_IMPORTED_ADDRESSES;
         } else {
-            cell.textLabel.text = self.filterableAccounts[indexPath.row - 1];
+            cell.textLabel.text = [app.wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:(indexPath.row - 1)]];
         }
         
         return cell;
@@ -75,10 +75,16 @@ int lastNumberTransactions = INT_MAX;
         
         if (indexPath.row == 0) {
             self.filterIndex = FILTER_INDEX_ALL;
+            [self changeFilterButtonTitle:BC_STRING_ALL];
+            [app.wallet removeTransactionsFilter];
         } else if (indexPath.row == [self tableView:_tableView numberOfRowsInSection:0] - 1) {
             self.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
+            [self changeFilterButtonTitle:BC_STRING_IMPORTED_ADDRESSES];
+            [app.wallet filterTransactionsByImportedAddresses];
         } else {
-            self.filterIndex = indexPath.row - 1;
+            self.filterIndex = [app.wallet getIndexOfActiveAccount:indexPath.row - 1];
+            [self changeFilterButtonTitle:[app.wallet getLabelForAccount:self.filterIndex]];
+            [app.wallet filterTransactionsByAccount:self.filterIndex];
         }
         
         [self toggleFilterMenu:nil];
@@ -121,7 +127,8 @@ int lastNumberTransactions = INT_MAX;
     if (!self.data) {
         [noTransactionsView removeFromSuperview];
         
-        [self changeFilterButtonTitle:@""];
+        self.filterIndex = FILTER_INDEX_ALL;
+        [self changeFilterButtonTitle:BC_STRING_ALL];
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
         [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
     }
@@ -130,18 +137,16 @@ int lastNumberTransactions = INT_MAX;
         [tableView.tableHeaderView addSubview:noTransactionsView];
         
         // Balance
-        self.filterIndex = FILTER_INDEX_ALL;
-        [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
         [noTransactionsView removeFromSuperview];
         
         // Balance
-        self.filterIndex = FILTER_INDEX_ALL;
-        [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
 }
 
@@ -179,8 +184,6 @@ int lastNumberTransactions = INT_MAX;
     [self animateFirstCell];
     
     [self reloadLastNumberOfTransactions];
-    
-    [self getAccounts];
 }
 
 - (void)reloadNewTransactions
@@ -237,15 +240,6 @@ int lastNumberTransactions = INT_MAX;
     }
 }
 
-- (void)getAccounts
-{
-    self.filterableAccounts = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
-        [self.filterableAccounts addObject:[app.wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
-    }
-}
-
 - (NSDecimalNumber *)getAmountForReceivedTransaction:(Transaction *)transaction
 {
     NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:ABS(transaction.amount)] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:SATOSHI]];
@@ -270,14 +264,10 @@ int lastNumberTransactions = INT_MAX;
 - (void)toggleFilterMenu:(UIButton *)sender
 {
     if (self.filterTableView) {
-        [UIView animateWithDuration:0.2 animations:^{
-            self.filterTableView.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [self.filterTableView removeFromSuperview];
-            self.filterTableView = nil;
-        }];
+        [self closeFilterMenu];
     } else {
-        self.filterTableView = [[UITableView alloc] initWithFrame:CGRectMake(sender.frame.origin.x, sender.frame.origin.y + sender.frame.size.height, sender.frame.size.width, 200)];
+        self.filterTableView = [[UITableView alloc] initWithFrame:CGRectMake(sender.frame.origin.x, sender.frame.origin.y + sender.frame.size.height, sender.frame.size.width, [self heightForFilterTableView])];
+        self.filterTableView.showsVerticalScrollIndicator = NO;
         self.filterTableView.dataSource = self;
         self.filterTableView.delegate = self;
         self.filterTableView.backgroundColor = [UIColor whiteColor];
@@ -293,29 +283,31 @@ int lastNumberTransactions = INT_MAX;
     }
 }
 
-- (void)setFilterIndex:(NSInteger)filterIndex
+- (void)closeFilterMenu
 {
-    _filterIndex = filterIndex;
-    
-    if (filterIndex == FILTER_INDEX_ALL) {
-        [self changeFilterButtonTitle:BC_STRING_ALL];
-    } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
-        [self changeFilterButtonTitle:BC_STRING_IMPORTED_ADDRESSES];
-    } else {
-        [self changeFilterButtonTitle:self.filterableAccounts[filterIndex]];
-    }
-    
-    [self.tableView reloadData];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.filterTableView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.filterTableView removeFromSuperview];
+        self.filterTableView = nil;
+    }];
 }
 
-- (NSMutableArray *)transactionsToDisplay
+- (CGFloat)heightForFilterTableView
+{
+    CGFloat estimatedHeight = 44 * ([app.wallet getActiveAccountsCount] + 2);
+    CGFloat largestAcceptableHeight = [[UIScreen mainScreen] bounds].size.height - 150;
+    return estimatedHeight > largestAcceptableHeight ? largestAcceptableHeight : estimatedHeight;
+}
+
+- (uint64_t)getBalance
 {
     if (self.filterIndex == FILTER_INDEX_ALL) {
-        return data.transactions;
+        return [app.wallet getTotalActiveBalance];
     } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
-        
+        return [app.wallet getTotalBalanceForActiveLegacyAddresses];
     } else {
-        
+        return [app.wallet getBalanceForAccount:self.filterIndex];
     }
 }
 
@@ -344,6 +336,12 @@ int lastNumberTransactions = INT_MAX;
     [self setupBlueBackgroundForBounceArea];
     
     [self setupPullToRefresh];
+    
+    self.filterIndex = FILTER_INDEX_ALL;
+    [self changeFilterButtonTitle:BC_STRING_ALL];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeFilterMenu)];
+    [self.view addGestureRecognizer:tapGesture];
     
     [self reload];
 }

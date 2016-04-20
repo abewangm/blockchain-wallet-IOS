@@ -41,7 +41,6 @@
 
 @property(nonatomic) NSInteger filterIndex;
 @property(nonatomic) UITableView *filterTableView;
-@property(nonatomic) NSMutableArray *filterableAccounts;
 
 - (void)reload;
 - (void)animateNextCellAfterReload;
