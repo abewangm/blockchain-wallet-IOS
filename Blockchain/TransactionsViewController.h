@@ -25,6 +25,7 @@
 {
     IBOutlet UITableView *tableView;
     
+    IBOutlet UIView *headerView;
     IBOutlet UIButton *balanceBigButton;
     IBOutlet UIButton *balanceSmallButton;
     
@@ -46,5 +47,8 @@
 - (void)animateNextCellAfterReload;
 - (void)setText;
 - (UITableView*)tableView;
+- (void)closeFilterMenu;
+- (void)hideFilterButton;
+- (void)showFilterButton;
 
 @end

@@ -174,6 +174,8 @@
 - (void)showDebugMenu:(int)presenter;
 - (void)showHdUpgrade;
 
+- (void)closeTransactionFilterMenu;
+
 - (IBAction)receiveCoinClicked:(UIButton *)sender;
 - (IBAction)transactionsClicked:(UIButton *)sender;
 - (IBAction)sendCoinsClicked:(UIButton *)sender;

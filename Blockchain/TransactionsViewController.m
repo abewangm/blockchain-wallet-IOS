@@ -94,6 +94,7 @@ int lastNumberTransactions = INT_MAX;
         [cell transactionClicked:nil];
         
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self closeFilterMenu];
     }
 }
 
@@ -293,6 +294,16 @@ int lastNumberTransactions = INT_MAX;
     }];
 }
 
+- (void)hideFilterButton
+{
+    filterTransactionsButton.hidden = YES;
+}
+
+- (void)showFilterButton
+{
+    filterTransactionsButton.hidden = NO;
+}
+
 - (CGFloat)heightForFilterTableView
 {
     CGFloat estimatedHeight = 44 * ([app.wallet getActiveAccountsCount] + 2);
@@ -331,17 +342,17 @@ int lastNumberTransactions = INT_MAX;
     
     [balanceBigButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     [balanceSmallButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
-    [filterTransactionsButton addTarget:self action:@selector(toggleFilterMenu:) forControlEvents:UIControlEventTouchUpInside];
     
     [self setupBlueBackgroundForBounceArea];
     
     [self setupPullToRefresh];
     
+    [filterTransactionsButton addTarget:self action:@selector(toggleFilterMenu:) forControlEvents:UIControlEventTouchUpInside];
     self.filterIndex = FILTER_INDEX_ALL;
     [self changeFilterButtonTitle:BC_STRING_ALL];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeFilterMenu)];
-    [self.view addGestureRecognizer:tapGesture];
+    [headerView addGestureRecognizer:tapGesture];
     
     [self reload];
 }
@@ -374,10 +385,16 @@ int lastNumberTransactions = INT_MAX;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    app.mainLogoImageView.hidden = NO;
     app.mainTitleLabel.hidden = YES;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
-    filterTransactionsButton.hidden = NO;
+    
+    if ([app.wallet didUpgradeToHd]) {
+        [self showFilterButton];
+        app.mainLogoImageView.hidden = YES;
+    } else {
+        [self hideFilterButton];
+        app.mainLogoImageView.hidden = NO;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated

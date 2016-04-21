@@ -307,6 +307,8 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self reloadTopLevelViewControllers];
+    
+    [_transactionsViewController closeFilterMenu];
 }
 
 - (void)reloadTopLevelViewControllers
@@ -537,6 +539,14 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [_sendViewController reload];
+    
+    if ([app.wallet didUpgradeToHd]) {
+        [_transactionsViewController showFilterButton];
+        app.mainLogoImageView.hidden = YES;
+    } else {
+        [_transactionsViewController hideFilterButton];
+        app.mainLogoImageView.hidden = NO;
+    }
     
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
@@ -962,6 +972,8 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)closeAllModals
 {
     [self hideBusyView];
+    
+    [self closeTransactionFilterMenu];
     
     secondPasswordSuccess = nil;
     secondPasswordTextField.text = nil;
@@ -1677,6 +1689,8 @@ void (^secondPasswordSuccess)(NSString *);
     else {
         [_slidingViewController resetTopViewAnimated:YES];
     }
+    
+    [_transactionsViewController closeFilterMenu];
 }
 
 - (void)closeSideMenu
@@ -1747,6 +1761,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self showModalWithContent:manualPairView closeType:ModalCloseTypeBack headerText:BC_STRING_MANUAL_PAIRING];
     self.wallet.twoFactorInput = nil;
     [manualPairView clearPasswordTextField];
+}
+
+- (void)closeTransactionFilterMenu
+{
+    [_transactionsViewController closeFilterMenu];
 }
 
 #pragma mark - Actions
@@ -1955,6 +1974,7 @@ void (^secondPasswordSuccess)(NSString *);
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     [_sendViewController QRCodebuttonClicked:sender];
+    [_transactionsViewController closeFilterMenu];
 }
 
 - (IBAction)mainPasswordClicked:(id)sender
