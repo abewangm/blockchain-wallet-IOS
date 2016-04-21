@@ -1270,7 +1270,7 @@
         return nil;
     }
     
-    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.txList.transactionsForIOS)"];
+    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.txList.transactionsForIOS())"];
     
     return [allTransactionsJSON getJSONObject];
 }
