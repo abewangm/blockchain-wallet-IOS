@@ -241,11 +241,11 @@
 {
     if ([self isInitialized]) {
         
-        NSString *filteredTransactionsJSON = [self.webView executeJSSynchronous:[NSString stringWithFormat:@"JSON.stringify(%@)", command]];
-        
         NSMutableArray *filteredTransactions = [NSMutableArray array];
         
-        for (NSDictionary *dict in [filteredTransactionsJSON getJSONObject]) {
+        NSArray *transactions = [self filteredTransactions:command];
+        
+        for (NSDictionary *dict in transactions) {
             Transaction *tx = [Transaction fromJSONDict:dict];
             
             [filteredTransactions addObject:tx];
@@ -253,6 +253,18 @@
         
         [delegate didFilterTransactions:filteredTransactions];
     }
+}
+
+- (NSArray *)filteredTransactions:(NSString *)command
+{
+    if ([self isInitialized]) {
+        
+        NSString *filteredTransactionsJSON = [self.webView executeJSSynchronous:[NSString stringWithFormat:@"JSON.stringify(%@)", command]];
+        
+        return [filteredTransactionsJSON getJSONObject];
+    }
+    
+    return nil;
 }
 
 - (void)getAllCurrencySymbols
@@ -1249,7 +1261,17 @@
         
         response.transactions = [NSMutableArray array];
         
-        NSArray *transactionsArray = [self getAllTransactions];
+        NSArray *transactionsArray;
+        
+        int filterIndex = app.transactionsViewController.filterIndex;
+
+        if (filterIndex == FILTER_INDEX_ALL) {
+            transactionsArray = [self getAllTransactions];
+        } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+            transactionsArray = [self filteredTransactions:@"MyWalletPhone.getTransactionsWithIdentity('imported')"];
+        } else {
+            transactionsArray = [self filteredTransactions:[NSString stringWithFormat:@"MyWalletPhone.getTransactionsWithIdentity(%d)", filterIndex]];
+        }
         
         for (NSDictionary *dict in transactionsArray) {
             Transaction *tx = [Transaction fromJSONDict:dict];
@@ -1262,6 +1284,7 @@
         }
         
         [delegate didGetMultiAddressResponse:response];
+        
     } command:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse())"];
 }
 
