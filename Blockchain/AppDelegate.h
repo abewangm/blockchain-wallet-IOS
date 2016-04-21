@@ -175,6 +175,7 @@
 - (void)showHdUpgrade;
 
 - (void)closeTransactionFilterMenu;
+- (void)reloadTransactionFilterButton;
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender;
 - (IBAction)transactionsClicked:(UIButton *)sender;

@@ -540,13 +540,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [_sendViewController reload];
     
-    if ([app.wallet didUpgradeToHd]) {
-        [_transactionsViewController showFilterButton];
-        app.mainLogoImageView.hidden = YES;
-    } else {
-        [_transactionsViewController hideFilterButton];
-        app.mainLogoImageView.hidden = NO;
-    }
+    [self reloadTransactionFilterButton];
     
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
@@ -1766,6 +1760,17 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)closeTransactionFilterMenu
 {
     [_transactionsViewController closeFilterMenu];
+}
+
+- (void)reloadTransactionFilterButton
+{
+    if ([app.wallet didUpgradeToHd]) {
+        [_transactionsViewController showFilterButton];
+        app.mainLogoImageView.hidden = YES;
+    } else {
+        [_transactionsViewController hideFilterButton];
+        app.mainLogoImageView.hidden = NO;
+    }
 }
 
 #pragma mark - Actions
