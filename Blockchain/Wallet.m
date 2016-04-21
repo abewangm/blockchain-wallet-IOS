@@ -1256,36 +1256,28 @@
     
     [self getFinalBalance];
     
+    NSString *filter;
+    
+    int filterIndex = app.transactionsViewController.filterIndex;
+    
+    if (filterIndex == FILTER_INDEX_ALL) {
+        filter = @"";
+    } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        filter = @"imported";
+    } else {
+        filter = [NSString stringWithFormat:@"%d", filterIndex];
+    }
+    
     [self.webView executeJSWithCallback:^(NSString * multiAddrJSON) {
         MultiAddressResponse *response = [self parseMultiAddrJSON:multiAddrJSON];
-        
-        response.transactions = [NSMutableArray array];
-        
-        NSArray *transactionsArray;
-        
-        int filterIndex = app.transactionsViewController.filterIndex;
 
-        if (filterIndex == FILTER_INDEX_ALL) {
-            transactionsArray = [self getAllTransactions];
-        } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
-            transactionsArray = [self filteredTransactions:@"MyWalletPhone.getTransactionsWithIdentity('imported')"];
-        } else {
-            transactionsArray = [self filteredTransactions:[NSString stringWithFormat:@"MyWalletPhone.getTransactionsWithIdentity(%d)", filterIndex]];
-        }
-        
-        for (NSDictionary *dict in transactionsArray) {
-            Transaction *tx = [Transaction fromJSONDict:dict];
-            
-            [response.transactions addObject:tx];
-        }
-        
         if (!self.isSyncing) {
             [self loading_stop];
         }
         
         [delegate didGetMultiAddressResponse:response];
         
-    } command:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse())"];
+    } command:[NSString stringWithFormat:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse(\"%@\"))", filter]];
 }
 
 - (MultiAddressResponse *)parseMultiAddrJSON:(NSString*)multiAddrJSON
@@ -1302,6 +1294,15 @@
     response.n_transactions = [[dict objectForKey:@"n_transactions"] unsignedIntValue];
     response.total_sent = [[dict objectForKey:@"total_sent"] longLongValue];
     response.addresses = [dict objectForKey:@"addresses"];
+    response.transactions = [NSMutableArray array];
+    
+    NSArray *transactionsArray = [dict objectForKey:@"transactions"];
+    
+    for (NSDictionary *dict in transactionsArray) {
+        Transaction *tx = [Transaction fromJSONDict:dict];
+        
+        [response.transactions addObject:tx];
+    }
     
     {
         NSDictionary *symbolLocalDict = [dict objectForKey:@"symbol_local"] ;
@@ -1318,17 +1319,6 @@
     }
     
     return response;
-}
-
-- (NSArray *)getAllTransactions
-{
-    if (![self isInitialized]) {
-        return nil;
-    }
-    
-    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.txList.transactionsForIOS())"];
-    
-    return [allTransactionsJSON getJSONObject];
 }
 
 - (void)on_tx_received
