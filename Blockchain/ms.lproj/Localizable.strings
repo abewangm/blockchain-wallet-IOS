@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Privasi dipertingkatkan";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Menikmati Blockchain Wallet? Sila luangkan masa untuk meninggalkan Ulasan di App Store dan membiarkan orang lain mengetahui tentang hal itu.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Masukkan amaun %@";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Pemprosesan utama";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Kadar Blockchain Wallet";
+
+/* (No Commment) */
 "Receive" = "Menerima";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Yuran transaksi kesan kepada berapa cepat Bitcoin perlombongan rangkaian akan mengesahkan transaksi anda, dan bergantung kepada keadaan rangkaian semasa. Kami mengesyorkan bayaran yang ditunjukkan untuk transaksi ini buat masa ini.";
 
 /* (No Commment) */
+"Transactions" = "Urus niaga";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaksi tanpa yuran mungkin mengambil masa yang lama untuk mengesahkan atau mungkin tidak boleh disahkan sekali. Adakah anda ingin meneruskan?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "Yes" = "Ya";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Ya, kadar Blockchain Wallet";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Semalam";

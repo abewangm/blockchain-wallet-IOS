@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Poboljšane privatnost";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Uživanje u Blockchain novčanik? Odvojite trenutak da ostavite recenziju u App Store i da ostali znaju o tome.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Unesite %@ iznos";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Obrada ključ";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Stopa Blockchain novčanik";
+
+/* (No Commment) */
 "Receive" = "Primiti";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Transakcija naknade utjecati kako brzo Bitcoin rudarstvo mreže potvrdite vaše transakcije i ovise o tekući mreža stanje. Preporučujemo naknada za ovu transakciju u ovom trenutku.";
 
 /* (No Commment) */
+"Transactions" = "Transakcije";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transakcije bez naknade može potrajati dugo vremena da biste potvrdili ili ne može biti potvrđena na sve. Želite li nastaviti?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Osmislili smo potpuno novi novčanik iskustvo za v
 
 /* (No Commment) */
 "Yes" = "Da";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Da, Ocijenite Blockchain novčanik";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Jučer";

@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Ενισχυμένου απορρήτου";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Απολαμβάνοντας το Blockchain πορτοφόλι; Αφιερώστε λίγο χρόνο για να αφήσει μια κριτική στο App κατάστημα και αφήστε τους άλλους να το γνωρίζουν.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Εισάγετε το ποσό %@";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Επεξεργασία κλειδί";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Ποσοστό Blockchain πορτοφόλι";
+
+/* (No Commment) */
 "Receive" = "Λάβετε";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Τέλη συναλλαγής επιπτώσεις πόσο γρήγορα το δίκτυο Bitcoin εξόρυξης θα επιβεβαιώσει τις συναλλαγές σας, και να εξαρτώνται από τις τρέχουσες συνθήκες δικτύου. Σας συνιστούμε την αμοιβή που εμφανίζονται για αυτήν τη συναλλαγή αυτή τη στιγμή.";
 
 /* (No Commment) */
+"Transactions" = "Συναλλαγές";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Συναλλαγές χωρίς χρεώσεις μπορεί να πάρει πολύ χρόνο να επιβεβαιώσει ή δεν μπορεί να επιβεβαιωθεί σε όλα. Θέλετε να συνεχίσετε;";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "Yes" = "Ναι";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Ναι, Βαθμολογήστε Blockchain πορτοφόλι";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Χθες";

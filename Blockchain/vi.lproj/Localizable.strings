@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Tăng cường bảo mật";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Thưởng thức các ví Blockchain? Xin vui lòng mất một chút thời gian để xem xét một trong App Store và để cho người khác biết về nó.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Nhập số tiền %@";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Xử lý các phím";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Tỷ lệ Blockchain Wallet";
+
+/* (No Commment) */
 "Receive" = "Nhận được";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Phí giao dịch ảnh hưởng như thế nào một cách nhanh chóng Bitcoin khai thác mạng sẽ xác nhận giao dịch của bạn, và phụ thuộc vào các điều kiện mạng hiện nay. Chúng tôi khuyên bạn nên chi phí Hiển thị cho giao dịch này vào thời gian này.";
 
 /* (No Commment) */
+"Transactions" = "Giao dịch";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Các giao dịch với không có lệ phí có thể mất một thời gian dài để xác nhận hoặc có thể không được xác nhận ở tất cả. Bạn có muốn tiếp tục không?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "Yes" = "Có";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Vâng, giá Blockchain Wallet";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Hôm qua";

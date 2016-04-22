@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Privadesa";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Gaudint de la cartera de Blockchain? Si us plau prengui un moment per deixar un comentari a la Botiga App i deixa altres saber-ho.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Introduïu l'import de %@";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Clau de processament";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Taxa Blockchain cartera";
+
+/* (No Commment) */
 "Receive" = "Rebre";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Tarifes de transacció impacte rapidesa la xarxa de mineria Bitcoin confirmar les seves transaccions i depenen de les condicions de xarxa actuals. Us recomanem la quota de Mostra per a aquesta operació en aquest moment.";
 
 /* (No Commment) */
+"Transactions" = "Transaccions";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaccions sense càrrecs pot trigar una bona estona per confirmar o no pot ser confirmat en absolut. Voleu continuar?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "Yes" = "Sí";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Sí, taxa Blockchain cartera";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Ahir";

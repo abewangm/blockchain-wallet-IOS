@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Confidenţialitate îmbunătăţită";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Bucurându-se de portofel Blockchain? Vă rugăm să luaţi un moment să părăsească o revizuire în App Store şi lăsaţi pe alţii ştiu despre el.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Introdu suma %@";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Cheie de prelucrare";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Rata Blockchain portofel";
+
+/* (No Commment) */
 "Receive" = "Primi";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Taxele tranzactiei pot avea un impact cât de repede rețeaua Bitcoin miniere vor confirma tranzacţiilor dumneavoastră, şi depinde de condiţiile de reţea. Vă recomandăm taxa indicat pentru această tranzacţie în acest moment.";
 
 /* (No Commment) */
+"Transactions" = "Tranzacţiile";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Tranzacţii fără taxe poate lua o lungă perioadă de timp pentru a confirma sau nu poate fi confirmat la toate. Doriţi să continuaţi?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "Yes" = "da";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Da, rata Blockchain portofel";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Ieri";

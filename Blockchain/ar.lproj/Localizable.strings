@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "الخصوصية المحسنة";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "تتمتع المحفظة بلوكتشين؟ يرجى أن نتوقف لحظة مغادرة استعراضاً في المتجر وتدع الآخرين يعرفون ذلك.";
+
+/* (No Commment) */
 "Enter %@ amount" = "أدخل مبلغ %@";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "تجهيز مفتاح";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "معدل بلوكتشاين المحفظة";
+
+/* (No Commment) */
 "Receive" = "تلقي";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "رسوم المعاملات تؤثر على مدى سرعة الشبكة التعدين بيتكوين سيتم تأكيد المعاملات الخاصة بك، وتعتمد على شروط الشبكة الحالية. ونحن نوصي بالرسوم الموضحة لهذه الصفقة في هذا الوقت.";
 
 /* (No Commment) */
+"Transactions" = "المعاملات";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "قد يستغرق وقتاً طويلاً للتأكد من معاملات مع أي رسوم أو قد لا يمكن تأكيد على الإطلاق. هل ترغب في الاستمرار؟";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "Yes" = "نعم";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "نعم، معدل المحفظة بلوكتشاين";
 
 /* No comment provided by engineer. */
 "Yesterday" = "أمس";

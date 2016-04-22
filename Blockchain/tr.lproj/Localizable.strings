@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Geliştirilmiş gizlilik";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Blockchain cüzdan tadını çıkarıyor musun? Lütfen bir daha gözden geçirme belgili tanımlık App stok içinde terk ve diğerleri bu konuda bildirin için bir dakikanızı ayırın.";
+
+/* (No Commment) */
 "Enter %@ amount" = "%@ tutarı girin";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Anahtar işleme";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Blockchain cüzdan oranı";
+
+/* (No Commment) */
 "Receive" = "Almak";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "İşlem ücretleri etkisi ne kadar hızlı Bitcoin incelemesi ağ işlemlerinizi doğrulamak ve geçerli ağ koşullara bağlıdır. Şu anda bu hareket için gösterilen ücreti tavsiye ediyoruz.";
 
 /* (No Commment) */
+"Transactions" = "Hareketleri";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Hiç bir ücret hareketleriyle onaylamak için uzun bir zaman alabilir veya hiç teyit değil. Devam etmek istiyor musunuz?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "Yes" = "Evet";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Evet, Blockchain cüzdan oranı";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Dün";
