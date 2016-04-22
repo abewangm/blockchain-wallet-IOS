@@ -1231,14 +1231,14 @@
     
     MultiAddressResponse *response = [[MultiAddressResponse alloc] init];
         
-    response.final_balance = [[dict objectForKey:@"final_balance"] longLongValue];
-    response.total_received = [[dict objectForKey:@"total_received"] longLongValue];
-    response.n_transactions = [[dict objectForKey:@"n_transactions"] unsignedIntValue];
-    response.total_sent = [[dict objectForKey:@"total_sent"] longLongValue];
-    response.addresses = [dict objectForKey:@"addresses"];
+    response.final_balance = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_FINAL_BALANCE] longLongValue];
+    response.total_received = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_TOTAL_RECEIVED] longLongValue];
+    response.n_transactions = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_NUMBER_TRANSACTIONS] unsignedIntValue];
+    response.total_sent = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_TOTAL_SENT] longLongValue];
+    response.addresses = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_ADDRESSES];
     response.transactions = [NSMutableArray array];
     
-    NSArray *transactionsArray = [dict objectForKey:@"transactions"];
+    NSArray *transactionsArray = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_TRANSACTIONS];
     
     for (NSDictionary *dict in transactionsArray) {
         Transaction *tx = [Transaction fromJSONDict:dict];
@@ -1247,14 +1247,14 @@
     }
     
     {
-        NSDictionary *symbolLocalDict = [dict objectForKey:@"symbol_local"] ;
+        NSDictionary *symbolLocalDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_LOCAL] ;
         if (symbolLocalDict) {
             response.symbol_local = [CurrencySymbol symbolFromDict:symbolLocalDict];
         }
     }
     
     {
-        NSDictionary *symbolBTCDict = [dict objectForKey:@"symbol_btc"] ;
+        NSDictionary *symbolBTCDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_BTC] ;
         if (symbolBTCDict) {
             response.symbol_btc = [CurrencySymbol symbolFromDict:symbolBTCDict];
         }
