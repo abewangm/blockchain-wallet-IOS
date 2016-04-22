@@ -1143,6 +1143,7 @@ BOOL displayingLocalSymbolSend;
     if ([addressesUsed count] == 0) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self showErrorBeforeSending:BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_DUST];
+            [app hideBusyView];
         });
         return;
     }
