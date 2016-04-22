@@ -574,8 +574,12 @@ NSString *detailLabel;
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_PAYMENT_RECEIVED message:messageString delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    [alertView show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_PAYMENT_RECEIVED message:messageString preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self showKeyboard];
+    }]];
+    
+    [app.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)alertUserOfWatchOnlyAddress
