@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "향상 된 개인 정보 보호";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Blockchain 지갑 즐기는? 그것에 대해 다른 사람을 App 스토어에 리뷰를 떠나 순간을 보시기 바랍니다.";
+
+/* (No Commment) */
 "Enter %@ amount" = "%@ 입력";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "키 처리";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "속도 Blockchain 지갑";
+
+/* (No Commment) */
 "Receive" = "수신";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "거래 수수료에 영향을 얼마나 빨리 Bitcoin 마이닝과 네트워크 것입니다 귀하의 거래를 확인 하 고 현재 네트워크 조건에 따라 달라 집니다. 이 이번에이 거래에 대 한 표시 된 요금을 권장 합니다.";
 
 /* (No Commment) */
+"Transactions" = "거래";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "거래 수수료 확인 하는 데 시간이 오래 걸릴 수 있습니다 또는 전혀 확인 되지 않고 있습니다. 계속 하 시겠습니까?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "Yes" = "예";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "예, 평가 Blockchain 지갑";
 
 /* No comment provided by engineer. */
 "Yesterday" = "어제";

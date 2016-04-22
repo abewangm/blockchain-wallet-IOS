@@ -1087,7 +1087,7 @@ MyWalletPhone.get_wallet_and_history = function() {
 MyWalletPhone.getMultiAddrResponse = function() {
     var obj = {};
 
-    obj.transactions = MyWallet.wallet.txList.transactionsForIOS;
+    obj.transactions = MyWallet.wallet.txList.transactionsForIOS();
     obj.total_received = MyWallet.wallet.totalReceived;
     obj.total_sent = MyWallet.wallet.totalSent;
     obj.final_balance = MyWallet.wallet.finalBalance;

@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "增強的隱私保護";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "在享受 Blockchain 錢包嗎？請花點時間在 Appstore 中離開的審查，讓別人知道這件事。";
+
+/* (No Commment) */
 "Enter %@ amount" = "輸入 %@ 金額";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "處理的關鍵";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "率 Blockchain 錢包";
+
+/* (No Commment) */
 "Receive" = "接收";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "交易費用的影響如何快速比特幣挖掘網路將確認您的交易，並取決於當前的網路狀況。我們建議這筆交易在此時所顯示的費用。";
 
 /* (No Commment) */
+"Transactions" = "交易";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "交易不收取費用可能需要很長的時間來確認或不可能在所有確認。你想繼續嗎?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "Yes" = "是啊";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "是的率 Blockchain 錢包";
 
 /* No comment provided by engineer. */
 "Yesterday" = "昨天";

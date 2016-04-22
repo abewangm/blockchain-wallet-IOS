@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "プライバシー強化";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Blockchain 財布を楽しんで?App Store のレビューを残して、他のそれについて教えてください。";
+
+/* (No Commment) */
 "Enter %@ amount" = "%@ 金額を入力します。";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "キーの処理";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "率 Blockchain 財布";
+
+/* (No Commment) */
 "Receive" = "受信";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "取引手数料は、Bitcoin マイニング ネットワークがあなたのトランザクションを確認、現在のネットワークの状態に依存してどのように迅速に影響します。代金はこの時点でこの取引をお勧めします。";
 
 /* (No Commment) */
+"Transactions" = "トランザクション";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "手数料トランザクション確認に長い時間がかかる可能性があります。 またはまったく確認されていません。続行しますか?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "Yes" = "[はい]";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "はい、レート Blockchain 財布";
 
 /* No comment provided by engineer. */
 "Yesterday" = "昨日";

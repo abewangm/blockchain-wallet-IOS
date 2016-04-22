@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "פרטיות משופרות";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "נהנה את הארנק Blockchain? נא לקחת רגע כדי לעזוב סקירה ב- App Store. ולתת לאחרים לדעת על זה.";
+
+/* (No Commment) */
 "Enter %@ amount" = "הזן כמות %@";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "עיבוד מפתח";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "קצב Blockchain הארנק";
+
+/* (No Commment) */
 "Receive" = "לקבל";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "עלויות עסקה להשפיע כמה מהר הרשת הכרייה ביטקוין לאשר את העסקאות שלך, ותלויות התנאים הרשת הנוכחית. אנו ממליצים על דמי המוצג עבור תנועה זו בזמן הזה.";
 
 /* (No Commment) */
+"Transactions" = "תנועות";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "תנועות ללא עלויות עשויה להימשך זמן רב כדי לאשר או עשוי לא להיות מאושרות בכלל. האם ברצונך להמשיך?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "Yes" = "כן";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = ". כן, קצב Blockchain הארנק";
 
 /* No comment provided by engineer. */
 "Yesterday" = "אתמול";

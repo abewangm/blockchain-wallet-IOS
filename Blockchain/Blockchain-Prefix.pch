@@ -16,7 +16,7 @@
 
 // #define ENABLE_DEBUG_MENU 1
 
-// #define ENABLE_TRANSFER_FUNDS 1
+#define ENABLE_TRANSFER_FUNDS 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"

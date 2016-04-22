@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Parantaa yksityisyyden";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Nauttia Blockchain lompakko? Ota hetki jätä tarkistaa App Store ja antaa muiden tietää siitä.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Syötä %@ summa";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Käsittely avain";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Luokitus Blockchain lompakko";
+
+/* (No Commment) */
 "Receive" = "Vastaanottaa";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Palvelumaksut vaikuttaa kuinka nopeasti Bitcoin kaivos verkko vahvistaa liiketoimet, ja riippuu ajankohtainen verkko olosuhteet. Suosittelemme JavaScript tapahtuman tällä hetkellä maksu.";
 
 /* (No Commment) */
+"Transactions" = "Tapahtumat";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Tapahtumat ilman maksuja voi kestää kauan vahvistaa tai ei voida vahvistaa ollenkaan. Haluatko jatkaa?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "Yes" = "Kyllä";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Kyllä, luokitus Blockchain lompakko";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Eilen";

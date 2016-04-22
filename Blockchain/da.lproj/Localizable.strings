@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Forbedret Privacy";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Nyder Blockchain tegnebogen? Venligst tage et øjeblik at forlade en anmeldelse i App Store og lade andre vide det..";
+
+/* (No Commment) */
 "Enter %@ amount" = "Angiv %@";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Forarbejdning nøgle";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Vurder Blockchain tegnebog";
+
+/* (No Commment) */
 "Receive" = "Modtager";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Transaktionsgebyrer betydning for hvor hurtigt Bitcoin minedrift netværk vil bekræfte dine transaktioner, og afhænger af de aktuelle netværksforhold. Vi anbefaler det gebyr, der er vist for denne transaktion på dette tidspunkt.";
 
 /* (No Commment) */
+"Transactions" = "Transaktioner";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaktioner med ingen gebyrer kan tage lang tid at bekræfte eller kan ikke bekræftes på alle. Ønsker du at fortsætte?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 
 /* (No Commment) */
 "Yes" = "Ja";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Ja, Vurder Blockchain tegnebog";
 
 /* No comment provided by engineer. */
 "Yesterday" = "I går";
