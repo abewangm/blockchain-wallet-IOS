@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Конфиденциальности";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Наслаждаясь Blockchain кошелек? Пожалуйста, найдите минутку, чтобы оставить отзыв в App Store и пусть другие знают об этом.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Введите сумму %@";
 
 /* (No Commment) */
@@ -833,6 +836,9 @@
 "Processing key" = "Обработки ключ";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Курс Blockchain кошелек";
+
+/* (No Commment) */
 "Receive" = "Получить";
 
 /* (No Commment) */
@@ -1106,6 +1112,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Комиссионные за транзакции влияют как быстро подтвердит ваши транзакции в сети Bitcoin добычи и зависят от текущих условий сети. Мы рекомендуем гонорар для этой сделки в настоящее время.";
 
 /* (No Commment) */
+"Transactions" = "Операции";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Транзакции без комиссии могут занять много времени и могут быть вообще не подтверждены. Вы хотите продолжить?";
 
 /* (No Commment) */
@@ -1280,6 +1289,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "Yes" = "Да";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Да, оценить Blockchain карманы";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Вчера";
