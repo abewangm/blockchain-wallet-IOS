@@ -1639,7 +1639,7 @@ BOOL displayingLocalSymbolSend;
             dispatch_sync(dispatch_get_main_queue(), ^{
                 NSDictionary *dict = [app parseURI:[metadataObj stringValue]];
                 
-                NSString *address = [dict objectForKey:@"address"];
+                NSString *address = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
                 
                 if (address == nil || ![app.wallet isBitcoinAddress:address]) {
                     [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ADDRESS_ARGUMENT, address]];
