@@ -166,6 +166,11 @@
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
 - (void)toggleSymbol;
+
+- (NSInteger)filterIndex;
+- (void)filterTransactionsByAccount:(int)accountIndex;
+- (void)filterTransactionsByImportedAddresses;
+- (void)removeTransactionsFilter;
   
 - (void)pushWebViewController:(NSString*)url title:(NSString *)title;
 
@@ -174,8 +179,7 @@
 - (void)showDebugMenu:(int)presenter;
 - (void)showHdUpgrade;
 
-- (void)closeTransactionFilterMenu;
-- (void)reloadTransactionFilterButton;
+- (void)reloadTransactionFilterLabel;
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender;
 - (IBAction)transactionsClicked:(UIButton *)sender;

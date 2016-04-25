@@ -307,8 +307,38 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self reloadTopLevelViewControllers];
+}
+
+- (NSInteger)filterIndex
+{
+    return _transactionsViewController.filterIndex;
+}
+
+- (void)filterTransactionsByAccount:(int)accountIndex
+{
+    _transactionsViewController.filterIndex = accountIndex;
+    [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
+    [self.wallet filterTransactionsByAccount:accountIndex];
     
-    [_transactionsViewController closeFilterMenu];
+    [self closeSideMenu];
+}
+
+- (void)filterTransactionsByImportedAddresses
+{
+    _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
+    [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
+    [self.wallet filterTransactionsByImportedAddresses];
+    
+    [self closeSideMenu];
+}
+
+- (void)removeTransactionsFilter
+{
+    _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
+    [_transactionsViewController changeFilterLabel:BC_STRING_ALL];
+    [self.wallet removeTransactionsFilter];
+
+    [self closeSideMenu];
 }
 
 - (void)reloadTopLevelViewControllers
@@ -540,7 +570,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [_sendViewController reload];
     
-    [self reloadTransactionFilterButton];
+    [self reloadTransactionFilterLabel];
     
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
@@ -966,8 +996,6 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)closeAllModals
 {
     [self hideBusyView];
-    
-    [self closeTransactionFilterMenu];
     
     secondPasswordSuccess = nil;
     secondPasswordTextField.text = nil;
@@ -1683,8 +1711,6 @@ void (^secondPasswordSuccess)(NSString *);
     else {
         [_slidingViewController resetTopViewAnimated:YES];
     }
-    
-    [_transactionsViewController closeFilterMenu];
 }
 
 - (void)closeSideMenu
@@ -1757,18 +1783,13 @@ void (^secondPasswordSuccess)(NSString *);
     [manualPairView clearPasswordTextField];
 }
 
-- (void)closeTransactionFilterMenu
-{
-    [_transactionsViewController closeFilterMenu];
-}
-
-- (void)reloadTransactionFilterButton
+- (void)reloadTransactionFilterLabel
 {
     if ([app.wallet didUpgradeToHd]) {
-        [_transactionsViewController showFilterButton];
+        [_transactionsViewController showFilterLabel];
         app.mainLogoImageView.hidden = YES;
     } else {
-        [_transactionsViewController hideFilterButton];
+        [_transactionsViewController hideFilterLabel];
         app.mainLogoImageView.hidden = NO;
     }
 }
@@ -1979,7 +2000,6 @@ void (^secondPasswordSuccess)(NSString *);
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     [_sendViewController QRCodebuttonClicked:sender];
-    [_transactionsViewController closeFilterMenu];
 }
 
 - (IBAction)mainPasswordClicked:(id)sender

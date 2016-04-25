@@ -24,78 +24,37 @@ int lastNumberTransactions = INT_MAX;
 
 - (NSInteger)tableView:(UITableView *)_tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (_tableView == self.filterTableView) {
-        return [app.wallet getActiveAccountsCount] + 2; // All + accounts + Imported Addresses
-    } else {
-        return [data.transactions count];
-    }
+    return [data.transactions count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_tableView == self.filterTableView) {
+    Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
         
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+    TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
         
-        if (indexPath.row == 0) {
-            cell.textLabel.text = BC_STRING_ALL;
-        } else if (indexPath.row == [self tableView:_tableView numberOfRowsInSection:0] - 1) {
-            cell.textLabel.text = BC_STRING_IMPORTED_ADDRESSES;
-        } else {
-            cell.textLabel.text = [app.wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:(indexPath.row - 1)]];
-        }
-        
-        return cell;
-        
-    } else {
-        Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
-        
-        TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
-        
-        if (cell == nil) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
-        }
-        
-        cell.transaction = transaction;
-        
-        [cell reload];
-        
-        // Selected cell color
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
-        [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-        [cell setSelectedBackgroundView:v];
-        
-        return cell;
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
     }
+        
+    cell.transaction = transaction;
+        
+    [cell reload];
+        
+    // Selected cell color
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
+    [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+    [cell setSelectedBackgroundView:v];
+        
+    return cell;
 }
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_tableView == self.filterTableView) {
+    TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [cell transactionClicked:nil];
         
-        if (indexPath.row == 0) {
-            self.filterIndex = FILTER_INDEX_ALL;
-            [self changeFilterButtonTitle:BC_STRING_ALL];
-            [app.wallet removeTransactionsFilter];
-        } else if (indexPath.row == [self tableView:_tableView numberOfRowsInSection:0] - 1) {
-            self.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
-            [self changeFilterButtonTitle:BC_STRING_IMPORTED_ADDRESSES];
-            [app.wallet filterTransactionsByImportedAddresses];
-        } else {
-            self.filterIndex = [app.wallet getIndexOfActiveAccount:indexPath.row - 1];
-            [self changeFilterButtonTitle:[app.wallet getLabelForAccount:self.filterIndex]];
-            [app.wallet filterTransactionsByAccount:self.filterIndex];
-        }
-        
-        [self toggleFilterMenu:nil];
-        
-    } else {
-        TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        [cell transactionClicked:nil];
-        
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [self closeFilterMenu];
-    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -110,11 +69,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_tableView == self.filterTableView) {
-        return 44;
-    } else {
-        return 65;
-    }
+    return 65;
 }
 
 - (UITableView*)tableView
@@ -129,7 +84,7 @@ int lastNumberTransactions = INT_MAX;
         [noTransactionsView removeFromSuperview];
         
         self.filterIndex = FILTER_INDEX_ALL;
-        [self changeFilterButtonTitle:BC_STRING_ALL];
+        filterLabel.text = BC_STRING_ALL;
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
         [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
     }
@@ -253,55 +208,19 @@ int lastNumberTransactions = INT_MAX;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil userInfo:[NSDictionary dictionaryWithObject:[self getAmountForReceivedTransaction:[data.transactions firstObject]] forKey:DICTIONARY_KEY_AMOUNT]];
 }
 
-- (void)changeFilterButtonTitle:(NSString *)newTitle
+- (void)changeFilterLabel:(NSString *)newText
 {
-    [filterTransactionsButton setTitle:newTitle forState:UIControlStateNormal];
-    
-    CGFloat spacing = 8;
-    filterTransactionsButton.titleEdgeInsets = UIEdgeInsetsMake(0, -filterTransactionsButton.imageView.frame.size.width, 0, filterTransactionsButton.imageView.frame.size.width);
-    filterTransactionsButton.imageEdgeInsets = UIEdgeInsetsMake(0, filterTransactionsButton.titleLabel.frame.size.width + spacing, 0, -filterTransactionsButton.titleLabel.frame.size.width);
+    filterLabel.text = newText;
 }
 
-- (void)toggleFilterMenu:(UIButton *)sender
+- (void)hideFilterLabel
 {
-    if (self.filterTableView) {
-        [self closeFilterMenu];
-    } else {
-        self.filterTableView = [[UITableView alloc] initWithFrame:CGRectMake(sender.frame.origin.x, sender.frame.origin.y + sender.frame.size.height, sender.frame.size.width, [self heightForFilterTableView])];
-        self.filterTableView.showsVerticalScrollIndicator = NO;
-        self.filterTableView.dataSource = self;
-        self.filterTableView.delegate = self;
-        self.filterTableView.backgroundColor = [UIColor whiteColor];
-        self.filterTableView.layer.masksToBounds = NO;
-        self.filterTableView.layer.shadowRadius = 5;
-        self.filterTableView.layer.shadowOpacity = 0.5;
-        
-        CATransition *transition = [CATransition animation];
-        transition.duration = 0.25;
-        transition.type = kCATransitionReveal;
-        [self.filterTableView.layer addAnimation:transition forKey:nil];
-        [app.window.rootViewController.view addSubview:self.filterTableView];
-    }
+    filterLabel.hidden = YES;
 }
 
-- (void)closeFilterMenu
+- (void)showFilterLabel
 {
-    [UIView animateWithDuration:0.2 animations:^{
-        self.filterTableView.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self.filterTableView removeFromSuperview];
-        self.filterTableView = nil;
-    }];
-}
-
-- (void)hideFilterButton
-{
-    filterTransactionsButton.hidden = YES;
-}
-
-- (void)showFilterButton
-{
-    filterTransactionsButton.hidden = NO;
+    filterLabel.hidden = NO;
 }
 
 - (CGFloat)heightForFilterTableView
@@ -347,12 +266,8 @@ int lastNumberTransactions = INT_MAX;
     
     [self setupPullToRefresh];
     
-    [filterTransactionsButton addTarget:self action:@selector(toggleFilterMenu:) forControlEvents:UIControlEventTouchUpInside];
     self.filterIndex = FILTER_INDEX_ALL;
-    [self changeFilterButtonTitle:BC_STRING_ALL];
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeFilterMenu)];
-    [headerView addGestureRecognizer:tapGesture];
+    filterLabel.text = BC_STRING_ALL;
     
     [self reload];
 }
@@ -389,10 +304,10 @@ int lastNumberTransactions = INT_MAX;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
     
     if ([app.wallet didUpgradeToHd]) {
-        [self showFilterButton];
+        [self showFilterLabel];
         app.mainLogoImageView.hidden = YES;
     } else {
-        [self hideFilterButton];
+        [self hideFilterLabel];
         app.mainLogoImageView.hidden = NO;
     }
 }
@@ -402,11 +317,7 @@ int lastNumberTransactions = INT_MAX;
     [super viewDidDisappear:animated];
     app.mainLogoImageView.hidden = YES;
     app.mainTitleLabel.hidden = NO;
-    filterTransactionsButton.hidden = YES;
-    if (self.filterTableView) {
-        [self.filterTableView removeFromSuperview];
-        self.filterTableView = nil;
-    }
+    filterLabel.hidden = YES;
 }
 
 @end

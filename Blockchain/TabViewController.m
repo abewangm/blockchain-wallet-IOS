@@ -41,9 +41,6 @@
         ECSlidingViewController *sideMenu = app.slidingViewController;
         [_menuSwipeRecognizerView addGestureRecognizer:sideMenu.panGesture];
         
-        UITapGestureRecognizer *tapGestureForSwipeRecognizerView = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(closeTransactionFilterMenu)];
-        [app.tabViewController.menuSwipeRecognizerView addGestureRecognizer:tapGestureForSwipeRecognizerView];
-        
         [self.view addSubview:_menuSwipeRecognizerView];
     }
 }

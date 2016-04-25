@@ -31,7 +31,7 @@
     
     IBOutlet UIView *noTransactionsView;
     
-    IBOutlet UIButton *filterTransactionsButton;
+    IBOutlet UILabel *filterLabel;
     
     MultiAddressResponse *data;
     LatestBlock *latestBlock;
@@ -41,14 +41,13 @@
 @property(nonatomic, strong) LatestBlock *latestBlock;
 
 @property(nonatomic) NSInteger filterIndex;
-@property(nonatomic) UITableView *filterTableView;
 
 - (void)reload;
 - (void)animateNextCellAfterReload;
 - (void)setText;
 - (UITableView*)tableView;
-- (void)closeFilterMenu;
-- (void)hideFilterButton;
-- (void)showFilterButton;
+- (void)hideFilterLabel;
+- (void)showFilterLabel;
+- (void)changeFilterLabel:(NSString *)newText;
 
 @end
