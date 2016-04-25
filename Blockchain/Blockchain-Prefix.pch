@@ -273,6 +273,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL @"merchantURL"
 #define USER_DEFAULTS_KEY_DEBUG_API_URL @"apiURL"
 
+#define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
+
 #define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
 
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
@@ -372,6 +374,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_PRESENTER_WELCOME_VIEW 0
 #define DEBUG_PRESENTER_PIN_VERIFY 1
 #define DEBUG_PRESENTER_SETTINGS_ABOUT 2
+
+#define APP_STORE_REVIEW_PROMPT_TIME 60*60*24*7 // Seconds in one week
 
 #pragma mark - Runtime modes
 
