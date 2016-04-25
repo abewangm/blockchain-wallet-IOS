@@ -389,18 +389,24 @@ BOOL displayingLocalSymbolSend;
              [paymentSentAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                  if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_APP_REVIEW_PROMPT]) {
                      
+                     if ([app.latestResponse.transactions count] <= 10) {
+                         return;
+                     }
+                     
                      id promptDate = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_APP_REVIEW_PROMPT_DATE];
                      
                      if (promptDate) {
                          NSTimeInterval secondsSincePrompt = [[NSDate date] timeIntervalSinceDate:promptDate];
-                         NSTimeInterval secondsInOneWeek = 60*60*24*7;
-                         if (secondsSincePrompt < secondsInOneWeek) {
+                         NSTimeInterval secondsUntilPromptingAgain = APP_STORE_REVIEW_PROMPT_TIME;
+#ifdef ENABLE_DEBUG_MENU
+                         id customTimeValue = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
+                         if (customTimeValue) {
+                             secondsUntilPromptingAgain = [customTimeValue doubleValue];
+                         }
+#endif
+                         if (secondsSincePrompt < secondsUntilPromptingAgain) {
                              return;
                          }
-                     }
-                     
-                     if ([app.latestResponse.transactions count] <= 10) {
-                         return;
                      }
                      
                      UIAlertController *appReviewAlert = [UIAlertController alertControllerWithTitle:BC_STRING_APP_REVIEW_PROMPT_TITLE message:BC_STRING_APP_REVIEW_PROMPT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
@@ -1143,6 +1149,7 @@ BOOL displayingLocalSymbolSend;
     if ([addressesUsed count] == 0) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self showErrorBeforeSending:BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_DUST];
+            [app hideBusyView];
         });
         return;
     }
@@ -1638,7 +1645,7 @@ BOOL displayingLocalSymbolSend;
             dispatch_sync(dispatch_get_main_queue(), ^{
                 NSDictionary *dict = [app parseURI:[metadataObj stringValue]];
                 
-                NSString *address = [dict objectForKey:@"address"];
+                NSString *address = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
                 
                 if (address == nil || ![app.wallet isBitcoinAddress:address]) {
                     [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ADDRESS_ARGUMENT, address]];

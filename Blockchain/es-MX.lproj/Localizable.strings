@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Privacidad mejorada";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "¿Disfrutando de la cartera de Blockchain? Por favor tome un momento para dejar una revisión en la App Store y otros que conocen.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Ingrese el monto de la %@";
 
 /* (No Commment) */
@@ -833,6 +836,9 @@
 "Processing key" = "Proceso clave";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Tasa cartera Blockchain";
+
+/* (No Commment) */
 "Receive" = "Recibir";
 
 /* (No Commment) */
@@ -1106,6 +1112,9 @@ Tarifa: %4$@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Costos de transacción afectan cómo rápidamente la red de minería Bitcoin confirmará sus transacciones y dependen de las condiciones actuales de la red. Recomendamos el honorario de la muestra para esta transacción en este momento.";
 
 /* (No Commment) */
+"Transactions" = "Transacciones";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Las transacciones sin tarifas puede tomar más tiempo en ser confirmadas o puede que no reciban confirmación. ¿Quiere continuar?";
 
 /* (No Commment) */
@@ -1280,6 +1289,9 @@ una experiencia de usuario de monedero completamente nueva";
 
 /* (No Commment) */
 "Yes" = "Sí";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Sí, la tarifa Blockchain cartera";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Ayer";

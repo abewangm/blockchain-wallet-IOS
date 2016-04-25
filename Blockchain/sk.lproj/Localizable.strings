@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Vylepšená Ochrana osobných údajov";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Teší Blockchain peňaženku? Venujte prosím chvíľku napísať recenziu v App Store a nechať ostatné vedia o tom.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Zadajte čiastku, %@";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Spracovanie na kľúč";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Kurz Blockchain peňaženka";
+
+/* (No Commment) */
 "Receive" = "Prijímať";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Transakčné poplatky ovplyvniť, ako rýchlo bude Bitcoin ťažby siete potvrdiť vaše transakcie a závisí od aktuálne sieťové podmienky. Odporúčame poplatok pre transakciu v tomto okamihu.";
 
 /* (No Commment) */
+"Transactions" = "Transakcie";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transakcie bez poplatkov môže trvať dlhú dobu na potvrdenie alebo môžu byť potvrdené vôbec. Chcete pokračovať?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 
 /* (No Commment) */
 "Yes" = "áno";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Áno, kurz Blockchain peňaženka";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Včera";

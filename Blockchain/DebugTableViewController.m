@@ -16,6 +16,8 @@ const int rowWebsocketURL = 2;
 const int rowMerchantURL = 3;
 const int rowAPIURL = 4;
 const int surgeToggle = 5;
+const int dontShowAgain = 6;
+const int appStoreReviewPromptTimer = 7;
 
 @interface DebugTableViewController ()
 @property (nonatomic) NSDictionary *filteredWalletJSON;
@@ -96,7 +98,7 @@ const int surgeToggle = 5;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -139,6 +141,16 @@ const int surgeToggle = 5;
             surgeToggle.on = surgeOn;
             [surgeToggle addTarget:self action:@selector(toggleSurge) forControlEvents:UIControlEventTouchUpInside];
             cell.accessoryView = surgeToggle;
+            break;
+        }
+        case dontShowAgain: {
+            cell.textLabel.text = BC_STRING_RESET_DONT_SHOW_AGAIN_PROMPT;
+            break;
+        }
+        case appStoreReviewPromptTimer: {
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
+            cell.textLabel.text = BC_STRING_APP_STORE_REVIEW_PROMPT_TIMER;
+            break;
         }
         default:
             break;
@@ -168,6 +180,37 @@ const int surgeToggle = 5;
             break;
         case rowAPIURL:
             [self alertToChangeURLName:BC_STRING_API_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_API_URL currentURL:[app apiURL]];
+            break;
+        case dontShowAgain: {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DEBUG message:BC_STRING_RESET_DONT_SHOW_AGAIN_PROMPT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT];
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_HIDE_APP_REVIEW_PROMPT];
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING];
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
+            break;
+        }
+        case appStoreReviewPromptTimer: {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DEBUG message:BC_STRING_APP_STORE_REVIEW_PROMPT_TIMER preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:[[[alert textFields] firstObject].text intValue]] forKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:APP_STORE_REVIEW_PROMPT_TIME] forKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
+            }]];
+            [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+                textField.keyboardType = UIKeyboardTypeNumberPad;
+                
+                id customTimeValue = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
+                
+                textField.text = [NSString stringWithFormat:@"%i", customTimeValue ? [customTimeValue intValue] : APP_STORE_REVIEW_PROMPT_TIME];
+            }];
+            [self presentViewController:alert animated:YES completion:nil];
+            break;
+        }
         default:
             break;
     }

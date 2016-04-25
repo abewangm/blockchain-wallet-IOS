@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "गोपनीयता में वृद्धि हुई";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "लॉकचेन बटुआ मजा आ रहा है? App की दुकान में एक समीक्षा छोड़ दो और दूसरों के बारे में पता करने के लिए एक क्षण ले कृपया।";
+
+/* (No Commment) */
 "Enter %@ amount" = "%@ राशि दर्ज करें";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "कुंजी संसाधन";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "दर लॉकचेन बटुआ";
+
+/* (No Commment) */
 "Receive" = "प्राप्त";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "लेनदेन की फीस प्रभाव कितनी जल्दी Bitcoin खनन नेटवर्क आपके लेन-देन की पुष्टि करें, और वर्तमान नेटवर्क की स्थितियों पर निर्भर करते हैं। हम अनुशंसा करते हैं इस समय इस सौदे के लिए दिखाया गया शुल्क।";
 
 /* (No Commment) */
+"Transactions" = "लेन-देन";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "कोई फीस के साथ लेन-देन की पुष्टि करने के लिए एक लंबा समय लग सकते हैं या सब पर हो सकता की पुष्टि नहीं की। आप जारी रखना चाहेंगे?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "Yes" = "हाँ";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "हाँ, लॉकचेन बटुआ दर";
 
 /* No comment provided by engineer. */
 "Yesterday" = "कल";

@@ -386,6 +386,9 @@
 "Enhanced Privacy" = "Továbbfejlesztett adatvédelmi";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Élvezi a Blockchain pénztárca? Legyen szíves fog egy pillanat, hogy hagyjuk a felülvizsgálat, az App Store, és hagyja, hogy mások róla.";
+
+/* (No Commment) */
 "Enter %@ amount" = "%@ összeg megadása";
 
 /* (No Commment) */
@@ -824,6 +827,9 @@
 "Processing key" = "Feldolgozás kulcs";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Árfolyam Blockchain pénztárca";
+
+/* (No Commment) */
 "Receive" = "Kap";
 
 /* (No Commment) */
@@ -1074,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Tranzakciós díjak befolyásolja, milyen gyorsan a Bitcoin bányászat hálózat lesz erősítse meg a tranzakciók, és az aktuális hálózati feltételektõl. Javasoljuk, hogy a díj jelenik meg a tranzakció ebben az időben.";
 
 /* (No Commment) */
+"Transactions" = "Tranzakciók";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Díjmentes megerősítéséhez hosszú időt vehet igénybe, vagy esetleg nem kell erősíteni minden. Szeretne továbbra is?";
 
 /* (No Commment) */
@@ -1244,6 +1253,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "Yes" = "igen";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Igen, arány Blockchain pénztárca";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Tegnap";
