@@ -389,6 +389,10 @@ BOOL displayingLocalSymbolSend;
              [paymentSentAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                  if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_APP_REVIEW_PROMPT]) {
                      
+                     if ([app.latestResponse.transactions count] <= 10) {
+                         return;
+                     }
+                     
                      id promptDate = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_APP_REVIEW_PROMPT_DATE];
                      
                      if (promptDate) {
@@ -397,10 +401,6 @@ BOOL displayingLocalSymbolSend;
                          if (secondsSincePrompt < secondsInOneWeek) {
                              return;
                          }
-                     }
-                     
-                     if ([app.latestResponse.transactions count] <= 10) {
-                         return;
                      }
                      
                      UIAlertController *appReviewAlert = [UIAlertController alertControllerWithTitle:BC_STRING_APP_REVIEW_PROMPT_TITLE message:BC_STRING_APP_REVIEW_PROMPT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
