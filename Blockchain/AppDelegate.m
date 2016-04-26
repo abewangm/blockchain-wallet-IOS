@@ -321,6 +321,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.wallet filterTransactionsByAccount:accountIndex];
     
     [self closeSideMenu];
+    [self transactionsClicked:nil];
 }
 
 - (void)filterTransactionsByImportedAddresses
@@ -330,6 +331,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.wallet filterTransactionsByImportedAddresses];
     
     [self closeSideMenu];
+    [self transactionsClicked:nil];
 }
 
 - (void)removeTransactionsFilter
@@ -339,6 +341,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.wallet removeTransactionsFilter];
 
     [self closeSideMenu];
+    [self transactionsClicked:nil];
 }
 
 - (void)reloadTopLevelViewControllers
