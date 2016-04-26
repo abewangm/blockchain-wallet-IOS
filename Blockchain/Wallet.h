@@ -205,6 +205,8 @@
 - (void)filterTransactionsByAccount:(int)account;
 - (void)removeTransactionsFilter;
 
+- (int)getAllTransactionsCount;
+
 // HD Wallet
 - (void)upgradeToHDWallet;
 - (Boolean)hasAccount;

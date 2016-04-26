@@ -212,6 +212,10 @@ MyWalletPhone.getActiveAccountsCount = function() {
     return activeAccounts.length;
 };
 
+MyWalletPhone.getAllTransactionsCount = function() {
+    return MyWallet.wallet.txList.transactionsForIOS().length;
+}
+
 MyWalletPhone.getAllAccountsCount = function() {
     if (!MyWallet.wallet.isUpgradedToHD) {
         console.log('Warning: Getting accounts when wallet has not upgraded!');

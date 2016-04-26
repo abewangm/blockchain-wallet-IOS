@@ -255,6 +255,15 @@
     }
 }
 
+- (int)getAllTransactionsCount
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAllTransactionsCount()"] intValue];
+}
+
 - (NSArray *)filteredTransactions:(NSString *)command
 {
     if ([self isInitialized]) {
