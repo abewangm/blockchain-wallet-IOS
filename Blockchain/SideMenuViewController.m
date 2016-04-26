@@ -220,16 +220,31 @@ int accountEntries = 0;
     if ([self showBalances]) {
         if (indexPath.section != 1) {
             
+            BOOL deselected = NO;
+            
             if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1) {
-                [app filterTransactionsByImportedAddresses];
+                if ([app filterIndex] == FILTER_INDEX_IMPORTED_ADDRESSES) {
+                    deselected = YES;
+                } else {
+                    [app filterTransactionsByImportedAddresses];
+                }
             } else {
-                [app filterTransactionsByAccount:[app.wallet getIndexOfActiveAccount:indexPath.row]];
+                if ([app.wallet getIndexOfActiveAccount:indexPath.row] == [app filterIndex]) {
+                    deselected = YES;
+                } else {
+                    [app filterTransactionsByAccount:[app.wallet getIndexOfActiveAccount:indexPath.row]];
+                }
             }
             
-            UITableViewHeaderFooterView *headerView = [tableView headerViewForSection:indexPath.section];
-            UIView *backgroundView = [[UIView alloc] initWithFrame:headerView.frame];
-            [backgroundView setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-            headerView.backgroundView = backgroundView;
+            if (deselected) {
+                [self removeTransactionsFilter];
+                [tableView deselectRowAtIndexPath:indexPath animated:NO];
+            } else {
+                UITableViewHeaderFooterView *headerView = [tableView headerViewForSection:indexPath.section];
+                UIView *backgroundView = [[UIView alloc] initWithFrame:headerView.frame];
+                [backgroundView setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+                headerView.backgroundView = backgroundView;
+            }
             
             return;
         }
