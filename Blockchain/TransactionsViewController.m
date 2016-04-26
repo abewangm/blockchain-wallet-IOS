@@ -84,7 +84,7 @@ int lastNumberTransactions = INT_MAX;
         [noTransactionsView removeFromSuperview];
         
         self.filterIndex = FILTER_INDEX_ALL;
-        filterLabel.text = BC_STRING_ALL;
+        filterLabel.text = BC_STRING_TOTAL_BALANCE;
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
         [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
     }
@@ -267,7 +267,7 @@ int lastNumberTransactions = INT_MAX;
     [self setupPullToRefresh];
     
     self.filterIndex = FILTER_INDEX_ALL;
-    filterLabel.text = BC_STRING_ALL;
+    filterLabel.text = BC_STRING_TOTAL_BALANCE;
     
     [self reload];
 }

@@ -320,8 +320,7 @@ void (^secondPasswordSuccess)(NSString *);
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
     [self.wallet filterTransactionsByAccount:accountIndex];
     
-    [self closeSideMenu];
-    [self transactionsClicked:nil];
+    [self showFilterResults];
 }
 
 - (void)filterTransactionsByImportedAddresses
@@ -330,18 +329,22 @@ void (^secondPasswordSuccess)(NSString *);
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
     [self.wallet filterTransactionsByImportedAddresses];
     
-    [self closeSideMenu];
-    [self transactionsClicked:nil];
+    [self showFilterResults];
 }
 
 - (void)removeTransactionsFilter
 {
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
-    [_transactionsViewController changeFilterLabel:BC_STRING_ALL];
+    [_transactionsViewController changeFilterLabel:BC_STRING_TOTAL_BALANCE];
     [self.wallet removeTransactionsFilter];
+    
+    [self showFilterResults];
+}
 
+- (void)showFilterResults
+{
     [self closeSideMenu];
-    [self transactionsClicked:nil];
+    [_tabViewController setActiveViewController:_transactionsViewController animated:FALSE index:1];
 }
 
 - (void)reloadTopLevelViewControllers
