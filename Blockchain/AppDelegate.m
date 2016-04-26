@@ -1807,20 +1807,6 @@ void (^secondPasswordSuccess)(NSString *);
     [self toggleSideMenu];
 }
 
-// Open ZeroBlock if it's installed, otherwise go to the ZeroBlock homepage in the web modal
-- (IBAction)newsClicked:(id)sender
-{
-    // TODO ZeroBlock does not have the URL scheme in it's .plist yet
-//    NSURL *zeroBlockAppURL = [NSURL URLWithString:@"zeroblock://"];
-    
-//    if ([[UIApplication sharedApplication] canOpenURL:zeroBlockAppURL]) {
-//        [[UIApplication sharedApplication] openURL:zeroBlockAppURL];
-//    }
-//    else {
-        [self pushWebViewController:ZEROBLOCK_ADDRESS title:ZEROBLOCK_TITLE];
-//    }
-}
-
 - (IBAction)accountsAndAddressesClicked:(id)sender
 {
     [app showAccountsAndAddresses];

@@ -148,7 +148,6 @@
 #define BC_STRING_BACKUP NSLocalizedString(@"Backup", nil)
 #define BC_STRING_SECURITY_CENTER NSLocalizedString(@"Security Center", nil)
 #define BC_STRING_ADD_EMAIL NSLocalizedString(@"Add Email", nil)
-#define BC_STRING_NEWS_PRICE_CHARTS NSLocalizedString(@"News, Price & Charts", nil)
 #define BC_STRING_LOGOUT NSLocalizedString(@"Logout", nil)
 #define BC_STRING_REALLY_LOGOUT NSLocalizedString(@"Do you really want to log out?", nil)
 

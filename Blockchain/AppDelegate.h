@@ -193,7 +193,6 @@
 - (IBAction)mainPasswordClicked:(id)sender;
 - (IBAction)manualPairClicked:(id)sender;
 
-- (IBAction)newsClicked:(id)sender;
 - (IBAction)accountsAndAddressesClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
 - (IBAction)securityCenterClicked:(id)sender;
