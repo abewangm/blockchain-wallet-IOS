@@ -345,11 +345,11 @@ MyWalletPhone.createNewPayment = function() {
     currentPayment = new Payment();
 }
 
-MyWalletPhone.changePaymentFrom = function(from) {
+MyWalletPhone.changePaymentFrom = function(from, isAdvanced) {
     if (currentPayment) {
         currentPayment.from(from).then(function(x) {
             if (x) {
-                if (x.from != null) device.execute('update_send_balance:', [x.balance]);
+                if (x.from != null) device.execute('update_send_balance:', [isAdvanced ? x.balance : x.sweepAmount]);
             }
             return x;
         });
@@ -550,19 +550,6 @@ MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
           console.log('error sweeping payment: ' + errorArgument);
           device.execute('on_error_update_fee:', [errorArgument]);
        });
-    } else {
-        console.log('Payment error: null payment object!');
-    }
-}
-
-MyWalletPhone.getSpendableBalanceForPayment = function(from) {
-    if (currentPayment) {
-        currentPayment.from(from).then(function(x) {
-          if (x) {
-            if (x.from != null) device.execute('update_send_balance:', [x.balance]);
-          }
-          return x;
-        });
     } else {
         console.log('Payment error: null payment object!');
     }

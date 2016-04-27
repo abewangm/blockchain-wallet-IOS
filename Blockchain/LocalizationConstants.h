@@ -34,7 +34,7 @@
 #define BC_STRING_RECEIVE NSLocalizedString(@"Receive", nil)
 #define BC_STRING_TRANSACTIONS NSLocalizedString(@"Transactions", nil)
 #define BC_STRING_SENDING_TRANSACTION NSLocalizedString(@"Sending Transaction", nil)
-#define BC_STRING_USE_ALL_AMOUNT NSLocalizedString(@"Use all %@", nil)
+#define BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT NSLocalizedString(@"Use total available minus fee: %@", nil)
 
 #define BC_STRING_SUCCESS NSLocalizedString(@"Success", nil)
 #define BC_STRING_PAYMENT_SENT NSLocalizedString(@"Payment Sent!", nil)

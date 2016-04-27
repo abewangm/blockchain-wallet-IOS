@@ -731,22 +731,22 @@
     [self.webView executeJS:@"MyWalletPhone.createNewPayment()"];
 }
 
-- (void)changePaymentFromAccount:(int)fromInt
+- (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(%d)", fromInt];
+    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(%d, %d)", fromInt, isAdvanced];
 }
 
-- (void)changePaymentFromAddress:(NSString *)fromString
+- (void)changePaymentFromAddress:(NSString *)fromString isAdvanced:(BOOL)isAdvanced
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(\"%@\")", [fromString escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(\"%@\", %d)", [fromString escapeStringForJS], isAdvanced];
 }
 
 - (void)changePaymentToAccount:(int)toInt
@@ -2155,24 +2155,6 @@
     }
     
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.getBalanceForAccount(%d)", account] longLongValue];
-}
-
-- (uint64_t)getSpendableBalanceForAddress:(NSString *)address;
-{
-    if (![self isInitialized]) {
-        return 0;
-    }
-    
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForPayment(\"%@\")", [address escapeStringForJS]] longLongValue];
-}
-
-- (uint64_t)getSpendableBalanceForAccount:(int)account;
-{
-    if (![self isInitialized]) {
-        return 0;
-    }
-    
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForPayment(%d)", account] longLongValue];
 }
 
 - (NSString *)getLabelForAccount:(int)account
