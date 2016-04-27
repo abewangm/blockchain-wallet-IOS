@@ -182,7 +182,7 @@ int accountEntries = 0;
 - (Boolean)showBalances
 {
     // Return true if the user has upgraded and either legacy adresses or multiple accounts
-    return [app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 1);
+    return [app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2);
 }
 
 - (void)removeTransactionsFilter
@@ -304,7 +304,7 @@ int accountEntries = 0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 && accountEntries >= 1) {
+    if (section == 0 && ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2))) {
         return BALANCE_ENTRY_HEIGHT;
     }
     
@@ -314,7 +314,7 @@ int accountEntries = 0;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     // Total Balance
-    if (section == 0 && accountEntries >= 1) {
+    if (section == 0 && ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2))) {
         UITableViewHeaderFooterView *view = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, BALANCE_ENTRY_HEIGHT)];
         
         UIView *backgroundView = [[UIView alloc] initWithFrame:view.frame];

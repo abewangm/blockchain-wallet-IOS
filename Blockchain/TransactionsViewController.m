@@ -303,7 +303,7 @@ int lastNumberTransactions = INT_MAX;
     app.mainTitleLabel.hidden = YES;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
     
-    if ([app.wallet didUpgradeToHd]) {
+    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
         [self showFilterLabel];
         app.mainLogoImageView.hidden = YES;
     } else {
