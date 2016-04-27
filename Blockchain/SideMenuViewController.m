@@ -229,10 +229,10 @@ int accountEntries = 0;
                     [app filterTransactionsByImportedAddresses];
                 }
             } else {
-                if ([app.wallet getIndexOfActiveAccount:indexPath.row] == [app filterIndex]) {
+                if ([app.wallet getIndexOfActiveAccount:(int)indexPath.row] == [app filterIndex]) {
                     deselected = YES;
                 } else {
-                    [app filterTransactionsByAccount:[app.wallet getIndexOfActiveAccount:indexPath.row]];
+                    [app filterTransactionsByAccount:[app.wallet getIndexOfActiveAccount:(int)indexPath.row]];
                 }
             }
             

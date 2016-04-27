@@ -237,7 +237,7 @@ int lastNumberTransactions = INT_MAX;
     } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
         return [app.wallet getTotalBalanceForActiveLegacyAddresses];
     } else {
-        return [app.wallet getBalanceForAccount:self.filterIndex];
+        return [app.wallet getBalanceForAccount:(int)self.filterIndex];
     }
 }
 
