@@ -76,7 +76,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost your 12 word recovery phrase?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yh8-Gm-6op">
-                                <rect key="frame" x="44" y="300" width="236" height="21"/>
+                                <rect key="frame" x="40" y="300" width="240" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -352,7 +352,7 @@
                                                 <color key="textColor" red="0.52205141129999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify that you wrote down the backup phrase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4Nq-ue-tXr">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the following words from your Recovery Phrase to complete the backup process." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4Nq-ue-tXr">
                                                 <rect key="frame" x="15" y="0.0" width="290" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
@@ -385,7 +385,7 @@
         <image name="icon_backup_incomplete" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dla-jc-Bti"/>
-        <segue reference="o31-rh-3dv"/>
+        <segue reference="U0S-3m-R5I"/>
+        <segue reference="5tF-1v-zva"/>
     </inferredMetricsTieBreakers>
 </document>
