@@ -167,6 +167,8 @@
 - (void)reloadAfterMultiAddressResponse;
 - (void)toggleSymbol;
 
+- (void)logoutAndShowPasswordModal;
+
 - (NSInteger)filterIndex;
 - (void)filterTransactionsByAccount:(int)accountIndex;
 - (void)filterTransactionsByImportedAddresses;

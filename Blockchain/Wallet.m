@@ -2237,6 +2237,8 @@
 - (void)logging_out
 {
     DLog(@"logging_out");
+    
+    [app logoutAndShowPasswordModal];
 }
 
 #pragma mark - Callbacks from javascript localstorage
