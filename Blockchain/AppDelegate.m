@@ -2760,7 +2760,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)checkForNewInstall
 {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN]) {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_FIRST_RUN]) {
         
         if ([self guid] && [self sharedKey] && ![self isPinSet]) {
             [self alertUserAskingToUseOldKeychain];
