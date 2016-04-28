@@ -237,7 +237,7 @@ int lastNumberTransactions = INT_MAX;
     } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
         return [app.wallet getTotalBalanceForActiveLegacyAddresses];
     } else {
-        return [app.wallet getBalanceForAccount:self.filterIndex];
+        return [app.wallet getBalanceForAccount:(int)self.filterIndex];
     }
 }
 
@@ -303,7 +303,7 @@ int lastNumberTransactions = INT_MAX;
     app.mainTitleLabel.hidden = YES;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
     
-    if ([app.wallet didUpgradeToHd]) {
+    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
         [self showFilterLabel];
         app.mainLogoImageView.hidden = YES;
     } else {

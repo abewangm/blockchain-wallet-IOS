@@ -1791,7 +1791,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)reloadTransactionFilterLabel
 {
-    if ([app.wallet didUpgradeToHd]) {
+    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
         app.mainLogoImageView.hidden = YES;
         if (_tabViewController.activeViewController == _transactionsViewController) {
             [_transactionsViewController showFilterLabel];

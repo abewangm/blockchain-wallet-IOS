@@ -1269,7 +1269,7 @@
     
     NSString *filter;
     
-    int filterIndex = app.transactionsViewController.filterIndex;
+    int filterIndex = (int)app.transactionsViewController.filterIndex;
     
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
