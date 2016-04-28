@@ -35,11 +35,6 @@ console.log = function(message) {
     device.execute("log:", [message]);
 };
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    MyWallet.logout = function() {}
-});
-
-
 // Register for JS event handlers and forward to Obj-C handlers
 
 WalletStore.addEventListener(function (event, obj) {

@@ -1915,15 +1915,20 @@ void (^secondPasswordSuccess)(NSString *);
     alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
         // Actually log out
         if (buttonIndex == 1) {
-            [self clearPin];
-            [self.sendViewController clearToAddressAndAmountFields];
-            [self logout];
-            [self closeSideMenu];
-            [self showPasswordModal];
+            [self logoutAndShowPasswordModal];
         }
     };
     
     [alert show];
+}
+
+- (void)logoutAndShowPasswordModal
+{
+    [self clearPin];
+    [self.sendViewController clearToAddressAndAmountFields];
+    [self logout];
+    [self closeSideMenu];
+    [self showPasswordModal];
 }
 
 - (void)confirmForgetWalletWithBlock:(void (^)(UIAlertView *alertView, NSInteger buttonIndex))tapBlock
