@@ -116,6 +116,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ERROR_FAILED_NETWORK_REQUEST @"Connectivity error, failed to send network request"
 #define ERROR_FEE_TOO_LOW @"Fee is too low / Not sufficient priority\n"
+#define ERROR_FETCH_UNSPENT @"ERR_FETCH_UNSPENT"
 #define ERROR_BELOW_DUST_THRESHOLD @"BELOW_DUST_THRESHOLD"
 #define ERROR_NO_UNSPENT_OUTPUTS @"NO_UNSPENT_OUTPUTS"
 #define ERROR_NOT_PRESENT_IN_WALLET @"addressNotPresentInWallet"

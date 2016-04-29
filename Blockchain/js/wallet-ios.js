@@ -338,6 +338,10 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment')
     currentPayment = new Payment();
+    currentPayment.on('error', function(errorObject) {
+        var errorDictionary = {'message': {'error': errorObject['error']}};
+        device.execute('on_error_update_fee:', [errorDictionary]);
+    });
 }
 
 MyWalletPhone.changePaymentFrom = function(from) {
