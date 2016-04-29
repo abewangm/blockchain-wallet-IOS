@@ -274,8 +274,8 @@
 
 // Payment Spender
 - (void)createNewPayment;
-- (void)changePaymentFromAddress:(NSString *)fromString;
-- (void)changePaymentFromAccount:(int)fromInt;
+- (void)changePaymentFromAddress:(NSString *)fromString isAdvanced:(BOOL)isAdvanced;
+- (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced;
 - (void)changePaymentToAccount:(int)toInt;
 - (void)changePaymentToAddress:(NSString *)toString;
 - (void)changePaymentAmount:(uint64_t)amount;
@@ -291,8 +291,6 @@
 - (void)changeForcedFee:(uint64_t)fee;
 - (void)getTransactionFee;
 - (void)getSurgeStatus;
-- (uint64_t)getSpendableBalanceForAddress:(NSString *)address;
-- (uint64_t)getSpendableBalanceForAccount:(int)account;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;
