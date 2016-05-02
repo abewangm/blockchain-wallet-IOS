@@ -1293,7 +1293,7 @@ BOOL displayingLocalSymbolSend;
                 return NO;
             }
             
-            if (fee + amountInSatoshi >= availableAmount) {
+            if (fee + amountInSatoshi > availableAmount) {
                 textField.textColor = [UIColor redColor];
                 [self disablePaymentButtons];
             } else {
