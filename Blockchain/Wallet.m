@@ -1190,6 +1190,10 @@
 
 - (void)parseLatestBlockJSON:(NSString*)latestBlockJSON
 {
+    if ([latestBlockJSON isEqualToString:@"null"]) {
+        return;
+    }
+    
     NSDictionary *dict = [latestBlockJSON getJSONObject];
     
     LatestBlock *latestBlock = [[LatestBlock alloc] init];
