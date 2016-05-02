@@ -1800,7 +1800,7 @@ void (^secondPasswordSuccess)(NSString *);
         }
     } else {
         [_transactionsViewController hideFilterLabel];
-        app.mainLogoImageView.hidden = NO;
+        app.mainLogoImageView.hidden = _tabViewController.activeViewController == _transactionsViewController ? NO : YES;
     }
 }
 
