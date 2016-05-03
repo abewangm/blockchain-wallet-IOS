@@ -893,6 +893,15 @@
     return [self.webView executeJS:@"MyWalletPhone.getSurgeStatus()"];
 }
 
+- (uint64_t)dust
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.dust()"] longLongValue];
+}
+
 - (void)generateNewKey
 {
     if (![self isInitialized]) {
@@ -1246,6 +1255,10 @@
 
 - (void)parseLatestBlockJSON:(NSString*)latestBlockJSON
 {
+    if ([latestBlockJSON isEqualToString:@"null"]) {
+        return;
+    }
+    
     NSDictionary *dict = [latestBlockJSON getJSONObject];
     
     LatestBlock *latestBlock = [[LatestBlock alloc] init];
