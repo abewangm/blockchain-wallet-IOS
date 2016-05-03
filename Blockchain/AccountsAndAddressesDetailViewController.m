@@ -63,6 +63,7 @@ typedef enum {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self resetHeader];
 }
 

@@ -43,7 +43,8 @@
     [super viewWillAppear:animated];
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     navigationController.headerLabel.text = nil;
-    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     [self displayTransferFundsWarningIfAppropriate];
 }
 
