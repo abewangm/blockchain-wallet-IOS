@@ -1704,3 +1704,7 @@ MyWalletPhone.filteredWalletJSON = function() {
     }
     return walletJSON;
 }
+
+MyWalletPhone.dust = function() {
+    return Bitcoin.networks.bitcoin.dustThreshold;
+}
