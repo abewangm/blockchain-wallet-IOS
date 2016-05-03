@@ -63,7 +63,10 @@ typedef enum {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // Fix insets for 4S
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     [self resetHeader];
 }
 

@@ -43,6 +43,8 @@
     [super viewWillAppear:animated];
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     navigationController.headerLabel.text = nil;
+    
+    // Fix insets for 4S
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     [self displayTransferFundsWarningIfAppropriate];
