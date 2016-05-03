@@ -1148,9 +1148,9 @@ BOOL displayingLocalSymbolSend;
             [self changeYPosition:8 ofView:fiatAmountField];
             [self changeYPosition:61 ofView:lineBelowAmountFields];
             
-            [self changeYPosition:54 ofView:feeField];
-            [self changeYPosition:51 ofView:feeLabel];
-            [self changeYPosition:88 ofView:lineBelowFeeField];
+            [self changeYPosition:72 ofView:feeField];
+            [self changeYPosition:75 ofView:feeLabel];
+            [self changeYPosition:109 ofView:lineBelowFeeField];
             
             [self changeYPosition:36 ofView:fundsAvailableButton];
         }
