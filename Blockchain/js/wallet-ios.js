@@ -4,7 +4,6 @@ var MyWallet = Blockchain.MyWallet;
 var WalletStore = Blockchain.WalletStore;
 var WalletCrypto = Blockchain.WalletCrypto;
 var BlockchainAPI = Blockchain.API;
-var ImportExport = Blockchain.ImportExport;
 var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 var Helpers = Blockchain.Helpers;
 var Payment = Blockchain.Payment;
@@ -1276,7 +1275,7 @@ MyWalletPhone.getSecondPassword = function(callback) {
 
 // Overrides
 
-ImportExport.Crypto_scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
+WalletCrypto.scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
     if(typeof(passwd) !== 'string') {
         passwd = passwd.toJSON().data;
     }
