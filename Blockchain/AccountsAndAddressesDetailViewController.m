@@ -64,8 +64,9 @@ typedef enum {
 {
     [super viewWillAppear:animated];
     
-    // Fix insets for 4S
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     [self resetHeader];
 }
