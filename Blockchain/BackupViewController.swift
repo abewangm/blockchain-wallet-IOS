@@ -31,7 +31,7 @@ class BackupViewController: UIViewController {
         
         if wallet!.isRecoveryPhraseVerified() {
             summaryLabel.text = NSLocalizedString("You backed up your funds successfully.", comment: "");
-            explanation.text = NSLocalizedString("Should you lose your password, you can restore your current funds and funds you will receive in this wallet in the future (except imported addresses) using the 12 word recovery phrase. It is very important to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoins.", comment: "")
+            explanation.text = NSLocalizedString("Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin.", comment: "")
             backupIconImageView.image = UIImage(named: "thumbs")
             backupWalletButton.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), forState: .Normal)
             backupWalletAgainButton.hidden = false

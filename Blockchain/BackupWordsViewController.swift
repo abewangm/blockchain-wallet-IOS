@@ -82,7 +82,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         
         let boldText = NSAttributedString(string: NSLocalizedString("piece of paper.", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName : UIFont.boldSystemFontOfSize(14.0)])
         
-        let blackTextEnd = NSAttributedString(string:  NSLocalizedString(" It is very important to keep your Recovery Phrase offline somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your funds.", comment:""), attributes:
+        let blackTextEnd = NSAttributedString(string:  NSLocalizedString(" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure.", comment:""), attributes:
             [NSForegroundColorAttributeName: UIColor.blackColor()])
         
         let finalText = NSMutableAttributedString(attributedString: blackTextBeginning)
