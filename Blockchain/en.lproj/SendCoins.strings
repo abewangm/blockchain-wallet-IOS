@@ -32,6 +32,9 @@
 /* Class = "IBUIButton"; normalTitle = "BTC"; ObjectID = "6zi-8R-Tmt"; */
 "6zi-8R-Tmt.normalTitle" = "BTC";
 
+/* Class = "IBUIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"l */
+"Pgx-k8-cTb.normalTitle" = "Cancel next";
+
 /* Class = "IBUILabel"; text = "Amount:"; ObjectID = "7ho-GV-ikp"; */
 "7ho-GV-ikp.text" = "BTC";
 
