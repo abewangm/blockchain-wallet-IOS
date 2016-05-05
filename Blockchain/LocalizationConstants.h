@@ -488,8 +488,6 @@
 #define BC_STRING_INCORRECT_PRIVATE_KEY NSLocalizedString(@"Incorrect private key", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED NSLocalizedString(@"Private Key Needed", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT NSLocalizedString(@"This action requires the private key for the Bitcoin address %@. Please scan the QR code.", nil)
-#define BC_STRING_TRANSACTION_FEE_TITLE NSLocalizedString(@"Transaction Fee", nil)
-#define BC_STRING_TRANSACTION_FEE_DESCRIPTION_ARGUMENT NSLocalizedString(@"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time.", nil)
 #define BC_STRING_ENTER_ARGUMENT_AMOUNT NSLocalizedString(@"Enter %@ amount", nil)
 #define BC_STRING_RETRIEVING_RECOMMENDED_FEE NSLocalizedString(@"Retrieving recommended fee", nil)
 #define BC_STRING_FEE_HIGHER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT NSLocalizedString(@"You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block).", nil)
@@ -505,7 +503,8 @@
 #define BC_STRING_SURGE_OCCURRING_TITLE NSLocalizedString(@"Surge Occurring", nil)
 #define BC_STRING_SURGE_OCCURRING_MESSAGE NSLocalizedString(@"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual.", nil)
 #define BC_STRING_FEE_INFORMATION_TITLE NSLocalizedString(@"Transaction Fees", nil)
-#define BC_STRING_FEE_INFORMATION_MESSAGE NSLocalizedString(@"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time.", nil)
+#define BC_STRING_FEE_INFORMATION_MESSAGE NSLocalizedString(@"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions.", nil)
+#define BC_STRING_FEE_INFORMATION_MESSAGE_APPEND_REGULAR_SEND NSLocalizedString (@" We recommend the fee below for the transaction at this time.", nil)
 #define BC_STRING_FEE_INFORMATION_DUST NSLocalizedString(@"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned.", nil)
 
 #define BC_STRING_APP_REVIEW_PROMPT_TITLE NSLocalizedString(@"Rate Blockchain Wallet", nil)
