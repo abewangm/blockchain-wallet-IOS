@@ -7,8 +7,8 @@
 /* (No Commment) */
 "3kJ-3U-lFe.text" = "Vă rugăm să încercaţi din nou";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Verificaţi că aţi scris în jos fraza rezervă";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Introduceţi următoarele cuvinte la dumneavoastră fraza de recuperare pentru a finaliza procesul de backup.";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "Apăsaţi şi ţineţi apăsat pentru a descoperi cuvântul";
@@ -19,8 +19,8 @@
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
 "9A7-TT-PzN.title" = "Fondurile de rezervă";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Tu nu au susţinut până fondurile dumneavoastră încă";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Oh nu! Nu s-au sprijinit până fondurile dumneavoastră încă.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
 "9WK-My-5CL.text" = "Această acţiune necesită doua parola pentru portofel bitcoin. Vă rugăm să introduceţi-l mai jos şi apăsaţi continuă.";
@@ -40,7 +40,7 @@
 /* (No Commment) */
 "EQM-OM-jK8.normalTitle" = "Făcut";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Nu ia un screenshot!
 Vă pot pune în pericol portofel pe securitate";
 
@@ -72,8 +72,8 @@ Vă pot pune în pericol portofel pe securitate";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Cuvântul următor";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Back-up fondurile tale se asigură că nu veţi pierde accesul la dumneavoastră bitcoins (cu excepţia adrese importate), chiar dacă uitaţi parola sau dacă serviciul nostru devine indisponibilă.";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Vă rugăm să luaţi câteva minute pentru a se asigura puteţi accesa ţi bitcoin (cu excepţia cazului în adrese importate), chiar dacă uitaţi parola sau dacă serviciul nostru devine indisponibilă. Promitem că acest lucru este rapid, nedureros, şi merită.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "treia cuvântul";

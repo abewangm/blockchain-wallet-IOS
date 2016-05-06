@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " 回復フレーズへのアクセスとのだれでも、それオフラインどこか非常に安全かつセキュアに保つにしてくださいあなたの bitcoin にアクセスしています。";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " この時点でトランザクションの下記料金をお勧めします。";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -104,6 +110,9 @@
 "An error occurred while changing 2-Step verification." = "2 段階認証プロセスを変更中にエラーが発生しました。";
 
 /* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "投資残高の更新中にエラーが発生しました。インターネット接続を確認してやり直してください。";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "あなたの財布の読み込みエラーが発生しました。あなたがオフラインであるか、Blockchain は問題します。くださいアプリケーションを終了やり直して、またはデバイスをペアリングし直します。";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "任意のアドレス";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App Store のレビュー プロンプト タイマー (秒)";
 
 /* (No Commment) */
 "Archive" = "アーカイブ";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "現在のレート: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Blockchain 財布、bitcoins を整理する方法をカスタマイズします。";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Blockchain 財布あなたの bitcoin を整理する方法をカスタマイズします。";
 
 /* (No Commment) */
 "Customized fund management" = "カスタマイズされた基金管理";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "位置情報サービスを有効にします。";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoins を受信するたびにメールを受信する通知を有効にします。アドレスをラベル付けされてインポートだけアドレスは、通知をトリガーします。";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoin を受信するたびにメールを受信する通知を有効にします。アドレスをラベル付けされてインポートだけアドレスは、通知をトリガーします。";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "あなたの財布にアクセスするから Tor 匿名のネットワークの一部に知られている IP アドレスを防ぐためにこのオプションを有効にします。Tor ネットワークは、Blockchain ユーザーの財布にアクセスしようとするハッカーによって使用される頻繁。";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "無効な検証コードです。もう一度やり直してください。";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "ここで表示されているとおりに、あなたの言葉を書くようにしてくださいすることが重要だと ";
+
+/* No comment provided by engineer. */
 "Just now" = "ちょうど今";
 
 /* (No Commment) */
@@ -652,9 +667,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "新しいパスワードは、パスワードのヒントから異なる必要があります。";
 
-/* (No Commment) */
-"News, Price & Charts" = "ニュース ・価格チャート";
-
 /* No comment provided by engineer. */
 "Next word" = "次の単語";
 
@@ -683,13 +695,10 @@
 "Not now" = "今ではありません";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "注意いったんアップグレードすると、以前のバージョンに戻ることができないことがすべて、bitcoins およびトランザクションの履歴が保持されます。";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "アップグレードすると、以前のバージョンに戻ることができないことが、あなたのすべての bitcoin と取引履歴が保持されますに注意してください。";
 
 /* (No Commment) */
 "Notifications" = "通知";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "今あなたの財布のパスワードを紛失した場合に回復 12 フレーズを使用して資金を復元できます。";
 
 /* No comment provided by engineer. */
 "OK" = "わかりました";
@@ -932,10 +941,13 @@
 "Settings" = "設定";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "共有のコインは、この時点で新しいバージョンでサポートされていません。";
+"Shared Coin is not supported at this time." = "この時点では、コインの共有はサポートされていません。";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "あなたの xPub を共有トランザクション履歴を追跡する他のユーザーを許可します。承認された人は、あなたの財布にアクセスするからあなたを混乱させることができる場合があります、あなたの xPub を信頼できる人のみ共有します。";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "すべて 'Dont はもう一度表示' アラートを表示します。";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "信号 %d が発生しました。";
@@ -995,7 +1007,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "インポートしようとしている秘密キーは暗号化されます。下にパスワードを入力してください。";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "アップグレードは 2 番目だけを受け取り bitcoins、歴史が安全になります。ここで何ですより。";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "アップグレードは 2 番目だけを受け取り、bitcoin と歴史が安全になります。ここで何ですより。";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "あなたの身元の確認で問題があった。";
@@ -1028,7 +1040,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "このトランザクションは、少量の返される変更によるほこり消費の高い手数料を必要があります。";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "このデバイス上のすべての財布データが消去されます。アクセスできない場所以外の場合この財布での任意 bitcoins 保存あなたの財布情報がある場合に確認してください!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "これは以下のアラートになります: 時計専用の App Store のレビュー プロンプトを受信し、すべての資金を転送します。";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "このデバイス上のすべての財布データが消去されます。アクセスできない場所以外の場合この財布での任意の bitcoin 保存あなたの財布情報がある場合に確認してください!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1083,10 @@ Fee: %@
 "Transaction" = "トランザクション";
 
 /* (No Commment) */
-"Transaction Fee" = "取引手数料";
-
-/* (No Commment) */
 "Transaction Fees" = "取引手数料";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "取引手数料は、Bitcoin マイニング ネットワークがあなたのトランザクションを確認、現在のネットワークの状態に依存してどのように迅速に影響します。この時点でトランザクションの下記料金をお勧めします。";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "取引手数料は、Bitcoin マイニング ネットワークがあなたのトランザクションを確認、現在のネットワークの状態に依存してどのように迅速に影響します。代金はこの時点でこの取引をお勧めします。";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "取引手数料は、Bitcoin マイニング ネットワークがあなたのトランザクションを確認、現在のネットワークの状態に依存してどのように迅速に影響します。";
 
 /* (No Commment) */
 "Transactions" = "トランザクション";
@@ -1158,13 +1167,13 @@ Fee: %@
 "Use Touch ID as PIN" = "タッチ ID ピンとして使用します。";
 
 /* (No Commment) */
-"Use all %@" = "すべての %@ を使用します。";
-
-/* (No Commment) */
 "Use all funds" = "すべての資金を使用します。";
 
 /* (No Commment) */
 "Use recommended values" = "推奨値を使用します。";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "マイナス手数料使用合計: %@";
 
 /* (No Commment) */
 "User Declined" = "拒否したユーザー";
@@ -1236,6 +1245,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 /* (No Commment) */
 "Welcome" = "ようこそ";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "よくやりましたね！あなたのパスワードをなくした場合、回復 12 フレーズを使用してインポートされたアドレス) を除く将来受信された場合もこの財布の資金を復元できます。非常に安全かつセキュリティで保護されたオフラインあなたの回復のフレーズをどこかで維持してください。回復フレーズへのアクセスとのだれでもあなたの bitcoin をしています。";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "私たちはあなたの携帯電話に Blockchain 財布の以前のインストールを検出されました。";
 
@@ -1246,7 +1258,7 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "Would you like to archive the addresses used?" = "使用されるアドレスをアーカイブしますか?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "回復フレーズを書き留め、非常に安全かつ確実な場所に保管します。あなた bitcoins へのアクセスが回復フレーズを知っている人は誰でも覚えています。";
+"Write the following 12 words onto a " = "次の 12 の単語を書いて、 ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "間違って BIP38 のパスワード";
@@ -1270,7 +1282,7 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "You are now running our most secure Bitcoin wallet" = "現在、最も安全な我々 Bitcoin 財布を実行しています";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "あなたが正常にあなたの資金をバックアップ";
+"You backed up your funds successfully." = "正常にあなたの資金をバックアップしました。";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "あなたの携帯電話に SMS 経由で 2 段階認証プロセスを有効にできます。代わりに、他の認証方法を使用するためには、私たち web ウォレットにログインをしてください。";
@@ -1387,10 +1399,16 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "iOS Support Request" = "iOS のサポート リクエスト";
 
 /* No comment provided by engineer. */
+"in this order." = "この順番。";
+
+/* No comment provided by engineer. */
 "ninth word" = "9 言葉";
 
 /* (No Commment) */
 "or Continue" = "または続行";
+
+/* No comment provided by engineer. */
+"piece of paper." = "一枚の紙。";
 
 /* No comment provided by engineer. */
 "second word" = "2 番目の単語";

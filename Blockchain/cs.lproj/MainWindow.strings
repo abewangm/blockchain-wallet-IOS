@@ -148,6 +148,9 @@
 /* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
 "bzM-Ub-MUU.normalTitle" = "345.68 KČ";
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "eLG-96-OpG"; */
+"eLG-96-OpG.text" = "Popisek";
+
 /* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
 "fI2-PD-Xwa.normalTitle" = "Nelze přístup k fotoaparátu";
 

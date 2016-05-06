@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " Qualsevol persona amb accés a la seva recuperació frase té accés al seu bitcoin així ser segur per mantenir-lo fora de línia en algun lloc molt segur i segur.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Recomanem l'import sota l'operació en aquest moment.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -104,6 +110,9 @@
 "An error occurred while changing 2-Step verification." = "S'ha produït un error en canviar la verificació en dos passos 2.";
 
 /* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "S'ha produït un error en actualitzar el seu equilibri pot gastar. Comproveu la connexió d'internet i torneu-ho a provar.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Error en carregar la seva cartera. Vostè pot estar fora de línia o Blockchain experimenta dificultats. Tanqueu l'aplicació i torneu-ho més tard o tornar a ajuntar el dispositiu.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "Qualsevol adreça";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "Temporitzador d'apuntador de revisió App Store (segons)";
 
 /* (No Commment) */
 "Archive" = "Arxiu";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "Taxa actual: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personalitza la manera com vostè organitzar els teus bitcoins en la seva cartera de Blockchain";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Personalitza la manera com organitzes la bitcoin en la seva cartera de Blockchain";
 
 /* (No Commment) */
 "Customized fund management" = "Gestió de fons personalitzats";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "Permetre serveis d'ubicació";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Habilitar les notificacions rebre un correu electrònic cada vegada que rebis bitcoins. Només etiquetada adreces i importar les adreces són elegibles per desencadenar notificacions.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Habilitar les notificacions rebre un correu electrònic cada vegada que rebis bitcoin. Només etiquetada adreces i importar les adreces són elegibles per desencadenar notificacions.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Habilitar aquesta opció evitar que les adreces IP que són coneguts per ser part de la xarxa Onion Tor accedeixin a la seva cartera. La xarxa Tor és freqüentment utilitzat per pirates informàtics intentant accedir carteres dels Blockchain usuaris.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "Codi de verificació no és vàlid. Torneu-ho a provar.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "És important assegurar-se que vostè escrigui les seves paraules exactament com apareix aquí i ";
+
+/* No comment provided by engineer. */
 "Just now" = "Ara mateix";
 
 /* (No Commment) */
@@ -652,9 +667,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "Nova contrasenya ha de ser diferent de la pista de contrasenya";
 
-/* (No Commment) */
-"News, Price & Charts" = "Notícies, preu i gràfics";
-
 /* No comment provided by engineer. */
 "Next word" = "Paraula següent";
 
@@ -683,13 +695,10 @@
 "Not now" = "Ara no";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Tingueu en compte que una vegada millorat, no pot tornar a la versió anterior, però tots els teus bitcoins i el vostre historial de transacció es mantindrà.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Tingueu en compte que una vegada millorat, no pot tornar a la versió anterior, però es mantindrà tota la bitcoin i el seu historial de transaccions.";
 
 /* (No Commment) */
 "Notifications" = "Notificacions";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Ara vostè pot restaurar el seu fons utilitzant la 12 paraula recuperació frase en cas que es perd la contrasenya de la seva cartera";
 
 /* No comment provided by engineer. */
 "OK" = "Correcte";
@@ -932,10 +941,13 @@
 "Settings" = "Configuració";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "Moneda compartit no és compatible amb la versió nova en aquest moment.";
+"Shared Coin is not supported at this time." = "Moneda compartit no està suportat en aquest moment.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Compartir el seu xPub autoritza altres a seguir la història de transacció. Com les persones autoritzades pot ser capaços d'interrompre accedeixin a la seva cartera, el seu xPub només compartir amb gent que confia.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "Mostra totes les \"Dont mostrar una altra vegada\" alertes";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Senyal %d es va criar.";
@@ -995,7 +1007,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "La clau privada que intenteu importar està xifrada. Si us plau, introduïu la contrasenya sota.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "L'actualització pren només un segon i seu bitcoins i història estaran fora de perill. Aquí és què és millor:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "L'actualització pren només un segon i seu bitcoin i història estaran fora de perill. Aquí és què és millor:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Hi havia un problema verificar la vostra identitat.";
@@ -1028,7 +1040,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Aquesta operació requereix una major quota per consum de pols a causa de la petita quantitat de canvi de ser retornats.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Això esborrarà totes les dades de cartera d'aquest dispositiu. Confirmeu que té el seu moneder informació guardada en un altre lloc, en cas contrari qualsevol bitcoins en aquesta cartera serà ser inaccessible!!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Això permetrà que els avisos següents: rebre només de veure, apuntador de revisió App Store i tots els fons de transferència.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Això esborrarà totes les dades de cartera d'aquest dispositiu. Confirmeu que té el seu moneder informació guardada en un altre lloc, en cas contrari qualsevol bitcoin en aquesta cartera serà ser inaccessible!!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1083,10 @@ Fee: %@
 "Transaction" = "Transacció";
 
 /* (No Commment) */
-"Transaction Fee" = "Tarifa de transacció";
-
-/* (No Commment) */
 "Transaction Fees" = "Tarifes de transacció";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Tarifes de transacció impacte rapidesa la xarxa de mineria Bitcoin es confirmen les seves transaccions i depenen de condicions de xarxa actuals. Recomanem l'import sota l'operació en aquest moment.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Tarifes de transacció impacte rapidesa la xarxa de mineria Bitcoin confirmar les seves transaccions i depenen de les condicions de xarxa actuals. Us recomanem la quota de Mostra per a aquesta operació en aquest moment.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Tarifes de transacció impacte rapidesa la xarxa de mineria Bitcoin confirmar les seves transaccions i depenen de les condicions de xarxa actuals.";
 
 /* (No Commment) */
 "Transactions" = "Transaccions";
@@ -1158,13 +1167,13 @@ Fee: %@
 "Use Touch ID as PIN" = "Fan servir Tacte ID com PIN";
 
 /* (No Commment) */
-"Use all %@" = "Utilitzar tots els %@";
-
-/* (No Commment) */
 "Use all funds" = "Utilitzar tots els fons";
 
 /* (No Commment) */
 "Use recommended values" = "Ús recomanat valors";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "Total d'ús disponible menys quota: %@";
 
 /* (No Commment) */
 "User Declined" = "L'usuari va declinar";
@@ -1236,6 +1245,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 /* (No Commment) */
 "Welcome" = "Benvingut";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "Ben fet! Cal que perdeu la contrasenya, podeu restaurar fons en aquesta cartera fins i tot si va rebre en el futur (excepte adreces importats) utilitzant la frase de recuperació de paraula de 12. Recordeu mantenir la seva frase de recuperació fora de línia en algun lloc molt segur i segur. Qualsevol persona amb accés a la seva recuperació frase té accés al seu bitcoin.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Hem detectat una instal·lació anterior del Blockchain cartera al seu telèfon.";
 
@@ -1246,7 +1258,7 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 "Would you like to archive the addresses used?" = "Voleu arxivar les adreces utilitzades?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Escriu la seva frase de recuperació i mantenir-lo en algun lloc molt segur i segur. Recordeu que qualsevol que conegui la frase de recuperació té accés als teus bitcoins.";
+"Write the following 12 words onto a " = "Escriure les següents 12 paraules en un ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "Contrasenya equivocada BIP38";
@@ -1270,7 +1282,7 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 "You are now running our most secure Bitcoin wallet" = "Ara esteu executant nostra cartera Bitcoin més segura";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Recolzava el seu fons amb èxit";
+"You backed up your funds successfully." = "Recolzava el seu fons amb èxit.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Podeu habilitar la verificació mitjançant SMS 2 passos al telèfon mòbil. Per fer servir altres mètodes d'autenticació en el seu lloc, si us plau connecti's a la nostra cartera de web.";
@@ -1387,10 +1399,16 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 "iOS Support Request" = "iOS demanar suport";
 
 /* No comment provided by engineer. */
+"in this order." = "en aquest ordre.";
+
+/* No comment provided by engineer. */
 "ninth word" = "paraula novena";
 
 /* (No Commment) */
 "or Continue" = "o continuar";
+
+/* No comment provided by engineer. */
+"piece of paper." = "tros de paper.";
 
 /* No comment provided by engineer. */
 "second word" = "segona paraula";
