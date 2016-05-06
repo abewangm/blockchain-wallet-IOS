@@ -1,4 +1,7 @@
 /* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " 我们建议在这次交易以下费用。";
+
+/* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
@@ -102,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "更改 2 步验证时出错";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "更新你可平衡时出错。请检查您的互联网连接，然后重试。";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "加载您的钱包时出错。您可能处于离线状态或 Blockchain 遇到问题。请关闭该应用程序并稍后重试，或重新配对您的设备。";
@@ -302,6 +308,9 @@
 "Current rate: %@ BTC" = "现价: %@ BTC";
 
 /* (No Commment) */
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "自定义您组织您的比特币在皮夹里 Blockchain 的方式";
+
+/* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "自定义 Blockchain 钱包中组织您的比特币的方式";
 
 /* (No Commment) */
@@ -372,6 +381,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "启用位置服务";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "启用通知，只要你接收比特币收到一封电子邮件。只有标记为地址和导入地址有资格向触发通知。";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "启用通知功能，在接收比特币时获得电子邮件通知。只有标签地址和导入地址才可以触发提醒通知。";
@@ -689,12 +701,15 @@
 "Not now" = "不是现在";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "请注意，一旦升级，你不能回到以前的版本，但会保持您所有的比特币和您的交易历史。";
+
+/* (No Commment) */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "请注意，一旦升级，您就不能返回到先前的版本，但会保存您所有的比特币和交易历史记录。";
 
 /* (No Commment) */
 "Notifications" = "通知";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "现在，如果您丢失了钱包密码，可以使用 12 字的恢复短语恢复您的资金";
 
 /* No comment provided by engineer. */
@@ -944,6 +959,9 @@
 "Settings" = "设置";
 
 /* (No Commment) */
+"Shared Coin is not supported at this time." = "这次不支持共享的硬币。";
+
+/* (No Commment) */
 "Shared Coin is not supported in the new version at this time." = "此时，共享的硬币不在新版本的支持。";
 
 /* (No Commment) */
@@ -1007,6 +1025,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "您要导入的私钥已进行加密。请在下面输入密码。";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "升级只需一秒只是和你的比特币和历史将会安全。这里是更好的是 ︰";
+
+/* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "升级只需一秒只是和你的比特币和历史将会安全。这里是更好的是:";
 
 /* (No Commment) */
@@ -1059,6 +1080,9 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "这笔交易尘埃消费量较少的变化要返回要求较高的费用。";
 
 /* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "这将擦除此设备上的所有钱包数据。请确认你有你的钱包中保存信息在别处否则任何比特币这钱包将无法访问!!";
+
+/* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "这将擦除此设备上的所有钱包数据。请确认您已将您的钱包信息保存在其他地方，否则，此钱包中的任何比特比都无法访问!!";
 
 /* (No Commment) */
@@ -1107,6 +1131,9 @@ Fee: %@
 
 /* (No Commment) */
 "Transaction Fees" = "交易费用";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "交易费用的影响如何快速比特币挖掘网络将确认您的交易，并取决于当前的网络状况。";
 
 /* (No Commment) */
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "交易费用的影响如何快速比特币挖掘网络将确认您的交易，并取决于当前的网络状况。我们建议这笔交易在此时所显示的费用。";
@@ -1199,6 +1226,9 @@ Fee: %@
 "Use recommended values" = "使用推荐的值";
 
 /* (No Commment) */
+"Use total available minus fee: %@" = "使用总费用减去 ︰ %@";
+
+/* (No Commment) */
 "User Declined" = "用户已拒绝";
 
 /* No comment provided by engineer. */
@@ -1272,6 +1302,9 @@ wallet experience for you" = "我们为您设计了一个
 /* (No Commment) */
 "Welcome" = "欢迎!";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "干的好！你应该失去您的密码，即使在未来，（除了导入地址） 使用 12 字恢复短语收到可以还原这钱包里的资金。记住一定要你恢复短语脱机地方非常安全和安全。你恢复短语访问任何人都有权访问你比特币。";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "我们检测到以前在您的手机上安装了 Blockchain 钱包。";
 
@@ -1281,7 +1314,7 @@ wallet experience for you" = "我们为您设计了一个
 /* (No Commment) */
 "Would you like to archive the addresses used?" = "你想存档使用的地址吗？";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "请写下恢复短语并将其保存在足够安全隐秘的地方。请记住，知道您的恢复短语的任何人都可访问您的比特币。";
 
 /* (No Commment) */
@@ -1302,8 +1335,11 @@ wallet experience for you" = "我们为您设计了一个
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "您现在正在运行我们最安全的比特币钱包";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You backed up your funds successfully" = "您已成功备份您的资金";
+
+/* No comment provided by engineer. */
+"You backed up your funds successfully." = "你成功地备份您的资金。";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "您可以在您的移动电话上启用 2 步短信验证。为了改用其他身份验证方法，请登录到我们的 Web 钱包。";
