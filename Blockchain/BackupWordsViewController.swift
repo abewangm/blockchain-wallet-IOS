@@ -28,11 +28,9 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         
         updatePreviousWordButton()
 
-        let blackText = NSAttributedString(string:  NSLocalizedString("Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins.", comment:""), attributes:
-            [NSForegroundColorAttributeName: UIColor.blackColor()])
+        setupTopInstructionLabel()
         
-        let finalText = NSMutableAttributedString(attributedString: blackText)
-        summaryLabel?.attributedText = finalText
+        setupBottomInstructionLabel()
         
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
         
@@ -77,12 +75,30 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
             self.nextWordButton!.frame.origin = CGPointMake(self.view.frame.size.width-self.previousWordButton!.frame.size.width, self.view.frame.size.height-self.previousWordButton!.frame.size.height);
         })
     }
-
-    @IBAction func previousWordButtonTapped(sender: UIButton) {
-        if (wordsPageControl!.currentPage > 0) {
-            let pagePosition = wordLabel!.frame.width * CGFloat(wordsPageControl!.currentPage-1)
-            wordsScrollView?.setContentOffset(CGPointMake(pagePosition, wordsScrollView!.contentOffset.y), animated: true)
-        }
+    
+    func setupTopInstructionLabel() {
+        let blackTextBeginning = NSAttributedString(string:  NSLocalizedString("Write the following 12 words onto a ", comment:""), attributes:
+            [NSForegroundColorAttributeName: UIColor.blackColor()])
+        
+        let boldText = NSAttributedString(string: NSLocalizedString("piece of paper.", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName : UIFont.boldSystemFontOfSize(14.0)])
+        
+        let blackTextEnd = NSAttributedString(string:  NSLocalizedString(" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure.", comment:""), attributes:
+            [NSForegroundColorAttributeName: UIColor.blackColor()])
+        
+        let finalText = NSMutableAttributedString(attributedString: blackTextBeginning)
+        finalText.appendAttributedString(boldText)
+        finalText.appendAttributedString(blackTextEnd)
+        summaryLabel?.attributedText = finalText
+    }
+    
+    func setupBottomInstructionLabel() {
+        let blackText = NSAttributedString(string:  NSLocalizedString("It is important to make sure you write down your words exactly as they appear here and ", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.blackColor()])
+        
+        let boldText = NSAttributedString(string: NSLocalizedString("in this order.", comment:""), attributes: [NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName : UIFont.boldSystemFontOfSize(14.0)])
+        
+        let finalText = NSMutableAttributedString(attributedString: blackText)
+        finalText.appendAttributedString(boldText)
+        screenShotWarningLabel?.attributedText = finalText
     }
     
     func updatePreviousWordButton() {
@@ -92,6 +108,13 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         } else {
             previousWordButton?.enabled = true
             previousWordButton?.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+        }
+    }
+
+    @IBAction func previousWordButtonTapped(sender: UIButton) {
+        if (wordsPageControl!.currentPage > 0) {
+            let pagePosition = wordLabel!.frame.width * CGFloat(wordsPageControl!.currentPage-1)
+            wordsScrollView?.setContentOffset(CGPointMake(pagePosition, wordsScrollView!.contentOffset.y), animated: true)
         }
     }
     

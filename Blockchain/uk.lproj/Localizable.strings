@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d угоди";
 
+/* (No Commment) */
+"%d address" = "%d адреса";
+
+/* (No Commment) */
+"%d addresses" = "%d адреси";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld години тому";
 
@@ -119,6 +125,9 @@
 "Archived" = "Архівні";
 
 /* (No Commment) */
+"Archiving addresses" = "Архівування адреси";
+
+/* (No Commment) */
 "Ask Me Later" = "Відкласти";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Заблокований";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Обчислення: Адреса %1$d %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Камери в доступі";
 
 /* (No Commment) */
 "Cancel" = "\"Скасувати\"";
+
+/* (No Commment) */
+"Cancelling" = "Скасування операції";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Не вдалося зберегти PIN-код, а не ініціалізовано гаманець або пароль є пустим";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Розширеної конфіденційності";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Насолоджуючись Blockchain гаманець? Будь ласка, знайдіть хвилинку, щоб залишити відгук в App Store і хай інші знають про це.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Введіть суму %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Введіть адреси Bitcoin або виберіть";
 
 /* (No Commment) */
 "Enter PIN" = "Введіть PIN-код";
@@ -722,6 +743,9 @@
 "Payment Sent!" = "Оплата послав!";
 
 /* (No Commment) */
+"Payments Sent" = "Платежі, послав";
+
+/* (No Commment) */
 "Phrase Backed" = "Фраза резервне";
 
 /* (No Commment) */
@@ -803,6 +827,9 @@
 "Processing key" = "Ключ обробки";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Курс Blockchain гаманець";
+
+/* (No Commment) */
 "Receive" = "Отримувати";
 
 /* (No Commment) */
@@ -819,6 +846,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Сума замовлення";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "Не вдалося виконати запит. Будь ласка, Перевірте підключення до Інтернету.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Знову надіслати перевірочне SMS";
@@ -918,6 +948,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Спрощений резервного копіювання і відновлення";
+
+/* (No Commment) */
+"Simulate surge" = "Імітувати від сплесків напруги";
 
 /* (No Commment) */
 "Store Hint" = "Магазин Підказка";
@@ -1047,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Комісії за операції вплинути як швидко Bitcoin видобутку мережі буде підтвердити ваші операції й залежать від поточних умов мережі. Ми рекомендуємо плату, зображений на дану операцію в цей час.";
 
 /* (No Commment) */
+"Transactions" = "Угоди";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Операції з без зборів може зайняти багато часу, щоб підтвердити або не може бути підтверджено на всіх. Ви хотіли б продовжити?";
 
 /* (No Commment) */
@@ -1054,6 +1090,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Передані";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Передані кошти від %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Передані кошти від %1$d %2$@. Виходів на %3$d %4$@ були занадто малі.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Перерахування всіх коштів: адреса %1$i %2$i";
 
 /* (No Commment) */
 "Try again" = "Спробуй ще раз";
@@ -1197,6 +1242,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Хотіли б ви додати bitcoin адресу %@ до своєї адресної книги?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Ви хотіли б Архів адрес, які використовують?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Запишіть відновлення фразу і тримати його де-небудь дуже надійним і безпечним. Пам'ятайте, що будь-хто, хто знає вашу фразу відновлення має доступ до вашого bitcoins.";
 
@@ -1205,6 +1253,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "Yes" = "Так";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Так, ставки Blockchain гаманець";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Вчора";
@@ -1229,6 +1280,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Ви не маєте обліковий запис, створений для Mail. Будь ласка, звертайтеся %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "У вас немає адреси за допомогою витрачається баланс вище поріг необхідних пилу.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "У вас немає вільних коштів для надсилання з цієї адреси";

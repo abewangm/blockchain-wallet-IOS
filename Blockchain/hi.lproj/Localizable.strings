@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d लेनदेन";
 
+/* (No Commment) */
+"%d address" = "%d पता";
+
+/* (No Commment) */
+"%d addresses" = "%d पते";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld घंटे पहले";
 
@@ -119,6 +125,9 @@
 "Archived" = "आर्काइव्ड";
 
 /* (No Commment) */
+"Archiving addresses" = "पते संग्रह करना";
+
+/* (No Commment) */
 "Ask Me Later" = "मुझे बाद में पूछें";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "ब्लॉक की गई";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "की गणना: पते %1$d %2$d की";
+
+/* (No Commment) */
 "Camera Access Denied" = "कैमरे में प्रवेश निषेध है";
 
 /* (No Commment) */
 "Cancel" = "रद्द करें";
+
+/* (No Commment) */
+"Cancelling" = "रद्द कर रहा है";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "पिन कोड बटुआ प्रारंभ नहीं की गई है या पासवर्ड रिक्त है, जबकि सहेज नहीं सकते";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "गोपनीयता में वृद्धि हुई";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "लॉकचेन बटुआ मजा आ रहा है? App की दुकान में एक समीक्षा छोड़ दो और दूसरों के बारे में पता करने के लिए एक क्षण ले कृपया।";
+
+/* (No Commment) */
 "Enter %@ amount" = "%@ राशि दर्ज करें";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Bitcoin पता दर्ज करें या का चयन करें";
 
 /* (No Commment) */
 "Enter PIN" = "PIN दर्ज करें";
@@ -722,6 +743,9 @@
 "Payment Sent!" = "भुगतान भेजा!";
 
 /* (No Commment) */
+"Payments Sent" = "भुगतान भेजा";
+
+/* (No Commment) */
 "Phrase Backed" = "समर्थित वाक्यांश";
 
 /* (No Commment) */
@@ -803,6 +827,9 @@
 "Processing key" = "कुंजी संसाधन";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "दर लॉकचेन बटुआ";
+
+/* (No Commment) */
 "Receive" = "प्राप्त";
 
 /* (No Commment) */
@@ -819,6 +846,9 @@
 
 /* (No Commment) */
 "Request Amount" = "राशि का अनुरोध";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "अनुरोध विफल हुआ। कृपया अपना इंटरनेट कनेक्शन जाँचें।";
 
 /* (No Commment) */
 "Resend verification SMS" = "SMS सत्यापन पुन: भेजें";
@@ -918,6 +948,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "सरलीकृत बैकअप और रिकवरी";
+
+/* (No Commment) */
+"Simulate surge" = "वृद्धि अनुकरण";
 
 /* (No Commment) */
 "Store Hint" = "दुकान संकेत";
@@ -1047,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "लेनदेन की फीस प्रभाव कितनी जल्दी Bitcoin खनन नेटवर्क आपके लेन-देन की पुष्टि करें, और वर्तमान नेटवर्क की स्थितियों पर निर्भर करते हैं। हम अनुशंसा करते हैं इस समय इस सौदे के लिए दिखाया गया शुल्क।";
 
 /* (No Commment) */
+"Transactions" = "लेन-देन";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "कोई फीस के साथ लेन-देन की पुष्टि करने के लिए एक लंबा समय लग सकते हैं या सब पर हो सकता की पुष्टि नहीं की। आप जारी रखना चाहेंगे?";
 
 /* (No Commment) */
@@ -1054,6 +1090,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "तबादला";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "%1$d %2$@ से हस्तांतरित धन";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "%1$d %2$@ से धनराशि। Outputs %3$d %4$@ लिए बहुत छोटे थे।";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "सभी निधि स्थानांतरित: %2$i का पता %1$i";
 
 /* (No Commment) */
 "Try again" = "फिर कोशिश करो";
@@ -1197,6 +1242,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "आप bitcoin पते %@ आपकी पता पुस्तिका में जोड़ने के लिए चाहते हैं?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "आप पते उपयोग किया संग्रह करना चाहेंगे?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "लिखने के नीचे अपनी वसूली वाक्यांश और यह कहीं न कहीं बहुत ही सुरक्षित और सुरक्षित रखें। याद रखें कि किसी को भी, जो अपने वसूली वाक्यांश जानता है आपके bitcoins तक पहुँच गया है।";
 
@@ -1205,6 +1253,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "Yes" = "हाँ";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "हाँ, लॉकचेन बटुआ दर";
 
 /* No comment provided by engineer. */
 "Yesterday" = "कल";
@@ -1229,6 +1280,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "आप किसी खाते के लिए मेल सेट अप नहीं है। कृपया %@ से संपर्क करें";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "आपके पास कोई पते आवश्यक धूल थ्रेशोल्ड ऊपर एक spendable संतुलन के साथ।";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "आप इस पते से भेजने के लिए कोई धनराशि उपलब्ध है";

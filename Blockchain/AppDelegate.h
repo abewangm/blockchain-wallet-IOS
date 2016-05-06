@@ -166,6 +166,13 @@
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
 - (void)toggleSymbol;
+
+- (void)logoutAndShowPasswordModal;
+
+- (NSInteger)filterIndex;
+- (void)filterTransactionsByAccount:(int)accountIndex;
+- (void)filterTransactionsByImportedAddresses;
+- (void)removeTransactionsFilter;
   
 - (void)pushWebViewController:(NSString*)url title:(NSString *)title;
 
@@ -173,6 +180,8 @@
 - (void)showAccountsAndAddresses;
 - (void)showDebugMenu:(int)presenter;
 - (void)showHdUpgrade;
+
+- (void)reloadTransactionFilterLabel;
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender;
 - (IBAction)transactionsClicked:(UIButton *)sender;
@@ -186,7 +195,6 @@
 - (IBAction)mainPasswordClicked:(id)sender;
 - (IBAction)manualPairClicked:(id)sender;
 
-- (IBAction)newsClicked:(id)sender;
 - (IBAction)accountsAndAddressesClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
 - (IBAction)securityCenterClicked:(id)sender;
@@ -217,6 +225,8 @@
 - (NSString *)webSocketURL;
 - (NSString *)merchantURL;
 - (NSString *)apiURL;
+
+- (void)rateApp;
 
 @end
 

@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d tapahtumat";
 
+/* (No Commment) */
+"%d address" = "%d osoite";
+
+/* (No Commment) */
+"%d addresses" = "%d osoitteet";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld tuntia sitten";
 
@@ -119,6 +125,9 @@
 "Archived" = "Arkistoitu";
 
 /* (No Commment) */
+"Archiving addresses" = "Arkistointi osoitteita";
+
+/* (No Commment) */
 "Ask Me Later" = "Kysy myöhemmin";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Estetty";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Lasketaan: Osoite %1$d %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Kameran käyttö estetty";
 
 /* (No Commment) */
 "Cancel" = "Peruuta";
+
+/* (No Commment) */
+"Cancelling" = "Peruuttaminen";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Ei voi tallentaa PIN-koodin lompakko ei ole alustettu tai salasana on null";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Parantaa yksityisyyden";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Nauttia Blockchain lompakko? Ota hetki jätä tarkistaa App Store ja antaa muiden tietää siitä.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Syötä %@ summa";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Kirjoita Bitcoin osoite tai valitse";
 
 /* (No Commment) */
 "Enter PIN" = "Anna PIN-koodi";
@@ -722,6 +743,9 @@
 "Payment Sent!" = "Maksupyyntöihin!";
 
 /* (No Commment) */
+"Payments Sent" = "Maksut lähetetään";
+
+/* (No Commment) */
 "Phrase Backed" = "Lause tukena";
 
 /* (No Commment) */
@@ -803,6 +827,9 @@
 "Processing key" = "Käsittely avain";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Luokitus Blockchain lompakko";
+
+/* (No Commment) */
 "Receive" = "Vastaanottaa";
 
 /* (No Commment) */
@@ -819,6 +846,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Pyyntö määrä";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "Pyyntö epäonnistui. Tarkista internet-yhteys.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Lähetä vahvistus tekstiviestillä";
@@ -918,6 +948,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Yksinkertaistettu varmuuskopiointi ja palautus";
+
+/* (No Commment) */
+"Simulate surge" = "Simuloida aalto";
 
 /* (No Commment) */
 "Store Hint" = "Store Vihje";
@@ -1047,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Palvelumaksut vaikuttaa kuinka nopeasti Bitcoin kaivos verkko vahvistaa liiketoimet, ja riippuu ajankohtainen verkko olosuhteet. Suosittelemme JavaScript tapahtuman tällä hetkellä maksu.";
 
 /* (No Commment) */
+"Transactions" = "Tapahtumat";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Tapahtumat ilman maksuja voi kestää kauan vahvistaa tai ei voida vahvistaa ollenkaan. Haluatko jatkaa?";
 
 /* (No Commment) */
@@ -1054,6 +1090,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Siirretty";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Siirrettyjen varojen %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Siirrettyjen varojen %1$d %2$@. Lähdöt %3$d %4$@ olivat liian pieniä.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Siirtää kaikki varat: osoite %1$i %2$i";
 
 /* (No Commment) */
 "Try again" = "Yritä uudestaan";
@@ -1197,6 +1242,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Haluatko lisätä bitcoin osoite %@ osoitekirjaan?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Haluatko arkistoida osoitteet?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Kirjoita muistiin elpyminen lause ja pitää se jonnekin, erittäin turvallinen ja varma. Muista, että jokainen, joka tuntee Recovery-lause on pääsy sinun bitcoins.";
 
@@ -1205,6 +1253,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "Yes" = "Kyllä";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Kyllä, luokitus Blockchain lompakko";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Eilen";
@@ -1229,6 +1280,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Sinulla ei ole tilin postia. Ota yhteyttä %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Sinulla ole osoitteita spendable tasapaino edellyttää pöly kynnysarvo.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Sinulla ei ole varoja lähettää tähän osoitteeseen";

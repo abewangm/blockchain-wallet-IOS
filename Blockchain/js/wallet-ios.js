@@ -4,7 +4,6 @@ var MyWallet = Blockchain.MyWallet;
 var WalletStore = Blockchain.WalletStore;
 var WalletCrypto = Blockchain.WalletCrypto;
 var BlockchainAPI = Blockchain.API;
-var ImportExport = Blockchain.ImportExport;
 var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 var Helpers = Blockchain.Helpers;
 var Payment = Blockchain.Payment;
@@ -34,11 +33,6 @@ window.onerror = function(errorMsg, url, lineNumber) {
 console.log = function(message) {
     device.execute("log:", [message]);
 };
-
-document.addEventListener("DOMContentLoaded", function(event) {
-    MyWallet.logout = function() {}
-});
-
 
 // Register for JS event handlers and forward to Obj-C handlers
 
@@ -92,7 +86,7 @@ WalletStore.addEventListener(function (event, obj) {
 
 // My Wallet phone functions
 
-MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
+MyWalletPhone.upgradeToV3 = function(firstAccountName) {
     var success = function () {
         console.log('Upgraded legacy wallet to HD wallet');
 
@@ -112,7 +106,7 @@ MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
         });
     }
     else {
-        MyWallet.wallet.newHDWallet(firstAccountName, null, success, error);
+        MyWallet.wallet.upgradeToV3(firstAccountName, null, success, error);
     }
 };
 
@@ -211,6 +205,10 @@ MyWalletPhone.getActiveAccountsCount = function() {
 
     return activeAccounts.length;
 };
+
+MyWalletPhone.getAllTransactionsCount = function() {
+    return MyWallet.wallet.txList.transactionsForIOS().length;
+}
 
 MyWalletPhone.getAllAccountsCount = function() {
     if (!MyWallet.wallet.isUpgradedToHD) {
@@ -339,13 +337,17 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment')
     currentPayment = new Payment();
+    currentPayment.on('error', function(errorObject) {
+        var errorDictionary = {'message': {'error': errorObject['error']}};
+        device.execute('on_error_update_fee:', [errorDictionary]);
+    });
 }
 
-MyWalletPhone.changePaymentFrom = function(from) {
+MyWalletPhone.changePaymentFrom = function(from, isAdvanced) {
     if (currentPayment) {
         currentPayment.from(from).then(function(x) {
             if (x) {
-                if (x.from != null) device.execute('update_send_balance:', [x.balance]);
+                if (x.from != null) device.execute('update_send_balance:', [isAdvanced ? x.balance : x.sweepAmount]);
             }
             return x;
         });
@@ -546,19 +548,6 @@ MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
           console.log('error sweeping payment: ' + errorArgument);
           device.execute('on_error_update_fee:', [errorArgument]);
        });
-    } else {
-        console.log('Payment error: null payment object!');
-    }
-}
-
-MyWalletPhone.getSpendableBalanceForPayment = function(from) {
-    if (currentPayment) {
-        currentPayment.from(from).then(function(x) {
-          if (x) {
-            if (x.from != null) device.execute('update_send_balance:', [x.balance]);
-          }
-          return x;
-        });
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -930,7 +919,7 @@ MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
     BlockchainAPI.request("POST", 'pin-store', data, true, false).then(success).catch(error);
 };
 
-MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
+MyWalletPhone.newAccount = function(password, email, firstAccountName) {
     var success = function(guid, sharedKey, password) {
         device.execute('loading_stop');
 
@@ -952,10 +941,8 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
     };
 
     device.execute('loading_start_new_account');
-
-    var isCreatingHD = Boolean(isHD);
         
-    MyWallet.createNewWallet(email, password, firstAccountName, null, null, success, error, isCreatingHD);
+    MyWallet.createNewWallet(email, password, firstAccountName, null, null, success, error);
 };
 
 MyWalletPhone.parsePairingCode = function (raw_code) {
@@ -1084,10 +1071,10 @@ MyWalletPhone.get_wallet_and_history = function() {
     });
 };
 
-MyWalletPhone.getMultiAddrResponse = function() {
+MyWalletPhone.getMultiAddrResponse = function(txFilter) {
     var obj = {};
 
-    obj.transactions = MyWallet.wallet.txList.transactionsForIOS;
+    obj.transactions = MyWallet.wallet.txList.transactionsForIOS(txFilter);
     obj.total_received = MyWallet.wallet.totalReceived;
     obj.total_sent = MyWallet.wallet.totalSent;
     obj.final_balance = MyWallet.wallet.finalBalance;
@@ -1099,6 +1086,10 @@ MyWalletPhone.getMultiAddrResponse = function() {
     
     return obj;
 };
+
+MyWalletPhone.getTransactionsWithIdentity = function(identity) {
+    return MyWallet.wallet.txList.transactionsForIOS(identity);
+}
 
 MyWalletPhone.addKey = function(keyString) {
     var success = function(address) {
@@ -1282,7 +1273,7 @@ MyWalletPhone.getSecondPassword = function(callback) {
 
 // Overrides
 
-ImportExport.Crypto_scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
+WalletCrypto.scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
     if(typeof(passwd) !== 'string') {
         passwd = passwd.toJSON().data;
     }
@@ -1703,4 +1694,8 @@ MyWalletPhone.filteredWalletJSON = function() {
         }
     }
     return walletJSON;
+}
+
+MyWalletPhone.dust = function() {
+    return Bitcoin.networks.bitcoin.dustThreshold;
 }

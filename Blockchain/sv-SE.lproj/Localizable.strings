@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d transaktioner";
 
+/* (No Commment) */
+"%d address" = "%d adress";
+
+/* (No Commment) */
+"%d addresses" = "%d adresser";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld timmar sedan";
 
@@ -119,6 +125,9 @@
 "Archived" = "Arkiverade";
 
 /* (No Commment) */
+"Archiving addresses" = "Arkivering adresser";
+
+/* (No Commment) */
 "Ask Me Later" = "Fråga mig senare";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Blockerade";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Beräkna: Adress %1$d av %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Kameraåtkomst nekad";
 
 /* (No Commment) */
 "Cancel" = "Avbryt";
+
+/* (No Commment) */
+"Cancelling" = "Avboka";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Kan inte spara PIN-kod medan plånbok inte är initierat eller lösenord är null";
@@ -372,6 +387,9 @@
 
 /* (No Commment) */
 "Enter %@ amount" = "Ange %@ belopp";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Ange Bitcoin adress eller Välj";
 
 /* (No Commment) */
 "Enter PIN" = "Ange PIN-kod";
@@ -722,6 +740,9 @@
 "Payment Sent!" = "Betalning skickas!";
 
 /* (No Commment) */
+"Payments Sent" = "Betalningar skickas";
+
+/* (No Commment) */
 "Phrase Backed" = "Fras backas";
 
 /* (No Commment) */
@@ -821,6 +842,9 @@
 "Request Amount" = "Begäran belopp";
 
 /* (No Commment) */
+"Request failed. Please check your internet connection." = "Begäran misslyckades. Kontrollera din internet-anslutning.";
+
+/* (No Commment) */
 "Resend verification SMS" = "Återsänd kontroll SMS";
 
 /* (No Commment) */
@@ -918,6 +942,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Förenklad säkerhetskopiering och återställning";
+
+/* (No Commment) */
+"Simulate surge" = "Simulera våg";
 
 /* (No Commment) */
 "Store Hint" = "Store tips";
@@ -1054,6 +1081,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Överfört";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Överförda medel från %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Överförda medel från %1$d %2$@. Utgångar för %3$d %4$@ var för liten.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Överföring av alla medel: adress %1$i av %2$i";
 
 /* (No Commment) */
 "Try again" = "Försök igen";
@@ -1197,6 +1233,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Vill du lägga till bitcoin adressen %@ i din adressbok?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Vill du arkivera de adresser som används?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Skriv ner din återhämtning fras och hålla det någonstans mycket trygg och säker. Kom ihåg att alla som känner din återhämtning fras har tillgång till dina bitcoins.";
 
@@ -1229,6 +1268,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Du har inte ett konto för Mail. Vänligen kontakta %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Du har inga adresser med spendable balansera tröskelvärdet krävs damm.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Du har inga tillgängliga medel att skicka från denna adress";

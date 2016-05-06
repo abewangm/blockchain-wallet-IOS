@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d 笔交易";
 
+/* (No Commment) */
+"%d address" = "%d 地址";
+
+/* (No Commment) */
+"%d addresses" = "%d 地址";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld 小时前";
 
@@ -119,6 +125,9 @@
 "Archived" = "已归档";
 
 /* (No Commment) */
+"Archiving addresses" = "存档地址";
+
+/* (No Commment) */
 "Ask Me Later" = "稍后再问我";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "已阻止";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "计算 ︰ 地址 %1$d 的 %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "相机访问被拒绝";
 
 /* (No Commment) */
 "Cancel" = "取消";
+
+/* (No Commment) */
+"Cancelling" = "取消";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "当钱包未初始化或密码为空时无法保存 PIN 码";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "增强的隐私保护";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "在享受 Blockchain 钱包吗？请花点时间在 Appstore 中离开的审查，让别人知道这件事。";
+
+/* (No Commment) */
 "Enter %@ amount" = "输入 %@ 金额";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "输入比特币地址或选择";
 
 /* (No Commment) */
 "Enter PIN" = "输入 PIN";
@@ -728,6 +749,9 @@
 "Payment Sent!" = "付款已发送!";
 
 /* (No Commment) */
+"Payments Sent" = "发送付款";
+
+/* (No Commment) */
 "Phrase Backed" = "短语已备份";
 
 /* (No Commment) */
@@ -812,6 +836,9 @@
 "Processing key" = "处理的关键";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "率 Blockchain 钱包";
+
+/* (No Commment) */
 "Receive" = "接收";
 
 /* (No Commment) */
@@ -828,6 +855,9 @@
 
 /* (No Commment) */
 "Request Amount" = "请求金额";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "请求失败。请检查您的互联网连接。";
 
 /* (No Commment) */
 "Resend verification SMS" = "重新发送验证短信";
@@ -930,6 +960,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "简化的备份和恢复";
+
+/* (No Commment) */
+"Simulate surge" = "模拟浪涌";
 
 /* (No Commment) */
 "Store Hint" = "存储提示";
@@ -1079,6 +1112,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "交易费用的影响如何快速比特币挖掘网络将确认您的交易，并取决于当前的网络状况。我们建议这笔交易在此时所显示的费用。";
 
 /* (No Commment) */
+"Transactions" = "交易";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "没有费用的交易可能需要很长时间来确认，或根本得不到确认。是否要继续?";
 
 /* (No Commment) */
@@ -1086,6 +1122,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "已传送";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "转移的资金，从 %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "%1$d %2$@ 的转移的资金。%3$d %4$@ 的输出结果太小了。";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "将所有资金都转 ︰ 地址 %1$i 的 %2$i";
 
 /* (No Commment) */
 "Try again" = "重试";
@@ -1233,6 +1278,9 @@ wallet experience for you" = "我们为您设计了一个
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "是否要将比特币地址 %@ 添加到您的通讯簿?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "你想存档使用的地址吗？";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "请写下恢复短语并将其保存在足够安全隐秘的地方。请记住，知道您的恢复短语的任何人都可访问您的比特币。";
 
@@ -1241,6 +1289,9 @@ wallet experience for you" = "我们为您设计了一个
 
 /* (No Commment) */
 "Yes" = "是";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "是的率 Blockchain 钱包";
 
 /* No comment provided by engineer. */
 "Yesterday" = "昨天";
@@ -1262,6 +1313,9 @@ wallet experience for you" = "我们为您设计了一个
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "您没有为邮件设置帐户。请联系 %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "你有没有可平衡所需的灰尘阈值以上的地址。";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "您没有可用资金，无法从该地址发送";

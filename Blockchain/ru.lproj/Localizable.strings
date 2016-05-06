@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d Транзакций";
 
+/* (No Commment) */
+"%d address" = "%d адрес";
+
+/* (No Commment) */
+"%d addresses" = "%d адреса";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld часов назад";
 
@@ -119,6 +125,9 @@
 "Archived" = "Архивировано";
 
 /* (No Commment) */
+"Archiving addresses" = "Архивирование адреса";
+
+/* (No Commment) */
 "Ask Me Later" = "Спросите меня позже";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Заблокировано";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Расчет: Адрес %1$d по %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "В доступе к камере отказано";
 
 /* (No Commment) */
 "Cancel" = "Отмена";
+
+/* (No Commment) */
+"Cancelling" = "Отмена";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Не удается сохранить PIN-код если кошелек не инициализирован или пароль не введен";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Конфиденциальности";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Наслаждаясь Blockchain кошелек? Пожалуйста, найдите минутку, чтобы оставить отзыв в App Store и пусть другие знают об этом.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Введите сумму %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Введите адрес Bitcoin или выберите";
 
 /* (No Commment) */
 "Enter PIN" = "Введите PIN-код";
@@ -728,6 +749,9 @@
 "Payment Sent!" = "Оплата перечислена!";
 
 /* (No Commment) */
+"Payments Sent" = "Платежи";
+
+/* (No Commment) */
 "Phrase Backed" = "Фраза сохранена";
 
 /* (No Commment) */
@@ -812,6 +836,9 @@
 "Processing key" = "Обработки ключ";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Курс Blockchain кошелек";
+
+/* (No Commment) */
 "Receive" = "Получить";
 
 /* (No Commment) */
@@ -828,6 +855,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Запросить сумму";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "Не удалось выполнить запрос. Пожалуйста, проверьте ваше Интернет-соединение.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Выслать SMS о верификации повторно";
@@ -930,6 +960,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Упрощенное резервное копирование и восстановление";
+
+/* (No Commment) */
+"Simulate surge" = "Имитировать всплеск";
 
 /* (No Commment) */
 "Store Hint" = "Сохранить подсказку";
@@ -1079,6 +1112,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Комиссионные за транзакции влияют как быстро подтвердит ваши транзакции в сети Bitcoin добычи и зависят от текущих условий сети. Мы рекомендуем гонорар для этой сделки в настоящее время.";
 
 /* (No Commment) */
+"Transactions" = "Операции";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Транзакции без комиссии могут занять много времени и могут быть вообще не подтверждены. Вы хотите продолжить?";
 
 /* (No Commment) */
@@ -1086,6 +1122,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Переведено";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Переведенные средства от %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Переданные средства от %1$d %2$@. Выходы для %3$d %4$@ были слишком малы.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Перевод всех средств: адрес %1$i %2$i";
 
 /* (No Commment) */
 "Try again" = "Повторить";
@@ -1233,6 +1278,9 @@ wallet experience for you" = "Мы разработали полностью н�
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Хотели бы вы добавить bitcoin адрес %@ в вашу адресную книгу?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Хотели бы вы Архив адреса, используемые?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Запишите фразу для восстановления и сохраните ее в безопасном и надежном месте. Помните, что любой, кто знает вашу фразу для восстановления, имеет доступ к вашим bitcoins.";
 
@@ -1241,6 +1289,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "Yes" = "Да";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Да, оценить Blockchain карманы";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Вчера";
@@ -1262,6 +1313,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "У вас нет аккаунта для почты. Свяжитесь с %@.";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "У вас нет адреса с расходуемого баланс выше порога требуемых пыли.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "У вас нет доступных средств для отправки с этого адреса";

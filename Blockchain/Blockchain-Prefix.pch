@@ -16,7 +16,10 @@
 
 // #define ENABLE_DEBUG_MENU 1
 
-// #define ENABLE_TRANSFER_FUNDS 1
+#define ENABLE_TRANSFER_FUNDS 1
+
+#define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
+#define APP_STORE_ID @"id493253309"
 
 #pragma mark - Colors
 
@@ -39,6 +42,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BUTTON_GRAY UIColorFromRGB(0xebebeb)
 #define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0xb9b9b9)
 #define COLOR_BUTTON_KEYPAD_GRAY UIColorFromRGB(0xD4D9DD)
+
+#define COLOR_TAB_BAR_BUTTON_TEXT_GRAY UIColorFromRGB(0xc9c7c8)
+#define COLOR_TAB_BAR_BUTTON_TEXT_BLUE UIColorFromRGB(0x1c8ac7)
 
 #define COLOR_LABEL_BALANCE_GREEN UIColorFromRGB(0x6CAD46)
 
@@ -104,14 +110,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define NUMBER_KEYPAD_CHARACTER_SET_STRING @"1234567890"
 
-#define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
-
 #define DICTIONARY_KEY_MESSAGE @"message"
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_FEE @"fee"
 
 #define ERROR_FAILED_NETWORK_REQUEST @"Connectivity error, failed to send network request"
 #define ERROR_FEE_TOO_LOW @"Fee is too low / Not sufficient priority\n"
+#define ERROR_FETCH_UNSPENT @"ERR_FETCH_UNSPENT"
 #define ERROR_BELOW_DUST_THRESHOLD @"BELOW_DUST_THRESHOLD"
 #define ERROR_NO_UNSPENT_OUTPUTS @"NO_UNSPENT_OUTPUTS"
 #define ERROR_NOT_PRESENT_IN_WALLET @"addressNotPresentInWallet"
@@ -173,7 +178,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_DEBUG_MENU @"debugMenu"
 
 #define HOST_NAME_WALLET_SERVER @"blockchain.info"
-#define HOST_NAME_ZEROBLOCK @"zeroblock.com"
 #define HOST_NAME_DEV_SERVER @"blockchain.co.uk"
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info"
@@ -185,9 +189,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define HTML_CONNECT_SRC_PLACEHOLDER @"PLACEHOLDER_CONNECT_SRC"
 #define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info https://api.blockchain.info https://api.staging.blockchain.co.uk"
-
-#define ZEROBLOCK_ADDRESS @"https://zeroblock.com/"
-#define ZEROBLOCK_TITLE @"ZeroBlock"
 
 #define SOUND_FORMAT @"wav"
 
@@ -230,12 +231,24 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE @"notifications_type"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING @"block_tor_ips"
 
-#define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
-#define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
+#define DICTIONARY_KEY_MULTIADDRESS_FINAL_BALANCE @"final_balance"
+#define DICTIONARY_KEY_MULTIADDRESS_TOTAL_RECEIVED @"total_received"
+#define DICTIONARY_KEY_MULTIADDRESS_NUMBER_TRANSACTIONS @"n_transactions"
+#define DICTIONARY_KEY_MULTIADDRESS_TOTAL_SENT @"total_sent"
+#define DICTIONARY_KEY_MULTIADDRESS_TRANSACTIONS @"transactions"
+#define DICTIONARY_KEY_MULTIADDRESS_ADDRESSES @"addresses"
+#define DICTIONARY_KEY_MULTIADDRESS_SYMBOL_LOCAL @"symbol_local"
+#define DICTIONARY_KEY_MULTIADDRESS_SYMBOL_BTC @"symbol_btc"
 
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
+#define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
+#define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
+
+#define USER_DEFAULTS_KEY_APP_REVIEW_PROMPT_DATE @"appReviewPromptDate"
+#define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
+#define USER_DEFAULTS_KEY_HIDE_APP_REVIEW_PROMPT @"hideAppReviewPrompt"
 #define USER_DEFAULTS_KEY_SHARED_KEY @"sharedKey"
 #define USER_DEFAULTS_KEY_GUID @"guid"
 #define USER_DEFAULTS_KEY_FIRST_RUN @"firstRun"
@@ -256,6 +269,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL @"webSocketURL"
 #define USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL @"merchantURL"
 #define USER_DEFAULTS_KEY_DEBUG_API_URL @"apiURL"
+
+#define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 
 #define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
 
@@ -304,6 +319,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ANIMATION_DURATION_LONG .5f
 #define kConfirmationThreshold 3
 
+// TransactionsViewController
+#define FILTER_INDEX_ALL -1
+#define FILTER_INDEX_IMPORTED_ADDRESSES -2
+
 // TabViewController
 #define TAB_SEND 0
 #define TAB_TRANSACTIONS 1
@@ -319,9 +338,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define MENU_CELL_INDEX_SETTINGS 1
 #define MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES 2
 #define MENU_CELL_INDEX_MERCHANT 3
-#define MENU_CELL_INDEX_NEWS_PRICE_CHARTS 4
-#define MENU_CELL_INDEX_SUPPORT 5
-#define MENU_CELL_INDEX_LOGOUT 6
+#define MENU_CELL_INDEX_SUPPORT 4
+#define MENU_CELL_INDEX_LOGOUT 5
 
 #define PIN_API_STATUS_CODE_DELETED 1
 #define PIN_API_STATUS_PIN_INCORRECT 2
@@ -356,6 +374,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_PRESENTER_WELCOME_VIEW 0
 #define DEBUG_PRESENTER_PIN_VERIFY 1
 #define DEBUG_PRESENTER_SETTINGS_ABOUT 2
+
+#define APP_STORE_REVIEW_PROMPT_TIME 60*60*24*7 // Seconds in one week
 
 #pragma mark - Runtime modes
 

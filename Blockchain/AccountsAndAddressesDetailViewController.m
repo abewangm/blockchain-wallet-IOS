@@ -63,6 +63,11 @@ typedef enum {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
     [self resetHeader];
 }
 
@@ -132,7 +137,7 @@ typedef enum {
 {
 #ifdef ENABLE_TRANSFER_FUNDS
     if (self.address) {
-        return [app.wallet getLegacyAddressBalance:self.address] > 0 && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
+        return [app.wallet getLegacyAddressBalance:self.address] > [app.wallet dust] && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
     } else {
         return NO;
     }

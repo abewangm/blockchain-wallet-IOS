@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d transakce";
 
+/* (No Commment) */
+"%d address" = "%d adresa";
+
+/* (No Commment) */
+"%d addresses" = "%d adresy";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld hodiny";
 
@@ -119,6 +125,9 @@
 "Archived" = "Archivováno";
 
 /* (No Commment) */
+"Archiving addresses" = "Archivování adresy";
+
+/* (No Commment) */
 "Ask Me Later" = "Zobrazit dotaz později";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Blokováno";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Výpočet: Adresa %1$d %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Fotoaparát přístup byl odepřen";
 
 /* (No Commment) */
 "Cancel" = "Zrušit";
+
+/* (No Commment) */
+"Cancelling" = "Zrušení";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Nelze uložit kód PIN není inicializována peněženku nebo heslo null";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Rozšířená ochrana osobních údajů";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Líbí Blockchain peněženku? Věnujte prosím chvilku nechat přezkoumat v App Store a nechat ostatním vědět o tom.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Zadejte částku, %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Bitcoin adresy zadejte nebo vyberte";
 
 /* (No Commment) */
 "Enter PIN" = "Zadejte kód PIN";
@@ -722,6 +743,9 @@
 "Payment Sent!" = "Platba odeslána!";
 
 /* (No Commment) */
+"Payments Sent" = "Platby";
+
+/* (No Commment) */
 "Phrase Backed" = "Fráze, opírající se";
 
 /* (No Commment) */
@@ -803,6 +827,9 @@
 "Processing key" = "Zpracování klíč";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Míra Blockchain Peněženka";
+
+/* (No Commment) */
 "Receive" = "Příjem";
 
 /* (No Commment) */
@@ -819,6 +846,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Požádat o částku";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "Požadavek se nezdařil. Zkontrolujte připojení k Internetu.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Znovu odeslat ověřovací SMS";
@@ -918,6 +948,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Zjednodušené zálohování a obnovení";
+
+/* (No Commment) */
+"Simulate surge" = "Simulovat přepětí";
 
 /* (No Commment) */
 "Store Hint" = "Nápovědu pro obchod";
@@ -1047,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Poplatky za transakce ovlivnit, jak rychle sítě Bitcoin těžby potvrdí vaše transakce a závisí na aktuálním stavu sítě. Doporučujeme poplatek pro tuto transakci v tuto chvíli.";
 
 /* (No Commment) */
+"Transactions" = "Transakce";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transakce se žádné poplatky může trvat dlouhou dobu k potvrzení nebo nemusí být vůbec potvrzena. Chcete pokračovat?";
 
 /* (No Commment) */
@@ -1054,6 +1090,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Přeneseny";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Převedené prostředky z %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Převedené prostředky z %1$d %2$@. Výstupy pro %3$d %4$@ byly příliš malé.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Přenos všech fondů: adresa %1$i %2$i";
 
 /* (No Commment) */
 "Try again" = "Zkuste to znovu";
@@ -1197,6 +1242,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Chcete přidat bitcoin adresy %@ do vašeho adresáře?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Chcete archivovat adresy použité?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Poznamenejte si vaše zotavení fráze a udržet ji někde velmi spolehlivé a bezpečné. Pamatujte si, že každý, kdo zná vaše zotavení fráze má přístup k vaší bitcoins.";
 
@@ -1205,6 +1253,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "Yes" = "Ano";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Ano, sazba Blockchain Peněženka";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Včera";
@@ -1229,6 +1280,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Nemáte účet nastavený pro poštu. Prosím kontaktujte %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Budete mít žádné adresy s utratitelné zůstatek nad prahem požadované prach.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Žádné dostupné peníze poslat z této adresy";

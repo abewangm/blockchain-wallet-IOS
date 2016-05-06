@@ -222,6 +222,60 @@
     }
 }
 
+- (void)filterTransactionsByImportedAddresses
+{
+    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity('imported')"];
+}
+
+- (void)filterTransactionsByAccount:(int)account
+{
+    [self updateTransactionsWithCommand:[NSString stringWithFormat:@"MyWalletPhone.getTransactionsWithIdentity(%d)", account]];
+}
+
+- (void)removeTransactionsFilter
+{
+    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity()"];
+}
+
+- (void)updateTransactionsWithCommand:(NSString *)command
+{
+    if ([self isInitialized]) {
+        
+        NSMutableArray *filteredTransactions = [NSMutableArray array];
+        
+        NSArray *transactions = [self filteredTransactions:command];
+        
+        for (NSDictionary *dict in transactions) {
+            Transaction *tx = [Transaction fromJSONDict:dict];
+            
+            [filteredTransactions addObject:tx];
+        }
+        
+        [delegate didFilterTransactions:filteredTransactions];
+    }
+}
+
+- (int)getAllTransactionsCount
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAllTransactionsCount()"] intValue];
+}
+
+- (NSArray *)filteredTransactions:(NSString *)command
+{
+    if ([self isInitialized]) {
+        
+        NSString *filteredTransactionsJSON = [self.webView executeJSSynchronous:[NSString stringWithFormat:@"JSON.stringify(%@)", command]];
+        
+        return [filteredTransactionsJSON getJSONObject];
+    }
+    
+    return nil;
+}
+
 - (void)getAllCurrencySymbols
 {
     if (![self.webView isLoaded]) {
@@ -397,7 +451,7 @@
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
-    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET, nil];
+    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET];
 }
 
 - (BOOL)needsSecondPassword
@@ -677,22 +731,22 @@
     [self.webView executeJS:@"MyWalletPhone.createNewPayment()"];
 }
 
-- (void)changePaymentFromAccount:(int)fromInt
+- (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(%d)", fromInt];
+    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(%d, %d)", fromInt, isAdvanced];
 }
 
-- (void)changePaymentFromAddress:(NSString *)fromString
+- (void)changePaymentFromAddress:(NSString *)fromString isAdvanced:(BOOL)isAdvanced
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(\"%@\")", [fromString escapeStringForJS]];
+    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(\"%@\", %d)", [fromString escapeStringForJS], isAdvanced];
 }
 
 - (void)changePaymentToAccount:(int)toInt
@@ -837,6 +891,15 @@
     }
     
     return [self.webView executeJS:@"MyWalletPhone.getSurgeStatus()"];
+}
+
+- (uint64_t)dust
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWalletPhone.dust()"] longLongValue];
 }
 
 - (void)generateNewKey
@@ -1139,6 +1202,8 @@
 - (void)upgrade_success
 {
     [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE delegate:nil];
+    
+    [app reloadTransactionFilterLabel];
 }
 
 #pragma mark - Callbacks from JS to Obj-C
@@ -1190,6 +1255,10 @@
 
 - (void)parseLatestBlockJSON:(NSString*)latestBlockJSON
 {
+    if ([latestBlockJSON isEqualToString:@"null"]) {
+        return;
+    }
+    
     NSDictionary *dict = [latestBlockJSON getJSONObject];
     
     LatestBlock *latestBlock = [[LatestBlock alloc] init];
@@ -1211,25 +1280,28 @@
     
     [self getFinalBalance];
     
+    NSString *filter;
+    
+    int filterIndex = (int)app.transactionsViewController.filterIndex;
+    
+    if (filterIndex == FILTER_INDEX_ALL) {
+        filter = @"";
+    } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        filter = @"imported";
+    } else {
+        filter = [NSString stringWithFormat:@"%d", filterIndex];
+    }
+    
     [self.webView executeJSWithCallback:^(NSString * multiAddrJSON) {
         MultiAddressResponse *response = [self parseMultiAddrJSON:multiAddrJSON];
-        
-        response.transactions = [NSMutableArray array];
-        
-        NSArray *transactionsArray = [self getAllTransactions];
-        
-        for (NSDictionary *dict in transactionsArray) {
-            Transaction *tx = [Transaction fromJSONDict:dict];
-            
-            [response.transactions addObject:tx];
-        }
-        
+
         if (!self.isSyncing) {
             [self loading_stop];
         }
         
         [delegate didGetMultiAddressResponse:response];
-    } command:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse())"];
+        
+    } command:[NSString stringWithFormat:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse(\"%@\"))", filter]];
 }
 
 - (MultiAddressResponse *)parseMultiAddrJSON:(NSString*)multiAddrJSON
@@ -1241,38 +1313,36 @@
     
     MultiAddressResponse *response = [[MultiAddressResponse alloc] init];
         
-    response.final_balance = [[dict objectForKey:@"final_balance"] longLongValue];
-    response.total_received = [[dict objectForKey:@"total_received"] longLongValue];
-    response.n_transactions = [[dict objectForKey:@"n_transactions"] unsignedIntValue];
-    response.total_sent = [[dict objectForKey:@"total_sent"] longLongValue];
-    response.addresses = [dict objectForKey:@"addresses"];
+    response.final_balance = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_FINAL_BALANCE] longLongValue];
+    response.total_received = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_TOTAL_RECEIVED] longLongValue];
+    response.n_transactions = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_NUMBER_TRANSACTIONS] unsignedIntValue];
+    response.total_sent = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_TOTAL_SENT] longLongValue];
+    response.addresses = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_ADDRESSES];
+    response.transactions = [NSMutableArray array];
+    
+    NSArray *transactionsArray = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_TRANSACTIONS];
+    
+    for (NSDictionary *dict in transactionsArray) {
+        Transaction *tx = [Transaction fromJSONDict:dict];
+        
+        [response.transactions addObject:tx];
+    }
     
     {
-        NSDictionary *symbolLocalDict = [dict objectForKey:@"symbol_local"] ;
+        NSDictionary *symbolLocalDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_LOCAL] ;
         if (symbolLocalDict) {
             response.symbol_local = [CurrencySymbol symbolFromDict:symbolLocalDict];
         }
     }
     
     {
-        NSDictionary *symbolBTCDict = [dict objectForKey:@"symbol_btc"] ;
+        NSDictionary *symbolBTCDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_BTC] ;
         if (symbolBTCDict) {
             response.symbol_btc = [CurrencySymbol symbolFromDict:symbolBTCDict];
         }
     }
     
     return response;
-}
-
-- (NSArray *)getAllTransactions
-{
-    if (![self isInitialized]) {
-        return nil;
-    }
-    
-    NSString *allTransactionsJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.txList.transactionsForIOS)"];
-    
-    return [allTransactionsJSON getJSONObject];
 }
 
 - (void)on_tx_received
@@ -1374,7 +1444,9 @@
             [self error_restoring_wallet];
             return;
         } else if (connectivityErrorRange.location != NSNotFound) {
-            [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION_LONG * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+            });
             [self error_restoring_wallet];
             return;
         }
@@ -1755,6 +1827,8 @@
     } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
         uint64_t threshold = [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue];
         [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, threshold]];
+    } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {
+        [app standardNotifyAutoDismissingController:BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION];
     } else {
         [app standardNotifyAutoDismissingController:message];
     }
@@ -1968,14 +2042,14 @@
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
-- (void)upgradeToHDWallet
+- (void)upgradeToV3Wallet
 {
     if (![self isInitialized]) {
         return;
     }
     
     DLog(@"Creating HD Wallet");
-    [self.webView executeJS:@"MyWalletPhone.upgradeToHDWallet(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
+    [self.webView executeJS:@"MyWalletPhone.upgradeToV3(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
 }
 
 - (Boolean)hasAccount
@@ -2098,24 +2172,6 @@
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.getBalanceForAccount(%d)", account] longLongValue];
 }
 
-- (uint64_t)getSpendableBalanceForAddress:(NSString *)address;
-{
-    if (![self isInitialized]) {
-        return 0;
-    }
-    
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForPayment(\"%@\")", [address escapeStringForJS]] longLongValue];
-}
-
-- (uint64_t)getSpendableBalanceForAccount:(int)account;
-{
-    if (![self isInitialized]) {
-        return 0;
-    }
-    
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getSpendableBalanceForPayment(%d)", account] longLongValue];
-}
-
 - (NSString *)getLabelForAccount:(int)account
 {
     if (![self isInitialized]) {
@@ -2178,6 +2234,8 @@
 - (void)logging_out
 {
     DLog(@"logging_out");
+    
+    [app logoutAndShowPasswordModal];
 }
 
 #pragma mark - Callbacks from javascript localstorage

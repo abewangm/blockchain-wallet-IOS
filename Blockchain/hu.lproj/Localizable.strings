@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d tranzakciók";
 
+/* (No Commment) */
+"%d address" = "Cím %d";
+
+/* (No Commment) */
+"%d addresses" = "%d címek";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld óra";
 
@@ -119,6 +125,9 @@
 "Archived" = "Archivált";
 
 /* (No Commment) */
+"Archiving addresses" = "Archiválás címek";
+
+/* (No Commment) */
 "Ask Me Later" = "Ellenorzes";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Blokkolt";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Kiszámítása: Cím %1$d, %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Kamera-hozzáférés megtagadva";
 
 /* (No Commment) */
 "Cancel" = "Mégse";
+
+/* (No Commment) */
+"Cancelling" = "Érvénytelenítés";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Nem tudja menteni a PIN-kódot, miközben pénztárca nincs inicializálva, vagy jelszó null";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Továbbfejlesztett adatvédelmi";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Élvezi a Blockchain pénztárca? Legyen szíves fog egy pillanat, hogy hagyjuk a felülvizsgálat, az App Store, és hagyja, hogy mások róla.";
+
+/* (No Commment) */
 "Enter %@ amount" = "%@ összeg megadása";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Bitcoin cím megadása vagy kiválasztása";
 
 /* (No Commment) */
 "Enter PIN" = "PIN-kód";
@@ -722,6 +743,9 @@
 "Payment Sent!" = "Fizetés küldött!";
 
 /* (No Commment) */
+"Payments Sent" = "Elküldött átutalásokat";
+
+/* (No Commment) */
 "Phrase Backed" = "Kifejezés mögött";
 
 /* (No Commment) */
@@ -803,6 +827,9 @@
 "Processing key" = "Feldolgozás kulcs";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Árfolyam Blockchain pénztárca";
+
+/* (No Commment) */
 "Receive" = "Kap";
 
 /* (No Commment) */
@@ -819,6 +846,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Kérelem összege";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "Kérés sikertelen volt. Kérjük, ellenőrizze az internet-kapcsolat.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Újraküldés ellenőrző SMS";
@@ -918,6 +948,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Egyszerűsített biztonsági mentés és helyreállítás";
+
+/* (No Commment) */
+"Simulate surge" = "Túlfeszültség szimulálása";
 
 /* (No Commment) */
 "Store Hint" = "Bolt-tipp";
@@ -1047,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Tranzakciós díjak befolyásolja, milyen gyorsan a Bitcoin bányászat hálózat lesz erősítse meg a tranzakciók, és az aktuális hálózati feltételektõl. Javasoljuk, hogy a díj jelenik meg a tranzakció ebben az időben.";
 
 /* (No Commment) */
+"Transactions" = "Tranzakciók";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Díjmentes megerősítéséhez hosszú időt vehet igénybe, vagy esetleg nem kell erősíteni minden. Szeretne továbbra is?";
 
 /* (No Commment) */
@@ -1054,6 +1090,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Át";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Átadott pénzeszközök %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Átadott pénzeszközök %1$d %2$@. Kimeneti %3$d %4$@ túl kicsik voltak.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Minden átutalás: cím %1$i, %2$i";
 
 /* (No Commment) */
 "Try again" = "próbáld újra";
@@ -1197,6 +1242,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Hozzáadja a bitcoin cím %@ a címjegyzékhez?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Szeretne Archívum használt címek?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Írja le a helyreállítási mondat, és eltartás ez valahol nagyon biztonságos és megbízható. Ne feledje, hogy bárki, aki tudja, hogy a helyreállítási mondat hozzáfér a bitcoins.";
 
@@ -1205,6 +1253,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "Yes" = "igen";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Igen, arány Blockchain pénztárca";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Tegnap";
@@ -1229,6 +1280,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Nincs beállított E-mail fiókkal. Kérjük, forduljon %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Nem címek elkölthető egyensúly szükséges por küszöb felett van.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Nincs rendelkezésre álló pénzeszközök küldeni erről a címről van";

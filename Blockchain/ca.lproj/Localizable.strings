@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d operacions";
 
+/* (No Commment) */
+"%d address" = "l'adreça %d";
+
+/* (No Commment) */
+"%d addresses" = "adreces %d";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld hores fa";
 
@@ -119,6 +125,9 @@
 "Archived" = "Arxivats";
 
 /* (No Commment) */
+"Archiving addresses" = "Adreces d'arxivament";
+
+/* (No Commment) */
 "Ask Me Later" = "Demanar-Me més tard";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Bloquejat";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Càlcul: Adreça %1$d de %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Càmera accés negat";
 
 /* (No Commment) */
 "Cancel" = "Cancel·la";
+
+/* (No Commment) */
+"Cancelling" = "S'està cancel·lant";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "No es pot desar codi PIN, mentre que la cartera no està inicialitzada o contrasenya és nul.";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Privadesa";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Gaudint de la cartera de Blockchain? Si us plau prengui un moment per deixar un comentari a la Botiga App i deixa altres saber-ho.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Introduïu l'import de %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Introduïu l'adreça Bitcoin o seleccioneu";
 
 /* (No Commment) */
 "Enter PIN" = "Introduïu el PIN";
@@ -722,6 +743,9 @@
 "Payment Sent!" = "Pagament enviat!";
 
 /* (No Commment) */
+"Payments Sent" = "Pagaments enviats";
+
+/* (No Commment) */
 "Phrase Backed" = "Frase recolzat";
 
 /* (No Commment) */
@@ -803,6 +827,9 @@
 "Processing key" = "Clau de processament";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Taxa Blockchain cartera";
+
+/* (No Commment) */
 "Receive" = "Rebre";
 
 /* (No Commment) */
@@ -819,6 +846,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Quantitat de petició";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "Sol·licitud ha fallat. Si us plau, comproveu la connexió d'internet.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Verificació d'enviar SMS";
@@ -918,6 +948,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Simplificat de reserva i recuperació";
+
+/* (No Commment) */
+"Simulate surge" = "Simular l'augment";
 
 /* (No Commment) */
 "Store Hint" = "Pista de botiga";
@@ -1047,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Tarifes de transacció impacte rapidesa la xarxa de mineria Bitcoin confirmar les seves transaccions i depenen de les condicions de xarxa actuals. Us recomanem la quota de Mostra per a aquesta operació en aquest moment.";
 
 /* (No Commment) */
+"Transactions" = "Transaccions";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaccions sense càrrecs pot trigar una bona estona per confirmar o no pot ser confirmat en absolut. Voleu continuar?";
 
 /* (No Commment) */
@@ -1054,6 +1090,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transferits";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Fons transferits des %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Fons transferits des %1$d %2$@. Sortides per %3$d %4$@ eren massa petites.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Transferint tots els fons: %1$i adreça de %2$i";
 
 /* (No Commment) */
 "Try again" = "Torneu";
@@ -1197,6 +1242,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Voleu afegir la bitcoin adreça %@ a la llibreta d'adreces?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Voleu arxivar les adreces utilitzades?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Escriu la seva frase de recuperació i mantenir-lo en algun lloc molt segur i segur. Recordeu que qualsevol que conegui la frase de recuperació té accés als teus bitcoins.";
 
@@ -1205,6 +1253,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "Yes" = "Sí";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Sí, taxa Blockchain cartera";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Ahir";
@@ -1229,6 +1280,9 @@ wallet experience for you" = "Hem dissenyat una experiència totalment nova cart
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "No teniu un compte de correu. Contacteu amb %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Teniu cap adreces amb un equilibri pot gastar el llindar mínim exigit de pols.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Té fons disponibles per poder enviar d'aquesta direcció";

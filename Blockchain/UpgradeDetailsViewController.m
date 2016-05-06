@@ -55,7 +55,7 @@
     [app.wallet loading_start_upgrade_to_hd];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [app closeSideMenu];
-        [app.wallet performSelector:@selector(upgradeToHDWallet) withObject:nil afterDelay:0.1f];
+        [app.wallet performSelector:@selector(upgradeToV3Wallet) withObject:nil afterDelay:0.1f];
     });
     [self dismissSelf];
 }

@@ -44,6 +44,10 @@
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     navigationController.headerLabel.text = nil;
     
+    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+
     [self displayTransferFundsWarningIfAppropriate];
 }
 
@@ -205,7 +209,7 @@
 {
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     
-    if ([app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForActiveLegacyAddresses] > 0 && navigationController.visibleViewController == self) {
+    if ([app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForActiveLegacyAddresses] > [app.wallet dust] && navigationController.visibleViewController == self) {
         navigationController.warningButton.hidden = NO;
     } else {
         navigationController.warningButton.hidden = YES;
@@ -238,6 +242,14 @@
     } else {
         return 45.0f;
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && section == [tableView numberOfSections] - 1) {
+        return DEFAULT_HEADER_HEIGHT;
+    }
+    return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

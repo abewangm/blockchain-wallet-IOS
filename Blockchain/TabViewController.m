@@ -20,6 +20,8 @@
     // Default selected: transactions
     selectedIndex = TAB_TRANSACTIONS;
     
+    [self setupTabButtons];
+    
     // Swipe between tabs for fun
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeLeft)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -40,6 +42,28 @@
         [_menuSwipeRecognizerView addGestureRecognizer:sideMenu.panGesture];
         
         [self.view addSubview:_menuSwipeRecognizerView];
+    }
+}
+
+- (void)setupTabButtons
+{
+    CGFloat spacing = 2.0;
+    
+    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_TRANSACTIONS:homeButton, BC_STRING_RECEIVE:receiveButton};
+    
+    for (UIButton *button in [tabButtons allValues]) {
+        NSString *label = [[tabButtons allKeysForObject:button] firstObject];
+        [button setTitle:label forState:UIControlStateNormal];
+        CGSize titleSize = [label sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
+        
+        CGSize imageSize = button.imageView.image.size;
+        button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0, 0, -titleSize.width);
+        
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(imageSize.height + spacing), 0);
+        [button setTitleColor:COLOR_TAB_BAR_BUTTON_TEXT_GRAY forState:UIControlStateNormal];
+        [button setTitleColor:COLOR_TAB_BAR_BUTTON_TEXT_BLUE forState:UIControlStateHighlighted];
+        
+        button.titleLabel.adjustsFontSizeToFitWidth = YES;
     }
 }
 

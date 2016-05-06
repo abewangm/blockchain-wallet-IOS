@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d operações";
 
+/* (No Commment) */
+"%d address" = "Endereço %d";
+
+/* (No Commment) */
+"%d addresses" = "endereços de %d";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld horas atrás";
 
@@ -119,6 +125,9 @@
 "Archived" = "Arquivados";
 
 /* (No Commment) */
+"Archiving addresses" = "Endereços de arquivamento";
+
+/* (No Commment) */
 "Ask Me Later" = "Pergunte-Me mais tarde";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Bloqueados";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Cálculo: Endereço %1$d de %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Câmera acesso negado";
 
 /* (No Commment) */
 "Cancel" = "Cancelar";
+
+/* (No Commment) */
+"Cancelling" = "Cancelamento de";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Não pode salvar o código PIN, enquanto a carteira não está inicializada ou senha é nula";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Privacidade realçada";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Aproveitando a carteira de Blockchain? Por favor tire um momento para deixar uma revisão na App Store e deixar que os outros sabem sobre isso.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Digite a quantidade de %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Digite o endereço Bitcoin ou selecione";
 
 /* (No Commment) */
 "Enter PIN" = "Digite o PIN";
@@ -722,6 +743,9 @@
 "Payment Sent!" = "Pagamento enviado!";
 
 /* (No Commment) */
+"Payments Sent" = "Pagamentos enviados";
+
+/* (No Commment) */
 "Phrase Backed" = "Frase apoiado";
 
 /* (No Commment) */
@@ -803,6 +827,9 @@
 "Processing key" = "Chave de processamento";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Carteira de Blockchain de taxa";
+
+/* (No Commment) */
 "Receive" = "Receber";
 
 /* (No Commment) */
@@ -819,6 +846,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Quantidade de pedido";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "A solicitação falhou. Por favor, verifique sua conexão de internet.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Verificação de reenviar SMS";
@@ -918,6 +948,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Recuperação e backup simplificado";
+
+/* (No Commment) */
+"Simulate surge" = "Simular a onda";
 
 /* (No Commment) */
 "Store Hint" = "Dica de loja";
@@ -1047,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Taxas de transação impacto como rapidamente a rede mineira de Bitcoin irá confirmar suas transações e dependente das condições de rede atual. Recomendamos a taxa mostrada nesta transação neste momento.";
 
 /* (No Commment) */
+"Transactions" = "Transações";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transações sem taxas podem levar um longo tempo para confirmar ou não podem ser confirmadas em tudo. Gostaria de continuar?";
 
 /* (No Commment) */
@@ -1054,6 +1090,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transferido";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Fundos transferidos de %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Fundos transferidos de %1$d %2$@. Saídas para %4$@ de %3$d eram muito pequenas.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "A transferência de todos os fundos: %1$i endereço da %2$i";
 
 /* (No Commment) */
 "Try again" = "Tentar novamente";
@@ -1197,6 +1242,9 @@ wallet experience for you" = "Nós projetamos uma nova experiência de carteira 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Você gostaria de adicionar o bitcoin endereço %@ ao seu catálogo de endereços?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Gostaria de arquivar os endereços usados?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Escreva sua frase de recuperação e mantê-lo em algum lugar muito seguro e seguro. Lembre-se que quem conhece a sua frase de recuperação tem acesso ao seu bitcoins.";
 
@@ -1205,6 +1253,9 @@ wallet experience for you" = "Nós projetamos uma nova experiência de carteira 
 
 /* (No Commment) */
 "Yes" = "Sim";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Sim, taxa de carteira Blockchain";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Ontem";
@@ -1229,6 +1280,9 @@ wallet experience for you" = "Nós projetamos uma nova experiência de carteira 
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Você não tem uma conta configurada para correio. Entre em contato com %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Você não tem nenhum endereços com um equilíbrio spendable acima do limiar de pó necessário.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Você tem fundos disponíveis para enviar este endereço";

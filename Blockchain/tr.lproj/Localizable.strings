@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d hareketleri";
 
+/* (No Commment) */
+"%d address" = "%d adresi";
+
+/* (No Commment) */
+"%d addresses" = "%d adresleri";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld saat önce";
 
@@ -119,6 +125,9 @@
 "Archived" = "Arşivlenmiş";
 
 /* (No Commment) */
+"Archiving addresses" = "Adresleri arşivleme";
+
+/* (No Commment) */
 "Ask Me Later" = "Sormak beni sonradan";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Bloke";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Hesaplama: Adres %1$d %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Kamera erişim engellendi";
 
 /* (No Commment) */
 "Cancel" = "İptal";
+
+/* (No Commment) */
+"Cancelling" = "İptal etme";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "PIN kodu cüzdan başlatılmamış veya parola null sırasında kaydedilemiyor";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Geliştirilmiş gizlilik";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Blockchain cüzdan tadını çıkarıyor musun? Lütfen bir daha gözden geçirme belgili tanımlık App stok içinde terk ve diğerleri bu konuda bildirin için bir dakikanızı ayırın.";
+
+/* (No Commment) */
 "Enter %@ amount" = "%@ tutarı girin";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Bitcoin adresi girin veya seçin";
 
 /* (No Commment) */
 "Enter PIN" = "PIN kodunu girin";
@@ -722,6 +743,9 @@
 "Payment Sent!" = "Gönderilen ödeme!";
 
 /* (No Commment) */
+"Payments Sent" = "Gönderilen ödemeler";
+
+/* (No Commment) */
 "Phrase Backed" = "Desteklenen ifade";
 
 /* (No Commment) */
@@ -803,6 +827,9 @@
 "Processing key" = "Anahtar işleme";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Blockchain cüzdan oranı";
+
+/* (No Commment) */
 "Receive" = "Almak";
 
 /* (No Commment) */
@@ -819,6 +846,9 @@
 
 /* (No Commment) */
 "Request Amount" = "İstek tutar";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "İstek başarısız oldu. Lütfen internet bağlantınızı kontrol edin.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Yeniden gönder doğrulama SMS";
@@ -918,6 +948,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Basitleştirilmiş yedekleme ve kurtarma";
+
+/* (No Commment) */
+"Simulate surge" = "Dalgalanma simülasyonu";
 
 /* (No Commment) */
 "Store Hint" = "Mağaza ipucu";
@@ -1047,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "İşlem ücretleri etkisi ne kadar hızlı Bitcoin incelemesi ağ işlemlerinizi doğrulamak ve geçerli ağ koşullara bağlıdır. Şu anda bu hareket için gösterilen ücreti tavsiye ediyoruz.";
 
 /* (No Commment) */
+"Transactions" = "Hareketleri";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Hiç bir ücret hareketleriyle onaylamak için uzun bir zaman alabilir veya hiç teyit değil. Devam etmek istiyor musunuz?";
 
 /* (No Commment) */
@@ -1054,6 +1090,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Transfer";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "%1$d %2$@ transfer fonlarından";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "%1$d %2$@ transfer edilen fonlarından. Çıkış %3$d %4$@ için çok küçük.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Tüm para havale: %2$i adresi %1$i";
 
 /* (No Commment) */
 "Try again" = "Yeniden Deneyin";
@@ -1197,6 +1242,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin adresi %@ adres defterine eklemek ister misiniz?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Kullanılan adresler arşivlemek ister misiniz?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Kurtarma metninizi Not ve çok güvenli ve güvenli bir yerde saklayın. Kurtarma metninizi bilen herkes senin bitcoins erişimi olduğunu unutmayın.";
 
@@ -1205,6 +1253,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "Yes" = "Evet";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Evet, Blockchain cüzdan oranı";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Dün";
@@ -1229,6 +1280,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Posta için ayarlanmış bir hesap var mı. %@ ulaşın";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Sen-si olmak gerekli toz eşiğin spendable bakiyesi olan adresi yok.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Bu adresten göndermek için kullanılabilir hiçbir para olduğu";

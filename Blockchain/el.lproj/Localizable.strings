@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d συναλλαγές";
 
+/* (No Commment) */
+"%d address" = "Διεύθυνση %d";
+
+/* (No Commment) */
+"%d addresses" = "%d διευθύνσεις";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld ώρες πριν";
 
@@ -119,6 +125,9 @@
 "Archived" = "Αρχειοθετούνται";
 
 /* (No Commment) */
+"Archiving addresses" = "Αρχειοθέτηση διευθύνσεις";
+
+/* (No Commment) */
 "Ask Me Later" = "Να ερωτηθώ αργότερα";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Μπλοκάρει";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Υπολογισμός: Διεύθυνση %1$d του %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Δεν επιτρέπεται η πρόσβαση φωτογραφική μηχανή";
 
 /* (No Commment) */
 "Cancel" = "\"Άκυρο\"";
+
+/* (No Commment) */
+"Cancelling" = "Ακύρωση";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Δεν μπορεί να σώσει κωδικό PIN, ενώ δεν έχει προετοιμαστεί πορτοφόλι ή τον κωδικό πρόσβασης είναι null";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Ενισχυμένου απορρήτου";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Απολαμβάνοντας το Blockchain πορτοφόλι; Αφιερώστε λίγο χρόνο για να αφήσει μια κριτική στο App κατάστημα και αφήστε τους άλλους να το γνωρίζουν.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Εισάγετε το ποσό %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Εισάγετε τη διεύθυνση Bitcoin ή επιλέξτε";
 
 /* (No Commment) */
 "Enter PIN" = "Εισαγάγετε το PIN";
@@ -722,6 +743,9 @@
 "Payment Sent!" = "Πληρωμής που στάλθηκαν!";
 
 /* (No Commment) */
+"Payments Sent" = "Απεσταλμένες πληρωμές";
+
+/* (No Commment) */
 "Phrase Backed" = "Φράση που υποστηρίζεται";
 
 /* (No Commment) */
@@ -803,6 +827,9 @@
 "Processing key" = "Επεξεργασία κλειδί";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Ποσοστό Blockchain πορτοφόλι";
+
+/* (No Commment) */
 "Receive" = "Λάβετε";
 
 /* (No Commment) */
@@ -819,6 +846,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Αίτηση ποσό";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "Αίτηση απέτυχε. Παρακαλώ ελέγξτε τη σύνδεσή σας στο internet.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Νέα αποστολή επαλήθευσης SMS";
@@ -918,6 +948,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Απλουστευμένη αντιγράφων ασφαλείας και ανάκτησης";
+
+/* (No Commment) */
+"Simulate surge" = "Προσομοίωση κύμα";
 
 /* (No Commment) */
 "Store Hint" = "Κατάστημα υπόδειξη";
@@ -1047,6 +1080,9 @@ Fee: %@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Τέλη συναλλαγής επιπτώσεις πόσο γρήγορα το δίκτυο Bitcoin εξόρυξης θα επιβεβαιώσει τις συναλλαγές σας, και να εξαρτώνται από τις τρέχουσες συνθήκες δικτύου. Σας συνιστούμε την αμοιβή που εμφανίζονται για αυτήν τη συναλλαγή αυτή τη στιγμή.";
 
 /* (No Commment) */
+"Transactions" = "Συναλλαγές";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Συναλλαγές χωρίς χρεώσεις μπορεί να πάρει πολύ χρόνο να επιβεβαιώσει ή δεν μπορεί να επιβεβαιωθεί σε όλα. Θέλετε να συνεχίσετε;";
 
 /* (No Commment) */
@@ -1054,6 +1090,15 @@ Fee: %@
 
 /* (No Commment) */
 "Transferred" = "Μεταφέρονται";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Χορηγηθέντων κεφαλαίων από %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Χορηγηθέντων κεφαλαίων από %1$d %2$@. Εξόδους για %3$d %4$@ ήταν πολύ μικρά.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Μεταφέρετε όλα τα χρήματα: διεύθυνση %1$i του %2$i";
 
 /* (No Commment) */
 "Try again" = "Δοκίμασε ξανά";
@@ -1197,6 +1242,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Θα θέλατε να προσθέσετε το bitcoin διεύθυνση %@ στο βιβλίο διευθύνσεων;";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Θα θέλατε να αρχειοθετήσετε τις διευθύνσεις που χρησιμοποιούνται;";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Γράψετε σας φράση αποκατάστασης και να παραμένει κάπου πολύ αξιόπιστο και ασφαλές. Θυμηθείτε ότι όποιος ξέρει σας φράση αποκατάστασης έχει πρόσβαση σε bitcoins σας.";
 
@@ -1205,6 +1253,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "Yes" = "Ναι";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Ναι, Βαθμολογήστε Blockchain πορτοφόλι";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Χθες";
@@ -1229,6 +1280,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Δεν έχετε ένα λογαριασμό που έχει συσταθεί για το ταχυδρομείο. Παρακαλούμε επικοινωνήστε με %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Έχετε καμία διευθύνσεις με ένα διαθέσιμο υπόλοιπο πάνω από το όριο της σκόνης απαιτείται.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Έχετε καμία διαθέσιμα κεφάλαια να στείλει από αυτή τη διεύθυνση";

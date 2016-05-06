@@ -10,6 +10,12 @@
 /* (No Commment) */
 "%d Transactions" = "%d Transaksi";
 
+/* (No Commment) */
+"%d address" = "Alamat %d";
+
+/* (No Commment) */
+"%d addresses" = "Alamat %d";
+
 /* No comment provided by engineer. */
 "%lld hours ago" = "%lld jam yang lalu";
 
@@ -119,6 +125,9 @@
 "Archived" = "Diarsipkan";
 
 /* (No Commment) */
+"Archiving addresses" = "Alamat pengarsipan";
+
+/* (No Commment) */
 "Ask Me Later" = "Tanyakan Pada Saya Nanti";
 
 /* (No Commment) */
@@ -179,10 +188,16 @@
 "Blocked" = "Diblokir";
 
 /* (No Commment) */
+"Calculating: Address %d of %d" = "Menghitung: Alamat %1$d dari %2$d";
+
+/* (No Commment) */
 "Camera Access Denied" = "Akses Kamera Ditolak";
 
 /* (No Commment) */
 "Cancel" = "Batal";
+
+/* (No Commment) */
+"Cancelling" = "Membatalkan";
 
 /* (No Commment) */
 "Cannot save PIN Code while wallet is not initialized or password is null" = "Tidak dapat menyimpan kode PIN sementara dompet tidak diinisialisasi atau sandi null";
@@ -371,7 +386,13 @@
 "Enhanced Privacy" = "Peningkatan privasi";
 
 /* (No Commment) */
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Menikmati dompet Blockchain? Harap luangkan waktu untuk meninggalkan review di App Store dan membiarkan orang lain tahu tentang hal itu.";
+
+/* (No Commment) */
 "Enter %@ amount" = "Masukkan jumlah %@";
+
+/* (No Commment) */
+"Enter Bitcoin address or select" = "Masukkan alamat Bitcoin atau pilih";
 
 /* (No Commment) */
 "Enter PIN" = "Masukkan PIN";
@@ -728,6 +749,9 @@
 "Payment Sent!" = "Pembayaran Terkirim!";
 
 /* (No Commment) */
+"Payments Sent" = "Pembayaran dikirim";
+
+/* (No Commment) */
 "Phrase Backed" = "Frasa Dicadangkan";
 
 /* (No Commment) */
@@ -812,6 +836,9 @@
 "Processing key" = "Pengolahan kunci";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Tingkat Blockchain dompet";
+
+/* (No Commment) */
 "Receive" = "Menerima";
 
 /* (No Commment) */
@@ -828,6 +855,9 @@
 
 /* (No Commment) */
 "Request Amount" = "Jumlah Permintaan";
+
+/* (No Commment) */
+"Request failed. Please check your internet connection." = "Permintaan gagal. Periksa koneksi internet Anda.";
 
 /* (No Commment) */
 "Resend verification SMS" = "Kirim Ulang Verifikasi SMS";
@@ -930,6 +960,9 @@
 
 /* (No Commment) */
 "Simplified backup and recovery" = "Sederhana backup dan recovery";
+
+/* (No Commment) */
+"Simulate surge" = "Mensimulasikan gelombang";
 
 /* (No Commment) */
 "Store Hint" = "Petunjuk Toko";
@@ -1079,6 +1112,9 @@ Biaya: %4$@
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Biaya transaksi mempengaruhi seberapa cepat Bitcoin pertambangan jaringan akan mengkonfirmasi transaksi Anda, dan tergantung pada kondisi jaringan saat ini. Sebaiknya biaya yang ditampilkan untuk transaksi ini saat ini.";
 
 /* (No Commment) */
+"Transactions" = "Transaksi";
+
+/* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaksi tanpa biaya mungkin memakan waktu lama untuk mengkonfirmasi atau mungkin tidak mengkonfirmasi sama sekali. Anda ingin melanjutkan?";
 
 /* (No Commment) */
@@ -1086,6 +1122,15 @@ Biaya: %4$@
 
 /* (No Commment) */
 "Transferred" = "Telah Ditransfer";
+
+/* (No Commment) */
+"Transferred funds from %d %@" = "Transfer dana dari %1$d %2$@";
+
+/* (No Commment) */
+"Transferred funds from %d %@. Outputs for %d %@ were too small." = "Transfer dana dari %1$d %2$@. Output untuk %3$d %4$@ yang terlalu kecil.";
+
+/* (No Commment) */
+"Transferring all funds: Address %i of %i" = "Mentransfer semua dana: Alamat %1$i dari %2$i";
 
 /* (No Commment) */
 "Try again" = "Coba lagi";
@@ -1233,6 +1278,9 @@ dompet pengalaman untuk Anda";
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Apakah Anda ingin menambahkan alamat bitcoin %@ ke buku alamat Anda?";
 
+/* (No Commment) */
+"Would you like to archive the addresses used?" = "Apakah Anda ingin Arsip alamat yang digunakan?";
+
 /* No comment provided by engineer. */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Tulis Frasa Pemulihan Anda dan simpan di suatu tempat sangat aman dan terjamin. Ingat bahwa siapa saja yang mengetahui Frasa Pemulihan Anda memiliki akses ke bitcoin Anda.";
 
@@ -1241,6 +1289,9 @@ dompet pengalaman untuk Anda";
 
 /* (No Commment) */
 "Yes" = "Ya";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Ya, menilai Blockchain dompet";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Kemarin";
@@ -1262,6 +1313,9 @@ dompet pengalaman untuk Anda";
 
 /* (No Commment) */
 "You do not have an account set up for Mail. Please contact %@" = "Anda tidak memiliki rekening untuk pengaturan Email Silakan hubungi %@";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance above the required dust threshold." = "Anda memiliki alamat tidak dengan keseimbangan yang spendable di atas ambang batas diperlukan debu.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Anda memiliki tidak ada dana yang tersedia untuk mengirim dari alamat ini";

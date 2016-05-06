@@ -30,7 +30,7 @@ ECSlidingViewController *sideMenu;
 
 UITapGestureRecognizer *tapToCloseGestureRecognizer;
 
-const int menuEntries = 7;
+const int menuEntries = 6;
 int balanceEntries = 0;
 int accountEntries = 0;
 
@@ -182,7 +182,19 @@ int accountEntries = 0;
 - (Boolean)showBalances
 {
     // Return true if the user has upgraded and either legacy adresses or multiple accounts
-    return [app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 1);
+    return [app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2);
+}
+
+- (void)removeTransactionsFilter
+{
+    UITableViewHeaderFooterView *headerView = [self.tableView headerViewForSection:0];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:headerView.frame];
+    [backgroundView setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+    headerView.backgroundView = backgroundView;
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
+    
+    [app removeTransactionsFilter];
 }
 
 #pragma mark - SlidingViewController Delegate
@@ -207,6 +219,33 @@ int accountEntries = 0;
 {
     if ([self showBalances]) {
         if (indexPath.section != 1) {
+            
+            BOOL deselected = NO;
+            
+            if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1) {
+                if ([app filterIndex] == FILTER_INDEX_IMPORTED_ADDRESSES) {
+                    deselected = YES;
+                } else {
+                    [app filterTransactionsByImportedAddresses];
+                }
+            } else {
+                if ([app.wallet getIndexOfActiveAccount:(int)indexPath.row] == [app filterIndex]) {
+                    deselected = YES;
+                } else {
+                    [app filterTransactionsByAccount:[app.wallet getIndexOfActiveAccount:(int)indexPath.row]];
+                }
+            }
+            
+            if (deselected) {
+                [self removeTransactionsFilter];
+                [tableView deselectRowAtIndexPath:indexPath animated:NO];
+            } else {
+                UITableViewHeaderFooterView *headerView = [tableView headerViewForSection:indexPath.section];
+                UIView *backgroundView = [[UIView alloc] initWithFrame:headerView.frame];
+                [backgroundView setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+                headerView.backgroundView = backgroundView;
+            }
+            
             return;
         }
     }
@@ -222,8 +261,6 @@ int accountEntries = 0;
         [app accountSettingsClicked:nil];
     } else if (row == MENU_CELL_INDEX_MERCHANT){
         [app merchantClicked:nil];
-    } else if (row == MENU_CELL_INDEX_NEWS_PRICE_CHARTS) {
-        [app newsClicked:nil];
     } else if (row == MENU_CELL_INDEX_SUPPORT) {
         [app supportClicked:nil];
     } else if (row == MENU_CELL_INDEX_UPGRADE) {
@@ -267,7 +304,7 @@ int accountEntries = 0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 && accountEntries >= 1) {
+    if (section == 0 && ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2))) {
         return BALANCE_ENTRY_HEIGHT;
     }
     
@@ -277,9 +314,13 @@ int accountEntries = 0;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     // Total Balance
-    if (section == 0 && accountEntries >= 1) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, BALANCE_ENTRY_HEIGHT)];
-        view.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    if (section == 0 && ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2))) {
+        UITableViewHeaderFooterView *view = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, BALANCE_ENTRY_HEIGHT)];
+        
+        UIView *backgroundView = [[UIView alloc] initWithFrame:view.frame];
+        [backgroundView setBackgroundColor: [app filterIndex] == FILTER_INDEX_ALL ? COLOR_BLOCKCHAIN_LIGHT_BLUE : COLOR_BLOCKCHAIN_BLUE];
+        view.backgroundView = backgroundView;
+        
         uint64_t totalBalance = [app.wallet getTotalActiveBalance];
         
         UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 10, self.tableView.frame.size.width - 100, 18)];
@@ -297,6 +338,9 @@ int accountEntries = 0;
         amountLabel.textColor = [UIColor whiteColor];
         amountLabel.font = [UIFont boldSystemFontOfSize:17.0];
         [view addSubview:amountLabel];
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTransactionsFilter)];
+        [view addGestureRecognizer:tapGestureRecognizer];
         
         BCLine *bottomSeparator = [[BCLine alloc] initWithFrame:CGRectMake(56, BALANCE_ENTRY_HEIGHT, self.tableView.frame.size.width, 1.0/[UIScreen mainScreen].scale)];
         bottomSeparator.backgroundColor = [self.tableView separatorColor];
@@ -350,7 +394,7 @@ int accountEntries = 0;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_NEWS_PRICE_CHARTS, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
         
         NSString *upgradeOrSecurityCenterImage;
         if (!app.wallet.didUpgradeToHd) {
@@ -362,7 +406,7 @@ int accountEntries = 0;
         }
         NSMutableArray *images;
 
-        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_wallet", @"icon_merchant", @"news_icon.png", @"icon_support", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
         
         cell.textLabel.text = titles[indexPath.row];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
@@ -392,9 +436,13 @@ int accountEntries = 0;
             cell = [[AccountTableCell alloc] init];
             cell.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
             
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
             
             cell.editButton.hidden = YES;
+            
+            UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+            [v setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+            cell.selectedBackgroundView = v;
         }
         // Account balances
         if (indexPath.row < accountEntries) {
@@ -403,6 +451,9 @@ int accountEntries = 0;
             cell.amountLabel.text = [app formatMoney:accountBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = [app.wallet getLabelForAccount:accountIdx];
             cell.accountIdx = accountIdx;
+            if ([app filterIndex] == accountIdx) {
+                [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            };
 #ifdef DISABLE_EDITING_ACCOUNTS
             cell.editButton.hidden = YES;
 #endif
@@ -413,7 +464,11 @@ int accountEntries = 0;
             [cell.iconImage setImage:[UIImage imageNamed:@"importedaddress"]];
             cell.amountLabel.text = [app formatMoney:legacyBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = BC_STRING_IMPORTED_ADDRESSES;
+            if ([app filterIndex] == FILTER_INDEX_IMPORTED_ADDRESSES) {
+                [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            }
         }
+        
         
         return cell;
     }
