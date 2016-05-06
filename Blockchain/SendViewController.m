@@ -94,6 +94,10 @@ BOOL displayingLocalSymbolSend;
     // force Payment initialization in JS
     [self resetPayment];
     
+    toField.accessibilityLabel = BC_STRING_SELECT_ADDRESS;
+    continuePaymentButton.accessibilityLabel = BC_STRING_SEND_BUTTON;
+    fiatAmountField.accessibilityLabel = BC_STRING_AMOUNT_FIELD;
+    
     btcAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     fiatAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
@@ -185,6 +189,8 @@ BOOL displayingLocalSymbolSend;
     [self enablePaymentButtons];
     
     [self changeToDefaultFeeMode];
+    
+    self.confirmPaymentView.reallyDoPaymentButton.accessibilityLabel = BC_STRING_CONFIRM_SEND_BUTTON;
     
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];

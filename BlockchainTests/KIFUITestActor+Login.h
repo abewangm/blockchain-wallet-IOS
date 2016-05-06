@@ -10,5 +10,5 @@
 
 @interface KIFUITestActor (Login)
 - (void)createNewWallet;
-- (void)enterPIN;
+- (void)send;
 @end

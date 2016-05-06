@@ -49,6 +49,8 @@
 {
     CGFloat spacing = 2.0;
     
+    sendButton.accessibilityLabel = BC_STRING_SEND;
+    
     NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_TRANSACTIONS:homeButton, BC_STRING_RECEIVE:receiveButton};
     
     for (UIButton *button in [tabButtons allValues]) {

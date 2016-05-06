@@ -20,12 +20,20 @@
     [self tapViewWithAccessibilityLabel:BC_STRING_CREATE_WALLET];
 }
 
-- (void)enterPIN
+- (void)send
 {
-    [self waitForViewWithAccessibilityLabel:BC_STRING_DID_CREATE_NEW_WALLET_TITLE];
-    [self waitForViewWithAccessibilityLabel:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL];
-    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_OK];
-    [self tapViewWithAccessibilityLabel:BC_STRING_OK];
+    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_SEND];
+    [self tapViewWithAccessibilityLabel:BC_STRING_SEND];
+    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_SELECT_ADDRESS];
+    [self tapViewWithAccessibilityLabel:BC_STRING_SELECT_ADDRESS];
+    [self enterTextIntoCurrentFirstResponder:@"1MdLTHM5xTNuu7D12fyce5MqtchnRmuijq"];
+    [self tapViewWithAccessibilityLabel:BC_STRING_AMOUNT_FIELD];
+    [self enterTextIntoCurrentFirstResponder:@"0.05"];
+    [self waitForAnimationsToFinish];
+    [self tapViewWithAccessibilityLabel:BC_STRING_SEND_BUTTON];
+    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_CONFIRM_SEND_BUTTON];
+    [self tapViewWithAccessibilityLabel:BC_STRING_CONFIRM_SEND_BUTTON];
+    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_TRANSACTION];
 }
 
 @end
