@@ -1,4 +1,7 @@
 /* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Recomendamos a taxa abaixo da transação neste momento.";
+
+/* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
@@ -102,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Erro ao alterar a verificação em 2 passos.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Ocorreu um erro ao atualizar seu saldo spendable. Por favor, verifique sua conexão de internet e tente novamente.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Erro ao carregar sua carteira. Você pode estar off-line ou o Blockchain está enfrentando dificuldades. Feche o aplicativo e tente novamente mais tarde ou pareie seu dispositivo novamente.";
@@ -302,6 +308,9 @@
 "Current rate: %@ BTC" = "Taxa atual: %@ BTC";
 
 /* (No Commment) */
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Personalizar a maneira como você organiza seu bitcoin em sua carteira de Blockchain";
+
+/* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Personalize a organização dos seus bitcoins na Carteira do Blockchain";
 
 /* (No Commment) */
@@ -372,6 +381,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Ativar Serviços de localização";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Habilitar notificações de receber um e-mail sempre que você receber bitcoin. Apenas rotulado endereços e importados endereços são elegíveis para notificações de gatilho.";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Ative as notificações para receber um e-mail sempre que receber bitcoins. Apenas endereços rotulados e importados são elegíveis para gerar notificações.";
@@ -689,12 +701,15 @@
 "Not now" = "Não agora";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Note que uma vez atualizado, você não pode voltar à versão anterior, mas todo seu bitcoin e seu histórico de transacções serão mantidos.";
+
+/* (No Commment) */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Observe que uma vez atualizado, não é possível retornar à versão anterior, mas todos os seus bitcoins e seu histórico de transação serão mantidos.";
 
 /* (No Commment) */
 "Notifications" = "Notificações";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Agora é possível restaurar seus fundos usando a frase de recuperação de 12 palavra caso você perca a senha da sua carteira";
 
 /* No comment provided by engineer. */
@@ -944,6 +959,9 @@
 "Settings" = "Configurações";
 
 /* (No Commment) */
+"Shared Coin is not supported at this time." = "Moeda comum não é suportada neste momento.";
+
+/* (No Commment) */
 "Shared Coin is not supported in the new version at this time." = "Moeda comum não é suportada na versão nova neste momento.";
 
 /* (No Commment) */
@@ -1007,6 +1025,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "A chave privada que você está tentando importar está criptografada. Digite a senha abaixo.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "A atualização leva apenas um segundo e seu bitcoin e a história estarão seguros. Aqui está o que é melhor:";
+
+/* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "A atualização leva apenas um segundo e seu bitcoins e história estarão seguros. Aqui está o que é melhor:";
 
 /* (No Commment) */
@@ -1059,6 +1080,9 @@ Dois tipos de transação avançada (gastar a partir de endereços somente obser
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Esta operação requer uma taxa mais elevada para consumo de poeira devido à pequena quantidade de mudança a ser retornado.";
 
 /* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Isto apagará todos os dados da carteira neste dispositivo. Por favor confirme que você tem suas informações de carteira salvas em outro lugar senão qualquer bitcoin no testamento carteira ser inacessível!!!!";
+
+/* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Isto apagará todos os dados da carteira neste dispositivo. Confirme que tem as informações da carteira salvas em outro local, caso contrário, todos os bitcoins nesta carteira ficarão inacessíveis!";
 
 /* (No Commment) */
@@ -1107,6 +1131,9 @@ Taxa: %4$@
 
 /* (No Commment) */
 "Transaction Fees" = "Taxas de transação";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Taxas de transação impacto como rapidamente a rede mineira de Bitcoin irá confirmar suas transações e dependente das condições de rede atual.";
 
 /* (No Commment) */
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Taxas de transação impacto como rapidamente a rede mineira de Bitcoin irá confirmar suas transações e dependente das condições de rede atual. Recomendamos a taxa mostrada nesta transação neste momento.";
@@ -1199,6 +1226,9 @@ Taxa: %4$@
 "Use recommended values" = "Usar valores recomendados";
 
 /* (No Commment) */
+"Use total available minus fee: %@" = "Total de utilização disponível menos taxa: %@";
+
+/* (No Commment) */
 "User Declined" = "Usuário negado";
 
 /* No comment provided by engineer. */
@@ -1272,6 +1302,9 @@ totalmente nova para você";
 /* (No Commment) */
 "Welcome" = "Bem-vindo(a)!";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "Muito bem! Se você perder sua senha, você pode restaurar fundos em carteira mesmo se recebido no futuro (exceto endereços importados) usando a frase de recuperação de 12 palavra. Lembre-se de manter sua frase de recuperação offline um lugar muito seguro e seguro. Alguém com acesso a sua frase de recuperação tem acesso a sua bitcoin.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Detectamos uma instalação anterior do Blockchain Wallet no seu celular.";
 
@@ -1281,7 +1314,7 @@ totalmente nova para você";
 /* (No Commment) */
 "Would you like to archive the addresses used?" = "Gostaria de arquivar os endereços usados?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Anote sua frase de recuperação e deixe-a em algum lugar seguro. Lembre-se de que todos que conhecem sua frase de recuperação têm acesso aos seus bitcoins.";
 
 /* (No Commment) */
@@ -1302,8 +1335,11 @@ totalmente nova para você";
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "No momento, você está trabalhando com a nossa carteira de bitcoin mais segura.";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You backed up your funds successfully" = "Você reservou seus fundos com sucesso";
+
+/* No comment provided by engineer. */
+"You backed up your funds successfully." = "Você fez backup seus fundos com sucesso.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Você pode ativar a Verificação em 2 passos por SMS no seu celular. No entanto, para usar os métodos de autenticação, acesse nossa carteira web.";
