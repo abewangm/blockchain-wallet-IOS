@@ -1918,18 +1918,6 @@ void (^secondPasswordSuccess)(NSString *);
     [self showPasswordModal];
 }
 
-- (void)confirmForgetWalletWithBlock:(void (^)(UIAlertView *alertView, NSInteger buttonIndex))tapBlock
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_WARNING
-                                                    message:BC_STRING_FORGET_WALLET_DETAILS
-                                                   delegate:self
-                                          cancelButtonTitle:BC_STRING_CANCEL
-                                          otherButtonTitles:BC_STRING_FORGET_WALLET, nil];
-    alert.tapBlock = tapBlock;
-    
-    [alert show];
-}
-
 - (IBAction)forgetWalletClicked:(id)sender
 {
     UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
@@ -2641,18 +2629,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)failedToObtainValuesFromKeychain
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE
-                                                    message:[NSString stringWithFormat:BC_STRING_ERROR_LOADING_WALLET_IDENTIFIER_FROM_KEYCHAIN]
-                                                   delegate:nil
-                                          cancelButtonTitle:BC_STRING_CLOSE_APP
-                                          otherButtonTitles:nil];
-    
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE message:BC_STRING_ERROR_LOADING_WALLET_IDENTIFIER_FROM_KEYCHAIN preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CLOSE_APP style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // Close App
         UIApplication *app = [UIApplication sharedApplication];
         [app performSelector:@selector(suspend)];
-    };
-    [alert show];
+    }]];
+    
+    [_window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Format helpers
