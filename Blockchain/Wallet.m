@@ -451,7 +451,7 @@
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
-    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET, nil];
+    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET];
 }
 
 - (BOOL)needsSecondPassword
@@ -2042,14 +2042,14 @@
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
-- (void)upgradeToHDWallet
+- (void)upgradeToV3Wallet
 {
     if (![self isInitialized]) {
         return;
     }
     
     DLog(@"Creating HD Wallet");
-    [self.webView executeJS:@"MyWalletPhone.upgradeToHDWallet(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
+    [self.webView executeJS:@"MyWalletPhone.upgradeToV3(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
 }
 
 - (Boolean)hasAccount

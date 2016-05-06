@@ -208,7 +208,7 @@
 - (int)getAllTransactionsCount;
 
 // HD Wallet
-- (void)upgradeToHDWallet;
+- (void)upgradeToV3Wallet;
 - (Boolean)hasAccount;
 - (Boolean)didUpgradeToHd;
 - (void)getRecoveryPhrase:(NSString *)secondPassword;

@@ -86,7 +86,7 @@ WalletStore.addEventListener(function (event, obj) {
 
 // My Wallet phone functions
 
-MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
+MyWalletPhone.upgradeToV3 = function(firstAccountName) {
     var success = function () {
         console.log('Upgraded legacy wallet to HD wallet');
 
@@ -106,7 +106,7 @@ MyWalletPhone.upgradeToHDWallet = function(firstAccountName) {
         });
     }
     else {
-        MyWallet.wallet.newHDWallet(firstAccountName, null, success, error);
+        MyWallet.wallet.upgradeToV3(firstAccountName, null, success, error);
     }
 };
 
@@ -919,7 +919,7 @@ MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
     BlockchainAPI.request("POST", 'pin-store', data, true, false).then(success).catch(error);
 };
 
-MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
+MyWalletPhone.newAccount = function(password, email, firstAccountName) {
     var success = function(guid, sharedKey, password) {
         device.execute('loading_stop');
 
@@ -941,10 +941,8 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName, isHD) {
     };
 
     device.execute('loading_start_new_account');
-
-    var isCreatingHD = Boolean(isHD);
         
-    MyWallet.createNewWallet(email, password, firstAccountName, null, null, success, error, isCreatingHD);
+    MyWallet.createNewWallet(email, password, firstAccountName, null, null, success, error);
 };
 
 MyWalletPhone.parsePairingCode = function (raw_code) {
