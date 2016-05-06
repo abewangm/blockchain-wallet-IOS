@@ -125,6 +125,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_WRONG_BIP_PASSWORD @"wrongBipPass"
 #define ERROR_PRIVATE_KEY_OF_ANOTHER_WATCH_ONLY_ADDRESS @"privateKeyOfAnotherNonWatchOnlyAddress"
 #define ERROR_TYPE_MUST_START_WITH_NUMBER @"TypeError: must start with number"
+#define ERROR_FIRST_ARGUMENT_MUST_BE_STRING @"TypeError: First argument must be a string"
 #define ERROR_INVALID_PAIRING_VERSION_CODE @"Invalid Pairing Version Code"
 
 #define NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS @"reloadToDismissViews"
