@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Verify that you wrote down the backup phrase";
+"4Nq-ue-tXr.text" = "Enter the following words from your Recovery Phrase to complete the backup process.";
 
 /* Class = "UILabel"; text = "Press and hold to reveal the word"; ObjectID = "6zt-Xf-txg"; */
 "6zt-Xf-txg.text" = "Press and hold to reveal the word";
@@ -9,7 +9,7 @@
 "9A7-TT-PzN.title" = "Backup Funds";
 
 /* Class = "UILabel"; text = "You have not backed up your funds yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "You have not backed up your funds yet";
+"9Hu-uO-gJl.text" = "Oh no! You haven't backed up your funds yet.";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "EQM-OM-jK8"; */
 "EQM-OM-jK8.normalTitle" = "Done";
@@ -39,7 +39,7 @@
 "AFH-AI-Rgk.normalTitle" = "Previous word";
 
 /* Class = "UILabel"; text = "Backing up your funds ensures that you will not lose access to your bitcoins (except imported addresses), even if you forget your password or if our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Backing up your funds ensures that you will not lose access to your bitcoins (except imported addresses), even if you forget your password or if our service becomes unavailable.";
+"eyR-AW-SMc.text" = "Please take a few minutes to ensure you can access your bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it.";
 
 /* Class = "UILabel"; text = "Don't take a screenshot!\nYou can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Don't take a screenshot!\nYou can jeopardize your wallet's security";

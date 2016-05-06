@@ -10,11 +10,11 @@ import UIKit
 
 class BackupViewController: UIViewController {
     
-    @IBOutlet weak var summaryLabel: UILabel?
-    @IBOutlet weak var backupWalletButton: UIButton?
-    @IBOutlet weak var explanation: UILabel?
-    @IBOutlet weak var backupIconImageView: UIImageView?
-    @IBOutlet weak var backupWalletAgainButton: UIButton?
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var backupWalletButton: UIButton!
+    @IBOutlet weak var explanation: UILabel!
+    @IBOutlet weak var backupIconImageView: UIImageView!
+    @IBOutlet weak var backupWalletAgainButton: UIButton!
     @IBOutlet weak var lostRecoveryPhraseLabel: UILabel!
     
     var wallet : Wallet?
@@ -22,32 +22,41 @@ class BackupViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        backupWalletButton?.setTitle(NSLocalizedString("BACKUP FUNDS", comment: ""), forState: .Normal)
-        backupWalletButton?.titleLabel?.adjustsFontSizeToFitWidth = true
-        backupWalletButton?.contentHorizontalAlignment = .Center
-        backupWalletButton?.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
-        backupWalletButton?.clipsToBounds = true
-        backupWalletButton?.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
+        backupWalletButton.setTitle(NSLocalizedString("BACKUP FUNDS", comment: ""), forState: .Normal)
+        backupWalletButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        backupWalletButton.contentHorizontalAlignment = .Center
+        backupWalletButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
+        backupWalletButton.clipsToBounds = true
+        backupWalletButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
         if wallet!.isRecoveryPhraseVerified() {
-            summaryLabel!.text = NSLocalizedString("You backed up your funds successfully", comment: "");
-            explanation!.text = NSLocalizedString("Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password", comment: "")
-            backupIconImageView!.image = UIImage(named: "thumbs")
-            backupWalletButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), forState: .Normal)
-            backupWalletAgainButton?.hidden = false
-            backupWalletAgainButton?.titleLabel?.textAlignment = .Center;
-            backupWalletAgainButton?.titleLabel?.adjustsFontSizeToFitWidth = true;
-            lostRecoveryPhraseLabel?.hidden = false
-            lostRecoveryPhraseLabel?.adjustsFontSizeToFitWidth = true;
-            lostRecoveryPhraseLabel?.textAlignment = .Center;
-
+            summaryLabel.text = NSLocalizedString("You backed up your funds successfully.", comment: "");
+            explanation.text = NSLocalizedString("Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin.", comment: "")
+            backupIconImageView.image = UIImage(named: "thumbs")
+            backupWalletButton.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), forState: .Normal)
+            backupWalletAgainButton.hidden = false
+            backupWalletAgainButton.titleLabel?.textAlignment = .Center;
+            backupWalletAgainButton.titleLabel?.adjustsFontSizeToFitWidth = true;
+            lostRecoveryPhraseLabel.hidden = false
+            lostRecoveryPhraseLabel.adjustsFontSizeToFitWidth = true;
+            lostRecoveryPhraseLabel.textAlignment = .Center;
             
             // Override any font changes
-            backupWalletAgainButton?.titleLabel?.font = UIFont.boldSystemFontOfSize(14);
-            lostRecoveryPhraseLabel?.font = UIFont.boldSystemFontOfSize(14);
+            backupWalletAgainButton.titleLabel?.font = UIFont.boldSystemFontOfSize(14);
+            lostRecoveryPhraseLabel.font = UIFont.boldSystemFontOfSize(14);
         }
         
-        explanation?.sizeToFit();
+        explanation.sizeToFit();
+        explanation.center = CGPointMake(view.frame.width/2, explanation.center.y)
+        changeYPosition(explanation.frame.origin.y + explanation.frame.size.height + 20, view: backupWalletButton)
+        changeYPosition(backupWalletButton.frame.origin.y + backupWalletButton.frame.size.height + 20, view: lostRecoveryPhraseLabel)
+        changeYPosition(lostRecoveryPhraseLabel.frame.origin.y + 10, view: backupWalletAgainButton)
+        
+        if (backupWalletAgainButton.frame.origin.y + backupWalletAgainButton.frame.size.height > view.frame.size.height) {
+            changeYPosition(view.frame.size.height - backupWalletAgainButton.frame.size.height, view: backupWalletAgainButton)
+            changeYPosition(backupWalletAgainButton.frame.origin.y - 10, view: lostRecoveryPhraseLabel)
+            changeYPosition(lostRecoveryPhraseLabel.frame.origin.y - backupWalletAgainButton.frame.size.height - 20, view: backupWalletButton)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,6 +66,10 @@ class BackupViewController: UIViewController {
         } else {
             backupWalletButton?.setTitle(NSLocalizedString("BACKUP FUNDS", comment: ""), forState: .Normal)
         }
+    }
+    
+    func changeYPosition(newY: CGFloat, view: UIView) {
+        view.frame = CGRectMake(view.frame.origin.x, newY, view.frame.size.width, view.frame.size.height);
     }
     
     @IBAction func backupWalletButtonTapped(sender: UIButton) {

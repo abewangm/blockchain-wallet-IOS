@@ -34,11 +34,7 @@
         _amountLabel.font = [UIFont boldSystemFontOfSize:16.0];
         _amountLabel.textColor = [UIColor whiteColor];
         [self addSubview:_amountLabel];
-        
-        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSymbol)];
-        [_amountLabel addGestureRecognizer:tapGestureRecognizer];
-        _amountLabel.userInteractionEnabled = YES;
-        
+
         _editButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - sideMenu.anchorLeftPeekAmount - 30 - 12, 0, 40, 40)];
         [_editButton setImage:[UIImage imageNamed:@"edit"] forState:UIControlStateNormal];
         [_editButton addTarget:self action:@selector(editButtonclicked:) forControlEvents:UIControlEventTouchUpInside];

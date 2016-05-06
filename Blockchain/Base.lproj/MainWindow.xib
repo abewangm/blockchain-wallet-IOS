@@ -17,7 +17,7 @@
                 <outlet property="busyView" destination="260" id="264"/>
                 <outlet property="createWalletView" destination="355" id="dlW-nX-G8c"/>
                 <outlet property="forgetWalletButton" destination="5gL-FG-Zcc" id="2Xs-Cn-kcy"/>
-                <outlet property="mainLogoImageView" destination="226" id="gjc-6g-P3E"/>
+                <outlet property="mainLogoImageView" destination="226" id="HuC-zh-3yv"/>
                 <outlet property="mainPasswordTextField" destination="626" id="633"/>
                 <outlet property="mainPasswordView" destination="623" id="634"/>
                 <outlet property="mainTitleLabel" destination="DIx-fJ-eKX" id="Cqj-bt-tZE"/>
@@ -455,6 +455,8 @@ http://blockchain.info/wallet</string>
             <connections>
                 <outlet property="balanceBigButton" destination="bzM-Ub-MUU" id="h1K-cG-U9u"/>
                 <outlet property="balanceSmallButton" destination="6sh-r5-yAx" id="dj6-lf-ToR"/>
+                <outlet property="filterLabel" destination="eLG-96-OpG" id="MP0-Va-5bI"/>
+                <outlet property="headerView" destination="255" id="q6q-ZV-br0"/>
                 <outlet property="noTransactionsView" destination="385" id="388"/>
                 <outlet property="tableView" destination="242" id="243"/>
             </connections>
@@ -513,6 +515,13 @@ http://blockchain.info/wallet</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eLG-96-OpG">
+                                <rect key="frame" x="43" y="27" width="229" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

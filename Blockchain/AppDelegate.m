@@ -309,6 +309,44 @@ void (^secondPasswordSuccess)(NSString *);
     [self reloadTopLevelViewControllers];
 }
 
+- (NSInteger)filterIndex
+{
+    return _transactionsViewController.filterIndex;
+}
+
+- (void)filterTransactionsByAccount:(int)accountIndex
+{
+    _transactionsViewController.filterIndex = accountIndex;
+    [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
+    [self.wallet filterTransactionsByAccount:accountIndex];
+    
+    [self showFilterResults];
+}
+
+- (void)filterTransactionsByImportedAddresses
+{
+    _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
+    [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
+    [self.wallet filterTransactionsByImportedAddresses];
+    
+    [self showFilterResults];
+}
+
+- (void)removeTransactionsFilter
+{
+    _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
+    [_transactionsViewController changeFilterLabel:BC_STRING_TOTAL_BALANCE];
+    [self.wallet removeTransactionsFilter];
+    
+    [self showFilterResults];
+}
+
+- (void)showFilterResults
+{
+    [self closeSideMenu];
+    [_tabViewController setActiveViewController:_transactionsViewController animated:FALSE index:1];
+}
+
 - (void)reloadTopLevelViewControllers
 {
     [_sendViewController reload];
@@ -527,6 +565,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     [_sendViewController reload];
     
+    [self reloadTransactionFilterLabel];
+    
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
 }
@@ -538,6 +578,13 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.data = response;
     
     [self reloadAfterMultiAddressResponse];
+}
+
+- (void)didFilterTransactions:(NSArray *)transactions
+{
+    _transactionsViewController.data.transactions = [NSMutableArray arrayWithArray:transactions];
+    
+    [_transactionsViewController reload];
 }
 
 - (void)didSetLatestBlock:(LatestBlock*)block
@@ -1731,6 +1778,21 @@ void (^secondPasswordSuccess)(NSString *);
     [manualPairView clearPasswordTextField];
 }
 
+- (void)reloadTransactionFilterLabel
+{
+    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
+        app.mainLogoImageView.hidden = YES;
+        if (_tabViewController.activeViewController == _transactionsViewController) {
+            [_transactionsViewController showFilterLabel];
+        } else {
+            [_transactionsViewController hideFilterLabel];
+        }
+    } else {
+        [_transactionsViewController hideFilterLabel];
+        app.mainLogoImageView.hidden = _tabViewController.activeViewController == _transactionsViewController ? NO : YES;
+    }
+}
+
 #pragma mark - Actions
 
 - (IBAction)menuClicked:(id)sender
@@ -1739,20 +1801,6 @@ void (^secondPasswordSuccess)(NSString *);
         [_sendViewController hideKeyboard];
     }
     [self toggleSideMenu];
-}
-
-// Open ZeroBlock if it's installed, otherwise go to the ZeroBlock homepage in the web modal
-- (IBAction)newsClicked:(id)sender
-{
-    // TODO ZeroBlock does not have the URL scheme in it's .plist yet
-//    NSURL *zeroBlockAppURL = [NSURL URLWithString:@"zeroblock://"];
-    
-//    if ([[UIApplication sharedApplication] canOpenURL:zeroBlockAppURL]) {
-//        [[UIApplication sharedApplication] openURL:zeroBlockAppURL];
-//    }
-//    else {
-        [self pushWebViewController:ZEROBLOCK_ADDRESS title:ZEROBLOCK_TITLE];
-//    }
 }
 
 - (IBAction)accountsAndAddressesClicked:(id)sender
@@ -1859,6 +1907,15 @@ void (^secondPasswordSuccess)(NSString *);
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     
     [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)logoutAndShowPasswordModal
+{
+    [self clearPin];
+    [self.sendViewController clearToAddressAndAmountFields];
+    [self logout];
+    [self closeSideMenu];
+    [self showPasswordModal];
 }
 
 - (void)confirmForgetWalletWithBlock:(void (^)(UIAlertView *alertView, NSInteger buttonIndex))tapBlock
@@ -2691,7 +2748,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)checkForNewInstall
 {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_FIRST_RUN]) {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_FIRST_RUN]) {
         
         if ([self guid] && [self sharedKey] && ![self isPinSet]) {
             [self alertUserAskingToUseOldKeychain];

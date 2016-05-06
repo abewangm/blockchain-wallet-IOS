@@ -46,6 +46,7 @@
 @optional
 - (void)didSetLatestBlock:(LatestBlock*)block;
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response;
+- (void)didFilterTransactions:(NSArray *)transactions;
 - (void)walletDidDecrypt;
 - (void)walletFailedToDecrypt;
 - (void)walletDidLoad;
@@ -200,6 +201,12 @@
 - (BOOL)isAccountAvailable:(int)account;
 - (int)getIndexOfActiveAccount:(int)account;
 
+- (void)filterTransactionsByImportedAddresses;
+- (void)filterTransactionsByAccount:(int)account;
+- (void)removeTransactionsFilter;
+
+- (int)getAllTransactionsCount;
+
 // HD Wallet
 - (void)upgradeToHDWallet;
 - (Boolean)hasAccount;
@@ -267,8 +274,8 @@
 
 // Payment Spender
 - (void)createNewPayment;
-- (void)changePaymentFromAddress:(NSString *)fromString;
-- (void)changePaymentFromAccount:(int)fromInt;
+- (void)changePaymentFromAddress:(NSString *)fromString isAdvanced:(BOOL)isAdvanced;
+- (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced;
 - (void)changePaymentToAccount:(int)toInt;
 - (void)changePaymentToAddress:(NSString *)toString;
 - (void)changePaymentAmount:(uint64_t)amount;
@@ -284,8 +291,7 @@
 - (void)changeForcedFee:(uint64_t)fee;
 - (void)getTransactionFee;
 - (void)getSurgeStatus;
-- (uint64_t)getSpendableBalanceForAddress:(NSString *)address;
-- (uint64_t)getSpendableBalanceForAccount:(int)account;
+- (uint64_t)dust;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;

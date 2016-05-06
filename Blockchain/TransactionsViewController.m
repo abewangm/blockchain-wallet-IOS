@@ -22,7 +22,7 @@ BOOL animateNextCell;
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)_tableView numberOfRowsInSection:(NSInteger)section
 {
     return [data.transactions count];
 }
@@ -30,30 +30,30 @@ int lastNumberTransactions = INT_MAX;
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
-    
-	TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
-
+        
+    TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
+        
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
     }
-    
+        
     cell.transaction = transaction;
         
     [cell reload];
-    
+        
     // Selected cell color
     UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
     [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
     [cell setSelectedBackgroundView:v];
-
+        
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     [cell transactionClicked:nil];
-    
+        
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -67,7 +67,7 @@ int lastNumberTransactions = INT_MAX;
     CGContextFillRect(context, CGRectMake(0, 0, 320, 15));
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 65;
 }
@@ -83,6 +83,8 @@ int lastNumberTransactions = INT_MAX;
     if (!self.data) {
         [noTransactionsView removeFromSuperview];
         
+        self.filterIndex = FILTER_INDEX_ALL;
+        filterLabel.text = BC_STRING_TOTAL_BALANCE;
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
         [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
     }
@@ -91,16 +93,16 @@ int lastNumberTransactions = INT_MAX;
         [tableView.tableHeaderView addSubview:noTransactionsView];
         
         // Balance
-        [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
         [noTransactionsView removeFromSuperview];
         
         // Balance
-        [balanceBigButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[app.wallet getTotalActiveBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
 }
 
@@ -206,6 +208,39 @@ int lastNumberTransactions = INT_MAX;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil userInfo:[NSDictionary dictionaryWithObject:[self getAmountForReceivedTransaction:[data.transactions firstObject]] forKey:DICTIONARY_KEY_AMOUNT]];
 }
 
+- (void)changeFilterLabel:(NSString *)newText
+{
+    filterLabel.text = newText;
+}
+
+- (void)hideFilterLabel
+{
+    filterLabel.hidden = YES;
+}
+
+- (void)showFilterLabel
+{
+    filterLabel.hidden = NO;
+}
+
+- (CGFloat)heightForFilterTableView
+{
+    CGFloat estimatedHeight = 44 * ([app.wallet getActiveAccountsCount] + 2);
+    CGFloat largestAcceptableHeight = [[UIScreen mainScreen] bounds].size.height - 150;
+    return estimatedHeight > largestAcceptableHeight ? largestAcceptableHeight : estimatedHeight;
+}
+
+- (uint64_t)getBalance
+{
+    if (self.filterIndex == FILTER_INDEX_ALL) {
+        return [app.wallet getTotalActiveBalance];
+    } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        return [app.wallet getTotalBalanceForActiveLegacyAddresses];
+    } else {
+        return [app.wallet getBalanceForAccount:(int)self.filterIndex];
+    }
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -230,6 +265,9 @@ int lastNumberTransactions = INT_MAX;
     [self setupBlueBackgroundForBounceArea];
     
     [self setupPullToRefresh];
+    
+    self.filterIndex = FILTER_INDEX_ALL;
+    filterLabel.text = BC_STRING_TOTAL_BALANCE;
     
     [self reload];
 }
@@ -262,9 +300,16 @@ int lastNumberTransactions = INT_MAX;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    app.mainLogoImageView.hidden = NO;
     app.mainTitleLabel.hidden = YES;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
+        [self showFilterLabel];
+        app.mainLogoImageView.hidden = YES;
+    } else {
+        [self hideFilterLabel];
+        app.mainLogoImageView.hidden = NO;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -272,6 +317,7 @@ int lastNumberTransactions = INT_MAX;
     [super viewDidDisappear:animated];
     app.mainLogoImageView.hidden = YES;
     app.mainTitleLabel.hidden = NO;
+    filterLabel.hidden = YES;
 }
 
 @end
