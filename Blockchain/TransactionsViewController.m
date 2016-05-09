@@ -268,6 +268,8 @@ int lastNumberTransactions = INT_MAX;
     [balanceBigButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     [balanceSmallButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
+    filterLabel.adjustsFontSizeToFitWidth = YES;
+    
     [self setupBlueBackgroundForBounceArea];
     
     [self setupPullToRefresh];
