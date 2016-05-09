@@ -188,7 +188,13 @@ int lastNumberTransactions = INT_MAX;
 {
     lastNumberTransactions = data.n_transactions;
     
-    [app.wallet getHistory];
+    if (self.filterIndex == FILTER_INDEX_ALL) {
+        [app.wallet getHistory];
+    } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        [app.wallet filterTransactionsByImportedAddresses];
+    } else {
+        [app.wallet filterTransactionsByAccount:self.filterIndex];
+    }
     
     // This should be done when request has finished but there is no callback
     if (refreshControl && refreshControl.isRefreshing) {

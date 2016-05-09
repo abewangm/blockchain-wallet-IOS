@@ -224,34 +224,22 @@
 
 - (void)filterTransactionsByImportedAddresses
 {
-    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity('imported')"];
+    if ([self isInitialized]) {
+        [self.webView executeJS:@"MyWalletPhone.getTransactionsWithIdentity('imported')"];
+    }
 }
 
 - (void)filterTransactionsByAccount:(int)account
 {
-    [self updateTransactionsWithCommand:[NSString stringWithFormat:@"MyWalletPhone.getTransactionsWithIdentity(%d)", account]];
+    if ([self isInitialized]) {
+        [self.webView executeJS:[NSString stringWithFormat:@"MyWalletPhone.getTransactionsWithIdentity(%d)", account]];
+    }
 }
 
 - (void)removeTransactionsFilter
 {
-    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity()"];
-}
-
-- (void)updateTransactionsWithCommand:(NSString *)command
-{
     if ([self isInitialized]) {
-        
-        NSMutableArray *filteredTransactions = [NSMutableArray array];
-        
-        NSArray *transactions = [self filteredTransactions:command];
-        
-        for (NSDictionary *dict in transactions) {
-            Transaction *tx = [Transaction fromJSONDict:dict];
-            
-            [filteredTransactions addObject:tx];
-        }
-        
-        [delegate didFilterTransactions:filteredTransactions];
+        [self.webView executeJS:@"MyWalletPhone.getTransactionsWithIdentity()"];
     }
 }
 
@@ -1762,7 +1750,6 @@
         // Required to prevent user input while archiving/unarchiving addresses
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
 - (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust
@@ -2038,6 +2025,21 @@
     if ([self.delegate respondsToSelector:@selector(sendDuringTransferAll:)]) {
         [self.delegate sendDuringTransferAll:secondPassword];
     }
+}
+
+- (void)did_update_transactions:(NSArray *)transactions
+{
+    DLog(@"did_update_transactions:");
+    
+    NSMutableArray *filteredTransactions = [NSMutableArray array];
+    
+    for (NSDictionary *dict in transactions) {
+        Transaction *tx = [Transaction fromJSONDict:dict];
+        
+        [filteredTransactions addObject:tx];
+    }
+    
+    [delegate didFilterTransactions:filteredTransactions];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

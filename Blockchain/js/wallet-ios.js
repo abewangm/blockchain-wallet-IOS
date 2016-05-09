@@ -1088,7 +1088,12 @@ MyWalletPhone.getMultiAddrResponse = function(txFilter) {
 };
 
 MyWalletPhone.getTransactionsWithIdentity = function(identity) {
-    return MyWallet.wallet.txList.transactionsForIOS(identity);
+    
+    device.execute('loading_start_get_history');
+    
+    MyWallet.wallet.fetchTransactions().then(function(numFetched) {
+        device.execute('did_update_transactions:', [MyWallet.wallet.txList.transactionsForIOS(identity)]);
+    })
 }
 
 MyWalletPhone.addKey = function(keyString) {
