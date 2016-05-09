@@ -100,6 +100,7 @@ BOOL displayingLocalSymbolSend;
     feeField.inputAccessoryView = amountKeyboardAccessoryView;
     
     self.confirmPaymentView.customizeFeeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     feeField.delegate = self;
     
