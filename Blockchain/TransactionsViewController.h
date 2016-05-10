@@ -42,6 +42,8 @@
 
 @property(nonatomic) NSInteger filterIndex;
 @property(nonatomic) BOOL loadedAllTransactions;
+@property(nonatomic) UIButton *moreButton;
+@property(nonatomic) BOOL clickedFetchMore;
 
 - (void)reload;
 - (void)animateNextCellAfterReload;

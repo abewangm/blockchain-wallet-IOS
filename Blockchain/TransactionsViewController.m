@@ -26,10 +26,10 @@ int lastNumberTransactions = INT_MAX;
 {
     NSInteger transactionCount = [data.transactions count];
     
-    if (data != nil && transactionCount == 0 && !self.loadedAllTransactions) {
+    if (data != nil && transactionCount == 0 && !self.loadedAllTransactions && self.clickedFetchMore) {
         [app.wallet fetchMoreTransactions];
     }
-    
+
     return transactionCount;
 }
 
@@ -65,10 +65,16 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)tableView:(UITableView *)_tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == (int)[data.transactions count] - 1 && !self.loadedAllTransactions) {
-        
-        if (_tableView.contentOffset.y > 0 || ([[_tableView indexPathsForVisibleRows] containsObject:indexPath] && _tableView.contentOffset.y == 0)) {
-            [app.wallet fetchMoreTransactions];
+    if (!self.loadedAllTransactions) {
+        if (indexPath.row == (int)[data.transactions count] - 1) {
+            // If user scrolled down at all or if the user clicked fetch more and the table isn't filled, fetch
+            if (_tableView.contentOffset.y > 0 || (_tableView.contentOffset.y == 0 && self.clickedFetchMore)) {
+                [app.wallet fetchMoreTransactions];
+            } else {
+                [self showMoreButton];
+            }
+        } else {
+            [self hideMoreButton];
         }
     }
 }
@@ -108,6 +114,12 @@ int lastNumberTransactions = INT_MAX;
     else if (self.data.transactions.count == 0) {
         [tableView.tableHeaderView addSubview:noTransactionsView];
         
+        if (!self.loadedAllTransactions) {
+            [self showMoreButton];
+        } else {
+            [self hideMoreButton];
+        }
+        
         // Balance
         [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
         [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
@@ -120,6 +132,24 @@ int lastNumberTransactions = INT_MAX;
         [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
         [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
+}
+
+- (void)showMoreButton
+{
+    self.moreButton.frame = CGRectMake(0, 0, self.view.frame.size.width, 50);
+    self.moreButton.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height - self.moreButton.frame.size.height/2);
+    self.moreButton.hidden = NO;
+}
+
+- (void)hideMoreButton
+{
+    self.moreButton.hidden = YES;
+}
+
+- (void)fetchMoreClicked
+{
+    self.clickedFetchMore = YES;
+    [self reload];
 }
 
 - (void)setLatestBlock:(LatestBlock *)_latestBlock
@@ -281,6 +311,15 @@ int lastNumberTransactions = INT_MAX;
     
     [balanceBigButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     [balanceSmallButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.moreButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.moreButton setTitle:BC_STRING_LOAD_MORE_TRANSACTIONS forState:UIControlStateNormal];
+    self.moreButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.moreButton.backgroundColor = [UIColor whiteColor];
+    [self.moreButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
+    [self.view addSubview:self.moreButton];
+    [self.moreButton addTarget:self action:@selector(fetchMoreClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.moreButton.hidden = YES;
     
     filterLabel.adjustsFontSizeToFitWidth = YES;
     
