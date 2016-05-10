@@ -76,7 +76,7 @@
     }
     else if (textField == verifyTwoFactorTextField) {
         [app.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-        app.wallet.twoFactorInput = textField.text;
+        app.wallet.twoFactorInput = [textField.text uppercaseString];
         [self continueClicked:textField];
     } else {
         [self continueClicked:textField];
