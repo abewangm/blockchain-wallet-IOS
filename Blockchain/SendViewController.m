@@ -1171,6 +1171,7 @@ BOOL displayingLocalSymbolSend;
     
     [self changeYPosition:fromLabel.frame.origin.y ofView:toLabel];
     [self changeYPosition:selectAddressTextField.frame.origin.y ofView:toField];
+    [self changeYPosition:selectFromButton.frame.origin.y ofView:addressBookButton];
     [self changeYPosition:lineBelowFromField.frame.origin.y ofView:lineBelowToField];
     [self changeYPosition:lineBelowFromField.frame.origin.y + 2 ofView:bottomContainerView];
 }
