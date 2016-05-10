@@ -24,7 +24,13 @@ int lastNumberTransactions = INT_MAX;
 
 - (NSInteger)tableView:(UITableView *)_tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [data.transactions count];
+    NSInteger transactionCount = [data.transactions count];
+    
+    if (data != nil && transactionCount == 0 && !self.loadedAllTransactions) {
+        [app.wallet fetchMoreTransactions];
+    }
+    
+    return transactionCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -55,6 +61,16 @@ int lastNumberTransactions = INT_MAX;
     [cell transactionClicked:nil];
         
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)_tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == (int)[data.transactions count] - 1 && !self.loadedAllTransactions) {
+        
+        if (_tableView.contentOffset.y > 0 || ([[_tableView indexPathsForVisibleRows] containsObject:indexPath] && _tableView.contentOffset.y == 0)) {
+            [app.wallet fetchMoreTransactions];
+        }
+    }
 }
 
 - (void)drawRect:(CGRect)rect
@@ -188,13 +204,9 @@ int lastNumberTransactions = INT_MAX;
 {
     lastNumberTransactions = data.n_transactions;
     
-    if (self.filterIndex == FILTER_INDEX_ALL) {
-        [app.wallet getHistory];
-    } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
-        [app.wallet filterTransactionsByImportedAddresses];
-    } else {
-        [app.wallet filterTransactionsByAccount:self.filterIndex];
-    }
+    self.loadedAllTransactions = NO;
+    
+    [app.wallet getHistory];
     
     // This should be done when request has finished but there is no callback
     if (refreshControl && refreshControl.isRefreshing) {
@@ -252,6 +264,8 @@ int lastNumberTransactions = INT_MAX;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.loadedAllTransactions = NO;
     
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);

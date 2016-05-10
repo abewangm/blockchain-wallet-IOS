@@ -222,24 +222,10 @@
     }
 }
 
-- (void)filterTransactionsByImportedAddresses
+- (void)fetchMoreTransactions
 {
     if ([self isInitialized]) {
-        [self.webView executeJS:@"MyWalletPhone.getTransactionsWithIdentity('imported')"];
-    }
-}
-
-- (void)filterTransactionsByAccount:(int)account
-{
-    if ([self isInitialized]) {
-        [self.webView executeJS:[NSString stringWithFormat:@"MyWalletPhone.getTransactionsWithIdentity(%d)", account]];
-    }
-}
-
-- (void)removeTransactionsFilter
-{
-    if ([self isInitialized]) {
-        [self.webView executeJS:@"MyWalletPhone.getTransactionsWithIdentity()"];
+        [self.webView executeJS:@"MyWalletPhone.fetchMoreTransactions()"];
     }
 }
 
@@ -250,18 +236,6 @@
     }
     
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAllTransactionsCount()"] intValue];
-}
-
-- (NSArray *)filteredTransactions:(NSString *)command
-{
-    if ([self isInitialized]) {
-        
-        NSString *filteredTransactionsJSON = [self.webView executeJSSynchronous:[NSString stringWithFormat:@"JSON.stringify(%@)", command]];
-        
-        return [filteredTransactionsJSON getJSONObject];
-    }
-    
-    return nil;
 }
 
 - (void)getAllCurrencySymbols
@@ -1258,6 +1232,11 @@
     [delegate didSetLatestBlock:latestBlock];
 }
 
+- (void)reloadFilter
+{
+    [self did_multiaddr];
+}
+
 - (void)did_multiaddr
 {
     if (![self isInitialized]) {
@@ -2027,19 +2006,13 @@
     }
 }
 
-- (void)did_update_transactions:(NSArray *)transactions
+- (void)update_loaded_all_transactions:(NSNumber *)loadedAll
 {
-    DLog(@"did_update_transactions:");
+    DLog(@"loaded_all_transactions");
     
-    NSMutableArray *filteredTransactions = [NSMutableArray array];
-    
-    for (NSDictionary *dict in transactions) {
-        Transaction *tx = [Transaction fromJSONDict:dict];
-        
-        [filteredTransactions addObject:tx];
+    if ([self.delegate respondsToSelector:@selector(updateLoadedAllTransactions:)]) {
+        [self.delegate updateLoadedAllTransactions:loadedAll];
     }
-    
-    [delegate didFilterTransactions:filteredTransactions];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

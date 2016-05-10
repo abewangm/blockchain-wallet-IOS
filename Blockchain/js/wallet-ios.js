@@ -1087,13 +1087,12 @@ MyWalletPhone.getMultiAddrResponse = function(txFilter) {
     return obj;
 };
 
-MyWalletPhone.getTransactionsWithIdentity = function(identity) {
-    
+MyWalletPhone.fetchMoreTransactions = function() {
     device.execute('loading_start_get_history');
-    
     MyWallet.wallet.fetchTransactions().then(function(numFetched) {
-        device.execute('did_update_transactions:', [MyWallet.wallet.txList.transactionsForIOS(identity)]);
-    })
+       var loadedAll = numFetched < MyWallet.wallet.txList.loadNumber;
+       device.execute('update_loaded_all_transactions:', [loadedAll]);
+    });
 }
 
 MyWalletPhone.addKey = function(keyString) {

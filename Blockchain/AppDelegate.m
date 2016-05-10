@@ -318,7 +318,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
-    [self.wallet filterTransactionsByAccount:accountIndex];
+    [self.wallet reloadFilter];
     
     [self showFilterResults];
 }
@@ -327,7 +327,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
-    [self.wallet filterTransactionsByImportedAddresses];
+    [self.wallet reloadFilter];
     
     [self showFilterResults];
 }
@@ -336,7 +336,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
     [_transactionsViewController changeFilterLabel:BC_STRING_TOTAL_BALANCE];
-    [self.wallet removeTransactionsFilter];
+    [self.wallet reloadFilter];
     
     [self showFilterResults];
 }
@@ -589,13 +589,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.data = response;
     
     [self reloadAfterMultiAddressResponse];
-}
-
-- (void)didFilterTransactions:(NSArray *)transactions
-{
-    _transactionsViewController.data.transactions = [NSMutableArray arrayWithArray:transactions];
-    
-    [_transactionsViewController reload];
 }
 
 - (void)didSetLatestBlock:(LatestBlock*)block
@@ -1545,6 +1538,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword
 {
     [_sendViewController didErrorDuringTransferAll:error secondPassword:secondPassword];
+}
+
+- (void)updateLoadedAllTransactions:(NSNumber *)loadedAll
+{
+    _transactionsViewController.loadedAllTransactions = [loadedAll boolValue];
 }
 
 #pragma mark - Show Screens

@@ -93,6 +93,7 @@
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
+- (void)updateLoadedAllTransactions:(NSNumber *)loadedAll;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -201,9 +202,8 @@
 - (BOOL)isAccountAvailable:(int)account;
 - (int)getIndexOfActiveAccount:(int)account;
 
-- (void)filterTransactionsByImportedAddresses;
-- (void)filterTransactionsByAccount:(int)account;
-- (void)removeTransactionsFilter;
+- (void)fetchMoreTransactions;
+- (void)reloadFilter;
 
 - (int)getAllTransactionsCount;
 

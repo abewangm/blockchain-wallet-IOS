@@ -41,6 +41,7 @@
 @property(nonatomic, strong) LatestBlock *latestBlock;
 
 @property(nonatomic) NSInteger filterIndex;
+@property(nonatomic) BOOL loadedAllTransactions;
 
 - (void)reload;
 - (void)animateNextCellAfterReload;
