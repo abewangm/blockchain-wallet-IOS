@@ -102,7 +102,7 @@ MyWalletPhone.upgradeToV3 = function(firstAccountName) {
     
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-            MyWallet.wallet.newHDWallet(firstAccountName, pw, success, error);
+            MyWallet.wallet.upgradeToV3(firstAccountName, pw, success, error);
         });
     }
     else {
