@@ -1264,7 +1264,7 @@
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
     } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
-        filter = @"imported";
+        filter = TRANSACTION_FILTER_IMPORTED;
     } else {
         filter = [NSString stringWithFormat:@"%d", filterIndex];
     }

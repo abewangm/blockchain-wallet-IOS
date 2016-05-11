@@ -168,6 +168,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
 #define SEGUE_IDENTIFIER_ABOUT @"about"
+#define SEGUE_IDENTIFIER_CHANGE_PASSWORD @"changePassword"
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL @"accountsAndAddressesDetail"
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT @"accountsAndAddressesDetailEdit"
 #define SEGUE_IDENTIFIER_TWO_STEP @"twoStep"
@@ -195,6 +196,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ANIMATION_KEY_HIDE_MODAL @"HideModal"
 #define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
+
+#define TRANSACTION_FILTER_IMPORTED @"imported"
 
 #define DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT @"block_height"
 #define DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS @"confirmations"

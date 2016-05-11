@@ -906,7 +906,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changePassword
 {
-    [self performSegueWithIdentifier:@"changePassword" sender:nil];
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CHANGE_PASSWORD sender:nil];
 }
 
 #pragma mark - TextField Delegate
