@@ -125,6 +125,7 @@
 @property int recoveredAccountIndex;
 
 @property BOOL didPairAutomatically;
+@property BOOL isFetching;
 @property BOOL isSyncing;
 @property BOOL isNew;
 @property NSString *twoFactorInput;

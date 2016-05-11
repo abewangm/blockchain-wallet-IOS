@@ -376,6 +376,7 @@ int lastNumberTransactions = INT_MAX;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    app.wallet.isFetching = NO;
     app.mainLogoImageView.hidden = YES;
     app.mainTitleLabel.hidden = NO;
     filterLabel.hidden = YES;

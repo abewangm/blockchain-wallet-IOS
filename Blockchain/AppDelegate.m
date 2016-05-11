@@ -603,7 +603,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     _transactionsViewController.data = response;
     
-    [self reloadAfterMultiAddressResponse];
+    if (app.wallet.isFetching) {
+        [_transactionsViewController reload];
+        app.wallet.isFetching = NO;
+    } else {
+        [self reloadAfterMultiAddressResponse];
+    }
 }
 
 - (void)didSetLatestBlock:(LatestBlock*)block
@@ -740,6 +745,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     app.transactionsViewController.loadedAllTransactions = NO;
+    app.wallet.isFetching = NO;
 
     [self closeSideMenu];
     
