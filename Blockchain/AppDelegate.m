@@ -386,8 +386,20 @@ void (^secondPasswordSuccess)(NSString *);
     [_window.rootViewController.view bringSubviewToFront:busyView];
     
     if (busyView.alpha < 1.0) {
-        [busyView fadeIn];
+        [busyView fadeInWithDarkBackground];
     }
+}
+
+- (void)showBusyViewInTransparentBackgroundWithLoadingText:(NSString *)text
+{
+    [busyLabel setText:text];
+    
+    [_window.rootViewController.view bringSubviewToFront:busyView];
+    
+    if (busyView.alpha < 1.0) {
+        [busyView fadeInWithTransparentBackground];
+    }
+
 }
 
 - (void)updateBusyViewLoadingText:(NSString *)text

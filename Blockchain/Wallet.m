@@ -1112,7 +1112,7 @@
 
 - (void)loading_start_get_history
 {
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    [app showBusyViewInTransparentBackgroundWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
 }
 
 - (void)loading_start_get_wallet_and_history
@@ -2008,7 +2008,7 @@
 
 - (void)update_loaded_all_transactions:(NSNumber *)loadedAll
 {
-    DLog(@"loaded_all_transactions");
+    DLog(@"update_loaded_all_transactions");
     
     if ([self.delegate respondsToSelector:@selector(updateLoadedAllTransactions:)]) {
         [self.delegate updateLoadedAllTransactions:loadedAll];

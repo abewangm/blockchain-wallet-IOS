@@ -21,9 +21,11 @@
 
 @interface BCFadeView : UIView
 
+@property (nonatomic, strong) IBOutlet UIColor *defaultBackgroundColor;
 @property (nonatomic, strong) IBOutlet UIView *containerView;
 
-- (void)fadeIn;
+- (void)fadeInWithTransparentBackground;
+- (void)fadeInWithDarkBackground;
 - (void)fadeOut;
 
 @end

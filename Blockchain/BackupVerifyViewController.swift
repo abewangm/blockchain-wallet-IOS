@@ -138,7 +138,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
                 word3?.resignFirstResponder()
                 wallet!.markRecoveryPhraseVerified()
                 let backupNavigation = self.navigationController as? BackupNavigationViewController
-                backupNavigation?.busyView?.fadeIn()
+                backupNavigation?.busyView?.fadeInWithDarkBackground()
             }
         }
     }
