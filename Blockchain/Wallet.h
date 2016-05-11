@@ -286,6 +286,7 @@
 - (void)getInfoForTransferAllFundsToDefaultAccount;
 - (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
 - (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
+- (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;
 - (void)getFeeBounds:(uint64_t)fee;
 - (void)changeForcedFee:(uint64_t)fee;

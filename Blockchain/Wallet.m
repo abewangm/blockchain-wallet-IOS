@@ -765,6 +765,15 @@
     [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(false, \"%@\", \"%@\")", [address escapeStringForJS], [secondPassword escapeStringForJS]];
 }
 
+- (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.transferFundsToDefaultAccountFromAddress(\"%@\")", [address escapeStringForJS]];
+}
+
 - (void)sweepPaymentRegular
 {
     if (![self isInitialized]) {
@@ -1788,7 +1797,7 @@
     DLog(@"on_error_update_fee");
     
     NSString *message = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
-    if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS]) {
+    if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
         [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
     } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
         uint64_t threshold = [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue];

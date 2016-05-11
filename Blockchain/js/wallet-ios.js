@@ -775,6 +775,24 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
     }
 }
 
+MyWalletPhone.transferFundsToDefaultAccountFromAddress = function(address) {
+    currentPayment = new Payment();
+    
+    var buildFailure = function (error) {
+        console.log('buildfailure');
+        
+        console.log('error sweeping regular then confirm: ' + error);
+        device.execute('on_error_update_fee:', [{'message': {'error':error.error.message}}]);
+        
+        return error.payment;
+    }
+    
+    currentPayment.from(address).to(MyWalletPhone.getReceivingAddressForAccount(MyWallet.wallet.hdwallet.defaultAccountIndex)).useAll().build().then(function(x) {
+        MyWalletPhone.updateSweep(false, true);
+        return x;
+    }).catch(buildFailure);
+}
+
 MyWalletPhone.quickSend = function(secondPassword) {
     
     console.log('quickSend');

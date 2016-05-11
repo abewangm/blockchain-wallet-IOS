@@ -197,8 +197,9 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         [app closeSideMenu];
-        app.topViewControllerDelegate = nil;
     }];
+    
+    app.topViewControllerDelegate = nil;
     
     if (!app.sendViewController) {
         app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];

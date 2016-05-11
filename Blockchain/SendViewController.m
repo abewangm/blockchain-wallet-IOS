@@ -329,22 +329,11 @@ BOOL displayingLocalSymbolSend;
 
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
 {
-    [self reload];
-
-    self.sendFromAddress = true;
-    
-    [self resetPayment];
-    
-    if (!address || [address isEqualToString:@""]) {
-        self.fromAddress = address;
-        [self reloadFromField];
-    } else {
-        [self didSelectFromAddress:address];
-    }
+    [self didSelectFromAddress:address];
     
     [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
     
-    [app.wallet sweepPaymentRegularThenConfirm];
+    [app.wallet transferFundsToDefaultAccountFromAddress:address];
 }
 
 - (void)sendFromWatchOnlyAddress
