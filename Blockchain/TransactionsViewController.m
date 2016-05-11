@@ -235,6 +235,7 @@ int lastNumberTransactions = INT_MAX;
     lastNumberTransactions = data.n_transactions;
     
     self.loadedAllTransactions = NO;
+    self.clickedFetchMore = NO;
     
     [app.wallet getHistory];
     
