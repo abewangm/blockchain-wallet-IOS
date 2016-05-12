@@ -1398,9 +1398,13 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateFundsAvailable
 {
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT,
-                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
-                          forState:UIControlStateNormal];
+    if (fiatAmountField.textColor == [UIColor redColor] && btcAmountField.textColor == [UIColor redColor] && [fiatAmountField.text isEqualToString:[app formatAmount:availableAmount localCurrency:YES]]) {
+        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [app formatMoney:availableAmount localCurrency:NO]] forState:UIControlStateNormal];
+    } else {
+        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT,
+                                        [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
+                              forState:UIControlStateNormal];
+    }
 }
 
 # pragma mark - AddressBook delegate
