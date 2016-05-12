@@ -193,7 +193,7 @@
     return [self.webView executeJSSynchronous:@"WalletCrypto.decryptPasswordWithProcessedPin(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations];
 }
 
-- (CGFloat)getStrengthForPassword:(NSString *)passwordString
+- (float)getStrengthForPassword:(NSString *)passwordString
 {
     if (![self.webView isLoaded]) {
         return 0;

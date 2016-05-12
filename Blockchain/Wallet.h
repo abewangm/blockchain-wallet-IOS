@@ -169,7 +169,7 @@
 - (BOOL)isInitialized;
 - (BOOL)hasEncryptedWalletData;
 
-- (CGFloat)getStrengthForPassword:(NSString *)password;
+- (float)getStrengthForPassword:(NSString *)password;
 
 - (BOOL)needsSecondPassword;
 - (BOOL)validateSecondPassword:(NSString *)secondPassword;

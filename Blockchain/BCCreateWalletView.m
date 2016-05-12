@@ -273,11 +273,10 @@
 
 - (void)clearSensitiveTextFields
 {
-    DLog(@"");
-    
     passwordTextField.text = nil;
     password2TextField.text = nil;
     passwordStrengthMeter.progress = 0;
+    self.passwordStrength = 0;
     
     passwordTextField.layer.borderColor = COLOR_TEXT_FIELD_BORDER_GRAY.CGColor;
     passwordFeedbackLabel.textColor = [UIColor darkGrayColor];
@@ -295,7 +294,7 @@
     UIColor *color;
     NSString *description;
     
-    CGFloat passwordStrength = [app.wallet getStrengthForPassword:password];
+    float passwordStrength = [app.wallet getStrengthForPassword:password];
 
     if (passwordStrength < 25) {
         color = COLOR_PASSWORD_STRENGTH_WEAK;
@@ -313,6 +312,8 @@
         color = COLOR_PASSWORD_STRENGTH_STRONG;
         description = BC_STRING_PASSWORD_STRENGTH_STRONG;
     }
+    
+    self.passwordStrength = passwordStrength;
     
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         passwordFeedbackLabel.text = description;
@@ -341,8 +342,20 @@
     
     self.tmpPassword = passwordTextField.text;
     
-    if ([self.tmpPassword length] < 10 || [self.tmpPassword length] > 255) {
-        [app standardNotify:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
+    if (!self.tmpPassword || [self.tmpPassword length] == 0) {
+        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        [passwordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if (self.passwordStrength < 25) {
+        [app standardNotify:BC_STRING_PASSWORD_NOT_STRONG_ENOUGH];
+        [passwordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if ([self.tmpPassword length] > 255) {
+        [app standardNotify:BC_STRING_PASSWORD_MUST_BE_LESS_THAN_OR_EQUAL_TO_255_CHARACTERS];
         [passwordTextField becomeFirstResponder];
         return NO;
     }

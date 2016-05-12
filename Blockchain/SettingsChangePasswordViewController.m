@@ -16,6 +16,8 @@
 @property (nonatomic) IBOutlet BCTextField *mainPasswordTextField;
 @property (nonatomic) IBOutlet BCTextField *newerPasswordTextField;
 @property (nonatomic) IBOutlet BCTextField *confirmNewPasswordTextField;
+
+@property (nonatomic) float passwordStrength;
 @end
 
 
@@ -52,6 +54,7 @@
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
     [self clearTextFields];
+    self.passwordStrength = 0;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -153,7 +156,7 @@
     UIColor *color;
     NSString *description;
     
-    CGFloat passwordStrength = [app.wallet getStrengthForPassword:password];
+    float passwordStrength = [app.wallet getStrengthForPassword:password];
 
     if (passwordStrength < 25) {
         color = COLOR_PASSWORD_STRENGTH_WEAK;
@@ -172,6 +175,8 @@
         description = BC_STRING_PASSWORD_STRENGTH_STRONG;
     }
     
+    self.passwordStrength = passwordStrength;
+    
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         self.passwordFeedbackLabel.text = description;
         self.passwordFeedbackLabel.textColor = color;
@@ -188,8 +193,20 @@
         return NO;
     }
     
-    if ([self.newerPasswordTextField.text length] < 10 || [self.newerPasswordTextField.text length] > 255) {
-        [self alertUserOfError:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
+    if ([self.newerPasswordTextField.text length] == 0) {
+        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        [self.newerPasswordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if (self.passwordStrength < 25) {
+        [app standardNotify:BC_STRING_PASSWORD_NOT_STRONG_ENOUGH];
+        [self.newerPasswordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if ([self.newerPasswordTextField.text length] > 255) {
+        [self alertUserOfError:BC_STRING_PASSWORD_MUST_BE_LESS_THAN_OR_EQUAL_TO_255_CHARACTERS];
         [self.newerPasswordTextField becomeFirstResponder];
         return NO;
     }

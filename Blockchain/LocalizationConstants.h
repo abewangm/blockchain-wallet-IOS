@@ -67,8 +67,8 @@
 #define BC_STRING_TRANSACTIONS_COUNT NSLocalizedString(@"%d Transactions", nil)
 #define BC_STRING_LOADING_EXTERNAL_PAGE NSLocalizedString(@"Loading External Page", nil)
 
-#define BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER NSLocalizedString(@"Password must 10 characters or longer", nil)
-#define BC_STRING_PASSWORD_MINIMUM_10_CHARACTERS NSLocalizedString(@"* Minimum 10 characters", nil)
+#define BC_STRING_PASSWORD_NOT_STRONG_ENOUGH NSLocalizedString(@"Your password is not strong enough. Please choose a different password.", nil)
+#define BC_STRING_PASSWORD_MUST_BE_LESS_THAN_OR_EQUAL_TO_255_CHARACTERS NSLocalizedString(@"Password must be less than or equal to 255 characters", nil)
 #define BC_STRING_PASSWORDS_DO_NOT_MATCH NSLocalizedString(@"Passwords do not match", nil)
 #define BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT NSLocalizedString(@"New password must be different", nil)
 #define BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT_FROM_HINT NSLocalizedString(@"New password must be different from your password hint", nil)
