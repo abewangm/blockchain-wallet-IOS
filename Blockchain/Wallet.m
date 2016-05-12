@@ -2137,7 +2137,7 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceSpendableActive"] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceActive"] longLongValue];
 }
 
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses
@@ -2146,7 +2146,7 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceSpendableActiveLegacy"] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceActiveLegacy"] longLongValue];
 }
 
 - (uint64_t)getBalanceForAccount:(int)account
