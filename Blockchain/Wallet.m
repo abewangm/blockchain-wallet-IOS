@@ -225,7 +225,7 @@
 - (void)fetchMoreTransactions
 {
     if ([self isInitialized]) {
-        self.isFetching = YES;
+        self.isFetchingTransactions = YES;
         [self.webView executeJS:@"MyWalletPhone.fetchMoreTransactions()"];
     }
 }
