@@ -15,6 +15,27 @@ typedef enum {
 
 @implementation BCFadeView
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self setup];
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (void)setup
+{
+    self.containerView.layer.shadowOpacity = 0.5;
+    self.containerView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.containerView.bounds].CGPath;
+}
+
 - (void)fadeInWithTransparentBackground
 {
     [self fadeInWithBackground:backgroundTransparent];
