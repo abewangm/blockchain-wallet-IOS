@@ -74,8 +74,9 @@
 
 #ifdef DEBUG
     emailTextField.text = @"test@doesnotexist.tld";
-    passwordTextField.text = @"testpassword";
-    password2TextField.text = @"testpassword";
+    passwordTextField.text = @"testpassword!";
+    password2TextField.text = @"testpassword!";
+    [self checkPasswordStrength];
 #endif
     
     _recoveryPhraseView.recoveryPassphraseTextField.delegate = self;
