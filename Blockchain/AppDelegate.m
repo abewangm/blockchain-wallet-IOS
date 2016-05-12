@@ -448,7 +448,6 @@ void (^secondPasswordSuccess)(NSString *);
         if ([self.topViewControllerDelegate respondsToSelector:@selector(hideBusyView)]) {
             [self.topViewControllerDelegate hideBusyView];
         }
-        return;
     }
     
     if (busyView.alpha == 1.0) {
@@ -1738,6 +1737,8 @@ void (^secondPasswordSuccess)(NSString *);
     else {
         [_slidingViewController resetTopViewAnimated:YES];
     }
+    
+    app.wallet.isFetchingTransactions = NO;
 }
 
 - (void)closeSideMenu

@@ -1735,9 +1735,10 @@
 - (void)on_get_history_success
 {
     DLog(@"on_get_history_success");
-    if (self.isSyncing) {
-        // Required to prevent user input while archiving/unarchiving addresses
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    
+    // Keep showing busy view to prevent user input while archiving/unarchiving addresses
+    if (!self.isSyncing) {
+        [self loading_stop];
     }
 }
 
