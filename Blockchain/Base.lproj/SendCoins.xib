@@ -462,6 +462,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="arrowImageView" destination="JWr-AQ-QOY" id="PF1-pS-4M6"/>
                 <outlet property="btcAmountLabel" destination="IUn-6N-qeo" id="2cb-i6-6XZ"/>
                 <outlet property="btcFeeLabel" destination="6ll-Xx-4fm" id="qti-sQ-cI9"/>
                 <outlet property="btcTotalLabel" destination="vzP-xG-GPO" id="f2m-Cb-nwT"/>
