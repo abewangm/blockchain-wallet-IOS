@@ -107,6 +107,9 @@
 "An error occurred while changing 2-Step verification." = "更改 2 步验证时出错";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "保存您的更改时出错。请确保您未登录到你的钱包在另一个设备。";
+
+/* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "更新你可平衡时出错。请检查您的互联网连接，然后重试。";
 
 /* (No Commment) */
@@ -599,6 +602,9 @@
 "Link Mobile" = "关联移动电话";
 
 /* (No Commment) */
+"Load More Transactions" = "更多交易记录加载";
+
+/* (No Commment) */
 "Loading External Page" = "加载外部页";
 
 /* (No Commment) */
@@ -753,6 +759,9 @@
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "密码必须为 10 个字符或更长";
+
+/* (No Commment) */
+"Password must be less than or equal to 255 characters" = "密码必须小于或等于 255 个字符";
 
 /* (No Commment) */
 "Passwords do not match" = "密码不匹配";
@@ -1418,6 +1427,9 @@ wallet experience for you" = "我们为您设计了一个
 
 /* (No Commment) */
 "Your password hint has been updated." = "密码提示将被更新。";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "您的密码不是足够强大的。请选择一个不同的密码。";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "你转移的资金将是安全和有保障的和你会受益于增加的隐私和方便的备份和恢复功能。";
