@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "לפני %lld שניות";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* מינימום 10 תווים";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "לפני 1 שעה";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "אירעה שגיאה בזמן שינוי אימות דו-שלבי.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "אירעה שגיאה בעת שמירת השינויים. נא ודא כי אתה לא נכנסת לתוך הארנק שלך בהתקן אחר.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "אירעה שגיאה בעת עדכון יתרת מתכלה למכשיר שלך. נא בדוק את חיבור האינטרנט שלך ונסה שוב.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "קישור סלולרי";
 
 /* (No Commment) */
+"Load More Transactions" = "לטעון עוד עסקאות";
+
+/* (No Commment) */
 "Loading External Page" = "טעינת דף חיצוני";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "סיסמה לשינוי. אנא התחבר כדי להמשיך.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "הסיסמה חייבת 10 תווים או יותר";
+"Password must be less than or equal to 255 characters" = "הסיסמה חייבת להיות קטן או שווה ל- 255 תווים";
 
 /* (No Commment) */
 "Passwords do not match" = "הסיסמאות לא תואמות";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "Your password hint has been updated." = "הרמז לסיסמה שלך עודכנה.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "הסיסמה אינה חזקה מספיק. נא לבחור בסיסמה שונה.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "את הכספים שהועברו שלך יהיה בטוח ומאובטח, תוכל ליהנות תכונות גיבוי ושחזור נוחות ופרטיות מוגברת.";

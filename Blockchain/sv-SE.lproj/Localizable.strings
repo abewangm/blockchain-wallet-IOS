@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekunder sedan";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minst 10 tecken";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 timme sedan";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Ett fel inträffade vid ändring 2-steg verifiering.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Ett fel uppstod när spara ändringar. Se till att du inte är inloggad i din plånbok på en annan enhet.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Ett fel uppstod när du uppdaterar din spendable balans. Kontrollera din internet-anslutning och försök igen.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Link Mobile";
 
 /* (No Commment) */
+"Load More Transactions" = "Ladda fler transaktioner";
+
+/* (No Commment) */
 "Loading External Page" = "Laddar extern sida";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Ändra lösenord. Vänligen logga in för att fortsätta.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Lösenord måste 10 tecken eller längre";
+"Password must be less than or equal to 255 characters" = "Lösenordet måste vara mindre än eller lika med 255 tecken";
 
 /* (No Commment) */
 "Passwords do not match" = "Lösenorden matchar inte";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 
 /* (No Commment) */
 "Your password hint has been updated." = "Lösenordsledtråden har uppdaterats.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Ditt lösenord är inte tillräckligt stark. Välj ett annat lösenord.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Ditt överförda medlen kommer att vara trygg och säker, och du kommer att få ökad integritet och praktiska funktioner för säkerhetskopiering och återställning.";

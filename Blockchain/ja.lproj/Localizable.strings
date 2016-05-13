@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld 秒前";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* 最低 10 文字";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 時間前";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2 段階認証プロセスを変更中にエラーが発生しました。";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "変更を保存中にエラーが発生しました。別のデバイスにあなたの財布にサインインしていないことを確認してください。";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "投資残高の更新中にエラーが発生しました。インターネット接続を確認してやり直してください。";
@@ -596,6 +596,9 @@
 "Link Mobile" = "リンク モバイル";
 
 /* (No Commment) */
+"Load More Transactions" = "多くのトランザクションをロードします。";
+
+/* (No Commment) */
 "Loading External Page" = "外部ページの読み込み";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "パスワードを変更します。続行するにはログインをしてください。";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "パスワードには 10 文字する必要があります以上";
+"Password must be less than or equal to 255 characters" = "パスワードは 255 文字以下にする必要があります。";
 
 /* (No Commment) */
 "Passwords do not match" = "パスワードが一致しません";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "Your password hint has been updated." = "パスワードのヒントを更新しました。";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "パスワードは十分に強くないです。別のパスワードを選択してください。";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "安心・安全、あなたの転送資金になります、プライバシーの強化、バックアップ/リカバリの便利な機能から恩恵を受けるでしょう。";

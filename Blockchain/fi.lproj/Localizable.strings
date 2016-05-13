@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekuntia sitten";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Vähintään 10 merkkiä";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 tunti sitten";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Virhe muutettaessa 2-vaiheinen vahvistus.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Virhe tallennettaessa muutoksia. Varmista, et ole kirjautunut lompakkoosi toisessa laitteessa.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Virhe päivitettäessä spendable saldosi. Tarkista internet-yhteys ja yritä uudelleen.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Linkki Mobile";
 
 /* (No Commment) */
+"Load More Transactions" = "Lataa lisää tapahtumat";
+
+/* (No Commment) */
 "Loading External Page" = "Ulkoinen sivu lastaus";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Salasana vaihdettu. Kirjaudu sisään jatkaaksesi.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Salasana on 10 merkkiä tai kauemmin";
+"Password must be less than or equal to 255 characters" = "Salasanan on oltava enintään 255 merkkiä";
 
 /* (No Commment) */
 "Passwords do not match" = "Salasanat eivät täsmää";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "Your password hint has been updated." = "Salasanavihje on päivitetty.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Salasana ei ole tarpeeksi vahva. Valitse toinen salasana.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Siirrettyjen varojen on turvallinen ja sinulle hyötyä lisää yksityisyyttä ja kätevä varmuuskopiointi ja palautus toiminnot.";

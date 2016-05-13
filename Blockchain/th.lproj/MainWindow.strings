@@ -29,7 +29,7 @@
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "ถ้าคุณกำลังใช้กระเป๋าเก่า คลิกปุ่มการตั้งค่าบัญชี และเลือกแท็บอุปกรณ์ ถ้าคุณกำลังใช้กระเป๋าของเบต้าใหม่ ไปที่การตั้งค่า / ข้อมูลกระเป๋าสตางค์";
+"364.text" = "ถ้าคุณกำลังใช้กระเป๋าสตางค์เก่า คลิกปุ่มการตั้งค่าบัญชี และเลือกแท็บอุปกรณ์ ถ้าคุณกำลังใช้กระเป๋าสตางค์ของเราใหม่ ไปที่การตั้งค่า / ข้อมูลกระเป๋าสตางค์";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -53,13 +53,13 @@
 "380.text" = "ยินดีต้อนรับสู่กระเป๋าสตางค์ Blockchain";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "ธุรกรรมไม่ได้";
+"387.text" = "ไม่มีธุรกรรมที่โหลด";
 
 /* (No Commment) */
 "394.text" = "รหัสผ่าน:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "รหัสผ่าน (ขั้นต่ำ 10 ตัวอักษร)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "รหัสผ่าน";
 
 /* (No Commment) */
 "396.text" = "ยืนยัน:";

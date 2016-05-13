@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld secondi fa";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minimo 10 caratteri";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 ora fa";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Errore durante la verifica in 2 passaggi di modifica.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Errore durante il salvataggio le modifiche. Si prega di assicurarsi che non si è connessi nel tuo portafoglio su un altro dispositivo.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Errore durante l'aggiornamento il tuo saldo spendibile. Controllare la connessione a internet e riprovare.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Collegamento Mobile";
 
 /* (No Commment) */
+"Load More Transactions" = "Caricare più transazioni";
+
+/* (No Commment) */
 "Loading External Page" = "Caricamento pagina esterna";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Modificare la password. Effettua il login per continuare.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "La password deve 10 caratteri o più";
+"Password must be less than or equal to 255 characters" = "La password deve essere minore o uguale a 255 caratteri";
 
 /* (No Commment) */
 "Passwords do not match" = "Le password non corrispondono";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Abbiamo progettato una nuova esperienza di portafo
 
 /* (No Commment) */
 "Your password hint has been updated." = "Il tuo suggerimento per la password è stato aggiornato.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "La password non è abbastanza forte. Si prega di scegliere una password diversa.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "I fondi trasferiti saranno sicuri e protetti, e potrai beneficiare di maggiore privacy e comode funzioni di backup e ripristino.";

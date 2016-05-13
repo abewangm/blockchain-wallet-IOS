@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld dakika önce";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* En az 10 karakter";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 saat önce";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2-adım doğrulama değiştirilirken bir hata oluştu.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Yaptığınız değişiklikler kaydedilirken bir hata oluştu. Cüzdanını başka bir aygıtta içine açmamış dikkat edin.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Spendable bakiyeniz güncelleştirilirken bir hata oluştu. Lütfen Internet bağlantınızı denetleyin ve yeniden deneyin.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Bağlantı cep";
 
 /* (No Commment) */
+"Load More Transactions" = "Daha fazla hareketlerini yükle";
+
+/* (No Commment) */
 "Loading External Page" = "Dış sayfa yükleme";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Parola değiştirildi. Lütfen devam etmek için giriş yapın.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Parola gerekir 10 karakter veya daha uzun";
+"Password must be less than or equal to 255 characters" = "Parolanın 255 karakter veya daha az olması gerekir.";
 
 /* (No Commment) */
 "Passwords do not match" = "Parolalar uyuşmuyor";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "Your password hint has been updated." = "Parola ipucunuz güncelleştirildi.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Parolanızı yeterince güçlü değil. Lütfen farklı bir parola seçin.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Aktarılan fonlar güvenli olacak ve artan gizlilik ve uygun yedekleme ve kurtarma özelliklerinden yararlanacaksınız.";

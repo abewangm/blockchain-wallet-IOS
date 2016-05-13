@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld saat yang lalu";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Sekurang-kurangnya 10 aksara";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 jam yang lalu";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Satu ralat telah berlaku semasa menukar langkah 2 pengesahan.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Satu ralat berlaku semasa menyimpan perubahan anda. Sila pastikan anda tidak dilog masuk ke dalam wallet anda di peranti lain.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Satu ralat berlaku semasa mengemaskini baki spendable. Sila semak sambungan internet awda dan cuba lagi.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Mudah alih pautan";
 
 /* (No Commment) */
+"Load More Transactions" = "Memuatkan lebih banyak pindah milik";
+
+/* (No Commment) */
 "Loading External Page" = "Memuatkan laman luar";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Kata laluan ditukar. Sila login untuk teruskan.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Kata laluan mesti 10 aksara atau lebih";
+"Password must be less than or equal to 255 characters" = "Kata laluan mesti kurang daripada atau sama dengan 255 aksara";
 
 /* (No Commment) */
 "Passwords do not match" = "Kata laluan tidak padan";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "Your password hint has been updated." = "Pembayang kata laluan anda telah dikemaskini.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Kata laluan anda adalah tidak cukup kuat. Sila pilih kata laluan yang berlainan.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Dana anda dipindahkan akan selamat dan terjamin, dan anda akan mendapat manfaat daripada peningkatan privasi dan ciri-ciri pemulihan dan sandaran yang mudah.";

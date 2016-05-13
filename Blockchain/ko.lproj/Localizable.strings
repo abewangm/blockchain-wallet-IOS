@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld 초 전";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* 최소 10 문자";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 시간 전";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2 단계 확인을 변경 하는 동안 오류가 발생 했습니다.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "변경 내용을 저장 하는 동안 오류가 발생 했습니다. 다른 장치에 당신의 지갑에 로그인 하지 않은 다는 것을 확인 하십시오.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Spendable 잔액을 업데이트 하는 동안 오류가 발생 했습니다. 인터넷 연결을 확인 하 고 다시 시도 하십시오.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "링크 모바일";
 
 /* (No Commment) */
+"Load More Transactions" = "더 많은 거래를 로드";
+
+/* (No Commment) */
 "Loading External Page" = "외부 페이지 로드";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "비밀 번호 변경. 계속 하려면 로그인을 하십시오.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "암호 해야 10 자 이상";
+"Password must be less than or equal to 255 characters" = "암호는 255 자 보다 작거나 되어야 합니다.";
 
 /* (No Commment) */
 "Passwords do not match" = "암호가 일치 하지 않습니다.";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "Your password hint has been updated." = "암호 힌트 업데이트 되었습니다.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "비밀 번호는 충분히 강하지 않다. 다른 암호를 선택 하십시오.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "전송된 자금 안전 하 고 안전한, 그리고 증가 개인 정보 보호 및 편리한 백업 및 복구 기능에서 혜택을 얻을 것.";

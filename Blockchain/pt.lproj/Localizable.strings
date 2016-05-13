@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld segundos atrás";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Mínimo 10 caracteres";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "há 1 hora";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Ocorreu um erro ao mudar 2-etapa verificação.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Ocorreu um erro ao guardar as alterações. Por favor, certifique-se de que você não está logado em sua carteira em outro dispositivo.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Ocorreu um erro ao atualizar seu saldo spendable. Por favor, verifique sua conexão de internet e tente novamente.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Link móvel";
 
 /* (No Commment) */
+"Load More Transactions" = "Carregar mais transações";
+
+/* (No Commment) */
 "Loading External Page" = "Carregando a página externa";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Senha alterada. Faça o login para continuar.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Senha deve 10 caracteres ou mais";
+"Password must be less than or equal to 255 characters" = "Senha deve ser menor ou igual a 255 caracteres";
 
 /* (No Commment) */
 "Passwords do not match" = "Senhas não combinam";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Nós projetamos uma nova experiência de carteira 
 
 /* (No Commment) */
 "Your password hint has been updated." = "Sua dica de senha foi atualizada.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Sua senha não é forte o suficiente. Por favor, escolha uma senha diferente.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Seus fundos transferidos será salvo e seguro, e você vai se beneficiar de maior privacidade e características convenientes de backup e recuperação.";

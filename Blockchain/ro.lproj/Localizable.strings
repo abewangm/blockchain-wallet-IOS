@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld secunde în urmă";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minim 10 caractere";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 oră în urmă";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Eroare în timp ce schimbarea verificare în 2 paşi.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Eroare la salvarea modificărilor. Asigurați-vă că nu sunteţi conectat în portofel pe un alt dispozitiv.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Eroare în timpul actualizării soldul spendable. Verificaţi conexiunea la internet şi încearcă din nou.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Link-ul mobil";
 
 /* (No Commment) */
+"Load More Transactions" = "Incarca mai multe tranzacţii";
+
+/* (No Commment) */
 "Loading External Page" = "Pagina de externe de încărcare";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "S-a schimbat parola. Vă rugăm să login pentru a continua.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Parola trebuie să 10 caractere sau mai mult";
+"Password must be less than or equal to 255 characters" = "Parola trebuie să fie mai mică sau egală cu 255 de caractere";
 
 /* (No Commment) */
 "Passwords do not match" = "Parolele nu se potrivesc";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "Your password hint has been updated." = "Indiciu dumneavoastră parola a fost actualizată.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Parola nu este suficient de puternic. Vă rugăm să alegeţi o parolă diferită.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Fondurile transferate vor fi sigur, şi veţi beneficia de confidenţialitate sporită şi caracteristici convenabile de backup şi recuperare.";

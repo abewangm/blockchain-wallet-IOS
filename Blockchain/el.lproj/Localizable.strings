@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld δευτερόλεπτα πριν";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Τουλάχιστον 10 χαρακτήρες";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "πριν από 1 ώρα";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Παρουσιάστηκε σφάλμα κατά την αλλαγή επαλήθευση σε 2 βήματα.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Παρουσιάστηκε σφάλμα κατά την αποθήκευση των αλλαγών σας. Παρακαλώ βεβαιωθείτε ότι δεν είστε συνδεδεμένοι στο πορτοφόλι σας σε κάποια άλλη συσκευή.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Παρουσιάστηκε σφάλμα κατά την ενημέρωση σας διαθέσιμο υπόλοιπο. Ελέγξτε τη σύνδεσή σας στο internet και προσπαθήστε ξανά.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Κινητό σύνδεση";
 
 /* (No Commment) */
+"Load More Transactions" = "Φόρτωση περισσότερες συναλλαγές";
+
+/* (No Commment) */
 "Loading External Page" = "Φόρτωση εξωτερική σελίδα";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Αλλάξει τον κωδικό πρόσβασης. ΠΑΡΑΚΑΛΩ Συνδεθειτε για να συνεχίσει.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Κωδικός πρόσβασης πρέπει να 10 χαρακτήρες ή περισσότερο";
+"Password must be less than or equal to 255 characters" = "Κωδικός πρόσβασης πρέπει να είναι μικρότερη ή ίση έως 255 χαρακτήρες";
 
 /* (No Commment) */
 "Passwords do not match" = "Κωδικοί πρόσβασης δεν ταιριάζουν";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "Your password hint has been updated." = "Έχει ενημερωθεί σας υπόδειξη κωδικού πρόσβασης.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Τον κωδικό πρόσβασής σας δεν είναι αρκετά ισχυρή. Παρακαλείστε να επιλέξετε έναν διαφορετικό κωδικό πρόσβασης.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Χορηγηθέντων κεφαλαίων σας θα είναι ασφαλή, και θα επωφεληθεί από την αυξανόμενη μυστικότητα και τα πρακτικά χαρακτηριστικά αντιγράφων ασφαλείας και ανάκτησης.";

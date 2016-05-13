@@ -29,7 +29,7 @@
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Ako koristite stari novčanik, kliknite gumb Postavke računa i odaberite karticu uređaji. Ako koristite naše nove beta novčanik, idite na postavke / novčanik informacije.";
+"364.text" = "Ako koristite stari novčanik, kliknite gumb Postavke računa i odaberite karticu uređaji. Ako koristite naš novi novčanik, idite na postavke / novčanik informacije.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -53,13 +53,13 @@
 "380.text" = "Dobro došli u Blockchain novčaniku";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Ne transakcije još";
+"387.text" = "Ne transakcije napunjen";
 
 /* (No Commment) */
 "394.text" = "Lozinka:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "Lozinka (najmanje 10 znakova)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "Lozinku";
 
 /* (No Commment) */
 "396.text" = "Potvrditi:";

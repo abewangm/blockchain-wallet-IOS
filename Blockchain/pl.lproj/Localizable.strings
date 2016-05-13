@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekundy/sekund temu";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minimum 10 znaków";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 godzinę temu";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Wystąpił błąd podczas zmiany 2-weryfikacja.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Wystąpił błąd podczas zapisywania zmian. Proszę upewnić się, że nie jesteś zalogowany do swojego portfela na innym urządzeniu.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Wystąpił błąd podczas aktualizacji salda Reserve. Proszę sprawdzić twój internet połączenie i spróbuj ponownie.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Łącza komórkowego";
 
 /* (No Commment) */
+"Load More Transactions" = "Załaduj więcej transakcji";
+
+/* (No Commment) */
 "Loading External Page" = "Ładowanie strony zewnętrznej";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Zmienić hasło. Zaloguj się, aby kontynuować.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Hasło musi 10 znaków lub dłużej";
+"Password must be less than or equal to 255 characters" = "Hasło musi być mniejsza niż lub równa 255 znaków";
 
 /* (No Commment) */
 "Passwords do not match" = "Hasła nie pasują";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Zaprojektowaliśmy zupełnie nowe doświadczenie p
 
 /* (No Commment) */
 "Your password hint has been updated." = "Twoja podpowiedź do hasła została zaktualizowana.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Hasło nie jest wystarczająco silny. Proszę wybrać inne hasło.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Przeniesione środki będą bezpieczne, a będziesz korzystać ze zwiększonej prywatności i wygodne funkcje tworzenia kopii zapasowych i odzyskiwania.";

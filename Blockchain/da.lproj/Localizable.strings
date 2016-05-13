@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekunder siden";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minimum 10 tegn";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 time siden";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Der opstod en fejl under ændring af 2-trins verifikation.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Der opstod en fejl under lagring af dine ændringer. Kontroller, at du ikke er logget ind på din tegnebog på en anden enhed.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Der opstod en fejl under opdatering af din spendable balance. Kontroller Internetforbindelsen, og prøv igen.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Samkøre Ambulant";
 
 /* (No Commment) */
+"Load More Transactions" = "Indlæse flere transaktioner";
+
+/* (No Commment) */
 "Loading External Page" = "Indlæsning af ekstern side";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Adgangskoden ændres. Venligst log ind for at fortsætte.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Adgangskode skal 10 tegn eller længere";
+"Password must be less than or equal to 255 characters" = "Adgangskoden skal være mindre end eller lig med 255 tegn";
 
 /* (No Commment) */
 "Passwords do not match" = "Adgangskoderne er ikke ens";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 
 /* (No Commment) */
 "Your password hint has been updated." = "Dit adgangskodetip er blevet opdateret.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Din adgangskode er ikke stærk nok. Vælg venligst en anden adgangskode.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Dine overførte midler vil være trygt og sikkert, og du vil drage fordel af øget beskyttelse af personlige oplysninger og praktiske funktioner til sikkerhedskopiering og genoprettelse.";

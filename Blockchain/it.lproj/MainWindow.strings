@@ -29,7 +29,7 @@
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Se si utilizza il vecchio raccoglitore, fare clic sul pulsante Impostazioni Account e scegliere la scheda dispositivi. Se si sta utilizzando il nostro nuovo portafoglio di beta, vai su Impostazioni / informazioni sul portafoglio.";
+"364.text" = "Se si utilizza il vecchio raccoglitore, fare clic sul pulsante Impostazioni Account e scegliere la scheda dispositivi. Se si sta utilizzando il nostro nuovo portafoglio, andare su Impostazioni / informazioni sul portafoglio.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -53,13 +53,13 @@
 "380.text" = "Benvenuto a Blockchain Portafoglio";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Transazioni non ancora";
+"387.text" = "Transazioni non caricate";
 
 /* (No Commment) */
 "394.text" = "Password:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "Password (minimo 10 caratteri)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "Password";
 
 /* (No Commment) */
 "396.text" = "Confermare:";

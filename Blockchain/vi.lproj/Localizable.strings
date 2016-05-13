@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld giây trước";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "Tối thiểu 10 ký tự";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 giờ trước";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Lỗi xuất hiện khi thay đổi quy trình xác minh 2 bước.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Lỗi xuất hiện khi lưu các thay đổi. Hãy chắc chắn rằng bạn không đăng nhập vào wallet của bạn trên một thiết bị khác.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Lỗi xảy ra khi cập nhật số dư spendable của bạn. Xin vui lòng kiểm tra kết nối internet của bạn và thử lại.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Điện thoại di động liên kết";
 
 /* (No Commment) */
+"Load More Transactions" = "Tải thêm các giao dịch";
+
+/* (No Commment) */
 "Loading External Page" = "Tải trang bên ngoài";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Thay đổi mật khẩu. Vui lòng đăng nhập để tiếp tục.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Mật khẩu phải 10 ký tự hoặc dài hơn";
+"Password must be less than or equal to 255 characters" = "Mật khẩu phải nhỏ hơn hoặc bằng đến 255 ký tự";
 
 /* (No Commment) */
 "Passwords do not match" = "Mật khẩu không khớp";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "Your password hint has been updated." = "Gợi ý mật khẩu của bạn đã được Cập Nhật.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Mật khẩu của bạn là không đủ mạnh. Hãy chọn một mật khẩu khác nhau.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Chuyển khoản tiền của bạn sẽ được an toàn và an toàn, và bạn sẽ hưởng lợi từ tăng cường bảo mật và thuận tiện các tính năng sao lưu và phục hồi.";

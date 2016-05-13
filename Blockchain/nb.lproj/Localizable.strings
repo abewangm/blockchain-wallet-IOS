@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekunder siden";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minst 10 tegn";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 time siden";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Det oppstod en feil under endring 2-Step bekreftelse.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Det oppstod en feil under lagring av endringene. Kontroller at du ikke er logget på din konto på en annen enhet.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Det oppstod en feil under oppdatering spendable saldoen. Kontroller tilkoblingen og prøv på nytt.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Link Mobile";
 
 /* (No Commment) */
+"Load More Transactions" = "Laste flere transaksjoner";
+
+/* (No Commment) */
 "Loading External Page" = "Laste eksterne side";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Passord endret. Vennligst login for å fortsette.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Passord må 10 tegn eller lengre";
+"Password must be less than or equal to 255 characters" = "Passordet må være mindre enn eller lik 255 tegn";
 
 /* (No Commment) */
 "Passwords do not match" = "Passordene samsvarer ikke";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 
 /* (No Commment) */
 "Your password hint has been updated." = "Passordhintet er oppdatert.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Passordet er ikke sterk nok. Velg et annet passord.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Overførte midlene vil være trygt og sikkert, og du vil dra nytte økt personvern og praktisk sikkerhetskopiering og gjenoppretting.";

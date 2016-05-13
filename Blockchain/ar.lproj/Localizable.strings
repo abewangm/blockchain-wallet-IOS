@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld ثواني";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* الحد الأدنى 10 أحرف";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "منذ 1 ساعة";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "حدث خطأ أثناء تغيير التحقق من خطوتين.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "حدث خطأ أثناء حفظ التغييرات الخاصة بك. الرجاء التأكد من عدم تسجيل في المحفظة الخاصة بك على جهاز آخر.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "حدث خطأ أثناء تحديث رصيدك المنفق. الرجاء التحقق من اتصال الإنترنت الخاص بك وحاول مرة أخرى.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "وصلة الجوال";
 
 /* (No Commment) */
+"Load More Transactions" = "تحميل المزيد من المعاملات";
+
+/* (No Commment) */
 "Loading External Page" = "تحميل صفحة خارجية";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "تغيير كلمة المرور. الرجاء تسجيل الدخول لمتابعة.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "كلمة مرور يجب 10 أحرف أو أطول";
+"Password must be less than or equal to 255 characters" = "يجب أن تكون كلمة المرور أقل من أو يساوي 255 حرف";
 
 /* (No Commment) */
 "Passwords do not match" = "لا تتطابق كلمات المرور";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "Your password hint has been updated." = "وقد تم تحديث تلميح كلمة المرور.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "كلمة المرور الخاصة بك ليست قوية بما يكفي. الرجاء اختيار كلمة مرور مختلفة.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "الأموال المحولة الخاصة بك سوف تكون آمنة ومأمونة، ويمكنك الاستفادة من ميزات النسخ الاحتياطي والاسترداد مريحة وزيادة الخصوصية.";

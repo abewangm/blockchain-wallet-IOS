@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekúnd pred";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minimálne 10 znakov";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "pred 1 hodinou";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Chyba pri zmene 2-krok overenia.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Počas ukladania zmien sa vyskytla chyba. Prosím, uistite sa, že nie ste prihlásení do peňaženky na inom zariadení.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Chyba pri aktualizácii spendable rovnováhu. Prosím skontrolujte svoje internetové pripojenie a skúste to znova.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Mobilné prepojenie";
 
 /* (No Commment) */
+"Load More Transactions" = "Načítať viac transakcií";
+
+/* (No Commment) */
 "Loading External Page" = "Načítanie externých stránok";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Zmenil heslo. Prosím prihláste sa naďalej.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Heslo musí 10 znakov alebo dlhšie";
+"Password must be less than or equal to 255 characters" = "Heslo musí byť menší alebo rovný 255 znakov";
 
 /* (No Commment) */
 "Passwords do not match" = "Heslá sa nezhodujú.";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 
 /* (No Commment) */
 "Your password hint has been updated." = "Váš tip na heslo bola aktualizovaná.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Heslo nie je dosť silný. Vyberte iné heslo.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Prevedených prostriedkov bude bezpečné a budete ťažiť zo zvýšenej ochrany osobných údajov a pohodlné funkcie zálohovania a obnovy.";

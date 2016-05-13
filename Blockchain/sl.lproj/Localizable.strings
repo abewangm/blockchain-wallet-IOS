@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekund nazaj";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Najmanj 10 znakov";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "pred 1 uro";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Spreminjanje preverjanje v 2 korakih je prišlo do napake.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Shranili spremembe je prišlo do napake. Preverite, ali niste prijavljeni v vaši denarnici, na drugo napravo.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Posodabljanje Reserve stanje je prišlo do napake. Preverite povezavo z internetom in poskusite znova.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Link Mobile";
 
 /* (No Commment) */
+"Load More Transactions" = "Naložiti več transakcij";
+
+/* (No Commment) */
 "Loading External Page" = "Nalaganje zunanjih strani";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Spremenil geslo. Prosimo, prijavite na še.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Geslo mora 10 znakov ali daljše";
+"Password must be less than or equal to 255 characters" = "Geslo mora biti manjša ali enaka 255 znakov";
 
 /* (No Commment) */
 "Passwords do not match" = "Gesli se ne ujemata";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 
 /* (No Commment) */
 "Your password hint has been updated." = "Namig za geslo je bil posodobljen.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Geslo ni dovolj močna. Izberite drugo geslo.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Prenesenih sredstev bo varno, in boste koristi od večjo zasebnost in priročno funkcije za varnostno kopiranje in obnovitev.";

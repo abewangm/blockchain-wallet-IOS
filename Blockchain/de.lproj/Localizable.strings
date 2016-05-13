@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "vor %lld Sekunden";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Mindestens 10 Zeichen";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "vor 1 Stunde";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Fehler beim Wechsel 2-Schritt-Prüfung.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Fehler beim Speichern der Änderungen. Bitte stellen Sie sicher, dass Sie nicht in Ihrer Brieftasche auf ein anderes Gerät angemeldet sind.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Fehler beim Aktualisieren der spendable Kontostand. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Verbindung Mobile";
 
 /* (No Commment) */
+"Load More Transactions" = "Laden Sie mehr Transaktionen";
+
+/* (No Commment) */
 "Loading External Page" = "Laden externer Seite";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Das Kennwort geändert. Bitte einloggen um fortzufahren.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Passwort muss 10 Zeichen oder länger";
+"Password must be less than or equal to 255 characters" = "Passwort muss kleiner oder gleich 255 Zeichen sein.";
 
 /* (No Commment) */
 "Passwords do not match" = "Kennwörter stimmen nicht überein";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 
 /* (No Commment) */
 "Your password hint has been updated." = "Ihr Passwort-Hinweis wurde aktualisiert.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Ihr Passwort ist nicht stark genug. Bitte wählen Sie ein anderes Kennwort.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Ihr Guthaben werden sicher und sicher und profitieren Sie von mehr Privatsphäre und praktische Backup- und Recovery-Funktionen.";

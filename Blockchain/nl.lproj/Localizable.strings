@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld seconden geleden";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minimum 10 tekens";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 uur geleden";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Er is een fout opgetreden tijdens het wijzigen van 2-Step verificatie.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Er is een fout opgetreden tijdens het opslaan van uw wijzigingen. Zorg ervoor dat u niet bent aangemeld bij uw portemonnee op een ander apparaat.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Er is een fout opgetreden tijdens het bijwerken van uw spendable saldo. Controleer uw internet-verbinding en probeer het opnieuw.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Mobiele verbinding";
 
 /* (No Commment) */
+"Load More Transactions" = "Laden meer transacties";
+
+/* (No Commment) */
 "Loading External Page" = "Laden van externe pagina";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Wachtwoord gewijzigd. Gelieve in te loggen om door te gaan.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Wachtwoord moet 10 karakters of langer";
+"Password must be less than or equal to 255 characters" = "Wachtwoord moet kleiner dan of gelijk aan 255 tekens";
 
 /* (No Commment) */
 "Passwords do not match" = "Wachtwoorden komen niet overeen";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "Your password hint has been updated." = "Uw wachtwoordhint is bijgewerkt.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Uw wachtwoord is niet sterk genoeg. Kies een ander wachtwoord.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Uw overgedragen geld zal veilig en betrouwbaar, en profiteert u van verhoogde privacy en handige functies van de back-up en herstel.";

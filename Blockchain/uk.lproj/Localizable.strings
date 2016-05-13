@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld секунд тому";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Мінімум 10 символів";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 година тому";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Сталася помилка при зміні двоетапної перевірки.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Помилка під час збереження змін. Переконайтеся, що ви не ввійшли до вашого гаманця на іншому пристрої.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Помилка під час оновлення витрачається баланс. Перевірте підключення до Інтернету і повторіть спробу.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Мобільний зв'язок";
 
 /* (No Commment) */
+"Load More Transactions" = "Завантажити більше операцій";
+
+/* (No Commment) */
 "Loading External Page" = "Завантаження зовнішнього сторінки";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Змінити пароль. Будь ласка, Логін, щоб продовжити.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Пароль має 10 символів або довше";
+"Password must be less than or equal to 255 characters" = "Пароль має бути меншим або дорівнювати 255 символів";
 
 /* (No Commment) */
 "Passwords do not match" = "Паролі не співпадають";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "Your password hint has been updated." = "Підказку про пароль був поновлений.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Ваш пароль не є достатньо сильною. Будь ласка, оберіть інший пароль.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Передані кошти будуть бути безпечною, і ви будете користуватися Підвищена конфіденційність і зручний резервного копіювання і відновлення функції.";

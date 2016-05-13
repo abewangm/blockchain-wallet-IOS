@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld danas:";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* Najmanje 10 znakova";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "prije 1 sat";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Došlo je do pogreške tijekom promjene u 2 koraka.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Pojavila se pogreška prilikom spremanja promjena. Provjerite da li ste prijavljeni u svoj novčanik na drugom uređaju.";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Došlo je do pogreške tijekom ažuriranja Potrošno ravnotežu. Provjerite internetsku vezu i pokušajte ponovno.";
@@ -596,6 +596,9 @@
 "Link Mobile" = "Mobilna veza";
 
 /* (No Commment) */
+"Load More Transactions" = "Učitavanje više transakcija";
+
+/* (No Commment) */
 "Loading External Page" = "Učitavanje vanjskih stranica";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "Lozinka je promijenjena. Molimo prijavite se za nastavak.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Lozinka mora 10 znakova ili duže";
+"Password must be less than or equal to 255 characters" = "Lozinka mora biti dulji od 255 znakova";
 
 /* (No Commment) */
 "Passwords do not match" = "Lozinke se ne podudaraju";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "Osmislili smo potpuno novi novčanik iskustvo za v
 
 /* (No Commment) */
 "Your password hint has been updated." = "Ažuriran je vaš podsjetnik za lozinku.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Vaša lozinka nije dovoljno jak. Molimo izaberite drugu lozinku.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Prenesena sredstva će biti siguran i siguran, a vi ćete imati koristi od povećane privatnost i zgodan sigurnosno kopiranje i povrat mogućnosti.";

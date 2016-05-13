@@ -31,9 +31,6 @@
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld सेकंड पहले";
 
-/* (No Commment) */
-"* Minimum 10 characters" = "* न्यूनतम 10 अक्षर";
-
 /* No comment provided by engineer. */
 "1 hour ago" = "1 घंटे पहले";
 
@@ -108,6 +105,9 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2-चरणीय सत् यापन बदलते समय एक त्रुटि उत्पन्न हुई।";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "अपने परिवर्तन सहेजने के दौरान कोई त्रुटि उत्पन्न हुई। कृपया सुनिश्चित करें कि आप किसी अन्य डिवाइस पर अपने बटुए में लॉग नहीं हैं।";
 
 /* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "अपने spendable संतुलन को अद्यतन करते समय कोई त्रुटि उत्पन्न हुई। कृपया अपना इंटरनेट कनेक्शन जाँचें और पुनः प्रयास करें।";
@@ -596,6 +596,9 @@
 "Link Mobile" = "लिंक मोबाइल";
 
 /* (No Commment) */
+"Load More Transactions" = "अधिक लेन-देन लोड";
+
+/* (No Commment) */
 "Loading External Page" = "बाह्य पृष्ठ लोड हो रहा है";
 
 /* (No Commment) */
@@ -740,7 +743,7 @@
 "Password changed. Please login to continue." = "पासवर्ड परिवर्तित कर दिया। कृपया जारी रखने के लिए लॉगिन।";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "पासवर्ड चाहिए 10 वर्णों या उससे अधिक समय";
+"Password must be less than or equal to 255 characters" = "पासवर्ड से कम या बराबर करने के लिए 255 वर्ण होना चाहिए.";
 
 /* (No Commment) */
 "Passwords do not match" = "पासवर्ड मेल नहीं खाते हैं";
@@ -1361,6 +1364,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "Your password hint has been updated." = "अपने पासवर्ड संकेत अद्यतन किया गया है।";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "अपना पासवर्ड पर्याप्त रूप से मज़बूत नहीं है। कृपया किसी भिन्न पासवर्ड का चयन करें।";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "आपकी धनराशि सुरक्षित और सुरक्षित हो जाएगा, और आप बढ़ी हुई गोपनीयता और सुविधाजनक बैकअप और पुनर्प्राप्ति सुविधाओं से लाभ होगा।";
