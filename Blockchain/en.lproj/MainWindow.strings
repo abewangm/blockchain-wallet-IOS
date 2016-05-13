@@ -21,7 +21,7 @@
 "363.text" = "2";
 
 /* Class = "IBUILabel"; text = "If you’re using the old wallet, click the Account Settings button and choose the Devices tab. If you’re using our new beta wallet, go to Settings / Wallet Information."; ObjectID = "364"; */
-"364.text" = "If you’re using the old wallet, click the Account Settings button and choose the Devices tab. If you’re using our new beta wallet, go to Settings / Wallet Information.";
+"364.text" = "If you’re using the old wallet, click the Account Settings button and choose the Devices tab. If you’re using our new wallet, go to Settings / Wallet Information.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
