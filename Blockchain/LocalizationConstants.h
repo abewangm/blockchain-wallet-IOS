@@ -511,3 +511,5 @@
 #define BC_STRING_APP_REVIEW_PROMPT_TITLE NSLocalizedString(@"Rate Blockchain Wallet", nil)
 #define BC_STRING_YES_RATE_BLOCKCHAIN_WALLET NSLocalizedString(@"Yes, rate Blockchain Wallet", nil)
 #define BC_STRING_APP_REVIEW_PROMPT_MESSAGE NSLocalizedString(@"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it.", nil)
+
+#define BC_STRING_ERROR_SAVING_WALLET_CHECK_FOR_OTHER_DEVICES NSLocalizedString(@"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device.", nil)
