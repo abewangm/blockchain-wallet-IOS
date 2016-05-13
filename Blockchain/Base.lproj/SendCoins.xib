@@ -442,7 +442,9 @@
                     <rect key="frame" x="123" y="196" width="90" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="Customize Fee"/>
+                    <state key="normal" title="Customize Fee">
+                        <color key="titleColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="customizeFeeClicked:" destination="-1" eventType="touchUpInside" id="Dbt-ek-ZBN"/>
                     </connections>
@@ -475,7 +477,7 @@
         </view>
     </objects>
     <resources>
-        <image name="arrow_downward" width="11" height="11"/>
+        <image name="arrow_downward" width="26" height="26"/>
         <image name="cancel" width="11" height="11"/>
         <image name="disclosure" width="11" height="17"/>
         <image name="icon_support" width="26" height="26"/>
