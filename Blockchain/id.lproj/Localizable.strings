@@ -107,6 +107,9 @@
 "An error occurred while changing 2-Step verification." = "Terjadi galat saat mengganti verifikasi 2 langkah.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Galat terjadi saat menyimpan perubahan. Pastikan Anda tidak login ke dompet Anda pada perangkat lain.";
+
+/* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Galat terjadi saat memperbarui saldo Anda spendable. Silakan periksa koneksi internet Anda dan coba lagi.";
 
 /* (No Commment) */
@@ -599,6 +602,9 @@
 "Link Mobile" = "Tautan Nomor Ponsel";
 
 /* (No Commment) */
+"Load More Transactions" = "Beban lebih transaksi";
+
+/* (No Commment) */
 "Loading External Page" = "Pemuatan Halaman Eksternal";
 
 /* (No Commment) */
@@ -753,6 +759,9 @@
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Sandi harus 10 karakter atau lebih";
+
+/* (No Commment) */
+"Password must be less than or equal to 255 characters" = "Password harus kurang dari atau sama dengan 255 karakter";
 
 /* (No Commment) */
 "Passwords do not match" = "Sandi tidak cocok";
@@ -1418,6 +1427,9 @@ dompet pengalaman untuk Anda";
 
 /* (No Commment) */
 "Your password hint has been updated." = "Petunjuk sandi Anda telah diperbarui.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Sandi tidak cukup kuat. Silakan pilih sandi yang berbeda.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Dana ditransfer Anda akan aman dan aman, dan Anda akan mendapatkan keuntungan dari peningkatan privasi dan fitur backup dan recovery yang mudah digunakan.";
