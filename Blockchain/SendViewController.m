@@ -258,7 +258,7 @@ BOOL displayingLocalSymbolSend;
     if (self.sendFromAddress) {
         if (self.fromAddress.length == 0) {
             selectAddressTextField.text = BC_STRING_ANY_ADDRESS;
-            availableAmount = [app.wallet getTotalBalanceForActiveLegacyAddresses];
+            availableAmount = [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses];
         }
         else {
             selectAddressTextField.text = [self labelForLegacyAddress:self.fromAddress];

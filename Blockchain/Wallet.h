@@ -225,6 +225,7 @@
 
 - (uint64_t)getTotalActiveBalance;
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses;
+- (uint64_t)getTotalBalanceForSpendableActiveLegacyAddresses;
 - (uint64_t)getBalanceForAccount:(int)account;
 
 - (NSString *)getLabelForAccount:(int)account;
