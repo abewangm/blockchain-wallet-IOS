@@ -107,6 +107,9 @@
 "An error occurred while changing 2-Step verification." = "Une erreur s'est produite lors du changement de la vérification en 2 étapes.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Une erreur s’est produite lors de l’enregistrement de vos modifications. S’il vous plaît assurez-vous que vous n’êtes pas connecté à votre portefeuille sur un autre périphérique.";
+
+/* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Une erreur s'est produite pendant la mise à jour de votre solde disponible. Veuillez vérifier votre connexion internet et réessayez.";
 
 /* (No Commment) */
@@ -599,6 +602,9 @@
 "Link Mobile" = "Jumeler le portable";
 
 /* (No Commment) */
+"Load More Transactions" = "Charger plus de Transactions";
+
+/* (No Commment) */
 "Loading External Page" = "Chargement de page externe";
 
 /* (No Commment) */
@@ -753,6 +759,9 @@
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Le mot de passe doit être composé d’au moins 10 caractères";
+
+/* (No Commment) */
+"Password must be less than or equal to 255 characters" = "Mot de passe doit être inférieure ou égale à 255 caractères";
 
 /* (No Commment) */
 "Passwords do not match" = "Les mots de passe ne correspondent pas";
@@ -1418,6 +1427,9 @@ expérience portefeuille pour vous";
 
 /* (No Commment) */
 "Your password hint has been updated." = "Votre indice de mot de passe a été mis à jour.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Votre mot de passe n’est pas assez fort. Veuillez choisir un mot de passe différent.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Votre fonds transférés sera sûr et sécurisé, et vous bénéficierez de plus d'intimité et des fonctions pratiques de sauvegarde et de restauration.";
