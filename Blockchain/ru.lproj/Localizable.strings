@@ -107,6 +107,9 @@
 "An error occurred while changing 2-Step verification." = "Произошла ошибка 2-шаговой верификации";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Произошла ошибка при сохранении изменений. Пожалуйста, убедитесь, что вы не вошли в ваш кошелек на другом устройстве.";
+
+/* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Произошла ошибка при обновлении вашего расходуемого баланс. Проверьте подключение к Интернету и повторите попытку.";
 
 /* (No Commment) */
@@ -599,6 +602,9 @@
 "Link Mobile" = "Зарегистрировать номер мобильного телефона";
 
 /* (No Commment) */
+"Load More Transactions" = "Загрузить больше транзакций";
+
+/* (No Commment) */
 "Loading External Page" = "Загрузка внешней страницы";
 
 /* (No Commment) */
@@ -753,6 +759,9 @@
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Пароль должен состоять из 10 символов или более";
+
+/* (No Commment) */
+"Password must be less than or equal to 255 characters" = "Пароль должен быть меньше или равна 255 символов";
 
 /* (No Commment) */
 "Passwords do not match" = "Пароли не совпадают";
@@ -1418,6 +1427,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "Your password hint has been updated." = "Подсказка для пароля должна быть обновлена.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Ваш пароль не достаточно сильны. Пожалуйста, выберите другой пароль.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Ваш переведенных средств будет спокойной и безопасной, и вы будете пользоваться повышенной конфиденциальности и удобных функций резервного копирования и восстановления.";
