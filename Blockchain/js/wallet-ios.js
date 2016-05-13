@@ -1672,8 +1672,11 @@ MyWalletPhone.updateWebsocketURL = function(url) {
 }
 
 MyWalletPhone.updateAPIURL = function(url) {
-    var randomBytesPath = '/v2/randombytes'
-    RNG.URL = url.concat(randomBytesPath);
+    if (url.substring(url.length - 1) != '/') {
+        BlockchainAPI.API_ROOT_URL = url.concat('/')
+    } else {
+        BlockchainAPI.API_ROOT_URL = url;
+    }
 }
 
 MyWalletPhone.getXpubForAccount = function(accountIndex) {
