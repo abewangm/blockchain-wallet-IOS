@@ -137,7 +137,7 @@ typedef enum {
 {
 #ifdef ENABLE_TRANSFER_FUNDS
     if (self.address) {
-        return [app.wallet getLegacyAddressBalance:self.address] > [app.wallet dust] && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
+        return [app.wallet getLegacyAddressBalance:self.address] >= [app.wallet dust] && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
     } else {
         return NO;
     }

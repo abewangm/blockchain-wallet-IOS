@@ -209,7 +209,7 @@
 {
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     
-    if ([app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses] > [app.wallet dust] && navigationController.visibleViewController == self) {
+    if ([app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses] >= [app.wallet dust] && navigationController.visibleViewController == self) {
         navigationController.warningButton.hidden = NO;
     } else {
         navigationController.warningButton.hidden = YES;
