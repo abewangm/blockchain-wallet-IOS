@@ -165,6 +165,8 @@ typedef enum {
     [app showSendCoins];
 
     [app.sendViewController transferFundsToDefaultAccountFromAddress:self.address];
+    
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (void)labelAddressClicked
