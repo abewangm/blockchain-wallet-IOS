@@ -107,6 +107,9 @@
 "An error occurred while changing 2-Step verification." = "Erro ao alterar a verificação em 2 passos.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Ocorreu um erro ao guardar as alterações. Por favor, certifique-se de que você não está logado em sua carteira em outro dispositivo.";
+
+/* (No Commment) */
 "An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Ocorreu um erro ao atualizar seu saldo spendable. Por favor, verifique sua conexão de internet e tente novamente.";
 
 /* (No Commment) */
@@ -599,6 +602,9 @@
 "Link Mobile" = "Link para dispositivos móveis";
 
 /* (No Commment) */
+"Load More Transactions" = "Carregar mais transações";
+
+/* (No Commment) */
 "Loading External Page" = "Carregando página externa";
 
 /* (No Commment) */
@@ -753,6 +759,9 @@
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "A senha deve ter 10 caracteres ou mais";
+
+/* (No Commment) */
+"Password must be less than or equal to 255 characters" = "Senha deve ser menor ou igual a 255 caracteres";
 
 /* (No Commment) */
 "Passwords do not match" = "As senhas não correspondem";
@@ -1418,6 +1427,9 @@ totalmente nova para você";
 
 /* (No Commment) */
 "Your password hint has been updated." = "Sua dica de senha será atualizada.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Sua senha não é forte o suficiente. Por favor, escolha uma senha diferente.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Seus fundos transferidos será salvo e seguro, e você vai se beneficiar de maior privacidade e características convenientes de backup e recuperação.";
