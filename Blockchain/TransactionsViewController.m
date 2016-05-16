@@ -68,7 +68,7 @@ int lastNumberTransactions = INT_MAX;
     if (!self.loadedAllTransactions) {
         if (indexPath.row == (int)[data.transactions count] - 1) {
             // If user scrolled down at all or if the user clicked fetch more and the table isn't filled, fetch
-            if (_tableView.contentOffset.y > 0 || (_tableView.contentOffset.y == 0 && self.clickedFetchMore)) {
+            if (_tableView.contentOffset.y > 0 || (_tableView.contentOffset.y <= 0 && self.clickedFetchMore)) {
                 [app.wallet fetchMoreTransactions];
             } else {
                 [self showMoreButton];
@@ -234,10 +234,23 @@ int lastNumberTransactions = INT_MAX;
 {
     lastNumberTransactions = data.n_transactions;
     
-    self.loadedAllTransactions = NO;
-    self.clickedFetchMore = NO;
-    
-    [app.wallet getHistory];
+    if (self.loadedAllTransactions) {
+        self.loadedAllTransactions = NO;
+        self.clickedFetchMore = YES;
+        [app.wallet getHistory];
+    } else {
+        BOOL tableViewIsEmpty = [self.tableView numberOfRowsInSection:0] == 0;
+        BOOL tableViewIsFilled = ![[self.tableView indexPathsForVisibleRows] containsObject:[NSIndexPath indexPathForRow:[data.transactions count] - 1 inSection:0]];
+        
+        if (tableViewIsEmpty) {
+            [self fetchMoreClicked];
+        } else if (tableViewIsFilled) {
+            self.clickedFetchMore = YES;
+           [app.wallet getHistory];
+        } else {
+           [self fetchMoreClicked];
+        }
+    }
     
     // This should be done when request has finished but there is no callback
     if (refreshControl && refreshControl.isRefreshing) {

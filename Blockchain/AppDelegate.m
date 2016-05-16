@@ -316,30 +316,30 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)filterTransactionsByAccount:(int)accountIndex
 {
+    _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
     [self.wallet reloadFilter];
-    _transactionsViewController.clickedFetchMore = NO;
     
     [self showFilterResults];
 }
 
 - (void)filterTransactionsByImportedAddresses
 {
+    _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
     [self.wallet reloadFilter];
-    _transactionsViewController.clickedFetchMore = NO;
     
     [self showFilterResults];
 }
 
 - (void)removeTransactionsFilter
 {
+    _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
     [_transactionsViewController changeFilterLabel:BC_STRING_TOTAL_BALANCE];
     [self.wallet reloadFilter];
-    _transactionsViewController.clickedFetchMore = NO;
     
     [self showFilterResults];
 }
