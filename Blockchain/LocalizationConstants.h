@@ -11,6 +11,7 @@
 #define BC_STRING_ARGUMENT_ADDRESSES NSLocalizedString(@"%d addresses", nil)
 #define BC_STRING_ARGUMENT_ADDRESS NSLocalizedString(@"%d address", nil)
 #define BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_OR_EQUAL_TO_DUST NSLocalizedString(@"You have no addresses with a spendable balance greater than or equal to the required dust threshold.", nil)
+#define BC_STRING_SOME_FUNDS_CANNOT_BE_TRANSFERRED_AUTOMATICALLY NSLocalizedString(@"Some funds cannot be transferred automatically.", nil)
 
 #define BC_STRING_ENTER_BITCOIN_ADDRESS_OR_SELECT NSLocalizedString(@"Enter Bitcoin address or select", nil);
 #define BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS NSLocalizedString(@"You must enter a destination address", nil)

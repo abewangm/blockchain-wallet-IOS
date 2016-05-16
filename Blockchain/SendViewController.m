@@ -1203,6 +1203,13 @@ BOOL displayingLocalSymbolSend;
         });
         return;
     }
+    
+    if ([amount longLongValue] + [fee longLongValue] > [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [app standardNotifyAutoDismissingController:BC_STRING_SOME_FUNDS_CANNOT_BE_TRANSFERRED_AUTOMATICALLY title:BC_STRING_WARNING_TITLE];
+            [app hideBusyView];
+        });
+    }
 
     self.transferAllAddressesToTransfer = [[NSMutableArray alloc] initWithArray:addressesUsed];
     self.transferAllAddressesTransferred = [[NSMutableArray alloc] init];
