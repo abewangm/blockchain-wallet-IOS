@@ -1186,10 +1186,13 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateSendBalance:(NSNumber *)balance
 {
+    uint64_t newBalance = [balance longLongValue] <= 0 ? 0 : [balance longLongValue];
+    
     if (self.customFeeMode) {
-        customFeeOriginalAvailableAmount = [balance longLongValue];
+        customFeeOriginalAvailableAmount = newBalance;
     }
-    availableAmount = [balance longLongValue];
+    
+    availableAmount = newBalance;
     
     [self doCurrencyConversionAfterMultiAddress];
 }
