@@ -703,7 +703,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
             console.log('gettingInfoTransferAll: SweepFee: ' + x.sweepFee);
             console.log('gettingInfoTransferAll: SweepAmount: ' + x.sweepAmount);
                                                                                                                                      
-            if (x.sweepAmount > Bitcoin.networks.bitcoin.dustThreshold) {
+            if (x.sweepAmount >= Bitcoin.networks.bitcoin.dustThreshold) {
                 totalAmount += x.sweepAmount;
                 totalFee += x.sweepFee;
                 totalAddressesUsed.push(x.from[0]);
