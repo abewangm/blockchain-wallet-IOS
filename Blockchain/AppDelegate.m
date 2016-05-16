@@ -607,12 +607,16 @@ void (^secondPasswordSuccess)(NSString *);
     
     _transactionsViewController.data = response;
     
+#ifdef ENABLE_TRANSACTION_FILTERING
     if (app.wallet.isFetchingTransactions) {
         [_transactionsViewController reload];
         app.wallet.isFetchingTransactions = NO;
     } else {
         [self reloadAfterMultiAddressResponse];
     }
+#else
+    [self reloadAfterMultiAddressResponse];
+#endif
 }
 
 - (void)didSetLatestBlock:(LatestBlock*)block
@@ -1818,6 +1822,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)reloadTransactionFilterLabel
 {
+#ifdef ENABLE_TRANSACTION_FILTERING
     if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
         app.mainLogoImageView.hidden = YES;
         if (_tabViewController.activeViewController == _transactionsViewController) {
@@ -1829,6 +1834,7 @@ void (^secondPasswordSuccess)(NSString *);
         [_transactionsViewController hideFilterLabel];
         app.mainLogoImageView.hidden = _tabViewController.activeViewController == _transactionsViewController ? NO : YES;
     }
+#endif
 }
 
 #pragma mark - Actions

@@ -1122,7 +1122,11 @@
 
 - (void)loading_start_get_history
 {
+#ifdef ENABLE_TRANSACTION_FILTERING
     [app showBusyViewInTransparentBackgroundWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+#else
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+#endif
 }
 
 - (void)loading_start_get_wallet_and_history
