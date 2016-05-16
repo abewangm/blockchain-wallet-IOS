@@ -10,7 +10,7 @@
 #define BC_STRING_ANY_ADDRESS NSLocalizedString(@"Any address", nil)
 #define BC_STRING_ARGUMENT_ADDRESSES NSLocalizedString(@"%d addresses", nil)
 #define BC_STRING_ARGUMENT_ADDRESS NSLocalizedString(@"%d address", nil)
-#define BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_DUST NSLocalizedString(@"You have no addresses with a spendable balance above the required dust threshold.", nil)
+#define BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_OR_EQUAL_TO_DUST NSLocalizedString(@"You have no addresses with a spendable balance greater than or equal to the required dust threshold.", nil)
 
 #define BC_STRING_ENTER_BITCOIN_ADDRESS_OR_SELECT NSLocalizedString(@"Enter Bitcoin address or select", nil);
 #define BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS NSLocalizedString(@"You must enter a destination address", nil)
@@ -30,7 +30,7 @@
 #define BC_STRING_YES NSLocalizedString(@"Yes", nil)
 #define BC_STRING_SEND NSLocalizedString(@"Send", nil)
 #define BC_STRING_NO_AVAILABLE_FUNDS NSLocalizedString(@"You have no available funds to send from this address", nil)
-#define BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD NSLocalizedString(@"Amount must be above dust threshold (%lld Satoshi)", nil)
+#define BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD NSLocalizedString(@"Amount must be greater than or equal to the dust threshold (%lld Satoshi)", nil)
 #define BC_STRING_RECEIVE NSLocalizedString(@"Receive", nil)
 #define BC_STRING_TRANSACTIONS NSLocalizedString(@"Transactions", nil)
 #define BC_STRING_LOAD_MORE_TRANSACTIONS NSLocalizedString(@"Load More Transactions", nil)

@@ -1809,7 +1809,7 @@
         [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
     } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
         uint64_t threshold = [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue];
-        [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, threshold]];
+        [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, threshold]];
     } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {
         [app standardNotifyAutoDismissingController:BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION];
     } else {
