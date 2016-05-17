@@ -121,7 +121,7 @@
         [app.wallet resendTwoFactorSMS];
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        app.wallet.twoFactorInput = [[[alertForVerifyingMobileNumber textFields] firstObject].text stringByReplacingOccurrencesOfString:@" " withString:@""];
+        app.wallet.twoFactorInput = [[[[alertForVerifyingMobileNumber textFields] firstObject].text uppercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self continueClicked:nil];
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
