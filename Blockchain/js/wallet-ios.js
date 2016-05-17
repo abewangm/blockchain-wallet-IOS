@@ -693,10 +693,11 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     var totalFee = 0;
     var promiseIndex = 0;
     var totalAddressesUsed = [];
+    var addresses = MyWallet.wallet.spendableActiveAddresses.filter(function(k) {return Blockchain.MyWallet.wallet.key(k).balance > 0;});
     
-    for (var index = 0; index < MyWallet.wallet.spendableActiveAddresses.length; index++) {
+    for (var index = 0; index < addresses.length; index++) {
         var payment = new Payment();
-        payment.from(MyWallet.wallet.spendableActiveAddresses[index]).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
+        payment.from(addresses[index]).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
             
             console.log('gettingInfoTransferAll: from:' + x.from);
             console.log('gettingInfoTransferAll: balance:' + x.balance);
@@ -709,7 +710,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
                 totalAddressesUsed.push(x.from[0]);
             }
 
-            if (promiseIndex == MyWallet.wallet.spendableActiveAddresses.length - 1) {
+            if (promiseIndex == addresses.length - 1) {
                console.log('totalAmount: ' + totalAmount);
                console.log('totalFee: ' + totalFee);
                device.execute('update_transfer_all_amount:fee:addressesUsed:', [totalAmount, totalFee, totalAddressesUsed]);
