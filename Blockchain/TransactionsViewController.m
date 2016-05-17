@@ -305,6 +305,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (uint64_t)getBalance
 {
+#ifdef ENABLE_TRANSACTION_FILTERING
     if (self.filterIndex == FILTER_INDEX_ALL) {
         return [app.wallet getTotalActiveBalance];
     } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
@@ -312,6 +313,9 @@ int lastNumberTransactions = INT_MAX;
     } else {
         return [app.wallet getBalanceForAccount:(int)self.filterIndex];
     }
+#else
+    return [app.wallet getTotalActiveBalance];
+#endif
 }
 
 #pragma mark - View lifecycle

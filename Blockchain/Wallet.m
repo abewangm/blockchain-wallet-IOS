@@ -1261,10 +1261,10 @@
     
     [self getFinalBalance];
     
-    NSString *filter;
-    
+    NSString *filter = @"";
+#ifdef ENABLE_TRANSACTION_FILTERING
     int filterIndex = (int)app.transactionsViewController.filterIndex;
-    
+
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
     } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
@@ -1272,7 +1272,7 @@
     } else {
         filter = [NSString stringWithFormat:@"%d", filterIndex];
     }
-    
+#endif
     [self.webView executeJSWithCallback:^(NSString * multiAddrJSON) {
         MultiAddressResponse *response = [self parseMultiAddrJSON:multiAddrJSON];
 
