@@ -689,40 +689,34 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
 
 MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     
-    var totalAmount = 0;
-    var totalFee = 0;
-    var promiseIndex = 0;
     var totalAddressesUsed = [];
-    var addresses = MyWallet.wallet.spendableActiveAddresses.filter(function(k) {return MyWallet.wallet.key(k).balance > 0;});
+    var addresses = MyWallet.wallet.spendableActiveAddresses;
+    var payments = [];
     
-    for (var index = 0; index < addresses.length; index++) {
-        var payment = new Payment();
-        payment.from(addresses[index]).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll().then(function (x) {
-            
-            console.log('gettingInfoTransferAll: from:' + x.from);
-            console.log('gettingInfoTransferAll: balance:' + x.balance);
-            console.log('gettingInfoTransferAll: SweepFee: ' + x.sweepFee);
-            console.log('gettingInfoTransferAll: SweepAmount: ' + x.sweepAmount);
-                                                                                                                                     
-            if (x.sweepAmount >= Bitcoin.networks.bitcoin.dustThreshold) {
-                totalAmount += x.sweepAmount;
-                totalFee += x.sweepFee;
-                totalAddressesUsed.push(x.from[0]);
-            }
-
-            if (promiseIndex == addresses.length - 1) {
-               console.log('totalAmount: ' + totalAmount);
-               console.log('totalFee: ' + totalFee);
-               device.execute('update_transfer_all_amount:fee:addressesUsed:', [totalAmount, totalFee, totalAddressesUsed]);
-            }
-                                                                                                                                     
-            promiseIndex++;
-            
-            device.execute('loading_start_transfer_all:', [promiseIndex]);
-
-            return x;
-        });
+    var updateInfo = function(payments) {
+        var totalAmount = payments.filter(function(p) {return p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { totalAddressesUsed.push(p.from[0]); return p.amounts[0]; }).reduce(Helpers.add, 0);
+        var totalFee = payments.filter(function(p) {return p.finalFee > 0}).map(function (p) { return p.finalFee; }).reduce(Helpers.add, 0);
+        
+        device.execute('update_transfer_all_amount:fee:addressesUsed:', [totalAmount, totalFee, totalAddressesUsed]);
     }
+    
+    var createPayment = function(address) {
+        var payment = new Payment().from(address).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll();
+        return payment;
+    }
+    
+    var queue = Promise.resolve();
+    addresses.forEach(function (address, index) {
+        queue = queue.then(function (p) {
+            if (p) payments.push(p);
+            device.execute('loading_start_transfer_all:', [index + 1]);
+            return createPayment(address);
+        });
+    });
+    
+    queue.then(function(last) {
+        updateInfo(payments);
+    });
 }
 
 MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, address, secondPassword) {
