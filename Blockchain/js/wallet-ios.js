@@ -693,7 +693,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     var totalFee = 0;
     var promiseIndex = 0;
     var totalAddressesUsed = [];
-    var addresses = MyWallet.wallet.spendableActiveAddresses.filter(function(k) {return Blockchain.MyWallet.wallet.key(k).balance > 0;});
+    var addresses = MyWallet.wallet.spendableActiveAddresses.filter(function(k) {return MyWallet.wallet.key(k).balance > 0;});
     
     for (var index = 0; index < addresses.length; index++) {
         var payment = new Payment();
