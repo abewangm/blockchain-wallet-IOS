@@ -708,8 +708,10 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     var queue = Promise.resolve();
     addresses.forEach(function (address, index) {
         queue = queue.then(function (p) {
-            if (p) payments.push(p);
-            device.execute('loading_start_transfer_all:', [index + 1]);
+            if (p) {
+                payments.push(p);
+                device.execute('loading_start_transfer_all:', [index])
+            };
             return createPayment(address);
         });
     });

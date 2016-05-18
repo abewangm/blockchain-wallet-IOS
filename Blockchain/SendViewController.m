@@ -1194,7 +1194,9 @@ BOOL displayingLocalSymbolSend;
     
     availableAmount = newBalance;
     
-    [self doCurrencyConversionAfterMultiAddress];
+    if (!self.transferAllMode) {
+        [self doCurrencyConversionAfterMultiAddress];
+    }
 }
 
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
