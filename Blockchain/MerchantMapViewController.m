@@ -21,7 +21,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface MerchantMapViewController () <CLLocationManagerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, UIAlertViewDelegate>
+@interface MerchantMapViewController () <CLLocationManagerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
@@ -40,8 +40,6 @@
 @property (strong, nonatomic) NSOperationQueue *merchantLocationNetworkQueue;
 
 @property (strong, nonatomic) CLLocation *lastCenterLocation;
-
-@property (strong, nonatomic) UIAlertView *askUserToEnableLocationServicesAlertView;
 
 @end
 
