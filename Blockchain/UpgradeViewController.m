@@ -12,7 +12,7 @@
 #import "LocalizationConstants.h"
 #import "UILabel+MultiLineAutoSize.h"
 
-@interface UpgradeViewController () <UIAlertViewDelegate>
+@interface UpgradeViewController ()
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
