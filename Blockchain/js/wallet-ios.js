@@ -25,6 +25,7 @@ BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
 var MyWalletPhone = {};
 var currentPayment = null;
+var transferAllPayments = {};
 
 window.onerror = function(errorMsg, url, lineNumber) {
     device.execute("jsUncaughtException:url:lineNumber:", [errorMsg, url, lineNumber]);
@@ -692,6 +693,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     var totalAddressesUsed = [];
     var addresses = MyWallet.wallet.spendableActiveAddresses;
     var payments = [];
+    transferAllPayments = {};
     
     var updateInfo = function(payments) {
         var totalAmount = payments.filter(function(p) {return p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { totalAddressesUsed.push(p.from[0]); return p.amounts[0]; }).reduce(Helpers.add, 0);
@@ -701,8 +703,11 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     }
     
     var createPayment = function(address) {
-        var payment = new Payment().from(address).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll();
-        return payment;
+        return new Promise(function (resolve) {
+            var payment = new Payment().from(address).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll();
+            transferAllPayments[address] = payment;
+            payment.sideEffect(function (p) { resolve(p); });
+        })
     }
     
     var queue = Promise.resolve();
@@ -724,7 +729,6 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
 MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, address, secondPassword) {
     var totalAmount = 0;
     var totalFee = 0;
-    currentPayment = new Payment();
     
     var buildFailure = function (error) {
         console.log('failure building transfer all payment');
@@ -743,17 +747,10 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
         
         return error.payment;
     }
+    
+    currentPayment = transferAllPayments[address];
     if (currentPayment) {
-        currentPayment.from(address).to(MyWalletPhone.getReceivingAddressForAccount(MyWallet.wallet.hdwallet.defaultAccountIndex)).useAll().then(function (x) {
-                                                                                         
-            console.log('buildingTransferAll: from:' + x.from);
-            console.log('buildingTransferAll: balance:' + x.balance);
-            console.log('buildingTransferAll: SweepFee: ' + x.sweepFee);
-            console.log('buildingTransferAll: SweepAmount: ' + x.sweepAmount);
-            totalAmount += x.sweepAmount;
-            totalFee += x.sweepFee;
-            return x;
-        }).build().then(function (x) {
+        currentPayment.build().then(function (x) {
                                                                                                          
             if (isFirstTransfer) {
                console.log('builtTransferAll: from:' + x.from);

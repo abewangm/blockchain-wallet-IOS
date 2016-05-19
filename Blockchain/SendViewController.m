@@ -1221,15 +1221,15 @@ BOOL displayingLocalSymbolSend;
     self.transferAllAddressesInitialCount = (int)[self.transferAllAddressesToTransfer count];
     self.transferAllAddressesUnspendable = 0;
     
-    [self reload];
-
-    [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
+    self.fromAddress = @"";
+    self.sendFromAddress = YES;
+    self.sendToAddress = NO;
+    self.toAccount = [app.wallet getDefaultAccountIndex];
+    toField.text = [app.wallet getLabelForAccount:[app.wallet getDefaultAccountIndex]];
     
     self.feeFromTransactionProposal = [fee longLongValue];
     amountInSatoshi = [amount longLongValue];
-    
-    [self didSelectFromAddress:@""];
-    
+        
     selectAddressTextField.text = [addressesUsed count] == 1 ? [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESS, [addressesUsed count]] : [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [addressesUsed count]];
     
     [self disablePaymentButtons];
