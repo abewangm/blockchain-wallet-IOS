@@ -27,12 +27,13 @@
 @synthesize delegate;
 
 bool showFromAddresses;
+bool allSelectable;
 
 int addressBookSectionNumber;
 int accountsSectionNumber;
 int legacyAddressesSectionNumber;
 
-- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses
+- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses allSelectable:(BOOL)_allSelectable
 {
     if ([super initWithFrame:CGRectZero]) {
         [[NSBundle mainBundle] loadNibNamed:@"BCAddressSelectionView" owner:self options:nil];
@@ -41,6 +42,7 @@ int legacyAddressesSectionNumber;
         // The From Address View shows accounts and legacy addresses with their balance. Entries with 0 balance are not selectable.
         // The To Address View shows address book entries, account and legacy addresses without a balance.
         showFromAddresses = _showFromAddresses;
+        allSelectable = _allSelectable;
         
         addressBookAddresses = [NSMutableArray array];
         addressBookAddressLabels = [NSMutableArray array];
@@ -295,7 +297,7 @@ int legacyAddressesSectionNumber;
             cell.balanceLabel.text = [app formatMoney:balance];
             
             // Cells with empty balance can't be clicked and are dimmed
-            if (balance == 0) {
+            if (balance == 0 && !allSelectable) {
                 cell.userInteractionEnabled = NO;
                 cell.labelLabel.alpha = 0.5;
                 cell.addressLabel.alpha = 0.5;

@@ -20,8 +20,7 @@
 
 #import "Wallet.h"
 
-@interface ReceiveCoinsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
-    IBOutlet UITableView *tableView;
+@interface ReceiveCoinsViewController : UIViewController <UITextFieldDelegate> {
     IBOutlet UIImageView *qrCodeMainImageView;
     IBOutlet UIImageView *qrCodePaymentImageView;
     IBOutlet UIButton *moreActionsButton;
@@ -41,6 +40,7 @@
     IBOutlet UILabel *fiatLabel;
     IBOutlet UITextField *fiatAmountField;
     
+    IBOutlet UIButton *doneButton;
     // Keyboard accessory view
     IBOutlet UIView *amountKeyboardAccessoryView;
 }
@@ -49,6 +49,12 @@
 @property(nonatomic, strong) UITapGestureRecognizer *tapGesture;
 
 @property(nonatomic, strong) NSString *clickedAddress;
+
+@property(nonatomic) UIView *bottomContainerView;
+@property(nonatomic) UITextField *receiveBtcField;
+@property(nonatomic) UITextField *receiveFiatField;
+@property(nonatomic) UILabel *receiveToLabel;
+@property(nonatomic) UIView *headerView;
 
 - (IBAction)shareClicked:(id)sender;
 - (IBAction)moreActionsClicked:(id)sender;

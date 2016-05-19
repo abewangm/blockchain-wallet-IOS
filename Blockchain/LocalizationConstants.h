@@ -54,6 +54,7 @@
 #define BC_STRING_CONFIRM_PAYMENT_OF NSLocalizedString(@"To: %@\n%@\nTotal Amount: %@\nFee: %@\n(%@)", nil)
 #define BC_STRING_SEND_FROM NSLocalizedString(@"Send from...", nil)
 #define BC_STRING_SEND_TO NSLocalizedString(@"Send to...", nil)
+#define BC_STRING_RECEIVE_TO NSLocalizedString(@"Receive to...", nil)
 #define BC_STRING_CONFIRM_SWEEP_TITLE NSLocalizedString(@"Use all funds", nil)
 #define BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT NSLocalizedString(@"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?", nil)
 

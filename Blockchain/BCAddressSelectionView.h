@@ -34,7 +34,7 @@
     IBOutlet UITableView *tableView;
 }
 
-- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)showOwnAddresses;
+- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses allSelectable:(BOOL)_allSelectable;
 
 @property(nonatomic, strong) NSMutableArray *addressBookAddresses;
 @property(nonatomic, strong) NSMutableArray *addressBookAddressLabels;

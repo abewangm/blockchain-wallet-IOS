@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReceiveCoinsViewController">
@@ -10,6 +10,7 @@
                 <outlet property="amountKeyboardAccessoryView" destination="118" id="Gp1-NE-vqg"/>
                 <outlet property="btcAmountField" destination="E60-hZ-tDl" id="7q3-Oy-yfD"/>
                 <outlet property="btcLabel" destination="jRM-0A-Zuo" id="1vB-k3-pcz"/>
+                <outlet property="doneButton" destination="ZHr-29-NdG" id="PBy-Ya-bWf"/>
                 <outlet property="entryField" destination="OFk-NR-2Sp" id="vfS-cp-qmr"/>
                 <outlet property="fiatAmountField" destination="a9y-3I-Drw" id="Ypl-yg-OL1"/>
                 <outlet property="fiatLabel" destination="wDT-32-lDe" id="Q9n-gR-MEv"/>
@@ -20,7 +21,6 @@
                 <outlet property="optionsTitleLabel" destination="90" id="95"/>
                 <outlet property="qrCodePaymentImageView" destination="23" id="gO6-uE-LwH"/>
                 <outlet property="requestCoinsView" destination="21" id="86"/>
-                <outlet property="tableView" destination="10" id="11"/>
                 <outlet property="view" destination="2" id="12"/>
             </connections>
         </placeholder>
@@ -28,17 +28,6 @@
         <view contentMode="scaleToFill" id="2" userLabel="Master View">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
-            <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="1" id="10">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="0.96724269701086962" green="0.96724269701086962" blue="0.96724269701086962" alpha="1" colorSpace="calibratedRGB"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="13"/>
-                        <outlet property="delegate" destination="-1" id="14"/>
-                    </connections>
-                </tableView>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -120,7 +109,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.000" minimumFontSize="17" id="E60-hZ-tDl" userLabel="Amount No Border Style Text Field - 0.00" customClass="BCSecureTextField" customModule="Blockchain" customModuleProvider="target">
-                    <rect key="frame" x="60" y="6" width="117" height="28"/>
+                    <rect key="frame" x="60" y="6" width="81" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
@@ -139,7 +128,7 @@
                     <color key="backgroundColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" minimumFontSize="17" id="a9y-3I-Drw" customClass="BCSecureTextField" customModule="Blockchain" customModuleProvider="target">
-                    <rect key="frame" x="227" y="5" width="81" height="30"/>
+                    <rect key="frame" x="191" y="5" width="81" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
@@ -148,12 +137,20 @@
                     </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wDT-32-lDe">
-                    <rect key="frame" x="182" y="9" width="40" height="21"/>
+                    <rect key="frame" x="146" y="9" width="40" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZHr-29-NdG">
+                    <rect key="frame" x="275" y="5" width="37" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Done"/>
+                    <connections>
+                        <action selector="doneButtonClicked:" destination="-1" eventType="touchUpInside" id="WHh-Km-SxX"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
