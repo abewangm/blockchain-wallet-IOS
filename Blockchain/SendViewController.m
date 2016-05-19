@@ -100,6 +100,7 @@ BOOL displayingLocalSymbolSend;
     feeField.inputAccessoryView = amountKeyboardAccessoryView;
     
     self.confirmPaymentView.customizeFeeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     feeField.delegate = self;
     
@@ -212,8 +213,7 @@ BOOL displayingLocalSymbolSend;
 - (void)hideSelectFromAndToButtonsIfAppropriate
 {
     // If we only have one account and no legacy addresses -> can't change from address
-    if ([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
-        && [app.wallet getActiveAccountsCount] == 1) {
+    if ([app.wallet getActiveAccountsCount] + [[app.wallet activeLegacyAddresses] count] == 1) {
         
         [selectFromButton setHidden:YES];
         [self hideFromField];
@@ -258,7 +258,7 @@ BOOL displayingLocalSymbolSend;
     if (self.sendFromAddress) {
         if (self.fromAddress.length == 0) {
             selectAddressTextField.text = BC_STRING_ANY_ADDRESS;
-            availableAmount = [app.wallet getTotalBalanceForActiveLegacyAddresses];
+            availableAmount = [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses];
         }
         else {
             selectAddressTextField.text = [self labelForLegacyAddress:self.fromAddress];
@@ -329,22 +329,11 @@ BOOL displayingLocalSymbolSend;
 
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
 {
-    [self reload];
-
-    self.sendFromAddress = true;
-    
-    [self resetPayment];
-    
-    if (!address || [address isEqualToString:@""]) {
-        self.fromAddress = address;
-        [self reloadFromField];
-    } else {
-        [self didSelectFromAddress:address];
-    }
+    [self didSelectFromAddress:address];
     
     [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
     
-    [app.wallet sweepPaymentRegularThenConfirm];
+    [app.wallet transferFundsToDefaultAccountFromAddress:address];
 }
 
 - (void)sendFromWatchOnlyAddress
@@ -1171,6 +1160,7 @@ BOOL displayingLocalSymbolSend;
     
     [self changeYPosition:fromLabel.frame.origin.y ofView:toLabel];
     [self changeYPosition:selectAddressTextField.frame.origin.y ofView:toField];
+    [self changeYPosition:selectFromButton.frame.origin.y ofView:addressBookButton];
     [self changeYPosition:lineBelowFromField.frame.origin.y ofView:lineBelowToField];
     [self changeYPosition:lineBelowFromField.frame.origin.y + 2 ofView:bottomContainerView];
 }
@@ -1196,22 +1186,34 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateSendBalance:(NSNumber *)balance
 {
-    if (self.customFeeMode) {
-        customFeeOriginalAvailableAmount = [balance longLongValue];
-    }
-    availableAmount = [balance longLongValue];
+    uint64_t newBalance = [balance longLongValue] <= 0 ? 0 : [balance longLongValue];
     
-    [self doCurrencyConversionAfterMultiAddress];
+    if (self.customFeeMode) {
+        customFeeOriginalAvailableAmount = newBalance;
+    }
+    
+    availableAmount = newBalance;
+    
+    if (!self.transferAllMode) {
+        [self doCurrencyConversionAfterMultiAddress];
+    }
 }
 
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
 {
     if ([addressesUsed count] == 0) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self showErrorBeforeSending:BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_DUST];
+            [self showErrorBeforeSending:BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_OR_EQUAL_TO_DUST];
             [app hideBusyView];
         });
         return;
+    }
+    
+    if ([amount longLongValue] + [fee longLongValue] > [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [app standardNotifyAutoDismissingController:BC_STRING_SOME_FUNDS_CANNOT_BE_TRANSFERRED_AUTOMATICALLY title:BC_STRING_WARNING_TITLE];
+            [app hideBusyView];
+        });
     }
 
     self.transferAllAddressesToTransfer = [[NSMutableArray alloc] initWithArray:addressesUsed];
@@ -1219,15 +1221,15 @@ BOOL displayingLocalSymbolSend;
     self.transferAllAddressesInitialCount = (int)[self.transferAllAddressesToTransfer count];
     self.transferAllAddressesUnspendable = 0;
     
-    [self reload];
-
-    [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
+    self.fromAddress = @"";
+    self.sendFromAddress = YES;
+    self.sendToAddress = NO;
+    self.toAccount = [app.wallet getDefaultAccountIndex];
+    toField.text = [app.wallet getLabelForAccount:[app.wallet getDefaultAccountIndex]];
     
     self.feeFromTransactionProposal = [fee longLongValue];
     amountInSatoshi = [amount longLongValue];
-    
-    [self didSelectFromAddress:@""];
-    
+        
     selectAddressTextField.text = [addressesUsed count] == 1 ? [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESS, [addressesUsed count]] : [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [addressesUsed count]];
     
     [self disablePaymentButtons];
@@ -1408,9 +1410,13 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateFundsAvailable
 {
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT,
-                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
-                          forState:UIControlStateNormal];
+    if (fiatAmountField.textColor == [UIColor redColor] && btcAmountField.textColor == [UIColor redColor] && [fiatAmountField.text isEqualToString:[app formatAmount:availableAmount localCurrency:YES]]) {
+        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [app formatMoney:availableAmount localCurrency:NO]] forState:UIControlStateNormal];
+    } else {
+        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT,
+                                        [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
+                              forState:UIControlStateNormal];
+    }
 }
 
 # pragma mark - AddressBook delegate

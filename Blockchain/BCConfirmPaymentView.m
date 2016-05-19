@@ -10,4 +10,11 @@
 
 @implementation BCConfirmPaymentView
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.arrowImageView.image = [self.arrowImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.arrowImageView setTintColor:COLOR_BLOCKCHAIN_BLUE];
+}
+
 @end

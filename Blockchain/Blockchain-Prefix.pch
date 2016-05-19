@@ -18,6 +18,10 @@
 
 #define ENABLE_TRANSFER_FUNDS 1
 
+#define ENABLE_TRANSACTION_FILTERING 1
+
+// #define ENABLE_TRANSACTION_FETCHING 1
+
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
 
@@ -119,12 +123,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_FETCH_UNSPENT @"ERR_FETCH_UNSPENT"
 #define ERROR_BELOW_DUST_THRESHOLD @"BELOW_DUST_THRESHOLD"
 #define ERROR_NO_UNSPENT_OUTPUTS @"NO_UNSPENT_OUTPUTS"
+#define ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL @"The number of destiny addresses and destiny amounts should be the same."
 #define ERROR_NOT_PRESENT_IN_WALLET @"addressNotPresentInWallet"
 #define ERROR_ADDRESS_NOT_WATCH_ONLY @"addressNotWatchOnly"
 #define ERROR_WRONG_PRIVATE_KEY @"wrongPrivateKey"
 #define ERROR_WRONG_BIP_PASSWORD @"wrongBipPass"
 #define ERROR_PRIVATE_KEY_OF_ANOTHER_WATCH_ONLY_ADDRESS @"privateKeyOfAnotherNonWatchOnlyAddress"
 #define ERROR_TYPE_MUST_START_WITH_NUMBER @"TypeError: must start with number"
+#define ERROR_FIRST_ARGUMENT_MUST_BE_STRING @"TypeError: First argument must be a string"
 #define ERROR_INVALID_PAIRING_VERSION_CODE @"Invalid Pairing Version Code"
 
 #define NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS @"reloadToDismissViews"
@@ -141,7 +147,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
-#define NOTIFICATION_KEY_GET_HISTORY_SUCCESS @"GetHistory"
 #define NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS @"GetAllCurrencySymbols"
 #define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
@@ -167,6 +172,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
 #define SEGUE_IDENTIFIER_ABOUT @"about"
+#define SEGUE_IDENTIFIER_CHANGE_PASSWORD @"changePassword"
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL @"accountsAndAddressesDetail"
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT @"accountsAndAddressesDetailEdit"
 #define SEGUE_IDENTIFIER_TWO_STEP @"twoStep"
@@ -194,6 +200,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ANIMATION_KEY_HIDE_MODAL @"HideModal"
 #define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
+
+#define TRANSACTION_FILTER_IMPORTED @"imported"
 
 #define DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT @"block_height"
 #define DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS @"confirmations"

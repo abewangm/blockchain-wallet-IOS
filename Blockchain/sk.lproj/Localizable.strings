@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " Má niekto prístup k vašej využitie frázy prístup k vašej bitcoin, tak sa určite držať to v režime offline niekde veľmi bezpečný a spoľahlivý.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Odporúčame pod poplatok za transakciu.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekúnd pred";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minimálne 10 znakov";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "pred 1 hodinou";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "Chyba pri zmene 2-krok overenia.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Počas ukladania zmien sa vyskytla chyba. Prosím, uistite sa, že nie ste prihlásení do peňaženky na inom zariadení.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Chyba pri aktualizácii spendable rovnováhu. Prosím skontrolujte svoje internetové pripojenie a skúste to znova.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Vyskytla sa chyba nakládky peňaženke. Môže byť offline alebo Blockchain je v ťažkostiach. Zavrite aplikáciu a skúste to znova neskôr alebo znova spárovať prístroj.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "Akákoľvek adresa";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App Store recenzia rýchle časovač (v sekundách)";
 
 /* (No Commment) */
 "Archive" = "Archív";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "Aktuálny kurz: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Prispôsobiť spôsob, ako organizovať vaše bitcoins vo vašej peňaženky Blockchain";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Prispôsobiť spôsob, ako si zorganizovať svoje bitcoin v peňaženke Blockchain";
 
 /* (No Commment) */
 "Customized fund management" = "Riadenie prispôsobené fondu";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "Povoliť umiestnenie služby";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Zapnúť upozornenia dostanete e-mail vždy, keď dostanete bitcoins. Iba označené adresy a dovážané adresy sú oprávnené spúšť oznámenia.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Zapnúť upozornenia dostanete e-mail vždy, keď dostanete bitcoin. Iba označené adresy a dovážané adresy sú oprávnené spúšť oznámenia.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Povoľte túto možnosť, aby sa zabránilo IP adresy, ktoré sú známe ako súčasť anonymizácia siete Tor v prístupe k vašej peňaženke. Tor siete je často používaný hackermi pokuse o prístup Blockchain užívateľom peňaženky.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "Neplatný overovací kód. Prosím skúste to znova.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "Je dôležité, aby sa ubezpečil, môžete napísať vaše slová, presne tak, ako sa objaví tu a ";
+
+/* No comment provided by engineer. */
 "Just now" = "Práve teraz";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "Mobilné prepojenie";
+
+/* (No Commment) */
+"Load More Transactions" = "Načítať viac transakcií";
 
 /* (No Commment) */
 "Loading External Page" = "Načítanie externých stránok";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "Nové heslo sa musí odlišovať od pomôcku pre heslo";
 
-/* (No Commment) */
-"News, Price & Charts" = "Novinky, cena & grafy";
-
 /* No comment provided by engineer. */
 "Next word" = "Ďalšie slovo";
 
@@ -683,13 +698,10 @@
 "Not now" = "teraz nie";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Vedomie, že raz rekonštruované, nemôžete sa vrátiť k predchádzajúcej verzii ale zostanú všetky vaše bitcoins a vaša História transakcií.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Všimnite si, že raz rekonštruované, nemôžete sa vrátiť na predchádzajúcu verziu, ale zostanú všetky vaše bitcoin a vaša História transakcií.";
 
 /* (No Commment) */
 "Notifications" = "Oznámenia";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Teraz môžete obnoviť vaše prostriedky pomocou 12 slovo oživenie slovné spojenie, v prípade, že stratíte vašu peňaženku heslo";
 
 /* No comment provided by engineer. */
 "OK" = "ok";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "Zmenil heslo. Prosím prihláste sa naďalej.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Heslo musí 10 znakov alebo dlhšie";
+"Password must be less than or equal to 255 characters" = "Heslo musí byť menší alebo rovný 255 znakov";
 
 /* (No Commment) */
 "Passwords do not match" = "Heslá sa nezhodujú.";
@@ -932,10 +944,13 @@
 "Settings" = "Nastavenia";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "Zdieľané mince nie je podporovaná v novej verzii v tejto dobe.";
+"Shared Coin is not supported at this time." = "Zdieľané mince nie je podporovaná v tejto dobe.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Zdieľanie vašich xPub povolí ostatným používateľom sledovať históriu transakcií. Ako oprávnené osoby môže byť schopný narušiť vám prístup k vašej peňaženke, zdieľať iba vaše xPub s ľuďmi, ktorým dôverujete.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "Zobraziť všetky upozornenia \"Dont Zobraziť znova\"";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signál %d bola vznesená.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Šifrovaný súkromný kľúč, ktorý sa pokúšate importovať. Zadajte heslo.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Inovácia bude trvať len chvíľku a bitcoins a História budú v bezpečí. Tu je to, čo je lepšie:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "Inovácia bude trvať len chvíľku a bitcoin a História budú v bezpečí. Tu je to, čo je lepšie:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Vyskytol sa problém pri overovaní vašej identity.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Táto transakcia vyžaduje vyšší poplatok na prach spotrebu vzhľadom na malé množstvo zmien, vrátia.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "To vymaže všetky peňaženky údaje v tomto zariadení. Potvrďte, prosím, máte peňaženku informácie uložené inde inak žiadne bitcoins v tejto peňaženka bude byť neprístupné!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "To umožní, aby tieto upozornenia: prijímať iba na hodinky, App Store preskúmanie výzvu a všetky prevody.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "To vymaže všetky údaje peňaženku na tomto zariadení. Potvrďte, že máte peňaženku informácie uložené inde inak žiadne bitcoin v tomto peňaženka bude byť neprístupný!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "Transakcie";
 
 /* (No Commment) */
-"Transaction Fee" = "Poplatok za transakciu";
-
-/* (No Commment) */
 "Transaction Fees" = "Transakčné poplatky";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Transakčné poplatky vplyv ako rýchlo Bitcoin ťažby siete potvrdí vaše transakcie a sú závislé na aktuálne sieťové podmienky. Odporúčame pod poplatok za transakciu.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Transakčné poplatky ovplyvniť, ako rýchlo bude Bitcoin ťažby siete potvrdiť vaše transakcie a závisí od aktuálne sieťové podmienky. Odporúčame poplatok pre transakciu v tomto okamihu.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Transakčné poplatky ovplyvniť, ako rýchlo bude Bitcoin ťažby siete potvrdiť vaše transakcie a závisí od aktuálne sieťové podmienky.";
 
 /* (No Commment) */
 "Transactions" = "Transakcie";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "Použite dotykové ID ako PIN";
 
 /* (No Commment) */
-"Use all %@" = "Použiť všetky %@";
-
-/* (No Commment) */
 "Use all funds" = "Použiť všetky prostriedky";
 
 /* (No Commment) */
 "Use recommended values" = "Používanie odporúčaných hodnôt";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "Použitie celkového mínus poplatok: %@";
 
 /* (No Commment) */
 "User Declined" = "Užívateľ odmietol";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 /* (No Commment) */
 "Welcome" = "vitaj";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "dobrá práca! By ste stratili heslo, môžete obnoviť prostriedky v tomto peňaženku aj v prípade, že v budúcnosti (okrem importovaných adries) pomocou 12 slovo oživenie frázy. Nezabudnite vaše zotavenie frázy offline niekde veľmi bezpečný a spoľahlivý. Ktokoľvek s prístupom k vašej využitie frázy má prístup k vašej bitcoin.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Sme rozpoznali predchádzajúcej inštalácie Blockchain peňaženka na telefóne.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 "Would you like to archive the addresses used?" = "Chcete archivovať adresy použité?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Zapíšte si vaše zotavenie frázy a udržať je niekde veľmi bezpečné. Pamätajte si, že každý, kto pozná vaše zotavenie frázy má prístup k vašej bitcoins.";
+"Write the following 12 words onto a " = "Napíšte tieto slová 12 na ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "Zle BIP38 heslo";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 "You are now running our most secure Bitcoin wallet" = "Teraz používate naše najbezpečnejšie Bitcoin peňaženku";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Ste úspešne zálohovali svoje finančné prostriedky";
+"You backed up your funds successfully." = "Ste zálohovali svoje prostriedky úspešne.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Môžete povoliť 2-krok overenie prostredníctvom SMS na váš mobilný telefón. Namiesto toho používať iné metódy autentifikácie, prosím prihláste sa na náš web peňaženku.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 "Your password hint has been updated." = "Váš tip na heslo bola aktualizovaná.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Heslo nie je dosť silný. Vyberte iné heslo.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Prevedených prostriedkov bude bezpečné a budete ťažiť zo zvýšenej ochrany osobných údajov a pohodlné funkcie zálohovania a obnovy.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "Navrhli sme úplne nový zážitok peňaženky pre
 "iOS Support Request" = "iOS podpory požiadať";
 
 /* No comment provided by engineer. */
+"in this order." = "v tomto poradí.";
+
+/* No comment provided by engineer. */
 "ninth word" = "deviaty slovo";
 
 /* (No Commment) */
 "or Continue" = "alebo pokračovať";
+
+/* No comment provided by engineer. */
+"piece of paper." = "kus papiera.";
 
 /* No comment provided by engineer. */
 "second word" = "druhé slovo";

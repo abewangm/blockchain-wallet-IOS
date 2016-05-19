@@ -134,7 +134,7 @@
     self.busyLabel.text = text;
     [self.view bringSubviewToFront:self.busyView];
     if (self.busyView.alpha < 1.0) {
-        [self.busyView fadeIn];
+        [self.busyView fadeInWithDarkBackground];
     }
 }
 
@@ -197,8 +197,9 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         [app closeSideMenu];
-        app.topViewControllerDelegate = nil;
     }];
+    
+    app.topViewControllerDelegate = nil;
     
     if (!app.sendViewController) {
         app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];

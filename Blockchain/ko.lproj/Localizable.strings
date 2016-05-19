@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " 복구 구문에 액세스할 수 있는 모든 사용자는 그래서 계속 오프 라인 어딘가에 매우 안전 하 고 안전 해야 당신의 bitcoin에 액세스할.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " 이 시간에 거래에 대 한 아래 요금을 권장합니다.";
+
 /* (No Commment) */
 "%@ BTC" = "BTC %@";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld 초 전";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* 최소 10 문자";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 시간 전";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "2 단계 확인을 변경 하는 동안 오류가 발생 했습니다.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "변경 내용을 저장 하는 동안 오류가 발생 했습니다. 다른 장치에 당신의 지갑에 로그인 하지 않은 다는 것을 확인 하십시오.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Spendable 잔액을 업데이트 하는 동안 오류가 발생 했습니다. 인터넷 연결을 확인 하 고 다시 시도 하십시오.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "오류가 당신의 지갑을 로드 하는 동안 발생 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있다. 제발 응용 프로그램을 닫고 나중에 다시 시도 또는 장치를 다시 쌍.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "모든 주소";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "응용 프로그램 저장소 검토 프롬프트 타이머 (초)";
 
 /* (No Commment) */
 "Archive" = "아카이브";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "현재 속도: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Blockchain 지갑에 당신의 bitcoins를 구성 하는 방법을 사용자 지정";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Blockchain 지갑에 당신의 bitcoin를 구성 하는 방법을 사용자 지정";
 
 /* (No Commment) */
 "Customized fund management" = "사용자 지정 된 기금 관리";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "위치 서비스를 활성화";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "사용 bitcoins 받을 때마다 이메일을 수신 알림. 주소를 표시 하 고 가져올 주소 트리거 알림을 받을 수 있습니다.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoin 받을 때마다 이메일을 수신 알림을 사용 합니다. 주소를 표시 하 고 가져올 주소 트리거 알림을 받을 수 있습니다.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "당신의 지갑에 액세스 바위산 익명 네트워크의 일부가 될 것으로 알려진 IP 주소를 방지 하려면이 옵션을 사용 합니다. Tor 네트워크는 Blockchain 사용자의 지갑에 액세스를 시도 하는 해커에 의해 자주 사용 됩니다.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "잘못 된 확인 코드입니다. 다시 시도 하십시오.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "여기에 나타나는 대로 정확 하 게 당신의 말을 적어 있는지 확인 하는 것이 중요 하다 고 ";
+
+/* No comment provided by engineer. */
 "Just now" = "지금 막";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "링크 모바일";
+
+/* (No Commment) */
+"Load More Transactions" = "더 많은 거래를 로드";
 
 /* (No Commment) */
 "Loading External Page" = "외부 페이지 로드";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "새 암호 암호 힌트 달라 야 합니다.";
 
-/* (No Commment) */
-"News, Price & Charts" = "뉴스, 가격 및 차트";
-
 /* No comment provided by engineer. */
 "Next word" = "다음 단어";
 
@@ -683,13 +698,10 @@
 "Not now" = "지금은 아니에요";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Note 업그레이드 되 면 이전 버전으로 다시 갈 수 없어 하지만 모든 bitcoins 및 거래 내역을 보관 합니다.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Note 업그레이드 되 면 이전 버전으로 다시 갈 수 없어 하지만 모든 bitcoin 및 거래 내역을 보관 합니다.";
 
 /* (No Commment) */
 "Notifications" = "알림";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "지금 당신의 지갑의 암호를 잃을 경우에 12 단어 복구 구문을 사용 하 여 귀하의 자금을 복원할 수 있습니다.";
 
 /* No comment provided by engineer. */
 "OK" = "괜찮았던 것";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "비밀 번호 변경. 계속 하려면 로그인을 하십시오.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "암호 해야 10 자 이상";
+"Password must be less than or equal to 255 characters" = "암호는 255 자 보다 작거나 되어야 합니다.";
 
 /* (No Commment) */
 "Passwords do not match" = "암호가 일치 하지 않습니다.";
@@ -932,10 +944,13 @@
 "Settings" = "설정";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "공유 동전이이 시간에는 새로운 버전에서 지원 되지 않습니다.";
+"Shared Coin is not supported at this time." = "공유 동전이이 시간에 지원 되지 않습니다.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "당신의 xPub 공유 거래 내역을 추적 하려면 다른 권한을 부여 합니다. 허가한 사람 액세스 당신의 지갑에서 당신을 방해 할 수 있습니다로 신뢰 하는 사람들과 당신의 xPub 공유.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "모든 ' 그나마 다시 표시 ' 경고 표시";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "신호 %d은 올렸다.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "가져올 하려고 하는 개인 키가 암호화 됩니다. 아래 암호를 입력 하십시오.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "업그레이드 다만 초 걸리며 bitcoins와 역사 안전 될 것입니다. 여기는 뭐가 더:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "업그레이드 다만 초 걸리며 bitcoin와 역사 안전 될 것입니다. 여기는 뭐가 더:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Id 확인 문제가 있었습니다.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "이 트랜잭션 반환 될 변화의 작은 금액으로 인해 먼지 소비에 대 한 더 높은 수수료를 요구 한다.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "이이 장치에 모든 지갑 데이터가 지워집니다. 당신은 당신의 지갑에 저장 된 정보 다른 곳에서 그렇지 않으면 어떤 bitcoins이 지갑 것입니다 액세스할 수 없습니다 것을 확인 하십시오!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "이것은 다음과 같은 경고 수: 시계 전용 응용 프로그램 저장소 검토 프롬프트를 수신 하 고 모든 자금.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "이이 장치에 모든 지갑 데이터가 지워집니다. 당신은 당신의 지갑에 저장 된 정보 다른 곳에서 그렇지 않으면 어떤 bitcoin 지갑 것입니다 액세스할 수 없습니다 것을 확인 하십시오!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "트랜잭션";
 
 /* (No Commment) */
-"Transaction Fee" = "거래 수수료";
-
-/* (No Commment) */
 "Transaction Fees" = "거래 수수료";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "거래 수수료에 영향을 얼마나 빨리 Bitcoin 마이닝과 네트워크 것입니다 귀하의 거래를 확인 하 고 현재 네트워크 조건에 따라 달라 집니다. 이 시간에 거래에 대 한 아래 요금을 권장합니다.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "거래 수수료에 영향을 얼마나 빨리 Bitcoin 마이닝과 네트워크 것입니다 귀하의 거래를 확인 하 고 현재 네트워크 조건에 따라 달라 집니다. 이 이번에이 거래에 대 한 표시 된 요금을 권장 합니다.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "거래 수수료에 영향을 얼마나 빨리 Bitcoin 마이닝과 네트워크 것입니다 귀하의 거래를 확인 하 고 현재 네트워크 조건에 따라 달라 집니다.";
 
 /* (No Commment) */
 "Transactions" = "거래";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "터치 ID 핀으로 사용";
 
 /* (No Commment) */
-"Use all %@" = "모든 %@를 사용 하 여";
-
-/* (No Commment) */
 "Use all funds" = "모든 자금을 사용 하 여";
 
 /* (No Commment) */
 "Use recommended values" = "권장된 값을 사용 하 여";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "사용 총 요금 마이너스 사용할 수: %@";
 
 /* (No Commment) */
 "User Declined" = "사용자 거부";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 /* (No Commment) */
 "Welcome" = "환영 합니다";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "웰던으로! 해야 합니다 귀하의 비밀 번호를 분실 (가져온된 주소)를 제외 하 고 미래 12 단어 복구 구문을 사용 하 여 받은 경우에이 지갑에 자금을 복원할 수 있습니다. 매우 안전 하 고 안전한 어딘가에 당신의 복구 어구 오프 라인를 유지 하도록 하십시오. 복구 구문에 액세스할 수 있는 모든 사용자는 당신의 bitcoin에 액세스할.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "우리가 귀하의 휴대 전화에 Blockchain 지갑의 이전 설치를 발견 했습니다.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 "Would you like to archive the addresses used?" = "사용 하는 주소를 보관 하 시겠습니까?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "복구 문구를 적어 하 고 매우 안전 하 고 안전한 어딘가에 그것을 유지. 당신의 복구 어구를 알고 있는 누군가 당신의 bitcoins에 액세스할 수 기억 하십시오.";
+"Write the following 12 words onto a " = "에 다음 12 단어 쓰기를 ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "잘못 된 BIP38 암호";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 "You are now running our most secure Bitcoin wallet" = "이제 우리의 가장 안전한 Bitcoin 지갑을 실행 하는";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "귀하의 자금을 성공적으로 백업";
+"You backed up your funds successfully." = "당신은 당신의 자금을 성공적으로 백업.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "귀하의 휴대 전화에 SMS 통해 2 단계 인증을 설정할 수 있습니다. 대신 다른 인증 방법을 사용, 우리의 웹 지갑에 로그인을 하시기 바랍니다.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 "Your password hint has been updated." = "암호 힌트 업데이트 되었습니다.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "비밀 번호는 충분히 강하지 않다. 다른 암호를 선택 하십시오.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "전송된 자금 안전 하 고 안전한, 그리고 증가 개인 정보 보호 및 편리한 백업 및 복구 기능에서 혜택을 얻을 것.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 "iOS Support Request" = "iOS 지원 요청";
 
 /* No comment provided by engineer. */
+"in this order." = "이 순서입니다.";
+
+/* No comment provided by engineer. */
 "ninth word" = "9 단어";
 
 /* (No Commment) */
 "or Continue" = "또는 계속";
+
+/* No comment provided by engineer. */
+"piece of paper." = "종이의 조각입니다.";
 
 /* No comment provided by engineer. */
 "second word" = "두 번째 단어";

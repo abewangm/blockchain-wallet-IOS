@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " Hozzáférhet a helyreállítási mondat is hozzáférhet a bitcoin, úgyhogy győződjön meg róla, hogy tartsa offline valahol nagyon biztonságos és megbízható.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Javasoljuk, hogy a díj alatt a tranzakció ebben az időben.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld másodperccel ezelőtt";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minimum 10 karakter";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 órával ezelőtt";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "Hiba történt a változó 2. lépés ellenőrzés.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Hiba történt a módosítások mentése. Kérjük, győződjön meg róla, nem jelentkezett be a pénztárca egy másik eszközön.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Hiba történt az elkölthető egyenleg frissítése közben. Kérjük, ellenőrizze az internet-kapcsolat, majd próbálkozzon újra.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Hiba történt a berakodás a pénztárca. Lehet, hogy kapcsolat nélküli vagy Blockchain nehézségekkel. Zárja be az alkalmazást, és próbálkozzon újra később, vagy párosítsa a készüléket.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "Bármilyen címet";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App Store felülvizsgálata gyors időzítő (másodperc)";
 
 /* (No Commment) */
 "Archive" = "Archívum";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "Jelenlegi árfolyam: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Megszokott a út Ön szervez a bitcoins a Blockchain pénztárca";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Megszokott a út Ön szervez a bitcoin a Blockchain pénztárca";
 
 /* (No Commment) */
 "Customized fund management" = "Testreszabott alapkezelő";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "Engedélyezi a helyszolgáltatása";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Engedélyezi az értesítéseket szeretne kapni egy e-mailt kapni bitcoins. Csak a jelölt címeket és importált címek jogosultak trigger értesítések.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Engedélyezi az értesítéseket szeretne kapni egy e-mailt kapni bitcoin. Csak a jelölt címeket és importált címek jogosultak trigger értesítések.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Engedélyezze ezt a beállítást, hogy megakadályozza az IP-címek, amelyekről ismert, hogy hozzáférjenek a pénztárca anonimizáló kiszûrése része. A Tor hálózat gyakran használt mellett bárdok kísérlet-hoz belépés Blockchain felhasználók pénztárca.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "Érvénytelen ellenőrző kódot. Kérjük, próbálja meg újra.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "Fontos, hogy győződjön meg róla, írja le a szavakat pontosan úgy, ahogy azok megjelennek itt és ";
+
+/* No comment provided by engineer. */
 "Just now" = "Csak most";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "Láncszem Mozgatható";
+
+/* (No Commment) */
+"Load More Transactions" = "További tranzakciók betöltése";
 
 /* (No Commment) */
 "Loading External Page" = "Külső oldal";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "Új jelszót a jelszó-emlékeztető eltérőnek kell lennie.";
 
-/* (No Commment) */
-"News, Price & Charts" = "Hírek, árak és grafikonok";
-
 /* No comment provided by engineer. */
 "Next word" = "Következő szó";
 
@@ -683,13 +698,10 @@
 "Not now" = "ne most";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Fontos megjegyezni, hogy miután frissített, nem mehet vissza a korábbi verzióra a bitcoins és a tranzakciók előzményeinek fogják tartani.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Fontos megjegyezni, hogy miután frissített, nem mehet vissza a korábbi verzióra a bitcoin és a tranzakciók előzményeinek fogják tartani.";
 
 /* (No Commment) */
 "Notifications" = "Értesítések";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Most visszaállíthatja a alapok felhasználásával a 12 szó helyreállítási mondat, abban az esetben, akkor elveszíti a jelszavát a pénztárca";
 
 /* No comment provided by engineer. */
 "OK" = "oké";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "Jelszó megváltoztatva. Kérjük, jelentkezzen be a folytatáshoz.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Jelszó kell 10 karakternél hosszabb, vagy";
+"Password must be less than or equal to 255 characters" = "Jelszó kell, legfeljebb 255 karakter";
 
 /* (No Commment) */
 "Passwords do not match" = "Jelszavak nem egyeznek";
@@ -932,10 +944,13 @@
 "Settings" = "Beállítások";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "Megosztott érme nem támogatja az új verzió, ebben az időben.";
+"Shared Coin is not supported at this time." = "Megosztott érme nem támogatott ebben az időben.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "A xPub megosztása felhatalmazza mások a tranzakciók előzményeinek nyomon követésére. Jogosult személyek esetleg képes megzavarni, hozzáférjenek a pénztárca, csak megosztja a xPub meg, akikben megbízol.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "Minden \"Dont mutat újra\" figyelmeztetések megjelenítése";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Jel %d emelték.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Importálni kívánt személyes kulcs titkosított. Kérjük, írja be a jelszavad.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "A frissítés úgy csak egy második, és a bitcoins és a történelem lesz biztonságos. Itt van, mi a jobb:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "A frissítés úgy csak a második, és a bitcoin és a történelem lesz biztonságos. Itt van, mi a jobb:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ott volt egy probléma a identitásának.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Ez a tranzakció por fogyasztása kis mennyisége miatt a változás vissza kell egy magasabb díj van szükség.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Ez akarat töröl minden pénztárca adat ezen az eszközön. Kérjük, erősítse meg, hogy az mentett máshol egyébként minden bitcoins a pénztárca lesz lenni hozzáférhetetlen pénztárca információ!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Ez lehetővé teszi, hogy a következő figyelmeztetéseket: csak néz, App Store felülvizsgálata gyors kap, és minden átutalást.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Ez akarat töröl minden pénztárca adat ezen az eszközön. Kérjük, erősítse meg, hogy az mentett máshol egyébként minden bitcoin a pénztárca lesz lenni hozzáférhetetlen pénztárca információ!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "Tranzakció";
 
 /* (No Commment) */
-"Transaction Fee" = "Tranzakciós díj";
-
-/* (No Commment) */
 "Transaction Fees" = "Tranzakciós díjak";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Tranzakciós díjak befolyásolja, milyen gyorsan a Bitcoin bányászat hálózat megerősítik a tranzakciók és aktuális hálózati feltételektõl. Javasoljuk, hogy a díj alatt a tranzakció ebben az időben.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Tranzakciós díjak befolyásolja, milyen gyorsan a Bitcoin bányászat hálózat lesz erősítse meg a tranzakciók, és az aktuális hálózati feltételektõl. Javasoljuk, hogy a díj jelenik meg a tranzakció ebben az időben.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Tranzakciós díjak befolyásolja, milyen gyorsan a Bitcoin bányászat hálózat lesz erősítse meg a tranzakciók, és az aktuális hálózati feltételektõl.";
 
 /* (No Commment) */
 "Transactions" = "Tranzakciók";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "Használ érint azonosító PIN-kód";
 
 /* (No Commment) */
-"Use all %@" = "Használata minden %@";
-
-/* (No Commment) */
 "Use all funds" = "Használja az összes alap";
 
 /* (No Commment) */
 "Use recommended values" = "Ajánlott értékek használata";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "Használata teljes díj levonva a rendelkezésre álló: %@";
 
 /* (No Commment) */
 "User Declined" = "Felhasználó csökkent";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 /* (No Commment) */
 "Welcome" = "üdvözlet";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "szép munka! Ha elveszíti a jelszavát, visszaállíthatja a wallet alapok még akkor is, ha a jövőben (kivéve az importált címek) a 12 szó helyreállítási mondat segítségével kapott. Ne feledje, hogy tartsa a helyreállítási mondat offline valahol, és nagyon biztonságos. Bárki, aki hozzáfér a helyreállítási mondat hozzáfér a bitcoin.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Azt észleltük, hogy pénztárca Blockchain előző telepítése a telefonra.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 "Would you like to archive the addresses used?" = "Szeretne Archívum használt címek?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Írja le a helyreállítási mondat, és eltartás ez valahol nagyon biztonságos és megbízható. Ne feledje, hogy bárki, aki tudja, hogy a helyreállítási mondat hozzáfér a bitcoins.";
+"Write the following 12 words onto a " = "A következő 12 szavak rá írni egy ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "BIP38 rossz jelszó";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 "You are now running our most secure Bitcoin wallet" = "Most fut a leg--bb biztosít Bitcoin pénztárca";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Biztonsági másolatot készített az alapok sikeres";
+"You backed up your funds successfully." = "Sikeresen elmentett pénzed.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "2-lépcsős ellenőrző SMS-en keresztül engedélyezheti a mobiltelefonján. Annak érdekében, hogy más hitelesítési módokat használja, kérjük, jelentkezzen be az internetes pénztárca.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 "Your password hint has been updated." = "A jelszó-emlékeztető frissítve lett.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "A jelszó nem erős elég. Válasszon egy másik jelszót.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Az átadott pénzeszközök és biztonságos, és akkor részesülhetnek fokozott adatvédelmi és a kényelmes biztonsági mentési és helyreállítási szolgáltatások.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 "iOS Support Request" = "iOS támogatási igény";
 
 /* No comment provided by engineer. */
+"in this order." = "Ebben a sorrendben.";
+
+/* No comment provided by engineer. */
 "ninth word" = "kilencedik szó";
 
 /* (No Commment) */
 "or Continue" = "vagy a folytatás";
+
+/* No comment provided by engineer. */
+"piece of paper." = "bábu-ból papír.";
 
 /* No comment provided by engineer. */
 "second word" = "második szó";

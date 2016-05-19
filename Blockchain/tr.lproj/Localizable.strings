@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " Kurtarma metninizi erişimi olan herkes bu yüzden çevrimdışı bir yere çok güvenli ve güvenli tutmak emin olun, bitcoin erişebilir.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Şu anda işlem bedeli aşağıda tavsiye ediyoruz.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld dakika önce";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* En az 10 karakter";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 saat önce";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "2-adım doğrulama değiştirilirken bir hata oluştu.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Yaptığınız değişiklikler kaydedilirken bir hata oluştu. Cüzdanını başka bir aygıtta içine açmamış dikkat edin.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Spendable bakiyeniz güncelleştirilirken bir hata oluştu. Lütfen Internet bağlantınızı denetleyin ve yeniden deneyin.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Cüzdanını yüklenirken hatayla karşılaşıldı. Çevrimdışı olabilir veya Blockchain sorunlar yaşanıyor. Lütfen uygulamayı kapatın ve daha sonra yeniden deneyin veya aygıtınızı yeniden eşleyin.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "Herhangi bir adres";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App Store gözden geçirme komut istemi zamanlayıcı (saniye)";
 
 /* (No Commment) */
 "Archive" = "Arşiv";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "Geçerli hızı: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Gelenek belgili tanımlık yol senin bitcoins Blockchain cüzdanında düzenlemek";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Gelenek belgili tanımlık yol senin bitcoin Blockchain cüzdanında düzenlemek";
 
 /* (No Commment) */
 "Customized fund management" = "Özelleştirilmiş fon yönetimi";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "Konum servisleri etkinleştirme";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoins aldığınızda bir e-posta almak bildirimleri etkinleştirmek. Sadece adresleri etiketli ve ithal adresleri tetikleyici bildirimleri için uygundur.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Bitcoin aldığınızda bir e-posta almak bildirimleri etkinleştirmek. Sadece adresleri etiketli ve ithal adresleri tetikleyici bildirimleri için uygundur.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Cüzdanını erişimini Tor sağladığına ağının bir parçası olarak bilinen IP adresleri önlemek için bu seçeneği etkinleştirin. Tor ağı sık Blockchain kullanıcıların cüzdan erişmeye çalışan bilgisayar korsanları tarafından kullanılır.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "Geçersiz doğrulama kodu. Lütfen yeniden deneyin.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "Burada tam olarak göründükleri gibi kelimeleri yazmak emin olmak önemlidir ve ";
+
+/* No comment provided by engineer. */
 "Just now" = "Sadece şimdi";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "Bağlantı cep";
+
+/* (No Commment) */
+"Load More Transactions" = "Daha fazla hareketlerini yükle";
 
 /* (No Commment) */
 "Loading External Page" = "Dış sayfa yükleme";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "Yeni parolanın parola ipucunuza farklı olması gerekir.";
 
-/* (No Commment) */
-"News, Price & Charts" = "Haber, fiyat ve grafikler";
-
 /* No comment provided by engineer. */
 "Next word" = "Sonraki sözcüğü";
 
@@ -683,13 +698,10 @@
 "Not now" = "Şimdi değil";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Not yükseltme sonra önceki sürüme geri dönemem, ancak senin bitcoins ve işlem geçmişinizi tutulacaktır.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Not yükseltme sonra önceki sürüme geri dönemem, ancak senin bitcoin ve işlem geçmişinizi tutulacaktır.";
 
 /* (No Commment) */
 "Notifications" = "Bildirimleri";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Şimdi sen-ebilmek dinlenme cüzdanını'nın parola kaybedersin diye 12 kelime kurtarma deyim kullanarak para";
 
 /* No comment provided by engineer. */
 "OK" = "Tamam";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "Parola değiştirildi. Lütfen devam etmek için giriş yapın.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Parola gerekir 10 karakter veya daha uzun";
+"Password must be less than or equal to 255 characters" = "Parolanın 255 karakter veya daha az olması gerekir.";
 
 /* (No Commment) */
 "Passwords do not match" = "Parolalar uyuşmuyor";
@@ -932,10 +944,13 @@
 "Settings" = "Ayarlar";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "Paylaşılan jeton yeni sürümü şu anda desteklenmiyor.";
+"Shared Coin is not supported at this time." = "Paylaşılan para şu anda desteklenmiyor.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Senin xPub paylaştığınız diğer kişilerin işlem geçmişinizi izlemesi için yetki verir. Sadece yetkili kişiler cüzdanını erişmesini bozmaya mümkün olabilir gibi senin xPub güvendiğiniz kişilerle paylaşın.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "Tüm 'Dont daha gösterme' uyarıları göster";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Sinyal %d büyüdü.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Alma girişiminde bulunan özel anahtar şifrelenir. Lütfen parolanızı aşağıya girin.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoins güvende olacak. İşte daha iyi ne:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "Yükseltme, sadece bir saniye sürer ve tarihi ve bitcoin güvende olacak. İşte daha iyi ne:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Senin kimliğini doğrulayan bir hata oluştu.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Bu işlem toz tüketimi nedeniyle değişim Döndürülecek küçük bir miktar için daha yüksek bir ücret gerektirir.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Bu bu aygıt üzerindeki tüm cüzdan verileri silecek. Lütfen sen-si olmak olmak ulaşılmaz başka bir yerde aksi takdirde herhangi bir bitcoins bu cüzdan vasiyetinde kaydedilen cüzdan bilgilerinizi onaylayın!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Bu aşağıdaki uyarıları sağlayacaktır: salt izle App Store incelemesi için istem ve tüm para transferi.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Bu bu aygıt üzerindeki tüm cüzdan verileri silecek. Lütfen sen-si olmak olmak ulaşılmaz başka bir yerde aksi takdirde herhangi bir bitcoin bu cüzdan vasiyetinde kaydedilen cüzdan bilgilerinizi onaylayın!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "İşlem";
 
 /* (No Commment) */
-"Transaction Fee" = "İşlem ücreti";
-
-/* (No Commment) */
 "Transaction Fees" = "İşlem ücretleri";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "İşlem ücretleri etkisi ne kadar hızlı Bitcoin incelemesi ağ işlemlerinizi doğrulamak ve geçerli ağ koşullara bağlıdır. Şu anda işlem bedeli aşağıda tavsiye ediyoruz.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "İşlem ücretleri etkisi ne kadar hızlı Bitcoin incelemesi ağ işlemlerinizi doğrulamak ve geçerli ağ koşullara bağlıdır. Şu anda bu hareket için gösterilen ücreti tavsiye ediyoruz.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "İşlem ücretleri etkisi ne kadar hızlı Bitcoin incelemesi ağ işlemlerinizi doğrulamak ve geçerli ağ koşullara bağlıdır.";
 
 /* (No Commment) */
 "Transactions" = "Hareketleri";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "Dokunmatik kimliği'ni kullan PIN olarak";
 
 /* (No Commment) */
-"Use all %@" = "Bütün %@ kullanın";
-
-/* (No Commment) */
 "Use all funds" = "Tüm fonlar kullanın";
 
 /* (No Commment) */
 "Use recommended values" = "Önerilen değerler kullanın";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "Kullanım ücreti kullanılabilir toplam: %@";
 
 /* (No Commment) */
 "User Declined" = "Kullanıcı reddetti";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 /* (No Commment) */
 "Welcome" = "Hoş geldiniz";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "Bravo! Parolanızı kaybetmek gerekir, (dışında alınan adresler) 12 kelime kurtarma deyim kullanarak gelecek alınan olsa bile bu cüzdan para geri yükleyebilirsiniz. Çevrimdışı kurtarma ifade çok güvenli ve güvenli bir yerde tutmak için unutmayın. Senin bitcoin kurtarma metninizi erişimi olan herkes erişebilir.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Blockchain cüzdan önceki bir yüklemesini telefonunuzda tespit ettik.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "Would you like to archive the addresses used?" = "Kullanılan adresler arşivlemek ister misiniz?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Kurtarma metninizi Not ve çok güvenli ve güvenli bir yerde saklayın. Kurtarma metninizi bilen herkes senin bitcoins erişimi olduğunu unutmayın.";
+"Write the following 12 words onto a " = "Aşağıdaki 12 kelime üzerine yazmak bir ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "Yanlış BIP38 şifre";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "You are now running our most secure Bitcoin wallet" = "Artık bizim en güvenli Bitcoin m-cüzdan oynanıyor";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Paranızı kadar başarıyla yedeklenen";
+"You backed up your funds successfully." = "Paranızı kadar başarıyla yedeklenen.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "2-adım doğrulama SMS ile cep telefonunuza etkinleştirebilirsiniz. Bunun yerine diğer kimlik doğrulama yöntemlerini kullanmak için lütfen bizim web cüzdan için giriş.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "Your password hint has been updated." = "Parola ipucunuz güncelleştirildi.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Parolanızı yeterince güçlü değil. Lütfen farklı bir parola seçin.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Aktarılan fonlar güvenli olacak ve artan gizlilik ve uygun yedekleme ve kurtarma özelliklerinden yararlanacaksınız.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "iOS Support Request" = "IOS destek talep";
 
 /* No comment provided by engineer. */
+"in this order." = "Bu sırada.";
+
+/* No comment provided by engineer. */
 "ninth word" = "Dokuzuncu kelime";
 
 /* (No Commment) */
 "or Continue" = "veya devam";
+
+/* No comment provided by engineer. */
+"piece of paper." = "kağıt parçası.";
 
 /* No comment provided by engineer. */
 "second word" = "ikinci kelime";

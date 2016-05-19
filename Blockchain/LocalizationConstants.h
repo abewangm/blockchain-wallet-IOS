@@ -10,7 +10,8 @@
 #define BC_STRING_ANY_ADDRESS NSLocalizedString(@"Any address", nil)
 #define BC_STRING_ARGUMENT_ADDRESSES NSLocalizedString(@"%d addresses", nil)
 #define BC_STRING_ARGUMENT_ADDRESS NSLocalizedString(@"%d address", nil)
-#define BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_DUST NSLocalizedString(@"You have no addresses with a spendable balance above the required dust threshold.", nil)
+#define BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_OR_EQUAL_TO_DUST NSLocalizedString(@"You have no addresses with a spendable balance greater than or equal to the required dust threshold.", nil)
+#define BC_STRING_SOME_FUNDS_CANNOT_BE_TRANSFERRED_AUTOMATICALLY NSLocalizedString(@"Some funds cannot be transferred automatically.", nil)
 
 #define BC_STRING_ENTER_BITCOIN_ADDRESS_OR_SELECT NSLocalizedString(@"Enter Bitcoin address or select", nil);
 #define BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS NSLocalizedString(@"You must enter a destination address", nil)
@@ -30,9 +31,10 @@
 #define BC_STRING_YES NSLocalizedString(@"Yes", nil)
 #define BC_STRING_SEND NSLocalizedString(@"Send", nil)
 #define BC_STRING_NO_AVAILABLE_FUNDS NSLocalizedString(@"You have no available funds to send from this address", nil)
-#define BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD NSLocalizedString(@"Amount must be above dust threshold (%lld Satoshi)", nil)
+#define BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD NSLocalizedString(@"Amount must be greater than or equal to the dust threshold (%lld Satoshi)", nil)
 #define BC_STRING_RECEIVE NSLocalizedString(@"Receive", nil)
 #define BC_STRING_TRANSACTIONS NSLocalizedString(@"Transactions", nil)
+#define BC_STRING_LOAD_MORE_TRANSACTIONS NSLocalizedString(@"Load More Transactions", nil)
 #define BC_STRING_SENDING_TRANSACTION NSLocalizedString(@"Sending Transaction", nil)
 #define BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT NSLocalizedString(@"Use total available minus fee: %@", nil)
 
@@ -66,8 +68,8 @@
 #define BC_STRING_TRANSACTIONS_COUNT NSLocalizedString(@"%d Transactions", nil)
 #define BC_STRING_LOADING_EXTERNAL_PAGE NSLocalizedString(@"Loading External Page", nil)
 
-#define BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER NSLocalizedString(@"Password must 10 characters or longer", nil)
-#define BC_STRING_PASSWORD_MINIMUM_10_CHARACTERS NSLocalizedString(@"* Minimum 10 characters", nil)
+#define BC_STRING_PASSWORD_NOT_STRONG_ENOUGH NSLocalizedString(@"Your password is not strong enough. Please choose a different password.", nil)
+#define BC_STRING_PASSWORD_MUST_BE_LESS_THAN_OR_EQUAL_TO_255_CHARACTERS NSLocalizedString(@"Password must be less than or equal to 255 characters", nil)
 #define BC_STRING_PASSWORDS_DO_NOT_MATCH NSLocalizedString(@"Passwords do not match", nil)
 #define BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT NSLocalizedString(@"New password must be different", nil)
 #define BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT_FROM_HINT NSLocalizedString(@"New password must be different from your password hint", nil)
@@ -113,7 +115,7 @@
 
 #define BC_STRING_NO_INTERNET_CONNECTION NSLocalizedString(@"No internet connection.", nil)
 #define BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION NSLocalizedString(@"Request failed. Please check your internet connection.", nil)
-#define BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION NSLocalizedString(@"Something went wrong, please check your internet connection and try again.", nil)
+#define BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION NSLocalizedString(@"An error occurred while updating your spendable balance. Please check your internet connection and try again.", nil)
 #define BC_STRING_TIMED_OUT NSLocalizedString(@"Connection timed out. Please check your internet connection.", nil)
 #define BC_STRING_EMPTY_RESPONSE NSLocalizedString(@"Empty response from server.", nil)
 #define BC_STRING_INVALID_RESPONSE NSLocalizedString(@"Invalid server response. Please check your internet connection.", nil)
@@ -510,3 +512,5 @@
 #define BC_STRING_APP_REVIEW_PROMPT_TITLE NSLocalizedString(@"Rate Blockchain Wallet", nil)
 #define BC_STRING_YES_RATE_BLOCKCHAIN_WALLET NSLocalizedString(@"Yes, rate Blockchain Wallet", nil)
 #define BC_STRING_APP_REVIEW_PROMPT_MESSAGE NSLocalizedString(@"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it.", nil)
+
+#define BC_STRING_ERROR_SAVING_WALLET_CHECK_FOR_OTHER_DEVICES NSLocalizedString(@"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device.", nil)

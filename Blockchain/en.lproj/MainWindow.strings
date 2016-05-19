@@ -21,7 +21,7 @@
 "363.text" = "2";
 
 /* Class = "IBUILabel"; text = "If you’re using the old wallet, click the Account Settings button and choose the Devices tab. If you’re using our new beta wallet, go to Settings / Wallet Information."; ObjectID = "364"; */
-"364.text" = "If you’re using the old wallet, click the Account Settings button and choose the Devices tab. If you’re using our new beta wallet, go to Settings / Wallet Information.";
+"364.text" = "If you’re using the old wallet, click the Account Settings button and choose the Devices tab. If you’re using our new wallet, go to Settings / Wallet Information.";
 
 /* Class = "IBUILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -48,7 +48,7 @@
 "2je-u4-PB2.text" = "Transactions";
 
 /* Class = "IBUILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "No transactions yet";
+"387.text" = "No transactions loaded";
 
 /* Class = "IBUILabel"; text = "Password:"; ObjectID = "394"; */
 "394.text" = "Password:";

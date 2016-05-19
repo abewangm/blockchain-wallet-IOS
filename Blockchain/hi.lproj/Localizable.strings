@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " अपने पुनर्प्राप्ति वाक्यांश करने के लिए पहुँच के साथ किसी को आपके bitcoin का उपयोग तो यह ऑफ़लाइन कहीं बहुत सुरक्षित और सुरक्षित रखने के लिए सुनिश्चित हो है।";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " हम नीचे शुल्क इस समय हस्तांतरण के लिए अनुशंसा करते हैं।";
+
 /* (No Commment) */
 "%@ BTC" = "%@ बीटीसी";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld सेकंड पहले";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* न्यूनतम 10 अक्षर";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 घंटे पहले";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "2-चरणीय सत् यापन बदलते समय एक त्रुटि उत्पन्न हुई।";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "अपने परिवर्तन सहेजने के दौरान कोई त्रुटि उत्पन्न हुई। कृपया सुनिश्चित करें कि आप किसी अन्य डिवाइस पर अपने बटुए में लॉग नहीं हैं।";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "अपने spendable संतुलन को अद्यतन करते समय कोई त्रुटि उत्पन्न हुई। कृपया अपना इंटरनेट कनेक्शन जाँचें और पुनः प्रयास करें।";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "त्रुटि लोड हो रहा है अपने बटुए का सामना करना पड़ा था। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का सामना कर रहा है। कृपया अनुप्रयोग बंद करें और बाद में पुन: प्रयास करें या अपने डिवाइस पुन: जोड़ी।";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "किसी भी पते";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App स्टोर की समीक्षा शीघ्र टाइमर (सेकंड)";
 
 /* (No Commment) */
 "Archive" = "पुरालेख";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "वर्तमान दर: %@ बीटीसी";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "जिस तरह से आप अपने Blockchain बटुए में अपने bitcoins व्यवस्थित अनुकूलित करें";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "आप अपने लॉकचेन बटुए में आपके bitcoin व्यवस्थित तरीके को अनुकूलित";
 
 /* (No Commment) */
 "Customized fund management" = "अनुकूलित फंड प्रबंधन";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "स्थान सेवाओं को सक्षम करें";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "जब भी आप bitcoins प्राप्त एक ईमेल प्राप्त करने के लिए सूचनाएँ सक्षम करें। केवल पतों लेबल और आयातित पतों ट्रिगर सूचनाएँ करने के लिए पात्र हैं।";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "जब भी आप bitcoin प्राप्त एक ईमेल प्राप्त करने के लिए सूचनाएँ सक्षम करें। केवल पते लेबल और आयातित पतों सूचना ट्रिगर करने के लिए पात्र हैं।";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "कि अपना बटुआ तक पहुँचने से टॉर कि नेटवर्क का हिस्सा होने के लिए जाना जाता IP पते को रोकने के लिए इस विकल्प को सक्षम करें। टो नेटवर्क अक्सर हैकर्स द्वारा Blockchain उपयोगकर्ता जेब तक पहुँचने का प्रयास किया जाता है।";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "अमान्य सत्यापन कोड। कृपया पुन: प्रयास करें।";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "यह सुनिश्चित करें कि आप अपने शब्दों के नीचे लिखने के रूप में वे यहाँ बिल्कुल दिखाई देते हैं करने के लिए महत्वपूर्ण है और ";
+
+/* No comment provided by engineer. */
 "Just now" = "बस अब";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "लिंक मोबाइल";
+
+/* (No Commment) */
+"Load More Transactions" = "अधिक लेन-देन लोड";
 
 /* (No Commment) */
 "Loading External Page" = "बाह्य पृष्ठ लोड हो रहा है";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "नया पासवर्ड आपके पासवर्ड संकेत से अलग होना चाहिए";
 
-/* (No Commment) */
-"News, Price & Charts" = "समाचार, मूल्य और चार्ट्स";
-
 /* No comment provided by engineer. */
 "Next word" = "अगला शब्द";
 
@@ -683,13 +698,10 @@
 "Not now" = "अभी नहीं";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "ध्यान दें कि एक बार में उन्नत किया, तुम वापस पिछले संस्करण के लिए नहीं जा सकते, लेकिन अपने सभी bitcoins और अपने ट्रांजे़क्शन इतिहास रखा जाएगा।";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "ध्यान दें कि एक बार नवीनीकृत, आप करने के लिए पिछले संस्करण पर वापस जाएँ नहीं कर सकता, लेकिन अपने सभी bitcoin और अपने ट्रांजे़क्शन इतिहास रखा जाएगा।";
 
 /* (No Commment) */
 "Notifications" = "सूचनाएँ";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "अब आप अपने धन के मामले में आप अपने बटुए पासवर्ड खो 12 वर्ड वसूली वाक्यांश का उपयोग कर पुनर्स्थापित कर सकते हैं";
 
 /* No comment provided by engineer. */
 "OK" = "ठीक है";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "पासवर्ड परिवर्तित कर दिया। कृपया जारी रखने के लिए लॉगिन।";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "पासवर्ड चाहिए 10 वर्णों या उससे अधिक समय";
+"Password must be less than or equal to 255 characters" = "पासवर्ड से कम या बराबर करने के लिए 255 वर्ण होना चाहिए.";
 
 /* (No Commment) */
 "Passwords do not match" = "पासवर्ड मेल नहीं खाते हैं";
@@ -932,10 +944,13 @@
 "Settings" = "सेटिंग्स";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "साझा किए गए सिक्के इस समय नए संस्करण में समर्थित नहीं है।";
+"Shared Coin is not supported at this time." = "साझा किए गए सिक्के इस समय समर्थित नहीं है।";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "अपने xPub साझा दूसरों अपने ट्रांजे़क्शन इतिहास ट्रैक करने के लिए अधिकृत। अधिकृत व्यक्तियों आप अपने बटुए तक पहुंचने से बाधित करने में सक्षम हो सकता है के रूप में, केवल अपने xPub पर भरोसा है आप लोगों के साथ साझा।";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "सभी 'मत दिखाओ फिर से' अलर्ट दिखाएँ";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "सिग्नल %d उठाया था।";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "आप आयात करने का प्रयास कर रहे हैं निजी कुंजी एन्क्रिप्टेड है। कृपया नीचे दिए गए पासवर्ड दर्ज करें।";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "बस एक दूसरे नवीनीकरण लेता है और अपने bitcoins और इतिहास सुरक्षित हो जाएगा। यहाँ है क्या बेहतर है:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "बस एक दूसरे नवीनीकरण लेता है और आपके bitcoin और इतिहास सुरक्षित हो जाएगा। यहाँ है क्या बेहतर है:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "आपकी पहचान की पुष्टि करने में कोई समस्या थी।";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "इस हस्तांतरण वापस करने के लिए परिवर्तन की छोटी राशि के कारण धूल की खपत के लिए एक उच्च शुल्क की आवश्यकता है।";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "यह इस डिवाइस पर सभी बटुआ डाटा मिटा देगा। कृपया पुष्टि करें कि आप अपने बटुए जानकारी कहीं और अन्यथा किसी भी bitcoins इस बटुए वसीयत में सहेजा गया दुर्गम हो है!!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "यह निम्न सूचनाएँ देगा: देखो केवल, App स्टोर की समीक्षा करने के लिए प्रॉम्प्ट प्राप्त होता है, और सभी धन अंतरण।";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "यह इस डिवाइस पर सभी वॉलेट डेटा मिटा देगा। कृपया पुष्टि करें कि आपके पास अपने वॉलेट जानकारी कहीं और अन्यथा किसी भी bitcoin बटुआ जाएगा में सहेजा दुर्गम हो!!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "लेन-देन";
 
 /* (No Commment) */
-"Transaction Fee" = "लेनदेन शुल्क";
-
-/* (No Commment) */
 "Transaction Fees" = "लेन-देन की फीस";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "लेनदेन की फीस कैसे जल्दी से Bitcoin खनन नेटवर्क आपके लेन-देन की पुष्टि करें और वर्तमान नेटवर्क स्थितियों पर निर्भर करते हैं जाएगा प्रभाव। हम नीचे शुल्क इस समय हस्तांतरण के लिए अनुशंसा करते हैं।";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "लेनदेन की फीस प्रभाव कितनी जल्दी Bitcoin खनन नेटवर्क आपके लेन-देन की पुष्टि करें, और वर्तमान नेटवर्क की स्थितियों पर निर्भर करते हैं। हम अनुशंसा करते हैं इस समय इस सौदे के लिए दिखाया गया शुल्क।";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "लेनदेन की फीस प्रभाव कितनी जल्दी Bitcoin खनन नेटवर्क आपके लेन-देन की पुष्टि करें, और वर्तमान नेटवर्क की स्थितियों पर निर्भर करते हैं।";
 
 /* (No Commment) */
 "Transactions" = "लेन-देन";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "पिन के रूप में स्पर्श ID का उपयोग करें";
 
 /* (No Commment) */
-"Use all %@" = "सभी %@ का उपयोग करें";
-
-/* (No Commment) */
 "Use all funds" = "सभी निधियों का उपयोग करें";
 
 /* (No Commment) */
 "Use recommended values" = "अनुशंसित मान का उपयोग करें";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "उपयोग शुल्क शून्य से उपलब्ध कुल: %@";
 
 /* (No Commment) */
 "User Declined" = "उपयोगकर्ता मना कर दिया";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 /* (No Commment) */
 "Welcome" = "स्वागत है";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "बहुत ख़ूब! आप अपना पासवर्ड खो जाना चाहिए, आप पुनर्स्थापित कर सकते हैं इस बटुए में धन भले ही 12 शब्द वसूली वाक्यांश का प्रयोग भविष्य में (सिवाय आयात किए गए पते) प्राप्त किया। अपने पुनर्प्राप्ति वाक्यांश ऑफ़लाइन कहीं बहुत सुरक्षित और सुरक्षित रखने के लिए याद रखें। अपने पुनर्प्राप्ति वाक्यांश करने के लिए पहुँच के साथ किसी को भी अपने bitcoin के लिए पहुँच है।";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "हम अपने फोन पर Blockchain बटुए के एक पूर्व स्थापना पाई है।";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "Would you like to archive the addresses used?" = "आप पते उपयोग किया संग्रह करना चाहेंगे?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "लिखने के नीचे अपनी वसूली वाक्यांश और यह कहीं न कहीं बहुत ही सुरक्षित और सुरक्षित रखें। याद रखें कि किसी को भी, जो अपने वसूली वाक्यांश जानता है आपके bitcoins तक पहुँच गया है।";
+"Write the following 12 words onto a " = "लिखने के निम्नलिखित 12 शब्दों पर एक ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "गलत BIP38 पासवर्ड";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "You are now running our most secure Bitcoin wallet" = "आप हमारे सबसे सुरक्षित Bitcoin बटुआ अब चल रहे हैं";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "आप अपनी निधियों को सफलतापूर्वक समर्थित";
+"You backed up your funds successfully." = "आप अपने धन को सफलतापूर्वक बैकअप।";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "आप अपने मोबाइल फोन पर एसएमएस के जरिए 2-चरणीय सत् यापन सक्षम कर सकते हैं। बजाय अन्य प्रमाणीकरण पद्धतियों का उपयोग करने के लिए, कृपया हमारी वेब वॉलेट करने के लिए लॉगिन।";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "Your password hint has been updated." = "अपने पासवर्ड संकेत अद्यतन किया गया है।";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "अपना पासवर्ड पर्याप्त रूप से मज़बूत नहीं है। कृपया किसी भिन्न पासवर्ड का चयन करें।";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "आपकी धनराशि सुरक्षित और सुरक्षित हो जाएगा, और आप बढ़ी हुई गोपनीयता और सुविधाजनक बैकअप और पुनर्प्राप्ति सुविधाओं से लाभ होगा।";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "iOS Support Request" = "iOS के समर्थन अनुरोध";
 
 /* No comment provided by engineer. */
+"in this order." = "इस क्रम में।";
+
+/* No comment provided by engineer. */
 "ninth word" = "नौवें शब्द";
 
 /* (No Commment) */
 "or Continue" = "या जारी रखें";
+
+/* No comment provided by engineer. */
+"piece of paper." = "कागज का टुकड़ा।";
 
 /* No comment provided by engineer. */
 "second word" = "दूसरा शब्द";

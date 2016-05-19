@@ -29,7 +29,7 @@
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Eski cüzdan kullanıyorsanız, hesap ayarları düğmesini tıklatın ve Aygıtlar sekmesini seçin. Bizim yeni beta cüzdan kullanıyorsanız, ayarları'na gidin / m-cüzdan bilgi.";
+"364.text" = "Eski cüzdan kullanıyorsanız, hesap ayarları düğmesini tıklatın ve Aygıtlar sekmesini seçin. Bizim yeni cüzdan kullanıyorsanız, ayarları'na gidin / m-cüzdan bilgi.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -53,13 +53,13 @@
 "380.text" = "Blockchain cüzdan hoş geldiniz";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Henüz hiçbir hareket";
+"387.text" = "Yüklü hiçbir hareket";
 
 /* (No Commment) */
 "394.text" = "Şifre:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "Şifre (en az 10 karakter)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "Şifre";
 
 /* (No Commment) */
 "396.text" = "Onaylayın:";
@@ -147,6 +147,9 @@
 
 /* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
 "bzM-Ub-MUU.normalTitle" = "345.68 USD";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eLG-96-OpG"; */
+"eLG-96-OpG.text" = "Etiket";
 
 /* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
 "fI2-PD-Xwa.normalTitle" = "I cant'giriş benim kamera";

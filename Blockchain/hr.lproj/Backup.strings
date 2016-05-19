@@ -7,8 +7,8 @@
 /* (No Commment) */
 "3kJ-3U-lFe.text" = "Molimo pokušajte ponovno";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Provjerite je li zapisao sigurnosna kopija izraz";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Unesite sljedeće riječi oporavak izraz to kompletan sigurnosna kopija napredak.";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "Pritisnite i držite da bi se otkrilo riječ";
@@ -19,8 +19,8 @@
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
 "9A7-TT-PzN.title" = "Sigurnosna kopija sredstva";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Stvorite sigurnosnu kopiju svoje fondove još";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "-Nema! Još niste napravili backup svoje fondove još.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
 "9WK-My-5CL.text" = "Ova akcija zahtijeva drugu lozinku za novčanik bitcoin. Molimo unesite ga ispod i pritisnite dalje.";
@@ -40,7 +40,7 @@
 /* (No Commment) */
 "EQM-OM-jK8.normalTitle" = "Učinio";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Ne uzeti snimka ekrana!
 Može ugroziti vaš novčanik sigurnost";
 
@@ -72,8 +72,8 @@ Može ugroziti vaš novčanik sigurnost";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Sljedeću riječ";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Podrška gore tvoj sredstva osigurava da nećete izgubiti pristup na vaš bitcoins (osim uvezene adrese), čak i ako zaboravite lozinku ili ako naša usluga postane nedostupan.";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Molimo vas da odvojite nekoliko minuta kako bi se osiguralo možete pristupiti tvoj bitcoin (osim u uvezenih adrese), čak i ako zaboravite lozinku ili ako naša usluga postane nedostupan. Mi smo obećanje to je brzo, bezbolno, i isplati.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "Treća riječ";

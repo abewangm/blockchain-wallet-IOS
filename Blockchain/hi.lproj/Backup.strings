@@ -7,8 +7,8 @@
 /* (No Commment) */
 "3kJ-3U-lFe.text" = "कृपया पुन: प्रयास करें";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "सत्यापित करें कि आप बैकअप वाक्यांश नीचे लिखा था";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "अपने पुनर्प्राप्ति बैकअप प्रक्रिया पूर्ण करने के लिए वाक्यांश से निम्नलिखित शब्द दर्ज करें।";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "शब्द प्रकट करने के लिए दबाकर रखें";
@@ -19,8 +19,8 @@
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
 "9A7-TT-PzN.title" = "बैकअप फंड";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "आप अपनी निधियों को अभी तक समर्थित नहीं है";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "ओह नहीं! आप अपने धन को अभी तक समर्थित नहीं।";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
 "9WK-My-5CL.text" = "इस कार्रवाई के लिए अपना bitcoin बटुआ दूसरा पासवर्ड की आवश्यकता है। कृपया उसे नीचे दर्ज करें और प्रेस जारी रखें।";
@@ -40,7 +40,7 @@
 /* (No Commment) */
 "EQM-OM-jK8.normalTitle" = "किया";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "एक स्क्रीनशॉट ले लो न!
 आप अपने बटुए की सुरक्षा ख़तरे में डालना कर सकते हैं";
 
@@ -72,8 +72,8 @@
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "अगला शब्द";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "ऊपर अपनी निधियों का बैकअप तक पहुँच आपके bitcoins (आयातित पतों), को छोड़कर के लिए भले ही आप अपना पासवर्ड भूल गए हैं या यदि हमारी सेवा अनुपलब्ध हो जाता है कि आप खो देंगे नहीं सुनिश्चित करता है।";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "कृपया आप अपने bitcoin का उपयोग कर सकते हैं यह सुनिश्चित करने के लिए कुछ मिनट लग (छोड़कर आयातित पतों में), यहां तक कि अगर आप अपना पासवर्ड भूल गए हैं या यदि हमारी सेवा अनुपलब्ध हो जाता है। हम वादा करता हूँ ऐसा त्वरित, पीड़ारहित, और इसके लायक है।";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "तीसरा शब्द";

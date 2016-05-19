@@ -39,6 +39,7 @@
 
 @property(nonatomic) IBOutlet BCRecoveryView *recoveryPhraseView;
 @property(nonatomic, strong) NSString *tmpPassword;
+@property(nonatomic) float passwordStrength;
 @property(nonatomic) BOOL isRecoveringWallet;
 @property(nonatomic) UIButton *createButton;
 @end

@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " Oricine cu acces la dumneavoastră fraza de recuperare are acces la bitcoin dumneavoastră astfel încât asiguraţi-vă că să-l păstraţi offline undeva foarte sigure şi garantate.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Vă recomandăm să taxa de mai jos pentru tranzacţia în acest moment.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld secunde în urmă";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* Minim 10 caractere";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 oră în urmă";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "Eroare în timp ce schimbarea verificare în 2 paşi.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Eroare la salvarea modificărilor. Asigurați-vă că nu sunteţi conectat în portofel pe un alt dispozitiv.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Eroare în timpul actualizării soldul spendable. Verificaţi conexiunea la internet şi încearcă din nou.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Eroare la încărcarea portofel. Aţi putea fi deconectat sau Blockchain se confruntă cu dificultăți. Închideţi aplicaţia şi încercaţi din nou mai târziu sau re-asociaþi aparatul dvs.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "Orice adresă";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App Store opinie prompta timer (secunde)";
 
 /* (No Commment) */
 "Archive" = "Arhiva";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "Rata: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Particularizați modul în care organizați bitcoins dumneavoastră în portofel Blockchain";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Particularizați modul în care vă organizaţi dumneavoastră bitcoin în portofel Blockchain";
 
 /* (No Commment) */
 "Customized fund management" = "Gestionarea Fondului personalizate";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "Activare servicii de localizare";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Activare notificări pentru a primi un email de fiecare dată când primiţi bitcoins. Numai etichetat adrese şi importate adrese sunt eligibile la notificări declanşator.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Activare notificări pentru a primi un email de fiecare dată când primiţi bitcoin. Numai etichetat adrese şi importate adrese sunt eligibile pentru a declanşa notificări.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Activaţi această opţiune pentru a preveni adrese IP care sunt cunoscute a fi parte din reţeaua anonimizarea Tor la accesarea portofel. Reţeaua Tor este frecvent folosit de hackeri încearcă să acceseze Blockchain utilizatorilor portofele.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "Cod de verificare nevalidă. Vă rugăm să încercaţi din nou.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "Este important să vă asiguraţi că vă notaţi cuvintele tale exact aşa cum apar aici şi ";
+
+/* No comment provided by engineer. */
 "Just now" = "Chiar acum";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "Link-ul mobil";
+
+/* (No Commment) */
+"Load More Transactions" = "Incarca mai multe tranzacţii";
 
 /* (No Commment) */
 "Loading External Page" = "Pagina de externe de încărcare";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "Noua parola trebuie să fie diferite vă indiciu pentru parolă";
 
-/* (No Commment) */
-"News, Price & Charts" = "Stiri, Pret & topuri";
-
 /* No comment provided by engineer. */
 "Next word" = "Cuvântul următor";
 
@@ -683,13 +698,10 @@
 "Not now" = "nu acum";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Reţineţi că odată ce actualizat, nu puteţi merge înapoi la versiunea anterioară, dar toate dumneavoastră bitcoins şi istoricul de tranzactie vor fi păstrate.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Reţineţi că odată ce actualizat, nu puteţi merge înapoi la versiunea anterioară, dar toate bitcoin și istoricul tranzacțiilor tale vor fi pastrate.";
 
 /* (No Commment) */
 "Notifications" = "Notificări";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Acum aveţi posibilitatea să restabiliţi Fondurile dumneavoastră folosind expresia de recuperare 12 cuvânt în cazul în care ai pierdut portofelul pe parola";
 
 /* No comment provided by engineer. */
 "OK" = "ok";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "S-a schimbat parola. Vă rugăm să login pentru a continua.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Parola trebuie să 10 caractere sau mai mult";
+"Password must be less than or equal to 255 characters" = "Parola trebuie să fie mai mică sau egală cu 255 de caractere";
 
 /* (No Commment) */
 "Passwords do not match" = "Parolele nu se potrivesc";
@@ -932,10 +944,13 @@
 "Settings" = "Setări";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "Monedă comună nu este acceptată în noua versiune în acest moment.";
+"Shared Coin is not supported at this time." = "Monedă comună nu este acceptată în acest moment.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Partajare dumneavoastră xPub autorizează altora pentru a urmări Istoricul tranzactiei. Ca persoane autorizate ar putea să perturbe-vă la accesarea portofel, numai cota ta xPub cu oameni tu trust.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "Arată toate alertele 'Dont Arată nou'";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "%d semnal a fost ridicat.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Cheia privată care încercați să importați este criptat. Vă rugăm să introduceţi parola mai jos.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Upgrade-ul durează doar o secundă şi bitcoins şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "Upgrade-ul durează doar o secundă şi bitcoin şi istoria dumneavoastră va fi în siguranţă. Aici este ceea ce este mai bine:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "A fost o problemă de verificarea identităţii.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Această operaţiune necesită o taxă mai mare consumului de praf din cauza cantităţii mici de schimbare să fie returnate.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Aceasta va şterge toate datele de portofel pe acest aparat. Vă rugăm să confirmaţi aveţi informaţiile portofel altfel salvate în altă parte orice bitcoins în acest portofel va fi inaccesibile!!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Acest lucru va permite următoarele avertizări: primesc numai de ceas, App Store de revizuire prompt, şi toate fondurile de Transfer.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Aceasta va şterge toate datele de portofel pe acest aparat. Vă rugăm să confirmaţi aveţi informaţiile portofel altfel salvate în altă parte orice bitcoin în acest portofel se va fi inaccesibil!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "Tranzactie";
 
 /* (No Commment) */
-"Transaction Fee" = "Taxa de tranzactie";
-
-/* (No Commment) */
 "Transaction Fees" = "Comisioane de tranzacţii";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Taxele tranzactiei pot avea un impact cât de repede rețeaua Bitcoin miniere vor confirma tranzacţiilor dumneavoastră şi depind de condiţiile actuale de reţea. Vă recomandăm să taxa de mai jos pentru tranzacţia în acest moment.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Taxele tranzactiei pot avea un impact cât de repede rețeaua Bitcoin miniere vor confirma tranzacţiilor dumneavoastră, şi depinde de condiţiile de reţea. Vă recomandăm taxa indicat pentru această tranzacţie în acest moment.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Taxele tranzactiei pot avea un impact cât de repede rețeaua Bitcoin miniere vor confirma tranzacţiilor dumneavoastră, şi depinde de condiţiile de reţea.";
 
 /* (No Commment) */
 "Transactions" = "Tranzacţiile";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "Folosiţi Touch ID ca PIN";
 
 /* (No Commment) */
-"Use all %@" = "Utilizaţi toate %@";
-
-/* (No Commment) */
 "Use all funds" = "Utilizaţi toate fondurile";
 
 /* (No Commment) */
 "Use recommended values" = "Utilizează valorile recomandate";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "Utilizarea total disponibil minus taxa: %@";
 
 /* (No Commment) */
 "User Declined" = "Utilizatorul a refuzat";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 /* (No Commment) */
 "Welcome" = "bun venit";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "bine lucrat! Ar trebui să pierdeţi parola, poţi restaura fonduri în acest portofel chiar dacă a primit în viitor (cu excepţia adrese importate) folosind cuvântul 12 recuperare fraza. Amintiţi-vă să păstraţi dumneavoastră fraza de recuperare offline undeva foarte sigure şi garantate. Oricine cu acces la dumneavoastră fraza de recuperare are acces la dumneavoastră bitcoin.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Ne-am detectat o instalare anterioară de portofel Blockchain pe telefon.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 "Would you like to archive the addresses used?" = "Doriţi să arhivaţi adresele utilizate?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Notaţi-vă fraza de recuperare şi păstraţi-l undeva foarte sigur şi securizat. Amintiţi-vă că oricine ştie dumneavoastră fraza de recuperare are acces la dumneavoastră bitcoins.";
+"Write the following 12 words onto a " = "Scrie următoarele 12 cuvinte pe o ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "Gresit BIP38 parola";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 "You are now running our most secure Bitcoin wallet" = "Acum rulează nostru cel mai sigur portofel Bitcoin";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Aţi făcut până-ţi fonduri cu succes";
+"You backed up your funds successfully." = "Aţi susţinut fondurile tale cu succes.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Aveţi posibilitatea să activaţi verificare în 2 paşi prin SMS pe telefonul mobil. Pentru a utiliza alte metode de autentificare în schimb, vă rugăm să login la portofel noastre de web.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 "Your password hint has been updated." = "Indiciu dumneavoastră parola a fost actualizată.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Parola nu este suficient de puternic. Vă rugăm să alegeţi o parolă diferită.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Fondurile transferate vor fi sigur, şi veţi beneficia de confidenţialitate sporită şi caracteristici convenabile de backup şi recuperare.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 "iOS Support Request" = "iOS cerere de sprijin";
 
 /* No comment provided by engineer. */
+"in this order." = "în această ordine.";
+
+/* No comment provided by engineer. */
 "ninth word" = "al nouălea cuvântul";
 
 /* (No Commment) */
 "or Continue" = "sau continua";
+
+/* No comment provided by engineer. */
+"piece of paper." = "bucată de hârtie.";
 
 /* No comment provided by engineer. */
 "second word" = "al doilea cuvânt";

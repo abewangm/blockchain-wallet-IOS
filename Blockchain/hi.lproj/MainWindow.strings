@@ -29,7 +29,7 @@
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "यदि आप पुराने बटुए का उपयोग कर रहे हैं, खाता सेटिंग बटन क्लिक करें और डिवाइस टैब चुनें। यदि आप हमारी नई बीटा बटुए का उपयोग कर रहे हैं, सेटिंग्स पर जाएँ / बटुआ जानकारी।";
+"364.text" = "यदि आप पुराने बटुए का उपयोग कर रहे हैं, तो खाता सेटिंग बटन क्लिक करें और डिवाइस टैब का चयन करें। सेटिंग्स पर जाएँ, तो आप उपयोग कर रहे हैं हमारे नए बटुआ / बटुआ जानकारी।";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -53,13 +53,13 @@
 "380.text" = "Blockchain बटुए में आपका स्वागत है";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "अभी तक कोई लेनदेन";
+"387.text" = "कोई हस्तांतरण को लोड";
 
 /* (No Commment) */
 "394.text" = "पासवर्ड:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "पासवर्ड (कम से कम 10 वर्ण)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "पासवर्ड";
 
 /* (No Commment) */
 "396.text" = "की पुष्टि करें:";
@@ -147,6 +147,9 @@
 
 /* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
 "bzM-Ub-MUU.normalTitle" = "345.68 अमरीकी डालर";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eLG-96-OpG"; */
+"eLG-96-OpG.text" = "लेबल";
 
 /* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
 "fI2-PD-Xwa.normalTitle" = "मैं मेरा कैमरा तक नहीं पहुँच सकता";

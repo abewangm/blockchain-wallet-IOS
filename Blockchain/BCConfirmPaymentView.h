@@ -23,5 +23,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *fiatTotalLabel;
 @property (strong, nonatomic) IBOutlet UILabel *btcTotalLabel;
 
+@property (strong, nonatomic) IBOutlet UIImageView *arrowImageView;
 @property (strong, nonatomic) IBOutlet UIButton *reallyDoPaymentButton;
 @end

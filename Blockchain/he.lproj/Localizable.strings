@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " כל אחד עם גישה הביטוי השחזור שלך יש גישה ביטקוין שלך כדי להיות בטוח כדי לשמור אותו באופן לא מקוון במקום מאוד בטוחה ומאובטחת.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " אנו ממליצים על דמי מתחת עבור התנועה בשלב זה.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "לפני %lld שניות";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* מינימום 10 תווים";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "לפני 1 שעה";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "אירעה שגיאה בזמן שינוי אימות דו-שלבי.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "אירעה שגיאה בעת שמירת השינויים. נא ודא כי אתה לא נכנסת לתוך הארנק שלך בהתקן אחר.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "אירעה שגיאה בעת עדכון יתרת מתכלה למכשיר שלך. נא בדוק את חיבור האינטרנט שלך ונסה שוב.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "אירעה שגיאה בעת טעינת הארנק שלך. אתה יכול להיות מנותק או Blockchain הוא נתקל בקשיים. נא לסגור את היישום, נסה שוב מאוחר יותר או לשייך מחדש את המכשיר.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "כל כתובת";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App Store סקירה בקש טיימר (שניות)";
 
 /* (No Commment) */
 "Archive" = "ארכיון";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "שיעור נוכחי: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "להתאים אישית את אופן אתה מארגן את bitcoins שלך בארנק שלך Blockchain";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "התאמה אישית של הדרך בה תארגן ביטקוין שלך בארנק שלך Blockchain";
 
 /* (No Commment) */
 "Customized fund management" = "ניהול קרנות מותאם אישית";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "הפעלת שירותי איכון";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "לאפשר הודעות כדי לקבל דואר אלקטרוני בכל פעם שאתה מקבל bitcoins. רק עם תוויות כתובות ולא לייבא כתובות זכאים הודעות על ההדק.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "לאפשר הודעות כדי לקבל דואר אלקטרוני בכל פעם שאתה מקבל ביטקוין. רק עם תוויות כתובות ולא לייבא כתובות זכאים הודעות על ההדק.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "לאפשר אפשרות זו כדי למנוע כתובות IP ידועים להיות חלק של רשת ה-Tor anonymizing מלגשת אל הארנק שלך. רשת ה-Tor משמש לעתים קרובות על ידי האקרים המנסה לגשת ארנקים Blockchain הגולשים.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "קוד אימות לא חוקי. נא נסה שוב.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "חשוב לוודא לרשום את המילים שלך בדיוק כפי שהם מופיעים כאן, ";
+
+/* No comment provided by engineer. */
 "Just now" = "רק עכשיו";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "קישור סלולרי";
+
+/* (No Commment) */
+"Load More Transactions" = "לטעון עוד עסקאות";
 
 /* (No Commment) */
 "Loading External Page" = "טעינת דף חיצוני";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "הסיסמה החדשה להיות שונה לסיסמה";
 
-/* (No Commment) */
-"News, Price & Charts" = "חדשות, מחיר & תרשימים";
-
 /* No comment provided by engineer. */
 "Next word" = "המילה הבאה";
 
@@ -683,13 +698,10 @@
 "Not now" = "לא עכשיו";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "שימו לב כי לאחר שדרוג, אתה לא יכול לחזור לגירסה הקודמת, אך כל bitcoins שלך והיסטוריה הטרנזקציה שלך יישמר.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "שימו לב כי לאחר שדרוג, אתה לא יכול לחזור לגירסה הקודמת, אך כל ביטקוין שלך והיסטוריה הטרנזקציה שלך יישמר.";
 
 /* (No Commment) */
 "Notifications" = "הודעות";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "כעת באפשרותך לשחזר כספים באמצעות שחזור של 12 המילים במקרה שתאבד את הסיסמה של הארנק שלך";
 
 /* No comment provided by engineer. */
 "OK" = "אוקיי";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "סיסמה לשינוי. אנא התחבר כדי להמשיך.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "הסיסמה חייבת 10 תווים או יותר";
+"Password must be less than or equal to 255 characters" = "הסיסמה חייבת להיות קטן או שווה ל- 255 תווים";
 
 /* (No Commment) */
 "Passwords do not match" = "הסיסמאות לא תואמות";
@@ -932,10 +944,13 @@
 "Settings" = "הגדרות";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "מטבע משותף אינה נתמכת בגירסה החדשה בשלב זה.";
+"Shared Coin is not supported at this time." = "מטבע משותף אינה נתמכת בשלב זה.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "שיתוף xPub שלך מסמיך אחרים כדי לעקוב אחר ההיסטוריה התנועה שלך. כפי ה\"גורמים עשוי להיות מסוגל לשבש את מלגשת אל הארנק שלך, לשתף רק xPub שלך עם אנשים שאתה בוטח.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "הצג את כל ההתראות \"אל תציג שנית\"";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "אות %d גדל.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "המפתח הפרטי שאתה מנסה לייבא מוצפן. נא הזן את הסיסמה שלהלן.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "השדרוג לוקח רק שנייה, את bitcoins ואת ההיסטוריה יהיה בטוח. . הנה מה טוב יותר:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "השדרוג לוקח רק שנייה, ביטקוין והיסטוריה שלך יהיה בטוח. . הנה מה טוב יותר:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "אירעה בעיה מאמת את זהותך.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "תנועה זו דורשת תשלום גבוה יותר לצריכה אבק בגלל כמות קטנה של שינוי יוחזר.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "זה יביא למחיקת כל הנתונים הארנק בהתקן זה. אנא אשרו שאת הארנק מידע שנמסר הציל במקום אחר אחרת כל bitcoins בצוואה את הארנק הזה אינו נגיש!!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "זה יאפשר את ההתראות הבאות: לקבל בקשה סקירה השעון בלבד, App Store, להעביר את כספי.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "זה יביא למחיקת כל הנתונים הארנק בהתקן זה. אנא אשרו שאת הארנק מידע שנמסר הציל במקום אחר אחרת כל ביטקוין בצוואה את הארנק הזה אינו נגיש!!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "עסקת";
 
 /* (No Commment) */
-"Transaction Fee" = "דמי העסקה";
-
-/* (No Commment) */
 "Transaction Fees" = "עלויות עסקה";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "עלויות עסקה להשפיע כמה מהר הרשת הכרייה ביטקוין לאשר את העסקאות שלך ותלויות תנאי הרשת הנוכחית. אנו ממליצים על דמי מתחת עבור התנועה בשלב זה.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "עלויות עסקה להשפיע כמה מהר הרשת הכרייה ביטקוין לאשר את העסקאות שלך, ותלויות התנאים הרשת הנוכחית. אנו ממליצים על דמי המוצג עבור תנועה זו בזמן הזה.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "עלויות עסקה להשפיע כמה מהר הרשת הכרייה ביטקוין לאשר את העסקאות שלך, ותלויות התנאים הרשת הנוכחית.";
 
 /* (No Commment) */
 "Transactions" = "תנועות";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "השתמש במזהה מגע כמו סיכה";
 
 /* (No Commment) */
-"Use all %@" = "השתמש %@ כל";
-
-/* (No Commment) */
 "Use all funds" = "להשתמש בכספי";
 
 /* (No Commment) */
 "Use recommended values" = "השתמש בערכים מומלצים";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "שימוש שהסכום הזמין מינוס דמי: %@";
 
 /* (No Commment) */
 "User Declined" = "המשתמש סירב";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 /* (No Commment) */
 "Welcome" = "ברוך הבא";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "עבודה טובה! צריך איבדת את הסיסמה שלך, באפשרותך לשחזר קרנות בארנק הזה אפילו אם התקבל בעתיד (למעט כתובות מיובאות) באמצעות שחזור של 12 המילים. זכור לשמור את הביטוי השחזור שלך במצב לא מקוון במקום מאוד בטוחה ומאובטחת. כל אחד עם גישה הביטוי השחזור שלך יש גישה שלך ביטקוין.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "שגילינו התקנה קודמת של Blockchain הארנק בטלפון שלך.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "Would you like to archive the addresses used?" = "האם ברצונך לאחסן בארכיון את הכתובות שישמשו?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "לכתוב את הביטוי השחזור שלך ולשמור אותו במקום מאוד בטוחה ומאובטחת. זכור כי כל מי שמכיר את הביטוי השחזור שלך יש גישה bitcoins שלך.";
+"Write the following 12 words onto a " = "לכתוב את המילים הבאות 12 על גבי ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "הסיסמה BIP38 הלא נכון";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "You are now running our most secure Bitcoin wallet" = "עכשיו אתה מפעיל את הארנק ביטקוין המאובטחת ביותר שלנו";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "גיבית את הכספים שלך בהצלחה";
+"You backed up your funds successfully." = "לך לגבות כספים שלך בהצלחה.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "ניתן לאפשר אימות דו-שלבי באמצעות SMS בטלפון הנייד שלך. על מנת להשתמש משיטות אימות אחרות במקום זאת, אנא התחבר כדי הארנק האינטרנט שלנו.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "Your password hint has been updated." = "הרמז לסיסמה שלך עודכנה.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "הסיסמה אינה חזקה מספיק. נא לבחור בסיסמה שונה.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "את הכספים שהועברו שלך יהיה בטוח ומאובטח, תוכל ליהנות תכונות גיבוי ושחזור נוחות ופרטיות מוגברת.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 "iOS Support Request" = "iOS תמיכה בקשת";
 
 /* No comment provided by engineer. */
+"in this order." = "בצו זה.";
+
+/* No comment provided by engineer. */
 "ninth word" = "המילה התשיעית";
 
 /* (No Commment) */
 "or Continue" = "או המשך";
+
+/* No comment provided by engineer. */
+"piece of paper." = "פיסת נייר.";
 
 /* No comment provided by engineer. */
 "second word" = "המילה השנייה";

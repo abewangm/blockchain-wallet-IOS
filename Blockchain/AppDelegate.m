@@ -316,27 +316,30 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)filterTransactionsByAccount:(int)accountIndex
 {
+    _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
-    [self.wallet filterTransactionsByAccount:accountIndex];
+    [self.wallet reloadFilter];
     
     [self showFilterResults];
 }
 
 - (void)filterTransactionsByImportedAddresses
 {
+    _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
-    [self.wallet filterTransactionsByImportedAddresses];
+    [self.wallet reloadFilter];
     
     [self showFilterResults];
 }
 
 - (void)removeTransactionsFilter
 {
+    _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
     [_transactionsViewController changeFilterLabel:BC_STRING_TOTAL_BALANCE];
-    [self.wallet removeTransactionsFilter];
+    [self.wallet reloadFilter];
     
     [self showFilterResults];
 }
@@ -383,8 +386,25 @@ void (^secondPasswordSuccess)(NSString *);
     [_window.rootViewController.view bringSubviewToFront:busyView];
     
     if (busyView.alpha < 1.0) {
-        [busyView fadeIn];
+        [busyView fadeInWithDarkBackground];
     }
+}
+
+- (void)showBusyViewInTransparentBackgroundWithLoadingText:(NSString *)text
+{
+    if (_sendViewController.isSending && modalView) {
+        DLog(@"Send progress modal is presented - will not show busy view");
+        return;
+    }
+    
+    [busyLabel setText:text];
+    
+    [_window.rootViewController.view bringSubviewToFront:busyView];
+    
+    if (busyView.alpha < 1.0) {
+        [busyView fadeInWithTransparentBackground];
+    }
+
 }
 
 - (void)updateBusyViewLoadingText:(NSString *)text
@@ -433,7 +453,6 @@ void (^secondPasswordSuccess)(NSString *);
         if ([self.topViewControllerDelegate respondsToSelector:@selector(hideBusyView)]) {
             [self.topViewControllerDelegate hideBusyView];
         }
-        return;
     }
     
     if (busyView.alpha == 1.0) {
@@ -577,14 +596,16 @@ void (^secondPasswordSuccess)(NSString *);
     
     _transactionsViewController.data = response;
     
+#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
+    if (app.wallet.isFetchingTransactions) {
+        [_transactionsViewController reload];
+        app.wallet.isFetchingTransactions = NO;
+    } else {
+        [self reloadAfterMultiAddressResponse];
+    }
+#else
     [self reloadAfterMultiAddressResponse];
-}
-
-- (void)didFilterTransactions:(NSArray *)transactions
-{
-    _transactionsViewController.data.transactions = [NSMutableArray arrayWithArray:transactions];
-    
-    [_transactionsViewController reload];
+#endif
 }
 
 - (void)didSetLatestBlock:(LatestBlock*)block
@@ -719,6 +740,9 @@ void (^secondPasswordSuccess)(NSString *);
     if (_settingsNavigationController) {
         [_settingsNavigationController dismissViewControllerAnimated:NO completion:nil];
     }
+    
+    app.transactionsViewController.loadedAllTransactions = NO;
+    app.wallet.isFetchingTransactions = NO;
 
     [self closeSideMenu];
     
@@ -1536,6 +1560,11 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didErrorDuringTransferAll:error secondPassword:secondPassword];
 }
 
+- (void)updateLoadedAllTransactions:(NSNumber *)loadedAll
+{
+    _transactionsViewController.loadedAllTransactions = [loadedAll boolValue];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses
@@ -1549,7 +1578,7 @@ void (^secondPasswordSuccess)(NSString *);
     self.accountsAndAddressesNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     [_tabViewController presentViewController:self.accountsAndAddressesNavigationController animated:YES completion:^{
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT] && self.accountsAndAddressesNavigationController.viewControllers.count == 1 && [app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForActiveLegacyAddresses] > 0) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT] && self.accountsAndAddressesNavigationController.viewControllers.count == 1 && [app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses] > [app.wallet dust]) {
             [self.accountsAndAddressesNavigationController alertUserToTransferAllFunds:NO];
         }
     }];
@@ -1706,6 +1735,8 @@ void (^secondPasswordSuccess)(NSString *);
     else {
         [_slidingViewController resetTopViewAnimated:YES];
     }
+    
+    app.wallet.isFetchingTransactions = NO;
 }
 
 - (void)closeSideMenu
@@ -1780,6 +1811,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)reloadTransactionFilterLabel
 {
+#ifdef ENABLE_TRANSACTION_FILTERING
     if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
         app.mainLogoImageView.hidden = YES;
         if (_tabViewController.activeViewController == _transactionsViewController) {
@@ -1791,6 +1823,7 @@ void (^secondPasswordSuccess)(NSString *);
         [_transactionsViewController hideFilterLabel];
         app.mainLogoImageView.hidden = _tabViewController.activeViewController == _transactionsViewController ? NO : YES;
     }
+#endif
 }
 
 #pragma mark - Actions

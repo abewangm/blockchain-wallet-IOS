@@ -93,6 +93,7 @@
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
+- (void)updateLoadedAllTransactions:(NSNumber *)loadedAll;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
@@ -124,6 +125,7 @@
 @property int recoveredAccountIndex;
 
 @property BOOL didPairAutomatically;
+@property BOOL isFetchingTransactions;
 @property BOOL isSyncing;
 @property BOOL isNew;
 @property NSString *twoFactorInput;
@@ -167,7 +169,7 @@
 - (BOOL)isInitialized;
 - (BOOL)hasEncryptedWalletData;
 
-- (CGFloat)getStrengthForPassword:(NSString *)password;
+- (float)getStrengthForPassword:(NSString *)password;
 
 - (BOOL)needsSecondPassword;
 - (BOOL)validateSecondPassword:(NSString *)secondPassword;
@@ -201,14 +203,13 @@
 - (BOOL)isAccountAvailable:(int)account;
 - (int)getIndexOfActiveAccount:(int)account;
 
-- (void)filterTransactionsByImportedAddresses;
-- (void)filterTransactionsByAccount:(int)account;
-- (void)removeTransactionsFilter;
+- (void)fetchMoreTransactions;
+- (void)reloadFilter;
 
 - (int)getAllTransactionsCount;
 
 // HD Wallet
-- (void)upgradeToHDWallet;
+- (void)upgradeToV3Wallet;
 - (Boolean)hasAccount;
 - (Boolean)didUpgradeToHd;
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
@@ -224,6 +225,7 @@
 
 - (uint64_t)getTotalActiveBalance;
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses;
+- (uint64_t)getTotalBalanceForSpendableActiveLegacyAddresses;
 - (uint64_t)getBalanceForAccount:(int)account;
 
 - (NSString *)getLabelForAccount:(int)account;
@@ -286,6 +288,7 @@
 - (void)getInfoForTransferAllFundsToDefaultAccount;
 - (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
 - (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
+- (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;
 - (void)getFeeBounds:(uint64_t)fee;
 - (void)changeForcedFee:(uint64_t)fee;

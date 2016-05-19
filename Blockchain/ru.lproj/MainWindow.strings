@@ -54,12 +54,12 @@ https://blockchain.info/wallet/login";
 "380.text" = "Добро пожаловать в кошелек Blockchain";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "У вас еще нет завершенных транзакций";
+"387.text" = "Транзакции не загружен";
 
 /* (No Commment) */
 "394.text" = "Пароль:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
 "395.placeholder" = "Пароль (минимум 10 символов)";
 
 /* (No Commment) */

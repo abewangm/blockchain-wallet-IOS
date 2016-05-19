@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " Kuka Recovery-lause on sinun bitcoin joten muista pitää se offline jonnekin erittäin turvallinen ja varma.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Suosittelemme alla maksua tapahtumaan tässä vaiheessa.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld sekuntia sitten";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* Vähintään 10 merkkiä";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 tunti sitten";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "Virhe muutettaessa 2-vaiheinen vahvistus.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Virhe tallennettaessa muutoksia. Varmista, et ole kirjautunut lompakkoosi toisessa laitteessa.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Virhe päivitettäessä spendable saldosi. Tarkista internet-yhteys ja yritä uudelleen.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Virhe ladattaessa lompakon. Saattaa olla offline-tilassa tai Blockchain on vaikeuksia. Sulje sovellus ja yritä myöhemmin uudelleen tai uudelleen laiteparin.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "Osoite";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App Storesta uudelleen nopeasti aika (sekuntia)";
 
 /* (No Commment) */
 "Archive" = "Arkisto";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "Nykyinen määrä: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Mukauttaa tapaa, jolla voit järjestää oman bitcoins Blockchain lompakko";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Mukauttaa tapaa, jolla voit järjestää oman bitcoin Blockchain lompakko";
 
 /* (No Commment) */
 "Customized fund management" = "Mukautetun hallinnointi";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "Ota sijaintipalvelut";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Ottaa käyttöön ilmoitukset saa sähköpostin aina, kun vastaanotat bitcoins. Vain merkitty osoitteet ja tuodut osoitteet voivat laukaista ilmoitukset.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Ottaa käyttöön ilmoitukset saa sähköpostin aina, kun vastaanotat bitcoin. Vain merkitty osoitteet ja tuodut osoitteet voivat laukaista ilmoitukset.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Tämä vaihtoehto estää IP-osoitteet, joiden tiedetään olevan osa Tor anonymisoivan verkon käyttämästä lompakon. Tor-verkon käytetään usein hakkerit yrittävät käyttää Blockchain käyttäjien lompakot.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "Virheellinen vahvistuskoodi. Yritä uudelleen.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "On tärkeää varmistaa, voit kirjoittaa sanoja erilaisilta kuin täällä ja ";
+
+/* No comment provided by engineer. */
 "Just now" = "Juuri nyt";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "Linkki Mobile";
+
+/* (No Commment) */
+"Load More Transactions" = "Lataa lisää tapahtumat";
 
 /* (No Commment) */
 "Loading External Page" = "Ulkoinen sivu lastaus";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "Uuden salasanan on oltava erilainen salasanavihje";
 
-/* (No Commment) */
-"News, Price & Charts" = "Uutiset, hinnat ja kaavioita";
-
 /* No comment provided by engineer. */
 "Next word" = "Seuraava sana";
 
@@ -683,13 +698,10 @@
 "Not now" = "Ei nyt";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Huomaa, että kun päivitetty, et voi palata edelliseen versioon, mutta kaikki bitcoins ja maksutapahtumat pidetään.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Huomaa, että kun päivitetty, et voi palata edelliseen versioon, mutta kaikki bitcoin ja maksutapahtumat pidetään.";
 
 /* (No Commment) */
 "Notifications" = "Ilmoitukset";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Nyt voit palauttaa rahat käytetään 12 sana elpyminen lause, jos menetät sinun lompakko salasana";
 
 /* No comment provided by engineer. */
 "OK" = "Okei";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "Salasana vaihdettu. Kirjaudu sisään jatkaaksesi.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Salasana on 10 merkkiä tai kauemmin";
+"Password must be less than or equal to 255 characters" = "Salasanan on oltava enintään 255 merkkiä";
 
 /* (No Commment) */
 "Passwords do not match" = "Salasanat eivät täsmää";
@@ -932,10 +944,13 @@
 "Settings" = "Asetukset";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "Jaettu kolikon ei tueta uudessa versiossa tällä hetkellä.";
+"Shared Coin is not supported at this time." = "Jaettu kolikon ei tueta tällä hetkellä.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Jakaminen sinun xPub antaa toiset jotta jäljittää maksuhistoriastasi. Kuten oikeutetut henkilöt häiritä sinua käyttämästä lompakon, jakaa vain sinun xPub luottamillesi ihmisille.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "Näytä kaikki \"Älä näytä enää hälytykset";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signaalin %d esille.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Yrität tuoda yksityinen avain salataan. Kirjoita salasana alla.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Päivitys vie vain toinen ja bitcoins ja historia ovat turvassa. Tässä on, mikä on parempi:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "Päivitys vie vain toinen ja bitcoin ja historia ovat turvassa. Tässä on, mikä on parempi:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Ollut ongelmia henkilöllisyyden todentamista.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Tämä tapahtuma edellyttää korkeampaa hintaa pöly kulutuksen vuoksi muutoksen on palautettava.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Tämä poistaa kaikki laitteen tiedot lompakko. Vahvista, lompakon tiedot tallennetaan muualla muuten mitään bitcoins lompakko-se voi käyttää!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Näin saadaan seuraavista ilmoituksista: tulla kysymään vain katsella, App Storesta uudelleen ja siirtää kaikki varat.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Tämä poistaa kaikki laitteen tiedot lompakko. Vahvista, lompakon tiedot tallennetaan muualla muuten mitään bitcoin lompakko-se voi käyttää!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "Tapahtuman";
 
 /* (No Commment) */
-"Transaction Fee" = "Palvelumaksu";
-
-/* (No Commment) */
 "Transaction Fees" = "Palvelumaksut";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Palvelumaksut vaikuttaa kuinka nopeasti Bitcoin kaivos verkko vahvistaa liiketoimet ja riippuvat ajankohtainen verkko olosuhteet. Suosittelemme alla maksua tapahtumaan tässä vaiheessa.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Palvelumaksut vaikuttaa kuinka nopeasti Bitcoin kaivos verkko vahvistaa liiketoimet, ja riippuu ajankohtainen verkko olosuhteet. Suosittelemme JavaScript tapahtuman tällä hetkellä maksu.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Palvelumaksut vaikuttaa kuinka nopeasti Bitcoin kaivos verkko vahvistaa liiketoimet, ja riippuu ajankohtainen verkko olosuhteet.";
 
 /* (No Commment) */
 "Transactions" = "Tapahtumat";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "Käytä Touch ID PIN";
 
 /* (No Commment) */
-"Use all %@" = "Käyttää kaikki %@";
-
-/* (No Commment) */
 "Use all funds" = "Kaikki varojen käyttö";
 
 /* (No Commment) */
 "Use recommended values" = "Käytä suositeltuja arvoja";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "Käyttö yhteensä käytettävissä miinus maksu: %@";
 
 /* (No Commment) */
 "User Declined" = "Käyttäjän vähentynyt";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 /* (No Commment) */
 "Welcome" = "Tervetuloa";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "Hyvin tehty! Jos unohdat salasanasi, voit palauttaa varoja tämän lompakon, vaikka vastaan (paitsi tuodut osoitteet) käyttäen 12 word recovery sanoja. Muista pitää Recovery lause offline jonnekin erittäin turvallinen ja varma. Kuka Recovery-lause on pääsy sinun bitcoin.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Havaitsimme aiempi asennus Blockchain lompakko puhelimeen.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "Would you like to archive the addresses used?" = "Haluatko arkistoida osoitteet?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Kirjoita muistiin elpyminen lause ja pitää se jonnekin, erittäin turvallinen ja varma. Muista, että jokainen, joka tuntee Recovery-lause on pääsy sinun bitcoins.";
+"Write the following 12 words onto a " = "Kirjoita seuraavat 12 sanat päälle ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "Väärä BIP38 salasana";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "You are now running our most secure Bitcoin wallet" = "Käytössä on nyt turvallisin Bitcoin lompakko";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Varmuuskopiointi rahat onnistui";
+"You backed up your funds successfully." = "Rahat on varmuuskopiointi onnistui.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Voit ottaa 2-vaiheinen vahvistus tekstiviestinä matkapuhelimeesi. Jotta voit käyttää muita todennusmenetelmiä, kirjaudu sisään web-lompakkoon.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "Your password hint has been updated." = "Salasanavihje on päivitetty.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Salasana ei ole tarpeeksi vahva. Valitse toinen salasana.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Siirrettyjen varojen on turvallinen ja sinulle hyötyä lisää yksityisyyttä ja kätevä varmuuskopiointi ja palautus toiminnot.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "iOS Support Request" = "iOS tukipyyntö";
 
 /* No comment provided by engineer. */
+"in this order." = "tässä järjestyksessä.";
+
+/* No comment provided by engineer. */
 "ninth word" = "Yhdeksäs sana";
 
 /* (No Commment) */
 "or Continue" = "tai Jatka";
+
+/* No comment provided by engineer. */
+"piece of paper." = "pala paperia.";
 
 /* No comment provided by engineer. */
 "second word" = "toinen sana";

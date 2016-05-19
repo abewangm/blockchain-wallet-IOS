@@ -59,7 +59,7 @@ https://blockchain.info/Wallet/login";
 /* (No Commment) */
 "394.text" = "Contraseña:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
 "395.placeholder" = "Contraseña (mínimo 10 caracteres)";
 
 /* (No Commment) */

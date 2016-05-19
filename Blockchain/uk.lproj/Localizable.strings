@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " Хто має доступ до відновлення фраза має доступ до вашого bitcoin, тому обов'язково тримати його в автономному режимі десь дуже надійним і безпечним.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Ми рекомендуємо плату нижче за операцію в цей час.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ БТД";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld секунд тому";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* Мінімум 10 символів";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 година тому";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "Сталася помилка при зміні двоетапної перевірки.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Помилка під час збереження змін. Переконайтеся, що ви не ввійшли до вашого гаманця на іншому пристрої.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Помилка під час оновлення витрачається баланс. Перевірте підключення до Інтернету і повторіть спробу.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Сталася помилка під час завантаження вашого гаманця. Можливо, ви в автономному режимі або Blockchain переживає труднощі. Закрити програму та повторіть спробу пізніше або повторно встановіть зв'язок.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "Будь-яку адресу";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App Store огляд оперативне таймер (сек.)";
 
 /* (No Commment) */
 "Archive" = "Архів";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "Поточного курсу: %@ БТД";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Настроїти спосіб організувати ваші bitcoins у вашому гаманці Blockchain";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Настроїти спосіб організувати ваші bitcoin у вашому гаманці Blockchain";
 
 /* (No Commment) */
 "Customized fund management" = "Індивідуальні Фонду управління";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "Увімкнення служби локації";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Увімкнути сповіщення для отримання по електронній пошті, коли ви отримуєте bitcoins. Тільки помічені адреси і імпортовані адреси мають право тригер сповіщення.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Увімкнути сповіщення для отримання по електронній пошті, коли ви отримуєте bitcoin. Тільки помічені адреси і імпортовані адреси мають право тригер сповіщення.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Ввімкніть цей параметр, щоб запобігти IP-адрес, які, як відомо, бути частиною Tor встановлення анонімності мережі доступ до вашого гаманця. Tor мережі часто використовується хакерами для доступу Blockchain користувачами гаманці.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "Код підтвердження неправильний. Будь ласка, спробуйте ще раз.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "Важливо, щоб переконатися, що ви запишіть ваші слова, точно так, як вони з'являються тут і ";
+
+/* No comment provided by engineer. */
 "Just now" = "Просто зараз";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "Мобільний зв'язок";
+
+/* (No Commment) */
+"Load More Transactions" = "Завантажити більше операцій";
 
 /* (No Commment) */
 "Loading External Page" = "Завантаження зовнішнього сторінки";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "Новий пароль має відрізнятися від підказку про пароль";
 
-/* (No Commment) */
-"News, Price & Charts" = "Новини, ціни та Чарти";
-
 /* No comment provided by engineer. */
 "Next word" = "Наступне слово";
 
@@ -683,13 +698,10 @@
 "Not now" = "Не зараз";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Зверніть увагу, що після того, як оновлено, ви не можете повернутися до попередньої версії, але всі bitcoins і угоду історію буде зберігатися.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Зверніть увагу, що після того, як оновлено, ви не можете повернутися до попередньої версії, але всі bitcoin і угоду історію буде зберігатися.";
 
 /* (No Commment) */
 "Notifications" = "Сповіщення";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Тепер ви можете відновити ваші кошти на відновлення фразу 12 слово у випадку, якщо ви втратите пароль вашого гаманця";
 
 /* No comment provided by engineer. */
 "OK" = "Гаразд";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "Змінити пароль. Будь ласка, Логін, щоб продовжити.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Пароль має 10 символів або довше";
+"Password must be less than or equal to 255 characters" = "Пароль має бути меншим або дорівнювати 255 символів";
 
 /* (No Commment) */
 "Passwords do not match" = "Паролі не співпадають";
@@ -932,10 +944,13 @@
 "Settings" = "Параметри";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "Спільні монета не підтримується в новій версії в даний час.";
+"Shared Coin is not supported at this time." = "Спільні монету в цей час не підтримується.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Спільний доступ до вашого xPub дозволяє іншим користувачам відстежувати угоду історію. Як уповноважених осіб може бути в змозі порушити ви доступ до вашого гаманця, тільки спільний доступ ваше xPub людей, що ви довіряєте.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "Показати всі \"Dont показувати знову\" оповіщення";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "%d сигнал був піднятий.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Зашифрований закритий ключ, який ви намагаєтеся імпортувати. Будь ласка, введіть пароль нижче.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Оновлення займає всього лише за секунду і bitcoins і історії будуть безпечними. Ось те, що краще:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "Оновлення займає всього лише за секунду і bitcoin і історії будуть безпечними. Ось те, що краще:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Виникли утруднення засвідчує вашу особу.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Ця угода вимагає вище плату для пилу споживання пов'язано з невеликою кількістю змін будуть повернуті.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Це призведе до видалення всіх даних гаманець на цьому пристрої. Будь ласка, підтвердіть, у вас є ваш гаманець інформацію збережено в іншому місці в іншому випадку будь-яких bitcoins в цей гаманець будуть бути недоступною!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Це дозволить такі попередження: отримати тільки дивитися, App Store огляд рядка і перерахувати всі кошти.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Це призведе до видалення всіх даних гаманець на цьому пристрої. Будь ласка, підтвердіть, у вас є ваш гаманець інформацію збережено в іншому місці в іншому випадку будь-яких bitcoin в цей гаманець будуть бути недоступною!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "Транзакції";
 
 /* (No Commment) */
-"Transaction Fee" = "Плата операцію";
-
-/* (No Commment) */
 "Transaction Fees" = "Комісії за операції";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Комісії за операції вплинути як швидко Bitcoin видобутку мережі буде підтвердити ваші операції і залежать від поточних умов мережі. Ми рекомендуємо плату нижче за операцію в цей час.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Комісії за операції вплинути як швидко Bitcoin видобутку мережі буде підтвердити ваші операції й залежать від поточних умов мережі. Ми рекомендуємо плату, зображений на дану операцію в цей час.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Комісії за операції вплинути як швидко Bitcoin видобутку мережі буде підтвердити ваші операції й залежать від поточних умов мережі.";
 
 /* (No Commment) */
 "Transactions" = "Угоди";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "Використання ID Touch як PIN";
 
 /* (No Commment) */
-"Use all %@" = "Використовувати всі %@";
-
-/* (No Commment) */
 "Use all funds" = "Використовувати всі кошти";
 
 /* (No Commment) */
 "Use recommended values" = "Використовувати рекомендоване значення";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "Використання цілому доступні мінус плату: %@";
 
 /* (No Commment) */
 "User Declined" = "Користувач відхилена";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 /* (No Commment) */
 "Welcome" = "Прошу";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "Гарна робота! Слід загубите пароль, можна відновити кошти в цей гаманець навіть якщо отримав в майбутньому (крім імпортованого адреси) за допомогою 12 слово відновлення фразу. Не забудьте зберегти ваші відновлення фразу в автономному режимі десь дуже надійним і безпечним. Хто має доступ до відновлення фраза має доступ до вашого bitcoin.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Це свідчить попередньої інсталяції Blockchain гаманця на вашому телефоні.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "Would you like to archive the addresses used?" = "Ви хотіли б Архів адрес, які використовують?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Запишіть відновлення фразу і тримати його де-небудь дуже надійним і безпечним. Пам'ятайте, що будь-хто, хто знає вашу фразу відновлення має доступ до вашого bitcoins.";
+"Write the following 12 words onto a " = "Написати наступні 12 слів на за ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "Неправильний BIP38 пароль";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "You are now running our most secure Bitcoin wallet" = "Зараз запущено наші найбільш безпечний Bitcoin гаманець";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Ви успішно для резервного копіювання ваших фондів";
+"You backed up your funds successfully." = "Ви резервне копіювання ваших фондів успішно.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Ви можете ввімкнути двоетапну перевірку за допомогою SMS на мобільний телефон. Для того, щоб використовувати інші методи автентифікації замість цього, будь ласка, Логін до нашого веб-гаманець.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "Your password hint has been updated." = "Підказку про пароль був поновлений.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Ваш пароль не є достатньо сильною. Будь ласка, оберіть інший пароль.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Передані кошти будуть бути безпечною, і ви будете користуватися Підвищена конфіденційність і зручний резервного копіювання і відновлення функції.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 "iOS Support Request" = "iOS підтримки запит";
 
 /* No comment provided by engineer. */
+"in this order." = "в такому порядку.";
+
+/* No comment provided by engineer. */
 "ninth word" = "Дев'ятий слово";
 
 /* (No Commment) */
 "or Continue" = "або продовжити";
+
+/* No comment provided by engineer. */
+"piece of paper." = "шматок паперу.";
 
 /* No comment provided by engineer. */
 "second word" = "друге слово";

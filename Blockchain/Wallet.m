@@ -193,7 +193,7 @@
     return [self.webView executeJSSynchronous:@"WalletCrypto.decryptPasswordWithProcessedPin(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations];
 }
 
-- (CGFloat)getStrengthForPassword:(NSString *)passwordString
+- (float)getStrengthForPassword:(NSString *)passwordString
 {
     if (![self.webView isLoaded]) {
         return 0;
@@ -222,36 +222,11 @@
     }
 }
 
-- (void)filterTransactionsByImportedAddresses
-{
-    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity('imported')"];
-}
-
-- (void)filterTransactionsByAccount:(int)account
-{
-    [self updateTransactionsWithCommand:[NSString stringWithFormat:@"MyWalletPhone.getTransactionsWithIdentity(%d)", account]];
-}
-
-- (void)removeTransactionsFilter
-{
-    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity()"];
-}
-
-- (void)updateTransactionsWithCommand:(NSString *)command
+- (void)fetchMoreTransactions
 {
     if ([self isInitialized]) {
-        
-        NSMutableArray *filteredTransactions = [NSMutableArray array];
-        
-        NSArray *transactions = [self filteredTransactions:command];
-        
-        for (NSDictionary *dict in transactions) {
-            Transaction *tx = [Transaction fromJSONDict:dict];
-            
-            [filteredTransactions addObject:tx];
-        }
-        
-        [delegate didFilterTransactions:filteredTransactions];
+        self.isFetchingTransactions = YES;
+        [self.webView executeJS:@"MyWalletPhone.fetchMoreTransactions()"];
     }
 }
 
@@ -262,18 +237,6 @@
     }
     
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAllTransactionsCount()"] intValue];
-}
-
-- (NSArray *)filteredTransactions:(NSString *)command
-{
-    if ([self isInitialized]) {
-        
-        NSString *filteredTransactionsJSON = [self.webView executeJSSynchronous:[NSString stringWithFormat:@"JSON.stringify(%@)", command]];
-        
-        return [filteredTransactionsJSON getJSONObject];
-    }
-    
-    return nil;
 }
 
 - (void)getAllCurrencySymbols
@@ -451,7 +414,7 @@
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
-    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET, nil];
+    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET];
 }
 
 - (BOOL)needsSecondPassword
@@ -803,6 +766,15 @@
     [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(false, \"%@\", \"%@\")", [address escapeStringForJS], [secondPassword escapeStringForJS]];
 }
 
+- (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.transferFundsToDefaultAccountFromAddress(\"%@\")", [address escapeStringForJS]];
+}
+
 - (void)sweepPaymentRegular
 {
     if (![self isInitialized]) {
@@ -1150,7 +1122,11 @@
 
 - (void)loading_start_get_history
 {
+#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
+    [app showBusyViewInTransparentBackgroundWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+#else
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+#endif
 }
 
 - (void)loading_start_get_wallet_and_history
@@ -1270,6 +1246,11 @@
     [delegate didSetLatestBlock:latestBlock];
 }
 
+- (void)reloadFilter
+{
+    [self did_multiaddr];
+}
+
 - (void)did_multiaddr
 {
     if (![self isInitialized]) {
@@ -1280,18 +1261,18 @@
     
     [self getFinalBalance];
     
-    NSString *filter;
-    
+    NSString *filter = @"";
+#ifdef ENABLE_TRANSACTION_FILTERING
     int filterIndex = (int)app.transactionsViewController.filterIndex;
-    
+
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
     } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
-        filter = @"imported";
+        filter = TRANSACTION_FILTER_IMPORTED;
     } else {
         filter = [NSString stringWithFormat:@"%d", filterIndex];
     }
-    
+#endif
     [self.webView executeJSWithCallback:^(NSString * multiAddrJSON) {
         MultiAddressResponse *response = [self parseMultiAddrJSON:multiAddrJSON];
 
@@ -1420,6 +1401,12 @@
     NSRange incorrectPasswordErrorStringRange = [message rangeOfString:@"please check that your password is correct" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (incorrectPasswordErrorStringRange.location != NSNotFound && ![app guid]) {
         // Error message shown in error_other_decrypting_wallet without guid
+        return;
+    }
+    
+    NSRange errorSavingWalletStringRange = [message rangeOfString:@"Error Saving Wallet" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (errorSavingWalletStringRange.location != NSNotFound) {
+        [app standardNotify:BC_STRING_ERROR_SAVING_WALLET_CHECK_FOR_OTHER_DEVICES];
         return;
     }
     
@@ -1758,11 +1745,11 @@
 - (void)on_get_history_success
 {
     DLog(@"on_get_history_success");
-    if (self.isSyncing) {
-        // Required to prevent user input while archiving/unarchiving addresses
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    
+    // Keep showing busy view to prevent user input while archiving/unarchiving addresses
+    if (!self.isSyncing) {
+        [self loading_stop];
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
 - (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust
@@ -1822,11 +1809,11 @@
     DLog(@"on_error_update_fee");
     
     NSString *message = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
-    if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS]) {
+    if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
         [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
     } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
         uint64_t threshold = [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue];
-        [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, threshold]];
+        [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, threshold]];
     } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {
         [app standardNotifyAutoDismissingController:BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION];
     } else {
@@ -2040,16 +2027,25 @@
     }
 }
 
+- (void)update_loaded_all_transactions:(NSNumber *)loadedAll
+{
+    DLog(@"update_loaded_all_transactions");
+    
+    if ([self.delegate respondsToSelector:@selector(updateLoadedAllTransactions:)]) {
+        [self.delegate updateLoadedAllTransactions:loadedAll];
+    }
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
-- (void)upgradeToHDWallet
+- (void)upgradeToV3Wallet
 {
     if (![self isInitialized]) {
         return;
     }
     
     DLog(@"Creating HD Wallet");
-    [self.webView executeJS:@"MyWalletPhone.upgradeToHDWallet(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
+    [self.webView executeJS:@"MyWalletPhone.upgradeToV3(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
 }
 
 - (Boolean)hasAccount
@@ -2151,10 +2147,19 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceSpendableActive"] longLongValue];
+    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceActive"] longLongValue];
 }
 
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceActiveLegacy"] longLongValue];
+}
+
+- (uint64_t)getTotalBalanceForSpendableActiveLegacyAddresses
 {
     if (![self isInitialized]) {
         return 0;

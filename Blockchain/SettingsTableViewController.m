@@ -520,7 +520,7 @@ const int aboutPrivacyPolicy = 1;
     [self removeObserversForChangingEmailNotifications];
     
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
-    [navigationController.busyView fadeIn];
+    [navigationController.busyView fadeInWithDarkBackground];
     
     UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesNotifications]];
     changeEmailNotificationsCell.userInteractionEnabled = YES;
@@ -906,7 +906,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changePassword
 {
-    [self performSegueWithIdentifier:@"changePassword" sender:nil];
+    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CHANGE_PASSWORD sender:nil];
 }
 
 #pragma mark - TextField Delegate

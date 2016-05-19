@@ -29,7 +29,7 @@
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Om du använder den gamla plånboken, klicka på knappen Inställningar och välj fliken enheter. Om du använder vår nya beta plånbok, gå till inställningar / plånbok Information.";
+"364.text" = "Om du använder den gamla plånboken, klicka på knappen Inställningar och välj fliken enheter. Om du använder vår nya plånbok, gå till inställningar / plånbok Information.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -53,13 +53,13 @@
 "380.text" = "Välkommen till Blockchain plånbok";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Inga transaktioner ännu";
+"387.text" = "Inga transaktioner laddad";
 
 /* (No Commment) */
 "394.text" = "Lösenord:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "Lösenord (minst 10 tecken)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "Lösenord";
 
 /* (No Commment) */
 "396.text" = "Bekräfta:";
@@ -147,6 +147,9 @@
 
 /* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
 "bzM-Ub-MUU.normalTitle" = "345.68 USD";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eLG-96-OpG"; */
+"eLG-96-OpG.text" = "Etikett";
 
 /* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
 "fI2-PD-Xwa.normalTitle" = "Jag kommer inte åt min kamera";

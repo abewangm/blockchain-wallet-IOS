@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " الوصول إلى \"العبارة الاسترداد\" الخاصة بك مع أي شخص لديه حق الوصول إلى بيتكوين الخاص بك لذا تأكد من الاحتفاظ به دون اتصال في مكان جداً وآمنة.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " ونحن نوصي الرسم أدناه للحركة في هذا الوقت.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld ثواني";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "* الحد الأدنى 10 أحرف";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "منذ 1 ساعة";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "حدث خطأ أثناء تغيير التحقق من خطوتين.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "حدث خطأ أثناء حفظ التغييرات الخاصة بك. الرجاء التأكد من عدم تسجيل في المحفظة الخاصة بك على جهاز آخر.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "حدث خطأ أثناء تحديث رصيدك المنفق. الرجاء التحقق من اتصال الإنترنت الخاص بك وحاول مرة أخرى.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "تمت مصادفة خطأ أثناء تحميل محفظتك. قد تكون دون اتصال أو بلوكتشاين تعاني من صعوبات. الرجاء إغلاق التطبيق وحاول مرة أخرى لاحقاً أو إعادة إقران الجهاز الخاص بك.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "أي عنوان";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "المتجر الاستعراض السريع جهاز ضبط الوقت (بالثواني)";
 
 /* (No Commment) */
 "Archive" = "أرشيف";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "المعدل الحالي: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "تخصيص الطريقة التي يمكنك تنظيم الخاصة بك بيتكوينس في محفظتك بلوكتشين";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "تخصيص الطريقة التي يمكنك تنظيم الخاصة بك بيتكوين في محفظتك بلوكتشين";
 
 /* (No Commment) */
 "Customized fund management" = "إدارة الأموال المخصصة";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "تمكين خدمات الموقع";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "تمكين إعلامات تلقي رسالة بريد إلكتروني عند تلقي بيتكوينس. فقط المسمى عناوين واستيراد عناوين المؤهلة للإخطارات بالمشغل.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "تمكين إعلامات تلقي رسالة بالبريد إلكتروني كلما تتلقى بيتكوين. فقط المسمى عناوين واستيراد عناوين المؤهلة للإخطارات بالمشغل.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "تمكين هذا الخيار لمنع عناوين IP التي هي معروفة لتكون جزءا من شبكة تور anonymizing من الوصول إلى محفظتك. كثيرا ما يستخدم شبكة تور بمحاولة الوصول إلى محافظ بلوكتشين المستخدمين المتطفلين.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "رمز التحقق غير صحيحة. الرجاء المحاولة مرة أخرى.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "من المهم التأكد من كتابة الكلمات بالضبط كما تظهر هنا و ";
+
+/* No comment provided by engineer. */
 "Just now" = "الآن فقط";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "وصلة الجوال";
+
+/* (No Commment) */
+"Load More Transactions" = "تحميل المزيد من المعاملات";
 
 /* (No Commment) */
 "Loading External Page" = "تحميل صفحة خارجية";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "كلمة المرور الجديدة يجب أن تكون مختلفة من تلميح كلمة المرور";
 
-/* (No Commment) */
-"News, Price & Charts" = "الأخبار، والأسعار والرسوم البيانية";
-
 /* No comment provided by engineer. */
 "Next word" = "الكلمة التالية";
 
@@ -683,13 +698,10 @@
 "Not now" = "ليس الآن";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "لاحظ أنه بمجرد رفع مستواها، لا يمكنك العودة إلى الإصدار السابق، ولكن سيتم الاحتفاظ بجميع بيتكوينس الخاص بك وتاريخ المعاملات الخاصة بك.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "لاحظ أن بعد الترقية، لا يمكنك العودة إلى الإصدار السابق، ولكن سيتم الاحتفاظ بجميع بيتكوين الخاص بك وتاريخ المعاملات الخاصة بك.";
 
 /* (No Commment) */
 "Notifications" = "إعلامات";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "الآن يمكنك استعادة الأموال الخاصة بك استخدام عبارة استرداد كلمة 12 في حالة فقدان كلمة المرور المحفظة الخاصة بك";
 
 /* No comment provided by engineer. */
 "OK" = "موافق";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "تغيير كلمة المرور. الرجاء تسجيل الدخول لمتابعة.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "كلمة مرور يجب 10 أحرف أو أطول";
+"Password must be less than or equal to 255 characters" = "يجب أن تكون كلمة المرور أقل من أو يساوي 255 حرف";
 
 /* (No Commment) */
 "Passwords do not match" = "لا تتطابق كلمات المرور";
@@ -932,10 +944,13 @@
 "Settings" = "إعدادات";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "العملة المشتركة غير معتمدة في الإصدار الجديد في هذا الوقت.";
+"Shared Coin is not supported at this time." = "العملة المشتركة غير معتمد في هذا الوقت.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "مشاركة الخاص بك إكسبوب يأذن للآخرين بتعقب محفوظات المعاملة الخاصة بك. كما قد يتمكن الأشخاص المرخص لهم من تعطيل يمكنك من الوصول إلى محفظتك، فقط مشاركة الخاص بك إكسبوب مع شخص تثق به.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "إظهار كافة التنبيهات 'Dont تظهر مرة أخرى'";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "وأثير إشارة %d.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "يتم تشفير المفتاح الخاص الذي تحاول استيراد. الرجاء إدخال كلمة المرور أدناه.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "تستغرق عملية الترقية فقط ثانية وبيتكوينس والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "تستغرق عملية الترقية فقط ثانية وبيتكوين والتاريخ الخاص بك سوف تكون آمنة. هنا ما هو أفضل:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "توجد مشكلة في التحقق من هويتك.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "هذه الصفقة يتطلب دفع رسوم أعلى لاستهلاك الغبار بسبب كمية صغيرة من التغيير ليتم إرجاعها.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "سيؤدي ذلك إلى محو كافة البيانات المحفظة الموجودة على هذا الجهاز. الرجاء التأكد من لديك معلومات المحفظة الخاصة بك المحفوظة في أماكن أخرى خلاف ذلك أي بيتكوينس في هذه الإرادة المحفظة لا يمكن الوصول إليها!!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "سيسمح هذا التنبيهات التالية: تلقي موجه استعراض المتجر يشاهد فقط،، ونقل جميع الأموال.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "سيؤدي ذلك إلى محو كافة البيانات المحفظة الموجودة على هذا الجهاز. الرجاء التأكد من لديك معلومات المحفظة الخاصة بك المحفوظة في أماكن أخرى خلاف ذلك أي بيتكوين في هذه الإرادة المحفظة لا يمكن الوصول إليها!!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "الحركة";
 
 /* (No Commment) */
-"Transaction Fee" = "رسوم المعاملات";
-
-/* (No Commment) */
 "Transaction Fees" = "رسوم المعاملات";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "رسوم المعاملات تؤثر على مدى سرعة الشبكة التعدين بيتكوين سيتم تأكيد المعاملات الخاصة بك وتعتمد على شروط الشبكة الحالية. ونحن نوصي الرسم أدناه للحركة في هذا الوقت.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "رسوم المعاملات تؤثر على مدى سرعة الشبكة التعدين بيتكوين سيتم تأكيد المعاملات الخاصة بك، وتعتمد على شروط الشبكة الحالية. ونحن نوصي بالرسوم الموضحة لهذه الصفقة في هذا الوقت.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "رسوم المعاملات تؤثر على مدى سرعة الشبكة التعدين بيتكوين سيتم تأكيد المعاملات الخاصة بك، وتعتمد على شروط الشبكة الحالية.";
 
 /* (No Commment) */
 "Transactions" = "المعاملات";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "استخدام معرف اتصال دبوس";
 
 /* (No Commment) */
-"Use all %@" = "استخدام جميع %@";
-
-/* (No Commment) */
 "Use all funds" = "استخدام جميع الأموال";
 
 /* (No Commment) */
 "Use recommended values" = "استخدام القيم الموصى بها";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "مجموع الاستخدام المتاحة ناقص رسوم: %@";
 
 /* (No Commment) */
 "User Declined" = "ورفض المستخدم";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 /* (No Commment) */
 "Welcome" = "مرحبا";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "أحسنت! يجب أن تفقد كلمة المرور الخاصة بك، يمكنك استعادة الأموال في هذه المحفظة حتى لو وردت في المستقبل (باستثناء العناوين المستوردة) باستخدام عبارة استرداد 12 كلمة. تذكر أن تبقى \"العبارة الاسترداد\" الخاصة بك دون اتصال في مكان جداً وآمنة. الوصول إلى \"العبارة الاسترداد\" الخاصة بك مع أي شخص لديه حق الوصول إلى بيتكوين الخاص بك.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "لقد تم الكشف عن تثبيت سابق من المحفظة بلوكتشين على الهاتف الخاص بك.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 "Would you like to archive the addresses used?" = "هل تريد أرشفة عناوين المستخدمة؟";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "اكتب \"عبارتك الانتعاش\" والاحتفاظ به في مكان جداً وآمنة. تذكر أن أي شخص يعرف \"عبارة الاسترداد\" الخاصة بك الوصول إلى بيتكوينس الخاص بك.";
+"Write the following 12 words onto a " = "كتابة الكلمات التالية 12 إلى ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "كلمة مرور خاطئة BIP38";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 "You are now running our most secure Bitcoin wallet" = "يمكنك الآن تشغيل المحفظة بيتكوين الأكثر أماناً";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "يمكنك نسخ احتياطي الأموال الخاصة بك بنجاح";
+"You backed up your funds successfully." = "يمكنك نسخ احتياطي الأموال الخاصة بك بنجاح.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "يمكنك تمكين التحقق 2-خطوة عن طريق الرسائل القصيرة على الهاتف الجوال الخاص بك. من أجل استخدام أساليب المصادقة الأخرى بدلاً من ذلك، الرجاء تسجيل الدخول إلى المحفظة ويب.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 "Your password hint has been updated." = "وقد تم تحديث تلميح كلمة المرور.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "كلمة المرور الخاصة بك ليست قوية بما يكفي. الرجاء اختيار كلمة مرور مختلفة.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "الأموال المحولة الخاصة بك سوف تكون آمنة ومأمونة، ويمكنك الاستفادة من ميزات النسخ الاحتياطي والاسترداد مريحة وزيادة الخصوصية.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 "iOS Support Request" = "دائرة الرقابة الداخلية \"تطلب الدعم\"";
 
 /* No comment provided by engineer. */
+"in this order." = "في هذا الأمر.";
+
+/* No comment provided by engineer. */
 "ninth word" = "الكلمة التاسعة";
 
 /* (No Commment) */
 "or Continue" = "أو متابعة";
+
+/* No comment provided by engineer. */
+"piece of paper." = "قطعة من الورق.";
 
 /* No comment provided by engineer. */
 "second word" = "الكلمة الثانية";

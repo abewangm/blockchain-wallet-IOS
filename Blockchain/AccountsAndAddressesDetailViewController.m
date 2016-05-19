@@ -137,7 +137,7 @@ typedef enum {
 {
 #ifdef ENABLE_TRANSFER_FUNDS
     if (self.address) {
-        return [app.wallet getLegacyAddressBalance:self.address] > [app.wallet dust] && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
+        return [app.wallet getLegacyAddressBalance:self.address] >= [app.wallet dust] && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
     } else {
         return NO;
     }
@@ -152,8 +152,9 @@ typedef enum {
 {
     [self dismissViewControllerAnimated:YES completion:^{
         [app closeSideMenu];
-        app.topViewControllerDelegate = nil;
     }];
+    
+    app.topViewControllerDelegate = nil;
     
     if (!app.sendViewController) {
         app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
@@ -164,6 +165,8 @@ typedef enum {
     [app showSendCoins];
 
     [app.sendViewController transferFundsToDefaultAccountFromAddress:self.address];
+    
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (void)labelAddressClicked

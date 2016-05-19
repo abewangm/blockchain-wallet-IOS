@@ -1,4 +1,7 @@
 /* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Sebaiknya biaya di bawah ini untuk transaksi saat ini.";
+
+/* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
@@ -102,6 +105,12 @@
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Terjadi galat saat mengganti verifikasi 2 langkah.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Galat terjadi saat menyimpan perubahan. Pastikan Anda tidak login ke dompet Anda pada perangkat lain.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Galat terjadi saat memperbarui saldo Anda spendable. Silakan periksa koneksi internet Anda dan coba lagi.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Galat terjadi saat memuat dompet Anda. Mungkin Anda sedang luring atau Blockchain sedang mengalami masalah. Silakan menutup aplikasi dan coba lagi nanti atau pasangkan kembali perangkat Anda.";
@@ -302,6 +311,9 @@
 "Current rate: %@ BTC" = "Kurs Saat Ini: %@ situs BTC";
 
 /* (No Commment) */
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Menyesuaikan cara Anda mengatur bitcoin Anda dalam dompet Blockchain Anda";
+
+/* (No Commment) */
 "Customize the way you organize your bitcoins in your Blockchain Wallet" = "Anda dapat menyesuaikan cara Anda mengatur bitcoin dalam dompet Blockchain Anda.";
 
 /* (No Commment) */
@@ -372,6 +384,9 @@
 
 /* (No Commment) */
 "Enable Location Services" = "Mengaktifkan Layanan Lokasi";
+
+/* (No Commment) */
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Mengaktifkan pemberitahuan untuk menerima email setiap kali Anda menerima bitcoin. Hanya label alamat dan impor alamat memenuhi syarat untuk memicu pemberitahuan.";
 
 /* (No Commment) */
 "Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Mengaktifkan pemberitahuan untuk menerima email setiap kali Anda menerima bitcoin. Hanya label alamat dan impor alamat memenuhi syarat untuk mengaktivasi pemberitahuan.";
@@ -587,6 +602,9 @@
 "Link Mobile" = "Tautan Nomor Ponsel";
 
 /* (No Commment) */
+"Load More Transactions" = "Beban lebih transaksi";
+
+/* (No Commment) */
 "Loading External Page" = "Pemuatan Halaman Eksternal";
 
 /* (No Commment) */
@@ -689,12 +707,15 @@
 "Not now" = "Jangan sekarang";
 
 /* (No Commment) */
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Perhatikan bahwa setelah upgrade, Anda tidak bisa kembali ke versi sebelumnya, tapi semua bitcoin Anda dan riwayat transaksi Anda akan dipelihara.";
+
+/* (No Commment) */
 "Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Perhatikan bahwa setelah pemutakhiran, Anda tidak bisa kembali ke versi sebelumnya, tapi semua bitcoin Anda dan riwayat transaksi Anda akan disimpan.";
 
 /* (No Commment) */
 "Notifications" = "Pemberitahuan";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Sekarang Anda dapat mengembalikan dana Anda menggunakan frasa pemulihan 12 kata jika Anda kehilangan sandi dompet Anda";
 
 /* No comment provided by engineer. */
@@ -738,6 +759,9 @@
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "Sandi harus 10 karakter atau lebih";
+
+/* (No Commment) */
+"Password must be less than or equal to 255 characters" = "Password harus kurang dari atau sama dengan 255 karakter";
 
 /* (No Commment) */
 "Passwords do not match" = "Sandi tidak cocok";
@@ -944,6 +968,9 @@
 "Settings" = "Pengaturan";
 
 /* (No Commment) */
+"Shared Coin is not supported at this time." = "Bersama koin tidak didukung saat ini.";
+
+/* (No Commment) */
 "Shared Coin is not supported in the new version at this time." = "Bersama koin tidak didukung dalam versi baru saat ini.";
 
 /* (No Commment) */
@@ -1007,6 +1034,9 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Kunci pribadi Anda sedang berusaha Anda impor sedang melakukan enkripsi. Masukkan sandi di bawah ini.";
 
 /* (No Commment) */
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "Upgrade mengambil hanya satu detik dan bitcoin dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik:";
+
+/* (No Commment) */
 "The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Upgrade mengambil hanya satu detik dan bitcoins dan sejarah Anda akan aman. Berikut adalah apa yang lebih baik:";
 
 /* (No Commment) */
@@ -1059,6 +1089,9 @@ Dua jenis transaksi tingkat lanjut (pengeluaran dari alamat dilihat saja dan Ber
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Transaksi ini membutuhkan biaya yang lebih tinggi untuk konsumsi debu karena jumlah kecil perubahan untuk dikembalikan.";
 
 /* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Ini akan menghapus semua dompet data pada perangkat ini. Pastikan Anda memiliki informasi dompet yang disimpan di tempat lain jika tidak bitcoin apapun dalam dompet ini akan bisa diakses!!";
+
+/* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Ini akan menghapus semua data dompet pada perangkat ini. Pastikan Anda memiliki informasi dompet yang disimpan di tempat lain jika tidak bitcoin apa pun dalam dompet ini tidak dapat diakses!!";
 
 /* (No Commment) */
@@ -1107,6 +1140,9 @@ Biaya: %4$@
 
 /* (No Commment) */
 "Transaction Fees" = "Biaya transaksi";
+
+/* (No Commment) */
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Biaya transaksi mempengaruhi seberapa cepat Bitcoin pertambangan jaringan akan mengkonfirmasi transaksi Anda, dan tergantung pada kondisi jaringan saat ini.";
 
 /* (No Commment) */
 "Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Biaya transaksi mempengaruhi seberapa cepat Bitcoin pertambangan jaringan akan mengkonfirmasi transaksi Anda, dan tergantung pada kondisi jaringan saat ini. Sebaiknya biaya yang ditampilkan untuk transaksi ini saat ini.";
@@ -1199,6 +1235,9 @@ Biaya: %4$@
 "Use recommended values" = "Menggunakan nilai yang direkomendasikan";
 
 /* (No Commment) */
+"Use total available minus fee: %@" = "Penggunaan total yang tersedia dikurangi biaya: %@";
+
+/* (No Commment) */
 "User Declined" = "Pengguna Ditolak";
 
 /* No comment provided by engineer. */
@@ -1272,6 +1311,9 @@ dompet pengalaman untuk Anda";
 /* (No Commment) */
 "Welcome" = "Selamat datang";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "Bagus! Harus Anda kehilangan sandi, Anda dapat mengembalikan dana dalam dompet ini bahkan jika diterima di masa depan (kecuali impor alamat) menggunakan 12 kata pemulihan frase. Ingat untuk menjaga frase pemulihan Anda offline di suatu tempat sangat aman dan aman. Siapapun dengan akses ke frase pemulihan Anda memiliki akses ke bitcoin Anda.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Kami telah mendeteksi instalasi sebelumnya dari dompet di pada ponsel Anda.";
 
@@ -1281,7 +1323,7 @@ dompet pengalaman untuk Anda";
 /* (No Commment) */
 "Would you like to archive the addresses used?" = "Apakah Anda ingin Arsip alamat yang digunakan?";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Tulis Frasa Pemulihan Anda dan simpan di suatu tempat sangat aman dan terjamin. Ingat bahwa siapa saja yang mengetahui Frasa Pemulihan Anda memiliki akses ke bitcoin Anda.";
 
 /* (No Commment) */
@@ -1302,8 +1344,11 @@ dompet pengalaman untuk Anda";
 /* (No Commment) */
 "You are now running our most secure Bitcoin wallet" = "Anda sekarang menjalankan dompet Bitcoin kami yang paling aman";
 
-/* No comment provided by engineer. */
+/* (No Commment) */
 "You backed up your funds successfully" = "Anda berhasil mencadangkan dana dengan sukses";
+
+/* No comment provided by engineer. */
+"You backed up your funds successfully." = "Anda didukung dana Anda berhasil.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Anda dapat mengaktifkan verifikasi 2 langkah melalui SMS di ponsel Anda. Untuk menggunakan metode otentikasi lain sebagai gantinya, silakan login ke dompet web kami.";
@@ -1382,6 +1427,9 @@ dompet pengalaman untuk Anda";
 
 /* (No Commment) */
 "Your password hint has been updated." = "Petunjuk sandi Anda telah diperbarui.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Sandi tidak cukup kuat. Silakan pilih sandi yang berbeda.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Dana ditransfer Anda akan aman dan aman, dan Anda akan mendapatkan keuntungan dari peningkatan privasi dan fitur backup dan recovery yang mudah digunakan.";

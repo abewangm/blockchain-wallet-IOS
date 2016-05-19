@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " Bất cứ ai có quyền truy cập vào cụm từ phục hồi của bạn có quyền truy cập vào bitcoin của bạn vì vậy hãy chắc chắn để giữ cho nó offline ở một nơi rất an toàn và an toàn.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Chúng tôi khuyên bạn nên các chi phí dưới đây cho các giao dịch tại thời điểm này.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
@@ -24,9 +30,6 @@
 
 /* No comment provided by engineer. */
 "%lld seconds ago" = "%lld giây trước";
-
-/* (No Commment) */
-"* Minimum 10 characters" = "Tối thiểu 10 ký tự";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 giờ trước";
@@ -104,6 +107,12 @@
 "An error occurred while changing 2-Step verification." = "Lỗi xuất hiện khi thay đổi quy trình xác minh 2 bước.";
 
 /* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Lỗi xuất hiện khi lưu các thay đổi. Hãy chắc chắn rằng bạn không đăng nhập vào wallet của bạn trên một thiết bị khác.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Lỗi xảy ra khi cập nhật số dư spendable của bạn. Xin vui lòng kiểm tra kết nối internet của bạn và thử lại.";
+
+/* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Một lỗi bắt gặp tải chi tiêu của bạn. Bạn có thể được diễn đàn hoặc Blockchain đang trải qua những khó khăn. Xin vui lòng đóng ứng dụng và thử lại sau hoặc tái ghép nối thiết bị của bạn.";
 
 /* (No Commment) */
@@ -111,6 +120,9 @@
 
 /* (No Commment) */
 "Any address" = "Bất kỳ địa chỉ";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "Cửa hàng ứng dụng xem xét nhanh chóng bộ đếm thời gian (giây)";
 
 /* (No Commment) */
 "Archive" = "Lưu trữ";
@@ -302,7 +314,7 @@
 "Current rate: %@ BTC" = "Tốc độ hiện tại: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Tuỳ chỉnh cách bạn tổ chức của bạn bitcoins trong ví của bạn Blockchain";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Tùy chỉnh cách bạn tổ chức của bạn bitcoin trong ví của bạn Blockchain";
 
 /* (No Commment) */
 "Customized fund management" = "Quản lý quỹ tùy chỉnh";
@@ -374,7 +386,7 @@
 "Enable Location Services" = "Kích hoạt dịch vụ vị trí";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Cho phép các thông báo để nhận được một email bất cứ khi nào bạn nhận được bitcoins. Chỉ có nhãn địa chỉ và nhập địa chỉ có đủ điều kiện để kích hoạt thông báo.";
+"Enable notifications to receive an email whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Cho phép thông báo để nhận được một email bất cứ khi nào bạn nhận được bitcoin. Chỉ có nhãn địa chỉ và nhập địa chỉ được kích hoạt thông báo.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Bật tùy chọn này để ngăn chặn địa chỉ IP được biết đến là một phần của mạng Tor ẩn từ truy cập vào ví của bạn. Mạng Tor thường được sử dụng bởi tin tặc cố gắng truy cập của người dùng Blockchain ví.";
@@ -554,6 +566,9 @@
 "Invalid verification code. Please try again." = "Mã xác minh không hợp lệ. Xin vui lòng thử lại.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "Nó là quan trọng để đảm bảo rằng bạn ghi lại lời nói của bạn chính xác như chúng xuất hiện ở đây và ";
+
+/* No comment provided by engineer. */
 "Just now" = "Bây giờ chỉ cần";
 
 /* (No Commment) */
@@ -579,6 +594,9 @@
 
 /* (No Commment) */
 "Link Mobile" = "Điện thoại di động liên kết";
+
+/* (No Commment) */
+"Load More Transactions" = "Tải thêm các giao dịch";
 
 /* (No Commment) */
 "Loading External Page" = "Tải trang bên ngoài";
@@ -652,9 +670,6 @@
 /* (No Commment) */
 "New password must be different from your password hint" = "Mật khẩu mới phải là khác nhau từ gợi ý mật khẩu của bạn";
 
-/* (No Commment) */
-"News, Price & Charts" = "Tin tức, giá & bảng xếp hạng";
-
 /* No comment provided by engineer. */
 "Next word" = "Từ kế tiếp";
 
@@ -683,13 +698,10 @@
 "Not now" = "Không phải bây giờ";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Lưu ý rằng sau khi nâng cấp, bạn không thể quay về phiên bản trước, nhưng tất cả của bạn bitcoins và lịch sử giao dịch của bạn sẽ được giữ.";
+"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept." = "Lưu ý rằng sau khi nâng cấp, bạn không thể quay trở lại phiên bản trước, nhưng tất cả các bitcoin và lịch sử giao dịch của bạn sẽ được lưu giữ.";
 
 /* (No Commment) */
 "Notifications" = "Thông báo";
-
-/* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Bây giờ bạn có thể khôi phục lại khoản tiền của bạn bằng cách sử dụng cụm từ phục hồi từ 12 trong trường hợp bạn mất mật khẩu ví của bạn";
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
@@ -731,7 +743,7 @@
 "Password changed. Please login to continue." = "Thay đổi mật khẩu. Vui lòng đăng nhập để tiếp tục.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Mật khẩu phải 10 ký tự hoặc dài hơn";
+"Password must be less than or equal to 255 characters" = "Mật khẩu phải nhỏ hơn hoặc bằng đến 255 ký tự";
 
 /* (No Commment) */
 "Passwords do not match" = "Mật khẩu không khớp";
@@ -932,10 +944,13 @@
 "Settings" = "Cài đặt";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "Đồng xu được chia sẻ không được hỗ trợ trong phiên bản mới tại thời điểm này.";
+"Shared Coin is not supported at this time." = "Đồng xu được chia sẻ không được hỗ trợ tại thời điểm này.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Chia sẻ xPub của bạn cho phép những người khác để theo dõi lịch sử giao dịch của bạn. Là người được ủy quyền có thể ngăn cản bạn truy cập vào ví của bạn, chỉ chia sẻ xPub của bạn với những người bạn tin cậy.";
+
+/* (No Commment) */
+"Show all 'Dont Show Again' alerts" = "Hiển thị tất cả cảnh báo 'Dont hiển thị một lần nữa'";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Tín hiệu %d được nêu ra.";
@@ -995,7 +1010,7 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Khoá riêng bạn đang cố gắng nhập khẩu được mã hóa. Vui lòng nhập mật khẩu dưới đây.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Việc nâng cấp diễn một chút và bitcoins và lịch sử của bạn sẽ được an toàn. Dưới đây là những gì tốt hơn:";
+"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:" = "Việc nâng cấp diễn một chút và bitcoin và lịch sử của bạn sẽ được an toàn. Dưới đây là những gì tốt hơn:";
 
 /* (No Commment) */
 "There was a problem verifying your identity." = "Đã có một vấn đề xác minh danh tính của bạn.";
@@ -1028,7 +1043,10 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Giao dịch này đòi hỏi một khoản phí cao cho bụi tiêu thụ do số lượng nhỏ của sự thay đổi để được trả lại.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Điều này sẽ xóa tất cả dữ liệu wallet trên thiết bị này. Xin vui lòng xác nhận bạn đã ví thông tin của bạn được lưu ở nơi khác nếu không bất kỳ bitcoins trong này ví sẽ được không thể tiếp cận!!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Điều này sẽ cho phép các cảnh báo sau đây: nhận xem chỉ, dấu nhắc lại App Store và chuyển tất cả tiền.";
+
+/* (No Commment) */
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Điều này sẽ xóa tất cả dữ liệu wallet trên thiết bị này. Vui lòng xác nhận bạn đã chi tiêu thông tin của bạn lưu ở nơi khác nếu không bất kỳ bitcoin trong ví này sẽ là không thể tiếp cận!!";
 
 /* (No Commment) */
 "To: %@
@@ -1068,16 +1086,10 @@ Fee: %@
 "Transaction" = "Giao dịch";
 
 /* (No Commment) */
-"Transaction Fee" = "Khoản phí giao dịch";
-
-/* (No Commment) */
 "Transaction Fees" = "Phí giao dịch";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Phí giao dịch ảnh hưởng như thế nào một cách nhanh chóng Bitcoin khai thác mạng sẽ xác nhận giao dịch của bạn và phụ thuộc vào điều kiện mạng hiện nay. Chúng tôi khuyên bạn nên các chi phí dưới đây cho các giao dịch tại thời điểm này.";
-
-/* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Phí giao dịch ảnh hưởng như thế nào một cách nhanh chóng Bitcoin khai thác mạng sẽ xác nhận giao dịch của bạn, và phụ thuộc vào các điều kiện mạng hiện nay. Chúng tôi khuyên bạn nên chi phí Hiển thị cho giao dịch này vào thời gian này.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Phí giao dịch ảnh hưởng như thế nào một cách nhanh chóng Bitcoin khai thác mạng sẽ xác nhận giao dịch của bạn, và phụ thuộc vào các điều kiện mạng hiện nay.";
 
 /* (No Commment) */
 "Transactions" = "Giao dịch";
@@ -1158,13 +1170,13 @@ Fee: %@
 "Use Touch ID as PIN" = "Sử dụng Touch ID là mã PIN";
 
 /* (No Commment) */
-"Use all %@" = "Sử dụng tất cả %@";
-
-/* (No Commment) */
 "Use all funds" = "Sử dụng tất cả các khoản tiền";
 
 /* (No Commment) */
 "Use recommended values" = "Sử dụng các giá trị được đề nghị";
+
+/* (No Commment) */
+"Use total available minus fee: %@" = "Sử dụng tổng cộng có trừ đi chi phí: %@";
 
 /* (No Commment) */
 "User Declined" = "Người dùng bị từ chối";
@@ -1236,6 +1248,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 /* (No Commment) */
 "Welcome" = "Chào mừng";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "Tốt! Nên bạn mất mật khẩu của bạn, bạn có thể khôi phục lại các khoản tiền trong ví này ngay cả khi nhận được trong tương lai (trừ địa chỉ đã nhập) bằng cách sử dụng cụm từ phục hồi từ 12. Hãy nhớ để giữ cho cụm từ của bạn phục hồi gián tuyến ở một nơi rất an toàn và an toàn. Bất cứ ai có quyền truy cập vào cụm từ phục hồi của bạn có quyền truy cập vào bitcoin của bạn.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Chúng tôi đã phát hiện một cài đặt trước đó của Blockchain Wallet trên điện thoại của bạn.";
 
@@ -1246,7 +1261,7 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "Would you like to archive the addresses used?" = "Bạn có muốn lưu trữ các địa chỉ được sử dụng?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Viết xuống cụm từ phục hồi của bạn và giữ nó ở một nơi rất an toàn và an toàn. Hãy nhớ rằng bất cứ ai biết cụm từ phục hồi của bạn có quyền truy cập vào bitcoins của bạn.";
+"Write the following 12 words onto a " = "Viết từ sau 12 vào một ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "Mật khẩu sai BIP38";
@@ -1270,7 +1285,7 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "You are now running our most secure Bitcoin wallet" = "Bạn bây giờ đang chạy của chúng tôi Bitcoin ví an toàn nhất";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Bạn sao lưu các khoản tiền của bạn thành công";
+"You backed up your funds successfully." = "Bạn sao lưu các khoản tiền của bạn thành công.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Bạn có thể kích hoạt quy trình xác minh 2 bước qua SMS trên điện thoại di động của bạn. Để sử dụng các phương pháp xác thực khác thay thế, hãy đăng nhập vào wallet web của chúng tôi.";
@@ -1351,6 +1366,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "Your password hint has been updated." = "Gợi ý mật khẩu của bạn đã được Cập Nhật.";
 
 /* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Mật khẩu của bạn là không đủ mạnh. Hãy chọn một mật khẩu khác nhau.";
+
+/* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Chuyển khoản tiền của bạn sẽ được an toàn và an toàn, và bạn sẽ hưởng lợi từ tăng cường bảo mật và thuận tiện các tính năng sao lưu và phục hồi.";
 
 /* (No Commment) */
@@ -1387,10 +1405,16 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "iOS Support Request" = "iOS hỗ trợ yêu cầu";
 
 /* No comment provided by engineer. */
+"in this order." = "theo thứ tự này.";
+
+/* No comment provided by engineer. */
 "ninth word" = "từ thứ chín";
 
 /* (No Commment) */
 "or Continue" = "hoặc tiếp tục";
+
+/* No comment provided by engineer. */
+"piece of paper." = "một mảnh giấy.";
 
 /* No comment provided by engineer. */
 "second word" = "từ thứ hai";
