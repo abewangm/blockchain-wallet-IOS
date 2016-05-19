@@ -1122,7 +1122,7 @@
 
 - (void)loading_start_get_history
 {
-#ifdef ENABLE_TRANSACTION_FILTERING
+#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
     [app showBusyViewInTransparentBackgroundWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
 #else
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];

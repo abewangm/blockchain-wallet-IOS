@@ -607,7 +607,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     _transactionsViewController.data = response;
     
-#ifdef ENABLE_TRANSACTION_FILTERING
+#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
     if (app.wallet.isFetchingTransactions) {
         [_transactionsViewController reload];
         app.wallet.isFetchingTransactions = NO;
