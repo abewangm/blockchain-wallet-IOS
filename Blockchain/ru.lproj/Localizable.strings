@@ -101,6 +101,9 @@
 "Amount must be above dust threshold (%lld Satoshi)" = "Сумма должна быть выше порога пыли (%lld Satoshi)";
 
 /* (No Commment) */
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Сумма должна быть больше или равно порогу пыли (%lld Сатоши)";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке вашего PIN-кода удаленным сервером. Вероятно, вы отключены, или Blockchain  испытывает технические трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
 
 /* (No Commment) */
@@ -992,6 +995,9 @@
 "Simulate surge" = "Имитировать всплеск";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Некоторые фонды не могут передаваться автоматически.";
+
+/* (No Commment) */
 "Store Hint" = "Сохранить подсказку";
 
 /* (No Commment) */
@@ -1361,6 +1367,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "You have no addresses with a spendable balance above the required dust threshold." = "У вас нет адреса с расходуемого баланс выше порога требуемых пыли.";
+
+/* (No Commment) */
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "У вас нет адреса с расходуемого баланс больше или равно порогу необходимых пыли.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "У вас нет доступных средств для отправки с этого адреса";
