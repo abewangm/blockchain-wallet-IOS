@@ -1825,6 +1825,11 @@
     }
 }
 
+- (void)on_payment_notice:(NSString *)notice
+{
+    [app standardNotifyAutoDismissingController:notice title:BC_STRING_INFORMATION];
+}
+
 - (void)on_generate_key
 {
     DLog(@"on_generate_key");
