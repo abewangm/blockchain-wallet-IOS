@@ -98,7 +98,7 @@
 "Allowed" = "Povoleno";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Částka musí být vyšší než práh prach (%lld Satoshi)";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Množství musí být větší než nebo rovna prahu prach (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Při ověřování kódu PIN se vzdáleným serverem došlo k chybě. Jste pravděpodobně v režimu offline nebo Blockchain mohou být potíže. Chcete opakovat ověření nebo místo toho zadat heslo ručně?";
@@ -968,6 +968,9 @@
 "Simulate surge" = "Simulovat přepětí";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Některé fondy nemohou být převedeny automaticky.";
+
+/* (No Commment) */
 "Store Hint" = "Nápovědu pro obchod";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 "You do not have an account set up for Mail. Please contact %@" = "Nemáte účet nastavený pro poštu. Prosím kontaktujte %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Budete mít žádné adresy s utratitelné zůstatek nad prahem požadované prach.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Budete mít žádné adresy s utratitelné rovnováhu, větší nebo rovna požadované prachu prahu.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Žádné dostupné peníze poslat z této adresy";

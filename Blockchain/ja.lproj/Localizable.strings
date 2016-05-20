@@ -98,7 +98,7 @@
 "Allowed" = "許可";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "量する必要がありますほこりしきい値 (%lld 聡)";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "量がほこりしきい値 (%lld 聡) 以上にする必要があります。";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "リモート サーバーと PIN コードの検証エラーが発生しました。あなたがオフラインである、または Blockchain により、問題が発生します。検証を再試行するか、代わりにあなたのパスワードを手動で入力したいですか。";
@@ -968,6 +968,9 @@
 "Simulate surge" = "サージをシミュレートします。";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "いくつかの資金を自動的に転送できません。";
+
+/* (No Commment) */
 "Store Hint" = "ストアのヒント";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "You do not have an account set up for Mail. Please contact %@" = "設定したメール アカウントがありません。%@ にお問い合わせください。";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "必要な塵のしきい値を超える支出できるバランスとアドレスがあるない場合。";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "必要なほこりしきい値以上の投資バランスとアドレスがあるない場合。";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "このアドレスから送信する利用可能な資金があるない場合";

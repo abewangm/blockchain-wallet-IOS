@@ -98,7 +98,7 @@
 "Allowed" = "İzin verilen";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Bir miktar toz eşik (%lld Satoshi) olması gerekir";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Tutar (%lld Satoshi) toz eşiğine eşit veya daha büyük olmalıdır";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "PIN kodunuzu uzak sunucuyla doğrulanırken bir hata oluştu. Çevrimdışı olabilir veya Blockchain sorunlar yaşıyor. Doğrulama yeniden deneyin veya bunun yerine parolanızı el ile girmek ister misin?";
@@ -968,6 +968,9 @@
 "Simulate surge" = "Dalgalanma simülasyonu";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Bazı fonlar otomatik olarak transfer edilemez.";
+
+/* (No Commment) */
 "Store Hint" = "Mağaza ipucu";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "You do not have an account set up for Mail. Please contact %@" = "Posta için ayarlanmış bir hesap var mı. %@ ulaşın";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Sen-si olmak gerekli toz eşiğin spendable bakiyesi olan adresi yok.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Spendable bakiyesi gerekli toz eşiğine eşit veya daha büyük olan adres var.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Bu adresten göndermek için kullanılabilir hiçbir para olduğu";

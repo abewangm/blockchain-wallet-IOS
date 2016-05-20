@@ -98,7 +98,7 @@
 "Allowed" = "अनुमति दी गई";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "राशि धूल दहलीज (%lld Satoshi) से ऊपर होना चाहिए";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "मात्रा से अधिक या बराबर करने के लिए धूल थ्रेशोल्ड (%lld Satoshi) होना चाहिए";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
@@ -968,6 +968,9 @@
 "Simulate surge" = "वृद्धि अनुकरण";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "कुछ धन स्वचालित रूप से स्थानांतरित नहीं किया जा सकता।";
+
+/* (No Commment) */
 "Store Hint" = "दुकान संकेत";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 "You do not have an account set up for Mail. Please contact %@" = "आप किसी खाते के लिए मेल सेट अप नहीं है। कृपया %@ से संपर्क करें";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "आपके पास कोई पते आवश्यक धूल थ्रेशोल्ड ऊपर एक spendable संतुलन के साथ।";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "आपके पास एक से अधिक या बराबर करने के लिए आवश्यक धूल थ्रेशोल्ड spendable संतुलन के साथ कोई पते।";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "आप इस पते से भेजने के लिए कोई धनराशि उपलब्ध है";

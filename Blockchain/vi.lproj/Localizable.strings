@@ -98,7 +98,7 @@
 "Allowed" = "Cho phép";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Số tiền phải ở trên bụi ngưỡng (%lld Satoshi)";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Số tiền phải lớn hơn hoặc bằng ngưỡng bụi (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Xác nhận mã PIN của bạn với máy chủ từ xa đã có lỗi. Bạn có thể được diễn đàn hoặc Blockchain có thể gặp khó khăn. Bạn có muốn thử lại xác nhận hoặc thay vào đó nhập mật khẩu của bạn theo cách thủ công?";
@@ -968,6 +968,9 @@
 "Simulate surge" = "Mô phỏng sự đột biến";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Một số tiền không được chuyển tự động.";
+
+/* (No Commment) */
 "Store Hint" = "Cửa hàng gợi ý";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 "You do not have an account set up for Mail. Please contact %@" = "Bạn không có một tài khoản thiết lập cho thư. Xin vui lòng liên hệ với %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Bạn có không có địa chỉ với một sự cân bằng spendable ở trên ngưỡng bụi yêu cầu.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Bạn có không có địa chỉ với một sự cân bằng spendable lớn hơn hoặc bằng ngưỡng bụi yêu cầu.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Bạn có không có tiền có sẵn để gửi từ địa chỉ này";

@@ -98,7 +98,7 @@
 "Allowed" = "Permitida";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Montante deve ser acima do limiar de poeira (%lld Satoshi)";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Quantidade deve ser maior ou igual ao limiar de poeira (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Erro ao validar o seu código PIN com o servidor remoto. Você pode estar offline ou Blockchain pode estar enfrentando dificuldades. Gostaria de repetir a validação ou em vez disso, digite sua senha manualmente?";
@@ -968,6 +968,9 @@
 "Simulate surge" = "Simular a onda";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Alguns fundos não podem ser transferidos automaticamente.";
+
+/* (No Commment) */
 "Store Hint" = "Dica de loja";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "Nós projetamos uma nova experiência de carteira 
 "You do not have an account set up for Mail. Please contact %@" = "Você não tem uma conta configurada para correio. Entre em contato com %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Você não tem nenhum endereços com um equilíbrio spendable acima do limiar de pó necessário.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Você não tem nenhum endereços com um equilíbrio spendable maior ou igual ao valor exigido pó.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Você tem fundos disponíveis para enviar este endereço";

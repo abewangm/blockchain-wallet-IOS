@@ -53,7 +53,7 @@
 "380.text" = "Bine ati venit la portofel Blockchain";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Nicio tranzactie încărcate";
+"387.text" = "Nicio tranzactie recentă";
 
 /* (No Commment) */
 "394.text" = "Parola:";
