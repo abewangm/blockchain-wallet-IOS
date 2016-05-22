@@ -726,6 +726,8 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     });
     
     queue.then(function(last) {
+        payments.push(last);
+        device.execute('loading_start_transfer_all:', [addresses.length])
         updateInfo(payments);
     });
 }
