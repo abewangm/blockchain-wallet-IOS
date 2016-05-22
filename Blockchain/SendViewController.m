@@ -1248,7 +1248,7 @@ BOOL displayingLocalSymbolSend;
     [self enablePaymentButtons];
     
     self.confirmPaymentView.customizeFeeButton.hidden = YES;
-    sendProgressCancelButton.hidden = NO;
+    sendProgressCancelButton.hidden = [self.transferAllAddressesToTransfer count] <= 1;
 
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];
