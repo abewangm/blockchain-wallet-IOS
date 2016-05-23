@@ -56,11 +56,6 @@ NSString *detailLabel;
     
     [self setupTapGestureForMainQR];
     
-    // The more actions button will be added to the top menu bar
-    [moreActionsButton removeFromSuperview];
-    moreActionsButton.alpha = 0.0f;
-    moreActionsButton.frame = CGRectMake(0, 16, moreActionsButton.frame.size.width, moreActionsButton.frame.size.height);
-    
     // iPhone4/4S
     if ([[UIScreen mainScreen] bounds].size.height < 568) {
         int reduceImageSizeBy = 60;
@@ -72,31 +67,8 @@ NSString *detailLabel;
                                                qrCodeMainImageView.frame.size.height - reduceImageSizeBy);
     }
     
-    qrCodePaymentImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x,
-                                              qrCodeMainImageView.frame.origin.y,
-                                              qrCodeMainImageView.frame.size.width,
-                                              qrCodeMainImageView.frame.size.height);
-    
-    [self setupTapGestureForDetailQR];
-    
-    // iPhone4/4S
-    if ([[UIScreen mainScreen] bounds].size.height < 568) {
-        // Smaller QR Code Image
-        qrCodePaymentImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x,
-                                               qrCodeMainImageView.frame.origin.y - 10,
-                                               qrCodeMainImageView.frame.size.width,
-                                               qrCodeMainImageView.frame.size.height);
-    }
-    
-    optionsTitleLabel.frame = CGRectMake(optionsTitleLabel.frame.origin.x,
-                                         qrCodePaymentImageView.frame.origin.y + qrCodePaymentImageView.frame.size.height + 3,
-                                         optionsTitleLabel.frame.size.width,
-                                         optionsTitleLabel.frame.size.height);
-    
     btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    
-    [self setupTapGestureForLegacyLabel];
     
     [self setupHeaderView];
     
@@ -165,7 +137,7 @@ NSString *detailLabel;
     
     self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveFiatLabel.frame.origin.x + 47, 10, 117, 30)];
     self.receiveFiatField.font = [UIFont systemFontOfSize:13];
-    self.receiveFiatField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+    self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     self.receiveFiatField.keyboardType = UIKeyboardTypeDecimalPad;
     self.receiveFiatField.inputAccessoryView = amountKeyboardAccessoryView;
     self.receiveFiatField.delegate = self;
@@ -174,7 +146,7 @@ NSString *detailLabel;
     UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 40, 21)];
     whereLabel.font = [UIFont systemFontOfSize:13];
     whereLabel.textColor = [UIColor lightGrayColor];
-    whereLabel.text = @"Where";
+    whereLabel.text = BC_STRING_WHERE;
     [self.bottomContainerView addSubview:whereLabel];
     
     UIButton *selectDestinationButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 35, 60, 35, 30)];
@@ -201,13 +173,6 @@ NSString *detailLabel;
     }
 }
 
-- (void)setupTapGestureForLegacyLabel
-{
-    UITapGestureRecognizer *tapGestureForLegacyLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLegacyAddressOnTap)];
-    [optionsTitleLabel addGestureRecognizer:tapGestureForLegacyLabel];
-    optionsTitleLabel.userInteractionEnabled = YES;
-}
-
 - (void)setupTapGestureForMainLabel
 {
     UITapGestureRecognizer *tapGestureForMainLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainAddressOnTap)];
@@ -220,13 +185,6 @@ NSString *detailLabel;
     UITapGestureRecognizer *tapMainQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainQRClicked:)];
     [qrCodeMainImageView addGestureRecognizer:tapMainQRGestureRecognizer];
     qrCodeMainImageView.userInteractionEnabled = YES;
-}
-
-- (void)setupTapGestureForDetailQR
-{
-    UITapGestureRecognizer *tapDetailQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreActionsClicked:)];
-    [qrCodePaymentImageView addGestureRecognizer:tapDetailQRGestureRecognizer];
-    qrCodePaymentImageView.userInteractionEnabled = YES;
 }
 
 - (void)reload
@@ -370,8 +328,8 @@ NSString *detailLabel;
         
     UIImage *image = [self.qrCodeGenerator qrImageFromAddress:self.clickedAddress amount:amount];
         
-    qrCodePaymentImageView.image = image;
-    qrCodePaymentImageView.contentMode = UIViewContentModeScaleAspectFit;
+    qrCodeMainImageView.image = image;
+    qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self doCurrencyConversion];
 }
@@ -440,53 +398,6 @@ NSString *detailLabel;
     [self toggleTextOfLabel:mainAddressLabel betweenString:mainLabel andString:mainAddress];
 }
 
-- (void)showLegacyAddressOnTap
-{
-    // If the address has no label, no need to animate
-    if (![detailLabel isEqualToString:detailAddress]) {
-        [self toggleTextOfLabel:optionsTitleLabel betweenString:detailAddress andString:detailLabel];
-    }
-}
-
-- (IBAction)moreActionsClicked:(id)sender
-{
-    [UIPasteboard generalPasteboard].string = detailAddress;
-    [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodePaymentImageView];
-}
-
-- (IBAction)shareClicked:(id)sender
-{
-    [self disableTapInteraction];
-
-    NSString *message = [self formatPaymentRequest:@""];
-    
-    NSURL *url = [NSURL URLWithString:[self uriURL]];
-    
-    NSArray *activityItems = @[message, self, url];
-    
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    
-    activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList, UIActivityTypePostToFacebook];
-    
-    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_SUBJECT forKey:@"subject"];
-    
-    // Keyboard is behaving a little strangely because of UITextFields in the Keyboard Accessory View
-    // This makes it work correctly - resign first Responder for UITextFields inside the Accessory View...
-    [btcAmountField resignFirstResponder];
-    [fiatAmountField resignFirstResponder];
-    
-    [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:activityViewController selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    
-    activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *error) {
-        [self showKeyboard];
-        
-        // Allow keyboard to complete animating before allowing an action sheet
-        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
-    };
-}
-
 - (IBAction)labelSaveClicked:(id)sender
 {
     NSString *label = [labelTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -519,13 +430,6 @@ NSString *detailLabel;
     [UIPasteboard generalPasteboard].string = mainAddress;
     
     [self animateTextOfLabel:mainAddressLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
-}
-
-- (IBAction)copyAddressClicked:(id)sender
-{
-    [UIPasteboard generalPasteboard].string = detailAddress;
-    
-    [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:optionsTitleLabel];
 }
 
 - (NSString*)formatPaymentRequest:(NSString*)url
@@ -601,18 +505,6 @@ NSString *detailLabel;
     [app closeModalWithTransition:kCATransitionFade];
 }
 
-- (void)disableTapInteraction
-{
-    moreActionsButton.userInteractionEnabled = NO;
-    qrCodePaymentImageView.userInteractionEnabled = NO;
-}
-
-- (void)enableTapInteraction
-{
-    moreActionsButton.userInteractionEnabled = YES;
-    qrCodePaymentImageView.userInteractionEnabled = YES;
-}
-
 - (void)showKeyboard
 {
     // Select the entry field
@@ -643,15 +535,17 @@ NSString *detailLabel;
     [alertView show];
 }
 
-- (void)alertUserOfWatchOnlyAddress
+- (void)alertUserOfWatchOnlyAddress:(NSString *)address
 {
     UIAlertController *alertForWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_WATCH_ONLY_RECEIVE_WARNING preferredStyle:UIAlertControllerStyleAlert];
     [alertForWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self updateUI];
+        [self didSelectFromAddress:address];
+        [app closeModalWithTransition:kCATransitionFromLeft];
     }]];
     [alertForWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_DONT_SHOW_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING];
-        [self updateUI];
+        [self didSelectFromAddress:address];
+        [app closeModalWithTransition:kCATransitionFromLeft];
     }]];
     [alertForWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     
@@ -668,81 +562,40 @@ NSString *detailLabel;
     qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
 }
 
-- (void)showReceiveModal
+- (void)paymentReceived:(NSDecimalNumber *)amount
 {
-    [self startObservingForReceivedPayment];
-    
-    optionsTitleLabel.text = detailLabel;
-    
-    [app showModalWithContent:requestCoinsView closeType:ModalCloseTypeClose headerText:BC_STRING_REQUEST_AMOUNT onDismiss:^() {
-        // Remove the extra menu item (more actions)
-        [moreActionsButton removeFromSuperview];
-        moreActionsButton.alpha = 0.0f;
+    u_int64_t amountReceived = [[amount decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
         
-        if (self.paymentObserver) {
-            [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
-            self.paymentObserver = nil;
+    NSString *convertedBitcoinString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+    if ([app stringHasBitcoinValue:convertedBitcoinString]) {
+        NSDecimalNumber *amountRequestedDecimalNumber = [NSDecimalNumber decimalNumberWithString:convertedBitcoinString];
+        u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+        amountRequested = app.latestResponse.symbol_btc.conversion * amountRequested / SATOSHI;
+    
+        if (amountReceived == amountRequested) {
+            NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
+            btcAmountString = [app formatMoney:btcAmount localCurrency:NO];
+            NSString *localCurrencyAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            u_int64_t currencyAmount = [app.wallet parseBitcoinValue:localCurrencyAmountString];
+            localCurrencyAmountString = [app formatMoney:currencyAmount localCurrency:YES];
+            [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
         }
-        
-    } onResume:^() {
-        // Reset the requested amount when showing the request screen
-        btcAmountField.text = nil;
-        fiatAmountField.text = nil;
-        
-        [self enableTapInteraction];
-        
-        // Show an extra menu item (more actions)
-        [app.modalView addSubview:moreActionsButton];
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            moreActionsButton.alpha = 1.0f;
-        }];
-    }];
+    }
     
-    [self setQRPayment];
-    
-    entryField.inputAccessoryView = amountKeyboardAccessoryView;
-    
-    [self showKeyboard];
-}
-
-- (void)startObservingForReceivedPayment
-{
-    __weak ReceiveCoinsViewController *weakSelf = self;
-    
-    self.paymentObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil queue:nil usingBlock:^(NSNotification *note) {
-        NSDecimalNumber *amountReceivedDecimalNumber = note.userInfo[DICTIONARY_KEY_AMOUNT];
-        u_int64_t amountReceived = [[amountReceivedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-        
-        NSString *convertedBitcoinString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        if ([app stringHasBitcoinValue:convertedBitcoinString]) {
-            NSDecimalNumber *amountRequestedDecimalNumber = [NSDecimalNumber decimalNumberWithString:convertedBitcoinString];
-            u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-            amountRequested = app.latestResponse.symbol_btc.conversion * amountRequested / SATOSHI;
-            
-            if (amountReceived == amountRequested) {
-                NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-                u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
-                btcAmountString = [app formatMoney:btcAmount localCurrency:NO];
-                NSString *localCurrencyAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-                u_int64_t currencyAmount = [app.wallet parseBitcoinValue:localCurrencyAmountString];
-                localCurrencyAmountString = [app formatMoney:currencyAmount localCurrency:YES];
-                [weakSelf alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
-            }
-        }
-        
-        if (didClickAccount) {
-            detailAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
-            weakSelf.clickedAddress = detailAddress;
-            [weakSelf setQRPayment];
-            [weakSelf animateTextOfLabel:optionsTitleLabel toFinalText:detailLabel];
-        }
-
-    }];
+    if (didClickAccount) {
+        detailAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
+        self.clickedAddress = detailAddress;
+        [self setQRPayment];
+        [self animateTextOfLabel:mainAddressLabel toFinalText:mainLabel];
+    }
 }
 
 - (void)selectDestination
 {
+    [self hideKeyboard];
+    
     BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:YES];
     addressSelectionView.delegate = self;
     
@@ -858,7 +711,7 @@ NSString *detailLabel;
     if (activityType == UIActivityTypePostToTwitter) {
         return nil;
     } else {
-        return qrCodePaymentImageView.image;
+        return qrCodeMainImageView.image;
     }
 }
 
@@ -881,10 +734,6 @@ NSString *detailLabel;
         mainLabel = label;
     } else {
         mainLabel = addr;
-    }
-    if ([app.wallet isWatchOnlyLegacyAddress:addr] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING]) {
-        [self alertUserOfWatchOnlyAddress];
-        return;
     }
     
     [self updateUI];
@@ -909,6 +758,11 @@ NSString *detailLabel;
 - (void)didSelectToAccount:(int)account
 {
     [self didSelectFromAccount:account];
+}
+
+- (void)didSelectWatchOnlyAddress:(NSString *)address
+{
+    [self alertUserOfWatchOnlyAddress:address];
 }
 
 @end

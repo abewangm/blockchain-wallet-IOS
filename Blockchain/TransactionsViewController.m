@@ -224,7 +224,7 @@ int lastNumberTransactions = INT_MAX;
         animateNextCell = NO;
         
         // Without a delay, the notification will not get the new transaction, but the one before it
-        [self performSelector:@selector(postReceivePaymentNotification) withObject:nil afterDelay:0.1f];
+        [self performSelector:@selector(paymentReceived) withObject:nil afterDelay:0.1f];
     }
 }
 
@@ -275,9 +275,9 @@ int lastNumberTransactions = INT_MAX;
     return number;
 }
 
-- (void)postReceivePaymentNotification
+- (void)paymentReceived
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil userInfo:[NSDictionary dictionaryWithObject:[self getAmountForReceivedTransaction:[data.transactions firstObject]] forKey:DICTIONARY_KEY_AMOUNT]];
+    [app paymentReceived:[self getAmountForReceivedTransaction:[data.transactions firstObject]]];
 }
 
 - (void)changeFilterLabel:(NSString *)newText

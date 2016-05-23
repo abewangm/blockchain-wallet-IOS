@@ -202,6 +202,8 @@
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 
+- (void)paymentReceived:(NSDecimalNumber *)amount;
+
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;
 - (BOOL)isPinSet;

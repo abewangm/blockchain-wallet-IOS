@@ -27,6 +27,8 @@
 - (void)didSelectToAddress:(NSString*)address;
 - (void)didSelectFromAccount:(int)account;
 - (void)didSelectToAccount:(int)account;
+@optional
+- (void)didSelectWatchOnlyAddress:(NSString*)address;
 @end
 
 @interface BCAddressSelectionView : UIView <UITableViewDelegate, UITableViewDataSource> {

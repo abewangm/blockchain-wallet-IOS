@@ -22,16 +22,11 @@
 
 @interface ReceiveCoinsViewController : UIViewController <UITextFieldDelegate> {
     IBOutlet UIImageView *qrCodeMainImageView;
-    IBOutlet UIImageView *qrCodePaymentImageView;
-    IBOutlet UIButton *moreActionsButton;
     
     // Label Address
     IBOutlet UIView *labelAddressView;
     IBOutlet UITextField *labelTextField;
     IBOutlet UILabel *labelAddressLabel;
-    IBOutlet UIView *requestCoinsView;
-    
-    IBOutlet UILabel *optionsTitleLabel;
     
     // Amount buttons and field
     IBOutlet UITextField *entryField;
@@ -56,12 +51,11 @@
 @property(nonatomic) UILabel *receiveToLabel;
 @property(nonatomic) UIView *headerView;
 
-- (IBAction)shareClicked:(id)sender;
-- (IBAction)moreActionsClicked:(id)sender;
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)archiveAddressClicked:(id)sender;
-- (IBAction)copyAddressClicked:(id)sender;
 - (IBAction)labelSaveClicked:(id)sender;
+
+- (void)paymentReceived:(NSDecimalNumber *)amount;
 
 - (void)reload;
 

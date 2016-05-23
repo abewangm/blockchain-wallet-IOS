@@ -2210,6 +2210,13 @@ void (^secondPasswordSuccess)(NSString *);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[APP_STORE_LINK_PREFIX stringByAppendingString:APP_STORE_ID]]];
 }
 
+- (void)paymentReceived:(NSDecimalNumber *)amount
+{
+    if (_tabViewController.selectedIndex == TAB_RECEIVE) {
+        [_receiveViewController paymentReceived:amount];
+    }
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback

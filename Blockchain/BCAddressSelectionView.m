@@ -146,14 +146,29 @@ int legacyAddressesSectionNumber;
     return self;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    BOOL shouldCloseModal = YES;
+    
     if (showFromAddresses) {
         if (indexPath.section == accountsSectionNumber) {
             [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
         }
         else if (indexPath.section == legacyAddressesSectionNumber) {
-            [delegate didSelectFromAddress:[legacyAddresses objectAtIndex:[indexPath row]]];
+            
+            NSString *legacyAddress = [legacyAddresses objectAtIndex:[indexPath row]];
+            
+            if (allSelectable && [app.wallet isWatchOnlyLegacyAddress:legacyAddress] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING]) {
+                if ([delegate respondsToSelector:@selector(didSelectWatchOnlyAddress:)]) {
+                    [delegate didSelectWatchOnlyAddress:legacyAddress];
+                    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    shouldCloseModal = NO;
+                } else {
+                    [delegate didSelectFromAddress:legacyAddress];
+                }
+            } else {
+                [delegate didSelectFromAddress:legacyAddress];
+            }
         }
     }
     else {
@@ -168,7 +183,9 @@ int legacyAddressesSectionNumber;
         }
     }
     
-    [app closeModalWithTransition:kCATransitionFromLeft];
+    if (shouldCloseModal) {
+        [app closeModalWithTransition:kCATransitionFromLeft];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
