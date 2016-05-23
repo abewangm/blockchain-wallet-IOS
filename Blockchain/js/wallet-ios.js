@@ -342,6 +342,10 @@ MyWalletPhone.createNewPayment = function() {
         var errorDictionary = {'message': {'error': errorObject['error']}};
         device.execute('on_error_update_fee:', [errorDictionary]);
     });
+    
+    currentPayment.on('message', function(object) {
+        device.execute('on_payment_notice:', [object['text']]);
+    });
 }
 
 MyWalletPhone.changePaymentFrom = function(from, isAdvanced) {
@@ -722,6 +726,8 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     });
     
     queue.then(function(last) {
+        payments.push(last);
+        device.execute('loading_start_transfer_all:', [addresses.length])
         updateInfo(payments);
     });
 }

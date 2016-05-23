@@ -53,7 +53,7 @@
 "380.text" = "Velkommen til Blockchain lommebok";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Ingen transaksjoner lastet";
+"387.text" = "Ingen nylige transaksjoner";
 
 /* (No Commment) */
 "394.text" = "Passord:";

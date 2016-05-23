@@ -377,7 +377,7 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", input] longLongValue];
+    return [[self.webView executeJSSynchronous:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [input escapeStringForJS]] longLongValue];
 }
 
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
@@ -1822,6 +1822,13 @@
     
     if ([self.delegate respondsToSelector:@selector(enableSendPaymentButtons)]) {
         [self.delegate enableSendPaymentButtons];
+    }
+}
+
+- (void)on_payment_notice:(NSString *)notice
+{
+    if (app.tabViewController.selectedIndex == TAB_SEND) {
+        [app standardNotifyAutoDismissingController:notice title:BC_STRING_INFORMATION];
     }
 }
 

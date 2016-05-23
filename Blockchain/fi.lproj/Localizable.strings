@@ -98,7 +98,7 @@
 "Allowed" = "Internet";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Summan on oltava pöly-kynnysarvo (%lld Satoshi)";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Summan on oltava suurempi tai yhtä suuri pöly (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Virhe tarkistettaessa PIN-koodin etäpalvelimen kanssa. Olet ehkä offline-tilassa tai Blockchain saattaa olla vaikeuksia. Haluatko yrittää uudelleen validointi tai sen sijaan Syötä salasana manuaalisesti?";
@@ -968,6 +968,9 @@
 "Simulate surge" = "Simuloida aalto";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Varoja ei voi siirtää automaattisesti.";
+
+/* (No Commment) */
 "Store Hint" = "Store Vihje";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "You do not have an account set up for Mail. Please contact %@" = "Sinulla ei ole tilin postia. Ota yhteyttä %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Sinulla ole osoitteita spendable tasapaino edellyttää pöly kynnysarvo.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Sinulla ole osoitteita spendable tasapaino suurempi tai yhtä suuri tarvita pölyä.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Sinulla ei ole varoja lähettää tähän osoitteeseen";

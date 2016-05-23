@@ -98,7 +98,7 @@
 "Allowed" = "يسمح";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "يجب أن يكون مقدار عتبة الغبار (%lld ساتوشي)";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "يجب أن يكون مقدار أكبر من أو يساوي إلى عتبة الغبار (%lld ساتوشي)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "حدث خطأ أثناء التحقق من صحة رمز PIN الخاص بك مع الملقم البعيد. قد تكون دون اتصال أو بلوكتشين قد يواجه بعض الصعوبات. هل تريد إعادة محاولة التحقق من الصحة أو بدلاً من ذلك قم بإدخال كلمة المرور الخاصة بك يدوياً؟";
@@ -968,6 +968,9 @@
 "Simulate surge" = "محاكاة موجه";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "لا يمكن نقل بعض الأموال تلقائياً.";
+
+/* (No Commment) */
 "Store Hint" = "تلميح مخزن";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 "You do not have an account set up for Mail. Please contact %@" = "ليس لديك حساب للبريد. الرجاء الاتصال %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "لديك لا عناوين مع توازن المنفق فوق العتبة المطلوبة الغبار.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "لديك لا عناوين مع توازن المنفق أكبر من أو يساوي الحد الأدنى المطلوب من الغبار.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "لديك لا الأموال المتاحة لإرسال من هذا العنوان";

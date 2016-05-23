@@ -54,7 +54,7 @@ https://blockchain.info/wallet/login";
 "380.text" = "Bienvenue sur votre portefeuille Blockchain";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Aucune transaction chargée";
+"387.text" = "Aucune transaction récente";
 
 /* (No Commment) */
 "394.text" = "Mot de passe :";

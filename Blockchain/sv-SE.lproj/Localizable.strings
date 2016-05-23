@@ -98,7 +98,7 @@
 "Allowed" = "Tillåtna";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Beloppet måste vara damm tröskelvärdet (%lld Satoshi)";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Beloppet måste vara större än eller lika med tröskelvärdet som damm (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ett fel uppstod validera din PIN-kod med fjärrservern. Du kan vara offline eller Blockchain kan uppleva svårigheter. Vill du försöka igen validering eller istället ange lösenordet manuellt?";
@@ -968,6 +968,9 @@
 "Simulate surge" = "Simulera våg";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Vissa fonder kan inte överföras automatiskt.";
+
+/* (No Commment) */
 "Store Hint" = "Store tips";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 "You do not have an account set up for Mail. Please contact %@" = "Du har inte ett konto för Mail. Vänligen kontakta %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Du har inga adresser med spendable balansera tröskelvärdet krävs damm.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Du har inga adresser med en spendable saldo större än eller lika med tröskelvärdet som krävs damm.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Du har inga tillgängliga medel att skicka från denna adress";

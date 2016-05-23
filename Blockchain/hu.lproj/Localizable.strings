@@ -98,7 +98,7 @@
 "Allowed" = "Engedélyezett";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Összeg felett por küszöbértékét (%lld Satoshi) kell";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "A por küszöbértékét (%lld Satoshi) egyenlő vagy nagyobb kell";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Hiba történt a PIN-kódot a távoli szerverrel érvényesítése. Lehet, hogy kapcsolat nélküli vagy Blockchain lehet nehézségei. Szeretne újra érvényesítés, vagy inkább kézzel adja meg a jelszavát?";
@@ -968,6 +968,9 @@
 "Simulate surge" = "Túlfeszültség szimulálása";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Egyes alapokat nem vihetők át automatikusan.";
+
+/* (No Commment) */
 "Store Hint" = "Bolt-tipp";
 
 /* (No Commment) */
@@ -1297,7 +1300,7 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 "You do not have an account set up for Mail. Please contact %@" = "Nincs beállított E-mail fiókkal. Kérjük, forduljon %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Nem címek elkölthető egyensúly szükséges por küszöb felett van.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Akkor nem címek elkölthető egyensúly nagyobb vagy egyenlő a szükséges por küszöbértékét.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Nincs rendelkezésre álló pénzeszközök küldeni erről a címről van";
