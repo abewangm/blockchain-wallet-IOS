@@ -17,7 +17,6 @@
 #import "BCLine.h"
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
-@property (nonatomic) id paymentObserver;
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @end
@@ -85,14 +84,6 @@ NSString *detailLabel;
 {
     [super viewWillDisappear:animated];
     [self hideKeyboard];
-}
-
-- (void)dealloc
-{
-    if (self.paymentObserver) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
-        self.paymentObserver = nil;
-    }
 }
 
 - (QRCodeGenerator *)qrCodeGenerator
@@ -193,7 +184,9 @@ NSString *detailLabel;
     
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
-    [self reloadMainAddress];
+    if (!mainAddress) {
+        [self reloadMainAddress];
+    }
     
     [self updateUI];
 }
@@ -218,11 +211,13 @@ NSString *detailLabel;
     if ([app.wallet getActiveAccountsCount] > 0) {
         int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
         mainAddress = [app.wallet getReceiveAddressForAccount:defaultAccountIndex];
+        mainLabel = [app.wallet getLabelForAccount:defaultAccountIndex];
     }
     else if (activeKeys.count > 0) {
         for (NSString *address in activeKeys) {
             if (![app.wallet isWatchOnlyLegacyAddress:address]) {
                 mainAddress = address;
+                mainLabel = [app.wallet labelForLegacyAddress:address];
                 break;
             }
         }
@@ -285,11 +280,23 @@ NSString *detailLabel;
 
 - (uint64_t)getInputAmountInSatoshi
 {
+    BOOL shouldUseBtcField = YES;
+    
     if ([btcAmountField isFirstResponder]) {
+        shouldUseBtcField = YES;
+    } else if ([fiatAmountField isFirstResponder]) {
+        shouldUseBtcField = NO;
+        
+    } else if (self.lastSelectedField == btcAmountField) {
+        shouldUseBtcField = YES;
+    } else if (self.lastSelectedField == fiatAmountField) {
+        shouldUseBtcField = NO;
+    }
+    
+    if (shouldUseBtcField) {
         NSString *requestedAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         return [app.wallet parseBitcoinValue:requestedAmountString];
-    }
-    else if ([fiatAmountField isFirstResponder]) {
+    } else {
         NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
     }
@@ -442,43 +449,6 @@ NSString *detailLabel;
     return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_HTML, url];
 }
 
-- (IBAction)labelAddressClicked:(id)sender
-{
-    NSString *addr = self.clickedAddress;
-    NSString *label = [app.wallet labelForLegacyAddress:addr];
-    
-    labelAddressLabel.text = addr;
-    
-    if (label && label.length > 0) {
-        labelTextField.text = label;
-    }
-    
-    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    saveButton.frame = CGRectMake(0, 0, self.view.frame.size.width, 46);
-    saveButton.backgroundColor = COLOR_BUTTON_GRAY;
-    [saveButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
-    [saveButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    saveButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
-    
-    [saveButton addTarget:self action:@selector(labelSaveClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [labelTextField setReturnKeyType:UIReturnKeyDone];
-    labelTextField.delegate = self;
-    
-    labelTextField.inputAccessoryView = saveButton;
-    
-    BOOL isAlertPresented = [app.window.rootViewController.presentedViewController isMemberOfClass:[UIAlertController class]];
-    
-    [app showModalWithContent:labelAddressView closeType:ModalCloseTypeClose headerText:BC_STRING_LABEL_ADDRESS onDismiss:^() {
-        self.clickedAddress = nil;
-        labelTextField.text = nil;
-    } onResume:nil];
-    
-    if (!isAlertPresented) {
-        [labelTextField becomeFirstResponder];
-    }
-}
-
 - (IBAction)archiveAddressClicked:(id)sender
 {
     NSString *addr = self.clickedAddress;
@@ -559,7 +529,7 @@ NSString *detailLabel;
     self.receiveToLabel.text = mainLabel;
     mainAddressLabel.text = mainLabel;
     
-    qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
+    [self setQRPayment];
 }
 
 - (void)paymentReceived:(NSDecimalNumber *)amount
@@ -582,13 +552,6 @@ NSString *detailLabel;
             localCurrencyAmountString = [app formatMoney:currencyAmount localCurrency:YES];
             [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
         }
-    }
-    
-    if (didClickAccount) {
-        detailAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
-        self.clickedAddress = detailAddress;
-        [self setQRPayment];
-        [self animateTextOfLabel:mainAddressLabel toFinalText:mainLabel];
     }
 }
 
