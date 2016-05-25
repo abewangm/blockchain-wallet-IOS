@@ -115,6 +115,15 @@ BOOL displayingLocalSymbolSend;
     [self reload];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (fromLabel.frame.origin.y == toLabel.frame.origin.y && !fromLabel.hidden) {
+        [self showFromField];
+    }
+}
+
 - (void)resetPayment
 {
     self.surgeIsOccurring = NO;
