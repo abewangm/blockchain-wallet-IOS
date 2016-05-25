@@ -151,7 +151,6 @@
 
 // Busy view with loading text
 - (void)showBusyViewWithLoadingText:(NSString *)text;
-- (void)showBusyViewInTransparentBackgroundWithLoadingText:(NSString *)text;
 - (void)updateBusyViewLoadingText:(NSString *)text;
 - (void)hideBusyView;
 

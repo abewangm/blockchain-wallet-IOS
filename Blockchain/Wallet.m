@@ -1122,11 +1122,7 @@
 
 - (void)loading_start_get_history
 {
-#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
-    [app showBusyViewInTransparentBackgroundWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
-#else
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
-#endif
 }
 
 - (void)loading_start_get_wallet_and_history
@@ -2036,7 +2032,7 @@
 
 - (void)update_loaded_all_transactions:(NSNumber *)loadedAll
 {
-    DLog(@"update_loaded_all_transactions");
+    DLog(@"loaded_all_transactions");
     
     if ([self.delegate respondsToSelector:@selector(updateLoadedAllTransactions:)]) {
         [self.delegate updateLoadedAllTransactions:loadedAll];

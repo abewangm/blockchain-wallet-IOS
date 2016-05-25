@@ -103,7 +103,7 @@
         [self.confirmNewPasswordTextField resignFirstResponder];
         
         SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
-        [navigationController.busyView fadeInWithDarkBackground];
+        [navigationController.busyView fadeIn];
         [app.wallet changePassword:self.newerPasswordTextField.text];
     }
 }

@@ -386,25 +386,8 @@ void (^secondPasswordSuccess)(NSString *);
     [_window.rootViewController.view bringSubviewToFront:busyView];
     
     if (busyView.alpha < 1.0) {
-        [busyView fadeInWithDarkBackground];
+        [busyView fadeIn];
     }
-}
-
-- (void)showBusyViewInTransparentBackgroundWithLoadingText:(NSString *)text
-{
-    if (_sendViewController.isSending && modalView) {
-        DLog(@"Send progress modal is presented - will not show busy view");
-        return;
-    }
-    
-    [busyLabel setText:text];
-    
-    [_window.rootViewController.view bringSubviewToFront:busyView];
-    
-    if (busyView.alpha < 1.0) {
-        [busyView fadeInWithTransparentBackground];
-    }
-
 }
 
 - (void)updateBusyViewLoadingText:(NSString *)text
