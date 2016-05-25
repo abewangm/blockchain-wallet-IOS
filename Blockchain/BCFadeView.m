@@ -15,6 +15,26 @@ typedef enum {
 
 @implementation BCFadeView
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self setup];
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (void)setup
+{
+    self.defaultBackgroundColor = self.backgroundColor;
+}
+
 - (void)fadeInWithTransparentBackground
 {
     [self fadeInWithBackground:backgroundTransparent];
@@ -38,7 +58,7 @@ typedef enum {
     if (backgroundType == backgroundTransparent) {
         self.backgroundColor = [UIColor clearColor];
     } else if (backgroundType == backgroundDark) {
-        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        self.backgroundColor = self.defaultBackgroundColor;
     }
 }
 
