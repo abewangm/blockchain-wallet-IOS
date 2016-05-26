@@ -364,6 +364,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 // Most common pin codes: http://datagenetics.com/blog/september32012/index.html
 
+#define NUMBER_OF_TRANSACTIONS_REQUIRED_FOR_FOR_APP_STORE_REVIEW_PROMPT 3
+
 #define TWO_STEP_AUTH_TYPE_SMS 5
 #define TWO_STEP_AUTH_TYPE_GOOGLE 4
 #define TWO_STEP_AUTH_TYPE_YUBI_KEY 1
