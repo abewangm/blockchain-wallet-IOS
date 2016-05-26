@@ -71,6 +71,7 @@
 #define BC_STRING_PASSWORD_NOT_STRONG_ENOUGH NSLocalizedString(@"Your password is not strong enough. Please choose a different password.", nil)
 #define BC_STRING_PASSWORD_MUST_BE_LESS_THAN_OR_EQUAL_TO_255_CHARACTERS NSLocalizedString(@"Password must be less than or equal to 255 characters", nil)
 #define BC_STRING_PASSWORDS_DO_NOT_MATCH NSLocalizedString(@"Passwords do not match", nil)
+#define BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL NSLocalizedString(@"Password must be different from your email", nil)
 #define BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT NSLocalizedString(@"New password must be different", nil)
 #define BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT_FROM_HINT NSLocalizedString(@"New password must be different from your password hint", nil)
 #define BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS NSLocalizedString(@"Please provide an email address.", nil)

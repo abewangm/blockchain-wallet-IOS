@@ -199,6 +199,13 @@
         return NO;
     }
     
+    NSString *email = [app.wallet.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL];
+    if (email && [self.newerPasswordTextField.text isEqualToString:email]) {
+        [app standardNotify:BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL];
+        [self.newerPasswordTextField becomeFirstResponder];
+        return NO;
+    }
+    
     if (self.passwordStrength < 25) {
         [app standardNotify:BC_STRING_PASSWORD_NOT_STRONG_ENOUGH];
         [self.newerPasswordTextField becomeFirstResponder];

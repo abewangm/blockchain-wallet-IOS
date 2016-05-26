@@ -349,6 +349,12 @@
         return NO;
     }
     
+    if ([self.tmpPassword isEqualToString:emailTextField.text]) {
+        [app standardNotify:BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL];
+        [passwordTextField becomeFirstResponder];
+        return NO;
+    }
+    
     if (self.passwordStrength < 25) {
         [app standardNotify:BC_STRING_PASSWORD_NOT_STRONG_ENOUGH];
         [passwordTextField becomeFirstResponder];
