@@ -201,6 +201,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)reloadAfterMultiAddressResponse
 {
+    [self hideSelectFromAndToButtonsIfAppropriate];
+    
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (self.sendFromAddress) {
