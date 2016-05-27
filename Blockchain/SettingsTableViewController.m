@@ -520,7 +520,7 @@ const int aboutPrivacyPolicy = 1;
     [self removeObserversForChangingEmailNotifications];
     
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
-    [navigationController.busyView fadeInWithDarkBackground];
+    [navigationController.busyView fadeIn];
     
     UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesNotifications]];
     changeEmailNotificationsCell.userInteractionEnabled = YES;

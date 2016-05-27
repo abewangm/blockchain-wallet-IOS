@@ -8,46 +8,9 @@
 
 #import "BCFadeView.h"
 
-typedef enum {
-    backgroundDark = 100,
-    backgroundTransparent = 200,
-}BackgroundType;
-
 @implementation BCFadeView
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    [self setup];
-}
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
-
-- (void)setup
-{
-    self.containerView.layer.shadowOpacity = 0.5;
-    self.containerView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.containerView.bounds].CGPath;
-}
-
-- (void)fadeInWithTransparentBackground
-{
-    [self fadeInWithBackground:backgroundTransparent];
-}
-
-- (void)fadeInWithDarkBackground
-{
-    [self fadeInWithBackground:backgroundDark];
-}
-
-- (void)fadeInWithBackground:(BackgroundType)backgroundType
-{
+- (void)fadeIn {
     self.containerView.layer.cornerRadius = 5;
     
     [UIView beginAnimations:nil context:nil];
@@ -55,16 +18,9 @@ typedef enum {
     [UIView setAnimationDelegate:self];
     self.alpha = 1.0;
     [UIView commitAnimations];
-    
-    if (backgroundType == backgroundTransparent) {
-        self.backgroundColor = [UIColor clearColor];
-    } else if (backgroundType == backgroundDark) {
-        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    }
 }
 
-- (void)fadeOut
-{
+- (void)fadeOut {
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     [UIView setAnimationDidStopSelector:@selector(removeModalView)];
@@ -72,8 +28,7 @@ typedef enum {
     [UIView commitAnimations];
 }
 
-- (void)removeModalView
-{
+- (void)removeModalView {
     [self removeFromSuperview];
 }
 

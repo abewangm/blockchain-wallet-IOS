@@ -319,6 +319,9 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
+    [_transactionsViewController showFilterLabel];
+    self.mainLogoImageView.hidden = YES;
+    
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -329,6 +332,9 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
+    [_transactionsViewController showFilterLabel];
+    self.mainLogoImageView.hidden = YES;
+    
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -338,7 +344,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
-    [_transactionsViewController changeFilterLabel:BC_STRING_TOTAL_BALANCE];
+    [_transactionsViewController hideFilterLabel];
+    self.mainLogoImageView.hidden = NO;
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -386,25 +393,8 @@ void (^secondPasswordSuccess)(NSString *);
     [_window.rootViewController.view bringSubviewToFront:busyView];
     
     if (busyView.alpha < 1.0) {
-        [busyView fadeInWithDarkBackground];
+        [busyView fadeIn];
     }
-}
-
-- (void)showBusyViewInTransparentBackgroundWithLoadingText:(NSString *)text
-{
-    if (_sendViewController.isSending && modalView) {
-        DLog(@"Send progress modal is presented - will not show busy view");
-        return;
-    }
-    
-    [busyLabel setText:text];
-    
-    [_window.rootViewController.view bringSubviewToFront:busyView];
-    
-    if (busyView.alpha < 1.0) {
-        [busyView fadeInWithTransparentBackground];
-    }
-
 }
 
 - (void)updateBusyViewLoadingText:(NSString *)text
@@ -1823,7 +1813,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)reloadTransactionFilterLabel
 {
 #ifdef ENABLE_TRANSACTION_FILTERING
-    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
+    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2) && self.filterIndex != FILTER_INDEX_ALL) {
         app.mainLogoImageView.hidden = YES;
         if (_tabViewController.activeViewController == _transactionsViewController) {
             [_transactionsViewController showFilterLabel];

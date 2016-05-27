@@ -103,7 +103,7 @@
         [self.confirmNewPasswordTextField resignFirstResponder];
         
         SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
-        [navigationController.busyView fadeInWithDarkBackground];
+        [navigationController.busyView fadeIn];
         [app.wallet changePassword:self.newerPasswordTextField.text];
     }
 }
@@ -195,6 +195,13 @@
     
     if ([self.newerPasswordTextField.text length] == 0) {
         [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        [self.newerPasswordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    NSString *email = [app.wallet.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL];
+    if (email && [self.newerPasswordTextField.text isEqualToString:email]) {
+        [app standardNotify:BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL];
         [self.newerPasswordTextField becomeFirstResponder];
         return NO;
     }

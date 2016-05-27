@@ -23,8 +23,7 @@
 
 @property (nonatomic, strong) IBOutlet UIView *containerView;
 
-- (void)fadeInWithTransparentBackground;
-- (void)fadeInWithDarkBackground;
+- (void)fadeIn;
 - (void)fadeOut;
 
 @end

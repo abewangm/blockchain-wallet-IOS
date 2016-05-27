@@ -109,7 +109,6 @@ int lastNumberTransactions = INT_MAX;
         
 #ifdef ENABLE_TRANSACTION_FILTERING
         self.filterIndex = FILTER_INDEX_ALL;
-        filterLabel.text = BC_STRING_TOTAL_BALANCE;
 #endif
         
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
@@ -360,7 +359,6 @@ int lastNumberTransactions = INT_MAX;
     
 #ifdef ENABLE_TRANSACTION_FILTERING
     self.filterIndex = FILTER_INDEX_ALL;
-    filterLabel.text = BC_STRING_TOTAL_BALANCE;
 #endif
     
     [self reload];
@@ -398,13 +396,7 @@ int lastNumberTransactions = INT_MAX;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
     
 #ifdef ENABLE_TRANSACTION_FILTERING
-    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
-        [self showFilterLabel];
-        app.mainLogoImageView.hidden = YES;
-    } else {
-        [self hideFilterLabel];
-        app.mainLogoImageView.hidden = NO;
-    }
+    [app reloadTransactionFilterLabel];
 #else
     [self hideFilterLabel];
     app.mainLogoImageView.hidden = NO;
