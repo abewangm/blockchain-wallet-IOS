@@ -48,9 +48,9 @@ NSString *detailLabel;
     [self setupBottomFields];
     [self selectDefaultDestination];
     
-    float imageWidth = 190;
+    float imageWidth = 160;
     
-    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 25, imageWidth, imageWidth)];
+    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 50, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
@@ -229,9 +229,19 @@ NSString *detailLabel;
     // Show table header with the QR code of an address from the default account
     float imageWidth = qrCodeMainImageView.frame.size.width;
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 50)];
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 75)];
     
     [self.view addSubview:self.headerView];
+    
+    UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 40)];
+    instructionsLabel.font = [UIFont systemFontOfSize:14];
+    instructionsLabel.textColor = COLOR_FOREGROUND_GRAY;
+    instructionsLabel.textAlignment = NSTextAlignmentCenter;
+    instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
+    instructionsLabel.numberOfLines = 0;
+    instructionsLabel.adjustsFontSizeToFitWidth = YES;
+    instructionsLabel.center = CGPointMake(self.view.center.x, 25);
+    [self.headerView addSubview:instructionsLabel];
     
     if ([app.wallet getActiveAccountsCount] > 0 || activeKeys.count > 0) {
         
@@ -239,7 +249,7 @@ NSString *detailLabel;
         
         [self.headerView addSubview:qrCodeMainImageView];
         
-        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 30, self.view.frame.size.width - 40, 18)];
+        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 55, self.view.frame.size.width - 40, 18)];
         
         mainAddressLabel.font = [UIFont systemFontOfSize:15];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;

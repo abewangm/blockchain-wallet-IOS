@@ -51,7 +51,6 @@
 @property(nonatomic) UILabel *receiveToLabel;
 @property(nonatomic) UIView *headerView;
 
-- (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)archiveAddressClicked:(id)sender;
 - (IBAction)labelSaveClicked:(id)sender;
 
