@@ -18,6 +18,12 @@
 #import "NSData+Hex.h"
 #import "TransactionsViewController.h"
 #import "NSArray+EncodedJSONString.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+#import "ModuleXMLHTTPRequest.h"
+
+@interface Wallet ()
+@property (nonatomic) JSContext *context;
+@end
 
 @implementation transactionProgressListeners
 @end
@@ -56,6 +62,100 @@
         _transactionProgressListeners = [NSMutableDictionary dictionary];
         webView = [[JSBridgeWebView alloc] initWithFrame:CGRectZero];
         webView.JSDelegate = self;
+        
+        /* NOTE (not final): In My-Wallet-V3, you must add global.self = global; to whatwg-fetch/fetch.js.
+        In my-wallet.js, delete the crypto line and add the following:
+            var crypto = {}
+            crypto.getRandomValues = function(rawBytes) {
+                return getObjCRandomValues(rawBytes);
+            }
+        */
+        
+         NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:@"my-wallet" ofType:@"js"];
+        NSString *walletiOSPath = [[NSBundle mainBundle] pathForResource:@"wallet-ios" ofType:@"js"];
+        NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
+        NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
+        
+        NSString *jsSource = [NSString stringWithFormat:@"var window = this; \n%@\n%@", walletJSSource, walletiOSSource];
+        self.context = [[JSContext alloc] init];
+        
+        self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
+        
+        self.context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
+            NSString *stacktrace = [[exception objectForKeyedSubscript:@"stack"] toString];
+            // type of Number
+            NSString *lineNumber = [[exception objectForKeyedSubscript:@"line"] toString];
+
+            DLog(@"%@ \nstack: %@\nline number: %@", [exception toString], stacktrace, lineNumber);
+        };
+        
+        [self.context evaluateScript:@"var console = {}"];
+        self.context[@"console"][@"log"] = ^(NSString *message) {
+                        DLog(@"Javascript log: %@",message);
+                    };
+        
+        // Add setTimout
+        self.context[@"setTimeout"] = ^(JSValue* function, JSValue* timeout) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)([timeout toInt32] * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+                [function callWithArguments:@[]];
+            });
+        };
+        
+        dispatch_queue_t jsQueue = dispatch_queue_create("com.some.identifier",
+                                                         DISPATCH_QUEUE_SERIAL);
+        
+        self.context[@"setInterval"] = ^(int ms, JSValue *callback) {
+            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:ms/1000
+                                                              target:[NSBlockOperation blockOperationWithBlock:^{
+                dispatch_async(jsQueue, ^{
+                    [callback callWithArguments:nil];
+                });
+            }]
+                                                            selector:@selector(main)
+                                                            userInfo:nil
+                                                             repeats:YES];
+            [timer fire];
+        };
+        
+        __weak Wallet *weakSelf = self;
+        self.context[@"on_pin_code_get_response"] = ^(NSDictionary *response) {
+            [weakSelf on_pin_code_get_response:response];
+        };
+        
+        self.context[@"loading_start_download_wallet"] = ^(){
+            [weakSelf loading_start_download_wallet];
+        };
+        
+        self.context[@"loading_stop"] = ^(){
+            [weakSelf loading_stop];
+        };
+        
+        self.context[@"did_load_wallet"] = ^(){
+            [weakSelf did_load_wallet];
+        };
+        
+        self.context[@"did_decrypt"] = ^(){
+            [weakSelf did_decrypt];
+        };
+        
+        self.context[@"loading_start_decrypt_wallet"] = ^(){
+            [weakSelf loading_start_decrypt_wallet];
+        };
+        
+        self.context[@"loading_start_build_wallet"] = ^(){
+            [weakSelf loading_start_build_wallet];
+        };
+        
+        self.context[@"loading_start_multiaddr"] = ^(){
+            [weakSelf loading_start_multiaddr];
+        };
+        
+        self.context[@"getObjCRandomValues"] = ^(NSArray *input) {
+            DLog(@"getObjCRandomValues");
+            return [[NSFileHandle fileHandleForReadingAtPath:@"/dev/random"] readDataOfLength:[input count]];
+        };
+        
+        [self.context evaluateScript:jsSource];
     }
     
     return self;
@@ -72,7 +172,7 @@
     
     [self useDebugSettingsIfSet];
     
-    [self.webView executeJS:@"MyWalletPhone.apiGetPINValue(\"%@\", \"%@\")", key, pin];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.apiGetPINValue(\"%@\", \"%@\")", key, pin]];
 }
 
 - (void)loadWalletWithGuid:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
@@ -146,7 +246,7 @@
         DLog(@"Fetch Wallet");
         
         if (!self.twoFactorInput) {
-            [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS]];
+            [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS]]];
         } else {
             [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\", \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS], [self.twoFactorInput escapeStringForJS]];
         }
@@ -158,8 +258,7 @@
 - (BOOL)isInitialized
 {
     // Initialized when the webView is loaded and the wallet is initialized (decrypted and in-memory wallet built)
-    BOOL isInitialized = ([self.webView isLoaded] &&
-            [[self.webView executeJSSynchronous:@"MyWallet.getIsInitialized()"] boolValue]);
+    BOOL isInitialized = [[self.context evaluateScript:@"MyWallet.getIsInitialized()"] toBool];
     if (!isInitialized) {
         DLog(@"Warning: Wallet not initialized!");
     }
@@ -190,7 +289,7 @@
 
 - (NSString*)decrypt:(NSString*)data password:(NSString*)_password pbkdf2_iterations:(int)pbkdf2_iterations
 {
-    return [self.webView executeJSSynchronous:@"WalletCrypto.decryptPasswordWithProcessedPin(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"WalletCrypto.decryptPasswordWithProcessedPin(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations]] toString];
 }
 
 - (float)getStrengthForPassword:(NSString *)passwordString
@@ -1456,9 +1555,9 @@
         self.didPairAutomatically = NO;
         [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
     }
-    
-    self.sharedKey = [self.webView executeJSSynchronous:@"MyWallet.wallet.sharedKey"];
-    self.guid = [self.webView executeJSSynchronous:@"MyWallet.wallet.guid"];
+    DLog(@"MYWALLET IS %@", [[self.context evaluateScript:@"MyWallet"] toString]);
+    self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
+    self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
 
     if ([delegate respondsToSelector:@selector(walletDidDecrypt)])
         [delegate walletDidDecrypt];

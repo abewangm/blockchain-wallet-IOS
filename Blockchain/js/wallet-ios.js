@@ -27,14 +27,6 @@ var MyWalletPhone = {};
 var currentPayment = null;
 var transferAllPayments = {};
 
-window.onerror = function(errorMsg, url, lineNumber) {
-    device.execute("jsUncaughtException:url:lineNumber:", [errorMsg, url, lineNumber]);
-};
-
-console.log = function(message) {
-    device.execute("log:", [message]);
-};
-
 // Register for JS event handlers and forward to Obj-C handlers
 
 WalletStore.addEventListener(function (event, obj) {
@@ -628,29 +620,29 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     var fetch_success = function() {
         logTime('download');
         
-        device.execute('loading_start_decrypt_wallet');
+        loading_start_decrypt_wallet();
     };
     
     var decrypt_success = function() {
         logTime('decrypt');
         
-        device.execute('did_decrypt');
+        did_decrypt();
         
-        device.execute('loading_start_build_wallet');
+        loading_start_build_wallet();
     };
     
     var build_hd_success = function() {
         logTime('build HD wallet');
         
-        device.execute('loading_start_multiaddr');
+        loading_start_multiaddr();
     };
     
     var history_success = function() {
         logTime('get history');
         
-        device.execute('loading_stop');
+        loading_stop();
         
-        device.execute('did_load_wallet');
+        did_load_wallet();
         
         MyWallet.wallet.getBalancesForArchived();
     };
@@ -683,7 +675,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         device.execute('wrong_two_factor_code');
     }
     
-    device.execute('loading_start_download_wallet');
+    loading_start_download_wallet();
 
     if (!twoFACode) {
         twoFACode = null;
@@ -868,8 +860,9 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
         pin : pin,
         key : key
     };
+
     var success = function (responseObject) {
-        device.execute('on_pin_code_get_response:', [responseObject]);
+        on_pin_code_get_response(responseObject);
     };
     var error = function (res) {
 
