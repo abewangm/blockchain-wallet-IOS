@@ -105,7 +105,6 @@
 @property(nonatomic, strong) NSString *password;
 
 @property(nonatomic, strong) id<WalletDelegate> delegate;
-@property(nonatomic, strong) JSBridgeWebView *webView;
 
 @property(nonatomic) uint64_t final_balance;
 @property(nonatomic) uint64_t total_sent;

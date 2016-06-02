@@ -50,7 +50,6 @@
 
 @synthesize delegate;
 @synthesize password;
-@synthesize webView;
 @synthesize sharedKey;
 @synthesize guid;
 
@@ -60,8 +59,6 @@
     
     if (self) {
         _transactionProgressListeners = [NSMutableDictionary dictionary];
-        webView = [[JSBridgeWebView alloc] initWithFrame:CGRectZero];
-        webView.JSDelegate = self;
     }
     
     return self;
@@ -75,6 +72,11 @@
      crypto.getRandomValues = function(rawBytes) {
      return getObjCRandomValues(rawBytes);
      }
+     
+     Also switch the line containing
+        decrypt_success && decrypt_success();
+     with the line below it
+        MyWallet.wallet = new Wallet(obj);
      */
     
     NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:@"my-wallet" ofType:@"js"];
@@ -220,6 +222,22 @@
         [weakSelf getSecondPassword:nil success:secondPassword error:nil];
     };
     
+    self.context[@"on_add_new_account"] = ^() {
+        [weakSelf on_add_new_account];
+    };
+    
+    self.context[@"reload"] = ^() {
+        [weakSelf reload];
+    };
+    
+    self.context[@"on_backup_wallet_start"] = ^() {
+        [weakSelf on_backup_wallet_start];
+    };
+    
+    self.context[@"on_backup_wallet_success"] = ^() {
+        [weakSelf on_backup_wallet_success];
+    };
+    
     self.context[@"getObjCRandomValues"] = ^(NSArray *input) {
         DLog(@"getObjCRandomValues");
         return [[NSFileHandle fileHandleForReadingAtPath:@"/dev/random"] readDataOfLength:[input count]];
@@ -228,11 +246,6 @@
     [self.context evaluateScript:jsSource];
     
     [self login];
-}
-
-- (void)dealloc
-{
-    self.webView.JSDelegate = nil;
 }
 
 - (void)apiGetPINValue:(NSString*)key pin:(NSString*)pin
@@ -286,23 +299,6 @@
     }
 }
 
-#pragma mark - WebView handlers
-
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    DLog(@"webViewDidStartLoad:");
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    DLog(@"WebView: didFailLoadWithError:");
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    DLog(@"webViewDidFinishLoad:");
-}
-
 # pragma mark - Calls from Obj-C to JS
 
 - (BOOL)isInitialized
@@ -344,10 +340,6 @@
 
 - (float)getStrengthForPassword:(NSString *)passwordString
 {
-    if (![self.webView isLoaded]) {
-        return 0;
-    }
-    
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.get_password_strength(\"%@\")", [passwordString escapeStringForJS]]] toDouble];
 }
 
@@ -390,10 +382,6 @@
 
 - (void)getAllCurrencySymbols
 {
-    if (![self.webView isLoaded]) {
-        return;
-    }
-    
     [self.context evaluateScript:@"JSON.stringify(MyWalletPhone.get_all_currency_symbols())"];
 }
 
@@ -522,19 +510,15 @@
 
 - (uint64_t)parseBitcoinValue:(NSString*)input
 {
-    if (![self.webView isLoaded]) {
-        return 0;
-    }
-    
     return [[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [input escapeStringForJS]]] toInt32];
 }
 
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
 - (void)loadWalletLogin
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/wallet/login", [app serverURL]]];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:requestObj];
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/wallet/login", [app serverURL]]];
+//    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+//    [webView loadRequest:requestObj];
 }
 
 - (void)parsePairingCode:(NSString*)code
@@ -1039,10 +1023,6 @@
 
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase
 {
-    if (![self.webView isLoaded]) {
-        return;
-    }
-    
     [self useDebugSettingsIfSet];
     
     self.emptyAccountIndex = 0;
@@ -1052,17 +1032,12 @@
 
 - (void)resendTwoFactorSMS
 {
-    if ([self.webView isLoaded]) {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.resendTwoFactorSms(\"%@\")", [self.guid escapeStringForJS]]];
-    }
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.resendTwoFactorSms(\"%@\")", [self.guid escapeStringForJS]]];
 }
 
 - (NSString *)get2FAType
 {
-    if ([self.webView isLoaded]) {
-        return [[self.context evaluateScript:@"MyWalletPhone.get2FAType()"] toString];
-    }
-    return nil;
+    return [[self.context evaluateScript:@"MyWalletPhone.get2FAType()"] toString];
 }
 
 - (void)enableEmailNotifications

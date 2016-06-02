@@ -121,7 +121,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
 
 - (void)handleException:(NSException *)exception
 {
-    BOOL walletIsLoaded = [app.wallet.webView isLoaded];
+    BOOL walletIsLoaded = NO;
     BOOL walletIsInitialized = [app.wallet isInitialized];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul), ^{
