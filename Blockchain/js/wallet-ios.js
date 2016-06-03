@@ -598,6 +598,7 @@ MyWalletPhone.getLegacyArchivedAddresses = function() {
 };
 
 MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, other_error) {
+
     // Timing
     var t0 = new Date().getTime(), t1;
     
@@ -1298,6 +1299,10 @@ WalletCrypto.scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
                    error(''+e);
                    });
 };
+
+WalletCrypto.sjcl_misc_pbkdf2 = function(password, salt, iterations, keylen, algorithm) {
+    return objc_sjcl_misc_pbkdf2(password, salt, iterations, keylen, algorithm);
+}
 
 // TODO what should this value be?
 MyWallet.getNTransactionsPerPage = function() {

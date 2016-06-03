@@ -20,6 +20,7 @@
 #import "NSArray+EncodedJSONString.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "ModuleXMLHTTPRequest.h"
+#import <openssl/evp.h>
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -77,6 +78,17 @@
         decrypt_success && decrypt_success();
      with the line below it
         MyWallet.wallet = new Wallet(obj);
+     
+     Replace 'sjcl.misc.pbkdf2' in stretchPassword
+        var stretched = sjcl.misc.pbkdf2(password, salt, iterations, keylen || 256, hmacSHA1);
+     to this
+        WalletCrypto.sjcl_misc_pbkdf2
+     
+     Add the following under stretchPassword:
+        function sjcl_misc_pbkdf2 (password, salt, iterations, keylen, algorithm) {
+           return sjcl.misc.pbkdf2(password, salt, iterations, keylen, algorithm);
+        }
+     
      */
     
     NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:@"my-wallet" ofType:@"js"];
@@ -241,6 +253,22 @@
     self.context[@"getObjCRandomValues"] = ^(NSArray *input) {
         DLog(@"getObjCRandomValues");
         return [[NSFileHandle fileHandleForReadingAtPath:@"/dev/random"] readDataOfLength:[input count]];
+    };
+    
+    self.context[@"objc_sjcl_misc_pbkdf2"] = ^(NSString *_password, NSString *salt, int iterations, int keylength, NSString *hmacSHA1) {
+        unsigned char finalSalt[(int)salt.length];
+        unsigned char finalOut[keylength];
+        
+        unsigned char * output = (unsigned char *) malloc(sizeof(unsigned char) * keylength);
+        
+        if (PKCS5_PBKDF2_HMAC_SHA1([_password UTF8String], (int)_password.length, finalSalt, sizeof(salt), iterations, keylength, finalOut) == 0) {
+            return @[];
+        };
+        
+        NSData *data = [NSData dataWithBytesNoCopy:output length:keylength freeWhenDone:YES];
+        NSArray *returnedArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        DLog(@"output is %@", returnedArray);
+        return returnedArray;
     };
     
     [self.context evaluateScript:jsSource];
