@@ -193,9 +193,11 @@ NSString *detailLabel;
     
     if (!mainAddress) {
         [self reloadMainAddress];
+    } else if (didClickAccount) {
+        [self didSelectFromAccount:clickedAccount];
+    } else {
+        [self updateUI];
     }
-    
-    [self updateUI];
 }
 
 - (void)reloadAddresses
@@ -216,15 +218,12 @@ NSString *detailLabel;
     // Get an address: the first empty receive address for the default HD account
     // Or the first active legacy address if there are no HD accounts
     if ([app.wallet getActiveAccountsCount] > 0) {
-        int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
-        mainAddress = [app.wallet getReceiveAddressForAccount:defaultAccountIndex];
-        mainLabel = [app.wallet getLabelForAccount:defaultAccountIndex];
+        [self didSelectFromAccount:[app.wallet getDefaultAccountIndex]];
     }
     else if (activeKeys.count > 0) {
         for (NSString *address in activeKeys) {
             if (![app.wallet isWatchOnlyLegacyAddress:address]) {
-                mainAddress = address;
-                mainLabel = [app.wallet labelForLegacyAddress:address];
+                [self didSelectFromAddress:address];
                 break;
             }
         }
@@ -737,6 +736,7 @@ NSString *detailLabel;
     NSString *label = [app.wallet labelForLegacyAddress:addr];
     
     self.clickedAddress = addr;
+    didClickAccount = NO;
     
     if (label.length > 0) {
         mainLabel = label;
@@ -757,6 +757,7 @@ NSString *detailLabel;
     mainAddress = [app.wallet getReceiveAddressForAccount:account];
     self.clickedAddress = mainAddress;
     clickedAccount = account;
+    didClickAccount = YES;
     
     mainLabel = [app.wallet getLabelForAccount:account];
     
