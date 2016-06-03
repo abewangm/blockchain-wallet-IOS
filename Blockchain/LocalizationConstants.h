@@ -188,7 +188,7 @@
 #define BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE NSLocalizedString(@"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?", nil)
 #define BC_STRING_TRY_AGAIN NSLocalizedString(@"Try again", nil)
 
-#define BC_STRING_PAYMENT_REQUEST NSLocalizedString(@"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@", nil)
+#define BC_STRING_PAYMENT_REQUEST_ARGUMENT_ARGUMENT NSLocalizedString(@"Please send %@to bitcoin address.\n%@", nil)
 #define BC_STRING_PAYMENT_REQUEST_HTML NSLocalizedString(@"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@", nil)
 #define BC_STRING_PAYMENT_REQUEST_SUBJECT NSLocalizedString(@"Bitcoin payment request", nil)
 #define BC_STRING_CLOSE NSLocalizedString(@"Close", nil)
@@ -249,6 +249,7 @@
 #define BC_STRING_SECOND_PASSWORD_REQUIRED NSLocalizedString(@"Second Password Required", nil)
 #define BC_STRING_CREATE_NEW_WALLET NSLocalizedString(@"Create New Wallet", nil)
 #define BC_STRING_REQUEST_AMOUNT NSLocalizedString(@"Request Amount", nil)
+#define BC_STRING_REQUEST NSLocalizedString(@"Request", nil)
 #define BC_STRING_LABEL_ADDRESS NSLocalizedString(@"Label Address", nil)
 #define BC_STRING_SCAN_QR_CODE NSLocalizedString(@"Scan QR Code", nil)
 #define BC_STRING_SCAN_PRIVATE_KEY NSLocalizedString(@"Scan Private Key", nil)

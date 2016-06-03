@@ -45,19 +45,19 @@ NSString *detailLabel;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
-    [self setupBottomFields];
+    [self setupBottomViews];
     [self selectDefaultDestination];
     
     float imageWidth = 160;
     
-    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 50, imageWidth, imageWidth)];
+    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 52, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
     
     // iPhone4/4S
     if ([[UIScreen mainScreen] bounds].size.height < 568) {
-        int reduceImageSizeBy = 60;
+        int reduceImageSizeBy = 40;
         
         // Smaller QR Code Image
         qrCodeMainImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x + reduceImageSizeBy / 2,
@@ -94,9 +94,16 @@ NSString *detailLabel;
     return _qrCodeGenerator;
 }
 
-- (void)setupBottomFields
+- (void)setupBottomViews
 {
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100, self.view.frame.size.width, 100)];
+    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
+    requestButton.backgroundColor = COLOR_BUTTON_GREEN;
+    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+    [self.view addSubview:requestButton];
+    [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - requestButton.frame.size.height, self.view.frame.size.width, 100)];
     [self.view addSubview:self.bottomContainerView];
     
     BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width - 15, 1)];
@@ -229,12 +236,12 @@ NSString *detailLabel;
     // Show table header with the QR code of an address from the default account
     float imageWidth = qrCodeMainImageView.frame.size.width;
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 75)];
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 75 + 4)];
     
     [self.view addSubview:self.headerView];
     
-    UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 40)];
-    instructionsLabel.font = [UIFont systemFontOfSize:14];
+    UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width - 50, 40)];
+    instructionsLabel.font = [[UIScreen mainScreen] bounds].size.height < 568 ? [UIFont systemFontOfSize:12] : [UIFont systemFontOfSize:14];
     instructionsLabel.textColor = COLOR_FOREGROUND_GRAY;
     instructionsLabel.textAlignment = NSTextAlignmentCenter;
     instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
@@ -449,9 +456,9 @@ NSString *detailLabel;
     [self animateTextOfLabel:mainAddressLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
 }
 
-- (NSString*)formatPaymentRequest:(NSString*)url
+- (NSString*)formatPaymentRequestWithAmount:(NSString *)amount url:(NSString*)url
 {
-    return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST, url];
+    return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_ARGUMENT_ARGUMENT, amount, url];
 }
 
 - (NSString*)formatPaymentRequestHTML:(NSString*)url
@@ -573,6 +580,34 @@ NSString *detailLabel;
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_RECEIVE_TO onDismiss:nil onResume:nil];
+}
+
+- (void)share
+{
+    uint64_t amount = [self getInputAmountInSatoshi];
+    NSString *amountString = amount > 0 ? [NSString stringWithFormat:@"%@ ", [app formatMoney:[self getInputAmountInSatoshi] localCurrency:NO]] : @"";
+    NSString *message = [self formatPaymentRequestWithAmount:amountString url:@""];
+    
+    NSURL *url = [NSURL URLWithString:[self uriURL]];
+    
+    NSArray *activityItems = @[message, self, url];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    
+    activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList, UIActivityTypePostToFacebook];
+    
+    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_SUBJECT forKey:@"subject"];
+    
+    // Keyboard is behaving a little strangely because of UITextFields in the Keyboard Accessory View
+    // This makes it work correctly - resign first Responder for UITextFields inside the Accessory View...
+    [btcAmountField resignFirstResponder];
+    [fiatAmountField resignFirstResponder];
+    
+    [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
+    
+    activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *error) {
+        [self showKeyboard];
+    };
 }
 
 # pragma mark - UITextField delegates
