@@ -614,7 +614,6 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     
     var fetch_success = function() {
         logTime('download');
-        console.log('WE AREDECRYPTING');
         loading_start_decrypt_wallet();
     };
     
@@ -1300,8 +1299,27 @@ WalletCrypto.scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
                    });
 };
 
-WalletCrypto.sjcl_misc_pbkdf2 = function(password, salt, iterations, keylen, algorithm) {
-    return objc_sjcl_misc_pbkdf2(password, salt, iterations, keylen, algorithm);
+WalletCrypto.stretchPassword = function (password, salt, iterations, keylen) {
+    console.log('overwriting');
+    console.log('password');
+    console.log(typeof(password));
+    console.log('salt');
+    console.log(salt);
+    console.log(typeof(salt));
+    console.log('iterations');
+    console.log(typeof(iterations));
+    console.log('keylen');
+    console.log(typeof(keylen));
+    
+    var retVal = objc_sjcl_misc_pbkdf2(password, salt.toJSON().data, iterations, keylen / 8);
+    console.log('overwriting');
+    return new Buffer(retVal, 'hex');
+}
+
+WalletCrypto.sjcl_misc_pbkdf2 = function(password, salt, iterations, keylen, algorithm, conversion) {
+    console.log('salt');console.log(salt);
+    
+    return objc_sjcl_misc_pbkdf2(password, salt, iterations, keylen);
 }
 
 // TODO what should this value be?

@@ -255,20 +255,49 @@
         return [[NSFileHandle fileHandleForReadingAtPath:@"/dev/random"] readDataOfLength:[input count]];
     };
     
-    self.context[@"objc_sjcl_misc_pbkdf2"] = ^(NSString *_password, NSString *salt, int iterations, int keylength, NSString *hmacSHA1) {
-        unsigned char finalSalt[(int)salt.length];
-        unsigned char finalOut[keylength];
+    self.context[@"objc_sjcl_misc_pbkdf2"] = ^(NSString *_password, id _salt, int iterations, int keylength, NSString *hmacSHA1) {
         
-        unsigned char * output = (unsigned char *) malloc(sizeof(unsigned char) * keylength);
+        uint8_t * finalOut = malloc(keylength);
         
-        if (PKCS5_PBKDF2_HMAC_SHA1([_password UTF8String], (int)_password.length, finalSalt, sizeof(salt), iterations, keylength, finalOut) == 0) {
-            return @[];
+        uint8_t * _saltBuff = NULL;
+        size_t _saltBuffLen = 0;
+        
+        if ([_salt isKindOfClass:[NSArray class]]) {
+            _saltBuff = alloca([_salt count]);
+            _saltBuffLen = [_salt count];
+            
+            {
+                int ii = 0;
+                for (NSNumber * number in _salt) {
+                    _saltBuff[ii] = [number shortValue];
+                    ++ii;
+                }
+            }
+        } else if ([_salt isKindOfClass:[NSString class]]) {
+            _saltBuff = (uint8_t*)[_salt UTF8String];
+            _saltBuffLen = [_salt length];
+        } else {
+            DLog(@"Scrypt salt unsupported type");
+            return [[NSData new] hexadecimalString];
+        }
+        
+        if (PKCS5_PBKDF2_HMAC_SHA1([_password UTF8String], (int)_password.length, _saltBuff, (int)_saltBuffLen, iterations, keylength, finalOut) == 0) {
+            return [[NSData new] hexadecimalString];
         };
         
-        NSData *data = [NSData dataWithBytesNoCopy:output length:keylength freeWhenDone:YES];
-        NSArray *returnedArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        DLog(@"output is %@", returnedArray);
-        return returnedArray;
+        printf("salt: ");
+        for(int i = 0; i < _saltBuffLen; i++) {
+            printf("%02x", _saltBuff[i]);
+        } printf("\n");
+        
+        printf("out: ");
+        for(int i=0;i<keylength;i++) {
+            printf("%02x", finalOut[i]);
+        } printf("\n");
+        
+        DLog(@"finalOut: %s", finalOut);
+        
+        return [[NSData dataWithBytesNoCopy:finalOut length:keylength] hexadecimalString];
     };
     
     [self.context evaluateScript:jsSource];
