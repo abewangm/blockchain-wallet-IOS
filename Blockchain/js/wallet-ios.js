@@ -611,7 +611,13 @@ MyWalletPhone.getLegacyArchivedAddresses = function() {
     });
 };
 
-MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, other_error) {
+MyWalletPhone.getSessionToken = function() {
+    WalletNetwork.obtainSessionToken().then(function (sessionToken) {
+        device.execute('on_get_session_token:', [sessionToken]);
+    });
+}
+
+MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPassword, sessionToken, twoFACode, twoFAType, success, needs_two_factor_code, wrong_two_factor_code, other_error) {
     // Timing
     var t0 = new Date().getTime(), t1;
     
@@ -626,6 +632,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     };
     
     var fetch_success = function() {
+
         logTime('download');
         
         device.execute('loading_start_decrypt_wallet');
@@ -683,13 +690,38 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         device.execute('wrong_two_factor_code');
     }
     
-    device.execute('loading_start_download_wallet');
-
-    if (!twoFACode) {
-        twoFACode = null;
+    var authorization_required = function() {
+        console.log('authorization required');
+        device.execute('loading_stop');
+        device.execute('show_email_authorization_alert');
     }
     
-    MyWallet.login(user_guid, shared_key, inputedPassword, twoFACode, success, needs_two_factor_code, wrong_two_factor_code, null, other_error, fetch_success, decrypt_success, build_hd_success);
+    device.execute('loading_start_download_wallet');
+
+    var credentials = {};
+
+    credentials.twoFactor = twoFACode ? {type: WalletStore.get2FAType(), code : twoFACode} : null;
+    
+    if (shared_key) {
+        console.log('setting sharedKey');
+        credentials.sharedKey = shared_key;
+    }
+    
+    if (sessionToken) {
+        console.log('setting sessionToken');
+        credentials.sessionToken = sessionToken;
+    }
+    
+    var callbacks = {
+        needsTwoFactorCode: needs_two_factor_code,
+        wrongTwoFactorCode: wrong_two_factor_code,
+        authorizationRequired: authorization_required,
+        didFetch: fetch_success,
+        didDecrypt: decrypt_success,
+        didBuildHD: build_hd_success
+    }
+
+    MyWallet.login(user_guid, inputedPassword, credentials, callbacks).then(success).catch(other_error);
 };
 
 MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
@@ -1587,7 +1619,7 @@ MyWalletPhone.setLabelForAddress = function(address, label) {
     MyWallet.wallet.key(address).label = label;
 }
 
-MyWalletPhone.resendTwoFactorSms = function(user_guid) {
+MyWalletPhone.resendTwoFactorSms = function(user_guid, sessionToken) {
     
     var success = function () {
         console.log('Resend two factor SMS success');
@@ -1601,7 +1633,7 @@ MyWalletPhone.resendTwoFactorSms = function(user_guid) {
         device.execute('on_resend_two_factor_sms_error:', [parsedError['initial_error']]);
     }
     
-    WalletNetwork.resendTwoFactorSms(user_guid).then(success).catch(error);
+    WalletNetwork.resendTwoFactorSms(user_guid, sessionToken).then(success).catch(error);
 }
 
 MyWalletPhone.get2FAType = function() {

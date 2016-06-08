@@ -104,6 +104,8 @@
 @property(nonatomic, strong) NSString *sharedKey;
 @property(nonatomic, strong) NSString *password;
 
+@property(nonatomic, strong) NSString *sessionToken;
+
 @property(nonatomic, strong) id<WalletDelegate> delegate;
 @property(nonatomic, strong) JSBridgeWebView *webView;
 

@@ -145,11 +145,11 @@
     if (self.guid && self.password) {
         DLog(@"Fetch Wallet");
         
-        if (!self.twoFactorInput) {
-            [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS]];
-        } else {
-            [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\", \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS], [self.twoFactorInput escapeStringForJS]];
-        }
+        NSString *escapedSharedKey = self.sharedKey == nil ? @"" : [self.sharedKey escapeStringForJS];
+        NSString *escapedSessionToken = self.sessionToken == nil ? @"" : [self.sessionToken escapeStringForJS];
+        NSString *escapedTwoFactorInput = self.twoFactorInput == nil ? @"" : [self.twoFactorInput escapeStringForJS];
+        
+        [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\", \"%@\", \"%@\")", [self.guid escapeStringForJS], escapedSharedKey, [self.password escapeStringForJS], escapedSessionToken, escapedTwoFactorInput];
     }
 }
 
@@ -383,9 +383,9 @@
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
 - (void)loadWalletLogin
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/wallet/login", [app serverURL]]];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:requestObj];
+    if (!self.sessionToken) {
+        [self getSessionToken];
+    }
 }
 
 - (void)parsePairingCode:(NSString*)code
@@ -908,7 +908,7 @@
 - (void)resendTwoFactorSMS
 {
     if ([self.webView isLoaded]) {
-        [self.webView executeJS:@"MyWalletPhone.resendTwoFactorSms(\"%@\")", [self.guid escapeStringForJS]];
+        [self.webView executeJS:@"MyWalletPhone.resendTwoFactorSms(\"%@\", \"%@\")", [self.guid escapeStringForJS], [self.sessionToken escapeStringForJS]];
     }
 }
 
@@ -1028,6 +1028,15 @@
     }
     
     return [[self.webView executeJSSynchronous:@"MyWalletPhone.getIndexOfActiveAccount(%d)", account] intValue];
+}
+
+- (void)getSessionToken
+{
+    if (![self.webView isLoaded]) {
+        return;
+    }
+    
+    [self.webView executeJS:@"MyWalletPhone.getSessionToken()"];
 }
 
 # pragma mark - Transaction handlers
@@ -1198,12 +1207,12 @@
 - (void)on_fetch_needs_two_factor_code
 {
     DLog(@"on_fetch_needs_two_factor_code");
-    NSString *twoFactorType = [app.wallet get2FAType];
-    if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_GOOGLE) {
+    int twoFactorType = [[app.wallet get2FAType] intValue];
+    if (twoFactorType == TWO_STEP_AUTH_TYPE_GOOGLE) {
         [app verifyTwoFactorGoogle];
-    } else if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_SMS) {
+    } else if (twoFactorType == TWO_STEP_AUTH_TYPE_SMS) {
         [app verifyTwoFactorSMS];
-    } else if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_YUBI_KEY) {
+    } else if (twoFactorType == TWO_STEP_AUTH_TYPE_YUBI_KEY) {
         [app verifyTwoFactorYubiKey];
     } else {
         [app standardNotifyAutoDismissingController:BC_STRING_INVALID_AUTHENTICATION_TYPE];
@@ -1367,12 +1376,6 @@
     NSRange invalidEmailStringRange = [message rangeOfString:@"update-email-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (invalidEmailStringRange.location != NSNotFound) {
         [self performSelector:@selector(on_update_email_error) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
-        return;
-    }
-    
-    NSRange authorizationRequiredStringRange = [message rangeOfString:@"Authorization Required" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
-    if (authorizationRequiredStringRange.location != NSNotFound) {
-        [app standardNotifyAutoDismissingController:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE title:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE];
         return;
     }
     
@@ -2037,6 +2040,18 @@
     if ([self.delegate respondsToSelector:@selector(updateLoadedAllTransactions:)]) {
         [self.delegate updateLoadedAllTransactions:loadedAll];
     }
+}
+
+- (void)on_get_session_token:(NSString *)token
+{
+    DLog(@"on_get_session_token:");
+    self.sessionToken = token;
+}
+
+- (void)show_email_authorization_alert
+{
+    DLog(@"show_email_authorization_alert");
+    [app standardNotifyAutoDismissingController:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE title:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

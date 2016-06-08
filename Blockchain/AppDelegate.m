@@ -1295,6 +1295,8 @@ void (^secondPasswordSuccess)(NSString *);
         [cookieStorage deleteCookie:each];
     }
     
+    self.wallet.sessionToken = nil;
+    
     self.merchantViewController = nil;
     
     [self removeGuidFromKeychain];
