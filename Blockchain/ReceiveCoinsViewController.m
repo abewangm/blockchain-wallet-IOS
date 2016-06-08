@@ -173,7 +173,7 @@ NSString *detailLabel;
 
 - (void)setupTapGestureForMainLabel
 {
-    UITapGestureRecognizer *tapGestureForMainLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainAddressOnTap)];
+    UITapGestureRecognizer *tapGestureForMainLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainQRClicked:)];
     [mainAddressLabel addGestureRecognizer:tapGestureForMainLabel];
     mainAddressLabel.userInteractionEnabled = YES;
 }
@@ -385,40 +385,11 @@ NSString *detailLabel;
     }];
 }
 
-- (void)animateTextOfLabel:(UILabel *)labelToAnimate toFinalText:(NSString *)finalText
-{
-    labelToAnimate.userInteractionEnabled = NO;
-    
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        labelToAnimate.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            labelToAnimate.text = finalText;
-            labelToAnimate.alpha = 1.0;
-            labelToAnimate.userInteractionEnabled = YES;
-        }];
-    }];
-}
-
-- (void)toggleTextOfLabel:(UILabel *)labelToAnimate betweenString:(NSString *)firstString andString:(NSString *)secondString
-{
-    if ([labelToAnimate.text isEqualToString:firstString]) {
-        [self animateTextOfLabel:labelToAnimate toFinalText:secondString];
-    } else if ([labelToAnimate.text isEqualToString:secondString]) {
-        [self animateTextOfLabel:labelToAnimate toFinalText:firstString];
-    }
-}
-
 #pragma mark - Actions
 
 - (IBAction)doneButtonClicked:(UIButton *)sender
 {
     [self hideKeyboard];
-}
-
-- (void)showMainAddressOnTap
-{
-    [self toggleTextOfLabel:mainAddressLabel betweenString:mainLabel andString:mainAddress];
 }
 
 - (IBAction)labelSaveClicked:(id)sender
@@ -543,7 +514,7 @@ NSString *detailLabel;
 - (void)updateUI
 {
     self.receiveToLabel.text = mainLabel;
-    mainAddressLabel.text = mainLabel;
+    mainAddressLabel.text = mainAddress;
     
     [self setQRPayment];
 }
