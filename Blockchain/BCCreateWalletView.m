@@ -149,13 +149,13 @@
     };
     
     [self hideKeyboard];
-    
-    // Load the JS without a wallet
-    [app.wallet loadBlankWallet];
-    
+        
     // Get callback when wallet is done loading
     // Continue in walletJSReady callback
     app.wallet.delegate = self;
+
+    // Load the JS without a wallet
+    [app.wallet loadBlankWallet];
 }
 
 

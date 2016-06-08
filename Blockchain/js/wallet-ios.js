@@ -111,7 +111,7 @@ MyWalletPhone.createAccount = function(label) {
     var error = function (error) {
     on_error_add_new_account:(error);
     }
-    
+    console.log('creata');
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
                                         MyWallet.wallet.newAccount(label, pw, null, success);
@@ -928,7 +928,7 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName) {
     var success = function(guid, sharedKey, password) {
         loading_stop();
         
-    on_create_new_account:sharedKey:password:(guid, sharedKey, password);
+        on_create_new_account_sharedKey_password(guid, sharedKey, password);
     };
     
     var error = function(e) {
@@ -1301,7 +1301,6 @@ WalletCrypto.scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
 
 WalletCrypto.stretchPassword = function (password, salt, iterations, keylen) {
     var retVal = objc_sjcl_misc_pbkdf2(password, salt.toJSON().data, iterations, keylen / 8);
-    console.log('overwriting');
     return new Buffer(retVal, 'hex');
 }
 

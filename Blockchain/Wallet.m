@@ -72,10 +72,8 @@
      In My-Wallet-V3, you must add global.self = global; to whatwg-fetch/fetch.js.
      
      In my-wallet.js, delete the crypto line and add the following:
-     var crypto = {}
-     crypto.getRandomValues = function(rawBytes) {
-        return getObjCRandomValues(rawBytes);
-     }
+        var crypto = {}
+        crypto.getRandomValues = function(discard) {}
      
      Also switch the line containing
         decrypt_success && decrypt_success();
@@ -90,6 +88,11 @@
            return sjcl.misc.pbkdf2(password, salt, iterations, keylen, algorithm);
         }
      
+     Replace line declaring localH variable with
+     var localH = getRandomBytes ? Buffer(getRandomBytes(nBytes), 'hex') : randomBytes(nBytes);
+     
+     Change RNG.prototype.getServerEntropy function:
+        change if (request.status === 200) to if (request.status == 200)
      */
     
     NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:@"my-wallet" ofType:@"js"];
@@ -97,7 +100,7 @@
     NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
     NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
     
-    NSString *jsSource = [NSString stringWithFormat:@"var window = this; \n%@\n%@", walletJSSource, walletiOSSource];
+    NSString *jsSource = [NSString stringWithFormat:@"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0};\n%@\n%@", walletJSSource, walletiOSSource];
     self.context = [[JSContext alloc] init];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -239,6 +242,10 @@
         [weakSelf on_add_new_account];
     };
     
+    self.context[@"loading_start_new_account"] = ^() {
+        [weakSelf loading_start_new_account];
+    };
+    
     self.context[@"reload"] = ^() {
         [weakSelf reload];
     };
@@ -251,9 +258,18 @@
         [weakSelf on_backup_wallet_success];
     };
     
-    self.context[@"getObjCRandomValues"] = ^(NSArray *input) {
+    self.context[@"getRandomBytes"] = ^(NSNumber *count) {
         DLog(@"getObjCRandomValues");
-        return [[NSFileHandle fileHandleForReadingAtPath:@"/dev/random"] readDataOfLength:[input count]];
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/random"];
+        if (!fileHandle) {
+            return @"";
+        }
+        NSData *data = [fileHandle readDataOfLength:[count intValue]];
+        return [data hexadecimalString];
+    };
+    
+    self.context[@"on_create_new_account_sharedKey_password"] = ^(NSString *_guid, NSString *_sharedKey, NSString *_password) {
+        [weakSelf on_create_new_account:_guid sharedKey:_sharedKey password:_password];
     };
     
     self.context[@"objc_sjcl_misc_pbkdf2"] = ^(NSString *_password, id _salt, int iterations, int keylength, NSString *hmacSHA1) {
@@ -1630,7 +1646,6 @@
         self.didPairAutomatically = NO;
         [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
     }
-    DLog(@"MYWALLET IS %@", [[self.context evaluateScript:@"MyWallet"] toString]);
     self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
     self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
     
