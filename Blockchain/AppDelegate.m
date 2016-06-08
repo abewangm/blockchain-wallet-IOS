@@ -1731,7 +1731,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)toggleSideMenu
 {
     // If the sideMenu is not shown, show it
-    if (_slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered) {        
+    if (_slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered) {
         [_slidingViewController anchorTopViewToRightAnimated:YES];
     }
     // If the sideMenu is shown, dismiss it

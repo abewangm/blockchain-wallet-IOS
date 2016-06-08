@@ -613,6 +613,10 @@ NSString *detailLabel;
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if (app.slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        return NO;
+    }
+    
     if (textField == self.receiveFiatField) {
         [self showKeyboard];
         return YES;
