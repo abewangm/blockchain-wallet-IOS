@@ -67,11 +67,14 @@
 
 - (void)loadJS
 {
-    /* NOTE (not final): In My-Wallet-V3, you must add global.self = global; to whatwg-fetch/fetch.js.
+    /* NOTE (not final):
+     
+     In My-Wallet-V3, you must add global.self = global; to whatwg-fetch/fetch.js.
+     
      In my-wallet.js, delete the crypto line and add the following:
      var crypto = {}
      crypto.getRandomValues = function(rawBytes) {
-     return getObjCRandomValues(rawBytes);
+        return getObjCRandomValues(rawBytes);
      }
      
      Also switch the line containing
@@ -79,10 +82,8 @@
      with the line below it
         MyWallet.wallet = new Wallet(obj);
      
-     Replace 'sjcl.misc.pbkdf2' in stretchPassword
-        var stretched = sjcl.misc.pbkdf2(password, salt, iterations, keylen || 256, hmacSHA1);
-     to this
-        WalletCrypto.sjcl_misc_pbkdf2
+     Replace calls to stretchPassword with
+        WalletCrypto.stretchPassword
      
      Add the following under stretchPassword:
         function sjcl_misc_pbkdf2 (password, salt, iterations, keylen, algorithm) {
