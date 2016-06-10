@@ -764,6 +764,9 @@
 "Password must 10 characters or longer" = "Пароль должен состоять из 10 символов или более";
 
 /* (No Commment) */
+"Password must be different from your email" = "Пароль должен отличаться от вашей электронной почты";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Пароль должен быть меньше или равна 255 символов";
 
 /* (No Commment) */
@@ -839,7 +842,11 @@
 "Please select a different address to send from." = "Пожалуйста, выберите другой адрес для отправки из.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Отправьте платеж в адрес bitcoin (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@";
+"Please send %@ to bitcoin address.
+%@" = "Пожалуйста, пришлите %1$@ bitcoin адрес.";
+
+/* (No Commment) */
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Отправьте платеж в адрес bitcoin (< a href = «https://blockchain.info/wallet/bitcoin-faq» > помочь? < /a >): %@";
 
 /* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Отправьте платеж на адрес bitcoin. FAQ:(https://blockchain.info/wallet/bitcoin-faq): %@";
@@ -869,6 +876,9 @@
 "Receive" = "Получить";
 
 /* (No Commment) */
+"Receive to..." = "Получите в...";
+
+/* (No Commment) */
 "Received" = "Получено";
 
 /* (No Commment) */
@@ -879,6 +889,9 @@
 
 /* (No Commment) */
 "Regular" = "Регулярные";
+
+/* (No Commment) */
+"Request" = "Запрос";
 
 /* (No Commment) */
 "Request Amount" = "Запросить сумму";
@@ -1022,6 +1035,9 @@
 "Syncing Wallet" = "Синхронизация  кошелька";
 
 /* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Нажмите, чтобы скопировать этот адрес. Поделитесь им с отправителя по электронной почте или текст.";
+
+/* (No Commment) */
 "Terms of Service" = "Условия предоставления услуг";
 
 /* (No Commment) */
@@ -1093,6 +1109,9 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 
 /* (No Commment) */
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Эта сделка требует более высокую плату за потребление пыли из-за малого количества изменений должны быть возвращены.";
+
+/* (No Commment) */
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Это позволит следующие предупреждения: получить приглашение, смотреть, только обзор App Store и перевести все средства.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Это сотрет все данные бумажник на этом устройстве. Пожалуйста, подтвердите, что у вас есть ваш кошелек информация сохранены в другом иначе любой bitcoin в этот кошелек будет недоступным!!";
@@ -1322,6 +1341,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Мы обнаружили предыдущую версию Blockchain Кошелька на вашем телефоне.";
+
+/* (No Commment) */
+"Where" = "Где";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Хотели бы вы добавить bitcoin адрес %@ в вашу адресную книгу?";
