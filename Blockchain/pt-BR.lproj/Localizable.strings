@@ -764,6 +764,9 @@
 "Password must 10 characters or longer" = "A senha deve ter 10 caracteres ou mais";
 
 /* (No Commment) */
+"Password must be different from your email" = "Senha deve ser diferente do seu email";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Senha deve ser menor ou igual a 255 caracteres";
 
 /* (No Commment) */
@@ -839,7 +842,11 @@
 "Please select a different address to send from." = "Por favor, selecione um endereço diferente para enviar a partir.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Envie pagamentos ao endereço bitcoin (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@";
+"Please send %@ to bitcoin address.
+%@" = "Por favor envie %1$@ para endereço bitcoin.";
+
+/* (No Commment) */
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Por favor enviar o pagamento ao endereço bitcoin (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > ajudar? < /a >): %@";
 
 /* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Envie pagamentos ao endereço bitcoin. Perguntas frequentes: (https://blockchain.info/wallet/bitcoin-faq): %@";
@@ -869,6 +876,9 @@
 "Receive" = "Receber";
 
 /* (No Commment) */
+"Receive to..." = "Receba para...";
+
+/* (No Commment) */
 "Received" = "Recebido";
 
 /* (No Commment) */
@@ -879,6 +889,9 @@
 
 /* (No Commment) */
 "Regular" = "Regular";
+
+/* (No Commment) */
+"Request" = "Solicitação de";
 
 /* (No Commment) */
 "Request Amount" = "Solicitar montante";
@@ -1022,6 +1035,9 @@
 "Syncing Wallet" = "Sincronizando carteira";
 
 /* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Torneira para copiar este endereço. Compartilhá-lo com o remetente via email ou texto.";
+
+/* (No Commment) */
 "Terms of Service" = "Termos de serviço";
 
 /* (No Commment) */
@@ -1093,6 +1109,9 @@ Dois tipos de transação avançada (gastar a partir de endereços somente obser
 
 /* (No Commment) */
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Esta operação requer uma taxa mais elevada para consumo de poeira devido à pequena quantidade de mudança a ser retornado.";
+
+/* (No Commment) */
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Isso permitirá que os alertas a seguir: receber à solicitação de revisão somente relógio, App Store e transferir todos os fundos.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Isto apagará todos os dados da carteira neste dispositivo. Por favor confirme que você tem suas informações de carteira salvas em outro lugar senão qualquer bitcoin no testamento carteira ser inacessível!!!!";
@@ -1322,6 +1341,9 @@ totalmente nova para você";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Detectamos uma instalação anterior do Blockchain Wallet no seu celular.";
+
+/* (No Commment) */
+"Where" = "Onde";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Gostaria de adicionar o endereço de bitcoin %@ a sua agenda de endereços?";
