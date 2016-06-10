@@ -1235,6 +1235,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)scanPrivateKeyForWatchOnlyAddress:(NSString *)address
 {
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
     if (![app getCaptureDeviceInput]) {
         return;
     }
@@ -2226,6 +2230,12 @@ void (^secondPasswordSuccess)(NSString *);
     NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)_pin];
     
     [self showVerifyingBusyViewWithTimer:30.0];
+    
+    // Check if we have an internet connection
+    // This only checks if a network interface is up. All other errors (including timeouts) are handled by JavaScript callbacks in Wallet.m
+    if (![self checkInternetConnection]) {
+        return;
+    }
     
 #ifdef TOUCH_ID_ENABLED
     if (self.pinEntryViewController.verifyOptional) {

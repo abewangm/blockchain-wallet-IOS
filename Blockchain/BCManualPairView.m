@@ -106,6 +106,10 @@
         return;
     }
     
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
     [walletIdentifierTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
         
