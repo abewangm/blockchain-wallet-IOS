@@ -39,6 +39,7 @@ typedef enum {
 @property (nonatomic) uint64_t lowerRecommendedLimit;
 @property (nonatomic) uint64_t estimatedTransactionSize;
 @property (nonatomic) BOOL customFeeMode;
+@property (nonatomic) BOOL shouldClearToField;
 
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
@@ -1366,8 +1367,12 @@ BOOL displayingLocalSymbolSend;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
         if (self.toAddress && [app.wallet isBitcoinAddress:self.toAddress]) {
             [self didSelectToAddress:self.toAddress];
+            self.shouldClearToField = NO;
             return NO;
+        } else if (range.length == 1 && self.shouldClearToField) {
+            textField.text = @"";
         }
+        self.shouldClearToField = NO;
         DLog(@"toAddress: %@", self.toAddress);
     }
     
@@ -1427,6 +1432,8 @@ BOOL displayingLocalSymbolSend;
     [app.wallet changePaymentToAddress:address];
     
     [self doCurrencyConversion];
+    
+    self.shouldClearToField = YES;
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -1458,6 +1465,8 @@ BOOL displayingLocalSymbolSend;
     [app.wallet changePaymentToAccount:account];
     
     [self doCurrencyConversion];
+    
+    self.shouldClearToField = YES;
 }
 
 #pragma mark - Fee Calculation
