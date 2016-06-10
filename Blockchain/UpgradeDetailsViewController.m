@@ -52,6 +52,10 @@
 
 - (IBAction)upgradeWalletButtonTapped:(UIButton *)sender
 {
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
     [app.wallet loading_start_upgrade_to_hd];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [app closeSideMenu];

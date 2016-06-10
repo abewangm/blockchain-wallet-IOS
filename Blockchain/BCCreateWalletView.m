@@ -200,7 +200,7 @@
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
     } else if ([message isEqualToString:ERROR_TIMEOUT_REQUEST]){
         [app standardNotify:BC_STRING_TIMED_OUT];
-    } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST]){
+    } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST] || [message containsString:ERROR_TIMEOUT_ERROR]){
         [app performSelector:@selector(standardNotify:) withObject:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION afterDelay:DELAY_KEYBOARD_DISMISSAL];
     } else {
         [app standardNotify:message];
