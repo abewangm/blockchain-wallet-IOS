@@ -358,11 +358,9 @@ NSString *detailLabel;
     [self doCurrencyConversion];
 }
 
-- (void)animateTextOfLabel:(UILabel *)labelToAnimate toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
+- (void)animateTextOfLabel:(UILabel *)labelToAnimate fromText:(NSString *)originalText toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
 {
     gestureReceiver.userInteractionEnabled = NO;
-    
-    NSString *originalText = labelToAnimate.text;
     
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         labelToAnimate.alpha = 0.0;
@@ -424,7 +422,7 @@ NSString *detailLabel;
 {
     [UIPasteboard generalPasteboard].string = mainAddress;
     
-    [self animateTextOfLabel:mainAddressLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
+    [self animateTextOfLabel:mainAddressLabel fromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
 }
 
 - (NSString*)formatPaymentRequestWithAmount:(NSString *)amount url:(NSString*)url
