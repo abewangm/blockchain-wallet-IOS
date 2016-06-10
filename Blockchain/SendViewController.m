@@ -1724,8 +1724,7 @@ BOOL displayingLocalSymbolSend;
                         amountInSatoshi = 0.0;
                     }
                 } else {
-                    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
-                    return;
+                    amountInSatoshi = 0.0;
                 }
                 
                 // If the amount is empty, open the amount field
