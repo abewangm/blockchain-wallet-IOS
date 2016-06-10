@@ -45,7 +45,7 @@
 #define BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT_OUTPUTS_ARGUMENT_ARGUMENT_TOO_SMALL NSLocalizedString(@"Transferred funds from %d %@. Outputs for %d %@ were too small.", nil)
 #define BC_STRING_PAYMENT_ASK_TO_ARCHIVE_TRANSFERRED_ADDRESSES NSLocalizedString(@"Would you like to archive the addresses used?", nil)
 #define BC_STRING_PAYMENT_RECEIVED NSLocalizedString(@"Payment Received", nil)
-#define BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS NSLocalizedString(@"Tap to copy this address. Share it with the sender via email or text or carrier pigeon.", nil)
+#define BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS NSLocalizedString(@"Tap to copy this address. Share it with the sender via email or text.", nil)
 
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
 #define BC_STRING_ADJUST_FEE NSLocalizedString(@"Adjust Fee", nil)
