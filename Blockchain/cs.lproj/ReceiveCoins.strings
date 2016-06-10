@@ -34,7 +34,7 @@
 /* (No Commment) */
 "88.normalTitle" = "ŽÁDOST O PLATBU";
 
-/* Class = "UILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
+/* (No Commment) */
 "90.text" = "Bitcoin adresy ";
 
 /* (No Commment) */
@@ -55,8 +55,8 @@
 /* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
 
-/* Class = "UITextField"; text = "Only to control keyboard"; ObjectID = "OFk-NR-2Sp"; */
-"OFk-NR-2Sp.text" = "Pouze k ovládání klávesnice";
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ZHr-29-NdG"; */
+"ZHr-29-NdG.normalTitle" = "Hotovo";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
 "a9y-3I-Drw.placeholder" = "0,00";

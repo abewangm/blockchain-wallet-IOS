@@ -743,6 +743,9 @@
 "Password changed. Please login to continue." = "Αλλάξει τον κωδικό πρόσβασης. ΠΑΡΑΚΑΛΩ Συνδεθειτε για να συνεχίσει.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Κωδικός πρόσβασης πρέπει να είναι διαφορετικό από το email σας";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Κωδικός πρόσβασης πρέπει να είναι μικρότερη ή ίση έως 255 χαρακτήρες";
 
 /* (No Commment) */
@@ -815,10 +818,12 @@
 "Please select a different address to send from." = "Παρακαλώ επιλέξτε μια διαφορετική διεύθυνση για την αποστολή από.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Παρακαλώ στείλτε πληρωμής bitcoin διεύθυνση (< ένα href = \"https://blockchain.info/wallet/bitcoin-faq\" > βοηθήσει; < /a >): %@";
+"Please send %@to bitcoin address.
+%@" = "Παρακαλώ στείλτε %1$@to διεύθυνση bitcoin.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Παρακαλώ στείλτε πληρωμής bitcoin διεύθυνση. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Παρακαλώ στείλτε πληρωμής bitcoin διεύθυνση (< ένα href = \"https://blockchain.info/wallet/bitcoin-faq\" > βοηθήσει; < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Παρακαλώ προσπαθήστε ξανά";
@@ -845,6 +850,9 @@
 "Receive" = "Λάβετε";
 
 /* (No Commment) */
+"Receive to..." = "Λάβετε να...";
+
+/* (No Commment) */
 "Received" = "Έλαβε";
 
 /* (No Commment) */
@@ -855,6 +863,9 @@
 
 /* (No Commment) */
 "Regular" = "Τακτική";
+
+/* (No Commment) */
+"Request" = "Αίτηση";
 
 /* (No Commment) */
 "Request Amount" = "Αίτηση ποσό";
@@ -993,6 +1004,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Συγχρονισμός πορτοφόλι";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Πατήστε για να αντιγράψετε αυτή τη διεύθυνση. Κοινοποιήσετε στον αποστολέα μέσω email ή SMS.";
 
 /* (No Commment) */
 "Terms of Service" = "Όροι παροχής υπηρεσιών";
@@ -1256,6 +1270,9 @@ wallet experience for you" = "Σχεδιάσαμε μια εντελώς νέα 
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Σημαίνει ότι έχουμε εντοπίσει μια προηγούμενη εγκατάσταση του πορτοφολιού Blockchain στο τηλέφωνό σας.";
+
+/* (No Commment) */
+"Where" = "Όπου";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Θα θέλατε να προσθέσετε το bitcoin διεύθυνση %@ στο βιβλίο διευθύνσεων;";

@@ -743,6 +743,9 @@
 "Password changed. Please login to continue." = "S-a schimbat parola. Vă rugăm să login pentru a continua.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Parola trebuie să fie diferită de adresa de email";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Parola trebuie să fie mai mică sau egală cu 255 de caractere";
 
 /* (No Commment) */
@@ -815,10 +818,12 @@
 "Please select a different address to send from." = "Vă rugăm să selectaţi o altă adresă pentru a trimite la.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Vă rugăm să trimiteţi plata bitcoin adresa (< un href = \"https://blockchain.info/wallet/bitcoin-faq\" > ajutor? < /a >): %@";
+"Please send %@to bitcoin address.
+%@" = "Vă rugăm să trimite adresa de bitcoin %1$@to.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Vă rugăm să trimiteţi plata bitcoin adresa. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Vă rugăm să trimiteţi plata bitcoin adresa (< un href = \"https://blockchain.info/wallet/bitcoin-faq\" > ajutor? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Vă rugăm să încercaţi din nou";
@@ -845,6 +850,9 @@
 "Receive" = "Primi";
 
 /* (No Commment) */
+"Receive to..." = "Primi...";
+
+/* (No Commment) */
 "Received" = "Primit";
 
 /* (No Commment) */
@@ -855,6 +863,9 @@
 
 /* (No Commment) */
 "Regular" = "Regulate";
+
+/* (No Commment) */
+"Request" = "Cerere";
 
 /* (No Commment) */
 "Request Amount" = "Solicita suma";
@@ -993,6 +1004,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sincronizarea portofel";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Atingeți pentru a copia aceasta adresa. Partajaţi-o cu expeditorul via poştă electronică sau text.";
 
 /* (No Commment) */
 "Terms of Service" = "Conditii de utilizare";
@@ -1256,6 +1270,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Ne-am detectat o instalare anterioară de portofel Blockchain pe telefon.";
+
+/* (No Commment) */
+"Where" = "În cazul în care";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Doriţi să adăugaţi bitcoin adresa %@ în agendă?";

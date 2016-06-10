@@ -743,6 +743,9 @@
 "Password changed. Please login to continue." = "Змінити пароль. Будь ласка, Логін, щоб продовжити.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Пароль має відрізнятися від вашої електронної пошти";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Пароль має бути меншим або дорівнювати 255 символів";
 
 /* (No Commment) */
@@ -815,10 +818,12 @@
 "Please select a different address to send from." = "Будь ласка виберіть іншу адресу для надсилання з.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Будь ласка, надішліть оплати адреси bitcoin (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > допомогти? </a >): %@";
+"Please send %@to bitcoin address.
+%@" = "Будь ласка, надішліть адресу %1$@to bitcoin.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Будь ласка, надішліть оплати адреси bitcoin. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Будь ласка, надішліть оплати адреси bitcoin (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > допомогти? </a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Будь ласка, спробуйте ще раз";
@@ -845,6 +850,9 @@
 "Receive" = "Отримувати";
 
 /* (No Commment) */
+"Receive to..." = "Отримання до...";
+
+/* (No Commment) */
 "Received" = "Отримав";
 
 /* (No Commment) */
@@ -855,6 +863,9 @@
 
 /* (No Commment) */
 "Regular" = "Регулярні";
+
+/* (No Commment) */
+"Request" = "Запит";
 
 /* (No Commment) */
 "Request Amount" = "Сума замовлення";
@@ -993,6 +1004,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Синхронізацію гаманець";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Торкніться, щоб скопіювати цю адресу. Поділись своєю історією з відправника електронною поштою або смс.";
 
 /* (No Commment) */
 "Terms of Service" = "Умови надання послуг";
@@ -1256,6 +1270,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Це свідчить попередньої інсталяції Blockchain гаманця на вашому телефоні.";
+
+/* (No Commment) */
+"Where" = "Де";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Хотіли б ви додати bitcoin адресу %@ до своєї адресної книги?";

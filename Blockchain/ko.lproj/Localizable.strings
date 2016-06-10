@@ -743,6 +743,9 @@
 "Password changed. Please login to continue." = "비밀 번호 변경. 계속 하려면 로그인을 하십시오.";
 
 /* (No Commment) */
+"Password must be different from your email" = "비밀 번호는 귀하의 이메일에서 달라 야 합니다.";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "암호는 255 자 보다 작거나 되어야 합니다.";
 
 /* (No Commment) */
@@ -815,10 +818,12 @@
 "Please select a different address to send from." = "다른 주소에서 보내기를 선택 하십시오.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "지불 bitcoin 주소를 보내주시기 바랍니다 (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > 도움이? < /a >): %@";
+"Please send %@to bitcoin address.
+%@" = "%1$@to bitcoin 주소를 보내주시기 바랍니다.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "지불 bitcoin 주소로 보내주시기 바랍니다. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "지불 bitcoin 주소를 보내주시기 바랍니다 (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > 도움이? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "다시 시도 하십시오";
@@ -845,6 +850,9 @@
 "Receive" = "수신";
 
 /* (No Commment) */
+"Receive to..." = "받을...";
+
+/* (No Commment) */
 "Received" = "받은";
 
 /* (No Commment) */
@@ -855,6 +863,9 @@
 
 /* (No Commment) */
 "Regular" = "일반";
+
+/* (No Commment) */
+"Request" = "요청";
 
 /* (No Commment) */
 "Request Amount" = "요청 금액";
@@ -993,6 +1004,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "동기화 지갑";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "이 주소 복사를 누릅니다. 이메일 이나 텍스트를 통해 보낸 사람 함께 그것을 공유.";
 
 /* (No Commment) */
 "Terms of Service" = "서비스 약관";
@@ -1256,6 +1270,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "우리가 귀하의 휴대 전화에 Blockchain 지갑의 이전 설치를 발견 했습니다.";
+
+/* (No Commment) */
+"Where" = "어디";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "주소록 bitcoin 주소 %@를 추가 하 시겠습니까?";

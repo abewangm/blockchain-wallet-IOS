@@ -98,7 +98,7 @@
 "Allowed" = "Dovoljeno";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Znesek mora biti nad pragom prah (%lld Satoshi)";
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Znesek mora biti večji ali enak prag prah (%lld Satoshi)";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Napaka pri preverjanju PIN kodo z oddaljenim strežnikom. Morda brez povezave ali Blockchain lahko doživlja težave. Želite ponoviti potrditev ali namesto ročno vnesite svoje geslo?";
@@ -743,6 +743,9 @@
 "Password changed. Please login to continue." = "Spremenil geslo. Prosimo, prijavite na še.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Geslo mora biti drugačen od vaš email";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Geslo mora biti manjša ali enaka 255 znakov";
 
 /* (No Commment) */
@@ -815,10 +818,12 @@
 "Please select a different address to send from." = "Izberite drug naslov za pošiljanje iz.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Pošljite plačilo bitcoin naslov (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > pomoč? < /a >): %@";
+"Please send %@to bitcoin address.
+%@" = "Prosim spodbuda %1$@to bitcoin naslov.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Pošljite plačilo bitcoin naslov. Pogosta vprašanja: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Pošljite plačilo bitcoin naslov (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > pomoč? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Prosimo, poskusite znova";
@@ -845,6 +850,9 @@
 "Receive" = "Prejeli";
 
 /* (No Commment) */
+"Receive to..." = "Prejeli za...";
+
+/* (No Commment) */
 "Received" = "Prejel";
 
 /* (No Commment) */
@@ -855,6 +863,9 @@
 
 /* (No Commment) */
 "Regular" = "Redno";
+
+/* (No Commment) */
+"Request" = "Zahtevo";
 
 /* (No Commment) */
 "Request Amount" = "Zahtevo znesek";
@@ -968,6 +979,9 @@
 "Simulate surge" = "Simulirati val";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Nekaj sredstev ni mogoče prenesti samodejno.";
+
+/* (No Commment) */
 "Store Hint" = "Namig trgovina";
 
 /* (No Commment) */
@@ -990,6 +1004,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sinhroniziranje denarnice";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Tapnite, če želite kopirati ta naslov. Delite z pošiljatelj preko e-pošte ali besedilo.";
 
 /* (No Commment) */
 "Terms of Service" = "Pogoji storitve";
@@ -1255,6 +1272,9 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Smo odkrili prejšnje namestitve Blockchain denarnice na telefonu.";
 
 /* (No Commment) */
+"Where" = "Kjer";
+
+/* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Ali želite dodati bitcoin naslov %@ v vaš adresar?";
 
 /* (No Commment) */
@@ -1297,7 +1317,7 @@ wallet experience for you" = "Oblikovali smo popolnoma novo doživetje denarnico
 "You do not have an account set up for Mail. Please contact %@" = "Nimate račun nastavite za pošto. Se obrnite na %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Imate naslovov z Reserve ravnovesje nad pragom zahteva prahu.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Imate naslovov z Reserve ravnovesje, večja od ali enaka pragu zahteva prahu.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Imate na voljo sredstva za pošiljanje iz tega naslova";

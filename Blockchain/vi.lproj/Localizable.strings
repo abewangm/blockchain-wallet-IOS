@@ -743,6 +743,9 @@
 "Password changed. Please login to continue." = "Thay đổi mật khẩu. Vui lòng đăng nhập để tiếp tục.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Mật khẩu phải khác với email của bạn";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Mật khẩu phải nhỏ hơn hoặc bằng đến 255 ký tự";
 
 /* (No Commment) */
@@ -815,10 +818,12 @@
 "Please select a different address to send from." = "Vui lòng chọn địa chỉ khác cho từ.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Xin vui lòng gửi thanh toán đến địa chỉ bitcoin (< một href = \"https://blockchain.info/wallet/bitcoin-faq\" > giúp? </a >): %@";
+"Please send %@to bitcoin address.
+%@" = "Xin vui lòng gửi %1$@to bitcoin địa chỉ.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Xin vui lòng gửi thanh toán để bitcoin địa chỉ. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Xin vui lòng gửi thanh toán đến địa chỉ bitcoin (< một href = \"https://blockchain.info/wallet/bitcoin-faq\" > giúp? </a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Xin vui lòng thử lại";
@@ -845,6 +850,9 @@
 "Receive" = "Nhận được";
 
 /* (No Commment) */
+"Receive to..." = "Nhận được để...";
+
+/* (No Commment) */
 "Received" = "Nhận được";
 
 /* (No Commment) */
@@ -855,6 +863,9 @@
 
 /* (No Commment) */
 "Regular" = "Thường xuyên";
+
+/* (No Commment) */
+"Request" = "Yêu cầu";
 
 /* (No Commment) */
 "Request Amount" = "Yêu cầu số tiền";
@@ -993,6 +1004,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Đồng bộ hoá Wallet";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Bấm vào sao chép địa chỉ này. Chia sẻ nó với người gửi qua email hoặc văn bản.";
 
 /* (No Commment) */
 "Terms of Service" = "Điều khoản Dịch vụ";
@@ -1256,6 +1270,9 @@ wallet experience for you" = "Chúng tôi đã thiết kế một kinh nghiệm 
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Chúng tôi đã phát hiện một cài đặt trước đó của Blockchain Wallet trên điện thoại của bạn.";
+
+/* (No Commment) */
+"Where" = "Nơi";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Bạn có muốn thêm bitcoin địa chỉ %@ vào sổ địa chỉ của bạn?";

@@ -743,6 +743,9 @@
 "Password changed. Please login to continue." = "Das Kennwort geändert. Bitte einloggen um fortzufahren.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Kennwort muss anders als Ihre e-Mail-Adresse sein.";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Passwort muss kleiner oder gleich 255 Zeichen sein.";
 
 /* (No Commment) */
@@ -815,10 +818,12 @@
 "Please select a different address to send from." = "Bitte wählen Sie eine andere Adresse aus senden.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitte senden Sie Zahlung an Bitcoin-Adresse (< a Href = \"https://blockchain.info/wallet/bitcoin-faq\" > helfen? </a >): %@";
+"Please send %@to bitcoin address.
+%@" = "Bitte senden Sie %1$@to Bitcoin-Adresse.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Bitte senden Sie Zahlungen an Bitcoin-Adresse. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitte senden Sie Zahlung an Bitcoin-Adresse (< a Href = \"https://blockchain.info/wallet/bitcoin-faq\" > helfen? </a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Bitte versuchen Sie es erneut";
@@ -845,6 +850,9 @@
 "Receive" = "Erhalten";
 
 /* (No Commment) */
+"Receive to..." = "Erhalten Sie...";
+
+/* (No Commment) */
 "Received" = "Empfangen";
 
 /* (No Commment) */
@@ -855,6 +863,9 @@
 
 /* (No Commment) */
 "Regular" = "Regelmäßige";
+
+/* (No Commment) */
+"Request" = "Anfrage";
 
 /* (No Commment) */
 "Request Amount" = "Anfrage-Betrag";
@@ -993,6 +1004,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synchronisieren von Wallet";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Tippen Sie auf, um diese Adresse zu kopieren. Teilen Sie es mit dem Absender per e-Mail oder SMS.";
 
 /* (No Commment) */
 "Terms of Service" = "Allgemeine Nutzungsbedingungen";
@@ -1256,6 +1270,9 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Wir haben eine frühere Installation von Blockchain Wallet auf deinem Handy festgestellt.";
+
+/* (No Commment) */
+"Where" = "Wo";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Möchten Sie die Bitcoin-Adresse %@ Ihrem Adressbuch hinzufügen?";

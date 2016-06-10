@@ -743,6 +743,9 @@
 "Password changed. Please login to continue." = "Passord endret. Vennligst login for å fortsette.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Passordet må være forskjellig fra din e-post";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Passordet må være mindre enn eller lik 255 tegn";
 
 /* (No Commment) */
@@ -815,10 +818,12 @@
 "Please select a different address to send from." = "Velg en annen adresse å sende fra.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Behage sende betalingen til bitcoin adresse (< en href = \"https://blockchain.info/wallet/bitcoin-faq\" > hjelp? < /a >): %@";
+"Please send %@to bitcoin address.
+%@" = "Send %1$@to bitcoin adresse.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Behage sende betalingen til bitcoin adresse. Vanlige spørsmål: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Behage sende betalingen til bitcoin adresse (< en href = \"https://blockchain.info/wallet/bitcoin-faq\" > hjelp? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Prøv på nytt";
@@ -845,6 +850,9 @@
 "Receive" = "Motta";
 
 /* (No Commment) */
+"Receive to..." = "Få...";
+
+/* (No Commment) */
 "Received" = "Mottatt";
 
 /* (No Commment) */
@@ -855,6 +863,9 @@
 
 /* (No Commment) */
 "Regular" = "Vanlig";
+
+/* (No Commment) */
+"Request" = "Forespørsel";
 
 /* (No Commment) */
 "Request Amount" = "Forespørsel beløp";
@@ -993,6 +1004,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronisering lommebok";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Trykk for å kopiere denne adressen. Dele den med avsenderen via email eller tekst.";
 
 /* (No Commment) */
 "Terms of Service" = "Vilkår for bruk";
@@ -1256,6 +1270,9 @@ wallet experience for you" = "Vi har utviklet en helt ny lommebok opplevelse for
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Vi har oppdaget en tidligere installasjon av Blockchain lommebok på telefonen.";
+
+/* (No Commment) */
+"Where" = "Hvor";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Ønsker du å legge bitcoin adresse %@ i adresseboken?";

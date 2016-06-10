@@ -743,6 +743,9 @@
 "Password changed. Please login to continue." = "تغيير كلمة المرور. الرجاء تسجيل الدخول لمتابعة.";
 
 /* (No Commment) */
+"Password must be different from your email" = "يجب أن تكون كلمة المرور مختلفة عن البريد الإلكتروني الخاص بك";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "يجب أن تكون كلمة المرور أقل من أو يساوي 255 حرف";
 
 /* (No Commment) */
@@ -815,10 +818,12 @@
 "Please select a different address to send from." = "الرجاء تحديد عنوان مختلف لإرسال من.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "الرجاء إرسال الدفع إلى عنوان بيتكوين (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > مساعدة؟ </a >): %@";
+"Please send %@to bitcoin address.
+%@" = "الرجاء إرسال عنوان بيتكوين %1$@to.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "الرجاء إرسال الدفع إلى عنوان بيتكوين. أسئلة وأجوبة: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "الرجاء إرسال الدفع إلى عنوان بيتكوين (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > مساعدة؟ </a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "الرجاء المحاولة مرة أخرى";
@@ -845,6 +850,9 @@
 "Receive" = "تلقي";
 
 /* (No Commment) */
+"Receive to..." = "الحصول على...";
+
+/* (No Commment) */
 "Received" = "تلقي";
 
 /* (No Commment) */
@@ -855,6 +863,9 @@
 
 /* (No Commment) */
 "Regular" = "العادية";
+
+/* (No Commment) */
+"Request" = "طلب";
 
 /* (No Commment) */
 "Request Amount" = "كمية الطلب";
@@ -993,6 +1004,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "مزامنة المحفظة";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "اضغط لنسخ هذا العنوان. تقاسمها مع المرسل عن طريق البريد الإلكتروني أو النص.";
 
 /* (No Commment) */
 "Terms of Service" = "شروط الخدمة";
@@ -1256,6 +1270,9 @@ wallet experience for you" = "لقد قمنا بتصميم تجربة جديدة
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "لقد تم الكشف عن تثبيت سابق من المحفظة بلوكتشين على الهاتف الخاص بك.";
+
+/* (No Commment) */
+"Where" = "حيث";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "هل ترغب في إضافة %@ عنوان بيتكوين إلى دفتر العناوين الخاص بك؟";
