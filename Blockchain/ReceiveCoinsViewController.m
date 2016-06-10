@@ -69,9 +69,9 @@ NSString *detailLabel;
     btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     
-    [self setupHeaderView];
-    
     [self reload];
+    
+    [self setupHeaderView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -265,6 +265,7 @@ NSString *detailLabel;
         [self.headerView addSubview:mainAddressLabel];
         
         [self setupTapGestureForMainLabel];
+        [self updateUI];
     }
 }
 
