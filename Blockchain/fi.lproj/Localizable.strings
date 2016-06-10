@@ -98,6 +98,9 @@
 "Allowed" = "Internet";
 
 /* (No Commment) */
+"Amount" = "Määrä";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Summan on oltava suurempi tai yhtä suuri pöly (%lld Satoshi)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Valitse toinen osoite lähettää.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Lähetä %1$@to bitcoin osoite.
+"Please send %@ to bitcoin address.
+%@" = "Lähetä %1$@ bitcoin osoite.
 %2$@";
 
 /* (No Commment) */

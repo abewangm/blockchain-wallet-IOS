@@ -98,6 +98,9 @@
 "Allowed" = "ได้รับอนุญาต";
 
 /* (No Commment) */
+"Amount" = "ยอดเงิน";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "ยอดเงินต้องมากกว่า หรือเท่ากับขีดจำกัดฝุ่น (%lld ซาโตชิ)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "กรุณาเลือกอยู่อื่นส่งจาก";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "กรุณาส่งที่อยู่ของ bitcoin %1$@to
+"Please send %@ to bitcoin address.
+%@" = "กรุณาส่ง %1$@ bitcoin ที่อยู่
 %2$@";
 
 /* (No Commment) */

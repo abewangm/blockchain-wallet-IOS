@@ -98,6 +98,9 @@
 "Allowed" = "Допускається";
 
 /* (No Commment) */
+"Amount" = "Сума";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Сума повинна бути більше або дорівнювати пилу поріг (%lld Сатосі)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Будь ласка виберіть іншу адресу для надсилання з.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Будь ласка, надішліть адресу %1$@to bitcoin.
+"Please send %@ to bitcoin address.
+%@" = "Будь ласка, надішліть на адресу bitcoin %1$@.
 %2$@";
 
 /* (No Commment) */

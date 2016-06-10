@@ -98,6 +98,9 @@
 "Allowed" = "अनुमति दी गई";
 
 /* (No Commment) */
+"Amount" = "राशि";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "मात्रा से अधिक या बराबर करने के लिए धूल थ्रेशोल्ड (%lld Satoshi) होना चाहिए";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "कृपया किसी भिन्न पते से भेजने के लिए का चयन करें।";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "कृपया %1$@to bitcoin पता भेजें।
+"Please send %@ to bitcoin address.
+%@" = "कृपया %1$@ bitcoin पता करने के लिए भेजें।
 %2$@";
 
 /* (No Commment) */

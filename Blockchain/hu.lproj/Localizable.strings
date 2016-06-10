@@ -98,6 +98,9 @@
 "Allowed" = "Engedélyezett";
 
 /* (No Commment) */
+"Amount" = "Összeg";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "A por küszöbértékét (%lld Satoshi) egyenlő vagy nagyobb kell";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Kérjük, válasszon egy másik címet küldeni.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Legyen szíves küld %1$@to bitcoin cím.
+"Please send %@ to bitcoin address.
+%@" = "Bitcoin címre küldje %1$@.
 %2$@";
 
 /* (No Commment) */

@@ -98,6 +98,9 @@
 "Allowed" = "Cho phép";
 
 /* (No Commment) */
+"Amount" = "Số lượng";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Số tiền phải lớn hơn hoặc bằng ngưỡng bụi (%lld Satoshi)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Vui lòng chọn địa chỉ khác cho từ.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Xin vui lòng gửi %1$@to bitcoin địa chỉ.
+"Please send %@ to bitcoin address.
+%@" = "Xin vui lòng gửi %1$@ đến địa chỉ bitcoin.
 %2$@";
 
 /* (No Commment) */

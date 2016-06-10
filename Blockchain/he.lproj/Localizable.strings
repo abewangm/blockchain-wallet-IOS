@@ -98,6 +98,9 @@
 "Allowed" = "מותר";
 
 /* (No Commment) */
+"Amount" = "כמות";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "סכום חייב להיות גדול או שווה להסף אבק (%lld סטושי)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "בחר כתובת שונה לשלוח מ.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "נא לשלוח את כתובת ביטקוין %1$@to.
+"Please send %@ to bitcoin address.
+%@" = "נא לשלוח %1$@ לכתובת ביטקוין.
 %2$@";
 
 /* (No Commment) */

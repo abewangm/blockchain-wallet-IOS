@@ -98,6 +98,9 @@
 "Allowed" = "許可";
 
 /* (No Commment) */
+"Amount" = "量";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "量がほこりしきい値 (%lld 聡) 以上にする必要があります。";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "別のアドレスから送信するを選択してください。";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "%1$@to bitcoin アドレスを送信してください。
+"Please send %@ to bitcoin address.
+%@" = "Bitcoin アドレスに %1$@ を送ってください。
 %2$@";
 
 /* (No Commment) */

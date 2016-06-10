@@ -98,6 +98,9 @@
 "Allowed" = "허용";
 
 /* (No Commment) */
+"Amount" = "금액";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "금액 보다 크거나 먼지 임계값 (%lld 사토시) 해야 합니다.";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "다른 주소에서 보내기를 선택 하십시오.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "%1$@to bitcoin 주소를 보내주시기 바랍니다.
+"Please send %@ to bitcoin address.
+%@" = "%1$@ bitcoin 주소로 보내주시기 바랍니다.
 %2$@";
 
 /* (No Commment) */

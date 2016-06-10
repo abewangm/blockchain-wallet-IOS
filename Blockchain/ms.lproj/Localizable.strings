@@ -98,6 +98,9 @@
 "Allowed" = "Dibenarkan";
 
 /* (No Commment) */
+"Amount" = "Jumlah";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Jumlah mesti lebih besar daripada atau sama dengan di ambang habuk (%lld Nanaho)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Sila pilih alamat yang berbeza untuk menghantar dari.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Sila hantar alamat bitcoin %1$@to.
+"Please send %@ to bitcoin address.
+%@" = "Sila hantar %1$@ ke alamat bitcoin.
 %2$@";
 
 /* (No Commment) */

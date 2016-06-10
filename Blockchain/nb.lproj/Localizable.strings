@@ -98,6 +98,9 @@
 "Allowed" = "Tillatt";
 
 /* (No Commment) */
+"Amount" = "Beløp";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Beløpet må være større enn eller lik for støv terskelen (%lld Satoshi)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Velg en annen adresse å sende fra.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Send %1$@to bitcoin adresse.
+"Please send %@ to bitcoin address.
+%@" = "Send %1$@ til bitcoin adresse.
 %2$@";
 
 /* (No Commment) */

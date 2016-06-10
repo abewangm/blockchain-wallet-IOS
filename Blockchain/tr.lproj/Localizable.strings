@@ -98,6 +98,9 @@
 "Allowed" = "İzin verilen";
 
 /* (No Commment) */
+"Amount" = "Tutar";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Tutar (%lld Satoshi) toz eşiğine eşit veya daha büyük olmalıdır";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Lütfen göndermek için farklı bir adres seçin.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "%1$@to bitcoin adresi gönderin.
+"Please send %@ to bitcoin address.
+%@" = "%1$@ bitcoin adresine gönderin.
 %2$@";
 
 /* (No Commment) */

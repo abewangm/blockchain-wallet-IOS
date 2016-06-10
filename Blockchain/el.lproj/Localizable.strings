@@ -98,6 +98,9 @@
 "Allowed" = "Επιτρέπεται";
 
 /* (No Commment) */
+"Amount" = "Ποσό";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Ποσό πρέπει να είναι μεγαλύτερη από ή ίση με το κατώτατο όριο της σκόνης (%lld Satoshi)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Παρακαλώ επιλέξτε μια διαφορετική διεύθυνση για την αποστολή από.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Παρακαλώ στείλτε %1$@to διεύθυνση bitcoin.
+"Please send %@ to bitcoin address.
+%@" = "Παρακαλούμε στείλτε %1$@ στη διεύθυνση bitcoin.
 %2$@";
 
 /* (No Commment) */

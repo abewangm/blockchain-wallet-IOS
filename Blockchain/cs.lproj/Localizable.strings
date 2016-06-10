@@ -98,6 +98,9 @@
 "Allowed" = "Povoleno";
 
 /* (No Commment) */
+"Amount" = "Částka";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Množství musí být větší než nebo rovna prahu prach (%lld Satoshi)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Prosím zvolte jinou adresu posílat z.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Zašlete %1$@to bitcoin adresy.
+"Please send %@ to bitcoin address.
+%@" = "Pošlete, prosím, %1$@ na adresu bitcoin.
 %2$@";
 
 /* (No Commment) */

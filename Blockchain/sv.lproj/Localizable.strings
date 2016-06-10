@@ -98,6 +98,9 @@
 "Allowed" = "Tillåtna";
 
 /* (No Commment) */
+"Amount" = "Belopp";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Beloppet måste vara större än eller lika med tröskelvärdet som damm (%lld Satoshi)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Välj en annan adress att skicka från.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Behaga sända %1$@to bitcoin adress.
+"Please send %@ to bitcoin address.
+%@" = "Behaga sända %1$@ till bitcoin adress.
 %2$@";
 
 /* (No Commment) */

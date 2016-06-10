@@ -98,6 +98,9 @@
 "Allowed" = "Permis";
 
 /* (No Commment) */
+"Amount" = "Suma";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Valoarea trebuie să fie mai mare sau egal cu pragul de praf (%lld Satoshi)";
 
 /* (No Commment) */
@@ -818,8 +821,8 @@
 "Please select a different address to send from." = "Vă rugăm să selectaţi o altă adresă pentru a trimite la.";
 
 /* (No Commment) */
-"Please send %@to bitcoin address.
-%@" = "Vă rugăm să trimite adresa de bitcoin %1$@to.
+"Please send %@ to bitcoin address.
+%@" = "Vă rugăm să trimiteţi %1$@ adresă bitcoin.
 %2$@";
 
 /* (No Commment) */
