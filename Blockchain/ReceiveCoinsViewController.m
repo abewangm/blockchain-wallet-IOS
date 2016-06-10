@@ -554,7 +554,7 @@ NSString *detailLabel;
 - (void)share
 {
     uint64_t amount = [self getInputAmountInSatoshi];
-    NSString *amountString = amount > 0 ? [NSString stringWithFormat:@"%@ ", [app formatMoney:[self getInputAmountInSatoshi] localCurrency:NO]] : @"";
+    NSString *amountString = amount > 0 ? [app formatMoney:[self getInputAmountInSatoshi] localCurrency:NO] : BC_STRING_AMOUNT;
     NSString *message = [self formatPaymentRequestWithAmount:amountString url:@""];
     
     NSURL *url = [NSURL URLWithString:[self uriURL]];
