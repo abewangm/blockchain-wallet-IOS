@@ -764,6 +764,9 @@
 "Password must 10 characters or longer" = "La contraseña debe tener 10 caracteres o más";
 
 /* (No Commment) */
+"Password must be different from your email" = "Contraseña debe ser diferente de su correo electrónico";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Contraseña debe ser menor o igual a 255 caracteres";
 
 /* (No Commment) */
@@ -839,6 +842,10 @@
 "Please select a different address to send from." = "Por favor, seleccione una dirección diferente para enviar.";
 
 /* (No Commment) */
+"Please send %@ to bitcoin address.
+%@" = "Por favor enviar %1$@ a la dirección bitcoin.";
+
+/* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Por favor, envíe el pago a la dirección Bitcoin (< a href = \"del https://blockchain.info/wallet/bitcoin-faq\" > ayuda? < /a >): %@";
 
 /* (No Commment) */
@@ -869,6 +876,9 @@
 "Receive" = "Recibir";
 
 /* (No Commment) */
+"Receive to..." = "Reciben a...";
+
+/* (No Commment) */
 "Received" = "Recibido";
 
 /* (No Commment) */
@@ -879,6 +889,9 @@
 
 /* (No Commment) */
 "Regular" = "Regular";
+
+/* (No Commment) */
+"Request" = "Solicitud de";
 
 /* (No Commment) */
 "Request Amount" = "Pedir cantidad";
@@ -1022,6 +1035,9 @@
 "Syncing Wallet" = "Sincronizando Monedero";
 
 /* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Grifo para copiar esta dirección. Compartir con el remitente por correo electrónico o texto.";
+
+/* (No Commment) */
 "Terms of Service" = "Términos de servicio";
 
 /* (No Commment) */
@@ -1093,6 +1109,9 @@ Dos tipos de transacciones avanzadas no son admitidos en la nueva versión por e
 
 /* (No Commment) */
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Esta operación requiere un honorario más alto para el consumo de polvo debido a la pequeña cantidad de cambio a devolver.";
+
+/* (No Commment) */
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Esto permitirá que las siguientes alertas: recibir al indicador de revisión sólo, App Store y transferir todos los fondos.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Esto borrará todos los datos de cartera en este dispositivo. Por favor confirmar que tenga su información de cartera guardado en otro lugar de lo contrario cualquier bitcoin en esta voluntad de cartera será inaccesible!!!!";
@@ -1322,6 +1341,9 @@ una experiencia de usuario de monedero completamente nueva";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Hemos detectado una instalación anterior del monedero Blockchain en su teléfono.";
+
+/* (No Commment) */
+"Where" = "Donde";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "¿Quieres añadir la dirección %@ Bitcoin a su libreta de direcciones?";
