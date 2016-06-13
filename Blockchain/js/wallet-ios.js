@@ -733,7 +733,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     
     var updateInfo = function(payments) {
         var totalAmount = payments.filter(function(p) {return p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { totalAddressesUsed.push(p.from[0]); return p.amounts[0]; }).reduce(Helpers.add, 0);
-        var totalFee = payments.filter(function(p) {return p.finalFee > 0}).map(function (p) { return p.finalFee; }).reduce(Helpers.add, 0);
+        var totalFee = payments.filter(function(p) {return p.finalFee > 0 && p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { return p.finalFee; }).reduce(Helpers.add, 0);
         
         device.execute('update_transfer_all_amount:fee:addressesUsed:', [totalAmount, totalFee, totalAddressesUsed]);
     }
