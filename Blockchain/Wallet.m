@@ -74,25 +74,6 @@
      In my-wallet.js, delete the crypto line and add the following:
         var crypto = {}
         crypto.getRandomValues = function(discard) {}
-     
-     Also switch the line containing
-        decrypt_success && decrypt_success();
-     with the line below it
-        MyWallet.wallet = new Wallet(obj);
-     
-     Replace calls to stretchPassword with
-        WalletCrypto.stretchPassword
-     
-     Add the following under stretchPassword:
-        function sjcl_misc_pbkdf2 (password, salt, iterations, keylen, algorithm) {
-           return sjcl.misc.pbkdf2(password, salt, iterations, keylen, algorithm);
-        }
-     
-     Replace line declaring localH variable with
-     var localH = getRandomBytes ? Buffer(getRandomBytes(nBytes), 'hex') : randomBytes(nBytes);
-     
-     Change RNG.prototype.getServerEntropy function:
-        change if (request.status === 200) to if (request.status == 200)
      */
     
     NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:@"my-wallet" ofType:@"js"];
