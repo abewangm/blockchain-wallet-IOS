@@ -159,6 +159,7 @@ NSString *detailLabel;
     
     [self updateUI];
     
+    [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
     doneButton.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
 
