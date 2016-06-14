@@ -114,7 +114,7 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:lineAboveAmounts];
     [self.bottomContainerView addSubview:lineBelowAmounts];
     
-    UILabel *receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, 40, 21)];
+    receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, 40, 21)];
     receiveBtcLabel.font = [UIFont systemFontOfSize:13];
     receiveBtcLabel.textColor = [UIColor lightGrayColor];
     receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
@@ -128,7 +128,7 @@ NSString *detailLabel;
     self.receiveBtcField.delegate = self;
     [self.bottomContainerView addSubview:self.receiveBtcField];
     
-    UILabel *receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 136, 15, 40, 21)];
+    receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 136, 15, 40, 21)];
     receiveFiatLabel.font = [UIFont systemFontOfSize:13];
     receiveFiatLabel.textColor = [UIColor lightGrayColor];
     receiveFiatLabel.text = app.latestResponse.symbol_local.code;
@@ -211,7 +211,10 @@ NSString *detailLabel;
 {
     if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
         fiatLabel.text = app.latestResponse.symbol_local.code;
+        receiveFiatLabel.text = app.latestResponse.symbol_local.code;
+
         btcLabel.text = app.latestResponse.symbol_btc.symbol;
+        receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
     }
 }
 
