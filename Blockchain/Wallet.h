@@ -94,6 +94,7 @@
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
 - (void)updateLoadedAllTransactions:(NSNumber *)loadedAll;
+- (void)receivedTransactionMessage;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {

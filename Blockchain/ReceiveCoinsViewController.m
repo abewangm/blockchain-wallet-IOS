@@ -19,6 +19,7 @@
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
+@property (nonatomic) uint64_t lastRequestedAmount;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -511,6 +512,12 @@ NSString *detailLabel;
     [app.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
 }
 
+- (void)storeRequestedAmount
+{
+    NSString *requestedAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    self.lastRequestedAmount = [app.wallet parseBitcoinValue:requestedAmountString];
+}
+
 - (void)updateUI
 {
     self.receiveToLabel.text = mainLabel;
@@ -522,23 +529,10 @@ NSString *detailLabel;
 - (void)paymentReceived:(NSDecimalNumber *)amount
 {
     u_int64_t amountReceived = [[amount decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-        
-    NSString *convertedBitcoinString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-    if ([app stringHasBitcoinValue:convertedBitcoinString]) {
-        NSDecimalNumber *amountRequestedDecimalNumber = [NSDecimalNumber decimalNumberWithString:convertedBitcoinString];
-        u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-        amountRequested = app.latestResponse.symbol_btc.conversion * amountRequested / SATOSHI;
-    
-        if (amountReceived == amountRequested) {
-            NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-            u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
-            btcAmountString = [app formatMoney:btcAmount localCurrency:NO];
-            NSString *localCurrencyAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-            u_int64_t currencyAmount = [app.wallet parseBitcoinValue:localCurrencyAmountString];
-            localCurrencyAmountString = [app formatMoney:currencyAmount localCurrency:YES];
-            [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
-        }
+    if (amountReceived == self.lastRequestedAmount) {
+        NSString *btcAmountString = [app formatMoney:self.lastRequestedAmount localCurrency:NO];
+        NSString *localCurrencyAmountString = [app formatMoney:self.lastRequestedAmount localCurrency:YES];
+        [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString,localCurrencyAmountString]];
     }
 }
 

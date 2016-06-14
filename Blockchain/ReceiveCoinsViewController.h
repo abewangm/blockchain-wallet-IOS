@@ -54,6 +54,7 @@
 - (IBAction)archiveAddressClicked:(id)sender;
 - (IBAction)labelSaveClicked:(id)sender;
 
+- (void)storeRequestedAmount;
 - (void)paymentReceived:(NSDecimalNumber *)amount;
 
 - (void)reload;

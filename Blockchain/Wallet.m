@@ -1336,10 +1336,9 @@
     DLog(@"on_tx_received");
     
     self.didReceiveMessageForLastTransaction = YES;
-
-    [app playBeepSound];
     
-    [app.transactionsViewController animateNextCellAfterReload];
+    if ([delegate respondsToSelector:@selector(receivedTransactionMessage)])
+        [delegate receivedTransactionMessage];
 }
 
 - (void)getPrivateKeyPassword:(NSString *)canDiscard success:(void(^)(id))_success error:(void(^)(id))_error
