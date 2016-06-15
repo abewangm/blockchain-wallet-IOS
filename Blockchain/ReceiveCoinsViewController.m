@@ -577,6 +577,14 @@ NSString *detailLabel;
     };
 }
 
+- (void)clearAmounts
+{
+    btcAmountField.text = nil;
+    fiatAmountField.text = nil;
+    self.receiveBtcField.text = nil;
+    self.receiveFiatField.text = nil;
+}
+
 # pragma mark - UITextField delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField

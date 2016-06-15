@@ -1285,6 +1285,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     _transactionsViewController.data = nil;
     _settingsNavigationController = nil;
+    [_receiveViewController clearAmounts];
 
     [self reload];
 }
