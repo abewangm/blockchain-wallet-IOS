@@ -98,6 +98,9 @@
 "Allowed" = "Engedélyezett";
 
 /* (No Commment) */
+"Amount" = "Összeg";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "A por küszöbértékét (%lld Satoshi) egyenlő vagy nagyobb kell";
 
 /* (No Commment) */
@@ -743,6 +746,9 @@
 "Password changed. Please login to continue." = "Jelszó megváltoztatva. Kérjük, jelentkezzen be a folytatáshoz.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Jelszó a elektronikus levél eltérőnek kell lennie.";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Jelszó kell, legfeljebb 255 karakter";
 
 /* (No Commment) */
@@ -815,10 +821,12 @@
 "Please select a different address to send from." = "Kérjük, válasszon egy másik címet küldeni.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitcoin címre küldje fizetés (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > Súgó? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Bitcoin címre küldje %1$@.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Bitcoin címre küldje fizetés. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitcoin címre küldje fizetés (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > Súgó? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Legyen szíves megpróbál újra";
@@ -845,6 +853,9 @@
 "Receive" = "Kap";
 
 /* (No Commment) */
+"Receive to..." = "Kap...";
+
+/* (No Commment) */
 "Received" = "Kapott";
 
 /* (No Commment) */
@@ -855,6 +866,9 @@
 
 /* (No Commment) */
 "Regular" = "Rendszeres";
+
+/* (No Commment) */
+"Request" = "Kérelem";
 
 /* (No Commment) */
 "Request Amount" = "Kérelem összege";
@@ -993,6 +1007,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Szinkronizál pénztárca";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Érintse meg, hogy másolja ezt a címet. Osztozik ez-val a feladó e-mailben vagy szöveges.";
 
 /* (No Commment) */
 "Terms of Service" = "Szolgáltatási feltételek";
@@ -1256,6 +1273,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Azt észleltük, hogy pénztárca Blockchain előző telepítése a telefonra.";
+
+/* (No Commment) */
+"Where" = "Ahol";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Hozzáadja a bitcoin cím %@ a címjegyzékhez?";

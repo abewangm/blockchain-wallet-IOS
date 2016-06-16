@@ -200,7 +200,7 @@
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
     } else if ([message isEqualToString:ERROR_TIMEOUT_REQUEST]){
         [app standardNotify:BC_STRING_TIMED_OUT];
-    } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST]){
+    } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST] || [message containsString:ERROR_TIMEOUT_ERROR]){
         [app performSelector:@selector(standardNotify:) withObject:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION afterDelay:DELAY_KEYBOARD_DISMISSAL];
     } else {
         [app standardNotify:message];
@@ -349,6 +349,12 @@
         return NO;
     }
     
+    if ([self.tmpPassword isEqualToString:emailTextField.text]) {
+        [app standardNotify:BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL];
+        [passwordTextField becomeFirstResponder];
+        return NO;
+    }
+    
     if (self.passwordStrength < 25) {
         [app standardNotify:BC_STRING_PASSWORD_NOT_STRONG_ENOUGH];
         [passwordTextField becomeFirstResponder];
@@ -364,6 +370,10 @@
     if (![self.tmpPassword isEqualToString:[password2TextField text]]) {
         [app standardNotify:BC_STRING_PASSWORDS_DO_NOT_MATCH];
         [password2TextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if (![app checkInternetConnection]) {
         return NO;
     }
     

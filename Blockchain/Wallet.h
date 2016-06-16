@@ -94,6 +94,7 @@
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
 - (void)updateLoadedAllTransactions:(NSNumber *)loadedAll;
+- (void)receivedTransactionMessage;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate, SRWebSocketDelegate> {
@@ -103,6 +104,8 @@
 @property(nonatomic, strong) NSString *guid;
 @property(nonatomic, strong) NSString *sharedKey;
 @property(nonatomic, strong) NSString *password;
+
+@property(nonatomic, strong) NSString *sessionToken;
 
 @property(nonatomic, strong) id<WalletDelegate> delegate;
 

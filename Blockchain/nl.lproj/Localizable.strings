@@ -98,6 +98,9 @@
 "Allowed" = "Toegestaan";
 
 /* (No Commment) */
+"Amount" = "Bedrag";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Bedrag moet groter dan of gelijk is aan de drempel van de stof (%lld Satoshi)";
 
 /* (No Commment) */
@@ -743,6 +746,9 @@
 "Password changed. Please login to continue." = "Wachtwoord gewijzigd. Gelieve in te loggen om door te gaan.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Wachtwoord moet verschillen van uw e-mail";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Wachtwoord moet kleiner dan of gelijk aan 255 tekens";
 
 /* (No Commment) */
@@ -815,10 +821,12 @@
 "Please select a different address to send from." = "Selecteer een ander adres te sturen uit.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Stuur betaling naar bitcoin adres (< een href = \"https://blockchain.info/wallet/bitcoin-faq\" > helpen? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Stuur %1$@ naar bitcoin adres.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Stuur de betaling naar bitcoin adres. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Stuur betaling naar bitcoin adres (< een href = \"https://blockchain.info/wallet/bitcoin-faq\" > helpen? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Probeer het a.u.b. opnieuw";
@@ -845,6 +853,9 @@
 "Receive" = "Ontvangen";
 
 /* (No Commment) */
+"Receive to..." = "Krijg om te...";
+
+/* (No Commment) */
 "Received" = "Ontvangen";
 
 /* (No Commment) */
@@ -855,6 +866,9 @@
 
 /* (No Commment) */
 "Regular" = "Regelmatige";
+
+/* (No Commment) */
+"Request" = "Aanvraag";
 
 /* (No Commment) */
 "Request Amount" = "Verzoek bedrag";
@@ -993,6 +1007,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synchroniseren portemonnee";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Tik op om dit adres te kopiëren. Delen met de afzender via e-mail of tekst.";
 
 /* (No Commment) */
 "Terms of Service" = "Algemene gebruiksvoorwaarden";
@@ -1256,6 +1273,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "We hebben ontdekt een eerdere installatie van Blockchain portemonnee op uw telefoon.";
+
+/* (No Commment) */
+"Where" = "Waar";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Wilt u de bitcoin adres %@ aan uw adresboek toevoegen?";

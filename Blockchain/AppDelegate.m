@@ -319,6 +319,9 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
+    [_transactionsViewController showFilterLabel];
+    self.mainLogoImageView.hidden = YES;
+    
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -329,6 +332,9 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
+    [_transactionsViewController showFilterLabel];
+    self.mainLogoImageView.hidden = YES;
+    
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -338,7 +344,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
-    [_transactionsViewController changeFilterLabel:BC_STRING_TOTAL_BALANCE];
+    [_transactionsViewController hideFilterLabel];
+    self.mainLogoImageView.hidden = NO;
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -1228,6 +1235,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)scanPrivateKeyForWatchOnlyAddress:(NSString *)address
 {
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
     if (![app getCaptureDeviceInput]) {
         return;
     }
@@ -1274,6 +1285,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     _transactionsViewController.data = nil;
     _settingsNavigationController = nil;
+    [_receiveViewController clearAmounts];
 
     [self reload];
 }
@@ -1287,6 +1299,8 @@ void (^secondPasswordSuccess)(NSString *);
     for (NSHTTPCookie *each in cookieStorage.cookies) {
         [cookieStorage deleteCookie:each];
     }
+    
+    self.wallet.sessionToken = nil;
     
     self.merchantViewController = nil;
     
@@ -1722,7 +1736,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)toggleSideMenu
 {
     // If the sideMenu is not shown, show it
-    if (_slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered) {        
+    if (_slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered) {
         [_slidingViewController anchorTopViewToRightAnimated:YES];
     }
     // If the sideMenu is shown, dismiss it
@@ -1806,7 +1820,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)reloadTransactionFilterLabel
 {
 #ifdef ENABLE_TRANSACTION_FILTERING
-    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
+    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2) && self.filterIndex != FILTER_INDEX_ALL) {
         app.mainLogoImageView.hidden = YES;
         if (_tabViewController.activeViewController == _transactionsViewController) {
             [_transactionsViewController showFilterLabel];
@@ -2193,6 +2207,22 @@ void (^secondPasswordSuccess)(NSString *);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[APP_STORE_LINK_PREFIX stringByAppendingString:APP_STORE_ID]]];
 }
 
+- (void)paymentReceived:(NSDecimalNumber *)amount
+{
+    if (_tabViewController.selectedIndex == TAB_RECEIVE) {
+        [_receiveViewController paymentReceived:amount];
+    }
+}
+
+- (void)receivedTransactionMessage
+{
+    [self playBeepSound];
+    
+    [_transactionsViewController animateNextCellAfterReload];
+    
+    [_receiveViewController storeRequestedAmount];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback
@@ -2210,6 +2240,12 @@ void (^secondPasswordSuccess)(NSString *);
     NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)_pin];
     
     [self showVerifyingBusyViewWithTimer:30.0];
+    
+    // Check if we have an internet connection
+    // This only checks if a network interface is up. All other errors (including timeouts) are handled by JavaScript callbacks in Wallet.m
+    if (![self checkInternetConnection]) {
+        return;
+    }
     
 #ifdef TOUCH_ID_ENABLED
     if (self.pinEntryViewController.verifyOptional) {

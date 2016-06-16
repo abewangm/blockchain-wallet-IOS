@@ -98,6 +98,9 @@
 "Allowed" = "Permitida";
 
 /* (No Commment) */
+"Amount" = "Quantidade";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Quantidade deve ser maior ou igual ao limiar de poeira (%lld Satoshi)";
 
 /* (No Commment) */
@@ -743,6 +746,9 @@
 "Password changed. Please login to continue." = "Senha alterada. Faça o login para continuar.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Senha deve ser diferente do seu email";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Senha deve ser menor ou igual a 255 caracteres";
 
 /* (No Commment) */
@@ -815,10 +821,12 @@
 "Please select a different address to send from." = "Por favor, selecione um endereço diferente para enviar a partir.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Por favor enviar o pagamento ao endereço bitcoin (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > ajudar? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Por favor envie %1$@ para endereço bitcoin.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Por favor envie o pagamento ao endereço bitcoin. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Por favor enviar o pagamento ao endereço bitcoin (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > ajudar? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Por favor, tente novamente";
@@ -845,6 +853,9 @@
 "Receive" = "Receber";
 
 /* (No Commment) */
+"Receive to..." = "Receba para...";
+
+/* (No Commment) */
 "Received" = "Recebeu";
 
 /* (No Commment) */
@@ -855,6 +866,9 @@
 
 /* (No Commment) */
 "Regular" = "Regular";
+
+/* (No Commment) */
+"Request" = "Solicitação de";
 
 /* (No Commment) */
 "Request Amount" = "Quantidade de pedido";
@@ -993,6 +1007,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sincronização de carteira";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Torneira para copiar este endereço. Compartilhá-lo com o remetente via email ou texto.";
 
 /* (No Commment) */
 "Terms of Service" = "Termos de serviço";
@@ -1256,6 +1273,9 @@ wallet experience for you" = "Nós projetamos uma nova experiência de carteira 
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Detectamos uma instalação anterior do Blockchain carteira no seu telefone.";
+
+/* (No Commment) */
+"Where" = "Onde";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Você gostaria de adicionar o bitcoin endereço %@ ao seu catálogo de endereços?";

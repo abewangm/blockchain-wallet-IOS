@@ -34,7 +34,7 @@
 /* (No Commment) */
 "88.normalTitle" = "คำขอชำระเงิน";
 
-/* Class = "UILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
+/* (No Commment) */
 "90.text" = "ที่อยู่ Bitcoin ";
 
 /* (No Commment) */
@@ -55,8 +55,8 @@
 /* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "บีทีซี";
 
-/* Class = "UITextField"; text = "Only to control keyboard"; ObjectID = "OFk-NR-2Sp"; */
-"OFk-NR-2Sp.text" = "เฉพาะเพื่อควบคุมแป้นพิมพ์";
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ZHr-29-NdG"; */
+"ZHr-29-NdG.normalTitle" = "เสร็จแล้ว";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
 "a9y-3I-Drw.placeholder" = "0.00";

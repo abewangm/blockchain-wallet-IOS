@@ -39,6 +39,7 @@ typedef enum {
 @property (nonatomic) uint64_t lowerRecommendedLimit;
 @property (nonatomic) uint64_t estimatedTransactionSize;
 @property (nonatomic) BOOL customFeeMode;
+@property (nonatomic) BOOL shouldClearToField;
 
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
@@ -201,6 +202,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)reloadAfterMultiAddressResponse
 {
+    [self hideSelectFromAndToButtonsIfAppropriate];
+    
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (self.sendFromAddress) {
@@ -379,7 +382,7 @@ BOOL displayingLocalSymbolSend;
              [paymentSentAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                  if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_APP_REVIEW_PROMPT]) {
                      
-                     if ([app.wallet getAllTransactionsCount] <= 10) {
+                     if ([app.wallet getAllTransactionsCount] < NUMBER_OF_TRANSACTIONS_REQUIRED_FOR_FOR_APP_STORE_REVIEW_PROMPT) {
                          return;
                      }
                      
@@ -1364,8 +1367,12 @@ BOOL displayingLocalSymbolSend;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
         if (self.toAddress && [app.wallet isBitcoinAddress:self.toAddress]) {
             [self didSelectToAddress:self.toAddress];
+            self.shouldClearToField = NO;
             return NO;
+        } else if (range.length == 1 && self.shouldClearToField) {
+            textField.text = @"";
         }
+        self.shouldClearToField = NO;
         DLog(@"toAddress: %@", self.toAddress);
     }
     
@@ -1425,6 +1432,8 @@ BOOL displayingLocalSymbolSend;
     [app.wallet changePaymentToAddress:address];
     
     [self doCurrencyConversion];
+    
+    self.shouldClearToField = YES;
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -1456,6 +1465,8 @@ BOOL displayingLocalSymbolSend;
     [app.wallet changePaymentToAccount:account];
     
     [self doCurrencyConversion];
+    
+    self.shouldClearToField = YES;
 }
 
 #pragma mark - Fee Calculation
@@ -1616,7 +1627,7 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)selectFromAddressClicked:(id)sender
 {
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES];
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:NO];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_FROM onDismiss:nil onResume:nil];
@@ -1624,7 +1635,7 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)addressBookClicked:(id)sender
 {
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO];
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO allSelectable:YES];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_TO onDismiss:nil onResume:nil];
@@ -1713,8 +1724,7 @@ BOOL displayingLocalSymbolSend;
                         amountInSatoshi = 0.0;
                     }
                 } else {
-                    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
-                    return;
+                    amountInSatoshi = 0.0;
                 }
                 
                 // If the amount is empty, open the amount field

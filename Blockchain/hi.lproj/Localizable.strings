@@ -98,6 +98,9 @@
 "Allowed" = "अनुमति दी गई";
 
 /* (No Commment) */
+"Amount" = "राशि";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "मात्रा से अधिक या बराबर करने के लिए धूल थ्रेशोल्ड (%lld Satoshi) होना चाहिए";
 
 /* (No Commment) */
@@ -743,6 +746,9 @@
 "Password changed. Please login to continue." = "पासवर्ड परिवर्तित कर दिया। कृपया जारी रखने के लिए लॉगिन।";
 
 /* (No Commment) */
+"Password must be different from your email" = "पासवर्ड आपके ई-मेल से अलग होना चाहिए.";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "पासवर्ड से कम या बराबर करने के लिए 255 वर्ण होना चाहिए.";
 
 /* (No Commment) */
@@ -815,10 +821,12 @@
 "Please select a different address to send from." = "कृपया किसी भिन्न पते से भेजने के लिए का चयन करें।";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "कृपया भुगतान bitcoin पते पर भेजें (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" = > मदद? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "कृपया %1$@ bitcoin पता करने के लिए भेजें।
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "कृपया भुगतान bitcoin पते पर भेजें। अकसर किये गए सवाल: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "कृपया भुगतान bitcoin पते पर भेजें (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" = > मदद? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "कृपया पुन: प्रयास करें";
@@ -845,6 +853,9 @@
 "Receive" = "प्राप्त";
 
 /* (No Commment) */
+"Receive to..." = "प्राप्त करने के लिए...";
+
+/* (No Commment) */
 "Received" = "प्राप्त हुआ";
 
 /* (No Commment) */
@@ -855,6 +866,9 @@
 
 /* (No Commment) */
 "Regular" = "नियमित रूप से";
+
+/* (No Commment) */
+"Request" = "अनुरोध";
 
 /* (No Commment) */
 "Request Amount" = "राशि का अनुरोध";
@@ -993,6 +1007,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "बटुआ सिंक्रनाइज़ किए जा रहे";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "इस पते की प्रतिलिपि बनाएँ करने के लिए टैप करें। यह ईमेल या पाठ के माध्यम से प्रेषक के साथ साझा करें।";
 
 /* (No Commment) */
 "Terms of Service" = "सेवा की शर्तें";
@@ -1256,6 +1273,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "हम अपने फोन पर Blockchain बटुए के एक पूर्व स्थापना पाई है।";
+
+/* (No Commment) */
+"Where" = "जहाँ";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "आप bitcoin पते %@ आपकी पता पुस्तिका में जोड़ने के लिए चाहते हैं?";

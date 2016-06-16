@@ -764,6 +764,9 @@
 "Password must 10 characters or longer" = "Sandi harus 10 karakter atau lebih";
 
 /* (No Commment) */
+"Password must be different from your email" = "Sandi harus berbeda dari email Anda";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Password harus kurang dari atau sama dengan 255 karakter";
 
 /* (No Commment) */
@@ -839,7 +842,11 @@
 "Please select a different address to send from." = "Silakan pilih alamat yang berbeda untuk mengirim dari.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Silakan mengirim pembayaran ke alamat bitcoin (<a href=”https://blockchain.info/wallet/bitcoin-faq”>help?</a>): %@";
+"Please send %@ to bitcoin address.
+%@" = "Silakan kirim %1$@ ke alamat bitcoin.";
+
+/* (No Commment) */
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Silakan mengirim pembayaran ke alamat bitcoin (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > membantu? < /a >): %@";
 
 /* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Silakan mengirim pembayaran ke alamat bitcoin. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
@@ -869,6 +876,9 @@
 "Receive" = "Menerima";
 
 /* (No Commment) */
+"Receive to..." = "Menerima...";
+
+/* (No Commment) */
 "Received" = "Telah Menerima";
 
 /* (No Commment) */
@@ -879,6 +889,9 @@
 
 /* (No Commment) */
 "Regular" = "Reguler";
+
+/* (No Commment) */
+"Request" = "Permintaan";
 
 /* (No Commment) */
 "Request Amount" = "Jumlah Permintaan";
@@ -1022,6 +1035,9 @@
 "Syncing Wallet" = "Menyinkronkan Dompet";
 
 /* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Ketuk untuk menyalin alamat ini. Berbagi dengan pengirim melalui email atau teks.";
+
+/* (No Commment) */
 "Terms of Service" = "Persyaratan Layanan";
 
 /* (No Commment) */
@@ -1093,6 +1109,9 @@ Dua jenis transaksi tingkat lanjut (pengeluaran dari alamat dilihat saja dan Ber
 
 /* (No Commment) */
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Transaksi ini membutuhkan biaya yang lebih tinggi untuk konsumsi debu karena jumlah kecil perubahan untuk dikembalikan.";
+
+/* (No Commment) */
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Ini akan memungkinkan lansiran berikut: menerima ke watch-saja, App Store Tinjauan prompt, dan mentransfer semua dana.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Ini akan menghapus semua dompet data pada perangkat ini. Pastikan Anda memiliki informasi dompet yang disimpan di tempat lain jika tidak bitcoin apapun dalam dompet ini akan bisa diakses!!";
@@ -1322,6 +1341,9 @@ dompet pengalaman untuk Anda";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Kami telah mendeteksi instalasi sebelumnya dari dompet di pada ponsel Anda.";
+
+/* (No Commment) */
+"Where" = "Mana";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Apakah Anda ingin menambahkan alamat bitcoin %@ ke buku alamat Anda?";

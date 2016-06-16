@@ -50,6 +50,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_TAB_BAR_BUTTON_TEXT_GRAY UIColorFromRGB(0xc9c7c8)
 #define COLOR_TAB_BAR_BUTTON_TEXT_BLUE UIColorFromRGB(0x1c8ac7)
 
+#define COLOR_LINE_GRAY UIColorFromRGB(0xcdcdcd)
+
 #define COLOR_LABEL_BALANCE_GREEN UIColorFromRGB(0x6CAD46)
 
 #define COLOR_BACKGROUND_GRAY UIColorFromRGB(0xf7f7f7)
@@ -364,6 +366,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 // Most common pin codes: http://datagenetics.com/blog/september32012/index.html
 
+#define NUMBER_OF_TRANSACTIONS_REQUIRED_FOR_FOR_APP_STORE_REVIEW_PROMPT 3
+
 #define TWO_STEP_AUTH_TYPE_SMS 5
 #define TWO_STEP_AUTH_TYPE_GOOGLE 4
 #define TWO_STEP_AUTH_TYPE_YUBI_KEY 1
@@ -400,5 +404,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_UNDEFINED @"undefined"
 #define ERROR_ALL_OUTPUTS_ARE_VERY_SMALL @"All Outputs Are Very Small"
 #define ERROR_TIMEOUT_REQUEST @"timeout request"
+#define ERROR_TIMEOUT_ERROR @"TimeoutError"
 
 #define TOUCH_ID_ENABLED 1

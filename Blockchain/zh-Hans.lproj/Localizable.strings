@@ -764,6 +764,9 @@
 "Password must 10 characters or longer" = "密码必须为 10 个字符或更长";
 
 /* (No Commment) */
+"Password must be different from your email" = "密码必须不同于您的电子邮件";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "密码必须小于或等于 255 个字符";
 
 /* (No Commment) */
@@ -839,7 +842,11 @@
 "Please select a different address to send from." = "请选择一个不同的地址从发送。";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "请向比特币地址发送付款 (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">需要帮助?</a>): %@";
+"Please send %@ to bitcoin address.
+%@" = "请发送 %1$@ 到比特币地址。";
+
+/* (No Commment) */
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "请向比特币地址发送付款 (< href =\"https://blockchain.info/wallet/bitcoin-faq\"> 帮助? < /a >): %@";
 
 /* (No Commment) */
 "Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "请向比特币地址发送付款。常见问题: (https://blockchain.info/wallet/bitcoin-faq): %@";
@@ -869,6 +876,9 @@
 "Receive" = "接收";
 
 /* (No Commment) */
+"Receive to..." = "接收到...";
+
+/* (No Commment) */
 "Received" = "已接收";
 
 /* (No Commment) */
@@ -879,6 +889,9 @@
 
 /* (No Commment) */
 "Regular" = "定期";
+
+/* (No Commment) */
+"Request" = "请求";
 
 /* (No Commment) */
 "Request Amount" = "请求金额";
@@ -1022,6 +1035,9 @@
 "Syncing Wallet" = "同步钱包";
 
 /* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "点击可将此地址复制。它分享给发件人通过电子邮件或文本。";
+
+/* (No Commment) */
 "Terms of Service" = "服务条款";
 
 /* (No Commment) */
@@ -1093,6 +1109,9 @@ Two advanced transaction types (Spending from watch-only addresses and Shared Co
 
 /* (No Commment) */
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "这笔交易尘埃消费量较少的变化要返回要求较高的费用。";
+
+/* (No Commment) */
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "这将允许以下通知 ︰ 接收到只手表，App Store 审查提示，和所有的资金转移。";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "这将擦除此设备上的所有钱包数据。请确认你有你的钱包中保存信息在别处否则任何比特币这钱包将无法访问!!";
@@ -1322,6 +1341,9 @@ wallet experience for you" = "我们为您设计了一个
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "我们检测到以前在您的手机上安装了 Blockchain 钱包。";
+
+/* (No Commment) */
+"Where" = "在哪里";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "是否要将比特币地址 %@ 添加到您的通讯簿?";

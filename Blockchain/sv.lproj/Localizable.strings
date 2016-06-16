@@ -98,6 +98,9 @@
 "Allowed" = "Tillåtna";
 
 /* (No Commment) */
+"Amount" = "Belopp";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Beloppet måste vara större än eller lika med tröskelvärdet som damm (%lld Satoshi)";
 
 /* (No Commment) */
@@ -743,6 +746,9 @@
 "Password changed. Please login to continue." = "Ändra lösenord. Vänligen logga in för att fortsätta.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Lösenordet måste vara olika från din e-post";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Lösenordet måste vara mindre än eller lika med 255 tecken";
 
 /* (No Commment) */
@@ -815,10 +821,12 @@
 "Please select a different address to send from." = "Välj en annan adress att skicka från.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Vänligen skicka betalning till bitcoin adress (< en href = \"https://blockchain.info/wallet/bitcoin-faq\" > hjälpa? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Behaga sända %1$@ till bitcoin adress.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Vänligen skicka betalning till bitcoin adress. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Vänligen skicka betalning till bitcoin adress (< en href = \"https://blockchain.info/wallet/bitcoin-faq\" > hjälpa? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Behaga försök igen";
@@ -845,6 +853,9 @@
 "Receive" = "Ta emot";
 
 /* (No Commment) */
+"Receive to..." = "Får till...";
+
+/* (No Commment) */
 "Received" = "Fick";
 
 /* (No Commment) */
@@ -855,6 +866,9 @@
 
 /* (No Commment) */
 "Regular" = "Regelbundna";
+
+/* (No Commment) */
+"Request" = "Begäran";
 
 /* (No Commment) */
 "Request Amount" = "Begäran belopp";
@@ -993,6 +1007,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronisera plånbok";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Tryck på för att kopiera denna adress. Dela med avsändaren via email eller text.";
 
 /* (No Commment) */
 "Terms of Service" = "Villkor för tjänsten";
@@ -1256,6 +1273,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Vi har upptäckt en tidigare installation av Blockchain plånbok på telefonen.";
+
+/* (No Commment) */
+"Where" = "Där";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Vill du lägga till bitcoin adressen %@ i din adressbok?";

@@ -98,6 +98,9 @@
 "Allowed" = "許可";
 
 /* (No Commment) */
+"Amount" = "量";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "量がほこりしきい値 (%lld 聡) 以上にする必要があります。";
 
 /* (No Commment) */
@@ -743,6 +746,9 @@
 "Password changed. Please login to continue." = "パスワードを変更します。続行するにはログインをしてください。";
 
 /* (No Commment) */
+"Password must be different from your email" = "パスワードはあなたのメール アドレスから異なる必要があります。";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "パスワードは 255 文字以下にする必要があります。";
 
 /* (No Commment) */
@@ -815,10 +821,12 @@
 "Please select a different address to send from." = "別のアドレスから送信するを選択してください。";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitcoin アドレスにお支払いを送信してください (< href =\"https://blockchain.info/wallet/bitcoin-faq\"> ヘルプ? </a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Bitcoin アドレスに %1$@ を送ってください。
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "支払いを bitcoin アドレスに送ってください。よくある質問: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitcoin アドレスにお支払いを送信してください (< href =\"https://blockchain.info/wallet/bitcoin-faq\"> ヘルプ? </a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "もう一度やり直してください。";
@@ -845,6 +853,9 @@
 "Receive" = "受信";
 
 /* (No Commment) */
+"Receive to..." = "受信.";
+
+/* (No Commment) */
 "Received" = "受信";
 
 /* (No Commment) */
@@ -855,6 +866,9 @@
 
 /* (No Commment) */
 "Regular" = "正規";
+
+/* (No Commment) */
+"Request" = "要求";
 
 /* (No Commment) */
 "Request Amount" = "要求量";
@@ -993,6 +1007,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "同期の財布";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "このアドレスをコピーするをタップします。メールやテキストで送信者と共有します。";
 
 /* (No Commment) */
 "Terms of Service" = "サービス利用規約";
@@ -1256,6 +1273,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "私たちはあなたの携帯電話に Blockchain 財布の以前のインストールを検出されました。";
+
+/* (No Commment) */
+"Where" = "どこ";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin アドレス %@ をアドレス帳に追加しますか?";

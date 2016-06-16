@@ -13,11 +13,13 @@
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
 #import "QRCodeGenerator.h"
+#import "BCAddressSelectionView.h"
+#import "BCLine.h"
 
-@interface ReceiveCoinsViewController() <UIActivityItemSource>
-@property (nonatomic) id paymentObserver;
+@interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
+@property (nonatomic) uint64_t lastRequestedAmount;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -44,23 +46,19 @@ NSString *detailLabel;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
-    tableView.backgroundColor = [UIColor whiteColor];
+    [self setupBottomViews];
+    [self selectDefaultDestination];
     
-    float imageWidth = 190;
+    float imageWidth = 160;
     
-    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 25, imageWidth, imageWidth)];
+    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 52, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
     
-    // The more actions button will be added to the top menu bar
-    [moreActionsButton removeFromSuperview];
-    moreActionsButton.alpha = 0.0f;
-    moreActionsButton.frame = CGRectMake(0, 16, moreActionsButton.frame.size.width, moreActionsButton.frame.size.height);
-    
     // iPhone4/4S
     if ([[UIScreen mainScreen] bounds].size.height < 568) {
-        int reduceImageSizeBy = 60;
+        int reduceImageSizeBy = 40;
         
         // Smaller QR Code Image
         qrCodeMainImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x + reduceImageSizeBy / 2,
@@ -69,33 +67,12 @@ NSString *detailLabel;
                                                qrCodeMainImageView.frame.size.height - reduceImageSizeBy);
     }
     
-    qrCodePaymentImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x,
-                                              qrCodeMainImageView.frame.origin.y,
-                                              qrCodeMainImageView.frame.size.width,
-                                              qrCodeMainImageView.frame.size.height);
-    
-    [self setupTapGestureForDetailQR];
-    
-    // iPhone4/4S
-    if ([[UIScreen mainScreen] bounds].size.height < 568) {
-        // Smaller QR Code Image
-        qrCodePaymentImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x,
-                                               qrCodeMainImageView.frame.origin.y - 10,
-                                               qrCodeMainImageView.frame.size.width,
-                                               qrCodeMainImageView.frame.size.height);
-    }
-    
-    optionsTitleLabel.frame = CGRectMake(optionsTitleLabel.frame.origin.x,
-                                         qrCodePaymentImageView.frame.origin.y + qrCodePaymentImageView.frame.size.height + 3,
-                                         optionsTitleLabel.frame.size.width,
-                                         optionsTitleLabel.frame.size.height);
-    
     btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     
-    [self setupTapGestureForLegacyLabel];
-    
     [self reload];
+    
+    [self setupHeaderView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -110,14 +87,6 @@ NSString *detailLabel;
     [self hideKeyboard];
 }
 
-- (void)dealloc
-{
-    if (self.paymentObserver) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
-        self.paymentObserver = nil;
-    }
-}
-
 - (QRCodeGenerator *)qrCodeGenerator
 {
     if (!_qrCodeGenerator) {
@@ -126,16 +95,87 @@ NSString *detailLabel;
     return _qrCodeGenerator;
 }
 
-- (void)setupTapGestureForLegacyLabel
+- (void)setupBottomViews
 {
-    UITapGestureRecognizer *tapGestureForLegacyLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLegacyAddressOnTap)];
-    [optionsTitleLabel addGestureRecognizer:tapGestureForLegacyLabel];
-    optionsTitleLabel.userInteractionEnabled = YES;
+    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
+    requestButton.backgroundColor = COLOR_BUTTON_GREEN;
+    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+    [self.view addSubview:requestButton];
+    [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - requestButton.frame.size.height, self.view.frame.size.width, 100)];
+    [self.view addSubview:self.bottomContainerView];
+    
+    BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width - 15, 1)];
+    BCLine *lineBelowAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 50, self.view.frame.size.width - 15, 1)];
+    lineAboveAmounts.backgroundColor = COLOR_LINE_GRAY;
+    lineBelowAmounts.backgroundColor = COLOR_LINE_GRAY;
+    [self.bottomContainerView addSubview:lineAboveAmounts];
+    [self.bottomContainerView addSubview:lineBelowAmounts];
+    
+    receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, 40, 21)];
+    receiveBtcLabel.font = [UIFont systemFontOfSize:13];
+    receiveBtcLabel.textColor = [UIColor lightGrayColor];
+    receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
+    [self.bottomContainerView addSubview:receiveBtcLabel];
+    
+    self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveBtcLabel.frame.origin.x + 53, 10, 117, 30)];
+    self.receiveBtcField.font = [UIFont systemFontOfSize:13];
+    self.receiveBtcField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+    self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
+    self.receiveBtcField.inputAccessoryView = amountKeyboardAccessoryView;
+    self.receiveBtcField.delegate = self;
+    [self.bottomContainerView addSubview:self.receiveBtcField];
+    
+    receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 136, 15, 40, 21)];
+    receiveFiatLabel.font = [UIFont systemFontOfSize:13];
+    receiveFiatLabel.textColor = [UIColor lightGrayColor];
+    receiveFiatLabel.text = app.latestResponse.symbol_local.code;
+    [self.bottomContainerView addSubview:receiveFiatLabel];
+    
+    self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveFiatLabel.frame.origin.x + 47, 10, 117, 30)];
+    self.receiveFiatField.font = [UIFont systemFontOfSize:13];
+    self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+    self.receiveFiatField.keyboardType = UIKeyboardTypeDecimalPad;
+    self.receiveFiatField.inputAccessoryView = amountKeyboardAccessoryView;
+    self.receiveFiatField.delegate = self;
+    [self.bottomContainerView addSubview:self.receiveFiatField];
+    
+    UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 40, 21)];
+    whereLabel.font = [UIFont systemFontOfSize:13];
+    whereLabel.textColor = [UIColor lightGrayColor];
+    whereLabel.text = BC_STRING_WHERE;
+    [self.bottomContainerView addSubview:whereLabel];
+    
+    UIButton *selectDestinationButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 35, 60, 35, 30)];
+    selectDestinationButton.adjustsImageWhenHighlighted = NO;
+    [selectDestinationButton setImage:[UIImage imageNamed:@"disclosure"] forState:UIControlStateNormal];
+    [selectDestinationButton addTarget:self action:@selector(selectDestination) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottomContainerView addSubview:selectDestinationButton];
+    
+    self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(whereLabel.frame.origin.x + whereLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (whereLabel.frame.origin.x + whereLabel.frame.size.width + 16), 21)];
+    self.receiveToLabel.font = [UIFont systemFontOfSize:13];
+    [self.bottomContainerView addSubview:self.receiveToLabel];
+    
+    [self updateUI];
+    
+    [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    doneButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+}
+
+- (void)selectDefaultDestination
+{
+    if ([app.wallet didUpgradeToHd]) {
+        [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
+    } else {
+        [self didSelectToAddress:[[app.wallet allLegacyAddresses] firstObject]];
+    }
 }
 
 - (void)setupTapGestureForMainLabel
 {
-    UITapGestureRecognizer *tapGestureForMainLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainAddressOnTap)];
+    UITapGestureRecognizer *tapGestureForMainLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainQRClicked:)];
     [mainAddressLabel addGestureRecognizer:tapGestureForMainLabel];
     mainAddressLabel.userInteractionEnabled = YES;
 }
@@ -147,24 +187,19 @@ NSString *detailLabel;
     qrCodeMainImageView.userInteractionEnabled = YES;
 }
 
-- (void)setupTapGestureForDetailQR
-{
-    UITapGestureRecognizer *tapDetailQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreActionsClicked:)];
-    [qrCodePaymentImageView addGestureRecognizer:tapDetailQRGestureRecognizer];
-    qrCodePaymentImageView.userInteractionEnabled = YES;
-}
-
 - (void)reload
 {
     [self reloadAddresses];
     
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
-    [self reloadMainAddress];
-    
-    [self reloadHeaderView];
-    
-    [tableView reloadData];
+    if (!mainAddress) {
+        [self reloadMainAddress];
+    } else if (didClickAccount) {
+        [self didSelectFromAccount:clickedAccount];
+    } else {
+        [self updateUI];
+    }
 }
 
 - (void)reloadAddresses
@@ -176,7 +211,10 @@ NSString *detailLabel;
 {
     if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
         fiatLabel.text = app.latestResponse.symbol_local.code;
+        receiveFiatLabel.text = app.latestResponse.symbol_local.code;
+
         btcLabel.text = app.latestResponse.symbol_btc.symbol;
+        receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
     }
 }
 
@@ -185,62 +223,55 @@ NSString *detailLabel;
     // Get an address: the first empty receive address for the default HD account
     // Or the first active legacy address if there are no HD accounts
     if ([app.wallet getActiveAccountsCount] > 0) {
-        int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
-        mainAddress = [app.wallet getReceiveAddressForAccount:defaultAccountIndex];
+        [self didSelectFromAccount:[app.wallet getDefaultAccountIndex]];
     }
     else if (activeKeys.count > 0) {
         for (NSString *address in activeKeys) {
             if (![app.wallet isWatchOnlyLegacyAddress:address]) {
-                mainAddress = address;
+                [self didSelectFromAddress:address];
                 break;
             }
         }
     }
 }
 
-- (void)reloadHeaderView
+- (void)setupHeaderView
 {
     // Show table header with the QR code of an address from the default account
     float imageWidth = qrCodeMainImageView.frame.size.width;
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 50)];
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 75 + 4)];
+    
+    [self.view addSubview:self.headerView];
+    
+    UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width - 50, 40)];
+    instructionsLabel.font = [[UIScreen mainScreen] bounds].size.height < 568 ? [UIFont systemFontOfSize:12] : [UIFont systemFontOfSize:14];
+    instructionsLabel.textColor = COLOR_FOREGROUND_GRAY;
+    instructionsLabel.textAlignment = NSTextAlignmentCenter;
+    instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
+    instructionsLabel.numberOfLines = 0;
+    instructionsLabel.adjustsFontSizeToFitWidth = YES;
+    instructionsLabel.center = CGPointMake(self.view.center.x, 25);
+    [self.headerView addSubview:instructionsLabel];
     
     if ([app.wallet getActiveAccountsCount] > 0 || activeKeys.count > 0) {
         
         qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
         
-        [headerView addSubview:qrCodeMainImageView];
+        [self.headerView addSubview:qrCodeMainImageView];
         
-        // Label of the default HD account
-        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 30, self.view.frame.size.width - 40, 18)];
-        if ([app.wallet getActiveAccountsCount] > 0) {
-            int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
-            mainLabel = [app.wallet getLabelForAccount:defaultAccountIndex];
-        }
-        // Label of the default legacy address
-        else {
-            NSString *label = [app.wallet labelForLegacyAddress:mainAddress];
-            if (label.length > 0) {
-                mainLabel = label;
-            }
-            else {
-                mainLabel = mainAddress;
-            }
-        }
-        
-        mainAddressLabel.text = mainLabel;
+        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 55, self.view.frame.size.width - 40, 18)];
         
         mainAddressLabel.font = [UIFont systemFontOfSize:15];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;
         mainAddressLabel.textColor = [UIColor blackColor];
         [mainAddressLabel setMinimumScaleFactor:.5f];
         [mainAddressLabel setAdjustsFontSizeToFitWidth:YES];
-        [headerView addSubview:mainAddressLabel];
+        [self.headerView addSubview:mainAddressLabel];
         
         [self setupTapGestureForMainLabel];
+        [self updateUI];
     }
-    
-    tableView.tableHeaderView = headerView;
 }
 
 #pragma mark - Helpers
@@ -271,11 +302,23 @@ NSString *detailLabel;
 
 - (uint64_t)getInputAmountInSatoshi
 {
+    BOOL shouldUseBtcField = YES;
+    
     if ([btcAmountField isFirstResponder]) {
+        shouldUseBtcField = YES;
+    } else if ([fiatAmountField isFirstResponder]) {
+        shouldUseBtcField = NO;
+        
+    } else if (self.lastSelectedField == btcAmountField) {
+        shouldUseBtcField = YES;
+    } else if (self.lastSelectedField == fiatAmountField) {
+        shouldUseBtcField = NO;
+    }
+    
+    if (shouldUseBtcField) {
         NSString *requestedAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         return [app.wallet parseBitcoinValue:requestedAmountString];
-    }
-    else if ([fiatAmountField isFirstResponder]) {
+    } else {
         NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
     }
@@ -293,6 +336,9 @@ NSString *detailLabel;
     else if ([fiatAmountField isFirstResponder]) {
         btcAmountField.text = [app formatAmount:amount localCurrency:NO];
     }
+    
+    self.receiveFiatField.text = fiatAmountField.text;
+    self.receiveBtcField.text = btcAmountField.text;
 }
 
 - (NSString *)getKey:(NSIndexPath*)indexPath
@@ -311,17 +357,15 @@ NSString *detailLabel;
         
     UIImage *image = [self.qrCodeGenerator qrImageFromAddress:self.clickedAddress amount:amount];
         
-    qrCodePaymentImageView.image = image;
-    qrCodePaymentImageView.contentMode = UIViewContentModeScaleAspectFit;
+    qrCodeMainImageView.image = image;
+    qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self doCurrencyConversion];
 }
 
-- (void)animateTextOfLabel:(UILabel *)labelToAnimate toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
+- (void)animateTextOfLabel:(UILabel *)labelToAnimate fromText:(NSString *)originalText toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
 {
     gestureReceiver.userInteractionEnabled = NO;
-    
-    NSString *originalText = labelToAnimate.text;
     
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         labelToAnimate.alpha = 0.0;
@@ -345,82 +389,11 @@ NSString *detailLabel;
     }];
 }
 
-- (void)animateTextOfLabel:(UILabel *)labelToAnimate toFinalText:(NSString *)finalText
-{
-    labelToAnimate.userInteractionEnabled = NO;
-    
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        labelToAnimate.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            labelToAnimate.text = finalText;
-            labelToAnimate.alpha = 1.0;
-            labelToAnimate.userInteractionEnabled = YES;
-        }];
-    }];
-}
-
-- (void)toggleTextOfLabel:(UILabel *)labelToAnimate betweenString:(NSString *)firstString andString:(NSString *)secondString
-{
-    if ([labelToAnimate.text isEqualToString:firstString]) {
-        [self animateTextOfLabel:labelToAnimate toFinalText:secondString];
-    } else if ([labelToAnimate.text isEqualToString:secondString]) {
-        [self animateTextOfLabel:labelToAnimate toFinalText:firstString];
-    }
-}
-
 #pragma mark - Actions
 
-- (void)showMainAddressOnTap
+- (IBAction)doneButtonClicked:(UIButton *)sender
 {
-    [self toggleTextOfLabel:mainAddressLabel betweenString:mainLabel andString:mainAddress];
-}
-
-- (void)showLegacyAddressOnTap
-{
-    // If the address has no label, no need to animate
-    if (![detailLabel isEqualToString:detailAddress]) {
-        [self toggleTextOfLabel:optionsTitleLabel betweenString:detailAddress andString:detailLabel];
-    }
-}
-
-- (IBAction)moreActionsClicked:(id)sender
-{
-    [UIPasteboard generalPasteboard].string = detailAddress;
-    [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodePaymentImageView];
-}
-
-- (IBAction)shareClicked:(id)sender
-{
-    [self disableTapInteraction];
-
-    NSString *message = [self formatPaymentRequest:@""];
-    
-    NSURL *url = [NSURL URLWithString:[self uriURL]];
-    
-    NSArray *activityItems = @[message, self, url];
-    
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    
-    activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList, UIActivityTypePostToFacebook];
-    
-    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_SUBJECT forKey:@"subject"];
-    
-    // Keyboard is behaving a little strangely because of UITextFields in the Keyboard Accessory View
-    // This makes it work correctly - resign first Responder for UITextFields inside the Accessory View...
-    [btcAmountField resignFirstResponder];
-    [fiatAmountField resignFirstResponder];
-    
-    [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:activityViewController selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    
-    activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *error) {
-        [self showKeyboard];
-        
-        // Allow keyboard to complete animating before allowing an action sheet
-        [self performSelector:@selector(enableTapInteraction) withObject:nil afterDelay:0.2f];
-    };
+    [self hideKeyboard];
 }
 
 - (IBAction)labelSaveClicked:(id)sender
@@ -454,61 +427,17 @@ NSString *detailLabel;
 {
     [UIPasteboard generalPasteboard].string = mainAddress;
     
-    [self animateTextOfLabel:mainAddressLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
+    [self animateTextOfLabel:mainAddressLabel fromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
 }
 
-- (IBAction)copyAddressClicked:(id)sender
+- (NSString*)formatPaymentRequestWithAmount:(NSString *)amount url:(NSString*)url
 {
-    [UIPasteboard generalPasteboard].string = detailAddress;
-    
-    [self animateTextOfLabel:optionsTitleLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:optionsTitleLabel];
-}
-
-- (NSString*)formatPaymentRequest:(NSString*)url
-{
-    return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST, url];
+    return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_ARGUMENT_ARGUMENT, amount, url];
 }
 
 - (NSString*)formatPaymentRequestHTML:(NSString*)url
 {
     return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_HTML, url];
-}
-
-- (IBAction)labelAddressClicked:(id)sender
-{
-    NSString *addr = self.clickedAddress;
-    NSString *label = [app.wallet labelForLegacyAddress:addr];
-    
-    labelAddressLabel.text = addr;
-    
-    if (label && label.length > 0) {
-        labelTextField.text = label;
-    }
-    
-    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    saveButton.frame = CGRectMake(0, 0, self.view.frame.size.width, 46);
-    saveButton.backgroundColor = COLOR_BUTTON_GRAY;
-    [saveButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
-    [saveButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    saveButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
-    
-    [saveButton addTarget:self action:@selector(labelSaveClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [labelTextField setReturnKeyType:UIReturnKeyDone];
-    labelTextField.delegate = self;
-    
-    labelTextField.inputAccessoryView = saveButton;
-    
-    BOOL isAlertPresented = [app.window.rootViewController.presentedViewController isMemberOfClass:[UIAlertController class]];
-    
-    [app showModalWithContent:labelAddressView closeType:ModalCloseTypeClose headerText:BC_STRING_LABEL_ADDRESS onDismiss:^() {
-        self.clickedAddress = nil;
-        labelTextField.text = nil;
-    } onResume:nil];
-    
-    if (!isAlertPresented) {
-        [labelTextField becomeFirstResponder];
-    }
 }
 
 - (IBAction)archiveAddressClicked:(id)sender
@@ -537,27 +466,15 @@ NSString *detailLabel;
     [app closeModalWithTransition:kCATransitionFade];
 }
 
-- (void)disableTapInteraction
-{
-    moreActionsButton.userInteractionEnabled = NO;
-    qrCodePaymentImageView.userInteractionEnabled = NO;
-}
-
-- (void)enableTapInteraction
-{
-    moreActionsButton.userInteractionEnabled = YES;
-    qrCodePaymentImageView.userInteractionEnabled = YES;
-}
-
 - (void)showKeyboard
 {
-    [entryField becomeFirstResponder];
-    
     // Select the entry field
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        if ([entryField isFirstResponder]) {
-            self.lastSelectedField == nil ? [fiatAmountField becomeFirstResponder] : [self.lastSelectedField becomeFirstResponder];
+        if ([self.receiveBtcField isFirstResponder]) {
+            [btcAmountField becomeFirstResponder];
+        } else if ([self.receiveFiatField isFirstResponder]){
+            [fiatAmountField becomeFirstResponder];
         } else {
             [labelTextField becomeFirstResponder];
         }
@@ -569,7 +486,8 @@ NSString *detailLabel;
     [fiatAmountField resignFirstResponder];
     [btcAmountField resignFirstResponder];
     [labelTextField resignFirstResponder];
-    [entryField resignFirstResponder];
+    [self.receiveFiatField resignFirstResponder];
+    [self.receiveBtcField resignFirstResponder];
 }
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString
@@ -578,15 +496,17 @@ NSString *detailLabel;
     [alertView show];
 }
 
-- (void)alertUserOfWatchOnlyAddress
+- (void)alertUserOfWatchOnlyAddress:(NSString *)address
 {
     UIAlertController *alertForWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_WATCH_ONLY_RECEIVE_WARNING preferredStyle:UIAlertControllerStyleAlert];
     [alertForWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self showReceiveModal];
+        [self didSelectFromAddress:address];
+        [app closeModalWithTransition:kCATransitionFromLeft];
     }]];
     [alertForWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_DONT_SHOW_AGAIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING];
-        [self showReceiveModal];
+        [self didSelectFromAddress:address];
+        [app closeModalWithTransition:kCATransitionFromLeft];
     }]];
     [alertForWatchOnly addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     
@@ -595,83 +515,92 @@ NSString *detailLabel;
     [app.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
 }
 
-- (void)showReceiveModal
+- (void)storeRequestedAmount
 {
-    [self startObservingForReceivedPayment];
-    
-    optionsTitleLabel.text = detailLabel;
-    
-    [app showModalWithContent:requestCoinsView closeType:ModalCloseTypeClose headerText:BC_STRING_REQUEST_AMOUNT onDismiss:^() {
-        // Remove the extra menu item (more actions)
-        [moreActionsButton removeFromSuperview];
-        moreActionsButton.alpha = 0.0f;
-        
-        if (self.paymentObserver) {
-            [[NSNotificationCenter defaultCenter] removeObserver:self.paymentObserver name:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil];
-            self.paymentObserver = nil;
-        }
-        
-    } onResume:^() {
-        // Reset the requested amount when showing the request screen
-        btcAmountField.text = nil;
-        fiatAmountField.text = nil;
-        
-        [self enableTapInteraction];
-        
-        // Show an extra menu item (more actions)
-        [app.modalView addSubview:moreActionsButton];
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            moreActionsButton.alpha = 1.0f;
-        }];
-    }];
-    
-    [self setQRPayment];
-    
-    entryField.inputAccessoryView = amountKeyboardAccessoryView;
-    
-    [self showKeyboard];
+    NSString *requestedAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    self.lastRequestedAmount = [app.wallet parseBitcoinValue:requestedAmountString];
 }
 
-- (void)startObservingForReceivedPayment
+- (void)updateUI
 {
-    __weak ReceiveCoinsViewController *weakSelf = self;
+    self.receiveToLabel.text = mainLabel;
+    mainAddressLabel.text = mainAddress;
     
-    self.paymentObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil queue:nil usingBlock:^(NSNotification *note) {
-        NSDecimalNumber *amountReceivedDecimalNumber = note.userInfo[DICTIONARY_KEY_AMOUNT];
-        u_int64_t amountReceived = [[amountReceivedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-        
-        NSString *convertedBitcoinString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        if ([app stringHasBitcoinValue:convertedBitcoinString]) {
-            NSDecimalNumber *amountRequestedDecimalNumber = [NSDecimalNumber decimalNumberWithString:convertedBitcoinString];
-            u_int64_t amountRequested = [[amountRequestedDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-            amountRequested = app.latestResponse.symbol_btc.conversion * amountRequested / SATOSHI;
-            
-            if (amountReceived == amountRequested) {
-                NSString *btcAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-                u_int64_t btcAmount = [app.wallet parseBitcoinValue:btcAmountString];
-                btcAmountString = [app formatMoney:btcAmount localCurrency:NO];
-                NSString *localCurrencyAmountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-                u_int64_t currencyAmount = [app.wallet parseBitcoinValue:localCurrencyAmountString];
-                localCurrencyAmountString = [app formatMoney:currencyAmount localCurrency:YES];
-                [weakSelf alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString, localCurrencyAmountString]];
-            }
-        }
-        
-        if (didClickAccount) {
-            detailAddress = [app.wallet getReceiveAddressForAccount:clickedAccount];
-            weakSelf.clickedAddress = detailAddress;
-            [weakSelf setQRPayment];
-            [weakSelf animateTextOfLabel:optionsTitleLabel toFinalText:detailLabel];
-        }
+    [self setQRPayment];
+}
 
-    }];
+- (void)paymentReceived:(NSDecimalNumber *)amount
+{
+    u_int64_t amountReceived = [[amount decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
+    if (amountReceived == self.lastRequestedAmount) {
+        NSString *btcAmountString = [app formatMoney:self.lastRequestedAmount localCurrency:NO];
+        NSString *localCurrencyAmountString = [app formatMoney:self.lastRequestedAmount localCurrency:YES];
+        [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString,localCurrencyAmountString]];
+    }
+}
+
+- (void)selectDestination
+{
+    [self hideKeyboard];
+    
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:YES];
+    addressSelectionView.delegate = self;
+    
+    [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_RECEIVE_TO onDismiss:nil onResume:nil];
+}
+
+- (void)share
+{
+    uint64_t amount = [self getInputAmountInSatoshi];
+    NSString *amountString = amount > 0 ? [app formatMoney:[self getInputAmountInSatoshi] localCurrency:NO] : [BC_STRING_AMOUNT lowercaseString];
+    NSString *message = [self formatPaymentRequestWithAmount:amountString url:@""];
+    
+    NSURL *url = [NSURL URLWithString:[self uriURL]];
+    
+    NSArray *activityItems = @[message, self, url];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    
+    activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList, UIActivityTypePostToFacebook];
+    
+    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_SUBJECT forKey:@"subject"];
+    
+    // Keyboard is behaving a little strangely because of UITextFields in the Keyboard Accessory View
+    // This makes it work correctly - resign first Responder for UITextFields inside the Accessory View...
+    [btcAmountField resignFirstResponder];
+    [fiatAmountField resignFirstResponder];
+    
+    [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
+    
+    activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *error) {
+        [self showKeyboard];
+    };
+}
+
+- (void)clearAmounts
+{
+    btcAmountField.text = nil;
+    fiatAmountField.text = nil;
+    self.receiveBtcField.text = nil;
+    self.receiveFiatField.text = nil;
 }
 
 # pragma mark - UITextField delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if (app.slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        return NO;
+    }
+    
+    if (textField == self.receiveFiatField) {
+        [self showKeyboard];
+        return YES;
+    } else if (textField == self.receiveBtcField) {
+        [self showKeyboard];
+        return YES;
+    }
+    
     if (textField == fiatAmountField || textField == btcAmountField) {
         self.lastSelectedField = textField; 
     }
@@ -762,209 +691,6 @@ NSString *detailLabel;
     }
 }
 
-#pragma mark - UITableview Delegates
-
-- (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    didClickAccount = (indexPath.section == 0);
-    
-    if (indexPath.section == 0) {
-        int row = (int) indexPath.row;
-        detailAddress = [app.wallet getReceiveAddressForAccount:[app.wallet getIndexOfActiveAccount:row]];
-        self.clickedAddress = detailAddress;
-        clickedAccount = [app.wallet getIndexOfActiveAccount:row];
-        
-        detailLabel = [app.wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:row]];
-    }
-    else {
-        detailAddress = [self getAddress:indexPath];
-        NSString *addr = detailAddress;
-        NSString *label = [app.wallet labelForLegacyAddress:addr];
-        
-        self.clickedAddress = addr;
-        
-        if (label.length > 0)
-            detailLabel = label;
-        else
-            detailLabel = addr;
-        
-        if ([app.wallet isWatchOnlyLegacyAddress:addr] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING]) {
-            [self alertUserOfWatchOnlyAddress];
-            return;
-        }
-    }
-    
-    [self showReceiveModal];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        return 44.0f;
-    }
-    
-    return 70.0f;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return 12.0f;
-    }
-    
-    return 45.0f;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
-    view.backgroundColor = [UIColor whiteColor];
-    
-    if (section == 0) {
-        return nil;
-    }
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
-    label.textColor = COLOR_FOREGROUND_GRAY;
-    label.font = [UIFont systemFontOfSize:14.0];
-    
-    [view addSubview:label];
-    
-    NSString *labelString;
-    
-    if (section == 0)
-        labelString = nil;
-    else if (section == 1) {
-        labelString = BC_STRING_IMPORTED_ADDRESSES;
-    }
-    else if (section == 2)
-        labelString = BC_STRING_IMPORTED_ADDRESSES_ARCHIVED;
-    else
-        @throw @"Unknown Section";
-    
-    label.text = [labelString uppercaseString];
-    
-    return view;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (section == 0)
-        return [app.wallet getActiveAccountsCount];
-    else
-        return [activeKeys count];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        int accountIndex = [app.wallet getIndexOfActiveAccount:(int)indexPath.row];
-        NSString *accountLabelString = [app.wallet getLabelForAccount:accountIndex];
-        
-        ReceiveTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"receiveAccount"];
-        
-        if (cell == nil) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
-            cell.backgroundColor = COLOR_BACKGROUND_GRAY;
-        
-            // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
-            cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
-            cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
-            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
-            cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
-            
-            [cell.watchLabel setHidden:TRUE];
-        }
-        
-        cell.labelLabel.text = accountLabelString;
-        cell.addressLabel.text = @"";
-        
-        uint64_t balance = [app.wallet getBalanceForAccount:accountIndex];
-        
-        // Selected cell color
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
-        [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-        [cell setSelectedBackgroundView:v];
-        
-        cell.balanceLabel.text = [app formatMoney:balance];
-        cell.balanceLabel.minimumScaleFactor = 0.75f;
-        [cell.balanceLabel setAdjustsFontSizeToFitWidth:YES];
-        
-        [cell.balanceButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
-        
-        return cell;
-    }
-    
-    NSString *addr = [self getAddress:indexPath];
-    
-    Boolean isWatchOnlyLegacyAddress = [app.wallet isWatchOnlyLegacyAddress:addr];
-    
-    ReceiveTableCell *cell;
-    if (isWatchOnlyLegacyAddress) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"receiveWatchOnly"];
-    }
-    else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"receiveNormal"];
-    }
-    
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
-        cell.backgroundColor = COLOR_BACKGROUND_GRAY;
-        
-        if (isWatchOnlyLegacyAddress) {
-            // Show the watch only tag and resize the label and balance labels so there is enough space
-            cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);
-            
-            cell.balanceLabel.frame = CGRectMake(254, 11, 83, 21);
-            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 254, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
-            cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
-            
-            [cell.watchLabel setHidden:FALSE];
-        }
-        else {
-            // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
-            cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
-            
-            cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
-            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
-            cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
-            
-            [cell.watchLabel setHidden:TRUE];
-        }
-    }
-    
-    NSString *label =  [app.wallet labelForLegacyAddress:addr];
-    
-    if (label)
-        cell.labelLabel.text = label;
-    else
-        cell.labelLabel.text = BC_STRING_NO_LABEL;
-    
-    cell.addressLabel.text = addr;
-    
-    uint64_t balance = [app.wallet getLegacyAddressBalance:addr];
-    
-    // Selected cell color
-    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
-    [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-    [cell setSelectedBackgroundView:v];
-    
-    cell.balanceLabel.text = [app formatMoney:balance];
-    cell.balanceLabel.minimumScaleFactor = 0.75f;
-    [cell.balanceLabel setAdjustsFontSizeToFitWidth:YES];
-    
-    [cell.balanceButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
-    
-    return cell;
-}
-
 #pragma mark - UIActivityItemSource Delegate
 
 - (id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
@@ -972,13 +698,60 @@ NSString *detailLabel;
     if (activityType == UIActivityTypePostToTwitter) {
         return nil;
     } else {
-        return qrCodePaymentImageView.image;
+        return qrCodeMainImageView.image;
     }
 }
 
 - (id)activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController
 {
     return @"";
+}
+
+#pragma mark - BCAddressSelectionView Delegate
+
+- (void)didSelectFromAddress:(NSString*)address
+{
+    mainAddress = address;
+    NSString *addr = mainAddress;
+    NSString *label = [app.wallet labelForLegacyAddress:addr];
+    
+    self.clickedAddress = addr;
+    didClickAccount = NO;
+    
+    if (label.length > 0) {
+        mainLabel = label;
+    } else {
+        mainLabel = addr;
+    }
+    
+    [self updateUI];
+}
+
+- (void)didSelectToAddress:(NSString*)address
+{
+    [self didSelectFromAddress:address];
+}
+
+- (void)didSelectFromAccount:(int)account
+{
+    mainAddress = [app.wallet getReceiveAddressForAccount:account];
+    self.clickedAddress = mainAddress;
+    clickedAccount = account;
+    didClickAccount = YES;
+    
+    mainLabel = [app.wallet getLabelForAccount:account];
+    
+    [self updateUI];
+}
+
+- (void)didSelectToAccount:(int)account
+{
+    [self didSelectFromAccount:account];
+}
+
+- (void)didSelectWatchOnlyAddress:(NSString *)address
+{
+    [self alertUserOfWatchOnlyAddress:address];
 }
 
 @end

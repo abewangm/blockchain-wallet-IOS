@@ -98,6 +98,9 @@
 "Allowed" = "允許";
 
 /* (No Commment) */
+"Amount" = "金額";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "金額必須大於或等於灰塵閾值 (%lld 聰)";
 
 /* (No Commment) */
@@ -743,6 +746,9 @@
 "Password changed. Please login to continue." = "更改密碼。請登錄以繼續。";
 
 /* (No Commment) */
+"Password must be different from your email" = "密碼必須不同于您的電子郵件";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "密碼必須小於或等於 255 個字元";
 
 /* (No Commment) */
@@ -815,10 +821,12 @@
 "Please select a different address to send from." = "請選擇一個不同的位址從發送。";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "請向比特幣位址發送付款 (< href =\"HTTPs://blockchain.info/wallet/bitcoin-faq\"> 説明? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "請發送 %1$@ 到比特幣位址。
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "請向比特幣位址發送付款。常見問題: (HTTPs://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "請向比特幣位址發送付款 (< href =\"HTTPs://blockchain.info/wallet/bitcoin-faq\"> 説明? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "請再試一次";
@@ -845,6 +853,9 @@
 "Receive" = "接收";
 
 /* (No Commment) */
+"Receive to..." = "接收到...";
+
+/* (No Commment) */
 "Received" = "收到";
 
 /* (No Commment) */
@@ -855,6 +866,9 @@
 
 /* (No Commment) */
 "Regular" = "定期";
+
+/* (No Commment) */
+"Request" = "請求";
 
 /* (No Commment) */
 "Request Amount" = "請求金額";
@@ -993,6 +1007,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "同步的錢包";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "點擊可將此位址複製。它分享給寄件者通過電子郵件或文本。";
 
 /* (No Commment) */
 "Terms of Service" = "服務條款";
@@ -1256,6 +1273,9 @@ wallet experience for you" = "我們已經為您設計全新的錢包經驗";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "我們已經檢測到以前安裝的 Blockchain 的錢包在你的手機上。";
+
+/* (No Commment) */
+"Where" = "在哪裡";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "你想將比特幣位址 %@ 添加到您的通訊錄嗎?";

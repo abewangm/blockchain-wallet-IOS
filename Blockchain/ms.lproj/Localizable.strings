@@ -98,6 +98,9 @@
 "Allowed" = "Dibenarkan";
 
 /* (No Commment) */
+"Amount" = "Jumlah";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Jumlah mesti lebih besar daripada atau sama dengan di ambang habuk (%lld Nanaho)";
 
 /* (No Commment) */
@@ -743,6 +746,9 @@
 "Password changed. Please login to continue." = "Kata laluan ditukar. Sila login untuk teruskan.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Kata laluan mesti berbeza daripada e-mel anda";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Kata laluan mesti kurang daripada atau sama dengan 255 aksara";
 
 /* (No Commment) */
@@ -815,10 +821,12 @@
 "Please select a different address to send from." = "Sila pilih alamat yang berbeza untuk menghantar dari.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Sila hantarkan bayaran ke alamat bitcoin (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > membantu? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Sila hantar %1$@ ke alamat bitcoin.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Sila hantar bayaran ke alamat bitcoin. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Sila hantarkan bayaran ke alamat bitcoin (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > membantu? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Sila cuba lagi";
@@ -845,6 +853,9 @@
 "Receive" = "Menerima";
 
 /* (No Commment) */
+"Receive to..." = "Menerima...";
+
+/* (No Commment) */
 "Received" = "Diterima";
 
 /* (No Commment) */
@@ -855,6 +866,9 @@
 
 /* (No Commment) */
 "Regular" = "Tetap";
+
+/* (No Commment) */
+"Request" = "Permintaan";
 
 /* (No Commment) */
 "Request Amount" = "Jumlah permintaan";
@@ -993,6 +1007,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Menyegerak Wallet";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Ketuk untuk menyalin alamat ini. Berkongsi dengan pengirim melalui e-mel atau teks.";
 
 /* (No Commment) */
 "Terms of Service" = "Syarat-syarat Perkhidmatan";
@@ -1256,6 +1273,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Kami telah mengesan pemasangan terdahulu daripada Blockchain Wallet pada telefon anda.";
+
+/* (No Commment) */
+"Where" = "Di mana";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Adakah anda ingin untuk tambah %@ alamat bitcoin ke dalam buku alamat anda?";

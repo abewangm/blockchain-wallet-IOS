@@ -98,6 +98,9 @@
 "Allowed" = "Povoleno";
 
 /* (No Commment) */
+"Amount" = "Částka";
+
+/* (No Commment) */
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Množství musí být větší než nebo rovna prahu prach (%lld Satoshi)";
 
 /* (No Commment) */
@@ -743,6 +746,9 @@
 "Password changed. Please login to continue." = "Heslo bylo změněno. Přihlaste se pro pokračování.";
 
 /* (No Commment) */
+"Password must be different from your email" = "Heslo se musí lišit od vašeho e-mailu";
+
+/* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Heslo musí být menší nebo rovna 255 znaků";
 
 /* (No Commment) */
@@ -815,10 +821,12 @@
 "Please select a different address to send from." = "Prosím zvolte jinou adresu posílat z.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Prosím pošlete platbu bitcoin adresu (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > pomoc? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Pošlete, prosím, %1$@ na adresu bitcoin.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Bitcoin adresu zašlete platbu. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Prosím pošlete platbu bitcoin adresu (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > pomoc? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Zkuste to prosím znovu";
@@ -845,6 +853,9 @@
 "Receive" = "Příjem";
 
 /* (No Commment) */
+"Receive to..." = "Přijmout do...";
+
+/* (No Commment) */
 "Received" = "Přijaté";
 
 /* (No Commment) */
@@ -855,6 +866,9 @@
 
 /* (No Commment) */
 "Regular" = "Pravidelný";
+
+/* (No Commment) */
+"Request" = "Požadavek";
 
 /* (No Commment) */
 "Request Amount" = "Požádat o částku";
@@ -993,6 +1007,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synchronizuji Peněženka";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Klepnutím zkopírujete tuto adresu. Sdílejte s odesílateli e-mailem nebo text.";
 
 /* (No Commment) */
 "Terms of Service" = "Podmínky služby";
@@ -1256,6 +1273,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Zachytili jsme předchozí instalace Blockchain peněženku na vašem telefonu.";
+
+/* (No Commment) */
+"Where" = "Kde";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Chcete přidat bitcoin adresy %@ do vašeho adresáře?";
