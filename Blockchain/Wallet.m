@@ -211,6 +211,10 @@
         [weakSelf errorParsingPairingCode:error];
     };
     
+    self.context[@"error_restoring_wallet"] = ^(){
+        [weakSelf error_restoring_wallet];
+    };
+    
     self.context[@"on_pin_code_put_response"] = ^(NSDictionary *response) {
         [weakSelf on_pin_code_put_response:response];
     };
@@ -237,6 +241,14 @@
     
     self.context[@"on_backup_wallet_success"] = ^() {
         [weakSelf on_backup_wallet_success];
+    };
+    
+    self.context[@"ws_on_open"] = ^() {
+        [weakSelf ws_on_open];
+    };
+    
+    self.context[@"on_tx_received"] = ^() {
+        [weakSelf on_tx_received];
     };
     
     self.context[@"getRandomBytes"] = ^(NSNumber *count) {
@@ -303,6 +315,34 @@
     [self login];
 }
 
+- (void)setupWebSocket
+{
+    NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:DEFAULT_WEBSOCKET_SERVER]];
+    [webSocketRequest addValue:DEFAULT_WALLET_SERVER forHTTPHeaderField:@"Origin"];
+    self.webSocket = [[SRWebSocket alloc] initWithURLRequest:webSocketRequest];
+    self.webSocket.delegate = self;
+    
+    [self.webSocketTimer invalidate];
+    self.webSocketTimer = nil;
+    self.webSocketTimer = [NSTimer scheduledTimerWithTimeInterval:15.0
+                                     target:self
+                                   selector:@selector(pingWebSocket)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    [self.webSocket open];
+}
+
+- (void)pingWebSocket
+{
+    if (self.webSocket.readyState == 1) {
+        [self.webSocket sendPing:[@"{ op: 'ping' }" dataUsingEncoding:NSUTF8StringEncoding]];
+    } else {
+        DLog(@"reconnecting websocket");
+        [self setupWebSocket];
+    }
+}
+
 - (void)apiGetPINValue:(NSString*)key pin:(NSString*)pin
 {
     [self loadJS];
@@ -352,6 +392,54 @@
             [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\", \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS], [self.twoFactorInput escapeStringForJS]]];
         }
     }
+}
+
+# pragma mark - Socket Delegate
+
+// subscribe to MyWallet.ws.msgAddrSub on address creation
+// subscribe to MyWallet.ws.msgXPUBSub on account creation
+
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket
+{
+    // set ping
+    DLog(@"websocket opened");
+    NSString *message = [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
+    [webSocket sendString:message];
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
+{
+    
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
+{
+    DLog(@"websocket closed: code %i, reason: %@", code, reason);
+    if (self.webSocket.readyState != 1) {
+        DLog(@"reconnecting websocket");
+        [self setupWebSocket];
+    }
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
+{
+    
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongData
+{
+    
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithData:(NSData *)data
+{
+    
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string
+{
+    DLog(@"received websocket message string");
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\")", [string escapeStringForJS]]];
 }
 
 # pragma mark - Calls from Obj-C to JS
@@ -1622,6 +1710,8 @@
 - (void)did_decrypt
 {
     DLog(@"did_decrypt");
+    
+    [self setupWebSocket];
     
     if (self.didPairAutomatically) {
         self.didPairAutomatically = NO;
