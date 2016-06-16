@@ -583,8 +583,6 @@
     self.isSyncing = YES;
     
     [self.webView executeJS:@"MyWalletPhone.toggleArchived(\"%@\")", [address escapeStringForJS]];
-    
-    [self getHistory];
 }
 
 - (void)toggleArchiveAccount:(int)account
@@ -596,8 +594,6 @@
     self.isSyncing = YES;
     
     [self.webView executeJS:@"MyWalletPhone.toggleArchived(%d)", account];
-    
-    [self getHistory];
 }
 
 - (void)archiveTransferredAddresses:(NSArray *)transferredAddresses
