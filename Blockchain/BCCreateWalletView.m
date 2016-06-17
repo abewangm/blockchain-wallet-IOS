@@ -155,7 +155,7 @@
     app.wallet.delegate = self;
 
     // Load the JS without a wallet
-    [app.wallet loadBlankWallet];
+    [app.wallet performSelector:@selector(loadBlankWallet) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
 }
 
 
