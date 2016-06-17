@@ -182,7 +182,7 @@ BOOL displayingLocalSymbolSend;
     
     [self reloadFromAndToFields];
     
-    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    [self reloadSymbols];
     
     [self updateFundsAvailable];
     
@@ -213,6 +213,12 @@ BOOL displayingLocalSymbolSend;
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
+}
+
+- (void)reloadSymbols
+{
+    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    [self updateFundsAvailable];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
