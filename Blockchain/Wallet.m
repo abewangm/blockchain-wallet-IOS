@@ -175,6 +175,22 @@
         [weakSelf update_send_balance:balance];
     };
     
+    self.context[@"update_surge_status"] = ^(NSNumber *surgeStatus) {
+        [weakSelf update_surge_status:surgeStatus];
+    };
+    
+    self.context[@"did_change_forced_fee_dust"] = ^(NSNumber *fee, NSNumber *dust) {
+        [weakSelf did_change_forced_fee:fee dust:dust];
+    };
+    
+    self.context[@"update_fee_bounds_confirmationEstimation_maxAmounts_maxFees"] = ^(NSArray *absoluteFeeBounds, NSNumber *expectedBlock, NSArray *maxSpendableAmounts, NSArray *sweepFees) {
+        [weakSelf update_fee_bounds:absoluteFeeBounds confirmationEstimation:expectedBlock maxAmounts:maxSpendableAmounts maxFees:sweepFees];
+    };
+    
+    self.context[@"update_max_amount_fee_dust_willConfirm"] = ^(NSNumber *maxAmount, NSNumber *fee, NSNumber *dust, NSNumber *willConfirm) {
+        [weakSelf update_max_amount:maxAmount fee:fee dust:dust willConfirm:willConfirm];
+    };
+    
     self.context[@"check_max_amount_fee"] = ^(NSNumber *amount, NSNumber *fee) {
         [weakSelf check_max_amount:amount fee:fee];
     };
@@ -253,6 +269,107 @@
     
     self.context[@"on_tx_received"] = ^() {
         [weakSelf on_tx_received];
+    };
+    
+    self.context[@"on_get_account_info_success"] = ^(NSString *accountInfo) {
+        [weakSelf on_get_account_info_success:accountInfo];
+    };
+    
+    self.context[@"on_get_all_currency_symbols_success"] = ^(NSString *currencies) {
+        [weakSelf on_get_all_currency_symbols_success:currencies];
+    };
+    
+    self.context[@"on_error_creating_new_address"] = ^(NSString *error) {
+        [weakSelf on_error_creating_new_address:error];
+    };
+    
+    self.context[@"on_progress_recover_with_passphrase_finalBalance"] = ^(NSString *totalReceived, NSString *finalBalance) {
+        [weakSelf on_progress_recover_with_passphrase:totalReceived finalBalance:finalBalance];
+    };
+    
+    self.context[@"on_success_get_recovery_phrase"] = ^(NSString *recoveryPhrase) {
+        [weakSelf on_success_get_recovery_phrase:recoveryPhrase];
+    };
+    
+    self.context[@"on_success_recover_with_passphrase"] = ^(NSDictionary *totalReceived, NSString *finalBalance) {
+        [weakSelf on_success_recover_with_passphrase:totalReceived];
+    };
+    
+    self.context[@"on_error_recover_with_passphrase"] = ^(NSString *error) {
+        [weakSelf on_error_recover_with_passphrase:error];
+    };
+    
+    self.context[@"on_resend_two_factor_sms_error"] = ^(NSString *error) {
+        [weakSelf on_resend_two_factor_sms_error:error];
+    };
+    
+    self.context[@"on_error_add_new_account"] = ^(NSString *error) {
+        [weakSelf on_error_add_new_account:error];
+    };
+    
+    self.context[@"on_error_update_fee"] = ^(NSDictionary *error) {
+        [weakSelf on_error_update_fee:error];
+    };
+    
+    self.context[@"on_error_get_history"] = ^(NSString *error) {
+        [weakSelf on_error_get_history:error];
+    };
+    
+    self.context[@"on_error_creating_new_account"] = ^(NSString *error) {
+        [weakSelf on_error_creating_new_account:error];
+    };
+    
+    self.context[@"error_other_decrypting_wallet"] = ^(NSString *error) {
+        [weakSelf error_other_decrypting_wallet:error];
+    };
+    
+    self.context[@"on_add_key"] = ^(NSString *key) {
+        [weakSelf on_add_key:key];
+    };
+    
+    self.context[@"on_error_adding_private_key"] = ^(NSString *key) {
+        [weakSelf on_error_adding_private_key:key];
+    };
+    
+    self.context[@"on_error_import_key_for_sending_from_watch_only"] = ^(NSString *key) {
+        [weakSelf on_error_import_key_for_sending_from_watch_only:key];
+    };
+    
+    self.context[@"on_add_incorrect_private_key"] = ^(NSString *key) {
+        [weakSelf on_add_incorrect_private_key:key];
+    };
+    
+    self.context[@"on_error_adding_private_key_watch_only"] = ^(NSString *key) {
+        [weakSelf on_error_adding_private_key_watch_only:key];
+    };
+    
+    self.context[@"update_transfer_all_amount_fee_addressesUsed"] = ^(NSNumber *amount, NSNumber *fee, NSArray *addressesUsed) {
+        [weakSelf update_transfer_all_amount:amount fee:fee addressesUsed:addressesUsed];
+    };
+    
+    self.context[@"loading_start_transfer_all"] = ^(NSNumber *index) {
+        [weakSelf loading_start_transfer_all:index];
+    };
+    
+    self.context[@"update_loaded_all_transactions"] = ^(NSNumber *index) {
+        [weakSelf update_loaded_all_transactions:index];
+    };
+    
+    self.context[@"tx_on_error_error_secondPassword"] = ^(NSString *txId, NSString *error, NSString *secondPassword) {
+        [weakSelf tx_on_error:txId error:error secondPassword:secondPassword];
+    };
+    
+    self.context[@"on_error_transfer_all_secondPassword"] = ^(NSString *error, NSString *secondPassword) {
+        [weakSelf on_error_transfer_all:error secondPassword:secondPassword];
+    };
+    
+    
+    self.context[@"send_transfer_all"] = ^(NSString *secondPassword) {
+        [weakSelf send_transfer_all:secondPassword];
+    };
+    
+    self.context[@"on_payment_notice"] = ^(NSString *notice) {
+        [weakSelf on_payment_notice:notice];
     };
     
     self.context[@"getRandomBytes"] = ^(NSNumber *count) {
@@ -2092,9 +2209,9 @@
     [delegate didGenerateNewAddress];
 }
 
-- (void)on_error_generating_new_address:(NSString*)error
+- (void)on_error_creating_new_address:(NSString*)error
 {
-    DLog(@"on_error_generating_new_address");
+    DLog(@"on_error_creating_new_address");
     [app standardNotify:error];
 }
 

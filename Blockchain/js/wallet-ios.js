@@ -109,9 +109,9 @@ MyWalletPhone.createAccount = function(label) {
     };
     
     var error = function (error) {
-    on_error_add_new_account:(error);
+        on_error_add_new_account(error);
     }
-    console.log('creata');
+
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
                                         MyWallet.wallet.newAccount(label, pw, null, success);
@@ -326,11 +326,11 @@ MyWalletPhone.createNewPayment = function() {
     currentPayment = new Payment();
     currentPayment.on('error', function(errorObject) {
                       var errorDictionary = {'message': {'error': errorObject['error']}};
-                      on_error_update_fee:(errorDictionary);
+                        on_error_update_fee(errorDictionary);
                       });
     
     currentPayment.on('message', function(object) {
-                      on_payment_notice:(object['text']);
+                        on_payment_notice(object['text']);
                       });
 }
 
@@ -338,7 +338,7 @@ MyWalletPhone.changePaymentFrom = function(from, isAdvanced) {
     if (currentPayment) {
         currentPayment.from(from).then(function(x) {
                                        if (x) {
-                                       if (x.from != null) update_send_balance:(isAdvanced ? x.balance : x.sweepAmount);
+                                       if (x.from != null) update_send_balance(isAdvanced ? x.balance : x.sweepAmount);
                                        }
                                        return x;
                                        });
@@ -366,7 +366,7 @@ MyWalletPhone.changePaymentAmount = function(amount) {
 MyWalletPhone.getSurgeStatus = function() {
     if (currentPayment) {
         currentPayment.payment.then(function (x) {
-                                    update_surge_status:(x.fees.default.surge);
+                                    update_surge_status(x.fees.default.surge);
                                     return x;
                                     });
     } else {
@@ -392,7 +392,7 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
                                                                 }
                                                                 
                                                                 console.log('error checking for overspending: ' + errorArgument);
-                                                                on_error_update_fee:(errorArgument);
+                                                                on_error_update_fee(errorArgument);
                                                                 
                                                                 return error.payment;
                                                                 });
@@ -414,14 +414,14 @@ MyWalletPhone.changeForcedFee = function(fee) {
         }
         
         console.log('error updating fee: ' + errorArgument);
-    on_error_update_fee:(errorArgument);
+        on_error_update_fee(errorArgument);
         
         return error.payment;
     }
     
     if (currentPayment) {
         currentPayment.prebuild(fee).build().then(function (x) {
-                                                  did_change_forced_fee:dust:(fee, x.extraFeeConsumption);
+                                                  did_change_forced_fee_dust(fee, x.extraFeeConsumption);
                                                   return x;
                                                   }).catch(buildFailure);
     } else {
@@ -436,7 +436,7 @@ MyWalletPhone.getFeeBounds = function(fee) {
                                           console.log('absolute fee bounds:');
                                           console.log(x.absoluteFeeBounds);
                                           var expectedBlock = x.confEstimation == Infinity ? -1 : x.confEstimation;
-                                          update_fee_bounds:confirmationEstimation:maxAmounts:maxFees:(x.absoluteFeeBounds, expectedBlock, x.maxSpendableAmounts, x.sweepFees);
+                                          update_fee_bounds_confirmationEstimation_maxAmounts_maxFees(x.absoluteFeeBounds, expectedBlock, x.maxSpendableAmounts, x.sweepFees);
                                           return x;
                                           });
     } else {
@@ -468,7 +468,7 @@ MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
         }
         
         console.log('error sweeping regular then confirm: ' + errorArgument);
-    on_error_update_fee:(errorArgument);
+        on_error_update_fee(errorArgument);
         
         return error.payment;
     }
@@ -506,7 +506,7 @@ MyWalletPhone.sweepPaymentAdvancedThenConfirm = function(fee) {
         }
         
         console.log('error sweeping advanced then confirm: ' + errorArgument);
-    on_error_update_fee:(errorArgument);
+        on_error_update_fee(errorArgument);
         
         return error.payment;
     }
@@ -527,7 +527,7 @@ MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
         currentPayment.payment.then(function(x) {
                                     console.log('updated fee: ' + x.finalFee);
                                     console.log('SweepAmount: ' + x.amounts);
-                                    update_max_amount:fee:dust:willConfirm:(x.amounts[0], x.finalFee, x.extraFeeConsumption, willConfirm);
+                                    update_max_amount_fee_dust_willConfirm(x.amounts[0], x.finalFee, x.extraFeeConsumption, willConfirm);
                                     return x;
                                     }).catch(function(error) {
                                              var errorArgument;
@@ -537,7 +537,7 @@ MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
                                              errorArgument = error.message;
                                              }
                                              console.log('error sweeping payment: ' + errorArgument);
-                                             on_error_update_fee:(errorArgument);
+                                             on_error_update_fee(errorArgument);
                                              });
     } else {
         console.log('Payment error: null payment object!');
@@ -557,7 +557,7 @@ MyWalletPhone.getTransactionFee = function() {
             }
             
             console.log('error updating fee: ' + errorArgument);
-        on_error_update_fee:(errorArgument);
+            on_error_update_fee(errorArgument);
             
             return error.payment;
         }
@@ -650,7 +650,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     
     var history_error = function(error) {console.log(error);
         console.log('login: error getting history');
-    on_error_get_history:(error);
+        on_error_get_history(error);
     }
     
     var success = function() {
@@ -661,7 +661,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     var other_error = function(e) {
         console.log('login: other error: ' + e);
         loading_stop();
-    error_other_decrypting_wallet:(e);
+        error_other_decrypting_wallet(e);
     };
     
     var needs_two_factor_code = function(type) {
@@ -721,7 +721,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
         var totalAmount = payments.filter(function(p) {return p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { totalAddressesUsed.push(p.from[0]); return p.amounts[0]; }).reduce(Helpers.add, 0);
         var totalFee = payments.filter(function(p) {return p.finalFee > 0 && p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { return p.finalFee; }).reduce(Helpers.add, 0);
         
-    update_transfer_all_amount:fee:addressesUsed:(totalAmount, totalFee, totalAddressesUsed);
+    update_transfer_all_amount_fee_addressesUsed(totalAmount, totalFee, totalAddressesUsed);
     }
     
     var createPayment = function(address) {
@@ -737,7 +737,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
                       queue = queue.then(function (p) {
                                          if (p) {
                                          payments.push(p);
-                                         loading_start_transfer_all:(index)
+                                         loading_start_transfer_all(index)
                                          };
                                          return createPayment(address);
                                          });
@@ -745,7 +745,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     
     queue.then(function(last) {
                payments.push(last);
-               loading_start_transfer_all:(addresses.length)
+               loading_start_transfer_all(addresses.length)
                updateInfo(payments);
                });
 }
@@ -767,7 +767,7 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
         console.log('error transfering all funds: ' + errorArgument);
         
         // pass second password to frontend in case we want to continue sending from other addresses
-    on_error_transfer_all:secondPassword:(errorArgument, secondPassword);
+    on_error_transfer_all_secondPassword(errorArgument, secondPassword);
         
         return error.payment;
     }
@@ -783,7 +783,7 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
                                     } else {
                                     console.log('builtTransferAll: from:' + x.from);
                                     console.log('builtTransferAll: to:' + x.to);
-                                    send_transfer_all:(secondPassword);
+                                    send_transfer_all(secondPassword);
                                     }
                                     
                                     return x;
@@ -800,7 +800,7 @@ MyWalletPhone.transferFundsToDefaultAccountFromAddress = function(address) {
         console.log('buildfailure');
         
         console.log('error sweeping regular then confirm: ' + error);
-    on_error_update_fee:({'message': {'error':error.error.message}});
+    on_error_update_fee({'message': {'error':error.error.message}});
         
         return error.payment;
     }
@@ -828,7 +828,7 @@ MyWalletPhone.quickSend = function(secondPassword) {
         if (response.initial_error) {
             error = response.initial_error;
         }
-        tx_on_error:error:secondPassword:(id, ''+error, secondPassword);
+        tx_on_error_error_secondPassword(id, ''+error, secondPassword);
     };
     
     if (!currentPayment) {
@@ -909,7 +909,7 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
                     throw 'Response Object nil';
                 }
                 
-            on_pin_code_get_response:(parsedRes);
+            on_pin_code_get_response(parsedRes);
             } catch (error) {
                 // Invalid server response
                 on_error_pin_code_get_invalid_response();
@@ -973,7 +973,7 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName) {
                 message = e.initial_error;
             }
             
-        on_error_creating_new_account:(''+message);
+        on_error_creating_new_account(''+message);
         }
     };
     
@@ -1127,7 +1127,7 @@ MyWalletPhone.fetchMoreTransactions = function() {
     loading_start_get_history();
     MyWallet.wallet.fetchTransactions().then(function(numFetched) {
                                              var loadedAll = numFetched < MyWallet.wallet.txList.loadNumber;
-                                             update_loaded_all_transactions:(loadedAll);
+                                             update_loaded_all_transactions(loadedAll);
                                              });
 }
 
@@ -1135,7 +1135,7 @@ MyWalletPhone.addKey = function(keyString) {
     var success = function(address) {
         console.log('Add private key success');
         
-    on_add_key:(address.address);
+        on_add_key(address.address);
     };
     var error = function(e) {
         console.log('Add private key Error');
@@ -1153,7 +1153,7 @@ MyWalletPhone.addKey = function(keyString) {
             message = 'Wrong BIP38 password';
         }
         
-    on_error_adding_private_key:(message);
+        on_error_adding_private_key(message);
     };
     
     var needsBip38Passsword = Helpers.detectPrivateKeyFormat(keyString) === 'bip38';
@@ -1204,7 +1204,7 @@ MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey = function(privateKeyString
     
     var error = function(message) {
         console.log('Add private key error: ' + message);
-    on_error_import_key_for_sending_from_watch_only:(message);
+        on_error_import_key_for_sending_from_watch_only(message);
     };
     
     var needsBip38Passsword = Helpers.detectPrivateKeyFormat(privateKeyString) === 'bip38';
@@ -1220,7 +1220,7 @@ MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey = function(privateKeyString
                                                                                                                                        }
                                                                                                                                        } else {
                                                                                                                                        console.log('Add private key error: ');
-                                                                                                                                       on_error_import_key_for_sending_from_watch_only:('wrongPrivateKey');
+                                                                                                                                       on_error_import_key_for_sending_from_watch_only('wrongPrivateKey');
                                                                                                                                        }
                                                                                                                                        }).catch(error);
                                             });
@@ -1234,7 +1234,7 @@ MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey = function(privateKeyString
                                                                                               }
                                                                                               } else {
                                                                                               console.log('Add private key error: ');
-                                                                                              on_error_import_key_for_sending_from_watch_only:('wrongPrivateKey');
+                                                                                              on_error_import_key_for_sending_from_watch_only('wrongPrivateKey');
                                                                                               }
                                                                                               }).catch(error);
     }
@@ -1247,7 +1247,7 @@ MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) 
         console.log(address.address);
         
         if (address.address != legacyAddress) {
-        on_add_incorrect_private_key:(legacyAddress);
+            on_add_incorrect_private_key(legacyAddress);
         } else {
             on_add_private_key_to_legacy_address(legacyAddress);
         }
@@ -1255,7 +1255,7 @@ MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) 
     var error = function(message) {
         console.log('Add private key Error: ' + message);
         
-    on_error_adding_private_key_watch_only:(message);
+        on_error_adding_private_key_watch_only(message);
     };
     
     var needsBip38Passsword = Helpers.detectPrivateKeyFormat(privateKeyString) === 'bip38';
@@ -1290,7 +1290,7 @@ MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) 
 MyWalletPhone.getRecoveryPhrase = function(secondPassword) {
     var recoveryPhrase = MyWallet.wallet.getMnemonic(secondPassword);
     
-on_success_get_recovery_phrase:(recoveryPhrase);
+    on_success_get_recovery_phrase(recoveryPhrase);
 };
 
 
@@ -1348,7 +1348,7 @@ MyWalletPhone.get_account_info = function () {
     var success = function (data) {
         console.log('Getting account info');
         var accountInfo = JSON.stringify(data, null, 2);
-    on_get_account_info_success:(accountInfo);
+        on_get_account_info_success(accountInfo);
     }
     
     var error = function (e) {
@@ -1513,7 +1513,7 @@ MyWalletPhone.get_all_currency_symbols = function () {
     var success = function (data) {
         console.log('Getting all currency symbols');
         var currencySymbolData = JSON.stringify(data, null, 2);
-    on_get_all_currency_symbols_success:(currencySymbolData);
+        on_get_all_currency_symbols_success(currencySymbolData);
     };
     
     var error = function (e) {
@@ -1546,7 +1546,7 @@ MyWalletPhone.generateNewAddress = function() {
                        var error = function (e) {
                        console.log('Error creating new address: ' + e);
                        loading_stop();
-                       on_error_creating_new_address:(e);
+                       on_error_creating_new_address(e);
                        };
                        
                        if (MyWallet.wallet.isDoubleEncrypted) {
@@ -1571,7 +1571,7 @@ MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
         var accountProgress = function(obj) {
             var totalReceived = obj.addresses[0]['total_received'];
             var finalBalance = obj.wallet['final_balance'];
-        on_progress_recover_with_passphrase:finalBalance:(totalReceived, finalBalance);
+            on_progress_recover_with_passphrase_finalBalance(totalReceived, finalBalance);
         }
         
         var generateUUIDProgress = function() {
@@ -1588,19 +1588,19 @@ MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
         
         var success = function (recoveredWalletDictionary) {
             console.log('recovery success');
-        on_success_recover_with_passphrase:(recoveredWalletDictionary);
+            on_success_recover_with_passphrase(recoveredWalletDictionary);
         }
         
         var error = function(error) {
             console.log('recovery error after validation: ' + error);
-        on_error_recover_with_passphrase:(error);
+            on_error_recover_with_passphrase(error);
         }
         
         MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error, startedRestoreHDWallet, accountProgress, generateUUIDProgress, decryptWalletProgress);
         
     } else {
         console.log('recovery error: ' + error);
-    on_error_recover_with_passphrase:(error);
+        on_error_recover_with_passphrase(error);
     };
 }
 
@@ -1622,7 +1622,7 @@ MyWalletPhone.resendTwoFactorSms = function(user_guid, sessionToken) {
         var parsedError = JSON.parse(error);
         console.log('Resend two factor SMS error: ');
         console.log(parsedError);
-    on_resend_two_factor_sms_error:(parsedError['initial_error']);
+        on_resend_two_factor_sms_error(parsedError['initial_error']);
     }
     
     WalletNetwork.resendTwoFactorSms(user_guid, sessionToken).then(success).catch(error);
