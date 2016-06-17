@@ -57,7 +57,8 @@
     NSData* data = [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
     status = [NSString stringWithFormat:@"%li", (long)[response statusCode]];
     self.responseText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-
+    _responseHeaders = response.allHeaderFields;
+    
     if (!error && _onLoad)
         [[_onLoad.value invokeMethod:@"bind" withArguments:@[self]] callWithArguments:NULL];
     else if (error && _onError)

@@ -599,7 +599,7 @@ MyWalletPhone.getLegacyArchivedAddresses = function() {
 
 MyWalletPhone.getSessionToken = function() {
     WalletNetwork.obtainSessionToken().then(function (sessionToken) {
-        device.execute('on_get_session_token:', [sessionToken]);
+        on_get_session_token(sessionToken);
     });
 }
 

@@ -243,6 +243,10 @@
         [weakSelf on_backup_wallet_success];
     };
     
+    self.context[@"on_get_session_token"] = ^(NSString *token) {
+        [weakSelf on_get_session_token:token];
+    };
+    
     self.context[@"ws_on_open"] = ^() {
         [weakSelf ws_on_open];
     };
