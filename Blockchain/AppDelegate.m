@@ -306,7 +306,7 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] setBool:symbolLocal forKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self reloadTopLevelViewControllers];
+    [self reloadSymbols];
 }
 
 - (NSInteger)filterIndex
@@ -357,13 +357,12 @@ void (^secondPasswordSuccess)(NSString *);
     [_tabViewController setActiveViewController:_transactionsViewController animated:FALSE index:1];
 }
 
-- (void)reloadTopLevelViewControllers
+- (void)reloadSymbols
 {
-    [_sendViewController reload];
-    [_transactionsViewController reload];
-    [_receiveViewController reload];
-    [_accountsAndAddressesNavigationController reload];
+    [_sendViewController reloadSymbols];
     
+    [_transactionsViewController reload];
+    [_accountsAndAddressesNavigationController reload];
     [sideMenuViewController reload];
 }
 

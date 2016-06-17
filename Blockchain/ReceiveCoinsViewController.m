@@ -269,6 +269,13 @@ NSString *detailLabel;
         [mainAddressLabel setAdjustsFontSizeToFitWidth:YES];
         [self.headerView addSubview:mainAddressLabel];
         
+        informationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
+        [informationButton setImage:[UIImage imageNamed:@"icon_support"] forState:UIControlStateNormal];
+        informationButton.center = self.view.center;
+        informationButton.frame = CGRectMake(informationButton.frame.origin.x, self.headerView.frame.size.height + 4, informationButton.frame.size.width, informationButton.frame.size.height);
+        [informationButton addTarget:self action:@selector(informationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:informationButton];
+        
         [self setupTapGestureForMainLabel];
         [self updateUI];
     }
@@ -479,6 +486,12 @@ NSString *detailLabel;
             [labelTextField becomeFirstResponder];
         }
     });
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        informationButton.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        informationButton.userInteractionEnabled = NO;
+    }];
 }
 
 - (void)hideKeyboard
@@ -488,6 +501,12 @@ NSString *detailLabel;
     [labelTextField resignFirstResponder];
     [self.receiveFiatField resignFirstResponder];
     [self.receiveBtcField resignFirstResponder];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        informationButton.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        informationButton.userInteractionEnabled = YES;
+    }];
 }
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString
@@ -585,11 +604,28 @@ NSString *detailLabel;
     self.receiveFiatField.text = nil;
 }
 
+- (void)informationButtonClicked:(UIButton *)sender
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_INFORMATION message:BC_STRING_INFORMATION_RECEIVE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_LEARN_MORE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:INFORMATION_RECEIVE_URL]];
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 # pragma mark - UITextField delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (app.slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            informationButton.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            informationButton.userInteractionEnabled = YES;
+        }];
+        
         return NO;
     }
     

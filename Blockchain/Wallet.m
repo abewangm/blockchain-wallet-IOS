@@ -855,8 +855,6 @@
     self.isSyncing = YES;
     
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.toggleArchived(\"%@\")", [address escapeStringForJS]]];
-    
-    [self getHistory];
 }
 
 - (void)toggleArchiveAccount:(int)account
@@ -868,8 +866,6 @@
     self.isSyncing = YES;
     
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.toggleArchived(%d)", account]];
-    
-    [self getHistory];
 }
 
 - (void)archiveTransferredAddresses:(NSArray *)transferredAddresses
@@ -1589,6 +1585,8 @@
 - (void)on_tx_received
 {
     DLog(@"on_tx_received");
+    
+    self.didReceiveMessageForLastTransaction = YES;
     
     if ([delegate respondsToSelector:@selector(receivedTransactionMessage)])
         [delegate receivedTransactionMessage];

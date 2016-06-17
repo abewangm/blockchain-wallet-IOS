@@ -681,9 +681,9 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         device.execute('loading_stop');
         device.execute('show_email_authorization_alert');
     }
-    
-    loading_start_download_wallet();
 
+    loading_start_download_wallet();
+    
     var credentials = {};
 
     credentials.twoFactor = twoFACode ? {type: WalletStore.get2FAType(), code : twoFACode} : null;
