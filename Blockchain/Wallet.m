@@ -1591,12 +1591,12 @@
     
     DLog(@"did_set_latest_block");
     
-    [self parseLatestBlockJSON:[[self.context evaluateScript:@"JSON.stringify(MyWallet.wallet.latestBlock)"] toString]];
+    [self parseLatestBlockJSON:[[self.context evaluateScript:@"MyWalletPhone.didSetLatestBlock()"] toString]];
 }
 
 - (void)parseLatestBlockJSON:(NSString*)latestBlockJSON
 {
-    if ([latestBlockJSON isEqualToString:@"null"]) {
+    if ([latestBlockJSON isEqualToString:@""]) {
         return;
     }
     
