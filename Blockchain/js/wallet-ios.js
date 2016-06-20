@@ -1326,7 +1326,7 @@ WalletCrypto.scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
         salt = salt.toJSON().data;
     }
     
-    device.execute('crypto_scrypt:salt:n:r:p:dkLen:', [passwd, salt, N, r, p, dkLen], function(buffer) {
+    crypto_scrypt_salt_n_r_p_dkLen(passwd, salt, N, r, p, dkLen, function(buffer) {
                    var bytes = new Buffer(buffer, 'hex');
                    
                    callback(bytes);

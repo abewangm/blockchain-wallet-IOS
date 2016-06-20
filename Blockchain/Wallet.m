@@ -239,6 +239,14 @@
         [weakSelf getSecondPassword:nil success:secondPassword error:nil];
     };
     
+    self.context[@"getPrivateKeyPassword"] = ^(JSValue *privateKeyPassword) {
+        [weakSelf getPrivateKeyPassword:nil success:privateKeyPassword error:nil];
+    };
+    
+    self.context[@"crypto_scrypt_salt_n_r_p_dkLen"] = ^(id _password, id salt, NSNumber *N, NSNumber *r, NSNumber *p, NSNumber *derivedKeyLen, JSValue *success, JSValue *error) {
+        [weakSelf crypto_scrypt:_password salt:salt n:N r:r p:p dkLen:derivedKeyLen success:success error:error];
+    };
+    
     self.context[@"on_add_new_account"] = ^() {
         [weakSelf on_add_new_account];
     };
@@ -1701,10 +1709,10 @@
         [delegate receivedTransactionMessage];
 }
 
-- (void)getPrivateKeyPassword:(NSString *)canDiscard success:(void(^)(id))_success error:(void(^)(id))_error
+- (void)getPrivateKeyPassword:(NSString *)canDiscard success:(JSValue *)success error:(void(^)(id))_error
 {
     [app getPrivateKeyPassword:^(NSString *privateKeyPassword) {
-        _success(privateKeyPassword);
+        [success callWithArguments:@[privateKeyPassword]];
     } error:_error];
 }
 
@@ -2659,7 +2667,7 @@
 
 # pragma mark - Cyrpto helpers, called from JS
 
-- (void)crypto_scrypt:(id)_password salt:(id)salt n:(NSNumber*)N r:(NSNumber*)r p:(NSNumber*)p dkLen:(NSNumber*)derivedKeyLen success:(void(^)(id))_success error:(void(^)(id))_error
+- (void)crypto_scrypt:(id)_password salt:(id)salt n:(NSNumber*)N r:(NSNumber*)r p:(NSNumber*)p dkLen:(NSNumber*)derivedKeyLen success:(JSValue *)_success error:(JSValue *)_error
 {
     [app showBusyViewWithLoadingText:BC_STRING_DECRYPTING_PRIVATE_KEY];
     
@@ -2668,11 +2676,10 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (data) {
-                _success([data hexadecimalString]);
+                [_success callWithArguments:@[[data hexadecimalString]]];
             } else {
                 [app hideBusyView];
-                
-                _error(@"Scrypt Error");
+                [_error callWithArguments:@[@"Scrypt Error"]];
             }
         });
     });
