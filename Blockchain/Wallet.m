@@ -271,6 +271,10 @@
         [weakSelf on_tx_received];
     };
     
+    self.context[@"on_add_private_key_start"] = ^() {
+        [weakSelf on_add_private_key_start];
+    };
+    
     self.context[@"on_get_account_info_success"] = ^(NSString *accountInfo) {
         [weakSelf on_get_account_info_success:accountInfo];
     };
@@ -416,16 +420,6 @@
             return [[NSData new] hexadecimalString];
         };
         
-        printf("salt: ");
-        for(int i = 0; i < _saltBuffLen; i++) {
-            printf("%02x", _saltBuff[i]);
-        } printf("\n");
-        
-        printf("out: ");
-        for(int i=0;i<keylength;i++) {
-            printf("%02x", finalOut[i]);
-        } printf("\n");
-        
         DLog(@"finalOut: %s", finalOut);
         
         return [[NSData dataWithBytesNoCopy:finalOut length:keylength] hexadecimalString];
@@ -517,12 +511,8 @@
 
 # pragma mark - Socket Delegate
 
-// subscribe to MyWallet.ws.msgAddrSub on address creation
-// subscribe to MyWallet.ws.msgXPUBSub on account creation
-
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
-    // set ping
     DLog(@"websocket opened");
     NSString *message = [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
     [webSocket sendString:message];
@@ -535,7 +525,7 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
-    DLog(@"websocket closed: code %i, reason: %@", code, reason);
+    DLog(@"websocket closed: code %li, reason: %@", code, reason);
     if (self.webSocket.readyState != 1) {
         DLog(@"reconnecting websocket");
         [self setupWebSocket];
