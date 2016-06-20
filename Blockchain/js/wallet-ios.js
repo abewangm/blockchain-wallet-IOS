@@ -1747,3 +1747,7 @@ MyWalletPhone.filteredWalletJSON = function() {
 MyWalletPhone.dust = function() {
     return Bitcoin.networks.bitcoin.dustThreshold;
 }
+
+MyWallet.socketConnect = function() {
+    // override socketConnect to prevent memory leaks
+}
