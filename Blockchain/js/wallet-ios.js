@@ -1313,6 +1313,10 @@ MyWalletPhone.getSecondPassword = function(callback) {
 
 // Overrides
 
+MyWallet.socketConnect = function() {
+    // override socketConnect to prevent memory leaks
+}
+
 WalletCrypto.scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
     if(typeof(passwd) !== 'string') {
         passwd = passwd.toJSON().data;
@@ -1748,6 +1752,7 @@ MyWalletPhone.dust = function() {
     return Bitcoin.networks.bitcoin.dustThreshold;
 }
 
-MyWallet.socketConnect = function() {
-    // override socketConnect to prevent memory leaks
+MyWalletPhone.labelForLegacyAddress = function(key) {
+    var label = MyWallet.wallet.key(key).label;
+    return label == null ? '' : label;
 }

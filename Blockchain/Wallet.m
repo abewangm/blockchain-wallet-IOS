@@ -420,8 +420,6 @@
             return [[NSData new] hexadecimalString];
         };
         
-        DLog(@"finalOut: %s", finalOut);
-        
         return [[NSData dataWithBytesNoCopy:finalOut length:keylength] hexadecimalString];
     };
     
@@ -860,7 +858,7 @@
     }
     
     if ([self checkIfWalletHasAddress:address]) {
-        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.key(\"%@\").label", [address escapeStringForJS]]] toString];
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.labelForLegacyAddress(\"%@\")", [address escapeStringForJS]]] toString];
     } else {
         return nil;
     }
