@@ -1059,7 +1059,8 @@ MyWalletPhone.addAddressBookEntry = function(bitcoinAddress, label) {
 
 MyWalletPhone.detectPrivateKeyFormat = function(privateKeyString) {
     try {
-        return Helpers.detectPrivateKeyFormat(privateKeyString);
+        var format = Helpers.detectPrivateKeyFormat(privateKeyString);
+        return format == null ? '' : format;
     } catch(e) {
         return null;
     }
@@ -1249,7 +1250,7 @@ MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) 
         if (address.address != legacyAddress) {
             on_add_incorrect_private_key(legacyAddress);
         } else {
-            on_add_private_key_to_legacy_address(legacyAddress);
+            on_add_private_key_to_legacy_address();
         }
     };
     var error = function(message) {

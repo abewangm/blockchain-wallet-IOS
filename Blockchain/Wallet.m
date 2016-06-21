@@ -283,6 +283,22 @@
         [weakSelf on_add_private_key_start];
     };
     
+    self.context[@"on_add_incorrect_private_key"] = ^(NSString *address) {
+        [weakSelf on_add_incorrect_private_key:address];
+    };
+    
+    self.context[@"on_add_private_key_to_legacy_address"] = ^() {
+        [weakSelf on_add_private_key_to_legacy_address];
+    };
+    
+    self.context[@"on_success_import_key_for_sending_from_watch_only"] = ^() {
+        [weakSelf on_success_import_key_for_sending_from_watch_only];
+    };
+    
+    self.context[@"on_error_import_key_for_sending_from_watch_only"] = ^(NSString *error) {
+        [weakSelf on_error_import_key_for_sending_from_watch_only:error];
+    };
+    
     self.context[@"on_get_account_info_success"] = ^(NSString *accountInfo) {
         [weakSelf on_get_account_info_success:accountInfo];
     };
