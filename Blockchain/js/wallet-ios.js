@@ -310,6 +310,8 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
     } else if (accountOrAddress) {
         MyWallet.wallet.key(accountOrAddress).archived = !MyWallet.wallet.key(accountOrAddress).archived;
     }
+    
+    MyWalletPhone.get_history();
 }
 
 MyWalletPhone.archiveTransferredAddresses = function(addresses) {
