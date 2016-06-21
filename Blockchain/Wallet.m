@@ -379,6 +379,14 @@
         [weakSelf loading_start_transfer_all:index];
     };
     
+    self.context[@"loading_start_generate_uuids"] = ^() {
+        [weakSelf loading_start_generate_uuids];
+    };
+    
+    self.context[@"loading_start_recover_wallet"] = ^() {
+        [weakSelf loading_start_recover_wallet];
+    };
+    
     self.context[@"update_loaded_all_transactions"] = ^(NSNumber *index) {
         [weakSelf update_loaded_all_transactions:index];
     };
