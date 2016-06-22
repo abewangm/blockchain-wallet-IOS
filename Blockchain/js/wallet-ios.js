@@ -49,14 +49,14 @@ WalletStore.addEventListener(function (event, obj) {
             try {
                 var messageJSON = JSON.parse(obj.message);
                 if (messageJSON && messageJSON.initial_error) {
-                    makeNotice:id:message:(''+obj.type, ''+obj.code, ''+messageJSON.initial_error);
+                    makeNotice_id_message(''+obj.type, ''+obj.code, ''+messageJSON.initial_error);
                     return;
                 }
             } catch (e) {
             }
-            makeNotice:id:message:(''+obj.type, ''+obj.code, ''+obj.message);
+            makeNotice_id_message(''+obj.type, ''+obj.code, ''+obj.message);
         } else if (obj.type == 'success') {
-            makeNotice:id:message:(''+obj.type, ''+obj.code, ''+obj.message);
+            makeNotice_id_message(''+obj.type, ''+obj.code, ''+obj.message);
         }
             return;
     }

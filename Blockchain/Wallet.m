@@ -430,6 +430,10 @@
         [weakSelf on_tx_received];
     };
     
+    self.context[@"makeNotice_id_message"] = ^(NSString *type, NSString *_id, NSString *message) {
+        [weakSelf makeNotice:type id:_id message:message];
+    };
+    
 #pragma mark Recovery
     
     self.context[@"loading_start_generate_uuids"] = ^() {
