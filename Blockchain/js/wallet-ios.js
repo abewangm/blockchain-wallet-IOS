@@ -979,8 +979,6 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName) {
         }
     };
     
-    loading_start_new_account();
-    
     MyWallet.createNewWallet(email, password, firstAccountName, null, null, success, error);
 };
 
