@@ -321,6 +321,21 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT @"0%@000"
 #define FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT @"0%@00"
 
+#define JAVASCRIPTCORE_RESOURCE_MY_WALLET @"my-wallet"
+#define JAVASCRIPTCORE_RESOURCE_WALLET_IOS @"wallet-ios"
+#define JAVASCRIPTCORE_TYPE_JS @"js"
+
+#define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0};\n%@\n%@"
+
+#define JAVASCRIPTCORE_CLASS_XMLHTTPREQUEST @"XMLHttpRequest"
+#define JAVASCRIPTCORE_STACK @"stack"
+#define JAVASCRIPTCORE_LINE @"line"
+#define JAVASCRIPTCORE_CONSOLE_INIT @"var console = {}"
+#define JAVASCRIPTCORE_CONSOLE @"console"
+#define JAVASCRIPTCORE_LOG @"log"
+#define JAVASCRIPTCORE_SET_TIMEOUT @"setTimeout"
+#define JAVASCRIPTCORE_SET_INTERVAL @"setInterval"
+
 #pragma mark - Constants
 
 #define SATOSHI 1e8 // 100,000,000

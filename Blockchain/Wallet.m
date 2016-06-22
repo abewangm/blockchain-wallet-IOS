@@ -75,31 +75,31 @@
         || {getRandomValues: function(){}}
      */
     
-    NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:@"my-wallet" ofType:@"js"];
-    NSString *walletiOSPath = [[NSBundle mainBundle] pathForResource:@"wallet-ios" ofType:@"js"];
+    NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_MY_WALLET ofType:JAVASCRIPTCORE_TYPE_JS];
+    NSString *walletiOSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_WALLET_IOS ofType:JAVASCRIPTCORE_TYPE_JS];
     NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
     NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
     
-    NSString *jsSource = [NSString stringWithFormat:@"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0};\n%@\n%@", walletJSSource, walletiOSSource];
+    NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT, walletJSSource, walletiOSSource];
     self.context = [[JSContext alloc] init];
     
-    self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
+    self.context[JAVASCRIPTCORE_CLASS_XMLHTTPREQUEST] = [ModuleXMLHttpRequest class];
     
     self.context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
-        NSString *stacktrace = [[exception objectForKeyedSubscript:@"stack"] toString];
+        NSString *stacktrace = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_STACK] toString];
         // type of Number
-        NSString *lineNumber = [[exception objectForKeyedSubscript:@"line"] toString];
+        NSString *lineNumber = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_LINE] toString];
         
         DLog(@"%@ \nstack: %@\nline number: %@", [exception toString], stacktrace, lineNumber);
     };
     
-    [self.context evaluateScript:@"var console = {}"];
-    self.context[@"console"][@"log"] = ^(NSString *message) {
+    [self.context evaluateScript:JAVASCRIPTCORE_CONSOLE_INIT];
+    self.context[JAVASCRIPTCORE_CONSOLE][JAVASCRIPTCORE_LOG] = ^(NSString *message) {
         DLog(@"Javascript log: %@",message);
     };
     
     // Add setTimout
-    self.context[@"setTimeout"] = ^(JSValue* function, JSValue* timeout) {
+    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* function, JSValue* timeout) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)([timeout toInt32] * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
             [function callWithArguments:@[]];
         });
@@ -108,7 +108,7 @@
     dispatch_queue_t jsQueue = dispatch_queue_create("com.some.identifier",
                                                      DISPATCH_QUEUE_SERIAL);
     
-    self.context[@"setInterval"] = ^(int ms, JSValue *callback) {
+    self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(int ms, JSValue *callback) {
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:ms/1000
                                                           target:[NSBlockOperation blockOperationWithBlock:^{
             dispatch_async(jsQueue, ^{
@@ -122,6 +122,46 @@
     };
     
     __weak Wallet *weakSelf = self;
+    
+#pragma mark Decryption
+    
+    self.context[@"objc_sjcl_misc_pbkdf2"] = ^(NSString *_password, id _salt, int iterations, int keylength, NSString *hmacSHA1) {
+        
+        uint8_t * finalOut = malloc(keylength);
+        
+        uint8_t * _saltBuff = NULL;
+        size_t _saltBuffLen = 0;
+        
+        if ([_salt isKindOfClass:[NSArray class]]) {
+            _saltBuff = alloca([_salt count]);
+            _saltBuffLen = [_salt count];
+            
+            {
+                int ii = 0;
+                for (NSNumber * number in _salt) {
+                    _saltBuff[ii] = [number shortValue];
+                    ++ii;
+                }
+            }
+        } else if ([_salt isKindOfClass:[NSString class]]) {
+            _saltBuff = (uint8_t*)[_salt UTF8String];
+            _saltBuffLen = [_salt length];
+        } else {
+            DLog(@"Scrypt salt unsupported type");
+            return [[NSData new] hexadecimalString];
+        }
+        
+        if (PKCS5_PBKDF2_HMAC_SHA1([_password UTF8String], (int)_password.length, _saltBuff, (int)_saltBuffLen, iterations, keylength, finalOut) == 0) {
+            return [[NSData new] hexadecimalString];
+        };
+        
+        return [[NSData dataWithBytesNoCopy:finalOut length:keylength] hexadecimalString];
+    };
+    
+    self.context[@"on_error_creating_new_account"] = ^(NSString *error) {
+        [weakSelf on_error_creating_new_account:error];
+    };
+    
     self.context[@"on_pin_code_get_response"] = ^(NSDictionary *response) {
         [weakSelf on_pin_code_get_response:response];
     };
@@ -142,6 +182,10 @@
         [weakSelf did_decrypt];
     };
     
+    self.context[@"error_other_decrypting_wallet"] = ^(NSString *error) {
+        [weakSelf error_other_decrypting_wallet:error];
+    };
+    
     self.context[@"loading_start_decrypt_wallet"] = ^(){
         [weakSelf loading_start_decrypt_wallet];
     };
@@ -153,6 +197,8 @@
     self.context[@"loading_start_multiaddr"] = ^(){
         [weakSelf loading_start_multiaddr];
     };
+
+#pragma mark Multiaddress
     
     self.context[@"did_set_latest_block"] = ^(){
         [weakSelf did_set_latest_block];
@@ -169,6 +215,16 @@
     self.context[@"on_get_history_success"] = ^(){
         [weakSelf on_get_history_success];
     };
+    
+    self.context[@"on_error_get_history"] = ^(NSString *error) {
+        [weakSelf on_error_get_history:error];
+    };
+    
+    self.context[@"update_loaded_all_transactions"] = ^(NSNumber *index) {
+        [weakSelf update_loaded_all_transactions:index];
+    };
+    
+#pragma mark Send Screen
     
     self.context[@"update_send_balance"] = ^(NSNumber *balance) {
         [weakSelf update_send_balance:balance];
@@ -218,6 +274,32 @@
         [weakSelf tx_on_finish_signing:transactionId];
     };
     
+    self.context[@"on_error_update_fee"] = ^(NSDictionary *error) {
+        [weakSelf on_error_update_fee:error];
+    };
+    
+    self.context[@"on_success_import_key_for_sending_from_watch_only"] = ^() {
+        [weakSelf on_success_import_key_for_sending_from_watch_only];
+    };
+    
+    self.context[@"on_error_import_key_for_sending_from_watch_only"] = ^(NSString *error) {
+        [weakSelf on_error_import_key_for_sending_from_watch_only:error];
+    };
+    
+    self.context[@"on_payment_notice"] = ^(NSString *notice) {
+        [weakSelf on_payment_notice:notice];
+    };
+    
+    self.context[@"tx_on_error_error_secondPassword"] = ^(NSString *txId, NSString *error, NSString *secondPassword) {
+        [weakSelf tx_on_error:txId error:error secondPassword:secondPassword];
+    };
+    
+#pragma mark Wallet Creation/Pairing
+    
+    self.context[@"on_create_new_account_sharedKey_password"] = ^(NSString *_guid, NSString *_sharedKey, NSString *_password) {
+        [weakSelf on_create_new_account:_guid sharedKey:_sharedKey password:_password];
+    };
+    
     self.context[@"didParsePairingCode"] = ^(NSDictionary *pairingCode) {
         [weakSelf didParsePairingCode:pairingCode];
     };
@@ -242,6 +324,26 @@
         [weakSelf getPrivateKeyPassword:nil success:privateKeyPassword error:nil];
     };
     
+    self.context[@"on_resend_two_factor_sms_success"] = ^() {
+        [weakSelf on_resend_two_factor_sms_success];
+    };
+    
+    self.context[@"on_resend_two_factor_sms_error"] = ^(NSString *error) {
+        [weakSelf on_resend_two_factor_sms_error:error];
+    };
+    
+#pragma mark Accounts/Addresses
+    
+    self.context[@"getRandomBytes"] = ^(NSNumber *count) {
+        DLog(@"getObjCRandomValues");
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/random"];
+        if (!fileHandle) {
+            return @"";
+        }
+        NSData *data = [fileHandle readDataOfLength:[count intValue]];
+        return [data hexadecimalString];
+    };
+
     self.context[@"crypto_scrypt_salt_n_r_p_dkLen"] = ^(id _password, id salt, NSNumber *N, NSNumber *r, NSNumber *p, NSNumber *derivedKeyLen, JSValue *success, JSValue *error) {
         [weakSelf crypto_scrypt:_password salt:salt n:N r:r p:p dkLen:derivedKeyLen success:success error:error];
     };
@@ -250,9 +352,59 @@
         [weakSelf on_add_new_account];
     };
     
+    self.context[@"on_error_add_new_account"] = ^(NSString *error) {
+        [weakSelf on_error_add_new_account:error];
+    };
+    
     self.context[@"loading_start_new_account"] = ^() {
         [weakSelf loading_start_new_account];
     };
+    
+    self.context[@"on_add_private_key_start"] = ^() {
+        [weakSelf on_add_private_key_start];
+    };
+    
+    self.context[@"on_add_incorrect_private_key"] = ^(NSString *address) {
+        [weakSelf on_add_incorrect_private_key:address];
+    };
+    
+    self.context[@"on_add_private_key_to_legacy_address"] = ^() {
+        [weakSelf on_add_private_key_to_legacy_address];
+    };
+    
+    self.context[@"on_add_key"] = ^(NSString *key) {
+        [weakSelf on_add_key:key];
+    };
+    
+    self.context[@"on_error_adding_private_key"] = ^(NSString *key) {
+        [weakSelf on_error_adding_private_key:key];
+    };
+    
+    self.context[@"on_add_incorrect_private_key"] = ^(NSString *key) {
+        [weakSelf on_add_incorrect_private_key:key];
+    };
+    
+    self.context[@"on_error_adding_private_key_watch_only"] = ^(NSString *key) {
+        [weakSelf on_error_adding_private_key_watch_only:key];
+    };
+    
+    self.context[@"update_transfer_all_amount_fee_addressesUsed"] = ^(NSNumber *amount, NSNumber *fee, NSArray *addressesUsed) {
+        [weakSelf update_transfer_all_amount:amount fee:fee addressesUsed:addressesUsed];
+    };
+    
+    self.context[@"loading_start_transfer_all"] = ^(NSNumber *index) {
+        [weakSelf loading_start_transfer_all:index];
+    };
+    
+    self.context[@"on_error_transfer_all_secondPassword"] = ^(NSString *error, NSString *secondPassword) {
+        [weakSelf on_error_transfer_all:error secondPassword:secondPassword];
+    };
+    
+    self.context[@"send_transfer_all"] = ^(NSString *secondPassword) {
+        [weakSelf send_transfer_all:secondPassword];
+    };
+    
+#pragma mark State
     
     self.context[@"reload"] = ^() {
         [weakSelf reload];
@@ -278,25 +430,25 @@
         [weakSelf on_tx_received];
     };
     
-    self.context[@"on_add_private_key_start"] = ^() {
-        [weakSelf on_add_private_key_start];
+#pragma mark Recovery
+    
+    self.context[@"loading_start_generate_uuids"] = ^() {
+        [weakSelf loading_start_generate_uuids];
     };
     
-    self.context[@"on_add_incorrect_private_key"] = ^(NSString *address) {
-        [weakSelf on_add_incorrect_private_key:address];
+    self.context[@"loading_start_recover_wallet"] = ^() {
+        [weakSelf loading_start_recover_wallet];
     };
     
-    self.context[@"on_add_private_key_to_legacy_address"] = ^() {
-        [weakSelf on_add_private_key_to_legacy_address];
+    self.context[@"on_success_recover_with_passphrase"] = ^(NSDictionary *totalReceived, NSString *finalBalance) {
+        [weakSelf on_success_recover_with_passphrase:totalReceived];
     };
     
-    self.context[@"on_success_import_key_for_sending_from_watch_only"] = ^() {
-        [weakSelf on_success_import_key_for_sending_from_watch_only];
+    self.context[@"on_error_recover_with_passphrase"] = ^(NSString *error) {
+        [weakSelf on_error_recover_with_passphrase:error];
     };
     
-    self.context[@"on_error_import_key_for_sending_from_watch_only"] = ^(NSString *error) {
-        [weakSelf on_error_import_key_for_sending_from_watch_only:error];
-    };
+#pragma mark Settings
     
     self.context[@"on_get_account_info_success"] = ^(NSString *accountInfo) {
         [weakSelf on_get_account_info_success:accountInfo];
@@ -318,94 +470,6 @@
         [weakSelf on_success_get_recovery_phrase:recoveryPhrase];
     };
     
-    self.context[@"on_success_recover_with_passphrase"] = ^(NSDictionary *totalReceived, NSString *finalBalance) {
-        [weakSelf on_success_recover_with_passphrase:totalReceived];
-    };
-    
-    self.context[@"on_error_recover_with_passphrase"] = ^(NSString *error) {
-        [weakSelf on_error_recover_with_passphrase:error];
-    };
-    
-    self.context[@"on_error_add_new_account"] = ^(NSString *error) {
-        [weakSelf on_error_add_new_account:error];
-    };
-    
-    self.context[@"on_error_update_fee"] = ^(NSDictionary *error) {
-        [weakSelf on_error_update_fee:error];
-    };
-    
-    self.context[@"on_error_get_history"] = ^(NSString *error) {
-        [weakSelf on_error_get_history:error];
-    };
-    
-    self.context[@"on_error_creating_new_account"] = ^(NSString *error) {
-        [weakSelf on_error_creating_new_account:error];
-    };
-    
-    self.context[@"error_other_decrypting_wallet"] = ^(NSString *error) {
-        [weakSelf error_other_decrypting_wallet:error];
-    };
-    
-    self.context[@"on_add_key"] = ^(NSString *key) {
-        [weakSelf on_add_key:key];
-    };
-    
-    self.context[@"on_error_adding_private_key"] = ^(NSString *key) {
-        [weakSelf on_error_adding_private_key:key];
-    };
-    
-    self.context[@"on_error_import_key_for_sending_from_watch_only"] = ^(NSString *key) {
-        [weakSelf on_error_import_key_for_sending_from_watch_only:key];
-    };
-    
-    self.context[@"on_add_incorrect_private_key"] = ^(NSString *key) {
-        [weakSelf on_add_incorrect_private_key:key];
-    };
-    
-    self.context[@"on_error_adding_private_key_watch_only"] = ^(NSString *key) {
-        [weakSelf on_error_adding_private_key_watch_only:key];
-    };
-    
-    self.context[@"update_transfer_all_amount_fee_addressesUsed"] = ^(NSNumber *amount, NSNumber *fee, NSArray *addressesUsed) {
-        [weakSelf update_transfer_all_amount:amount fee:fee addressesUsed:addressesUsed];
-    };
-    
-    self.context[@"loading_start_transfer_all"] = ^(NSNumber *index) {
-        [weakSelf loading_start_transfer_all:index];
-    };
-    
-    self.context[@"loading_start_generate_uuids"] = ^() {
-        [weakSelf loading_start_generate_uuids];
-    };
-    
-    self.context[@"loading_start_recover_wallet"] = ^() {
-        [weakSelf loading_start_recover_wallet];
-    };
-    
-    self.context[@"update_loaded_all_transactions"] = ^(NSNumber *index) {
-        [weakSelf update_loaded_all_transactions:index];
-    };
-    
-    self.context[@"tx_on_error_error_secondPassword"] = ^(NSString *txId, NSString *error, NSString *secondPassword) {
-        [weakSelf tx_on_error:txId error:error secondPassword:secondPassword];
-    };
-    
-    self.context[@"on_error_transfer_all_secondPassword"] = ^(NSString *error, NSString *secondPassword) {
-        [weakSelf on_error_transfer_all:error secondPassword:secondPassword];
-    };
-    
-    self.context[@"send_transfer_all"] = ^(NSString *secondPassword) {
-        [weakSelf send_transfer_all:secondPassword];
-    };
-    
-    self.context[@"on_payment_notice"] = ^(NSString *notice) {
-        [weakSelf on_payment_notice:notice];
-    };
-    
-    self.context[@"on_resend_two_factor_sms_success"] = ^() {
-        [weakSelf on_resend_two_factor_sms_success];
-    };
-    
     self.context[@"on_change_local_currency_success"] = ^() {
         [weakSelf on_change_local_currency_success];
     };
@@ -424,10 +488,6 @@
     
     self.context[@"on_change_email_notifications_error"] = ^() {
         [weakSelf on_change_email_notifications_error];
-    };
-    
-    self.context[@"on_resend_two_factor_sms_error"] = ^(NSString *error) {
-        [weakSelf on_resend_two_factor_sms_error:error];
     };
     
     self.context[@"on_update_tor_success"] = ^() {
@@ -476,53 +536,6 @@
     
     self.context[@"on_resend_verification_email_success"] = ^() {
         [weakSelf on_resend_verification_email_success];
-    };
-
-    self.context[@"getRandomBytes"] = ^(NSNumber *count) {
-        DLog(@"getObjCRandomValues");
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/random"];
-        if (!fileHandle) {
-            return @"";
-        }
-        NSData *data = [fileHandle readDataOfLength:[count intValue]];
-        return [data hexadecimalString];
-    };
-    
-    self.context[@"on_create_new_account_sharedKey_password"] = ^(NSString *_guid, NSString *_sharedKey, NSString *_password) {
-        [weakSelf on_create_new_account:_guid sharedKey:_sharedKey password:_password];
-    };
-    
-    self.context[@"objc_sjcl_misc_pbkdf2"] = ^(NSString *_password, id _salt, int iterations, int keylength, NSString *hmacSHA1) {
-        
-        uint8_t * finalOut = malloc(keylength);
-        
-        uint8_t * _saltBuff = NULL;
-        size_t _saltBuffLen = 0;
-        
-        if ([_salt isKindOfClass:[NSArray class]]) {
-            _saltBuff = alloca([_salt count]);
-            _saltBuffLen = [_salt count];
-            
-            {
-                int ii = 0;
-                for (NSNumber * number in _salt) {
-                    _saltBuff[ii] = [number shortValue];
-                    ++ii;
-                }
-            }
-        } else if ([_salt isKindOfClass:[NSString class]]) {
-            _saltBuff = (uint8_t*)[_salt UTF8String];
-            _saltBuffLen = [_salt length];
-        } else {
-            DLog(@"Scrypt salt unsupported type");
-            return [[NSData new] hexadecimalString];
-        }
-        
-        if (PKCS5_PBKDF2_HMAC_SHA1([_password UTF8String], (int)_password.length, _saltBuff, (int)_saltBuffLen, iterations, keylength, finalOut) == 0) {
-            return [[NSData new] hexadecimalString];
-        };
-        
-        return [[NSData dataWithBytesNoCopy:finalOut length:keylength] hexadecimalString];
     };
     
     [self.context evaluateScript:jsSource];
