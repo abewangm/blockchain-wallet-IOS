@@ -1633,34 +1633,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showSupport
 {
-    // Send email using the Message UI Framework: http://stackoverflow.com/a/1513433/2076094
-    // If the user has not email account set up, he should get a notification saying he can't send emails (tested on iOS 7.1.1)
-    MFMailComposeViewController *emailViewController = [[MFMailComposeViewController alloc] init];
-    
-    if (emailViewController != nil) {
-        emailViewController.mailComposeDelegate = self;
-        emailViewController.navigationBar.tintColor = COLOR_BLOCKCHAIN_BLUE;
-        [emailViewController setToRecipients:@[SUPPORT_EMAIL_ADDRESS]];
-        [emailViewController setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
-        
-        NSString *message = [NSString stringWithFormat:@"Dear Blockchain Support,\n\n\n\n--\nApp: %@\nSystem: %@ %@\nDevice: %@\n",
-                             [UncaughtExceptionHandler appNameAndVersionNumberDisplayString],
-                             [[UIDevice currentDevice] systemName],
-                             [[UIDevice currentDevice] systemVersion],
-                             [DeviceIdentifier deviceName]];
-        [emailViewController setMessageBody:message isHTML:NO];
-        
-        emailViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self.tabViewController presentViewController:emailViewController animated:YES completion:^{
-            UIAlertController *instructionsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_SUPPORT_EMAIL_SUBJECT message:BC_STRING_SUPPORT_INSTRUCTIONS preferredStyle:UIAlertControllerStyleAlert];
-            [instructionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-            [emailViewController presentViewController:instructionsAlert animated:YES completion:nil];
-        }];
-    } else {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_NO_EMAIL_CONFIGURED, SUPPORT_EMAIL_ADDRESS] preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
-    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_OPEN_ARGUMENT, SUPPORT_URL] message:BC_STRING_LEAVE_APP preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SUPPORT_URL]];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)showSendCoins

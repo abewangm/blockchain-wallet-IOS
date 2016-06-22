@@ -308,7 +308,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NIB_NAME_MERCHANT_MAP_VIEW @"MerchantMapView"
 #define NIB_NAME_RECEIVE_COINS @"ReceiveCoins"
 
-#define SUPPORT_EMAIL_ADDRESS @"support@blockchain.zendesk.com"
+#define SUPPORT_URL @"https://support.blockchain.com"
 
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
 #define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"

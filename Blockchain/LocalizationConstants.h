@@ -117,7 +117,6 @@
 
 #define BC_STRING_OK NSLocalizedString(@"OK", nil)
 #define BC_STRING_FAILED_TO_LOAD_WALLET_TITLE NSLocalizedString(@"Failed To Load Wallet", nil)
-#define BC_STRING_WALLET_VERSION_NOT_SUPPORTED NSLocalizedString(@"Wallet version %lld not supported", nil)
 
 #define BC_STRING_NO_INTERNET_CONNECTION NSLocalizedString(@"No internet connection.", nil)
 #define BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION NSLocalizedString(@"Request failed. Please check your internet connection.", nil)
@@ -240,6 +239,8 @@
 #define BC_STRING_GO_TO_SETTINGS NSLocalizedString(@"Go to Settings", nil)
 
 #define BC_STRING_SUPPORT NSLocalizedString(@"Support", nil)
+#define BC_STRING_OPEN_ARGUMENT NSLocalizedString(@"Open %@?", nil)
+#define BC_STRING_LEAVE_APP NSLocalizedString(@"You will be leaving the app.", nil)
 
 #define BC_STRING_TERMS_OF_SERVICE NSLocalizedString(@"Terms of Service", nil)
 #define BC_STRING_TRANSACTION NSLocalizedString(@"Transaction", nil)

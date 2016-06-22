@@ -327,10 +327,6 @@
         [weakSelf on_error_recover_with_passphrase:error];
     };
     
-    self.context[@"on_resend_two_factor_sms_error"] = ^(NSString *error) {
-        [weakSelf on_resend_two_factor_sms_error:error];
-    };
-    
     self.context[@"on_error_add_new_account"] = ^(NSString *error) {
         [weakSelf on_error_add_new_account:error];
     };
@@ -399,7 +395,6 @@
         [weakSelf on_error_transfer_all:error secondPassword:secondPassword];
     };
     
-    
     self.context[@"send_transfer_all"] = ^(NSString *secondPassword) {
         [weakSelf send_transfer_all:secondPassword];
     };
@@ -408,6 +403,82 @@
         [weakSelf on_payment_notice:notice];
     };
     
+    self.context[@"on_resend_two_factor_sms_success"] = ^() {
+        [weakSelf on_resend_two_factor_sms_success];
+    };
+    
+    self.context[@"on_change_local_currency_success"] = ^() {
+        [weakSelf on_change_local_currency_success];
+    };
+    
+    self.context[@"on_change_currency_error"] = ^() {
+        [weakSelf on_change_currency_error];
+    };
+    
+    self.context[@"on_change_email_success"] = ^() {
+        [weakSelf on_change_email_success];
+    };
+    
+    self.context[@"on_change_email_notifications_success"] = ^() {
+        [weakSelf on_change_email_notifications_success];
+    };
+    
+    self.context[@"on_change_email_notifications_error"] = ^() {
+        [weakSelf on_change_email_notifications_error];
+    };
+    
+    self.context[@"on_resend_two_factor_sms_error"] = ^(NSString *error) {
+        [weakSelf on_resend_two_factor_sms_error:error];
+    };
+    
+    self.context[@"on_update_tor_success"] = ^() {
+        [weakSelf on_update_tor_success];
+    };
+    
+    self.context[@"on_update_tor_error"] = ^() {
+        [weakSelf on_update_tor_error];
+    };
+    
+    self.context[@"on_change_two_step_success"] = ^() {
+        [weakSelf on_change_two_step_success];
+    };
+    
+    self.context[@"on_change_two_step_error"] = ^() {
+        [weakSelf on_change_two_step_error];
+    };
+    
+    self.context[@"on_update_password_hint_success"] = ^() {
+        [weakSelf on_update_password_hint_success];
+    };
+    
+    self.context[@"on_update_password_hint_error"] = ^() {
+        [weakSelf on_update_password_hint_error];
+    };
+    
+    self.context[@"on_change_password_success"] = ^() {
+        [weakSelf on_change_password_success];
+    };
+    
+    self.context[@"on_change_password_error"] = ^() {
+        [weakSelf on_change_password_error];
+    };
+    
+    self.context[@"on_verify_mobile_number_success"] = ^() {
+        [weakSelf on_verify_mobile_number_success];
+    };
+    
+    self.context[@"on_verify_mobile_number_error"] = ^() {
+        [weakSelf on_verify_mobile_number_error];
+    };
+    
+    self.context[@"on_change_mobile_number_success"] = ^() {
+        [weakSelf on_change_mobile_number_success];
+    };
+    
+    self.context[@"on_resend_verification_email_success"] = ^() {
+        [weakSelf on_resend_verification_email_success];
+    };
+
     self.context[@"getRandomBytes"] = ^(NSNumber *count) {
         DLog(@"getObjCRandomValues");
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/random"];
@@ -624,7 +695,7 @@
 
 - (float)getStrengthForPassword:(NSString *)passwordString
 {
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.get_password_strength(\"%@\")", [passwordString escapeStringForJS]]] toDouble];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getPasswordStrength(\"%@\")", [passwordString escapeStringForJS]]] toDouble];
 }
 
 - (void)getHistory
@@ -666,7 +737,7 @@
 
 - (void)getAllCurrencySymbols
 {
-    [self.context evaluateScript:@"JSON.stringify(MyWalletPhone.get_all_currency_symbols())"];
+    [self.context evaluateScript:@"JSON.stringify(MyWalletPhone.getAllCurrencySymbols())"];
 }
 
 - (void)changeLocalCurrency:(NSString *)currencyCode
@@ -675,7 +746,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.change_local_currency(\"%@\")", [currencyCode escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeLocalCurrency(\"%@\")", [currencyCode escapeStringForJS]]];
 }
 
 - (void)changeBtcCurrency:(NSString *)btcCode
@@ -684,7 +755,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.change_btc_currency(\"%@\")", [btcCode escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeBtcCurrency(\"%@\")", [btcCode escapeStringForJS]]];
 }
 
 - (void)getAccountInfo
@@ -693,7 +764,7 @@
         return;
     }
     
-    [self.context evaluateScript:@"JSON.stringify(MyWalletPhone.get_account_info())"];
+    [self.context evaluateScript:@"JSON.stringify(MyWalletPhone.getAccountInfo())"];
 }
 
 - (void)changeEmail:(NSString *)newEmail
@@ -702,7 +773,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.change_email_account(\"%@\")", [newEmail escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeEmail(\"%@\")", [newEmail escapeStringForJS]]];
 }
 
 - (void)resendVerificationEmail:(NSString *)email
@@ -711,7 +782,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.resend_verification_email(\"%@\")", [email escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.resendEmailConfirmation(\"%@\")", [email escapeStringForJS]]];
 }
 
 - (void)changeMobileNumber:(NSString *)newMobileNumber
@@ -720,7 +791,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.change_mobile_number(\"%@\")", [newMobileNumber escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeMobileNumber(\"%@\")", [newMobileNumber escapeStringForJS]]];
 }
 
 - (void)verifyMobileNumber:(NSString *)code
@@ -729,7 +800,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.verify_mobile_number(\"%@\")", [code escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.verifyMobile(\"%@\")", [code escapeStringForJS]]];
 }
 
 - (void)enableTwoStepVerificationForSMS
@@ -738,7 +809,7 @@
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.enable_two_step_verification_sms()"];
+    [self.context evaluateScript:@"MyWalletPhone.setTwoFactorSMS()"];
 }
 
 - (void)disableTwoStepVerification
@@ -747,7 +818,7 @@
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.disable_two_step_verification()"];
+    [self.context evaluateScript:@"MyWalletPhone.unsetTwoFactor()"];
 }
 
 - (void)updatePasswordHint:(NSString *)hint
@@ -756,7 +827,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.update_password_hint(\"%@\")", [hint escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updatePasswordHint(\"%@\")", [hint escapeStringForJS]]];
 }
 
 - (void)changePassword:(NSString *)changedPassword
@@ -765,7 +836,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.change_password(\"%@\")", [changedPassword escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changePassword(\"%@\")", [changedPassword escapeStringForJS]]];
 }
 
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword
@@ -1344,7 +1415,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.update_tor_ip_block(%d)", willEnable]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateTorIpBlock(%d)", willEnable]];
 }
 
 - (void)on_update_tor_success
