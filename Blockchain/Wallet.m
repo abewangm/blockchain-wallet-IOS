@@ -71,9 +71,8 @@
      
      In My-Wallet-V3, you must add global.self = global; to whatwg-fetch/fetch.js.
      
-     In my-wallet.js, delete the crypto line and add the following:
-        var crypto = {}
-        crypto.getRandomValues = function(discard) {}
+     In my-wallet.js, add the following to the definition of global.crypto:
+        || {getRandomValues: function(){}}
      */
     
     NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:@"my-wallet" ofType:@"js"];
