@@ -23,7 +23,6 @@
 ********************************************************************************/
 
 #import "PEViewController.h"
-#import "QRCodeGenerator.h"
 
 @interface PEViewController ()
 
@@ -43,66 +42,29 @@
 {
 	[super viewDidLoad];
     
-//    // Move up pin entry views for bigger screens
-//    if ([[UIScreen mainScreen] bounds].size.height >= 568) {
-//        int moveUp = 60;
-//        
-//        CGRect frame = pin0.frame;
-//        frame.origin.y -= moveUp;
-//        pin0.frame = frame;
-//        
-//        frame = pin1.frame;
-//        frame.origin.y -= moveUp;
-//        pin1.frame = frame;
-//        
-//        frame = pin2.frame;
-//        frame.origin.y -= moveUp;
-//        pin2.frame = frame;
-//        
-//        frame = pin3.frame;
-//        frame.origin.y -= moveUp;
-//        pin3.frame = frame;
-//        
-//        frame = promptLabel.frame;
-//        frame.origin.y -= 48;
-//        promptLabel.frame = frame;
-//    }
-
-    [self.scrollView setUserInteractionEnabled:YES];
-    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height - 20, self.scrollView.frame.size.width, 360);
-    
-    [[NSUserDefaults standardUserDefaults] setValue:@"test123" forKey:@"nextReceivingAddress"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:@"nextReceivingAddress"];
-    NSNumber *nextAddressUsed = [[NSUserDefaults standardUserDefaults] objectForKey:@"nextReceivingAddressUsed"];
-    
-    if (nextAddress) {
-        [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width *2, self.scrollView.frame.size.height)];
-        [self.scrollView setPagingEnabled:YES];
+    // Move up pin entry views for bigger screens
+    if ([[UIScreen mainScreen] bounds].size.height >= 568) {
+        int moveUp = 60;
         
-        // TODO subscribe to websocket for this address
+        CGRect frame = pin0.frame;
+        frame.origin.y -= moveUp;
+        pin0.frame = frame;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:.5 animations:^{
-                self.swipeLabel.alpha = 0;
-            }];
-        });
+        frame = pin1.frame;
+        frame.origin.y -= moveUp;
+        pin1.frame = frame;
         
-        if (![nextAddressUsed boolValue]) {
-            QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
-            
-            UIImageView *qr = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
-            qr.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
-            
-            [self.scrollView addSubview:qr];
-        } else {
-            UILabel *usedLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 0, 320, 30)];
-            usedLabel.text = @"This address has been used";
-            [self.scrollView addSubview:usedLabel];
-        }
-    } else {
-        self.swipeLabel.hidden = YES;
+        frame = pin2.frame;
+        frame.origin.y -= moveUp;
+        pin2.frame = frame;
+        
+        frame = pin3.frame;
+        frame.origin.y -= moveUp;
+        pin3.frame = frame;
+        
+        frame = promptLabel.frame;
+        frame.origin.y -= 48;
+        promptLabel.frame = frame;
     }
     
     pins[0] = pin0;
