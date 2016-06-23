@@ -404,6 +404,10 @@
         [weakSelf send_transfer_all:secondPassword];
     };
     
+    self.context[@"show_summary_for_transfer_all"] = ^() {
+        [weakSelf show_summary_for_transfer_all];
+    };
+    
 #pragma mark State
     
     self.context[@"reload"] = ^() {
