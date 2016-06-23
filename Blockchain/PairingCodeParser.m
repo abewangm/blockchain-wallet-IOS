@@ -112,20 +112,23 @@ BOOL isReadingQRCode;
         AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects objectAtIndex:0];
         if ([[metadataObj type] isEqualToString:AVMetadataObjectTypeQRCode]) {
             // do something useful with results
+            [self stopReadingQRCode];
+            
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [self stopReadingQRCode];
                 
                 [videoPreviewLayer removeFromSuperlayer];
+                
                 [self dismissViewControllerAnimated:YES completion:nil];
-                
-                [app.wallet loadBlankWallet];
-                
-                app.wallet.delegate = self;
-                
+
                 [app showBusyViewWithLoadingText:BC_STRING_PARSING_PAIRING_CODE];
                 
-                [app.wallet parsePairingCode:[metadataObj stringValue]];
             });
+            
+            [app.wallet loadBlankWallet];
+            
+            app.wallet.delegate = self;
+            
+            [app.wallet parsePairingCode:[metadataObj stringValue]];
         }
     }
 }
