@@ -2534,7 +2534,7 @@
 - (void)show_email_authorization_alert
 {
     DLog(@"show_email_authorization_alert");
-    [app standardNotifyAutoDismissingController:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE title:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE];
+    [app authorizationRequired];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

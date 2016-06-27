@@ -116,6 +116,7 @@
 #define BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS NSLocalizedString(@"Please select a different address to send from.", nil)
 
 #define BC_STRING_OK NSLocalizedString(@"OK", nil)
+#define BC_STRING_OPEN_MAIL_APP NSLocalizedString(@"Open Mail App", nil)
 #define BC_STRING_FAILED_TO_LOAD_WALLET_TITLE NSLocalizedString(@"Failed To Load Wallet", nil)
 
 #define BC_STRING_NO_INTERNET_CONNECTION NSLocalizedString(@"No internet connection.", nil)

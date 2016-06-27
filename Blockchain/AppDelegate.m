@@ -857,10 +857,23 @@ void (^secondPasswordSuccess)(NSString *);
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     if (![self isPinSet]) {
-        return NO;
+        if ([[url absoluteString] isEqualToString:[NSString stringWithFormat:@"%@%@", PREFIX_BLOCKCHAIN_WALLET_URI, @"loginAuthorized"]]) {
+            [self manualPairClicked:nil];
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+    
+    if ([[url absoluteString] hasPrefix:PREFIX_BLOCKCHAIN_WALLET_URI]) {
+        return YES;
     }
     
     [app closeModalWithTransition:kCATransitionFade];
+    
+    NSDictionary *dict = [self parseURI:[url absoluteString]];
+    NSString * addr = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
+    NSString * amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
     
     showSendCoins = YES;
     
@@ -868,10 +881,6 @@ void (^secondPasswordSuccess)(NSString *);
         // really no reason to lazyload anymore...
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
-    
-    NSDictionary *dict = [self parseURI:[url absoluteString]];
-    NSString * addr = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
-    NSString * amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
     
     [_sendViewController setAmountFromUrlHandler:amount withToAddress:addr];
     [_sendViewController reload];
@@ -2200,6 +2209,19 @@ void (^secondPasswordSuccess)(NSString *);
     [_receiveViewController storeRequestedAmount];
 }
 
+- (void)authorizationRequired
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE message:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OPEN_MAIL_APP style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
+        if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
+            [[UIApplication sharedApplication] openURL:mailURL];
+        }
+    }]];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback
@@ -2776,13 +2798,6 @@ void (^secondPasswordSuccess)(NSString *);
 - (BOOL)stringHasBitcoinValue:(NSString *)string
 {
     return string != nil && [string doubleValue] > 0;
-}
-
-#pragma mark - Mail compose delegate
-
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
-{
-    [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - State Checks

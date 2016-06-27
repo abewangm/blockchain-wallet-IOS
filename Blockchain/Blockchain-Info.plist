@@ -30,6 +30,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>bitcoin</string>
+				<string>blockchain-wallet</string>
 			</array>
 		</dict>
 	</array>
