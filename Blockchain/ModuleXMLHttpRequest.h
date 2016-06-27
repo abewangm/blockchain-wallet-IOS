@@ -6,7 +6,7 @@
 @property NSString* responseText;
 @property JSValue* onload;
 @property JSValue* onerror;
-@property NSString* status;
+@property NSInteger status;
 
 -(instancetype)init;
 

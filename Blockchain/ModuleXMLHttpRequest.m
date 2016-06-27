@@ -55,7 +55,7 @@
     NSHTTPURLResponse* response;
     NSError* error;
     NSData* data = [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
-    status = [NSString stringWithFormat:@"%li", (long)[response statusCode]];
+    status = [response statusCode];
     self.responseText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     _responseHeaders = response.allHeaderFields;
     
