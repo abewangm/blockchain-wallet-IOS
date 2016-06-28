@@ -334,7 +334,7 @@
     
 #pragma mark Accounts/Addresses
     
-    self.context[@"getRandomBytes"] = ^(NSNumber *count) {
+    self.context[@"objc_getRandomBytes"] = ^(NSNumber *count) {
         DLog(@"getObjCRandomValues");
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/random"];
         if (!fileHandle) {
