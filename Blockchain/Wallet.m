@@ -67,14 +67,6 @@
 
 - (void)loadJS
 {
-    /* NOTE (not final):
-     
-     In My-Wallet-V3, you must add global.self = global; to whatwg-fetch/fetch.js.
-     
-     In my-wallet.js, add the following to the definition of global.crypto:
-        || {getRandomValues: function(){}}
-     */
-    
     NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_MY_WALLET ofType:JAVASCRIPTCORE_TYPE_JS];
     NSString *walletiOSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_WALLET_IOS ofType:JAVASCRIPTCORE_TYPE_JS];
     NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
