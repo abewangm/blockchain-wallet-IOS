@@ -157,6 +157,9 @@ NSString *detailLabel;
     self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(whereLabel.frame.origin.x + whereLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (whereLabel.frame.origin.x + whereLabel.frame.size.width + 16), 21)];
     self.receiveToLabel.font = [UIFont systemFontOfSize:13];
     [self.bottomContainerView addSubview:self.receiveToLabel];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
+    [self.receiveToLabel addGestureRecognizer:tapGesture];
+    self.receiveToLabel.userInteractionEnabled = YES;
     
     [self updateUI];
     
