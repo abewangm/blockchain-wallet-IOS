@@ -1730,7 +1730,8 @@ BOOL displayingLocalSymbolSend;
                         amountInSatoshi = 0.0;
                     }
                 } else {
-                    amountInSatoshi = 0.0;
+                    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+                    return;
                 }
                 
                 // If the amount is empty, open the amount field
