@@ -637,7 +637,7 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
-    
+    DLog(@"websocket failed with error: %@", [error localizedDescription]);
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
@@ -649,25 +649,10 @@
     }
 }
 
-- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
-{
-    
-}
-
-- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongData
-{
-    
-}
-
-- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithData:(NSData *)data
-{
-    
-}
-
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string
 {
     DLog(@"received websocket message string");
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\")", [string escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
 }
 
 # pragma mark - Calls from Obj-C to JS
