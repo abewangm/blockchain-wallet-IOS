@@ -452,6 +452,9 @@
 "Finished Signing Inputs" = "Terminat semnarea intrări";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Pentru creşterea de confidenţialitate, vom genera o adresă unică pentru fiecare plată. Toate adresele generate în portofel pot primi fonduri, chiar în cazul în care nu mai apar în primire.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Pentru siguranţa dumneavoastră, vă recomandăm să transfere orice soldurile din adresele importate în portofel Blockchain.";
 
 /* (No Commment) */
@@ -596,6 +599,9 @@
 "Label must have less than 18 characters" = "Eticheta trebuie să fie mai mică de 18 de caractere";
 
 /* (No Commment) */
+"Learn More" = "află mai multe";
+
+/* (No Commment) */
 "Link Mobile" = "Link-ul mobil";
 
 /* (No Commment) */
@@ -708,6 +714,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "ok";
+
+/* (No Commment) */
+"Open %@?" = "%@ deschis?";
+
+/* (No Commment) */
+"Open Mail App" = "Deschide Mail App";
 
 /* (No Commment) */
 "PIN" = "CODUL PIN";
@@ -1235,9 +1247,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Fraza de recuperare portofel";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Portofel %lld versiune neacceptată";
-
-/* (No Commment) */
 "Warning" = "Avertisment";
 
 /* (No Commment) */
@@ -1354,6 +1363,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Aţi specificat o taxă de tranzacţie neobişnuit de mare de %1$@. Chiar dacă aţi mai mici taxa de la %2$@, vă puteţi aştepta la tranzacţie să confirme în următoarele 10 minute (un bloc).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Te va lăsa app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Le-am importat cu succes o cheie privată.";

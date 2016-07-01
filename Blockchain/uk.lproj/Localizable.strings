@@ -452,6 +452,9 @@
 "Finished Signing Inputs" = "Закінчив підписання входи";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Підвищена конфіденційність ми генеруємо унікальну адресу для кожного платежу. Всі адреси, які генеруються в гаманці можете отримати кошти, навіть якщо вони більше не будуть відображені під отримання.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Для вашої безпеки рекомендуємо вам передавати будь-яких залишків в імпортованих адреси в Blockchain гаманці.";
 
 /* (No Commment) */
@@ -596,6 +599,9 @@
 "Label must have less than 18 characters" = "Мітка має бути менше 18 символів";
 
 /* (No Commment) */
+"Learn More" = "Дізнатися більше";
+
+/* (No Commment) */
 "Link Mobile" = "Мобільний зв'язок";
 
 /* (No Commment) */
@@ -708,6 +714,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "Гаразд";
+
+/* (No Commment) */
+"Open %@?" = "Відкриті %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Відкриті пошті App";
 
 /* (No Commment) */
 "PIN" = "PIN-КОД";
@@ -1235,9 +1247,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Гаманець відновлення фразу";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Гаманець %lld версія не підтримується";
-
-/* (No Commment) */
 "Warning" = "Попередження";
 
 /* (No Commment) */
@@ -1354,6 +1363,9 @@ wallet experience for you" = "Ми розробили абсолютно нов�
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Указані незвично високі операційні плату з %1$@. Навіть якщо знизити плату до %2$@, ви можете очікувати трансакції на підтвердження протягом наступних 10 хвилин (один блок).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Ви будете виходячи із програми.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Закритий ключ успішно імпортовано.";

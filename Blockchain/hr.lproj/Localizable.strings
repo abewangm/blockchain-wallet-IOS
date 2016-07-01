@@ -452,6 +452,9 @@
 "Finished Signing Inputs" = "Završio potpisivanjem ulaza";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Za povećanje privatnosti, možemo generirati jedinstvenu adresu za svaku uplatu. Sve adrese u novčaniku još uvijek možete dobiti sredstva, čak i ako se više ne pojavljuju pod primanja.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Zbog vaše sigurnosti, preporučamo vam da prijenos salda u uvezenih adresama u novčanik Blockchain.";
 
 /* (No Commment) */
@@ -596,6 +599,9 @@
 "Label must have less than 18 characters" = "Oznaka mora imati manje od 18 znakova";
 
 /* (No Commment) */
+"Learn More" = "uči više";
+
+/* (No Commment) */
 "Link Mobile" = "Mobilna veza";
 
 /* (No Commment) */
@@ -708,6 +714,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "ok";
+
+/* (No Commment) */
+"Open %@?" = "Otvoren %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Otvori Mail aplikacija";
 
 /* (No Commment) */
 "PIN" = "PIN";
@@ -1235,9 +1247,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Novčanik oporavak izraz";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Novčanik verzija %lld nije podržan";
-
-/* (No Commment) */
 "Warning" = "Upozorenje";
 
 /* (No Commment) */
@@ -1354,6 +1363,9 @@ wallet experience for you" = "Osmislili smo potpuno novi novčanik iskustvo za v
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Navedeni neuobičajeno visoku transakciju naknada od %1$@. Čak i ako te niže naknade za %2$@, možete očekivati transakciju potvrditi unutar slijedećih 10 minuta (jedan blok).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Otići će aplikaciju.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Uspješno ste uvezli privatni ključ.";

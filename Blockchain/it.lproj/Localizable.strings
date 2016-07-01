@@ -452,6 +452,9 @@
 "Finished Signing Inputs" = "Finito la firma ingressi";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Per maggiore privacy, generiamo un indirizzo univoco per ogni pagamento effettuato. Tutti gli indirizzi generati nel tuo portafoglio possono ancora ricevere fondi, anche se non appaiono non più sotto ricezione.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Per la vostra sicurezza, vi consigliamo di trasferire eventuali saldi nel tuo indirizzi importati nel tuo portafoglio Blockchain.";
 
 /* (No Commment) */
@@ -596,6 +599,9 @@
 "Label must have less than 18 characters" = "Etichetta deve avere meno di 18 caratteri";
 
 /* (No Commment) */
+"Learn More" = "Ulteriori informazioni";
+
+/* (No Commment) */
 "Link Mobile" = "Collegamento Mobile";
 
 /* (No Commment) */
@@ -708,6 +714,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
+
+/* (No Commment) */
+"Open %@?" = "Aperto %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Aprire Mail App";
 
 /* (No Commment) */
 "PIN" = "PIN";
@@ -1235,9 +1247,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Frase di recupero di portafoglio";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Portafoglio %lld di versione non supportata";
-
-/* (No Commment) */
 "Warning" = "Avviso";
 
 /* (No Commment) */
@@ -1354,6 +1363,9 @@ wallet experience for you" = "Abbiamo progettato una nuova esperienza di portafo
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "È stato specificato un costo di transazione insolitamente alta di %1$@. Anche se si riduce la quota di %2$@, si può aspettare la transazione confermare entro i prossimi 10 minuti (un isolato).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Lascerete l'app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Che hai importato con successo una chiave privata.";

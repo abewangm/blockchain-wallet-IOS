@@ -452,6 +452,9 @@
 "Finished Signing Inputs" = "Dokončeno, podepisování vstupy";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Pro větší soukromí jsme vytvořit jedinečnou adresu pro každou platbu. Všechny adresy, které jsou generovány v peněžence mohou stále přijímat, i v případě, že se již nebude zobrazovat v příjmu.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Pro vaši bezpečnost doporučujeme přenos veškeré zůstatky v importované adresy do peněženky Blockchain.";
 
 /* (No Commment) */
@@ -596,6 +599,9 @@
 "Label must have less than 18 characters" = "Popisek musí mít méně než 18 znaků";
 
 /* (No Commment) */
+"Learn More" = "Víc se uč";
+
+/* (No Commment) */
 "Link Mobile" = "Mobilní spojení";
 
 /* (No Commment) */
@@ -708,6 +714,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
+
+/* (No Commment) */
+"Open %@?" = "Otevřené %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Otevřené poštovní aplikace";
 
 /* (No Commment) */
 "PIN" = "KÓD PIN";
@@ -1235,9 +1247,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Peněženka pro zotavení frázi";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Peněženka %lld verze není podporován";
-
-/* (No Commment) */
 "Warning" = "Varování";
 
 /* (No Commment) */
@@ -1354,6 +1363,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Zadali jste neobvykle vysoké transakční poplatek ve %1$@. I v případě, že snížení poplatku na %2$@, můžete očekávat, že transakci potvrdit během příštích 10 minut (jeden blok).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Odjíždíš app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Jste úspěšně importovat soukromý klíč.";
