@@ -279,6 +279,11 @@ NSString *detailLabel;
         [informationButton addTarget:self action:@selector(informationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:informationButton];
         
+        if (![app.wallet didUpgradeToHd]) {
+            informationButton.alpha = 0.0;
+            informationButton.userInteractionEnabled = NO;
+        }
+        
         [self setupTapGestureForMainLabel];
         [self updateUI];
     }
@@ -490,11 +495,7 @@ NSString *detailLabel;
         }
     });
     
-    [UIView animateWithDuration:0.3 animations:^{
-        informationButton.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        informationButton.userInteractionEnabled = NO;
-    }];
+    [self hideInformationButton];
 }
 
 - (void)hideKeyboard
@@ -505,6 +506,22 @@ NSString *detailLabel;
     [self.receiveFiatField resignFirstResponder];
     [self.receiveBtcField resignFirstResponder];
     
+    if (didClickAccount) {
+        [self showInformationButton];
+    }
+}
+
+- (void)hideInformationButton
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        informationButton.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        informationButton.userInteractionEnabled = NO;
+    }];
+}
+
+- (void)showInformationButton
+{
     [UIView animateWithDuration:0.3 animations:^{
         informationButton.alpha = 1.0;
     } completion:^(BOOL finished) {
@@ -763,6 +780,9 @@ NSString *detailLabel;
         mainLabel = addr;
     }
     
+    informationButton.alpha = 0.0;
+    informationButton.userInteractionEnabled = NO;
+    
     [self updateUI];
 }
 
@@ -779,6 +799,8 @@ NSString *detailLabel;
     didClickAccount = YES;
     
     mainLabel = [app.wallet getLabelForAccount:account];
+    
+    [self showInformationButton];
     
     [self updateUI];
 }
