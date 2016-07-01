@@ -680,8 +680,8 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     
     var authorization_required = function() {
         console.log('authorization required');
-        device.execute('loading_stop');
-        device.execute('show_email_authorization_alert');
+        loading_stop();
+        show_email_authorization_alert();
     }
 
     loading_start_download_wallet();

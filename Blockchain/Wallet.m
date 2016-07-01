@@ -538,6 +538,10 @@
         [weakSelf on_resend_verification_email_success];
     };
     
+    self.context[@"show_email_authorization_alert"] = ^() {
+        [weakSelf show_email_authorization_alert];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     [self login];
