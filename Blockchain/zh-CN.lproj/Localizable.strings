@@ -455,6 +455,9 @@
 "Finished Signing Inputs" = "完成签名输入";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "为增加隐私，我们生成一个唯一的地址，为每个付款。在你的钱包中生成的所有地址仍可都获得资金，即使他们不会再出现下都接收。";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "为了您的安全，我们建议您将任何在您导入的地址的余额转移到你的 Blockchain 钱包。";
 
 /* (No Commment) */
@@ -602,6 +605,9 @@
 "Label must have less than 18 characters" = "标签必须少于 18 个字符";
 
 /* (No Commment) */
+"Learn More" = "了解更多信息";
+
+/* (No Commment) */
 "Link Mobile" = "关联移动电话";
 
 /* (No Commment) */
@@ -723,6 +729,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "确定";
+
+/* (No Commment) */
+"Open %@?" = "打开 %@ 吗？";
+
+/* (No Commment) */
+"Open Mail App" = "打开邮件应用程序";
 
 /* (No Commment) */
 "PIN" = "PIN";
@@ -1425,6 +1437,9 @@ wallet experience for you" = "我们为您设计了一个
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "您指定 %1$@ 异常高昂的交易费用。即使你降低到 %2$@ 费，你可以期望要确认在接下来的 10 分钟 （一个块） 内的交易记录。";
+
+/* (No Commment) */
+"You will be leaving the app." = "你将离开该应用程序。";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "您已成功导入私钥。";
