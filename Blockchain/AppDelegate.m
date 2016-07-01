@@ -1311,6 +1311,7 @@ void (^secondPasswordSuccess)(NSString *);
     self.wallet.sessionToken = nil;
     
     self.merchantViewController = nil;
+    self.receiveViewController = nil;
     
     [self removeGuidFromKeychain];
     [self removeSharedKeyFromKeychain];
