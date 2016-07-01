@@ -455,6 +455,9 @@
 "Finished Signing Inputs" = "Saisie de connexion terminée";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Pour plus d’intimité, nous générons une adresse unique pour chaque paiement. Toutes les adresses générées dans votre portefeuille peuvent toujours recevoir des fonds, même si elles n’apparaissent plus dans la réception.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Pour votre sécurité, nous vous recommandons de transférer des soldes dans vos adresses importées dans votre portefeuille de Blockchain.";
 
 /* (No Commment) */
@@ -602,6 +605,9 @@
 "Label must have less than 18 characters" = "L’étiquette ne doit pas dépasser 18 caractères";
 
 /* (No Commment) */
+"Learn More" = "Pour en savoir plus";
+
+/* (No Commment) */
 "Link Mobile" = "Jumeler le portable";
 
 /* (No Commment) */
@@ -723,6 +729,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "OK";
+
+/* (No Commment) */
+"Open %@?" = "%@ ouvert ?";
+
+/* (No Commment) */
+"Open Mail App" = "Application Mail ouvert";
 
 /* (No Commment) */
 "PIN" = "PIN";
@@ -1425,6 +1437,9 @@ expérience portefeuille pour vous";
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Vous avez spécifié une Commission de transaction anormalement élevée de %1$@. Même si vous diminuez les frais de %2$@, vous pouvez vous attendre de la transaction à confirmer dans les prochaines 10 minutes (un bloc).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Vous quitterez l’application.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Vous avez importé avec succès une clé privée.";
