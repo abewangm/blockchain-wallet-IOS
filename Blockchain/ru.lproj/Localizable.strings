@@ -455,6 +455,9 @@
 "Finished Signing Inputs" = "Завершено подписание входов";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Для повышения конфиденциальности мы создаем уникальный адрес для каждого платежа. Все адреса в вашем бумажнике можно по-прежнему получать средства, даже если они больше не появляются под Receive.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Для вашей безопасности мы рекомендуем вам перевести любые остатки средств в ваши импортируемых адресов на кошелек Blockchain.";
 
 /* (No Commment) */
@@ -602,6 +605,9 @@
 "Label must have less than 18 characters" = "Метка должна иметь менее чем 18 символов";
 
 /* (No Commment) */
+"Learn More" = "Подробнее";
+
+/* (No Commment) */
 "Link Mobile" = "Зарегистрировать номер мобильного телефона";
 
 /* (No Commment) */
@@ -723,6 +729,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "OK";
+
+/* (No Commment) */
+"Open %@?" = "Открыть %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Открытие почты App";
 
 /* (No Commment) */
 "PIN" = "PIN";
@@ -1425,6 +1437,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Указанный гонорар необычно высокие операционные %1$@. Даже если вы опустите плату %2$@, вы можете ожидать транзакции для подтверждения в течение 10 минут (один блок).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Вы будете оставляя приложение.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Вы успешно импортировали личный ключ.";
