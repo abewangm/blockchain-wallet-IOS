@@ -1147,10 +1147,10 @@ MyWalletPhone.addKey = function(keyString) {
         if (e.message === 'presentInWallet') {
             message = 'Key already imported';
         }
-        else if (e.message === 'needsBip38') {
+        else if (e === 'needsBip38') {
             message = 'Missing BIP38 password';
         }
-        else if (e.message === 'wrongBipPass') {
+        else if (e === 'wrongBipPass') {
             message = 'Wrong BIP38 password';
         }
         
@@ -1256,7 +1256,7 @@ MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) 
     var error = function(message) {
         console.log('Add private key Error: ' + message);
         
-        on_error_adding_private_key_watch_only(message.message);
+        on_error_adding_private_key_watch_only(message);
     };
     
     var needsBip38Passsword = Helpers.detectPrivateKeyFormat(privateKeyString) === 'bip38';
