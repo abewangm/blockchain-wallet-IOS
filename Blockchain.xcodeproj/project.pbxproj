@@ -44,7 +44,6 @@
 		23C543981D0F0CD2007A5F58 /* SRError.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543831D0F0CD2007A5F58 /* SRError.m */; };
 		23C543991D0F0CD2007A5F58 /* SRHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543851D0F0CD2007A5F58 /* SRHash.m */; };
 		23C5439A1D0F0CD2007A5F58 /* SRURLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543871D0F0CD2007A5F58 /* SRURLUtilities.m */; };
-		23C5439B1D0F0CD2007A5F58 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 23C543881D0F0CD2007A5F58 /* Makefile */; };
 		23C5439C1D0F0CD2007A5F58 /* NSRunLoop+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C5438A1D0F0CD2007A5F58 /* NSRunLoop+SRWebSocket.m */; };
 		23C5439D1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C5438C1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.m */; };
 		23C5439E1D0F0CD2007A5F58 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23C5438E1D0F0CD2007A5F58 /* Info.plist */; };
@@ -1641,7 +1640,6 @@
 				23C5439A1D0F0CD2007A5F58 /* SRURLUtilities.m in Sources */,
 				67D95A281B3DDC900012EBB1 /* Constants.swift in Sources */,
 				9F765F3214BC622E00048EFB /* TransactionsViewController.m in Sources */,
-				23C5439B1D0F0CD2007A5F58 /* Makefile in Sources */,
 				230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */,
 				676250821A2DDF360052B63F /* AccountTableCell.m in Sources */,
 				67EE1DCF19E3325900DBBFC9 /* UIViewController+ECSlidingViewController.m in Sources */,
