@@ -542,6 +542,14 @@
         [weakSelf show_email_authorization_alert];
     };
     
+    self.context[@"on_fetch_needs_two_factor_code"] = ^() {
+        [weakSelf on_fetch_needs_two_factor_code];
+    };
+    
+    self.context[@"objc_wrong_two_factor_code"] = ^() {
+        [weakSelf wrong_two_factor_code];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     [self login];

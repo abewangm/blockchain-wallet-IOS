@@ -675,7 +675,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     var wrong_two_factor_code = function() {
         console.log('wrong two factor code');
         loading_stop();
-        wrong_two_factor_code();
+        objc_wrong_two_factor_code();
     }
     
     var authorization_required = function() {
