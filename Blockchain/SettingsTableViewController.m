@@ -690,6 +690,12 @@ const int aboutPrivacyPolicy = 1;
             [self alertUserToChangeEmail:YES];
         });
     }]];
+    [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_OPEN_MAIL_APP style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
+        if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
+            [[UIApplication sharedApplication] openURL:mailURL];
+        }
+    }]];
     [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self getAccountInfo];
     }]];
