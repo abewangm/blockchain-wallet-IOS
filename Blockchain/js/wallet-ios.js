@@ -1364,7 +1364,7 @@ MyWalletPhone.getAccountInfo = function () {
         console.log('Error getting account info: ' + e);
     };
     
-    BlockchainSettingsAPI.getAccountInfo(success, error);
+    MyWallet.wallet.fetchAccountInfo().then(success).catch(error);
 }
 
 MyWalletPhone.changeEmail = function(email) {
