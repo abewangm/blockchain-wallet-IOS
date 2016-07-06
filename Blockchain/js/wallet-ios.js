@@ -1608,8 +1608,8 @@ MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
         MyWallet.recoverFromMnemonic(email, password, passphrase, '', success, error, startedRestoreHDWallet, accountProgress, generateUUIDProgress, decryptWalletProgress);
         
     } else {
-        console.log('recovery error: ' + error);
-        on_error_recover_with_passphrase(error);
+        console.log('Invalid passphrase');
+        on_error_recover_with_passphrase('invalid passphrase');
     };
 }
 

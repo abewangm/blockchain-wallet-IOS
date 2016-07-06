@@ -131,11 +131,11 @@
                                    [NSCharacterSet whitespaceCharacterSet]];
         
         [app.wallet loading_start_recover_wallet];
-        [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:trimmedRecoveryPhrase];
-        
         [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
         self.recoveryPhraseView.recoveryPassphraseTextField.hidden = YES;
 
+        [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:trimmedRecoveryPhrase];
+        
         app.wallet.delegate = app;
     }
 }

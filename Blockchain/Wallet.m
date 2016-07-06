@@ -2347,7 +2347,7 @@
 {
     DLog(@"on_error_recover_with_passphrase:");
     [self loading_stop];
-    if (!error) {
+    if ([error isEqualToString:ERROR_INVALID_PASSPHRASE]) {
         [app standardNotifyAutoDismissingController:BC_STRING_INVALID_RECOVERY_PHRASE];
     } else if ([error isEqualToString:@""]) {
         [app standardNotifyAutoDismissingController:BC_STRING_NO_INTERNET_CONNECTION];
