@@ -2412,7 +2412,9 @@ void (^secondPasswordSuccess)(NSString *);
             [self failedToObtainValuesFromKeychain];
         }
         
-        [self closePINModal:YES];
+        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+            [self closePINModal:YES];
+        }
         
         pinSuccess = TRUE;
 
