@@ -260,7 +260,7 @@
     self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
 
-- (void)didFailRecovery
+- (void)showPassphraseTextField
 {
     self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }

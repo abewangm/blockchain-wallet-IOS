@@ -743,6 +743,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     app.transactionsViewController.loadedAllTransactions = NO;
     app.wallet.isFetchingTransactions = NO;
+    
+    [createWalletView showPassphraseTextField];
 
     [self closeSideMenu];
     
@@ -1463,7 +1465,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFailRecovery
 {
-    [createWalletView didFailRecovery];
+    [createWalletView showPassphraseTextField];
 }
 
 - (void)didRecoverWallet
