@@ -430,6 +430,10 @@
         [weakSelf makeNotice:type id:_id message:message];
     };
     
+    self.context[@"upgrade_success"] = ^() {
+        [weakSelf upgrade_success];
+    };
+    
 #pragma mark Recovery
     
     self.context[@"loading_start_generate_uuids"] = ^() {
