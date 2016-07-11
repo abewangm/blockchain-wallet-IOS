@@ -230,7 +230,7 @@
         [weakSelf did_change_forced_fee:fee dust:dust];
     };
     
-    self.context[@"update_fee_bounds_confirmationEstimation_maxAmounts_maxFees"] = ^(NSArray *absoluteFeeBounds, NSNumber *expectedBlock, NSArray *maxSpendableAmounts, NSArray *sweepFees) {
+    self.context[@"update_fee_bounds_confirmationEstimation_maxAmounts_maxFees"] = ^(NSArray *absoluteFeeBounds, id expectedBlock, NSArray *maxSpendableAmounts, NSArray *sweepFees) {
         [weakSelf update_fee_bounds:absoluteFeeBounds confirmationEstimation:expectedBlock maxAmounts:maxSpendableAmounts maxFees:sweepFees];
     };
     
