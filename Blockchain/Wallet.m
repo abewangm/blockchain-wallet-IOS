@@ -2278,12 +2278,12 @@
 - (void)on_error_update_fee:(NSDictionary *)error
 {
     DLog(@"on_error_update_fee");
-    
-    NSString *message = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
+    id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
+    NSString *message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
     if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
         [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
     } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
-        uint64_t threshold = [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue];
+        uint64_t threshold = [errorObject isKindOfClass:[NSString class]] ? [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue] : [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR][DICTIONARY_KEY_THRESHOLD] longLongValue];
         [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, threshold]];
     } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {
         [app standardNotifyAutoDismissingController:BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION];
