@@ -2858,7 +2858,7 @@
     NSException * exception = [[NSException alloc] initWithName:@"Uncaught Exception" reason:decription userInfo:nil];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul), ^{
-        [UncaughtExceptionHandler logException:exception walletIsLoaded:[self.context isLoaded] walletIsInitialized:[self isInitialized]];
+        [UncaughtExceptionHandler logException:exception walletIsLoaded:YES walletIsInitialized:[self isInitialized]];
     });
 #endif
     
