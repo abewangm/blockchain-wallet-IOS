@@ -2019,6 +2019,11 @@ void (^secondPasswordSuccess)(NSString *);
     if (!_sendViewController) {
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
+    
+    if (_receiveViewController) {
+        [_receiveViewController hideKeyboard];
+    }
+    
     [_sendViewController QRCodebuttonClicked:sender];
 }
 
