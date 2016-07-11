@@ -667,8 +667,17 @@ void (^secondPasswordSuccess)(NSString *);
         [curtainImageView removeFromSuperview];
     }];
     
+    [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
+    
     if (self.tabViewController.activeViewController == _receiveViewController && modalView) {
         [_receiveViewController showKeyboard];
+    }
+}
+
+- (void)showPinModalIfBackgroundedDuringLoad
+{
+    if (![self.pinEntryViewController.view isDescendantOfView:_window.rootViewController.view] && !self.wallet.isInitialized) {
+        [self showPinModalAsView:NO];
     }
 }
 
