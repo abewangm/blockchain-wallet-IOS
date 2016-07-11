@@ -676,7 +676,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPinModalIfBackgroundedDuringLoad
 {
-    if (![self.pinEntryViewController.view isDescendantOfView:_window.rootViewController.view] && !self.wallet.isInitialized) {
+    if (![self.pinEntryViewController.view isDescendantOfView:_window.rootViewController.view] && !self.wallet.isInitialized && [self sharedKey] && [self guid] && !modalView) {
         [self showPinModalAsView:NO];
     }
 }
