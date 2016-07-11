@@ -194,6 +194,8 @@
                    delegate:nil];
     
     app.wallet.isNew = YES;
+    
+    [app.wallet getAllCurrencySymbols];
 }
 
 - (void)errorCreatingNewAccount:(NSString*)message

@@ -617,10 +617,6 @@
 {
     [self useDebugSettingsIfSet];
     
-    if (self.isNew) {
-        [self getAllCurrencySymbols];
-    }
-    
     if ([delegate respondsToSelector:@selector(walletJSReady)])
         [delegate walletJSReady];
     
