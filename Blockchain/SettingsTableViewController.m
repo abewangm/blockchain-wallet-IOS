@@ -912,7 +912,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changePassword
 {
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CHANGE_PASSWORD sender:nil];
+    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_CHANGE_PASSWORD sender:nil];
 }
 
 #pragma mark - TextField Delegate
@@ -979,6 +979,13 @@ const int aboutPrivacyPolicy = 1;
 }
 
 #pragma mark - Segue
+
+- (void)performSingleSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([[self navigationController] topViewController] == self) {
+        [self performSegueWithIdentifier:identifier sender:sender];
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -1061,18 +1068,18 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionEnd: {
             switch (indexPath.row) {
                 case displayLocalCurrency: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
                     return;
                 }
                 case displayBtcUnit: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
                     return;
                 }
             }
         }
         case securitySection: {
             if (indexPath.row == securityTwoStep) {
-                [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
+                [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
                 return;
             } else if (indexPath.row == securityPasswordHint) {
                 [self alertUserToChangePasswordHint];
@@ -1101,11 +1108,11 @@ const int aboutPrivacyPolicy = 1;
         case aboutSection: {
             switch (indexPath.row) {
                 case aboutTermsOfService: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_TERMS_OF_SERVICE];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_TERMS_OF_SERVICE];
                     return;
                 }
                 case aboutPrivacyPolicy: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_PRIVACY_POLICY];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_PRIVACY_POLICY];
                     return;
                 }
             }
