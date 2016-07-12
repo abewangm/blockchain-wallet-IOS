@@ -1712,15 +1712,19 @@
         return;
     }
     
-    NSDictionary *dict = [latestBlockJSON getJSONObject];
+    id dict = [latestBlockJSON getJSONObject];
     
-    LatestBlock *latestBlock = [[LatestBlock alloc] init];
-    
-    latestBlock.height = [[dict objectForKey:@"height"] intValue];
-    latestBlock.time = [[dict objectForKey:@"time"] longLongValue];
-    latestBlock.blockIndex = [[dict objectForKey:@"block_index"] intValue];
-    
-    [delegate didSetLatestBlock:latestBlock];
+    if (dict && [dict isKindOfClass:[NSDictionary class]]) {
+        LatestBlock *latestBlock = [[LatestBlock alloc] init];
+        
+        latestBlock.height = [[dict objectForKey:@"height"] intValue];
+        latestBlock.time = [[dict objectForKey:@"time"] longLongValue];
+        latestBlock.blockIndex = [[dict objectForKey:@"block_index"] intValue];
+        
+        [delegate didSetLatestBlock:latestBlock];
+    } else {
+        DLog(@"Error: could not get JSON object from latest block JSON");
+    }
 }
 
 - (void)reloadFilter
