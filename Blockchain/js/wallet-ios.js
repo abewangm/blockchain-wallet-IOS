@@ -1578,8 +1578,8 @@ MyWalletPhone.recoverWithPassphrase = function(email, password, passphrase) {
         console.log('recovering wallet');
         
         var accountProgress = function(obj) {
-            var totalReceived = obj.addresses[0]['total_received'];
-            var finalBalance = obj.wallet['final_balance'];
+            var totalReceived = obj['total_received'];
+            var finalBalance = obj['final_balance'];
             on_progress_recover_with_passphrase_finalBalance(totalReceived, finalBalance);
         }
         
