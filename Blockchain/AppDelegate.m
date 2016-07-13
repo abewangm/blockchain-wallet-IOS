@@ -2353,10 +2353,11 @@ void (^secondPasswordSuccess)(NSString *);
         [self clearPin];
             
         [self logout];
-            
-        [self showPasswordModal];
         
-        [self closePINModal:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showPasswordModal];
+            [self closePINModal:YES];
+        });
 
     }
     // Incorrect pin
