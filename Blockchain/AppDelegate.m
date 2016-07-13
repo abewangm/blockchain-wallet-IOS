@@ -2268,7 +2268,9 @@ void (^secondPasswordSuccess)(NSString *);
     }
 #endif
     
-    [app.wallet apiGetPINValue:pinKey pin:pin];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [app.wallet apiGetPINValue:pinKey pin:pin];
+    });
     
     self.pinViewControllerCallback = callback;
 }
