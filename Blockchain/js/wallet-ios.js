@@ -672,10 +672,10 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         on_fetch_needs_two_factor_code();
     };
     
-    var wrong_two_factor_code = function() {
-        console.log('wrong two factor code');
+    var wrong_two_factor_code = function(error) {
+        console.log('wrong two factor code: ' + error);
         loading_stop();
-        objc_wrong_two_factor_code();
+        objc_wrong_two_factor_code(error);
     }
     
     var authorization_required = function() {

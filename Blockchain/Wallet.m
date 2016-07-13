@@ -550,8 +550,8 @@
         [weakSelf on_fetch_needs_two_factor_code];
     };
     
-    self.context[@"objc_wrong_two_factor_code"] = ^() {
-        [weakSelf wrong_two_factor_code];
+    self.context[@"objc_wrong_two_factor_code"] = ^(NSString *error) {
+        [weakSelf wrong_two_factor_code:error];
     };
     
     [self.context evaluateScript:jsSource];
@@ -2408,10 +2408,10 @@
     [app standardNotifyAutoDismissingController:error];
 }
 
-- (void)wrong_two_factor_code
+- (void)wrong_two_factor_code:(NSString *)error
 {
     self.twoFactorInput = nil;
-    [app standardNotifyAutoDismissingController:BC_STRING_SETTINGS_VERIFY_INVALID_CODE];
+    [app standardNotifyAutoDismissingController:error];
 }
 
 - (void)on_change_email_notifications_success
