@@ -440,9 +440,12 @@ NSString *detailLabel;
 
 - (IBAction)mainQRClicked:(id)sender
 {
-    [UIPasteboard generalPasteboard].string = mainAddress;
-    
-    [self animateTextOfLabel:mainAddressLabel fromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
+    if ([mainAddress isKindOfClass:[NSString class]]) {
+        [UIPasteboard generalPasteboard].string = mainAddress;
+        [self animateTextOfLabel:mainAddressLabel fromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
+    } else {
+        [app standardNotifyAutoDismissingController:BC_STRING_ERROR_COPYING_TO_CLIPBOARD];
+    }
 }
 
 - (NSString*)formatPaymentRequestWithAmount:(NSString *)amount url:(NSString*)url

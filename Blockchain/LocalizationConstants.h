@@ -47,6 +47,7 @@
 #define BC_STRING_PAYMENT_ASK_TO_ARCHIVE_TRANSFERRED_ADDRESSES NSLocalizedString(@"Would you like to archive the addresses used?", nil)
 #define BC_STRING_PAYMENT_RECEIVED NSLocalizedString(@"Payment Received", nil)
 #define BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS NSLocalizedString(@"Tap to copy this address. Share it with the sender via email or text.", nil)
+#define BC_STRING_ERROR_COPYING_TO_CLIPBOARD NSLocalizedString(@"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again.", nil)
 
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
 #define BC_STRING_ADJUST_FEE NSLocalizedString(@"Adjust Fee", nil)
