@@ -1843,22 +1843,30 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)accountsAndAddressesClicked:(id)sender
 {
-    [app showAccountsAndAddresses];
+    if (!_tabViewController.presentedViewController) {
+        [app showAccountsAndAddresses];
+    }
 }
 
 - (IBAction)accountSettingsClicked:(id)sender
 {
-    [app showSettings];
+    if (!_tabViewController.presentedViewController) {
+        [app showSettings];
+    }
 }
 
 - (IBAction)securityCenterClicked:(id)sender
 {
-    [app showSecurityCenter];
+    if (!_tabViewController.presentedViewController) {
+        [app showSecurityCenter];
+    }
 }
 
 - (IBAction)supportClicked:(id)sender
 {
-    [app showSupport];
+    if (!_tabViewController.presentedViewController) {
+        [app showSupport];
+    }
 }
 
 - (void)validatePINOptionally
@@ -2014,12 +2022,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)merchantClicked:(UIButton *)sender
 {
-    if (!_merchantViewController) {
-        _merchantViewController = [[MerchantMapViewController alloc] initWithNibName:NIB_NAME_MERCHANT_MAP_VIEW bundle:[NSBundle mainBundle]];
+    if (!_tabViewController.presentedViewController) {
+        if (!_merchantViewController) {
+            _merchantViewController = [[MerchantMapViewController alloc] initWithNibName:NIB_NAME_MERCHANT_MAP_VIEW bundle:[NSBundle mainBundle]];
+        }
+        
+        _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [_tabViewController presentViewController:_merchantViewController animated:YES completion:nil];
     }
-    
-    _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [_tabViewController presentViewController:_merchantViewController animated:YES completion:nil];
 }
 
 -(IBAction)QRCodebuttonClicked:(id)sender
