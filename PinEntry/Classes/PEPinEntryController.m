@@ -209,12 +209,10 @@ static PEViewController *VerifyController()
         [self.debugButton addGestureRecognizer:self.longPressGesture];
     }
 #endif
+#ifdef ENABLE_SWIPE_TO_RECEIVE
     if (self.verifyOnly) {
         
         [pinController.scrollView setUserInteractionEnabled:YES];
-        
-        // TODO set these on app exit
-        // TODO add setting to disable swipe-to-receive
         
         NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
         NSNumber *nextAddressUsed = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
@@ -257,6 +255,9 @@ static PEViewController *VerifyController()
             pinController.swipeLabel.hidden = YES;
         }
     }
+#else
+    pinController.swipeLabel.hidden = YES;
+#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated
