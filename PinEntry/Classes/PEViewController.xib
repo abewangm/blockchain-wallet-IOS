@@ -14,7 +14,7 @@
                 <outlet property="pin2" destination="7" id="MXD-Ge-vpX"/>
                 <outlet property="pin3" destination="8" id="Yky-Tu-I9X"/>
                 <outlet property="scrollView" destination="OHm-a6-xhh" id="Zac-Xw-wIq"/>
-                <outlet property="swipeLabel" destination="NfS-0O-G6S" id="d3D-QQ-WvR"/>
+                <outlet property="swipeLabel" destination="NfS-0O-G6S" id="DBW-Z6-rjf"/>
                 <outlet property="versionLabel" destination="C16-0H-UUa" id="xXQ-pW-cty"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>

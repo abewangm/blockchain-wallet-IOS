@@ -136,6 +136,7 @@
 @property (nonatomic, assign) id <SRWebSocketDelegate> socketDelegate;
 @property (nonatomic) SRWebSocket *webSocket;
 @property (nonatomic) NSTimer *webSocketTimer;
+@property (nonatomic) NSString *addressToSubscribe;
 
 - (id)init;
 
@@ -157,6 +158,8 @@
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 - (Boolean)isAddressArchived:(NSString *)address;
+
+- (void)subscribeToAddress:(NSString *)address;
 
 - (void)addToAddressBook:(NSString *)address label:(NSString *)label;
 

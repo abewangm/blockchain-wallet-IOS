@@ -23,7 +23,6 @@
 ********************************************************************************/
 
 #import "PEViewController.h"
-#import "QRCodeGenerator.h"
 
 @interface PEViewController ()
 
@@ -31,6 +30,7 @@
 - (void)redrawPins;
 
 @property (nonatomic, readwrite, strong) NSString *pin;
+@property (nonatomic, readwrite, strong) NSString *addressToSubscribe;
 
 @end
 
@@ -67,56 +67,14 @@
 //        frame.origin.y -= 48;
 //        promptLabel.frame = frame;
 //    }
-
-    [self.scrollView setUserInteractionEnabled:YES];
-    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height - 20, self.scrollView.frame.size.width, 360);
-    
-    // TODO set these on app exit
-    // TODO add setting to disable swipe-to-receive
-    
-    NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
-    NSNumber *nextAddressUsed = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
-    
-    // TODO - add && !changepin to this
-    if (nextAddress) {
-        [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width *2, self.scrollView.frame.size.height)];
-        [self.scrollView setPagingEnabled:YES];
-        
-        // TODO subscribe to websocket for this address
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:.5 animations:^{
-                swipeLabel.alpha = 0;
-            }];
-        });
-        
-        UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
-        [descLabel setTextAlignment:NSTextAlignmentCenter];
-        [descLabel setTextColor:[UIColor whiteColor]];
-        [descLabel setFont:[UIFont systemFontOfSize:12]];
-        
-        if (![nextAddressUsed boolValue]) {
-            QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
-            
-            UIImageView *qr = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
-            qr.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
-            descLabel.text = nextAddress;
-            
-            [self.scrollView addSubview:qr];
-        } else {
-            descLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
-        }
-        
-        [self.scrollView addSubview:descLabel];
-    } else {
-        swipeLabel.hidden = YES;
-    }
     
     pins[0] = pin0;
 	pins[1] = pin1;
 	pins[2] = pin2;
 	pins[3] = pin3;
 	self.pin = @"";
+    
+    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height - 20, self.scrollView.frame.size.width, 360);
 }
 
 // TODO set this when we receive a on_tx message from the websocket to this address

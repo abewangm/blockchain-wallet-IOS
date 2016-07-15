@@ -570,6 +570,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"walletDidFinishLoad");
     
+    self.wallet.addressToSubscribe = nil;
+    
     self.wallet.twoFactorInput = nil;
     
     [self.wallet getAccountInfo];
@@ -667,6 +669,10 @@ void (^secondPasswordSuccess)(NSString *);
         [curtainImageView removeFromSuperview];
     }];
     
+    if (self.pinEntryViewController.verifyOnly) {
+        // [self.pinEntryViewController didBecom];
+    }
+    
     [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
     
     if (self.tabViewController.activeViewController == _receiveViewController && modalView) {
@@ -732,10 +738,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    NSString *defaultAccountAddress = [app.wallet getReceiveAddressForAccount:[app.wallet getDefaultAccountIndex]];
-    if (![[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS] isEqualToString:defaultAccountAddress]) {
-        [[NSUserDefaults standardUserDefaults] setObject:defaultAccountAddress forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+    if ([self.wallet isInitialized] && [self.wallet didUpgradeToHd]) {
+        NSString *defaultAccountAddress = [app.wallet getReceiveAddressForAccount:[app.wallet getDefaultAccountIndex]];
+        if (![[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS] isEqualToString:defaultAccountAddress]) {
+            [[NSUserDefaults standardUserDefaults] setObject:defaultAccountAddress forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+        }
     }
     
     [self.loginTimer invalidate];

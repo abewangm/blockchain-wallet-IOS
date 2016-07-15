@@ -587,6 +587,17 @@
     }
 }
 
+- (void)subscribeToAddress:(NSString *)address
+{
+    self.addressToSubscribe = address;
+
+    if (!self.webSocket) {
+        [self setupWebSocket];
+    } else {
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.addressToSubscribe]];
+    }
+}
+
 - (void)apiGetPINValue:(NSString*)key pin:(NSString*)pin
 {
     [self loadJS];
@@ -639,7 +650,8 @@
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
     DLog(@"websocket opened");
-    NSString *message = [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
+    NSString *message = self.addressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.addressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
+
     [webSocket sendString:message];
 }
 
@@ -661,6 +673,12 @@
 {
     DLog(@"received websocket message string");
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
+    
+    if (self.addressToSubscribe) {
+        self.addressToSubscribe = nil;
+        NSDictionary *message = [string getJSONObject];
+        // get transaction info here
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS
