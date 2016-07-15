@@ -1441,6 +1441,16 @@ void (^secondPasswordSuccess)(NSString *);
     [self hideBusyView];
     self.wallet.isSyncing = NO;
     
+    if ([error containsString:ERROR_PRESENT_IN_WALLET]) {
+        error = BC_STRING_KEY_ALREADY_IMPORTED;
+    } else if ([error containsString:ERROR_NEEDS_BIP38]) {
+        error = BC_STRING_NEEDS_BIP38_PASSWORD;
+    } else if ([error containsString:ERROR_WRONG_BIP_PASSWORD]) {
+        error = BC_STRING_WRONG_BIP38_PASSWORD;
+    } else {
+        error = BC_STRING_UNKNOWN_ERROR_PRIVATE_KEY;
+    }
+    
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
     [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:errorAlert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];

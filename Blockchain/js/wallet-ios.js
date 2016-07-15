@@ -1142,19 +1142,7 @@ MyWalletPhone.addKey = function(keyString) {
         console.log('Add private key Error');
         console.log(e);
         
-        var message = 'There was an error importing this private key';
-        
-        if (e.message === 'presentInWallet') {
-            message = 'Key already imported';
-        }
-        else if (e === 'needsBip38') {
-            message = 'Missing BIP38 password';
-        }
-        else if (e === 'wrongBipPass') {
-            message = 'Wrong BIP38 password';
-        }
-        
-        on_error_adding_private_key(message);
+        on_error_adding_private_key(e);
     };
     
     var needsBip38Passsword = Helpers.detectPrivateKeyFormat(keyString) === 'bip38';

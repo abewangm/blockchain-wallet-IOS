@@ -368,8 +368,8 @@
         [weakSelf on_add_key:key];
     };
     
-    self.context[@"on_error_adding_private_key"] = ^(NSString *key) {
-        [weakSelf on_error_adding_private_key:key];
+    self.context[@"on_error_adding_private_key"] = ^(NSString *error) {
+        [weakSelf on_error_adding_private_key:error];
     };
     
     self.context[@"on_add_incorrect_private_key"] = ^(NSString *key) {
