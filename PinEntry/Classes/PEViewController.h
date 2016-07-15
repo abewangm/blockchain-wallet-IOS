@@ -44,6 +44,7 @@
 	IBOutlet UIImageView *pin2;
 	IBOutlet UIImageView *pin3;
 	IBOutlet UILabel *promptLabel;
+    IBOutlet UILabel *swipeLabel;
 	UIImageView *pins[4];
 	NSString *pin;
 	id <PEViewControllerDelegate> __weak delegate;
@@ -55,6 +56,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *versionLabel;
 @property (nonatomic, strong) IBOutlet UIButton *cancelButton;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView * activityIndicator;
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 
 - (void)resetPin;
 - (IBAction)cancelChangePin:(id)sender;

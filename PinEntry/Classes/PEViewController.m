@@ -23,6 +23,7 @@
 ********************************************************************************/
 
 #import "PEViewController.h"
+#import "QRCodeGenerator.h"
 
 @interface PEViewController ()
 
@@ -42,29 +43,73 @@
 {
 	[super viewDidLoad];
     
-    // Move up pin entry views for bigger screens
-    if ([[UIScreen mainScreen] bounds].size.height >= 568) {
-        int moveUp = 60;
+//    // Move up pin entry views for bigger screens
+//    if ([[UIScreen mainScreen] bounds].size.height >= 568) {
+//        int moveUp = 60;
+//        
+//        CGRect frame = pin0.frame;
+//        frame.origin.y -= moveUp;
+//        pin0.frame = frame;
+//        
+//        frame = pin1.frame;
+//        frame.origin.y -= moveUp;
+//        pin1.frame = frame;
+//        
+//        frame = pin2.frame;
+//        frame.origin.y -= moveUp;
+//        pin2.frame = frame;
+//        
+//        frame = pin3.frame;
+//        frame.origin.y -= moveUp;
+//        pin3.frame = frame;
+//        
+//        frame = promptLabel.frame;
+//        frame.origin.y -= 48;
+//        promptLabel.frame = frame;
+//    }
+
+    [self.scrollView setUserInteractionEnabled:YES];
+    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height - 20, self.scrollView.frame.size.width, 360);
+    
+    // TODO set these on app exit
+    // TODO add setting to disable swipe-to-receive
+    
+    NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
+    NSNumber *nextAddressUsed = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+    
+    // TODO - add && !changepin to this
+    if (nextAddress) {
+        [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width *2, self.scrollView.frame.size.height)];
+        [self.scrollView setPagingEnabled:YES];
         
-        CGRect frame = pin0.frame;
-        frame.origin.y -= moveUp;
-        pin0.frame = frame;
+        // TODO subscribe to websocket for this address
         
-        frame = pin1.frame;
-        frame.origin.y -= moveUp;
-        pin1.frame = frame;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:.5 animations:^{
+                swipeLabel.alpha = 0;
+            }];
+        });
         
-        frame = pin2.frame;
-        frame.origin.y -= moveUp;
-        pin2.frame = frame;
+        UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
+        [descLabel setTextAlignment:NSTextAlignmentCenter];
+        [descLabel setTextColor:[UIColor whiteColor]];
+        [descLabel setFont:[UIFont systemFontOfSize:12]];
         
-        frame = pin3.frame;
-        frame.origin.y -= moveUp;
-        pin3.frame = frame;
+        if (![nextAddressUsed boolValue]) {
+            QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
+            
+            UIImageView *qr = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+            qr.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
+            descLabel.text = nextAddress;
+            
+            [self.scrollView addSubview:qr];
+        } else {
+            descLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
+        }
         
-        frame = promptLabel.frame;
-        frame.origin.y -= 48;
-        promptLabel.frame = frame;
+        [self.scrollView addSubview:descLabel];
+    } else {
+        swipeLabel.hidden = YES;
     }
     
     pins[0] = pin0;
@@ -72,6 +117,16 @@
 	pins[2] = pin2;
 	pins[3] = pin3;
 	self.pin = @"";
+}
+
+// TODO set this when we receive a on_tx message from the websocket to this address
+- (void)didReceiveBitcoins {
+    [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"nextReceivingAddressUsed"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // TODO show alert on payment
+    
+    // TOOD adjust UI so that QR is greyed out (or somehow not scannable) and descLabel shows already used message.
 }
 
 - (IBAction)cancelChangePin:(id)sender

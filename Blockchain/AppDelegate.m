@@ -732,6 +732,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    NSString *defaultAccountAddress = [app.wallet getReceiveAddressForAccount:[app.wallet getDefaultAccountIndex]];
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS] isEqualToString:defaultAccountAddress]) {
+        [[NSUserDefaults standardUserDefaults] setObject:defaultAccountAddress forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+    }
+    
     [self.loginTimer invalidate];
     
     [_window.rootViewController dismissViewControllerAnimated:NO completion:nil];
@@ -773,6 +779,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         [self logout];
     }
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
