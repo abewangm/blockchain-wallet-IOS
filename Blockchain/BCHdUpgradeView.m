@@ -53,7 +53,7 @@ Boolean shouldShowAnimation;
         self.upgradeButton.layer.cornerRadius = 16;
         self.upgradeButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
         [self.upgradeButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
-        [self.upgradeButton setTitle:[BC_STRING_UPGRADE_NOW uppercaseString] forState:UIControlStateNormal];
+        [self.upgradeButton setTitle:[BC_STRING_CONTINUE uppercaseString] forState:UIControlStateNormal];
         [self.upgradeButton setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:self.upgradeButton];
         
