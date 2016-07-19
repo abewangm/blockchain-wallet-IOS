@@ -121,7 +121,7 @@
 - (void)verifyTwoFactorSMS
 {
     UIAlertController *alertForVerifyingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:[NSString stringWithFormat:BC_STRING_ENTER_ARGUMENT_TWO_FACTOR_CODE, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS] preferredStyle:UIAlertControllerStyleAlert];
-    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_RESEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [app.wallet resendTwoFactorSMS];
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
