@@ -170,7 +170,7 @@ NSString *detailLabel;
 - (void)selectDefaultDestination
 {
     if ([app.wallet didUpgradeToHd]) {
-        [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
+        [self didSelectToAccount:[app.wallet getFilteredOrDefaultAccountIndex]];
     } else {
         [self didSelectToAddress:[[app.wallet allLegacyAddresses] firstObject]];
     }
@@ -226,7 +226,7 @@ NSString *detailLabel;
     // Get an address: the first empty receive address for the default HD account
     // Or the first active legacy address if there are no HD accounts
     if ([app.wallet getActiveAccountsCount] > 0) {
-        [self didSelectFromAccount:[app.wallet getDefaultAccountIndex]];
+        [self didSelectFromAccount:[app.wallet getFilteredOrDefaultAccountIndex]];
     }
     else if (activeKeys.count > 0) {
         for (NSString *address in activeKeys) {

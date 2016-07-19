@@ -224,6 +224,7 @@
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
 - (BOOL)isRecoveryPhraseVerified;
 - (void)markRecoveryPhraseVerified;
+- (int)getFilteredOrDefaultAccountIndex;
 - (int)getDefaultAccountIndex;
 - (void)setDefaultAccount:(int)index;
 - (int)getActiveAccountsCount;

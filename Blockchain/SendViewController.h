@@ -131,6 +131,7 @@
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
 - (void)reloadSymbols;
+- (void)resetFromAddress;
 
 - (void)hideKeyboard;
 

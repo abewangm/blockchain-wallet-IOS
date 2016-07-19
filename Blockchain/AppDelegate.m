@@ -322,6 +322,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_transactionsViewController showFilterLabel];
     self.mainLogoImageView.hidden = YES;
     
+    [_sendViewController resetFromAddress];
+    [_receiveViewController reloadMainAddress];
+    
     [self.wallet reloadFilter];
     
     [self showFilterResults];

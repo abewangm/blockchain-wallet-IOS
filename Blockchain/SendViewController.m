@@ -136,7 +136,7 @@ BOOL displayingLocalSymbolSend;
     if ([app.wallet hasAccount]) {
         // Default setting: send from default account
         self.sendFromAddress = false;
-        int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
+        int defaultAccountIndex = [app.wallet getFilteredOrDefaultAccountIndex];
         self.fromAccount = defaultAccountIndex;
         [self didSelectFromAccount:self.fromAccount];
     }

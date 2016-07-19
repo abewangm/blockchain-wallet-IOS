@@ -2626,6 +2626,21 @@
     return [[self.context evaluateScript:@"MyWalletPhone.getAllAccountsCount()"] toInt32];
 }
 
+- (int)getFilteredOrDefaultAccountIndex
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    NSInteger filterIntex = [app filterIndex];
+    
+    if (filterIntex != FILTER_INDEX_ALL && filterIntex!= FILTER_INDEX_IMPORTED_ADDRESSES && 0 <= filterIntex < [self getActiveAccountsCount]) {
+        return (int)filterIntex;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountIndex()"] toInt32];
+}
+
 - (int)getDefaultAccountIndex
 {
     if (![self isInitialized]) {
