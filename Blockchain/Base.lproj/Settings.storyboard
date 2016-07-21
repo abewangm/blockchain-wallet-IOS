@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5Y2-F6-OT0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5Y2-F6-OT0">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -547,6 +547,7 @@
                         <outlet property="enableTwoStepButton" destination="smL-N3-aiv" id="P1z-2c-y2X"/>
                         <outlet property="enableTwoStepCheckImageView" destination="BUK-Zb-tkN" id="LX6-8A-0uM"/>
                         <outlet property="enableTwoStepLabel" destination="gIP-mj-Hh2" id="O1o-pt-qST"/>
+                        <outlet property="instructionsLabel" destination="u5x-QP-acV" id="2U3-m7-CaN"/>
                         <outlet property="linkMobileButton" destination="yrZ-9r-sY4" id="Mfs-Jh-YVW"/>
                         <outlet property="linkMobileCheckImageView" destination="uAX-NW-pge" id="dgD-T1-6MI"/>
                         <outlet property="linkMobileLabel" destination="f52-8F-scW" id="527-rO-deb"/>

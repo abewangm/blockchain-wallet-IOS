@@ -737,6 +737,10 @@ void (^secondPasswordSuccess)(NSString *);
             }
         }];
     });
+    
+    if (self.pinEntryViewController.verifyOnly) {
+        [self.pinEntryViewController reset];
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -795,7 +799,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // The PIN modal is shown on ResignActive, but we don't want to override the modal with the welcome screen
+    // The PIN modal is shown on EnterBackground, but we don't want to override the modal with the welcome screen
     if ([self isPinSet]) {
 #ifdef TOUCH_ID_ENABLED
         if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
@@ -1220,7 +1224,13 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)setAccountData:(NSString*)guid sharedKey:(NSString*)sharedKey
 {
     if ([guid length] != 36) {
-        [app standardNotify:BC_STRING_INVALID_GUID];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_INVALID_GUID message:BC_STRING_INTERRUPTED_DECRYPTION_PLEASE_CLOSE_THE_APP_AND_TRY_AGAIN preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CLOSE_APP style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            // Close App
+            UIApplication *app = [UIApplication sharedApplication];
+            [app performSelector:@selector(suspend)];
+        }]];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
         return;
     }
     
