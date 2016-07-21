@@ -331,7 +331,7 @@ BOOL displayingLocalSymbolSend;
 {
     app.topViewControllerDelegate = nil;
     
-    [app showBusyViewWithLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, 1, [[app.wallet spendableActiveLegacyAddresses] count]]];
+    [app showBusyViewWithLoadingText:BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER];
     
     [app.wallet getInfoForTransferAllFundsToDefaultAccount];
 }

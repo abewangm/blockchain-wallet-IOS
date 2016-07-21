@@ -25,6 +25,7 @@
 #define BC_STRING_FINISHED_SIGNING_INPUTS NSLocalizedString(@"Finished Signing Inputs", nil)
 #define BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT NSLocalizedString(@"Transferring all funds: Address %i of %i", nil)
 #define BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT NSLocalizedString(@"Calculating: Address %d of %d", nil)
+#define BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER NSLocalizedString(@"Preparing transfer", nil)
 
 #define BC_STRING_ADD_TO_ADDRESS_BOOK NSLocalizedString(@"Add to Address book?", nil)
 #define BC_STRING_NO NSLocalizedString(@"No", nil)
