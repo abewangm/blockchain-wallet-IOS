@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Tutar (%lld Satoshi) toz eşiğine eşit veya daha büyük olmalıdır";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Bir hata nedeniyle kesinti PIN doğrulama sırasında oluştu. Lütfen app kapatın ve yeniden deneyin.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "PIN kodunuzu uzak sunucuyla doğrulanırken bir hata oluştu. Çevrimdışı olabilir veya Blockchain sorunlar yaşıyor. Doğrulama yeniden deneyin veya bunun yerine parolanızı el ile girmek ister misin?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2-adım doğrulama değiştirilirken bir hata oluştu.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Adresinizi Pano'ya kopyalanırken bir hata oluştu. Lütfen hedef adresini yeniden seçin veya app yeniden başlatın ve yeniden deneyin.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Yaptığınız değişiklikler kaydedilirken bir hata oluştu. Cüzdanını başka bir aygıtta içine açmamış dikkat edin.";
@@ -485,7 +491,7 @@
 "Identifier" = "Tanımlayıcı";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Bir tüccar iseniz, sizin xPub göstermek ve Blockchain tüccar app güvenli bir şekilde ve özel olarak para almak için kullanın.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Bir tüccar iseniz, genişletilmiş genel anahtarınızı (xPub) görüntülemek ve Blockchain tüccar app para almak için kullanın.";
 
 /* (No Commment) */
 "Import Private Key" = "Alma özel anahtar";
@@ -850,6 +856,9 @@
 "Preferences" = "Tercihler";
 
 /* (No Commment) */
+"Preparing transfer" = "Transfer hazırlanıyor";
+
+/* (No Commment) */
 "Privacy Policy" = "Gizlilik Politikası";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "Tarama QR kodu";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Bu kod inceden inceye gözden geçirmek veya güvenli bir şekilde Bitcoin almak için Blockchain tüccar app kopyalayabilirsiniz.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "İnceden inceye gözden geçirmek ya da güvenli bir şekilde Bitcoin almak için Blockchain tüccar app bu kodu kopyalayın.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "İkinci parola yanlış";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Güvenlik Merkezi";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Güvenlik Merkezi tamamlandı - cüzdanını güvenli ve güvenli";
 
 /* (No Commment) */
 "Send" = "Gönder";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Ayarlar";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Paylaşılan para şu anda desteklenmiyor.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Senin xPub paylaştığınız diğer kişilerin işlem geçmişinizi izlemesi için yetki verir. Sadece yetkili kişiler cüzdanını erişmesini bozmaya mümkün olabilir gibi senin xPub güvendiğiniz kişilerle paylaşın.";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "Yükseltme";
-
-/* (No Commment) */
-"Upgrade Now" = "Şimdi yükseltmek";
 
 /* (No Commment) */
 "Upgrade Wallet" = "M-cüzdan yükseltme";

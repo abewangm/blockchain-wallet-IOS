@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "ยอดเงินต้องมากกว่า หรือเท่ากับขีดจำกัดฝุ่น (%lld ซาโตชิ)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "เกิดข้อผิดพลาดเนื่องจากการขัดจังหวะในระหว่างการยืนยัน PIN กรุณาปิดโปรแกรม แล้วลองอีกครั้ง";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "เกิดข้อผิดพลาดในการตรวจสอบรหัส PIN ของคุณกับเซิร์ฟเวอร์ระยะไกล คุณอาจจะออฟไลน์ หรือ Blockchain อาจจะประสบความยากลำบาก คุณต้องลองตรวจสอบ หรือป้อนรหัสผ่านของคุณด้วยตนเองแทน หรือไม่";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "ข้อผิดพลาดเกิดขึ้นขณะเปลี่ยนตรวจสอบขั้นตอนที่ 2";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "เกิดข้อผิดพลาดขณะคัดลอกที่อยู่ของคุณไปยังคลิปบอร์ด กรุณาเลือกอยู่ปลายทางใหม่ หรือรีสตาร์ทแอพ และลองอีกครั้ง";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "ข้อผิดพลาดขณะบันทึกการเปลี่ยนแปลง โปรดตรวจสอบว่า คุณไม่ได้บันทึกไว้ในกระเป๋าสตางค์ของคุณบนอุปกรณ์อื่น";
@@ -485,7 +491,7 @@
 "Identifier" = "รหัส";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "ถ้าคุณมีร้านค้า แสดง xPub ของคุณ และใช้แอ Blockchain ร้านค้าเพื่อรับเงินได้อย่างปลอดภัย และเอกชน";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "ถ้าคุณมีร้านค้า ดูคีย์สาธารณะของคุณขยาย (xPub) และใช้แอ Blockchain ร้านค้าเพื่อรับเงิน";
 
 /* (No Commment) */
 "Import Private Key" = "คีย์ส่วนตัวนำเข้า";
@@ -850,6 +856,9 @@
 "Preferences" = "การกำหนดลักษณะ";
 
 /* (No Commment) */
+"Preparing transfer" = "เตรียมโอน";
+
+/* (No Commment) */
 "Privacy Policy" = "นโยบายความเป็นส่วนตัว";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "สแกนรหัส QR";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "สแกนรหัสนี้ หรือคัดลอกลงในแอ Blockchain ร้านค้าอย่างปลอดภัยรับ Bitcoin";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "สแกน หรือคัดลอกโค้ดนี้ลงในแอ Blockchain Merchant อย่างปลอดภัยรับ Bitcoin";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "สองรหัสผ่านไม่ถูกต้อง";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "ศูนย์รักษาความปลอดภัย";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "ศูนย์รักษาความปลอดภัยเสร็จสมบูรณ์ - กระเป๋าสตางค์ของคุณจะปลอดภัย และได้";
 
 /* (No Commment) */
 "Send" = "ส่ง";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "การตั้งค่า";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "เหรียญที่ใช้ร่วมกันไม่สนับสนุนในขณะนี้";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "ร่วม xPub ของคุณอนุมัติให้ติดตามประวัติธุรกรรมของผู้อื่น ประชาชนอาจจะสามารถที่จะทำให้คุณเข้าถึงกระเป๋าสตางค์ของคุณ แชร์ xPub ของคุณกับคนที่คุณเชื่อถือ";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "อัพเกรด";
-
-/* (No Commment) */
-"Upgrade Now" = "อัพเกรดตอนนี้";
 
 /* (No Commment) */
 "Upgrade Wallet" = "กระเป๋าสตางค์เกรด";

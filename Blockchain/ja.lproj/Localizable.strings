@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "量がほこりしきい値 (%lld 聡) 以上にする必要があります。";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "PIN による確認で中断のためエラーが発生します。アプリを閉じて、もう一度やり直してください。";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "リモート サーバーと PIN コードの検証エラーが発生しました。あなたがオフラインである、または Blockchain により、問題が発生します。検証を再試行するか、代わりにあなたのパスワードを手動で入力したいですか。";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2 段階認証プロセスを変更中にエラーが発生しました。";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "あなたのアドレスをクリップボードにコピー中にエラーが発生しました。宛先アドレスを再選択またはアプリを再起動やり直してください。";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "変更を保存中にエラーが発生しました。別のデバイスにあなたの財布にサインインしていないことを確認してください。";
@@ -485,7 +491,7 @@
 "Identifier" = "識別子";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "商人、あなたの xPub を表示し、安全にそして個人的に資金を受け取る Blockchain 商人アプリを使用します。";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "商人は、あなたの拡張のパブリック キー (xPub) を表示し、資金を受け取る Blockchain 商人アプリを使用します。";
 
 /* (No Commment) */
 "Import Private Key" = "インポートの秘密キー";
@@ -850,6 +856,9 @@
 "Preferences" = "基本設定";
 
 /* (No Commment) */
+"Preparing transfer" = "転送の準備中";
+
+/* (No Commment) */
 "Privacy Policy" = "プライバシー ポリシー";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "QR コードをスキャンします。";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "このコードをスキャンまたは Bitcoin を安全に受信する Blockchain 商人アプリにコピーします。";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "スキャンまたは Bitcoin を安全に受信する Blockchain 商人アプリにこのコードをコピーします。";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "第 2 パスワードが間違っています。";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "セキュリティ センター";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "セキュリティ センターを完了 - あなたの財布は安心・安全です";
 
 /* (No Commment) */
 "Send" = "送信";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "設定";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "この時点では、コインの共有はサポートされていません。";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "あなたの xPub を共有トランザクション履歴を追跡する他のユーザーを許可します。承認された人は、あなたの財布にアクセスするからあなたを混乱させることができる場合があります、あなたの xPub を信頼できる人のみ共有します。";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "アップグレード";
-
-/* (No Commment) */
-"Upgrade Now" = "今すぐアップグレードします。";
 
 /* (No Commment) */
 "Upgrade Wallet" = "財布をアップグレードします。";

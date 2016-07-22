@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "मात्रा से अधिक या बराबर करने के लिए धूल थ्रेशोल्ड (%lld Satoshi) होना चाहिए";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "पिन सत्यापन के दौरान व्यवधान के कारण कोई त्रुटि उत्पन्न हुई। कृपया अनुप्रयोग बंद करें और पुन: प्रयास करें।";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2-चरणीय सत् यापन बदलते समय एक त्रुटि उत्पन्न हुई।";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "क्लिपबोर्ड करने के लिए आपके पते की प्रतिलिपि बनाते समय कोई त्रुटि उत्पन्न हुई। कृपया पुन: गंतव्य पते का चयन करें या अनुप्रयोग को पुनरारंभ करें और पुन: प्रयास करें।";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "अपने परिवर्तन सहेजने के दौरान कोई त्रुटि उत्पन्न हुई। कृपया सुनिश्चित करें कि आप किसी अन्य डिवाइस पर अपने बटुए में लॉग नहीं हैं।";
@@ -485,7 +491,7 @@
 "Identifier" = "पहचानकर्ता";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "यदि आप एक व्यापारी हैं, अपना xPub दिखाने और सुरक्षित रूप से और निजी तौर पर धन प्राप्त करने के लिए लॉकचेन मर्चेंट ऐप का उपयोग करें।";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "यदि आप एक व्यापारी हैं, अपने विस्तारित सार्वजनिक कुंजी (xPub) देखने और धन प्राप्त करने के लिए लॉकचेन मर्चेंट ऐप का उपयोग करें।";
 
 /* (No Commment) */
 "Import Private Key" = "आयात निजी कुंजी";
@@ -850,6 +856,9 @@
 "Preferences" = "वरीयताएँ";
 
 /* (No Commment) */
+"Preparing transfer" = "स्थानांतरण की तैयारी";
+
+/* (No Commment) */
 "Privacy Policy" = "गोपनीयता नीति";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "QR कोड स्कैन करें";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "इस कोड को स्कैन करें या यह सुरक्षित रूप से Bitcoin प्राप्त करने के लिए अपने लॉकचेन व्यापारी app में प्रतिलिपि बनाएँ।";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "स्कैन या Bitcoin सुरक्षित रूप से प्राप्त करने के लिए अपने लॉकचेन व्यापारी app में इस कोड की प्रतिलिपि बनाएँ।";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "दूसरा पासवर्ड ग़लत";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "सुरक्षा केंद्र";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "सुरक्षा केंद्र पूर्ण - सुरक्षित और सुरक्षित अपने बटुआ है";
 
 /* (No Commment) */
 "Send" = "भेजें";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "सेटिंग्स";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "साझा किए गए सिक्के इस समय समर्थित नहीं है।";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "अपने xPub साझा दूसरों अपने ट्रांजे़क्शन इतिहास ट्रैक करने के लिए अधिकृत। अधिकृत व्यक्तियों आप अपने बटुए तक पहुंचने से बाधित करने में सक्षम हो सकता है के रूप में, केवल अपने xPub पर भरोसा है आप लोगों के साथ साझा।";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "नवीनीकरण";
-
-/* (No Commment) */
-"Upgrade Now" = "अब नवीनीकरण करें";
 
 /* (No Commment) */
 "Upgrade Wallet" = "बटुए का उन्नयन";

@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Summan on oltava suurempi tai yhtä suuri pöly (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Virhe johtuu keskeytyksiä PIN-KOODILLA vahvistaminen. Sulje sovellus ja yritä uudelleen.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Virhe tarkistettaessa PIN-koodin etäpalvelimen kanssa. Olet ehkä offline-tilassa tai Blockchain saattaa olla vaikeuksia. Haluatko yrittää uudelleen validointi tai sen sijaan Syötä salasana manuaalisesti?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Virhe muutettaessa 2-vaiheinen vahvistus.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Virhe kopioitaessa osoite Leikepöydälle. Uudelleen valita kohdeosoitteen tai Käynnistä sovellus ja yritä uudelleen.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Virhe tallennettaessa muutoksia. Varmista, et ole kirjautunut lompakkoosi toisessa laitteessa.";
@@ -485,7 +491,7 @@
 "Identifier" = "Tunnus";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Jos olet kauppias, Näytä oman xPub ja saada varoja turvallisesti ja yksityisesti Blockchain kauppias-sovelluksella.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Jos olet kauppias, tarkastele laajennettu julkisen avaimesi (xPub) ja vastaanottaa varoja Blockchain kauppias-sovelluksella.";
 
 /* (No Commment) */
 "Import Private Key" = "Tuo yksityinen avain";
@@ -850,6 +856,9 @@
 "Preferences" = "Asetukset";
 
 /* (No Commment) */
+"Preparing transfer" = "Valmistellaan siirtoa";
+
+/* (No Commment) */
 "Privacy Policy" = "Yksityisyyden suoja";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "Skannaa QR-koodi";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skannaa tämä koodi tai kopioi se Blockchain kauppias app saada turvallisesti Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Skannaa tai kopioi tämä koodi Blockchain kauppias app saada turvallisesti Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Toinen salasana väärin";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Security Center";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Tietoturvakeskus loppuaan - lompakko on turvallinen ja varma";
 
 /* (No Commment) */
 "Send" = "Lähetä";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Asetukset";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Jaettu kolikon ei tueta tällä hetkellä.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Jakaminen sinun xPub antaa toiset jotta jäljittää maksuhistoriastasi. Kuten oikeutetut henkilöt häiritä sinua käyttämästä lompakon, jakaa vain sinun xPub luottamillesi ihmisille.";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "Päivitys";
-
-/* (No Commment) */
-"Upgrade Now" = "Päivitä nyt";
 
 /* (No Commment) */
 "Upgrade Wallet" = "Päivittää lompakko";
