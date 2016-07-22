@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "金额必须大于或等于灰尘阈值 (%lld 聪)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "PIN 验证过程中，由于中断时出错。请关闭应用程序，然后重试。";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "通过远程服务器验证您的 PIN 码时出错。您可能处于离线状态或 Blockchain 可能遇到问题。是否要重试验证或改用手动输入您的密码?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "更改 2 步验证时出错";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "将您的地址复制到剪贴板时出错。请重新选择目标地址或重新启动该应用程序，然后重试。";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "保存您的更改时出错。请确保您未登录到你的钱包在另一个设备。";
@@ -455,6 +461,9 @@
 "Finished Signing Inputs" = "完成签名输入";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "为增加隐私，我们生成一个唯一的地址，为每个付款。在你的钱包中生成的所有地址仍可都获得资金，即使他们不会再出现下都接收。";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "为了您的安全，我们建议您将任何在您导入的地址的余额转移到你的 Blockchain 钱包。";
 
 /* (No Commment) */
@@ -492,6 +501,9 @@
 
 /* (No Commment) */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "如果您是商家，请显示您的 xPub，并使用 Blockchain Merchant 应用安全、私密地接收资金。";
+
+/* (No Commment) */
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "如果你是个商人，查看您扩展的公钥 (xPub) 和使用 Blockchain 商人应用程序来获得资金。";
 
 /* (No Commment) */
 "Import Private Key" = "导入私钥";
@@ -600,6 +612,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "标签必须少于 18 个字符";
+
+/* (No Commment) */
+"Learn More" = "了解更多信息";
 
 /* (No Commment) */
 "Link Mobile" = "关联移动电话";
@@ -723,6 +738,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "确定";
+
+/* (No Commment) */
+"Open %@?" = "打开 %@ 吗？";
+
+/* (No Commment) */
+"Open Mail App" = "打开邮件应用程序";
 
 /* (No Commment) */
 "PIN" = "PIN";
@@ -861,6 +882,9 @@
 "Preferences" = "首选项";
 
 /* (No Commment) */
+"Preparing transfer" = "准备转让";
+
+/* (No Commment) */
 "Privacy Policy" = "隐私政策";
 
 /* (No Commment) */
@@ -939,6 +963,9 @@
 "Scan Watch Only Address?" = "扫描仅监视地址?";
 
 /* (No Commment) */
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "扫描或将此代码复制到您的 Blockchain 商人应用程序安全地接收比特币。";
+
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "扫描此码或将其复制到您的 Blockchain Merchant 应用中可安全地接收比特币。";
 
 /* No comment provided by engineer. */
@@ -952,6 +979,9 @@
 
 /* (No Commment) */
 "Security Center" = "安全中心";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "安全中心完成 — — 你的钱包是安全和有保障";
 
 /* (No Commment) */
 "Send" = "发送";
@@ -1425,6 +1455,9 @@ wallet experience for you" = "我们为您设计了一个
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "您指定 %1$@ 异常高昂的交易费用。即使你降低到 %2$@ 费，你可以期望要确认在接下来的 10 分钟 （一个块） 内的交易记录。";
+
+/* (No Commment) */
+"You will be leaving the app." = "你将离开该应用程序。";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "您已成功导入私钥。";

@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "A por küszöbértékét (%lld Satoshi) egyenlő vagy nagyobb kell";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Hiba miatt megszakítások PIN-ellenőrzés során. Kérjük, zárja be az alkalmazást, és próbálkozzon újra.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Hiba történt a PIN-kódot a távoli szerverrel érvényesítése. Lehet, hogy kapcsolat nélküli vagy Blockchain lehet nehézségei. Szeretne újra érvényesítés, vagy inkább kézzel adja meg a jelszavát?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Hiba történt a változó 2. lépés ellenőrzés.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Hiba történt, miközben a cím másolása a vágólapra. Újra válassza ki a cél címe, vagy indítsa újra az alkalmazást, és próbálkozzon újra.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Hiba történt a módosítások mentése. Kérjük, győződjön meg róla, nem jelentkezett be a pénztárca egy másik eszközön.";
@@ -452,6 +458,9 @@
 "Finished Signing Inputs" = "Kész aláírási bemenetek";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "A fokozott adatvédelmi hozunk létre egy egyedi címet minden fizetési. Minden cím létrehoz-ban tárcátok továbbra is kaphat, még akkor is, ha azok már nem jelenik meg, alapján beérkezés.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Az Ön biztonsága érdekében javasoljuk, hogy az importált címek egyenlegek át a Blockchain pénztárca.";
 
 /* (No Commment) */
@@ -482,7 +491,7 @@
 "Identifier" = "Azonosítója";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Ha egy kereskedő, a xPub és a kereskedő Blockchain app felhasználási részesülnek, biztonságosan és zárt.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Ha egy kereskedő, a kiterjesztett nyilvános kulcs (xPub) és használhatják a kereskedő Blockchain app részesülnek.";
 
 /* (No Commment) */
 "Import Private Key" = "Import privát kulcs";
@@ -594,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Címke van kevesebb, mint 18 karakter";
+
+/* (No Commment) */
+"Learn More" = "tudj meg többet";
 
 /* (No Commment) */
 "Link Mobile" = "Láncszem Mozgatható";
@@ -708,6 +720,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "oké";
+
+/* (No Commment) */
+"Open %@?" = "Nyitott %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Nyílt levél App";
 
 /* (No Commment) */
 "PIN" = "PIN-KÓD";
@@ -838,6 +856,9 @@
 "Preferences" = "Beállítások";
 
 /* (No Commment) */
+"Preparing transfer" = "Átadás előkészítése";
+
+/* (No Commment) */
 "Privacy Policy" = "Adatvédelmi politika";
 
 /* (No Commment) */
@@ -913,7 +934,7 @@
 "Scan QR code" = "QR-kód beolvasásához";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "E kód beolvasni, vagy másold be a Blockchain kereskedő app, hogy biztonságosan kap Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Olvassa be vagy másolja ezt a kódot a Blockchain kereskedő app, hogy biztonságosan kap Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Második jelszó helytelen";
@@ -926,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "A biztonsági központ";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Biztonsági központ befejezett - a pénztárca és biztonságos";
 
 /* (No Commment) */
 "Send" = "Küldés";
@@ -956,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Beállítások";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Megosztott érme nem támogatott ebben az időben.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "A xPub megosztása felhatalmazza mások a tranzakciók előzményeinek nyomon követésére. Jogosult személyek esetleg képes megzavarni, hozzáférjenek a pénztárca, csak megosztja a xPub meg, akikben megbízol.";
@@ -1175,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Frissítés";
 
 /* (No Commment) */
-"Upgrade Now" = "Frissítés most";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Frissítési pénztárca";
 
 /* (No Commment) */
@@ -1233,9 +1251,6 @@ Fee: %@
 
 /* (No Commment) */
 "Wallet Recovery Phrase" = "Pénztárca helyreállítási mondat";
-
-/* (No Commment) */
-"Wallet version %lld not supported" = "Pénztárca verzió %lld nem támogatott";
 
 /* (No Commment) */
 "Warning" = "Figyelmeztetés";
@@ -1354,6 +1369,9 @@ wallet experience for you" = "Egy teljesen új pénztárca tapasztalat terveztü
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "A megadott egy szokatlanul magas tranzakciós díj %1$@. Még akkor is, ha a díj %2$@ csökkenti, akkor számíthat a tranzakció megerősítéséhez, a következő 10 perc (egy blokk).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Ön elhagyja az app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Sikeresen importált egy privát kulcs.";

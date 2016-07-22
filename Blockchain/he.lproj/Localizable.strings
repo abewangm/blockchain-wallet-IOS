@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "סכום חייב להיות גדול או שווה להסף אבק (%lld סטושי)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "שגיאה אירעה עקב הפרעות במהלך אימות PIN. נא לסגור את היישום ונסה שוב.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "אירעה שגיאה בעת אימות הקוד האישי שלך עם השרת המרוחק. אתה יכול להיות מנותק או Blockchain עשויים לחוות קשיים. האם ברצונך לנסות שוב אימות או במקום להזין את הסיסמה שלך באופן ידני?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "אירעה שגיאה בזמן שינוי אימות דו-שלבי.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "אירעה שגיאה במהלך העתקת כתובת שלך ללוח. נא בחר שוב את כתובת היעד או הפעל מחדש את היישום ונסה שוב.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "אירעה שגיאה בעת שמירת השינויים. נא ודא כי אתה לא נכנסת לתוך הארנק שלך בהתקן אחר.";
@@ -452,6 +458,9 @@
 "Finished Signing Inputs" = "סיים חתימת כניסות";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "פרטיות מוגברת, נוכל ליצור כתובת ייחודית עבור כל תשלום. כל כתובות שנוצרו בארנק שלך יכולים עדיין לקבל כספים, אפילו אם הם כבר לא מופיעים תחת קבלה.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "למען הבטיחות שלך, אנו ממליצים לך להעביר כל היתרות שלך כתובות מיובאות לתוך הארנק שלך Blockchain.";
 
 /* (No Commment) */
@@ -482,7 +491,7 @@
 "Identifier" = "המזהה";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "אם אתה סוחר, להראות xPub שלך ולהשתמש app Blockchain הסוחר לקבל כספים בבטחה ובאופן פרטי.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "אם אתה סוחר, הצג את המפתח הציבורי המורחבת שלך (xPub), להשתמש app Blockchain הסוחר לקבל כספים.";
 
 /* (No Commment) */
 "Import Private Key" = "מפתח פרטי ייבוא";
@@ -594,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "התווית חייב להיות פחות מ- 18 תווים";
+
+/* (No Commment) */
+"Learn More" = "למד עוד";
 
 /* (No Commment) */
 "Link Mobile" = "קישור סלולרי";
@@ -708,6 +720,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "אוקיי";
+
+/* (No Commment) */
+"Open %@?" = "%@ פתוח?";
+
+/* (No Commment) */
+"Open Mail App" = "App דואר פתוח";
 
 /* (No Commment) */
 "PIN" = "סיכה";
@@ -838,6 +856,9 @@
 "Preferences" = "העדפות";
 
 /* (No Commment) */
+"Preparing transfer" = "הכנת העברה";
+
+/* (No Commment) */
 "Privacy Policy" = "מדיניות פרטיות";
 
 /* (No Commment) */
@@ -913,7 +934,7 @@
 "Scan QR code" = "לסרוק קוד QR";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "לסרוק את הקוד הזה, או להעתיק אותו לתוך האפליקציה Blockchain הסוחר שלך בצורה מאובטחת לקבל ביטקוין.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "סרוק או העתק את הקוד לתוך האפליקציה Blockchain הסוחר שלך בצורה מאובטחת לקבל ביטקוין.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "סיסמה שנייה שגוי";
@@ -926,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "מרכז האבטחה";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "מרכז האבטחה הושלמה - הארנק שלך הוא בטוח ומאובטח";
 
 /* (No Commment) */
 "Send" = "שלח";
@@ -956,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "הגדרות";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "מטבע משותף אינה נתמכת בשלב זה.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "שיתוף xPub שלך מסמיך אחרים כדי לעקוב אחר ההיסטוריה התנועה שלך. כפי ה\"גורמים עשוי להיות מסוגל לשבש את מלגשת אל הארנק שלך, לשתף רק xPub שלך עם אנשים שאתה בוטח.";
@@ -1175,9 +1196,6 @@ Fee: %@
 "Upgrade" = "שדרוג";
 
 /* (No Commment) */
-"Upgrade Now" = "שדרג עכשיו";
-
-/* (No Commment) */
 "Upgrade Wallet" = "לשדרג את הארנק";
 
 /* (No Commment) */
@@ -1233,9 +1251,6 @@ Fee: %@
 
 /* (No Commment) */
 "Wallet Recovery Phrase" = "הביטוי שחזור הארנק";
-
-/* (No Commment) */
-"Wallet version %lld not supported" = "הארנק גירסה %lld אינו נתמך";
 
 /* (No Commment) */
 "Warning" = "אזהרה";
@@ -1354,6 +1369,9 @@ wallet experience for you" = "שיצרנו עבורך חוויה חדשה לגמ
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "שציינת דמי העסקה גבוה באופן חריג של %1$@. גם אם תנמיך את דמי %2$@, אתה יכול לצפות את התנועה כדי לאשר בתוך 10 הדקות (רחוב אחד).";
+
+/* (No Commment) */
+"You will be leaving the app." = ". תעזוב את האפליקציה.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "בהצלחה ייבאת מפתח פרטי.";

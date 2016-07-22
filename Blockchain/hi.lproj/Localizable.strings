@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "मात्रा से अधिक या बराबर करने के लिए धूल थ्रेशोल्ड (%lld Satoshi) होना चाहिए";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "पिन सत्यापन के दौरान व्यवधान के कारण कोई त्रुटि उत्पन्न हुई। कृपया अनुप्रयोग बंद करें और पुन: प्रयास करें।";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "दूरस्थ सर्वर के साथ अपने पिन कोड मान्य कर रहा है कोई त्रुटि उत्पन्न हुई। आप ऑफ़लाइन किया जा सकता या Blockchain कठिनाइयों का अनुभव किया जा सकता है। आप सत्यापन पुन: प्रयास करें या इसके बजाय अपने पासवर्ड मैन्युअली दर्ज करना चाहेंगे?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2-चरणीय सत् यापन बदलते समय एक त्रुटि उत्पन्न हुई।";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "क्लिपबोर्ड करने के लिए आपके पते की प्रतिलिपि बनाते समय कोई त्रुटि उत्पन्न हुई। कृपया पुन: गंतव्य पते का चयन करें या अनुप्रयोग को पुनरारंभ करें और पुन: प्रयास करें।";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "अपने परिवर्तन सहेजने के दौरान कोई त्रुटि उत्पन्न हुई। कृपया सुनिश्चित करें कि आप किसी अन्य डिवाइस पर अपने बटुए में लॉग नहीं हैं।";
@@ -452,6 +458,9 @@
 "Finished Signing Inputs" = "आदानों पर हस्ताक्षर करने समाप्त हो गया";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "बढ़ी हुई गोपनीयता के लिए, हम एक अद्वितीय पते हर भुगतान के लिए उत्पन्न करते हैं। सभी अपने बटुए में उत्पन्न किए गए पते अभी भी धन, प्राप्त कर सकते हैं, भले ही वे अब प्राप्त करें के अंतर्गत दिखाई देते हैं।";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "अपनी सुरक्षा के लिए, हम अनुशंसा करते हैं आप अपने आयातित पतों में किसी भी शेष अपने लॉकचेन बटुए में स्थानांतरित करने के लिए।";
 
 /* (No Commment) */
@@ -482,7 +491,7 @@
 "Identifier" = "पहचानकर्ता";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "यदि आप एक व्यापारी हैं, अपना xPub दिखाने और सुरक्षित रूप से और निजी तौर पर धन प्राप्त करने के लिए लॉकचेन मर्चेंट ऐप का उपयोग करें।";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "यदि आप एक व्यापारी हैं, अपने विस्तारित सार्वजनिक कुंजी (xPub) देखने और धन प्राप्त करने के लिए लॉकचेन मर्चेंट ऐप का उपयोग करें।";
 
 /* (No Commment) */
 "Import Private Key" = "आयात निजी कुंजी";
@@ -594,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "लेबल कम से कम 18 वर्ण होना आवश्यक";
+
+/* (No Commment) */
+"Learn More" = "और जानो";
 
 /* (No Commment) */
 "Link Mobile" = "लिंक मोबाइल";
@@ -708,6 +720,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "ठीक है";
+
+/* (No Commment) */
+"Open %@?" = "खुला %@?";
+
+/* (No Commment) */
+"Open Mail App" = "खुला मेल अनुप्रयोग";
 
 /* (No Commment) */
 "PIN" = "पिन";
@@ -838,6 +856,9 @@
 "Preferences" = "वरीयताएँ";
 
 /* (No Commment) */
+"Preparing transfer" = "स्थानांतरण की तैयारी";
+
+/* (No Commment) */
 "Privacy Policy" = "गोपनीयता नीति";
 
 /* (No Commment) */
@@ -913,7 +934,7 @@
 "Scan QR code" = "QR कोड स्कैन करें";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "इस कोड को स्कैन करें या यह सुरक्षित रूप से Bitcoin प्राप्त करने के लिए अपने लॉकचेन व्यापारी app में प्रतिलिपि बनाएँ।";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "स्कैन या Bitcoin सुरक्षित रूप से प्राप्त करने के लिए अपने लॉकचेन व्यापारी app में इस कोड की प्रतिलिपि बनाएँ।";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "दूसरा पासवर्ड ग़लत";
@@ -926,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "सुरक्षा केंद्र";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "सुरक्षा केंद्र पूर्ण - सुरक्षित और सुरक्षित अपने बटुआ है";
 
 /* (No Commment) */
 "Send" = "भेजें";
@@ -956,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "सेटिंग्स";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "साझा किए गए सिक्के इस समय समर्थित नहीं है।";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "अपने xPub साझा दूसरों अपने ट्रांजे़क्शन इतिहास ट्रैक करने के लिए अधिकृत। अधिकृत व्यक्तियों आप अपने बटुए तक पहुंचने से बाधित करने में सक्षम हो सकता है के रूप में, केवल अपने xPub पर भरोसा है आप लोगों के साथ साझा।";
@@ -1175,9 +1196,6 @@ Fee: %@
 "Upgrade" = "नवीनीकरण";
 
 /* (No Commment) */
-"Upgrade Now" = "अब नवीनीकरण करें";
-
-/* (No Commment) */
 "Upgrade Wallet" = "बटुए का उन्नयन";
 
 /* (No Commment) */
@@ -1233,9 +1251,6 @@ Fee: %@
 
 /* (No Commment) */
 "Wallet Recovery Phrase" = "बटुआ वसूली वाक्यांश";
-
-/* (No Commment) */
-"Wallet version %lld not supported" = "बटुआ संस्करण %lld समर्थित नहीं";
 
 /* (No Commment) */
 "Warning" = "चेतावनी";
@@ -1354,6 +1369,9 @@ wallet experience for you" = "हम आप के लिए एक पूरी
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "आपके द्वारा निर्दिष्ट %1$@ की एक असामान्य रूप से उच्च लेनदेन शुल्क। यहां तक कि अगर आप %2$@ के लिए शुल्क कम, आप हस्तांतरण अगले 10 मिनट के भीतर (एक ब्लॉक) की पुष्टि करने के लिए उम्मीद कर सकते हैं।";
+
+/* (No Commment) */
+"You will be leaving the app." = "आप app जा रही हो जाएगा।";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "आप सफलतापूर्वक एक निजी कुंजी आयात किए गए।";

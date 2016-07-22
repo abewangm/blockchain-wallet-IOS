@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Beloppet måste vara större än eller lika med tröskelvärdet som damm (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Ett fel uppstod på grund av avbrott under PIN-verifiering. Stäng programmet och försök igen.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ett fel uppstod validera din PIN-kod med fjärrservern. Du kan vara offline eller Blockchain kan uppleva svårigheter. Vill du försöka igen validering eller istället ange lösenordet manuellt?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Ett fel inträffade vid ändring 2-steg verifiering.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Ett fel uppstod när kopiera din adress till Urklipp. Se nytt välja måladress eller starta om app och försök igen.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Ett fel uppstod när spara ändringar. Se till att du inte är inloggad i din plånbok på en annan enhet.";
@@ -452,6 +458,9 @@
 "Finished Signing Inputs" = "Färdiga undertecknandet ingångar";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "För ökad integritet genererar vi en unik adress för varje betalning. Alla adresser genereras i plånboken kan fortfarande ta emot medel, även om de inte längre visas under ta emot.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "För din säkerhet rekommenderar vi dig att överföra alla saldon i dina importerade adresser i plånboken Blockchain.";
 
 /* (No Commment) */
@@ -482,7 +491,7 @@
 "Identifier" = "Identifierare";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Om du är en köpman, visar din xPub och använda Blockchain köpman app att ta emot medel säkert och privat.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Om du är en köpman, Visa din utökade offentliga nyckel (xPub) och använda den Blockchain köpmannen app att ta emot medel.";
 
 /* (No Commment) */
 "Import Private Key" = "Import-nyckel";
@@ -594,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Etiketten måste ha mindre än 18 tecken";
+
+/* (No Commment) */
+"Learn More" = "Lära sig mer";
 
 /* (No Commment) */
 "Link Mobile" = "Link Mobile";
@@ -708,6 +720,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "Okej";
+
+/* (No Commment) */
+"Open %@?" = "Öppna %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Öppna Mail App";
 
 /* (No Commment) */
 "PIN" = "PIN-KOD";
@@ -838,6 +856,9 @@
 "Preferences" = "Preferenser";
 
 /* (No Commment) */
+"Preparing transfer" = "Förbereda överföringen";
+
+/* (No Commment) */
 "Privacy Policy" = "Privacy Policy";
 
 /* (No Commment) */
@@ -913,7 +934,7 @@
 "Scan QR code" = "Skanna QR-kod";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skanna den här koden eller kopiera den till din Blockchain köpman app att säkert få Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Skanna eller kopiera denna kod till din Blockchain köpman app att säkert få Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Andra lösenord felaktigt";
@@ -926,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Security Center";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Security Center klar - plånboken är trygg och säker";
 
 /* (No Commment) */
 "Send" = "Skicka";
@@ -956,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Inställningar";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Delade mynt stöds inte vid denna tid.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Dela din xPub tillåter andra att spåra din transaktionshistorik. Som personer kan kunna störa dig åtkomst till din plånbok, bara dela din xPub med människor du litar på.";
@@ -1175,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Uppgradera";
 
 /* (No Commment) */
-"Upgrade Now" = "Uppgradera nu";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Uppgradera plånbok";
 
 /* (No Commment) */
@@ -1233,9 +1251,6 @@ Fee: %@
 
 /* (No Commment) */
 "Wallet Recovery Phrase" = "Plånbok återhämtning fras";
-
-/* (No Commment) */
-"Wallet version %lld not supported" = "Plånbok version %lld stöds inte";
 
 /* (No Commment) */
 "Warning" = "Varning";
@@ -1354,6 +1369,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Du angav en ovanligt hög transaktionsavgift för %1$@. Även om du sänker avgiften till %2$@, kan du förvänta dig transaktionen till bekräfta inom de nästa 10 minuterna (1 kvarter).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Du kommer att lämna app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Du har lyckosam importerat en privat nyckel.";

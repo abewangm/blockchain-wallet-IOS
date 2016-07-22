@@ -131,11 +131,11 @@
                                    [NSCharacterSet whitespaceCharacterSet]];
         
         [app.wallet loading_start_recover_wallet];
-        [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:trimmedRecoveryPhrase];
-        
         [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
         self.recoveryPhraseView.recoveryPassphraseTextField.hidden = YES;
 
+        [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:trimmedRecoveryPhrase];
+        
         app.wallet.delegate = app;
     }
 }
@@ -149,13 +149,15 @@
     };
     
     [self hideKeyboard];
-    
-    // Load the JS without a wallet
-    [app.wallet loadBlankWallet];
-    
+        
     // Get callback when wallet is done loading
     // Continue in walletJSReady callback
     app.wallet.delegate = self;
+
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_WALLET];
+
+    // Load the JS without a wallet
+    [app.wallet performSelector:@selector(loadBlankWallet) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
 }
 
 
@@ -192,6 +194,8 @@
                    delegate:nil];
     
     app.wallet.isNew = YES;
+    
+    [app.wallet getAllCurrencySymbols];
 }
 
 - (void)errorCreatingNewAccount:(NSString*)message
@@ -200,7 +204,7 @@
         [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
     } else if ([message isEqualToString:ERROR_TIMEOUT_REQUEST]){
         [app standardNotify:BC_STRING_TIMED_OUT];
-    } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST] || [message containsString:ERROR_TIMEOUT_ERROR]){
+    } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST] || [message containsString:ERROR_TIMEOUT_ERROR] || [[message stringByReplacingOccurrencesOfString:@" " withString:@""] containsString:ERROR_STATUS_ZERO]){
         [app performSelector:@selector(standardNotify:) withObject:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION afterDelay:DELAY_KEYBOARD_DISMISSAL];
     } else {
         [app standardNotify:message];
@@ -258,7 +262,7 @@
     self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
 
-- (void)didFailRecovery
+- (void)showPassphraseTextField
 {
     self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }

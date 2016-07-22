@@ -157,6 +157,9 @@ NSString *detailLabel;
     self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(whereLabel.frame.origin.x + whereLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (whereLabel.frame.origin.x + whereLabel.frame.size.width + 16), 21)];
     self.receiveToLabel.font = [UIFont systemFontOfSize:13];
     [self.bottomContainerView addSubview:self.receiveToLabel];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
+    [self.receiveToLabel addGestureRecognizer:tapGesture];
+    self.receiveToLabel.userInteractionEnabled = YES;
     
     [self updateUI];
     
@@ -268,6 +271,18 @@ NSString *detailLabel;
         [mainAddressLabel setMinimumScaleFactor:.5f];
         [mainAddressLabel setAdjustsFontSizeToFitWidth:YES];
         [self.headerView addSubview:mainAddressLabel];
+        
+        informationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
+        [informationButton setImage:[UIImage imageNamed:@"icon_support"] forState:UIControlStateNormal];
+        informationButton.center = self.view.center;
+        informationButton.frame = CGRectMake(informationButton.frame.origin.x, self.headerView.frame.size.height + 4, informationButton.frame.size.width, informationButton.frame.size.height);
+        [informationButton addTarget:self action:@selector(informationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:informationButton];
+        
+        if (![app.wallet didUpgradeToHd]) {
+            informationButton.alpha = 0.0;
+            informationButton.userInteractionEnabled = NO;
+        }
         
         [self setupTapGestureForMainLabel];
         [self updateUI];
@@ -425,9 +440,12 @@ NSString *detailLabel;
 
 - (IBAction)mainQRClicked:(id)sender
 {
-    [UIPasteboard generalPasteboard].string = mainAddress;
-    
-    [self animateTextOfLabel:mainAddressLabel fromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
+    if ([mainAddress isKindOfClass:[NSString class]]) {
+        [UIPasteboard generalPasteboard].string = mainAddress;
+        [self animateTextOfLabel:mainAddressLabel fromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
+    } else {
+        [app standardNotifyAutoDismissingController:BC_STRING_ERROR_COPYING_TO_CLIPBOARD];
+    }
 }
 
 - (NSString*)formatPaymentRequestWithAmount:(NSString *)amount url:(NSString*)url
@@ -479,6 +497,8 @@ NSString *detailLabel;
             [labelTextField becomeFirstResponder];
         }
     });
+    
+    [self hideInformationButton];
 }
 
 - (void)hideKeyboard
@@ -488,6 +508,28 @@ NSString *detailLabel;
     [labelTextField resignFirstResponder];
     [self.receiveFiatField resignFirstResponder];
     [self.receiveBtcField resignFirstResponder];
+    
+    if (didClickAccount) {
+        [self showInformationButton];
+    }
+}
+
+- (void)hideInformationButton
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        informationButton.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        informationButton.userInteractionEnabled = NO;
+    }];
+}
+
+- (void)showInformationButton
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        informationButton.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        informationButton.userInteractionEnabled = YES;
+    }];
 }
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString
@@ -585,11 +627,28 @@ NSString *detailLabel;
     self.receiveFiatField.text = nil;
 }
 
+- (void)informationButtonClicked:(UIButton *)sender
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_INFORMATION message:BC_STRING_INFORMATION_RECEIVE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_LEARN_MORE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:INFORMATION_RECEIVE_URL]];
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 # pragma mark - UITextField delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (app.slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            informationButton.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            informationButton.userInteractionEnabled = YES;
+        }];
+        
         return NO;
     }
     
@@ -724,6 +783,9 @@ NSString *detailLabel;
         mainLabel = addr;
     }
     
+    informationButton.alpha = 0.0;
+    informationButton.userInteractionEnabled = NO;
+    
     [self updateUI];
 }
 
@@ -740,6 +802,8 @@ NSString *detailLabel;
     didClickAccount = YES;
     
     mainLabel = [app.wallet getLabelForAccount:account];
+    
+    [self showInformationButton];
     
     [self updateUI];
 }

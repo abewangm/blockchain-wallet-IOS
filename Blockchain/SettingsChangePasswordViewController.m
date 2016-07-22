@@ -194,33 +194,35 @@
     }
     
     if ([self.newerPasswordTextField.text length] == 0) {
-        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
         [self.newerPasswordTextField becomeFirstResponder];
+        [self alertUserOfError:BC_STRING_NO_PASSWORD_ENTERED];
         return NO;
     }
     
     NSString *email = [app.wallet.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL];
     if (email && [self.newerPasswordTextField.text isEqualToString:email]) {
-        [app standardNotify:BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL];
         [self.newerPasswordTextField becomeFirstResponder];
+        [self alertUserOfError:BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL];
         return NO;
     }
     
     if (self.passwordStrength < 25) {
-        [app standardNotify:BC_STRING_PASSWORD_NOT_STRONG_ENOUGH];
         [self.newerPasswordTextField becomeFirstResponder];
+        [self alertUserOfError:BC_STRING_PASSWORD_NOT_STRONG_ENOUGH];
         return NO;
     }
     
     if ([self.newerPasswordTextField.text length] > 255) {
-        [self alertUserOfError:BC_STRING_PASSWORD_MUST_BE_LESS_THAN_OR_EQUAL_TO_255_CHARACTERS];
         [self.newerPasswordTextField becomeFirstResponder];
+        [self alertUserOfError:BC_STRING_PASSWORD_MUST_BE_LESS_THAN_OR_EQUAL_TO_255_CHARACTERS];
         return NO;
     }
     
     if (![self.newerPasswordTextField.text isEqualToString:[self.confirmNewPasswordTextField text]]) {
+        if (![self.newerPasswordTextField isFirstResponder]) {
+            [self.confirmNewPasswordTextField becomeFirstResponder];
+        }
         [self alertUserOfError:BC_STRING_PASSWORDS_DO_NOT_MATCH];
-        [self.confirmNewPasswordTextField becomeFirstResponder];
         return NO;
     }
     

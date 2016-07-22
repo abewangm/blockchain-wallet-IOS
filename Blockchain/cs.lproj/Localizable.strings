@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Množství musí být větší než nebo rovna prahu prach (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Došlo k chybě z důvodu přerušení během ověřování PIN. Ukončete aplikace a akci opakujte.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Při ověřování kódu PIN se vzdáleným serverem došlo k chybě. Jste pravděpodobně v režimu offline nebo Blockchain mohou být potíže. Chcete opakovat ověření nebo místo toho zadat heslo ručně?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Došlo k chybě při změně 2krok ověření.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Došlo k chybě při kopírování vaši adresu do schránky. Znovu vyberte cílovou adresu nebo restartujte aplikaci a opakujte akci.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Při ukládání změn došlo k chybě. Prosím, ujistěte se, že nejste přihlášeni k vaší peněžence na jiném zařízení.";
@@ -452,6 +458,9 @@
 "Finished Signing Inputs" = "Dokončeno, podepisování vstupy";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Pro větší soukromí jsme vytvořit jedinečnou adresu pro každou platbu. Všechny adresy, které jsou generovány v peněžence mohou stále přijímat, i v případě, že se již nebude zobrazovat v příjmu.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Pro vaši bezpečnost doporučujeme přenos veškeré zůstatky v importované adresy do peněženky Blockchain.";
 
 /* (No Commment) */
@@ -482,7 +491,7 @@
 "Identifier" = "Identifikátor";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Pokud jste obchodník, Ukázat své xPub a Blockchain obchodníka v aplikaci získat finanční prostředky, bezpečně a soukromě.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Pokud jste obchodník, zobrazit rozšířený veřejný klíč (xPub) a Blockchain obchodníka v aplikaci získat finanční prostředky.";
 
 /* (No Commment) */
 "Import Private Key" = "Importovat soukromý klíč";
@@ -594,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Popisek musí mít méně než 18 znaků";
+
+/* (No Commment) */
+"Learn More" = "Víc se uč";
 
 /* (No Commment) */
 "Link Mobile" = "Mobilní spojení";
@@ -708,6 +720,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
+
+/* (No Commment) */
+"Open %@?" = "Otevřené %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Otevřené poštovní aplikace";
 
 /* (No Commment) */
 "PIN" = "KÓD PIN";
@@ -838,6 +856,9 @@
 "Preferences" = "Předvolby";
 
 /* (No Commment) */
+"Preparing transfer" = "Příprava přenosu";
+
+/* (No Commment) */
 "Privacy Policy" = "Zásady ochrany osobních údajů";
 
 /* (No Commment) */
@@ -913,7 +934,7 @@
 "Scan QR code" = "Skenování QR kód";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Tento kód nebo jej zkopírujte do app Blockchain obchodníka a bezpečně přijímat Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Skenovat nebo zkopírujte tento kód do aplikace Blockchain obchodník bezpečně přijímat Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Druhé heslo nesprávné";
@@ -926,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Centrum zabezpečení";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Centrum zabezpečení dokončena - vaše peněženka je bezpečné";
 
 /* (No Commment) */
 "Send" = "Odeslat";
@@ -956,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Nastavení";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "V současné době není podporován sdílené mince.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Sdílení vašeho xPub autorizuje jiné sledovat historii transakcí. Oprávněné osoby mohou být schopni roztříštit vás v přístupu k vaší peněžence, sdílejte pouze své xPub s lidmi, kterým důvěřujete.";
@@ -1175,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Inovace";
 
 /* (No Commment) */
-"Upgrade Now" = "Upgradovat nyní";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Upgradovat Peněženka";
 
 /* (No Commment) */
@@ -1233,9 +1251,6 @@ Fee: %@
 
 /* (No Commment) */
 "Wallet Recovery Phrase" = "Peněženka pro zotavení frázi";
-
-/* (No Commment) */
-"Wallet version %lld not supported" = "Peněženka %lld verze není podporován";
 
 /* (No Commment) */
 "Warning" = "Varování";
@@ -1354,6 +1369,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Zadali jste neobvykle vysoké transakční poplatek ve %1$@. I v případě, že snížení poplatku na %2$@, můžete očekávat, že transakci potvrdit během příštích 10 minut (jeden blok).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Odjíždíš app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Jste úspěšně importovat soukromý klíč.";

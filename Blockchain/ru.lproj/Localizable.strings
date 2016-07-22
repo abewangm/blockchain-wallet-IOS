@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Сумма должна быть больше или равно порогу пыли (%lld Сатоши)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Произошла ошибка из-за прерывания во время Проверка PIN-кода. Закройте приложение и повторите попытку.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ошибка при проверке вашего PIN-кода удаленным сервером. Вероятно, вы отключены, или Blockchain  испытывает технические трудности. Хотели бы вы повторить проверку или вместо этого ввести пароль вручную?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Произошла ошибка 2-шаговой верификации";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Произошла ошибка при копировании ваш адрес в буфер обмена. Пожалуйста, повторно выберите адрес назначения или перезапустите приложение и повторите попытку.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Произошла ошибка при сохранении изменений. Пожалуйста, убедитесь, что вы не вошли в ваш кошелек на другом устройстве.";
@@ -455,6 +461,9 @@
 "Finished Signing Inputs" = "Завершено подписание входов";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Для повышения конфиденциальности мы создаем уникальный адрес для каждого платежа. Все адреса в вашем бумажнике можно по-прежнему получать средства, даже если они больше не появляются под Receive.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Для вашей безопасности мы рекомендуем вам перевести любые остатки средств в ваши импортируемых адресов на кошелек Blockchain.";
 
 /* (No Commment) */
@@ -492,6 +501,9 @@
 
 /* (No Commment) */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Покажите xPub, если вы выступаете в роли продавца, и используйте приложение Blockchain Merchant для обеспечения безопасности и конфиденциальности при получении средств.";
+
+/* (No Commment) */
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Если вы торговец, посмотреть расширенный открытый ключ (xPub) и использовать Blockchain купец приложение для получения средств.";
 
 /* (No Commment) */
 "Import Private Key" = "Импортировать личный ключ";
@@ -600,6 +612,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Метка должна иметь менее чем 18 символов";
+
+/* (No Commment) */
+"Learn More" = "Подробнее";
 
 /* (No Commment) */
 "Link Mobile" = "Зарегистрировать номер мобильного телефона";
@@ -723,6 +738,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "OK";
+
+/* (No Commment) */
+"Open %@?" = "Открыть %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Открытие почты App";
 
 /* (No Commment) */
 "PIN" = "PIN";
@@ -861,6 +882,9 @@
 "Preferences" = "Предпочтения";
 
 /* (No Commment) */
+"Preparing transfer" = "Подготовка перевода";
+
+/* (No Commment) */
 "Privacy Policy" = "Политика конфиденциальности";
 
 /* (No Commment) */
@@ -939,6 +963,9 @@
 "Scan Watch Only Address?" = "Сканировать адрес для просмотра?";
 
 /* (No Commment) */
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Сканирование или скопировать этот код в ваше приложение Blockchain купец безопасно получать Bitcoin.";
+
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Сканируйте этот код или скопируйте его в приложение Blockchain Merchant для безопасного получения Bitcoin.";
 
 /* No comment provided by engineer. */
@@ -952,6 +979,9 @@
 
 /* (No Commment) */
 "Security Center" = "Центр безопасности";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Центр обеспечения безопасности завершено - ваш кошелек является безопасной и надежной";
 
 /* (No Commment) */
 "Send" = "Отправить";
@@ -1425,6 +1455,9 @@ wallet experience for you" = "Мы разработали полностью н�
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Указанный гонорар необычно высокие операционные %1$@. Даже если вы опустите плату %2$@, вы можете ожидать транзакции для подтверждения в течение 10 минут (один блок).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Вы будете оставляя приложение.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Вы успешно импортировали личный ключ.";

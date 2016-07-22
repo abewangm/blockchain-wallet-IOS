@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "금액 보다 크거나 먼지 임계값 (%lld 사토시) 해야 합니다.";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "오류가 핀 확인 중 중단으로 인해 발생 했습니다. 응용 프로그램을 종료 하 고 다시 시도 하십시오.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "오류가 발생 원격 서버와 핀 코드의 유효성을 검사 했습니다. 당신이 오프 라인 될 수 있습니다 또는 Blockchain 어려움을 겪고 있습니다. 유효성 검사를 다시 시도 하거나 대신 수동으로 비밀 번호를 입력 시겠습니까?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2 단계 확인을 변경 하는 동안 오류가 발생 했습니다.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "귀하의 주소를 클립보드에 복사 하는 동안 오류가 발생 했습니다. 하시기 바랍니다 다시 대상 주소를 선택 하 고 응용 프로그램을 다시 시작 하 고 또는 다시 시도 하십시오.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "변경 내용을 저장 하는 동안 오류가 발생 했습니다. 다른 장치에 당신의 지갑에 로그인 하지 않은 다는 것을 확인 하십시오.";
@@ -452,6 +458,9 @@
 "Finished Signing Inputs" = "서명 입력 완료";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "향상 된 개인 정보 보호에 대 한 우리 모든 지불에 대 한 고유 주소를 생성합니다. 아직도 당신의 지갑에 생성 된 모든 주소는 수신에서 더 이상 나타나는 경우에 펀드를 받을 수 없습니다.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "안전을 위해 좋습니다 Blockchain 지갑에 가져온된 주소에 어떤 균형을 전송할 수 있습니다.";
 
 /* (No Commment) */
@@ -482,7 +491,7 @@
 "Identifier" = "식별자";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "가맹점 인 경우 당신의 xPub을 표시 하 고 Blockchain 상인 애플 리 케이 션을 사용 하 여 안전 하 고 개인적으로 자금을 받을.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "가맹점 인 경우 (xPub) 확장 된 공개 키를 볼 하 고 Blockchain 상인 애플 리 케이 션을 사용 하 여 자금을 받을.";
 
 /* (No Commment) */
 "Import Private Key" = "가져오기 개인 키";
@@ -594,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "레이블 미만 18 문자가 있어야 합니다.";
+
+/* (No Commment) */
+"Learn More" = "자세히";
 
 /* (No Commment) */
 "Link Mobile" = "링크 모바일";
@@ -708,6 +720,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "괜찮았던 것";
+
+/* (No Commment) */
+"Open %@?" = "오픈 %@?";
+
+/* (No Commment) */
+"Open Mail App" = "오픈 메일 애플 리 케이 션";
 
 /* (No Commment) */
 "PIN" = "핀";
@@ -838,6 +856,9 @@
 "Preferences" = "환경 설정";
 
 /* (No Commment) */
+"Preparing transfer" = "전송 준비";
+
+/* (No Commment) */
 "Privacy Policy" = "개인 정보 보호 정책";
 
 /* (No Commment) */
@@ -913,7 +934,7 @@
 "Scan QR code" = "QR 코드를 스캔";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "이 코드를 스캔 하거나 안전 하 게 받을 Bitcoin Blockchain 상인 응용 프로그램에 복사 합니다.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "스캔 하거나 안전 하 게 받을 Bitcoin Blockchain 상인 응용 프로그램에이 코드를 복사 합니다.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "두 번째 비밀 번호 잘못 된";
@@ -926,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "보안 센터";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "보안 센터 완료-지갑은 안전 하 고 안전";
 
 /* (No Commment) */
 "Send" = "보내기";
@@ -956,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "설정";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "공유 동전이이 시간에 지원 되지 않습니다.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "당신의 xPub 공유 거래 내역을 추적 하려면 다른 권한을 부여 합니다. 허가한 사람 액세스 당신의 지갑에서 당신을 방해 할 수 있습니다로 신뢰 하는 사람들과 당신의 xPub 공유.";
@@ -1175,9 +1196,6 @@ Fee: %@
 "Upgrade" = "업그레이드";
 
 /* (No Commment) */
-"Upgrade Now" = "지금 업그레이드";
-
-/* (No Commment) */
 "Upgrade Wallet" = "업그레이드 지갑";
 
 /* (No Commment) */
@@ -1233,9 +1251,6 @@ Fee: %@
 
 /* (No Commment) */
 "Wallet Recovery Phrase" = "지갑 복구 문구";
-
-/* (No Commment) */
-"Wallet version %lld not supported" = "지원 되지 않는 지갑 버전 %lld";
 
 /* (No Commment) */
 "Warning" = "경고";
@@ -1354,6 +1369,9 @@ wallet experience for you" = "우리는 당신을 위해 완전히 새로운 지
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "당신은 %1$@의 비정상적으로 높은 거래 비용을 지정합니다. 경우에 %2$@에 수수료를 낮추면 다음 10 분 (1 블록) 이내 확인 하 거래를 기대할 수 있습니다.";
+
+/* (No Commment) */
+"You will be leaving the app." = "응용 프로그램을 떠날 것 이다.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "성공적으로 개인 키를 가져올 했습니다.";

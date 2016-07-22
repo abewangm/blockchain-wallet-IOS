@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Betrag muss größer oder gleich der Staub Schwellenwert (%lld Satoshi) sein.";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Fehler aufgrund von Unterbrechungen bei der PIN-Prüfung. Bitte schließen Sie die app und versuchen Sie es erneut.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Überprüfen Ihren PIN-Code, mit dem remote-Server ist ein Fehler aufgetreten. Sie ist möglicherweise offline oder Blockchain möglicherweise Schwierigkeiten. Möchten Sie wiederholen Validierung oder stattdessen Ihr Kennwort manuell eingeben?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Fehler beim Wechsel 2-Schritt-Prüfung.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Fehler beim Kopieren Ihre Adresse in die Zwischenablage. Bitte wählen Sie erneut die Zieladresse oder die app neu starten und erneut versuchen.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Fehler beim Speichern der Änderungen. Bitte stellen Sie sicher, dass Sie nicht in Ihrer Brieftasche auf ein anderes Gerät angemeldet sind.";
@@ -452,6 +458,9 @@
 "Finished Signing Inputs" = "Unterzeichnung der Eingaben abgeschlossen";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Für mehr Privatsphäre erzeugen wir eine eindeutige Adresse für jede Zahlung. Alle Adressen generiert in Ihrer Brieftasche erhalten noch Mittel, auch wenn sie nicht mehr unter Receive erscheinen.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Zu Ihrer Sicherheit empfehlen wir Ihnen, sämtliche Guthaben in den importierten Adressen in Ihrer Brieftasche Blockchain zu übertragen.";
 
 /* (No Commment) */
@@ -482,7 +491,7 @@
 "Identifier" = "Bezeichner";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Wenn Sie ein Händler sind, zeigen Sie Ihre xPub und mit der Blockchain Kaufmann-app erhalten Mittel sicher und privat.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Wenn Sie ein Händler sind, zeigen Sie Ihren erweiterten öffentlichen Schlüssel (xPub) und verwenden Sie die Blockchain Dienstleister app, um Gelder zu erhalten.";
 
 /* (No Commment) */
 "Import Private Key" = "Import-Privatschlüssels";
@@ -594,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Etikett muss weniger als 18 Zeichen lang sein.";
+
+/* (No Commment) */
+"Learn More" = "Weitere Informationen";
 
 /* (No Commment) */
 "Link Mobile" = "Verbindung Mobile";
@@ -708,6 +720,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "Okay";
+
+/* (No Commment) */
+"Open %@?" = "Offene %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Offene Mail-App";
 
 /* (No Commment) */
 "PIN" = "POLIG";
@@ -838,6 +856,9 @@
 "Preferences" = "\"Einstellungen\"";
 
 /* (No Commment) */
+"Preparing transfer" = "Vorbereitung der Übertragung";
+
+/* (No Commment) */
 "Privacy Policy" = "Datenschutz";
 
 /* (No Commment) */
@@ -913,7 +934,7 @@
 "Scan QR code" = "QR-Code Scannen";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scannen Sie dieser Code oder kopieren Sie sie in Ihre Blockchain Merchant app sicher Bitcoin zu erhalten.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Scannen Sie oder kopieren Sie diesen Code in Ihr Blockchain Dienstleister app um Bitcoin sicher zu erhalten.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Zweite Passwort falsch";
@@ -926,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Sicherheits-Center";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Security Center abgeschlossen - Geldbeutel ist sicher und sicher";
 
 /* (No Commment) */
 "Send" = "Senden";
@@ -956,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Einstellungen";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Freigegebene Münze wird derzeit nicht unterstützt.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Teilen Ihre xPub autorisiert andere um Ihre Transaktionsgeschichte zu verfolgen. Befugte Personen in der Lage, Sie zu stören, den Zugriff auf Ihre Brieftasche sein mag, nur teilen Sie Ihre xPub mit Menschen, denen, die Sie vertrauen.";
@@ -1175,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Upgrade";
 
 /* (No Commment) */
-"Upgrade Now" = "Jetzt upgraden";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Upgrade-Brieftasche";
 
 /* (No Commment) */
@@ -1233,9 +1251,6 @@ Fee: %@
 
 /* (No Commment) */
 "Wallet Recovery Phrase" = "Brieftasche Recovery Phrase";
-
-/* (No Commment) */
-"Wallet version %lld not supported" = "Brieftasche Version %lld nicht unterstützt";
 
 /* (No Commment) */
 "Warning" = "Warnung";
@@ -1354,6 +1369,9 @@ wallet experience for you" = "Wir haben eine ganz neue Erfahrung der Brieftasche
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Sie haben eine ungewöhnlich hohe Transaktionsgebühr von %1$@ angegeben. Auch wenn Sie die Gebühr auf %2$@ verringern, erwarten Sie die Transaktion innerhalb der nächsten 10 Minuten (1 Block) zu bestätigen.";
+
+/* (No Commment) */
+"You will be leaving the app." = "Sie werden die app verlassen.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Sie haben erfolgreich einen privaten Schlüssel importiert.";

@@ -229,6 +229,7 @@
 - (NSString *)apiURL;
 
 - (void)rateApp;
+- (void)authorizationRequired;
 
 @end
 

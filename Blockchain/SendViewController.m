@@ -182,7 +182,7 @@ BOOL displayingLocalSymbolSend;
     
     [self reloadFromAndToFields];
     
-    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    [self reloadSymbols];
     
     [self updateFundsAvailable];
     
@@ -213,6 +213,12 @@ BOOL displayingLocalSymbolSend;
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
+}
+
+- (void)reloadSymbols
+{
+    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    [self updateFundsAvailable];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
@@ -325,7 +331,7 @@ BOOL displayingLocalSymbolSend;
 {
     app.topViewControllerDelegate = nil;
     
-    [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, 1, [[app.wallet spendableActiveLegacyAddresses] count]]];
+    [app showBusyViewWithLoadingText:BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER];
     
     [app.wallet getInfoForTransferAllFundsToDefaultAccount];
 }
@@ -1724,7 +1730,8 @@ BOOL displayingLocalSymbolSend;
                         amountInSatoshi = 0.0;
                     }
                 } else {
-                    amountInSatoshi = 0.0;
+                    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+                    return;
                 }
                 
                 // If the amount is empty, open the amount field

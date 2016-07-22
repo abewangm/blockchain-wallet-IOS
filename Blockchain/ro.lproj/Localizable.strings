@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Valoarea trebuie să fie mai mare sau egal cu pragul de praf (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Eroare din cauza întreruperi în timpul verificării PIN. Închideţi aplicaţia şi încercaţi din nou.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Eroare la validarea codul PIN cu serverul de la distanţă. Aţi putea fi deconectat sau Blockchain pot fi întâmpină dificultăţi. Doriţi Reîncercare validare sau în schimb să introduceţi parola manual?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Eroare în timp ce schimbarea verificare în 2 paşi.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Eroare la copierea adresei în clipboard. Vă rugăm să re-selectaţi adresa de destinaţie sau reporniți aplicația și încercați din nou.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Eroare la salvarea modificărilor. Asigurați-vă că nu sunteţi conectat în portofel pe un alt dispozitiv.";
@@ -452,6 +458,9 @@
 "Finished Signing Inputs" = "Terminat semnarea intrări";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Pentru creşterea de confidenţialitate, vom genera o adresă unică pentru fiecare plată. Toate adresele generate în portofel pot primi fonduri, chiar în cazul în care nu mai apar în primire.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Pentru siguranţa dumneavoastră, vă recomandăm să transfere orice soldurile din adresele importate în portofel Blockchain.";
 
 /* (No Commment) */
@@ -482,7 +491,7 @@
 "Identifier" = "Identificator";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Dacă sunteţi un comerciant, Arată dumneavoastră xPub şi de a folosi app Blockchain comerciant să primească fonduri în condiţii de siguranţă şi în particular.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Dacă sunteţi un comerciant, Vezi cheia publică extinse (xPub) şi de a folosi app Blockchain comerciant să primească fonduri.";
 
 /* (No Commment) */
 "Import Private Key" = "Cheie privată de import";
@@ -594,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Eticheta trebuie să fie mai mică de 18 de caractere";
+
+/* (No Commment) */
+"Learn More" = "află mai multe";
 
 /* (No Commment) */
 "Link Mobile" = "Link-ul mobil";
@@ -708,6 +720,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "ok";
+
+/* (No Commment) */
+"Open %@?" = "%@ deschis?";
+
+/* (No Commment) */
+"Open Mail App" = "Deschide Mail App";
 
 /* (No Commment) */
 "PIN" = "CODUL PIN";
@@ -838,6 +856,9 @@
 "Preferences" = "Preferinţe";
 
 /* (No Commment) */
+"Preparing transfer" = "Pregătirea de transfer";
+
+/* (No Commment) */
 "Privacy Policy" = "Politica de confidenţialitate";
 
 /* (No Commment) */
@@ -913,7 +934,7 @@
 "Scan QR code" = "Scanaţi codul QR";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scanaţi acest cod sau copiaţi-l în app Blockchain comerciant pentru a primi sigur Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Scanare sau copiaţi acest cod în app Blockchain comerciant pentru a primi sigur Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "A doua parolă incorectă";
@@ -926,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Centrul de securitate";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Centrul de securitate completat - portofelul dumneavoastră este sigur";
 
 /* (No Commment) */
 "Send" = "Trimite";
@@ -956,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Setări";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Monedă comună nu este acceptată în acest moment.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Partajare dumneavoastră xPub autorizează altora pentru a urmări Istoricul tranzactiei. Ca persoane autorizate ar putea să perturbe-vă la accesarea portofel, numai cota ta xPub cu oameni tu trust.";
@@ -1175,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Upgrade-ul";
 
 /* (No Commment) */
-"Upgrade Now" = "Upgrade acum";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Upgrade-ul de portofel";
 
 /* (No Commment) */
@@ -1233,9 +1251,6 @@ Fee: %@
 
 /* (No Commment) */
 "Wallet Recovery Phrase" = "Fraza de recuperare portofel";
-
-/* (No Commment) */
-"Wallet version %lld not supported" = "Portofel %lld versiune neacceptată";
 
 /* (No Commment) */
 "Warning" = "Avertisment";
@@ -1354,6 +1369,9 @@ wallet experience for you" = "Ne-am proiectat o nouă experienţă de portofel p
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Aţi specificat o taxă de tranzacţie neobişnuit de mare de %1$@. Chiar dacă aţi mai mici taxa de la %2$@, vă puteţi aştepta la tranzacţie să confirme în următoarele 10 minute (un bloc).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Te va lăsa app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Le-am importat cu succes o cheie privată.";

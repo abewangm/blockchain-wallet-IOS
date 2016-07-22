@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Beløbet skal være større end eller lig med støv tærskel (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Der opstod en fejl på grund af afbrydelser under PIN verifikation. Luk app, og prøv igen.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Der opstod en fejl under validering af din pinkode med fjernserveren. Du kan være offline eller Blockchain kan vanskeligheder. Vil du prøve igen validering eller i stedet indtaste adgangskoden manuelt?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Der opstod en fejl under ændring af 2-trins verifikation.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Der opstod en fejl under kopiering din adresse til Udklipsholder. Venligst Vælg destinationsadresse igen eller genstarte app og prøv igen.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Der opstod en fejl under lagring af dine ændringer. Kontroller, at du ikke er logget ind på din tegnebog på en anden enhed.";
@@ -452,6 +458,9 @@
 "Finished Signing Inputs" = "Færdig med at underskrive indgange";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Til øget beskyttelse af personlige oplysninger genererer vi en entydig adresse til hver betaling. Alle adresser genereret i din tegnebog kan stadig modtage midler, selv om de ikke længere vises under Modtag.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "For din sikkerhed anbefaler vi dig at overføre eventuelle restbeløb i din importerede adresser i tegnebogen Blockchain.";
 
 /* (No Commment) */
@@ -482,7 +491,7 @@
 "Identifier" = "Id";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Hvis du er en købmand, Vis dine xPub og bruge Blockchain købmand app til at modtage midler, sikkert og privat.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Hvis du er en købmand, se din udvidede offentlige nøgle (xPub) og brug Blockchain købmand app til at modtage midler.";
 
 /* (No Commment) */
 "Import Private Key" = "Importer Private nøgle";
@@ -594,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Etiketten skal have mindre end 18 tegn";
+
+/* (No Commment) */
+"Learn More" = "Lær mere";
 
 /* (No Commment) */
 "Link Mobile" = "Samkøre Ambulant";
@@ -708,6 +720,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "Ok";
+
+/* (No Commment) */
+"Open %@?" = "Åben %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Åbn Mail App";
 
 /* (No Commment) */
 "PIN" = "PIN";
@@ -838,6 +856,9 @@
 "Preferences" = "Præferencer";
 
 /* (No Commment) */
+"Preparing transfer" = "Forberede overførsel";
+
+/* (No Commment) */
 "Privacy Policy" = "Privacy Policy";
 
 /* (No Commment) */
@@ -913,7 +934,7 @@
 "Scan QR code" = "Skan QR koden";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skan denne kode eller kopiere det ind i din Blockchain købmand app sikkert modtage Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Scan eller Kopier denne kode ind i din Blockchain købmand app sikkert modtage Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Anden adgangskode forkert";
@@ -926,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Security Center";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Security Center afsluttet - din tegnebog er trygt og sikkert";
 
 /* (No Commment) */
 "Send" = "Send";
@@ -956,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Indstillinger";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Fælles mønt understøttes ikke på nuværende tidspunkt.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Deling af din xPub bemyndiger andre til at spore din transaktionsoversigt. Som autoriserede personer kan muligvis forstyrre dig fra at få adgang til tegnebogen, kun dele din xPub med mennesker du har tillid til.";
@@ -1175,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Opgradering";
 
 /* (No Commment) */
-"Upgrade Now" = "Opgradering nu";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Opgradere tegnebog";
 
 /* (No Commment) */
@@ -1233,9 +1251,6 @@ Fee: %@
 
 /* (No Commment) */
 "Wallet Recovery Phrase" = "Tegnebog opsving sætning";
-
-/* (No Commment) */
-"Wallet version %lld not supported" = "Tegnebog version %lld understøttes ikke";
 
 /* (No Commment) */
 "Warning" = "Advarsel";
@@ -1354,6 +1369,9 @@ wallet experience for you" = "Vi har udviklet en helt ny tegnebog oplevelse for 
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Du har angivet en usædvanlig høj transaktionsgebyr for %1$@. Selv hvis du lavere gebyr til %2$@, kan du forvente transaktion til at bekræfte inden for de næste 10 minutter (et blok).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Du vil forlade app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Du har med held indført en privat nøgle.";

@@ -25,6 +25,7 @@
 #define BC_STRING_FINISHED_SIGNING_INPUTS NSLocalizedString(@"Finished Signing Inputs", nil)
 #define BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT NSLocalizedString(@"Transferring all funds: Address %i of %i", nil)
 #define BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT NSLocalizedString(@"Calculating: Address %d of %d", nil)
+#define BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER NSLocalizedString(@"Preparing transfer", nil)
 
 #define BC_STRING_ADD_TO_ADDRESS_BOOK NSLocalizedString(@"Add to Address book?", nil)
 #define BC_STRING_NO NSLocalizedString(@"No", nil)
@@ -33,6 +34,7 @@
 #define BC_STRING_NO_AVAILABLE_FUNDS NSLocalizedString(@"You have no available funds to send from this address", nil)
 #define BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD NSLocalizedString(@"Amount must be greater than or equal to the dust threshold (%lld Satoshi)", nil)
 #define BC_STRING_RECEIVE NSLocalizedString(@"Receive", nil)
+#define BC_STRING_INFORMATION_RECEIVE NSLocalizedString(@"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive.", nil)
 #define BC_STRING_TRANSACTIONS NSLocalizedString(@"Transactions", nil)
 #define BC_STRING_LOAD_MORE_TRANSACTIONS NSLocalizedString(@"Load More Transactions", nil)
 #define BC_STRING_SENDING_TRANSACTION NSLocalizedString(@"Sending Transaction", nil)
@@ -46,6 +48,7 @@
 #define BC_STRING_PAYMENT_ASK_TO_ARCHIVE_TRANSFERRED_ADDRESSES NSLocalizedString(@"Would you like to archive the addresses used?", nil)
 #define BC_STRING_PAYMENT_RECEIVED NSLocalizedString(@"Payment Received", nil)
 #define BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS NSLocalizedString(@"Tap to copy this address. Share it with the sender via email or text.", nil)
+#define BC_STRING_ERROR_COPYING_TO_CLIPBOARD NSLocalizedString(@"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again.", nil)
 
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
 #define BC_STRING_ADJUST_FEE NSLocalizedString(@"Adjust Fee", nil)
@@ -101,6 +104,7 @@
 #define BC_STRING_ERROR_LOADING_WALLET NSLocalizedString(@"Unable to load wallet due to no server response. You may be offline or Blockchain is experiencing difficulties. Please try again later.", nil)
 
 #define BC_STRING_INFORMATION NSLocalizedString(@"Information", nil)
+#define BC_STRING_LEARN_MORE NSLocalizedString(@"Learn More", nil)
 #define BC_STRING_IMPORT_PRIVATE_KEY NSLocalizedString(@"Import Private Key", nil)
 #define BC_STRING_DECRYPTING_PRIVATE_KEY NSLocalizedString(@"Decrypting Private Key", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY NSLocalizedString(@"Extended Public Key", nil)
@@ -114,8 +118,8 @@
 #define BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS NSLocalizedString(@"Please select a different address to send from.", nil)
 
 #define BC_STRING_OK NSLocalizedString(@"OK", nil)
+#define BC_STRING_OPEN_MAIL_APP NSLocalizedString(@"Open Mail App", nil)
 #define BC_STRING_FAILED_TO_LOAD_WALLET_TITLE NSLocalizedString(@"Failed To Load Wallet", nil)
-#define BC_STRING_WALLET_VERSION_NOT_SUPPORTED NSLocalizedString(@"Wallet version %lld not supported", nil)
 
 #define BC_STRING_NO_INTERNET_CONNECTION NSLocalizedString(@"No internet connection.", nil)
 #define BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION NSLocalizedString(@"Request failed. Please check your internet connection.", nil)
@@ -136,6 +140,7 @@
 
 #define BC_STRING_ACTION_REQUIRES_SECOND_PASSWORD NSLocalizedString(@"This action requires the second password for your bitcoin wallet. Please enter it below and press continue.", nil)
 #define BC_STRING_INVALID_GUID NSLocalizedString(@"Invalid Wallet ID", nil)
+#define BC_STRING_INTERRUPTED_DECRYPTION_PLEASE_CLOSE_THE_APP_AND_TRY_AGAIN NSLocalizedString(@"An error occurred due to interruptions during PIN verification. Please close the app and try again.", nil)
 
 #define BC_STRING_INVALID_SHARED_KEY NSLocalizedString(@"Invalid Shared Key", nil)
 #define BC_STRING_ENTER_YOUR_CHARACTER_WALLET_IDENTIFIER NSLocalizedString(@"Please enter your 36 character wallet identifier correctly. It can be found in the welcome email on startup.", nil)
@@ -238,6 +243,8 @@
 #define BC_STRING_GO_TO_SETTINGS NSLocalizedString(@"Go to Settings", nil)
 
 #define BC_STRING_SUPPORT NSLocalizedString(@"Support", nil)
+#define BC_STRING_OPEN_ARGUMENT NSLocalizedString(@"Open %@?", nil)
+#define BC_STRING_LEAVE_APP NSLocalizedString(@"You will be leaving the app.", nil)
 
 #define BC_STRING_TERMS_OF_SERVICE NSLocalizedString(@"Terms of Service", nil)
 #define BC_STRING_TRANSACTION NSLocalizedString(@"Transaction", nil)
@@ -275,11 +282,9 @@
 #define BC_STRING_UPGRADE_FEATURES_ENHANCED_PRIVACY NSLocalizedString(@"Enhanced Privacy", nil)
 #define BC_STRING_UPGRADE_FEATURES_SIMPLIFIED_BACKUP NSLocalizedString(@"Simplified backup and recovery", nil)
 #define BC_STRING_UPGRADE_FEATURES_CUSTOMIZED_FUND_MANAGEMENT NSLocalizedString(@"Customized fund management", nil)
-#define BC_STRING_UPGRADE_FEATURES_SHARED_COIN_NOT_SUPPORTED NSLocalizedString(@"Shared Coin is not supported at this time.", nil)
 #define BC_STRING_UPGRADE_TITLE NSLocalizedString(@"Confirm Upgrade", nil)
 #define BC_STRING_UPGRADE_WARNING NSLocalizedString(@"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept.", nil)
 #define BC_STRING_CONFIRM_UPGRADE NSLocalizedString(@"Confirm Upgrade", nil)
-#define BC_STRING_UPGRADE_NOW NSLocalizedString(@"Upgrade Now", nil)
 #define BC_STRING_UPGRADE NSLocalizedString(@"Upgrade", nil)
 #define BC_STRING_UPGRADE_SUCCESS_TITLE NSLocalizedString(@"Success!", nil)
 #define BC_STRING_UPGRADE_SUCCESS NSLocalizedString(@"You are now running our most secure Bitcoin wallet", nil)
@@ -309,6 +314,7 @@
 #define BC_STRING_UPDATE NSLocalizedString(@"Update", nil)
 #define BC_STRING_DISABLED NSLocalizedString (@"Disabled", nil)
 #define BC_STRING_SECURITY_CENTER_INSTRUCTIONS NSLocalizedString(@"Complete the steps below for ultimate security", nil)
+#define BC_STRING_SECURITY_CENTER_COMPLETED NSLocalizedString(@"Security Center completed - your wallet is safe and secure", nil)
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
 #define BC_STRING_SETTINGS_NOTIFICATIONS NSLocalizedString(@"Notifications", nil)
 #define BC_STRING_SETTINGS_EMAIL NSLocalizedString(@"Email", nil)
@@ -465,13 +471,13 @@
 #define BC_STRING_ARCHIVE_FOOTER_TITLE NSLocalizedString(@"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time.", nil)
 #define BC_STRING_ARCHIVED_FOOTER_TITLE NSLocalizedString(@"This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again.", nil)
 #define BC_STRING_TRANSFER_FOOTER_TITLE NSLocalizedString(@"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet.", nil)
-#define BC_STRING_EXTENDED_PUBLIC_KEY_FOOTER_TITLE_ONE NSLocalizedString(@"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately.", nil)
+#define BC_STRING_EXTENDED_PUBLIC_KEY_FOOTER_TITLE_ONE NSLocalizedString(@"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds.", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_FOOTER_TITLE_TWO NSLocalizedString(@"Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions.", nil)
 #define BC_STRING_EXTENDED_PUBLIC_KEY_WARNING NSLocalizedString(@"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust.", nil)
 #define BC_STRING_WATCH_ONLY_FOOTER_TITLE NSLocalizedString(@"This is a watch-only address. To spend your funds from this wallet, please scan your private key.", nil)
 #define BC_STRING_SET_DEFAULT_ACCOUNT NSLocalizedString(@"Set as Default?", nil)
 #define BC_STRING_AT_LEAST_ONE_ADDRESS_REQUIRED NSLocalizedString(@"You must have at least one active address", nil)
-#define BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE NSLocalizedString(@"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin.", nil)
+#define BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE NSLocalizedString(@"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin.", nil)
 #define BC_STRING_COPY_XPUB NSLocalizedString(@"Copy xPub", nil)
 #define BC_STRING_ADDRESS_NOT_PRESENT_IN_WALLET NSLocalizedString(@"Your wallet does not contain this address.", nil)
 #define BC_STRING_ADDRESS_NOT_WATCH_ONLY NSLocalizedString(@"This address is not watch-only.", nil)
