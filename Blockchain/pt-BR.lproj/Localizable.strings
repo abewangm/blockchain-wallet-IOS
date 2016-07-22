@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Quantidade deve ser maior ou igual ao limiar de poeira (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Ocorreu um erro devido a interrupções durante a verificação do PIN. Por favor, feche o aplicativo e tente novamente.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Erro ao validar o código PIN no servidor remoto. Você pode estar off-line ou o Blockchain pode estar enfrentando dificuldades. Gostaria de repetir a validação ou, em vez disso, digitar a senha manualmente?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Erro ao alterar a verificação em 2 passos.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Ocorreu um erro ao copiar seu endereço para a área de transferência. Por favor, re-selecione o endereço de destino ou reinicie o aplicativo e tente novamente.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Ocorreu um erro ao guardar as alterações. Por favor, certifique-se de que você não está logado em sua carteira em outro dispositivo.";
@@ -497,6 +503,9 @@
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Se você é um comerciante, mostre seu xPub e use o aplicativo Blockchain Merchant para receber fundos de forma privada e segura.";
 
 /* (No Commment) */
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Se você é um comerciante, exibir sua chave pública estendido (xPub) e usar o app Blockchain comerciante para receber os fundos.";
+
+/* (No Commment) */
 "Import Private Key" = "Importar chave privada";
 
 /* (No Commment) */
@@ -873,6 +882,9 @@
 "Preferences" = "Preferências";
 
 /* (No Commment) */
+"Preparing transfer" = "Preparando a transferência";
+
+/* (No Commment) */
 "Privacy Policy" = "Política de privacidade";
 
 /* (No Commment) */
@@ -951,6 +963,9 @@
 "Scan Watch Only Address?" = "Deseja digitalizar endereço somente observação?";
 
 /* (No Commment) */
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Digitalizar ou copiar este código em seu aplicativo Blockchain comerciante para receber com segurança Bitcoin.";
+
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Digitalizar este código ou copiá-lo em seu aplicativo Blockchain Merchant para receber Bitcoin com segurança.";
 
 /* No comment provided by engineer. */
@@ -964,6 +979,9 @@
 
 /* (No Commment) */
 "Security Center" = "Central de segurança";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Centro de segurança concluída - sua carteira é seguro";
 
 /* (No Commment) */
 "Send" = "Enviar";
