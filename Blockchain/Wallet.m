@@ -242,8 +242,8 @@
         [weakSelf check_max_amount:amount fee:fee];
     };
     
-    self.context[@"did_get_fee_dust"] = ^(NSNumber *fee, NSNumber *dust) {
-        [weakSelf did_get_fee:fee dust:dust];
+    self.context[@"did_get_fee_dust_txSize"] = ^(NSNumber *fee, NSNumber *dust, NSNumber *txSize) {
+        [weakSelf did_get_fee:fee dust:dust txSize:txSize];
     };
     
     self.context[@"tx_on_success_secondPassword"] = ^(NSString *success, NSString *secondPassword) {
@@ -1995,6 +1995,8 @@
         if ([[self.currencySymbols allKeys] containsObject:currencyCode]) {
             [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
         }
+    } else {
+        [self getAllCurrencySymbols];
     }
     
     self.isNew = NO;
@@ -2268,12 +2270,12 @@
     }
 }
 
-- (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize
 {
     DLog(@"update_fee");
     DLog(@"Wallet: fee is %@", fee);
-    if ([self.delegate respondsToSelector:@selector(didGetFee:dust:)]) {
-        [self.delegate didGetFee:fee dust:dust];
+    if ([self.delegate respondsToSelector:@selector(didGetFee:dust:txSize:)]) {
+        [self.delegate didGetFee:fee dust:dust txSize:txSize];
     }
 }
 

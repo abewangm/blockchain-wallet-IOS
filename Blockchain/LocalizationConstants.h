@@ -434,6 +434,8 @@
 #define BC_STRING_MERCHANT_DIRECTORY_UNAVAILABLE NSLocalizedString(@"Merchant Directory is currently unavailable. Please try again later.", nil)
 #define BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION NSLocalizedString(@"No internet connection available. Please check your network settings.", nil)
 #define BC_STRING_SEND_ERROR_FEE_TOO_LOW NSLocalizedString(@"The fee you have specified is too low.", nil)
+#define BC_STRING_HIGH_FEE_WARNING_TITLE NSLocalizedString(@"Large Transaction", nil)
+#define BC_STRING_HIGH_FEE_WARNING_MESSAGE NSLocalizedString(@"This is an oversized bitcoin transaction. Your wallet needs to consolidate many smaller payments you've received in the past. This requires a relatively high fee in order to be confirmed quickly. If it’s fine for the transaction to take longer to confirm, you can reduce the fee manually by tapping \"Customize Fee.\"", nil)
 #define BC_STRING_NO_EMAIL_CONFIGURED NSLocalizedString(@"You do not have an account set up for Mail. Please contact %@", nil)
 #define BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_TITLE NSLocalizedString(@"Camera Access Denied", nil)
 #define BC_STRING_ENABLE_CAMERA_PERMISSIONS_ALERT_MESSAGE NSLocalizedString(@"Blockchain does not have access to the camera. To enable access, go to your device Settings.", nil)

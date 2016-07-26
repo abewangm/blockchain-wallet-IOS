@@ -1575,9 +1575,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didGetMaxFee:fee amount:amount dust:dust willConfirm:willConfirm];
 }
 
-- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize
 {
-    [_sendViewController didGetFee:fee dust:dust];
+    [_sendViewController didGetFee:fee dust:dust txSize:txSize];
 }
 
 - (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust

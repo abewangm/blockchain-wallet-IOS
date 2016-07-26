@@ -22,7 +22,7 @@
 
 // #define ENABLE_TRANSACTION_FETCHING 1
 
-#define ENABLE_SWIPE_TO_RECEIVE 1
+//#define ENABLE_SWIPE_TO_RECEIVE 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
@@ -236,6 +236,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_FEE_ESTIMATE @"estimate"
 #define DICTIONARY_KEY_FEE @"fee"
 #define DICTIONARY_KEY_SURGE @"surge"
+#define DICTIONARY_KEY_LAST @"last"
+#define DICTIONARY_KEY_USD @"USD"
 
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL @"email"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED @"email_verified"
@@ -351,6 +353,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SATOSHI 1e8 // 100,000,000
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
 
+#define TX_SIZE_ONE_KILOBYTE 1000
+
 #define ANIMATION_DURATION .2f
 #define ANIMATION_DURATION_LONG .5f
 #define kConfirmationThreshold 3
@@ -414,6 +418,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_PRESENTER_SETTINGS_ABOUT 2
 
 #define APP_STORE_REVIEW_PROMPT_TIME 60*60*24*7 // Seconds in one week
+
+#define ONE_PERCENT_DECIMAL @0.01
+#define FIFTY_CENTS_DECIMAL @0.50
 
 #pragma mark - Runtime modes
 

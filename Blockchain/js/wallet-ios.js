@@ -565,7 +565,7 @@ MyWalletPhone.getTransactionFee = function() {
         }
         
         currentPayment.prebuild().build().then(function (x) {
-                                               did_get_fee_dust(x.finalFee, x.extraFeeConsumption);
+                                               did_get_fee_dust_txSize(x.finalFee, x.extraFeeConsumption, x.txSize);
                                                return x;
                                                }).catch(buildFailure);
         

@@ -118,7 +118,7 @@
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
 - (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees;
-- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust;
+- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
 - (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
 
 - (void)getInfoForTransferAllFundsToDefaultAccount;
