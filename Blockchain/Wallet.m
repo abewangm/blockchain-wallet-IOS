@@ -675,9 +675,32 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
     
     if (self.addressToSubscribe) {
-        self.addressToSubscribe = nil;
         NSDictionary *message = [string getJSONObject];
-        // get transaction info here
+        NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
+        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:DEFAULT_TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.addressToSubscribe]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            
+            if (error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // TODO: add alert for error here
+                });
+                return;
+            }
+            
+            uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // TODO: add alert and formatMoney:localCurrency:
+            });
+        }];
+        
+        [task resume];
+        [session finishTasksAndInvalidate];
+        
+        self.addressToSubscribe = nil;
     }
 }
 
