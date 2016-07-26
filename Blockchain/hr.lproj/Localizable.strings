@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Iznos mora biti veći ili jednak prašinu Praga (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Došlo je do pogreške zbog prekida pri provjeri PIN. Zatvorite aplikaciju i pokušajte ponovno.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Došlo je do pogreške provjere svoj PIN kod s udaljenim poslužiteljem. Ti možda ne radi ili Blockchain imaju poteškoće. Želite li ponovo provjere valjanosti ili umjesto toga unesite lozinku ručno?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Došlo je do pogreške tijekom promjene u 2 koraka.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Došlo je do pogreške tijekom kopiranja svoju adresu u međuspremnik. Ponovno odaberite odredišnu adresu ili ponovo pokrenite aplikaciju i pokušajte ponovno.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Pojavila se pogreška prilikom spremanja promjena. Provjerite da li ste prijavljeni u svoj novčanik na drugom uređaju.";
@@ -485,7 +491,7 @@
 "Identifier" = "Identifikator";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Ako ste trgovac, pokazati svoj xPub i koristiti Blockchain trgovac aplikacija za primanje sredstava sigurno i privatno.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Ako ste trgovac, Pogledaj svoj prošireni javni ključ (xPub) i Blockchain trgovac aplikacija koristi za primanje sredstava.";
 
 /* (No Commment) */
 "Import Private Key" = "Uvezi privatni ključ";
@@ -850,6 +856,9 @@
 "Preferences" = "Osobne postavke";
 
 /* (No Commment) */
+"Preparing transfer" = "Priprema prijenosa";
+
+/* (No Commment) */
 "Privacy Policy" = "Pravilnik o zaštiti privatnosti";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "Skenirajte QR kod";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skenirajte ovaj kod ili ga kopirajte u Blockchain trgovac aplikaciju za sigurno primanje Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Skenirajte ili kopirajte ovaj kod u Blockchain trgovac aplikaciju za sigurno primanje Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Drugi lozinka kriv";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Centar za sigurnost";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Centar za sigurnost dovršen - novčanik je sigurno";
 
 /* (No Commment) */
 "Send" = "Poslati";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Postavke";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Zajednički novac nije podržan u ovom trenutku.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Dijeljenje vaše xPub odobrava drugima pronaći svoju povijest transakcija. Kao ovlaštenih osoba svibanj biti u mogućnosti da ometaju pristup tvoj novčanik, samo dijeliti svoje xPub s ljudima kojima vjerujete.";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "Nadogradnja";
-
-/* (No Commment) */
-"Upgrade Now" = "Nadogradite sada";
 
 /* (No Commment) */
 "Upgrade Wallet" = "Nadogradnju novčanik";

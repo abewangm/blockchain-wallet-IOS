@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "金額必須大於或等於灰塵閾值 (%lld 聰)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "PIN 驗證過程中，由於中斷時出錯。請關閉應用程式，然後重試。";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "驗證您的 PIN 代碼與遠端伺服器時發生錯誤。你可能處於離線狀態或 Blockchain 可能遇到的困難。要驗證重試或相反手動輸入您的密碼嗎?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "變化 2 步驗證時出錯。";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "將您的位址複製到剪貼簿時出錯。請重新選擇目標位址或重新開機該應用程式，然後重試。";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "保存您的更改時出錯。請確保您未登錄到你的錢包在另一個設備。";
@@ -485,7 +491,7 @@
 "Identifier" = "識別碼";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "如果你是個商人，顯示你的 xPub 和使用 Blockchain 商人應用程式來接收資金安全和私下。";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "如果你是個商人，查看您擴展的公開金鑰 (xPub) 和使用 Blockchain 商人應用程式來獲得資金。";
 
 /* (No Commment) */
 "Import Private Key" = "導入私密金鑰";
@@ -850,6 +856,9 @@
 "Preferences" = "首選項";
 
 /* (No Commment) */
+"Preparing transfer" = "準備轉讓";
+
+/* (No Commment) */
 "Privacy Policy" = "隱私權原則";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "掃描二維碼";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "掃描此代碼或將其複製到您的 Blockchain 商人應用程式安全地接收比特幣。";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "掃描或將此代碼複製到您的 Blockchain 商人應用程式安全地接收比特幣。";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "第二個密碼不正確";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "安全中心";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "安全中心完成 — — 你的錢包是安全和有保障";
 
 /* (No Commment) */
 "Send" = "發送";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "設置";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "這次不支援共用的硬幣。";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "分享你的 xPub 授權他人跟蹤您的交易歷史。獲授權的人士可能能夠擾亂你訪問你的錢包，只與你信任的人分享你的 xPub。";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "升級";
-
-/* (No Commment) */
-"Upgrade Now" = "現在升級";
 
 /* (No Commment) */
 "Upgrade Wallet" = "升級的錢包";

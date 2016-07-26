@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Ποσό πρέπει να είναι μεγαλύτερη από ή ίση με το κατώτατο όριο της σκόνης (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Παρουσιάστηκε σφάλμα λόγω διακοπής κατά τη διάρκεια της επαλήθευσης PIN. Κλείστε την εφαρμογή και προσπαθήστε ξανά.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Παρουσιάστηκε σφάλμα επικύρωση κωδικό σας PIN με τον απομακρυσμένο διακομιστή. Μπορεί να είστε σε μη απευθείας σύνδεση ή Blockchain μπορεί να αντιμετωπίζουν δυσκολίες. Θα θέλατε επανάληψη επικύρωσης ή αντί να εισάγετε τον κωδικό σας με το χέρι;";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Παρουσιάστηκε σφάλμα κατά την αλλαγή επαλήθευση σε 2 βήματα.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Παρουσιάστηκε σφάλμα κατά την αντιγραφή στο πρόχειρο σας διεύθυνση. Παρακαλούμε να επιλέξετε εκ νέου τη διεύθυνση προορισμού ή επανεκκινήστε την εφαρμογή και προσπαθήστε ξανά.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Παρουσιάστηκε σφάλμα κατά την αποθήκευση των αλλαγών σας. Παρακαλώ βεβαιωθείτε ότι δεν είστε συνδεδεμένοι στο πορτοφόλι σας σε κάποια άλλη συσκευή.";
@@ -485,7 +491,7 @@
 "Identifier" = "Αναγνωριστικό";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Εάν είστε ένας έμπορος, δείχνουν xPub σας και χρήση της εφαρμογής Blockchain έμπορος να λαμβάνουν κεφάλαια με ασφάλεια και ιδιωτικώς.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Εάν είστε ένας έμπορος, προβάλετε το εκτεταμένο δημόσιο κλειδί (xPub) και χρήση της εφαρμογής Blockchain έμπορος να λαμβάνουν κεφάλαια.";
 
 /* (No Commment) */
 "Import Private Key" = "Εισαγωγή ιδιωτικού κλειδιού";
@@ -850,6 +856,9 @@
 "Preferences" = "Προτιμήσεις";
 
 /* (No Commment) */
+"Preparing transfer" = "Προετοιμασία μεταφορά";
+
+/* (No Commment) */
 "Privacy Policy" = "Πολιτική προστασίας προσωπικών δεδομένων";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "Σάρωση κωδικού QR";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Σάρωση αυτόν τον κώδικα ή να το αντιγράψετε σε σας app Blockchain έμπορος να λάβετε με ασφάλεια το Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Σάρωση ή Αντιγράψτε αυτόν τον κώδικα στην εφαρμογή σας Blockchain έμπορος να λάβετε με ασφάλεια το Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Δεύτερο κωδικό πρόσβασης που είναι εσφαλμένη";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Κέντρο ασφαλείας";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Κέντρο ασφαλείας ολοκληρωθεί - πορτοφόλι σας είναι ασφαλή";
 
 /* (No Commment) */
 "Send" = "Αποστολή";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Ρυθμίσεις";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Κοινόχρηστο κέρμα δεν υποστηρίζεται αυτήν τη στιγμή.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Κοινή χρήση xPub σας εξουσιοδοτεί άλλους για να παρακολουθείτε το ιστορικό συναλλαγών σου. Καθώς και εξουσιοδοτημένα πρόσωπα μπορεί να είναι σε θέση να διαταράξει σας από την πρόσβαση στο πορτοφόλι σας, μοιράζονται μόνο σας xPub με ανθρώπους που εμπιστεύεστε.";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "Αναβάθμιση";
-
-/* (No Commment) */
-"Upgrade Now" = "Αναβάθμιση τώρα";
 
 /* (No Commment) */
 "Upgrade Wallet" = "Αναβάθμιση πορτοφόλι";

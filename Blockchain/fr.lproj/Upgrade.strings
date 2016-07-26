@@ -8,7 +8,7 @@
 "Ebu-XV-0mt.normalTitle" = "Annuler";
 
 /* Class = "UIButton"; normalTitle = "Upgrade Now"; ObjectID = "Gk5-cB-fZg"; */
-"Gk5-cB-fZg.normalTitle" = "Mettre à niveau maintenant";
+"Gk5-cB-fZg.normalTitle" = "Continuer";
 
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
 "HuT-V7-syg.normalTitle" = "Demandez-moi plus tard";

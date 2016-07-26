@@ -8,7 +8,7 @@
 "Ebu-XV-0mt.normalTitle" = "キャンセル";
 
 /* Class = "UIButton"; normalTitle = "Upgrade Now"; ObjectID = "Gk5-cB-fZg"; */
-"Gk5-cB-fZg.normalTitle" = "今すぐアップグレードします。";
+"Gk5-cB-fZg.normalTitle" = "続行";
 
 /* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
 "HuT-V7-syg.normalTitle" = "後で確認します。";

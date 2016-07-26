@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "A por küszöbértékét (%lld Satoshi) egyenlő vagy nagyobb kell";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Hiba miatt megszakítások PIN-ellenőrzés során. Kérjük, zárja be az alkalmazást, és próbálkozzon újra.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Hiba történt a PIN-kódot a távoli szerverrel érvényesítése. Lehet, hogy kapcsolat nélküli vagy Blockchain lehet nehézségei. Szeretne újra érvényesítés, vagy inkább kézzel adja meg a jelszavát?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Hiba történt a változó 2. lépés ellenőrzés.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Hiba történt, miközben a cím másolása a vágólapra. Újra válassza ki a cél címe, vagy indítsa újra az alkalmazást, és próbálkozzon újra.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Hiba történt a módosítások mentése. Kérjük, győződjön meg róla, nem jelentkezett be a pénztárca egy másik eszközön.";
@@ -485,7 +491,7 @@
 "Identifier" = "Azonosítója";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Ha egy kereskedő, a xPub és a kereskedő Blockchain app felhasználási részesülnek, biztonságosan és zárt.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Ha egy kereskedő, a kiterjesztett nyilvános kulcs (xPub) és használhatják a kereskedő Blockchain app részesülnek.";
 
 /* (No Commment) */
 "Import Private Key" = "Import privát kulcs";
@@ -850,6 +856,9 @@
 "Preferences" = "Beállítások";
 
 /* (No Commment) */
+"Preparing transfer" = "Átadás előkészítése";
+
+/* (No Commment) */
 "Privacy Policy" = "Adatvédelmi politika";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "QR-kód beolvasásához";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "E kód beolvasni, vagy másold be a Blockchain kereskedő app, hogy biztonságosan kap Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Olvassa be vagy másolja ezt a kódot a Blockchain kereskedő app, hogy biztonságosan kap Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Második jelszó helytelen";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "A biztonsági központ";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Biztonsági központ befejezett - a pénztárca és biztonságos";
 
 /* (No Commment) */
 "Send" = "Küldés";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Beállítások";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Megosztott érme nem támogatott ebben az időben.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "A xPub megosztása felhatalmazza mások a tranzakciók előzményeinek nyomon követésére. Jogosult személyek esetleg képes megzavarni, hozzáférjenek a pénztárca, csak megosztja a xPub meg, akikben megbízol.";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "Frissítés";
-
-/* (No Commment) */
-"Upgrade Now" = "Frissítés most";
 
 /* (No Commment) */
 "Upgrade Wallet" = "Frissítési pénztárca";

@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Quantidade deve ser maior ou igual ao limiar de poeira (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Ocorreu um erro devido a interrupções durante a verificação do PIN. Por favor, feche o aplicativo e tente novamente.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Erro ao validar o seu código PIN com o servidor remoto. Você pode estar offline ou Blockchain pode estar enfrentando dificuldades. Gostaria de repetir a validação ou em vez disso, digite sua senha manualmente?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Ocorreu um erro ao mudar 2-etapa verificação.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Ocorreu um erro ao copiar seu endereço para a área de transferência. Por favor, re-selecione o endereço de destino ou reinicie o aplicativo e tente novamente.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Ocorreu um erro ao guardar as alterações. Por favor, certifique-se de que você não está logado em sua carteira em outro dispositivo.";
@@ -485,7 +491,7 @@
 "Identifier" = "Identificador de";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Se você é um comerciante, mostrar o seu xPub e usar o app Blockchain comerciante para receber fundos de forma segura e privada.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Se você é um comerciante, exibir sua chave pública estendido (xPub) e usar o app Blockchain comerciante para receber os fundos.";
 
 /* (No Commment) */
 "Import Private Key" = "Chave privada de importação";
@@ -850,6 +856,9 @@
 "Preferences" = "Preferências";
 
 /* (No Commment) */
+"Preparing transfer" = "Preparando a transferência";
+
+/* (No Commment) */
 "Privacy Policy" = "Política de privacidade";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "Examine o código QR";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Digitalizar esse código ou copiá-lo em seu aplicativo Blockchain comerciante para receber com segurança Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Digitalizar ou copiar este código em seu aplicativo Blockchain comerciante para receber com segurança Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Segunda senha incorreta";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Central de segurança";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Centro de segurança concluída - sua carteira é seguro";
 
 /* (No Commment) */
 "Send" = "Enviar";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Configurações";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Moeda comum não é suportada neste momento.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Compartilhar seu xPub autoriza outros para acompanhar o seu histórico de transacções. Pessoas autorizadas seja capazes de romper acessem sua carteira, apenas Compartilhe sua xPub com as pessoas que você confia.";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "Atualização";
-
-/* (No Commment) */
-"Upgrade Now" = "Atualize agora";
 
 /* (No Commment) */
 "Upgrade Wallet" = "Atualização da carteira";

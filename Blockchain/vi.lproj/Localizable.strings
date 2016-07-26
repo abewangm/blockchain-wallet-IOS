@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Số tiền phải lớn hơn hoặc bằng ngưỡng bụi (%lld Satoshi)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Lỗi xuất hiện do bị gián đoạn trong quá trình xác minh mã PIN. Vui lòng đóng ứng dụng và thử lại.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Xác nhận mã PIN của bạn với máy chủ từ xa đã có lỗi. Bạn có thể được diễn đàn hoặc Blockchain có thể gặp khó khăn. Bạn có muốn thử lại xác nhận hoặc thay vào đó nhập mật khẩu của bạn theo cách thủ công?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Lỗi xuất hiện khi thay đổi quy trình xác minh 2 bước.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Lỗi xảy ra trong khi sao chép địa chỉ của bạn vào bảng tạm. Xin vui lòng chọn lại địa chỉ đích hoặc khởi động lại ứng dụng và thử lại.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Lỗi xuất hiện khi lưu các thay đổi. Hãy chắc chắn rằng bạn không đăng nhập vào wallet của bạn trên một thiết bị khác.";
@@ -485,7 +491,7 @@
 "Identifier" = "Định danh";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Nếu bạn là một thương gia, Hiển thị của bạn xPub và sử dụng ứng dụng Blockchain thương gia để nhận được tiền an toàn và riêng tư.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Nếu bạn là một thương gia, xem khóa công cộng của bạn mở rộng (xPub) và sử dụng ứng dụng Blockchain thương gia để nhận được tiền.";
 
 /* (No Commment) */
 "Import Private Key" = "Khóa nhập khẩu riêng";
@@ -850,6 +856,9 @@
 "Preferences" = "Sở thích";
 
 /* (No Commment) */
+"Preparing transfer" = "Chuẩn bị chuyển";
+
+/* (No Commment) */
 "Privacy Policy" = "Chính sách bảo mật";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "Quét mã QR";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Quét mã này hoặc sao chép nó vào ứng dụng Blockchain thương gia của bạn một cách an toàn nhận Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Quét hoặc sao chép mã này vào ứng dụng Blockchain thương gia của bạn một cách an toàn nhận Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Thứ hai mật khẩu không chính xác";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Trung tâm bảo mật";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Trung tâm bảo mật đã hoàn thành - chi tiêu của bạn là an toàn và an toàn";
 
 /* (No Commment) */
 "Send" = "Gửi";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Cài đặt";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Đồng xu được chia sẻ không được hỗ trợ tại thời điểm này.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Chia sẻ xPub của bạn cho phép những người khác để theo dõi lịch sử giao dịch của bạn. Là người được ủy quyền có thể ngăn cản bạn truy cập vào ví của bạn, chỉ chia sẻ xPub của bạn với những người bạn tin cậy.";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "Nâng cấp";
-
-/* (No Commment) */
-"Upgrade Now" = "Nâng cấp bây giờ";
 
 /* (No Commment) */
 "Upgrade Wallet" = "Nâng cấp Wallet";

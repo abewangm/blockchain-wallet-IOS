@@ -104,10 +104,16 @@
 "Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Сума повинна бути більше або дорівнювати пилу поріг (%lld Сатосі)";
 
 /* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Сталася помилка через перебої під час перевірку PIN-КОДУ. Закрийте застосунок і повторіть спробу.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Помилка перевірки ваш PIN-код з віддаленим сервером. Можливо, ви в автономному режимі або Blockchain може відчувати труднощі. Ви хочете, повторити перевірку або замість введення пароля вручну?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Сталася помилка при зміні двоетапної перевірки.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Сталася помилка під час копіювання вашу адресу в буфер обміну. Повторно виберіть адреси призначення або Перезапустити додаток та повторіть спробу.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Помилка під час збереження змін. Переконайтеся, що ви не ввійшли до вашого гаманця на іншому пристрої.";
@@ -485,7 +491,7 @@
 "Identifier" = "Ідентифікатор";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Якщо ви купця, показати ваш xPub і використовувати Blockchain купець app на отримання коштів, безпечно і в приватному порядку.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Якщо ви купця, переглянути розширених відкритий ключ (xPub) і отримати кошти за допомогою app Blockchain купця.";
 
 /* (No Commment) */
 "Import Private Key" = "Імпорт секретний ключ";
@@ -850,6 +856,9 @@
 "Preferences" = "Налаштування";
 
 /* (No Commment) */
+"Preparing transfer" = "Готується передача";
+
+/* (No Commment) */
 "Privacy Policy" = "Політика конфіденційності";
 
 /* (No Commment) */
@@ -925,7 +934,7 @@
 "Scan QR code" = "Скануйте QR код";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Сканувати цей код або скопіюйте його до вашого застосунку Blockchain купець надійно отримувати Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Відскануйте або скопіюйте цей код у ваш застосунок Blockchain купець надійно отримувати Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Другий пароль неправильні";
@@ -938,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Центр безпеки";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Центр безпеки завершено - ваш гаманець є надійним і безпечним";
 
 /* (No Commment) */
 "Send" = "Надіслати";
@@ -968,9 +980,6 @@
 
 /* (No Commment) */
 "Settings" = "Параметри";
-
-/* (No Commment) */
-"Shared Coin is not supported at this time." = "Спільні монету в цей час не підтримується.";
 
 /* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Спільний доступ до вашого xPub дозволяє іншим користувачам відстежувати угоду історію. Як уповноважених осіб може бути в змозі порушити ви доступ до вашого гаманця, тільки спільний доступ ваше xPub людей, що ви довіряєте.";
@@ -1185,9 +1194,6 @@ Fee: %@
 
 /* (No Commment) */
 "Upgrade" = "Оновлення";
-
-/* (No Commment) */
-"Upgrade Now" = "Оновити зараз";
 
 /* (No Commment) */
 "Upgrade Wallet" = "Оновити гаманець";
