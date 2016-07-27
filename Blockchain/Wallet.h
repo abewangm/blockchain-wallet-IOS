@@ -274,7 +274,11 @@
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword;
 - (void)enableEmailNotifications;
 - (void)disableEmailNotifications;
+- (void)enableSMSNotifications;
+- (void)disableSMSNotifications;
 - (void)changeTorBlocking:(BOOL)willEnable;
+- (BOOL)emailNotificationsEnabled;
+- (BOOL)SMSNotificationsEnabled;
 
 // Security Center
 - (BOOL)hasVerifiedEmail;

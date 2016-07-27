@@ -1629,32 +1629,65 @@ MyWalletPhone.get2FAType = function() {
     return WalletStore.get2FAType();
 }
 
-MyWalletPhone.enableNotifications = function() {
+MyWalletPhone.emailNotificationsEnabled = function() {
+    return MyWallet.wallet.accountInfo.notifications.email;
+}
     
+MyWalletPhone.SMSNotificationsEnabled = function() {
+    return MyWallet.wallet.accountInfo.notifications.sms;
+}
+
+MyWalletPhone.enableEmailNotifications = function() {
+    MyWalletPhone.updateNotification({email: 'enable'});
+}
+
+MyWalletPhone.disableEmailNotifications = function() {
+    MyWalletPhone.updateNotification({email: 'disable'});
+}
+
+MyWalletPhone.enableSMSNotifications = function() {
+    MyWalletPhone.updateNotification({sms: 'enable'});
+}
+
+MyWalletPhone.disableSMSNotifications = function() {
+    MyWalletPhone.updateNotification({sms: 'disable'});
+}
+
+MyWalletPhone.updateNotification = function(updates) {
     var success = function () {
-        console.log('Enable notifications success');
-        on_change_email_notifications_success();
+        
+        var updateReceiveError = function(error) {
+            console.log('Enable notifications error: ' + error);
+        }
+        
+        if (!MyWallet.wallet.accountInfo.notifications.http) {
+            console.log('Enable notifications success; enabling for receiving');
+            BlockchainSettingsAPI.updateNotificationsOn({ receive: true }).then(function(x) {
+                                                                                on_change_notifications_success();
+                                                                                return x;
+                                                                                }).catch(updateReceiveError);
+        } else {
+            console.log('Enable notifications success');
+            on_change_notifications_success();
+        }
     }
     
     var error = function(error) {
         console.log('Enable notifications error: ' + error);
     }
     
-    MyWallet.wallet.enableNotifications(success, error);
-}
-
-MyWalletPhone.disableNotifications = function() {
+    var notificationsType = MyWallet.wallet.accountInfo.notifications;
     
-    var success = function () {
-        console.log('Disable notifications success');
-        on_change_email_notifications_success();
-    }
+    if (updates.sms == 'enable') notificationsType.sms = true;
+    if (updates.sms == 'disable') notificationsType.sms = undefined;
     
-    var error = function(error) {
-        console.log('Disable notifications error: ' + error);
-    }
+    if (updates.http == 'enable') notificationsType.http = true;
+    if (updates.http == 'disable') notificationsType.http = undefined;
     
-    MyWallet.wallet.disableNotifications(success, error);
+    if (updates.email == 'enable') notificationsType.email = true;
+    if (updates.email == 'disable') notificationsType.email = undefined;
+    
+    BlockchainSettingsAPI.updateNotificationsType(notificationsType).then(success).catch(error);
 }
 
 MyWalletPhone.updateTorIpBlock = function(willEnable) {

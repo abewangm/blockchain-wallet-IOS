@@ -498,12 +498,12 @@
         [weakSelf on_change_email_success];
     };
     
-    self.context[@"on_change_email_notifications_success"] = ^() {
-        [weakSelf on_change_email_notifications_success];
+    self.context[@"on_change_notifications_success"] = ^() {
+        [weakSelf on_change_notifications_success];
     };
     
-    self.context[@"on_change_email_notifications_error"] = ^() {
-        [weakSelf on_change_email_notifications_error];
+    self.context[@"on_change_notifications_error"] = ^() {
+        [weakSelf on_change_notifications_error];
     };
     
     self.context[@"on_update_tor_success"] = ^() {
@@ -1459,7 +1459,7 @@
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.enableNotifications()"];
+    [self.context evaluateScript:@"MyWalletPhone.enableEmailNotifications()"];
 }
 
 - (void)disableEmailNotifications
@@ -1468,8 +1468,27 @@
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.disableNotifications()"];
+    [self.context evaluateScript:@"MyWalletPhone.disableEmailNotifications()"];
 }
+
+- (void)enableSMSNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.enableSMSNotifications()"];
+}
+
+- (void)disableSMSNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.disableSMSNotifications()"];
+}
+
 
 - (void)changeTorBlocking:(BOOL)willEnable
 {
@@ -1566,6 +1585,24 @@
 - (void)getSessionToken
 {
     [self.context evaluateScript:@"MyWalletPhone.getSessionToken()"];
+}
+
+- (BOOL)emailNotificationsEnabled
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.emailNotificationsEnabled()"] toBool];
+}
+
+- (BOOL)SMSNotificationsEnabled
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.SMSNotificationsEnabled()"] toBool];
 }
 
 # pragma mark - Transaction handlers
@@ -2469,16 +2506,16 @@
     [app standardNotifyAutoDismissingController:error];
 }
 
-- (void)on_change_email_notifications_success
+- (void)on_change_notifications_success
 {
-    DLog(@"on_change_email_notifications_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS object:nil];
+    DLog(@"on_change_notifications_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_SUCCESS object:nil];
 }
 
-- (void)on_change_email_notifications_error
+- (void)on_change_notifications_error
 {
-    DLog(@"on_change_email_notifications_error");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR object:nil];
+    DLog(@"on_change_notifications_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_ERROR object:nil];
 }
 
 - (void)return_to_addresses_screen
