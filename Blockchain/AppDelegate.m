@@ -686,7 +686,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showPinModalIfBackgroundedDuringLoad
 {
     if (![self.pinEntryViewController.view isDescendantOfView:_window.rootViewController.view] && !self.wallet.isInitialized && [self sharedKey] && [self guid] && !modalView) {
-        [self showPinModalAsView:NO];
+        [self showPinModalAsView:YES];
     }
 }
 
@@ -1224,7 +1224,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)setAccountData:(NSString*)guid sharedKey:(NSString*)sharedKey
 {
     if ([guid length] != 36) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_INVALID_GUID message:BC_STRING_INTERRUPTED_DECRYPTION_PLEASE_CLOSE_THE_APP_AND_TRY_AGAIN preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_INTERRUPTED_DECRYPTION_PLEASE_CLOSE_THE_APP_AND_TRY_AGAIN preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CLOSE_APP style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             // Close App
             UIApplication *app = [UIApplication sharedApplication];

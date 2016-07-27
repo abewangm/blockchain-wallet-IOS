@@ -340,6 +340,18 @@
         [weakSelf crypto_scrypt:_password salt:salt n:N r:r p:p dkLen:derivedKeyLen success:success error:error];
     };
     
+    self.context[@"loading_start_create_new_address"] = ^() {
+        [weakSelf loading_start_create_new_address];
+    };
+    
+    self.context[@"on_error_creating_new_address"] = ^(NSString *error) {
+        [weakSelf on_error_creating_new_address:error];
+    };
+    
+    self.context[@"on_generate_key"] = ^() {
+        [weakSelf on_generate_key];
+    };
+    
     self.context[@"on_add_new_account"] = ^() {
         [weakSelf on_add_new_account];
     };
