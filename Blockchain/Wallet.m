@@ -1670,7 +1670,7 @@
 
 - (void)upgrade_success
 {
-    [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE delegate:nil];
+    [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE];
     
     [app reloadTransactionFilterLabel];
 }
@@ -1897,9 +1897,9 @@
     }
     
     if ([type isEqualToString:@"error"]) {
-        [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
+        [app standardNotify:message title:BC_STRING_ERROR];
     } else if ([type isEqualToString:@"info"]) {
-        [app standardNotify:message title:BC_STRING_INFORMATION delegate:nil];
+        [app standardNotify:message title:BC_STRING_INFORMATION];
     }
 }
 
@@ -1913,12 +1913,12 @@
         NSRange identifierRange = [message rangeOfString:BC_STRING_IDENTIFIER options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
         NSRange connectivityErrorRange = [message rangeOfString:ERROR_FAILED_NETWORK_REQUEST options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
         if (identifierRange.location != NSNotFound) {
-            [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
+            [app standardNotify:message title:BC_STRING_ERROR];
             [self error_restoring_wallet];
             return;
         } else if (connectivityErrorRange.location != NSNotFound) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION_LONG * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+                [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR];
             });
             [self error_restoring_wallet];
             return;
@@ -1946,7 +1946,7 @@
     
     if (self.didPairAutomatically) {
         self.didPairAutomatically = NO;
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE];
     }
     self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
     self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
@@ -2139,7 +2139,7 @@
 - (void)on_change_currency_error
 {
     DLog(@"on_change_local_currency_error");
-    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_UPDATING_TITLE delegate:nil];
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_UPDATING_TITLE];
 }
 
 - (void)on_get_account_info_success:(NSString *)accountInfo
@@ -2393,13 +2393,13 @@
 - (void)on_error_downloading_account_settings
 {
     DLog(@"on_error_downloading_account_settings");
-    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
 }
 
 - (void)on_update_email_error
 {
-    [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR delegate:nil];
+    [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR];
 }
 
 - (void)on_error_get_history:(NSString *)error

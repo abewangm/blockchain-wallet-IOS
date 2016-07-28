@@ -146,8 +146,7 @@
 - (void)standardNotifyAutoDismissingController:(NSString *)message;
 - (void)standardNotifyAutoDismissingController:(NSString *)message title:(NSString *)title;
 - (void)standardNotify:(NSString*)message;
-- (void)standardNotify:(NSString*)message delegate:(id)fdelegate;
-- (void)standardNotify:(NSString*)message title:(NSString*)title delegate:(id)fdelegate;
+- (void)standardNotify:(NSString*)message title:(NSString*)title;
 
 // Busy view with loading text
 - (void)showBusyViewWithLoadingText:(NSString *)text;
