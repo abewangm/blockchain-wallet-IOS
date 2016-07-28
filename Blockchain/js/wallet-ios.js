@@ -1679,13 +1679,13 @@ MyWalletPhone.updateNotification = function(updates) {
     var notificationsType = MyWallet.wallet.accountInfo.notifications;
     
     if (updates.sms == 'enable') notificationsType.sms = true;
-    if (updates.sms == 'disable') notificationsType.sms = undefined;
+    if (updates.sms == 'disable') notificationsType.sms = false;
     
     if (updates.http == 'enable') notificationsType.http = true;
-    if (updates.http == 'disable') notificationsType.http = undefined;
+    if (updates.http == 'disable') notificationsType.http = false;
     
     if (updates.email == 'enable') notificationsType.email = true;
-    if (updates.email == 'disable') notificationsType.email = undefined;
+    if (updates.email == 'disable') notificationsType.email = false;
     
     BlockchainSettingsAPI.updateNotificationsType(notificationsType).then(success).catch(error);
 }
