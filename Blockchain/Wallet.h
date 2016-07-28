@@ -20,7 +20,7 @@
 
 #import "JSBridgeWebView.h"
 #import "MultiAddressResponse.h"
-
+#import "SRWebSocket.h"
 
 @interface transactionProgressListeners : NSObject
 @property(nonatomic, copy) void (^on_start)();
@@ -94,9 +94,10 @@
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
 - (void)updateLoadedAllTransactions:(NSNumber *)loadedAll;
+- (void)receivedTransactionMessage;
 @end
 
-@interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
+@interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate, SRWebSocketDelegate> {
 }
 
 // Core Wallet Init Properties
@@ -104,8 +105,9 @@
 @property(nonatomic, strong) NSString *sharedKey;
 @property(nonatomic, strong) NSString *password;
 
+@property(nonatomic, strong) NSString *sessionToken;
+
 @property(nonatomic, strong) id<WalletDelegate> delegate;
-@property(nonatomic, strong) JSBridgeWebView *webView;
 
 @property(nonatomic) uint64_t final_balance;
 @property(nonatomic) uint64_t total_sent;
@@ -130,6 +132,10 @@
 @property BOOL isNew;
 @property NSString *twoFactorInput;
 @property (nonatomic) NSDictionary *currencySymbols;
+
+@property (nonatomic, assign) id <SRWebSocketDelegate> socketDelegate;
+@property (nonatomic) SRWebSocket *webSocket;
+@property (nonatomic) NSTimer *webSocketTimer;
 
 - (id)init;
 

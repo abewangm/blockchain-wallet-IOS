@@ -13,6 +13,7 @@
 
 @interface SecurityCenterViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *securityLevelImageView;
+@property (strong, nonatomic) IBOutlet UILabel *instructionsLabel;
 
 @property (strong, nonatomic) IBOutlet UIButton *verifyEmailButton;
 @property (strong, nonatomic) IBOutlet UILabel *verifyEmailLabel;
@@ -105,12 +106,15 @@
     if (completedItems < 6 && completedItems > 2) {
         self.securityLevelImageView.image = [UIImage imageNamed:@"security2"];
         self.progressView.progressTintColor = COLOR_SECURITY_CENTER_YELLOW;
+        self.instructionsLabel.text = BC_STRING_SECURITY_CENTER_INSTRUCTIONS;
     } else if (completedItems == 6) {
         self.securityLevelImageView.image = [UIImage imageNamed:@"security3"];
         self.progressView.progressTintColor = COLOR_SECURITY_CENTER_GREEN;
+        self.instructionsLabel.text = BC_STRING_SECURITY_CENTER_COMPLETED;
     } else {
         self.securityLevelImageView.image = [UIImage imageNamed:@"security1"];
         self.progressView.progressTintColor = COLOR_SECURITY_CENTER_RED;
+        self.instructionsLabel.text = BC_STRING_SECURITY_CENTER_INSTRUCTIONS;
     }
 }
 

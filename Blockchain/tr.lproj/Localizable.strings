@@ -98,13 +98,22 @@
 "Allowed" = "İzin verilen";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Bir miktar toz eşik (%lld Satoshi) olması gerekir";
+"Amount" = "Tutar";
+
+/* (No Commment) */
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Tutar (%lld Satoshi) toz eşiğine eşit veya daha büyük olmalıdır";
+
+/* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Bir hata nedeniyle kesinti PIN doğrulama sırasında oluştu. Lütfen app kapatın ve yeniden deneyin.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "PIN kodunuzu uzak sunucuyla doğrulanırken bir hata oluştu. Çevrimdışı olabilir veya Blockchain sorunlar yaşıyor. Doğrulama yeniden deneyin veya bunun yerine parolanızı el ile girmek ister misin?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2-adım doğrulama değiştirilirken bir hata oluştu.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Adresinizi Pano'ya kopyalanırken bir hata oluştu. Lütfen hedef adresini yeniden seçin veya app yeniden başlatın ve yeniden deneyin.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Yaptığınız değişiklikler kaydedilirken bir hata oluştu. Cüzdanını başka bir aygıtta içine açmamış dikkat edin.";
@@ -449,6 +458,9 @@
 "Finished Signing Inputs" = "Girişleri imzalama bitmiş";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Artan gizlilik için her ödeme için benzersiz bir adres oluşturur. Artık al altında görünüyor olsa bile tüm adresleri cüzdanında oluşturulan fon, hala alabilirsiniz.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Güvenliğiniz için alınan adreslerinizi herhangi bir bakiyelerde Blockchain-cüzdanını aktarmak için öneririz.";
 
 /* (No Commment) */
@@ -479,7 +491,7 @@
 "Identifier" = "Tanımlayıcı";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Bir tüccar iseniz, sizin xPub göstermek ve Blockchain tüccar app güvenli bir şekilde ve özel olarak para almak için kullanın.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Bir tüccar iseniz, genişletilmiş genel anahtarınızı (xPub) görüntülemek ve Blockchain tüccar app para almak için kullanın.";
 
 /* (No Commment) */
 "Import Private Key" = "Alma özel anahtar";
@@ -591,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Etiket daha az 18 karakter olmalıdır";
+
+/* (No Commment) */
+"Learn More" = "Daha fazla bilgi edinin";
 
 /* (No Commment) */
 "Link Mobile" = "Bağlantı cep";
@@ -707,6 +722,12 @@
 "OK" = "Tamam";
 
 /* (No Commment) */
+"Open %@?" = "Açık %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Açık posta uygulaması";
+
+/* (No Commment) */
 "PIN" = "PIN";
 
 /* (No Commment) */
@@ -741,6 +762,9 @@
 
 /* (No Commment) */
 "Password changed. Please login to continue." = "Parola değiştirildi. Lütfen devam etmek için giriş yapın.";
+
+/* (No Commment) */
+"Password must be different from your email" = "Parola senin email--dan farklı olmalı";
 
 /* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Parolanın 255 karakter veya daha az olması gerekir.";
@@ -815,10 +839,12 @@
 "Please select a different address to send from." = "Lütfen göndermek için farklı bir adres seçin.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Ödeme bitcoin adresine gönderin (< bir href = \"https://blockchain.info/wallet/bitcoin-faq\" > Yardım? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "%1$@ bitcoin adresine gönderin.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Ödeme bitcoin adresine gönderin. SSS: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Ödeme bitcoin adresine gönderin (< bir href = \"https://blockchain.info/wallet/bitcoin-faq\" > Yardım? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Lütfen yeniden deneyin";
@@ -828,6 +854,9 @@
 
 /* (No Commment) */
 "Preferences" = "Tercihler";
+
+/* (No Commment) */
+"Preparing transfer" = "Transfer hazırlanıyor";
 
 /* (No Commment) */
 "Privacy Policy" = "Gizlilik Politikası";
@@ -845,6 +874,9 @@
 "Receive" = "Almak";
 
 /* (No Commment) */
+"Receive to..." = "İçin almak...";
+
+/* (No Commment) */
 "Received" = "Alınan";
 
 /* (No Commment) */
@@ -855,6 +887,9 @@
 
 /* (No Commment) */
 "Regular" = "Düzenli";
+
+/* (No Commment) */
+"Request" = "İstek";
 
 /* (No Commment) */
 "Request Amount" = "İstek tutar";
@@ -899,7 +934,7 @@
 "Scan QR code" = "Tarama QR kodu";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Bu kod inceden inceye gözden geçirmek veya güvenli bir şekilde Bitcoin almak için Blockchain tüccar app kopyalayabilirsiniz.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "İnceden inceye gözden geçirmek ya da güvenli bir şekilde Bitcoin almak için Blockchain tüccar app bu kodu kopyalayın.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "İkinci parola yanlış";
@@ -912,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Güvenlik Merkezi";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Güvenlik Merkezi tamamlandı - cüzdanını güvenli ve güvenli";
 
 /* (No Commment) */
 "Send" = "Gönder";
@@ -944,9 +982,6 @@
 "Settings" = "Ayarlar";
 
 /* (No Commment) */
-"Shared Coin is not supported at this time." = "Paylaşılan para şu anda desteklenmiyor.";
-
-/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Senin xPub paylaştığınız diğer kişilerin işlem geçmişinizi izlemesi için yetki verir. Sadece yetkili kişiler cüzdanını erişmesini bozmaya mümkün olabilir gibi senin xPub güvendiğiniz kişilerle paylaşın.";
 
 /* (No Commment) */
@@ -966,6 +1001,9 @@
 
 /* (No Commment) */
 "Simulate surge" = "Dalgalanma simülasyonu";
+
+/* (No Commment) */
+"Some funds cannot be transferred automatically." = "Bazı fonlar otomatik olarak transfer edilemez.";
 
 /* (No Commment) */
 "Store Hint" = "Mağaza ipucu";
@@ -990,6 +1028,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "M-cüzdan senkronizasyonu";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Bu adresi için dokunun. Bu gönderenin e-posta veya metin üzerinden paylaşın.";
 
 /* (No Commment) */
 "Terms of Service" = "Terms of Service";
@@ -1155,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Yükseltme";
 
 /* (No Commment) */
-"Upgrade Now" = "Şimdi yükseltmek";
-
-/* (No Commment) */
 "Upgrade Wallet" = "M-cüzdan yükseltme";
 
 /* (No Commment) */
@@ -1215,9 +1253,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "M-cüzdan kurtarma ifade";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "M-cüzdan sürüm %lld desteklenmiyor";
-
-/* (No Commment) */
 "Warning" = "Uyarı";
 
 /* (No Commment) */
@@ -1253,6 +1288,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Blockchain cüzdan önceki bir yüklemesini telefonunuzda tespit ettik.";
+
+/* (No Commment) */
+"Where" = "Nerede";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin adresi %@ adres defterine eklemek ister misiniz?";
@@ -1297,7 +1335,7 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 "You do not have an account set up for Mail. Please contact %@" = "Posta için ayarlanmış bir hesap var mı. %@ ulaşın";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Sen-si olmak gerekli toz eşiğin spendable bakiyesi olan adresi yok.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Spendable bakiyesi gerekli toz eşiğine eşit veya daha büyük olan adres var.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Bu adresten göndermek için kullanılabilir hiçbir para olduğu";
@@ -1331,6 +1369,9 @@ wallet experience for you" = "Biz yeni bir m-cüzdan deneyim tasarlanmış";
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "%1$@ bir yüksek işlem ücreti belirttiğiniz. %2$@ ücrete bile düşürürseniz, sonraki 10 dakika içinde (bir blok) onaylamak için işlem bekleyebilirsiniz.";
+
+/* (No Commment) */
+"You will be leaving the app." = "Belgili tanımlık app terk edilecektir.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Bir özel anahtar başarıyla.";

@@ -151,7 +151,6 @@
 
 // Busy view with loading text
 - (void)showBusyViewWithLoadingText:(NSString *)text;
-- (void)showBusyViewInTransparentBackgroundWithLoadingText:(NSString *)text;
 - (void)updateBusyViewLoadingText:(NSString *)text;
 - (void)hideBusyView;
 
@@ -202,6 +201,8 @@
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 
+- (void)paymentReceived:(NSDecimalNumber *)amount;
+
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;
 - (BOOL)isPinSet;
@@ -228,6 +229,7 @@
 - (NSString *)apiURL;
 
 - (void)rateApp;
+- (void)authorizationRequired;
 
 @end
 

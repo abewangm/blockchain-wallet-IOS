@@ -134,7 +134,7 @@
     self.busyLabel.text = text;
     [self.view bringSubviewToFront:self.busyView];
     if (self.busyView.alpha < 1.0) {
-        [self.busyView fadeInWithDarkBackground];
+        [self.busyView fadeIn];
     }
 }
 

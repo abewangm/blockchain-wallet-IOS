@@ -53,7 +53,7 @@
 "380.text" = "Willkommen bei Blockchain-Brieftasche";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Keine Transaktionen geladen";
+"387.text" = "Keine aktuellen Transaktionen";
 
 /* (No Commment) */
 "394.text" = "Passwort:";
@@ -147,9 +147,6 @@
 
 /* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
 "bzM-Ub-MUU.normalTitle" = "345.68 USD";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "eLG-96-OpG"; */
-"eLG-96-OpG.text" = "Etikett";
 
 /* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
 "fI2-PD-Xwa.normalTitle" = "Ich kann meine Kamera nicht zugreifen.";

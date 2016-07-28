@@ -98,13 +98,22 @@
 "Allowed" = "Dibenarkan";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Jumlah mesti melebihi ambang habuk (%lld Nanaho)";
+"Amount" = "Jumlah";
+
+/* (No Commment) */
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Jumlah mesti lebih besar daripada atau sama dengan di ambang habuk (%lld Nanaho)";
+
+/* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Satu ralat berlaku disebabkan oleh gangguan semasa pengesahan PIN. Sila tutup aplikasi ini dan cuba lagi.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ralat berlaku semasa mengesahkan kod PIN anda dengan pelayan jauh. Anda berada di luar talian atau Blockchain mungkin sedang mengalami kesukaran. Adakah awda ingin mencuba sekali lagi pengesahan atau sebaliknya masukkan kata laluan anda secara manual?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Satu ralat telah berlaku semasa menukar langkah 2 pengesahan.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Satu ralat berlaku semasa menyalin alamat anda ke papan klip. Sila memilih semula alamat destinasi atau mulakan semula aplikasi dan cuba lagi.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Satu ralat berlaku semasa menyimpan perubahan anda. Sila pastikan anda tidak dilog masuk ke dalam wallet anda di peranti lain.";
@@ -449,6 +458,9 @@
 "Finished Signing Inputs" = "Selesai menandatangani input";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Untuk peningkatan privasi, kami menjana alamat yang unik bagi setiap pembayaran. Semua alamat yang dijana dalam dompet anda masih boleh menerima dana, walaupun ia tidak lagi kelihatan di bawah terima.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Bagi Keselamatan awda, kami mengesyorkan anda untuk memindahkan apa-apa baki dalam alamat anda import ke dalam dompet Blockchain.";
 
 /* (No Commment) */
@@ -479,7 +491,7 @@
 "Identifier" = "Pengenalpastian";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Jika anda seorang peniaga, menunjukkan xPub anda dan menggunakan aplikasi Saudagar Blockchain untuk mendapat dana dengan selamat dan swasta.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Jika anda seorang peniaga, lihat kunci awam dilanjutkan (xPub) dan menggunakan aplikasi Saudagar Blockchain untuk mendapat dana.";
 
 /* (No Commment) */
 "Import Private Key" = "Kunci peribadi import";
@@ -591,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Label mesti mempunyai watak-watak yang kurang daripada 18";
+
+/* (No Commment) */
+"Learn More" = "belajar lagi";
 
 /* (No Commment) */
 "Link Mobile" = "Mudah alih pautan";
@@ -707,6 +722,12 @@
 "OK" = "ok";
 
 /* (No Commment) */
+"Open %@?" = "%@ terbuka?";
+
+/* (No Commment) */
+"Open Mail App" = "Aplikasi mel terbuka";
+
+/* (No Commment) */
 "PIN" = "PIN";
 
 /* (No Commment) */
@@ -741,6 +762,9 @@
 
 /* (No Commment) */
 "Password changed. Please login to continue." = "Kata laluan ditukar. Sila login untuk teruskan.";
+
+/* (No Commment) */
+"Password must be different from your email" = "Kata laluan mesti berbeza daripada e-mel anda";
 
 /* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Kata laluan mesti kurang daripada atau sama dengan 255 aksara";
@@ -815,10 +839,12 @@
 "Please select a different address to send from." = "Sila pilih alamat yang berbeza untuk menghantar dari.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Sila hantarkan bayaran ke alamat bitcoin (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > membantu? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Sila hantar %1$@ ke alamat bitcoin.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Sila hantar bayaran ke alamat bitcoin. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Sila hantarkan bayaran ke alamat bitcoin (< a href = \"https://blockchain.info/wallet/bitcoin-faq\" > membantu? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Sila cuba lagi";
@@ -828,6 +854,9 @@
 
 /* (No Commment) */
 "Preferences" = "Keutamaan";
+
+/* (No Commment) */
+"Preparing transfer" = "Menyediakan pemindahan";
 
 /* (No Commment) */
 "Privacy Policy" = "Dasar privasi";
@@ -845,6 +874,9 @@
 "Receive" = "Menerima";
 
 /* (No Commment) */
+"Receive to..." = "Menerima...";
+
+/* (No Commment) */
 "Received" = "Diterima";
 
 /* (No Commment) */
@@ -855,6 +887,9 @@
 
 /* (No Commment) */
 "Regular" = "Tetap";
+
+/* (No Commment) */
+"Request" = "Permintaan";
 
 /* (No Commment) */
 "Request Amount" = "Jumlah permintaan";
@@ -899,7 +934,7 @@
 "Scan QR code" = "Imbas Kod QR";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Imbas Kod ini atau menyalinnya ke dalam aplikasi Saudagar Blockchain anda dengan selamat menerima Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Mengimbas atau salin Kod ini ke dalam aplikasi Saudagar Blockchain anda dengan selamat menerima Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Kedua kata laluan yang tidak betul";
@@ -912,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Pusat Keselamatan";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Pusat Keselamatan selesai - dompet anda adalah selamat dan terjamin";
 
 /* (No Commment) */
 "Send" = "Hantar";
@@ -944,9 +982,6 @@
 "Settings" = "Seting";
 
 /* (No Commment) */
-"Shared Coin is not supported at this time." = "Duit syiling yang dikongsi tidak disokong pada masa ini.";
-
-/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Perkongsian xPub anda membenarkan orang lain untuk mengesan sejarah transaksi anda. Kerana orang-orang yang diberi kuasa boleh mengganggu anda daripada mengakses dompet anda, hanya berkongsi xPub anda dengan orang-orang yang anda percayai.";
 
 /* (No Commment) */
@@ -966,6 +1001,9 @@
 
 /* (No Commment) */
 "Simulate surge" = "Mensimulasikan lonjakan";
+
+/* (No Commment) */
+"Some funds cannot be transferred automatically." = "Dana-dana tidak boleh dipindahkan secara automatik.";
 
 /* (No Commment) */
 "Store Hint" = "Kedai pembayang";
@@ -990,6 +1028,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Menyegerak Wallet";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Ketuk untuk menyalin alamat ini. Berkongsi dengan pengirim melalui e-mel atau teks.";
 
 /* (No Commment) */
 "Terms of Service" = "Syarat-syarat Perkhidmatan";
@@ -1155,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Naik taraf";
 
 /* (No Commment) */
-"Upgrade Now" = "Menaik taraf sekarang";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Menaik taraf Wallet";
 
 /* (No Commment) */
@@ -1215,9 +1253,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Wallet pemulihan frasa";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Wallet versi %lld tidak disokong";
-
-/* (No Commment) */
 "Warning" = "Amaran";
 
 /* (No Commment) */
@@ -1253,6 +1288,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Kami telah mengesan pemasangan terdahulu daripada Blockchain Wallet pada telefon anda.";
+
+/* (No Commment) */
+"Where" = "Di mana";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Adakah anda ingin untuk tambah %@ alamat bitcoin ke dalam buku alamat anda?";
@@ -1297,7 +1335,7 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 "You do not have an account set up for Mail. Please contact %@" = "Anda tidak mempunyai akaun untuk mel. Sila hubungi %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Engkau tiada alamat baki spendable di atas di ambang habuk yang diperlukan.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Engkau tiada alamat baki spendable lebih besar daripada atau sama dengan di ambang habuk yang diperlukan.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Engkau tiada dana yang sedia untuk menghantar alamat ini";
@@ -1331,6 +1369,9 @@ wallet experience for you" = "Kami telah direka bentuk pengalaman wallet baru un
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Anda tentukan yuran transaksi yang teramat tinggi sebanyak %1$@. Bahkan jika anda mengurangkan kos untuk %2$@, anda boleh mengharapkan transaksi untuk mengesahkan dalam masa 10 minit yang akan datang (satu block).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Anda akan meninggalkan aplikasi.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Anda telah berjaya diimport kunci persendirian.";

@@ -306,7 +306,7 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] setBool:symbolLocal forKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self reloadTopLevelViewControllers];
+    [self reloadSymbols];
 }
 
 - (NSInteger)filterIndex
@@ -319,6 +319,9 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
+    [_transactionsViewController showFilterLabel];
+    self.mainLogoImageView.hidden = YES;
+    
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -329,6 +332,9 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
+    [_transactionsViewController showFilterLabel];
+    self.mainLogoImageView.hidden = YES;
+    
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -338,7 +344,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
-    [_transactionsViewController changeFilterLabel:BC_STRING_TOTAL_BALANCE];
+    [_transactionsViewController hideFilterLabel];
+    self.mainLogoImageView.hidden = NO;
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -350,13 +357,12 @@ void (^secondPasswordSuccess)(NSString *);
     [_tabViewController setActiveViewController:_transactionsViewController animated:FALSE index:1];
 }
 
-- (void)reloadTopLevelViewControllers
+- (void)reloadSymbols
 {
-    [_sendViewController reload];
-    [_transactionsViewController reload];
-    [_receiveViewController reload];
-    [_accountsAndAddressesNavigationController reload];
+    [_sendViewController reloadSymbols];
     
+    [_transactionsViewController reload];
+    [_accountsAndAddressesNavigationController reload];
     [sideMenuViewController reload];
 }
 
@@ -386,25 +392,8 @@ void (^secondPasswordSuccess)(NSString *);
     [_window.rootViewController.view bringSubviewToFront:busyView];
     
     if (busyView.alpha < 1.0) {
-        [busyView fadeInWithDarkBackground];
+        [busyView fadeIn];
     }
-}
-
-- (void)showBusyViewInTransparentBackgroundWithLoadingText:(NSString *)text
-{
-    if (_sendViewController.isSending && modalView) {
-        DLog(@"Send progress modal is presented - will not show busy view");
-        return;
-    }
-    
-    [busyLabel setText:text];
-    
-    [_window.rootViewController.view bringSubviewToFront:busyView];
-    
-    if (busyView.alpha < 1.0) {
-        [busyView fadeInWithTransparentBackground];
-    }
-
 }
 
 - (void)updateBusyViewLoadingText:(NSString *)text
@@ -667,8 +656,17 @@ void (^secondPasswordSuccess)(NSString *);
         [curtainImageView removeFromSuperview];
     }];
     
+    [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
+    
     if (self.tabViewController.activeViewController == _receiveViewController && modalView) {
         [_receiveViewController showKeyboard];
+    }
+}
+
+- (void)showPinModalIfBackgroundedDuringLoad
+{
+    if (![self.pinEntryViewController.view isDescendantOfView:_window.rootViewController.view] && !self.wallet.isInitialized && [self sharedKey] && [self guid] && !modalView) {
+        [self showPinModalAsView:YES];
     }
 }
 
@@ -719,6 +717,10 @@ void (^secondPasswordSuccess)(NSString *);
             }
         }];
     });
+    
+    if (self.pinEntryViewController.verifyOnly) {
+        [self.pinEntryViewController reset];
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -743,6 +745,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     app.transactionsViewController.loadedAllTransactions = NO;
     app.wallet.isFetchingTransactions = NO;
+    
+    [createWalletView showPassphraseTextField];
 
     [self closeSideMenu];
     
@@ -766,7 +770,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // The PIN modal is shown on ResignActive, but we don't want to override the modal with the welcome screen
+    // The PIN modal is shown on EnterBackground, but we don't want to override the modal with the welcome screen
     if ([self isPinSet]) {
 #ifdef TOUCH_ID_ENABLED
         if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
@@ -857,10 +861,23 @@ void (^secondPasswordSuccess)(NSString *);
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     if (![self isPinSet]) {
-        return NO;
+        if ([[url absoluteString] isEqualToString:[NSString stringWithFormat:@"%@%@", PREFIX_BLOCKCHAIN_WALLET_URI, @"loginAuthorized"]]) {
+            [self manualPairClicked:nil];
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+    
+    if ([[url absoluteString] hasPrefix:PREFIX_BLOCKCHAIN_WALLET_URI]) {
+        return YES;
     }
     
     [app closeModalWithTransition:kCATransitionFade];
+    
+    NSDictionary *dict = [self parseURI:[url absoluteString]];
+    NSString * addr = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
+    NSString * amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
     
     showSendCoins = YES;
     
@@ -868,10 +885,6 @@ void (^secondPasswordSuccess)(NSString *);
         // really no reason to lazyload anymore...
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
-    
-    NSDictionary *dict = [self parseURI:[url absoluteString]];
-    NSString * addr = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
-    NSString * amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
     
     [_sendViewController setAmountFromUrlHandler:amount withToAddress:addr];
     [_sendViewController reload];
@@ -1182,7 +1195,13 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)setAccountData:(NSString*)guid sharedKey:(NSString*)sharedKey
 {
     if ([guid length] != 36) {
-        [app standardNotify:BC_STRING_INVALID_GUID];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_INTERRUPTED_DECRYPTION_PLEASE_CLOSE_THE_APP_AND_TRY_AGAIN preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CLOSE_APP style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            // Close App
+            UIApplication *app = [UIApplication sharedApplication];
+            [app performSelector:@selector(suspend)];
+        }]];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
         return;
     }
     
@@ -1234,6 +1253,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)scanPrivateKeyForWatchOnlyAddress:(NSString *)address
 {
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
     if (![app getCaptureDeviceInput]) {
         return;
     }
@@ -1280,6 +1303,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     _transactionsViewController.data = nil;
     _settingsNavigationController = nil;
+    [_receiveViewController clearAmounts];
 
     [self reload];
 }
@@ -1294,7 +1318,10 @@ void (^secondPasswordSuccess)(NSString *);
         [cookieStorage deleteCookie:each];
     }
     
+    self.wallet.sessionToken = nil;
+    
     self.merchantViewController = nil;
+    self.receiveViewController = nil;
     
     [self removeGuidFromKeychain];
     [self removeSharedKeyFromKeychain];
@@ -1415,15 +1442,14 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self hideBusyView];
     self.wallet.isSyncing = NO;
-    
     NSString *alertTitle = BC_STRING_ERROR;
-    if ([error isEqualToString:ERROR_NOT_PRESENT_IN_WALLET]) {
+    if ([error containsString:ERROR_NOT_PRESENT_IN_WALLET]) {
         error = BC_STRING_ADDRESS_NOT_PRESENT_IN_WALLET;
-    } else if ([error isEqualToString:ERROR_ADDRESS_NOT_WATCH_ONLY]) {
+    } else if ([error containsString:ERROR_ADDRESS_NOT_WATCH_ONLY]) {
         error = BC_STRING_ADDRESS_NOT_WATCH_ONLY;
-    } else if ([error isEqualToString:ERROR_WRONG_BIP_PASSWORD]) {
+    } else if ([error containsString:ERROR_WRONG_BIP_PASSWORD]) {
         error = BC_STRING_WRONG_BIP38_PASSWORD;
-    } else if ([error isEqualToString:ERROR_PRIVATE_KEY_OF_ANOTHER_WATCH_ONLY_ADDRESS]) {
+    } else if ([error containsString:ERROR_PRIVATE_KEY_OF_ANOTHER_WATCH_ONLY_ADDRESS]) {
         error = BC_STRING_KEY_BELONGS_TO_OTHER_ADDRESS_NOT_WATCH_ONLY;
     }
     
@@ -1446,7 +1472,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFailRecovery
 {
-    [createWalletView didFailRecovery];
+    [createWalletView showPassphraseTextField];
 }
 
 - (void)didRecoverWallet
@@ -1578,7 +1604,7 @@ void (^secondPasswordSuccess)(NSString *);
     self.accountsAndAddressesNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     [_tabViewController presentViewController:self.accountsAndAddressesNavigationController animated:YES completion:^{
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT] && self.accountsAndAddressesNavigationController.viewControllers.count == 1 && [app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses] > [app.wallet dust]) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT] && self.accountsAndAddressesNavigationController.viewControllers.count == 1 && [app.wallet didUpgradeToHd] && [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses] >= [app.wallet dust]) {
             [self.accountsAndAddressesNavigationController alertUserToTransferAllFunds:NO];
         }
     }];
@@ -1626,34 +1652,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showSupport
 {
-    // Send email using the Message UI Framework: http://stackoverflow.com/a/1513433/2076094
-    // If the user has not email account set up, he should get a notification saying he can't send emails (tested on iOS 7.1.1)
-    MFMailComposeViewController *emailViewController = [[MFMailComposeViewController alloc] init];
-    
-    if (emailViewController != nil) {
-        emailViewController.mailComposeDelegate = self;
-        emailViewController.navigationBar.tintColor = COLOR_BLOCKCHAIN_BLUE;
-        [emailViewController setToRecipients:@[SUPPORT_EMAIL_ADDRESS]];
-        [emailViewController setSubject:BC_STRING_SUPPORT_EMAIL_SUBJECT];
-        
-        NSString *message = [NSString stringWithFormat:@"Dear Blockchain Support,\n\n\n\n--\nApp: %@\nSystem: %@ %@\nDevice: %@\n",
-                             [UncaughtExceptionHandler appNameAndVersionNumberDisplayString],
-                             [[UIDevice currentDevice] systemName],
-                             [[UIDevice currentDevice] systemVersion],
-                             [DeviceIdentifier deviceName]];
-        [emailViewController setMessageBody:message isHTML:NO];
-        
-        emailViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self.tabViewController presentViewController:emailViewController animated:YES completion:^{
-            UIAlertController *instructionsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_SUPPORT_EMAIL_SUBJECT message:BC_STRING_SUPPORT_INSTRUCTIONS preferredStyle:UIAlertControllerStyleAlert];
-            [instructionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-            [emailViewController presentViewController:instructionsAlert animated:YES completion:nil];
-        }];
-    } else {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_NO_EMAIL_CONFIGURED, SUPPORT_EMAIL_ADDRESS] preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
-    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_OPEN_ARGUMENT, SUPPORT_URL] message:BC_STRING_LEAVE_APP preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SUPPORT_URL]];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)showSendCoins
@@ -1728,7 +1732,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)toggleSideMenu
 {
     // If the sideMenu is not shown, show it
-    if (_slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered) {        
+    if (_slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered) {
         [_slidingViewController anchorTopViewToRightAnimated:YES];
     }
     // If the sideMenu is shown, dismiss it
@@ -1812,7 +1816,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)reloadTransactionFilterLabel
 {
 #ifdef ENABLE_TRANSACTION_FILTERING
-    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
+    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2) && self.filterIndex != FILTER_INDEX_ALL) {
         app.mainLogoImageView.hidden = YES;
         if (_tabViewController.activeViewController == _transactionsViewController) {
             [_transactionsViewController showFilterLabel];
@@ -1838,22 +1842,30 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)accountsAndAddressesClicked:(id)sender
 {
-    [app showAccountsAndAddresses];
+    if (!_tabViewController.presentedViewController) {
+        [app showAccountsAndAddresses];
+    }
 }
 
 - (IBAction)accountSettingsClicked:(id)sender
 {
-    [app showSettings];
+    if (!_tabViewController.presentedViewController) {
+        [app showSettings];
+    }
 }
 
 - (IBAction)securityCenterClicked:(id)sender
 {
-    [app showSecurityCenter];
+    if (!_tabViewController.presentedViewController) {
+        [app showSecurityCenter];
+    }
 }
 
 - (IBAction)supportClicked:(id)sender
 {
-    [app showSupport];
+    if (!_tabViewController.presentedViewController) {
+        [app showSupport];
+    }
 }
 
 - (void)validatePINOptionally
@@ -1996,12 +2008,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)merchantClicked:(UIButton *)sender
 {
-    if (!_merchantViewController) {
-        _merchantViewController = [[MerchantMapViewController alloc] initWithNibName:NIB_NAME_MERCHANT_MAP_VIEW bundle:[NSBundle mainBundle]];
+    if (!_tabViewController.presentedViewController) {
+        if (!_merchantViewController) {
+            _merchantViewController = [[MerchantMapViewController alloc] initWithNibName:NIB_NAME_MERCHANT_MAP_VIEW bundle:[NSBundle mainBundle]];
+        }
+        
+        _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [_tabViewController presentViewController:_merchantViewController animated:YES completion:nil];
     }
-    
-    _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [_tabViewController presentViewController:_merchantViewController animated:YES completion:nil];
 }
 
 -(IBAction)QRCodebuttonClicked:(id)sender
@@ -2009,6 +2023,11 @@ void (^secondPasswordSuccess)(NSString *);
     if (!_sendViewController) {
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
+    
+    if (_receiveViewController) {
+        [_receiveViewController hideKeyboard];
+    }
+    
     [_sendViewController QRCodebuttonClicked:sender];
 }
 
@@ -2186,6 +2205,35 @@ void (^secondPasswordSuccess)(NSString *);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[APP_STORE_LINK_PREFIX stringByAppendingString:APP_STORE_ID]]];
 }
 
+- (void)paymentReceived:(NSDecimalNumber *)amount
+{
+    if (_tabViewController.selectedIndex == TAB_RECEIVE) {
+        [_receiveViewController paymentReceived:amount];
+    }
+}
+
+- (void)receivedTransactionMessage
+{
+    [self playBeepSound];
+    
+    [_transactionsViewController animateNextCellAfterReload];
+    
+    [_receiveViewController storeRequestedAmount];
+}
+
+- (void)authorizationRequired
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE message:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OPEN_MAIL_APP style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
+        if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
+            [[UIApplication sharedApplication] openURL:mailURL];
+        }
+    }]];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback
@@ -2204,13 +2252,21 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self showVerifyingBusyViewWithTimer:30.0];
     
+    // Check if we have an internet connection
+    // This only checks if a network interface is up. All other errors (including timeouts) are handled by JavaScript callbacks in Wallet.m
+    if (![self checkInternetConnection]) {
+        return;
+    }
+    
 #ifdef TOUCH_ID_ENABLED
     if (self.pinEntryViewController.verifyOptional) {
         [self setPINInKeychain:pin];
     }
 #endif
     
-    [app.wallet apiGetPINValue:pinKey pin:pin];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [app.wallet apiGetPINValue:pinKey pin:pin];
+    });
     
     self.pinViewControllerCallback = callback;
 }
@@ -2293,10 +2349,11 @@ void (^secondPasswordSuccess)(NSString *);
         [self clearPin];
             
         [self logout];
-            
-        [self showPasswordModal];
         
-        [self closePINModal:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showPasswordModal];
+            [self closePINModal:YES];
+        });
 
     }
     // Incorrect pin
@@ -2367,7 +2424,9 @@ void (^secondPasswordSuccess)(NSString *);
             [self failedToObtainValuesFromKeychain];
         }
         
-        [self closePINModal:YES];
+        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+            [self closePINModal:YES];
+        }
         
         pinSuccess = TRUE;
 
@@ -2752,13 +2811,6 @@ void (^secondPasswordSuccess)(NSString *);
 - (BOOL)stringHasBitcoinValue:(NSString *)string
 {
     return string != nil && [string doubleValue] > 0;
-}
-
-#pragma mark - Mail compose delegate
-
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
-{
-    [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - State Checks

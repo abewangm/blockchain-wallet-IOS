@@ -98,13 +98,22 @@
 "Allowed" = "Toegestaan";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Bedrag moet boven stof drempel (%lld Satoshi)";
+"Amount" = "Bedrag";
+
+/* (No Commment) */
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Bedrag moet groter dan of gelijk is aan de drempel van de stof (%lld Satoshi)";
+
+/* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Er is een fout opgetreden als gevolg van onderbrekingen tijdens PIN-controle. Sluit de app en probeer het opnieuw.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Er is een fout opgetreden bij het valideren van uw PIN-code met de externe server. U kunt off line of Blockchain ondervindt moeilijkheden. Wenst u opnieuw validatie of in plaats daarvan uw wachtwoord handmatig invoeren?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Er is een fout opgetreden tijdens het wijzigen van 2-Step verificatie.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Er is een fout opgetreden bij het kopiëren van uw adres naar het Klembord. Selecteer opnieuw het doeladres of opnieuw opstarten van de app en probeer het opnieuw.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Er is een fout opgetreden tijdens het opslaan van uw wijzigingen. Zorg ervoor dat u niet bent aangemeld bij uw portemonnee op een ander apparaat.";
@@ -449,6 +458,9 @@
 "Finished Signing Inputs" = "Klaar ondertekening ingangen";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Voor meer privacy genereren we een uniek adres voor elke betaling. Alle adressen gegenereerd in uw portemonnee kunnen nog steeds middelen, zelfs als ze niet meer onder ontvangen weergegeven.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Voor uw eigen veiligheid raden wij u aan Breng eventuele saldi in uw geïmporteerde adressen in uw portemonnee Blockchain.";
 
 /* (No Commment) */
@@ -479,7 +491,7 @@
 "Identifier" = "Id";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Bent u een handelaar, Toon uw xPub en gebruik van de Blockchain Merchant app te ontvangen van fondsen veilig en privé.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Bent u een handelaar, Bekijk uw uitgebreide openbare sleutel (xPub) en de Blockchain Merchant app gebruiken om middelen te ontvangen.";
 
 /* (No Commment) */
 "Import Private Key" = "Import persoonlijke sleutel";
@@ -591,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Etiket moet minder dan 18 tekens";
+
+/* (No Commment) */
+"Learn More" = "Meer informatie";
 
 /* (No Commment) */
 "Link Mobile" = "Mobiele verbinding";
@@ -707,6 +722,12 @@
 "OK" = "OK";
 
 /* (No Commment) */
+"Open %@?" = "Open %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Open Mail App";
+
+/* (No Commment) */
 "PIN" = "PIN";
 
 /* (No Commment) */
@@ -741,6 +762,9 @@
 
 /* (No Commment) */
 "Password changed. Please login to continue." = "Wachtwoord gewijzigd. Gelieve in te loggen om door te gaan.";
+
+/* (No Commment) */
+"Password must be different from your email" = "Wachtwoord moet verschillen van uw e-mail";
 
 /* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Wachtwoord moet kleiner dan of gelijk aan 255 tekens";
@@ -815,10 +839,12 @@
 "Please select a different address to send from." = "Selecteer een ander adres te sturen uit.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Stuur betaling naar bitcoin adres (< een href = \"https://blockchain.info/wallet/bitcoin-faq\" > helpen? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Stuur %1$@ naar bitcoin adres.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Stuur de betaling naar bitcoin adres. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Stuur betaling naar bitcoin adres (< een href = \"https://blockchain.info/wallet/bitcoin-faq\" > helpen? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Probeer het a.u.b. opnieuw";
@@ -828,6 +854,9 @@
 
 /* (No Commment) */
 "Preferences" = "Voorkeuren";
+
+/* (No Commment) */
+"Preparing transfer" = "Voorbereiding van de transfer";
 
 /* (No Commment) */
 "Privacy Policy" = "Privacybeleid";
@@ -845,6 +874,9 @@
 "Receive" = "Ontvangen";
 
 /* (No Commment) */
+"Receive to..." = "Krijg om te...";
+
+/* (No Commment) */
 "Received" = "Ontvangen";
 
 /* (No Commment) */
@@ -855,6 +887,9 @@
 
 /* (No Commment) */
 "Regular" = "Regelmatige";
+
+/* (No Commment) */
+"Request" = "Aanvraag";
 
 /* (No Commment) */
 "Request Amount" = "Verzoek bedrag";
@@ -899,7 +934,7 @@
 "Scan QR code" = "QR code scannen";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Scan deze code of kopieer het naar uw Blockchain Merchant app om Bitcoin veilig te ontvangen.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Scan of kopieer deze code naar uw Blockchain Merchant app om Bitcoin veilig te ontvangen.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Tweede wachtwoord onjuist";
@@ -912,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Beveiligingscentrum";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Beveiligingscentrum voltooid - uw portemonnee is veilig en betrouwbaar";
 
 /* (No Commment) */
 "Send" = "Verzenden";
@@ -944,9 +982,6 @@
 "Settings" = "Instellingen";
 
 /* (No Commment) */
-"Shared Coin is not supported at this time." = "Gedeelde munt wordt niet ondersteund op dit moment.";
-
-/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Delen van uw xPub machtigt anderen uw transactiegeschiedenis bijhouden. Als geautoriseerde personen mogelijk verstoren u toegang krijgen tot uw portemonnee, alleen uw xPub te delen met mensen die u vertrouwt.";
 
 /* (No Commment) */
@@ -966,6 +1001,9 @@
 
 /* (No Commment) */
 "Simulate surge" = "Simuleren van de schommeling";
+
+/* (No Commment) */
+"Some funds cannot be transferred automatically." = "Sommige fondsen kunnen niet automatisch worden overgebracht.";
 
 /* (No Commment) */
 "Store Hint" = "Winkel Hint";
@@ -990,6 +1028,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synchroniseren portemonnee";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Tik op om dit adres te kopiëren. Delen met de afzender via e-mail of tekst.";
 
 /* (No Commment) */
 "Terms of Service" = "Algemene gebruiksvoorwaarden";
@@ -1155,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Upgrade";
 
 /* (No Commment) */
-"Upgrade Now" = "Upgrade nu";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Upgrade portemonnee";
 
 /* (No Commment) */
@@ -1215,9 +1253,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Portemonnee herstel zin";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Wallet versie %lld niet ondersteund";
-
-/* (No Commment) */
 "Warning" = "Waarschuwing";
 
 /* (No Commment) */
@@ -1253,6 +1288,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "We hebben ontdekt een eerdere installatie van Blockchain portemonnee op uw telefoon.";
+
+/* (No Commment) */
+"Where" = "Waar";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Wilt u de bitcoin adres %@ aan uw adresboek toevoegen?";
@@ -1297,7 +1335,7 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 "You do not have an account set up for Mail. Please contact %@" = "U hoeft niet een account instellen voor Mail. Neem contact op met %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Hebt u geen adressen met een spendable evenwicht boven de drempel van het vereiste stof.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Hebt u geen adressen met een spendable evenwicht groter is dan of gelijk is aan de drempel van het vereiste stof.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "U hebt geen middelen voor het verzenden van dit adres";
@@ -1331,6 +1369,9 @@ wallet experience for you" = "We hebben ontworpen een geheel nieuwe ervaring van
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "U een ongewoon hoge transactiekosten van %1$@ hebt opgegeven. Zelfs als u het bedrag dat %2$@ verlaagt, kunt u de transactie te bevestigen binnen de volgende 10 minuten (één blok) verwachten.";
+
+/* (No Commment) */
+"You will be leaving the app." = "U zal worden verlaten van de app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "U hebt met succes een persoonlijke sleutel geïmporteerd.";

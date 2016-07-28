@@ -35,12 +35,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-
-        if wallet!.needsSecondPassword(){
-            self.performSegueWithIdentifier("secondPasswordForBackup", sender: self)
-        } else {
-            wallet!.getRecoveryPhrase(nil)
-        }
         
         wordLabel!.text = ""
         
@@ -64,6 +58,12 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
             wordLabel!.superview?.addSubview(label)
             
             wordLabels?.append(label)
+        }
+        
+        if wallet!.needsSecondPassword(){
+            self.performSegueWithIdentifier("secondPasswordForBackup", sender: self)
+        } else {
+            wallet!.getRecoveryPhrase(nil)
         }
     }
     

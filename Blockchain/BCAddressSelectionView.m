@@ -27,12 +27,13 @@
 @synthesize delegate;
 
 bool showFromAddresses;
+bool allSelectable;
 
 int addressBookSectionNumber;
 int accountsSectionNumber;
 int legacyAddressesSectionNumber;
 
-- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses
+- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses allSelectable:(BOOL)_allSelectable
 {
     if ([super initWithFrame:CGRectZero]) {
         [[NSBundle mainBundle] loadNibNamed:@"BCAddressSelectionView" owner:self options:nil];
@@ -41,6 +42,7 @@ int legacyAddressesSectionNumber;
         // The From Address View shows accounts and legacy addresses with their balance. Entries with 0 balance are not selectable.
         // The To Address View shows address book entries, account and legacy addresses without a balance.
         showFromAddresses = _showFromAddresses;
+        allSelectable = _allSelectable;
         
         addressBookAddresses = [NSMutableArray array];
         addressBookAddressLabels = [NSMutableArray array];
@@ -144,14 +146,29 @@ int legacyAddressesSectionNumber;
     return self;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    BOOL shouldCloseModal = YES;
+    
     if (showFromAddresses) {
         if (indexPath.section == accountsSectionNumber) {
             [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
         }
         else if (indexPath.section == legacyAddressesSectionNumber) {
-            [delegate didSelectFromAddress:[legacyAddresses objectAtIndex:[indexPath row]]];
+            
+            NSString *legacyAddress = [legacyAddresses objectAtIndex:[indexPath row]];
+            
+            if (allSelectable && [app.wallet isWatchOnlyLegacyAddress:legacyAddress] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING]) {
+                if ([delegate respondsToSelector:@selector(didSelectWatchOnlyAddress:)]) {
+                    [delegate didSelectWatchOnlyAddress:legacyAddress];
+                    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    shouldCloseModal = NO;
+                } else {
+                    [delegate didSelectFromAddress:legacyAddress];
+                }
+            } else {
+                [delegate didSelectFromAddress:legacyAddress];
+            }
         }
     }
     else {
@@ -166,7 +183,9 @@ int legacyAddressesSectionNumber;
         }
     }
     
-    [app closeModalWithTransition:kCATransitionFromLeft];
+    if (shouldCloseModal) {
+        [app closeModalWithTransition:kCATransitionFromLeft];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -295,7 +314,7 @@ int legacyAddressesSectionNumber;
             cell.balanceLabel.text = [app formatMoney:balance];
             
             // Cells with empty balance can't be clicked and are dimmed
-            if (balance == 0) {
+            if (balance == 0 && !allSelectable) {
                 cell.userInteractionEnabled = NO;
                 cell.labelLabel.alpha = 0.5;
                 cell.addressLabel.alpha = 0.5;

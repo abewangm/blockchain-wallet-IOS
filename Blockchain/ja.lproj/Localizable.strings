@@ -98,13 +98,22 @@
 "Allowed" = "許可";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "量する必要がありますほこりしきい値 (%lld 聡)";
+"Amount" = "量";
+
+/* (No Commment) */
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "量がほこりしきい値 (%lld 聡) 以上にする必要があります。";
+
+/* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "PIN による確認で中断のためエラーが発生します。アプリを閉じて、もう一度やり直してください。";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "リモート サーバーと PIN コードの検証エラーが発生しました。あなたがオフラインである、または Blockchain により、問題が発生します。検証を再試行するか、代わりにあなたのパスワードを手動で入力したいですか。";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "2 段階認証プロセスを変更中にエラーが発生しました。";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "あなたのアドレスをクリップボードにコピー中にエラーが発生しました。宛先アドレスを再選択またはアプリを再起動やり直してください。";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "変更を保存中にエラーが発生しました。別のデバイスにあなたの財布にサインインしていないことを確認してください。";
@@ -449,6 +458,9 @@
 "Finished Signing Inputs" = "署名の入力終了";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "プライバシーの強化、我々 はすべての支払いに一意のアドレスを生成します。あなたの財布に生成されるすべてのアドレス受信] で表示されない場合でも、資金を受信できます。";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "安全のため我々 は Blockchain 財布に、インポートされた住所に残高を転送することをお勧めします。";
 
 /* (No Commment) */
@@ -479,7 +491,7 @@
 "Identifier" = "識別子";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "商人、あなたの xPub を表示し、安全にそして個人的に資金を受け取る Blockchain 商人アプリを使用します。";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "商人は、あなたの拡張のパブリック キー (xPub) を表示し、資金を受け取る Blockchain 商人アプリを使用します。";
 
 /* (No Commment) */
 "Import Private Key" = "インポートの秘密キー";
@@ -591,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "ラベルが必要未満 18 文字";
+
+/* (No Commment) */
+"Learn More" = "詳細情報";
 
 /* (No Commment) */
 "Link Mobile" = "リンク モバイル";
@@ -707,6 +722,12 @@
 "OK" = "わかりました";
 
 /* (No Commment) */
+"Open %@?" = "オープン %@?";
+
+/* (No Commment) */
+"Open Mail App" = "開いているメール アプリ";
+
+/* (No Commment) */
 "PIN" = "ピン";
 
 /* (No Commment) */
@@ -741,6 +762,9 @@
 
 /* (No Commment) */
 "Password changed. Please login to continue." = "パスワードを変更します。続行するにはログインをしてください。";
+
+/* (No Commment) */
+"Password must be different from your email" = "パスワードはあなたのメール アドレスから異なる必要があります。";
 
 /* (No Commment) */
 "Password must be less than or equal to 255 characters" = "パスワードは 255 文字以下にする必要があります。";
@@ -815,10 +839,12 @@
 "Please select a different address to send from." = "別のアドレスから送信するを選択してください。";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitcoin アドレスにお支払いを送信してください (< href =\"https://blockchain.info/wallet/bitcoin-faq\"> ヘルプ? </a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Bitcoin アドレスに %1$@ を送ってください。
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "支払いを bitcoin アドレスに送ってください。よくある質問: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Bitcoin アドレスにお支払いを送信してください (< href =\"https://blockchain.info/wallet/bitcoin-faq\"> ヘルプ? </a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "もう一度やり直してください。";
@@ -828,6 +854,9 @@
 
 /* (No Commment) */
 "Preferences" = "基本設定";
+
+/* (No Commment) */
+"Preparing transfer" = "転送の準備中";
 
 /* (No Commment) */
 "Privacy Policy" = "プライバシー ポリシー";
@@ -845,6 +874,9 @@
 "Receive" = "受信";
 
 /* (No Commment) */
+"Receive to..." = "受信.";
+
+/* (No Commment) */
 "Received" = "受信";
 
 /* (No Commment) */
@@ -855,6 +887,9 @@
 
 /* (No Commment) */
 "Regular" = "正規";
+
+/* (No Commment) */
+"Request" = "要求";
 
 /* (No Commment) */
 "Request Amount" = "要求量";
@@ -899,7 +934,7 @@
 "Scan QR code" = "QR コードをスキャンします。";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "このコードをスキャンまたは Bitcoin を安全に受信する Blockchain 商人アプリにコピーします。";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "スキャンまたは Bitcoin を安全に受信する Blockchain 商人アプリにこのコードをコピーします。";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "第 2 パスワードが間違っています。";
@@ -912,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "セキュリティ センター";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "セキュリティ センターを完了 - あなたの財布は安心・安全です";
 
 /* (No Commment) */
 "Send" = "送信";
@@ -944,9 +982,6 @@
 "Settings" = "設定";
 
 /* (No Commment) */
-"Shared Coin is not supported at this time." = "この時点では、コインの共有はサポートされていません。";
-
-/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "あなたの xPub を共有トランザクション履歴を追跡する他のユーザーを許可します。承認された人は、あなたの財布にアクセスするからあなたを混乱させることができる場合があります、あなたの xPub を信頼できる人のみ共有します。";
 
 /* (No Commment) */
@@ -966,6 +1001,9 @@
 
 /* (No Commment) */
 "Simulate surge" = "サージをシミュレートします。";
+
+/* (No Commment) */
+"Some funds cannot be transferred automatically." = "いくつかの資金を自動的に転送できません。";
 
 /* (No Commment) */
 "Store Hint" = "ストアのヒント";
@@ -990,6 +1028,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "同期の財布";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "このアドレスをコピーするをタップします。メールやテキストで送信者と共有します。";
 
 /* (No Commment) */
 "Terms of Service" = "サービス利用規約";
@@ -1155,9 +1196,6 @@ Fee: %@
 "Upgrade" = "アップグレード";
 
 /* (No Commment) */
-"Upgrade Now" = "今すぐアップグレードします。";
-
-/* (No Commment) */
 "Upgrade Wallet" = "財布をアップグレードします。";
 
 /* (No Commment) */
@@ -1215,9 +1253,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "財布回復フレーズ";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "財布バージョン %lld はサポートされていません";
-
-/* (No Commment) */
 "Warning" = "警告";
 
 /* (No Commment) */
@@ -1253,6 +1288,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "私たちはあなたの携帯電話に Blockchain 財布の以前のインストールを検出されました。";
+
+/* (No Commment) */
+"Where" = "どこ";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Bitcoin アドレス %@ をアドレス帳に追加しますか?";
@@ -1297,7 +1335,7 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 "You do not have an account set up for Mail. Please contact %@" = "設定したメール アカウントがありません。%@ にお問い合わせください。";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "必要な塵のしきい値を超える支出できるバランスとアドレスがあるない場合。";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "必要なほこりしきい値以上の投資バランスとアドレスがあるない場合。";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "このアドレスから送信する利用可能な資金があるない場合";
@@ -1331,6 +1369,9 @@ wallet experience for you" = "私たちはあなたのため全く新しい財�
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "%1$@ の異常に高い手数料を指定しました。%2$@ に料金を下げる場合でも次の 10 分 (1 ブロック) 内を確認するトランザクションが期待できます。";
+
+/* (No Commment) */
+"You will be leaving the app." = "あなたはアプリを去ることになります。";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "秘密キーを正常にインポートしました。";

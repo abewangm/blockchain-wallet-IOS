@@ -39,6 +39,7 @@ typedef enum {
 @property (nonatomic) uint64_t lowerRecommendedLimit;
 @property (nonatomic) uint64_t estimatedTransactionSize;
 @property (nonatomic) BOOL customFeeMode;
+@property (nonatomic) BOOL shouldClearToField;
 
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
@@ -175,11 +176,13 @@ BOOL displayingLocalSymbolSend;
     // Default: send to address
     self.sendToAddress = true;
     
+    [self hideSelectFromAndToButtonsIfAppropriate];
+    
     [self populateFieldsFromURLHandlerIfAvailable];
     
     [self reloadFromAndToFields];
     
-    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    [self reloadSymbols];
     
     [self updateFundsAvailable];
     
@@ -199,6 +202,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)reloadAfterMultiAddressResponse
 {
+    [self hideSelectFromAndToButtonsIfAppropriate];
+    
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (self.sendFromAddress) {
@@ -210,13 +215,18 @@ BOOL displayingLocalSymbolSend;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
 }
 
+- (void)reloadSymbols
+{
+    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    [self updateFundsAvailable];
+}
+
 - (void)hideSelectFromAndToButtonsIfAppropriate
 {
     // If we only have one account and no legacy addresses -> can't change from address
     if ([app.wallet getActiveAccountsCount] + [[app.wallet activeLegacyAddresses] count] == 1) {
         
         [selectFromButton setHidden:YES];
-        [self hideFromField];
         
         if ([app.wallet addressBook].count == 0) {
             [addressBookButton setHidden:YES];
@@ -225,7 +235,6 @@ BOOL displayingLocalSymbolSend;
         }
     }
     else {
-        [self showFromField];
         [selectFromButton setHidden:NO];
         [addressBookButton setHidden:NO];
     }
@@ -322,7 +331,7 @@ BOOL displayingLocalSymbolSend;
 {
     app.topViewControllerDelegate = nil;
     
-    [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, 1, [[app.wallet spendableActiveLegacyAddresses] count]]];
+    [app showBusyViewWithLoadingText:BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER];
     
     [app.wallet getInfoForTransferAllFundsToDefaultAccount];
 }
@@ -379,7 +388,7 @@ BOOL displayingLocalSymbolSend;
              [paymentSentAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                  if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_APP_REVIEW_PROMPT]) {
                      
-                     if ([app.wallet getAllTransactionsCount] <= 10) {
+                     if ([app.wallet getAllTransactionsCount] < NUMBER_OF_TRANSACTIONS_REQUIRED_FOR_FOR_APP_STORE_REVIEW_PROMPT) {
                          return;
                      }
                      
@@ -1072,8 +1081,6 @@ BOOL displayingLocalSymbolSend;
     self.customFeeMode = YES;
     customFeeOriginalAvailableAmount = 0.0;
     
-    [self hideSelectFromAndToButtonsIfAppropriate];
-    
     [self reloadAfterMultiAddressResponse];
 }
 
@@ -1083,8 +1090,6 @@ BOOL displayingLocalSymbolSend;
     self.customFeeMode = NO;
     customFeeOriginalAvailableAmount = 0.0;
     
-    [self hideSelectFromAndToButtonsIfAppropriate];
-    
     [self reloadAfterMultiAddressResponse];
 }
 
@@ -1092,7 +1097,7 @@ BOOL displayingLocalSymbolSend;
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
-        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && !fromLabel.hidden) {
+        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
             [self changeYPosition:43 ofView:lineBelowFromField];
             
             [self changeYPosition:52 ofView:toLabel];
@@ -1125,58 +1130,33 @@ BOOL displayingLocalSymbolSend;
 - (void)arrangeViewsToDefaultMode
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        [self changeYPosition:47 ofView:lineBelowFromField];
-            
-        [self changeYPosition:61 ofView:toLabel];
-        [self changeYPosition:57 ofView:toField];
-        [self changeYPosition:57 ofView:addressBookButton];
-        [self changeYPosition:96 ofView:lineBelowToField];
         
-        [self changeYPosition:98 ofView:bottomContainerView];
-        [self changeYPosition:12 ofView:btcLabel];
-        [self changeYPosition:8 ofView:btcAmountField];
-        [self changeYPosition:12 ofView:fiatLabel];
-        [self changeYPosition:8 ofView:fiatAmountField];
-        [self changeYPosition:61 ofView:lineBelowAmountFields];
+        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+            [self changeYPosition:47 ofView:lineBelowFromField];
             
-        [self changeYPosition:72 ofView:feeField];
-        [self changeYPosition:75 ofView:feeLabel];
-        [self changeYPosition:109 ofView:lineBelowFeeField];
+            [self changeYPosition:61 ofView:toLabel];
+            [self changeYPosition:57 ofView:toField];
+            [self changeYPosition:57 ofView:addressBookButton];
+            [self changeYPosition:96 ofView:lineBelowToField];
             
-        [self changeYPosition:36 ofView:fundsAvailableButton];
+            [self changeYPosition:98 ofView:bottomContainerView];
+            [self changeYPosition:12 ofView:btcLabel];
+            [self changeYPosition:8 ofView:btcAmountField];
+            [self changeYPosition:12 ofView:fiatLabel];
+            [self changeYPosition:8 ofView:fiatAmountField];
+            [self changeYPosition:61 ofView:lineBelowAmountFields];
+            
+            [self changeYPosition:72 ofView:feeField];
+            [self changeYPosition:75 ofView:feeLabel];
+            [self changeYPosition:109 ofView:lineBelowFeeField];
+            
+            [self changeYPosition:36 ofView:fundsAvailableButton];
+        }
         
         feeField.hidden = YES;
         feeLabel.hidden = YES;
         lineBelowFeeField.hidden = YES;
     }];
-}
-
-- (void)hideFromField
-{
-    fromLabel.hidden = YES;
-    lineBelowFromField.hidden = YES;
-    selectAddressTextField.hidden = YES;
-    selectFromButton.hidden = YES;
-    
-    [self changeYPosition:fromLabel.frame.origin.y ofView:toLabel];
-    [self changeYPosition:selectAddressTextField.frame.origin.y ofView:toField];
-    [self changeYPosition:selectFromButton.frame.origin.y ofView:addressBookButton];
-    [self changeYPosition:lineBelowFromField.frame.origin.y ofView:lineBelowToField];
-    [self changeYPosition:lineBelowFromField.frame.origin.y + 2 ofView:bottomContainerView];
-}
-
-- (void)showFromField
-{
-    fromLabel.hidden = NO;
-    lineBelowFromField.hidden = NO;
-    selectAddressTextField.hidden = NO;
-    selectFromButton.hidden = NO;
-    
-    if (self.customFeeMode) {
-        [self arrangeViewsToFeeMode];
-    } else {
-        [self arrangeViewsToDefaultMode];
-    }
 }
 
 - (void)changeYPosition:(CGFloat)newY ofView:(UIView *)view
@@ -1248,7 +1228,7 @@ BOOL displayingLocalSymbolSend;
     [self enablePaymentButtons];
     
     self.confirmPaymentView.customizeFeeButton.hidden = YES;
-    sendProgressCancelButton.hidden = NO;
+    sendProgressCancelButton.hidden = [self.transferAllAddressesToTransfer count] <= 1;
 
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];
@@ -1393,8 +1373,12 @@ BOOL displayingLocalSymbolSend;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
         if (self.toAddress && [app.wallet isBitcoinAddress:self.toAddress]) {
             [self didSelectToAddress:self.toAddress];
+            self.shouldClearToField = NO;
             return NO;
+        } else if (range.length == 1 && self.shouldClearToField) {
+            textField.text = @"";
         }
+        self.shouldClearToField = NO;
         DLog(@"toAddress: %@", self.toAddress);
     }
     
@@ -1454,6 +1438,8 @@ BOOL displayingLocalSymbolSend;
     [app.wallet changePaymentToAddress:address];
     
     [self doCurrencyConversion];
+    
+    self.shouldClearToField = YES;
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -1485,6 +1471,8 @@ BOOL displayingLocalSymbolSend;
     [app.wallet changePaymentToAccount:account];
     
     [self doCurrencyConversion];
+    
+    self.shouldClearToField = YES;
 }
 
 #pragma mark - Fee Calculation
@@ -1645,7 +1633,7 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)selectFromAddressClicked:(id)sender
 {
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES];
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:NO];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_FROM onDismiss:nil onResume:nil];
@@ -1653,7 +1641,7 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)addressBookClicked:(id)sender
 {
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO];
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO allSelectable:YES];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_TO onDismiss:nil onResume:nil];

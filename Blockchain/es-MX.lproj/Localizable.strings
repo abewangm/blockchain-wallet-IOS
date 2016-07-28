@@ -101,10 +101,19 @@
 "Amount must be above dust threshold (%lld Satoshi)" = "La cantidad debe ser superior al umbral de 'polvo' (%lld Satoshi)";
 
 /* (No Commment) */
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Cantidad debe ser mayor o igual al umbral del polvo (%lld Satoshi)";
+
+/* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Ha producido un error debido a interrupciones durante la verificación de PIN. Por favor cierre la aplicación y vuelva a intentarlo.";
+
+/* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Se ha producido un error al validar su código PIN con el servidor remoto. Puede que esté desconectado o que Blockchain esté experimentando dificultades. ¿Quiere intentar de nuevo la validación o prefieres introducir la contraseña manualmente?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Se ha producido un error al cambiar verificación de 2 pasos.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Error al copiar su dirección en el portapapeles. Por favor vuelva a seleccionar la dirección de destino o reiniciar la aplicación y vuelva a intentarlo.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Error al guardar los cambios. Por favor, asegúrese de que usted no está registrado en su cartera en otro dispositivo.";
@@ -452,6 +461,9 @@
 "Finished Signing Inputs" = "Se han terminado de firmar las entradas";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Para mayor privacidad, generamos una dirección única para cada pago. Todas las direcciones generadas en su cartera pueden todavía recibir fondos, incluso si ya no aparecen en recepción.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Para su seguridad, recomendamos transferir cualquier saldo en sus direcciones importadas en su cartera de Blockchain.";
 
 /* (No Commment) */
@@ -489,6 +501,9 @@
 
 /* (No Commment) */
 "If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Muestre su xPub si es un comerciante y utilice la aplicación Blockchain Merchant para recibir fondos en forma segura y privada.";
+
+/* (No Commment) */
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Si usted es un comerciante, ve su clave pública extendida (xPub) y utilizar la aplicación Blockchain mercante para recibir fondos.";
 
 /* (No Commment) */
 "Import Private Key" = "Escanear la clave privada";
@@ -597,6 +612,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "La etiqueta debe tener menos de 18 caracteres";
+
+/* (No Commment) */
+"Learn More" = "Aprende más";
 
 /* (No Commment) */
 "Link Mobile" = "Enlace al teléfono celular";
@@ -722,6 +740,12 @@
 "OK" = "VALE";
 
 /* (No Commment) */
+"Open %@?" = "¿%@ abierto?";
+
+/* (No Commment) */
+"Open Mail App" = "Abrir correo App";
+
+/* (No Commment) */
 "PIN" = "PIN";
 
 /* (No Commment) */
@@ -759,6 +783,9 @@
 
 /* (No Commment) */
 "Password must 10 characters or longer" = "La contraseña debe tener 10 caracteres o más";
+
+/* (No Commment) */
+"Password must be different from your email" = "Contraseña debe ser diferente de su correo electrónico";
 
 /* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Contraseña debe ser menor o igual a 255 caracteres";
@@ -836,6 +863,10 @@
 "Please select a different address to send from." = "Por favor, seleccione una dirección diferente para enviar.";
 
 /* (No Commment) */
+"Please send %@ to bitcoin address.
+%@" = "Por favor enviar %1$@ a la dirección bitcoin.";
+
+/* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Por favor, envíe el pago a la dirección Bitcoin (< a href = \"del https://blockchain.info/wallet/bitcoin-faq\" > ayuda? < /a >): %@";
 
 /* (No Commment) */
@@ -849,6 +880,9 @@
 
 /* (No Commment) */
 "Preferences" = "Preferencias";
+
+/* (No Commment) */
+"Preparing transfer" = "Preparación de la transferencia";
 
 /* (No Commment) */
 "Privacy Policy" = "Política de privacidad";
@@ -866,6 +900,9 @@
 "Receive" = "Recibir";
 
 /* (No Commment) */
+"Receive to..." = "Reciben a...";
+
+/* (No Commment) */
 "Received" = "Recibido";
 
 /* (No Commment) */
@@ -876,6 +913,9 @@
 
 /* (No Commment) */
 "Regular" = "Regular";
+
+/* (No Commment) */
+"Request" = "Solicitud de";
 
 /* (No Commment) */
 "Request Amount" = "Pedir cantidad";
@@ -923,6 +963,9 @@
 "Scan Watch Only Address?" = "Escanear dirección de sólo lectura";
 
 /* (No Commment) */
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Escanee o copie este código en tu aplicación de Blockchain comerciante firmemente recibir Bitcoin.";
+
+/* (No Commment) */
 "Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Escanee este código o cópielo en su aplicación Blockchain Merchant para recibir los Bitcoin en forma segura.";
 
 /* No comment provided by engineer. */
@@ -936,6 +979,9 @@
 
 /* (No Commment) */
 "Security Center" = "Centro de seguridad";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Centro de seguridad terminado - la cartera es seguro y seguro";
 
 /* (No Commment) */
 "Send" = "Enviar";
@@ -992,6 +1038,9 @@
 "Simulate surge" = "Simular la oleada";
 
 /* (No Commment) */
+"Some funds cannot be transferred automatically." = "Algunos fondos no pueden ser transferidos automáticamente.";
+
+/* (No Commment) */
 "Store Hint" = "Sugerencia de tienda";
 
 /* (No Commment) */
@@ -1014,6 +1063,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sincronizando Monedero";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Grifo para copiar esta dirección. Compartir con el remitente por correo electrónico o texto.";
 
 /* (No Commment) */
 "Terms of Service" = "Términos de servicio";
@@ -1087,6 +1139,9 @@ Dos tipos de transacciones avanzadas no son admitidos en la nueva versión por e
 
 /* (No Commment) */
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Esta operación requiere un honorario más alto para el consumo de polvo debido a la pequeña cantidad de cambio a devolver.";
+
+/* (No Commment) */
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Esto permitirá que las siguientes alertas: recibir al indicador de revisión sólo, App Store y transferir todos los fondos.";
 
 /* (No Commment) */
 "This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Esto borrará todos los datos de cartera en este dispositivo. Por favor confirmar que tenga su información de cartera guardado en otro lugar de lo contrario cualquier bitcoin en esta voluntad de cartera será inaccesible!!!!";
@@ -1318,6 +1373,9 @@ una experiencia de usuario de monedero completamente nueva";
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Hemos detectado una instalación anterior del monedero Blockchain en su teléfono.";
 
 /* (No Commment) */
+"Where" = "Donde";
+
+/* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "¿Quieres añadir la dirección %@ Bitcoin a su libreta de direcciones?";
 
 /* (No Commment) */
@@ -1363,6 +1421,9 @@ una experiencia de usuario de monedero completamente nueva";
 "You have no addresses with a spendable balance above the required dust threshold." = "No tienes ninguna dirección con un saldo de disponibilidad por encima del umbral necesario polvo.";
 
 /* (No Commment) */
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "No tienes ninguna dirección con un gastar saldo mayor o igual al umbral del polvo requiere.";
+
+/* (No Commment) */
 "You have no available funds to send from this address" = "No tiene fondos disponibles para enviar desde esta dirección";
 
 /* (No Commment) */
@@ -1394,6 +1455,9 @@ una experiencia de usuario de monedero completamente nueva";
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Especificó una cuota de transacción inusualmente alta de %1$@. Incluso si se reduce la tarifa a %2$@, usted puede esperar la transacción para confirmar dentro de los siguientes 10 minutos (a una cuadra).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Usted saldrá de la aplicación.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Ha importado exitosamente una clave privada.";

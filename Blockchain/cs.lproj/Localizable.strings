@@ -98,13 +98,22 @@
 "Allowed" = "Povoleno";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Částka musí být vyšší než práh prach (%lld Satoshi)";
+"Amount" = "Částka";
+
+/* (No Commment) */
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Množství musí být větší než nebo rovna prahu prach (%lld Satoshi)";
+
+/* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Došlo k chybě z důvodu přerušení během ověřování PIN. Ukončete aplikace a akci opakujte.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Při ověřování kódu PIN se vzdáleným serverem došlo k chybě. Jste pravděpodobně v režimu offline nebo Blockchain mohou být potíže. Chcete opakovat ověření nebo místo toho zadat heslo ručně?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Došlo k chybě při změně 2krok ověření.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Došlo k chybě při kopírování vaši adresu do schránky. Znovu vyberte cílovou adresu nebo restartujte aplikaci a opakujte akci.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Při ukládání změn došlo k chybě. Prosím, ujistěte se, že nejste přihlášeni k vaší peněžence na jiném zařízení.";
@@ -449,6 +458,9 @@
 "Finished Signing Inputs" = "Dokončeno, podepisování vstupy";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Pro větší soukromí jsme vytvořit jedinečnou adresu pro každou platbu. Všechny adresy, které jsou generovány v peněžence mohou stále přijímat, i v případě, že se již nebude zobrazovat v příjmu.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Pro vaši bezpečnost doporučujeme přenos veškeré zůstatky v importované adresy do peněženky Blockchain.";
 
 /* (No Commment) */
@@ -479,7 +491,7 @@
 "Identifier" = "Identifikátor";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Pokud jste obchodník, Ukázat své xPub a Blockchain obchodníka v aplikaci získat finanční prostředky, bezpečně a soukromě.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Pokud jste obchodník, zobrazit rozšířený veřejný klíč (xPub) a Blockchain obchodníka v aplikaci získat finanční prostředky.";
 
 /* (No Commment) */
 "Import Private Key" = "Importovat soukromý klíč";
@@ -591,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Popisek musí mít méně než 18 znaků";
+
+/* (No Commment) */
+"Learn More" = "Víc se uč";
 
 /* (No Commment) */
 "Link Mobile" = "Mobilní spojení";
@@ -707,6 +722,12 @@
 "OK" = "Ok";
 
 /* (No Commment) */
+"Open %@?" = "Otevřené %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Otevřené poštovní aplikace";
+
+/* (No Commment) */
 "PIN" = "KÓD PIN";
 
 /* (No Commment) */
@@ -741,6 +762,9 @@
 
 /* (No Commment) */
 "Password changed. Please login to continue." = "Heslo bylo změněno. Přihlaste se pro pokračování.";
+
+/* (No Commment) */
+"Password must be different from your email" = "Heslo se musí lišit od vašeho e-mailu";
 
 /* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Heslo musí být menší nebo rovna 255 znaků";
@@ -815,10 +839,12 @@
 "Please select a different address to send from." = "Prosím zvolte jinou adresu posílat z.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Prosím pošlete platbu bitcoin adresu (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > pomoc? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Pošlete, prosím, %1$@ na adresu bitcoin.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Bitcoin adresu zašlete platbu. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Prosím pošlete platbu bitcoin adresu (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > pomoc? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Zkuste to prosím znovu";
@@ -828,6 +854,9 @@
 
 /* (No Commment) */
 "Preferences" = "Předvolby";
+
+/* (No Commment) */
+"Preparing transfer" = "Příprava přenosu";
 
 /* (No Commment) */
 "Privacy Policy" = "Zásady ochrany osobních údajů";
@@ -845,6 +874,9 @@
 "Receive" = "Příjem";
 
 /* (No Commment) */
+"Receive to..." = "Přijmout do...";
+
+/* (No Commment) */
 "Received" = "Přijaté";
 
 /* (No Commment) */
@@ -855,6 +887,9 @@
 
 /* (No Commment) */
 "Regular" = "Pravidelný";
+
+/* (No Commment) */
+"Request" = "Požadavek";
 
 /* (No Commment) */
 "Request Amount" = "Požádat o částku";
@@ -899,7 +934,7 @@
 "Scan QR code" = "Skenování QR kód";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Tento kód nebo jej zkopírujte do app Blockchain obchodníka a bezpečně přijímat Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Skenovat nebo zkopírujte tento kód do aplikace Blockchain obchodník bezpečně přijímat Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Druhé heslo nesprávné";
@@ -912,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Centrum zabezpečení";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Centrum zabezpečení dokončena - vaše peněženka je bezpečné";
 
 /* (No Commment) */
 "Send" = "Odeslat";
@@ -944,9 +982,6 @@
 "Settings" = "Nastavení";
 
 /* (No Commment) */
-"Shared Coin is not supported at this time." = "V současné době není podporován sdílené mince.";
-
-/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Sdílení vašeho xPub autorizuje jiné sledovat historii transakcí. Oprávněné osoby mohou být schopni roztříštit vás v přístupu k vaší peněžence, sdílejte pouze své xPub s lidmi, kterým důvěřujete.";
 
 /* (No Commment) */
@@ -966,6 +1001,9 @@
 
 /* (No Commment) */
 "Simulate surge" = "Simulovat přepětí";
+
+/* (No Commment) */
+"Some funds cannot be transferred automatically." = "Některé fondy nemohou být převedeny automaticky.";
 
 /* (No Commment) */
 "Store Hint" = "Nápovědu pro obchod";
@@ -990,6 +1028,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synchronizuji Peněženka";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Klepnutím zkopírujete tuto adresu. Sdílejte s odesílateli e-mailem nebo text.";
 
 /* (No Commment) */
 "Terms of Service" = "Podmínky služby";
@@ -1155,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Inovace";
 
 /* (No Commment) */
-"Upgrade Now" = "Upgradovat nyní";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Upgradovat Peněženka";
 
 /* (No Commment) */
@@ -1215,9 +1253,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Peněženka pro zotavení frázi";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Peněženka %lld verze není podporován";
-
-/* (No Commment) */
 "Warning" = "Varování";
 
 /* (No Commment) */
@@ -1253,6 +1288,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Zachytili jsme předchozí instalace Blockchain peněženku na vašem telefonu.";
+
+/* (No Commment) */
+"Where" = "Kde";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Chcete přidat bitcoin adresy %@ do vašeho adresáře?";
@@ -1297,7 +1335,7 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 "You do not have an account set up for Mail. Please contact %@" = "Nemáte účet nastavený pro poštu. Prosím kontaktujte %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Budete mít žádné adresy s utratitelné zůstatek nad prahem požadované prach.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Budete mít žádné adresy s utratitelné rovnováhu, větší nebo rovna požadované prachu prahu.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Žádné dostupné peníze poslat z této adresy";
@@ -1331,6 +1369,9 @@ wallet experience for you" = "Navrhli jsme novou peněženku zkušenost pro vás
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Zadali jste neobvykle vysoké transakční poplatek ve %1$@. I v případě, že snížení poplatku na %2$@, můžete očekávat, že transakci potvrdit během příštích 10 minut (jeden blok).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Odjíždíš app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Jste úspěšně importovat soukromý klíč.";

@@ -53,7 +53,7 @@
 "380.text" = "Blockchain 財布へようこそ";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "読み込まれたトランザクション";
+"387.text" = "最近のトランザクション";
 
 /* (No Commment) */
 "394.text" = "パスワード:";
@@ -147,9 +147,6 @@
 
 /* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
 "bzM-Ub-MUU.normalTitle" = "345.68 米ドル";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "eLG-96-OpG"; */
-"eLG-96-OpG.text" = "ラベル";
 
 /* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
 "fI2-PD-Xwa.normalTitle" = "私のカメラにアクセスできません。";

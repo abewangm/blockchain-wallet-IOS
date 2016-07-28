@@ -520,7 +520,7 @@ const int aboutPrivacyPolicy = 1;
     [self removeObserversForChangingEmailNotifications];
     
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
-    [navigationController.busyView fadeInWithDarkBackground];
+    [navigationController.busyView fadeIn];
     
     UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesNotifications]];
     changeEmailNotificationsCell.userInteractionEnabled = YES;
@@ -689,6 +689,12 @@ const int aboutPrivacyPolicy = 1;
         dispatch_after(delayTime, dispatch_get_main_queue(), ^{
             [self alertUserToChangeEmail:YES];
         });
+    }]];
+    [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_OPEN_MAIL_APP style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
+        if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
+            [[UIApplication sharedApplication] openURL:mailURL];
+        }
     }]];
     [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self getAccountInfo];
@@ -906,7 +912,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changePassword
 {
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CHANGE_PASSWORD sender:nil];
+    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_CHANGE_PASSWORD sender:nil];
 }
 
 #pragma mark - TextField Delegate
@@ -973,6 +979,13 @@ const int aboutPrivacyPolicy = 1;
 }
 
 #pragma mark - Segue
+
+- (void)performSingleSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([[self navigationController] topViewController] == self) {
+        [self performSegueWithIdentifier:identifier sender:sender];
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -1055,18 +1068,18 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionEnd: {
             switch (indexPath.row) {
                 case displayLocalCurrency: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
                     return;
                 }
                 case displayBtcUnit: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
                     return;
                 }
             }
         }
         case securitySection: {
             if (indexPath.row == securityTwoStep) {
-                [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
+                [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
                 return;
             } else if (indexPath.row == securityPasswordHint) {
                 [self alertUserToChangePasswordHint];
@@ -1095,11 +1108,11 @@ const int aboutPrivacyPolicy = 1;
         case aboutSection: {
             switch (indexPath.row) {
                 case aboutTermsOfService: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_TERMS_OF_SERVICE];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_TERMS_OF_SERVICE];
                     return;
                 }
                 case aboutPrivacyPolicy: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_PRIVACY_POLICY];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_PRIVACY_POLICY];
                     return;
                 }
             }

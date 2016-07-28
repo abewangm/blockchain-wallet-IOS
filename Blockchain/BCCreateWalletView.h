@@ -33,7 +33,7 @@
 
 - (IBAction)termsOfServiceClicked:(id)sender;
 
-- (void)didFailRecovery;
+- (void)showPassphraseTextField;
 - (void)didRecoverWallet;
 - (void)hideKeyboard;
 

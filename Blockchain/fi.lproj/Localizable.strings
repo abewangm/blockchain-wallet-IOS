@@ -98,13 +98,22 @@
 "Allowed" = "Internet";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Summan on oltava pöly-kynnysarvo (%lld Satoshi)";
+"Amount" = "Määrä";
+
+/* (No Commment) */
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Summan on oltava suurempi tai yhtä suuri pöly (%lld Satoshi)";
+
+/* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Virhe johtuu keskeytyksiä PIN-KOODILLA vahvistaminen. Sulje sovellus ja yritä uudelleen.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Virhe tarkistettaessa PIN-koodin etäpalvelimen kanssa. Olet ehkä offline-tilassa tai Blockchain saattaa olla vaikeuksia. Haluatko yrittää uudelleen validointi tai sen sijaan Syötä salasana manuaalisesti?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Virhe muutettaessa 2-vaiheinen vahvistus.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Virhe kopioitaessa osoite Leikepöydälle. Uudelleen valita kohdeosoitteen tai Käynnistä sovellus ja yritä uudelleen.";
 
 /* (No Commment) */
 "An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Virhe tallennettaessa muutoksia. Varmista, et ole kirjautunut lompakkoosi toisessa laitteessa.";
@@ -449,6 +458,9 @@
 "Finished Signing Inputs" = "Valmis allekirjoittamista tuotantopanosten";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Lisää yksityisyyttä tuotamme jokaisen maksun yksilöllinen osoite. Kaikki osoitteet syntyy lompakon vielä saada varoja, vaikka ne eivät enää näy vastaanota alle.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Oman turvallisuutesi suosittelemme siirtää kaikki varat tuodut osoitteet Blockchain-lompakkoosi.";
 
 /* (No Commment) */
@@ -479,7 +491,7 @@
 "Identifier" = "Tunnus";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Jos olet kauppias, Näytä oman xPub ja saada varoja turvallisesti ja yksityisesti Blockchain kauppias-sovelluksella.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Jos olet kauppias, tarkastele laajennettu julkisen avaimesi (xPub) ja vastaanottaa varoja Blockchain kauppias-sovelluksella.";
 
 /* (No Commment) */
 "Import Private Key" = "Tuo yksityinen avain";
@@ -591,6 +603,9 @@
 
 /* (No Commment) */
 "Label must have less than 18 characters" = "Etiketin on oltava vähemmän kuin 18 merkkiä";
+
+/* (No Commment) */
+"Learn More" = "Opi lisää";
 
 /* (No Commment) */
 "Link Mobile" = "Linkki Mobile";
@@ -707,6 +722,12 @@
 "OK" = "Okei";
 
 /* (No Commment) */
+"Open %@?" = "Avaa %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Avaa Mail App";
+
+/* (No Commment) */
 "PIN" = "PIN";
 
 /* (No Commment) */
@@ -741,6 +762,9 @@
 
 /* (No Commment) */
 "Password changed. Please login to continue." = "Salasana vaihdettu. Kirjaudu sisään jatkaaksesi.";
+
+/* (No Commment) */
+"Password must be different from your email" = "Salasanan on oltava erilainen sähköpostiosoitteesi";
 
 /* (No Commment) */
 "Password must be less than or equal to 255 characters" = "Salasanan on oltava enintään 255 merkkiä";
@@ -815,10 +839,12 @@
 "Please select a different address to send from." = "Valitse toinen osoite lähettää.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Lähetä maksu bitcoin osoite (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > auttaa? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Lähetä %1$@ bitcoin osoite.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Lähetä maksu bitcoin osoite. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Lähetä maksu bitcoin osoite (< href = \"https://blockchain.info/wallet/bitcoin-faq\" > auttaa? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Yritä uudelleen";
@@ -828,6 +854,9 @@
 
 /* (No Commment) */
 "Preferences" = "Asetukset";
+
+/* (No Commment) */
+"Preparing transfer" = "Valmistellaan siirtoa";
 
 /* (No Commment) */
 "Privacy Policy" = "Yksityisyyden suoja";
@@ -845,6 +874,9 @@
 "Receive" = "Vastaanottaa";
 
 /* (No Commment) */
+"Receive to..." = "Saat...";
+
+/* (No Commment) */
 "Received" = "Saanut";
 
 /* (No Commment) */
@@ -855,6 +887,9 @@
 
 /* (No Commment) */
 "Regular" = "Säännöllisesti";
+
+/* (No Commment) */
+"Request" = "Pyyntö";
 
 /* (No Commment) */
 "Request Amount" = "Pyyntö määrä";
@@ -899,7 +934,7 @@
 "Scan QR code" = "Skannaa QR-koodi";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skannaa tämä koodi tai kopioi se Blockchain kauppias app saada turvallisesti Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Skannaa tai kopioi tämä koodi Blockchain kauppias app saada turvallisesti Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Toinen salasana väärin";
@@ -912,6 +947,9 @@
 
 /* (No Commment) */
 "Security Center" = "Security Center";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Tietoturvakeskus loppuaan - lompakko on turvallinen ja varma";
 
 /* (No Commment) */
 "Send" = "Lähetä";
@@ -944,9 +982,6 @@
 "Settings" = "Asetukset";
 
 /* (No Commment) */
-"Shared Coin is not supported at this time." = "Jaettu kolikon ei tueta tällä hetkellä.";
-
-/* (No Commment) */
 "Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Jakaminen sinun xPub antaa toiset jotta jäljittää maksuhistoriastasi. Kuten oikeutetut henkilöt häiritä sinua käyttämästä lompakon, jakaa vain sinun xPub luottamillesi ihmisille.";
 
 /* (No Commment) */
@@ -966,6 +1001,9 @@
 
 /* (No Commment) */
 "Simulate surge" = "Simuloida aalto";
+
+/* (No Commment) */
+"Some funds cannot be transferred automatically." = "Varoja ei voi siirtää automaattisesti.";
 
 /* (No Commment) */
 "Store Hint" = "Store Vihje";
@@ -990,6 +1028,9 @@
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronointi lompakko";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Napauta kopioi osoite. Jaa se lennättää kautta sähköposti- tai tekstiohjelmassa.";
 
 /* (No Commment) */
 "Terms of Service" = "Käyttöehdot";
@@ -1155,9 +1196,6 @@ Fee: %@
 "Upgrade" = "Päivitys";
 
 /* (No Commment) */
-"Upgrade Now" = "Päivitä nyt";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Päivittää lompakko";
 
 /* (No Commment) */
@@ -1215,9 +1253,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Lompakko Recovery lause";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Lompakko versio %lld ei tueta";
-
-/* (No Commment) */
 "Warning" = "Varoitus";
 
 /* (No Commment) */
@@ -1253,6 +1288,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Havaitsimme aiempi asennus Blockchain lompakko puhelimeen.";
+
+/* (No Commment) */
+"Where" = "Jos";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Haluatko lisätä bitcoin osoite %@ osoitekirjaan?";
@@ -1297,7 +1335,7 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 "You do not have an account set up for Mail. Please contact %@" = "Sinulla ei ole tilin postia. Ota yhteyttä %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Sinulla ole osoitteita spendable tasapaino edellyttää pöly kynnysarvo.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Sinulla ole osoitteita spendable tasapaino suurempi tai yhtä suuri tarvita pölyä.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Sinulla ei ole varoja lähettää tähän osoitteeseen";
@@ -1331,6 +1369,9 @@ wallet experience for you" = "Olemme suunnitelleet aivan uusi lompakko kokemus s
 
 /* (No Commment) */
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Määritetty %1$@ epätavallisen korkeita suorituksesta maksettavaa palkkiota. Jos pienennät %2$@ maksu, voit odottaa tapahtuman kuluessa seuraavan 10 minuutin (yhden lohkon).";
+
+/* (No Commment) */
+"You will be leaving the app." = "Oletko lähdössä app.";
 
 /* (No Commment) */
 "You've successfully imported a private key." = "Yksityinen avain Olen tuonti onnistui.";

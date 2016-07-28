@@ -109,7 +109,6 @@ int lastNumberTransactions = INT_MAX;
         
 #ifdef ENABLE_TRANSACTION_FILTERING
         self.filterIndex = FILTER_INDEX_ALL;
-        filterLabel.text = BC_STRING_TOTAL_BALANCE;
 #endif
         
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
@@ -224,7 +223,7 @@ int lastNumberTransactions = INT_MAX;
         animateNextCell = NO;
         
         // Without a delay, the notification will not get the new transaction, but the one before it
-        [self performSelector:@selector(postReceivePaymentNotification) withObject:nil afterDelay:0.1f];
+        [self performSelector:@selector(paymentReceived) withObject:nil afterDelay:0.1f];
     }
 }
 
@@ -275,9 +274,9 @@ int lastNumberTransactions = INT_MAX;
     return number;
 }
 
-- (void)postReceivePaymentNotification
+- (void)paymentReceived
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil userInfo:[NSDictionary dictionaryWithObject:[self getAmountForReceivedTransaction:[data.transactions firstObject]] forKey:DICTIONARY_KEY_AMOUNT]];
+    [app paymentReceived:[self getAmountForReceivedTransaction:[data.transactions firstObject]]];
 }
 
 - (void)changeFilterLabel:(NSString *)newText
@@ -360,7 +359,6 @@ int lastNumberTransactions = INT_MAX;
     
 #ifdef ENABLE_TRANSACTION_FILTERING
     self.filterIndex = FILTER_INDEX_ALL;
-    filterLabel.text = BC_STRING_TOTAL_BALANCE;
 #endif
     
     [self reload];
@@ -398,13 +396,7 @@ int lastNumberTransactions = INT_MAX;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
     
 #ifdef ENABLE_TRANSACTION_FILTERING
-    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
-        [self showFilterLabel];
-        app.mainLogoImageView.hidden = YES;
-    } else {
-        [self hideFilterLabel];
-        app.mainLogoImageView.hidden = NO;
-    }
+    [app reloadTransactionFilterLabel];
 #else
     [self hideFilterLabel];
     app.mainLogoImageView.hidden = NO;

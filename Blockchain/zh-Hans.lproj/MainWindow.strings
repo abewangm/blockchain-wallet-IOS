@@ -54,7 +54,7 @@ https://blockchain.info/wallet/login";
 "380.text" = "欢迎使用 Blockchain 钱包";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "没有加载的交易";
+"387.text" = "没有最近的交易";
 
 /* (No Commment) */
 "394.text" = "密码:";
