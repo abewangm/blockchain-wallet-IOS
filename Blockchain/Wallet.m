@@ -703,10 +703,9 @@
             }
             
             uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // TODO: add alert and formatMoney:localCurrency:
-            });
+            if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
+                [delegate paymentReceivedOnPINScreen:[app formatMoney:amountReceived localCurrency:NO]];
+            }
         }];
         
         [task resume];
