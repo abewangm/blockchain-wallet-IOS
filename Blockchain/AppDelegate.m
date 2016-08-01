@@ -470,7 +470,7 @@ void (^secondPasswordSuccess)(NSString *);
             [self.topViewControllerDelegate presentAlertController:alert];
         }
     } else if (self.pinEntryViewController) {
-        [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
+        [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
     } else {
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
@@ -2838,7 +2838,9 @@ void (^secondPasswordSuccess)(NSString *);
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_LOGIN_EXISTING_WALLET style:UIAlertActionStyleDefault handler:nil]];
     
-    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    });
 }
 
 - (void)alertUserOfCompromisedSecurity
