@@ -1723,7 +1723,9 @@ void (^secondPasswordSuccess)(NSString *);
     else {
         [self.tabViewController presentViewController:self.pinEntryViewController animated:YES completion:^{
             if (walletIsNew) {
-                [self standardNotify:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL title:BC_STRING_DID_CREATE_NEW_WALLET_TITLE];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DID_CREATE_NEW_WALLET_TITLE message:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
             }
         }];
     }
