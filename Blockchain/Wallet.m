@@ -1733,7 +1733,9 @@
         latestBlock.time = [[dict objectForKey:@"time"] longLongValue];
         latestBlock.blockIndex = [[dict objectForKey:@"block_index"] intValue];
         
-        [delegate didSetLatestBlock:latestBlock];
+        if ([delegate respondsToSelector:@selector(didSetLatestBlock:)]) {
+            [delegate didSetLatestBlock:latestBlock];
+        }
     } else {
         DLog(@"Error: could not get JSON object from latest block JSON");
     }
@@ -1775,7 +1777,9 @@
         [self loading_stop];
     }
     
-    [delegate didGetMultiAddressResponse:response];
+    if ([delegate respondsToSelector:@selector(didGetMultiAddressResponse:)]) {
+        [delegate didGetMultiAddressResponse:response];
+    }
 }
 
 - (MultiAddressResponse *)parseMultiAddrJSON:(NSString*)multiAddrJSON
