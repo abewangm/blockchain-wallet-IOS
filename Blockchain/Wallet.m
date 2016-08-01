@@ -2312,7 +2312,7 @@
 
 - (void)on_payment_notice:(NSString *)notice
 {
-    if (app.tabViewController.selectedIndex == TAB_SEND) {
+    if (app.tabViewController.selectedIndex == TAB_SEND && !app.pinEntryViewController) {
         [app standardNotifyAutoDismissingController:notice title:BC_STRING_INFORMATION];
     }
 }

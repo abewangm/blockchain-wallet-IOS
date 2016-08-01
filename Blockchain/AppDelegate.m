@@ -460,12 +460,17 @@ void (^secondPasswordSuccess)(NSString *);
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    
+    if (!self.pinEntryViewController) {
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    }
     
     if (self.topViewControllerDelegate) {
         if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
             [self.topViewControllerDelegate presentAlertController:alert];
         }
+    } else if (self.pinEntryViewController) {
+        [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
     } else {
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
@@ -1718,9 +1723,7 @@ void (^secondPasswordSuccess)(NSString *);
     else {
         [self.tabViewController presentViewController:self.pinEntryViewController animated:YES completion:^{
             if (walletIsNew) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DID_CREATE_NEW_WALLET_TITLE message:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-                [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
+                [self standardNotify:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL title:BC_STRING_DID_CREATE_NEW_WALLET_TITLE];
             }
         }];
     }
