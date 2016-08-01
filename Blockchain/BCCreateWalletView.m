@@ -188,9 +188,6 @@
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
         
     app.wallet.delegate = app;
-        
-    [app standardNotify:[NSString stringWithFormat:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL]
-                      title:BC_STRING_DID_CREATE_NEW_WALLET_TITLE];
     
     app.wallet.isNew = YES;
     
