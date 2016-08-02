@@ -753,7 +753,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:@"MyWalletPhone.getAllTransactionsCount()"] toInt32];
+    return [[[self.context evaluateScript:@"MyWalletPhone.getAllTransactionsCount()"] toNumber] intValue];
 }
 
 - (void)getAllCurrencySymbols
@@ -886,7 +886,7 @@
 
 - (uint64_t)parseBitcoinValue:(NSString*)input
 {
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [input escapeStringForJS]]] toInt32];
+    return [[[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [input escapeStringForJS]]] toNumber] longLongValue];
 }
 
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
@@ -950,7 +950,7 @@
         return;
     }
     
-    self.final_balance = [[self.context evaluateScript:@"MyWallet.wallet.finalBalance"] toUInt32];
+    self.final_balance = [[[self.context evaluateScript:@"MyWallet.wallet.finalBalance"] toNumber] longLongValue];
 }
 
 - (void)getTotalSent
@@ -959,7 +959,7 @@
         return;
     }
     
-    self.total_sent = [[self.context evaluateScript:@"MyWallet.wallet.totalSent"] toUInt32];
+    self.total_sent = [[[self.context evaluateScript:@"MyWallet.wallet.totalSent"] toNumber] longLongValue];
 }
 
 - (BOOL)isWatchOnlyLegacyAddress:(NSString*)address
@@ -1118,7 +1118,7 @@
     }
     
     if ([self checkIfWalletHasAddress:address]) {
-        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.key(\"%@\").balance", [address escapeStringForJS]]] toInt32];
+        return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.key(\"%@\").balance", [address escapeStringForJS]]] toNumber] longLongValue];
     } else {
         DLog(@"Wallet error: Tried to get balance of address %@, which was not found in this wallet", address);
         return errorBalance;
@@ -1372,7 +1372,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:@"MyWalletPhone.dust()"] toInt32];
+    return [[[self.context evaluateScript:@"MyWalletPhone.dust()"] toNumber] longLongValue];
 }
 
 - (void)generateNewKey
@@ -1519,7 +1519,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getIndexOfActiveAccount(%d)", account]] toInt32];
+    return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getIndexOfActiveAccount(%d)", account]] toNumber] intValue];
 }
 
 - (void)getSessionToken
@@ -2612,7 +2612,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:@"MyWalletPhone.getActiveAccountsCount()"] toInt32];
+    return [[[self.context evaluateScript:@"MyWalletPhone.getActiveAccountsCount()"] toNumber] intValue];
 }
 
 - (int)getAllAccountsCount
@@ -2621,7 +2621,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:@"MyWalletPhone.getAllAccountsCount()"] toInt32];
+    return [[[self.context evaluateScript:@"MyWalletPhone.getAllAccountsCount()"] toNumber] intValue];
 }
 
 - (int)getDefaultAccountIndex
@@ -2630,7 +2630,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountIndex()"] toInt32];
+    return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountIndex()"] toNumber] intValue];
 }
 
 - (void)setDefaultAccount:(int)index
@@ -2657,7 +2657,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:@"MyWallet.wallet.balanceActive"] toUInt32];
+    return [[[self.context evaluateScript:@"MyWallet.wallet.balanceActive"] toNumber] longLongValue];
 }
 
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses
@@ -2666,7 +2666,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:@"MyWallet.wallet.balanceActiveLegacy"] toUInt32];
+    return [[[self.context evaluateScript:@"MyWallet.wallet.balanceActiveLegacy"] toNumber] longLongValue];
 }
 
 - (uint64_t)getTotalBalanceForSpendableActiveLegacyAddresses
@@ -2675,7 +2675,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:@"MyWallet.wallet.balanceSpendableActiveLegacy"] toUInt32];
+    return [[[self.context evaluateScript:@"MyWallet.wallet.balanceSpendableActiveLegacy"] toNumber] longLongValue];
 }
 
 - (uint64_t)getBalanceForAccount:(int)account
@@ -2684,7 +2684,7 @@
         return 0;
     }
     
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getBalanceForAccount(%d)", account]] toUInt32];
+    return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getBalanceForAccount(%d)", account]] toNumber] longLongValue];
 }
 
 - (NSString *)getLabelForAccount:(int)account
