@@ -640,11 +640,17 @@
 {
     [self useDebugSettingsIfSet];
     
-    if ([delegate respondsToSelector:@selector(walletJSReady)])
+    if ([delegate respondsToSelector:@selector(walletJSReady)]) {
         [delegate walletJSReady];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletJSReady!", [delegate class]);
+    }
     
-    if ([delegate respondsToSelector:@selector(walletDidLoad)])
+    if ([delegate respondsToSelector:@selector(walletDidLoad)]) {
         [delegate walletDidLoad];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletDidLoad!", [delegate class]);
+    }
     
     if (self.guid && self.password) {
         DLog(@"Fetch Wallet");
@@ -705,6 +711,8 @@
             uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
             if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
                 [delegate paymentReceivedOnPINScreen:[app formatMoney:amountReceived localCurrency:NO]];
+            } else {
+                DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
             }
         }];
         
@@ -949,16 +957,22 @@
 {
     DLog(@"didParsePairingCode:");
     
-    if ([delegate respondsToSelector:@selector(didParsePairingCode:)])
-    [delegate didParsePairingCode:dict];
+    if ([delegate respondsToSelector:@selector(didParsePairingCode:)]) {
+        [delegate didParsePairingCode:dict];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didParsePairingCode:!", [delegate class]);
+    }
 }
 
 - (void)errorParsingPairingCode:(NSString *)message
 {
     DLog(@"errorParsingPairingCode:");
     
-    if ([delegate respondsToSelector:@selector(errorParsingPairingCode:)])
-    [delegate errorParsingPairingCode:message];
+    if ([delegate respondsToSelector:@selector(errorParsingPairingCode:)]) {
+        [delegate errorParsingPairingCode:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector errorParsingPairingCode:!", [delegate class]);
+    }
 }
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
@@ -1812,6 +1826,8 @@
         
         if ([delegate respondsToSelector:@selector(didSetLatestBlock:)]) {
             [delegate didSetLatestBlock:latestBlock];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector didSetLatestBlock:!", [delegate class]);
         }
     } else {
         DLog(@"Error: could not get JSON object from latest block JSON");
@@ -1856,6 +1872,8 @@
     
     if ([delegate respondsToSelector:@selector(didGetMultiAddressResponse:)]) {
         [delegate didGetMultiAddressResponse:response];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetMultiAddressResponse:!", [delegate class]);
     }
 }
 
@@ -1906,8 +1924,11 @@
     
     self.didReceiveMessageForLastTransaction = YES;
     
-    if ([delegate respondsToSelector:@selector(receivedTransactionMessage)])
+    if ([delegate respondsToSelector:@selector(receivedTransactionMessage)]) {
         [delegate receivedTransactionMessage];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector receivedTransactionMessage!", [delegate class]);
+    }
 }
 
 - (void)getPrivateKeyPassword:(NSString *)canDiscard success:(JSValue *)success error:(void(^)(id))_error
@@ -2015,8 +2036,11 @@
 - (void)error_restoring_wallet
 {
     DLog(@"error_restoring_wallet");
-    if ([delegate respondsToSelector:@selector(walletFailedToDecrypt)])
-    [delegate walletFailedToDecrypt];
+    if ([delegate respondsToSelector:@selector(walletFailedToDecrypt)]) {
+        [delegate walletFailedToDecrypt];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletFailedToDecrypt!", [delegate class]);
+    }
 }
 
 - (void)did_decrypt
@@ -2032,8 +2056,11 @@
     self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
     self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
     
-    if ([delegate respondsToSelector:@selector(walletDidDecrypt)])
-    [delegate walletDidDecrypt];
+    if ([delegate respondsToSelector:@selector(walletDidDecrypt)]) {
+        [delegate walletDidDecrypt];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletDidDecrypt!", [delegate class]);
+    }
 }
 
 - (void)did_load_wallet
@@ -2053,16 +2080,22 @@
     
     self.isNew = NO;
     
-    if ([delegate respondsToSelector:@selector(walletDidFinishLoad)])
-    [delegate walletDidFinishLoad];
+    if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
+        [delegate walletDidFinishLoad];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletDidFinishLoad!", [delegate class]);
+    }
 }
 
 - (void)on_create_new_account:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
 {
     DLog(@"on_create_new_account:");
     
-    if ([delegate respondsToSelector:@selector(didCreateNewAccount:sharedKey:password:)])
-    [delegate didCreateNewAccount:_guid sharedKey:_sharedKey password:_password];
+    if ([delegate respondsToSelector:@selector(didCreateNewAccount:sharedKey:password:)]) {
+        [delegate didCreateNewAccount:_guid sharedKey:_sharedKey password:_password];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCreateNewAccount:sharedKey:password:!", [delegate class]);
+    }
 }
 
 - (void)on_add_private_key_start
@@ -2080,6 +2113,8 @@
     
     if ([delegate respondsToSelector:@selector(didImportKey:)]) {
         [delegate didImportKey:address];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didImportKey:!", [delegate class]);
     }
 }
 
@@ -2090,6 +2125,8 @@
     
     if ([delegate respondsToSelector:@selector(didImportIncorrectPrivateKey:)]) {
         [delegate didImportIncorrectPrivateKey:address];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didImportIncorrectPrivateKey:!", [delegate class]);
     }
 }
 
@@ -2100,6 +2137,8 @@
     
     if ([delegate respondsToSelector:@selector(didImportPrivateKeyToLegacyAddress)]) {
         [delegate didImportPrivateKeyToLegacyAddress];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didImportPrivateKeyToLegacyAddress!", [delegate class]);
     }
 }
 
@@ -2107,6 +2146,8 @@
 {
     if ([delegate respondsToSelector:@selector(didFailToImportPrivateKey:)]) {
         [delegate didFailToImportPrivateKey:error];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailToImportPrivateKey:!", [delegate class]);
     }
 }
 
@@ -2114,6 +2155,8 @@
 {
     if ([delegate respondsToSelector:@selector(didFailToImportPrivateKeyForWatchOnlyAddress:)]) {
         [delegate didFailToImportPrivateKeyForWatchOnlyAddress:error];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailToImportPrivateKeyForWatchOnlyAddress:!", [delegate class]);
     }
 }
 
@@ -2121,56 +2164,77 @@
 {
     DLog(@"on_error_creating_new_account:");
     
-    if ([delegate respondsToSelector:@selector(errorCreatingNewAccount:)])
-    [delegate errorCreatingNewAccount:message];
+    if ([delegate respondsToSelector:@selector(errorCreatingNewAccount:)]) {
+        [delegate errorCreatingNewAccount:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector errorCreatingNewAccount:!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_put_error:(NSString*)message
 {
     DLog(@"on_error_pin_code_put_error:");
     
-    if ([delegate respondsToSelector:@selector(didFailPutPin:)])
-    [delegate didFailPutPin:message];
+    if ([delegate respondsToSelector:@selector(didFailPutPin:)]) {
+        [delegate didFailPutPin:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailPutPin:!", [delegate class]);
+    }
 }
 
 - (void)on_pin_code_put_response:(NSDictionary*)responseObject
 {
     DLog(@"on_pin_code_put_response: %@", responseObject);
     
-    if ([delegate respondsToSelector:@selector(didPutPinSuccess:)])
-    [delegate didPutPinSuccess:responseObject];
+    if ([delegate respondsToSelector:@selector(didPutPinSuccess:)]) {
+        [delegate didPutPinSuccess:responseObject];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didPutPinSuccess:!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_get_timeout
 {
     DLog(@"on_error_pin_code_get_timeout");
     
-    if ([delegate respondsToSelector:@selector(didFailGetPinTimeout)])
-    [delegate didFailGetPinTimeout];
+    if ([delegate respondsToSelector:@selector(didFailGetPinTimeout)]) {
+        [delegate didFailGetPinTimeout];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailGetPinTimeout!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_get_empty_response
 {
     DLog(@"on_error_pin_code_get_empty_response");
     
-    if ([delegate respondsToSelector:@selector(didFailGetPinNoResponse)])
-    [delegate didFailGetPinNoResponse];
+    if ([delegate respondsToSelector:@selector(didFailGetPinNoResponse)]) {
+        [delegate didFailGetPinNoResponse];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailGetPinNoResponse!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_get_invalid_response
 {
     DLog(@"on_error_pin_code_get_invalid_response");
     
-    if ([delegate respondsToSelector:@selector(didFailGetPinInvalidResponse)])
-    [delegate didFailGetPinInvalidResponse];
+    if ([delegate respondsToSelector:@selector(didFailGetPinInvalidResponse)]) {
+        [delegate didFailGetPinInvalidResponse];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailGetPinInvalidResponse!", [delegate class]);
+    }
 }
 
 - (void)on_pin_code_get_response:(NSDictionary*)responseObject
 {
     DLog(@"on_pin_code_get_response:");
     
-    if ([delegate respondsToSelector:@selector(didGetPinResponse:)])
-    [delegate didGetPinResponse:responseObject];
+    if ([delegate respondsToSelector:@selector(didGetPinResponse:)]) {
+        [delegate didGetPinResponse:responseObject];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetPinResponse:!", [delegate class]);
+    }
 }
 
 - (void)on_error_maintenance_mode
@@ -2190,15 +2254,21 @@
 {
     DLog(@"on_backup_wallet_error");
     
-    if ([delegate respondsToSelector:@selector(didFailBackupWallet)])
-    [delegate didFailBackupWallet];
+    if ([delegate respondsToSelector:@selector(didFailBackupWallet)]) {
+        [delegate didFailBackupWallet];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailBackupWallet!", [delegate class]);
+    }
 }
 
 - (void)on_backup_wallet_success
 {
     DLog(@"on_backup_wallet_success");
-    if ([delegate respondsToSelector:@selector(didBackupWallet)])
-    [delegate didBackupWallet];
+    if ([delegate respondsToSelector:@selector(didBackupWallet)]) {
+        [delegate didBackupWallet];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didBackupWallet!", [delegate class]);
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     // Hide the busy view if previously syncing
     [self loading_stop];
@@ -2209,8 +2279,11 @@
 {
     DLog(@"did_fail_set_guid");
     
-    if ([delegate respondsToSelector:@selector(walletFailedToLoad)])
-    [delegate walletFailedToLoad];
+    if ([delegate respondsToSelector:@selector(walletFailedToLoad)]) {
+        [delegate walletFailedToLoad];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletFailedToLoad!", [delegate class]);
+    }
 }
 
 - (void)on_change_local_currency_success
@@ -2405,7 +2478,11 @@
 - (void)on_generate_key
 {
     DLog(@"on_generate_key");
-    [delegate didGenerateNewAddress];
+    if ([delegate respondsToSelector:@selector(didGenerateNewAddress)]) {
+        [delegate didGenerateNewAddress];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGenerateNewAddress!", [delegate class]);
+    }
 }
 
 - (void)on_error_creating_new_address:(NSString*)error
@@ -2436,8 +2513,11 @@
 {
     DLog(@"on_recover_with_passphrase_success_guid:sharedKey:password:");
     
-    if ([delegate respondsToSelector:@selector(didRecoverWallet)])
-    [delegate didRecoverWallet];
+    if ([delegate respondsToSelector:@selector(didRecoverWallet)]) {
+        [delegate didRecoverWallet];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didRecoverWallet!", [delegate class]);
+    }
     
     [self loadWalletWithGuid:recoveredWalletDictionary[@"guid"] sharedKey:recoveredWalletDictionary[@"sharedKey"] password:recoveredWalletDictionary[@"password"]];
 }
@@ -2455,8 +2535,11 @@
     } else {
         [app standardNotifyAutoDismissingController:error];
     }
-    if ([delegate respondsToSelector:@selector(didFailRecovery)])
-    [delegate didFailRecovery];
+    if ([delegate respondsToSelector:@selector(didFailRecovery)]) {
+        [delegate didFailRecovery];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailRecovery!", [delegate class]);
+    }
 }
 
 - (void)on_progress_recover_with_passphrase:(NSString *)totalReceived finalBalance:(NSString *)finalBalance
