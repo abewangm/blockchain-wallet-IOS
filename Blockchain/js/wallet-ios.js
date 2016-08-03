@@ -300,18 +300,25 @@ MyWalletPhone.isArchived = function(accountOrAddress) {
 }
 
 MyWalletPhone.toggleArchived = function(accountOrAddress) {
+    
+    var didArchive = false;
+    
     if (Helpers.isNumber(accountOrAddress) && accountOrAddress >= 0) {
         if (MyWallet.wallet.isUpgradedToHD) {
             MyWallet.wallet.hdwallet.accounts[accountOrAddress].archived = !MyWallet.wallet.hdwallet.accounts[accountOrAddress].archived;
+            didArchive = MyWallet.wallet.hdwallet.accounts[accountOrAddress].archived
         } else {
             console.log('Warning: Getting accounts when wallet has not upgraded!');
             return '';
         }
     } else if (accountOrAddress) {
         MyWallet.wallet.key(accountOrAddress).archived = !MyWallet.wallet.key(accountOrAddress).archived;
+        didArchive =  MyWallet.wallet.key(accountOrAddress).archived;
     }
     
-    MyWalletPhone.get_history();
+    if (didArchive) {
+        MyWalletPhone.get_history();
+    }
 }
 
 MyWalletPhone.archiveTransferredAddresses = function(addresses) {
@@ -646,8 +653,6 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         loading_stop();
         
         did_load_wallet();
-        
-        MyWallet.wallet.getBalancesForArchived();
     };
     
     var history_error = function(error) {console.log(error);
