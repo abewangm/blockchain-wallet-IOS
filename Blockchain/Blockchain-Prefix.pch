@@ -327,7 +327,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_RESOURCE_WALLET_IOS @"wallet-ios"
 #define JAVASCRIPTCORE_TYPE_JS @"js"
 
-#define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0};\n%@\n%@"
+#define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0}; Promise = undefined;\n%@\n%@"
 
 #define JAVASCRIPTCORE_CLASS_XMLHTTPREQUEST @"XMLHttpRequest"
 #define JAVASCRIPTCORE_STACK @"stack"
