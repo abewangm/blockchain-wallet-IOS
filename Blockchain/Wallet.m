@@ -709,10 +709,12 @@
             }
             
             uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
-            if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
-                [delegate paymentReceivedOnPINScreen:[app formatMoney:amountReceived localCurrency:NO]];
-            } else {
-                DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
+            if (amountReceived > 0) {
+                if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
+                    [delegate paymentReceivedOnPINScreen:[app formatMoney:amountReceived localCurrency:NO]];
+                } else {
+                    DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
+                }
             }
         }];
         
