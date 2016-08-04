@@ -16,6 +16,8 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     createButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;

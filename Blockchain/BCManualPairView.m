@@ -13,6 +13,8 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     saveButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     saveButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;

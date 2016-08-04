@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     float onePixelHeight = 1.0/[UIScreen mainScreen].scale;
     UIView *onePixelLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, onePixelHeight)];
     

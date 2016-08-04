@@ -17,6 +17,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     // Default selected: transactions
     selectedIndex = TAB_TRANSACTIONS;
     
