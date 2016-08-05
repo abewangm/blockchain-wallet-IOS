@@ -299,6 +299,7 @@
 #define BC_STRING_DONT_UPGRADE NSLocalizedString(@"or Continue", nil)
 #define BC_STRING_UPGRADE_BUTTON_TITLE NSLocalizedString(@"UPGRADE YOUR WALLET", nil)
 #define BC_STRING_ASK_ME_LATER NSLocalizedString(@"Ask Me Later", nil)
+#define BC_STRING_LOGOUT_AND_FORGET_WALLET NSLocalizedString(@"Logout and forget wallet", nil)
 
 #define BC_STRING_SUPPORT_EMAIL_SUBJECT NSLocalizedString(@"iOS Support Request", nil)
 #define BC_STRING_SUPPORT_INSTRUCTIONS NSLocalizedString(@"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it.", nil)

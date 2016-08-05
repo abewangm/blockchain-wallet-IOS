@@ -37,14 +37,19 @@
     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_UPGRADE_DETAILS sender:nil];
 }
 
-- (void)dismissSelf
-{
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)cancelButtonTapped:(UIButton *)sender
 {
-    [self dismissSelf];
+    UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
+    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DLog(@"forgetting wallet");
+        [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
+            [app logout];
+            [app forgetWallet];
+            [app showWelcome];
+        }];
+    }]];
+    [self presentViewController:forgetWalletAlert animated:YES completion:nil];
 }
 
 - (NSArray *)imageNamesArray
@@ -139,8 +144,7 @@
     
     [self setupCaptionLabels];
     
-    self.upgradeWalletButton.titleLabel.text = BC_STRING_UPGRADE_BUTTON_TITLE;
-    self.askMeLaterButton.titleLabel.text = BC_STRING_ASK_ME_LATER;
+    [self.askMeLaterButton setTitle:BC_STRING_LOGOUT_AND_FORGET_WALLET forState:UIControlStateNormal];
     
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = [[self imageNamesArray] count];

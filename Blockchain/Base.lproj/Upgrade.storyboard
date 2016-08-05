@@ -48,9 +48,9 @@
                                     <outlet property="delegate" destination="5EP-fa-fRb" id="f71-T0-vVP"/>
                                 </connections>
                             </scrollView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-V7-syg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-V7-syg">
                                 <rect key="frame" x="180" y="556" width="240" height="40"/>
-                                <state key="normal" title="Ask Me Later">
+                                <state key="normal" title="Logout and Forget Wallet">
                                     <color key="titleColor" red="0.070588235294117646" green="0.45098039215686275" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

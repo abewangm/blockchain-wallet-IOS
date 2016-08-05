@@ -115,6 +115,8 @@
 - (TabViewcontroller*)tabViewController;
 - (TransactionsViewController*)transactionsViewController;
 
+- (void)showWelcome;
+- (void)logout;
 - (void)forgetWallet;
 - (void)showPasswordModal;
 
