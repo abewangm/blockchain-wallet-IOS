@@ -463,12 +463,17 @@ void (^secondPasswordSuccess)(NSString *);
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    
+    if (!self.pinEntryViewController) {
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    }
     
     if (self.topViewControllerDelegate) {
         if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
             [self.topViewControllerDelegate presentAlertController:alert];
         }
+    } else if (self.pinEntryViewController) {
+        [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
     } else {
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
@@ -476,20 +481,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)standardNotify:(NSString*)message
 {
-    [self standardNotify:message title:BC_STRING_ERROR delegate:nil];
+    [self standardNotifyAutoDismissingController:message];
 }
 
-- (void)standardNotify:(NSString*)message delegate:(id)fdelegate
-{
-    [self standardNotify:message title:BC_STRING_ERROR delegate:fdelegate];
-}
-
-- (void)standardNotify:(NSString*)message title:(NSString*)title delegate:(id)fdelegate
+- (void)standardNotify:(NSString*)message title:(NSString*)title
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message  delegate:fdelegate cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-            [alert show];
+            [self standardNotifyAutoDismissingController:message title:title];
         }
     });
 }
@@ -511,37 +510,26 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE
-                                                    message:[NSString stringWithFormat:BC_STRING_FAILED_TO_LOAD_WALLET_DETAIL]
-                                                   delegate:nil
-                                          cancelButtonTitle:BC_STRING_FORGET_WALLET
-                                          otherButtonTitles:BC_STRING_CLOSE_APP, nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE message:[NSString stringWithFormat:BC_STRING_FAILED_TO_LOAD_WALLET_DETAIL] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
+        [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self walletFailedToLoad];
+        }]];
+        [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self forgetWallet];
+            [app showWelcome];
+        }]];
+        [_window.rootViewController presentViewController:forgetWalletAlert animated:YES completion:nil];
+    }]];
     
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        // Close App
-        if (buttonIndex == 1) {
-            UIApplication *app = [UIApplication sharedApplication];
-            
-            [app performSelector:@selector(suspend)];
-        }
-        // Forget Wallet
-        else {
-            [self confirmForgetWalletWithBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                // Forget Wallet Cancelled
-                if (buttonIndex == 0) {
-                    // Open the Failed to load alert again
-                    [self walletFailedToLoad];
-                }
-                // Forget Wallet Confirmed
-                else if (buttonIndex == 1) {
-                    [self forgetWallet];
-                    [app showWelcome];
-                }
-            }];
-        }
-    };
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CLOSE_APP style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        UIApplication *app = [UIApplication sharedApplication];
+        
+        [app performSelector:@selector(suspend)];
+    }]];
     
-    [alert show];
+    [_window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)walletDidDecrypt
@@ -586,6 +574,8 @@ void (^secondPasswordSuccess)(NSString *);
     if (![app isPinSet]) {
         [app showPinModalAsView:NO];
     }
+    
+    self.wallet.isNew = NO;
     
     [_sendViewController reload];
     
@@ -1720,6 +1710,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPinModalAsView:(BOOL)asView
 {
+    BOOL walletIsNew = self.wallet.isNew;
+    
     if (self.changedPassword) {
         [self showPasswordModal];
         return;
@@ -1757,7 +1749,13 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     else {
-        [self.tabViewController presentViewController:self.pinEntryViewController animated:YES completion:nil];
+        [self.tabViewController presentViewController:self.pinEntryViewController animated:YES completion:^{
+            if (walletIsNew) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DID_CREATE_NEW_WALLET_TITLE message:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
+            }
+        }];
     }
     
     [self hideBusyView];
@@ -1979,20 +1977,18 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)logoutClicked:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_LOGOUT
-                                                    message:BC_STRING_REALLY_LOGOUT
-                                                   delegate:self
-                                          cancelButtonTitle:BC_STRING_CANCEL
-                                          otherButtonTitles:BC_STRING_OK, nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_LOGOUT message:BC_STRING_REALLY_LOGOUT preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self clearPin];
+        [self.sendViewController clearToAddressAndAmountFields];
+        [self logout];
+        [self closeSideMenu];
+        [self showPasswordModal];
+    }]];
     
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        // Actually log out
-        if (buttonIndex == 1) {
-            [self logoutAndShowPasswordModal];
-        }
-    };
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     
-    [alert show];
+    [_window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)logoutAndShowPasswordModal
@@ -2004,39 +2000,28 @@ void (^secondPasswordSuccess)(NSString *);
     [self showPasswordModal];
 }
 
-- (void)confirmForgetWalletWithBlock:(void (^)(UIAlertView *alertView, NSInteger buttonIndex))tapBlock
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_WARNING
-                                                    message:BC_STRING_FORGET_WALLET_DETAILS
-                                                   delegate:self
-                                          cancelButtonTitle:BC_STRING_CANCEL
-                                          otherButtonTitles:BC_STRING_FORGET_WALLET, nil];
-    alert.tapBlock = tapBlock;
-    
-    [alert show];
-}
-
 - (IBAction)forgetWalletClicked:(id)sender
 {
-    void (^confirmForgetWalletBlock)(UIAlertView *alertView, NSInteger buttonIndex) = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        // Forget Wallet Cancelled
-        if (buttonIndex == 0) {
-        }
-        // Forget Wallet Confirmed
-        else if (buttonIndex == 1) {
-            DLog(@"forgetting wallet");
-            [app closeModalWithTransition:kCATransitionFade];
-            [self forgetWallet];
-            [app showWelcome];
-        }
-    };
+    UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
+    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DLog(@"forgetting wallet");
+        [app closeModalWithTransition:kCATransitionFade];
+        [self forgetWallet];
+        [app showWelcome];
+    }]];
     
     if ([mainPasswordTextField isFirstResponder]) {
         [mainPasswordTextField resignFirstResponder];
-        [self performSelector:@selector(confirmForgetWalletWithBlock:) withObject:confirmForgetWalletBlock afterDelay:DELAY_KEYBOARD_DISMISSAL];
+        [self performSelector:@selector(presentViewControllerAnimated:) withObject:forgetWalletAlert afterDelay:DELAY_KEYBOARD_DISMISSAL];
     } else {
-        [self confirmForgetWalletWithBlock:confirmForgetWalletBlock];
+        [_window.rootViewController presentViewController:forgetWalletAlert animated:YES completion:nil];
     }
+}
+
+- (void)presentViewControllerAnimated:(UIViewController *)viewController
+{
+    [_window.rootViewController presentViewController:viewController animated:YES completion:nil];
 }
 
 - (IBAction)receiveCoinClicked:(UIButton *)sender
@@ -2337,40 +2322,28 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"Pin error: %@", message);
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_ERROR
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:BC_STRING_OK
-                                          otherButtonTitles:nil];
-    
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // Reset the pin entry field
         [self hideBusyView];
         [self.pinEntryViewController reset];
-    };
+    }]];
     
-    [alert show];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)askIfUserWantsToResetPIN {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_PIN_VALIDATION_ERROR
-                                                    message:BC_STRING_PIN_VALIDATION_ERROR_DETAIL
-                                                   delegate:self
-                                          cancelButtonTitle:BC_STRING_ENTER_PASSWORD
-                                          otherButtonTitles:RETRY_VALIDATION, nil];
+- (void)askIfUserWantsToResetPIN
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_PIN_VALIDATION_ERROR message:BC_STRING_PIN_VALIDATION_ERROR_DETAIL preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ENTER_PASSWORD style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self closePINModal:YES];
+        [self showPasswordModal];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:RETRY_VALIDATION style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self pinEntryController:self.pinEntryViewController shouldAcceptPin:self.lastEnteredPIN callback:self.pinViewControllerCallback];
+    }]];
     
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (buttonIndex == 0) {
-            [self closePINModal:YES];
-            
-            [self showPasswordModal];
-        } else if (buttonIndex == 1) {
-            [self pinEntryController:self.pinEntryViewController shouldAcceptPin:self.lastEnteredPIN callback:self.pinViewControllerCallback];
-        }
-    };
-    
-    [alert show];
-    
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)didFailGetPinTimeout
@@ -2579,11 +2552,12 @@ void (^secondPasswordSuccess)(NSString *);
         // Update your info to new pin code
         [self closePINModal:YES];
         
-        UIAlertView *alertViewSavedPINSuccessfully = [[UIAlertView alloc] initWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
-        alertViewSavedPINSuccessfully.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [self showHdUpgradeIfAppropriate];
-        };
-        [alertViewSavedPINSuccessfully show];
+        }]];
+        
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -2783,18 +2757,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)failedToObtainValuesFromKeychain
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE
-                                                    message:[NSString stringWithFormat:BC_STRING_ERROR_LOADING_WALLET_IDENTIFIER_FROM_KEYCHAIN]
-                                                   delegate:nil
-                                          cancelButtonTitle:BC_STRING_CLOSE_APP
-                                          otherButtonTitles:nil];
-    
-    alert.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE message:BC_STRING_ERROR_LOADING_WALLET_IDENTIFIER_FROM_KEYCHAIN preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CLOSE_APP style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // Close App
         UIApplication *app = [UIApplication sharedApplication];
         [app performSelector:@selector(suspend)];
-    };
-    [alert show];
+    }]];
+    
+    [_window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Format helpers
@@ -2901,25 +2871,21 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)alertUserAskingToUseOldKeychain
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    UIAlertView *alertViewToKeepOldWallet = [[UIAlertView alloc] initWithTitle:BC_STRING_ASK_TO_USE_OLD_WALLET_TITLE message:BC_STRING_ASK_TO_USE_OLD_WALLET_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_CREATE_NEW_WALLET otherButtonTitles: BC_STRING_LOGIN_EXISTING_WALLET, nil];
-    alertViewToKeepOldWallet.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-        switch (buttonIndex) {
-            case 0: {
-                [self forgetWalletClicked:nil];
-                return;
-            }
-            case 1: {
-                return;
-            }
-        }
-    };
-    [alertViewToKeepOldWallet show];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ASK_TO_USE_OLD_WALLET_TITLE message:BC_STRING_ASK_TO_USE_OLD_WALLET_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CREATE_NEW_WALLET style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self forgetWalletClicked:nil];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_LOGIN_EXISTING_WALLET style:UIAlertActionStyleDefault handler:nil]];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    });
 }
 
 - (void)alertUserOfCompromisedSecurity
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_UNSAFE_DEVICE_TITLE message:BC_STRING_UNSAFE_DEVICE_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    [alertView show];
+    [self standardNotifyAutoDismissingController:BC_STRING_UNSAFE_DEVICE_MESSAGE title:BC_STRING_UNSAFE_DEVICE_TITLE];
 }
 
 - (void)checkAndWarnOnJailbrokenPhones

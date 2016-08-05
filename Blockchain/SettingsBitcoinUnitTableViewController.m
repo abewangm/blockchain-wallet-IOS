@@ -18,10 +18,14 @@
 
 @implementation SettingsBitcoinUnitTableViewController
 
-- (void)alertViewForErrorLoadingSettings
+- (void)alertForErrorLoadingSettings
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    [alertView show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION_LONG * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
 }
 
 - (CurrencySymbol *)getBtcSymbolFromLatestResponse
@@ -62,7 +66,7 @@
     NSString *preferredCurrencySymbol = [temporaryArray firstObject];
     
     if (preferredCurrencySymbol == nil) {
-        [self alertViewForErrorLoadingSettings];
+        [self alertForErrorLoadingSettings];
     } else {
         self.selectedCurrencyCode = preferredCurrencySymbol;
     }

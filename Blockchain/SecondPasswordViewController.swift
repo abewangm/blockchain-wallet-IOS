@@ -14,7 +14,7 @@ protocol SecondPasswordDelegate {
     var isVerifying : Bool {get set}
 }
 
-class SecondPasswordViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
+class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var navigationBar: UINavigationBar?
     @IBOutlet weak var password: UITextField?

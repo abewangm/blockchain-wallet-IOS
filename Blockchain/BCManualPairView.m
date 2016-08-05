@@ -93,7 +93,7 @@
     NSString *password = passwordTextField.text;
     
     if ([guid length] != 36) {
-        [app standardNotify:BC_STRING_ENTER_YOUR_CHARACTER_WALLET_IDENTIFIER title:BC_STRING_INVALID_IDENTIFIER delegate:nil];
+        [app standardNotify:BC_STRING_ENTER_YOUR_CHARACTER_WALLET_IDENTIFIER title:BC_STRING_INVALID_IDENTIFIER];
         
         [walletIdentifierTextField becomeFirstResponder];
         

@@ -190,10 +190,6 @@
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
         
     app.wallet.delegate = app;
-        
-    [app standardNotify:[NSString stringWithFormat:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL]
-                      title:BC_STRING_DID_CREATE_NEW_WALLET_TITLE
-                   delegate:nil];
     
     app.wallet.isNew = YES;
     
@@ -203,7 +199,7 @@
 - (void)errorCreatingNewAccount:(NSString*)message
 {
     if ([message isEqualToString:@""]) {
-        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR];
     } else if ([message isEqualToString:ERROR_TIMEOUT_REQUEST]){
         [app standardNotify:BC_STRING_TIMED_OUT];
     } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST] || [message containsString:ERROR_TIMEOUT_ERROR] || [[message stringByReplacingOccurrencesOfString:@" " withString:@""] containsString:ERROR_STATUS_ZERO]){

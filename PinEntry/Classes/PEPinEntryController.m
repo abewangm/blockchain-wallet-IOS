@@ -165,12 +165,13 @@ static PEViewController *VerifyController()
 		}
 		case PS_ENTER2:
 			if([controller.pin intValue] != pinEntry1) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ERROR message:BC_PIN_NO_MATCH delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
-                [alertView show];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_PIN_NO_MATCH preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
 				PEViewController *c = NewController();
 				c.delegate = self;
 				self.viewControllers = [NSArray arrayWithObjects:c, [self.viewControllers objectAtIndex:0], nil];
 				[self popViewControllerAnimated:NO];
+                [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
 			} else {
 				[self.pinDelegate pinEntryController:self changedPin:[controller.pin intValue]];
 			}
