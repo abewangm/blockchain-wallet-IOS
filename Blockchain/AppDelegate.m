@@ -537,7 +537,7 @@ void (^secondPasswordSuccess)(NSString *);
     DLog(@"walletDidDecrypt");
     
     if ([self isPinSet]) {
-        [self showHdUpgradeIfAppropriate];
+        [self forceHDUpgradeForLegacyWallets];
     }
     
     if (showSendCoins) {
@@ -1798,13 +1798,9 @@ void (^secondPasswordSuccess)(NSString *);
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
-- (void)showHdUpgradeIfAppropriate
+- (void)forceHDUpgradeForLegacyWallets
 {
-    NSString *bundleShortVersionString = [[NSBundle mainBundle] infoDictionary][INFO_PLIST_KEY_CFBUNDLE_SHORT_VERSION_STRING];
-    
-    if (![app.wallet didUpgradeToHd] && ![[[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING] isEqualToString:bundleShortVersionString] && !self.pinEntryViewController && !_settingsNavigationController) {
-        [[NSUserDefaults standardUserDefaults] setValue:bundleShortVersionString forKey:USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    if (![app.wallet didUpgradeToHd]) {
         [self showHdUpgrade];
     }
 }
@@ -2554,7 +2550,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self showHdUpgradeIfAppropriate];
+            [self forceHDUpgradeForLegacyWallets];
         }]];
         
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
