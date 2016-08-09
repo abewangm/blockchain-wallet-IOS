@@ -668,10 +668,6 @@ void (^secondPasswordSuccess)(NSString *);
     }];
     
     [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
-    
-    if (self.tabViewController.activeViewController == _receiveViewController && modalView) {
-        [_receiveViewController showKeyboard];
-    }
 }
 
 - (void)showPinModalIfBackgroundedDuringLoad
