@@ -453,7 +453,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     // Dismiss sendviewController keyboard
     if (_sendViewController) {
-        [_sendViewController hideKeyboard];
+        [_sendViewController hideKeyboardForced];
         
         // Make sure the the send payment button on send screen is enabled (bug when second password requested and app is backgrounded)
         [_sendViewController enablePaymentButtons];
@@ -461,7 +461,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     // Dismiss receiveCoinsViewController keyboard
     if (_receiveViewController) {
-        [_receiveViewController hideKeyboard];
+        [_receiveViewController hideKeyboardForced];
     }
 }
 

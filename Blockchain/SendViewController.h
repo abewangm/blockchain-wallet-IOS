@@ -133,6 +133,7 @@
 - (void)reloadSymbols;
 
 - (void)hideKeyboard;
+- (void)hideKeyboardForced;
 
 - (void)enablePaymentButtons;
 
