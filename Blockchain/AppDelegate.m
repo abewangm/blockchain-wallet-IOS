@@ -449,6 +449,22 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (void)hideSendAndReceiveKeyboards
+{
+    // Dismiss sendviewController keyboard
+    if (_sendViewController) {
+        [_sendViewController hideKeyboard];
+        
+        // Make sure the the send payment button on send screen is enabled (bug when second password requested and app is backgrounded)
+        [_sendViewController enablePaymentButtons];
+    }
+    
+    // Dismiss receiveCoinsViewController keyboard
+    if (_receiveViewController) {
+        [_receiveViewController hideKeyboard];
+    }
+}
+
 #pragma mark - AlertView Helpers
 
 - (void)standardNotifyAutoDismissingController:(NSString *)message
@@ -683,18 +699,7 @@ void (^secondPasswordSuccess)(NSString *);
         [self setupCurtainView];
     }
     
-    // Dismiss sendviewController keyboard
-    if (_sendViewController) {
-        [_sendViewController hideKeyboard];
-        
-        // Make sure the the send payment button on send screen is enabled (bug when second password requested and app is backgrounded)
-        [_sendViewController enablePaymentButtons];
-    }
-    
-    // Dismiss receiveCoinsViewController keyboard
-    if (_receiveViewController) {
-        [_receiveViewController hideKeyboard];
-    }
+    [self hideSendAndReceiveKeyboards];
     
     if (createWalletView) {
         [createWalletView hideKeyboard];
@@ -735,6 +740,8 @@ void (^secondPasswordSuccess)(NSString *);
     [self.loginTimer invalidate];
     
     [_window.rootViewController dismissViewControllerAnimated:NO completion:nil];
+    
+    [self hideSendAndReceiveKeyboards];
     
     // Close all modals
     [app closeAllModals];
