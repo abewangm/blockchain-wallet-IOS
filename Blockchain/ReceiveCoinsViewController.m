@@ -624,10 +624,6 @@ NSString *detailLabel;
     [fiatAmountField resignFirstResponder];
     
     [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
-    
-    activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *error) {
-        [self showKeyboard];
-    };
 }
 
 - (void)clearAmounts
