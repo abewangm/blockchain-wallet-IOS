@@ -590,6 +590,11 @@ NSString *detailLabel;
 
 - (void)selectDestination
 {
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access select to screen when not initialized!");
+        return;
+    }
+    
     [self hideKeyboard];
     
     BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:YES];
@@ -600,6 +605,11 @@ NSString *detailLabel;
 
 - (void)share
 {
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access share button when not initialized!");
+        return;
+    }
+    
     uint64_t amount = [self getInputAmountInSatoshi];
     NSString *amountString = amount > 0 ? [app formatMoney:[self getInputAmountInSatoshi] localCurrency:NO] : [BC_STRING_AMOUNT lowercaseString];
     NSString *message = [self formatPaymentRequestWithAmount:amountString url:@""];
@@ -648,6 +658,11 @@ NSString *detailLabel;
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access Receive textField when not initialized!");
+        return NO;
+    }
+    
     if (app.slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
         
         [UIView animateWithDuration:0.3 animations:^{

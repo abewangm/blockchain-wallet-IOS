@@ -2047,6 +2047,11 @@ void (^secondPasswordSuccess)(NSString *);
 
 -(IBAction)QRCodebuttonClicked:(id)sender
 {
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access QR scanner when not initialized!");
+        return;
+    }
+    
     if (!_sendViewController) {
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
