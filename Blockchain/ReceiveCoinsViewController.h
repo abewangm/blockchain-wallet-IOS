@@ -65,6 +65,8 @@
 - (void)clearAmounts;
 
 - (void)hideKeyboard;
+- (void)hideKeyboardForced;
+
 - (void)showKeyboard;
 
 @end

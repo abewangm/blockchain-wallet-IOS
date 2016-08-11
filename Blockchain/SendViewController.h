@@ -134,6 +134,7 @@
 - (void)resetFromAddress;
 
 - (void)hideKeyboard;
+- (void)hideKeyboardForced;
 
 - (void)enablePaymentButtons;
 

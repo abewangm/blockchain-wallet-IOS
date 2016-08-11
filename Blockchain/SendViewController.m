@@ -978,6 +978,13 @@ BOOL displayingLocalSymbolSend;
     return address;
 }
 
+- (void)hideKeyboardForced
+{
+    // When backgrounding the app quickly, the input accessory view can remain visible without a first responder, so force the keyboard to appear before dismissing it
+    [fiatAmountField becomeFirstResponder];
+    [self hideKeyboard];
+}
+
 - (void)hideKeyboard
 {
     [btcAmountField resignFirstResponder];
