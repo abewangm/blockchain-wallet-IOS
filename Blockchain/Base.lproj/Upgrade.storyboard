@@ -179,7 +179,7 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebu-XV-0mt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebu-XV-0mt">
                                 <rect key="frame" x="180" y="552" width="240" height="40"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.070588235289999995" green="0.45098039220000002" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -237,6 +237,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="Ebu-XV-0mt" id="ys5-aX-5La"/>
                         <outlet property="featuresTextView" destination="D5e-zI-7dK" id="7vu-P2-ABC"/>
                         <outlet property="upgradeTitleLabel" destination="4cR-kX-YUY" id="Ofm-Ip-4qP"/>
                         <outlet property="upgradeWalletButton" destination="Gk5-cB-fZg" id="QOq-z6-ME6"/>
