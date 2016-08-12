@@ -2189,7 +2189,14 @@ void (^secondPasswordSuccess)(NSString *);
                               }
                               
                               if (success) {
+                                
                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                      // Fade out the LaunchImage
+                                      [UIView animateWithDuration:0.25 animations:^{
+                                          curtainImageView.alpha = 0;
+                                      } completion:^(BOOL finished) {
+                                          [curtainImageView removeFromSuperview];
+                                      }];
                                       [self showVerifyingBusyViewWithTimer:30.0];
                                   });
                                   NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
@@ -2500,9 +2507,7 @@ void (^secondPasswordSuccess)(NSString *);
             [self failedToObtainValuesFromKeychain];
         }
         
-        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-            [self closePINModal:YES];
-        }
+        [self closePINModal:YES];
         
         pinSuccess = TRUE;
 
