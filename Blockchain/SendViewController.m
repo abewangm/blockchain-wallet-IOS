@@ -1258,6 +1258,11 @@ BOOL displayingLocalSymbolSend;
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access Send textField when not initialized!");
+        return NO;
+    }
+    
     if (textField == selectAddressTextField) {
         // If we only have one account and no legacy addresses -> can't change from address
         if (!([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
@@ -1654,6 +1659,11 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)selectFromAddressClicked:(id)sender
 {
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access select from screen when not initialized!");
+        return;
+    }
+    
     BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:NO];
     addressSelectionView.delegate = self;
     
@@ -1662,6 +1672,11 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)addressBookClicked:(id)sender
 {
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access select to screen when not initialized!");
+        return;
+    }
+    
     BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO allSelectable:YES];
     addressSelectionView.delegate = self;
     
