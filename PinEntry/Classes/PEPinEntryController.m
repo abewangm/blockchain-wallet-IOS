@@ -133,6 +133,65 @@ static PEViewController *VerifyController()
     [pinController resetPin];
 }
 
+- (void)setupQRCode
+{
+#ifdef ENABLE_SWIPE_TO_RECEIVE
+    if (self.verifyOnly) {
+        
+        [pinController.scrollView setUserInteractionEnabled:YES];
+        
+        NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
+        NSNumber *nextAddressUsed = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+        
+        if (nextAddress) {
+            
+            pinController.swipeLabel.alpha = 1;
+            pinController.swipeLabel.hidden = NO;
+            
+            [pinController.scrollView setContentSize:CGSizeMake(pinController.scrollView.frame.size.width *2, pinController.scrollView.frame.size.height)];
+            [pinController.scrollView setPagingEnabled:YES];
+            
+            [app.wallet subscribeToAddress:nextAddress];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:.5 animations:^{
+                    pinController.swipeLabel.alpha = 0;
+                }];
+            });
+            
+            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
+            [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
+            [self.addressLabel setTextColor:[UIColor whiteColor]];
+            [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
+            
+            if (![nextAddressUsed boolValue]) {
+                QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
+                
+                self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
+                self.addressLabel.text = nextAddress;
+                
+                [pinController.scrollView addSubview:self.qrCodeImageView];
+            } else {
+                self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
+            }
+            
+            [pinController.scrollView addSubview:self.addressLabel];
+        } else {
+            pinController.swipeLabel.hidden = YES;
+        }
+    }
+#else
+    pinController.swipeLabel.hidden = YES;
+#endif
+}
+
+- (void)paymentReceived
+{
+    [self.qrCodeImageView removeFromSuperview];
+    self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
+}
+
 - (void)pinEntryControllerDidEnteredPin:(PEViewController *)controller
 {
 	switch (pinStage) {
@@ -209,55 +268,6 @@ static PEViewController *VerifyController()
         [self.view addSubview:self.debugButton];
         [self.debugButton addGestureRecognizer:self.longPressGesture];
     }
-#endif
-#ifdef ENABLE_SWIPE_TO_RECEIVE
-    if (self.verifyOnly) {
-        
-        [pinController.scrollView setUserInteractionEnabled:YES];
-        
-        NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
-        NSNumber *nextAddressUsed = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
-        
-        if (nextAddress) {
-            
-            pinController.swipeLabel.alpha = 1;
-            pinController.swipeLabel.hidden = NO;
-            
-            [pinController.scrollView setContentSize:CGSizeMake(pinController.scrollView.frame.size.width *2, pinController.scrollView.frame.size.height)];
-            [pinController.scrollView setPagingEnabled:YES];
-            
-            [app.wallet subscribeToAddress:nextAddress];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:.5 animations:^{
-                    pinController.swipeLabel.alpha = 0;
-                }];
-            });
-            
-            UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
-            [descLabel setTextAlignment:NSTextAlignmentCenter];
-            [descLabel setTextColor:[UIColor whiteColor]];
-            [descLabel setFont:[UIFont systemFontOfSize:12]];
-            
-            if (![nextAddressUsed boolValue]) {
-                QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
-                
-                UIImageView *qr = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
-                qr.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
-                descLabel.text = nextAddress;
-                
-                [pinController.scrollView addSubview:qr];
-            } else {
-                descLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
-            }
-            
-            [pinController.scrollView addSubview:descLabel];
-        } else {
-            pinController.swipeLabel.hidden = YES;
-        }
-    }
-#else
-    pinController.swipeLabel.hidden = YES;
 #endif
 }
 

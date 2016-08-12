@@ -695,7 +695,7 @@
     if (self.addressToSubscribe) {
         NSDictionary *message = [string getJSONObject];
         NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
-        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:DEFAULT_TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.addressToSubscribe]];
+        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.addressToSubscribe]];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         
         NSURLSession *session = [NSURLSession sharedSession];
@@ -711,7 +711,9 @@
             uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
             if (amountReceived > 0) {
                 if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
-                    [delegate paymentReceivedOnPINScreen:[app formatMoney:amountReceived localCurrency:NO]];
+                    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                        [delegate paymentReceivedOnPINScreen:[app formatMoney:amountReceived localCurrency:NO]];
+                    }
                 } else {
                     DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
                 }

@@ -678,9 +678,45 @@ void (^secondPasswordSuccess)(NSString *);
         [curtainImageView removeFromSuperview];
     }];
     
+#ifdef ENABLE_SWIPE_TO_RECEIVE
     if (self.pinEntryViewController.verifyOnly) {
-        // [self.pinEntryViewController didBecom];
+
+        NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
+        if (nextAddress) {
+            NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, nextAddress]];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+            
+            NSURLSession *session = [NSURLSession sharedSession];
+            NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                
+                if (error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        DLog(@"Error checking for receive address %@: %@", nextAddress, error);
+                    });
+                    return;
+                }
+                
+                NSDictionary *addressInfo = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingAllowFragments error: &error];
+                DLog("%@", addressInfo);
+                NSArray *transactions = addressInfo[@"txs"];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (transactions.count > 0) {
+                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+                        [self.pinEntryViewController paymentReceived];
+                    } else {
+                        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+                        [self.pinEntryViewController setupQRCode];
+                    }
+                });
+                
+            }];
+            
+            [task resume];
+            [session finishTasksAndInvalidate];
+        }
     }
+#endif
     
     [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
 }
@@ -2260,6 +2296,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        [self.pinEntryViewController paymentReceived];
     });
 }
 

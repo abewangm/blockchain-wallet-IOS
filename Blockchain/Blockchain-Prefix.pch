@@ -22,7 +22,7 @@
 
 // #define ENABLE_TRANSACTION_FETCHING 1
 
-//#define ENABLE_SWIPE_TO_RECEIVE 1
+#define ENABLE_SWIPE_TO_RECEIVE 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
@@ -198,7 +198,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_WEBSOCKET_SERVER @"wss://blockchain.info/inv"
 #define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/api/merchant"
 #define DEFAULT_API_URL @"https://api.blockchain.info"
-#define DEFAULT_TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/q/txresult/%@/%@"
+
+#define TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/q/txresult/%@/%@"
+#define ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/address/%@?format=json"
 
 #define DYNAMIC_FEE_SERVICE_URL @"https://api.staging.blockchain.co.uk/fees"
 #define INFORMATION_RECEIVE_URL @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
