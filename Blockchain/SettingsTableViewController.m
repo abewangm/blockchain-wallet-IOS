@@ -45,10 +45,10 @@ const int securityWalletRecoveryPhrase = 4;
 
 const int PINSection = 6;
 const int PINChangePIN = 0;
-#if defined(TOUCH_ID_ENABLED) && defined(ENABLE_SWIPE_TO_RECEIVE)
+#if defined(ENABLE_TOUCH_ID) && defined(ENABLE_SWIPE_TO_RECEIVE)
 const int PINTouchID = 1;
 const int PINSwipeToReceive = 2;
-#elif TOUCH_ID_ENABLED
+#elif ENABLE_TOUCH_ID
 const int PINTouchID = 1;
 const int PINSwipeToReceive = -1;
 #elif ENABLE_SWIPE_TO_RECEIVE
