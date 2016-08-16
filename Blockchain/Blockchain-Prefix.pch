@@ -17,12 +17,11 @@
 // #define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
-
 #define ENABLE_TRANSACTION_FILTERING 1
-
 // #define ENABLE_TRANSACTION_FETCHING 1
-
 #define ENABLE_SWIPE_TO_RECEIVE 1
+#define TOUCH_ID_ENABLED 1
+
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
@@ -283,6 +282,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
 #define USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING @"bundleVersionString"
 #define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
+#define USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED @"swipeToReceive"
 #define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"
 #define USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT @"hideTransferAllFundsAlert"
 #define USER_DEFAULTS_KEY_SIMULATE_SURGE @"simulateSurge"
@@ -295,6 +295,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 
 #define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
+#define REUSE_IDENTIFIER_SWIPE_TO_RECEIVE @"swipeToReceive"
 
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"
@@ -439,5 +440,3 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_TIMEOUT_ERROR @"TimeoutError"
 #define ERROR_INVALID_PASSPHRASE @"invalid passphrase"
 #define ERROR_STATUS_ZERO @"status:0"
-
-#define TOUCH_ID_ENABLED 1

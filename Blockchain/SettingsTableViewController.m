@@ -45,9 +45,14 @@ const int securityWalletRecoveryPhrase = 4;
 
 const int PINSection = 6;
 const int PINChangePIN = 0;
-#ifdef TOUCH_ID_ENABLED
+#if defined(TOUCH_ID_ENABLED) && defined(ENABLE_SWIPE_TO_RECEIVE)
 const int PINTouchID = 1;
-#else
+const int PINSwipeToReceive = 2;
+#elif TOUCH_ID_ENABLED
+const int PINTouchID = 1;
+const int PINSwipeToReceive = -1;
+#elif ENABLE_SWIPE_TO_RECEIVE
+const int PINSwipeToReceive = 1;
 const int PINTouchID = -1;
 #endif
 
@@ -432,6 +437,14 @@ const int aboutPrivacyPolicy = 1;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_ERROR object:nil];
 }
 
+#pragma mark - Change Swipe to Receive
+
+- (void)switchSwipeToReceiveTapped
+{
+    BOOL swipeToReceiveEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
+    [[NSUserDefaults standardUserDefaults] setBool:!swipeToReceiveEnabled forKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
+}
+
 #pragma mark - Change Touch ID
 
 - (void)switchTouchIDTapped
@@ -456,7 +469,7 @@ const int aboutPrivacyPolicy = 1;
     BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
     
     if (!(touchIDEnabled == YES)) {
-        UIAlertController *alertForTogglingTouchID = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN message:BC_STRING_TOUCH_ID_WARNING preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertForTogglingTouchID = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_PIN_USE_TOUCH_ID_AS_PIN message:BC_STRING_TOUCH_ID_WARNING preferredStyle:UIAlertControllerStyleAlert];
         [alertForTogglingTouchID addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:PINTouchID inSection:PINSection];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -1171,7 +1184,15 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionNotificationsFooter: return 2;
         case preferencesSectionEnd: return 2;
         case securitySection: return [app.wallet didUpgradeToHd] ? 5 : 4;
-        case PINSection: return PINTouchID < 0 ? 1 : 2;
+        case PINSection: {
+            if (PINTouchID > 0 && PINSwipeToReceive > 0) {
+                return 3;
+            } else if (PINTouchID > 0 || PINSwipeToReceive > 0) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
         case aboutSection: return 2;
         default: return 0;
     }
@@ -1382,12 +1403,27 @@ const int aboutPrivacyPolicy = 1;
                 cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.font = [SettingsTableViewController fontForCell];
-                cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
+                cell.textLabel.text = BC_STRING_SETTINGS_PIN_USE_TOUCH_ID_AS_PIN;
                 UISwitch *switchForTouchID = [[UISwitch alloc] init];
                 BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
                 switchForTouchID.on = touchIDEnabled;
                 [switchForTouchID addTarget:self action:@selector(switchTouchIDTapped) forControlEvents:UIControlEventTouchUpInside];
                 cell.accessoryView = switchForTouchID;
+                return cell;
+            }
+            if (indexPath.row == PINSwipeToReceive) {
+                cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_SWIPE_TO_RECEIVE];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_SWIPE_TO_RECEIVE];
+                cell.textLabel.adjustsFontSizeToFitWidth = YES;
+                cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.font = [SettingsTableViewController fontForCell];
+                cell.textLabel.text = BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE;
+                UISwitch *switchForSwipeToReceive = [[UISwitch alloc] init];
+                BOOL swipeToReceiveEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
+                switchForSwipeToReceive.on = swipeToReceiveEnabled;
+                [switchForSwipeToReceive addTarget:self action:@selector(switchSwipeToReceiveTapped) forControlEvents:UIControlEventTouchUpInside];
+                cell.accessoryView = switchForSwipeToReceive;
                 return cell;
             }
         }

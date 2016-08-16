@@ -136,7 +136,7 @@ static PEViewController *VerifyController()
 - (void)setupQRCode
 {
 #ifdef ENABLE_SWIPE_TO_RECEIVE
-    if (self.verifyOnly) {
+    if (self.verifyOnly && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED]) {
         
         [pinController.scrollView setUserInteractionEnabled:YES];
         

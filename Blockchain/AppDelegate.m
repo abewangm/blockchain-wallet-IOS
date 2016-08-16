@@ -697,7 +697,6 @@ void (^secondPasswordSuccess)(NSString *);
                 }
                 
                 NSDictionary *addressInfo = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingAllowFragments error: &error];
-                DLog("%@", addressInfo);
                 NSArray *transactions = addressInfo[@"txs"];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
