@@ -307,7 +307,7 @@ NSString *detailLabel;
     
     app.btcFormatter.usesGroupingSeparator = NO;
     NSLocale *currentLocale = app.btcFormatter.locale;
-    app.btcFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+    app.btcFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
     NSString *amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:amount]];
     app.btcFormatter.locale = currentLocale;
     app.btcFormatter.usesGroupingSeparator = YES;

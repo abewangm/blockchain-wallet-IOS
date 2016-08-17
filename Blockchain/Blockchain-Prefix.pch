@@ -104,6 +104,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define LOCALE_IDENTIFIER_EN_US @"en_US"
+
 #define INFO_PLIST_KEY_CFBUNDLE_SHORT_VERSION_STRING @"CFBundleShortVersionString"
 
 #define PREFIX_BITCOIN_URI @"bitcoin:"
