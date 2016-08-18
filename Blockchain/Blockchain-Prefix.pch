@@ -105,6 +105,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #pragma mark - Strings
 
 #define LOCALE_IDENTIFIER_EN_US @"en_US"
+#define LOCALE_IDENTIFIER_AR @"ar"
 
 #define INFO_PLIST_KEY_CFBUNDLE_SHORT_VERSION_STRING @"CFBundleShortVersionString"
 
@@ -408,6 +409,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_PRESENTER_SETTINGS_ABOUT 2
 
 #define APP_STORE_REVIEW_PROMPT_TIME 60*60*24*7 // Seconds in one week
+
+#define DICTIONARY_EASTERN_ARABIC_NUMERAL @{@"\u0660":@"0", @"\u0661":@"1", @"\u0662":@"2", @"\u0663":@"3", @"\u0664":@"4", @"\u0665":@"5", @"\u0666":@"6", @"\u0667":@"7", @"\u0668":@"8", @"\u0669":@"9", @"\u066b":@"."}
+#define REGEX_EASTERN_ARABIC_NUMERALS @"[\u0660-\u066b]"
 
 #pragma mark - Runtime modes
 

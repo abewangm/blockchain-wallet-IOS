@@ -884,9 +884,48 @@
     }
 }
 
-- (uint64_t)parseBitcoinValue:(NSString*)input
+- (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField
 {
-    return [[[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [input escapeStringForJS]]] toNumber] longLongValue];
+    return [self parseBitcoinValueFromString:textField.text primaryLanguage:textField.textInputMode.primaryLanguage];
+}
+
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString primaryLanguage:(NSString *)language
+{
+    NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+    
+    __block NSString *requestedAmountString;
+    if ([locale.localeIdentifier isEqualToString:LOCALE_IDENTIFIER_AR]) {
+        // Special case for Easter Arabic numerals
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        numberFormatter.decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+        [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US]];
+        
+        NSError *error;
+        NSRange range = NSMakeRange(0, [inputString length]);
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_EASTERN_ARABIC_NUMERALS options:NSRegularExpressionCaseInsensitive error:&error];
+        
+        NSDictionary *easternArabicNumeralDictionary = DICTIONARY_EASTERN_ARABIC_NUMERAL;
+        
+        NSMutableString *replaced = [inputString mutableCopy];
+        __block NSInteger offset = 0;
+        [regex enumerateMatchesInString:inputString options:0 range:range usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
+            NSRange range1 = [result rangeAtIndex:0]; // range of the matched subgroup
+            NSString *key = [inputString substringWithRange:range1];
+            NSString *value = easternArabicNumeralDictionary[key];
+            if (value != nil) {
+                NSRange range = [result range]; // range of the matched pattern
+                // Update location according to previous modifications:
+                range.location += offset;
+                [replaced replaceCharactersInRange:range withString:value];
+                offset += value.length - range.length; // Update offset
+            }
+            requestedAmountString = [NSString stringWithString:replaced];
+        }];
+    } else {
+        requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    }
+    DLog(@"%@", requestedAmountString);
+    return [[[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [requestedAmountString escapeStringForJS]]] toNumber] longLongValue];
 }
 
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
