@@ -1605,6 +1605,13 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.loadedAllTransactions = [loadedAll boolValue];
 }
 
+- (void)didReceivePaymentNotice:(NSString *)notice
+{
+    if (_tabViewController.selectedIndex == TAB_SEND && busyView.hidden) {
+        [app standardNotifyAutoDismissingController:notice title:BC_STRING_INFORMATION];
+    }
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses

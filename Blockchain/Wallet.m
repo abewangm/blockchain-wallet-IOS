@@ -396,8 +396,8 @@
         [weakSelf update_transfer_all_amount:amount fee:fee addressesUsed:addressesUsed];
     };
     
-    self.context[@"loading_start_transfer_all"] = ^(NSNumber *index) {
-        [weakSelf loading_start_transfer_all:index];
+    self.context[@"loading_start_transfer_all"] = ^(NSNumber *index, NSNumber *totalAddreses) {
+        [weakSelf loading_start_transfer_all:index totalAddresses:totalAddreses];
     };
     
     self.context[@"on_error_transfer_all_secondPassword"] = ^(NSString *error, NSString *secondPassword) {
@@ -1657,9 +1657,9 @@
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
 }
 
-- (void)loading_start_transfer_all:(NSNumber *)addressIndex
+- (void)loading_start_transfer_all:(NSNumber *)addressIndex totalAddresses:(NSNumber *)totalAddresses
 {
-    [app showBusyViewWithLoadingText:BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER];
+    [app showBusyViewWithLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, addressIndex, totalAddresses]];
 }
 
 - (void)loading_stop
@@ -2318,8 +2318,10 @@
 
 - (void)on_payment_notice:(NSString *)notice
 {
-    if (app.tabViewController.selectedIndex == TAB_SEND) {
-        [app standardNotifyAutoDismissingController:notice title:BC_STRING_INFORMATION];
+    if ([delegate respondsToSelector:@selector(didReceivePaymentNotice:)]) {
+        [delegate didReceivePaymentNotice:notice];
+    } else {
+        DLog(@"Delegate of class %@ does not respond to selector didReceivePaymentNotice!", [delegate class]);
     }
 }
 
