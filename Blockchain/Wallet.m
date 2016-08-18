@@ -924,7 +924,7 @@
     } else {
         requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     }
-    DLog(@"%@", requestedAmountString);
+
     return [[[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [requestedAmountString escapeStringForJS]]] toNumber] longLongValue];
 }
 

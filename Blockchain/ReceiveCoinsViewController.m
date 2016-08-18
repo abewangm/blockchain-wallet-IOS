@@ -704,7 +704,8 @@ NSString *detailLabel;
     if (textField == btcAmountField || textField == fiatAmountField) {
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
-        NSArray  *commas = [newString componentsSeparatedByString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+        NSLocale *locale = textField.textInputMode.primaryLanguage ? [NSLocale localeWithLocaleIdentifier:textField.textInputMode.primaryLanguage] : [NSLocale currentLocale];
+        NSArray  *commas = [newString componentsSeparatedByString:[locale objectForKey:NSLocaleDecimalSeparator]];
         
         // Only one comma or point in input field allowed
         if ([points count] > 2 || [commas count] > 2)
