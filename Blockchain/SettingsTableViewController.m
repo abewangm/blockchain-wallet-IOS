@@ -283,7 +283,7 @@ const int aboutPrivacyPolicy = 1;
         
         if (![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString]) {
             // Current keypad will not support this character set; return string with known decimal separators "," and "."
-            feePerKbFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+            feePerKbFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
             
             if ([decimalSeparator isEqualToString:@"."]) {
                 return [feePerKbFormatter stringFromNumber:amountNumber];;

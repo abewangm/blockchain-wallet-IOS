@@ -728,7 +728,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
         var totalAmount = payments.filter(function(p) {return p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { totalAddressesUsed.push(p.from[0]); return p.amounts[0]; }).reduce(Helpers.add, 0);
         var totalFee = payments.filter(function(p) {return p.finalFee > 0 && p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { return p.finalFee; }).reduce(Helpers.add, 0);
         
-    update_transfer_all_amount_fee_addressesUsed(totalAmount, totalFee, totalAddressesUsed);
+        update_transfer_all_amount_fee_addressesUsed(totalAmount, totalFee, totalAddressesUsed);
     }
     
     var createPayment = function(address) {
@@ -739,22 +739,29 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
                            })
     }
     
-    var queue = Promise.resolve();
-    addresses.forEach(function (address, index) {
-                      queue = queue.then(function (p) {
-                                         if (p) {
-                                         payments.push(p);
-                                         loading_start_transfer_all(index)
-                                         };
-                                         return createPayment(address);
-                                         });
-                      });
+    MyWalletPhone.preparePaymentsForTransferAll(addresses, createPayment, updateInfo, payments, addresses.length);
+}
+
+MyWalletPhone.preparePaymentsForTransferAll = function(addresses, paymentSetup, updateInfo, payments, totalCount) {
     
-    queue.then(function(last) {
-               payments.push(last);
-               loading_start_transfer_all(addresses.length)
-               updateInfo(payments);
-               });
+    if (addresses.length > 0) {
+        
+        loading_start_transfer_all(totalCount - addresses.length + 1, totalCount);
+        
+        var newPayment = paymentSetup(addresses[0]);
+        newPayment.then(function (p) {
+            setTimeout(function() {
+                if (p) {
+                    payments.push(p);
+                    addresses.shift();
+                    MyWalletPhone.preparePaymentsForTransferAll(addresses, paymentSetup, updateInfo, payments, totalCount);
+                }
+                return p;
+            }, 0)
+        }).catch(function(e){console.log(e);});
+    } else {
+        updateInfo(payments);
+    }
 }
 
 MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, address, secondPassword) {
