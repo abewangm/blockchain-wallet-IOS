@@ -15,8 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [app application:application didFinishLaunchingWithOptions:launchOptions];
-    return YES;
+    return [app application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -41,8 +40,7 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    [app application:application handleOpenURL:url];
-    return YES;
+    return [app application:application handleOpenURL:url];
 }
 
 @end
