@@ -9,7 +9,7 @@
 #import "SettingsNavigationController.h"
 #import "SettingsTableViewController.h"
 #import "SecurityCenterViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @interface SettingsNavigationController ()
 @end

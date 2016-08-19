@@ -9,7 +9,7 @@
 #import "SecurityCenterViewController.h"
 #import "SettingsTableViewController.h"
 #import "SettingsTwoStepViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @interface SecurityCenterViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *securityLevelImageView;

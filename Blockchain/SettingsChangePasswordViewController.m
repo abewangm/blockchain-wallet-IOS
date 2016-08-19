@@ -6,7 +6,7 @@
 //  Copyright © 2015 Qkos Services Ltd. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "BCFadeView.h"
 #import "SettingsChangePasswordViewController.h"
 

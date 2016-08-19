@@ -8,7 +8,7 @@
 
 #import "BCCreateWalletView.h"
 
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation BCCreateWalletView
 

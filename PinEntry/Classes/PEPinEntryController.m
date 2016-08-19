@@ -24,7 +24,7 @@
 
 #import "PEPinEntryController.h"
 #import "QRCodeGenerator.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 #define PS_VERIFY	0
 #define PS_ENTER1	1

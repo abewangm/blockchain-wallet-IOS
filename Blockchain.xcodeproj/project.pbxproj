@@ -28,6 +28,7 @@
 		235BD5661C58216000969B31 /* BCModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235BD5651C58216000969B31 /* BCModalViewController.m */; };
 		236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */; };
 		236F32791C15F97D00BC89F3 /* UpgradeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F32781C15F97D00BC89F3 /* UpgradeDetailsViewController.m */; };
+		237451C91D624C1C00CF7049 /* RootService.m in Sources */ = {isa = PBXBuildFile; fileRef = 237451C81D624C1C00CF7049 /* RootService.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
@@ -434,6 +435,8 @@
 		236F32781C15F97D00BC89F3 /* UpgradeDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeDetailsViewController.m; sourceTree = "<group>"; };
 		2371DEAC1C6A8898000DC8AF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
 		2371DEAF1C6A8AF3000DC8AF /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
+		237451C71D624C1C00CF7049 /* RootService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootService.h; sourceTree = "<group>"; };
+		237451C81D624C1C00CF7049 /* RootService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootService.m; sourceTree = "<group>"; };
 		2374BFA41B750D6E00A53FBE /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Backup.strings; sourceTree = "<group>"; };
 		2374BFA61B750DE400A53FBE /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Backup.strings; sourceTree = "<group>"; };
 		2374BFA81B750E1900A53FBE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Backup.strings; sourceTree = "<group>"; };
@@ -1140,6 +1143,8 @@
 		9F765F3A14BC7C3100048EFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				237451C71D624C1C00CF7049 /* RootService.h */,
+				237451C81D624C1C00CF7049 /* RootService.m */,
 				23D423971D0878BE000054AA /* ModuleXMLHttpRequest.h */,
 				23D423981D0878BE000054AA /* ModuleXMLHttpRequest.m */,
 				230FD2DA1C5BFB4300336683 /* QRCodeGenerator.h */,
@@ -1723,6 +1728,7 @@
 				2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */,
 				23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */,
 				9FCA4D1B151494BF00ECDFBE /* SendViewController.m in Sources */,
+				237451C91D624C1C00CF7049 /* RootService.m in Sources */,
 				67D95A261B3DD86B0012EBB1 /* BCTextField.swift in Sources */,
 				23D3A6291C0F699900DEF737 /* SecurityCenterViewController.m in Sources */,
 				A2599BA71B0B726900C2EA81 /* BackupVerifyViewController.swift in Sources */,

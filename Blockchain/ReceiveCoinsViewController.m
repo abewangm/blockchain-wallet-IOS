@@ -7,7 +7,7 @@
 //
 
 #import "ReceiveCoinsViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ReceiveTableCell.h"
 #import "Address.h"
 #import "PrivateKeyReader.h"

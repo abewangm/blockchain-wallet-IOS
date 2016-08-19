@@ -8,7 +8,7 @@
 
 #import "TransactionTableCell.h"
 #import "Transaction.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "TransactionsViewController.h"
 
 @implementation TransactionTableCell

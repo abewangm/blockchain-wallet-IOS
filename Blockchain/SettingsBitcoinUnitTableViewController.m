@@ -7,7 +7,7 @@
 //
 
 #import "SettingsBitcoinUnitTableViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @interface SettingsBitcoinUnitTableViewController ()
 @property (nonatomic, copy) NSArray *keysArray;

@@ -8,7 +8,7 @@
 
 #import "AccountsAndAddressesViewController.h"
 #import "AccountsAndAddressesDetailViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ReceiveTableCell.h"
 #import "BCCreateAccountView.h"
 #import "BCModalViewController.h"

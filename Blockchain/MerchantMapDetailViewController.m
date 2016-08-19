@@ -8,7 +8,7 @@
 
 #import "MerchantMapDetailViewController.h"
 
-#import "AppDelegate.h"
+#import "RootService.h"
 
 #import "Merchant.h"
 

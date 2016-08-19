@@ -8,7 +8,7 @@
 
 #import "SendViewController.h"
 #import "Wallet.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "BCAddressSelectionView.h"
 #import "TabViewController.h"
 #import "UncaughtExceptionHandler.h"

@@ -7,7 +7,7 @@
 //
 
 #import "BCModalView.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "LocalizationConstants.h"
 
 @implementation BCModalView

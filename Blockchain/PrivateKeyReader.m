@@ -7,7 +7,7 @@
 //
 
 #import "PrivateKeyReader.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation PrivateKeyReader
 

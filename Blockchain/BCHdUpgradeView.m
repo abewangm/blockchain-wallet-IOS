@@ -8,7 +8,7 @@
 
 #import "BCHdUpgradeView.h"
 
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "LocalizationConstants.h"
 
 
@@ -19,8 +19,7 @@ Boolean shouldShowAnimation;
 
 -(id)init
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UIWindow *window = appDelegate.window;
+    UIWindow *window = app.window;
     
     shouldShowAnimation = true;
     

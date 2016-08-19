@@ -14,7 +14,7 @@
 
 #import "MerchantLocation.h"
 
-#import "AppDelegate.h"
+#import "RootService.h"
 
 #import "NSString+JSONParser_NSString.h"
 

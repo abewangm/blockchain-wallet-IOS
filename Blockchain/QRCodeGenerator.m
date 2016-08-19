@@ -7,7 +7,7 @@
 //
 
 #import "QRCodeGenerator.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation QRCodeGenerator
 

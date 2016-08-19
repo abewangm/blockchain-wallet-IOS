@@ -5,7 +5,7 @@
 //  Created by Kevin Wu on 12/7/15.
 //  Copyright © 2015 Qkos Services Ltd. All rights reserved.
 //
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "UpgradeDetailsViewController.h"
 #import "UILabel+MultiLineAutoSize.h"
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,31 +7,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIApplication">
             <connections>
-                <outlet property="delegate" destination="3" id="99"/>
+                <outlet property="delegate" destination="3" id="nSo-4b-RF0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <customObject id="3" customClass="AppDelegate">
+        <customObject id="3" customClass="RootService">
             <connections>
-                <outlet property="busyLabel" destination="263" id="265"/>
-                <outlet property="busyView" destination="260" id="264"/>
+                <outlet property="busyLabel" destination="263" id="Vi4-Sc-0HG"/>
+                <outlet property="busyView" destination="260" id="cbQ-Yl-2J6"/>
                 <outlet property="createWalletView" destination="355" id="dlW-nX-G8c"/>
-                <outlet property="forgetWalletButton" destination="5gL-FG-Zcc" id="2Xs-Cn-kcy"/>
+                <outlet property="forgetWalletButton" destination="5gL-FG-Zcc" id="cCs-KX-EOb"/>
                 <outlet property="mainLogoImageView" destination="226" id="HuC-zh-3yv"/>
-                <outlet property="mainPasswordTextField" destination="626" id="633"/>
-                <outlet property="mainPasswordView" destination="623" id="634"/>
+                <outlet property="mainPasswordTextField" destination="626" id="onb-8w-8q1"/>
+                <outlet property="mainPasswordView" destination="623" id="7Xu-al-CwC"/>
                 <outlet property="mainTitleLabel" destination="DIx-fJ-eKX" id="Cqj-bt-tZE"/>
-                <outlet property="manualPairButton" destination="fI2-PD-Xwa" id="1gm-LI-g4O"/>
-                <outlet property="manualPairView" destination="585" id="z6f-l0-Z4m"/>
-                <outlet property="pairingInstructionsView" destination="351" id="374"/>
-                <outlet property="scanPairingCodeButton" destination="370" id="B1h-vC-H70"/>
+                <outlet property="manualPairButton" destination="fI2-PD-Xwa" id="oka-mR-bc6"/>
+                <outlet property="manualPairView" destination="585" id="Z19-6K-4FY"/>
+                <outlet property="pairingInstructionsView" destination="351" id="1eI-SB-ZdA"/>
+                <outlet property="scanPairingCodeButton" destination="370" id="UkN-oI-0Re"/>
                 <outlet property="secondPasswordButton" destination="471" id="H2J-Rk-XoH"/>
                 <outlet property="secondPasswordDescriptionLabel" destination="467" id="Yhk-8q-Q6W"/>
                 <outlet property="secondPasswordTextField" destination="469" id="475"/>
-                <outlet property="secondPasswordView" destination="463" id="473"/>
+                <outlet property="secondPasswordView" destination="463" id="ngv-dZ-g4I"/>
                 <outlet property="tabViewController" destination="273" id="1E4-G1-fqE"/>
                 <outlet property="transactionsViewController" destination="229" id="295"/>
-                <outlet property="window" destination="2" id="217"/>
+                <outlet property="window" destination="2" id="8NX-MS-pxw"/>
             </connections>
         </customObject>
         <view contentMode="scaleToFill" id="260" userLabel="Busy View" customClass="BCFadeView">
@@ -132,7 +132,7 @@ http://blockchain.info/wallet</string>
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="scanAccountQRCodeclicked:" destination="3" eventType="touchUpInside" id="384"/>
+                        <action selector="scanAccountQRCodeclicked:" destination="3" eventType="touchUpInside" id="zrX-Er-ynq"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fI2-PD-Xwa">
@@ -148,7 +148,7 @@ http://blockchain.info/wallet</string>
                         <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="manualPairClicked:" destination="3" eventType="touchUpInside" id="baR-VH-TXN"/>
+                        <action selector="manualPairClicked:" destination="3" eventType="touchUpInside" id="Eeg-po-QYo"/>
                     </connections>
                 </button>
             </subviews>
@@ -271,7 +271,7 @@ http://blockchain.info/wallet</string>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="secondPasswordClicked:" destination="3" eventType="touchUpInside" id="474"/>
+                        <action selector="secondPasswordClicked:" destination="3" eventType="touchUpInside" id="hy8-EN-gB9"/>
                     </connections>
                 </button>
             </subviews>
@@ -329,7 +329,7 @@ http://blockchain.info/wallet</string>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                     <connections>
-                        <outlet property="delegate" destination="3" id="la7-Qi-OAT"/>
+                        <outlet property="delegate" destination="3" id="8uz-eX-K5b"/>
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="625">
@@ -349,7 +349,7 @@ http://blockchain.info/wallet</string>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="mainPasswordClicked:" destination="3" eventType="touchUpInside" id="635"/>
+                        <action selector="mainPasswordClicked:" destination="3" eventType="touchUpInside" id="EwS-Lt-kgU"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5gL-FG-Zcc">
@@ -369,7 +369,7 @@ http://blockchain.info/wallet</string>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="forgetWalletClicked:" destination="3" eventType="touchUpInside" id="Hge-8x-fzb"/>
+                        <action selector="forgetWalletClicked:" destination="3" eventType="touchUpInside" id="cxA-g7-nrO"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you would like to forget this wallet and start over, press 'Forget Wallet'." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="C0R-wB-wF1">

@@ -8,7 +8,7 @@
 
 #import "DebugTableViewController.h"
 #import "Blockchain-Swift.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 const int rowWalletJSON = 0;
 const int rowServerURL = 1;

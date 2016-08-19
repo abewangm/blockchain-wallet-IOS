@@ -8,7 +8,7 @@
 
 #import "BCAddressSelectionView.h"
 #import "Wallet.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ReceiveTableCell.h"
 #import "SendViewController.h"
 

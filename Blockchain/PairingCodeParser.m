@@ -7,7 +7,7 @@
 //
 
 #import "PairingCodeParser.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation PairingCodeParser
 

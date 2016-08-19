@@ -7,7 +7,7 @@
 //
 
 #import "AccountTableCell.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ECSlidingViewController.h"
 #import "BCEditAccountView.h"
 

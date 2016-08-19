@@ -7,7 +7,7 @@
 //
 
 #import "BCEditAddressView.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation BCEditAddressView
 

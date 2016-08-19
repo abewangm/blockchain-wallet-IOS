@@ -13,7 +13,7 @@
 #import "SecurityCenterViewController.h"
 #import "SettingsTwoStepViewController.h"
 #import "Blockchain-Swift.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;

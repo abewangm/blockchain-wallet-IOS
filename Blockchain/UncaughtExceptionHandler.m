@@ -19,7 +19,7 @@
 
 #include <execinfo.h>
 #import "NSString+URLEncode.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 NSString * const UncaughtExceptionHandlerSignalExceptionName = @"UncaughtExceptionHandlerSignalExceptionName";
 NSString * const UncaughtExceptionHandlerSignalKey = @"UncaughtExceptionHandlerSignalKey";

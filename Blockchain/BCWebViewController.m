@@ -7,7 +7,7 @@
 //
 
 #import "BCWebViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @interface BCWebViewController ()
 

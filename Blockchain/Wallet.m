@@ -7,7 +7,7 @@
 //
 
 #import "Wallet.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "Transaction.h"
 #import "NSString+NSString_EscapeQuotes.h"
 #import "MultiAddressResponse.h"

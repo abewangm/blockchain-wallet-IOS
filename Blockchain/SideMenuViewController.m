@@ -7,7 +7,7 @@
 //
 
 #import "SideMenuViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ECSlidingViewController.h"
 #import "BCCreateAccountView.h"
 #import "BCEditAccountView.h"

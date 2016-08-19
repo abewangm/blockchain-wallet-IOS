@@ -9,7 +9,7 @@
 #import "AccountsAndAddressesNavigationController.h"
 #import "AccountsAndAddressesViewController.h"
 #import "AccountsAndAddressesDetailViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "PrivateKeyReader.h"
 #import "SendViewController.h"
 

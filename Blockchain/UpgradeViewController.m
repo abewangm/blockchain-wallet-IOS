@@ -8,7 +8,7 @@
 
 #import "UpgradeViewController.h"
 #import "UpgradeDetailsViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "LocalizationConstants.h"
 #import "UILabel+MultiLineAutoSize.h"
 
