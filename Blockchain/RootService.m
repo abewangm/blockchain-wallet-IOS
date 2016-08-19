@@ -512,6 +512,42 @@ void (^secondPasswordSuccess)(NSString *);
 
 # pragma mark - Wallet.js callbacks
 
+- (void)walletDidLoad
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self endBackgroundUpdateTask];
+    });
+}
+- (void)walletFailedToLoad
+{
+    DLog(@"walletFailedToLoad");
+    // When doing a manual pair the wallet fails to load the first time because the server needs to verify via email that the user grants access to this device. In that case we don't want to display any additional errors besides the server error telling the user to check his email.
+    if ([manualPairView isDescendantOfView:_window.rootViewController.view]) {
+        return;
+    }
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_TO_LOAD_WALLET_TITLE message:[NSString stringWithFormat:BC_STRING_FAILED_TO_LOAD_WALLET_DETAIL] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
+        [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self walletFailedToLoad];
+        }]];
+        [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self forgetWallet];
+            [app showWelcome];
+        }]];
+        [_window.rootViewController presentViewController:forgetWalletAlert animated:YES completion:nil];
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CLOSE_APP style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        UIApplication *app = [UIApplication sharedApplication];
+        
+        [app performSelector:@selector(suspend)];
+    }]];
+    
+    [_window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)walletDidDecrypt
 {
     DLog(@"walletDidDecrypt");
@@ -661,7 +697,6 @@ void (^secondPasswordSuccess)(NSString *);
                 }
                 
                 NSDictionary *addressInfo = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingAllowFragments error: &error];
-                DLog("%@", addressInfo);
                 NSArray *transactions = addressInfo[@"txs"];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -1621,6 +1656,13 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)updateLoadedAllTransactions:(NSNumber *)loadedAll
 {
     _transactionsViewController.loadedAllTransactions = [loadedAll boolValue];
+}
+
+- (void)didReceivePaymentNotice:(NSString *)notice
+{
+    if (_tabViewController.selectedIndex == TAB_SEND && busyView.hidden && !self.pinEntryViewController) {
+        [app standardNotifyAutoDismissingController:notice title:BC_STRING_INFORMATION];
+    }
 }
 
 #pragma mark - Show Screens
