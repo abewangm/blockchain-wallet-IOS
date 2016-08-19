@@ -7,7 +7,6 @@
 //
 
 #import "RootService.h"
-#import "Wallet.h"
 #import "AppDelegate.h"
 
 @implementation AppDelegate
