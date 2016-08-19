@@ -396,8 +396,8 @@
         [weakSelf update_transfer_all_amount:amount fee:fee addressesUsed:addressesUsed];
     };
     
-    self.context[@"loading_start_transfer_all"] = ^(NSNumber *index) {
-        [weakSelf loading_start_transfer_all:index];
+    self.context[@"loading_start_transfer_all"] = ^(NSNumber *index, NSNumber *totalAddreses) {
+        [weakSelf loading_start_transfer_all:index totalAddresses:totalAddreses];
     };
     
     self.context[@"on_error_transfer_all_secondPassword"] = ^(NSString *error, NSString *secondPassword) {
@@ -936,9 +936,48 @@
     }
 }
 
-- (uint64_t)parseBitcoinValue:(NSString*)input
+- (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField
 {
-    return [[[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [input escapeStringForJS]]] toNumber] longLongValue];
+    return [self parseBitcoinValueFromString:textField.text primaryLanguage:textField.textInputMode.primaryLanguage];
+}
+
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString primaryLanguage:(NSString *)language
+{
+    NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+    
+    __block NSString *requestedAmountString;
+    if ([locale.localeIdentifier isEqualToString:LOCALE_IDENTIFIER_AR]) {
+        // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        numberFormatter.decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+        [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US]];
+        
+        NSError *error;
+        NSRange range = NSMakeRange(0, [inputString length]);
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_EASTERN_ARABIC_NUMERALS options:NSRegularExpressionCaseInsensitive error:&error];
+        
+        NSDictionary *easternArabicNumeralDictionary = DICTIONARY_EASTERN_ARABIC_NUMERAL;
+        
+        NSMutableString *replaced = [inputString mutableCopy];
+        __block NSInteger offset = 0;
+        [regex enumerateMatchesInString:inputString options:0 range:range usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
+            NSRange range1 = [result rangeAtIndex:0]; // range of the matched subgroup
+            NSString *key = [inputString substringWithRange:range1];
+            NSString *value = easternArabicNumeralDictionary[key];
+            if (value != nil) {
+                NSRange range = [result range]; // range of the matched pattern
+                // Update location according to previous modifications:
+                range.location += offset;
+                [replaced replaceCharactersInRange:range withString:value];
+                offset += value.length - range.length; // Update offset
+            }
+            requestedAmountString = [NSString stringWithString:replaced];
+        }];
+    } else {
+        requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    }
+
+    return [[[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [requestedAmountString escapeStringForJS]]] toNumber] longLongValue];
 }
 
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
@@ -1752,9 +1791,9 @@
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
 }
 
-- (void)loading_start_transfer_all:(NSNumber *)addressIndex
+- (void)loading_start_transfer_all:(NSNumber *)addressIndex totalAddresses:(NSNumber *)totalAddresses
 {
-    [app showBusyViewWithLoadingText:BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER];
+    [app showBusyViewWithLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, addressIndex, totalAddresses]];
 }
 
 - (void)loading_stop
@@ -2474,8 +2513,10 @@
 
 - (void)on_payment_notice:(NSString *)notice
 {
-    if (app.tabViewController.selectedIndex == TAB_SEND && !app.pinEntryViewController) {
-        [app standardNotifyAutoDismissingController:notice title:BC_STRING_INFORMATION];
+    if ([delegate respondsToSelector:@selector(didReceivePaymentNotice:)]) {
+        [delegate didReceivePaymentNotice:notice];
+    } else {
+        DLog(@"Delegate of class %@ does not respond to selector didReceivePaymentNotice!", [delegate class]);
     }
 }
 

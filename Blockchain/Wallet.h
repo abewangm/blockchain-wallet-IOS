@@ -96,6 +96,7 @@
 - (void)updateLoadedAllTransactions:(NSNumber *)loadedAll;
 - (void)receivedTransactionMessage;
 - (void)paymentReceivedOnPINScreen:(NSString *)amount;
+- (void)didReceivePaymentNotice:(NSString *)notice;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate, SRWebSocketDelegate> {
@@ -189,7 +190,8 @@
 - (void)getWalletAndHistory;
 
 - (uint64_t)getLegacyAddressBalance:(NSString *)address;
-- (uint64_t)parseBitcoinValue:(NSString *)input;
+- (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField;
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString primaryLanguage:(NSString *)language;
 
 - (void)changeLocalCurrency:(NSString *)currencyCode;
 - (void)changeBtcCurrency:(NSString *)btcCode;

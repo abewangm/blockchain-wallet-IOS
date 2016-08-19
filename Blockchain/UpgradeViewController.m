@@ -7,7 +7,6 @@
 //
 
 #import "UpgradeViewController.h"
-#import "UpgradeDetailsViewController.h"
 #import "RootService.h"
 #import "LocalizationConstants.h"
 #import "UILabel+MultiLineAutoSize.h"
@@ -34,22 +33,18 @@
 
 - (IBAction)upgradeTapped:(UIButton *)sender
 {
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_UPGRADE_DETAILS sender:nil];
-}
-
-- (IBAction)cancelButtonTapped:(UIButton *)sender
-{
-    UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
-    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        DLog(@"forgetting wallet");
-        [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
-            [app logout];
-            [app forgetWallet];
-            [app showWelcome];
-        }];
-    }]];
-    [self presentViewController:forgetWalletAlert animated:YES completion:nil];
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
+    [app.wallet loading_start_upgrade_to_hd];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [app closeSideMenu];
+        [app.wallet performSelector:@selector(upgradeToV3Wallet) withObject:nil afterDelay:0.1f];
+    });
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSArray *)imageNamesArray
@@ -144,7 +139,7 @@
     
     [self setupCaptionLabels];
     
-    [self.askMeLaterButton setTitle:BC_STRING_LOGOUT_AND_FORGET_WALLET forState:UIControlStateNormal];
+    [self.upgradeWalletButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
     
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = [[self imageNamesArray] count];

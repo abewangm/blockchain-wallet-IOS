@@ -17,12 +17,11 @@
 // #define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
-
 #define ENABLE_TRANSACTION_FILTERING 1
-
 // #define ENABLE_TRANSACTION_FETCHING 1
-
 #define ENABLE_SWIPE_TO_RECEIVE 1
+#define ENABLE_TOUCH_ID 1
+
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
@@ -106,6 +105,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define LOCALE_IDENTIFIER_EN_US @"en_US"
+#define LOCALE_IDENTIFIER_AR @"ar"
+
 #define INFO_PLIST_KEY_CFBUNDLE_SHORT_VERSION_STRING @"CFBundleShortVersionString"
 
 #define PREFIX_BITCOIN_URI @"bitcoin:"
@@ -184,7 +186,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL @"accountsAndAddressesDetail"
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT @"accountsAndAddressesDetailEdit"
 #define SEGUE_IDENTIFIER_TWO_STEP @"twoStep"
-#define SEGUE_IDENTIFIER_UPGRADE_DETAILS @"upgradeDetails"
 
 #define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
 #define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
@@ -283,6 +284,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
 #define USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING @"bundleVersionString"
 #define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
+#define USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED @"swipeToReceive"
 #define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"
 #define USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT @"hideTransferAllFundsAlert"
 #define USER_DEFAULTS_KEY_SIMULATE_SURGE @"simulateSurge"
@@ -295,6 +297,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 
 #define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
+#define REUSE_IDENTIFIER_SWIPE_TO_RECEIVE @"swipeToReceive"
 
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"
@@ -421,6 +424,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ONE_PERCENT_DECIMAL @0.01
 #define FIFTY_CENTS_DECIMAL @0.50
 
+#define DICTIONARY_EASTERN_ARABIC_NUMERAL @{@"\u0660":@"0", @"\u0661":@"1", @"\u0662":@"2", @"\u0663":@"3", @"\u0664":@"4", @"\u0665":@"5", @"\u0666":@"6", @"\u0667":@"7", @"\u0668":@"8", @"\u0669":@"9", @"\u066b":@"."}
+#define REGEX_EASTERN_ARABIC_NUMERALS @"[\u0660-\u066b]"
+
 #pragma mark - Runtime modes
 
 // #define DISABLE_EDITING_ACCOUNTS 1 // comment this line out to enable support for adding/editing accounts
@@ -439,5 +445,3 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_TIMEOUT_ERROR @"TimeoutError"
 #define ERROR_INVALID_PASSPHRASE @"invalid passphrase"
 #define ERROR_STATUS_ZERO @"status:0"
-
-#define TOUCH_ID_ENABLED 1
