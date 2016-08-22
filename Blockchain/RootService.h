@@ -122,10 +122,6 @@
 - (void)toggleSideMenu;
 - (void)closeSideMenu;
 
-- (NSString *)guid;
-- (NSString *)hashedGuid;
-- (NSString *)sharedKey;
-
 - (void)swipeLeft;
 - (void)swipeRight;
 

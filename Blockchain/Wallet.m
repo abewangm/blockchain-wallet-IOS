@@ -20,6 +20,7 @@
 #import "NSArray+EncodedJSONString.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "ModuleXMLHTTPRequest.h"
+#import "BCKeychainService.h"
 #import <openssl/evp.h>
 
 @interface Wallet ()
@@ -2030,7 +2031,7 @@
     }
     
     NSRange incorrectPasswordErrorStringRange = [message rangeOfString:@"please check that your password is correct" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
-    if (incorrectPasswordErrorStringRange.location != NSNotFound && ![app guid]) {
+    if (incorrectPasswordErrorStringRange.location != NSNotFound && ![BCKeychainService guid]) {
         // Error message shown in error_other_decrypting_wallet without guid
         return;
     }
@@ -2069,7 +2070,7 @@
             return;
         }
         
-        if (![app guid]) {
+        if (![BCKeychainService guid]) {
             // This error is used whe trying to login with incorrect passwords or when the account is locked, so present an alert if the app has no guid, since it currently conflicts with makeNotice when backgrounding after changing password in-app
             [app standardNotifyAutoDismissingController:message];
         }

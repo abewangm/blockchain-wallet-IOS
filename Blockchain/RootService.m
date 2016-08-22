@@ -20,7 +20,6 @@
 #import "TransactionsViewController.h"
 #import "BCCreateWalletView.h"
 #import "BCManualPairView.h"
-#import "NSString+SHA256.h"
 #import "Transaction.h"
 #import "UIDevice+Hardware.h"
 #import "UncaughtExceptionHandler.h"
@@ -40,6 +39,8 @@
 #import "UIViewController+AutoDismiss.h"
 #import "DeviceIdentifier.h"
 #import "DebugTableViewController.h"
+#import "BCKeychainService.h"
+#import "NSString+SHA256.h"
 
 @implementation RootService
 
@@ -196,7 +197,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showWelcomeOrPinScreen
 {
     // Not paired yet
-    if (![self guid] || ![self sharedKey]) {
+    if (![BCKeychainService guid] || ![BCKeychainService sharedKey]) {
         [self showWelcome];
         [self checkAndWarnOnJailbrokenPhones];
     }
@@ -628,7 +629,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"walletFailedToDecrypt");
     // In case we were on the manual pair screen, we want to go back there. The way to check for that is that the wallet has a guid, but it's not saved yet
-    if (wallet.guid && ![self guid]) {
+    if (wallet.guid && ![BCKeychainService guid]) {
         [self manualPairClicked:nil];
         
         return;
@@ -721,7 +722,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPinModalIfBackgroundedDuringLoad
 {
-    if (![self.pinEntryViewController.view isDescendantOfView:app.window.rootViewController.view] && !self.wallet.isInitialized && [self sharedKey] && [self guid] && !modalView) {
+    if (![self.pinEntryViewController.view isDescendantOfView:app.window.rootViewController.view] && !self.wallet.isInitialized && [BCKeychainService sharedKey] && [BCKeychainService guid] && !modalView) {
         [self showPinModalAsView:YES];
     }
 }
@@ -839,7 +840,7 @@ void (^secondPasswordSuccess)(NSString *);
     if (![wallet isInitialized]) {
         [app showWelcome];
         
-        if ([self guid] && [self sharedKey]) {
+        if ([BCKeychainService guid] && [BCKeychainService sharedKey]) {
             [self showPasswordModal];
         }
     }
@@ -1266,8 +1267,8 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    [self setGuidInKeychain:guid];
-    [self setSharedKeyInKeychain:sharedKey];
+    [BCKeychainService setGuidInKeychain:guid];
+    [BCKeychainService setSharedKeyInKeychain:sharedKey];
 }
 
 - (BOOL)isQRCodeScanningSupported
@@ -1379,8 +1380,8 @@ void (^secondPasswordSuccess)(NSString *);
     self.merchantViewController = nil;
     self.receiveViewController = nil;
     
-    [self removeGuidFromKeychain];
-    [self removeSharedKeyFromKeychain];
+    [BCKeychainService removeGuidFromKeychain];
+    [BCKeychainService removeSharedKeyFromKeychain];
     
     [self.wallet clearLocalStorage];
     
@@ -2135,8 +2136,8 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    NSString *guid = [self guid];
-    NSString *sharedKey = [self sharedKey];
+    NSString *guid = [BCKeychainService guid];
+    NSString *sharedKey = [BCKeychainService sharedKey];
     
     if (guid && sharedKey && password) {
         [self.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
@@ -2205,7 +2206,7 @@ void (^secondPasswordSuccess)(NSString *);
                                       [self showVerifyingBusyViewWithTimer:30.0];
                                   });
                                   NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
-                                  NSString * pin = [self pinFromKeychain];
+                                  NSString * pin = [BCKeychainService pinFromKeychain];
                                   if (!pin) {
                                       [self failedToObtainValuesFromKeychain];
                                       return;
@@ -2271,7 +2272,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)disabledTouchID
 {
-    [self removePinFromKeychain];
+    [BCKeychainService removePinFromKeychain];
 }
 
 - (void)verifyTwoFactorSMS
@@ -2360,7 +2361,7 @@ void (^secondPasswordSuccess)(NSString *);
     
 #ifdef TOUCH_ID_ENABLED
     if (self.pinEntryViewController.verifyOptional) {
-        [self setPINInKeychain:pin];
+        [BCKeychainService setPINInKeychain:pin];
     }
 #endif
     
@@ -2490,8 +2491,8 @@ void (^secondPasswordSuccess)(NSString *);
             return;
         }
         
-        NSString *guid = [self guid];
-        NSString *sharedKey = [self sharedKey];
+        NSString *guid = [BCKeychainService guid];
+        NSString *sharedKey = [BCKeychainService sharedKey];
         
         if (guid && sharedKey) {
             [self.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:decrypted];
@@ -2529,7 +2530,7 @@ void (^secondPasswordSuccess)(NSString *);
     
 #ifdef TOUCH_ID_ENABLED
     if (!pinSuccess && self.pinEntryViewController.verifyOptional) {
-        [self removePinFromKeychain];
+        [BCKeychainService removePinFromKeychain];
     }
 #endif
 }
@@ -2672,7 +2673,7 @@ void (^secondPasswordSuccess)(NSString *);
     
 #ifdef TOUCH_ID_ENABLED
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
-        [self setPINInKeychain:pin];
+        [BCKeychainService setPINInKeychain:pin];
     }
 #endif
 }
@@ -2681,129 +2682,6 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"Pin change cancelled!");
     [self closePINModal:YES];
-}
-
-- (void)setPINInKeychain:(NSString *)pin
-{
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_PIN accessGroup:nil];
-    [keychain setObject:(__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly forKey:(__bridge id)kSecAttrAccessible];
-    
-    [keychain setObject:KEYCHAIN_KEY_PIN forKey:(__bridge id)kSecAttrAccount];
-    [keychain setObject:[pin dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
-}
-
-- (NSString *)pinFromKeychain
-{
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_PIN accessGroup:nil];
-    NSData *pinData = [keychain objectForKey:(__bridge id)kSecValueData];
-    NSString *pin = [[NSString alloc] initWithData:pinData encoding:NSUTF8StringEncoding];
-    
-    return pin.length == 0 ? nil : pin;
-}
-
-- (void)removePinFromKeychain
-{
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_PIN accessGroup:nil];
-    
-    [keychain resetKeychainItem];
-}
-
-#pragma mark - GUID
-
-- (NSString *)guid
-{
-    // Attempt to migrate guid from NSUserDefaults to KeyChain
-    NSString *guidFromUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GUID];
-    if (guidFromUserDefaults) {
-        [self setGuidInKeychain:guidFromUserDefaults];
-        
-        if ([self guidFromKeychain]) {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_GUID];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            // Remove all UIWebView cached data for users upgrading from older versions
-            [[NSURLCache sharedURLCache] removeAllCachedResponses];
-        } else {
-            DLog(@"failed to set GUID in keychain");
-            return guidFromUserDefaults;
-        }
-    }
-    
-    return [self guidFromKeychain];
-}
-
-- (void)setGuidInKeychain:(NSString *)guid
-{
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_GUID accessGroup:nil];
-    [keychain setObject:(__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly forKey:(__bridge id)kSecAttrAccessible];
-    
-    [keychain setObject:KEYCHAIN_KEY_GUID forKey:(__bridge id)kSecAttrAccount];
-    [keychain setObject:[guid dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
-}
-
-- (NSString *)guidFromKeychain {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_GUID accessGroup:nil];
-    NSData *guidData = [keychain objectForKey:(__bridge id)kSecValueData];
-    NSString *guid = [[NSString alloc] initWithData:guidData encoding:NSUTF8StringEncoding];
-    
-    return guid.length == 0 ? nil : guid;
-}
-
-- (void)removeGuidFromKeychain
-{
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_GUID accessGroup:nil];
-    
-    [keychain resetKeychainItem];
-}
-
-- (NSString *)hashedGuid
-{
-    return [[self guid] SHA256];
-}
-
-#pragma mark - SharedKey
-
-- (NSString *)sharedKey
-{
-    // Migrate sharedKey from NSUserDefaults (for users updating from old version)
-    NSString *sharedKeyFromUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_SHARED_KEY];
-    if (sharedKeyFromUserDefaults) {
-        [self setSharedKeyInKeychain:sharedKeyFromUserDefaults];
-        
-        if ([self sharedKeyFromKeychain]) {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_SHARED_KEY];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        } else {
-            DLog(@"!!! failed to set sharedKey in keychain ???");
-            return sharedKeyFromUserDefaults;
-        }
-    }
-    
-    return [self sharedKeyFromKeychain];
-}
-
-- (NSString *)sharedKeyFromKeychain {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
-    NSData *sharedKeyData = [keychain objectForKey:(__bridge id)kSecValueData];
-    NSString *sharedKey = [[NSString alloc] initWithData:sharedKeyData encoding:NSUTF8StringEncoding];
-    
-    return sharedKey.length == 0 ? nil : sharedKey;
-}
-
-- (void)setSharedKeyInKeychain:(NSString *)sharedKey
-{
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
-    [keychain setObject:(__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly forKey:(__bridge id)kSecAttrAccessible];
-    
-    [keychain setObject:KEYCHAIN_KEY_SHARED_KEY forKey:(__bridge id)kSecAttrAccount];
-    [keychain setObject:[sharedKey dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
-}
-
-- (void)removeSharedKeyFromKeychain
-{
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SHARED_KEY accessGroup:nil];
-    
-    [keychain resetKeychainItem];
 }
 
 - (void)failedToObtainValuesFromKeychain
@@ -2906,7 +2784,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_FIRST_RUN]) {
         
-        if ([self guid] && [self sharedKey] && ![self isPinSet]) {
+        if ([BCKeychainService guid] && [BCKeychainService sharedKey] && ![self isPinSet]) {
             [self alertUserAskingToUseOldKeychain];
         }
         

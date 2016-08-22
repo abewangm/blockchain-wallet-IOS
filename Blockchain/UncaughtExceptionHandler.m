@@ -20,6 +20,7 @@
 #include <execinfo.h>
 #import "NSString+URLEncode.h"
 #import "RootService.h"
+#import "BCKeychainService.h"
 
 NSString * const UncaughtExceptionHandlerSignalExceptionName = @"UncaughtExceptionHandlerSignalExceptionName";
 NSString * const UncaughtExceptionHandlerSignalKey = @"UncaughtExceptionHandlerSignalKey";
@@ -102,7 +103,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
                           walletIsInitialized? @"TRUE" : @"FALSE",
                           [DeviceIdentifier deviceName],
                           [[NSLocale preferredLanguages] firstObject],
-                          [app hashedGuid],
+                          [BCKeychainService hashedGuid],
                           [exception reason],
                           [[exception userInfo] objectForKey:UncaughtExceptionHandlerAddressesKey]
                           ];

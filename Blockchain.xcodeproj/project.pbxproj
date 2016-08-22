@@ -34,6 +34,7 @@
 		239CD4C81C12214A00997DF5 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239CD4CA1C12214A00997DF5 /* Settings.storyboard */; };
 		239CD5171C12217F00997DF5 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239CD5191C12217F00997DF5 /* Upgrade.storyboard */; };
 		239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239CD5671C122BDE00997DF5 /* SettingsTwoStepViewController.m */; };
+		23BA220B1D6B418000D0472B /* BCKeychainService.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BA220A1D6B418000D0472B /* BCKeychainService.m */; };
 		23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF73381C454B8C00204503 /* AccountsAndAddressesNavigationController.m */; };
 		23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF733B1C455DDB00204503 /* AccountsAndAddressesViewController.m */; };
 		23C543921D0F0CD2007A5F58 /* SRDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543721D0F0CD2007A5F58 /* SRDelegateController.m */; };
@@ -524,6 +525,8 @@
 		239CD5651C12223300997DF5 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Upgrade.strings"; sourceTree = "<group>"; };
 		239CD5661C122BDE00997DF5 /* SettingsTwoStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTwoStepViewController.h; sourceTree = "<group>"; };
 		239CD5671C122BDE00997DF5 /* SettingsTwoStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTwoStepViewController.m; sourceTree = "<group>"; };
+		23BA22091D6B418000D0472B /* BCKeychainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCKeychainService.h; sourceTree = "<group>"; };
+		23BA220A1D6B418000D0472B /* BCKeychainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCKeychainService.m; sourceTree = "<group>"; };
 		23BF73371C454B8C00204503 /* AccountsAndAddressesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesNavigationController.h; sourceTree = "<group>"; };
 		23BF73381C454B8C00204503 /* AccountsAndAddressesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesNavigationController.m; sourceTree = "<group>"; };
 		23BF733A1C455DDB00204503 /* AccountsAndAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesViewController.h; sourceTree = "<group>"; };
@@ -1132,6 +1135,8 @@
 		9F765F3A14BC7C3100048EFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				23BA22091D6B418000D0472B /* BCKeychainService.h */,
+				23BA220A1D6B418000D0472B /* BCKeychainService.m */,
 				237451C71D624C1C00CF7049 /* RootService.h */,
 				237451C81D624C1C00CF7049 /* RootService.m */,
 				23D423971D0878BE000054AA /* ModuleXMLHttpRequest.h */,
@@ -1692,6 +1697,7 @@
 				23C5439D1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.m in Sources */,
 				9F765F4714BC8AEF00048EFB /* MultiAddressResponse.m in Sources */,
 				FA6323391A433B1C00EB3974 /* Foundation-Utility.m in Sources */,
+				23BA220B1D6B418000D0472B /* BCKeychainService.m in Sources */,
 				239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */,
 				23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */,
 				2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */,
