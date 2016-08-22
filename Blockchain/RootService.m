@@ -207,7 +207,7 @@ void (^secondPasswordSuccess)(NSString *);
         // If the PIN is set show the pin modal
         if ([self isPinSet]) {
             [self showPinModalAsView:YES];
-#ifdef TOUCH_ID_ENABLED
+#ifdef ENABLE_TOUCH_ID
             if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
                 [self authenticateWithTouchID];
             }
@@ -829,7 +829,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     // The PIN modal is shown on EnterBackground, but we don't want to override the modal with the welcome screen
     if ([self isPinSet]) {
-#ifdef TOUCH_ID_ENABLED
+#ifdef ENABLE_TOUCH_ID
         if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
             [self authenticateWithTouchID];
         }
@@ -2359,9 +2359,9 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-#ifdef TOUCH_ID_ENABLED
+#ifdef ENABLE_TOUCH_ID
     if (self.pinEntryViewController.verifyOptional) {
-        [BCKeychainService setPINInKeychain:pin];
+        [KeychainItemWrapper setPINInKeychain:pin];
     }
 #endif
     
@@ -2457,7 +2457,7 @@ void (^secondPasswordSuccess)(NSString *);
     // Pin was accepted
     else if ([code intValue] == PIN_API_STATUS_OK) {
         
-#ifdef TOUCH_ID_ENABLED
+#ifdef ENABLE_TOUCH_ID
         if (self.pinEntryViewController.verifyOptional) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
             [[NSUserDefaults standardUserDefaults] synchronize];
@@ -2528,9 +2528,9 @@ void (^secondPasswordSuccess)(NSString *);
         self.pinViewControllerCallback = nil;
     }
     
-#ifdef TOUCH_ID_ENABLED
+#ifdef ENABLE_TOUCH_ID
     if (!pinSuccess && self.pinEntryViewController.verifyOptional) {
-        [BCKeychainService removePinFromKeychain];
+        [KeychainItemWrapper removePinFromKeychain];
     }
 #endif
 }
@@ -2671,9 +2671,9 @@ void (^secondPasswordSuccess)(NSString *);
     
     [app.wallet pinServerPutKeyOnPinServerServer:key value:value pin:pin];
     
-#ifdef TOUCH_ID_ENABLED
+#ifdef ENABLE_TOUCH_ID
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
-        [BCKeychainService setPINInKeychain:pin];
+        [KeychainItemWrapper setPINInKeychain:pin];
     }
 #endif
 }
