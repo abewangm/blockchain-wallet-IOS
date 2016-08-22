@@ -2827,27 +2827,4 @@ void (^secondPasswordSuccess)(NSString *);
     return input;
 }
 
-#pragma mark - API Endpoint Getters
-
-// The debug endpoints are cleared from userDefaults in didFinishLaunching when ENABLE_DEBUG_MENUENABLE_DEBUG_MENU is undefined..so no need to check ENABLE_DEBUG_MENU in these getters
-- (NSString *)serverURL
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? DEFAULT_WALLET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
-}
-
-- (NSString *)webSocketURL
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] == nil ? DEFAULT_WEBSOCKET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
-}
-
-- (NSString *)merchantURL
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL] == nil ? DEFAULT_MERCHANT_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
-}
-
-- (NSString *)apiURL
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL] == nil ? DEFAULT_API_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
-}
-
 @end

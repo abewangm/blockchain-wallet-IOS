@@ -125,7 +125,7 @@
 
 - (IBAction)transactionClicked:(UIButton *)button
 {
-    [app pushWebViewController:[[app serverURL] stringByAppendingFormat:@"/tx/%@", transaction.myHash] title:BC_STRING_TRANSACTION];
+    [app pushWebViewController:[URL_SERVER stringByAppendingFormat:@"/tx/%@", transaction.myHash] title:BC_STRING_TRANSACTION];
 }
 
 - (IBAction)btcbuttonclicked:(id)sender

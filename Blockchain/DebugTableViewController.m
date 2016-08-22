@@ -116,22 +116,22 @@ const int appStoreReviewPromptTimer = 7;
         }
         case rowServerURL: {
             cell.textLabel.text = BC_STRING_SERVER_URL;
-            cell.detailTextLabel.text =  [app serverURL];
+            cell.detailTextLabel.text =  URL_SERVER;
             break;
         }
         case rowWebsocketURL: {
             cell.textLabel.text = BC_STRING_WEBSOCKET_URL;
-            cell.detailTextLabel.text = [app webSocketURL];
+            cell.detailTextLabel.text = URL_WEBSOCKET;
             break;
         }
         case rowMerchantURL: {
             cell.textLabel.text = BC_STRING_MERCHANT_URL;
-            cell.detailTextLabel.text = [app merchantURL];
+            cell.detailTextLabel.text = URL_MERCHANT;
             break;
         }
         case rowAPIURL: {
             cell.textLabel.text = BC_STRING_API_URL;
-            cell.detailTextLabel.text = [app apiURL];
+            cell.detailTextLabel.text = URL_API;
             break;
         }
         case surgeToggle: {
@@ -170,16 +170,16 @@ const int appStoreReviewPromptTimer = 7;
             break;
         }
         case rowServerURL:
-            [self alertToChangeURLName:BC_STRING_SERVER_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL currentURL:[app serverURL]];
+            [self alertToChangeURLName:BC_STRING_SERVER_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL currentURL:URL_SERVER];
             break;
         case rowWebsocketURL:
-            [self alertToChangeURLName:BC_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:[app webSocketURL]];
+            [self alertToChangeURLName:BC_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:URL_WEBSOCKET];
             break;
         case rowMerchantURL:
-            [self alertToChangeURLName:BC_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:[app merchantURL]];
+            [self alertToChangeURLName:BC_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:URL_MERCHANT];
             break;
         case rowAPIURL:
-            [self alertToChangeURLName:BC_STRING_API_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_API_URL currentURL:[app apiURL]];
+            [self alertToChangeURLName:BC_STRING_API_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_API_URL currentURL:URL_API];
             break;
         case dontShowAgain: {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DEBUG message:BC_STRING_RESET_DONT_SHOW_AGAIN_PROMPT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];

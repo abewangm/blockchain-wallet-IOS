@@ -214,11 +214,6 @@
 - (void)verifyTwoFactorGoogle;
 - (void)verifyTwoFactorYubiKey;
 
-- (NSString *)serverURL;
-- (NSString *)webSocketURL;
-- (NSString *)merchantURL;
-- (NSString *)apiURL;
-
 - (void)rateApp;
 - (void)authorizationRequired;
 
