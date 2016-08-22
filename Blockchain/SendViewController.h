@@ -20,7 +20,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BCAddressSelectionView.h"
-#import "BCAlertView.h"
 #import "BCConfirmPaymentView.h"
 #import <AVFoundation/AVFoundation.h>
 #import "BCLine.h"

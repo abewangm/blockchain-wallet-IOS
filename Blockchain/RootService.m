@@ -25,7 +25,6 @@
 #import "UIDevice+Hardware.h"
 #import "UncaughtExceptionHandler.h"
 #import "UITextField+Blocks.h"
-#import "UIAlertView+Blocks.h"
 #import "PairingCodeParser.h"
 #import "PrivateKeyReader.h"
 #import "MerchantMapViewController.h"
