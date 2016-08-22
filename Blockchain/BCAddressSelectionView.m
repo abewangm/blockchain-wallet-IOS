@@ -311,7 +311,7 @@ int legacyAddressesSectionNumber;
             else if (section == legacyAddressesSectionNumber) {
                 balance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];
             }
-            cell.balanceLabel.text = [app formatMoney:balance];
+            cell.balanceLabel.text = [NSNumberFormatter formatMoney:balance];
             
             // Cells with empty balance can't be clicked and are dimmed
             if (balance == 0 && !allSelectable) {

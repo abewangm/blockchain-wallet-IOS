@@ -347,10 +347,10 @@ NSString *detailLabel;
     uint64_t amount = [self getInputAmountInSatoshi];
     
     if ([btcAmountField isFirstResponder]) {
-        fiatAmountField.text = [app formatAmount:amount localCurrency:YES];
+        fiatAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
     }
     else if ([fiatAmountField isFirstResponder]) {
-        btcAmountField.text = [app formatAmount:amount localCurrency:NO];
+        btcAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
     }
     
     self.receiveFiatField.text = fiatAmountField.text;
@@ -586,8 +586,8 @@ NSString *detailLabel;
 {
     u_int64_t amountReceived = [[amount decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
     if (amountReceived == self.lastRequestedAmount) {
-        NSString *btcAmountString = [app formatMoney:self.lastRequestedAmount localCurrency:NO];
-        NSString *localCurrencyAmountString = [app formatMoney:self.lastRequestedAmount localCurrency:YES];
+        NSString *btcAmountString = [NSNumberFormatter formatMoney:self.lastRequestedAmount localCurrency:NO];
+        NSString *localCurrencyAmountString = [NSNumberFormatter formatMoney:self.lastRequestedAmount localCurrency:YES];
         [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString,localCurrencyAmountString]];
     }
 }
@@ -615,7 +615,7 @@ NSString *detailLabel;
     }
     
     uint64_t amount = [self getInputAmountInSatoshi];
-    NSString *amountString = amount > 0 ? [app formatMoney:[self getInputAmountInSatoshi] localCurrency:NO] : [BC_STRING_AMOUNT lowercaseString];
+    NSString *amountString = amount > 0 ? [NSNumberFormatter formatMoney:[self getInputAmountInSatoshi] localCurrency:NO] : [BC_STRING_AMOUNT lowercaseString];
     NSString *message = [self formatPaymentRequestWithAmount:amountString url:@""];
     
     NSURL *url = [NSURL URLWithString:[self uriURL]];

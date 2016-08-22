@@ -24,6 +24,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AccountsAndAddressesNavigationController.h"
 #import "TransactionsViewController.h"
+#import "NSNumberFormatter+Currencies.h"
 
 @protocol TopViewController;
 
@@ -152,11 +153,6 @@
 // Request Second Password From User
 - (void)getSecondPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error;
 - (void)getPrivateKeyPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error;
-
-- (NSString*)formatMoney:(uint64_t)value;
-- (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal;
-- (NSString *)formatAmount:(uint64_t)amount localCurrency:(BOOL)localCurrency;
-- (BOOL)stringHasBitcoinValue:(NSString *)string;
 
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;

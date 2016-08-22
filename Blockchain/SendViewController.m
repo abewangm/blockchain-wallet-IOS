@@ -692,11 +692,11 @@ BOOL displayingLocalSymbolSend;
         
         uint64_t spendableAmount = maxAmount + self.feeFromTransactionProposal;
         
-        NSString *wantToSendAmountString = [app formatMoney:amountInSatoshi localCurrency:NO];
-        NSString *spendableAmountString = [app formatMoney:spendableAmount localCurrency:NO];
-        NSString *feeAmountString = [app formatMoney:self.feeFromTransactionProposal localCurrency:NO];
+        NSString *wantToSendAmountString = [NSNumberFormatter formatMoney:amountInSatoshi localCurrency:NO];
+        NSString *spendableAmountString = [NSNumberFormatter formatMoney:spendableAmount localCurrency:NO];
+        NSString *feeAmountString = [NSNumberFormatter formatMoney:self.feeFromTransactionProposal localCurrency:NO];
         
-        NSString *canSendAmountString = [app formatMoney:maxAmount localCurrency:NO];
+        NSString *canSendAmountString = [NSNumberFormatter formatMoney:maxAmount localCurrency:NO];
         
         NSString *sweepMessageString = [[NSString alloc] initWithFormat:BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT, wantToSendAmountString, spendableAmountString, feeAmountString, canSendAmountString];
         
@@ -789,11 +789,11 @@ BOOL displayingLocalSymbolSend;
         self.confirmPaymentView.fromLabel.text = [NSString stringWithFormat:@"%@\n%@", fromAddressLabel, fromAddressString];
         self.confirmPaymentView.toLabel.text = [NSString stringWithFormat:@"%@\n%@", toAddressLabel, toAddressString];
         
-        self.confirmPaymentView.fiatAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:TRUE];
-        self.confirmPaymentView.btcAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:FALSE];
+        self.confirmPaymentView.fiatAmountLabel.text = [NSNumberFormatter formatMoney:amountInSatoshi localCurrency:TRUE];
+        self.confirmPaymentView.btcAmountLabel.text = [NSNumberFormatter formatMoney:amountInSatoshi localCurrency:FALSE];
         
-        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:feeTotal localCurrency:TRUE];
-        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:feeTotal localCurrency:FALSE];
+        self.confirmPaymentView.fiatFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:TRUE];
+        self.confirmPaymentView.btcFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:FALSE];
         
         if (self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SIMULATE_SURGE]) {
             self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor redColor];
@@ -803,8 +803,8 @@ BOOL displayingLocalSymbolSend;
             self.confirmPaymentView.btcFeeLabel.textColor = [UIColor darkGrayColor];
         }
         
-        self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
-        self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
+        self.confirmPaymentView.fiatTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:TRUE];
+        self.confirmPaymentView.btcTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:FALSE];
         
         if (!self.customFeeMode) {
             NSDecimalNumber *last = [NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithDouble:[[app.wallet.currencySymbols objectForKey:DICTIONARY_KEY_USD][DICTIONARY_KEY_LAST] doubleValue]] decimalValue]];
@@ -875,15 +875,15 @@ BOOL displayingLocalSymbolSend;
     }
     
     if ([btcAmountField isFirstResponder]) {
-        fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
+        fiatAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:YES];
     }
     else if ([fiatAmountField isFirstResponder]) {
-        btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
+        btcAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:NO];
     }
     else {
         
-        fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
-        btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
+        fiatAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:YES];
+        btcAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:NO];
     }
     
     if (self.customFeeMode) {
@@ -951,7 +951,7 @@ BOOL displayingLocalSymbolSend;
 {
     self.addressFromURLHandler = addressString;
     
-    if ([app stringHasBitcoinValue:amountString]) {
+    if ([NSNumberFormatter stringHasBitcoinValue:amountString]) {
         NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
         self.amountFromURLHandler = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
     } else {
@@ -1019,19 +1019,19 @@ BOOL displayingLocalSymbolSend;
     NSString *keepUserInputFee;
     
     if (feeIsTooHigh) {
-        message = [NSString stringWithFormat:BC_STRING_FEE_HIGHER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [app formatMoney:fee localCurrency:NO], [app formatMoney:self.upperRecommendedLimit localCurrency:NO]];
+        message = [NSString stringWithFormat:BC_STRING_FEE_HIGHER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:self.upperRecommendedLimit localCurrency:NO]];
         suggestedFee = self.upperRecommendedLimit;
         useSuggestedFee = BC_STRING_LOWER_FEE;
         keepUserInputFee = BC_STRING_KEEP_HIGHER_FEE;
     } else {
-        message = [NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [app formatMoney:fee localCurrency:NO], [app formatMoney:self.lowerRecommendedLimit localCurrency:NO]];
+        message = [NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:self.lowerRecommendedLimit localCurrency:NO]];
         suggestedFee = self.lowerRecommendedLimit;
         useSuggestedFee = BC_STRING_INCREASE_FEE;
         keepUserInputFee = BC_STRING_KEEP_LOWER_FEE;
     }
     UIAlertController *alertForFeeOutsideRecommendedRange = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:useSuggestedFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        feeField.text = [app formatAmount:suggestedFee localCurrency:NO];
+        feeField.text = [NSNumberFormatter formatAmount:suggestedFee localCurrency:NO];
         [self changeForcedFee:suggestedFee afterEvaluation:YES];
     }]];
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:keepUserInputFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -1048,16 +1048,16 @@ BOOL displayingLocalSymbolSend;
 
 - (void)showWarningForInsufficientFundsAndLowFee:(uint64_t)fee suggestedFee:(uint64_t)suggestedFee suggestedAmount:(uint64_t)suggestedAmount
 {
-    NSString *feeString = [app formatMoney:fee localCurrency:NO];
-    NSString *suggestedFeeString = [app formatMoney:suggestedFee localCurrency:NO];
-    NSString *suggestedAmountString = [app formatMoney:suggestedAmount localCurrency:NO];
+    NSString *feeString = [NSNumberFormatter formatMoney:fee localCurrency:NO];
+    NSString *suggestedFeeString = [NSNumberFormatter formatMoney:suggestedFee localCurrency:NO];
+    NSString *suggestedAmountString = [NSNumberFormatter formatMoney:suggestedAmount localCurrency:NO];
     
     UIAlertController *alertForInsufficientFundsAndLowFee = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:[NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_MUST_LOWER_AMOUNT_SUGGESTED_FEE_ARGUMENT_SUGGESTED_AMOUNT_ARGUMENT, feeString, suggestedFeeString, suggestedAmountString] preferredStyle:UIAlertControllerStyleAlert];
     [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_KEEP_LOWER_FEE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self changeForcedFee:fee afterEvaluation:YES];
     }]];
     [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_USE_RECOMMENDED_VALUES style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        feeField.text = [app formatAmount:suggestedFee localCurrency:NO];
+        feeField.text = [NSNumberFormatter formatAmount:suggestedFee localCurrency:NO];
         amountInSatoshi = suggestedAmount;
         [self doCurrencyConversion];
         [self changeForcedFee:suggestedFee afterEvaluation:YES];
@@ -1417,11 +1417,11 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateFundsAvailable
 {
-    if (fiatAmountField.textColor == [UIColor redColor] && btcAmountField.textColor == [UIColor redColor] && [fiatAmountField.text isEqualToString:[app formatAmount:availableAmount localCurrency:YES]]) {
-        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [app formatMoney:availableAmount localCurrency:NO]] forState:UIControlStateNormal];
+    if (fiatAmountField.textColor == [UIColor redColor] && btcAmountField.textColor == [UIColor redColor] && [fiatAmountField.text isEqualToString:[NSNumberFormatter formatAmount:availableAmount localCurrency:YES]]) {
+        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [NSNumberFormatter formatMoney:availableAmount localCurrency:NO]] forState:UIControlStateNormal];
     } else {
         [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT,
-                                        [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
+                                        [NSNumberFormatter formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
                               forState:UIControlStateNormal];
     }
 }
@@ -1623,11 +1623,11 @@ BOOL displayingLocalSymbolSend;
     uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
     uint64_t feeTotal = self.dust + self.feeFromTransactionProposal;
     
-    self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:feeTotal localCurrency:TRUE];
-    self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:feeTotal localCurrency:FALSE];
+    self.confirmPaymentView.fiatFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:TRUE];
+    self.confirmPaymentView.btcFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:FALSE];
     
-    self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
-    self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
+    self.confirmPaymentView.fiatTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:TRUE];
+    self.confirmPaymentView.btcTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:FALSE];
     
     [app.wallet changeForcedFee:[app.wallet parseBitcoinValueFromTextField:feeField]];
 }
@@ -1750,7 +1750,7 @@ BOOL displayingLocalSymbolSend;
                 [self didSelectToAddress:self.toAddress];
                 
                 NSString *amountStringFromDictionary = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
-                if ([app stringHasBitcoinValue:amountStringFromDictionary]) {
+                if ([NSNumberFormatter stringHasBitcoinValue:amountStringFromDictionary]) {
                     if (app.latestResponse.symbol_btc) {
                         NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountStringFromDictionary];
                         amountInSatoshi = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
@@ -1827,7 +1827,7 @@ BOOL displayingLocalSymbolSend;
     
     [self changeToCustomFeeMode];
     
-    feeField.text = [app formatAmount:self.feeFromTransactionProposal localCurrency:NO];
+    feeField.text = [NSNumberFormatter formatAmount:self.feeFromTransactionProposal localCurrency:NO];
 }
 
 - (IBAction)feeInformationClicked:(UIButton *)sender

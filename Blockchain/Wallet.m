@@ -713,7 +713,7 @@
             if (amountReceived > 0) {
                 if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
                     if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-                        [delegate paymentReceivedOnPINScreen:[app formatMoney:amountReceived localCurrency:NO]];
+                        [delegate paymentReceivedOnPINScreen:[NSNumberFormatter formatMoney:amountReceived localCurrency:NO]];
                     }
                 } else {
                     DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
@@ -2598,7 +2598,7 @@
     } else {
         self.emptyAccountIndex = 0;
         self.recoveredAccountIndex++;
-        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [app formatMoney:fundsInAccount]]];
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [NSNumberFormatter formatMoney:fundsInAccount]]];
     }
 }
 
