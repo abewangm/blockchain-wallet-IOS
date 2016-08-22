@@ -16,11 +16,10 @@
 #import "DeviceIdentifier.h"
 #include <libkern/OSAtomic.h>
 #include <sys/sysctl.h>
-
+#import "KeychainItemWrapper+Credentials.h"
 #include <execinfo.h>
 #import "NSString+URLEncode.h"
 #import "RootService.h"
-#import "BCKeychainService.h"
 
 NSString * const UncaughtExceptionHandlerSignalExceptionName = @"UncaughtExceptionHandlerSignalExceptionName";
 NSString * const UncaughtExceptionHandlerSignalKey = @"UncaughtExceptionHandlerSignalKey";
@@ -103,7 +102,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
                           walletIsInitialized? @"TRUE" : @"FALSE",
                           [DeviceIdentifier deviceName],
                           [[NSLocale preferredLanguages] firstObject],
-                          [BCKeychainService hashedGuid],
+                          [KeychainItemWrapper hashedGuid],
                           [exception reason],
                           [[exception userInfo] objectForKey:UncaughtExceptionHandlerAddressesKey]
                           ];

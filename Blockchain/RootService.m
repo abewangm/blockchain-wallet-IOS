@@ -39,7 +39,7 @@
 #import "UIViewController+AutoDismiss.h"
 #import "DeviceIdentifier.h"
 #import "DebugTableViewController.h"
-#import "BCKeychainService.h"
+#import "KeychainItemWrapper+Credentials.h"
 #import "NSString+SHA256.h"
 
 @implementation RootService
@@ -197,7 +197,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showWelcomeOrPinScreen
 {
     // Not paired yet
-    if (![BCKeychainService guid] || ![BCKeychainService sharedKey]) {
+    if (![KeychainItemWrapper guid] || ![KeychainItemWrapper sharedKey]) {
         [self showWelcome];
         [self checkAndWarnOnJailbrokenPhones];
     }
@@ -629,7 +629,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"walletFailedToDecrypt");
     // In case we were on the manual pair screen, we want to go back there. The way to check for that is that the wallet has a guid, but it's not saved yet
-    if (wallet.guid && ![BCKeychainService guid]) {
+    if (wallet.guid && ![KeychainItemWrapper guid]) {
         [self manualPairClicked:nil];
         
         return;
@@ -722,7 +722,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPinModalIfBackgroundedDuringLoad
 {
-    if (![self.pinEntryViewController.view isDescendantOfView:app.window.rootViewController.view] && !self.wallet.isInitialized && [BCKeychainService sharedKey] && [BCKeychainService guid] && !modalView) {
+    if (![self.pinEntryViewController.view isDescendantOfView:app.window.rootViewController.view] && !self.wallet.isInitialized && [KeychainItemWrapper sharedKey] && [KeychainItemWrapper guid] && !modalView) {
         [self showPinModalAsView:YES];
     }
 }
@@ -840,7 +840,7 @@ void (^secondPasswordSuccess)(NSString *);
     if (![wallet isInitialized]) {
         [app showWelcome];
         
-        if ([BCKeychainService guid] && [BCKeychainService sharedKey]) {
+        if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey]) {
             [self showPasswordModal];
         }
     }
@@ -1267,8 +1267,8 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    [BCKeychainService setGuidInKeychain:guid];
-    [BCKeychainService setSharedKeyInKeychain:sharedKey];
+    [KeychainItemWrapper setGuidInKeychain:guid];
+    [KeychainItemWrapper setSharedKeyInKeychain:sharedKey];
 }
 
 - (BOOL)isQRCodeScanningSupported
@@ -1380,8 +1380,8 @@ void (^secondPasswordSuccess)(NSString *);
     self.merchantViewController = nil;
     self.receiveViewController = nil;
     
-    [BCKeychainService removeGuidFromKeychain];
-    [BCKeychainService removeSharedKeyFromKeychain];
+    [KeychainItemWrapper removeGuidFromKeychain];
+    [KeychainItemWrapper removeSharedKeyFromKeychain];
     
     [self.wallet clearLocalStorage];
     
@@ -2136,8 +2136,8 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    NSString *guid = [BCKeychainService guid];
-    NSString *sharedKey = [BCKeychainService sharedKey];
+    NSString *guid = [KeychainItemWrapper guid];
+    NSString *sharedKey = [KeychainItemWrapper sharedKey];
     
     if (guid && sharedKey && password) {
         [self.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
@@ -2206,7 +2206,7 @@ void (^secondPasswordSuccess)(NSString *);
                                       [self showVerifyingBusyViewWithTimer:30.0];
                                   });
                                   NSString * pinKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY];
-                                  NSString * pin = [BCKeychainService pinFromKeychain];
+                                  NSString * pin = [KeychainItemWrapper pinFromKeychain];
                                   if (!pin) {
                                       [self failedToObtainValuesFromKeychain];
                                       return;
@@ -2272,7 +2272,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)disabledTouchID
 {
-    [BCKeychainService removePinFromKeychain];
+    [KeychainItemWrapper removePinFromKeychain];
 }
 
 - (void)verifyTwoFactorSMS
@@ -2491,8 +2491,8 @@ void (^secondPasswordSuccess)(NSString *);
             return;
         }
         
-        NSString *guid = [BCKeychainService guid];
-        NSString *sharedKey = [BCKeychainService sharedKey];
+        NSString *guid = [KeychainItemWrapper guid];
+        NSString *sharedKey = [KeychainItemWrapper sharedKey];
         
         if (guid && sharedKey) {
             [self.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:decrypted];
@@ -2784,7 +2784,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_FIRST_RUN]) {
         
-        if ([BCKeychainService guid] && [BCKeychainService sharedKey] && ![self isPinSet]) {
+        if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey] && ![self isPinSet]) {
             [self alertUserAskingToUseOldKeychain];
         }
         

@@ -1,16 +1,15 @@
 //
-//  BCKeychainService.m
+//  KeychainItemWrapper+Credentials.m
 //  Blockchain
 //
 //  Created by Kevin Wu on 8/22/16.
-//  Copyright © 2016 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2016 Blockchain Luxembourg S.A. All rights reserved.
 //
 
-#import "BCKeychainService.h"
-#import "KeychainItemWrapper.h"
+#import "KeychainItemWrapper+Credentials.h"
 #import "NSString+SHA256.h"
 
-@implementation BCKeychainService
+@implementation KeychainItemWrapper (Credentials)
 
 #pragma mark - GUID
 
