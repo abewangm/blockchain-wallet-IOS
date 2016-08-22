@@ -71,6 +71,36 @@ void (^secondPasswordSuccess)(NSString *);
     return self;
 }
 
+- (void)transitionToIndex:(NSInteger)newIndex
+{
+    if (newIndex == 0)
+    [self sendCoinsClicked:nil];
+    else if (newIndex == 1)
+    [self transactionsClicked:nil];
+    else if (newIndex == 2)
+    [self receiveCoinClicked:nil];
+}
+
+- (void)swipeLeft
+{
+    if (_tabViewController.selectedIndex < 2)
+    {
+        NSInteger newIndex = _tabViewController.selectedIndex + 1;
+        [self transitionToIndex:newIndex];
+    }
+}
+
+- (void)swipeRight
+{
+    if (_tabViewController.selectedIndex)
+    {
+        NSInteger newIndex = _tabViewController.selectedIndex - 1;
+        [self transitionToIndex:newIndex];
+    }
+}
+
+#pragma mark - Application Lifecycle
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -128,32 +158,209 @@ void (^secondPasswordSuccess)(NSString *);
     return YES;
 }
 
-- (void)transitionToIndex:(NSInteger)newIndex
+- (void)applicationWillResignActive:(UIApplication *)application
 {
-    if (newIndex == 0)
-    [self sendCoinsClicked:nil];
-    else if (newIndex == 1)
-    [self transactionsClicked:nil];
-    else if (newIndex == 2)
-    [self receiveCoinClicked:nil];
-}
-
-- (void)swipeLeft
-{
-    if (_tabViewController.selectedIndex < 2)
-    {
-        NSInteger newIndex = _tabViewController.selectedIndex + 1;
-        [self transitionToIndex:newIndex];
+    if (!curtainImageView) {
+        [self setupCurtainView];
+    }
+    
+    [self hideSendAndReceiveKeyboards];
+    
+    if (createWalletView) {
+        [createWalletView hideKeyboard];
+    }
+    
+    if (manualPairView) {
+        [manualPairView hideKeyboard];
+    }
+    
+    if ([mainPasswordTextField isFirstResponder]) {
+        [mainPasswordTextField resignFirstResponder];
+    }
+    
+    // Show the LaunchImage so the list of running apps does not show the user's information
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // Small delay so we don't change the view while it's zooming out
+        
+        [self.window addSubview:curtainImageView];
+        [self.window bringSubviewToFront:curtainImageView];
+        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            curtainImageView.alpha = 1;
+        } completion:^(BOOL finished) {
+            // Dismiss any ViewControllers that are used modally, except for the MerchantViewController
+            if (_tabViewController.presentedViewController == _bcWebViewController) {
+                [_bcWebViewController dismissViewControllerAnimated:NO completion:nil];
+            }
+        }];
+    });
+    
+    if (self.pinEntryViewController.verifyOnly) {
+        [self.pinEntryViewController reset];
     }
 }
 
-- (void)swipeRight
+- (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    if (_tabViewController.selectedIndex)
-    {
-        NSInteger newIndex = _tabViewController.selectedIndex - 1;
-        [self transitionToIndex:newIndex];
+    if ([self.wallet isInitialized] && [self.wallet didUpgradeToHd]) {
+        NSString *defaultAccountAddress = [app.wallet getReceiveAddressForAccount:[app.wallet getDefaultAccountIndex]];
+        if (![[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS] isEqualToString:defaultAccountAddress]) {
+            [[NSUserDefaults standardUserDefaults] setObject:defaultAccountAddress forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+        }
     }
+    
+    [self.loginTimer invalidate];
+    
+    [app.window.rootViewController dismissViewControllerAnimated:NO completion:nil];
+    
+    [self hideSendAndReceiveKeyboards];
+    
+    // Close all modals
+    [app closeAllModals];
+    
+    self.topViewControllerDelegate = nil;
+    
+    // Close screens that shouldn't be in the foreground when returning to the wallet
+    if (_backupNavigationViewController) {
+        [_backupNavigationViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+    
+    if (_settingsNavigationController) {
+        [_settingsNavigationController dismissViewControllerAnimated:NO completion:nil];
+    }
+    
+    app.transactionsViewController.loadedAllTransactions = NO;
+    app.wallet.isFetchingTransactions = NO;
+    
+    [createWalletView showPassphraseTextField];
+    
+    [self closeSideMenu];
+    
+    // Close PIN Modal in case we are setting it (after login or when changing the PIN)
+    if (self.pinEntryViewController.verifyOnly == NO || self.pinEntryViewController.inSettings == NO) {
+        [self closePINModal:NO];
+    }
+    
+    // Show pin modal before we close the app so the PIN verify modal gets shown in the list of running apps and immediately after we restart
+    if ([self isPinSet]) {
+        [self showPinModalAsView:YES];
+        [self.pinEntryViewController reset];
+    }
+    
+    if ([wallet isInitialized]) {
+        [self beginBackgroundUpdateTask];
+        
+        [self logout];
+    }
+    
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    // The PIN modal is shown on EnterBackground, but we don't want to override the modal with the welcome screen
+    if ([self isPinSet]) {
+#ifdef ENABLE_TOUCH_ID
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
+            [self authenticateWithTouchID];
+        }
+#endif
+        return;
+    }
+    
+    if (![wallet isInitialized]) {
+        [app showWelcome];
+        
+        if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey]) {
+            [self showPasswordModal];
+        }
+    }
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    // Fade out the LaunchImage
+    [UIView animateWithDuration:0.25 animations:^{
+        curtainImageView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [curtainImageView removeFromSuperview];
+    }];
+    
+#ifdef ENABLE_SWIPE_TO_RECEIVE
+    if (self.pinEntryViewController.verifyOnly) {
+        
+        NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
+        if (nextAddress) {
+            NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, nextAddress]];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+            
+            NSURLSession *session = [NSURLSession sharedSession];
+            NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                
+                if (error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        DLog(@"Error checking for receive address %@: %@", nextAddress, error);
+                    });
+                    return;
+                }
+                
+                NSDictionary *addressInfo = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingAllowFragments error: &error];
+                NSArray *transactions = addressInfo[@"txs"];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (transactions.count > 0) {
+                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+                        [self.pinEntryViewController paymentReceived];
+                    } else {
+                        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+                        [self.pinEntryViewController setupQRCode];
+                    }
+                });
+                
+            }];
+            
+            [task resume];
+            [session finishTasksAndInvalidate];
+        }
+    }
+#endif
+    
+    [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
+}
+
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if (![self isPinSet]) {
+        if ([[url absoluteString] isEqualToString:[NSString stringWithFormat:@"%@%@", PREFIX_BLOCKCHAIN_WALLET_URI, @"loginAuthorized"]]) {
+            [self manualPairClicked:nil];
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+    
+    if ([[url absoluteString] hasPrefix:PREFIX_BLOCKCHAIN_WALLET_URI]) {
+        return YES;
+    }
+    
+    [app closeModalWithTransition:kCATransitionFade];
+    
+    NSDictionary *dict = [self parseURI:[url absoluteString]];
+    NSString * addr = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
+    NSString * amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
+    
+    showSendCoins = YES;
+    
+    if (!_sendViewController) {
+        // really no reason to lazyload anymore...
+        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
+    }
+    
+    [_sendViewController setAmountFromUrlHandler:amount withToAddress:addr];
+    [_sendViewController reload];
+    
+    return YES;
 }
 
 #pragma mark - Setup
@@ -669,180 +876,10 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Fade out the LaunchImage
-    [UIView animateWithDuration:0.25 animations:^{
-        curtainImageView.alpha = 0;
-    } completion:^(BOOL finished) {
-        [curtainImageView removeFromSuperview];
-    }];
-    
-#ifdef ENABLE_SWIPE_TO_RECEIVE
-    if (self.pinEntryViewController.verifyOnly) {
-        
-        NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
-        if (nextAddress) {
-            NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, nextAddress]];
-            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-            
-            NSURLSession *session = [NSURLSession sharedSession];
-            NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                
-                if (error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        DLog(@"Error checking for receive address %@: %@", nextAddress, error);
-                    });
-                    return;
-                }
-                
-                NSDictionary *addressInfo = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingAllowFragments error: &error];
-                NSArray *transactions = addressInfo[@"txs"];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (transactions.count > 0) {
-                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
-                        [self.pinEntryViewController paymentReceived];
-                    } else {
-                        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
-                        [self.pinEntryViewController setupQRCode];
-                    }
-                });
-                
-            }];
-            
-            [task resume];
-            [session finishTasksAndInvalidate];
-        }
-    }
-#endif
-    
-    [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
-}
-
 - (void)showPinModalIfBackgroundedDuringLoad
 {
     if (![self.pinEntryViewController.view isDescendantOfView:app.window.rootViewController.view] && !self.wallet.isInitialized && [KeychainItemWrapper sharedKey] && [KeychainItemWrapper guid] && !modalView) {
         [self showPinModalAsView:YES];
-    }
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    if (!curtainImageView) {
-        [self setupCurtainView];
-    }
-    
-    [self hideSendAndReceiveKeyboards];
-    
-    if (createWalletView) {
-        [createWalletView hideKeyboard];
-    }
-    
-    if (manualPairView) {
-        [manualPairView hideKeyboard];
-    }
-    
-    if ([mainPasswordTextField isFirstResponder]) {
-        [mainPasswordTextField resignFirstResponder];
-    }
-    
-    // Show the LaunchImage so the list of running apps does not show the user's information
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // Small delay so we don't change the view while it's zooming out
-        
-        [self.window addSubview:curtainImageView];
-        [self.window bringSubviewToFront:curtainImageView];
-        
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            curtainImageView.alpha = 1;
-        } completion:^(BOOL finished) {
-            // Dismiss any ViewControllers that are used modally, except for the MerchantViewController
-            if (_tabViewController.presentedViewController == _bcWebViewController) {
-                [_bcWebViewController dismissViewControllerAnimated:NO completion:nil];
-            }
-        }];
-    });
-    
-    if (self.pinEntryViewController.verifyOnly) {
-        [self.pinEntryViewController reset];
-    }
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    if ([self.wallet isInitialized] && [self.wallet didUpgradeToHd]) {
-        NSString *defaultAccountAddress = [app.wallet getReceiveAddressForAccount:[app.wallet getDefaultAccountIndex]];
-        if (![[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS] isEqualToString:defaultAccountAddress]) {
-            [[NSUserDefaults standardUserDefaults] setObject:defaultAccountAddress forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
-        }
-    }
-    
-    [self.loginTimer invalidate];
-    
-    [app.window.rootViewController dismissViewControllerAnimated:NO completion:nil];
-    
-    [self hideSendAndReceiveKeyboards];
-    
-    // Close all modals
-    [app closeAllModals];
-    
-    self.topViewControllerDelegate = nil;
-    
-    // Close screens that shouldn't be in the foreground when returning to the wallet
-    if (_backupNavigationViewController) {
-        [_backupNavigationViewController dismissViewControllerAnimated:NO completion:nil];
-    }
-    
-    if (_settingsNavigationController) {
-        [_settingsNavigationController dismissViewControllerAnimated:NO completion:nil];
-    }
-    
-    app.transactionsViewController.loadedAllTransactions = NO;
-    app.wallet.isFetchingTransactions = NO;
-    
-    [createWalletView showPassphraseTextField];
-    
-    [self closeSideMenu];
-    
-    // Close PIN Modal in case we are setting it (after login or when changing the PIN)
-    if (self.pinEntryViewController.verifyOnly == NO || self.pinEntryViewController.inSettings == NO) {
-        [self closePINModal:NO];
-    }
-    
-    // Show pin modal before we close the app so the PIN verify modal gets shown in the list of running apps and immediately after we restart
-    if ([self isPinSet]) {
-        [self showPinModalAsView:YES];
-        [self.pinEntryViewController reset];
-    }
-    
-    if ([wallet isInitialized]) {
-        [self beginBackgroundUpdateTask];
-        
-        [self logout];
-    }
-    
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // The PIN modal is shown on EnterBackground, but we don't want to override the modal with the welcome screen
-    if ([self isPinSet]) {
-#ifdef ENABLE_TOUCH_ID
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
-            [self authenticateWithTouchID];
-        }
-#endif
-        return;
-    }
-    
-    if (![wallet isInitialized]) {
-        [app showWelcome];
-        
-        if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey]) {
-            [self showPasswordModal];
-        }
     }
 }
 
@@ -913,40 +950,6 @@ void (^secondPasswordSuccess)(NSString *);
     [dict setObject:[url host] forKey:DICTIONARY_KEY_ADDRESS];
     
     return dict;
-}
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    if (![self isPinSet]) {
-        if ([[url absoluteString] isEqualToString:[NSString stringWithFormat:@"%@%@", PREFIX_BLOCKCHAIN_WALLET_URI, @"loginAuthorized"]]) {
-            [self manualPairClicked:nil];
-            return YES;
-        } else {
-            return NO;
-        }
-    }
-    
-    if ([[url absoluteString] hasPrefix:PREFIX_BLOCKCHAIN_WALLET_URI]) {
-        return YES;
-    }
-    
-    [app closeModalWithTransition:kCATransitionFade];
-    
-    NSDictionary *dict = [self parseURI:[url absoluteString]];
-    NSString * addr = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
-    NSString * amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
-    
-    showSendCoins = YES;
-    
-    if (!_sendViewController) {
-        // really no reason to lazyload anymore...
-        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
-    }
-    
-    [_sendViewController setAmountFromUrlHandler:amount withToAddress:addr];
-    [_sendViewController reload];
-    
-    return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField*)textField
@@ -2824,7 +2827,7 @@ void (^secondPasswordSuccess)(NSString *);
     return input;
 }
 
-#pragma mark API Endpoint Getters
+#pragma mark - API Endpoint Getters
 
 // The debug endpoints are cleared from userDefaults in didFinishLaunching when ENABLE_DEBUG_MENUENABLE_DEBUG_MENU is undefined..so no need to check ENABLE_DEBUG_MENU in these getters
 - (NSString *)serverURL
