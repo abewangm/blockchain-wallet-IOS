@@ -886,13 +886,16 @@
 
 - (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField
 {
-    return [self parseBitcoinValueFromString:textField.text primaryLanguage:textField.textInputMode.primaryLanguage];
+    if (!textField.textInputMode.primaryLanguage) return 0;
+    
+    NSString *language = textField.textInputMode.primaryLanguage;
+    NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+    
+    return [self parseBitcoinValueFromString:textField.text locale:locale];
 }
 
-- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString primaryLanguage:(NSString *)language
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString locale:(NSLocale *)locale
 {
-    NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
-    
     __block NSString *requestedAmountString;
     if ([locale.localeIdentifier isEqualToString:LOCALE_IDENTIFIER_AR]) {
         // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
