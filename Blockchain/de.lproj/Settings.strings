@@ -1,14 +1,14 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "Shop-Tipp";
+"0zs-bt-hEl.text" = "Hinweis speichern";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "Überprüfen Sie Email";
+"8Ha-3e-Nqx.text" = "E-Mail-Adresse verifizieren";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "Two-Step Verification";
+"8Zy-R2-HoW.text" = "Zwei-Schritt-Verifizierung";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
-"Ii6-KE-x0B.placeholder" = "Neues Kennwort bestätigen";
+"Ii6-KE-x0B.placeholder" = "Neues Passwort bestätigen";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
 "Kmb-pO-dHq.text" = "Schwach";
@@ -17,28 +17,28 @@
 "VKs-B5-luJ.placeholder" = "Neues Passwort";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Backup-Satz";
+"WVd-f2-ZLG.text" = "Wiederherstellungspasswort";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "Block-TORs";
+"Wor-ZR-sPS.text" = "TORs sperren";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Schützen Sie Ihren Geldbeutel vor unbefugtem Zugriff durch 2-Step Verification aktivieren. Sie können eine kostenlose app oder Ihre Handy-Nummer verwenden, um Ihren Geldbeutel zu sichern. Dieser Code wird aufgefordert werden, wenn Sie versuchen, Ihre Brieftasche zugreifen.";
+"bFL-5O-fcl.text" = "Schützen Sie durch die Aktivierung der 2-Schritt-Verifizierung Ihre Wallet vor unberechtigten Zugriffen. Zur Sicherung Ihrer Wallet haben Sie die Wahl zwischen der Benutzung einer Gratis-App oder Ihrer Handynummer. Wenn Sie auf Ihre Wallet zugreifen möchten, wird dieser Code erbeten.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "Verbindung Mobile";
+"f52-8F-scW.text" = "Handy verknüpfen";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
-"g8G-4j-qpJ.normalTitle" = "Ihre Handynummer";
+"g8G-4j-qpJ.normalTitle" = "Verwenden Sie Ihre Handynummer";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "2-stufige aktivieren";
+"gIP-mj-Hh2.text" = "2-Schritt aktivieren";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "Führen Sie die Schritte unten für ultimative Sicherheit";
+"u5x-QP-acV.text" = "Für optimale Sicherheit schließen Sie nachfolgende Schritte ab";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
-"wnC-Xd-1Er.title" = "Sicherheits-Center";
+"wnC-Xd-1Er.title" = "Sicherheitscenter";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
 "zd5-DZ-hsS.placeholder" = "Passwort";

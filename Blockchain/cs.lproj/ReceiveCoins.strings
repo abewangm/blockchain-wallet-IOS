@@ -5,16 +5,16 @@
 "48.normalTitle" = "Uložit";
 
 /* (No Commment) */
-"56.text" = "Popisek adresy";
+"56.text" = "Označit adresu";
 
 /* (No Commment) */
 "57.text" = "Adresa";
 
 /* (No Commment) */
-"58.text" = "Popisek";
+"58.text" = "Označení";
 
 /* Class = "UITextField"; placeholder = "Label"; ObjectID = "59"; */
-"59.placeholder" = "Popisek";
+"59.placeholder" = "Označení";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "Adresa";
@@ -23,19 +23,19 @@
 "68.text" = "Žádné adresy";
 
 /* (No Commment) */
-"69.text" = "Váš účet je pravděpodobně není správně spárovány. Klepněte na tlačítko v horním levém rohu obrazovky a postupujte podle pokynů na obrazovce.";
+"69.text" = "Váš účet pravděpodobně není správně spárovaný. Klikněte na tlačítko v horním levém rohu obrazovky a postupujte podle pokynů na obrazovce.";
 
 /* (No Commment) */
-"80.normalTitle" = "ADRESA ARCHIVU";
+"80.normalTitle" = "ARCHIVOVAT ADRESU";
 
 /* (No Commment) */
-"81.normalTitle" = "POPISEK ADRESY";
+"81.normalTitle" = "OZNAČIT ADRESU";
 
 /* (No Commment) */
-"88.normalTitle" = "ŽÁDOST O PLATBU";
+"88.normalTitle" = "POŽADOVAT PLATBU";
 
 /* (No Commment) */
-"90.text" = "Bitcoin adresy ";
+"90.text" = "Bitcoinová adresa";
 
 /* (No Commment) */
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
@@ -44,13 +44,13 @@
 "92.normalTitle" = "KOPÍROVAT ADRESU";
 
 /* (No Commment) */
-"100.text" = "Množství:";
+"100.text" = "Částka:";
 
 /* (No Commment) */
-"120.text" = "5 BTC = 10 DOLARŮ";
+"120.text" = "5 BTC = $10";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
-"E60-hZ-tDl.placeholder" = "0.000";
+"E60-hZ-tDl.placeholder" = "0,000";
 
 /* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
@@ -62,11 +62,11 @@
 "a9y-3I-Drw.placeholder" = "0,00";
 
 /* (No Commment) */
-"i1j-pG-caF.normalTitle" = "Skenování soukromý klíč";
+"i1j-pG-caF.normalTitle" = "Naskenovat privátní klíč";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
 "jRM-0A-Zuo.text" = "BTC";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
-"wDT-32-lDe.text" = "KČ";
+"wDT-32-lDe.text" = "USD";
 

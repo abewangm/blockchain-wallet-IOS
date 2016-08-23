@@ -1,11 +1,11 @@
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "2Ig-LA-4kK"; */
-"2Ig-LA-4kK.text" = "CurrAmt";
+"2Ig-LA-4kK.text" = "Tiền hiện tại";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
 "4.normalTitle" = "Tiếp tục";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "6ll-Xx-4fm"; */
-"6ll-Xx-4fm.text" = "BtcAmt";
+"6ll-Xx-4fm.text" = "Lượng BTC";
 
 /* (No Commment) */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -17,13 +17,13 @@
 "7ho-GV-ikp.text" = "BTC";
 
 /* (No Commment) */
-"8LN-Tc-WVh.normalTitle" = "Thực hiện";
+"8LN-Tc-WVh.normalTitle" = "Hoàn tất";
 
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
-"9B2-23-8j5.text" = "CurrAmt";
+"9B2-23-8j5.text" = "Tiền hiện tại";
 
 /* (No Commment) */
-"13.text" = "Để";
+"13.text" = "Đến";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
 "52.placeholder" = "0,000";
@@ -41,7 +41,7 @@
 "62.placeholder" = "Nhãn";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
-"63.normalTitle" = "Tiết kiệm";
+"63.normalTitle" = "Lưu";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "64"; */
 "64.text" = "Địa chỉ";
@@ -50,43 +50,43 @@
 "65.text" = "Địa chỉ:";
 
 /* (No Commment) */
-"67.text" = "Nhãn địa chỉ";
+"67.text" = "Dán nhãn địa chỉ";
 
 /* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
-"Cbp-Qe-FKP.normalTitle" = "Tùy chỉnh các lệ phí";
+"Cbp-Qe-FKP.normalTitle" = "Tùy chỉnh phí";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Học phí: ";
+"FB0-NP-5do.text" = "Phí: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
-"IUn-6N-qeo.text" = "BtcAmt";
+"IUn-6N-qeo.text" = "Lượng BTC";
 
 /* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
-"Pgx-k8-cTb.normalTitle" = "Hủy bỏ tiếp theo";
+"Pgx-k8-cTb.normalTitle" = "Hủy kế tiếp";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "Tổng số:";
+"Ubr-KG-egH.text" = "Tổng:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
 "ZcA-OM-4nq.text" = "Từ:";
 
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Hãy chờ";
+"Zgn-Wx-Uwx.text" = "Vui lòng chờ";
 
 /* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
-"Zhm-Jw-P4C.text" = "Lệ phí";
+"Zhm-Jw-P4C.text" = "Phí";
 
 /* (No Commment) */
-"aKC-Q2-phD.text" = "Gửi thanh toán";
+"aKC-Q2-phD.text" = "Đang gửi thanh toán";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Số tiền: ";
+"aeG-gf-oXV.text" = "Số tiền:";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
-"d7n-Ue-QXL.normalTitle" = "Tiền có sẵn";
+"d7n-Ue-QXL.normalTitle" = "Các khoản tiền hiện có";
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
-"fpY-AA-We5.text" = "Để";
+"fpY-AA-We5.text" = "Đến";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "p7q-Ud-nYh"; */
 "p7q-Ud-nYh.placeholder" = "0,000";
@@ -101,17 +101,17 @@
 "sXf-3w-qdy.normalTitle" = "Gửi";
 
 /* Class = "UILabel"; text = "CurrTotal"; ObjectID = "t8M-NC-003"; */
-"t8M-NC-003.text" = "CurrTotal";
+"t8M-NC-003.text" = "Tổng hiện tại";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
 "vGH-md-Ck3.text" = "USD";
 
 /* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
-"vzP-xG-GPO.text" = "BtcTotal";
+"vzP-xG-GPO.text" = "Tổng BTC";
 
 /* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
-"yGR-Eh-YG1.text" = "Để:";
+"yGR-Eh-YG1.text" = "Đến:";
 
 /* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
-"zyc-E3-FOM.text" = "Bất kỳ địa chỉ";
+"zyc-E3-FOM.text" = "Bất kỳ địa chỉ nào";
 

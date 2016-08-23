@@ -1,17 +1,17 @@
 /* (No Commment) */
-"4cR-kX-YUY.text" = "Upgrade zu bestätigen";
+"4cR-kX-YUY.text" = "Upgrade bestätigen";
 
-/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "D5e-zI-7dK"; */
-"D5e-zI-7dK.text" = "Lorem Ipsum Dolor sit äh Elit Lamet, Consectetaur Cillium Voluptatem Pecu, Sed UT Tempor Incididunt Ut Labore et Dolore Magna Aliqua. UT Enim Ad Minim haben, Quis bieten Übungsmanöver Ullamco Laboris nisi Ut Aliquip ex Ea Commodo Consequat. Duis Aute Irure augue in Reprehenderit in Voluptate Velit Esse Cillum Dolore Eu Fugiat Nulla Pariatur. Excepteur Sint Occaecat Cupidatat nicht Proident, Sunt in Culpa Qui Officia Deserunt Mollit Anim Id est Laborum. Nam Liber Te Conscient Tum Poen Legum Odioque Civiuda Faktor.";
+/* (No Commment) */
+"D5e-zI-7dK.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
 
-/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Ebu-XV-0mt"; */
+/* (No Commment) */
 "Ebu-XV-0mt.normalTitle" = "Abbrechen";
 
-/* Class = "UIButton"; normalTitle = "Upgrade Now"; ObjectID = "Gk5-cB-fZg"; */
+/* (No Commment) */
 "Gk5-cB-fZg.normalTitle" = "Weiter";
 
-/* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
-"HuT-V7-syg.normalTitle" = "Fragen Sie mich später";
+/* Class = "UIButton"; normalTitle = "Logout and Forget Wallet"; ObjectID = "HuT-V7-syg"; */
+"HuT-V7-syg.normalTitle" = "Später nachfragen";
 
 /* Class = "UIButton"; normalTitle = "Upgrade"; ObjectID = "cZ9-x2-KGM"; */
 "cZ9-x2-KGM.normalTitle" = "Upgrade";

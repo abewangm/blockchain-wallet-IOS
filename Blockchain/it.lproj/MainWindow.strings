@@ -2,58 +2,59 @@
 "2je-u4-PB2.text" = "Transazioni";
 
 /* Class = "UIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "Dimenticare il portafoglio";
+"5gL-FG-Zcc.normalTitle" = "Dimentica il Portafoglio";
 
 /* Class = "UIButton"; normalTitle = "1.12345 BTC"; ObjectID = "6sh-r5-yAx"; */
-"6sh-r5-yAx.normalTitle" = "1.12345 BTC";
+"6sh-r5-yAx.normalTitle" = "1,12345 BTC";
 
 /* (No Commment) */
-"257.text" = "BTC 0";
+"257.text" = "0 BTC";
 
 /* Class = "UILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "caricamento";
+"263.text" = "in caricamento";
 
 /* (No Commment) */
-"353.text" = "Abbinamento automatico";
+"353.text" = "Associazione automatica";
 
 /* (No Commment) */
-"358.text" = "Creare un nuovo portafoglio";
+"358.text" = "Crea un nuovo portafoglio";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "360"; */
 "360.text" = "1";
 
 /* Class = "UILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Accedi al tuo Blockchain Portafoglio tramite il vostro PC o Mac a https://blockchain.info/wallet/login";
+"361.text" = "Accedi al tuo Portafoglio Blockchain attraverso il tuo PC o Mac su
+https://blockchain.info/wallet/login";
 
 /* Class = "UILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
-/* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Se si utilizza il vecchio raccoglitore, fare clic sul pulsante Impostazioni Account e scegliere la scheda dispositivi. Se si sta utilizzando il nostro nuovo portafoglio, andare su Impostazioni / informazioni sul portafoglio.";
+/* (No Commment) */
+"364.text" = "Se stai usando il vecchio portafoglio, clicca sul pulsante delle Impostazioni dell'Account e scegli la casella Dispositivi. Se stai usando il nostro nuovo portafoglio, vai su Impostazioni/Informazioni Portafoglio.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Fare clic su Visualizza il codice di abbinamento per rivelare un QR Code, un codice a barre quadrato nero & bianco. Scansione del codice con la fotocamera.";
+"369.text" = "Clicca su Mostra il Codice di Associazione rivelare un Codice QR, un codice a barre quadrato bianco e nero. Fai la scansione del codice con la tua fotocamera.";
 
 /* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "Eseguire la scansione di codice di abbinamento";
+"370.normalTitle" = "Fai la scansione del codice di associazione";
 
 /* (No Commment) */
-"376.normalTitle" = "Pulsante 2";
+"376.normalTitle" = "Tasto 2";
 
 /* (No Commment) */
-"377.normalTitle" = "Pulsante 1";
+"377.normalTitle" = "Tasto 1";
 
 /* (No Commment) */
-"378.text" = "Se hai già un Blockchain Portafoglio, scegliere il dispositivo di coppia; in caso contrario, scegliere Crea portafoglio.    È gratis! Nessun email richiesto.";
+"378.text" = "Se hai già un Portafoglio Blockchain, scegli Associa Dispositivo; altrimenti, scegli Crea Portafoglio.    È Gratis! Non è richiesta una email.";
 
 /* (No Commment) */
-"380.text" = "Benvenuto a Blockchain Portafoglio";
+"380.text" = "Benvenuto sul Portafoglio Blockchain";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Nessun transazioni recenti";
+"387.text" = "Nessuna transazione recente";
 
 /* (No Commment) */
 "394.text" = "Password:";
@@ -62,19 +63,19 @@
 "395.placeholder" = "Password";
 
 /* (No Commment) */
-"396.text" = "Confermare:";
+"396.text" = "Conferma:";
 
 /* Class = "UITextField"; placeholder = "Confirm password"; ObjectID = "397"; */
-"397.placeholder" = "Conferma password";
+"397.placeholder" = "Conferma la password";
 
 /* (No Commment) */
-"398.normalTitle" = "Creare il portafoglio";
+"398.normalTitle" = "Crei un portafoglio";
 
 /* (No Commment) */
-"465.text" = "Password necessaria";
+"465.text" = "Password richiesta";
 
 /* Class = "UILabel"; text = "Password Request Description"; ObjectID = "467"; */
-"467.text" = "Descrizione della richiesta di password";
+"467.text" = "Descrizione password richiesta";
 
 /* (No Commment) */
 "468.text" = "Password:";
@@ -83,16 +84,16 @@
 "469.placeholder" = "Password";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "471"; */
-"471.normalTitle" = "Continuare";
+"471.normalTitle" = "Continua";
 
 /* (No Commment) */
-"586.text" = "Identificatore di portafoglio:";
+"586.text" = "Identificatore portafoglio:";
 
 /* Class = "UITextField"; placeholder = "Wallet identifier"; ObjectID = "587"; */
-"587.placeholder" = "Identificatore di portafoglio";
+"587.placeholder" = "Identificatore portafoglio";
 
 /* (No Commment) */
-"588.text" = "Si è scelto di associare manualmente (o pairing automatico non è supportato con il dispositivo). Inserisci i tuoi dati di accesso qui sotto.";
+"588.text" = "Hai scelto di fare l'associazione manualmente (oppure l'associazione automatica non è supportata con il tuo dispositivo). Inserisci i tuoi dati di login sotto.";
 
 /* (No Commment) */
 "591.text" = "Password:";
@@ -101,13 +102,13 @@
 "592.placeholder" = "Password";
 
 /* (No Commment) */
-"602.text" = "È necessario disporre di autenticazione a due fattori disabilitato manualmente a coppia.";
+"602.text" = "Devi avere l'autenticazione a due fattori disabilitata per effettuare l'accoppiamento manualmente.";
 
 /* Class = "UILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "Sei disconnesso o c'era un errore di decrittografia file il tuo portafoglio. Inserire la password qui sotto per effettuare il login.";
+"624.text" = "Sei stato disconnesso oppure si è verificato un errore nella decriptazione del file del tuo portafoglio. Inserisci la tua password sotto per effettuare l'accesso.";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "625"; */
-"625.normalTitle" = "Continuare";
+"625.normalTitle" = "Continua";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "626"; */
 "626.placeholder" = "Password";
@@ -116,55 +117,55 @@
 "627.text" = "Password:";
 
 /* (No Commment) */
-"630.text" = "Account di accesso";
+"630.text" = "Accedi";
 
 /* Class = "UILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "Se si desidera dimenticare questo portafoglio e ricominciare da capo, premere 'Dimenticare Wallet'.";
+"C0R-wB-wF1.text" = "Se vuoi dimenticare questo portafoglio e ricominciare da capo, premi 'Dimentica Portafoglio'.";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "DIx-fJ-eKX"; */
 "DIx-fJ-eKX.text" = "Titolo";
 
 /* Class = "UITextField"; placeholder = "Recovery passphrase"; ObjectID = "L1x-Mw-4H5"; */
-"L1x-Mw-4H5.placeholder" = "Recupero password";
+"L1x-Mw-4H5.placeholder" = "Frase di backup";
 
 /* Class = "UITextField"; placeholder = "Your email"; ObjectID = "LsW-69-Qon"; */
-"LsW-69-Qon.placeholder" = "Il tuo indirizzo email";
+"LsW-69-Qon.placeholder" = "La tua email";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Mk4-63-3pL"; */
 "Mk4-63-3pL.text" = "Debole";
 
 /* (No Commment) */
-"OKS-md-gDQ.normalTitle" = "Pulsante 3";
+"OKS-md-gDQ.normalTitle" = "Tasto 3";
 
 /* Class = "UILabel"; text = "By creating a new wallet you agree to the"; ObjectID = "Qvx-f4-C2O"; */
-"Qvx-f4-C2O.text" = "Creando un nuovo portafoglio accetti la";
+"Qvx-f4-C2O.text" = "Creando un nuovo portafoglio accetti i";
 
 /* (No Commment) */
-"TzC-Tw-04r.normalTitle" = "Continuare";
+"TzC-Tw-04r.normalTitle" = "Continua";
 
 /* (No Commment) */
-"VcH-wh-BEs.text" = "Posta elettronica:";
+"VcH-wh-BEs.text" = "Email:";
 
 /* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
-"bzM-Ub-MUU.normalTitle" = "345.68 USD";
+"bzM-Ub-MUU.normalTitle" = "345,68 USD";
 
 /* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
-"fI2-PD-Xwa.normalTitle" = "Non riesco ad accedere la mia macchina fotografica";
+"fI2-PD-Xwa.normalTitle" = "Non posso accedere alla mia fotocamera";
 
 /* (No Commment) */
 "jUZ-5W-4qw.text" = "* Richiesto";
 
 /* (No Commment) */
-"kK3-Xs-d3Q.text" = "0 transazioni";
+"kK3-Xs-d3Q.text" = "0 Transazioni";
 
 /* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Inserisci il tuo 12 recupero parole con spazi per recuperare il vostro fondi & transazioni";
+"pEh-08-oZW.text" = "Inserisci le tue 12 parole inclusi gli spazi per recuperare i tuoi fondi e le tue transazioni";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Associazione manuale";
 
 /* Class = "UIButton"; normalTitle = "Blockchain Terms of Service"; ObjectID = "wfI-8F-dfm"; */
-"wfI-8F-dfm.normalTitle" = "Blockchain termini del servizio";
+"wfI-8F-dfm.normalTitle" = "Termini di Servizio di Blockchain";
 
 /* (No Commment) */
 "wvh-x7-hB8.text" = "* Minimo 10 caratteri";

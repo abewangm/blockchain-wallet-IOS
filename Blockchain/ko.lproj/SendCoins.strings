@@ -11,19 +11,19 @@
 "6zi-8R-Tmt.normalTitle" = "BTC";
 
 /* Class = "UILabel"; text = "From"; ObjectID = "7"; */
-"7.text" = "보낸 사람";
+"7.text" = "다음으로부터";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
 "7ho-GV-ikp.text" = "BTC";
 
 /* (No Commment) */
-"8LN-Tc-WVh.normalTitle" = "완료";
+"8LN-Tc-WVh.normalTitle" = "완료됨";
 
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
 "9B2-23-8j5.text" = "CurrAmt";
 
 /* (No Commment) */
-"13.text" = "받는 사람";
+"13.text" = "다음에게";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
 "52.placeholder" = "0.000";
@@ -35,10 +35,10 @@
 "57.text" = "5 BTC = $10";
 
 /* (No Commment) */
-"61.text" = "레이블:";
+"61.text" = "라벨:";
 
 /* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
-"62.placeholder" = "레이블";
+"62.placeholder" = "라벨";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
 "63.normalTitle" = "저장";
@@ -50,13 +50,13 @@
 "65.text" = "주소:";
 
 /* (No Commment) */
-"67.text" = "라벨 주소";
+"67.text" = "주소 라벨 붙이기";
 
 /* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
-"Cbp-Qe-FKP.normalTitle" = "사용자 지정 요금";
+"Cbp-Qe-FKP.normalTitle" = "수수료 사용자 설정";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "요금: ";
+"FB0-NP-5do.text" = "수수료: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
@@ -65,28 +65,28 @@
 "Pgx-k8-cTb.normalTitle" = "다음 취소";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "총:";
+"Ubr-KG-egH.text" = "합계:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
-"ZcA-OM-4nq.text" = "보낸 사람:";
+"ZcA-OM-4nq.text" = "다음으로부터:";
 
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "잠시만 기다려 주십시오";
+"Zgn-Wx-Uwx.text" = "기다리세요";
 
 /* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
-"Zhm-Jw-P4C.text" = "요금";
+"Zhm-Jw-P4C.text" = "수수료";
 
 /* (No Commment) */
-"aKC-Q2-phD.text" = "지불 보내기";
+"aKC-Q2-phD.text" = "돈 보내기";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "금액: ";
+"aeG-gf-oXV.text" = "금액:";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
-"d7n-Ue-QXL.normalTitle" = "자금을 사용할 수";
+"d7n-Ue-QXL.normalTitle" = "자금 있음";
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
-"fpY-AA-We5.text" = "받는 사람";
+"fpY-AA-We5.text" = "다음에게";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "p7q-Ud-nYh"; */
 "p7q-Ud-nYh.placeholder" = "0.000";
@@ -104,14 +104,14 @@
 "t8M-NC-003.text" = "CurrTotal";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
-"vGH-md-Ck3.text" = "원";
+"vGH-md-Ck3.text" = "USD";
 
 /* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
 "vzP-xG-GPO.text" = "BtcTotal";
 
 /* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
-"yGR-Eh-YG1.text" = "받는 사람:";
+"yGR-Eh-YG1.text" = "다음에게:";
 
 /* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
-"zyc-E3-FOM.text" = "모든 주소";
+"zyc-E3-FOM.text" = "어떤 주소";
 

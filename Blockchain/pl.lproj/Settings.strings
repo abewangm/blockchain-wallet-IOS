@@ -1,44 +1,44 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "Sklep podpowiedź";
+"0zs-bt-hEl.text" = "Przechowuj wskazówkę";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "Sprawdź, czy E-mail";
+"8Ha-3e-Nqx.text" = "Zweryfikuj e-mail";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "Weryfikacji dwuetapowej";
+"8Zy-R2-HoW.text" = "Uwierzytelnianie Dwustopniowe";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
 "Ii6-KE-x0B.placeholder" = "Potwierdź nowe hasło";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
-"Kmb-pO-dHq.text" = "Słaby";
+"Kmb-pO-dHq.text" = "Słabe";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
 "VKs-B5-luJ.placeholder" = "Nowe hasło";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Kopia zapasowa frazy";
+"WVd-f2-ZLG.text" = "Zwrot zapasowy";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "Blok TORs";
+"Wor-ZR-sPS.text" = "Blokuj TORy";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Chronić twój portfel przed nieautoryzowanym dostępem, umożliwiając weryfikację 2. Możesz używać pewien wolny aplikacja lub numer telefonu komórkowego do zabezpieczenia portfela. Ten kod zostanie zgłoszony podczas ty próbować wobec dostęp twój portfel.";
+"bFL-5O-fcl.text" = "Chroń swój portfel przed nieautoryzowanym dostępem poprzez włączenie Uwierzytelniania Dwustopniowego. Możesz korzystać z darmowej aplikacji lub numeru telefonu komórkowego, by zabezpieczyć swój portfel. Zostaniesz poproszony o ten kod przy każdej próbie dostępu do swojego portfela.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "Łącza komórkowego";
+"f52-8F-scW.text" = "Powiąż komórkę";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
-"g8G-4j-qpJ.normalTitle" = "Za pomocą numeru telefonu komórkowego";
+"g8G-4j-qpJ.normalTitle" = "Użyj swojego numeru telefonu komórkowego";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "Włączyć 2-stopniowy";
+"gIP-mj-Hh2.text" = "Włącz Uwierzytelnianie Dwustopniowe";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "Wykonaj kroki opisane poniżej ostatecznym bezpieczeństwa";
+"u5x-QP-acV.text" = "Wykonaj poniższe kroki dla najwyższego bezpieczeństwa";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
-"wnC-Xd-1Er.title" = "Centrum zabezpieczeń";
+"wnC-Xd-1Er.title" = "Centrum bezpieczeństwa";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
 "zd5-DZ-hsS.placeholder" = "Hasło";
