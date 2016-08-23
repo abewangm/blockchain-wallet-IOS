@@ -334,7 +334,7 @@ NSString *detailLabel;
         return [app.wallet parseBitcoinValueFromTextField:btcAmountField];
     } else {
         NSString *language = fiatAmountField.textInputMode.primaryLanguage;
-        NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+        NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
         NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
     }
@@ -704,7 +704,7 @@ NSString *detailLabel;
     if (textField == btcAmountField || textField == fiatAmountField) {
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
-        NSLocale *locale = textField.textInputMode.primaryLanguage ? [NSLocale localeWithLocaleIdentifier:textField.textInputMode.primaryLanguage] : [NSLocale currentLocale];
+        NSLocale *locale = [textField.textInputMode.primaryLanguage isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:textField.textInputMode.primaryLanguage] : [NSLocale currentLocale];
         NSArray  *commas = [newString componentsSeparatedByString:[locale objectForKey:NSLocaleDecimalSeparator]];
         
         // Only one comma or point in input field allowed
@@ -756,13 +756,11 @@ NSString *detailLabel;
         uint64_t amountInSatoshi = 0;
 
         if (textField == fiatAmountField) {
-            NSString *language = textField.textInputMode.primaryLanguage;
-            NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
             NSString *amountString = [newString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
             amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
         }
         else {
-            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString primaryLanguage:textField.textInputMode.primaryLanguage];
+            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString locale:locale];
         }
         
         if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
