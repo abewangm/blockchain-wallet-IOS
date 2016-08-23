@@ -8,10 +8,11 @@
 
 #import "TransactionDetailViewController.h"
 
-@interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UITextView *textView;
+@property CGFloat oldTextViewHeight;
 
 @end
 @implementation TransactionDetailViewController
@@ -27,6 +28,17 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"detail"];
 }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+    CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
+    if (size.height > self.oldTextViewHeight) {
+        self.oldTextViewHeight = size.height;
+        self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, size.height);
+        [self.tableView beginUpdates]; // This will cause an animated update of
+        [self.tableView endUpdates];
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 20;
@@ -35,16 +47,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail"];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detail"];
+        
+    if (indexPath.row == 2) {
+        if (!self.textView) {
+            self.textView = [[UITextView alloc] initWithFrame:CGRectMake(cell.frame.size.width/2, 0, cell.frame.size.width/2, 44)];
+            self.oldTextViewHeight = self.textView.frame.size.height;
+            self.textView.delegate = self;
+            [cell addSubview:self.textView];
+        }
+    } else {
+        
     }
     
     cell.textLabel.text = @"Test";
-    
-
-    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2 && self.textView.text) {
+        CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
+        return size.height < 44 ? 44 : size.height;
+    }
+    return 44;
 }
 
 @end
