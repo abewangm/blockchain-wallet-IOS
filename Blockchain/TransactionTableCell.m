@@ -10,6 +10,7 @@
 #import "Transaction.h"
 #import "RootService.h"
 #import "TransactionsViewController.h"
+#import "TransactionDetailViewController.h"
 
 @implementation TransactionTableCell
 
@@ -125,7 +126,38 @@
 
 - (IBAction)transactionClicked:(UIButton *)button
 {
-    [app pushWebViewController:[URL_SERVER stringByAppendingFormat:@"/tx/%@", transaction.myHash] title:BC_STRING_TRANSACTION];
+    TransactionDetailViewController *viewController = [TransactionDetailViewController new];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, navigationController.view.frame.size.width, DEFAULT_HEADER_HEIGHT)];
+    topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    [navigationController.view addSubview:topBar];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, navigationController.view.frame.size.width - 160, 40)];
+    headerLabel.font = [UIFont systemFontOfSize:22.0];
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.textAlignment = NSTextAlignmentCenter;
+    headerLabel.adjustsFontSizeToFitWidth = YES;
+    headerLabel.text = BC_STRING_TRANSACTION;
+    [topBar addSubview:headerLabel];
+    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(navigationController.view.frame.size.width - 80, 15, 80, 51);
+    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [backButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
+    [backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
+    [backButton addTarget:self action:@selector(dismissDetails) forControlEvents:UIControlEventTouchUpInside];
+    [topBar addSubview:backButton];
+    
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)dismissDetails
+{
+    [app.tabViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)btcbuttonclicked:(id)sender
