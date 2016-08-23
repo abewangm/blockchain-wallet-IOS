@@ -31,11 +31,13 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
-    if (size.height > self.oldTextViewHeight) {
+    if (size.height != self.oldTextViewHeight) {
         self.oldTextViewHeight = size.height;
         self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, size.height);
-        [self.tableView beginUpdates]; // This will cause an animated update of
+        [UIView setAnimationsEnabled:NO];
+        [self.tableView beginUpdates];
         [self.tableView endUpdates];
+        [UIView setAnimationsEnabled:YES];
     }
 }
 
@@ -51,6 +53,8 @@
     if (indexPath.row == 2) {
         if (!self.textView) {
             self.textView = [[UITextView alloc] initWithFrame:CGRectMake(cell.frame.size.width/2, 0, cell.frame.size.width/2, 44)];
+            self.textView.textAlignment = NSTextAlignmentRight;
+            self.textView.backgroundColor = [UIColor redColor];
             self.oldTextViewHeight = self.textView.frame.size.height;
             self.textView.delegate = self;
             [cell addSubview:self.textView];
