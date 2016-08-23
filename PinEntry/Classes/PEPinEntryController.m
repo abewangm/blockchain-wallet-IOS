@@ -147,6 +147,8 @@ static PEViewController *VerifyController()
             
             pinController.swipeLabel.alpha = 1;
             pinController.swipeLabel.hidden = NO;
+            pinController.swipeLabelImageView.alpha = 1;
+            pinController.swipeLabelImageView.hidden = NO;
             
             [pinController.scrollView setContentSize:CGSizeMake(pinController.scrollView.frame.size.width *2, pinController.scrollView.frame.size.height)];
             [pinController.scrollView setPagingEnabled:YES];
@@ -156,6 +158,7 @@ static PEViewController *VerifyController()
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:.5 animations:^{
                     pinController.swipeLabel.alpha = 0;
+                    pinController.swipeLabelImageView.alpha = 0;
                 }];
             });
             
@@ -179,10 +182,12 @@ static PEViewController *VerifyController()
             [pinController.scrollView addSubview:self.addressLabel];
         } else {
             pinController.swipeLabel.hidden = YES;
+            pinController.swipeLabelImageView.hidden = YES;
         }
     }
 #else
     pinController.swipeLabel.hidden = YES;
+    pinController.swipeLabelImageView.hidden = YES;
 #endif
 }
 
