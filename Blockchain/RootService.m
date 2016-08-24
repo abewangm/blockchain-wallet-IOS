@@ -31,7 +31,6 @@
 #import "Reachability.h"
 #import "SideMenuViewController.h"
 #import "BCWelcomeView.h"
-#import "BCHdUpgradeView.h"
 #import "BCWebViewController.h"
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
