@@ -98,12 +98,20 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (CertificatePinner *)certificatePinner
+{
+    if (!_certificatePinner) _certificatePinner = [[CertificatePinner alloc] init];
+    return _certificatePinner;
+}
+
 #pragma mark - Application Lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app.window = appDelegate.window;
+    
+    [self.certificatePinner pinCertificate];
     
     [self checkForNewInstall];
     

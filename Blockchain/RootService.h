@@ -25,6 +25,7 @@
 #import "AccountsAndAddressesNavigationController.h"
 #import "TransactionsViewController.h"
 #import "NSNumberFormatter+Currencies.h"
+#import "CertificatePinner.h"
 
 @protocol TopViewController;
 
@@ -99,6 +100,9 @@
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;
 
 @property (nonatomic) BOOL changedPassword;
+
+// Certificate Pinning
+@property (nonatomic) CertificatePinner *certificatePinner;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 - (void)applicationDidBecomeActive:(UIApplication *)application;
@@ -218,7 +222,6 @@
 - (void)authorizationRequired;
 
 - (void)endBackgroundUpdateTask;
-
 @end
 
 extern RootService *app;
