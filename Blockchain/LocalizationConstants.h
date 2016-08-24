@@ -171,6 +171,7 @@
 #define BC_STRING_AUTOMATICALLY NSLocalizedString(@"Automatically", nil)
 #define BC_STRING_PIN_VALIDATION_ERROR NSLocalizedString(@"PIN Validation Error", nil)
 #define BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN NSLocalizedString(@"Please choose another PIN", nil)
+#define BC_STRING_NEW_PIN_MUST_BE_DIFFERENT NSLocalizedString(@"New PIN must be different", nil)
 #define BC_PIN_NO_MATCH NSLocalizedString(@"PINs do not match", nil)
 
 #define BC_STRING_PIN_VALIDATION_ERROR_DETAIL NSLocalizedString(@"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?", nil)
