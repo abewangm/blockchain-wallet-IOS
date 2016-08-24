@@ -7,6 +7,7 @@
 //
 
 #import "TransactionDetailViewController.h"
+#import "TransactionDetailTableCell.h"
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
@@ -25,7 +26,7 @@
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"detail"];
+    [self.tableView registerClass:[TransactionDetailTableCell class] forCellReuseIdentifier:@"detail"];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -43,24 +44,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail"];
-        
+    TransactionDetailTableCell *cell = (TransactionDetailTableCell *)[tableView dequeueReusableCellWithIdentifier:@"detail" forIndexPath:indexPath];
+    
     if (indexPath.row == 2) {
-        if (!self.textView) {
-            self.textView = [[UITextView alloc] initWithFrame:CGRectMake(cell.frame.size.width/2, 0, cell.frame.size.width/2, 44)];
-            self.textView.textAlignment = NSTextAlignmentRight;
-            self.textView.backgroundColor = [UIColor redColor];
-            self.oldTextViewHeight = self.textView.frame.size.height;
-            self.textView.delegate = self;
-            [cell addSubview:self.textView];
-        }
+        cell.textView = [[UITextView alloc] initWithFrame:CGRectMake(cell.frame.size.width/2, 0, cell.frame.size.width/2, 44)];
+        cell.textView.textAlignment = NSTextAlignmentRight;
+        cell.textView.backgroundColor = [UIColor redColor];
+        self.oldTextViewHeight = cell.textView.frame.size.height;
+        cell.textView.delegate = self;
+        [cell addSubview:cell.textView];
+        self.textView = cell.textView;
     } else {
-        
+
     }
     
     cell.textLabel.text = @"Test";

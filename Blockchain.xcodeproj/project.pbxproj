@@ -65,6 +65,7 @@
 		23F601A41D09C931009102BF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F601A31D09C931009102BF /* Reachability.m */; };
 		23F720F21C32DC0A00577738 /* DebugTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F720F11C32DC0A00577738 /* DebugTableViewController.m */; };
 		23FDEF9A1D6CBC7000FC80D6 /* TransactionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEF991D6CBC7000FC80D6 /* TransactionDetailViewController.m */; };
+		23FDEFA91D6E43DE00FC80D6 /* TransactionDetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */; };
 		670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */; };
 		6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6710DA0D1A8E82D80089DDED /* BCLine.m */; };
 		673107EF19F6BAF200BE6899 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F749DFF1514F1EF00B3A8B8 /* AVFoundation.framework */; };
@@ -664,6 +665,8 @@
 		23F720F11C32DC0A00577738 /* DebugTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugTableViewController.m; sourceTree = "<group>"; };
 		23FDEF981D6CBC7000FC80D6 /* TransactionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailViewController.h; sourceTree = "<group>"; };
 		23FDEF991D6CBC7000FC80D6 /* TransactionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailViewController.m; sourceTree = "<group>"; };
+		23FDEFA71D6E43DE00FC80D6 /* TransactionDetailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailTableCell.h; sourceTree = "<group>"; };
+		23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailTableCell.m; sourceTree = "<group>"; };
 		670595A21AB0F59D00D2D6D9 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		6710DA0C1A8E82D80089DDED /* BCLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCLine.h; sourceTree = "<group>"; };
@@ -1426,6 +1429,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				23FDEFA71D6E43DE00FC80D6 /* TransactionDetailTableCell.h */,
+				23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */,
 				23E2FC061C7F60E7004CFF79 /* BCInsetLabel.h */,
 				23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */,
 				230FD2D71C5BF1A700336683 /* BCQRCodeView.h */,
@@ -1718,6 +1723,7 @@
 				9FCA4D161514949500ECDFBE /* ReceiveCoinsViewController.m in Sources */,
 				230FD2D31C5BD04000336683 /* BCEditAddressView.m in Sources */,
 				23C95EA61C0779C600E4692A /* SettingsChangePasswordViewController.m in Sources */,
+				23FDEFA91D6E43DE00FC80D6 /* TransactionDetailTableCell.m in Sources */,
 				2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */,
 				23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */,
 				9FCA4D1B151494BF00ECDFBE /* SendViewController.m in Sources */,
