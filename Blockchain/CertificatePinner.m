@@ -41,7 +41,7 @@
     
     // Get local and remote cert data
     NSData *remoteCertificateData = CFBridgingRelease(SecCertificateCopyData(certificate));
-    NSString *pathToCert = [[NSBundle mainBundle]pathForResource:@"github.com" ofType:@"cer"];
+    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:@"blockchain" ofType:@"der"];
     NSData *localCertificate = [NSData dataWithContentsOfFile:pathToCert];
     
     // The pinnning check
