@@ -31,7 +31,6 @@
 #import "Reachability.h"
 #import "SideMenuViewController.h"
 #import "BCWelcomeView.h"
-#import "BCHdUpgradeView.h"
 #import "BCWebViewController.h"
 #import "KeychainItemWrapper.h"
 #import "UpgradeViewController.h"
@@ -1996,6 +1995,8 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PASSWORD_PART_HASH];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_PIN_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
+
+    self.lastEnteredPIN = 0000;
 }
 
 - (void)closePINModal:(BOOL)animated
@@ -2618,10 +2619,17 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)pinEntryController:(PEPinEntryController *)c willChangeToNewPin:(NSUInteger)_pin
 {
-    if (_pin == PIN_COMMON_CODE_1 ||
-        _pin == PIN_COMMON_CODE_2 ||
-        _pin == PIN_COMMON_CODE_3 ||
-        _pin == PIN_COMMON_CODE_4) {
+    if (_pin == self.lastEnteredPIN && self.lastEnteredPIN != 0000) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_NEW_PIN_MUST_BE_DIFFERENT preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self reopenChangePIN];
+        }]];
+        [c presentViewController:alert animated:YES completion:nil];
+    } else if (_pin == PIN_COMMON_CODE_1 ||
+               _pin == PIN_COMMON_CODE_2 ||
+               _pin == PIN_COMMON_CODE_3 ||
+               _pin == PIN_COMMON_CODE_4 ||
+               _pin == PIN_COMMON_CODE_5) {
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:nil]];
@@ -2629,9 +2637,7 @@ void (^secondPasswordSuccess)(NSString *);
             [self reopenChangePIN];
         }]];
         [c presentViewController:alert animated:YES completion:nil];
-    }
-    
-    if (_pin == PIN_INVALID_CODE) {
+    } else if (_pin == PIN_INVALID_CODE) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [self reopenChangePIN];

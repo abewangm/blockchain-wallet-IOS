@@ -55,7 +55,6 @@
 #define BC_STRING_ASK_TO_ADD_TO_ADDRESS_BOOK NSLocalizedString(@"Would you like to add the bitcoin address %@ to your address book?", nil)
 #define BC_STRING_ARGUMENT_COPIED_TO_CLIPBOARD NSLocalizedString(@"%@ copied to clipboard", nil)
 #define BC_STRING_COPIED_TO_CLIPBOARD NSLocalizedString(@"Copied to clipboard", nil)
-#define BC_STRING_CONFIRM_PAYMENT_OF NSLocalizedString(@"To: %@\n%@\nTotal Amount: %@\nFee: %@\n(%@)", nil)
 #define BC_STRING_SEND_FROM NSLocalizedString(@"Send from...", nil)
 #define BC_STRING_SEND_TO NSLocalizedString(@"Send to...", nil)
 #define BC_STRING_RECEIVE_TO NSLocalizedString(@"Receive to...", nil)
@@ -172,6 +171,7 @@
 #define BC_STRING_AUTOMATICALLY NSLocalizedString(@"Automatically", nil)
 #define BC_STRING_PIN_VALIDATION_ERROR NSLocalizedString(@"PIN Validation Error", nil)
 #define BC_STRING_PLEASE_CHOOSE_ANOTHER_PIN NSLocalizedString(@"Please choose another PIN", nil)
+#define BC_STRING_NEW_PIN_MUST_BE_DIFFERENT NSLocalizedString(@"New PIN must be different", nil)
 #define BC_PIN_NO_MATCH NSLocalizedString(@"PINs do not match", nil)
 
 #define BC_STRING_PIN_VALIDATION_ERROR_DETAIL NSLocalizedString(@"An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?", nil)
@@ -214,7 +214,6 @@
 #define BC_STRING_IMPORTED_ADDRESSES NSLocalizedString(@"Imported Addresses", nil)
 #define BC_STRING_IMPORTED_ADDRESSES_ARCHIVED NSLocalizedString(@"Imported Addresses (Archived)", nil)
 
-#define BC_STRING_UPGRADE_TO_HD NSLocalizedString(@"Upgrade to HD", nil)
 #define BC_STRING_UPGRADE_TO_V3 NSLocalizedString(@"Upgrade to V3", nil)
 
 #define BC_STRING_ADDRESS_BOOK NSLocalizedString(@"Address book", nil)
@@ -225,7 +224,6 @@
 #define BC_STRING_LOADING_LOADING_TRANSACTIONS NSLocalizedString(@"Loading transactions", nil)
 #define BC_STRING_LOADING_LOADING_BUILD_HD_WALLET NSLocalizedString(@"Initializing Wallet", nil)
 #define BC_STRING_LOADING_CHECKING_WALLET_UPDATES NSLocalizedString(@"Checking for Wallet updates", nil)
-#define BC_STRING_LOADING_CREATING_HD_WALLET NSLocalizedString(@"Creating HD Wallet", nil)
 #define BC_STRING_LOADING_CREATING_V3_WALLET NSLocalizedString(@"Creating V3 Wallet", nil)
 #define BC_STRING_LOADING_CREATING NSLocalizedString(@"Creating", nil)
 #define BC_STRING_LOADING_CREATING_WALLET NSLocalizedString(@"Creating new Wallet", nil)
@@ -275,17 +273,6 @@
 #define BC_STRING_UNARCHIVE_ADDRESS NSLocalizedString(@"Unarchive Address", nil)
 
 #define BC_STRING_AT_LEAST_ONE_ACTIVE_ADDRESS NSLocalizedString(@"You must leave at least one active address", nil)
-
-#define BC_STRING_UPGRADE_TEXT NSLocalizedString(@"We've designed a whole new\nwallet experience for you", nil)
-#define BC_STRING_UPGRADE_FEATURES_WHATS_BETTER NSLocalizedString(@"The upgrade takes just a second and your bitcoin and history will be safe. Here is what’s better:", nil)
-#define BC_STRING_UPGRADE_FEATURES_REDESIGNED_USER_EXPERIENCE NSLocalizedString(@"Completely updated design and user experience", nil)
-#define BC_STRING_UPGRADE_FEATURES_ROBUST_SECURITY_CENTER NSLocalizedString(@"Robust security center", nil)
-#define BC_STRING_UPGRADE_FEATURES_ENHANCED_PRIVACY NSLocalizedString(@"Enhanced Privacy", nil)
-#define BC_STRING_UPGRADE_FEATURES_SIMPLIFIED_BACKUP NSLocalizedString(@"Simplified backup and recovery", nil)
-#define BC_STRING_UPGRADE_FEATURES_CUSTOMIZED_FUND_MANAGEMENT NSLocalizedString(@"Customized fund management", nil)
-#define BC_STRING_UPGRADE_TITLE NSLocalizedString(@"Confirm Upgrade", nil)
-#define BC_STRING_UPGRADE_WARNING NSLocalizedString(@"Note that once upgraded, you cannot go back to the previous version, but all your bitcoin and your transaction history will be kept.", nil)
-#define BC_STRING_CONFIRM_UPGRADE NSLocalizedString(@"Confirm Upgrade", nil)
 #define BC_STRING_UPGRADE NSLocalizedString(@"Upgrade", nil)
 #define BC_STRING_UPGRADE_SUCCESS_TITLE NSLocalizedString(@"Success!", nil)
 #define BC_STRING_UPGRADE_SUCCESS NSLocalizedString(@"You are now running our most secure Bitcoin wallet", nil)
@@ -293,16 +280,12 @@
 #define BC_STRING_UPGRADE_FEATURE_TWO NSLocalizedString(@"Easy one time wallet backup keeps you in control of your funds", nil)
 #define BC_STRING_UPGRADE_FEATURE_ONE NSLocalizedString(@"Everything you need to store, spend and receive your bitcoin", nil)
 #define BC_STRING_UPGRADE_ALERTVIEW_TITLE NSLocalizedString(@"Upgrade Wallet", nil)
-#define BC_STRING_UPGRADE_ALERTVIEW_MESSAGE NSLocalizedString(@"We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet", nil)
 #define BC_STRING_UPGRADE_ALERTVIEW_CANCEL_TITLE NSLocalizedString(@"Not now", nil)
 #define BC_STRING_UPGRADE_ALERTVIEW_UPDATE_TITLE NSLocalizedString(@"Update", nil)
 #define BC_STRING_DONT_UPGRADE NSLocalizedString(@"or Continue", nil)
 #define BC_STRING_UPGRADE_BUTTON_TITLE NSLocalizedString(@"UPGRADE YOUR WALLET", nil)
 #define BC_STRING_ASK_ME_LATER NSLocalizedString(@"Ask Me Later", nil)
 #define BC_STRING_LOGOUT_AND_FORGET_WALLET NSLocalizedString(@"Logout and forget wallet", nil)
-
-#define BC_STRING_SUPPORT_EMAIL_SUBJECT NSLocalizedString(@"iOS Support Request", nil)
-#define BC_STRING_SUPPORT_INSTRUCTIONS NSLocalizedString(@"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it.", nil)
 
 #define BC_STRING_UNSAFE_DEVICE_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_UNSAFE_DEVICE_MESSAGE NSLocalizedString(@"Your device appears to be jailbroken. The security of your wallet may be compromised.", nil)

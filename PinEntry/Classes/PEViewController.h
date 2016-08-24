@@ -57,6 +57,7 @@
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView * activityIndicator;
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UILabel *swipeLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *swipeLabelImageView;
 
 - (void)resetPin;
 - (IBAction)cancelChangePin:(id)sender;

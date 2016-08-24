@@ -16,6 +16,7 @@
                 <outlet property="promptLabel" destination="15" id="Zfl-Bw-OnY"/>
                 <outlet property="scrollView" destination="OHm-a6-xhh" id="Zac-Xw-wIq"/>
                 <outlet property="swipeLabel" destination="NfS-0O-G6S" id="DBW-Z6-rjf"/>
+                <outlet property="swipeLabelImageView" destination="YIU-2C-T7a" id="jz7-iq-Psn"/>
                 <outlet property="versionLabel" destination="C16-0H-UUa" id="xXQ-pW-cty"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -56,7 +57,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to receive -&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NfS-0O-G6S">
-                            <rect key="frame" x="166" y="123" width="146" height="21"/>
+                            <rect key="frame" x="170" y="123" width="123" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,6 +93,10 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="PEPin-off.png" id="7">
                             <rect key="frame" x="167" y="13" width="49" height="49"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="YIU-2C-T7a">
+                            <rect key="frame" x="297" y="126" width="15" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
                 </scrollView>

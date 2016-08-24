@@ -75,16 +75,12 @@
 	self.pin = @"";
     
     self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height - 20, self.scrollView.frame.size.width, 360);
-}
-
-// TODO set this when we receive a on_tx message from the websocket to this address
-- (void)didReceiveBitcoins {
-    [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"nextReceivingAddressUsed"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
     
-    // TODO show alert on payment
-    
-    // TOOD adjust UI so that QR is greyed out (or somehow not scannable) and descLabel shows already used message.
+    self.swipeLabel.text = BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE;
+    self.swipeLabelImageView.image = [UIImage imageNamed:@"arrow_downward"];
+    self.swipeLabelImageView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+    self.swipeLabelImageView.image = [self.swipeLabelImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.swipeLabelImageView setTintColor:[UIColor whiteColor]];
 }
 
 - (IBAction)cancelChangePin:(id)sender
