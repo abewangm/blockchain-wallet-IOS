@@ -41,7 +41,8 @@
     
     // Get local and remote cert data
     NSData *remoteCertificateData = CFBridgingRelease(SecCertificateCopyData(certificate));
-    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:@"blockchain" ofType:@"der"];
+    NSString *resource = [session.sessionDescription isEqualToString:BC_STRING_MERCHANT] ? @"merchant-directory-info": @"blockchain";
+    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:resource ofType:@"der"];
     NSData *localCertificate = [NSData dataWithContentsOfFile:pathToCert];
     
     // The pinnning check

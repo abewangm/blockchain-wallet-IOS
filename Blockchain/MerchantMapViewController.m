@@ -148,9 +148,12 @@
     // Send approximate coordinates for merchant lookup
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL_MERCHANT]];
     
-    [NSURLConnection sendAsynchronousRequest:urlRequest queue:self.merchantLocationNetworkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (connectionError) {
-            DLog(@"Error retrieving Merchants");
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:app.certificatePinner delegateQueue:self.merchantLocationNetworkQueue];
+    session.sessionDescription = BC_STRING_MERCHANT;
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            DLog(@"Error retrieving Merchants: %@", [error localizedDescription]);
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSError *error = nil;
@@ -167,6 +170,8 @@
             });
         }
     }];
+    [task resume];
+    [session finishTasksAndInvalidate];
 }
 
 - (void)displayFilteredMerchants

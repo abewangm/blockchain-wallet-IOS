@@ -67,6 +67,7 @@
 		23FDEF9D1D6E180100FC80D6 /* CertificatePinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEF9C1D6E180100FC80D6 /* CertificatePinner.m */; };
 		23FDEFA21D6E21A800FC80D6 /* blockchain.der in Resources */ = {isa = PBXBuildFile; fileRef = 23FDEFA11D6E21A800FC80D6 /* blockchain.der */; };
 		23FDEFAC1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEFAB1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m */; };
+		23FDEFAE1D6F736400FC80D6 /* merchant-directory-info.der in Resources */ = {isa = PBXBuildFile; fileRef = 23FDEFAD1D6F736400FC80D6 /* merchant-directory-info.der */; };
 		670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */; };
 		6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6710DA0D1A8E82D80089DDED /* BCLine.m */; };
 		673107EF19F6BAF200BE6899 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F749DFF1514F1EF00B3A8B8 /* AVFoundation.framework */; };
@@ -669,6 +670,7 @@
 		23FDEFA11D6E21A800FC80D6 /* blockchain.der */ = {isa = PBXFileReference; lastKnownFileType = file; name = blockchain.der; path = ../blockchain.der; sourceTree = "<group>"; };
 		23FDEFAA1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+SendSynchronousRequest.h"; sourceTree = "<group>"; };
 		23FDEFAB1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+SendSynchronousRequest.m"; sourceTree = "<group>"; };
+		23FDEFAD1D6F736400FC80D6 /* merchant-directory-info.der */ = {isa = PBXFileReference; lastKnownFileType = file; name = "merchant-directory-info.der"; path = "../merchant-directory-info.der"; sourceTree = "<group>"; };
 		670595A21AB0F59D00D2D6D9 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		6710DA0C1A8E82D80089DDED /* BCLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCLine.h; sourceTree = "<group>"; };
@@ -1397,6 +1399,7 @@
 			isa = PBXGroup;
 			children = (
 				23FDEFA11D6E21A800FC80D6 /* blockchain.der */,
+				23FDEFAD1D6F736400FC80D6 /* merchant-directory-info.der */,
 				C9BE918B1945F5FC00FD516D /* Images.xcassets */,
 				C9D4B2B0193E024700EDA9EA /* Sounds */,
 				C9D4B2B1193E026500EDA9EA /* Xibs */,
@@ -1478,7 +1481,7 @@
 				23321D7B1BB084320005624F /* Build Image Assets from PSDs */,
 				9FB3636F14B60128004BEA02 /* Resources */,
 				238F8BD11BAB3662005B7024 /* Version Bump */,
-				23FDEFA31D6E22C900FC80D6 /* Get SSL Certificate */,
+				23FDEFA31D6E22C900FC80D6 /* Get SSL Certificates */,
 			);
 			buildRules = (
 			);
@@ -1567,6 +1570,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23FDEFAE1D6F736400FC80D6 /* merchant-directory-info.der in Resources */,
 				23FDEFA21D6E21A800FC80D6 /* blockchain.der in Resources */,
 				23321D7A1BB0730C0005624F /* my-wallet.js in Resources */,
 				67D2B6EE1A2F2DEF0078782C /* wallet-ios.js in Resources */,
@@ -1665,19 +1669,19 @@
 			shellPath = /bin/sh;
 			shellScript = "echo 'nothing'\n#VERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\n#NEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\n#NEWSUBVERSION=$(($NEWSUBVERSION + 1))\n#NEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n#/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $NEWVERSIONSTRING\" \"${INFOPLIST_FILE}\"\n\n#VERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\n#NEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\n#NEWSUBVERSION=$(($NEWSUBVERSION + 1))\n#NEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n#/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $NEWVERSIONSTRING\" \"${INFOPLIST_FILE}\"";
 		};
-		23FDEFA31D6E22C900FC80D6 /* Get SSL Certificate */ = {
+		23FDEFA31D6E22C900FC80D6 /* Get SSL Certificates */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Get SSL Certificate";
+			name = "Get SSL Certificates";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}/.. && openssl s_client -connect blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > blockchain.der";
+			shellScript = "cd ${SRCROOT}/.. && openssl s_client -connect blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > blockchain.der && openssl s_client -connect merchant-directory.blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > merchant-directory-info.der";
 		};
 /* End PBXShellScriptBuildPhase section */
 
