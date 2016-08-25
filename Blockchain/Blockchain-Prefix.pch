@@ -194,6 +194,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define HOST_NAME_WALLET_SERVER @"blockchain.info"
 #define HOST_NAME_DEV_SERVER @"blockchain.co.uk"
+#define HOST_NAME_MERCHANT @"merchant-directory.blockchain.info"
+#define HOST_NAME_API @"api.blockchain.info"
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info"
 #define DEFAULT_WEBSOCKET_SERVER @"wss://blockchain.info/inv"

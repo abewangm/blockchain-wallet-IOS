@@ -150,7 +150,7 @@
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:app.certificatePinner delegateQueue:self.merchantLocationNetworkQueue];
-    session.sessionDescription = BC_STRING_MERCHANT;
+    session.sessionDescription = urlRequest.URL.host;
     NSURLSessionDataTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             DLog(@"Error retrieving Merchants: %@", [error localizedDescription]);

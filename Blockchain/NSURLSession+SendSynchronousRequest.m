@@ -13,7 +13,9 @@
 + (NSData *)sendSynchronousRequest:(NSURLRequest *)request
                           delegate:(id <NSURLSessionDelegate>)delegate
                  returningResponse:(__autoreleasing NSURLResponse **)responsePtr
-                             error:(__autoreleasing NSError **)errorPtr {
+                             error:(__autoreleasing NSError **)errorPtr
+                sessionDescription:(NSString *)sessionDescription
+{
     dispatch_semaphore_t    sem;
     __block NSData *        result;
     
@@ -23,6 +25,7 @@
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:delegate delegateQueue:nil];
+    session.sessionDescription = sessionDescription;
     [[session dataTaskWithRequest:request
                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                     if (errorPtr != NULL) {
