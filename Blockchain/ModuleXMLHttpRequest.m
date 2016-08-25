@@ -1,4 +1,6 @@
 #import "ModuleXMLHttpRequest.h"
+#import "RootService.h"
+#import "NSURLSession+SendSynchronousRequest.h"
 
 @implementation ModuleXMLHttpRequest
 {
@@ -54,7 +56,7 @@
 
     NSHTTPURLResponse* response;
     NSError* error;
-    NSData* data = [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
+    NSData* data = [NSURLSession sendSynchronousRequest:req delegate:app.certificatePinner returningResponse:&response error:&error];
     status = [response statusCode];
     self.responseText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     _responseHeaders = response.allHeaderFields;

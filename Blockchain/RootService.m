@@ -303,7 +303,7 @@ void (^secondPasswordSuccess)(NSString *);
             NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, nextAddress]];
             NSURLRequest *request = [NSURLRequest requestWithURL:URL];
             
-            NSURLSession *session = [NSURLSession sharedSession];
+            NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self.certificatePinner delegateQueue:nil];
             NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                 
                 if (error) {

@@ -7,7 +7,7 @@
 //
 
 #import "CertificatePinner.h"
-@interface CertificatePinner() <NSURLSessionDelegate>
+@interface CertificatePinner()
 @property (nonatomic) NSURLSession *session;
 @end
 @implementation CertificatePinner

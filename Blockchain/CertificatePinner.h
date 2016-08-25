@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CertificatePinner : NSObject
+@interface CertificatePinner : NSObject <NSURLSessionDelegate>
 - (void)pinCertificate;
 @end
