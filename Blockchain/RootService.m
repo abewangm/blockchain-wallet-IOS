@@ -111,7 +111,18 @@ void (^secondPasswordSuccess)(NSString *);
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app.window = appDelegate.window;
     
-    [self.certificatePinner pinCertificate];
+#ifndef ENABLE_DEBUG_MENU
+    // DLog(@"Clearing debug menu userDefaults since debug menu is off");
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+#endif
+    
+    if ([URL_SERVER isEqualToString:DEFAULT_WALLET_SERVER]) {
+        [self.certificatePinner pinCertificate];
+    }
     
     [self checkForNewInstall];
     
@@ -126,15 +137,6 @@ void (^secondPasswordSuccess)(NSString *);
     // Send email when exceptions are caught
 #ifndef DEBUG
     NSSetUncaughtExceptionHandler(&HandleException);
-#endif
-    
-#ifndef ENABLE_DEBUG_MENU
-    // DLog(@"Clearing debug menu userDefaults since debug menu is off");
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 #endif
     
     // White status bar
