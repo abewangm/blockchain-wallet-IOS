@@ -9,6 +9,12 @@
 #import "TransactionDetailViewController.h"
 #import "TransactionDetailTableCell.h"
 
+const int cellRowValue = 0;
+const int cellRowDescription = 1;
+const int cellRowToFrom = 2;
+const int cellRowDate = 3;
+const int cellRowStatus = 4;
+
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
@@ -51,27 +57,27 @@
 {
     TransactionDetailTableCell *cell = (TransactionDetailTableCell *)[tableView dequeueReusableCellWithIdentifier:@"detail" forIndexPath:indexPath];
     
-    if (indexPath.row == 2) {
-        cell.textView = [[UITextView alloc] initWithFrame:CGRectMake(cell.frame.size.width/2, 0, cell.frame.size.width/2, 44)];
-        cell.textView.textAlignment = NSTextAlignmentRight;
+    if (indexPath.row == cellRowDescription) {
+        [cell addTextView];
         cell.textView.backgroundColor = [UIColor redColor];
         self.oldTextViewHeight = cell.textView.frame.size.height;
         cell.textView.delegate = self;
-        [cell addSubview:cell.textView];
         self.textView = cell.textView;
-    } else {
-
+    } else if (indexPath.row == cellRowToFrom) {
+        [cell addToAndFromLabels];
+    } else if (indexPath.row == cellRowDate) {
+        cell.textLabel.text = BC_STRING_DATE;
     }
-    
-    cell.textLabel.text = @"Test";
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 2 && self.textView.text) {
+    if (indexPath.row == cellRowDescription && self.textView.text) {
         CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
         return size.height < 44 ? 44 : size.height;
+    } else if (indexPath.row == cellRowToFrom) {
+        return 88;
     }
     return 44;
 }

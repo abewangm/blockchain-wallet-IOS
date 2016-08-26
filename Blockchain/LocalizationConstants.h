@@ -93,6 +93,7 @@
 
 #define BC_STRING_UNCONFIRMED NSLocalizedString(@"Unconfirmed", nil)
 #define BC_STRING_COUNT_CONFIRMATIONS NSLocalizedString(@"%d Confirmations", nil)
+#define BC_STRING_ARGUMENT_CONFIRMATIONS NSLocalizedString(@"%@ Confirmations", nil)
 
 #define BC_STRING_TRANSFERRED NSLocalizedString(@"Transferred", nil)
 #define BC_STRING_RECEIVED NSLocalizedString(@"Received", nil)
@@ -521,3 +522,13 @@
 
 #define BC_STRING_ERROR_SAVING_WALLET_CHECK_FOR_OTHER_DEVICES NSLocalizedString(@"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device.", nil)
 #define BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN NSLocalizedString(@"This address has already been used. Please login.", nil)
+
+#define BC_STRING_DESCRIPTION NSLocalizedString(@"Description", nil)
+#define BC_STRING_VALUE_WHEN_SENT_ARGUMENT NSLocalizedString(@"Value when sent: %@", nil)
+#define BC_STRING_STATUS NSLocalizedString(@"Status", nil)
+#define BC_STRING_TRANSACTION_FEE_ARGUMENT NSLocalizedString(@"Transaction fee: %@", nil)
+#define BC_STRING_PENDING NSLocalizedString(@"Pending", nil)
+#define BC_STRING_ARGUMENT_RECIPIENTS NSLocalizedString(@"%@ Recipients", nil)
+#define BC_STRING_TO NSLocalizedString(@"To", nil)
+#define BC_STRING_DATE NSLocalizedString(@"Date", nil)
+#define BC_STRING_FROM NSLocalizedString(@"From", nil)

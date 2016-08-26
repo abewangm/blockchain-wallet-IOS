@@ -10,4 +10,9 @@
 
 @interface TransactionDetailTableCell : UITableViewCell
 @property (nonatomic) UITextView *textView;
+@property (nonatomic) UILabel *topLabel;
+@property (nonatomic) UILabel *bottomLabel;
+
+- (void)addTextView;
+- (void)addToAndFromLabels;
 @end
