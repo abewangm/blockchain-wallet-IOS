@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+@protocol CertificatePinnerDelegate
+- (void)failedToValidateCertificate;
+@end
 
 @interface CertificatePinner : NSObject <NSURLSessionDelegate>
+@property (nonatomic) id <CertificatePinnerDelegate> delegate;
 - (void)pinCertificate;
 @end

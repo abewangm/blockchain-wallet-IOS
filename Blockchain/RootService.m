@@ -101,6 +101,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (CertificatePinner *)certificatePinner
 {
     if (!_certificatePinner) _certificatePinner = [[CertificatePinner alloc] init];
+    _certificatePinner.delegate = self;
     return _certificatePinner;
 }
 
@@ -2841,6 +2842,17 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     return input;
+}
+
+#pragma mark - Certificate Pinner Delegate
+
+- (void)failedToValidateCertificate
+{
+    if (!self.window.rootViewController.presentedViewController) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 @end

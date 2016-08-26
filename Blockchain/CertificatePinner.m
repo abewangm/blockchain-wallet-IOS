@@ -62,6 +62,7 @@
         NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
         completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
     } else {
+        [self.delegate failedToValidateCertificate];
         completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, NULL);
     }
 }

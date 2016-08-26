@@ -121,6 +121,9 @@
 #define BC_STRING_OPEN_MAIL_APP NSLocalizedString(@"Open Mail App", nil)
 #define BC_STRING_FAILED_TO_LOAD_WALLET_TITLE NSLocalizedString(@"Failed To Load Wallet", nil)
 
+#define BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE NSLocalizedString(@"Failed to validate server certificate", nil)
+#define BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE NSLocalizedString(@"A connection cannot be established because the server certificate could not be validated. Please check your network settings and ensure that you are using a secure connection.", nil)
+
 #define BC_STRING_NO_INTERNET_CONNECTION NSLocalizedString(@"No internet connection.", nil)
 #define BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION NSLocalizedString(@"Request failed. Please check your internet connection.", nil)
 #define BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION NSLocalizedString(@"An error occurred while updating your spendable balance. Please check your internet connection and try again.", nil)
