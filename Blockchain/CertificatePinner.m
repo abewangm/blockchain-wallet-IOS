@@ -5,7 +5,7 @@
 //  Created by Kevin Wu on 8/24/16.
 //  Copyright © 2016 Blockchain Luxembourg S.A. All rights reserved.
 //
-
+#import <openssl/x509.h>
 #import "CertificatePinner.h"
 @interface CertificatePinner()
 @property (nonatomic) NSURLSession *session;
@@ -49,16 +49,38 @@
     } else {
         resource = @"blockchain";
     }
+    
     NSString *pathToCert = [[NSBundle mainBundle] pathForResource:resource ofType:@"der"];
     NSData *localCertificate = [NSData dataWithContentsOfFile:pathToCert];
     
     // The pinnning check
-    if ([remoteCertificateData isEqualToData:localCertificate] && certificateIsValid) {
+    
+    NSString *remoteKeyString = [self getPublicKeyStringFromData:remoteCertificateData];
+    NSString *localKeyString = [self getPublicKeyStringFromData:localCertificate];
+    
+    if ([remoteKeyString isEqualToString: localKeyString] && certificateIsValid) {
         NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
         completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
     } else {
         completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, NULL);
     }
+}
+
+- (NSString *)getPublicKeyStringFromData:(NSData *)data
+{
+    const unsigned char *certificateDataBytes = (const unsigned char *)[data bytes];
+    X509 *certificateX509 = d2i_X509(NULL, &certificateDataBytes, [data length]);
+    ASN1_BIT_STRING *pubKey2 = X509_get0_pubkey_bitstr(certificateX509);
+    
+    NSString *publicKeyString = [[NSString alloc] init];
+    
+    for (int i = 0; i < pubKey2->length; i++)
+    {
+        NSString *aString = [NSString stringWithFormat:@"%02x", pubKey2->data[i]];
+        publicKeyString = [publicKeyString stringByAppendingString:aString];
+    }
+    
+    return publicKeyString;
 }
 
 @end
