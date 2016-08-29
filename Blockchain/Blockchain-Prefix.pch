@@ -356,6 +356,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_SET_TIMEOUT @"setTimeout"
 #define JAVASCRIPTCORE_SET_INTERVAL @"setInterval"
 
+#define WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED @"User backgrounded app"
+
 #pragma mark - Constants
 
 #define SATOSHI 1e8 // 100,000,000
