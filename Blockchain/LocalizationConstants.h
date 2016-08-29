@@ -451,6 +451,7 @@
 #define BC_STRING_RESET_DONT_SHOW_AGAIN_PROMPT NSLocalizedString(@"Show all 'Dont Show Again' alerts", nil)
 #define BC_STRING_RESET_DONT_SHOW_AGAIN_PROMPT_MESSAGE NSLocalizedString(@"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds.", nil)
 #define BC_STRING_APP_STORE_REVIEW_PROMPT_TIMER NSLocalizedString(@"App Store review prompt timer (seconds)", nil)
+#define BC_STRING_CERTIFICATE_PINNING @"Certificate Pinning"
 #define BC_STRING_PLEASE_LOGIN NSLocalizedString(@"Please Login", nil)
 #define BC_STRING_RESET NSLocalizedString(@"Reset", nil)
 #define BC_STRING_FROM_LOWERCASE NSLocalizedString(@"from", nil)

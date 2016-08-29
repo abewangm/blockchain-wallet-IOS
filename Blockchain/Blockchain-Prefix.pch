@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-// #define ENABLE_DEBUG_MENU 1
+ #define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
 #define ENABLE_TRANSACTION_FILTERING 1
@@ -295,12 +295,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED @"swipeToReceive"
 #define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"
 #define USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT @"hideTransferAllFundsAlert"
-#define USER_DEFAULTS_KEY_SIMULATE_SURGE @"simulateSurge"
 
 #define USER_DEFAULTS_KEY_DEBUG_SERVER_URL @"serverURL"
 #define USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL @"webSocketURL"
 #define USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL @"merchantURL"
 #define USER_DEFAULTS_KEY_DEBUG_API_URL @"apiURL"
+#define USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING @"certificatePinning"
+#define USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE @"simulateSurge"
 
 #define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 
