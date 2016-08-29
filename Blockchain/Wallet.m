@@ -699,7 +699,7 @@
         NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.addressToSubscribe]];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:app.certificatePinner delegateQueue:nil];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration] delegate:app.certificatePinner delegateQueue:nil];
         NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             
             if (error) {

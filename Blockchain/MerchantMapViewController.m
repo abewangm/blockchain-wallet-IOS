@@ -148,7 +148,7 @@
     // Send approximate coordinates for merchant lookup
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL_MERCHANT]];
     
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:app.certificatePinner delegateQueue:self.merchantLocationNetworkQueue];
     session.sessionDescription = urlRequest.URL.host;
     NSURLSessionDataTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
