@@ -81,6 +81,8 @@
         publicKeyString = [publicKeyString stringByAppendingString:aString];
     }
     
+    X509_free(certificateX509);
+    
     return publicKeyString;
 }
 
