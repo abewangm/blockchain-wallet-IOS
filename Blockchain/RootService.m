@@ -253,7 +253,7 @@ void (^secondPasswordSuccess)(NSString *);
         [self logout];
     }
     
-    [self.wallet.webSocket close];
+    [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:@"User backgrounded app"];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

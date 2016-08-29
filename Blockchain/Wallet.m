@@ -681,6 +681,11 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
+    if (code == WEBSOCKET_CODE_BACKGROUNDED_APP) {
+        // Socket will reopen when app becomes active
+        return;
+    }
+    
     DLog(@"websocket closed: code %li, reason: %@", code, reason);
     if (self.webSocket.readyState != 1 && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
         DLog(@"reconnecting websocket");
