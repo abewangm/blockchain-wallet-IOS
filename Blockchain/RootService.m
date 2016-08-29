@@ -253,6 +253,7 @@ void (^secondPasswordSuccess)(NSString *);
         [self logout];
     }
     
+    [self.wallet.webSocket close];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
