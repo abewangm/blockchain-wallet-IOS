@@ -358,6 +358,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_SET_TIMEOUT @"setTimeout"
 #define JAVASCRIPTCORE_SET_INTERVAL @"setInterval"
 
+#define WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED @"User backgrounded app"
+
 #pragma mark - Constants
 
 #define SATOSHI 1e8 // 100,000,000
@@ -434,6 +436,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define DICTIONARY_EASTERN_ARABIC_NUMERAL @{@"\u0660":@"0", @"\u0661":@"1", @"\u0662":@"2", @"\u0663":@"3", @"\u0664":@"4", @"\u0665":@"5", @"\u0666":@"6", @"\u0667":@"7", @"\u0668":@"8", @"\u0669":@"9", @"\u066b":@"."}
 #define REGEX_EASTERN_ARABIC_NUMERALS @"[\u0660-\u066b]"
+
+#define WEBSOCKET_CODE_BACKGROUNDED_APP 4500
 
 #pragma mark - Runtime modes
 
