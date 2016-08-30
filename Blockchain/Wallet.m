@@ -579,13 +579,15 @@
     NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:DEFAULT_WEBSOCKET_SERVER]];
     [webSocketRequest addValue:DEFAULT_WALLET_SERVER forHTTPHeaderField:@"Origin"];
     
-    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"blockchain" ofType:@"der"];
-    NSData *certData = [[NSData alloc] initWithContentsOfFile:cerPath];
-    CFDataRef certDataRef = (__bridge CFDataRef)certData;
-    SecCertificateRef certRef = SecCertificateCreateWithData(NULL, certDataRef);
-    id certificate = (__bridge id)certRef;
-    
-    [webSocketRequest setSR_SSLPinnedCertificates:@[certificate]];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
+        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"blockchain" ofType:@"der"];
+        NSData *certData = [[NSData alloc] initWithContentsOfFile:cerPath];
+        CFDataRef certDataRef = (__bridge CFDataRef)certData;
+        SecCertificateRef certRef = SecCertificateCreateWithData(NULL, certDataRef);
+        id certificate = (__bridge id)certRef;
+        
+        [webSocketRequest setSR_SSLPinnedCertificates:@[certificate]];
+    }
     
     self.webSocket = [[SRWebSocket alloc] initWithURLRequest:webSocketRequest];
     self.webSocket.delegate = self;
