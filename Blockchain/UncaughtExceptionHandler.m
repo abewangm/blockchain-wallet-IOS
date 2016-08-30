@@ -21,6 +21,7 @@
 #import "NSString+URLEncode.h"
 #import "RootService.h"
 #import "NSURLSession+SendSynchronousRequest.h"
+#import "SessionManager.h"
 
 NSString * const UncaughtExceptionHandlerSignalExceptionName = @"UncaughtExceptionHandlerSignalExceptionName";
 NSString * const UncaughtExceptionHandlerSignalKey = @"UncaughtExceptionHandlerSignalKey";
@@ -117,7 +118,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
     NSHTTPURLResponse * repsonse = NULL;
     NSError * error = NULL;
     
-    [NSURLSession sendSynchronousRequest:[NSURLRequest requestWithURL:url] delegate:app.certificatePinner returningResponse:&repsonse error:&error sessionDescription:nil];
+    [NSURLSession sendSynchronousRequest:[NSURLRequest requestWithURL:url] session:[SessionManager sharedSession] delegate:app.certificatePinner returningResponse:&repsonse error:&error sessionDescription:nil];
 }
 
 - (void)handleException:(NSException *)exception

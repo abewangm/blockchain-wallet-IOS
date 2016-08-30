@@ -11,6 +11,7 @@
 @implementation NSURLSession (SendSynchronousRequest)
 
 + (NSData *)sendSynchronousRequest:(NSURLRequest *)request
+                           session:(NSURLSession *)session
                           delegate:(id <NSURLSessionDelegate>)delegate
                  returningResponse:(__autoreleasing NSURLResponse **)responsePtr
                              error:(__autoreleasing NSError **)errorPtr
@@ -23,8 +24,6 @@
     
     sem = dispatch_semaphore_create(0);
     
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:delegate delegateQueue:nil];
     session.sessionDescription = sessionDescription;
     [[session dataTaskWithRequest:request
                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -41,9 +40,7 @@
                 }] resume];
     
     dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
-    
-    [session finishTasksAndInvalidate];
-    
+        
     return result;
 }
 

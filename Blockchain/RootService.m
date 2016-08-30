@@ -10,6 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "SessionManager.h"
 #import "AppDelegate.h"
 #import "MultiAddressResponse.h"
 #import "Wallet.h"
@@ -109,6 +110,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self.certificatePinner queue:nil];
+    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app.window = appDelegate.window;
     
@@ -268,6 +271,10 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
+    
+    [SessionManager resetSessionWithCompletionHandler:^{
+        // completion handler must be non-null
+    }];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -308,7 +315,9 @@ void (^secondPasswordSuccess)(NSString *);
             NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, nextAddress]];
             NSURLRequest *request = [NSURLRequest requestWithURL:URL];
             
-            NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration] delegate:self.certificatePinner delegateQueue:nil];
+            NSURLSession *session = [SessionManager sharedSession];
+            NSURL *url = [NSURL URLWithString:DEFAULT_WALLET_SERVER];
+            session.sessionDescription = url.host;
             NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                 
                 if (error) {
@@ -334,7 +343,6 @@ void (^secondPasswordSuccess)(NSString *);
             }];
             
             [task resume];
-            [session finishTasksAndInvalidate];
         }
     }
 #endif

@@ -22,6 +22,7 @@
 #import "ModuleXMLHTTPRequest.h"
 #import "KeychainItemWrapper+Credentials.h"
 #import <openssl/evp.h>
+#import "SessionManager.h"
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -704,8 +705,7 @@
         NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.addressToSubscribe]];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration] delegate:app.certificatePinner delegateQueue:nil];
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             
             if (error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -727,7 +727,6 @@
         }];
         
         [task resume];
-        [session finishTasksAndInvalidate];
         
         self.addressToSubscribe = nil;
     }

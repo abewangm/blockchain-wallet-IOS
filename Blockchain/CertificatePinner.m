@@ -7,20 +7,19 @@
 //
 #import <openssl/x509.h>
 #import "CertificatePinner.h"
-@interface CertificatePinner()
-@property (nonatomic) NSURLSession *session;
-@end
+#import "SessionManager.h"
+
 @implementation CertificatePinner
 
 - (void)pinCertificate
 {
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    self.session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
-    NSURLSessionDataTask *task = [self.session dataTaskWithURL:[NSURL URLWithString:DEFAULT_WALLET_SERVER] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSession *session = [SessionManager sharedSession];
+    NSURL *url = [NSURL URLWithString:DEFAULT_WALLET_SERVER];
+    session.sessionDescription = url.host;
+    NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         // response management code
     }];
     [task resume];
-    [self.session finishTasksAndInvalidate];
 }
 
 -(void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
@@ -48,7 +47,7 @@
             resource = @"merchant-directory-info";
         } else if ([session.sessionDescription isEqualToString:HOST_NAME_API]) {
             resource = @"api-info";
-        } else {
+        } else if ([session.sessionDescription isEqualToString:HOST_NAME_WALLET_SERVER]) {
             resource = @"blockchain";
         }
         
