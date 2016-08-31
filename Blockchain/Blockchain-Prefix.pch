@@ -359,6 +359,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_SET_INTERVAL @"setInterval"
 
 #define WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED @"User backgrounded app"
+#define WEBSOCKET_CLOSE_REASON_LOGGED_OUT @"Logged out"
+#define WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET @"Decrypted Wallet"
 
 #pragma mark - Constants
 
@@ -438,6 +440,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define REGEX_EASTERN_ARABIC_NUMERALS @"[\u0660-\u066b]"
 
 #define WEBSOCKET_CODE_BACKGROUNDED_APP 4500
+#define WEBSOCKET_CODE_LOGGED_OUT 4501
+#define WEBSOCKET_CODE_DECRYPTED_WALLET 4502
 
 #pragma mark - Runtime modes
 

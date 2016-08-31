@@ -700,8 +700,8 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
-    if (code == WEBSOCKET_CODE_BACKGROUNDED_APP) {
-        // Socket will reopen when app becomes active
+    if (code == WEBSOCKET_CODE_BACKGROUNDED_APP || code == WEBSOCKET_CODE_LOGGED_OUT) {
+        // Socket will reopen when app becomes active and after decryption
         return;
     }
     
@@ -2116,7 +2116,7 @@
 {
     DLog(@"did_decrypt");
     
-    [self setupWebSocket];
+    [self.webSocket closeWithCode:WEBSOCKET_CODE_DECRYPTED_WALLET reason:WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET];
     
     if (self.didPairAutomatically) {
         self.didPairAutomatically = NO;

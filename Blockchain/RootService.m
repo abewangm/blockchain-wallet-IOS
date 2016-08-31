@@ -1388,6 +1388,8 @@ void (^secondPasswordSuccess)(NSString *);
     [_receiveViewController clearAmounts];
     
     [self reload];
+    
+    [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_LOGGED_OUT reason:WEBSOCKET_CLOSE_REASON_LOGGED_OUT];
 }
 
 - (void)forgetWallet
