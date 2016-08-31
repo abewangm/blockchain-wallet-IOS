@@ -21,6 +21,26 @@
 		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
 		2322D3911D75CEEF000E5AC1 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322D3901D75CEEF000E5AC1 /* SessionManager.m */; };
+		2322DCB41D771831000E5AC1 /* SRDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC851D771831000E5AC1 /* SRDelegateController.m */; };
+		2322DCB51D771831000E5AC1 /* SRIOConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC881D771831000E5AC1 /* SRIOConsumer.m */; };
+		2322DCB61D771831000E5AC1 /* SRIOConsumerPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC8A1D771831000E5AC1 /* SRIOConsumerPool.m */; };
+		2322DCB71D771831000E5AC1 /* SRProxyConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC8F1D771831000E5AC1 /* SRProxyConnect.m */; };
+		2322DCB81D771831000E5AC1 /* SRRunLoopThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC921D771831000E5AC1 /* SRRunLoopThread.m */; };
+		2322DCB91D771831000E5AC1 /* SRPinningSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC951D771831000E5AC1 /* SRPinningSecurityPolicy.m */; };
+		2322DCBA1D771831000E5AC1 /* SRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC971D771831000E5AC1 /* SRConstants.m */; };
+		2322DCBB1D771831000E5AC1 /* SRError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC9A1D771831000E5AC1 /* SRError.m */; };
+		2322DCBC1D771831000E5AC1 /* SRHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC9C1D771831000E5AC1 /* SRHash.m */; };
+		2322DCBD1D771831000E5AC1 /* SRHTTPConnectMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC9E1D771831000E5AC1 /* SRHTTPConnectMessage.m */; };
+		2322DCBE1D771831000E5AC1 /* SRLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCA01D771831000E5AC1 /* SRLog.m */; };
+		2322DCBF1D771831000E5AC1 /* SRMutex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCA21D771831000E5AC1 /* SRMutex.m */; };
+		2322DCC01D771831000E5AC1 /* SRRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCA41D771831000E5AC1 /* SRRandom.m */; };
+		2322DCC11D771831000E5AC1 /* SRSIMDHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCA61D771831000E5AC1 /* SRSIMDHelpers.m */; };
+		2322DCC21D771831000E5AC1 /* SRURLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCA81D771831000E5AC1 /* SRURLUtilities.m */; };
+		2322DCC31D771831000E5AC1 /* NSRunLoop+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCAA1D771831000E5AC1 /* NSRunLoop+SRWebSocket.m */; };
+		2322DCC41D771831000E5AC1 /* NSURLRequest+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCAC1D771831000E5AC1 /* NSURLRequest+SRWebSocket.m */; };
+		2322DCC51D771831000E5AC1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2322DCAE1D771831000E5AC1 /* Info.plist */; };
+		2322DCC61D771831000E5AC1 /* SRSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCB11D771831000E5AC1 /* SRSecurityPolicy.m */; };
+		2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCB31D771831000E5AC1 /* SRWebSocket.m */; };
 		2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */ = {isa = PBXBuildFile; fileRef = 2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */; };
 		232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */; };
 		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
@@ -39,19 +59,6 @@
 		23BA22111D6B736900D0472B /* NSNumberFormatter+Currencies.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BA22101D6B736900D0472B /* NSNumberFormatter+Currencies.m */; };
 		23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF73381C454B8C00204503 /* AccountsAndAddressesNavigationController.m */; };
 		23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF733B1C455DDB00204503 /* AccountsAndAddressesViewController.m */; };
-		23C543921D0F0CD2007A5F58 /* SRDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543721D0F0CD2007A5F58 /* SRDelegateController.m */; };
-		23C543931D0F0CD2007A5F58 /* SRIOConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543751D0F0CD2007A5F58 /* SRIOConsumer.m */; };
-		23C543941D0F0CD2007A5F58 /* SRIOConsumerPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543771D0F0CD2007A5F58 /* SRIOConsumerPool.m */; };
-		23C543951D0F0CD2007A5F58 /* SRProxyConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C5437A1D0F0CD2007A5F58 /* SRProxyConnect.m */; };
-		23C543961D0F0CD2007A5F58 /* SRRunLoopThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C5437D1D0F0CD2007A5F58 /* SRRunLoopThread.m */; };
-		23C543971D0F0CD2007A5F58 /* SRSecurityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543801D0F0CD2007A5F58 /* SRSecurityOptions.m */; };
-		23C543981D0F0CD2007A5F58 /* SRError.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543831D0F0CD2007A5F58 /* SRError.m */; };
-		23C543991D0F0CD2007A5F58 /* SRHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543851D0F0CD2007A5F58 /* SRHash.m */; };
-		23C5439A1D0F0CD2007A5F58 /* SRURLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543871D0F0CD2007A5F58 /* SRURLUtilities.m */; };
-		23C5439C1D0F0CD2007A5F58 /* NSRunLoop+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C5438A1D0F0CD2007A5F58 /* NSRunLoop+SRWebSocket.m */; };
-		23C5439D1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C5438C1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.m */; };
-		23C5439E1D0F0CD2007A5F58 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23C5438E1D0F0CD2007A5F58 /* Info.plist */; };
-		23C5439F1D0F0CD2007A5F58 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C543911D0F0CD2007A5F58 /* SRWebSocket.m */; };
 		23C543A11D0F415C007A5F58 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C543A01D0F415C007A5F58 /* CFNetwork.framework */; };
 		23C543A31D0F4197007A5F58 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C543A21D0F4197007A5F58 /* libicucore.tbd */; };
 		23C95EA61C0779C600E4692A /* SettingsChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C95EA51C0779C600E4692A /* SettingsChangePasswordViewController.m */; };
@@ -372,6 +379,48 @@
 		232232191B44D4CB00E5DF26 /* UpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeViewController.m; sourceTree = "<group>"; };
 		2322D38F1D75CEEF000E5AC1 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
 		2322D3901D75CEEF000E5AC1 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
+		2322DC841D771831000E5AC1 /* SRDelegateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDelegateController.h; sourceTree = "<group>"; };
+		2322DC851D771831000E5AC1 /* SRDelegateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDelegateController.m; sourceTree = "<group>"; };
+		2322DC871D771831000E5AC1 /* SRIOConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumer.h; sourceTree = "<group>"; };
+		2322DC881D771831000E5AC1 /* SRIOConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumer.m; sourceTree = "<group>"; };
+		2322DC891D771831000E5AC1 /* SRIOConsumerPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumerPool.h; sourceTree = "<group>"; };
+		2322DC8A1D771831000E5AC1 /* SRIOConsumerPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumerPool.m; sourceTree = "<group>"; };
+		2322DC8B1D771831000E5AC1 /* NSRunLoop+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
+		2322DC8C1D771831000E5AC1 /* NSURLRequest+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
+		2322DC8E1D771831000E5AC1 /* SRProxyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProxyConnect.h; sourceTree = "<group>"; };
+		2322DC8F1D771831000E5AC1 /* SRProxyConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRProxyConnect.m; sourceTree = "<group>"; };
+		2322DC911D771831000E5AC1 /* SRRunLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRunLoopThread.h; sourceTree = "<group>"; };
+		2322DC921D771831000E5AC1 /* SRRunLoopThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRunLoopThread.m; sourceTree = "<group>"; };
+		2322DC941D771831000E5AC1 /* SRPinningSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPinningSecurityPolicy.h; sourceTree = "<group>"; };
+		2322DC951D771831000E5AC1 /* SRPinningSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPinningSecurityPolicy.m; sourceTree = "<group>"; };
+		2322DC961D771831000E5AC1 /* SRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRConstants.h; sourceTree = "<group>"; };
+		2322DC971D771831000E5AC1 /* SRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRConstants.m; sourceTree = "<group>"; };
+		2322DC991D771831000E5AC1 /* SRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRError.h; sourceTree = "<group>"; };
+		2322DC9A1D771831000E5AC1 /* SRError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRError.m; sourceTree = "<group>"; };
+		2322DC9B1D771831000E5AC1 /* SRHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHash.h; sourceTree = "<group>"; };
+		2322DC9C1D771831000E5AC1 /* SRHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHash.m; sourceTree = "<group>"; };
+		2322DC9D1D771831000E5AC1 /* SRHTTPConnectMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHTTPConnectMessage.h; sourceTree = "<group>"; };
+		2322DC9E1D771831000E5AC1 /* SRHTTPConnectMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHTTPConnectMessage.m; sourceTree = "<group>"; };
+		2322DC9F1D771831000E5AC1 /* SRLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRLog.h; sourceTree = "<group>"; };
+		2322DCA01D771831000E5AC1 /* SRLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRLog.m; sourceTree = "<group>"; };
+		2322DCA11D771831000E5AC1 /* SRMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMutex.h; sourceTree = "<group>"; };
+		2322DCA21D771831000E5AC1 /* SRMutex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMutex.m; sourceTree = "<group>"; };
+		2322DCA31D771831000E5AC1 /* SRRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRandom.h; sourceTree = "<group>"; };
+		2322DCA41D771831000E5AC1 /* SRRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRandom.m; sourceTree = "<group>"; };
+		2322DCA51D771831000E5AC1 /* SRSIMDHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSIMDHelpers.h; sourceTree = "<group>"; };
+		2322DCA61D771831000E5AC1 /* SRSIMDHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSIMDHelpers.m; sourceTree = "<group>"; };
+		2322DCA71D771831000E5AC1 /* SRURLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRURLUtilities.h; sourceTree = "<group>"; };
+		2322DCA81D771831000E5AC1 /* SRURLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRURLUtilities.m; sourceTree = "<group>"; };
+		2322DCA91D771831000E5AC1 /* NSRunLoop+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocket.h"; sourceTree = "<group>"; };
+		2322DCAA1D771831000E5AC1 /* NSRunLoop+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+SRWebSocket.m"; sourceTree = "<group>"; };
+		2322DCAB1D771831000E5AC1 /* NSURLRequest+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocket.h"; sourceTree = "<group>"; };
+		2322DCAC1D771831000E5AC1 /* NSURLRequest+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+SRWebSocket.m"; sourceTree = "<group>"; };
+		2322DCAE1D771831000E5AC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2322DCAF1D771831000E5AC1 /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
+		2322DCB01D771831000E5AC1 /* SRSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSecurityPolicy.h; sourceTree = "<group>"; };
+		2322DCB11D771831000E5AC1 /* SRSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSecurityPolicy.m; sourceTree = "<group>"; };
+		2322DCB21D771831000E5AC1 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		2322DCB31D771831000E5AC1 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		2326C6C01BBD7A8100AB7C4D /* UIViewController+AutoDismiss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AutoDismiss.h"; sourceTree = "<group>"; };
 		2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AutoDismiss.m"; sourceTree = "<group>"; };
 		232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+PopToRootWithCompletion.swift"; sourceTree = "<group>"; };
@@ -541,33 +590,6 @@
 		23BF73381C454B8C00204503 /* AccountsAndAddressesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesNavigationController.m; sourceTree = "<group>"; };
 		23BF733A1C455DDB00204503 /* AccountsAndAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesViewController.h; sourceTree = "<group>"; };
 		23BF733B1C455DDB00204503 /* AccountsAndAddressesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesViewController.m; sourceTree = "<group>"; };
-		23C543711D0F0CD2007A5F58 /* SRDelegateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDelegateController.h; sourceTree = "<group>"; };
-		23C543721D0F0CD2007A5F58 /* SRDelegateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDelegateController.m; sourceTree = "<group>"; };
-		23C543741D0F0CD2007A5F58 /* SRIOConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumer.h; sourceTree = "<group>"; };
-		23C543751D0F0CD2007A5F58 /* SRIOConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumer.m; sourceTree = "<group>"; };
-		23C543761D0F0CD2007A5F58 /* SRIOConsumerPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumerPool.h; sourceTree = "<group>"; };
-		23C543771D0F0CD2007A5F58 /* SRIOConsumerPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumerPool.m; sourceTree = "<group>"; };
-		23C543791D0F0CD2007A5F58 /* SRProxyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProxyConnect.h; sourceTree = "<group>"; };
-		23C5437A1D0F0CD2007A5F58 /* SRProxyConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRProxyConnect.m; sourceTree = "<group>"; };
-		23C5437C1D0F0CD2007A5F58 /* SRRunLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRunLoopThread.h; sourceTree = "<group>"; };
-		23C5437D1D0F0CD2007A5F58 /* SRRunLoopThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRunLoopThread.m; sourceTree = "<group>"; };
-		23C5437F1D0F0CD2007A5F58 /* SRSecurityOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSecurityOptions.h; sourceTree = "<group>"; };
-		23C543801D0F0CD2007A5F58 /* SRSecurityOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSecurityOptions.m; sourceTree = "<group>"; };
-		23C543821D0F0CD2007A5F58 /* SRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRError.h; sourceTree = "<group>"; };
-		23C543831D0F0CD2007A5F58 /* SRError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRError.m; sourceTree = "<group>"; };
-		23C543841D0F0CD2007A5F58 /* SRHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHash.h; sourceTree = "<group>"; };
-		23C543851D0F0CD2007A5F58 /* SRHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHash.m; sourceTree = "<group>"; };
-		23C543861D0F0CD2007A5F58 /* SRURLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRURLUtilities.h; sourceTree = "<group>"; };
-		23C543871D0F0CD2007A5F58 /* SRURLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRURLUtilities.m; sourceTree = "<group>"; };
-		23C543881D0F0CD2007A5F58 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		23C543891D0F0CD2007A5F58 /* NSRunLoop+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocket.h"; sourceTree = "<group>"; };
-		23C5438A1D0F0CD2007A5F58 /* NSRunLoop+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+SRWebSocket.m"; sourceTree = "<group>"; };
-		23C5438B1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocket.h"; sourceTree = "<group>"; };
-		23C5438C1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+SRWebSocket.m"; sourceTree = "<group>"; };
-		23C5438E1D0F0CD2007A5F58 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23C5438F1D0F0CD2007A5F58 /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
-		23C543901D0F0CD2007A5F58 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
-		23C543911D0F0CD2007A5F58 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		23C543A01D0F415C007A5F58 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		23C543A21D0F4197007A5F58 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		23C95EA41C0779C600E4692A /* SettingsChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsChangePasswordViewController.h; sourceTree = "<group>"; };
@@ -917,100 +939,116 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23C5436E1D0F0CD2007A5F58 /* SocketRocket */ = {
+		2322DC811D771831000E5AC1 /* SocketRocket */ = {
 			isa = PBXGroup;
 			children = (
-				23C5436F1D0F0CD2007A5F58 /* Internal */,
-				23C543881D0F0CD2007A5F58 /* Makefile */,
-				23C543891D0F0CD2007A5F58 /* NSRunLoop+SRWebSocket.h */,
-				23C5438A1D0F0CD2007A5F58 /* NSRunLoop+SRWebSocket.m */,
-				23C5438B1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.h */,
-				23C5438C1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.m */,
-				23C5438D1D0F0CD2007A5F58 /* Resources */,
-				23C5438F1D0F0CD2007A5F58 /* SocketRocket.h */,
-				23C543901D0F0CD2007A5F58 /* SRWebSocket.h */,
-				23C543911D0F0CD2007A5F58 /* SRWebSocket.m */,
+				2322DC821D771831000E5AC1 /* Internal */,
+				2322DCA91D771831000E5AC1 /* NSRunLoop+SRWebSocket.h */,
+				2322DCAA1D771831000E5AC1 /* NSRunLoop+SRWebSocket.m */,
+				2322DCAB1D771831000E5AC1 /* NSURLRequest+SRWebSocket.h */,
+				2322DCAC1D771831000E5AC1 /* NSURLRequest+SRWebSocket.m */,
+				2322DCAD1D771831000E5AC1 /* Resources */,
+				2322DCAF1D771831000E5AC1 /* SocketRocket.h */,
+				2322DCB01D771831000E5AC1 /* SRSecurityPolicy.h */,
+				2322DCB11D771831000E5AC1 /* SRSecurityPolicy.m */,
+				2322DCB21D771831000E5AC1 /* SRWebSocket.h */,
+				2322DCB31D771831000E5AC1 /* SRWebSocket.m */,
 			);
-			path = SocketRocket;
+			name = SocketRocket;
+			path = Submodules/SocketRocket/SocketRocket;
 			sourceTree = "<group>";
 		};
-		23C5436F1D0F0CD2007A5F58 /* Internal */ = {
+		2322DC821D771831000E5AC1 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				23C543701D0F0CD2007A5F58 /* Delegate */,
-				23C543731D0F0CD2007A5F58 /* IOConsumer */,
-				23C543781D0F0CD2007A5F58 /* Proxy */,
-				23C5437B1D0F0CD2007A5F58 /* RunLoop */,
-				23C5437E1D0F0CD2007A5F58 /* Security */,
-				23C543811D0F0CD2007A5F58 /* Utilities */,
+				2322DC831D771831000E5AC1 /* Delegate */,
+				2322DC861D771831000E5AC1 /* IOConsumer */,
+				2322DC8B1D771831000E5AC1 /* NSRunLoop+SRWebSocketPrivate.h */,
+				2322DC8C1D771831000E5AC1 /* NSURLRequest+SRWebSocketPrivate.h */,
+				2322DC8D1D771831000E5AC1 /* Proxy */,
+				2322DC901D771831000E5AC1 /* RunLoop */,
+				2322DC931D771831000E5AC1 /* Security */,
+				2322DC961D771831000E5AC1 /* SRConstants.h */,
+				2322DC971D771831000E5AC1 /* SRConstants.m */,
+				2322DC981D771831000E5AC1 /* Utilities */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
 		};
-		23C543701D0F0CD2007A5F58 /* Delegate */ = {
+		2322DC831D771831000E5AC1 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				23C543711D0F0CD2007A5F58 /* SRDelegateController.h */,
-				23C543721D0F0CD2007A5F58 /* SRDelegateController.m */,
+				2322DC841D771831000E5AC1 /* SRDelegateController.h */,
+				2322DC851D771831000E5AC1 /* SRDelegateController.m */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
 		};
-		23C543731D0F0CD2007A5F58 /* IOConsumer */ = {
+		2322DC861D771831000E5AC1 /* IOConsumer */ = {
 			isa = PBXGroup;
 			children = (
-				23C543741D0F0CD2007A5F58 /* SRIOConsumer.h */,
-				23C543751D0F0CD2007A5F58 /* SRIOConsumer.m */,
-				23C543761D0F0CD2007A5F58 /* SRIOConsumerPool.h */,
-				23C543771D0F0CD2007A5F58 /* SRIOConsumerPool.m */,
+				2322DC871D771831000E5AC1 /* SRIOConsumer.h */,
+				2322DC881D771831000E5AC1 /* SRIOConsumer.m */,
+				2322DC891D771831000E5AC1 /* SRIOConsumerPool.h */,
+				2322DC8A1D771831000E5AC1 /* SRIOConsumerPool.m */,
 			);
 			path = IOConsumer;
 			sourceTree = "<group>";
 		};
-		23C543781D0F0CD2007A5F58 /* Proxy */ = {
+		2322DC8D1D771831000E5AC1 /* Proxy */ = {
 			isa = PBXGroup;
 			children = (
-				23C543791D0F0CD2007A5F58 /* SRProxyConnect.h */,
-				23C5437A1D0F0CD2007A5F58 /* SRProxyConnect.m */,
+				2322DC8E1D771831000E5AC1 /* SRProxyConnect.h */,
+				2322DC8F1D771831000E5AC1 /* SRProxyConnect.m */,
 			);
 			path = Proxy;
 			sourceTree = "<group>";
 		};
-		23C5437B1D0F0CD2007A5F58 /* RunLoop */ = {
+		2322DC901D771831000E5AC1 /* RunLoop */ = {
 			isa = PBXGroup;
 			children = (
-				23C5437C1D0F0CD2007A5F58 /* SRRunLoopThread.h */,
-				23C5437D1D0F0CD2007A5F58 /* SRRunLoopThread.m */,
+				2322DC911D771831000E5AC1 /* SRRunLoopThread.h */,
+				2322DC921D771831000E5AC1 /* SRRunLoopThread.m */,
 			);
 			path = RunLoop;
 			sourceTree = "<group>";
 		};
-		23C5437E1D0F0CD2007A5F58 /* Security */ = {
+		2322DC931D771831000E5AC1 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				23C5437F1D0F0CD2007A5F58 /* SRSecurityOptions.h */,
-				23C543801D0F0CD2007A5F58 /* SRSecurityOptions.m */,
+				2322DC941D771831000E5AC1 /* SRPinningSecurityPolicy.h */,
+				2322DC951D771831000E5AC1 /* SRPinningSecurityPolicy.m */,
 			);
 			path = Security;
 			sourceTree = "<group>";
 		};
-		23C543811D0F0CD2007A5F58 /* Utilities */ = {
+		2322DC981D771831000E5AC1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				23C543821D0F0CD2007A5F58 /* SRError.h */,
-				23C543831D0F0CD2007A5F58 /* SRError.m */,
-				23C543841D0F0CD2007A5F58 /* SRHash.h */,
-				23C543851D0F0CD2007A5F58 /* SRHash.m */,
-				23C543861D0F0CD2007A5F58 /* SRURLUtilities.h */,
-				23C543871D0F0CD2007A5F58 /* SRURLUtilities.m */,
+				2322DC991D771831000E5AC1 /* SRError.h */,
+				2322DC9A1D771831000E5AC1 /* SRError.m */,
+				2322DC9B1D771831000E5AC1 /* SRHash.h */,
+				2322DC9C1D771831000E5AC1 /* SRHash.m */,
+				2322DC9D1D771831000E5AC1 /* SRHTTPConnectMessage.h */,
+				2322DC9E1D771831000E5AC1 /* SRHTTPConnectMessage.m */,
+				2322DC9F1D771831000E5AC1 /* SRLog.h */,
+				2322DCA01D771831000E5AC1 /* SRLog.m */,
+				2322DCA11D771831000E5AC1 /* SRMutex.h */,
+				2322DCA21D771831000E5AC1 /* SRMutex.m */,
+				2322DCA31D771831000E5AC1 /* SRRandom.h */,
+				2322DCA41D771831000E5AC1 /* SRRandom.m */,
+				2322DCA51D771831000E5AC1 /* SRSIMDHelpers.h */,
+				2322DCA61D771831000E5AC1 /* SRSIMDHelpers.m */,
+				2322DCA71D771831000E5AC1 /* SRURLUtilities.h */,
+				2322DCA81D771831000E5AC1 /* SRURLUtilities.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		23C5438D1D0F0CD2007A5F58 /* Resources */ = {
+		2322DCAD1D771831000E5AC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				23C5438E1D0F0CD2007A5F58 /* Info.plist */,
+				2322DCAE1D771831000E5AC1 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1389,7 +1427,7 @@
 		C9D4B2AE193E020D00EDA9EA /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
-				23C5436E1D0F0CD2007A5F58 /* SocketRocket */,
+				2322DC811D771831000E5AC1 /* SocketRocket */,
 				670595A11AB0F59D00D2D6D9 /* KeychainItemWrapper */,
 				670DF9481A43BCB200CEA1EA /* Reachability */,
 				67FA1A4A1ABA092D000C9196 /* RegEx */,
@@ -1590,6 +1628,7 @@
 				C9BE91861945D8F600FD516D /* PEKeyboard-2-edit.png in Resources */,
 				ECD244F119A8AC45004B1F40 /* PEKeyboard-4-dot.png in Resources */,
 				C9BE917E1945D8F600FD516D /* PEViewController.xib in Resources */,
+				2322DCC51D771831000E5AC1 /* Info.plist in Resources */,
 				C9BE91831945D8F600FD516D /* PEKeyboard-1.png in Resources */,
 				C9BE91801945D8F600FD516D /* PEKeyboard-1-dot.png in Resources */,
 				9F2D934E14C0792D0053F0FF /* TransactionCell.xib in Resources */,
@@ -1613,7 +1652,6 @@
 				C9BE917F1945D8F600FD516D /* PEKeyboard-1-done.png in Resources */,
 				C9BE91871945D8F600FD516D /* PEKeyboard-2-next.png in Resources */,
 				ECD244F419A8AC45004B1F40 /* PEKeyboard-4.png in Resources */,
-				23C5439E1D0F0CD2007A5F58 /* Info.plist in Resources */,
 				ECD244EB19A8AC45004B1F40 /* PEKeyboard-3-done.png in Resources */,
 				ECD244F019A8AC45004B1F40 /* PEKeyboard-4-done.png in Resources */,
 				220E375D19A3614900E06996 /* SendCoins.xib in Resources */,
@@ -1702,33 +1740,34 @@
 				2343E4031CB434BC008DC7D1 /* NSArray+EncodedJSONString.m in Sources */,
 				237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */,
 				9F1831EB1516AE3500FB3D52 /* NSString+URLEncode.m in Sources */,
-				23C5439C1D0F0CD2007A5F58 /* NSRunLoop+SRWebSocket.m in Sources */,
-				23C5439F1D0F0CD2007A5F58 /* SRWebSocket.m in Sources */,
 				23EA61CB1B5591260032B907 /* SettingsSelectorTableViewController.m in Sources */,
 				23BA22111D6B736900D0472B /* NSNumberFormatter+Currencies.m in Sources */,
+				2322DCB51D771831000E5AC1 /* SRIOConsumer.m in Sources */,
 				678AD5E919D4610000E9A778 /* BCModalContentView.m in Sources */,
 				84F4BDFA197F21D700B7BF7B /* PairingCodeParser.m in Sources */,
+				2322DCBC1D771831000E5AC1 /* SRHash.m in Sources */,
 				9F45F82C1514E53C00018AED /* UIButtonPressAndHold.m in Sources */,
 				9F7480E315140EF200BC4292 /* TabViewController.m in Sources */,
 				844BC7AE1949BB620024160B /* JSBridgeWebView.m in Sources */,
-				23C543981D0F0CD2007A5F58 /* SRError.m in Sources */,
+				2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */,
 				670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */,
 				9FB3638214B60128004BEA02 /* main.m in Sources */,
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
-				23C543971D0F0CD2007A5F58 /* SRSecurityOptions.m in Sources */,
+				2322DCB91D771831000E5AC1 /* SRPinningSecurityPolicy.m in Sources */,
 				23F720F21C32DC0A00577738 /* DebugTableViewController.m in Sources */,
 				23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */,
 				23E2FC081C7F60E7004CFF79 /* BCInsetLabel.m in Sources */,
 				C9BE917D1945D8F600FD516D /* PEViewController.m in Sources */,
 				674709EC19D1D14300757D46 /* BCWelcomeView.m in Sources */,
-				23C5439A1D0F0CD2007A5F58 /* SRURLUtilities.m in Sources */,
 				67D95A281B3DDC900012EBB1 /* Constants.swift in Sources */,
 				9F765F3214BC622E00048EFB /* TransactionsViewController.m in Sources */,
+				2322DCC21D771831000E5AC1 /* SRURLUtilities.m in Sources */,
 				230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */,
 				676250821A2DDF360052B63F /* AccountTableCell.m in Sources */,
 				67EE1DCF19E3325900DBBFC9 /* UIViewController+ECSlidingViewController.m in Sources */,
 				C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */,
 				84FC02FD19815F1B00B97D5B /* crypto_scrypt-nosse.c in Sources */,
+				2322DCB71D771831000E5AC1 /* SRProxyConnect.m in Sources */,
 				FACF69521A57164B00590E04 /* MerchantMapDetailViewController.m in Sources */,
 				FA6323411A446B0C00EB3974 /* MerchantLocation.m in Sources */,
 				FA63233C1A433BEA00EB3974 /* MerchantMapViewController.m in Sources */,
@@ -1736,8 +1775,8 @@
 				9F765F3914BC7BAC00048EFB /* TransactionTableCell.m in Sources */,
 				84FC02FA1981452D00B97D5B /* NSString+JSONParser_NSString.m in Sources */,
 				9F765F3D14BC7C4F00048EFB /* Transaction.m in Sources */,
+				2322DCC31D771831000E5AC1 /* NSRunLoop+SRWebSocket.m in Sources */,
 				84B601C7197ACD6300DA1829 /* UITextField+Blocks.m in Sources */,
-				23C5439D1D0F0CD2007A5F58 /* NSURLRequest+SRWebSocket.m in Sources */,
 				9F765F4714BC8AEF00048EFB /* MultiAddressResponse.m in Sources */,
 				FA6323391A433B1C00EB3974 /* Foundation-Utility.m in Sources */,
 				239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */,
@@ -1746,14 +1785,13 @@
 				236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */,
 				9F2D934A14C05DD00053F0FF /* Address.m in Sources */,
 				235BD5661C58216000969B31 /* BCModalViewController.m in Sources */,
-				23C543921D0F0CD2007A5F58 /* SRDelegateController.m in Sources */,
 				67FA1A4D1ABA092D000C9196 /* RegExCategories.m in Sources */,
 				84B601CA197AD03800DA1829 /* BCModalView.m in Sources */,
 				9F0CBAAA151351F400CD945D /* Wallet.m in Sources */,
 				9F0CBAD81513CA2600CD945D /* BCFadeView.m in Sources */,
 				67E9674E19DF285000305358 /* SideMenuViewController.m in Sources */,
-				23C543961D0F0CD2007A5F58 /* SRRunLoopThread.m in Sources */,
 				9FCA4D161514949500ECDFBE /* ReceiveCoinsViewController.m in Sources */,
+				2322DCBD1D771831000E5AC1 /* SRHTTPConnectMessage.m in Sources */,
 				230FD2D31C5BD04000336683 /* BCEditAddressView.m in Sources */,
 				23C95EA61C0779C600E4692A /* SettingsChangePasswordViewController.m in Sources */,
 				2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */,
@@ -1761,7 +1799,9 @@
 				9FCA4D1B151494BF00ECDFBE /* SendViewController.m in Sources */,
 				237451C91D624C1C00CF7049 /* RootService.m in Sources */,
 				67D95A261B3DD86B0012EBB1 /* BCTextField.swift in Sources */,
+				2322DCC01D771831000E5AC1 /* SRRandom.m in Sources */,
 				23D3A6291C0F699900DEF737 /* SecurityCenterViewController.m in Sources */,
+				2322DCBA1D771831000E5AC1 /* SRConstants.m in Sources */,
 				A2599BA71B0B726900C2EA81 /* BackupVerifyViewController.swift in Sources */,
 				23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */,
 				A2599BA51B0B725400C2EA81 /* BackupWordsViewController.swift in Sources */,
@@ -1770,29 +1810,30 @@
 				67EE1DCC19E3325900DBBFC9 /* ECSlidingInteractiveTransition.m in Sources */,
 				6775569919E752A00054699B /* BCWebViewController.m in Sources */,
 				67EE1DCD19E3325900DBBFC9 /* ECSlidingSegue.m in Sources */,
-				23C543941D0F0CD2007A5F58 /* SRIOConsumerPool.m in Sources */,
 				231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */,
+				2322DCC61D771831000E5AC1 /* SRSecurityPolicy.m in Sources */,
 				9F61B89E151519EF0083C57A /* BCAddressSelectionView.m in Sources */,
 				FA6323361A43373300EB3974 /* Merchant.m in Sources */,
 				9F91B607151666EC00ACB32D /* BCCreateWalletView.m in Sources */,
+				2322DCBE1D771831000E5AC1 /* SRLog.m in Sources */,
 				67EE1DCA19E3325900DBBFC9 /* ECPercentDrivenInteractiveTransition.m in Sources */,
 				23FDEF9D1D6E180100FC80D6 /* CertificatePinner.m in Sources */,
 				678CD7481A2777E600748AA5 /* BCCreateAccountView.m in Sources */,
 				ECD244F719A8B444004B1F40 /* UIImage+Utils.m in Sources */,
+				2322DCB61D771831000E5AC1 /* SRIOConsumerPool.m in Sources */,
+				2322DCBB1D771831000E5AC1 /* SRError.m in Sources */,
 				9F1831E21516A39500FB3D52 /* NSData+Hex.m in Sources */,
 				6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */,
 				67EE1DCE19E3325900DBBFC9 /* ECSlidingViewController.m in Sources */,
 				6780DB981A40BDF40048EED2 /* AccountInOut.m in Sources */,
 				2322D3911D75CEEF000E5AC1 /* SessionManager.m in Sources */,
 				23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */,
+				2322DCB41D771831000E5AC1 /* SRDelegateController.m in Sources */,
 				9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */,
 				230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */,
-				23C543951D0F0CD2007A5F58 /* SRProxyConnect.m in Sources */,
-				23C543991D0F0CD2007A5F58 /* SRHash.m in Sources */,
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,
 				6750389B1B4D832F00F7B488 /* SideMenuViewCell.m in Sources */,
 				9F1831EE151744EB00FB3D52 /* ReceiveTableCell.m in Sources */,
-				23C543931D0F0CD2007A5F58 /* SRIOConsumer.m in Sources */,
 				67EE1DCB19E3325900DBBFC9 /* ECSlidingAnimationController.m in Sources */,
 				67470A0819D43AFE00757D46 /* BCManualPairView.m in Sources */,
 				6E2D90A21BBEC34800B719EC /* BCRecoveryView.m in Sources */,
@@ -1802,13 +1843,17 @@
 				A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */,
 				9F4A5092152F585E00F9ED9D /* UIDevice+Hardware.m in Sources */,
 				6780DB921A40BDA70048EED2 /* AddressInOut.m in Sources */,
+				2322DCC11D771831000E5AC1 /* SRSIMDHelpers.m in Sources */,
 				9F2780B715343A7D0015F83F /* UncaughtExceptionHandler.m in Sources */,
 				673107F219F6D49F00BE6899 /* PrivateKeyReader.m in Sources */,
 				84FC02FE19815F1B00B97D5B /* sha256.c in Sources */,
+				2322DCBF1D771831000E5AC1 /* SRMutex.m in Sources */,
+				2322DCC41D771831000E5AC1 /* NSURLRequest+SRWebSocket.m in Sources */,
 				232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */,
 				23D423991D0878BE000054AA /* ModuleXMLHttpRequest.m in Sources */,
 				23F601A41D09C931009102BF /* Reachability.m in Sources */,
 				23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */,
+				2322DCB81D771831000E5AC1 /* SRRunLoopThread.m in Sources */,
 				84CCFAAF197D859C00DA4482 /* NSString+NSString_EscapeQuotes.m in Sources */,
 				23BA220E1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m in Sources */,
 				A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */,
@@ -2394,6 +2439,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/Submodules/OpenSSL-for-iPhone/include",
+					"$(SRCROOT)/Submodules/SocketRocket",
 				);
 				INFOPLIST_FILE = "Blockchain/Blockchain-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2427,6 +2473,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/Submodules/OpenSSL-for-iPhone/include",
+					"$(SRCROOT)/Submodules/SocketRocket",
 				);
 				INFOPLIST_FILE = "Blockchain/Blockchain-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

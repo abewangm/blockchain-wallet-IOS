@@ -606,7 +606,9 @@
 - (void)pingWebSocket
 {
     if (self.webSocket.readyState == 1) {
-        [self.webSocket sendPing:[@"{ op: 'ping' }" dataUsingEncoding:NSUTF8StringEncoding]];
+        NSError *error;
+        [self.webSocket sendPing:[@"{ op: 'ping' }" dataUsingEncoding:NSUTF8StringEncoding] error:&error];
+        if (error) DLog(@"Error sending ping: %@", [error localizedDescription]);
     } else {
         DLog(@"reconnecting websocket");
         [self setupWebSocket];
@@ -618,7 +620,9 @@
     self.addressToSubscribe = address;
 
     if (self.webSocket && self.webSocket.readyState == 1) {
-        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.addressToSubscribe]];
+        NSError *error;
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.addressToSubscribe] error:&error];
+        if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
     } else {
         [self setupWebSocket];
     }
@@ -684,7 +688,9 @@
     DLog(@"websocket opened");
     NSString *message = self.addressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.addressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
 
-    [webSocket sendString:message];
+    NSError *error;
+    [webSocket sendString:message error:&error];
+    if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
