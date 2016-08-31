@@ -516,6 +516,8 @@
 #define BC_STRING_FEE_INFORMATION_MESSAGE_APPEND_REGULAR_SEND NSLocalizedString (@" We recommend the fee below for the transaction at this time.", nil)
 #define BC_STRING_FEE_INFORMATION_DUST NSLocalizedString(@"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned.", nil)
 
+#define BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER NSLocalizedString(@"What's this for?", nil)
+
 #define BC_STRING_APP_REVIEW_PROMPT_TITLE NSLocalizedString(@"Rate Blockchain Wallet", nil)
 #define BC_STRING_YES_RATE_BLOCKCHAIN_WALLET NSLocalizedString(@"Yes, rate Blockchain Wallet", nil)
 #define BC_STRING_APP_REVIEW_PROMPT_MESSAGE NSLocalizedString(@"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it.", nil)

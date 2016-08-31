@@ -15,7 +15,7 @@ const int cellRowToFrom = 2;
 const int cellRowDate = 3;
 const int cellRowStatus = 4;
 
-@interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DetailViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UITextView *textView;
@@ -32,7 +32,7 @@ const int cellRowStatus = 4;
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerClass:[TransactionDetailTableCell class] forCellReuseIdentifier:@"detail"];
+    [self.tableView registerClass:[TransactionDetailTableCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -48,6 +48,11 @@ const int cellRowStatus = 4;
     }
 }
 
+- (CGSize)addVerticalPaddingToSize:(CGSize)size
+{
+    return CGSizeMake(size.width, size.height + 16);
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 5;
@@ -55,13 +60,15 @@ const int cellRowStatus = 4;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TransactionDetailTableCell *cell = (TransactionDetailTableCell *)[tableView dequeueReusableCellWithIdentifier:@"detail" forIndexPath:indexPath];
+    TransactionDetailTableCell *cell = (TransactionDetailTableCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL forIndexPath:indexPath];
+    
+    cell.clipsToBounds = YES;
     
     if (indexPath.row == cellRowDescription) {
+        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height < 60 ? 60 : cell.frame.size.height);
         [cell addTextView];
-        cell.textView.backgroundColor = [UIColor redColor];
         self.oldTextViewHeight = cell.textView.frame.size.height;
-        cell.textView.delegate = self;
+        cell.detailViewDelegate = self;
         self.textView = cell.textView;
     } else if (indexPath.row == cellRowToFrom) {
         [cell addToAndFromLabels];
@@ -75,7 +82,8 @@ const int cellRowStatus = 4;
 {
     if (indexPath.row == cellRowDescription && self.textView.text) {
         CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
-        return size.height < 44 ? 44 : size.height;
+        CGSize sizeToUse = [self addVerticalPaddingToSize:size];
+        return sizeToUse.height < 60 ? 60 : sizeToUse.height;
     } else if (indexPath.row == cellRowToFrom) {
         return 88;
     }

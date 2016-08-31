@@ -105,6 +105,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL @"transactionDetail"
+
 #define LOCALE_IDENTIFIER_EN_US @"en_US"
 #define LOCALE_IDENTIFIER_AR @"ar"
 
