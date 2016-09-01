@@ -224,6 +224,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define TRANSACTION_FILTER_IMPORTED @"imported"
 
+#define DICTIONARY_KEY_TRANSACTION_FROM @"from"
+#define DICTIONARY_KEY_TRANSACTION_TO @"to"
 #define DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT @"block_height"
 #define DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS @"confirmations"
 #define DICTIONARY_KEY_TRANSACTION_FEE @"fee"
@@ -233,6 +235,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TRANSACTION_TIME @"time"
 #define DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY @"fromWatchOnly"
 #define DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY @"toWatchOnly"
+#define DICTIONARY_KEY_TRANSACTION_NOTE @"note"
 
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"

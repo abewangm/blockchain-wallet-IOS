@@ -126,8 +126,9 @@
 
 - (IBAction)transactionClicked:(UIButton *)button
 {
-    TransactionDetailViewController *viewController = [TransactionDetailViewController new];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+    detailViewController.transaction = transaction;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
     
     UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, navigationController.view.frame.size.width, DEFAULT_HEADER_HEIGHT)];
     topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;

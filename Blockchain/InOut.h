@@ -14,5 +14,6 @@
 @property(nonatomic, strong) AccountInOut *account;
 @property(nonatomic, strong) AddressInOut *externalAddresses;
 @property(nonatomic, strong) NSArray *legacyAddresses;
+@property(nonatomic, strong) NSString *label;
 
 @end

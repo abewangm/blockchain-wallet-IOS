@@ -8,12 +8,17 @@
 
 #import "TransactionDetailViewController.h"
 #import "TransactionDetailTableCell.h"
+#import "NSNumberFormatter+Currencies.h"
 
 const int cellRowValue = 0;
 const int cellRowDescription = 1;
 const int cellRowToFrom = 2;
 const int cellRowDate = 3;
 const int cellRowStatus = 4;
+
+const CGFloat rowHeightDefault = 60;
+const CGFloat rowHeightValue = 108;
+const CGFloat rowHeightToFrom = 88;
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DetailViewDelegate>
 
@@ -33,6 +38,7 @@ const int cellRowStatus = 4;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[TransactionDetailTableCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL];
+    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -64,30 +70,39 @@ const int cellRowStatus = 4;
     
     cell.clipsToBounds = YES;
     
-    if (indexPath.row == cellRowDescription) {
-        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height < 60 ? 60 : cell.frame.size.height);
-        [cell addTextView];
+    if (indexPath.row == cellRowValue) {
+        [cell configureValueCell:self.transaction];
+    } else if (indexPath.row == cellRowDescription) {
+        // Set initial height for sizeThatFits: calculation
+        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height < rowHeightDefault ? rowHeightDefault : cell.frame.size.height);
+        
+        [cell configureDescriptionCell:self.transaction];
+        
         self.oldTextViewHeight = cell.textView.frame.size.height;
         cell.detailViewDelegate = self;
         self.textView = cell.textView;
     } else if (indexPath.row == cellRowToFrom) {
-        [cell addToAndFromLabels];
+        [cell configureToFromCell:self.transaction];
     } else if (indexPath.row == cellRowDate) {
-        cell.textLabel.text = BC_STRING_DATE;
+        [cell configureDateCell:self.transaction];
+    } else if (indexPath.row == cellRowStatus) {
+        [cell configureStatusCell:self.transaction];
     }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == cellRowDescription && self.textView.text) {
+    if (indexPath.row == cellRowValue) {
+        return rowHeightToFrom;
+    } else if (indexPath.row == cellRowDescription && self.textView.text) {
         CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
         CGSize sizeToUse = [self addVerticalPaddingToSize:size];
-        return sizeToUse.height < 60 ? 60 : sizeToUse.height;
+        return sizeToUse.height < rowHeightDefault ? rowHeightDefault : sizeToUse.height;
     } else if (indexPath.row == cellRowToFrom) {
-        return 88;
+        return rowHeightToFrom;
     }
-    return 44;
+    return rowHeightDefault;
 }
 
 @end

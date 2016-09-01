@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Transaction.h"
 
 @interface TransactionDetailViewController : UIViewController
+
+@property (nonatomic) Transaction *transaction;
 
 @end
