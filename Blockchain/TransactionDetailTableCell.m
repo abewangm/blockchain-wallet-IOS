@@ -25,6 +25,8 @@
     [self.bottomAccessoryLabel removeFromSuperview];
     [self.fiatValueWhenSentLabel removeFromSuperview];
     [self.transactionFeeLabel removeFromSuperview];
+    
+    [self.editButton removeFromSuperview];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -38,15 +40,19 @@
 {
     self.textLabel.text = BC_STRING_DESCRIPTION;
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(self.frame.size.width/2, self.contentView.layoutMargins.top, self.frame.size.width/2 - self.contentView.layoutMargins.right, self.frame.size.height - self.contentView.layoutMargins.top - self.contentView.layoutMargins.bottom)];
+    self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.textView.scrollEnabled = NO;
     self.textView.textAlignment = NSTextAlignmentRight;
     [self.textView setFont:[UIFont systemFontOfSize:15]];
     
     self.defaultTextViewHeight = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)].height;
-    self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, self.defaultTextViewHeight);
+    self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width - self.defaultTextViewHeight, self.defaultTextViewHeight);
     
     self.textView.delegate = self;
     [self addSubview:self.textView];
+    self.textView.userInteractionEnabled = NO;
+    
+    [self addEditButton];
     
     if (transaction.note.length > 0) {
         self.textView.text = transaction.note;
@@ -146,6 +152,22 @@
     self.textViewPlaceholderLabel.text = BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
     self.textViewPlaceholderLabel.adjustsFontSizeToFitWidth = YES;
     [self addSubview:self.textViewPlaceholderLabel];
+}
+
+- (void)addEditButton
+{
+    self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x + self.textView.frame.size.width, self.textView.frame.origin.y, self.defaultTextViewHeight, self.defaultTextViewHeight)];
+    [self.editButton setImage:[UIImage imageNamed:@"pencil"] forState:UIControlStateNormal];
+    self.editButton.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8);
+    [self.editButton addTarget:self action:@selector(editDescription) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.editButton];
+}
+
+- (void)editDescription
+{
+    [self.editButton removeFromSuperview];
+    self.textView.userInteractionEnabled = YES;
+    [self.textView becomeFirstResponder];
 }
 
 #pragma mark - TextView delegate

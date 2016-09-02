@@ -9,6 +9,7 @@
 #import "TransactionDetailViewController.h"
 #import "TransactionDetailTableCell.h"
 #import "NSNumberFormatter+Currencies.h"
+#import "RootService.h"
 
 const int cellRowValue = 0;
 const int cellRowDescription = 1;
@@ -25,6 +26,7 @@ const CGFloat rowHeightToFrom = 88;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UITextView *textView;
 @property CGFloat oldTextViewHeight;
+@property (nonatomic) UIView *descriptonInputAccessoryView;
 
 @end
 @implementation TransactionDetailViewController
@@ -39,6 +41,35 @@ const CGFloat rowHeightToFrom = 88;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[TransactionDetailTableCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL];
     self.tableView.tableFooterView = [UIView new];
+    
+    [self setupTextViewInputAccessoryView];
+}
+
+- (void)setupTextViewInputAccessoryView
+{
+    UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
+    inputAccessoryView.backgroundColor = [UIColor redColor];
+    
+    UIButton *updateButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
+    updateButton.backgroundColor = COLOR_BUTTON_GREEN;
+    [updateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [updateButton setTitle:BC_STRING_UPDATE forState:UIControlStateNormal];
+    [updateButton addTarget:self action:@selector(saveNote) forControlEvents:UIControlEventTouchUpInside];
+    [inputAccessoryView addSubview:updateButton];
+    
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(updateButton.frame.size.width - 50, 0, 50, BUTTON_HEIGHT)];
+    cancelButton.backgroundColor = COLOR_BUTTON_GRAY_CANCEL;
+    [cancelButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(endEditing) forControlEvents:UIControlEventTouchUpInside];
+    [inputAccessoryView addSubview:cancelButton];
+    
+    self.descriptonInputAccessoryView = inputAccessoryView;
+}
+
+- (void)endEditing
+{
+    [self.textView resignFirstResponder];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -52,6 +83,12 @@ const CGFloat rowHeightToFrom = 88;
         [self.tableView endUpdates];
         [UIView setAnimationsEnabled:YES];
     }
+}
+
+- (void)saveNote
+{
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    [app.wallet saveNote:self.textView.text forTransaction:self.transaction.myHash];
 }
 
 - (CGSize)addVerticalPaddingToSize:(CGSize)size
@@ -81,6 +118,7 @@ const CGFloat rowHeightToFrom = 88;
         self.oldTextViewHeight = cell.textView.frame.size.height;
         cell.detailViewDelegate = self;
         self.textView = cell.textView;
+        cell.textView.inputAccessoryView = self.descriptonInputAccessoryView;
     } else if (indexPath.row == cellRowToFrom) {
         [cell configureToFromCell:self.transaction];
     } else if (indexPath.row == cellRowDate) {

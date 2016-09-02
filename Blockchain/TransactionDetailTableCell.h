@@ -23,6 +23,7 @@
 @property (nonatomic) UITextView *textView;
 @property (nonatomic) UILabel *textViewPlaceholderLabel;
 @property (nonatomic) CGFloat defaultTextViewHeight;
+@property (nonatomic) UIButton *editButton;
 
 // To and From cell
 @property (nonatomic) UILabel *topLabel;
@@ -37,5 +38,7 @@
 - (void)configureDateCell:(Transaction *)transaction;
 - (void)configureStatusCell:(Transaction *)transaction;
 - (void)configureValueCell:(Transaction *)transaction;
+
+- (void)addEditButton;
 
 @end

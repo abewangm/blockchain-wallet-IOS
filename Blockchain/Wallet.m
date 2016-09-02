@@ -2963,6 +2963,11 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setPbkdf2Iterations(%d)", iterations]];
 }
 
+- (void)saveNote:(NSString *)note forTransaction:(NSString *)hash
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
+}
+
 #pragma mark - Callbacks from JS to Obj-C for HD wallet
 
 - (void)reload

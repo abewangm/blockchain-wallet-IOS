@@ -70,6 +70,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_PASSWORD_STRENGTH_NORMAL UIColorFromRGB(0x5bc0de)
 #define COLOR_PASSWORD_STRENGTH_STRONG UIColorFromRGB(0x5cb85c)
 
+#define COLOR_BUTTON_GRAY_CANCEL UIColorFromRGB(0x7F7F7F)
+
 #define COLOR_UPGRADE_TEXT_BLUE UIColorFromRGB(0x1975BB)
 
 #define COLOR_TABLE_VIEW_CELL_TEXT_BLUE UIColorFromRGB(0x007AFF)
