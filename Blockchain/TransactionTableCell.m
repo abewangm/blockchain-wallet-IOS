@@ -11,6 +11,7 @@
 #import "RootService.h"
 #import "TransactionsViewController.h"
 #import "TransactionDetailViewController.h"
+#import "TransactionDetailNavigationController.h"
 
 @implementation TransactionTableCell
 
@@ -124,33 +125,14 @@
 
 #pragma mark button interactions
 
-- (IBAction)transactionClicked:(UIButton *)button
+- (IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath
 {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
     detailViewController.transaction = transaction;
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    detailViewController.transactionCount = app.latestResponse.transactions.count;
+    detailViewController.transactionIndex = indexPath.row;
     
-    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, navigationController.view.frame.size.width, DEFAULT_HEADER_HEIGHT)];
-    topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [navigationController.view addSubview:topBar];
-    
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, navigationController.view.frame.size.width - 160, 40)];
-    headerLabel.font = [UIFont systemFontOfSize:22.0];
-    headerLabel.textColor = [UIColor whiteColor];
-    headerLabel.textAlignment = NSTextAlignmentCenter;
-    headerLabel.adjustsFontSizeToFitWidth = YES;
-    headerLabel.text = BC_STRING_TRANSACTION;
-    [topBar addSubview:headerLabel];
-    
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.frame = CGRectMake(navigationController.view.frame.size.width - 80, 15, 80, 51);
-    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [backButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-    [backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
-    [backButton addTarget:self action:@selector(dismissDetails) forControlEvents:UIControlEventTouchUpInside];
-    [topBar addSubview:backButton];
+    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
     
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [app.tabViewController presentViewController:navigationController animated:YES completion:nil];

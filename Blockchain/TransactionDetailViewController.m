@@ -10,6 +10,11 @@
 #import "TransactionDetailTableCell.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
+#import "TransactionDetailNavigationController.h"
+
+#ifdef DEBUG
+#import "UITextView+AssertionFailureFix.h"
+#endif
 
 const int cellRowValue = 0;
 const int cellRowDescription = 1;
@@ -87,8 +92,41 @@ const CGFloat rowHeightToFrom = 88;
 
 - (void)saveNote
 {
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    [self.textView resignFirstResponder];
+    
+    TransactionDetailNavigationController *navigationController = (TransactionDetailNavigationController *)self.navigationController;
+    [navigationController.busyView fadeIn];
+    
     [app.wallet saveNote:self.textView.text forTransaction:self.transaction.myHash];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHistory) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+}
+
+- (void)getHistory
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    [app.wallet getHistory];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
+}
+
+- (void)reloadData
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
+    
+    TransactionDetailNavigationController *navigationController = (TransactionDetailNavigationController *)self.navigationController;
+    [navigationController.busyView fadeOut];
+    
+    NSArray *newTransactions = app.latestResponse.transactions;
+    
+    if (newTransactions.count >= self.transactionCount) {
+        self.transaction = [newTransactions objectAtIndex:self.transactionIndex + (newTransactions.count - self.transactionCount)];
+    } else {
+        DLog(@"Error reloading transcation details: new transaction count is less than old transaction count!");
+    }
+    
+    self.transactionCount = newTransactions.count;
+    
+    [self.tableView reloadData];
 }
 
 - (CGSize)addVerticalPaddingToSize:(CGSize)size
@@ -104,7 +142,7 @@ const CGFloat rowHeightToFrom = 88;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TransactionDetailTableCell *cell = (TransactionDetailTableCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL forIndexPath:indexPath];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.clipsToBounds = YES;
     
     if (indexPath.row == cellRowValue) {
@@ -127,6 +165,11 @@ const CGFloat rowHeightToFrom = 88;
         [cell configureStatusCell:self.transaction];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

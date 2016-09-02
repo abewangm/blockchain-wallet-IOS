@@ -42,7 +42,7 @@ int lastNumberTransactions = INT_MAX;
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
     }
-        
+    
     cell.transaction = transaction;
         
     [cell reload];
@@ -58,7 +58,7 @@ int lastNumberTransactions = INT_MAX;
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell transactionClicked:nil];
+    [cell transactionClicked:nil indexPath:indexPath];
         
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
