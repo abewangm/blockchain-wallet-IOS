@@ -152,6 +152,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_BACKUP_SUCCESS @"backupSuccess"
 #define NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES @"reloadAccountsAndAddresses"
 #define NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD @"multiaddressResponseReload"
+#define NOTIFICATION_KEY_GET_FIAT_AT_TIME @"getFiatAtTime"
 
 #define NOTIFICATION_KEY_MODAL_VIEW_DISMISSED @"modalViewDismissed"
 
@@ -440,6 +441,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_PRESENTER_SETTINGS_ABOUT 2
 
 #define APP_STORE_REVIEW_PROMPT_TIME 60*60*24*7 // Seconds in one week
+
+#define MSEC_PER_SEC 1000
 
 #define ONE_PERCENT_DECIMAL @0.01
 #define FIFTY_CENTS_DECIMAL @0.50

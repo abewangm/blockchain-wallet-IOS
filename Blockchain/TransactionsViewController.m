@@ -57,6 +57,8 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.lastSelectedIndexPath = indexPath;
+    
     TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     [cell transactionClicked:nil indexPath:indexPath];
         

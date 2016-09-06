@@ -41,6 +41,7 @@
 #import "DebugTableViewController.h"
 #import "KeychainItemWrapper+Credentials.h"
 #import "NSString+SHA256.h"
+#import "NSDecimalNumber+AbsoluteValue.h"
 
 @implementation RootService
 
@@ -1690,6 +1691,21 @@ void (^secondPasswordSuccess)(NSString *);
     if (_tabViewController.selectedIndex == TAB_SEND && busyView.hidden && !self.pinEntryViewController) {
         [app standardNotifyAutoDismissingController:notice title:BC_STRING_INFORMATION];
     }
+}
+
+- (void)didGetFiatAtTime:(NSNumber *)fiatAmount
+{
+    Transaction *transaction = latestResponse.transactions[self.transactionsViewController.lastSelectedIndexPath.row];
+    transaction.fiatAmountAtTime = [[NSDecimalNumber decimalNumberWithDecimal:[fiatAmount decimalValue]] absoluteValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
+}
+
+- (void)didErrorWhenGettingFiatAtTime:(NSString *)error
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_ERROR_GETTING_FIAT_AT_TIME preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    
+    [app.tabViewController.presentedViewController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Show Screens

@@ -97,6 +97,8 @@
 - (void)receivedTransactionMessage;
 - (void)paymentReceivedOnPINScreen:(NSString *)amount;
 - (void)didReceivePaymentNotice:(NSString *)notice;
+- (void)didGetFiatAtTime:(NSNumber *)fiatAmount;
+- (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate, SRWebSocketDelegate> {
@@ -318,5 +320,8 @@
 
 - (void)updateServerURL:(NSString *)newURL;
 
+// Transaction Details
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
+- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
+
 @end

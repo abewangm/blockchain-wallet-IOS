@@ -48,6 +48,10 @@ const CGFloat rowHeightToFrom = 88;
     self.tableView.tableFooterView = [UIView new];
     
     [self setupTextViewInputAccessoryView];
+
+    if (!self.transaction.fiatAmountAtTime) {
+        [self getFiatAtTime];
+    }
 }
 
 - (void)setupTextViewInputAccessoryView
@@ -69,6 +73,12 @@ const CGFloat rowHeightToFrom = 88;
     [inputAccessoryView addSubview:cancelButton];
     
     self.descriptonInputAccessoryView = inputAccessoryView;
+}
+
+- (void)getFiatAtTime
+{
+    [app.wallet getFiatAtTime:self.transaction.time * MSEC_PER_SEC value:self.transaction.amount currencyCode:app.latestResponse.symbol_local.code];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetFiatAtTime) name:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
 
 - (void)endEditing
@@ -99,20 +109,30 @@ const CGFloat rowHeightToFrom = 88;
     
     [app.wallet saveNote:self.textView.text forTransaction:self.transaction.myHash];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHistory) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHistoryAfterSavingNote) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
 }
 
-- (void)getHistory
+- (void)getHistoryAfterSavingNote
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     [app.wallet getHistory];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
-- (void)reloadData
+- (void)reloadDataAfterGetHistory
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
-    
+    [self reloadData];
+}
+
+- (void)reloadDataAfterGetFiatAtTime
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
+    [self reloadData];
+}
+
+- (void)reloadData
+{
     TransactionDetailNavigationController *navigationController = (TransactionDetailNavigationController *)self.navigationController;
     [navigationController.busyView fadeOut];
     

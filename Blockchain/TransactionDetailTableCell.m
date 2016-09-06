@@ -99,7 +99,18 @@
     // Value when sent label
     self.fiatValueWhenSentLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.frame.size.height - self.transactionFeeLabel.frame.size.height - 21 - 8, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 21)];
     self.fiatValueWhenSentLabel.font = [UIFont systemFontOfSize:12];
-    self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, [NSNumberFormatter formatMoney:ABS(transaction.amount) localCurrency:YES]];
+    
+    if (transaction.fiatAmountAtTime) {
+        self.fiatValueWhenSentLabel.attributedText = nil;
+        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, [NSNumberFormatter appendNumberToFiatSymbol:transaction.fiatAmountAtTime]];
+    } else {
+        self.fiatValueWhenSentLabel.text = nil;
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, @".........."]];
+        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,attributedString.length - 10)];
+        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor clearColor] range:NSMakeRange(attributedString.length - 10, 10)];
+        self.fiatValueWhenSentLabel.attributedText = attributedString;
+    }
+    
     self.fiatValueWhenSentLabel.adjustsFontSizeToFitWidth = YES;
     self.fiatValueWhenSentLabel.textAlignment = NSTextAlignmentRight;
     [self addSubview:self.fiatValueWhenSentLabel];

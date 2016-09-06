@@ -540,3 +540,4 @@
 #define BC_STRING_TO NSLocalizedString(@"To", nil)
 #define BC_STRING_DATE NSLocalizedString(@"Date", nil)
 #define BC_STRING_FROM NSLocalizedString(@"From", nil)
+#define BC_STRING_ERROR_GETTING_FIAT_AT_TIME NSLocalizedString(@"Could not get value when sent - please check your internet connection and try again.", nil)

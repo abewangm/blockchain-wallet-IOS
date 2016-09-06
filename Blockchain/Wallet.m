@@ -219,6 +219,14 @@
         [weakSelf update_loaded_all_transactions:index];
     };
     
+    self.context[@"on_get_fiat_at_time_success"] = ^(NSNumber *fiatAmount) {
+        [weakSelf on_get_fiat_at_time_success:fiatAmount];
+    };
+    
+    self.context[@"on_get_fiat_at_time_error"] = ^(NSString *error) {
+        [weakSelf on_get_fiat_at_time_error:error];
+    };
+    
 #pragma mark Send Screen
     
     self.context[@"update_send_balance"] = ^(NSNumber *balance) {
@@ -1687,6 +1695,16 @@
     return [[self.context evaluateScript:@"MyWalletPhone.SMSNotificationsEnabled()"] toBool];
 }
 
+- (void)saveNote:(NSString *)note forTransaction:(NSString *)hash
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
+}
+
+- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lli, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -2780,6 +2798,26 @@
     [app authorizationRequired];
 }
 
+- (void)on_get_fiat_at_time_success:(NSNumber *)fiatAmount
+{
+    DLog(@"on_get_fiat_at_time_success");
+    if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:)]) {
+        [self.delegate didGetFiatAtTime:fiatAmount];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetFiatAtTime!", [delegate class]);
+    }
+}
+
+- (void)on_get_fiat_at_time_error:(NSString *)error
+{
+    DLog(@"on_get_fiat_at_time_error");
+    if ([self.delegate respondsToSelector:@selector(didErrorWhenGettingFiatAtTime:)]) {
+        [self.delegate didErrorWhenGettingFiatAtTime:error];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didErrorWhenGettingFiatAtTime!", [delegate class]);
+    }
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)upgradeToV3Wallet
@@ -2984,11 +3022,6 @@
     DLog(@"Setting PBKDF2 Iterations");
     
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setPbkdf2Iterations(%d)", iterations]];
-}
-
-- (void)saveNote:(NSString *)note forTransaction:(NSString *)hash
-{
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
 }
 
 #pragma mark - Callbacks from JS to Obj-C for HD wallet
