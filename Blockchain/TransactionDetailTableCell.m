@@ -187,7 +187,7 @@
 
 - (void)toggleSymbol
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_TOGGLE_SYMBOL object:nil];
+    [self.detailViewDelegate toggleSymbol];
 }
 
 #pragma mark - TextView delegate

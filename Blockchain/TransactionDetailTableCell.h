@@ -11,6 +11,7 @@
 
 @protocol DetailViewDelegate
 - (void)textViewDidChange:(UITextView *)textView;
+- (void)toggleSymbol;
 @end
 
 @interface TransactionDetailTableCell : UITableViewCell <UITextViewDelegate>

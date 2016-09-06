@@ -52,13 +52,6 @@ const CGFloat rowHeightToFrom = 88;
     if (!self.transaction.fiatAmountAtTime) {
         [self getFiatAtTime];
     }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleSymbol) name:NOTIFICATION_KEY_TOGGLE_SYMBOL object:nil];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupTextViewInputAccessoryView
@@ -180,6 +173,7 @@ const CGFloat rowHeightToFrom = 88;
     
     if (indexPath.row == cellRowValue) {
         [cell configureValueCell:self.transaction];
+        cell.detailViewDelegate = self;
     } else if (indexPath.row == cellRowDescription) {
         // Set initial height for sizeThatFits: calculation
         cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height < rowHeightDefault ? rowHeightDefault : cell.frame.size.height);
