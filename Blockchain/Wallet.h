@@ -318,4 +318,5 @@
 
 - (void)updateServerURL:(NSString *)newURL;
 
+- (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
 @end

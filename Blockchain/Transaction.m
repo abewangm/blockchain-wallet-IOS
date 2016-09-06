@@ -18,7 +18,10 @@
     Transaction * transaction = [[Transaction alloc] init];
     
     transaction.from = [[InOut alloc] init];
-    transaction.to = [[InOut alloc] init];
+    
+    NSDictionary *fromDict = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM];
+    transaction.from.label = [fromDict objectForKey:DICTIONARY_KEY_ADDRESS];
+    transaction.to = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO];
 
     transaction.block_height = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT] intValue];
     transaction.confirmations = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS] intValue];
@@ -29,6 +32,7 @@
     transaction.time = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TIME] longLongValue];
     transaction.fromWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY] boolValue];
     transaction.toWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY] boolValue];
+    transaction.note = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_NOTE];
     
     return transaction;
 }

@@ -69,6 +69,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_PASSWORD_STRENGTH_NORMAL UIColorFromRGB(0x5bc0de)
 #define COLOR_PASSWORD_STRENGTH_STRONG UIColorFromRGB(0x5cb85c)
 
+#define COLOR_BUTTON_GRAY_CANCEL UIColorFromRGB(0x7F7F7F)
+
 #define COLOR_UPGRADE_TEXT_BLUE UIColorFromRGB(0x1975BB)
 
 #define COLOR_TABLE_VIEW_CELL_TEXT_BLUE UIColorFromRGB(0x007AFF)
@@ -103,6 +105,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE 14.0
 
 #pragma mark - Strings
+
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL @"transactionDetail"
 
 #define LOCALE_IDENTIFIER_EN_US @"en_US"
 #define LOCALE_IDENTIFIER_AR @"ar"
@@ -158,6 +162,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
 #define NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS @"GetAllCurrencySymbols"
 #define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
+#define NOTIFICATION_KEY_GET_HISTORY_SUCCESS @"GetHistory"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
 #define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
 #define NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS @"ChangeMobileNumber"
@@ -223,6 +228,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define TRANSACTION_FILTER_IMPORTED @"imported"
 
+#define DICTIONARY_KEY_TRANSACTION_FROM @"from"
+#define DICTIONARY_KEY_TRANSACTION_TO @"to"
 #define DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT @"block_height"
 #define DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS @"confirmations"
 #define DICTIONARY_KEY_TRANSACTION_FEE @"fee"
@@ -232,6 +239,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TRANSACTION_TIME @"time"
 #define DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY @"fromWatchOnly"
 #define DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY @"toWatchOnly"
+#define DICTIONARY_KEY_TRANSACTION_NOTE @"note"
 
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"

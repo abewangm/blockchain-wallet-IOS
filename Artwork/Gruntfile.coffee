@@ -61,4 +61,5 @@ module.exports = (grunt) ->
     "shell:psd:icon_wallet:26"
     "shell:svg:warning:26"
     "shell:svg:arrow_downward:26"
+    "shell:svg:pencil:26"
   ]

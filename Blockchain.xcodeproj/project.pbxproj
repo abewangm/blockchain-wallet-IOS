@@ -57,6 +57,8 @@
 		239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239CD5671C122BDE00997DF5 /* SettingsTwoStepViewController.m */; };
 		23BA220E1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BA220D1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m */; };
 		23BA22111D6B736900D0472B /* NSNumberFormatter+Currencies.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BA22101D6B736900D0472B /* NSNumberFormatter+Currencies.m */; };
+		23BD046A1D7761C000DB69E6 /* UITextView+AssertionFailureFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BD04691D7761C000DB69E6 /* UITextView+AssertionFailureFix.m */; };
+		23BD046D1D79F1EC00DB69E6 /* TransactionDetailNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BD046C1D79F1EC00DB69E6 /* TransactionDetailNavigationController.m */; };
 		23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF73381C454B8C00204503 /* AccountsAndAddressesNavigationController.m */; };
 		23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF733B1C455DDB00204503 /* AccountsAndAddressesViewController.m */; };
 		23C543A11D0F415C007A5F58 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C543A01D0F415C007A5F58 /* CFNetwork.framework */; };
@@ -77,6 +79,8 @@
 		23FDEFAC1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEFAB1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m */; };
 		23FDEFAE1D6F736400FC80D6 /* merchant-directory-info.der in Resources */ = {isa = PBXBuildFile; fileRef = 23FDEFAD1D6F736400FC80D6 /* merchant-directory-info.der */; };
 		23FDEFB01D6F87E600FC80D6 /* api-info.der in Resources */ = {isa = PBXBuildFile; fileRef = 23FDEFAF1D6F87E600FC80D6 /* api-info.der */; };
+		23FDEF9A1D6CBC7000FC80D6 /* TransactionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEF991D6CBC7000FC80D6 /* TransactionDetailViewController.m */; };
+		23FDEFA91D6E43DE00FC80D6 /* TransactionDetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */; };
 		670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */; };
 		6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6710DA0D1A8E82D80089DDED /* BCLine.m */; };
 		673107EF19F6BAF200BE6899 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F749DFF1514F1EF00B3A8B8 /* AVFoundation.framework */; };
@@ -586,6 +590,10 @@
 		23BA220D1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KeychainItemWrapper+Credentials.m"; sourceTree = "<group>"; };
 		23BA220F1D6B736900D0472B /* NSNumberFormatter+Currencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+Currencies.h"; sourceTree = "<group>"; };
 		23BA22101D6B736900D0472B /* NSNumberFormatter+Currencies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+Currencies.m"; sourceTree = "<group>"; };
+		23BD04681D7761C000DB69E6 /* UITextView+AssertionFailureFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AssertionFailureFix.h"; sourceTree = "<group>"; };
+		23BD04691D7761C000DB69E6 /* UITextView+AssertionFailureFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AssertionFailureFix.m"; sourceTree = "<group>"; };
+		23BD046B1D79F1EC00DB69E6 /* TransactionDetailNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailNavigationController.h; sourceTree = "<group>"; };
+		23BD046C1D79F1EC00DB69E6 /* TransactionDetailNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailNavigationController.m; sourceTree = "<group>"; };
 		23BF73371C454B8C00204503 /* AccountsAndAddressesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesNavigationController.h; sourceTree = "<group>"; };
 		23BF73381C454B8C00204503 /* AccountsAndAddressesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesNavigationController.m; sourceTree = "<group>"; };
 		23BF733A1C455DDB00204503 /* AccountsAndAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesViewController.h; sourceTree = "<group>"; };
@@ -698,6 +706,10 @@
 		23FDEFAB1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+SendSynchronousRequest.m"; sourceTree = "<group>"; };
 		23FDEFAD1D6F736400FC80D6 /* merchant-directory-info.der */ = {isa = PBXFileReference; lastKnownFileType = file; name = "merchant-directory-info.der"; path = "../merchant-directory-info.der"; sourceTree = "<group>"; };
 		23FDEFAF1D6F87E600FC80D6 /* api-info.der */ = {isa = PBXFileReference; lastKnownFileType = file; name = "api-info.der"; path = "../api-info.der"; sourceTree = "<group>"; };
+		23FDEF981D6CBC7000FC80D6 /* TransactionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailViewController.h; sourceTree = "<group>"; };
+		23FDEF991D6CBC7000FC80D6 /* TransactionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailViewController.m; sourceTree = "<group>"; };
+		23FDEFA71D6E43DE00FC80D6 /* TransactionDetailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailTableCell.h; sourceTree = "<group>"; };
+		23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailTableCell.m; sourceTree = "<group>"; };
 		670595A21AB0F59D00D2D6D9 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		6710DA0C1A8E82D80089DDED /* BCLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCLine.h; sourceTree = "<group>"; };
@@ -1156,6 +1168,8 @@
 			children = (
 				23FDEFAA1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.h */,
 				23FDEFAB1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m */,
+				23BD04681D7761C000DB69E6 /* UITextView+AssertionFailureFix.h */,
+				23BD04691D7761C000DB69E6 /* UITextView+AssertionFailureFix.m */,
 				23BA220F1D6B736900D0472B /* NSNumberFormatter+Currencies.h */,
 				23BA22101D6B736900D0472B /* NSNumberFormatter+Currencies.m */,
 				23BA220C1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.h */,
@@ -1306,6 +1320,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				23BD046B1D79F1EC00DB69E6 /* TransactionDetailNavigationController.h */,
+				23BD046C1D79F1EC00DB69E6 /* TransactionDetailNavigationController.m */,
 				235BD5641C58216000969B31 /* BCModalViewController.h */,
 				235BD5651C58216000969B31 /* BCModalViewController.m */,
 				237C9E8E1C482132000754F7 /* AccountsAndAddressesDetailViewController.h */,
@@ -1355,6 +1371,8 @@
 				231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */,
 				23F720F01C32DC0A00577738 /* DebugTableViewController.h */,
 				23F720F11C32DC0A00577738 /* DebugTableViewController.m */,
+				23FDEF981D6CBC7000FC80D6 /* TransactionDetailViewController.h */,
+				23FDEF991D6CBC7000FC80D6 /* TransactionDetailViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1483,6 +1501,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				23FDEFA71D6E43DE00FC80D6 /* TransactionDetailTableCell.h */,
+				23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */,
 				23E2FC061C7F60E7004CFF79 /* BCInsetLabel.h */,
 				23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */,
 				230FD2D71C5BF1A700336683 /* BCQRCodeView.h */,
@@ -1743,6 +1763,7 @@
 				23EA61CB1B5591260032B907 /* SettingsSelectorTableViewController.m in Sources */,
 				23BA22111D6B736900D0472B /* NSNumberFormatter+Currencies.m in Sources */,
 				2322DCB51D771831000E5AC1 /* SRIOConsumer.m in Sources */,
+				23BD046D1D79F1EC00DB69E6 /* TransactionDetailNavigationController.m in Sources */,
 				678AD5E919D4610000E9A778 /* BCModalContentView.m in Sources */,
 				84F4BDFA197F21D700B7BF7B /* PairingCodeParser.m in Sources */,
 				2322DCBC1D771831000E5AC1 /* SRHash.m in Sources */,
@@ -1794,6 +1815,7 @@
 				2322DCBD1D771831000E5AC1 /* SRHTTPConnectMessage.m in Sources */,
 				230FD2D31C5BD04000336683 /* BCEditAddressView.m in Sources */,
 				23C95EA61C0779C600E4692A /* SettingsChangePasswordViewController.m in Sources */,
+				23FDEFA91D6E43DE00FC80D6 /* TransactionDetailTableCell.m in Sources */,
 				2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */,
 				23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */,
 				9FCA4D1B151494BF00ECDFBE /* SendViewController.m in Sources */,
@@ -1816,6 +1838,7 @@
 				FA6323361A43373300EB3974 /* Merchant.m in Sources */,
 				9F91B607151666EC00ACB32D /* BCCreateWalletView.m in Sources */,
 				2322DCBE1D771831000E5AC1 /* SRLog.m in Sources */,
+				23FDEF9A1D6CBC7000FC80D6 /* TransactionDetailViewController.m in Sources */,
 				67EE1DCA19E3325900DBBFC9 /* ECPercentDrivenInteractiveTransition.m in Sources */,
 				23FDEF9D1D6E180100FC80D6 /* CertificatePinner.m in Sources */,
 				678CD7481A2777E600748AA5 /* BCCreateAccountView.m in Sources */,
@@ -1850,6 +1873,7 @@
 				2322DCBF1D771831000E5AC1 /* SRMutex.m in Sources */,
 				2322DCC41D771831000E5AC1 /* NSURLRequest+SRWebSocket.m in Sources */,
 				232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */,
+				23BD046A1D7761C000DB69E6 /* UITextView+AssertionFailureFix.m in Sources */,
 				23D423991D0878BE000054AA /* ModuleXMLHttpRequest.m in Sources */,
 				23F601A41D09C931009102BF /* Reachability.m in Sources */,
 				23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */,

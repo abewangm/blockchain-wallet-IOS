@@ -10,6 +10,8 @@
 #import "Transaction.h"
 #import "RootService.h"
 #import "TransactionsViewController.h"
+#import "TransactionDetailViewController.h"
+#import "TransactionDetailNavigationController.h"
 
 @implementation TransactionTableCell
 
@@ -123,9 +125,22 @@
 
 #pragma mark button interactions
 
-- (IBAction)transactionClicked:(UIButton *)button
+- (IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath
 {
-    [app pushWebViewController:[URL_SERVER stringByAppendingFormat:@"/tx/%@", transaction.myHash] title:BC_STRING_TRANSACTION];
+    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+    detailViewController.transaction = transaction;
+    detailViewController.transactionCount = app.latestResponse.transactions.count;
+    detailViewController.transactionIndex = indexPath.row;
+    
+    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)dismissDetails
+{
+    [app.tabViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)btcbuttonclicked:(id)sender

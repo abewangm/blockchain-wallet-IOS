@@ -2462,6 +2462,7 @@
     if (!self.isSyncing) {
         [self loading_stop];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
 - (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize
@@ -2983,6 +2984,11 @@
     DLog(@"Setting PBKDF2 Iterations");
     
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setPbkdf2Iterations(%d)", iterations]];
+}
+
+- (void)saveNote:(NSString *)note forTransaction:(NSString *)hash
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
 }
 
 #pragma mark - Callbacks from JS to Obj-C for HD wallet
