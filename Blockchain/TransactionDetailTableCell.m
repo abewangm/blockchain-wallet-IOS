@@ -25,8 +25,8 @@
     [self.bottomAccessoryLabel removeFromSuperview];
     [self.fiatValueWhenSentLabel removeFromSuperview];
     [self.transactionFeeLabel removeFromSuperview];
-    [self.amountButton removeFromSuperview];
     
+    [self.amountButton removeFromSuperview];
     [self.editButton removeFromSuperview];
 }
 
@@ -146,6 +146,15 @@
 - (void)configureDateCell:(Transaction *)transaction
 {
     self.textLabel.text = BC_STRING_DATE;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setAMSymbol:@"am"];
+    [dateFormatter setPMSymbol:@"pm"];
+    [dateFormatter setDateFormat:@"MMMM dd, yyyy @ h:mmaa"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.time];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    self.detailTextLabel.text = dateString;
+    self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)configureStatusCell:(Transaction *)transaction
