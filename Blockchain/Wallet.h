@@ -97,7 +97,7 @@
 - (void)receivedTransactionMessage;
 - (void)paymentReceivedOnPINScreen:(NSString *)amount;
 - (void)didReceivePaymentNotice:(NSString *)notice;
-- (void)didGetFiatAtTime:(NSNumber *)fiatAmount;
+- (void)didGetFiatAtTime:(NSString *)fiatAmount;
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
 @end
 

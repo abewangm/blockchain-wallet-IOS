@@ -93,9 +93,9 @@
     return string != nil && [string doubleValue] > 0;
 }
 
-+ (NSString *)appendNumberToFiatSymbol:(NSNumber *)number
++ (NSString *)appendStringToFiatSymbol:(NSString *)string
 {
-    return [app.latestResponse.symbol_local.symbol stringByAppendingFormat:@"%@", number];
+    return [app.latestResponse.symbol_local.symbol stringByAppendingFormat:@"%@", string];
 }
 
 + (NSString *)formatMoneyWithLocalSymbol:(uint64_t)value

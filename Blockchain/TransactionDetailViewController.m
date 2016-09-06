@@ -77,7 +77,7 @@ const CGFloat rowHeightToFrom = 88;
 
 - (void)getFiatAtTime
 {
-    [app.wallet getFiatAtTime:self.transaction.time * MSEC_PER_SEC value:self.transaction.amount currencyCode:app.latestResponse.symbol_local.code];
+    [app.wallet getFiatAtTime:self.transaction.time * MSEC_PER_SEC value:imaxabs(self.transaction.amount) currencyCode:[app.latestResponse.symbol_local.code lowercaseString]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetFiatAtTime) name:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
 

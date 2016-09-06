@@ -45,7 +45,6 @@
 		232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */; };
 		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
 		2343E4031CB434BC008DC7D1 /* NSArray+EncodedJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2343E4021CB434BC008DC7D1 /* NSArray+EncodedJSONString.m */; };
-		2354A7A01D7F4B2F0048E27A /* NSDecimalNumber+AbsoluteValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2354A79F1D7F4B2F0048E27A /* NSDecimalNumber+AbsoluteValue.m */; };
 		2357BA411D53979600BE0BFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2357BA431D53979600BE0BFD /* InfoPlist.strings */; };
 		235BD5661C58216000969B31 /* BCModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235BD5651C58216000969B31 /* BCModalViewController.m */; };
 		236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */; };
@@ -434,8 +433,6 @@
 		234197881C17BB08004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
 		2343E4011CB434BC008DC7D1 /* NSArray+EncodedJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+EncodedJSONString.h"; sourceTree = "<group>"; };
 		2343E4021CB434BC008DC7D1 /* NSArray+EncodedJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+EncodedJSONString.m"; sourceTree = "<group>"; };
-		2354A79E1D7F4B2F0048E27A /* NSDecimalNumber+AbsoluteValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+AbsoluteValue.h"; sourceTree = "<group>"; };
-		2354A79F1D7F4B2F0048E27A /* NSDecimalNumber+AbsoluteValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+AbsoluteValue.m"; sourceTree = "<group>"; };
 		2357BA421D53979600BE0BFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2357BA441D5397B100BE0BFD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2357BA451D5397B300BE0BFD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1169,8 +1166,6 @@
 		9F1831F315176F2200FB3D52 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				2354A79E1D7F4B2F0048E27A /* NSDecimalNumber+AbsoluteValue.h */,
-				2354A79F1D7F4B2F0048E27A /* NSDecimalNumber+AbsoluteValue.m */,
 				23FDEFAA1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.h */,
 				23FDEFAB1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m */,
 				23BD04681D7761C000DB69E6 /* UITextView+AssertionFailureFix.h */,
@@ -1825,7 +1820,6 @@
 				23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */,
 				9FCA4D1B151494BF00ECDFBE /* SendViewController.m in Sources */,
 				237451C91D624C1C00CF7049 /* RootService.m in Sources */,
-				2354A7A01D7F4B2F0048E27A /* NSDecimalNumber+AbsoluteValue.m in Sources */,
 				67D95A261B3DD86B0012EBB1 /* BCTextField.swift in Sources */,
 				2322DCC01D771831000E5AC1 /* SRRandom.m in Sources */,
 				23D3A6291C0F699900DEF737 /* SecurityCenterViewController.m in Sources */,

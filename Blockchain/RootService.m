@@ -41,7 +41,6 @@
 #import "DebugTableViewController.h"
 #import "KeychainItemWrapper+Credentials.h"
 #import "NSString+SHA256.h"
-#import "NSDecimalNumber+AbsoluteValue.h"
 
 @implementation RootService
 
@@ -1693,10 +1692,10 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (void)didGetFiatAtTime:(NSNumber *)fiatAmount
+- (void)didGetFiatAtTime:(NSString *)fiatAmount
 {
     Transaction *transaction = latestResponse.transactions[self.transactionsViewController.lastSelectedIndexPath.row];
-    transaction.fiatAmountAtTime = [[NSDecimalNumber decimalNumberWithDecimal:[fiatAmount decimalValue]] absoluteValue];
+    transaction.fiatAmountAtTime = fiatAmount;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
 

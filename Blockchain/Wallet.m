@@ -219,7 +219,7 @@
         [weakSelf update_loaded_all_transactions:index];
     };
     
-    self.context[@"on_get_fiat_at_time_success"] = ^(NSNumber *fiatAmount) {
+    self.context[@"on_get_fiat_at_time_success"] = ^(NSString *fiatAmount) {
         [weakSelf on_get_fiat_at_time_success:fiatAmount];
     };
     
@@ -1702,7 +1702,7 @@
 
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lli, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
 }
 
 # pragma mark - Transaction handlers
@@ -2798,7 +2798,7 @@
     [app authorizationRequired];
 }
 
-- (void)on_get_fiat_at_time_success:(NSNumber *)fiatAmount
+- (void)on_get_fiat_at_time_success:(NSString *)fiatAmount
 {
     DLog(@"on_get_fiat_at_time_success");
     if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:)]) {

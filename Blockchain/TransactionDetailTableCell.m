@@ -40,6 +40,8 @@
 - (void)configureDescriptionCell:(Transaction *)transaction
 {
     self.textLabel.text = BC_STRING_DESCRIPTION;
+    self.textLabel.textColor = [UIColor lightGrayColor];
+    
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(self.frame.size.width/2, self.contentView.layoutMargins.top, self.frame.size.width/2 - self.contentView.layoutMargins.right, self.frame.size.height - self.contentView.layoutMargins.top - self.contentView.layoutMargins.bottom)];
     self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.textView.scrollEnabled = NO;
@@ -67,6 +69,7 @@
     // Label for Sent, Transferred, or Received
     self.topLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, self.frame.size.width/3, 30)];
     self.topLabel.adjustsFontSizeToFitWidth = YES;
+    self.topLabel.textColor = [UIColor lightGrayColor];
     
     if ([transaction.txType isEqualToString:TX_TYPE_TRANSFER]) {
         self.topLabel.text = [BC_STRING_TRANSFERRED uppercaseString];
@@ -95,6 +98,7 @@
     // Transaction fee label
     self.transactionFeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.frame.size.height - self.contentView.layoutMargins.bottom - 21, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 21)];
     self.transactionFeeLabel.font = [UIFont systemFontOfSize:12];
+    self.transactionFeeLabel.textColor = [UIColor lightGrayColor];
     self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.fee)]];
     self.transactionFeeLabel.adjustsFontSizeToFitWidth = YES;
     self.transactionFeeLabel.textAlignment = NSTextAlignmentRight;
@@ -106,11 +110,12 @@
     
     if (transaction.fiatAmountAtTime) {
         self.fiatValueWhenSentLabel.attributedText = nil;
-        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, [NSNumberFormatter appendNumberToFiatSymbol:transaction.fiatAmountAtTime]];
+        self.fiatValueWhenSentLabel.textColor = [UIColor lightGrayColor];
+        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, [NSNumberFormatter appendStringToFiatSymbol:transaction.fiatAmountAtTime]];
     } else {
         self.fiatValueWhenSentLabel.text = nil;
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, @".........."]];
-        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,attributedString.length - 10)];
+        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0,attributedString.length - 10)];
         [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor clearColor] range:NSMakeRange(attributedString.length - 10, 10)];
         self.fiatValueWhenSentLabel.attributedText = attributedString;
     }
@@ -124,10 +129,12 @@
 {
     self.topLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, 70, 30)];
     self.topLabel.text = BC_STRING_TO;
+    self.topLabel.textColor = [UIColor lightGrayColor];
     [self addSubview:self.topLabel];
 
     self.bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.topLabel.frame.origin.x, self.frame.size.height/2 + 4, self.topLabel.frame.size.width, 30)];
     self.bottomLabel.text = BC_STRING_FROM;
+    self.bottomLabel.textColor = [UIColor lightGrayColor];
     [self addSubview:self.bottomLabel];
     
     self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
@@ -146,7 +153,8 @@
 - (void)configureDateCell:(Transaction *)transaction
 {
     self.textLabel.text = BC_STRING_DATE;
-    
+    self.textLabel.textColor = [UIColor lightGrayColor];
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setAMSymbol:@"am"];
     [dateFormatter setPMSymbol:@"pm"];
@@ -160,6 +168,8 @@
 - (void)configureStatusCell:(Transaction *)transaction
 {
     self.textLabel.text = BC_STRING_STATUS;
+    self.textLabel.textColor = [UIColor lightGrayColor];
+
     if (transaction.confirmations >= kConfirmationThreshold) {
         self.detailTextLabel.text = BC_STRING_CONFIRMED;
     } else {
@@ -182,6 +192,8 @@
 {
     self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x + self.textView.frame.size.width, self.textView.frame.origin.y, self.defaultTextViewHeight, self.defaultTextViewHeight)];
     [self.editButton setImage:[UIImage imageNamed:@"pencil"] forState:UIControlStateNormal];
+    [self.editButton setImage:[self.editButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self.editButton.imageView setTintColor:[UIColor lightGrayColor]];
     self.editButton.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8);
     [self.editButton addTarget:self action:@selector(editDescription) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.editButton];
