@@ -25,6 +25,7 @@
     [self.bottomAccessoryLabel removeFromSuperview];
     [self.fiatValueWhenSentLabel removeFromSuperview];
     [self.transactionFeeLabel removeFromSuperview];
+    [self.amountButton removeFromSuperview];
     
     [self.editButton removeFromSuperview];
 }
@@ -79,25 +80,28 @@
     }
     [self addSubview:self.topLabel];
     
-    // Amount label
-    self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
-    self.topAccessoryLabel.textAlignment = NSTextAlignmentRight;
-    self.topAccessoryLabel.adjustsFontSizeToFitWidth = YES;
-    self.topAccessoryLabel.text = [NSNumberFormatter formatMoney:ABS(transaction.amount) localCurrency:NO];
+    CGFloat XPositionForAccessoryViews = self.contentView.layoutMargins.left + self.topLabel.frame.size.width;
     
-    self.topAccessoryLabel.textColor = self.topLabel.textColor;
-    [self addSubview:self.topAccessoryLabel];
+    // Amount button
+    self.amountButton = [[UIButton alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.topLabel.frame.origin.y, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 30)];
+    self.amountButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    self.amountButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.amountButton setTitle:[NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.amount)] forState:UIControlStateNormal];
+    [self.amountButton addTarget:self action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.amountButton setTitleColor:self.topLabel.textColor forState:UIControlStateNormal];
+    [self addSubview:self.amountButton];
     
     // Transaction fee label
-    self.transactionFeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.frame.size.height - self.contentView.layoutMargins.bottom - 21, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 21)];
+    self.transactionFeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.frame.size.height - self.contentView.layoutMargins.bottom - 21, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 21)];
     self.transactionFeeLabel.font = [UIFont systemFontOfSize:12];
-    self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoney:ABS(transaction.fee) localCurrency:NO]];
+    self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.fee)]];
     self.transactionFeeLabel.adjustsFontSizeToFitWidth = YES;
     self.transactionFeeLabel.textAlignment = NSTextAlignmentRight;
     [self addSubview:self.transactionFeeLabel];
     
     // Value when sent label
-    self.fiatValueWhenSentLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.frame.size.height - self.transactionFeeLabel.frame.size.height - 21 - 8, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 21)];
+    self.fiatValueWhenSentLabel = [[UILabel alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.frame.size.height - self.transactionFeeLabel.frame.size.height - 21 - 8, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 21)];
     self.fiatValueWhenSentLabel.font = [UIFont systemFontOfSize:12];
     
     if (transaction.fiatAmountAtTime) {
@@ -179,6 +183,11 @@
     [self.editButton removeFromSuperview];
     self.textView.userInteractionEnabled = YES;
     [self.textView becomeFirstResponder];
+}
+
+- (void)toggleSymbol
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_TOGGLE_SYMBOL object:nil];
 }
 
 #pragma mark - TextView delegate

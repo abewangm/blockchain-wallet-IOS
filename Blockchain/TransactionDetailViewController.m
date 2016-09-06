@@ -52,6 +52,13 @@ const CGFloat rowHeightToFrom = 88;
     if (!self.transaction.fiatAmountAtTime) {
         [self getFiatAtTime];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleSymbol) name:NOTIFICATION_KEY_TOGGLE_SYMBOL object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupTextViewInputAccessoryView
@@ -152,6 +159,12 @@ const CGFloat rowHeightToFrom = 88;
 - (CGSize)addVerticalPaddingToSize:(CGSize)size
 {
     return CGSizeMake(size.width, size.height + 16);
+}
+
+- (void)toggleSymbol
+{
+    [app toggleSymbol];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowValue inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

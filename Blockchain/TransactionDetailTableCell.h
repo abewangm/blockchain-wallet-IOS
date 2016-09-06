@@ -16,6 +16,7 @@
 @interface TransactionDetailTableCell : UITableViewCell <UITextViewDelegate>
 
 // Value cell
+@property (nonatomic) UIButton *amountButton;
 @property (nonatomic) UILabel *fiatValueWhenSentLabel;
 @property (nonatomic) UILabel *transactionFeeLabel;
 
@@ -25,7 +26,7 @@
 @property (nonatomic) CGFloat defaultTextViewHeight;
 @property (nonatomic) UIButton *editButton;
 
-// To and From cell
+// Generic/To and From cell
 @property (nonatomic) UILabel *topLabel;
 @property (nonatomic) UILabel *bottomLabel;
 @property (nonatomic) UILabel *topAccessoryLabel;

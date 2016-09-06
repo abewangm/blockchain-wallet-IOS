@@ -98,4 +98,9 @@
     return [app.latestResponse.symbol_local.symbol stringByAppendingFormat:@"%@", number];
 }
 
++ (NSString *)formatMoneyWithLocalSymbol:(uint64_t)value
+{
+    return [self formatMoney:value localCurrency:app->symbolLocal];
+}
+
 @end
