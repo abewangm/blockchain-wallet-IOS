@@ -203,9 +203,9 @@ BOOL displayingLocalSymbolSend;
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (self.sendFromAddress) {
-        [self selectFromAddress:self.fromAddress];
+        [self didSelectFromAddress:self.fromAddress];
     } else {
-        [self selectFromAccount:self.fromAccount];
+        [self didSelectFromAccount:self.fromAccount];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
@@ -1423,7 +1423,9 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)selectFromAddress:(NSString *)address
+# pragma mark - AddressBook delegate
+
+- (void)didSelectFromAddress:(NSString *)address
 {
     self.sendFromAddress = true;
     
@@ -1441,26 +1443,6 @@ BOOL displayingLocalSymbolSend;
     DLog(@"fromAddress: %@", address);
     
     [app.wallet changePaymentFromAddress:address isAdvanced:self.customFeeMode];
-}
-
-- (void)selectFromAccount:(int)account
-{
-    self.sendFromAddress = false;
-    
-    availableAmount = [app.wallet getBalanceForAccount:account];
-    
-    selectAddressTextField.text = [app.wallet getLabelForAccount:account];
-    self.fromAccount = account;
-    DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
-    
-    [app.wallet changePaymentFromAccount:account isAdvanced:self.customFeeMode];
-}
-
-# pragma mark - AddressBook delegate
-
-- (void)didSelectFromAddress:(NSString *)address
-{
-    [self selectFromAddress:address];
     
     [self doCurrencyConversion];
 }
@@ -1482,7 +1464,17 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didSelectFromAccount:(int)account
 {
-    [self selectFromAccount:account];
+    self.sendFromAddress = false;
+    
+    availableAmount = [app.wallet getBalanceForAccount:account];
+    
+    selectAddressTextField.text = [app.wallet getLabelForAccount:account];
+    self.fromAccount = account;
+    DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
+    
+    [app.wallet changePaymentFromAccount:account isAdvanced:self.customFeeMode];
+    
+    [self updateFundsAvailable];
     
     [self doCurrencyConversion];
 }
