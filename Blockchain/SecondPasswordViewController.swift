@@ -10,7 +10,7 @@ import UIKit
 
 protocol SecondPasswordDelegate {
     func didGetSecondPassword(_: String)
-    func returnToRootViewController(completionHandler: () -> Void ) -> Void
+    func returnToRootViewController(_ completionHandler: @escaping () -> Void ) -> Void
     var isVerifying : Bool {get set}
 }
 
@@ -28,49 +28,49 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topBar = UIView(frame:CGRectMake(0, 0, self.view.frame.size.width, Constants.Measurements.DefaultHeaderHeight));
+        topBar = UIView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: Constants.Measurements.DefaultHeaderHeight));
         topBar!.backgroundColor = Constants.Colors.BlockchainBlue
         self.view.addSubview(topBar!);
         
-        let headerLabel = UILabel(frame:CGRectMake(80, 20.5, self.view.frame.size.width - 160, 40));
-        headerLabel.font = UIFont.systemFontOfSize(13.0)
-        headerLabel.textColor = UIColor.whiteColor()
-        headerLabel.textAlignment = .Center;
+        let headerLabel = UILabel(frame:CGRect(x: 80, y: 20.5, width: self.view.frame.size.width - 160, height: 40));
+        headerLabel.font = UIFont.systemFont(ofSize: 13.0)
+        headerLabel.textColor = UIColor.white
+        headerLabel.textAlignment = .center;
         headerLabel.adjustsFontSizeToFitWidth = true;
         headerLabel.text = NSLocalizedString("Second Password Required", comment: "");
         topBar!.addSubview(headerLabel);
         
-        closeButton = UIButton(type: UIButtonType.Custom)
-        closeButton!.contentHorizontalAlignment = .Left;
+        closeButton = UIButton(type: UIButtonType.custom)
+        closeButton!.contentHorizontalAlignment = .left;
         closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
-        closeButton!.titleLabel?.font = UIFont.systemFontOfSize(15)
-        closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), forState: .Highlighted);
-        closeButton!.addTarget(self, action:#selector(SecondPasswordViewController.close(_:)), forControlEvents: UIControlEvents.TouchUpInside);
+        closeButton!.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), for: .highlighted);
+        closeButton!.addTarget(self, action:#selector(SecondPasswordViewController.close(_:)), for: UIControlEvents.touchUpInside);
         topBar!.addSubview(closeButton!);
         
-        closeButton!.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+        closeButton!.frame = CGRect(x: self.view.frame.size.width - 80, y: 15, width: 80, height: 51);
         closeButton!.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
-        closeButton!.contentHorizontalAlignment = .Right
+        closeButton!.contentHorizontalAlignment = .right
         closeButton!.titleLabel?.adjustsFontSizeToFitWidth = true
-        closeButton!.setTitle(NSLocalizedString("Close", comment: ""), forState: .Normal)
-        closeButton!.setImage(nil, forState: .Normal)
+        closeButton!.setTitle(NSLocalizedString("Close", comment: ""), for: UIControlState())
+        closeButton!.setImage(nil, for: UIControlState())
         
-        password?.returnKeyType = .Done
+        password?.returnKeyType = .done
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         password?.becomeFirstResponder()
     }
 
-    @IBAction func done(sender: UIButton) {
+    @IBAction func done(_ sender: UIButton) {
         checkSecondPassword()
     }
     
-    @IBAction func close(sender: UIButton) {
+    @IBAction func close(_ sender: UIButton) {
         password?.resignFirstResponder()
         delegate!.returnToRootViewController { () -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 
@@ -84,24 +84,24 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
             delegate?.didGetSecondPassword(secondPassword!)
             if (delegate!.isVerifying) {
                 // if we are verifying backup, go to verify words view controller
-                self.navigationController?.performSegueWithIdentifier("backupVerify", sender: nil)
+                self.navigationController?.performSegue(withIdentifier: "backupVerify", sender: nil)
             }
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
         } else {
             alertUserWithErrorMessage((NSLocalizedString("Second Password Incorrect", comment: "")))
         }
     }
     
-    func alertUserWithErrorMessage(message : String) {
-        let alert = UIAlertController(title:  NSLocalizedString("Error", comment:""), message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .Default, handler: { (UIAlertAction) -> Void in
+    func alertUserWithErrorMessage(_ message : String) {
+        let alert = UIAlertController(title:  NSLocalizedString("Error", comment:""), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .default, handler: { (UIAlertAction) -> Void in
              self.password?.text = ""
         }))
-        NSNotificationCenter.defaultCenter().addObserver(alert, selector: #selector(UIViewController.autoDismiss), name: "reloadToDismissViews", object: nil)
-        presentViewController(alert, animated: true, completion: nil)
+        NotificationCenter.default.addObserver(alert, selector: #selector(UIViewController.autoDismiss), name: NSNotification.Name(rawValue: "reloadToDismissViews"), object: nil)
+        present(alert, animated: true, completion: nil)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         checkSecondPassword()
         return true
     }

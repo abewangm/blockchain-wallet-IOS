@@ -9,10 +9,10 @@
 import Foundation
 
 extension UINavigationController {
-    func popToRootViewControllerWithHandler(completion: ()->()) {
+    func popToRootViewControllerWithHandler(_ completion: @escaping ()->()) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
-        self.popToRootViewControllerAnimated(true)
+        self.popToRootViewController(animated: true)
         CATransaction.commit()
     }
 }
