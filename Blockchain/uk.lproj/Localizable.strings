@@ -1346,7 +1346,7 @@ wallet experience for you" = "Ми створили для вас цілком �
 "You have no available funds to send from this address" = "У вас немає доступних коштів для відправки з цієї адреси";
 
 /* (No Commment) */
-"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Перш ніж змінити номер мобільного, треба вимкнути 2-крокову верифікацію через SMS.";
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Перш ніж змінити номер мобільного, треба вимкнути 2-крокову верифікацію через SMS (%@).";
 
 /* (No Commment) */
 "You must enter a destination address" = "Треба ввести адресу призначення";

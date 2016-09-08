@@ -1298,7 +1298,7 @@ wallet experience for you" = "Мы разработали для вас коше
 "Where" = "Где";
 
 /* (No Commment) */
-"Would you like to add the bitcoin address %@ to your address book?" = ",Вы хотите добавить этот bitcoin-адрес % @ в свою адресную книгу?";
+"Would you like to add the bitcoin address %@ to your address book?" = ",Вы хотите добавить этот bitcoin-адрес %@ в свою адресную книгу?";
 
 /* (No Commment) */
 "Would you like to archive the addresses used?" = "Вы хотите отправить использованные адреса в архив?";
