@@ -43,9 +43,7 @@
         // Get local and remote cert data
         NSData *remoteCertificateData = CFBridgingRelease(SecCertificateCopyData(certificate));
         NSString *resource;
-        if ([session.sessionDescription isEqualToString:HOST_NAME_MERCHANT]) {
-            resource = @"merchant-directory-info";
-        } else if ([session.sessionDescription isEqualToString:HOST_NAME_API]) {
+        if ([session.sessionDescription isEqualToString:HOST_NAME_MERCHANT] || [session.sessionDescription isEqualToString:HOST_NAME_API]) {
             resource = @"api-info";
         } else if ([session.sessionDescription isEqualToString:HOST_NAME_WALLET_SERVER]) {
             resource = @"blockchain";

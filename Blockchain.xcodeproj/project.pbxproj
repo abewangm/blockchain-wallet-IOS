@@ -1714,7 +1714,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}/.. && openssl s_client -connect blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > blockchain.der && openssl s_client -connect merchant-directory.blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > merchant-directory-info.der && openssl s_client -connect api.blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > api-info.der";
+			shellScript = "cd ${SRCROOT}/.. && openssl s_client -connect blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > blockchain.der && openssl s_client -connect api.blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > api-info.der";
 		};
 /* End PBXShellScriptBuildPhase section */
 
