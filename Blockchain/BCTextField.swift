@@ -27,13 +27,13 @@ class BCTextField: BCSecureTextField {
             return
         }
         
-        let onePixelHeight = 1.0/UIScreen.mainScreen().scale
-        let onePixelLine = UIView(frame: CGRectMake(0, self.frame.size.height - onePixelHeight,
-            self.frame.size.width + 15, onePixelHeight))
+        let onePixelHeight = 1.0/UIScreen.main.scale
+        let onePixelLine = UIView(frame: CGRect(x: 0, y: self.frame.size.height - onePixelHeight,
+            width: self.frame.size.width + 15, height: onePixelHeight))
         
-        onePixelLine.frame = self.superview!.convertRect(onePixelLine.frame, fromView: self)
+        onePixelLine.frame = self.superview!.convert(onePixelLine.frame, from: self)
         
-        onePixelLine.userInteractionEnabled = false
+        onePixelLine.isUserInteractionEnabled = false
         onePixelLine.backgroundColor = Constants.Colors.TextFieldBorderGray
         
         self.superview!.addSubview(onePixelLine)

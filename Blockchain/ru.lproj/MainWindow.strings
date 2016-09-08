@@ -2,10 +2,10 @@
 "2je-u4-PB2.text" = "Транзакции";
 
 /* Class = "UIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "Удалить кошелек";
+"5gL-FG-Zcc.normalTitle" = "Забыть кошелек";
 
 /* Class = "UIButton"; normalTitle = "1.12345 BTC"; ObjectID = "6sh-r5-yAx"; */
-"6sh-r5-yAx.normalTitle" = "1.12345 BTC";
+"6sh-r5-yAx.normalTitle" = "1,12345 BTC";
 
 /* (No Commment) */
 "257.text" = "0 BTC";
@@ -23,20 +23,20 @@
 "360.text" = "1";
 
 /* Class = "UILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "Войдите в ваш кошелек Blockchain через ПК или Mac на
+"361.text" = "Войдите в свой кошелек Blockchain со своего ПК или Mac по ссылке
 https://blockchain.info/wallet/login";
 
 /* Class = "UILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
-/* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Если вы используете старый кошелек, нажмите кнопку Параметры учетной записи и выберите вкладку Устройства. Если вы используете наш новую бета-версию бумажника, перейдите в Настройки / Информация о бумажнике.";
+/* (No Commment) */
+"364.text" = "Если вы используете старый кошелек, нажмите кнопку «Параметры учетной записи» и выберите вкладку «Устройства». Если вы используете наш новый кошелек, перейдите в «Настройки / Информация о кошельке».";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Нажмите кнопку Показать код спаривания, чтобы открыть штрих-код QR. Отсканируйте код с вашей камеры.";
+"369.text" = "Нажмите кнопку «Показать код сопряжения», чтобы открыть QR-код. Отсканируйте код своей камерой.";
 
 /* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
 "370.normalTitle" = "Отсканируйте код сопряжения";
@@ -45,7 +45,7 @@ https://blockchain.info/wallet/login";
 "376.normalTitle" = "Кнопка 2";
 
 /* (No Commment) */
-"377.normalTitle" = "Кнопка 2";
+"377.normalTitle" = "Кнопка 1";
 
 /* (No Commment) */
 "378.text" = "Если у вас уже есть Blockchain кошелек, выберите Создать парное устройство; в противном случае выберите Создать кошелек.    Это бесплатно! Адреса электронной почты не требуется.";
@@ -54,13 +54,13 @@ https://blockchain.info/wallet/login";
 "380.text" = "Добро пожаловать в кошелек Blockchain";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Без последние сделки";
+"387.text" = "Недавних транзакций не обнаружено";
 
 /* (No Commment) */
 "394.text" = "Пароль:";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
-"395.placeholder" = "Пароль (минимум 10 символов)";
+"395.placeholder" = "Пароль";
 
 /* (No Commment) */
 "396.text" = "Подтвердить:";
@@ -72,7 +72,7 @@ https://blockchain.info/wallet/login";
 "398.normalTitle" = "Создать кошелек";
 
 /* (No Commment) */
-"465.text" = "Требуется второй пароль ";
+"465.text" = "Требуется пароль";
 
 /* Class = "UILabel"; text = "Password Request Description"; ObjectID = "467"; */
 "467.text" = "Описание запроса пароля";
@@ -93,7 +93,7 @@ https://blockchain.info/wallet/login";
 "587.placeholder" = "Идентификатор кошелька";
 
 /* (No Commment) */
-"588.text" = "Вы выбрали ручной режим сопряжения (или не поддерживается автоматическое сопряжение с устройством). Пожалуйста, введите ниже ваши данные для входа в систему.";
+"588.text" = "Вы выбрали ручной режим сопряжения (или не поддерживается автоматическое сопряжение с устройством). Введите ниже ваши данные для входа в систему.";
 
 /* (No Commment) */
 "591.text" = "Пароль:";
@@ -102,10 +102,10 @@ https://blockchain.info/wallet/login";
 "592.placeholder" = "Пароль";
 
 /* (No Commment) */
-"602.text" = "Вы должны отключить функцию двухфакторной проверки для использования ручного режима сопряжения.";
+"602.text" = "Вы должны отключить функцию двухфакторной аутентификации для использования ручного режима сопряжения.";
 
 /* Class = "UILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "Вы вышли из системы, либо произошла ошибка расшифровки файла вашего кошелька. Введите ваш пароль ниже для входа в систему.";
+"624.text" = "Вы вышли из системы, либо произошла ошибка расшифровки файла вашего кошелька. Для входа в систему введите свой пароль ниже.";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "625"; */
 "625.normalTitle" = "Продолжить";
@@ -120,7 +120,7 @@ https://blockchain.info/wallet/login";
 "630.text" = "Войти";
 
 /* Class = "UILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "Если вы хотели бы удалить этот кошелек и начать заново, нажмите клавишу «Удалить кошелек».";
+"C0R-wB-wF1.text" = "Если вы хотели бы забыть этот кошелек и начать заново, нажмите клавишу «Забыть кошелек».";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "DIx-fJ-eKX"; */
 "DIx-fJ-eKX.text" = "Название";
@@ -132,13 +132,13 @@ https://blockchain.info/wallet/login";
 "LsW-69-Qon.placeholder" = "Ваш электронный адрес";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Mk4-63-3pL"; */
-"Mk4-63-3pL.text" = "Слабый";
+"Mk4-63-3pL.text" = "Ненадежный";
 
 /* (No Commment) */
 "OKS-md-gDQ.normalTitle" = "Кнопка 3";
 
 /* Class = "UILabel"; text = "By creating a new wallet you agree to the"; ObjectID = "Qvx-f4-C2O"; */
-"Qvx-f4-C2O.text" = "Создавая новый бумажник, вы соглашаетесь";
+"Qvx-f4-C2O.text" = "Создавая новый кошелек, вы соглашаетесь с";
 
 /* (No Commment) */
 "TzC-Tw-04r.normalTitle" = "Продолжить";
@@ -147,7 +147,7 @@ https://blockchain.info/wallet/login";
 "VcH-wh-BEs.text" = "Электронный адрес:";
 
 /* Class = "UIButton"; normalTitle = "345.68 USD"; ObjectID = "bzM-Ub-MUU"; */
-"bzM-Ub-MUU.normalTitle" = "345.68 USD";
+"bzM-Ub-MUU.normalTitle" = "345,68 USD";
 
 /* Class = "UIButton"; normalTitle = "I can't access my camera"; ObjectID = "fI2-PD-Xwa"; */
 "fI2-PD-Xwa.normalTitle" = "Я не могу получить доступ к моей камере";
@@ -159,13 +159,13 @@ https://blockchain.info/wallet/login";
 "kK3-Xs-d3Q.text" = "0 Транзакций";
 
 /* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Введите контрольную фразу из 12 слов  с пробелами для восстановления ваших средств и транзакций";
+"pEh-08-oZW.text" = "Введите контрольную фразу из 12 слов с пробелами для восстановления ваших средств и транзакций";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Ручное сопряжение";
 
 /* Class = "UIButton"; normalTitle = "Blockchain Terms of Service"; ObjectID = "wfI-8F-dfm"; */
-"wfI-8F-dfm.normalTitle" = "Условия предоставления услуг Blockchain ";
+"wfI-8F-dfm.normalTitle" = "Условиями предоставления услуг Blockchain";
 
 /* (No Commment) */
 "wvh-x7-hB8.text" = "*Минимум 10 символов";

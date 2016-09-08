@@ -32,7 +32,7 @@
 "52.text" = "0,00";
 
 /* (No Commment) */
-"57.text" = "BTC 5 = $10";
+"57.text" = "5 BTC = $10";
 
 /* (No Commment) */
 "61.text" = "Etiqueta:";
@@ -50,19 +50,19 @@
 "65.text" = "Dirección:";
 
 /* (No Commment) */
-"67.text" = "Etiqueta de dirección";
+"67.text" = "Etiquetar la dirección";
 
 /* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
-"Cbp-Qe-FKP.normalTitle" = "Personalizar tarifa";
+"Cbp-Qe-FKP.normalTitle" = "Personalizar la comisión";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Tarifa: ";
+"FB0-NP-5do.text" = "Comisión:";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
-"Pgx-k8-cTb.normalTitle" = "Cancelar al";
+"Pgx-k8-cTb.normalTitle" = "Cancelar la siguiente";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
 "Ubr-KG-egH.text" = "Total:";
@@ -71,25 +71,25 @@
 "ZcA-OM-4nq.text" = "De:";
 
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Espera";
+"Zgn-Wx-Uwx.text" = "Por favor, espera";
 
 /* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
-"Zhm-Jw-P4C.text" = "Tarifa";
+"Zhm-Jw-P4C.text" = "Comisión";
 
 /* (No Commment) */
-"aKC-Q2-phD.text" = "Enviando el pago";
+"aKC-Q2-phD.text" = "Enviando pago";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Cantidad: ";
+"aeG-gf-oXV.text" = "Monto:";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
-"d7n-Ue-QXL.normalTitle" = "Total disponible";
+"d7n-Ue-QXL.normalTitle" = "Fondos disponibles";
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
 "fpY-AA-We5.text" = "Para";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "p7q-Ud-nYh"; */
-"p7q-Ud-nYh.placeholder" = "0.000";
+"p7q-Ud-nYh.placeholder" = "0,000";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
 "pPu-bJ-k6p.normalTitle" = "Continuar";

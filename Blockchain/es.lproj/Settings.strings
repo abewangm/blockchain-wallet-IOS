@@ -20,22 +20,22 @@
 "WVd-f2-ZLG.text" = "Frase de copia de seguridad";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "Bloquear solicitudes de TOR";
+"Wor-ZR-sPS.text" = "Bloquear TORs";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Proteja su cartera de accesos no autorizados al permitir la verificación de 2 pasos. Usted puede elegir utilizar una aplicación gratuita o su número de teléfono móvil para asegurar su cartera. Se le solicitará este código cuando intente acceder a su monedero.";
+"bFL-5O-fcl.text" = "Protege tu monedero de accesos no autorizados habilitando la verificación de 2 pasos. Puedes elegir utilizar una aplicación gratuita o tu número de celular para asegurar tu monedero. Se te solicitará este código cuando intentes acceder a tu monedero.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "Enlace al teléfono celular";
+"f52-8F-scW.text" = "Enlazar al teléfono celular";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
-"g8G-4j-qpJ.normalTitle" = "Use su número de teléfono celular";
+"g8G-4j-qpJ.normalTitle" = "Usa tu número de celular";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
 "gIP-mj-Hh2.text" = "Habilitar verificación de 2 pasos";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "Completar los siguientes pasos para conseguir la mayor seguridad posible";
+"u5x-QP-acV.text" = "Completa los siguientes pasos para tener la mayor seguridad posible";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
 "wnC-Xd-1Er.title" = "Centro de seguridad";
