@@ -1,45 +1,45 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "Petunjuk Toko";
+"0zs-bt-hEl.text" = "存储提示";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "Verifikasi Surel";
+"8Ha-3e-Nqx.text" = "验证电子邮件";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "Verifikasi Dua Langkah";
+"8Zy-R2-HoW.text" = "两步验证";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
-"Ii6-KE-x0B.placeholder" = "Konfirmasi Kata Sandi Baru";
+"Ii6-KE-x0B.placeholder" = "确认新密码";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
-"Kmb-pO-dHq.text" = "Lemah";
+"Kmb-pO-dHq.text" = "弱";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
-"VKs-B5-luJ.placeholder" = "Kata Sandi Baru";
+"VKs-B5-luJ.placeholder" = "新密码";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Frasa Cadangan";
+"WVd-f2-ZLG.text" = "备份短语";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "Blokir TOR";
+"Wor-ZR-sPS.text" = "禁止Tor 请求";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Lindungi dompet Anda dari akses yang tidak diizinkan dengan mengaktifkan Verifikasi 2 Langkah. Anda dapat memilih untuk menggunakan aplikasi gratis atau nomor ponsel Anda untuk mengamankan dompet Anda. Kode ini akan diminta saat Anda mencoba mengakses dompet Anda.";
+"bFL-5O-fcl.text" = "通过启用 两步验证保护您的钱包免遭未经授权的访问。 您可以选择使用免费应用或手机号码保护您的钱包。 在您尝试访问您的钱包时将要求提供此代码。";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "Tautan Ponsel";
+"f52-8F-scW.text" = "关联手机";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
-"g8G-4j-qpJ.normalTitle" = "Gunakan nomor ponsel Anda";
+"g8G-4j-qpJ.normalTitle" = "使用您的手机号码";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "Aktifkan 2 Langkah";
+"gIP-mj-Hh2.text" = "启用两步验证";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "Lengkapi langkah-langkah di bawah ini untuk keamanan akhir";
+"u5x-QP-acV.text" = "完成下面的步骤以获得最佳的安全性";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
-"wnC-Xd-1Er.title" = "Pusat Keamanan";
+"wnC-Xd-1Er.title" = "安全中心";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
-"zd5-DZ-hsS.placeholder" = "Kata sandi";
+"zd5-DZ-hsS.placeholder" = "密码";
 

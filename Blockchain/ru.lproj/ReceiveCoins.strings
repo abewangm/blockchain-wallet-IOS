@@ -5,16 +5,16 @@
 "48.normalTitle" = "Сохранить";
 
 /* (No Commment) */
-"56.text" = "Адрес ярлыка";
+"56.text" = "Адрес метки";
 
 /* (No Commment) */
 "57.text" = "Адрес";
 
 /* (No Commment) */
-"58.text" = "Ярлык";
+"58.text" = "Метка";
 
 /* Class = "UITextField"; placeholder = "Label"; ObjectID = "59"; */
-"59.placeholder" = "Ярлык";
+"59.placeholder" = "Метка";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "Адрес";
@@ -23,19 +23,19 @@
 "68.text" = "Нет адресов";
 
 /* (No Commment) */
-"69.text" = "Ваш счет, возможно, сопряжен некорректно. Нажмите кнопку в верхнем левом углу экрана и следуйте инструкциям на экране.";
+"69.text" = "Ваша учетная запись, возможно, сопряжена некорректно. Нажмите кнопку в верхнем левом углу экрана и следуйте инструкциям на экране.";
 
 /* (No Commment) */
 "80.normalTitle" = "АДРЕС АРХИВА";
 
 /* (No Commment) */
-"81.normalTitle" = "АДРЕС ЯРЛЫКА";
+"81.normalTitle" = "АДРЕС МЕТКИ";
 
 /* (No Commment) */
 "88.normalTitle" = "ЗАПРОСИТЬ ОПЛАТУ";
 
 /* (No Commment) */
-"90.text" = "Адрес Bitcoin ";
+"90.text" = "Адрес Bitcoin";
 
 /* (No Commment) */
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
@@ -50,16 +50,16 @@
 "120.text" = "5 BTC = $10";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
-"E60-hZ-tDl.placeholder" = "0.000";
+"E60-hZ-tDl.placeholder" = "0,000";
 
 /* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
 
-/* (No Commment) */
-"OFk-NR-2Sp.text" = "Только для управления клавиатурой";
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ZHr-29-NdG"; */
+"ZHr-29-NdG.normalTitle" = "Готово";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
-"a9y-3I-Drw.placeholder" = "0.00";
+"a9y-3I-Drw.placeholder" = "0,00";
 
 /* (No Commment) */
 "i1j-pG-caF.normalTitle" = "Сканировать личный ключ";

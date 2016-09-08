@@ -8,7 +8,7 @@
 "3kJ-3U-lFe.text" = "Попробуйте еще раз";
 
 /* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Введите следующие слова из вашего восстановления фразы для завершения процесса резервного копирования.";
+"4Nq-ue-tXr.text" = "Введите следующие слова из своей фразы для восстановления, чтобы завершить процесс создания резервной копии.";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "Нажмите и удерживайте, чтобы показать слово";
@@ -17,19 +17,19 @@
 "07q-RX-CeI.text" = "Попробуйте еще раз";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Сделать резервную копию средств ";
+"9A7-TT-PzN.title" = "Создать резервную копию средств";
 
 /* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Ах нет! Вы не сохранили ваши средства еще.";
+"9Hu-uO-gJl.text" = "О, нет! Вы еще не создали резервную копию ваших средств.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Это действие требует введения второго пароля для кошелька bitcoin. Пожалуйста, введите его ниже и нажмите Продолжить.";
+"9WK-My-5CL.text" = "Это действие требует введения второго пароля для кошелька bitcoin. Введите его ниже и нажмите продолжить.";
 
 /* (No Commment) */
 "9hR-tm-aq5.placeholder" = "первое слово";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "Требуется второй пароль ";
+"74J-f3-Lhq.title" = "Требуется второй пароль";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "Предыдущее слово";
@@ -48,7 +48,7 @@
 "Fda-Z4-3e7.placeholder" = "шестое слово";
 
 /* (No Commment) */
-"NaV-Bk-o1b.text" = "Как восстановить ваш кошелек";
+"NaV-Bk-o1b.text" = "Как восстановить кошелек";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
 "Okr-VE-yvm.text" = "единорог";
@@ -57,14 +57,14 @@
 "T3S-Dk-HAh.text" = "Попробуйте еще раз";
 
 /* (No Commment) */
-"T4p-mz-siC.normalTitle" = "ПРОВЕРИТЬ РЕЗЕРВНУЮ КОПИЮ";
+"T4p-mz-siC.normalTitle" = "ВЕРИФИЦИРОВАТЬ РЕЗЕРВНУЮ КОПИЮ";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Запишите слова в точном порядке, в котором они отображаются на листе бумаги, и храните его в надежном месте
+"UCL-i9-UDp.text" = "Запишите слова в точном порядке, в котором они отображаются, на листе бумаги, и храните его в надежном месте
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "Потеряли вашу фразу для восстановления из 12 слов?";
+"Yh8-Gm-6op.text" = "Потеряли свою фразу для восстановления из 12 слов?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "СЛЕДУЮЩЕЕ СЛОВО";
@@ -73,7 +73,7 @@
 "eaO-py-9rY.normalTitle" = "Следующее слово";
 
 /* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Пожалуйста, уделите несколько минут, чтобы обеспечить вам доступ к вашей bitcoin (за исключением импортируемых адресов), даже если вы забыли свой пароль или если наша служба становится недоступной. Мы обещаем, что сделать это быстро, безболезненно и стоит.";
+"eyR-AW-SMc.text" = "Убедитесь, что вам доступны ваши биткоины (за исключением импортируемых адресов), даже если вы забудете свой пароль или сервис будет недоступен. Мы обещаем, что это будет быстро, просто и полезно.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "третье слово";

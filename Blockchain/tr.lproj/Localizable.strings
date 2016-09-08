@@ -840,8 +840,8 @@
 
 /* (No Commment) */
 "Please send %@ to bitcoin address.
-%@" = "Lütfen %2$s bitcoin adresine
- %1$s BTC gönder. ";
+%@" = "Lütfen %2$@ bitcoin adresine
+ %1$@ BTC gönder. ";
 
 /* (No Commment) */
 "Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Lütfen bitcoin adresine ödeme gönder (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">yardım?</a>): %@";

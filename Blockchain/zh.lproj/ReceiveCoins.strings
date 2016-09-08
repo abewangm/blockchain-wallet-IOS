@@ -1,72 +1,72 @@
 /* (No Commment) */
-"1sL-eb-Qgc.normalTitle" = "Fermer";
+"1sL-eb-Qgc.normalTitle" = "关闭";
 
 /* (No Commment) */
-"48.normalTitle" = "Sauvegarder";
+"48.normalTitle" = "保存";
 
 /* (No Commment) */
-"56.text" = "Libeller l'adresse";
+"56.text" = "标签地址";
 
 /* (No Commment) */
-"57.text" = "Adresse";
+"57.text" = "地址";
 
 /* (No Commment) */
-"58.text" = "Libeller";
+"58.text" = "标签";
 
 /* Class = "UITextField"; placeholder = "Label"; ObjectID = "59"; */
-"59.placeholder" = "Libellé";
+"59.placeholder" = "标签";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "60"; */
-"60.text" = "Adresse";
+"60.text" = "地址";
 
 /* (No Commment) */
-"68.text" = "Aucune adresse";
+"68.text" = "无地址";
 
 /* (No Commment) */
-"69.text" = "Votre compte n'est probablement pas jumelé correctement. Cliquez sur le bouton en haut à gauche de l'écran et suivez les instructions sur l'écran.";
+"69.text" = "您的帐户可能没有正确配对。 单击屏幕左上角的按钮并按照屏幕上的说明操作。";
 
 /* (No Commment) */
-"80.normalTitle" = "ADRESSE DE L'ARCHIVE";
+"80.normalTitle" = "存档地址";
 
 /* (No Commment) */
-"81.normalTitle" = "LIBELLÉ DE L'ADRESSE";
+"81.normalTitle" = "标签地址";
 
 /* (No Commment) */
-"88.normalTitle" = "DEMANDE DE PAIEMENT";
+"88.normalTitle" = "请求付款";
 
 /* (No Commment) */
-"90.text" = "Adresse Bitcoin";
+"90.text" = "比特币地址";
 
 /* (No Commment) */
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
 /* (No Commment) */
-"92.normalTitle" = "COPIER L'ADRESSE";
+"92.normalTitle" = "复制地址";
 
 /* (No Commment) */
-"100.text" = "Montant :";
+"100.text" = "金额：";
 
 /* (No Commment) */
-"120.text" = "5 BTC = 10 USD";
+"120.text" = "5 BTC = $10";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
-"E60-hZ-tDl.placeholder" = "0,000";
+"E60-hZ-tDl.placeholder" = "0.000";
 
 /* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ZHr-29-NdG"; */
-"ZHr-29-NdG.normalTitle" = "C'est fait !";
+"ZHr-29-NdG.normalTitle" = "完成";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
-"a9y-3I-Drw.placeholder" = "0,00";
+"a9y-3I-Drw.placeholder" = "0.00";
 
 /* (No Commment) */
-"i1j-pG-caF.normalTitle" = "Scannez la clé privée";
+"i1j-pG-caF.normalTitle" = "扫描私钥";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
 "jRM-0A-Zuo.text" = "BTC";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
-"wDT-32-lDe.text" = "USD";
+"wDT-32-lDe.text" = "美元";
 
