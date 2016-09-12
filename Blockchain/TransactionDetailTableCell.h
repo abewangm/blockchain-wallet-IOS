@@ -12,6 +12,7 @@
 @protocol DetailViewDelegate
 - (void)textViewDidChange:(UITextView *)textView;
 - (void)toggleSymbol;
+- (void)openWebviewDetail;
 @end
 
 @interface TransactionDetailTableCell : UITableViewCell <UITextViewDelegate>
@@ -32,6 +33,9 @@
 @property (nonatomic) UILabel *bottomLabel;
 @property (nonatomic) UILabel *topAccessoryLabel;
 @property (nonatomic) UILabel *bottomAccessoryLabel;
+
+// Status cell
+@property (nonatomic) UIButton *confirmationCountButton;
 
 @property (nonatomic) id<DetailViewDelegate> detailViewDelegate;
 

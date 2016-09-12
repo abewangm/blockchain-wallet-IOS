@@ -28,6 +28,7 @@
     [self.textViewPlaceholderLabel removeFromSuperview];
     
     [self.amountButton removeFromSuperview];
+    [self.confirmationCountButton removeFromSuperview];
     [self.editButton removeFromSuperview];
 }
 
@@ -171,11 +172,14 @@
     self.textLabel.text = BC_STRING_STATUS;
     self.textLabel.textColor = [UIColor lightGrayColor];
 
-    if (transaction.confirmations >= kConfirmationThreshold) {
-        self.detailTextLabel.text = BC_STRING_CONFIRMED;
-    } else {
-        self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, transaction.confirmations];
-    }
+    self.confirmationCountButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 0, self.frame.size.width/2 - self.contentView.layoutMargins.right, self.frame.size.height)];
+    NSString *buttonTitle = transaction.confirmations >= kConfirmationThreshold ? BC_STRING_CONFIRMED : [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, transaction.confirmations];
+
+    self.confirmationCountButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [self.confirmationCountButton addTarget:self action:@selector(openWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
+    [self.confirmationCountButton setTitle:buttonTitle forState:UIControlStateNormal];
+    [self.confirmationCountButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
+    [self addSubview:self.confirmationCountButton];
 }
 
 - (void)addPlaceholderLabel
@@ -210,6 +214,11 @@
 - (void)toggleSymbol
 {
     [self.detailViewDelegate toggleSymbol];
+}
+
+- (void)openWebviewDetail
+{
+    [self.detailViewDelegate openWebviewDetail];
 }
 
 #pragma mark - TextView delegate

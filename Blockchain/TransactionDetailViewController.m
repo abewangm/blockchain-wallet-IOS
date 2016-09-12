@@ -11,6 +11,7 @@
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
 #import "TransactionDetailNavigationController.h"
+#import "BCWebViewController.h"
 
 #ifdef DEBUG
 #import "UITextView+AssertionFailureFix.h"
@@ -87,19 +88,6 @@ const CGFloat rowHeightToFrom = 88;
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)textViewDidChange:(UITextView *)textView
-{
-    CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
-    if (size.height != self.oldTextViewHeight) {
-        self.oldTextViewHeight = size.height;
-        self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, size.height);
-        [UIView setAnimationsEnabled:NO];
-        [self.tableView beginUpdates];
-        [self.tableView endUpdates];
-        [UIView setAnimationsEnabled:YES];
-    }
-}
-
 - (void)saveNote
 {
     [self.textView resignFirstResponder];
@@ -154,12 +142,6 @@ const CGFloat rowHeightToFrom = 88;
     return CGSizeMake(size.width, size.height + 16);
 }
 
-- (void)toggleSymbol
-{
-    [app toggleSymbol];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowValue inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 5;
@@ -210,6 +192,36 @@ const CGFloat rowHeightToFrom = 88;
         return rowHeightToFrom;
     }
     return rowHeightDefault;
+}
+
+#pragma mark - Detail View Delegate
+
+
+- (void)toggleSymbol
+{
+    [app toggleSymbol];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowValue inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
+    if (size.height != self.oldTextViewHeight) {
+        self.oldTextViewHeight = size.height;
+        self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, size.height);
+        [UIView setAnimationsEnabled:NO];
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+        [UIView setAnimationsEnabled:YES];
+    }
+}
+
+- (void)openWebviewDetail
+{
+    BCWebViewController *webViewController = [[BCWebViewController alloc] initWithTitle:BC_STRING_DETAILS];
+    [webViewController loadURL:[URL_SERVER stringByAppendingFormat:@"/tx/%@", self.transaction.myHash]];
+    webViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:webViewController animated:YES completion:nil];
 }
 
 @end
