@@ -169,11 +169,11 @@ const CGFloat rowHeightToFrom = 88;
 {
     TransactionDetailTableCell *cell = (TransactionDetailTableCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.detailViewDelegate = self;
     cell.clipsToBounds = YES;
     
     if (indexPath.row == cellRowValue) {
         [cell configureValueCell:self.transaction];
-        cell.detailViewDelegate = self;
     } else if (indexPath.row == cellRowDescription) {
         // Set initial height for sizeThatFits: calculation
         cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height < rowHeightDefault ? rowHeightDefault : cell.frame.size.height);
@@ -181,7 +181,6 @@ const CGFloat rowHeightToFrom = 88;
         [cell configureDescriptionCell:self.transaction];
         
         self.oldTextViewHeight = cell.textView.frame.size.height;
-        cell.detailViewDelegate = self;
         self.textView = cell.textView;
         cell.textView.inputAccessoryView = self.descriptonInputAccessoryView;
     } else if (indexPath.row == cellRowToFrom) {
