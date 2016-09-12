@@ -25,6 +25,7 @@
     [self.bottomAccessoryLabel removeFromSuperview];
     [self.fiatValueWhenSentLabel removeFromSuperview];
     [self.transactionFeeLabel removeFromSuperview];
+    [self.textViewPlaceholderLabel removeFromSuperview];
     
     [self.amountButton removeFromSuperview];
     [self.editButton removeFromSuperview];
