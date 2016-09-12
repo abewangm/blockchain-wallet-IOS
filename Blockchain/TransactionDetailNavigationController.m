@@ -7,6 +7,7 @@
 //
 
 #import "TransactionDetailNavigationController.h"
+#import "TransactionRecipientsViewController.h"
 
 @implementation TransactionDetailNavigationController
 
@@ -18,23 +19,32 @@
     topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
     [self.view addSubview:topBar];
     
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40)];
-    headerLabel.font = [UIFont systemFontOfSize:22.0];
-    headerLabel.textColor = [UIColor whiteColor];
-    headerLabel.textAlignment = NSTextAlignmentCenter;
-    headerLabel.adjustsFontSizeToFitWidth = YES;
-    headerLabel.text = BC_STRING_TRANSACTION;
-    [topBar addSubview:headerLabel];
+    self.headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40)];
+    self.headerLabel.font = [UIFont systemFontOfSize:22.0];
+    self.headerLabel.textColor = [UIColor whiteColor];
+    self.headerLabel.textAlignment = NSTextAlignmentCenter;
+    self.headerLabel.adjustsFontSizeToFitWidth = YES;
+    self.headerLabel.text = BC_STRING_TRANSACTION;
+    [topBar addSubview:self.headerLabel];
     
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
-    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [backButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-    [backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
-    [backButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-    [topBar addSubview:backButton];
+    self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.closeButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+    self.closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    self.closeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.closeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
+    [self.closeButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
+    [self.closeButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
+    [self.closeButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    [topBar addSubview:self.closeButton];
+    
+    self.backButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    self.backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+    self.backButton.frame = CGRectMake(0, 12, 85, 51);
+    self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [self.backButton setTitle:@"" forState:UIControlStateNormal];
+    [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
+    [self.backButton addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
+    [topBar addSubview:self.backButton];
     
     [self setupBusyView];
 }
@@ -71,6 +81,35 @@
     [self.view bringSubviewToFront:busyView];
     
     self.busyView = busyView;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (self.viewControllers.count > 1) {
+        self.
+        self.backButton.hidden = NO;
+        self.closeButton.hidden = YES;
+    } else {
+        self.backButton.hidden = YES;
+        self.closeButton.hidden = NO;
+    }
+    
+    if ([self.visibleViewController isMemberOfClass:[TransactionRecipientsViewController class]]) {
+        self.headerLabel.text = BC_STRING_RECEIVED;
+    } else {
+        self.headerLabel.text = BC_STRING_TRANSACTION;
+    }
+}
+
+- (void)popViewController
+{
+    if (self.viewControllers.count > 1) {
+        [self popViewControllerAnimated:YES];
+    } else {
+        [self dismiss];
+    }
 }
 
 - (void)dismiss

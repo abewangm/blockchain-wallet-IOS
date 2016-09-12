@@ -21,14 +21,13 @@
     [self.textView removeFromSuperview];
     [self.topLabel removeFromSuperview];
     [self.bottomLabel removeFromSuperview];
-    [self.topAccessoryLabel removeFromSuperview];
     [self.bottomAccessoryLabel removeFromSuperview];
     [self.fiatValueWhenSentLabel removeFromSuperview];
     [self.transactionFeeLabel removeFromSuperview];
     [self.textViewPlaceholderLabel removeFromSuperview];
     
     [self.amountButton removeFromSuperview];
-    [self.confirmationCountButton removeFromSuperview];
+    [self.topAccessoryButton removeFromSuperview];
     [self.editButton removeFromSuperview];
 }
 
@@ -139,13 +138,28 @@
     self.bottomLabel.textColor = [UIColor lightGrayColor];
     [self addSubview:self.bottomLabel];
     
-    self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
-    self.topAccessoryLabel.textAlignment = NSTextAlignmentRight;
-    self.topAccessoryLabel.adjustsFontSizeToFitWidth = YES;
-    self.topAccessoryLabel.text = transaction.to.count > 1 ? [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count] : [transaction.to.firstObject objectForKey:DICTIONARY_KEY_ADDRESS];
-    [self addSubview:self.topAccessoryLabel];
+    self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
+    self.topAccessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    self.topAccessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    NSString *buttonTitle;
+    UIColor *titleColor;
+    
+    if (transaction.to.count > 1) {
+        buttonTitle = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count];
+        titleColor = COLOR_BUTTON_BLUE;
+        [self.topAccessoryButton addTarget:self action:@selector(showRecipients) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        titleColor = [UIColor blackColor];
+        buttonTitle = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_ADDRESS];
+    }
+    
+    [self.topAccessoryButton setTitleColor:titleColor forState:UIControlStateNormal];
+    [self.topAccessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
+    
+    [self addSubview:self.topAccessoryButton];
 
-    self.bottomAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.topAccessoryLabel.frame.origin.x, self.bottomLabel.frame.origin.y, self.topAccessoryLabel.frame.size.width, 30)];
+    self.bottomAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.topAccessoryButton.frame.origin.x, self.bottomLabel.frame.origin.y, self.topAccessoryButton.frame.size.width, 30)];
     self.bottomAccessoryLabel.textAlignment = NSTextAlignmentRight;
     self.bottomAccessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.bottomAccessoryLabel.text = transaction.from.label;
@@ -172,14 +186,14 @@
     self.textLabel.text = BC_STRING_STATUS;
     self.textLabel.textColor = [UIColor lightGrayColor];
 
-    self.confirmationCountButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 0, self.frame.size.width/2 - self.contentView.layoutMargins.right, self.frame.size.height)];
+    self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 0, self.frame.size.width/2 - self.contentView.layoutMargins.right, self.frame.size.height)];
     NSString *buttonTitle = transaction.confirmations >= kConfirmationThreshold ? BC_STRING_CONFIRMED : [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, transaction.confirmations];
 
-    self.confirmationCountButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [self.confirmationCountButton addTarget:self action:@selector(openWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
-    [self.confirmationCountButton setTitle:buttonTitle forState:UIControlStateNormal];
-    [self.confirmationCountButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
-    [self addSubview:self.confirmationCountButton];
+    self.topAccessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [self.topAccessoryButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
+    [self.topAccessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
+    [self.topAccessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
+    [self addSubview:self.topAccessoryButton];
 }
 
 - (void)addPlaceholderLabel
@@ -216,9 +230,14 @@
     [self.detailViewDelegate toggleSymbol];
 }
 
-- (void)openWebviewDetail
+- (void)showWebviewDetail
 {
-    [self.detailViewDelegate openWebviewDetail];
+    [self.detailViewDelegate showWebviewDetail];
+}
+
+- (void)showRecipients
+{
+    [self.detailViewDelegate showRecipients];
 }
 
 #pragma mark - TextView delegate

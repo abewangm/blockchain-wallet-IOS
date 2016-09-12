@@ -51,6 +51,7 @@
 		237451C91D624C1C00CF7049 /* RootService.m in Sources */ = {isa = PBXBuildFile; fileRef = 237451C81D624C1C00CF7049 /* RootService.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */; };
+		2390C10B1D87376E00342C38 /* TransactionRecipientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2390C10A1D87376E00342C38 /* TransactionRecipientsViewController.m */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
 		239CD4C81C12214A00997DF5 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239CD4CA1C12214A00997DF5 /* Settings.storyboard */; };
 		239CD5171C12217F00997DF5 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239CD5191C12217F00997DF5 /* Upgrade.storyboard */; };
@@ -466,6 +467,8 @@
 		237827191B7E472D00E9EE03 /* BCSecureTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCSecureTextField.swift; sourceTree = "<group>"; };
 		237C9E8E1C482132000754F7 /* AccountsAndAddressesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesDetailViewController.h; sourceTree = "<group>"; };
 		237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesDetailViewController.m; sourceTree = "<group>"; };
+		2390C1091D87376E00342C38 /* TransactionRecipientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionRecipientsViewController.h; sourceTree = "<group>"; };
+		2390C10A1D87376E00342C38 /* TransactionRecipientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionRecipientsViewController.m; sourceTree = "<group>"; };
 		239539811B486C7100989667 /* UILabel+MultiLineAutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MultiLineAutoSize.h"; sourceTree = "<group>"; };
 		239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MultiLineAutoSize.m"; sourceTree = "<group>"; };
 		2395EEDF1D80575200517A16 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1304,6 +1307,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2390C1091D87376E00342C38 /* TransactionRecipientsViewController.h */,
+				2390C10A1D87376E00342C38 /* TransactionRecipientsViewController.m */,
 				23BD046B1D79F1EC00DB69E6 /* TransactionDetailNavigationController.h */,
 				23BD046C1D79F1EC00DB69E6 /* TransactionDetailNavigationController.m */,
 				235BD5641C58216000969B31 /* BCModalViewController.h */,
@@ -1862,6 +1867,7 @@
 				23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */,
 				2322DCB81D771831000E5AC1 /* SRRunLoopThread.m in Sources */,
 				84CCFAAF197D859C00DA4482 /* NSString+NSString_EscapeQuotes.m in Sources */,
+				2390C10B1D87376E00342C38 /* TransactionRecipientsViewController.m in Sources */,
 				23BA220E1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m in Sources */,
 				A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */,
 			);

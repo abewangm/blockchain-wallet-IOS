@@ -11,4 +11,8 @@
 
 @interface TransactionDetailNavigationController : UINavigationController
 @property (nonatomic) BCFadeView *busyView;
+@property (nonatomic) UIButton *backButton;
+@property (nonatomic) UIButton *closeButton;
+@property (nonatomic) UILabel *headerLabel;
+
 @end

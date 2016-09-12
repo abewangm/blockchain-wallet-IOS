@@ -12,6 +12,7 @@
 #import "RootService.h"
 #import "TransactionDetailNavigationController.h"
 #import "BCWebViewController.h"
+#import "TransactionRecipientsViewController.h"
 
 #ifdef DEBUG
 #import "UITextView+AssertionFailureFix.h"
@@ -196,7 +197,6 @@ const CGFloat rowHeightToFrom = 88;
 
 #pragma mark - Detail View Delegate
 
-
 - (void)toggleSymbol
 {
     [app toggleSymbol];
@@ -216,12 +216,18 @@ const CGFloat rowHeightToFrom = 88;
     }
 }
 
-- (void)openWebviewDetail
+- (void)showWebviewDetail
 {
     BCWebViewController *webViewController = [[BCWebViewController alloc] initWithTitle:BC_STRING_DETAILS];
     [webViewController loadURL:[URL_SERVER stringByAppendingFormat:@"/tx/%@", self.transaction.myHash]];
     webViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:webViewController animated:YES completion:nil];
+}
+
+- (void)showRecipients
+{
+    TransactionRecipientsViewController *recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
+    [self.navigationController pushViewController:recipientsViewController animated:YES];
 }
 
 @end
