@@ -595,6 +595,8 @@
         id certificate = (__bridge id)certRef;
         
         [webSocketRequest setSR_SSLPinnedCertificates:@[certificate]];
+        
+        CFRelease(certRef);
     }
     
     self.webSocket = [[SRWebSocket alloc] initWithURLRequest:webSocketRequest];
