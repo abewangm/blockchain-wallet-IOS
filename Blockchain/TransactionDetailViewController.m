@@ -105,13 +105,13 @@ const CGFloat rowHeightToFrom = 88;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     [app.wallet getHistory];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetHistory) name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
 - (void)reloadDataAfterGetHistory
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
-    [self reloadData];
+    [self getFiatAtTime];
 }
 
 - (void)reloadDataAfterGetFiatAtTime
@@ -166,6 +166,10 @@ const CGFloat rowHeightToFrom = 88;
         self.oldTextViewHeight = cell.textView.frame.size.height;
         self.textView = cell.textView;
         cell.textView.inputAccessoryView = self.descriptonInputAccessoryView;
+        
+        // Resize textView in case current note is larger than one line
+        [self textViewDidChange:self.textView];
+        
     } else if (indexPath.row == cellRowToFrom) {
         [cell configureToFromCell:self.transaction];
     } else if (indexPath.row == cellRowDate) {
