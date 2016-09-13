@@ -14,6 +14,7 @@
 - (void)toggleSymbol;
 - (void)showWebviewDetail;
 - (void)showRecipients;
+- (NSString *)getNotePlaceholder;
 @end
 
 @interface TransactionDetailTableCell : UITableViewCell <UITextViewDelegate>

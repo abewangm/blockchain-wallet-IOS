@@ -202,7 +202,8 @@
     self.textViewPlaceholderLabel.textAlignment = NSTextAlignmentRight;
     self.textViewPlaceholderLabel.font = [self.textView.font fontWithSize:self.textView.font.pointSize];
     self.textViewPlaceholderLabel.textColor = [UIColor lightGrayColor];
-    self.textViewPlaceholderLabel.text = BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
+    NSString *label = [self.detailViewDelegate getNotePlaceholder];
+    self.textViewPlaceholderLabel.text = label && label.length > 0 ? label : BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
     self.textViewPlaceholderLabel.adjustsFontSizeToFitWidth = YES;
     [self addSubview:self.textViewPlaceholderLabel];
 }

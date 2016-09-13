@@ -83,6 +83,12 @@ const CGFloat rowHeightToFrom = 88;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetFiatAtTime) name:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
 
+- (NSString *)getNotePlaceholder
+{
+    NSString *label = [app.wallet getNotePlaceholderForTransaction:self.transaction filter:app.filterIndex];
+    return label.length > 0 ? label : nil;
+}
+
 - (void)endEditing
 {
     [self.textView resignFirstResponder];

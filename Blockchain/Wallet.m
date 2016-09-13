@@ -1710,6 +1710,12 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
 }
 
+
+- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction filter:(NSInteger)filter
+{
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(%li, \"%@\")", (long)filter, transaction.myHash]] toString];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

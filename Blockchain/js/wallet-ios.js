@@ -1815,3 +1815,11 @@ MyWalletPhone.labelForLegacyAddress = function(key) {
     var label = MyWallet.wallet.key(key).label;
     return label == null ? '' : label;
 }
+
+MyWalletPhone.getNotePlaceholder = function(filter, transactionHash) {
+    if (filter < 0) filter = 'importedOrAll';
+    var transaction = MyWallet.wallet.txList.transaction(transactionHash);
+    var label = MyWallet.wallet.getNotePlaceholder(filter, transaction);
+    if (label == undefined) return '';
+    return label;
+}
