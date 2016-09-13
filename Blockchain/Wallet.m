@@ -1697,7 +1697,12 @@
 
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
+    NSString *text = [note stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (text.length == 0) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.deleteNote(\"%@\")", [hash escapeStringForJS]]];
+    } else {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
+    }
 }
 
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
