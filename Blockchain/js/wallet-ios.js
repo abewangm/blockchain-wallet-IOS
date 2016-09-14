@@ -1367,6 +1367,22 @@ MyWalletPhone.getAccountInfo = function () {
     MyWallet.wallet.fetchAccountInfo().then(success).catch(error);
 }
 
+MyWalletPhone.getEmail = function () {
+    return MyWallet.wallet.accountInfo.email;
+}
+
+MyWalletPhone.getSMSNumber = function () {
+    return MyWallet.wallet.accountInfo.mobile == null ? '' : MyWallet.wallet.accountInfo.mobile;
+}
+
+MyWalletPhone.getEmailVerifiedStatus = function () {
+    return MyWallet.wallet.accountInfo.isEmailVerified;
+}
+
+MyWalletPhone.getSMSVerifiedStatus = function () {
+    return MyWallet.wallet.accountInfo.isMobileVerified;
+}
+
 MyWalletPhone.changeEmail = function(email) {
     
     var success = function () {
