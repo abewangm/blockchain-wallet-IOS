@@ -235,7 +235,7 @@ static PEViewController *VerifyController()
 				c.delegate = self;
 				self.viewControllers = [NSArray arrayWithObjects:c, [self.viewControllers objectAtIndex:0], nil];
 				[self popViewControllerAnimated:NO];
-                [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                [self presentViewController:alert animated:YES completion:nil];
 			} else {
 				[self.pinDelegate pinEntryController:self changedPin:[controller.pin intValue]];
 			}
