@@ -2258,9 +2258,7 @@
     } else {
         [self getAllCurrencySymbols];
     }
-    
-    self.isNew = NO;
-    
+        
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
         [delegate walletDidFinishLoad];
     } else {
