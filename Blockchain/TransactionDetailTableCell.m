@@ -152,7 +152,7 @@
     } else {
         self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
         self.topAccessoryLabel.textAlignment = NSTextAlignmentRight;
-        self.topAccessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_ADDRESS];
+        self.topAccessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         self.topAccessoryLabel.adjustsFontSizeToFitWidth = YES;
         self.topAccessoryLabel.textColor = [UIColor blackColor];
         [self addSubview:self.topAccessoryLabel];
