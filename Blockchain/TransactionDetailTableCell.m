@@ -21,6 +21,7 @@
     [self.textView removeFromSuperview];
     [self.topLabel removeFromSuperview];
     [self.bottomLabel removeFromSuperview];
+    [self.topAccessoryLabel removeFromSuperview];
     [self.bottomAccessoryLabel removeFromSuperview];
     [self.fiatValueWhenSentLabel removeFromSuperview];
     [self.transactionFeeLabel removeFromSuperview];
@@ -33,14 +34,14 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    if (self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier]) {
-    }
+    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
     return self;
 }
 
 - (void)configureDescriptionCell:(Transaction *)transaction
 {
     self.textLabel.text = BC_STRING_DESCRIPTION;
+    self.textLabel.adjustsFontSizeToFitWidth = YES;
     self.textLabel.textColor = [UIColor lightGrayColor];
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(self.frame.size.width/2, self.contentView.layoutMargins.top, self.frame.size.width/2 - self.contentView.layoutMargins.right, self.frame.size.height - self.contentView.layoutMargins.top - self.contentView.layoutMargins.bottom)];
@@ -135,31 +136,29 @@
 
     self.bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.topLabel.frame.origin.x, self.frame.size.height/2 + 4, self.topLabel.frame.size.width, 30)];
     self.bottomLabel.text = BC_STRING_FROM;
+    self.bottomAccessoryLabel.textAlignment = NSTextAlignmentRight;
+    self.bottomAccessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.bottomLabel.textColor = [UIColor lightGrayColor];
     [self addSubview:self.bottomLabel];
     
-    self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
-    self.topAccessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    self.topAccessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    
-    NSString *buttonTitle;
-    UIColor *titleColor;
-    
     if (transaction.to.count > 1) {
-        buttonTitle = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count];
-        titleColor = COLOR_BUTTON_BLUE;
+        self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
+        self.topAccessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        self.topAccessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.topAccessoryButton addTarget:self action:@selector(showRecipients) forControlEvents:UIControlEventTouchUpInside];
+        [self.topAccessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
+        [self.topAccessoryButton setTitle:[NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count] forState:UIControlStateNormal];
+        [self addSubview:self.topAccessoryButton];
     } else {
-        titleColor = [UIColor blackColor];
-        buttonTitle = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_ADDRESS];
+        self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
+        self.topAccessoryLabel.textAlignment = NSTextAlignmentRight;
+        self.topAccessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_ADDRESS];
+        self.topAccessoryLabel.adjustsFontSizeToFitWidth = YES;
+        self.topAccessoryLabel.textColor = [UIColor blackColor];
+        [self addSubview:self.topAccessoryLabel];
     }
-    
-    [self.topAccessoryButton setTitleColor:titleColor forState:UIControlStateNormal];
-    [self.topAccessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
-    
-    [self addSubview:self.topAccessoryButton];
 
-    self.bottomAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.topAccessoryButton.frame.origin.x, self.bottomLabel.frame.origin.y, self.topAccessoryButton.frame.size.width, 30)];
+    self.bottomAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.bottomLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
     self.bottomAccessoryLabel.textAlignment = NSTextAlignmentRight;
     self.bottomAccessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.bottomAccessoryLabel.text = transaction.from.label;
@@ -169,6 +168,7 @@
 - (void)configureDateCell:(Transaction *)transaction
 {
     self.textLabel.text = BC_STRING_DATE;
+    self.textLabel.adjustsFontSizeToFitWidth = YES;
     self.textLabel.textColor = [UIColor lightGrayColor];
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -177,21 +177,26 @@
     [dateFormatter setDateFormat:@"MMMM dd, yyyy @ h:mmaa"];
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.time];
     NSString *dateString = [dateFormatter stringFromDate:date];
-    self.detailTextLabel.text = dateString;
-    self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+    
+    self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, 0, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, self.frame.size.height)];
+    self.topAccessoryLabel.adjustsFontSizeToFitWidth = YES;
+    self.topAccessoryLabel.text = dateString;
+    [self addSubview:self.topAccessoryLabel];
 }
 
 - (void)configureStatusCell:(Transaction *)transaction
 {
     self.textLabel.text = BC_STRING_STATUS;
+    self.textLabel.adjustsFontSizeToFitWidth = YES;
     self.textLabel.textColor = [UIColor lightGrayColor];
 
-    self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 0, self.frame.size.width/2 - self.contentView.layoutMargins.right, self.frame.size.height)];
+    self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/3, 0, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, self.frame.size.height)];
     NSString *buttonTitle = transaction.confirmations >= kConfirmationThreshold ? BC_STRING_CONFIRMED : [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, transaction.confirmations];
 
     self.topAccessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.topAccessoryButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
     [self.topAccessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
+    self.topAccessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.topAccessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
     [self addSubview:self.topAccessoryButton];
 }

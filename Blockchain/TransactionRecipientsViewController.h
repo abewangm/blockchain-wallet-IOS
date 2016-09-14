@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol RecipientsDelegate
+- (BOOL)isWatchOnlyLegacyAddress:(NSString *)addr;
+@end
 @interface TransactionRecipientsViewController : UIViewController
+@property (nonatomic) id<RecipientsDelegate> delegate;
 - (id)initWithRecipients:(NSArray *)recipients;
 @end

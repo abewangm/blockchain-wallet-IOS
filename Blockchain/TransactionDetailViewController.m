@@ -28,7 +28,7 @@ const CGFloat rowHeightDefault = 60;
 const CGFloat rowHeightValue = 108;
 const CGFloat rowHeightToFrom = 88;
 
-@interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DetailViewDelegate>
+@interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DetailDelegate, RecipientsDelegate>
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UITextView *textView;
@@ -205,7 +205,7 @@ const CGFloat rowHeightToFrom = 88;
     return rowHeightDefault;
 }
 
-#pragma mark - Detail View Delegate
+#pragma mark - Detail Delegate
 
 - (void)toggleSymbol
 {
@@ -234,9 +234,17 @@ const CGFloat rowHeightToFrom = 88;
     [self presentViewController:webViewController animated:YES completion:nil];
 }
 
+#pragma mark - Recipients Delegate
+
+- (BOOL)isWatchOnlyLegacyAddress:(NSString *)addr
+{
+    return [app.wallet isWatchOnlyLegacyAddress:addr];
+}
+
 - (void)showRecipients
 {
     TransactionRecipientsViewController *recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
+    recipientsViewController.delegate = self;
     [self.navigationController pushViewController:recipientsViewController animated:YES];
 }
 

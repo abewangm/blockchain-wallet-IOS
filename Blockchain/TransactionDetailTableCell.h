@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Transaction.h"
 
-@protocol DetailViewDelegate
+@protocol DetailDelegate
 - (void)textViewDidChange:(UITextView *)textView;
 - (void)toggleSymbol;
 - (void)showWebviewDetail;
@@ -32,11 +32,12 @@
 
 // Generic/To and From cell
 @property (nonatomic) UILabel *topLabel;
+@property (nonatomic) UILabel *topAccessoryLabel;
 @property (nonatomic) UIButton *topAccessoryButton;
 @property (nonatomic) UILabel *bottomLabel;
 @property (nonatomic) UILabel *bottomAccessoryLabel;
 
-@property (nonatomic) id<DetailViewDelegate> detailViewDelegate;
+@property (nonatomic) id<DetailDelegate> detailViewDelegate;
 
 - (void)configureDescriptionCell:(Transaction *)transaction;
 - (void)configureToFromCell:(Transaction *)transaction;

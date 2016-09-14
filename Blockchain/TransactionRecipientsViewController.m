@@ -56,8 +56,8 @@
         cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
         
         cell.watchLabel.hidden = NO;
-        cell.watchLabel.text = BC_STRING_DEFAULT;
-        cell.watchLabel.textColor = [UIColor grayColor];
+        cell.watchLabel.text = BC_STRING_WATCH_ONLY;
+        cell.watchLabel.textColor = [UIColor redColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
@@ -67,7 +67,10 @@
     uint64_t amount = [recipient[DICTIONARY_KEY_AMOUNT] longLongValue];
     cell.labelLabel.text = label && label.length > 0 ? label : recipient[DICTIONARY_KEY_ADDRESS];
     cell.balanceLabel.text = [NSString stringWithFormat:@"%@", [NSNumberFormatter formatMoneyWithLocalSymbol:amount]];
-    cell.addressLabel.text = recipient[DICTIONARY_KEY_ADDRESS];
+    
+    NSString *address = recipient[DICTIONARY_KEY_ADDRESS];
+    cell.addressLabel.text = address;
+    cell.watchLabel.hidden = ![self.delegate isWatchOnlyLegacyAddress:address];
     
     return cell;
 }
