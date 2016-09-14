@@ -131,18 +131,20 @@
 {
     self.topLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, 70, 30)];
     self.topLabel.text = BC_STRING_TO;
+    self.topLabel.adjustsFontSizeToFitWidth = YES;
     self.topLabel.textColor = [UIColor lightGrayColor];
     [self addSubview:self.topLabel];
 
     self.bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.topLabel.frame.origin.x, self.frame.size.height/2 + 4, self.topLabel.frame.size.width, 30)];
     self.bottomLabel.text = BC_STRING_FROM;
-    self.bottomAccessoryLabel.textAlignment = NSTextAlignmentRight;
-    self.bottomAccessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.bottomLabel.textColor = [UIColor lightGrayColor];
+    self.bottomLabel.adjustsFontSizeToFitWidth = YES;
     [self addSubview:self.bottomLabel];
     
+    CGFloat accessoryViewXPosition = self.topLabel.frame.origin.x + self.topLabel.frame.size.width + 8;
+    
     if (transaction.to.count > 1) {
-        self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
+        self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(accessoryViewXPosition, self.topLabel.frame.origin.y, self.frame.size.width - accessoryViewXPosition - self.contentView.layoutMargins.right, 30)];
         self.topAccessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         self.topAccessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.topAccessoryButton addTarget:self action:@selector(showRecipients) forControlEvents:UIControlEventTouchUpInside];
@@ -150,7 +152,7 @@
         [self.topAccessoryButton setTitle:[NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count] forState:UIControlStateNormal];
         [self addSubview:self.topAccessoryButton];
     } else {
-        self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.topLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
+        self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryViewXPosition, self.topLabel.frame.origin.y, self.frame.size.width - accessoryViewXPosition - self.contentView.layoutMargins.right, 30)];
         self.topAccessoryLabel.textAlignment = NSTextAlignmentRight;
         self.topAccessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         self.topAccessoryLabel.adjustsFontSizeToFitWidth = YES;
@@ -158,7 +160,7 @@
         [self addSubview:self.topAccessoryLabel];
     }
 
-    self.bottomAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, self.bottomLabel.frame.origin.y, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, 30)];
+    self.bottomAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryViewXPosition, self.bottomLabel.frame.origin.y, self.frame.size.width - accessoryViewXPosition - self.contentView.layoutMargins.right, 30)];
     self.bottomAccessoryLabel.textAlignment = NSTextAlignmentRight;
     self.bottomAccessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.bottomAccessoryLabel.text = transaction.from.label;
