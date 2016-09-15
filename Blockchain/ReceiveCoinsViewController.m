@@ -342,10 +342,8 @@ NSString *detailLabel;
     return 0;
 }
 
-- (void)doCurrencyConversion
+- (void)doCurrencyConversionWithAmount:(uint64_t)amount
 {
-    uint64_t amount = [self getInputAmountInSatoshi];
-    
     if ([btcAmountField isFirstResponder]) {
         fiatAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
     }
@@ -369,14 +367,15 @@ NSString *detailLabel;
 
 - (void)setQRPayment
 {
-    double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
+    uint64_t amount = [self getInputAmountInSatoshi];
+    double amountAsDouble = (double)amount / SATOSHI;
         
-    UIImage *image = [self.qrCodeGenerator qrImageFromAddress:self.clickedAddress amount:amount];
+    UIImage *image = [self.qrCodeGenerator qrImageFromAddress:self.clickedAddress amount:amountAsDouble];
         
     qrCodeMainImageView.image = image;
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    [self doCurrencyConversion];
+    [self doCurrencyConversionWithAmount:amount];
 }
 
 - (void)animateTextOfLabel:(UILabel *)labelToAnimate fromText:(NSString *)originalText toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
