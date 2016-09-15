@@ -20,6 +20,7 @@
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) uint64_t lastRequestedAmount;
+@property (nonatomic) BOOL firstLoading;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -42,6 +43,8 @@ NSString *detailLabel;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.firstLoading = YES;
     
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
@@ -73,6 +76,10 @@ NSString *detailLabel;
     [self reload];
     
     [self setupHeaderView];
+    
+    self.firstLoading = NO;
+    
+    [self updateUI];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -160,8 +167,6 @@ NSString *detailLabel;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
     [self.receiveToLabel addGestureRecognizer:tapGesture];
     self.receiveToLabel.userInteractionEnabled = YES;
-    
-    [self updateUI];
     
     [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
     doneButton.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -285,7 +290,6 @@ NSString *detailLabel;
         }
         
         [self setupTapGestureForMainLabel];
-        [self updateUI];
     }
 }
 
@@ -575,6 +579,8 @@ NSString *detailLabel;
 
 - (void)updateUI
 {
+    if (self.firstLoading) return; // UI will be updated when viewDidLoad finishes
+    
     self.receiveToLabel.text = mainLabel;
     mainAddressLabel.text = mainAddress;
     
