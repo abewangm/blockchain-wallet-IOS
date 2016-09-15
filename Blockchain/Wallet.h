@@ -18,7 +18,6 @@
  * MA 02110-1301  USA
  */
 
-#import "JSBridgeWebView.h"
 #import "MultiAddressResponse.h"
 #import "SRWebSocket.h"
 
@@ -101,7 +100,7 @@
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
 @end
 
-@interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate, SRWebSocketDelegate> {
+@interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
 }
 
 // Core Wallet Init Properties
