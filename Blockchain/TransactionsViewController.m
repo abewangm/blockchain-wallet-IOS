@@ -260,7 +260,9 @@ int lastNumberTransactions = INT_MAX;
         }
     }
 #else
-    [app.wallet getHistory];
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    
+    [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
 #endif
     
     // This should be done when request has finished but there is no callback
