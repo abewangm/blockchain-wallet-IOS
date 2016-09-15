@@ -544,7 +544,7 @@ NSString *detailLabel;
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_PAYMENT_RECEIVED message:messageString preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [self showKeyboard];
+        if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder]) [self showKeyboard];
     }]];
     
     [app.window.rootViewController presentViewController:alert animated:YES completion:nil];
