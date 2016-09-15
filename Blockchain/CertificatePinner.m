@@ -26,47 +26,42 @@
     
     SecTrustRef serverTrust = challenge.protectionSpace.serverTrust;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
-        // Get remote certificate
-        SecCertificateRef certificate = SecTrustGetCertificateAtIndex(serverTrust, 0);
-        
-        // Set SSL policies for domain name check
-        NSMutableArray *policies = [NSMutableArray array];
-        [policies addObject:(__bridge_transfer id)SecPolicyCreateSSL(true, (__bridge CFStringRef)challenge.protectionSpace.host)];
-        SecTrustSetPolicies(serverTrust, (__bridge CFArrayRef)policies);
-        
-        // Evaluate server certificate
-        SecTrustResultType result;
-        SecTrustEvaluate(serverTrust, &result);
-        BOOL certificateIsValid = (result == kSecTrustResultUnspecified || result == kSecTrustResultProceed);
-        
-        // Get local and remote cert data
-        NSData *remoteCertificateData = CFBridgingRelease(SecCertificateCopyData(certificate));
-        NSString *resource;
-        if ([session.sessionDescription isEqualToString:HOST_NAME_MERCHANT] || [session.sessionDescription isEqualToString:HOST_NAME_API]) {
-            resource = @"api-info";
-        } else if ([session.sessionDescription isEqualToString:HOST_NAME_WALLET_SERVER]) {
-            resource = @"blockchain";
-        }
-        
-        NSString *pathToCert = [[NSBundle mainBundle] pathForResource:resource ofType:@"der"];
-        NSData *localCertificate = [NSData dataWithContentsOfFile:pathToCert];
-        
-        // The pinnning check
-        
-        NSString *remoteKeyString = [self getPublicKeyStringFromData:remoteCertificateData];
-        NSString *localKeyString = [self getPublicKeyStringFromData:localCertificate];
-        
-        if ([remoteKeyString isEqualToString: localKeyString] && certificateIsValid) {
-            NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
-            completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
-        } else {
-            [self.delegate failedToValidateCertificate];
-            completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, NULL);
-        }
-    } else {
+    // Get remote certificate
+    SecCertificateRef certificate = SecTrustGetCertificateAtIndex(serverTrust, 0);
+    
+    // Set SSL policies for domain name check
+    NSMutableArray *policies = [NSMutableArray array];
+    [policies addObject:(__bridge_transfer id)SecPolicyCreateSSL(true, (__bridge CFStringRef)challenge.protectionSpace.host)];
+    SecTrustSetPolicies(serverTrust, (__bridge CFArrayRef)policies);
+    
+    // Evaluate server certificate
+    SecTrustResultType result;
+    SecTrustEvaluate(serverTrust, &result);
+    BOOL certificateIsValid = (result == kSecTrustResultUnspecified || result == kSecTrustResultProceed);
+    
+    // Get local and remote cert data
+    NSData *remoteCertificateData = CFBridgingRelease(SecCertificateCopyData(certificate));
+    NSString *resource;
+    if ([session.sessionDescription isEqualToString:HOST_NAME_MERCHANT] || [session.sessionDescription isEqualToString:HOST_NAME_API]) {
+        resource = @"api-info";
+    } else if ([session.sessionDescription isEqualToString:HOST_NAME_WALLET_SERVER]) {
+        resource = @"blockchain";
+    }
+    
+    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:resource ofType:@"der"];
+    NSData *localCertificate = [NSData dataWithContentsOfFile:pathToCert];
+    
+    // The pinnning check
+    
+    NSString *remoteKeyString = [self getPublicKeyStringFromData:remoteCertificateData];
+    NSString *localKeyString = [self getPublicKeyStringFromData:localCertificate];
+    
+    if ([remoteKeyString isEqualToString: localKeyString] && certificateIsValid) {
         NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
         completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+    } else {
+        [self.delegate failedToValidateCertificate];
+        completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, NULL);
     }
 }
 
