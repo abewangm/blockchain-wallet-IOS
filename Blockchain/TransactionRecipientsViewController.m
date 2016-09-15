@@ -55,7 +55,6 @@
         UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
         cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
         
-        cell.watchLabel.hidden = NO;
         cell.watchLabel.text = BC_STRING_WATCH_ONLY;
         cell.watchLabel.textColor = [UIColor redColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -70,7 +69,30 @@
     
     NSString *address = recipient[DICTIONARY_KEY_ADDRESS];
     cell.addressLabel.text = address;
-    cell.watchLabel.hidden = ![self.delegate isWatchOnlyLegacyAddress:address];
+    
+    cell.labelLabel.hidden = [address isEqualToString:label];
+    
+    BOOL isWatchOnlyLegacyAddress = [self.delegate isWatchOnlyLegacyAddress:address];
+    if (isWatchOnlyLegacyAddress) {
+        // Show the watch only tag and resize the label and balance labels so there is enough space
+        cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);
+        
+        cell.balanceLabel.frame = CGRectMake(254, 11, 83, 21);
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 254, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
+        cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
+        
+        [cell.watchLabel setHidden:FALSE];
+    }
+    else {
+        // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
+        cell.labelLabel.frame = CGRectMake(20, 11, 185, 21);
+        
+        cell.balanceLabel.frame = CGRectMake(217, 11, 120, 21);
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
+        cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
+        
+        [cell.watchLabel setHidden:TRUE];
+    }
     
     return cell;
 }
