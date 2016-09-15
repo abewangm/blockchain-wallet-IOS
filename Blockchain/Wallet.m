@@ -1054,8 +1054,7 @@
 
 - (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField
 {
-    if (!textField.textInputMode.primaryLanguage) return 0;
-    
+    // The reason to use [NSLocale currentLocale] over textInputMode is that textInputMode.primaryLanguage will still be en-US for languages like German, which use a different decimal separator. The primaryLanguage property seems be useful only for detecting keyboard input for Eastern Arabic numerals.
     NSString *language = textField.textInputMode.primaryLanguage;
     NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
     
