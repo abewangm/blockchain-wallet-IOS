@@ -101,9 +101,13 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (CertificatePinner *)certificatePinner
 {
+#ifdef ENABLE_CERTIFICATE_PINNING
     if (!_certificatePinner) _certificatePinner = [[CertificatePinner alloc] init];
     _certificatePinner.delegate = self;
     return _certificatePinner;
+#else
+    return nil;
+#endif
 }
 
 #pragma mark - Application Lifecycle
