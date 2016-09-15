@@ -671,7 +671,7 @@ BOOL displayingLocalSymbolSend;
 {
     if (displayingLocalSymbol) {
         NSString *language = btcAmountField.textInputMode.primaryLanguage;
-        NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+        NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
         
         NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         return app.latestResponse.symbol_local.conversion * [amountString doubleValue];
@@ -1880,7 +1880,7 @@ BOOL displayingLocalSymbolSend;
     uint64_t value = amountInSatoshi;
     // Convert input amount to internal value
     NSString *language = fiatAmountField.textInputMode.primaryLanguage;
-    NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+    NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
     NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     if (value <= 0 || [amountString doubleValue] <= 0) {
         [self showErrorBeforeSending:BC_STRING_INVALID_SEND_VALUE];
