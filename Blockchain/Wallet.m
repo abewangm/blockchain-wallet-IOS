@@ -2230,7 +2230,11 @@
 {
     DLog(@"did_decrypt");
     
-    [self.webSocket closeWithCode:WEBSOCKET_CODE_DECRYPTED_WALLET reason:WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET];
+    if (self.webSocket) {
+        [self.webSocket closeWithCode:WEBSOCKET_CODE_DECRYPTED_WALLET reason:WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET];
+    } else {
+        [self setupWebSocket];
+    }
     
     if (self.didPairAutomatically) {
         self.didPairAutomatically = NO;
