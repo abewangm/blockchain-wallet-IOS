@@ -1414,7 +1414,7 @@
 
 - (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced
 {
-    if (![self isInitialized] || self.isNew) {
+    if (![self isInitialized]) {
         return;
     }
     
@@ -1423,7 +1423,7 @@
 
 - (void)changePaymentFromAddress:(NSString *)fromString isAdvanced:(BOOL)isAdvanced
 {
-    if (![self isInitialized] || self.isNew) {
+    if (![self isInitialized]) {
         return;
     }
     
