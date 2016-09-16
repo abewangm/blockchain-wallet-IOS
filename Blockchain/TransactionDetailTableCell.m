@@ -143,7 +143,7 @@
         self.mainLabel.textColor = [UIColor lightGrayColor];
         [self addSubview:self.mainLabel];
         
-        CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + 8;
+        CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
         self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
         self.accessoryLabel.textAlignment = NSTextAlignmentRight;
         self.accessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
