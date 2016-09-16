@@ -42,6 +42,8 @@ typedef enum {
 @property (nonatomic) BOOL customFeeMode;
 @property (nonatomic) BOOL shouldClearToField;
 
+@property (nonatomic) BOOL firstLoading;
+
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
 
@@ -93,6 +95,8 @@ BOOL displayingLocalSymbolSend;
 {
     [super viewDidLoad];
     
+    self.firstLoading = YES;
+    
     btcAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     fiatAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
@@ -112,6 +116,8 @@ BOOL displayingLocalSymbolSend;
     [toField setReturnKeyType:UIReturnKeyDone];
     
     [self reload];
+    
+    self.firstLoading = NO;
 }
 
 - (void)resetPayment
@@ -136,11 +142,13 @@ BOOL displayingLocalSymbolSend;
         self.sendFromAddress = false;
         int defaultAccountIndex = [app.wallet getFilteredOrDefaultAccountIndex];
         self.fromAccount = defaultAccountIndex;
+        if (self.firstLoading) return; // didSelectFromAccount will be called in reloadAfterMultiAddressResponse
         [self didSelectFromAccount:self.fromAccount];
     }
     else {
         // Default setting: send from any address
         self.sendFromAddress = true;
+        if (self.firstLoading) return; // didSelectFromAddress will be called in reloadAfterMultiAddressResponse
         [self didSelectFromAddress:self.fromAddress];
     }
 }
