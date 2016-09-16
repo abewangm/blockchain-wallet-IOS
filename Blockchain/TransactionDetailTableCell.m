@@ -19,16 +19,14 @@
     self.detailTextLabel.text = nil;
     
     [self.textView removeFromSuperview];
-    [self.topLabel removeFromSuperview];
-    [self.bottomLabel removeFromSuperview];
-    [self.topAccessoryLabel removeFromSuperview];
-    [self.bottomAccessoryLabel removeFromSuperview];
+    [self.mainLabel removeFromSuperview];
+    [self.accessoryLabel removeFromSuperview];
     [self.fiatValueWhenSentLabel removeFromSuperview];
     [self.transactionFeeLabel removeFromSuperview];
     [self.textViewPlaceholderLabel removeFromSuperview];
     
     [self.amountButton removeFromSuperview];
-    [self.topAccessoryButton removeFromSuperview];
+    [self.accessoryButton removeFromSuperview];
     [self.editButton removeFromSuperview];
 }
 
@@ -69,32 +67,32 @@
 - (void)configureValueCell:(Transaction *)transaction
 {
     // Label for Sent, Transferred, or Received
-    self.topLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, self.frame.size.width/3, 30)];
-    self.topLabel.adjustsFontSizeToFitWidth = YES;
-    self.topLabel.textColor = [UIColor lightGrayColor];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, self.frame.size.width/3, 30)];
+    self.mainLabel.adjustsFontSizeToFitWidth = YES;
+    self.mainLabel.textColor = [UIColor lightGrayColor];
     
     if ([transaction.txType isEqualToString:TX_TYPE_TRANSFER]) {
-        self.topLabel.text = [BC_STRING_TRANSFERRED uppercaseString];
-        self.topLabel.textColor = COLOR_TRANSACTION_TRANSFERRED;
+        self.mainLabel.text = [BC_STRING_TRANSFERRED uppercaseString];
+        self.mainLabel.textColor = COLOR_TRANSACTION_TRANSFERRED;
     } else if ([transaction.txType isEqualToString:TX_TYPE_RECEIVED]) {
-        self.topLabel.text = [BC_STRING_RECEIVED uppercaseString];
-        self.topLabel.textColor = COLOR_TRANSACTION_RECEIVED;
+        self.mainLabel.text = [BC_STRING_RECEIVED uppercaseString];
+        self.mainLabel.textColor = COLOR_TRANSACTION_RECEIVED;
     } else {
-        self.topLabel.text = [BC_STRING_SENT uppercaseString];
-        self.topLabel.textColor = COLOR_TRANSACTION_SENT;
+        self.mainLabel.text = [BC_STRING_SENT uppercaseString];
+        self.mainLabel.textColor = COLOR_TRANSACTION_SENT;
     }
-    [self addSubview:self.topLabel];
+    [self addSubview:self.mainLabel];
     
-    CGFloat XPositionForAccessoryViews = self.contentView.layoutMargins.left + self.topLabel.frame.size.width;
+    CGFloat XPositionForAccessoryViews = self.contentView.layoutMargins.left + self.mainLabel.frame.size.width;
     
     // Amount button
-    self.amountButton = [[UIButton alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.topLabel.frame.origin.y, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 30)];
+    self.amountButton = [[UIButton alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.mainLabel.frame.origin.y, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 30)];
     self.amountButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.amountButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.amountButton setTitle:[NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.amount)] forState:UIControlStateNormal];
     [self.amountButton addTarget:self action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.amountButton setTitleColor:self.topLabel.textColor forState:UIControlStateNormal];
+    [self.amountButton setTitleColor:self.mainLabel.textColor forState:UIControlStateNormal];
     [self addSubview:self.amountButton];
     
     // Transaction fee label
@@ -127,51 +125,58 @@
     [self addSubview:self.fiatValueWhenSentLabel];
 }
 
-- (void)configureToFromCell:(Transaction *)transaction
+- (void)configureToCell:(Transaction *)transaction
 {
-    self.topLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, 70, 30)];
-    self.topLabel.text = BC_STRING_TO;
-    self.topLabel.adjustsFontSizeToFitWidth = YES;
-    self.topLabel.textColor = [UIColor lightGrayColor];
-    [self addSubview:self.topLabel];
-
-    self.bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.topLabel.frame.origin.x, self.frame.size.height/2 + 4, self.topLabel.frame.size.width, 30)];
-    self.bottomLabel.text = BC_STRING_FROM;
-    self.bottomLabel.textColor = [UIColor lightGrayColor];
-    self.bottomLabel.adjustsFontSizeToFitWidth = YES;
-    [self addSubview:self.bottomLabel];
-    
-    CGFloat accessoryViewXPosition = self.topLabel.frame.origin.x + self.topLabel.frame.size.width + 8;
-    
     if (transaction.to.count > 1) {
-        self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(accessoryViewXPosition, self.topLabel.frame.origin.y, self.frame.size.width - accessoryViewXPosition - self.contentView.layoutMargins.right, 30)];
-        self.topAccessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-        self.topAccessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        [self.topAccessoryButton addTarget:self action:@selector(showRecipients) forControlEvents:UIControlEventTouchUpInside];
-        [self.topAccessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
-        [self.topAccessoryButton setTitle:[NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count] forState:UIControlStateNormal];
-        [self addSubview:self.topAccessoryButton];
+        self.textLabel.text = BC_STRING_TO;
+        self.textLabel.adjustsFontSizeToFitWidth = YES;
+        self.textLabel.textColor = [UIColor lightGrayColor];
+        
+        self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count];
+        self.detailTextLabel.textColor = [UIColor lightGrayColor];
+        self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
-        self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryViewXPosition, self.topLabel.frame.origin.y, self.frame.size.width - accessoryViewXPosition - self.contentView.layoutMargins.right, 30)];
-        self.topAccessoryLabel.textAlignment = NSTextAlignmentRight;
-        self.topAccessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
-        self.topAccessoryLabel.adjustsFontSizeToFitWidth = YES;
-        self.topAccessoryLabel.textColor = [UIColor blackColor];
-        [self addSubview:self.topAccessoryLabel];
+        self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
+        self.mainLabel.adjustsFontSizeToFitWidth = YES;
+        self.mainLabel.text = BC_STRING_TO;
+        self.mainLabel.textColor = [UIColor lightGrayColor];
+        [self addSubview:self.mainLabel];
+        
+        CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + 8;
+        self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
+        self.accessoryLabel.textAlignment = NSTextAlignmentRight;
+        self.accessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
+        self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
+        self.accessoryLabel.textColor = [UIColor blackColor];
+        [self addSubview:self.accessoryLabel];
+        self.accessoryType = UITableViewCellAccessoryNone;
     }
+}
 
-    self.bottomAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryViewXPosition, self.bottomLabel.frame.origin.y, self.frame.size.width - accessoryViewXPosition - self.contentView.layoutMargins.right, 30)];
-    self.bottomAccessoryLabel.textAlignment = NSTextAlignmentRight;
-    self.bottomAccessoryLabel.adjustsFontSizeToFitWidth = YES;
-    self.bottomAccessoryLabel.text = transaction.from.label;
-    [self addSubview:self.bottomAccessoryLabel];
+- (void)configureFromCell:(Transaction *)transaction
+{
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
+    self.mainLabel.adjustsFontSizeToFitWidth = YES;
+    self.mainLabel.text = BC_STRING_FROM;
+    self.mainLabel.textColor = [UIColor lightGrayColor];
+    [self addSubview:self.mainLabel];
+    
+    CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
+    self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
+    self.accessoryLabel.textAlignment = NSTextAlignmentRight;
+    self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
+    self.accessoryLabel.text = transaction.from.label;
+    [self addSubview:self.accessoryLabel];
 }
 
 - (void)configureDateCell:(Transaction *)transaction
 {
-    self.textLabel.text = BC_STRING_DATE;
-    self.textLabel.adjustsFontSizeToFitWidth = YES;
-    self.textLabel.textColor = [UIColor lightGrayColor];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
+    self.mainLabel.adjustsFontSizeToFitWidth = YES;
+    self.mainLabel.text = BC_STRING_DATE;
+    self.mainLabel.textColor = [UIColor lightGrayColor];
+    [self addSubview:self.mainLabel];
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setAMSymbol:@"am"];
@@ -180,28 +185,32 @@
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.time];
     NSString *dateString = [dateFormatter stringFromDate:date];
     
-    self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, 0, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, self.frame.size.height)];
-    self.topAccessoryLabel.adjustsFontSizeToFitWidth = YES;
-    self.topAccessoryLabel.textAlignment = NSTextAlignmentRight;
-    self.topAccessoryLabel.text = dateString;
-    [self addSubview:self.topAccessoryLabel];
+    CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
+    self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
+    self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
+    self.accessoryLabel.textAlignment = NSTextAlignmentRight;
+    self.accessoryLabel.text = dateString;
+    [self addSubview:self.accessoryLabel];
 }
 
 - (void)configureStatusCell:(Transaction *)transaction
 {
-    self.textLabel.text = BC_STRING_STATUS;
-    self.textLabel.adjustsFontSizeToFitWidth = YES;
-    self.textLabel.textColor = [UIColor lightGrayColor];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
+    self.mainLabel.adjustsFontSizeToFitWidth = YES;
+    self.mainLabel.text = BC_STRING_STATUS;
+    self.mainLabel.textColor = [UIColor lightGrayColor];
+    [self addSubview:self.mainLabel];
 
-    self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/3, 0, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, self.frame.size.height)];
+    CGFloat accessoryButtonXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
+    self.accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(accessoryButtonXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryButtonXPosition, self.frame.size.height)];
     NSString *buttonTitle = transaction.confirmations >= kConfirmationThreshold ? BC_STRING_CONFIRMED : [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, [NSString stringWithFormat:@"%u/%u", transaction.confirmations, kConfirmationThreshold]];
 
-    self.topAccessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [self.topAccessoryButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
-    [self.topAccessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
-    self.topAccessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [self.topAccessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
-    [self addSubview:self.topAccessoryButton];
+    self.accessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [self.accessoryButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
+    [self.accessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
+    self.accessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.accessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
+    [self addSubview:self.accessoryButton];
 }
 
 - (void)addPlaceholderLabel
@@ -242,11 +251,6 @@
 - (void)showWebviewDetail
 {
     [self.detailViewDelegate showWebviewDetail];
-}
-
-- (void)showRecipients
-{
-    [self.detailViewDelegate showRecipients];
 }
 
 #pragma mark - TextView delegate

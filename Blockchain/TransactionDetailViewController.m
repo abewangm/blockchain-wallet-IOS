@@ -20,13 +20,13 @@
 
 const int cellRowValue = 0;
 const int cellRowDescription = 1;
-const int cellRowToFrom = 2;
-const int cellRowDate = 3;
-const int cellRowStatus = 4;
+const int cellRowTo = 2;
+const int cellRowFrom = 3;
+const int cellRowDate = 4;
+const int cellRowStatus = 5;
 
 const CGFloat rowHeightDefault = 60;
-const CGFloat rowHeightValue = 108;
-const CGFloat rowHeightToFrom = 88;
+const CGFloat rowHeightValue = 88;
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DetailDelegate, RecipientsDelegate>
 
@@ -151,7 +151,7 @@ const CGFloat rowHeightToFrom = 88;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -176,8 +176,10 @@ const CGFloat rowHeightToFrom = 88;
         // Resize textView in case current note is larger than one line
         [self textViewDidChange:self.textView];
         
-    } else if (indexPath.row == cellRowToFrom) {
-        [cell configureToFromCell:self.transaction];
+    } else if (indexPath.row == cellRowTo) {
+        [cell configureToCell:self.transaction];
+    } else if (indexPath.row == cellRowFrom) {
+        [cell configureFromCell:self.transaction];
     } else if (indexPath.row == cellRowDate) {
         [cell configureDateCell:self.transaction];
     } else if (indexPath.row == cellRowStatus) {
@@ -188,21 +190,39 @@ const CGFloat rowHeightToFrom = 88;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == cellRowTo && self.transaction.to.count > 1) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self showRecipients];
+        return;
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == cellRowValue) {
-        return rowHeightToFrom;
+        return rowHeightValue;
     } else if (indexPath.row == cellRowDescription && self.textView.text) {
         CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
         CGSize sizeToUse = [self addVerticalPaddingToSize:size];
         return sizeToUse.height < rowHeightDefault ? rowHeightDefault : sizeToUse.height;
-    } else if (indexPath.row == cellRowToFrom) {
-        return rowHeightToFrom;
     }
     return rowHeightDefault;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == cellRowTo) {
+        [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
+    }
+}
+
+- (void)showRecipients
+{
+    TransactionRecipientsViewController *recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
+    recipientsViewController.delegate = self;
+    [self.navigationController pushViewController:recipientsViewController animated:YES];
 }
 
 #pragma mark - Detail Delegate
@@ -239,13 +259,6 @@ const CGFloat rowHeightToFrom = 88;
 - (BOOL)isWatchOnlyLegacyAddress:(NSString *)addr
 {
     return [app.wallet isWatchOnlyLegacyAddress:addr];
-}
-
-- (void)showRecipients
-{
-    TransactionRecipientsViewController *recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
-    recipientsViewController.delegate = self;
-    [self.navigationController pushViewController:recipientsViewController animated:YES];
 }
 
 @end

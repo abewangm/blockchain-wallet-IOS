@@ -13,7 +13,6 @@
 - (void)textViewDidChange:(UITextView *)textView;
 - (void)toggleSymbol;
 - (void)showWebviewDetail;
-- (void)showRecipients;
 - (NSString *)getNotePlaceholder;
 @end
 
@@ -31,16 +30,15 @@
 @property (nonatomic) UIButton *editButton;
 
 // Generic/To and From cell
-@property (nonatomic) UILabel *topLabel;
-@property (nonatomic) UILabel *topAccessoryLabel;
-@property (nonatomic) UIButton *topAccessoryButton;
-@property (nonatomic) UILabel *bottomLabel;
-@property (nonatomic) UILabel *bottomAccessoryLabel;
+@property (nonatomic) UILabel *mainLabel;
+@property (nonatomic) UILabel *accessoryLabel;
+@property (nonatomic) UIButton *accessoryButton;
 
 @property (nonatomic) id<DetailDelegate> detailViewDelegate;
 
 - (void)configureDescriptionCell:(Transaction *)transaction;
-- (void)configureToFromCell:(Transaction *)transaction;
+- (void)configureToCell:(Transaction *)transaction;
+- (void)configureFromCell:(Transaction *)transaction;
 - (void)configureDateCell:(Transaction *)transaction;
 - (void)configureStatusCell:(Transaction *)transaction;
 - (void)configureValueCell:(Transaction *)transaction;
