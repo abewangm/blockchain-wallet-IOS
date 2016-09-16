@@ -150,10 +150,6 @@
         [self.topAccessoryButton addTarget:self action:@selector(showRecipients) forControlEvents:UIControlEventTouchUpInside];
         [self.topAccessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
         [self.topAccessoryButton setTitle:[NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count] forState:UIControlStateNormal];
-        self.topAccessoryButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
-        self.topAccessoryButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
-        [self.topAccessoryButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
-        self.topAccessoryButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
         [self addSubview:self.topAccessoryButton];
     } else {
         self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryViewXPosition, self.topLabel.frame.origin.y, self.frame.size.width - accessoryViewXPosition - self.contentView.layoutMargins.right, 30)];
