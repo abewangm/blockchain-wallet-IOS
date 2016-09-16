@@ -534,7 +534,7 @@
 #define BC_STRING_VALUE_WHEN_SENT_ARGUMENT NSLocalizedString(@"Value when sent: %@", nil)
 #define BC_STRING_STATUS NSLocalizedString(@"Status", nil)
 #define BC_STRING_CONFIRMED NSLocalizedString(@"Confirmed", nil)
-#define BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS NSLocalizedString(@"Pending (%u Confirmations)", nil)
+#define BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS NSLocalizedString(@"Pending (%@ Confirmations)", nil)
 #define BC_STRING_TRANSACTION_FEE_ARGUMENT NSLocalizedString(@"Transaction fee: %@", nil)
 #define BC_STRING_PENDING NSLocalizedString(@"Pending", nil)
 #define BC_STRING_ARGUMENT_RECIPIENTS NSLocalizedString(@"%lu Recipients", nil)

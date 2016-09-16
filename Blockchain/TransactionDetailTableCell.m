@@ -150,6 +150,10 @@
         [self.topAccessoryButton addTarget:self action:@selector(showRecipients) forControlEvents:UIControlEventTouchUpInside];
         [self.topAccessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
         [self.topAccessoryButton setTitle:[NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count] forState:UIControlStateNormal];
+        self.topAccessoryButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        self.topAccessoryButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        [self.topAccessoryButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
+        self.topAccessoryButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
         [self addSubview:self.topAccessoryButton];
     } else {
         self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryViewXPosition, self.topLabel.frame.origin.y, self.frame.size.width - accessoryViewXPosition - self.contentView.layoutMargins.right, 30)];
@@ -182,6 +186,7 @@
     
     self.topAccessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/3, 0, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, self.frame.size.height)];
     self.topAccessoryLabel.adjustsFontSizeToFitWidth = YES;
+    self.topAccessoryLabel.textAlignment = NSTextAlignmentRight;
     self.topAccessoryLabel.text = dateString;
     [self addSubview:self.topAccessoryLabel];
 }
@@ -193,7 +198,7 @@
     self.textLabel.textColor = [UIColor lightGrayColor];
 
     self.topAccessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/3, 0, self.frame.size.width*2/3 - self.contentView.layoutMargins.right, self.frame.size.height)];
-    NSString *buttonTitle = transaction.confirmations >= kConfirmationThreshold ? BC_STRING_CONFIRMED : [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, transaction.confirmations];
+    NSString *buttonTitle = transaction.confirmations >= kConfirmationThreshold ? BC_STRING_CONFIRMED : [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, [NSString stringWithFormat:@"%u/%u", transaction.confirmations, kConfirmationThreshold]];
 
     self.topAccessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.topAccessoryButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
