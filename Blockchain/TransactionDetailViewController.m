@@ -207,6 +207,10 @@ const CGFloat rowHeightValue = 88;
         CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
         CGSize sizeToUse = [self addVerticalPaddingToSize:size];
         return sizeToUse.height < rowHeightDefault ? rowHeightDefault : sizeToUse.height;
+    } else if (indexPath.row == cellRowTo) {
+        return rowHeightDefault;
+    } else if (indexPath.row == cellRowFrom) {
+        return rowHeightDefault/2 + 20.5/2;
     }
     return rowHeightDefault;
 }
