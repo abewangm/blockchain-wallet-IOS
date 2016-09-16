@@ -542,3 +542,4 @@
 #define BC_STRING_DATE NSLocalizedString(@"Date", nil)
 #define BC_STRING_FROM NSLocalizedString(@"From", nil)
 #define BC_STRING_ERROR_GETTING_FIAT_AT_TIME NSLocalizedString(@"Could not get value when sent - please check your internet connection and try again.", nil)
+#define BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT NSLocalizedString(@"Could not find transaction with hash %@ when reloading data", nil)

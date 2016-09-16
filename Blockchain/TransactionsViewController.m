@@ -185,6 +185,13 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)reload
 {
+    [self reloadData];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL object:nil];
+}
+
+- (void)reloadData
+{
     [self setText];
     
     [tableView reloadData];
@@ -199,6 +206,13 @@ int lastNumberTransactions = INT_MAX;
     if (refreshControl && refreshControl.isRefreshing) {
         [refreshControl endRefreshing];
     }
+}
+
+- (void)reloadSymbols
+{
+    [self reloadData];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SYMBOLS object:nil];
 }
 
 - (void)reloadNewTransactions

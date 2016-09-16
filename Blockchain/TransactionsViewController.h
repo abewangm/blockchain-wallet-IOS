@@ -47,6 +47,7 @@
 @property(nonatomic) NSIndexPath *lastSelectedIndexPath;
 
 - (void)reload;
+- (void)reloadSymbols;
 - (void)animateNextCellAfterReload;
 - (void)setText;
 - (UITableView*)tableView;

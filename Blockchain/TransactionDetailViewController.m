@@ -35,6 +35,7 @@ const CGFloat rowHeightValue = 88;
 @property CGFloat oldTextViewHeight;
 @property (nonatomic) UIView *descriptonInputAccessoryView;
 @property (nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic) BOOL isGettingFiatAtTime;
 
 @end
 @implementation TransactionDetailViewController
@@ -56,6 +57,22 @@ const CGFloat rowHeightValue = 88;
     if (!self.transaction.fiatAmountAtTime) {
         [self getFiatAtTime];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetHistory) name:NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadSymbols) name:NOTIFICATION_KEY_RELOAD_SYMBOLS object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RELOAD_SYMBOLS object:nil];
 }
 
 - (void)setupTextViewInputAccessoryView
@@ -82,6 +99,7 @@ const CGFloat rowHeightValue = 88;
 - (void)getFiatAtTime
 {
     [app.wallet getFiatAtTime:self.transaction.time * MSEC_PER_SEC value:imaxabs(self.transaction.amount) currencyCode:[app.latestResponse.symbol_local.code lowercaseString]];
+    self.isGettingFiatAtTime = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetFiatAtTime) name:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
 
@@ -111,23 +129,18 @@ const CGFloat rowHeightValue = 88;
 - (void)getHistoryAfterSavingNote
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
-    [self getHistory];
-}
-
-- (void)getHistory
-{
     [app.wallet getHistory];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetHistory) name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
-- (void)reloadDataAfterGetHistory
+- (void)didGetHistory
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
+    if (self.isGettingFiatAtTime) return; // Multiple calls to didGetHistory will occur due to did_set_latest_block and did_multiaddr; prevent observer from being added twice
     [self getFiatAtTime];
 }
 
 - (void)reloadDataAfterGetFiatAtTime
 {
+    self.isGettingFiatAtTime = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
     [self reloadData];
 }
@@ -137,14 +150,25 @@ const CGFloat rowHeightValue = 88;
     [self.busyViewDelegate hideBusyView];
     
     NSArray *newTransactions = app.latestResponse.transactions;
+    Transaction *updatedTransaction = newTransactions[self.transactionIndex];
     
-    if (newTransactions.count >= self.transactionCount) {
-        self.transaction = [newTransactions objectAtIndex:self.transactionIndex + (newTransactions.count - self.transactionCount)];
+    if ([updatedTransaction.myHash isEqualToString:self.transaction.myHash]) {
+        self.transaction = updatedTransaction;
     } else {
-        DLog(@"Error reloading transcation details: new transaction count is less than old transaction count!");
+        BOOL didFindTransaction = NO;
+        for (Transaction *transaction in newTransactions) {
+            if ([transaction.myHash isEqualToString:self.transaction.myHash]) {
+                self.transaction = updatedTransaction;
+                didFindTransaction = YES;
+                break;
+            }
+        }
+        if (!didFindTransaction) {
+            [self dismissViewControllerAnimated:YES completion:^{
+                [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transaction.myHash]];
+            }];
+        }
     }
-    
-    self.transactionCount = newTransactions.count;
     
     [self.tableView reloadData];
     
@@ -156,6 +180,11 @@ const CGFloat rowHeightValue = 88;
 - (CGSize)addVerticalPaddingToSize:(CGSize)size
 {
     return CGSizeMake(size.width, size.height + 16);
+}
+
+- (void)reloadSymbols
+{
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowValue inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -254,7 +283,7 @@ const CGFloat rowHeightValue = 88;
 - (void)refreshControlActivated
 {
     [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
-    [self performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
+    [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
 }
 
 #pragma mark - Detail Delegate

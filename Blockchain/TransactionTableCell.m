@@ -129,7 +129,6 @@
 {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
     detailViewController.transaction = transaction;
-    detailViewController.transactionCount = app.latestResponse.transactions.count;
     detailViewController.transactionIndex = indexPath.row;
     
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];

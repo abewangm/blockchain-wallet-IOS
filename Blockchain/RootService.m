@@ -602,7 +602,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [_sendViewController reloadSymbols];
     
-    [_transactionsViewController reload];
+    [_transactionsViewController reloadSymbols];
     [_accountsAndAddressesNavigationController reload];
     [sideMenuViewController reload];
 }
