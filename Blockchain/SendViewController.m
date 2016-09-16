@@ -136,10 +136,12 @@ BOOL displayingLocalSymbolSend;
         self.sendFromAddress = false;
         int defaultAccountIndex = [app.wallet getFilteredOrDefaultAccountIndex];
         self.fromAccount = defaultAccountIndex;
+        [self didSelectFromAccount:self.fromAccount];
     }
     else {
         // Default setting: send from any address
         self.sendFromAddress = true;
+        [self didSelectFromAddress:self.fromAddress];
     }
 }
 
@@ -203,9 +205,9 @@ BOOL displayingLocalSymbolSend;
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (self.sendFromAddress) {
-        [self didSelectFromAddress:self.fromAddress];
+        [app.wallet changePaymentFromAddress:self.fromAddress isAdvanced:self.customFeeMode];
     } else {
-        [self didSelectFromAccount:self.fromAccount];
+        [app.wallet changePaymentFromAccount:self.fromAccount isAdvanced:self.customFeeMode];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
