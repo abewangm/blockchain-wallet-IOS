@@ -11,6 +11,7 @@
 #import "TransactionTableCell.h"
 #import "MultiAddressResponse.h"
 #import "RootService.h"
+#import "TransactionDetailViewController.h"
 
 @implementation TransactionsViewController
 
@@ -193,6 +194,11 @@ int lastNumberTransactions = INT_MAX;
     [self animateFirstCell];
     
     [self reloadLastNumberOfTransactions];
+    
+    // This should be done when request has finished but there is no callback
+    if (refreshControl && refreshControl.isRefreshing) {
+        [refreshControl endRefreshing];
+    }
 }
 
 - (void)reloadNewTransactions
@@ -264,11 +270,6 @@ int lastNumberTransactions = INT_MAX;
     
     [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
 #endif
-    
-    // This should be done when request has finished but there is no callback
-    if (refreshControl && refreshControl.isRefreshing) {
-        [refreshControl endRefreshing];
-    }
 }
 
 - (NSDecimalNumber *)getAmountForReceivedTransaction:(Transaction *)transaction

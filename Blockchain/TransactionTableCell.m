@@ -134,6 +134,7 @@
     
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
     
+    detailViewController.busyViewDelegate = navigationController;
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
 }

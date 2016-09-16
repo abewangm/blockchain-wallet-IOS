@@ -34,6 +34,7 @@ const CGFloat rowHeightValue = 88;
 @property (nonatomic) UITextView *textView;
 @property CGFloat oldTextViewHeight;
 @property (nonatomic) UIView *descriptonInputAccessoryView;
+@property (nonatomic) UIRefreshControl *refreshControl;
 
 @end
 @implementation TransactionDetailViewController
@@ -49,6 +50,7 @@ const CGFloat rowHeightValue = 88;
     [self.tableView registerClass:[TransactionDetailTableCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL];
     self.tableView.tableFooterView = [UIView new];
     
+    [self setupPullToRefresh];
     [self setupTextViewInputAccessoryView];
 
     if (!self.transaction.fiatAmountAtTime) {
@@ -99,8 +101,7 @@ const CGFloat rowHeightValue = 88;
 {
     [self.textView resignFirstResponder];
     
-    TransactionDetailNavigationController *navigationController = (TransactionDetailNavigationController *)self.navigationController;
-    [navigationController.busyView fadeIn];
+    [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
     [app.wallet saveNote:self.textView.text forTransaction:self.transaction.myHash];
     
@@ -110,6 +111,11 @@ const CGFloat rowHeightValue = 88;
 - (void)getHistoryAfterSavingNote
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    [self getHistory];
+}
+
+- (void)getHistory
+{
     [app.wallet getHistory];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetHistory) name:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
@@ -128,8 +134,7 @@ const CGFloat rowHeightValue = 88;
 
 - (void)reloadData
 {
-    TransactionDetailNavigationController *navigationController = (TransactionDetailNavigationController *)self.navigationController;
-    [navigationController.busyView fadeOut];
+    [self.busyViewDelegate hideBusyView];
     
     NSArray *newTransactions = app.latestResponse.transactions;
     
@@ -142,6 +147,10 @@ const CGFloat rowHeightValue = 88;
     self.transactionCount = newTransactions.count;
     
     [self.tableView reloadData];
+    
+    if (self.refreshControl && self.refreshControl.isRefreshing) {
+        [self.refreshControl endRefreshing];
+    }
 }
 
 - (CGSize)addVerticalPaddingToSize:(CGSize)size
@@ -227,6 +236,25 @@ const CGFloat rowHeightValue = 88;
     TransactionRecipientsViewController *recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
     recipientsViewController.delegate = self;
     [self.navigationController pushViewController:recipientsViewController animated:YES];
+}
+
+- (void)setupPullToRefresh
+{
+    // Tricky way to get the refreshController to work on a UIViewController - @see http://stackoverflow.com/a/12502450/2076094
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.tableView;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl setTintColor:[UIColor grayColor]];
+    [self.refreshControl addTarget:self
+                       action:@selector(refreshControlActivated)
+             forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
+}
+
+- (void)refreshControlActivated
+{
+    [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    [self performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
 }
 
 #pragma mark - Detail Delegate

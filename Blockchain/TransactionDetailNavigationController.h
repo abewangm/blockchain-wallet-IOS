@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "BCFadeView.h"
+#import "TransactionDetailViewController.h"
 
-@interface TransactionDetailNavigationController : UINavigationController
+@interface TransactionDetailNavigationController : UINavigationController <BusyViewDelegate>
 @property (nonatomic) BCFadeView *busyView;
 @property (nonatomic) UIButton *backButton;
 @property (nonatomic) UIButton *closeButton;
 @property (nonatomic) UILabel *headerLabel;
+@property (nonatomic) UILabel *busyLabel;
 
 @end

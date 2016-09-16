@@ -66,6 +66,7 @@
     busyLabel.text = BC_STRING_LOADING_SYNCING_WALLET;
     busyLabel.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 + 15);
     [textWithSpinnerView addSubview:busyLabel];
+    self.busyLabel = busyLabel;
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 - 15);
@@ -115,6 +116,24 @@
 - (void)dismiss
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark Busy View Delegate
+
+- (void)showBusyViewWithLoadingText:(NSString *)text
+{
+    [self.busyLabel setText:text];
+        
+    if (self.busyView.alpha < 1.0) {
+        [self.busyView fadeIn];
+    }
+}
+
+- (void)hideBusyView
+{
+    if (self.busyView.alpha == 1.0) {
+        [self.busyView fadeOut];
+    }
 }
 
 @end
