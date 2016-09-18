@@ -70,6 +70,7 @@
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, self.frame.size.width/3, 30)];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.textColor = [UIColor lightGrayColor];
+    self.mainLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE_MEDIUM size:20];
     
     if ([transaction.txType isEqualToString:TX_TYPE_TRANSFER]) {
         self.mainLabel.text = [BC_STRING_TRANSFERRED uppercaseString];
@@ -90,23 +91,15 @@
     self.amountButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.amountButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.amountButton setTitle:[NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.amount)] forState:UIControlStateNormal];
+    self.amountButton.titleLabel.font = [UIFont systemFontOfSize:20];
     [self.amountButton addTarget:self action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
     [self.amountButton setTitleColor:self.mainLabel.textColor forState:UIControlStateNormal];
     [self addSubview:self.amountButton];
     
-    // Transaction fee label
-    self.transactionFeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.frame.size.height - self.contentView.layoutMargins.bottom - 21, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 21)];
-    self.transactionFeeLabel.font = [UIFont systemFontOfSize:12];
-    self.transactionFeeLabel.textColor = [UIColor lightGrayColor];
-    self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.fee)]];
-    self.transactionFeeLabel.adjustsFontSizeToFitWidth = YES;
-    self.transactionFeeLabel.textAlignment = NSTextAlignmentRight;
-    [self addSubview:self.transactionFeeLabel];
-    
     // Value when sent label
-    self.fiatValueWhenSentLabel = [[UILabel alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.frame.size.height - self.transactionFeeLabel.frame.size.height - 21 - 8, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 21)];
-    self.fiatValueWhenSentLabel.font = [UIFont systemFontOfSize:12];
+    self.fiatValueWhenSentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.amountButton.frame.origin.y + self.amountButton.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right, 20.5)];
+    self.fiatValueWhenSentLabel.font =  [UIFont systemFontOfSize:14];
     
     if (transaction.fiatAmountAtTime) {
         self.fiatValueWhenSentLabel.attributedText = nil;
@@ -115,7 +108,7 @@
     } else {
         self.fiatValueWhenSentLabel.text = nil;
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, @".........."]];
-        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0,attributedString.length - 10)];
+        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, attributedString.length - 10)];
         [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor clearColor] range:NSMakeRange(attributedString.length - 10, 10)];
         self.fiatValueWhenSentLabel.attributedText = attributedString;
     }
@@ -123,6 +116,15 @@
     self.fiatValueWhenSentLabel.adjustsFontSizeToFitWidth = YES;
     self.fiatValueWhenSentLabel.textAlignment = NSTextAlignmentRight;
     [self addSubview:self.fiatValueWhenSentLabel];
+    
+    // Transaction fee label
+    self.transactionFeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.fiatValueWhenSentLabel.frame.origin.y + self.fiatValueWhenSentLabel.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right, 20.5)];
+    self.transactionFeeLabel.font =  [UIFont systemFontOfSize:14];
+    self.transactionFeeLabel.textColor = [UIColor lightGrayColor];
+    self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.fee)]];
+    self.transactionFeeLabel.adjustsFontSizeToFitWidth = YES;
+    self.transactionFeeLabel.textAlignment = NSTextAlignmentRight;
+    [self addSubview:self.transactionFeeLabel];
 }
 
 - (void)configureToCell:(Transaction *)transaction

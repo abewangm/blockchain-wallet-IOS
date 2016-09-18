@@ -26,7 +26,7 @@ const int cellRowDate = 4;
 const int cellRowStatus = 5;
 
 const CGFloat rowHeightDefault = 60;
-const CGFloat rowHeightValue = 88;
+const CGFloat rowHeightValue = 116;
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DetailDelegate, RecipientsDelegate>
 

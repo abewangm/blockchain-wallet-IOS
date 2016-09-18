@@ -124,6 +124,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define TX_TYPE_RECEIVED @"received"
 
 #define FONT_HELVETICA_NUEUE @"Helvetica Neue"
+#define FONT_HELVETICA_NUEUE_MEDIUM @"HelveticaNeue-Medium"
 
 #define NUMBER_KEYPAD_CHARACTER_SET_STRING @"1234567890"
 
