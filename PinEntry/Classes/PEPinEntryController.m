@@ -162,24 +162,29 @@ static PEViewController *VerifyController()
                 }];
             });
             
-            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
-            [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
-            [self.addressLabel setTextColor:[UIColor whiteColor]];
-            [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
+            if (!self.addressLabel) {
+                self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
+                [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
+                [self.addressLabel setTextColor:[UIColor whiteColor]];
+                [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
+                [pinController.scrollView addSubview:self.addressLabel];
+            }
             
             if (![nextAddressUsed boolValue]) {
-                QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
                 
-                self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                if (!self.qrCodeImageView) {
+                    self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                    [pinController.scrollView addSubview:self.qrCodeImageView];
+                }
+                
+                QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
+
                 self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
                 self.addressLabel.text = nextAddress;
-                
-                [pinController.scrollView addSubview:self.qrCodeImageView];
             } else {
                 self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
             }
             
-            [pinController.scrollView addSubview:self.addressLabel];
         } else {
             pinController.swipeLabel.hidden = YES;
             pinController.swipeLabelImageView.hidden = YES;
