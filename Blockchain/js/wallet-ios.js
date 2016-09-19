@@ -733,7 +733,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     
     var createPayment = function(address) {
         return new Promise(function (resolve) {
-                           var payment = new Payment().from(address).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll();
+                           var payment = new Payment().from(address).useAll();
                            transferAllPayments[address] = payment;
                            payment.sideEffect(function (p) { resolve(p); });
                            })
@@ -788,7 +788,7 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
     
     currentPayment = transferAllPayments[address];
     if (currentPayment) {
-        currentPayment.build().then(function (x) {
+        currentPayment.to(MyWallet.wallet.hdwallet.defaultAccountIndex).build().then(function (x) {
                                     
                                     if (isFirstTransfer) {
                                     console.log('builtTransferAll: from:' + x.from);
@@ -823,6 +823,11 @@ MyWalletPhone.transferFundsToDefaultAccountFromAddress = function(address) {
                                                                                                                                                      MyWalletPhone.updateSweep(false, true);
                                                                                                                                                      return x;
                                                                                                                                                      }).catch(buildFailure);
+}
+
+MyWalletPhone.incrementReceiveIndexOfDefaultAccount = function() {
+    console.log('incrementing receive index');
+    MyWallet.wallet.hdwallet.defaultAccount.incrementReceiveIndex();
 }
 
 MyWalletPhone.quickSend = function(secondPassword) {

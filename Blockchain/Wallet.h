@@ -324,6 +324,7 @@
 - (void)getTransactionFee;
 - (void)getSurgeStatus;
 - (uint64_t)dust;
+- (void)incrementReceiveIndexOfDefaultAccount;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;

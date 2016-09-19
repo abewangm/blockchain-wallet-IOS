@@ -1802,6 +1802,11 @@
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(%li, \"%@\")", (long)filter, transaction.myHash]] toString];
 }
 
+- (void)incrementReceiveIndexOfDefaultAccount
+{
+    [self.context evaluateScript:@"MyWalletPhone.incrementReceiveIndexOfDefaultAccount()"];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

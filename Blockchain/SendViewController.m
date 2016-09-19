@@ -600,6 +600,7 @@ BOOL displayingLocalSymbolSend;
         
         self.temporarySecondPassword = secondPassword;
         
+        [app.wallet incrementReceiveIndexOfDefaultAccount];
         // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
         [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
         
