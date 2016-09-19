@@ -98,7 +98,7 @@
     }
     
     if ([self.visibleViewController isMemberOfClass:[TransactionRecipientsViewController class]]) {
-        self.headerLabel.text = BC_STRING_RECEIVED;
+        self.headerLabel.text = BC_STRING_RECIPIENTS;
     } else {
         self.headerLabel.text = BC_STRING_TRANSACTION;
     }
