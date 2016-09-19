@@ -54,7 +54,7 @@ const CGFloat rowHeightValue = 116;
     [self setupPullToRefresh];
     [self setupTextViewInputAccessoryView];
 
-    if (!self.transaction.fiatAmountAtTime) {
+    if (![self.transaction.fiatAmountsAtTime objectForKey:[self getCurrencyCode]]) {
         [self getFiatAtTime];
     }
 }
@@ -313,6 +313,11 @@ const CGFloat rowHeightValue = 116;
     [webViewController loadURL:[URL_SERVER stringByAppendingFormat:@"/tx/%@", self.transaction.myHash]];
     webViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:webViewController animated:YES completion:nil];
+}
+
+- (NSString *)getCurrencyCode
+{
+    return [app.latestResponse.symbol_local.code lowercaseString];
 }
 
 #pragma mark - Recipients Delegate

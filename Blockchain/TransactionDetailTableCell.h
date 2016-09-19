@@ -14,6 +14,7 @@
 - (void)toggleSymbol;
 - (void)showWebviewDetail;
 - (NSString *)getNotePlaceholder;
+- (NSString *)getCurrencyCode;
 @end
 
 @interface TransactionDetailTableCell : UITableViewCell <UITextViewDelegate>

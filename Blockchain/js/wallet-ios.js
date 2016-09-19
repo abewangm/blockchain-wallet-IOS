@@ -1553,7 +1553,7 @@ MyWalletPhone.getFiatAtTime = function(time, value, currencyCode) {
     
     var success = function (amount) {
         console.log('Get fiat at time success');
-        on_get_fiat_at_time_success(amount);
+        on_get_fiat_at_time_success(amount, currencyCode);
     };
     
     var error = function (e) {

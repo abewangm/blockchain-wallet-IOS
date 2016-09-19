@@ -1700,7 +1700,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (void)didGetFiatAtTime:(NSString *)fiatAmount
+- (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
 {
     Transaction *transaction = latestResponse.transactions[self.transactionsViewController.lastSelectedIndexPath.row];
     
@@ -1708,7 +1708,7 @@ void (^secondPasswordSuccess)(NSString *);
         fiatAmount = [fiatAmount stringByAppendingString:@"0"];
     }
     
-    transaction.fiatAmountAtTime = fiatAmount;
+    [transaction.fiatAmountsAtTime setObject:fiatAmount forKey:currencyCode];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
 

@@ -101,10 +101,11 @@
     self.fiatValueWhenSentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.amountButton.frame.origin.y + self.amountButton.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right, 20.5)];
     self.fiatValueWhenSentLabel.font =  [UIFont systemFontOfSize:14];
     
-    if (transaction.fiatAmountAtTime) {
+    NSString *currencyCode = [self.detailViewDelegate getCurrencyCode];
+    if ([transaction.fiatAmountsAtTime objectForKey:currencyCode]) {
         self.fiatValueWhenSentLabel.attributedText = nil;
         self.fiatValueWhenSentLabel.textColor = [UIColor lightGrayColor];
-        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, [NSNumberFormatter appendStringToFiatSymbol:transaction.fiatAmountAtTime]];
+        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, [NSNumberFormatter appendStringToFiatSymbol:[transaction.fiatAmountsAtTime objectForKey:currencyCode]]];
     } else {
         self.fiatValueWhenSentLabel.text = nil;
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, @".........."]];

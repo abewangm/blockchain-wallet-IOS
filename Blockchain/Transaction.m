@@ -34,6 +34,8 @@
     transaction.toWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY] boolValue];
     transaction.note = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_NOTE];
     
+    transaction.fiatAmountsAtTime = [[NSMutableDictionary alloc] init];
+    
     return transaction;
 }
 

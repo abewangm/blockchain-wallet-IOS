@@ -24,7 +24,7 @@
 @property(nonatomic, assign) uint32_t tx_index;
 @property(nonatomic, assign) BOOL fromWatchOnly;
 @property(nonatomic, assign) BOOL toWatchOnly;
-@property(nonatomic, strong) NSString *fiatAmountAtTime;
+@property(nonatomic, strong) NSMutableDictionary *fiatAmountsAtTime;
 
 @property(nonatomic, strong) InOut *from;
 @property(nonatomic, strong) NSArray *to;

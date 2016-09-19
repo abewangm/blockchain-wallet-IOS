@@ -219,8 +219,8 @@
         [weakSelf update_loaded_all_transactions:index];
     };
     
-    self.context[@"on_get_fiat_at_time_success"] = ^(NSString *fiatAmount) {
-        [weakSelf on_get_fiat_at_time_success:fiatAmount];
+    self.context[@"on_get_fiat_at_time_success"] = ^(NSString *fiatAmount, NSString *currencyCode) {
+        [weakSelf on_get_fiat_at_time_success:fiatAmount currencyCode:currencyCode];
     };
     
     self.context[@"on_get_fiat_at_time_error"] = ^(NSString *error) {
@@ -2898,13 +2898,13 @@
     [app authorizationRequired];
 }
 
-- (void)on_get_fiat_at_time_success:(NSString *)fiatAmount
+- (void)on_get_fiat_at_time_success:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
 {
     DLog(@"on_get_fiat_at_time_success");
-    if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:)]) {
-        [self.delegate didGetFiatAtTime:fiatAmount];
+    if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:currencyCode:)]) {
+        [self.delegate didGetFiatAtTime:fiatAmount currencyCode:currencyCode];
     } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didGetFiatAtTime!", [delegate class]);
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetFiatAtTime:currencyCode!", [delegate class]);
     }
 }
 
