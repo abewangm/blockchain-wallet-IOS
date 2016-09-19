@@ -5,12 +5,19 @@
 
 ## Setup git submodules
 
-Prepare the MyWallet Javascript:
+Prepare SocketRocket:
 
     git submodule update --init
+
+Prepare the MyWallet Javascript:
+
     cd Submodules/My-Wallet-V3
     npm install
+    // Required for JavaScriptCore
+    sed -i '' '1s/^/global.self = global;/' node_modules/whatwg-fetch/fetch.js
     grunt build
+    // Required for JavaScriptCore
+    sed -i '' '/var crypto = global.crypto || global.msCrypto/ s/$/ || {getRandomValues: function(){}}/' dist/my-wallet.js
 
 Prepare OpenSSL:
 
