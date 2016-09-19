@@ -1,35 +1,35 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "다시 백업 자금";
+"1Hq-6D-ut1.normalTitle" = "다시 자금 백업";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "다시 백업 자금";
+"1Hq-6D-ut1.text" = "다시 자금 백업";
 
 /* (No Commment) */
-"3kJ-3U-lFe.text" = "다시 시도 하십시오";
+"3kJ-3U-lFe.text" = "다시 해 보세요";
 
 /* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "백업 프로세스를 완료 하려면 복구 구문에서 다음 단어를 입력 합니다.";
+"4Nq-ue-tXr.text" = "귀하 복구 구절에서 다음 단어들을 입력해서 백업 과정을 마치세요.";
 
 /* (No Commment) */
-"6zt-Xf-txg.text" = "누르고 단어를 공개";
+"6zt-Xf-txg.text" = "단어가 보이게 하려면 누르고 있으세요";
 
 /* (No Commment) */
-"07q-RX-CeI.text" = "다시 시도 하십시오";
+"07q-RX-CeI.text" = "다시 해 보세요";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "백업 자금";
+"9A7-TT-PzN.title" = "자금 백업";
 
 /* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "아, 아니! 당신은 당신의 자금 아직 백업 하지 않았습니다.";
+"9Hu-uO-gJl.text" = "안 돼! 귀하는 아직 자금 백업을 안 했습니다.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "이 작업 bitcoin 지갑에 대 한 두 번째 암호를 요구 한다. 제발 아래 입력 하 고 누르면 계속.";
+"9WK-My-5CL.text" = "이 행동을 하려면 귀하 비트코인 지갑 두째 암호가 필요합니다. 아래에 입력한 후 계속을 누르세요";
 
 /* (No Commment) */
-"9hR-tm-aq5.placeholder" = "첫 번째 단어";
+"9hR-tm-aq5.placeholder" = "첫 단어";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "두 번째 암호 필요";
+"74J-f3-Lhq.title" = "두째 암호 필요";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "이전 단어";
@@ -38,33 +38,33 @@
 "CBl-1W-VP8.placeholder" = "암호";
 
 /* (No Commment) */
-"EQM-OM-jK8.normalTitle" = "완료";
+"EQM-OM-jK8.normalTitle" = "완료됨";
 
 /* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
-"FDO-ui-cGo.text" = "화면을 하지 마십시오!
-지갑의 보안을 위태롭게 할 수 있다";
+"FDO-ui-cGo.text" = "스크린 샷을 찍지 마세요!
+지갑 보안이 위험하게 될 수 있습니다.";
 
 /* (No Commment) */
-"Fda-Z4-3e7.placeholder" = "6 단어";
+"Fda-Z4-3e7.placeholder" = "여섯번째 단어";
 
 /* (No Commment) */
-"NaV-Bk-o1b.text" = "당신의 지갑 복원 하는 방법";
+"NaV-Bk-o1b.text" = "지갑 복구 방법";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
 "Okr-VE-yvm.text" = "유니콘";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
-"T3S-Dk-HAh.text" = "다시 시도 하십시오";
+"T3S-Dk-HAh.text" = "다시 해 보세요";
 
 /* (No Commment) */
 "T4p-mz-siC.normalTitle" = "백업 확인";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "그들은 종이, 시트에 표시 하 고 어딘가에 안전 저장 정확한 순서로 단어를 적어
+"UCL-i9-UDp.text" = "단어들을 순서까지 보이는 그대로 종이에 써서 안전한 다른 곳에 보관하세요
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "12 단어 복구 문구를 분실?";
+"Yh8-Gm-6op.text" = "12 단어 복구 구절을 잃었습니까?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "다음 단어";
@@ -73,20 +73,20 @@
 "eaO-py-9rY.normalTitle" = "다음 단어";
 
 /* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "제발 당신의 bitcoin에 액세스할 수 있도록 몇 분이 걸릴 (가져온된 주소 제외), 당신이 암호를 잊어버린 경우에 또는 우리의 서비스를 사용할 수 없게 하는 경우. 우리 약속 하 고, 무 통, 빠르고 가치.";
+"eyR-AW-SMc.text" = "암호를 잊어버리거나 저희 서비스가 안 될 때 귀하 비트코인 (가져온 주소는 제외)에 접근할 수 있도록 몇 분 시간을 내세요. 빨리, 쉽게, 가치 있게 해 드릴 것을 약속합니다.";
 
 /* (No Commment) */
-"kcC-2S-PfL.placeholder" = "세 번째 단어";
+"kcC-2S-PfL.placeholder" = "셋째 단어";
 
 /* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
-"mUc-u7-Zcj.text" = "12의 Word 5";
+"mUc-u7-Zcj.text" = "12 단어 중 5째 단어";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "백업 지갑";
+"mYR-MQ-mS2.title" = "지갑 백업";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
 "nuD-nb-tAt.normalTitle" = "계속";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "백업 지갑";
+"xmf-pK-R3X.title" = "지갑 백업";
 

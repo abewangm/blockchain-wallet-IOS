@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 16/03/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "Wallet.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "Transaction.h"
 #import "NSString+NSString_EscapeQuotes.h"
 #import "MultiAddressResponse.h"
@@ -20,7 +20,10 @@
 #import "NSArray+EncodedJSONString.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "ModuleXMLHTTPRequest.h"
+#import "KeychainItemWrapper+Credentials.h"
 #import <openssl/evp.h>
+#import "SessionManager.h"
+#import "NSURLRequest+SRWebSocket.h"
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -216,6 +219,14 @@
         [weakSelf update_loaded_all_transactions:index];
     };
     
+    self.context[@"on_get_fiat_at_time_success"] = ^(NSString *fiatAmount, NSString *currencyCode) {
+        [weakSelf on_get_fiat_at_time_success:fiatAmount currencyCode:currencyCode];
+    };
+    
+    self.context[@"on_get_fiat_at_time_error"] = ^(NSString *error) {
+        [weakSelf on_get_fiat_at_time_error:error];
+    };
+    
 #pragma mark Send Screen
     
     self.context[@"update_send_balance"] = ^(NSNumber *balance) {
@@ -242,8 +253,8 @@
         [weakSelf check_max_amount:amount fee:fee];
     };
     
-    self.context[@"did_get_fee_dust"] = ^(NSNumber *fee, NSNumber *dust) {
-        [weakSelf did_get_fee:fee dust:dust];
+    self.context[@"did_get_fee_dust_txSize"] = ^(NSNumber *fee, NSNumber *dust, NSNumber *txSize) {
+        [weakSelf did_get_fee:fee dust:dust txSize:txSize];
     };
     
     self.context[@"tx_on_success_secondPassword"] = ^(NSString *success, NSString *secondPassword) {
@@ -380,8 +391,8 @@
         [weakSelf on_add_key:key];
     };
     
-    self.context[@"on_error_adding_private_key"] = ^(NSString *key) {
-        [weakSelf on_error_adding_private_key:key];
+    self.context[@"on_error_adding_private_key"] = ^(NSString *error) {
+        [weakSelf on_error_adding_private_key:error];
     };
     
     self.context[@"on_add_incorrect_private_key"] = ^(NSString *key) {
@@ -498,12 +509,12 @@
         [weakSelf on_change_email_success];
     };
     
-    self.context[@"on_change_email_notifications_success"] = ^() {
-        [weakSelf on_change_email_notifications_success];
+    self.context[@"on_change_notifications_success"] = ^() {
+        [weakSelf on_change_notifications_success];
     };
     
-    self.context[@"on_change_email_notifications_error"] = ^() {
-        [weakSelf on_change_email_notifications_error];
+    self.context[@"on_change_notifications_error"] = ^() {
+        [weakSelf on_change_notifications_error];
     };
     
     self.context[@"on_update_tor_success"] = ^() {
@@ -575,6 +586,21 @@
 {
     NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:DEFAULT_WEBSOCKET_SERVER]];
     [webSocketRequest addValue:DEFAULT_WALLET_SERVER forHTTPHeaderField:@"Origin"];
+
+#ifdef ENABLE_CERTIFICATE_PINNING
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
+        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"blockchain" ofType:@"der"];
+        NSData *certData = [[NSData alloc] initWithContentsOfFile:cerPath];
+        CFDataRef certDataRef = (__bridge CFDataRef)certData;
+        SecCertificateRef certRef = SecCertificateCreateWithData(NULL, certDataRef);
+        id certificate = (__bridge id)certRef;
+        
+        [webSocketRequest setSR_SSLPinnedCertificates:@[certificate]];
+        
+        CFRelease(certRef);
+    }
+#endif
+    
     self.webSocket = [[SRWebSocket alloc] initWithURLRequest:webSocketRequest];
     self.webSocket.delegate = self;
     
@@ -592,9 +618,24 @@
 - (void)pingWebSocket
 {
     if (self.webSocket.readyState == 1) {
-        [self.webSocket sendPing:[@"{ op: 'ping' }" dataUsingEncoding:NSUTF8StringEncoding]];
+        NSError *error;
+        [self.webSocket sendPing:[@"{ op: 'ping' }" dataUsingEncoding:NSUTF8StringEncoding] error:&error];
+        if (error) DLog(@"Error sending ping: %@", [error localizedDescription]);
     } else {
         DLog(@"reconnecting websocket");
+        [self setupWebSocket];
+    }
+}
+
+- (void)subscribeToAddress:(NSString *)address
+{    
+    self.addressToSubscribe = address;
+
+    if (self.webSocket && self.webSocket.readyState == 1) {
+        NSError *error;
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.addressToSubscribe] error:&error];
+        if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+    } else {
         [self setupWebSocket];
     }
 }
@@ -629,11 +670,17 @@
 {
     [self useDebugSettingsIfSet];
     
-    if ([delegate respondsToSelector:@selector(walletJSReady)])
+    if ([delegate respondsToSelector:@selector(walletJSReady)]) {
         [delegate walletJSReady];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletJSReady!", [delegate class]);
+    }
     
-    if ([delegate respondsToSelector:@selector(walletDidLoad)])
+    if ([delegate respondsToSelector:@selector(walletDidLoad)]) {
         [delegate walletDidLoad];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletDidLoad!", [delegate class]);
+    }
     
     if (self.guid && self.password) {
         DLog(@"Fetch Wallet");
@@ -651,8 +698,11 @@
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
     DLog(@"websocket opened");
-    NSString *message = [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
-    [webSocket sendString:message];
+    NSString *message = self.addressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.addressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
+
+    NSError *error;
+    [webSocket sendString:message error:&error];
+    if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
@@ -662,8 +712,13 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
+    if (code == WEBSOCKET_CODE_BACKGROUNDED_APP || code == WEBSOCKET_CODE_LOGGED_OUT) {
+        // Socket will reopen when app becomes active and after decryption
+        return;
+    }
+    
     DLog(@"websocket closed: code %li, reason: %@", code, reason);
-    if (self.webSocket.readyState != 1) {
+    if (self.webSocket.readyState != 1 && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
         DLog(@"reconnecting websocket");
         [self setupWebSocket];
     }
@@ -673,6 +728,38 @@
 {
     DLog(@"received websocket message string");
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
+    
+    if (self.addressToSubscribe) {
+        NSDictionary *message = [string getJSONObject];
+        NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
+        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.addressToSubscribe]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        
+        NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            
+            if (error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // TODO: add alert for error here
+                });
+                return;
+            }
+            
+            uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
+            if (amountReceived > 0) {
+                if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
+                    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                        [delegate paymentReceivedOnPINScreen:[NSNumberFormatter formatMoney:amountReceived localCurrency:NO]];
+                    }
+                } else {
+                    DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
+                }
+            }
+        }];
+        
+        [task resume];
+        
+        self.addressToSubscribe = nil;
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS
@@ -788,6 +875,87 @@
     [self.context evaluateScript:@"JSON.stringify(MyWalletPhone.getAccountInfo())"];
 }
 
+- (NSString *)getEmail
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getEmail()"] toString];
+}
+
+- (NSString *)getSMSNumber
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getSMSNumber()"] toString];
+}
+
+- (BOOL)getSMSVerifiedStatus
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getSMSVerifiedStatus()"] toBool];
+}
+
+- (NSString *)getPasswordHint
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
+}
+
+- (NSDictionary *)getFiatCurrencies
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES];
+}
+
+- (NSDictionary *)getBtcCurrencies
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_BTC_CURRENCIES];
+}
+
+- (int)getTwoStepType
+{
+    if (![self isInitialized]) {
+        return -1;
+    }
+    
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue];
+}
+
+- (BOOL)getEmailVerifiedStatus
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getEmailVerifiedStatus()"] toBool];
+}
+
+- (BOOL)getTorBlockingStatus
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
+}
+
 - (void)changeEmail:(NSString *)newEmail
 {
     if (![self isInitialized]) {
@@ -886,10 +1054,11 @@
 
 - (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField
 {
-    if (!textField.textInputMode.primaryLanguage) return 0;
-    
+    // The reason to to check for textInputMode.primaryLanguage is that [NSLocale currentLocale] will still return the system language (which can be different from the textInputMode.primaryLanguage) when the keyboard is using Eastern Arabic numerals.
+    // However, we cannot always rely on textInputMode.primaryLanguage - in the Receive screen, the textInputModes for the amount fields in the keyboard input accessory view are null when the keyboard is not visible.
+    // Therefore, use [NSLocale currentLocale] if textInputMode is unavailable.
     NSString *language = textField.textInputMode.primaryLanguage;
-    NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+    NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
     
     return [self parseBitcoinValueFromString:textField.text locale:locale];
 }
@@ -951,16 +1120,22 @@
 {
     DLog(@"didParsePairingCode:");
     
-    if ([delegate respondsToSelector:@selector(didParsePairingCode:)])
-    [delegate didParsePairingCode:dict];
+    if ([delegate respondsToSelector:@selector(didParsePairingCode:)]) {
+        [delegate didParsePairingCode:dict];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didParsePairingCode:!", [delegate class]);
+    }
 }
 
 - (void)errorParsingPairingCode:(NSString *)message
 {
     DLog(@"errorParsingPairingCode:");
     
-    if ([delegate respondsToSelector:@selector(errorParsingPairingCode:)])
-    [delegate errorParsingPairingCode:message];
+    if ([delegate respondsToSelector:@selector(errorParsingPairingCode:)]) {
+        [delegate errorParsingPairingCode:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector errorParsingPairingCode:!", [delegate class]);
+    }
 }
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
@@ -1460,7 +1635,7 @@
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.enableNotifications()"];
+    [self.context evaluateScript:@"MyWalletPhone.enableEmailNotifications()"];
 }
 
 - (void)disableEmailNotifications
@@ -1469,8 +1644,27 @@
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.disableNotifications()"];
+    [self.context evaluateScript:@"MyWalletPhone.disableEmailNotifications()"];
 }
+
+- (void)enableSMSNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.enableSMSNotifications()"];
+}
+
+- (void)disableSMSNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.disableSMSNotifications()"];
+}
+
 
 - (void)changeTorBlocking:(BOOL)willEnable
 {
@@ -1567,6 +1761,50 @@
 - (void)getSessionToken
 {
     [self.context evaluateScript:@"MyWalletPhone.getSessionToken()"];
+}
+
+- (BOOL)emailNotificationsEnabled
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.emailNotificationsEnabled()"] toBool];
+}
+
+- (BOOL)SMSNotificationsEnabled
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.SMSNotificationsEnabled()"] toBool];
+}
+
+- (void)saveNote:(NSString *)note forTransaction:(NSString *)hash
+{
+    NSString *text = [note stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (text.length == 0) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.deleteNote(\"%@\")", [hash escapeStringForJS]]];
+    } else {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
+    }
+}
+
+- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
+}
+
+
+- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction filter:(NSInteger)filter
+{
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(%li, \"%@\")", (long)filter, transaction.myHash]] toString];
+}
+
+- (void)incrementReceiveIndexOfDefaultAccount
+{
+    [self.context evaluateScript:@"MyWalletPhone.incrementReceiveIndexOfDefaultAccount()"];
 }
 
 # pragma mark - Transaction handlers
@@ -1712,7 +1950,7 @@
 
 - (void)upgrade_success
 {
-    [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE delegate:nil];
+    [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE];
     
     [app reloadTransactionFilterLabel];
 }
@@ -1777,6 +2015,8 @@
         
         if ([delegate respondsToSelector:@selector(didSetLatestBlock:)]) {
             [delegate didSetLatestBlock:latestBlock];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector didSetLatestBlock:!", [delegate class]);
         }
     } else {
         DLog(@"Error: could not get JSON object from latest block JSON");
@@ -1821,6 +2061,8 @@
     
     if ([delegate respondsToSelector:@selector(didGetMultiAddressResponse:)]) {
         [delegate didGetMultiAddressResponse:response];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetMultiAddressResponse:!", [delegate class]);
     }
 }
 
@@ -1871,8 +2113,11 @@
     
     self.didReceiveMessageForLastTransaction = YES;
     
-    if ([delegate respondsToSelector:@selector(receivedTransactionMessage)])
+    if ([delegate respondsToSelector:@selector(receivedTransactionMessage)]) {
         [delegate receivedTransactionMessage];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector receivedTransactionMessage!", [delegate class]);
+    }
 }
 
 - (void)getPrivateKeyPassword:(NSString *)canDiscard success:(JSValue *)success error:(void(^)(id))_error
@@ -1931,7 +2176,7 @@
     }
     
     NSRange incorrectPasswordErrorStringRange = [message rangeOfString:@"please check that your password is correct" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
-    if (incorrectPasswordErrorStringRange.location != NSNotFound && ![app guid]) {
+    if (incorrectPasswordErrorStringRange.location != NSNotFound && ![KeychainItemWrapper guid]) {
         // Error message shown in error_other_decrypting_wallet without guid
         return;
     }
@@ -1943,9 +2188,9 @@
     }
     
     if ([type isEqualToString:@"error"]) {
-        [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
+        [app standardNotify:message title:BC_STRING_ERROR];
     } else if ([type isEqualToString:@"info"]) {
-        [app standardNotify:message title:BC_STRING_INFORMATION delegate:nil];
+        [app standardNotify:message title:BC_STRING_INFORMATION];
     }
 }
 
@@ -1959,18 +2204,18 @@
         NSRange identifierRange = [message rangeOfString:BC_STRING_IDENTIFIER options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
         NSRange connectivityErrorRange = [message rangeOfString:ERROR_FAILED_NETWORK_REQUEST options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
         if (identifierRange.location != NSNotFound) {
-            [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
+            [app standardNotify:message title:BC_STRING_ERROR];
             [self error_restoring_wallet];
             return;
         } else if (connectivityErrorRange.location != NSNotFound) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION_LONG * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+                [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR];
             });
             [self error_restoring_wallet];
             return;
         }
         
-        if (![app guid]) {
+        if (![KeychainItemWrapper guid]) {
             // This error is used whe trying to login with incorrect passwords or when the account is locked, so present an alert if the app has no guid, since it currently conflicts with makeNotice when backgrounding after changing password in-app
             [app standardNotifyAutoDismissingController:message];
         }
@@ -1980,25 +2225,35 @@
 - (void)error_restoring_wallet
 {
     DLog(@"error_restoring_wallet");
-    if ([delegate respondsToSelector:@selector(walletFailedToDecrypt)])
-    [delegate walletFailedToDecrypt];
+    if ([delegate respondsToSelector:@selector(walletFailedToDecrypt)]) {
+        [delegate walletFailedToDecrypt];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletFailedToDecrypt!", [delegate class]);
+    }
 }
 
 - (void)did_decrypt
 {
     DLog(@"did_decrypt");
     
-    [self setupWebSocket];
+    if (self.webSocket) {
+        [self.webSocket closeWithCode:WEBSOCKET_CODE_DECRYPTED_WALLET reason:WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET];
+    } else {
+        [self setupWebSocket];
+    }
     
     if (self.didPairAutomatically) {
         self.didPairAutomatically = NO;
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE];
     }
     self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
     self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
     
-    if ([delegate respondsToSelector:@selector(walletDidDecrypt)])
-    [delegate walletDidDecrypt];
+    if ([delegate respondsToSelector:@selector(walletDidDecrypt)]) {
+        [delegate walletDidDecrypt];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletDidDecrypt!", [delegate class]);
+    }
 }
 
 - (void)did_load_wallet
@@ -2012,20 +2267,26 @@
         if ([[self.currencySymbols allKeys] containsObject:currencyCode]) {
             [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
         }
+    } else {
+        [self getAllCurrencySymbols];
     }
-    
-    self.isNew = NO;
-    
-    if ([delegate respondsToSelector:@selector(walletDidFinishLoad)])
-    [delegate walletDidFinishLoad];
+        
+    if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
+        [delegate walletDidFinishLoad];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletDidFinishLoad!", [delegate class]);
+    }
 }
 
 - (void)on_create_new_account:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
 {
     DLog(@"on_create_new_account:");
     
-    if ([delegate respondsToSelector:@selector(didCreateNewAccount:sharedKey:password:)])
-    [delegate didCreateNewAccount:_guid sharedKey:_sharedKey password:_password];
+    if ([delegate respondsToSelector:@selector(didCreateNewAccount:sharedKey:password:)]) {
+        [delegate didCreateNewAccount:_guid sharedKey:_sharedKey password:_password];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCreateNewAccount:sharedKey:password:!", [delegate class]);
+    }
 }
 
 - (void)on_add_private_key_start
@@ -2043,6 +2304,8 @@
     
     if ([delegate respondsToSelector:@selector(didImportKey:)]) {
         [delegate didImportKey:address];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didImportKey:!", [delegate class]);
     }
 }
 
@@ -2053,6 +2316,8 @@
     
     if ([delegate respondsToSelector:@selector(didImportIncorrectPrivateKey:)]) {
         [delegate didImportIncorrectPrivateKey:address];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didImportIncorrectPrivateKey:!", [delegate class]);
     }
 }
 
@@ -2063,6 +2328,8 @@
     
     if ([delegate respondsToSelector:@selector(didImportPrivateKeyToLegacyAddress)]) {
         [delegate didImportPrivateKeyToLegacyAddress];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didImportPrivateKeyToLegacyAddress!", [delegate class]);
     }
 }
 
@@ -2070,6 +2337,8 @@
 {
     if ([delegate respondsToSelector:@selector(didFailToImportPrivateKey:)]) {
         [delegate didFailToImportPrivateKey:error];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailToImportPrivateKey:!", [delegate class]);
     }
 }
 
@@ -2077,6 +2346,8 @@
 {
     if ([delegate respondsToSelector:@selector(didFailToImportPrivateKeyForWatchOnlyAddress:)]) {
         [delegate didFailToImportPrivateKeyForWatchOnlyAddress:error];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailToImportPrivateKeyForWatchOnlyAddress:!", [delegate class]);
     }
 }
 
@@ -2084,56 +2355,77 @@
 {
     DLog(@"on_error_creating_new_account:");
     
-    if ([delegate respondsToSelector:@selector(errorCreatingNewAccount:)])
-    [delegate errorCreatingNewAccount:message];
+    if ([delegate respondsToSelector:@selector(errorCreatingNewAccount:)]) {
+        [delegate errorCreatingNewAccount:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector errorCreatingNewAccount:!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_put_error:(NSString*)message
 {
     DLog(@"on_error_pin_code_put_error:");
     
-    if ([delegate respondsToSelector:@selector(didFailPutPin:)])
-    [delegate didFailPutPin:message];
+    if ([delegate respondsToSelector:@selector(didFailPutPin:)]) {
+        [delegate didFailPutPin:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailPutPin:!", [delegate class]);
+    }
 }
 
 - (void)on_pin_code_put_response:(NSDictionary*)responseObject
 {
     DLog(@"on_pin_code_put_response: %@", responseObject);
     
-    if ([delegate respondsToSelector:@selector(didPutPinSuccess:)])
-    [delegate didPutPinSuccess:responseObject];
+    if ([delegate respondsToSelector:@selector(didPutPinSuccess:)]) {
+        [delegate didPutPinSuccess:responseObject];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didPutPinSuccess:!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_get_timeout
 {
     DLog(@"on_error_pin_code_get_timeout");
     
-    if ([delegate respondsToSelector:@selector(didFailGetPinTimeout)])
-    [delegate didFailGetPinTimeout];
+    if ([delegate respondsToSelector:@selector(didFailGetPinTimeout)]) {
+        [delegate didFailGetPinTimeout];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailGetPinTimeout!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_get_empty_response
 {
     DLog(@"on_error_pin_code_get_empty_response");
     
-    if ([delegate respondsToSelector:@selector(didFailGetPinNoResponse)])
-    [delegate didFailGetPinNoResponse];
+    if ([delegate respondsToSelector:@selector(didFailGetPinNoResponse)]) {
+        [delegate didFailGetPinNoResponse];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailGetPinNoResponse!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_get_invalid_response
 {
     DLog(@"on_error_pin_code_get_invalid_response");
     
-    if ([delegate respondsToSelector:@selector(didFailGetPinInvalidResponse)])
-    [delegate didFailGetPinInvalidResponse];
+    if ([delegate respondsToSelector:@selector(didFailGetPinInvalidResponse)]) {
+        [delegate didFailGetPinInvalidResponse];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailGetPinInvalidResponse!", [delegate class]);
+    }
 }
 
 - (void)on_pin_code_get_response:(NSDictionary*)responseObject
 {
     DLog(@"on_pin_code_get_response:");
     
-    if ([delegate respondsToSelector:@selector(didGetPinResponse:)])
-    [delegate didGetPinResponse:responseObject];
+    if ([delegate respondsToSelector:@selector(didGetPinResponse:)]) {
+        [delegate didGetPinResponse:responseObject];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetPinResponse:!", [delegate class]);
+    }
 }
 
 - (void)on_error_maintenance_mode
@@ -2153,15 +2445,21 @@
 {
     DLog(@"on_backup_wallet_error");
     
-    if ([delegate respondsToSelector:@selector(didFailBackupWallet)])
-    [delegate didFailBackupWallet];
+    if ([delegate respondsToSelector:@selector(didFailBackupWallet)]) {
+        [delegate didFailBackupWallet];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailBackupWallet!", [delegate class]);
+    }
 }
 
 - (void)on_backup_wallet_success
 {
     DLog(@"on_backup_wallet_success");
-    if ([delegate respondsToSelector:@selector(didBackupWallet)])
-    [delegate didBackupWallet];
+    if ([delegate respondsToSelector:@selector(didBackupWallet)]) {
+        [delegate didBackupWallet];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didBackupWallet!", [delegate class]);
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     // Hide the busy view if previously syncing
     [self loading_stop];
@@ -2172,8 +2470,11 @@
 {
     DLog(@"did_fail_set_guid");
     
-    if ([delegate respondsToSelector:@selector(walletFailedToLoad)])
-    [delegate walletFailedToLoad];
+    if ([delegate respondsToSelector:@selector(walletFailedToLoad)]) {
+        [delegate walletFailedToLoad];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletFailedToLoad!", [delegate class]);
+    }
 }
 
 - (void)on_change_local_currency_success
@@ -2185,13 +2486,14 @@
 - (void)on_change_currency_error
 {
     DLog(@"on_change_local_currency_error");
-    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_UPDATING_TITLE delegate:nil];
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_UPDATING_TITLE];
 }
 
 - (void)on_get_account_info_success:(NSString *)accountInfo
 {
     DLog(@"on_get_account_info");
     self.accountInfo = [accountInfo getJSONObject];
+    self.hasLoadedAccountInfo = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
 }
 
@@ -2283,14 +2585,15 @@
     if (!self.isSyncing) {
         [self loading_stop];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
-- (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize
 {
     DLog(@"update_fee");
     DLog(@"Wallet: fee is %@", fee);
-    if ([self.delegate respondsToSelector:@selector(didGetFee:dust:)]) {
-        [self.delegate didGetFee:fee dust:dust];
+    if ([self.delegate respondsToSelector:@selector(didGetFee:dust:txSize:)]) {
+        [self.delegate didGetFee:fee dust:dust txSize:txSize];
     }
 }
 
@@ -2370,7 +2673,11 @@
 - (void)on_generate_key
 {
     DLog(@"on_generate_key");
-    [delegate didGenerateNewAddress];
+    if ([delegate respondsToSelector:@selector(didGenerateNewAddress)]) {
+        [delegate didGenerateNewAddress];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGenerateNewAddress!", [delegate class]);
+    }
 }
 
 - (void)on_error_creating_new_address:(NSString*)error
@@ -2401,8 +2708,11 @@
 {
     DLog(@"on_recover_with_passphrase_success_guid:sharedKey:password:");
     
-    if ([delegate respondsToSelector:@selector(didRecoverWallet)])
-    [delegate didRecoverWallet];
+    if ([delegate respondsToSelector:@selector(didRecoverWallet)]) {
+        [delegate didRecoverWallet];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didRecoverWallet!", [delegate class]);
+    }
     
     [self loadWalletWithGuid:recoveredWalletDictionary[@"guid"] sharedKey:recoveredWalletDictionary[@"sharedKey"] password:recoveredWalletDictionary[@"password"]];
 }
@@ -2420,8 +2730,11 @@
     } else {
         [app standardNotifyAutoDismissingController:error];
     }
-    if ([delegate respondsToSelector:@selector(didFailRecovery)])
-    [delegate didFailRecovery];
+    if ([delegate respondsToSelector:@selector(didFailRecovery)]) {
+        [delegate didFailRecovery];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailRecovery!", [delegate class]);
+    }
 }
 
 - (void)on_progress_recover_with_passphrase:(NSString *)totalReceived finalBalance:(NSString *)finalBalance
@@ -2434,20 +2747,20 @@
     } else {
         self.emptyAccountIndex = 0;
         self.recoveredAccountIndex++;
-        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [app formatMoney:fundsInAccount]]];
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [NSNumberFormatter formatMoney:fundsInAccount]]];
     }
 }
 
 - (void)on_error_downloading_account_settings
 {
     DLog(@"on_error_downloading_account_settings");
-    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
 }
 
 - (void)on_update_email_error
 {
-    [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR delegate:nil];
+    [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR];
 }
 
 - (void)on_error_get_history:(NSString *)error
@@ -2474,16 +2787,16 @@
     [app standardNotifyAutoDismissingController:error];
 }
 
-- (void)on_change_email_notifications_success
+- (void)on_change_notifications_success
 {
-    DLog(@"on_change_email_notifications_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS object:nil];
+    DLog(@"on_change_notifications_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_SUCCESS object:nil];
 }
 
-- (void)on_change_email_notifications_error
+- (void)on_change_notifications_error
 {
-    DLog(@"on_change_email_notifications_error");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR object:nil];
+    DLog(@"on_change_notifications_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_ERROR object:nil];
 }
 
 - (void)return_to_addresses_screen
@@ -2590,6 +2903,26 @@
     [app authorizationRequired];
 }
 
+- (void)on_get_fiat_at_time_success:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
+{
+    DLog(@"on_get_fiat_at_time_success");
+    if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:currencyCode:)]) {
+        [self.delegate didGetFiatAtTime:fiatAmount currencyCode:currencyCode];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetFiatAtTime:currencyCode!", [delegate class]);
+    }
+}
+
+- (void)on_get_fiat_at_time_error:(NSString *)error
+{
+    DLog(@"on_get_fiat_at_time_error");
+    if ([self.delegate respondsToSelector:@selector(didErrorWhenGettingFiatAtTime:)]) {
+        [self.delegate didErrorWhenGettingFiatAtTime:error];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didErrorWhenGettingFiatAtTime!", [delegate class]);
+    }
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)upgradeToV3Wallet
@@ -2666,6 +2999,21 @@
     }
     
     return [[[self.context evaluateScript:@"MyWalletPhone.getAllAccountsCount()"] toNumber] intValue];
+}
+
+- (int)getFilteredOrDefaultAccountIndex
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    NSInteger filterIntex = [app filterIndex];
+    
+    if (filterIntex != FILTER_INDEX_ALL && filterIntex!= FILTER_INDEX_IMPORTED_ADDRESSES && 0 <= filterIntex < [self getActiveAccountsCount]) {
+        return (int)filterIntex;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountIndex()"] toInt32];
 }
 
 - (int)getDefaultAccountIndex
@@ -2801,7 +3149,7 @@
 
 - (void)getKey:(NSString*)key success:(void (^)(NSString*))success
 {
-    id value = [[NSUserDefaults standardUserDefaults] valueForKey:key];
+    id value = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     
     DLog(@"getKey:%@", key);
     
@@ -2812,7 +3160,7 @@
 {
     DLog(@"saveKey:%@", key);
     
-    [[NSUserDefaults standardUserDefaults] setValue:value forKey:key];
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -2929,28 +3277,28 @@
 
 - (BOOL)hasVerifiedEmail
 {
-    return [[self.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED] boolValue];
+    return [self getEmailVerifiedStatus];
 }
 
 - (BOOL)hasVerifiedMobileNumber
 {
-    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue];
+    return [self getSMSVerifiedStatus];
 }
 
 - (BOOL)hasStoredPasswordHint
 {
-    NSString *passwordHint = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
+    NSString *passwordHint = [app.wallet getPasswordHint];
     return ![[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] && passwordHint;
 }
 
 - (BOOL)hasEnabledTwoStep
 {
-    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] != 0;
+    return [self getTwoStepType] != 0;
 }
 
 - (BOOL)hasBlockedTorRequests
 {
-    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
+    return [self getTorBlockingStatus];
 }
 
 - (int)securityCenterScore

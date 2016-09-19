@@ -3,14 +3,15 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 10/01/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "TransactionsViewController.h"
 #import "Transaction.h"
 #import "TransactionTableCell.h"
 #import "MultiAddressResponse.h"
-#import "AppDelegate.h"
+#import "RootService.h"
+#import "TransactionDetailViewController.h"
 
 @implementation TransactionsViewController
 
@@ -42,7 +43,7 @@ int lastNumberTransactions = INT_MAX;
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
     }
-        
+    
     cell.transaction = transaction;
         
     [cell reload];
@@ -57,8 +58,10 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.lastSelectedIndexPath = indexPath;
+    
     TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell transactionClicked:nil];
+    [cell transactionClicked:nil indexPath:indexPath];
         
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -126,16 +129,16 @@ int lastNumberTransactions = INT_MAX;
         }
 #endif
         // Balance
-        [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
         [noTransactionsView removeFromSuperview];
         
         // Balance
-        [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
 }
 
@@ -182,6 +185,13 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)reload
 {
+    [self reloadData];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL object:nil];
+}
+
+- (void)reloadData
+{
     [self setText];
     
     [tableView reloadData];
@@ -191,6 +201,18 @@ int lastNumberTransactions = INT_MAX;
     [self animateFirstCell];
     
     [self reloadLastNumberOfTransactions];
+    
+    // This should be done when request has finished but there is no callback
+    if (refreshControl && refreshControl.isRefreshing) {
+        [refreshControl endRefreshing];
+    }
+}
+
+- (void)reloadSymbols
+{
+    [self reloadData];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SYMBOLS object:nil];
 }
 
 - (void)reloadNewTransactions
@@ -258,13 +280,10 @@ int lastNumberTransactions = INT_MAX;
         }
     }
 #else
-    [app.wallet getHistory];
-#endif
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
     
-    // This should be done when request has finished but there is no callback
-    if (refreshControl && refreshControl.isRefreshing) {
-        [refreshControl endRefreshing];
-    }
+    [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
+#endif
 }
 
 - (NSDecimalNumber *)getAmountForReceivedTransaction:(Transaction *)transaction

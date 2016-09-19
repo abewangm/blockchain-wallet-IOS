@@ -3,16 +3,18 @@
 //  Blockchain
 //
 //  Created by Mark Pfluger on 9/25/14.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCManualPairView.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation BCManualPairView
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     saveButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     saveButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
@@ -91,7 +93,7 @@
     NSString *password = passwordTextField.text;
     
     if ([guid length] != 36) {
-        [app standardNotify:BC_STRING_ENTER_YOUR_CHARACTER_WALLET_IDENTIFIER title:BC_STRING_INVALID_IDENTIFIER delegate:nil];
+        [app standardNotify:BC_STRING_ENTER_YOUR_CHARACTER_WALLET_IDENTIFIER title:BC_STRING_INVALID_IDENTIFIER];
         
         [walletIdentifierTextField becomeFirstResponder];
         

@@ -17,10 +17,11 @@
 // #define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
-
 #define ENABLE_TRANSACTION_FILTERING 1
-
 // #define ENABLE_TRANSACTION_FETCHING 1
+#define ENABLE_SWIPE_TO_RECEIVE 1
+#define ENABLE_TOUCH_ID 1
+//#define ENABLE_CERTIFICATE_PINNING 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
@@ -69,6 +70,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_PASSWORD_STRENGTH_NORMAL UIColorFromRGB(0x5bc0de)
 #define COLOR_PASSWORD_STRENGTH_STRONG UIColorFromRGB(0x5cb85c)
 
+#define COLOR_BUTTON_GRAY_CANCEL UIColorFromRGB(0x7F7F7F)
+
 #define COLOR_UPGRADE_TEXT_BLUE UIColorFromRGB(0x1975BB)
 
 #define COLOR_TABLE_VIEW_CELL_TEXT_BLUE UIColorFromRGB(0x007AFF)
@@ -104,6 +107,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL @"transactionDetail"
+#define CELL_IDENTIFIER_TRANSACTION_RECIPIENT @"transactionRecipient"
+
 #define LOCALE_IDENTIFIER_EN_US @"en_US"
 #define LOCALE_IDENTIFIER_AR @"ar"
 
@@ -118,6 +124,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define TX_TYPE_RECEIVED @"received"
 
 #define FONT_HELVETICA_NUEUE @"Helvetica Neue"
+#define FONT_HELVETICA_NUEUE_MEDIUM @"HelveticaNeue-Medium"
 
 #define NUMBER_KEYPAD_CHARACTER_SET_STRING @"1234567890"
 
@@ -131,6 +138,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_BELOW_DUST_THRESHOLD @"BELOW_DUST_THRESHOLD"
 #define ERROR_NO_UNSPENT_OUTPUTS @"NO_UNSPENT_OUTPUTS"
 #define ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL @"The number of destiny addresses and destiny amounts should be the same."
+#define ERROR_NEEDS_BIP38 @"needsBip38"
+#define ERROR_PRESENT_IN_WALLET @"presentInWallet"
 #define ERROR_NOT_PRESENT_IN_WALLET @"addressNotPresentInWallet"
 #define ERROR_ADDRESS_NOT_WATCH_ONLY @"addressNotWatchOnly"
 #define ERROR_WRONG_PRIVATE_KEY @"wrongPrivateKey"
@@ -146,6 +155,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_BACKUP_SUCCESS @"backupSuccess"
 #define NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES @"reloadAccountsAndAddresses"
 #define NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD @"multiaddressResponseReload"
+#define NOTIFICATION_KEY_GET_FIAT_AT_TIME @"getFiatAtTime"
+#define NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL @"reloadTransactionDetail"
+#define NOTIFICATION_KEY_RELOAD_SYMBOLS @"reloadSymbols"
 
 #define NOTIFICATION_KEY_MODAL_VIEW_DISMISSED @"modalViewDismissed"
 
@@ -156,6 +168,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
 #define NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS @"GetAllCurrencySymbols"
 #define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
+#define NOTIFICATION_KEY_GET_HISTORY_SUCCESS @"GetHistory"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
 #define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
 #define NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS @"ChangeMobileNumber"
@@ -168,8 +181,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR @"ChangeHintError"
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS @"ChangePassword"
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR @"ChangePasswordError"
-#define NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS @"ChangeEmailNotifications"
-#define NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR @"ChangeEmailNotificationsError"
+#define NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_SUCCESS @"ChangeEmailNotifications"
+#define NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_ERROR @"ChangeEmailNotificationsError"
 #define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS @"ChangeTorBlocking"
 #define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR @"ChangeTorBlockingError"
 
@@ -183,7 +196,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL @"accountsAndAddressesDetail"
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT @"accountsAndAddressesDetailEdit"
 #define SEGUE_IDENTIFIER_TWO_STEP @"twoStep"
-#define SEGUE_IDENTIFIER_UPGRADE_DETAILS @"upgradeDetails"
 
 #define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
 #define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
@@ -192,11 +204,22 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define HOST_NAME_WALLET_SERVER @"blockchain.info"
 #define HOST_NAME_DEV_SERVER @"blockchain.co.uk"
+#define HOST_NAME_API @"api.blockchain.info"
+#define HOST_NAME_MERCHANT HOST_NAME_API
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info"
 #define DEFAULT_WEBSOCKET_SERVER @"wss://blockchain.info/inv"
-#define DEFAULT_MERCHANT_URL @"https://merchant-directory.blockchain.info/api/merchant"
+#define DEFAULT_MERCHANT_URL @"https://api.blockchain.info/merchant"
 #define DEFAULT_API_URL @"https://api.blockchain.info"
+
+// The debug endpoints are cleared from userDefaults in didFinishLaunching when ENABLE_DEBUG_MENU is undefined..so no need to check ENABLE_DEBUG_MENU here
+#define URL_SERVER [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? DEFAULT_WALLET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL]
+#define URL_WEBSOCKET [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] == nil ? DEFAULT_WEBSOCKET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL]
+#define URL_MERCHANT [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL] == nil ? DEFAULT_MERCHANT_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL]
+#define URL_API [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL] == nil ? DEFAULT_API_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL]
+
+#define TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/q/txresult/%@/%@"
+#define ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/address/%@?format=json"
 
 #define DYNAMIC_FEE_SERVICE_URL @"https://api.staging.blockchain.co.uk/fees"
 #define INFORMATION_RECEIVE_URL @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
@@ -211,6 +234,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define TRANSACTION_FILTER_IMPORTED @"imported"
 
+#define DICTIONARY_KEY_TRANSACTION_FROM @"from"
+#define DICTIONARY_KEY_TRANSACTION_TO @"to"
 #define DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT @"block_height"
 #define DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS @"confirmations"
 #define DICTIONARY_KEY_TRANSACTION_FEE @"fee"
@@ -220,7 +245,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TRANSACTION_TIME @"time"
 #define DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY @"fromWatchOnly"
 #define DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY @"toWatchOnly"
+#define DICTIONARY_KEY_TRANSACTION_NOTE @"note"
 
+#define DICTIONARY_KEY_LABEL @"label"
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_CODE @"code"
@@ -229,10 +256,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_SUCCESS @"success"
 #define DICTIONARY_KEY_KEY @"key"
 #define DICTIONARY_KEY_VALUE @"value"
+#define DICTIONARY_KEY_HASH @"hash"
 
 #define DICTIONARY_KEY_FEE_ESTIMATE @"estimate"
 #define DICTIONARY_KEY_FEE @"fee"
 #define DICTIONARY_KEY_SURGE @"surge"
+#define DICTIONARY_KEY_LAST @"last"
+#define DICTIONARY_KEY_USD @"USD"
 
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL @"email"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED @"email_verified"
@@ -259,9 +289,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
-#define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
-#define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
-
+#define USER_DEFAULTS_KEY_NEXT_ADDRESS @"nextReceivingAddress"
+#define USER_DEFAULTS_KEY_NEXT_ADDRESS_USED @"nextReceivingAddressUsed"
 #define USER_DEFAULTS_KEY_APP_REVIEW_PROMPT_DATE @"appReviewPromptDate"
 #define USER_DEFAULTS_KEY_LOADED_SETTINGS @"loadedSettings"
 #define USER_DEFAULTS_KEY_HIDE_APP_REVIEW_PROMPT @"hideAppReviewPrompt"
@@ -277,18 +306,21 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
 #define USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING @"bundleVersionString"
 #define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
+#define USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED @"swipeToReceive"
 #define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"
 #define USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT @"hideTransferAllFundsAlert"
-#define USER_DEFAULTS_KEY_SIMULATE_SURGE @"simulateSurge"
 
 #define USER_DEFAULTS_KEY_DEBUG_SERVER_URL @"serverURL"
 #define USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL @"webSocketURL"
 #define USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL @"merchantURL"
 #define USER_DEFAULTS_KEY_DEBUG_API_URL @"apiURL"
+#define USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING @"certificatePinning"
+#define USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE @"simulateSurge"
 
 #define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 
 #define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
+#define REUSE_IDENTIFIER_SWIPE_TO_RECEIVE @"swipeToReceive"
 
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"
@@ -341,10 +373,18 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_SET_TIMEOUT @"setTimeout"
 #define JAVASCRIPTCORE_SET_INTERVAL @"setInterval"
 
+#define WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED @"User backgrounded app"
+#define WEBSOCKET_CLOSE_REASON_LOGGED_OUT @"Logged out"
+#define WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET @"Decrypted Wallet"
+
+#define CURRENCY_CODE_USD @"usd"
+
 #pragma mark - Constants
 
 #define SATOSHI 1e8 // 100,000,000
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
+
+#define TX_SIZE_ONE_KILOBYTE 1000
 
 #define ANIMATION_DURATION .2f
 #define ANIMATION_DURATION_LONG .5f
@@ -410,8 +450,17 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define APP_STORE_REVIEW_PROMPT_TIME 60*60*24*7 // Seconds in one week
 
+#define MSEC_PER_SEC 1000
+
+#define ONE_PERCENT_DECIMAL @0.01
+#define FIFTY_CENTS_DECIMAL @0.50
+
 #define DICTIONARY_EASTERN_ARABIC_NUMERAL @{@"\u0660":@"0", @"\u0661":@"1", @"\u0662":@"2", @"\u0663":@"3", @"\u0664":@"4", @"\u0665":@"5", @"\u0666":@"6", @"\u0667":@"7", @"\u0668":@"8", @"\u0669":@"9", @"\u066b":@"."}
 #define REGEX_EASTERN_ARABIC_NUMERALS @"[\u0660-\u066b]"
+
+#define WEBSOCKET_CODE_BACKGROUNDED_APP 4500
+#define WEBSOCKET_CODE_LOGGED_OUT 4501
+#define WEBSOCKET_CODE_DECRYPTED_WALLET 4502
 
 #pragma mark - Runtime modes
 
@@ -431,5 +480,3 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_TIMEOUT_ERROR @"TimeoutError"
 #define ERROR_INVALID_PASSPHRASE @"invalid passphrase"
 #define ERROR_STATUS_ZERO @"status:0"
-
-#define TOUCH_ID_ENABLED 1

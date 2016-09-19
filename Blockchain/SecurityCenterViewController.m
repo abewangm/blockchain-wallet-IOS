@@ -3,13 +3,13 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 12/2/15.
-//  Copyright © 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "SecurityCenterViewController.h"
 #import "SettingsTableViewController.h"
 #import "SettingsTwoStepViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @interface SecurityCenterViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *securityLevelImageView;

@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by User on 12/18/14.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "MerchantMapViewController.h"
@@ -14,14 +14,14 @@
 
 #import "MerchantLocation.h"
 
-#import "AppDelegate.h"
+#import "RootService.h"
 
 #import "NSString+JSONParser_NSString.h"
 
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface MerchantMapViewController () <CLLocationManagerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, UIAlertViewDelegate>
+@interface MerchantMapViewController () <CLLocationManagerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
@@ -40,8 +40,6 @@
 @property (strong, nonatomic) NSOperationQueue *merchantLocationNetworkQueue;
 
 @property (strong, nonatomic) CLLocation *lastCenterLocation;
-
-@property (strong, nonatomic) UIAlertView *askUserToEnableLocationServicesAlertView;
 
 @end
 
@@ -148,11 +146,14 @@
 - (void)updateDisplayedMerchants
 {
     // Send approximate coordinates for merchant lookup
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[app merchantURL]]];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL_MERCHANT]];
     
-    [NSURLConnection sendAsynchronousRequest:urlRequest queue:self.merchantLocationNetworkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (connectionError) {
-            DLog(@"Error retrieving Merchants");
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:app.certificatePinner delegateQueue:self.merchantLocationNetworkQueue];
+    session.sessionDescription = urlRequest.URL.host;
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            DLog(@"Error retrieving Merchants: %@", [error localizedDescription]);
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSError *error = nil;
@@ -169,6 +170,8 @@
             });
         }
     }];
+    [task resume];
+    [session finishTasksAndInvalidate];
 }
 
 - (void)displayFilteredMerchants

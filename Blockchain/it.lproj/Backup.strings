@@ -1,35 +1,35 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Nuovo backup fondi";
+"1Hq-6D-ut1.normalTitle" = "Effettua il backup dei fondi di nuovo";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "Nuovo backup fondi";
+"1Hq-6D-ut1.text" = "Effettua il backup dei fondi di nuovo";
 
 /* (No Commment) */
-"3kJ-3U-lFe.text" = "Si prega di riprovare";
+"3kJ-3U-lFe.text" = "Prova di nuovo";
 
 /* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Immettere le seguenti parole da vostra frase di recupero per completare il processo di backup.";
+"4Nq-ue-tXr.text" = "Inserisci le seguenti parole dalla tua Frase di Backup per completare il processo di backup.";
 
 /* (No Commment) */
-"6zt-Xf-txg.text" = "Premere e tenere premuto per rivelare la parola";
+"6zt-Xf-txg.text" = "Premi e tieni premuto per rivelare la parola";
 
 /* (No Commment) */
-"07q-RX-CeI.text" = "Si prega di riprovare";
+"07q-RX-CeI.text" = "Prova di nuovo";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Backup dei fondi";
+"9A7-TT-PzN.title" = "Effettua il backup dei fondi";
 
 /* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Oh no! Non hai eseguito il tuo fondi ancora.";
+"9Hu-uO-gJl.text" = "Oh no! Non hai ancora effettuato il backup dei tuoi fondi.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Questa azione richiede la seconda password per il tuo portafoglio bitcoin. Inseriscilo qui sotto e premere continua.";
+"9WK-My-5CL.text" = "Questa azione richiede la seconda password per il tuo portafoglio bitcoin. Inseriscila qui sotto e premi su continua.";
 
 /* (No Commment) */
 "9hR-tm-aq5.placeholder" = "prima parola";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "Seconda Password necessaria";
+"74J-f3-Lhq.title" = "Seconda Password obbligatoria";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "Parola precedente";
@@ -38,11 +38,11 @@
 "CBl-1W-VP8.placeholder" = "Password";
 
 /* (No Commment) */
-"EQM-OM-jK8.normalTitle" = "Fatto";
+"EQM-OM-jK8.normalTitle" = "Bene";
 
 /* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
-"FDO-ui-cGo.text" = "Non prendere uno screenshot!
-Si può compromettere la sicurezza di vostro portafoglio";
+"FDO-ui-cGo.text" = "Non fare uno screenshot!
+Puoi mettere a repentaglio la sicurezza del tuo portafoglio";
 
 /* (No Commment) */
 "Fda-Z4-3e7.placeholder" = "sesta parola";
@@ -54,39 +54,39 @@ Si può compromettere la sicurezza di vostro portafoglio";
 "Okr-VE-yvm.text" = "unicorno";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
-"T3S-Dk-HAh.text" = "Si prega di riprovare";
+"T3S-Dk-HAh.text" = "Prova di nuovo";
 
 /* (No Commment) */
-"T4p-mz-siC.normalTitle" = "VERIFICA DEI BACKUP";
+"T4p-mz-siC.normalTitle" = "VERIFICA IL BACKUP";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Annotare le parole nell'ordine esatto appaiono su un foglio di carta e conservare in un luogo sicuro
+"UCL-i9-UDp.text" = "Scrivi le parole qui sotto nell'ordine esatto in cui appaiono su un foglio di carta, e conservale in un posto sicuro
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "Perso la tua frase di recupero di 12 parola?";
+"Yh8-Gm-6op.text" = "Hai perso la tua frase di backup di 12 parole?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
-"dkQ-nj-Pkf.normalTitle" = "PAROLA SUCCESSIVA";
+"dkQ-nj-Pkf.normalTitle" = "PROSSIMA PAROLA";
 
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
-"eaO-py-9rY.normalTitle" = "Parola successiva";
+"eaO-py-9rY.normalTitle" = "Prossima parola";
 
 /* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Si prega di prendere qualche minuto affinché è possibile accedere il bitcoin (tranne in indirizzi importati), anche se si dimentica la password o se il nostro servizio non è più disponibile. Vi promettiamo di farlo è rapido, indolore e ne vale la pena.";
+"eyR-AW-SMc.text" = "Prenditi qualche minuto per assicurarti di poter accedere al tuo bitcoin (eccetto che negli indirizzi importati), anche se ti sei dimenticato la tua password o se il servizio diventa non disponibile. Promettiamo di farlo in maniera rapida, senza problemi e valida.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "terza parola";
 
 /* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
-"mUc-u7-Zcj.text" = "Word 5 di 12";
+"mUc-u7-Zcj.text" = "Parola 5 di 12";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "Backup portafoglio";
+"mYR-MQ-mS2.title" = "Effettua il backup del portafoglio";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
-"nuD-nb-tAt.normalTitle" = "Continuare";
+"nuD-nb-tAt.normalTitle" = "Continua";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "Backup portafoglio";
+"xmf-pK-R3X.title" = "Effettua il backup del portafoglio";
 

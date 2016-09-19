@@ -35,7 +35,7 @@
     IBOutlet UILabel *actionLabel;    
 }
 
--(IBAction)transactionClicked:(UIButton *)button;
+-(IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath;
 -(IBAction)btcbuttonclicked:(id)sender;
 
 @property(nonatomic, strong)  Transaction * transaction;

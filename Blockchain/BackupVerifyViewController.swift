@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by Sjors Provoost on 19-05-15.
-//  Copyright (c) 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 import UIKit
@@ -36,10 +36,10 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        word1?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), forControlEvents: .EditingChanged)
-        word2?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), forControlEvents: .EditingChanged)
-        word3?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), forControlEvents: .EditingChanged)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        word1?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), for: .editingChanged)
+        word2?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), for: .editingChanged)
+        word3?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), for: .editingChanged)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         
         if (!wallet!.needsSecondPassword() && isVerifying) {
@@ -55,22 +55,22 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
             
             // if you need a second password, the second password delegate takes care of getting the recovery phrase
             
-            self.performSegueWithIdentifier("verifyBackupWithSecondPassword", sender: self)
+            self.performSegue(withIdentifier: "verifyBackupWithSecondPassword", sender: self)
         }
         
         randomizeCheckIndexes()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        verifyButton = UIButton(frame: CGRectMake(0, 0, view.frame.size.width, 46))
-        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), forState: .Normal)
-        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), forState: .Disabled)
+    override func viewDidAppear(_ animated: Bool) {
+        verifyButton = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 46))
+        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), for: UIControlState())
+        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), for: .disabled)
         verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
-        verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
-        verifyButton?.titleLabel!.font = UIFont.boldSystemFontOfSize(15)
-        verifyButton?.enabled = true
-        verifyButton?.addTarget(self, action: #selector(BackupVerifyViewController.done), forControlEvents: .TouchUpInside)
-        verifyButton?.enabled = false
+        verifyButton?.setTitleColor(UIColor.lightGray, for: .disabled)
+        verifyButton?.titleLabel!.font = UIFont.boldSystemFont(ofSize: 15)
+        verifyButton?.isEnabled = true
+        verifyButton?.addTarget(self, action: #selector(BackupVerifyViewController.done), for: .touchUpInside)
+        verifyButton?.isEnabled = false
         word1?.inputAccessoryView = verifyButton
         word2?.inputAccessoryView = verifyButton
         word3?.inputAccessoryView = verifyButton
@@ -99,7 +99,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     func checkWords() {
         var valid = true
         
-        let words = wallet!.recoveryPhrase.componentsSeparatedByString(" ")
+        let words = wallet!.recoveryPhrase.components(separatedBy: " ")
 
         var randomWord1 : String
         var randomWord2 : String
@@ -114,15 +114,15 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
                 valid = false
             } else { // Don't mark words as invalid until the user has entered all three
                 if word1!.text != randomWord1 {
-                    word1?.textColor = UIColor.redColor()
+                    word1?.textColor = UIColor.red
                     valid = false
                 }
                 if word2!.text != randomWord2 {
-                    word2?.textColor = UIColor.redColor()
+                    word2?.textColor = UIColor.red
                     valid = false
                 }
                 if word3!.text != randomWord3 {
-                    word3?.textColor = UIColor.redColor()
+                    word3?.textColor = UIColor.red
                     valid = false
                 }
                 
@@ -143,80 +143,80 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         }
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        textField.textColor = UIColor.blackColor()
-        wrongWord?.hidden = true
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        textField.textColor = UIColor.black
+        wrongWord?.isHidden = true
         return true
     }
     
     func pleaseTryAgain() {
-        let alert = UIAlertController(title:  NSLocalizedString("Error", comment:""), message: NSLocalizedString("Please try again", comment:""), preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .Default, handler:nil))
-        NSNotificationCenter.defaultCenter().addObserver(alert, selector: #selector(UIViewController.autoDismiss), name: "reloadToDismissViews", object: nil)
-        presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title:  NSLocalizedString("Error", comment:""), message: NSLocalizedString("Please try again", comment:""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .default, handler:nil))
+        NotificationCenter.default.addObserver(alert, selector: #selector(UIViewController.autoDismiss), name: NSNotification.Name(rawValue: "reloadToDismissViews"), object: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func textFieldDidChange() {
         if !word1!.text!.isEmpty && !word2!.text!.isEmpty && !word3!.text!.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
-            verifyButton?.enabled = true
-            verifyButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            verifyButton?.isEnabled = true
+            verifyButton?.setTitleColor(UIColor.white, for: UIControlState())
         } else if word1!.text!.isEmpty || word2!.text!.isEmpty || word3!.text!.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
-            verifyButton?.enabled = false
-            verifyButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+            verifyButton?.isEnabled = false
+            verifyButton?.setTitleColor(UIColor.lightGray, for: .disabled)
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if (word1!.isFirstResponder()) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (word1!.isFirstResponder) {
             textField.resignFirstResponder()
             word2?.becomeFirstResponder()
-        } else if (word2!.isFirstResponder()) {
+        } else if (word2!.isFirstResponder) {
             textField.resignFirstResponder()
             word3?.becomeFirstResponder()
-        } else if (word3!.isFirstResponder()) {
+        } else if (word3!.isFirstResponder) {
             checkWords()
         }
         return true
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "verifyBackupWithSecondPassword" {
-            let vc = segue.destinationViewController as! SecondPasswordViewController
+            let vc = segue.destination as! SecondPasswordViewController
             vc.delegate = self
             vc.wallet = wallet
         }
     }
     
-    func didGetSecondPassword(password: String) {
+    func didGetSecondPassword(_ password: String) {
         wallet!.getRecoveryPhrase(password)
     }
     
-    func returnToRootViewController(completionHandler: () -> Void ) {
+    internal func returnToRootViewController(_ completionHandler: @escaping () -> Void) {
         self.navigationController?.popToRootViewControllerWithHandler({ () -> () in
             completionHandler()
         })
     }
 }
 
-extension CollectionType where Index == Int {
+extension Collection where Index == Int {
     /// Return a copy of `self` with its elements shuffled
-    func shuffle() -> [Generator.Element] {
+    func shuffle() -> [Iterator.Element] {
         var list = Array(self)
         list.shuffleInPlace()
         return list
     }
 }
 
-extension MutableCollectionType where Index == Int {
+extension MutableCollection where Index == Int {
     /// Shuffle the elements of `self` in-place.
     mutating func shuffleInPlace() {
         // empty and single-element collections don't shuffle
         if count < 2 { return }
         
-        for i in 0..<count - 1 {
-            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+        for i in startIndex..<endIndex - 1 {
+            let j = Int(arc4random_uniform(UInt32(endIndex - i))) + i
             guard i != j else { continue }
             swap(&self[i], &self[j])
         }

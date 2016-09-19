@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Mark Pfluger on 9/23/14.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCWelcomeView.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "LocalizationConstants.h"
 #import "DebugTableViewController.h"
 
@@ -18,8 +18,7 @@ Boolean shouldShowAnimation;
 
 -(id)init
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UIWindow *window = appDelegate.window;
+    UIWindow *window = app.window;
     
     shouldShowAnimation = true;
     

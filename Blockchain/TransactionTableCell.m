@@ -3,13 +3,15 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 10/01/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "TransactionTableCell.h"
 #import "Transaction.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "TransactionsViewController.h"
+#import "TransactionDetailViewController.h"
+#import "TransactionDetailNavigationController.h"
 
 @implementation TransactionTableCell
 
@@ -63,7 +65,7 @@
     btcButton.titleLabel.minimumScaleFactor =  0.75f;
     [btcButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
     
-    [btcButton setTitle:[app formatMoney:ABS(transaction.amount)] forState:UIControlStateNormal];
+    [btcButton setTitle:[NSNumberFormatter formatMoney:ABS(transaction.amount)] forState:UIControlStateNormal];
     
     if([transaction.txType isEqualToString:TX_TYPE_TRANSFER]) {
         [btcButton setBackgroundColor:COLOR_TRANSACTION_TRANSFERRED];
@@ -123,9 +125,22 @@
 
 #pragma mark button interactions
 
-- (IBAction)transactionClicked:(UIButton *)button
+- (IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath
 {
-    [app pushWebViewController:[[app serverURL] stringByAppendingFormat:@"/tx/%@", transaction.myHash] title:BC_STRING_TRANSACTION];
+    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+    detailViewController.transaction = transaction;
+    detailViewController.transactionIndex = indexPath.row;
+    
+    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    
+    detailViewController.busyViewDelegate = navigationController;
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)dismissDetails
+{
+    [app.tabViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)btcbuttonclicked:(id)sender

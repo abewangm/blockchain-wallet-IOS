@@ -3,14 +3,15 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 12/7/15.
-//  Copyright © 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "UpgradeDetailsViewController.h"
 #import "UILabel+MultiLineAutoSize.h"
 
 @interface UpgradeDetailsViewController ()
 @property (strong, nonatomic) IBOutlet UITextView *featuresTextView;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UILabel *upgradeTitleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *upgradeWalletButton;
 @end
@@ -29,6 +30,7 @@
     self.featuresTextView.textContainer.lineFragmentPadding = 0;
     
     self.upgradeWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.cancelButton setTitle:BC_STRING_LOGOUT_AND_FORGET_WALLET forState:UIControlStateNormal];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -47,7 +49,17 @@
 
 - (IBAction)cancelUpgradeButtonTapped:(UIButton *)sender
 {
-    [self dismissSelf];
+    UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
+    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [forgetWalletAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_FORGET_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DLog(@"forgetting wallet");
+        [[[self presentingViewController] presentingViewController] dismissViewControllerAnimated:YES completion:^{
+            [app logout];
+            [app forgetWallet];
+            [app showWelcome];
+        }];
+    }]];
+    [self presentViewController:forgetWalletAlert animated:YES completion:nil];
 }
 
 - (IBAction)upgradeWalletButtonTapped:(UIButton *)sender

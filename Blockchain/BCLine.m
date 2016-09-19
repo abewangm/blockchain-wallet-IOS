@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by Mark Pfluger on 2/13/15.
-//  Copyright (c) 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCLine.h"
@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     float onePixelHeight = 1.0/[UIScreen mainScreen].scale;
     UIView *onePixelLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, onePixelHeight)];
     

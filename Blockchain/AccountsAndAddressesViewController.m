@@ -3,12 +3,12 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 1/12/16.
-//  Copyright © 2016 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2016 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "AccountsAndAddressesViewController.h"
 #import "AccountsAndAddressesDetailViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ReceiveTableCell.h"
 #import "BCCreateAccountView.h"
 #import "BCModalViewController.h"
@@ -360,7 +360,7 @@
             cell.balanceLabel.text = BC_STRING_ARCHIVED;
             cell.balanceLabel.textColor = COLOR_BUTTON_BLUE;
         } else {
-            cell.balanceLabel.text = [app formatMoney:balance];
+            cell.balanceLabel.text = [NSNumberFormatter formatMoney:balance];
             cell.balanceLabel.textColor = COLOR_LABEL_BALANCE_GREEN;
         }
         cell.balanceLabel.minimumScaleFactor = 0.75f;
@@ -429,7 +429,7 @@
         cell.balanceLabel.text = BC_STRING_ARCHIVED;
         cell.balanceLabel.textColor = COLOR_BUTTON_BLUE;
     } else {
-        cell.balanceLabel.text = [app formatMoney:balance];
+        cell.balanceLabel.text = [NSNumberFormatter formatMoney:balance];
         cell.balanceLabel.textColor = COLOR_LABEL_BALANCE_GREEN;
     }
     cell.balanceLabel.minimumScaleFactor = 0.75f;

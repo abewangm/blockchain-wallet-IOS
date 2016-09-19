@@ -18,7 +18,6 @@
  * MA 02110-1301  USA
  */
 
-#import "JSBridgeWebView.h"
 #import "MultiAddressResponse.h"
 #import "SRWebSocket.h"
 
@@ -40,7 +39,7 @@
 @property(nonatomic, assign) int tag;
 @end
 
-@class Wallet;
+@class Wallet, Transaction;
 
 @protocol WalletDelegate <NSObject>
 @optional
@@ -83,7 +82,7 @@
 - (void)estimateTransactionSize:(uint64_t)size;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
-- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust;
+- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
 - (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees;
 - (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
 - (void)enableSendPaymentButtons;
@@ -95,10 +94,13 @@
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
 - (void)updateLoadedAllTransactions:(NSNumber *)loadedAll;
 - (void)receivedTransactionMessage;
+- (void)paymentReceivedOnPINScreen:(NSString *)amount;
 - (void)didReceivePaymentNotice:(NSString *)notice;
+- (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode;
+- (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
 @end
 
-@interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate, SRWebSocketDelegate> {
+@interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
 }
 
 // Core Wallet Init Properties
@@ -117,6 +119,7 @@
 @property(nonatomic, strong) NSMutableDictionary *transactionProgressListeners;
 
 @property(nonatomic) NSDictionary *accountInfo;
+@property(nonatomic) BOOL hasLoadedAccountInfo;
 
 @property(nonatomic) NSString *lastScannedWatchOnlyAddress;
 @property(nonatomic) NSString *lastImportedAddress;
@@ -137,6 +140,7 @@
 @property (nonatomic, assign) id <SRWebSocketDelegate> socketDelegate;
 @property (nonatomic) SRWebSocket *webSocket;
 @property (nonatomic) NSTimer *webSocketTimer;
+@property (nonatomic) NSString *addressToSubscribe;
 
 - (id)init;
 
@@ -158,6 +162,8 @@
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 - (Boolean)isAddressArchived:(NSString *)address;
+
+- (void)subscribeToAddress:(NSString *)address;
 
 - (void)addToAddressBook:(NSString *)address label:(NSString *)label;
 
@@ -223,6 +229,7 @@
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
 - (BOOL)isRecoveryPhraseVerified;
 - (void)markRecoveryPhraseVerified;
+- (int)getFilteredOrDefaultAccountIndex;
 - (int)getDefaultAccountIndex;
 - (void)setDefaultAccount:(int)index;
 - (int)getActiveAccountsCount;
@@ -260,6 +267,16 @@
 
 // Settings
 - (void)getAccountInfo;
+- (NSString *)getEmail;
+- (NSString *)getSMSNumber;
+- (BOOL)getSMSVerifiedStatus;
+- (NSString *)getPasswordHint;
+- (NSDictionary *)getFiatCurrencies;
+- (NSDictionary *)getBtcCurrencies;
+- (int)getTwoStepType;
+- (BOOL)getEmailVerifiedStatus;
+- (BOOL)getTorBlockingStatus;
+
 - (void)changeEmail:(NSString *)newEmail;
 - (void)resendVerificationEmail:(NSString *)email;
 - (void)getAllCurrencySymbols;
@@ -272,7 +289,11 @@
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword;
 - (void)enableEmailNotifications;
 - (void)disableEmailNotifications;
+- (void)enableSMSNotifications;
+- (void)disableSMSNotifications;
 - (void)changeTorBlocking:(BOOL)willEnable;
+- (BOOL)emailNotificationsEnabled;
+- (BOOL)SMSNotificationsEnabled;
 
 // Security Center
 - (BOOL)hasVerifiedEmail;
@@ -303,10 +324,16 @@
 - (void)getTransactionFee;
 - (void)getSurgeStatus;
 - (uint64_t)dust;
+- (void)incrementReceiveIndexOfDefaultAccount;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;
 
 - (void)updateServerURL:(NSString *)newURL;
+
+// Transaction Details
+- (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
+- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
+- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction filter:(NSInteger)filter;
 
 @end

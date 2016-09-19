@@ -1,44 +1,44 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "แนะนำร้านค้า";
+"0zs-bt-hEl.text" = "คำใบ้ร้านค้า";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "ตรวจสอบอีเมล์";
+"8Ha-3e-Nqx.text" = "ยืนยันอีเมล";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "สองขั้นตอนตรวจสอบ";
+"8Zy-R2-HoW.text" = "การยืนยันสองขั้นตอน";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
 "Ii6-KE-x0B.placeholder" = "ยืนยันรหัสผ่านใหม่";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
-"Kmb-pO-dHq.text" = "อ่อนแอ";
+"Kmb-pO-dHq.text" = "แย่";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
 "VKs-B5-luJ.placeholder" = "รหัสผ่านใหม่";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "วลีที่สำรองข้อมูล";
+"WVd-f2-ZLG.text" = "วลีสำรอง";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "บล็อก TORs";
+"Wor-ZR-sPS.text" = "บล็อก TOR";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "ป้องกันกระเป๋าสตางค์ของคุณจากการเข้าถึงการเปิดใช้งานการตรวจสอบขั้นตอนที่ 2 คุณสามารถเลือกที่จะใช้ app ฟรีหรือหมายเลขโทรศัพท์มือถือของคุณปลอดภัยกระเป๋าสตางค์ของคุณ จะสามารถร้องขอรหัสนี้เมื่อคุณพยายามที่จะเข้ากระเป๋าของคุณ";
+"bFL-5O-fcl.text" = "ปกป้องกระเป๋าเงินของคุณจากการเข้าถึงที่ไม่ได้รับอนุญาตโดยการเปิดใช้งานการยืนยัน 2 ขั้นตอน คุณสามารถเลือกใช้แอปฟรีหรือหมายเลขโทรศัพท์มือถือของคุณเพื่อรักษาความปลอดภัยให้กับกระเป๋าเงินของคุณ จะมีการร้องขอรหัสนี้เมื่อคุณพยายามเข้าถึงกระเป๋าเงินของคุณ";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "เชื่อมโยงมือถือ";
+"f52-8F-scW.text" = "ลิงก์มือถือ";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
 "g8G-4j-qpJ.normalTitle" = "ใช้หมายเลขโทรศัพท์มือถือของคุณ";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "เปิดใช้งานขั้นตอนที่ 2";
+"gIP-mj-Hh2.text" = "เปิด 2-ขั้นตอน";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "ทำตามขั้นตอนด้านล่างเพื่อความปลอดภัยที่ดีที่สุด";
+"u5x-QP-acV.text" = "ทำตามขั้นตอนด้านล่างให้เสร็จสิ้นเพื่อความปลอดภัยขั้นสูงสุด";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
-"wnC-Xd-1Er.title" = "ศูนย์รักษาความปลอดภัย";
+"wnC-Xd-1Er.title" = "ศูนย์ความปลอดภัย";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
 "zd5-DZ-hsS.placeholder" = "รหัสผ่าน";

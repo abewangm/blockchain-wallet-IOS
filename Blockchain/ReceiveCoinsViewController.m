@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 17/03/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "ReceiveCoinsViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ReceiveTableCell.h"
 #import "Address.h"
 #import "PrivateKeyReader.h"
@@ -20,6 +20,7 @@
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) uint64_t lastRequestedAmount;
+@property (nonatomic) BOOL firstLoading;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -42,6 +43,8 @@ NSString *detailLabel;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.firstLoading = YES;
     
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
@@ -73,6 +76,10 @@ NSString *detailLabel;
     [self reload];
     
     [self setupHeaderView];
+    
+    self.firstLoading = NO;
+    
+    [self updateUI];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -161,8 +168,6 @@ NSString *detailLabel;
     [self.receiveToLabel addGestureRecognizer:tapGesture];
     self.receiveToLabel.userInteractionEnabled = YES;
     
-    [self updateUI];
-    
     [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
     doneButton.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
@@ -170,7 +175,7 @@ NSString *detailLabel;
 - (void)selectDefaultDestination
 {
     if ([app.wallet didUpgradeToHd]) {
-        [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
+        [self didSelectToAccount:[app.wallet getFilteredOrDefaultAccountIndex]];
     } else {
         [self didSelectToAddress:[[app.wallet allLegacyAddresses] firstObject]];
     }
@@ -226,7 +231,7 @@ NSString *detailLabel;
     // Get an address: the first empty receive address for the default HD account
     // Or the first active legacy address if there are no HD accounts
     if ([app.wallet getActiveAccountsCount] > 0) {
-        [self didSelectFromAccount:[app.wallet getDefaultAccountIndex]];
+        [self didSelectFromAccount:[app.wallet getFilteredOrDefaultAccountIndex]];
     }
     else if (activeKeys.count > 0) {
         for (NSString *address in activeKeys) {
@@ -285,7 +290,6 @@ NSString *detailLabel;
         }
         
         [self setupTapGestureForMainLabel];
-        [self updateUI];
     }
 }
 
@@ -342,15 +346,13 @@ NSString *detailLabel;
     return 0;
 }
 
-- (void)doCurrencyConversion
+- (void)doCurrencyConversionWithAmount:(uint64_t)amount
 {
-    uint64_t amount = [self getInputAmountInSatoshi];
-    
     if ([btcAmountField isFirstResponder]) {
-        fiatAmountField.text = [app formatAmount:amount localCurrency:YES];
+        fiatAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
     }
     else if ([fiatAmountField isFirstResponder]) {
-        btcAmountField.text = [app formatAmount:amount localCurrency:NO];
+        btcAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
     }
     
     self.receiveFiatField.text = fiatAmountField.text;
@@ -369,14 +371,15 @@ NSString *detailLabel;
 
 - (void)setQRPayment
 {
-    double amount = (double)[self getInputAmountInSatoshi] / SATOSHI;
+    uint64_t amount = [self getInputAmountInSatoshi];
+    double amountAsDouble = (double)amount / SATOSHI;
         
-    UIImage *image = [self.qrCodeGenerator qrImageFromAddress:self.clickedAddress amount:amount];
+    UIImage *image = [self.qrCodeGenerator qrImageFromAddress:self.clickedAddress amount:amountAsDouble];
         
     qrCodeMainImageView.image = image;
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    [self doCurrencyConversion];
+    [self doCurrencyConversionWithAmount:amount];
 }
 
 - (void)animateTextOfLabel:(UILabel *)labelToAnimate fromText:(NSString *)originalText toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
@@ -542,8 +545,12 @@ NSString *detailLabel;
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_PAYMENT_RECEIVED message:messageString delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-    [alertView show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_PAYMENT_RECEIVED message:messageString preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder]) [self showKeyboard];
+    }]];
+    
+    [app.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)alertUserOfWatchOnlyAddress:(NSString *)address
@@ -572,6 +579,8 @@ NSString *detailLabel;
 
 - (void)updateUI
 {
+    if (self.firstLoading) return; // UI will be updated when viewDidLoad finishes
+    
     self.receiveToLabel.text = mainLabel;
     mainAddressLabel.text = mainAddress;
     
@@ -582,8 +591,8 @@ NSString *detailLabel;
 {
     u_int64_t amountReceived = [[amount decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
     if (amountReceived == self.lastRequestedAmount) {
-        NSString *btcAmountString = [app formatMoney:self.lastRequestedAmount localCurrency:NO];
-        NSString *localCurrencyAmountString = [app formatMoney:self.lastRequestedAmount localCurrency:YES];
+        NSString *btcAmountString = [NSNumberFormatter formatMoney:self.lastRequestedAmount localCurrency:NO];
+        NSString *localCurrencyAmountString = [NSNumberFormatter formatMoney:self.lastRequestedAmount localCurrency:YES];
         [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString,localCurrencyAmountString]];
     }
 }
@@ -611,7 +620,7 @@ NSString *detailLabel;
     }
     
     uint64_t amount = [self getInputAmountInSatoshi];
-    NSString *amountString = amount > 0 ? [app formatMoney:[self getInputAmountInSatoshi] localCurrency:NO] : [BC_STRING_AMOUNT lowercaseString];
+    NSString *amountString = amount > 0 ? [NSNumberFormatter formatMoney:[self getInputAmountInSatoshi] localCurrency:NO] : [BC_STRING_AMOUNT lowercaseString];
     NSString *message = [self formatPaymentRequestWithAmount:amountString url:@""];
     
     NSURL *url = [NSURL URLWithString:[self uriURL]];
@@ -630,10 +639,6 @@ NSString *detailLabel;
     [fiatAmountField resignFirstResponder];
     
     [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
-    
-    activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *error) {
-        [self showKeyboard];
-    };
 }
 
 - (void)clearAmounts

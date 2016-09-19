@@ -57,8 +57,13 @@
 @property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
 @property (nonatomic) UIButton *debugButton;
 
+// Swipe-to-receive
+@property (nonatomic) UIImageView *qrCodeImageView;
+@property (nonatomic) UILabel *addressLabel;
+- (void)paymentReceived;
+- (void)setupQRCode;
 
--(void)reset;
+- (void)reset;
 
 + (PEPinEntryController *)pinVerifyController;
 + (PEPinEntryController *)pinVerifyControllerClosable;

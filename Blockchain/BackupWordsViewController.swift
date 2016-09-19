@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by Sjors Provoost on 19-05-15.
-//  Copyright (c) 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 import UIKit
@@ -32,24 +32,24 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         
         setupBottomInstructionLabel()
         
-        wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .New, context: nil)
+        wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .new, context: nil)
         
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         wordLabel!.text = ""
         
         updateCurrentPageLabel(0)
         
         wordsScrollView!.clipsToBounds = true
-        wordsScrollView!.contentSize = CGSizeMake(CGFloat(Constants.Defaults.NumberOfRecoveryPhraseWords) * wordLabel!.frame.width, wordLabel!.frame.height)
-        wordsScrollView!.userInteractionEnabled = false
+        wordsScrollView!.contentSize = CGSize(width: CGFloat(Constants.Defaults.NumberOfRecoveryPhraseWords) * wordLabel!.frame.width, height: wordLabel!.frame.height)
+        wordsScrollView!.isUserInteractionEnabled = false
 
         wordLabels = [UILabel]()
-        wordLabels?.insert(wordLabel!, atIndex: 0)
+        wordLabels?.insert(wordLabel!, at: 0)
         for i in 1 ..< Constants.Defaults.NumberOfRecoveryPhraseWords {
             let offset: CGFloat = CGFloat(i) * wordLabel!.frame.width
             let x: CGFloat = wordLabel!.frame.origin.x + offset
-            let label = UILabel(frame: CGRectMake(x, wordLabel!.frame.origin.y, wordLabel!.frame.size.width, wordLabel!.frame.size.height))
+            let label = UILabel(frame: CGRect(x: x, y: wordLabel!.frame.origin.y, width: wordLabel!.frame.size.width, height: wordLabel!.frame.size.height))
             label.adjustsFontSizeToFitWidth = true
             label.font = wordLabel!.font
             label.textColor = wordLabel!.textColor
@@ -61,85 +61,85 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         }
         
         if wallet!.needsSecondPassword(){
-            self.performSegueWithIdentifier("secondPasswordForBackup", sender: self)
+            self.performSegue(withIdentifier: "secondPasswordForBackup", sender: self)
         } else {
             wallet!.getRecoveryPhrase(nil)
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView .animateWithDuration(0.3, animations: { () -> Void in
-            self.previousWordButton!.frame.origin = CGPointMake(0,self.view.frame.size.height-self.previousWordButton!.frame.size.height);
-            self.nextWordButton!.frame.origin = CGPointMake(self.view.frame.size.width-self.previousWordButton!.frame.size.width, self.view.frame.size.height-self.previousWordButton!.frame.size.height);
+        UIView .animate(withDuration: 0.3, animations: { () -> Void in
+            self.previousWordButton!.frame.origin = CGPoint(x: 0,y: self.view.frame.size.height-self.previousWordButton!.frame.size.height);
+            self.nextWordButton!.frame.origin = CGPoint(x: self.view.frame.size.width-self.previousWordButton!.frame.size.width, y: self.view.frame.size.height-self.previousWordButton!.frame.size.height);
         })
     }
     
     func setupTopInstructionLabel() {
         let blackTextBeginning = NSAttributedString(string:  NSLocalizedString("Write the following 12 words onto a ", comment:""), attributes:
-            [NSForegroundColorAttributeName: UIColor.blackColor()])
+            [NSForegroundColorAttributeName: UIColor.black])
         
-        let boldText = NSAttributedString(string: NSLocalizedString("piece of paper.", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName : UIFont.boldSystemFontOfSize(14.0)])
+        let boldText = NSAttributedString(string: NSLocalizedString("piece of paper.", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14.0)])
         
         let blackTextEnd = NSAttributedString(string:  NSLocalizedString(" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure.", comment:""), attributes:
-            [NSForegroundColorAttributeName: UIColor.blackColor()])
+            [NSForegroundColorAttributeName: UIColor.black])
         
         let finalText = NSMutableAttributedString(attributedString: blackTextBeginning)
-        finalText.appendAttributedString(boldText)
-        finalText.appendAttributedString(blackTextEnd)
+        finalText.append(boldText)
+        finalText.append(blackTextEnd)
         summaryLabel?.attributedText = finalText
     }
     
     func setupBottomInstructionLabel() {
-        let blackText = NSAttributedString(string:  NSLocalizedString("It is important to make sure you write down your words exactly as they appear here and ", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.blackColor()])
+        let blackText = NSAttributedString(string:  NSLocalizedString("It is important to make sure you write down your words exactly as they appear here and ", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.black])
         
-        let boldText = NSAttributedString(string: NSLocalizedString("in this order.", comment:""), attributes: [NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName : UIFont.boldSystemFontOfSize(14.0)])
+        let boldText = NSAttributedString(string: NSLocalizedString("in this order.", comment:""), attributes: [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14.0)])
         
         let finalText = NSMutableAttributedString(attributedString: blackText)
-        finalText.appendAttributedString(boldText)
+        finalText.append(boldText)
         screenShotWarningLabel?.attributedText = finalText
     }
     
     func updatePreviousWordButton() {
         if wordsPageControl!.currentPage == 0 {
-            previousWordButton?.enabled = false
-            previousWordButton?.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+            previousWordButton?.isEnabled = false
+            previousWordButton?.setTitleColor(UIColor.lightGray, for: UIControlState())
         } else {
-            previousWordButton?.enabled = true
-            previousWordButton?.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+            previousWordButton?.isEnabled = true
+            previousWordButton?.setTitleColor(UIColor.darkGray, for: UIControlState())
         }
     }
 
-    @IBAction func previousWordButtonTapped(sender: UIButton) {
+    @IBAction func previousWordButtonTapped(_ sender: UIButton) {
         if (wordsPageControl!.currentPage > 0) {
             let pagePosition = wordLabel!.frame.width * CGFloat(wordsPageControl!.currentPage-1)
-            wordsScrollView?.setContentOffset(CGPointMake(pagePosition, wordsScrollView!.contentOffset.y), animated: true)
+            wordsScrollView?.setContentOffset(CGPoint(x: pagePosition, y: wordsScrollView!.contentOffset.y), animated: true)
         }
     }
     
-    @IBAction func nextWordButtonTapped(sender: UIButton) {
+    @IBAction func nextWordButtonTapped(_ sender: UIButton) {
         if let count = wordLabels?.count {
             if (wordsPageControl!.currentPage == count-1) {
-                performSegueWithIdentifier("backupVerify", sender: nil)
+                performSegue(withIdentifier: "backupVerify", sender: nil)
             } else if wordsPageControl!.currentPage < count-1 {
                 let pagePosition = wordLabel!.frame.width * CGFloat(wordsPageControl!.currentPage+1)
-                wordsScrollView?.setContentOffset(CGPointMake(pagePosition, wordsScrollView!.contentOffset.y), animated: true)
+                wordsScrollView?.setContentOffset(CGPoint(x: pagePosition, y: wordsScrollView!.contentOffset.y), animated: true)
             }
         }
     }
     
-    func updateCurrentPageLabel(page: Int) {
+    func updateCurrentPageLabel(_ page: Int) {
         wordsProgressLabel!.text = NSLocalizedString(NSString(format: "Word %@ of %@", String(page + 1), String((Constants.Defaults.NumberOfRecoveryPhraseWords))) as String, comment: "")
         if let count = wordLabels?.count {
             if wordsPageControl!.currentPage == count-1 {
                 nextWordButton?.backgroundColor = Constants.Colors.BlockchainBlue
-                nextWordButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-                nextWordButton?.setTitle(NSLocalizedString("Done", comment:""), forState: .Normal)
+                nextWordButton?.setTitleColor(UIColor.white, for: UIControlState())
+                nextWordButton?.setTitle(NSLocalizedString("Done", comment:""), for: UIControlState())
             } else if wordsPageControl!.currentPage == count-2 {
                 nextWordButton?.backgroundColor = Constants.Colors.SecondaryGray
-                nextWordButton?.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
-                nextWordButton?.setTitle(NSLocalizedString("Next word", comment:""), forState: .Normal)
+                nextWordButton?.setTitleColor(UIColor.darkGray, for: UIControlState())
+                nextWordButton?.setTitle(NSLocalizedString("Next word", comment:""), for: UIControlState())
             }
             
             updatePreviousWordButton()
@@ -147,7 +147,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     }
     
     // MARK: - Words Scrollview
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Determine page number:
         let pageWidth = scrollView.frame.size.width
         let fractionalPage = Float(scrollView.contentOffset.x / pageWidth)
@@ -158,36 +158,36 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         updateCurrentPageLabel(page)
     }
 
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
     }
     
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "secondPasswordForBackup" {
-            let vc = segue.destinationViewController as! SecondPasswordViewController
+            let vc = segue.destination as! SecondPasswordViewController
             vc.delegate = self
             vc.wallet = wallet
         } else if segue.identifier == "backupVerify" {
-            let vc = segue.destinationViewController as! BackupVerifyViewController
+            let vc = segue.destination as! BackupVerifyViewController
             vc.wallet = wallet
             vc.isVerifying = false
         }
     }
     
-    func didGetSecondPassword(password: String) {
+    func didGetSecondPassword(_ password: String) {
         wallet!.getRecoveryPhrase(password)
     }
     
-    func returnToRootViewController(completionHandler: () -> Void ) {
+    internal func returnToRootViewController(_ completionHandler: @escaping () -> Void ) {
         self.navigationController?.popToRootViewControllerWithHandler({ () -> () in
             completionHandler()
         })
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String: AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        let words = wallet!.recoveryPhrase.componentsSeparatedByString(" ")
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        let words = wallet!.recoveryPhrase.components(separatedBy: " ")
         for i in 0 ..< Constants.Defaults.NumberOfRecoveryPhraseWords {
             wordLabels![i].text = words[i]
         }

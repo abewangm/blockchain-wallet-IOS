@@ -3,12 +3,12 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 17/03/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCAddressSelectionView.h"
 #import "Wallet.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ReceiveTableCell.h"
 #import "SendViewController.h"
 
@@ -311,7 +311,7 @@ int legacyAddressesSectionNumber;
             else if (section == legacyAddressesSectionNumber) {
                 balance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];
             }
-            cell.balanceLabel.text = [app formatMoney:balance];
+            cell.balanceLabel.text = [NSNumberFormatter formatMoney:balance];
             
             // Cells with empty balance can't be clicked and are dimmed
             if (balance == 0 && !allSelectable) {

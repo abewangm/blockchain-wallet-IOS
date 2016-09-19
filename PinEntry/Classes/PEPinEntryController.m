@@ -23,7 +23,8 @@
 ********************************************************************************/
 
 #import "PEPinEntryController.h"
-#import "AppDelegate.h"
+#import "QRCodeGenerator.h"
+#import "RootService.h"
 
 #define PS_VERIFY	0
 #define PS_ENTER1	1
@@ -132,6 +133,75 @@ static PEViewController *VerifyController()
     [pinController resetPin];
 }
 
+- (void)setupQRCode
+{
+#ifdef ENABLE_SWIPE_TO_RECEIVE
+    if (self.verifyOnly && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED]) {
+        
+        [pinController.scrollView setUserInteractionEnabled:YES];
+        
+        NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
+        NSNumber *nextAddressUsed = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+        
+        if (nextAddress) {
+            
+            pinController.swipeLabel.alpha = 1;
+            pinController.swipeLabel.hidden = NO;
+            pinController.swipeLabelImageView.alpha = 1;
+            pinController.swipeLabelImageView.hidden = NO;
+            
+            [pinController.scrollView setContentSize:CGSizeMake(pinController.scrollView.frame.size.width *2, pinController.scrollView.frame.size.height)];
+            [pinController.scrollView setPagingEnabled:YES];
+            
+            [app.wallet subscribeToAddress:nextAddress];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:.5 animations:^{
+                    pinController.swipeLabel.alpha = 0;
+                    pinController.swipeLabelImageView.alpha = 0;
+                }];
+            });
+            
+            if (!self.addressLabel) {
+                self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
+                [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
+                [self.addressLabel setTextColor:[UIColor whiteColor]];
+                [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
+                [pinController.scrollView addSubview:self.addressLabel];
+            }
+            
+            if (![nextAddressUsed boolValue]) {
+                
+                if (!self.qrCodeImageView) {
+                    self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                    [pinController.scrollView addSubview:self.qrCodeImageView];
+                }
+                
+                QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
+
+                self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
+                self.addressLabel.text = nextAddress;
+            } else {
+                self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
+            }
+            
+        } else {
+            pinController.swipeLabel.hidden = YES;
+            pinController.swipeLabelImageView.hidden = YES;
+        }
+    }
+#else
+    pinController.swipeLabel.hidden = YES;
+    pinController.swipeLabelImageView.hidden = YES;
+#endif
+}
+
+- (void)paymentReceived
+{
+    [self.qrCodeImageView removeFromSuperview];
+    self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
+}
+
 - (void)pinEntryControllerDidEnteredPin:(PEViewController *)controller
 {
 	switch (pinStage) {
@@ -164,12 +234,13 @@ static PEViewController *VerifyController()
 		}
 		case PS_ENTER2:
 			if([controller.pin intValue] != pinEntry1) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ERROR message:BC_PIN_NO_MATCH delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
-                [alertView show];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_PIN_NO_MATCH preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
 				PEViewController *c = NewController();
 				c.delegate = self;
 				self.viewControllers = [NSArray arrayWithObjects:c, [self.viewControllers objectAtIndex:0], nil];
 				[self popViewControllerAnimated:NO];
+                [self presentViewController:alert animated:YES completion:nil];
 			} else {
 				[self.pinDelegate pinEntryController:self changedPin:[controller.pin intValue]];
 			}

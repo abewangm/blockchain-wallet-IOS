@@ -3,10 +3,10 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 11/26/15.
-//  Copyright © 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "BCFadeView.h"
 #import "SettingsChangePasswordViewController.h"
 
@@ -199,7 +199,7 @@
         return NO;
     }
     
-    NSString *email = [app.wallet.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL];
+    NSString *email = [app.wallet getEmail];
     if (email && [self.newerPasswordTextField.text isEqualToString:email]) {
         [self.newerPasswordTextField becomeFirstResponder];
         [self alertUserOfError:BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL];
@@ -231,7 +231,7 @@
         return NO;
     }
     
-    if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT] isEqualToString:self.newerPasswordTextField.text]) {
+    if ([[app.wallet getPasswordHint] isEqualToString:self.newerPasswordTextField.text]) {
         [self alertUserOfError:BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT_FROM_HINT];
         return NO;
     }

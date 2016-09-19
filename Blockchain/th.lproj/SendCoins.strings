@@ -2,22 +2,22 @@
 "2Ig-LA-4kK.text" = "CurrAmt";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
-"4.normalTitle" = "ดำเนินการต่อไป";
+"4.normalTitle" = "ดำเนินการต่อ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "6ll-Xx-4fm"; */
 "6ll-Xx-4fm.text" = "BtcAmt";
 
 /* (No Commment) */
-"6zi-8R-Tmt.normalTitle" = "บีทีซี";
+"6zi-8R-Tmt.normalTitle" = "BTC";
 
 /* Class = "UILabel"; text = "From"; ObjectID = "7"; */
 "7.text" = "จาก";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
-"7ho-GV-ikp.text" = "บีทีซี";
+"7ho-GV-ikp.text" = "BTC";
 
 /* (No Commment) */
-"8LN-Tc-WVh.normalTitle" = "เสร็จแล้ว";
+"8LN-Tc-WVh.normalTitle" = "เสร็จ";
 
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
 "9B2-23-8j5.text" = "CurrAmt";
@@ -32,7 +32,7 @@
 "52.text" = "0.00";
 
 /* (No Commment) */
-"57.text" = "บีทีซี 5 = $10";
+"57.text" = "5 BTC = $10";
 
 /* (No Commment) */
 "61.text" = "ป้ายชื่อ:";
@@ -53,16 +53,16 @@
 "67.text" = "ป้ายชื่อที่อยู่";
 
 /* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
-"Cbp-Qe-FKP.normalTitle" = "กำหนดค่าธรรมเนียม";
+"Cbp-Qe-FKP.normalTitle" = "ปรับแต่งค่าธรรมเนียม";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "ค่าธรรมเนียม: ";
+"FB0-NP-5do.text" = "ค่าธรรมเนียม:";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
-"Pgx-k8-cTb.normalTitle" = "ยกเลิกต่อไป";
+"Pgx-k8-cTb.normalTitle" = "ยกเลิกถัดไป";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
 "Ubr-KG-egH.text" = "ทั้งหมด:";
@@ -71,16 +71,16 @@
 "ZcA-OM-4nq.text" = "จาก:";
 
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "กรุณารอสักครู่";
+"Zgn-Wx-Uwx.text" = "โปรดรอ";
 
 /* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
 "Zhm-Jw-P4C.text" = "ค่าธรรมเนียม";
 
 /* (No Commment) */
-"aKC-Q2-phD.text" = "ส่งการชำระเงิน";
+"aKC-Q2-phD.text" = "กำลังส่งการชำระเงิน";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "จำนวน: ";
+"aeG-gf-oXV.text" = "จำนวน:";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "เงินที่มี";
@@ -92,7 +92,7 @@
 "p7q-Ud-nYh.placeholder" = "0.000";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
-"pPu-bJ-k6p.normalTitle" = "ดำเนินการต่อไป";
+"pPu-bJ-k6p.normalTitle" = "ดำเนินการต่อ";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
 "qx4-XV-uhn.placeholder" = "0.00";
@@ -104,7 +104,7 @@
 "t8M-NC-003.text" = "CurrTotal";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
-"vGH-md-Ck3.text" = "ดอลลาร์สหรัฐ";
+"vGH-md-Ck3.text" = "USD";
 
 /* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
 "vzP-xG-GPO.text" = "BtcTotal";

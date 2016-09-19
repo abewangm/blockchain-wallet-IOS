@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 10/01/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "InOut.h"
@@ -24,8 +24,9 @@
 @property(nonatomic, assign) uint32_t tx_index;
 @property(nonatomic, assign) BOOL fromWatchOnly;
 @property(nonatomic, assign) BOOL toWatchOnly;
+@property(nonatomic, strong) NSMutableDictionary *fiatAmountsAtTime;
 
 @property(nonatomic, strong) InOut *from;
-@property(nonatomic, strong) InOut *to;
+@property(nonatomic, strong) NSArray *to;
 
 @end

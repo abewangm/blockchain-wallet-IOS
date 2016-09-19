@@ -3,12 +3,12 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 18/03/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCCreateWalletView.h"
 
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation BCCreateWalletView
 
@@ -16,6 +16,8 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     createButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
@@ -171,7 +173,7 @@
 
 - (IBAction)termsOfServiceClicked:(id)sender
 {
-    [app pushWebViewController:[[app serverURL] stringByAppendingString:TERMS_OF_SERVICE_URL_SUFFIX] title:BC_STRING_TERMS_OF_SERVICE];
+    [app pushWebViewController:[URL_SERVER stringByAppendingString:TERMS_OF_SERVICE_URL_SUFFIX] title:BC_STRING_TERMS_OF_SERVICE];
     [emailTextField becomeFirstResponder];
 }
 
@@ -188,10 +190,6 @@
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
         
     app.wallet.delegate = app;
-        
-    [app standardNotify:[NSString stringWithFormat:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL]
-                      title:BC_STRING_DID_CREATE_NEW_WALLET_TITLE
-                   delegate:nil];
     
     app.wallet.isNew = YES;
     
@@ -201,7 +199,7 @@
 - (void)errorCreatingNewAccount:(NSString*)message
 {
     if ([message isEqualToString:@""]) {
-        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR];
     } else if ([message isEqualToString:ERROR_TIMEOUT_REQUEST]){
         [app standardNotify:BC_STRING_TIMED_OUT];
     } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST] || [message containsString:ERROR_TIMEOUT_ERROR] || [[message stringByReplacingOccurrencesOfString:@" " withString:@""] containsString:ERROR_STATUS_ZERO]){

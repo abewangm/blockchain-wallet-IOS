@@ -3,21 +3,22 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 12/29/15.
-//  Copyright © 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "DebugTableViewController.h"
 #import "Blockchain-Swift.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 const int rowWalletJSON = 0;
 const int rowServerURL = 1;
 const int rowWebsocketURL = 2;
 const int rowMerchantURL = 3;
 const int rowAPIURL = 4;
-const int surgeToggle = 5;
-const int dontShowAgain = 6;
-const int appStoreReviewPromptTimer = 7;
+const int rowSurgeToggle = 5;
+const int rowDontShowAgain = 6;
+const int rowAppStoreReviewPromptTimer = 7;
+const int rowCertificatePinning = 8;
 
 @interface DebugTableViewController ()
 @property (nonatomic) NSDictionary *filteredWalletJSON;
@@ -75,8 +76,14 @@ const int appStoreReviewPromptTimer = 7;
 
 - (void)toggleSurge
 {
-    BOOL surgeOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SIMULATE_SURGE];
-    [[NSUserDefaults standardUserDefaults] setBool:!surgeOn forKey:USER_DEFAULTS_KEY_SIMULATE_SURGE];
+    BOOL surgeOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
+    [[NSUserDefaults standardUserDefaults] setBool:!surgeOn forKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
+}
+
+- (void)togglePinning
+{
+    BOOL pinningOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
+    [[NSUserDefaults standardUserDefaults] setBool:!pinningOn forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
 }
 
 - (void)showFilteredWalletJSON
@@ -98,7 +105,7 @@ const int appStoreReviewPromptTimer = 7;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 9;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,40 +123,49 @@ const int appStoreReviewPromptTimer = 7;
         }
         case rowServerURL: {
             cell.textLabel.text = BC_STRING_SERVER_URL;
-            cell.detailTextLabel.text =  [app serverURL];
+            cell.detailTextLabel.text =  URL_SERVER;
             break;
         }
         case rowWebsocketURL: {
             cell.textLabel.text = BC_STRING_WEBSOCKET_URL;
-            cell.detailTextLabel.text = [app webSocketURL];
+            cell.detailTextLabel.text = URL_WEBSOCKET;
             break;
         }
         case rowMerchantURL: {
             cell.textLabel.text = BC_STRING_MERCHANT_URL;
-            cell.detailTextLabel.text = [app merchantURL];
+            cell.detailTextLabel.text = URL_MERCHANT;
             break;
         }
         case rowAPIURL: {
             cell.textLabel.text = BC_STRING_API_URL;
-            cell.detailTextLabel.text = [app apiURL];
+            cell.detailTextLabel.text = URL_API;
             break;
         }
-        case surgeToggle: {
+        case rowSurgeToggle: {
             cell.textLabel.text = BC_STRING_SIMULATE_SURGE;
             UISwitch *surgeToggle = [[UISwitch alloc] init];
-            BOOL surgeOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SIMULATE_SURGE];
+            BOOL surgeOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
             surgeToggle.on = surgeOn;
             [surgeToggle addTarget:self action:@selector(toggleSurge) forControlEvents:UIControlEventTouchUpInside];
             cell.accessoryView = surgeToggle;
             break;
         }
-        case dontShowAgain: {
+        case rowDontShowAgain: {
             cell.textLabel.text = BC_STRING_RESET_DONT_SHOW_AGAIN_PROMPT;
             break;
         }
-        case appStoreReviewPromptTimer: {
+        case rowAppStoreReviewPromptTimer: {
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.textLabel.text = BC_STRING_APP_STORE_REVIEW_PROMPT_TIMER;
+            break;
+        }
+        case rowCertificatePinning: {
+            cell.textLabel.text = BC_STRING_CERTIFICATE_PINNING;
+            UISwitch *pinningToggle = [[UISwitch alloc] init];
+            BOOL pinningOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
+            pinningToggle.on = pinningOn;
+            [pinningToggle addTarget:self action:@selector(togglePinning) forControlEvents:UIControlEventTouchUpInside];
+            cell.accessoryView = pinningToggle;
             break;
         }
         default:
@@ -170,18 +186,18 @@ const int appStoreReviewPromptTimer = 7;
             break;
         }
         case rowServerURL:
-            [self alertToChangeURLName:BC_STRING_SERVER_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL currentURL:[app serverURL]];
+            [self alertToChangeURLName:BC_STRING_SERVER_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL currentURL:URL_SERVER];
             break;
         case rowWebsocketURL:
-            [self alertToChangeURLName:BC_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:[app webSocketURL]];
+            [self alertToChangeURLName:BC_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:URL_WEBSOCKET];
             break;
         case rowMerchantURL:
-            [self alertToChangeURLName:BC_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:[app merchantURL]];
+            [self alertToChangeURLName:BC_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:URL_MERCHANT];
             break;
         case rowAPIURL:
-            [self alertToChangeURLName:BC_STRING_API_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_API_URL currentURL:[app apiURL]];
+            [self alertToChangeURLName:BC_STRING_API_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_API_URL currentURL:URL_API];
             break;
-        case dontShowAgain: {
+        case rowDontShowAgain: {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DEBUG message:BC_STRING_RESET_DONT_SHOW_AGAIN_PROMPT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT];
@@ -192,7 +208,7 @@ const int appStoreReviewPromptTimer = 7;
             [self presentViewController:alert animated:YES completion:nil];
             break;
         }
-        case appStoreReviewPromptTimer: {
+        case rowAppStoreReviewPromptTimer: {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DEBUG message:BC_STRING_APP_STORE_REVIEW_PROMPT_TIMER preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:[[[alert textFields] firstObject].text intValue]] forKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];

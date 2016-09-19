@@ -300,18 +300,25 @@ MyWalletPhone.isArchived = function(accountOrAddress) {
 }
 
 MyWalletPhone.toggleArchived = function(accountOrAddress) {
+    
+    var didArchive = false;
+    
     if (Helpers.isNumber(accountOrAddress) && accountOrAddress >= 0) {
         if (MyWallet.wallet.isUpgradedToHD) {
             MyWallet.wallet.hdwallet.accounts[accountOrAddress].archived = !MyWallet.wallet.hdwallet.accounts[accountOrAddress].archived;
+            didArchive = MyWallet.wallet.hdwallet.accounts[accountOrAddress].archived
         } else {
             console.log('Warning: Getting accounts when wallet has not upgraded!');
             return '';
         }
     } else if (accountOrAddress) {
         MyWallet.wallet.key(accountOrAddress).archived = !MyWallet.wallet.key(accountOrAddress).archived;
+        didArchive =  MyWallet.wallet.key(accountOrAddress).archived;
     }
     
-    MyWalletPhone.get_history();
+    if (didArchive) {
+        MyWalletPhone.get_history();
+    }
 }
 
 MyWalletPhone.archiveTransferredAddresses = function(addresses) {
@@ -565,7 +572,7 @@ MyWalletPhone.getTransactionFee = function() {
         }
         
         currentPayment.prebuild().build().then(function (x) {
-                                               did_get_fee_dust(x.finalFee, x.extraFeeConsumption);
+                                               did_get_fee_dust_txSize(x.finalFee, x.extraFeeConsumption, x.txSize);
                                                return x;
                                                }).catch(buildFailure);
         
@@ -646,8 +653,6 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         loading_stop();
         
         did_load_wallet();
-        
-        MyWallet.wallet.getBalancesForArchived();
     };
     
     var history_error = function(error) {console.log(error);
@@ -728,7 +733,7 @@ MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
     
     var createPayment = function(address) {
         return new Promise(function (resolve) {
-                           var payment = new Payment().from(address).to(MyWallet.wallet.hdwallet.defaultAccountIndex).useAll();
+                           var payment = new Payment().from(address).useAll();
                            transferAllPayments[address] = payment;
                            payment.sideEffect(function (p) { resolve(p); });
                            })
@@ -783,7 +788,7 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
     
     currentPayment = transferAllPayments[address];
     if (currentPayment) {
-        currentPayment.build().then(function (x) {
+        currentPayment.to(MyWallet.wallet.hdwallet.defaultAccountIndex).build().then(function (x) {
                                     
                                     if (isFirstTransfer) {
                                     console.log('builtTransferAll: from:' + x.from);
@@ -818,6 +823,11 @@ MyWalletPhone.transferFundsToDefaultAccountFromAddress = function(address) {
                                                                                                                                                      MyWalletPhone.updateSweep(false, true);
                                                                                                                                                      return x;
                                                                                                                                                      }).catch(buildFailure);
+}
+
+MyWalletPhone.incrementReceiveIndexOfDefaultAccount = function() {
+    console.log('incrementing receive index');
+    MyWallet.wallet.hdwallet.defaultAccount.incrementReceiveIndex();
 }
 
 MyWalletPhone.quickSend = function(secondPassword) {
@@ -1149,19 +1159,7 @@ MyWalletPhone.addKey = function(keyString) {
         console.log('Add private key Error');
         console.log(e);
         
-        var message = 'There was an error importing this private key';
-        
-        if (e.message === 'presentInWallet') {
-            message = 'Key already imported';
-        }
-        else if (e === 'needsBip38') {
-            message = 'Missing BIP38 password';
-        }
-        else if (e === 'wrongBipPass') {
-            message = 'Wrong BIP38 password';
-        }
-        
-        on_error_adding_private_key(message);
+        on_error_adding_private_key(e);
     };
     
     var needsBip38Passsword = Helpers.detectPrivateKeyFormat(keyString) === 'bip38';
@@ -1374,6 +1372,22 @@ MyWalletPhone.getAccountInfo = function () {
     MyWallet.wallet.fetchAccountInfo().then(success).catch(error);
 }
 
+MyWalletPhone.getEmail = function () {
+    return MyWallet.wallet.accountInfo.email;
+}
+
+MyWalletPhone.getSMSNumber = function () {
+    return MyWallet.wallet.accountInfo.mobile == null ? '' : MyWallet.wallet.accountInfo.mobile;
+}
+
+MyWalletPhone.getEmailVerifiedStatus = function () {
+    return MyWallet.wallet.accountInfo.isEmailVerified;
+}
+
+MyWalletPhone.getSMSVerifiedStatus = function () {
+    return MyWallet.wallet.accountInfo.isMobileVerified;
+}
+
 MyWalletPhone.changeEmail = function(email) {
     
     var success = function () {
@@ -1540,6 +1554,22 @@ MyWalletPhone.getAllCurrencySymbols = function () {
     promise.then(success, error);
 }
 
+MyWalletPhone.getFiatAtTime = function(time, value, currencyCode) {
+    
+    var success = function (amount) {
+        console.log('Get fiat at time success');
+        on_get_fiat_at_time_success(amount, currencyCode);
+    };
+    
+    var error = function (e) {
+        var message = JSON.stringify(e);
+        console.log('Error getting fiat at time: ' + message[initial_error]);
+        on_get_fiat_at_time_error(message[initial_error]);
+    };
+
+    BlockchainAPI.getFiatAtTime(time, value, currencyCode).then(success).catch(error);
+}
+
 MyWalletPhone.getPasswordStrength = function(password) {
     var strength = Helpers.scorePassword(password);
     return strength;
@@ -1648,32 +1678,65 @@ MyWalletPhone.get2FAType = function() {
     return WalletStore.get2FAType();
 }
 
-MyWalletPhone.enableNotifications = function() {
+MyWalletPhone.emailNotificationsEnabled = function() {
+    return MyWallet.wallet.accountInfo.notifications.email;
+}
     
+MyWalletPhone.SMSNotificationsEnabled = function() {
+    return MyWallet.wallet.accountInfo.notifications.sms;
+}
+
+MyWalletPhone.enableEmailNotifications = function() {
+    MyWalletPhone.updateNotification({email: 'enable'});
+}
+
+MyWalletPhone.disableEmailNotifications = function() {
+    MyWalletPhone.updateNotification({email: 'disable'});
+}
+
+MyWalletPhone.enableSMSNotifications = function() {
+    MyWalletPhone.updateNotification({sms: 'enable'});
+}
+
+MyWalletPhone.disableSMSNotifications = function() {
+    MyWalletPhone.updateNotification({sms: 'disable'});
+}
+
+MyWalletPhone.updateNotification = function(updates) {
     var success = function () {
-        console.log('Enable notifications success');
-        on_change_email_notifications_success();
+        
+        var updateReceiveError = function(error) {
+            console.log('Enable notifications error: ' + error);
+        }
+        
+        if (!MyWallet.wallet.accountInfo.notifications.http) {
+            console.log('Enable notifications success; enabling for receiving');
+            BlockchainSettingsAPI.updateNotificationsOn({ receive: true }).then(function(x) {
+                                                                                on_change_notifications_success();
+                                                                                return x;
+                                                                                }).catch(updateReceiveError);
+        } else {
+            console.log('Enable notifications success');
+            on_change_notifications_success();
+        }
     }
     
     var error = function(error) {
         console.log('Enable notifications error: ' + error);
     }
     
-    MyWallet.wallet.enableNotifications(success, error);
-}
-
-MyWalletPhone.disableNotifications = function() {
+    var notificationsType = MyWallet.wallet.accountInfo.notifications;
     
-    var success = function () {
-        console.log('Disable notifications success');
-        on_change_email_notifications_success();
-    }
+    if (updates.sms == 'enable') notificationsType.sms = true;
+    if (updates.sms == 'disable') notificationsType.sms = false;
     
-    var error = function(error) {
-        console.log('Disable notifications error: ' + error);
-    }
+    if (updates.http == 'enable') notificationsType.http = true;
+    if (updates.http == 'disable') notificationsType.http = false;
     
-    MyWallet.wallet.disableNotifications(success, error);
+    if (updates.email == 'enable') notificationsType.email = true;
+    if (updates.email == 'disable') notificationsType.email = false;
+    
+    BlockchainSettingsAPI.updateNotificationsType(notificationsType).then(success).catch(error);
 }
 
 MyWalletPhone.updateTorIpBlock = function(willEnable) {
@@ -1772,4 +1835,12 @@ MyWalletPhone.dust = function() {
 MyWalletPhone.labelForLegacyAddress = function(key) {
     var label = MyWallet.wallet.key(key).label;
     return label == null ? '' : label;
+}
+
+MyWalletPhone.getNotePlaceholder = function(filter, transactionHash) {
+    if (filter < 0) filter = 'importedOrAll';
+    var transaction = MyWallet.wallet.txList.transaction(transactionHash);
+    var label = MyWallet.wallet.getNotePlaceholder(filter, transaction);
+    if (label == undefined) return '';
+    return label;
 }

@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by Matt Tuzzolo on 10/2/15.
-//  Copyright © 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCModalContentView.h"

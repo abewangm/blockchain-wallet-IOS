@@ -11,31 +11,31 @@
 "57.text" = "주소";
 
 /* (No Commment) */
-"58.text" = "레이블";
+"58.text" = "라벨";
 
 /* Class = "UITextField"; placeholder = "Label"; ObjectID = "59"; */
-"59.placeholder" = "레이블";
+"59.placeholder" = "라벨";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "60"; */
 "60.text" = "주소";
 
 /* (No Commment) */
-"68.text" = "없음 주소";
+"68.text" = "주소 없음";
 
 /* (No Commment) */
-"69.text" = "귀하의 계정 제대로 대응 하지 됩니다. 상단에 있는 버튼 화면 왼쪽 하 고 화면의 지침에 따라 클릭 합니다.";
+"69.text" = "귀하 계정은 페어링이 잘못 된 것 같습니다. 화면 위 왼쪽에 있는 단추를 클릭하고 화면 지시를 따르세요";
 
 /* (No Commment) */
-"80.normalTitle" = "아카이브 주소";
+"80.normalTitle" = "주소 보관";
 
 /* (No Commment) */
-"81.normalTitle" = "라벨 주소";
+"81.normalTitle" = "주소 라벨 붙이기";
 
 /* (No Commment) */
 "88.normalTitle" = "지불 요청";
 
 /* (No Commment) */
-"90.text" = "Bitcoin 주소 ";
+"90.text" = "비트코인 주소";
 
 /* (No Commment) */
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
@@ -56,17 +56,17 @@
 "GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ZHr-29-NdG"; */
-"ZHr-29-NdG.normalTitle" = "완료";
+"ZHr-29-NdG.normalTitle" = "완료됨";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
 "a9y-3I-Drw.placeholder" = "0.00";
 
 /* (No Commment) */
-"i1j-pG-caF.normalTitle" = "개인 키를 검색";
+"i1j-pG-caF.normalTitle" = "개인 열쇠 스캔";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
 "jRM-0A-Zuo.text" = "BTC";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
-"wDT-32-lDe.text" = "원";
+"wDT-32-lDe.text" = "USD";
 

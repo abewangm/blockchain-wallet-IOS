@@ -1,11 +1,11 @@
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "2Ig-LA-4kK"; */
-"2Ig-LA-4kK.text" = "Montant en devise";
+"2Ig-LA-4kK.text" = "MontantActuel";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
 "4.normalTitle" = "Continuer";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "6ll-Xx-4fm"; */
-"6ll-Xx-4fm.text" = "Montant en BTC";
+"6ll-Xx-4fm.text" = "MontantBtc";
 
 /* (No Commment) */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -17,10 +17,10 @@
 "7ho-GV-ikp.text" = "BTC";
 
 /* (No Commment) */
-"8LN-Tc-WVh.normalTitle" = "Exécuté";
+"8LN-Tc-WVh.normalTitle" = "C'est fait !";
 
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
-"9B2-23-8j5.text" = "Montant en devise";
+"9B2-23-8j5.text" = "MontantActuel";
 
 /* (No Commment) */
 "13.text" = "À";
@@ -32,13 +32,13 @@
 "52.text" = "0,00";
 
 /* (No Commment) */
-"57.text" = "5 BTC = 10 $US";
+"57.text" = "5 BTC = 10 USD";
 
 /* (No Commment) */
-"61.text" = "Étiquette :";
+"61.text" = "Libellé :";
 
 /* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
-"62.placeholder" = "Étiquette";
+"62.placeholder" = "Libellé";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
 "63.normalTitle" = "Sauvegarder";
@@ -50,19 +50,19 @@
 "65.text" = "Adresse :";
 
 /* (No Commment) */
-"67.text" = "Étiquette adresse";
+"67.text" = "Libeller l'adresse";
 
 /* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
 "Cbp-Qe-FKP.normalTitle" = "Personnaliser les frais";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Frais : ";
+"FB0-NP-5do.text" = "Frais :";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
-"IUn-6N-qeo.text" = "Montant en BTC";
+"IUn-6N-qeo.text" = "MontantBtc";
 
 /* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
-"Pgx-k8-cTb.normalTitle" = "Annuler ensuite";
+"Pgx-k8-cTb.normalTitle" = "Supprimer le suivant";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
 "Ubr-KG-egH.text" = "Total :";
@@ -77,10 +77,10 @@
 "Zhm-Jw-P4C.text" = "Frais";
 
 /* (No Commment) */
-"aKC-Q2-phD.text" = "Envoi de paiement";
+"aKC-Q2-phD.text" = "Paiement en cours";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Montant : ";
+"aeG-gf-oXV.text" = "Montant :";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "Fonds disponibles";
@@ -101,13 +101,13 @@
 "sXf-3w-qdy.normalTitle" = "Envoyer";
 
 /* Class = "UILabel"; text = "CurrTotal"; ObjectID = "t8M-NC-003"; */
-"t8M-NC-003.text" = "Devise totale";
+"t8M-NC-003.text" = "TotalActuel";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
-"vGH-md-Ck3.text" = "$US";
+"vGH-md-Ck3.text" = "USD";
 
 /* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
-"vzP-xG-GPO.text" = "BTC total";
+"vzP-xG-GPO.text" = "TotalBtc";
 
 /* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
 "yGR-Eh-YG1.text" = "À :";

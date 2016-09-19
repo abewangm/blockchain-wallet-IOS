@@ -1,92 +1,92 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Yedek fonları tekrar";
+"1Hq-6D-ut1.normalTitle" = "Parayı tekrar yedekle";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "Yedek fonları tekrar";
+"1Hq-6D-ut1.text" = "Parayı tekrar yedekle";
 
 /* (No Commment) */
-"3kJ-3U-lFe.text" = "Lütfen yeniden deneyin";
+"3kJ-3U-lFe.text" = "Lütfen tekrar deneyin";
 
 /* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Aşağıdaki sözcükler yedekleme işlemini tamamlamak için kurtarma ifade girin.";
+"4Nq-ue-tXr.text" = "Kurtarma İfadenizi aşağıdaki sözcükleri girerek yedekleme işlemini tamamlayın.";
 
 /* (No Commment) */
-"6zt-Xf-txg.text" = "Kelime ortaya çıkarmak için basılı tutun";
+"6zt-Xf-txg.text" = "Sözcüğü göstermek için basılı tutun";
 
 /* (No Commment) */
-"07q-RX-CeI.text" = "Lütfen yeniden deneyin";
+"07q-RX-CeI.text" = "Lütfen tekrar deneyin";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Yedek fonlar";
+"9A7-TT-PzN.title" = "Parayı Yedekle";
 
 /* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Oh yok! Paranızı kadar destekli değil.";
+"9Hu-uO-gJl.text" = "Ah hayır! Henüz hiç para yedeklemediniz.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Bu eylem için bitcoin-cüzdanını ikinci parola gerektirir. Lütfen aşağıya girin ve basın devam edin.";
+"9WK-My-5CL.text" = "Bu eylem bitcoin cüzdanınız için ikinci şifreyi gerektirir. Lütfen aşağıya girin ve devam seçeneğine tıklayın.";
 
 /* (No Commment) */
-"9hR-tm-aq5.placeholder" = "ilk kelime";
+"9hR-tm-aq5.placeholder" = "birinci sözcük";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "İkinci parola gerekli";
+"74J-f3-Lhq.title" = "İkinci Şifre Gerekli";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
-"AFH-AI-Rgk.normalTitle" = "Önceki sözcüğü";
+"AFH-AI-Rgk.normalTitle" = "Önceki sözcük";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
 "CBl-1W-VP8.placeholder" = "Şifre";
 
 /* (No Commment) */
-"EQM-OM-jK8.normalTitle" = "Bitmiş";
+"EQM-OM-jK8.normalTitle" = "Tamamlandı";
 
 /* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
-"FDO-ui-cGo.text" = "Bir ekran görüntüsü alma!
-Cüzdanını'nın güvenlik tehlikeye";
+"FDO-ui-cGo.text" = "Ekran görüntüsü almayın!
+Cüzdanınızın güvenliğini tehlikeye koyabilirsiniz.";
 
 /* (No Commment) */
-"Fda-Z4-3e7.placeholder" = "Altıncı kelime";
+"Fda-Z4-3e7.placeholder" = "altıncı sözcük";
 
 /* (No Commment) */
-"NaV-Bk-o1b.text" = "Cüzdanını geri yükleme";
+"NaV-Bk-o1b.text" = "Cüzdanınızı nasıl geri alırsınız";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
-"Okr-VE-yvm.text" = "Tek boynuzlu at";
+"Okr-VE-yvm.text" = "tek bileşenli";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
-"T3S-Dk-HAh.text" = "Lütfen yeniden deneyin";
+"T3S-Dk-HAh.text" = "Lütfen tekrar deneyin";
 
 /* (No Commment) */
-"T4p-mz-siC.normalTitle" = "DOĞRULAMA YEDEK";
+"T4p-mz-siC.normalTitle" = "YEDEKLEMEYİ DOĞRULA";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Bir yaprak kağıda görünür ve güvenli bir yerde saklayın aynı sırada kelimeleri yazmak
+"UCL-i9-UDp.text" = "Sözcükleri aynen kağıtta gösterildiği sıraya göre yazın ve güvenli bir yerde tutun
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "12 kelime kurtarma deyim mi kaybettin?";
+"Yh8-Gm-6op.text" = "12 sözcüklü kurtarma ifadenizi mi kaybettiniz?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
-"dkQ-nj-Pkf.normalTitle" = "SONRAKİ SÖZCÜĞÜ";
+"dkQ-nj-Pkf.normalTitle" = "SONRAKİ SÖZCÜK";
 
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
-"eaO-py-9rY.normalTitle" = "Sonraki sözcüğü";
+"eaO-py-9rY.normalTitle" = "Sonraki sözcük";
 
 /* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Lütfen, bitcoin erişim sağlamak için bir kaç dakika sürebilir (hariç alınan adresleri), parolanızı unutursanız veya hizmet devre dışı kaldığında bile. Biz bunu yaparken hızlı, ağrısız ve buna değer veriyorum.";
+"eyR-AW-SMc.text" = "Lütfen bitcoinlerinize (alınan adresler hariç) şifrenizi unuttuğunuzda veya hizmetimiz kullanılamadığında bile erişebildiğinizden emin olmak için birkaç dakika ayırın. Bunu hızlı, sorunsuz ve değecek şekilde yapacağımıza dair söz veriyoruz.";
 
 /* (No Commment) */
-"kcC-2S-PfL.placeholder" = "Üçüncü kelime";
+"kcC-2S-PfL.placeholder" = "üçüncü sözcük";
 
 /* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
-"mUc-u7-Zcj.text" = "Word 5 12";
+"mUc-u7-Zcj.text" = "12 sözcüğün 5. sözcüğü";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "Yedek cüzdan";
+"mYR-MQ-mS2.title" = "Cüzdanı Yedekle";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
 "nuD-nb-tAt.normalTitle" = "Devam";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "Yedek cüzdan";
+"xmf-pK-R3X.title" = "Cüzdanı Yedekle";
 

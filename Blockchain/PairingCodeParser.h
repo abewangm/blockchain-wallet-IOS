@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 22/07/2014.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 #import <AVFoundation/AVFoundation.h>
 #import "Wallet.h"

@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Mark Pfluger on 10/3/14.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "SideMenuViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ECSlidingViewController.h"
 #import "BCCreateAccountView.h"
 #import "BCEditAccountView.h"
@@ -339,7 +339,7 @@ int accountEntries = 0;
         [view addSubview:icon];
         
         UILabel *amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 24, self.tableView.frame.size.width - 100, 30)];
-        amountLabel.text = [app formatMoney:totalBalance localCurrency:app->symbolLocal];;
+        amountLabel.text = [NSNumberFormatter formatMoney:totalBalance localCurrency:app->symbolLocal];;
         amountLabel.textColor = [UIColor whiteColor];
         amountLabel.font = [UIFont boldSystemFontOfSize:17.0];
         [view addSubview:amountLabel];
@@ -451,7 +451,7 @@ int accountEntries = 0;
         if (indexPath.row < accountEntries) {
             int accountIdx = [app.wallet getIndexOfActiveAccount:(int)indexPath.row];
             uint64_t accountBalance = [app.wallet getBalanceForAccount:accountIdx];
-            cell.amountLabel.text = [app formatMoney:accountBalance localCurrency:app->symbolLocal];
+            cell.amountLabel.text = [NSNumberFormatter formatMoney:accountBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = [app.wallet getLabelForAccount:accountIdx];
             cell.accountIdx = accountIdx;
 #ifdef ENABLE_TRANSACTION_FILTERING
@@ -467,7 +467,7 @@ int accountEntries = 0;
         else {
             uint64_t legacyBalance = [app.wallet getTotalBalanceForActiveLegacyAddresses];
             [cell.iconImage setImage:[UIImage imageNamed:@"importedaddress"]];
-            cell.amountLabel.text = [app formatMoney:legacyBalance localCurrency:app->symbolLocal];
+            cell.amountLabel.text = [NSNumberFormatter formatMoney:legacyBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = BC_STRING_IMPORTED_ADDRESSES;
 #ifdef ENABLE_TRANSACTION_FILTERING
             if ([app filterIndex] == FILTER_INDEX_IMPORTED_ADDRESSES) {

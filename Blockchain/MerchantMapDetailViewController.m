@@ -3,12 +3,12 @@
 //  Blockchain
 //
 //  Created by User on 1/2/15.
-//  Copyright (c) 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "MerchantMapDetailViewController.h"
 
-#import "AppDelegate.h"
+#import "RootService.h"
 
 #import "Merchant.h"
 
@@ -132,8 +132,9 @@
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:phoneNumber]]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Operation Not Supported" message:@"This device does not support making phone calls."  delegate:self cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Operation Not Supported" message:@"This device does not support making phone calls." preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -153,12 +154,14 @@
         if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:merchantURL]]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:merchantURL]];
         } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Operation Not Supported" message:@"This device does not support this operation."  delegate:self cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Operation Not Supported" message:@"This device does not support this operation." preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
         }
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Address" message:@"We are having troubles opening this Merchant address."  delegate:self cancelButtonTitle:BC_STRING_OK otherButtonTitles: nil];
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Address" message:@"We are having troubles opening this Merchant address." preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

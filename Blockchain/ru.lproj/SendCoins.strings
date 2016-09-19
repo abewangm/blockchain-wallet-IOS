@@ -1,11 +1,11 @@
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "2Ig-LA-4kK"; */
-"2Ig-LA-4kK.text" = "CurrAmt";
+"2Ig-LA-4kK.text" = "ТекСумма";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
 "4.normalTitle" = "Продолжить";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "6ll-Xx-4fm"; */
-"6ll-Xx-4fm.text" = "BtcAmt";
+"6ll-Xx-4fm.text" = "СуммаBtc";
 
 /* (No Commment) */
 "6zi-8R-Tmt.normalTitle" = "BTC";
@@ -20,25 +20,25 @@
 "8LN-Tc-WVh.normalTitle" = "Готово";
 
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
-"9B2-23-8j5.text" = "CurrAmt";
+"9B2-23-8j5.text" = "ТекСумма";
 
 /* (No Commment) */
 "13.text" = "Кому";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
-"52.placeholder" = "0.000";
+"52.placeholder" = "0,000";
 
 /* (No Commment) */
-"52.text" = "0.00";
+"52.text" = "0,00";
 
 /* (No Commment) */
 "57.text" = "5 BTC = $10";
 
 /* (No Commment) */
-"61.text" = "Ярлык:";
+"61.text" = "Метка:";
 
 /* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
-"62.placeholder" = "Ярлык";
+"62.placeholder" = "Метка";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
 "63.normalTitle" = "Сохранить";
@@ -50,19 +50,19 @@
 "65.text" = "Адрес:";
 
 /* (No Commment) */
-"67.text" = "Адрес ярлыка";
+"67.text" = "Адрес метки";
 
 /* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
-"Cbp-Qe-FKP.normalTitle" = "Настройка плата";
+"Cbp-Qe-FKP.normalTitle" = "Персональная настройка комиссии";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Комиссия: ";
+"FB0-NP-5do.text" = "Комиссия:";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
-"IUn-6N-qeo.text" = "BtcAmt";
+"IUn-6N-qeo.text" = "СуммаBtc";
 
 /* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
-"Pgx-k8-cTb.normalTitle" = "Отменить Следующая";
+"Pgx-k8-cTb.normalTitle" = "Отменить след.";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
 "Ubr-KG-egH.text" = "Всего:";
@@ -74,13 +74,13 @@
 "Zgn-Wx-Uwx.text" = "Подождите";
 
 /* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
-"Zhm-Jw-P4C.text" = "Плата";
+"Zhm-Jw-P4C.text" = "Комиссия";
 
 /* (No Commment) */
 "aKC-Q2-phD.text" = "Отправка платежа";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Сумма: ";
+"aeG-gf-oXV.text" = "Сумма:";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "Средства в наличии";
@@ -95,19 +95,19 @@
 "pPu-bJ-k6p.normalTitle" = "Продолжить";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
-"qx4-XV-uhn.placeholder" = "0.00";
+"qx4-XV-uhn.placeholder" = "0,00";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sXf-3w-qdy"; */
 "sXf-3w-qdy.normalTitle" = "Отправить";
 
 /* Class = "UILabel"; text = "CurrTotal"; ObjectID = "t8M-NC-003"; */
-"t8M-NC-003.text" = "CurrTotal";
+"t8M-NC-003.text" = "ТекВсего";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
 "vGH-md-Ck3.text" = "USD";
 
 /* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
-"vzP-xG-GPO.text" = "BtcTotal";
+"vzP-xG-GPO.text" = "BtcВсего";
 
 /* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
 "yGR-Eh-YG1.text" = "Кому:";

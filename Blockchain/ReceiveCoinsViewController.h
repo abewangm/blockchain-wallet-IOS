@@ -61,6 +61,7 @@
 - (void)paymentReceived:(NSDecimalNumber *)amount;
 
 - (void)reload;
+- (void)reloadMainAddress;
 - (void)clearAmounts;
 
 - (void)hideKeyboard;

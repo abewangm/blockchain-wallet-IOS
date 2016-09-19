@@ -5,7 +5,7 @@
 "48.normalTitle" = "บันทึก";
 
 /* (No Commment) */
-"56.text" = "ป้ายชื่อที่อยู่";
+"56.text" = "ให้ป้ายชื่อที่อยู่";
 
 /* (No Commment) */
 "57.text" = "ที่อยู่";
@@ -23,19 +23,19 @@
 "68.text" = "ไม่มีที่อยู่";
 
 /* (No Commment) */
-"69.text" = "บัญชีของคุณจะจับคู่คงไม่ถูกต้อง คลิกปุ่มด้านบนซ้ายของหน้าจอ และทำตามคำแนะนำบนหน้าจอ";
+"69.text" = "บัญชีของคุณอาจไม่ได้รับการจับคู่อย่างถูกต้อง คลิกปุ่มที่มุมบนซ้ายของหน้าจอแล้วทำตามคำแนะนำบนหน้าจอ";
 
 /* (No Commment) */
-"80.normalTitle" = "ที่อยู่ถาวร";
+"80.normalTitle" = "เก็บที่อยู่นี้เข้าคลัง";
 
 /* (No Commment) */
-"81.normalTitle" = "ป้ายชื่อที่อยู่";
+"81.normalTitle" = "ให้ป้ายชื่อที่อยู่";
 
 /* (No Commment) */
-"88.normalTitle" = "คำขอชำระเงิน";
+"88.normalTitle" = "ร้องขอการชำระเงิน";
 
 /* (No Commment) */
-"90.text" = "ที่อยู่ Bitcoin ";
+"90.text" = "ที่อยู่ Bitcoin";
 
 /* (No Commment) */
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
@@ -47,26 +47,26 @@
 "100.text" = "จำนวน:";
 
 /* (No Commment) */
-"120.text" = "บีทีซี 5 = $10";
+"120.text" = "5 BTC = $10";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
 "E60-hZ-tDl.placeholder" = "0.000";
 
 /* (No Commment) */
-"GwZ-6f-89z.normalTitle" = "บีทีซี";
+"GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ZHr-29-NdG"; */
-"ZHr-29-NdG.normalTitle" = "เสร็จแล้ว";
+"ZHr-29-NdG.normalTitle" = "เสร็จ";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
 "a9y-3I-Drw.placeholder" = "0.00";
 
 /* (No Commment) */
-"i1j-pG-caF.normalTitle" = "การสแกนคีย์ส่วนตัว";
+"i1j-pG-caF.normalTitle" = "สแกนคีย์ส่วนตัว";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
-"jRM-0A-Zuo.text" = "บีทีซี";
+"jRM-0A-Zuo.text" = "BTC";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
-"wDT-32-lDe.text" = "ดอลลาร์สหรัฐ";
+"wDT-32-lDe.text" = "USD";
 

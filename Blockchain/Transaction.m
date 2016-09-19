@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 10/01/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "Transaction.h"
@@ -18,7 +18,10 @@
     Transaction * transaction = [[Transaction alloc] init];
     
     transaction.from = [[InOut alloc] init];
-    transaction.to = [[InOut alloc] init];
+    
+    NSDictionary *fromDict = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM];
+    transaction.from.label = [fromDict objectForKey:DICTIONARY_KEY_LABEL];
+    transaction.to = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO];
 
     transaction.block_height = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT] intValue];
     transaction.confirmations = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS] intValue];
@@ -29,6 +32,9 @@
     transaction.time = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TIME] longLongValue];
     transaction.fromWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY] boolValue];
     transaction.toWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY] boolValue];
+    transaction.note = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_NOTE];
+    
+    transaction.fiatAmountsAtTime = [[NSMutableDictionary alloc] init];
     
     return transaction;
 }

@@ -5,7 +5,7 @@
 "48.normalTitle" = "Kaydet";
 
 /* (No Commment) */
-"56.text" = "Etiket adres";
+"56.text" = "Etiket Adresi";
 
 /* (No Commment) */
 "57.text" = "Adres";
@@ -20,53 +20,53 @@
 "60.text" = "Adres";
 
 /* (No Commment) */
-"68.text" = "Adresi yok";
+"68.text" = "Hiç Adres Yok";
 
 /* (No Commment) */
-"69.text" = "Hesabınızın doğru şekilde eşleştirilmiş muhtemelen değil. Tıklayın düğmesini üst ekranın bıraktı ve ekranda görüntülenen yönergeleri izleyin.";
+"69.text" = "Hesabınız muhtemelen doğru şekilde eşleşmedi. Ekranın sol üst kısmındaki düğmeye tıklayın ve ekrandaki talimatları takip edin.";
 
 /* (No Commment) */
-"80.normalTitle" = "ARŞİV ADRESİ";
+"80.normalTitle" = "ADRESİ ARŞİVLE";
 
 /* (No Commment) */
-"81.normalTitle" = "ETİKET ADRES";
+"81.normalTitle" = "ETİKET ADRESİ";
 
 /* (No Commment) */
-"88.normalTitle" = "ÖDEME TALEBİ";
+"88.normalTitle" = "ÖDEME TALEP ET";
 
 /* (No Commment) */
-"90.text" = "Bitcoin adresi ";
+"90.text" = "Bitcoin Adresi";
 
 /* (No Commment) */
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
 /* (No Commment) */
-"92.normalTitle" = "ADRESİNİ KOPYALA";
+"92.normalTitle" = "ADRESİ KOPYALA";
 
 /* (No Commment) */
-"100.text" = "Tutar:";
+"100.text" = "Miktar:";
 
 /* (No Commment) */
-"120.text" = "5 BTC = 10 $";
+"120.text" = "5 BTC = 10$";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
-"E60-hZ-tDl.placeholder" = "0.000";
+"E60-hZ-tDl.placeholder" = "0.000 ";
 
 /* (No Commment) */
-"GwZ-6f-89z.normalTitle" = "BTC";
+"GwZ-6f-89z.normalTitle" = "BTC ";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ZHr-29-NdG"; */
-"ZHr-29-NdG.normalTitle" = "Bitmiş";
+"ZHr-29-NdG.normalTitle" = "Tamamlandı";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
-"a9y-3I-Drw.placeholder" = "0,00";
+"a9y-3I-Drw.placeholder" = "0.00 ";
 
 /* (No Commment) */
-"i1j-pG-caF.normalTitle" = "Özel anahtar inceden inceye gözden geçirmek";
+"i1j-pG-caF.normalTitle" = "Özel Anahtarı Tara";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "jRM-0A-Zuo"; */
 "jRM-0A-Zuo.text" = "BTC";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
-"wDT-32-lDe.text" = "USD";
+"wDT-32-lDe.text" = "USD ";
 

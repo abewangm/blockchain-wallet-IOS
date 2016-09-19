@@ -44,8 +44,10 @@
 @property(nonatomic) BOOL loadedAllTransactions;
 @property(nonatomic) UIButton *moreButton;
 @property(nonatomic) BOOL clickedFetchMore;
+@property(nonatomic) NSIndexPath *lastSelectedIndexPath;
 
 - (void)reload;
+- (void)reloadSymbols;
 - (void)animateNextCellAfterReload;
 - (void)setText;
 - (UITableView*)tableView;

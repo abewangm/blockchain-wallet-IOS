@@ -2,7 +2,7 @@
 "0zs-bt-hEl.text" = "Сохранить подсказку";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "Верифицировать электронный адрес";
+"8Ha-3e-Nqx.text" = "Верифицировать эл. почту";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
 "8Zy-R2-HoW.text" = "2-шаговая верификация";
@@ -11,13 +11,13 @@
 "Ii6-KE-x0B.placeholder" = "Подтвердите новый пароль";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
-"Kmb-pO-dHq.text" = "Слабый";
+"Kmb-pO-dHq.text" = "Ненадежный";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
 "VKs-B5-luJ.placeholder" = "Новый пароль";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Резервная фраза";
+"WVd-f2-ZLG.text" = "Фраза для восстановления";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
 "Wor-ZR-sPS.text" = "Заблокировать запросы из TOR";
