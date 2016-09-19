@@ -67,7 +67,7 @@
 - (void)configureValueCell:(Transaction *)transaction
 {
     // Label for Sent, Transferred, or Received
-    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, self.frame.size.width/3, 30)];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, self.frame.size.width/3, 36)];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.textColor = [UIColor lightGrayColor];
     self.mainLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE_MEDIUM size:20];
@@ -87,7 +87,7 @@
     CGFloat XPositionForAccessoryViews = self.contentView.layoutMargins.left + self.mainLabel.frame.size.width;
     
     // Amount button
-    self.amountButton = [[UIButton alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.mainLabel.frame.origin.y, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 30)];
+    self.amountButton = [[UIButton alloc] initWithFrame:CGRectMake(XPositionForAccessoryViews, self.mainLabel.frame.origin.y, self.frame.size.width - XPositionForAccessoryViews - self.contentView.layoutMargins.right, 36)];
     self.amountButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.amountButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.amountButton setTitle:[NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.amount)] forState:UIControlStateNormal];
