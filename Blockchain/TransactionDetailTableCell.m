@@ -100,13 +100,16 @@
     // Value when sent label
     self.fiatValueWhenSentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.amountButton.frame.origin.y + self.amountButton.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right, 20.5)];
     self.fiatValueWhenSentLabel.font =  [UIFont systemFontOfSize:14];
-    
-    NSString *currencyCode = [self.detailViewDelegate getCurrencyCode];
-    if ([transaction.fiatAmountsAtTime objectForKey:currencyCode]) {
+
+//    TODO: use currencyCode instead of CURRENCY_CODE_USD when endpoint supports other currencies
+//    NSString *currencyCode = [self.detailViewDelegate getCurrencyCode];
+    if ([transaction.fiatAmountsAtTime objectForKey:CURRENCY_CODE_USD]) {
         self.fiatValueWhenSentLabel.attributedText = nil;
         self.fiatValueWhenSentLabel.textColor = [UIColor lightGrayColor];
-        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, [NSNumberFormatter appendStringToFiatSymbol:[transaction.fiatAmountsAtTime objectForKey:currencyCode]]];
+        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, [NSNumberFormatter appendStringToFiatSymbol:[transaction.fiatAmountsAtTime objectForKey:CURRENCY_CODE_USD]]];
+        self.fiatValueWhenSentLabel.hidden = NO;
     } else {
+        self.fiatValueWhenSentLabel.hidden = YES;
         self.fiatValueWhenSentLabel.text = nil;
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, @".........."]];
         [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, attributedString.length - 10)];
