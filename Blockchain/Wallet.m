@@ -3144,7 +3144,7 @@
 
 - (void)getKey:(NSString*)key success:(void (^)(NSString*))success
 {
-    id value = [[NSUserDefaults standardUserDefaults] valueForKey:key];
+    id value = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     
     DLog(@"getKey:%@", key);
     
@@ -3155,7 +3155,7 @@
 {
     DLog(@"saveKey:%@", key);
     
-    [[NSUserDefaults standardUserDefaults] setValue:value forKey:key];
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }

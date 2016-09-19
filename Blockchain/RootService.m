@@ -2653,9 +2653,9 @@ void (^secondPasswordSuccess)(NSString *);
             return;
         }
         
-        [[NSUserDefaults standardUserDefaults] setValue:encrypted forKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD];
-        [[NSUserDefaults standardUserDefaults] setValue:[[app.wallet.password SHA256] substringToIndex:MIN([app.wallet.password length], 5)] forKey:USER_DEFAULTS_KEY_PASSWORD_PART_HASH];
-        [[NSUserDefaults standardUserDefaults] setValue:key forKey:USER_DEFAULTS_KEY_PIN_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:encrypted forKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD];
+        [[NSUserDefaults standardUserDefaults] setObject:[[app.wallet.password SHA256] substringToIndex:MIN([app.wallet.password length], 5)] forKey:USER_DEFAULTS_KEY_PASSWORD_PART_HASH];
+        [[NSUserDefaults standardUserDefaults] setObject:key forKey:USER_DEFAULTS_KEY_PIN_KEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         // Update your info to new pin code
