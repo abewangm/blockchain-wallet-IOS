@@ -1304,17 +1304,6 @@ void (^secondPasswordSuccess)(NSString *);
     [KeychainItemWrapper setSharedKeyInKeychain:sharedKey];
 }
 
-- (BOOL)isQRCodeScanningSupported
-{
-    NSUInteger platformType = [[UIDevice currentDevice] platformType];
-    
-    if (platformType ==  UIDeviceiPhoneSimulator || platformType ==  UIDeviceiPhoneSimulatoriPhone  || platformType ==  UIDeviceiPhoneSimulatoriPhone || platformType ==  UIDevice1GiPhone || platformType ==  UIDevice3GiPhone || platformType ==  UIDevice1GiPod || platformType ==  UIDevice2GiPod || ![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
-        return FALSE;
-    }
-    
-    return TRUE;
-}
-
 - (IBAction)scanAccountQRCodeclicked:(id)sender
 {
     if (![self getCaptureDeviceInput]) {
