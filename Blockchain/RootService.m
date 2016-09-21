@@ -1693,7 +1693,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     Transaction *transaction = latestResponse.transactions[self.transactionsViewController.lastSelectedIndexPath.row];
     
-    if ([[[fiatAmount componentsSeparatedByString:@"."] lastObject] length] == 1) {
+    NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
+    if (components.count > 1 && [[components lastObject] length] == 1) {
         fiatAmount = [fiatAmount stringByAppendingString:@"0"];
     }
     
