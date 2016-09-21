@@ -52,7 +52,7 @@
     self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width - self.defaultTextViewHeight, self.defaultTextViewHeight);
     
     self.textView.delegate = self;
-    [self addSubview:self.textView];
+    [self.contentView addSubview:self.textView];
     self.textView.userInteractionEnabled = NO;
     
     [self addEditButton];
@@ -82,7 +82,7 @@
         self.mainLabel.text = [BC_STRING_SENT uppercaseString];
         self.mainLabel.textColor = COLOR_TRANSACTION_SENT;
     }
-    [self addSubview:self.mainLabel];
+    [self.contentView addSubview:self.mainLabel];
     
     CGFloat XPositionForAccessoryViews = self.contentView.layoutMargins.left + self.mainLabel.frame.size.width;
     
@@ -95,7 +95,7 @@
     [self.amountButton addTarget:self action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
     [self.amountButton setTitleColor:self.mainLabel.textColor forState:UIControlStateNormal];
-    [self addSubview:self.amountButton];
+    [self.contentView addSubview:self.amountButton];
     
     // Value when sent label
     self.fiatValueWhenSentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.amountButton.frame.origin.y + self.amountButton.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right, 20.5)];
@@ -119,7 +119,7 @@
     
     self.fiatValueWhenSentLabel.adjustsFontSizeToFitWidth = YES;
     self.fiatValueWhenSentLabel.textAlignment = NSTextAlignmentRight;
-    [self addSubview:self.fiatValueWhenSentLabel];
+    [self.contentView addSubview:self.fiatValueWhenSentLabel];
     
     // Transaction fee label
     self.transactionFeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.fiatValueWhenSentLabel.frame.origin.y + self.fiatValueWhenSentLabel.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right, 20.5)];
@@ -128,7 +128,7 @@
     self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.fee)]];
     self.transactionFeeLabel.adjustsFontSizeToFitWidth = YES;
     self.transactionFeeLabel.textAlignment = NSTextAlignmentRight;
-    [self addSubview:self.transactionFeeLabel];
+    [self.contentView addSubview:self.transactionFeeLabel];
 }
 
 - (void)configureToCell:(Transaction *)transaction
@@ -147,7 +147,7 @@
         self.mainLabel.adjustsFontSizeToFitWidth = YES;
         self.mainLabel.text = BC_STRING_TO;
         self.mainLabel.textColor = [UIColor lightGrayColor];
-        [self addSubview:self.mainLabel];
+        [self.contentView addSubview:self.mainLabel];
         
         CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
         self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
@@ -155,7 +155,7 @@
         self.accessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
         self.accessoryLabel.textColor = [UIColor blackColor];
-        [self addSubview:self.accessoryLabel];
+        [self.contentView addSubview:self.accessoryLabel];
         self.accessoryType = UITableViewCellAccessoryNone;
     }
 }
@@ -166,14 +166,14 @@
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_FROM;
     self.mainLabel.textColor = [UIColor lightGrayColor];
-    [self addSubview:self.mainLabel];
+    [self.contentView addSubview:self.mainLabel];
     
     CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
     self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, 20.5)];
     self.accessoryLabel.textAlignment = NSTextAlignmentRight;
     self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.accessoryLabel.text = transaction.from.label;
-    [self addSubview:self.accessoryLabel];
+    [self.contentView addSubview:self.accessoryLabel];
 }
 
 - (void)configureDateCell:(Transaction *)transaction
@@ -182,7 +182,7 @@
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_DATE;
     self.mainLabel.textColor = [UIColor lightGrayColor];
-    [self addSubview:self.mainLabel];
+    [self.contentView addSubview:self.mainLabel];
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setAMSymbol:@"am"];
@@ -196,7 +196,7 @@
     self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.accessoryLabel.textAlignment = NSTextAlignmentRight;
     self.accessoryLabel.text = dateString;
-    [self addSubview:self.accessoryLabel];
+    [self.contentView addSubview:self.accessoryLabel];
 }
 
 - (void)configureStatusCell:(Transaction *)transaction
@@ -205,7 +205,7 @@
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_STATUS;
     self.mainLabel.textColor = [UIColor lightGrayColor];
-    [self addSubview:self.mainLabel];
+    [self.contentView addSubview:self.mainLabel];
 
     CGFloat accessoryButtonXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
     self.accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(accessoryButtonXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryButtonXPosition, self.frame.size.height)];
@@ -216,7 +216,7 @@
     [self.accessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
     self.accessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.accessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
-    [self addSubview:self.accessoryButton];
+    [self.contentView addSubview:self.accessoryButton];
 }
 
 - (void)addPlaceholderLabel
@@ -228,7 +228,7 @@
     NSString *label = [self.detailViewDelegate getNotePlaceholder];
     self.textViewPlaceholderLabel.text = label && label.length > 0 ? label : BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
     self.textViewPlaceholderLabel.adjustsFontSizeToFitWidth = YES;
-    [self addSubview:self.textViewPlaceholderLabel];
+    [self.contentView addSubview:self.textViewPlaceholderLabel];
 }
 
 - (void)addEditButton
@@ -240,7 +240,7 @@
     self.editButton.imageEdgeInsets = UIEdgeInsetsMake(20, 10, 20, 19);
     self.editButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.editButton addTarget:self action:@selector(editDescription) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:self.editButton];
+    [self.contentView addSubview:self.editButton];
 }
 
 - (void)editDescription
