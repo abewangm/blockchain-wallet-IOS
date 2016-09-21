@@ -233,11 +233,12 @@
 
 - (void)addEditButton
 {
-    self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x + self.textView.frame.size.width, self.textView.frame.origin.y, self.defaultTextViewHeight, self.defaultTextViewHeight)];
+    self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x + self.textView.frame.size.width, 0, self.frame.size.width - (self.textView.frame.origin.x + self.textView.frame.size.width), [self.detailViewDelegate getDefaultRowHeight])];
     [self.editButton setImage:[UIImage imageNamed:@"pencil"] forState:UIControlStateNormal];
     [self.editButton setImage:[self.editButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [self.editButton.imageView setTintColor:[UIColor lightGrayColor]];
-    self.editButton.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8);
+    self.editButton.imageEdgeInsets = UIEdgeInsetsMake(20, 10, 20, 19);
+    self.editButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.editButton addTarget:self action:@selector(editDescription) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.editButton];
 }

@@ -15,6 +15,7 @@
 - (void)showWebviewDetail;
 - (NSString *)getNotePlaceholder;
 - (NSString *)getCurrencyCode;
+- (CGFloat)getDefaultRowHeight;
 @end
 
 @interface TransactionDetailTableCell : UITableViewCell <UITextViewDelegate>

@@ -320,6 +320,11 @@ const CGFloat rowHeightValue = 116;
     return [app.latestResponse.symbol_local.code lowercaseString];
 }
 
+- (CGFloat)getDefaultRowHeight
+{
+    return rowHeightDefault;
+}
+
 #pragma mark - Recipients Delegate
 
 - (BOOL)isWatchOnlyLegacyAddress:(NSString *)addr
