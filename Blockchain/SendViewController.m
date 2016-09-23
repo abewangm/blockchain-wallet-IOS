@@ -1892,7 +1892,15 @@ BOOL displayingLocalSymbolSend;
     NSString *language = btcAmountField.textInputMode.primaryLanguage;
     NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
     NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-    if ([amountString containsString:@","]) amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    
+    NSString *europeanComma = @",";
+    NSString *arabicComma= @"٫";
+    
+    if ([amountString containsString:europeanComma]) {
+        amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:europeanComma withString:@"."];
+    } else if ([amountString containsString:arabicComma]) {
+        amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:arabicComma withString:@"."];
+    }
     if (value <= 0 || [amountString doubleValue] <= 0) {
         [self showErrorBeforeSending:BC_STRING_INVALID_SEND_VALUE];
         return;
