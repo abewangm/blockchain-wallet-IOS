@@ -155,13 +155,6 @@ static PEViewController *VerifyController()
             
             [app.wallet subscribeToAddress:nextAddress];
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:.5 animations:^{
-                    pinController.swipeLabel.alpha = 0;
-                    pinController.swipeLabelImageView.alpha = 0;
-                }];
-            });
-            
             if (!self.addressLabel) {
                 self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
                 [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
