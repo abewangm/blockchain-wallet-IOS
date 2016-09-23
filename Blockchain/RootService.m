@@ -280,9 +280,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
     
-    [SessionManager resetSessionWithCompletionHandler:^{
-        // completion handler must be non-null
-    }];
+    if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey]) {
+        [SessionManager resetSessionWithCompletionHandler:^{
+            // completion handler must be non-null
+        }];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
