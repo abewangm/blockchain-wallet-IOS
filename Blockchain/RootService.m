@@ -124,7 +124,7 @@ void (^secondPasswordSuccess)(NSString *);
     app.window = appDelegate.window;
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING : @YES}];
-    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED : @YES}];
 #ifndef ENABLE_DEBUG_MENU
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
     
@@ -341,11 +341,10 @@ void (^secondPasswordSuccess)(NSString *);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (transactions.count > 0) {
                         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
-                        [self.pinEntryViewController paymentReceived];
                     } else {
                         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
-                        [self.pinEntryViewController setupQRCode];
                     }
+                    [self.pinEntryViewController setupQRCode];
                 });
                 
             }];
