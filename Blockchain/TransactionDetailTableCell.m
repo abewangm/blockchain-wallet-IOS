@@ -273,4 +273,9 @@
     [self.detailViewDelegate textViewDidChange:textView];
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return textView.text.length + (text.length - range.length) <= TRANSACTION_DESCRIPTION_CHARACTER_LIMIT;
+}
+
 @end

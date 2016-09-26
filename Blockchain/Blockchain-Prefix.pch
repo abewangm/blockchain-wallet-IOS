@@ -462,6 +462,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define WEBSOCKET_CODE_LOGGED_OUT 4501
 #define WEBSOCKET_CODE_DECRYPTED_WALLET 4502
 
+#define TRANSACTION_DESCRIPTION_CHARACTER_LIMIT 255
+
 #pragma mark - Runtime modes
 
 // #define DISABLE_EDITING_ACCOUNTS 1 // comment this line out to enable support for adding/editing accounts
