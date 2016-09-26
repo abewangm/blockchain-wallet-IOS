@@ -1102,6 +1102,9 @@ void (^secondPasswordSuccess)(NSString *);
         [app showModalWithContent:secondPasswordView closeType:ModalCloseTypeClose headerText:BC_STRING_SECOND_PASSWORD_REQUIRED onDismiss:^() {
             secondPasswordTextField.text = nil;
             [self.sendViewController enablePaymentButtons];
+            
+            [self forceHDUpgradeForLegacyWallets];
+            
         } onResume:nil];
         
         [modalView.closeButton removeTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventAllTouchEvents];
