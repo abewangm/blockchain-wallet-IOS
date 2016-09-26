@@ -1377,6 +1377,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self.loginTimer invalidate];
     
+    [self.wallet resetBackupStatus];
+    
     [self.wallet loadBlankWallet];
     
     self.latestResponse = nil;
@@ -1709,6 +1711,11 @@ void (^secondPasswordSuccess)(NSString *);
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     
     [app.tabViewController.presentedViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)didSetDefaultAccount
+{
+    [self.receiveViewController reloadMainAddress];
 }
 
 #pragma mark - Show Screens

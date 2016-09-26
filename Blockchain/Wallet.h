@@ -98,6 +98,7 @@
 - (void)didReceivePaymentNotice:(NSString *)notice;
 - (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode;
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
+- (void)didSetDefaultAccount;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
@@ -146,6 +147,8 @@
 
 - (void)loadWalletWithGuid:(NSString *)_guid sharedKey:(NSString *)_sharedKey password:(NSString *)_password;
 - (void)loadBlankWallet;
+
+- (void)resetBackupStatus;
 
 - (NSDictionary *)addressBook;
 

@@ -27,6 +27,7 @@
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
+@property (nonatomic) BOOL isSettingDefaultAccount;
 @end
 
 @implementation transactionProgressListeners
@@ -691,6 +692,13 @@
         
         [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\", \"%@\", \"%@\")", [self.guid escapeStringForJS], escapedSharedKey, [self.password escapeStringForJS], escapedSessionToken, escapedTwoFactorInput]];
     }
+}
+
+- (void)resetBackupStatus
+{
+    // Some changes to the wallet requiring backup afterwards need only specific updates to the UI; reloading the entire Receive screen, for example, is not necessary when setting the default account. Unfortunately information about the specific function that triggers backup is lost by the time multiaddress is called.
+    
+    self.isSettingDefaultAccount = NO;
 }
 
 # pragma mark - Socket Delegate
@@ -2450,6 +2458,8 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didFailBackupWallet!", [delegate class]);
     }
+    
+    [self resetBackupStatus];
 }
 
 - (void)on_backup_wallet_success
@@ -2464,6 +2474,14 @@
     // Hide the busy view if previously syncing
     [self loading_stop];
     self.isSyncing = NO;
+    
+    if (self.isSettingDefaultAccount) {
+        if ([self.delegate respondsToSelector:@selector(didSetDefaultAccount)]) {
+            [self.delegate didSetDefaultAccount];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector didSetDefaultAccount!", [delegate class]);
+        }
+    }
 }
 
 - (void)did_fail_set_guid
@@ -3032,6 +3050,8 @@
     }
     
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setDefaultAccount(%d)", index]];
+    
+    self.isSettingDefaultAccount = YES;
 }
 
 - (BOOL)hasLegacyAddresses
