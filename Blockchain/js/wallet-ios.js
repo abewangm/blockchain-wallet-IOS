@@ -1381,11 +1381,11 @@ MyWalletPhone.getSMSNumber = function () {
 }
 
 MyWalletPhone.getEmailVerifiedStatus = function () {
-    return MyWallet.wallet.accountInfo.isEmailVerified;
+    return MyWallet.wallet.accountInfo.isEmailVerified == null ? false : MyWallet.wallet.accountInfo.isEmailVerified;
 }
 
 MyWalletPhone.getSMSVerifiedStatus = function () {
-    return MyWallet.wallet.accountInfo.isMobileVerified;
+    return MyWallet.wallet.accountInfo.isMobileVerified == null ? false : MyWallet.wallet.accountInfo.isMobileVerified;
 }
 
 MyWalletPhone.changeEmail = function(email) {
