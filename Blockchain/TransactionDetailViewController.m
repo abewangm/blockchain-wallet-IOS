@@ -7,7 +7,15 @@
 //
 
 #import "TransactionDetailViewController.h"
+
+#import "TransactionDetailDescriptionCell.h"
+#import "TransactionDetailToCell.h"
+#import "TransactionDetailFromCell.h"
+#import "TransactionDetailDateCell.h"
+#import "TransactionDetailStatusCell.h"
+#import "TransactionDetailValueCell.h"
 #import "TransactionDetailTableCell.h"
+
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
 #import "TransactionDetailNavigationController.h"
@@ -28,7 +36,7 @@ const int cellRowStatus = 5;
 const CGFloat rowHeightDefault = 60;
 const CGFloat rowHeightValue = 116;
 
-@interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DetailDelegate, RecipientsDelegate>
+@interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DescriptionDelegate, ValueDelegate, StatusDelegate, RecipientsDelegate>
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UITextView *textView;
@@ -48,7 +56,14 @@ const CGFloat rowHeightValue = 116;
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerClass:[TransactionDetailTableCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL];
+    
+    [self.tableView registerClass:[TransactionDetailDescriptionCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION];
+    [self.tableView registerClass:[TransactionDetailToCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_TO];
+    [self.tableView registerClass:[TransactionDetailFromCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_FROM];
+    [self.tableView registerClass:[TransactionDetailDateCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DATE];
+    [self.tableView registerClass:[TransactionDetailStatusCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_STATUS];
+    [self.tableView registerClass:[TransactionDetailValueCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_VALUE];
+
     self.tableView.tableFooterView = [UIView new];
     
     [self setupPullToRefresh];
@@ -194,18 +209,18 @@ const CGFloat rowHeightValue = 116;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TransactionDetailTableCell *cell = (TransactionDetailTableCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.detailViewDelegate = self;
-    cell.clipsToBounds = YES;
-    
     if (indexPath.row == cellRowValue) {
-        [cell configureValueCell:self.transaction];
+        TransactionDetailValueCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_VALUE forIndexPath:indexPath];
+        cell.valueDelegate = self;
+        [cell configureWithTransaction:self.transaction];
+        return cell;
     } else if (indexPath.row == cellRowDescription) {
         // Set initial height for sizeThatFits: calculation
+        TransactionDetailDescriptionCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
+        cell.descriptionDelegate = self;
         cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height < rowHeightDefault ? rowHeightDefault : cell.frame.size.height);
         
-        [cell configureDescriptionCell:self.transaction];
+        [cell configureWithTransaction:self.transaction];
         
         self.oldTextViewHeight = cell.textView.frame.size.height;
         self.textView = cell.textView;
@@ -213,17 +228,26 @@ const CGFloat rowHeightValue = 116;
         
         // Resize textView in case current note is larger than one line
         [self textViewDidChange:self.textView];
-        
+        return cell;
     } else if (indexPath.row == cellRowTo) {
-        [cell configureToCell:self.transaction];
+        TransactionDetailToCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_TO forIndexPath:indexPath];
+        [cell configureWithTransaction:self.transaction];
+        return cell;
     } else if (indexPath.row == cellRowFrom) {
-        [cell configureFromCell:self.transaction];
+        TransactionDetailFromCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_FROM forIndexPath:indexPath];
+        [cell configureWithTransaction:self.transaction];
+        return cell;
     } else if (indexPath.row == cellRowDate) {
-        [cell configureDateCell:self.transaction];
+        TransactionDetailDateCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DATE forIndexPath:indexPath];
+        [cell configureWithTransaction:self.transaction];
+        return cell;
     } else if (indexPath.row == cellRowStatus) {
-        [cell configureStatusCell:self.transaction];
+        TransactionDetailStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_STATUS forIndexPath:indexPath];
+        cell.statusDelegate = self;
+        [cell configureWithTransaction:self.transaction];
+        return cell;
     }
-    return cell;
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

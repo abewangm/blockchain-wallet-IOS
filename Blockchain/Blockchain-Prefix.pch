@@ -107,7 +107,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
-#define CELL_IDENTIFIER_TRANSACTION_DETAIL @"transactionDetail"
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL_VALUE @"transactionDetailValue"
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL_STATUS @"transactionDetailStatus"
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL_DATE @"transactionDetailDate"
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL_FROM @"transactionDetailFrom"
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL_TO @"transactionDetailTo"
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION @"transactionDetailDescription"
+
 #define CELL_IDENTIFIER_TRANSACTION_RECIPIENT @"transactionRecipient"
 
 #define LOCALE_IDENTIFIER_EN_US @"en_US"

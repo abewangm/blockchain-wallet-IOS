@@ -75,6 +75,12 @@
 		23EA61CB1B5591260032B907 /* SettingsSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61CA1B5591260032B907 /* SettingsSelectorTableViewController.m */; };
 		23F601A41D09C931009102BF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F601A31D09C931009102BF /* Reachability.m */; };
 		23F720F21C32DC0A00577738 /* DebugTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F720F11C32DC0A00577738 /* DebugTableViewController.m */; };
+		23FB5C071D9ABB450008C6AB /* TransactionDetailDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB5C061D9ABB450008C6AB /* TransactionDetailDescriptionCell.m */; };
+		23FB5C0A1D9ABB590008C6AB /* TransactionDetailToCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB5C091D9ABB590008C6AB /* TransactionDetailToCell.m */; };
+		23FB5C0D1D9ABB650008C6AB /* TransactionDetailFromCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB5C0C1D9ABB650008C6AB /* TransactionDetailFromCell.m */; };
+		23FB5C101D9ABB730008C6AB /* TransactionDetailDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB5C0F1D9ABB730008C6AB /* TransactionDetailDateCell.m */; };
+		23FB5C131D9ABB8B0008C6AB /* TransactionDetailStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB5C121D9ABB8B0008C6AB /* TransactionDetailStatusCell.m */; };
+		23FB5C161D9ABBB20008C6AB /* TransactionDetailValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB5C151D9ABBB20008C6AB /* TransactionDetailValueCell.m */; };
 		23FDEF9A1D6CBC7000FC80D6 /* TransactionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEF991D6CBC7000FC80D6 /* TransactionDetailViewController.m */; };
 		23FDEF9D1D6E180100FC80D6 /* CertificatePinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEF9C1D6E180100FC80D6 /* CertificatePinner.m */; };
 		23FDEFA21D6E21A800FC80D6 /* blockchain.der in Resources */ = {isa = PBXBuildFile; fileRef = 23FDEFA11D6E21A800FC80D6 /* blockchain.der */; };
@@ -686,6 +692,18 @@
 		23F601A31D09C931009102BF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		23F720F01C32DC0A00577738 /* DebugTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugTableViewController.h; sourceTree = "<group>"; };
 		23F720F11C32DC0A00577738 /* DebugTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugTableViewController.m; sourceTree = "<group>"; };
+		23FB5C051D9ABB450008C6AB /* TransactionDetailDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailDescriptionCell.h; sourceTree = "<group>"; };
+		23FB5C061D9ABB450008C6AB /* TransactionDetailDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailDescriptionCell.m; sourceTree = "<group>"; };
+		23FB5C081D9ABB590008C6AB /* TransactionDetailToCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailToCell.h; sourceTree = "<group>"; };
+		23FB5C091D9ABB590008C6AB /* TransactionDetailToCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailToCell.m; sourceTree = "<group>"; };
+		23FB5C0B1D9ABB650008C6AB /* TransactionDetailFromCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailFromCell.h; sourceTree = "<group>"; };
+		23FB5C0C1D9ABB650008C6AB /* TransactionDetailFromCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailFromCell.m; sourceTree = "<group>"; };
+		23FB5C0E1D9ABB730008C6AB /* TransactionDetailDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailDateCell.h; sourceTree = "<group>"; };
+		23FB5C0F1D9ABB730008C6AB /* TransactionDetailDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailDateCell.m; sourceTree = "<group>"; };
+		23FB5C111D9ABB8B0008C6AB /* TransactionDetailStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailStatusCell.h; sourceTree = "<group>"; };
+		23FB5C121D9ABB8B0008C6AB /* TransactionDetailStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailStatusCell.m; sourceTree = "<group>"; };
+		23FB5C141D9ABBB20008C6AB /* TransactionDetailValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailValueCell.h; sourceTree = "<group>"; };
+		23FB5C151D9ABBB20008C6AB /* TransactionDetailValueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailValueCell.m; sourceTree = "<group>"; };
 		23FDEF981D6CBC7000FC80D6 /* TransactionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailViewController.h; sourceTree = "<group>"; };
 		23FDEF991D6CBC7000FC80D6 /* TransactionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailViewController.m; sourceTree = "<group>"; };
 		23FDEF9B1D6E180100FC80D6 /* CertificatePinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificatePinner.h; sourceTree = "<group>"; };
@@ -1484,6 +1502,18 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				23FB5C051D9ABB450008C6AB /* TransactionDetailDescriptionCell.h */,
+				23FB5C061D9ABB450008C6AB /* TransactionDetailDescriptionCell.m */,
+				23FB5C081D9ABB590008C6AB /* TransactionDetailToCell.h */,
+				23FB5C091D9ABB590008C6AB /* TransactionDetailToCell.m */,
+				23FB5C0B1D9ABB650008C6AB /* TransactionDetailFromCell.h */,
+				23FB5C0C1D9ABB650008C6AB /* TransactionDetailFromCell.m */,
+				23FB5C0E1D9ABB730008C6AB /* TransactionDetailDateCell.h */,
+				23FB5C0F1D9ABB730008C6AB /* TransactionDetailDateCell.m */,
+				23FB5C111D9ABB8B0008C6AB /* TransactionDetailStatusCell.h */,
+				23FB5C121D9ABB8B0008C6AB /* TransactionDetailStatusCell.m */,
+				23FB5C141D9ABBB20008C6AB /* TransactionDetailValueCell.h */,
+				23FB5C151D9ABBB20008C6AB /* TransactionDetailValueCell.m */,
 				23FDEFA71D6E43DE00FC80D6 /* TransactionDetailTableCell.h */,
 				23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */,
 				23E2FC061C7F60E7004CFF79 /* BCInsetLabel.h */,
@@ -1739,6 +1769,7 @@
 				9F45F82C1514E53C00018AED /* UIButtonPressAndHold.m in Sources */,
 				9F7480E315140EF200BC4292 /* TabViewController.m in Sources */,
 				2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */,
+				23FB5C101D9ABB730008C6AB /* TransactionDetailDateCell.m in Sources */,
 				670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */,
 				9FB3638214B60128004BEA02 /* main.m in Sources */,
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
@@ -1790,10 +1821,12 @@
 				237451C91D624C1C00CF7049 /* RootService.m in Sources */,
 				67D95A261B3DD86B0012EBB1 /* BCTextField.swift in Sources */,
 				2322DCC01D771831000E5AC1 /* SRRandom.m in Sources */,
+				23FB5C0D1D9ABB650008C6AB /* TransactionDetailFromCell.m in Sources */,
 				23D3A6291C0F699900DEF737 /* SecurityCenterViewController.m in Sources */,
 				2322DCBA1D771831000E5AC1 /* SRConstants.m in Sources */,
 				A2599BA71B0B726900C2EA81 /* BackupVerifyViewController.swift in Sources */,
 				23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */,
+				23FB5C131D9ABB8B0008C6AB /* TransactionDetailStatusCell.m in Sources */,
 				A2599BA51B0B725400C2EA81 /* BackupWordsViewController.swift in Sources */,
 				6762507D1A2CC5800052B63F /* BCEditAccountView.m in Sources */,
 				6780DB951A40BDCF0048EED2 /* InOut.m in Sources */,
@@ -1804,6 +1837,7 @@
 				2322DCC61D771831000E5AC1 /* SRSecurityPolicy.m in Sources */,
 				9F61B89E151519EF0083C57A /* BCAddressSelectionView.m in Sources */,
 				FA6323361A43373300EB3974 /* Merchant.m in Sources */,
+				23FB5C0A1D9ABB590008C6AB /* TransactionDetailToCell.m in Sources */,
 				9F91B607151666EC00ACB32D /* BCCreateWalletView.m in Sources */,
 				2322DCBE1D771831000E5AC1 /* SRLog.m in Sources */,
 				23FDEF9A1D6CBC7000FC80D6 /* TransactionDetailViewController.m in Sources */,
@@ -1845,9 +1879,11 @@
 				23D423991D0878BE000054AA /* ModuleXMLHttpRequest.m in Sources */,
 				23F601A41D09C931009102BF /* Reachability.m in Sources */,
 				23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */,
+				23FB5C161D9ABBB20008C6AB /* TransactionDetailValueCell.m in Sources */,
 				2322DCB81D771831000E5AC1 /* SRRunLoopThread.m in Sources */,
 				84CCFAAF197D859C00DA4482 /* NSString+NSString_EscapeQuotes.m in Sources */,
 				2390C10B1D87376E00342C38 /* TransactionRecipientsViewController.m in Sources */,
+				23FB5C071D9ABB450008C6AB /* TransactionDetailDescriptionCell.m in Sources */,
 				23BA220E1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m in Sources */,
 				A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */,
 			);
