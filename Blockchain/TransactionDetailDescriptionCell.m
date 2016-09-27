@@ -32,7 +32,7 @@
     self.textLabel.adjustsFontSizeToFitWidth = YES;
     self.textLabel.textColor = [UIColor lightGrayColor];
     
-    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width/2, self.contentView.layoutMargins.top, self.contentView.frame.size.width/2 - self.contentView.layoutMargins.right, self.contentView.frame.size.height - self.contentView.layoutMargins.top - self.contentView.layoutMargins.bottom)];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width/2, self.contentView.layoutMargins.top + 2, self.contentView.frame.size.width/2 - self.contentView.layoutMargins.right, self.contentView.frame.size.height - self.contentView.layoutMargins.top - self.contentView.layoutMargins.bottom)];
     self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.textView.scrollEnabled = YES;
     self.textView.showsVerticalScrollIndicator = NO;
