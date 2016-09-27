@@ -31,22 +31,18 @@
         return;
     }
     
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
+    self.mainLabel.adjustsFontSizeToFitWidth = YES;
+    self.mainLabel.text = BC_STRING_TO;
+    self.mainLabel.textColor = [UIColor lightGrayColor];
+    [self.contentView addSubview:self.mainLabel];
+    
     if (transaction.to.count > 1) {
-        self.textLabel.text = BC_STRING_TO;
-        self.textLabel.adjustsFontSizeToFitWidth = YES;
-        self.textLabel.textColor = [UIColor lightGrayColor];
-        
         self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count];
         self.detailTextLabel.textColor = [UIColor lightGrayColor];
         self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
-        self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
-        self.mainLabel.adjustsFontSizeToFitWidth = YES;
-        self.mainLabel.text = BC_STRING_TO;
-        self.mainLabel.textColor = [UIColor lightGrayColor];
-        [self.contentView addSubview:self.mainLabel];
-        
         CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
         self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
         self.accessoryLabel.textAlignment = NSTextAlignmentRight;

@@ -13,6 +13,7 @@
 - (void)textViewDidChange:(UITextView *)textView;
 - (NSString *)getNotePlaceholder;
 - (CGFloat)getDefaultRowHeight;
+- (CGFloat)getMaxTextViewHeight;
 @end
 @interface TransactionDetailDescriptionCell : TransactionDetailTableCell
 @property (nonatomic) UITextView *textView;

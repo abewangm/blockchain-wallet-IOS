@@ -34,6 +34,8 @@ const int cellRowDate = 4;
 const int cellRowStatus = 5;
 
 const CGFloat rowHeightDefault = 60;
+const CGFloat rowHeightMax = 116;
+const CGFloat textViewHeightMax = rowHeightMax - 20;
 const CGFloat rowHeightValue = 116;
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DescriptionDelegate, ValueDelegate, StatusDelegate, RecipientsDelegate>
@@ -127,13 +129,20 @@ const CGFloat rowHeightValue = 116;
 - (void)endEditing
 {
     [self.textView resignFirstResponder];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.textView scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
+    self.textView.userInteractionEnabled = NO;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    });
 }
 
 - (void)saveNote
 {
     [self.textView resignFirstResponder];
     
+    [self.textView scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
+
     [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
     [app.wallet saveNote:self.textView.text forTransaction:self.transaction.myHash];
@@ -268,7 +277,14 @@ const CGFloat rowHeightValue = 116;
     } else if (indexPath.row == cellRowDescription && self.textView.text) {
         CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
         CGSize sizeToUse = [self addVerticalPaddingToSize:size];
-        return sizeToUse.height < rowHeightDefault ? rowHeightDefault : sizeToUse.height;
+        
+        if (sizeToUse.height < rowHeightDefault) {
+            return rowHeightDefault;
+        } else if (sizeToUse.height > rowHeightMax) {
+            return rowHeightMax;
+        } else {
+            return sizeToUse.height;
+        }
     } else if (indexPath.row == cellRowTo) {
         return rowHeightDefault;
     } else if (indexPath.row == cellRowFrom) {
@@ -321,6 +337,7 @@ const CGFloat rowHeightValue = 116;
 - (void)textViewDidChange:(UITextView *)textView
 {
     CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
+    if (size.height > textViewHeightMax) size.height = textViewHeightMax;
     if (size.height != self.oldTextViewHeight) {
         self.oldTextViewHeight = size.height;
         self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, size.height);
@@ -347,6 +364,11 @@ const CGFloat rowHeightValue = 116;
 - (CGFloat)getDefaultRowHeight
 {
     return rowHeightDefault;
+}
+
+- (CGFloat)getMaxTextViewHeight
+{
+    return textViewHeightMax;
 }
 
 #pragma mark - Recipients Delegate

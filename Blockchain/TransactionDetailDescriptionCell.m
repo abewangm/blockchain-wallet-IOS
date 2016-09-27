@@ -34,13 +34,15 @@
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width/2, self.contentView.layoutMargins.top, self.contentView.frame.size.width/2 - self.contentView.layoutMargins.right, self.contentView.frame.size.height - self.contentView.layoutMargins.top - self.contentView.layoutMargins.bottom)];
     self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.textView.scrollEnabled = NO;
+    self.textView.scrollEnabled = YES;
+    self.textView.showsVerticalScrollIndicator = NO;
     self.textView.textAlignment = NSTextAlignmentRight;
     [self.textView setFont:[UIFont systemFontOfSize:15]];
     
-    self.defaultTextViewHeight = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)].height;
+    CGFloat sizeThatFitsHeight = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)].height;
+    self.defaultTextViewHeight = sizeThatFitsHeight > [self.descriptionDelegate getMaxTextViewHeight] ? [self.descriptionDelegate getMaxTextViewHeight] : sizeThatFitsHeight;
     self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width - self.defaultTextViewHeight, self.defaultTextViewHeight);
-    
+
     self.textView.delegate = self;
     [self.contentView addSubview:self.textView];
     self.textView.userInteractionEnabled = NO;
@@ -82,9 +84,14 @@
 
 - (void)editDescription
 {
-    [self.editButton removeFromSuperview];
+    self.editButton.hidden = YES;
     self.textView.userInteractionEnabled = YES;
     [self.textView becomeFirstResponder];
+    
+    if (self.textView.text.length > 0) {
+        NSRange bottom = NSMakeRange(self.textView.text.length -1, 1);
+        [self.textView scrollRangeToVisible:bottom];
+    }
 }
 
 #pragma mark - TextView delegate
