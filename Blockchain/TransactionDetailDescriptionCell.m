@@ -88,10 +88,7 @@
     self.textView.userInteractionEnabled = YES;
     [self.textView becomeFirstResponder];
     
-    if (self.textView.text.length > 0) {
-        NSRange bottom = NSMakeRange(self.textView.text.length -1, 1);
-        [self.textView scrollRangeToVisible:bottom];
-    }
+    [self.textView scrollRangeToVisible:self.textView.selectedRange];
 }
 
 #pragma mark - TextView delegate
