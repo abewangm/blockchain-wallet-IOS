@@ -228,11 +228,15 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED] &&
         [self.wallet isInitialized] &&
-        [self.wallet didUpgradeToHd] &&
-        self.wallet.swipeAddresses.count < 1) {
-        self.wallet.swipeAddresses = [NSMutableArray new];
+        [self.wallet didUpgradeToHd]) {
         
-        for (int receiveIndex = 0; receiveIndex < SWIPE_TO_RECEIVE_ADDRESS_COUNT; receiveIndex++) {
+        if (!self.wallet.swipeAddresses) {
+            self.wallet.swipeAddresses = [NSMutableArray new];
+        }
+        
+        int numberOfAddressesToDerive = SWIPE_TO_RECEIVE_ADDRESS_COUNT - (int)self.wallet.swipeAddresses.count;
+            
+        for (int receiveIndex = 0; receiveIndex < numberOfAddressesToDerive; receiveIndex++) {
             [self.wallet incrementReceiveIndexOfDefaultAccount];
             NSString *swipeAddress = [app.wallet getReceiveAddressOfDefaultAccount];
             [self.wallet.swipeAddresses addObject:swipeAddress];

@@ -767,9 +767,7 @@
         [task resume];
         
         self.swipeAddressToSubscribe = nil;
-    }
-    
-    if (![self isInitialized]) {
+        
         [self.webSocket closeWithCode:WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS reason:WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS];
     }
 }
