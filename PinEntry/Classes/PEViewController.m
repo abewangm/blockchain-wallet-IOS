@@ -73,7 +73,8 @@
 	pins[3] = pin3;
 	self.pin = @"";
     
-    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height - 20, self.scrollView.frame.size.width, 360);
+    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height, self.scrollView.frame.size.width, 360);
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.swipeLabel.text = BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE;
     self.swipeLabelImageView.image = [UIImage imageNamed:@"arrow_downward"];
