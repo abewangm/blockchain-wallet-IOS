@@ -30,7 +30,6 @@
 - (void)redrawPins;
 
 @property (nonatomic, readwrite, strong) NSString *pin;
-@property (nonatomic, readwrite, strong) NSString *addressToSubscribe;
 
 @end
 

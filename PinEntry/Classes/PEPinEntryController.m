@@ -138,32 +138,36 @@ static PEViewController *VerifyController()
 #ifdef ENABLE_SWIPE_TO_RECEIVE
     if (self.verifyOnly && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED]) {
         
+        pinController.swipeLabel.alpha = 1;
+        pinController.swipeLabel.hidden = NO;
+        
+        pinController.swipeLabelImageView.alpha = 1;
+        pinController.swipeLabelImageView.hidden = NO;
+        
+        [pinController.scrollView setContentSize:CGSizeMake(pinController.scrollView.frame.size.width *2, pinController.scrollView.frame.size.height)];
+        [pinController.scrollView setPagingEnabled:YES];
+        
         [pinController.scrollView setUserInteractionEnabled:YES];
         
-        NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
-        NSNumber *nextAddressUsed = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+        if (!self.addressLabel) {
+            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
+            [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
+            [self.addressLabel setTextColor:[UIColor whiteColor]];
+            [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
+            [pinController.scrollView addSubview:self.addressLabel];
+        }
+        
+        NSString *nextAddress = [app.wallet.swipeAddresses firstObject];
         
         if (nextAddress) {
             
-            pinController.swipeLabel.alpha = 1;
-            pinController.swipeLabel.hidden = NO;
-            pinController.swipeLabelImageView.alpha = 1;
-            pinController.swipeLabelImageView.hidden = NO;
+            void (^error)() = ^() {
+                [app.wallet.swipeAddresses removeObjectAtIndex:0];
+                [self setupQRCode];
+            };
             
-            [pinController.scrollView setContentSize:CGSizeMake(pinController.scrollView.frame.size.width *2, pinController.scrollView.frame.size.height)];
-            [pinController.scrollView setPagingEnabled:YES];
-            
-            [app.wallet subscribeToAddress:nextAddress];
-            
-            if (!self.addressLabel) {
-                self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
-                [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
-                [self.addressLabel setTextColor:[UIColor whiteColor]];
-                [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
-                [pinController.scrollView addSubview:self.addressLabel];
-            }
-            
-            if (![nextAddressUsed boolValue]) {
+            void (^success)() = ^() {
+                [app.wallet subscribeToAddress:nextAddress];
                 
                 if (!self.qrCodeImageView) {
                     self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
@@ -171,17 +175,21 @@ static PEViewController *VerifyController()
                 }
                 
                 QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
-
+                
+                self.qrCodeImageView.hidden = NO;
                 self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
                 self.addressLabel.text = nextAddress;
-            } else {
-                self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
-            }
+            };
             
+            [app checkForUnusedAddress:nextAddress success:success error:error];
+
         } else {
-            pinController.swipeLabel.hidden = YES;
-            pinController.swipeLabelImageView.hidden = YES;
+            self.qrCodeImageView.hidden = YES;
+            self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
         }
+    } else {
+        pinController.swipeLabel.hidden = YES;
+        pinController.swipeLabelImageView.hidden = YES;
     }
 #else
     pinController.swipeLabel.hidden = YES;
@@ -191,8 +199,13 @@ static PEViewController *VerifyController()
 
 - (void)paymentReceived
 {
-    [self.qrCodeImageView removeFromSuperview];
-    self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
+    if (app.wallet.swipeAddresses.count > 0) {
+        [app.wallet.swipeAddresses removeObjectAtIndex:0];
+        [self setupQRCode];
+    } else {
+        [self.qrCodeImageView removeFromSuperview];
+        self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
+    }
 }
 
 - (void)pinEntryControllerDidEnteredPin:(PEViewController *)controller

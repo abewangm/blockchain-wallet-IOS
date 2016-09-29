@@ -830,6 +830,10 @@ MyWalletPhone.incrementReceiveIndexOfDefaultAccount = function() {
     MyWallet.wallet.hdwallet.defaultAccount.incrementReceiveIndex();
 }
 
+MyWalletPhone.getReceiveAddressOfDefaultAccount = function() {
+    return MyWallet.wallet.hdwallet.defaultAccount.receiveAddress;
+}
+
 MyWalletPhone.quickSend = function(secondPassword) {
     
     console.log('quickSend');

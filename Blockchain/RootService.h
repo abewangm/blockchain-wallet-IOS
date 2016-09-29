@@ -222,6 +222,8 @@
 - (void)authorizationRequired;
 
 - (void)endBackgroundUpdateTask;
+
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock error:(void (^)())errorBlock;
 @end
 
 extern RootService *app;

@@ -226,12 +226,19 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    if ([self.wallet isInitialized] && [self.wallet didUpgradeToHd]) {
-        NSString *defaultAccountAddress = [app.wallet getReceiveAddressForAccount:[app.wallet getDefaultAccountIndex]];
-        if (![[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS] isEqualToString:defaultAccountAddress]) {
-            [[NSUserDefaults standardUserDefaults] setObject:defaultAccountAddress forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED] &&
+        [self.wallet isInitialized] &&
+        [self.wallet didUpgradeToHd] &&
+        self.wallet.swipeAddresses.count < 1) {
+        self.wallet.swipeAddresses = [NSMutableArray new];
+        
+        for (int receiveIndex = 0; receiveIndex < SWIPE_TO_RECEIVE_ADDRESS_COUNT; receiveIndex++) {
+            [self.wallet incrementReceiveIndexOfDefaultAccount];
+            NSString *swipeAddress = [app.wallet getReceiveAddressOfDefaultAccount];
+            [self.wallet.swipeAddresses addObject:swipeAddress];
         }
+            
+        [self.pinEntryViewController setupQRCode];
     }
     
     [self.loginTimer invalidate];
@@ -319,46 +326,12 @@ void (^secondPasswordSuccess)(NSString *);
     
 #ifdef ENABLE_SWIPE_TO_RECEIVE
     if (self.pinEntryViewController.verifyOnly) {
-        
-        NSString *nextAddress = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_NEXT_ADDRESS];
-        if (nextAddress) {
-            NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, nextAddress]];
-            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-            
-            NSURLSession *session = [SessionManager sharedSession];
-            NSURL *url = [NSURL URLWithString:DEFAULT_WALLET_SERVER];
-            session.sessionDescription = url.host;
-            NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                
-                if (error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        DLog(@"Error checking for receive address %@: %@", nextAddress, error);
-                    });
-                    return;
-                }
-                
-                NSDictionary *addressInfo = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingAllowFragments error: &error];
-                NSArray *transactions = addressInfo[@"txs"];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (transactions.count > 0) {
-                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
-                    } else {
-                        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_NEXT_ADDRESS_USED];
-                    }
-                    [self.pinEntryViewController setupQRCode];
-                });
-                
-            }];
-            
-            [task resume];
-        }
+        [self.pinEntryViewController setupQRCode];
     }
 #endif
     
     [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
 }
-
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
@@ -815,7 +788,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     DLog(@"walletDidFinishLoad");
     
-    self.wallet.addressToSubscribe = nil;
+    self.wallet.swipeAddressToSubscribe = nil;
     
     self.wallet.twoFactorInput = nil;
     
@@ -2391,6 +2364,39 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }]];
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock error:(void (^)())errorBlock
+{
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSession *session = [SessionManager sharedSession];
+    NSURL *url = [NSURL URLWithString:DEFAULT_WALLET_SERVER];
+    session.sessionDescription = url.host;
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        if (error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                DLog(@"Error checking for receive address %@: %@", address, error);
+            });
+            return;
+        }
+        
+        NSDictionary *addressInfo = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingAllowFragments error: &error];
+        NSArray *transactions = addressInfo[@"txs"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (transactions.count > 0) {
+                if (errorBlock) errorBlock();
+            } else {
+                if (successBlock) successBlock();
+            }
+        });
+        
+    }];
+    
+    [task resume];
 }
 
 #pragma mark - Pin Entry Delegates

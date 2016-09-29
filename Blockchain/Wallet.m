@@ -630,11 +630,11 @@
 
 - (void)subscribeToAddress:(NSString *)address
 {    
-    self.addressToSubscribe = address;
+    self.swipeAddressToSubscribe = address;
 
     if (self.webSocket && self.webSocket.readyState == 1) {
         NSError *error;
-        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.addressToSubscribe] error:&error];
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] error:&error];
         if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
     } else {
         [self setupWebSocket];
@@ -706,7 +706,7 @@
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
     DLog(@"websocket opened");
-    NSString *message = self.addressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.addressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
+    NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
 
     NSError *error;
     [webSocket sendString:message error:&error];
@@ -720,7 +720,7 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
-    if (code == WEBSOCKET_CODE_BACKGROUNDED_APP || code == WEBSOCKET_CODE_LOGGED_OUT) {
+    if (code == WEBSOCKET_CODE_BACKGROUNDED_APP || code == WEBSOCKET_CODE_LOGGED_OUT || code == WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS) {
         // Socket will reopen when app becomes active and after decryption
         return;
     }
@@ -737,10 +737,10 @@
     DLog(@"received websocket message string");
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
     
-    if (self.addressToSubscribe) {
+    if (self.swipeAddressToSubscribe) {
         NSDictionary *message = [string getJSONObject];
         NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
-        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.addressToSubscribe]];
+        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.swipeAddressToSubscribe]];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         
         NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -766,7 +766,11 @@
         
         [task resume];
         
-        self.addressToSubscribe = nil;
+        self.swipeAddressToSubscribe = nil;
+    }
+    
+    if (![self isInitialized]) {
+        [self.webSocket closeWithCode:WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS reason:WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS];
     }
 }
 
@@ -3131,6 +3135,11 @@
             [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.createAccount(\"%@\")", [label escapeStringForJS]]];
         });
     }
+}
+
+- (NSString *)getReceiveAddressOfDefaultAccount
+{
+    return [[self.context evaluateScript:@"MyWalletPhone.getReceiveAddressOfDefaultAccount()"] toString];
 }
 
 - (NSString *)getReceiveAddressForAccount:(int)account

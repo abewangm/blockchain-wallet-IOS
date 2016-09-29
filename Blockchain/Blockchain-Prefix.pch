@@ -382,6 +382,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED @"User backgrounded app"
 #define WEBSOCKET_CLOSE_REASON_LOGGED_OUT @"Logged out"
 #define WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET @"Decrypted Wallet"
+#define WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS @"Received to swipe address"
 
 #define CURRENCY_CODE_USD @"usd"
 
@@ -467,8 +468,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define WEBSOCKET_CODE_BACKGROUNDED_APP 4500
 #define WEBSOCKET_CODE_LOGGED_OUT 4501
 #define WEBSOCKET_CODE_DECRYPTED_WALLET 4502
+#define WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS 4503
 
 #define TRANSACTION_DESCRIPTION_CHARACTER_LIMIT 255
+
+#define SWIPE_TO_RECEIVE_ADDRESS_COUNT 5
 
 #pragma mark - Runtime modes
 

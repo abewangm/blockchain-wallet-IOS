@@ -1218,7 +1218,7 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionEmailFooter: return BC_STRING_SETTINGS_EMAIL_FOOTER;
         case preferencesSectionSMSFooter: return BC_STRING_SETTINGS_SMS_FOOTER;
         case preferencesSectionNotificationsFooter: return BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER;
-        case PINSection: {return PINSwipeToReceive > 0 ? BC_STRING_SETTINGS_SWIPE_TO_RECEVE_IN_SINGLES_FOOTER : nil;}
+        case PINSection: {return PINSwipeToReceive > 0 ? BC_STRING_SETTINGS_SWIPE_TO_RECEIVE_IN_FIVES_FOOTER : nil;}
         default: return nil;
     }
 }

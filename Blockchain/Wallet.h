@@ -141,7 +141,8 @@
 @property (nonatomic, assign) id <SRWebSocketDelegate> socketDelegate;
 @property (nonatomic) SRWebSocket *webSocket;
 @property (nonatomic) NSTimer *webSocketTimer;
-@property (nonatomic) NSString *addressToSubscribe;
+@property (nonatomic) NSString *swipeAddressToSubscribe;
+@property (nonatomic) NSMutableArray *swipeAddresses;
 
 - (id)init;
 
@@ -252,6 +253,7 @@
 - (void)createAccountWithLabel:(NSString *)label;
 - (void)generateNewKey;
 
+- (NSString *)getReceiveAddressOfDefaultAccount;
 - (NSString *)getReceiveAddressForAccount:(int)account;
 
 - (NSString *)getXpubForAccount:(int)accountIndex;
