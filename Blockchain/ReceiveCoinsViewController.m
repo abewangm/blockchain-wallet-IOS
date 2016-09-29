@@ -590,11 +590,9 @@ NSString *detailLabel;
 - (void)paymentReceived:(NSDecimalNumber *)amount
 {
     u_int64_t amountReceived = [[amount decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
-    if (amountReceived == self.lastRequestedAmount) {
-        NSString *btcAmountString = [NSNumberFormatter formatMoney:self.lastRequestedAmount localCurrency:NO];
-        NSString *localCurrencyAmountString = [NSNumberFormatter formatMoney:self.lastRequestedAmount localCurrency:YES];
-        [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString,localCurrencyAmountString]];
-    }
+    NSString *btcAmountString = [NSNumberFormatter formatMoney:amountReceived localCurrency:NO];
+    NSString *localCurrencyAmountString = [NSNumberFormatter formatMoney:amountReceived localCurrency:YES];
+    [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString,localCurrencyAmountString]];
 }
 
 - (void)selectDestination

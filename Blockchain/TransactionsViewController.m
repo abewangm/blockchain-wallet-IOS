@@ -295,7 +295,10 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)paymentReceived
 {
-    [app paymentReceived:[self getAmountForReceivedTransaction:[data.transactions firstObject]]];
+    Transaction *transaction = [data.transactions firstObject];
+    if ([transaction.txType isEqualToString:TX_TYPE_SENT]) return;
+    
+    [app paymentReceived:[self getAmountForReceivedTransaction:transaction]];
 }
 
 - (void)changeFilterLabel:(NSString *)newText
