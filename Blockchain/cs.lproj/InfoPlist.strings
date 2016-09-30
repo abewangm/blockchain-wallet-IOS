@@ -1,9 +1,3 @@
-///* (No Commment) */
-//"CFBundleDisplayName" = "Blockchain";
-//
-///* (No Commment) */
-//"CFBundleName" = "Blockchain";
-//
-///* (No Commment) */
-//"CFBundleShortVersionString" = "2.3.3";
+/* (No Commment) */
+"NSCameraUsageDescription" = "Toto vyžaduje aplikace pro načtení QR kódů.";
 

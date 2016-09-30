@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "Přejít na nastavení / Informace o peněžence.";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "Transakce";
 
@@ -30,7 +33,7 @@ https://blockchain.info/wallet/login";
 "363.text" = "2";
 
 /* (No Commment) */
-"364.text" = "Pokud používáte původní peněženku, klikněte na tlačítko Nastavení účtu a vyberte kartu Zařízení. Pokud používáte naši novou peněženku, přejdete do části Nastavení / Informace o peněžence.";
+"364.text" = "Přejít na nastavení / Informace o peněžence.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
