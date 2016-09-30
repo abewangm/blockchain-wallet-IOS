@@ -416,7 +416,7 @@
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Увімкніть цю опцію, щоб блокувати вхід до вашого гаманця з IP-адрес, які, як відомо, є частиною анонімної мережі Tor. Мережа Tor часто використовується хакерами, які намагаються отримати доступ до гаманців користувачів Blockchain.";
 
 /* (No Commment) */
-"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Five addresses will be loaded consecutively, after which logging in is required to show new addresses." = "Увімкніть цю опцію, щоб показати адресу, коли ви проведете пальцем вліво на екрані PIN, що пришвидшить отримання bitcoin. Послідовно буде завантажено п'\\ять адрес, після входу в систему потрібно буде показати нові адреси.";
+"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Five addresses will be loaded consecutively, after which logging in is required to show new addresses." = "Увімкніть цю опцію, щоб показати адресу, коли ви проведете пальцем вліво на екрані PIN, що пришвидшить отримання bitcoin. Послідовно буде завантажено п'ять адрес, після входу в систему потрібно буде показати нові адреси.";
 
 /* (No Commment) */
 "Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Only one address will be loaded, logging in is required to show a new address." = "Увімкніть цю опцію, щоб показати адресу, коли ви проведете пальцем вліво на екрані PIN, що пришвидшить отримання bitcoin. Лише одну адресу буде завантажено, після входу в систему потрібно буде показати нову адресу.";
@@ -1390,7 +1390,7 @@
 "You have no available funds to send from this address" = "У вас немає доступних коштів для відправки з цієї адреси";
 
 /* (No Commment) */
-"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Перш ніж змінити номер мобільного, треба вимкнути 2-крокову верифікацію через SMS (%@).";
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Перш ніж змінити мобільний номер (%@), треба вимкнути 2-крокову верифікацію через SMS.";
 
 /* (No Commment) */
 "You must enter a destination address" = "Треба ввести адресу призначення";
