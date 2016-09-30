@@ -454,6 +454,7 @@
 		235EBDE11BA0BFC8004D3410 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/MainWindow.strings; sourceTree = "<group>"; };
 		235EBDE21BA0BFC8004D3410 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/BCAddressSelectionView.strings; sourceTree = "<group>"; };
 		235EBDE31BA0BFC9004D3410 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		23600FA11D9EEFD900D9985D /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		236D7ED71CBD8B3900836EF2 /* DeviceIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceIdentifier.h; sourceTree = "<group>"; };
 		236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceIdentifier.m; sourceTree = "<group>"; };
 		2371DEAC1C6A8898000DC8AF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
@@ -2157,6 +2158,7 @@
 				239870291D805D3E0067546F /* uk */,
 				2398702A1D805D570067546F /* vi */,
 				2398702B1D805D660067546F /* zh */,
+				23600FA11D9EEFD900D9985D /* pt */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
