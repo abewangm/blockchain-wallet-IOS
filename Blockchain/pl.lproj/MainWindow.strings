@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "Przejdź do Ustawień / Informacji o Portfelu";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "Transakcje";
 
@@ -30,7 +33,7 @@ https://blockchain.info/wallet/login";
 "363.text" = "2";
 
 /* (No Commment) */
-"364.text" = "Jeśli korzystasz ze starego portfela, kliknij przycisk Ustawienia Konta i wybierz zakładkę Urządzenia. Jeśli korzystasz z naszego nowego portfela, przejdź do Ustawień / Informacji o Portfelu.";
+"364.text" = "Przejdź do Ustawień / Informacji o Portfelu";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
