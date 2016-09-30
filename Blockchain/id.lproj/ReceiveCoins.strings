@@ -50,7 +50,7 @@
 "120.text" = "5 BTC = $10";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
-"E60-hZ-tDl.placeholder" = "0.000";
+"E60-hZ-tDl.placeholder" = "0,000";
 
 /* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
@@ -59,7 +59,7 @@
 "ZHr-29-NdG.normalTitle" = "Selesai";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
-"a9y-3I-Drw.placeholder" = "0.00";
+"a9y-3I-Drw.placeholder" = "0,00";
 
 /* (No Commment) */
 "i1j-pG-caF.normalTitle" = "Pindai Kunci Pribadi";

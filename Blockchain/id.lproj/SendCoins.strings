@@ -26,10 +26,10 @@
 "13.text" = "Untuk";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
-"52.placeholder" = "0.000";
+"52.placeholder" = "0,000";
 
 /* (No Commment) */
-"52.text" = "0.00";
+"52.text" = "0,00";
 
 /* (No Commment) */
 "57.text" = "5 BTC = $10";
@@ -89,13 +89,13 @@
 "fpY-AA-We5.text" = "Untuk";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "p7q-Ud-nYh"; */
-"p7q-Ud-nYh.placeholder" = "0.000";
+"p7q-Ud-nYh.placeholder" = "0,000";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
 "pPu-bJ-k6p.normalTitle" = "Lanjutkan";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
-"qx4-XV-uhn.placeholder" = "0.00";
+"qx4-XV-uhn.placeholder" = "0,00";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sXf-3w-qdy"; */
 "sXf-3w-qdy.normalTitle" = "Kirim";
