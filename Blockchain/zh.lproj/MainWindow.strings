@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "前往设置/钱包信息。";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "交易";
 
@@ -11,7 +14,7 @@
 "257.text" = "0 BTC";
 
 /* Class = "UILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "加载中 ";
+"263.text" = "加载中";
 
 /* (No Commment) */
 "353.text" = "自动配对";
@@ -30,7 +33,7 @@
 "363.text" = "2";
 
 /* (No Commment) */
-"364.text" = "如果您使用的是旧钱包，请单击“帐户设置”按钮并选择“设备”选项卡。 若您使用的是我们的新钱包，请前往“设置/ 钱包信息”。";
+"364.text" = "Go to Settings / Wallet Informationweifwohefwoihfwef.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
