@@ -1,9 +1,3 @@
-///* (No Commment) */
-//"CFBundleDisplayName" = "${PRODUCT_NAME}";
-//
-///* (No Commment) */
-//"CFBundleName" = "${PRODUCT_NAME}";
-//
-///* (No Commment) */
-//"CFBundleShortVersionString" = "2.3.3";
-//
+/* (No Commment) */
+"NSCameraUsageDescription" = "これはアプリがQRコードをスキャンするために必要です。";
+

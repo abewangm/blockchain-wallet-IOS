@@ -1,8 +1,11 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "Go to Settings / Wallet information.";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "取引";
 
 /* Class = "UIButton"; normalTitle = "Forget Wallet"; ObjectID = "5gL-FG-Zcc"; */
-"5gL-FG-Zcc.normalTitle" = "財布を忘れました";
+"5gL-FG-Zcc.normalTitle" = "ウォレットを忘れました";
 
 /* Class = "UIButton"; normalTitle = "1.12345 BTC"; ObjectID = "6sh-r5-yAx"; */
 "6sh-r5-yAx.normalTitle" = "1.12345 BTC";
@@ -17,7 +20,7 @@
 "353.text" = "自動ペアリング";
 
 /* (No Commment) */
-"358.text" = "新規財布を作成";
+"358.text" = "新規ウォレットを作成";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "360"; */
 "360.text" = "1";
@@ -30,7 +33,7 @@
 "363.text" = "2";
 
 /* (No Commment) */
-"364.text" = "旧財布を使用している場合はアカウント設定ボタンをクリックしてデバイスタブを選択してください。 新しい財布を使用している場合は設定/財布情報にアクセスしてください。";
+"364.text" = "設定 / ウォレット情報weifwohefwoihfwefを表示。";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -48,7 +51,7 @@
 "377.normalTitle" = "ボタン 1";
 
 /* (No Commment) */
-"378.text" = "すでにブロックチェーンウォレットをお持ちの場合は「デバイスをペアリング」を選択してください。そうでない場合、「財布を作成」を選択してください。    無料です！ メールアドレスは必要ありません。";
+"378.text" = "すでにブロックチェーンウォレットをお持ちの場合は「デバイスをペアリング」を選択してください。そうでない場合、「ウォレットを作成」を選択してください。    無料です！ メールアドレスは必要ありません。";
 
 /* (No Commment) */
 "380.text" = "ブロックチェーンウォレットにようこそ";
@@ -69,7 +72,7 @@
 "397.placeholder" = "パスワードを確認";
 
 /* (No Commment) */
-"398.normalTitle" = "財布を作成";
+"398.normalTitle" = "ウォレットを作成";
 
 /* (No Commment) */
 "465.text" = "パスワードが必要です";
@@ -87,10 +90,10 @@
 "471.normalTitle" = "続行";
 
 /* (No Commment) */
-"586.text" = "財布識別子:";
+"586.text" = "ウォレット識別子:";
 
 /* Class = "UITextField"; placeholder = "Wallet identifier"; ObjectID = "587"; */
-"587.placeholder" = "財布識別子";
+"587.placeholder" = "ウォレット識別子";
 
 /* (No Commment) */
 "588.text" = "手動でのペアリングを選択しました(もしくは自動ペアリングがお使いのデバイスで対応していません)。 以下にログイン詳細を入力してください。";
@@ -105,7 +108,7 @@
 "602.text" = "手動ペアリングに2段階認証が無効になっているようです。";
 
 /* Class = "UILabel"; text = "You have logged out or there was an error decrypting your wallet file. Enter your password below to login."; ObjectID = "624"; */
-"624.text" = "財布ファイル復号化にエラーが発生し、ログアウトされました。 以下にパスワードを入力してログインしてください。";
+"624.text" = "ウォレットファイル復号化にエラーが発生し、ログアウトされました。 以下にパスワードを入力してログインしてください。";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "625"; */
 "625.normalTitle" = "続行";
@@ -120,7 +123,7 @@
 "630.text" = "ログイン";
 
 /* Class = "UILabel"; text = "If you would like to forget this wallet and start over, press 'Forget Wallet'."; ObjectID = "C0R-wB-wF1"; */
-"C0R-wB-wF1.text" = "この財布を忘れて最初から始めるには「財布を忘れる」を押してください。";
+"C0R-wB-wF1.text" = "このウォレットを忘れて最初から始めるには「ウォレットを忘れる」を押してください。";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "DIx-fJ-eKX"; */
 "DIx-fJ-eKX.text" = "題名";
@@ -138,7 +141,7 @@
 "OKS-md-gDQ.normalTitle" = "ボタン3";
 
 /* Class = "UILabel"; text = "By creating a new wallet you agree to the"; ObjectID = "Qvx-f4-C2O"; */
-"Qvx-f4-C2O.text" = "新規財布を作成することで次に同意するものとします";
+"Qvx-f4-C2O.text" = "新規ウォレットを作成することで次に同意するものとします";
 
 /* (No Commment) */
 "TzC-Tw-04r.normalTitle" = "続行";

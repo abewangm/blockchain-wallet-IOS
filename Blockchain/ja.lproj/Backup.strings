@@ -23,7 +23,7 @@
 "9Hu-uO-gJl.text" = "おっと！ 資金をまだバックアップしていないようです。";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "このアクションにはビットコイン財布の二番目のパスワードが必要です。 以下に入力して続行を押してください。";
+"9WK-My-5CL.text" = "このアクションにはビットコインウォレットの二番目のパスワードが必要です。 以下に入力して続行を押してください。";
 
 /* (No Commment) */
 "9hR-tm-aq5.placeholder" = "最初の語句";
@@ -42,13 +42,13 @@
 
 /* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "スクリーンショットを作成しないでください！
-財布のセキュリティが危険に晒されます";
+ウォレットのセキュリティが危険に晒されます";
 
 /* (No Commment) */
 "Fda-Z4-3e7.placeholder" = "六番目の語句";
 
 /* (No Commment) */
-"NaV-Bk-o1b.text" = "財布の復元方法";
+"NaV-Bk-o1b.text" = "ウォレットの復元方法";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
 "Okr-VE-yvm.text" = "ユニコーン";
@@ -82,11 +82,11 @@
 "mUc-u7-Zcj.text" = "語句の5/12";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "財布のバックアップ";
+"mYR-MQ-mS2.title" = "ウォレットのバックアップ";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
 "nuD-nb-tAt.normalTitle" = "続行";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "財布のバックアップ";
+"xmf-pK-R3X.title" = "ウォレットのバックアップ";
 

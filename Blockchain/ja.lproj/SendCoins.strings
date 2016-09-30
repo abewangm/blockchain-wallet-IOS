@@ -56,7 +56,7 @@
 "Cbp-Qe-FKP.normalTitle" = "カスタマイズ手数料";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "手数料: ";
+"FB0-NP-5do.text" = "手数料:";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
