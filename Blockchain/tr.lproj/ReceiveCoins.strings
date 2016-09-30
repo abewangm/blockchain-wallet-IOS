@@ -50,16 +50,16 @@
 "120.text" = "5 BTC = 10$";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
-"E60-hZ-tDl.placeholder" = "0.000 ";
+"E60-hZ-tDl.placeholder" = "0.000";
 
 /* (No Commment) */
-"GwZ-6f-89z.normalTitle" = "BTC ";
+"GwZ-6f-89z.normalTitle" = "BTC";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ZHr-29-NdG"; */
 "ZHr-29-NdG.normalTitle" = "Tamamlandı";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
-"a9y-3I-Drw.placeholder" = "0.00 ";
+"a9y-3I-Drw.placeholder" = "0.00";
 
 /* (No Commment) */
 "i1j-pG-caF.normalTitle" = "Özel Anahtarı Tara";
@@ -68,5 +68,5 @@
 "jRM-0A-Zuo.text" = "BTC";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "wDT-32-lDe"; */
-"wDT-32-lDe.text" = "USD ";
+"wDT-32-lDe.text" = "USD";
 

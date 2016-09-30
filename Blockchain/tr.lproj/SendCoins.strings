@@ -56,7 +56,7 @@
 "Cbp-Qe-FKP.normalTitle" = "Ücreti Kişiselleştir";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Ücret: ";
+"FB0-NP-5do.text" = "Ücret:";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcMktr";
