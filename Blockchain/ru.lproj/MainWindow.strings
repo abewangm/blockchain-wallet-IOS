@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "Перейти в Настройки / Информация о кошельке.";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "Транзакции";
 
@@ -30,13 +33,13 @@ https://blockchain.info/wallet/login";
 "363.text" = "2";
 
 /* (No Commment) */
-"364.text" = "Если вы используете старый кошелек, нажмите кнопку «Параметры учетной записи» и выберите вкладку «Устройства». Если вы используете наш новый кошелек, перейдите в «Настройки / Информация о кошельке».";
+"364.text" = "Перейти в Настройки / Информация о кошельке.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Нажмите кнопку «Показать код сопряжения», чтобы открыть QR-код. Отсканируйте код своей камерой.";
+"369.text" = "Нажмите кнопку «Показать код сопряжения», чтобы открыть QR-код. Отсканируйте код камерой.";
 
 /* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
 "370.normalTitle" = "Отсканируйте код сопряжения";
@@ -156,7 +159,7 @@ https://blockchain.info/wallet/login";
 "jUZ-5W-4qw.text" = "*Обязательно";
 
 /* (No Commment) */
-"kK3-Xs-d3Q.text" = "0 Транзакций";
+"kK3-Xs-d3Q.text" = "0 транзакций";
 
 /* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
 "pEh-08-oZW.text" = "Введите контрольную фразу из 12 слов с пробелами для восстановления ваших средств и транзакций";
