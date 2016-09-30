@@ -1,7 +1,3 @@
-/* 
-  InfoPlist.strings
-  Blockchain
+/* (No Commment) */
+"NSCameraUsageDescription" = "這是必需的應用程式來掃描 QR 碼。";
 
-  Created by Kevin Wu on 8/4/16.
-  Copyright © 2016 Qkos Services Ltd. All rights reserved.
-*/
