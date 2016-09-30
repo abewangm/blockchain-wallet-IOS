@@ -1,5 +1,5 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Volver a respaldar fondos";
+"1Hq-6D-ut1.normalTitle" = "Respaldar fondos nuevamente";
 
 /* (No Commment) */
 "1Hq-6D-ut1.text" = "Volver a respaldar fondos";
@@ -8,7 +8,7 @@
 "3kJ-3U-lFe.text" = "Por favor, inténtalo de nuevo";
 
 /* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Escribe las siguientes palabras de tu Frase de Recuperación para completar el proceso de respaldo.";
+"4Nq-ue-tXr.text" = "Para completar el proceso de respaldo, escribe las siguientes palabras de tu Frase de Recuperación.";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "Presiona y mantén presionado para mostrar la palabra";
@@ -20,10 +20,10 @@
 "9A7-TT-PzN.title" = "Respaldar fondos";
 
 /* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "¡Oh no! You haven't backed up your funds yet.";
+"9Hu-uO-gJl.text" = "¡Oh no! todavía no se ha realizado una copia de seguridad de tus fondos .";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Esta acción requiere la segunda contraseña para tu monedero Bitcoin. Introdúcelo a continuación y haz clic en continuar.";
+"9WK-My-5CL.text" = "Esta acción requiere la segunda contraseña para tu monedero Bitcoin. Introdúcela a continuación y haz clic en continuar.";
 
 /* (No Commment) */
 "9hR-tm-aq5.placeholder" = "primera palabra";

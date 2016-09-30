@@ -47,7 +47,7 @@
 "100.text" = "Monto:";
 
 /* (No Commment) */
-"120.text" = "5 BTC = $10";
+"120.text" = "5 BTC = $ 10";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
 "E60-hZ-tDl.placeholder" = "0,000";
