@@ -1,5 +1,5 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Sauvegarder à nouveau les fonds ";
+"1Hq-6D-ut1.normalTitle" = "Sauvegarder à nouveau les fonds";
 
 /* (No Commment) */
 "1Hq-6D-ut1.text" = "Sauvegarder à nouveau les fonds";
@@ -60,7 +60,7 @@ Vous pourriez compromettre la sécurité de votre portefeuille";
 "T4p-mz-siC.normalTitle" = "VÉRIFIEZ LA PROCÉDURE DE RÉCUPÉRATION SÉCURISÉE";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Écrivez les mots dans l'ordre dans lequel ils apparaissent sur une feuille de papier et conservez-le dans un endroit sûr
+"UCL-i9-UDp.text" = "Écrivez les mots dans l'ordre exact dans lequel ils apparaissent sur une feuille de papier et conservez-le dans un endroit sûr
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -73,7 +73,7 @@ Vous pourriez compromettre la sécurité de votre portefeuille";
 "eaO-py-9rY.normalTitle" = "Mot suivant";
 
 /* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Veuillez prendre quelques minutes pour vous assurer que vous pouvez accéder à vos Bitcoins (sauf dans les adresses importées), même en cas d'oubli votre mot de passe ou si notre service n'est pas disponible. Nous vous assurons que cette procédure est rapide, sans embuches et que cela en vaudra la peine.";
+"eyR-AW-SMc.text" = "Veuillez prendre quelques minutes pour vous assurer que vous pouvez accéder à vos bitcoins (sauf dans les adresses importées), même en cas d'oubli votre mot de passe ou si notre service n'est pas disponible. Nous vous assurons que cette procédure est rapide, sans embuches et que cela en vaudra la peine.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "troisième mot";

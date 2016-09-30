@@ -23,7 +23,7 @@
 "Wor-ZR-sPS.text" = "Bloquer les TOR";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Protégez votre portefeuille contre tout accès non autorisé en activant la validation en 2 étapes. Vous pouvez utiliser une application gratuite ou votre numéro de portable pour sécuriser votre portefeuille. Ce code vous sera demandé lorsque vous essaierez d'accéder à votre portefeuille.";
+"bFL-5O-fcl.text" = "Protégez votre portefeuille contre tout accès non autorisé en activant la validation en 2 étapes. Pour sécuriser votre portefeuille, vous pouvez soit utiliser une application gratuite, soit votre numéro de portable. Ce code vous sera demandé lorsque vous essaierez d'accéder à votre portefeuille.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
 "f52-8F-scW.text" = "Jumeler le portable";

@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "Allez aux paramètres / Informations de portefeuille.";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "Transactions";
 
@@ -30,7 +33,7 @@
 "363.text" = "2";
 
 /* (No Commment) */
-"364.text" = "Si vous utilisez l'ancien portefeuille, cliquez sur le bouton « Paramètres du compte » et choisissez l'onglet « Appareils ». Si vous utilisez votre nouveau portefeuille, allez sur « Paramètres / Informations sur le portefeuille ».";
+"364.text" = "Allez aux paramètres / Informations de portefeuilleweifwohefwoihfwef.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -48,7 +51,7 @@
 "377.normalTitle" = "Bouton 1";
 
 /* (No Commment) */
-"378.text" = "Si vous possédez déjà un portefeuille Blockchain, choisissez « Jumelage de l'appareil »; sinon, choisissez « Créer un portefeuille ».    C'est gratuit ! Pas besoin d’e-mail.";
+"378.text" = "Si vous possédez déjà un portefeuille Blockchain, choisissez « Jumelage de l'appareil » ; sinon, choisissez « Créer un portefeuille ».    C'est gratuit ! Pas besoin d’e-mail.";
 
 /* (No Commment) */
 "380.text" = "Bienvenue sur votre portefeuille Blockchain";
@@ -159,7 +162,7 @@
 "kK3-Xs-d3Q.text" = "0 transactions";
 
 /* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "Pour récupérer vos fonds et vos transactions, vous devez saisir vos 12 mots de récupération avec des espaces.";
+"pEh-08-oZW.text" = "Pour récupérer vos fonds et vos transactions, vous devez saisir vos 12 mots de récupération avec des espaces";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "Jumelage manuel";
@@ -168,5 +171,5 @@
 "wfI-8F-dfm.normalTitle" = "Conditions d'utilisation de Blockchain";
 
 /* (No Commment) */
-"wvh-x7-hB8.text" = "* Minimum 10 caractères ";
+"wvh-x7-hB8.text" = "* Minimum 10 caractères";
 
