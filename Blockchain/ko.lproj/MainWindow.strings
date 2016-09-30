@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "설정 / 지갑 정보로 가기";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "거래들";
 
@@ -30,7 +33,7 @@ https://blockchain.info/wallet/login에서 PC 또는 Mac으로 귀하 블록체�
 "363.text" = "2";
 
 /* (No Commment) */
-"364.text" = "옛 지갑을 쓰고 있으면 계정 설정 단추를 클릭한 후 장치 탭을 선택하세요 새 지갑을 쓰고 있으면 설정 / 지갑 정보로 가세요";
+"364.text" = "설정 / 지갑 정보로 가기weifwohefwoihfwef.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
