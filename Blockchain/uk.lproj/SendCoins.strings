@@ -56,7 +56,7 @@
 "Cbp-Qe-FKP.normalTitle" = "Користувацьке налаштування комісії";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Комісія: ";
+"FB0-NP-5do.text" = "Комісія:";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";

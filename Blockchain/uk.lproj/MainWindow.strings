@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "Перейдіть у Налаштування / Інформація про гаманець.";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "Транзакції";
 
@@ -30,13 +33,13 @@ https://blockchain.info/wallet/login";
 "363.text" = "2";
 
 /* (No Commment) */
-"364.text" = "Якщо ви користуєтесь старим гаманцем, натисніть кнопку Параметри облікового запису і виберіть вкладку Пристрої. Якщо ви користуєтесь новим гаманцем, перейдіть у Налаштування / Інформація про гаманець.";
+"364.text" = "Перейдіть у Налаштування / Інформація про гаманець.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "Натисніть кнопку Показати код утворення пари, щоб відкрити QR-код. Відскануйте код камерою вашого пристрою.";
+"369.text" = "Натисніть кнопку Показати спарений код, щоб відкрити QR-код, чорно-білий квадратний штрих-код. Відскануйте код камерою вашого пристрою.";
 
 /* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
 "370.normalTitle" = "Сканувати код утворення пари";
@@ -90,7 +93,7 @@ https://blockchain.info/wallet/login";
 "586.text" = "Ідентифікатор гаманця:";
 
 /* Class = "UITextField"; placeholder = "Wallet identifier"; ObjectID = "587"; */
-"587.placeholder" = "Ідентифікатор гаманця ";
+"587.placeholder" = "Ідентифікатор гаманця";
 
 /* (No Commment) */
 "588.text" = "Ви вибрали утворення пари вручну (або автоматичне утворення пари вашим пристроєм не підтримується). Будь ласка, знизу введіть свій логін.";
@@ -162,7 +165,7 @@ https://blockchain.info/wallet/login";
 "pEh-08-oZW.text" = "Для відновлення ваших коштів та транзакцій, введіть Фразу для відновлення доступу із 12-слів.";
 
 /* (No Commment) */
-"qIf-DM-Gtq.text" = "Ручне парування";
+"qIf-DM-Gtq.text" = "Утворення пари вручну";
 
 /* Class = "UIButton"; normalTitle = "Blockchain Terms of Service"; ObjectID = "wfI-8F-dfm"; */
 "wfI-8F-dfm.normalTitle" = "Умови надання послуг Blockchain";
