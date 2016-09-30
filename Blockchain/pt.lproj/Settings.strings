@@ -1,41 +1,41 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "Dica de loja";
+"0zs-bt-hEl.text" = "Guardar Dica";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
 "8Ha-3e-Nqx.text" = "Verificar E-mail";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "Verificação em duas etapas";
+"8Zy-R2-HoW.text" = "Verificação em 2 Passos";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
-"Ii6-KE-x0B.placeholder" = "Confirmar nova senha";
+"Ii6-KE-x0B.placeholder" = "Confirmar Nova Senha";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
-"Kmb-pO-dHq.text" = "Fraco";
+"Kmb-pO-dHq.text" = "Fraca";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
-"VKs-B5-luJ.placeholder" = "Nova senha";
+"VKs-B5-luJ.placeholder" = "Nova Senha";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Frase de backup";
+"WVd-f2-ZLG.text" = "Frase de Recuperação";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "Bloco TORs";
+"Wor-ZR-sPS.text" = "Bloquear TORs";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Protege sua carteira de acesso não autorizado, permitindo a verificação de 2-Step. Você pode escolher usar um app gratuito ou o seu número de telemóvel para proteger sua carteira. Este código será solicitado quando você tentar acessar sua carteira.";
+"bFL-5O-fcl.text" = "Proteja sua carteira contra acesso não autorizado ativando a Verificação em 2 Passos. Você pode usar um aplicativo gratuito ou o seu número de celular para proteger sua carteira. Este código será solicitado quando você tentar acessar sua carteira.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "Link móvel";
+"f52-8F-scW.text" = "Vincular Celular";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
-"g8G-4j-qpJ.normalTitle" = "Use o seu número de telefone móvel";
+"g8G-4j-qpJ.normalTitle" = "Utilize seu número de celular";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "Habilitar o 2-Step";
+"gIP-mj-Hh2.text" = "Ativar Verificação em 2 Passos";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "Conclua as etapas abaixo para melhor segurança";
+"u5x-QP-acV.text" = "Conclua as etapas abaixo para aumentar a segurança";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
 "wnC-Xd-1Er.title" = "Central de segurança";
