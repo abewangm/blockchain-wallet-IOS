@@ -212,6 +212,10 @@
         [weakSelf on_get_history_success];
     };
     
+    self.context[@"on_get_filtered_history_success"] = ^(){
+        [weakSelf on_get_filtered_history_success];
+    };
+
     self.context[@"on_error_get_history"] = ^(NSString *error) {
         [weakSelf on_error_get_history:error];
     };
@@ -834,6 +838,18 @@
         DLog(@"Did not receive tx message for %f seconds - getting history", DELAY_GET_HISTORY_BACKUP);
         [self getHistory];
     }
+}
+
+- (void)getHistoryForImportedAddresses
+{
+    if ([self isInitialized])
+        [self.context evaluateScript:@"MyWalletPhone.getHistoryForImportedAddresses()"];
+}
+
+- (void)getHistoryForAccount:(int)accountIndex
+{
+    if ([self isInitialized])
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getHistoryForAccount(%d)", accountIndex]];
 }
 
 - (void)fetchMoreTransactions
@@ -2035,7 +2051,15 @@
 
 - (void)reloadFilter
 {
-    [self did_multiaddr];
+    int filterIndex = (int)app.transactionsViewController.filterIndex;
+    
+    if (filterIndex == FILTER_INDEX_ALL) {
+        [self getHistory];
+    } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        [self getHistoryForImportedAddresses];
+    } else {
+        [self getHistoryForAccount:filterIndex];
+    }
 }
 
 - (void)did_multiaddr
@@ -2048,20 +2072,9 @@
     
     [self getFinalBalance];
     
-    NSString *filter = @"";
-#ifdef ENABLE_TRANSACTION_FILTERING
     int filterIndex = (int)app.transactionsViewController.filterIndex;
     
-    if (filterIndex == FILTER_INDEX_ALL) {
-        filter = @"";
-    } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
-        filter = TRANSACTION_FILTER_IMPORTED;
-    } else {
-        filter = [NSString stringWithFormat:@"%d", filterIndex];
-    }
-#endif
-    
-    NSString *multiAddrJSON = [[self.context evaluateScript:[NSString stringWithFormat:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse(\"%@\"))", filter]] toString];
+    NSString *multiAddrJSON = [[self.context evaluateScript:[NSString stringWithFormat:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse(%d))", filterIndex]] toString];
     
     MultiAddressResponse *response = [self parseMultiAddrJSON:multiAddrJSON];
     
@@ -2606,6 +2619,18 @@
         [self loading_stop];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
+}
+
+- (void)on_get_filtered_history_success
+{
+    DLog(@"on_get_filtered_history_success");
+    
+    // Keep showing busy view to prevent user input while archiving/unarchiving addresses
+    if (!self.isSyncing) {
+        [self loading_stop];
+    }
+    
+    [self did_multiaddr];
 }
 
 - (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize

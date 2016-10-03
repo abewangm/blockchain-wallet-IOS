@@ -1131,8 +1131,18 @@ MyWalletPhone.get_wallet_and_history = function() {
 
 MyWalletPhone.getMultiAddrResponse = function(txFilter) {
     var obj = {};
+
+    if (txFilter == -2) {
+        // imported addresses
+        obj.transactions = MyWallet.wallet.txListLegacy.transactionsForIOS();
+    } else if (txFilter == -1) {
+        // all transactions
+        obj.transactions = MyWallet.wallet.txList.transactionsForIOS();
+    } else {
+        // account at specified index
+        obj.transactions = MyWallet.wallet.hdwallet.accounts[txFilter].txList.transactionsForIOS();
+    }
     
-    obj.transactions = MyWallet.wallet.txList.transactionsForIOS(txFilter);
     obj.total_received = MyWallet.wallet.totalReceived;
     obj.total_sent = MyWallet.wallet.totalSent;
     obj.final_balance = MyWallet.wallet.finalBalance;
@@ -1144,6 +1154,40 @@ MyWalletPhone.getMultiAddrResponse = function(txFilter) {
     
     return obj;
 };
+
+MyWalletPhone.getHistoryForAccount = function(accountIndex) {
+    
+    var success = function () {
+        console.log('Got wallet history');
+        on_get_filtered_history_success();
+    };
+    
+    var error = function () {
+        console.log('Error getting wallet history');
+        loading_stop();
+    };
+    
+    loading_start_get_history();
+    
+    MyWallet.wallet.hdwallet.accounts[accountIndex].fetchTransactions().then(success).catch(error);
+}
+
+MyWalletPhone.getHistoryForImportedAddresses = function() {
+    
+    var success = function () {
+        console.log('Got wallet history');
+        on_get_filtered_history_success();
+    };
+    
+    var error = function () {
+        console.log('Error getting wallet history');
+        loading_stop();
+    };
+    
+    loading_start_get_history();
+    
+    MyWallet.wallet.fetchTransactionsForLegacy().then(success).catch(error);
+}
 
 MyWalletPhone.fetchMoreTransactions = function() {
     loading_start_get_history();
