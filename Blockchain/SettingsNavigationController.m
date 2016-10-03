@@ -100,6 +100,7 @@
 {
     if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]] || [self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
         [self dismissViewControllerAnimated:YES completion:nil];
+        app.topViewControllerDelegate = nil;
     } else {
         [self popViewControllerAnimated:YES];
     }
@@ -122,6 +123,31 @@
 - (void)showSettings
 {
     [self popToRootViewControllerAnimated:NO];
+}
+
+#pragma mark Top View Controller Delegate
+
+- (void)showBusyViewWithLoadingText:(NSString *)text
+{
+    //TODO: use this delegate method instead of handling busy views manually from view controllers
+    return;
+}
+
+- (void)updateBusyViewLoadingText:(NSString *)text
+{
+    //TODO: use this delegate method instead of handling busy views manually from view controllers
+    return;
+}
+
+- (void)hideBusyView
+{
+    //TODO: use this delegate method instead of handling busy views manually from view controllers
+    return;
+}
+
+- (void)presentAlertController:(UIAlertController *)alertController
+{
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
