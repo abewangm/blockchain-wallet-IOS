@@ -1383,6 +1383,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.wallet.sessionToken = nil;
     
+    self.wallet.swipeAddresses = nil;
+    
     self.merchantViewController = nil;
     self.receiveViewController = nil;
     
