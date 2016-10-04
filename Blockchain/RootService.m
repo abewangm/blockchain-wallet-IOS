@@ -1696,6 +1696,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didSetDefaultAccount
 {
+    self.wallet.swipeAddresses = nil;
     [self.receiveViewController reloadMainAddress];
 }
 
