@@ -1723,6 +1723,7 @@ void (^secondPasswordSuccess)(NSString *);
         self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
     }
     
+    self.topViewControllerDelegate = self.settingsNavigationController;
     [self.settingsNavigationController showSecurityCenter];
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -1736,6 +1737,7 @@ void (^secondPasswordSuccess)(NSString *);
         self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
     }
     
+    self.topViewControllerDelegate = self.settingsNavigationController;
     [self.settingsNavigationController showSettings];
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BCFadeView.h"
 
-@interface SettingsNavigationController : UINavigationController
+@interface SettingsNavigationController : UINavigationController <TopViewController>
+
 @property (nonatomic) UILabel *headerLabel;
 @property (nonatomic) UIButton *backButton;
 @property (nonatomic) BCFadeView *busyView;

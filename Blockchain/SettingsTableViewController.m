@@ -359,6 +359,8 @@ const int aboutPrivacyPolicy = 1;
     
     self.mobileNumberString = self.enteredMobileNumberString;
     
+    [self getAccountInfo];
+    
     [self alertUserToVerifyMobileNumber];
 }
 
@@ -624,7 +626,7 @@ const int aboutPrivacyPolicy = 1;
             if ([app.wallet getSMSVerifiedStatus] == YES) {
                 [self enableTwoStepForSMS];
             } else {
-                [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesMobileNumber inSection:preferencesSectionNotificationsFooter]];
+                [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesMobileNumber inSection:preferencesSectionSMSFooter]];
             }
         } else {
             [self disableTwoStep];
