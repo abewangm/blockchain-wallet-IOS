@@ -359,6 +359,8 @@ const int aboutPrivacyPolicy = 1;
     
     self.mobileNumberString = self.enteredMobileNumberString;
     
+    [self getAccountInfo];
+    
     [self alertUserToVerifyMobileNumber];
 }
 
