@@ -66,7 +66,8 @@
 
 - (void)hideKeyboard;
 - (void)hideKeyboardForced;
-
 - (void)showKeyboard;
+
+- (void)doCurrencyConversion;
 
 @end

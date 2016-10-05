@@ -1700,6 +1700,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.receiveViewController reloadMainAddress];
 }
 
+- (void)didChangeLocalCurrency
+{
+    [self.receiveViewController doCurrencyConversion];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses
