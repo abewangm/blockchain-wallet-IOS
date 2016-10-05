@@ -321,6 +321,20 @@ NSString *detailLabel;
 
 - (uint64_t)getInputAmountInSatoshi
 {
+    if ([self shouldUseBtcField]) {
+        return [app.wallet parseBitcoinValueFromTextField:btcAmountField];
+    } else {
+        NSString *language = fiatAmountField.textInputMode.primaryLanguage;
+        NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+        NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
+    }
+    
+    return 0;
+}
+
+- (BOOL)shouldUseBtcField
+{
     BOOL shouldUseBtcField = YES;
     
     if ([btcAmountField isFirstResponder]) {
@@ -334,24 +348,19 @@ NSString *detailLabel;
         shouldUseBtcField = NO;
     }
     
-    if (shouldUseBtcField) {
-        return [app.wallet parseBitcoinValueFromTextField:btcAmountField];
-    } else {
-        NSString *language = fiatAmountField.textInputMode.primaryLanguage;
-        NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
-        NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
-    }
-    
-    return 0;
+    return shouldUseBtcField;
+}
+
+- (void)doCurrencyConversion
+{
+    [self doCurrencyConversionWithAmount:[self getInputAmountInSatoshi]];
 }
 
 - (void)doCurrencyConversionWithAmount:(uint64_t)amount
 {
-    if ([btcAmountField isFirstResponder]) {
+    if ([self shouldUseBtcField]) {
         fiatAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
-    }
-    else if ([fiatAmountField isFirstResponder]) {
+    } else {
         btcAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
     }
     

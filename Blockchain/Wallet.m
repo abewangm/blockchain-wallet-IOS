@@ -2501,6 +2501,12 @@
 {
     DLog(@"on_change_local_currency_success");
     [self getHistory];
+    
+    if ([delegate respondsToSelector:@selector(didChangeLocalCurrency)]) {
+        [delegate didChangeLocalCurrency];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didChangeLocalCurrency!", [delegate class]);
+    }
 }
 
 - (void)on_change_currency_error
