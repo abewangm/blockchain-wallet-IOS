@@ -100,17 +100,18 @@
     [self updateTwoStep];
     [self updateTor];
     
-    int completedItems = [app.wallet securityCenterScore];
+    int score = [app.wallet securityCenterScore];
     
-    self.progressView.progress = (float)completedItems/6;
-    if (completedItems < 6 && completedItems > 2) {
+    int completedItemsCount = [app.wallet securityCenterCompletedItemsCount];
+    self.progressView.progress = (float)completedItemsCount/3;
+    if (score == 1) {
         self.securityLevelImageView.image = [UIImage imageNamed:@"security2"];
         self.progressView.progressTintColor = COLOR_SECURITY_CENTER_YELLOW;
         self.instructionsLabel.text = BC_STRING_SECURITY_CENTER_INSTRUCTIONS;
-    } else if (completedItems == 6) {
+    } else if (score > 1) {
         self.securityLevelImageView.image = [UIImage imageNamed:@"security3"];
         self.progressView.progressTintColor = COLOR_SECURITY_CENTER_GREEN;
-        self.instructionsLabel.text = BC_STRING_SECURITY_CENTER_COMPLETED;
+        self.instructionsLabel.text = completedItemsCount == 3 ? BC_STRING_SECURITY_CENTER_COMPLETED : BC_STRING_SECURITY_CENTER_INSTRUCTIONS;
     } else {
         self.securityLevelImageView.image = [UIImage imageNamed:@"security1"];
         self.progressView.progressTintColor = COLOR_SECURITY_CENTER_RED;

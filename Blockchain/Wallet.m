@@ -3352,27 +3352,28 @@
 
 - (int)securityCenterScore
 {
-    int completedItems = 0;
+    if (self.isRecoveryPhraseVerified && [self hasEnabledTwoStep] && [self hasVerifiedEmail]) {
+        return 2;
+    } else if (self.isRecoveryPhraseVerified && [self hasEnabledTwoStep]) {
+        return 2;
+    } else if (self.isRecoveryPhraseVerified && [self hasVerifiedEmail]) {
+        return 1;
+    } else if ([self hasEnabledTwoStep] && [self hasVerifiedEmail]) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+- (int)securityCenterCompletedItemsCount
+{
+    int count = 0;
     
-    if ([self hasVerifiedEmail]) {
-        completedItems++;
-    }
-    if (self.isRecoveryPhraseVerified) {
-        completedItems++;
-    }
-    if ([self hasVerifiedMobileNumber]) {
-        completedItems++;
-    }
-    if ([self hasStoredPasswordHint]) {
-        completedItems++;
-    }
-    if ([self hasEnabledTwoStep]) {
-        completedItems++;
-    }
-    if ([self hasBlockedTorRequests]) {
-        completedItems++;
-    }
-    return completedItems;
+    if (self.isRecoveryPhraseVerified) count++;
+    if ([self hasEnabledTwoStep]) count++;
+    if ([self hasVerifiedEmail]) count++;
+    
+    return count;
 }
 
 #pragma mark - Debugging

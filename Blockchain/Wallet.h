@@ -308,6 +308,7 @@
 - (BOOL)hasEnabledTwoStep;
 - (BOOL)hasBlockedTorRequests;
 - (int)securityCenterScore;
+- (int)securityCenterCompletedItemsCount;
 
 // Payment Spender
 - (void)createNewPayment;
