@@ -187,7 +187,7 @@ int lastNumberTransactions = INT_MAX;
 {
     [self reloadData];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL object:nil];
+    [self.detailViewController didGetHistory];
 }
 
 - (void)reloadData
@@ -212,7 +212,7 @@ int lastNumberTransactions = INT_MAX;
 {
     [self reloadData];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SYMBOLS object:nil];
+    [self.detailViewController reloadSymbols];
 }
 
 - (void)reloadNewTransactions

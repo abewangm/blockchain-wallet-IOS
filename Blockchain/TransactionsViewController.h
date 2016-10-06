@@ -18,6 +18,8 @@
  * MA 02110-1301  USA
  */
 
+#import "TransactionDetailViewController.h"
+
 @class MultiAddressResponse;
 @class LatestBlock;
 
@@ -45,6 +47,7 @@
 @property(nonatomic) UIButton *moreButton;
 @property(nonatomic) BOOL clickedFetchMore;
 @property(nonatomic) NSIndexPath *lastSelectedIndexPath;
+@property(nonatomic) TransactionDetailViewController *detailViewController;
 
 - (void)reload;
 - (void)reloadSymbols;

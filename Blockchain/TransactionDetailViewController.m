@@ -48,6 +48,8 @@ const CGFloat rowHeightValue = 116;
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) BOOL isGettingFiatAtTime;
 
+@property (nonatomic) TransactionRecipientsViewController *recipientsViewController;
+
 @end
 @implementation TransactionDetailViewController
 
@@ -75,22 +77,6 @@ const CGFloat rowHeightValue = 116;
     if (![self.transaction.fiatAmountsAtTime objectForKey:[self getCurrencyCode]]) {
         [self getFiatAtTime];
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetHistory) name:NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadSymbols) name:NOTIFICATION_KEY_RELOAD_SYMBOLS object:nil];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RELOAD_SYMBOLS object:nil];
 }
 
 - (void)setupTextViewInputAccessoryView
@@ -213,6 +199,7 @@ const CGFloat rowHeightValue = 116;
 
 - (void)reloadSymbols
 {
+    [self.recipientsViewController reloadTableView];
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowValue inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
@@ -307,9 +294,9 @@ const CGFloat rowHeightValue = 116;
 
 - (void)showRecipients
 {
-    TransactionRecipientsViewController *recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
-    recipientsViewController.delegate = self;
-    [self.navigationController pushViewController:recipientsViewController animated:YES];
+    self.recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
+    self.recipientsViewController.recipientsDelegate = self;
+    [self.navigationController pushViewController:self.recipientsViewController animated:YES];
 }
 
 - (void)setupPullToRefresh
