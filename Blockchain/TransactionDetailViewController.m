@@ -336,7 +336,6 @@ const CGFloat rowHeightValue = 116;
 - (void)toggleSymbol
 {
     [app toggleSymbol];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowValue inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
