@@ -51,6 +51,7 @@
     
     if (transaction.note.length > 0) {
         self.textView.text = transaction.note;
+        [self.descriptionDelegate setDefaultTextViewCursorPosition:self.textView.text.length];
     } else {
         [self addPlaceholderLabel];
     }
@@ -88,7 +89,9 @@
     self.textView.userInteractionEnabled = YES;
     [self.textView becomeFirstResponder];
     
-    [self.textView scrollRangeToVisible:self.textView.selectedRange];
+    NSRange cursorPosition = [self.descriptionDelegate getTextViewCursorPosition];
+    self.textView.selectedRange = cursorPosition;
+    [self.textView scrollRangeToVisible:cursorPosition];
 }
 
 #pragma mark - TextView delegate

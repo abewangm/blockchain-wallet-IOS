@@ -42,6 +42,7 @@ const CGFloat rowHeightValue = 116;
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UITextView *textView;
+@property (nonatomic) NSRange textViewCursorPosition;
 @property CGFloat oldTextViewHeight;
 @property (nonatomic) UIView *descriptonInputAccessoryView;
 @property (nonatomic) UIRefreshControl *refreshControl;
@@ -107,7 +108,7 @@ const CGFloat rowHeightValue = 116;
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(updateButton.frame.size.width - 50, 0, 50, BUTTON_HEIGHT)];
     cancelButton.backgroundColor = COLOR_BUTTON_GRAY_CANCEL;
     [cancelButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(endEditing) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton addTarget:self action:@selector(cancelEditing) forControlEvents:UIControlEventTouchUpInside];
     [inputAccessoryView addSubview:cancelButton];
     
     self.descriptonInputAccessoryView = inputAccessoryView;
@@ -126,8 +127,10 @@ const CGFloat rowHeightValue = 116;
     return label.length > 0 ? label : nil;
 }
 
-- (void)endEditing
+- (void)cancelEditing
 {
+    self.textViewCursorPosition = self.textView.selectedRange;
+
     [self.textView resignFirstResponder];
     [self.textView scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
     self.textView.userInteractionEnabled = NO;
@@ -139,6 +142,8 @@ const CGFloat rowHeightValue = 116;
 
 - (void)saveNote
 {
+    self.textViewCursorPosition = self.textView.selectedRange;
+    
     [self.textView resignFirstResponder];
     
     [self.textView scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
@@ -369,6 +374,16 @@ const CGFloat rowHeightValue = 116;
 - (CGFloat)getMaxTextViewHeight
 {
     return textViewHeightMax;
+}
+
+- (NSRange)getTextViewCursorPosition
+{
+    return self.textViewCursorPosition;
+}
+
+- (void)setDefaultTextViewCursorPosition:(NSUInteger)textLength
+{
+    self.textViewCursorPosition = NSMakeRange(textLength, 0);
 }
 
 #pragma mark - Recipients Delegate
