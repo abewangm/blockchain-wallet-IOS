@@ -70,7 +70,7 @@
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeLeft
-                                                                multiplier:1.f constant:self.contentView.layoutMargins.left]];
+                                                                multiplier:1.f constant:15]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
                                                                  attribute:NSLayoutAttributeCenterY
@@ -190,12 +190,11 @@
     self.editButton.hidden = YES;
     self.textView.editable = YES;
     [self.textView becomeFirstResponder];
-    
-    [self.descriptionDelegate adjustTextViewOffset];
-    
+        
     NSRange cursorPosition = [self.descriptionDelegate getTextViewCursorPosition];
     self.textView.selectedRange = cursorPosition;
-    [self.textView scrollRangeToVisible:cursorPosition];
+    
+    [self.descriptionDelegate textViewDidChange:self.textView];
 }
 
 #pragma mark - TextView delegate

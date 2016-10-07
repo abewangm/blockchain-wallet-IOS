@@ -34,8 +34,6 @@ const int cellRowDate = 4;
 const int cellRowStatus = 5;
 
 const CGFloat rowHeightDefault = 60;
-const CGFloat rowHeightMax = 116;
-const CGFloat textViewHeightMax = rowHeightMax - 20;
 const CGFloat rowHeightValue = 116;
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DescriptionDelegate, ValueDelegate, StatusDelegate, RecipientsDelegate>
@@ -43,10 +41,10 @@ const CGFloat rowHeightValue = 116;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UITextView *textView;
 @property (nonatomic) NSRange textViewCursorPosition;
-@property CGFloat oldTextViewHeight;
 @property (nonatomic) UIView *descriptonInputAccessoryView;
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) BOOL isGettingFiatAtTime;
+@property (nonatomic) CGSize defaultTableViewContentSize;
 
 @property (nonatomic) TransactionRecipientsViewController *recipientsViewController;
 
@@ -118,7 +116,6 @@ const CGFloat rowHeightValue = 116;
     self.textViewCursorPosition = self.textView.selectedRange;
 
     [self.textView resignFirstResponder];
-    [self adjustTextViewOffset];
     self.textView.editable = NO;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -131,7 +128,6 @@ const CGFloat rowHeightValue = 116;
     self.textViewCursorPosition = self.textView.selectedRange;
     
     [self.textView resignFirstResponder];
-    [self adjustTextViewOffset];
     self.textView.editable = NO;
 
     [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
@@ -219,7 +215,6 @@ const CGFloat rowHeightValue = 116;
         TransactionDetailDescriptionCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         cell.descriptionDelegate = self;
         [cell configureWithTransaction:self.transaction];
-        self.oldTextViewHeight = cell.textView.frame.size.height;
         self.textView = cell.textView;
         cell.textView.inputAccessoryView = self.descriptonInputAccessoryView;
         return cell;
@@ -279,6 +274,21 @@ const CGFloat rowHeightValue = 116;
     if (indexPath.row == cellRowTo) {
         [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
     }
+    
+    if ([indexPath isEqual:((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject])]) {
+        self.defaultTableViewContentSize = tableView.contentSize;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 50;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *spacer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
+    return spacer;
 }
 
 - (void)showRecipients
@@ -316,18 +326,23 @@ const CGFloat rowHeightValue = 116;
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cellRowDescription inSection:0];
-    CGFloat descriptionCellYPosition = [self.tableView rectForRowAtIndexPath:indexPath].origin.y;
-    if (self.tableView.contentOffset.y > descriptionCellYPosition) {
-        return;
-    }
-    
     CGPoint currentOffset = self.tableView.contentOffset;
     [UIView setAnimationsEnabled:NO];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
-    self.tableView.contentOffset = currentOffset;
+    
+    CGRect keyboardAccessoryRect = [self.descriptonInputAccessoryView.superview convertRect:self.descriptonInputAccessoryView.frame toView:self.tableView];
+    CGRect keyboardPlusAccessoryRect = CGRectMake(keyboardAccessoryRect.origin.x, keyboardAccessoryRect.origin.y, keyboardAccessoryRect.size.width, self.view.frame.size.height - keyboardAccessoryRect.origin.y);
+    
+    UITextRange *selectionRange = [textView selectedTextRange];
+    CGRect selectionEndRect = [textView convertRect:[textView caretRectForPosition:selectionRange.end] toView:self.tableView];
+    
+    if (CGRectIntersectsRect(keyboardPlusAccessoryRect, selectionEndRect)) {
+        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + selectionEndRect.origin.y + selectionEndRect.size.height - keyboardAccessoryRect.origin.y + 15) animated:NO];
+    } else {
+        self.tableView.contentOffset = currentOffset;
+    }
 }
 
 - (void)showWebviewDetail
@@ -348,11 +363,6 @@ const CGFloat rowHeightValue = 116;
     return rowHeightDefault;
 }
 
-- (CGFloat)getMaxTextViewHeight
-{
-    return textViewHeightMax;
-}
-
 - (NSRange)getTextViewCursorPosition
 {
     return self.textViewCursorPosition;
@@ -361,17 +371,6 @@ const CGFloat rowHeightValue = 116;
 - (void)setDefaultTextViewCursorPosition:(NSUInteger)textLength
 {
     self.textViewCursorPosition = NSMakeRange(textLength, 0);
-}
-
-- (void)adjustTextViewOffset
-{
-    int numberOfLines = self.textView.contentSize.height / self.textView.font.lineHeight;
-
-    if (numberOfLines <= 1) {
-        self.textView.contentOffset = OFFSET_TEXTVIEW_ADJUSTED_TOP;
-    } else {
-        [self.textView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-    }
 }
 
 #pragma mark - Recipients Delegate

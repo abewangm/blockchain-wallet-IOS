@@ -15,8 +15,6 @@
 - (CGFloat)getDefaultRowHeight;
 - (NSRange)getTextViewCursorPosition;
 - (void)setDefaultTextViewCursorPosition:(NSUInteger)textLength;
-- (void)adjustTextViewOffset;
-- (CGFloat)getMaxTextViewHeight;
 @end
 @interface TransactionDetailDescriptionCell : TransactionDetailTableCell
 @property (nonatomic) UITextView *textView;
