@@ -118,8 +118,8 @@ const CGFloat rowHeightValue = 116;
     self.textViewCursorPosition = self.textView.selectedRange;
 
     [self.textView resignFirstResponder];
-    [self.textView scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
-    self.textView.userInteractionEnabled = NO;
+    [self adjustTextViewOffset];
+    self.textView.editable = NO;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
@@ -131,8 +131,8 @@ const CGFloat rowHeightValue = 116;
     self.textViewCursorPosition = self.textView.selectedRange;
     
     [self.textView resignFirstResponder];
-    
-    [self.textView scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
+    [self adjustTextViewOffset];
+    self.textView.editable = NO;
 
     [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
@@ -216,19 +216,12 @@ const CGFloat rowHeightValue = 116;
         [cell configureWithTransaction:self.transaction];
         return cell;
     } else if (indexPath.row == cellRowDescription) {
-        // Set initial height for sizeThatFits: calculation
         TransactionDetailDescriptionCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         cell.descriptionDelegate = self;
-        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height < rowHeightDefault ? rowHeightDefault : cell.frame.size.height);
-        
         [cell configureWithTransaction:self.transaction];
-        
         self.oldTextViewHeight = cell.textView.frame.size.height;
         self.textView = cell.textView;
         cell.textView.inputAccessoryView = self.descriptonInputAccessoryView;
-        
-        // Resize textView in case current note is larger than one line
-        [self textViewDidChange:self.textView];
         return cell;
     } else if (indexPath.row == cellRowTo) {
         TransactionDetailToCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_TO forIndexPath:indexPath];
@@ -267,21 +260,17 @@ const CGFloat rowHeightValue = 116;
     if (indexPath.row == cellRowValue) {
         return rowHeightValue;
     } else if (indexPath.row == cellRowDescription && self.textView.text) {
-        CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
-        CGSize sizeToUse = [self addVerticalPaddingToSize:size];
-        
-        if (sizeToUse.height < rowHeightDefault) {
-            return rowHeightDefault;
-        } else if (sizeToUse.height > rowHeightMax) {
-            return rowHeightMax;
-        } else {
-            return sizeToUse.height;
-        }
+        return UITableViewAutomaticDimension;
     } else if (indexPath.row == cellRowTo) {
         return rowHeightDefault;
     } else if (indexPath.row == cellRowFrom) {
         return rowHeightDefault/2 + 20.5/2;
     }
+    return rowHeightDefault;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return rowHeightDefault;
 }
 
@@ -327,16 +316,18 @@ const CGFloat rowHeightValue = 116;
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
-    if (size.height > textViewHeightMax) size.height = textViewHeightMax;
-    if (size.height != self.oldTextViewHeight) {
-        self.oldTextViewHeight = size.height;
-        self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, size.height);
-        [UIView setAnimationsEnabled:NO];
-        [self.tableView beginUpdates];
-        [self.tableView endUpdates];
-        [UIView setAnimationsEnabled:YES];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cellRowDescription inSection:0];
+    CGFloat descriptionCellYPosition = [self.tableView rectForRowAtIndexPath:indexPath].origin.y;
+    if (self.tableView.contentOffset.y > descriptionCellYPosition) {
+        return;
     }
+    
+    CGPoint currentOffset = self.tableView.contentOffset;
+    [UIView setAnimationsEnabled:NO];
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    [UIView setAnimationsEnabled:YES];
+    self.tableView.contentOffset = currentOffset;
 }
 
 - (void)showWebviewDetail
@@ -370,6 +361,17 @@ const CGFloat rowHeightValue = 116;
 - (void)setDefaultTextViewCursorPosition:(NSUInteger)textLength
 {
     self.textViewCursorPosition = NSMakeRange(textLength, 0);
+}
+
+- (void)adjustTextViewOffset
+{
+    int numberOfLines = self.textView.contentSize.height / self.textView.font.lineHeight;
+
+    if (numberOfLines <= 1) {
+        self.textView.contentOffset = OFFSET_TEXTVIEW_ADJUSTED_TOP;
+    } else {
+        [self.textView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    }
 }
 
 #pragma mark - Recipients Delegate

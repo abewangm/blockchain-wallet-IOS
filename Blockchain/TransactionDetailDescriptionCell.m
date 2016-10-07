@@ -15,46 +15,125 @@
     [super configureWithTransaction:transaction];
     
     if (self.isSetup) {
-        self.textLabel.text = BC_STRING_DESCRIPTION;
+        self.mainLabel.text = BC_STRING_DESCRIPTION;
         if (transaction.note.length > 0) {
             self.textView.text = transaction.note;
+            self.textViewPlaceholderLabel.hidden = YES;
         } else {
+            self.textView.text = nil;
+            self.textViewPlaceholderLabel.hidden = NO;
             NSString *label = [self.descriptionDelegate getNotePlaceholder];
             self.textViewPlaceholderLabel.text = label && label.length > 0 ? label : BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
         }
         self.editButton.hidden = NO;
-        self.editButton.frame = CGRectMake(self.textView.frame.origin.x + self.textView.frame.size.width, 0, self.contentView.frame.size.width - (self.textView.frame.origin.x + self.textView.frame.size.width), [self.descriptionDelegate getDefaultRowHeight]);
         
         return;
     }
     
-    self.textLabel.text = BC_STRING_DESCRIPTION;
-    self.textLabel.adjustsFontSizeToFitWidth = YES;
-    self.textLabel.textColor = [UIColor lightGrayColor];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.contentView.frame.size.height/2 - 20.5/2, 100, 20.5)];
+    self.mainLabel.text = BC_STRING_DESCRIPTION;
+    self.mainLabel.adjustsFontSizeToFitWidth = YES;
+    self.mainLabel.textColor = [UIColor lightGrayColor];
+    [self.contentView addSubview:self.mainLabel];
     
-    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width/2, self.contentView.layoutMargins.top + 2, self.contentView.frame.size.width/2 - self.contentView.layoutMargins.right, self.contentView.frame.size.height - self.contentView.layoutMargins.top - self.contentView.layoutMargins.bottom)];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 160, 0)];
     self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.textView.scrollEnabled = YES;
+    self.textView.scrollEnabled = NO;
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.textAlignment = NSTextAlignmentRight;
     [self.textView setFont:[UIFont systemFontOfSize:15]];
     
-    CGFloat sizeThatFitsHeight = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)].height;
-    self.defaultTextViewHeight = sizeThatFitsHeight > [self.descriptionDelegate getMaxTextViewHeight] ? [self.descriptionDelegate getMaxTextViewHeight] : sizeThatFitsHeight;
     self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width - self.defaultTextViewHeight, self.defaultTextViewHeight);
-
+    
     self.textView.delegate = self;
     [self.contentView addSubview:self.textView];
-    self.textView.userInteractionEnabled = NO;
+    self.textView.editable = NO;
     
     [self addEditButton];
     
+    [self addPlaceholderLabel];
+
     if (transaction.note.length > 0) {
         self.textView.text = transaction.note;
         [self.descriptionDelegate setDefaultTextViewCursorPosition:self.textView.text.length];
+        self.textViewPlaceholderLabel.hidden = YES;
     } else {
-        [self addPlaceholderLabel];
+        self.textViewPlaceholderLabel.hidden = NO;
     }
+    
+    self.mainLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.textView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.editButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                multiplier:1.f constant:self.contentView.layoutMargins.left]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                multiplier:1.f constant:0.f]];
+    
+    [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem:self.textView
+                                                                  attribute:NSLayoutAttributeLeft
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.mainLabel
+                                                                  attribute:NSLayoutAttributeRight
+                                                                 multiplier:1.f constant:8]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
+                                                                 attribute:NSLayoutAttributeRight
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.editButton
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                multiplier:1.f constant:0]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:nil
+                                                                 attribute:NSLayoutAttributeNotAnAttribute
+                                                                multiplier:1.f constant:49]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
+                                                                 attribute:NSLayoutAttributeRight
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeRight
+                                                                multiplier:1.f constant:0]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
+                                                                 attribute:NSLayoutAttributeTop
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeTop
+                                                                multiplier:1.f constant:16]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                multiplier:1.f constant:-16]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
+                                                                 attribute:NSLayoutAttributeTop
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeTop
+                                                                multiplier:1.f constant:0]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                multiplier:1.f constant:0]];
     
     self.isSetup = YES;
 }
@@ -81,13 +160,38 @@
     self.textViewPlaceholderLabel.text = label && label.length > 0 ? label : BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
     self.textViewPlaceholderLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.textViewPlaceholderLabel];
+    
+    self.textViewPlaceholderLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textViewPlaceholderLabel
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.mainLabel
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                multiplier:1.f constant:0]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textViewPlaceholderLabel
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.textView
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                multiplier:1.f constant:0]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textViewPlaceholderLabel
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.textView
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                multiplier:1.f constant:0]];
 }
 
 - (void)editDescription
 {
     self.editButton.hidden = YES;
-    self.textView.userInteractionEnabled = YES;
+    self.textView.editable = YES;
     [self.textView becomeFirstResponder];
+    
+    [self.descriptionDelegate adjustTextViewOffset];
     
     NSRange cursorPosition = [self.descriptionDelegate getTextViewCursorPosition];
     self.textView.selectedRange = cursorPosition;
@@ -99,9 +203,9 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     if ([textView.text isEqualToString:@""]) {
-        [self addPlaceholderLabel];
+        self.textViewPlaceholderLabel.hidden = NO;
     } else {
-        [self.textViewPlaceholderLabel removeFromSuperview];
+        self.textViewPlaceholderLabel.hidden = YES;
     }
     
     [self.descriptionDelegate textViewDidChange:textView];

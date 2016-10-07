@@ -105,6 +105,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define BUSY_VIEW_LABEL_ALPHA 0.75
 #define BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE 14.0
 
+#define OFFSET_TEXTVIEW_ADJUSTED_TOP CGPointMake(0, 3.5)
+
 #pragma mark - Strings
 
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_VALUE @"transactionDetailValue"

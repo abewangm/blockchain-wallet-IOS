@@ -13,12 +13,14 @@
 - (void)textViewDidChange:(UITextView *)textView;
 - (NSString *)getNotePlaceholder;
 - (CGFloat)getDefaultRowHeight;
-- (CGFloat)getMaxTextViewHeight;
 - (NSRange)getTextViewCursorPosition;
 - (void)setDefaultTextViewCursorPosition:(NSUInteger)textLength;
+- (void)adjustTextViewOffset;
+- (CGFloat)getMaxTextViewHeight;
 @end
 @interface TransactionDetailDescriptionCell : TransactionDetailTableCell
 @property (nonatomic) UITextView *textView;
+@property (nonatomic) UILabel *mainLabel;
 @property (nonatomic) UILabel *textViewPlaceholderLabel;
 @property (nonatomic) CGFloat defaultTextViewHeight;
 @property (nonatomic) UIButton *editButton;
