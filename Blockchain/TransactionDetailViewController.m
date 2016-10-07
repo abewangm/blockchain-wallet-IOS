@@ -41,7 +41,7 @@ const CGFloat rowHeightValue = 116;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UITextView *textView;
 @property (nonatomic) NSRange textViewCursorPosition;
-@property (nonatomic) UIView *descriptonInputAccessoryView;
+@property (nonatomic) UIView *descriptionInputAccessoryView;
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) BOOL isGettingFiatAtTime;
 @property (nonatomic) CGSize defaultTableViewContentSize;
@@ -95,7 +95,7 @@ const CGFloat rowHeightValue = 116;
     [cancelButton addTarget:self action:@selector(cancelEditing) forControlEvents:UIControlEventTouchUpInside];
     [inputAccessoryView addSubview:cancelButton];
     
-    self.descriptonInputAccessoryView = inputAccessoryView;
+    self.descriptionInputAccessoryView = inputAccessoryView;
 }
 
 - (void)getFiatAtTime
@@ -216,7 +216,7 @@ const CGFloat rowHeightValue = 116;
         cell.descriptionDelegate = self;
         [cell configureWithTransaction:self.transaction];
         self.textView = cell.textView;
-        cell.textView.inputAccessoryView = self.descriptonInputAccessoryView;
+        cell.textView.inputAccessoryView = [self getDescriptionInputAccessoryView];
         return cell;
     } else if (indexPath.row == cellRowTo) {
         TransactionDetailToCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_TO forIndexPath:indexPath];
@@ -334,7 +334,7 @@ const CGFloat rowHeightValue = 116;
     self.tableView.contentOffset = currentOffset;
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        CGRect keyboardAccessoryRect = [self.descriptonInputAccessoryView.superview convertRect:self.descriptonInputAccessoryView.frame toView:self.tableView];
+        CGRect keyboardAccessoryRect = [self.descriptionInputAccessoryView.superview convertRect:self.descriptionInputAccessoryView.frame toView:self.tableView];
         CGRect keyboardPlusAccessoryRect = CGRectMake(keyboardAccessoryRect.origin.x, keyboardAccessoryRect.origin.y, keyboardAccessoryRect.size.width, self.view.frame.size.height - keyboardAccessoryRect.origin.y);
         
         UITextRange *selectionRange = [textView selectedTextRange];
@@ -372,6 +372,11 @@ const CGFloat rowHeightValue = 116;
 - (void)setDefaultTextViewCursorPosition:(NSUInteger)textLength
 {
     self.textViewCursorPosition = NSMakeRange(textLength, 0);
+}
+
+- (UIView *)getDescriptionInputAccessoryView
+{
+    return self.textView.isEditable ? self.descriptionInputAccessoryView : nil;
 }
 
 #pragma mark - Recipients Delegate

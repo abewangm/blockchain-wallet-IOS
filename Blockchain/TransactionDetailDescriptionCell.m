@@ -189,6 +189,8 @@
 {
     self.editButton.hidden = YES;
     self.textView.editable = YES;
+    self.textView.inputAccessoryView = [self.descriptionDelegate getDescriptionInputAccessoryView];
+    
     [self.textView becomeFirstResponder];
         
     NSRange cursorPosition = [self.descriptionDelegate getTextViewCursorPosition];
