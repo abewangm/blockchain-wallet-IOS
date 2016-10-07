@@ -331,18 +331,19 @@ const CGFloat rowHeightValue = 116;
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
-    
-    CGRect keyboardAccessoryRect = [self.descriptonInputAccessoryView.superview convertRect:self.descriptonInputAccessoryView.frame toView:self.tableView];
-    CGRect keyboardPlusAccessoryRect = CGRectMake(keyboardAccessoryRect.origin.x, keyboardAccessoryRect.origin.y, keyboardAccessoryRect.size.width, self.view.frame.size.height - keyboardAccessoryRect.origin.y);
-    
-    UITextRange *selectionRange = [textView selectedTextRange];
-    CGRect selectionEndRect = [textView convertRect:[textView caretRectForPosition:selectionRange.end] toView:self.tableView];
-    
-    if (CGRectIntersectsRect(keyboardPlusAccessoryRect, selectionEndRect)) {
-        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + selectionEndRect.origin.y + selectionEndRect.size.height - keyboardAccessoryRect.origin.y + 15) animated:NO];
-    } else {
-        self.tableView.contentOffset = currentOffset;
-    }
+    self.tableView.contentOffset = currentOffset;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGRect keyboardAccessoryRect = [self.descriptonInputAccessoryView.superview convertRect:self.descriptonInputAccessoryView.frame toView:self.tableView];
+        CGRect keyboardPlusAccessoryRect = CGRectMake(keyboardAccessoryRect.origin.x, keyboardAccessoryRect.origin.y, keyboardAccessoryRect.size.width, self.view.frame.size.height - keyboardAccessoryRect.origin.y);
+        
+        UITextRange *selectionRange = [textView selectedTextRange];
+        CGRect selectionEndRect = [textView convertRect:[textView caretRectForPosition:selectionRange.end] toView:self.tableView];
+        
+        if (CGRectIntersectsRect(keyboardPlusAccessoryRect, selectionEndRect)) {
+            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + selectionEndRect.origin.y + selectionEndRect.size.height - keyboardAccessoryRect.origin.y + 15) animated:NO];
+        }
+    });
 }
 
 - (void)showWebviewDetail
