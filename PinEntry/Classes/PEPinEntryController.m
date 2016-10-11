@@ -187,7 +187,7 @@ static PEViewController *VerifyController()
 
         } else {
             self.qrCodeImageView.hidden = YES;
-            self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
+            self.addressLabel.text = BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES;
         }
     } else {
         pinController.swipeLabel.hidden = YES;
@@ -206,7 +206,7 @@ static PEViewController *VerifyController()
         [self setupQRCode];
     } else {
         [self.qrCodeImageView removeFromSuperview];
-        self.addressLabel.text = BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN;
+        self.addressLabel.text = BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES;
     }
 }
 
