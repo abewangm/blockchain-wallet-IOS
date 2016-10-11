@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 @protocol RecipientsDelegate
 - (BOOL)isWatchOnlyLegacyAddress:(NSString *)addr;
+- (void)toggleSymbol;
 @end
 @interface TransactionRecipientsViewController : UIViewController
-@property (nonatomic) id<RecipientsDelegate> delegate;
+@property (nonatomic) id<RecipientsDelegate> recipientsDelegate;
 - (id)initWithRecipients:(NSArray *)recipients;
+- (void)reloadTableView;
 @end

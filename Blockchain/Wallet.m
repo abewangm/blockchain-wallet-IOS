@@ -613,6 +613,7 @@
         id certificate = (__bridge id)certRef;
         
         [webSocketRequest setSR_SSLPinnedCertificates:@[certificate]];
+        [webSocketRequest setSR_comparesPublicKeys:YES];
         
         CFRelease(certRef);
     }

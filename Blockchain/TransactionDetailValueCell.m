@@ -33,6 +33,7 @@
         self.accessoryButton.hidden = NO;
         [self setupValueWhenSentLabelText:transaction];
         self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.fee)]];
+        [self.amountButton setTitle:[NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.amount)] forState:UIControlStateNormal];
         return;
     }
     

@@ -21,7 +21,7 @@
 // #define ENABLE_TRANSACTION_FETCHING 1
 #define ENABLE_SWIPE_TO_RECEIVE 1
 #define ENABLE_TOUCH_ID 1
-//#define ENABLE_CERTIFICATE_PINNING 1
+#define ENABLE_CERTIFICATE_PINNING 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
@@ -105,6 +105,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define BUSY_VIEW_LABEL_ALPHA 0.75
 #define BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE 14.0
 
+#define OFFSET_TEXTVIEW_ADJUSTED_TOP CGPointMake(0, 3.5)
+
 #pragma mark - Strings
 
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_VALUE @"transactionDetailValue"
@@ -162,8 +164,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES @"reloadAccountsAndAddresses"
 #define NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD @"multiaddressResponseReload"
 #define NOTIFICATION_KEY_GET_FIAT_AT_TIME @"getFiatAtTime"
-#define NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL @"reloadTransactionDetail"
-#define NOTIFICATION_KEY_RELOAD_SYMBOLS @"reloadSymbols"
 
 #define NOTIFICATION_KEY_MODAL_VIEW_DISMISSED @"modalViewDismissed"
 

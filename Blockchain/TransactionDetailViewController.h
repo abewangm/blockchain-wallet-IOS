@@ -18,4 +18,7 @@
 @property (nonatomic) NSUInteger transactionIndex;
 @property (nonatomic) id<BusyViewDelegate> busyViewDelegate;
 
+- (void)reloadSymbols;
+- (void)didGetHistory;
+
 @end
