@@ -138,7 +138,7 @@ static PEViewController *VerifyController()
 #ifdef ENABLE_SWIPE_TO_RECEIVE
     if (self.verifyOnly &&
         [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED] &&
-        app.wallet.swipeAddresses && [app.wallet didUpgradeToHd]) {
+        app.wallet.swipeAddresses) {
         
         pinController.swipeLabel.alpha = 1;
         pinController.swipeLabel.hidden = NO;
