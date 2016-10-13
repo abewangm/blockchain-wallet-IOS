@@ -15,6 +15,7 @@
 #import "QRCodeGenerator.h"
 #import "BCAddressSelectionView.h"
 #import "BCLine.h"
+#import "Blockchain-Swift.h"
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;

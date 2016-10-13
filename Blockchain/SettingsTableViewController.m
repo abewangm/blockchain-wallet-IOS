@@ -948,8 +948,8 @@ const int aboutPrivacyPolicy = 1;
         self.backupController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
     }
     
-    // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
     self.backupController.wallet = app.wallet;
+    self.backupController.app = app;
     
     self.backupController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:self.backupController animated:YES completion:nil];

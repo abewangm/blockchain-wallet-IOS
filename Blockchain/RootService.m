@@ -41,6 +41,7 @@
 #import "DebugTableViewController.h"
 #import "KeychainItemWrapper+Credentials.h"
 #import "NSString+SHA256.h"
+#import "Blockchain-Swift.h"
 
 @implementation RootService
 
@@ -1643,7 +1644,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
 {
-    [_sendViewController updateTransferAllAmount:amount fee:fee addressesUsed:addressesUsed];
+    if (self.transferAllFundsModalController) {
+        [self.transferAllFundsModalController updateTransferAllAmount:amount fee:fee addressesUsed:addressesUsed];
+        [self hideBusyView];
+    } else {
+        [_sendViewController updateTransferAllAmount:amount fee:fee addressesUsed:addressesUsed];
+    }
 }
 
 - (void)showSummaryForTransferAll
@@ -1750,20 +1756,6 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:nil];
-}
-
-- (void)showBackup
-{
-    if (!_backupNavigationViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_BACKUP bundle: nil];
-        _backupNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
-    }
-    
-    // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
-    _backupNavigationViewController.wallet = self.wallet;
-    
-    _backupNavigationViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [_tabViewController presentViewController:_backupNavigationViewController animated:YES completion:nil];
 }
 
 - (void)showSupport
@@ -2163,6 +2155,21 @@ void (^secondPasswordSuccess)(NSString *);
     [self showBusyViewWithLoadingText:BC_STRING_LOADING_DOWNLOADING_WALLET];
     [mainPasswordTextField resignFirstResponder];
     [self performSelector:@selector(loginMainPassword) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
+}
+
+- (void)setupTransferAllFunds
+{
+    [app closeSideMenu];
+    
+    app.topViewControllerDelegate = nil;
+    
+    if (!app.sendViewController) {
+        app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
+    }
+    
+    [app showSendCoins];
+    
+    [app.sendViewController getInfoForTransferAllFundsToDefaultAccount];
 }
 
 - (void)loginMainPassword

@@ -8,6 +8,7 @@
 
 #import "BCEditAddressView.h"
 #import "RootService.h"
+#import "Blockchain-Swift.h"
 
 @implementation BCEditAddressView
 

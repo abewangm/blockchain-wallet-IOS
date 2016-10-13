@@ -18,6 +18,7 @@ class BackupViewController: UIViewController {
     @IBOutlet weak var lostRecoveryPhraseLabel: UILabel!
     
     var wallet : Wallet?
+    var app : RootService?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +45,16 @@ class BackupViewController: UIViewController {
             // Override any font changes
             backupWalletAgainButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14);
             lostRecoveryPhraseLabel.font = UIFont.boldSystemFont(ofSize: 14);
+            
+            let alertToTransferAll = UIAlertController(title: "Transfer imported addresses?", message: "It looks like you have some bitcoin in imported addresses. Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", preferredStyle: .alert)
+            alertToTransferAll.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alertToTransferAll.addAction(UIAlertAction(title: "Transfer all", style: .default, handler: { void in
+                let transferAllController = TransferAllFundsViewController()
+                let navigationController = BCNavigationController(rootViewController: transferAllController, title: "Transfer All Funds")
+                self.app?.transferAllFundsModalController = transferAllController
+                self.present(navigationController!, animated: true, completion: nil)
+            }))
+            present(alertToTransferAll, animated: true, completion: nil)
         }
         
         explanation.sizeToFit();

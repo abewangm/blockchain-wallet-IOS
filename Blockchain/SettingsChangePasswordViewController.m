@@ -9,6 +9,7 @@
 #import "RootService.h"
 #import "BCFadeView.h"
 #import "SettingsChangePasswordViewController.h"
+#import "Blockchain-Swift.h"
 
 @interface SettingsChangePasswordViewController () <UITextFieldDelegate>
 @property (nonatomic) IBOutlet UILabel *passwordFeedbackLabel;

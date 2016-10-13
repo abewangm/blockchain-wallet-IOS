@@ -25,6 +25,7 @@ BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
 var MyWalletPhone = {};
 var currentPayment = null;
+var transferAllBackupPayment = null;
 var transferAllPayments = {};
 
 // Register for JS event handlers and forward to Obj-C handlers
@@ -764,7 +765,7 @@ MyWalletPhone.preparePaymentsForTransferAll = function(addresses, paymentSetup, 
     }
 }
 
-MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, address, secondPassword) {
+MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, address, secondPassword, onSendScreen) {
     var totalAmount = 0;
     var totalFee = 0;
     
@@ -786,24 +787,34 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
         return error.payment;
     }
     
-    currentPayment = transferAllPayments[address];
-    if (currentPayment) {
-        currentPayment.to(MyWallet.wallet.hdwallet.defaultAccountIndex).build().then(function (x) {
-                                    
-                                    if (isFirstTransfer) {
-                                    console.log('builtTransferAll: from:' + x.from);
-                                    console.log('builtTransferAll: to:' + x.to);
-                                    objc_show_summary_for_transfer_all();
-                                    } else {
-                                    console.log('builtTransferAll: from:' + x.from);
-                                    console.log('builtTransferAll: to:' + x.to);
-                                    objc_send_transfer_all(secondPassword);
-                                    }
-                                    
-                                    return x;
-                                    }).catch(buildFailure);
+    var showSummaryOrSend = function (payment) {
+        if (isFirstTransfer) {
+            console.log('builtTransferAll: from:' + x.from);
+            console.log('builtTransferAll: to:' + x.to);
+            objc_show_summary_for_transfer_all();
+        } else {
+            console.log('builtTransferAll: from:' + x.from);
+            console.log('builtTransferAll: to:' + x.to);
+            objc_send_transfer_all(secondPassword);
+        }
+        
+        return payment;
+    };
+    
+    if (onSendScreen) {
+        currentPayment = transferAllPayments[address];
+        if (currentPayment) {
+            currentPayment.to(MyWallet.wallet.hdwallet.defaultAccountIndex).build().then(showSummaryOrSend).catch(buildFailure);
+        } else {
+            console.log('Payment error: null payment object!');
+        }
     } else {
-        console.log('Payment error: null payment object!');
+        transferAllBackupPayment = transferAllPayments[address];
+        if (transferAllBackupPayment) {
+            transferAllBackupPayment.to(MyWallet.wallet.hdwallet.defaultAccountIndex).build().then(showSummaryOrSend).catch(buildFailure);
+        } else {
+            console.log('Payment error: null payment object!');
+        }
     }
 }
 

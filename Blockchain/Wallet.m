@@ -718,6 +718,14 @@
     self.isSettingDefaultAccount = NO;
 }
 
+- (void)setupBackupTransferAll:(id)transferAllController
+{
+    if ([delegate respondsToSelector:@selector(setupBackupTransferAll:)]) {
+        [delegate setupBackupTransferAll:transferAllController];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector setupBackupTransferAll!", [delegate class]);
+    }}
+
 # pragma mark - Socket Delegate
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
@@ -1499,7 +1507,7 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(true, \"%@\", \"%@\")", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(true, \"%@\", \"%@\", true)", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
 }
 
 - (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword
@@ -1508,7 +1516,25 @@
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(false, \"%@\", \"%@\")", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(false, \"%@\", \"%@\", true)", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
+}
+
+- (void)setupFirstTransferForAllFundsToDefaultAccountInBackup:(NSString *)address secondPassword:(NSString *)secondPassword
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(true, \"%@\", \"%@\", false)", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
+}
+
+- (void)setupFollowingTransferForAllFundsToDefaultAccountInBackup:(NSString *)address secondPassword:(NSString *)secondPassword
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(false, \"%@\", \"%@\", false)", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
 }
 
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
