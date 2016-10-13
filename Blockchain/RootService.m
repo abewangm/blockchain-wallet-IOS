@@ -1897,6 +1897,7 @@ void (^secondPasswordSuccess)(NSString *);
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_UPGRADE bundle: nil];
     UpgradeViewController *upgradeViewController = [storyboard instantiateViewControllerWithIdentifier:VIEW_CONTROLLER_NAME_UPGRADE];
     upgradeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    app.topViewControllerDelegate = upgradeViewController;
     [_tabViewController presentViewController:upgradeViewController animated:YES completion:nil];
 }
 
@@ -2460,7 +2461,13 @@ void (^secondPasswordSuccess)(NSString *);
         [self.pinEntryViewController reset];
     }]];
     
-    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    if (self.topViewControllerDelegate) {
+        if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+            [self.topViewControllerDelegate presentAlertController:alert];
+        }
+    } else {
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)askIfUserWantsToResetPIN

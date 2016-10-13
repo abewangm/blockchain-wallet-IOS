@@ -158,6 +158,7 @@
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    app.topViewControllerDelegate = nil;
 }
 
 - (void)viewDidLayoutSubviews
@@ -216,6 +217,13 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self setTextForCaptionLabel];
+}
+
+#pragma mark Top View Delegate
+
+- (void)presentAlertController:(UIAlertController *)alertController
+{
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
