@@ -323,11 +323,9 @@
 - (void)sweepPaymentAdvanced:(uint64_t)fee;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
 - (void)setupBackupTransferAll:(id)transferAllController;
-- (void)getInfoForTransferAllFundsToDefaultAccount;
-- (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
-- (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
-- (void)setupFirstTransferForAllFundsToDefaultAccountInBackup:(NSString *)address secondPassword:(NSString *)secondPassword;
-- (void)setupFollowingTransferForAllFundsToDefaultAccountInBackup:(NSString *)address secondPassword:(NSString *)secondPassword;
+- (void)getInfoForTransferAllFundsToAccount;
+- (void)setupFirstTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment;
+- (void)setupFollowingTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment;
 - (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;

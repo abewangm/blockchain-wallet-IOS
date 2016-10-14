@@ -13,9 +13,14 @@
 @property (nonatomic) uint64_t amount;
 @property (nonatomic) uint64_t fee;
 @property (nonatomic) NSArray *addressesUsed;
-@property (nonatomic) UIButton *sendButton;
 @property (nonatomic) NSString *temporarySecondPassword;
 @property (nonatomic) TransferAllFundsBuilder *transferPaymentBuilder;
+@property (nonatomic) int selectedAccountIndex;
+
+@property (nonatomic) UIButton *sendButton;
+@property (nonatomic) UILabel *fromLabel;
+@property (nonatomic) UILabel *toLabel;
+@property (nonatomic) UILabel *amountLabel;
 @end
 
 @implementation TransferAllFundsViewController
@@ -24,14 +29,22 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
     [self setupViews];
-    self.transferPaymentBuilder = [[TransferAllFundsBuilder alloc] initOnSendScreen:NO];
+    self.transferPaymentBuilder = [[TransferAllFundsBuilder alloc] initUsingSendScreen:NO];
     self.transferPaymentBuilder.delegate = self;
 }
 
 - (void)setupViews
 {
+    self.fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, DEFAULT_HEADER_HEIGHT + 16, 200, 22)];
+    [self.view addSubview:self.fromLabel];
+    
+    self.toLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, DEFAULT_HEADER_HEIGHT + 46, 200, 22)];
+    [self.view addSubview:self.toLabel];
+    
+    self.amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, DEFAULT_HEADER_HEIGHT + 76, 200, 22)];
+    [self.view addSubview:self.amountLabel];
+    
     self.sendButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 200)];
     [self.sendButton setTitle:BC_STRING_SEND forState:UIControlStateNormal];
     [self.sendButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
@@ -47,6 +60,10 @@
     self.fee = [fee longLongValue];
     self.addressesUsed = addressesUsed;
     
+    self.fromLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [addressesUsed count]];
+    self.toLabel.text = [self.transferPaymentBuilder getLabelForDestinationAccount];
+    self.amountLabel.text = [self.transferPaymentBuilder getLabelForAmount:self.amount];
+    
     [self.transferPaymentBuilder setupFirstTransferWithAddressesUsed:addressesUsed];
 }
 
@@ -58,12 +75,12 @@
 
 - (void)send
 {
-    [self.transferPaymentBuilder transferAllFundsToDefaultAccountWithSecondPassword:nil];
+    [self.transferPaymentBuilder transferAllFundsToAccountWithSecondPassword:nil];
 }
 
 - (void)sendDuringTransferAll:(NSString *)secondPassword
 {
-    [self.transferPaymentBuilder transferAllFundsToDefaultAccountWithSecondPassword:secondPassword];
+    [self.transferPaymentBuilder transferAllFundsToAccountWithSecondPassword:secondPassword];
 }
 
 - (void)didFinishTransferFunds:(NSString *)summary

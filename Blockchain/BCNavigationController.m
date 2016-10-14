@@ -97,6 +97,12 @@
     self.busyView = busyView;
 }
 
+- (void)setHeaderTitle:(NSString *)headerTitle
+{
+    _headerTitle = headerTitle;
+    self.headerLabel.text = headerTitle;
+}
+
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];

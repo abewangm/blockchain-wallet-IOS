@@ -718,7 +718,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     MyWallet.login(user_guid, inputedPassword, credentials, callbacks).then(success).catch(other_error);
 };
 
-MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
+MyWalletPhone.getInfoForTransferAllFundsToAccount = function() {
     
     var totalAddressesUsed = [];
     var addresses = MyWallet.wallet.spendableActiveAddresses;
@@ -765,7 +765,7 @@ MyWalletPhone.preparePaymentsForTransferAll = function(addresses, paymentSetup, 
     }
 }
 
-MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, address, secondPassword, onSendScreen) {
+MyWalletPhone.transferAllFundsToAccount = function(accountIndex, isFirstTransfer, address, secondPassword, onSendScreen) {
     var totalAmount = 0;
     var totalFee = 0;
     
@@ -804,14 +804,14 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
     if (onSendScreen) {
         currentPayment = transferAllPayments[address];
         if (currentPayment) {
-            currentPayment.to(MyWallet.wallet.hdwallet.defaultAccountIndex).build().then(showSummaryOrSend).catch(buildFailure);
+            currentPayment.to(accountIndex).build().then(showSummaryOrSend).catch(buildFailure);
         } else {
             console.log('Payment error: null payment object!');
         }
     } else {
         transferAllBackupPayment = transferAllPayments[address];
         if (transferAllBackupPayment) {
-            transferAllBackupPayment.to(MyWallet.wallet.hdwallet.defaultAccountIndex).build().then(showSummaryOrSend).catch(buildFailure);
+            transferAllBackupPayment.to(accountIndex).build().then(showSummaryOrSend).catch(buildFailure);
         } else {
             console.log('Payment error: null payment object!');
         }

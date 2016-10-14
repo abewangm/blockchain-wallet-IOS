@@ -1507,49 +1507,31 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changePaymentAmount(%lld)", amount]];
 }
 
-- (void)getInfoForTransferAllFundsToDefaultAccount
+- (void)getInfoForTransferAllFundsToAccount
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount()"];
+    [self.context evaluateScript:@"MyWalletPhone.getInfoForTransferAllFundsToAccount()"];
 }
 
-- (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword
+- (void)setupFirstTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(true, \"%@\", \"%@\", true)", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToAccount(%d, true, \"%@\", \"%@\", %d)", account, [address escapeStringForJS], [secondPassword escapeStringForJS], useSendPayment]];
 }
 
-- (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword
+- (void)setupFollowingTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(false, \"%@\", \"%@\", true)", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
-}
-
-- (void)setupFirstTransferForAllFundsToDefaultAccountInBackup:(NSString *)address secondPassword:(NSString *)secondPassword
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(true, \"%@\", \"%@\", false)", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
-}
-
-- (void)setupFollowingTransferForAllFundsToDefaultAccountInBackup:(NSString *)address secondPassword:(NSString *)secondPassword
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToDefaultAccount(false, \"%@\", \"%@\", false)", [address escapeStringForJS], [secondPassword escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToAccount(%d, false, \"%@\", \"%@\", %d)", account, [address escapeStringForJS], [secondPassword escapeStringForJS], useSendPayment]];
 }
 
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address

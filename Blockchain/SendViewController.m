@@ -216,8 +216,6 @@ BOOL displayingLocalSymbolSend;
     } else {
         [app.wallet changePaymentFromAccount:self.fromAccount isAdvanced:self.customFeeMode];
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
 }
 
 - (void)reloadSymbols
@@ -338,7 +336,7 @@ BOOL displayingLocalSymbolSend;
     
     [app showBusyViewWithLoadingText:BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER];
     
-    [app.wallet getInfoForTransferAllFundsToDefaultAccount];
+    [app.wallet getInfoForTransferAllFundsToAccount];
 }
 
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
@@ -553,7 +551,7 @@ BOOL displayingLocalSymbolSend;
         [weakSelf reload];
     };
 
-    [self.transferAllPaymentBuilder transferAllFundsToDefaultAccountWithSecondPassword:nil];
+    [self.transferAllPaymentBuilder transferAllFundsToAccountWithSecondPassword:nil];
 }
 
 - (void)didFinishTransferFunds:(NSString *)summary
@@ -595,7 +593,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)sendDuringTransferAll:(NSString *)secondPassword
 {
-    [self.transferAllPaymentBuilder transferAllFundsToDefaultAccountWithSecondPassword:secondPassword];
+    [self.transferAllPaymentBuilder transferAllFundsToAccountWithSecondPassword:secondPassword];
 }
 
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword
@@ -1570,7 +1568,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)setupTransferAll
 {
-    self.transferAllPaymentBuilder = [[TransferAllFundsBuilder alloc] initOnSendScreen:YES];
+    self.transferAllPaymentBuilder = [[TransferAllFundsBuilder alloc] initUsingSendScreen:YES];
     self.transferAllPaymentBuilder.delegate = self;
 }
 

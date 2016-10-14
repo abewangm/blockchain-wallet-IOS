@@ -13,10 +13,10 @@
 @end
 @implementation TransferAllFundsBuilder
 
-- (id)initOnSendScreen:(BOOL)onSendScreen
+- (id)initUsingSendScreen:(BOOL)usesSendScreen
 {
     if (self = [super init]) {
-        _onSendScreen = onSendScreen;
+        _usesSendScreen = usesSendScreen;
         [self getTransferAllInfo];
     }
     return self;
@@ -24,7 +24,17 @@
 
 - (void)getTransferAllInfo
 {
-    [app.wallet getInfoForTransferAllFundsToDefaultAccount];
+    [app.wallet getInfoForTransferAllFundsToAccount];
+}
+
+- (NSString *)getLabelForDestinationAccount
+{
+    return [app.wallet getLabelForAccount:self.destinationAccount];
+}
+
+- (NSString *)getLabelForAmount:(uint64_t)amount
+{
+    return [NSNumberFormatter formatMoney:amount localCurrency:NO];
 }
 
 - (void)setupFirstTransferWithAddressesUsed:(NSArray *)addressesUsed
@@ -34,19 +44,17 @@
     self.transferAllAddressesInitialCount = (int)[self.transferAllAddressesToTransfer count];
     self.transferAllAddressesUnspendable = 0;
     
-    [self setupFirstTransfer];
+    // use default account, but can select new destination account by calling setupTransfersToAccount:
+    [self setupTransfersToAccount:[app.wallet getDefaultAccountIndex]];
 }
 
-- (void)setupFirstTransfer
+- (void)setupTransfersToAccount:(int)account
 {
-    if (self.onSendScreen) {
-        [app.wallet setupFirstTransferForAllFundsToDefaultAccount:[self.transferAllAddressesToTransfer firstObject] secondPassword:nil];
-    } else {
-        [app.wallet setupFirstTransferForAllFundsToDefaultAccountInBackup:[self.transferAllAddressesToTransfer firstObject] secondPassword:nil];
-    }
+    _destinationAccount = account;
+    [app.wallet setupFirstTransferForAllFundsToAccount:account address:[self.transferAllAddressesToTransfer firstObject] secondPassword:nil useSendPayment:self.usesSendScreen];
 }
 
-- (void)transferAllFundsToDefaultAccountWithSecondPassword:(NSString *)_secondPassword
+- (void)transferAllFundsToAccountWithSecondPassword:(NSString *)_secondPassword
 {
     if (self.userCancelledNext) {
         [self finishedTransferFunds];
@@ -110,7 +118,7 @@
     
     app.wallet.didReceiveMessageForLastTransaction = NO;
     
-    if (self.onSendScreen) {
+    if (self.usesSendScreen) {
         [app.wallet sendPaymentWithListener:listener secondPassword:_secondPassword];
     } else {
         [app.wallet transferFundsBackupWithListener:listener secondPassword:_secondPassword];
@@ -128,7 +136,7 @@
     if ([self.transferAllAddressesToTransfer count] > 1 && !self.userCancelledNext) {
         [self.transferAllAddressesToTransfer removeObjectAtIndex:0];
         if (self.on_prepare_next_transfer) self.on_prepare_next_transfer(self.transferAllAddressesToTransfer);
-        [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:self.transferAllAddressesToTransfer[0] secondPassword:self.temporarySecondPassword];
+        [app.wallet setupFollowingTransferForAllFundsToAccount:self.destinationAccount address:self.transferAllAddressesToTransfer[0] secondPassword:self.temporarySecondPassword useSendPayment:self.usesSendScreen];
     } else {
         [self.transferAllAddressesToTransfer removeAllObjects];
         [self finishedTransferFunds];

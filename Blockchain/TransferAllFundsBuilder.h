@@ -20,8 +20,10 @@
 @property (nonatomic) int transferAllAddressesInitialCount;
 @property (nonatomic) int transferAllAddressesUnspendable;
 
+@property (nonatomic, readonly) int destinationAccount;
+@property (nonatomic, readonly) BOOL usesSendScreen;
+
 @property (nonatomic) BOOL userCancelledNext;
-@property (nonatomic, readonly) BOOL onSendScreen;
 
 // Callbacks for each transfer
 @property(nonatomic, copy) void (^on_before_send)();
@@ -29,8 +31,10 @@
 @property(nonatomic, copy) void (^on_success)(NSString*secondPassword);
 @property(nonatomic, copy) void (^on_error)(NSString*error, NSString*secondPassword);
 
-- (id)initOnSendScreen:(BOOL)onSendScreen;
+- (id)initUsingSendScreen:(BOOL)usesSendScreen;
+- (void)setupTransfersToAccount:(int)account;
 - (void)setupFirstTransferWithAddressesUsed:(NSArray *)addressesUsed;
-- (void)transferAllFundsToDefaultAccountWithSecondPassword:(NSString *)_secondPassword;
-
+- (void)transferAllFundsToAccountWithSecondPassword:(NSString *)secondPassword;
+- (NSString *)getLabelForDestinationAccount;
+- (NSString *)getLabelForAmount:(uint64_t)amount;
 @end
