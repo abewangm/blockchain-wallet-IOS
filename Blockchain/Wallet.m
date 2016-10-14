@@ -1077,9 +1077,24 @@
     NSString * txProgressID;
     
     if (secondPassword) {
-        txProgressID = [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\")", [secondPassword escapeStringForJS]]] toString];
+        txProgressID = [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(true, \"%@\")", [secondPassword escapeStringForJS]]] toString];
     } else {
-        txProgressID = [[self.context evaluateScript:@"MyWalletPhone.quickSend()"] toString];
+        txProgressID = [[self.context evaluateScript:@"MyWalletPhone.quickSend(true)"] toString];
+    }
+    
+    if (listener) {
+        [self.transactionProgressListeners setObject:listener forKey:txProgressID];
+    }
+}
+
+- (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
+{
+    NSString * txProgressID;
+    
+    if (secondPassword) {
+        txProgressID = [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(false, \"%@\")", [secondPassword escapeStringForJS]]] toString];
+    } else {
+        txProgressID = [[self.context evaluateScript:@"MyWalletPhone.quickSend(false)"] toString];
     }
     
     if (listener) {

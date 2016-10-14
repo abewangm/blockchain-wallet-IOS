@@ -10,4 +10,6 @@
 
 @interface TransferAllFundsViewController : UIViewController
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;
+- (void)showSummaryForTransferAll;
+- (void)sendDuringTransferAll:(NSString *)secondPassword;
 @end

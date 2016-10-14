@@ -82,16 +82,12 @@
 @property BOOL sendFromAddress;
 @property BOOL sendToAddress;
 @property BOOL surgeIsOccurring;
-@property BOOL transferAllMode;
 
 @property (nonatomic) BOOL isSending;
 
-@property (nonatomic) NSMutableArray *transferAllAddressesToTransfer;
-@property (nonatomic) NSMutableArray *transferAllAddressesTransferred;
-@property (nonatomic) int transferAllAddressesInitialCount;
-@property (nonatomic) int transferAllAddressesUnspendable;
-
 @property(nonatomic, strong) UITapGestureRecognizer *tapGesture;
+
+- (BOOL)transferAllMode;
 
 - (IBAction)selectFromAddressClicked:(id)sender;
 - (IBAction)QRCodebuttonClicked:(id)sender;
@@ -120,6 +116,7 @@
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
 - (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
 
+- (void)setupTransferAll;
 - (void)getInfoForTransferAllFundsToDefaultAccount;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;

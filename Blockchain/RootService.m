@@ -1088,7 +1088,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         [modalView.closeButton addTarget:self action:@selector(forceHDUpgradeForLegacyWallets) forControlEvents:UIControlEventAllTouchEvents];
         
-        if (_sendViewController.transferAllMode) {
+        if ([_sendViewController transferAllMode]) {
             [modalView.closeButton addTarget:_sendViewController action:@selector(reload) forControlEvents:UIControlEventAllTouchEvents];
         }
     }
@@ -1654,12 +1654,21 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showSummaryForTransferAll
 {
-    [_sendViewController showSummaryForTransferAll];
+    if (self.transferAllFundsModalController) {
+        [self.transferAllFundsModalController showSummaryForTransferAll];
+        [self hideBusyView];
+    } else {
+        [_sendViewController showSummaryForTransferAll];
+    }
 }
 
 - (void)sendDuringTransferAll:(NSString *)secondPassword
 {
-    [_sendViewController sendDuringTransferAll:secondPassword];
+    if (self.transferAllFundsModalController) {
+        [self.transferAllFundsModalController sendDuringTransferAll:secondPassword];
+    } else {
+        [_sendViewController sendDuringTransferAll:secondPassword];
+    }
 }
 
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword
@@ -2159,8 +2168,6 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)setupTransferAllFunds
 {
-    [app closeSideMenu];
-    
     app.topViewControllerDelegate = nil;
     
     if (!app.sendViewController) {
@@ -2169,7 +2176,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [app showSendCoins];
     
-    [app.sendViewController getInfoForTransferAllFundsToDefaultAccount];
+    [app.sendViewController setupTransferAll];
 }
 
 - (void)loginMainPassword

@@ -328,6 +328,7 @@
 - (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
 - (void)setupFirstTransferForAllFundsToDefaultAccountInBackup:(NSString *)address secondPassword:(NSString *)secondPassword;
 - (void)setupFollowingTransferForAllFundsToDefaultAccountInBackup:(NSString *)address secondPassword:(NSString *)secondPassword;
+- (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;
 - (void)getFeeBounds:(uint64_t)fee;
