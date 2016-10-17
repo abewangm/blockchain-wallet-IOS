@@ -37,4 +37,6 @@
 - (void)transferAllFundsToAccountWithSecondPassword:(NSString *)secondPassword;
 - (NSString *)getLabelForDestinationAccount;
 - (NSString *)getLabelForAmount:(uint64_t)amount;
+
+- (NSString *)formatMoney:(uint64_t)amount localCurrency:(BOOL)useLocalCurrency;
 @end

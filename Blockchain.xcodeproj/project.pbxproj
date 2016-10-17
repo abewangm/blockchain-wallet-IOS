@@ -72,6 +72,7 @@
 		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
 		23DEF96E1DB11C98004AAAB6 /* TransferAllFundsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DEF96D1DB11C98004AAAB6 /* TransferAllFundsBuilder.m */; };
 		23E2FC081C7F60E7004CFF79 /* BCInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */; };
+		23E579541DB45F3A00220542 /* TransferAmountTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E579531DB45F3A00220542 /* TransferAmountTableCell.m */; };
 		23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C41B54258D0032B907 /* SettingsTableViewController.m */; };
 		23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C71B54282D0032B907 /* SettingsNavigationController.m */; };
 		23EA61CB1B5591260032B907 /* SettingsSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61CA1B5591260032B907 /* SettingsSelectorTableViewController.m */; };
@@ -689,6 +690,8 @@
 		23DEF96D1DB11C98004AAAB6 /* TransferAllFundsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferAllFundsBuilder.m; sourceTree = "<group>"; };
 		23E2FC061C7F60E7004CFF79 /* BCInsetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCInsetLabel.h; sourceTree = "<group>"; };
 		23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCInsetLabel.m; sourceTree = "<group>"; };
+		23E579521DB45F3A00220542 /* TransferAmountTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferAmountTableCell.h; sourceTree = "<group>"; };
+		23E579531DB45F3A00220542 /* TransferAmountTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferAmountTableCell.m; sourceTree = "<group>"; };
 		23EA61C31B54258D0032B907 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		23EA61C41B54258D0032B907 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		23EA61C61B54282D0032B907 /* SettingsNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsNavigationController.h; sourceTree = "<group>"; };
@@ -1533,6 +1536,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				23E579521DB45F3A00220542 /* TransferAmountTableCell.h */,
+				23E579531DB45F3A00220542 /* TransferAmountTableCell.m */,
 				23FB5C051D9ABB450008C6AB /* TransactionDetailDescriptionCell.h */,
 				23FB5C061D9ABB450008C6AB /* TransactionDetailDescriptionCell.m */,
 				23FB5C081D9ABB590008C6AB /* TransactionDetailToCell.h */,
@@ -1888,6 +1893,7 @@
 				2322DCB41D771831000E5AC1 /* SRDelegateController.m in Sources */,
 				9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */,
 				232ACBF51DAE84720072FB5E /* TransferAllFundsViewController.m in Sources */,
+				23E579541DB45F3A00220542 /* TransferAmountTableCell.m in Sources */,
 				230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */,
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,
 				6750389B1B4D832F00F7B488 /* SideMenuViewCell.m in Sources */,

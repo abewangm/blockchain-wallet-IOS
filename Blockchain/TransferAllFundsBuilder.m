@@ -8,6 +8,7 @@
 
 #import "TransferAllFundsBuilder.h"
 #import "RootService.h"
+
 @interface TransferAllFundsBuilder()
 @property (nonatomic) NSString *temporarySecondPassword;
 @end
@@ -30,6 +31,11 @@
 - (NSString *)getLabelForDestinationAccount
 {
     return [app.wallet getLabelForAccount:self.destinationAccount];
+}
+
+- (NSString *)formatMoney:(uint64_t)amount localCurrency:(BOOL)useLocalCurrency
+{
+    return [NSNumberFormatter formatMoney:amount localCurrency:useLocalCurrency];
 }
 
 - (NSString *)getLabelForAmount:(uint64_t)amount

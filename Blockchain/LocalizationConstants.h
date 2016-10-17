@@ -463,6 +463,8 @@
 #define BC_STRING_MAKE_DEFAULT NSLocalizedString(@"Make Default", nil)
 #define BC_STRING_DEFAULT NSLocalizedString(@"Default", nil)
 #define BC_STRING_TRANSFER_FUNDS NSLocalizedString(@"Transfer Funds", nil)
+#define BC_STRING_TRANSFER_AMOUNT NSLocalizedString(@"Transfer Amount", nil)
+#define BC_STRING_FEE NSLocalizedString(@"Fee", nil)
 #define BC_STRING_TRANSFER_FUNDS_DESCRIPTION_ONE NSLocalizedString(@"For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet.", nil)
 #define BC_STRING_TRANSFER_FUNDS_DESCRIPTION_TWO NSLocalizedString(@"Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features.", nil)
 #define BC_STRING_ARCHIVE_FOOTER_TITLE NSLocalizedString(@"Archive this if you do NOT want to use it anymore. Your funds will remain safe, and you can unarchive it at any time.", nil)

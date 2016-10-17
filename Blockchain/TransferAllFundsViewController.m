@@ -8,8 +8,9 @@
 
 #import "TransferAllFundsViewController.h"
 #import "TransferAllFundsBuilder.h"
+#import "TransferAmountTableCell.h"
 
-@interface TransferAllFundsViewController () <TransferAllFundsDelegate>
+@interface TransferAllFundsViewController () <TransferAllFundsDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) uint64_t amount;
 @property (nonatomic) uint64_t fee;
 @property (nonatomic) NSArray *addressesUsed;
@@ -17,6 +18,7 @@
 @property (nonatomic) TransferAllFundsBuilder *transferPaymentBuilder;
 @property (nonatomic) int selectedAccountIndex;
 
+@property (nonatomic) UITableView *tableView;
 @property (nonatomic) UIButton *sendButton;
 @property (nonatomic) UILabel *fromLabel;
 @property (nonatomic) UILabel *toLabel;
@@ -36,21 +38,21 @@
 
 - (void)setupViews
 {
-    self.fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, DEFAULT_HEADER_HEIGHT + 16, 200, 22)];
-    [self.view addSubview:self.fromLabel];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, DEFAULT_HEADER_HEIGHT + 182)];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.view addSubview:self.tableView];
+    self.tableView.scrollEnabled = NO;
     
-    self.toLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, DEFAULT_HEADER_HEIGHT + 46, 200, 22)];
-    [self.view addSubview:self.toLabel];
-    
-    self.amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, DEFAULT_HEADER_HEIGHT + 76, 200, 22)];
-    [self.view addSubview:self.amountLabel];
-    
-    self.sendButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 200)];
-    [self.sendButton setTitle:BC_STRING_SEND forState:UIControlStateNormal];
-    [self.sendButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
+    self.sendButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 120, self.tableView.frame.origin.y + self.tableView.frame.size.height + 24, 240, 40)];
+    self.sendButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.sendButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    [self.sendButton setTitle:BC_STRING_TRANSFER_FUNDS forState:UIControlStateNormal];
+    [self.sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.sendButton addTarget:self action:@selector(send) forControlEvents:UIControlEventTouchUpInside];
-    self.sendButton.center = self.view.center;
     self.sendButton.enabled = NO;
+    self.sendButton.clipsToBounds = YES;
+    self.sendButton.layer.cornerRadius = 16;
     [self.view addSubview:self.sendButton];
 }
 
@@ -60,16 +62,13 @@
     self.fee = [fee longLongValue];
     self.addressesUsed = addressesUsed;
     
-    self.fromLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [addressesUsed count]];
-    self.toLabel.text = [self.transferPaymentBuilder getLabelForDestinationAccount];
-    self.amountLabel.text = [self.transferPaymentBuilder getLabelForAmount:self.amount];
+    [self.tableView reloadData];
     
     [self.transferPaymentBuilder setupFirstTransferWithAddressesUsed:addressesUsed];
 }
 
 - (void)showSummaryForTransferAll
 {
-    // Display amount, fee, addresses used, etc.
     self.sendButton.enabled = YES;
 }
 
@@ -86,6 +85,49 @@
 - (void)didFinishTransferFunds:(NSString *)summary
 {
     
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+        cell.textLabel.text = BC_STRING_FROM;
+        cell.detailTextLabel.text = self.addressesUsed == nil ? @"" : [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [self.addressesUsed count]];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        return cell;
+    } else if (indexPath.row == 1) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+        cell.textLabel.text = BC_STRING_TO;
+        cell.detailTextLabel.text = [self.transferPaymentBuilder getLabelForDestinationAccount];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        return cell;
+    } else if (indexPath.row == 2) {
+        TransferAmountTableCell *cell = [[TransferAmountTableCell alloc] init];
+        cell.mainLabel.text = BC_STRING_TRANSFER_AMOUNT;
+        cell.fiatLabel.text = [self.transferPaymentBuilder formatMoney:self.amount localCurrency:YES];
+        cell.btcLabel.text = [self.transferPaymentBuilder formatMoney:self.amount localCurrency:NO];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        return cell;
+    } else {
+        TransferAmountTableCell *cell = [[TransferAmountTableCell alloc] init];
+        cell.mainLabel.text = BC_STRING_FEE;
+        cell.fiatLabel.text = [self.transferPaymentBuilder formatMoney:self.fee localCurrency:YES];
+        cell.btcLabel.text = [self.transferPaymentBuilder formatMoney:self.fee localCurrency:NO];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        return cell;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2) {
+        [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
+    }
 }
 
 @end
