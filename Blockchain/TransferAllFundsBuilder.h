@@ -12,7 +12,6 @@
 
 @protocol TransferAllFundsDelegate
 - (void)didFinishTransferFunds:(NSString *)summary;
-- (void)didSetDestinationAccount:(int)account;
 @end
 
 @interface TransferAllFundsBuilder : NSObject
