@@ -74,17 +74,13 @@
     
     transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
     
-    listener.on_start = ^() {
-    };
+    listener.on_start = self.on_start;
     
-    listener.on_begin_signing = ^() {
-    };
+    listener.on_begin_signing = self.on_begin_signing;
     
-    listener.on_sign_progress = ^(int input) {
-    };
+    listener.on_sign_progress = self.on_sign_progress;
     
-    listener.on_finish_signing = ^() {
-    };
+    listener.on_finish_signing = self.on_finish_signing;
     
     listener.on_success = ^(NSString*secondPassword) {
         
@@ -171,6 +167,11 @@
     }
     
     [self.delegate didFinishTransferFunds:summary];
+}
+
+- (void)archiveTransferredAddresses
+{
+    [app.wallet archiveTransferredAddresses:self.transferAllAddressesTransferred];
 }
 
 @end

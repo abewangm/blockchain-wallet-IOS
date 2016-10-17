@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BackupViewController: UIViewController {
+class BackupViewController: UIViewController, TransferAllPromptDelegate {
     
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var backupWalletButton: UIButton!
@@ -19,6 +19,7 @@ class BackupViewController: UIViewController {
     
     var wallet : Wallet?
     var app : RootService?
+    var transferredAll = false;
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,15 +47,18 @@ class BackupViewController: UIViewController {
             backupWalletAgainButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14);
             lostRecoveryPhraseLabel.font = UIFont.boldSystemFont(ofSize: 14);
             
-            let alertToTransferAll = UIAlertController(title: "Transfer imported addresses?", message: "It looks like you have some bitcoin in imported addresses. Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", preferredStyle: .alert)
-            alertToTransferAll.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alertToTransferAll.addAction(UIAlertAction(title: "Transfer all", style: .default, handler: { void in
-                let transferAllController = TransferAllFundsViewController()
-                let navigationController = BCNavigationController(rootViewController: transferAllController, title: "Transfer All Funds")
-                self.app?.transferAllFundsModalController = transferAllController
-                self.present(navigationController!, animated: true, completion: nil)
-            }))
-            present(alertToTransferAll, animated: true, completion: nil)
+            if (wallet!.didUpgradeToHd() && wallet!.getTotalBalanceForSpendableActiveLegacyAddresses() >= wallet!.dust() && navigationController!.visibleViewController == self && !transferredAll) {
+                let alertToTransferAll = UIAlertController(title: "Transfer imported addresses?", message: "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", preferredStyle: .alert)
+                alertToTransferAll.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                alertToTransferAll.addAction(UIAlertAction(title: "Transfer all", style: .default, handler: { void in
+                    let transferAllController = TransferAllFundsViewController()
+                    transferAllController.delegate = self;
+                    let navigationController = BCNavigationController(rootViewController: transferAllController, title: "Transfer All Funds")
+                    self.app?.transferAllFundsModalController = transferAllController
+                    self.present(navigationController!, animated: true, completion: nil)
+                }))
+                present(alertToTransferAll, animated: true, completion: nil)
+            }
         }
         
         explanation.sizeToFit();
@@ -68,6 +72,11 @@ class BackupViewController: UIViewController {
             changeYPosition(backupWalletAgainButton.frame.origin.y - 10, view: lostRecoveryPhraseLabel)
             changeYPosition(lostRecoveryPhraseLabel.frame.origin.y - backupWalletAgainButton.frame.size.height - 20, view: backupWalletButton)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        transferredAll = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -105,5 +114,18 @@ class BackupViewController: UIViewController {
             vc.wallet = wallet
             vc.isVerifying = true
         }
+    }
+    
+    func didTransferAll() {
+        transferredAll = true
+    }
+    
+    func showAlert(_ alert : UIAlertController) {
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showSyncingView() {
+        let backupNavigation = self.navigationController as? BackupNavigationViewController
+        backupNavigation?.busyView?.fadeIn()
     }
 }

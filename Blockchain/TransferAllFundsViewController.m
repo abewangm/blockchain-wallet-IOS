@@ -11,6 +11,7 @@
 #import "TransferAmountTableCell.h"
 #import "BCAddressSelectionView.h"
 #import "BCModalViewController.h"
+#import "BCNavigationController.h"
 
 @interface TransferAllFundsViewController () <TransferAllFundsDelegate, UITableViewDataSource, UITableViewDelegate, AddressSelectionDelegate>
 @property (nonatomic) uint64_t amount;
@@ -35,6 +36,19 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupViews];
     self.transferPaymentBuilder = [[TransferAllFundsBuilder alloc] initUsingSendScreen:NO];
+    
+    __weak TransferAllFundsViewController *weakSelf = self;
+    
+    self.transferPaymentBuilder.on_before_send = ^() {
+        BCNavigationController *navigationController = (BCNavigationController *)weakSelf.navigationController;
+        navigationController.shouldHideBusyView = NO;
+        NSString *text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, weakSelf.transferPaymentBuilder.transferAllAddressesInitialCount - [weakSelf.transferPaymentBuilder.transferAllAddressesToTransfer count] + 1, weakSelf.transferPaymentBuilder.transferAllAddressesInitialCount];
+        if (navigationController.busyView.alpha > 0) {
+            [navigationController updateBusyViewLoadingText:text];
+        } else {
+            [navigationController showBusyViewWithLoadingText:text];
+        }
+    };
     self.transferPaymentBuilder.delegate = self;
 }
 
@@ -86,7 +100,28 @@
 
 - (void)didFinishTransferFunds:(NSString *)summary
 {
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.shouldHideBusyView = YES;
+
+    NSString *message = [self.transferPaymentBuilder.transferAllAddressesTransferred count] > 0 ? [NSString stringWithFormat:@"%@\n\n%@", summary, BC_STRING_PAYMENT_ASK_TO_ARCHIVE_TRANSFERRED_ADDRESSES] : summary;
     
+    UIAlertController *alertForPaymentsSent = [UIAlertController alertControllerWithTitle:BC_STRING_PAYMENTS_SENT message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    if ([self.transferPaymentBuilder.transferAllAddressesTransferred count] > 0) {
+        [alertForPaymentsSent addAction:[UIAlertAction actionWithTitle:BC_STRING_ARCHIVE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self archiveTransferredAddresses];
+            [self.delegate showSyncingView];
+        }]];
+        [alertForPaymentsSent addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+    } else {
+        [alertForPaymentsSent addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    }
+    
+    [self.delegate didTransferAll];
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [self.delegate showAlert:alertForPaymentsSent];
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -147,6 +182,11 @@
     
         [self.navigationController pushViewController:viewController animated:YES];
     }
+}
+
+- (void)archiveTransferredAddresses
+{
+    [self.transferPaymentBuilder archiveTransferredAddresses];
 }
 
 - (void)didSelectFromAccount:(int)account

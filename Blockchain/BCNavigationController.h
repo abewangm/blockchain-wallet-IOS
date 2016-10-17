@@ -18,6 +18,10 @@
 @property (nonatomic) UILabel *busyLabel;
 @property (nonatomic) NSString *headerTitle;
 
+@property (nonatomic) BOOL shouldHideBusyView;
+
 - (id)initWithRootViewController:(UIViewController *)rootViewController title:(NSString *)title;
+- (void)showBusyViewWithLoadingText:(NSString *)text;
+- (void)hideBusyView;
 
 @end

@@ -32,6 +32,11 @@
 @property(nonatomic, copy) void (^on_prepare_next_transfer)(NSArray *transferAllAddressesToTransfer);
 @property(nonatomic, copy) void (^on_success)(NSString*secondPassword);
 @property(nonatomic, copy) void (^on_error)(NSString*error, NSString*secondPassword);
+@property(nonatomic, copy) void (^on_start)();
+@property(nonatomic, copy) void (^on_begin_signing)(int input);
+@property(nonatomic, copy) void (^on_sign_progress)();
+@property(nonatomic, copy) void (^on_finish_signing)();
+
 
 - (id)initUsingSendScreen:(BOOL)usesSendScreen;
 - (void)setupTransfersToAccount:(int)account;
@@ -42,4 +47,5 @@
 
 - (NSString *)formatMoney:(uint64_t)amount localCurrency:(BOOL)useLocalCurrency;
 - (Wallet *)wallet;
+- (void)archiveTransferredAddresses;
 @end

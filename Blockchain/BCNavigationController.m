@@ -18,6 +18,7 @@
 {
     if (self = [super initWithRootViewController:rootViewController]) {
         self.headerTitle = headerTitle;
+        self.shouldHideBusyView = YES; // default behavior
     }
     return self;
 }
@@ -154,7 +155,7 @@
 
 - (void)hideBusyView
 {
-    if (self.busyView.alpha == 1.0) {
+    if (self.busyView.alpha == 1.0 && self.shouldHideBusyView) {
         [self.busyView fadeOut];
     }
 }
