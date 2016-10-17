@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class Wallet;
+
 @protocol TransferAllFundsDelegate
 - (void)didFinishTransferFunds:(NSString *)summary;
+- (void)didSetDestinationAccount:(int)account;
 @end
 
 @interface TransferAllFundsBuilder : NSObject
@@ -39,4 +42,5 @@
 - (NSString *)getLabelForAmount:(uint64_t)amount;
 
 - (NSString *)formatMoney:(uint64_t)amount localCurrency:(BOOL)useLocalCurrency;
+- (Wallet *)wallet;
 @end

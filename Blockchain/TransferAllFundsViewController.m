@@ -9,8 +9,10 @@
 #import "TransferAllFundsViewController.h"
 #import "TransferAllFundsBuilder.h"
 #import "TransferAmountTableCell.h"
+#import "BCAddressSelectionView.h"
+#import "BCModalViewController.h"
 
-@interface TransferAllFundsViewController () <TransferAllFundsDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface TransferAllFundsViewController () <TransferAllFundsDelegate, UITableViewDataSource, UITableViewDelegate, AddressSelectionDelegate>
 @property (nonatomic) uint64_t amount;
 @property (nonatomic) uint64_t fee;
 @property (nonatomic) NSArray *addressesUsed;
@@ -128,6 +130,46 @@
     if (indexPath.row == 2) {
         [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == 1) {
+        BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:[self.transferPaymentBuilder wallet] showOwnAddresses:YES allSelectable:YES accountsOnly:YES];
+        selectorView.delegate = self;
+        selectorView.frame = CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
+        
+        UIViewController *viewController = [UIViewController new];
+        viewController.automaticallyAdjustsScrollViewInsets = NO;
+        [viewController.view addSubview:selectorView];
+    
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+}
+
+- (void)didSelectFromAccount:(int)account
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.transferPaymentBuilder setupTransfersToAccount:account];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)didSelectToAccount:(int)account
+{
+    DLog(@"Error: Selected To Account!");
+}
+
+- (void)didSelectToAddress:(NSString *)address
+{
+    DLog(@"Error: Selected To Address!");
+}
+
+- (void)didSelectFromAddress:(NSString *)address
+{
+    DLog(@"Error: Selected From Address!");
+    
 }
 
 @end

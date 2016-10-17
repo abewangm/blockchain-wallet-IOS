@@ -23,6 +23,11 @@
     return self;
 }
 
+- (Wallet *)wallet
+{
+    return app.wallet;
+}
+
 - (void)getTransferAllInfo
 {
     [app.wallet getInfoForTransferAllFundsToAccount];
