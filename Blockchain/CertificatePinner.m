@@ -41,14 +41,8 @@
     
     // Get local and remote cert data
     NSData *remoteCertificateData = CFBridgingRelease(SecCertificateCopyData(certificate));
-    NSString *resource;
-    if ([session.sessionDescription isEqualToString:HOST_NAME_MERCHANT] || [session.sessionDescription isEqualToString:HOST_NAME_API]) {
-        resource = @"api-info";
-    } else if ([session.sessionDescription isEqualToString:HOST_NAME_WALLET_SERVER]) {
-        resource = @"blockchain";
-    }
     
-    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:resource ofType:@"der"];
+    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:CERTIFICATE_SERVER_NAME ofType:CERTIFICATE_FILE_TYPE_DER];
     NSData *localCertificate = [NSData dataWithContentsOfFile:pathToCert];
     
     // The pinnning check

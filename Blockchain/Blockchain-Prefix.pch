@@ -109,6 +109,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define CERTIFICATE_SERVER_NAME @"blockchain"
+#define CERTIFICATE_FILE_TYPE_DER @"der"
+
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_VALUE @"transactionDetailValue"
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_STATUS @"transactionDetailStatus"
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_DATE @"transactionDetailDate"

@@ -1574,7 +1574,7 @@
 				9FB3636E14B60128004BEA02 /* Frameworks */,
 				23321D781BB072AB0005624F /* Update, Clean, Build My-Wallet-V3 */,
 				23321D7B1BB084320005624F /* Build Image Assets from PSDs */,
-				23FDEFA31D6E22C900FC80D6 /* Get SSL Certificates */,
+				23FDEFA31D6E22C900FC80D6 /* Get SSL Certificate */,
 				9FB3636F14B60128004BEA02 /* Resources */,
 			);
 			buildRules = (
@@ -1751,19 +1751,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Install dependencies\nbrew install imagemagick\ncd ${SRCROOT}/Artwork\nnpm install -g grunt-cli\nnpm install\nnpm install -g svgexport\n\n# Build images\ngrunt";
 		};
-		23FDEFA31D6E22C900FC80D6 /* Get SSL Certificates */ = {
+		23FDEFA31D6E22C900FC80D6 /* Get SSL Certificate */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Get SSL Certificates";
+			name = "Get SSL Certificate";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}/.. && openssl s_client -connect blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > blockchain.der && openssl s_client -connect api.blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > api-info.der";
+			shellScript = "cd ${SRCROOT}/.. && openssl s_client -connect blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > blockchain.der";
 		};
 /* End PBXShellScriptBuildPhase section */
 
