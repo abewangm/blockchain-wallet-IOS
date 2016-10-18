@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Παρακαλούμε εισάγετε φράση σας αποκατάστασης με λέξεις που διαχωρίζονται από διαστήματα";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Παρακαλούμε συνδεθείτε για να φορτώσετε περισσότερες διευθύνσεις.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Παρακαλώ να μειώσει το τέλος ένα ποσό που είναι μικρότερο από το υπόλοιπο σας";
 
 /* (No Commment) */

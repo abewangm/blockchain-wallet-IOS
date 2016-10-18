@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Vă rugăm să introduceţi fraza ta de recuperare cu cuvinte separate prin spaţii";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Rugam sa va logati pentru a încărca mai multe adrese.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Vă rugăm să reduce taxa la o valoare care este mai mică decât soldul";
 
 /* (No Commment) */

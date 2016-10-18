@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Zadajte prosím vaše zotavenie frázy s slová oddelené medzerou";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Prosím prihláste sa načítať viac adries.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Prosím znížiť poplatok za sumu, ktorá je menšia ako zostatok";
 
 /* (No Commment) */

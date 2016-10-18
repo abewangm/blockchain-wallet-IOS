@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "الرجاء إدخال عبارة الاسترداد الخاصة بك مع الكلمات مفصولة بمسافات";
 
 /* (No Commment) */
+"Please login to load more addresses." = "الرجاء تسجيل الدخول لتحميل المزيد من العناوين.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "الرجاء تخفيض الرسوم على مبلغ أقل من رصيدك";
 
 /* (No Commment) */

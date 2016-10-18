@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Kirjoita elpyminen lause välilyönnein erotettua sanaa";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Kirjaudu sisään ladataksesi lisää osoitteita.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Haluta alentaa maksun summa on pienempi kuin saldo";
 
 /* (No Commment) */
