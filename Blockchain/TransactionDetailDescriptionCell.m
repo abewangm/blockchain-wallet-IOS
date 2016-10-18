@@ -73,11 +73,11 @@
                                                                 multiplier:1.f constant:15]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
-                                                                 attribute:NSLayoutAttributeCenterY
+                                                                 attribute:NSLayoutAttributeTop
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                multiplier:1.f constant:0.f]];
+                                                                 attribute:NSLayoutAttributeTop
+                                                                multiplier:1.f constant:23]];
     
     [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem:self.textView
                                                                   attribute:NSLayoutAttributeLeft
