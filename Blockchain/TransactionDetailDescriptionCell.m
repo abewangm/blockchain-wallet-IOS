@@ -84,7 +84,7 @@
                                                                   relatedBy:NSLayoutRelationEqual
                                                                      toItem:self.mainLabel
                                                                   attribute:NSLayoutAttributeRight
-                                                                 multiplier:1.f constant:8]];
+                                                                 multiplier:1.f constant:16]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
                                                                  attribute:NSLayoutAttributeRight
