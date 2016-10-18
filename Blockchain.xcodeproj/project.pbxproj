@@ -487,6 +487,7 @@
 		237827191B7E472D00E9EE03 /* BCSecureTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCSecureTextField.swift; sourceTree = "<group>"; };
 		237C9E8E1C482132000754F7 /* AccountsAndAddressesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesDetailViewController.h; sourceTree = "<group>"; };
 		237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesDetailViewController.m; sourceTree = "<group>"; };
+		237EBF571DB6C942009AE45A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2390C1091D87376E00342C38 /* TransactionRecipientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionRecipientsViewController.h; sourceTree = "<group>"; };
 		2390C10A1D87376E00342C38 /* TransactionRecipientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionRecipientsViewController.m; sourceTree = "<group>"; };
 		239539811B486C7100989667 /* UILabel+MultiLineAutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MultiLineAutoSize.h"; sourceTree = "<group>"; };
@@ -2185,6 +2186,7 @@
 				23600FAE1D9EF8DF00D9985D /* sl */,
 				23600FAF1D9EF8E800D9985D /* sv */,
 				23600FB01D9EF8F500D9985D /* zh-Hant */,
+				237EBF571DB6C942009AE45A /* pt-BR */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
