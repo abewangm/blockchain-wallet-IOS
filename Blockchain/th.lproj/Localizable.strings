@@ -632,7 +632,7 @@
 "Label must have less than 18 characters" = "ป้ายชื่อต้องมีตัวอักษรน้อยกว่า 18 ตัว";
 
 /* (No Commment) */
-"Large Transaction" = "ธุรกรรมขนาดใหญ่ ";
+"Large Transaction" = "ธุรกรรมขนาดใหญ่";
 
 /* (No Commment) */
 "Learn More" = "เรียนรู้เพิ่มเติม";
@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "โปรดกรอกวลีเพื่อการกู้คืนด้วยคำที่แบ่งด้วยช่องว่าง";
 
 /* (No Commment) */
+"Please login to load more addresses." = "โปรดล็อกอินเพื่อโหลดที่อยู่เพิ่มเติม";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "โปรดลดค่าธรรมเนียมไปยังจำนวนที่น้อยกว่ายอดคงเหลือของคุณ";
 
 /* (No Commment) */
@@ -961,7 +964,7 @@
 "SMS" = "SMS";
 
 /* (No Commment) */
-"SMS Notifications" = "การแจ้งเตือน SMS ";
+"SMS Notifications" = "การแจ้งเตือน SMS";
 
 /* (No Commment) */
 "Save" = "บันทึก";

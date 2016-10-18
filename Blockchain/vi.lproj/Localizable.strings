@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Vui lòng nhập nhóm từ khôi phục với các từ cách nhau bằng dấu cách";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Vui lòng đăng nhập để tải thêm địa chỉ.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Vui lòng giảm phí xuống thấp hơn số dư của bạn";
 
 /* (No Commment) */

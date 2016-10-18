@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Podaj swój zwrot do odzyskiwania hasła, wpisując słowa oddzielone spacjami";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Proszę się zalogować, aby załadować więcej adresów.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Obniż opłatę do kwoty niższej niż Twoje saldo";
 
 /* (No Commment) */
