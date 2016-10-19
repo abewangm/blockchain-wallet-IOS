@@ -1668,7 +1668,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didReceivePaymentNotice:(NSString *)notice
 {
-    if (_tabViewController.selectedIndex == TAB_SEND && busyView.hidden && !self.pinEntryViewController) {
+    if (_tabViewController.selectedIndex == TAB_SEND && busyView.alpha == 0 && !self.pinEntryViewController) {
         [app standardNotifyAutoDismissingController:notice title:BC_STRING_INFORMATION];
     }
 }
