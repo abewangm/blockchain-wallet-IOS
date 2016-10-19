@@ -2919,7 +2919,9 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (!self.window.rootViewController.presentedViewController) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self hideBusyView];
+        }]];
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
 }
