@@ -2917,11 +2917,22 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)failedToValidateCertificate
 {
-    if (!self.window.rootViewController.presentedViewController) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self hideBusyView];
-        }]];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    alert.view.tag = TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT;
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self hideBusyView];
+        if (self.pinEntryViewController) {
+            [self.pinEntryViewController reset];
+        }
+    }]];
+    
+    if (self.window.rootViewController.presentedViewController) {
+        if (self.window.rootViewController.presentedViewController.view.tag != TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT) {
+            [self.window.rootViewController dismissViewControllerAnimated:NO completion:^{
+                [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            }];
+        }
+    } else {
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
 }
