@@ -445,6 +445,7 @@ const int aboutPrivacyPolicy = 1;
 {
     BOOL swipeToReceiveEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
     [[NSUserDefaults standardUserDefaults] setBool:!swipeToReceiveEnabled forKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
+    app.wallet.swipeAddresses = nil;
 }
 
 #pragma mark - Change Touch ID
