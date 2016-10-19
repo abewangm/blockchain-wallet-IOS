@@ -55,7 +55,9 @@
 
     if (transaction.note.length > 0) {
         self.textView.text = transaction.note;
-        [self.descriptionDelegate setDefaultTextViewCursorPosition:self.textView.text.length];
+        if (!self.descriptionDelegate.didSetTextViewCursorPosition) {
+            [self.descriptionDelegate setDefaultTextViewCursorPosition:self.textView.text.length];
+        }
         self.textViewPlaceholderLabel.hidden = YES;
     } else {
         self.textViewPlaceholderLabel.hidden = NO;

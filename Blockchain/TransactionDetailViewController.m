@@ -372,6 +372,7 @@ const CGFloat rowHeightValue = 116;
 - (void)setDefaultTextViewCursorPosition:(NSUInteger)textLength
 {
     self.textViewCursorPosition = NSMakeRange(textLength, 0);
+    _didSetTextViewCursorPosition = YES;
 }
 
 - (UIView *)getDescriptionInputAccessoryView
