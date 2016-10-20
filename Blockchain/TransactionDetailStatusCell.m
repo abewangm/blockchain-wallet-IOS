@@ -43,7 +43,7 @@
     [self.accessoryButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
     [self.accessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
     self.accessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [self.accessoryButton setTitleColor:COLOR_BUTTON_BLUE forState:UIControlStateNormal];
+    [self.accessoryButton setTitleColor:COLOR_TABLE_VIEW_CELL_TEXT_BLUE forState:UIControlStateNormal];
     [self.contentView addSubview:self.accessoryButton];
     
     self.isSetup = YES;
