@@ -44,7 +44,6 @@ const CGFloat rowHeightValue = 116;
 @property (nonatomic) UIView *descriptionInputAccessoryView;
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) BOOL isGettingFiatAtTime;
-@property (nonatomic) CGSize defaultTableViewContentSize;
 
 @property (nonatomic) TransactionRecipientsViewController *recipientsViewController;
 
@@ -273,10 +272,6 @@ const CGFloat rowHeightValue = 116;
 {
     if (indexPath.row == cellRowTo) {
         [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
-    }
-    
-    if ([indexPath isEqual:((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject])]) {
-        self.defaultTableViewContentSize = tableView.contentSize;
     }
 }
 

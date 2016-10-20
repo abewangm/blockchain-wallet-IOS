@@ -1675,15 +1675,20 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
 {
-    Transaction *transaction = latestResponse.transactions[self.transactionsViewController.lastSelectedIndexPath.row];
-    
-    NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
-    if (components.count > 1 && [[components lastObject] length] == 1) {
-        fiatAmount = [fiatAmount stringByAppendingString:@"0"];
+    if (self.transactionsViewController.lastSelectedIndexPath.row < latestResponse.transactions.count) {
+        Transaction *transaction = latestResponse.transactions[self.transactionsViewController.lastSelectedIndexPath.row];
+        
+        NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
+        if (components.count > 1 && [[components lastObject] length] == 1) {
+            fiatAmount = [fiatAmount stringByAppendingString:@"0"];
+        }
+        
+        [transaction.fiatAmountsAtTime setObject:fiatAmount forKey:currencyCode];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
+    } else {
+        DLog(@"Transaction detail error: last selected transaction index is outside bounds of transactions from latest response!");
     }
-    
-    [transaction.fiatAmountsAtTime setObject:fiatAmount forKey:currencyCode];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
+
 }
 
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error
