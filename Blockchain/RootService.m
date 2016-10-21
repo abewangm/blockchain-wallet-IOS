@@ -833,6 +833,13 @@ void (^secondPasswordSuccess)(NSString *);
 #else
     [self reloadAfterMultiAddressResponse];
 #endif
+    
+    int newDefaultAccountLabeledAddressesCount = [self.wallet getDefaultAccountLabelledAddressesCount];
+    NSNumber *lastCount = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEFAULT_ACCOUNT_LABELLED_ADDRESSES_COUNT];
+    if (lastCount && [lastCount intValue] != newDefaultAccountLabeledAddressesCount) {
+        [KeychainItemWrapper removeAllSwipeAddresses];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:newDefaultAccountLabeledAddressesCount] forKey:USER_DEFAULTS_KEY_DEFAULT_ACCOUNT_LABELLED_ADDRESSES_COUNT];
 }
 
 - (void)didSetLatestBlock:(LatestBlock*)block
