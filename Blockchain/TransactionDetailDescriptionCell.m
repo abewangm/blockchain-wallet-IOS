@@ -55,7 +55,9 @@
 
     if (transaction.note.length > 0) {
         self.textView.text = transaction.note;
-        [self.descriptionDelegate setDefaultTextViewCursorPosition:self.textView.text.length];
+        if (!self.descriptionDelegate.didSetTextViewCursorPosition) {
+            [self.descriptionDelegate setDefaultTextViewCursorPosition:self.textView.text.length];
+        }
         self.textViewPlaceholderLabel.hidden = YES;
     } else {
         self.textViewPlaceholderLabel.hidden = NO;
@@ -73,18 +75,18 @@
                                                                 multiplier:1.f constant:15]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
-                                                                 attribute:NSLayoutAttributeCenterY
+                                                                 attribute:NSLayoutAttributeTop
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                multiplier:1.f constant:0.f]];
+                                                                 attribute:NSLayoutAttributeTop
+                                                                multiplier:1.f constant:23]];
     
     [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem:self.textView
                                                                   attribute:NSLayoutAttributeLeft
                                                                   relatedBy:NSLayoutRelationEqual
                                                                      toItem:self.mainLabel
                                                                   attribute:NSLayoutAttributeRight
-                                                                 multiplier:1.f constant:8]];
+                                                                 multiplier:1.f constant:16]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
                                                                  attribute:NSLayoutAttributeRight

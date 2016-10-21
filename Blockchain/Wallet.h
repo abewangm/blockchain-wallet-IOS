@@ -143,7 +143,8 @@
 @property (nonatomic) SRWebSocket *webSocket;
 @property (nonatomic) NSTimer *webSocketTimer;
 @property (nonatomic) NSString *swipeAddressToSubscribe;
-@property (nonatomic) NSMutableArray *swipeAddresses;
+
+@property (nonatomic) int lastLabelledAddressesCount;
 
 - (id)init;
 
@@ -270,6 +271,8 @@
 - (BOOL)checkIfWalletHasAddress:(NSString *)address;
 
 - (NSDictionary *)filteredWalletJSON;
+
+- (int)getDefaultAccountLabelledAddressesCount;
 
 // Settings
 - (void)getAccountInfo;

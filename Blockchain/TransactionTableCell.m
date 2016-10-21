@@ -134,14 +134,12 @@
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
     
     detailViewController.busyViewDelegate = navigationController;
+    navigationController.onDismiss = ^() {
+        app.transactionsViewController.detailViewController = nil;
+    };
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     app.transactionsViewController.detailViewController = detailViewController;
     [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
-}
-
-- (void)dismissDetails
-{
-    [app.tabViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)btcbuttonclicked:(id)sender

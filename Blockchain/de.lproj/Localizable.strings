@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Bitte geben Sie Ihr Wiederherstellungspasswort ein, wobei die Worte durch Leerzeichen getrennt sein müssen";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Zum Laden weiterer Adressen melden Sie sich bitte zuerst an.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Bitte verringern Sie die Gebühr zu einem unter Ihrem Guthabenstand liegenden Betrag";
 
 /* (No Commment) */

@@ -416,7 +416,7 @@
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Tor 익명 네트워크 일부로 알려진 IP 주소들이 사용자 지갑을 열지 못하게 하려면 다음 옵션을 사용하세요. 블록체인 사용자 지갑을 열려고 하는 해커들이 Tor 네트워크를 자주 씁니다.";
 
 /* (No Commment) */
-"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Five addresses will be loaded consecutively, after which logging in is required to show new addresses." = "이 옵션을 사용하면 비밀 번호 화면에서 왼쪽으로 스와이프 해서 수령 주소를 볼 수 있어 비트코인 받기가 더 빨라집니다. 다섯 개 주소가 연속적으로 로딩된 후 새 주소를 보여주기 위해 로그인이 필요합니다. ";
+"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Five addresses will be loaded consecutively, after which logging in is required to show new addresses." = "이 옵션을 사용하면 비밀 번호 화면에서 왼쪽으로 스와이프 해서 수령 주소를 볼 수 있어 비트코인 받기가 더 빨라집니다. 다섯 개 주소가 연속적으로 로딩된 후 새 주소를 보여주기 위해 로그인이 필요합니다.";
 
 /* (No Commment) */
 "Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Only one address will be loaded, logging in is required to show a new address." = "이 옵션을 사용하면 비밀 번호 화면에서 왼쪽으로 스와이프 해서 수령 주소를 볼 수 있어 비트코인 받기가 더 빨라집니다. 주소 하나만 로딩 되며 새 주소를 보여주기 위해 로그인이 필요합니다.";
@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "단어를 공백으로 구분한 복구 구절을 입력하세요.";
 
 /* (No Commment) */
+"Please login to load more addresses." = "로그인해서 주소를 더 로딩 하세요.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "귀하의 잔액보다 작은 금액으로 수수료를 낮추세요";
 
 /* (No Commment) */
@@ -1123,7 +1126,7 @@
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "이 주소는 보기만 할 수 있는 (watch-only) 주소입니다. 이 지갑에서 자금을 쓰려면 올바른 개인 열쇠를 스캔 하세요.";
 
 /* (No Commment) */
-"This is an oversized bitcoin transaction. Your wallet needs to consolidate many smaller payments you've received in the past. This requires a relatively high fee in order to be confirmed quickly. If it’s fine for the transaction to take longer to confirm, you can reduce the fee manually by tapping \"Customize Fee.\"" = "너무 큰 비트코인 거래가 있습니다. 귀하 지갑 속 과거 수령 많은 작은 지불들을 통합할 필요가 있습니다.  이에 대해 확인을 빨리 받으려면 비교적 높은 수수료를 내야 합니다. 확인에 시간이 좀 걸려도 되면, \"수수료 사용자 설정\"을 탭 해서 수수료를 수동을 줄이세요.";
+"This is an oversized bitcoin transaction. Your wallet needs to consolidate many smaller payments you've received in the past. This requires a relatively high fee in order to be confirmed quickly. If it’s fine for the transaction to take longer to confirm, you can reduce the fee manually by tapping \"Customize Fee.\"" = "너무 큰 비트코인 거래가 있습니다. 귀하 지갑 속 과거 수령 많은 작은 지불들을 통합할 필요가 있습니다. 이에 대해 확인을 빨리 받으려면 비교적 높은 수수료를 내야 합니다. 확인에 시간이 좀 걸려도 되면, \"수수료 사용자 설정\"을 탭 해서 수수료를 수동을 줄이세요.";
 
 /* (No Commment) */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "이것은 보관되었습니다. 여기서 돈을 보낼 수는 없지만 모든 자금은 계속 안전합니다. 이것을 다시 쓰기 시작하려면 보관 해제를 하세요.";

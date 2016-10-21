@@ -1834,6 +1834,11 @@
     [self.context evaluateScript:@"MyWalletPhone.incrementReceiveIndexOfDefaultAccount()"];
 }
 
+- (int)getDefaultAccountLabelledAddressesCount
+{
+    return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountLabelledAddressesCount()"] toNumber] intValue];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

@@ -140,7 +140,7 @@
 "Any address" = "Cualquier dirección";
 
 /* (No Commment) */
-"App Store review prompt timer (seconds)" = "Cronometro  App Store review prompt timer (segundos)";
+"App Store review prompt timer (seconds)" = "Cronometro App Store review prompt timer (segundos)";
 
 /* (No Commment) */
 "Archive" = "Archivar";
@@ -296,7 +296,7 @@
 "Copy xPub" = "Copiar xPub";
 
 /* (No Commment) */
-"Could not find transaction with hash %@ when reloading data" = "Al volver a cargar los datos, no se pudo encontrar la transacción con comprobación aleatoria %@ ";
+"Could not find transaction with hash %@ when reloading data" = "Al volver a cargar los datos, no se pudo encontrar la transacción con comprobación aleatoria %@";
 
 /* (No Commment) */
 "Could not get value when sent - please check your internet connection and try again." = "Al enviar no se pudo obtener el valor, comprueba tu conexión a internet y vuelve a intentarlo.";
@@ -335,7 +335,7 @@
 "Customize the way you organize your bitcoin in your Blockchain Wallet" = "Personaliza la forma en que organizas tu Bitcoin en tu monedero Blockchain";
 
 /* (No Commment) */
-"Date" = "Date";
+"Date" = "Fecha";
 
 /* (No Commment) */
 "Debug" = "Depurar";
@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Introduce tu frase de recuperación con las palabras separadas por espacios";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Por favor inicia sesión para cargar más direcciones.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Por favor, reduce la comisión a un moto que sea más bajo que tu saldo";
 
 /* (No Commment) */
@@ -1072,7 +1075,7 @@
 "Surge Occurring" = "Está ocurriendo un aumento repentino";
 
 /* (No Commment) */
-"Swipe to receive" = " Desliza para recibir.";
+"Swipe to receive" = "Desliza para recibir.";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sincronizando el monedero";

@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "请输入您的恢复密语，词之间用空格分隔";
 
 /* (No Commment) */
+"Please login to load more addresses." = "请登录以载入更多地址。";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "请将费用降至一个低于您的余额的金额";
 
 /* (No Commment) */

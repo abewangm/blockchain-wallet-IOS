@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Voer uw herstelregel in met woorden die worden gescheiden door spaties";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Log in om meer adressen te laden.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Verlaag het tarief tot een bedrag dat lager is dan uw saldo";
 
 /* (No Commment) */

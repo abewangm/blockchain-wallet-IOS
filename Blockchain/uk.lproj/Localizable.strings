@@ -275,7 +275,7 @@
 "Confirmed" = "Підтверджено";
 
 /* (No Commment) */
-"Connection timed out. Please check your internet connection." = "Час зв\\'язку вичерпано. Будь ласка, перевірте своє інтернет-з\\'єднання";
+"Connection timed out. Please check your internet connection." = "Час з'єднання вичерпано. Будь ласка, перевірте своє інтернет-з'єднання";
 
 /* (No Commment) */
 "Continue" = "Продовжити";
@@ -416,7 +416,7 @@
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Увімкніть цю опцію, щоб блокувати вхід до вашого гаманця з IP-адрес, які, як відомо, є частиною анонімної мережі Tor. Мережа Tor часто використовується хакерами, які намагаються отримати доступ до гаманців користувачів Blockchain.";
 
 /* (No Commment) */
-"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Five addresses will be loaded consecutively, after which logging in is required to show new addresses." = "Увімкніть цю опцію, щоб показати адресу, коли ви проведете пальцем вліво на екрані PIN, що пришвидшить отримання bitcoin. Послідовно буде завантажено п'ять адрес, після входу в систему потрібно буде показати нові адреси.";
+"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Five addresses will be loaded consecutively, after which logging in is required to show new addresses." = "Увімкніть цю опцію, щоб показати адресу, коли ви проведете пальцем вліво на екрані PIN, що пришвидшить отримання bitcoin. Послідовно буде завантажено п'\\ять адрес, після входу в систему потрібно буде показати нові адреси.";
 
 /* (No Commment) */
 "Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Only one address will be loaded, logging in is required to show a new address." = "Увімкніть цю опцію, щоб показати адресу, коли ви проведете пальцем вліво на екрані PIN, що пришвидшить отримання bitcoin. Лише одну адресу буде завантажено, після входу в систему потрібно буде показати нову адресу.";
@@ -479,7 +479,7 @@
 "Finished Signing Inputs" = "Підписання введення завершено";
 
 /* (No Commment) */
-"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Для підвищення конфіденційності ми генеруємо унікальну адресу для кожного платежу. Усі адреси, згенеровані у вашому гаманці, все ще можуть отримувати кошти, навіть якщо вони більше не з\\'являються під пунктом Отримати.";
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "Для підвищення конфіденційності ми генеруємо унікальну адресу для кожного платежу. Усі адреси, згенеровані у вашому гаманці, все ще можуть отримувати кошти, навіть якщо вони більше не з'являються під пунктом Отримати.";
 
 /* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "Для вашої ж безпеки рекомендуємо перевести будь-які залишки коштів у ваших імпортованих адресах на свій гаманець Blockchain.";
@@ -590,7 +590,7 @@
 "Invalid recovery phrase. Please try again" = "Фраза для відновлення доступу невірна. Будь ласка, спробуйте ще раз!";
 
 /* (No Commment) */
-"Invalid server response. Please check your internet connection." = "Запит із сервера невірний. Будь ласка, перевірте своє інтернет-з\\'єднання";
+"Invalid server response. Please check your internet connection." = "Запит із сервера невірний. Будь ласка, перевірте своє інтернет-з'єднання";
 
 /* (No Commment) */
 "Invalid to bitcoin address" = "Невірна bitcoin-адреса";
@@ -602,7 +602,7 @@
 "Invalid verification code. Please try again." = "Контрольний код невірний Будь ласка, спробуйте ще раз.";
 
 /* No comment provided by engineer. */
-"It is important to make sure you write down your words exactly as they appear here and " = "Зверніть увагу: ви повинні вписувати слова точно так, і в тому ж порядку, як вони з\\'являтимуться на екрані.";
+"It is important to make sure you write down your words exactly as they appear here and " = "Зверніть увагу: ви повинні вписувати слова точно так, і в тому ж порядку, як вони з'являтимуться на екрані.";
 
 /* No comment provided by engineer. */
 "Just now" = "Щойно";
@@ -689,7 +689,7 @@
 "Merchant URL" = "URL підприємця";
 
 /* (No Commment) */
-"Mobile Linked" = "Телефон прив\\'язано";
+"Mobile Linked" = "Телефон прив'язано";
 
 /* (No Commment) */
 "Mobile Number" = "Номер мобільного телефону";
@@ -737,7 +737,7 @@
 "No Password Entered" = "Жоден пароль не введено";
 
 /* (No Commment) */
-"No internet connection available. Please check your network settings." = "Інтернет-з\\'єднання відсутнє. Будь ласка, перевірте інтернет-налаштування.";
+"No internet connection available. Please check your network settings." = "Інтернет-з'єднання відсутнє. Будь ласка, перевірте інтернет-налаштування.";
 
 /* (No Commment) */
 "No internet connection." = "Інтернет відсутній.";
@@ -770,7 +770,7 @@
 "PIN Encrypted String is nil" = "Розшифрований рядок PIN дорівнює нулю";
 
 /* (No Commment) */
-"PIN Response Object key or value length 0" = "Ключ об\\'єкта відгуку PIN або значення довжини рівне нулю";
+"PIN Response Object key or value length 0" = "Ключ об'єкта відгуку PIN або значення довжини рівне нулю";
 
 /* (No Commment) */
 "PIN Response Object success length 0" = "Нульова довжина ключа об\\'єкта відгуку PIN";
@@ -864,6 +864,9 @@
 
 /* (No Commment) */
 "Please enter your recovery phrase with words separated by spaces" = "Введіть свою фразу відновлення доступу словами, розділивши пробілами.";
+
+/* (No Commment) */
+"Please login to load more addresses." = "Щоб завантажити більше адрес, будь ласка, увійдіть.";
 
 /* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Будь ласка, зменшіть комісію на суму, яка менша за ваш баланс";
@@ -1123,7 +1126,7 @@
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Ця адреса тільки для перегляду. Щоб відправити кошти із вашого гаманця, будь ласка, відскануйте свій особистий ключ.";
 
 /* (No Commment) */
-"This is an oversized bitcoin transaction. Your wallet needs to consolidate many smaller payments you've received in the past. This requires a relatively high fee in order to be confirmed quickly. If it’s fine for the transaction to take longer to confirm, you can reduce the fee manually by tapping \"Customize Fee.\"" = "Завищений розмір bitcoin-транзакції. Вашому гаманцю треба консолідувати багато менших платежів, які ви колись отримали. Для швидкого підтвердження, це вимагає відносно високої комісії. Якщо транзакція не є терміновою і її підтвердження може зайняти трохи більше часу, ви можете зменшити комісію вручну, натиснувши \"Налаштування комісії\".";
+"This is an oversized bitcoin transaction. Your wallet needs to consolidate many smaller payments you've received in the past. This requires a relatively high fee in order to be confirmed quickly. If it’s fine for the transaction to take longer to confirm, you can reduce the fee manually by tapping \"Customize Fee.\"" = "Завищений розмір bitcoin-транзакції. Вашому гаманцю треба консолідувати багато менших платежів, які ви колись отримали. Швидке підтвердження вимагає відносно високої комісії. Якщо транзакція не є терміновою і її підтвердження може зайняти трохи більше часу, ви можете зменшити комісію вручну, натиснувши \"Налаштування комісії\".";
 
 /* (No Commment) */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Це в архіві. Так як ви не можете звідси відправляти кошти, усі ваші кошти залишатимуться в безпеці. Щоб використати знову, просто розпакуйте.";
@@ -1171,7 +1174,7 @@
 "Touch ID is not available on this device." = "ID відбитком пальця на цьому пристрої недоступна.";
 
 /* (No Commment) */
-"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "ID відбитком пальця на цьому пристрої не включена. Для увімкнення ID відбитком пальця, перейдіть у Налаштування->ID відбитком пальця & секретний код і додайте відбиток пальця.";
+"Touch ID is not enabled on this device. To enable Touch ID, go to Settings->Touch ID & Passcode and add a fingerprint." = "ID відбитком пальця на цьому пристрої не увімкнено. Для увімкнення ID відбитком пальця, перейдіть у Налаштування->ID відбитком пальця & секретний код і додайте відбиток пальця.";
 
 /* (No Commment) */
 "Transaction" = "Транзакція";
@@ -1348,7 +1351,7 @@
 "Would you like to archive the addresses used?" = "Хочете архівувати адреси, які використовуєте?";
 
 /* No comment provided by engineer. */
-"Write the following 12 words onto a " = "Запишіть ці 12 слів на";
+"Write the following 12 words onto a " = "Запишіть ці 12 слів";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "Невірний пароль BIP38";
@@ -1390,7 +1393,7 @@
 "You have no available funds to send from this address" = "У вас немає доступних коштів для відправки з цієї адреси";
 
 /* (No Commment) */
-"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Перш ніж змінити мобільний номер (%@), треба вимкнути 2-крокову верифікацію через SMS.";
+"You must disable SMS 2-Step Verification before changing your mobile number (%@)." = "Перш ніж змінити номер мобільного (%@), треба вимкнути 2-крокову верифікацію через SMS.";
 
 /* (No Commment) */
 "You must enter a destination address" = "Треба ввести адресу призначення";

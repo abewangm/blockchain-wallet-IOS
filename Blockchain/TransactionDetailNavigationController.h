@@ -11,6 +11,8 @@
 #import "TransactionDetailViewController.h"
 
 @interface TransactionDetailNavigationController : UINavigationController <BusyViewDelegate>
+@property(nonatomic, copy) void (^onDismiss)();
+
 @property (nonatomic) BCFadeView *busyView;
 @property (nonatomic) UIButton *backButton;
 @property (nonatomic) UIButton *closeButton;

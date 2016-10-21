@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Inserisci la tua frase di backup con parole separate da spazi";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Effettua il login per caricare altri indirizzi.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Abbassa le commissioni ad un ammontare che sia meno di quello nel tuo saldo";
 
 /* (No Commment) */

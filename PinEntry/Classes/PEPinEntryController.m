@@ -25,6 +25,7 @@
 #import "PEPinEntryController.h"
 #import "QRCodeGenerator.h"
 #import "RootService.h"
+#import "KeychainItemWrapper+SwipeAddresses.h"
 
 #define PS_VERIFY	0
 #define PS_ENTER1	1
@@ -138,7 +139,7 @@ static PEViewController *VerifyController()
 #ifdef ENABLE_SWIPE_TO_RECEIVE
     if (self.verifyOnly &&
         [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED] &&
-        app.wallet.swipeAddresses) {
+        [KeychainItemWrapper getSwipeAddresses]) {
         
         pinController.swipeLabel.alpha = 1;
         pinController.swipeLabel.hidden = NO;
@@ -159,12 +160,12 @@ static PEViewController *VerifyController()
             [pinController.scrollView addSubview:self.addressLabel];
         }
         
-        NSString *nextAddress = [app.wallet.swipeAddresses firstObject];
+        NSString *nextAddress = [[KeychainItemWrapper getSwipeAddresses] firstObject];
         
         if (nextAddress) {
             
             void (^error)() = ^() {
-                [app.wallet.swipeAddresses removeObjectAtIndex:0];
+                [KeychainItemWrapper removeFirstSwipeAddress];
                 [self setupQRCode];
             };
             
@@ -201,8 +202,8 @@ static PEViewController *VerifyController()
 
 - (void)paymentReceived
 {
-    if (app.wallet.swipeAddresses.count > 0) {
-        [app.wallet.swipeAddresses removeObjectAtIndex:0];
+    if ([KeychainItemWrapper getSwipeAddresses].count > 0) {
+        [KeychainItemWrapper removeFirstSwipeAddress];
         [self setupQRCode];
     } else {
         [self.qrCodeImageView removeFromSuperview];

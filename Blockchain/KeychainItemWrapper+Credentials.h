@@ -21,4 +21,5 @@
 + (void)setPINInKeychain:(NSString *)pin;
 + (NSString *)pinFromKeychain;
 + (void)removePinFromKeychain;
+
 @end

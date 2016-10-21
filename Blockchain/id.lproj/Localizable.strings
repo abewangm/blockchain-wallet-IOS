@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Silakan masukkan frasa pemulihan Anda dengan kata-kata yang dipisahkan oleh spasi";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Silakan login untuk memuat lebih banyak alamat.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Silakan menurunkan biaya untuk jumlah yang kurang dari saldo Anda";
 
 /* (No Commment) */

@@ -1848,3 +1848,12 @@ MyWalletPhone.getNotePlaceholder = function(filter, transactionHash) {
     if (label == undefined) return '';
     return label;
 }
+
+MyWalletPhone.getDefaultAccountLabelledAddressesCount = function() {
+    if (!MyWallet.wallet.isUpgradedToHD) {
+        console.log('Warning: Getting accounts when wallet has not upgraded!');
+        return 0;
+    }
+    
+    return MyWallet.wallet.hdwallet.defaultAccount.receivingAddressesLabels.length;
+}

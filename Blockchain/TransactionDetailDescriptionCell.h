@@ -10,6 +10,7 @@
 #import "TransactionDetailTableCell.h"
 
 @protocol DescriptionDelegate
+@property (nonatomic, readonly) BOOL didSetTextViewCursorPosition;
 - (void)textViewDidChange:(UITextView *)textView;
 - (NSString *)getNotePlaceholder;
 - (CGFloat)getDefaultRowHeight;

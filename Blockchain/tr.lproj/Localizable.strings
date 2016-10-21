@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Lütfen sözcükler arasında boşluk olacak şekilde kurtarma ifadenizi girin";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Lütfen daha fazla adres yüklemek için oturum açın.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Lütfen ücreti bakiyenizden daha az bir miktara düşürün";
 
 /* (No Commment) */
