@@ -14,6 +14,7 @@
 #import "SettingsTwoStepViewController.h"
 #import "Blockchain-Swift.h"
 #import "RootService.h"
+#import "KeychainItemWrapper+SwipeAddresses.h"
 
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;
@@ -445,7 +446,9 @@ const int aboutPrivacyPolicy = 1;
 {
     BOOL swipeToReceiveEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
     [[NSUserDefaults standardUserDefaults] setBool:!swipeToReceiveEnabled forKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
-    app.wallet.swipeAddresses = nil;
+    
+    // Clear all swipe addresses in case default account has changed
+    if (!swipeToReceiveEnabled) [KeychainItemWrapper removeAllSwipeAddresses];
 }
 
 #pragma mark - Change Touch ID

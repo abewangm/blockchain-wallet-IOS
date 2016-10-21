@@ -143,7 +143,6 @@
 @property (nonatomic) SRWebSocket *webSocket;
 @property (nonatomic) NSTimer *webSocketTimer;
 @property (nonatomic) NSString *swipeAddressToSubscribe;
-@property (nonatomic) NSMutableArray *swipeAddresses;
 
 - (id)init;
 

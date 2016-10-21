@@ -40,6 +40,7 @@
 #import "DeviceIdentifier.h"
 #import "DebugTableViewController.h"
 #import "KeychainItemWrapper+Credentials.h"
+#import "KeychainItemWrapper+SwipeAddresses.h"
 #import "NSString+SHA256.h"
 
 @implementation RootService
@@ -230,16 +231,16 @@ void (^secondPasswordSuccess)(NSString *);
         [self.wallet isInitialized] &&
         [self.wallet didUpgradeToHd]) {
         
-        if (!self.wallet.swipeAddresses) {
-            self.wallet.swipeAddresses = [NSMutableArray new];
+        int numberOfAddressesToDerive = SWIPE_TO_RECEIVE_ADDRESS_COUNT;
+        NSArray *swipeAddresses = [KeychainItemWrapper getSwipeAddresses];
+        if (swipeAddresses) {
+            numberOfAddressesToDerive = SWIPE_TO_RECEIVE_ADDRESS_COUNT - (int)swipeAddresses.count;
         }
         
-        int numberOfAddressesToDerive = SWIPE_TO_RECEIVE_ADDRESS_COUNT - (int)self.wallet.swipeAddresses.count;
-            
         for (int receiveIndex = 0; receiveIndex < numberOfAddressesToDerive; receiveIndex++) {
             [self.wallet incrementReceiveIndexOfDefaultAccount];
             NSString *swipeAddress = [app.wallet getReceiveAddressOfDefaultAccount];
-            [self.wallet.swipeAddresses addObject:swipeAddress];
+            [KeychainItemWrapper addSwipeAddress:swipeAddress];
         }
             
         [self.pinEntryViewController setupQRCode];
@@ -1383,7 +1384,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.wallet.sessionToken = nil;
     
-    self.wallet.swipeAddresses = nil;
+    [KeychainItemWrapper removeAllSwipeAddresses];
     
     self.merchantViewController = nil;
     self.receiveViewController = nil;
@@ -1701,7 +1702,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didSetDefaultAccount
 {
-    self.wallet.swipeAddresses = nil;
+    [KeychainItemWrapper removeAllSwipeAddresses];
     [self.receiveViewController reloadMainAddress];
 }
 
