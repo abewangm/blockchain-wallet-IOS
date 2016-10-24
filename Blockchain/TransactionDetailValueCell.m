@@ -38,7 +38,7 @@
     }
     
     // Label for Sent, Transferred, or Received
-    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.frame.size.height/2 - 30 - 4, self.frame.size.width/3, 36)];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 16, self.frame.size.width/3, 36)];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.textColor = [UIColor lightGrayColor];
     self.mainLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE_MEDIUM size:20];
@@ -70,13 +70,15 @@
     [self.contentView addSubview:self.fiatValueWhenSentLabel];
     
     // Transaction fee label
-    self.transactionFeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.fiatValueWhenSentLabel.frame.origin.y + self.fiatValueWhenSentLabel.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right - self.contentView.layoutMargins.left, 20.5)];
-    self.transactionFeeLabel.font =  [UIFont systemFontOfSize:14];
-    self.transactionFeeLabel.textColor = [UIColor lightGrayColor];
-    self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.fee)]];
-    self.transactionFeeLabel.adjustsFontSizeToFitWidth = YES;
-    self.transactionFeeLabel.textAlignment = NSTextAlignmentRight;
-    [self.contentView addSubview:self.transactionFeeLabel];
+    if (![transaction.txType isEqualToString:TX_TYPE_RECEIVED]) {
+        self.transactionFeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.fiatValueWhenSentLabel.frame.origin.y + self.fiatValueWhenSentLabel.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right - self.contentView.layoutMargins.left, 20.5)];
+        self.transactionFeeLabel.font =  [UIFont systemFontOfSize:14];
+        self.transactionFeeLabel.textColor = [UIColor lightGrayColor];
+        self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.fee)]];
+        self.transactionFeeLabel.adjustsFontSizeToFitWidth = YES;
+        self.transactionFeeLabel.textAlignment = NSTextAlignmentRight;
+        [self.contentView addSubview:self.transactionFeeLabel];
+    }
     
     self.isSetup = YES;
 }
