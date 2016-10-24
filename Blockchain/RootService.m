@@ -2930,24 +2930,26 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)failedToValidateCertificate
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE, [NSString stringWithFormat:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE_CONTACT_SUPPORT_ARGUMENT, SUPPORT_URL]] preferredStyle:UIAlertControllerStyleAlert];
     alert.view.tag = TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT;
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [self hideBusyView];
-        if (self.pinEntryViewController) {
-            [self.pinEntryViewController reset];
-        }
+        // Close App
+        UIApplication *app = [UIApplication sharedApplication];
+        [app performSelector:@selector(suspend)];
     }]];
     
-    if (self.window.rootViewController.presentedViewController) {
-        if (self.window.rootViewController.presentedViewController.view.tag != TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT) {
-            [self.window.rootViewController dismissViewControllerAnimated:NO completion:^{
-                [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
-            }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.window.rootViewController.presentedViewController) {
+            if (self.window.rootViewController.presentedViewController.view.tag != TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT) {
+                [self.window.rootViewController dismissViewControllerAnimated:NO completion:^{
+                    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                }];
+            }
+        } else {
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
         }
-    } else {
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
-    }
+    });
+
 }
 
 @end
