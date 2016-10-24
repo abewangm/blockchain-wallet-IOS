@@ -35,6 +35,7 @@ const int cellRowStatus = 5;
 
 const CGFloat rowHeightDefault = 60;
 const CGFloat rowHeightValue = 116;
+const CGFloat rowHeightValueReceived = 92;
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DescriptionDelegate, ValueDelegate, StatusDelegate, RecipientsDelegate>
 
@@ -252,7 +253,7 @@ const CGFloat rowHeightValue = 116;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == cellRowValue) {
-        return rowHeightValue;
+        return [self.transaction.txType isEqualToString:TX_TYPE_RECEIVED] ? rowHeightValueReceived : rowHeightValue;
     } else if (indexPath.row == cellRowDescription && self.textView.text) {
         return UITableViewAutomaticDimension;
     } else if (indexPath.row == cellRowTo) {
