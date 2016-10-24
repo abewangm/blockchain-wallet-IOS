@@ -717,7 +717,7 @@
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
     DLog(@"websocket failed with error: %@", [error localizedDescription]);
-    if ([error.localizedDescription isEqualToString:@"Invalid server certificate."]) {
+    if ([error.localizedDescription isEqualToString:WEBSOCKET_ERROR_INVALID_SERVER_CERTIFICATE]) {
         [app failedToValidateCertificate];
     }
 }
