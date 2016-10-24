@@ -15,6 +15,7 @@
 #import "QRCodeGenerator.h"
 #import "BCAddressSelectionView.h"
 #import "BCLine.h"
+#import "Blockchain-Swift.h"
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
@@ -613,7 +614,7 @@ NSString *detailLabel;
     
     [self hideKeyboard];
     
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:YES];
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:YES accountsOnly:NO];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_RECEIVE_TO onDismiss:nil onResume:nil];

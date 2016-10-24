@@ -25,6 +25,7 @@ BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
 var MyWalletPhone = {};
 var currentPayment = null;
+var transferAllBackupPayment = null;
 var transferAllPayments = {};
 
 // Register for JS event handlers and forward to Obj-C handlers
@@ -717,7 +718,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     MyWallet.login(user_guid, inputedPassword, credentials, callbacks).then(success).catch(other_error);
 };
 
-MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount = function() {
+MyWalletPhone.getInfoForTransferAllFundsToAccount = function() {
     
     var totalAddressesUsed = [];
     var addresses = MyWallet.wallet.spendableActiveAddresses;
@@ -764,7 +765,7 @@ MyWalletPhone.preparePaymentsForTransferAll = function(addresses, paymentSetup, 
     }
 }
 
-MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, address, secondPassword) {
+MyWalletPhone.transferAllFundsToAccount = function(accountIndex, isFirstTransfer, address, secondPassword, onSendScreen) {
     var totalAmount = 0;
     var totalFee = 0;
     
@@ -786,24 +787,34 @@ MyWalletPhone.transferAllFundsToDefaultAccount = function(isFirstTransfer, addre
         return error.payment;
     }
     
-    currentPayment = transferAllPayments[address];
-    if (currentPayment) {
-        currentPayment.to(MyWallet.wallet.hdwallet.defaultAccountIndex).build().then(function (x) {
-                                    
-                                    if (isFirstTransfer) {
-                                    console.log('builtTransferAll: from:' + x.from);
-                                    console.log('builtTransferAll: to:' + x.to);
-                                    objc_show_summary_for_transfer_all();
-                                    } else {
-                                    console.log('builtTransferAll: from:' + x.from);
-                                    console.log('builtTransferAll: to:' + x.to);
-                                    objc_send_transfer_all(secondPassword);
-                                    }
-                                    
-                                    return x;
-                                    }).catch(buildFailure);
+    var showSummaryOrSend = function (payment) {
+        if (isFirstTransfer) {
+            console.log('builtTransferAll: from:' + payment.from);
+            console.log('builtTransferAll: to:' + payment.to);
+            objc_show_summary_for_transfer_all();
+        } else {
+            console.log('builtTransferAll: from:' + payment.from);
+            console.log('builtTransferAll: to:' + payment.to);
+            objc_send_transfer_all(secondPassword);
+        }
+        
+        return payment;
+    };
+    
+    if (onSendScreen) {
+        currentPayment = transferAllPayments[address];
+        if (currentPayment) {
+            currentPayment.to(accountIndex).build().then(showSummaryOrSend).catch(buildFailure);
+        } else {
+            console.log('Payment error: null payment object!');
+        }
     } else {
-        console.log('Payment error: null payment object!');
+        transferAllBackupPayment = transferAllPayments[address];
+        if (transferAllBackupPayment) {
+            transferAllBackupPayment.to(accountIndex).build().then(showSummaryOrSend).catch(buildFailure);
+        } else {
+            console.log('Payment error: null payment object!');
+        }
     }
 }
 
@@ -834,7 +845,7 @@ MyWalletPhone.getReceiveAddressOfDefaultAccount = function() {
     return MyWallet.wallet.hdwallet.defaultAccount.receiveAddress;
 }
 
-MyWalletPhone.quickSend = function(secondPassword) {
+MyWalletPhone.quickSend = function(onSendScreen, secondPassword) {
     
     console.log('quickSend');
     
@@ -854,30 +865,32 @@ MyWalletPhone.quickSend = function(secondPassword) {
         objc_tx_on_error_error_secondPassword(id, ''+error, secondPassword);
     };
     
-    if (!currentPayment) {
+    var payment = onSendScreen ? currentPayment : transferAllBackupPayment;
+    
+    if (!payment) {
         console.log('Payment error: null payment object!');
         return;
     }
     
-    currentPayment.on('on_start', function () {
+    payment.on('on_start', function () {
                       objc_tx_on_start(id);
                       });
     
-    currentPayment.on('on_begin_signing', function() {
+    payment.on('on_begin_signing', function() {
                       objc_tx_on_begin_signing(id);
                       });
     
-    currentPayment.on('on_sign_progress', function(i) {
+    payment.on('on_sign_progress', function(i) {
                       objc_tx_on_sign_progress_input(id, i);
                       });
     
-    currentPayment.on('on_finish_signing', function(i) {
+    payment.on('on_finish_signing', function(i) {
                       objc_tx_on_finish_signing(id);
                       });
     
     if (MyWallet.wallet.isDoubleEncrypted) {
         if (secondPassword) {
-            currentPayment
+            payment
             .sign(secondPassword)
             .publish()
             .then(success).catch(error);
@@ -886,14 +899,14 @@ MyWalletPhone.quickSend = function(secondPassword) {
                                             
                                             secondPassword = pw;
                                             
-                                            currentPayment
+                                            payment
                                             .sign(pw)
                                             .publish()
                                             .then(success).catch(error);
                                             });
         }
     } else {
-        currentPayment
+        payment
         .sign()
         .publish()
         .then(success).catch(error);

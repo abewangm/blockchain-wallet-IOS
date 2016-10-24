@@ -8,6 +8,7 @@
 
 #import "BCCreateAccountView.h"
 #import "RootService.h"
+#import "Blockchain-Swift.h"
 
 @implementation BCCreateAccountView
 

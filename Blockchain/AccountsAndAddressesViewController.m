@@ -14,6 +14,7 @@
 #import "BCModalViewController.h"
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
+#import "Blockchain-Swift.h"
 
 @interface AccountsAndAddressesViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) NSString *clickedAddress;

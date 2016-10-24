@@ -15,6 +15,7 @@
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
 #import "SendViewController.h"
+#import "Blockchain-Swift.h"
 
 const int numberOfSectionsAccountUnarchived = 2;
 const int numberOfSectionsAddressUnarchived = 1; // 2 if watch only

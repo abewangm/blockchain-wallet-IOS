@@ -42,6 +42,7 @@
 		2322DCC61D771831000E5AC1 /* SRSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCB11D771831000E5AC1 /* SRSecurityPolicy.m */; };
 		2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DCB31D771831000E5AC1 /* SRWebSocket.m */; };
 		2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */ = {isa = PBXBuildFile; fileRef = 2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */; };
+		232ACBF51DAE84720072FB5E /* TransferAllFundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232ACBF41DAE84720072FB5E /* TransferAllFundsViewController.m */; };
 		232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */; };
 		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
 		2343E4031CB434BC008DC7D1 /* NSArray+EncodedJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2343E4021CB434BC008DC7D1 /* NSArray+EncodedJSONString.m */; };
@@ -70,12 +71,15 @@
 		23D5DB501C4415AE007AD0A2 /* AccountsAndAddresses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D5DB521C4415AE007AD0A2 /* AccountsAndAddresses.storyboard */; };
 		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
 		23DF4EFC1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DF4EFB1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m */; };
+		23DEF96E1DB11C98004AAAB6 /* TransferAllFundsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DEF96D1DB11C98004AAAB6 /* TransferAllFundsBuilder.m */; };
 		23E2FC081C7F60E7004CFF79 /* BCInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */; };
+		23E579541DB45F3A00220542 /* TransferAmountTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E579531DB45F3A00220542 /* TransferAmountTableCell.m */; };
 		23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C41B54258D0032B907 /* SettingsTableViewController.m */; };
 		23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C71B54282D0032B907 /* SettingsNavigationController.m */; };
 		23EA61CB1B5591260032B907 /* SettingsSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61CA1B5591260032B907 /* SettingsSelectorTableViewController.m */; };
 		23F601A41D09C931009102BF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F601A31D09C931009102BF /* Reachability.m */; };
 		23F720F21C32DC0A00577738 /* DebugTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F720F11C32DC0A00577738 /* DebugTableViewController.m */; };
+		23F8DE531DAEB11C001899AE /* BCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8DE521DAEB11C001899AE /* BCNavigationController.m */; };
 		23FB5C071D9ABB450008C6AB /* TransactionDetailDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB5C061D9ABB450008C6AB /* TransactionDetailDescriptionCell.m */; };
 		23FB5C0A1D9ABB590008C6AB /* TransactionDetailToCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB5C091D9ABB590008C6AB /* TransactionDetailToCell.m */; };
 		23FB5C0D1D9ABB650008C6AB /* TransactionDetailFromCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB5C0C1D9ABB650008C6AB /* TransactionDetailFromCell.m */; };
@@ -432,6 +436,8 @@
 		2322DCB31D771831000E5AC1 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		2326C6C01BBD7A8100AB7C4D /* UIViewController+AutoDismiss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AutoDismiss.h"; sourceTree = "<group>"; };
 		2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AutoDismiss.m"; sourceTree = "<group>"; };
+		232ACBF31DAE84720072FB5E /* TransferAllFundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferAllFundsViewController.h; sourceTree = "<group>"; };
+		232ACBF41DAE84720072FB5E /* TransferAllFundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferAllFundsViewController.m; sourceTree = "<group>"; };
 		232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+PopToRootWithCompletion.swift"; sourceTree = "<group>"; };
 		23321D791BB0730C0005624F /* my-wallet.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "../../Submodules/My-Wallet-V3/dist/my-wallet.js"; sourceTree = "<group>"; };
 		234197861C17BB02004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Upgrade.strings; sourceTree = "<group>"; };
@@ -683,8 +689,12 @@
 		23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsBitcoinUnitTableViewController.m; sourceTree = "<group>"; };
 		23DF4EFA1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KeychainItemWrapper+SwipeAddresses.h"; sourceTree = "<group>"; };
 		23DF4EFB1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KeychainItemWrapper+SwipeAddresses.m"; sourceTree = "<group>"; };
+		23DEF96C1DB11C98004AAAB6 /* TransferAllFundsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferAllFundsBuilder.h; sourceTree = "<group>"; };
+		23DEF96D1DB11C98004AAAB6 /* TransferAllFundsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferAllFundsBuilder.m; sourceTree = "<group>"; };
 		23E2FC061C7F60E7004CFF79 /* BCInsetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCInsetLabel.h; sourceTree = "<group>"; };
 		23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCInsetLabel.m; sourceTree = "<group>"; };
+		23E579521DB45F3A00220542 /* TransferAmountTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferAmountTableCell.h; sourceTree = "<group>"; };
+		23E579531DB45F3A00220542 /* TransferAmountTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferAmountTableCell.m; sourceTree = "<group>"; };
 		23EA61C31B54258D0032B907 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		23EA61C41B54258D0032B907 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		23EA61C61B54282D0032B907 /* SettingsNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsNavigationController.h; sourceTree = "<group>"; };
@@ -711,6 +721,8 @@
 		23F601A31D09C931009102BF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		23F720F01C32DC0A00577738 /* DebugTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugTableViewController.h; sourceTree = "<group>"; };
 		23F720F11C32DC0A00577738 /* DebugTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugTableViewController.m; sourceTree = "<group>"; };
+		23F8DE511DAEB11C001899AE /* BCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCNavigationController.h; sourceTree = "<group>"; };
+		23F8DE521DAEB11C001899AE /* BCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCNavigationController.m; sourceTree = "<group>"; };
 		23FB5C051D9ABB450008C6AB /* TransactionDetailDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailDescriptionCell.h; sourceTree = "<group>"; };
 		23FB5C061D9ABB450008C6AB /* TransactionDetailDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailDescriptionCell.m; sourceTree = "<group>"; };
 		23FB5C081D9ABB590008C6AB /* TransactionDetailToCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailToCell.h; sourceTree = "<group>"; };
@@ -1252,6 +1264,8 @@
 				9F765F3C14BC7C4F00048EFB /* Transaction.m */,
 				9F0CBAA8151351F400CD945D /* Wallet.h */,
 				9F0CBAA9151351F400CD945D /* Wallet.m */,
+				23DEF96C1DB11C98004AAAB6 /* TransferAllFundsBuilder.h */,
+				23DEF96D1DB11C98004AAAB6 /* TransferAllFundsBuilder.m */,
 				FA6323341A43373300EB3974 /* Merchant.h */,
 				FA6323351A43373300EB3974 /* Merchant.m */,
 			);
@@ -1340,6 +1354,10 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				23F8DE511DAEB11C001899AE /* BCNavigationController.h */,
+				23F8DE521DAEB11C001899AE /* BCNavigationController.m */,
+				232ACBF31DAE84720072FB5E /* TransferAllFundsViewController.h */,
+				232ACBF41DAE84720072FB5E /* TransferAllFundsViewController.m */,
 				2390C1091D87376E00342C38 /* TransactionRecipientsViewController.h */,
 				2390C10A1D87376E00342C38 /* TransactionRecipientsViewController.m */,
 				23BD046B1D79F1EC00DB69E6 /* TransactionDetailNavigationController.h */,
@@ -1521,6 +1539,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				23E579521DB45F3A00220542 /* TransferAmountTableCell.h */,
+				23E579531DB45F3A00220542 /* TransferAmountTableCell.m */,
 				23FB5C051D9ABB450008C6AB /* TransactionDetailDescriptionCell.h */,
 				23FB5C061D9ABB450008C6AB /* TransactionDetailDescriptionCell.m */,
 				23FB5C081D9ABB590008C6AB /* TransactionDetailToCell.h */,
@@ -1863,6 +1883,7 @@
 				67EE1DCA19E3325900DBBFC9 /* ECPercentDrivenInteractiveTransition.m in Sources */,
 				23FDEF9D1D6E180100FC80D6 /* CertificatePinner.m in Sources */,
 				678CD7481A2777E600748AA5 /* BCCreateAccountView.m in Sources */,
+				23F8DE531DAEB11C001899AE /* BCNavigationController.m in Sources */,
 				ECD244F719A8B444004B1F40 /* UIImage+Utils.m in Sources */,
 				2322DCB61D771831000E5AC1 /* SRIOConsumerPool.m in Sources */,
 				2322DCBB1D771831000E5AC1 /* SRError.m in Sources */,
@@ -1874,6 +1895,8 @@
 				23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */,
 				2322DCB41D771831000E5AC1 /* SRDelegateController.m in Sources */,
 				9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */,
+				232ACBF51DAE84720072FB5E /* TransferAllFundsViewController.m in Sources */,
+				23E579541DB45F3A00220542 /* TransferAmountTableCell.m in Sources */,
 				230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */,
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,
 				6750389B1B4D832F00F7B488 /* SideMenuViewCell.m in Sources */,
@@ -1904,6 +1927,7 @@
 				2390C10B1D87376E00342C38 /* TransactionRecipientsViewController.m in Sources */,
 				23FB5C071D9ABB450008C6AB /* TransactionDetailDescriptionCell.m in Sources */,
 				23BA220E1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m in Sources */,
+				23DEF96E1DB11C98004AAAB6 /* TransferAllFundsBuilder.m in Sources */,
 				A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

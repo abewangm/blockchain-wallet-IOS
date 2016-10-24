@@ -100,6 +100,7 @@
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
 - (void)didSetDefaultAccount;
 - (void)didChangeLocalCurrency;
+- (void)setupBackupTransferAll:(id)transferAllController;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
@@ -324,9 +325,11 @@
 - (void)sweepPaymentRegularThenConfirm;
 - (void)sweepPaymentAdvanced:(uint64_t)fee;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
-- (void)getInfoForTransferAllFundsToDefaultAccount;
-- (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
-- (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
+- (void)setupBackupTransferAll:(id)transferAllController;
+- (void)getInfoForTransferAllFundsToAccount;
+- (void)setupFirstTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment;
+- (void)setupFollowingTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment;
+- (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;
 - (void)getFeeBounds:(uint64_t)fee;

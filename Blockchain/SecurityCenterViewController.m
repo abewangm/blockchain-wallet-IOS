@@ -10,6 +10,7 @@
 #import "SettingsTableViewController.h"
 #import "SettingsTwoStepViewController.h"
 #import "RootService.h"
+#import "Blockchain-Swift.h"
 
 @interface SecurityCenterViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *securityLevelImageView;
@@ -191,7 +192,6 @@
         self.backupController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
     }
     
-    // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
     self.backupController.wallet = app.wallet;
     
     self.backupController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
