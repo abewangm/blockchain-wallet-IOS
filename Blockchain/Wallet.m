@@ -24,6 +24,7 @@
 #import <openssl/evp.h>
 #import "SessionManager.h"
 #import "NSURLRequest+SRWebSocket.h"
+#import <CommonCrypto/CommonKeyDerivation.h>
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -120,6 +121,25 @@
     __weak Wallet *weakSelf = self;
     
 #pragma mark Decryption
+     
+    self.context[@"objc_pbkdf2_sync"] = ^(NSString *mnemonicBuffer, NSString *saltBuffer, int iterations, int keylength, NSString *digest) {
+        // Salt data getting from salt string.
+        NSData *saltData = [saltBuffer dataUsingEncoding:NSUTF8StringEncoding];
+        
+        // Data of String to generate Hash key(hexa decimal string).
+        NSData *passwordData = [mnemonicBuffer dataUsingEncoding:NSUTF8StringEncoding];
+        
+        // Hash key (hexa decimal) string data length.
+        NSMutableData *hashKeyData = [NSMutableData dataWithLength:keylength];
+        
+        // Key Derivation using PBKDF2 algorithm.
+        int result = CCKeyDerivationPBKDF(kCCPBKDF2, passwordData.bytes, passwordData.length, saltData.bytes, saltData.length, kCCPRFHmacAlgSHA1, iterations, hashKeyData.mutableBytes, hashKeyData.length);
+        
+        // Hexa decimal or hash key string from hash key data.
+        NSString *hexDecimalString = hashKeyData.description;
+        NSLog(@"Hexa decimal string:%@", hexDecimalString);
+        return [hashKeyData hexadecimalString];
+    };
     
     self.context[@"objc_sjcl_misc_pbkdf2"] = ^(NSString *_password, id _salt, int iterations, int keylength, NSString *hmacSHA1) {
         

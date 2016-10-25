@@ -1367,6 +1367,13 @@ WalletCrypto.stretchPassword = function (password, salt, iterations, keylen) {
     return new Buffer(retVal, 'hex');
 }
 
+MyWallet.mnemonicToSeed = function(mnemonic, enteredPassword, saltFunction) {
+    var mnemonicBuffer = new Buffer(mnemonic, 'utf8')
+    var saltBuffer = new Buffer(saltFunction(enteredPassword), 'utf8');
+    var retVal = objc_pbkdf2_sync(mnemonicBuffer, saltBuffer, 2048, 64, 'sha512');
+    return new Buffer(retVal, 'hex');
+}
+
 // TODO what should this value be?
 MyWallet.getNTransactionsPerPage = function() {
     return 50;
