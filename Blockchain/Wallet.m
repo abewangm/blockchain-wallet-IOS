@@ -133,11 +133,8 @@
         NSMutableData *hashKeyData = [NSMutableData dataWithLength:keylength];
         
         // Key Derivation using PBKDF2 algorithm.
-        int result = CCKeyDerivationPBKDF(kCCPBKDF2, passwordData.bytes, passwordData.length, saltData.bytes, saltData.length, kCCPRFHmacAlgSHA1, iterations, hashKeyData.mutableBytes, hashKeyData.length);
+        int result = CCKeyDerivationPBKDF(kCCPBKDF2, passwordData.bytes, passwordData.length, saltData.bytes, saltData.length, kCCPRFHmacAlgSHA512, iterations, hashKeyData.mutableBytes, hashKeyData.length);
         
-        // Hexa decimal or hash key string from hash key data.
-        NSString *hexDecimalString = hashKeyData.description;
-        NSLog(@"Hexa decimal string:%@", hexDecimalString);
         return [hashKeyData hexadecimalString];
     };
     
