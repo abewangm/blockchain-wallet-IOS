@@ -18,6 +18,7 @@
 		230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2D81C5BF1A700336683 /* BCQRCodeView.m */; };
 		230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */; };
 		23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */; };
+		231A66EE1DB9434B0043F862 /* HDNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 231A66ED1DB9434B0043F862 /* HDNode.m */; };
 		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
 		2322D3911D75CEEF000E5AC1 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322D3901D75CEEF000E5AC1 /* SessionManager.m */; };
@@ -44,6 +45,7 @@
 		2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */ = {isa = PBXBuildFile; fileRef = 2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */; };
 		232ACBF51DAE84720072FB5E /* TransferAllFundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232ACBF41DAE84720072FB5E /* TransferAllFundsViewController.m */; };
 		232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */; };
+		232FA5341DC3C2DC005B83C6 /* BTCBigNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 232FA5331DC3C2DC005B83C6 /* BTCBigNumber.m */; };
 		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
 		2343E4031CB434BC008DC7D1 /* NSArray+EncodedJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2343E4021CB434BC008DC7D1 /* NSArray+EncodedJSONString.m */; };
 		2357BA411D53979600BE0BFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2357BA431D53979600BE0BFD /* InfoPlist.strings */; };
@@ -51,6 +53,7 @@
 		236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */; };
 		237451C91D624C1C00CF7049 /* RootService.m in Sources */ = {isa = PBXBuildFile; fileRef = 237451C81D624C1C00CF7049 /* RootService.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
+		237991671DBFB3480094FE92 /* BTCData.m in Sources */ = {isa = PBXBuildFile; fileRef = 237991661DBFB3480094FE92 /* BTCData.m */; };
 		237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */; };
 		2390C10B1D87376E00342C38 /* TransactionRecipientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2390C10A1D87376E00342C38 /* TransactionRecipientsViewController.m */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
@@ -70,8 +73,8 @@
 		23D423991D0878BE000054AA /* ModuleXMLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D423981D0878BE000054AA /* ModuleXMLHttpRequest.m */; };
 		23D5DB501C4415AE007AD0A2 /* AccountsAndAddresses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D5DB521C4415AE007AD0A2 /* AccountsAndAddresses.storyboard */; };
 		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
-		23DF4EFC1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DF4EFB1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m */; };
 		23DEF96E1DB11C98004AAAB6 /* TransferAllFundsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DEF96D1DB11C98004AAAB6 /* TransferAllFundsBuilder.m */; };
+		23DF4EFC1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DF4EFB1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m */; };
 		23E2FC081C7F60E7004CFF79 /* BCInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */; };
 		23E579541DB45F3A00220542 /* TransferAmountTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E579531DB45F3A00220542 /* TransferAmountTableCell.m */; };
 		23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA61C41B54258D0032B907 /* SettingsTableViewController.m */; };
@@ -386,6 +389,8 @@
 		230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
 		23107F811BBEF0AC00A6A9D4 /* BCConfirmPaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCConfirmPaymentView.h; sourceTree = "<group>"; };
 		23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCConfirmPaymentView.m; sourceTree = "<group>"; };
+		231A66EC1DB9434B0043F862 /* HDNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNode.h; sourceTree = "<group>"; };
+		231A66ED1DB9434B0043F862 /* HDNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNode.m; sourceTree = "<group>"; };
 		231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAboutViewController.h; sourceTree = "<group>"; };
 		231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAboutViewController.m; sourceTree = "<group>"; };
 		232232181B44D4CB00E5DF26 /* UpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeViewController.h; sourceTree = "<group>"; };
@@ -439,6 +444,8 @@
 		232ACBF31DAE84720072FB5E /* TransferAllFundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferAllFundsViewController.h; sourceTree = "<group>"; };
 		232ACBF41DAE84720072FB5E /* TransferAllFundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferAllFundsViewController.m; sourceTree = "<group>"; };
 		232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+PopToRootWithCompletion.swift"; sourceTree = "<group>"; };
+		232FA5321DC3C2DC005B83C6 /* BTCBigNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCBigNumber.h; path = ../../CoreBitcoin/CoreBitcoin/BTCBigNumber.h; sourceTree = "<group>"; };
+		232FA5331DC3C2DC005B83C6 /* BTCBigNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCBigNumber.m; path = ../../CoreBitcoin/CoreBitcoin/BTCBigNumber.m; sourceTree = "<group>"; };
 		23321D791BB0730C0005624F /* my-wallet.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "../../Submodules/My-Wallet-V3/dist/my-wallet.js"; sourceTree = "<group>"; };
 		234197861C17BB02004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Upgrade.strings; sourceTree = "<group>"; };
 		234197881C17BB08004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
@@ -492,6 +499,8 @@
 		2374BFB21B750ECA00A53FBE /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Backup.strings; sourceTree = "<group>"; };
 		2374BFB41B750EDE00A53FBE /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Backup.strings; sourceTree = "<group>"; };
 		237827191B7E472D00E9EE03 /* BCSecureTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCSecureTextField.swift; sourceTree = "<group>"; };
+		237991651DBFB3480094FE92 /* BTCData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCData.h; path = ../../CoreBitcoin/CoreBitcoin/BTCData.h; sourceTree = "<group>"; };
+		237991661DBFB3480094FE92 /* BTCData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCData.m; path = ../../CoreBitcoin/CoreBitcoin/BTCData.m; sourceTree = "<group>"; };
 		237C9E8E1C482132000754F7 /* AccountsAndAddressesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesDetailViewController.h; sourceTree = "<group>"; };
 		237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesDetailViewController.m; sourceTree = "<group>"; };
 		237EBF571DB6C942009AE45A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -687,10 +696,10 @@
 		23D5DBA01C4415D3007AD0A2 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
 		23D9F26E1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsBitcoinUnitTableViewController.h; sourceTree = "<group>"; };
 		23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsBitcoinUnitTableViewController.m; sourceTree = "<group>"; };
-		23DF4EFA1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KeychainItemWrapper+SwipeAddresses.h"; sourceTree = "<group>"; };
-		23DF4EFB1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KeychainItemWrapper+SwipeAddresses.m"; sourceTree = "<group>"; };
 		23DEF96C1DB11C98004AAAB6 /* TransferAllFundsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferAllFundsBuilder.h; sourceTree = "<group>"; };
 		23DEF96D1DB11C98004AAAB6 /* TransferAllFundsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferAllFundsBuilder.m; sourceTree = "<group>"; };
+		23DF4EFA1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KeychainItemWrapper+SwipeAddresses.h"; sourceTree = "<group>"; };
+		23DF4EFB1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KeychainItemWrapper+SwipeAddresses.m"; sourceTree = "<group>"; };
 		23E2FC061C7F60E7004CFF79 /* BCInsetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCInsetLabel.h; sourceTree = "<group>"; };
 		23E2FC071C7F60E7004CFF79 /* BCInsetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCInsetLabel.m; sourceTree = "<group>"; };
 		23E579521DB45F3A00220542 /* TransferAmountTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferAmountTableCell.h; sourceTree = "<group>"; };
@@ -1240,6 +1249,8 @@
 		9F765F3A14BC7C3100048EFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				231A66EC1DB9434B0043F862 /* HDNode.h */,
+				231A66ED1DB9434B0043F862 /* HDNode.m */,
 				2322D38F1D75CEEF000E5AC1 /* SessionManager.h */,
 				2322D3901D75CEEF000E5AC1 /* SessionManager.m */,
 				23FDEF9B1D6E180100FC80D6 /* CertificatePinner.h */,
@@ -1485,6 +1496,10 @@
 		C9D4B2AE193E020D00EDA9EA /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				232FA5321DC3C2DC005B83C6 /* BTCBigNumber.h */,
+				232FA5331DC3C2DC005B83C6 /* BTCBigNumber.m */,
+				237991651DBFB3480094FE92 /* BTCData.h */,
+				237991661DBFB3480094FE92 /* BTCData.m */,
 				2322DC811D771831000E5AC1 /* SocketRocket */,
 				670595A11AB0F59D00D2D6D9 /* KeychainItemWrapper */,
 				670DF9481A43BCB200CEA1EA /* Reachability */,
@@ -1804,6 +1819,7 @@
 				678AD5E919D4610000E9A778 /* BCModalContentView.m in Sources */,
 				84F4BDFA197F21D700B7BF7B /* PairingCodeParser.m in Sources */,
 				2322DCBC1D771831000E5AC1 /* SRHash.m in Sources */,
+				237991671DBFB3480094FE92 /* BTCData.m in Sources */,
 				9F45F82C1514E53C00018AED /* UIButtonPressAndHold.m in Sources */,
 				9F7480E315140EF200BC4292 /* TabViewController.m in Sources */,
 				2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */,
@@ -1828,9 +1844,11 @@
 				2322DCB71D771831000E5AC1 /* SRProxyConnect.m in Sources */,
 				FACF69521A57164B00590E04 /* MerchantMapDetailViewController.m in Sources */,
 				FA6323411A446B0C00EB3974 /* MerchantLocation.m in Sources */,
+				232FA5341DC3C2DC005B83C6 /* BTCBigNumber.m in Sources */,
 				FA63233C1A433BEA00EB3974 /* MerchantMapViewController.m in Sources */,
 				23FDEFAC1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m in Sources */,
 				9F765F3914BC7BAC00048EFB /* TransactionTableCell.m in Sources */,
+				231A66EE1DB9434B0043F862 /* HDNode.m in Sources */,
 				84FC02FA1981452D00B97D5B /* NSString+JSONParser_NSString.m in Sources */,
 				9F765F3D14BC7C4F00048EFB /* Transaction.m in Sources */,
 				2322DCC31D771831000E5AC1 /* NSRunLoop+SRWebSocket.m in Sources */,

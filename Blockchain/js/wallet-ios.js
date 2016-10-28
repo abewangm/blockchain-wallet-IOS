@@ -11,6 +11,8 @@ var WalletNetwork = Blockchain.WalletNetwork;
 var RNG = Blockchain.RNG;
 var Address = Blockchain.Address;
 var Bitcoin = Blockchain.Bitcoin;
+var ECPair = Blockchain.ECPair;
+var BigInteger = Blockchain.BigInteger;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1876,4 +1878,8 @@ MyWalletPhone.getDefaultAccountLabelledAddressesCount = function() {
     }
     
     return MyWallet.wallet.hdwallet.defaultAccount.receivingAddressesLabels.length;
+}
+
+MyWalletPhone.getJSON = function() {
+    return JSON;
 }

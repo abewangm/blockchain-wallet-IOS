@@ -25,6 +25,7 @@
 #import "SessionManager.h"
 #import "NSURLRequest+SRWebSocket.h"
 #import <CommonCrypto/CommonKeyDerivation.h>
+#import "HDNode.h"
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -80,7 +81,10 @@
     NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT, walletJSSource, walletiOSSource];
     self.context = [[JSContext alloc] init];
     
-    self.context[JAVASCRIPTCORE_CLASS_XMLHTTPREQUEST] = [ModuleXMLHttpRequest class];
+    [self.context evaluateScript:@"var console = {};"];
+    self.context[@"console"][@"log"] = ^(NSString *message) {
+        DLog(@"Javascript log: %@",message);
+    };
     
     self.context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
         NSString *stacktrace = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_STACK] toString];
@@ -89,11 +93,7 @@
         
         DLog(@"%@ \nstack: %@\nline number: %@", [exception toString], stacktrace, lineNumber);
     };
-    
-    [self.context evaluateScript:JAVASCRIPTCORE_CONSOLE_INIT];
-    self.context[JAVASCRIPTCORE_CONSOLE][JAVASCRIPTCORE_LOG] = ^(NSString *message) {
-        DLog(@"Javascript log: %@",message);
-    };
+
     
     // Add setTimout
     self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* function, JSValue* timeout) {
@@ -613,6 +613,8 @@
     
     [self.context evaluateScript:jsSource];
     
+    self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
+    self.context[@"Bitcoin"][@"HDNode"] = [HDNode class];
     [self login];
 }
 
@@ -1880,6 +1882,11 @@
 - (int)getDefaultAccountLabelledAddressesCount
 {
     return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountLabelledAddressesCount()"] toNumber] intValue];
+}
+
+- (JSValue *)executeJSSynchronous:(NSString *)command
+{
+    return [self.context evaluateScript:command];
 }
 
 # pragma mark - Transaction handlers
