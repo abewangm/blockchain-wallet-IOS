@@ -13,6 +13,7 @@
 #import "RootService.h"
 #import "NSString+NSString_EscapeQuotes.h"
 #import "NSData+Hex.h"
+#import "BTCCurvePoint.h"
 
 @interface HDNode()
 @property(nonatomic) NSMutableData* privateKey;
@@ -116,11 +117,6 @@
     return [[self.keyPair invokeMethod:@"getIdentifier" withArguments:nil] invokeMethod:@"slice" withArguments:@[@0,@4]];
 }
 
-- (JSValue *)toBase58:(JSValue *)isPrivate
-{
-    
-}
-
 - (JSValue *)getNetwork
 {
     return [self.keyPair invokeMethod:@"getNetwork" withArguments:nil];
@@ -131,10 +127,24 @@
     return [self.keyPair invokeMethod:@"getPublicKeyBuffer" withArguments:nil];
 }
 
-- (HDNode *)deriveHardened:(JSValue *)_index
+- (BOOL)isNeutered
 {
-    uint32_t highestBit = 0x80000000;
-    return [self derivedKeychainAtIndex:[_index toUInt32] + highestBit hardened:YES factor:nil];
+    return ![[self.keyPair valueForProperty:@"d"] toBool];
+}
+
+- (JSValue *)sign:(JSValue *)hash
+{
+    
+}
+
+- (JSValue *)verif:(JSValue *)hash y:(JSValue *)signature
+{
+    
+}
+
+- (JSValue *)toBase58:(JSValue *)isPrivate
+{
+    
 }
 
 - (HDNode *)derive:(JSValue *)_index
@@ -142,9 +152,9 @@
     
 }
 
-- (BOOL)isNeutered
+- (HDNode *)deriveHardened:(JSValue *)_index
 {
-    return ![[self.keyPair valueForProperty:@"d"] toBool];
+    return [self derivedKeychainAtIndex:0 hardened:YES factor:nil];
 }
 
 - (HDNode *)derivePath:(JSValue *)path
@@ -152,81 +162,87 @@
     
 }
 
-- (HDNode *) derivedKeychainAtIndex:(uint32_t)index hardened:(BOOL)hardened factor:(BTCBigNumber**)factorOut
+- (HDNode *)derivedKeychainAtIndex:(uint32_t)_index hardened:(BOOL)hardened factor:(BTCBigNumber**)factorOut
 {
-//    // CHECK_IF_CLEARED;
-//    
-//    // As we use explicit parameter "hardened", do not allow higher bit set.
-//    if ((0x80000000 & index) != 0) {
-//        @throw [NSException exceptionWithName:@"BTCKeychain Exception"
-//                                       reason:@"Indexes >= 0x80000000 are invalid. Use hardened:YES argument instead." userInfo:nil];
-//        return nil;
-//    }
-//    
-//    if (!_privateKey && hardened) {
-//        // Not possible to derive hardened keychain without a private key.
-//        return nil;
-//    }
-//    
-//    BTCKeychain* derivedKeychain = [[BTCKeychain alloc] init];
-//    
-//    NSMutableData* data = [NSMutableData data];
-//    
-//    if (hardened) {
-//        uint8_t padding = 0;
-//        [data appendBytes:&padding length:1];
-//        [data appendData:_privateKey];
-//    } else {
-//        [data appendData:self.publicKey];
-//    }
-//    
-//    uint32_t indexBE = OSSwapHostToBigInt32(hardened ? (0x80000000 | index) : index);
-//    [data appendBytes:&indexBE length:sizeof(indexBE)];
-//    
-//    NSData* digest = BTCHMACSHA512(_chainCode, data);
-//    
-//    BTCBigNumber* factor = [[BTCBigNumber alloc] initWithUnsignedBigEndian:[digest subdataWithRange:NSMakeRange(0, 32)]];
-//    
-//    // Factor is too big, this derivation is invalid.
-//    if ([factor greaterOrEqual:[BTCCurvePoint curveOrder]]) {
-//        return nil;
-//    }
-//    
-//    if (factorOut) *factorOut = factor;
-//    
-//    derivedKeychain.chainCode = BTCDataRange(digest, NSMakeRange(32, 32));
-//    
-//    if (_privateKey) {
-//        BTCMutableBigNumber* pkNumber = [[BTCMutableBigNumber alloc] initWithUnsignedBigEndian:_privateKey];
-//        [pkNumber add:factor mod:[BTCCurvePoint curveOrder]];
-//        
-//        // Check for invalid derivation.
-//        if ([pkNumber isEqual:[BTCBigNumber zero]]) return nil;
-//        
-//        NSData* pkData = pkNumber.unsignedBigEndian;
-//        derivedKeychain.privateKey = [pkData mutableCopy];
-//        
-//        BTCDataClear(pkData);
-//        [pkNumber clear];
-//    } else {
-//        BTCCurvePoint* point = [[BTCCurvePoint alloc] initWithData:_publicKey];
-//        [point addGeneratorMultipliedBy:factor];
-//        
-//        // Check for invalid derivation.
-//        if ([point isInfinity]) return nil;
-//        
-//        NSData* pointData = point.data;
-//        derivedKeychain.publicKey = [pointData mutableCopy];
-//        BTCDataClear(pointData);
-//        [point clear];
-//    }
-//    
-//    derivedKeychain.depth = _depth + 1;
-//    derivedKeychain.parentFingerprint = self.fingerprint;
-//    derivedKeychain.index = index;
-//    derivedKeychain.hardened = hardened;
-//    
-//    return derivedKeychain;
+    // CHECK_IF_CLEARED;
+    
+    // As we use explicit parameter "hardened", do not allow higher bit set.
+    if ((0x80000000 & _index) != 0) {
+        @throw [NSException exceptionWithName:@"BTCKeychain Exception"
+                                       reason:@"Indexes >= 0x80000000 are invalid. Use hardened:YES argument instead." userInfo:nil];
+        return nil;
+    }
+    
+    if ([self isNeutered] && hardened) {
+        DLog(@"Not possible to derive hardened keychain without a private key.");
+        return nil;
+    }
+    
+    JSValue *derivedKeypair;
+    
+    NSMutableData* data = [NSMutableData data];
+    
+    if (hardened) {
+        uint8_t padding = 0;
+        [data appendBytes:&padding length:1];
+        [data appendData:_privateKey];
+    } else {
+        [data appendData:self.publicKey];
+    }
+    
+    uint32_t indexBE = OSSwapHostToBigInt32(hardened ? (0x80000000 | index) : index);
+    [data appendBytes:&indexBE length:sizeof(indexBE)];
+    
+    NSData* digest = BTCHMACSHA512([[self.chainCode toString] dataUsingEncoding:NSUTF8StringEncoding], data);
+    
+    BTCBigNumber* factor = [[BTCBigNumber alloc] initWithUnsignedBigEndian:[digest subdataWithRange:NSMakeRange(0, 32)]];
+    
+    // Factor is too big, this derivation is invalid.
+    if ([factor greaterOrEqual:[BTCCurvePoint curveOrder]]) {
+        return nil;
+    }
+    
+    if (factorOut) *factorOut = factor;
+    
+    NSData *chainCode = BTCDataRange(digest, NSMakeRange(32, 32));
+    
+    JSValue *network = [self.keyPair valueForProperty:@"network"];
+    JSValue *json = [app.wallet executeJSSynchronous:@"MyWalletPhone.getJSON()"];
+    NSString *networkString = [[json invokeMethod:@"stringify" withArguments:@[network]] toString];
+    
+    if (_privateKey) {
+        BTCMutableBigNumber* pkNumber = [[BTCMutableBigNumber alloc] initWithUnsignedBigEndian:_privateKey];
+        [pkNumber add:factor mod:[BTCCurvePoint curveOrder]];
+        
+        // Check for invalid derivation.
+        if ([pkNumber isEqual:[BTCBigNumber zero]]) return nil;
+        
+        NSData* pkData = pkNumber.unsignedBigEndian;
+        
+        derivedKeypair = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new ECPair(BigInteger.fromBuffer(new Buffer('%@', 'hex')), null, {network: %@})", [[[pkData mutableCopy] hexadecimalString] escapeStringForJS], networkString]];
+        
+        BTCDataClear(pkData);
+        [pkNumber clear];
+    } else {
+        BTCCurvePoint* point = [[BTCCurvePoint alloc] initWithData:_publicKey];
+        [point addGeneratorMultipliedBy:factor];
+        
+        // Check for invalid derivation.
+        if ([point isInfinity]) return nil;
+        
+        NSData* pointData = point.data;
+        derivedKeypair = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new ECPair(null, BigInteger.fromBuffer(new Buffer('%@', 'hex')), {network: %@})", [[[pointData mutableCopy] hexadecimalString] escapeStringForJS], networkString]];
+        BTCDataClear(pointData);
+        [point clear];
+    }
+    
+    HDNode *newHDNode = [[HDNode alloc] initWithKeyPair:derivedKeypair chainCode:[app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", [chainCode hexadecimalString]]]];
+    newHDNode.depth = self.depth + 1;
+    newHDNode.parentFingerprint = [[self getFingerprint] toUInt32];
+    newHDNode.index = index;
+    // newHDNode.hardened = hardened;
+    
+    return newHDNode;
 }
 
 @end

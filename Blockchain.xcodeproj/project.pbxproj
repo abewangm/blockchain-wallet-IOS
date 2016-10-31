@@ -18,6 +18,7 @@
 		230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2D81C5BF1A700336683 /* BCQRCodeView.m */; };
 		230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */; };
 		23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */; };
+		2312FB091DC782ED00B7B8B4 /* BTCCurvePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312FB081DC782ED00B7B8B4 /* BTCCurvePoint.m */; };
 		231A66EE1DB9434B0043F862 /* HDNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 231A66ED1DB9434B0043F862 /* HDNode.m */; };
 		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
@@ -389,6 +390,8 @@
 		230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
 		23107F811BBEF0AC00A6A9D4 /* BCConfirmPaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCConfirmPaymentView.h; sourceTree = "<group>"; };
 		23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCConfirmPaymentView.m; sourceTree = "<group>"; };
+		2312FB071DC782ED00B7B8B4 /* BTCCurvePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCCurvePoint.h; path = ../../CoreBitcoin/CoreBitcoin/BTCCurvePoint.h; sourceTree = "<group>"; };
+		2312FB081DC782ED00B7B8B4 /* BTCCurvePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCCurvePoint.m; path = ../../CoreBitcoin/CoreBitcoin/BTCCurvePoint.m; sourceTree = "<group>"; };
 		231A66EC1DB9434B0043F862 /* HDNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNode.h; sourceTree = "<group>"; };
 		231A66ED1DB9434B0043F862 /* HDNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNode.m; sourceTree = "<group>"; };
 		231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAboutViewController.h; sourceTree = "<group>"; };
@@ -1496,6 +1499,8 @@
 		C9D4B2AE193E020D00EDA9EA /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				2312FB071DC782ED00B7B8B4 /* BTCCurvePoint.h */,
+				2312FB081DC782ED00B7B8B4 /* BTCCurvePoint.m */,
 				232FA5321DC3C2DC005B83C6 /* BTCBigNumber.h */,
 				232FA5331DC3C2DC005B83C6 /* BTCBigNumber.m */,
 				237991651DBFB3480094FE92 /* BTCData.h */,
@@ -1816,6 +1821,7 @@
 				23BA22111D6B736900D0472B /* NSNumberFormatter+Currencies.m in Sources */,
 				2322DCB51D771831000E5AC1 /* SRIOConsumer.m in Sources */,
 				23BD046D1D79F1EC00DB69E6 /* TransactionDetailNavigationController.m in Sources */,
+				2312FB091DC782ED00B7B8B4 /* BTCCurvePoint.m in Sources */,
 				678AD5E919D4610000E9A778 /* BCModalContentView.m in Sources */,
 				84F4BDFA197F21D700B7BF7B /* PairingCodeParser.m in Sources */,
 				2322DCBC1D771831000E5AC1 /* SRHash.m in Sources */,

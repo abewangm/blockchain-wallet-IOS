@@ -615,6 +615,7 @@
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
     self.context[@"Bitcoin"][@"HDNode"] = [HDNode class];
+    self.context[@"HDNode"] = [HDNode class];
     [self login];
 }
 
