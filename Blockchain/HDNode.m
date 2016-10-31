@@ -107,7 +107,7 @@
 {
     NSData *bufferData = BTCDataFromBase58(seed);
     
-    if (![app.wallet executeJSSynchronous:@"MyWalletPhone.isBufferDataLengthValid"]) {
+    if (![app.wallet executeJSSynchronous:[NSString stringWithFormat:@"MyWalletPhone.isBufferDataLengthValid('%@')", [[bufferData hexadecimalString] escapeStringForJS]]]) {
         DLog(@"Invalid buffer length");
         return nil;
     }
@@ -116,6 +116,7 @@
     uint32_t version = OSSwapBigToHostInt32(*((uint32_t*)bytes));
     
     JSValue *network;
+    BOOL isPrivate;
     if ([[networks toArray] isKindOfClass:[NSArray class]]) {
         NSPredicate *privateOrPublicVersions = [NSPredicate predicateWithBlock:^BOOL(JSValue *value, NSDictionary *bindings) {
             // Inexact match: JS is written with triple equal comparison
@@ -126,21 +127,27 @@
         
         NSArray *filteredNetworks = [[networks toArray] filteredArrayUsingPredicate:privateOrPublicVersions];
         network = [filteredNetworks firstObject];
+        isPrivate = version == [[[network valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32];
+        // Inexact match: JS is written with triple equal comparison
+        // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L76-L77
+        if (version != [[[network valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32] ||
+            version != [[[network valueForProperty:@"bip32"] valueForProperty:@"public"] toUInt32]) {
+            DLog(@"Invalid network version");
+        }
     } else {
         // Inexact match: JS is written as
         // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L73
         // network = networks || NETWORKS.bitcoin
         network = networks;
+        // Inexact match: JS is written with triple equal comparison
+        // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L76-L77
+        if (version != [[[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32] ||
+            version != [[[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"public"] toUInt32]) {
+            DLog(@"Invalid network version");
+        }
+        isPrivate = version == [[[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32];
     }
     
-    // Inexact match: JS is written with triple equal comparison
-    // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L76-L77
-    if (version != [[[network valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32] ||
-        version != [[[network valueForProperty:@"bip32"] valueForProperty:@"public"] toUInt32]) {
-        DLog(@"Invalid network version");
-    }
-    
-    BOOL isPrivate = version == [[[network valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32];
     return [[HDNode alloc] initWithExtendedKeyDataInternal:bufferData isPrivate:isPrivate];
 }
 
@@ -362,7 +369,9 @@
         [point addGeneratorMultipliedBy:factor];
         
         // Check for invalid derivation.
-        if ([point isInfinity]) return nil;
+        if ([point isInfinity]) {
+            return [self derive:[JSValue valueWithInt32:(_index + 1) inContext:app.wallet.context]];
+        }
         
         NSData* pointData = point.data;
         derivedKeypair = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new ECPair(null, BigInteger.fromBuffer(new Buffer('%@', 'hex')), {network: %@})", [[[pointData mutableCopy] hexadecimalString] escapeStringForJS], networkString]];
