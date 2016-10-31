@@ -1883,3 +1883,12 @@ MyWalletPhone.getDefaultAccountLabelledAddressesCount = function() {
 MyWalletPhone.getJSON = function() {
     return JSON;
 }
+
+MyWalletPhone.isBufferDataLengthValid = function(hexadecimalString) {
+    var buffer = new Buffer(hexadecimalString, 'hex');
+    if (buffer.length !== 78) {
+        return false;
+    } else {
+        return true;
+    }
+}

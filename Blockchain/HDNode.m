@@ -14,6 +14,10 @@
 #import "NSString+NSString_EscapeQuotes.h"
 #import "NSData+Hex.h"
 #import "BTCCurvePoint.h"
+#import "BTCBase58.h"
+
+#define BTCKeychainTestnetPrivateVersion 0x04358394
+#define BTCKeychainTestnetPublicVersion  0x043587CF
 
 @interface HDNode()
 @property(nonatomic) NSMutableData* privateKey;
@@ -23,7 +27,6 @@
 {
     JSManagedValue *_chainCode;
     JSManagedValue *_keyPair;
-    JSManagedValue *_network;
 }
 
 @synthesize depth;
@@ -102,7 +105,43 @@
 
 + (HDNode *)from:(NSString *)seed base58:(JSValue *)networks
 {
-    return [HDNode fromSeed:seed network:networks];
+    NSData *bufferData = BTCDataFromBase58(seed);
+    
+    if (![app.wallet executeJSSynchronous:@"MyWalletPhone.isBufferDataLengthValid"]) {
+        DLog(@"Invalid buffer length");
+        return nil;
+    }
+    
+    const uint8_t* bytes = bufferData.bytes;
+    uint32_t version = OSSwapBigToHostInt32(*((uint32_t*)bytes));
+    
+    JSValue *network;
+    if ([[networks toArray] isKindOfClass:[NSArray class]]) {
+        NSPredicate *privateOrPublicVersions = [NSPredicate predicateWithBlock:^BOOL(JSValue *value, NSDictionary *bindings) {
+            // Inexact match: JS is written with triple equal comparison
+            // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L65-L66
+            return version == [[[value valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32] ||
+            version == [[[value valueForProperty:@"bip32"] valueForProperty:@"public"] toUInt32];
+        }];
+        
+        NSArray *filteredNetworks = [[networks toArray] filteredArrayUsingPredicate:privateOrPublicVersions];
+        network = [filteredNetworks firstObject];
+    } else {
+        // Inexact match: JS is written as
+        // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L73
+        // network = networks || NETWORKS.bitcoin
+        network = networks;
+    }
+    
+    // Inexact match: JS is written with triple equal comparison
+    // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L76-L77
+    if (version != [[[network valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32] ||
+        version != [[[network valueForProperty:@"bip32"] valueForProperty:@"public"] toUInt32]) {
+        DLog(@"Invalid network version");
+    }
+    
+    BOOL isPrivate = version == [[[network valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32];
+    return [[HDNode alloc] initWithExtendedKeyDataInternal:bufferData isPrivate:isPrivate];
 }
 
 - (NSString *)getIdentifier
@@ -134,22 +173,83 @@
 
 - (JSValue *)sign:(JSValue *)hash
 {
-    
+    return [self.keyPair invokeMethod:@"sign" withArguments:@[hash]];
 }
 
 - (JSValue *)verif:(JSValue *)hash y:(JSValue *)signature
 {
-    
+    return [self.keyPair invokeMethod:@"verify" withArguments:@[hash, signature]];
 }
 
 - (JSValue *)toBase58:(JSValue *)isPrivate
 {
+    if (isPrivate) {
+        DLog(@"Unsupported argument in 2.0.0");
+        return nil;
+    }
     
+    JSValue *network = [self.keyPair valueForProperty:@"network"];
+    BOOL bip32IsPrivate = YES;
+    JSValue *version;
+    if ([self isNeutered]) {
+        version = [[network valueForProperty:@"bip32"] valueForProperty:@"private"];
+    } else {
+        version = [[network valueForProperty:@"bip32"] valueForProperty:@"public"];
+        bip32IsPrivate = NO;
+    }
+    NSMutableData *bufferData = BTCDataFromBase58Check([version toString]);
+    NSString *dataString = BTCBase58StringWithData(bufferData);
+    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", dataString]];
+}
+
+- (id) initWithExtendedKeyDataInternal:(NSData*)extendedKeyData isPrivate:(BOOL)isPrivate
+{
+    if (self = [super init]) {
+        if (extendedKeyData.length != 78) return nil;
+        
+        const uint8_t* bytes = extendedKeyData.bytes;
+        uint32_t version = OSSwapBigToHostInt32(*((uint32_t*)bytes));
+        
+        uint32_t keyprefix = bytes[45];
+        
+        if (isPrivate) {
+            // Should have 0-prefixed private key (1 + 32 bytes).
+            if (keyprefix != 0) return nil;
+            _privateKey = BTCDataRange(extendedKeyData, NSMakeRange(46, 32));
+        } else if (!isPrivate) {
+            // Should have a 33-byte public key with non-zero first byte.
+            if (keyprefix == 0) return nil;
+            _publicKey = BTCDataRange(extendedKeyData, NSMakeRange(45, 33));
+        } else {
+            // Unknown version.
+            return nil;
+        }
+        
+        // If it's a testnet key, remember the network.
+        // Otherwise, keep it nil so we don't do extra work if it's not needed.
+        if (version == BTCKeychainTestnetPrivateVersion ||
+            version == BTCKeychainTestnetPublicVersion) {
+            // Testnet not yet implemented on HDNode.js
+        }
+        
+        self.depth = *(bytes + 4);
+        self.parentFingerprint = OSSwapBigToHostInt32(*((uint32_t*)(bytes + 5)));
+        self.index = OSSwapBigToHostInt32(*((uint32_t*)(bytes + 9)));
+        
+        if ((0x80000000 & self.index) != 0) {
+            self.index = (~0x80000000) & self.index;
+            // _hardened = YES;
+        }
+        
+        NSData *chainCodeData = BTCDataRange(extendedKeyData,NSMakeRange(13, 32));
+        self.chainCode = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", [chainCodeData hexadecimalString]]];
+    }
+    return self;
 }
 
 - (HDNode *)derive:(JSValue *)_index
 {
-    
+    return [self derivedKeychainAtIndex:[_index toUInt32] hardened:NO factor:nil];
 }
 
 - (HDNode *)deriveHardened:(JSValue *)_index
@@ -157,9 +257,43 @@
     return [self derivedKeychainAtIndex:0 hardened:YES factor:nil];
 }
 
-- (HDNode *)derivePath:(JSValue *)path
+- (HDNode *)derivePath:(JSValue *)_path
 {
+    NSString *path = [_path toString];
     
+    if (path == nil) return nil;
+    
+    if ([path isEqualToString:@"m"] ||
+        [path isEqualToString:@"/"] ||
+        [path isEqualToString:@""]) {
+        return self;
+    }
+    
+    HDNode* hdNode = self;
+    
+    if ([path rangeOfString:@"m/"].location == 0) { // strip "m/" from the beginning.
+        path = [path substringFromIndex:2];
+    }
+    for (NSString* chunk in [path componentsSeparatedByString:@"/"]) {
+        if (chunk.length == 0) {
+            continue;
+        }
+        BOOL hardened = NO;
+        NSString* indexString = chunk;
+        if ([chunk rangeOfString:@"'"].location == chunk.length - 1) {
+            hardened = YES;
+            indexString = [chunk substringToIndex:chunk.length - 1];
+        }
+        
+        // Make sure the chunk is just a number
+        NSInteger i = [indexString integerValue];
+        if (i >= 0 && [@(i).stringValue isEqualToString:indexString]) {
+            hdNode = [hdNode derivedKeychainAtIndex:(uint32_t)i hardened:hardened factor:nil];
+        } else {
+            return nil;
+        }
+    }
+    return hdNode;
 }
 
 - (HDNode *)derivedKeychainAtIndex:(uint32_t)_index hardened:(BOOL)hardened factor:(BTCBigNumber**)factorOut
@@ -238,7 +372,12 @@
     
     HDNode *newHDNode = [[HDNode alloc] initWithKeyPair:derivedKeypair chainCode:[app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", [chainCode hexadecimalString]]]];
     newHDNode.depth = self.depth + 1;
-    newHDNode.parentFingerprint = [[self getFingerprint] toUInt32];
+    
+    // It is unclear which encoding to use here
+    const uint8_t* bytes = [[[self getFingerprint] toString] dataUsingEncoding:NSUTF8StringEncoding].bytes;
+    uint32_t readValue = OSSwapBigToHostInt32(*((uint32_t*)bytes));
+    newHDNode.parentFingerprint = readValue;
+//    newHDNode.parentFingerprint = [[[[self getFingerprint] invokeMethod:@"readUInt32BE" withArguments:@[@0]] toNumber] intValue];
     newHDNode.index = index;
     // newHDNode.hardened = hardened;
     

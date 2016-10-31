@@ -27,7 +27,7 @@
 - (JSValue *)getNetwork;
 - (JSValue *)getPublicKeyBuffer;
 - (JSValue *)getFingerprint;
-- (JSValue *)toBase58:(JSValue *)isPrivate;
+- (HDNode *)toBase58:(JSValue *)isPrivate;
 - (HDNode *)derive:(JSValue *)_index;
 - (HDNode *)deriveHardened:(JSValue *)_index;
 - (BOOL)isNeutered;
