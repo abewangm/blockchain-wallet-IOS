@@ -115,7 +115,7 @@
 
 + (HDNode *)from:(NSString *)seed base58:(JSValue *)networks
 {
-    NSData *bufferData = BTCDataFromBase58(seed);
+    NSData *bufferData = BTCDataFromBase58Check(seed);
     
     if (![app.wallet executeJSSynchronous:[NSString stringWithFormat:@"MyWalletPhone.isBufferDataLengthValid('%@')", [[bufferData hexadecimalString] escapeStringForJS]]]) {
         DLog(@"Invalid buffer length");
@@ -123,42 +123,50 @@
     }
     
     const uint8_t* bytes = bufferData.bytes;
-    uint32_t version = OSSwapBigToHostInt32(*((uint32_t*)bytes));
+    uint32_t versionInt32 = OSSwapBigToHostInt32(*((uint32_t*)bytes));
+    JSValue *version = [JSValue valueWithInt32:versionInt32 inContext:app.wallet.context];
     
     JSValue *network;
     BOOL isPrivate;
+    
+    JSValue *comparisonFunction = [app.wallet executeJSSynchronous:@"MyWalletPhone.compareTripleEqual"];
+    JSValue *comparisonNotFunction = [app.wallet executeJSSynchronous:@"MyWalletPhone.compareNotDoubleEqual"];
+    
     if ([[networks toArray] isKindOfClass:[NSArray class]]) {
+        
         NSPredicate *privateOrPublicVersions = [NSPredicate predicateWithBlock:^BOOL(JSValue *value, NSDictionary *bindings) {
-            // Inexact match: JS is written with triple equal comparison
-            // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L65-L66
-            return version == [[[value valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32] ||
-            version == [[[value valueForProperty:@"bip32"] valueForProperty:@"public"] toUInt32];
+            return [comparisonFunction callWithArguments:@[version, [[value valueForProperty:@"bip32"] valueForProperty:@"private"]]] ||
+            [comparisonFunction callWithArguments:@[version, [[value valueForProperty:@"bip32"] valueForProperty:@"public"]]];
         }];
         
         NSArray *filteredNetworks = [[networks toArray] filteredArrayUsingPredicate:privateOrPublicVersions];
         network = [filteredNetworks firstObject];
-        isPrivate = version == [[[network valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32];
-        // Inexact match: JS is written with triple equal comparison
-        // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L76-L77
-        if (version != [[[network valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32] ||
-            version != [[[network valueForProperty:@"bip32"] valueForProperty:@"public"] toUInt32]) {
+        isPrivate = [comparisonFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"private"]]];
+
+        if ([comparisonNotFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"private"]]] ||
+            [comparisonNotFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"public"]]]) {
             DLog(@"Invalid network version");
         }
     } else {
-        // Inexact match: JS is written as
-        // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L73
-        // network = networks || NETWORKS.bitcoin
-        network = networks;
-        // Inexact match: JS is written with triple equal comparison
-        // https://github.com/bitcoinjs/bitcoinjs-lib/blob/4faa0ce679d67b69f0165b73532b34a19757693f/src/hdnode.js#L76-L77
-        if (version != [[[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32] ||
-            version != [[[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"public"] toUInt32]) {
-            DLog(@"Invalid network version");
+        network = [[networks toString] isEqualToString:@"undefined"] ? [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks()"] : networks;
+
+        if ([[networks toArray] isKindOfClass:[NSArray class]]) {
+            if ([comparisonNotFunction callWithArguments:@[version, [[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"]]] ||
+                [comparisonNotFunction callWithArguments:@[version, [[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"public"]]]) {
+                DLog(@"Invalid network version");
+            }
+            isPrivate = [comparisonFunction callWithArguments:@[version, [[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"]]];
+        } else {
+            if ([comparisonNotFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"private"]]] ||
+                [comparisonNotFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"public"]]]) {
+                DLog(@"Invalid network version");
+            }
+            isPrivate = [comparisonFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"private"]]];
         }
-        isPrivate = version == [[[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"] toUInt32];
+
     }
     
-    return [[HDNode alloc] initWithExtendedKeyDataInternal:bufferData isPrivate:isPrivate];
+    return [[HDNode alloc] initWithExtendedKeyDataInternal:bufferData isPrivate:isPrivate network:network];
 }
 
 - (NSString *)getIdentifier
@@ -220,23 +228,28 @@
     return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", dataString]];
 }
 
-- (id) initWithExtendedKeyDataInternal:(NSData*)extendedKeyData isPrivate:(BOOL)isPrivate
+- (id) initWithExtendedKeyDataInternal:(NSData*)extendedKeyData isPrivate:(BOOL)isPrivate network:(JSValue *)network
 {
     if (self = [super init]) {
-        if (extendedKeyData.length != 78) return nil;
         
         const uint8_t* bytes = extendedKeyData.bytes;
         uint32_t version = OSSwapBigToHostInt32(*((uint32_t*)bytes));
         
         uint32_t keyprefix = bytes[45];
         
+        JSValue *keyPair;
         if (isPrivate) {
             // Should have 0-prefixed private key (1 + 32 bytes).
             if (keyprefix != 0) return nil;
-            _privateKey = BTCDataRange(extendedKeyData, NSMakeRange(46, 32));
+            NSData *privateKey = BTCDataRange(extendedKeyData, NSMakeRange(46, 32));
+            JSValue *ecPair = [app.wallet executeJSSynchronous:@"MyWalletPhone.newPrivateECPairObject"];
+            keyPair = [ecPair callWithArguments:@[[[privateKey hexadecimalString] escapeStringForJS], network]];
         } else if (!isPrivate) {
             // Should have a 33-byte public key with non-zero first byte.
             if (keyprefix == 0) return nil;
+            NSData *publicKey = BTCDataRange(extendedKeyData, NSMakeRange(45, 33));
+            JSValue *ecPair = [app.wallet executeJSSynchronous:@"MyWalletPhone.newPublicECPairObject"];
+            keyPair = [ecPair callWithArguments:@[[[publicKey hexadecimalString] escapeStringForJS], network]];
             _publicKey = BTCDataRange(extendedKeyData, NSMakeRange(45, 33));
         } else {
             // Unknown version.
@@ -261,6 +274,7 @@
         
         NSData *chainCodeData = BTCDataRange(extendedKeyData,NSMakeRange(13, 32));
         self.chainCode = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", [chainCodeData hexadecimalString]]];
+        self.keyPair = keyPair;
     }
     return self;
 }

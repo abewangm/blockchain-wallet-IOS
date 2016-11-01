@@ -14,6 +14,7 @@ var Bitcoin = Blockchain.Bitcoin;
 var ECPair = Blockchain.ECPair;
 var BigInteger = Blockchain.BigInteger;
 var Ecurve = Blockchain.Ecurve;
+var Networks = Blockchain.Networks;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1897,4 +1898,21 @@ MyWalletPhone.isBufferDataLengthValid = function(hexadecimalString) {
 MyWalletPhone.newPublicECPairObject = function(Ki, network) {
     // Cannot call constructor with invokeMethod:arguments:, so use this function
     return new ECPair(null, Ki, network);
+}
+
+MyWalletPhone.newPrivateECPairObject = function(ki, network) {
+    // Cannot call constructor with invokeMethod:arguments:, so use this function
+    return new ECPair(ki, null, network);
+}
+
+MyWalletPhone.compareTripleEqual = function(a, b) {
+    return a === b;
+}
+
+MyWalletPhone.compareNotDoubleEqual = function(a, b) {
+    return a !== b;
+}
+
+MyWalletPhone.getNetworks = function() {
+    return Networks.bitcoin;
 }
