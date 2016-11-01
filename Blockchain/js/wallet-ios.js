@@ -1881,30 +1881,3 @@ MyWalletPhone.getDefaultAccountLabelledAddressesCount = function() {
     
     return MyWallet.wallet.hdwallet.defaultAccount.receivingAddressesLabels.length;
 }
-
-MyWalletPhone.getJSON = function() {
-    return JSON;
-}
-
-MyWalletPhone.isBufferDataLengthValid = function(hexadecimalString) {
-    var buffer = new Buffer(hexadecimalString, 'hex');
-    if (buffer.length !== 78) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
-MyWalletPhone.newPublicECPairObject = function(Ki, network) {
-    // Cannot call constructor with invokeMethod:arguments:, so use this function
-    return new ECPair(null, Ki, network);
-}
-
-MyWalletPhone.newPrivateECPairObject = function(ki, network) {
-    // Cannot call constructor with invokeMethod:arguments:, so use this function
-    return new ECPair(ki, null, network);
-}
-
-MyWalletPhone.getNetworks = function() {
-    return Networks.bitcoin;
-}
