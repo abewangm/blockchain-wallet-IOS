@@ -245,8 +245,13 @@
             // Should have a 33-byte public key with non-zero first byte.
             if (keyprefix == 0) return nil;
             NSData *publicKey = BTCDataRange(extendedKeyData, NSMakeRange(45, 33));
+            JSValue *ecurve = [app.wallet executeJSSynchronous:@"Ecurve"];
+            JSValue *curve = [app.wallet executeJSSynchronous:@"Ecurve.getCurveByName('secp256k1')"];
+            JSValue *buffer = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", [[publicKey hexadecimalString] escapeStringForJS]]];
+            JSValue *Q = [[ecurve valueForProperty:@"Point"] invokeMethod:@"decodeFrom" withArguments:@[curve, buffer]];
+            
             JSValue *ecPair = [app.wallet executeJSSynchronous:@"MyWalletPhone.newPublicECPairObject"];
-            keyPair = [ecPair callWithArguments:@[[[publicKey hexadecimalString] escapeStringForJS], network]];
+            keyPair = [ecPair callWithArguments:@[Q, network]];
             _publicKey = BTCDataRange(extendedKeyData, NSMakeRange(45, 33));
         } else {
             // Unknown version.
