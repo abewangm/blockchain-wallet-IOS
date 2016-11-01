@@ -11,10 +11,7 @@ var WalletNetwork = Blockchain.WalletNetwork;
 var RNG = Blockchain.RNG;
 var Address = Blockchain.Address;
 var Bitcoin = Blockchain.Bitcoin;
-var ECPair = Blockchain.ECPair;
 var BigInteger = Blockchain.BigInteger;
-var Ecurve = Blockchain.Ecurve;
-var Networks = Blockchain.Networks;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
