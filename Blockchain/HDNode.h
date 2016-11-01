@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
-@class HDNode;
+@class HDNode, BTCKeychain;
 
 @protocol ExportHDNode <JSExport>
 
@@ -18,6 +18,7 @@
 @property int depth;
 @property int index;
 @property int parentFingerprint;
+@property BTCKeychain *keychain;
 
 + (HDNode *)fromSeed:(NSString *)seed buffer:(JSValue *)network;
 + (HDNode *)from:(NSString *)seed base58:(JSValue *)networks;

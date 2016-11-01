@@ -15,6 +15,7 @@
 #import "NSData+Hex.h"
 #import "BTCCurvePoint.h"
 #import "BTCBase58.h"
+#import "BTCKeychain.h"
 
 #define BTCKeychainTestnetPrivateVersion 0x04358394
 #define BTCKeychainTestnetPublicVersion  0x043587CF
@@ -73,6 +74,7 @@
         self.depth = 0;
         self.index = 0;
         self.parentFingerprint = 0x00000000;
+        self.keychain = [BTCKeychain
     }
     return self;
 }
@@ -333,7 +335,7 @@
 - (HDNode *)derivedKeychainAtIndex:(uint32_t)_index hardened:(BOOL)hardened factor:(BTCBigNumber**)factorOut
 {
     // CHECK_IF_CLEARED;
-    
+    DLog(@"derivingc");
     // As we use explicit parameter "hardened", do not allow higher bit set.
     if ((0x80000000 & _index) != 0) {
         @throw [NSException exceptionWithName:@"BTCKeychain Exception"

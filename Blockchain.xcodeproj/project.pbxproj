@@ -53,6 +53,7 @@
 		2357BA411D53979600BE0BFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2357BA431D53979600BE0BFD /* InfoPlist.strings */; };
 		235BD5661C58216000969B31 /* BCModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235BD5651C58216000969B31 /* BCModalViewController.m */; };
 		236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */; };
+		237034631DC8EDB70042167A /* BTCKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 237034621DC8EDB70042167A /* BTCKeychain.m */; };
 		237451C91D624C1C00CF7049 /* RootService.m in Sources */ = {isa = PBXBuildFile; fileRef = 237451C81D624C1C00CF7049 /* RootService.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		237991671DBFB3480094FE92 /* BTCData.m in Sources */ = {isa = PBXBuildFile; fileRef = 237991661DBFB3480094FE92 /* BTCData.m */; };
@@ -491,6 +492,8 @@
 		23600FB01D9EF8F500D9985D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		236D7ED71CBD8B3900836EF2 /* DeviceIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceIdentifier.h; sourceTree = "<group>"; };
 		236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceIdentifier.m; sourceTree = "<group>"; };
+		237034611DC8EDB70042167A /* BTCKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCKeychain.h; path = ../../CoreBitcoin/CoreBitcoin/BTCKeychain.h; sourceTree = "<group>"; };
+		237034621DC8EDB70042167A /* BTCKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCKeychain.m; path = ../../CoreBitcoin/CoreBitcoin/BTCKeychain.m; sourceTree = "<group>"; };
 		2371DEAC1C6A8898000DC8AF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
 		2371DEAF1C6A8AF3000DC8AF /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
 		237451C71D624C1C00CF7049 /* RootService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootService.h; sourceTree = "<group>"; };
@@ -1502,6 +1505,8 @@
 		C9D4B2AE193E020D00EDA9EA /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				237034611DC8EDB70042167A /* BTCKeychain.h */,
+				237034621DC8EDB70042167A /* BTCKeychain.m */,
 				2312FB0A1DC7986900B7B8B4 /* BTCBase58.h */,
 				2312FB0B1DC7986900B7B8B4 /* BTCBase58.m */,
 				2312FB071DC782ED00B7B8B4 /* BTCCurvePoint.h */,
@@ -1937,6 +1942,7 @@
 				C9BE917C1945D8F600FD516D /* PEPinEntryController.m in Sources */,
 				239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */,
 				A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */,
+				237034631DC8EDB70042167A /* BTCKeychain.m in Sources */,
 				9F4A5092152F585E00F9ED9D /* UIDevice+Hardware.m in Sources */,
 				2312FB0C1DC7986900B7B8B4 /* BTCBase58.m in Sources */,
 				6780DB921A40BDA70048EED2 /* AddressInOut.m in Sources */,
