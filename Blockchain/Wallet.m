@@ -199,6 +199,10 @@
         [weakSelf loading_start_download_wallet];
     };
     
+    self.context[@"objc_loading_start_get_wallet_and_history"] = ^() {
+        [weakSelf loading_start_get_wallet_and_history];
+    };
+    
     self.context[@"objc_loading_stop"] = ^(){
         [weakSelf loading_stop];
     };
@@ -469,6 +473,10 @@
     
     self.context[@"objc_on_backup_wallet_success"] = ^() {
         [weakSelf on_backup_wallet_success];
+    };
+    
+    self.context[@"objc_on_backup_wallet_error"] = ^() {
+        [weakSelf on_backup_wallet_error];
     };
     
     self.context[@"objc_on_get_session_token"] = ^(NSString *token) {

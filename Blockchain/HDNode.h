@@ -32,6 +32,7 @@
 - (HDNode *)deriveHardened:(JSValue *)_index;
 - (BOOL)isNeutered;
 - (HDNode *)derivePath:(JSValue *)path;
+- (HDNode *)neutered;
 
 @end
 

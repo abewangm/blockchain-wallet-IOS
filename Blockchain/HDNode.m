@@ -118,7 +118,13 @@
 
 - (NSString *)toBase58:(JSValue *)isPrivate
 {
-    if (isPrivate) {
+    if (![isPrivate isUndefined]) {
+        @throw [NSException exceptionWithName:@"HDNode Exception"
+                                       reason:@"Unsupported argument in 2.0.0" userInfo:nil];
+        return nil;
+    }
+    
+    if (![self isNeutered]) {
         return self.keychain.extendedPrivateKey;
     } else {
         return self.keychain.extendedPublicKey;
@@ -138,6 +144,11 @@
 - (HDNode *)derivePath:(JSValue *)_path
 {
     return [[HDNode alloc] initWithKeychain:[self.keychain derivedKeychainWithPath:[_path toString]]];
+}
+
+- (HDNode *)neutered
+{
+    return [[HDNode alloc] initWithKeychain:[[BTCKeychain alloc] initWithExtendedKey:self.keychain.extendedPublicKey]];
 }
 
 @end
