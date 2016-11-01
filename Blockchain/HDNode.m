@@ -20,8 +20,8 @@
 #define BTCKeychainTestnetPublicVersion  0x043587CF
 
 @interface HDNode()
-@property(nonatomic) NSMutableData* privateKey;
-@property(nonatomic) NSMutableData* publicKey;
+@property(nonatomic) NSData* privateKey;
+@property(nonatomic) NSData* publicKey;
 @end
 @implementation HDNode
 {
@@ -32,6 +32,16 @@
 @synthesize depth;
 @synthesize index;
 @synthesize parentFingerprint;
+
+- (NSData *)privateKey
+{
+    return [[[self.keyPair valueForProperty:@"d"] toString] dataUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (NSData *)publicKey
+{
+    return [[[self.keyPair valueForProperty:@"Q"] toString] dataUsingEncoding:NSUTF8StringEncoding];
+}
 
 - (void)setKeyPair:(JSValue *)keyPair
 {
@@ -160,7 +170,7 @@
 
 - (JSValue *)getFingerprint
 {
-    return [[self.keyPair invokeMethod:@"getIdentifier" withArguments:nil] invokeMethod:@"slice" withArguments:@[@0,@4]];
+    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"'%@'.slice(0,4)", [self getIdentifier]]];
 }
 
 - (JSValue *)getNetwork
@@ -175,7 +185,8 @@
 
 - (BOOL)isNeutered
 {
-    return ![[self.keyPair valueForProperty:@"d"] toBool];
+    if ([[[self.keyPair valueForProperty:@"d"] toString] isEqualToString:@"undefined"]) return NO;
+    return ![self.keyPair valueForProperty:@"d"];
 }
 
 - (JSValue *)sign:(JSValue *)hash
@@ -326,9 +337,9 @@
     if (hardened) {
         uint8_t padding = 0;
         [data appendBytes:&padding length:1];
-        [data appendData:_privateKey];
+        [data appendData:[self privateKey]];
     } else {
-        [data appendData:self.publicKey];
+        [data appendData:[self publicKey]];
     }
     
     uint32_t indexBE = OSSwapHostToBigInt32(hardened ? (0x80000000 | index) : index);
@@ -340,7 +351,7 @@
     
     // Factor is too big, this derivation is invalid.
     if ([factor greaterOrEqual:[BTCCurvePoint curveOrder]]) {
-        return nil;
+        return [self derive:[JSValue valueWithInt32:(_index + 1) inContext:app.wallet.context]];
     }
     
     if (factorOut) *factorOut = factor;
@@ -351,12 +362,14 @@
     JSValue *json = [app.wallet executeJSSynchronous:@"MyWalletPhone.getJSON()"];
     NSString *networkString = [[json invokeMethod:@"stringify" withArguments:@[network]] toString];
     
-    if (_privateKey) {
-        BTCMutableBigNumber* pkNumber = [[BTCMutableBigNumber alloc] initWithUnsignedBigEndian:_privateKey];
+    if (![self isNeutered]) {
+        BTCMutableBigNumber* pkNumber = [[BTCMutableBigNumber alloc] initWithUnsignedBigEndian:[self privateKey]];
         [pkNumber add:factor mod:[BTCCurvePoint curveOrder]];
         
         // Check for invalid derivation.
-        if ([pkNumber isEqual:[BTCBigNumber zero]]) return nil;
+        if ([pkNumber isEqual:[BTCBigNumber zero]]) {
+            return [self derive:[JSValue valueWithInt32:(_index + 1) inContext:app.wallet.context]];
+        }
         
         NSData* pkData = pkNumber.unsignedBigEndian;
         
@@ -365,7 +378,7 @@
         BTCDataClear(pkData);
         [pkNumber clear];
     } else {
-        BTCCurvePoint* point = [[BTCCurvePoint alloc] initWithData:_publicKey];
+        BTCCurvePoint* point = [[BTCCurvePoint alloc] initWithData:[self publicKey]];
         [point addGeneratorMultipliedBy:factor];
         
         // Check for invalid derivation.
@@ -373,9 +386,13 @@
             return [self derive:[JSValue valueWithInt32:(_index + 1) inContext:app.wallet.context]];
         }
         
-        NSData* pointData = point.data;
-        derivedKeypair = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new ECPair(null, BigInteger.fromBuffer(new Buffer('%@', 'hex')), {network: %@})", [[[pointData mutableCopy] hexadecimalString] escapeStringForJS], networkString]];
-        BTCDataClear(pointData);
+        JSValue *curveG = [app.wallet executeJSSynchronous:@"Ecurve.getCurveByName('secp256k1').G"];
+        JSValue *pIL = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"BigInteger.fromBuffer(new Buffer('%@', 'hex'))", [[[digest subdataWithRange:NSMakeRange(0, 32)] hexadecimalString] escapeStringForJS]]];
+        JSValue *multiplyResult = [curveG invokeMethod:@"multiply" withArguments:@[pIL]];
+        JSValue *addResult = [multiplyResult invokeMethod:@"add" withArguments:@[[self.keyPair valueForProperty:@"Q"]]];
+        JSValue *ecPair = [app.wallet executeJSSynchronous:@"MyWalletPhone.newPublicECPairObject"];
+        
+        derivedKeypair = [ecPair callWithArguments:@[addResult, network]];
         [point clear];
     }
     

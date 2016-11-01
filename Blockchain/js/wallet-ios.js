@@ -13,6 +13,7 @@ var Address = Blockchain.Address;
 var Bitcoin = Blockchain.Bitcoin;
 var ECPair = Blockchain.ECPair;
 var BigInteger = Blockchain.BigInteger;
+var Ecurve = Blockchain.Ecurve;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1891,4 +1892,9 @@ MyWalletPhone.isBufferDataLengthValid = function(hexadecimalString) {
     } else {
         return true;
     }
+}
+
+MyWalletPhone.newPublicECPairObject = function(Ki, network) {
+    // Cannot call constructor with invokeMethod:arguments:, so use this function
+    return new ECPair(null, Ki, network);
 }
