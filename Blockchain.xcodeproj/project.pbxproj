@@ -18,8 +18,6 @@
 		230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2D81C5BF1A700336683 /* BCQRCodeView.m */; };
 		230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */; };
 		23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */; };
-		2312FB091DC782ED00B7B8B4 /* BTCCurvePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312FB081DC782ED00B7B8B4 /* BTCCurvePoint.m */; };
-		2312FB0C1DC7986900B7B8B4 /* BTCBase58.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312FB0B1DC7986900B7B8B4 /* BTCBase58.m */; };
 		231A66EE1DB9434B0043F862 /* HDNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 231A66ED1DB9434B0043F862 /* HDNode.m */; };
 		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
@@ -47,16 +45,82 @@
 		2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */ = {isa = PBXBuildFile; fileRef = 2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */; };
 		232ACBF51DAE84720072FB5E /* TransferAllFundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232ACBF41DAE84720072FB5E /* TransferAllFundsViewController.m */; };
 		232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */; };
-		232FA5341DC3C2DC005B83C6 /* BTCBigNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 232FA5331DC3C2DC005B83C6 /* BTCBigNumber.m */; };
 		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
 		2343E4031CB434BC008DC7D1 /* NSArray+EncodedJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2343E4021CB434BC008DC7D1 /* NSArray+EncodedJSONString.m */; };
 		2357BA411D53979600BE0BFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2357BA431D53979600BE0BFD /* InfoPlist.strings */; };
 		235BD5661C58216000969B31 /* BCModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235BD5651C58216000969B31 /* BCModalViewController.m */; };
 		236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */; };
-		237034631DC8EDB70042167A /* BTCKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 237034621DC8EDB70042167A /* BTCKeychain.m */; };
+		237036001DC8F9980042167A /* BTCErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370356A1DC8F9980042167A /* BTCErrors.m */; };
+		237036011DC8F9980042167A /* BTCData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370356C1DC8F9980042167A /* BTCData.m */; };
+		237036021DC8F9980042167A /* BTCHashID.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370356E1DC8F9980042167A /* BTCHashID.m */; };
+		237036031DC8F9980042167A /* NSData+BTCData.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035701DC8F9980042167A /* NSData+BTCData.m */; };
+		237036041DC8F9980042167A /* BTCData+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035721DC8F9980042167A /* BTCData+Tests.m */; };
+		237036051DC8F9980042167A /* BTCBase58.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035741DC8F9980042167A /* BTCBase58.m */; };
+		237036061DC8F9980042167A /* NS+BTCBase58.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035761DC8F9980042167A /* NS+BTCBase58.m */; };
+		237036071DC8F9980042167A /* BTCBase58+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035781DC8F9980042167A /* BTCBase58+Tests.m */; };
+		237036081DC8F9980042167A /* BTCProtocolSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370357A1DC8F9980042167A /* BTCProtocolSerialization.m */; };
+		237036091DC8F9980042167A /* BTCProtocolSerialization+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370357C1DC8F9980042167A /* BTCProtocolSerialization+Tests.m */; };
+		2370360A1DC8F9980042167A /* BTCProtocolBuffers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370357E1DC8F9980042167A /* BTCProtocolBuffers.m */; };
+		2370360B1DC8F9980042167A /* BTCQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035801DC8F9980042167A /* BTCQRCode.m */; };
+		2370360C1DC8F9980042167A /* BTC256.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035831DC8F9980042167A /* BTC256.m */; };
+		2370360D1DC8F9980042167A /* BTC256+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035851DC8F9980042167A /* BTC256+Tests.m */; };
+		2370360E1DC8F9980042167A /* BTCBigNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035871DC8F9980042167A /* BTCBigNumber.m */; };
+		2370360F1DC8F9980042167A /* BTCBigNumber+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035891DC8F9980042167A /* BTCBigNumber+Tests.m */; };
+		237036101DC8F9980042167A /* BTCCurvePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370358B1DC8F9980042167A /* BTCCurvePoint.m */; };
+		237036111DC8F9980042167A /* BTCCurvePoint+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370358D1DC8F9980042167A /* BTCCurvePoint+Tests.m */; };
+		237036121DC8F9980042167A /* BTCKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370358F1DC8F9980042167A /* BTCKey.m */; };
+		237036131DC8F9980042167A /* BTCKey+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035911DC8F9980042167A /* BTCKey+Tests.m */; };
+		237036141DC8F9980042167A /* BTCKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035931DC8F9980042167A /* BTCKeychain.m */; };
+		237036151DC8F9980042167A /* BTCKeychain+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035951DC8F9980042167A /* BTCKeychain+Tests.m */; };
+		237036161DC8F9980042167A /* BTCMnemonic.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035971DC8F9980042167A /* BTCMnemonic.m */; };
+		237036171DC8F9980042167A /* BTCMnemonic+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035991DC8F9980042167A /* BTCMnemonic+Tests.m */; };
+		237036181DC8F9980042167A /* BTCSecretSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370359B1DC8F9980042167A /* BTCSecretSharing.m */; };
+		237036191DC8F9980042167A /* BTCBlockHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2370359F1DC8F9980042167A /* BTCBlockHeader.m */; };
+		2370361A1DC8F9980042167A /* BTCBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035A11DC8F9980042167A /* BTCBlock.m */; };
+		2370361B1DC8F9980042167A /* BTCMerkleTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035A31DC8F9980042167A /* BTCMerkleTree.m */; };
+		2370361C1DC8F9980042167A /* BTCMerkleTree+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035A51DC8F9980042167A /* BTCMerkleTree+Tests.m */; };
+		2370361D1DC8F9980042167A /* BTCOpcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035A71DC8F9980042167A /* BTCOpcode.m */; };
+		2370361E1DC8F9980042167A /* BTCScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035AA1DC8F9980042167A /* BTCScript.m */; };
+		2370361F1DC8F9980042167A /* BTCScript+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035AC1DC8F9980042167A /* BTCScript+Tests.m */; };
+		237036201DC8F9980042167A /* BTCScriptMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035AE1DC8F9980042167A /* BTCScriptMachine.m */; };
+		237036211DC8F9980042167A /* BTCTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035B01DC8F9980042167A /* BTCTransaction.m */; };
+		237036221DC8F9980042167A /* BTCTransaction+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035B21DC8F9980042167A /* BTCTransaction+Tests.m */; };
+		237036231DC8F9980042167A /* BTCTransactionInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035B41DC8F9980042167A /* BTCTransactionInput.m */; };
+		237036241DC8F9980042167A /* BTCTransactionOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035B61DC8F9980042167A /* BTCTransactionOutput.m */; };
+		237036251DC8F9980042167A /* BTCOutpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035B81DC8F9980042167A /* BTCOutpoint.m */; };
+		237036261DC8F9980042167A /* BTCTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035BA1DC8F9980042167A /* BTCTransactionBuilder.m */; };
+		237036271DC8F9980042167A /* BTCNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035BC1DC8F9980042167A /* BTCNetwork.m */; };
+		237036281DC8F9980042167A /* BTCProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035BE1DC8F9980042167A /* BTCProcessor.m */; };
+		237036291DC8F9980042167A /* BTCAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035C11DC8F9980042167A /* BTCAddress.m */; };
+		2370362A1DC8F9980042167A /* BTCAddress+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035C41DC8F9980042167A /* BTCAddress+Tests.m */; };
+		2370362B1DC8F9980042167A /* BTCBitcoinURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035C61DC8F9980042167A /* BTCBitcoinURL.m */; };
+		2370362C1DC8F9980042167A /* BTCBitcoinURL+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035C81DC8F9980042167A /* BTCBitcoinURL+Tests.m */; };
+		2370362D1DC8F9980042167A /* BTCPaymentProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035CA1DC8F9980042167A /* BTCPaymentProtocol.m */; };
+		2370362E1DC8F9980042167A /* BTCPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035CC1DC8F9980042167A /* BTCPaymentRequest.m */; };
+		2370362F1DC8F9980042167A /* BTCPaymentMethodRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035CE1DC8F9980042167A /* BTCPaymentMethodRequest.m */; };
+		237036301DC8F9980042167A /* BTCPaymentMethodDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035D01DC8F9980042167A /* BTCPaymentMethodDetails.m */; };
+		237036311DC8F9980042167A /* BTCPaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035D21DC8F9980042167A /* BTCPaymentMethod.m */; };
+		237036321DC8F9980042167A /* BTCAssetType.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035D61DC8F9980042167A /* BTCAssetType.m */; };
+		237036331DC8F9980042167A /* BTCAssetID.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035D81DC8F9980042167A /* BTCAssetID.m */; };
+		237036341DC8F9980042167A /* BTCAssetAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035DA1DC8F9980042167A /* BTCAssetAddress.m */; };
+		237036351DC8F9980042167A /* BTCEncryptedBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035DD1DC8F9980042167A /* BTCEncryptedBackup.m */; };
+		237036361DC8F9980042167A /* BTCEncryptedBackup+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035DF1DC8F9980042167A /* BTCEncryptedBackup+Tests.m */; };
+		237036371DC8F9980042167A /* BTCEncryptedMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035E11DC8F9980042167A /* BTCEncryptedMessage.m */; };
+		237036381DC8F9980042167A /* BTCEncryptedMessage+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035E31DC8F9980042167A /* BTCEncryptedMessage+Tests.m */; };
+		237036391DC8F9980042167A /* BTCBlindSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035E51DC8F9980042167A /* BTCBlindSignature.m */; };
+		2370363A1DC8F9980042167A /* BTCBlindSignature+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035E71DC8F9980042167A /* BTCBlindSignature+Tests.m */; };
+		2370363B1DC8F9980042167A /* BTCFancyEncryptedMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035E91DC8F9980042167A /* BTCFancyEncryptedMessage.m */; };
+		2370363C1DC8F9980042167A /* BTCFancyEncryptedMessage+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035EB1DC8F9980042167A /* BTCFancyEncryptedMessage+Tests.m */; };
+		2370363D1DC8F9980042167A /* BTCCurrencyConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035EE1DC8F9980042167A /* BTCCurrencyConverter.m */; };
+		2370363E1DC8F9980042167A /* BTCCurrencyConverter+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035F01DC8F9980042167A /* BTCCurrencyConverter+Tests.m */; };
+		2370363F1DC8F9980042167A /* BTCNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035F21DC8F9980042167A /* BTCNumberFormatter.m */; };
+		237036401DC8F9980042167A /* BTCPriceSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035F41DC8F9980042167A /* BTCPriceSource.m */; };
+		237036411DC8F9980042167A /* BTCPriceSource+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035F61DC8F9980042167A /* BTCPriceSource+Tests.m */; };
+		237036421DC8F9980042167A /* BTCBlockchainInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035F91DC8F9980042167A /* BTCBlockchainInfo.m */; };
+		237036431DC8F9980042167A /* BTCBlockchainInfo+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035FB1DC8F9980042167A /* BTCBlockchainInfo+Tests.m */; };
+		237036441DC8F9980042167A /* BTCChainCom.m in Sources */ = {isa = PBXBuildFile; fileRef = 237035FD1DC8F9980042167A /* BTCChainCom.m */; };
 		237451C91D624C1C00CF7049 /* RootService.m in Sources */ = {isa = PBXBuildFile; fileRef = 237451C81D624C1C00CF7049 /* RootService.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
-		237991671DBFB3480094FE92 /* BTCData.m in Sources */ = {isa = PBXBuildFile; fileRef = 237991661DBFB3480094FE92 /* BTCData.m */; };
 		237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */; };
 		2390C10B1D87376E00342C38 /* TransactionRecipientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2390C10A1D87376E00342C38 /* TransactionRecipientsViewController.m */; };
 		239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 239539821B486C7100989667 /* UILabel+MultiLineAutoSize.m */; };
@@ -392,10 +456,6 @@
 		230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
 		23107F811BBEF0AC00A6A9D4 /* BCConfirmPaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCConfirmPaymentView.h; sourceTree = "<group>"; };
 		23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCConfirmPaymentView.m; sourceTree = "<group>"; };
-		2312FB071DC782ED00B7B8B4 /* BTCCurvePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCCurvePoint.h; path = ../../CoreBitcoin/CoreBitcoin/BTCCurvePoint.h; sourceTree = "<group>"; };
-		2312FB081DC782ED00B7B8B4 /* BTCCurvePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCCurvePoint.m; path = ../../CoreBitcoin/CoreBitcoin/BTCCurvePoint.m; sourceTree = "<group>"; };
-		2312FB0A1DC7986900B7B8B4 /* BTCBase58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCBase58.h; path = ../../CoreBitcoin/CoreBitcoin/BTCBase58.h; sourceTree = "<group>"; };
-		2312FB0B1DC7986900B7B8B4 /* BTCBase58.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCBase58.m; path = ../../CoreBitcoin/CoreBitcoin/BTCBase58.m; sourceTree = "<group>"; };
 		231A66EC1DB9434B0043F862 /* HDNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNode.h; sourceTree = "<group>"; };
 		231A66ED1DB9434B0043F862 /* HDNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNode.m; sourceTree = "<group>"; };
 		231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAboutViewController.h; sourceTree = "<group>"; };
@@ -451,8 +511,6 @@
 		232ACBF31DAE84720072FB5E /* TransferAllFundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferAllFundsViewController.h; sourceTree = "<group>"; };
 		232ACBF41DAE84720072FB5E /* TransferAllFundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferAllFundsViewController.m; sourceTree = "<group>"; };
 		232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+PopToRootWithCompletion.swift"; sourceTree = "<group>"; };
-		232FA5321DC3C2DC005B83C6 /* BTCBigNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCBigNumber.h; path = ../../CoreBitcoin/CoreBitcoin/BTCBigNumber.h; sourceTree = "<group>"; };
-		232FA5331DC3C2DC005B83C6 /* BTCBigNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCBigNumber.m; path = ../../CoreBitcoin/CoreBitcoin/BTCBigNumber.m; sourceTree = "<group>"; };
 		23321D791BB0730C0005624F /* my-wallet.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "../../Submodules/My-Wallet-V3/dist/my-wallet.js"; sourceTree = "<group>"; };
 		234197861C17BB02004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Upgrade.strings; sourceTree = "<group>"; };
 		234197881C17BB08004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
@@ -492,8 +550,150 @@
 		23600FB01D9EF8F500D9985D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		236D7ED71CBD8B3900836EF2 /* DeviceIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceIdentifier.h; sourceTree = "<group>"; };
 		236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceIdentifier.m; sourceTree = "<group>"; };
-		237034611DC8EDB70042167A /* BTCKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCKeychain.h; path = ../../CoreBitcoin/CoreBitcoin/BTCKeychain.h; sourceTree = "<group>"; };
-		237034621DC8EDB70042167A /* BTCKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCKeychain.m; path = ../../CoreBitcoin/CoreBitcoin/BTCKeychain.m; sourceTree = "<group>"; };
+		237035661DC8F9980042167A /* CoreBitcoin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreBitcoin.h; sourceTree = "<group>"; };
+		237035671DC8F9980042167A /* CoreBitcoin+Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreBitcoin+Categories.h"; sourceTree = "<group>"; };
+		237035681DC8F9980042167A /* SwiftBridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftBridgingHeader.h; sourceTree = "<group>"; };
+		237035691DC8F9980042167A /* BTCErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCErrors.h; sourceTree = "<group>"; };
+		2370356A1DC8F9980042167A /* BTCErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCErrors.m; sourceTree = "<group>"; };
+		2370356B1DC8F9980042167A /* BTCData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCData.h; sourceTree = "<group>"; };
+		2370356C1DC8F9980042167A /* BTCData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCData.m; sourceTree = "<group>"; };
+		2370356D1DC8F9980042167A /* BTCHashID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCHashID.h; sourceTree = "<group>"; };
+		2370356E1DC8F9980042167A /* BTCHashID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCHashID.m; sourceTree = "<group>"; };
+		2370356F1DC8F9980042167A /* NSData+BTCData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+BTCData.h"; sourceTree = "<group>"; };
+		237035701DC8F9980042167A /* NSData+BTCData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+BTCData.m"; sourceTree = "<group>"; };
+		237035711DC8F9980042167A /* BTCData+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCData+Tests.h"; sourceTree = "<group>"; };
+		237035721DC8F9980042167A /* BTCData+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCData+Tests.m"; sourceTree = "<group>"; };
+		237035731DC8F9980042167A /* BTCBase58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCBase58.h; sourceTree = "<group>"; };
+		237035741DC8F9980042167A /* BTCBase58.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCBase58.m; sourceTree = "<group>"; };
+		237035751DC8F9980042167A /* NS+BTCBase58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NS+BTCBase58.h"; sourceTree = "<group>"; };
+		237035761DC8F9980042167A /* NS+BTCBase58.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS+BTCBase58.m"; sourceTree = "<group>"; };
+		237035771DC8F9980042167A /* BTCBase58+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCBase58+Tests.h"; sourceTree = "<group>"; };
+		237035781DC8F9980042167A /* BTCBase58+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCBase58+Tests.m"; sourceTree = "<group>"; };
+		237035791DC8F9980042167A /* BTCProtocolSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCProtocolSerialization.h; sourceTree = "<group>"; };
+		2370357A1DC8F9980042167A /* BTCProtocolSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCProtocolSerialization.m; sourceTree = "<group>"; };
+		2370357B1DC8F9980042167A /* BTCProtocolSerialization+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCProtocolSerialization+Tests.h"; sourceTree = "<group>"; };
+		2370357C1DC8F9980042167A /* BTCProtocolSerialization+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCProtocolSerialization+Tests.m"; sourceTree = "<group>"; };
+		2370357D1DC8F9980042167A /* BTCProtocolBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCProtocolBuffers.h; sourceTree = "<group>"; };
+		2370357E1DC8F9980042167A /* BTCProtocolBuffers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCProtocolBuffers.m; sourceTree = "<group>"; };
+		2370357F1DC8F9980042167A /* BTCQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCQRCode.h; sourceTree = "<group>"; };
+		237035801DC8F9980042167A /* BTCQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCQRCode.m; sourceTree = "<group>"; };
+		237035821DC8F9980042167A /* BTC256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTC256.h; sourceTree = "<group>"; };
+		237035831DC8F9980042167A /* BTC256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTC256.m; sourceTree = "<group>"; };
+		237035841DC8F9980042167A /* BTC256+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTC256+Tests.h"; sourceTree = "<group>"; };
+		237035851DC8F9980042167A /* BTC256+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTC256+Tests.m"; sourceTree = "<group>"; };
+		237035861DC8F9980042167A /* BTCBigNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCBigNumber.h; sourceTree = "<group>"; };
+		237035871DC8F9980042167A /* BTCBigNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCBigNumber.m; sourceTree = "<group>"; };
+		237035881DC8F9980042167A /* BTCBigNumber+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCBigNumber+Tests.h"; sourceTree = "<group>"; };
+		237035891DC8F9980042167A /* BTCBigNumber+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCBigNumber+Tests.m"; sourceTree = "<group>"; };
+		2370358A1DC8F9980042167A /* BTCCurvePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCCurvePoint.h; sourceTree = "<group>"; };
+		2370358B1DC8F9980042167A /* BTCCurvePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCCurvePoint.m; sourceTree = "<group>"; };
+		2370358C1DC8F9980042167A /* BTCCurvePoint+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCCurvePoint+Tests.h"; sourceTree = "<group>"; };
+		2370358D1DC8F9980042167A /* BTCCurvePoint+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCCurvePoint+Tests.m"; sourceTree = "<group>"; };
+		2370358E1DC8F9980042167A /* BTCKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCKey.h; sourceTree = "<group>"; };
+		2370358F1DC8F9980042167A /* BTCKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCKey.m; sourceTree = "<group>"; };
+		237035901DC8F9980042167A /* BTCKey+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCKey+Tests.h"; sourceTree = "<group>"; };
+		237035911DC8F9980042167A /* BTCKey+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCKey+Tests.m"; sourceTree = "<group>"; };
+		237035921DC8F9980042167A /* BTCKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCKeychain.h; sourceTree = "<group>"; };
+		237035931DC8F9980042167A /* BTCKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCKeychain.m; sourceTree = "<group>"; };
+		237035941DC8F9980042167A /* BTCKeychain+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCKeychain+Tests.h"; sourceTree = "<group>"; };
+		237035951DC8F9980042167A /* BTCKeychain+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCKeychain+Tests.m"; sourceTree = "<group>"; };
+		237035961DC8F9980042167A /* BTCMnemonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCMnemonic.h; sourceTree = "<group>"; };
+		237035971DC8F9980042167A /* BTCMnemonic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCMnemonic.m; sourceTree = "<group>"; };
+		237035981DC8F9980042167A /* BTCMnemonic+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCMnemonic+Tests.h"; sourceTree = "<group>"; };
+		237035991DC8F9980042167A /* BTCMnemonic+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCMnemonic+Tests.m"; sourceTree = "<group>"; };
+		2370359A1DC8F9980042167A /* BTCSecretSharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCSecretSharing.h; sourceTree = "<group>"; };
+		2370359B1DC8F9980042167A /* BTCSecretSharing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCSecretSharing.m; sourceTree = "<group>"; };
+		2370359D1DC8F9980042167A /* BTCUnitsAndLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCUnitsAndLimits.h; sourceTree = "<group>"; };
+		2370359E1DC8F9980042167A /* BTCBlockHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCBlockHeader.h; sourceTree = "<group>"; };
+		2370359F1DC8F9980042167A /* BTCBlockHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCBlockHeader.m; sourceTree = "<group>"; };
+		237035A01DC8F9980042167A /* BTCBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCBlock.h; sourceTree = "<group>"; };
+		237035A11DC8F9980042167A /* BTCBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCBlock.m; sourceTree = "<group>"; };
+		237035A21DC8F9980042167A /* BTCMerkleTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCMerkleTree.h; sourceTree = "<group>"; };
+		237035A31DC8F9980042167A /* BTCMerkleTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCMerkleTree.m; sourceTree = "<group>"; };
+		237035A41DC8F9980042167A /* BTCMerkleTree+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCMerkleTree+Tests.h"; sourceTree = "<group>"; };
+		237035A51DC8F9980042167A /* BTCMerkleTree+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCMerkleTree+Tests.m"; sourceTree = "<group>"; };
+		237035A61DC8F9980042167A /* BTCOpcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCOpcode.h; sourceTree = "<group>"; };
+		237035A71DC8F9980042167A /* BTCOpcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCOpcode.m; sourceTree = "<group>"; };
+		237035A81DC8F9980042167A /* BTCSignatureHashType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCSignatureHashType.h; sourceTree = "<group>"; };
+		237035A91DC8F9980042167A /* BTCScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCScript.h; sourceTree = "<group>"; };
+		237035AA1DC8F9980042167A /* BTCScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCScript.m; sourceTree = "<group>"; };
+		237035AB1DC8F9980042167A /* BTCScript+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCScript+Tests.h"; sourceTree = "<group>"; };
+		237035AC1DC8F9980042167A /* BTCScript+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCScript+Tests.m"; sourceTree = "<group>"; };
+		237035AD1DC8F9980042167A /* BTCScriptMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCScriptMachine.h; sourceTree = "<group>"; };
+		237035AE1DC8F9980042167A /* BTCScriptMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCScriptMachine.m; sourceTree = "<group>"; };
+		237035AF1DC8F9980042167A /* BTCTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCTransaction.h; sourceTree = "<group>"; };
+		237035B01DC8F9980042167A /* BTCTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCTransaction.m; sourceTree = "<group>"; };
+		237035B11DC8F9980042167A /* BTCTransaction+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCTransaction+Tests.h"; sourceTree = "<group>"; };
+		237035B21DC8F9980042167A /* BTCTransaction+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCTransaction+Tests.m"; sourceTree = "<group>"; };
+		237035B31DC8F9980042167A /* BTCTransactionInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCTransactionInput.h; sourceTree = "<group>"; };
+		237035B41DC8F9980042167A /* BTCTransactionInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCTransactionInput.m; sourceTree = "<group>"; };
+		237035B51DC8F9980042167A /* BTCTransactionOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCTransactionOutput.h; sourceTree = "<group>"; };
+		237035B61DC8F9980042167A /* BTCTransactionOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCTransactionOutput.m; sourceTree = "<group>"; };
+		237035B71DC8F9980042167A /* BTCOutpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCOutpoint.h; sourceTree = "<group>"; };
+		237035B81DC8F9980042167A /* BTCOutpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCOutpoint.m; sourceTree = "<group>"; };
+		237035B91DC8F9980042167A /* BTCTransactionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCTransactionBuilder.h; sourceTree = "<group>"; };
+		237035BA1DC8F9980042167A /* BTCTransactionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCTransactionBuilder.m; sourceTree = "<group>"; };
+		237035BB1DC8F9980042167A /* BTCNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCNetwork.h; sourceTree = "<group>"; };
+		237035BC1DC8F9980042167A /* BTCNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCNetwork.m; sourceTree = "<group>"; };
+		237035BD1DC8F9980042167A /* BTCProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCProcessor.h; sourceTree = "<group>"; };
+		237035BE1DC8F9980042167A /* BTCProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCProcessor.m; sourceTree = "<group>"; };
+		237035C01DC8F9980042167A /* BTCAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCAddress.h; sourceTree = "<group>"; };
+		237035C11DC8F9980042167A /* BTCAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCAddress.m; sourceTree = "<group>"; };
+		237035C21DC8F9980042167A /* BTCAddressSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCAddressSubclass.h; sourceTree = "<group>"; };
+		237035C31DC8F9980042167A /* BTCAddress+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCAddress+Tests.h"; sourceTree = "<group>"; };
+		237035C41DC8F9980042167A /* BTCAddress+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Tests.m"; sourceTree = "<group>"; };
+		237035C51DC8F9980042167A /* BTCBitcoinURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCBitcoinURL.h; sourceTree = "<group>"; };
+		237035C61DC8F9980042167A /* BTCBitcoinURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCBitcoinURL.m; sourceTree = "<group>"; };
+		237035C71DC8F9980042167A /* BTCBitcoinURL+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCBitcoinURL+Tests.h"; sourceTree = "<group>"; };
+		237035C81DC8F9980042167A /* BTCBitcoinURL+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCBitcoinURL+Tests.m"; sourceTree = "<group>"; };
+		237035C91DC8F9980042167A /* BTCPaymentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCPaymentProtocol.h; sourceTree = "<group>"; };
+		237035CA1DC8F9980042167A /* BTCPaymentProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCPaymentProtocol.m; sourceTree = "<group>"; };
+		237035CB1DC8F9980042167A /* BTCPaymentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCPaymentRequest.h; sourceTree = "<group>"; };
+		237035CC1DC8F9980042167A /* BTCPaymentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCPaymentRequest.m; sourceTree = "<group>"; };
+		237035CD1DC8F9980042167A /* BTCPaymentMethodRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCPaymentMethodRequest.h; sourceTree = "<group>"; };
+		237035CE1DC8F9980042167A /* BTCPaymentMethodRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCPaymentMethodRequest.m; sourceTree = "<group>"; };
+		237035CF1DC8F9980042167A /* BTCPaymentMethodDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCPaymentMethodDetails.h; sourceTree = "<group>"; };
+		237035D01DC8F9980042167A /* BTCPaymentMethodDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCPaymentMethodDetails.m; sourceTree = "<group>"; };
+		237035D11DC8F9980042167A /* BTCPaymentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCPaymentMethod.h; sourceTree = "<group>"; };
+		237035D21DC8F9980042167A /* BTCPaymentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCPaymentMethod.m; sourceTree = "<group>"; };
+		237035D51DC8F9980042167A /* BTCAssetType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCAssetType.h; sourceTree = "<group>"; };
+		237035D61DC8F9980042167A /* BTCAssetType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCAssetType.m; sourceTree = "<group>"; };
+		237035D71DC8F9980042167A /* BTCAssetID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCAssetID.h; sourceTree = "<group>"; };
+		237035D81DC8F9980042167A /* BTCAssetID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCAssetID.m; sourceTree = "<group>"; };
+		237035D91DC8F9980042167A /* BTCAssetAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCAssetAddress.h; sourceTree = "<group>"; };
+		237035DA1DC8F9980042167A /* BTCAssetAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCAssetAddress.m; sourceTree = "<group>"; };
+		237035DC1DC8F9980042167A /* BTCEncryptedBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCEncryptedBackup.h; sourceTree = "<group>"; };
+		237035DD1DC8F9980042167A /* BTCEncryptedBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCEncryptedBackup.m; sourceTree = "<group>"; };
+		237035DE1DC8F9980042167A /* BTCEncryptedBackup+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCEncryptedBackup+Tests.h"; sourceTree = "<group>"; };
+		237035DF1DC8F9980042167A /* BTCEncryptedBackup+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCEncryptedBackup+Tests.m"; sourceTree = "<group>"; };
+		237035E01DC8F9980042167A /* BTCEncryptedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCEncryptedMessage.h; sourceTree = "<group>"; };
+		237035E11DC8F9980042167A /* BTCEncryptedMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCEncryptedMessage.m; sourceTree = "<group>"; };
+		237035E21DC8F9980042167A /* BTCEncryptedMessage+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCEncryptedMessage+Tests.h"; sourceTree = "<group>"; };
+		237035E31DC8F9980042167A /* BTCEncryptedMessage+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCEncryptedMessage+Tests.m"; sourceTree = "<group>"; };
+		237035E41DC8F9980042167A /* BTCBlindSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCBlindSignature.h; sourceTree = "<group>"; };
+		237035E51DC8F9980042167A /* BTCBlindSignature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCBlindSignature.m; sourceTree = "<group>"; };
+		237035E61DC8F9980042167A /* BTCBlindSignature+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCBlindSignature+Tests.h"; sourceTree = "<group>"; };
+		237035E71DC8F9980042167A /* BTCBlindSignature+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCBlindSignature+Tests.m"; sourceTree = "<group>"; };
+		237035E81DC8F9980042167A /* BTCFancyEncryptedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCFancyEncryptedMessage.h; sourceTree = "<group>"; };
+		237035E91DC8F9980042167A /* BTCFancyEncryptedMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCFancyEncryptedMessage.m; sourceTree = "<group>"; };
+		237035EA1DC8F9980042167A /* BTCFancyEncryptedMessage+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCFancyEncryptedMessage+Tests.h"; sourceTree = "<group>"; };
+		237035EB1DC8F9980042167A /* BTCFancyEncryptedMessage+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCFancyEncryptedMessage+Tests.m"; sourceTree = "<group>"; };
+		237035ED1DC8F9980042167A /* BTCCurrencyConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCCurrencyConverter.h; sourceTree = "<group>"; };
+		237035EE1DC8F9980042167A /* BTCCurrencyConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCCurrencyConverter.m; sourceTree = "<group>"; };
+		237035EF1DC8F9980042167A /* BTCCurrencyConverter+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCCurrencyConverter+Tests.h"; sourceTree = "<group>"; };
+		237035F01DC8F9980042167A /* BTCCurrencyConverter+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCCurrencyConverter+Tests.m"; sourceTree = "<group>"; };
+		237035F11DC8F9980042167A /* BTCNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCNumberFormatter.h; sourceTree = "<group>"; };
+		237035F21DC8F9980042167A /* BTCNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCNumberFormatter.m; sourceTree = "<group>"; };
+		237035F31DC8F9980042167A /* BTCPriceSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCPriceSource.h; sourceTree = "<group>"; };
+		237035F41DC8F9980042167A /* BTCPriceSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCPriceSource.m; sourceTree = "<group>"; };
+		237035F51DC8F9980042167A /* BTCPriceSource+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCPriceSource+Tests.h"; sourceTree = "<group>"; };
+		237035F61DC8F9980042167A /* BTCPriceSource+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCPriceSource+Tests.m"; sourceTree = "<group>"; };
+		237035F81DC8F9980042167A /* BTCBlockchainInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCBlockchainInfo.h; sourceTree = "<group>"; };
+		237035F91DC8F9980042167A /* BTCBlockchainInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCBlockchainInfo.m; sourceTree = "<group>"; };
+		237035FA1DC8F9980042167A /* BTCBlockchainInfo+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCBlockchainInfo+Tests.h"; sourceTree = "<group>"; };
+		237035FB1DC8F9980042167A /* BTCBlockchainInfo+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCBlockchainInfo+Tests.m"; sourceTree = "<group>"; };
+		237035FC1DC8F9980042167A /* BTCChainCom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCChainCom.h; sourceTree = "<group>"; };
+		237035FD1DC8F9980042167A /* BTCChainCom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCChainCom.m; sourceTree = "<group>"; };
 		2371DEAC1C6A8898000DC8AF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
 		2371DEAF1C6A8AF3000DC8AF /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
 		237451C71D624C1C00CF7049 /* RootService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootService.h; sourceTree = "<group>"; };
@@ -508,8 +708,6 @@
 		2374BFB21B750ECA00A53FBE /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Backup.strings; sourceTree = "<group>"; };
 		2374BFB41B750EDE00A53FBE /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Backup.strings; sourceTree = "<group>"; };
 		237827191B7E472D00E9EE03 /* BCSecureTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCSecureTextField.swift; sourceTree = "<group>"; };
-		237991651DBFB3480094FE92 /* BTCData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCData.h; path = ../../CoreBitcoin/CoreBitcoin/BTCData.h; sourceTree = "<group>"; };
-		237991661DBFB3480094FE92 /* BTCData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCData.m; path = ../../CoreBitcoin/CoreBitcoin/BTCData.m; sourceTree = "<group>"; };
 		237C9E8E1C482132000754F7 /* AccountsAndAddressesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsAndAddressesDetailViewController.h; sourceTree = "<group>"; };
 		237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsAndAddressesDetailViewController.m; sourceTree = "<group>"; };
 		237EBF571DB6C942009AE45A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1115,6 +1313,230 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		237035811DC8F9980042167A /* Data Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				2370356B1DC8F9980042167A /* BTCData.h */,
+				2370356C1DC8F9980042167A /* BTCData.m */,
+				2370356D1DC8F9980042167A /* BTCHashID.h */,
+				2370356E1DC8F9980042167A /* BTCHashID.m */,
+				2370356F1DC8F9980042167A /* NSData+BTCData.h */,
+				237035701DC8F9980042167A /* NSData+BTCData.m */,
+				237035711DC8F9980042167A /* BTCData+Tests.h */,
+				237035721DC8F9980042167A /* BTCData+Tests.m */,
+				237035731DC8F9980042167A /* BTCBase58.h */,
+				237035741DC8F9980042167A /* BTCBase58.m */,
+				237035751DC8F9980042167A /* NS+BTCBase58.h */,
+				237035761DC8F9980042167A /* NS+BTCBase58.m */,
+				237035771DC8F9980042167A /* BTCBase58+Tests.h */,
+				237035781DC8F9980042167A /* BTCBase58+Tests.m */,
+				237035791DC8F9980042167A /* BTCProtocolSerialization.h */,
+				2370357A1DC8F9980042167A /* BTCProtocolSerialization.m */,
+				2370357B1DC8F9980042167A /* BTCProtocolSerialization+Tests.h */,
+				2370357C1DC8F9980042167A /* BTCProtocolSerialization+Tests.m */,
+				2370357D1DC8F9980042167A /* BTCProtocolBuffers.h */,
+				2370357E1DC8F9980042167A /* BTCProtocolBuffers.m */,
+				2370357F1DC8F9980042167A /* BTCQRCode.h */,
+				237035801DC8F9980042167A /* BTCQRCode.m */,
+			);
+			name = "Data Encoding";
+			sourceTree = "<group>";
+		};
+		2370359C1DC8F9980042167A /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				237035821DC8F9980042167A /* BTC256.h */,
+				237035831DC8F9980042167A /* BTC256.m */,
+				237035841DC8F9980042167A /* BTC256+Tests.h */,
+				237035851DC8F9980042167A /* BTC256+Tests.m */,
+				237035861DC8F9980042167A /* BTCBigNumber.h */,
+				237035871DC8F9980042167A /* BTCBigNumber.m */,
+				237035881DC8F9980042167A /* BTCBigNumber+Tests.h */,
+				237035891DC8F9980042167A /* BTCBigNumber+Tests.m */,
+				2370358A1DC8F9980042167A /* BTCCurvePoint.h */,
+				2370358B1DC8F9980042167A /* BTCCurvePoint.m */,
+				2370358C1DC8F9980042167A /* BTCCurvePoint+Tests.h */,
+				2370358D1DC8F9980042167A /* BTCCurvePoint+Tests.m */,
+				2370358E1DC8F9980042167A /* BTCKey.h */,
+				2370358F1DC8F9980042167A /* BTCKey.m */,
+				237035901DC8F9980042167A /* BTCKey+Tests.h */,
+				237035911DC8F9980042167A /* BTCKey+Tests.m */,
+				237035921DC8F9980042167A /* BTCKeychain.h */,
+				237035931DC8F9980042167A /* BTCKeychain.m */,
+				237035941DC8F9980042167A /* BTCKeychain+Tests.h */,
+				237035951DC8F9980042167A /* BTCKeychain+Tests.m */,
+				237035961DC8F9980042167A /* BTCMnemonic.h */,
+				237035971DC8F9980042167A /* BTCMnemonic.m */,
+				237035981DC8F9980042167A /* BTCMnemonic+Tests.h */,
+				237035991DC8F9980042167A /* BTCMnemonic+Tests.m */,
+				2370359A1DC8F9980042167A /* BTCSecretSharing.h */,
+				2370359B1DC8F9980042167A /* BTCSecretSharing.m */,
+			);
+			name = Crypto;
+			sourceTree = "<group>";
+		};
+		237035BF1DC8F9980042167A /* Core Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				2370359D1DC8F9980042167A /* BTCUnitsAndLimits.h */,
+				2370359E1DC8F9980042167A /* BTCBlockHeader.h */,
+				2370359F1DC8F9980042167A /* BTCBlockHeader.m */,
+				237035A01DC8F9980042167A /* BTCBlock.h */,
+				237035A11DC8F9980042167A /* BTCBlock.m */,
+				237035A21DC8F9980042167A /* BTCMerkleTree.h */,
+				237035A31DC8F9980042167A /* BTCMerkleTree.m */,
+				237035A41DC8F9980042167A /* BTCMerkleTree+Tests.h */,
+				237035A51DC8F9980042167A /* BTCMerkleTree+Tests.m */,
+				237035A61DC8F9980042167A /* BTCOpcode.h */,
+				237035A71DC8F9980042167A /* BTCOpcode.m */,
+				237035A81DC8F9980042167A /* BTCSignatureHashType.h */,
+				237035A91DC8F9980042167A /* BTCScript.h */,
+				237035AA1DC8F9980042167A /* BTCScript.m */,
+				237035AB1DC8F9980042167A /* BTCScript+Tests.h */,
+				237035AC1DC8F9980042167A /* BTCScript+Tests.m */,
+				237035AD1DC8F9980042167A /* BTCScriptMachine.h */,
+				237035AE1DC8F9980042167A /* BTCScriptMachine.m */,
+				237035AF1DC8F9980042167A /* BTCTransaction.h */,
+				237035B01DC8F9980042167A /* BTCTransaction.m */,
+				237035B11DC8F9980042167A /* BTCTransaction+Tests.h */,
+				237035B21DC8F9980042167A /* BTCTransaction+Tests.m */,
+				237035B31DC8F9980042167A /* BTCTransactionInput.h */,
+				237035B41DC8F9980042167A /* BTCTransactionInput.m */,
+				237035B51DC8F9980042167A /* BTCTransactionOutput.h */,
+				237035B61DC8F9980042167A /* BTCTransactionOutput.m */,
+				237035B71DC8F9980042167A /* BTCOutpoint.h */,
+				237035B81DC8F9980042167A /* BTCOutpoint.m */,
+				237035B91DC8F9980042167A /* BTCTransactionBuilder.h */,
+				237035BA1DC8F9980042167A /* BTCTransactionBuilder.m */,
+				237035BB1DC8F9980042167A /* BTCNetwork.h */,
+				237035BC1DC8F9980042167A /* BTCNetwork.m */,
+				237035BD1DC8F9980042167A /* BTCProcessor.h */,
+				237035BE1DC8F9980042167A /* BTCProcessor.m */,
+			);
+			name = "Core Data Structures";
+			sourceTree = "<group>";
+		};
+		237035D31DC8F9980042167A /* Payment Methods */ = {
+			isa = PBXGroup;
+			children = (
+				237035CD1DC8F9980042167A /* BTCPaymentMethodRequest.h */,
+				237035CE1DC8F9980042167A /* BTCPaymentMethodRequest.m */,
+				237035CF1DC8F9980042167A /* BTCPaymentMethodDetails.h */,
+				237035D01DC8F9980042167A /* BTCPaymentMethodDetails.m */,
+				237035D11DC8F9980042167A /* BTCPaymentMethod.h */,
+				237035D21DC8F9980042167A /* BTCPaymentMethod.m */,
+			);
+			name = "Payment Methods";
+			sourceTree = "<group>";
+		};
+		237035D41DC8F9980042167A /* Payment Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				237035C01DC8F9980042167A /* BTCAddress.h */,
+				237035C11DC8F9980042167A /* BTCAddress.m */,
+				237035C21DC8F9980042167A /* BTCAddressSubclass.h */,
+				237035C31DC8F9980042167A /* BTCAddress+Tests.h */,
+				237035C41DC8F9980042167A /* BTCAddress+Tests.m */,
+				237035C51DC8F9980042167A /* BTCBitcoinURL.h */,
+				237035C61DC8F9980042167A /* BTCBitcoinURL.m */,
+				237035C71DC8F9980042167A /* BTCBitcoinURL+Tests.h */,
+				237035C81DC8F9980042167A /* BTCBitcoinURL+Tests.m */,
+				237035C91DC8F9980042167A /* BTCPaymentProtocol.h */,
+				237035CA1DC8F9980042167A /* BTCPaymentProtocol.m */,
+				237035CB1DC8F9980042167A /* BTCPaymentRequest.h */,
+				237035CC1DC8F9980042167A /* BTCPaymentRequest.m */,
+				237035D31DC8F9980042167A /* Payment Methods */,
+			);
+			name = "Payment Protocols";
+			sourceTree = "<group>";
+		};
+		237035DB1DC8F9980042167A /* Open Assets */ = {
+			isa = PBXGroup;
+			children = (
+				237035D51DC8F9980042167A /* BTCAssetType.h */,
+				237035D61DC8F9980042167A /* BTCAssetType.m */,
+				237035D71DC8F9980042167A /* BTCAssetID.h */,
+				237035D81DC8F9980042167A /* BTCAssetID.m */,
+				237035D91DC8F9980042167A /* BTCAssetAddress.h */,
+				237035DA1DC8F9980042167A /* BTCAssetAddress.m */,
+			);
+			name = "Open Assets";
+			sourceTree = "<group>";
+		};
+		237035EC1DC8F9980042167A /* Crypto Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				237035DC1DC8F9980042167A /* BTCEncryptedBackup.h */,
+				237035DD1DC8F9980042167A /* BTCEncryptedBackup.m */,
+				237035DE1DC8F9980042167A /* BTCEncryptedBackup+Tests.h */,
+				237035DF1DC8F9980042167A /* BTCEncryptedBackup+Tests.m */,
+				237035E01DC8F9980042167A /* BTCEncryptedMessage.h */,
+				237035E11DC8F9980042167A /* BTCEncryptedMessage.m */,
+				237035E21DC8F9980042167A /* BTCEncryptedMessage+Tests.h */,
+				237035E31DC8F9980042167A /* BTCEncryptedMessage+Tests.m */,
+				237035E41DC8F9980042167A /* BTCBlindSignature.h */,
+				237035E51DC8F9980042167A /* BTCBlindSignature.m */,
+				237035E61DC8F9980042167A /* BTCBlindSignature+Tests.h */,
+				237035E71DC8F9980042167A /* BTCBlindSignature+Tests.m */,
+				237035E81DC8F9980042167A /* BTCFancyEncryptedMessage.h */,
+				237035E91DC8F9980042167A /* BTCFancyEncryptedMessage.m */,
+				237035EA1DC8F9980042167A /* BTCFancyEncryptedMessage+Tests.h */,
+				237035EB1DC8F9980042167A /* BTCFancyEncryptedMessage+Tests.m */,
+			);
+			name = "Crypto Protocols";
+			sourceTree = "<group>";
+		};
+		237035F71DC8F9980042167A /* Currencies */ = {
+			isa = PBXGroup;
+			children = (
+				237035ED1DC8F9980042167A /* BTCCurrencyConverter.h */,
+				237035EE1DC8F9980042167A /* BTCCurrencyConverter.m */,
+				237035EF1DC8F9980042167A /* BTCCurrencyConverter+Tests.h */,
+				237035F01DC8F9980042167A /* BTCCurrencyConverter+Tests.m */,
+				237035F11DC8F9980042167A /* BTCNumberFormatter.h */,
+				237035F21DC8F9980042167A /* BTCNumberFormatter.m */,
+				237035F31DC8F9980042167A /* BTCPriceSource.h */,
+				237035F41DC8F9980042167A /* BTCPriceSource.m */,
+				237035F51DC8F9980042167A /* BTCPriceSource+Tests.h */,
+				237035F61DC8F9980042167A /* BTCPriceSource+Tests.m */,
+			);
+			name = Currencies;
+			sourceTree = "<group>";
+		};
+		237035FE1DC8F9980042167A /* Third Party Sources */ = {
+			isa = PBXGroup;
+			children = (
+				237035F81DC8F9980042167A /* BTCBlockchainInfo.h */,
+				237035F91DC8F9980042167A /* BTCBlockchainInfo.m */,
+				237035FA1DC8F9980042167A /* BTCBlockchainInfo+Tests.h */,
+				237035FB1DC8F9980042167A /* BTCBlockchainInfo+Tests.m */,
+				237035FC1DC8F9980042167A /* BTCChainCom.h */,
+				237035FD1DC8F9980042167A /* BTCChainCom.m */,
+			);
+			name = "Third Party Sources";
+			sourceTree = "<group>";
+		};
+		237035FF1DC8F9980042167A /* CoreBitcoin */ = {
+			isa = PBXGroup;
+			children = (
+				237035661DC8F9980042167A /* CoreBitcoin.h */,
+				237035671DC8F9980042167A /* CoreBitcoin+Categories.h */,
+				237035681DC8F9980042167A /* SwiftBridgingHeader.h */,
+				237035691DC8F9980042167A /* BTCErrors.h */,
+				2370356A1DC8F9980042167A /* BTCErrors.m */,
+				237035811DC8F9980042167A /* Data Encoding */,
+				2370359C1DC8F9980042167A /* Crypto */,
+				237035BF1DC8F9980042167A /* Core Data Structures */,
+				237035D41DC8F9980042167A /* Payment Protocols */,
+				237035DB1DC8F9980042167A /* Open Assets */,
+				237035EC1DC8F9980042167A /* Crypto Protocols */,
+				237035F71DC8F9980042167A /* Currencies */,
+				237035FE1DC8F9980042167A /* Third Party Sources */,
+			);
+			name = CoreBitcoin;
+			path = ../../CoreBitcoin/CoreBitcoin;
+			sourceTree = "<group>";
+		};
 		670595A11AB0F59D00D2D6D9 /* KeychainItemWrapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1505,16 +1927,7 @@
 		C9D4B2AE193E020D00EDA9EA /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
-				237034611DC8EDB70042167A /* BTCKeychain.h */,
-				237034621DC8EDB70042167A /* BTCKeychain.m */,
-				2312FB0A1DC7986900B7B8B4 /* BTCBase58.h */,
-				2312FB0B1DC7986900B7B8B4 /* BTCBase58.m */,
-				2312FB071DC782ED00B7B8B4 /* BTCCurvePoint.h */,
-				2312FB081DC782ED00B7B8B4 /* BTCCurvePoint.m */,
-				232FA5321DC3C2DC005B83C6 /* BTCBigNumber.h */,
-				232FA5331DC3C2DC005B83C6 /* BTCBigNumber.m */,
-				237991651DBFB3480094FE92 /* BTCData.h */,
-				237991661DBFB3480094FE92 /* BTCData.m */,
+				237035FF1DC8F9980042167A /* CoreBitcoin */,
 				2322DC811D771831000E5AC1 /* SocketRocket */,
 				670595A11AB0F59D00D2D6D9 /* KeychainItemWrapper */,
 				670DF9481A43BCB200CEA1EA /* Reachability */,
@@ -1826,24 +2239,32 @@
 			files = (
 				2343E4031CB434BC008DC7D1 /* NSArray+EncodedJSONString.m in Sources */,
 				237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */,
+				237036201DC8F9980042167A /* BTCScriptMachine.m in Sources */,
 				9F1831EB1516AE3500FB3D52 /* NSString+URLEncode.m in Sources */,
+				2370361D1DC8F9980042167A /* BTCOpcode.m in Sources */,
+				2370361A1DC8F9980042167A /* BTCBlock.m in Sources */,
 				23EA61CB1B5591260032B907 /* SettingsSelectorTableViewController.m in Sources */,
 				23BA22111D6B736900D0472B /* NSNumberFormatter+Currencies.m in Sources */,
 				2322DCB51D771831000E5AC1 /* SRIOConsumer.m in Sources */,
+				2370361B1DC8F9980042167A /* BTCMerkleTree.m in Sources */,
+				237036271DC8F9980042167A /* BTCNetwork.m in Sources */,
+				2370362C1DC8F9980042167A /* BTCBitcoinURL+Tests.m in Sources */,
 				23BD046D1D79F1EC00DB69E6 /* TransactionDetailNavigationController.m in Sources */,
-				2312FB091DC782ED00B7B8B4 /* BTCCurvePoint.m in Sources */,
 				678AD5E919D4610000E9A778 /* BCModalContentView.m in Sources */,
 				84F4BDFA197F21D700B7BF7B /* PairingCodeParser.m in Sources */,
 				2322DCBC1D771831000E5AC1 /* SRHash.m in Sources */,
-				237991671DBFB3480094FE92 /* BTCData.m in Sources */,
+				237036391DC8F9980042167A /* BTCBlindSignature.m in Sources */,
 				9F45F82C1514E53C00018AED /* UIButtonPressAndHold.m in Sources */,
 				9F7480E315140EF200BC4292 /* TabViewController.m in Sources */,
+				237036181DC8F9980042167A /* BTCSecretSharing.m in Sources */,
 				2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */,
 				23FB5C101D9ABB730008C6AB /* TransactionDetailDateCell.m in Sources */,
 				670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */,
 				9FB3638214B60128004BEA02 /* main.m in Sources */,
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
 				2322DCB91D771831000E5AC1 /* SRPinningSecurityPolicy.m in Sources */,
+				237036111DC8F9980042167A /* BTCCurvePoint+Tests.m in Sources */,
+				237036191DC8F9980042167A /* BTCBlockHeader.m in Sources */,
 				23F720F21C32DC0A00577738 /* DebugTableViewController.m in Sources */,
 				23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */,
 				23E2FC081C7F60E7004CFF79 /* BCInsetLabel.m in Sources */,
@@ -1851,21 +2272,27 @@
 				674709EC19D1D14300757D46 /* BCWelcomeView.m in Sources */,
 				67D95A281B3DDC900012EBB1 /* Constants.swift in Sources */,
 				9F765F3214BC622E00048EFB /* TransactionsViewController.m in Sources */,
+				237036001DC8F9980042167A /* BTCErrors.m in Sources */,
+				237036041DC8F9980042167A /* BTCData+Tests.m in Sources */,
 				2322DCC21D771831000E5AC1 /* SRURLUtilities.m in Sources */,
 				230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */,
 				676250821A2DDF360052B63F /* AccountTableCell.m in Sources */,
 				67EE1DCF19E3325900DBBFC9 /* UIViewController+ECSlidingViewController.m in Sources */,
+				237036161DC8F9980042167A /* BTCMnemonic.m in Sources */,
 				C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */,
 				84FC02FD19815F1B00B97D5B /* crypto_scrypt-nosse.c in Sources */,
+				237036321DC8F9980042167A /* BTCAssetType.m in Sources */,
 				2322DCB71D771831000E5AC1 /* SRProxyConnect.m in Sources */,
 				FACF69521A57164B00590E04 /* MerchantMapDetailViewController.m in Sources */,
+				2370363E1DC8F9980042167A /* BTCCurrencyConverter+Tests.m in Sources */,
 				FA6323411A446B0C00EB3974 /* MerchantLocation.m in Sources */,
-				232FA5341DC3C2DC005B83C6 /* BTCBigNumber.m in Sources */,
 				FA63233C1A433BEA00EB3974 /* MerchantMapViewController.m in Sources */,
+				237036401DC8F9980042167A /* BTCPriceSource.m in Sources */,
 				23FDEFAC1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m in Sources */,
 				9F765F3914BC7BAC00048EFB /* TransactionTableCell.m in Sources */,
 				231A66EE1DB9434B0043F862 /* HDNode.m in Sources */,
 				84FC02FA1981452D00B97D5B /* NSString+JSONParser_NSString.m in Sources */,
+				2370360F1DC8F9980042167A /* BTCBigNumber+Tests.m in Sources */,
 				9F765F3D14BC7C4F00048EFB /* Transaction.m in Sources */,
 				2322DCC31D771831000E5AC1 /* NSRunLoop+SRWebSocket.m in Sources */,
 				84B601C7197ACD6300DA1829 /* UITextField+Blocks.m in Sources */,
@@ -1873,10 +2300,14 @@
 				FA6323391A433B1C00EB3974 /* Foundation-Utility.m in Sources */,
 				239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */,
 				23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */,
+				237036061DC8F9980042167A /* NS+BTCBase58.m in Sources */,
 				2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */,
 				236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */,
 				9F2D934A14C05DD00053F0FF /* Address.m in Sources */,
 				235BD5661C58216000969B31 /* BCModalViewController.m in Sources */,
+				237036151DC8F9980042167A /* BTCKeychain+Tests.m in Sources */,
+				237036021DC8F9980042167A /* BTCHashID.m in Sources */,
+				237036101DC8F9980042167A /* BTCCurvePoint.m in Sources */,
 				67FA1A4D1ABA092D000C9196 /* RegExCategories.m in Sources */,
 				23DF4EFC1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m in Sources */,
 				84B601CA197AD03800DA1829 /* BCModalView.m in Sources */,
@@ -1884,72 +2315,111 @@
 				9F0CBAD81513CA2600CD945D /* BCFadeView.m in Sources */,
 				67E9674E19DF285000305358 /* SideMenuViewController.m in Sources */,
 				9FCA4D161514949500ECDFBE /* ReceiveCoinsViewController.m in Sources */,
+				237036261DC8F9980042167A /* BTCTransactionBuilder.m in Sources */,
 				2322DCBD1D771831000E5AC1 /* SRHTTPConnectMessage.m in Sources */,
 				230FD2D31C5BD04000336683 /* BCEditAddressView.m in Sources */,
 				23C95EA61C0779C600E4692A /* SettingsChangePasswordViewController.m in Sources */,
+				237036011DC8F9980042167A /* BTCData.m in Sources */,
 				23FDEFA91D6E43DE00FC80D6 /* TransactionDetailTableCell.m in Sources */,
+				237036331DC8F9980042167A /* BTCAssetID.m in Sources */,
+				237036341DC8F9980042167A /* BTCAssetAddress.m in Sources */,
+				2370360E1DC8F9980042167A /* BTCBigNumber.m in Sources */,
+				2370361C1DC8F9980042167A /* BTCMerkleTree+Tests.m in Sources */,
+				2370363C1DC8F9980042167A /* BTCFancyEncryptedMessage+Tests.m in Sources */,
 				2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */,
+				2370362B1DC8F9980042167A /* BTCBitcoinURL.m in Sources */,
 				23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */,
+				237036141DC8F9980042167A /* BTCKeychain.m in Sources */,
 				9FCA4D1B151494BF00ECDFBE /* SendViewController.m in Sources */,
 				237451C91D624C1C00CF7049 /* RootService.m in Sources */,
+				2370362E1DC8F9980042167A /* BTCPaymentRequest.m in Sources */,
+				237036051DC8F9980042167A /* BTCBase58.m in Sources */,
 				67D95A261B3DD86B0012EBB1 /* BCTextField.swift in Sources */,
 				2322DCC01D771831000E5AC1 /* SRRandom.m in Sources */,
 				23FB5C0D1D9ABB650008C6AB /* TransactionDetailFromCell.m in Sources */,
 				23D3A6291C0F699900DEF737 /* SecurityCenterViewController.m in Sources */,
+				2370363A1DC8F9980042167A /* BTCBlindSignature+Tests.m in Sources */,
 				2322DCBA1D771831000E5AC1 /* SRConstants.m in Sources */,
 				A2599BA71B0B726900C2EA81 /* BackupVerifyViewController.swift in Sources */,
 				23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */,
 				23FB5C131D9ABB8B0008C6AB /* TransactionDetailStatusCell.m in Sources */,
 				A2599BA51B0B725400C2EA81 /* BackupWordsViewController.swift in Sources */,
 				6762507D1A2CC5800052B63F /* BCEditAccountView.m in Sources */,
+				237036281DC8F9980042167A /* BTCProcessor.m in Sources */,
 				6780DB951A40BDCF0048EED2 /* InOut.m in Sources */,
 				67EE1DCC19E3325900DBBFC9 /* ECSlidingInteractiveTransition.m in Sources */,
 				6775569919E752A00054699B /* BCWebViewController.m in Sources */,
 				67EE1DCD19E3325900DBBFC9 /* ECSlidingSegue.m in Sources */,
 				231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */,
+				237036121DC8F9980042167A /* BTCKey.m in Sources */,
+				237036221DC8F9980042167A /* BTCTransaction+Tests.m in Sources */,
 				2322DCC61D771831000E5AC1 /* SRSecurityPolicy.m in Sources */,
 				9F61B89E151519EF0083C57A /* BCAddressSelectionView.m in Sources */,
+				2370363F1DC8F9980042167A /* BTCNumberFormatter.m in Sources */,
 				FA6323361A43373300EB3974 /* Merchant.m in Sources */,
 				23FB5C0A1D9ABB590008C6AB /* TransactionDetailToCell.m in Sources */,
 				9F91B607151666EC00ACB32D /* BCCreateWalletView.m in Sources */,
 				2322DCBE1D771831000E5AC1 /* SRLog.m in Sources */,
 				23FDEF9A1D6CBC7000FC80D6 /* TransactionDetailViewController.m in Sources */,
 				67EE1DCA19E3325900DBBFC9 /* ECPercentDrivenInteractiveTransition.m in Sources */,
+				2370360C1DC8F9980042167A /* BTC256.m in Sources */,
 				23FDEF9D1D6E180100FC80D6 /* CertificatePinner.m in Sources */,
 				678CD7481A2777E600748AA5 /* BCCreateAccountView.m in Sources */,
 				23F8DE531DAEB11C001899AE /* BCNavigationController.m in Sources */,
 				ECD244F719A8B444004B1F40 /* UIImage+Utils.m in Sources */,
+				237036371DC8F9980042167A /* BTCEncryptedMessage.m in Sources */,
 				2322DCB61D771831000E5AC1 /* SRIOConsumerPool.m in Sources */,
 				2322DCBB1D771831000E5AC1 /* SRError.m in Sources */,
 				9F1831E21516A39500FB3D52 /* NSData+Hex.m in Sources */,
 				6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */,
 				67EE1DCE19E3325900DBBFC9 /* ECSlidingViewController.m in Sources */,
+				237036361DC8F9980042167A /* BTCEncryptedBackup+Tests.m in Sources */,
 				6780DB981A40BDF40048EED2 /* AccountInOut.m in Sources */,
+				2370363D1DC8F9980042167A /* BTCCurrencyConverter.m in Sources */,
+				2370363B1DC8F9980042167A /* BTCFancyEncryptedMessage.m in Sources */,
+				237036351DC8F9980042167A /* BTCEncryptedBackup.m in Sources */,
 				2322D3911D75CEEF000E5AC1 /* SessionManager.m in Sources */,
 				23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */,
 				2322DCB41D771831000E5AC1 /* SRDelegateController.m in Sources */,
+				237036301DC8F9980042167A /* BTCPaymentMethodDetails.m in Sources */,
 				9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */,
+				237036411DC8F9980042167A /* BTCPriceSource+Tests.m in Sources */,
+				2370361E1DC8F9980042167A /* BTCScript.m in Sources */,
 				232ACBF51DAE84720072FB5E /* TransferAllFundsViewController.m in Sources */,
+				237036431DC8F9980042167A /* BTCBlockchainInfo+Tests.m in Sources */,
+				237036441DC8F9980042167A /* BTCChainCom.m in Sources */,
 				23E579541DB45F3A00220542 /* TransferAmountTableCell.m in Sources */,
 				230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */,
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,
+				2370362A1DC8F9980042167A /* BTCAddress+Tests.m in Sources */,
 				6750389B1B4D832F00F7B488 /* SideMenuViewCell.m in Sources */,
+				237036311DC8F9980042167A /* BTCPaymentMethod.m in Sources */,
 				9F1831EE151744EB00FB3D52 /* ReceiveTableCell.m in Sources */,
+				2370360D1DC8F9980042167A /* BTC256+Tests.m in Sources */,
 				67EE1DCB19E3325900DBBFC9 /* ECSlidingAnimationController.m in Sources */,
 				67470A0819D43AFE00757D46 /* BCManualPairView.m in Sources */,
 				6E2D90A21BBEC34800B719EC /* BCRecoveryView.m in Sources */,
+				2370360A1DC8F9980042167A /* BTCProtocolBuffers.m in Sources */,
 				A2599B9F1B0B5FC800C2EA81 /* BackupViewController.swift in Sources */,
+				237036241DC8F9980042167A /* BTCTransactionOutput.m in Sources */,
 				C9BE917C1945D8F600FD516D /* PEPinEntryController.m in Sources */,
+				237036231DC8F9980042167A /* BTCTransactionInput.m in Sources */,
+				237036251DC8F9980042167A /* BTCOutpoint.m in Sources */,
+				2370362F1DC8F9980042167A /* BTCPaymentMethodRequest.m in Sources */,
 				239539831B486C7100989667 /* UILabel+MultiLineAutoSize.m in Sources */,
 				A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */,
-				237034631DC8EDB70042167A /* BTCKeychain.m in Sources */,
 				9F4A5092152F585E00F9ED9D /* UIDevice+Hardware.m in Sources */,
-				2312FB0C1DC7986900B7B8B4 /* BTCBase58.m in Sources */,
 				6780DB921A40BDA70048EED2 /* AddressInOut.m in Sources */,
+				237036071DC8F9980042167A /* BTCBase58+Tests.m in Sources */,
 				2322DCC11D771831000E5AC1 /* SRSIMDHelpers.m in Sources */,
+				237036381DC8F9980042167A /* BTCEncryptedMessage+Tests.m in Sources */,
+				2370362D1DC8F9980042167A /* BTCPaymentProtocol.m in Sources */,
 				9F2780B715343A7D0015F83F /* UncaughtExceptionHandler.m in Sources */,
+				2370361F1DC8F9980042167A /* BTCScript+Tests.m in Sources */,
 				673107F219F6D49F00BE6899 /* PrivateKeyReader.m in Sources */,
 				84FC02FE19815F1B00B97D5B /* sha256.c in Sources */,
+				237036091DC8F9980042167A /* BTCProtocolSerialization+Tests.m in Sources */,
+				237036081DC8F9980042167A /* BTCProtocolSerialization.m in Sources */,
 				2322DCBF1D771831000E5AC1 /* SRMutex.m in Sources */,
 				2322DCC41D771831000E5AC1 /* NSURLRequest+SRWebSocket.m in Sources */,
 				232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */,
@@ -1958,12 +2428,19 @@
 				23F601A41D09C931009102BF /* Reachability.m in Sources */,
 				23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */,
 				23FB5C161D9ABBB20008C6AB /* TransactionDetailValueCell.m in Sources */,
+				237036031DC8F9980042167A /* NSData+BTCData.m in Sources */,
 				2322DCB81D771831000E5AC1 /* SRRunLoopThread.m in Sources */,
 				84CCFAAF197D859C00DA4482 /* NSString+NSString_EscapeQuotes.m in Sources */,
 				2390C10B1D87376E00342C38 /* TransactionRecipientsViewController.m in Sources */,
 				23FB5C071D9ABB450008C6AB /* TransactionDetailDescriptionCell.m in Sources */,
 				23BA220E1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m in Sources */,
+				237036171DC8F9980042167A /* BTCMnemonic+Tests.m in Sources */,
+				2370360B1DC8F9980042167A /* BTCQRCode.m in Sources */,
+				237036131DC8F9980042167A /* BTCKey+Tests.m in Sources */,
 				23DEF96E1DB11C98004AAAB6 /* TransferAllFundsBuilder.m in Sources */,
+				237036211DC8F9980042167A /* BTCTransaction.m in Sources */,
+				237036421DC8F9980042167A /* BTCBlockchainInfo.m in Sources */,
+				237036291DC8F9980042167A /* BTCAddress.m in Sources */,
 				A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
