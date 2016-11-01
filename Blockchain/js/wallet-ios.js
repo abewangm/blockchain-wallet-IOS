@@ -1905,14 +1905,6 @@ MyWalletPhone.newPrivateECPairObject = function(ki, network) {
     return new ECPair(ki, null, network);
 }
 
-MyWalletPhone.compareTripleEqual = function(a, b) {
-    return a === b;
-}
-
-MyWalletPhone.compareNotDoubleEqual = function(a, b) {
-    return a !== b;
-}
-
 MyWalletPhone.getNetworks = function() {
     return Networks.bitcoin;
 }

@@ -129,39 +129,36 @@
     JSValue *network;
     BOOL isPrivate;
     
-    JSValue *comparisonFunction = [app.wallet executeJSSynchronous:@"MyWalletPhone.compareTripleEqual"];
-    JSValue *comparisonNotFunction = [app.wallet executeJSSynchronous:@"MyWalletPhone.compareNotDoubleEqual"];
-    
     if ([[networks toArray] isKindOfClass:[NSArray class]]) {
-        
+
         NSPredicate *privateOrPublicVersions = [NSPredicate predicateWithBlock:^BOOL(JSValue *value, NSDictionary *bindings) {
-            return [comparisonFunction callWithArguments:@[version, [[value valueForProperty:@"bip32"] valueForProperty:@"private"]]] ||
-            [comparisonFunction callWithArguments:@[version, [[value valueForProperty:@"bip32"] valueForProperty:@"public"]]];
+            return [version isEqualToObject:[[value valueForProperty:@"bip32"] valueForProperty:@"private"]] ||
+            [version isEqualToObject:[[value valueForProperty:@"bip32"] valueForProperty:@"public"]];
         }];
         
         NSArray *filteredNetworks = [[networks toArray] filteredArrayUsingPredicate:privateOrPublicVersions];
         network = [filteredNetworks firstObject];
-        isPrivate = [comparisonFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"private"]]];
+        isPrivate = [version isEqualToObject:[[network valueForProperty:@"bip32"] valueForProperty:@"private"]];
 
-        if ([comparisonNotFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"private"]]] ||
-            [comparisonNotFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"public"]]]) {
+        if (![version isEqualToObject:[[network valueForProperty:@"bip32"] valueForProperty:@"private"]] &&
+            ![version isEqualToObject:[[network valueForProperty:@"bip32"] valueForProperty:@"public"]]) {
             DLog(@"Invalid network version");
         }
     } else {
         network = [[networks toString] isEqualToString:@"undefined"] ? [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks()"] : networks;
 
         if ([[networks toArray] isKindOfClass:[NSArray class]]) {
-            if ([comparisonNotFunction callWithArguments:@[version, [[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"]]] ||
-                [comparisonNotFunction callWithArguments:@[version, [[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"public"]]]) {
+            if (![version isEqualToObject:[[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"]] &&
+                ![version isEqualToObject:[[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"public"]]) {
                 DLog(@"Invalid network version");
             }
-            isPrivate = [comparisonFunction callWithArguments:@[version, [[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"]]];
+            isPrivate = [version isEqualToObject:[[[[network toArray] firstObject] valueForProperty:@"bip32"] valueForProperty:@"private"]];
         } else {
-            if ([comparisonNotFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"private"]]] ||
-                [comparisonNotFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"public"]]]) {
+            if (![version isEqualToObject:[[network valueForProperty:@"bip32"] valueForProperty:@"private"]] &&
+                ![version isEqualToObject:[[network valueForProperty:@"bip32"] valueForProperty:@"public"]]) {
                 DLog(@"Invalid network version");
             }
-            isPrivate = [comparisonFunction callWithArguments:@[version, [[network valueForProperty:@"bip32"] valueForProperty:@"private"]]];
+            isPrivate = [version isEqualToObject:[[network valueForProperty:@"bip32"] valueForProperty:@"private"]];
         }
 
     }
