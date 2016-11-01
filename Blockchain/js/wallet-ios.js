@@ -12,6 +12,7 @@ var RNG = Blockchain.RNG;
 var Address = Blockchain.Address;
 var Bitcoin = Blockchain.Bitcoin;
 var BigInteger = Blockchain.BigInteger;
+var BIP39 = Blockchain.BIP39;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1368,9 +1369,9 @@ WalletCrypto.stretchPassword = function (password, salt, iterations, keylen) {
     return new Buffer(retVal, 'hex');
 }
 
-MyWallet.mnemonicToSeed = function(mnemonic, enteredPassword, saltFunction) {
+BIP39.mnemonicToSeed = function(mnemonic, enteredPassword) {
     var mnemonicBuffer = new Buffer(mnemonic, 'utf8')
-    var saltBuffer = new Buffer(saltFunction(enteredPassword), 'utf8');
+    var saltBuffer = new Buffer(BIP39.salt(enteredPassword), 'utf8');
     var retVal = objc_pbkdf2_sync(mnemonicBuffer, saltBuffer, 2048, 64, 'sha512');
     return new Buffer(retVal, 'hex');
 }
