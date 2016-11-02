@@ -8,17 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
-@class HDNode, BTCKeychain;
+@class HDNode, BTCKeychain, KeyPair;
 
 @protocol ExportHDNode <JSExport>
 
 // Chain code associated with the key.
 @property (nonatomic, readonly) JSValue* chainCode;
-@property (nonatomic, readonly) JSValue* keyPair;
+@property (nonatomic, readonly) KeyPair* keyPair;
 @property (nonatomic, readonly) uint8_t depth;
 @property (nonatomic, readonly) uint32_t index;
 @property (nonatomic, readonly) uint32_t parentFingerprint;
 @property (nonatomic, readonly) BTCKeychain *keychain;
+@property (nonatomic, readonly) JSValue *network;
 
 + (HDNode *)fromSeed:(NSString *)seed buffer:(JSValue *)network;
 + (HDNode *)from:(NSString *)seed base58:(JSValue *)networks;

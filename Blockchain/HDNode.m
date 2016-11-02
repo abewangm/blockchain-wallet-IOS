@@ -19,15 +19,21 @@
 #import "BTCNetwork.h"
 #import "BTCKey.h"
 #import "BTCAddress.h"
+#import "KeyPair.h"
 
-@implementation HDNode
+@implementation HDNode {
+    JSManagedValue *_network;
+}
 
-- (JSValue *)keyPair
+- (KeyPair *)keyPair
 {
-    JSValue *keyPair = [JSValue valueWithNewObjectInContext:app.wallet.context];
-    JSValue *buffer = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"BigInteger.fromBuffer(new Buffer('%@', 'hex'))", [[self.keychain.key.privateKey hexadecimalString] escapeStringForJS]]];
-    [keyPair setValue:buffer forProperty:@"d"];
-    return keyPair;
+    KeyPair *keyPairObject = [[KeyPair alloc] initWithKey:self.keychain.key network:self.network];
+    return keyPairObject;
+}
+
+- (JSValue *)network
+{
+    return _network.value;
 }
 
 - (JSValue *)chainCode
@@ -50,10 +56,15 @@
     return self.keychain.depth;
 }
 
-- (id)initWithKeychain:(BTCKeychain *)keychain;
+- (id)initWithKeychain:(BTCKeychain *)keychain network:(JSValue *)network;
 {
     if (self = [super init]) {
         self.keychain = keychain;
+        if (network == nil || [network isNull] || [network isUndefined]) {
+            network = [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"];
+        }
+        _network = [JSManagedValue managedValueWithValue:network];
+        [[[JSContext currentContext] virtualMachine] addManagedReference:_network withOwner:self];
     }
     return self;
 }
@@ -64,7 +75,7 @@
     BTCNetwork *btcNetwork = [BTCNetwork mainnet];
     BTCKeychain *keychain = [[BTCKeychain alloc] initWithSeed:[seed dataUsingEncoding:NSUTF8StringEncoding] network:btcNetwork];
 
-    return [[HDNode alloc] initWithKeychain:keychain];
+    return [[HDNode alloc] initWithKeychain:keychain network:network];
 }
 
 - (NSString *)getAddress
@@ -85,7 +96,7 @@
 
 + (HDNode *)from:(NSString *)seed base58:(JSValue *)networks
 {
-    return [[HDNode alloc] initWithKeychain:[[BTCKeychain alloc] initWithExtendedKey:seed]];
+    return [[HDNode alloc] initWithKeychain:[[BTCKeychain alloc] initWithExtendedKey:seed] network:networks];
 }
 
 - (NSString *)getIdentifier
@@ -131,22 +142,22 @@
 
 - (HDNode *)derive:(JSValue *)_index
 {
-    return [[HDNode alloc] initWithKeychain:[self.keychain derivedKeychainAtIndex:[_index toUInt32]]];
+    return [[HDNode alloc] initWithKeychain:[self.keychain derivedKeychainAtIndex:[_index toUInt32]] network:nil];
 }
 
 - (HDNode *)deriveHardened:(JSValue *)_index
 {
-    return [[HDNode alloc] initWithKeychain:[self.keychain derivedKeychainAtIndex:[_index toUInt32] hardened:YES]];
+    return [[HDNode alloc] initWithKeychain:[self.keychain derivedKeychainAtIndex:[_index toUInt32] hardened:YES] network:nil];
 }
 
 - (HDNode *)derivePath:(JSValue *)_path
 {
-    return [[HDNode alloc] initWithKeychain:[self.keychain derivedKeychainWithPath:[_path toString]]];
+    return [[HDNode alloc] initWithKeychain:[self.keychain derivedKeychainWithPath:[_path toString]] network:nil];
 }
 
 - (HDNode *)neutered
 {
-    return [[HDNode alloc] initWithKeychain:[[BTCKeychain alloc] initWithExtendedKey:self.keychain.extendedPublicKey]];
+    return [[HDNode alloc] initWithKeychain:[[BTCKeychain alloc] initWithExtendedKey:self.keychain.extendedPublicKey] network:nil];
 }
 
 @end

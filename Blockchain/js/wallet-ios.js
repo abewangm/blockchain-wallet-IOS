@@ -13,6 +13,8 @@ var Address = Blockchain.Address;
 var Bitcoin = Blockchain.Bitcoin;
 var BigInteger = Blockchain.BigInteger;
 var BIP39 = Blockchain.BIP39;
+var Networks = Blockchain.Networks;
+var ECDSA = Blockchain.ECDSA;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1878,4 +1880,12 @@ MyWalletPhone.getDefaultAccountLabelledAddressesCount = function() {
     }
     
     return MyWallet.wallet.hdwallet.defaultAccount.receivingAddressesLabels.length;
+}
+
+MyWalletPhone.getNetworks = function() {
+    return Networks;
+}
+
+MyWalletPhone.getECDSA = function() {
+    return ECDSA;
 }
