@@ -86,7 +86,7 @@
     return self.key.WIF;
 }
 
-- (KeyPair *)verify:(NSString *)hash signature:(NSString *)signature
+- (KeyPair *)verif:(NSString *)hash y:(NSString *)signature
 {
     BTCKey *key = [BTCKey verifySignature:[signature dataUsingEncoding:NSUTF8StringEncoding] forMessage:hash];
     return [[KeyPair alloc] initWithKey:key network:nil];
