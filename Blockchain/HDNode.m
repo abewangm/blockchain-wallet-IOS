@@ -160,4 +160,14 @@
     return [[HDNode alloc] initWithKeychain:[[BTCKeychain alloc] initWithExtendedKey:self.keychain.extendedPublicKey] network:nil];
 }
 
+- (JSValue *)sign:(JSValue *)hash
+{
+    return [self.keyPair sign:hash];
+}
+
+- (KeyPair *)verif:(NSString *)hash y:(NSString *)signature
+{
+    return [self.keyPair verif:hash y:signature];
+}
+
 @end
