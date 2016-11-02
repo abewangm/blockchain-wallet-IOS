@@ -20,8 +20,6 @@
 #import "BTCKey.h"
 #import "BTCAddress.h"
 
-@interface HDNode()
-@end
 @implementation HDNode
 
 - (JSValue *)keyPair

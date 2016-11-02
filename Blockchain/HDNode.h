@@ -13,12 +13,12 @@
 @protocol ExportHDNode <JSExport>
 
 // Chain code associated with the key.
-@property (readonly) JSValue* chainCode;
-@property (readonly) JSValue* keyPair;
-@property (readonly) uint8_t depth;
-@property (readonly) uint32_t index;
-@property (readonly) uint32_t parentFingerprint;
-@property (readonly) BTCKeychain *keychain;
+@property (nonatomic, readonly) JSValue* chainCode;
+@property (nonatomic, readonly) JSValue* keyPair;
+@property (nonatomic, readonly) uint8_t depth;
+@property (nonatomic, readonly) uint32_t index;
+@property (nonatomic, readonly) uint32_t parentFingerprint;
+@property (nonatomic, readonly) BTCKeychain *keychain;
 
 + (HDNode *)fromSeed:(NSString *)seed buffer:(JSValue *)network;
 + (HDNode *)from:(NSString *)seed base58:(JSValue *)networks;
@@ -37,5 +37,5 @@
 @end
 
 @interface HDNode : NSObject <ExportHDNode>
-@property BTCKeychain *keychain;
+@property (nonatomic) BTCKeychain *keychain;
 @end
