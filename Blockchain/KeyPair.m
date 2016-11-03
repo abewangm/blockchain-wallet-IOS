@@ -49,7 +49,7 @@
 
 + (KeyPair *)fromPublicKey:(NSString *)buffer buffer:(JSValue *)network
 {
-    BTCKey *key = [[BTCKey alloc] initWithPrivateKey:[buffer dataUsingEncoding:NSUTF8StringEncoding]];
+    BTCKey *key = [[BTCKey alloc] initWithPublicKey:[buffer dataUsingEncoding:NSUTF8StringEncoding]];
     return [[KeyPair alloc] initWithKey:key network:network];
 }
 
