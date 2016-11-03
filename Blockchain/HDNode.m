@@ -73,25 +73,26 @@
 {
     // TODO: make TestNet compatible
     BTCNetwork *btcNetwork = [BTCNetwork mainnet];
-    BTCKeychain *keychain = [[BTCKeychain alloc] initWithSeed:[seed dataUsingEncoding:NSUTF8StringEncoding] network:btcNetwork];
+    BTCKeychain *keychain = [[BTCKeychain alloc] initWithSeed:BTCDataFromHex(seed) network:btcNetwork];
 
     return [[HDNode alloc] initWithKeychain:keychain network:network];
 }
 
 - (NSString *)getAddress
 {
-    return self.keychain.key.address.string;
+    return [self.keyPair getAddress];
 }
 
-+ (HDNode *)fromSeed:(NSString *)seed buffer:(JSValue *)network;
++ (HDNode *)fromSeed:(JSValue *)seed buffer:(JSValue *)network;
 {
-    return [HDNode fromSeed:seed network:network];
+    JSValue *hex = [app.wallet executeJSSynchronous:@"'hex'"];
+    NSString *seedString = [[seed invokeMethod:@"toString" withArguments:@[hex]] toString];
+    return [HDNode fromSeed:seedString network:network];
 }
 
 + (HDNode *)fromSeed:(JSValue *)hex hex:(JSValue *)network
 {
-    JSValue *seed = [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", [hex toString]]];
-    return [HDNode fromSeed:[seed toString] buffer:network];
+    return [HDNode fromSeed:hex buffer:network];
 }
 
 + (HDNode *)from:(NSString *)seed base58:(JSValue *)networks
@@ -117,7 +118,7 @@
 
 - (JSValue *)getPublicKeyBuffer
 {
-    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", self.keychain.extendedPublicKey]];
+    return [self.keyPair getPublicKeyBuffer];
 }
 
 - (BOOL)isNeutered

@@ -21,7 +21,7 @@
 @property (nonatomic, readonly) BTCKeychain *keychain;
 @property (nonatomic, readonly) JSValue *network;
 
-+ (HDNode *)fromSeed:(NSString *)seed buffer:(JSValue *)network;
++ (HDNode *)fromSeed:(JSValue *)seed buffer:(JSValue *)network;
 + (HDNode *)from:(NSString *)seed base58:(JSValue *)networks;
 - (NSString *)getAddress;
 - (NSString *)getIdentifier;
