@@ -193,7 +193,6 @@
 - (IBAction)manualPairClicked:(id)sender;
 
 - (IBAction)accountsAndAddressesClicked:(id)sender;
-- (IBAction)contactsClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
 - (IBAction)securityCenterClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
