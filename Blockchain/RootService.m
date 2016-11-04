@@ -2370,7 +2370,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)paymentReceived:(NSDecimalNumber *)amount
 {
-    if (_tabViewController.selectedIndex == TAB_RECEIVE) {
+    if (_tabViewController.selectedIndex == TAB_RECEIVE && !_sendViewController.isSending) {
         [_receiveViewController paymentReceived:amount];
     }
 }
