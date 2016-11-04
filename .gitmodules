@@ -7,6 +7,3 @@
 [submodule "Submodules/SocketRocket"]
 	path = Submodules/SocketRocket
 	url = git@github.com:blockchain/SocketRocket.git
-[submodule "Submodules/CoreBitcoin"]
-	path = Submodules/CoreBitcoin
-	url = git@github.com:oleganza/CoreBitcoin.git
