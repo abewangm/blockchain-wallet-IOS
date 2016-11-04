@@ -377,6 +377,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0}; Promise = undefined;\n%@\n%@"
 
+#define JAVASCRIPTCORE_CLASS_HDNODE @"HDNode"
+#define JAVASCRIPTCORE_BITCOIN_INIT @"var Bitcoin = require('bitcoinjs-lib');"
+#define JAVASCRIPTCORE_BITCOIN @"Bitcoin"
 #define JAVASCRIPTCORE_CLASS_XMLHTTPREQUEST @"XMLHttpRequest"
 #define JAVASCRIPTCORE_STACK @"stack"
 #define JAVASCRIPTCORE_LINE @"line"

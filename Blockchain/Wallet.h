@@ -39,7 +39,7 @@
 @property(nonatomic, assign) int tag;
 @end
 
-@class Wallet, Transaction;
+@class Wallet, Transaction, JSValue, JSContext;
 
 @protocol WalletDelegate <NSObject>
 @optional
@@ -107,6 +107,8 @@
 }
 
 // Core Wallet Init Properties
+@property (readonly, nonatomic) JSContext *context;
+
 @property(nonatomic, strong) NSString *guid;
 @property(nonatomic, strong) NSString *sharedKey;
 @property(nonatomic, strong) NSString *password;
@@ -348,5 +350,7 @@
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
 - (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction filter:(NSInteger)filter;
+
+- (JSValue *)executeJSSynchronous:(NSString *)command;
 
 @end

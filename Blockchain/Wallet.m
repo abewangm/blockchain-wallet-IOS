@@ -24,6 +24,11 @@
 #import <openssl/evp.h>
 #import "SessionManager.h"
 #import "NSURLRequest+SRWebSocket.h"
+#import <CommonCrypto/CommonKeyDerivation.h>
+#import "HDNode.h"
+
+#import "BTCKey.h"
+#import "BTCData.h"
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -79,7 +84,10 @@
     NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT, walletJSSource, walletiOSSource];
     self.context = [[JSContext alloc] init];
     
-    self.context[JAVASCRIPTCORE_CLASS_XMLHTTPREQUEST] = [ModuleXMLHttpRequest class];
+    [self.context evaluateScript:@"var console = {};"];
+    self.context[@"console"][@"log"] = ^(NSString *message) {
+        DLog(@"Javascript log: %@",message);
+    };
     
     self.context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
         NSString *stacktrace = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_STACK] toString];
@@ -88,11 +96,7 @@
         
         DLog(@"%@ \nstack: %@\nline number: %@", [exception toString], stacktrace, lineNumber);
     };
-    
-    [self.context evaluateScript:JAVASCRIPTCORE_CONSOLE_INIT];
-    self.context[JAVASCRIPTCORE_CONSOLE][JAVASCRIPTCORE_LOG] = ^(NSString *message) {
-        DLog(@"Javascript log: %@",message);
-    };
+
     
     // Add setTimout
     self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* function, JSValue* timeout) {
@@ -120,6 +124,31 @@
     __weak Wallet *weakSelf = self;
     
 #pragma mark Decryption
+    
+    self.context[@"objc_message_verify"] = ^(NSString *publicKey, NSString *signature, NSString *message) {
+        NSData *publicKeyDataFromHex = BTCDataFromHex(publicKey);
+        BTCKey *publicKeyHexKey = [[BTCKey alloc] initWithPublicKey:publicKeyDataFromHex];
+        
+        NSData *signatureData = BTCDataFromHex(signature);
+        NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
+        return [publicKeyHexKey isValidSignature:signatureData forBinaryMessage:messageData];
+    };
+    
+    self.context[@"objc_pbkdf2_sync"] = ^(NSString *mnemonicBuffer, NSString *saltBuffer, int iterations, int keylength, NSString *digest) {
+        // Salt data getting from salt string.
+        NSData *saltData = [saltBuffer dataUsingEncoding:NSUTF8StringEncoding];
+        
+        // Data of String to generate Hash key(hexa decimal string).
+        NSData *passwordData = [mnemonicBuffer dataUsingEncoding:NSUTF8StringEncoding];
+        
+        // Hash key (hexa decimal) string data length.
+        NSMutableData *hashKeyData = [NSMutableData dataWithLength:keylength];
+        
+        // Key Derivation using PBKDF2 algorithm.
+        int result = CCKeyDerivationPBKDF(kCCPBKDF2, passwordData.bytes, passwordData.length, saltData.bytes, saltData.length, kCCPRFHmacAlgSHA512, iterations, hashKeyData.mutableBytes, hashKeyData.length);
+        
+        return [hashKeyData hexadecimalString];
+    };
     
     self.context[@"objc_sjcl_misc_pbkdf2"] = ^(NSString *_password, id _salt, int iterations, int keylength, NSString *hmacSHA1) {
         
@@ -180,6 +209,10 @@
     
     self.context[@"objc_loading_start_download_wallet"] = ^(){
         [weakSelf loading_start_download_wallet];
+    };
+    
+    self.context[@"objc_loading_start_get_wallet_and_history"] = ^() {
+        [weakSelf loading_start_get_wallet_and_history];
     };
     
     self.context[@"objc_loading_stop"] = ^(){
@@ -454,6 +487,10 @@
         [weakSelf on_backup_wallet_success];
     };
     
+    self.context[@"objc_on_backup_wallet_error"] = ^() {
+        [weakSelf on_backup_wallet_error];
+    };
+    
     self.context[@"objc_on_get_session_token"] = ^(NSString *token) {
         [weakSelf on_get_session_token:token];
     };
@@ -596,6 +633,9 @@
     
     [self.context evaluateScript:jsSource];
     
+    self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
+    self.context[@"Bitcoin"][@"HDNode"] = [HDNode class];
+    self.context[@"HDNode"] = [HDNode class];
     [self login];
 }
 
@@ -1863,6 +1903,11 @@
 - (int)getDefaultAccountLabelledAddressesCount
 {
     return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountLabelledAddressesCount()"] toNumber] intValue];
+}
+
+- (JSValue *)executeJSSynchronous:(NSString *)command
+{
+    return [self.context evaluateScript:command];
 }
 
 # pragma mark - Transaction handlers
