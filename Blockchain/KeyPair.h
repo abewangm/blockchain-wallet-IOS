@@ -26,8 +26,7 @@
 - (JSValue *)sign:(JSValue *)hash;
 - (NSString *)toWIF;
 
-// Cannot override this function without changing its name in the JS because its # of capital letters is less than the # of parameters. To override <verify> as below, <verify> would have to be changed to <verifY> because JavaScriptCore camel-cases between parameters. Alternatively, <verify:(JSValue *)args> may be used if the function can be changed in the JS to take only one parameter containing the others.
-- (KeyPair *)verif:(NSString *)hash y:(NSString *)signature;
+- (BOOL)verify:(NSString *)hash signature:(NSString *)signature;
 @end
 
 @interface KeyPair : NSObject <ExportKeyPair>

@@ -27,6 +27,9 @@
 #import <CommonCrypto/CommonKeyDerivation.h>
 #import "HDNode.h"
 
+#import "BTCKey.h"
+#import "BTCData.h"
+
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
 @property (nonatomic) BOOL isSettingDefaultAccount;
@@ -121,7 +124,16 @@
     __weak Wallet *weakSelf = self;
     
 #pragma mark Decryption
-     
+    
+    self.context[@"objc_message_verify"] = ^(NSString *publicKey, NSString *signature, NSString *message) {
+        NSData *publicKeyDataFromHex = BTCDataFromHex(publicKey);
+        BTCKey *publicKeyHexKey = [[BTCKey alloc] initWithPublicKey:publicKeyDataFromHex];
+        
+        NSData *signatureData = BTCDataFromHex(signature);
+        NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
+        return [publicKeyHexKey isValidSignature:signatureData forBinaryMessage:messageData];
+    };
+    
     self.context[@"objc_pbkdf2_sync"] = ^(NSString *mnemonicBuffer, NSString *saltBuffer, int iterations, int keylength, NSString *digest) {
         // Salt data getting from salt string.
         NSData *saltData = [saltBuffer dataUsingEncoding:NSUTF8StringEncoding];

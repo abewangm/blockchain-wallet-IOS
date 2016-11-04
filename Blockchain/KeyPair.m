@@ -86,10 +86,11 @@
     return self.key.WIF;
 }
 
-- (KeyPair *)verif:(NSString *)hash y:(NSString *)signature
+- (BOOL)verify:(NSString *)hash signature:(NSString *)signature;
 {
-    BTCKey *key = [BTCKey verifySignature:[signature dataUsingEncoding:NSUTF8StringEncoding] forMessage:hash];
-    return [[KeyPair alloc] initWithKey:key network:nil];
+    NSData *hashData = [hash dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *signatureData = [signature dataUsingEncoding:NSUTF8StringEncoding];
+    return [self.key isValidSignature:signatureData hash:hashData];
 }
 
 - (JSValue *)bufferFromData:(NSData *)data

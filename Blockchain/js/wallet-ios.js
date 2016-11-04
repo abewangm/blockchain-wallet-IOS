@@ -15,6 +15,7 @@ var BigInteger = Blockchain.BigInteger;
 var BIP39 = Blockchain.BIP39;
 var Networks = Blockchain.Networks;
 var ECDSA = Blockchain.ECDSA;
+var Metadata = Blockchain.Metadata;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1376,6 +1377,10 @@ BIP39.mnemonicToSeed = function(mnemonic, enteredPassword) {
     var saltBuffer = new Buffer(BIP39.salt(enteredPassword), 'utf8');
     var retVal = objc_pbkdf2_sync(mnemonicBuffer, saltBuffer, 2048, 64, 'sha512');
     return new Buffer(retVal, 'hex');
+}
+
+Metadata.prototype._verify = function (signature, message) {
+    return objc_message_verify(this._node.getPublicKeyBuffer().toString('hex'), signature.toString('hex'), message);
 }
 
 // TODO what should this value be?

@@ -166,9 +166,9 @@
     return [self.keyPair sign:hash];
 }
 
-- (KeyPair *)verif:(NSString *)hash y:(NSString *)signature
+- (BOOL)verify:(NSString *)hash signature:(NSString *)signature
 {
-    return [self.keyPair verif:hash y:signature];
+    return [self.keyPair verify:hash signature:signature];
 }
 
 @end
