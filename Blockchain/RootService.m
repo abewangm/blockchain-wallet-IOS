@@ -43,6 +43,7 @@
 #import "KeychainItemWrapper+SwipeAddresses.h"
 #import "NSString+SHA256.h"
 #import "Blockchain-Swift.h"
+#import "ContactsViewController.h"
 
 @implementation RootService
 
@@ -1736,6 +1737,17 @@ void (^secondPasswordSuccess)(NSString *);
 
 #pragma mark - Show Screens
 
+- (void)showContacts
+{
+    ContactsViewController *contactsViewController = [ContactsViewController new];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:contactsViewController title:BC_STRING_CONTACTS];
+    
+    self.topViewControllerDelegate = navigationController;
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    [_tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
 - (void)showAccountsAndAddresses
 {
     if (!_accountsAndAddressesNavigationController) {
@@ -1980,6 +1992,13 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (!_tabViewController.presentedViewController) {
         [app showAccountsAndAddresses];
+    }
+}
+
+- (IBAction)contactsClicked:(id)sender
+{
+    if (!_tabViewController.presentedViewController) {
+        [app showContacts];
     }
 }
 
