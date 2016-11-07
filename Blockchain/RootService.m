@@ -124,6 +124,8 @@ void (^secondPasswordSuccess)(NSString *);
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app.window = appDelegate.window;
     
+    [self registerForPushNotifications];
+    
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING : @YES}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED : @YES}];
 #ifndef ENABLE_DEBUG_MENU
@@ -374,7 +376,33 @@ void (^secondPasswordSuccess)(NSString *);
     return YES;
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    DLog(@"User received remote notification");
+}
+
 #pragma mark - Setup
+
+- (void)registerForPushNotifications
+{
+    if (SYSTEM_VERSION_LESS_THAN(@"10.0")) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+             if (!error) {
+                 [[UIApplication sharedApplication] registerForRemoteNotifications];
+                 DLog( @"Push registration success." );
+             } else {
+                 DLog( @"Push registration FAILED" );
+                 DLog( @"ERROR: %@ - %@", error.localizedFailureReason, error.localizedDescription );
+                 DLog( @"SUGGESTIONS: %@ - %@", error.localizedRecoveryOptions, error.localizedRecoverySuggestion );
+             }  
+         }];
+    }
+}
 
 - (void)setupBtcFormatter
 {

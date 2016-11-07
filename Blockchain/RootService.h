@@ -26,12 +26,13 @@
 #import "TransferAllFundsViewController.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "CertificatePinner.h"
+#import <UserNotifications/UserNotifications.h>
 
 @protocol TopViewController;
 
 @class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController;
 
-@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate> {
+@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate> {
     
     Wallet *wallet;
     
