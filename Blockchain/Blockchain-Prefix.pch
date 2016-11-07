@@ -112,6 +112,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define URL_PUSH_NOTIFICATIONS_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT @"https://blockchain.info/wallet?method=update-ios&guid=%@&sharedKey=%@&payload=%@&length=%lu"
+
 #define CERTIFICATE_SERVER_NAME @"blockchain"
 #define CERTIFICATE_FILE_TYPE_DER @"der"
 

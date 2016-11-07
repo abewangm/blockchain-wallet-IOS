@@ -93,6 +93,8 @@
 
 @property (strong, nonatomic) TransferAllFundsViewController *transferAllFundsModalController;
 
+@property(nonatomic) NSString *deviceToken;
+
 // PIN Entry
 @property (nonatomic, strong) PEPinEntryController *pinEntryViewController;
 @property (nonatomic, copy) void (^pinViewControllerCallback)(BOOL);

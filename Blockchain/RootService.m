@@ -124,8 +124,6 @@ void (^secondPasswordSuccess)(NSString *);
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app.window = appDelegate.window;
     
-    [self registerForPushNotifications];
-    
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING : @YES}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED : @YES}];
 #ifndef ENABLE_DEBUG_MENU
@@ -183,6 +181,8 @@ void (^secondPasswordSuccess)(NSString *);
     symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
     
     [self showWelcomeOrPinScreen];
+    
+    [self requestAuthorizationForPushNotifications];
     
     return YES;
 }
@@ -381,9 +381,21 @@ void (^secondPasswordSuccess)(NSString *);
     DLog(@"User received remote notification");
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    const char *data = [deviceToken bytes];
+    NSMutableString *token = [NSMutableString string];
+    
+    for (NSUInteger i = 0; i < [deviceToken length]; i++) {
+        [token appendFormat:@"%02.2hhX", data[i]];
+    }
+    
+    self.deviceToken = [token copy];
+}
+
 #pragma mark - Setup
 
-- (void)registerForPushNotifications
+- (void)requestAuthorizationForPushNotifications
 {
     if (SYSTEM_VERSION_LESS_THAN(@"10.0")) {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
@@ -402,6 +414,27 @@ void (^secondPasswordSuccess)(NSString *);
              }  
          }];
     }
+}
+
+- (void)registerDeviceForPushNotifications
+{
+    NSMutableURLRequest *notificationsRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:URL_PUSH_NOTIFICATIONS_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT, [self.wallet guid], [self.wallet sharedKey], self.deviceToken, (unsigned long)[self.deviceToken length]]]];
+    [notificationsRequest setHTTPMethod:@"POST"];
+    
+    NSURLSessionDataTask *dataTask = [[SessionManager sharedSession] dataTaskWithRequest:notificationsRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            DLog(@"Error registering device with backend: %@", [error localizedDescription]);
+        }
+        NSError *jsonError;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        if (jsonError) {
+            DLog(@"Error parsing response from registering device with backend: %@", [error localizedDescription]);
+        } else {
+            DLog(@"Register notifications result: %@", result);
+        }
+    }];
+    
+    [dataTask resume];
 }
 
 - (void)setupBtcFormatter
@@ -846,6 +879,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
+    
+    [self registerDeviceForPushNotifications];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
