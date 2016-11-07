@@ -136,12 +136,14 @@
         cell.textLabel.text = BC_STRING_FROM;
         cell.detailTextLabel.text = self.addressesUsed == nil ? @"" : [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [self.addressesUsed count]];
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else if (indexPath.row == 1) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = BC_STRING_TO;
         cell.detailTextLabel.text = [self.transferPaymentBuilder getLabelForDestinationAccount];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         return cell;
     } else if (indexPath.row == 2) {
         TransferAmountTableCell *cell = [[TransferAmountTableCell alloc] init];
@@ -149,6 +151,7 @@
         cell.fiatLabel.text = [self.transferPaymentBuilder formatMoney:self.amount localCurrency:YES];
         cell.btcLabel.text = [self.transferPaymentBuilder formatMoney:self.amount localCurrency:NO];
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
         TransferAmountTableCell *cell = [[TransferAmountTableCell alloc] init];
@@ -156,6 +159,7 @@
         cell.fiatLabel.text = [self.transferPaymentBuilder formatMoney:self.fee localCurrency:YES];
         cell.btcLabel.text = [self.transferPaymentBuilder formatMoney:self.fee localCurrency:NO];
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 }
