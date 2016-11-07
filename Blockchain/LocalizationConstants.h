@@ -366,6 +366,7 @@
 #define BC_STRING_SETTINGS_SWIPE_TO_RECEIVE_IN_FIVES_FOOTER NSLocalizedString(@"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Five addresses will be loaded consecutively, after which logging in is required to show new addresses.", nil)
 #define BC_STRING_SETTINGS_SWIPE_TO_RECEVE_IN_SINGLES_FOOTER NSLocalizedString(@"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Only one address will be loaded, logging in is required to show a new address.", nil)
 #define BC_STRING_SETTINGS_ABOUT NSLocalizedString(@"About", nil)
+#define BC_STRING_SETTINGS_ABOUT_US NSLocalizedString(@"About Us", nil)
 #define BC_STRING_SETTINGS_PRIVACY_POLICY NSLocalizedString(@"Privacy Policy", nil)
 #define BC_STRING_SETTINGS_TERMS_OF_SERVICE NSLocalizedString(@"Terms of Service", nil)
 #define BC_STRING_SETTINGS_VERIFY NSLocalizedString(@"Verify", nil)
@@ -525,6 +526,11 @@
 #define BC_STRING_FEE_INFORMATION_DUST NSLocalizedString(@"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned.", nil)
 
 #define BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER NSLocalizedString(@"What's this for?", nil)
+
+#define BC_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
+#define BC_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
+#define BC_STRING_BLOCKCHAIN_LUXEMBOURG_SA NSLocalizedString(@"Blockchain Luxembourg S.A.", nil)
+#define BC_STRING_BLOCKCHAIN_ALL_RIGHTS_RESERVED NSLocalizedString(@"All rights reserved.", nil)
 
 #define BC_STRING_APP_REVIEW_PROMPT_TITLE NSLocalizedString(@"Rate Blockchain Wallet", nil)
 #define BC_STRING_YES_RATE_BLOCKCHAIN_WALLET NSLocalizedString(@"Yes, rate Blockchain Wallet", nil)

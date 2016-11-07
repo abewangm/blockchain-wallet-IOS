@@ -8,13 +8,14 @@
 
 #import "SettingsTableViewController.h"
 #import "SettingsSelectorTableViewController.h"
-#import "SettingsAboutViewController.h"
+#import "SettingsWebViewController.h"
 #import "SettingsBitcoinUnitTableViewController.h"
 #import "SecurityCenterViewController.h"
 #import "SettingsTwoStepViewController.h"
 #import "Blockchain-Swift.h"
 #import "RootService.h"
 #import "KeychainItemWrapper+SwipeAddresses.h"
+#import "SettingsAboutUsViewController.h"
 
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;
@@ -58,8 +59,9 @@ const int PINTouchID = -1;
 #endif
 
 const int aboutSection = 7;
-const int aboutTermsOfService = 0;
-const int aboutPrivacyPolicy = 1;
+const int aboutUs = 0;
+const int aboutTermsOfService = 1;
+const int aboutPrivacyPolicy = 2;
 
 @interface SettingsTableViewController () <UITextFieldDelegate>
 
@@ -263,6 +265,29 @@ const int aboutPrivacyPolicy = 1;
     } else {
         [self presentViewController:alertForError animated:YES completion:nil];
     }
+}
+
+- (void)showAboutUs
+{
+    SettingsAboutUsViewController *aboutViewController = [[SettingsAboutUsViewController alloc] init];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:aboutViewController title:nil];
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)showTermsOfService
+{
+    SettingsWebViewController *aboutViewController = [[SettingsWebViewController alloc] init];
+    aboutViewController.urlTargetString = [URL_SERVER stringByAppendingString:URL_SUFFIX_TERMS_OF_SERVICE];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:aboutViewController title:BC_STRING_SETTINGS_TERMS_OF_SERVICE];
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)showPrivacyPolicy
+{
+    SettingsWebViewController *aboutViewController = [[SettingsWebViewController alloc] init];
+    aboutViewController.urlTargetString = [URL_SERVER stringByAppendingString:URL_SUFFIX_PRIVACY_POLICY];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:aboutViewController title:BC_STRING_SETTINGS_PRIVACY_POLICY];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 #pragma mark - Change Fee per KB
@@ -1044,13 +1069,6 @@ const int aboutPrivacyPolicy = 1;
         SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
         settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
         settingsSelectorTableViewController.allCurrencySymbolsDictionary = self.allCurrencySymbolsDictionary;
-    } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_ABOUT]) {
-        SettingsAboutViewController *aboutViewController = segue.destinationViewController;
-        if ([sender isEqualToString:SEGUE_SENDER_TERMS_OF_SERVICE]) {
-            aboutViewController.urlTargetString = [URL_SERVER stringByAppendingString:TERMS_OF_SERVICE_URL_SUFFIX];
-        } else if ([sender isEqualToString:SEGUE_SENDER_PRIVACY_POLICY]) {
-            aboutViewController.urlTargetString = [URL_SERVER stringByAppendingString:PRIVACY_POLICY_URL_SUFFIX];
-        }
     } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_BTC_UNIT]) {
         SettingsBitcoinUnitTableViewController *settingsBtcUnitTableViewController = segue.destinationViewController;
         settingsBtcUnitTableViewController.itemsDictionary = [app.wallet getBtcCurrencies];
@@ -1162,12 +1180,16 @@ const int aboutPrivacyPolicy = 1;
         }
         case aboutSection: {
             switch (indexPath.row) {
+                case aboutUs: {
+                    [self showAboutUs];
+                    return;
+                }
                 case aboutTermsOfService: {
-                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_TERMS_OF_SERVICE];
+                    [self showTermsOfService];
                     return;
                 }
                 case aboutPrivacyPolicy: {
-                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_PRIVACY_POLICY];
+                    [self showPrivacyPolicy];
                     return;
                 }
             }
@@ -1199,7 +1221,7 @@ const int aboutPrivacyPolicy = 1;
                 return 1;
             }
         }
-        case aboutSection: return 2;
+        case aboutSection: return 3;
         default: return 0;
     }
 }
@@ -1256,7 +1278,7 @@ const int aboutPrivacyPolicy = 1;
             switch (indexPath.row) {
                 case preferencesEmail: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
                     
                     if ([self getUserEmail] != nil && [app.wallet getEmailVerifiedStatus] == YES) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
@@ -1272,7 +1294,6 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionSMSFooter: {
             switch (indexPath.row) {
                 case preferencesMobileNumber: {
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.textLabel.text = BC_STRING_SETTINGS_MOBILE_NUMBER;
                     if ([app.wallet hasVerifiedMobileNumber]) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
@@ -1281,7 +1302,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
                     return [self adjustFontForCell:cell];
                 }
             }
@@ -1361,7 +1382,7 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_NOT_STORED;
                     }
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
                     return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityPasswordChange) {
@@ -1373,7 +1394,7 @@ const int aboutPrivacyPolicy = 1;
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS;
                     BOOL torBlockingEnabled = [app.wallet getTorBlockingStatus];
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
                     if (torBlockingEnabled) {
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                         cell.detailTextLabel.text = BC_STRING_BLOCKED;
@@ -1393,14 +1414,14 @@ const int aboutPrivacyPolicy = 1;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNCONFIRMED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
                     return [self adjustFontForCell:cell];
                 }
         }
         case PINSection: {
             if (indexPath.row == PINChangePIN) {
                 cell.textLabel.text = BC_STRING_CHANGE_PIN;
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.accessoryType = UITableViewCellAccessoryNone;
                 return cell;
             }
             if (indexPath.row == PINTouchID) {
@@ -1435,8 +1456,12 @@ const int aboutPrivacyPolicy = 1;
             }
         }
         case aboutSection: {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.accessoryType = UITableViewCellAccessoryNone;
             switch (indexPath.row) {
+                case aboutUs: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_ABOUT_US;
+                    return cell;
+                }
                 case aboutTermsOfService: {
                     cell.textLabel.text = BC_STRING_SETTINGS_TERMS_OF_SERVICE;
                     return cell;

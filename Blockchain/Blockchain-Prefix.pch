@@ -109,6 +109,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define COPYRIGHT_YEAR @"2016"
+
 #define CERTIFICATE_SERVER_NAME @"blockchain"
 #define CERTIFICATE_FILE_TYPE_DER @"der"
 
@@ -197,8 +199,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS @"ChangeTorBlocking"
 #define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR @"ChangeTorBlockingError"
 
-#define TERMS_OF_SERVICE_URL_SUFFIX @"/Resources/TermsofServicePolicy.pdf"
-#define PRIVACY_POLICY_URL_SUFFIX @"/Resources/PrivacyPolicy.pdf"
+#define URL_SUFFIX_TERMS_OF_SERVICE @"/Resources/TermsofServicePolicy.pdf"
+#define URL_SUFFIX_PRIVACY_POLICY @"/Resources/PrivacyPolicy.pdf"
 
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
@@ -208,6 +210,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT @"accountsAndAddressesDetailEdit"
 #define SEGUE_IDENTIFIER_TWO_STEP @"twoStep"
 
+#define SEGUE_SENDER_ABOUT_US @"aboutUs"
 #define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
 #define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
 #define SEGUE_IDENTIFIER_SECURITY_CENTER @"securityCenter"
