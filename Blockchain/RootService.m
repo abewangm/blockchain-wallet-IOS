@@ -418,7 +418,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)registerDeviceForPushNotifications
 {
-    NSMutableURLRequest *notificationsRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:URL_PUSH_NOTIFICATIONS_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT, [self.wallet guid], [self.wallet sharedKey], self.deviceToken, (unsigned long)[self.deviceToken length]]]];
+    NSMutableURLRequest *notificationsRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT, URL_SERVER, [self.wallet guid], [self.wallet sharedKey], self.deviceToken, (unsigned long)[self.deviceToken length]]]];
     [notificationsRequest setHTTPMethod:@"POST"];
     
     NSURLSessionDataTask *dataTask = [[SessionManager sharedSession] dataTaskWithRequest:notificationsRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
