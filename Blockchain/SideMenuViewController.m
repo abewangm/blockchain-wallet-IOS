@@ -30,7 +30,7 @@ ECSlidingViewController *sideMenu;
 
 UITapGestureRecognizer *tapToCloseGestureRecognizer;
 
-const int menuEntries = 7;
+const int menuEntries = 6;
 int balanceEntries = 0;
 int accountEntries = 0;
 
@@ -257,8 +257,6 @@ int accountEntries = 0;
     
     if (row == MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES) {
         [app accountsAndAddressesClicked:nil];
-    } else if (row == MENU_CELL_INDEX_CONTACTS) {
-        [app contactsClicked:nil];
     } else if (row == MENU_CELL_INDEX_SETTINGS) {
         [app accountSettingsClicked:nil];
     } else if (row == MENU_CELL_INDEX_MERCHANT){
@@ -398,7 +396,7 @@ int accountEntries = 0;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_CONTACTS, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
         
         NSString *upgradeOrSecurityCenterImage;
         if (!app.wallet.didUpgradeToHd) {
@@ -410,7 +408,7 @@ int accountEntries = 0;
         }
         NSMutableArray *images;
 
-        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"contacts_icon", @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
         
         cell.textLabel.text = titles[indexPath.row];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
@@ -427,9 +425,6 @@ int accountEntries = 0;
             } else {
                 [cell.imageView setTintColor:COLOR_SECURITY_CENTER_RED];
             }
-        } else if ([images[indexPath.row] isEqualToString:@"contacts_icon"]) {
-            cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            [cell.imageView setTintColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
         }
         
         return cell;
