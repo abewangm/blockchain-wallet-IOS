@@ -76,6 +76,25 @@
 
 - (void)newContactClicked:(id)sender
 {
+    UIAlertController *createContactOptionsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_SCAN_QR_CODE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self scanQRCode];
+    }]];
+    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_ENTER_NAME_AND_ID style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self enterNameAndID];
+    }]];
+    
+    [self presentViewController:createContactOptionsAlert animated:YES completion:nil];
+}
+
+- (void)scanQRCode
+{
+    
+}
+
+- (void)enterNameAndID
+{
     BCCreateContactView *createContactView = [[BCCreateContactView alloc] init];
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactView];
