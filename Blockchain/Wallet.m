@@ -417,6 +417,10 @@
         [weakSelf on_add_new_account];
     };
     
+    self.context[@"objc_on_error_account_name_in_use"] = ^() {
+        [weakSelf on_error_account_name_in_use];
+    };
+    
     self.context[@"objc_on_error_add_new_account"] = ^(NSString *error) {
         [weakSelf on_error_add_new_account:error];
     };
