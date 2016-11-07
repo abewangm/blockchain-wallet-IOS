@@ -768,7 +768,8 @@
         [delegate setupBackupTransferAll:transferAllController];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector setupBackupTransferAll!", [delegate class]);
-    }}
+    }
+}
 
 # pragma mark - Socket Delegate
 

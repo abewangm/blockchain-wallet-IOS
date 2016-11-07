@@ -7,6 +7,9 @@
 //
 
 #import "ContactsViewController.h"
+#import "BCCreateContactView.h"
+#import "BCModalViewController.h"
+#import "Blockchain-Swift.h"
 
 @interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) UITableView *tableView;
@@ -73,7 +76,15 @@
 
 - (void)newContactClicked:(id)sender
 {
+    BCCreateContactView *createContactView = [[BCCreateContactView alloc] init];
     
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactView];
+    
+    [self presentViewController:modalViewController animated:YES completion:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [createContactView.nameField becomeFirstResponder];
+    });
 }
 
 @end

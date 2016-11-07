@@ -61,10 +61,6 @@
                 [topBarView addSubview:self.closeButton];
             }
             
-            self.myHolderView = [[UIView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT)];
-            
-            [self.view addSubview:self.myHolderView];
-            
             [self.view bringSubviewToFront:topBarView];
         }
         else {

@@ -207,6 +207,7 @@
 
 #define BC_STRING_CREATE NSLocalizedString(@"Create", nil)
 #define BC_STRING_NAME NSLocalizedString(@"Name", nil)
+#define BC_STRING_ID NSLocalizedString(@"ID", nil)
 #define BC_STRING_EDIT NSLocalizedString(@"Edit", nil)
 #define BC_STRING_LABEL NSLocalizedString(@"Label", nil)
 
