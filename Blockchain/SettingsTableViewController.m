@@ -32,6 +32,7 @@ const int preferencesMobileNumber = 0;
 const int preferencesSectionNotificationsFooter = 3;
 const int preferencesEmailNotifications = 0;
 const int preferencesSMSNotifications = 1;
+const int preferencesPushNotifications = 2;
 
 const int preferencesSectionEnd = 4;
 const int displayLocalCurrency = 0;
@@ -502,6 +503,11 @@ const int aboutPrivacyPolicy = 1;
     return [app.wallet SMSNotificationsEnabled];
 }
 
+- (BOOL)pushNotificationsEnabled
+{
+    return NO;
+}
+
 - (void)toggleEmailNotifications
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesEmailNotifications inSection:preferencesSectionNotificationsFooter];
@@ -586,6 +592,11 @@ const int aboutPrivacyPolicy = 1;
     } else {
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+}
+
+- (void)togglePushNotifications
+{
+    
 }
 
 #pragma mark - Change Two Step
@@ -1187,7 +1198,7 @@ const int aboutPrivacyPolicy = 1;
         case walletInformationSection: return 1;
         case preferencesSectionEmailFooter: return 1;
         case preferencesSectionSMSFooter: return 1;
-        case preferencesSectionNotificationsFooter: return 2;
+        case preferencesSectionNotificationsFooter: return 3;
         case preferencesSectionEnd: return 2;
         case securitySection: return [app.wallet didUpgradeToHd] ? 5 : 4;
         case PINSection: {
@@ -1304,6 +1315,15 @@ const int aboutPrivacyPolicy = 1;
                     switchForSMSNotifications.on = [self SMSNotificationsEnabled];
                     [switchForSMSNotifications addTarget:self action:@selector(toggleSMSNotifications) forControlEvents:UIControlEventTouchUpInside];
                     cell.accessoryView = switchForSMSNotifications;
+                    return cell;
+                }
+                case preferencesPushNotifications: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_PUSH_NOTIFICATIONS;
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    UISwitch *switchForPushNotifications = [[UISwitch alloc] init];
+                    switchForPushNotifications.on = [self pushNotificationsEnabled];
+                    [switchForPushNotifications addTarget:self action:@selector(togglePushNotifications) forControlEvents:UIControlEventTouchUpInside];
+                    cell.accessoryView = switchForPushNotifications;
                     return cell;
                 }
             }

@@ -359,6 +359,7 @@
 #define BC_STRING_SETTINGS_BTC NSLocalizedString(@"Bitcoin Unit", nil)
 #define BC_STRING_SETTINGS_EMAIL_NOTIFICATIONS NSLocalizedString(@"Email Notifications", nil)
 #define BC_STRING_SETTINGS_SMS_NOTIFICATIONS NSLocalizedString(@"SMS Notifications", nil)
+#define BC_STRING_SETTINGS_PUSH_NOTIFICATIONS NSLocalizedString(@"Push Notifications", nil)
 #define BC_STRING_SETTINGS_NOTIFICATIONS_SMS NSLocalizedString(@"SMS", nil)
 #define BC_STRING_SETTINGS_EMAIL_FOOTER NSLocalizedString(@"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes.", nil)
 #define BC_STRING_SETTINGS_SMS_FOOTER NSLocalizedString(@"Your mobile phone can be used to enable two-factor authentication, helping to secure your wallet from unauthorized access.", nil)
