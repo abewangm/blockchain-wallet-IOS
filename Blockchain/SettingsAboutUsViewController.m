@@ -20,11 +20,13 @@
     [super viewDidLoad];
     self.view.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
     
-    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 150)/2, 100, 150, 150)];
-    logoImageView.image = [UIImage imageNamed:@"appIcon"];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 150)];
+    logoImageView.image = [UIImage imageNamed:@"blockchain_wallet_logo"];
+    logoImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:logoImageView];
     
     CGFloat labelWidth = self.view.frame.size.width - 30;
+
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width - labelWidth)/2, logoImageView.frame.origin.y + logoImageView.frame.size.height + 16, labelWidth, 90)];
     infoLabel.textAlignment = NSTextAlignmentCenter;
     infoLabel.textColor = [UIColor whiteColor];

@@ -1119,7 +1119,7 @@ const int aboutPrivacyPolicy = 2;
             switch (indexPath.row) {
                 case preferencesEmail: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     
                     if ([self getUserEmail] != nil && [app.wallet getEmailVerifiedStatus] == YES) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
@@ -1143,7 +1143,7 @@ const int aboutPrivacyPolicy = 2;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
-                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return [self adjustFontForCell:cell];
                 }
             }
@@ -1229,14 +1229,14 @@ const int aboutPrivacyPolicy = 2;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNCONFIRMED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
                     }
-                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return [self adjustFontForCell:cell];
                 }
         }
         case PINSection: {
             if (indexPath.row == PINChangePIN) {
                 cell.textLabel.text = BC_STRING_CHANGE_PIN;
-                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 return cell;
             }
             if (indexPath.row == PINTouchID) {
@@ -1271,7 +1271,7 @@ const int aboutPrivacyPolicy = 2;
             }
         }
         case aboutSection: {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
                 case aboutUs: {
                     cell.textLabel.text = BC_STRING_SETTINGS_ABOUT_US;
