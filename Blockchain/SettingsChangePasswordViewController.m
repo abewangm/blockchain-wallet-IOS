@@ -232,11 +232,6 @@
         return NO;
     }
     
-    if ([[app.wallet getPasswordHint] isEqualToString:self.newerPasswordTextField.text]) {
-        [self alertUserOfError:BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT_FROM_HINT];
-        return NO;
-    }
-    
     if (![app checkInternetConnection]) {
         return NO;
     }

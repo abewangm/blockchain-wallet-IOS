@@ -1509,21 +1509,6 @@ MyWalletPhone.unsetTwoFactor = function() {
     BlockchainSettingsAPI.unsetTwoFactor(success, error);
 }
 
-MyWalletPhone.updatePasswordHint = function(hint) {
-
-    var success = function () {
-        console.log('Updating password hint');
-        objc_on_update_password_hint_success();
-    };
-    
-    var error = function (e) {
-        console.log('Error updating password hint: ' + e);
-        objc_on_update_password_hint_error();
-    };
-    
-    BlockchainSettingsAPI.updatePasswordHint1(hint, success, error);
-}
-
 MyWalletPhone.changePassword = function(password) {
     
     var success = function () {
@@ -1770,23 +1755,6 @@ MyWalletPhone.updateNotification = function(updates) {
     if (updates.email == 'disable') notificationsType.email = false;
     
     BlockchainSettingsAPI.updateNotificationsType(notificationsType).then(success).catch(error);
-}
-
-MyWalletPhone.updateTorIpBlock = function(willEnable) {
-    
-    var shouldEnable = Boolean(willEnable);
-    
-    var success = function () {
-        console.log('Update tor success');
-        objc_on_update_tor_success();
-    }
-    
-    var error = function(error) {
-        console.log('Update tor error' + error);
-        objc_on_update_tor_error();
-    }
-    
-    BlockchainSettingsAPI.updateTorIpBlock(shouldEnable, success, error);
 }
 
 MyWalletPhone.updateServerURL = function(url) {

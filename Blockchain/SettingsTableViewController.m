@@ -39,10 +39,8 @@ const int displayBtcUnit = 1;
 
 const int securitySection = 5;
 const int securityTwoStep = 0;
-const int securityPasswordHint = 1;
-const int securityPasswordChange = 2;
-const int securityTorBlocking = 3;
-const int securityWalletRecoveryPhrase = 4;
+const int securityPasswordChange = 1;
+const int securityWalletRecoveryPhrase = 2;
 
 const int PINSection = 6;
 const int PINChangePIN = 0;
@@ -792,157 +790,6 @@ const int aboutPrivacyPolicy = 1;
     });
 }
 
-#pragma mark - Change Password Hint
-
-- (void)alertUserToChangePasswordHint
-{
-    UIAlertController *alertForChangingPasswordHint = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT message:BC_STRING_HINT_DESCRIPTION preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [alertForChangingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_UPDATE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSString *passwordHint = [[alertForChangingPasswordHint textFields] firstObject].text;
-        if ([[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] || !passwordHint) {
-            [self alertUserThatAllWhiteSpaceCharactersClearsHint];
-        } else {
-            if ([self isHintValid:passwordHint]) {
-                [self changePasswordHint:passwordHint];
-            }
-        }
-    }]];
-    NSString *passwordHint = [app.wallet getPasswordHint];
-    [alertForChangingPasswordHint addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.tag = textFieldTagChangePasswordHint;
-        secureTextField.returnKeyType = UIReturnKeyDone;
-        secureTextField.text = passwordHint;
-    }];
-    if (self.alertTargetViewController) {
-        [self.alertTargetViewController presentViewController:alertForChangingPasswordHint animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertForChangingPasswordHint animated:YES completion:nil];
-    };
-}
-
-- (void)alertUserThatAllWhiteSpaceCharactersClearsHint
-{
-    UIAlertController *alertForClearingPasswordHint = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT message:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_WARNING_ALL_WHITESPACE preferredStyle:UIAlertControllerStyleAlert];
-    [alertForClearingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [alertForClearingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self changePasswordHint:@""];
-    }]];
-    if (self.alertTargetViewController) {
-        [self.alertTargetViewController presentViewController:alertForClearingPasswordHint animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertForClearingPasswordHint animated:YES completion:nil];
-    }
-}
-
-- (void)changePasswordHint:(NSString *)hint
-{
-    UITableViewCell *changePasswordHintCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityPasswordHint inSection:securitySection]];
-    changePasswordHintCell.userInteractionEnabled = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePasswordHintSuccess) name:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePasswordHintError) name:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR object:nil];
-    [app.wallet updatePasswordHint:hint];
-}
-
-- (BOOL)isHintValid:(NSString *)hint
-{
-    if ([app.wallet isCorrectPassword:hint]) {
-        [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR_SAME_AS_PASSWORD];
-        return NO;
-    } else if ([app.wallet validateSecondPassword:hint]) {
-        [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR_SAME_AS_SECOND_PASSWORD];
-        return NO;
-    }
-    return YES;
-}
-
-- (void)changePasswordHintSuccess
-{
-    [self resetPasswordHintCell];
-    [self alertUserOfSuccess:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_SUCCESS];
-}
-
-- (void)changePasswordHintError
-{
-    [self resetPasswordHintCell];
-    [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR_INVALID_CHARACTERS];
-}
-
-- (void)resetPasswordHintCell
-{
-    UITableViewCell *changePasswordHintCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityPasswordHint inSection:securitySection]];
-    changePasswordHintCell.userInteractionEnabled = YES;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR object:nil];
-}
-
-#pragma mark - Change Tor Blocking
-
-- (void)changeTorBlockingTapped
-{
-    BOOL torBlockingEnabled = [app.wallet getTorBlockingStatus];
-    NSString *alertTitle;
-    NSString *alertActionTitle;
-    if (torBlockingEnabled == YES) {
-        alertTitle = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS_BLOCKED;
-        alertActionTitle = BC_STRING_ALLOW;
-    } else {
-        alertTitle = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS_ALLOWED;
-        alertActionTitle = BC_STRING_BLOCK;
-    }
-    
-    UIAlertController *alertForChangingTorBlocking = [UIAlertController alertControllerWithTitle:alertTitle message:BC_STRING_SETTINGS_SECURITY_TOR_BLOCKING_DESCRIPTION preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingTorBlocking addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTorBlocking inSection:securitySection];
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }]];
-    [alertForChangingTorBlocking addAction:[UIAlertAction actionWithTitle:alertActionTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self updateTorBlocking:!torBlockingEnabled];
-    }]];
-    if (self.alertTargetViewController) {
-        [self.alertTargetViewController presentViewController:alertForChangingTorBlocking animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertForChangingTorBlocking animated:YES completion:nil];
-    }}
-
-- (void)updateTorBlocking:(BOOL)willEnable
-{
-    if ([app checkInternetConnection]) {
-        [app.wallet changeTorBlocking:willEnable];
-        [self addObserversForUpdatingTorBlocking];
-    }
-}
-
-- (void)updateTorSuccess
-{
-    [self removeObserversForUpdatingTorBlocking];
-    if ([app.wallet hasBlockedTorRequests]) {
-        [self alertUserOfSuccess:BC_STRING_TOR_ALLOWED];
-    } else {
-        [self alertUserOfSuccess:BC_STRING_TOR_BLOCKED];
-    }
-}
-
-- (void)updateTorError
-{
-    [self removeObserversForUpdatingTorBlocking];
-}
-
-- (void)addObserversForUpdatingTorBlocking
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorSuccess) name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorError) name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR object:nil];
-}
-
-- (void)removeObserversForUpdatingTorBlocking
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR object:nil];
-}
-
 #pragma mark - Wallet Recovery Phrase
 
 - (void)showBackup
@@ -1136,14 +983,8 @@ const int aboutPrivacyPolicy = 1;
             if (indexPath.row == securityTwoStep) {
                 [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
                 return;
-            } else if (indexPath.row == securityPasswordHint) {
-                [self alertUserToChangePasswordHint];
-                return;
             } else if (indexPath.row == securityPasswordChange) {
                 [self changePassword];
-                return;
-            } else if (indexPath.row == securityTorBlocking) {
-                [self changeTorBlockingTapped];
                 return;
             } else if (indexPath.row == securityWalletRecoveryPhrase) {
                 [self showBackup];
@@ -1189,7 +1030,7 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionSMSFooter: return 1;
         case preferencesSectionNotificationsFooter: return 2;
         case preferencesSectionEnd: return 2;
-        case securitySection: return [app.wallet didUpgradeToHd] ? 5 : 4;
+        case securitySection: return [app.wallet didUpgradeToHd] ? 3 : 2;
         case PINSection: {
             if (PINTouchID > 0 && PINSwipeToReceive > 0) {
                 return 3;
@@ -1352,35 +1193,9 @@ const int aboutPrivacyPolicy = 1;
                     }
                     return [self adjustFontForCell:cell];
                 }
-            else if (indexPath.row == securityPasswordHint) {
-                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_PASSWORD_HINT;
-                    if ([app.wallet hasStoredPasswordHint]) {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_STORED;
-                    } else {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_NOT_STORED;
-                    }
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return [self adjustFontForCell:cell];
-                }
             else if (indexPath.row == securityPasswordChange) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return [self adjustFontForCell:cell];
-                }
-            else if (indexPath.row == securityTorBlocking) {
-                    cell.textLabel.font = [SettingsTableViewController fontForCell];
-                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS;
-                    BOOL torBlockingEnabled = [app.wallet getTorBlockingStatus];
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    if (torBlockingEnabled) {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
-                        cell.detailTextLabel.text = BC_STRING_BLOCKED;
-                    } else {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                        cell.detailTextLabel.text = BC_STRING_ALLOWED;
-                    }
                     return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityWalletRecoveryPhrase) {
@@ -1478,19 +1293,9 @@ const int aboutPrivacyPolicy = 1;
     [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesMobileNumber inSection:preferencesSectionSMSFooter]];
 }
 
-- (void)storeHintTapped
-{
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:securityPasswordHint inSection:securitySection]];
-}
-
 - (void)changeTwoStepTapped
 {
     [self alertUserToChangeTwoStepVerification];
-}
-
-- (void)blockTorTapped
-{
-    [self changeTorBlockingTapped];
 }
 
 @end
