@@ -1192,6 +1192,9 @@
         }];
     } else {
         requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        if (![requestedAmountString containsString:@"."]) {
+            requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        }
     }
 
     return [[[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [requestedAmountString escapeStringForJS]]] toNumber] longLongValue];
