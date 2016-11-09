@@ -265,6 +265,45 @@ const int aboutPrivacyPolicy = 2;
     }
 }
 
+#pragma mark - Show Actions
+
+- (void)walletIdentifierClicked
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_COPY_GUID message:BC_STRING_SETTINGS_COPY_GUID_WARNING preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_TO_CLIPBOARD style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        DLog("User confirmed copying GUID");
+        [UIPasteboard generalPasteboard].string = app.wallet.guid;
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancelAction];
+    [alert addAction:copyAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)emailClicked
+{
+    if (![self hasAddedEmail]) {
+        [self alertUserToChangeEmail:NO];
+    } else if ([app.wallet hasVerifiedEmail]) {
+        [self alertUserToChangeEmail:YES];
+    } else {
+        [self alertUserToVerifyEmail];
+    }
+}
+
+- (void)mobileNumberClicked
+{
+    if ([app.wallet getSMSNumber].length > 0) {
+        if ([app.wallet getSMSVerifiedStatus] == YES) {
+            [self alertUserToChangeMobileNumber];
+        } else {
+            [self alertUserToVerifyMobileNumber];
+        }
+    } else {
+        [self alertUserToChangeMobileNumber];
+    }
+}
+
 - (void)showAboutUs
 {
     SettingsAboutUsViewController *aboutViewController = [[SettingsAboutUsViewController alloc] init];
@@ -936,15 +975,7 @@ const int aboutPrivacyPolicy = 2;
         case walletInformationSection: {
             switch (indexPath.row) {
                 case walletInformationIdentifier: {
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_COPY_GUID message:BC_STRING_SETTINGS_COPY_GUID_WARNING preferredStyle:UIAlertControllerStyleActionSheet];
-                    UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_TO_CLIPBOARD style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                        DLog("User confirmed copying GUID");
-                        [UIPasteboard generalPasteboard].string = app.wallet.guid;
-                    }];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil];
-                    [alert addAction:cancelAction];
-                    [alert addAction:copyAction];
-                    [self presentViewController:alert animated:YES completion:nil];
+                    [self walletIdentifierClicked];
                     return;
                 }
             }
@@ -953,13 +984,7 @@ const int aboutPrivacyPolicy = 2;
         case preferencesSectionEmailFooter: {
             switch (indexPath.row) {
                 case preferencesEmail: {
-                    if (![self hasAddedEmail]) {
-                        [self alertUserToChangeEmail:NO];
-                    } else if ([app.wallet hasVerifiedEmail]) {
-                        [self alertUserToChangeEmail:YES];
-                    } else {
-                        [self alertUserToVerifyEmail];
-                    }
+                    [self emailClicked];
                     return;
                 }
             }
@@ -968,15 +993,7 @@ const int aboutPrivacyPolicy = 2;
         case preferencesSectionSMSFooter: {
             switch (indexPath.row) {
                 case preferencesMobileNumber: {
-                    if ([app.wallet getSMSNumber].length > 0) {
-                        if ([app.wallet getSMSVerifiedStatus] == YES) {
-                            [self alertUserToChangeMobileNumber];
-                        } else {
-                            [self alertUserToVerifyMobileNumber];
-                        }
-                    } else {
-                        [self alertUserToChangeMobileNumber];
-                    }
+                    [self mobileNumberClicked];
                     return;
                 }
             }
@@ -1310,12 +1327,7 @@ const int aboutPrivacyPolicy = 2;
 
 - (void)verifyEmailTapped
 {
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesEmail inSection:preferencesSectionEmailFooter]];
-}
-
-- (void)linkMobileTapped
-{
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesMobileNumber inSection:preferencesSectionSMSFooter]];
+    [self emailClicked];
 }
 
 - (void)changeTwoStepTapped
