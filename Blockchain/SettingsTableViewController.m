@@ -265,7 +265,7 @@ const int aboutPrivacyPolicy = 2;
     }
 }
 
-#pragma mark - Show Actions
+#pragma mark - Actions
 
 - (void)walletIdentifierClicked
 {
@@ -304,14 +304,14 @@ const int aboutPrivacyPolicy = 2;
     }
 }
 
-- (void)showAboutUs
+- (void)aboutUsClicked
 {
     SettingsAboutUsViewController *aboutViewController = [[SettingsAboutUsViewController alloc] init];
     BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:aboutViewController title:nil];
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)showTermsOfService
+- (void)termsOfServiceClicked
 {
     SettingsWebViewController *aboutViewController = [[SettingsWebViewController alloc] init];
     aboutViewController.urlTargetString = [URL_SERVER stringByAppendingString:URL_SUFFIX_TERMS_OF_SERVICE];
@@ -692,7 +692,7 @@ const int aboutPrivacyPolicy = 2;
             if ([app.wallet getSMSVerifiedStatus] == YES) {
                 [self enableTwoStepForSMS];
             } else {
-                [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesMobileNumber inSection:preferencesSectionSMSFooter]];
+                [self mobileNumberClicked];
             }
         } else {
             [self disableTwoStep];
@@ -1039,11 +1039,11 @@ const int aboutPrivacyPolicy = 2;
         case aboutSection: {
             switch (indexPath.row) {
                 case aboutUs: {
-                    [self showAboutUs];
+                    [self aboutUsClicked];
                     return;
                 }
                 case aboutTermsOfService: {
-                    [self showTermsOfService];
+                    [self termsOfServiceClicked];
                     return;
                 }
                 case aboutPrivacyPolicy: {
