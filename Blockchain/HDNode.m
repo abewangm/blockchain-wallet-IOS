@@ -71,8 +71,16 @@
 
 + (HDNode *)fromSeed:(NSString *)seed network:(JSValue *)network
 {
-    // TODO: make TestNet compatible
-    BTCNetwork *btcNetwork = [BTCNetwork mainnet];
+    BTCNetwork *btcNetwork;
+    
+    if ([network isEqual:[app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"]]) {
+        DLog(@"Using mainnet");
+        btcNetwork = [BTCNetwork mainnet];
+    } else if ([network isEqual:[app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().testnet"]]) {
+        DLog(@"Using testnet");
+        btcNetwork = [BTCNetwork testnet];
+    }
+    
     BTCKeychain *keychain = [[BTCKeychain alloc] initWithSeed:BTCDataFromHex(seed) network:btcNetwork];
 
     return [[HDNode alloc] initWithKeychain:keychain network:network];
