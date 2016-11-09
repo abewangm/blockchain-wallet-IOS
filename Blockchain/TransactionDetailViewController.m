@@ -146,7 +146,11 @@ const CGFloat rowHeightValueReceived = 92;
 - (void)didGetHistory
 {
     if (self.isGettingFiatAtTime) return; // Multiple calls to didGetHistory will occur due to did_set_latest_block and did_multiaddr; prevent observer from being added twice
-    [self getFiatAtTime];
+    if (![self.transaction.fiatAmountsAtTime objectForKey:[self getCurrencyCode]]) {
+        [self getFiatAtTime];
+    } else {
+        [self reloadData];
+    }
 }
 
 - (void)reloadDataAfterGetFiatAtTime
@@ -169,7 +173,8 @@ const CGFloat rowHeightValueReceived = 92;
         BOOL didFindTransaction = NO;
         for (Transaction *transaction in newTransactions) {
             if ([transaction.myHash isEqualToString:self.transaction.myHash]) {
-                self.transaction = updatedTransaction;
+                transaction.fiatAmountsAtTime = self.transaction.fiatAmountsAtTime;
+                self.transaction = transaction;
                 didFindTransaction = YES;
                 break;
             }
