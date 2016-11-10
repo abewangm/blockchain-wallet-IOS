@@ -113,7 +113,22 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define COPYRIGHT_YEAR @"2016"
 
+#define DEBUG_STRING_DEBUG NSLocalizedString(@"Debug", nil)
+#define DEBUG_STRING_SERVER_URL NSLocalizedString(@"Server URL", nil)
+#define DEBUG_STRING_WEBSOCKET_URL NSLocalizedString(@"WebSocket URL", nil)
+#define DEBUG_STRING_MERCHANT_URL NSLocalizedString(@"Merchant URL", nil)
+#define DEBUG_STRING_API_URL NSLocalizedString(@"API URL", nil)
+#define DEBUG_STRING_WALLET_JSON NSLocalizedString(@"Wallet JSON", nil)
+#define DEBUG_STRING_SIMULATE_SURGE NSLocalizedString(@"Simulate surge", nil)
+#define DEBUG_STRING_RESET_DONT_SHOW_AGAIN_PROMPT NSLocalizedString(@"Show all 'Dont Show Again' alerts", nil)
+#define DEBUG_STRING_RESET_DONT_SHOW_AGAIN_PROMPT_MESSAGE NSLocalizedString(@"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds.", nil)
+#define DEBUG_STRING_PLEASE_LOGIN NSLocalizedString(@"Please Login", nil)
+#define DEBUG_STRING_RESET NSLocalizedString(@"Reset", nil)
+#define DEBUG_STRING_FROM_LOWERCASE NSLocalizedString(@"from", nil)
+#define DEBUG_STRING_WELCOME NSLocalizedString(@"Welcome", nil)
 #define DEBUG_STRING_TESTNET @"Testnet"
+#define DEBUG_STRING_CERTIFICATE_PINNING @"Certificate Pinning"
+#define DEBUG_STRING_APP_STORE_REVIEW_PROMPT_TIMER NSLocalizedString(@"App Store review prompt timer (seconds)", nil)
 
 #define CERTIFICATE_SERVER_NAME @"blockchain"
 #define CERTIFICATE_FILE_TYPE_DER @"der"

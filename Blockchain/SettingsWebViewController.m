@@ -42,7 +42,7 @@
     self.debugButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-    [self.debugButton setTitle:BC_STRING_DEBUG forState:UIControlStateNormal];
+    [self.debugButton setTitle:DEBUG_STRING_DEBUG forState:UIControlStateNormal];
     [self.navigationController.view addSubview:self.debugButton];
     [self.debugButton addGestureRecognizer:self.longPressGesture];
 #endif

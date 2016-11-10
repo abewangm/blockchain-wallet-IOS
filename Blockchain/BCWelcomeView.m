@@ -75,7 +75,7 @@ Boolean shouldShowAnimation;
         debugButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-        [debugButton setTitle:BC_STRING_DEBUG forState:UIControlStateNormal];
+        [debugButton setTitle:DEBUG_STRING_DEBUG forState:UIControlStateNormal];
         UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;
         [debugButton addGestureRecognizer:longPressGesture];

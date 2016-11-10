@@ -424,20 +424,6 @@
 #define BC_STRING_TOUCH_ID_WARNING NSLocalizedString(@"Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet.", nil)
 
 #define BC_STRING_NO_EMAIL_CONFIGURED NSLocalizedString(@"You do not have an account set up for Mail. Please contact %@", nil)
-#define BC_STRING_DEBUG NSLocalizedString(@"Debug", nil)
-#define BC_STRING_SERVER_URL NSLocalizedString(@"Server URL", nil)
-#define BC_STRING_WEBSOCKET_URL NSLocalizedString(@"WebSocket URL", nil)
-#define BC_STRING_MERCHANT_URL NSLocalizedString(@"Merchant URL", nil)
-#define BC_STRING_API_URL NSLocalizedString(@"API URL", nil)
-#define BC_STRING_WALLET_JSON NSLocalizedString(@"Wallet JSON", nil)
-#define BC_STRING_RESET_DONT_SHOW_AGAIN_PROMPT NSLocalizedString(@"Show all 'Dont Show Again' alerts", nil)
-#define BC_STRING_RESET_DONT_SHOW_AGAIN_PROMPT_MESSAGE NSLocalizedString(@"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds.", nil)
-#define BC_STRING_APP_STORE_REVIEW_PROMPT_TIMER NSLocalizedString(@"App Store review prompt timer (seconds)", nil)
-#define BC_STRING_CERTIFICATE_PINNING @"Certificate Pinning"
-#define BC_STRING_PLEASE_LOGIN NSLocalizedString(@"Please Login", nil)
-#define BC_STRING_RESET NSLocalizedString(@"Reset", nil)
-#define BC_STRING_FROM_LOWERCASE NSLocalizedString(@"from", nil)
-#define BC_STRING_WELCOME NSLocalizedString(@"Welcome", nil)
 #define BC_STRING_PIN NSLocalizedString(@"PIN", nil)
 
 #define BC_STRING_MAKE_DEFAULT NSLocalizedString(@"Make Default", nil)
@@ -495,7 +481,6 @@
 #define BC_STRING_KEEP_LOWER_FEE NSLocalizedString(@"Keep lower fee", nil)
 #define BC_STRING_USE_RECOMMENDED_VALUES NSLocalizedString(@"Use recommended values", nil)
 #define BC_STRING_PLEASE_LOWER_CUSTOM_FEE NSLocalizedString(@"Please lower the fee to an amount that is less than your balance", nil)
-#define BC_STRING_SIMULATE_SURGE NSLocalizedString(@"Simulate surge", nil)
 #define BC_STRING_SURGE_OCCURRING_TITLE NSLocalizedString(@"Surge Occurring", nil)
 #define BC_STRING_SURGE_OCCURRING_MESSAGE NSLocalizedString(@"The Bitcoin mining network is currently experiencing a high volume of activity, resulting in recommended fees that are higher than usual.", nil)
 #define BC_STRING_FEE_INFORMATION_TITLE NSLocalizedString(@"Transaction Fees", nil)
