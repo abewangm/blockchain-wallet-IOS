@@ -146,11 +146,7 @@ const CGFloat rowHeightValueReceived = 92;
 - (void)didGetHistory
 {
     if (self.isGettingFiatAtTime) return; // Multiple calls to didGetHistory will occur due to did_set_latest_block and did_multiaddr; prevent observer from being added twice
-    if (![self.transaction.fiatAmountsAtTime objectForKey:[self getCurrencyCode]]) {
-        [self getFiatAtTime];
-    } else {
-        [self reloadData];
-    }
+    [self getFiatAtTime];
 }
 
 - (void)reloadDataAfterGetFiatAtTime
