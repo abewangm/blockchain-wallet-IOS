@@ -19,14 +19,21 @@
     [super viewDidLoad];
     self.view.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
     
-    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 150)];
-    logoImageView.image = [UIImage imageNamed:@"blockchain_wallet_logo"];
+    CGFloat imageWidth = self.view.frame.size.width - 120;
+    
+    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth)/2, 100, imageWidth, 80)];
+    logoImageView.image = [UIImage imageNamed:@"blockchain_b_large"];
     logoImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:logoImageView];
     
+    UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth)/2, logoImageView.frame.origin.y + logoImageView.frame.size.height + 16, imageWidth, 50)];
+    bannerImageView.image = [UIImage imageNamed:@"blockchain_wallet_logo"];
+    bannerImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:bannerImageView];
+    
     CGFloat labelWidth = self.view.frame.size.width - 30;
 
-    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width - labelWidth)/2, logoImageView.frame.origin.y + logoImageView.frame.size.height + 16, labelWidth, 90)];
+    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width - labelWidth)/2, bannerImageView.frame.origin.y + bannerImageView.frame.size.height + 16, labelWidth, 90)];
     infoLabel.textAlignment = NSTextAlignmentCenter;
     infoLabel.textColor = [UIColor whiteColor];
     infoLabel.numberOfLines = 3;
