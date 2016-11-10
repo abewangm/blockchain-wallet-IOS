@@ -161,30 +161,37 @@ const CGFloat rowHeightValueReceived = 92;
     [self.busyViewDelegate hideBusyView];
     
     NSArray *newTransactions = app.latestResponse.transactions;
-    Transaction *updatedTransaction = newTransactions[self.transactionIndex];
     
-    if ([updatedTransaction.myHash isEqualToString:self.transaction.myHash]) {
-        self.transaction = updatedTransaction;
-    } else {
-        BOOL didFindTransaction = NO;
-        for (Transaction *transaction in newTransactions) {
-            if ([transaction.myHash isEqualToString:self.transaction.myHash]) {
-                self.transaction = updatedTransaction;
-                didFindTransaction = YES;
-                break;
+    if (self.transactionIndex < newTransactions.count) {
+        
+        Transaction *updatedTransaction = newTransactions[self.transactionIndex];
+        
+        if ([updatedTransaction.myHash isEqualToString:self.transaction.myHash]) {
+            self.transaction = updatedTransaction;
+        } else {
+            BOOL didFindTransaction = NO;
+            for (Transaction *transaction in newTransactions) {
+                if ([transaction.myHash isEqualToString:self.transaction.myHash]) {
+                    transaction.fiatAmountsAtTime = self.transaction.fiatAmountsAtTime;
+                    self.transaction = transaction;
+                    didFindTransaction = YES;
+                    break;
+                }
+            }
+            if (!didFindTransaction) {
+                [self dismissViewControllerAnimated:YES completion:^{
+                    [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transaction.myHash]];
+                }];
             }
         }
-        if (!didFindTransaction) {
-            [self dismissViewControllerAnimated:YES completion:^{
-                [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transaction.myHash]];
-            }];
+        
+        [self.tableView reloadData];
+        
+        if (self.refreshControl && self.refreshControl.isRefreshing) {
+            [self.refreshControl endRefreshing];
         }
-    }
-    
-    [self.tableView reloadData];
-    
-    if (self.refreshControl && self.refreshControl.isRefreshing) {
-        [self.refreshControl endRefreshing];
+    } else {
+        DLog(@"Error: transaction detail index out of bounds of new transactions array!");
     }
 }
 

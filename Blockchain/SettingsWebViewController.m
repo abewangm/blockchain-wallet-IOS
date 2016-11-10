@@ -1,22 +1,22 @@
 //
-//  SettingsAboutViewController.m
+//  SettingsWebViewController.h
 //  Blockchain
 //
 //  Created by Kevin Wu on 7/15/15.
 //  Copyright (c) 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
-#import "SettingsAboutViewController.h"
+#import "SettingsWebViewController.h"
 #import "SettingsNavigationController.h"
 #import "DebugTableViewController.h"
 
-@interface SettingsAboutViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@interface SettingsWebViewController ()
+@property (nonatomic) UIWebView *webView;
 @property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
 @property (nonatomic) UIButton *debugButton;
 @end
 
-@implementation SettingsAboutViewController
+@implementation SettingsWebViewController
 
 - (void)viewDidLoad
 {
@@ -24,22 +24,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     NSURL *url = [NSURL URLWithString:self.urlTargetString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT)];
+    [self.view addSubview:self.webView];
     [self.webView loadRequest:urlRequest];
     self.webView.scalesPageToFit = YES;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
-    NSString *headerString;
-    if ([self.urlTargetString containsString:TERMS_OF_SERVICE_URL_SUFFIX]) {
-        headerString = BC_STRING_TERMS_OF_SERVICE;
-    } else if ([self.urlTargetString containsString:PRIVACY_POLICY_URL_SUFFIX]) {
-        headerString = BC_STRING_SETTINGS_PRIVACY_POLICY;
-    }
-    
-    navigationController.headerLabel.text = headerString;
 }
 
 #pragma mark Debug Menu
@@ -54,7 +42,7 @@
     self.debugButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-    [self.debugButton setTitle:BC_STRING_DEBUG forState:UIControlStateNormal];
+    [self.debugButton setTitle:DEBUG_STRING_DEBUG forState:UIControlStateNormal];
     [self.navigationController.view addSubview:self.debugButton];
     [self.debugButton addGestureRecognizer:self.longPressGesture];
 #endif

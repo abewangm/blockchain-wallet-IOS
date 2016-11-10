@@ -133,6 +133,9 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    
     [[NSUserDefaults standardUserDefaults] synchronize];
 #endif
     
@@ -1764,14 +1767,20 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
 {
     if (self.transactionsViewController.lastSelectedIndexPath.row < latestResponse.transactions.count) {
+        
         Transaction *transaction = latestResponse.transactions[self.transactionsViewController.lastSelectedIndexPath.row];
         
-        NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
-        if (components.count > 1 && [[components lastObject] length] == 1) {
-            fiatAmount = [fiatAmount stringByAppendingString:@"0"];
+        if ([transaction.myHash isEqualToString:self.transactionsViewController.detailViewController.transaction.myHash]) {
+            NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
+            if (components.count > 1 && [[components lastObject] length] == 1) {
+                fiatAmount = [fiatAmount stringByAppendingString:@"0"];
+            }
+            
+            [transaction.fiatAmountsAtTime setObject:fiatAmount forKey:currencyCode];
+        } else {
+            DLog(@"didGetFiatAtTime: will not set fiat amount because latest transaction hash does not match detail controller's transaction hash. This can occur when receiving a transaction while on the detail view controller.");
         }
-        
-        [transaction.fiatAmountsAtTime setObject:fiatAmount forKey:currencyCode];
+
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
     } else {
         DLog(@"Transaction detail error: last selected transaction index is outside bounds of transactions from latest response!");
@@ -2521,6 +2530,15 @@ void (^secondPasswordSuccess)(NSString *);
     }];
     
     [task resume];
+}
+
+- (NSString *)getVersionLabelString
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+    NSString *build = infoDictionary[@"CFBundleVersion"];
+    NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
+    return [NSString stringWithFormat:@"%@", versionAndBuild];
 }
 
 #pragma mark - Pin Entry Delegates

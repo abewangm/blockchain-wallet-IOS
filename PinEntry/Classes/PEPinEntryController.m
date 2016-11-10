@@ -31,22 +31,13 @@
 #define PS_ENTER1	1
 #define PS_ENTER2	2
 
-static NSString *getVersionLabelString()
-{
-    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
-    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-    NSString *build = infoDictionary[@"CFBundleVersion"];
-    NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
-    return[NSString stringWithFormat:@"%@", versionAndBuild];
-}
-
 static PEViewController *EnterController()
 {
 	PEViewController *c = [[PEViewController alloc] init];
 	c.prompt = BC_STRING_PLEASE_ENTER_PIN;
 	c.title = @"";
 
-    c.versionLabel.text = getVersionLabelString();
+    c.versionLabel.text = [app getVersionLabelString];
     
 	return c;
 }
@@ -57,7 +48,7 @@ static PEViewController *NewController()
 	c.prompt = BC_STRING_PLEASE_ENTER_NEW_PIN;
 	c.title = @"";
 
-    c.versionLabel.text = getVersionLabelString();
+    c.versionLabel.text = [app getVersionLabelString];
 
     return c;
 }
@@ -68,7 +59,7 @@ static PEViewController *VerifyController()
 	c.prompt = BC_STRING_CONFIRM_PIN;
 	c.title = @"";
 
-    c.versionLabel.text = getVersionLabelString();
+    c.versionLabel.text = [app getVersionLabelString];
 
 	return c;
 }
@@ -283,7 +274,7 @@ static PEViewController *VerifyController()
         self.debugButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         self.debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-        [self.debugButton setTitle:BC_STRING_DEBUG forState:UIControlStateNormal];
+        [self.debugButton setTitle:DEBUG_STRING_DEBUG forState:UIControlStateNormal];
         [self.view addSubview:self.debugButton];
         [self.debugButton addGestureRecognizer:self.longPressGesture];
     }

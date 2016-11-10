@@ -575,28 +575,12 @@
         [weakSelf on_change_notifications_error];
     };
     
-    self.context[@"objc_on_update_tor_success"] = ^() {
-        [weakSelf on_update_tor_success];
-    };
-    
-    self.context[@"objc_on_update_tor_error"] = ^() {
-        [weakSelf on_update_tor_error];
-    };
-    
     self.context[@"objc_on_change_two_step_success"] = ^() {
         [weakSelf on_change_two_step_success];
     };
     
     self.context[@"objc_on_change_two_step_error"] = ^() {
         [weakSelf on_change_two_step_error];
-    };
-    
-    self.context[@"objc_on_update_password_hint_success"] = ^() {
-        [weakSelf on_update_password_hint_success];
-    };
-    
-    self.context[@"objc_on_update_password_hint_error"] = ^() {
-        [weakSelf on_update_password_hint_error];
     };
     
     self.context[@"objc_on_change_password_success"] = ^() {
@@ -985,15 +969,6 @@
     return [[self.context evaluateScript:@"MyWalletPhone.getSMSVerifiedStatus()"] toBool];
 }
 
-- (NSString *)getPasswordHint
-{
-    if (![self isInitialized]) {
-        return nil;
-    }
-    
-    return self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
-}
-
 - (NSDictionary *)getFiatCurrencies
 {
     if (![self isInitialized]) {
@@ -1093,15 +1068,6 @@
     [self.context evaluateScript:@"MyWalletPhone.unsetTwoFactor()"];
 }
 
-- (void)updatePasswordHint:(NSString *)hint
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updatePasswordHint(\"%@\")", [hint escapeStringForJS]]];
-}
-
 - (void)changePassword:(NSString *)changedPassword
 {
     if (![self isInitialized]) {
@@ -1193,6 +1159,9 @@
         }];
     } else {
         requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        if (![requestedAmountString containsString:@"."]) {
+            requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        }
     }
 
     return [[[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [requestedAmountString escapeStringForJS]]] toNumber] longLongValue];
@@ -1763,28 +1732,6 @@
     [self.context evaluateScript:@"MyWalletPhone.disableSMSNotifications()"];
 }
 
-
-- (void)changeTorBlocking:(BOOL)willEnable
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateTorIpBlock(%d)", willEnable]];
-}
-
-- (void)on_update_tor_success
-{
-    DLog(@"on_update_tor_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
-}
-
-- (void)on_update_tor_error
-{
-    DLog(@"on_update_tor_error");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
-}
-
 - (void)updateServerURL:(NSString *)newURL
 {
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]]];
@@ -2277,12 +2224,6 @@
         return;
     }
     
-    NSRange updatePasswordHintErrorStringRange = [message rangeOfString:@"password-hint1-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
-    if (updatePasswordHintErrorStringRange.location != NSNotFound) {
-        [self performSelector:@selector(on_update_password_hint_error) withObject:nil afterDelay:0.1f];
-        return;
-    }
-    
     NSRange incorrectPasswordErrorStringRange = [message rangeOfString:@"please check that your password is correct" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (incorrectPasswordErrorStringRange.location != NSNotFound && ![KeychainItemWrapper guid]) {
         // Error message shown in error_other_decrypting_wallet without guid
@@ -2675,18 +2616,6 @@
 {
     DLog(@"on_change_two_step_error");
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
-}
-
-- (void)on_update_password_hint_success
-{
-    DLog(@"on_update_password_hint_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_SUCCESS object:nil];
-}
-
-- (void)on_update_password_hint_error
-{
-    DLog(@"on_update_password_hint_error");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR object:nil];
 }
 
 - (void)on_change_password_success
@@ -3416,20 +3345,9 @@
     return [self getSMSVerifiedStatus];
 }
 
-- (BOOL)hasStoredPasswordHint
-{
-    NSString *passwordHint = [app.wallet getPasswordHint];
-    return ![[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] && passwordHint;
-}
-
 - (BOOL)hasEnabledTwoStep
 {
     return [self getTwoStepType] != 0;
-}
-
-- (BOOL)hasBlockedTorRequests
-{
-    return [self getTorBlockingStatus];
 }
 
 - (int)securityCenterScore

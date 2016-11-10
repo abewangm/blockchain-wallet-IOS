@@ -282,19 +282,16 @@
 - (NSString *)getEmail;
 - (NSString *)getSMSNumber;
 - (BOOL)getSMSVerifiedStatus;
-- (NSString *)getPasswordHint;
 - (NSDictionary *)getFiatCurrencies;
 - (NSDictionary *)getBtcCurrencies;
 - (int)getTwoStepType;
 - (BOOL)getEmailVerifiedStatus;
-- (BOOL)getTorBlockingStatus;
 
 - (void)changeEmail:(NSString *)newEmail;
 - (void)resendVerificationEmail:(NSString *)email;
 - (void)getAllCurrencySymbols;
 - (void)changeMobileNumber:(NSString *)newMobileNumber;
 - (void)verifyMobileNumber:(NSString *)code;
-- (void)updatePasswordHint:(NSString *)hint;
 - (void)enableTwoStepVerificationForSMS;
 - (void)disableTwoStepVerification;
 - (void)changePassword:(NSString *)changedPassword;
@@ -303,16 +300,13 @@
 - (void)disableEmailNotifications;
 - (void)enableSMSNotifications;
 - (void)disableSMSNotifications;
-- (void)changeTorBlocking:(BOOL)willEnable;
 - (BOOL)emailNotificationsEnabled;
 - (BOOL)SMSNotificationsEnabled;
 
 // Security Center
 - (BOOL)hasVerifiedEmail;
 - (BOOL)hasVerifiedMobileNumber;
-- (BOOL)hasStoredPasswordHint;
 - (BOOL)hasEnabledTwoStep;
-- (BOOL)hasBlockedTorRequests;
 - (int)securityCenterScore;
 - (int)securityCenterCompletedItemsCount;
 

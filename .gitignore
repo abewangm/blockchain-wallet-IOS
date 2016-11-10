@@ -25,6 +25,7 @@ External/*
 
 Images.xcassets/arrow_downward.imageset/*.png
 Images.xcassets/blockchain_b.imageset/*.png
+Images.xcassets/blockchain_b_large.imageset/*.png
 Images.xcassets/welcome_logo.imageset/*.png
 Images.xcassets/blockchain_logo.imageset/*.png
 Images.xcassets/blockchain_logo_small.imageset/*.png
@@ -68,3 +69,4 @@ Images.xcassets/icon_wallet.imageset/*.png
 Images.xcassets/security.imageset/*.png
 Images.xcassets/warning.imageset/*.png
 Images.xcassets/pencil.imageset/*.png
+Images.xcassets/blockchain_wallet_logo.imageset/*.png

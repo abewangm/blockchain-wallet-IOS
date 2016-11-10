@@ -1,5 +1,5 @@
 //
-//  SettingsAboutViewController.h
+//  SettingsWebViewController.h
 //  Blockchain
 //
 //  Created by Kevin Wu on 7/15/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsAboutViewController : UIViewController
+@interface SettingsWebViewController : UIViewController
 @property (nonatomic, copy) NSString *urlTargetString;
 @end

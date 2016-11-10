@@ -11,16 +11,19 @@ module.exports = (grunt) ->
           command
           
       svg: 
-        command: (name, height) ->
+        command: (name, height, width) ->
           command = ""
+          if (!width)
+            width = height
           for scale, suffix of {1: "", 2: "@2x", 3: "@3x"}
-            command += "svgexport " + name + ".svg ../Images.xcassets/" + name + ".imageset/" + name + suffix + ".png " + height * scale + ":" + height * scale + "\n"   
+            command += "svgexport " + name + ".svg ../Images.xcassets/" + name + ".imageset/" + name + suffix + ".png " + width * scale + ":" + height * scale + "\n"
           command
-          
-    
+
+
   grunt.registerTask "default", [
     "shell:psd:welcome_logo:110"
     "shell:psd:blockchain_b:45"
+    "shell:psd:blockchain_b_large:90"
     "shell:psd:blockchain_logo:15"
     "shell:psd:blockchain_logo_small:11"
     "shell:psd:transaction_pending:11"
@@ -61,5 +64,6 @@ module.exports = (grunt) ->
     "shell:psd:icon_wallet:26"
     "shell:svg:warning:26"
     "shell:svg:arrow_downward:26"
+    "shell:svg:blockchain_wallet_logo:48:232"
     "shell:svg:pencil:26"
   ]

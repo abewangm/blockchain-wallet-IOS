@@ -19,7 +19,7 @@
 		230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */; };
 		23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */; };
 		231A66EE1DB9434B0043F862 /* HDNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 231A66ED1DB9434B0043F862 /* HDNode.m */; };
-		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
+		231FF2CD1B56F9F1009EEB02 /* SettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsWebViewController.m */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
 		2322D3911D75CEEF000E5AC1 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322D3901D75CEEF000E5AC1 /* SessionManager.m */; };
 		2322DCB41D771831000E5AC1 /* SRDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC851D771831000E5AC1 /* SRDelegateController.m */; };
@@ -59,6 +59,7 @@
 		23444F9E1DCD221A00573C8C /* BTCErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444F9B1DCD221A00573C8C /* BTCErrors.m */; };
 		23444F9F1DCD221A00573C8C /* BTCProtocolSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444F9D1DCD221A00573C8C /* BTCProtocolSerialization.m */; };
 		23444FA51DD0E1C100573C8C /* BCCreateContactView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444FA41DD0E1C100573C8C /* BCCreateContactView.m */; };
+		23444FA81DD1177E00573C8C /* SettingsAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444FA71DD1177E00573C8C /* SettingsAboutUsViewController.m */; };
 		2357BA411D53979600BE0BFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2357BA431D53979600BE0BFD /* InfoPlist.strings */; };
 		235BD5661C58216000969B31 /* BCModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235BD5651C58216000969B31 /* BCModalViewController.m */; };
 		236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */; };
@@ -403,8 +404,8 @@
 		23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCConfirmPaymentView.m; sourceTree = "<group>"; };
 		231A66EC1DB9434B0043F862 /* HDNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNode.h; sourceTree = "<group>"; };
 		231A66ED1DB9434B0043F862 /* HDNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNode.m; sourceTree = "<group>"; };
-		231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAboutViewController.h; sourceTree = "<group>"; };
-		231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAboutViewController.m; sourceTree = "<group>"; };
+		231FF2CB1B56F9F1009EEB02 /* SettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsWebViewController.h; sourceTree = "<group>"; };
+		231FF2CC1B56F9F1009EEB02 /* SettingsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWebViewController.m; sourceTree = "<group>"; };
 		232232181B44D4CB00E5DF26 /* UpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeViewController.h; sourceTree = "<group>"; };
 		232232191B44D4CB00E5DF26 /* UpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeViewController.m; sourceTree = "<group>"; };
 		2322D38F1D75CEEF000E5AC1 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
@@ -487,6 +488,8 @@
 		23444F9D1DCD221A00573C8C /* BTCProtocolSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCProtocolSerialization.m; path = Submodules/CoreBitcoin/CoreBitcoin/BTCProtocolSerialization.m; sourceTree = SOURCE_ROOT; };
 		23444FA31DD0E1C100573C8C /* BCCreateContactView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCCreateContactView.h; sourceTree = "<group>"; };
 		23444FA41DD0E1C100573C8C /* BCCreateContactView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCCreateContactView.m; sourceTree = "<group>"; };
+		23444FA61DD1177E00573C8C /* SettingsAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAboutUsViewController.h; sourceTree = "<group>"; };
+		23444FA71DD1177E00573C8C /* SettingsAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAboutUsViewController.m; sourceTree = "<group>"; };
 		2357BA421D53979600BE0BFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2357BA441D5397B100BE0BFD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		235BD5641C58216000969B31 /* BCModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCModalViewController.h; sourceTree = "<group>"; };
@@ -1441,6 +1444,8 @@
 			children = (
 				23964BFE1DC93882001323BE /* ContactsViewController.h */,
 				23964BFF1DC93882001323BE /* ContactsViewController.m */,
+				23444FA61DD1177E00573C8C /* SettingsAboutUsViewController.h */,
+				23444FA71DD1177E00573C8C /* SettingsAboutUsViewController.m */,
 				23F8DE511DAEB11C001899AE /* BCNavigationController.h */,
 				23F8DE521DAEB11C001899AE /* BCNavigationController.m */,
 				232ACBF31DAE84720072FB5E /* TransferAllFundsViewController.h */,
@@ -1494,8 +1499,8 @@
 				23EA61CA1B5591260032B907 /* SettingsSelectorTableViewController.m */,
 				23D9F26E1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.h */,
 				23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */,
-				231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */,
-				231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */,
+				231FF2CB1B56F9F1009EEB02 /* SettingsWebViewController.h */,
+				231FF2CC1B56F9F1009EEB02 /* SettingsWebViewController.m */,
 				23F720F01C32DC0A00577738 /* DebugTableViewController.h */,
 				23F720F11C32DC0A00577738 /* DebugTableViewController.m */,
 				23FDEF981D6CBC7000FC80D6 /* TransactionDetailViewController.h */,
@@ -1897,6 +1902,7 @@
 				2322DCBC1D771831000E5AC1 /* SRHash.m in Sources */,
 				9F45F82C1514E53C00018AED /* UIButtonPressAndHold.m in Sources */,
 				9F7480E315140EF200BC4292 /* TabViewController.m in Sources */,
+				23444FA81DD1177E00573C8C /* SettingsAboutUsViewController.m in Sources */,
 				2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */,
 				23FB5C101D9ABB730008C6AB /* TransactionDetailDateCell.m in Sources */,
 				670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */,
@@ -1971,7 +1977,7 @@
 				67EE1DCC19E3325900DBBFC9 /* ECSlidingInteractiveTransition.m in Sources */,
 				6775569919E752A00054699B /* BCWebViewController.m in Sources */,
 				67EE1DCD19E3325900DBBFC9 /* ECSlidingSegue.m in Sources */,
-				231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */,
+				231FF2CD1B56F9F1009EEB02 /* SettingsWebViewController.m in Sources */,
 				2322DCC61D771831000E5AC1 /* SRSecurityPolicy.m in Sources */,
 				9F61B89E151519EF0083C57A /* BCAddressSelectionView.m in Sources */,
 				FA6323361A43373300EB3974 /* Merchant.m in Sources */,

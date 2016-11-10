@@ -14,9 +14,6 @@
 - (void)reload;
 
 - (void)verifyEmailTapped;
-- (void)linkMobileTapped;
-- (void)storeHintTapped;
 - (void)changeTwoStepTapped;
-- (void)blockTorTapped;
 
 @end
