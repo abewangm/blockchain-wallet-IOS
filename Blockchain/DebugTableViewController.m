@@ -19,6 +19,7 @@ const int rowSurgeToggle = 5;
 const int rowDontShowAgain = 6;
 const int rowAppStoreReviewPromptTimer = 7;
 const int rowCertificatePinning = 8;
+const int rowTestnet = 9;
 
 @interface DebugTableViewController ()
 @property (nonatomic) NSDictionary *filteredWalletJSON;
@@ -86,6 +87,12 @@ const int rowCertificatePinning = 8;
     [[NSUserDefaults standardUserDefaults] setBool:!pinningOn forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
 }
 
+- (void)toggleTestnet
+{
+    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    [[NSUserDefaults standardUserDefaults] setBool:!testnetOn forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+}
+
 - (void)showFilteredWalletJSON
 {
     UIViewController *viewController = [[UIViewController alloc] init];
@@ -105,7 +112,7 @@ const int rowCertificatePinning = 8;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 9;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -166,6 +173,15 @@ const int rowCertificatePinning = 8;
             pinningToggle.on = pinningOn;
             [pinningToggle addTarget:self action:@selector(togglePinning) forControlEvents:UIControlEventTouchUpInside];
             cell.accessoryView = pinningToggle;
+            break;
+        }
+        case rowTestnet: {
+            cell.textLabel.text = DEBUG_STRING_TESTNET;
+            UISwitch *testnetToggle = [[UISwitch alloc] init];
+            BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+            testnetToggle.on = testnetOn;
+            [testnetToggle addTarget:self action:@selector(toggleTestnet) forControlEvents:UIControlEventTouchUpInside];
+            cell.accessoryView = testnetToggle;
             break;
         }
         default:

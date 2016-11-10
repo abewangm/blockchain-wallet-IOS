@@ -113,6 +113,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define COPYRIGHT_YEAR @"2016"
 
+#define DEBUG_STRING_TESTNET @"Testnet"
+
 #define CERTIFICATE_SERVER_NAME @"blockchain"
 #define CERTIFICATE_FILE_TYPE_DER @"der"
 
@@ -328,6 +330,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_API_URL @"apiURL"
 #define USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING @"certificatePinning"
 #define USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE @"simulateSurge"
+#define USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET @"testnet"
 
 #define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 
