@@ -1185,7 +1185,7 @@ MyWalletPhone.getHistoryForAccount = function(accountIndex) {
         loading_stop();
     };
     
-    loading_start_get_history();
+    objc_loading_start_get_history();
     
     MyWallet.wallet.hdwallet.accounts[accountIndex].fetchTransactions().then(success).catch(error);
 }
@@ -1202,7 +1202,7 @@ MyWalletPhone.getHistoryForImportedAddresses = function() {
         loading_stop();
     };
     
-    loading_start_get_history();
+    objc_loading_start_get_history();
     
     MyWallet.wallet.fetchTransactionsForLegacy().then(success).catch(error);
 }
