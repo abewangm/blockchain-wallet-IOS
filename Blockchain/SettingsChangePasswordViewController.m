@@ -9,6 +9,7 @@
 #import "RootService.h"
 #import "BCFadeView.h"
 #import "SettingsChangePasswordViewController.h"
+#import "Blockchain-Swift.h"
 
 @interface SettingsChangePasswordViewController () <UITextFieldDelegate>
 @property (nonatomic) IBOutlet UILabel *passwordFeedbackLabel;
@@ -228,11 +229,6 @@
     
     if ([app.wallet isCorrectPassword:self.newerPasswordTextField.text]) {
         [self alertUserOfError:BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT];
-        return NO;
-    }
-    
-    if ([[app.wallet getPasswordHint] isEqualToString:self.newerPasswordTextField.text]) {
-        [self alertUserOfError:BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT_FROM_HINT];
         return NO;
     }
     

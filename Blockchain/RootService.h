@@ -17,19 +17,19 @@
 #import "BCModalView.h"
 #import "BCModalViewController.h"
 #import "ECSlidingViewController.h"
-#import "Blockchain-Swift.h"
 #import <MessageUI/MFMailComposeViewController.h>
 #import "UpgradeViewController.h"
 #import "SettingsNavigationController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AccountsAndAddressesNavigationController.h"
 #import "TransactionsViewController.h"
+#import "TransferAllFundsViewController.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "CertificatePinner.h"
 
 @protocol TopViewController;
 
-@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController;
+@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController;
 
 @interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate> {
     
@@ -89,6 +89,8 @@
 
 @property (strong, nonatomic) IBOutlet BCModalView *modalView;
 @property (strong, nonatomic) NSMutableArray *modalChain;
+
+@property (strong, nonatomic) TransferAllFundsViewController *transferAllFundsModalController;
 
 // PIN Entry
 @property (nonatomic, strong) PEPinEntryController *pinEntryViewController;
@@ -195,6 +197,8 @@
 - (IBAction)securityCenterClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
+
+- (void)setupTransferAllFunds;
 
 - (void)paymentReceived:(NSDecimalNumber *)amount;
 

@@ -115,7 +115,9 @@
 
 - (void)dismiss
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (self.onDismiss) self.onDismiss();
+    }];
 }
 
 #pragma mark Busy View Delegate

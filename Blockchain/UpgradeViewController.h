@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface UpgradeViewController : UIViewController <UIScrollViewDelegate>
+#import "BCFadeView.h"
+@interface UpgradeViewController : UIViewController <UIScrollViewDelegate, TopViewController>
 
 @end

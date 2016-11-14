@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Kérjük, írja be a helyreállítási mondat szóközökkel elválasztott szavak";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Kérjük, jelentkezzen be további címeket betölteni.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Kérem az alacsonyabb a díjat egy összeg kevesebb, mint a mérleg";
 
 /* (No Commment) */

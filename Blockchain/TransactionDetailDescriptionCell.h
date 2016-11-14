@@ -10,13 +10,17 @@
 #import "TransactionDetailTableCell.h"
 
 @protocol DescriptionDelegate
+@property (nonatomic, readonly) BOOL didSetTextViewCursorPosition;
 - (void)textViewDidChange:(UITextView *)textView;
 - (NSString *)getNotePlaceholder;
 - (CGFloat)getDefaultRowHeight;
-- (CGFloat)getMaxTextViewHeight;
+- (NSRange)getTextViewCursorPosition;
+- (void)setDefaultTextViewCursorPosition:(NSUInteger)textLength;
+- (UIView *)getDescriptionInputAccessoryView;
 @end
 @interface TransactionDetailDescriptionCell : TransactionDetailTableCell
 @property (nonatomic) UITextView *textView;
+@property (nonatomic) UILabel *mainLabel;
 @property (nonatomic) UILabel *textViewPlaceholderLabel;
 @property (nonatomic) CGFloat defaultTextViewHeight;
 @property (nonatomic) UIButton *editButton;

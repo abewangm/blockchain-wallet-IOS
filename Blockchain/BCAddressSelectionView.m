@@ -28,12 +28,13 @@
 
 bool showFromAddresses;
 bool allSelectable;
+bool accountsOnly;
 
 int addressBookSectionNumber;
 int accountsSectionNumber;
 int legacyAddressesSectionNumber;
 
-- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses allSelectable:(BOOL)_allSelectable
+- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses allSelectable:(BOOL)_allSelectable accountsOnly:(BOOL)_accountsOnly
 {
     if ([super initWithFrame:CGRectZero]) {
         [[NSBundle mainBundle] loadNibNamed:@"BCAddressSelectionView" owner:self options:nil];
@@ -72,18 +73,20 @@ int legacyAddressesSectionNumber;
             }
             
             // Then show user's active legacy addresses with a positive balance
-            for (NSString * addr in _wallet.activeLegacyAddresses) {
-                if ([_wallet getLegacyAddressBalance:addr] > 0) {
-                    [legacyAddresses addObject:addr];
-                    [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
+            if (!_accountsOnly) {
+                for (NSString * addr in _wallet.activeLegacyAddresses) {
+                    if ([_wallet getLegacyAddressBalance:addr] > 0) {
+                        [legacyAddresses addObject:addr];
+                        [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
+                    }
                 }
-            }
             
             // Then show the active legacy addresses with a zero balance
-            for (NSString * addr in _wallet.activeLegacyAddresses) {
-                if (!([_wallet getLegacyAddressBalance:addr] > 0)) {
-                    [legacyAddresses addObject:addr];
-                    [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
+                for (NSString * addr in _wallet.activeLegacyAddresses) {
+                    if (!([_wallet getLegacyAddressBalance:addr] > 0)) {
+                        [legacyAddresses addObject:addr];
+                        [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
+                    }
                 }
             }
             
@@ -106,9 +109,11 @@ int legacyAddressesSectionNumber;
             }
             
             // Finally show all the user's active legacy addresses
-            for (NSString * addr in _wallet.activeLegacyAddresses) {
-                [legacyAddresses addObject:addr];
-                [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
+            if (!_accountsOnly) {
+                for (NSString * addr in _wallet.activeLegacyAddresses) {
+                    [legacyAddresses addObject:addr];
+                    [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
+                }
             }
             
             accountsSectionNumber = 0;
@@ -183,7 +188,7 @@ int legacyAddressesSectionNumber;
         }
     }
     
-    if (shouldCloseModal) {
+    if (shouldCloseModal && !app.topViewControllerDelegate) {
         [app closeModalWithTransition:kCATransitionFromLeft];
     }
 }

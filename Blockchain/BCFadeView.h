@@ -18,6 +18,14 @@
  * MA 02110-1301  USA
  */
 #import <UIKit/UIKit.h>
+@protocol TopViewController <NSObject>
+@optional
+- (void)showBusyViewWithLoadingText:(NSString *)text;
+- (void)updateBusyViewLoadingText:(NSString *)text;
+- (void)hideBusyView;
+@required
+- (void)presentAlertController:(UIAlertController *)alertController;
+@end
 
 @interface BCFadeView : UIView
 

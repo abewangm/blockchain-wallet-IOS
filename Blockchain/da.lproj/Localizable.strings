@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Angiv venligst din opsving sætning med ord adskilt af mellemrum";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Log på for at indlæse flere adresser.";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Venligst lavere gebyr til et beløb, der er mindre end din balance";
 
 /* (No Commment) */

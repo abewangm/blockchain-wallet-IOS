@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "スペースで語句を区切ってリカバリーフレーズを入力してください";
 
 /* (No Commment) */
+"Please login to load more addresses." = "ログインしてさらにアドレスをロードしてください。";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "残高より低い金額に手数料を下げてください";
 
 /* (No Commment) */

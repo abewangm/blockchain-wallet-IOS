@@ -74,7 +74,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define COLOR_UPGRADE_TEXT_BLUE UIColorFromRGB(0x1975BB)
 
-#define COLOR_TABLE_VIEW_CELL_TEXT_BLUE UIColorFromRGB(0x007AFF)
+#define COLOR_TABLE_VIEW_CELL_TEXT_BLUE UIColorFromRGB(0x1b8ac7)
 
 #pragma mark - Measurements
 
@@ -105,7 +105,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define BUSY_VIEW_LABEL_ALPHA 0.75
 #define BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE 14.0
 
+#define OFFSET_TEXTVIEW_ADJUSTED_TOP CGPointMake(0, 3.5)
+
 #pragma mark - Strings
+
+#define CERTIFICATE_SERVER_NAME @"blockchain"
+#define CERTIFICATE_FILE_TYPE_DER @"der"
+
+#define WEBSOCKET_ERROR_INVALID_SERVER_CERTIFICATE @"Invalid server certificate."
 
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_VALUE @"transactionDetailValue"
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_STATUS @"transactionDetailStatus"
@@ -162,8 +169,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_RELOAD_ACCOUNTS_AND_ADDRESSES @"reloadAccountsAndAddresses"
 #define NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD @"multiaddressResponseReload"
 #define NOTIFICATION_KEY_GET_FIAT_AT_TIME @"getFiatAtTime"
-#define NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL @"reloadTransactionDetail"
-#define NOTIFICATION_KEY_RELOAD_SYMBOLS @"reloadSymbols"
 
 #define NOTIFICATION_KEY_MODAL_VIEW_DISMISSED @"modalViewDismissed"
 
@@ -183,14 +188,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_ERROR @"VerifyMobileNumberError"
 #define NOTIFICATION_KEY_CHANGE_TWO_STEP_SUCCESS @"ChangeTwoStep"
 #define NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR @"ChangeTwoStepError"
-#define NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_SUCCESS @"ChangeHint"
-#define NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR @"ChangeHintError"
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_SUCCESS @"ChangePassword"
 #define NOTIFICATION_KEY_CHANGE_PASSWORD_ERROR @"ChangePasswordError"
 #define NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_SUCCESS @"ChangeEmailNotifications"
 #define NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_ERROR @"ChangeEmailNotificationsError"
-#define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS @"ChangeTorBlocking"
-#define NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR @"ChangeTorBlockingError"
 
 #define TERMS_OF_SERVICE_URL_SUFFIX @"/Resources/TermsofServicePolicy.pdf"
 #define PRIVACY_POLICY_URL_SUFFIX @"/Resources/PrivacyPolicy.pdf"
@@ -214,7 +215,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define HOST_NAME_MERCHANT HOST_NAME_API
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info"
-#define DEFAULT_WEBSOCKET_SERVER @"wss://blockchain.info/inv"
+#define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 #define DEFAULT_MERCHANT_URL @"https://api.blockchain.info/merchant"
 #define DEFAULT_API_URL @"https://api.blockchain.info"
 
@@ -229,9 +230,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define DYNAMIC_FEE_SERVICE_URL @"https://api.staging.blockchain.co.uk/fees"
 #define INFORMATION_RECEIVE_URL @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
-
-#define HTML_CONNECT_SRC_PLACEHOLDER @"PLACEHOLDER_CONNECT_SRC"
-#define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info https://api.blockchain.info https://api.staging.blockchain.co.uk"
 
 #define SOUND_FORMAT @"wav"
 
@@ -272,7 +270,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL @"email"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED @"email_verified"
-#define DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT @"password_hint1"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES @"currencies"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_BTC_CURRENCIES @"btc_currencies"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED @"sms_verified"
@@ -295,6 +292,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
+#define USER_DEFAULTS_KEY_DEFAULT_ACCOUNT_LABELLED_ADDRESSES_COUNT @"defaultAccountLabelledAddressesCount"
 #define USER_DEFAULTS_KEY_NEXT_ADDRESS @"nextReceivingAddress"
 #define USER_DEFAULTS_KEY_NEXT_ADDRESS_USED @"nextReceivingAddressUsed"
 #define USER_DEFAULTS_KEY_APP_REVIEW_PROMPT_DATE @"appReviewPromptDate"
@@ -331,6 +329,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"
 #define KEYCHAIN_KEY_PIN @"pin"
+#define KEYCHAIN_KEY_SWIPE_ADDRESSES @"swipeAddresses"
 
 #define QR_CODE_KEY_GUID @"guid"
 #define QR_CODE_KEY_SHARED_KEY @"sharedKey"
@@ -370,6 +369,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0}; Promise = undefined;\n%@\n%@"
 
+#define JAVASCRIPTCORE_CLASS_HDNODE @"HDNode"
+#define JAVASCRIPTCORE_BITCOIN_INIT @"var Bitcoin = require('bitcoinjs-lib');"
+#define JAVASCRIPTCORE_BITCOIN @"Bitcoin"
 #define JAVASCRIPTCORE_CLASS_XMLHTTPREQUEST @"XMLHttpRequest"
 #define JAVASCRIPTCORE_STACK @"stack"
 #define JAVASCRIPTCORE_LINE @"line"
@@ -473,6 +475,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define TRANSACTION_DESCRIPTION_CHARACTER_LIMIT 255
 
 #define SWIPE_TO_RECEIVE_ADDRESS_COUNT 5
+
+#define TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT 100
 
 #pragma mark - Runtime modes
 

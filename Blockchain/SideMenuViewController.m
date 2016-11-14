@@ -415,12 +415,12 @@ int accountEntries = 0;
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         
         if ([images[indexPath.row] isEqualToString:@"security"]) {
-            int completedItems = [app.wallet securityCenterScore];
+            int securityCenterScore = [app.wallet securityCenterScore];
             cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             
-            if (completedItems < 6 && completedItems > 2) {
+            if (securityCenterScore == 1) {
                 [cell.imageView setTintColor:COLOR_SECURITY_CENTER_YELLOW];
-            } else if (completedItems == 6) {
+            } else if (securityCenterScore > 1) {
                 [cell.imageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
             } else {
                 [cell.imageView setTintColor:COLOR_SECURITY_CENTER_RED];

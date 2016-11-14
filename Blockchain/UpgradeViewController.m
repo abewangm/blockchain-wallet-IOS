@@ -37,6 +37,8 @@
         return;
     }
     
+    app.topViewControllerDelegate = nil;
+    
     [app.wallet loading_start_upgrade_to_hd];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -158,6 +160,7 @@
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    app.topViewControllerDelegate = nil;
 }
 
 - (void)viewDidLayoutSubviews
@@ -216,6 +219,13 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self setTextForCaptionLabel];
+}
+
+#pragma mark Top View Delegate
+
+- (void)presentAlertController:(UIAlertController *)alertController
+{
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

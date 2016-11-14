@@ -39,7 +39,7 @@
 @property(nonatomic, assign) int tag;
 @end
 
-@class Wallet, Transaction;
+@class Wallet, Transaction, JSValue, JSContext;
 
 @protocol WalletDelegate <NSObject>
 @optional
@@ -99,12 +99,16 @@
 - (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode;
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
 - (void)didSetDefaultAccount;
+- (void)didChangeLocalCurrency;
+- (void)setupBackupTransferAll:(id)transferAllController;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
 }
 
 // Core Wallet Init Properties
+@property (readonly, nonatomic) JSContext *context;
+
 @property(nonatomic, strong) NSString *guid;
 @property(nonatomic, strong) NSString *sharedKey;
 @property(nonatomic, strong) NSString *password;
@@ -142,7 +146,8 @@
 @property (nonatomic) SRWebSocket *webSocket;
 @property (nonatomic) NSTimer *webSocketTimer;
 @property (nonatomic) NSString *swipeAddressToSubscribe;
-@property (nonatomic) NSMutableArray *swipeAddresses;
+
+@property (nonatomic) int lastLabelledAddressesCount;
 
 - (id)init;
 
@@ -270,24 +275,23 @@
 
 - (NSDictionary *)filteredWalletJSON;
 
+- (int)getDefaultAccountLabelledAddressesCount;
+
 // Settings
 - (void)getAccountInfo;
 - (NSString *)getEmail;
 - (NSString *)getSMSNumber;
 - (BOOL)getSMSVerifiedStatus;
-- (NSString *)getPasswordHint;
 - (NSDictionary *)getFiatCurrencies;
 - (NSDictionary *)getBtcCurrencies;
 - (int)getTwoStepType;
 - (BOOL)getEmailVerifiedStatus;
-- (BOOL)getTorBlockingStatus;
 
 - (void)changeEmail:(NSString *)newEmail;
 - (void)resendVerificationEmail:(NSString *)email;
 - (void)getAllCurrencySymbols;
 - (void)changeMobileNumber:(NSString *)newMobileNumber;
 - (void)verifyMobileNumber:(NSString *)code;
-- (void)updatePasswordHint:(NSString *)hint;
 - (void)enableTwoStepVerificationForSMS;
 - (void)disableTwoStepVerification;
 - (void)changePassword:(NSString *)changedPassword;
@@ -296,17 +300,15 @@
 - (void)disableEmailNotifications;
 - (void)enableSMSNotifications;
 - (void)disableSMSNotifications;
-- (void)changeTorBlocking:(BOOL)willEnable;
 - (BOOL)emailNotificationsEnabled;
 - (BOOL)SMSNotificationsEnabled;
 
 // Security Center
 - (BOOL)hasVerifiedEmail;
 - (BOOL)hasVerifiedMobileNumber;
-- (BOOL)hasStoredPasswordHint;
 - (BOOL)hasEnabledTwoStep;
-- (BOOL)hasBlockedTorRequests;
 - (int)securityCenterScore;
+- (int)securityCenterCompletedItemsCount;
 
 // Payment Spender
 - (void)createNewPayment;
@@ -319,9 +321,11 @@
 - (void)sweepPaymentRegularThenConfirm;
 - (void)sweepPaymentAdvanced:(uint64_t)fee;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
-- (void)getInfoForTransferAllFundsToDefaultAccount;
-- (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
-- (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
+- (void)setupBackupTransferAll:(id)transferAllController;
+- (void)getInfoForTransferAllFundsToAccount;
+- (void)setupFirstTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment;
+- (void)setupFollowingTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment;
+- (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;
 - (void)getFeeBounds:(uint64_t)fee;
@@ -340,5 +344,7 @@
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
 - (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction filter:(NSInteger)filter;
+
+- (JSValue *)executeJSSynchronous:(NSString *)command;
 
 @end

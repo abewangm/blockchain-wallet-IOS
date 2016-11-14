@@ -17,7 +17,7 @@
 "07q-RX-CeI.text" = "Будь ласка, спробуйте ще раз!";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Повернення коштів";
+"9A7-TT-PzN.title" = "Повернення кошті";
 
 /* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
 "9Hu-uO-gJl.text" = "О, ні! Ви ще не відновили свої кошти.";

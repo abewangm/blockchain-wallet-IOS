@@ -866,6 +866,9 @@
 "Please enter your recovery phrase with words separated by spaces" = "Veuillez saisir votre phrase de récupération en séparant les mots par des espaces";
 
 /* (No Commment) */
+"Please login to load more addresses." = "Veuillez vous connecter pour charger plus d'adresses";
+
+/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Veuillez abaisser les frais afin d'obtenir un montant inférieur à votre solde";
 
 /* (No Commment) */
@@ -1033,7 +1036,7 @@
 "Show all 'Dont Show Again' alerts" = "Afficher toutes les alertes « Ne plus afficher »";
 
 /* No comment provided by engineer. */
-"Signal %d was raised." = "Le signal %d a été émis.";
+"Signal %d was raised." = "Le signal %d a été élevé.";
 
 /* (No Commment) */
 "Signing Input %d" = "Signature des données %d en cours";
@@ -1426,7 +1429,7 @@
 "You've successfully imported a private key." = "Vous avez importé une clé privée avec succès.";
 
 /* (No Commment) */
-"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Vous avez importé la clé privée pour ​l'adresse %@ correctement et vous pouvez maintenant dépenser depuis cette adresse. Si vous voulez dépenser à partir de cette adresse, assurez-vous de scanner la bonne clé privée.";
+"You've successfully imported the private key for ​the address %@, and you can now spend from it. If you want to spend from this address, make sure you scan the correct private key." = "Vous avez importé la clé privée pour​ l'adresse %@ correctement et vous pouvez maintenant dépenser depuis cette adresse. Si vous voulez dépenser à partir de cette adresse, assurez-vous de scanner la bonne clé privée.";
 
 /* (No Commment) */
 "Your device appears to be jailbroken. The security of your wallet may be compromised." = "Il semble que votre appareil soit « jailbreaké ». La sécurité de votre portefeuille pourrait être compromise.";

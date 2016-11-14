@@ -37,6 +37,16 @@
     self.tableView.dataSource = self;
 }
 
+- (void)reloadTableView
+{
+    [self.tableView reloadData];
+}
+
+- (void)toggleSymbol
+{
+    [self.recipientsDelegate toggleSymbol];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.recipients.count;
@@ -54,6 +64,7 @@
         cell.balanceLabel.frame = CGRectMake(247, 11, 90, 21);
         UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
         cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
+        [cell.balanceButton addTarget:self action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
         
         cell.watchLabel.text = BC_STRING_WATCH_ONLY;
         cell.watchLabel.textColor = [UIColor redColor];
@@ -72,7 +83,7 @@
     
     cell.labelLabel.hidden = [address isEqualToString:label];
     
-    BOOL isWatchOnlyLegacyAddress = [self.delegate isWatchOnlyLegacyAddress:address];
+    BOOL isWatchOnlyLegacyAddress = [self.recipientsDelegate isWatchOnlyLegacyAddress:address];
     if (isWatchOnlyLegacyAddress) {
         // Show the watch only tag and resize the label and balance labels so there is enough space
         cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);

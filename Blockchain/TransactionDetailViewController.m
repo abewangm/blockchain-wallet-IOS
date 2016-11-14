@@ -34,18 +34,19 @@ const int cellRowDate = 4;
 const int cellRowStatus = 5;
 
 const CGFloat rowHeightDefault = 60;
-const CGFloat rowHeightMax = 116;
-const CGFloat textViewHeightMax = rowHeightMax - 20;
 const CGFloat rowHeightValue = 116;
+const CGFloat rowHeightValueReceived = 92;
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DescriptionDelegate, ValueDelegate, StatusDelegate, RecipientsDelegate>
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UITextView *textView;
-@property CGFloat oldTextViewHeight;
-@property (nonatomic) UIView *descriptonInputAccessoryView;
+@property (nonatomic) NSRange textViewCursorPosition;
+@property (nonatomic) UIView *descriptionInputAccessoryView;
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) BOOL isGettingFiatAtTime;
+
+@property (nonatomic) TransactionRecipientsViewController *recipientsViewController;
 
 @end
 @implementation TransactionDetailViewController
@@ -76,22 +77,6 @@ const CGFloat rowHeightValue = 116;
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetHistory) name:NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadSymbols) name:NOTIFICATION_KEY_RELOAD_SYMBOLS object:nil];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RELOAD_TRANSACTION_DETAIL object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RELOAD_SYMBOLS object:nil];
-}
-
 - (void)setupTextViewInputAccessoryView
 {
     UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
@@ -107,10 +92,10 @@ const CGFloat rowHeightValue = 116;
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(updateButton.frame.size.width - 50, 0, 50, BUTTON_HEIGHT)];
     cancelButton.backgroundColor = COLOR_BUTTON_GRAY_CANCEL;
     [cancelButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(endEditing) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton addTarget:self action:@selector(cancelEditing) forControlEvents:UIControlEventTouchUpInside];
     [inputAccessoryView addSubview:cancelButton];
     
-    self.descriptonInputAccessoryView = inputAccessoryView;
+    self.descriptionInputAccessoryView = inputAccessoryView;
 }
 
 - (void)getFiatAtTime
@@ -126,11 +111,12 @@ const CGFloat rowHeightValue = 116;
     return label.length > 0 ? label : nil;
 }
 
-- (void)endEditing
+- (void)cancelEditing
 {
+    self.textViewCursorPosition = self.textView.selectedRange;
+
     [self.textView resignFirstResponder];
-    [self.textView scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
-    self.textView.userInteractionEnabled = NO;
+    self.textView.editable = NO;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
@@ -139,9 +125,10 @@ const CGFloat rowHeightValue = 116;
 
 - (void)saveNote
 {
-    [self.textView resignFirstResponder];
+    self.textViewCursorPosition = self.textView.selectedRange;
     
-    [self.textView scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
+    [self.textView resignFirstResponder];
+    self.textView.editable = NO;
 
     [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
@@ -174,30 +161,37 @@ const CGFloat rowHeightValue = 116;
     [self.busyViewDelegate hideBusyView];
     
     NSArray *newTransactions = app.latestResponse.transactions;
-    Transaction *updatedTransaction = newTransactions[self.transactionIndex];
     
-    if ([updatedTransaction.myHash isEqualToString:self.transaction.myHash]) {
-        self.transaction = updatedTransaction;
-    } else {
-        BOOL didFindTransaction = NO;
-        for (Transaction *transaction in newTransactions) {
-            if ([transaction.myHash isEqualToString:self.transaction.myHash]) {
-                self.transaction = updatedTransaction;
-                didFindTransaction = YES;
-                break;
+    if (self.transactionIndex < newTransactions.count) {
+        
+        Transaction *updatedTransaction = newTransactions[self.transactionIndex];
+        
+        if ([updatedTransaction.myHash isEqualToString:self.transaction.myHash]) {
+            self.transaction = updatedTransaction;
+        } else {
+            BOOL didFindTransaction = NO;
+            for (Transaction *transaction in newTransactions) {
+                if ([transaction.myHash isEqualToString:self.transaction.myHash]) {
+                    transaction.fiatAmountsAtTime = self.transaction.fiatAmountsAtTime;
+                    self.transaction = transaction;
+                    didFindTransaction = YES;
+                    break;
+                }
+            }
+            if (!didFindTransaction) {
+                [self dismissViewControllerAnimated:YES completion:^{
+                    [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transaction.myHash]];
+                }];
             }
         }
-        if (!didFindTransaction) {
-            [self dismissViewControllerAnimated:YES completion:^{
-                [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transaction.myHash]];
-            }];
+        
+        [self.tableView reloadData];
+        
+        if (self.refreshControl && self.refreshControl.isRefreshing) {
+            [self.refreshControl endRefreshing];
         }
-    }
-    
-    [self.tableView reloadData];
-    
-    if (self.refreshControl && self.refreshControl.isRefreshing) {
-        [self.refreshControl endRefreshing];
+    } else {
+        DLog(@"Error: transaction detail index out of bounds of new transactions array!");
     }
 }
 
@@ -208,6 +202,7 @@ const CGFloat rowHeightValue = 116;
 
 - (void)reloadSymbols
 {
+    [self.recipientsViewController reloadTableView];
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowValue inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
@@ -224,19 +219,11 @@ const CGFloat rowHeightValue = 116;
         [cell configureWithTransaction:self.transaction];
         return cell;
     } else if (indexPath.row == cellRowDescription) {
-        // Set initial height for sizeThatFits: calculation
         TransactionDetailDescriptionCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         cell.descriptionDelegate = self;
-        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height < rowHeightDefault ? rowHeightDefault : cell.frame.size.height);
-        
         [cell configureWithTransaction:self.transaction];
-        
-        self.oldTextViewHeight = cell.textView.frame.size.height;
         self.textView = cell.textView;
-        cell.textView.inputAccessoryView = self.descriptonInputAccessoryView;
-        
-        // Resize textView in case current note is larger than one line
-        [self textViewDidChange:self.textView];
+        cell.textView.inputAccessoryView = [self getDescriptionInputAccessoryView];
         return cell;
     } else if (indexPath.row == cellRowTo) {
         TransactionDetailToCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_TO forIndexPath:indexPath];
@@ -273,23 +260,19 @@ const CGFloat rowHeightValue = 116;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == cellRowValue) {
-        return rowHeightValue;
+        return [self.transaction.txType isEqualToString:TX_TYPE_RECEIVED] ? rowHeightValueReceived : rowHeightValue;
     } else if (indexPath.row == cellRowDescription && self.textView.text) {
-        CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
-        CGSize sizeToUse = [self addVerticalPaddingToSize:size];
-        
-        if (sizeToUse.height < rowHeightDefault) {
-            return rowHeightDefault;
-        } else if (sizeToUse.height > rowHeightMax) {
-            return rowHeightMax;
-        } else {
-            return sizeToUse.height;
-        }
+        return UITableViewAutomaticDimension;
     } else if (indexPath.row == cellRowTo) {
         return rowHeightDefault;
     } else if (indexPath.row == cellRowFrom) {
         return rowHeightDefault/2 + 20.5/2;
     }
+    return rowHeightDefault;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return rowHeightDefault;
 }
 
@@ -300,11 +283,22 @@ const CGFloat rowHeightValue = 116;
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 50;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *spacer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
+    return spacer;
+}
+
 - (void)showRecipients
 {
-    TransactionRecipientsViewController *recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
-    recipientsViewController.delegate = self;
-    [self.navigationController pushViewController:recipientsViewController animated:YES];
+    self.recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
+    self.recipientsViewController.recipientsDelegate = self;
+    [self.navigationController pushViewController:self.recipientsViewController animated:YES];
 }
 
 - (void)setupPullToRefresh
@@ -331,21 +325,28 @@ const CGFloat rowHeightValue = 116;
 - (void)toggleSymbol
 {
     [app toggleSymbol];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowValue inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    CGSize size = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
-    if (size.height > textViewHeightMax) size.height = textViewHeightMax;
-    if (size.height != self.oldTextViewHeight) {
-        self.oldTextViewHeight = size.height;
-        self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, size.height);
-        [UIView setAnimationsEnabled:NO];
-        [self.tableView beginUpdates];
-        [self.tableView endUpdates];
-        [UIView setAnimationsEnabled:YES];
-    }
+    CGPoint currentOffset = self.tableView.contentOffset;
+    [UIView setAnimationsEnabled:NO];
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    [UIView setAnimationsEnabled:YES];
+    self.tableView.contentOffset = currentOffset;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGRect keyboardAccessoryRect = [self.descriptionInputAccessoryView.superview convertRect:self.descriptionInputAccessoryView.frame toView:self.tableView];
+        CGRect keyboardPlusAccessoryRect = CGRectMake(keyboardAccessoryRect.origin.x, keyboardAccessoryRect.origin.y, keyboardAccessoryRect.size.width, self.view.frame.size.height - keyboardAccessoryRect.origin.y);
+        
+        UITextRange *selectionRange = [textView selectedTextRange];
+        CGRect selectionEndRect = [textView convertRect:[textView caretRectForPosition:selectionRange.end] toView:self.tableView];
+        
+        if (CGRectIntersectsRect(keyboardPlusAccessoryRect, selectionEndRect)) {
+            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + selectionEndRect.origin.y + selectionEndRect.size.height - keyboardAccessoryRect.origin.y + 15) animated:NO];
+        }
+    });
 }
 
 - (void)showWebviewDetail
@@ -366,9 +367,20 @@ const CGFloat rowHeightValue = 116;
     return rowHeightDefault;
 }
 
-- (CGFloat)getMaxTextViewHeight
+- (NSRange)getTextViewCursorPosition
 {
-    return textViewHeightMax;
+    return self.textViewCursorPosition;
+}
+
+- (void)setDefaultTextViewCursorPosition:(NSUInteger)textLength
+{
+    self.textViewCursorPosition = NSMakeRange(textLength, 0);
+    _didSetTextViewCursorPosition = YES;
+}
+
+- (UIView *)getDescriptionInputAccessoryView
+{
+    return self.textView.isEditable ? self.descriptionInputAccessoryView : nil;
 }
 
 #pragma mark - Recipients Delegate

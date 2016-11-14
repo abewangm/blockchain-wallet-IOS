@@ -17,6 +17,7 @@
 #import "LocalizationConstants.h"
 #import "TransactionsViewController.h"
 #import "PrivateKeyReader.h"
+#import "TransferAllFundsBuilder.h"
 
 typedef enum {
     TransactionTypeRegular = 100,
@@ -24,7 +25,7 @@ typedef enum {
     TransactionTypeSweepAndConfirm = 300,
 }TransactionType;
 
-@interface SendViewController () <UITextFieldDelegate>
+@interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate>
 
 @property (nonatomic) TransactionType transactionType;
 
@@ -47,7 +48,7 @@ typedef enum {
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
 
-@property (nonatomic) NSString *temporarySecondPassword;
+@property (nonatomic) TransferAllFundsBuilder *transferAllPaymentBuilder;
 
 @end
 
@@ -200,7 +201,6 @@ BOOL displayingLocalSymbolSend;
     self.confirmPaymentView.customizeFeeButton.hidden = NO;
     sendProgressCancelButton.hidden = YES;
     
-    self.transferAllMode = NO;
     self.isSending = NO;
     self.isReloading = NO;
 }
@@ -216,8 +216,6 @@ BOOL displayingLocalSymbolSend;
     } else {
         [app.wallet changePaymentFromAccount:self.fromAccount isAdvanced:self.customFeeMode];
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
 }
 
 - (void)reloadSymbols
@@ -338,7 +336,7 @@ BOOL displayingLocalSymbolSend;
     
     [app showBusyViewWithLoadingText:BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER];
     
-    [app.wallet getInfoForTransferAllFundsToDefaultAccount];
+    [app.wallet getInfoForTransferAllFundsToAccount];
 }
 
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
@@ -506,48 +504,63 @@ BOOL displayingLocalSymbolSend;
 
 - (void)transferAllFundsToDefaultAccount
 {
-    [self transferAllFundsToDefaultAccountWithSecondPassword:nil];
+    __weak SendViewController *weakSelf = self;
+    
+    self.transferAllPaymentBuilder.on_before_send = ^() {
+        
+        SendViewController *strongSelf = weakSelf;
+        
+        [weakSelf hideKeyboard];
+        
+        [weakSelf disablePaymentButtons];
+        
+        [strongSelf->sendProgressActivityIndicator startAnimating];
+        
+        if (weakSelf.transferAllPaymentBuilder.transferAllAddressesInitialCount - [weakSelf.transferAllPaymentBuilder.transferAllAddressesToTransfer count] <= weakSelf.transferAllPaymentBuilder.transferAllAddressesInitialCount) {
+            strongSelf->sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, weakSelf.transferAllPaymentBuilder.transferAllAddressesInitialCount - [weakSelf.transferAllPaymentBuilder.transferAllAddressesToTransfer count] + 1, weakSelf.transferAllPaymentBuilder.transferAllAddressesInitialCount];
+        }
+        
+        [app showModalWithContent:strongSelf->sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
+        
+        [UIView animateWithDuration:0.3f animations:^{
+            UIButton *cancelButton = strongSelf->sendProgressCancelButton;
+            strongSelf->sendProgressCancelButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - cancelButton.frame.size.height, cancelButton.frame.size.width, cancelButton.frame.size.height);
+        }];
+        
+        weakSelf.isSending = YES;
+    };
+    
+    self.transferAllPaymentBuilder.on_prepare_next_transfer = ^(NSArray *transferAllAddressesToTransfer) {
+        weakSelf.fromAddress = transferAllAddressesToTransfer[0];
+    };
+    
+    self.transferAllPaymentBuilder.on_success = ^(NSString *secondPassword) {
+        
+    };
+    
+    self.transferAllPaymentBuilder.on_error = ^(NSString *error, NSString *secondPassword) {
+        
+        SendViewController *strongSelf = weakSelf;
+
+        [app closeAllModals];
+
+        [strongSelf->sendProgressActivityIndicator stopAnimating];
+        
+        [weakSelf enablePaymentButtons];
+        
+        [weakSelf reload];
+    };
+
+    [self.transferAllPaymentBuilder transferAllFundsToAccountWithSecondPassword:nil];
 }
 
-- (void)continueTransferringFunds
+- (void)didFinishTransferFunds:(NSString *)summary
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
-    
-    if ([self.transferAllAddressesToTransfer count] > 0) {
-        [self.transferAllAddressesTransferred addObject:self.transferAllAddressesToTransfer[0]];
-    }
-    
-    if ([self.transferAllAddressesToTransfer count] > 1 && self.transferAllMode) {
-        [self.transferAllAddressesToTransfer removeObjectAtIndex:0];
-        self.fromAddress = self.transferAllAddressesToTransfer[0];
-        [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:self.transferAllAddressesToTransfer[0] secondPassword:self.temporarySecondPassword];
-    } else {
-        [self.transferAllAddressesToTransfer removeAllObjects];
-        [self finishedTransferFunds];
-    }
-}
-
-- (void)finishedTransferFunds
-{
-    NSString *summary;
-    if (self.transferAllAddressesUnspendable > 0) {
-        
-        NSString *addressOrAddressesTransferred = self.transferAllAddressesInitialCount - self.transferAllAddressesUnspendable == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
-        NSString *addressOrAddressesSkipped = self.transferAllAddressesUnspendable == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
-        
-        summary = [NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT_OUTPUTS_ARGUMENT_ARGUMENT_TOO_SMALL, self.transferAllAddressesInitialCount - self.transferAllAddressesUnspendable, addressOrAddressesTransferred, self.transferAllAddressesUnspendable, addressOrAddressesSkipped];
-    } else {
-        
-        NSString *addressOrAddressesTransferred = [self.transferAllAddressesTransferred count] == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
-        
-        summary = [NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT, [self.transferAllAddressesTransferred count], addressOrAddressesTransferred];
-    }
-    
-    NSString *message = [self.transferAllAddressesTransferred count] > 0 ? [NSString stringWithFormat:@"%@\n\n%@", summary, BC_STRING_PAYMENT_ASK_TO_ARCHIVE_TRANSFERRED_ADDRESSES] : summary;
+    NSString *message = [self.transferAllPaymentBuilder.transferAllAddressesTransferred count] > 0 ? [NSString stringWithFormat:@"%@\n\n%@", summary, BC_STRING_PAYMENT_ASK_TO_ARCHIVE_TRANSFERRED_ADDRESSES] : summary;
     
     UIAlertController *alertForPaymentsSent = [UIAlertController alertControllerWithTitle:BC_STRING_PAYMENTS_SENT message:message preferredStyle:UIAlertControllerStyleAlert];
     
-    if ([self.transferAllAddressesTransferred count] > 0) {
+    if ([self.transferAllPaymentBuilder.transferAllAddressesTransferred count] > 0) {
         [alertForPaymentsSent addAction:[UIAlertAction actionWithTitle:BC_STRING_ARCHIVE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self archiveTransferredAddresses];
         }]];
@@ -578,95 +591,9 @@ BOOL displayingLocalSymbolSend;
     [self reload];
 }
 
-- (void)transferAllFundsToDefaultAccountWithSecondPassword:(NSString *)_secondPassword
-{
-    transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
-    
-    listener.on_start = ^() {
-    };
-    
-    listener.on_begin_signing = ^() {
-    };
-    
-    listener.on_sign_progress = ^(int input) {
-    };
-    
-    listener.on_finish_signing = ^() {
-    };
-    
-    listener.on_success = ^(NSString*secondPassword) {
-        
-        DLog(@"SendViewController: on_success_transfer_all for address %@", [self.transferAllAddressesToTransfer firstObject]);
-        
-        self.temporarySecondPassword = secondPassword;
-        
-        [app.wallet incrementReceiveIndexOfDefaultAccount];
-        // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
-        [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(continueTransferringFunds) name:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
-    };
-    
-    listener.on_error = ^(NSString* error, NSString* secondPassword) {
-        DLog(@"Send error: %@", error);
-        
-        if ([error containsString:ERROR_ALL_OUTPUTS_ARE_VERY_SMALL]) {
-            self.transferAllAddressesUnspendable++;
-            self.temporarySecondPassword = secondPassword;
-            [self continueTransferringFunds];
-            DLog(@"Output too small; continuing transfer all");
-            return;
-        }
-        
-        [app closeAllModals];
-        
-        if ([error isEqualToString:ERROR_UNDEFINED]) {
-            [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
-        } else if ([error isEqualToString:ERROR_FAILED_NETWORK_REQUEST]) {
-            [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION];
-        } else if (error && error.length != 0)  {
-            [app standardNotify:error];
-        }
-        
-        [sendProgressActivityIndicator stopAnimating];
-        
-        [self enablePaymentButtons];
-        
-        [self reload];
-        
-        [app.wallet getHistory];
-    };
-    
-    [self hideKeyboard];
-    
-    [self disablePaymentButtons];
-    
-    [sendProgressActivityIndicator startAnimating];
-    
-    if (self.transferAllAddressesInitialCount - [self.transferAllAddressesToTransfer count] <= self.transferAllAddressesInitialCount) {
-        sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllAddressesInitialCount - [self.transferAllAddressesToTransfer count] + 1, self.transferAllAddressesInitialCount];
-    }
-    
-    [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
-    
-    [UIView animateWithDuration:0.3f animations:^{
-        UIButton *cancelButton = sendProgressCancelButton;
-        sendProgressCancelButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - cancelButton.frame.size.height, cancelButton.frame.size.width, cancelButton.frame.size.height);
-    }];
-    
-    app.wallet.didReceiveMessageForLastTransaction = NO;
-    self.isSending = YES;
-    
-    [app.wallet sendPaymentWithListener:listener secondPassword:_secondPassword];
-}
-
 - (void)sendDuringTransferAll:(NSString *)secondPassword
 {
-    if (self.transferAllMode) {
-        [self transferAllFundsToDefaultAccountWithSecondPassword:secondPassword];
-    } else {
-        [self finishedTransferFunds];
-    }
+    [self.transferAllPaymentBuilder transferAllFundsToAccountWithSecondPassword:secondPassword];
 }
 
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword
@@ -757,7 +684,7 @@ BOOL displayingLocalSymbolSend;
             [self enablePaymentButtons];
         } onResume:nil];
         
-        if (self.transferAllMode) {
+        if ([self transferAllMode]) {
             [app.modalView.backButton addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
         }
         
@@ -844,7 +771,7 @@ BOOL displayingLocalSymbolSend;
 - (IBAction)sendProgressCancelButtonClicked:(UIButton *)sender
 {
     sendProgressModalText.text = BC_STRING_CANCELLING;
-    self.transferAllMode = NO;
+    self.transferAllPaymentBuilder.userCancelledNext = YES;
     [self performSelector:@selector(cancelAndReloadIfTransferFails) withObject:nil afterDelay:10.0];
 }
 
@@ -1199,7 +1126,7 @@ BOOL displayingLocalSymbolSend;
     
     availableAmount = newBalance;
     
-    if (!self.transferAllMode) {
+    if (!self.transferAllPaymentBuilder || self.transferAllPaymentBuilder.userCancelledNext) {
         [self doCurrencyConversionAfterMultiAddress];
     }
 }
@@ -1220,11 +1147,6 @@ BOOL displayingLocalSymbolSend;
             [app hideBusyView];
         });
     }
-
-    self.transferAllAddressesToTransfer = [[NSMutableArray alloc] initWithArray:addressesUsed];
-    self.transferAllAddressesTransferred = [[NSMutableArray alloc] init];
-    self.transferAllAddressesInitialCount = (int)[self.transferAllAddressesToTransfer count];
-    self.transferAllAddressesUnspendable = 0;
     
     self.fromAddress = @"";
     self.sendFromAddress = YES;
@@ -1239,9 +1161,7 @@ BOOL displayingLocalSymbolSend;
     
     [self disablePaymentButtons];
     
-    self.transferAllMode = YES;
-    
-    [app.wallet setupFirstTransferForAllFundsToDefaultAccount:[addressesUsed firstObject] secondPassword:nil];
+    [self.transferAllPaymentBuilder setupFirstTransferWithAddressesUsed:addressesUsed];
 }
 
 - (void)showSummaryForTransferAll
@@ -1253,10 +1173,15 @@ BOOL displayingLocalSymbolSend;
     [self enablePaymentButtons];
     
     self.confirmPaymentView.customizeFeeButton.hidden = YES;
-    sendProgressCancelButton.hidden = [self.transferAllAddressesToTransfer count] <= 1;
+    sendProgressCancelButton.hidden = [self.transferAllPaymentBuilder.transferAllAddressesToTransfer count] <= 1;
 
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (BOOL)transferAllMode
+{
+    return self.transferAllPaymentBuilder && !self.transferAllPaymentBuilder.userCancelledNext;
 }
 
 #pragma mark - Textfield Delegates
@@ -1641,11 +1566,17 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Actions
 
+- (void)setupTransferAll
+{
+    self.transferAllPaymentBuilder = [[TransferAllFundsBuilder alloc] initUsingSendScreen:YES];
+    self.transferAllPaymentBuilder.delegate = self;
+}
+
 - (void)archiveTransferredAddresses
 {
     [app showBusyViewWithLoadingText:[NSString stringWithFormat:BC_STRING_ARCHIVING_ADDRESSES]];
                                       
-    [app.wallet archiveTransferredAddresses:self.transferAllAddressesTransferred];
+    [app.wallet archiveTransferredAddresses:self.transferAllPaymentBuilder.transferAllAddressesTransferred];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedArchivingTransferredAddresses) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
 }
@@ -1663,7 +1594,7 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:NO];
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:NO accountsOnly:NO];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_FROM onDismiss:nil onResume:nil];
@@ -1676,7 +1607,7 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO allSelectable:YES];
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO allSelectable:YES accountsOnly:NO];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_TO onDismiss:nil onResume:nil];
