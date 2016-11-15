@@ -157,6 +157,7 @@ static PEViewController *VerifyController()
             [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
             [self.addressLabel setTextColor:[UIColor whiteColor]];
             [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
+            self.addressLabel.adjustsFontSizeToFitWidth = YES;
             [pinController.scrollView addSubview:self.addressLabel];
         }
         
@@ -165,6 +166,11 @@ static PEViewController *VerifyController()
         if (nextAddress) {
             
             void (^error)() = ^() {
+                self.qrCodeImageView.hidden = YES;
+                self.addressLabel.text = BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION;
+            };
+            
+            void (^failure)() = ^() {
                 [KeychainItemWrapper removeFirstSwipeAddress];
                 [self setupQRCode];
             };
@@ -184,7 +190,7 @@ static PEViewController *VerifyController()
                 self.addressLabel.text = nextAddress;
             };
             
-            [app checkForUnusedAddress:nextAddress success:success error:error];
+            [app checkForUnusedAddress:nextAddress success:success failure:failure error:error];
 
         } else {
             self.qrCodeImageView.hidden = YES;
