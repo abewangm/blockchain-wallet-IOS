@@ -514,6 +514,7 @@
 #define BC_STRING_DESCRIPTION NSLocalizedString(@"Description", nil)
 #define BC_STRING_DETAILS NSLocalizedString(@"Details", nil)
 #define BC_STRING_VALUE_WHEN_SENT_ARGUMENT NSLocalizedString(@"Value when sent: %@", nil)
+#define BC_STRING_VALUE_WHEN_RECEIVED_ARGUMENT NSLocalizedString(@"Value when received: %@", nil)
 #define BC_STRING_STATUS NSLocalizedString(@"Status", nil)
 #define BC_STRING_CONFIRMED NSLocalizedString(@"Confirmed", nil)
 #define BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS NSLocalizedString(@"Pending (%@ Confirmations)", nil)
