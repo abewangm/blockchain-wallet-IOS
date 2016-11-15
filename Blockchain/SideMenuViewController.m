@@ -154,7 +154,7 @@ int accountEntries = 0;
 {
     // Total entries: 1 entry for the total balance, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
     int numberOfAccounts = [app.wallet getActiveAccountsCount];
-    balanceEntries = numberOfAccounts + 1;
+    balanceEntries = [app.wallet hasLegacyAddresses] ? numberOfAccounts + 1 : numberOfAccounts;
     accountEntries = numberOfAccounts;
 }
 
@@ -222,7 +222,7 @@ int accountEntries = 0;
 #ifdef ENABLE_TRANSACTION_FILTERING
             BOOL deselected = NO;
             
-            if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1) {
+            if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1 && [app.wallet hasLegacyAddresses]) {
                 if ([app filterIndex] == FILTER_INDEX_IMPORTED_ADDRESSES) {
                     deselected = YES;
                 } else {

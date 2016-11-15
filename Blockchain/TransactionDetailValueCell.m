@@ -87,15 +87,17 @@
 {
     //    TODO: use currencyCode instead of CURRENCY_CODE_USD when endpoint supports other currencies
     //    NSString *currencyCode = [self.detailViewDelegate getCurrencyCode];
+    NSString *sentOrReceived = [transaction.txType isEqualToString:TX_TYPE_RECEIVED] ? BC_STRING_VALUE_WHEN_RECEIVED_ARGUMENT: BC_STRING_VALUE_WHEN_SENT_ARGUMENT;
+    
     if ([transaction.fiatAmountsAtTime objectForKey:CURRENCY_CODE_USD]) {
         self.fiatValueWhenSentLabel.attributedText = nil;
         self.fiatValueWhenSentLabel.textColor = [UIColor lightGrayColor];
-        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, [NSNumberFormatter appendStringToFiatSymbol:[transaction.fiatAmountsAtTime objectForKey:CURRENCY_CODE_USD]]];
+        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:sentOrReceived, [NSNumberFormatter appendStringToFiatSymbol:[transaction.fiatAmountsAtTime objectForKey:CURRENCY_CODE_USD]]];
         self.fiatValueWhenSentLabel.hidden = NO;
     } else {
         self.fiatValueWhenSentLabel.hidden = YES;
         self.fiatValueWhenSentLabel.text = nil;
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:BC_STRING_VALUE_WHEN_SENT_ARGUMENT, @".........."]];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:sentOrReceived, @".........."]];
         [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, attributedString.length - 10)];
         [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor clearColor] range:NSMakeRange(attributedString.length - 10, 10)];
         self.fiatValueWhenSentLabel.attributedText = attributedString;

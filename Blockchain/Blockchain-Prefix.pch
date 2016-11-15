@@ -237,7 +237,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define HOST_NAME_MERCHANT HOST_NAME_API
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info"
-#define DEFAULT_WEBSOCKET_SERVER @"wss://blockchain.info/inv"
+#define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 #define DEFAULT_MERCHANT_URL @"https://api.blockchain.info/merchant"
 #define DEFAULT_API_URL @"https://api.blockchain.info"
 
@@ -252,9 +252,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define DYNAMIC_FEE_SERVICE_URL @"https://api.staging.blockchain.co.uk/fees"
 #define INFORMATION_RECEIVE_URL @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
-
-#define HTML_CONNECT_SRC_PLACEHOLDER @"PLACEHOLDER_CONNECT_SRC"
-#define HTML_CONNECT_SRC_DEFAULT @"wss://*.blockchain.info https://blockchain.info https://*.blockchain.info https://api.blockchain.info https://api.staging.blockchain.co.uk"
 
 #define SOUND_FORMAT @"wav"
 
