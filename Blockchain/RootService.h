@@ -231,9 +231,8 @@
 
 - (void)endBackgroundUpdateTask;
 
-- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock error:(void (^)())errorBlock;
-
 - (NSString *)getVersionLabelString;
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock failure:(void (^)())failureBlock error:(void (^)())errorBlock;
 @end
 
 extern RootService *app;
