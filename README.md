@@ -18,6 +18,8 @@ Prepare the MyWallet Javascript:
     grunt build
     // Required for JavaScriptCore
     sed -i '' '/var crypto = global.crypto || global.msCrypto/ s/$/ || {getRandomValues: function(){}}/' dist/my-wallet.js
+    // Required for overriding methods in Objective-C
+    sed -i '' '/validateMnemonic: validateMnemonic/s/$/, salt: salt/' dist/my-wallet.js
 
 Prepare OpenSSL:
 

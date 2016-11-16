@@ -2417,7 +2417,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock error:(void (^)())errorBlock
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock failure:(void (^)())failureBlock error:(void (^)())errorBlock
 {
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -2430,6 +2430,7 @@ void (^secondPasswordSuccess)(NSString *);
         if (error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 DLog(@"Error checking for receive address %@: %@", address, error);
+                if (errorBlock) errorBlock();
             });
             return;
         }
@@ -2439,7 +2440,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (transactions.count > 0) {
-                if (errorBlock) errorBlock();
+                if (failureBlock) failureBlock();
             } else {
                 if (successBlock) successBlock();
             }
