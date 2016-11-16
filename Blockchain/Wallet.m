@@ -27,6 +27,7 @@
 #import <CommonCrypto/CommonKeyDerivation.h>
 #import "HDNode.h"
 
+#import "KeyPair.h"
 #import "BTCKey.h"
 #import "BTCData.h"
 
@@ -124,6 +125,15 @@
     __weak Wallet *weakSelf = self;
     
 #pragma mark Decryption
+    
+    self.context[@"objc_message_sign"] = ^(KeyPair *keyPair, NSString *message, JSValue *network) {
+        
+        NSData *compactSignatureData = [keyPair.key compactSignatureForHash:[message dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        return [[NSString alloc] initWithData:compactSignatureData encoding:NSUTF8StringEncoding];
+        
+        // return [compactSignatureData base64EncodedStringWithOptions:kNilOptions];
+    };
     
     self.context[@"objc_message_verify"] = ^(NSString *publicKey, NSString *signature, NSString *message) {
         NSData *publicKeyDataFromHex = BTCDataFromHex(publicKey);
@@ -1860,6 +1870,11 @@
 - (JSValue *)executeJSSynchronous:(NSString *)command
 {
     return [self.context evaluateScript:command];
+}
+
+- (void)createContactWithName:(NSString *)name ID:(NSString *)idString
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.createContact(\"%@\", \"%@\")", [name escapeStringForJS], [idString escapeStringForJS]]];
 }
 
 # pragma mark - Transaction handlers

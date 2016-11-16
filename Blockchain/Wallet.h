@@ -347,4 +347,6 @@
 
 - (JSValue *)executeJSSynchronous:(NSString *)command;
 
+// Metadata
+- (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 @end

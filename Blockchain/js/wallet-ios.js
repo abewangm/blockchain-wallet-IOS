@@ -16,6 +16,7 @@ var BIP39 = Blockchain.BIP39;
 var Networks = Blockchain.Networks;
 var ECDSA = Blockchain.ECDSA;
 var Metadata = Blockchain.Metadata;
+var MDID = Blockchain.MDID;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1383,6 +1384,14 @@ Metadata.prototype._verify = function (signature, message) {
     return objc_message_verify(this._node.getPublicKeyBuffer().toString('hex'), signature.toString('hex'), message);
 }
 
+MDID.prototype.verify = function (message, signature, mdid) {
+    return objc_message_verify(mdid, signature, message);
+}
+
+MDID.prototype.sign = function (message) {
+    return objc_message_sign(this._keyPair, message).toString('base64');
+}
+
 // TODO what should this value be?
 MyWallet.getNTransactionsPerPage = function() {
     return 50;
@@ -1861,4 +1870,13 @@ MyWalletPhone.getNetworks = function() {
 
 MyWalletPhone.getECDSA = function() {
     return ECDSA;
+}
+
+MyWalletPhone.createContact = function(name, id) {console.log(JSON.stringify(MDID));
+    MDID.addContact(
+        {
+          name: name,
+          id: id
+        }
+    );
 }

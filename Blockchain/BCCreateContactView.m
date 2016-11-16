@@ -83,7 +83,7 @@
 - (IBAction)createContactClicked:(id)sender
 {
     if ([app checkInternetConnection]) {
-
+        [app.wallet createContactWithName:_nameField.text ID:_idField.text];
     }
 }
 

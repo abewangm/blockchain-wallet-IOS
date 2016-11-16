@@ -401,7 +401,7 @@
 #define BC_STRING_NEW_ADDRESS_CREATE_NEW NSLocalizedString(@"Create new address", nil)
 
 #define BC_STRING_NEW_CONTACT NSLocalizedString(@"New Contact", nil)
-#define BC_STRING_ENTER_NAME_AND_ID NSLocalizedString(@"New Contact", nil)
+#define BC_STRING_ENTER_NAME_AND_ID NSLocalizedString(@"Enter Name and ID", nil)
 
 #define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)
