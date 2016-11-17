@@ -89,10 +89,10 @@
     //    NSString *currencyCode = [self.detailViewDelegate getCurrencyCode];
     NSString *sentOrReceived = [transaction.txType isEqualToString:TX_TYPE_RECEIVED] ? BC_STRING_VALUE_WHEN_RECEIVED_ARGUMENT: BC_STRING_VALUE_WHEN_SENT_ARGUMENT;
     
-    if ([transaction.fiatAmountsAtTime objectForKey:CURRENCY_CODE_USD]) {
+    if ([transaction.fiatAmountsAtTime objectForKey:[CURRENCY_CODE_USD lowercaseString]]) {
         self.fiatValueWhenSentLabel.attributedText = nil;
         self.fiatValueWhenSentLabel.textColor = [UIColor lightGrayColor];
-        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:sentOrReceived, [NSNumberFormatter appendStringToFiatSymbol:[transaction.fiatAmountsAtTime objectForKey:CURRENCY_CODE_USD]]];
+        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:sentOrReceived, [NSNumberFormatter appendStringToFiatSymbol:[transaction.fiatAmountsAtTime objectForKey:[CURRENCY_CODE_USD lowercaseString]]]];
         self.fiatValueWhenSentLabel.hidden = NO;
     } else {
         self.fiatValueWhenSentLabel.hidden = YES;
