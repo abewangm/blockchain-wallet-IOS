@@ -551,4 +551,3 @@
 #define BC_STRING_NEW_ZEALAND_DOLLAR NSLocalizedString(@"New Zealand Dollar", @"")
 #define BC_STRING_BRAZIL_REAL NSLocalizedString(@"Brazil Real", @"")
 #define BC_STRING_RUSSIAN_RUBLE NSLocalizedString(@"Russian Ruble", @"")
->>>>>>> jscore-new-features
