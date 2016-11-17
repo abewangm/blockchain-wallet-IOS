@@ -501,7 +501,7 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController reloadAfterMultiAddressResponse];
     [_transactionsViewController reload];
     [_receiveViewController reload];
-    [_settingsNavigationController reload];
+    [_settingsNavigationController reloadAfterMultiAddressResponse];
     [_accountsAndAddressesNavigationController reload];
     
     [sideMenuViewController reload];

@@ -174,6 +174,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 // Notifications used in settings
 #define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER @"reloadSettingsAndSecurityCenter"
+#define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS @"reloadSettingsAndSecurityCenterAfterMultiAddress"
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"

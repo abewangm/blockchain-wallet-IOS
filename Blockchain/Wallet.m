@@ -2301,8 +2301,6 @@
         if ([[self.currencySymbols allKeys] containsObject:currencyCode]) {
             [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
         }
-    } else {
-        [self getAllCurrencySymbols];
     }
         
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
