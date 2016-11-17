@@ -2160,20 +2160,6 @@
         [response.transactions addObject:tx];
     }
     
-    {
-        NSDictionary *symbolLocalDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_LOCAL] ;
-        if (symbolLocalDict) {
-            response.symbol_local = [CurrencySymbol symbolFromDict:symbolLocalDict];
-        }
-    }
-    
-    {
-        NSDictionary *symbolBTCDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_BTC] ;
-        if (symbolBTCDict) {
-            response.symbol_btc = [CurrencySymbol symbolFromDict:symbolBTCDict];
-        }
-    }
-    
     return response;
 }
 
@@ -2331,8 +2317,6 @@
         if ([[self.currencySymbols allKeys] containsObject:currencyCode]) {
             [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
         }
-    } else {
-        [self getAllCurrencySymbols];
     }
         
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {

@@ -92,10 +92,12 @@ const int aboutPrivacyPolicy = 2;
     [self reload];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAfterMultiAddressResponse) name:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS object:nil];
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -127,17 +129,29 @@ const int aboutPrivacyPolicy = 2;
     [self getAllCurrencySymbols];
 }
 
+- (void)reloadAfterMultiAddressResponse
+{
+    [self.backupController reload];
+
+    [self updateAccountInfo];
+    [self updateCurrencySymbols];
+}
+
 - (void)getAllCurrencySymbols
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCurrencySymbols) name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetCurrencySymbols) name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
     
     [app.wallet getAllCurrencySymbols];
 }
 
-- (void)updateCurrencySymbols
+- (void)didGetCurrencySymbols
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
+    [self updateCurrencySymbols];
+}
 
+- (void)updateCurrencySymbols
+{
     self.allCurrencySymbolsDictionary = app.wallet.currencySymbols;
     
     [self reloadTableView];
@@ -145,14 +159,19 @@ const int aboutPrivacyPolicy = 2;
 
 - (void)getAccountInfo
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     
     [app.wallet getAccountInfo];
 }
 
-- (void)updateAccountInfo
+- (void)didGetAccountInfo
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    [self updateAccountInfo];
+}
+
+- (void)updateAccountInfo
+{
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
     
     DLog(@"SettingsTableViewController: gotAccountInfo");

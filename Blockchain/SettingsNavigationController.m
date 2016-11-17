@@ -113,6 +113,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER object:nil];
 }
 
+- (void)reloadAfterMultiAddressResponse
+{
+    [self.busyView fadeOut];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS object:nil];
+}
+
 - (void)showSecurityCenter
 {
     [self popToRootViewControllerAnimated:NO];
