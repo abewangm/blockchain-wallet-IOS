@@ -16,6 +16,7 @@
 @property (nonatomic) BCFadeView *busyView;
 
 - (void)reload;
+- (void)reloadAfterMultiAddressResponse;
 - (void)showSecurityCenter;
 - (void)showSettings;
 @end

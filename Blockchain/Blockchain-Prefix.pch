@@ -195,6 +195,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 // Notifications used in settings
 #define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER @"reloadSettingsAndSecurityCenter"
+#define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS @"reloadSettingsAndSecurityCenterAfterMultiAddress"
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
@@ -260,6 +261,44 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define TRANSACTION_FILTER_IMPORTED @"imported"
 
+#define CURRENCY_CODE_BTC @"BTC"
+#define CURRENCY_CODE_MBC @"MBC"
+#define CURRENCY_CODE_UBC @"UBC"
+
+#define CURRENCY_SYMBOL_BTC @"BTC"
+#define CURRENCY_SYMBOL_MBC @"mBTC"
+#define CURRENCY_SYMBOL_UBC @"bits"
+
+#define CURRENCY_CONVERSION_BTC @100000000
+#define CURRENCY_CONVERSION_MBC @100000
+#define CURRENCY_CONVERSION_UBC @100
+
+#define CURRENCY_NAME_BTC @"Bitcoin"
+#define CURRENCY_NAME_MBC @"MilliBit (mBTC)"
+#define CURRENCY_NAME_UBC @"Bits (uBTC)"
+
+#define CURRENCY_CODE_USD @"USD"
+#define CURRENCY_CODE_EUR @"EUR"
+#define CURRENCY_CODE_ISK @"ISK"
+#define CURRENCY_CODE_HKD @"HKD"
+#define CURRENCY_CODE_TWD @"TWD"
+#define CURRENCY_CODE_CHF @"CHF"
+#define CURRENCY_CODE_DKK @"DKK"
+#define CURRENCY_CODE_CLP @"CLP"
+#define CURRENCY_CODE_CAD @"CAD"
+#define CURRENCY_CODE_CNY @"CNY"
+#define CURRENCY_CODE_THB @"THB"
+#define CURRENCY_CODE_AUD @"AUD"
+#define CURRENCY_CODE_SGD @"SGD"
+#define CURRENCY_CODE_KRW @"KRW"
+#define CURRENCY_CODE_JPY @"JPY"
+#define CURRENCY_CODE_PLN @"PLN"
+#define CURRENCY_CODE_GBP @"GBP"
+#define CURRENCY_CODE_SEK @"SEK"
+#define CURRENCY_CODE_NZD @"NZD"
+#define CURRENCY_CODE_BRL @"BRL"
+#define CURRENCY_CODE_RUB @"RUB"
+
 #define DICTIONARY_KEY_TRANSACTION_FROM @"from"
 #define DICTIONARY_KEY_TRANSACTION_TO @"to"
 #define DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT @"block_height"
@@ -290,8 +329,15 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_LAST @"last"
 #define DICTIONARY_KEY_USD @"USD"
 
+#define DICTIONARY_KEY_SYMBOL @"symbol"
+#define DICTIONARY_KEY_CONVERSION @"conversion"
+#define DICTIONARY_KEY_NAME @"name"
+#define DICTIONARY_KEY_LAST @"last"
+
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL @"email"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED @"email_verified"
+#define DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCY_FIAT @"currency"
+#define DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCY_BTC @"btc_currency"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES @"currencies"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_BTC_CURRENCIES @"btc_currencies"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED @"sms_verified"
@@ -408,8 +454,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define WEBSOCKET_CLOSE_REASON_LOGGED_OUT @"Logged out"
 #define WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET @"Decrypted Wallet"
 #define WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS @"Received to swipe address"
-
-#define CURRENCY_CODE_USD @"usd"
 
 #pragma mark - Constants
 
