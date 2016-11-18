@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "tizenkettedik szó";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Javasoljuk, hogy a díj jelenik meg a tranzakció ebben az időben.";
+
+/* No comment provided by engineer. */
+"Fee" = "Díj";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Kérjük lépjen kapcsolatba a támogató: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Átutalás összege";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Ha a kapott érték: %@";
