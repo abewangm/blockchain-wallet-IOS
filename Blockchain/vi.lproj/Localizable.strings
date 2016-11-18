@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "từ số 12";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Chúng tôi khuyến nghị các chi phí được hiển thị cho những giao dịch vào thời điểm này.";
+
+/* No comment provided by engineer. */
+"Fee" = "Chi phí";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Vui lòng liên hệ hỗ trợ:\n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Số tiền Chuyển khoản";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Giá trị khi nhận được: %@";
