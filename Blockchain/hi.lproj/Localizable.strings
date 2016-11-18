@@ -1524,3 +1524,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "बारहवें शब्द";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " हम इस समय पर लेन-देन के लिए दिखाए गए शुल्क की सलाह देते हैं।";
+
+/* No comment provided by engineer. */
+"Fee" = "शुल्क";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "कृपया से संपर्क करें समर्थन: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "राशि हस्तांतरण";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "जब प्राप्त मान: %@";
