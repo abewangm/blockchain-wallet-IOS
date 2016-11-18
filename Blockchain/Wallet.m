@@ -128,11 +128,9 @@
     
     self.context[@"objc_message_sign"] = ^(KeyPair *keyPair, NSString *message, JSValue *network) {
         
-        NSData *compactSignatureData = [keyPair.key compactSignatureForHash:[message dataUsingEncoding:NSUTF8StringEncoding]];
+        NSData *hash = [message dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
         
-        return [[NSString alloc] initWithData:compactSignatureData encoding:NSUTF8StringEncoding];
-        
-        // return [compactSignatureData base64EncodedStringWithOptions:kNilOptions];
+        return [[keyPair.key signatureForBinaryMessage:hash] hexadecimalString];
     };
     
     self.context[@"objc_message_verify"] = ^(NSString *publicKey, NSString *signature, NSString *message) {
@@ -2324,6 +2322,8 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector walletDidFinishLoad!", [delegate class]);
     }
+    
+    [app.wallet createContactWithName:nil ID:nil];
 }
 
 - (void)on_create_new_account:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password

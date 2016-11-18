@@ -17,6 +17,7 @@ var Networks = Blockchain.Networks;
 var ECDSA = Blockchain.ECDSA;
 var Metadata = Blockchain.Metadata;
 var MDID = Blockchain.MDID;
+var Contacts = Blockchain.Contacts;
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -25,9 +26,9 @@ API_CODE = '35e77459-723f-48b0-8c9e-6e9e8f54fbd3';
 min = false;
 
 // Set the API code for the iOS Wallet for the server calls
-BlockchainAPI.API_CODE = API_CODE;
+//BlockchainAPI.API_CODE = API_CODE;
 BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
-BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
+BlockchainAPI.API_ROOT_URL = 'https://api.dev.blockchain.co.uk/'
 
 var MyWalletPhone = {};
 var currentPayment = null;
@@ -1384,12 +1385,13 @@ Metadata.prototype._verify = function (signature, message) {
     return objc_message_verify(this._node.getPublicKeyBuffer().toString('hex'), signature.toString('hex'), message);
 }
 
-MDID.prototype.verify = function (message, signature, mdid) {
-    return objc_message_verify(mdid, signature, message);
-}
-
+//MDID.prototype.verify = function (message, signature, mdid) {
+//    return objc_message_verify(mdid, signature, message);
+//}
+//
 MDID.prototype.sign = function (message) {
-    return objc_message_sign(this._keyPair, message).toString('base64');
+    
+    return new Buffer(objc_message_sign(this._keyPair, message), 'hex').toString('base64');
 }
 
 // TODO what should this value be?
@@ -1872,11 +1874,7 @@ MyWalletPhone.getECDSA = function() {
     return ECDSA;
 }
 
-MyWalletPhone.createContact = function(name, id) {console.log(JSON.stringify(MDID));
-    MDID.addContact(
-        {
-          name: name,
-          id: id
-        }
-    );
+MyWalletPhone.createContact = function(name, id) {
+    var mdid = new Blockchain.MDID();console.log('mdid is');console.log(JSON.stringify(mdid));
+    mdid.createInvitation().then(function(x){console.log('createdi');});
 }
