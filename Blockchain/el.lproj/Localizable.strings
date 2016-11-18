@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "δωδέκατη λέξη";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Συνιστάται η χρέωση που εμφανίζεται για τη συναλλαγή αυτή τη στιγμή.";
+
+/* No comment provided by engineer. */
+"Fee" = "Αμοιβή";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Παρακαλείστε να επικοινωνήσετε με υποστήριξη: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Μεταφορά ποσού";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Αξία όταν έλαβε: %@";
