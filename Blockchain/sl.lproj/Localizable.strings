@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "dvanajsta besedo";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Priporočamo pristojbina za transakcije v tem trenutku.";
+
+/* No comment provided by engineer. */
+"Fee" = "Pristojbina";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Obrnite se na podporo: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Znesek prenosa";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Vrednost, ko prejme: %@";
