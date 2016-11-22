@@ -365,6 +365,7 @@
 #define BC_STRING_SETTINGS_WALLET_INFORMATION NSLocalizedString (@"Wallet Information", nil)
 #define BC_STRING_SETTINGS_CHANGE_MOBILE_NUMBER NSLocalizedString(@"Change Mobile Number", nil)
 #define BC_STRING_SETTINGS_NEW_MOBILE_NUMBER NSLocalizedString(@"New Mobile Number", nil)
+#define BC_STRING_SETTINGS_NEW_MOBILE_NUMBER_WARNING_DISABLE_NOTIFICATIONS NSLocalizedString(@"You currently have SMS notifications enabled. Changing your email will disable SMS notifications.", nil)
 #define BC_STRING_SETTINGS_ERROR_INVALID_MOBILE_NUMBER NSLocalizedString(@"Invalid mobile number.", nil)
 #define BC_STRING_SETTINGS_MOBILE_NUMBER_VERIFIED NSLocalizedString(@"Your mobile number has been verified.", nil)
 #define BC_STRING_SETTINGS_ERROR_LOADING_TITLE NSLocalizedString(@"Error loading settings", nil)
