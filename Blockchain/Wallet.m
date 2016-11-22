@@ -3377,6 +3377,16 @@
     if (apiURL) {
         [self updateAPIURL:apiURL];
     }
+    
+    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    NSString *network;
+    if (testnetOn) {
+        network = NETWORK_TESTNET;
+    } else {
+        network = NETWORK_MAINNET;
+    }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeNetwork(\"%@\")", [network escapeStringForJS]]];
 }
 
 @end

@@ -1862,3 +1862,9 @@ MyWalletPhone.getNetworks = function() {
 MyWalletPhone.getECDSA = function() {
     return ECDSA;
 }
+
+MyWalletPhone.changeNetwork = function(newNetwork) {
+    console.log('Changing network to ');
+    console.log(newNetwork);
+    Blockchain.constants.network = newNetwork;
+}
