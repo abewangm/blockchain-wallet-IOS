@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "tolvte ord";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Vi anbefaler det gebyr, der er vist for transaktionen på dette tidspunkt.";
+
+/* No comment provided by engineer. */
+"Fee" = "Gebyr";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Kontakt venligst support: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Overførselsbeløb";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Værdi når modtaget: %@";

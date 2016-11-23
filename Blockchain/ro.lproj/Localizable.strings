@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "a douăsprezecea cuvântul";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Vă recomandăm taxa indicat pentru tranzacţia în acest moment.";
+
+/* No comment provided by engineer. */
+"Fee" = "Taxa";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Vă rugăm să contactaţi sprijin: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Suma transferului";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Valoare atunci când a primit: %@";

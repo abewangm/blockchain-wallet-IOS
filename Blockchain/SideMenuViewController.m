@@ -154,7 +154,7 @@ int accountEntries = 0;
 {
     // Total entries: 1 entry for the total balance, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
     int numberOfAccounts = [app.wallet getActiveAccountsCount];
-    balanceEntries = [app.wallet hasLegacyAddresses] ? numberOfAccounts + 1 : numberOfAccounts;
+    balanceEntries = [[app.wallet activeLegacyAddresses] count] > 0 ? numberOfAccounts + 1 : numberOfAccounts;
     accountEntries = numberOfAccounts;
 }
 
@@ -182,7 +182,7 @@ int accountEntries = 0;
 - (Boolean)showBalances
 {
     // Return true if the user has upgraded and either legacy adresses or multiple accounts
-    return [app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2);
+    return [app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2);
 }
 
 - (void)removeTransactionsFilter
@@ -222,7 +222,7 @@ int accountEntries = 0;
 #ifdef ENABLE_TRANSACTION_FILTERING
             BOOL deselected = NO;
             
-            if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1 && [app.wallet hasLegacyAddresses]) {
+            if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1 && [[app.wallet activeLegacyAddresses] count] > 0) {
                 if ([app filterIndex] == FILTER_INDEX_IMPORTED_ADDRESSES) {
                     deselected = YES;
                 } else {
@@ -304,7 +304,7 @@ int accountEntries = 0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 && ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2))) {
+    if (section == 0 && ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2))) {
         return BALANCE_ENTRY_HEIGHT;
     }
     
@@ -314,7 +314,7 @@ int accountEntries = 0;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     // Total Balance
-    if (section == 0 && ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2))) {
+    if (section == 0 && ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2))) {
 #ifdef ENABLE_TRANSACTION_FILTERING
         UITableViewHeaderFooterView *view = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, BALANCE_ENTRY_HEIGHT)];
         UIView *backgroundView = [[UIView alloc] initWithFrame:view.frame];

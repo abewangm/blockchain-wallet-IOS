@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "第十二字";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " 我們建議在這次交易記錄所顯示的費用。";
+
+/* No comment provided by engineer. */
+"Fee" = "費用";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "請聯繫支援︰ \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "轉帳金額";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "當收到的價值︰ %@";

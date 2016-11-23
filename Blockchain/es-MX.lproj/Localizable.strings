@@ -1524,3 +1524,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "duodécima palabra";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Recomendamos la tarifa que se muestra para la traducción en este momento.";
+
+/* No comment provided by engineer. */
+"Fee" = "Tarifa";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Póngase en contacto con soporte:\n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Monto a transferir";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Valor al momento de la recepción: %@";

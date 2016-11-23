@@ -2079,6 +2079,7 @@
 
 - (void)reloadFilter
 {
+    self.isFilteringTransactions = YES;
     [self did_multiaddr];
 }
 

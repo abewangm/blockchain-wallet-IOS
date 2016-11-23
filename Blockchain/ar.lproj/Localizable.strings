@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "الكلمة الثانية عشرة";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " أننا نوصي برسوم سيظهر للحركة في هذا الوق";
+
+/* No comment provided by engineer. */
+"Fee" = "رسوم";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "الرجاء الاتصال بالدعم: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "تحويل المبلغ";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "القيمة عند تلقي: %@";

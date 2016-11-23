@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "дванадцяте слово";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Зараз ми рекомендуємо вказану комісію для цієї транзакції.";
+
+/* No comment provided by engineer. */
+"Fee" = "Комісія";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Будь ласка, зв'яжіться зі Службою підтримки:\n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Сума, що переказується";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Сума при отриманні: %@";

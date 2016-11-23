@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "十二番目の語句";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " 現時点での取引に表示されている手数料をおすすめします。";
+
+/* No comment provided by engineer. */
+"Fee" = "手数料";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "サポートにお問い合わせください:\n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "送金額";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "受信時の金額: %@";

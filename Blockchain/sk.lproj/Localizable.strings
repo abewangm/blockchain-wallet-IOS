@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "dvanásty slovo";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Odporúčame poplatku pre transakcie v tejto dobe.";
+
+/* No comment provided by engineer. */
+"Fee" = "Poplatok";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Prosím kontaktujte podporu: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Suma prevodu";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Hodnotu, keď dostal: %@";
