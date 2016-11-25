@@ -66,4 +66,5 @@ module.exports = (grunt) ->
     "shell:svg:arrow_downward:26"
     "shell:svg:blockchain_wallet_logo:48:232"
     "shell:svg:pencil:26"
+    "shell:svg:alert:75"
   ]

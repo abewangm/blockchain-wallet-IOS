@@ -93,13 +93,17 @@
         dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 3, dateLabel.frame.size.width, dateLabel.frame.size.height);
         pendingText.frame = CGRectMake(pendingText.frame.origin.x, 5, pendingText.frame.size.width, pendingText.frame.size.height);
         pendingIcon.frame = CGRectMake(pendingIcon.frame.origin.x, 6, pendingIcon.frame.size.width, pendingIcon.frame.size.height);
+        doubleSpendWarningButton.frame = CGRectMake(watchOnlyLabel.frame.origin.x + watchOnlyLabel.frame.size.width + 8, self.contentView.frame.size.height - 17, doubleSpendWarningButton.frame.size.width, doubleSpendWarningButton.frame.size.height);
     } else {
         watchOnlyLabel.hidden = YES;
         actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 29, 172, 21);
         dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 11, dateLabel.frame.size.width, dateLabel.frame.size.height);
         pendingText.frame = CGRectMake(pendingText.frame.origin.x, 13, pendingText.frame.size.width, pendingText.frame.size.height);
         pendingIcon.frame = CGRectMake(pendingIcon.frame.origin.x, 14, pendingIcon.frame.size.width, pendingIcon.frame.size.height);
+        doubleSpendWarningButton.frame = CGRectMake(watchOnlyLabel.frame.origin.x, self.contentView.frame.size.height - 17, doubleSpendWarningButton.frame.size.width, doubleSpendWarningButton.frame.size.height);
     }
+    
+    doubleSpendWarningButton.hidden = !transaction.doubleSpend;
     
     if (transaction.confirmations >= kConfirmationThreshold) {
         pendingText.hidden = YES;

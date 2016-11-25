@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,14 +15,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2" id="XyX-vd-a7o">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iEg-Va-ZPW">
                         <rect key="frame" x="103" y="5" width="63" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
-                        <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.75559091567993164" green="0.75556838512420654" blue="0.75558114051818848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction_pending" id="DbU-Vz-XsT">
@@ -29,25 +33,25 @@
                         <rect key="frame" x="8" y="3" width="172" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.58039215686274515" green="0.58039215686274515" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.50861334800720215" green="0.50859808921813965" blue="0.50860673189163208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" id="5" userLabel="Separator" customClass="BCLine">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.83137254901960778" green="0.82745098039215681" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.83137254901960778" green="0.82745098039215681" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="10">
                         <rect key="frame" x="188" y="13" width="124" height="37"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="0.73725490196078436" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99302953481674194" green="0.67486470937728882" blue="0.68769031763076782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="0.12345678 BTC">
-                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleShadowColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <state key="highlighted">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -62,24 +66,30 @@
                         <rect key="frame" x="8" y="21" width="172" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                        <color key="textColor" red="1" green="0.73725490196078436" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.99302953481674194" green="0.67486470937728882" blue="0.68769031763076782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Only" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P1g-Nr-dFe" customClass="BCInsetLabel">
                         <rect key="frame" x="8" y="44" width="75" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="q1a-gJ-ted">
+                        <rect key="frame" x="91" y="44" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="alert"/>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="actionLabel" destination="Vev-GY-VUP" id="29I-7s-dXU"/>
                 <outlet property="btcButton" destination="10" id="17"/>
                 <outlet property="dateLabel" destination="tgB-FW-xJl" id="pKC-nO-06o"/>
+                <outlet property="doubleSpendWarningButton" destination="q1a-gJ-ted" id="DQP-fA-fhX"/>
                 <outlet property="pendingIcon" destination="DbU-Vz-XsT" id="RVS-uh-Qgn"/>
                 <outlet property="pendingText" destination="iEg-Va-ZPW" id="cWn-Ye-7hv"/>
                 <outlet property="watchOnlyLabel" destination="P1g-Nr-dFe" id="oPI-NK-NKL"/>
@@ -88,6 +98,12 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="alert" width="75" height="75"/>
         <image name="transaction_pending" width="11" height="11"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>
