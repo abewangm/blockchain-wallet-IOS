@@ -23,7 +23,7 @@
 @class MultiAddressResponse;
 @class LatestBlock;
 
-@interface TransactionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TransactionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate>
 {
     IBOutlet UITableView *tableView;
     
