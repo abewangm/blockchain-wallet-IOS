@@ -517,7 +517,7 @@
 #define BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS NSLocalizedString(@"Pending (%@ Confirmations)", nil)
 #define BC_STRING_TRANSACTION_FEE_ARGUMENT NSLocalizedString(@"Transaction fee: %@", nil)
 #define BC_STRING_PENDING NSLocalizedString(@"Pending", nil)
-#define BC_STRING_DOUBLE_SPEND_WARNING NSLocalizedString(@"This transaction may be at risk for a double spend.", nil)
+#define BC_STRING_DOUBLE_SPEND_WARNING NSLocalizedString(@"May be at risk for a double spend.", nil)
 #define BC_STRING_ARGUMENT_RECIPIENTS NSLocalizedString(@"%lu Recipients", nil)
 #define BC_STRING_TO NSLocalizedString(@"To", nil)
 #define BC_STRING_DATE NSLocalizedString(@"Date", nil)
