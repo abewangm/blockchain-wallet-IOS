@@ -61,8 +61,7 @@ int lastNumberTransactions = INT_MAX;
     self.lastSelectedIndexPath = indexPath;
     
     TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    // [cell transactionClicked:nil indexPath:indexPath];
-    [self showDoubleSpendWarning:cell];
+    [cell transactionClicked:nil indexPath:indexPath];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -336,29 +335,6 @@ int lastNumberTransactions = INT_MAX;
 #else
     return [app.wallet getTotalActiveBalance];
 #endif
-}
-
-- (void)showDoubleSpendWarning:(TransactionTableCell *)cell
-{
-    UIViewController *viewController = [UIViewController new];
-    viewController.view.backgroundColor = [UIColor blackColor];
-    viewController.preferredContentSize = CGSizeMake(300, 30);
-    viewController.modalPresentationStyle = UIModalPresentationPopover;
-
-    UILabel *doubleSpendLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 270, 28)];
-    doubleSpendLabel.adjustsFontSizeToFitWidth = YES;
-    doubleSpendLabel.textColor = [UIColor whiteColor];
-    doubleSpendLabel.font = [UIFont boldSystemFontOfSize:16];
-    doubleSpendLabel.text = BC_STRING_DOUBLE_SPEND_WARNING;
-    doubleSpendLabel.textAlignment = NSTextAlignmentCenter;
-    [viewController.view addSubview:doubleSpendLabel];
-    
-    viewController.popoverPresentationController.backgroundColor = [UIColor blackColor];
-    viewController.popoverPresentationController.delegate = self;
-    viewController.popoverPresentationController.sourceView = self.tableView;
-    viewController.popoverPresentationController.sourceRect = cell.frame;
-    
-    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller

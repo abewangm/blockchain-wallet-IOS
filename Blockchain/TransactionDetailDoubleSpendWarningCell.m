@@ -1,0 +1,49 @@
+//
+//  TransactionDetailDoubleSpendWarningCell.m
+//  Blockchain
+//
+//  Created by Kevin Wu on 11/28/16.
+//  Copyright © 2016 Blockchain Luxembourg S.A. All rights reserved.
+//
+
+#import "TransactionDetailDoubleSpendWarningCell.h"
+
+@implementation TransactionDetailDoubleSpendWarningCell
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    [self.warningLabel setText:nil];
+    [self.warningImageView setHidden:YES];
+    self.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)configureWithTransaction:(Transaction *)transaction
+{
+    [super configureWithTransaction:transaction];
+
+    if (self.isSetup) {
+        self.warningLabel.text = BC_STRING_DOUBLE_SPEND_WARNING;
+        self.warningImageView.hidden = NO;
+        self.backgroundColor = COLOR_CELL_LIGHT_RED;
+        return;
+    }
+    
+    self.warningLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320 - 40 - 32, 40)];
+    [self.contentView addSubview:self.warningLabel];
+    self.warningLabel.adjustsFontSizeToFitWidth = YES;
+    self.warningLabel.center = self.contentView.center;
+    self.warningLabel.textAlignment = NSTextAlignmentCenter;
+    self.warningLabel.text = BC_STRING_DOUBLE_SPEND_WARNING;
+    
+    self.warningImageView = [UIImageView new];
+    [self.contentView addSubview:self.warningImageView];
+    self.warningImageView.image = [UIImage imageNamed:@"alert"];
+    self.warningImageView.frame = CGRectMake(0, 0, 20, 20);
+    self.warningImageView.center = self.warningLabel.center;
+    self.warningImageView.frame = CGRectMake(self.warningLabel.frame.origin.x - self.warningImageView.frame.size.width - 8, self.warningImageView.frame.origin.y, self.warningImageView.frame.size.width, self.warningImageView.frame.size.height);
+    self.backgroundColor = COLOR_CELL_LIGHT_RED;
+    self.isSetup = YES;
+}
+
+@end

@@ -50,6 +50,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0xb9b9b9)
 #define COLOR_BUTTON_KEYPAD_GRAY UIColorFromRGB(0xD4D9DD)
 
+#define COLOR_CELL_LIGHT_RED UIColorFromRGB(0xfca6a6)
+
 #define COLOR_TAB_BAR_BUTTON_TEXT_GRAY UIColorFromRGB(0xc9c7c8)
 #define COLOR_TAB_BAR_BUTTON_TEXT_BLUE UIColorFromRGB(0x1c8ac7)
 
@@ -135,6 +137,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define WEBSOCKET_ERROR_INVALID_SERVER_CERTIFICATE @"Invalid server certificate."
 
+#define CELL_IDENTIFIER_TRANSACTION_DETAIL_WARNING @"transactionDetailWarning"
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_VALUE @"transactionDetailValue"
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_STATUS @"transactionDetailStatus"
 #define CELL_IDENTIFIER_TRANSACTION_DETAIL_DATE @"transactionDetailDate"
