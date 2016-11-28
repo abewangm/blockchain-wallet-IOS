@@ -50,7 +50,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0xb9b9b9)
 #define COLOR_BUTTON_KEYPAD_GRAY UIColorFromRGB(0xD4D9DD)
 
-#define COLOR_CELL_LIGHT_RED UIColorFromRGB(0xffd1d1)
+#define COLOR_CELL_LIGHT_RED UIColorFromRGB(0xe27e82)
 
 #define COLOR_TAB_BAR_BUTTON_TEXT_GRAY UIColorFromRGB(0xc9c7c8)
 #define COLOR_TAB_BAR_BUTTON_TEXT_BLUE UIColorFromRGB(0x1c8ac7)

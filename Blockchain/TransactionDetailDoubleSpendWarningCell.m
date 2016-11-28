@@ -32,13 +32,14 @@
     self.warningLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320 - 40 - 32, 40)];
     [self.contentView addSubview:self.warningLabel];
     self.warningLabel.adjustsFontSizeToFitWidth = YES;
-    self.warningLabel.center = self.contentView.center;
+    self.warningLabel.center = CGPointMake(self.contentView.center.x + 14, self.contentView.center.y);
     self.warningLabel.textAlignment = NSTextAlignmentCenter;
+    self.warningLabel.textColor = [UIColor whiteColor];
     self.warningLabel.text = BC_STRING_DOUBLE_SPEND_WARNING;
     
     self.warningImageView = [UIImageView new];
     [self.contentView addSubview:self.warningImageView];
-    self.warningImageView.image = [UIImage imageNamed:@"alert"];
+    self.warningImageView.image = [UIImage imageNamed:@"warning"];
     self.warningImageView.frame = CGRectMake(0, 0, 20, 20);
     self.warningImageView.center = self.warningLabel.center;
     self.warningImageView.frame = CGRectMake(self.warningLabel.frame.origin.x - self.warningImageView.frame.size.width - 8, self.warningImageView.frame.origin.y, self.warningImageView.frame.size.width, self.warningImageView.frame.size.height);
