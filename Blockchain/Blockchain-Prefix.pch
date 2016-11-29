@@ -322,6 +322,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY @"toWatchOnly"
 #define DICTIONARY_KEY_TRANSACTION_NOTE @"note"
 #define DICTIONARY_KEY_TRANSACTION_DOUBLE_SPEND @"double_spend"
+#define DICTIONARY_KEY_TRANSACTION_REPLACE_BY_FEE @"rbf"
 
 #define DICTIONARY_KEY_LABEL @"label"
 #define DICTIONARY_KEY_ADDRESS @"address"

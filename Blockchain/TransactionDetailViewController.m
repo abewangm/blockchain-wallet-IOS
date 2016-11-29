@@ -212,7 +212,7 @@ const CGFloat rowHeightValueReceived = 92;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.transaction.doubleSpend ? 7 : 6;
+    return self.transaction.doubleSpend || self.transaction.replaceByFee ? 7 : 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -334,7 +334,7 @@ const CGFloat rowHeightValueReceived = 92;
 
 - (int)getCellRow:(int)cellConstant
 {
-    return self.transaction.doubleSpend ? cellConstant : cellConstant - 1;
+    return self.transaction.doubleSpend || self.transaction.replaceByFee ? cellConstant : cellConstant - 1;
 }
 
 - (int)getCellRowWarning
