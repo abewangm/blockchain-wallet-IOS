@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Arvo vastaanotettaessa: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Siirtää kaikki varat";
+
+/* (No Commment) */
+"Transfer all" = "Siirtää kaikki";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Siirtää tuodut osoitteet?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Tuodut osoitteet ei varmuuskopioida Recovery-lauseella. Saada näitä varoja siirtämällä taseista varmuuskopioitavaksi.";

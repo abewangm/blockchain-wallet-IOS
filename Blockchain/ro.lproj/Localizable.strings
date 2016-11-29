@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Valoare atunci când a primit: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Transfera fondurile toate";
+
+/* (No Commment) */
+"Transfer all" = "Transferul tuturor";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Adrese importate de transfer?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Adrese importate nu sunt susţinute de fraza de recuperare. Pentru a asigura aceste fonduri, se recomandă transferul soldurilor pentru a include în copia de rezervă.";

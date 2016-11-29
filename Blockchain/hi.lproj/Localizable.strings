@@ -1538,3 +1538,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "जब प्राप्त मान: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "सभी निधि अंतरण";
+
+/* (No Commment) */
+"Transfer all" = "सभी स्थानांतरित";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "आयातित पतों हस्तांतरण?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "आयातित पतों अपने वसूली वाक्यांश द्वारा समर्थित नहीं हैं। इन निधियों को सुरक्षित करने के लिए, हम अनुशंसा करते हैं आपके बैकअप में शामिल करने के लिए इन शेष स्थानांतरित कर रहा है।";
