@@ -275,6 +275,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     app.transactionsViewController.loadedAllTransactions = NO;
     app.wallet.isFetchingTransactions = NO;
+    app.wallet.isFilteringTransactions = NO;
     
     [createWalletView showPassphraseTextField];
     
@@ -886,6 +887,9 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
 {
+    CurrencySymbol *localSymbol = self.latestResponse.symbol_local;
+    CurrencySymbol *btcSymbol = self.latestResponse.symbol_btc;
+    
     self.latestResponse = response;
     
     _transactionsViewController.data = response;
@@ -897,8 +901,15 @@ void (^secondPasswordSuccess)(NSString *);
     } else {
         [self reloadAfterMultiAddressResponse];
     }
-#else    
-    [self getAccountInfo];
+#else
+    if (app.wallet.isFilteringTransactions) {
+        app.wallet.isFilteringTransactions = NO;
+        self.latestResponse.symbol_local = localSymbol;
+        self.latestResponse.symbol_btc = btcSymbol;
+        [self reloadAfterMultiAddressResponse];
+    } else {
+        [self getAccountInfo];
+    }
 #endif
     
     int newDefaultAccountLabeledAddressesCount = [self.wallet getDefaultAccountLabelledAddressesCount];

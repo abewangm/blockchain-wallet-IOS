@@ -117,6 +117,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT @"%@/wallet?method=update-ios&guid=%@&sharedKey=%@&payload=%@&length=%lu"
 
 #define COPYRIGHT_YEAR @"2016"
+#define ABOUT_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
+#define ABOUT_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
+#define ABOUT_STRING_BLOCKCHAIN_LUXEMBOURG_SA NSLocalizedString(@"Blockchain Luxembourg S.A.", nil)
 
 #define DEBUG_STRING_DEBUG NSLocalizedString(@"Debug", nil)
 #define DEBUG_STRING_SERVER_URL NSLocalizedString(@"Server URL", nil)
@@ -246,6 +249,15 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define DEFAULT_WALLET_SERVER @"https://explorer.dev.blockchain.co.uk"
 #define DEFAULT_WEBSOCKET_SERVER @"wss://explorer.dev.blockchain.co.uk/inv"
+#define NETWORK_MAINNET @"bitcoin"
+#define NETWORK_TESTNET @"testnet"
+
+#define TESTNET_WALLET_SERVER @"http://explorer.testnet.blockchain.co.uk"
+#define TESTNET_WEBSOCKET_SERVER @"wss://explorer-testnet.dev.blockchain.co.uk/inv"
+#define TESTNET_API_URL @"http://api.testnet.blockchain.co.uk"
+
+#define DEFAULT_WALLET_SERVER @"https://blockchain.info"
+#define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 #define DEFAULT_MERCHANT_URL @"https://api.blockchain.info/merchant"
 #define DEFAULT_API_URL @"https://api.dev.blockchain.co.uk"
 

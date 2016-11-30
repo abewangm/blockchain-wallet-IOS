@@ -91,6 +91,18 @@ const int rowTestnet = 9;
 {
     BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
     [[NSUserDefaults standardUserDefaults] setBool:!testnetOn forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    
+    if (!testnetOn) {
+        [[NSUserDefaults standardUserDefaults] setObject:TESTNET_WALLET_SERVER forKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+        [[NSUserDefaults standardUserDefaults] setObject:TESTNET_WEBSOCKET_SERVER forKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+        [[NSUserDefaults standardUserDefaults] setObject:TESTNET_API_URL forKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:DEFAULT_WALLET_SERVER forKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
+        [[NSUserDefaults standardUserDefaults] setObject:DEFAULT_WEBSOCKET_SERVER forKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
+        [[NSUserDefaults standardUserDefaults] setObject:DEFAULT_API_URL forKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
+    }
+    
+    [self.tableView reloadData];
 }
 
 - (void)showFilteredWalletJSON

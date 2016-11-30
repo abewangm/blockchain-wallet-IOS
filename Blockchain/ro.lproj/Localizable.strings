@@ -1527,3 +1527,47 @@
 /* No comment provided by engineer. */
 "twelfth word" = "a douăsprezecea cuvântul";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Vă recomandăm taxa indicat pentru tranzacţia în acest moment.";
+
+/* No comment provided by engineer. */
+"Fee" = "Taxa";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Vă rugăm să contactaţi sprijin: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Suma transferului";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Valoare atunci când a primit: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Transfera fondurile toate";
+
+/* (No Commment) */
+"Transfer all" = "Transferul tuturor";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Adrese importate de transfer?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Adrese importate nu sunt susţinute de fraza de recuperare. Pentru a asigura aceste fonduri, se recomandă transferul soldurilor pentru a include în copia de rezervă.";
+
+/* (No Commment) */
+"About Us" = "despre noi";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "În prezent aveţi notificări de e-mail activată. Schimbă adresa de email va dezactiva notificări prin e-mail.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "În prezent aveţi notificări SMS activat. Schimbă adresa de email va fi de acord SMS notificări.";
+
+/* (No Commment) */
+"All rights reserved." = "Toate drepturile rezervate.";
+
+/* (No Commment) */
+"Rate us" = "Rata de noi";
+
+/* (No Commment) */
+"Free Merchant app" = "Drum liber app comerciant";

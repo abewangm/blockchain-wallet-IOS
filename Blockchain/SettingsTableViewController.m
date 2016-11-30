@@ -427,10 +427,49 @@ const int aboutPrivacyPolicy = 2;
 
 - (void)changeMobileNumber:(NSString *)newNumber
 {
-    [app.wallet changeMobileNumber:newNumber];
-    
     self.enteredMobileNumberString = newNumber;
+    
+    if ([app.wallet SMSNotificationsEnabled]) {
+        [self alertUserAboutDisablingSMSNotifications:newNumber];
+    } else {
+        [app.wallet changeMobileNumber:newNumber];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
+    }
+}
 
+- (void)alertUserAboutDisablingSMSNotifications:(NSString *)newNumber
+{
+    UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER message:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER_WARNING_DISABLE_NOTIFICATIONS preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self disableNotificationsThenChangeMobileNumber:newNumber];
+    }]];
+    
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForChangingEmail animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForChangingEmail animated:YES completion:nil];
+    }
+}
+
+- (void)disableNotificationsThenChangeMobileNumber:(NSString *)newNumber
+{
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    [navigationController.busyView fadeIn];
+    
+    [app.wallet disableSMSNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberAfterDisablingNotifications) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+}
+
+- (void)changeMobileNumberAfterDisablingNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    
+    [app.wallet changeMobileNumber:self.enteredMobileNumberString];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
 }
@@ -803,7 +842,15 @@ const int aboutPrivacyPolicy = 2;
         }
     }]];
     [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self changeEmail:[[alertForChangingEmail textFields] firstObject].text];
+        
+        NSString *newEmail = [[alertForChangingEmail textFields] firstObject].text;
+        
+        if ([app.wallet emailNotificationsEnabled]) {
+            [self alertUserAboutDisablingEmailNotifications:newEmail];
+        } else {
+            [self changeEmail:newEmail];
+        }
+        
     }]];
     [alertForChangingEmail addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
@@ -818,6 +865,39 @@ const int aboutPrivacyPolicy = 2;
     } else {
         [self presentViewController:alertForChangingEmail animated:YES completion:nil];
     }
+}
+
+- (void)alertUserAboutDisablingEmailNotifications:(NSString *)newEmail
+{
+    self.enteredEmailString = newEmail;
+    
+    UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_NEW_EMAIL_ADDRESS message:BC_STRING_SETTINGS_NEW_EMAIL_ADDRESS_WARNING_DISABLE_NOTIFICATIONS preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self disableNotificationsThenChangeEmail:newEmail];
+    }]];
+    
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForChangingEmail animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForChangingEmail animated:YES completion:nil];
+    }
+}
+
+- (void)disableNotificationsThenChangeEmail:(NSString *)newEmail
+{
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    [navigationController.busyView fadeIn];
+    
+    [app.wallet disableEmailNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailAfterDisablingNotifications) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+}
+
+- (void)changeEmailAfterDisablingNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    [self changeEmail:self.enteredEmailString];
 }
 
 - (void)alertUserToVerifyEmail

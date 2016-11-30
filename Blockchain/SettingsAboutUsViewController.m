@@ -37,7 +37,7 @@
     infoLabel.textAlignment = NSTextAlignmentCenter;
     infoLabel.textColor = [UIColor whiteColor];
     infoLabel.numberOfLines = 3;
-    infoLabel.text = [NSString stringWithFormat:@"%@ %@\n%@\n%@", BC_STRING_BLOCKCHAIN_WALLET, [app getVersionLabelString], [NSString stringWithFormat:@"%@ %@ %@", BC_STRING_COPYRIGHT_LOGO, COPYRIGHT_YEAR, BC_STRING_BLOCKCHAIN_LUXEMBOURG_SA], BC_STRING_BLOCKCHAIN_ALL_RIGHTS_RESERVED];
+    infoLabel.text = [NSString stringWithFormat:@"%@ %@\n%@\n%@", ABOUT_STRING_BLOCKCHAIN_WALLET, [app getVersionLabelString], [NSString stringWithFormat:@"%@ %@ %@", ABOUT_STRING_COPYRIGHT_LOGO, COPYRIGHT_YEAR, ABOUT_STRING_BLOCKCHAIN_LUXEMBOURG_SA], BC_STRING_BLOCKCHAIN_ALL_RIGHTS_RESERVED];
     
     [self.view addSubview:infoLabel];
     

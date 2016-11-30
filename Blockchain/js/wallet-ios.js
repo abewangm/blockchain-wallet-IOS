@@ -1159,9 +1159,6 @@ MyWalletPhone.getMultiAddrResponse = function(txFilter) {
     obj.n_transactions = MyWallet.wallet.numberTx;
     obj.addresses = MyWallet.wallet.addresses;
     
-    obj.symbol_local = Blockchain.Shared.getLocalSymbol();
-    obj.symbol_btc = Blockchain.Shared.getBTCSymbol();
-    
     return obj;
 };
 
@@ -1877,4 +1874,10 @@ MyWalletPhone.getECDSA = function() {
 MyWalletPhone.createContact = function(name, id) {
     var mdid = new Blockchain.MDID();console.log('mdid is');console.log(JSON.stringify(mdid));
     mdid.createInvitation().then(function(x){console.log('createdi');});
+}
+
+MyWalletPhone.changeNetwork = function(newNetwork) {
+    console.log('Changing network to ');
+    console.log(newNetwork);
+    Blockchain.constants.network = newNetwork;
 }

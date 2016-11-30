@@ -1527,3 +1527,47 @@
 /* No comment provided by engineer. */
 "twelfth word" = "décima segunda palavra";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Recomendamos a taxa mostrada para a transação neste momento.";
+
+/* No comment provided by engineer. */
+"Fee" = "Taxa";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Entre em contato com suporte: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Quantidade de transferência";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Quando recebeu o valor: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Transferir todos os fundos";
+
+/* (No Commment) */
+"Transfer all" = "Transferência de todos os";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Transferência endereços importados?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Endereços importados não são apoiados por sua frase de recuperação. Para proteger estes fundos, recomendamos transferir estes saldos para incluir no seu backup.";
+
+/* (No Commment) */
+"About Us" = "Quem somos";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Tem, actualmente, as notificações de e-mail habilitadas. Alterar seu e-mail irá desativar notificações por e-mail.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Tem, actualmente, as notificações de SMS habilitadas. Alterar seu e-mail irá desativar notificações de SMS.";
+
+/* (No Commment) */
+"All rights reserved." = "Todos os direitos reservados.";
+
+/* (No Commment) */
+"Rate us" = "Classifique-nos";
+
+/* (No Commment) */
+"Free Merchant app" = "Aplicativo gratuito de comerciante";

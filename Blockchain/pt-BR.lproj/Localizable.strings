@@ -5,6 +5,9 @@
 " We recommend the fee below for the transaction at this time." = "Recomendamos a taxa abaixo para a transação neste momento.";
 
 /* (No Commment) */
+" We recommend the fee shown for the transaction at this time." = " Recomendamos a taxa mostrada para a transação nesse momento.";
+
+/* (No Commment) */
 "%@ BTC" = "%@ BTC";
 
 /* (No Commment) */
@@ -1527,3 +1530,14 @@
 /* No comment provided by engineer. */
 "twelfth word" = "décima segunda palavra";
 
+/* No comment provided by engineer. */
+"Fee" = "Taxa";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Entre em contato com o suporte:\n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Valor da transferência";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Valor no recebimento: %@";
