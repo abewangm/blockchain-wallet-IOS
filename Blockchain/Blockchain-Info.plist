@@ -42,7 +42,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>service-dynamic-fee.dev.blockchain.co.uk</key>
+			<key>service-dynamic-fee.dev.blockchain.info</key>
 			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>
