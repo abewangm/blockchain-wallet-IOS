@@ -112,6 +112,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #pragma mark - Strings
 
 #define COPYRIGHT_YEAR @"2016"
+#define ABOUT_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
+#define ABOUT_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
+#define ABOUT_STRING_BLOCKCHAIN_LUXEMBOURG_SA NSLocalizedString(@"Blockchain Luxembourg S.A.", nil)
 
 #define DEBUG_STRING_DEBUG NSLocalizedString(@"Debug", nil)
 #define DEBUG_STRING_SERVER_URL NSLocalizedString(@"Server URL", nil)

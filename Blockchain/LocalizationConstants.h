@@ -492,9 +492,6 @@
 
 #define BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER NSLocalizedString(@"What's this for?", nil)
 
-#define BC_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
-#define BC_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
-#define BC_STRING_BLOCKCHAIN_LUXEMBOURG_SA NSLocalizedString(@"Blockchain Luxembourg S.A.", nil)
 #define BC_STRING_BLOCKCHAIN_ALL_RIGHTS_RESERVED NSLocalizedString(@"All rights reserved.", nil)
 
 #define BC_STRING_APP_REVIEW_PROMPT_TITLE NSLocalizedString(@"Rate Blockchain Wallet", nil)
