@@ -69,6 +69,7 @@
 }
 
 - (void)setRequestHeader:(NSString *)name :(NSString *)value {
+    if (!_requestHeaders) _requestHeaders = [NSMutableDictionary new];
     _requestHeaders[name] = value;
 }
 
