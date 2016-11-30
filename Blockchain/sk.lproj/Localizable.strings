@@ -1553,3 +1553,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importované adresy sú nie zálohovať vaše zotavenie frázy. Na zabezpečenie týchto fondov, odporúčame prevedenie týchto zostatkov zahrnúť do zálohy.";
+
+/* (No Commment) */
+"About Us" = "o nás";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "V súčasnosti máte zapnuté upozornenia e-mailom. Zmena e-mailu bude vypnúť upozornenia e-mailom.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "V súčasnosti máte povoliť SMS upozornenia. Zmena e-mailu bude vypnúť oznámenia SMS.";
+
+/* (No Commment) */
+"All rights reserved." = "Všetky práva vyhradené.";
+
+/* (No Commment) */
+"Rate us" = "Ohodnoťte nás";
+
+/* (No Commment) */
+"Free Merchant app" = "Zadarmo obchodné aplikácie";

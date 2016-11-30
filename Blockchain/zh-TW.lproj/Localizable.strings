@@ -1553,3 +1553,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "導入的位址未備份的您恢復的短語。為了確保這些資金，我們建議轉移這些餘額要包含在備份中。";
+
+/* (No Commment) */
+"About Us" = "關於我們";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "您當前已啟用電子郵件通知。更改您的電子郵件將禁用電子郵件通知。";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "您當前已啟用的短信通知。更改您的電子郵件將禁用短信通知。";
+
+/* (No Commment) */
+"All rights reserved." = "保留擁有權利。";
+
+/* (No Commment) */
+"Rate us" = "評價我們";
+
+/* (No Commment) */
+"Free Merchant app" = "免費的商業應用程式";

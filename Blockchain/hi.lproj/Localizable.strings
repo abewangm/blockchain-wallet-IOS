@@ -1550,3 +1550,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "आयातित पतों अपने वसूली वाक्यांश द्वारा समर्थित नहीं हैं। इन निधियों को सुरक्षित करने के लिए, हम अनुशंसा करते हैं आपके बैकअप में शामिल करने के लिए इन शेष स्थानांतरित कर रहा है।";
+
+/* (No Commment) */
+"About Us" = "हमारे बारे में";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "आप वर्तमान में ई-मेल सूचना सक्षम किया गया है। अपने ईमेल परिवर्तित ई-मेल सूचनाएँ अक्षम कर देगा।";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "आप वर्तमान में एसएमएस सूचनाएँ सक्षम किया गया है। अपना ईमेल बदलने के एसएमएस सूचनाएँ अक्षम कर देगा।";
+
+/* (No Commment) */
+"All rights reserved." = "सभी अधिकार सुरक्षित।";
+
+/* (No Commment) */
+"Rate us" = "हमें दर";
+
+/* (No Commment) */
+"Free Merchant app" = "नि: शुल्क व्यापारी app";

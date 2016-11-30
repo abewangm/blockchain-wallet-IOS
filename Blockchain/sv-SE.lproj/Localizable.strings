@@ -1550,3 +1550,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importerade adresser backas inte upp av din återhämtning fras. För att säkra dessa fonder, rekommenderar vi att överföra dessa saldon som ska inkluderas i säkerhetskopian.";
+
+/* (No Commment) */
+"About Us" = "Om oss";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Du har för närvarande e-anmälningar aktiverat. Ändra din e-post kommer att inaktivera e-postmeddelanden.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Du ha SMS-aviseringar aktiverats. Ändra din e-post kommer att inaktivera SMS meddelanden.";
+
+/* (No Commment) */
+"All rights reserved." = "Alla rättigheter reserverade.";
+
+/* (No Commment) */
+"Rate us" = "Betygsätt oss";
+
+/* (No Commment) */
+"Free Merchant app" = "Köpman gratisapp";

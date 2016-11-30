@@ -1553,3 +1553,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Import Alamat tidak disandarkan oleh frasa pemulihan anda. Untuk mendapatkan dana ini, kami mengesyorkan pemindahan baki ini untuk disertakan dalam sandaran anda.";
+
+/* (No Commment) */
+"About Us" = "tentang kami";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Anda kini mempunyai pemberitahuan e-mel yang didayakan. Menukar e-mel anda akan mematikan pemberitahuan e-mel.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Anda kini mempunyai makluman SMS yang dibolehkan. Menukar e-mel anda akan mematikan pemberitahuan SMS.";
+
+/* (No Commment) */
+"All rights reserved." = "Hak Cipta Terpelihara.";
+
+/* (No Commment) */
+"Rate us" = "Kita Nilaikan";
+
+/* (No Commment) */
+"Free Merchant app" = "Aplikasi Saudagar percuma";
