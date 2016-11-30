@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Αξία όταν έλαβε: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Μεταφέρετε όλα τα ταμεία";
+
+/* (No Commment) */
+"Transfer all" = "Μεταφορά όλων";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Μεταφορά Εισηγμένες διευθύνσεις;";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Δεν δημιουργούνται αντίγραφα ασφαλείας από τη φράση σας αποκατάστασης για τα εισαγόμενα διευθύνσεις. Για να εξασφαλίσει τα κεφάλαια αυτά, συνιστούμε τη μεταφορά αυτών των ισορροπιών για να συμπεριλάβετε στο αντίγραφο ασφαλείας σας.";

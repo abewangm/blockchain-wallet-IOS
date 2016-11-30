@@ -1527,3 +1527,14 @@
 /* No comment provided by engineer. */
 "twelfth word" = "tolfte word";
 
+/* (No Commment) */
+"Transfer All Funds" = "Överföra alla pengar";
+
+/* (No Commment) */
+"Transfer all" = "Överföra alla";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Överför importerade adresser?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importerade adresser backas inte upp av din återhämtning fras. För att säkra dessa fonder, rekommenderar vi att överföra dessa saldon som ska inkluderas i säkerhetskopian.";

@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Vrednost, ko prejme: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Prenos vseh sredstev";
+
+/* (No Commment) */
+"Transfer all" = "Prenos vseh";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Prenos uvožene naslove?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Uvožene naslove ne podpirajo obnovo stavek. Za zagotovitev teh sredstev, priporočamo, da prenos te bilance vključiti v varnostno kopiranje.";

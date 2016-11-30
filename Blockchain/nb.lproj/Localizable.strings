@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Verdi når mottatt: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Overføre alle midler";
+
+/* (No Commment) */
+"Transfer all" = "Overføre alle";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Overføre importerte adresser?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importerte adresser er ikke støttet opp av søkestrengen utvinning. For å sikre disse midlene, anbefaler vi overføre disse saldoene skal inkluderes i sikkerhetskopien.";

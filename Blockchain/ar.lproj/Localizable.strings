@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "القيمة عند تلقي: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "نقل جميع الأموال";
+
+/* (No Commment) */
+"Transfer all" = "نقل جميع";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "نقل العناوين المستوردة؟";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "عناوين المستوردة هي ليست مدعومة \"عبارة الاسترداد\" الخاصة بك. للحصول على هذه الأموال، نحن نوصي بتحويل هذه الأرصدة المطلوب تضمينها في النسخة الاحتياطية الخاصة بك.";

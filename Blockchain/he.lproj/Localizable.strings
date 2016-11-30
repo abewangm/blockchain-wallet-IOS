@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "ערך כאשר התקבל: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "להעביר את כספי";
+
+/* (No Commment) */
+"Transfer all" = "העברת כל";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "להעביר כתובות מיובאות?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "כתובות מיובאות הם אינם מגובים על ידי הביטוי ההתאוששות שלך. כדי לאבטח קרנות אלה, אנו ממליצים על העברת יתרות אלה לכלול בגיבוי.";

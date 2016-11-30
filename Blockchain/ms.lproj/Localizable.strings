@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Nilai apabila diterima: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Memindahkan semua";
+
+/* (No Commment) */
+"Transfer all" = "Memindahkan semua";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Memindahkan alamat diimport?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Import Alamat tidak disandarkan oleh frasa pemulihan anda. Untuk mendapatkan dana ini, kami mengesyorkan pemindahan baki ini untuk disertakan dalam sandaran anda.";

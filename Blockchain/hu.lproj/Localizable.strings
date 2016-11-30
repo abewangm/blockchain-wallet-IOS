@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Ha a kapott érték: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Minden átutalás";
+
+/* (No Commment) */
+"Transfer all" = "Át minden";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Átviszi az importált címek?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importált címek nem kísérik a helyreállítási mondat. Ezeket a pénzeszközöket biztosítani, azt javasoljuk, transferring egyensúlyok, a biztonsági másolatkészítéshez.";
