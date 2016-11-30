@@ -359,7 +359,6 @@
 #define BC_STRING_SETTINGS_VERIFY_INVALID_CODE NSLocalizedString(@"Invalid verification code. Please try again.", nil)
 #define BC_STRING_SETTINGS_CHANGE_EMAIL NSLocalizedString(@"Change Email", nil)
 #define BC_STRING_SETTINGS_NEW_EMAIL_ADDRESS NSLocalizedString(@"New Email Address", nil)
-#define BC_STRING_SETTINGS_NEW_EMAIL_ADDRESS_WARNING_DISABLE_NOTIFICATIONS NSLocalizedString(@"You currently have email notifications enabled. Changing your email will disable email notifications.", nil)
 #define BC_STRING_SETTINGS_EMAIL_VERIFIED NSLocalizedString(@"Your email has been verified.", nil)
 #define BC_STRING_SETTINGS_WALLET_ID NSLocalizedString (@"Wallet ID", nil)
 #define BC_STRING_SETTINGS_WALLET_INFORMATION NSLocalizedString (@"Wallet Information", nil)
