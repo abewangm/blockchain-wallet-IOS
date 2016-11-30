@@ -1527,3 +1527,17 @@
 /* No comment provided by engineer. */
 "twelfth word" = "on ikinci sözcük";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Bu sefer işlem için gösterilen ücreti tavsiye ederiz.";
+
+/* No comment provided by engineer. */
+"Fee" = "Ücret";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Lütfen destek ile iletişime geçin:\n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Transfer Miktarı";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Alındığı Zamanki Değer: %@";

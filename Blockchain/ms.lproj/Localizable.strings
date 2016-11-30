@@ -1527,3 +1527,47 @@
 /* No comment provided by engineer. */
 "twelfth word" = "perkataan kedua belas";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Kami mengesyorkan bayaran yang ditunjukkan bagi urus niaga pada masa ini.";
+
+/* No comment provided by engineer. */
+"Fee" = "Yuran";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Sila hubungi sokongan: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Jumlah pemindahan";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Nilai apabila diterima: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Memindahkan semua";
+
+/* (No Commment) */
+"Transfer all" = "Memindahkan semua";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Memindahkan alamat diimport?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Import Alamat tidak disandarkan oleh frasa pemulihan anda. Untuk mendapatkan dana ini, kami mengesyorkan pemindahan baki ini untuk disertakan dalam sandaran anda.";
+
+/* (No Commment) */
+"About Us" = "tentang kami";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Anda kini mempunyai pemberitahuan e-mel yang didayakan. Menukar e-mel anda akan mematikan pemberitahuan e-mel.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Anda kini mempunyai makluman SMS yang dibolehkan. Menukar e-mel anda akan mematikan pemberitahuan SMS.";
+
+/* (No Commment) */
+"All rights reserved." = "Hak Cipta Terpelihara.";
+
+/* (No Commment) */
+"Rate us" = "Kita Nilaikan";
+
+/* (No Commment) */
+"Free Merchant app" = "Aplikasi Saudagar percuma";

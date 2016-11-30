@@ -1527,3 +1527,47 @@
 /* No comment provided by engineer. */
 "twelfth word" = "kahdestoista sana";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Suosittelemme maksu näkyy tapahtumaan tässä vaiheessa.";
+
+/* No comment provided by engineer. */
+"Fee" = "Maksu";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Ota yhteyttä tukeen: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Siirron määrä";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Arvo vastaanotettaessa: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Siirtää kaikki varat";
+
+/* (No Commment) */
+"Transfer all" = "Siirtää kaikki";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Siirtää tuodut osoitteet?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Tuodut osoitteet ei varmuuskopioida Recovery-lauseella. Saada näitä varoja siirtämällä taseista varmuuskopioitavaksi.";
+
+/* (No Commment) */
+"About Us" = "Tietoja meistä";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Sinulla sähköposti-ilmoitukset käyttöön. Ailahteleminen sinun email jälkisäädös tehdä kykenemättömäksi sähköposti-ilmoituksia.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Sinulla käytössä Tekstiviesti-ilmoitukset. Ailahteleminen sinun email jälkisäädös tehdä kykenemättömäksi Tekstiviesti-ilmoituksia.";
+
+/* (No Commment) */
+"All rights reserved." = "Kaikki oikeudet pidätetään.";
+
+/* (No Commment) */
+"Rate us" = "Rate meille";
+
+/* (No Commment) */
+"Free Merchant app" = "Vapaa kauppa app";

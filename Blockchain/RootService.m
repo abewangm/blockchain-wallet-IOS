@@ -132,6 +132,9 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    
     [[NSUserDefaults standardUserDefaults] synchronize];
 #endif
     
@@ -269,6 +272,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     app.transactionsViewController.loadedAllTransactions = NO;
     app.wallet.isFetchingTransactions = NO;
+    app.wallet.isFilteringTransactions = NO;
     
     [createWalletView showPassphraseTextField];
     
@@ -501,7 +505,7 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController reloadAfterMultiAddressResponse];
     [_transactionsViewController reload];
     [_receiveViewController reload];
-    [_settingsNavigationController reload];
+    [_settingsNavigationController reloadAfterMultiAddressResponse];
     [_accountsAndAddressesNavigationController reload];
     
     [sideMenuViewController reload];
@@ -535,7 +539,6 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)filterTransactionsByAccount:(int)accountIndex
 {
-    _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
     [_transactionsViewController showFilterLabel];
@@ -551,7 +554,6 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)filterTransactionsByImportedAddresses
 {
-    _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
     [_transactionsViewController showFilterLabel];
@@ -564,7 +566,6 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)removeTransactionsFilter
 {
-    _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
     [_transactionsViewController hideFilterLabel];
     self.mainLogoImageView.hidden = NO;
@@ -798,9 +799,7 @@ void (^secondPasswordSuccess)(NSString *);
     self.wallet.swipeAddressToSubscribe = nil;
     
     self.wallet.twoFactorInput = nil;
-    
-    [self.wallet getAccountInfo];
-    
+        
     [manualPairView clearTextFields];
     
     [app closeAllModals];
@@ -821,20 +820,26 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
 {
+    CurrencySymbol *localSymbol = self.latestResponse.symbol_local;
+    CurrencySymbol *btcSymbol = self.latestResponse.symbol_btc;
+    
     self.latestResponse = response;
     
     _transactionsViewController.data = response;
     
-#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
     if (app.wallet.isFetchingTransactions) {
         [_transactionsViewController reload];
         app.wallet.isFetchingTransactions = NO;
     } else {
-        [self reloadAfterMultiAddressResponse];
+        if (app.wallet.isFilteringTransactions) {
+            app.wallet.isFilteringTransactions = NO;
+            self.latestResponse.symbol_local = localSymbol;
+            self.latestResponse.symbol_btc = btcSymbol;
+            [self reloadAfterMultiAddressResponse];
+        } else {
+            [self getAccountInfo];
+        }
     }
-#else
-    [self reloadAfterMultiAddressResponse];
-#endif
     
     int newDefaultAccountLabeledAddressesCount = [self.wallet getDefaultAccountLabelledAddressesCount];
     NSNumber *lastCount = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEFAULT_ACCOUNT_LABELLED_ADDRESSES_COUNT];
@@ -848,6 +853,43 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _transactionsViewController.latestBlock = block;
     [_transactionsViewController reload];
+}
+
+- (void)getAccountInfo
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrencySymbolsAfterAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    [app.wallet getAccountInfo];
+}
+
+- (void)getCurrencySymbolsAfterAccountInfo
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAfterGettingCurrencySymbols) name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
+    [app.wallet getAllCurrencySymbols];
+}
+
+- (void)reloadAfterGettingCurrencySymbols
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
+    
+    {
+        NSString *fiatCode = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCY_FIAT];
+        NSMutableDictionary *symbolLocalDict = [[NSMutableDictionary alloc] initWithDictionary:[app.wallet.currencySymbols objectForKey:fiatCode]];
+        [symbolLocalDict setObject:fiatCode forKey:DICTIONARY_KEY_CODE];
+        if (symbolLocalDict) {
+            app.latestResponse.symbol_local = [CurrencySymbol symbolFromDict:symbolLocalDict];
+        }
+    }
+    
+    {
+        NSString *btcCode = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCY_BTC];
+        if (btcCode) {
+            app.latestResponse.symbol_btc = [CurrencySymbol btcSymbolFromCode:btcCode];
+        }
+    }
+    
+    [self reloadAfterMultiAddressResponse];
 }
 
 - (void)walletFailedToDecrypt
@@ -2414,7 +2456,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock error:(void (^)())errorBlock
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock failure:(void (^)())failureBlock error:(void (^)())errorBlock
 {
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -2427,6 +2469,7 @@ void (^secondPasswordSuccess)(NSString *);
         if (error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 DLog(@"Error checking for receive address %@: %@", address, error);
+                if (errorBlock) errorBlock();
             });
             return;
         }
@@ -2436,7 +2479,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (transactions.count > 0) {
-                if (errorBlock) errorBlock();
+                if (failureBlock) failureBlock();
             } else {
                 if (successBlock) successBlock();
             }
@@ -2445,6 +2488,15 @@ void (^secondPasswordSuccess)(NSString *);
     }];
     
     [task resume];
+}
+
+- (NSString *)getVersionLabelString
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+    NSString *build = infoDictionary[@"CFBundleVersion"];
+    NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
+    return [NSString stringWithFormat:@"%@", versionAndBuild];
 }
 
 #pragma mark - Pin Entry Delegates

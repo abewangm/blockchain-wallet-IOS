@@ -633,8 +633,8 @@
 
 - (void)setupWebSocket
 {
-    NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:DEFAULT_WEBSOCKET_SERVER]];
-    [webSocketRequest addValue:DEFAULT_WALLET_SERVER forHTTPHeaderField:@"Origin"];
+    NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL_WEBSOCKET]];
+    [webSocketRequest addValue:URL_WEBSOCKET forHTTPHeaderField:@"Origin"];
 
 #ifdef ENABLE_CERTIFICATE_PINNING
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
@@ -912,7 +912,16 @@
 {
     if ([self isInitialized]) {
         self.isFetchingTransactions = YES;
-        [self.context evaluateScript:@"MyWalletPhone.fetchMoreTransactions()"];
+        
+        int filterIndex = (int)app.transactionsViewController.filterIndex;
+        
+        if (filterIndex == FILTER_INDEX_ALL) {
+            [self.context evaluateScript:@"MyWalletPhone.fetchMoreTransactions()"];
+        } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+            [self getHistoryForImportedAddresses];
+        } else {
+            [self getHistoryForAccount:filterIndex];
+        }
     }
 }
 
@@ -2095,6 +2104,8 @@
 
 - (void)reloadFilter
 {
+    self.isFilteringTransactions = YES;
+
     int filterIndex = (int)app.transactionsViewController.filterIndex;
     
     if (filterIndex == FILTER_INDEX_ALL) {
@@ -2155,20 +2166,6 @@
         Transaction *tx = [Transaction fromJSONDict:dict];
         
         [response.transactions addObject:tx];
-    }
-    
-    {
-        NSDictionary *symbolLocalDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_LOCAL] ;
-        if (symbolLocalDict) {
-            response.symbol_local = [CurrencySymbol symbolFromDict:symbolLocalDict];
-        }
-    }
-    
-    {
-        NSDictionary *symbolBTCDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_BTC] ;
-        if (symbolBTCDict) {
-            response.symbol_btc = [CurrencySymbol symbolFromDict:symbolBTCDict];
-        }
     }
     
     return response;
@@ -2328,8 +2325,6 @@
         if ([[self.currencySymbols allKeys] containsObject:currencyCode]) {
             [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
         }
-    } else {
-        [self getAllCurrencySymbols];
     }
         
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
@@ -3418,6 +3413,16 @@
     if (apiURL) {
         [self updateAPIURL:apiURL];
     }
+    
+    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    NSString *network;
+    if (testnetOn) {
+        network = NETWORK_TESTNET;
+    } else {
+        network = NETWORK_MAINNET;
+    }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeNetwork(\"%@\")", [network escapeStringForJS]]];
 }
 
 @end

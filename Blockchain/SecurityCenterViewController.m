@@ -144,11 +144,6 @@
     [self presentViewController:self.backupController animated:YES completion:nil];
 }
 
-- (IBAction)linkMobileTapped:(UIButton *)sender
-{
-    [self.settingsController linkMobileTapped];
-}
-
 - (IBAction)enableTwoStepTapped:(UIButton *)sender
 {
     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];

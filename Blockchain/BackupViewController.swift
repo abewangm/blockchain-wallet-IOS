@@ -48,12 +48,12 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
             lostRecoveryPhraseLabel.font = UIFont.boldSystemFont(ofSize: 14);
             
             if (wallet!.didUpgradeToHd() && wallet!.getTotalBalanceForSpendableActiveLegacyAddresses() >= wallet!.dust() && navigationController!.visibleViewController == self && !transferredAll) {
-                let alertToTransferAll = UIAlertController(title: "Transfer imported addresses?", message: "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", preferredStyle: .alert)
-                alertToTransferAll.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                alertToTransferAll.addAction(UIAlertAction(title: "Transfer all", style: .default, handler: { void in
+                let alertToTransferAll = UIAlertController(title: NSLocalizedString("Transfer imported addresses?", comment:""), message: NSLocalizedString("Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", comment:""), preferredStyle: .alert)
+                alertToTransferAll.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment:""), style: .cancel, handler: nil))
+                alertToTransferAll.addAction(UIAlertAction(title: NSLocalizedString("Transfer all", comment:""), style: .default, handler: { void in
                     let transferAllController = TransferAllFundsViewController()
                     transferAllController.delegate = self;
-                    let navigationController = BCNavigationController(rootViewController: transferAllController, title: "Transfer All Funds")
+                    let navigationController = BCNavigationController(rootViewController: transferAllController, title: NSLocalizedString("Transfer All Funds", comment:""))
                     self.app?.transferAllFundsModalController = transferAllController
                     self.present(navigationController!, animated: true, completion: nil)
                 }))

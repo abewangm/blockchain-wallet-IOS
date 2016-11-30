@@ -24,13 +24,13 @@
 @interface CurrencySymbol : NSObject
 
 @property(nonatomic, assign) uint64_t conversion;
-@property(nonatomic, assign) BOOL symbolappearsAfter;
 
 @property(nonatomic, strong) NSString * code;
 @property(nonatomic, strong) NSString * symbol;
 @property(nonatomic, strong) NSString * name;
 
 +(CurrencySymbol*)symbolFromDict:(NSDictionary*)dict;
++(CurrencySymbol*)btcSymbolFromCode:(NSString *)code;
 
 @end
 

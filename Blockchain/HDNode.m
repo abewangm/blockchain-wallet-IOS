@@ -59,10 +59,13 @@
 - (id)initWithKeychain:(BTCKeychain *)keychain network:(JSValue *)network;
 {
     if (self = [super init]) {
+        
         self.keychain = keychain;
+        
         if (network == nil || [network isNull] || [network isUndefined]) {
-            network = [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"];
+            network = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET] ? [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().testnet"] : [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"];
         }
+        
         _network = [JSManagedValue managedValueWithValue:network];
         [[[JSContext currentContext] virtualMachine] addManagedReference:_network withOwner:self];
     }
@@ -71,8 +74,24 @@
 
 + (HDNode *)fromSeed:(NSString *)seed network:(JSValue *)network
 {
-    // TODO: make TestNet compatible
-    BTCNetwork *btcNetwork = [BTCNetwork mainnet];
+    BTCNetwork *btcNetwork;
+    
+    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+
+    if (testnetOn) {
+        DLog(@"Testnet set in debug menu: using testnet");
+        btcNetwork = [BTCNetwork testnet];
+    } else if ([[network toDictionary] isEqual:[[app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"] toDictionary]]) {
+        DLog(@"Using mainnet");
+        btcNetwork = [BTCNetwork mainnet];
+    } else if ([[network toDictionary] isEqual:[[app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().testnet"] toDictionary]]) {
+        DLog(@"Using testnet");
+        btcNetwork = [BTCNetwork testnet];
+    } else {
+        DLog(@"KeyPair error: unsupported network");
+        return nil;
+    }
+    
     BTCKeychain *keychain = [[BTCKeychain alloc] initWithSeed:BTCDataFromHex(seed) network:btcNetwork];
 
     return [[HDNode alloc] initWithKeychain:keychain network:network];

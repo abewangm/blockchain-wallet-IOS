@@ -18,13 +18,15 @@
 
 #define ENABLE_TRANSFER_FUNDS 1
 #define ENABLE_TRANSACTION_FILTERING 1
-// #define ENABLE_TRANSACTION_FETCHING 1
+ #define ENABLE_TRANSACTION_FETCHING 1
 #define ENABLE_SWIPE_TO_RECEIVE 1
 #define ENABLE_TOUCH_ID 1
 //#define ENABLE_CERTIFICATE_PINNING 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
+
+#define APP_STORE_ID_MERCHANT @"id947009571"
 
 #pragma mark - Colors
 
@@ -109,6 +111,28 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define COPYRIGHT_YEAR @"2016"
+#define ABOUT_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
+#define ABOUT_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
+#define ABOUT_STRING_BLOCKCHAIN_LUXEMBOURG_SA NSLocalizedString(@"Blockchain Luxembourg S.A.", nil)
+
+#define DEBUG_STRING_DEBUG NSLocalizedString(@"Debug", nil)
+#define DEBUG_STRING_SERVER_URL NSLocalizedString(@"Server URL", nil)
+#define DEBUG_STRING_WEBSOCKET_URL NSLocalizedString(@"WebSocket URL", nil)
+#define DEBUG_STRING_MERCHANT_URL NSLocalizedString(@"Merchant URL", nil)
+#define DEBUG_STRING_API_URL NSLocalizedString(@"API URL", nil)
+#define DEBUG_STRING_WALLET_JSON NSLocalizedString(@"Wallet JSON", nil)
+#define DEBUG_STRING_SIMULATE_SURGE NSLocalizedString(@"Simulate surge", nil)
+#define DEBUG_STRING_RESET_DONT_SHOW_AGAIN_PROMPT NSLocalizedString(@"Show all 'Dont Show Again' alerts", nil)
+#define DEBUG_STRING_RESET_DONT_SHOW_AGAIN_PROMPT_MESSAGE NSLocalizedString(@"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds.", nil)
+#define DEBUG_STRING_PLEASE_LOGIN NSLocalizedString(@"Please Login", nil)
+#define DEBUG_STRING_RESET NSLocalizedString(@"Reset", nil)
+#define DEBUG_STRING_FROM_LOWERCASE NSLocalizedString(@"from", nil)
+#define DEBUG_STRING_WELCOME NSLocalizedString(@"Welcome", nil)
+#define DEBUG_STRING_TESTNET @"Testnet"
+#define DEBUG_STRING_CERTIFICATE_PINNING @"Certificate Pinning"
+#define DEBUG_STRING_APP_STORE_REVIEW_PROMPT_TIMER NSLocalizedString(@"App Store review prompt timer (seconds)", nil)
+
 #define CERTIFICATE_SERVER_NAME @"blockchain"
 #define CERTIFICATE_FILE_TYPE_DER @"der"
 
@@ -174,6 +198,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 // Notifications used in settings
 #define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER @"reloadSettingsAndSecurityCenter"
+#define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS @"reloadSettingsAndSecurityCenterAfterMultiAddress"
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
@@ -193,8 +218,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_SUCCESS @"ChangeEmailNotifications"
 #define NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_ERROR @"ChangeEmailNotificationsError"
 
-#define TERMS_OF_SERVICE_URL_SUFFIX @"/Resources/TermsofServicePolicy.pdf"
-#define PRIVACY_POLICY_URL_SUFFIX @"/Resources/PrivacyPolicy.pdf"
+#define URL_SUFFIX_TERMS_OF_SERVICE @"/Resources/TermsofServicePolicy.pdf"
+#define URL_SUFFIX_PRIVACY_POLICY @"/Resources/PrivacyPolicy.pdf"
 
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
@@ -204,6 +229,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_ACCOUNTS_AND_ADDRESSES_DETAIL_EDIT @"accountsAndAddressesDetailEdit"
 #define SEGUE_IDENTIFIER_TWO_STEP @"twoStep"
 
+#define SEGUE_SENDER_ABOUT_US @"aboutUs"
 #define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
 #define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
 #define SEGUE_IDENTIFIER_SECURITY_CENTER @"securityCenter"
@@ -213,6 +239,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define HOST_NAME_DEV_SERVER @"blockchain.co.uk"
 #define HOST_NAME_API @"api.blockchain.info"
 #define HOST_NAME_MERCHANT HOST_NAME_API
+
+#define NETWORK_MAINNET @"bitcoin"
+#define NETWORK_TESTNET @"testnet"
+
+#define TESTNET_WALLET_SERVER @"http://explorer.testnet.blockchain.co.uk"
+#define TESTNET_WEBSOCKET_SERVER @"wss://explorer-testnet.dev.blockchain.co.uk/inv"
+#define TESTNET_API_URL @"http://api.testnet.blockchain.co.uk"
 
 #define DEFAULT_WALLET_SERVER @"https://blockchain.info"
 #define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
@@ -237,6 +270,44 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ANIMATION_KEY_SHOW_MODAL @"ShowModal"
 
 #define TRANSACTION_FILTER_IMPORTED @"imported"
+
+#define CURRENCY_CODE_BTC @"BTC"
+#define CURRENCY_CODE_MBC @"MBC"
+#define CURRENCY_CODE_UBC @"UBC"
+
+#define CURRENCY_SYMBOL_BTC @"BTC"
+#define CURRENCY_SYMBOL_MBC @"mBTC"
+#define CURRENCY_SYMBOL_UBC @"bits"
+
+#define CURRENCY_CONVERSION_BTC @100000000
+#define CURRENCY_CONVERSION_MBC @100000
+#define CURRENCY_CONVERSION_UBC @100
+
+#define CURRENCY_NAME_BTC @"Bitcoin"
+#define CURRENCY_NAME_MBC @"MilliBit (mBTC)"
+#define CURRENCY_NAME_UBC @"Bits (uBTC)"
+
+#define CURRENCY_CODE_USD @"USD"
+#define CURRENCY_CODE_EUR @"EUR"
+#define CURRENCY_CODE_ISK @"ISK"
+#define CURRENCY_CODE_HKD @"HKD"
+#define CURRENCY_CODE_TWD @"TWD"
+#define CURRENCY_CODE_CHF @"CHF"
+#define CURRENCY_CODE_DKK @"DKK"
+#define CURRENCY_CODE_CLP @"CLP"
+#define CURRENCY_CODE_CAD @"CAD"
+#define CURRENCY_CODE_CNY @"CNY"
+#define CURRENCY_CODE_THB @"THB"
+#define CURRENCY_CODE_AUD @"AUD"
+#define CURRENCY_CODE_SGD @"SGD"
+#define CURRENCY_CODE_KRW @"KRW"
+#define CURRENCY_CODE_JPY @"JPY"
+#define CURRENCY_CODE_PLN @"PLN"
+#define CURRENCY_CODE_GBP @"GBP"
+#define CURRENCY_CODE_SEK @"SEK"
+#define CURRENCY_CODE_NZD @"NZD"
+#define CURRENCY_CODE_BRL @"BRL"
+#define CURRENCY_CODE_RUB @"RUB"
 
 #define DICTIONARY_KEY_TRANSACTION_FROM @"from"
 #define DICTIONARY_KEY_TRANSACTION_TO @"to"
@@ -268,8 +339,15 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_LAST @"last"
 #define DICTIONARY_KEY_USD @"USD"
 
+#define DICTIONARY_KEY_SYMBOL @"symbol"
+#define DICTIONARY_KEY_CONVERSION @"conversion"
+#define DICTIONARY_KEY_NAME @"name"
+#define DICTIONARY_KEY_LAST @"last"
+
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL @"email"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED @"email_verified"
+#define DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCY_FIAT @"currency"
+#define DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCY_BTC @"btc_currency"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES @"currencies"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_BTC_CURRENCIES @"btc_currencies"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED @"sms_verified"
@@ -320,6 +398,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_API_URL @"apiURL"
 #define USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING @"certificatePinning"
 #define USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE @"simulateSurge"
+#define USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET @"testnet"
 
 #define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 
@@ -385,8 +464,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define WEBSOCKET_CLOSE_REASON_LOGGED_OUT @"Logged out"
 #define WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET @"Decrypted Wallet"
 #define WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS @"Received to swipe address"
-
-#define CURRENCY_CODE_USD @"usd"
 
 #pragma mark - Constants
 

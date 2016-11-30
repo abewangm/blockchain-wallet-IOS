@@ -14,7 +14,6 @@
 - (void)reload;
 
 - (void)verifyEmailTapped;
-- (void)linkMobileTapped;
 - (void)changeTwoStepTapped;
 
 @end

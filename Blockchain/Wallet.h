@@ -136,6 +136,7 @@
 @property int recoveredAccountIndex;
 
 @property BOOL didPairAutomatically;
+@property BOOL isFilteringTransactions;
 @property BOOL isFetchingTransactions;
 @property BOOL isSyncing;
 @property BOOL isNew;

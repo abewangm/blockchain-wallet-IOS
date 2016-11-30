@@ -1527,3 +1527,47 @@
 /* No comment provided by engineer. */
 "twelfth word" = "המילה השתים עשרה";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " אנו ממליצים על דמי המוצג עבור התנועה בשלב זה.";
+
+/* No comment provided by engineer. */
+"Fee" = "דמי";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "נא ליצור קשר עם התמיכה: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "סכום ההעברה";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "ערך כאשר התקבל: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "להעביר את כספי";
+
+/* (No Commment) */
+"Transfer all" = "העברת כל";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "להעביר כתובות מיובאות?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "כתובות מיובאות הם אינם מגובים על ידי הביטוי ההתאוששות שלך. כדי לאבטח קרנות אלה, אנו ממליצים על העברת יתרות אלה לכלול בגיבוי.";
+
+/* (No Commment) */
+"About Us" = "עלינו";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "כעת יש לך הודעות דוא ל מופעלת. שינוי הדוא ל שלך תהפוך הודעות דוא.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "כעת יש לך הודעות SMS מופעלת. שינוי הדוא ל שלך תהפוך הודעות SMS.";
+
+/* (No Commment) */
+"All rights reserved." = "כל הזכויות שמורות.";
+
+/* (No Commment) */
+"Rate us" = "לדרג אותנו";
+
+/* (No Commment) */
+"Free Merchant app" = "App סוחר חינם";

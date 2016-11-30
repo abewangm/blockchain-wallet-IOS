@@ -1167,9 +1167,6 @@ MyWalletPhone.getMultiAddrResponse = function(txFilter) {
     obj.n_transactions = MyWallet.wallet.numberTx;
     obj.addresses = MyWallet.wallet.addresses;
     
-    obj.symbol_local = Blockchain.Shared.getLocalSymbol();
-    obj.symbol_btc = Blockchain.Shared.getBTCSymbol();
-    
     return obj;
 };
 
@@ -1905,4 +1902,10 @@ MyWalletPhone.getNetworks = function() {
 
 MyWalletPhone.getECDSA = function() {
     return ECDSA;
+}
+
+MyWalletPhone.changeNetwork = function(newNetwork) {
+    console.log('Changing network to ');
+    console.log(newNetwork);
+    Blockchain.constants.network = newNetwork;
 }

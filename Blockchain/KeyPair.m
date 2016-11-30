@@ -22,10 +22,13 @@
 - (id)initWithKey:(BTCKey *)key network:(JSValue *)network
 {
     if (self = [super init]) {
+        
         self.key = key;
+        
         if (network == nil || [network isNull] || [network isUndefined]) {
-            network = [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"];
+            network = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET] ? [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().testnet"] : [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"];
         }
+        
         _network = [JSManagedValue managedValueWithValue:network];
         [[[JSContext currentContext] virtualMachine] addManagedReference:_network withOwner:self];
     }
@@ -67,7 +70,21 @@
 
 - (NSString *)getAddress;
 {
-    return self.key.address.string;
+    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    
+    if (testnetOn) {
+        DLog(@"Testnet set in debug menu: using testnet");
+        return self.key.addressTestnet.string;
+    } else if ([[_network.value toDictionary] isEqual:[[app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"] toDictionary]]) {
+        DLog(@"Using mainnet");
+        return self.key.address.string;
+    } else if ([[_network.value toDictionary] isEqual:[[app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().testnet"] toDictionary]]) {
+        DLog(@"Using testnet");
+        return self.key.addressTestnet.string;;
+    } else {
+        DLog(@"KeyPair error: unsupported network");
+        return nil;
+    }
 }
 
 - (JSValue *)getPublicKeyBuffer

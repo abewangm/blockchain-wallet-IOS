@@ -1527,3 +1527,47 @@
 /* No comment provided by engineer. */
 "twelfth word" = "tolvte ord";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Vi anbefaler gebyret vises for transaksjonen på denne tiden.";
+
+/* No comment provided by engineer. */
+"Fee" = "Gebyr";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Kontakt støtte: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Overføre beløp";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Verdi når mottatt: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Overføre alle midler";
+
+/* (No Commment) */
+"Transfer all" = "Overføre alle";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Overføre importerte adresser?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importerte adresser er ikke støttet opp av søkestrengen utvinning. For å sikre disse midlene, anbefaler vi overføre disse saldoene skal inkluderes i sikkerhetskopien.";
+
+/* (No Commment) */
+"About Us" = "om oss";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Du har beskjeder aktivert. Endre e-deaktiverer beskjeder.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Du har SMS-varsler aktivert. Endre e-deaktiverer SMS-varsler.";
+
+/* (No Commment) */
+"All rights reserved." = "Alle rettigheter reservert.";
+
+/* (No Commment) */
+"Rate us" = "Rate oss";
+
+/* (No Commment) */
+"Free Merchant app" = "Gratis kjøpmann app";
