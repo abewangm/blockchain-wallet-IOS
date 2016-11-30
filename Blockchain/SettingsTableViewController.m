@@ -362,49 +362,10 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changeMobileNumber:(NSString *)newNumber
 {
+    [app.wallet changeMobileNumber:newNumber];
+    
     self.enteredMobileNumberString = newNumber;
-    
-    if ([app.wallet SMSNotificationsEnabled]) {
-        [self alertUserAboutDisablingSMSNotifications:newNumber];
-    } else {
-        [app.wallet changeMobileNumber:newNumber];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
-    }
-}
 
-- (void)alertUserAboutDisablingSMSNotifications:(NSString *)newNumber
-{
-    UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER message:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER_WARNING_DISABLE_NOTIFICATIONS preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self disableNotificationsThenChangeMobileNumber:newNumber];
-    }]];
-    
-    if (self.alertTargetViewController) {
-        [self.alertTargetViewController presentViewController:alertForChangingEmail animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertForChangingEmail animated:YES completion:nil];
-    }
-}
-
-- (void)disableNotificationsThenChangeMobileNumber:(NSString *)newNumber
-{
-    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
-    [navigationController.busyView fadeIn];
-    
-    [app.wallet disableSMSNotifications];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberAfterDisablingNotifications) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
-}
-
-- (void)changeMobileNumberAfterDisablingNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
-    
-    [app.wallet changeMobileNumber:self.enteredMobileNumberString];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
 }
