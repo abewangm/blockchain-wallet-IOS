@@ -313,6 +313,7 @@
 #define BC_STRING_SETTINGS_STORED NSLocalizedString(@"Stored", nil)
 #define BC_STRING_SETTINGS_NOT_STORED NSLocalizedString(@"Not Stored", nil)
 #define BC_STRING_SETTINGS_PLEASE_ADD_EMAIL NSLocalizedString(@"Please add an email address", nil)
+#define BC_STRING_SETTINGS_NEW_EMAIL_MUST_BE_DIFFERENT NSLocalizedString(@"New email must be different", nil)
 #define BC_STRING_SETTINGS_MOBILE_NUMBER NSLocalizedString(@"Mobile Number", nil)
 #define BC_STRING_SETTINGS_PREFERENCES NSLocalizedString(@"Preferences", nil)
 #define BC_STRING_SETTINGS_DISPLAY_PREFERENCES NSLocalizedString(@"Display", nil)

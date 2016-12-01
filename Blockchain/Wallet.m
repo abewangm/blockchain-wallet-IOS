@@ -29,6 +29,7 @@
 
 #import "BTCKey.h"
 #import "BTCData.h"
+#import "KeyPair.h"
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -125,13 +126,12 @@
     
 #pragma mark Decryption
     
-    self.context[@"objc_message_verify"] = ^(NSString *publicKey, NSString *signature, NSString *message) {
-        NSData *publicKeyDataFromHex = BTCDataFromHex(publicKey);
-        BTCKey *publicKeyHexKey = [[BTCKey alloc] initWithPublicKey:publicKeyDataFromHex];
-        
+    self.context[@"objc_message_verify"] = ^(NSString *address, NSString *signature, NSString *message) {
         NSData *signatureData = BTCDataFromHex(signature);
         NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
-        return [publicKeyHexKey isValidSignature:signatureData forBinaryMessage:messageData];
+        BTCKey *key = [BTCKey verifySignature:signatureData forBinaryMessage:messageData];
+        KeyPair *keyPair = [[KeyPair alloc] initWithKey:key network:nil];
+        return [[keyPair getAddress] isEqualToString:address];
     };
     
     self.context[@"objc_pbkdf2_sync"] = ^(NSString *mnemonicBuffer, NSString *saltBuffer, int iterations, int keylength, NSString *digest) {
@@ -181,6 +181,10 @@
         };
         
         return [[NSData dataWithBytesNoCopy:finalOut length:keylength] hexadecimalString];
+    };
+    
+    self.context[@"objc_get_satoshi"] = ^() {
+        return SATOSHI;
     };
     
     self.context[@"objc_on_error_maintenance_mode"] = ^(){
@@ -1188,7 +1192,7 @@
         }
     }
 
-    return [[[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", [requestedAmountString escapeStringForJS]]] toNumber] longLongValue];
+    return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.precisionToSatoshiBN(\"%@\", %lld).toString()", [requestedAmountString escapeStringForJS], app.latestResponse.symbol_btc.conversion]] toNumber] longLongValue];
 }
 
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
