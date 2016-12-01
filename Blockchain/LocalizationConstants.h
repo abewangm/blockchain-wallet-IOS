@@ -322,6 +322,7 @@
 #define BC_STRING_SETTINGS_SECURITY NSLocalizedString(@"Security", nil)
 #define BC_STRING_SETTINGS_PIN_USE_TOUCH_ID_AS_PIN NSLocalizedString(@"Use Touch ID as PIN", nil)
 #define BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE NSLocalizedString(@"Swipe to receive", nil)
+#define BC_STRING_SWIPE_TO_RECEIVE_NO_INTERNET_CONNECTION_WARNING NSLocalizedString(@"We can't check whether this address has been used. Show anyway?", nil)
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION NSLocalizedString(@"2-step Verification", nil)
 #define BC_STRING_ENABLE NSLocalizedString(@"Enable", nil)
 #define BC_STRING_DISABLE NSLocalizedString(@"Disable", nil)
