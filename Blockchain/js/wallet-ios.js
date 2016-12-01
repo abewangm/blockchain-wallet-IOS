@@ -1376,8 +1376,8 @@ BIP39.mnemonicToSeed = function(mnemonic, enteredPassword) {
     return new Buffer(retVal, 'hex');
 }
 
-Metadata.prototype._verify = function (signature, message) {
-    return objc_message_verify(this._node.getPublicKeyBuffer().toString('hex'), signature.toString('hex'), message);
+Metadata.verify = function (address, signature, message) {
+    return objc_message_verify(address, signature.toString('hex'), message);
 }
 
 // TODO what should this value be?
