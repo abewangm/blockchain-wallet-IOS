@@ -15,5 +15,5 @@
 
 - (void)verifyEmailTapped;
 - (void)changeTwoStepTapped;
-
+- (void)updateEmailAndMobileStrings;
 @end

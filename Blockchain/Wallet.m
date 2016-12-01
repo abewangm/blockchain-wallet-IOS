@@ -27,9 +27,9 @@
 #import <CommonCrypto/CommonKeyDerivation.h>
 #import "HDNode.h"
 
-#import "KeyPair.h"
 #import "BTCKey.h"
 #import "BTCData.h"
+#import "KeyPair.h"
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -133,13 +133,12 @@
         return [[keyPair.key signatureForBinaryMessage:hash] hexadecimalString];
     };
     
-    self.context[@"objc_message_verify"] = ^(NSString *publicKey, NSString *signature, NSString *message) {
-        NSData *publicKeyDataFromHex = BTCDataFromHex(publicKey);
-        BTCKey *publicKeyHexKey = [[BTCKey alloc] initWithPublicKey:publicKeyDataFromHex];
-        
+    self.context[@"objc_message_verify"] = ^(NSString *address, NSString *signature, NSString *message) {
         NSData *signatureData = BTCDataFromHex(signature);
         NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
-        return [publicKeyHexKey isValidSignature:signatureData forBinaryMessage:messageData];
+        BTCKey *key = [BTCKey verifySignature:signatureData forBinaryMessage:messageData];
+        KeyPair *keyPair = [[KeyPair alloc] initWithKey:key network:nil];
+        return [[keyPair getAddress] isEqualToString:address];
     };
     
     self.context[@"objc_pbkdf2_sync"] = ^(NSString *mnemonicBuffer, NSString *saltBuffer, int iterations, int keylength, NSString *digest) {
