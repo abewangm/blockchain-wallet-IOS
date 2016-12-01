@@ -71,7 +71,8 @@ int lastNumberTransactions = INT_MAX;
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
     if (!self.loadedAllTransactions) {
         if (indexPath.row == (int)[data.transactions count] - 1) {
-            [app.wallet fetchMoreTransactions];
+            [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+            [app.wallet performSelector:@selector(fetchMoreTransactions) withObject:nil afterDelay:0.1f];
         }
     }
 #endif
@@ -228,16 +229,9 @@ int lastNumberTransactions = INT_MAX;
 {
     lastNumberTransactions = data.n_transactions;
 
-#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
-    if (self.loadedAllTransactions) {
-        self.loadedAllTransactions = NO;
-        [app.wallet getHistory];
-    }
-#else
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
     
     [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
-#endif
 }
 
 - (NSDecimalNumber *)getAmountForReceivedTransaction:(Transaction *)transaction

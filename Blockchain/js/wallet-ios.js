@@ -1172,8 +1172,10 @@ MyWalletPhone.getMultiAddrResponse = function(txFilter) {
 
 MyWalletPhone.getHistoryForAccount = function(accountIndex) {
     
-    var success = function () {
+    var success = function (numFetched) {
         console.log('Got wallet history');
+        var loadedAll = numFetched < MyWallet.wallet.hdwallet.accounts[accountIndex].txList.loadNumber;
+        objc_update_loaded_all_transactions(loadedAll);
         objc_on_get_filtered_history_success();
     };
     
@@ -1189,8 +1191,10 @@ MyWalletPhone.getHistoryForAccount = function(accountIndex) {
 
 MyWalletPhone.getHistoryForImportedAddresses = function() {
     
-    var success = function () {
+    var success = function (numFetched) {
         console.log('Got wallet history');
+        var loadedAll = numFetched < MyWallet.wallet.txListLegacy.loadNumber;
+        objc_update_loaded_all_transactions(loadedAll);
         objc_on_get_filtered_history_success();
     };
     
