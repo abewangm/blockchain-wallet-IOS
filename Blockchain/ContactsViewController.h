@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ContactsViewController : UIViewController
-
+- (void)didCreateInvitation:(NSDictionary *)invitationDict;
 @end

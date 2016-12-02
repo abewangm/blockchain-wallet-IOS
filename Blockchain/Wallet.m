@@ -30,6 +30,7 @@
 #import "BTCKey.h"
 #import "BTCData.h"
 #import "KeyPair.h"
+#import "NSData+BTCData.h"
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -127,10 +128,7 @@
 #pragma mark Decryption
     
     self.context[@"objc_message_sign"] = ^(KeyPair *keyPair, NSString *message, JSValue *network) {
-        
-        NSData *hash = [message dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
-        
-        return [[keyPair.key signatureForBinaryMessage:hash] hexadecimalString];
+         return [[keyPair.key signatureForMessage:message] hexadecimalString];
     };
     
     self.context[@"objc_message_verify"] = ^(NSString *address, NSString *signature, NSString *message) {
@@ -628,6 +626,12 @@
     
     self.context[@"objc_wrong_two_factor_code"] = ^(NSString *error) {
         [weakSelf wrong_two_factor_code:error];
+    };
+    
+#pragma mark Contacts
+    
+    self.context[@"objc_on_create_invitation_success"] = ^(JSValue *invitation) {
+        [weakSelf on_create_invitation_success:invitation];
     };
     
     [self.context evaluateScript:jsSource];
@@ -1873,6 +1877,13 @@
     return [self.context evaluateScript:command];
 }
 
+#pragma mark - Contacts
+    
+- (void)loadContacts
+{
+    [self.context evaluateScript:@"MyWalletPhone.loadContacts()"];
+}
+    
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString
 {
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.createContact(\"%@\", \"%@\")", [name escapeStringForJS], [idString escapeStringForJS]]];
@@ -2327,7 +2338,7 @@
         DLog(@"Error: delegate of class %@ does not respond to selector walletDidFinishLoad!", [delegate class]);
     }
     
-    [app.wallet createContactWithName:nil ID:nil];
+    [self loadContacts];
 }
 
 - (void)on_create_new_account:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
@@ -2976,6 +2987,16 @@
         [self.delegate didErrorWhenGettingFiatAtTime:error];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didErrorWhenGettingFiatAtTime!", [delegate class]);
+    }
+}
+
+- (void)on_create_invitation_success:(JSValue *)invitation
+{
+    DLog(@"on_create_invitation_success");
+    if ([self.delegate respondsToSelector:@selector(didCreateInvitation:)]) {
+        [self.delegate didCreateInvitation:[invitation toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCreateInvitation!", [delegate class]);
     }
 }
 

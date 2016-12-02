@@ -22,7 +22,7 @@
         self.backgroundColor = [UIColor whiteColor];
         
         UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, window.frame.size.width - 40, 25)];
-        nameLabel.text = BC_STRING_NAME;
+        nameLabel.text = BC_STRING_YOUR_NAME;
         nameLabel.textColor = [UIColor darkGrayColor];
         nameLabel.font = [UIFont systemFontOfSize:17.0];
         [self addSubview:nameLabel];
@@ -38,7 +38,7 @@
         _nameField.delegate = self;
         
         UILabel *idLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, _nameField.frame.origin.y + _nameField.frame.size.height + 15, window.frame.size.width - 40, 25)];
-        idLabel.text = BC_STRING_ID;
+        idLabel.text = BC_STRING_CONTACT_NAME;
         idLabel.textColor = [UIColor darkGrayColor];
         idLabel.font = [UIFont systemFontOfSize:17.0];
         [self addSubview:idLabel];

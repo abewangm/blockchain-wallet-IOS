@@ -153,6 +153,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CELL_IDENTIFIER_TRANSACTION_RECIPIENT @"transactionRecipient"
 
 #define CELL_IDENTIFIER_CONTACT @"contact"
+#define CELL_IDENTIFIER_INVITATION @"invitation"
 
 #define LOCALE_IDENTIFIER_EN_US @"en_US"
 #define LOCALE_IDENTIFIER_AR @"ar"
@@ -247,19 +248,17 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define HOST_NAME_API @"api.blockchain.info"
 #define HOST_NAME_MERCHANT HOST_NAME_API
 
-#define DEFAULT_WALLET_SERVER @"https://explorer.dev.blockchain.co.uk"
-#define DEFAULT_WEBSOCKET_SERVER @"wss://explorer.dev.blockchain.co.uk/inv"
+#define DEFAULT_WALLET_SERVER @"https://explorer.dev.blockchain.info"
+#define DEFAULT_WEBSOCKET_SERVER @"wss://explorer.dev.blockchain.info/inv"
 #define NETWORK_MAINNET @"bitcoin"
 #define NETWORK_TESTNET @"testnet"
 
-#define TESTNET_WALLET_SERVER @"http://explorer.testnet.blockchain.co.uk"
+#define TESTNET_WALLET_SERVER @"http://explorer.testnet.blockchain.info"
 #define TESTNET_WEBSOCKET_SERVER @"wss://explorer-testnet.dev.blockchain.co.uk/inv"
-#define TESTNET_API_URL @"http://api.testnet.blockchain.co.uk"
+#define TESTNET_API_URL @"http://api.testnet.blockchain.info"
 
-#define DEFAULT_WALLET_SERVER @"https://blockchain.info"
-#define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 #define DEFAULT_MERCHANT_URL @"https://api.blockchain.info/merchant"
-#define DEFAULT_API_URL @"https://api.dev.blockchain.co.uk"
+#define DEFAULT_API_URL @"https://api.dev.blockchain.info"
 
 // The debug endpoints are cleared from userDefaults in didFinishLaunching when ENABLE_DEBUG_MENU is undefined..so no need to check ENABLE_DEBUG_MENU here
 #define URL_SERVER [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? DEFAULT_WALLET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL]
@@ -316,6 +315,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_NZD @"NZD"
 #define CURRENCY_CODE_BRL @"BRL"
 #define CURRENCY_CODE_RUB @"RUB"
+
+#define DICTIONARY_KEY_INVITATION_RECEIVED @"invitationReceived"
+#define DICTIONARY_KEY_NAME @"name"
 
 #define DICTIONARY_KEY_TRANSACTION_FROM @"from"
 #define DICTIONARY_KEY_TRANSACTION_TO @"to"

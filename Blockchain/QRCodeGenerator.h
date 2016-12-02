@@ -11,4 +11,5 @@
 @interface QRCodeGenerator : NSObject
 - (UIImage *)qrImageFromAddress:(NSString *)address;
 - (UIImage *)qrImageFromAddress:(NSString *)address amount:(double)amount;
+- (UIImage *)createQRImageFromString:(NSString *)string;
 @end

@@ -405,6 +405,9 @@
 
 #define BC_STRING_NEW_CONTACT NSLocalizedString(@"New Contact", nil)
 #define BC_STRING_ENTER_NAME_AND_ID NSLocalizedString(@"Enter Name and ID", nil)
+#define BC_STRING_YOUR_NAME NSLocalizedString(@"Your Name", nil)
+#define BC_STRING_CONTACT_NAME NSLocalizedString(@"Contact Name", nil)
+#define BC_STRING_CONTACT_SCAN_INSTRUCTIONS NSLocalizedString(@"Have your contact scan the below QR Code.", nil)
 
 #define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)

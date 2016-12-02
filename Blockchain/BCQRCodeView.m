@@ -13,6 +13,7 @@ const float imageWidth = 190;
 
 @interface BCQRCodeView ()
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
+@property (nonatomic) BOOL shouldAddAddressPrefix;
 @end
 
 @implementation BCQRCodeView
@@ -27,18 +28,21 @@ const float imageWidth = 190;
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText
+- (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText addAddressPrefix:(BOOL)addPrefix
 {
     self = [super initWithFrame:frame];
     
     if (self) {
         [self setupWithQRHeaderText:qrHeaderText];
+        self.shouldAddAddressPrefix = addPrefix;
     }
     return self;
 }
 
 - (void)setupWithQRHeaderText:(NSString *)qrHeaderText
 {
+    self.backgroundColor = [UIColor whiteColor];
+    
     UILabel *qrCodeHeaderLabel;
     if (qrHeaderText) {
         qrCodeHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 280, 60)];
@@ -79,7 +83,7 @@ const float imageWidth = 190;
 {
     _address = address;
     
-    self.qrCodeImageView.image = [self.qrCodeGenerator qrImageFromAddress:address];
+    self.qrCodeImageView.image = self.shouldAddAddressPrefix ? [self.qrCodeGenerator qrImageFromAddress:address] : [self.qrCodeGenerator createQRImageFromString:address];
     self.qrCodeFooterLabel.text = address;
 }
 

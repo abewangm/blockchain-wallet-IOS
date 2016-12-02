@@ -1853,12 +1853,17 @@ void (^secondPasswordSuccess)(NSString *);
     [self.receiveViewController doCurrencyConversion];
 }
 
+- (void)didCreateInvitation:(NSDictionary *)invitation
+{
+    [self.contactsViewController didCreateInvitation:invitation];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts
 {
-    ContactsViewController *contactsViewController = [ContactsViewController new];
-    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:contactsViewController title:BC_STRING_CONTACTS];
+    self.contactsViewController = [ContactsViewController new];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:self.contactsViewController title:BC_STRING_CONTACTS];
     
     self.topViewControllerDelegate = navigationController;
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;

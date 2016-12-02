@@ -250,7 +250,7 @@ typedef enum {
             
         } else if (detailType == DetailTypeShowExtendedPublicKey) {
             
-            BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE];
+            BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE addAddressPrefix:YES];
             qrCodeView.address = [app.wallet getXpubForAccount:self.account];
             
             [self setupModalView:qrCodeView inViewController:segue.destinationViewController];

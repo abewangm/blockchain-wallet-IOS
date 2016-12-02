@@ -14,6 +14,6 @@
 @property (nonatomic) UILabel *qrCodeFooterLabel;
 @property (nonatomic) UILabel *qrCodeHeaderLabel;
 
-- (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText;
+- (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText addAddressPrefix:(BOOL)addPrefix;
 
 @end

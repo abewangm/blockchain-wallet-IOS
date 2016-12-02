@@ -16,7 +16,7 @@ var BIP39 = Blockchain.BIP39;
 var Networks = Blockchain.Networks;
 var ECDSA = Blockchain.ECDSA;
 var Metadata = Blockchain.Metadata;
-var MDID = Blockchain.MDID;
+var SharedMetadata = Blockchain.SharedMetadata;
 var Contacts = Blockchain.Contacts;
 
 APP_NAME = 'javascript_iphone_app';
@@ -28,7 +28,7 @@ min = false;
 // Set the API code for the iOS Wallet for the server calls
 //BlockchainAPI.API_CODE = API_CODE;
 BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
-BlockchainAPI.API_ROOT_URL = 'https://api.dev.blockchain.co.uk/'
+BlockchainAPI.API_ROOT_URL = 'https://api.dev.blockchain.info/'
 
 var MyWalletPhone = {};
 var currentPayment = null;
@@ -1382,13 +1382,12 @@ Metadata.verify = function (address, signature, message) {
     return objc_message_verify(address, signature.toString('hex'), message);
 }
 
-//MDID.prototype.verify = function (message, signature, mdid) {
-//    return objc_message_verify(mdid, signature, message);
-//}
-//
-MDID.prototype.sign = function (message) {
-    
-    return new Buffer(objc_message_sign(this._keyPair, message), 'hex').toString('base64');
+SharedMetadata.verify = function (message, signature, mdid) {
+    return objc_message_verify(mdid, signature, message);
+}
+
+SharedMetadata.sign = function (keyPair, message) {
+    return new Buffer(objc_message_sign(keyPair, message), 'hex');
 }
 
 // TODO what should this value be?
@@ -1871,9 +1870,18 @@ MyWalletPhone.getECDSA = function() {
     return ECDSA;
 }
 
+MyWalletPhone.loadContacts = function() {
+    console.log('loading contacts');
+    MyWallet.wallet.loadContacts();
+}
+
 MyWalletPhone.createContact = function(name, id) {
-    var mdid = new Blockchain.MDID();console.log('mdid is');console.log(JSON.stringify(mdid));
-    mdid.createInvitation().then(function(x){console.log('createdi');});
+    
+    var success = function(invitation) {
+        objc_on_create_invitation_success(invitation);
+    };
+    
+    MyWallet.wallet.contacts.createInvitation({name: name}, {id: id}).then(success).catch(function(e){console.log(e)});
 }
 
 MyWalletPhone.changeNetwork = function(newNetwork) {
