@@ -18,17 +18,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iEg-Va-ZPW">
-                        <rect key="frame" x="103" y="5" width="63" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
-                        <color key="textColor" red="0.75559091567993164" green="0.75556838512420654" blue="0.75558114051818848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction_pending" id="DbU-Vz-XsT">
-                        <rect key="frame" x="168" y="6" width="12" height="12"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 second ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tgB-FW-xJl">
                         <rect key="frame" x="8" y="3" width="172" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -88,8 +77,6 @@
                 <outlet property="actionLabel" destination="Vev-GY-VUP" id="29I-7s-dXU"/>
                 <outlet property="btcButton" destination="10" id="17"/>
                 <outlet property="dateLabel" destination="tgB-FW-xJl" id="pKC-nO-06o"/>
-                <outlet property="pendingIcon" destination="DbU-Vz-XsT" id="RVS-uh-Qgn"/>
-                <outlet property="pendingText" destination="iEg-Va-ZPW" id="cWn-Ye-7hv"/>
                 <outlet property="warningImageView" destination="34B-px-WE4" id="47h-Su-rSh"/>
                 <outlet property="watchOnlyLabel" destination="P1g-Nr-dFe" id="oPI-NK-NKL"/>
             </connections>
@@ -98,7 +85,6 @@
     </objects>
     <resources>
         <image name="alert" width="75" height="75"/>
-        <image name="transaction_pending" width="11" height="11"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

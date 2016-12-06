@@ -89,34 +89,33 @@
     
     if ((([transaction.txType isEqualToString:TX_TYPE_RECEIVED] || [transaction.txType isEqualToString:TX_TYPE_TRANSFER]) && transaction.toWatchOnly) || ([transaction.txType isEqualToString:TX_TYPE_SENT] && transaction.fromWatchOnly)) {
         watchOnlyLabel.hidden = NO;
-        actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 20, 172, 21);
+        actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 20, actionLabel.frame.size.width, actionLabel.frame.size.height);
         dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 3, dateLabel.frame.size.width, dateLabel.frame.size.height);
-        pendingText.frame = CGRectMake(pendingText.frame.origin.x, 5, pendingText.frame.size.width, pendingText.frame.size.height);
-        pendingIcon.frame = CGRectMake(pendingIcon.frame.origin.x, 6, pendingIcon.frame.size.width, pendingIcon.frame.size.height);
     } else {
         watchOnlyLabel.hidden = YES;
-        actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 29, 172, 21);
+        actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 29, actionLabel.frame.size.width, actionLabel.frame.size.height);
         dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 11, dateLabel.frame.size.width, dateLabel.frame.size.height);
-        pendingText.frame = CGRectMake(pendingText.frame.origin.x, 13, pendingText.frame.size.width, pendingText.frame.size.height);
-        pendingIcon.frame = CGRectMake(pendingIcon.frame.origin.x, 14, pendingIcon.frame.size.width, pendingIcon.frame.size.height);
     }
     
     warningImageView.image = [warningImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [warningImageView setTintColor:COLOR_WARNING_RED];
-    warningImageView.hidden = !transaction.doubleSpend && !transaction.replaceByFee;
+    
+    if (transaction.doubleSpend || transaction.replaceByFee) {
+        warningImageView.hidden = NO;
+        actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, actionLabel.frame.origin.y, 152, actionLabel.frame.size.height);
+        dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 152, dateLabel.frame.size.height);
+    } else {
+        warningImageView.hidden = YES;
+        actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, actionLabel.frame.origin.y, 172, actionLabel.frame.size.height);
+        dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 172, dateLabel.frame.size.height);
+    }
     
     if (transaction.confirmations >= kConfirmationThreshold) {
-        pendingText.hidden = YES;
-        pendingIcon.hidden = YES;
         btcButton.alpha = 1;
         actionLabel.alpha = 1;
-        dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 172, dateLabel.frame.size.height);
     } else {
-        pendingText.hidden = NO;
-        pendingIcon.hidden = NO;
         btcButton.alpha = 0.5;
         actionLabel.alpha = 0.5;
-        dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 90, dateLabel.frame.size.height);
     }
 }
 
