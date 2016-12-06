@@ -1541,3 +1541,33 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Vrednost, ko prejme: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Prenos vseh sredstev";
+
+/* (No Commment) */
+"Transfer all" = "Prenos vseh";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Prenos uvožene naslove?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Uvožene naslove ne podpirajo obnovo stavek. Za zagotovitev teh sredstev, priporočamo, da prenos te bilance vključiti v varnostno kopiranje.";
+
+/* (No Commment) */
+"About Us" = "o nas";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Trenutno imate e-obvestila omogočena. Spreminjanje vaš email hoteti onesposobiti email oznanilo.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Trenutno imate SMS obvestila omogočena. Spreminjanje vaš email hoteti onesposobiti SMS obvestila.";
+
+/* (No Commment) */
+"All rights reserved." = "Vse pravice pridržane.";
+
+/* (No Commment) */
+"Rate us" = "Stopnja nam";
+
+/* (No Commment) */
+"Free Merchant app" = "Prost app trgovskih";

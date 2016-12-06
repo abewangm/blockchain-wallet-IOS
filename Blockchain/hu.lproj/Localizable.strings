@@ -1541,3 +1541,33 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Ha a kapott érték: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Minden átutalás";
+
+/* (No Commment) */
+"Transfer all" = "Át minden";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Átviszi az importált címek?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importált címek nem kísérik a helyreállítási mondat. Ezeket a pénzeszközöket biztosítani, azt javasoljuk, transferring egyensúlyok, a biztonsági másolatkészítéshez.";
+
+/* (No Commment) */
+"About Us" = "rólunk";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Jelenleg van e-mail értesítések engedélyezve van. Megváltozó-a elektronikus levél akarat megbénít elektronikus levél hirdetések.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Jelenleg SMS értesítések engedélyezve van. Megváltozó-a elektronikus levél akarat megbénít SMS értesítések.";
+
+/* (No Commment) */
+"All rights reserved." = "Minden jog fenntartva.";
+
+/* (No Commment) */
+"Rate us" = "Arány velünk";
+
+/* (No Commment) */
+"Free Merchant app" = "Szabad kereskedelmi app";

@@ -41,7 +41,7 @@
 @class PEViewController;
 
 
-@interface PEPinEntryController : UINavigationController <PEViewControllerDelegate>
+@interface PEPinEntryController : UINavigationController <PEViewControllerDelegate, UIScrollViewDelegate>
 {
 	BOOL verifyOnly;
     BOOL verifyOptional;
@@ -60,6 +60,7 @@
 // Swipe-to-receive
 @property (nonatomic) UIImageView *qrCodeImageView;
 @property (nonatomic) UILabel *addressLabel;
+@property (nonatomic) UIAlertController *errorAlert;
 - (void)paymentReceived;
 - (void)setupQRCode;
 

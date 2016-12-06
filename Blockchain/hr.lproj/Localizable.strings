@@ -1527,3 +1527,32 @@
 /* No comment provided by engineer. */
 "twelfth word" = "12 riječ";
 
+/* (No Commment) */
+"Transfer All Funds" = "Prijenos svih sredstava";
+
+/* (No Commment) */
+"Transfer all" = "Prijenos svih";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Prijenos uvezene adrese?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Uvezeni adrese nisu praćene oporavak izraz. Osigurati sredstva, preporučamo prijenos ove salda za uključivanje u sigurnosnu kopiju.";
+
+/* (No Commment) */
+"About Us" = "o nama";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Trenutno imate omogućene obavijesti e-poštom. Promjena e-pošte će onemogućiti obavijesti e-poštom.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Trenutno imate SMS obavijesti enabled. Mjenjanje tvoj elektronička pošta htijenje onesposobiti SMS obavijesti.";
+
+/* (No Commment) */
+"All rights reserved." = "Sva prava pridržana.";
+
+/* (No Commment) */
+"Rate us" = "Ocijenite nas";
+
+/* (No Commment) */
+"Free Merchant app" = "Besplatno primanje kreditnih aplikacija";

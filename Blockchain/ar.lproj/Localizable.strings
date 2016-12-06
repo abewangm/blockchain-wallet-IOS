@@ -1541,3 +1541,33 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "القيمة عند تلقي: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "نقل جميع الأموال";
+
+/* (No Commment) */
+"Transfer all" = "نقل جميع";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "نقل العناوين المستوردة؟";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "عناوين المستوردة هي ليست مدعومة \"عبارة الاسترداد\" الخاصة بك. للحصول على هذه الأموال، نحن نوصي بتحويل هذه الأرصدة المطلوب تضمينها في النسخة الاحتياطية الخاصة بك.";
+
+/* (No Commment) */
+"About Us" = "من نحن";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "لديك حاليا تمكين إعلامات البريد الإلكتروني. تغيير البريد الإلكتروني الخاص بك إلى تعطيل إعلامات البريد الإلكتروني.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "لديك حاليا تمكين التحديثات بواسطة SMS. تغيير البريد الإلكتروني الخاص بك سيتم تعطيل إعلامات الرسائل القصيرة.";
+
+/* (No Commment) */
+"All rights reserved." = "جميع الحقوق محفوظة.";
+
+/* (No Commment) */
+"Rate us" = "معدل بنا";
+
+/* (No Commment) */
+"Free Merchant app" = "التطبيق التجاري مجاناً";

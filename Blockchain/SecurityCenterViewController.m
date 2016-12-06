@@ -49,6 +49,8 @@
         self.settingsController = [[SettingsTableViewController alloc] init];
     }
     
+    [self.settingsController updateEmailAndMobileStrings];
+    
     [self updateUI];
 }
 

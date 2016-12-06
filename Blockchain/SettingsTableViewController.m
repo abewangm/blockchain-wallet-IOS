@@ -834,6 +834,11 @@ const int aboutPrivacyPolicy = 2;
         
         NSString *newEmail = [[alertForChangingEmail textFields] firstObject].text;
         
+        if ([[[newEmail lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""] isEqualToString:[[[self getUserEmail] lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""]]) {
+            [self alertUserOfError:BC_STRING_SETTINGS_NEW_EMAIL_MUST_BE_DIFFERENT];
+            return;
+        }
+        
         if ([app.wallet emailNotificationsEnabled]) {
             [self alertUserAboutDisablingEmailNotifications:newEmail];
         } else {

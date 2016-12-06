@@ -272,6 +272,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     app.transactionsViewController.loadedAllTransactions = NO;
     app.wallet.isFetchingTransactions = NO;
+    app.wallet.isFilteringTransactions = NO;
     
     [createWalletView showPassphraseTextField];
     

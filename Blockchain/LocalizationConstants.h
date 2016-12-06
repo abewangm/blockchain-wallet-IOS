@@ -313,6 +313,7 @@
 #define BC_STRING_SETTINGS_STORED NSLocalizedString(@"Stored", nil)
 #define BC_STRING_SETTINGS_NOT_STORED NSLocalizedString(@"Not Stored", nil)
 #define BC_STRING_SETTINGS_PLEASE_ADD_EMAIL NSLocalizedString(@"Please add an email address", nil)
+#define BC_STRING_SETTINGS_NEW_EMAIL_MUST_BE_DIFFERENT NSLocalizedString(@"New email must be different", nil)
 #define BC_STRING_SETTINGS_MOBILE_NUMBER NSLocalizedString(@"Mobile Number", nil)
 #define BC_STRING_SETTINGS_PREFERENCES NSLocalizedString(@"Preferences", nil)
 #define BC_STRING_SETTINGS_DISPLAY_PREFERENCES NSLocalizedString(@"Display", nil)
@@ -321,6 +322,7 @@
 #define BC_STRING_SETTINGS_SECURITY NSLocalizedString(@"Security", nil)
 #define BC_STRING_SETTINGS_PIN_USE_TOUCH_ID_AS_PIN NSLocalizedString(@"Use Touch ID as PIN", nil)
 #define BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE NSLocalizedString(@"Swipe to receive", nil)
+#define BC_STRING_SWIPE_TO_RECEIVE_NO_INTERNET_CONNECTION_WARNING NSLocalizedString(@"We can't check whether this address has been used. Show anyway?", nil)
 #define BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION NSLocalizedString(@"2-step Verification", nil)
 #define BC_STRING_ENABLE NSLocalizedString(@"Enable", nil)
 #define BC_STRING_DISABLE NSLocalizedString(@"Disable", nil)
@@ -492,9 +494,6 @@
 
 #define BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER NSLocalizedString(@"What's this for?", nil)
 
-#define BC_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
-#define BC_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
-#define BC_STRING_BLOCKCHAIN_LUXEMBOURG_SA NSLocalizedString(@"Blockchain Luxembourg S.A.", nil)
 #define BC_STRING_BLOCKCHAIN_ALL_RIGHTS_RESERVED NSLocalizedString(@"All rights reserved.", nil)
 
 #define BC_STRING_APP_REVIEW_PROMPT_TITLE NSLocalizedString(@"Rate Blockchain Wallet", nil)
