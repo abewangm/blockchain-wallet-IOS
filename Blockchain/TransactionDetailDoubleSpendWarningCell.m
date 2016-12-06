@@ -29,8 +29,9 @@
         return;
     }
     
-    self.warningLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320 - 40 - 32, 40)];
+    self.warningLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320 - 40 - 54, 40)];
     [self.contentView addSubview:self.warningLabel];
+    self.warningLabel.font = [UIFont systemFontOfSize:14];
     self.warningLabel.adjustsFontSizeToFitWidth = YES;
     self.warningLabel.center = CGPointMake(self.contentView.center.x + 14, self.contentView.center.y);
     self.warningLabel.textAlignment = NSTextAlignmentCenter;
