@@ -12,17 +12,22 @@
 #import "Blockchain-Swift.h"
 #import "Invitation.h"
 #import "BCQRCodeView.h"
+#import "NSString+NSString_EscapeQuotes.h"
 
 const int sectionInvitations = 0;
 const int sectionContacts = 1;
 
-@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *contacts;
 @property (nonatomic) NSArray *invitations;
+
+@property (nonatomic) AVCaptureSession *captureSession;
+@property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
+
 @end
 
 @implementation ContactsViewController
@@ -102,7 +107,7 @@ const int sectionContacts = 1;
     UIAlertController *createContactOptionsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
     [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_SCAN_QR_CODE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self scanQRCode];
+        [self startReadingQRCode];
     }]];
     [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_ENTER_NAME_AND_ID style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self enterNameAndID];
@@ -111,7 +116,90 @@ const int sectionContacts = 1;
     [self presentViewController:createContactOptionsAlert animated:YES completion:nil];
 }
 
-- (void)scanQRCode
+- (BOOL)startReadingQRCode
+{
+    AVCaptureDeviceInput *input = [app getCaptureDeviceInput];
+    
+    if (!input) {
+        return NO;
+    }
+    
+    self.captureSession = [[AVCaptureSession alloc] init];
+    [self.captureSession addInput:input];
+    
+    AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
+    [self.captureSession addOutput:captureMetadataOutput];
+    
+    dispatch_queue_t dispatchQueue;
+    dispatchQueue = dispatch_queue_create("myQueue", NULL);
+    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
+    [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]];
+    
+    self.videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+    [self.videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT);
+    
+    [self.videoPreviewLayer setFrame:frame];
+    
+    UIView *view = [[UIView alloc] initWithFrame:frame];
+    [view.layer addSublayer:self.videoPreviewLayer];
+    
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_SCAN_QR_CODE view:view];
+
+    [self presentViewController:modalViewController animated:YES completion:nil];
+    
+    [self.captureSession startRunning];
+    
+    return YES;
+}
+
+- (void)stopReadingQRCode
+{
+    [self.captureSession stopRunning];
+    self.captureSession = nil;
+    
+    [self.videoPreviewLayer removeFromSuperlayer];
+    
+    [app closeModalWithTransition:kCATransitionFade];
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
+{
+    if (metadataObjects != nil && [metadataObjects count] > 0) {
+        AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects firstObject];
+        
+        if ([[metadataObj type] isEqualToString:AVMetadataObjectTypeQRCode]) {
+            [self performSelectorOnMainThread:@selector(stopReadingQRCode) withObject:nil waitUntilDone:NO];
+            
+            // do something useful with results
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                NSString *invitation = [metadataObj stringValue];
+                [app.wallet readInvitation:invitation];
+            });
+        }
+    }
+}
+
+- (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier
+{
+    [self showInvitationAlert:invitation identifier:identifier];
+}
+
+- (void)showInvitationAlert:(NSDictionary *)invitation identifier:(NSString *)identifier
+{
+    NSString *name = [invitation objectForKey:DICTIONARY_KEY_NAME];
+    NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_SHOW_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [app.wallet acceptInvitation:identifier];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)didAcceptInvitation:(id)invitation
 {
     
 }
@@ -134,12 +222,10 @@ const int sectionContacts = 1;
 - (void)didCreateInvitation:(NSDictionary *)invitationDict
 {
     NSString *identifier = [invitationDict objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
-    NSDictionary *sharedInfo = [invitationDict objectForKey:DICTIONARY_KEY_NAME];
-    
-    Invitation *invitation = [[Invitation alloc] initWithIdentifier:identifier sharedInfo:sharedInfo];
+    NSString *sharedInfo = [invitationDict objectForKey:DICTIONARY_KEY_NAME];
     
     BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_CONTACT_SCAN_INSTRUCTIONS addAddressPrefix:NO];
-    qrCodeView.address = identifier;
+    qrCodeView.address = [NSString stringWithFormat:@"{name: \"%@\", invitationReceived: \"%@\"}", [sharedInfo escapeStringForJS], [identifier escapeStringForJS]];
     
     UIViewController *viewController = [UIViewController new];
     [viewController.view addSubview:qrCodeView];

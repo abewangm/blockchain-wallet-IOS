@@ -10,4 +10,6 @@
 
 @interface ContactsViewController : UIViewController
 - (void)didCreateInvitation:(NSDictionary *)invitationDict;
+- (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
+- (void)didAcceptInvitation:(NSDictionary *)invitation;
 @end

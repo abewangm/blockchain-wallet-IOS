@@ -317,7 +317,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_RUB @"RUB"
 
 #define DICTIONARY_KEY_INVITATION_RECEIVED @"invitationReceived"
-#define DICTIONARY_KEY_NAME @"name"
+#define DICTIONARY_KEY_ID @"id"
 
 #define DICTIONARY_KEY_TRANSACTION_FROM @"from"
 #define DICTIONARY_KEY_TRANSACTION_TO @"to"

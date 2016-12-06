@@ -634,6 +634,14 @@
         [weakSelf on_create_invitation_success:invitation];
     };
     
+    self.context[@"objc_on_read_invitation_success"] = ^(JSValue *invitation, NSString *identifier) {
+        [weakSelf on_read_invitation_success:[invitation toDictionary] identifier:identifier];
+    };
+    
+    self.context[@"objc_on_accept_invitation_success"] = ^(JSValue *invitation) {
+        [weakSelf on_accept_invitation_success:invitation];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -1889,6 +1897,16 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.createContact(\"%@\", \"%@\")", [name escapeStringForJS], [idString escapeStringForJS]]];
 }
 
+- (void)readInvitation:(NSString *)invitation
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readInvitation(%@)", invitation]];
+}
+
+- (void)acceptInvitation:(NSString *)invitation
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.acceptInvitation(\"%@\")", invitation]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -2997,6 +3015,26 @@
         [self.delegate didCreateInvitation:[invitation toDictionary]];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didCreateInvitation!", [delegate class]);
+    }
+}
+
+- (void)on_read_invitation_success:(NSDictionary *)invitation identifier:(NSString *)identifier
+{
+    DLog(@"on_read_invitation_success");
+    if ([self.delegate respondsToSelector:@selector(didReadInvitation:identifier:)]) {
+        [self.delegate didReadInvitation:invitation identifier:identifier];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didReadInvitation!", [delegate class]);
+    }
+}
+
+- (void)on_accept_invitation_success:(JSValue *)invitation
+{
+    DLog(@"on_accept_invitation_success");
+    if ([self.delegate respondsToSelector:@selector(didAcceptInvitation:)]) {
+        [self.delegate didAcceptInvitation:[invitation toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didAcceptInvitation!", [delegate class]);
     }
 }
 

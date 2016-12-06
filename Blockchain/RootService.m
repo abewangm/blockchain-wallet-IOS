@@ -1858,6 +1858,16 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didCreateInvitation:invitation];
 }
 
+- (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
+{
+    [self.contactsViewController didReadInvitation:invitation identifier:identifier];
+}
+
+- (void)didAcceptInvitation:(NSDictionary *)invitation
+{
+    [self.contactsViewController didAcceptInvitation:invitation];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

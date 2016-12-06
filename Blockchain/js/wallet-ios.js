@@ -1884,6 +1884,28 @@ MyWalletPhone.createContact = function(name, id) {
     MyWallet.wallet.contacts.createInvitation({name: name}, {id: id}).then(success).catch(function(e){console.log(e)});
 }
 
+MyWalletPhone.readInvitation = function(invitation) {
+    
+    var success = function(info) {
+        objc_on_read_invitation_success(invitation, info.id);
+    };
+    
+    MyWallet.wallet.contacts.readInvitation(invitation).then(success).catch(function(e){console.log(e)});
+}
+
+MyWalletPhone.acceptInvitation = function(invitation) {
+    
+    var success = function(invitation) {
+        objc_on_accept_invitation_success(invitation);
+    };
+        
+    MyWallet.wallet.contacts.acceptInvitation(invitation).then(success).catch(function(e){console.log(e)});
+}
+
+MyWalletPhone.parseInvitation = function(invitation) {
+    return invitation;
+}
+
 MyWalletPhone.changeNetwork = function(newNetwork) {
     console.log('Changing network to ');
     console.log(newNetwork);

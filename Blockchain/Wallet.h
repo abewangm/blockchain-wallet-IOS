@@ -102,6 +102,8 @@
 - (void)didChangeLocalCurrency;
 - (void)setupBackupTransferAll:(id)transferAllController;
 - (void)didCreateInvitation:(NSDictionary *)invitation;
+- (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
+- (void)didAcceptInvitation:(NSDictionary *)invitation;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
@@ -351,4 +353,6 @@
 
 // Metadata
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
+- (void)readInvitation:(NSString *)invitation;
+- (void)acceptInvitation:(NSString *)invitation;
 @end
