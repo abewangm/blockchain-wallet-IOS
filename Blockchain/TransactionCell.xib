@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2" id="XyX-vd-a7o">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iEg-Va-ZPW">
@@ -62,8 +62,8 @@
                             <action selector="btcbuttonclicked:" destination="2" eventType="touchUpInside" id="22"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SENT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vev-GY-VUP">
-                        <rect key="frame" x="8" y="21" width="172" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SENT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vev-GY-VUP">
+                        <rect key="frame" x="8" y="21" width="152" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" red="0.99302953481674194" green="0.67486470937728882" blue="0.68769031763076782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -77,6 +77,10 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="alert" id="34B-px-WE4">
+                        <rect key="frame" x="164" y="21" width="21" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,12 +90,14 @@
                 <outlet property="dateLabel" destination="tgB-FW-xJl" id="pKC-nO-06o"/>
                 <outlet property="pendingIcon" destination="DbU-Vz-XsT" id="RVS-uh-Qgn"/>
                 <outlet property="pendingText" destination="iEg-Va-ZPW" id="cWn-Ye-7hv"/>
+                <outlet property="warningImageView" destination="34B-px-WE4" id="47h-Su-rSh"/>
                 <outlet property="watchOnlyLabel" destination="P1g-Nr-dFe" id="oPI-NK-NKL"/>
             </connections>
             <point key="canvasLocation" x="561" y="369.5"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="alert" width="75" height="75"/>
         <image name="transaction_pending" width="11" height="11"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -33,6 +33,7 @@
     IBOutlet UILabel *pendingText;
     
     IBOutlet UILabel *actionLabel;    
+    IBOutlet UIImageView *warningImageView;
 }
 
 -(IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath;

@@ -101,7 +101,9 @@
         pendingIcon.frame = CGRectMake(pendingIcon.frame.origin.x, 14, pendingIcon.frame.size.width, pendingIcon.frame.size.height);
     }
     
-    self.backgroundColor = transaction.doubleSpend || self.transaction.replaceByFee ? COLOR_CELL_LIGHT_RED : [UIColor whiteColor];
+    warningImageView.image = [warningImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [warningImageView setTintColor:COLOR_WARNING_RED];
+    warningImageView.hidden = !transaction.doubleSpend && !transaction.replaceByFee;
     
     if (transaction.confirmations >= kConfirmationThreshold) {
         pendingText.hidden = YES;

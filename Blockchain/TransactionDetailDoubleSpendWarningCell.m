@@ -25,7 +25,7 @@
     if (self.isSetup) {
         self.warningLabel.text = BC_STRING_DOUBLE_SPEND_WARNING;
         self.warningImageView.hidden = NO;
-        self.backgroundColor = COLOR_CELL_LIGHT_RED;
+        self.backgroundColor = COLOR_WARNING_RED;
         return;
     }
     
@@ -39,11 +39,13 @@
     
     self.warningImageView = [UIImageView new];
     [self.contentView addSubview:self.warningImageView];
-    self.warningImageView.image = [UIImage imageNamed:@"warning"];
+    self.warningImageView.image = [UIImage imageNamed:@"alert"];
+    self.warningImageView.image = [self.warningImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.warningImageView setTintColor:[UIColor whiteColor]];
     self.warningImageView.frame = CGRectMake(0, 0, 20, 20);
     self.warningImageView.center = self.warningLabel.center;
     self.warningImageView.frame = CGRectMake(self.warningLabel.frame.origin.x - self.warningImageView.frame.size.width - 8, self.warningImageView.frame.origin.y, self.warningImageView.frame.size.width, self.warningImageView.frame.size.height);
-    self.backgroundColor = COLOR_CELL_LIGHT_RED;
+    self.backgroundColor = COLOR_WARNING_RED;
     self.isSetup = YES;
 }
 
