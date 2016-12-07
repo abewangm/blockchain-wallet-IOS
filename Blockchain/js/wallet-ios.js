@@ -1871,8 +1871,14 @@ MyWalletPhone.getECDSA = function() {
 }
 
 MyWalletPhone.loadContacts = function() {
-    console.log('loading contacts');
+    console.log('Loading contacts');
     MyWallet.wallet.loadContacts();
+}
+
+MyWalletPhone.getContacts = function() {
+    console.log('Getting contacts');
+    console.log(JSON.stringify(MyWallet.wallet.contacts.list));
+    return MyWallet.wallet.contacts.list;
 }
 
 MyWalletPhone.createContact = function(name, id) {
@@ -1881,7 +1887,7 @@ MyWalletPhone.createContact = function(name, id) {
         objc_on_create_invitation_success(invitation);
     };
     
-    MyWallet.wallet.contacts.createInvitation({name: name}, {id: id}).then(success).catch(function(e){console.log(e)});
+    MyWallet.wallet.contacts.createInvitation({name: name}, {id: id}).then(success).catch(function(e){console.log('Error creating contact');console.log(e)});
 }
 
 MyWalletPhone.readInvitation = function(invitation) {
@@ -1890,16 +1896,16 @@ MyWalletPhone.readInvitation = function(invitation) {
         objc_on_read_invitation_success(invitation, info.id);
     };
     
-    MyWallet.wallet.contacts.readInvitation(invitation).then(success).catch(function(e){console.log(e)});
+    MyWallet.wallet.contacts.readInvitation(invitation).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
 }
 
-MyWalletPhone.acceptInvitation = function(invitation) {
+MyWalletPhone.acceptInvitation = function(invitation, name, identifier) {
     
     var success = function(invitation) {
-        objc_on_accept_invitation_success(invitation);
+        objc_on_accept_invitation_success(invitation, name, identifier);
     };
         
-    MyWallet.wallet.contacts.acceptInvitation(invitation).then(success).catch(function(e){console.log(e)});
+    MyWallet.wallet.contacts.acceptInvitation(invitation).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
 }
 
 MyWalletPhone.parseInvitation = function(invitation) {

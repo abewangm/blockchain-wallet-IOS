@@ -14,8 +14,9 @@
 #import "BCQRCodeView.h"
 #import "NSString+NSString_EscapeQuotes.h"
 
-const int sectionInvitations = 0;
-const int sectionContacts = 1;
+const int sectionContacts = 0;
+const int sectionSentInvitations = 1;
+const int sectionReceivedInvitations = 2;
 
 @interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate>
 
@@ -36,6 +37,7 @@ const int sectionContacts = 1;
 {
     [super viewDidLoad];
     
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
@@ -45,16 +47,26 @@ const int sectionContacts = 1;
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_INVITATION];
+    
+    [self reload];
+}
+
+- (void)reload
+{
+    self.contacts = [[app.wallet getContacts] allValues];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == sectionInvitations) {
+    if (section == sectionSentInvitations) {
+        return self.invitations.count;
+    } else if (section == sectionReceivedInvitations) {
         return self.invitations.count;
     } else if (section == sectionContacts) {
         return self.contacts.count;
@@ -66,7 +78,13 @@ const int sectionContacts = 1;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT forIndexPath:indexPath];
-    cell.textLabel.text = @"";
+    
+    NSDictionary *contact = self.contacts[indexPath.row];
+    
+    NSString *identifier = [contact objectForKey:DICTIONARY_KEY_ID];
+    NSString *name = [contact objectForKey:DICTIONARY_KEY_NAME];
+
+    cell.textLabel.text = name ? name : identifier;
     cell.backgroundColor = COLOR_BACKGROUND_GRAY;
     return cell;
 }
@@ -90,11 +108,15 @@ const int sectionContacts = 1;
     NSString *labelString;
     
     if (section == 0) {
-        labelString = nil;
+        labelString = BC_STRING_CONTACTS;
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
         [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
         [addButton addTarget:self action:@selector(newContactClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
+    } else if (section == sectionSentInvitations) {
+        labelString = BC_STRING_SENT_INVITATIONS;
+    } else if (section == sectionReceivedInvitations) {
+        labelString = BC_STRING_RECEIVED_INVITATIONS;
     }
     
     label.text = [labelString uppercaseString];
@@ -193,15 +215,22 @@ const int sectionContacts = 1;
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_SHOW_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [app.wallet acceptInvitation:identifier];
+        [app.wallet acceptInvitation:identifier name:name identifier:invitationID];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)didAcceptInvitation:(id)invitation
+- (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name
 {
+    NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_ID];
     
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    [self reload];
 }
 
 - (void)enterNameAndID

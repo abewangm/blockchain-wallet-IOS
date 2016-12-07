@@ -638,8 +638,8 @@
         [weakSelf on_read_invitation_success:[invitation toDictionary] identifier:identifier];
     };
     
-    self.context[@"objc_on_accept_invitation_success"] = ^(JSValue *invitation) {
-        [weakSelf on_accept_invitation_success:invitation];
+    self.context[@"objc_on_accept_invitation_success"] = ^(JSValue *invitation, NSString *name) {
+        [weakSelf on_accept_invitation_success:invitation name:name];
     };
     
     [self.context evaluateScript:jsSource];
@@ -1891,6 +1891,11 @@
 {
     [self.context evaluateScript:@"MyWalletPhone.loadContacts()"];
 }
+
+- (NSDictionary *)getContacts
+{
+    return [[self.context evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary];
+}
     
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString
 {
@@ -1899,12 +1904,12 @@
 
 - (void)readInvitation:(NSString *)invitation
 {
+    // Do not use escape string here - already escaped in ContactsViewController.
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readInvitation(%@)", invitation]];
 }
 
-- (void)acceptInvitation:(NSString *)invitation
-{
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.acceptInvitation(\"%@\")", invitation]];
+- (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.acceptInvitation(\"%@\", \"%@\", \"%@\")", [invitation escapeStringForJS], [name escapeStringForJS], [identifier escapeStringForJS]]];
 }
 
 # pragma mark - Transaction handlers
@@ -3028,11 +3033,11 @@
     }
 }
 
-- (void)on_accept_invitation_success:(JSValue *)invitation
+- (void)on_accept_invitation_success:(JSValue *)invitation name:(NSString *)name
 {
     DLog(@"on_accept_invitation_success");
-    if ([self.delegate respondsToSelector:@selector(didAcceptInvitation:)]) {
-        [self.delegate didAcceptInvitation:[invitation toDictionary]];
+    if ([self.delegate respondsToSelector:@selector(didAcceptInvitation:name:)]) {
+        [self.delegate didAcceptInvitation:[invitation toDictionary] name:name];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didAcceptInvitation!", [delegate class]);
     }

@@ -103,7 +103,7 @@
 - (void)setupBackupTransferAll:(id)transferAllController;
 - (void)didCreateInvitation:(NSDictionary *)invitation;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
-- (void)didAcceptInvitation:(NSDictionary *)invitation;
+- (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
@@ -351,8 +351,9 @@
 
 - (JSValue *)executeJSSynchronous:(NSString *)command;
 
-// Metadata
+// Contacts
+- (NSDictionary *)getContacts;
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
-- (void)acceptInvitation:(NSString *)invitation;
+- (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
 @end
