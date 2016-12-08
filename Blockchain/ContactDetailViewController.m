@@ -83,6 +83,7 @@ const int rowSendMessage = 3;
     } else if (indexPath.row == rowSendMessage) {
         cell.textLabel.text = BC_STRING_SEND_MESSAGE;
         cell.accessoryView = nil;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
         
     }
@@ -99,6 +100,14 @@ const int rowSendMessage = 3;
             [app.wallet fetchExtendedPublicKey:self.contact.identifier];
         } else {
             [self showExtendedPublicKey];
+        }
+    } else if (indexPath.row == rowSendMessage) {
+        if (!self.contact.trusted) {
+            UIAlertController *alertForRequiredTrust = [UIAlertController alertControllerWithTitle:BC_STRING_MUST_TRUST_USER_BEFORE_SENDING_MESSAGE_TITLE message:BC_STRING_MUST_TRUST_USER_BEFORE_SENDING_MESSAGE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+            [alertForRequiredTrust addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alertForRequiredTrust animated:YES completion:nil];
+        } else {
+            
         }
     }
 }
