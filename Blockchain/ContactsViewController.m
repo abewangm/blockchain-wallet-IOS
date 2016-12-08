@@ -282,7 +282,13 @@ const int sectionContacts = 0;
 
 - (void)didChangeTrust:(BOOL)result
 {
-    [self.detailViewController didChangeTrust:result];
+    [self reload];
+    
+    NSString *contactIdentifier = self.detailViewController.contact.identifier;
+    
+    Contact *reloadedContact = [[Contact alloc] initWithDictionary:[[app.wallet getContacts] objectForKey:contactIdentifier]];
+    
+    self.detailViewController.contact = reloadedContact;
 }
 
 @end

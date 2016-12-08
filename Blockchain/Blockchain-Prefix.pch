@@ -320,7 +320,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_ID @"id"
 #define DICTIONARY_KEY_COMPANY @"company"
 #define DICTIONARY_KEY_EMAIL @"email"
-#define DICTIONARY_KEY_IDENTIFIER @"identifier"
 #define DICTIONARY_KEY_INVITATION_RECEIVED @"invitationReceived"
 #define DICTIONARY_KEY_INVITATION_SENT @"invitationSent"
 #define DICTIONARY_KEY_MDID @"mdid"

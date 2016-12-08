@@ -1911,7 +1911,7 @@ MyWalletPhone.acceptInvitation = function(invitation, name, identifier) {
 MyWalletPhone.addTrust = function(contactIdentifier) {
     
     var success = function(invitation) {
-        objc_on_add_trust(invitation);
+        objc_on_add_trust_success(invitation);
     };
     
     MyWallet.wallet.contacts.addTrusted(contactIdentifier).then(success).catch(function(e){console.log('Error adding trust');console.log(e)});
@@ -1920,7 +1920,7 @@ MyWalletPhone.addTrust = function(contactIdentifier) {
 MyWalletPhone.deleteTrust = function(contactIdentifier) {
     
     var success = function(invitation) {
-        objc_on_delete_trust(invitation);
+        objc_on_delete_trust_success(invitation);
     };
     
     MyWallet.wallet.contacts.deleteTrusted(contactIdentifier).then(success).catch(function(e){console.log('Error deleting trust');console.log(e)});

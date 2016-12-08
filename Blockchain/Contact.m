@@ -15,7 +15,7 @@
     if (self = [super init]) {
         _company = [dictionary objectForKey:DICTIONARY_KEY_COMPANY];
         _email = [dictionary objectForKey:DICTIONARY_KEY_EMAIL];
-        _identifier = [dictionary objectForKey:DICTIONARY_KEY_IDENTIFIER];
+        _identifier = [dictionary objectForKey:DICTIONARY_KEY_ID];
         _invitationReceived = [dictionary objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
         _invitationSent = [dictionary objectForKey:DICTIONARY_KEY_INVITATION_SENT];
         _mdid = [dictionary objectForKey:DICTIONARY_KEY_MDID];

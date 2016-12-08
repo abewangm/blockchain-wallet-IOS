@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 @class Contact;
 @interface ContactDetailViewController : UIViewController
+@property (nonatomic) Contact *contact;
 - (id)initWithContact:(Contact *)contact;
-- (void)didChangeTrust:(BOOL)result;
 @end

@@ -16,7 +16,6 @@ const int rowTrust = 2;
 const int rowSendMessage = 3;
 
 @interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic) Contact *contact;
 @property (nonatomic) UITableView *tableView;
 @end
 
@@ -25,7 +24,7 @@ const int rowSendMessage = 3;
 - (id)initWithContact:(Contact *)contact
 {
     if (self = [super init]) {
-        self.contact = contact;
+        _contact = contact;
     }
     return self;
 }
@@ -40,6 +39,13 @@ const int rowSendMessage = 3;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT_DETAIL];
+    
+    [self.tableView reloadData];
+}
+
+- (void)setContact:(Contact *)contact
+{
+    _contact = contact;
     
     [self.tableView reloadData];
 }
@@ -99,13 +105,11 @@ const int rowSendMessage = 3;
     [alertForTogglingTrust addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         trusted ? [app.wallet deleteTrust:self.contact.identifier] : [app.wallet addTrust:self.contact.identifier];
     }]];
-    [alertForTogglingTrust addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-}
-
-- (void)didChangeTrust:(BOOL)result
-{
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowTrust inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [alertForTogglingTrust addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowTrust inSection:0];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }]];
+    [self presentViewController:alertForTogglingTrust animated:YES completion:nil];
 }
 
 @end
