@@ -12,5 +12,8 @@
 - (void)didCreateInvitation:(NSDictionary *)invitationDict;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name;
-- (void)didChangeTrust:(BOOL)result;
+
+// Detail Controller
+- (void)didChangeTrust;
+- (void)didFetchExtendedPublicKey;
 @end

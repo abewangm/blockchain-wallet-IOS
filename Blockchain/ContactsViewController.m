@@ -280,7 +280,7 @@ const int sectionContacts = 0;
     [self.createContactNavigationController pushViewController:viewController animated:YES];
 }
 
-- (void)didChangeTrust:(BOOL)result
+- (void)updateContactDetail
 {
     [self reload];
     
@@ -289,6 +289,17 @@ const int sectionContacts = 0;
     Contact *reloadedContact = [[Contact alloc] initWithDictionary:[[app.wallet getContacts] objectForKey:contactIdentifier]];
     
     self.detailViewController.contact = reloadedContact;
+}
+
+- (void)didChangeTrust
+{
+    [self updateContactDetail];
+}
+
+- (void)didFetchExtendedPublicKey
+{
+    [self updateContactDetail];
+    [self.detailViewController showExtendedPublicKey];
 }
 
 @end

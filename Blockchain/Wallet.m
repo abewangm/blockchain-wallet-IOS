@@ -650,6 +650,10 @@
         [weakSelf on_delete_trust_success:result];
     };
     
+    self.context[@"objc_on_fetch_xpub_success"] = ^(NSString *xpub) {
+        [weakSelf on_fetch_xpub_success:xpub];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -1930,6 +1934,11 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteTrust(\"%@\")",[contactIdentifier escapeStringForJS]]];
 }
 
+- (void)fetchExtendedPublicKey:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.fetchExtendedPublicKey(\"%@\")",[contactIdentifier escapeStringForJS]]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -3064,8 +3073,8 @@
 - (void)on_add_trust_success:(JSValue *)result
 {
     DLog(@"on_add_trust_success");
-    if ([self.delegate respondsToSelector:@selector(didChangeTrust:)]) {
-        [self.delegate didChangeTrust:[result toBool]];
+    if ([self.delegate respondsToSelector:@selector(didChangeTrust)]) {
+        [self.delegate didChangeTrust];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didChangeTrust!", [delegate class]);
     }
@@ -3074,10 +3083,20 @@
 - (void)on_delete_trust_success:(JSValue *)result
 {
     DLog(@"on_delete_trust_success");
-    if ([self.delegate respondsToSelector:@selector(didChangeTrust:)]) {
-        [self.delegate didChangeTrust:[result toBool]];
+    if ([self.delegate respondsToSelector:@selector(didChangeTrust)]) {
+        [self.delegate didChangeTrust];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didChangeTrust!", [delegate class]);
+    }
+}
+
+- (void)on_fetch_xpub_success:(NSString *)xpub
+{
+    DLog(@"on_fetch_xpub_success");
+    if ([self.delegate respondsToSelector:@selector(didFetchExtendedPublicKey)]) {
+        [self.delegate didFetchExtendedPublicKey];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFetchExtendedPublicKey!", [delegate class]);
     }
 }
 

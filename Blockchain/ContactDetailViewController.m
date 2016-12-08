@@ -9,6 +9,7 @@
 #import "ContactDetailViewController.h"
 #import "Contact.h"
 #import "BCNavigationController.h"
+#import "BCQRCodeView.h"
 
 const int rowName = 0;
 const int rowExtendedPublicKey = 1;
@@ -92,6 +93,34 @@ const int rowSendMessage = 3;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == rowExtendedPublicKey) {
+        if (!self.contact.xpub) {
+            [app.wallet fetchExtendedPublicKey:self.contact.identifier];
+        } else {
+            [self showExtendedPublicKey];
+        }
+    }
+}
+
+- (void)showExtendedPublicKey
+{
+    BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:nil addAddressPrefix:NO];
+    qrCodeView.address = self.contact.xpub;
+    
+    UIViewController *viewController = [UIViewController new];
+    [viewController.view addSubview:qrCodeView];
+    
+    CGRect frame = qrCodeView.frame;
+    frame.origin.y = viewController.view.frame.origin.y + DEFAULT_HEADER_HEIGHT;
+    qrCodeView.frame = frame;
+
+    qrCodeView.qrCodeFooterLabel.text = BC_STRING_COPY_XPUB;
+
+    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    navigationController.headerLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
+    
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)toggleTrust

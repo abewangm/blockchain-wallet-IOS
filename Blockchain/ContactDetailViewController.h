@@ -11,4 +11,5 @@
 @interface ContactDetailViewController : UIViewController
 @property (nonatomic) Contact *contact;
 - (id)initWithContact:(Contact *)contact;
+- (void)showExtendedPublicKey;
 @end

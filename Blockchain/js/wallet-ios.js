@@ -1926,6 +1926,15 @@ MyWalletPhone.deleteTrust = function(contactIdentifier) {
     MyWallet.wallet.contacts.deleteTrusted(contactIdentifier).then(success).catch(function(e){console.log('Error deleting trust');console.log(e)});
 }
 
+MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
+    
+    var success = function(xpub) {
+        objc_on_fetch_xpub_success(xpub);
+    };
+    
+    MyWallet.wallet.contacts.fetchXPUB(contactIdentifier).then(success).catch(function(e){console.log('Error fetching xpub');console.log(e)});
+}
+
 
 MyWalletPhone.changeNetwork = function(newNetwork) {
     console.log('Changing network to ');
