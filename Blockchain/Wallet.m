@@ -642,6 +642,14 @@
         [weakSelf on_accept_invitation_success:invitation name:name];
     };
     
+    self.context[@"objc_on_add_trust_success"] = ^(JSValue *result) {
+        [weakSelf on_add_trust_success:result];
+    };
+    
+    self.context[@"objc_on_delete_trust_success"] = ^(JSValue *result) {
+        [weakSelf on_delete_trust_success:result];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -1912,6 +1920,16 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.acceptInvitation(\"%@\", \"%@\", \"%@\")", [invitation escapeStringForJS], [name escapeStringForJS], [identifier escapeStringForJS]]];
 }
 
+- (void)addTrust:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addTrust(\"%@\")",[contactIdentifier escapeStringForJS]]];
+}
+
+- (void)deleteTrust:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteTrust(\"%@\")",[contactIdentifier escapeStringForJS]]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -3040,6 +3058,26 @@
         [self.delegate didAcceptInvitation:[invitation toDictionary] name:name];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didAcceptInvitation!", [delegate class]);
+    }
+}
+
+- (void)on_add_trust_success:(JSValue *)result
+{
+    DLog(@"on_add_trust_success");
+    if ([self.delegate respondsToSelector:@selector(didChangeTrust:)]) {
+        [self.delegate didChangeTrust:[result toBool]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didChangeTrust!", [delegate class]);
+    }
+}
+
+- (void)on_delete_trust_success:(JSValue *)result
+{
+    DLog(@"on_delete_trust_success");
+    if ([self.delegate respondsToSelector:@selector(didChangeTrust:)]) {
+        [self.delegate didChangeTrust:[result toBool]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didChangeTrust!", [delegate class]);
     }
 }
 

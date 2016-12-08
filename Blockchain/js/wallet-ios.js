@@ -1908,9 +1908,24 @@ MyWalletPhone.acceptInvitation = function(invitation, name, identifier) {
     MyWallet.wallet.contacts.acceptInvitation(invitation).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
 }
 
-MyWalletPhone.parseInvitation = function(invitation) {
-    return invitation;
+MyWalletPhone.addTrust = function(contactIdentifier) {
+    
+    var success = function(invitation) {
+        objc_on_add_trust(invitation);
+    };
+    
+    MyWallet.wallet.contacts.addTrusted(contactIdentifier).then(success).catch(function(e){console.log('Error adding trust');console.log(e)});
 }
+
+MyWalletPhone.deleteTrust = function(contactIdentifier) {
+    
+    var success = function(invitation) {
+        objc_on_delete_trust(invitation);
+    };
+    
+    MyWallet.wallet.contacts.deleteTrusted(contactIdentifier).then(success).catch(function(e){console.log('Error deleting trust');console.log(e)});
+}
+
 
 MyWalletPhone.changeNetwork = function(newNetwork) {
     console.log('Changing network to ');

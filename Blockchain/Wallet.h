@@ -104,6 +104,7 @@
 - (void)didCreateInvitation:(NSDictionary *)invitation;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name;
+- (void)didChangeTrust:(BOOL)result;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
@@ -356,4 +357,6 @@
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
 - (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
+- (void)addTrust:(NSString *)contactIdentifier;
+- (void)deleteTrust:(NSString *)contactIdentifier;
 @end

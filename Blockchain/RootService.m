@@ -1870,6 +1870,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didAcceptInvitation:invitation name:name];
 }
 
+- (void)didChangeTrust:(BOOL)result
+{
+    [self.contactsViewController didChangeTrust:result];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

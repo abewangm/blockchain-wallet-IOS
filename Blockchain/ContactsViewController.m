@@ -13,18 +13,17 @@
 #import "Invitation.h"
 #import "BCQRCodeView.h"
 #import "NSString+NSString_EscapeQuotes.h"
+#import "Contact.h"
+#import "ContactDetailViewController.h"
 
 const int sectionContacts = 0;
-const int sectionSentInvitations = 1;
-const int sectionReceivedInvitations = 2;
 
 @interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
-
+@property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *contacts;
-@property (nonatomic) NSArray *invitations;
 
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
@@ -36,7 +35,6 @@ const int sectionReceivedInvitations = 2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -51,42 +49,56 @@ const int sectionReceivedInvitations = 2;
     [self reload];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = BC_STRING_CONTACTS;
+}
+
 - (void)reload
 {
-    self.contacts = [[app.wallet getContacts] allValues];
+    self.contacts = [self getContacts];
     [self.tableView reloadData];
+}
+
+- (NSArray *)getContacts
+{
+    NSArray *contactsArray = [[app.wallet getContacts] allValues];
+    NSMutableArray *contacts = [NSMutableArray new];
+    for (NSDictionary *contactDict in contactsArray) {
+        Contact *contact = [[Contact alloc] initWithDictionary:contactDict];
+        [contacts addObject:contact];
+    }
+    return contacts;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == sectionSentInvitations) {
-        return self.invitations.count;
-    } else if (section == sectionReceivedInvitations) {
-        return self.invitations.count;
-    } else if (section == sectionContacts) {
-        return self.contacts.count;
-    }
-    
-    return 0;
+    return self.contacts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT forIndexPath:indexPath];
     
-    NSDictionary *contact = self.contacts[indexPath.row];
-    
-    NSString *identifier = [contact objectForKey:DICTIONARY_KEY_ID];
-    NSString *name = [contact objectForKey:DICTIONARY_KEY_NAME];
-
-    cell.textLabel.text = name ? name : identifier;
+    Contact *contact = self.contacts[indexPath.row];
+    cell.textLabel.text = contact.name ? contact.name : contact.identifier;
     cell.backgroundColor = COLOR_BACKGROUND_GRAY;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    Contact *contact = self.contacts[indexPath.row];
+    [self contactClicked:contact];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -113,15 +125,17 @@ const int sectionReceivedInvitations = 2;
         [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
         [addButton addTarget:self action:@selector(newContactClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
-    } else if (section == sectionSentInvitations) {
-        labelString = BC_STRING_SENT_INVITATIONS;
-    } else if (section == sectionReceivedInvitations) {
-        labelString = BC_STRING_RECEIVED_INVITATIONS;
     }
     
     label.text = [labelString uppercaseString];
     
     return view;
+}
+
+- (void)contactClicked:(Contact *)contact
+{
+    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
+    [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
 - (void)newContactClicked:(id)sender
@@ -264,6 +278,11 @@ const int sectionReceivedInvitations = 2;
     qrCodeView.frame = frame;
     
     [self.createContactNavigationController pushViewController:viewController animated:YES];
+}
+
+- (void)didChangeTrust:(BOOL)result
+{
+    [self.detailViewController didChangeTrust:result];
 }
 
 @end

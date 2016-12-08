@@ -154,6 +154,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define CELL_IDENTIFIER_CONTACT @"contact"
 #define CELL_IDENTIFIER_INVITATION @"invitation"
+#define CELL_IDENTIFIER_CONTACT_DETAIL @"contactDetail"
 
 #define LOCALE_IDENTIFIER_EN_US @"en_US"
 #define LOCALE_IDENTIFIER_AR @"ar"
@@ -316,8 +317,18 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_BRL @"BRL"
 #define CURRENCY_CODE_RUB @"RUB"
 
-#define DICTIONARY_KEY_INVITATION_RECEIVED @"invitationReceived"
 #define DICTIONARY_KEY_ID @"id"
+#define DICTIONARY_KEY_COMPANY @"company"
+#define DICTIONARY_KEY_EMAIL @"email"
+#define DICTIONARY_KEY_IDENTIFIER @"identifier"
+#define DICTIONARY_KEY_INVITATION_RECEIVED @"invitationReceived"
+#define DICTIONARY_KEY_INVITATION_SENT @"invitationSent"
+#define DICTIONARY_KEY_MDID @"mdid"
+#define DICTIONARY_KEY_NOTE @"note"
+#define DICTIONARY_KEY_PUBKEY @"pubKey"
+#define DICTIONARY_KEY_SURNAME @"surname"
+#define DICTIONARY_KEY_TRUSTED @"trusted"
+#define DICTIONARY_KEY_XPUB @"xpub"
 
 #define DICTIONARY_KEY_TRANSACTION_FROM @"from"
 #define DICTIONARY_KEY_TRANSACTION_TO @"to"

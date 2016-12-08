@@ -64,6 +64,8 @@
 		2357BA411D53979600BE0BFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2357BA431D53979600BE0BFD /* InfoPlist.strings */; };
 		235BD5661C58216000969B31 /* BCModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235BD5651C58216000969B31 /* BCModalViewController.m */; };
 		236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */; };
+		237356B61DF894CF003940A7 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 237356B51DF894CF003940A7 /* Contact.m */; };
+		237356B91DF8B4EE003940A7 /* ContactDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237356B81DF8B4EE003940A7 /* ContactDetailViewController.m */; };
 		237451C91D624C1C00CF7049 /* RootService.m in Sources */ = {isa = PBXBuildFile; fileRef = 237451C81D624C1C00CF7049 /* RootService.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */; };
@@ -529,6 +531,10 @@
 		236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceIdentifier.m; sourceTree = "<group>"; };
 		2371DEAC1C6A8898000DC8AF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
 		2371DEAF1C6A8AF3000DC8AF /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/AccountsAndAddresses.strings"; sourceTree = "<group>"; };
+		237356B41DF894CF003940A7 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		237356B51DF894CF003940A7 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		237356B71DF8B4EE003940A7 /* ContactDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailViewController.h; sourceTree = "<group>"; };
+		237356B81DF8B4EE003940A7 /* ContactDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailViewController.m; sourceTree = "<group>"; };
 		237451C71D624C1C00CF7049 /* RootService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootService.h; sourceTree = "<group>"; };
 		237451C81D624C1C00CF7049 /* RootService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootService.m; sourceTree = "<group>"; };
 		2374BFA41B750D6E00A53FBE /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Backup.strings; sourceTree = "<group>"; };
@@ -1327,6 +1333,8 @@
 		9F765F3A14BC7C3100048EFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				237356B41DF894CF003940A7 /* Contact.h */,
+				237356B51DF894CF003940A7 /* Contact.m */,
 				23256A571DF1CFF7002B7A04 /* Invitation.h */,
 				23256A581DF1CFF7002B7A04 /* Invitation.m */,
 				23964C011DCA3F19001323BE /* KeyPair.h */,
@@ -1447,6 +1455,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				237356B71DF8B4EE003940A7 /* ContactDetailViewController.h */,
+				237356B81DF8B4EE003940A7 /* ContactDetailViewController.m */,
 				23964BFE1DC93882001323BE /* ContactsViewController.h */,
 				23964BFF1DC93882001323BE /* ContactsViewController.m */,
 				23444FA61DD1177E00573C8C /* SettingsAboutUsViewController.h */,
@@ -1944,6 +1954,7 @@
 				2322DCC31D771831000E5AC1 /* NSRunLoop+SRWebSocket.m in Sources */,
 				84B601C7197ACD6300DA1829 /* UITextField+Blocks.m in Sources */,
 				9F765F4714BC8AEF00048EFB /* MultiAddressResponse.m in Sources */,
+				237356B61DF894CF003940A7 /* Contact.m in Sources */,
 				FA6323391A433B1C00EB3974 /* Foundation-Utility.m in Sources */,
 				239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */,
 				23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */,
@@ -1983,6 +1994,7 @@
 				67EE1DCC19E3325900DBBFC9 /* ECSlidingInteractiveTransition.m in Sources */,
 				6775569919E752A00054699B /* BCWebViewController.m in Sources */,
 				67EE1DCD19E3325900DBBFC9 /* ECSlidingSegue.m in Sources */,
+				237356B91DF8B4EE003940A7 /* ContactDetailViewController.m in Sources */,
 				231FF2CD1B56F9F1009EEB02 /* SettingsWebViewController.m in Sources */,
 				2322DCC61D771831000E5AC1 /* SRSecurityPolicy.m in Sources */,
 				9F61B89E151519EF0083C57A /* BCAddressSelectionView.m in Sources */,
