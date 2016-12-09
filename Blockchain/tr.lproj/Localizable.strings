@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Alındığı Zamanki Değer: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Tüm Parayı Transfer Et";
+
+/* (No Commment) */
+"Transfer all" = "Tümünü transfer et";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Alınan adresleri transfer et?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Alınan adresler Kurtarma İfadesiyle yedeklenmemiştir. Buradaki parayı güvenli tutmak için bu bakiyeleri de yedeklemenize almanızı tavsiye ederiz.";

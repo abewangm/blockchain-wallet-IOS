@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Hodnota při příjmu: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Převést všechny prostředky";
+
+/* (No Commment) */
+"Transfer all" = "Převést vše";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Převést importované adresy?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importované adresy nejsou zálohovány frází pro obnovení. Pokud chcete tyto prostředky zabezpečit, doporučujeme zahrnout tyto zůstatky do zálohy.";

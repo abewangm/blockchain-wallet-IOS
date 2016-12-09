@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Wartość przy odbiorze: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Dokonaj przelewu wszystkich środków";
+
+/* (No Commment) */
+"Transfer all" = "Dokonaj przelewu wszystkich";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Przenieść importowane adresy?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importowane adresy nie są zapisywane w celu ich odzysku. Aby zabezpieczyć te środki, zalecamy dokonanie przelewu tych sald, aby zostały one zapisane.";

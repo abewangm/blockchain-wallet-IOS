@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Giá trị khi nhận được: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Chuyển Toàn bộ Các khoản tiền";
+
+/* (No Commment) */
+"Transfer all" = "Chuyển Toàn bộ";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Chuyển các địa chỉ đã nhập?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Các địa chỉ đã nhập không được sao lưu bằng Nhóm từ Khôi phục của bạn. Nhằm đảm bảo an toàn cho các khoản tiền này, chúng tôi khuyến nghị bạn chuyển những số dư này vào bản sao lưu của mình.";

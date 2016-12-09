@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "받았을 때 가치: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "모든 자금 이체";
+
+/* (No Commment) */
+"Transfer all" = "모두 이체";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "가져온 주소들을 이관합니까?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "가져온 주소들은 귀하 복구 구절로 백업 되지 않았습니다. 이 자금들을 확보하려면 잔액들을 이관해서 귀하 백업에 포함하도록 하십시오.";

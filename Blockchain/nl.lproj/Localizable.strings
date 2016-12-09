@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Waarde bij ontvangst: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Alle fondsen overbrengen";
+
+/* (No Commment) */
+"Transfer all" = "Alles overbrengen";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Geïmporteerde adressen overbrengen?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Geïmporteerde adressen worden niet ondersteund door uw Herstelregel. Om deze fondsen zeker te stellen raden wij u aan om deze saldo's op te nemen in uw back-up.";

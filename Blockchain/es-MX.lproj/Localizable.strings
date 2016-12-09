@@ -1538,3 +1538,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Valor al momento de la recepción: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Transferir todos los fondos";
+
+/* (No Commment) */
+"Transfer all" = "Transferir todo";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "¿Transferir las direcciones importadas?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Las direcciones importadas no están respaldadas por su Frase de Recuperación. Para asegurar estos fondos, recomendamos transferir estos saldos para incluirlos en su copia de seguridad.";

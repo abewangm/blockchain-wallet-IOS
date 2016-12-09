@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "受信時の金額: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "全資金を送金";
+
+/* (No Commment) */
+"Transfer all" = "全て送金";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "インポートしたアドレスを移行しますか？";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "インポートしたアドレスはリカバリーフレーズでバックアップされていません。資金の安全性を確保するにはバックアップにこれらの残高の送金を含めることが推奨されています。";

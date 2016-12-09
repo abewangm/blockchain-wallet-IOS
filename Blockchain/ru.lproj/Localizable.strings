@@ -1541,3 +1541,15 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Сумма при получении: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Перевести все средства";
+
+/* (No Commment) */
+"Transfer all" = "Перевести все";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Перевести импортированные адреса?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Импортированные адреса не поддерживаются вашей фразой для восстановления доступа. Чтобы защитить эти средства, рекомендуем перевести, чтобы включить их в вашу резервную копию.";
