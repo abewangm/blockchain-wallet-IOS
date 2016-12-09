@@ -14,14 +14,14 @@
 #import "BCQRCodeView.h"
 #import "NSString+NSString_EscapeQuotes.h"
 #import "Contact.h"
-#import "ContactDetailViewController.h"
+#import "ContactMessagesViewController.h"
 
 const int sectionContacts = 0;
 
 @interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
-@property (nonatomic) ContactDetailViewController *detailViewController;
+@property (nonatomic) ContactMessagesViewController *messagesViewController;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *contacts;
 
@@ -59,6 +59,9 @@ const int sectionContacts = 0;
 - (void)reload
 {
     self.contacts = [self getContacts];
+    
+    [app.wallet getMessages];
+    
     [self.tableView reloadData];
 }
 
@@ -134,8 +137,11 @@ const int sectionContacts = 0;
 
 - (void)contactClicked:(Contact *)contact
 {
-    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
-    [self.navigationController pushViewController:self.detailViewController animated:YES];
+    self.messagesViewController = [[ContactMessagesViewController alloc] initWithContact:contact];
+    [self.navigationController pushViewController:self.messagesViewController animated:YES];
+    
+//    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
+//    [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
 - (void)newContactClicked:(id)sender
@@ -280,15 +286,20 @@ const int sectionContacts = 0;
     [self.createContactNavigationController pushViewController:viewController animated:YES];
 }
 
+- (void)didGetMessages:(NSArray *)messages
+{
+    
+}
+
 - (void)updateContactDetail
 {
     [self reload];
     
-    NSString *contactIdentifier = self.detailViewController.contact.identifier;
+    NSString *contactIdentifier = self.messagesViewController.contact.identifier;
     
     Contact *reloadedContact = [[Contact alloc] initWithDictionary:[[app.wallet getContacts] objectForKey:contactIdentifier]];
     
-    self.detailViewController.contact = reloadedContact;
+    self.messagesViewController.contact = reloadedContact;
 }
 
 - (void)didChangeTrust
@@ -299,7 +310,6 @@ const int sectionContacts = 0;
 - (void)didFetchExtendedPublicKey
 {
     [self updateContactDetail];
-    [self.detailViewController showExtendedPublicKey];
 }
 
 @end

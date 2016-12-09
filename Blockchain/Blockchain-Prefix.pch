@@ -155,6 +155,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CELL_IDENTIFIER_CONTACT @"contact"
 #define CELL_IDENTIFIER_INVITATION @"invitation"
 #define CELL_IDENTIFIER_CONTACT_DETAIL @"contactDetail"
+#define CELL_IDENTIFIER_CONTACT_MESSAGE @"contactMessage"
 
 #define LOCALE_IDENTIFIER_EN_US @"en_US"
 #define LOCALE_IDENTIFIER_AR @"ar"

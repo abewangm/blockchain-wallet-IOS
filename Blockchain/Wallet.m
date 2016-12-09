@@ -654,6 +654,10 @@
         [weakSelf on_fetch_xpub_success:xpub];
     };
     
+    self.context[@"objc_on_get_messages_success"] = ^(JSValue *messages) {
+        [weakSelf objc_on_get_messages_success:messages];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -1939,6 +1943,11 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.fetchExtendedPublicKey(\"%@\")",[contactIdentifier escapeStringForJS]]];
 }
 
+- (void)getMessages
+{
+    [self.context evaluateScript:@"MyWalletPhone.getMessages()"];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -3097,6 +3106,16 @@
         [self.delegate didFetchExtendedPublicKey];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didFetchExtendedPublicKey!", [delegate class]);
+    }
+}
+
+- (void)objc_on_get_messages_success:(JSValue *)messages
+{
+    DLog(@"on_get_messages_success");
+    if ([self.delegate respondsToSelector:@selector(didGetMessages:)]) {
+        [self.delegate didGetMessages:[messages toArray]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetMessages!", [delegate class]);
     }
 }
 

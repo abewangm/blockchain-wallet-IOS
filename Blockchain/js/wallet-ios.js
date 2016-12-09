@@ -1935,6 +1935,14 @@ MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
     MyWallet.wallet.contacts.fetchXPUB(contactIdentifier).then(success).catch(function(e){console.log('Error fetching xpub');console.log(e)});
 }
 
+MyWalletPhone.getMessages = function() {
+    
+    var success = function(messages) {
+        objc_on_get_messages_success(messages);
+    };
+    
+    MyWallet.wallet.contacts.getMessages().then(success).catch(function(e){console.log('Error getting messages');console.log(e)});
+}
 
 MyWalletPhone.changeNetwork = function(newNetwork) {
     console.log('Changing network to ');

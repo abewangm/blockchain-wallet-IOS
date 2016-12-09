@@ -13,6 +13,9 @@
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name;
 
+// Messages Controller
+- (void)didGetMessages:(NSArray *)messages;
+
 // Detail Controller
 - (void)didChangeTrust;
 - (void)didFetchExtendedPublicKey;
