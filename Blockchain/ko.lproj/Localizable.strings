@@ -1553,3 +1553,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "가져온 주소들은 귀하 복구 구절로 백업 되지 않았습니다. 이 자금들을 확보하려면 잔액들을 이관해서 귀하 백업에 포함하도록 하십시오.";
+
+/* (No Commment) */
+"About Us" = "회사 정보";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "귀하는 지금 이메일 알림을 사용하고 있습니다. 이메일을 변경하면 이메일 알림이 해제됩니다.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "귀하는 지금 문자 알림을 사용하고 있습니다. 이메일을 변경하면 문자 알림이 해제됩니다.";
+
+/* (No Commment) */
+"All rights reserved." = "모든 권리 보유 유보 중.";
+
+/* (No Commment) */
+"Rate us" = "우리를 평가해 주세요";
+
+/* (No Commment) */
+"Free Merchant app" = "무료 판매자 앱";

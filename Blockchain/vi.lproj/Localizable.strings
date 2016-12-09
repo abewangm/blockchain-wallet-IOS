@@ -1553,3 +1553,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Các địa chỉ đã nhập không được sao lưu bằng Nhóm từ Khôi phục của bạn. Nhằm đảm bảo an toàn cho các khoản tiền này, chúng tôi khuyến nghị bạn chuyển những số dư này vào bản sao lưu của mình.";
+
+/* (No Commment) */
+"About Us" = "Giới thiệu";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Hiện bạn đã bật thông báo email. Thay đổi email của bạn sẽ tắt thông báo email.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Hiện bạn đã bật thông báo tin nhắn. Thay đổi email của bạn sẽ tắt thông báo tin nhắn.";
+
+/* (No Commment) */
+"All rights reserved." = "Bảo lưu mọi quyền.";
+
+/* (No Commment) */
+"Rate us" = "Đánh giá chúng tôi";
+
+/* (No Commment) */
+"Free Merchant app" = "Ứng dụng Cổng thanh toán Miễn phí";

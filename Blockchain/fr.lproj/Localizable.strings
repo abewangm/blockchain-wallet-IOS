@@ -1553,3 +1553,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Les adresses importées ne sont pas sauvegardées par votre Phrase de récupération. Pour sécuriser ces fonds, nous recommandons de transférer ces soldes à inclure dans votre sauvegarde.";
+
+/* (No Commment) */
+"About Us" = "À propos de nous";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Les notifications par e-mail sont actuellement activées. La modification de votre adresse e-mail désactivera les notifications par e-mail.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Les notifications par SMS sont actuellement activées. La modification de votre adresse e-mail désactivera les notifications par SMS.";
+
+/* (No Commment) */
+"All rights reserved." = "Tous droits réservés.";
+
+/* (No Commment) */
+"Rate us" = "Évaluez-nous";
+
+/* (No Commment) */
+"Free Merchant app" = "Appli de commerce gratuite";

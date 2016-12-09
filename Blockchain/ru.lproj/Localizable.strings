@@ -1553,3 +1553,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Импортированные адреса не поддерживаются вашей фразой для восстановления доступа. Чтобы защитить эти средства, рекомендуем перевести, чтобы включить их в вашу резервную копию.";
+
+/* (No Commment) */
+"About Us" = "О нас";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "В настоящее время уведомления по электронной почте включены. Смена адреса эл. почты приведет к отключению уведомлений по электронной почте.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "В настоящее время SMS уведомления включены. Смена адреса эл. почты приведет к отключению SMS уведомлений.";
+
+/* (No Commment) */
+"All rights reserved." = "Все права защищены.";
+
+/* (No Commment) */
+"Rate us" = "Поставьте нам оценку";
+
+/* (No Commment) */
+"Free Merchant app" = "Бесплатное приложение для торговцев";

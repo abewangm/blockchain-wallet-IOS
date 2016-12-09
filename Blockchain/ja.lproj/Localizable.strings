@@ -1553,3 +1553,21 @@
 
 /* (No Commment) */
 "Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "インポートしたアドレスはリカバリーフレーズでバックアップされていません。資金の安全性を確保するにはバックアップにこれらの残高の送金を含めることが推奨されています。";
+
+/* (No Commment) */
+"About Us" = "当社について";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "現在メール通知が有効になっています。メールアドレスを変更するとメール通知が無効になります。";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "現在SMS通知が有効になっています。メールアドレスを変更するとSMS通知が無効になります。";
+
+/* (No Commment) */
+"All rights reserved." = "全著作権所有。";
+
+/* (No Commment) */
+"Rate us" = "評価をお願いします";
+
+/* (No Commment) */
+"Free Merchant app" = "無料マーチャントアプリ";
