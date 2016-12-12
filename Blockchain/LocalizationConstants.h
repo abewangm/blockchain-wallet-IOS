@@ -419,6 +419,7 @@
 #define BC_STRING_UNTRUST_USER_ALERT_MESSAGE NSLocalizedString(@"You will no longer be able to send or receive messages from this user.", nil)
 #define BC_STRING_MUST_TRUST_USER_BEFORE_SENDING_MESSAGE_MESSAGE NSLocalizedString(@"In order to send messages, you and the user must trust each other. Tap on the switch to add trust, and have the user do the same for your contact.", nil)
 #define BC_STRING_MUST_TRUST_USER_BEFORE_SENDING_MESSAGE_TITLE NSLocalizedString(@"Cannot send messages", nil)
+#define BC_STRING_NO_MESSAGES NSLocalizedString(@"No messages", nil)
 
 #define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)

@@ -126,7 +126,7 @@ const int rowSendMessage = 3;
 
     qrCodeView.qrCodeFooterLabel.text = BC_STRING_COPY_XPUB;
 
-    AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
     
     [self.navigationController pushViewController:viewController animated:YES];

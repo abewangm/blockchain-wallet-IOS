@@ -11,4 +11,6 @@
 @interface ContactMessagesViewController : UIViewController
 @property (nonatomic) Contact *contact;
 - (id)initWithContact:(Contact *)contact;
+
+- (void)didFetchExtendedPublicKey;
 @end

@@ -7,11 +7,15 @@
 //
 
 #import "ContactMessagesViewController.h"
+#import "ContactDetailViewController.h"
 #import "Contact.h"
+#import "BCNavigationController.h"
 
 @interface ContactMessagesViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *messages;
+@property (nonatomic) UILabel *noMessagesLabel;
+@property (nonatomic) ContactDetailViewController *detailViewController;
 @end
 
 @implementation ContactMessagesViewController
@@ -36,6 +40,54 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT_MESSAGE];
     
     [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = self.contact.name;
+    
+    if (self.messages.count <= 0) {
+        self.noMessagesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 30)];
+        self.noMessagesLabel.text = BC_STRING_NO_MESSAGES;
+        self.noMessagesLabel.adjustsFontSizeToFitWidth = YES;
+        self.noMessagesLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:self.noMessagesLabel];
+        self.noMessagesLabel.center = self.view.center;
+    } else {
+        [self.noMessagesLabel removeFromSuperview];
+    }
+    
+    [self setupSettings];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController.topRightButton removeFromSuperview];
+}
+
+- (void)setupSettings
+{
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    UIButton *editButton = [navigationController createTopRightButton];
+    [editButton addTarget:self action:@selector(editContact) forControlEvents:UIControlEventTouchUpInside];
+    [editButton setTitle:BC_STRING_EDIT forState:UIControlStateNormal];
+}
+
+- (void)editContact
+{
+    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:self.contact];
+    [self.navigationController pushViewController:self.detailViewController animated:YES];
+}
+
+- (void)didFetchExtendedPublicKey
+{
+    self.detailViewController.contact = self.contact;
+    [self.detailViewController showExtendedPublicKey];
 }
 
 - (void)setContact:(Contact *)contact

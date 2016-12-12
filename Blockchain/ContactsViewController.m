@@ -139,9 +139,6 @@ const int sectionContacts = 0;
 {
     self.messagesViewController = [[ContactMessagesViewController alloc] initWithContact:contact];
     [self.navigationController pushViewController:self.messagesViewController animated:YES];
-    
-//    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
-//    [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
 - (void)newContactClicked:(id)sender
@@ -246,8 +243,7 @@ const int sectionContacts = 0;
     NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_ID];
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
     
     [self reload];
@@ -310,6 +306,8 @@ const int sectionContacts = 0;
 - (void)didFetchExtendedPublicKey
 {
     [self updateContactDetail];
+    
+    [self.messagesViewController didFetchExtendedPublicKey];
 }
 
 @end

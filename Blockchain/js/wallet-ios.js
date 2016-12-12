@@ -1390,6 +1390,10 @@ SharedMetadata.sign = function (keyPair, message) {
     return new Buffer(objc_message_sign(keyPair, message), 'hex');
 }
 
+Metadata.sign = function (keyPair, message) {
+    return new Buffer(objc_message_sign(keyPair, message), 'hex');
+}
+
 // TODO what should this value be?
 MyWallet.getNTransactionsPerPage = function() {
     return 50;
@@ -1904,8 +1908,14 @@ MyWalletPhone.acceptInvitation = function(invitation, name, identifier) {
     var success = function(invitation) {
         objc_on_accept_invitation_success(invitation, name, identifier);
     };
+    
+    var save = function(info) {
+        return MyWallet.wallet.contacts.save().then(function(discard) {
+            return info;
+        });
+    }
         
-    MyWallet.wallet.contacts.acceptInvitation(invitation).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
+    MyWallet.wallet.contacts.acceptInvitation(invitation).then(save).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
 }
 
 MyWalletPhone.addTrust = function(contactIdentifier) {

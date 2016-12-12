@@ -1924,7 +1924,8 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readInvitation(%@)", invitation]];
 }
 
-- (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier{
+- (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier
+{
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.acceptInvitation(\"%@\", \"%@\", \"%@\")", [invitation escapeStringForJS], [name escapeStringForJS], [identifier escapeStringForJS]]];
 }
 
