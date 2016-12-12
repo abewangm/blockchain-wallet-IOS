@@ -32,6 +32,8 @@ const int sectionContacts = 0;
 
 @implementation ContactsViewController
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -75,6 +77,19 @@ const int sectionContacts = 0;
     }
     return contacts;
 }
+
+- (void)updateContactDetail
+{
+    [self reload];
+    
+    NSString *contactIdentifier = self.messagesViewController.contact.identifier;
+    
+    Contact *reloadedContact = [[Contact alloc] initWithDictionary:[[app.wallet getContacts] objectForKey:contactIdentifier]];
+    
+    self.messagesViewController.contact = reloadedContact;
+}
+
+#pragma mark - Table View Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -134,6 +149,8 @@ const int sectionContacts = 0;
     
     return view;
 }
+
+#pragma mark - Actions
 
 - (void)contactClicked:(Contact *)contact
 {
@@ -220,11 +237,6 @@ const int sectionContacts = 0;
     }
 }
 
-- (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier
-{
-    [self showInvitationAlert:invitation identifier:identifier];
-}
-
 - (void)showInvitationAlert:(NSDictionary *)invitation identifier:(NSString *)identifier
 {
     NSString *name = [invitation objectForKey:DICTIONARY_KEY_NAME];
@@ -236,17 +248,6 @@ const int sectionContacts = 0;
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name
-{
-    NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_ID];
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
-    
-    [self reload];
 }
 
 - (void)enterNameAndID
@@ -262,6 +263,24 @@ const int sectionContacts = 0;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [createContactView.nameField becomeFirstResponder];
     });
+}
+
+#pragma mark - Wallet Callbacks
+
+- (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier
+{
+    [self showInvitationAlert:invitation identifier:identifier];
+}
+
+- (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name
+{
+    NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_ID];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    [self reload];
 }
 
 - (void)didCreateInvitation:(NSDictionary *)invitationDict
@@ -285,17 +304,6 @@ const int sectionContacts = 0;
 - (void)didGetMessages
 {
     [self.messagesViewController didGetMessages];
-}
-
-- (void)updateContactDetail
-{
-    [self reload];
-    
-    NSString *contactIdentifier = self.messagesViewController.contact.identifier;
-    
-    Contact *reloadedContact = [[Contact alloc] initWithDictionary:[[app.wallet getContacts] objectForKey:contactIdentifier]];
-    
-    self.messagesViewController.contact = reloadedContact;
 }
 
 - (void)didChangeTrust
