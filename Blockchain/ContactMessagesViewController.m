@@ -20,6 +20,8 @@
 
 @implementation ContactMessagesViewController
 
+#pragma mark - Lifecycle
+
 - (id)initWithContact:(Contact *)contact messages:(NSArray *)messages;
 {
     if (self = [super init]) {
@@ -71,6 +73,15 @@
     [navigationController.topRightButton removeFromSuperview];
 }
 
+#pragma mark - Actions
+
+- (void)setContact:(Contact *)contact
+{
+    _contact = contact;
+    
+    [self.tableView reloadData];
+}
+
 - (void)setupSettings
 {
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
@@ -85,25 +96,7 @@
     [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
-- (void)didFetchExtendedPublicKey
-{
-    self.detailViewController.contact = self.contact;
-    [self.detailViewController showExtendedPublicKey];
-}
-
-- (void)setContact:(Contact *)contact
-{
-    _contact = contact;
-    
-    [self.tableView reloadData];
-}
-
-- (void)didGetMessages;
-{
-    self.messages = app.wallet.messages;
-    
-    [self.tableView reloadData];
-}
+#pragma mark - Table View Delegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -129,6 +122,21 @@
     NSString *identifier = [messageDict objectForKey:DICTIONARY_KEY_ID];
     
     [app.wallet readMessage:identifier];
+}
+
+#pragma mark - Wallet callbacks
+
+- (void)didFetchExtendedPublicKey
+{
+    self.detailViewController.contact = self.contact;
+    [self.detailViewController showExtendedPublicKey];
+}
+
+- (void)didGetMessages;
+{
+    self.messages = app.wallet.messages;
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReadMessage:(NSString *)message
