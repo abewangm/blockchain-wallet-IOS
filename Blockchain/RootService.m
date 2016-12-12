@@ -1880,9 +1880,14 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didFetchExtendedPublicKey];
 }
 
-- (void)didGetMessages:(NSArray *)messages
+- (void)didGetMessages
 {
-    [self.contactsViewController didGetMessages:messages];
+    [self.contactsViewController didGetMessages];
+}
+
+- (void)didReadMessage:(NSString *)message
+{
+    [self.contactsViewController didReadMessage:message];
 }
 
 #pragma mark - Show Screens

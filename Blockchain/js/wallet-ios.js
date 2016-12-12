@@ -1028,7 +1028,7 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
         objc_didParsePairingCode(pairing_code);
     };
     
-    var error = function (e) {
+    var error = function (e) {console.log(e);
         objc_errorParsingPairingCode(e);
     };
     
@@ -1082,7 +1082,7 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
                 error(''+e);
             }
         };
-        var requestError = function (res) {
+        var requestError = function (res) {console.log(JSON.stringify(res));
             error('Pairing Code Server Error');
         };
         
@@ -1952,6 +1952,15 @@ MyWalletPhone.getMessages = function() {
     };
     
     MyWallet.wallet.contacts.getMessages().then(success).catch(function(e){console.log('Error getting messages');console.log(e)});
+}
+
+MyWalletPhone.readMessage = function(identifier) {
+    
+    var success = function(message) {
+        objc_on_read_message_success(message);
+    };
+    
+    MyWallet.wallet.contacts.readMessage(identifier).then(success).catch(function(e){console.log('Error reading message');console.log(e)});
 }
 
 MyWalletPhone.changeNetwork = function(newNetwork) {

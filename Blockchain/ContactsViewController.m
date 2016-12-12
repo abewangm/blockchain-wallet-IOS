@@ -137,7 +137,7 @@ const int sectionContacts = 0;
 
 - (void)contactClicked:(Contact *)contact
 {
-    self.messagesViewController = [[ContactMessagesViewController alloc] initWithContact:contact];
+    self.messagesViewController = [[ContactMessagesViewController alloc] initWithContact:contact messages:app.wallet.messages];
     [self.navigationController pushViewController:self.messagesViewController animated:YES];
 }
 
@@ -282,9 +282,9 @@ const int sectionContacts = 0;
     [self.createContactNavigationController pushViewController:viewController animated:YES];
 }
 
-- (void)didGetMessages:(NSArray *)messages
+- (void)didGetMessages
 {
-    
+    [self.messagesViewController didGetMessages];
 }
 
 - (void)updateContactDetail
@@ -308,6 +308,11 @@ const int sectionContacts = 0;
     [self updateContactDetail];
     
     [self.messagesViewController didFetchExtendedPublicKey];
+}
+
+- (void)didReadMessage:(NSString *)message
+{
+    [self.messagesViewController didReadMessage:message];
 }
 
 @end

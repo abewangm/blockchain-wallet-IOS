@@ -106,7 +106,8 @@
 - (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name;
 - (void)didChangeTrust;
 - (void)didFetchExtendedPublicKey;
-- (void)didGetMessages:(NSArray *)messages;
+- (void)didGetMessages;
+- (void)didReadMessage:(NSString *)message;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
@@ -135,6 +136,8 @@
 @property(nonatomic) NSString *lastScannedWatchOnlyAddress;
 @property(nonatomic) NSString *lastImportedAddress;
 @property(nonatomic) BOOL didReceiveMessageForLastTransaction;
+
+@property(nonatomic, readonly) NSArray *messages;
 
 // HD properties:
 @property NSString *recoveryPhrase;
@@ -357,6 +360,7 @@
 // Contacts
 - (NSDictionary *)getContacts;
 - (void)getMessages;
+- (void)readMessage:(NSString *)identifier;
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
 - (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;

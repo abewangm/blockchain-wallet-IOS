@@ -658,6 +658,10 @@
         [weakSelf objc_on_get_messages_success:messages];
     };
     
+    self.context[@"objc_on_read_message_success"] = ^(JSValue *message) {
+        [weakSelf objc_on_read_message_success:message];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -1949,6 +1953,11 @@
     [self.context evaluateScript:@"MyWalletPhone.getMessages()"];
 }
 
+- (void)readMessage:(NSString *)identifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readMessage(\"%@\")", [identifier escapeStringForJS]]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -3113,10 +3122,21 @@
 - (void)objc_on_get_messages_success:(JSValue *)messages
 {
     DLog(@"on_get_messages_success");
-    if ([self.delegate respondsToSelector:@selector(didGetMessages:)]) {
-        [self.delegate didGetMessages:[messages toArray]];
+    if ([self.delegate respondsToSelector:@selector(didGetMessages)]) {
+        _messages = [messages toArray];
+        [self.delegate didGetMessages];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetMessages!", [delegate class]);
+    }
+}
+
+- (void)objc_on_read_message_success:(NSString *)message
+{
+    DLog(@"objc_on_read_message_success");
+    if ([self.delegate respondsToSelector:@selector(didReadMessage:)]) {
+        [self.delegate didReadMessage:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didReadMessage!", [delegate class]);
     }
 }
 

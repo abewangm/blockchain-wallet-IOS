@@ -14,7 +14,8 @@
 - (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name;
 
 // Messages Controller
-- (void)didGetMessages:(NSArray *)messages;
+- (void)didGetMessages;
+- (void)didReadMessage:(NSString *)message;
 
 // Detail Controller
 - (void)didChangeTrust;

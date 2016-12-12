@@ -20,10 +20,11 @@
 
 @implementation ContactMessagesViewController
 
-- (id)initWithContact:(Contact *)contact
+- (id)initWithContact:(Contact *)contact messages:(NSArray *)messages;
 {
     if (self = [super init]) {
         _contact = contact;
+        _messages = messages;
     }
     return self;
 }
@@ -97,16 +98,44 @@
     [self.tableView reloadData];
 }
 
+- (void)didGetMessages;
+{
+    self.messages = app.wallet.messages;
+    
+    [self.tableView reloadData];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_MESSAGE forIndexPath:indexPath];
-    cell.textLabel.text = BC_STRING_OK;
+    
+    NSDictionary *messageDict = self.messages[indexPath.row];
+    NSString *identifier = [messageDict objectForKey:DICTIONARY_KEY_ID];
+    
+    cell.textLabel.text = identifier;
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.messages.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *messageDict = self.messages[indexPath.row];
+    NSString *identifier = [messageDict objectForKey:DICTIONARY_KEY_ID];
+    
+    [app.wallet readMessage:identifier];
+}
+
+- (void)didReadMessage:(NSString *)message
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MESSAGE message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

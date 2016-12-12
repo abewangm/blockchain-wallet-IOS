@@ -10,7 +10,9 @@
 @class Contact;
 @interface ContactMessagesViewController : UIViewController
 @property (nonatomic) Contact *contact;
-- (id)initWithContact:(Contact *)contact;
+- (id)initWithContact:(Contact *)contact messages:(NSArray *)messages;
 
 - (void)didFetchExtendedPublicKey;
+- (void)didGetMessages;
+- (void)didReadMessage:(NSString *)message;
 @end
