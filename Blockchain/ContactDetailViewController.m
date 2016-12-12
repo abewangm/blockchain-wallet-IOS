@@ -22,6 +22,8 @@ const int rowSendMessage = 3;
 
 @implementation ContactDetailViewController
 
+#pragma mark - Lifecycle
+
 - (id)initWithContact:(Contact *)contact
 {
     if (self = [super init]) {
@@ -57,6 +59,8 @@ const int rowSendMessage = 3;
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = self.contact.name ? self.contact.name : self.contact.identifier;
 }
+
+#pragma mark - Table View Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -111,6 +115,8 @@ const int rowSendMessage = 3;
         }
     }
 }
+
+#pragma mark - Actions
 
 - (void)showExtendedPublicKey
 {
