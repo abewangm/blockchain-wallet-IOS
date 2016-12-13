@@ -131,6 +131,18 @@
          return [[keyPair.key signatureForMessage:message] hexadecimalString];
     };
     
+    self.context[@"objc_get_shared_key"] = ^(KeyPair *publicKey, KeyPair *privateKey) {
+        return [BTCSHA256([[publicKey.key diffieHellmanWithPrivateKey:privateKey.key] publicKey]) hexadecimalString];
+    };
+
+    self.context[@"objc_message_verify_base64"] = ^(NSString *address, NSString *signature, NSString *message) {
+        NSData *signatureData = [[NSData alloc] initWithBase64EncodedString:signature options:kNilOptions];
+        NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
+        BTCKey *key = [BTCKey verifySignature:signatureData forBinaryMessage:messageData];
+        KeyPair *keyPair = [[KeyPair alloc] initWithKey:key network:nil];
+        return [[keyPair getAddress] isEqualToString:address];
+    };
+    
     self.context[@"objc_message_verify"] = ^(NSString *address, NSString *signature, NSString *message) {
         NSData *signatureData = BTCDataFromHex(signature);
         NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -659,7 +671,7 @@
     };
     
     self.context[@"objc_on_read_message_success"] = ^(JSValue *message) {
-        [weakSelf objc_on_read_message_success:message];
+        [weakSelf objc_on_read_message_success:[message toString]];
     };
     
     [self.context evaluateScript:jsSource];

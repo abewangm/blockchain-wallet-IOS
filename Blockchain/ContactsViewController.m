@@ -106,6 +106,7 @@ const int sectionContacts = 0;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT forIndexPath:indexPath];
     
     Contact *contact = self.contacts[indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = contact.name ? contact.name : contact.identifier;
     cell.backgroundColor = COLOR_BACKGROUND_GRAY;
     return cell;

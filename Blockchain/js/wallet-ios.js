@@ -1382,17 +1382,27 @@ Metadata.verify = function (address, signature, message) {
     return objc_message_verify(address, signature.toString('hex'), message);
 }
 
-SharedMetadata.verify = function (message, signature, mdid) {
-    return objc_message_verify(mdid, signature, message);
+Metadata.sign = function (keyPair, message) {
+    return new Buffer(objc_message_sign(keyPair, message), 'hex');
+}
+
+SharedMetadata.verify = function (address, signature, message) {
+    return objc_message_verify_base64(address, signature, message);
 }
 
 SharedMetadata.sign = function (keyPair, message) {
     return new Buffer(objc_message_sign(keyPair, message), 'hex');
 }
 
-Metadata.sign = function (keyPair, message) {
-    return new Buffer(objc_message_sign(keyPair, message), 'hex');
-}
+SharedMetadata.prototype.encryptFor = function (message, contact) {console.log(JSON.stringify(contact));
+    var sharedKey = new Buffer(objc_get_shared_key(contact.pubKey, this._keyPair), 'hex');
+    return WalletCrypto.encryptDataWithKey(message, sharedKey);
+};
+
+SharedMetadata.prototype.decryptFrom = function (message, contact) {console.log(JSON.stringify(contact));
+    var sharedKey = new Buffer(objc_get_shared_key(contact.pubKey, this._keyPair), 'hex');
+    return WalletCrypto.decryptDataWithKey(message, sharedKey);
+};
 
 // TODO what should this value be?
 MyWallet.getNTransactionsPerPage = function() {
