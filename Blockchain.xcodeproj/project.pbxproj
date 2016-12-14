@@ -72,6 +72,7 @@
 		239CD4C81C12214A00997DF5 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239CD4CA1C12214A00997DF5 /* Settings.storyboard */; };
 		239CD5171C12217F00997DF5 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239CD5191C12217F00997DF5 /* Upgrade.storyboard */; };
 		239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239CD5671C122BDE00997DF5 /* SettingsTwoStepViewController.m */; };
+		23B731D31E01AC1100129770 /* ReminderModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B731D21E01AC1100129770 /* ReminderModalViewController.m */; };
 		23BA220E1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BA220D1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m */; };
 		23BA22111D6B736900D0472B /* NSNumberFormatter+Currencies.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BA22101D6B736900D0472B /* NSNumberFormatter+Currencies.m */; };
 		23BD046A1D7761C000DB69E6 /* UITextView+AssertionFailureFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BD04691D7761C000DB69E6 /* UITextView+AssertionFailureFix.m */; };
@@ -649,6 +650,8 @@
 		239CD5651C12223300997DF5 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Upgrade.strings"; sourceTree = "<group>"; };
 		239CD5661C122BDE00997DF5 /* SettingsTwoStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTwoStepViewController.h; sourceTree = "<group>"; };
 		239CD5671C122BDE00997DF5 /* SettingsTwoStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTwoStepViewController.m; sourceTree = "<group>"; };
+		23B731D11E01AC1100129770 /* ReminderModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderModalViewController.h; sourceTree = "<group>"; };
+		23B731D21E01AC1100129770 /* ReminderModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderModalViewController.m; sourceTree = "<group>"; };
 		23BA220C1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KeychainItemWrapper+Credentials.h"; sourceTree = "<group>"; };
 		23BA220D1D6B4AB500D0472B /* KeychainItemWrapper+Credentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KeychainItemWrapper+Credentials.m"; sourceTree = "<group>"; };
 		23BA220F1D6B736900D0472B /* NSNumberFormatter+Currencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+Currencies.h"; sourceTree = "<group>"; };
@@ -1437,6 +1440,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				23B731D11E01AC1100129770 /* ReminderModalViewController.h */,
+				23B731D21E01AC1100129770 /* ReminderModalViewController.m */,
 				23444FA61DD1177E00573C8C /* SettingsAboutUsViewController.h */,
 				23444FA71DD1177E00573C8C /* SettingsAboutUsViewController.m */,
 				23F8DE511DAEB11C001899AE /* BCNavigationController.h */,
@@ -1926,6 +1931,7 @@
 				23FDEFAC1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m in Sources */,
 				231A66EE1DB9434B0043F862 /* HDNode.m in Sources */,
 				9F765F3914BC7BAC00048EFB /* TransactionTableCell.m in Sources */,
+				23B731D31E01AC1100129770 /* ReminderModalViewController.m in Sources */,
 				23444F9F1DCD221A00573C8C /* BTCProtocolSerialization.m in Sources */,
 				84FC02FA1981452D00B97D5B /* NSString+JSONParser_NSString.m in Sources */,
 				9F765F3D14BC7C4F00048EFB /* Transaction.m in Sources */,

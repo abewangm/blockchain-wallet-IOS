@@ -177,6 +177,7 @@
 - (void)showAccountsAndAddresses;
 - (void)showDebugMenu:(int)presenter;
 - (void)showHdUpgrade;
+- (void)showEmailVerificationInstructions;
 
 - (void)reloadTransactionFilterLabel;
 

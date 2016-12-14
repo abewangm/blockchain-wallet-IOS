@@ -36,6 +36,7 @@ module.exports = (grunt) ->
     "shell:psd:icon_upgrade:26"
     "shell:psd:icon_share:25"
     "shell:psd:cancel:11"
+    "shell:psd:cancel_template:11"
     "shell:psd:thumbs:26"
     "shell:psd:upgrade1:548"
     "shell:psd:upgrade2:548"

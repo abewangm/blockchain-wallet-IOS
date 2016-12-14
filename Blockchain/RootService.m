@@ -43,6 +43,7 @@
 #import "KeychainItemWrapper+SwipeAddresses.h"
 #import "NSString+SHA256.h"
 #import "Blockchain-Swift.h"
+#import "ReminderModalViewController.h"
 
 @implementation RootService
 
@@ -809,9 +810,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (![app isPinSet]) {
         [app showPinModalAsView:NO];
+    } else {
+        self.wallet.isNew = NO;
     }
     
-    self.wallet.isNew = NO;
+    // Testing only - remove before committing
+    [self showEmailVerificationInstructions];
     
     [_sendViewController reload];
     
@@ -1955,6 +1959,14 @@ void (^secondPasswordSuccess)(NSString *);
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
+- (void)showEmailVerificationInstructions
+{
+    ReminderModalViewController *emailController = [[ReminderModalViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:emailController];
+    navigationController.navigationBarHidden = YES;
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
 - (void)forceHDUpgradeForLegacyWallets
 {
     if (![app.wallet didUpgradeToHd]) {
@@ -2783,7 +2795,16 @@ void (^secondPasswordSuccess)(NSString *);
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self forceHDUpgradeForLegacyWallets];
+            
+            if (app.wallet.didUpgradeToHd) {
+                if (app.wallet.isNew) {
+                    app.wallet.isNew = NO;
+                    [self showEmailVerificationInstructions];
+                }
+            } else {
+                [self forceHDUpgradeForLegacyWallets];
+            }
+            
         }]];
         
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];

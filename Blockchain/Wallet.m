@@ -2034,6 +2034,11 @@
 {
     [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE];
     
+    if (self.isNew) {
+        self.isNew = NO;
+        [app showEmailVerificationInstructions];
+    }
+    
     [app reloadTransactionFilterLabel];
 }
 
