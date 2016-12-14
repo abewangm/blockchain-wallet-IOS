@@ -16,6 +16,7 @@
 // Messages Controller
 - (void)didGetMessages;
 - (void)didReadMessage:(NSString *)message;
+- (void)didSendMessage:(NSString *)contact;
 
 // Detail Controller
 - (void)didChangeTrust;

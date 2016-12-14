@@ -1890,6 +1890,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didReadMessage:message];
 }
 
+- (void)didSendMessage:(NSString *)contact
+{
+    [self.contactsViewController didSendMessage:contact];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

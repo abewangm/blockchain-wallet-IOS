@@ -96,6 +96,11 @@
     [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
+- (void)newMessageClicked
+{
+    
+}
+
 #pragma mark - Table View Delegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,6 +129,32 @@
     [app.wallet readMessage:identifier];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
+    label.textColor = COLOR_FOREGROUND_GRAY;
+    label.font = [UIFont systemFontOfSize:14.0];
+    
+    [view addSubview:label];
+    
+    NSString *labelString;
+    
+    if (section == 0) {
+        labelString = BC_STRING_MESSAGES;
+        UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
+        [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
+        [addButton addTarget:self action:@selector(newMessageClicked) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:addButton];
+    }
+    
+    label.text = [labelString uppercaseString];
+    
+    return view;
+}
+
 #pragma mark - Wallet callbacks
 
 - (void)didFetchExtendedPublicKey
@@ -142,6 +173,13 @@
 - (void)didReadMessage:(NSString *)message
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MESSAGE message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)didSendMessage:(NSString *)contact
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MESSAGE_SENT message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
 }

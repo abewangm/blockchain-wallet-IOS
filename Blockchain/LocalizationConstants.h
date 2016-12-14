@@ -421,6 +421,8 @@
 #define BC_STRING_MUST_TRUST_USER_BEFORE_SENDING_MESSAGE_TITLE NSLocalizedString(@"Cannot send messages", nil)
 #define BC_STRING_NO_MESSAGES NSLocalizedString(@"No messages", nil)
 #define BC_STRING_MESSAGE NSLocalizedString(@"Message", nil)
+#define BC_STRING_MESSAGES NSLocalizedString(@"Messages", nil)
+#define BC_STRING_MESSAGE_SENT NSLocalizedString(@"Message Sent", nil)
 
 #define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)

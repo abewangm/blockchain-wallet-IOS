@@ -674,6 +674,10 @@
         [weakSelf objc_on_read_message_success:[message toString]];
     };
     
+    self.context[@"objc_on_send_message_success"] = ^(JSValue *contact) {
+        [weakSelf objc_on_send_message_success:[contact toString]];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -1970,6 +1974,11 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readMessage(\"%@\")", [identifier escapeStringForJS]]];
 }
 
+- (void)sendMessage:(NSString *)message toContact:(NSString *)contact
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendMessage(\"%@\", \"%@\")", [message escapeStringForJS], [contact escapeStringForJS]]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -3149,6 +3158,16 @@
         [self.delegate didReadMessage:message];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didReadMessage!", [delegate class]);
+    }
+}
+
+- (void)objc_on_send_message_success:(NSString *)contact
+{
+    DLog(@"objc_on_read_message_success");
+    if ([self.delegate respondsToSelector:@selector(didSendMessage:)]) {
+        [self.delegate didSendMessage:contact];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didSendMessage!", [delegate class]);
     }
 }
 

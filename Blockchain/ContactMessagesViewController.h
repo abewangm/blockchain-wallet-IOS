@@ -14,5 +14,6 @@
 
 - (void)didFetchExtendedPublicKey;
 - (void)didGetMessages;
+- (void)didSendMessage:(NSString *)contact;
 - (void)didReadMessage:(NSString *)message;
 @end

@@ -1973,6 +1973,15 @@ MyWalletPhone.readMessage = function(identifier) {
     MyWallet.wallet.contacts.readMessage(identifier).then(success).catch(function(e){console.log('Error reading message');console.log(e)});
 }
 
+MyWalletPhone.sendMessage = function(message, contact) {
+    
+    var success = function() {
+        objc_on_send_message_success(contact);
+    };
+    
+    MyWallet.wallet.contacts.sendMessage(identifier, 101, message).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+}
+
 MyWalletPhone.changeNetwork = function(newNetwork) {
     console.log('Changing network to ');
     console.log(newNetwork);

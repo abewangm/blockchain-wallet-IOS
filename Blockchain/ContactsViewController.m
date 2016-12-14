@@ -324,4 +324,9 @@ const int sectionContacts = 0;
     [self.messagesViewController didReadMessage:message];
 }
 
+- (void)didSendMessage:(NSString *)contact
+{
+    [self.messagesViewController didSendMessage:contact];
+}
+
 @end

@@ -108,6 +108,7 @@
 - (void)didFetchExtendedPublicKey;
 - (void)didGetMessages;
 - (void)didReadMessage:(NSString *)message;
+- (void)didSendMessage:(NSString *)contact;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
@@ -361,6 +362,7 @@
 - (NSDictionary *)getContacts;
 - (void)getMessages;
 - (void)readMessage:(NSString *)identifier;
+- (void)sendMessage:(NSString *)message toContact:(NSString *)contact;
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
 - (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
