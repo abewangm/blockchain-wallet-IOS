@@ -34,6 +34,7 @@
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
 @property (nonatomic) BOOL isSettingDefaultAccount;
+@property (nonatomic) NSMutableDictionary *timers;
 @end
 
 @implementation transactionProgressListeners
@@ -103,18 +104,31 @@
         DLog(@"%@ \nstack: %@\nline number: %@", [exception toString], stacktrace, lineNumber);
     };
 
-    
-    // Add setTimout
-    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* function, JSValue* timeout) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)([timeout toInt32] * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-            [function callWithArguments:@[]];
-        });
+    __weak Wallet *weakSelf = self;
+
+    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* callback, JSValue* timeout) {
+        
+        NSString *uuid = [[NSUUID alloc] init].UUIDString;
+        
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:[timeout toInt32]/1000
+                                                          target:[NSBlockOperation blockOperationWithBlock:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [callback callWithArguments:nil];
+            });
+        }]
+                                                        selector:@selector(main)
+                                                        userInfo:nil
+                                                         repeats:NO];
+        
+        weakSelf.timers[uuid] = timer;
     };
     
-    dispatch_queue_t jsQueue = dispatch_queue_create("com.some.identifier",
-                                                     DISPATCH_QUEUE_SERIAL);
+    dispatch_queue_t jsQueue = dispatch_queue_create("com.some.identifier", DISPATCH_QUEUE_SERIAL);
     
     self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(int ms, JSValue *callback) {
+        
+        NSString *uuid = [[NSUUID alloc] init].UUIDString;
+        
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:ms/1000
                                                           target:[NSBlockOperation blockOperationWithBlock:^{
             dispatch_async(jsQueue, ^{
@@ -124,10 +138,15 @@
                                                         selector:@selector(main)
                                                         userInfo:nil
                                                          repeats:YES];
+        weakSelf.timers[uuid] = timer;
         [timer fire];
     };
     
-    __weak Wallet *weakSelf = self;
+    self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = ^(NSString *identifier) {
+        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
+        [timer invalidate];
+        [weakSelf.timers removeObjectForKey:identifier];
+    };
     
 #pragma mark Decryption
     

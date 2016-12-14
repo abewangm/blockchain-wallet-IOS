@@ -461,6 +461,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_CONSOLE @"console"
 #define JAVASCRIPTCORE_LOG @"log"
 #define JAVASCRIPTCORE_SET_TIMEOUT @"setTimeout"
+#define JAVASCRIPTCORE_CLEAR_TIMEOUT @"clearTimeout"
 #define JAVASCRIPTCORE_SET_INTERVAL @"setInterval"
 
 #define WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED @"User backgrounded app"
