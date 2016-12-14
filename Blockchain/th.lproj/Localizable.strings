@@ -1541,3 +1541,33 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "มูลค่าเมื่อได้รับ: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "โอนเงินทั้งหมด";
+
+/* (No Commment) */
+"Transfer all" = "โอนทั้งหมด";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "โอนที่อยู่ที่นำเข้า?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "ไม่ได้มีการสำรองที่อยู่ที่นำเข้าด้วยวลีเพื่อการกู้คืนของคุณ เพื่อทำให้เงินเหล่านี้ปลอดภัย เราแนะนำให้โอนยอดคงเหลือเหล่านี้เพื่อรวมไปในการสำรองข้อมูลของคุณ";
+
+/* (No Commment) */
+"About Us" = "เกี่ยวกับเรา";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "คุณได้เปิดใช้งานการแจ้งเตือนอีเมลในขณะนี้ การเปลี่ยนอีเมลของคุณจะปิดการแจ้งเตือนอีเมล";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "คุณได้เปิดใช้งานการแจ้งเตือน SMS ในขณะนี้ การเปลี่ยนอีเมลของคุณจะปิดการแจ้งเตือน SMS";
+
+/* (No Commment) */
+"All rights reserved." = "สงวนลิขสิทธิ์";
+
+/* (No Commment) */
+"Rate us" = "ให้คะแนนเรา";
+
+/* (No Commment) */
+"Free Merchant app" = "ฟรีแอป Merchant";

@@ -246,7 +246,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_IDENTIFIER_DEBUG_MENU @"debugMenu"
 
 #define HOST_NAME_WALLET_SERVER @"blockchain.info"
-#define HOST_NAME_DEV_SERVER @"blockchain.co.uk"
 #define HOST_NAME_API @"api.blockchain.info"
 #define HOST_NAME_MERCHANT HOST_NAME_API
 

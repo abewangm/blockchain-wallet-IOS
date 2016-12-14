@@ -1541,3 +1541,33 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Сума при отриманні: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Переказати усі кошти";
+
+/* (No Commment) */
+"Transfer all" = "Переказати все";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Перенести імпортовані адреси?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Імпортовані адреси не підтримуються вашою фразою для відновлення доступу. Щоб захистити ці кошти, рекомендуємо перенести баланс, щоб включити у вашу резервну копію.";
+
+/* (No Commment) */
+"About Us" = "Про нас";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Зараз сповіщення на електронну пошту у вас увімкнено. Зміна вашої електронної адреси вимкне сповіщення на електронну пошту";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Зараз СМС сповіщення у вас увімкнено. Зміна вашої електронної адреси вимкне СМС сповіщення";
+
+/* (No Commment) */
+"All rights reserved." = "Всі права захищено.";
+
+/* (No Commment) */
+"Rate us" = "Оцінити нас";
+
+/* (No Commment) */
+"Free Merchant app" = "Безкоштовна програма Merchant";

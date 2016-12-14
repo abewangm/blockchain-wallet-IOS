@@ -1541,3 +1541,33 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Valore ricevuto: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Trasferisci tutti i fondi";
+
+/* (No Commment) */
+"Transfer all" = "Trasferisci tutto";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Vuoi trasferire gli indirizzi importati?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Gli indirizzi importati non sono salvati con la tua Frase di Recupero. Per assicurare questi fondi, raccomandiamo che il trasferimento di questi saldi venga incluso nel tuo backup.";
+
+/* (No Commment) */
+"About Us" = "Informazioni su di noi";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Al momento hai le notifiche email attive. Cambiare la tua email disattiverà le notifiche email.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Al momento hai le notifiche SMS attive. Cambiare la tua email disattiverà le notifiche SMS.";
+
+/* (No Commment) */
+"All rights reserved." = "Tutti i diritti riservati.";
+
+/* (No Commment) */
+"Rate us" = "Votaci";
+
+/* (No Commment) */
+"Free Merchant app" = "App commerciale gratuita";

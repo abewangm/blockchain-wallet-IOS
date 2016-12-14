@@ -1541,3 +1541,33 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Nilai saat diterima: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Transfer Semua Dana";
+
+/* (No Commment) */
+"Transfer all" = "Transfer semua";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Transfer alamat yang diimpor?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Alamat yang diimpor dicadangkan oleh Frasa Pemulihan Anda. Untuk mengamankan dana ini, kami menyarankan untuk mentransfer saldo ini termasuk cadangan Anda.";
+
+/* (No Commment) */
+"About Us" = "Tentang Kami";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Saat ini Anda telah mengaktifkan notifikasi surel. Mengubah surel Anda akan menonaktifkan notifikasi surel.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Saat ini Anda telah mengaktifkan notifikasi SMS. Mengubah surel ANda akan menonaktifkan notifikasi SMS.";
+
+/* (No Commment) */
+"All rights reserved." = "Hak cipta dilindungi undang-undang.";
+
+/* (No Commment) */
+"Rate us" = "Beri nilai kami";
+
+/* (No Commment) */
+"Free Merchant app" = "Aplikasi Perdagangan Gratis";

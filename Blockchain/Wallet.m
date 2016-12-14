@@ -87,9 +87,14 @@
     self.context = [[JSContext alloc] init];
     
     [self.context evaluateScript:@"var console = {};"];
-    self.context[@"console"][@"log"] = ^(NSString *message) {
-        DLog(@"Javascript log: %@",message);
-    };
+    
+    NSSet *names = [[NSSet alloc] initWithObjects:@"log", @"debug", @"info", @"warn", @"error", @"assert", @"dir", @"dirxml", @"group", @"groupEnd", @"time", @"timeEnd", @"count", @"trace", @"profile", @"profileEnd", nil];
+    
+    for (NSString *name in names) {
+        self.context[@"console"][name] = ^(NSString *message) {
+            DLog(@"Javascript %@: %@", name, message);
+        };
+    }
     
     self.context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
         NSString *stacktrace = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_STACK] toString];

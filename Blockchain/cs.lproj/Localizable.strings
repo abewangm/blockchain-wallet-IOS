@@ -1541,3 +1541,33 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Hodnota při příjmu: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Převést všechny prostředky";
+
+/* (No Commment) */
+"Transfer all" = "Převést vše";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Převést importované adresy?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importované adresy nejsou zálohovány frází pro obnovení. Pokud chcete tyto prostředky zabezpečit, doporučujeme zahrnout tyto zůstatky do zálohy.";
+
+/* (No Commment) */
+"About Us" = "O nás";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "V této chvíli máte aktivní e-mailová upozornění. E-mailová upozornění deaktivujete změnou e-mailové adresy.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "V této chvíli máte aktivní SMS upozornění. SMS upozornění deaktivujete změnou e-mailové adresy.";
+
+/* (No Commment) */
+"All rights reserved." = "Všechna práva vyhrazena.";
+
+/* (No Commment) */
+"Rate us" = "Ohodnoťte nás";
+
+/* (No Commment) */
+"Free Merchant app" = "Aplikace pro obchodování zdarma";
