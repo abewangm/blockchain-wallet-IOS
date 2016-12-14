@@ -1541,3 +1541,33 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Waarde bij ontvangst: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Alle fondsen overbrengen";
+
+/* (No Commment) */
+"Transfer all" = "Alles overbrengen";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Geïmporteerde adressen overbrengen?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Geïmporteerde adressen worden niet ondersteund door uw Herstelregel. Om deze fondsen zeker te stellen raden wij u aan om deze saldo's op te nemen in uw back-up.";
+
+/* (No Commment) */
+"About Us" = "Over ons";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Uw e-mailmeldingen zijn momenteel ingeschakeld. Als u uw e-mail verandert, dan worden de e-mailmeldingen uitgeschakeld.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Uw sms-meldingen zijn momenteel ingeschakeld. Als u uw e-mail verandert, dan worden de sms-meldingen uitgeschakeld.";
+
+/* (No Commment) */
+"All rights reserved." = "Alle rechten voorbehouden.";
+
+/* (No Commment) */
+"Rate us" = "Beoordeel ons";
+
+/* (No Commment) */
+"Free Merchant app" = "Gratis handelsapp";
