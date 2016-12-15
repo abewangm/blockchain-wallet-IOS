@@ -28,7 +28,7 @@ min = false;
 // Set the API code for the iOS Wallet for the server calls
 //BlockchainAPI.API_CODE = API_CODE;
 BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
-BlockchainAPI.API_ROOT_URL = 'https://api.dev.blockchain.info/'
+BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
 var MyWalletPhone = {};
 var currentPayment = null;
