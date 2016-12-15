@@ -117,6 +117,7 @@
     } else {
         self.backButton.hidden = YES;
         self.closeButton.hidden = NO;
+        self.topRightButton.hidden = YES;
     }
 }
 
@@ -175,7 +176,8 @@
 
 - (UIButton *)createTopRightButton
 {
-    self.topRightButton = [[UIButton alloc] initWithFrame:self.closeButton.frame];
+    self.topRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.topRightButton.frame = self.closeButton.frame;
     self.topRightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.topRightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.topRightButton setTitleEdgeInsets:self.closeButton.titleEdgeInsets];
