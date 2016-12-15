@@ -8,10 +8,11 @@
 
 #import "ContactMessagesViewController.h"
 #import "ContactDetailViewController.h"
+#import "ContactNewMessageViewController.h"
 #import "Contact.h"
 #import "BCNavigationController.h"
 
-@interface ContactMessagesViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ContactMessagesViewController () <UITableViewDelegate, UITableViewDataSource, SendMessageDelegate>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *messages;
 @property (nonatomic) UILabel *noMessagesLabel;
@@ -98,7 +99,12 @@
 
 - (void)newMessageClicked
 {
+    ContactNewMessageViewController *newMessageController = [[ContactNewMessageViewController alloc] initWithContactIdentifier:self.contact.identifier];
+    newMessageController.delegate = self;
     
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:newMessageController title:BC_STRING_NEW_MESSAGE];
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 #pragma mark - Table View Delegate
@@ -155,6 +161,11 @@
     return view;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 45.0f;
+}
+
 #pragma mark - Wallet callbacks
 
 - (void)didFetchExtendedPublicKey
@@ -179,9 +190,18 @@
 
 - (void)didSendMessage:(NSString *)contact
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MESSAGE_SENT message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MESSAGE_SENT message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }];
+}
+
+#pragma mark - Send Message Delegate
+
+- (void)sendMessage:(NSString *)message
+{
+    [app.wallet sendMessage:message toContact:self.contact.identifier];
 }
 
 @end

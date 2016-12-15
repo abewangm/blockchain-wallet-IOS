@@ -1934,7 +1934,13 @@ MyWalletPhone.addTrust = function(contactIdentifier) {
         objc_on_add_trust_success(invitation);
     };
     
-    MyWallet.wallet.contacts.addTrusted(contactIdentifier).then(success).catch(function(e){console.log('Error adding trust');console.log(e)});
+    var save = function(info) {
+        return MyWallet.wallet.contacts.save().then(function(discard) {
+            return info;
+        });
+    }
+    
+    MyWallet.wallet.contacts.addTrusted(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error adding trust');console.log(e)});
 }
 
 MyWalletPhone.deleteTrust = function(contactIdentifier) {
@@ -1943,7 +1949,13 @@ MyWalletPhone.deleteTrust = function(contactIdentifier) {
         objc_on_delete_trust_success(invitation);
     };
     
-    MyWallet.wallet.contacts.deleteTrusted(contactIdentifier).then(success).catch(function(e){console.log('Error deleting trust');console.log(e)});
+    var save = function(info) {
+        return MyWallet.wallet.contacts.save().then(function(discard) {
+            return info;
+        });
+    }
+    
+    MyWallet.wallet.contacts.deleteTrusted(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error deleting trust');console.log(e)});
 }
 
 MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
@@ -1952,7 +1964,13 @@ MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
         objc_on_fetch_xpub_success(xpub);
     };
     
-    MyWallet.wallet.contacts.fetchXPUB(contactIdentifier).then(success).catch(function(e){console.log('Error fetching xpub');console.log(e)});
+    var save = function(info) {
+        return MyWallet.wallet.contacts.save().then(function(discard) {
+            return info;
+        });
+    }
+    
+    MyWallet.wallet.contacts.fetchXPUB(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error fetching xpub');console.log(e)});
 }
 
 MyWalletPhone.getMessages = function() {
@@ -1979,7 +1997,7 @@ MyWalletPhone.sendMessage = function(message, contact) {
         objc_on_send_message_success(contact);
     };
     
-    MyWallet.wallet.contacts.sendMessage(identifier, 101, message).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+    MyWallet.wallet.contacts.sendMessage(contact, 101, message).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
 }
 
 MyWalletPhone.changeNetwork = function(newNetwork) {
