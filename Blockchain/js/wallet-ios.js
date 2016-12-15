@@ -1913,6 +1913,21 @@ MyWalletPhone.readInvitation = function(invitation) {
     MyWallet.wallet.contacts.readInvitation(invitation).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
 }
 
+MyWalletPhone.readInvitationSent = function(invitation) {
+    
+    var success = function(info) {
+        objc_on_read_invitation_sent_success();
+    };
+    
+    var save = function(info) {
+        return MyWallet.wallet.contacts.save().then(function(discard) {
+            return info;
+        });
+    }
+    
+    MyWallet.wallet.contacts.readInvitationSent(invitation).then(save).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
+}
+
 MyWalletPhone.acceptInvitation = function(invitation, name, identifier) {
     
     var success = function(invitation) {

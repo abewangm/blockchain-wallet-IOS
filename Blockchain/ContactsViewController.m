@@ -328,6 +328,11 @@ const int sectionContacts = 0;
     [self reload];
 }
 
+- (void)didReadInvitationSent
+{
+    DLog(@"Read invitation sent success");
+}
+
 - (void)didCreateInvitation:(NSDictionary *)invitationDict
 {
     NSString *identifier = [invitationDict objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];

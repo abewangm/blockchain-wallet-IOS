@@ -14,7 +14,7 @@
 const int rowName = 0;
 const int rowExtendedPublicKey = 1;
 const int rowTrust = 2;
-const int rowSendMessage = 3;
+const int rowFetchMDID = 3;
 
 @interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) UITableView *tableView;
@@ -84,8 +84,8 @@ const int rowSendMessage = 3;
         switchForTrust.on = self.contact.trusted;
         [switchForTrust addTarget:self action:@selector(toggleTrust) forControlEvents:UIControlEventTouchUpInside];
         cell.accessoryView = switchForTrust;
-    } else if (indexPath.row == rowSendMessage) {
-        cell.textLabel.text = BC_STRING_SEND_MESSAGE;
+    } else if (indexPath.row == rowFetchMDID) {
+        cell.textLabel.text = BC_STRING_FETCH_MDID;
         cell.accessoryView = nil;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
@@ -105,14 +105,8 @@ const int rowSendMessage = 3;
         } else {
             [self showExtendedPublicKey];
         }
-    } else if (indexPath.row == rowSendMessage) {
-        if (!self.contact.trusted) {
-            UIAlertController *alertForRequiredTrust = [UIAlertController alertControllerWithTitle:BC_STRING_MUST_TRUST_USER_BEFORE_SENDING_MESSAGE_TITLE message:BC_STRING_MUST_TRUST_USER_BEFORE_SENDING_MESSAGE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
-            [alertForRequiredTrust addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alertForRequiredTrust animated:YES completion:nil];
-        } else {
-            
-        }
+    } else if (indexPath.row == rowFetchMDID) {
+        [app.wallet readInvitationSent:self.contact.identifier];
     }
 }
 

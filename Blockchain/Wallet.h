@@ -103,6 +103,7 @@
 - (void)setupBackupTransferAll:(id)transferAllController;
 - (void)didCreateInvitation:(NSDictionary *)invitation;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
+- (void)didReadInvitationSent;
 - (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name;
 - (void)didChangeTrust;
 - (void)didFetchExtendedPublicKey;
@@ -365,6 +366,7 @@
 - (void)sendMessage:(NSString *)message toContact:(NSString *)contact;
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
+- (void)readInvitationSent:(NSString *)identifier;
 - (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
 - (void)addTrust:(NSString *)contactIdentifier;
 - (void)deleteTrust:(NSString *)contactIdentifier;

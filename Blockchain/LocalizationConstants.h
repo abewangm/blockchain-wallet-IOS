@@ -413,7 +413,7 @@
 #define BC_STRING_ACCEPT NSLocalizedString(@"Accept", nil)
 #define BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER NSLocalizedString(@"Accepted invitation by %@ (%@).", nil)
 #define BC_STRING_TRUST_USER NSLocalizedString(@"Trust user", nil)
-#define BC_STRING_SEND_MESSAGE NSLocalizedString(@"Send Message", nil)
+#define BC_STRING_FETCH_MDID NSLocalizedString(@"Fetch MDID", nil)
 #define BC_STRING_TRUST_USER_ALERT_TITLE NSLocalizedString(@"Trust user?", nil)
 #define BC_STRING_TRUST_USER_ALERT_MESSAGE NSLocalizedString(@"You will be able to send and receive messages from this user.", nil)
 #define BC_STRING_UNTRUST_USER_ALERT_TITLE NSLocalizedString(@"Untrust user?", nil)

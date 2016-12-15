@@ -1863,6 +1863,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didReadInvitation:invitation identifier:identifier];
 }
 
+- (void)didReadInvitationSent
+{
+    [self.contactsViewController didReadInvitationSent];
+}
+
 - (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name
 {
     // TODO: Push notification for user who sent invitation should occur to prompt to call or call readInvitationSent to get MDID
