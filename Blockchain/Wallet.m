@@ -398,9 +398,10 @@
     
     self.context[@"objc_getRandomBytes"] = ^(NSNumber *count) {
         DLog(@"objc_getObjCRandomValues");
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/random"];
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/urandom"];
         if (!fileHandle) {
-            return @"";
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
         }
         NSData *data = [fileHandle readDataOfLength:[count intValue]];
         return [data hexadecimalString];
