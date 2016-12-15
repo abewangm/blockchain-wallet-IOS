@@ -1895,6 +1895,16 @@ MyWalletPhone.getContacts = function() {
     return MyWallet.wallet.contacts.list;
 }
 
+MyWalletPhone.getSaveContactsFunction = function() {
+    var save = function(info) {
+        return MyWallet.wallet.contacts.save().then(function(discard) {
+            return info;
+        });
+    }
+    
+    return save;
+}
+
 MyWalletPhone.createContact = function(name, id) {
     
     var success = function(invitation) {
@@ -1919,11 +1929,7 @@ MyWalletPhone.readInvitationSent = function(invitation) {
         objc_on_read_invitation_sent_success();
     };
     
-    var save = function(info) {
-        return MyWallet.wallet.contacts.save().then(function(discard) {
-            return info;
-        });
-    }
+    var save = MyWalletPhone.getSaveContactsFunction();
     
     MyWallet.wallet.contacts.readInvitationSent(invitation).then(save).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
 }
@@ -1934,11 +1940,7 @@ MyWalletPhone.acceptInvitation = function(invitation, name, identifier) {
         objc_on_accept_invitation_success(invitation, name, identifier);
     };
     
-    var save = function(info) {
-        return MyWallet.wallet.contacts.save().then(function(discard) {
-            return info;
-        });
-    }
+    var save = MyWalletPhone.getSaveContactsFunction();
         
     MyWallet.wallet.contacts.acceptInvitation(invitation).then(save).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
 }
@@ -1949,11 +1951,7 @@ MyWalletPhone.addTrust = function(contactIdentifier) {
         objc_on_add_trust_success(invitation);
     };
     
-    var save = function(info) {
-        return MyWallet.wallet.contacts.save().then(function(discard) {
-            return info;
-        });
-    }
+    var save = MyWalletPhone.getSaveContactsFunction();
     
     MyWallet.wallet.contacts.addTrusted(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error adding trust');console.log(e)});
 }
@@ -1964,11 +1962,7 @@ MyWalletPhone.deleteTrust = function(contactIdentifier) {
         objc_on_delete_trust_success(invitation);
     };
     
-    var save = function(info) {
-        return MyWallet.wallet.contacts.save().then(function(discard) {
-            return info;
-        });
-    }
+    var save = MyWalletPhone.getSaveContactsFunction();
     
     MyWallet.wallet.contacts.deleteTrusted(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error deleting trust');console.log(e)});
 }
@@ -1979,11 +1973,7 @@ MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
         objc_on_fetch_xpub_success(xpub);
     };
     
-    var save = function(info) {
-        return MyWallet.wallet.contacts.save().then(function(discard) {
-            return info;
-        });
-    }
+    var save = MyWalletPhone.getSaveContactsFunction();
     
     MyWallet.wallet.contacts.fetchXPUB(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error fetching xpub');console.log(e)});
 }
