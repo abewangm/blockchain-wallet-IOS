@@ -276,40 +276,6 @@ const int sectionContacts = 0;
     [self.createContactNavigationController presentViewController:activityController animated:YES completion:nil];
 }
 
-#pragma mark - Helpers
-
-- (UIImage *)imageFromSystemBarButton:(UIBarButtonSystemItem)systemItem
-{
-    // Holding onto the oldItem (if any) to set it back later
-    // could use left or right, doesn't matter
-    UIBarButtonItem *oldItem = self.navigationItem.rightBarButtonItem;
-    
-    UIBarButtonItem *tempItem = [[UIBarButtonItem alloc]
-                                 initWithBarButtonSystemItem:systemItem
-                                 target:nil
-                                 action:nil];
-    
-    // Setting as our right bar button item so we can traverse its subviews
-    self.navigationItem.rightBarButtonItem = tempItem;
-    
-    // Don't know whether this is considered as PRIVATE API or not
-    UIView *itemView = (UIView *)[self.navigationItem.rightBarButtonItem performSelector:@selector(view)];
-    
-    UIImage *image = nil;
-    // Traversing the subviews to find the ImageView and getting its image
-    for (UIView *subView in itemView.subviews) {
-        if ([subView isKindOfClass:[UIImageView class]]) {
-            image = ((UIImageView *)subView).image;
-            break;
-        }
-    }
-    
-    // Setting our oldItem back since we have the image now
-    self.navigationItem.rightBarButtonItem = oldItem;
-    
-    return image;
-}
-
 #pragma mark - Wallet Callbacks
 
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier
@@ -352,8 +318,7 @@ const int sectionContacts = 0;
     
     [self.createContactNavigationController createTopRightButton];
     self.createContactNavigationController.topRightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 44, 8, 16);
-    [self.createContactNavigationController.topRightButton setImage:[[self imageFromSystemBarButton:UIBarButtonSystemItemAction] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    [self.createContactNavigationController.topRightButton.imageView setTintColor:[UIColor whiteColor]];
+    [self.createContactNavigationController.topRightButton setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
     [self.createContactNavigationController.topRightButton addTarget:self action:@selector(shareInvitationClicked) forControlEvents:UIControlEventTouchUpInside];
 }
 
