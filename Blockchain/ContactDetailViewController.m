@@ -11,10 +11,14 @@
 #import "BCNavigationController.h"
 #import "BCQRCodeView.h"
 
+const int sectionMain = 0;
 const int rowName = 0;
 const int rowExtendedPublicKey = 1;
 const int rowTrust = 2;
 const int rowFetchMDID = 3;
+
+const int sectionDelete = 1;
+const int rowDelete = 0;
 
 @interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) UITableView *tableView;
@@ -62,34 +66,61 @@ const int rowFetchMDID = 3;
 
 #pragma mark - Table View Delegate
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    if (section == sectionMain) {
+        return 4;
+    } else if (section == sectionDelete) {
+        return 1;
+    }
+    
+    DLog(@"Invalid section");
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_DETAIL forIndexPath:indexPath];
 
-    if (indexPath.row == rowName) {
-        cell.textLabel.text = self.contact.name ? self.contact.name : self.contact.identifier;
-        cell.accessoryView = nil;
-    } else if (indexPath.row == rowExtendedPublicKey) {
-        cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
-        cell.accessoryView = nil;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else if (indexPath.row == rowTrust) {
-        cell.textLabel.text = BC_STRING_TRUST_USER;
-        UISwitch *switchForTrust = [[UISwitch alloc] init];
-        switchForTrust.on = self.contact.trusted;
-        [switchForTrust addTarget:self action:@selector(toggleTrust) forControlEvents:UIControlEventTouchUpInside];
-        cell.accessoryView = switchForTrust;
-    } else if (indexPath.row == rowFetchMDID) {
-        cell.textLabel.text = BC_STRING_FETCH_MDID;
-        cell.accessoryView = nil;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else {
+    if (indexPath.section == sectionMain) {
         
+        cell.textLabel.textColor = [UIColor blackColor];
+        
+        if (indexPath.row == rowName) {
+            cell.textLabel.text = self.contact.name ? self.contact.name : self.contact.identifier;
+            cell.accessoryView = nil;
+        } else if (indexPath.row == rowExtendedPublicKey) {
+            cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
+            cell.accessoryView = nil;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else if (indexPath.row == rowTrust) {
+            cell.textLabel.text = BC_STRING_TRUST_USER;
+            UISwitch *switchForTrust = [[UISwitch alloc] init];
+            switchForTrust.on = self.contact.trusted;
+            [switchForTrust addTarget:self action:@selector(toggleTrust) forControlEvents:UIControlEventTouchUpInside];
+            cell.accessoryView = switchForTrust;
+        } else if (indexPath.row == rowFetchMDID) {
+            cell.textLabel.text = BC_STRING_FETCH_MDID;
+            cell.accessoryView = nil;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else {
+            DLog(@"Invalid row for main section");
+            return nil;
+        }
+    } else if (indexPath.section == sectionDelete) {
+        if (indexPath.row == rowDelete) {
+            cell.textLabel.textColor = [UIColor redColor];
+            cell.textLabel.text = BC_STRING_DELETE_CONTACT;
+            cell.accessoryView = nil;
+        } else {
+            DLog(@"Invalid row for delete section");
+            return nil;
+        }
     }
 
     return cell;
@@ -99,15 +130,26 @@ const int rowFetchMDID = 3;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == rowExtendedPublicKey) {
-        if (!self.contact.xpub) {
-            [app.wallet fetchExtendedPublicKey:self.contact.identifier];
+    if (indexPath.section == sectionMain) {
+        if (indexPath.row == rowExtendedPublicKey) {
+            if (!self.contact.xpub) {
+                [app.wallet fetchExtendedPublicKey:self.contact.identifier];
+            } else {
+                [self showExtendedPublicKey];
+            }
+        } else if (indexPath.row == rowFetchMDID) {
+            [app.wallet readInvitationSent:self.contact.identifier];
         } else {
-            [self showExtendedPublicKey];
+            DLog(@"Invalid selected row for main section");
         }
-    } else if (indexPath.row == rowFetchMDID) {
-        [app.wallet readInvitationSent:self.contact.identifier];
+    } else if (indexPath.section == sectionDelete) {
+        if (indexPath.row == rowDelete) {
+            [self confirmDeleteContact];
+        } else {
+            DLog(@"Invalid selected row for delete section");
+        }
     }
+
 }
 
 #pragma mark - Actions
@@ -148,6 +190,16 @@ const int rowFetchMDID = 3;
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }]];
     [self presentViewController:alertForTogglingTrust animated:YES completion:nil];
+}
+
+- (void)confirmDeleteContact
+{
+    UIAlertController *alertForDeletingContact = [UIAlertController alertControllerWithTitle:BC_STRING_DELETE_CONTACT_ALERT_TITLE message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertForDeletingContact addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [app.wallet deleteContact:self.contact.identifier];
+    }]];
+    [alertForDeletingContact addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertForDeletingContact animated:YES completion:nil];
 }
 
 @end

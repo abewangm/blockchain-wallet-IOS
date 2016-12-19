@@ -1994,6 +1994,11 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendMessage(\"%@\", \"%@\")", [message escapeStringForJS], [contact escapeStringForJS]]];
 }
 
+- (void)deleteContact:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteContact(\"%@\")", [contactIdentifier escapeStringForJS]]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

@@ -371,4 +371,5 @@
 - (void)addTrust:(NSString *)contactIdentifier;
 - (void)deleteTrust:(NSString *)contactIdentifier;
 - (void)fetchExtendedPublicKey:(NSString *)contactIdentifier;
+- (void)deleteContact:(NSString *)contactIdentifier;
 @end
