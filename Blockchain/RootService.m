@@ -404,7 +404,7 @@ void (^secondPasswordSuccess)(NSString *);
     return YES;
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
 {
     DLog(@"User received remote notification");
 }
