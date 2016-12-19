@@ -10,6 +10,7 @@
 #import "Contact.h"
 #import "BCNavigationController.h"
 #import "BCQRCodeView.h"
+#import "Blockchain-Swift.h"
 
 const int sectionMain = 0;
 const int rowName = 0;
@@ -20,7 +21,7 @@ const int rowFetchMDID = 3;
 const int sectionDelete = 1;
 const int rowDelete = 0;
 
-@interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (nonatomic) UITableView *tableView;
 @end
 
@@ -131,7 +132,9 @@ const int rowDelete = 0;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == sectionMain) {
-        if (indexPath.row == rowExtendedPublicKey) {
+        if (indexPath.row == rowName) {
+            [self changeContactName];
+        } else if (indexPath.row == rowExtendedPublicKey) {
             if (!self.contact.xpub) {
                 [app.wallet fetchExtendedPublicKey:self.contact.identifier];
             } else {
@@ -152,7 +155,40 @@ const int rowDelete = 0;
 
 }
 
+#pragma mark - Text Field Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField.tag == TAG_TEXTFIELD_CHANGE_CONTACT_NAME) {
+        [app.wallet changeName:textField.text forContact:self.contact.identifier];
+    }
+    
+    return YES;
+}
+
 #pragma mark - Actions
+
+- (void)changeContactName
+{
+    UIAlertController *alertForChangingName = [UIAlertController alertControllerWithTitle:BC_STRING_CHANGE_NAME message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertForChangingName addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
+        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
+        secureTextField.delegate = self;
+        secureTextField.returnKeyType = UIReturnKeyDone;
+        secureTextField.tag = TAG_TEXTFIELD_CHANGE_CONTACT_NAME;
+        secureTextField.text = self.contact.name;
+    }];
+    [alertForChangingName addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *newName = [[alertForChangingName textFields] firstObject].text;
+        [app.wallet changeName:newName forContact:self.contact.identifier];
+    }]];
+    [alertForChangingName addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertForChangingName animated:YES completion:nil];
+}
 
 - (void)showExtendedPublicKey
 {

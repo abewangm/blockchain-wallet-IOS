@@ -17,10 +17,6 @@
 #import "KeychainItemWrapper+SwipeAddresses.h"
 #import "SettingsAboutUsViewController.h"
 
-const int textFieldTagChangePasswordHint = 8;
-const int textFieldTagVerifyMobileNumber = 7;
-const int textFieldTagChangeMobileNumber = 6;
-
 const int walletInformationSection = 0;
 const int walletInformationIdentifier = 0;
 
@@ -412,7 +408,7 @@ const int aboutPrivacyPolicy = 2;
         secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.tag = textFieldTagChangeMobileNumber;
+        secureTextField.tag = TAG_TEXTFIELD_CHANGE_MOBILE_NUMBER;
         secureTextField.delegate = self;
         secureTextField.keyboardType = UIKeyboardTypePhonePad;
         secureTextField.returnKeyType = UIReturnKeyDone;
@@ -513,7 +509,7 @@ const int aboutPrivacyPolicy = 2;
         secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.tag = textFieldTagVerifyMobileNumber;
+        secureTextField.tag = TAG_TEXTFIELD_VERIFY_MOBILE_NUMBER;
         secureTextField.delegate = self;
         secureTextField.returnKeyType = UIReturnKeyDone;
         secureTextField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
@@ -1000,10 +996,10 @@ const int aboutPrivacyPolicy = 2;
     
     if (self.alertTargetViewController) {
         [self.alertTargetViewController dismissViewControllerAnimated:YES completion:^{
-            if (textField.tag == textFieldTagVerifyMobileNumber) {
+            if (textField.tag == TAG_TEXTFIELD_VERIFY_MOBILE_NUMBER) {
                 [weakSelf verifyMobileNumber:textField.text];
                 
-            } else if (textField.tag == textFieldTagChangeMobileNumber) {
+            } else if (textField.tag == TAG_TEXTFIELD_CHANGE_MOBILE_NUMBER) {
                 [weakSelf changeMobileNumber:textField.text];
             }
         }];
@@ -1011,10 +1007,10 @@ const int aboutPrivacyPolicy = 2;
     }
     
     [self dismissViewControllerAnimated:YES completion:^{
-        if (textField.tag == textFieldTagVerifyMobileNumber) {
+        if (textField.tag == TAG_TEXTFIELD_VERIFY_MOBILE_NUMBER) {
             [weakSelf verifyMobileNumber:textField.text];
             
-        } else if (textField.tag == textFieldTagChangeMobileNumber) {
+        } else if (textField.tag == TAG_TEXTFIELD_CHANGE_MOBILE_NUMBER) {
             [weakSelf changeMobileNumber:textField.text];
         }
     }];

@@ -1989,9 +1989,14 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readMessage(\"%@\")", [identifier escapeStringForJS]]];
 }
 
-- (void)sendMessage:(NSString *)message toContact:(NSString *)contact
+- (void)sendMessage:(NSString *)message toContact:(NSString *)contactIdentifier
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendMessage(\"%@\", \"%@\")", [message escapeStringForJS], [contact escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendMessage(\"%@\", \"%@\")", [message escapeStringForJS], [contactIdentifier escapeStringForJS]]];
+}
+
+- (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeName(\"%@\", \"%@\")", [newName escapeStringForJS], [contactIdentifier escapeStringForJS]]];
 }
 
 - (void)deleteContact:(NSString *)contactIdentifier

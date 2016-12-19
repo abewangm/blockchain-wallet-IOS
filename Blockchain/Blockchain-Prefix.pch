@@ -577,6 +577,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT 100
 
+#define TAG_TEXTFIELD_CHANGE_CONTACT_NAME 9
+#define TAG_TEXTFIELD_CHANGE_PASSWORD_HINT 8
+#define TAG_TEXTFIELD_VERIFY_MOBILE_NUMBER 7
+#define TAG_TEXTFIELD_CHANGE_MOBILE_NUMBER 6
+
 #pragma mark - Runtime modes
 
 // #define DISABLE_EDITING_ACCOUNTS 1 // comment this line out to enable support for adding/editing accounts

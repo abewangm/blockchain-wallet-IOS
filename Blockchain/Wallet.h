@@ -363,7 +363,7 @@
 - (NSDictionary *)getContacts;
 - (void)getMessages;
 - (void)readMessage:(NSString *)identifier;
-- (void)sendMessage:(NSString *)message toContact:(NSString *)contact;
+- (void)sendMessage:(NSString *)message toContact:(NSString *)contactIdentifier;
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
 - (void)readInvitationSent:(NSString *)identifier;
@@ -371,5 +371,6 @@
 - (void)addTrust:(NSString *)contactIdentifier;
 - (void)deleteTrust:(NSString *)contactIdentifier;
 - (void)fetchExtendedPublicKey:(NSString *)contactIdentifier;
+- (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier;
 - (void)deleteContact:(NSString *)contactIdentifier;
 @end

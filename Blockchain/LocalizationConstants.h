@@ -428,6 +428,7 @@
 #define BC_STRING_SEND_MESSAGE_CONFIRM NSLocalizedString(@"Send Message?", nil)
 #define BC_STRING_DELETE_CONTACT NSLocalizedString(@"Delete contact", nil)
 #define BC_STRING_DELETE_CONTACT_ALERT_TITLE NSLocalizedString(@"Delete contact?", nil)
+#define BC_STRING_CHANGE_NAME NSLocalizedString(@"Change name", nil)
 
 #define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)

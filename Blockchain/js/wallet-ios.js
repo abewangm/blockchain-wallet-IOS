@@ -2007,6 +2007,15 @@ MyWalletPhone.sendMessage = function(message, contact) {
     MyWallet.wallet.contacts.sendMessage(contact, 101, message).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
 }
 
+MyWalletPhone.changeName = function(newName, identifier) {
+    
+    var save = MyWalletPhone.getSaveContactsFunction();
+    
+    MyWallet.wallet.contacts.list[identifier].name = newName;
+    
+    save();
+}
+
 MyWalletPhone.deleteContact = function(identifier) {
     
     var save = MyWalletPhone.getSaveContactsFunction();
