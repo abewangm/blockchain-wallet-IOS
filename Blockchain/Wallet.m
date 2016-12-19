@@ -3169,7 +3169,7 @@
 {
     DLog(@"on_get_messages_success");
     if ([self.delegate respondsToSelector:@selector(didGetMessages)]) {
-        _messages = [messages toArray];
+        _messages = [self convertMessagesToDictionary:[messages toArray]];
         [self.delegate didGetMessages];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetMessages!", [delegate class]);
@@ -3551,6 +3551,27 @@
 #endif
     
     [app standardNotify:decription];
+}
+
+#pragma mark - Messages Helpers
+
+- (NSDictionary *)convertMessagesToDictionary:(NSArray *)messages
+{
+    // Convert array of messages to dictionary of @{mdid : messages}
+    
+    NSMutableDictionary *messagesDictionary = [NSMutableDictionary new];
+    
+    for (NSDictionary *message in messages) {
+        NSString *mdid = [message objectForKey:DICTIONARY_KEY_SENDER];
+        
+        NSArray *messagesFromContact = [messagesDictionary objectForKey:mdid];
+        NSMutableArray *updatedMessagesFromContact = [[NSMutableArray alloc] initWithArray:messagesFromContact];
+        [updatedMessagesFromContact addObject:message];
+        
+        [messagesDictionary setObject:updatedMessagesFromContact forKey:mdid];
+    }
+    
+    return messagesDictionary;
 }
 
 #pragma mark - Settings Helpers

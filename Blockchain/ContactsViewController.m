@@ -15,6 +15,7 @@
 #import "NSString+NSString_EscapeQuotes.h"
 #import "Contact.h"
 #import "ContactMessagesViewController.h"
+#import "ContactTableViewCell.h"
 
 const int sectionContacts = 0;
 
@@ -57,8 +58,7 @@ const int sectionContacts = 0;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_INVITATION];
+    [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
     
     [self reload];
 }
@@ -125,12 +125,17 @@ const int sectionContacts = 0;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT forIndexPath:indexPath];
+    ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT forIndexPath:indexPath];
     
     Contact *contact = self.contacts[indexPath.row];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.text = contact.name ? contact.name : contact.identifier;
     cell.backgroundColor = COLOR_BACKGROUND_GRAY;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    cell.textLabel.text = contact.name ? contact.name : contact.identifier;
+    
+    NSArray *messages = [app.wallet.messages objectForKey:contact.mdid];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", [messages count]];
+    
     return cell;
 }
 
@@ -177,7 +182,7 @@ const int sectionContacts = 0;
 
 - (void)contactClicked:(Contact *)contact
 {
-    self.messagesViewController = [[ContactMessagesViewController alloc] initWithContact:contact messages:app.wallet.messages];
+    self.messagesViewController = [[ContactMessagesViewController alloc] initWithContact:contact messages:[app.wallet.messages objectForKey:contact.mdid]];
     [self.navigationController pushViewController:self.messagesViewController animated:YES];
 }
 
@@ -358,6 +363,8 @@ const int sectionContacts = 0;
 
 - (void)didGetMessages
 {
+    [self.tableView reloadData];
+    
     [self.messagesViewController didGetMessages];
 }
 

@@ -176,7 +176,7 @@
 
 - (void)didGetMessages;
 {
-    self.messages = app.wallet.messages;
+    self.messages = [app.wallet.messages objectForKey:self.contact.mdid];
     
     [self.tableView reloadData];
 }
