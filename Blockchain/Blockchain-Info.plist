@@ -31,6 +31,7 @@
 			<array>
 				<string>bitcoin</string>
 				<string>blockchain-wallet</string>
+				<string>blockchain</string>
 			</array>
 		</dict>
 	</array>

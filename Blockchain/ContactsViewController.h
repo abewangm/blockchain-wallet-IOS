@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ContactsViewController : UIViewController
+
+- (id)initWithInvitation:(NSString *)identifier name:(NSString *)name;
+
 - (void)didCreateInvitation:(NSDictionary *)invitationDict;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name;

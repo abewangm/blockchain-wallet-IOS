@@ -165,6 +165,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define PREFIX_BITCOIN_URI @"bitcoin:"
 #define PREFIX_BLOCKCHAIN_WALLET_URI @"blockchain-wallet://"
 #define PREFIX_MAIL_URI @"message://"
+#define PREFIX_BLOCKCHAIN_URI @"blockchain://"
 
 #define TX_TYPE_TRANSFER @"transfer"
 #define TX_TYPE_SENT @"sent"

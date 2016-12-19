@@ -1664,7 +1664,7 @@ BOOL displayingLocalSymbolSend;
             
             // do something useful with results
             dispatch_sync(dispatch_get_main_queue(), ^{
-                NSDictionary *dict = [app parseURI:[metadataObj stringValue]];
+                NSDictionary *dict = [app parseURI:[metadataObj stringValue] prefix:PREFIX_BITCOIN_URI];
                 
                 NSString *address = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
                 

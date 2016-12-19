@@ -115,7 +115,7 @@
 - (void)applicationWillResignActive:(UIApplication *)application;
 - (void)applicationDidEnterBackground:(UIApplication *)application;
 - (void)applicationWillEnterForeground:(UIApplication *)application;
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url;
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options;
 
 - (void)setAccountData:(NSString*)guid sharedKey:(NSString*)sharedKey;
 
@@ -143,7 +143,7 @@
 - (void)closeModalWithTransition:(NSString *)transition;
 - (void)closeAllModals;
 
-- (NSDictionary*)parseURI:(NSString*)string;
+- (NSDictionary*)parseURI:(NSString*)urlString prefix:(NSString *)urlPrefix;
 
 // Wallet Delegate
 - (void)didSetLatestBlock:(LatestBlock*)block;

@@ -24,15 +24,27 @@ const int sectionContacts = 0;
 @property (nonatomic) ContactMessagesViewController *messagesViewController;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *contacts;
-
+@property (nonatomic) NSDictionary *lastCreatedInvitation;
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
+
+@property (nonatomic) NSString *invitationFromURL;
+@property (nonatomic) NSString *nameFromURL;
 
 @end
 
 @implementation ContactsViewController
 
 #pragma mark - Lifecycle
+
+- (id)initWithInvitation:(NSString *)identifier name:(NSString *)name
+{
+    if (self = [super init]) {
+        self.invitationFromURL = identifier;
+        self.nameFromURL = name;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -54,8 +66,18 @@ const int sectionContacts = 0;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = BC_STRING_CONTACTS;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.invitationFromURL && self.nameFromURL) {
+        [app.wallet readInvitation:[self JSDictionaryForInvitation:self.invitationFromURL name:self.nameFromURL]];
+    }
 }
 
 - (void)reload
@@ -268,12 +290,22 @@ const int sectionContacts = 0;
 
 - (void)shareInvitationClicked
 {
-    NSString *shareLink = @"ShareLink";
+    NSString *identifier = [self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
+    NSString *sharedInfo = [self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_NAME];
+    
+    NSString *shareLink = [PREFIX_BLOCKCHAIN_URI stringByAppendingFormat:@"invite?id=%@&name=%@", [identifier escapeStringForJS], [sharedInfo escapeStringForJS]];
     NSArray *items = @[shareLink];
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
     
     [self.createContactNavigationController presentViewController:activityController animated:YES completion:nil];
+}
+
+#pragma mark - Helpers
+
+- (NSString *)JSDictionaryForInvitation:(NSString *)identifier name:(NSString *)name;
+{
+    return [NSString stringWithFormat:@"{name: \"%@\", invitationReceived: \"%@\"}", [name escapeStringForJS], [identifier escapeStringForJS]];
 }
 
 #pragma mark - Wallet Callbacks
@@ -301,11 +333,13 @@ const int sectionContacts = 0;
 
 - (void)didCreateInvitation:(NSDictionary *)invitationDict
 {
+    self.lastCreatedInvitation = invitationDict;
+    
     NSString *identifier = [invitationDict objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
     NSString *sharedInfo = [invitationDict objectForKey:DICTIONARY_KEY_NAME];
     
     BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_CONTACT_SCAN_INSTRUCTIONS addAddressPrefix:NO];
-    qrCodeView.address = [NSString stringWithFormat:@"{name: \"%@\", invitationReceived: \"%@\"}", [sharedInfo escapeStringForJS], [identifier escapeStringForJS]];
+    qrCodeView.address = [self JSDictionaryForInvitation:identifier name:sharedInfo];
     
     UIViewController *viewController = [UIViewController new];
     [viewController.view addSubview:qrCodeView];

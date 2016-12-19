@@ -53,7 +53,13 @@ RootService * app;
 @synthesize modalView;
 @synthesize latestResponse;
 
-BOOL showSendCoins = NO;
+typedef enum {
+    ShowTypeNone = 100,
+    ShowTypeSendCoins = 200,
+    ShowTypeNewContact = 300,
+} ShowType;
+
+ShowType showType;
 
 SideMenuViewController *sideMenuViewController;
 UIImageView *curtainImageView;
@@ -346,7 +352,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
     if (![self isPinSet]) {
         if ([[url absoluteString] isEqualToString:[NSString stringWithFormat:@"%@%@", PREFIX_BLOCKCHAIN_WALLET_URI, @"loginAuthorized"]]) {
@@ -357,17 +363,35 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     
-    if ([[url absoluteString] hasPrefix:PREFIX_BLOCKCHAIN_WALLET_URI]) {
+    NSString *absoluteURL = [url absoluteString];
+    
+    if ([absoluteURL hasPrefix:PREFIX_BLOCKCHAIN_WALLET_URI]) {
+        // redirect from browser to app - do nothing.
+        return YES;
+    } else if ([absoluteURL hasPrefix:PREFIX_BLOCKCHAIN_URI]) {
+        
+        [app closeModalWithTransition:kCATransitionFade];
+
+        NSDictionary *dict = [self parseURI:absoluteURL prefix:PREFIX_BLOCKCHAIN_URI];
+        NSString *identifier = [dict objectForKey:DICTIONARY_KEY_ID];
+        NSString *name = [dict objectForKey:DICTIONARY_KEY_NAME];
+        
+        showType = ShowTypeNewContact;
+        
+        if (!_contactsViewController) {
+            _contactsViewController = [[ContactsViewController alloc] initWithInvitation:identifier name:name];
+        }
+        
         return YES;
     }
     
     [app closeModalWithTransition:kCATransitionFade];
     
-    NSDictionary *dict = [self parseURI:[url absoluteString]];
+    NSDictionary *dict = [self parseURI:absoluteURL prefix:PREFIX_BITCOIN_URI];
     NSString * addr = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
     NSString * amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
     
-    showSendCoins = YES;
+    showType = ShowTypeSendCoins;
     
     if (!_sendViewController) {
         // really no reason to lazyload anymore...
@@ -840,10 +864,13 @@ void (^secondPasswordSuccess)(NSString *);
         [self forceHDUpgradeForLegacyWallets];
     }
     
-    if (showSendCoins) {
+    if (showType == ShowTypeSendCoins) {
         [self showSendCoins];
-        showSendCoins = NO;
+    } else if (showType == ShowTypeNewContact) {
+        [self showContacts];
     }
+    
+    showType = ShowTypeNone;
     
     self.changedPassword = NO;
     
@@ -1061,13 +1088,13 @@ void (^secondPasswordSuccess)(NSString *);
     return dict;
 }
 
-- (NSDictionary*)parseURI:(NSString*)urlString
+- (NSDictionary*)parseURI:(NSString*)urlString prefix:(NSString *)urlPrefix
 {
     if (!urlString) {
         return nil;
     }
     
-    if (![urlString hasPrefix:PREFIX_BITCOIN_URI]) {
+    if (![urlString hasPrefix:urlPrefix]) {
         return [NSDictionary dictionaryWithObject:urlString forKey:DICTIONARY_KEY_ADDRESS];
     }
     
@@ -1904,7 +1931,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showContacts
 {
-    self.contactsViewController = [ContactsViewController new];
+    if (!_contactsViewController) {
+        _contactsViewController = [ContactsViewController new];
+    }
+    
     BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:self.contactsViewController title:BC_STRING_CONTACTS];
     
     self.topViewControllerDelegate = navigationController;
