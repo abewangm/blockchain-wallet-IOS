@@ -1961,7 +1961,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showEmailVerificationInstructions
 {
-    ReminderModalViewController *emailController = [[ReminderModalViewController alloc] init];
+    ReminderModalViewController *emailController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeEmail];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:emailController];
     navigationController.navigationBarHidden = YES;
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];

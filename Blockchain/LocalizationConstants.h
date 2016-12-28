@@ -301,7 +301,9 @@
 #define BC_STRING_INVALID_ADDRESS_ARGUMENT NSLocalizedString(@"Invalid address: %@", nil)
 
 #define BC_STRING_UPDATE NSLocalizedString(@"Update", nil)
-#define BC_STRING_DISABLED NSLocalizedString (@"Disabled", nil)
+#define BC_STRING_DISABLED NSLocalizedString(@"Disabled", nil)
+#define BC_STRING_REMINDER_CHECK_EMAIL_TITLE NSLocalizedString(@"Check your inbox", nil)
+#define BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE NSLocalizedString(@"Look for an email from Blockchain and click the verification link to complete your wallet setup.", nil)
 #define BC_STRING_SECURITY_CENTER_INSTRUCTIONS NSLocalizedString(@"Complete the steps below for ultimate security", nil)
 #define BC_STRING_SECURITY_CENTER_COMPLETED NSLocalizedString(@"Security Center completed - your wallet is safe and secure", nil)
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
@@ -471,6 +473,7 @@
 
 #define BC_STRING_DONT_SHOW_AGAIN NSLocalizedString(@"Don't show again", nil)
 #define BC_STRING_NOT_NOW NSLocalizedString(@"Not now", nil)
+#define BC_STRING_ILL_DO_THIS_LATER NSLocalizedString(@"I'll do this later", nil)
 #define BC_STRING_INCORRECT_PRIVATE_KEY NSLocalizedString(@"Incorrect private key", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED NSLocalizedString(@"Private Key Needed", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT NSLocalizedString(@"This action requires the private key for the Bitcoin address %@. Please scan the QR code.", nil)

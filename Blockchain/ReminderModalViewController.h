@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReminderModalViewController : UIViewController
+enum {
+    ReminderTypeEmail,
+    ReminderTypeTwoFactor,
+    ReminderTypeBackup
+};
 
+typedef NSInteger ReminderType;
+
+@interface ReminderModalViewController : UIViewController
+- (id)initWithReminderType:(ReminderType *)reminderType;
 @end
