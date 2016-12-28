@@ -75,7 +75,7 @@ const int rowDelete = 0;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == sectionMain) {
-        return 4;
+        return self.contact.invitationSent ? 4 : 3;
     } else if (section == sectionDelete) {
         return 1;
     }

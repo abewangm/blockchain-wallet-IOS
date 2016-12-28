@@ -59,8 +59,6 @@ const int sectionContacts = 0;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
-    
-    [self reload];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,6 +67,8 @@ const int sectionContacts = 0;
     
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = BC_STRING_CONTACTS;
+    
+    [self reload];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -359,6 +359,8 @@ const int sectionContacts = 0;
     self.createContactNavigationController.topRightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 44, 8, 16);
     [self.createContactNavigationController.topRightButton setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
     [self.createContactNavigationController.topRightButton addTarget:self action:@selector(shareInvitationClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self reload];
 }
 
 - (void)didGetMessages

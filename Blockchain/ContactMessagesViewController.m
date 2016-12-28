@@ -53,16 +53,9 @@
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = self.contact.name;
     
-    if (self.messages.count <= 0) {
-        self.noMessagesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 30)];
-        self.noMessagesLabel.text = BC_STRING_NO_MESSAGES;
-        self.noMessagesLabel.adjustsFontSizeToFitWidth = YES;
-        self.noMessagesLabel.textAlignment = NSTextAlignmentCenter;
-        [self.view addSubview:self.noMessagesLabel];
-        self.noMessagesLabel.center = self.view.center;
-    } else {
-        [self.noMessagesLabel removeFromSuperview];
-    }
+    [self showNoMessagesLabelIfNoMessages];
+    
+    [app.wallet getMessages];
     
     [self setupSettings];
 }
@@ -105,6 +98,20 @@
     BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:newMessageController title:BC_STRING_NEW_MESSAGE];
     
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)showNoMessagesLabelIfNoMessages
+{
+    if (self.messages.count <= 0) {
+        self.noMessagesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 30)];
+        self.noMessagesLabel.text = BC_STRING_NO_MESSAGES;
+        self.noMessagesLabel.adjustsFontSizeToFitWidth = YES;
+        self.noMessagesLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:self.noMessagesLabel];
+        self.noMessagesLabel.center = self.view.center;
+    } else {
+        [self.noMessagesLabel removeFromSuperview];
+    }
 }
 
 #pragma mark - Table View Delegate
@@ -177,6 +184,8 @@
 - (void)didGetMessages;
 {
     self.messages = [app.wallet.messages objectForKey:self.contact.mdid];
+    
+    [self showNoMessagesLabelIfNoMessages];
     
     [self.tableView reloadData];
 }
