@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 @class BCSecureTextField;
 
+@protocol CreateContactDelegate
+- (void)didCreateContactName:(NSString *)name;
+- (void)didCreateSenderName:(NSString *)senderName contactName:(NSString *)contactName;
+@end
+
 @interface BCCreateContactView : UIView <UITextFieldDelegate>
-@property (nonatomic, strong) BCSecureTextField *nameField;
-@property (nonatomic, strong) BCSecureTextField *idField;
+@property (nonatomic, strong) BCSecureTextField *textField;
+@property (nonatomic) id<CreateContactDelegate> delegate;
+- (id)initWithContactName:(NSString *)contactName senderName:(NSString *)senderName;
+
 @end

@@ -168,6 +168,7 @@
 
 #define BC_STRING_WARNING NSLocalizedString(@"Warning!!!", nil)
 #define BC_STRING_FORGET_WALLET_DETAILS NSLocalizedString(@"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!", nil)
+#define BC_STRING_NEXT NSLocalizedString(@"Next", nil)
 #define BC_STRING_CANCEL NSLocalizedString(@"Cancel", nil)
 #define BC_STRING_CANCELLING NSLocalizedString(@"Cancelling", nil)
 #define BC_STRING_HOW_WOULD_YOU_LIKE_TO_PAIR NSLocalizedString(@"How would you like to pair?", nil)
@@ -404,8 +405,15 @@
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)
 #define BC_STRING_NEW_ADDRESS_CREATE_NEW NSLocalizedString(@"Create new address", nil)
 
-#define BC_STRING_NEW_CONTACT NSLocalizedString(@"New Contact", nil)
-#define BC_STRING_ENTER_NAME_AND_ID NSLocalizedString(@"Enter Name and ID", nil)
+#define BC_STRING_ADD_NEW_CONTACT NSLocalizedString(@"Add new contact", nil)
+#define BC_STRING_ADDED_NEW_CONTACT NSLocalizedString(@"Added new contact", nil)
+#define BC_STRING_INVITE_SOMEONE_TO_CONNECT NSLocalizedString(@"Invite someone to connect", nil)
+#define BC_STRING_WHO_ARE_YOU_CONNECTING_WITH NSLocalizedString(@"Who are you connecting with?", nil)
+#define BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY NSLocalizedString(@"What name does %@ know you by?", nil)
+#define BC_STRING_ARGUMENT_IS_WITH_ME_RIGHT_NOW NSLocalizedString(@"%@ is here in person right now", nil)
+#define BC_STRING_ARGUMENT_IS_UNAVAILABLE_RIGHT_NOW NSLocalizedString(@"%@ is unavailable right now", nil)
+
+#define BC_STRING_SOMEONE_SENT_ME_AN_INVITATION_CODE NSLocalizedString(@"Someone sent me an invitation code", nil)
 #define BC_STRING_YOUR_NAME NSLocalizedString(@"Your Name", nil)
 #define BC_STRING_CONTACT_NAME NSLocalizedString(@"Contact Name", nil)
 #define BC_STRING_CONTACT_SCAN_INSTRUCTIONS NSLocalizedString(@"Have your contact scan the below QR Code, or tap the share button above for more options.", nil)

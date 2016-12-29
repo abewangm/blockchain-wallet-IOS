@@ -19,7 +19,7 @@
 
 const int sectionContacts = 0;
 
-@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate>
+@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactMessagesViewController *messagesViewController;
@@ -178,6 +178,30 @@ const int sectionContacts = 0;
     return view;
 }
 
+- (void)didCreateSenderName:(NSString *)senderName contactName:(NSString *)contactName
+{
+    BCCreateContactView *createContactSharingView = [[BCCreateContactView alloc] initWithContactName:contactName senderName:senderName];
+    createContactSharingView.delegate = self;
+    
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSharingView];
+    
+    [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+}
+
+- (void)didCreateContactName:(NSString *)name
+{
+    BCCreateContactView *createContactSenderNameView = [[BCCreateContactView alloc] initWithContactName:name senderName:nil];
+    createContactSenderNameView.delegate = self;
+    
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSenderNameView];
+    
+    [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [createContactSenderNameView.textField becomeFirstResponder];
+    });
+}
+
 #pragma mark - Actions
 
 - (void)contactClicked:(Contact *)contact
@@ -188,16 +212,38 @@ const int sectionContacts = 0;
 
 - (void)newContactClicked:(id)sender
 {
-    UIAlertController *createContactOptionsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *createContactOptionsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ADD_NEW_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
     [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_SCAN_QR_CODE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self startReadingQRCode];
+    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_INVITE_SOMEONE_TO_CONNECT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self createInvitation];
     }]];
-    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_ENTER_NAME_AND_ID style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self enterNameAndID];
+    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_SOMEONE_SENT_ME_AN_INVITATION_CODE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self prepareToReadInvitation];
     }]];
     
     [self presentViewController:createContactOptionsAlert animated:YES completion:nil];
+}
+
+- (void)createInvitation
+{
+    BCCreateContactView *createContactSharingView = [[BCCreateContactView alloc] initWithContactName:nil senderName:nil];
+    createContactSharingView.delegate = self;
+    
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSharingView];
+    
+    self.createContactNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_CREATE];
+    
+    [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [createContactSharingView.textField becomeFirstResponder];
+    });
+}
+
+- (void)prepareToReadInvitation
+{
+    // [self startReadingQRCode];
+    // [self acceptInvitation:textField.text];
 }
 
 - (BOOL)startReadingQRCode
@@ -270,27 +316,12 @@ const int sectionContacts = 0;
     NSString *name = [invitation objectForKey:DICTIONARY_KEY_NAME];
     NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_SHOW_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ADD_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_SHOW_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [app.wallet acceptInvitation:identifier name:name identifier:invitationID];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)enterNameAndID
-{
-    BCCreateContactView *createContactView = [[BCCreateContactView alloc] init];
-    
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactView];
-    
-    self.createContactNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_CREATE];
-    
-    [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [createContactView.nameField becomeFirstResponder];
-    });
 }
 
 - (void)shareInvitationClicked
@@ -324,7 +355,7 @@ const int sectionContacts = 0;
 {
     NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_ID];
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ADDED_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
     
