@@ -2204,6 +2204,8 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)transactionsClicked:(UIButton *)sender
 {
     [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:1];
+    
+    [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
 }
 
 - (IBAction)sendCoinsClicked:(UIButton *)sender
@@ -2516,6 +2518,18 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *build = infoDictionary[@"CFBundleVersion"];
     NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
     return [NSString stringWithFormat:@"%@", versionAndBuild];
+}
+
+- (void)showSurveyAlert
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SURVEY_ALERT_TITLE message:BC_STRING_SURVEY_ALERT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_YES style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *settingsURL = [NSURL URLWithString:URL_SURVEY];
+        [[UIApplication sharedApplication] openURL:settingsURL];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self.tabViewController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Pin Entry Delegates

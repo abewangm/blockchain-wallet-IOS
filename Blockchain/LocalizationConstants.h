@@ -291,6 +291,9 @@
 #define BC_STRING_ASK_ME_LATER NSLocalizedString(@"Ask Me Later", nil)
 #define BC_STRING_LOGOUT_AND_FORGET_WALLET NSLocalizedString(@"Logout and forget wallet", nil)
 
+#define BC_STRING_SURVEY_ALERT_TITLE NSLocalizedString(@"Would you like to take a survey on your experience with Blockchain?", nil)
+#define BC_STRING_SURVEY_ALERT_MESSAGE NSLocalizedString(@"You will be leaving the app.", nil)
+
 #define BC_STRING_UNSAFE_DEVICE_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_UNSAFE_DEVICE_MESSAGE NSLocalizedString(@"Your device appears to be jailbroken. The security of your wallet may be compromised.", nil)
 
