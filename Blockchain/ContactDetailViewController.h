@@ -12,4 +12,7 @@
 @property (nonatomic) Contact *contact;
 - (id)initWithContact:(Contact *)contact;
 - (void)showExtendedPublicKey;
+- (void)didGetMessages;
+- (void)didReadMessage:(NSString *)message;
+- (void)didSendMessage:(NSString *)message;
 @end

@@ -152,7 +152,36 @@ const int rowDelete = 0;
             DLog(@"Invalid selected row for delete section");
         }
     }
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == sectionMain) {
+        return 50;
+    }
+    return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section == sectionMain) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+        
+        UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2 - 4, 50)];
+        [sendButton setTitle:BC_STRING_SEND forState:UIControlStateNormal];
+        sendButton.backgroundColor = COLOR_BUTTON_RED;
+        [sendButton addTarget:self action:@selector(sendClicked) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:sendButton];
+        
+        UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 4, 0, self.view.frame.size.width/2 - 4, 50)];
+        requestButton.backgroundColor = COLOR_BUTTON_GREEN;
+        [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+        [requestButton addTarget:self action:@selector(requestClicked) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:requestButton];
+        
+        return view;
+    }
+    return nil;
 }
 
 #pragma mark - Text Field Delegate
@@ -236,6 +265,37 @@ const int rowDelete = 0;
     }]];
     [alertForDeletingContact addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alertForDeletingContact animated:YES completion:nil];
+}
+
+- (void)sendClicked
+{
+    
+}
+
+- (void)requestClicked
+{
+    
+}
+
+- (void)didGetMessages
+{
+    [self.tableView reloadData];
+}
+
+- (void)didReadMessage:(NSString *)message
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MESSAGE message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)didSendMessage:(NSString *)contact
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MESSAGE_SENT message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }];
 }
 
 @end

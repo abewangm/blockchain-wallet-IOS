@@ -14,7 +14,7 @@
 #import "BCQRCodeView.h"
 #import "NSString+NSString_EscapeQuotes.h"
 #import "Contact.h"
-#import "ContactMessagesViewController.h"
+#import "ContactDetailViewController.h"
 #import "ContactTableViewCell.h"
 
 const int sectionContacts = 0;
@@ -27,7 +27,7 @@ typedef enum {
 @interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
-@property (nonatomic) ContactMessagesViewController *messagesViewController;
+@property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *contacts;
 @property (nonatomic) NSDictionary *lastCreatedInvitation;
@@ -111,11 +111,11 @@ typedef enum {
 {
     [self reload];
     
-    NSString *contactIdentifier = self.messagesViewController.contact.identifier;
+    NSString *contactIdentifier = self.detailViewController.contact.identifier;
     
     Contact *reloadedContact = [[Contact alloc] initWithDictionary:[[app.wallet getContacts] objectForKey:contactIdentifier]];
     
-    self.messagesViewController.contact = reloadedContact;
+    self.detailViewController.contact = reloadedContact;
 }
 
 #pragma mark - Table View Delegate
@@ -225,8 +225,8 @@ typedef enum {
 
 - (void)contactClicked:(Contact *)contact
 {
-    self.messagesViewController = [[ContactMessagesViewController alloc] initWithContact:contact messages:[app.wallet.messages objectForKey:contact.mdid]];
-    [self.navigationController pushViewController:self.messagesViewController animated:YES];
+    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
+    [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
 - (void)newContactClicked:(id)sender
@@ -423,7 +423,7 @@ typedef enum {
 {
     [self.tableView reloadData];
     
-    [self.messagesViewController didGetMessages];
+    [self.detailViewController didGetMessages];
 }
 
 - (void)didChangeTrust
@@ -435,17 +435,17 @@ typedef enum {
 {
     [self updateContactDetail];
     
-    [self.messagesViewController didFetchExtendedPublicKey];
+    [self.detailViewController showExtendedPublicKey];
 }
 
 - (void)didReadMessage:(NSString *)message
 {
-    [self.messagesViewController didReadMessage:message];
+    [self.detailViewController didReadMessage:message];
 }
 
 - (void)didSendMessage:(NSString *)contact
 {
-    [self.messagesViewController didSendMessage:contact];
+    [self.detailViewController didSendMessage:contact];
 }
 
 @end

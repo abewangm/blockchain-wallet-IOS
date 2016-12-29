@@ -16,7 +16,6 @@
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *messages;
 @property (nonatomic) UILabel *noMessagesLabel;
-@property (nonatomic) ContactDetailViewController *detailViewController;
 @end
 
 @implementation ContactMessagesViewController
@@ -56,8 +55,6 @@
     [self showNoMessagesLabelIfNoMessages];
     
     [app.wallet getMessages];
-    
-    [self setupSettings];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -74,20 +71,6 @@
     _contact = contact;
     
     [self.tableView reloadData];
-}
-
-- (void)setupSettings
-{
-    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
-    UIButton *editButton = [navigationController createTopRightButton];
-    [editButton addTarget:self action:@selector(editContact) forControlEvents:UIControlEventTouchUpInside];
-    [editButton setTitle:BC_STRING_EDIT forState:UIControlStateNormal];
-}
-
-- (void)editContact
-{
-    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:self.contact];
-    [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
 - (void)newMessageClicked
@@ -174,12 +157,6 @@
 }
 
 #pragma mark - Wallet callbacks
-
-- (void)didFetchExtendedPublicKey
-{
-    self.detailViewController.contact = self.contact;
-    [self.detailViewController showExtendedPublicKey];
-}
 
 - (void)didGetMessages;
 {
