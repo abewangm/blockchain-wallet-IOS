@@ -19,6 +19,11 @@
 
 const int sectionContacts = 0;
 
+typedef enum {
+    CreateContactTypeQR,
+    CreateContactTypeLink
+} CreateContactType;
+
 @interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
@@ -31,6 +36,8 @@ const int sectionContacts = 0;
 
 @property (nonatomic) NSString *invitationFromURL;
 @property (nonatomic) NSString *nameFromURL;
+
+@property (nonatomic) CreateContactType contactType;
 
 @end
 
@@ -178,6 +185,8 @@ const int sectionContacts = 0;
     return view;
 }
 
+#pragma mark - Create Contact Delegate
+
 - (void)didCreateSenderName:(NSString *)senderName contactName:(NSString *)contactName
 {
     BCCreateContactView *createContactSharingView = [[BCCreateContactView alloc] initWithContactName:contactName senderName:senderName];
@@ -200,6 +209,16 @@ const int sectionContacts = 0;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [createContactSenderNameView.textField becomeFirstResponder];
     });
+}
+
+- (void)didSelectQRCode
+{
+    self.contactType = CreateContactTypeQR;
+}
+
+- (void)didSelectShareLink
+{
+    self.contactType = CreateContactTypeLink;
 }
 
 #pragma mark - Actions
@@ -374,22 +393,28 @@ const int sectionContacts = 0;
     NSString *identifier = [invitationDict objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
     NSString *sharedInfo = [invitationDict objectForKey:DICTIONARY_KEY_NAME];
     
-    BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_CONTACT_SCAN_INSTRUCTIONS addAddressPrefix:NO];
-    qrCodeView.address = [self JSDictionaryForInvitation:identifier name:sharedInfo];
-    
-    UIViewController *viewController = [UIViewController new];
-    [viewController.view addSubview:qrCodeView];
-    
-    CGRect frame = qrCodeView.frame;
-    frame.origin.y = viewController.view.frame.origin.y + DEFAULT_HEADER_HEIGHT;
-    qrCodeView.frame = frame;
-    
-    [self.createContactNavigationController pushViewController:viewController animated:YES];
-    
-    [self.createContactNavigationController createTopRightButton];
-    self.createContactNavigationController.topRightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 44, 8, 16);
-    [self.createContactNavigationController.topRightButton setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
-    [self.createContactNavigationController.topRightButton addTarget:self action:@selector(shareInvitationClicked) forControlEvents:UIControlEventTouchUpInside];
+    if (self.contactType == CreateContactTypeQR) {
+        BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_CONTACT_SCAN_INSTRUCTIONS addAddressPrefix:NO];
+        qrCodeView.address = [self JSDictionaryForInvitation:identifier name:sharedInfo];
+        
+        UIViewController *viewController = [UIViewController new];
+        [viewController.view addSubview:qrCodeView];
+        
+        CGRect frame = qrCodeView.frame;
+        frame.origin.y = viewController.view.frame.origin.y + DEFAULT_HEADER_HEIGHT;
+        qrCodeView.frame = frame;
+        
+        [self.createContactNavigationController pushViewController:viewController animated:YES];
+        
+        [self.createContactNavigationController createTopRightButton];
+        self.createContactNavigationController.topRightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 44, 8, 16);
+        [self.createContactNavigationController.topRightButton setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
+        [self.createContactNavigationController.topRightButton addTarget:self action:@selector(shareInvitationClicked) forControlEvents:UIControlEventTouchUpInside];
+    } else if (self.contactType == CreateContactTypeLink) {
+        [self shareInvitationClicked];
+    } else {
+        DLog(@"Unknown create contact type");
+    }
     
     [self reload];
 }

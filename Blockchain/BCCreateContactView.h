@@ -12,6 +12,9 @@
 @protocol CreateContactDelegate
 - (void)didCreateContactName:(NSString *)name;
 - (void)didCreateSenderName:(NSString *)senderName contactName:(NSString *)contactName;
+
+- (void)didSelectQRCode;
+- (void)didSelectShareLink;
 @end
 
 @interface BCCreateContactView : UIView <UITextFieldDelegate>

@@ -13,6 +13,7 @@
 @interface BCCreateContactView ()
 @property (nonatomic) UIButton *nextButton;
 @property (nonatomic) NSString *contactName;
+@property (nonatomic) NSString *senderName;
 @end
 @implementation BCCreateContactView
 
@@ -24,6 +25,8 @@
     
     if (self) {
         self.contactName = contactName;
+        self.senderName = senderName;
+        
         self.backgroundColor = [UIColor whiteColor];
         
         UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, window.frame.size.width - 40, 25)];
@@ -42,6 +45,7 @@
             [showQRButton setTitle:[NSString stringWithFormat:BC_STRING_ARGUMENT_IS_WITH_ME_RIGHT_NOW, contactName] forState:UIControlStateNormal];
             showQRButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
             showQRButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            [showQRButton addTarget:self action:@selector(createQRCode) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:showQRButton];
             
             UIButton *showLinkButton = [[UIButton alloc] initWithFrame:CGRectMake(20, showQRButton.frame.origin.y + showQRButton.frame.size.height + 8, self.frame.size.width - 40, buttonHeight)];
@@ -50,6 +54,7 @@
             showLinkButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
             showLinkButton.titleLabel.textAlignment = NSTextAlignmentCenter;
             [showLinkButton setTitle:[NSString stringWithFormat:BC_STRING_ARGUMENT_IS_UNAVAILABLE_RIGHT_NOW, contactName] forState:UIControlStateNormal];
+            [showLinkButton addTarget:self action:@selector(shareLink) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:showLinkButton];
             
         } else {
@@ -105,11 +110,25 @@
     [self.delegate didCreateSenderName:self.textField.text contactName:self.contactName];
 }
 
-//- (IBAction)submitButtonClicked:(id)sender
-//{
-//    if ([app checkInternetConnection]) {
-//        [app.wallet createContactWithName:_nameField.text ID:_idField.text];
-//    }
-//}
+- (void)createQRCode
+{
+    [self.delegate didSelectQRCode];
+    
+    [self createContact];
+}
+
+- (void)shareLink
+{
+    [self.delegate didSelectShareLink];
+
+    [self createContact];
+}
+
+- (void)createContact
+{
+    if ([app checkInternetConnection]) {
+        [app.wallet createContactWithName:self.senderName ID:self.contactName];
+    }
+}
 
 @end
