@@ -640,7 +640,7 @@
 - (void)setupWebSocket
 {
     NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL_WEBSOCKET]];
-    [webSocketRequest addValue:URL_WEBSOCKET forHTTPHeaderField:@"Origin"];
+    [webSocketRequest addValue:URL_SERVER forHTTPHeaderField:@"Origin"];
 
 #ifdef ENABLE_CERTIFICATE_PINNING
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
@@ -675,7 +675,7 @@
 {
     if (self.webSocket.readyState == 1) {
         NSError *error;
-        [self.webSocket sendPing:[@"{ op: 'ping' }" dataUsingEncoding:NSUTF8StringEncoding] error:&error];
+        [self.webSocket sendPing:[@"{ op: \"ping\" }" dataUsingEncoding:NSUTF8StringEncoding] error:&error];
         if (error) DLog(@"Error sending ping: %@", [error localizedDescription]);
     } else {
         DLog(@"reconnecting websocket");
