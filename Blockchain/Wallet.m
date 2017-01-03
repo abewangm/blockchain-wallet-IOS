@@ -415,9 +415,10 @@
     
     self.context[@"objc_getRandomBytes"] = ^(NSNumber *count) {
         DLog(@"objc_getObjCRandomValues");
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/random"];
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/urandom"];
         if (!fileHandle) {
-            return @"";
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
         }
         NSData *data = [fileHandle readDataOfLength:[count intValue]];
         return [data hexadecimalString];
@@ -698,7 +699,7 @@
 - (void)setupWebSocket
 {
     NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL_WEBSOCKET]];
-    [webSocketRequest addValue:URL_WEBSOCKET forHTTPHeaderField:@"Origin"];
+    [webSocketRequest addValue:URL_SERVER forHTTPHeaderField:@"Origin"];
 
 #ifdef ENABLE_CERTIFICATE_PINNING
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
@@ -733,7 +734,7 @@
 {
     if (self.webSocket.readyState == 1) {
         NSError *error;
-        [self.webSocket sendPing:[@"{ op: 'ping' }" dataUsingEncoding:NSUTF8StringEncoding] error:&error];
+        [self.webSocket sendPing:[@"{ op: \"ping\" }" dataUsingEncoding:NSUTF8StringEncoding] error:&error];
         if (error) DLog(@"Error sending ping: %@", [error localizedDescription]);
     } else {
         DLog(@"reconnecting websocket");
