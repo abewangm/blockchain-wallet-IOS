@@ -269,7 +269,10 @@ const int rowDelete = 0;
 
 - (void)sendClicked
 {
-    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [app closeSideMenu];
+        [app performSelector:@selector(showSendCoins) withObject:nil afterDelay:ANIMATION_DURATION];
+    }];
 }
 
 - (void)requestClicked
