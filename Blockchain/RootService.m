@@ -824,7 +824,6 @@ void (^secondPasswordSuccess)(NSString *);
             [self showSecurityReminder];
             [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
         }
-        
     }
     
     [_sendViewController reload];
@@ -889,7 +888,7 @@ void (^secondPasswordSuccess)(NSString *);
     if (showTwoFactorReminder) {
         showTwoFactorReminder = NO;
         if (![app.wallet hasEnabledTwoStep]) {
-            [self showTwoFactorInstructions];
+            [self showTwoFactorReminder];
         }
     }
     
@@ -1847,6 +1846,11 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showSettings
 {
+    [self showSettings:nil];
+}
+
+- (void)showSettings:(void (^)())completionBlock
+{
     if (!_settingsNavigationController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
         self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
@@ -1856,7 +1860,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.settingsNavigationController showSettings];
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:nil];
+    [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:completionBlock];
 }
 
 - (void)showSupport
@@ -1982,7 +1986,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (self.latestResponse.transactions.count > 0) {
         if (![app.wallet isRecoveryPhraseVerified]) {
-            [self showBackupInstructions];
+            [self showBackupReminder];
         } else {
             [self checkIfSettingsLoadedAndShowTwoFactorReminder];
         }
@@ -1995,14 +1999,14 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (self.wallet.hasLoadedAccountInfo) {
         if (![app.wallet hasEnabledTwoStep]) {
-            [self showTwoFactorInstructions];
+            [self showTwoFactorReminder];
         }
     } else {
         showTwoFactorReminder = YES;
     }
 }
 
-- (void)showEmailVerificationInstructions
+- (void)showEmailVerificationReminder
 {
     ReminderModalViewController *emailController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeEmail];
     emailController.delegate = self;
@@ -2011,7 +2015,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)showBackupInstructions
+- (void)showBackupReminder
 {
     ReminderModalViewController *backupController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeBackup];
     backupController.delegate = self;
@@ -2020,7 +2024,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)showTwoFactorInstructions
+- (void)showTwoFactorReminder
 {
     ReminderModalViewController *twoFactorController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeTwoFactor];
     twoFactorController.delegate = self;
@@ -2612,6 +2616,24 @@ void (^secondPasswordSuccess)(NSString *);
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [self.tabViewController presentViewController:alert animated:YES completion:nil];
     }
+}
+
+- (void)showBackup
+{
+    void (^showBackupBlock)() = ^() {
+        [self.settingsNavigationController showBackup];
+    };
+    
+    [self showSettings:showBackupBlock];
+}
+
+- (void)showTwoStep
+{
+    void (^showBackupBlock)() = ^() {
+        [self.settingsNavigationController showTwoStep];
+    };
+    
+    [self showSettings:showBackupBlock];
 }
 
 #pragma mark - Pin Entry Delegates

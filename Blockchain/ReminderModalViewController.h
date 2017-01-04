@@ -18,6 +18,8 @@ typedef NSInteger ReminderType;
 
 @protocol ReminderModalDelegate
 - (void)openMail;
+- (void)showBackup;
+- (void)showTwoStep;
 @end
 
 @interface ReminderModalViewController : UIViewController

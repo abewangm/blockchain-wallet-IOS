@@ -132,6 +132,26 @@
     [self popToRootViewControllerAnimated:NO];
 }
 
+- (void)showBackup
+{
+    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
+        SettingsTableViewController *tableViewController = (SettingsTableViewController *)self.visibleViewController;
+        [tableViewController showBackup];
+    } else {
+        DLog(@"Error: Settings Navigation Controller's visible view controller is not a SettingsTableViewController!");
+    }
+}
+
+- (void)showTwoStep
+{
+    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
+        SettingsTableViewController *tableViewController = (SettingsTableViewController *)self.visibleViewController;
+        [tableViewController showTwoStep];
+    } else {
+        DLog(@"Error: Settings Navigation Controller's visible view controller is not a SettingsTableViewController!");
+    }
+}
+
 #pragma mark Top View Controller Delegate
 
 - (void)showBusyViewWithLoadingText:(NSString *)text

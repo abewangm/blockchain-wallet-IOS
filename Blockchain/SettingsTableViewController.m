@@ -710,6 +710,11 @@ const int aboutPrivacyPolicy = 2;
 
 #pragma mark - Change Two Step
 
+- (void)showTwoStep
+{
+    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
+}
+
 - (void)alertUserToChangeTwoStepVerification
 {
     NSString *alertTitle;
@@ -1120,7 +1125,7 @@ const int aboutPrivacyPolicy = 2;
         }
         case securitySection: {
             if (indexPath.row == securityTwoStep) {
-                [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
+                [self showTwoStep];
                 return;
             } else if (indexPath.row == securityPasswordChange) {
                 [self changePassword];

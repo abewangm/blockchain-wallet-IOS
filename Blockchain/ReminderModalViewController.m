@@ -81,13 +81,13 @@
         detailLabel.text = BC_STRING_REMINDER_BACKUP_MESSAGE;
         iconImageView.image = [UIImage imageNamed:@"lock_large"];
         [continueButton setTitle:BC_STRING_BACKUP forState:UIControlStateNormal];
-        [continueButton addTarget:self action:@selector(openBackup) forControlEvents:UIControlEventTouchUpInside];
+        [continueButton addTarget:self action:@selector(showBackup) forControlEvents:UIControlEventTouchUpInside];
     } else if (self.reminderType == ReminderTypeTwoFactor) {
         titleLabel.text = BC_STRING_REMINDER_TWO_FACTOR_TITLE;
         detailLabel.text = BC_STRING_REMINDER_TWO_FACTOR_MESSAGE;
         iconImageView.image = [UIImage imageNamed:@"mobile_large"];
         [continueButton setTitle:BC_STRING_ENABLE_TWO_STEP forState:UIControlStateNormal];
-        [continueButton addTarget:self action:@selector(openTwoStep) forControlEvents:UIControlEventTouchUpInside];
+        [continueButton addTarget:self action:@selector(showTwoStep) forControlEvents:UIControlEventTouchUpInside];
     }
     
     [detailLabel sizeToFit];
@@ -99,14 +99,18 @@
     [self.delegate openMail];
 }
 
-- (void)openBackup
+- (void)showBackup
 {
-    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.delegate showBackup];
+    }];
 }
 
-- (void)openTwoStep
+- (void)showTwoStep
 {
-    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.delegate showTwoStep];
+    }];
 }
 
 - (void)close
