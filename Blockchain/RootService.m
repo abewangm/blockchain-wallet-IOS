@@ -2205,7 +2205,16 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:1];
     
-    [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT]) {
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MM dd, yyyy"];
+        NSDate *endSurveyDate = [dateFormat dateFromString:DATE_SURVEY_END];
+        
+        if ([endSurveyDate timeIntervalSinceNow] > 0.0) {
+            [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
+        }
+    }
 }
 
 - (IBAction)sendCoinsClicked:(UIButton *)sender
@@ -2530,6 +2539,8 @@ void (^secondPasswordSuccess)(NSString *);
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
     
     [self.tabViewController presentViewController:alert animated:YES completion:nil];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT];
 }
 
 #pragma mark - Pin Entry Delegates
