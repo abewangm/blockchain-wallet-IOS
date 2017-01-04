@@ -87,7 +87,7 @@
         detailLabel.text = BC_STRING_REMINDER_TWO_FACTOR_MESSAGE;
         iconImageView.image = [UIImage imageNamed:@"mobile_large"];
         [continueButton setTitle:BC_STRING_ENABLE_TWO_STEP forState:UIControlStateNormal];
-        [continueButton addTarget:self action:@selector(openBackup) forControlEvents:UIControlEventTouchUpInside];
+        [continueButton addTarget:self action:@selector(openTwoStep) forControlEvents:UIControlEventTouchUpInside];
     }
     
     [detailLabel sizeToFit];
@@ -100,6 +100,11 @@
 }
 
 - (void)openBackup
+{
+    
+}
+
+- (void)openTwoStep
 {
     
 }

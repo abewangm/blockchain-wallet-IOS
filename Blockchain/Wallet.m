@@ -768,9 +768,9 @@
     }
 }
 
-- (void)resetBackupStatus
+- (void)resetSyncStatus
 {
-    // Some changes to the wallet requiring backup afterwards need only specific updates to the UI; reloading the entire Receive screen, for example, is not necessary when setting the default account. Unfortunately information about the specific function that triggers backup is lost by the time multiaddress is called.
+    // Some changes to the wallet requiring syncing afterwards need only specific updates to the UI; reloading the entire Receive screen, for example, is not necessary when setting the default account. Unfortunately information about the specific function that triggers backup is lost by the time multiaddress is called.
     
     self.isSettingDefaultAccount = NO;
 }
@@ -2518,7 +2518,7 @@
         DLog(@"Error: delegate of class %@ does not respond to selector didFailBackupWallet!", [delegate class]);
     }
     
-    [self resetBackupStatus];
+    [self resetSyncStatus];
 }
 
 - (void)on_backup_wallet_success

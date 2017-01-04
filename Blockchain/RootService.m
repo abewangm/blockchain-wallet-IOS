@@ -53,6 +53,7 @@ RootService * app;
 @synthesize latestResponse;
 
 BOOL showSendCoins = NO;
+BOOL showTwoFactorReminder = NO;
 
 SideMenuViewController *sideMenuViewController;
 UIImageView *curtainImageView;
@@ -811,10 +812,8 @@ void (^secondPasswordSuccess)(NSString *);
         [app showPinModalAsView:NO];
     } else {
         self.wallet.isNew = NO;
+        [self showSecurityReminder];
     }
-    
-    // Testing only - remove before committing
-    [self showEmailVerificationInstructions];
     
     [_sendViewController reload];
     
@@ -867,13 +866,20 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)getAccountInfo
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrencySymbolsAfterAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     [app.wallet getAccountInfo];
 }
 
-- (void)getCurrencySymbolsAfterAccountInfo
+- (void)didGetAccountInfo
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    
+    if (showTwoFactorReminder) {
+        showTwoFactorReminder = NO;
+        if (![app.wallet hasEnabledTwoStep]) {
+            [self showTwoFactorInstructions];
+        }
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAfterGettingCurrencySymbols) name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
     [app.wallet getAllCurrencySymbols];
@@ -1418,9 +1424,11 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self.loginTimer invalidate];
     
-    [self.wallet resetBackupStatus];
+    [self.wallet resetSyncStatus];
     
     [self.wallet loadBlankWallet];
+    
+    self.wallet.hasLoadedAccountInfo = NO;
     
     self.latestResponse = nil;
     
@@ -1958,11 +1966,53 @@ void (^secondPasswordSuccess)(NSString *);
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
 }
 
+- (void)showSecurityReminder
+{
+    if (self.latestResponse.transactions.count > 0) {
+        if (![app.wallet isRecoveryPhraseVerified]) {
+            [self showBackupInstructions];
+        } else {
+            [self checkIfSettingsLoadedAndShowTwoFactorReminder];
+        }
+    } else {
+        [self checkIfSettingsLoadedAndShowTwoFactorReminder];
+    }
+}
+
+- (void)checkIfSettingsLoadedAndShowTwoFactorReminder
+{
+    if (self.wallet.hasLoadedAccountInfo) {
+        if (![app.wallet hasEnabledTwoStep]) {
+            [self showTwoFactorInstructions];
+        }
+    } else {
+        showTwoFactorReminder = YES;
+    }
+}
+
 - (void)showEmailVerificationInstructions
 {
-    ReminderModalViewController *emailController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeTwoFactor];
+    ReminderModalViewController *emailController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeEmail];
     emailController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:emailController];
+    navigationController.navigationBarHidden = YES;
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)showBackupInstructions
+{
+    ReminderModalViewController *backupController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeBackup];
+    backupController.delegate = self;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:backupController];
+    navigationController.navigationBarHidden = YES;
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)showTwoFactorInstructions
+{
+    ReminderModalViewController *twoFactorController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeTwoFactor];
+    twoFactorController.delegate = self;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:twoFactorController];
     navigationController.navigationBarHidden = YES;
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
@@ -2834,6 +2884,8 @@ void (^secondPasswordSuccess)(NSString *);
                 if (app.wallet.isNew) {
                     app.wallet.isNew = NO;
                     [self showEmailVerificationInstructions];
+                } else {
+                    [self showSecurityReminder];
                 }
             } else {
                 [self forceHDUpgradeForLegacyWallets];
