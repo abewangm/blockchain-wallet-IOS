@@ -119,6 +119,8 @@
 
 #define BC_STRING_OK NSLocalizedString(@"OK", nil)
 #define BC_STRING_OPEN_MAIL_APP NSLocalizedString(@"Open Mail App", nil)
+#define BC_STRING_CANNOT_OPEN_MAIL_APP NSLocalizedString(@"Cannot open Mail App", nil)
+#define BC_STRING_CANNOT_OPEN_MAIL_APP_URL_ARGUMENT NSLocalizedString(@"Cannot open URL %@", nil)
 #define BC_STRING_FAILED_TO_LOAD_WALLET_TITLE NSLocalizedString(@"Failed To Load Wallet", nil)
 
 #define BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE NSLocalizedString(@"Failed to validate server certificate", nil)
@@ -306,7 +308,12 @@
 #define BC_STRING_UPDATE NSLocalizedString(@"Update", nil)
 #define BC_STRING_DISABLED NSLocalizedString(@"Disabled", nil)
 #define BC_STRING_REMINDER_CHECK_EMAIL_TITLE NSLocalizedString(@"Check your inbox", nil)
+#define BC_STRING_GO_TO_MAIL NSLocalizedString(@"Go to Mail", nil)
 #define BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE NSLocalizedString(@"Look for an email from Blockchain and click the verification link to complete your wallet setup.", nil)
+#define BC_STRING_REMINDER_BACKUP_TITLE NSLocalizedString(@"Backup your funds", nil)
+#define BC_STRING_REMINDER_BACKUP_MESSAGE NSLocalizedString(@"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password.", nil)
+#define BC_STRING_REMINDER_TWO_FACTOR_TITLE NSLocalizedString(@"2-step verification", nil)
+#define BC_STRING_REMINDER_TWO_FACTOR_MESSAGE NSLocalizedString(@"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security.", nil)
 #define BC_STRING_SECURITY_CENTER_INSTRUCTIONS NSLocalizedString(@"Complete the steps below for ultimate security", nil)
 #define BC_STRING_SECURITY_CENTER_COMPLETED NSLocalizedString(@"Security Center completed - your wallet is safe and secure", nil)
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)

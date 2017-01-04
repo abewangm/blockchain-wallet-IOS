@@ -16,6 +16,11 @@ enum {
 
 typedef NSInteger ReminderType;
 
+@protocol ReminderModalDelegate
+- (void)openMail;
+@end
+
 @interface ReminderModalViewController : UIViewController
-- (id)initWithReminderType:(ReminderType *)reminderType;
+@property (nonatomic) id <ReminderModalDelegate> delegate;
+- (id)initWithReminderType:(ReminderType)reminderType;
 @end

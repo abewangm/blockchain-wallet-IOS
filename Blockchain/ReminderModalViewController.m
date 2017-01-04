@@ -9,12 +9,12 @@
 #import "ReminderModalViewController.h"
 
 @interface ReminderModalViewController ()
-@property (nonatomic, readonly) ReminderType *reminderType;
+@property (nonatomic, readonly) ReminderType reminderType;
 @end
 
 @implementation ReminderModalViewController
 
-- (id)initWithReminderType:(ReminderType *)reminderType
+- (id)initWithReminderType:(ReminderType)reminderType
 {
     if (self = [super init]) {
         _reminderType = reminderType;
@@ -34,9 +34,7 @@
     UIButton *continueButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
     continueButton.center = CGPointMake(centerX, self.view.frame.size.height - 100);
     continueButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [continueButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
     continueButton.layer.cornerRadius = 8;
-    [continueButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:continueButton];
     
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
@@ -56,25 +54,54 @@
     [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
     
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
-    iconImageView.image = [UIImage imageNamed:@"email_square"];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
     iconImageView.center = CGPointMake(centerX, centerY - 150);
+    iconImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:iconImageView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconImageView.frame.origin.y + iconImageView.frame.size.height + 16, self.view.frame.size.width - 100, 30)];
     titleLabel.font = [UIFont boldSystemFontOfSize:20];
-    titleLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_TITLE;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.center = CGPointMake(iconImageView.center.x, titleLabel.center.y);
     [self.view addSubview:titleLabel];
     
     UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, 270, 200)];
     detailLabel.numberOfLines = 0;
-    detailLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE;
     detailLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:detailLabel];
+    
+    if (self.reminderType == ReminderTypeEmail) {
+        titleLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_TITLE;
+        detailLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE;
+        iconImageView.image = [UIImage imageNamed:@"email_square"];
+        [continueButton setTitle:BC_STRING_GO_TO_MAIL forState:UIControlStateNormal];
+        [continueButton addTarget:self action:@selector(openMail) forControlEvents:UIControlEventTouchUpInside];
+    } else if (self.reminderType == ReminderTypeBackup) {
+        titleLabel.text = BC_STRING_REMINDER_BACKUP_TITLE;
+        detailLabel.text = BC_STRING_REMINDER_BACKUP_MESSAGE;
+        iconImageView.image = [UIImage imageNamed:@"lock_large"];
+        [continueButton setTitle:BC_STRING_BACKUP forState:UIControlStateNormal];
+        [continueButton addTarget:self action:@selector(openBackup) forControlEvents:UIControlEventTouchUpInside];
+    } else if (self.reminderType == ReminderTypeTwoFactor) {
+        titleLabel.text = BC_STRING_REMINDER_TWO_FACTOR_TITLE;
+        detailLabel.text = BC_STRING_REMINDER_TWO_FACTOR_MESSAGE;
+        iconImageView.image = [UIImage imageNamed:@"mobile_large"];
+        [continueButton setTitle:BC_STRING_ENABLE_TWO_STEP forState:UIControlStateNormal];
+        [continueButton addTarget:self action:@selector(openBackup) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
     [detailLabel sizeToFit];
     detailLabel.center = CGPointMake(iconImageView.center.x, detailLabel.center.y);
-    [self.view addSubview:detailLabel];
+}
+
+- (void)openMail
+{
+    [self.delegate openMail];
+}
+
+- (void)openBackup
+{
+    
 }
 
 - (void)close

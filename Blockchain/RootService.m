@@ -43,7 +43,6 @@
 #import "KeychainItemWrapper+SwipeAddresses.h"
 #import "NSString+SHA256.h"
 #import "Blockchain-Swift.h"
-#import "ReminderModalViewController.h"
 
 @implementation RootService
 
@@ -1961,7 +1960,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showEmailVerificationInstructions
 {
-    ReminderModalViewController *emailController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeEmail];
+    ReminderModalViewController *emailController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeTwoFactor];
+    emailController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:emailController];
     navigationController.navigationBarHidden = YES;
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
@@ -2478,10 +2478,7 @@ void (^secondPasswordSuccess)(NSString *);
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE message:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OPEN_MAIL_APP style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
-        if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
-            [[UIApplication sharedApplication] openURL:mailURL];
-        }
+        [self openMail];
     }]];
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
@@ -2541,6 +2538,18 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabViewController presentViewController:alert animated:YES completion:nil];
     
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT];
+}
+
+- (void)openMail
+{
+    NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
+    if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
+        [[UIApplication sharedApplication] openURL:mailURL];
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_CANNOT_OPEN_MAIL_APP_URL_ARGUMENT, PREFIX_MAIL_URI] preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.tabViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 #pragma mark - Pin Entry Delegates
