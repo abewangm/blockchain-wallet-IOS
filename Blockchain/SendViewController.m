@@ -399,7 +399,7 @@ BOOL displayingLocalSymbolSend;
                      
                      if (promptDate) {
                          NSTimeInterval secondsSincePrompt = [[NSDate date] timeIntervalSinceDate:promptDate];
-                         NSTimeInterval secondsUntilPromptingAgain = APP_STORE_REVIEW_PROMPT_TIME;
+                         NSTimeInterval secondsUntilPromptingAgain = TIME_INTERVAL_APP_STORE_REVIEW_PROMPT;
 #ifdef ENABLE_DEBUG_MENU
                          id customTimeValue = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
                          if (customTimeValue) {

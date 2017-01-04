@@ -812,7 +812,19 @@ void (^secondPasswordSuccess)(NSString *);
         [app showPinModalAsView:NO];
     } else {
         self.wallet.isNew = NO;
-        [self showSecurityReminder];
+        
+        NSDate *dateOfLastReminder = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
+        
+        if (dateOfLastReminder) {
+            if ([dateOfLastReminder timeIntervalSinceNow] < -TIME_INTERVAL_SECURITY_REMINDER_PROMPT) {
+                [self showSecurityReminder];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
+            }
+        } else {
+            [self showSecurityReminder];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
+        }
+        
     }
     
     [_sendViewController reload];

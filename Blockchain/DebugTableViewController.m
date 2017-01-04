@@ -243,14 +243,14 @@ const int rowTestnet = 9;
             }]];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
             [alert addAction:[UIAlertAction actionWithTitle:DEBUG_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:APP_STORE_REVIEW_PROMPT_TIME] forKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:TIME_INTERVAL_APP_STORE_REVIEW_PROMPT] forKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
             }]];
             [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
                 textField.keyboardType = UIKeyboardTypeNumberPad;
                 
                 id customTimeValue = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
                 
-                textField.text = [NSString stringWithFormat:@"%i", customTimeValue ? [customTimeValue intValue] : APP_STORE_REVIEW_PROMPT_TIME];
+                textField.text = [NSString stringWithFormat:@"%i", customTimeValue ? [customTimeValue intValue] : TIME_INTERVAL_APP_STORE_REVIEW_PROMPT];
             }];
             [self presentViewController:alert animated:YES completion:nil];
             break;
