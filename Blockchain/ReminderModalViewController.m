@@ -74,7 +74,7 @@
         titleLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_TITLE;
         detailLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE;
         iconImageView.image = [UIImage imageNamed:@"email_square"];
-        [continueButton setTitle:BC_STRING_GO_TO_MAIL forState:UIControlStateNormal];
+        [continueButton setTitle:BC_STRING_CONTINUE_TO_MAIL forState:UIControlStateNormal];
         [continueButton addTarget:self action:@selector(openMail) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel *emailLabel = [[UILabel alloc] initWithFrame:titleLabel.frame];
@@ -90,7 +90,7 @@
         titleLabel.text = BC_STRING_REMINDER_BACKUP_TITLE;
         detailLabel.text = BC_STRING_REMINDER_BACKUP_MESSAGE;
         iconImageView.image = [UIImage imageNamed:@"lock_large"];
-        [continueButton setTitle:BC_STRING_BACKUP forState:UIControlStateNormal];
+        [continueButton setTitle:BC_STRING_REMINDER_BACKUP_NOW forState:UIControlStateNormal];
         [continueButton addTarget:self action:@selector(showBackup) forControlEvents:UIControlEventTouchUpInside];
     } else if (self.reminderType == ReminderTypeTwoFactor) {
         titleLabel.text = BC_STRING_REMINDER_TWO_FACTOR_TITLE;
