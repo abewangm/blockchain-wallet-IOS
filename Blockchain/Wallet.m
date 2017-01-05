@@ -656,8 +656,8 @@
         [weakSelf on_read_invitation_success:[invitation toDictionary] identifier:identifier];
     };
     
-    self.context[@"objc_on_read_invitation_sent_success"] = ^() {
-        [weakSelf on_read_invitation_sent_success];
+    self.context[@"objc_on_complete_relation_success"] = ^() {
+        [weakSelf on_complete_relation_success];
     };
     
     self.context[@"objc_on_accept_relation_success"] = ^(NSString *name, NSString *invitation) {
@@ -1955,10 +1955,10 @@
     [self.context evaluateScript:string];
 }
 
-- (void)readInvitationSent:(NSString *)identifier
+- (void)completeRelation:(NSString *)identifier
 {
     // Do not use escape string here - already escaped in ContactsViewController.
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readInvitationSent(\"%@\")", [identifier escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.completeRelation(\"%@\")", [identifier escapeStringForJS]]];
 }
 
 - (void)acceptRelation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier
@@ -3127,11 +3127,11 @@
     }
 }
 
-- (void)on_read_invitation_sent_success
+- (void)on_complete_relation_success
 {
     DLog(@"on_read_invitation_sent_success");
-    if ([self.delegate respondsToSelector:@selector(didReadInvitationSent)]) {
-        [self.delegate didReadInvitationSent];
+    if ([self.delegate respondsToSelector:@selector(didCompleteRelation)]) {
+        [self.delegate didCompleteRelation];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didReadInvitationSent!", [delegate class]);
     }

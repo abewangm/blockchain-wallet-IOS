@@ -103,7 +103,7 @@
 - (void)setupBackupTransferAll:(id)transferAllController;
 - (void)didCreateInvitation:(NSDictionary *)invitation;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
-- (void)didReadInvitationSent;
+- (void)didCompleteRelation;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didChangeTrust;
 - (void)didFetchExtendedPublicKey;

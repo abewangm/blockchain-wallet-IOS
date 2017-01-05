@@ -1922,15 +1922,13 @@ MyWalletPhone.readInvitation = function(invitation, invitationString) {
     objc_on_read_invitation_success(invitation, invitationString);
 }
 
-MyWalletPhone.readInvitationSent = function(invitation) {
+MyWalletPhone.completeRelation = function(invitation) {
     
-    var success = function(info) {
-        objc_on_read_invitation_sent_success();
+    var success = function() {
+        objc_on_complete_relation_success();
     };
     
-    var save = MyWalletPhone.getSaveContactsFunction();
-    
-    MyWallet.wallet.contacts.readInvitationSent(invitation).then(save).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
+    MyWallet.wallet.contacts.completeRelation(invitation).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
 }
 
 MyWalletPhone.acceptRelation = function(invitation, name, identifier) {

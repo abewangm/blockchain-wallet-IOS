@@ -15,7 +15,7 @@
 - (void)didCreateInvitation:(NSDictionary *)invitationDict;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
-- (void)didReadInvitationSent;
+- (void)didCompleteRelation;
 
 // Messages Controller
 - (void)didGetMessages;

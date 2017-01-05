@@ -1890,9 +1890,9 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didReadInvitation:invitation identifier:identifier];
 }
 
-- (void)didReadInvitationSent
+- (void)didCompleteRelation
 {
-    [self.contactsViewController didReadInvitationSent];
+    [self.contactsViewController didCompleteRelation];
 }
 
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name

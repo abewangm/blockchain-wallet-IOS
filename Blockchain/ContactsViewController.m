@@ -380,7 +380,7 @@ typedef enum {
     [self reload];
 }
 
-- (void)didReadInvitationSent
+- (void)didCompleteRelation
 {
     DLog(@"Read invitation sent success");
 }
