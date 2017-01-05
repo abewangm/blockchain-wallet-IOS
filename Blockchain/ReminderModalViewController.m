@@ -36,7 +36,7 @@
     UIButton *continueButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
     continueButton.center = CGPointMake(centerX, self.view.frame.size.height - 90);
     continueButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    continueButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    continueButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
     continueButton.layer.cornerRadius = 4;
     [self.view addSubview:continueButton];
     
@@ -45,7 +45,7 @@
     cancelButton.backgroundColor = [UIColor whiteColor];
     [cancelButton setTitleColor:COLOR_TEXT_GRAY forState:UIControlStateNormal];
     [cancelButton setTitle:BC_STRING_ILL_DO_THIS_LATER forState:UIControlStateNormal];
-    cancelButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
     cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     cancelButton.layer.cornerRadius = 4;
     [cancelButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
