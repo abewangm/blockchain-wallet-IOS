@@ -26,29 +26,34 @@
 {
     [super viewDidLoad];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat centerX = self.view.center.x;
     CGFloat centerY = self.view.center.y;
     
     UIButton *continueButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
-    continueButton.center = CGPointMake(centerX, self.view.frame.size.height - 100);
+    continueButton.center = CGPointMake(centerX, self.view.frame.size.height - 90);
     continueButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    continueButton.layer.cornerRadius = 8;
+    continueButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    continueButton.layer.cornerRadius = 4;
     [self.view addSubview:continueButton];
     
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
-    cancelButton.center = CGPointMake(centerX, self.view.frame.size.height - 50);
+    cancelButton.center = CGPointMake(centerX, self.view.frame.size.height - 40);
     cancelButton.backgroundColor = [UIColor whiteColor];
     [cancelButton setTitleColor:COLOR_TEXT_GRAY forState:UIControlStateNormal];
     [cancelButton setTitle:BC_STRING_ILL_DO_THIS_LATER forState:UIControlStateNormal];
+    cancelButton.titleLabel.font = [UIFont systemFontOfSize:16];
     cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    cancelButton.layer.cornerRadius = 16;
+    cancelButton.layer.cornerRadius = 4;
     [cancelButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelButton];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 46, 26, 20, 20)];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 56, 24, 40, 40)];
     [closeButton setImage:[UIImage imageNamed:@"close_large"] forState:UIControlStateNormal];
+    closeButton.imageEdgeInsets = UIEdgeInsetsMake(12, 12, 12, 12);
     closeButton.imageView.image = [closeButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [closeButton setTintColor:COLOR_BLOCKCHAIN_BLUE];
     [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
@@ -63,10 +68,12 @@
     titleLabel.font = [UIFont boldSystemFontOfSize:20];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.center = CGPointMake(iconImageView.center.x, titleLabel.center.y);
+    titleLabel.textColor = [UIColor darkGrayColor];
     [self.view addSubview:titleLabel];
     
     UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, 270, 200)];
     detailLabel.numberOfLines = 0;
+    detailLabel.textColor = [UIColor darkGrayColor];
     detailLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:detailLabel];
     
@@ -82,6 +89,7 @@
         emailLabel.text = self.displayString;
         emailLabel.textAlignment = NSTextAlignmentCenter;
         emailLabel.frame = CGRectOffset(emailLabel.frame, 0, 38);
+        emailLabel.textColor = [UIColor darkGrayColor];
         
         [self.view addSubview:emailLabel];
         
@@ -102,6 +110,13 @@
     
     [detailLabel sizeToFit];
     detailLabel.center = CGPointMake(iconImageView.center.x, detailLabel.center.y);
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)openMail
