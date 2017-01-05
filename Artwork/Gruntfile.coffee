@@ -68,8 +68,8 @@ module.exports = (grunt) ->
     "shell:svg:blockchain_wallet_logo:48:232"
     "shell:svg:pencil:26"
     "shell:svg:alert:26"
-    "shell:svg:email_square:72:90"
-    "shell:svg:lock_large:100:76"
-    "shell:svg:mobile_large:100:68"
+    "shell:svg:email_square:65:81"
+    "shell:svg:lock_large:90:68"
+    "shell:svg:mobile_large:90:61"
     "shell:svg:close_large:30"
   ]
