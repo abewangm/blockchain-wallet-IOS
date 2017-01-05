@@ -660,8 +660,8 @@
         [weakSelf on_read_invitation_sent_success];
     };
     
-    self.context[@"objc_on_accept_invitation_success"] = ^(JSValue *invitation, NSString *name) {
-        [weakSelf on_accept_invitation_success:invitation name:name];
+    self.context[@"objc_on_accept_relation_success"] = ^(NSString *name, NSString *invitation) {
+        [weakSelf on_accept_relation_success:invitation name:name];
     };
     
     self.context[@"objc_on_add_trust_success"] = ^(JSValue *result) {
@@ -1951,7 +1951,8 @@
 - (void)readInvitation:(NSString *)invitation
 {
     // Do not use escape string here - already escaped in ContactsViewController.
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readInvitation(%@)", invitation]];
+    NSString *string = [NSString stringWithFormat:@"MyWalletPhone.readInvitation(%@, \"%@\")", invitation, [invitation escapeStringForJS]];
+    [self.context evaluateScript:string];
 }
 
 - (void)readInvitationSent:(NSString *)identifier
@@ -1960,9 +1961,9 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readInvitationSent(\"%@\")", [identifier escapeStringForJS]]];
 }
 
-- (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier
+- (void)acceptRelation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.acceptInvitation(\"%@\", \"%@\", \"%@\")", [invitation escapeStringForJS], [name escapeStringForJS], [identifier escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.acceptRelation(\"%@\", \"%@\", \"%@\")", [invitation escapeStringForJS], [name escapeStringForJS], [identifier escapeStringForJS]]];
 }
 
 - (void)addTrust:(NSString *)contactIdentifier
@@ -3136,11 +3137,11 @@
     }
 }
 
-- (void)on_accept_invitation_success:(JSValue *)invitation name:(NSString *)name
+- (void)on_accept_relation_success:(NSString *)invitation name:(NSString *)name
 {
     DLog(@"on_accept_invitation_success");
-    if ([self.delegate respondsToSelector:@selector(didAcceptInvitation:name:)]) {
-        [self.delegate didAcceptInvitation:[invitation toDictionary] name:name];
+    if ([self.delegate respondsToSelector:@selector(didAcceptRelation:name:)]) {
+        [self.delegate didAcceptRelation:invitation name:name];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didAcceptInvitation!", [delegate class]);
     }

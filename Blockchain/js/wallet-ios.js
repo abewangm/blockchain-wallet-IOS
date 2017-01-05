@@ -1918,13 +1918,8 @@ MyWalletPhone.createContact = function(name, id) {
     MyWallet.wallet.contacts.createInvitation({name: name}, {id: id}).then(save).then(success).catch(function(e){console.log('Error creating contact');console.log(e)});
 }
 
-MyWalletPhone.readInvitation = function(invitation) {
-    
-    var success = function(info) {
-        objc_on_read_invitation_success(invitation, info.id);
-    };
-    
-    MyWallet.wallet.contacts.readInvitation(invitation).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
+MyWalletPhone.readInvitation = function(invitation, invitationString) {
+    objc_on_read_invitation_success(invitation, invitationString);
 }
 
 MyWalletPhone.readInvitationSent = function(invitation) {
@@ -1938,15 +1933,13 @@ MyWalletPhone.readInvitationSent = function(invitation) {
     MyWallet.wallet.contacts.readInvitationSent(invitation).then(save).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
 }
 
-MyWalletPhone.acceptInvitation = function(invitation, name, identifier) {
+MyWalletPhone.acceptRelation = function(invitation, name, identifier) {
     
-    var success = function(invitation) {
-        objc_on_accept_invitation_success(invitation, name, identifier);
+    var success = function() {
+        objc_on_accept_relation_success(name, identifier);
     };
-    
-    var save = MyWalletPhone.getSaveContactsFunction();
-        
-    MyWallet.wallet.contacts.acceptInvitation(invitation).then(save).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
+
+    MyWallet.wallet.contacts.acceptRelation({name: name, invitationReceived:identifier}).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
 }
 
 MyWalletPhone.addTrust = function(contactIdentifier) {

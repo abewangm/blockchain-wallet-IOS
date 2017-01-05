@@ -104,7 +104,7 @@
 - (void)didCreateInvitation:(NSDictionary *)invitation;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didReadInvitationSent;
-- (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name;
+- (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didChangeTrust;
 - (void)didFetchExtendedPublicKey;
 - (void)didGetMessages;
@@ -366,8 +366,8 @@
 - (void)sendMessage:(NSString *)message toContact:(NSString *)contactIdentifier;
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
-- (void)readInvitationSent:(NSString *)identifier;
-- (void)acceptInvitation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
+- (void)completeRelation:(NSString *)identifier;
+- (void)acceptRelation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
 - (void)addTrust:(NSString *)contactIdentifier;
 - (void)deleteTrust:(NSString *)contactIdentifier;
 - (void)fetchExtendedPublicKey:(NSString *)contactIdentifier;

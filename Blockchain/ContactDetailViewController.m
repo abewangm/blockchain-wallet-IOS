@@ -141,7 +141,7 @@ const int rowDelete = 0;
                 [self showExtendedPublicKey];
             }
         } else if (indexPath.row == rowFetchMDID) {
-            [app.wallet readInvitationSent:self.contact.identifier];
+            [app.wallet completeRelation:self.contact.identifier];
         } else {
             DLog(@"Invalid selected row for main section");
         }

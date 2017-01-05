@@ -261,8 +261,7 @@ typedef enum {
 
 - (void)prepareToReadInvitation
 {
-    // [self startReadingQRCode];
-    // [self acceptInvitation:textField.text];
+    [self startReadingQRCode];
 }
 
 - (BOOL)startReadingQRCode
@@ -337,7 +336,7 @@ typedef enum {
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ADD_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_SHOW_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [app.wallet acceptInvitation:identifier name:name identifier:invitationID];
+        [app.wallet acceptRelation:identifier name:name identifier:invitationID];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
@@ -367,14 +366,14 @@ typedef enum {
 
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier
 {
-    [self showInvitationAlert:invitation identifier:identifier];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self showInvitationAlert:invitation identifier:identifier];
+    });
 }
 
-- (void)didAcceptInvitation:(NSDictionary *)invitation name:(NSString *)name
+- (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name
 {
-    NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_ID];
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ADDED_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ADDED_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitation] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
     
@@ -405,11 +404,6 @@ typedef enum {
         qrCodeView.frame = frame;
         
         [self.createContactNavigationController pushViewController:viewController animated:YES];
-        
-        [self.createContactNavigationController createTopRightButton];
-        self.createContactNavigationController.topRightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 44, 8, 16);
-        [self.createContactNavigationController.topRightButton setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
-        [self.createContactNavigationController.topRightButton addTarget:self action:@selector(shareInvitationClicked) forControlEvents:UIControlEventTouchUpInside];
     } else if (self.contactType == CreateContactTypeLink) {
         [self shareInvitationClicked];
     } else {
