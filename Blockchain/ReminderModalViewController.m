@@ -59,7 +59,7 @@
     [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
     
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     iconImageView.center = CGPointMake(centerX, centerY - 150);
     iconImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:iconImageView];
