@@ -73,13 +73,16 @@
     
     UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, 270, 200)];
     detailLabel.numberOfLines = 0;
+    detailLabel.font = [UIFont systemFontOfSize:14];
     detailLabel.textColor = [UIColor darkGrayColor];
     detailLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:detailLabel];
     
+    NSString *detailLabelString;
+    
     if (self.reminderType == ReminderTypeEmail) {
         titleLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_TITLE;
-        detailLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE;
+        detailLabelString = BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE;
         iconImageView.image = [UIImage imageNamed:@"email_square"];
         [continueButton setTitle:BC_STRING_CONTINUE_TO_MAIL forState:UIControlStateNormal];
         [continueButton addTarget:self action:@selector(openMail) forControlEvents:UIControlEventTouchUpInside];
@@ -96,17 +99,25 @@
         detailLabel.frame = CGRectOffset(emailLabel.frame, 0, 38);
     } else if (self.reminderType == ReminderTypeBackup) {
         titleLabel.text = BC_STRING_REMINDER_BACKUP_TITLE;
-        detailLabel.text = BC_STRING_REMINDER_BACKUP_MESSAGE;
+        detailLabelString = BC_STRING_REMINDER_BACKUP_MESSAGE;
         iconImageView.image = [UIImage imageNamed:@"lock_large"];
         [continueButton setTitle:BC_STRING_REMINDER_BACKUP_NOW forState:UIControlStateNormal];
         [continueButton addTarget:self action:@selector(showBackup) forControlEvents:UIControlEventTouchUpInside];
     } else if (self.reminderType == ReminderTypeTwoFactor) {
         titleLabel.text = BC_STRING_REMINDER_TWO_FACTOR_TITLE;
-        detailLabel.text = BC_STRING_REMINDER_TWO_FACTOR_MESSAGE;
+        detailLabelString = BC_STRING_REMINDER_TWO_FACTOR_MESSAGE;
         iconImageView.image = [UIImage imageNamed:@"mobile_large"];
         [continueButton setTitle:BC_STRING_ENABLE_TWO_STEP forState:UIControlStateNormal];
         [continueButton addTarget:self action:@selector(showTwoStep) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:detailLabelString];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    paragraphStyle.lineSpacing = 4;
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, detailLabelString.length)];
+    
+    detailLabel.attributedText = attributedString;
     
     [detailLabel sizeToFit];
     detailLabel.center = CGPointMake(iconImageView.center.x, detailLabel.center.y);
