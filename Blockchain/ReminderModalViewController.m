@@ -76,6 +76,16 @@
         iconImageView.image = [UIImage imageNamed:@"email_square"];
         [continueButton setTitle:BC_STRING_GO_TO_MAIL forState:UIControlStateNormal];
         [continueButton addTarget:self action:@selector(openMail) forControlEvents:UIControlEventTouchUpInside];
+        
+        UILabel *emailLabel = [[UILabel alloc] initWithFrame:titleLabel.frame];
+        emailLabel.font = [UIFont boldSystemFontOfSize:14];
+        emailLabel.text = self.displayString;
+        emailLabel.textAlignment = NSTextAlignmentCenter;
+        emailLabel.frame = CGRectOffset(emailLabel.frame, 0, 38);
+        
+        [self.view addSubview:emailLabel];
+        
+        detailLabel.frame = CGRectOffset(emailLabel.frame, 0, 38);
     } else if (self.reminderType == ReminderTypeBackup) {
         titleLabel.text = BC_STRING_REMINDER_BACKUP_TITLE;
         detailLabel.text = BC_STRING_REMINDER_BACKUP_MESSAGE;

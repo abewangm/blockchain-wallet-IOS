@@ -53,7 +53,16 @@ RootService * app;
 @synthesize latestResponse;
 
 BOOL showSendCoins = NO;
-BOOL showTwoFactorReminder = NO;
+
+enum {
+    ShowReminderTypeNone,
+    ShowReminderTypeTwoFactor,
+    ShowReminderTypeEmail
+};
+
+typedef NSInteger ShowReminderType;
+
+ShowReminderType showReminderType;
 
 SideMenuViewController *sideMenuViewController;
 UIImageView *curtainImageView;
@@ -885,10 +894,13 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     
-    if (showTwoFactorReminder) {
-        showTwoFactorReminder = NO;
+    if (showReminderType == ShowReminderTypeTwoFactor) {
         if (![app.wallet hasEnabledTwoStep]) {
             [self showTwoFactorReminder];
+        }
+    } else if (showReminderType == ShowReminderTypeEmail) {
+        if (![app.wallet hasVerifiedEmail]) {
+            [self showEmailVerificationReminder];
         }
     }
     
@@ -2002,13 +2014,25 @@ void (^secondPasswordSuccess)(NSString *);
             [self showTwoFactorReminder];
         }
     } else {
-        showTwoFactorReminder = YES;
+        showReminderType = ShowReminderTypeTwoFactor;
+    }
+}
+
+- (void)checkIfSettingsLoadedAndShowEmailReminder
+{
+    if (self.wallet.hasLoadedAccountInfo) {
+        if (![app.wallet hasVerifiedEmail]) {
+            [self showEmailVerificationReminder];
+        }
+    } else {
+        showReminderType = ShowReminderTypeEmail;
     }
 }
 
 - (void)showEmailVerificationReminder
 {
     ReminderModalViewController *emailController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeEmail];
+    emailController.displayString = [app.wallet getEmail];
     emailController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:emailController];
     navigationController.navigationBarHidden = YES;
@@ -2271,14 +2295,16 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:1];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT]) {
-        
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MM dd, yyyy"];
-        NSDate *endSurveyDate = [dateFormat dateFromString:DATE_SURVEY_END];
-        
-        if ([endSurveyDate timeIntervalSinceNow] > 0.0) {
-            [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
+    if (sender) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT]) {
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"MM dd, yyyy"];
+            NSDate *endSurveyDate = [dateFormat dateFromString:DATE_SURVEY_END];
+            
+            if ([endSurveyDate timeIntervalSinceNow] > 0.0) {
+                [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
+            }
         }
     }
 }
@@ -2917,7 +2943,7 @@ void (^secondPasswordSuccess)(NSString *);
             if (app.wallet.didUpgradeToHd) {
                 if (app.wallet.isNew) {
                     app.wallet.isNew = NO;
-                    [self showEmailVerificationInstructions];
+                    [self checkIfSettingsLoadedAndShowEmailReminder];
                 } else {
                     [self showSecurityReminder];
                 }

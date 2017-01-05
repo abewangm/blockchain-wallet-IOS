@@ -24,5 +24,6 @@ typedef NSInteger ReminderType;
 
 @interface ReminderModalViewController : UIViewController
 @property (nonatomic) id <ReminderModalDelegate> delegate;
+@property (nonatomic) NSString *displayString;
 - (id)initWithReminderType:(ReminderType)reminderType;
 @end
