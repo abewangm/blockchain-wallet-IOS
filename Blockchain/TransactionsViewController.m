@@ -297,7 +297,12 @@ int lastNumberTransactions = INT_MAX;
     Transaction *transaction = [data.transactions firstObject];
     if ([transaction.txType isEqualToString:TX_TYPE_SENT]) return;
     
-    [app paymentReceived:[self getAmountForReceivedTransaction:transaction]];
+    BOOL shouldShowBackupReminder = ([app.wallet getTotalActiveBalance] > 0 &&
+                             data.transactions.count == 1 &&
+                             [transaction.txType isEqualToString:TX_TYPE_RECEIVED] &&
+                             ![app.wallet isRecoveryPhraseVerified]);
+    
+    [app paymentReceived:[self getAmountForReceivedTransaction:transaction] showBackupReminder:shouldShowBackupReminder];
 }
 
 - (void)changeFilterLabel:(NSString *)newText

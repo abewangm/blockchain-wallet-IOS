@@ -553,11 +553,17 @@ NSString *detailLabel;
     }];
 }
 
-- (void)alertUserOfPaymentWithMessage:(NSString *)messageString
+- (void)alertUserOfPaymentWithMessage:(NSString *)messageString showBackupReminder:(BOOL)showBackupReminder;
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_PAYMENT_RECEIVED message:messageString preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder]) [self showKeyboard];
+        
+        if (showBackupReminder) {
+            [app showBackupReminder];
+        } else if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder]) {
+            [self showKeyboard];
+        }
+        
     }]];
     
     [app.window.rootViewController presentViewController:alert animated:YES completion:nil];
@@ -597,12 +603,12 @@ NSString *detailLabel;
     [self setQRPayment];
 }
 
-- (void)paymentReceived:(NSDecimalNumber *)amount
+- (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder
 {
     u_int64_t amountReceived = [[amount decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
     NSString *btcAmountString = [NSNumberFormatter formatMoney:amountReceived localCurrency:NO];
     NSString *localCurrencyAmountString = [NSNumberFormatter formatMoney:amountReceived localCurrency:YES];
-    [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString,localCurrencyAmountString]];
+    [self alertUserOfPaymentWithMessage:[[NSString alloc] initWithFormat:@"%@\n%@", btcAmountString,localCurrencyAmountString] showBackupReminder:showBackupReminder];
 }
 
 - (void)selectDestination

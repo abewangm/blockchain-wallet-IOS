@@ -2037,7 +2037,6 @@
     
     if (self.isNew) {
         self.isNew = NO;
-        [app showEmailVerificationReminder];
     }
     
     [app reloadTransactionFilterLabel];

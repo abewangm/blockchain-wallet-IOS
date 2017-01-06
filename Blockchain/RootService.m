@@ -1998,7 +1998,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showSecurityReminder
 {
-    if (self.latestResponse.transactions.count > 0) {
+    if (self.latestResponse.transactions.count > 0 && [app.wallet getTotalActiveBalance] > 0) {
         if (![app.wallet isRecoveryPhraseVerified]) {
             [self showBackupReminder];
         } else {
@@ -2540,10 +2540,14 @@ void (^secondPasswordSuccess)(NSString *);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[APP_STORE_LINK_PREFIX stringByAppendingString:APP_STORE_ID]]];
 }
 
-- (void)paymentReceived:(NSDecimalNumber *)amount
+- (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder
 {
     if (_tabViewController.selectedIndex == TAB_RECEIVE && !_sendViewController.isSending) {
-        [_receiveViewController paymentReceived:amount];
+        [_receiveViewController paymentReceived:amount showBackupReminder:showBackupReminder];
+    } else {
+        if (showBackupReminder) {
+            [self showBackupReminder];
+        }
     }
 }
 

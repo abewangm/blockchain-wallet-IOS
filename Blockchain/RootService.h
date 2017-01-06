@@ -178,7 +178,7 @@
 - (void)showAccountsAndAddresses;
 - (void)showDebugMenu:(int)presenter;
 - (void)showHdUpgrade;
-- (void)showEmailVerificationReminder;
+- (void)showBackupReminder;
 
 - (void)reloadTransactionFilterLabel;
 
@@ -202,7 +202,7 @@
 
 - (void)setupTransferAllFunds;
 
-- (void)paymentReceived:(NSDecimalNumber *)amount;
+- (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
 
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;

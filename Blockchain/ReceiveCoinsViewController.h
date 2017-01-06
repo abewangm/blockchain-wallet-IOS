@@ -58,7 +58,7 @@
 - (IBAction)labelSaveClicked:(id)sender;
 
 - (void)storeRequestedAmount;
-- (void)paymentReceived:(NSDecimalNumber *)amount;
+- (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
 
 - (void)reload;
 - (void)reloadMainAddress;
