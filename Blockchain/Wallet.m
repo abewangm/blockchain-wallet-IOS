@@ -105,12 +105,12 @@
     };
 
     __weak Wallet *weakSelf = self;
-
-    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* callback, JSValue* timeout) {
+    
+    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* callback, double timeout) {
         
         NSString *uuid = [[NSUUID alloc] init].UUIDString;
         
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:[timeout toInt32]/1000
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:timeout/1000
                                                           target:[NSBlockOperation blockOperationWithBlock:^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [callback callWithArguments:nil];
@@ -121,15 +121,16 @@
                                                          repeats:NO];
         
         weakSelf.timers[uuid] = timer;
+        [timer fire];
     };
     
     dispatch_queue_t jsQueue = dispatch_queue_create("com.some.identifier", DISPATCH_QUEUE_SERIAL);
     
-    self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(int ms, JSValue *callback) {
+    self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(JSValue *callback, double timeout) {
         
         NSString *uuid = [[NSUUID alloc] init].UUIDString;
         
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:ms/1000
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:timeout/1000
                                                           target:[NSBlockOperation blockOperationWithBlock:^{
             dispatch_async(jsQueue, ^{
                 [callback callWithArguments:nil];
@@ -2035,10 +2036,6 @@
 {
     [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE];
     
-    if (self.isNew) {
-        self.isNew = NO;
-    }
-    
     [app reloadTransactionFilterLabel];
 }
 
@@ -2310,10 +2307,6 @@
         [self setupWebSocket];
     }
     
-    if (self.didPairAutomatically) {
-        self.didPairAutomatically = NO;
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE];
-    }
     self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
     self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
     
