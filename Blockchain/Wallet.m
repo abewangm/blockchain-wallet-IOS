@@ -124,15 +124,13 @@
         [timer fire];
     };
     
-    dispatch_queue_t jsQueue = dispatch_queue_create("com.some.identifier", DISPATCH_QUEUE_SERIAL);
-    
     self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(JSValue *callback, double timeout) {
         
         NSString *uuid = [[NSUUID alloc] init].UUIDString;
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:timeout/1000
                                                           target:[NSBlockOperation blockOperationWithBlock:^{
-            dispatch_async(jsQueue, ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
                 [callback callWithArguments:nil];
             });
         }]
