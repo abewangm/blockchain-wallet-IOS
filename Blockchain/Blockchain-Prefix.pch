@@ -478,6 +478,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define WEBSOCKET_CLOSE_REASON_LOGGED_OUT @"Logged out"
 #define WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET @"Decrypted Wallet"
 #define WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS @"Received to swipe address"
+#define WEBSOCKET_CLOSE_REASON_ARCHIVED_UNARCHIVED @"Archived or Unarchived"
 
 #pragma mark - Constants
 
@@ -563,6 +564,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define WEBSOCKET_CODE_LOGGED_OUT 4501
 #define WEBSOCKET_CODE_DECRYPTED_WALLET 4502
 #define WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS 4503
+#define WEBSOCKET_CODE_ARCHIVE_UNARCHIVE 4504
 
 #define TRANSACTION_DESCRIPTION_CHARACTER_LIMIT 255
 

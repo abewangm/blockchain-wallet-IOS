@@ -505,6 +505,10 @@
         [weakSelf show_summary_for_transfer_all];
     };
     
+    self.context[@"objc_did_archive_or_unarchive"] = ^() {
+        [weakSelf did_archive_or_unarchive];
+    };
+    
 #pragma mark State
     
     self.context[@"objc_reload"] = ^() {
@@ -3013,6 +3017,13 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didErrorWhenGettingFiatAtTime!", [delegate class]);
     }
+}
+
+- (void)did_archive_or_unarchive
+{
+    DLog(@"did_archive_or_unarchive");
+    
+    [self.webSocket closeWithCode:WEBSOCKET_CODE_ARCHIVE_UNARCHIVE reason:WEBSOCKET_CLOSE_REASON_ARCHIVED_UNARCHIVED];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet
