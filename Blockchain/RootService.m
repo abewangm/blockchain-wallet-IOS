@@ -822,8 +822,17 @@ void (^secondPasswordSuccess)(NSString *);
     } else {        
         NSDate *dateOfLastReminder = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
         
+        NSTimeInterval timeIntervalBetweenPrompts = TIME_INTERVAL_SECURITY_REMINDER_PROMPT;
+        
+#ifdef ENABLE_DEBUG_MENU
+        id customTimeValue = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
+        if (customTimeValue) {
+            timeIntervalBetweenPrompts = [customTimeValue doubleValue];
+        }
+#endif
+        
         if (dateOfLastReminder) {
-            if ([dateOfLastReminder timeIntervalSinceNow] < -TIME_INTERVAL_SECURITY_REMINDER_PROMPT) {
+            if ([dateOfLastReminder timeIntervalSinceNow] < -timeIntervalBetweenPrompts) {
                 [self showSecurityReminder];
                 [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
             }
