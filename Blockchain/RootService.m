@@ -2012,7 +2012,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showSecurityReminder
 {
-    if (self.latestResponse.transactions.count > 0 && [app.wallet getTotalActiveBalance] > 0) {
+    if ([app.wallet getTotalActiveBalance] > 0) {
         if (![app.wallet isRecoveryPhraseVerified]) {
             [self showBackupReminder];
         } else {
