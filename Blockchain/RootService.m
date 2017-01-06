@@ -904,6 +904,8 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     
+    showReminderType = ShowReminderTypeNone;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAfterGettingCurrencySymbols) name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
     [app.wallet getAllCurrencySymbols];
 }
@@ -2944,8 +2946,6 @@ void (^secondPasswordSuccess)(NSString *);
                 if (app.wallet.isNew) {
                     app.wallet.isNew = NO;
                     [self checkIfSettingsLoadedAndShowEmailReminder];
-                } else {
-                    [self showSecurityReminder];
                 }
             } else {
                 [self forceHDUpgradeForLegacyWallets];
