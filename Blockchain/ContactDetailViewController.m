@@ -154,28 +154,33 @@ const int rowDelete = 0;
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == sectionMain) {
-        return 50;
+        return 160;
     }
     return 0;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == sectionMain) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
         
-        UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2 - 4, 50)];
-        [sendButton setTitle:BC_STRING_SEND forState:UIControlStateNormal];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 160)];
+        
+        UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, self.view.frame.size.width, 30)];
+        promptLabel.text = BC_STRING_I_WANT_TO_COLON;
+        [view addSubview:promptLabel];
+        
+        UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectMake(20, promptLabel.frame.origin.y + promptLabel.frame.size.height + 8, self.view.frame.size.width - 40, 50)];
+        [sendButton setTitle:[NSString stringWithFormat:BC_STRING_ASK_TO_SEND_ARGUMENT_BITCOIN, self.contact.name] forState:UIControlStateNormal];
         sendButton.backgroundColor = COLOR_BUTTON_RED;
         [sendButton addTarget:self action:@selector(sendClicked) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:sendButton];
         
-        UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 4, 0, self.view.frame.size.width/2 - 4, 50)];
+        UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(20, sendButton.frame.origin.y + sendButton.frame.size.height + 8,  self.view.frame.size.width - 40, 50)];
         requestButton.backgroundColor = COLOR_BUTTON_GREEN;
-        [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+        [requestButton setTitle:[NSString stringWithFormat:BC_STRING_REQUEST_BITCOIN_FROM_ARGUMENT, self.contact.name] forState:UIControlStateNormal];
         [requestButton addTarget:self action:@selector(requestClicked) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:requestButton];
         
