@@ -164,7 +164,7 @@ static PEViewController *VerifyController()
                     self.addressLabel.text = BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION;
                 }]];
                 [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [app.wallet subscribeToAddress:nextAddress];
+                    [app.wallet subscribeToSwipeAddress:nextAddress];
                     
                     if (!self.qrCodeImageView) {
                         self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
@@ -187,7 +187,7 @@ static PEViewController *VerifyController()
             };
             
             void (^success)() = ^() {
-                [app.wallet subscribeToAddress:nextAddress];
+                [app.wallet subscribeToSwipeAddress:nextAddress];
                 
                 if (!self.qrCodeImageView) {
                     self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];

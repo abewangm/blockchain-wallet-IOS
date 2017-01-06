@@ -465,8 +465,8 @@
         [weakSelf on_add_incorrect_private_key:address];
     };
     
-    self.context[@"objc_on_add_private_key_to_legacy_address"] = ^() {
-        [weakSelf on_add_private_key_to_legacy_address];
+    self.context[@"objc_on_add_private_key_to_legacy_address"] = ^(NSString *address) {
+        [weakSelf on_add_private_key_to_legacy_address:address];
     };
     
     self.context[@"objc_on_add_key"] = ^(NSString *key) {
@@ -701,14 +701,36 @@
     }
 }
 
+- (void)subscribeToXPub:(NSString *)xPub
+{
+    if (self.webSocket && self.webSocket.readyState == 1) {
+        NSError *error;
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"xpub_sub\",\"xpub\":\"%@\"}", xPub] error:&error];
+        if (error) DLog(@"Error subscribing to xpub: %@", [error localizedDescription]);
+    } else {
+        [self setupWebSocket];
+    }
+}
+
 - (void)subscribeToAddress:(NSString *)address
+{    
+    if (self.webSocket && self.webSocket.readyState == 1) {
+        NSError *error;
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", address] error:&error];
+        if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+    } else {
+        [self setupWebSocket];
+    }
+}
+
+- (void)subscribeToSwipeAddress:(NSString *)address
 {    
     self.swipeAddressToSubscribe = address;
 
     if (self.webSocket && self.webSocket.readyState == 1) {
         NSError *error;
         [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] error:&error];
-        if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+        if (error) DLog(@"Error subscribing to swipe address: %@", [error localizedDescription]);
     } else {
         [self setupWebSocket];
     }
@@ -2359,6 +2381,10 @@
     DLog(@"on_add_private_key");
     self.isSyncing = YES;
     
+    if (![self isWatchOnlyLegacyAddress:address]) {
+        [self subscribeToAddress:address];
+    }
+    
     if ([delegate respondsToSelector:@selector(didImportKey:)]) {
         [delegate didImportKey:address];
     } else {
@@ -2378,10 +2404,12 @@
     }
 }
 
-- (void)on_add_private_key_to_legacy_address
+- (void)on_add_private_key_to_legacy_address:(NSString *)address
 {
     DLog(@"on_add_private_key_to_legacy_address:");
     self.isSyncing = YES;
+    
+    [self subscribeToAddress:address];
     
     if ([delegate respondsToSelector:@selector(didImportPrivateKeyToLegacyAddress)]) {
         [delegate didImportPrivateKeyToLegacyAddress];
@@ -2750,6 +2778,9 @@
 - (void)on_add_new_account
 {
     DLog(@"on_add_new_account");
+    
+    [self subscribeToXPub:[self getXpubForAccount:[self getActiveAccountsCount] - 1]];
+    
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
 }
 

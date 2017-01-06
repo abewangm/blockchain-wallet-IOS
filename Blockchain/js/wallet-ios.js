@@ -1274,7 +1274,7 @@ MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) 
         if (address.address != legacyAddress) {
             objc_on_add_incorrect_private_key(legacyAddress);
         } else {
-            objc_on_add_private_key_to_legacy_address();
+            objc_on_add_private_key_to_legacy_address(legacyAddress);
         }
     };
     var error = function(message) {

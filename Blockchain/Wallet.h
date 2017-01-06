@@ -173,7 +173,7 @@
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 - (Boolean)isAddressArchived:(NSString *)address;
 
-- (void)subscribeToAddress:(NSString *)address;
+- (void)subscribeToSwipeAddress:(NSString *)address;
 
 - (void)addToAddressBook:(NSString *)address label:(NSString *)label;
 
