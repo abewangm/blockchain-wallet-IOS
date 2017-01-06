@@ -293,7 +293,7 @@
 #define BC_STRING_ASK_ME_LATER NSLocalizedString(@"Ask Me Later", nil)
 #define BC_STRING_LOGOUT_AND_FORGET_WALLET NSLocalizedString(@"Logout and forget wallet", nil)
 
-#define BC_STRING_SURVEY_ALERT_TITLE NSLocalizedString(@"Would you like to take a survey on your experience with Blockchain?", nil)
+#define BC_STRING_SURVEY_ALERT_TITLE NSLocalizedString(@"Would you like to tell us about your experience with Blockchain?", nil)
 #define BC_STRING_SURVEY_ALERT_MESSAGE NSLocalizedString(@"You will be leaving the app.", nil)
 
 #define BC_STRING_UNSAFE_DEVICE_TITLE NSLocalizedString(@"Warning", nil)
@@ -483,7 +483,7 @@
 #define BC_STRING_ERROR_PLEASE_REFRESH_PAIRING_CODE NSLocalizedString(@"Please refresh the pairing code and try again.", nil)
 
 #define BC_STRING_DONT_SHOW_AGAIN NSLocalizedString(@"Don't show again", nil)
-#define BC_STRING_NOT_NOW NSLocalizedString(@"Not now", nil)
+#define BC_STRING_NOT_NOW NSLocalizedString(@"Not Now", nil)
 #define BC_STRING_ILL_DO_THIS_LATER NSLocalizedString(@"I'll do this later", nil)
 #define BC_STRING_INCORRECT_PRIVATE_KEY NSLocalizedString(@"Incorrect private key", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED NSLocalizedString(@"Private Key Needed", nil)
