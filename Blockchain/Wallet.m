@@ -3139,7 +3139,7 @@
 
 - (void)on_accept_relation_success:(NSString *)invitation name:(NSString *)name
 {
-    DLog(@"on_accept_invitation_success");
+    DLog(@"on_accept_relation_success");
     if ([self.delegate respondsToSelector:@selector(didAcceptRelation:name:)]) {
         [self.delegate didAcceptRelation:invitation name:name];
     } else {

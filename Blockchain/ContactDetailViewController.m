@@ -18,9 +18,6 @@ const int rowExtendedPublicKey = 1;
 const int rowTrust = 2;
 const int rowFetchMDID = 3;
 
-const int sectionDelete = 1;
-const int rowDelete = 0;
-
 @interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (nonatomic) UITableView *tableView;
 @end
@@ -69,15 +66,13 @@ const int rowDelete = 0;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == sectionMain) {
         return self.contact.invitationSent ? 4 : 3;
-    } else if (section == sectionDelete) {
-        return 1;
     }
     
     DLog(@"Invalid section");
@@ -113,15 +108,6 @@ const int rowDelete = 0;
             DLog(@"Invalid row for main section");
             return nil;
         }
-    } else if (indexPath.section == sectionDelete) {
-        if (indexPath.row == rowDelete) {
-            cell.textLabel.textColor = [UIColor redColor];
-            cell.textLabel.text = BC_STRING_DELETE_CONTACT;
-            cell.accessoryView = nil;
-        } else {
-            DLog(@"Invalid row for delete section");
-            return nil;
-        }
     }
 
     return cell;
@@ -145,19 +131,13 @@ const int rowDelete = 0;
         } else {
             DLog(@"Invalid selected row for main section");
         }
-    } else if (indexPath.section == sectionDelete) {
-        if (indexPath.row == rowDelete) {
-            [self confirmDeleteContact];
-        } else {
-            DLog(@"Invalid selected row for delete section");
-        }
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == sectionMain) {
-        return 160;
+        return 250;
     }
     return 0;
 }
@@ -174,15 +154,47 @@ const int rowDelete = 0;
         
         UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectMake(20, promptLabel.frame.origin.y + promptLabel.frame.size.height + 8, self.view.frame.size.width - 40, 50)];
         [sendButton setTitle:[NSString stringWithFormat:BC_STRING_ASK_TO_SEND_ARGUMENT_BITCOIN, self.contact.name] forState:UIControlStateNormal];
+        sendButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        sendButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
         sendButton.backgroundColor = COLOR_BUTTON_RED;
         [sendButton addTarget:self action:@selector(sendClicked) forControlEvents:UIControlEventTouchUpInside];
+        sendButton.layer.cornerRadius = 4;
         [view addSubview:sendButton];
         
         UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(20, sendButton.frame.origin.y + sendButton.frame.size.height + 8,  self.view.frame.size.width - 40, 50)];
         requestButton.backgroundColor = COLOR_BUTTON_GREEN;
         [requestButton setTitle:[NSString stringWithFormat:BC_STRING_REQUEST_BITCOIN_FROM_ARGUMENT, self.contact.name] forState:UIControlStateNormal];
+        requestButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        requestButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
         [requestButton addTarget:self action:@selector(requestClicked) forControlEvents:UIControlEventTouchUpInside];
+        requestButton.layer.cornerRadius = 4;
         [view addSubview:requestButton];
+        
+        CGFloat smallButtonWidth = self.view.frame.size.width/2 - 20 - 5;
+        
+        UIButton *renameButton = [[UIButton alloc] initWithFrame:CGRectMake(20, requestButton.frame.origin.y + requestButton.frame.size.height + 8, smallButtonWidth, 40)];
+        [renameButton setTitle:BC_STRING_RENAME_CONTACT forState:UIControlStateNormal];
+        renameButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        renameButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
+        renameButton.backgroundColor = COLOR_BUTTON_BLUE;
+        renameButton.layer.cornerRadius = 4;
+        [view addSubview:renameButton];
+        
+        UIButton *deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 5, renameButton.frame.origin.y, smallButtonWidth, 40)];
+        [deleteButton setTitle:BC_STRING_DELETE_CONTACT forState:UIControlStateNormal];
+        deleteButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        deleteButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
+        deleteButton.backgroundColor = COLOR_BUTTON_RED;
+        deleteButton.layer.cornerRadius = 4;
+        [deleteButton addTarget:self action:@selector(confirmDeleteContact) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:deleteButton];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, renameButton.frame.origin.y + renameButton.frame.size.height + 26, self.view.frame.size.width, 14)];
+        label.textColor = COLOR_FOREGROUND_GRAY;
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.text = [[NSString stringWithFormat:BC_STRING_TRANSACTIONS_WITH_ARGUMENT, self.contact.name] uppercaseString];
+
+        [view addSubview:label];
         
         return view;
     }

@@ -423,6 +423,8 @@
 #define BC_STRING_I_WANT_TO_COLON NSLocalizedString(@"I want to:", nil)
 #define BC_STRING_ASK_TO_SEND_ARGUMENT_BITCOIN NSLocalizedString(@"Ask to Send %@ Bitcoin", nil)
 #define BC_STRING_REQUEST_BITCOIN_FROM_ARGUMENT NSLocalizedString(@"Request Bitcoin from %@", nil)
+#define BC_STRING_RENAME_CONTACT NSLocalizedString(@"Rename contact", nil)
+#define BC_STRING_TRANSACTIONS_WITH_ARGUMENT NSLocalizedString(@"Transactions with %@", nil)
 #define BC_STRING_TRUST_USER NSLocalizedString(@"Trust user", nil)
 #define BC_STRING_FETCH_MDID NSLocalizedString(@"Fetch MDID", nil)
 #define BC_STRING_TRUST_USER_ALERT_TITLE NSLocalizedString(@"Trust user?", nil)
