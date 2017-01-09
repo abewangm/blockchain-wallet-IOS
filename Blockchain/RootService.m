@@ -61,6 +61,16 @@ typedef enum {
 
 ShowType showType;
 
+enum {
+    ShowReminderTypeNone,
+    ShowReminderTypeTwoFactor,
+    ShowReminderTypeEmail
+};
+
+typedef NSInteger ShowReminderType;
+
+ShowReminderType showReminderType;
+
 SideMenuViewController *sideMenuViewController;
 UIImageView *curtainImageView;
 
@@ -898,9 +908,28 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (![app isPinSet]) {
         [app showPinModalAsView:NO];
+    } else {        
+        NSDate *dateOfLastReminder = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
+        
+        NSTimeInterval timeIntervalBetweenPrompts = TIME_INTERVAL_SECURITY_REMINDER_PROMPT;
+        
+#ifdef ENABLE_DEBUG_MENU
+        id customTimeValue = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
+        if (customTimeValue) {
+            timeIntervalBetweenPrompts = [customTimeValue doubleValue];
+        }
+#endif
+        
+        if (dateOfLastReminder) {
+            if ([dateOfLastReminder timeIntervalSinceNow] < -timeIntervalBetweenPrompts) {
+                [self showSecurityReminder];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
+            }
+        } else {
+            [self showSecurityReminder];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
+        }
     }
-    
-    self.wallet.isNew = NO;
     
     [_sendViewController reload];
     
@@ -955,13 +984,25 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)getAccountInfo
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrencySymbolsAfterAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     [app.wallet getAccountInfo];
 }
 
-- (void)getCurrencySymbolsAfterAccountInfo
+- (void)didGetAccountInfo
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    
+    if (showReminderType == ShowReminderTypeTwoFactor) {
+        if (![app.wallet hasEnabledTwoStep]) {
+            [self showTwoFactorReminder];
+        }
+    } else if (showReminderType == ShowReminderTypeEmail) {
+        if (![app.wallet hasVerifiedEmail]) {
+            [self showEmailVerificationReminder];
+        }
+    }
+    
+    showReminderType = ShowReminderTypeNone;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAfterGettingCurrencySymbols) name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
     [app.wallet getAllCurrencySymbols];
@@ -1506,9 +1547,11 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self.loginTimer invalidate];
     
-    [self.wallet resetBackupStatus];
+    [self.wallet resetSyncStatus];
     
     [self.wallet loadBlankWallet];
+    
+    self.wallet.hasLoadedAccountInfo = NO;
     
     self.latestResponse = nil;
     
@@ -1976,6 +2019,11 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showSettings
 {
+    [self showSettings:nil];
+}
+
+- (void)showSettings:(void (^)())completionBlock
+{
     if (!_settingsNavigationController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
         self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
@@ -1985,7 +2033,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.settingsNavigationController showSettings];
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:nil];
+    [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:completionBlock];
 }
 
 - (void)showSupport
@@ -2020,6 +2068,7 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showPinModalAsView:(BOOL)asView
 {
     BOOL walletIsNew = self.wallet.isNew;
+    BOOL didAutoPair = self.wallet.didPairAutomatically;
     
     if (self.changedPassword) {
         [self showPasswordModal];
@@ -2063,9 +2112,15 @@ void (^secondPasswordSuccess)(NSString *);
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DID_CREATE_NEW_WALLET_TITLE message:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
                 [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
+            } else if (didAutoPair) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE message:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
             }
         }];
     }
+    
+    self.wallet.didPairAutomatically = NO;
     
     [self hideBusyView];
 }
@@ -2105,6 +2160,69 @@ void (^secondPasswordSuccess)(NSString *);
     [welcomeView.recoverWalletButton addTarget:self action:@selector(showRecoverWallet:) forControlEvents:UIControlEventTouchUpInside];
     
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
+}
+
+- (void)showSecurityReminder
+{
+    if ([app.wallet getTotalActiveBalance] > 0) {
+        if (![app.wallet isRecoveryPhraseVerified]) {
+            [self showBackupReminder];
+        } else {
+            [self checkIfSettingsLoadedAndShowTwoFactorReminder];
+        }
+    } else {
+        [self checkIfSettingsLoadedAndShowTwoFactorReminder];
+    }
+}
+
+- (void)checkIfSettingsLoadedAndShowTwoFactorReminder
+{
+    if (self.wallet.hasLoadedAccountInfo) {
+        if (![app.wallet hasEnabledTwoStep]) {
+            [self showTwoFactorReminder];
+        }
+    } else {
+        showReminderType = ShowReminderTypeTwoFactor;
+    }
+}
+
+- (void)checkIfSettingsLoadedAndShowEmailReminder
+{
+    if (self.wallet.hasLoadedAccountInfo) {
+        if (![app.wallet hasVerifiedEmail]) {
+            [self showEmailVerificationReminder];
+        }
+    } else {
+        showReminderType = ShowReminderTypeEmail;
+    }
+}
+
+- (void)showEmailVerificationReminder
+{
+    ReminderModalViewController *emailController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeEmail];
+    emailController.displayString = [app.wallet getEmail];
+    emailController.delegate = self;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:emailController];
+    navigationController.navigationBarHidden = YES;
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)showBackupReminder
+{
+    ReminderModalViewController *backupController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeBackup];
+    backupController.delegate = self;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:backupController];
+    navigationController.navigationBarHidden = YES;
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)showTwoFactorReminder
+{
+    ReminderModalViewController *twoFactorController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeTwoFactor];
+    twoFactorController.delegate = self;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:twoFactorController];
+    navigationController.navigationBarHidden = YES;
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)forceHDUpgradeForLegacyWallets
@@ -2351,6 +2469,19 @@ void (^secondPasswordSuccess)(NSString *);
 - (IBAction)transactionsClicked:(UIButton *)sender
 {
     [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:1];
+    
+    if (sender) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT]) {
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"MM dd, yyyy"];
+            NSDate *endSurveyDate = [dateFormat dateFromString:DATE_SURVEY_END];
+            
+            if ([endSurveyDate timeIntervalSinceNow] > 0.0) {
+                [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
+            }
+        }
+    }
 }
 
 - (IBAction)sendCoinsClicked:(UIButton *)sender
@@ -2582,10 +2713,14 @@ void (^secondPasswordSuccess)(NSString *);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[APP_STORE_LINK_PREFIX stringByAppendingString:APP_STORE_ID]]];
 }
 
-- (void)paymentReceived:(NSDecimalNumber *)amount
+- (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder
 {
     if (_tabViewController.selectedIndex == TAB_RECEIVE && !_sendViewController.isSending) {
-        [_receiveViewController paymentReceived:amount];
+        [_receiveViewController paymentReceived:amount showBackupReminder:showBackupReminder];
+    } else {
+        if (showBackupReminder) {
+            [self showBackupReminder];
+        }
     }
 }
 
@@ -2614,10 +2749,7 @@ void (^secondPasswordSuccess)(NSString *);
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE message:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OPEN_MAIL_APP style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
-        if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
-            [[UIApplication sharedApplication] openURL:mailURL];
-        }
+        [self openMail];
     }]];
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
@@ -2663,6 +2795,50 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *build = infoDictionary[@"CFBundleVersion"];
     NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
     return [NSString stringWithFormat:@"%@", versionAndBuild];
+}
+
+- (void)showSurveyAlert
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SURVEY_ALERT_TITLE message:BC_STRING_SURVEY_ALERT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_YES style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *settingsURL = [NSURL URLWithString:URL_SURVEY];
+        [[UIApplication sharedApplication] openURL:settingsURL];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self.tabViewController presentViewController:alert animated:YES completion:nil];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT];
+}
+
+- (void)openMail
+{
+    NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
+    if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
+        [[UIApplication sharedApplication] openURL:mailURL];
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_CANNOT_OPEN_MAIL_APP_URL_ARGUMENT, PREFIX_MAIL_URI] preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.tabViewController presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+- (void)showBackup
+{
+    void (^showBackupBlock)() = ^() {
+        [self.settingsNavigationController showBackup];
+    };
+    
+    [self showSettings:showBackupBlock];
+}
+
+- (void)showTwoStep
+{
+    void (^showBackupBlock)() = ^() {
+        [self.settingsNavigationController showTwoStep];
+    };
+    
+    [self showSettings:showBackupBlock];
 }
 
 #pragma mark - Pin Entry Delegates
@@ -2898,6 +3074,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didPutPinSuccess:(NSDictionary*)dictionary
 {
+    BOOL walletIsNew = self.wallet.isNew;
+    
     [self hideBusyView];
     
     if (!app.wallet.password) {
@@ -2942,11 +3120,22 @@ void (^secondPasswordSuccess)(NSString *);
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self forceHDUpgradeForLegacyWallets];
+            
+            if (app.wallet.didUpgradeToHd) {
+                if (walletIsNew) {
+                    app.wallet.isNew = NO;
+                    [self checkIfSettingsLoadedAndShowEmailReminder];
+                }
+            } else {
+                [self forceHDUpgradeForLegacyWallets];
+            }
+            
         }]];
         
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
+    
+    app.wallet.isNew = NO;
 }
 
 - (void)pinEntryController:(PEPinEntryController *)c willChangeToNewPin:(NSUInteger)_pin

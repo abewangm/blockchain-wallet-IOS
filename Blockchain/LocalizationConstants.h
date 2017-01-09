@@ -119,6 +119,8 @@
 
 #define BC_STRING_OK NSLocalizedString(@"OK", nil)
 #define BC_STRING_OPEN_MAIL_APP NSLocalizedString(@"Open Mail App", nil)
+#define BC_STRING_CANNOT_OPEN_MAIL_APP NSLocalizedString(@"Cannot open Mail App", nil)
+#define BC_STRING_CANNOT_OPEN_MAIL_APP_URL_ARGUMENT NSLocalizedString(@"Cannot open URL %@", nil)
 #define BC_STRING_FAILED_TO_LOAD_WALLET_TITLE NSLocalizedString(@"Failed To Load Wallet", nil)
 
 #define BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE NSLocalizedString(@"Failed to validate server certificate", nil)
@@ -293,6 +295,9 @@
 #define BC_STRING_ASK_ME_LATER NSLocalizedString(@"Ask Me Later", nil)
 #define BC_STRING_LOGOUT_AND_FORGET_WALLET NSLocalizedString(@"Logout and forget wallet", nil)
 
+#define BC_STRING_SURVEY_ALERT_TITLE NSLocalizedString(@"Would you like to tell us about your experience with Blockchain?", nil)
+#define BC_STRING_SURVEY_ALERT_MESSAGE NSLocalizedString(@"You will be leaving the app.", nil)
+
 #define BC_STRING_UNSAFE_DEVICE_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_UNSAFE_DEVICE_MESSAGE NSLocalizedString(@"Your device appears to be jailbroken. The security of your wallet may be compromised.", nil)
 
@@ -303,7 +308,15 @@
 #define BC_STRING_INVALID_ADDRESS_ARGUMENT NSLocalizedString(@"Invalid address: %@", nil)
 
 #define BC_STRING_UPDATE NSLocalizedString(@"Update", nil)
-#define BC_STRING_DISABLED NSLocalizedString (@"Disabled", nil)
+#define BC_STRING_DISABLED NSLocalizedString(@"Disabled", nil)
+#define BC_STRING_REMINDER_CHECK_EMAIL_TITLE NSLocalizedString(@"Check Your Inbox", nil)
+#define BC_STRING_CONTINUE_TO_MAIL NSLocalizedString(@"Continue To Mail", nil)
+#define BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE NSLocalizedString(@"Look for an email from Blockchain and click the verification link to complete your wallet setup.", nil)
+#define BC_STRING_REMINDER_BACKUP_TITLE NSLocalizedString(@"Backup Your Funds", nil)
+#define BC_STRING_REMINDER_BACKUP_NOW NSLocalizedString(@"Backup Now", nil)
+#define BC_STRING_REMINDER_BACKUP_MESSAGE NSLocalizedString(@"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password.", nil)
+#define BC_STRING_REMINDER_TWO_FACTOR_TITLE NSLocalizedString(@"2-Step Verification", nil)
+#define BC_STRING_REMINDER_TWO_FACTOR_MESSAGE NSLocalizedString(@"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security.", nil)
 #define BC_STRING_SECURITY_CENTER_INSTRUCTIONS NSLocalizedString(@"Complete the steps below for ultimate security", nil)
 #define BC_STRING_SECURITY_CENTER_COMPLETED NSLocalizedString(@"Security Center completed - your wallet is safe and secure", nil)
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
@@ -348,7 +361,7 @@
 #define BC_STRING_SETTINGS_NOTIFICATIONS_SMS NSLocalizedString(@"SMS", nil)
 #define BC_STRING_SETTINGS_EMAIL_FOOTER NSLocalizedString(@"Your verified email address is used to send login codes when suspicious or unusual activity is detected, to remind you of your wallet login ID, and to send bitcoin payment alerts when you receive funds. We will not use your email address for marketing purposes.", nil)
 #define BC_STRING_SETTINGS_SMS_FOOTER NSLocalizedString(@"Your mobile phone can be used to enable two-factor authentication, helping to secure your wallet from unauthorized access.", nil)
-#define BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER NSLocalizedString(@"Enable notifications to receive an email or SMS message whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications.", nil)
+#define BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER NSLocalizedString(@"Enable notifications to receive an email or SMS message whenever you receive bitcoin.", nil)
 #define BC_STRING_SETTINGS_SWIPE_TO_RECEIVE_IN_FIVES_FOOTER NSLocalizedString(@"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Five addresses will be loaded consecutively, after which logging in is required to show new addresses.", nil)
 #define BC_STRING_SETTINGS_SWIPE_TO_RECEVE_IN_SINGLES_FOOTER NSLocalizedString(@"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Only one address will be loaded, logging in is required to show a new address.", nil)
 #define BC_STRING_SETTINGS_ABOUT NSLocalizedString(@"About", nil)
@@ -511,7 +524,8 @@
 #define BC_STRING_ERROR_PLEASE_REFRESH_PAIRING_CODE NSLocalizedString(@"Please refresh the pairing code and try again.", nil)
 
 #define BC_STRING_DONT_SHOW_AGAIN NSLocalizedString(@"Don't show again", nil)
-#define BC_STRING_NOT_NOW NSLocalizedString(@"Not now", nil)
+#define BC_STRING_NOT_NOW NSLocalizedString(@"Not Now", nil)
+#define BC_STRING_ILL_DO_THIS_LATER NSLocalizedString(@"I'll do this later", nil)
 #define BC_STRING_INCORRECT_PRIVATE_KEY NSLocalizedString(@"Incorrect private key", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED NSLocalizedString(@"Private Key Needed", nil)
 #define BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT NSLocalizedString(@"This action requires the private key for the Bitcoin address %@. Please scan the QR code.", nil)
@@ -557,6 +571,7 @@
 #define BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS NSLocalizedString(@"Pending (%@ Confirmations)", nil)
 #define BC_STRING_TRANSACTION_FEE_ARGUMENT NSLocalizedString(@"Transaction fee: %@", nil)
 #define BC_STRING_PENDING NSLocalizedString(@"Pending", nil)
+#define BC_STRING_DOUBLE_SPEND_WARNING NSLocalizedString(@"May be at risk for a double spend.", nil)
 #define BC_STRING_ARGUMENT_RECIPIENTS NSLocalizedString(@"%lu Recipients", nil)
 #define BC_STRING_TO NSLocalizedString(@"To", nil)
 #define BC_STRING_DATE NSLocalizedString(@"Date", nil)

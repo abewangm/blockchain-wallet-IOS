@@ -19,6 +19,7 @@
 @synthesize latestBlock;
 
 BOOL animateNextCell;
+BOOL hasZeroTotalBalance = NO;
 
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
@@ -62,7 +63,6 @@ int lastNumberTransactions = INT_MAX;
     
     TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     [cell transactionClicked:nil indexPath:indexPath];
-        
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -246,6 +246,8 @@ int lastNumberTransactions = INT_MAX;
         
         // Without a delay, the notification will not get the new transaction, but the one before it
         [self performSelector:@selector(paymentReceived) withObject:nil afterDelay:0.1f];
+    } else {
+        hasZeroTotalBalance = [app.wallet getTotalActiveBalance] == 0;
     }
 }
 
@@ -298,7 +300,11 @@ int lastNumberTransactions = INT_MAX;
     Transaction *transaction = [data.transactions firstObject];
     if ([transaction.txType isEqualToString:TX_TYPE_SENT]) return;
     
-    [app paymentReceived:[self getAmountForReceivedTransaction:transaction]];
+    BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&
+                             [transaction.txType isEqualToString:TX_TYPE_RECEIVED] &&
+                             ![app.wallet isRecoveryPhraseVerified]);
+    
+    [app paymentReceived:[self getAmountForReceivedTransaction:transaction] showBackupReminder:shouldShowBackupReminder];
 }
 
 - (void)changeFilterLabel:(NSString *)newText
@@ -336,6 +342,11 @@ int lastNumberTransactions = INT_MAX;
 #else
     return [app.wallet getTotalActiveBalance];
 #endif
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
+{
+    return UIModalPresentationNone;
 }
 
 #pragma mark - View lifecycle

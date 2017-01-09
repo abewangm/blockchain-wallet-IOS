@@ -16,4 +16,8 @@
 - (void)verifyEmailTapped;
 - (void)changeTwoStepTapped;
 - (void)updateEmailAndMobileStrings;
+
+// Called from reminder modal
+- (void)showBackup;
+- (void)showTwoStep;
 @end

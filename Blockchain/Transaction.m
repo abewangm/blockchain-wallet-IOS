@@ -33,6 +33,8 @@
     transaction.fromWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY] boolValue];
     transaction.toWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY] boolValue];
     transaction.note = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_NOTE];
+    transaction.doubleSpend = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_DOUBLE_SPEND] boolValue];
+    transaction.replaceByFee = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_REPLACE_BY_FEE] boolValue];
     
     transaction.fiatAmountsAtTime = [[NSMutableDictionary alloc] init];
     

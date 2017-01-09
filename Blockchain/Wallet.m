@@ -35,6 +35,7 @@
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
 @property (nonatomic) BOOL isSettingDefaultAccount;
+@property (nonatomic) NSMutableDictionary *timers;
 @end
 
 @implementation transactionProgressListeners
@@ -104,31 +105,48 @@
         DLog(@"%@ \nstack: %@\nline number: %@", [exception toString], stacktrace, lineNumber);
     };
 
+    __weak Wallet *weakSelf = self;
     
-    // Add setTimout
-    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* function, JSValue* timeout) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)([timeout toInt32] * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-            [function callWithArguments:@[]];
-        });
+    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* callback, double timeout) {
+        
+        NSString *uuid = [[NSUUID alloc] init].UUIDString;
+        
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:timeout/1000
+                                                          target:[NSBlockOperation blockOperationWithBlock:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [callback callWithArguments:nil];
+            });
+        }]
+                                                        selector:@selector(main)
+                                                        userInfo:nil
+                                                         repeats:NO];
+        
+        weakSelf.timers[uuid] = timer;
+        [timer fire];
     };
     
-    dispatch_queue_t jsQueue = dispatch_queue_create("com.some.identifier",
-                                                     DISPATCH_QUEUE_SERIAL);
-    
-    self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(int ms, JSValue *callback) {
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:ms/1000
+    self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(JSValue *callback, double timeout) {
+        
+        NSString *uuid = [[NSUUID alloc] init].UUIDString;
+        
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:timeout/1000
                                                           target:[NSBlockOperation blockOperationWithBlock:^{
-            dispatch_async(jsQueue, ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
                 [callback callWithArguments:nil];
             });
         }]
                                                         selector:@selector(main)
                                                         userInfo:nil
                                                          repeats:YES];
+        weakSelf.timers[uuid] = timer;
         [timer fire];
     };
     
-    __weak Wallet *weakSelf = self;
+    self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = ^(NSString *identifier) {
+        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
+        [timer invalidate];
+        [weakSelf.timers removeObjectForKey:identifier];
+    };
     
 #pragma mark Decryption
     
@@ -464,8 +482,8 @@
         [weakSelf on_add_incorrect_private_key:address];
     };
     
-    self.context[@"objc_on_add_private_key_to_legacy_address"] = ^() {
-        [weakSelf on_add_private_key_to_legacy_address];
+    self.context[@"objc_on_add_private_key_to_legacy_address"] = ^(NSString *address) {
+        [weakSelf on_add_private_key_to_legacy_address:address];
     };
     
     self.context[@"objc_on_add_key"] = ^(NSString *key) {
@@ -502,6 +520,10 @@
     
     self.context[@"objc_show_summary_for_transfer_all"] = ^() {
         [weakSelf show_summary_for_transfer_all];
+    };
+    
+    self.context[@"objc_did_archive_or_unarchive"] = ^() {
+        [weakSelf did_archive_or_unarchive];
     };
     
 #pragma mark State
@@ -742,14 +764,36 @@
     }
 }
 
+- (void)subscribeToXPub:(NSString *)xPub
+{
+    if (self.webSocket && self.webSocket.readyState == 1) {
+        NSError *error;
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"xpub_sub\",\"xpub\":\"%@\"}", xPub] error:&error];
+        if (error) DLog(@"Error subscribing to xpub: %@", [error localizedDescription]);
+    } else {
+        [self setupWebSocket];
+    }
+}
+
 - (void)subscribeToAddress:(NSString *)address
+{    
+    if (self.webSocket && self.webSocket.readyState == 1) {
+        NSError *error;
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", address] error:&error];
+        if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+    } else {
+        [self setupWebSocket];
+    }
+}
+
+- (void)subscribeToSwipeAddress:(NSString *)address
 {    
     self.swipeAddressToSubscribe = address;
 
     if (self.webSocket && self.webSocket.readyState == 1) {
         NSError *error;
         [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] error:&error];
-        if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+        if (error) DLog(@"Error subscribing to swipe address: %@", [error localizedDescription]);
     } else {
         [self setupWebSocket];
     }
@@ -808,9 +852,9 @@
     }
 }
 
-- (void)resetBackupStatus
+- (void)resetSyncStatus
 {
-    // Some changes to the wallet requiring backup afterwards need only specific updates to the UI; reloading the entire Receive screen, for example, is not necessary when setting the default account. Unfortunately information about the specific function that triggers backup is lost by the time multiaddress is called.
+    // Some changes to the wallet requiring syncing afterwards need only specific updates to the UI; reloading the entire Receive screen, for example, is not necessary when setting the default account. Unfortunately information about the specific function that triggers backup is lost by the time multiaddress is called.
     
     self.isSettingDefaultAccount = NO;
 }
@@ -2422,10 +2466,6 @@
         [self setupWebSocket];
     }
     
-    if (self.didPairAutomatically) {
-        self.didPairAutomatically = NO;
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE];
-    }
     self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
     self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
     
@@ -2482,6 +2522,10 @@
     DLog(@"on_add_private_key");
     self.isSyncing = YES;
     
+    if (![self isWatchOnlyLegacyAddress:address]) {
+        [self subscribeToAddress:address];
+    }
+    
     if ([delegate respondsToSelector:@selector(didImportKey:)]) {
         [delegate didImportKey:address];
     } else {
@@ -2501,10 +2545,12 @@
     }
 }
 
-- (void)on_add_private_key_to_legacy_address
+- (void)on_add_private_key_to_legacy_address:(NSString *)address
 {
     DLog(@"on_add_private_key_to_legacy_address:");
     self.isSyncing = YES;
+    
+    [self subscribeToAddress:address];
     
     if ([delegate respondsToSelector:@selector(didImportPrivateKeyToLegacyAddress)]) {
         [delegate didImportPrivateKeyToLegacyAddress];
@@ -2631,7 +2677,7 @@
         DLog(@"Error: delegate of class %@ does not respond to selector didFailBackupWallet!", [delegate class]);
     }
     
-    [self resetBackupStatus];
+    [self resetSyncStatus];
 }
 
 - (void)on_backup_wallet_success
@@ -2873,6 +2919,9 @@
 - (void)on_add_new_account
 {
     DLog(@"on_add_new_account");
+    
+    [self subscribeToXPub:[self getXpubForAccount:[self getActiveAccountsCount] - 1]];
+    
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
 }
 
@@ -3206,6 +3255,13 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didSendMessage!", [delegate class]);
     }
+}
+
+- (void)did_archive_or_unarchive
+{
+    DLog(@"did_archive_or_unarchive");
+    
+    [self.webSocket closeWithCode:WEBSOCKET_CODE_ARCHIVE_UNARCHIVE reason:WEBSOCKET_CLOSE_REASON_ARCHIVED_UNARCHIVED];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

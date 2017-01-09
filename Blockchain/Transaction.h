@@ -24,6 +24,8 @@
 @property(nonatomic, assign) uint32_t tx_index;
 @property(nonatomic, assign) BOOL fromWatchOnly;
 @property(nonatomic, assign) BOOL toWatchOnly;
+@property(nonatomic, assign) BOOL doubleSpend;
+@property(nonatomic, assign) BOOL replaceByFee;
 @property(nonatomic, strong) NSMutableDictionary *fiatAmountsAtTime;
 
 @property(nonatomic, strong) InOut *from;

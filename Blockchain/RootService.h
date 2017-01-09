@@ -27,12 +27,13 @@
 #import "NSNumberFormatter+Currencies.h"
 #import "CertificatePinner.h"
 #import <UserNotifications/UserNotifications.h>
+#import "ReminderModalViewController.h"
 
 @protocol TopViewController;
 
 @class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController;
 
-@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate> {
+@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate> {
     
     Wallet *wallet;
     
@@ -181,6 +182,7 @@
 - (void)showAccountsAndAddresses;
 - (void)showDebugMenu:(int)presenter;
 - (void)showHdUpgrade;
+- (void)showBackupReminder;
 
 - (void)reloadTransactionFilterLabel;
 
@@ -205,7 +207,7 @@
 
 - (void)setupTransferAllFunds;
 
-- (void)paymentReceived:(NSDecimalNumber *)amount;
+- (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
 
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;

@@ -166,7 +166,7 @@
 - (void)loadWalletWithGuid:(NSString *)_guid sharedKey:(NSString *)_sharedKey password:(NSString *)_password;
 - (void)loadBlankWallet;
 
-- (void)resetBackupStatus;
+- (void)resetSyncStatus;
 
 - (NSDictionary *)addressBook;
 
@@ -184,7 +184,7 @@
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 - (Boolean)isAddressArchived:(NSString *)address;
 
-- (void)subscribeToAddress:(NSString *)address;
+- (void)subscribeToSwipeAddress:(NSString *)address;
 
 - (void)addToAddressBook:(NSString *)address label:(NSString *)label;
 

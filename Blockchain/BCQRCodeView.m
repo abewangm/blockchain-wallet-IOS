@@ -109,7 +109,7 @@ const float imageWidth = 190;
         [labelToAnimate sizeToFit];
         labelToAnimate.center = CGPointMake(self.center.x, labelToAnimate.center.y);
         
-        UIImageView *checkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(labelToAnimate.frame.origin.x - labelToAnimate.frame.size.height - 5, labelToAnimate.frame.origin.y,labelToAnimate.frame.size.height, labelToAnimate.frame.size.height)];
+        UIImageView *checkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(labelToAnimate.frame.origin.x - labelToAnimate.frame.size.height - 5, labelToAnimate.frame.origin.y, labelToAnimate.frame.size.height, labelToAnimate.frame.size.height)];
         checkImageView.image = [UIImage imageNamed:@"check"];
         checkImageView.image = [checkImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         checkImageView.tintColor = COLOR_BUTTON_GREEN;
